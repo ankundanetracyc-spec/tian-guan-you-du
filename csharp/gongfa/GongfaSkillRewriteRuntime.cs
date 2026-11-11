@@ -15,20 +15,12 @@ public static partial class GongfaSkillRewriteRuntime
 
     private static readonly System.Collections.Generic.Dictionary<string, RewriteEffectInfo> RewriteEffects = new()
     {
-        ["xuan_shu_c1_jingzhe"] = new("玄枢含章经", "惊蛰", "化法追加：本次攻击无视目标护盾。", "本次攻击无视目标护盾"),
-        ["xuan_shu_c2_yunpei"] = new("玄枢含章经", "云帔", "化法追加：由技能槽10自动施展时，为当前护盾值最低的一名其他存活队友施加自身本次获得护盾值一半的护盾；并列时随机选择。", "技能槽10自动施展时，为最低护盾队友施加一半护盾"),
-        ["xuan_shu_c3_jiazhao"] = new("玄枢含章经", "架招", "化法追加：本次来袭的全部伤害段结算后，按架招实际抵消的物理伤害总点数获得等量护盾；未用于抵消伤害的化解不计入。", "本次来袭结算后，按实际抵消的物理伤害获得护盾"),
-        ["xuan_shu_c4_fuming"] = new("玄枢含章经", "复命", "化法追加：复制的技能本次施加护盾后，为当前护盾值最低的一名其他存活队友施加等量护盾；并列时随机选择。", "复制技能施加护盾后，为最低护盾队友施加等量护盾"),
-        ["zhuo_ji_c1_zhaoye"] = new("斫基损契玄经", "折锋", "化法追加：施展前法力为0时，命中后获得炁1；每回合最多触发一次。", "法力为0时命中，获得炁1；每回合一次"),
-        ["zhuo_ji_c2_jianzhu"] = new("斫基损契玄经", "焚元", "化法追加：本回合下一项仍需支付法力的技能，法力费用改为等量体力费用。", "本回合下一项法力技能改为体力支付"),
-        ["zhuo_ji_c3_jiazhao"] = new("斫基损契玄经", "架招", "化法追加：本次架招抵消至少1点物理伤害后，攻击者失去 B 点护盾。B = min(攻击者当前护盾值, 本次架招实际抵消的物理伤害总点数)。", "架招化解伤害后削减攻击者护盾"),
-        ["zhuo_ji_c4_zhaoye"] = new("斫基损契玄经", "折锋", "化法追加：法力上限为1时，目标不能以应对技能应对此次攻击。", "法力上限为1时，此次攻击不可应对"),
-        ["baihai_c1_cuixue"] = new("百骸衍枝化生宝册", "催血", "化法追加：施展前自身气血层数不高于3层时，额外获得气血1层。", "气血不高于3层时，催血额外获得气血1层"),
-        ["baihai_c2_cuishan"] = new("百骸衍枝化生宝册", "血臂撼岳", "化法追加：至少一只手臂显化时，额外追加一段与《血臂撼岳》基础伤害等量的物理伤害。", "显化手臂时，血臂撼岳追加一段同等物理伤害"),
-        ["baihai_c3_jiazhao"] = new("百骸衍枝化生宝册", "架招", "化法追加：第二只手臂显化时，本次架招额外获得B层化解。B=min(round(架招基础化解层数×0.20),20)。", "双臂显化时，架招额外获得化解"),
-        ["baihai_c4_jiazhao"] = new("百骸衍枝化生宝册", "架招", "化法追加：显化至少一只手臂时，本次架招额外获得化解1层；双臂显化时，再额外获得B层化解，B=min(round(架招基础化解层数×0.20),20)。本次架招实际抵消至少1点物理伤害后，若自身气血未满，获得气血1层。", "显臂强化架招；化解成功后可回复气血"),
-        ["taihe_c3_jiazhao"] = new("太和感物养元宝册", "架招", "化法追加：应对触发时，若自身至少有1层气血，消耗气血1层，并使本次架招化解层数变为基础值的2倍；心法仍按本次应对结算气血获得。", "有气血时消耗1层，使架招化解翻倍"),
-        ["taihe_c4_koushan"] = new("太和感物养元宝册", "乘势再攻", "化法追加：每段由《乘势再攻》追加的攻击命中后，独立判定B；判定通过时使目标获得C层僵直。B=clamp(15% + 施加者体魄×1% − 目标体魄×0.75% + 卡牌境界修正 + 高境界修正, 0%, 99%)×跨境界削减倍率；C=floor(clamp(60 + (施加者体魄−目标体魄)×3, 0, 120)×跨境界削减倍率)。", "乘势再攻追加攻击命中后概率施加僵直"),
+        ["xuan_shu_c1_jingzhe"] = new("玄枢含章经", "惊蛰", "化法追加：由周天额外施放惊蛰时，本次攻击绕过目标护盾，直接作用于生命；目标护盾不变。普通施放时仍按惊蛰原规则结算。", "周天额外惊蛰绕过护盾"),
+        ["taihe_c1_koushan"] = new("太和感物养元宝册", "乘势再攻", "化法追加：目标应对此次攻击时，由应对此条件触发的追加段不消耗目标当前化解；基础段和未造成生命伤害条件触发的追加段仍按原规则受化解抵消。", "应对触发的追加段忽略化解"),
+        ["taihe_c2_hanxu"] = new("太和感物养元宝册", "虚怀纳劲", "化法追加：应对敌方攻击时，自身获得的护盾延至本次来袭的全部伤害结算结束后施加。", "应对所得护盾延后到来袭结算后"),
+        ["zhuo_ji_c2_jianzhu"] = new("斫基损契玄经", "焚元", "化法追加：焚元施放后，本回合下一项法力费用大于0的技能，法力费用改由燃烧等量法力上限支付；体力费用照常支付。至少保留1点法力上限，不足时不可施展。0法力费用技能不触发；未使用则轮末失效。", "本轮下项法力技能燃烧等量上限"),
+        ["baihai_c1_cuixue"] = new("百骸衍枝化生宝册", "催血", "化法追加：施展前自身气血层数不高于3层时，催血改为分段施加气血：施展后立即获得1层；自身下一次近身物理攻击开始时，在判定显臂前获得剩余1层。战斗结束时尚未结算的气血不再获得。", "低气血时将催血分段结算"),
+        ["baihai_c4_jiazhao"] = new("百骸衍枝化生宝册", "架招", "化法追加：架招扫到并进入待命时，若自身至少显化一只手臂，未触发的待命可延续至下一个共同回合结束；期间触发应对则立即解除。期满仍未触发，待命解除。", "显臂时架招待命延续一轮"),
         ["zhuanxi_c4_cuixue"] = new("胎息经", "催血", "若本场曾由自身主动使气血下降，本技能结算时获得身法1层。", "催血后，曾主动回落则获得身法1层"),
         ["zhuanxi_c2_pingxi"] = new("胎息经", "平息", "本技能使气血下降后，额外获得身法1层。", "平息气血回落后额外获得身法1层"),
         ["chengwu_c1_cuixue"] = new("乘物游骸真经", "催血", "施放前若自身身法不少于10层且当前没有游骸，额外获得游骸1层。", "身法≥10且无游骸时，催血额外得游骸1层"),
@@ -77,7 +69,8 @@ public static partial class GongfaSkillRewriteRuntime
         // 新三本资源保留基础说明，全部化法追加由绑定结果统一补入。
         if (skill.source_gongfa_name is "舒卷天章" or "玉髓回澜养真宝册" or "抱虚养晦通玄录") represented=null;
         return skill.gongfa_rewrite_effect_ids
-            .Where(id => (!excludePrimary || id != represented) && RewriteEffects.ContainsKey(id))
+            .Where(id => RewriteEffects.ContainsKey(id) && (!excludePrimary || (skill.has_board_definition()
+                ? !skill.description.Contains(RewriteEffects[id].Description, StringComparison.Ordinal) : id != represented)))
             .Distinct()
             .Select(id => RewriteEffects[id].Description);
     }
@@ -208,8 +201,7 @@ public static partial class GongfaSkillRewriteRuntime
 
     private static bool IsRewriteChapterActive(Character human, GongfaResource book, GongfaChapterConfig chapter, bool isMain)
     {
-        if (!human.is_gongfa_chapter_learned(book, chapter.get_id())) return false;
-        return isMain || human.get_sub_gongfa_chapter_route(book, chapter.get_id()) == "right";
+        return human.is_gongfa_chapter_learned(book, chapter.get_id());
     }
 
     private static IEnumerable<(GongfaResource book, bool isMain)> GetBooks(Character human)

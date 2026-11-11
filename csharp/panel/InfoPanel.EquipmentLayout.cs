@@ -4,7 +4,7 @@ public partial class InfoPanel
 {
     private void build_character_equipment(Character? human)
     {
-        var page = _characterPages[4]; CharacterClear(page); var data = human?.entity_data as HumanData;
+        var page = _characterPages[5]; CharacterClear(page); var data = human?.entity_data as HumanData;
         var forgedSword = human?.get_equipped_forged_sword();
         var attire = CharacterPanel(page, 0, 0, 770, 795); var canvas = new Control(); attire.AddChild(canvas);
         var portrait = new PortraitRenderer { MouseFilter = MouseFilterEnum.Ignore }; canvas.AddChild(portrait); CharacterRect(portrait, 176, 8, 386, 740);
@@ -22,19 +22,21 @@ public partial class InfoPanel
             var item = !string.IsNullOrWhiteSpace(entry.path) && ResourceLoader.Exists(entry.path) ? GD.Load<EquipmentData>(entry.path) : null;
             if (i == 0 && forgedSword is not null) item = new EquipmentData { entity_name = forgedSword.artifact_name, icon_path = ForgedArtifactInventory.IconPath(forgedSword) };
             var button = CharacterButton(""); button.Name = "EquipmentSlot" + i; canvas.AddChild(button); CharacterRect(button, entry.x, entry.y, 154, 176);
+            PaperButtonFeedback.Apply(button, CraftingPaperStyle.ButtonKind.Icon, 21);
             var box = new VBoxContainer { MouseFilter = MouseFilterEnum.Ignore, Alignment = BoxContainer.AlignmentMode.Center }; box.AddThemeConstantOverride("separation", 4); button.AddChild(box); box.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect); box.OffsetLeft = 8; box.OffsetRight = -8; box.OffsetTop = 6; box.OffsetBottom = -6;
             if (item is not null && CharacterLoadIcon(item.icon_path) is { } icon) box.AddChild(CharacterIcon(icon, 56));
             else { var mark = CharacterText(entry.mark, 38, true); mark.HorizontalAlignment = HorizontalAlignment.Center; mark.Modulate = new Color(1, 1, 1, .45f); box.AddChild(mark); }
             var name = CharacterText(entry.name, 21); name.HorizontalAlignment = HorizontalAlignment.Center; box.AddChild(name);
             var state = CharacterClippedText(item?.entity_name ?? "空位", 17, true); state.HorizontalAlignment = HorizontalAlignment.Center; box.AddChild(state);
-            if (item is not null) CharacterHover(button, item.entity_name, $"装备 · {entry.name}\n\n[b]属性加成[/b]\n{character_equipment_bonuses(item)}", CharacterLoadIcon(item.icon_path));
-            if (i == 0 && forgedSword is not null) HoverInfoManager.SetInfo(button, ForgedArtifactInventory.Hover(forgedSword));
+            if (item is not null) HoverInfoManager.SetProvider(button, () => StoragePanel.ItemHover(item, user: human));
+            if (i == 0 && forgedSword is not null) HoverInfoManager.SetProvider(button, () => ForgedArtifactInventory.Hover(forgedSword, human));
             button.Disabled = human is null;
             button.Pressed += () => { hide_tooltip(); if (human is not null) show_character_equipment_picker(human, entry.slot, entry.path); };
         }
         var clothing = !string.IsNullOrWhiteSpace(data?.portrait_clothing_item_path) && ResourceLoader.Exists(data.portrait_clothing_item_path)
             ? GD.Load<PortraitClothingData>(data.portrait_clothing_item_path) : null;
         var wardrobe = CharacterButton(""); wardrobe.Name = "EquipmentClothingSlot"; canvas.AddChild(wardrobe); CharacterRect(wardrobe, 8, 530, 154, 154);
+        PaperButtonFeedback.Apply(wardrobe, CraftingPaperStyle.ButtonKind.Icon, 21);
         EquipmentTileContent(wardrobe, clothing?.icon_path ?? "", "衣着", clothing?.entity_name ?? "空位", 58);
         if (clothing is not null) HoverInfoManager.SetInfo(wardrobe, ClothingItemPresentation.Hover(clothing));
         wardrobe.Pressed += () => { hide_tooltip(); if (human is not null) _wardrobe?.open_for(human); }; wardrobe.Disabled = human is null;

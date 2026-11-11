@@ -1,0 +1,62 @@
+@font-face{font-family:ProjectKai;src:url('../../../resources/font/LXGWZhenKaiSlabGB-Regular.ttf') format('truetype');font-display:block}
+*{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;overflow:hidden}body{background:#343b39;color:#30382e;font-family:ProjectKai,"KaiTi",serif}button,input,a{font:inherit;color:inherit}button{cursor:pointer}button:disabled{cursor:default;opacity:.68}a{text-decoration:none}button,input{outline-offset:3px}button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid #576b59}button{border:0;background:none}h1,h2,h3,p{margin:0;font-weight:400}[hidden]{display:none!important}
+#stage{width:1664px;height:936px;position:absolute;left:50%;top:50%;transform-origin:center;transform:translate(-50%,-50%) scale(var(--scale,1));overflow:hidden}
+#library,#shop{position:absolute;inset:0;background-position:center;background-size:100% 100%;background-repeat:no-repeat}
+#library{background-image:url('藏经阁_空白框架_v4.png')}
+.library-title{position:absolute;left:550px;top:24px;width:550px;height:62px;display:flex;align-items:center;justify-content:center;font-size:40px;letter-spacing:3px}
+.library-back{position:absolute;left:1490px;top:27px;width:128px;height:44px;font-size:24px}
+.paper-button,.action{display:flex;align-items:center;justify-content:center;border:1px solid #80785f;background:#ede4d2;box-shadow:inset 0 0 0 3px #e0d6bf;border-radius:2px}
+.paper-button:hover{background:#e2e2cd}.floors{position:absolute;left:98px;top:130px;display:flex;gap:16px;height:45px}
+.floor{width:205px;height:44px;padding:0;font-size:24px;border:1px solid transparent}
+.floor.active{background:#c7cfb57d;box-shadow:inset 0 0 0 1px #7f8967}
+#book-search{position:absolute;left:790px;top:133px;width:252px;height:40px;padding:1px 14px 1px 36px;border:0;background:transparent;font-size:23px;background-image:linear-gradient(45deg,transparent 47%,#747764 47%,#747764 54%,transparent 54%);background-size:8px 8px;background-repeat:no-repeat;background-position:22px 23px}
+#book-search::placeholder,#shop-search::placeholder{color:#6b7061;opacity:1}
+#book-search{background-image:none}.book-search-icon{position:absolute;left:801px;top:145px;width:14px;height:14px;border:2px solid #767967;border-radius:50%;pointer-events:none}.book-search-icon::after{content:"";position:absolute;width:9px;height:2px;right:-7px;bottom:-4px;background:#767967;transform:rotate(45deg)}
+.keyword-heading{position:absolute;left:106px;top:195px;font-size:23px;line-height:38px}
+#keywords{position:absolute;left:205px;top:194px;display:flex;gap:8px;height:39px}
+.keyword{font-size:23px;min-width:87px;padding:0 16px;border:1px solid #9a9179;background:#eee5d4;line-height:35px;border-radius:2px}
+.keyword.active,.detail-tabs .active{background:#c7cfb5;box-shadow:inset 0 -2px #788361}.keyword:hover{background:#dce0c9}
+.study-only{position:absolute;left:938px;top:196px;font-size:22px;line-height:34px;display:flex;align-items:center;gap:8px;color:#747969}
+.study-only input{width:20px;height:20px;accent-color:#7d8d6f;margin:0}
+.book-slot{position:absolute;width:42px;height:170px;border:0;padding:0;overflow:visible;background:none;z-index:1;cursor:pointer;isolation:isolate}
+.book-slot.selected{z-index:3}.book-slot:focus-visible{outline:2px solid #a4b38e;outline-offset:8px}
+.book-visual{position:absolute;inset:0;filter:brightness(1) saturate(.85);transition:filter 170ms ease}
+.book-slot.is-dim .book-visual{filter:brightness(.48) saturate(.35)}
+.book-body{position:absolute;inset:0;border:2px solid #535b62;border-right-color:#363e45;border-radius:3px 4px 2px 2px;background:#6e7985 url('../../../textures/items/inventory_density_20261029/manual_generic_2x3.png') left center/128px 192px;box-shadow:2px 3px 3px #151a164d;transform:translate(0,0);transition:transform 240ms cubic-bezier(.18,.72,.25,1),box-shadow 240ms ease;will-change:transform}
+.book-body::before{content:"";position:absolute;left:4px;top:0;bottom:0;width:4px;border-left:1px solid #b2ae9e7d;border-right:1px solid #3f485454}
+.book-slot.selected .book-body{transform:translate(-5px,-14px);box-shadow:5px 12px 7px #12171566;outline:1px solid #889577}
+.book-slot:hover .book-body{outline:1px solid #a5ad96}
+.fore-edge{position:absolute;top:3px;right:-6px;width:5px;height:calc(100% - 5px);background:repeating-linear-gradient(0deg,#c8bca6 0 1px,#ded5bf 1px 3px);border:1px solid #8e8069;transform:skewY(-20deg);transform-origin:left bottom;opacity:0;transition:opacity 160ms ease;z-index:-1}
+.book-slot.selected .fore-edge{opacity:1}
+.tie{position:absolute;left:0;width:14px;height:2px;background:#b2a181;box-shadow:0 1px 1px #3d403c}.tie.top{top:23px}.tie.bottom{bottom:23px}
+.spine-label{position:absolute;left:8px;top:7px;width:25px;height:155px;padding:4px 2px;border:1px solid #9c8d71;background:#e7dbc1 url('../../../textures/ui/shangong_columns_20261030/column_mountain_paper_v1.png') center/440px 800px;display:flex;flex-direction:row-reverse;align-items:center;justify-content:center;gap:2px;overflow:hidden}
+.spine-column{writing-mode:vertical-rl;text-orientation:upright;white-space:nowrap;line-height:1.04;letter-spacing:0;display:block}
+.detail{position:absolute;left:1132px;top:193px;width:460px;height:562px}
+.detail h2{height:63px;display:flex;justify-content:center;align-items:center;text-align:center;font-size:30px;letter-spacing:1px;line-height:1.25;padding:0 8px}
+#detail-tags{height:62px;display:flex;align-items:center;justify-content:flex-start;gap:12px;padding-left:19px}
+.detail-tag{font-size:22px;border:1px solid #8e947b;padding:3px 13px;background:#d6dcc5}
+.detail-tabs{display:flex;margin:0 10px;border-bottom:1px solid #a99b7b;height:40px}
+.detail-tabs button{width:125px;height:39px;font-size:24px;border:1px solid #aa9b7d;border-bottom:0}
+#detail-body{height:356px;padding:13px 22px 6px;overflow:auto;scrollbar-width:thin;scrollbar-color:#9b997f transparent}
+.detail-section{margin-bottom:15px}.detail-section h3{font-size:22px;margin-bottom:5px;padding-left:7px;border-left:3px solid #b4ba9b}.detail-section p{font-size:22px;line-height:1.48;padding-left:9px}
+.requirement-list{list-style:none;margin:0;padding:2px 0 0 7px}.requirement-row{display:grid;grid-template-columns:23px minmax(0,1fr) auto;gap:7px;align-items:baseline;font-size:22px;line-height:1.55;padding:3px 0}.requirement-mark{font-family:"Segoe UI Symbol","Arial",sans-serif;font-size:21px;font-weight:600}.requirement-label{overflow-wrap:anywhere}.requirement-current{font-size:19px;white-space:nowrap;color:#68705e}.met .requirement-mark{color:#526f4f}.unmet .requirement-mark,.unmet .requirement-current{color:#925348}
+.chapter-line{padding:8px 2px;border-bottom:1px solid #c3b79777}.chapter-line h3{font-size:23px;line-height:1.4}.chapter-line p{font-size:20px;line-height:1.55;color:#58604e}
+.copy-footer{position:absolute;left:1152px;top:778px;width:425px;height:86px;border-top:1px solid #b2a383;display:flex;align-items:center;justify-content:space-between;padding:0 15px}
+.copy-footer>span{font-size:28px}.action{width:182px;height:63px;font-size:34px;cursor:default}
+#shop{background-image:url('善功堂_原布局哑光框架_v2.png')}
+.shop-title{position:absolute;left:585px;top:78px;width:495px;height:80px;display:flex;justify-content:center;align-items:center;font-size:55px;letter-spacing:7px}
+.shop-balance{position:absolute;left:128px;top:205px;height:32px;line-height:32px;font-size:23px}
+#shop-search{position:absolute;left:1220px;top:204px;width:205px;height:32px;font-size:21px;border:0;background:transparent;padding:0 8px}
+.shop-back{position:absolute;left:1440px;top:205px;width:90px;height:31px;font-size:23px;text-align:center;line-height:31px}
+.shop-columns{position:absolute;left:111px;top:248px;width:1440px;height:570px;display:grid;grid-template-columns:repeat(4,360px)}
+.shop-column{display:flex;flex-direction:column;padding:0 14px;min-height:0;overflow:hidden}
+.shop-column h2{height:70px;flex:0 0 70px;display:flex;align-items:center;justify-content:center;font-size:35px;letter-spacing:4px}
+.shop-fields,.shop-row{display:grid;grid-template-columns:minmax(0,1fr) 42px 49px;gap:8px;align-items:center;text-align:left}
+.shop-fields{height:43px;flex:0 0 43px;font-size:20px;padding:0 8px}
+.shop-list{overflow:auto;scrollbar-width:thin;scrollbar-color:#a69b7b transparent}
+.shop-row{width:100%;font-size:20px;min-height:43px;padding:8px;border-bottom:1px solid #c9b99c66;line-height:27px}
+.shop-row>span:nth-child(n+2),.shop-fields>span:nth-child(n+2){text-align:right}
+.shop-row.selected{background:#c8d1b877;box-shadow:inset 2px 0 #77876c}
+.shop-summary{position:absolute;left:410px;top:846px;width:842px;height:43px;display:flex;align-items:center;font-size:23px;white-space:nowrap}
+.shop-exchange{position:absolute;left:1323px;top:844px;width:158px;height:46px;font-size:30px;cursor:default}
+@media(prefers-reduced-motion:reduce){.book-body,.book-visual,.fore-edge{transition:none}}

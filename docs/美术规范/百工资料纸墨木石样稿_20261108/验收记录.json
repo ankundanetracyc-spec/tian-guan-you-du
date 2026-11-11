@@ -1,0 +1,1280 @@
+{
+  "revision": 3,
+  "date": "2026-11-08",
+  "recordedAtUtc": "2026-11-08T11:04:42.995797+00:00",
+  "status": "passed",
+  "entry": "index.html",
+  "browser": "Microsoft Edge，经 Playwright CLI 独立会话 baigong-v3-qa",
+  "viewports": [
+    {
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "width": 1280,
+      "height": 800
+    }
+  ],
+  "summary": {
+    "checks": 78,
+    "passed": 78,
+    "failed": 0,
+    "screenshots": 24,
+    "scriptErrors": 0,
+    "storageWritesObserved": 0
+  },
+  "scope": "百工资料独立样稿；四大类位于书外上方，书侧仅当前系统内标签，标题和寻方入口位于书外。未接入正式游戏。",
+  "fixture": {
+    "file": "个人丹方样例.js",
+    "demoOnly": true,
+    "personalRecipes": 8,
+    "collected": 4,
+    "recorded": 4,
+    "directoryPageSize": 6,
+    "directoryPages": [
+      6,
+      2
+    ],
+    "fallbackToFullCatalog": false,
+    "ingredientsMatchOriginalRecipes": true
+  },
+  "phaseNotes": {
+    "functional": "28项个人目录、材料、寻方与基础翻页检查在书外分层调整前完成；数据和查阅逻辑保留。",
+    "edges": "16项边界焦点、分类返回、夹笺键盘、关闭／resize／减少动态效果收束检查通过。",
+    "finder-races": "最终分层布局加载后，5项开笺竞争、延迟弹回、归一化和纯文字线索检查通过。",
+    "screenshots": "最终分层布局两档共24个状态的文字安全区、无溢出、无重复ID及无残影检查通过。早期旧布局图已被本批覆盖，未发布。",
+    "final": "阵法侧签修复后3项复验，以及两档书外大类／标题／寻方与系统侧签检查通过。"
+  },
+  "issuesFound": [
+    {
+      "id": "formation-side-selection",
+      "description": "书内切到阵法录后，书侧仍显示阵图选中。",
+      "status": "fixed-and-reverified",
+      "fix": "ledger.js 的阵法选择分支调用 renderBody() 同步侧签与正文。",
+      "verification": [
+        "小周天阵录",
+        "护元阵录",
+        "侧签返回阵图"
+      ]
+    }
+  ],
+  "manualReview": {
+    "files": [
+      "百工_丹药_1280.png",
+      "百工_法宝_1280.png",
+      "百工_符箓_1280.png",
+      "百工_阵法_1280.png",
+      "百工_寻方夹笺_1280.png",
+      "百工_丹药_1920.png",
+      "百工_丹药_第2叶_1280.png",
+      "百工_丹方收集_1280.png",
+      "百工_丹方手记_1280.png",
+      "百工_匹配丹方_1280.png",
+      "百工_未匹配_1280.png",
+      "百工_空资料_1280.png"
+    ],
+    "finding": "已逐状态查看代表性完整图，未发现书页文字越界、夹笺遮挡操作、残影或素材缺失；其余同布局大图通过几何安全区检查。"
+  },
+  "runtimeObservation": "使用 Storage 写入、IndexedDB 打开／删除及非GET/HEAD fetch 监测；交互过程中均为0。未启动Godot、读写人物或正式存档。",
+  "sourceHashes": [
+    {
+      "file": "index.html",
+      "sha256": "a0eeaf6f133b48407f527677758aa33f1f1adbbdeadba170be9d0f5a408e9e1b"
+    },
+    {
+      "file": "ledger.js",
+      "sha256": "7d24e59d8b184eb2033f9906f1b12a90c4a7ae8188e19b6066757c97b2ffd382"
+    },
+    {
+      "file": "book-flip.js",
+      "sha256": "d7f93022405d9a2c76d7256068cb928f137291496b05bb3b673a586c035cad62"
+    },
+    {
+      "file": "book-spread.css",
+      "sha256": "ccef232582df35a15d69b4619a70ae9c8d32c4991889847b796cd605e936ff79"
+    },
+    {
+      "file": "个人丹方样例.js",
+      "sha256": "f8fe66f2675c343d38ba35b348e7676831007a5e7977811587aa6168d8d948bf"
+    },
+    {
+      "file": "目录数据.js",
+      "sha256": "96e6cd4d1ff40ad401f06c911a57670492cf07dd0dd757e1307c0b5b7317cb32"
+    }
+  ],
+  "originalBookPngSha256": "0ee60992910c4bfd213a9fbb4ee3972d8ba4b69ce1cbf08b583664e7d347258c",
+  "previous149CheckRecordPreserved": true,
+  "checks": [
+    {
+      "name": "个人样例8方，收集4／手记4，全部材料与原目录同名配方一致",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "total": 8,
+        "mismatches": []
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "初始只显示个人第1叶6方，没有常驻搜索输入",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "ids": [
+          "review_recipe_ninggang",
+          "review_recipe_jinji",
+          "review_recipe_qingshen",
+          "review_recipe_xusheng",
+          "review_recipe_jiegu",
+          "review_recipe_hezhong"
+        ]
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "目录第2叶仅余2方，前后叶边界正确",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "ids": [
+          "review_recipe_naling",
+          "review_recipe_fanyuan"
+        ]
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "collected只列个人4方、共1叶",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "shown": [
+          "review_recipe_ninggang",
+          "review_recipe_jinji",
+          "review_recipe_qingshen",
+          "review_recipe_xusheng"
+        ]
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "recorded只列个人4方、共1叶",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "shown": [
+          "review_recipe_jiegu",
+          "review_recipe_hezhong",
+          "review_recipe_naling",
+          "review_recipe_fanyuan"
+        ]
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "下一方发起右页正翻",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "scope": "reading",
+        "direction": "next"
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "下一方正文和键盘焦点同步",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "上一方发起右页反翻",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "分类切换发起双页反翻",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "连续分类点击保留最后请求，无残影或重复ID",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "连续选方以最后个人方为准",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "方名寻方只在夹笺出现输入，初始焦点在输入内",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "方名检索数仅来自个人8方",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "expected": 1,
+        "text": "册中寻得 1 方"
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "方名提交后仅展示匹配个人方并归还焦点",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "ids": [
+          "review_recipe_jinji"
+        ]
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "药材寻方只在夹笺出现输入，初始焦点在输入内",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "药材检索数仅来自个人8方",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "expected": 3,
+        "text": "册中寻得 3 方"
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "药材提交后仅展示匹配个人方并归还焦点",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "ids": [
+          "review_recipe_jinji",
+          "review_recipe_xusheng",
+          "review_recipe_hezhong"
+        ]
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "参考丹名寻方只在夹笺出现输入，初始焦点在输入内",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "参考丹名检索数仅来自个人8方",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "expected": 1,
+        "text": "册中寻得 1 方"
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "参考丹名提交后仅展示匹配个人方并归还焦点",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "ids": [
+          "review_recipe_naling"
+        ]
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "未收录的原目录方不回退全库，目录与阅读均空",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "text": "寻得 0 方"
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "拭去检索回到个人8方预览，未打开全量25方",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "清空检索返回个人8方／6条首页",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "空册目录与正文保持空，不显示任何个人或全库条目",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "空册寻方仍为0",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "空册拭去线索仍为0，不回退8方或25方",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "空册提交空线索仍为0",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "完整功能过程无脚本异常或存储写入",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "errors": [],
+        "writes": []
+      },
+      "phase": "functional"
+    },
+    {
+      "name": "目录末叶将焦点交给可用前叶按钮",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "active": "<button data-skin=\"button\" class=\"ui-button page-corner material-surface\" data-page-delta=\"-1\" aria-label=\"上一页丹方\" data-button-kind=\"bookTab\" data-skinned=\"bookTab\" data-material-so"
+      },
+      "phase": "edges"
+    },
+    {
+      "name": "目录首叶将焦点交给可用后叶按钮",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "edges"
+    },
+    {
+      "name": "最后一方将焦点交给可用上一方按钮",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "edges"
+    },
+    {
+      "name": "跨分类再返回保留个人第2叶与所选方",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "edges"
+    },
+    {
+      "name": "跨分类再返回保留检索、手记筛选和所选方",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "edges"
+    },
+    {
+      "name": "寻方Tab在夹笺首尾循环",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "edges"
+    },
+    {
+      "name": "寻方Shift+Tab反向循环",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "edges"
+    },
+    {
+      "name": "寻方Esc只合笺，书与样稿栏保持打开并归还焦点",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "edges"
+    },
+    {
+      "name": "隐藏样稿栏时寻方Esc仍只合笺",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "edges"
+    },
+    {
+      "name": "第二次Esc恢复样稿栏，不关闭书",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "edges"
+    },
+    {
+      "name": "翻页中关闭同步收束，收起后无残影且焦点在重开",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "edges"
+    },
+    {
+      "name": "重开保留真实书根与已提交分类",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "edges"
+    },
+    {
+      "name": "窗口变化收束当前翻页并保留请求结果",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "edges"
+    },
+    {
+      "name": "途中开启减少动态效果可收束",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "edges"
+    },
+    {
+      "name": "减少动态效果时直接完成真实分类切换",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "edges"
+    },
+    {
+      "name": "边界交互无重复ID、脚本异常和存储写入",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "errors": [],
+        "writes": []
+      },
+      "phase": "edges"
+    },
+    {
+      "name": "翻页中开寻方先收束旧页，再只打开一份可操作夹笺",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "finder-races"
+    },
+    {
+      "name": "快速重开寻方无重叠夹笺或重复ID",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "finder-races"
+    },
+    {
+      "name": "翻页中请求寻方后立即收书，夹笺不会延迟弹回",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "finder-races"
+    },
+    {
+      "name": "寻方归一化全角空格，不扩大到个人册外",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "finder-races"
+    },
+    {
+      "name": "夹笺线索作为文字呈现，不成为正文HTML，仍无结果",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "finder-races"
+    },
+    {
+      "name": "百工_丹药_1920布局、文字安全区和无残影",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "width": 1920,
+        "height": 1080,
+        "category": "丹药",
+        "query": "",
+        "filter": "all",
+        "page": 0,
+        "visibleRecipes": 6,
+        "overflow": [],
+        "dialogFits": true,
+        "horizontalOverflow": 0
+      },
+      "phase": "screenshots"
+    },
+    {
+      "name": "百工_法宝_1920布局、文字安全区和无残影",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "width": 1920,
+        "height": 1080,
+        "category": "法宝",
+        "query": "",
+        "filter": "all",
+        "page": 0,
+        "visibleRecipes": 0,
+        "overflow": [],
+        "dialogFits": true,
+        "horizontalOverflow": 0
+      },
+      "phase": "screenshots"
+    },
+    {
+      "name": "百工_符箓_1920布局、文字安全区和无残影",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "width": 1920,
+        "height": 1080,
+        "category": "符箓",
+        "query": "",
+        "filter": "all",
+        "page": 0,
+        "visibleRecipes": 0,
+        "overflow": [],
+        "dialogFits": true,
+        "horizontalOverflow": 0
+      },
+      "phase": "screenshots"
+    },
+    {
+      "name": "百工_阵法_1920布局、文字安全区和无残影",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "width": 1920,
+        "height": 1080,
+        "category": "阵法",
+        "query": "",
+        "filter": "all",
+        "page": 0,
+        "visibleRecipes": 0,
+        "overflow": [],
+        "dialogFits": true,
+        "horizontalOverflow": 0
+      },
+      "phase": "screenshots"
+    },
+    {
+      "name": "百工_丹药_第2叶_1920布局、文字安全区和无残影",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "width": 1920,
+        "height": 1080,
+        "category": "丹药",
+        "query": "",
+        "filter": "all",
+        "page": 1,
+        "visibleRecipes": 2,
+        "overflow": [],
+        "dialogFits": true,
+        "horizontalOverflow": 0
+      },
+      "phase": "screenshots"
+    },
+    {
+      "name": "百工_丹方收集_1920布局、文字安全区和无残影",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "width": 1920,
+        "height": 1080,
+        "category": "丹药",
+        "query": "",
+        "filter": "collected",
+        "page": 0,
+        "visibleRecipes": 4,
+        "overflow": [],
+        "dialogFits": true,
+        "horizontalOverflow": 0
+      },
+      "phase": "screenshots"
+    },
+    {
+      "name": "百工_丹方手记_1920布局、文字安全区和无残影",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "width": 1920,
+        "height": 1080,
+        "category": "丹药",
+        "query": "",
+        "filter": "recorded",
+        "page": 0,
+        "visibleRecipes": 4,
+        "overflow": [],
+        "dialogFits": true,
+        "horizontalOverflow": 0
+      },
+      "phase": "screenshots"
+    },
+    {
+      "name": "百工_寻方夹笺_1920布局、文字安全区和无残影",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "width": 1920,
+        "height": 1080,
+        "category": "丹药",
+        "query": "",
+        "filter": "all",
+        "page": 0,
+        "visibleRecipes": 6,
+        "overflow": [],
+        "dialogFits": true,
+        "horizontalOverflow": 0
+      },
+      "phase": "screenshots"
+    },
+    {
+      "name": "百工_寻方匹配_1920布局、文字安全区和无残影",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "width": 1920,
+        "height": 1080,
+        "category": "丹药",
+        "query": "",
+        "filter": "all",
+        "page": 0,
+        "visibleRecipes": 6,
+        "overflow": [],
+        "dialogFits": true,
+        "horizontalOverflow": 0
+      },
+      "phase": "screenshots"
+    },
+    {
+      "name": "百工_匹配丹方_1920布局、文字安全区和无残影",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "width": 1920,
+        "height": 1080,
+        "category": "丹药",
+        "query": "月露菌汁",
+        "filter": "all",
+        "page": 0,
+        "visibleRecipes": 3,
+        "overflow": [],
+        "dialogFits": true,
+        "horizontalOverflow": 0
+      },
+      "phase": "screenshots"
+    },
+    {
+      "name": "百工_未匹配_1920布局、文字安全区和无残影",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "width": 1920,
+        "height": 1080,
+        "category": "丹药",
+        "query": "藤心通络方",
+        "filter": "all",
+        "page": 0,
+        "visibleRecipes": 0,
+        "overflow": [],
+        "dialogFits": true,
+        "horizontalOverflow": 0
+      },
+      "phase": "screenshots"
+    },
+    {
+      "name": "百工_空资料_1920布局、文字安全区和无残影",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "width": 1920,
+        "height": 1080,
+        "category": "丹药",
+        "query": "",
+        "filter": "all",
+        "page": 0,
+        "visibleRecipes": 0,
+        "overflow": [],
+        "dialogFits": true,
+        "horizontalOverflow": 0
+      },
+      "phase": "screenshots"
+    },
+    {
+      "name": "百工_丹药_1280布局、文字安全区和无残影",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "width": 1280,
+        "height": 800,
+        "category": "丹药",
+        "query": "",
+        "filter": "all",
+        "page": 0,
+        "visibleRecipes": 6,
+        "overflow": [],
+        "dialogFits": true,
+        "horizontalOverflow": 0
+      },
+      "phase": "screenshots"
+    },
+    {
+      "name": "百工_法宝_1280布局、文字安全区和无残影",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "width": 1280,
+        "height": 800,
+        "category": "法宝",
+        "query": "",
+        "filter": "all",
+        "page": 0,
+        "visibleRecipes": 0,
+        "overflow": [],
+        "dialogFits": true,
+        "horizontalOverflow": 0
+      },
+      "phase": "screenshots"
+    },
+    {
+      "name": "百工_符箓_1280布局、文字安全区和无残影",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "width": 1280,
+        "height": 800,
+        "category": "符箓",
+        "query": "",
+        "filter": "all",
+        "page": 0,
+        "visibleRecipes": 0,
+        "overflow": [],
+        "dialogFits": true,
+        "horizontalOverflow": 0
+      },
+      "phase": "screenshots"
+    },
+    {
+      "name": "百工_阵法_1280布局、文字安全区和无残影",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "width": 1280,
+        "height": 800,
+        "category": "阵法",
+        "query": "",
+        "filter": "all",
+        "page": 0,
+        "visibleRecipes": 0,
+        "overflow": [],
+        "dialogFits": true,
+        "horizontalOverflow": 0
+      },
+      "phase": "screenshots"
+    },
+    {
+      "name": "百工_丹药_第2叶_1280布局、文字安全区和无残影",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "width": 1280,
+        "height": 800,
+        "category": "丹药",
+        "query": "",
+        "filter": "all",
+        "page": 1,
+        "visibleRecipes": 2,
+        "overflow": [],
+        "dialogFits": true,
+        "horizontalOverflow": 0
+      },
+      "phase": "screenshots"
+    },
+    {
+      "name": "百工_丹方收集_1280布局、文字安全区和无残影",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "width": 1280,
+        "height": 800,
+        "category": "丹药",
+        "query": "",
+        "filter": "collected",
+        "page": 0,
+        "visibleRecipes": 4,
+        "overflow": [],
+        "dialogFits": true,
+        "horizontalOverflow": 0
+      },
+      "phase": "screenshots"
+    },
+    {
+      "name": "百工_丹方手记_1280布局、文字安全区和无残影",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "width": 1280,
+        "height": 800,
+        "category": "丹药",
+        "query": "",
+        "filter": "recorded",
+        "page": 0,
+        "visibleRecipes": 4,
+        "overflow": [],
+        "dialogFits": true,
+        "horizontalOverflow": 0
+      },
+      "phase": "screenshots"
+    },
+    {
+      "name": "百工_寻方夹笺_1280布局、文字安全区和无残影",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "width": 1280,
+        "height": 800,
+        "category": "丹药",
+        "query": "",
+        "filter": "all",
+        "page": 0,
+        "visibleRecipes": 6,
+        "overflow": [],
+        "dialogFits": true,
+        "horizontalOverflow": 0
+      },
+      "phase": "screenshots"
+    },
+    {
+      "name": "百工_寻方匹配_1280布局、文字安全区和无残影",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "width": 1280,
+        "height": 800,
+        "category": "丹药",
+        "query": "",
+        "filter": "all",
+        "page": 0,
+        "visibleRecipes": 6,
+        "overflow": [],
+        "dialogFits": true,
+        "horizontalOverflow": 0
+      },
+      "phase": "screenshots"
+    },
+    {
+      "name": "百工_匹配丹方_1280布局、文字安全区和无残影",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "width": 1280,
+        "height": 800,
+        "category": "丹药",
+        "query": "月露菌汁",
+        "filter": "all",
+        "page": 0,
+        "visibleRecipes": 3,
+        "overflow": [],
+        "dialogFits": true,
+        "horizontalOverflow": 0
+      },
+      "phase": "screenshots"
+    },
+    {
+      "name": "百工_未匹配_1280布局、文字安全区和无残影",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "width": 1280,
+        "height": 800,
+        "category": "丹药",
+        "query": "藤心通络方",
+        "filter": "all",
+        "page": 0,
+        "visibleRecipes": 0,
+        "overflow": [],
+        "dialogFits": true,
+        "horizontalOverflow": 0
+      },
+      "phase": "screenshots"
+    },
+    {
+      "name": "百工_空资料_1280布局、文字安全区和无残影",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "width": 1280,
+        "height": 800,
+        "category": "丹药",
+        "query": "",
+        "filter": "all",
+        "page": 0,
+        "visibleRecipes": 0,
+        "overflow": [],
+        "dialogFits": true,
+        "horizontalOverflow": 0
+      },
+      "phase": "screenshots"
+    },
+    {
+      "name": "修复复验：书内小周天阵录同步书侧阵录选中",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "final"
+    },
+    {
+      "name": "修复复验：护元阵录同步侧签目标与选中",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "final"
+    },
+    {
+      "name": "修复复验：侧签返回阵图后选中唯一且无残影",
+      "ok": true,
+      "detail": {
+        "ok": true
+      },
+      "phase": "final"
+    },
+    {
+      "name": "1920最终上方四类和书外寻方／标题，书侧仅三枚系统签",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "side": [
+          "全册",
+          "收集",
+          "手记"
+        ],
+        "errors": [],
+        "writes": []
+      },
+      "phase": "final"
+    },
+    {
+      "name": "1280最终上方四类和书外寻方／标题，书侧仅三枚系统签",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "side": [
+          "全册",
+          "收集",
+          "手记"
+        ],
+        "errors": [],
+        "writes": []
+      },
+      "phase": "final"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "百工_丹药_1920.png",
+      "source": "output/playwright/baigong-v3-qa/百工_丹药_1920.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "dc539d3a11f9345fc3e97a36262a5403dab52021f8fa455b845d257898442f49",
+      "layoutPassed": true
+    },
+    {
+      "file": "百工_法宝_1920.png",
+      "source": "output/playwright/baigong-v3-qa/百工_法宝_1920.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "2d5c1f6405f5d42a09b462682a7ee4985fa045ebf32e45fd71acb2daa5586f2c",
+      "layoutPassed": true
+    },
+    {
+      "file": "百工_符箓_1920.png",
+      "source": "output/playwright/baigong-v3-qa/百工_符箓_1920.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "d136c70c6dbc73546b44e604dd9a6d07e4567f1dac9889d6b39ddba0cc52869a",
+      "layoutPassed": true
+    },
+    {
+      "file": "百工_阵法_1920.png",
+      "source": "output/playwright/baigong-v3-qa/百工_阵法_1920.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "383baff1161d6aaeef6edb750346fd9e342da7beca48202de2d237978c0a9a2f",
+      "layoutPassed": true
+    },
+    {
+      "file": "百工_丹药_第2叶_1920.png",
+      "source": "output/playwright/baigong-v3-qa/百工_丹药_第2叶_1920.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "943fe94c286bd39bcf50b97236d7db7f2a3ab63326fb7b34e9b8123e1cdc2a17",
+      "layoutPassed": true
+    },
+    {
+      "file": "百工_丹方收集_1920.png",
+      "source": "output/playwright/baigong-v3-qa/百工_丹方收集_1920.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "f367d7402b508d02f408940032c0bf9f90139a18e32e0f4593e4f7908d00d2c4",
+      "layoutPassed": true
+    },
+    {
+      "file": "百工_丹方手记_1920.png",
+      "source": "output/playwright/baigong-v3-qa/百工_丹方手记_1920.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "7bf0fbb5ade936cf20d7cdfcc150640b5aed48b9cf86c3eb3e5f6f3facf9a911",
+      "layoutPassed": true
+    },
+    {
+      "file": "百工_寻方夹笺_1920.png",
+      "source": "output/playwright/baigong-v3-qa/百工_寻方夹笺_1920.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "c3a71629780f37f6f27f77dce796f40e3330d3ccbbfb5010e77cf32fe50d10b2",
+      "layoutPassed": true
+    },
+    {
+      "file": "百工_寻方匹配_1920.png",
+      "source": "output/playwright/baigong-v3-qa/百工_寻方匹配_1920.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "4c15d7162a39ed9d58d641e2f2583a7bcaa722904621f244863f48c48dd03714",
+      "layoutPassed": true
+    },
+    {
+      "file": "百工_匹配丹方_1920.png",
+      "source": "output/playwright/baigong-v3-qa/百工_匹配丹方_1920.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "508097f6347f5c3a29555ac111236d01b0d2d801633b117a1f176628ca3a5700",
+      "layoutPassed": true
+    },
+    {
+      "file": "百工_未匹配_1920.png",
+      "source": "output/playwright/baigong-v3-qa/百工_未匹配_1920.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "e0f7afa37c302d6b1d20f0a64649b3e5c0907448ef4993d92908cedbb9800926",
+      "layoutPassed": true
+    },
+    {
+      "file": "百工_空资料_1920.png",
+      "source": "output/playwright/baigong-v3-qa/百工_空资料_1920.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "fc67b229add46184dce6668f8cbcb466bcc87ca2789282f0982e1ec8aea7d52c",
+      "layoutPassed": true
+    },
+    {
+      "file": "百工_丹药_1280.png",
+      "source": "output/playwright/baigong-v3-qa/百工_丹药_1280.png",
+      "size": [
+        1280,
+        800
+      ],
+      "sha256": "4ca4968eb4f7d25c9086f232d073b91ff303ea4aa37045d839f8b041dd225c25",
+      "layoutPassed": true
+    },
+    {
+      "file": "百工_法宝_1280.png",
+      "source": "output/playwright/baigong-v3-qa/百工_法宝_1280.png",
+      "size": [
+        1280,
+        800
+      ],
+      "sha256": "54fded996b5a6432815e460cab2ea84d9d283627e94cb8c03c80c8cb0ab4e52a",
+      "layoutPassed": true
+    },
+    {
+      "file": "百工_符箓_1280.png",
+      "source": "output/playwright/baigong-v3-qa/百工_符箓_1280.png",
+      "size": [
+        1280,
+        800
+      ],
+      "sha256": "d4eeed590c2233a9ea50247591ab13be00d1d100d982a9fe253b208039189f2c",
+      "layoutPassed": true
+    },
+    {
+      "file": "百工_阵法_1280.png",
+      "source": "output/playwright/baigong-v3-qa/百工_阵法_1280.png",
+      "size": [
+        1280,
+        800
+      ],
+      "sha256": "1a3560fbb36b7ce6a32654082aa49acd4911075111e6010b3254a785aaec4ec4",
+      "layoutPassed": true
+    },
+    {
+      "file": "百工_丹药_第2叶_1280.png",
+      "source": "output/playwright/baigong-v3-qa/百工_丹药_第2叶_1280.png",
+      "size": [
+        1280,
+        800
+      ],
+      "sha256": "c23b00fc02d56e912d915b8c3c8875e901fcd21c8e750727f399c83e4c470df6",
+      "layoutPassed": true
+    },
+    {
+      "file": "百工_丹方收集_1280.png",
+      "source": "output/playwright/baigong-v3-qa/百工_丹方收集_1280.png",
+      "size": [
+        1280,
+        800
+      ],
+      "sha256": "135cd5bd16677ac695d7f49830f089b8417caf7904e337fd4473f486eb78e143",
+      "layoutPassed": true
+    },
+    {
+      "file": "百工_丹方手记_1280.png",
+      "source": "output/playwright/baigong-v3-qa/百工_丹方手记_1280.png",
+      "size": [
+        1280,
+        800
+      ],
+      "sha256": "51fea60e06f60036c31857ef85f460cc206b14baa6d15b95368957d64436bfdb",
+      "layoutPassed": true
+    },
+    {
+      "file": "百工_寻方夹笺_1280.png",
+      "source": "output/playwright/baigong-v3-qa/百工_寻方夹笺_1280.png",
+      "size": [
+        1280,
+        800
+      ],
+      "sha256": "a73a45cc7ac732570deb7246402325159b72195168bc3c6dfb398c8295016b21",
+      "layoutPassed": true
+    },
+    {
+      "file": "百工_寻方匹配_1280.png",
+      "source": "output/playwright/baigong-v3-qa/百工_寻方匹配_1280.png",
+      "size": [
+        1280,
+        800
+      ],
+      "sha256": "16a50f2349eba1054910fe69ed95a99294d5e704e19d9598b34a632d61b8b9f8",
+      "layoutPassed": true
+    },
+    {
+      "file": "百工_匹配丹方_1280.png",
+      "source": "output/playwright/baigong-v3-qa/百工_匹配丹方_1280.png",
+      "size": [
+        1280,
+        800
+      ],
+      "sha256": "1386eb90d50099d9a9a21a3253b1a38ed3f9cc1785443e4719bcd4898fafc048",
+      "layoutPassed": true
+    },
+    {
+      "file": "百工_未匹配_1280.png",
+      "source": "output/playwright/baigong-v3-qa/百工_未匹配_1280.png",
+      "size": [
+        1280,
+        800
+      ],
+      "sha256": "07202ef862dae229437aa439cc39059aed1ece68f4c58053de7ec810113c38a2",
+      "layoutPassed": true
+    },
+    {
+      "file": "百工_空资料_1280.png",
+      "source": "output/playwright/baigong-v3-qa/百工_空资料_1280.png",
+      "size": [
+        1280,
+        800
+      ],
+      "sha256": "17fa1494f976c51364d46cb00b0d20e8042327286e107a75a6459160bf006bf8",
+      "layoutPassed": true
+    }
+  ]
+}

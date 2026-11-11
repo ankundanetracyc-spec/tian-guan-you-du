@@ -16,12 +16,12 @@ public partial class InfoPanel
 
     private void build_character_relations()
     {
-        var page = _characterPages[5]; CharacterClear(page);
+        var page = _characterPages[6]; CharacterClear(page);
         var list = CharacterBox(CharacterPanel(page, 0, 0, 450, 795), "关系名录");
         var search = CharacterSearch("搜索已记录人物"); search.Text = _relationQuery; list.AddChild(search);
         var filters = new HBoxContainer(); filters.AddThemeConstantOverride("separation", 10); list.AddChild(filters);
         var people = CharacterBox(CharacterScroll(list));
-        var details = CharacterBox(CharacterPanel(page, 468, 0, 882, 795), "关系详情");
+        var details = CharacterBox(CharacterPanel(page, 468, 0, 914, 795), "关系详情");
         var playerData = current_card is Character playerCharacter ? playerCharacter.entity_data as HumanData : null;
         var knownIds = playerData?.directed_relationships.Keys.Select(key => key.AsString()).ToHashSet(StringComparer.Ordinal) ?? new HashSet<string>(StringComparer.Ordinal);
         var all = GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager")?.npcs
@@ -105,7 +105,7 @@ public partial class InfoPanel
         foreach (var filter in new[] { "全部", "亲近" })
         {
             var button = CharacterButton(filter, selected: filter == _relationFilter); button.SizeFlagsHorizontal = SizeFlags.ExpandFill; filters.AddChild(button);
-            button.Pressed += () => { _relationFilter = filter; foreach (var sibling in filters.GetChildren().OfType<Button>()) sibling.AddThemeStyleboxOverride("normal", CharacterButtonStyle(sibling == button)); Refresh(); };
+            button.Pressed += () => { _relationFilter = filter; foreach (var sibling in filters.GetChildren().OfType<Button>()) PaperButtonFeedback.Apply(sibling, fontSize: sibling.GetThemeFontSize("font_size"), selected: sibling == button); Refresh(); };
         }
         search.TextChanged += value => { _relationQuery = value; Refresh(); }; Refresh();
     }
@@ -114,8 +114,10 @@ public partial class InfoPanel
     {
         if (_characterCanvas is null) return;
         foreach (var page in _characterPages) page.Value.Visible = page.Key == 0;
-        _characterTitle!.Text = "概览"; _characterName!.Text = npc.npc_name;
+        _characterTitle!.Text = "人物 · " + (_npcAttributesSelected ? "属性" : "概览"); _characterName!.Text = npc.npc_name;
         _characterRealm!.Text = "人物档案"; _characterRoot!.Text = npc.species;
-        for (var i = 0; i < _characterTabs.Count; i++) _characterTabs[i].Visible = i == 0;
+        _characterName.Visible = _characterRealm.Visible = _characterRoot.Visible = _npcAttributesSelected;
+        if (_paperInventory is not null) _paperInventory.Hide();
+        update_character_paper_navigation(_npcAttributesSelected ? 1 : 0, true);
     }
 }

@@ -53,6 +53,7 @@ public partial class MainScene
             roster.show_world_context("yuxu_xianzong_core", peakId, $"interior:yuxu_xianzong:{peakId}");
 
         var peakInterior = GetNodeOrNull<Node>("SceneLayer/YuxuXianzongOverview/PeakInterior");
+        peakInterior?.GetNodeOrNull<YuxuSectExchangePanel>("SectExchangeCanvas/YuxuSectExchangePanel")?.set_hover_actor(player);
         if (peakInterior is null || !peakInterior.HasMethod("get_peak_journal_entry")) return;
         var details = peakInterior.Call("get_peak_journal_entry", peakId).AsGodotDictionary();
         var title = details.GetValueOrDefault("title", "").AsString();
@@ -96,7 +97,7 @@ public partial class MainScene
         => rank is "真传" or "真传弟子";
 
     private static bool is_supported_yuxu_life_rank(string rank)
-        => rank is "杂役" or "杂役弟子" or "外门" or "外门弟子" or "内门" or "内门弟子" or "真传" or "真传弟子";
+        => rank is "杂役" or "杂役弟子" or "外门" or "外门弟子" or "内门" or "内门弟子" or "预备真传" or "真传" or "真传弟子";
 
     private static int get_yuxu_monthly_stipend(string rank)
         => YuxuSectPrototypeBalance.monthly_stipend(rank);
@@ -144,6 +145,7 @@ public partial class MainScene
             human.sect_unclaimed_spirit_stones);
 
         var peakInterior = GetNodeOrNull<Node>("SceneLayer/YuxuXianzongOverview/PeakInterior");
+        peakInterior?.Call("set_provisional_exam_context", can_show_yuxu_provisional_exam(human));
         var activeIncidentId = isMember && human.sect_active_yuxu_duty_id == YuxuEastWoodsConflictReviewDutyId
             ? human.sect_active_yuxu_duty_incident_id
             : isMember && human.sect_active_yuxu_duty_id == YuxuCaseFieldTaskDutyId
@@ -172,11 +174,14 @@ public partial class MainScene
             player.is_gongfa_chapter_learned(lineageBook, lineageFirst.get_id());
         peakInterior?.Call("set_lineage_context",
             isTrueDisciple,
-            teacher?.npc_name ?? "",
-            guide?.npc_name ?? "",
+            teacher is not null ? teacher.npc_name + (teacher.is_alive ? "" : "（已故）") :
+                string.IsNullOrWhiteSpace(human.sect_teacher_npc_id) ? "" : "师承记录待核实",
+            guide is not null ? guide.npc_name + (guide.is_alive ? "" : "（已故）") :
+                string.IsNullOrWhiteSpace(human.sect_guide_npc_id) ? "" : "带教记录待核实",
             lineageBook?.gongfa_name ?? "",
             lineageFirstComplete,
-            isTrueDisciple && human.sect_lineage_reported_first_volume);
+            isTrueDisciple && human.sect_lineage_reported_first_volume,
+            !string.IsNullOrWhiteSpace(human.sect_library_first_manual_path));
         refresh_yuxu_true_disciple_lecture_context(human, isTrueDisciple);
         peakInterior?.Call("set_contribution_balance",
             isMember ? human.get_yuxu_contribution_total() : 0L);
@@ -581,7 +586,7 @@ public partial class MainScene
         var keptCount = Math.Max(0, yieldCount - deliveryCount);
         if (!harvestReadyForSettlement && !player.add_item_to_inventory(MistBellFlowerItemPath, yieldCount))
         {
-            show_message("行囊已满", $"雾铃花已成熟，但行囊无法容纳 {yieldCount} 株；整理行囊后再来采收。任务进度会保留。");
+            show_message("行囊容量不足", $"雾铃花已成熟，但当前容量无法收纳 {yieldCount} 株；整理行囊后再来采收。任务进度会保留。");
             return;
         }
         if (!harvestReadyForSettlement)
@@ -641,7 +646,7 @@ public partial class MainScene
             var yieldCount = YuxuSectPrototypeBalance.YaopuCultivationYieldCount;
             if (!player.add_item_to_inventory(MistBellFlowerItemPath, yieldCount))
             {
-                show_message("行囊已满", $"雾铃花已成熟，但行囊无法容纳 {yieldCount} 株；整理行囊后再来采收，生长状态会保留。");
+            show_message("行囊容量不足", $"雾铃花已成熟，但当前容量无法收纳 {yieldCount} 株；整理行囊后再来采收，生长状态会保留。");
                 return;
             }
             human.sect_yaopu_free_cultivation_stage = 2;
@@ -834,13 +839,18 @@ public partial class MainScene
 
     private void on_yuxu_life_action_requested(string actionId, string peakId)
     {
+        if (peakId == "guanfu" && actionId == "yuxu_registration")
+        {
+            request_yuxu_registration();
+            return;
+        }
         if (player?.entity_data is not HumanData human || human.sect_affiliation_id != YuxuSectId ||
             !is_supported_yuxu_life_rank(human.sect_current_rank))
             return;
 
         if (peakId == "xuanlan" && actionId == "lineage_book_selection")
         {
-            request_yuxu_lineage_book_choice(human);
+            open_yuxu_manual_library();
             return;
         }
 
@@ -859,13 +869,6 @@ public partial class MainScene
             if (human.sect_active_yuxu_duty_id == YuxuStudyDutyId)
             {
                 show_message("静室研读事务", "这项公事须在身份对应的观复峰或紫府峰静室完成；玄览峰研习不会结算或替代该事务。");
-                return;
-            }
-            if (is_yuxu_true_disciple(human.sect_current_rank) &&
-                !string.IsNullOrWhiteSpace(human.sect_lineage_gongfa_path) &&
-                !human.sect_lineage_reported_first_volume)
-            {
-                show_message("师门首卷", "真传首卷仍按师承流程回紫府峰静室研读，并在完成后向带教师兄/师姐汇报。玄览峰可以选书；首卷汇报后可在此研习其他已开放典籍。");
                 return;
             }
             cultivation_ui?.show_teaching_for(player);
@@ -904,6 +907,11 @@ public partial class MainScene
 
         if (peakId == "heguang")
         {
+            if (actionId == "heguang_market")
+            {
+                open_yuxu_market();
+                return;
+            }
             if (actionId == "heguang_banquet")
             {
                 open_banquet_setup();
@@ -925,7 +933,13 @@ public partial class MainScene
             return;
         }
 
-        if (peakId == "tiangong" && actionId is "tiangong_alchemy" or "tiangong_forging")
+        if (peakId == "tianwen" && actionId == "provisional_exam_trial")
+        {
+            request_yuxu_provisional_trial();
+            return;
+        }
+
+        if (peakId == "tiangong" && actionId is "tiangong_alchemy" or "tiangong_forging" or "tiangong_talisman")
         {
             open_yuxu_crafting(actionId);
             return;
@@ -943,8 +957,11 @@ public partial class MainScene
         }
 
         var isTrueDisciple = is_yuxu_true_disciple(human.sect_current_rank);
-        var correctPeak = isTrueDisciple ? "zifu" : "guanfu";
-        if (peakId != correctPeak) return;
+        var isProvisionalDisciple = human.sect_current_rank == "预备真传";
+        var canUseLifePage = isTrueDisciple
+            ? peakId == "zifu"
+            : peakId == "guanfu" || (isProvisionalDisciple && peakId == "zifu");
+        if (!canUseLifePage) return;
 
         update_yuxu_monthly_allowance();
         switch (actionId)
@@ -953,8 +970,13 @@ public partial class MainScene
                 cultivation_ui?.show_entity(player);
                 break;
             case "rest":
-                request_yuxu_rest(isTrueDisciple ? "紫府峰居所" : "观复峰居所");
+            {
+                var restLocation = peakId == "zifu"
+                    ? isTrueDisciple ? "紫府峰居所" : "紫府峰休息处"
+                    : isProvisionalDisciple ? "观复峰休息处" : "观复峰居所";
+                request_yuxu_rest(restLocation);
                 break;
+            }
             case "teaching":
                 cultivation_ui?.show_teaching_for(player);
                 break;
@@ -1354,18 +1376,6 @@ public partial class MainScene
 
         var bookPath = player.get_known_gongfas()
             .FirstOrDefault(book => book is not null && book.gongfa_name == bookName)?.ResourcePath ?? bookName;
-        var lineageBook = string.IsNullOrWhiteSpace(human.sect_lineage_gongfa_path)
-            ? null
-            : ResourceLoader.Load<GongfaResource>(human.sect_lineage_gongfa_path);
-        var lineageFirstChapter = lineageBook?.get_sorted_chapters().FirstOrDefault();
-        if (!human.sect_lineage_reported_first_volume && lineageBook is not null && lineageFirstChapter is not null &&
-            bookPath == human.sect_lineage_gongfa_path && chapterId == lineageFirstChapter.get_id())
-        {
-            mark_save_dirty();
-            refresh_yuxu_life_context();
-            show_message("师门首卷已读成", $"《{bookName}》第一卷已经完成。回紫府峰向带教师兄/师姐汇报；本次研读仍按原秘籍规则结算。 ");
-        }
-
         if (human.sect_active_yuxu_duty_id != YuxuStudyDutyId) return;
 
         var expectedPeak = is_yuxu_true_disciple(human.sect_current_rank) ? "zifu" : "guanfu";
@@ -1421,7 +1431,7 @@ public partial class MainScene
         }
         if (player is null || !player.add_item_to_inventory(SpiritStoneItemPath, amount))
         {
-            show_message("行囊已满", "灵石未能放入行囊，未领取月例仍完整保留。");
+            show_message("行囊容量不足", "灵石未能放入行囊，未领取月例仍完整保留。");
             return;
         }
         human.sect_unclaimed_spirit_stones = 0;
@@ -1629,7 +1639,7 @@ public partial class MainScene
     private void restore_tianwen_practice_location()
     {
         if (!has_open_world_access() || _player_world_node_id != "yuxu_xianzong_core") return;
-        estate?.Hide(); _nodeWorldMap?.Hide();  location_interior?.Hide();
+         _nodeWorldMap?.Hide();  location_interior?.Hide();
         open_faction_overview_if_available(_player_world_node_id);
         GetNodeOrNull<Node>("SceneLayer/YuxuXianzongOverview")?.Call("_on_peak_pressed", "tianwen");
         mark_save_dirty();

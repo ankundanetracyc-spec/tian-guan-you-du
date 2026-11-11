@@ -27,8 +27,8 @@ public partial class WorldDungeonNavigationSmoke : Node
             data.nodes.Add(new WorldNodeData { node_id="home_village",node_name="青溪里",node_type=WorldNodeData.NodeType.Home });
             data.nodes.Add(new WorldNodeData { node_id="town_test",node_name="测试城",node_type=WorldNodeData.NodeType.City });
             Set(main,"_world_node_data",data);
-            var stageField=typeof(MainScene).GetField("_qingxi_prologue",BindingFlags.Instance|BindingFlags.NonPublic)!;
-            stageField.SetValue(main,Enum.Parse(stageField.FieldType,"Departed")); Set(main,"_cloud_state_initialized",true);
+            typeof(MainScene).GetField("_story_free_start", BindingFlags.Instance|BindingFlags.NonPublic)!.SetValue(main, true);
+            typeof(MainScene).GetField("_baishiLecture", BindingFlags.Instance|BindingFlags.NonPublic)!.SetValue(main, null); Set(main,"_cloud_state_initialized",true);
             Set(main,"_player_world_node_id","east_woods");
             var roster=GD.Load<PackedScene>("res://tscn/panel/CellCharacterList.tscn").Instantiate<CellCharacterList>();
             var hudLayer=new CanvasLayer { Layer=20 }; main.AddChild(hudLayer); hudLayer.AddChild(roster);

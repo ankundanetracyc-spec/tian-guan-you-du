@@ -58,6 +58,7 @@ public partial class EastWoodsDungeonPanel : Control
     private int _minGridY;
     private bool _routeStepUpdating;
     private bool _dynamicMode;
+    private bool is_tower_instance => _dynamicMode && DynamicDungeonExpedition.IsTowerInstance(_dynamicInstanceState);
     private string _dynamicEntryNodeId = "forest_edge";
     private string _dynamicExitNodeId = "forest_edge";
     private Godot.Collections.Dictionary _dynamicInstanceState = [];
@@ -183,6 +184,7 @@ public partial class EastWoodsDungeonPanel : Control
             route_node(destinationNodeId) is null)
             return false;
         if (_current == destinationNodeId) return true;
+        if (is_tower_instance && !is_valid_next_node(destinationNodeId)) return false;
         var path = find_shortest_path(_current, destinationNodeId);
         if (path.Count < 2) return false;
         _selected = destinationNodeId;
@@ -196,6 +198,7 @@ public partial class EastWoodsDungeonPanel : Control
     {
         if (route_node(destinationNodeId) is null) return -1;
         if (_current == destinationNodeId) return 0;
+        if (is_tower_instance) return is_valid_next_node(destinationNodeId) ? 1 : -1;
         var path = find_shortest_path(_current, destinationNodeId);
         return path.Count < 2 ? -1 : path.Count - 1;
     }
@@ -273,7 +276,7 @@ public partial class EastWoodsDungeonPanel : Control
         if (currentNode is null) return;
         var neighbor = route_neighbors(_current)
             .Select(route_node)
-            .FirstOrDefault(node => node is not null && node.GridPosition - currentNode.GridPosition == direction);
+            .FirstOrDefault(node => node is not null && node.GridPosition - currentNode.GridPosition == direction && is_valid_next_node(node.Id));
         if (neighbor is null) return;
 
         move_one_node(neighbor.Id);
@@ -406,6 +409,8 @@ public partial class EastWoodsDungeonPanel : Control
 
             if (_dynamicMode && node.ResourceCategory != EastWoodsResourceCategory.None)
                 build_dynamic_resource_node_marker(button, node);
+            if (is_tower_instance)
+                build_tower_node_type_marker(button, node);
 
             var title = WorldHudStyle.Text("", 14);
             title.HorizontalAlignment = HorizontalAlignment.Center;
@@ -503,6 +508,30 @@ public partial class EastWoodsDungeonPanel : Control
         category.HorizontalAlignment = HorizontalAlignment.Center; category.VerticalAlignment = VerticalAlignment.Center; category.CustomMinimumSize = new Vector2(18, 18);
         row.AddChild(category);
         button.AddChild(marker);
+    }
+
+    private static void build_tower_node_type_marker(Button button, EastWoodsDungeonRules.NodeDefinition node)
+    {
+        var (text, fill, border) = node.ContentType switch
+        {
+            DynamicDungeonExpedition.BattleNodeType => ("战斗", new Color("784e43"), new Color("d9a48c")),
+            DynamicDungeonExpedition.ResourceNodeType => ("资源", new Color("496143"), new Color("c0d2a0")),
+            DynamicDungeonExpedition.RestNodeType => ("休整", new Color("475d60"), new Color("b6cbca")),
+            "entry" => ("入口", new Color("705f37"), new Color("e2cb88")),
+            "exit" => ("出口", new Color("705f37"), new Color("e2cb88")),
+            _ => ("", Colors.Transparent, Colors.Transparent),
+        };
+        if (text.Length == 0) return;
+        var chip = new PanelContainer { Name = "TowerNodeType", MouseFilter = MouseFilterEnum.Ignore };
+        chip.SetAnchorsPreset(LayoutPreset.BottomWide);
+        chip.OffsetLeft = 7; chip.OffsetTop = -29; chip.OffsetRight = -7; chip.OffsetBottom = -5;
+        chip.AddThemeStyleboxOverride("panel", panel_style(fill, border, 6));
+        var label = WorldHudStyle.Text(text, 13);
+        label.HorizontalAlignment = HorizontalAlignment.Center;
+        label.VerticalAlignment = VerticalAlignment.Center;
+        label.AddThemeColorOverride("font_color", new Color("f6efd9"));
+        chip.AddChild(label);
+        button.AddChild(chip);
     }
 
     private void layout_map()
@@ -651,7 +680,7 @@ public partial class EastWoodsDungeonPanel : Control
         if (!_dynamicMode) return "";
         if (_isTraveling && _actionBadgeCache.TryGetValue(nodeId, out var cached)) return cached;
         var action = available_actions(nodeId).FirstOrDefault();
-        var badge = action is null ? "" : action.Battle ? "兽踪" : action.ItemPath.Length > 0 ? "可采集" : "异状";
+        var badge = action is null ? "" : action.Battle ? "兽踪" : action.ItemPath.Length > 0 ? "可采集" : action.Rest ? "可休息" : "异状";
         _actionBadgeCache[nodeId] = badge;
         return badge;
     }
@@ -815,6 +844,7 @@ public partial class EastWoodsDungeonPanel : Control
     {
         if (!is_node_discovered(nodeId)) return;
         if (_isTraveling || _npcEncounterBusy || _travelPawn is not null || _actionBusy || _actionModal?.Visible == true || nodeId == _current) return;
+        if (is_tower_instance && !is_valid_next_node(nodeId)) return;
         if (_pendingTarget == nodeId && _pendingPath.Count > 1)
         {
             start_pending_path();
@@ -871,6 +901,8 @@ public partial class EastWoodsDungeonPanel : Control
     {
         if (_npcEncounterBusy || _travelPawn is not null || _actionBusy || _actionModal?.Visible == true || CanMove?.Invoke() == false) return false;
         if (!route_neighbors(_current).Contains(nodeId)) return false;
+        if (is_tower_instance && !is_valid_next_node(nodeId)) return false;
+        if (is_tower_instance && CanEnterRouteNode?.Invoke(nodeId) == false) return false;
         if (!_isTraveling)
         {
             _pendingPath.Clear();
@@ -896,6 +928,15 @@ public partial class EastWoodsDungeonPanel : Control
         refresh();
         if (generation == _travelGeneration && Visible) animate_player_step(previous, sourcePosition);
         return _current == nodeId;
+    }
+
+    private bool is_valid_next_node(string nodeId)
+    {
+        if (!is_tower_instance) return true;
+        var current = route_node(_current);
+        var destination = route_node(nodeId);
+        return current is not null && destination is not null &&
+            destination.GridPosition.Y == current.GridPosition.Y - 1 && route_neighbors(_current).Contains(nodeId);
     }
 
     private List<string> find_shortest_path(string from, string to)

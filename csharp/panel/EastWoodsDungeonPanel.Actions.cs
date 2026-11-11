@@ -19,6 +19,7 @@ public partial class EastWoodsDungeonPanel
     private string _offeredAction = "";
     private bool _actionBusy;
     public Func<bool>? CanMove { get; set; }
+    public Func<string, bool>? CanEnterRouteNode { get; set; }
 
     // Compatibility query for old saves/tests; no paid exploration action remains.
     public bool is_explored(string node) => _visited.Contains(node) || progress(node + ":explore") > 0;
@@ -105,13 +106,17 @@ public partial class EastWoodsDungeonPanel
         hide_forest_event();
         _actionModal.Hide(); _offeredAction = ""; return true;
     }
-    public bool can_leave() => Visible && is_route_exit(_current) && !_isTraveling && !_actionBusy && !_npcEncounterBusy && _travelPawn is null;
+    public bool can_leave() => Visible && (is_route_exit(_current) || is_tower_instance) &&
+        !_isTraveling && !_actionBusy && !_npcEncounterBusy && _travelPawn is null;
 
     public void return_one_level()
     {
         if (close_action_details()) return;
         interrupt_travel();
-        open_action_card("暂歇", _dynamicMode ? $"你仍在{route_display_name}内。查看界面不推进游戏时间；须沿路线走到出口才能离开。" : "你仍在东林地内。查看界面不推进游戏时间；离开须沿林径返回林缘出口。", "", "");
+        open_action_card("暂歇", _dynamicMode
+            ? is_tower_instance ? "你仍在副本内。可继续攀行，也可暂离返回大世界；再次进入会从当前节点继续。"
+                : $"你仍在{route_display_name}内。查看界面不推进游戏时间；须沿路线走到出口才能离开。"
+            : "你仍在东林地内。查看界面不推进游戏时间；离开须沿林径返回林缘出口。", "", "");
     }
 
     public void locate_exit()
@@ -124,16 +129,24 @@ public partial class EastWoodsDungeonPanel
             offer_exit();
             return;
         }
+        if (is_tower_instance)
+        {
+            focus_map_node(route_exit_node_id);
+            return;
+        }
         on_node_clicked(route_exit_node_id);
     }
 
     private void offer_exit()
     {
         if (!can_leave()) return;
-        open_action_card(_dynamicMode ? $"离开{route_display_name}" : "离开林地",
-            _dynamicMode ? $"沿实体出口离开{route_display_name}。已探明路线、资源、事件与遭遇状态会保留。" + (is_compact_route ? "再次进入不会重置采集和遭遇。" : "若入口已到期，离开后不能再次进入。") : "沿林缘出口离开东林地。已取得物品与探明、采集、事件进度将保留，再次进入不会重置。",
-            "出口已抵达；取消不离场。", "__leave");
-        _actionConfirm!.Text = _dynamicMode ? $"离开{route_display_name}" : "离开林地";
+        var earlyTowerDeparture = is_tower_instance && !is_route_exit(_current);
+        open_action_card(earlyTowerDeparture ? "暂离副本" : _dynamicMode ? $"离开{route_display_name}" : "离开林地",
+            earlyTowerDeparture
+                ? "暂时返回大世界。当前层数、资源和遭遇状态会保留，原入口也会留在地图上；再次进入可从当前节点继续。"
+                : _dynamicMode ? $"沿实体出口离开{route_display_name}。已探明路线、资源、事件与遭遇状态会保留。" + (is_compact_route ? "再次进入不会重置采集和遭遇。" : "本次爬塔完成后，大世界会生成下一处入口。") : "沿林缘出口离开东林地。已取得物品与探明、采集、事件进度将保留，再次进入不会重置。",
+            earlyTowerDeparture ? "暂离不会重置本次进度；取消可继续行进。" : "出口已抵达；取消不离场。", "__leave");
+        _actionConfirm!.Text = earlyTowerDeparture ? "暂离并返回大世界" : _dynamicMode ? $"离开{route_display_name}" : "离开林地";
     }
 
     private void build_actions()
@@ -237,6 +250,11 @@ public partial class EastWoodsDungeonPanel
         if (is_route_exit(_current))
         {
             var leave = make_button(_dynamicMode ? "离开" + route_display_name : "离开林地", 116, 32); leave.Name = "LeaveDungeon";
+            leave.Pressed += offer_exit; row.AddChild(leave);
+        }
+        else if (is_tower_instance)
+        {
+            var leave = make_button("暂离副本", 116, 32); leave.Name = "LeaveDungeonEarly";
             leave.Pressed += offer_exit; row.AddChild(leave);
         }
         var choices = available_actions(_current);

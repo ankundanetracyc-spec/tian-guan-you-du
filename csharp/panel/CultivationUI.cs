@@ -199,7 +199,8 @@ public partial class CultivationUI : Control
 		var head = new HBoxContainer(); root.AddChild(head);
 		head.AddChild(label("修性·灵台三景", 34, true));
 		var overview = new Button { Text = "修行总览" }; style_small_button(overview); overview.Pressed += () => { if (_target is not null) show_cultivation_overview(_target); }; head.AddChild(overview);
-		var back = new Button { Text = "返回修炼" }; style_small_button(back); back.Pressed += hide_visualization_page; head.AddChild(back);
+		var back = new Button { Name = "VisualizationReturn", Text = "返回" }; style_small_button(back); back.Pressed += hide_visualization_page;
+		_visualPanel.AddChild(back); CraftingPaperHeader.PlaceReturn(_visualPanel, back); CraftingPaperHeader.AddReturnArrow(back);
 		var close = new Button { Text = "收起" }; style_small_button(close); close.Pressed += close_panel; head.AddChild(close);
 		_visualName = label("", 22); root.AddChild(_visualName);
 		_visualRealm = label("", 16); root.AddChild(_visualRealm);
@@ -251,7 +252,8 @@ public partial class CultivationUI : Control
 		var head = new HBoxContainer { CustomMinimumSize = new Vector2(0, 48) }; root.AddChild(head);
 		_bodyTitle = label("修命·淬体", 34, true); head.AddChild(_bodyTitle);
 		var overview = new Button { Text = "修行总览" }; style_small_button(overview); overview.Pressed += () => { if (_target is not null) show_cultivation_overview(_target); }; head.AddChild(overview);
-		_bodyBack = new Button { Text = "返回修炼" }; style_small_button(_bodyBack); _bodyBack.Pressed += hide_body_page; head.AddChild(_bodyBack);
+		_bodyBack = new Button { Name = "BodyRefinementReturn", Text = "返回" }; style_small_button(_bodyBack); _bodyBack.Pressed += hide_body_page;
+		_bodyPanel.AddChild(_bodyBack); CraftingPaperHeader.PlaceReturn(_bodyPanel, _bodyBack); CraftingPaperHeader.AddReturnArrow(_bodyBack);
 		var close = new Button { Text = "收起" }; style_small_button(close); close.Pressed += close_panel; head.AddChild(close);
 		_bodyName = label("", 22); root.AddChild(_bodyName);
 		_bodyRealm = label("", 16); root.AddChild(_bodyRealm);
@@ -347,6 +349,7 @@ public partial class CultivationUI : Control
 	/// <summary>统一关闭修炼面板，供主场景返回键处理。</summary>
 	public void close_panel()
 	{
+		_paperDetail?.Hide();
 		_room.Hide();
 		_yuanxiPanel?.Hide();
 		_bodyReadOnly = false;
@@ -442,7 +445,7 @@ public partial class CultivationUI : Control
 		if (_bodyReadOnly)
 		{
 			if (_bodyTitle is not null) _bodyTitle.Text = "修命·淬体总览 · 查看态";
-			if (_bodyBack is not null) _bodyBack.Text = "返回角色";
+			if (_bodyBack is not null) _bodyBack.Text = "返回";
 			_bodyMaterialRow?.Hide();
 			_bodyStart?.Hide();
 			_bodyReadOnlyHint?.Show();
@@ -450,7 +453,7 @@ public partial class CultivationUI : Control
 		else
 		{
 			if (_bodyTitle is not null) _bodyTitle.Text = "静室·修命淬体 · 行动态";
-			if (_bodyBack is not null) _bodyBack.Text = "返回修炼";
+			if (_bodyBack is not null) _bodyBack.Text = "返回";
 			_bodyMaterialRow?.Show();
 			_bodyStart?.Show();
 			_bodyReadOnlyHint?.Hide();
@@ -726,6 +729,7 @@ public partial class CultivationUI : Control
 		{
 			_plan.Text = "尚未装配主修功法。请先前往角色页面，将已研读的功法设为主修后再吐纳修行。";
 			_cultivate.Disabled = true;
+			refresh_paper_plan(null);
 			return;
 		}
 		var mode = _mode?.Selected ?? 0;
@@ -772,6 +776,7 @@ public partial class CultivationUI : Control
 			}
 		}
 		_cultivate.Disabled = hours <= 0 || autoRefinementBlocked || (_target is Character cultivationCharacter && !cultivationCharacter.can_cultivate());
+		refresh_paper_plan(preview);
 	}
 
 	private void cultivate()

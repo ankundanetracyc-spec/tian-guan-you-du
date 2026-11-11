@@ -82,6 +82,8 @@ public static partial class AlchemySlotSimulation
         public IReadOnlyList<PillResult> Pills { get; init; } = [];
         public double DeliveredMass { get; init; }
         public double CarryMass { get; init; }
+        /// <summary>正式人物开炉后获得的成长；独立试演恒为0。</summary>
+        public double ProficiencyGrowth { get; init; }
     }
 
     private sealed class Portion(Input input, double available, double residual)

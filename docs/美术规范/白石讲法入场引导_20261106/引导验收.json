@@ -1,0 +1,65 @@
+{
+  "verified_date": "2026-11-06",
+  "build": {
+    "warnings": 0,
+    "errors": 0
+  },
+  "groups": [
+    {
+      "name": "原生入场引导与旁听入口",
+      "checks": 24,
+      "exit_code": 0,
+      "error_count": 0,
+      "log": "tmp/baishi_plaque_lecture_guide_final_20261106/stdout.log",
+      "diagnostics": "tmp/baishi_plaque_lecture_guide_final_20261106/stderr.log"
+    },
+    {
+      "name": "序章研习与入宗",
+      "checks": 75,
+      "exit_code": 0,
+      "error_count": 0,
+      "log": "tmp/baishi_lecture_guide_final_20261106/stdout.log",
+      "diagnostics": "tmp/baishi_lecture_guide_final_20261106/stderr.log"
+    },
+    {
+      "name": "验灵后灵舟接引",
+      "checks": 52,
+      "exit_code": 0,
+      "error_count": 0,
+      "log": "tmp/baishi_lecture_guide_boat_final_20261106/stdout.log",
+      "diagnostics": "tmp/baishi_lecture_guide_boat_final_20261106/stderr.log"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "点击挂牌_讲法对白.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 3130155
+    },
+    {
+      "file": "讲法初入_中央挂牌引导.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 3244710
+    },
+    {
+      "file": "讲法引导_1280.png",
+      "width": 1280,
+      "height": 720,
+      "bytes": 1634881
+    },
+    {
+      "file": "听讲后_从人物名单验灵.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 3171143
+    }
+  ],
+  "notes": [
+    "引导使用独立灰绿步骤浮层，活动仍使用共用悬绳挂牌",
+    "分组有重叠，不累计为独立用例总数",
+    "原生截图使用隔离存档和正式主场景",
+    "原有资源UID回退等提示保留在日志"
+  ]
+}

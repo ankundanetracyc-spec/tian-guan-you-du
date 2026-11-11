@@ -7,101 +7,104 @@ public partial class MainScene
 {
     private static string[] YuxuLineageGongfaCandidates => GongfaAvailability.EnabledBooks().Select(book => book.ResourcePath).ToArray();
 
-    private bool ensure_yuxu_lineage_staff()
-    {
-        var manager = _npc_world ?? GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager");
-        if (manager is null || _world_node_data is not { } mapData) return false;
-        _npc_world = manager;
-        var changed = CloudStateNpcCatalog.ensure_yuxu_lineage_staff(manager, mapData);
-        if (changed) mark_save_dirty();
-        return changed;
-    }
-
     private List<WorldNpcData> get_yuxu_lineage_teachers()
     {
-        ensure_yuxu_lineage_staff();
         var manager = _npc_world ?? GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager");
         if (manager is null) return [];
+        // “师承候选”是该真实人物已登记的收徒资格与意愿，不凭境界推定。
         return manager.get_active_npcs()
-            .Where(npc => npc.is_yuxu_lineage_staff && npc.faction_id == YuxuSectId &&
-                (npc.cultivation_realm is "金丹后期" or "金丹圆满") &&
-                !string.IsNullOrWhiteSpace(npc.sect_assigned_guide_npc_id) &&
-                manager.get_npc(npc.sect_assigned_guide_npc_id) is { is_alive: true, cultivation_realm: "云息十层" })
+            .Where(npc => npc.faction_id == YuxuSectId && npc.relation_tags.Contains("师承候选") &&
+                (npc.cultivation_realm is "金丹后期" or "金丹圆满"))
             .OrderBy(npc => npc.cultivation_realm == "金丹后期" ? 0 : 1)
+            .ThenBy(npc => npc.npc_name, StringComparer.Ordinal)
             .ThenBy(npc => npc.npc_id, StringComparer.Ordinal)
             .ToList();
     }
 
-    private void open_yuxu_lineage_teacher_picker(Action<WorldNpcData> onTeacherSelected, Action? onCancelled = null)
+    private string yuxu_teacher_unavailable_reason(WorldNpcData? teacher)
     {
-        var candidates = get_yuxu_lineage_teachers();
-        if (candidates.Count == 0)
-        {
-            show_message("师父名录暂缺", "当前没有可供选择的金丹后期或圆满师父及其云息十层带教同门。师承候选未能登记，入门状态不会改变。 ");
-            onCancelled?.Invoke();
-            return;
-        }
+        if (teacher is not { is_alive: true } || teacher.faction_id != YuxuSectId ||
+            teacher.cultivation_realm is not ("金丹后期" or "金丹圆满") || !teacher.relation_tags.Contains("师承候选"))
+            return "这位师长目前不在择师名录中。";
+        var hour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+        if (teacher.is_in_seclusion_at_hour(hour)) return "师长正在闭关，暂不能会面。";
+        if (!yuxu_npc_is_present(teacher, "zifu")) return "师长此刻不在紫府峰，暂不能会面。";
+        return "";
+    }
 
-        var dialog = new ConfirmationDialog
-        {
-            Title = "紫府峰·拜师",
-            DialogText = "接引弟子领你来到紫府峰。天灵根入门即为真传；请在宗内金丹后期或圆满师长中择一位为师。师父事务繁忙，会另指派一位云息十层的师兄或师姐照应你。",
-            OkButtonText = "拜入此师门",
-            CancelButtonText = "暂不拜师"
-        };
-        var body = new VBoxContainer { CustomMinimumSize = new Vector2(520, 56) };
-        var choice = new OptionButton();
+    private bool at_yuxu_teacher_choice_location()
+    {
+        var overview = GetNodeOrNull<Control>("SceneLayer/YuxuXianzongOverview");
+        return _player_current_yuxu_peak_id == "zifu" && overview?.Visible == true &&
+            overview.GetNodeOrNull<Control>("PeakInterior")?.Visible == true;
+    }
+
+    private void open_yuxu_lineage_teacher_picker(HumanData human)
+    {
+        if (story_dialogue is null || npc_interactions is null || player?.entity_data != human ||
+            human.sect_affiliation_id != YuxuSectId || !is_yuxu_true_disciple(human.sect_current_rank) ||
+            !string.IsNullOrWhiteSpace(human.sect_teacher_npc_id) || !at_yuxu_teacher_choice_location()) return;
+        _activeWorldNpcInteractionId = "";
+        var candidates = get_yuxu_lineage_teachers();
+        var choices = new List<(string Label, Action Activate)>();
         foreach (var teacher in candidates)
-            choice.AddItem($"{teacher.npc_name} · {teacher.cultivation_realm}");
-        choice.Select(0);
-        body.AddChild(choice);
-        dialog.AddChild(body);
-        AddChild(dialog);
-        dialog.PopupCentered();
-        dialog.Confirmed += () =>
         {
-            var selected = choice.Selected >= 0 && choice.Selected < candidates.Count
-                ? candidates[choice.Selected]
-                : null;
-            dialog.QueueFree();
-            if (selected is not null) onTeacherSelected(selected);
-        };
-        dialog.Canceled += () =>
+            var id = teacher.npc_id;
+            var suffix = yuxu_teacher_unavailable_reason(teacher).Length == 0 ? "" : " · 暂不可面见";
+            choices.Add(($"{teacher.npc_name} · {teacher.cultivation_realm}{suffix}", () => show_yuxu_teacher_profile(human, id)));
+        }
+        choices.Add(("暂不择师", () => { }));
+        story_dialogue.show_narration_choices("择师", candidates.Count == 0 ? "目前没有可选的师长，之后可以再来。" : "请选择想了解的师长。", choices);
+    }
+
+    private void show_yuxu_teacher_profile(HumanData human, string teacherId)
+    {
+        var manager = _npc_world ?? GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager");
+        if (manager?.get_npc(teacherId) is not { } teacher || npc_interactions is null) { open_yuxu_lineage_teacher_picker(human); return; }
+        _activeWorldNpcInteractionId = "";
+        npc_interactions.show_npc_page(teacher, () => manager.get_npc(teacherId), () =>
         {
-            dialog.QueueFree();
-            onCancelled?.Invoke();
-        };
+            var reason = at_yuxu_teacher_choice_location() ? yuxu_teacher_unavailable_reason(manager.get_npc(teacherId)) : "请回紫府峰择师。";
+            return new NpcInteractionAction[]
+            {
+                new("lineage.confirm", "确认拜师", () => confirm_yuxu_teacher(human, teacherId), reason.Length == 0, reason),
+                new("lineage.back", "再看看", () => open_yuxu_lineage_teacher_picker(human))
+            };
+        });
     }
 
     private bool assign_yuxu_lineage_teacher(HumanData human, WorldNpcData teacher)
     {
         var manager = _npc_world ?? GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager");
-        if (manager is null || !teacher.is_yuxu_lineage_staff ||
-            manager.get_npc(teacher.sect_assigned_guide_npc_id) is not { is_alive: true, cultivation_realm: "云息十层" } guide)
+        if (manager is null || manager.get_npc(teacher.npc_id) != teacher ||
+            !string.IsNullOrWhiteSpace(human.sect_teacher_npc_id) || yuxu_teacher_unavailable_reason(teacher).Length > 0)
             return false;
         human.sect_teacher_npc_id = teacher.npc_id;
-        human.sect_guide_npc_id = guide.npc_id;
+        var guide = manager.get_npc(teacher.sect_assigned_guide_npc_id);
+        human.sect_guide_npc_id = guide is { is_alive: true, faction_id: YuxuSectId } &&
+            guide.sect_teacher_npc_id == teacher.npc_id ? guide.npc_id : "";
         return true;
     }
 
     private void request_yuxu_lineage_teacher_choice(HumanData human)
     {
-        if (human.sect_affiliation_id != YuxuSectId || !is_yuxu_true_disciple(human.sect_current_rank)) return;
-        var manager = _npc_world ?? GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager");
-        if (manager?.get_npc(human.sect_teacher_npc_id) is { is_alive: true } &&
-            manager.get_npc(human.sect_guide_npc_id) is { is_alive: true }) return;
-        open_yuxu_lineage_teacher_picker(teacher =>
+        open_yuxu_lineage_teacher_picker(human);
+    }
+
+    private void confirm_yuxu_teacher(HumanData human, string teacherId)
+    {
+        var teacher = _npc_world?.get_npc(teacherId);
+        if (player?.entity_data != human || human.sect_affiliation_id != YuxuSectId ||
+            !is_yuxu_true_disciple(human.sect_current_rank) || !at_yuxu_teacher_choice_location() ||
+            teacher is null || !assign_yuxu_lineage_teacher(human, teacher))
         {
-            if (!assign_yuxu_lineage_teacher(human, teacher))
-            {
-                show_message("师承登记未完成", "师父或带教师兄/师姐的身份记录不完整，未改动你的师承。 ");
-                return;
-            }
-            mark_save_dirty();
-            refresh_yuxu_life_context();
-            var guide = _npc_world?.get_npc(human.sect_guide_npc_id);
-            show_message("师承已登记", $"你已拜入{teacher.npc_name}门下。师父命{guide?.npc_name ?? "一位云息十层的同门"}先带你熟悉紫府峰与玄览峰；首卷带教之外的日常修行由你自行安排，师父不会事事手把手陪练。 ");
-        });
+            show_message("暂不能拜师", "师长目前无法会面，请稍后再试或另选一位。");
+            return;
+        }
+        mark_save_dirty(); refresh_yuxu_life_context(); refresh_qingxi_quest();
+        if (story_dialogue is not null)
+            story_dialogue.show_player_speech(player.entity_name, "弟子见过师父。", player,
+                () => show_npc_dialogue(teacher.npc_name, "嗯，不必多礼。", teacher));
     }
 
     private void complete_yuxu_admission(string rank, WorldNpcData? teacher = null, WorldNpcData? admissionGuide = null)
@@ -111,12 +114,12 @@ public partial class MainScene
             finish_yuxu_gate_and_return_to_world();
             return;
         }
-        if (!string.IsNullOrEmpty(human.sect_affiliation_id))
+        if (!string.IsNullOrEmpty(human.sect_affiliation_id) || !human.sect_yuxu_registration_pending)
         {
             finish_yuxu_gate_and_return_to_world();
             return;
         }
-        var currentRank = get_yuxu_entry_rank(get_player_spirit_root_count());
+        var currentRank = get_recorded_yuxu_admission_rank(human);
         if (string.IsNullOrEmpty(currentRank) || currentRank != rank)
         {
             finish_yuxu_gate_and_return_to_world();
@@ -129,18 +132,13 @@ public partial class MainScene
             finish_yuxu_gate_and_return_to_world();
             return;
         }
-        if (is_yuxu_true_disciple(currentRank) && (teacher is null || !assign_yuxu_lineage_teacher(human, teacher)))
-        {
-            show_message("入门尚未完成", "真传师承还未完成登记；未加入宗门，请重新办理入门。 ");
-            finish_yuxu_gate_and_return_to_world();
-            return;
-        }
-
         human.sect_affiliation_id = YuxuSectId;
+        human.sect_yuxu_registration_pending = false;
         human.sect_entry_rank = currentRank;
         human.sect_current_rank = currentRank;
         human.sect_admission_guide_npc_id = admissionGuide.npc_id;
         human.sect_entry_total_game_hours = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? -1;
+        initialize_yuxu_provisional_exam();
         human.sect_true_disciple_lecture_next_due_hour = is_yuxu_true_disciple(currentRank) && human.sect_entry_total_game_hours >= 0
             ? human.sect_entry_total_game_hours + YuxuTrueDiscipleLectureInitialDelayHours
             : -1;
@@ -158,8 +156,9 @@ public partial class MainScene
         refresh_yuxu_admission_context();
         refresh_yuxu_life_context();
         GetNodeOrNull<Node>("SceneLayer/YuxuXianzongOverview")?.Call("refresh_admission_detail");
+        refresh_baishi_progress();
         refresh_qingxi_quest();
-        open_yuxu_peak_after_admission(is_yuxu_true_disciple(currentRank) ? "zifu" : "guanfu");
+        open_yuxu_peak_after_admission("guanfu");
     }
 
     private List<GongfaResource> get_yuxu_lineage_book_choices(Character reader)
@@ -177,55 +176,7 @@ public partial class MainScene
 
     private void request_yuxu_lineage_book_choice(HumanData human)
     {
-        if (player is null || human.sect_affiliation_id != YuxuSectId || !is_yuxu_true_disciple(human.sect_current_rank)) return;
-        if (string.IsNullOrWhiteSpace(human.sect_teacher_npc_id) || string.IsNullOrWhiteSpace(human.sect_guide_npc_id))
-        {
-            show_message("师承尚未登记", "请先回紫府峰选择师父并登记带教师兄/师姐。 ");
-            return;
-        }
-        if (GongfaAvailability.EnabledPath(human.sect_lineage_gongfa_path).Length > 0)
-        {
-            show_message("首卷传承", "你已选定师门首卷。回紫府峰静室，在研读界面选择这本秘籍继续修习。 ");
-            return;
-        }
-
-        var choices = get_yuxu_lineage_book_choices(player);
-        if (choices.Count == 0)
-        {
-            show_message("暂不能选书", "当前候选首卷均未满足各自已有的境界、灵根或属性条件。不会绕过门槛；你可以继续修行，之后再回玄览峰查看。 ");
-            return;
-        }
-
-        var guide = _npc_world?.get_npc(human.sect_guide_npc_id);
-        var dialog = new ConfirmationDialog
-        {
-            Title = "玄览峰·师门首卷",
-            DialogText = $"{guide?.npc_name ?? "带教师兄/师姐"}陪你来到玄览峰。请选择一本当前可研读的云息秘籍；研读沿用秘籍原有的卷章条件、耗时与精力消耗。读完第一卷后，回紫府峰向同门汇报。",
-            OkButtonText = "选定此卷",
-            CancelButtonText = "稍后再选"
-        };
-        var body = new VBoxContainer { CustomMinimumSize = new Vector2(520, 56) };
-        var choice = new OptionButton();
-        foreach (var book in choices) choice.AddItem($"《{book.gongfa_name}》");
-        choice.Select(0);
-        body.AddChild(choice);
-        dialog.AddChild(body);
-        AddChild(dialog);
-        dialog.PopupCentered();
-        dialog.Confirmed += () =>
-        {
-            var selected = choice.Selected >= 0 && choice.Selected < choices.Count ? choices[choice.Selected] : null;
-            dialog.QueueFree();
-            if (selected is null || player?.entity_data is not HumanData current || current.sect_affiliation_id != YuxuSectId) return;
-            var wasAlreadyKnown = player.get_known_gongfas().Any(book => book.ResourcePath == selected.ResourcePath);
-            current.sect_lineage_gongfa_path = selected.ResourcePath;
-            current.sect_lineage_first_volume_only_access = !wasAlreadyKnown;
-            current.sect_lineage_reported_first_volume = false;
-            mark_save_dirty();
-            refresh_yuxu_life_context();
-            show_message("首卷已选定", $"你选择了《{selected.gongfa_name}》。回紫府峰静室，在研读界面选择此书；卷章门槛、研读进度与技能仍由原秘籍系统处理。 ");
-        };
-        dialog.Canceled += () => dialog.QueueFree();
+        if (human.sect_affiliation_id == YuxuSectId) open_yuxu_manual_library();
     }
 
     private bool has_yuxu_lineage_first_volume(HumanData human)

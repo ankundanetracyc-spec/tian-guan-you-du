@@ -29,7 +29,7 @@ public partial class StoryDialoguePanel
     /// 全部展示或点击“略过展示”后，按钮改为“继续”并调用 proceed。
     /// </summary>
     public void show_yuxu_admission_review(WorldNpcData elder, IReadOnlyList<string> evidenceLines, Action proceed, Action? cancelled = null,
-        Character? player = null, bool lastLineIsAptitude = false, bool testMode = false)
+        Character? player = null, bool testMode = false)
     {
         ArgumentNullException.ThrowIfNull(elder);
         ArgumentNullException.ThrowIfNull(proceed);
@@ -37,7 +37,7 @@ public partial class StoryDialoguePanel
 
         var column = begin_yuxu_admission_stage(elder, YuxuAdmissionStage.Review, cancelled, player: player, testMode: testMode);
         _yuxuAdmissionProceed = proceed;
-        add_yuxu_admission_lines(column, lines, lastLineIsAptitude);
+        add_yuxu_admission_lines(column, lines);
         add_yuxu_admission_continue(column, continue_yuxu_admission_review);
         start_yuxu_admission_reveal();
     }
@@ -176,18 +176,17 @@ public partial class StoryDialoguePanel
         end_yuxu_admission(invokeCompleted: true);
     }
 
-    private void add_yuxu_admission_lines(VBoxContainer column, IReadOnlyList<string> lines, bool lastLineIsAptitude = false)
+    private void add_yuxu_admission_lines(VBoxContainer column, IReadOnlyList<string> lines)
     {
         var presentation = new List<NpcSocialPresentationText.Line>(lines.Count);
         string[] reviewWaits = ["长老凝神看了片刻", "长老缓缓抬眼", "长老略作沉吟", "长老收敛目光"];
         string[] resultWaits = ["对方缓缓开口", "对方略一颔首", "话声稍歇", "对方将话接过"];
         for (var index = 0; index < lines.Count; index++)
         {
-            var aptitude = lastLineIsAptitude && index == lines.Count - 1;
-            var pending = aptitude ? "长老细察你周身灵机" : _yuxuAdmissionStage == YuxuAdmissionStage.Review
+            var pending = _yuxuAdmissionStage == YuxuAdmissionStage.Review
                 ? reviewWaits[index % reviewWaits.Length] : resultWaits[index % resultWaits.Length];
             // 不抽换证据结果、不重排因果；只有等待语属于展示前奏。
-            presentation.Add(new(pending, lines[index], aptitude ? "yuxu_aptitude" : "yuxu_evidence"));
+            presentation.Add(new(pending, lines[index], "yuxu_evidence"));
         }
         _socialLines = presentation;
         _socialScroll = new ScrollContainer {

@@ -30,9 +30,9 @@ public partial class EquipmentPagePreview : Node
             owner.load_from_data(data);
             data = (HumanData)owner.entity_data!;
             var panel = GD.Load<PackedScene>("res://tscn/panel/InfoPanel.tscn").Instantiate<InfoPanel>(); AddChild(panel);
-            panel.show_entity(owner); Call(panel, "render_new_page", 4); await Settle();
+            panel.show_entity(owner); Call(panel, "render_new_page", 5); await Settle();
             var pages = (Dictionary<int, Control>)typeof(InfoPanel).GetField("_characterPages", BindingFlags.NonPublic | BindingFlags.Instance)!.GetValue(panel)!;
-            var page = pages[4];
+            var page = pages[5];
             Check(page.FindChildren("EquipmentSlot*", "Button", true, false).Count == 4, "主界面四个装备槽");
             Check(!page.FindChildren("*", "Label", true, false).OfType<Label>().Any(label => label.Text is "常规穿戴" or "法宝" or "战备"), "撤下旧分栏与战备占位");
             Check(page.FindChildren("EquipmentSupplySlot*", "Button", true, false).Count == 3, "右侧三个真实共用战备格");
@@ -98,7 +98,7 @@ public partial class EquipmentPagePreview : Node
             var savePath = "user://equipment_supply_" + Guid.NewGuid().ToString("N") + ".tres";
             Check(ResourceSaver.Save(data, savePath) == Error.Ok && GD.Load<HumanData>(savePath)!.battle_supplies[0].count == 5, "装备页战备可持久保存");
             DirAccess.RemoveAbsolute(ProjectSettings.GlobalizePath(savePath));
-            GetWindow().Size = new Vector2I(1920, 1080); Call(panel, "render_new_page", 4); await Settle();
+            GetWindow().Size = new Vector2I(1920, 1080); Call(panel, "render_new_page", 5); await Settle();
             await Capture("04_右侧战备与衣着格");
             GetWindow().Size = new Vector2I(1280, 720); await Settle();
             await Capture("05_右侧战备小窗口");

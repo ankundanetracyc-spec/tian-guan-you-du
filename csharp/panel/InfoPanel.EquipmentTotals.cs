@@ -39,9 +39,9 @@ public partial class InfoPanel
 
     private void build_equipment_totals(Control page, Character? human)
     {
-        var panel = CharacterPanel(page, 788, 0, 562, 370); panel.Name = "EquipmentTotalsPanel";
+        var panel = CharacterPanel(page, 788, 0, 594, 370); panel.Name = "EquipmentTotalsPanel";
         var canvas = new Control(); panel.AddChild(canvas);
-        var title = CharacterText("总加成", 28); canvas.AddChild(title); CharacterRect(title, 0, 0, 530, 38);
+        var title = CharacterText("穿戴汇总", 28); canvas.AddChild(title); CharacterRect(title, 0, 0, 530, 38);
         var divider = new HSeparator(); canvas.AddChild(divider); CharacterRect(divider, 0, 48, 530, 4);
         var totals = EquipmentTotals(human);
         if (totals.Count == 0)
@@ -58,12 +58,12 @@ public partial class InfoPanel
 
     private void build_equipment_bonds(Control page, Character? human)
     {
-        var panel = CharacterPanel(page, 788, 388, 562, 194); panel.Name = "EquipmentBondsPanel";
+        var panel = CharacterPanel(page, 788, 388, 594, 194); panel.Name = "EquipmentBondsPanel";
         var canvas = new Control(); panel.AddChild(canvas);
         var title = CharacterText("器蕴", 28); canvas.AddChild(title); CharacterRect(title, 0, 0, 180, 38);
         var spirit = CharacterText($"灵识 {human?.used_spirit_perception ?? 0}/{human?.max_spirit_perception ?? 0}", 19, true);
         spirit.HorizontalAlignment = HorizontalAlignment.Right; canvas.AddChild(spirit); CharacterRect(spirit, 290, 4, 240, 30);
-        CharacterHover(spirit, "灵识", "装备与化法不额外占用灵识；器体在场持续占用，主动施法另需临时占用。");
+        CharacterHover(spirit, "灵识", "御使器物持续占用灵识，跨回合保持；收回或停用时释放。技能自身的体力、法力费用另算。");
         var totals = human?.get_artifact_bonds() ?? new ArtifactBondRuntime.Totals(0, 0);
         var bonds = new[] { (Name: "惊鸿", Points: totals.Jinghong, Effect: "剑技物伤", Bonus: totals.SwordDamageBonus),
             (Name: "抱朴", Points: totals.Baopu, Effect: "物理防御", Bonus: totals.DefenseBonus) };

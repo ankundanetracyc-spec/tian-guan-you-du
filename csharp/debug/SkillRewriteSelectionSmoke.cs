@@ -9,7 +9,8 @@ public partial class SkillRewriteSelectionSmoke : Node
 {
     private const string Guard = "res://resources/activeskills/架招.tres";
     private const string Attack = "res://resources/activeskills/应敌.tres";
-    private const string BookPath = "res://resources/gongfa/玄枢含章经.tres";
+    private const string BookPath = "res://resources/gongfa/斫基损契玄经.tres";
+    private const string XuanBookPath = "res://resources/gongfa/玄枢含章经.tres";
     private const string LegacyGuard = "res://resources/activeskills/玄枢含章经/化法/架招.tres";
     private readonly List<Resource> _keep = [];
     private int _checks;
@@ -21,57 +22,68 @@ public partial class SkillRewriteSelectionSmoke : Node
         try
         {
             var book = GD.Load<GongfaResource>(BookPath); _keep.Add(book);
-            var sub = GD.Load<GongfaResource>("res://resources/gongfa/太和感物养元宝册.tres"); _keep.Add(sub);
+            var sub = GD.Load<GongfaResource>("res://resources/gongfa/百骸衍枝化生宝册.tres"); _keep.Add(sub);
+            var xuanBook = GD.Load<GongfaResource>(XuanBookPath); _keep.Add(xuanBook);
             var data = new HumanData { entity_name = "化法界面验收", cultivation_realm = "云息九层",
                 spirit_root_type = (int)GongfaResource.Wuxing.METAL_WOOD_WATER, spirit_root_name = "三灵根", root_weights = [34,33,33,0,0],
                 main_gongfa_path = BookPath, sub_gongfa_paths = [sub.ResourcePath],
-                learned_gongfa_paths = [BookPath, sub.ResourcePath], base_physique = 12, base_intelligence = 12, base_soul = 12 };
+                learned_gongfa_paths = [BookPath, sub.ResourcePath, XuanBookPath], base_physique = 12, base_intelligence = 12, base_soul = 12 };
             data.learned_gongfa_chapters[BookPath] = new Godot.Collections.Array<string>(book.get_sorted_chapters().Select(c => c.get_id()));
             data.learned_gongfa_chapters[sub.ResourcePath] = new Godot.Collections.Array<string>(sub.get_sorted_chapters().Select(c => c.get_id()));
-            foreach (var chapter in sub.get_sorted_chapters()) data.equipped_gongfa_chapter_routes[sub.ResourcePath + ":" + chapter.get_id()] = "right";
+            data.learned_gongfa_chapters[XuanBookPath] = new Godot.Collections.Array<string>(xuanBook.get_sorted_chapters().Select(c => c.get_id()));
             _keep.Add(data);
             var owner = new Character(); AddChild(owner); owner.load_from_data(data); owner.Hide();
             var human = (HumanData)owner.entity_data!; _keep.Add(human);
-            var strike = book.get_sorted_chapters()[0].get_learned_skills(true).OfType<ActiveSkillData>().First().ResourcePath;
+            var strike = book.get_sorted_chapters()[1].get_learned_skills(true).OfType<ActiveSkillData>().First().ResourcePath;
             owner.set_combat_skill_slot_paths([Attack, Guard, strike]);
             var choices = owner.get_skill_rewrite_choices();
-            Check(choices.Count(c => c.Available && c.Source.StartsWith("玄枢含章经")) == 4 &&
-                choices.Count(c => c.Available && c.Source.StartsWith("太和感物")) == 2, "按真实配置统一读出主修及辅修化法，不补造空卷章");
-            var guardChoice = choices.Single(c => c.Source.StartsWith("玄枢含章经") && c.Title == "架招化法");
-            var strikeChoice = choices.Single(c => c.Source.StartsWith("玄枢含章经") && c.Title == "惊蛰化法");
-            var subGuard = choices.Single(c => c.Source.StartsWith("太和感物") && c.Title == "架招化法");
-            Check(!owner.resolve_combat_skill(Guard)!.gongfa_rewrite_effect_ids.Contains("xuan_shu_c3_jiazhao"), "学会化法不会自动赋给已装配的架招");
-            Check(owner.get_skill_rewrite_candidates(guardChoice.Id).Count == 1, "固定架招化法仍提供显式选择");
+            Check(choices.Count(c => c.Available && c.Source.StartsWith("斫基损契玄经")) == 1 &&
+                choices.Count(c => c.Available && c.Source.StartsWith("百骸衍枝化生宝册")) == 2 &&
+                choices.Count(c => c.Source.StartsWith("玄枢含章经") && !c.Available) == 1,
+                "只开放已装备秘籍的三项化法来源，未装备的玄枢来源不可用");
+            var guardChoice = choices.Single(c => c.Source.StartsWith("百骸衍枝化生宝册") && c.Source.Contains("化生") && c.Title == "架招化法");
+            var strikeChoice = choices.Single(c => c.Source.StartsWith("斫基损契玄经") && c.Source.Contains("剪灯") && c.Title == "焚元化法");
+            var bloodChoice = choices.Single(c => c.Source.StartsWith("百骸衍枝化生宝册") && c.Source.Contains("养络") && c.Title == "催血化法");
+            Check(!owner.resolve_combat_skill(Guard)!.gongfa_rewrite_effect_ids.Contains("baihai_c4_jiazhao"), "学会化法不会自动赋给已装配的架招");
+            Check(owner.get_skill_rewrite_candidates(guardChoice.Id).Count == 1, "架招化法仍提供显式选择");
             Check(!owner.set_skill_rewrite_binding(guardChoice.Id, Attack, out _), "拒绝不符合条件的已装配技能");
-            var shieldChoice = choices.Single(c => c.Source.StartsWith("玄枢含章经") && c.Title == "云帔化法");
-            var shield = book.get_sorted_chapters()[1].get_learned_skills(true).OfType<ActiveSkillData>().First().ResourcePath;
-            Check(!owner.set_skill_rewrite_binding(shieldChoice.Id, shield, out _), "拒绝已学但未装配的技能");
-            Check(owner.set_skill_rewrite_binding(guardChoice.Id, Guard, out _), "确认绑定架招成功");
-            Check(owner.resolve_combat_skill(Guard)!.gongfa_rewrite_effect_ids.Contains("xuan_shu_c3_jiazhao"), "已绑定化法进入技能结算副本");
-            Check(owner.resolve_combat_skill(Guard)!.combat_source_key == Guard &&
-                !GD.Load<ActiveSkillData>(Guard).gongfa_rewrite_effect_ids.Contains("xuan_shu_c3_jiazhao"), "保留原技能身份且不污染共享资源");
-            Check(owner.set_skill_rewrite_binding(strikeChoice.Id, strike, out _) &&
-                owner.resolve_combat_skill(strike)!.gongfa_rewrite_effect_ids.Contains("xuan_shu_c1_jingzhe"), "秘籍自身招式同样需选择并生效");
-            Check(owner.set_skill_rewrite_binding(subGuard.Id, Guard, out _) &&
-                owner.resolve_combat_skill(Guard)!.gongfa_rewrite_effect_ids.Contains("taihe_c3_jiazhao") &&
-                owner.resolve_combat_skill(Guard)!.gongfa_rewrite_effect_ids.Contains("xuan_shu_c3_jiazhao"), "兼容的多来源化法保持合并");
+            Check(owner.get_skill_rewrite_candidates(bloodChoice.Id).Count == 0 &&
+                !owner.set_skill_rewrite_binding(bloodChoice.Id, "res://resources/activeskills/催血.tres", out _), "拒绝已学但未装配的技能");
+            Check(owner.set_skill_rewrite_binding(strikeChoice.Id, strike, out _), "确认焚元化法绑定成功");
+            Check(owner.resolve_combat_skill(strike)!.gongfa_rewrite_effect_ids.Contains("zhuo_ji_c2_jianzhu"), "已绑定焚元化法进入技能结算副本");
+            Check(owner.resolve_combat_skill(strike)!.combat_source_key == strike &&
+                !GD.Load<ActiveSkillData>(strike).gongfa_rewrite_effect_ids.Contains("zhuo_ji_c2_jianzhu"), "保留原技能身份且不污染共享资源");
+            Check(owner.set_skill_rewrite_binding(guardChoice.Id, Guard, out _) &&
+                owner.resolve_combat_skill(Guard)!.gongfa_rewrite_effect_ids.Contains("baihai_c4_jiazhao"), "辅修架招化法进入技能结算副本");
+
+            var xuanData = new HumanData { entity_name = "玄枢化法验收", cultivation_realm = "云息九层",
+                spirit_root_type = (int)GongfaResource.Wuxing.METAL_WOOD_WATER, spirit_root_name = "三灵根", root_weights = [34,33,33,0,0],
+                main_gongfa_path = XuanBookPath, learned_gongfa_paths = [XuanBookPath], base_physique = 12, base_intelligence = 12, base_soul = 12 };
+            xuanData.learned_gongfa_chapters[XuanBookPath] = new Godot.Collections.Array<string>(xuanBook.get_sorted_chapters().Select(c => c.get_id()));
+            var xuanOwner = new Character(); AddChild(xuanOwner); xuanOwner.load_from_data(xuanData); xuanOwner.Hide();
+            _keep.Add(xuanData);
+            const string Jingzhe = "res://resources/activeskills/玄枢含章经/惊蛰.tres";
+            xuanOwner.set_combat_skill_slot_paths([Jingzhe]);
+            var xuanChoice = xuanOwner.get_skill_rewrite_choices().Single(c => c.Source.StartsWith("玄枢含章经"));
+            Check(xuanChoice.Available && xuanChoice.Title == "惊蛰化法" &&
+                xuanOwner.get_skill_rewrite_candidates(xuanChoice.Id).Single().Key == Jingzhe &&
+                xuanOwner.set_skill_rewrite_binding(xuanChoice.Id, Jingzhe, out _) &&
+                xuanOwner.resolve_combat_skill(Jingzhe)!.gongfa_rewrite_effect_ids.Contains("xuan_shu_c1_jingzhe"),
+                "玄枢主修可将惊蛰化法绑定到招式副本");
             owner.set_combat_skill_slot_paths([Attack, "", strike, "", Guard]);
             Check(owner.get_skill_rewrite_candidates(guardChoice.Id).Single().Slot == 4 &&
-                owner.resolve_combat_skill(Guard)!.gongfa_rewrite_effect_ids.Count >= 2, "换位后绑定跟随技能");
+                owner.resolve_combat_skill(Guard)!.gongfa_rewrite_effect_ids.Contains("baihai_c4_jiazhao"), "换位后绑定继续跟随原技能");
             owner.set_combat_skill_slot_paths([Attack, "", strike]);
             Check(owner.get_skill_rewrite_candidates(guardChoice.Id).Count == 0 &&
-                !owner.resolve_combat_skill(Guard)!.gongfa_rewrite_effect_ids.Contains("xuan_shu_c3_jiazhao"), "卸下技能时暂停生效");
+                !owner.resolve_combat_skill(Guard)!.gongfa_rewrite_effect_ids.Contains("baihai_c4_jiazhao"), "卸下技能时暂停生效");
             owner.set_combat_skill_slot_paths([Attack, Guard, strike]);
-            Check(owner.resolve_combat_skill(Guard)!.gongfa_rewrite_effect_ids.Contains("xuan_shu_c3_jiazhao"), "重新装配原技能后恢复原绑定");
-            owner.set_sub_gongfa_chapter_route(sub, sub.get_sorted_chapters()[2].get_id(), "left");
-            Check(!owner.resolve_combat_skill(Guard)!.gongfa_rewrite_effect_ids.Contains("taihe_c3_jiazhao"), "辅修切换修持后不再应用化法");
-            owner.set_sub_gongfa_chapter_route(sub, sub.get_sorted_chapters()[2].get_id(), "right");
+            Check(owner.resolve_combat_skill(Guard)!.gongfa_rewrite_effect_ids.Contains("baihai_c4_jiazhao"), "重新装配原技能后恢复原绑定");
             var legacy = ArtifactCombatSamples.Create(true, true, "rewrite-guard"); _keep.Add(legacy);
             legacy.bound_basic_card_path = ""; human.artifact_inventory.Add(legacy); human.equipped_artifact_ids.Add(legacy.instance_id);
             var itemChoice = owner.get_skill_rewrite_choices().Single(c => c.Id == "artifact:" + legacy.instance_id);
             Check(owner.get_skill_rewrite_binding(itemChoice) == "" && owner.set_skill_rewrite_binding(itemChoice.Id, Guard, out _), "器物化法通过同一入口选择已装配技能");
             Check(owner.resolve_combat_skill(Guard)!.artifact_block_bonus == legacy.combat_profile!.inner_block_bonus &&
-                owner.resolve_combat_skill(Guard)!.gongfa_rewrite_effect_ids.Contains("xuan_shu_c3_jiazhao"), "器物与秘籍化法共同进入副本");
+                owner.resolve_combat_skill(Guard)!.gongfa_rewrite_effect_ids.Contains("baihai_c4_jiazhao"), "器物与现行秘籍化法共同进入副本");
             human.equipped_artifact_ids.Remove(legacy.instance_id);
             Check(owner.resolve_combat_skill(Guard)!.artifact_block_bonus == 0 &&
                 !owner.get_skill_rewrite_choices().Single(c => c.Id == itemChoice.Id).Available, "卸下器物暂停来源而保留绑定信息");
@@ -81,7 +93,7 @@ public partial class SkillRewriteSelectionSmoke : Node
             Check(product.Effects.Any(e => e.CarrierId == "binding") &&
                 owner.get_skill_rewrite_choices().Any(c => c.Id == "forged:" + forged.instance_id && !c.Available), "读取新成器快照中的条件化法，不冒充已经装备");
             var snapshot = owner.get_snapshot_data(); _keep.Add(snapshot);
-            Check(snapshot.combat_resolved_skills[1].gongfa_rewrite_effect_ids.Contains("xuan_shu_c3_jiazhao"), "战斗快照使用已确认的化法版本");
+            Check(snapshot.combat_resolved_skills[1].gongfa_rewrite_effect_ids.Contains("baihai_c4_jiazhao"), "战斗快照使用已确认的化法版本");
 
             var save = new PersistentGameSave { player_data = human }; _keep.Add(save);
             var path = "user://skill_rewrite_selection_smoke.tres";
@@ -90,7 +102,7 @@ public partial class SkillRewriteSelectionSmoke : Node
             Check(restored.player_data!.skill_rewrite_bindings[guardChoice.Id] == Guard, "正式存档读回稳定来源与原技能绑定");
             var restoredOwner = new Character(); AddChild(restoredOwner); restoredOwner.load_from_data(restored.player_data); restoredOwner.Hide();
             Check(restoredOwner.get_combat_skill_slot_paths()[1] == Guard &&
-                restoredOwner.resolve_combat_skill(Guard)!.gongfa_rewrite_effect_ids.Contains("xuan_shu_c3_jiazhao"),
+                restoredOwner.resolve_combat_skill(Guard)!.gongfa_rewrite_effect_ids.Contains("baihai_c4_jiazhao"),
                 "读档后的角色恢复原技能槽与已确认化法效果");
             DirAccess.RemoveAbsolute(ProjectSettings.GlobalizePath(path));
 
@@ -130,12 +142,14 @@ public partial class SkillRewriteSelectionSmoke : Node
                 capture.SavePng("res://docs/美术规范/化法选择_20261024/化法选择.png");
             }
             owner.unequip_main_gongfa();
-            Check(!owner.resolve_combat_skill(Guard)!.gongfa_rewrite_effect_ids.Contains("xuan_shu_c3_jiazhao"), "主修卸下时暂停该来源化法");
+            Check(owner.resolve_combat_skill(Guard)!.gongfa_rewrite_effect_ids.Contains("baihai_c4_jiazhao") &&
+                !owner.resolve_combat_skill(strike)!.gongfa_rewrite_effect_ids.Contains("zhuo_ji_c2_jianzhu"), "卸下主修只暂停该秘籍化法，辅修绑定继续生效");
             owner.main_gongfa = book; human.main_gongfa_path = BookPath;
             human.skill_rewrite_bindings.Clear();
             owner.set_combat_skill_slot_paths([Attack, LegacyGuard]);
             Check(owner.get_combat_skill_slot_paths()[1] == Guard &&
-                !owner.resolve_combat_skill(Guard)!.gongfa_rewrite_effect_ids.Contains("xuan_shu_c3_jiazhao"), "旧自动版本迁回原技能且不擅自确认化法");
+                !owner.resolve_combat_skill(Guard)!.gongfa_rewrite_effect_ids.Contains("baihai_c4_jiazhao"), "旧自动版本迁回原技能且不擅自确认化法");
+            xuanOwner.QueueFree();
             GD.Print($"SKILL_REWRITE_SELECTION_OK checks={_checks}"); GetTree().Quit();
         }
         catch (Exception error) { GD.PushError("SKILL_REWRITE_SELECTION_FAIL " + error); GetTree().Quit(1); }

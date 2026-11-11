@@ -60,11 +60,12 @@ public partial class JournalPanel : Control
         var background = new TextureRect { Name = "SharedCharacterBackground", Texture = GD.Load<Texture2D>("res://textures/ui/infopanel_fullscreen_bg_v1.png"), ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize, StretchMode = TextureRect.StretchModeEnum.Scale, MouseFilter = MouseFilterEnum.Ignore };
         AddChild(background); background.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         var header = new HBoxContainer(); AddChild(header);
-        header.SetAnchorsAndOffsetsPreset(LayoutPreset.TopWide); header.OffsetLeft = 28; header.OffsetRight = -28; header.OffsetTop = 14; header.OffsetBottom = 70;
+        header.SetAnchorsAndOffsetsPreset(LayoutPreset.TopWide); header.OffsetLeft = 24; header.OffsetRight = -24; header.OffsetTop = 18; header.OffsetBottom = 64;
         var heading = Text("见闻", 32); heading.AutowrapMode = TextServer.AutowrapMode.Off; heading.AddThemeColorOverride("font_color", new Color("eee6d2")); header.AddChild(heading);
         header.AddChild(new Control { SizeFlagsHorizontal = SizeFlags.ExpandFill });
         _time = Text("", 21); _time.AutowrapMode = TextServer.AutowrapMode.Off; header.AddChild(_time);
-        var back = Button("返回", 21); back.CustomMinimumSize = new Vector2(110, 44); back.Pressed += hide_panel; header.AddChild(back);
+        var back = Button("返回", 22); back.CustomMinimumSize = new Vector2(114, 46); back.SizeFlagsVertical = SizeFlags.Fill;
+        CraftingPaperHeader.AddReturnArrow(back); back.Pressed += hide_panel; header.AddChild(back);
         var rail = new PanelContainer(); AddChild(rail); PlaceIn(rail, .016f, .088f, .166f, .974f);
         rail.AddThemeStyleboxOverride("panel", new StyleBoxFlat { BgColor = new Color(.045f, .055f, .05f, .78f), BorderColor = new Color(.72f, .64f, .45f, .38f), BorderWidthRight = 1, ContentMarginLeft = 12, ContentMarginRight = 12, ContentMarginTop = 18 });
         var navScroll = new ScrollContainer { HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled }; rail.AddChild(navScroll);

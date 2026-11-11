@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using System.Globalization;
 using D = Godot.Collections.Dictionary;
 using A = Godot.Collections.Array;
 
@@ -39,6 +40,48 @@ public partial class ForestWolfEventSmoke : Node
         DirAccess.MakeDirRecursiveAbsolute(ProjectSettings.GlobalizePath(folder));
         GetViewport().GetTexture().GetImage().SavePng(folder + "/" + name + ".png");
     }
+    private void CheckHintSources(D original, BattleEntityData input)
+    {
+        var previousMode = PlayerInfoText.Mode;
+        try
+        {
+            foreach (var node in new[] { "root_hollow", "outer_08_08", "outer_13_06" })
+            foreach (var observation in new[] { "", "success", "failure" })
+            {
+                var record = original.Duplicate(true);
+                record["node"] = node; record["observation"] = observation;
+                record["stage"] = observation.Length == 0 ? "opening" : "observe_" + observation;
+                PlayerInfoText.SetMode(PlayerInfoText.InformationMode.Simple, persist: false);
+                var fromSimple = ForestWolfEvent.Describe(record, input);
+                PlayerInfoText.SetMode(PlayerInfoText.InformationMode.Detailed, persist: false);
+                var fromDetailed = ForestWolfEvent.Describe(record, input);
+                Check(fromSimple.Choices.Select(choice => (choice.Id, choice.Hint))
+                    .SequenceEqual(fromDetailed.Choices.Select(choice => (choice.Id, choice.Hint))),
+                    node + "生成完整提示不依赖显示档位：" + observation);
+                foreach (var choice in fromSimple.Choices.Where(choice => choice.Id is "observe" or "drive"))
+                {
+                    var simple = PlayerInfoText.Summary(choice.Hint);
+                    var detailed = PlayerInfoText.Detailed(choice.Hint);
+                    Check(simple.Contains("耗时0.5小时 · 精力1") && !simple.Contains("计算来源") && !simple.Contains("成功率"),
+                        node + choice.Id + "简略保留代价风险且不显示判定来源");
+                    Check(PlayerInfoText.CalculationSources(choice.Hint).Count == 3
+                        && detailed.Contains("人物评分：") && detailed.Contains("凶狼评分：")
+                        && detailed.Contains("神魂[" + input.soul.ToString("0.##", CultureInfo.InvariantCulture) + "]")
+                        && detailed.Split("计算来源", StringSplitOptions.None).Length == 2,
+                        node + choice.Id + "详细恢复三项真实代入且只有一个末尾来源块");
+                    var percent = Math.Round(ForestWolfEvent.Chance(record, choice.Id, input) * 100,
+                        MidpointRounding.AwayFromZero).ToString("0", CultureInfo.InvariantCulture);
+                    Check(detailed.Contains("成功率：" + percent + "% = min(95%,max(5%,")
+                        && PlayerInfoText.Detailed(detailed) == detailed,
+                        node + choice.Id + "显示成功率沿真实判定且重复格式化不变");
+                    if (choice.Id == "drive" && observation.Length > 0)
+                        Check(detailed.Contains(observation == "success" ? "×100%＋15%))" : "×100%－10%))"),
+                            node + "观察修正在最终上下限内计算");
+                }
+            }
+        }
+        finally { PlayerInfoText.SetMode(previousMode, persist: false); }
+    }
     public override async void _Ready()
     {
         ProcessMode = ProcessModeEnum.Always;
@@ -61,6 +104,7 @@ public partial class ForestWolfEventSmoke : Node
             Check(ForestWolfEvent.Wolf(Record) is { dun_speed: 100 }, "首次遭遇固定真实狼快照");
             var wolf = ForestWolfEvent.Wolf(Record)!;
             var baseline = _panel.get_route_state().Duplicate(true);
+            CheckHintSources(Record, _player.get_snapshot_data());
             var time = GetNode<GameTimeMgr>("/root/GameTimeManager");
             var hour = time.get_precise_game_hours(); var stamina = _player.current_world_stamina;
             await Capture("01_首次遭遇_1080");

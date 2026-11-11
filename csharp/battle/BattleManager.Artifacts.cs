@@ -50,11 +50,15 @@ public partial class BattleManager
     {
         var copied=gongfa_combat.GetLastNonResponseSkill(owner);
         if(copied is null||CardRules.IsResponse(copied)||copied.skill_name=="复命"||!is_skill_ready(owner,copied)||!HasLegalSkillTarget(owner,copied))return false;
-        var (firstEnergy,secondEnergy)=gongfa_combat.PreviewSequentialEnergyCosts(owner,fuming,copied);
-        if(copied.skill_type==ActiveSkillData.SkillType.MOVEMENT)
-            secondEnergy=Mathf.CeilToInt(secondEnergy*BattleWoundRules.get_energy_cost_multiplier(get_realtime_wound_counts(owner),copied));
-        var mana=get_skill_mana_cost(owner,fuming)+get_skill_mana_cost(owner,copied);
-        return owner.Get("current_stamina").AsInt32()>=firstEnergy+secondEnergy&&can_pay_mana_amount(owner,mana);
+        var fees=gongfa_combat.PreviewBoardPayments(owner,fuming,copied);
+        var energy=fees.Sum(fee=>fee.Energy);
+        var mana=fees.Sum(fee=>fee.Mana);
+        var capacity=fees.Sum(fee=>fee.Capacity);
+        var shortfall=Math.Max(0,mana-Math.Max(0,owner.Get("current_mana").AsInt32()));
+        var capacityNeeded=capacity+shortfall;
+        var capacityAvailable=Math.Max(0,get_effective_mana_capacity(owner)-1);
+        var canBurnShortfall=shortfall==0||gongfa_combat.HasPower(owner,"斫基损契");
+        return owner.Get("current_stamina").AsInt32()>=energy&&capacityNeeded<=capacityAvailable&&canBurnShortfall;
     }
 
     private bool CanPayFumingCopyAfterItsOwnCast(GodotObject owner,ActiveSkillData copied)
@@ -66,6 +70,7 @@ public partial class BattleManager
 
     public bool BeginFumingReplay(GodotObject owner,ActiveSkillData fuming,bool finishAsAutomatic,bool isSlot10Automatic=false)
     {
+        if (_boardMode) return BeginBoardReplay(owner, fuming, isSlot10Automatic);
         var copied=gongfa_combat.GetLastNonResponseSkill(owner);
         if(copied is null||!CanPayFumingCopyAfterItsOwnCast(owner,copied))
         {
@@ -79,11 +84,6 @@ public partial class BattleManager
             return false;
         }
         var replay=copied.Duplicate(true) as ActiveSkillData??copied;
-        if(fuming.gongfa_rewrite_effect_ids.Contains("xuan_shu_c4_fuming"))
-        {
-            if(!replay.gongfa_rewrite_effect_ids.Contains("xuan_shu_c4_fuming"))replay.gongfa_rewrite_effect_ids.Add("xuan_shu_c4_fuming");
-            if(!replay.tags.Contains("护盾"))replay.tags.Add("护盾");
-        }
         Pay(owner,replay);
         gongfa_combat.Before(owner,replay,recordAsLastCast:false);
         StartSkillCooldown(owner,copied);
@@ -127,6 +127,7 @@ public partial class BattleManager
 
     public void on_automatic_skill_resolved(GodotObject owner)
     {
+        if (CompleteBoardCast(owner)) return;
         ReleaseForgedSpirit(owner);
         if(!_runningZhouTianAutoCasts.Remove(owner))return;
         if(TryStartPendingZhouTianAutoCast(owner))return;

@@ -65,7 +65,6 @@ public partial class CondensationBalanceSmoke : Control
             human.main_gongfa_path = book.ResourcePath; player.main_gongfa = book;
             human.world_status_records.Clear(); player.refresh_gongfa_effects();
             Read<StoryDialoguePanel?>(main, "story_dialogue")?.Hide();
-            Read<OpeningIntro?>(main, "opening_intro")?.Hide();
             Check(player.can_attempt_condensation_breakthrough(), "Formal six-to-seven entry unavailable.");
             var panel = Read<CondensationCardGamePanel>(main, "condensation_panel");
             var reports = 0;
@@ -74,11 +73,26 @@ public partial class CondensationBalanceSmoke : Control
             Call(main, "open_condensation", player);
             Check(panel.Visible && !Read<bool>(panel, "_testMode"), "MainScene did not open formal mode.");
             Check(Read<List<string>>(panel, "_items").Count == 0, "Formal mode has items.");
+            var formalReturn = Read<Button>(panel, "_returnButton");
+            Check(formalReturn.Visible && formalReturn.Text == "返回修炼" && (formalReturn.GetThemeStylebox("normal") as StyleBoxTexture)?.Texture == CondensationUiArt.Rest && !Read<Button>(panel, "_restartButton").Visible, "Formal navigation buttons do not use the original end-turn artwork and visibility.");
+            var formalButtons = panel.FindChildren("*", "Button", true, false).OfType<Button>().Where(b => b.IsVisibleInTree() && !string.IsNullOrWhiteSpace(b.Text)).ToArray();
+            Check(formalButtons.Length > 5 && formalButtons.All(b => (b.GetThemeStylebox("normal") as StyleBoxTexture)?.Texture == CondensationUiArt.Rest), "Visible formal buttons do not share the original end-turn artwork.");
+            var returnTextWidth = formalReturn.GetThemeFont("font").GetStringSize(formalReturn.Text, HorizontalAlignment.Left, -1, formalReturn.GetThemeFontSize("font_size")).X;
+            Check(returnTextWidth + 8 <= formalReturn.Size.X + 1, "Formal return button text is clipped.");
             await Capture(panel, "setup");
             Call(panel, "ShowRewards", new Action(() => Call(panel, "ShowSetup")));
             await Capture(panel, "rewards");
             Check(Labels(panel).Any(label => label.Text.Contains("体魄、灵慧、神魂各定额＋0.25")), "Missing pre-game equal-reward rule.");
             Call(panel, "ShowSetup");
+            Call(panel, "BeginGame");
+            var initial = Read<CondensationCardGame>(panel, "_game");
+            var opening = Read<Control>(panel, "_modal");
+            Check(Read<bool>(panel, "_openingSwapPending") && opening.Visible && initial.SwapOpen, "Formal start did not open the starting-hand choice.");
+            ((Button)opening.FindChild("OpeningCard0", true, false)!).EmitSignal(BaseButton.SignalName.Pressed);
+            ((Button)opening.FindChild("OpeningCard1", true, false)!).EmitSignal(BaseButton.SignalName.Pressed);
+            opening.FindChildren("*", "Button", true, false).OfType<Button>().First(b => b.Text == "换牌并开始").EmitSignal(BaseButton.SignalName.Pressed);
+            Check(!opening.Visible && !initial.SwapOpen && initial.Actions == 3 && initial.Hand.Count == 6 && human.spirit_strands == 144, "Formal opening exchange did not start the same game correctly.");
+            await Capture(panel, "formal_play");
 
             var failed = CreateGame(panel, 0);
             while (!failed.Finished) failed.EndRound();
@@ -130,6 +144,13 @@ public partial class CondensationBalanceSmoke : Control
 
             var originalScore = player.condensation_final_score;
             panel.ShowFor(player, true);
+            var trialRestart = Read<Button>(panel, "_restartButton");
+            Check(trialRestart.Visible && (trialRestart.GetThemeStylebox("normal") as StyleBoxTexture)?.Texture == CondensationUiArt.Rest, "Trial restart button is missing the original end-turn artwork.");
+            Call(panel, "BeginGame");
+            var trialOpening = Read<CondensationCardGame>(panel, "_game");
+            Check(Read<bool>(panel, "_openingSwapPending") && trialOpening.SwapOpen, "Trial did not open the starting-hand choice.");
+            Read<Control>(panel, "_modal").FindChildren("*", "Button", true, false).OfType<Button>().First(b => b.Text == "不换，直接开始").EmitSignal(BaseButton.SignalName.Pressed);
+            Check(!trialOpening.SwapOpen && !Read<Control>(panel, "_modal").Visible && player.condensation_final_score == originalScore, "Skipping trial opening changed formal data or did not start.");
             var trial = CreateGame(panel, 7); CondensationBalanceAuditPolicy.Run(trial, 3);
             Write(panel, "_game", trial); Call(panel, "ShowResult");
             Check(reports == 2 && player.condensation_final_score == originalScore, "Trial wrote a formal result.");

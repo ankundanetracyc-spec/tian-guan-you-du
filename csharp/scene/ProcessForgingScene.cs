@@ -14,7 +14,7 @@ public partial class ProcessForgingScene : Control
     private ScrollContainer? _inputScroll;
     private int _scroll;
     private long _revision;
-    private string _notice = "先配材料，再开炼揭晓；样方仅填入材料，不指定成品。";
+    private string _notice = "";
     private readonly Dictionary<string, Button> _buttons = [];
     private int _inputGroup;
     private Character? _forgingOwner;
@@ -49,6 +49,7 @@ public partial class ProcessForgingScene : Control
     {
         SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect); MouseFilter = MouseFilterEnum.Stop;
         Theme = QuietRoomStyle.MakeTheme();
+        ForgingSurfacePalette.ConfigureTheme(Theme);
         Theme.SetColor("font_placeholder_color", "LineEdit", new Color("797d6e"));
         _model = new ProcessForgingTrial(); _session = new ProcessForgingTrial.Session(_model.Parameters.Profiles.Keys);
         var bg = new TextureRect { Texture = GD.Load<Texture2D>(ForgingInkStyle.Assets + "ink_workshop.png"), ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
@@ -69,13 +70,36 @@ public partial class ProcessForgingScene : Control
         var header = Paper(_page, 24, 18, 1624, 76);
         Put(header, Btn("〈 返回", () => { if (_forgingOwner is not null) ReturnToBaigong(); else GetTree().ChangeSceneToFile("res://tscn/scene/StartMenu.tscn"); }), 15, 13, 106, 48);
         Put(header, Text("炼 器", 34), 150, 12, 150, 50);
-        Put(header, Text("剑类 · 材料成器", 21), 312, 25, 325, 34);
+        Put(header, Btn("器类：剑", PickArtifactCategory), 312, 15, 235, 46);
+        if (_forgingOwner is not null && _forgingOwner.entity_data is HumanData growthData)
+        {
+            double growth = Math.Min(Character.ForgingEntryGrowth,
+                Math.Max(0, 100 - growthData.forging_proficiency));
+            var study = Btn(_forgingOwner.HasCompletedForgingEntry ? "器理已研习" : "研习器理", StudyForgingEntry);
+            study.Name = "ForgingEntryStudyButton";
+            study.TooltipText = _forgingOwner.HasCompletedForgingEntry
+                ? "器理入门已研习；器道实践成长记录随人物存档。"
+                : $"研习后器道造诣+{growth:0.#}，消耗精力{growth * Character.ArtisanStudyEnergyPerPoint:0.#}、用时{growth:0.#}时辰。";
+            study.Disabled = _forgingOwner.HasCompletedForgingEntry || growth <= 0 ||
+                !_forgingOwner.can_spend_world_stamina((float)(growth * Character.ArtisanStudyEnergyPerPoint));
+            Put(header, study, 550, 15, 105, 46);
+        }
         Put(header, Btn("参考投料", Examples), 665, 15, 165, 46);
         Put(header, Text("炼器造诣", 19), 867, 25, 115, 32);
         Put(header, Text(_draft.Proficiency.ToString(), 23), 984, 25, 112, 32);
         Put(header, Btn($"器物册 · {OwnedArtifacts().Count}", Gallery), 1130, 15, 210, 46);
         Put(header, Btn("炼器说明", Help), 1385, 15, 205, 46);
         BuildInputs(); BuildProcess(); BuildCosts();
+        RefreshNativeFirePreview();
+    }
+    private void PickArtifactCategory()
+    {
+        var panel = Overlay("选择器类", 750, 380);
+        Put(panel, Btn("剑", CloseOverlay), 30, 105, 320, 80);
+        var boat = Btn("舟 · 尚未开放", () => { });
+        boat.Disabled = true;
+        boat.Name = "SpiritBoatCategoryPending";
+        Put(panel, boat, 380, 105, 320, 80);
     }
     private void Craft()
     {
@@ -87,8 +111,21 @@ public partial class ProcessForgingScene : Control
         else result = _session.Submit(_model, _draft, _revision, SpiritCapacity, OtherSpirit);
         _notice = result.CanSubmit ? result.Success ? (_forgingOwner is null ? "本次成器已记入器物册。" : "本次成器已收入行囊。") : "本次未成器；已消耗投料与本次用度。" : string.Join("；", result.Errors);
         Refresh();
-        if (result.Success) ShowArtifact(result.Product!, 0);
+        if (result.Success) ShowArtifact(result.Product!, 0, result.ProficiencyGrowth);
         else Message(result.CanSubmit ? "本次未成器" : "未能开炼", string.Join("\n", result.Errors.Concat(result.Failures)) + (result.CanSubmit ? $"\n\n本次用度：{result.Hours}时辰、{result.Energy}精力。" : "\n\n未扣除材料。"));
+    }
+    private void StudyForgingEntry()
+    {
+        if (_forgingOwner is null) return;
+        if (!_forgingOwner.TryStudyForgingEntry(out float growth, out float energy, out double shichen,
+            out string reason))
+        {
+            Message("暂不能研习", reason);
+            return;
+        }
+        _notice = $"器道造诣+{growth:0.#}；本次研习耗精力{energy:0.#}、{shichen:0.#}时辰。";
+        Refresh();
+        Message("器理入门", $"你完成了入门研习，器道造诣提升 {growth:0.#}。造诣只影响之后的炼制。\n\n本次消耗精力 {energy:0.#}，用时 {shichen:0.#} 时辰。");
     }
     private void Examples()
     {
@@ -106,7 +143,7 @@ public partial class ProcessForgingScene : Control
     {
         CloseOverlay(); _draft = _model.ExampleDraft(index);
         if (_forgingOwner?.entity_data is HumanData ownerData) _draft.Proficiency = Math.Clamp((int)ownerData.forging_proficiency, 0, 100);
-        _scroll = 0; _notice = "已载入“" + _model.Parameters.Examples[index].Name + "”，可继续调整投料。"; Edit();
+        _scroll = 0; _notice = ""; Edit();
     }
     private string MaterialInfo(string name, string role)
     {
@@ -163,7 +200,8 @@ public partial class ProcessForgingScene : Control
         if (artifacts.Count == 0) list.AddChild(Wrap("尚无成器。先选择参考投料或自行配料，开炼后再来查看。", 23));
         foreach (var artifact in artifacts)
         {
-            var b = Btn(artifact.Name + " · " + artifact.Tier + "\n锋锐 " + artifact.Sharpness + " · " + ProcessForgingTrial.PolarityLabel(artifact.Polarity), () => ShowArtifact(artifact, 0));
+            var property = artifact.Category == "剑" ? "锋锐 " + artifact.Sharpness + " · " : "";
+            var b = Btn(artifact.Name + " · " + artifact.Tier + "\n" + property + ProcessForgingTrial.PolarityLabel(artifact.Polarity), () => ShowArtifact(artifact, 0));
             b.Name = "ForgedArtifactItem_" + artifact.InstanceId;
             b.Icon = ForgedArtifactPresentation.Icon(artifact); b.ExpandIcon = true; b.AddThemeConstantOverride("icon_max_width", 160);
             b.CustomMinimumSize = new Vector2(0, 85); b.SizeFlagsHorizontal = SizeFlags.ExpandFill; list.AddChild(b);
@@ -181,14 +219,17 @@ public partial class ProcessForgingScene : Control
     {
         if (_overlay is not null && e.IsActionPressed("ui_cancel")) { CloseOverlay(); GetViewport().SetInputAsHandled(); }
     }
-    private void ShowArtifact(ProcessForgingTrial.Artifact artifact, int tab)
+    private void ShowArtifact(ProcessForgingTrial.Artifact artifact, int tab, float attainmentGrowth = 0)
     {
         var panel = Overlay(artifact.Name + " · " + artifact.Tier + "", 1460, 810);
         var tabs = new HBoxContainer(); tabs.AddThemeConstantOverride("separation", 14); Put(panel, tabs, 28, 76, 1390, 46);
         string[] names = ["器物信息", "能力详情", "炼制记录"];
-        for (int i = 0; i < names.Length; i++) { int index = i; var b = Btn(names[i], () => ShowArtifact(artifact, index)); b.CustomMinimumSize = new Vector2(210, 45); if (tab == i) ForgingInkStyle.Button(b, true); tabs.AddChild(b); }
-        var trial = Btn("携器对练", () => OpenEquipmentTrial(artifact));
-        trial.Name = "EnterEquipmentTrial"; tabs.AddChild(trial);
+        for (int i = 0; i < names.Length; i++) { int index = i; var b = Btn(names[i], () => ShowArtifact(artifact, index, attainmentGrowth)); b.CustomMinimumSize = new Vector2(210, 45); if (tab == i) ForgingInkStyle.Button(b, true); tabs.AddChild(b); }
+        if (artifact.Category == "剑")
+        {
+            var trial = Btn("携器对练", () => OpenEquipmentTrial(artifact));
+            trial.Name = "EnterEquipmentTrial"; tabs.AddChild(trial);
+        }
         var list = ScrollList(panel, 32, 145, 1392, 616);
         void Add(string text, int size = 22) => list.AddChild(Wrap(text, size));
         if (tab == 0)
@@ -205,11 +246,12 @@ public partial class ProcessForgingScene : Control
             {
                 Add(section.Title, 26); Add(section.Body, 21);
             }
+            if (attainmentGrowth > 0) Add($"本次炼器后，器道造诣提升 {attainmentGrowth:0.#}；该成长只影响之后的炼制。", 21);
         }
         else if (tab == 1)
         {
             Add("实际能力", 26);
-            if (artifact.Effects.Count == 0) Add("本器只有剑的本体性能。");
+            if (artifact.Effects.Count == 0) Add(artifact.Category == "剑" ? "本器只有剑的本体性能。" : "本器没有额外能力。");
             foreach (var effect in artifact.Effects.Where(x => !x.Special))
             {
                 Add(ForgedArtifactPresentation.EffectDetails(effect), 21);
@@ -223,6 +265,7 @@ public partial class ProcessForgingScene : Control
         {
             Add($"炼制造诣 {artifact.Proficiency}  ／  本次成器：{artifact.Tier}", 24);
             Add($"本次用度：{artifact.CraftingHours}时辰 / {artifact.CraftingEnergy}精力", 20);
+            if (attainmentGrowth > 0) Add($"本次成长：器道造诣+{attainmentGrowth:0.#}", 20);
             Add("材料五行来源：" + string.Join("、", artifact.MaterialElementContributions.Keys.OrderBy(x => x, StringComparer.Ordinal).DefaultIfEmpty("无行")), 20);
             foreach (var source in artifact.Sources.OrderBy(x => Array.IndexOf(ProcessForgingTrial.RoleOrder, x.Input.Role)))
                 Add($"{RoleLabel(source.Input.Role)} · {source.Input.Material} ×{source.Input.Quantity}", 21);
@@ -258,10 +301,10 @@ public partial class ProcessForgingScene : Control
     }
     private static Label Text(string text, int size = 20) => QuietRoomStyle.Text(DisplayText(text), size);
     private static Label Wrap(string text, int size = 20) { var l = Text(text, size); l.AutowrapMode = TextServer.AutowrapMode.WordSmart; l.SizeFlagsHorizontal = SizeFlags.ExpandFill; return l; }
-    private static Button Btn(string text, Action action) { var b = new Button { Text = DisplayText(text), MouseDefaultCursorShape = CursorShape.PointingHand }; ForgingInkStyle.Button(b); b.Pressed += action; return b; }
+    private static Button Btn(string text, Action action) { var b = new Button { Text = DisplayText(text), MouseDefaultCursorShape = CursorShape.PointingHand }; ForgingSurfacePalette.Button(b); b.Pressed += action; return b; }
     private static void Put(Control parent, Control node, float x, float y, float w, float h) { parent.AddChild(node); node.Position = new Vector2(x, y); node.Size = new Vector2(w, h); }
     private static Control Paper(Control parent, float x, float y, float w, float h, float alpha = .97f)
-    { var panel = new Panel { MouseFilter = MouseFilterEnum.Pass }; panel.AddThemeStyleboxOverride("panel", ForgingInkStyle.Paper(h > w * 1.3f, alpha, padding: 0, plain: w / h > 7)); Put(parent, panel, x, y, w, h); QuietRoomStyle.Frame(panel); return panel; }
+    { var panel = new Panel { MouseFilter = MouseFilterEnum.Pass }; panel.AddThemeStyleboxOverride("panel", ForgingSurfacePalette.PanelPaper(h > w * 1.3f, alpha, padding: 0, plain: w / h > 7)); Put(parent, panel, x, y, w, h); QuietRoomStyle.Frame(panel); return panel; }
 }
 
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 /// <summary>Isolated UI interaction checks; never reads or writes a real journey.</summary>
 public partial class InformationPanelSmoke : Node
 {
-    private const string Evidence = "res://docs/美术规范/信息栏整理_20261025/";
+    private const string Evidence = "res://docs/美术规范/悬停公式与长段排版统一_20261109/信息栏/";
     private int _checks;
     private void Check(bool ok, string message)
     {
@@ -71,7 +71,7 @@ public partial class InformationPanelSmoke : Node
                 var summary = PlayerInfoText.Summary(full);
                 Check(!System.Text.RegularExpressions.Regex.IsMatch(summary, @"计算公式|计算方式|\b(?:max|min|round|floor|ceil|clamp)\s*\("), "技能资源默认说明无公式 " + resourcePath);
                 var result = System.Text.RegularExpressions.Regex.Match(full, @"当前预估造成\s+\d+(?:\.\d+)?");
-                if (result.Success) Check(summary.Contains(result.Value), "预估效果数值保留 " + resourcePath);
+                if (result.Success) Check(summary.Contains(result.Value.Replace("预估", "")), "最终效果数值保留 " + resourcePath);
                 auditedSkills++;
             }
             GD.Print("INFORMATION_SKILL_RESOURCES_AUDITED " + auditedSkills);
@@ -95,7 +95,7 @@ public partial class InformationPanelSmoke : Node
             var hideInfo = StoragePanel.ItemHover(hideItem, 99);
             Check(hideInfo == StoragePanel.ItemHover(hideItem, 1) || hideInfo.Body == StoragePanel.ItemHover(hideItem, 1).Body, "材料信息不随持有数量变化");
             Check(PlayerInfoText.Summary(hideInfo.Body).Contains("品阶：9品上") && hideInfo.Body.Contains("固·九品、护·九品") && hideInfo.Body.TrimEnd().EndsWith("简介："), "兽皮保留真实品阶和功用品级及空简介");
-            Check(!PlayerInfoText.Summary(hideInfo.Body).Contains("×") && PlayerInfoText.Detailed(hideInfo.Body).Contains("（材评1×2＋1×0.5＝2.5"), "材料两档只改变品阶公式展示");
+            Check(!PlayerInfoText.Summary(hideInfo.Body).Contains("×") && PlayerInfoText.Detailed(hideInfo.Body).Contains("材评：2.5 = 1×2＋1×0.5"), "材料两档只改变末尾品阶计算来源");
             Move(Center(material)); HoverInfoManager.SetInfo(material, materialInfo, true); await Settle();
             Check(hover.Visible && !popup.Visible, "悬停有信息，无操作菜单"); Fits(hover);
             Check(hover.FindChildren("*", "ScrollContainer", true, false).OfType<ScrollContainer>().All(s => s.VerticalScrollMode == ScrollContainer.ScrollMode.Disabled), "详情无内部滚动条");
@@ -193,7 +193,7 @@ public partial class InformationPanelSmoke : Node
                 var liveRich = new RichTextLabel(); AddChild(liveRich); PlayerInfoText.Bind(liveRich, sample);
                 Check(liveLabel.Text.Contains("8层周流") && !liveLabel.Text.Contains("×"), "简略模式保留结果");
                 selector!.Select(1); selector.EmitSignal(OptionButton.SignalName.ItemSelected, 1L);
-                Check(liveLabel.Text.Contains("8层周流（体魄[10]×0.8 = 8）") && liveRich.Text == liveLabel.Text, "设置立即将存量文字切至括号公式");
+                Check(liveLabel.Text.Contains("8层周流。\n\n计算来源\n8 = 体魄[10]×0.8") && liveRich.Text == liveLabel.Text, "设置立即将存量文字切至末尾独行计算来源");
                 Check(!liveLabel.Text.Contains("只计当前"), "详细模式不恢复通用结算噪声");
                 var saved = new ConfigFile(); Check(saved.Load(GameSettingsPanel.SettingsPath) == Error.Ok && saved.GetValue("interface", "information_detail").AsInt32() == 1, "详细模式持久保存");
                 settings.QueueFree(); await Settle();
@@ -204,7 +204,7 @@ public partial class InformationPanelSmoke : Node
                 var detailInfo = CombatSkillBar.BuildSkillHoverInfo(owner, GD.Load<ActiveSkillData>("res://resources/activeskills/痛击.tres"), null);
                 Move(Center(anchor)); HoverInfoManager.SetInfo(anchor, detailInfo, true); await Settle();
                 var body = hover.FindChildren("*", "RichTextLabel", true, false).OfType<RichTextLabel>().Single();
-                Check(body.Text.Contains("伤害（") && body.Text.Contains("体魄["), "详细悬停在效果后紧接公式");
+                Check(body.Text.Contains("计算来源[/b][/color]\n") && body.Text.Contains("体魄["), "详细悬停在正文末尾分行显示公式");
                 Check(!body.Text.Contains("只计当前已生效") && !body.Text.Contains("计算公式："), "详细悬停没有公式标题与通用结算清单");
                 Fits(hover); await Capture("10_详细版技能公式");
                 PlayerInfoText.SetMode(PlayerInfoText.InformationMode.Simple, persist: false); await Settle();
@@ -215,7 +215,7 @@ public partial class InformationPanelSmoke : Node
                 await Settle(); Move(Center(anchor));
                 HoverInfoManager.SetInfo(anchor, CombatSkillBar.BuildSkillHoverInfo(owner, GD.Load<ActiveSkillData>("res://resources/activeskills/百骸衍枝化生宝册/化法/架招第四卷.tres"), null), true);
                 await Settle(); Fits(hover);
-                Check(body.Text.Contains("（") && body.Text.Contains("体魄["), "小窗口长技能保留详细公式");
+                Check(body.Text.Contains("计算来源") && body.Text.Contains("体魄["), "小窗口长技能保留末尾详细公式");
                 await Capture("11_小窗口详细版长技能");
                 HoverInfoManager.SetInfo(anchor, hideInfo, true); await Settle(); Fits(hover);
                 Check(body.Text.Contains("简介：") && !body.Text.Contains("数量") && !body.Text.Contains("分类"), "小窗口材料简介占位与通用字段可见");
@@ -270,7 +270,8 @@ public partial class InformationPanelSmoke : Node
                 }
                 var heal = GD.Load<PillItemData>("res://resources/entities/items/alchemy/huichun_1.tres");
                 Check(PlayerInfoText.Summary(AlchemyPillVisual.Hover(heal).Body).Contains("恢复18点生命值") && AlchemyPillVisual.Hover(heal).Body.TrimEnd().EndsWith("简介："), "回春药效与空简介保持");
-                Check(PlayerInfoText.Detailed(AlchemyPillVisual.Hover(heal).Body).Contains("＋10（向上取整(8×1.2)＝10）"), "详细丹毒公式与实际值一致");
+                Check(PlayerInfoText.Summary(AlchemyPillVisual.Hover(heal).Body).Contains("＋10")
+                    && PlayerInfoText.Detailed(AlchemyPillVisual.Hover(heal).Body).Contains("10 = (8×1.2)"), "详细丹毒计算来源与实际值一致");
                 data.pill_toxicity = 40;
                 data.pill_toxicity_last_game_hour = -1;
                 var absorbed = AlchemyPillVisual.Hover(heal, user: owner);

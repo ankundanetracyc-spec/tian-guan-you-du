@@ -29,8 +29,7 @@ public partial class NpcInteractionPageSmoke : Node
                 current_node_id = "white_stone_town", npc_population_version = 1, npc_simulation_enabled = false,
                 player_data = new HumanData { entity_name = "沈照微", cultivation_realm = "云息三层", current_age = 18,
                     base_physique = 5, base_intelligence = 5, base_soul = 5, current_world_stamina = 73 },
-                scene_progress = new D { ["qingxi_prologue"] = 3, ["cloud_state_initialized"] = true, ["xuanjian_awakened"] = true,
-                    ["baishi_lecture"] = new BaishiLectureProgress { departed_qingxi = true, fang_returned = true, finished = true } } };
+                scene_progress = new D { ["story_free_start"] = true, ["cloud_state_initialized"] = true, ["baishi_lecture"] = new BaishiLectureProgress { departed_qingxi = true, fang_returned = true, finished = true } } };
             fixture.node_world_state["current_node"] = "bc_place_021";
             const string item = "res://resources/entities/items/兽骨.tres";
             var npc = new WorldNpcData { npc_id = "npc_page_smoke", npc_name = "陆衡", faction_id = "baopu_shan",
@@ -62,7 +61,9 @@ public partial class NpcInteractionPageSmoke : Node
             interior.show_baishi_space(nodes.get_node("white_stone_town")!, world, "inn"); await Frames();
             main.open_world_npc_actions(npc); await Frames();
             var page = Read<NpcInteractionPanel>(main, "npc_interactions");
-            Check(page.Visible && !Button(page, "切磋").Disabled && !Button(page, "攻击").Disabled, "非同门交手入口未开放");
+            Check(page.Visible && !Button(page, "切磋").Disabled && Button(page, "攻击").Disabled, "城中应允许邀约切磋并禁止私斗");
+            nodes.get_node("white_stone_town")!.hostile_combat_policy = WorldConflictRules.Policy.Allowed;
+            main.open_world_npc_actions(npc);
             var stale = Button(page, "攻击"); main.open_world_npc_actions(other); stale.EmitSignal(BaseButton.SignalName.Pressed);
             Check(page.get_displayed_npc_id() == other.npc_id && Button(page, "攻击") is not null, "换人后旧按钮攻击了新人物");
             main.open_world_npc_actions(npc); Press(page, "攻击"); await Frames();
@@ -159,8 +160,10 @@ public partial class NpcInteractionPageSmoke : Node
                 {
                     Check(!npc.is_alive && npc.current_health == 0 && npc.death_cause.Contains("玩家"), "目标死亡未持久化或死因错误");
                     Check(!world.get_subscene_roster("white_stone_town", "inn").Any(n => n.npc_id == npc.npc_id), "死者仍可在左侧名单交互");
-                    Check(main.has_active_item_claim(), "实际随身物品未进入领取流程");
+                    await Until(() => !transition.is_flow_transition_active() && main.has_active_item_claim(), "实际随身物品未进入领取流程");
+                    Check(main.has_active_item_claim(), "实际随身物品进入领取流程");
                     Call(Read<ItemClaimPanel>(main, "_active_item_claim"), "claim_selected_items"); await Frames();
+                    Check(!GetTree().Paused, "领取后未恢复正常游戏");
                     Check(npc.get_carried_item_count(item) == 0 && player.get_inventory_total_count(item) >= 2, "战利品未从实际携带账转移");
                     Check(incident.item_transfers.Count == 1 && incident.item_transfers[0].quantity == 2,
                         $"未记录实际领取物品：{incident.item_transfers.Count} 条，当前案卷 {world.get_east_woods_incident(incidentId)!.item_transfers.Count} 条；账 {transition.export_reward_ledger()}");

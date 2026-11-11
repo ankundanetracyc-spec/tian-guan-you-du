@@ -13,14 +13,22 @@ public static class CompactDungeonExpedition
     public const string EntryNodeId = "fern_00";
     public const string ExitNodeId = "fern_08";
     public const int NodeCount = 9;
-    public static bool IsWolfNode(string id) => id is "fern_02" or "fern_05" or "fern_07";
+    public static bool IsBeastNode(string id) => CreatureIdForNode(id).Length > 0;
+    public static bool IsWolfNode(string id) => IsBeastNode(id); // Compatibility name used by older encounter checks.
+    public static string CreatureIdForNode(string id) => id switch
+    {
+        "fern_02" => "forest_wolf",
+        "fern_05" => "gray_back_boar",
+        "fern_07" => "forest_bei_pack",
+        _ => "",
+    };
 
     internal static GDictionary GenerateLayout(string seed)
     {
         var nodes = new GArray();
         var edges = new GArray();
-        string[] titles = ["林缘入口", "蕨下根丛", "林径凶狼", "疏林空地", "背阴苔地", "盘根凶狼", "老树根丛", "山口凶狼", "山口出口"];
-        string[] descriptions = ["通往东林地林缘的实体出口。", "蕨叶下长着有限的苦苔根。", "林地凶狼活动于狭窄林径，抵达后先查看战前信息。", "短暂开阔的林间地面，可决定继续前进或原路返回。", "背阴湿地附着少量月露苔。", "凶狼伏在盘根附近，仍可自行决定是否开战。", "老树根旁还有一丛苦苔根。", "接近山口时可见一头林地凶狼。", "沿实体出口返回入场地点，不额外发放通关奖。"];
+        string[] titles = ["林缘入口", "蕨下根丛", "林径凶狼", "疏林空地", "背阴苔地", "灰背野猪", "老树根丛", "狼狈相依", "山口出口"];
+        string[] descriptions = ["通往东林地林缘的实体出口。", "蕨叶下长着有限的苦苔根。", "林地凶狼活动于狭窄林径，抵达后先查看战前信息。", "短暂开阔的林间地面，可决定继续前进或原路返回。", "背阴湿地附着少量月露苔。", "灰背野猪在盘根间拱食草根，受惊时会正面冲撞。", "老树根旁还有一丛苦苔根。", "林地妖狈与凶狼一同活动，狈首本能会助狼群围猎。", "沿实体出口返回入场地点，不额外发放通关奖。"];
         for (var index = 0; index < NodeCount; index++)
         {
             var resource = index is 1 or 6 ? "common_herb" : index == 4 ? "common_moss" : "";

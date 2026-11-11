@@ -27,11 +27,9 @@ public partial class BaiChuanMapInteractionSmoke : Node
             while (!main.StartupComplete && Time.GetTicksMsec() < limit) await Frames();
             Check(main.StartupComplete && main.StartupError is null, "start: " + main.StartupError);
             typeof(MainScene).GetField("_skipExitSave", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(main, true);
-            var stage = typeof(MainScene).GetField("_qingxi_prologue", BindingFlags.Instance | BindingFlags.NonPublic)!;
-            stage.SetValue(main, Enum.Parse(stage.FieldType, "Departed"));
+            typeof(MainScene).GetField("_story_free_start", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(main, true);
             typeof(MainScene).GetField("_baishiLecture", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(main, null);
             (typeof(MainScene).GetField("story_dialogue", BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(main) as Control)?.Hide();
-            typeof(MainScene).GetField("_active_quest", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(main, null);
             typeof(MainScene).GetMethod("RefreshJournalTracker", BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(main, []);
             typeof(MainScene).GetMethod("open_world", BindingFlags.Instance | BindingFlags.NonPublic)!.Invoke(main, []);
             await Frames(8);

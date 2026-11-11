@@ -17,6 +17,7 @@ public partial class BattleUnitOverlay : CanvasLayer
     private int hoveredStatusCount;
     private Button? pauseButton;
     private Button? speedButton;
+    private Button? autoButton;
     private Button? retreatButton;
     private Label? retreatNotice;
     private ulong _feedbackObstacleFrame=ulong.MaxValue;
@@ -28,12 +29,16 @@ public partial class BattleUnitOverlay : CanvasLayer
         AddToGroup("battle_unit_overlays");
         var controls=new CanvasLayer{Name="BattleControlsCanvas",Layer=BattlePresentationLayers.HudCanvas};AddChild(controls);
         targetFrames=new TargetFrameLayer();AddChild(targetFrames);
-        var speed=new Button{Size=new(140,40)};
+        autoButton=new Button{Name="AutoBattleButton",Size=new(110,40),TooltipText="自动规划玩家的技能与目标；不会自动安排服丹或撤退。开启会替换未确认的队列，行动中关闭后下轮可手动规划。"};
+        BattleUiArt.Skin(autoButton);autoButton.AddThemeFontSizeOverride("font_size",17);controls.AddChild(autoButton);
+        autoButton.Pressed+=manager.toggle_auto_battle;
+        refresh_auto_button();
+        var speed=new Button{Size=new(120,40)};
         speedButton=speed;BattleUiArt.Skin(speed);speed.Icon=BattleUiArt.Texture("icon_speed");speed.ExpandIcon=true;speed.AddThemeConstantOverride("icon_max_width",22);
         speed.AddThemeFontSizeOverride("font_size",20);controls.AddChild(speed);
         refresh_speed_button();
         speed.Pressed+=()=>manager.cycle_battle_speed();
-        pauseButton=new Button{Text="暂停",Size=new(156,40)};
+        pauseButton=new Button{Text="暂停",Size=new(120,40)};
         BattleUiArt.Skin(pauseButton);pauseButton.Icon=BattleUiArt.Texture("icon_pause");pauseButton.ExpandIcon=true;pauseButton.AddThemeConstantOverride("icon_max_width",20);
         pauseButton.AddThemeFontSizeOverride("font_size",18);controls.AddChild(pauseButton);
         pauseButton.Pressed+=manager.toggle_battle_pause;
@@ -53,6 +58,12 @@ public partial class BattleUnitOverlay : CanvasLayer
     {
         if(speedButton is not null&&GodotObject.IsInstanceValid(speedButton))
             speedButton.Text=$"倍速 ×{manager.get_battle_speed_scale():0}";
+    }
+    public void refresh_auto_button()
+    {
+        if(autoButton is null||!GodotObject.IsInstanceValid(autoButton))return;
+        autoButton.Text=manager.auto_battle?"自动：开":"自动：关";
+        autoButton.AddThemeColorOverride("font_color",manager.auto_battle?BattleUiArt.Accent:BattleUiArt.Text);
     }
     public void ShowTargetFrames(IEnumerable<GodotObject> targets,Color color,float duration=.55f)
         => ShowTargetFrames(targets,color,duration,null,null);
@@ -130,13 +141,6 @@ public partial class BattleUnitOverlay : CanvasLayer
             var name=status is not null&&!string.IsNullOrWhiteSpace(status.name)?status.name:id;
             lines.Add($"{name}  {chance*100f:0}%");
         }
-        if(skill.source_gongfa_name=="太和感物养元宝册"&&skill.skill_name=="乘势再攻"
-            &&manager.gongfa_combat.PreviewTaiheStunChance(caster,target,skill) is { } stunChance
-            &&manager.gongfa_combat.PreviewTaiheStunFrames(caster,target,skill) is { } stunFrames)
-        {
-            var percent=stunChance>0&&stunChance<.0001f?"<0.01%":$"{stunChance*100f:0.##}%";
-            lines.Add($"追加段僵直  {percent} · {stunFrames}层（帧）");
-        }
         if(lines.Count==0)return null;
         var targetName=target.Get("entity_name").AsString();
         if(string.IsNullOrWhiteSpace(targetName))targetName="目标";
@@ -175,6 +179,8 @@ public partial class BattleUnitOverlay : CanvasLayer
     }
     public override void _Process(double delta)
     {
+        if (GetNodeOrNull<CanvasLayer>("BattleControlsCanvas") is { } controls)
+            controls.Visible = !manager.is_board_battle();
         RefreshHoveredStatusInfo();
         var scale=BattleUiArt.Scale(GetViewport());var origin=BattleUiArt.Origin(GetViewport());
         var emphasized=GetTree().GetNodesInGroup("battle_response_focus").OfType<BattleResponseFocus>()
@@ -183,8 +189,9 @@ public partial class BattleUnitOverlay : CanvasLayer
                 .Where(arms=>!arms.IsQueuedForDeletion()).SelectMany(arms=>arms.EmphasizedUnits)).ToHashSet();
         if(retreatButton is not null){retreatButton.Scale=Vector2.One*scale;retreatButton.Position=origin+new Vector2(1506,18)*scale;retreatButton.Disabled=!manager.can_queue_retreat();}
         if(retreatNotice is not null){retreatNotice.Scale=Vector2.One*scale;retreatNotice.Position=origin+new Vector2(606,110)*scale;retreatNotice.Text=manager.get_retreat_notice();}
-        if(speedButton is not null){speedButton.Scale=Vector2.One*scale;speedButton.Position=origin+new Vector2(1190,18)*scale;}
-        if(pauseButton is not null){pauseButton.Scale=Vector2.One*scale;pauseButton.Position=origin+new Vector2(1340,18)*scale;}
+        if(autoButton is not null){autoButton.Scale=Vector2.One*scale;autoButton.Position=origin+new Vector2(1124,18)*scale;autoButton.Disabled=!manager.battle_running;}
+        if(speedButton is not null){speedButton.Scale=Vector2.One*scale;speedButton.Position=origin+new Vector2(1240,18)*scale;}
+        if(pauseButton is not null){pauseButton.Scale=Vector2.One*scale;pauseButton.Position=origin+new Vector2(1370,18)*scale;}
 
         foreach(var dead in views.Keys.Where(u=>!IsInstanceValid(u)).ToArray()){views[dead].QueueFree();views.Remove(dead);signatures.Remove(dead);queueSignatures.Remove(dead);}
         foreach(var unit in manager.all_units.OfType<Creature>().Where(IsInstanceValid)){
@@ -199,14 +206,14 @@ public partial class BattleUnitOverlay : CanvasLayer
                 var intent=new Label{Name="Intent",Position=new(0,57),Size=new(232,20),HorizontalAlignment=HorizontalAlignment.Center,MouseFilter=Control.MouseFilterEnum.Ignore};intent.AddThemeFontSizeOverride("font_size",11);view.AddChild(intent);
                 var statuses=new HFlowContainer{Name="Statuses",Position=new(0,-38),Size=new(232,36),MouseFilter=Control.MouseFilterEnum.Ignore};
                 statuses.AddThemeConstantOverride("separation",4);view.AddChild(statuses);
-                if (manager.is_distant_avatar_preview())
+                if (manager.uses_compact_battle_presentation())
                 {
                     name.AddThemeFontSizeOverride("font_size",18);
                     label.AddThemeFontSizeOverride("font_size",16);
                     intent.AddThemeFontSizeOverride("font_size",16);
                 }
             }
-            var compact = manager.is_distant_avatar_preview();
+            var compact = manager.uses_compact_battle_presentation();
             var overheadScale = scale * (compact ? .72f : 1f);
             view.Scale=Vector2.One*overheadScale;
             var team=unit.faction==(int)WorldEntity.Faction.PLAYER?manager.player_units:manager.enemy_units;
@@ -217,12 +224,13 @@ public partial class BattleUnitOverlay : CanvasLayer
             var alpha=Mathf.MoveToward(view.Modulate.A,emphasized.Contains(unit) ? .16f : 1f,manager.is_battle_paused()?0f:(float)delta*7f);
             view.Modulate=new Color(1,1,1,alpha);
             view.GetNode<BattleHealthBar>("Health").MaxValue=Math.Max(1,unit.max_health);view.GetNode<BattleHealthBar>("Health").Value=unit.current_health;view.GetNode<BattleHealthBar>("Health").QueueRedraw();
+            view.GetNode<BattleHealthBar>("Health").Simple=manager.is_board_battle();
             view.GetNode<Label>("Name").Text=unit.entity_name;
             view.GetNode<Label>("Value").Text=$"{unit.current_health}/{unit.max_health}";
             var snapshot=manager.get_queue_snapshot_for_unit(unit);
             view.GetNode<Label>("Intent").Text=manager.get_segment_phase()==BattleManager.SegmentPhase.Executing && snapshot.Count>0 && snapshot[0].GetValueOrDefault("visible",false).AsBool()?snapshot[0].GetValueOrDefault("text","").AsString():"";
             var statusRow=view.GetNode<HFlowContainer>("Statuses");
-            statusRow.Position=new Vector2(0,-statusRow.GetCombinedMinimumSize().Y-4);
+            statusRow.Position=manager.is_board_battle()?new Vector2(0,56):new Vector2(0,-statusRow.GetCombinedMinimumSize().Y-4);
             var entries=unit.status_snapshot()
                 .Where(s=>s.effect is not null&&!IsInternalStatusBadge(s.effect.effect_id))
                 .Select(s=>(id:s.effect!.effect_id,name:s.effect.name.Length>0?s.effect.name:s.effect.effect_id,count:s.stacks,tip:s.effect.description,bad:s.effect.is_debuff,instance:s)).ToList();
@@ -419,7 +427,7 @@ public partial class BattleUnitOverlay : CanvasLayer
     internal static Texture2D? GetStatusIcon(string id,StatusInstance? instance)
     {
         if (id is Character.DefensePillStatus or Character.RegenerationPillStatus)
-            return GD.Load<Texture2D>("res://textures/items/inventory_density_20261029/pill_container_empty_porcelain.png");
+            return GD.Load<Texture2D>(PillItemData.CommonIconPath);
         if(id.StartsWith("心法:"))
         {
             var heartIcon=instance?.source_name switch

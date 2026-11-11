@@ -9,6 +9,8 @@ public partial class Character
     public string get_base_combat_skill_path(string path)
     {
         if (string.IsNullOrWhiteSpace(path) || path.StartsWith("artifact:", StringComparison.Ordinal)) return path;
+        if (ResourceLoader.Exists(path) && ResourceLoader.Load<ActiveSkillData>(path) is { } definition
+            && definition.has_board_definition()) return definition.get_board_skill_key();
         foreach (var book in GongfaAvailability.EnabledBooks())
         foreach (var chapter in book.get_sorted_chapters())
         foreach (var rewrite in chapter.get_deck_rewrites(true).Concat(chapter.get_deck_rewrites(false)).Distinct())
@@ -36,7 +38,7 @@ public partial class Character
             foreach (var chapter in book.get_sorted_chapters())
             {
                 if (!is_gongfa_chapter_learned(book, chapter.get_id())) continue;
-                var available = equipped && (isMain || get_sub_gongfa_chapter_route(book, chapter.get_id()) == "right");
+                var available = equipped;
                 var configs = chapter.get_deck_rewrites(isMain);
                 for (var i = 0; i < configs.Count; i++)
                 {
@@ -48,14 +50,18 @@ public partial class Character
                         .Concat(book.get_sorted_chapters().SelectMany(c => c.get_learned_skills(isMain)).OfType<ActiveSkillData>())
                         .Select(s => s.ResourcePath).ToHashSet(StringComparer.Ordinal);
                     // 精确指向催血、养锋等节点招式的化法，同样只能绑定已参悟的原技能。
-                    var basicPaths = get_basic_deck_skill_paths_before_gongfa().Concat(get_unlocked_skill_node_paths()).ToHashSet(StringComparer.Ordinal);
+                    var basicPaths = get_basic_deck_skill_paths_before_gongfa().Concat(get_unlocked_skill_node_paths())
+                        .Concat(human.legacy_learned_combat_skill_paths).ToHashSet(StringComparer.Ordinal);
                     choices.Add(new SkillRewriteChoice
                     {
+                        BoardIconPath = rewrite.board_icon_path,
+                        BoardDefinitionVersion = rewrite.board_definition_version,
+                        BoardMaxPlacements = rewrite.board_max_placements,
                         Id = id, Source = $"{book.gongfa_name} · {chapter.chapter_name}",
                         Title = $"{replacement.skill_name}化法",
                         Condition = rewrite.source_skill_name,
                         Description = GongfaSkillRewriteRuntime.GetRewriteAddedEffectDescriptions(replacement), Available = available,
-                        UnavailableReason = !equipped ? "需装备此秘籍为主修或辅修" : "辅修本卷需选择化法分支",
+                        UnavailableReason = "需装备此秘籍为主修或辅修",
                         Matches = skill => rewrite.matches(skill) &&
                             (rewrite.target_scope == GongfaDeckRewriteConfig.RewriteTargetScope.BASIC_SKILL ? basicPaths : ownPaths).Contains(combat_skill_key(skill)),
                         Apply = skill => GongfaSkillRewriteRuntime.CopyWithMergedEffects(replacement, skill)

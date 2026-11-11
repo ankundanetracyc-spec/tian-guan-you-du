@@ -70,13 +70,16 @@ public partial class TradeNativeIntegrationSmoke : Control
             before = Placement(stale); Commit.EmitSignal(BaseButton.SignalName.Pressed);
             Check(Placement(stale) == before && stale.current_world_stamina == 100 && completed == 1, "stale NPC offer duplicated items or charged stamina");
 
-            var full = Player(120); var fullNpc = Npc(); _panel.show_for(full, fullNpc); await Frames();
+            var full = Player(Character.InventorySlotCapacity); var fullNpc = Npc(); _panel.show_for(full, fullNpc); await Frames();
             Choose("PlayerTradeList", "灵石", 1); Choose("NpcTradeList", "兽骨", 1); before = Placement(full);
             Commit.EmitSignal(BaseButton.SignalName.Pressed);
-            Check(Placement(full) == before && full.get_inventory_total_count(Stone) == 120 && full.current_world_stamina == 100 && fullNpc.trade_inventory[Bone].AsInt32() == 1,
+            Check(Placement(full) == before && full.get_inventory_total_count(Stone) == Character.InventorySlotCapacity && full.current_world_stamina == 100 && fullNpc.trade_inventory[Bone].AsInt32() == 1,
                 "capacity rejection must preserve exact instance positions, both inventories and stamina");
             Choose("PlayerTradeList", "灵石", 12); Commit.EmitSignal(BaseButton.SignalName.Pressed); await Frames();
-            Check(full.get_inventory_total_count(Stone) == 108 && full.get_inventory_total_count(Bone) == 1 && full.current_world_stamina == 99 && completed == 2,
+            Check(Placement(full) == before && full.get_inventory_total_count(Stone) == Character.InventorySlotCapacity && full.current_world_stamina == 100 && completed == 1,
+                "twelve freed cells in an 8-wide region do not fit a 5-by-2 bone; area-only acceptance must not occur");
+            Choose("PlayerTradeList", "灵石", 16); Commit.EmitSignal(BaseButton.SignalName.Pressed); await Frames();
+            Check(full.get_inventory_total_count(Stone) == Character.InventorySlotCapacity - 16 && full.get_inventory_total_count(Bone) == 1 && full.current_world_stamina == 99 && completed == 2,
                 "exchange must release offered space before fitting incoming object");
             Check(full.get_spatial_inventory().All(i => i.IsPlaced), "successful trade left unplaced item");
 

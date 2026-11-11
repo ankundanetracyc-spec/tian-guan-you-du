@@ -215,7 +215,7 @@ public partial class StoragePanel
         var scale = Mathf.Min(viewport.X / DesignSize.X, viewport.Y / DesignSize.Y);
         _canvas.Scale = Vector2.One * scale;
         _canvas.Position = (viewport - DesignSize * scale) * .5f;
-        fit_ring_shade(viewport, scale);
+        fit_bag_shade(viewport, scale);
     }
     private Texture2D? navigation_icon(int index) => _navigation_atlas is null ? null : new AtlasTexture
     {

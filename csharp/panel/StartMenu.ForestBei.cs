@@ -12,6 +12,7 @@ public partial class StartMenu
     }
     private static BattleEntityData CreateForestBeiTestUnit(int index)
     {
+        var template = ResourceLoader.Load<BeastTemplate>("res://resources/beast_templates/林地妖狈.tres");
         const float physique = 7, intelligence = 8, soul = 9;
         var coordination = Mathf.Min(physique, soul);
         var health = Mathf.RoundToInt(60 + physique * 11 + soul * 3 + intelligence * 1.5f);
@@ -25,7 +26,9 @@ public partial class StartMenu
             critical = Mathf.RoundToInt(physique * .5f + soul * 2 + intelligence * .3f),
             crit_resist = Mathf.RoundToInt(physique * 3 + intelligence * 2 + coordination * 2 + soul * 1.5f), crit_damage_mult = 1.5f,
             initiative_speed = Creature.calculate_base_initiative_speed(physique, intelligence, soul), initial_hand_size = 5, cards_per_turn = 3,
-            battle_portrait_path = BattlePaperDoll.ForestBeiPortraitPath
+            battle_portrait_path = BattlePaperDoll.ForestBeiPortraitPath,
+            active_skill_paths = template?.deck?.get_deck_skills() ?? [],
+            combat_board_layout = template?.combat_board_layout?.CopyConfiguration()
         };
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using Godot.Collections;
 
@@ -11,7 +12,23 @@ public partial class ItemData : EntityData
     [Export] public Array<string> tags = [];
     [Export(PropertyHint.Range, "0,27,1")] public int grade_value;
 
-    [ExportGroup("行囊占地")]
+    // Optional composition: an item may provide a travel method without changing
+    // its existing inventory category or becoming a piece of equipment.
+    [ExportGroup("行旅数据")]
+    [Export] public ItemTravelData? travel_data;
+
+    [ExportGroup("悬停格形与范围")]
+    [Export] public ItemLayoutPreviewData? layout_preview;
+    [Export] public SwordControlPreviewData? control_preview;
+
+    [ExportGroup("收纳体积")]
+    [Export(PropertyHint.Range, "1,64,1")] public int storage_volume;
+    /// <summary>单件物品所需的整数容量单位；图标格形不参与体积计算。</summary>
+    public int get_storage_volume() => Math.Max(0, storage_volume);
+
+    // Kept for the standard inventory icon grid and for independent battle-board shapes.
+    // These dimensions affect display placement only; storage acceptance uses storage_volume.
+    [ExportGroup("物品图标显示格形")]
     [Export] public int inventory_width = 2;
     [Export] public int inventory_height = 2;
     [Export] public bool inventory_can_rotate = true;
@@ -47,8 +64,14 @@ public partial class ItemData : EntityData
             errors.Add("缺少物品名称");
         if (grade_value < 0 || grade_value > 27)
             errors.Add("品阶值必须位于0至27");
+        if (storage_volume < 1 || storage_volume > 64)
+            errors.Add("单件收纳体积必须位于1至64");
         if (inventory_width < 1 || inventory_height < 1)
-            errors.Add("行囊占地宽高必须为正整数");
+            errors.Add("物品图标显示格形宽高必须为正整数");
+        if (can_stack && max_stack < 2)
+            errors.Add("可堆叠物品的最大堆叠数必须至少为2");
+        if (!can_stack && max_stack != 1)
+            errors.Add("不可堆叠物品的最大堆叠数必须为1");
         errors.AddRange(ItemAffixCatalog.validate_tags(tags, item_category == "材料"));
         if (item_category == "材料")
         {

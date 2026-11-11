@@ -16,6 +16,8 @@ public partial class MainScene
     private bool _tileWorldTravelInProgress;
     private bool _nodeRosterContextInitialized;
     private string _lastNodeRosterContext = "";
+    private bool _nodeWorldPopulationRefreshQueued;
+    private Godot.Timer? _nodeWorldPopulationRefreshTimer;
 
     private void initialize_node_world_roster()
     {
@@ -30,6 +32,27 @@ public partial class MainScene
 
     private void on_node_world_population_changed()
     {
+        // Model changes are immediate; population labels share the map's 4 Hz
+        // presentation cadence instead of rebuilding for every elapsed hour.
+        if (_nodeWorldMap?.Visible != true) return;
+        sync_player_travel_party_map();
+        if (_nodeWorldPopulationRefreshQueued) return;
+        _nodeWorldPopulationRefreshQueued = true;
+        if (_nodeWorldPopulationRefreshTimer is null)
+        {
+            _nodeWorldPopulationRefreshTimer = new Godot.Timer
+            {
+                Name = "NodeWorldPopulationRefresh", WaitTime = .25, OneShot = true,
+            };
+            AddChild(_nodeWorldPopulationRefreshTimer);
+            _nodeWorldPopulationRefreshTimer.Timeout += flush_node_world_population_refresh;
+        }
+        _nodeWorldPopulationRefreshTimer.Start();
+    }
+
+    private void flush_node_world_population_refresh()
+    {
+        _nodeWorldPopulationRefreshQueued = false;
         refresh_node_world_population_counts();
         refresh_node_world_character_list(force: true);
     }

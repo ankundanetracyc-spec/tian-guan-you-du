@@ -1,0 +1,189 @@
+{
+  "date": "2026-11-09",
+  "method": "built-in image_gen",
+  "transparent_background": true,
+  "style_references": [
+    "textures/items/inventory_density_20261029/pill_container_empty_porcelain.png",
+    "textures/items/inventory_density_20261029/manual_generic_2x3.png",
+    "textures/items/inventory_density_20261029/mat_dew_pine_resin.png"
+  ],
+  "assets": [
+    {
+      "key": "scene_paper",
+      "source": "E:\\tmp\\CodexData\\generated_images\\01a1b681-bccc-7022-96a0-76bedc125579\\exec-6c9caca4-e05d-4503-ac97-46b932ae032f.png",
+      "target": "E:/stacklands/textures/ui/talisman_crafting_painted_20261109/scene_paper.png",
+      "raw_project": "textures/ui/talisman_crafting_painted_20261109/scene_paper.png",
+      "source_sha256": "46f11bd8a850fb0c27f07272e400cae46d0b8bb7ba8c106031cd6aa0c976e065",
+      "packed_sha256": "46f11bd8a850fb0c27f07272e400cae46d0b8bb7ba8c106031cd6aa0c976e065",
+      "packed_size": [
+        1254,
+        1254
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "source_matches_generated": true
+    },
+    {
+      "key": "paper",
+      "source": "E:\\tmp\\CodexData\\generated_images\\01a1b681-bccc-7022-96a0-76bedc125579\\exec-1dcdb8ac-9ead-473f-a09c-9ebb815e2a84.png",
+      "target": "E:/stacklands/textures/ui/talisman_crafting_painted_20261109/paper.png",
+      "raw_project": "textures/ui/talisman_crafting_painted_20261109/raw/paper.png",
+      "source_sha256": "9268e05eb6b58f643ccb529b2bfc400b7b15a045d683f02741ac9ef85820aea3",
+      "packed_sha256": "9da16011cc9e976f5137efb13deabfd6b50ba991069edd694c1dbb7db7604388",
+      "packed_size": [
+        128,
+        256
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "source_matches_generated": true
+    },
+    {
+      "key": "ink",
+      "source": "E:\\tmp\\CodexData\\generated_images\\01a1b681-bccc-7022-96a0-76bedc125579\\exec-e832e0c0-156d-4b3a-8e19-9b0150ba7a81.png",
+      "target": "E:/stacklands/textures/ui/talisman_crafting_painted_20261109/ink.png",
+      "raw_project": "textures/ui/talisman_crafting_painted_20261109/raw/ink.png",
+      "source_sha256": "3295109a91570a8f6f4bab8be93188f31053793a5164f50929272d807ed01842",
+      "packed_sha256": "c3bcd9fab067aa5b37816b07daad497fb2098fb7abb51d5cc36a99cbdbf798b4",
+      "packed_size": [
+        128,
+        128
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "source_matches_generated": true
+    },
+    {
+      "key": "hushen",
+      "source": "E:\\tmp\\CodexData\\generated_images\\01a1b681-bccc-7022-96a0-76bedc125579\\exec-28183da9-70e3-4c6d-9b2a-9af9a75e7b2a.png",
+      "target": "E:/stacklands/textures/ui/talisman_crafting_painted_20261109/hushen.png",
+      "raw_project": "textures/ui/talisman_crafting_painted_20261109/raw/hushen.png",
+      "source_sha256": "a238c36b745f9560601db5120001e0f9deeb1730f8cd8793e7bd6465f153b9f6",
+      "packed_sha256": "5a4e99478c9c7c78f7b0b2710d1cafa377ce492137fb40dab7b0b05b959cec80",
+      "packed_size": [
+        128,
+        256
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "source_matches_generated": true
+    },
+    {
+      "key": "yanshi",
+      "source": "E:\\tmp\\CodexData\\generated_images\\01a1b681-bccc-7022-96a0-76bedc125579\\exec-441e5ee7-cadf-43d6-b9cf-69d49599d933.png",
+      "target": "E:/stacklands/textures/ui/talisman_crafting_painted_20261109/yanshi.png",
+      "raw_project": "textures/ui/talisman_crafting_painted_20261109/raw/yanshi.png",
+      "source_sha256": "546c1f8ddcfb925d1ade42d877f8035f5fa39b525b573d26b2e950600e352776",
+      "packed_sha256": "3de7eb8092e7cc4931d11ec49001aef8f7be048b09c00d51e0f6e13fee51d4cf",
+      "packed_size": [
+        128,
+        256
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "source_matches_generated": true
+    },
+    {
+      "key": "brush_qingzhu",
+      "source": "E:\\tmp\\CodexData\\generated_images\\01a1b681-bccc-7022-96a0-76bedc125579\\exec-ace9e65e-1cb4-439b-9139-4fab4271ea59.png",
+      "target": "E:/stacklands/textures/ui/talisman_crafting_painted_20261109/brush_qingzhu.png",
+      "raw_project": "textures/ui/talisman_crafting_painted_20261109/raw/brush_qingzhu.png",
+      "source_sha256": "750e6dd2f7850ed94acb455f410f572b0e6c9cba6bd0f729cb17d548a1e6fcc1",
+      "packed_sha256": "bf7b95b4ed64c9281745a6ea8d81a99c9d113433f4bd23a6c3f16388ad00c55c",
+      "packed_size": [
+        128,
+        256
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "source_matches_generated": true
+    },
+    {
+      "key": "brush_jinghao",
+      "source": "E:\\tmp\\CodexData\\generated_images\\01a1b681-bccc-7022-96a0-76bedc125579\\exec-635e53cb-03b1-4dc5-97a2-5b3cfb90ebc8.png",
+      "target": "E:/stacklands/textures/ui/talisman_crafting_painted_20261109/brush_jinghao.png",
+      "raw_project": "textures/ui/talisman_crafting_painted_20261109/raw/brush_jinghao.png",
+      "source_sha256": "d86aaa3dd568c943d40d091ae650498cdd3b7e2aa589239938b013a943642d2f",
+      "packed_sha256": "ddebd651207d62508ff7e11bc09a395f1917b436147ca257ff4ee927d9950620",
+      "packed_size": [
+        128,
+        256
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "source_matches_generated": true
+    },
+    {
+      "key": "brush_cangfeng",
+      "source": "E:\\tmp\\CodexData\\generated_images\\01a1b681-bccc-7022-96a0-76bedc125579\\exec-9c64ea67-5458-4963-90e2-e85bdf7fdc89.png",
+      "target": "E:/stacklands/textures/ui/talisman_crafting_painted_20261109/brush_cangfeng.png",
+      "raw_project": "textures/ui/talisman_crafting_painted_20261109/raw/brush_cangfeng.png",
+      "source_sha256": "2c225ebd2f03edc312e45ffd41429f138842ee97a232db522cf3462032ac219a",
+      "packed_sha256": "6e6e5e819087c93937315065c4ec702579c4dc9ef797c1519d9db15c32bc1f4d",
+      "packed_size": [
+        128,
+        256
+      ],
+      "alpha_range": [
+        0,
+        255
+      ],
+      "source_matches_generated": true
+    }
+  ],
+  "prompts": [
+    {
+      "key": "scene_paper",
+      "prompt": "Use case: stylized-concept. Production art for a Chinese xianxia game. All attached images are STYLE REFERENCES ONLY, not objects to copy. Match their delicate hand-painted watercolor/gouache and ink rendering, visible controlled brushwork, natural material colors, warm quiet diffuse shading, softly irregular painted edges; this is a painted 2D game inventory asset, not vector, not clip art, not 3D rendering, not photorealistic, no UI frame, no captions, no watermark, no border, no background scene. Genuine transparent RGBA background; preserve clean object silhouette, no white outline or cast shadow plane. Avoid shining outlines, neon, sparkles, metallic excess, comic outline. An individually isolated complete object with breathing room, easy to read at a 64–96 px display. Asset type: large central illustration for the paper crafting screen, square canvas with a portrait subject occupying about 80% of image height and 52% width, center. Subject: one single newly formed thin Chinese handmade talisman paper sheet, pale warm buff/off-white, gently floating diagonally, rendered as pliable xuan paper with ragged soft deckle edges, subtle silk-fiber strands, understated mottled washes, one very gently curled corner and a slight natural bend across the sheet. It must feel delicately thin, never a rigid board or book cover. The broad paper face is COMPLETELY BLANK: no inscriptions, no rectangle frame, no border lines, no printed decorations. A few soft muted grey-sage silk wisps just around two edges suggest spiritual formation, very restrained, no bright magic effects. Soft quiet warm light from upper-left. The user's existing painted mountain/wood background will show through the surrounding transparency."
+    },
+    {
+      "key": "paper",
+      "prompt": "Use case: stylized-concept. Production art for a Chinese xianxia game. All attached images are STYLE REFERENCES ONLY, not objects to copy. Match their delicate hand-painted watercolor/gouache and ink rendering, visible controlled brushwork, natural material colors, warm quiet diffuse shading, softly irregular painted edges; this is a painted 2D game inventory asset, not vector, not clip art, not 3D rendering, not photorealistic, no UI frame, no captions, no watermark, no border, no background scene. Genuine transparent RGBA background; preserve clean object silhouette, no white outline or cast shadow plane. Avoid shining outlines, neon, sparkles, metallic excess, comic outline. An individually isolated complete object with breathing room, easy to read at a 64–96 px display. Asset type: portrait inventory icon, intended footprint 1 wide by 2 high. Subject: a single full narrow rectangular BLANK talisman paper sheet in warm light-buff handmade xuan paper, resting very slightly diagonally, nearly front-facing, a gentle curled lower corner, extremely subtle irregular fibers and watercolor pigment at natural edge, visibly thin and flexible. Occupies about 85% of portrait canvas height. No ritual writing at all (this is the unused paper ingredient), no ruled rectangle, no book-cover thickness, no floating tendrils, no additional props. It must remain recognizable as plain paper when shrunk to an inventory slot."
+    },
+    {
+      "key": "ink",
+      "prompt": "Use case: stylized-concept. Production art for a Chinese xianxia game. All attached images are STYLE REFERENCES ONLY, not objects to copy. Match their delicate hand-painted watercolor/gouache and ink rendering, visible controlled brushwork, natural material colors, warm quiet diffuse shading, softly irregular painted edges; this is a painted 2D game inventory asset, not vector, not clip art, not 3D rendering, not photorealistic, no UI frame, no captions, no watermark, no border, no background scene. Genuine transparent RGBA background; preserve clean object silhouette, no white outline or cast shadow plane. Avoid shining outlines, neon, sparkles, metallic excess, comic outline. An individually isolated complete object with breathing room, easy to read at a 64–96 px display. Asset type: square inventory icon, 1x1 footprint. Subject: ONE small squat Chinese ink bottle/ink pot, three-quarter view, a humble warm charcoal-grey ceramic vessel with subtly uneven handmade glaze, rounded broad body, narrow short neck and a natural brown wooden stopper tied down by a plain thin faded red cord. A small trace of dark cinnabar-black liquid at the inner lip suggests talisman ink. A muted blue-grey brush-painted stroke on the body but NO text, no paper label, no gold ornament, no handle. Entire single small vessel centered and fills about 84% of canvas, readable silhouette, gentle volume like the porcelain style reference. Not an ink drop, not a floating blob, not a glass potion bottle."
+    },
+    {
+      "key": "hushen",
+      "prompt": "Use case: stylized-concept. Production art for a Chinese xianxia game. All attached images are STYLE REFERENCES ONLY, not objects to copy. Match their delicate hand-painted watercolor/gouache and ink rendering, visible controlled brushwork, natural material colors, warm quiet diffuse shading, softly irregular painted edges; this is a painted 2D game inventory asset, not vector, not clip art, not 3D rendering, not photorealistic, no UI frame, no captions, no watermark, no border, no background scene. Genuine transparent RGBA background; preserve clean object silhouette, no white outline or cast shadow plane. Avoid shining outlines, neon, sparkles, metallic excess, comic outline. An individually isolated complete object with breathing room, easy to read at a 64–96 px display. Asset type: portrait inventory icon of a finished PROTECTION TALISMAN, footprint 1 wide by 2 high. Subject: one narrow soft yellow-buff paper talisman, full length, slightly tilted with subtly bent corners and handmade fibers. A strong bold muted cinnabar-red daoist calligraphic magical diagram runs vertically down the middle, clearly different from unused blank paper. At its upper-middle, the magical strokes form a compact circular ward with three short enclosing hooks, then a flowing descending seal-like stroke: original symbolic marks, not readable text and not a written label. Broad simple brush strokes remain legible at 64px, reserve paper around the mark. Traditional ink-and-watercolor prop with quiet volume, no glowing runes, no fire, no thick frame, no auxiliary objects. Genuine transparent background."
+    },
+    {
+      "key": "yanshi",
+      "prompt": "Use case: stylized-concept. Production art for a Chinese xianxia game. All attached images are STYLE REFERENCES ONLY, not objects to copy. Match their delicate hand-painted watercolor/gouache and ink rendering, visible controlled brushwork, natural material colors, warm quiet diffuse shading, softly irregular painted edges; this is a painted 2D game inventory asset, not vector, not clip art, not 3D rendering, not photorealistic, no UI frame, no captions, no watermark, no border, no background scene. Genuine transparent RGBA background; preserve clean object silhouette, no white outline or cast shadow plane. Avoid shining outlines, neon, sparkles, metallic excess, comic outline. An individually isolated complete object with breathing room, easy to read at a 64–96 px display. Asset type: portrait inventory icon of a finished FLAME ARROW TALISMAN, intended footprint 1 wide by 2 high. Subject: one complete narrow flexible ochre-buff paper talisman, nearly front-facing but subtly tilted, slightly worn handmade fiber edge and a very small curl. Broad dark cinnabar/red-brown magical brush diagram along the center: its upper half forms a sharp arrowhead/flame silhouette, with two pointed feather-like flicks and an angular descending seal stroke, conveying an arrow of fire without showing physical fire. Original non-readable magical marks, no written names. Strong simple brush strokes distinguish this from the round ward design of protection charms. A quiet warm paper and deeper red pigment, no glows or fire plume, no extra props. Paper outline must be fully visible and fill 85% of the portrait canvas."
+    },
+    {
+      "key": "brush_qingzhu",
+      "prompt": "Use case: stylized-concept. Production art for a Chinese xianxia game. All attached images are STYLE REFERENCES ONLY, not objects to copy. Match their delicate hand-painted watercolor/gouache and ink rendering, visible controlled brushwork, natural material colors, warm quiet diffuse shading, softly irregular painted edges; this is a painted 2D game inventory asset, not vector, not clip art, not 3D rendering, not photorealistic, no UI frame, no captions, no watermark, no border, no background scene. Genuine transparent RGBA background; preserve clean object silhouette, no white outline or cast shadow plane. Avoid shining outlines, neon, sparkles, metallic excess, comic outline. An individually isolated complete object with breathing room, easy to read at a 64–96 px display. Asset type: portrait inventory icon of a Chinese talisman-writing calligraphy brush, footprint 1x2. SINGLE entire practical brush, almost vertical with a restrained 12-degree diagonal leaning right; wooden handle at upper right and bristle tip toward lower left. Pale muted sage-green bamboo shaft with two natural node bands, small natural warm brown ferrule, cream-and-light-tan pointed soft brush hairs gathering into a small dark ink-stained tip. A plain small hemp hanging loop attached at the top, compact and close. Modest broad silhouette, not needle-thin, clear bamboo and hair materials, readable small. Whole brush including all hairs and top loop fits in frame with generous 9% margin, no desk or inkpot, no ornamental gold, no plume, no writing."
+    },
+    {
+      "key": "brush_jinghao",
+      "prompt": "Use case: stylized-concept. Production art for a Chinese xianxia game. All attached images are STYLE REFERENCES ONLY, not objects to copy. Match their delicate hand-painted watercolor/gouache and ink rendering, visible controlled brushwork, natural material colors, warm quiet diffuse shading, softly irregular painted edges; this is a painted 2D game inventory asset, not vector, not clip art, not 3D rendering, not photorealistic, no UI frame, no captions, no watermark, no border, no background scene. Genuine transparent RGBA background; preserve clean object silhouette, no white outline or cast shadow plane. Avoid shining outlines, neon, sparkles, metallic excess, comic outline. An individually isolated complete object with breathing room, easy to read at a 64–96 px display. Asset type: portrait inventory icon of a precision talisman calligraphy brush, footprint 1x2. SINGLE entire brush, nearly upright with a subtle 12-degree diagonal leaning right, handle upper right and pointed hairs lower left. Dark charcoal-brown polished natural hardwood handle, plain narrow muted blue-grey cloth binding at the ferrule, a slim compact pointed tuft of warm reddish-brown wolf hair, dark tip. A small worn light bone/beige cap at handle top and a short dark hanging loop. The handle should have a substantial clear silhouette at 64px and the precision pointed bristle head should be visually distinct from a large soft mop brush. Whole object fits on transparent canvas with 9% margins. Hand-painted natural materials, no gems, no gold excess, no other objects, no text."
+    },
+    {
+      "key": "brush_cangfeng",
+      "prompt": "Use case: stylized-concept. Production art for a Chinese xianxia game. All attached images are STYLE REFERENCES ONLY, not objects to copy. Match their delicate hand-painted watercolor/gouache and ink rendering, visible controlled brushwork, natural material colors, warm quiet diffuse shading, softly irregular painted edges; this is a painted 2D game inventory asset, not vector, not clip art, not 3D rendering, not photorealistic, no UI frame, no captions, no watermark, no border, no background scene. Genuine transparent RGBA background; preserve clean object silhouette, no white outline or cast shadow plane. Avoid shining outlines, neon, sparkles, metallic excess, comic outline. An individually isolated complete object with breathing room, easy to read at a 64–96 px display. Asset type: portrait inventory icon of a fuller talisman calligraphy brush for holding more ink, footprint 1x2. SINGLE entire brush, nearly upright with a subtle 12-degree diagonal leaning right, handle upper right and hairs lower left. Warm dark honey-brown bamboo handle, a few subtle bamboo grain strokes, plain muted warm brown binding. A noticeably broad, full soft tuft of off-white goat hairs shaded warm grey, smoothly tapering into a dark ink-wetted point; this brush head should look plump and larger than a precision wolf-hair brush, while still a functional Chinese calligraphy brush. Plain short natural cord loop. Whole object fits in canvas with 9% clear margins. Matte soft watercolor materials, no gold, no ornate jewels, no other tools, no text."
+    }
+  ],
+  "packing": {
+    "implementation": "csharp/debug/TalismanIconPack.cs",
+    "source_pixels_per_cell": 128,
+    "usable_fraction": 0.88,
+    "bounds_alpha_threshold": 2,
+    "changes": "trim transparent exterior and downsample proportionally; original generated RGBA files preserved"
+  }
+}

@@ -4,8 +4,8 @@ using System.Text.Json;
 /// <summary>善功堂的现行目录与可调整贡献价；界面和实际购买必须读取同一来源。</summary>
 public static class YuxuExchangeCatalog
 {
-    public const string PricePath = "res://docs/plans/善功堂临时贡献价_20261030.json";
-    public static readonly string[] Categories = ["材料", "秘籍", "器物", "丹药", "装备", "阵盘", "器具", "符箓", "灵膳"];
+    public const string PricePath = "res://docs/plans/物品与装备/善功堂临时贡献价_20261030.json";
+    public static readonly string[] Categories = ["材料", "器物", "丹药", "阵盘", "器具", "符箓", "灵膳"];
     private static Dictionary<string, int>? _prices;
 
     private static Dictionary<string, int> Prices

@@ -1,6 +1,6 @@
 using Godot;
 
-/// <summary>以现行清单装配65张行囊图及独立动画药丸，每格128源像素，禁止放大。</summary>
+/// <summary>以现行清单装配66张行囊图；统一丹丸图同时用于炼丹演出，每格128源像素，禁止放大。</summary>
 public static class InventoryIconDensityPack
 {
     public const string Root = "res://textures/items/inventory_density_20261029/";
@@ -16,7 +16,7 @@ public static class InventoryIconDensityPack
         var row = value.AsGodotDictionary(); var cells = row["cells"].AsGodotArray();
         return new Spec(row["file"].AsString(), cells[0].AsInt32(), cells[1].AsInt32(), row.ContainsKey("source") ? row["source"].AsString() : "");
     }).ToArray();
-    private static IEnumerable<Spec> AllSpecs => Specs.Append(new Spec("pill_2x2.png", 2, 2));
+    private static IEnumerable<Spec> AllSpecs => Specs;
 
     public static void Pack()
     {
@@ -94,21 +94,22 @@ public static class InventoryIconDensityPack
     public static void ValidateManifest()
     {
         var specs = Specs;
-        if (specs.Length != 65 || specs.Select(s => s.File).Distinct().Count() != 65) throw new InvalidOperationException("行囊目标图必须为65张且不重复");
+        if (specs.Length != 66 || specs.Select(s => s.File).Distinct().Count() != 66) throw new InvalidOperationException("行囊目标图必须为66张且不重复");
         var rows = Json.ParseString(Godot.FileAccess.GetFileAsString(Manifest)).AsGodotArray();
         if (rows.Count != 96) throw new InvalidOperationException("正式物品清单必须为96项");
         foreach (var entry in rows)
         {
             var row = entry.AsGodotDictionary(); var icon = row["new_icon"].AsString();
-            var spec = specs.Single(s => Root + s.File == icon);
+            var spec = AllSpecs.Single(s => Root + s.File == icon);
             if (row["width"].AsInt32() != spec.Width || row["height"].AsInt32() != spec.Height || row["area"].AsInt32() != spec.Width * spec.Height
                 || row["footprint"].AsString() != "rectangle" || !row["can_rotate"].AsBool()
                 || row["pixels_w"].AsInt32() != spec.Width * PixelsPerCell || row["pixels_h"].AsInt32() != spec.Height * PixelsPerCell)
                 throw new InvalidOperationException("清单占地与目标图不一致: " + row["path"]);
             if (row["category"].AsString() == "秘籍" && spec.File != "manual_generic_2x3.png") throw new InvalidOperationException("秘籍必须共用朴素书册");
-            if ((row["category"].AsString() == "丹药" || row["script"].AsString() == "PillContainerItemData") && spec.File != "pill_container_empty_porcelain.png") throw new InvalidOperationException("丹药必须共用瓷瓶");
+            if (row["category"].AsString() == "丹药" && spec.File != "pill_2x2.png") throw new InvalidOperationException("所有丹药必须共用统一丹丸图");
+            if (row["script"].AsString() == "PillContainerItemData" && spec.File != "pill_container_empty_porcelain.png") throw new InvalidOperationException("空瓷瓶模板必须保留独立瓷瓶图");
         }
-        GD.Print("INVENTORY_ICON_MANIFEST_OK: 96 items, 65 inventory icons; animation pill excluded");
+        GD.Print("INVENTORY_ICON_MANIFEST_OK: 96 items, 66 inventory icons; shared pill also serves brewing animation");
     }
     public static void Verify()
     {
@@ -121,7 +122,7 @@ public static class InventoryIconDensityPack
             if (image.DetectAlpha() == Image.AlphaMode.None || image.GetPixel(0, 0).A > .01f || image.GetPixel(image.GetWidth() - 1, image.GetHeight() - 1).A > .01f)
                 throw new InvalidOperationException("图标透明通道或角落异常: " + spec.File);
         }
-        GD.Print("INVENTORY_ICON_DENSITY_OK: 65 inventory sprites + 1 animation pill, alpha, 128 source pixels per cell");
+        GD.Print("INVENTORY_ICON_DENSITY_OK: 66 inventory sprites; shared pill also serves brewing animation, alpha, 128 source pixels per cell");
     }
     public static void VerifyBindings()
     {

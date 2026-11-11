@@ -26,7 +26,7 @@ public partial class EquipmentHoverSmoke : Node
         {
             var index = info.Body.IndexOf(previous < 0 ? field : "\n" + field, StringComparison.Ordinal); Check(index > previous, "器物固定字段顺序 " + field); previous = index;
         }
-        Check(info.Subtitle == "" && !info.ShowRules && !info.Body.Contains("res://"), "通用器物无价格分类及实现信息");
+        Check(info.Subtitle == "" && info.ShowRules && info.RulesTitle == "器物说明" && !info.Body.Contains("res://"), "器物通用规则由独立说明入口提供");
     }
     private async Task Capture(Control card, string name, string prefix = "21_器物统一_")
     {

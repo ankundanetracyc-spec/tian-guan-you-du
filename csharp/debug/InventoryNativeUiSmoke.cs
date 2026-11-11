@@ -21,13 +21,15 @@ public partial class InventoryNativeUiSmoke : Node
         var p = slot.GetGlobalTransformWithCanvas() * (slot.Size * .5f);
         Move(p); Mouse(p, true); Move(p + new Vector2(9, 0), true); await Frames(2);
         Check(Field<object?>("_nativeDrag") is not null && _panel.FindChild("DraggedItem", true, false) is not null, "真实鼠标未抓起物品");
+        Check(!slot.IsVisibleInTree(), "拖动时原位置仍显示物品");
     }
     private string Fingerprint() => string.Join("|", _player.get_spatial_inventory().Select(e => $"{e.InstanceId}:{e.RegionId}:{e.X},{e.Y}:{e.Rotation}"));
     private async Task Capture(string name)
     {
         if (DisplayServer.GetName() == "headless") return;
         await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
-        var path = "res://docs/美术规范/行囊交易善功堂实装_20261031/";
+        var reviewRoot = OS.GetEnvironment("STACKLANDS_GRID_CAPTURE_ROOT");
+        var path = reviewRoot.Length > 0 ? reviewRoot.TrimEnd('/') + "/行囊/" : "res://docs/美术规范/行囊交易善功堂实装_20261031/";
         DirAccess.MakeDirRecursiveAbsolute(ProjectSettings.GlobalizePath(path));
         using var image = GetViewport().GetTexture().GetImage();
         Check(image.SavePng(path + name) == Error.Ok, "原生截图保存失败");
@@ -45,6 +47,7 @@ public partial class InventoryNativeUiSmoke : Node
             _panel = new StoragePanel(); AddChild(_panel); _panel.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect); _panel.bind_player(_player); _panel.show_panel(); await Frames(12);
             var entries = _player.get_spatial_inventory();
             Check(Field<Dictionary<string, StorageItemSlot>>("_nativeSlots").Count == entries.Count, "实际物品与空间控件数量不符");
+            Check(Character.InventoryRegions.All(r => Field<Dictionary<string, Rect2>>("_nativeRegions")[r.Id].Size == new Vector2(r.Width, r.Height) * InventoryGridMetrics.DesignCell), "显示区域与200格真实空间不一致");
             var rail = Field<ScrollContainer>("_nativeCategoryScroll");
             var tab = Field<Dictionary<string, Button>>("_category_buttons")["材料"];
             var tabPoint = tab.GetGlobalTransformWithCanvas() * (tab.Size * .5f);
@@ -70,14 +73,19 @@ public partial class InventoryNativeUiSmoke : Node
             var target = (from region in Character.InventoryRegions from y in Enumerable.Range(0, region.Height) from x in Enumerable.Range(0, region.Width)
                 where _player.can_move_spatial_item(first, region.Id, x, y, 1) select (region.Id, X: x, Y: y)).First();
             var surface = Field<NativeInventorySurface>("_nativeSurface"); var regionRect = Field<Dictionary<string, Rect2>>("_nativeRegions")[target.Id];
-            var p = surface.GetGlobalTransformWithCanvas() * (regionRect.Position + new Vector2(target.X + 1.5f, target.Y + 1) * 48);
+            var p = surface.GetGlobalTransformWithCanvas() * (regionRect.Position + new Vector2(target.X + 1.5f, target.Y + 1) * InventoryGridMetrics.DesignCell);
             Move(p, true); await Frames(2); await Capture("01_原生行囊旋转拖动.png"); Mouse(p, false); await Frames();
             var book = Entry(first); Check(book.Rotation == 1 && book.Width == 3 && book.Height == 2, "R旋转或真实入位失败");
             Check(book.RegionId == target.Id && book.X == target.X && book.Y == target.Y, "鼠标位置与真实落格不一致");
             var before = Fingerprint(); await Grab(first); Move(new(2, 2), true); Mouse(new(2, 2), false); await Frames();
             Check(Fingerprint() == before, "界外松手改变库存");
-            await Grab(first); Key(Godot.Key.R); Key(Godot.Key.Escape); await Frames(); Check(Fingerprint() == before && _panel.Visible, "Esc取消移动未恢复或错误关闭行囊");
+            await Grab(first); Key(Godot.Key.R); Key(Godot.Key.Escape); await Frames(); Check(Fingerprint() == before && _panel.Visible && Field<Dictionary<string, StorageItemSlot>>("_nativeSlots")[first].IsVisibleInTree(), "Esc取消移动未恢复或错误关闭行囊");
             Check(_panel.FindChild("DraggedItem", true, false) is null, "取消后拖动图像残留");
+            Check(_player.can_move_spatial_item(first, "back", 5, 8, 1), "新增背囊末端空间样例被占用");
+            await Grab(first);
+            var expandedTarget = surface.GetGlobalTransformWithCanvas() * (Field<Dictionary<string, Rect2>>("_nativeRegions")["back"].Position + new Vector2(6.5f, 9) * InventoryGridMetrics.DesignCell);
+            Move(expandedTarget, true); await Frames(2); Mouse(expandedTarget, false); await Frames();
+            Check(Entry(first) is { RegionId: "back", X: 5, Y: 8, Rotation: 1 }, "实际鼠标无法放入新增背囊边缘格");
             await Capture("02_原生行囊空间与清册.png");
             GetWindow().Size = new(1280, 720); await Frames(12);
             var canvas = Field<Control>("_canvas"); Check(Mathf.IsEqualApprox(canvas.Scale.X, canvas.Scale.Y), "窄窗格子缩放不一致");

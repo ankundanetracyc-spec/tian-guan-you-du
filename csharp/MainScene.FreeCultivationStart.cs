@@ -26,13 +26,12 @@ public partial class MainScene
 
         // World position is resolved from the reviewed node graph when the map opens.
         hud?.set_world_map_available(false);
-        set_prologue_skip_available(false);
         mark_save_dirty();
     }
 
     private bool has_open_world_access()
         => (_baishiLecture is null || _baishiLecture.departed_qingxi) &&
-           (_story_free_start || _qingxi_prologue == QingxiPrologueStep.Departed);
+           _story_free_start;
 
     private void show_story_free_start()
     {

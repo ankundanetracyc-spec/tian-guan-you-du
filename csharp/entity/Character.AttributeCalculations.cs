@@ -44,7 +44,26 @@ public partial class Character
         Baseline("critical", $"0.5×{p}＋2×{s}＋0.3×{i}");
         Baseline("crit_resist", $"3×{p}＋2×{i}＋2×{c}＋1.5×{s}");
         foreach (var key in CalculationKeys.Where(key => key.EndsWith("_proficiency")))
-            Baseline(key, $"基础造诣[{AttributeNumber(CalculationValue(key))}]");
+        {
+            if (key is not ("alchemy_proficiency" or "forging_proficiency"))
+            {
+                Baseline(key, $"基础造诣[{AttributeNumber(CalculationValue(key))}]");
+                continue;
+            }
+            var basis = entity_data!.Get("base_" + key).AsSingle();
+            var (growth, flat) = get_realm_attribute_adjustment(key);
+            var condensation = get_condensation_flat_bonus(key);
+            var training = key == "alchemy_proficiency"
+                ? human?.alchemy_proficiency_training_bonus ?? 0
+                : human?.forging_proficiency_training_bonus ?? 0;
+            var expression = $"基础造诣[{AttributeNumber(basis)}]×成长倍率[{AttributeNumber(growth)}]＋境界定额加成[{AttributeNumber(flat)}]";
+            var sources = new List<string>();
+            if (growth != 1) sources.Add($"境界成长倍率：{AttributeNumber(growth)}");
+            if (flat != 0) sources.Add($"境界定额加成：＋{AttributeNumber(flat)}");
+            if (condensation != 0) { expression += $"＋凝核加值[{AttributeNumber(condensation)}]"; sources.Add($"凝核：＋{AttributeNumber(condensation)}"); }
+            if (training != 0) { expression += $"＋研习与实践固定加成[{AttributeNumber(training)}]"; sources.Add($"研习与实践：＋{AttributeNumber(training)}"); }
+            _attributeCalculations[key] = new(expression, CalculationValue(key), sources);
+        }
     }
 
     private IDisposable TraceAttributeSource(string source) => new AttributeSourceScope(this, source);

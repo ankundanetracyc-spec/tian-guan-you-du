@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>玄览峰 · 选书交互预览</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="preview.css">
+<script defer src="目录数据.js"></script><script defer src="preview.js"></script>
+</head>
+<body>
+<main id="stage" aria-label="功能界面预览">
+<section id="library" aria-label="藏经阁">
+<h1 class="library-title">玄览峰 · 藏经阁</h1>
+<a class="library-back paper-button" href="index.html">返回</a>
+<nav class="floors" aria-label="藏经阁楼层">
+<button class="floor active" aria-current="page">第一层 · 云息</button>
+<button class="floor" disabled>第二层 · 玄基</button>
+<button class="floor" disabled>第三层 · 金丹</button>
+</nav>
+<input id="book-search" aria-label="查找秘籍" placeholder="查找秘籍" autocomplete="off">
+<span class="book-search-icon" aria-hidden="true"></span>
+<div class="keyword-heading">关键词</div><nav id="keywords" aria-label="秘籍关键词"></nav>
+<label class="study-only"><input type="checkbox" disabled>可修习</label>
+<div id="books" aria-label="已有秘籍"></div>
+<article class="detail" aria-label="所选秘籍">
+<h2 id="detail-title"></h2><div id="detail-tags"></div>
+<nav class="detail-tabs" aria-label="秘籍信息">
+<button data-tab="summary" class="active">简介</button><button data-tab="chapters">卷章</button>
+</nav><div id="detail-body"></div>
+</article>
+<div class="copy-footer"><span>首本免费</span><button class="action" type="button" aria-disabled="true" title="本页只预览选书交互">拓印</button></div>
+</section>
+<section id="shop" aria-label="善功堂" hidden>
+<h1 class="shop-title">善功堂</h1>
+<div class="shop-balance">可用贡献：100</div>
+<input id="shop-search" aria-label="查找物品" placeholder="查找物品" autocomplete="off">
+<a class="shop-back" href="index.html">返回</a>
+<div class="shop-columns" id="shop-columns"></div>
+<div class="shop-summary" id="shop-summary"></div>
+<button class="shop-exchange" aria-disabled="true" type="button" title="本页只预览目录与素材">兑换</button>
+</section>
+</main>
+</body></html>

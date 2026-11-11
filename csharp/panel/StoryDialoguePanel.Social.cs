@@ -25,13 +25,13 @@ public partial class StoryDialoguePanel
 
     private void reset_social_presentation()
     {
+        reset_bottom_choices();
         if (_socialContent is not null) { _socialContent.Hide(); RemoveChild(_socialContent); _socialContent.QueueFree(); _socialContent = null; }
         _socialFactors.Clear(); _socialOutcome = _socialSpeech = null; _socialCancel = null; _socialPlayer = null; _socialTestMode = false;
         _socialInk = null; _socialDone = null; _socialChoosing = _socialRevealing = false;
         _socialLines = []; _socialScroll = null;
         if (_body is not null) _body.Modulate = Colors.White;
-        _dialogueHeight = 250;
-        if (_dialogueFrame is not null) { _dialogueFrame.Show(); _dialogueFrame.OffsetTop = -250; }
+        if (_dialogueFrame is not null) _dialogueFrame.Show();
         if (_continueHint is not null) { _continueHint.Show(); _continueHint.Text = "点击任意处继续　›"; }
     }
 

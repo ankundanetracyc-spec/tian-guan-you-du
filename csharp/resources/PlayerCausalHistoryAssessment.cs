@@ -53,7 +53,7 @@ public sealed class PlayerCausalHistoryAssessment
         switch (history_conclusion)
         {
             case PlayerCausalHistoryConclusion.NoRecord:
-                lines.Add("长老静静看了你片刻，收回灵识，神色如常。");
+                lines.Add("长老静静听你说明来意，神色如常。");
                 break;
             case PlayerCausalHistoryConclusion.NoVerifiableConclusion:
                 // Incomplete records are not themselves evidence or an unverified clue.

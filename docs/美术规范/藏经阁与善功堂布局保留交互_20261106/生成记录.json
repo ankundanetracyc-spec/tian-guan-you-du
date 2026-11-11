@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-06",
+  "status": "interactive_browser_prototype_not_godot",
+  "tool": "built-in image_gen.imagegen for empty frames",
+  "ui": "HTML CSS JavaScript",
+  "common_prompt": "室内功能页_保留布局共用提示词.txt",
+  "frame_assets": [
+    {
+      "image": "藏经阁_空白框架_v4.png",
+      "source": "E:/tmp/CodexData/generated_images/01a1a0bb-bca0-7622-87eb-903f01e63b98/exec-6e752cf2-e722-41f5-8902-3547ab709001.png",
+      "prompt": "藏经阁_框架_v4_提示词.txt"
+    },
+    {
+      "image": "善功堂_原布局哑光框架_v2.png",
+      "source": "E:/tmp/CodexData/generated_images/01a1a0bb-bca0-7622-87eb-903f01e63b98/exec-db3df6e8-b8ea-4442-a166-a1fe744c041a.png",
+      "prompt": "善功堂_框架_v2_提示词.txt"
+    }
+  ],
+  "manual_texture": "textures/items/inventory_density_20261029/manual_generic_2x3.png",
+  "manual_count": 5,
+  "spine_design_size": [
+    42,
+    170
+  ],
+  "title_font_max": 18,
+  "title_layout": "single vertical column; fitted to label",
+  "font": "resources/font/LXGWZhenKaiSlabGB-Regular.ttf",
+  "runtime_changes": false,
+  "save_files_accessed": false
+}

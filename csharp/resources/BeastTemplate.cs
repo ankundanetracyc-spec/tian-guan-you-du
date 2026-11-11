@@ -17,6 +17,7 @@ public partial class BeastTemplate : Resource
     [Export] public float soul_min = 5f, soul_mean = 5f, soul_max = 5f;
     [Export] public BeastRacialTalent? racial_talent;
     [Export] public BasicDeckResource? deck;
+    [Export] public CombatBoardLayout? combat_board_layout;
     [Export] public int initial_hand_size = 5;
     [Export] public int cards_per_turn = 3;
 }

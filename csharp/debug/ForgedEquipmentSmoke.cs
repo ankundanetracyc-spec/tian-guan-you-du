@@ -42,11 +42,11 @@ public partial class ForgedEquipmentSmoke : Node
             human.learned_gongfa_paths.Add(book.ResourcePath); human.learned_gongfa_chapters[book.ResourcePath] = new Godot.Collections.Array<string>(book.get_sorted_chapters().Select(x => x.get_id()));
             human.main_gongfa_path = book.ResourcePath; owner.main_gongfa = book;
             var rewritten = owner.resolve_combat_skill(ForgedEquipmentPreview.SkillPaths[2])!;
-            Check(rewritten.gongfa_rewrite_effect_ids.Contains("baihai_c2_cuishan"), "真实秘籍化法已生成");
-            Check(equipment.Bind(ignoreEffect.EffectId, rewritten), "以秘籍化法后的技能来源重新绑定");
+            Check(!rewritten.gongfa_rewrite_effect_ids.Contains("baihai_c2_cuishan"), "撤回的百骸二卷化法不再进入战斗技能");
+            Check(equipment.Bind(ignoreEffect.EffectId, rewritten), "以原招式来源绑定器物化法");
             var withRewrite = ForgedEquipmentPreview.Baseline(); withRewrite.combat_resolved_skills[2] = rewritten;
             var combined = equipment.BuildSnapshot(withRewrite).combat_resolved_skills[2];
-            Check(combined.gongfa_rewrite_effect_ids.Contains("baihai_c2_cuishan") && combined.physical_defense_ignore_ratio > 0 && rewritten.physical_defense_ignore_ratio == 0, "秘籍化法和器物化法共存且不污染来源");
+            Check(!combined.gongfa_rewrite_effect_ids.Contains("baihai_c2_cuishan") && combined.physical_defense_ignore_ratio > 0 && rewritten.physical_defense_ignore_ratio == 0, "器物效果只进入战斗副本且不污染原招式");
             owner.QueueFree();
             var preview = GD.Load<PackedScene>("res://tools/ForgedEquipmentPreview.tscn").Instantiate<ForgedEquipmentPreview>(); preview.Configure(artifact); GetTree().Root.AddChild(preview);
             for (int f = 0; f < 4; f++) await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);

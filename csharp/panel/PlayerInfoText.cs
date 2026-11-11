@@ -12,6 +12,17 @@ public static class PlayerInfoText
     private static bool _preferenceLoaded;
     private sealed record TextBinding(WeakReference<Control> Target, string Original);
     private static readonly List<TextBinding> Bindings = new();
+    private static readonly HashSet<string> ProseFields = new(StringComparer.Ordinal)
+    {
+        "效果", "化法追加", "追加效果", "原技能效果", "基础效果", "主动效果", "被动效果",
+        "装备效果", "手持效果", "御使效果", "技能效果", "心法效果", "特殊效果", "化法", "技能",
+        "药效", "功用", "作用", "简介", "介绍", "说明", "特性", "特效",
+    };
+    private static readonly HashSet<string> CompactFields = new(StringComparer.Ordinal)
+    {
+        "类型", "关键词", "消耗", "耗费", "费用", "目标", "使用次数", "次数", "冷却", "持续",
+        "整局限制", "每回合", "出手方式", "品阶", "丹阶", "丹效", "器类", "器蕴", "锋锐", "灵识占用",
+    };
     public static event Action? ModeChanged;
     public static InformationMode Mode
     {
@@ -60,38 +71,128 @@ public static class PlayerInfoText
     public static string Detailed(string original)
     {
         if (string.IsNullOrWhiteSpace(original)) return "";
+        var (body, formulas) = SeparateCalculations(original);
+        var result = CleanSummary(body);
+        return formulas.Count == 0 ? result : result + "\n\n计算来源\n" + string.Join("\n\n", formulas);
+    }
+
+    /// <summary>Explicit source formulas, kept separate so a structured card adds one final calculation block.</summary>
+    public static IReadOnlyList<string> CalculationSources(string original) => SeparateCalculations(original).Formulas;
+
+    private static (string Body, List<string> Formulas) SeparateCalculations(string original)
+    {
         var formulas = new List<string>();
-        var protectedText = Regex.Replace(original,
-            @"(?<before>。?)[ \t]*(?:计算公式|计算方式|计算过程)\s*[：:](?<formula>[^。；\r\n]+)(?<end>。?)",
-            match =>
-            {
-                int index = formulas.Count;
-                formulas.Add(ReadableFormula(match.Groups["formula"].Value));
-                return "（§" + index + "§）" + (match.Groups["before"].Length > 0 || match.Groups["end"].Length > 0 ? "。" : "");
-            });
-        var lines = protectedText.Split('\n').ToList();
-        var equations = lines.Where(line => Regex.IsMatch(line, @"^[^。]*[=＝]")).ToArray();
-        if (equations.Length > 0)
+        if (string.IsNullOrWhiteSpace(original)) return ("", formulas);
+        var footer = Regex.Match(original, @"(?:^|\n\n)计算来源\r?\n");
+        var existing = footer.Success ? original[(footer.Index + footer.Length)..] : "";
+        var body = footer.Success ? original[..footer.Index] : original;
+        body = Regex.Replace(body, @"(?:计算公式|计算方式|计算过程)\s*[：:](?<formula>[^。；\r\n]*)(?:。|；)?", match =>
         {
-            lines.RemoveAll(line => equations.Contains(line));
-            int resultLine = lines.FindLastIndex(line => Regex.IsMatch(line, @"当前(?:值|倍率|[：:])"));
-            int index = formulas.Count; formulas.Add(ReadableFormula(string.Join("；", equations)));
-            if (resultLine >= 0) lines[resultLine] += "（§" + index + "§）";
-            else lines.Add("（§" + index + "§）");
-            protectedText = string.Join("\n", lines);
+            if (!string.IsNullOrWhiteSpace(match.Groups["formula"].Value)) formulas.Add(ReadableFormula(match.Groups["formula"].Value));
+            return "";
+        });
+        // Some existing callers pass an already formatted explanation. Only
+        // arithmetic parentheses are moved; actual conditions remain in place.
+        for (var start = 0; start < body.Length; start++)
+        {
+            if (body[start] is not ('(' or '（')) continue;
+            var depth = 1;
+            var end = start + 1;
+            for (; end < body.Length && depth > 0; end++)
+            {
+                if (body[end] is '(' or '（') depth++;
+                else if (body[end] is ')' or '）') depth--;
+            }
+            if (depth != 0) continue;
+            var inner = body[(start + 1)..(end - 1)];
+            if (inner.Contains('。') || Regex.IsMatch(inner, @"造成|获得|回复|消耗|触发|命中后")
+                || !Regex.IsMatch(inner, @"[=＝≈]\s*[-+]?\d") || !Regex.IsMatch(inner, @"[+＋−\-×÷*/%]|\[[\d.]+\]")) continue;
+            formulas.Add(ReadableFormula(inner));
+            body = body[..start] + body[end..];
+            start--;
         }
-        var result = Summary(protectedText);
-        for (int i = 0; i < formulas.Count; i++) result = result.Replace("§" + i + "§", formulas[i]);
-        return result;
+        var lines = body.Split('\n');
+        body = string.Join("\n", lines.Where(line =>
+        {
+            var plain = Regex.Replace(line, @"\[/?(?:b|i|u|s|color|font|font_size|bgcolor|fgcolor|url)(?:=[^\]]*)?\]", "");
+            if (!Regex.IsMatch(plain, @"^[^。]*[=＝≈]")) return true;
+            formulas.Add(ReadableFormula(line));
+            return false;
+        }));
+        formulas.AddRange(existing.Split('\n').Where(line => !string.IsNullOrWhiteSpace(line)).Select(ReadableFormula));
+        return (body, formulas.Distinct(StringComparer.Ordinal).ToList());
     }
     private static string ReadableFormula(string formula)
     {
         var readable = Regex.Replace(formula.Trim(),
-            @"\b(max|min|round|floor|ceil|clamp|abs)\s*\(", match => (match.Groups[1].Value switch
-            { "max" => "取较大值", "min" => "取较小值", "round" or "floor" or "ceil" => "", "clamp" => "限定范围", _ => "绝对值" }) + "(");
+            @"\b(max|min|round|floor|ceil|clamp|abs)\s*\(", match => (match.Groups[1].Value.ToLowerInvariant() switch
+            { "max" => "max", "min" => "min", "round" or "floor" or "ceil" => "", "clamp" => "限定范围", _ => "绝对值" }) + "(", RegexOptions.IgnoreCase);
+        readable = Regex.Replace(readable, @"取(?:较|最)大值\s*(?=[(（])", "max");
+        readable = Regex.Replace(readable, @"取(?:较|最)小值\s*(?=[(（])", "min");
         // Keep arithmetic grouping and the actual result; rounding is an internal
         // calculation rule rather than another explanation in the hover formula.
-        return Regex.Replace(readable, @"(?:四舍五入|向下取整|向上取整)\s*(?=[(（])", "");
+        readable = Regex.Replace(readable, @"(?:四舍五入|向下取整|向上取整)\s*(?=[(（])", "");
+        var name = Regex.Match(readable, @"^(?<label>[^：:()（）\[\]，,=＝≈]+)[：:](?<formula>.+)$");
+        var prefix = name.Success ? name.Groups["label"].Value + "：" : "";
+        var expression = name.Success ? name.Groups["formula"].Value.Trim() : readable;
+        while (expression.Length > 1 && expression[0] is '(' or '（')
+        {
+            var depth = 0; var closesAtEnd = false;
+            for (var index = 0; index < expression.Length; index++)
+            {
+                if (expression[index] is '(' or '（') depth++;
+                else if (expression[index] is ')' or '）') depth--;
+                if (depth != 0) continue;
+                closesAtEnd = index == expression.Length - 1;
+                break;
+            }
+            if (!closesAtEnd) break;
+            expression = expression[1..^1].Trim();
+        }
+        // Accept the previous result-first presentation when reading saved or cached text.
+        var previous = Regex.Match(expression, @"^(?<result>.+?)[，,]\s*计算\s*[：:]\s*(?<calculation>.+)$");
+        if (previous.Success)
+            return CalculationLine(prefix, previous.Groups["result"].Value, previous.Groups["calculation"].Value);
+        // A canonical line must survive mode switches and repeated formatting unchanged.
+        var canonical = Regex.Match(expression,
+            @"^(?<result>[-+]?\d+(?:\.\d+)?%?(?:\s*[\u4e00-\u9fff]+)?|[A-Z](?:\d+)?|[\u4e00-\u9fff]{1,32})\s*[=＝]\s*(?<calculation>.+)$");
+        if (canonical.Success)
+            return CalculationLine(prefix, canonical.Groups["result"].Value, canonical.Groups["calculation"].Value);
+        var equality = expression.LastIndexOfAny(['=', '＝', '≈']);
+        if (equality < 0) return readable;
+        var result = expression[(equality + 1)..].Trim();
+        var calculation = expression[..equality].Trim();
+        // An intermediate displayed subtotal is an annotation, not another
+        // operand. Keep its expression and omit the approximate subtotal.
+        calculation = Regex.Replace(calculation, @"≈(?:[\u4e00-\u9fff]+)?[-+]?\d+(?:\.\d+)?%?", "");
+        return CalculationLine(prefix, result, calculation);
+    }
+
+    private static string CalculationLine(string prefix, string result, string calculation) =>
+        prefix + result.Trim() + " = "
+        + Regex.Replace(calculation.Trim(), @"≈(?:[\u4e00-\u9fff]+)?[-+]?\d+(?:\.\d+)?%?", "");
+
+    /// <summary>Keep prose under its heading without adding blank lines to compact data fields.</summary>
+    public static string LayoutLongParagraphs(string text)
+    {
+        if (string.IsNullOrWhiteSpace(text)) return text;
+        var lines = text.Replace("\r\n", "\n").Split('\n');
+        var inCalculations = false;
+        for (var index = 0; index < lines.Length; index++)
+        {
+            var plain = Regex.Replace(lines[index], @"\[/?(?:b|i|u|s|color|font|font_size|bgcolor|fgcolor|url)(?:=[^\]]*)?\]", "");
+            if (plain.Trim() == "计算来源") inCalculations = true;
+            if (inCalculations) continue;
+            var field = Regex.Match(lines[index],
+                @"^(?<prefix>(?:\[(?:b|i|u|s|color|font|font_size|bgcolor|fgcolor)(?:=[^\]]*)?\])*)(?<label>[^：:\[\]\r\n]{1,16})[：:](?<suffix>(?:\[/(?:b|i|u|s|color|font|font_size|bgcolor|fgcolor)\])*)[ \t]*(?<body>\S.*)$");
+            if (!field.Success) continue;
+            var label = field.Groups["label"].Value.Trim();
+            var body = field.Groups["body"].Value;
+            if (CompactFields.Contains(label)
+                || !(ProseFields.Contains(label) || body.Length >= 40 || body.Contains('。') || body.Contains('；'))) continue;
+            lines[index] = field.Groups["prefix"].Value + label + "：" + field.Groups["suffix"].Value + "\n" + body;
+        }
+        return string.Join("\n", lines);
     }
     public static bool HasDetails(string original) =>
         Regex.Replace(Summary(original), @"\s+", "") != Regex.Replace(original, @"\s+", "");
@@ -124,6 +225,12 @@ public static class PlayerInfoText
     public static string Summary(string text)
     {
         if (string.IsNullOrWhiteSpace(text)) return "";
+        return CleanSummary(SeparateCalculations(text).Body);
+    }
+
+    private static string CleanSummary(string text)
+    {
+        text = text.Replace("预估", "");
         var detailStart = text.IndexOf("\n\n规则详解\n", StringComparison.Ordinal);
         if (detailStart >= 0) text = text[..detailStart];
         // Chinese sentence delimiters deliberately exclude decimal points in numeric formulas.
@@ -135,8 +242,7 @@ public static class PlayerInfoText
             !line.Contains("命中、会心与目标防御在攻击时结算") &&
             !line.Contains("瓷瓶仅作图标与演出外观") &&
             !line.Contains("同类丹药合并为一格") &&
-            !Regex.IsMatch(line, @"(?:实例\s*ID|资源路径|绑定基础牌|快照|兼容字段|运行时字段)\s*[：:]") &&
-            !Regex.IsMatch(line, @"^[^。]*[=＝]"));
+            !Regex.IsMatch(line, @"(?:实例\s*ID|资源路径|绑定基础牌|快照|兼容字段|运行时字段)\s*[：:]"));
         text = string.Join("\n", lines);
         // Old resource descriptions sometimes embed a symbolic assignment after the effect.
         text = Regex.Replace(text, @"(?<![A-Za-z])[A-Z]\s*=\s*[^。；\r\n]*(?:。|；)?", "");

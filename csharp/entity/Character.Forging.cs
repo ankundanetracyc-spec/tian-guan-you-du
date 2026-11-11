@@ -59,7 +59,7 @@ public partial class Character
         var stagedArtifacts = human.artifact_inventory.ToList();
         var stagedArtifactSlots = human.artifact_inventory_positions.ToList();
         if (product is not null) { stagedArtifacts.Add(product); stagedArtifactSlots.Add(free); }
-        if (!plan_spatial_inventory(spatial_candidates(paths, positions, stagedArtifacts, stagedArtifactSlots), human.inventory_placements,
+        if (!plan_spatial_inventory(spatial_candidates(paths, counts, positions, stagedArtifacts, stagedArtifactSlots), human.inventory_placements,
             out var stagedPlacements, preserveUnplaced: product is null))
         { result.Errors.Add("行囊空间装不下成品，请先整理再开炼。"); return false; }
         _forgingCommitting = true;
@@ -71,8 +71,11 @@ public partial class Character
             human.current_world_stamina = Math.Max(0, human.current_world_stamina - result.Energy);
             human.artifact_inventory = new(stagedArtifacts); human.artifact_inventory_positions = new(stagedArtifactSlots);
             human.inventory_placements = stagedPlacements;
+            float proficiencyGrowth = result.Success ? RecordForgingPracticeGrowth(result.Product!) : 0;
+            result.ProficiencyGrowth = proficiencyGrowth;
             human.forging_records.Add(crafting_record_date() + (result.Success ? $"炼成{result.Product!.Name}" : "未成器") +
-                $" · {result.Hours}时辰 · 精力{result.Energy}\n" + string.Join("、", draft.Inputs.Select(i =>
+                $" · {result.Hours}时辰 · 精力{result.Energy}" +
+                (proficiencyGrowth > 0 ? $" · 器道造诣+{proficiencyGrowth:0.#}" : "") + "\n" + string.Join("、", draft.Inputs.Select(i =>
                     $"{i.Role.Replace("复合身材", "辅体")}：{i.Material}×{i.Quantity}")));
             notify_inventory_changed();
             WorldStaminaChanged?.Invoke(this);

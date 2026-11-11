@@ -84,7 +84,7 @@ public partial class ForgedSwordAdapterSmoke : Node
             {
                 var panel = GD.Load<PackedScene>("res://tscn/panel/InfoPanel.tscn").Instantiate<InfoPanel>(); AddChild(panel);
                 panel.show_entity(restored);
-                typeof(InfoPanel).GetMethod("render_new_page", Hidden)!.Invoke(panel, [4]);
+                typeof(InfoPanel).GetMethod("render_new_page", Hidden)!.Invoke(panel, [5]);
                 for (var frame = 0; frame < 8; frame++) await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
                 await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
                 using var shot = GetViewport().GetTexture().GetImage();

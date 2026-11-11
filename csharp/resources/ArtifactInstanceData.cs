@@ -25,6 +25,16 @@ public partial class ArtifactInstanceData : Resource
     [Export] public Array<ArtifactInscriptionData> inscriptions = [];
     [Export] public ArtifactRecipeRecord recipe = new();
     [Export] public ArtifactCombatProfile? combat_profile;
+    /// <summary>器物实例自身的行旅能力；为空时不推断其可作载具。</summary>
+    [Export] public ItemTravelData? travel_data;
+    /// <summary>Explicit display geometry copied from its source definition; absent old instances are not inferred by name.</summary>
+    [Export] public ItemLayoutPreviewData? layout_preview;
+    /// <summary>Recorded, optional per-item coefficients for role-aware display. Missing old values stay missing.</summary>
+    [Export] public SwordControlPreviewData? control_preview;
+    /// <summary>已从实际灵石充入此器物、尚未用完的游戏小时数。</summary>
+    [Export] public double travel_charge_hours;
+    /// <summary>驾舟中保留本件实例，防止半空中被丢弃或转移。</summary>
+    [Export] public bool travel_in_use;
     /// <summary>新炼器的固定快照。为空时沿用旧版实例；不将新效果塞进内炼/外祭等旧字段。</summary>
     [Export] public string forged_snapshot_json = "";
 

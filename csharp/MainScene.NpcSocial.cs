@@ -25,6 +25,7 @@ public partial class MainScene
         if (npc is null || !GodotObject.IsInstanceValid(npc)) return "对方已不在场，人物名单可能刚刚更新。";
         if (!npc.is_alive) return "对方已不在场。";
         if (baishi_present_actor(npc.npc_id) is not null) return "";
+        if (npc.is_player_travel_companion && location_interior?.Visible == true) return "";
         if (player is null) return "当前没有可以进行交互的角色。";
         if (_nodeWorldMap?.IsVisibleInTree() == true && _nodeWorldMap.HasMethod("can_contact_map_npc"))
         {
@@ -80,9 +81,10 @@ public partial class MainScene
         {
             if (answered) return;
             answered = true;
-            if (!can_contact_social_npc(npc)) { story_dialogue.show_social_result(npc, new("对方已离开。", "还有些事，先走一步。", [])); return; }
+            var closesPlayerCancellation = !testMode && !proactive && choice == "leave";
+            if (!closesPlayerCancellation && !can_contact_social_npc(npc)) { story_dialogue.show_social_result(npc, new("对方已离开。", "还有些事，先走一步。", [])); return; }
             var responseHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
-            if (!testMode && npc.is_in_seclusion_at_hour(responseHour))
+            if (!closesPlayerCancellation && !testMode && npc.is_in_seclusion_at_hour(responseHour))
             {
                 story_dialogue.show_social_result(npc, new("对方已入静室闭关，本次未能交谈。", "静室门已闭，暂不便打扰。", []));
                 return;
@@ -106,6 +108,7 @@ public partial class MainScene
             response = NpcPersonalRecallRules.Attach(npc, response, month);
             response = NpcSocialRules.Remember(npc, human, choice, place, month, response, eventId);
             mark_save_dirty();
+            if (closesPlayerCancellation) { story_dialogue.close(); return; }
             story_dialogue.show_social_result(npc, response);
         }
         var cost = WorldStaminaRules.ConversationCost;

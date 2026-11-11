@@ -67,7 +67,7 @@ public partial class BattleManager
     }
     private bool UndoQueuePlanning()
     {
-        if (_segmentPhase != SegmentPhase.Planning || _mainPlayerUnit is null) return false;
+        if (_segmentPhase != SegmentPhase.Planning || auto_battle || _mainPlayerUnit is null) return false;
         var queue = get_battle_unit(_mainPlayerUnit).skill_queue;
         if (_selectingQueueTargets)
         {

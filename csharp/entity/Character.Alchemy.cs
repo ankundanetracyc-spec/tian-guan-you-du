@@ -52,6 +52,8 @@ public partial class Character
         var outputs = simulation.Pills.Where(pill => pill.Quality >= 20)
             .GroupBy(pill => AlchemyQualityRules.Tier(pill.Quality))
             .Select(group => (Path: AlchemyProductCatalog.Path(simulation.ProductId, group.Key), Count: group.Count())).ToArray();
+        int highestOutputTier = simulation.Pills.Where(pill => pill.Quality >= 20)
+            .Select(pill => AlchemyQualityRules.Tier(pill.Quality)).DefaultIfEmpty(-1).Max();
         var outputPlans = new List<(string Path, int Count, PillItemData Pill)>();
         foreach (var output in outputs)
         {
@@ -69,8 +71,13 @@ public partial class Character
             human.inventory_item_counts = new(amounts);
             human.inventory_item_positions = new(positions);
             human.current_world_stamina = Math.Max(0, human.current_world_stamina - simulation.EnergyNeed);
+            float proficiencyGrowth = highestOutputTier >= 0
+                ? RecordAlchemyPracticeGrowth(simulation.ProductId, highestOutputTier) : 0;
+            simulation = simulation with { ProficiencyGrowth = proficiencyGrowth };
+            result = simulation;
             human.alchemy_records.Add(crafting_record_date() + simulation.Outcome +
-                $" · {AlchemySlotSimulation.DurationHours(inputs):0.##}时辰 · 精力{simulation.EnergyNeed}\n" +
+                $" · {AlchemySlotSimulation.DurationHours(inputs):0.##}时辰 · 精力{simulation.EnergyNeed}" +
+                (proficiencyGrowth > 0 ? $" · 丹道造诣+{proficiencyGrowth:0.#}" : "") + "\n" +
                 string.Join("、", inputs.Select(i => $"{i.Name}×{i.Dose}")));
             // 炼制一次完成；不登记长期灵识占用。历法推进会处理正常世界事件。
             ensure_spatial_inventory_state();
@@ -172,6 +179,29 @@ public partial class Character
         string path, int count, ItemData item)
     {
         if (human is null || count <= 0) return count == 0;
+        if (item is PillItemData { can_stack: true })
+        {
+            int remaining = count;
+            for (int i = 0; i < paths.Count && remaining > 0; i++)
+            {
+                if (paths[i] != path || amounts[i] >= PillItemData.MaxStackSize) continue;
+                int added = Math.Min(remaining, PillItemData.MaxStackSize - amounts[i]);
+                amounts[i] += added;
+                remaining -= added;
+            }
+            while (remaining > 0)
+            {
+                var occupied = positions.Concat(human.artifact_inventory_positions).ToHashSet();
+                var free = Enumerable.Range(0, max_pack_slots).FirstOrDefault(index => !occupied.Contains(index), -1);
+                if (free < 0) return false;
+                int added = Math.Min(remaining, PillItemData.MaxStackSize);
+                paths.Add(path);
+                amounts.Add(added);
+                positions.Add(free);
+                remaining -= added;
+            }
+            return true;
+        }
         if (item.can_stack)
         {
             long existing = 0;

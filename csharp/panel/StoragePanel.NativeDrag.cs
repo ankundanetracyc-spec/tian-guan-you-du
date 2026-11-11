@@ -61,7 +61,7 @@ public partial class StoragePanel
             if (!drag.Active)
             {
                 _nativeDrag = null;
-                if (drag.Item.Item is StorageRingItemData) open_native_container(drag.Item.InstanceId);
+                if (drag.Item.Item is StorageBagItemData) open_native_container(drag.Item.InstanceId);
                 else on_slot_info_requested(drag.Source, true);
             }
             else
@@ -82,7 +82,7 @@ public partial class StoragePanel
     private void activate_native_drag(NativeDragState drag)
     {
         HoverInfoManager.HideAll(); clear_active_info(); drag.Active = true;
-        drag.Source.Modulate = new(1, 1, 1, .18f);
+        drag.Source.Hide();
         HoverInfoManager.SuspendFor(drag.Source, true);
         drag.Ghost = new Control { Name = "DraggedItem", ZIndex = 55, MouseFilter = MouseFilterEnum.Ignore };
         _canvas!.AddChild(drag.Ghost);
@@ -130,7 +130,7 @@ public partial class StoragePanel
         if (_nativeDrag is not { } drag) return;
         _nativeDrag = null;
         if (GodotObject.IsInstanceValid(drag.Source))
-        { drag.Source.Modulate = Colors.White; HoverInfoManager.SuspendFor(drag.Source, false); }
+        { drag.Source.Show(); HoverInfoManager.SuspendFor(drag.Source, false); }
         if (drag.Ghost is not null && GodotObject.IsInstanceValid(drag.Ghost)) { drag.Ghost.Hide(); drag.Ghost.QueueFree(); }
         _nativeSurface?.QueueRedraw();
     }
@@ -140,6 +140,7 @@ public partial class StoragePanel
         var rect = new Rect2(region.Position + new Vector2(drag.Cell.X, drag.Cell.Y) * NativeCell, new Vector2(drag.Size.X, drag.Size.Y) * NativeCell);
         var color = new Color(drag.Valid ? "678851" : "ac7057");
         surface.DrawRect(rect, new Color(color, .22f));
+        rect = rect.Grow(-1); // 2 像素实线／虚线均画在图标显示框内部。
         if (drag.Valid) surface.DrawRect(rect, color, false, 2);
         else
         {

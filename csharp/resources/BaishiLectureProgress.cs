@@ -12,11 +12,17 @@ public partial class BaishiLectureProgress : Resource
     [Export] public bool met_fang;
     [Export] public bool saw_awakening;
     [Export] public bool departed_qingxi;
+    // Old saves already past the opening default to false and retain their position.
+    [Export] public bool traveling_to_baishi;
     [Export] public bool heard_lecture;
     [Export] public bool roots_checked;
+    [Export] public string selected_sect_id = "";
+    [Export] public bool roots_session_finished;
     [Export] public bool fang_returned;
     [Export] public bool reached_yunxi;
     [Export] public bool chose_yuxu;
+    [Export] public bool spirit_boat_in_transit;
+    [Export] public string spirit_boat_driver_id = "";
     [Export] public bool finished;
     [Export] public bool assignments_released;
     [Export] public WorldNpcData companion = new()

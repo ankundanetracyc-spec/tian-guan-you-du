@@ -6,7 +6,7 @@ public partial class EastWoodsDungeonPanel
     private string local_action_name(EastWoodsActions.ActionDef action)
     {
         if (is_authored_forest_encounter(action)) return "林中遭遇";
-        if (action.Battle) return "挑战林地凶狼";
+        if (action.Battle) return _dynamicMode ? action.Name : "挑战林地凶狼";
         var item = action.ItemPath.Length > 0 ? EastWoodsActions.Item(action.ItemPath) : null;
         return item is null ? action.Name : action.Name + " " + item.entity_name;
     }

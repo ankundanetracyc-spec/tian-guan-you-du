@@ -61,7 +61,7 @@ public partial class ArtifactBondSmoke : Node
             if (OS.GetCmdlineUserArgs().Contains("--capture-bonds"))
             {
                 var panel = GD.Load<PackedScene>("res://tscn/panel/InfoPanel.tscn").Instantiate<InfoPanel>(); AddChild(panel); panel.show_entity(restored);
-                typeof(InfoPanel).GetMethod("render_new_page", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!.Invoke(panel, [4]);
+                typeof(InfoPanel).GetMethod("render_new_page", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)!.Invoke(panel, [5]);
                 for (var i = 0; i < 8; i++) await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
                 await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
                 using var shot = GetViewport().GetTexture().GetImage();

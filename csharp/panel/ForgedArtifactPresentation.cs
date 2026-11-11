@@ -9,11 +9,14 @@ public static class ForgedArtifactPresentation
 
     public static string IconPath(ProcessForgingTrial.Artifact artifact)
     {
+        if (artifact.Category != "剑") return artifact.InventoryIconPath;
         var name = SpriteName(artifact);
         return InventoryIconDensityPack.Root + name + "_sword_" + (name == "slender" ? "2x6.png" : "3x6.png");
     }
 
-    public static Vector2I InventorySize(ProcessForgingTrial.Artifact artifact) => new(SpriteName(artifact) == "slender" ? 2 : 3, 6);
+    public static Vector2I InventorySize(ProcessForgingTrial.Artifact artifact) => artifact.Category == "剑"
+        ? new(SpriteName(artifact) == "slender" ? 2 : 3, 6)
+        : new(artifact.InventoryWidth, artifact.InventoryHeight);
     public static bool InventoryCanRotate(ProcessForgingTrial.Artifact artifact) => true;
     public static string InventoryFootprintShape(ProcessForgingTrial.Artifact artifact) => "rectangle";
 
@@ -27,7 +30,7 @@ public static class ForgedArtifactPresentation
         return shape.Contains("厚脊") ? "spined" : shape.Contains("宽展") ? "broad" : "slender";
     }
 
-    public static Texture2D Icon(ProcessForgingTrial.Artifact artifact) => GD.Load<Texture2D>(IconPath(artifact));
+    public static Texture2D? Icon(ProcessForgingTrial.Artifact artifact) => ResourceLoader.Exists(IconPath(artifact)) ? GD.Load<Texture2D>(IconPath(artifact)) : null;
 
     public static string Subtitle(ProcessForgingTrial.Artifact artifact) =>
         $"{artifact.Tier} · {artifact.Category} · {ProcessForgingTrial.PolarityLabel(artifact.Polarity)}";
@@ -65,7 +68,7 @@ public static class ForgedArtifactPresentation
     {
         var sections = new List<Section>
         {
-            new("本体属性", $"锋锐 {artifact.Sharpness}\n形态：{artifact.Shape}"),
+            new("本体属性", artifact.Category == "剑" ? $"锋锐 {artifact.Sharpness}\n形态：{artifact.Shape}" : $"形态：{artifact.Shape}"),
             new("基础加成", string.Join("\n", artifact.Effects.Where(x => !x.Special).Select(x => "· " + x.Description).DefaultIfEmpty("无额外基础加成")))
         };
         if (artifact.Tier != "凡器")

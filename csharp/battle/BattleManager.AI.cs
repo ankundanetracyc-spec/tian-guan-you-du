@@ -45,9 +45,9 @@ public partial class BattleManager
         .Where(Alive)
         .ToDictionary(unit => unit, unit => (float)unit.Get("current_health").AsInt32());
 
-    private void BuildAiQueue(GodotObject unit, Dictionary<GodotObject, float> forecast, bool teammate)
+    private void BuildAiQueue(GodotObject unit, Dictionary<GodotObject, float> forecast, bool teammate, bool allowSupplies = true)
     {
-        BuildConstructedAiQueue(unit, forecast, teammate);
+        BuildConstructedAiQueue(unit, forecast, teammate, allowSupplies);
     }
 
     private AiCandidate ScoreAiSkill(

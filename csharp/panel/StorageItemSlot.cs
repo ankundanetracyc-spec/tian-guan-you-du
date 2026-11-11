@@ -11,6 +11,8 @@ public partial class StorageItemSlot : Control
     private const double InfoHoverDelay = 0.10;
     private TextureRect? icon_rect;
     private Label? name_label;
+    private Panel? stack_count_badge;
+    private Label? stack_count_label;
     private Godot.Timer? hover_timer;
     private bool is_trade_slot;
     private bool is_pointer_inside;
@@ -42,6 +44,7 @@ public partial class StorageItemSlot : Control
             icon_rect.MouseFilter = MouseFilterEnum.Ignore;
             icon_rect.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
         }
+        update_spatial_stack_badge();
         Modulate = Colors.White;
     }
 
@@ -95,6 +98,37 @@ public partial class StorageItemSlot : Control
         update_slot_tint();
     }
 
+    private void update_spatial_stack_badge()
+    {
+        if (!spatial_drag_enabled || item_count <= 1)
+        {
+            stack_count_badge?.Hide();
+            return;
+        }
+        if (stack_count_badge is null)
+        {
+            stack_count_badge = new Panel { Name = "SpatialStackCount", MouseFilter = Control.MouseFilterEnum.Ignore, ZIndex = 8 };
+            stack_count_badge.SetAnchorsPreset(LayoutPreset.TopRight);
+            stack_count_badge.OffsetLeft = -68; stack_count_badge.OffsetRight = -7;
+            stack_count_badge.OffsetTop = 7; stack_count_badge.OffsetBottom = 34;
+            stack_count_badge.AddThemeStyleboxOverride("panel", new StyleBoxFlat
+            {
+                BgColor = new Color("587650"), CornerRadiusTopLeft = 8, CornerRadiusTopRight = 8,
+                CornerRadiusBottomLeft = 8, CornerRadiusBottomRight = 8
+            });
+            AddChild(stack_count_badge);
+            stack_count_label = new Label { HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center, MouseFilter = Control.MouseFilterEnum.Ignore };
+            stack_count_label.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+            stack_count_label.AddThemeFontOverride("font", GD.Load<FontFile>("res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf"));
+            stack_count_label.AddThemeFontSizeOverride("font_size", 15);
+            stack_count_label.AddThemeColorOverride("font_color", new Color("f5f0df"));
+            stack_count_badge.AddChild(stack_count_label);
+        }
+        stack_count_label!.Text = "×" + item_count.ToString("N0");
+        stack_count_badge.Show();
+    }
+
     public void set_item(int new_slot_index, string new_item_path, Resource item_data, int count)
     {
         slot_index = new_slot_index;
@@ -130,6 +164,7 @@ public partial class StorageItemSlot : Control
         is_artifact = true;
         is_empty = false;
         artifact_data = artifact;
+        stack_count_badge?.Hide();
         MouseFilter = MouseFilterEnum.Stop;
         if (name_label is not null) name_label.Text = string.IsNullOrWhiteSpace(artifact.artifact_name) ? artifact.form?.form_name ?? "未命名法宝" : artifact.artifact_name;
         if (icon_rect is not null)
@@ -152,6 +187,7 @@ public partial class StorageItemSlot : Control
         artifact_data = null;
         if (icon_rect is not null) { icon_rect.Texture = null; icon_rect.Material = null; }
         if (name_label is not null) name_label.Text = "";
+        stack_count_badge?.Hide();
         is_pointer_inside = false;
         update_slot_tint();
         MouseFilter = MouseFilterEnum.Stop;

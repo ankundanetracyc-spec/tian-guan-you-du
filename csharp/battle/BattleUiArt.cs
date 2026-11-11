@@ -8,6 +8,12 @@ internal static class BattleUiArt
     internal static readonly Color Text = new("f4f0df"), Accent = new("c4b58c"), Warning = new("b56854");
     private static readonly Dictionary<string, Texture2D> Textures = [];
 
+    internal static void ReleaseGeneratedStyles()
+    {
+        foreach (var key in Textures.Keys.Where(key => key.Contains(':') && !key.StartsWith("res://", StringComparison.Ordinal)).ToArray())
+        { Textures[key].Dispose(); Textures.Remove(key); }
+    }
+
     internal static StyleBoxTexture PaperBarStyle()
     {
         var atlas = new AtlasTexture

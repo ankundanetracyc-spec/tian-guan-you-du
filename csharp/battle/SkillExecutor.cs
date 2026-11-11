@@ -22,7 +22,7 @@ public partial class SkillExecutor : Node
     {
         if (!GodotObject.IsInstanceValid(attacker) || !GodotObject.IsInstanceValid(target)) { Finish(attacker, is_counter, false,finish_as_automatic); return; }
         if(skill.skill_name=="复命"&&GetManager() is BattleManager replayManager&&replayManager.is_realtime_battle())
-        { replayManager.BeginFumingReplay(attacker,skill,finish_as_automatic); return; }
+        { replayManager.BeginFumingReplay(attacker,skill,finish_as_automatic,is_slot10_automatic); return; }
         if (target is ArtifactBody artifactBody)
         {
             var artifactManager = GetManager() as BattleManager;
@@ -64,10 +64,11 @@ public partial class SkillExecutor : Node
         var firstHit=false;
         var manager=GetManager();
         var body=(manager as BattleManager)?.gongfa_combat;
+        var bypassShield=body?.BypassesShield(skill,is_slot10_automatic)==true;
         var segments=body?.Segments(attacker,skill)??1;
         // 闪避优先于队首应对：先结算整招规避，再预判首段普通闪避，避免成功闪避仍花费应对。
         var evaded=body?.EvadeWithYouhai(target,attacker,skill)??false;
-        var firstSegmentEvaded=!evaded&&CanBeEvaded(skill)&&BattleActionResolver.roll_evasion(attacker,target);
+        var firstSegmentEvaded=!evaded&&CanBeEvaded(skill,attacker)&&BattleActionResolver.roll_evasion(attacker,target);
         var targetResponded = await CompleteAttackContact(attacker, target, skill, is_counter, allowResponse: !evaded&&!firstSegmentEvaded);
         if (!GodotObject.IsInstanceValid(attacker) || !GodotObject.IsInstanceValid(target)) { await SettleAction(attacker,skill);Finish(attacker, is_counter, false,finish_as_automatic); return; }
         var blockRemaining=skill.damage_type=="physical"?GetStatusStacks(target,"化解"):0;
@@ -84,7 +85,7 @@ public partial class SkillExecutor : Node
             var initialSegmentCausedNoHealthDamage = false;
             for(var i=0;i<segments&&!killed;i++)
             {
-                bool? evadedOverride=i==0?firstSegmentEvaded:CanBeEvaded(skill)&&BattleActionResolver.roll_evasion(attacker,target);
+                bool? evadedOverride=i==0?firstSegmentEvaded:CanBeEvaded(skill,attacker)&&BattleActionResolver.roll_evasion(attacker,target);
                 if(evadedOverride!=true&&!bloodArmResponseChecked)
                 {
                     bloodArmResponseChecked=true;
@@ -102,7 +103,8 @@ public partial class SkillExecutor : Node
                 var bloodFollowUp=body?.IsBloodArmVisualSegment(attacker,skill,i)==true;
                 if(i>0)await PresentFollowUpContact(attacker,target,skill,bloodFollowUp);
                 if(!GodotObject.IsInstanceValid(attacker)||!GodotObject.IsInstanceValid(target))break;
-                killed=ApplyToTarget(attacker,skill,target,is_counter,ref blockRemaining,out var hit,i,is_queued_skill,is_slot10_automatic,evadedOverride);
+                killed=ApplyToTarget(attacker,skill,target,is_counter,ref blockRemaining,out var hit,i,is_queued_skill,is_slot10_automatic,evadedOverride,
+                    bypassShield:bypassShield);
                 hitAtLeastOnce|=hit;
                 if(i==0)firstHit=hit;
                 if(bloodFollowUp)await WaitForBloodArmAction(attacker);
@@ -111,25 +113,24 @@ public partial class SkillExecutor : Node
             var taiheFollowUps=body?.TaiheFollowUpCount(attacker,skill,targetResponded,initialSegmentCausedNoHealthDamage)??0;
             for(var i=0;i<taiheFollowUps&&!killed;i++)
             {
-                var followUp=body?.CreateTaiheFollowUpSegment(skill)??skill;
+                var followUp=body?.CreateTaiheFollowUpSegment(attacker,skill,i)??skill;
                 await PresentFollowUpContact(attacker,target,followUp,false);
                 if(!GodotObject.IsInstanceValid(attacker)||!GodotObject.IsInstanceValid(target))break;
-                var followUpEvaded=CanBeEvaded(skill)&&BattleActionResolver.roll_evasion(attacker,target);
-                killed=ApplyToTarget(attacker,skill,target,is_counter,ref blockRemaining,out var hit,segments+i,is_queued_skill,is_slot10_automatic,followUpEvaded,followUp);
+                var followUpEvaded=CanBeEvaded(skill,attacker)&&BattleActionResolver.roll_evasion(attacker,target);
+                var responseFollowUpIgnoresDefuse=i==0&&targetResponded&&GongfaSkillRewriteRuntime.HasEffect(skill,"taihe_c1_koushan");
+                killed=ApplyToTarget(attacker,skill,target,is_counter,ref blockRemaining,out var hit,segments+i,is_queued_skill,is_slot10_automatic,followUpEvaded,followUp,
+                    ignoreDefuse:responseFollowUpIgnoresDefuse,bypassShield:bypassShield);
                 hitAtLeastOnce|=hit;
-                if(hit&&target.Get("current_health").AsInt32()>0&&GetManager() is BattleManager taiheManager
-                    &&taiheManager.is_realtime_battle()&&body is not null&&body.RollTaiheStun(attacker,target,skill,out var stunFrames))
-                    AddStatus(target,"僵直",stunFrames,attacker,stunFrames/StatusEffect.CombatFramesPerSecond);
             }
             var cloudLimit=body?.CloudFollowUpLimit(attacker,skill,firstHit)??0;
             var cloudSegment=cloudLimit>0?body!.CreateCloudFollowUp(attacker,skill):null;
             for(var i=0;i<cloudLimit&&!killed;i++)
             {
                 var chance=body!.CloudFollowUpChance(attacker,skill,i);
-                if(chance<=0 || chance<1 && GD.Randf()>=chance)break;
+                if(chance<=0 || chance<1 && GD.Randf()>=chance)continue;
                 await PresentFollowUpContact(attacker,target,cloudSegment!,false);
                 if(!GodotObject.IsInstanceValid(attacker)||!GodotObject.IsInstanceValid(target))break;
-                var missed=CanBeEvaded(skill)&&BattleActionResolver.roll_evasion(attacker,target);
+                var missed=CanBeEvaded(skill,attacker)&&BattleActionResolver.roll_evasion(attacker,target);
                 killed=ApplyToTarget(attacker,skill,target,is_counter,ref blockRemaining,out var hit,segments+taiheFollowUps+i,is_queued_skill,is_slot10_automatic,missed,cloudSegment);
                 hitAtLeastOnce|=hit;
                 if(!hit)break;
@@ -167,8 +168,9 @@ public partial class SkillExecutor : Node
             if(!attackPrepared){body?.PrepareAttack(attacker,skill);attackPrepared=true;}
             await Lunge(attacker, target, skill);
             if(!GodotObject.IsInstanceValid(attacker)||!GodotObject.IsInstanceValid(target)){await SettleAction(attacker,skill);continue;}
+            var bypassShield=body?.BypassesShield(skill,is_slot10_automatic)==true;
             var evadedByYouhai=body?.EvadeWithYouhai(target,attacker,skill)==true;
-            var evadedNormally=!evadedByYouhai&&CanBeEvaded(skill)&&BattleActionResolver.roll_evasion(attacker,target);
+            var evadedNormally=!evadedByYouhai&&CanBeEvaded(skill,attacker)&&BattleActionResolver.roll_evasion(attacker,target);
             await CompleteAttackContact(attacker,target,skill,is_counter,allowResponse:!evadedByYouhai&&!evadedNormally);
             if(!GodotObject.IsInstanceValid(attacker)||!GodotObject.IsInstanceValid(target)){await SettleAction(attacker,skill);continue;}
             var blockRemaining=skill.damage_type=="physical"?GetStatusStacks(target!,"化解"):0;
@@ -186,7 +188,7 @@ public partial class SkillExecutor : Node
             var targetHit=false;
             for(var segment=0;segment<segments&&!killed;segment++)
             {
-                bool? evadedOverride=segment==0?false:CanBeEvaded(skill)&&BattleActionResolver.roll_evasion(attacker,target);
+                bool? evadedOverride=segment==0?false:CanBeEvaded(skill,attacker)&&BattleActionResolver.roll_evasion(attacker,target);
                 if(evadedOverride!=true&&!bloodArmResponseChecked)
                 {
                     bloodArmResponseChecked=true;
@@ -204,7 +206,8 @@ public partial class SkillExecutor : Node
                 var bloodFollowUp=body?.IsBloodArmVisualSegment(attacker,skill,segment)==true;
                 if(segment>0)await PresentFollowUpContact(attacker,target,skill,bloodFollowUp);
                 if(!GodotObject.IsInstanceValid(attacker)||!GodotObject.IsInstanceValid(target))break;
-                killed |= ApplyToTarget(attacker,skill,target,is_counter,ref blockRemaining,out var hit,segment,is_queued_skill,is_slot10_automatic,evadedOverride);
+                killed |= ApplyToTarget(attacker,skill,target,is_counter,ref blockRemaining,out var hit,segment,is_queued_skill,is_slot10_automatic,evadedOverride,
+                    bypassShield:bypassShield);
                 targetHit|=hit;
                 if(bloodFollowUp)await WaitForBloodArmAction(attacker);
             }
@@ -218,12 +221,13 @@ public partial class SkillExecutor : Node
         Finish(attacker, is_counter, killed,finish_as_automatic);
     }
 
-    private bool ApplyToTarget(GodotObject attacker, ActiveSkillData skill, GodotObject target, bool isCounter, ref int blockRemaining, out bool didHit, int segment = 0, bool isQueuedSkill = true, bool isSlot10Automatic = false, bool? evadedOverride = null, ActiveSkillData? segmentSkillOverride = null)
+    private bool ApplyToTarget(GodotObject attacker, ActiveSkillData skill, GodotObject target, bool isCounter, ref int blockRemaining, out bool didHit, int segment = 0, bool isQueuedSkill = true, bool isSlot10Automatic = false, bool? evadedOverride = null, ActiveSkillData? segmentSkillOverride = null, bool ignoreDefuse = false, bool bypassShield = false)
     {
         didHit=false;
         var body=(GetManager() as BattleManager)?.gongfa_combat;
         var segmentSkill=segmentSkillOverride??body?.ForDamageSegment(attacker,skill,segment)??skill;
-        var result = BattleActionResolver.resolve_hit(attacker, target, segmentSkill, blockRemaining, evaded_override: evadedOverride);
+        var availableDefuse=ignoreDefuse?0:blockRemaining;
+        var result = BattleActionResolver.resolve_hit(attacker, target, segmentSkill, availableDefuse, evaded_override: evadedOverride);
         blockRemaining=Mathf.Max(0,blockRemaining-result.BlockedDamage);
         if (result.BlockedDamage > 0) ConsumeStatus(target, "化解", result.BlockedDamage);
         if (result.Evaded)
@@ -239,14 +243,15 @@ public partial class SkillExecutor : Node
         context = ProcessStatus(attacker, "before_damage", context);
         context = ProcessStatus(target, "before_damage", context);
         var damage = Mathf.Max(context["damage"].AsInt32(), 0);
+        if (!isCounter && result.DamageBeforeShield > 0 && damage > 0)
+            (GetManager() as BattleManager)?.RecordBoardPreShieldDamage(attacker, target, damage);
         var shield = target.Get("shield").AsInt32();
-        var ignoreShield=GongfaSkillRewriteRuntime.HasEffect(skill,"xuan_shu_c1_jingzhe");
-        var absorbed = ignoreShield?0:Mathf.Min(shield, damage);
-        target.Set("shield", shield - absorbed);
+        var absorbed = bypassShield?0:Mathf.Min(shield, damage);
+        if(!bypassShield)target.Set("shield", shield - absorbed);
         body?.RecordShieldAbsorbed(target,attacker,shield,absorbed);
         // 仅显示本次攻击实际吸收的护盾，清场或其他数值重置不产生扣盾提示。
         if (absorbed > 0) FloatingText(target, $"护盾−{absorbed}", new Color(.49f,.77f,.91f), true);
-        damage -= absorbed;
+        damage-=absorbed;
         target.Set("current_health", Mathf.Max(0, target.Get("current_health").AsInt32() - damage));
         body?.OnHealthDamageReceived(target, damage);
         if (!IsSpectatorBattle && absorbed > 0 && target is Node shieldNode)
@@ -326,21 +331,13 @@ public partial class SkillExecutor : Node
                     break;
                 case "shield":
                     var shieldGain = Math.Max(0, Mathf.RoundToInt(CardRules.Evaluate(effect.GetValueOrDefault("formula", "0").AsString(), caster)));
-                    caster.Set("shield", caster.Get("shield").AsInt32() + shieldGain);
-                    // Creature.shield 的实际增量入口统一报告飘字，此处不重复显示。
-                    if(shieldGain>0&&GetManager() is BattleManager shieldManager)
+                    if(GetManager() is BattleManager shieldManager
+                        &&shieldManager.gongfa_combat.ShouldDelayTaiheResponseShield(caster,skill))
                     {
-                        if(GongfaSkillRewriteRuntime.HasEffect(skill,"xuan_shu_c4_fuming"))
-                        {
-                            var shared=shieldGain;
-                            shieldManager.gongfa_combat.GrantLowestShieldAlly(caster,shared);
-                        }
-                        if(isSlot10Automatic&&GongfaSkillRewriteRuntime.HasEffect(skill,"xuan_shu_c2_yunpei"))
-                        {
-                            var shared=Mathf.RoundToInt(shieldGain*.5f);
-                            shieldManager.gongfa_combat.GrantLowestShieldAlly(caster,shared);
-                        }
+                        shieldManager.gongfa_combat.DeferTaiheResponseShield(caster,shieldGain);
+                        break;
                     }
+                    caster.Set("shield", caster.Get("shield").AsInt32() + shieldGain);
                     break;
                 case "gain_qi_blood" when caster.HasMethod("gain_qi_blood"):
                     caster.Call("gain_qi_blood", count);
@@ -353,7 +350,6 @@ public partial class SkillExecutor : Node
                     var swordIntentBefore = GetStatusStacks(caster, "剑意");
                     AddStatus(caster, "剑意", count, caster);
                     var gainedSwordIntent = GetStatusStacks(caster, "剑意") - swordIntentBefore;
-                    (GetManager() as BattleManager)?.gongfa_combat.AfterSwordIntentGain(caster,skill,swordIntentBefore);
                     if (gainedSwordIntent > 0)
                     {
                         if (caster.HasMethod("update_ui")) caster.Call("update_ui");
@@ -486,7 +482,11 @@ public partial class SkillExecutor : Node
         await PresentationWait(BattleAttackMotion.BeforeContactSeconds);
         return responseTriggered;
     }
-    private static bool CanBeEvaded(ActiveSkillData skill)=>skill.damage_type is not ("soul" or "spiritual");
+    private bool CanBeEvaded(ActiveSkillData skill,GodotObject attacker)
+    {
+        if(skill.damage_type is "soul" or "spiritual")return false;
+        return true;
+    }
     private async System.Threading.Tasks.Task WaitForBloodArmAction(GodotObject attacker)
     {
         if(IsSpectatorBattle||attacker is not Node node)return;
@@ -599,9 +599,16 @@ public partial class SkillExecutor : Node
         var color = critical ? Critical : damageType is "soul" or "spiritual" ? Spiritual : damageType == "magic" ? Magic : Physical;
         FloatingText(target, critical ? $"{amount}！" : amount.ToString(), color);
     }
+    public void show_board_resolve_loss(GodotObject target, int amount)
+    {
+        if (amount > 0) FloatingText(target, $"定力−{amount}", new Color(.77f, .72f, .90f), true);
+    }
+    public void show_board_dazed(GodotObject target) => FloatingText(target, "失神", new Color(.87f, .72f, .52f), true);
     public void show_action_name(GodotObject caster, string name)
     {
         if (IsSpectatorBattle || caster is not Node2D owner || !GodotObject.IsInstanceValid(owner) || string.IsNullOrWhiteSpace(name)) return;
+        // 招式盘战斗由共享幕提示牌显示名称和图标，避免再叠一条旧式头顶文字。
+        if (GetManager() is BattleManager boardManager && boardManager.is_board_battle()) return;
         if (_floatingText?.Instantiate() is not global::FloatingText view) return;
         (GetManager()?.GetParent() ?? GetTree().CurrentScene)?.AddChild(view);
         view.Scale = Vector2.One * BattleUiArt.Scale(GetViewport()) / Mathf.Max(.001f, GetViewport().GetCanvasTransform().Scale.Y);

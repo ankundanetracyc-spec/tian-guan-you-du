@@ -10,28 +10,29 @@ public partial class StoryDialoguePanel : Control
     private VBoxContainer? _dialogueColumn;
     private Label? _continueHint;
     private float _dialogueHeight = 250;
+    private bool _speakerOnRight;
+    private ScrollContainer? _bodyScroll;
 
     public override void _Ready()
     {
         SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         Theme = QuietRoomStyle.MakeTheme();
+        Theme.SetStylebox("panel", "TooltipPanel", WorldHudStyle.Paper());
+        Theme.SetColor("font_color", "TooltipLabel", QuietRoomStyle.Ink);
+        Theme.SetColor("font_shadow_color", "TooltipLabel", Colors.Transparent);
         MouseFilter = MouseFilterEnum.Stop;
         ZIndex = 240;
         GuiInput += on_background_input;
 
         var frame = new PanelContainer { MouseFilter = MouseFilterEnum.Stop };
         _dialogueFrame = frame;
-        frame.AnchorLeft = 0;
-        frame.AnchorRight = 1;
-        frame.AnchorTop = 1;
-        frame.AnchorBottom = 1;
-        frame.OffsetLeft = 0;
-        frame.OffsetTop = -250;
-        frame.OffsetRight = 0;
-        frame.OffsetBottom = 0;
-        frame.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper());
+        frame.AddThemeStyleboxOverride("panel", new StyleBoxFlat {
+            BgColor = new Color("ece9de"), CornerRadiusTopLeft = 6, CornerRadiusTopRight = 6,
+            CornerRadiusBottomLeft = 6, CornerRadiusBottomRight = 6 });
         frame.GuiInput += on_background_input;
         AddChild(frame);
+        var paper = new WorldHudFrame { Name = "DialogueInkPaper" };
+        frame.AddChild(paper); paper.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
 
         var margin = new MarginContainer();
         margin.AddThemeConstantOverride("margin_left", 28);
@@ -47,12 +48,23 @@ public partial class StoryDialoguePanel : Control
         _speaker = new Label { Text = "旁白" };
         _speaker.AddThemeFontSizeOverride("font_size", 26);
         _speaker.AddThemeColorOverride("font_color", QuietRoomStyle.Teal);
-        column.AddChild(_speaker);
+        var heading = new HBoxContainer(); heading.AddThemeConstantOverride("separation", 16);
+        column.AddChild(heading);
+        _speaker.SizeFlagsHorizontal = SizeFlags.ShrinkBegin;
+        heading.AddChild(_speaker);
+        var rule = new HSeparator { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ShrinkCenter };
+        rule.AddThemeStyleboxOverride("separator", new StyleBoxLine { Color = new Color("566e61", .28f), Thickness = 1 });
+        heading.AddChild(rule);
 
         _body = new Label { AutowrapMode = TextServer.AutowrapMode.WordSmart, HorizontalAlignment = HorizontalAlignment.Left, SizeFlagsVertical = SizeFlags.ExpandFill };
         _body.AddThemeFontSizeOverride("font_size", 23);
         _body.AddThemeColorOverride("font_color", QuietRoomStyle.Ink);
-        column.AddChild(_body);
+        _body.AddThemeConstantOverride("line_spacing", 5);
+        _body.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+        _bodyScroll = new ScrollContainer { HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,
+            VerticalScrollMode = ScrollContainer.ScrollMode.Auto, SizeFlagsVertical = SizeFlags.ExpandFill,
+            SizeFlagsHorizontal = SizeFlags.ExpandFill, ClipContents = true };
+        column.AddChild(_bodyScroll); _bodyScroll.AddChild(_body);
 
         var continueHint = new Label
         {
@@ -64,7 +76,8 @@ public partial class StoryDialoguePanel : Control
         _continueHint = continueHint;
         continueHint.AddThemeColorOverride("font_color", QuietRoomStyle.Ink);
         column.AddChild(continueHint);
-
+        Resized += layout_bottom_dialogue;
+        layout_bottom_dialogue();
         Hide();
     }
 
@@ -77,16 +90,20 @@ public partial class StoryDialoguePanel : Control
     {
         reset_social_presentation();
         _speaker!.Text = string.IsNullOrWhiteSpace(speaker) ? "旁白" : speaker;
-        _speaker.HorizontalAlignment = speaker_on_right ? HorizontalAlignment.Right : HorizontalAlignment.Left;
+        _speakerOnRight = speaker_on_right;
+        _speaker.HorizontalAlignment = HorizontalAlignment.Left;
         _body!.Text = body;
+        if (_bodyScroll is not null) _bodyScroll.ScrollVertical = 0;
         _on_closed = on_closed;
         Show();
         MoveToFront();
+        layout_bottom_dialogue(); CallDeferred(nameof(layout_bottom_dialogue));
     }
 
     public void close()
     {
         if (!Visible) return;
+        if (close_bottom_choices()) return;
         if (handle_social_close()) return;
         hide_speaker_portrait();
         Hide();
@@ -99,7 +116,7 @@ public partial class StoryDialoguePanel : Control
     {
         if (@event is InputEventMouseButton { Pressed: true, ButtonIndex: MouseButton.Left })
         {
-            if (!_socialChoosing) close();
+            if (!_socialChoosing && !_bottomChoosing) close();
             GetViewport().SetInputAsHandled();
         }
     }

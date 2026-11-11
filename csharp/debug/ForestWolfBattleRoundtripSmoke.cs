@@ -67,7 +67,7 @@ public partial class ForestWolfBattleRoundtripSmoke : Node
                 },
                 current_node_id = "east_woods", world_cell = new Vector2I(34, 166), year = 2, month = 4, day = 8, hour = 9,
                 npc_population_version = CloudStateNpcCatalog.PopulationVersion, npc_simulation_enabled = false,
-                scene_progress = new D { ["qingxi_prologue"] = 3, ["cloud_state_initialized"] = true, ["xuanjian_awakened"] = true, ["east_woods_dungeon_state"] = route },
+                scene_progress = new D { ["story_free_start"] = true, ["cloud_state_initialized"] = true, ["east_woods_dungeon_state"] = route },
             };
             typeof(GameSaveManager).GetField("_pendingLoad", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(saves, fixture);
             GetTree().CurrentScene = null;

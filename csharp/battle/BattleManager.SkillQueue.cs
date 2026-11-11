@@ -104,7 +104,9 @@ public partial class BattleManager : Node2D
     }
 
     public float get_skill_cooldown(GodotObject unit, ActiveSkillData skill) => _realtimeMode ? 0 : _skillCooldowns.TryGetValue(unit, out var cooldowns) ? cooldowns.GetValueOrDefault(skill, 0) : 0;
-    public bool is_skill_ready(GodotObject unit, ActiveSkillData skill) => HasAvailablePlannedSkillUses(unit, skill);
+    public bool is_skill_ready(GodotObject unit, ActiveSkillData skill) => _boardMode
+        ? skill.has_board_definition() && get_board_state(unit) is { } board && (board.Round == 0 || board.CanUseDefinition(skill))
+        : HasAvailablePlannedSkillUses(unit, skill);
 
     /// <summary>返回技能在指定角色队列中的位置；-1 表示尚未排队。</summary>
     public int get_skill_queue_index(GodotObject unit, ActiveSkillData skill)
@@ -127,14 +129,27 @@ public partial class BattleManager : Node2D
     }
     private void PayManaMilestones(GodotObject unit,ActiveSkillData skill,ref int paid,int total,int length,float before,float now)
     {
-        for(var step=paid+1;step<=total;step++)
+        var rawCost=get_raw_skill_mana_cost(unit,skill);
+        var forcedCapacity=gongfa_combat.ForceManaCapacityPayment(unit,skill,rawCost);
+        var paymentCount=forcedCapacity?rawCost:total;
+        if(forcedCapacity)gongfa_combat.BeginForcedManaCapacityPayment(unit,skill,rawCost);
+        for(var step=paid+1;step<=paymentCount;step++)
         {
-            var milestone=Mathf.CeilToInt(length*step/(float)total);
+            var milestone=Mathf.CeilToInt(length*step/(float)paymentCount);
             if(before>=milestone||now<milestone)continue;
-            var current=Math.Max(0,unit.Get("current_mana").AsInt32());
-            if(current>0)unit.Set("current_mana",current-1);
-            else if(spend_mana_capacity(unit,1))gongfa_combat.RecordManaCapacityPayment(unit,skill);
-            else break;
+            if(forcedCapacity)
+            {
+                if(!spend_mana_capacity(unit,1))break;
+                gongfa_combat.RecordManaCapacityPayment(unit,skill);
+                gongfa_combat.ConsumeForcedManaCapacityPoint(unit,skill);
+            }
+            else
+            {
+                var current=Math.Max(0,unit.Get("current_mana").AsInt32());
+                if(current>0)unit.Set("current_mana",current-1);
+                else if(spend_mana_capacity(unit,1))gongfa_combat.RecordManaCapacityPayment(unit,skill);
+                else break;
+            }
             paid++;
         }
     }
@@ -161,6 +176,7 @@ public partial class BattleManager : Node2D
 
     public void on_queued_skill_resolved(GodotObject unit)
     {
+        if (CompleteBoardCast(unit)) return;
         if (_segmentPhase == SegmentPhase.Executing)
         {
             if(TryStartPendingZhouTianAutoCast(unit))return;

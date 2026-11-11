@@ -10,7 +10,9 @@ public partial class QueueSmallAvatarBridge : Node2D
     {
         if (_runtime is null)
         {
-            var script = GD.Load<GDScript>("res://tools/queue_small_avatar/queue_small_avatar.gd");
+            var script = GD.Load<GDScript>(outfitId.StartsWith("turn_basic_")
+                ? "res://tools/action_battle_test/turn_based_pair_queue_20261106.gd"
+                : "res://tools/queue_small_avatar/queue_small_avatar.gd");
             if (script is null) return false;
             _runtime = script.New().AsGodotObject() as Node2D;
             if (_runtime is null) return false;

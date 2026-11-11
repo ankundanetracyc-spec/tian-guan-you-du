@@ -1,6 +1,6 @@
 using Godot;
 
-/// <summary>2026-10-12 已认可角色页：设计坐标只负责排版，所有内容来自当前角色。</summary>
+/// <summary>2026-11-08 纸墨角色七页：设计坐标只负责排版，所有内容来自当前角色。</summary>
 public partial class InfoPanel
 {
     private static readonly Vector2 CharacterDesignSize = new(1672, 941);
@@ -20,7 +20,7 @@ public partial class InfoPanel
 
     private static Label CharacterText(string text, int size = 22, bool secondary = false)
     {
-        var label = WorldHudStyle.Text(text, size, secondary);
+        var label = CraftingPaperStyle.Text(text, size, secondary);
         PlayerInfoText.Bind(label, text);
         // 单行字段保留文字的最小宽度，避免被同排的伸展控件挤成竖排。
         label.AutowrapMode = TextServer.AutowrapMode.Off;
@@ -44,46 +44,54 @@ public partial class InfoPanel
 
     private static void CharacterRect(Control node, float x, float y, float width, float height)
     {
-        node.Position = new Vector2(x, y); node.Size = new Vector2(width, height);
+        var rect = new Rect2(x, y, width, height);
+        node.SetMeta("character_layout_rect", rect);
+        CharacterApplyRect(node, rect);
     }
 
-    private static StyleBoxFlat CharacterStyle(bool selected = false, int padding = 16) => new()
+    private static void CharacterApplyRect(Control node, Rect2 rect)
     {
-        BgColor = new Color("efe4c7", .55f),
-        BorderColor = selected ? new Color("5c8175") : new Color("ad9875", .8f),
-        BorderWidthLeft = selected ? 2 : 1, BorderWidthRight = selected ? 2 : 1,
-        BorderWidthTop = selected ? 2 : 1, BorderWidthBottom = selected ? 2 : 1,
-        ContentMarginLeft = padding, ContentMarginRight = padding,
-        ContentMarginTop = padding, ContentMarginBottom = padding
-    };
+        var ratio = Vector2.One;
+        if (node.GetParent() is Control parent && parent.HasMeta("character_layout_basis"))
+            ratio = parent.Size / parent.GetMeta("character_layout_basis").AsVector2();
+        node.Position = rect.Position * ratio; node.Size = rect.Size * ratio;
+    }
 
-    // 按钮只勾亮边缘，底色透出原纸面／贴图，不用纯色块盖住素材。
-    private static StyleBoxFlat CharacterButtonStyle(bool selected = false, int padding = 8, bool highlight = false)
+    // Resize page frames without stretching letters, icons or button textures.
+    private static void CharacterResponsive(Control node, Vector2 basis)
     {
-        var style = CharacterStyle(selected, padding);
-        style.BgColor = Colors.Transparent;
-        style.DrawCenter = false;
-        if (highlight)
+        node.SetMeta("character_layout_basis", basis);
+        node.Resized += () =>
         {
-            style.BorderColor = new Color("c5ad77");
-            style.BorderWidthLeft = style.BorderWidthRight = style.BorderWidthTop = style.BorderWidthBottom = 2;
+            foreach (var child in node.GetChildren().OfType<Control>())
+                if (child.HasMeta("character_layout_rect")) CharacterApplyRect(child, child.GetMeta("character_layout_rect").AsRect2());
+        };
+    }
+
+    private static StyleBoxTexture CharacterStyle(bool selected = false, int padding = 16)
+    {
+        if (selected)
+        {
+            var face = PaperButtonFeedback.Face(CraftingPaperStyle.ButtonKind.Regular, selected: true);
+            face.ContentMarginLeft = face.ContentMarginRight = face.ContentMarginTop = face.ContentMarginBottom = padding;
+            return face;
         }
-        return style;
+        return CharacterPaper(padding: padding);
+    }
+
+    private static StyleBoxTexture CharacterButtonStyle(bool selected = false, int padding = 8, bool highlight = false)
+    {
+        var face = PaperButtonFeedback.Face(CraftingPaperStyle.ButtonKind.Regular,
+            highlight ? CraftingPaperStyle.ButtonState.Hover : CraftingPaperStyle.ButtonState.Normal, selected);
+        face.ContentMarginLeft = face.ContentMarginRight = padding;
+        face.ContentMarginTop = face.ContentMarginBottom = Math.Min(7, padding);
+        return face;
     }
 
     private static Button CharacterButton(string text, int size = 21, bool selected = false, int padding = 8)
     {
-        var button = new Button { Text = text, CustomMinimumSize = new Vector2(0, 42) };
-        WorldHudStyle.StyleSmallButton(button, size);
-        button.AddThemeColorOverride("font_hover_pressed_color", WorldHudStyle.Ink);
-        button.AddThemeStyleboxOverride("normal", CharacterButtonStyle(selected, padding));
-        foreach (var state in new[] { "hover", "pressed", "hover_pressed" })
-            button.AddThemeStyleboxOverride(state, CharacterButtonStyle(selected, padding, true));
-        button.AddThemeStyleboxOverride("disabled", CharacterButtonStyle(false, padding));
-        button.AddThemeStyleboxOverride("focus", CharacterButtonStyle(selected, padding, true));
-        button.AddThemeColorOverride("font_disabled_color", new Color("89806b"));
-        button.MouseEntered += () => { if (!button.Disabled) button.Modulate = new Color(1.07f, 1.05f, 1.01f); };
-        button.MouseExited += () => button.Modulate = Colors.White;
+        var button = new Button { Text = text, CustomMinimumSize = new Vector2(0, 43) };
+        PaperButtonFeedback.Apply(button, CraftingPaperStyle.ButtonKind.Regular, size, selected);
         return button;
     }
 
@@ -97,10 +105,8 @@ public partial class InfoPanel
 
     private static PanelContainer CharacterPanel(Control parent, float x, float y, float width, float height, int padding = 16)
     {
-        var panel = new PanelContainer(); panel.AddThemeStyleboxOverride("panel", CharacterStyle(false, padding));
+        var panel = new PanelContainer(); panel.AddThemeStyleboxOverride("panel", height < 110 ? CraftingPaperStyle.Paper(padding, brightness: 1) : CharacterStyle(false, padding));
         parent.AddChild(panel); CharacterRect(panel, x, y, width, height);
-        var frame = new InventoryPaperFrame { FillPaper = false, ShowBehindParent = true };
-        panel.AddChild(frame); frame.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         return panel;
     }
 
@@ -116,14 +122,8 @@ public partial class InfoPanel
     {
         var edit = new LineEdit { PlaceholderText = placeholder, CustomMinimumSize = new Vector2(200, 44),
             SizeFlagsHorizontal = SizeFlags.ExpandFill, ClearButtonEnabled = true };
-        edit.AddThemeFontOverride("font", GD.Load<FontFile>(CharacterFont)); edit.AddThemeFontSizeOverride("font_size", 21);
-        edit.AddThemeColorOverride("font_color", WorldHudStyle.Ink);
-        edit.AddThemeColorOverride("font_placeholder_color", new Color("89816c"));
-        edit.AddThemeColorOverride("caret_color", WorldHudStyle.Ink);
-        edit.AddThemeStyleboxOverride("normal", CharacterStyle(false, 7));
-        var focus = CharacterStyle(false, 7); focus.BorderColor = new Color("c5ad77");
-        focus.BorderWidthLeft = focus.BorderWidthRight = focus.BorderWidthTop = focus.BorderWidthBottom = 2;
-        edit.AddThemeStyleboxOverride("focus", focus); return edit;
+        CraftingPaperStyle.ApplyInput(edit, 21, 13, 7);
+        return edit;
     }
 
     private static void CharacterClear(Node node)
@@ -137,89 +137,16 @@ public partial class InfoPanel
         ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize, StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered
     };
 
-    private void setup_character_redesign()
-    {
-        foreach (var name in new[] { "Backdrop", "Header", "LeftRail", "RightRail", "Content" }) GetNodeOrNull<CanvasItem>(name)?.Hide();
-        _characterCanvas = new Control { Name = "CharacterDesignCanvas", MouseFilter = MouseFilterEnum.Stop };
-        AddChild(_characterCanvas); _characterCanvas.Size = CharacterDesignSize;
-        _characterCanvas.Theme = new Theme { DefaultFont = GD.Load<FontFile>(CharacterFont), DefaultFontSize = 21 };
-        var backdrop = new TextureRect { Texture = GD.Load<Texture2D>("res://textures/ui/inventory_20261012/approved_shell_v1.png"),
-            ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize, StretchMode = TextureRect.StretchModeEnum.Scale,
-            MouseFilter = MouseFilterEnum.Ignore };
-        _characterCanvas.AddChild(backdrop); CharacterRect(backdrop, 0, 0, 1672, 941);
-        var back = CharacterButton("←", 30); _characterCanvas.AddChild(back); CharacterRect(back, 28, 18, 52, 48); back.Pressed += hide_panel;
-        var backMaterial = new StyleBoxTexture { Texture = GD.Load<Texture2D>("res://textures/ui/gongfa_back_button_v1.png") };
-        foreach (var state in new[] { "normal", "hover", "pressed", "hover_pressed" }) back.AddThemeStyleboxOverride(state, backMaterial);
-        _characterTitle = CharacterText("概览", 32); _characterCanvas.AddChild(_characterTitle); CharacterRect(_characterTitle, 92, 15, 300, 54);
-        var inventory = CharacterButton("行囊 ↗", 24); _characterCanvas.AddChild(inventory); CharacterRect(inventory, 1505, 20, 140, 46);
-        inventory.Pressed += () => { if (current_card is Character human && GetTree().GetFirstNodeInGroup("storage_panel") is StoragePanel storage) { storage.bind_player(human); hide_panel(); storage.show_panel(); storage.MoveToFront(); } };
-        _characterName = CharacterText("无名", 31); _characterRealm = CharacterText("未详", 23); _characterRoot = CharacterText("未详", 21);
-        var index = 0;
-        foreach (var label in new[] { _characterName, _characterRealm, _characterRoot })
-        { label.HorizontalAlignment = HorizontalAlignment.Center; label.ClipText = true; label.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis; _characterCanvas.AddChild(label); CharacterRect(label, 30, 98 + index++ * 42, 214, 40); label.AddThemeColorOverride("font_color", new Color("eee8d7")); }
-        var icons = GD.Load<Texture2D>("res://textures/ui/infopanel_nav_icons_ink_v1.png");
-        var names = new[] { "概览", "属性", "战斗", "功法", "装备", "关系" };
-        var regions = new[] { -1, 0, 1, 2, 3, 5 };
-        for (var i = 0; i < names.Length; i++)
-        {
-            var page = i; var button = CharacterButton("     " + names[i], 30); _characterCanvas.AddChild(button);
-            CharacterRect(button, 34, 229 + i * 77, 208, 62);
-            foreach (var state in new[] { "font_color", "font_hover_color", "font_pressed_color", "font_focus_color", "font_hover_pressed_color" })
-                button.AddThemeColorOverride(state, new Color("eee8d7"));
-            if (regions[i] >= 0 && icons is not null)
-            {
-                var icon = CharacterIcon(new AtlasTexture { Atlas = icons, Region = new Rect2(regions[i] % 3 * 512, regions[i] / 3 * 512, 512, 512) }, 38);
-                button.AddChild(icon); CharacterRect(icon, 17, 12, 38, 38);
-            }
-            else
-            {
-                var sheet = GD.Load<Texture2D>("res://textures/ui/inventory_20261012/category_icons_v1.png");
-                var icon = CharacterIcon(new AtlasTexture { Atlas = sheet, Region = new Rect2(sheet.GetWidth() / 2f, sheet.GetHeight() * 2f / 3f, sheet.GetWidth() / 4f, sheet.GetHeight() / 3f) }, 38);
-                button.AddChild(icon); CharacterRect(icon, 17, 12, 38, 38);
-            }
-            button.Pressed += () => { if (_npc_read_only) render_npc_page(); else render_new_page(page); };
-            _characterTabs.Add(button);
-        }
-        if (_staticOverviewPage is not null)
-        {
-            var overviewScroll = new ScrollContainer { HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled, ClipContents = true };
-            _characterCanvas.AddChild(overviewScroll); CharacterRect(overviewScroll, 282, 105, 1350, 795);
-            _staticOverviewPage.Reparent(overviewScroll, false); _characterPages[0] = overviewScroll;
-            if (_overviewWorldStatusSection is not null && _overviewWorldStatusSection.GetParent() == _staticOverviewPage)
-                _staticOverviewPage.MoveChild(_overviewWorldStatusSection, _staticOverviewPage.GetChildCount() - 1);
-            _appearancePortraitFrame!.CustomMinimumSize = new Vector2(370, 550);
-            _appearancePortraitFrame.SizeFlagsVertical = SizeFlags.ExpandFill;
-            _appearanceEntry!.AddThemeStyleboxOverride("panel", CharacterStyle(false, 14));
-            if (_appearanceEntry.GetNodeOrNull<HBoxContainer>("OverviewRow") is { } row)
-            {
-                row.AddThemeConstantOverride("separation", 20);
-                if (row.GetNodeOrNull<VBoxContainer>("OverviewDetails") is { } details) details.AddThemeConstantOverride("separation", 12);
-                if (row.GetNodeOrNull<GridContainer>("OverviewDetails/OverviewFacts") is { } facts) facts.AddThemeConstantOverride("v_separation", 10);
-            }
-            _overviewName?.AddThemeFontSizeOverride("font_size", 30);
-            if (_overviewMoodSection is not null) _overviewMoodSection.AddThemeConstantOverride("separation", 8);
-            if (_overviewMoodScale is not null) _overviewMoodScale.CustomMinimumSize = new Vector2(360, 340);
-            if (_overviewWorldStatusSection is not null)
-            {
-                _overviewWorldStatusSection.CustomMinimumSize = new Vector2(0, 110);
-                _overviewWorldStatusSection.SizeFlagsVertical = SizeFlags.ExpandFill;
-            }
-            if (_overviewWorldStatusScroll is not null) _overviewWorldStatusScroll.CustomMinimumSize = new Vector2(0, 40);
-        }
-        for (var i = 1; i < 6; i++)
-        {
-            var page = new Control { Name = "CharacterPage" + i, ClipContents = true };
-            _characterCanvas.AddChild(page); CharacterRect(page, 282, 105, 1350, 795); _characterPages[i] = page;
-        }
-        Resized += resize_character_design; resize_character_design();
-    }
+    private void setup_character_redesign() => setup_character_paper();
 
     private void resize_character_design()
     {
         if (_characterCanvas is null) return;
-        var scale = Mathf.Min(Size.X / CharacterDesignSize.X, Size.Y / CharacterDesignSize.Y);
+        var scale = Mathf.Max(.01f, Size.Y / CharacterDesignSize.Y);
         _characterCanvas.Scale = Vector2.One * scale;
-        _characterCanvas.Position = (Size - CharacterDesignSize * scale) / 2;
+        _characterCanvas.Position = Vector2.Zero;
+        _characterCanvas.Size = Size / scale;
+        resize_character_paper();
         hide_tooltip();
     }
 
@@ -235,27 +162,17 @@ public partial class InfoPanel
             _selectedSkillRewriteId = _pendingSkillRewriteId = _activeSkillRewriteId = _skillRewriteFeedback = "";
             _characterDropTarget = -1;
         }
-        _characterTitle!.Text = new[] { "概览", "属性", "战斗", "功法", "装备", "关系" }[page];
-        _characterName!.Text = unit.entity_data?.entity_name ?? "无名";
-        _characterRealm!.Text = unit.cultivation_realm;
-        _characterRoot!.Text = (unit as Character)?.spirit_root_name ?? "未详";
+        update_character_paper_header(page, unit);
         foreach (var entry in _characterPages) entry.Value.Visible = entry.Key == page;
-        for (var i = 0; i < _characterTabs.Count; i++)
-        {
-            _characterTabs[i].Show();
-            var material = i == page ? (StyleBox)new StyleBoxTexture { Texture = _selectedTabPlaque } : new StyleBoxEmpty();
-            foreach (var state in new[] { "normal", "hover", "pressed", "hover_pressed" }) _characterTabs[i].AddThemeStyleboxOverride(state, material);
-            foreach (var state in new[] { "font_color", "font_hover_color", "font_pressed_color", "font_focus_color", "font_hover_pressed_color" })
-                _characterTabs[i].AddThemeColorOverride(state, i == page ? WorldHudStyle.Ink : new Color("eee8d7"));
-        }
         switch (page)
         {
-            case 0: clear_runtime_body(); _staticOverviewPage?.Show(); populate_overview_page(unit, unit as Character); if (_overviewName is not null) _overviewName.Text = "身份与经历"; break;
+            case 0: clear_runtime_body(); _staticOverviewPage?.Show(); populate_overview_page(unit, unit as Character); break;
             case 1: build_character_attributes(unit); break;
             case 2: build_character_battle(unit); break;
             case 3: if (unit is Character human) build_character_gongfa(human); else CharacterEmpty(_characterPages[3], "当前对象没有秘籍资料"); break;
-            case 4: build_character_equipment(unit as Character); break;
-            case 5: build_character_relations(); break;
+            case 4: build_character_proficiency(unit as Character); break;
+            case 5: build_character_equipment(unit as Character); break;
+            case 6: build_character_relations(); break;
         }
     }
 
@@ -268,10 +185,10 @@ public partial class InfoPanel
     private void build_character_reader()
     {
         _readerPanel = new PanelContainer { Name = "CharacterHover", ZIndex = 750, MouseFilter = MouseFilterEnum.Stop };
-        _readerPanel.AddThemeStyleboxOverride("panel", new StyleBoxEmpty()); AddChild(_readerPanel);
-        _readerPanel.AddChild(new InventoryPaperFrame { Dark = true });
+        _readerPanel.Theme = CraftingPaperStyle.MakeTheme();
+        _readerPanel.AddThemeStyleboxOverride("panel", CharacterPaper(padding: 0, dark: true)); AddChild(_readerPanel);
         var margin = new MarginContainer();
-        foreach (var side in new[] { "left", "right", "top", "bottom" }) margin.AddThemeConstantOverride("margin_" + side, 18);
+        foreach (var side in new[] { "left", "right", "top", "bottom" }) margin.AddThemeConstantOverride("margin_" + side, 27);
         _readerPanel.AddChild(margin);
         var box = CharacterBox(margin); var heading = new HBoxContainer(); heading.AddThemeConstantOverride("separation", 16); box.AddChild(heading);
         _readerIcon = CharacterIcon(null, 72); heading.AddChild(_readerIcon);
@@ -279,10 +196,7 @@ public partial class InfoPanel
         _readerTitle.AddThemeColorOverride("font_color", new Color("f0ead7"));
         var rule = new HSeparator(); rule.AddThemeStyleboxOverride("separator", new StyleBoxFlat { BgColor = new Color("9c967c"), ContentMarginTop = 1 });
         box.AddChild(rule); _readerScroll = CharacterScroll(box);
-        var scrollbar = _readerScroll.GetVScrollBar(); scrollbar.CustomMinimumSize = new Vector2(8, 0);
-        scrollbar.AddThemeStyleboxOverride("scroll", new StyleBoxFlat { BgColor = new Color("262b23"), ContentMarginLeft = 3, ContentMarginRight = 3 });
-        foreach (var state in new[] { "grabber", "grabber_highlight", "grabber_pressed" })
-            scrollbar.AddThemeStyleboxOverride(state, new StyleBoxFlat { BgColor = new Color(state == "grabber" ? "8f9179" : "c5ad77"), CornerRadiusTopLeft = 2, CornerRadiusTopRight = 2, CornerRadiusBottomLeft = 2, CornerRadiusBottomRight = 2 });
+        _readerScroll.GetVScrollBar().CustomMinimumSize = new Vector2(13, 0);
         _readerText = new RichTextLabel { BbcodeEnabled = true, FitContent = true, ScrollActive = false,
             SizeFlagsHorizontal = SizeFlags.ExpandFill, MouseFilter = MouseFilterEnum.Ignore };
         _readerText.AddThemeFontOverride("normal_font", GD.Load<FontFile>(CharacterFont));
@@ -296,6 +210,8 @@ public partial class InfoPanel
 
     private void CharacterHover(Control anchor, string title, string body, Texture2D? icon = null)
     {
+        if (anchor.MouseFilter == Control.MouseFilterEnum.Ignore)
+            anchor.MouseFilter = Control.MouseFilterEnum.Pass;
         HoverInfoManager.SetInfo(anchor, new HoverInfoManager.HoverInfoContent(title, body, icon));
     }
 
@@ -307,7 +223,7 @@ public partial class InfoPanel
         HoverInfoManager.SetInfo(_readerText, new HoverInfoManager.HoverInfoContent(title, body, icon));
         var scale = Mathf.Clamp(Size.Y / 941f, .7f, 1.3f); _readerPanel.Scale = Vector2.One * scale;
         var width = Mathf.Min(460, (Size.X - 24) / scale);
-        _readerText.CustomMinimumSize = new Vector2(width - 36, 0);
+        _readerText.CustomMinimumSize = new Vector2(width - 54, 0);
         _readerScroll.CustomMinimumSize = new Vector2(0, 40);
         _readerPanel.Size = new Vector2(width, 130); _readerPanel.Show(); _readerPanel.MoveToFront();
         CallDeferred(MethodName.place_character_reader);

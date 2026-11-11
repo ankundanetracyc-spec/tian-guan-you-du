@@ -64,13 +64,15 @@ public partial class BattlePaperDoll : Node2D
         _forestWolfIdlePortrait = null;
         _forestWolfAttackPortrait = null;
         _forestWolfHurtPortrait = null;
-        if (data.entity_type == (int)WorldEntity.EntityType.CHARACTER && ConfigureSideInk(data)) return;
+        // 真实人类肖像快照也确认显示类型，避免独立入口漏填类型后退回旧C1纸偶。
+        var isHuman=data.entity_type==(int)WorldEntity.EntityType.CHARACTER||data.portrait_data is HumanData;
+        if (isHuman && ConfigureSideInk(data)) return;
         var isForestWolf = data.entity_name.Contains("凶狼") || data.entity_name.Contains("林地狼") || data.entity_name.Contains("森林狼");
         var isForestBei = data.entity_name.Contains("妖狈") || data.battle_portrait_path == ForestBeiPortraitPath;
         var path = string.IsNullOrWhiteSpace(data.battle_portrait_path)
             ? (isForestBei ? ForestBeiPortraitPath : isForestWolf ? ForestWolfPortraitPath : DefaultPortraitPath)
             : data.battle_portrait_path;
-        var hasStaticHumanPortrait = data.entity_type == (int)WorldEntity.EntityType.CHARACTER;
+        var hasStaticHumanPortrait = isHuman;
         if (hasStaticHumanPortrait) path = data.gender == 1 ? CombatFemaleStaticPath : CombatMaleStaticPath;
         if (!ResourceLoader.Exists(path)) path = DefaultPortraitPath;
 

@@ -7,6 +7,12 @@ public sealed class CondensationCardGame
 {
     public sealed record Card(string Name, string Kind, string Description, int Count);
     public sealed record Recoil(int Id, int Round, int Strength);
+    public readonly record struct PressureSpec(int Gain, int Disorder, int Strength, int Delay);
+    public static PressureSpec PressureBase(string name) => name switch
+    {
+        "轻压" => new(10, 1, 2, 2), "重压" => new(18, 3, 4, 1), "叠压" => new(15, 2, 3, 1),
+        "徐压" => new(8, 0, 1, 2), _ => new(15, 1, 2, 2)
+    };
     public static readonly Card[] Pool =
     [
         new("轻压", "压聚", "凝核+10，紊乱+1；隔两回合回弹2", 4),
@@ -171,11 +177,7 @@ public sealed class CondensationCardGame
         var pressure = !item && name != "调息" && Definition(name).Kind == "压聚";
         if (pressure)
         {
-            var (gain, disorder, strength, delay) = name switch
-            {
-                "轻压" => (10, 1, 2, 2), "重压" => (18, 3, 4, 1), "叠压" => (15, 2, 3, 1),
-                "徐压" => (8, 0, 1, 2), _ => (15, 1, 2, 2)
-            };
+            var (gain, disorder, strength, delay) = PressureBase(name);
             if (ChargeActive) { gain += 8; disorder++; strength++; ChargeActive = false; }
             Score += gain + RootBonus; Disorder += disorder;
             Recoils.Add(new Recoil(++_nextRecoil, Round + delay, strength));

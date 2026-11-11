@@ -409,6 +409,7 @@ public partial class CombatSkillBar : Control
         var displaySkill = currentUnit is not null ? costManager?.get_next_action_skill(currentUnit, skill) ?? skill : skill;
         var displayEnergy = currentUnit is not null && costManager is not null ? costManager.get_skill_energy_cost(currentUnit, displaySkill) : displaySkill.energy_cost;
         var displayMana = currentUnit is not null && costManager is not null ? costManager.get_skill_mana_cost(currentUnit, displaySkill) : displaySkill.mana_cost;
+        var displayCapacity = currentUnit is not null && costManager is not null ? costManager.get_skill_mana_capacity_cost(currentUnit, displaySkill) : 0;
         var cost = new Control { Position = new Vector2((SlotWidth-FrameWidth)*.5f+4,FrameTop+3), Size = new Vector2(FrameWidth-8,20), MouseFilter = MouseFilterEnum.Ignore, ZIndex = 4 };
         var costX=0f;
         foreach(var (symbol,amount) in new[]{("icon_energy",displayEnergy),("icon_mana",displayMana)})
@@ -417,6 +418,11 @@ public partial class CombatSkillBar : Control
             var costIcon=BattleUiArt.Icon(symbol,new(16,16));costIcon.Position=new(costX,1);cost.AddChild(costIcon);
             var number=new Label{Text=amount.ToString(),Position=new(costX+18,0),Size=new(20,20),VerticalAlignment=VerticalAlignment.Center,MouseFilter=MouseFilterEnum.Ignore};
             number.AddThemeFontSizeOverride("font_size",13);number.AddThemeColorOverride("font_color",PaperInk);cost.AddChild(number);costX+=36;
+        }
+        if(displayCapacity>0)
+        {
+            var capacityLabel=new Label{Text=$"上限{displayCapacity}",Position=new(costX,0),Size=new(42,20),VerticalAlignment=VerticalAlignment.Center,MouseFilter=MouseFilterEnum.Ignore};
+            capacityLabel.AddThemeFontSizeOverride("font_size",11);capacityLabel.AddThemeColorOverride("font_color",new Color("873f35"));cost.AddChild(capacityLabel);
         }
         button.AddChild(cost);
         var uses = new Label { Name = "ChargeText", Text = "", Position = new Vector2(28, 139), Size = new Vector2(SlotWidth - 56, 16), HorizontalAlignment = HorizontalAlignment.Center, MouseFilter = MouseFilterEnum.Ignore, ZIndex = 4, ClipText = true };
@@ -485,30 +491,28 @@ public partial class CombatSkillBar : Control
         var target = CardPresentation.CombatTargetText(displaySkill, effect);
         var energyCost = manager is null ? displaySkill.energy_cost : manager.get_skill_energy_cost(unit, displaySkill);
         var manaCost = manager is null ? displaySkill.mana_cost : manager.get_skill_mana_cost(unit, displaySkill);
+        var capacityCost = manager is null ? 0 : manager.get_skill_mana_capacity_cost(unit, displaySkill);
         var cost = skill.skill_type == ActiveSkillData.SkillType.POWER
             ? ""
-            : energyCost == 0 && manaCost == 0
+            : energyCost == 0 && manaCost == 0 && capacityCost == 0
                 ? "费用：无"
-                : $"费用：体力 {energyCost}；法力 {manaCost}";
+                : $"费用：体力 {energyCost}；法力 {manaCost}" + (capacityCost > 0 ? $"；法力上限 {capacityCost}" : "");
         if(skill.skill_name=="复命")
         {
             var copied=manager?.gongfa_combat.GetLastNonResponseSkill(unit);
             if(copied is not null&&!CardRules.IsResponse(copied)&&copied.skill_name!="复命"&&manager is not null)
             {
-                var (fumingEnergy,copiedEnergy)=manager.gongfa_combat.PreviewSequentialEnergyCosts(unit,skill,copied);
-                if(copied.skill_type==ActiveSkillData.SkillType.MOVEMENT)
-                    copiedEnergy=Mathf.CeilToInt(copiedEnergy*BattleWoundRules.get_energy_cost_multiplier(manager.get_realtime_wound_counts(unit),copied));
-                var fumingMana=manager.get_skill_mana_cost(unit,skill);
-                var copiedMana=manager.get_skill_mana_cost(unit,copied);
-                cost=$"复命消耗：体力 {fumingEnergy}、法力 {fumingMana}\n复制《{copied.skill_name}》消耗：体力 {copiedEnergy}、法力 {copiedMana}\n合计消耗：体力 {fumingEnergy+copiedEnergy}、法力 {fumingMana+copiedMana}";
+                var fees=manager.gongfa_combat.PreviewBoardPayments(unit,skill,copied);
+                var fumingFee=fees[0];var copiedFee=fees[1];
+                cost=$"复命消耗：{SkillCostText(fumingFee.Energy,fumingFee.Mana,fumingFee.Capacity)}\n复制《{copied.skill_name}》消耗：{SkillCostText(copiedFee.Energy,copiedFee.Mana,copiedFee.Capacity)}\n合计消耗：{SkillCostText(fumingFee.Energy+copiedFee.Energy,fumingFee.Mana+copiedFee.Mana,fumingFee.Capacity+copiedFee.Capacity)}";
             }
-            else cost=$"复命消耗：体力 {energyCost}、法力 {manaCost}\n当前没有可复制的非应对技能";
+            else cost=$"复命消耗：{SkillCostText(energyCost,manaCost,capacityCost)}\n当前没有可复制的非应对技能";
         }
         if (CardRules.IsResponse(skill))
         {
             var normal = CardRules.NormalCast(skill);
-            cost = $"触发应对时，消耗体力 {energyCost}、法力 {manaCost}\n未触发应对时，" + (normal is null ? "无消耗（空放）"
-                : $"消耗体力 {manager?.get_skill_energy_cost(unit, normal) ?? normal.energy_cost}、法力 {manager?.get_skill_mana_cost(unit, normal) ?? normal.mana_cost}");
+            cost = $"触发应对时，消耗 {SkillCostText(energyCost,manaCost,capacityCost)}\n未触发应对时，" + (normal is null ? "无消耗（空放）"
+                : $"消耗 {SkillCostText(manager?.get_skill_energy_cost(unit,normal)??normal.energy_cost,manager?.get_skill_mana_cost(unit,normal)??normal.mana_cost,manager?.get_skill_mana_capacity_cost(unit,normal)??0)}");
         }
         var useLimit = CardPresentation.CombatUseLimitText(skill, unit, manager);
         var detail = new System.Collections.Generic.List<string>();
@@ -554,6 +558,7 @@ public partial class CombatSkillBar : Control
         hash.Add(displaySkill.artifact_is_summon);
         hash.Add(manager?.get_skill_energy_cost(currentUnit, displaySkill));
         hash.Add(manager?.get_skill_mana_cost(currentUnit, displaySkill));
+            hash.Add(manager?.get_skill_mana_capacity_cost(currentUnit, displaySkill));
         hash.Add(manager?.get_skill_uses_remaining(currentUnit, skill));
         hash.Add(manager?.gongfa_combat.DamageMultiplier(currentUnit, skill));
         foreach (var method in HoverDamageMultiplierMethods)
@@ -570,6 +575,7 @@ public partial class CombatSkillBar : Control
             hash.Add(normal.damage_formula); hash.Add(normal.stacks_formula); hash.Add(normal.base_damage);
             hash.Add(manager?.get_skill_energy_cost(currentUnit, normal));
             hash.Add(manager?.get_skill_mana_cost(currentUnit, normal));
+            hash.Add(manager?.get_skill_mana_capacity_cost(currentUnit, normal));
             hash.Add(manager?.gongfa_combat.DamageMultiplier(currentUnit, normal));
         }
         if(skill.skill_name=="复命"&&manager?.gongfa_combat.GetLastNonResponseSkill(currentUnit) is { } copied)
@@ -578,13 +584,16 @@ public partial class CombatSkillBar : Control
             hash.Add(copied.skill_name); hash.Add(copied.icon_path);
             foreach (var tag in copied.get_presentation_tags()) hash.Add(tag);
             hash.Add(copied.stacks_formula); hash.Add(copied.base_damage); hash.Add(copied.cooldown_rounds);
-            hash.Add(manager.get_skill_energy_cost(currentUnit,copied)); hash.Add(manager.get_skill_mana_cost(currentUnit,copied));
+            hash.Add(manager.get_skill_energy_cost(currentUnit,copied)); hash.Add(manager.get_skill_mana_cost(currentUnit,copied)); hash.Add(manager.get_skill_mana_capacity_cost(currentUnit,copied));
             hash.Add(manager.get_skill_uses_remaining(currentUnit,copied));
             hash.Add(manager.get_skill_round_cooldown_text(currentUnit,copied));
             foreach(var effect in copied.special_effects)hash.Add(effect.ToString());
         }
         return hash.ToHashCode();
     }
+
+    private static string SkillCostText(int energy, int mana, int capacity) =>
+        $"体力 {energy}、法力 {mana}" + (capacity > 0 ? $"、法力上限 {capacity}" : "");
 
     private void ApplySkillHoverContent(ActiveSkillData skill, HoverInfoManager.HoverInfoContent content)
     {

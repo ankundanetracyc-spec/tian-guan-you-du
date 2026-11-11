@@ -26,10 +26,10 @@ public partial class EastWoodsDungeonPanel
         if (is_authored_forest_encounter(action)) { request_forest_choice("open"); return; }
         var region = EastWoodsDungeonRules.forest_region(_current);
         var item = action.ItemPath.Length > 0 ? EastWoodsActions.Item(action.ItemPath) : null;
-        var opening = action.Battle ? "枝叶忽然一晃，一头凶狼从近处的树影中现出身形。"
+        var opening = action.Battle ? (_dynamicMode ? "前方的林木间传来低沉兽声。" : "枝叶忽然一晃，一头凶狼从近处的树影中现出身形。")
             : item is not null ? $"你停下脚步，在近旁发现了{item.entity_name}。"
             : "走近后，你发现这里留下了一些异样的痕迹。";
-        var scene = action.Battle ? "它伏低身子，目光紧盯着你。这头林地凶狼已有通智初期修为，是否应战，还须掂量自身实力。"
+        var scene = action.Battle ? (_dynamicMode ? action.Description : "它伏低身子，目光紧盯着你。这头林地凶狼已有通智初期修为，是否应战，还须掂量自身实力。")
             : route_node(_current)?.ResourceNodeId switch
             {
                 "common_herb" => "拂开低垂的蕨叶，几丛根茎露在湿土间。你可以俯身采下，也可以任它们留在林中。",
@@ -38,7 +38,8 @@ public partial class EastWoodsDungeonPanel
                 "spirit_stone_vein" => "岩缝中透出微弱灵光。拨开浮土，石层里显出一段细小的灵石矿脉。",
                 _ => action.Description,
             };
-        open_action_card($"{region} · {(action.Battle ? "林中遭遇" : item is not null ? "途中发现" : "林间异状")}",
+        var encounterType = action.Battle ? (_dynamicMode ? "生灵遭遇" : "林中遭遇") : item is not null ? "途中发现" : "林间异状";
+        open_action_card($"{region} · {encounterType}",
             opening + "\n\n" + scene,
             local_action_summary(action), action.Id);
         _actionConfirm!.Text = action.Battle ? "查看战前情报" : local_action_name(action);

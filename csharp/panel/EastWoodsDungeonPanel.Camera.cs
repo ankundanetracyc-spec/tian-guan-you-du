@@ -28,6 +28,14 @@ public partial class EastWoodsDungeonPanel
         update_map_camera();
     }
 
+    private void focus_map_node(string nodeId)
+    {
+        if (_mapRoot is null || _mapViewport is null || route_node(nodeId) is not { } node) return;
+        _followPlayer = false;
+        _cameraFocus = node_center(node);
+        update_map_camera();
+    }
+
     private void update_map_camera()
     {
         if (_mapRoot is null || _mapViewport is null) return;

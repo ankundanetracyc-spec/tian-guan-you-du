@@ -19,7 +19,7 @@ public static class EastWoodsActions
     public sealed record ActionDef(string Id, string Name, string Description, float Hours, float Stamina,
         string Result, string ItemPath = "", int Quantity = 0, int Stock = 0, bool Battle = false,
         ResourceRecoveryGroup Recovery = ResourceRecoveryGroup.None, bool OrdinaryBeastSource = false,
-        int OrdinaryBeastCapacity = 0, string EncounterIdentity = "");
+        int OrdinaryBeastCapacity = 0, string EncounterIdentity = "", string CreatureId = "", bool Rest = false);
 
     public static string SlowGrowthPointNodeId()
         => ResourceNodeId("mistbell_slow");

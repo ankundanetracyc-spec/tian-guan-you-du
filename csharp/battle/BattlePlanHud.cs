@@ -246,7 +246,13 @@ public partial class BattlePlanHud : Control
         if (action.kind == BattleQueuedSkill.ActionKind.Pill && player is Character owner)
         {
             var info = _manager.SupplyHover(owner, action.supply_slot, action.supply_path);
-            return new(action.get_display_name(), info.Body + (planning ? "\n\n拖拽调整顺序，单击卸下；卸下不扣药。" : ""), info.Icon, $"{info.Subtitle} · {subtitle}");
+            return info with
+            {
+                Title = action.get_display_name(),
+                Body = info.Body + (planning ? "\n\n拖拽调整顺序，单击卸下；卸下不扣药。" : ""),
+                Sections = null,
+                Subtitle = string.IsNullOrWhiteSpace(info.Subtitle) ? subtitle : $"{info.Subtitle} · {subtitle}",
+            };
         }
         if (!string.IsNullOrWhiteSpace(warning))
         {

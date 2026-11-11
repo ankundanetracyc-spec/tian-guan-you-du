@@ -35,7 +35,7 @@ public partial class StoragePanel : Control
         AddToGroup("map_overlay_blocker");
         ZIndex = 20;
         MouseFilter = MouseFilterEnum.Stop;
-        build_inventory_view();
+        build_volume_inventory_view();
         Resized += fit_inventory_canvas;
         GetViewport().SizeChanged += on_detail_viewport_resized;
         VisibilityChanged += on_visibility_changed;
@@ -46,7 +46,7 @@ public partial class StoragePanel : Control
 
     public override void _ExitTree()
     {
-        if (GetWindow() is { } window) window.FocusExited -= cancel_native_drag;
+        if (_nativeSurface is not null && GetWindow() is { } window) window.FocusExited -= cancel_native_drag;
         if (_player is not null) _player.InventoryChanged -= on_player_inventory_changed;
         if (GetViewport() is { } viewport) viewport.SizeChanged -= on_detail_viewport_resized;
         bind_detail_layout_anchor(null);
@@ -64,7 +64,8 @@ public partial class StoragePanel : Control
         if (handle_native_input(@event)) return;
         if (@event is InputEventKey { Pressed: true, Echo: false, Keycode: Key.Escape })
         {
-            if (_pinned_selection) clear_active_info();
+            if (_volumeCards is not null) hide_panel();
+            else if (_pinned_selection) clear_active_info();
             else if (_nativeContainerId.Length > 0) open_native_container("");
             else hide_panel();
             GetViewport().SetInputAsHandled();
@@ -87,13 +88,33 @@ public partial class StoragePanel : Control
         refresh_slots();
     }
     public void show_panel() { Show(); fit_inventory_canvas(); refresh_slots(); }
-    public void hide_panel() { cancel_native_drag(); HoverInfoManager.HideAll(); clear_active_info(); Hide(); }
+    public void hide_panel()
+    {
+        bool wasVisible = Visible;
+        cancel_native_drag();
+        HoverInfoManager.HideAll();
+        clear_active_info();
+        Hide();
+        if (wasVisible) VolumeClosed?.Invoke();
+    }
     public void toggle_panel() { if (Visible) hide_panel(); else show_panel(); }
     private void on_visibility_changed() { if (!Visible) clear_active_info(); }
 
     public void filter_to_category(string category)
     {
         _category_filter = category == ArtifactFilter ? ArtifactFilter : normalize_category(category);
+        if (_volumeCards is not null)
+        {
+            foreach (var pair in _category_buttons)
+            {
+                bool selected = pair.Key == (_category_filter == ArtifactFilter ? "器物" : _category_filter);
+                pair.Value.SetPressedNoSignal(selected);
+                PaperButtonFeedback.Apply(pair.Value, CraftingPaperStyle.ButtonKind.Tab, 22, selected);
+            }
+            _volumeScroll.ScrollVertical = 0;
+            refresh_slots();
+            return;
+        }
         foreach (var pair in _category_buttons)
         {
             var selected = pair.Key == _category_filter;
@@ -142,6 +163,7 @@ public partial class StoragePanel : Control
             _spatialPreviewFilter(_category_filter, _search_text);
             return;
         }
+        if (_volumeCards is not null) { refresh_volume_inventory(); return; }
         if (_nativeIndex is not null) { refresh_native_inventory(); return; }
         if (_grid is null) return;
         HoverInfoManager.HideAll();
@@ -173,7 +195,7 @@ public partial class StoragePanel : Control
             slot.slot_moved += on_slot_moved;
             slot.MouseEntered += on_inventory_slot_mouse_entered;
             if (!slot.is_empty)
-                HoverInfoManager.SetInfo(slot, build_hover_content(slot));
+                HoverInfoManager.SetProvider(slot, () => build_hover_content(slot));
         }
         if (_summary is not null) _summary.Text = entries.Count == all.Count
             ? $"已用 {all.Count} / {GridSlotCount} 格" : $"找到 {entries.Count} 项 · 已用 {all.Count} / {GridSlotCount} 格";
@@ -284,7 +306,7 @@ public partial class StoragePanel : Control
 
     private HoverInfoManager.HoverInfoContent build_hover_content(StorageItemSlot slot)
     {
-        if (slot.artifact_data is { } artifactItem) return EquipmentItemPresentation.Hover(artifactItem);
+        if (slot.artifact_data is { } artifactItem) return EquipmentItemPresentation.Hover(artifactItem, _player);
 
         var item = load_item_data(slot.item_path);
         if (item is null) return new HoverInfoManager.HoverInfoContent("", "");
@@ -293,17 +315,29 @@ public partial class StoragePanel : Control
 
     internal static HoverInfoManager.HoverInfoContent ItemHover(ItemData item, int? count = null, string path = "", Character? user = null)
     {
-        if (item is StorageRingItemData ring)
+        var content = ItemHoverWithoutTravel(item, count, path, user);
+        content = ItemLayoutPresentation.AttachItem(content, item, count);
+        if (item is TalismanProductItemData product && !TalismanCombatCatalog.IsBattleProduct(product))
+            content = content with { GridDiagrams = null };
+        return ItemTravelPresentation.Append(content, item.travel_data);
+    }
+
+    private static HoverInfoManager.HoverInfoContent ItemHoverWithoutTravel(ItemData item, int? count, string path, Character? user)
+    {
+        if (item is StorageBagItemData bag)
         {
-            var icon = !string.IsNullOrWhiteSpace(ring.icon_path) && ResourceLoader.Exists(ring.icon_path) ? GD.Load<Texture2D>(ring.icon_path) : null;
-            return new(StorageRingItemData.ItemName, $"收纳空间：{ring.storage_width} × {ring.storage_height} 格\n不能放入储物戒指。", icon,
-                $"器具 · {ring.storage_quality}", Footprint: Vector2I.One);
+            var icon = !string.IsNullOrWhiteSpace(bag.icon_path) && ResourceLoader.Exists(bag.icon_path) ? GD.Load<Texture2D>(bag.icon_path) : null;
+            return new(StorageBagItemData.ItemName, $"袋内容量：{bag.storage_width} × {bag.storage_height}\n不能放入储物袋。", icon,
+                $"器具 · {bag.storage_quality}", Footprint: new Vector2I(bag.get_storage_volume(), 1));
         }
         if (item is PortraitClothingData clothingItem) return ClothingItemPresentation.Hover(clothingItem);
+        if (item is PillItemData pill) return AlchemyPillVisual.Hover(pill, contentsCount: count, user: user);
         if (AlchemyPillVisual.IsPill(item)) return AlchemyPillVisual.Hover(item, user);
+        if (item is TalismanProductItemData talisman && TalismanCombatCatalog.IsBattleProduct(talisman)) return TalismanCombatCatalog.Hover(talisman);
+        if (item is TalismanProductItemData craftItem) return TalismanItemPresentation.Hover(craftItem);
         if (MaterialItemPresentation.IsMaterial(item)) return MaterialItemPresentation.Hover(item);
         if (ManualItemPresentation.IsManual(item)) return ManualItemPresentation.Hover(item);
-        if (EquipmentItemPresentation.IsEquipment(item)) return EquipmentItemPresentation.Hover(item);
+        if (EquipmentItemPresentation.IsEquipment(item)) return EquipmentItemPresentation.Hover(item, user);
         var category = category_of(item, path);
         if (!string.IsNullOrWhiteSpace(item.item_subcategory)) category = string.IsNullOrWhiteSpace(category) ? item.item_subcategory : $"{category} · {item.item_subcategory}";
         var grade = item.craft_data is MaterialCraftData material
@@ -321,7 +355,7 @@ public partial class StoragePanel : Control
         var effectTitle = materialItem ? "用途" : item is EquipmentData ? "装备收益" : item is PortraitClothingData ? "衣着说明" : item.gongfa is not null ? "功法与研读" : "使用效果";
         return HoverInfoManager.Structured(item.entity_name, itemIcon, subtitleText,
             new(materialItem ? "材性与功用" : "词缀", tags == "无词缀" ? "" : tags), new(effectTitle, effect))
-            with { Footprint = item.get_inventory_size() };
+            with { Footprint = new Vector2I(item.get_storage_volume(), 1) };
     }
 
     private void bind_detail_layout_anchor(StorageItemSlot? slot)
@@ -437,6 +471,8 @@ public partial class StoragePanel : Control
     }
     internal static string build_item_usage_effect(ItemData item)
     {
+        if (item is TalismanProductItemData craftItem && !TalismanCombatCatalog.IsBattleProduct(craftItem))
+            return TalismanItemPresentation.Body(craftItem);
         if (item is PillContainerItemData container)
             return "瓷瓶外观定义；炼丹无需准备或消耗瓷瓶。";
         if (item is PillItemData pill)
@@ -445,7 +481,7 @@ public partial class StoragePanel : Control
             {
                 "dingmai" => "只在云息三层晋升四层的闭关突破中选用，成功后消耗。",
                 "guiyuan_dingxi" => "只在云息九层晋升十层的闭关突破中选用，成功后消耗。",
-                _ => "瓷瓶仅作图标与演出外观；行囊中的丹药逐件占格，同类丹药只在左侧清册合并显示数量。炼丹无需准备或消耗空瓷瓶。"
+                _ => $"丹药按颗堆叠，每颗占1容量，单堆最多{PillItemData.MaxStackSize}颗。炼丹无需准备或消耗空瓷瓶。"
             };
             return $"丹阶{pill.pill_rank}品 · 丹效{AlchemyQualityRules.Name(new[] { 20, 51, 76, 91, 100 }[Math.Clamp(pill.efficacy_tier, 0, 4)])}\n{pill.EffectText}\n{useRule}";
         }

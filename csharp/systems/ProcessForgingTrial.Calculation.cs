@@ -45,7 +45,8 @@ public sealed partial class ProcessForgingTrial
         double BodyGrowth(SourceRecord x) => Math.Exp(N("GradeBodyGrowth") * Math.Max(0, Grade(x.Material) - 1));
         double volume = blade.Sum(Volume), lambda = blade.Sum(x => Volume(x) * p.Profiles[x.Input.Material].Extension) / volume, tau = blade.Sum(x => Volume(x) * p.Profiles[x.Input.Material].Thickness) / volume;
         double width = Math.Cbrt(volume / (lambda * tau));
-        var a = new Artifact { RulesVersion = p.Version, InputHash = Fingerprint(draft), Proficiency = draft.Proficiency, Volume = volume, Width = width, Length = width * lambda, Thickness = width * tau,
+        var a = new Artifact { RulesVersion = p.Version, InputHash = Fingerprint(draft), Proficiency = draft.Proficiency, Volume = volume,
+            StorageVolume = lambda >= 12 && tau < .16 ? 3 : 4, Width = width, Length = width * lambda, Thickness = width * tau,
             Sources = sources, ParameterSnapshot = _parameterText, CraftingHours = r.Hours, CraftingEnergy = r.Energy };
         a.Shape = (lambda >= 12 ? "修长" : "宽展") + (tau >= .16 ? "厚脊" : "薄脊") + "剑"; a.Name = a.Shape;
         foreach (var s in solids)

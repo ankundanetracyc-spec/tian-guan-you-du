@@ -4,7 +4,7 @@ using Godot;
 public static class CondensationUiArt
 {
     private static Texture2D? _sheet, _icons;
-    private static Texture2D? _card, _draw, _discard, _rest, _turn, _divider;
+    private static Texture2D? _card, _draw, _discard, _rest, _turn, _divider, _opening;
     private static readonly Texture2D?[] IconCache = new Texture2D?[6];
     private static Texture2D Read(string path)
     {
@@ -22,6 +22,7 @@ public static class CondensationUiArt
     public static Texture2D Rest => _rest ??= Region(new Rect2(35, 715, 470, 150));
     public static Texture2D Turn => _turn ??= Region(new Rect2(608, 626, 319, 321));
     public static Texture2D Divider => _divider ??= Region(new Rect2(1020, 747, 485, 64));
+    public static Texture2D Opening => _opening ??= Read("res://textures/ui/cultivation/condensation_opening_panel_20261106.png");
     public static Texture2D Icon(int index) => IconCache[index] ??= new AtlasTexture
     {
         Atlas = _icons ??= Read("res://textures/ui/cultivation/condensation_ink_icons_v3.png"),

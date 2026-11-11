@@ -6,59 +6,80 @@ public partial class MainScene
     private bool _baishiLectureSpaceOpen;
     private bool _baishiDialogueBusy;
     private const string BaishiNodeId = "white_stone_town";
+    private const string BaishiEscortBoatPath = "res://resources/world/bai_chuan/yuxu_escort_boat_travel_20261106.tres";
 
     private void show_baishi_opening()
     {
         if (_baishiLecture is not { } state) return;
-        estate?.Hide(); hud?.set_paper_scene(true);
+         hud?.set_paper_scene(true);
         _baishiLectureSpaceOpen = true;
         var wilds = new WorldNodeData
         {
             node_id = "home_village", node_name = state.met_fang ? "青溪里外 · 野地" : "溪边野地",
             node_type = WorldNodeData.NodeType.Wilderness, terrain = "溪边野地",
             description = state.met_fang
-                ? "方远在青溪里外的野地发现了昏迷的你。他准备去白石赴讲法会，可以从人物列表与他交谈，再决定是否同行。"
-                : "溪水从近处流过。一名年轻人蹲在旁边，见你睁眼，递来一只水囊。"
+                ? "你与方远结伴离开家乡，赶往白石。方才你在青溪里外晕倒，方远一直守在身边。"
+                : "溪水从近处流过。方远守在你身边，见你睁眼，递来一只水囊。"
         };
         location_interior?.show_npc_space(wilds, _npc_world, "res://textures/village_overview/qingxi_back_hill_v2.png");
         show_baishi_roster();
+        location_interior?.set_qingxi_opening_action(state.saw_awakening && !_baishiDialogueBusy ? "qingxi.talk" : "");
+        if (state.saw_awakening && state.met_fang && !state.departed_qingxi && !_baishiDialogueBusy)
+        {
+            depart_for_baishi();
+            return;
+        }
         if (!state.saw_awakening)
         {
             _baishiDialogueBusy = true;
-            show_dialogue_sequence(() => { state.saw_awakening = true; _baishiDialogueBusy = false; mark_save_dirty(); },
+            show_dialogue_sequence(() => { state.saw_awakening = true; _baishiDialogueBusy = false; mark_save_dirty(); show_baishi_opening(); },
                 (DialogueBeatKind.PlayerThought, "", "痛……头好痛。"),
                 (DialogueBeatKind.Narration, "", "你撑着地面坐起，掌心压到湿冷的泥土。眼前一阵发黑，缓了片刻，才看清脚边的溪水和衣袖上沾着的草叶。"),
-                (DialogueBeatKind.Narration, "", "溪岸、树影、远处的山路，全都陌生。你低头看看自己，身上穿着一件不认得的粗布旧衣。"),
-                (DialogueBeatKind.PlayerThought, "", "我怎么会在这里？"),
-                (DialogueBeatKind.Narration, "", "你试着回想来这里之前发生了什么，太阳穴却又抽痛起来。脑中零碎的记忆，怎么也接不上眼前这片荒野。"),
-                (DialogueBeatKind.Narration, "", "旁边蹲着一个年轻人，束着发，穿一身布衣。他见你醒了，递来一只水囊。"),
-                (DialogueBeatKind.PlayerThought, "", "这衣服，这地方……难道我穿越了？先问问他。"));
+                (DialogueBeatKind.Narration, "", "溪岸、树影、远处的山路，瞧着熟悉，却又有些说不出的陌生。"),
+                (DialogueBeatKind.Narration, "", "你想起和方远一同离开家乡，沿途赶路，又有些零乱的画面掺在其中，一时想不分明。"),
+                (DialogueBeatKind.Narration, "", "方远蹲在旁边，见你醒了，忙把水囊递过来。"),
+                (DialogueBeatKind.PlayerThought, "", "方远……我们走到哪儿了？"));
+        }
+    }
+
+    private void on_qingxi_opening_action(string action)
+    {
+        if (_baishiDialogueBusy || _baishiLecture is not { departed_qingxi: false, saw_awakening: true } state ||
+            location_interior?.Visible != true) return;
+        if (action == "qingxi.talk")
+        {
+            if (state.met_fang) depart_for_baishi();
+            else try_talk_baishi_actor(state.companion);
         }
     }
 
     private void talk_baishi_fang()
     {
             if (_baishiDialogueBusy || _baishiLecture is not { departed_qingxi: false } state) return;
-            if (state.met_fang) { show_baishi_opening(); return; }
+            if (state.met_fang) { depart_for_baishi(); return; }
             _baishiDialogueBusy = true;
-            show_npc_dialogue("方远", "醒了？先喝口水。我路过溪边，看你倒在野地里，叫了几声都没应。", state.companion, () =>
+            show_npc_dialogue("方远", "先别急着起身，喝口水。方才你忽然倒下，我叫了你好几声都没应。", state.companion, () =>
                 show_dialogue_sequence(() =>
                 {
                     _baishiDialogueBusy = false;
-                    state.met_fang = true; mark_save_dirty(); refresh_qingxi_quest(); show_baishi_opening();
-                }, (DialogueBeatKind.PlayerSpeech, "", "多谢……这是哪儿？"),
-                (DialogueBeatKind.NpcSpeech, "方远", "青溪里外头。沿溪往回走就是村子。我叫方远，刚从那边过来。你怎么一个人倒在这儿？"),
-                (DialogueBeatKind.PlayerSpeech, "", "我也记不清了，头还疼。你这是要出远门？"),
-                (DialogueBeatKind.NpcSpeech, "方远", "去白石城。那儿要开讲法会，有修士讲入门的门道，还给人验灵根。我想去试试。"),
-                (DialogueBeatKind.PlayerSpeech, "", "修士？真能修仙？"),
-                (DialogueBeatKind.NpcSpeech, "方远", "自然有。不过能不能修，得先验过才知道。我也是头一回去，别的就不敢乱说了。"),
-                (DialogueBeatKind.PlayerThought, "", "连修仙都有……看来真不是原来的地方了。眼下也无处可去，先到城里看看。"),
-                (DialogueBeatKind.NpcSpeech, "方远", "你先缓缓，能走了再说。要是没别的去处，咱们就一起去白石。")));
+                    state.met_fang = true; mark_save_dirty(); show_baishi_opening();
+                }, (DialogueBeatKind.PlayerSpeech, "", "方远……我们走到哪儿了？"),
+                (DialogueBeatKind.Narration, "", "水囊里的凉水压下喉间的干涩。溪声渐渐清晰，散乱的记忆却仍像隔着一层薄雾。"),
+                (DialogueBeatKind.PlayerSpeech, "", "我记得我们一起赶路……别的事，就像被什么搅乱了。"),
+                (DialogueBeatKind.NpcSpeech, "方远", "想不起来便先别勉强。这里是青溪里外，白石城就在前头。"),
+                (DialogueBeatKind.PlayerSpeech, "", "我们是去听讲法、验灵根？"),
+                (DialogueBeatKind.NpcSpeech, "方远", "嗯。城里有修士讲些入门的门道，也会替来问道的人查验灵根。验过之后要去哪儿，再慢慢打算。"),
+                (DialogueBeatKind.Narration, "", "方远收起水囊，沿着溪边小道望向远处。山风掠过树梢，吹散了两人之间短暂的沉默。"),
+                (DialogueBeatKind.NpcSpeech, "方远", "能走了就出发吧。到了白石，先把眼前的事弄明白。")));
     }
 
     private WorldNpcData? baishi_present_actor(string id)
     {
-        if (_baishiLecture is not { } state || !_baishiLectureSpaceOpen || location_interior?.Visible != true) return null;
+        if (_baishiLecture is not { } state) return null;
+        if (!state.fang_returned && state.companion.npc_id == id && state.companion.is_player_travel_companion &&
+            (_nodeWorldMap?.Visible == true || location_interior?.Visible == true && _player_world_node_id == BaishiNodeId))
+            return _npc_world?.get_npc(id);
+        if (!_baishiLectureSpaceOpen || location_interior?.Visible != true) return null;
         if (!state.fang_returned && state.companion.npc_id == id)
             return !state.departed_qingxi || location_interior.get_baishi_space_id() == "lecture" ? state.companion : null;
         if (!state.departed_qingxi || _player_world_node_id != BaishiNodeId) return null;
@@ -81,9 +102,9 @@ public partial class MainScene
         {
             if (location_interior?.get_baishi_space_id() != "lecture") return;
             roster = _npc_world?.get_subscene_roster(BaishiNodeId, "lecture") ?? [];
-            if (!state.fang_returned && state.companion.is_alive)
+            if (!state.fang_returned && state.companion.is_alive && roster.All(n => n.npc_id != state.companion.npc_id))
             {
-                state.companion.current_subscene_id = "lecture";
+                if (!state.companion.is_player_travel_companion) state.companion.current_subscene_id = "lecture";
                 roster.Add(state.companion);
             }
             foreach (var saved in state.representatives.Prepend(state.host_snapshot))
@@ -107,14 +128,14 @@ public partial class MainScene
         if (npc.npc_id == state.companion.npc_id)
         {
             if (!state.departed_qingxi) talk_baishi_fang();
+            else if (_nodeWorldMap?.Visible == true)
+                lecture_dialogue(() => { }, (DialogueBeatKind.NpcSpeech, "方远", "白石的讲法咱们还得去听。赶路时多留神，别累着了。"));
             else if (state.roots_checked) farewell_baishi_fang();
-            else lecture_dialogue(show_baishi_lecture, (DialogueBeatKind.NpcSpeech, npc.npc_name, "先去听听讲法吧。验灵的事，也问问清楚。"));
+            else lecture_dialogue(() => { }, (DialogueBeatKind.NpcSpeech, npc.npc_name, "先去听听讲法吧。验灵的事，也问问清楚。"));
         }
         else if (npc.npc_id == state.host_actor_id)
         {
-            if (state.heard_lecture && !state.roots_checked) check_baishi_roots();
-            else lecture_dialogue(show_baishi_lecture, (DialogueBeatKind.NpcSpeech, npc.npc_name,
-                !state.heard_lecture ? "要听讲法，可以在前面坐一坐。讲完再来验灵。" : "想接着学，就去后面看看功法。哪部合适，先看首卷要求，不明白的再问。你也可以向各宗来使问问去处。"));
+            lecture_dialogue(show_baishi_lecture, (DialogueBeatKind.NpcSpeech, npc.npc_name, baishi_host_reminder()));
         }
         else lecture_dialogue(show_baishi_lecture, (DialogueBeatKind.NpcSpeech, npc.npc_name,
             $"我是{(npc.faction_id == "zhenyue_guan" ? "镇岳观" : "抱朴山")}来白石接待求道者的修士。你可以先了解本门，也可以多问几家，再决定去处。这里不替山门录籍。"));
@@ -123,13 +144,35 @@ public partial class MainScene
 
     private void depart_for_baishi()
     {
-        if (_baishiLecture is not { departed_qingxi: false } state) return;
-        state.departed_qingxi = true; state.companion.current_node_id = BaishiNodeId;
-        state.companion.current_subscene_id = "lecture";
-        _player_world_node_id = BaishiNodeId;
+        if (_baishiLecture is not { departed_qingxi: false, met_fang: true } state || _npc_world is null) return;
+        state.departed_qingxi = true;
+        state.traveling_to_baishi = true;
         hud?.set_world_map_available(true);
         enter_cloud_state_if_departed();
-        mark_save_dirty(); refresh_qingxi_quest(); show_baishi_lecture();
+        if (!_npc_world.join_player_travel_party(state.companion))
+        {
+            state.departed_qingxi = false;
+            state.traveling_to_baishi = false;
+            hud?.set_world_map_available(false);
+            show_message("暂不能同行", "方远暂时无法加入同行，请稍后再试。");
+            return;
+        }
+        mark_save_dirty(); refresh_qingxi_quest(); open_world();
+    }
+
+    private bool arrive_baishi_with_companion()
+    {
+        if (_baishiLecture is not { traveling_to_baishi: true } state) return true;
+        var fang = _npc_world?.get_npc(state.companion.npc_id);
+        if (fang is not { is_player_travel_companion: true })
+        {
+            show_message("同行状态异常", "方远的同行状态尚未恢复，请保留存档并重试。");
+            return false;
+        }
+        state.companion = fang;
+        state.traveling_to_baishi = false;
+        mark_save_dirty(); refresh_qingxi_quest();
+        return true;
     }
 
     private WorldNpcData? ensure_baishi_host()
@@ -179,38 +222,12 @@ public partial class MainScene
             show_baishi_roster();
         }
         refresh_baishi_location_actions();
+        RefreshJournalTracker();
     }
 
     private IEnumerable<NpcInteractionAction> baishi_actor_actions(WorldNpcData npc)
     {
         yield return new("talk", "交谈", () => open_world_npc_talk(npc));
-        if (_baishiLecture is not { } state) yield break;
-        if (npc.npc_id == state.companion.npc_id)
-        {
-            if (state.met_fang && !state.departed_qingxi)
-                yield return new("baishi.depart", "一同前往白石", depart_for_baishi);
-            yield break;
-        }
-        if (npc.npc_id != state.host_actor_id) yield break;
-        if (!state.heard_lecture) yield return new("baishi.listen", "听讲法", hear_baishi_lecture);
-        else if (!state.roots_checked) yield return new("baishi.roots", "查验灵根", check_baishi_roots);
-        else
-        {
-            if (get_player_spirit_root_count() > 0)
-            {
-                yield return new("baishi.books", "选读功法", open_baishi_books);
-                if (player?.entity_data is HumanData h && !string.IsNullOrEmpty(h.baishi_first_volume_path) && !state.reached_yunxi)
-                {
-                    yield return new("baishi.study", "研读与吐纳", open_baishi_study);
-                    yield return new("baishi.rest", "在研习处休息", request_baishi_rest);
-                }
-                if (state.reached_yunxi) yield return new("baishi.yuxu", "前往玉虚问道", choose_baishi_yuxu);
-            }
-            yield return new("baishi.leave", "辞别后自行游历", () =>
-            {
-                state.finished = true; mark_save_dirty(); refresh_qingxi_quest(); open_world();
-            });
-        }
     }
 
     private void ensure_baishi_representatives()
@@ -242,7 +259,7 @@ public partial class MainScene
             _world_node_data?.get_node(BaishiNodeId) is not { } node) return;
         hud?.Show(); hud?.set_paper_scene(true);
         ensure_baishi_host(); ensure_baishi_representatives(); refresh_baishi_progress();
-        _nodeWorldMap?.Hide(); estate?.Hide();
+        _nodeWorldMap?.Hide(); 
         const string space = "lecture";
         location_interior?.show_baishi_space(node, _npc_world, space);
         _baishiLectureSpaceOpen = space == "lecture";
@@ -259,36 +276,75 @@ public partial class MainScene
 
     private void hear_baishi_lecture()
     {
-        if (_baishiLecture is not { heard_lecture: false } state) return;
+        if (_baishiDialogueBusy || story_dialogue?.Visible == true ||
+            _baishiLecture is not { departed_qingxi: true, finished: false, heard_lecture: false } state ||
+            _player_world_node_id != BaishiNodeId || location_interior?.get_baishi_space_id() != "lecture" ||
+            baishi_present_actor(state.host_actor_id) is null) return;
+        info?.hide_panel(); npc_interactions?.close();
         var speaker = ensure_baishi_host()?.npc_name ?? "当值修士";
-        lecture_dialogue(() => { state.heard_lecture = true; show_baishi_lecture(); },
-            (DialogueBeatKind.NpcSpeech, "方远", "先听听吧。路上咱俩猜了半天，听听人家怎么说。"),
-            (DialogueBeatKind.NpcSpeech, speaker, "修行先要有灵根。不过有灵根，也不是往这儿一坐就会了。功法怎么读，气怎么引，都得从头来。"),
-            (DialogueBeatKind.NpcSpeech, speaker, "引气入体，踏入云息，才算开始。想学的，可以先验灵根，再去后面的研习处看书。有疑问就问。"),
-            (DialogueBeatKind.NpcSpeech, speaker, "今天验过灵根，不等于拜了师。想去哪个宗门，自己问清楚再作打算。"));
+        if (player?.entity_data is not HumanData human) return;
+        var roots = string.Join("、", human.root_weights.Select((w, i) => $"{new[] { "金", "木", "水", "火", "土" }[Math.Min(i, 4)]}{w.AsInt32()}%"));
+        lecture_dialogue(() =>
+        {
+            state.heard_lecture = true;
+            state.roots_checked = true;
+            human.sect_yuxu_admission_rank = get_yuxu_entry_rank(get_player_spirit_root_count());
+            human.sect_yuxu_admission_rank_checked = true;
+            show_baishi_lecture();
+        },
+            (DialogueBeatKind.Narration, "", "讲案前的人声渐渐低下去。主持修士抬手示意，待院中安静，才从修行根基讲起。"),
+            (DialogueBeatKind.NpcSpeech, speaker, "求道先看灵根。它关乎能否感应天地灵气；即便有灵根，也还要辨明自身所长，再循序修习。"),
+            (DialogueBeatKind.NpcSpeech, speaker, "引气入体，踏入云息，方算迈过第一道门槛。各家功法不同，入门之后再依自身根性择卷。"),
+            (DialogueBeatKind.Narration, "", "讲法告一段落，主持修士没有催促，只让求道者依次上前。石案旁的测灵器具映着天光，轮到你时，他示意你将手按在石面。"),
+            (DialogueBeatKind.NpcSpeech, speaker, $"修士查看测灵器具后，向你说明查验结果：{human.spirit_root_name}。五行权重为{roots}。"),
+            (DialogueBeatKind.NpcSpeech, speaker, get_player_spirit_root_count() > 0
+                ? "查验只明根性，不替你择门。若想入宗，再问清各家门规与去处。"
+                : "你没有可供引气入体的灵根。今日所听可以记下，往后的路仍由你自己选择。"));
+        refresh_baishi_location_actions();
     }
 
     private void check_baishi_roots()
     {
-        if (_baishiLecture is not { heard_lecture: true, roots_checked: false } state || player?.entity_data is not HumanData human) return;
+        if (_baishiDialogueBusy || story_dialogue?.Visible == true ||
+            _baishiLecture is not { departed_qingxi: true, finished: false, heard_lecture: true, roots_checked: false } state ||
+            _player_world_node_id != BaishiNodeId || location_interior?.get_baishi_space_id() != "lecture" ||
+            baishi_present_actor(state.host_actor_id) is null || player?.entity_data is not HumanData human) return;
         var speaker = ensure_baishi_host()?.npc_name ?? "当值修士";
         var roots = string.Join("、", human.root_weights.Select((w, i) => $"{new[] { "金", "木", "水", "火", "土" }[Math.Min(i, 4)]}{w.AsInt32()}%"));
-        lecture_dialogue(() => { state.roots_checked = true; show_baishi_lecture(); },
+        lecture_dialogue(() =>
+        {
+            state.roots_checked = true;
+            human.sect_yuxu_admission_rank = get_yuxu_entry_rank(get_player_spirit_root_count());
+            human.sect_yuxu_admission_rank_checked = true;
+            mark_save_dirty();
+            show_baishi_lecture();
+        },
             (DialogueBeatKind.NpcSpeech, speaker, "方远，没有查出灵根。修行入道，需要灵根。"),
             (DialogueBeatKind.NpcSpeech, "方远", "那就不是换本书、再练练能成的？"),
             (DialogueBeatKind.NpcSpeech, speaker, "不是。别为这个再去买那些包你入道的东西。"),
             (DialogueBeatKind.NpcSpeech, "方远", "明白了。多谢。"),
             (DialogueBeatKind.Narration, "", $"轮到你时，修士如实说明查验结果：{human.spirit_root_name}。\n五行权重：{roots}。"),
-            (DialogueBeatKind.NpcSpeech, speaker, get_player_spirit_root_count() > 0 ? "想接着学，就去后边看看书。先看看各自练些什么，不明白的可以来问。" : "你也没有灵根。可以继续旁听，但不能引气入道。"));
+            (DialogueBeatKind.NpcSpeech, speaker, get_player_spirit_root_count() > 0 ? "若想去宗门问道，先定个去处。等其他人都验完，再随接引舟出发。" : "你也没有灵根。可以继续旁听，但不能引气入道。"));
+        refresh_baishi_location_actions();
     }
 
-    private void farewell_baishi_fang() => after_baishi_farewell(show_baishi_lecture);
-    private void after_baishi_farewell(Action next)
+    private void farewell_baishi_fang() => after_baishi_farewell(() =>
+    {
+        if (location_interior?.get_baishi_space_id() == "lecture") show_baishi_lecture();
+        else location_interior?.refresh_location_roster();
+    });
+    private void after_baishi_farewell(Action next, bool travelingToSect = false)
     {
         if (_baishiLecture is not { } state || state.fang_returned) { next(); return; }
-        lecture_dialogue(() => { state.fang_returned = true; state.companion.current_node_id = ""; state.companion.current_state = "返乡"; next(); },
+        lecture_dialogue(() =>
+        {
+            if (state.companion.is_player_travel_companion)
+                _npc_world?.leave_player_travel_party(state.companion.npc_id, BaishiNodeId, location_interior?.get_baishi_space_id() ?? "", "返乡");
+            state.fang_returned = true; state.companion.current_node_id = ""; state.companion.current_state = "返乡";
+            state.companion.public_lecture_event_id = ""; _npc_world?.npcs.Remove(state.companion); next();
+        },
             (DialogueBeatKind.NpcSpeech, "方远", "车找到了，我跟着回去。你这边怎么样？"),
-            (DialogueBeatKind.PlayerSpeech, "", "准备先学学看。"),
+            (DialogueBeatKind.PlayerSpeech, "", travelingToSect || state.selected_sect_id == YuxuSectId ? "我打算随玉虚的灵舟去山门看看。" : "我还没定去处，打算再看看。"),
             (DialogueBeatKind.NpcSpeech, "方远", "行。我走了，路上小心。"));
     }
 
@@ -330,7 +386,7 @@ public partial class MainScene
     private bool baishi_farewell_done()
     {
         if (_baishiLecture?.fang_returned == true) return true;
-        show_message("方远还在等你", "开始长时间研习或休息前，先从人物列表选中方远，与他交谈道别。");
+        show_message("方远还在等你", "开始长时间研习或休息前，先回讲法前院与方远道别。");
         return false;
     }
 
@@ -343,13 +399,74 @@ public partial class MainScene
         open_general_rest_dialog("白石研习处", refresh_qingxi_quest);
     }
 
-    private void choose_baishi_yuxu()
+    private void choose_baishi_boat()
     {
-        if (_baishiLecture is not { reached_yunxi: true } state) return;
-        after_baishi_farewell(() => lecture_dialogue(() =>
+        if (!can_handle_baishi_departure() || !baishi_boarding_ready()) return;
+        after_baishi_farewell(() => lecture_dialogue(begin_baishi_boat_flight,
+            (DialogueBeatKind.NpcSpeech, ensure_baishi_host()?.npc_name ?? "当值修士", "接引舟已经备好，路上的用度由宗门筹备。到了山门，再照规矩问道录籍。")), travelingToSect: true);
+        refresh_baishi_location_actions();
+    }
+
+    private void begin_baishi_boat_flight()
+    {
+        if (!baishi_boarding_ready() || _baishiLecture is not { roots_checked: true, fang_returned: true, spirit_boat_in_transit: false } state ||
+            _npc_world is not { } manager || player is null) return;
+        var travel = GD.Load<ItemTravelData>(BaishiEscortBoatPath);
+        if (travel?.try_get_dun_speed(out var speed) != true || travel.try_get_passenger_capacity(out var capacity) != true)
         {
-            state.chose_yuxu = true; open_world();
-        }, (DialogueBeatKind.Narration, "", "你决定前往最近的玉虚问道。可以在世界地图主动行旅，再进入山门说明来意。白石的讲法与查验并不等于入宗。")));
+            show_message("暂无法乘舟", "接引灵舟尚未准备妥当，请稍后再试。"); return;
+        }
+        if (manager.get_player_travel_party().Count + 2 > capacity)
+        {
+            show_message("随行人数过多", $"接引灵舟最多可载{capacity}人，人数包括驾舟弟子。"); return;
+        }
+        var generator = new CharacterGenerator();
+        var data = generator.generate("云息", (int)WorldEntity.Faction.NEUTRAL);
+        var driver = new WorldNpcData
+        {
+            npc_id = "baishi_boat_driver_" + Guid.NewGuid().ToString("N"),
+            npc_name = new NameGenerator().generate_single_full(data.gender), gender = data.gender,
+            faction_id = YuxuSectId, formal_identity = "玉虚弟子", cultivation_realm = "云息十层",
+            spirit_root_name = data.spirit_root_name, root_weights = new Godot.Collections.Array<int>(data.root_weights.Select(w => w.AsInt32())),
+            physique = data.physique, intelligence = data.intelligence, soul = data.soul,
+            current_age = data.current_age, max_age = data.max_age,
+            current_node_id = BaishiNodeId, origin_node_id = "yuxu_xianzong_core",
+            current_state = "接引", is_alive = true, public_lecture_event_id = state.event_id,
+            origin_description = "奉玉虚之命驾驶灵舟，接引白石求道者。"
+        };
+        driver.ensure_appearance_identity();
+        if (!manager.join_player_travel_party(driver))
+        {
+            show_message("暂无法乘舟", "接引弟子尚未准备妥当，请稍后再试。"); return;
+        }
+        state.spirit_boat_driver_id = driver.npc_id;
+        state.spirit_boat_in_transit = true;
+        state.chose_yuxu = true;
+        open_world();
+        if (_nodeWorldMap?.Call("begin_spirit_boat_flight", "yuxu_xianzong_core", speed, driver.npc_id).AsBool() != true)
+        {
+            state.spirit_boat_in_transit = false;
+            state.spirit_boat_driver_id = "";
+            state.chose_yuxu = false;
+            manager.leave_player_travel_party(driver.npc_id, BaishiNodeId, "", "接引");
+            driver.public_lecture_event_id = "";
+            mark_save_dirty(); sync_player_travel_party_map(); refresh_qingxi_quest();
+            show_message("暂无法乘舟", "当前无法启航，你仍在白石附近，可以稍后再试。"); return;
+        }
+        sync_player_travel_party_map();
+        mark_save_dirty(); refresh_qingxi_quest();
+    }
+
+    private void complete_baishi_boat_flight()
+    {
+        if (_baishiLecture is not { spirit_boat_in_transit: true } state || _nodeWorldMap is null ||
+            _nodeWorldMap.Call("get_current_location_runtime_id").AsString() != "yuxu_xianzong_core") return;
+        if (!string.IsNullOrEmpty(state.spirit_boat_driver_id) && _npc_world?.get_npc(state.spirit_boat_driver_id) is { } driver &&
+            _npc_world.leave_player_travel_party(driver.npc_id, "yuxu_xianzong_core", "", "返回玉虚"))
+            driver.public_lecture_event_id = "";
+        state.spirit_boat_in_transit = false;
+        sync_player_travel_party_map();
+        mark_save_dirty(); refresh_qingxi_quest();
     }
 
     private void refresh_baishi_progress()
@@ -370,17 +487,19 @@ public partial class MainScene
     {
         var s = _baishiLecture!;
         string id, title, body;
-        if (!s.departed_qingxi) { id = "awake"; title = s.met_fang ? "结伴初行" : "初醒异地"; body = s.met_fang ? "与方远交谈，决定是否同去白石。" : "与身旁的年轻人交谈，问清这里是什么地方。"; }
-        else if (!s.heard_lecture) { id = "listen"; title = "白石讲法"; body = "进入白石城讲法处，旁听本期讲法。"; }
-        else if (!s.roots_checked) { id = "roots"; title = "查验灵根"; body = "在讲法处查验已有灵根，了解入道门径。"; }
-        else if (!s.fang_returned) { id = "farewell"; title = "方远返乡"; body = "从人物列表选中方远，交谈道别后再安排修行。"; }
-        else if (get_player_spirit_root_count() == 0) { id = "no_root"; title = "另寻去处"; body = "没有灵根，不能引气入道。可在讲法处选择自行游历。"; }
-        else if (player?.entity_data is HumanData h && string.IsNullOrEmpty(h.baishi_first_volume_path)) { id = "choose"; title = "选读首卷"; body = "到白石研习处查看功法，自行选择一部首卷。"; }
-        else if (player?.has_completed_intro_gongfa_first_volume() != true) { id = "study"; title = "研读首卷"; body = "在研习处读成所选首卷，要求和耗时按功法实际规则。"; }
-        else if (player.main_gongfa is null) { id = "equip"; title = "定为主修"; body = "打开角色功法页，将已读成的功法装配为主修。"; }
-        else if (!s.reached_yunxi) { id = "cultivate"; title = "引气入道"; body = "在白石研习处吐纳，按实际门槛踏入云息一层。"; }
-        else if (!s.chose_yuxu) { id = "direction"; title = "仙门问路"; body = "回白石讲法处询问去向，可选择前往玉虚或自行游历。"; }
-        else { id = "yuxu"; title = "前往玉虚"; body = "在世界地图主动行旅至玉虚仙宗，再进入山门问道；也可自行游历。"; }
+        if (!s.departed_qingxi) { id = "awake"; title = s.met_fang ? "前往白石城" : "溪边醒来"; body = s.met_fang ? "抵达白石城。" : "弄清自己的处境。"; }
+        else if (s.traveling_to_baishi) { id = "journey"; title = "前往白石城"; body = "抵达白石城。"; }
+        else if (!s.heard_lecture) { id = "listen"; title = "白石讲法"; body = "听讲法并查验灵根。"; }
+        else if (!s.roots_checked) { id = "roots"; title = "查验灵根"; body = "查明自身灵根。"; }
+        else if (get_player_spirit_root_count() == 0)
+        { id = s.fang_returned ? "no_root" : "farewell"; title = s.fang_returned ? "另寻去处" : "方远返乡"; body = s.fang_returned ? "另寻去处。" : "向方远道别。"; }
+        else if (s.spirit_boat_in_transit) { id = "boat"; title = "乘舟赴玉虚"; body = "抵达玉虚仙宗。"; }
+        else if (player?.entity_data is HumanData { sect_yuxu_registration_pending: true, sect_affiliation_id: "" })
+        { id = "registration"; title = "玉虚报到"; body = "在观复峰办理入门。"; }
+        else if (s.chose_yuxu) { id = "yuxu"; title = "前往玉虚"; body = "前往玉虚山门问道。"; }
+        else if (string.IsNullOrEmpty(s.selected_sect_id)) { id = "sect"; title = "择定宗门"; body = "选定求道宗门。"; }
+        else if (!s.roots_session_finished) { id = "wait"; title = "静候启程"; body = "等候本场验灵结束。"; }
+        else { id = "board"; title = "乘舟赴玉虚"; body = "乘舟前往玉虚仙宗。"; }
         return new(title, body, s.met_fang ? "序章 · 白石问道" : "序章 · 初醒", s.departed_qingxi ? "白石城" : s.met_fang ? "青溪里外" : "溪边野地", s.finished ? "已完成" : "进行中", Id: "baishi." + id);
     }
 }

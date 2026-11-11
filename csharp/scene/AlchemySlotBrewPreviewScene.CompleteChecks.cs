@@ -103,7 +103,7 @@ public partial class AlchemySlotBrewPreviewScene
         foreach (int tier in Enumerable.Range(0, 5))
         {
             var item = GD.Load<PillItemData>(AlchemyProductCatalog.Path(id, tier));
-            verify(item is not null && item.validate_definition().Count == 0 && item.can_stack && item.max_stack == 999 &&
+            verify(item is not null && item.validate_definition().Count == 0 && item.can_stack && item.max_stack == PillItemData.BottleCapacity &&
                 item.pill_id == id && item.efficacy_tier == tier && StoragePanel.build_item_usage_effect(item).Contains(item.EffectText),
                 $"{id}档位{tier}正式定义堆叠与行囊效果说明一致");
         }

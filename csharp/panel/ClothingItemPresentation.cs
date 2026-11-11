@@ -13,7 +13,7 @@ public static class ClothingItemPresentation
             .Replace("立绘衣着，男女款随角色性别呈现", "衣着");
         if (introduction.Length > 0) introduction += "。";
         var icon = !string.IsNullOrWhiteSpace(item.icon_path) && ResourceLoader.Exists(item.icon_path) ? GD.Load<Texture2D>(item.icon_path) : null;
-        return HoverInfoManager.Structured(item.entity_name, icon, "", new("", "适用人物：" + audience), new("", "简介：" + introduction))
-            with { CardWidth = 340f, IconSize = 96f, ShowRules = false, Footprint = item.get_inventory_size() };
+        return ItemLayoutPresentation.AttachItem(HoverInfoManager.Structured(item.entity_name, icon, "", new("", "适用人物：" + audience), new("", "简介：" + introduction))
+            with { ShowRules = false, Footprint = new Vector2I(item.get_storage_volume(), 1) }, item);
     }
 }

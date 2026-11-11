@@ -7,40 +7,20 @@ public partial class BattlePaperDoll
     private string _queueOutfitId = "male_clothes_05";
     private string _queueArtDirectory = "res://tools/action_battle_test/art/yuxu_fullbody_v15";
     public bool uses_queue_avatar() => _queueAvatar is not null;
+    public bool uses_basic_pair_avatar() => _queueAvatar is not null && _queueOutfitId.StartsWith("turn_basic_");
     public void set_queue_travel_mode(string mode) => _queueAvatar?.SetTravelMode(mode);
     public void set_queue_travel_progress(float progress) => _queueAvatar?.SetTravelProgress(progress);
 
-    // Resolve the same catalog identities as the portrait UI. An unsupported outfit/hair
-    // combination keeps the old renderer, rather than silently wearing the sample costume.
+    // 2026-11-06: user selected one provisional battle appearance per gender.
+    // This chooses a renderer only; it never rewrites the character's real wardrobe/hair.
     private bool MatchesQueueAvatar(BattleEntityData data)
     {
-        if (data.gender != 0 || data.portrait_data is not HumanData source || source.gender != 0) return false;
-        var catalog = GetNodeOrNull<PortraitCatalog>("/root/PortraitCatalog");
-        if (catalog is null) return false;
-        var requested = catalog.get_requested_appearance(source);
-        if (source.appearance_hair_back_style < 0) requested["hair_back"] = "";
-        var context = catalog.get_context(source, "male", data.current_age, source.faction_name, data.cultivation_realm);
-        var selected = catalog.select_portrait(context, requested);
-        foreach (var (part, id) in new[] { ("hair_front", "male_front_hair_05"), ("hair_back", "male_back_hair_06") })
-        {
-            if (!selected.ContainsKey(part)) return false;
-            var component = selected[part].AsGodotDictionary();
-            if (component.GetValueOrDefault("id", "").AsString() != id
-                || component.GetValueOrDefault("package_id", "").AsString() != "ink_three_variants_20261004") return false;
-        }
-        if (!selected.ContainsKey("clothes")) return false;
-        var clothes = selected["clothes"].AsGodotDictionary();
-        if (clothes.GetValueOrDefault("package_id", "").AsString() != "ink_three_variants_20261004") return false;
-        _queueOutfitId = clothes.GetValueOrDefault("id", "").AsString();
-        var folder = _queueOutfitId switch {
-            "male_clothes_03" => "queue_yuxu_servant_v1",
-            "male_clothes_04" => "queue_yuxu_outer_v1",
-            "male_clothes_05" => "yuxu_fullbody_v15",
-            "male_clothes_06" => "queue_yuxu_true_v1", _ => "" };
-        if (folder.Length == 0) return false;
-        _queueArtDirectory = "res://tools/action_battle_test/art/" + folder;
-        if (!Godot.FileAccess.FileExists(_queueArtDirectory + "/body.png") || !Godot.FileAccess.FileExists(_queueArtDirectory + "/arm_relaxed_v19.png")) return false;
-        return true;
+        if (data.gender is not (0 or 1)) return false;
+        _queueOutfitId = data.gender == 1 ? "turn_basic_female_20261106" : "turn_basic_male_20261106";
+        _queueArtDirectory = "res://textures/characters/turn_based_pair_20261106";
+        return Godot.FileAccess.FileExists(_queueArtDirectory + "/female_native_v3/sprite_65806.png")
+            && Godot.FileAccess.FileExists(_queueArtDirectory + "/female_native_v3/hair_front.png")
+            && Godot.FileAccess.FileExists(_queueArtDirectory + "/female_native_v3/hair_back.png");
     }
 
     private void ResetQueueAvatar()
@@ -49,6 +29,7 @@ public partial class BattlePaperDoll
         _queueAvatar.Hide();
         _queueAvatar.QueueFree();
         _queueAvatar = null;
+        GetNodeOrNull<CanvasItem>("InkShadow")?.Show();
     }
 
     private bool ConfigureQueueAvatar(BattleEntityData data)
@@ -69,6 +50,7 @@ public partial class BattlePaperDoll
         _combatHeadY = _queueAvatar.HeadAnchor.Y;
         _portrait.Visible = false;
         _sideIdle!.Visible = false;
+        GetNodeOrNull<CanvasItem>("InkShadow")?.Hide();
         _queueAvatarLastActorPosition = (GetParent() as Node2D)?.GlobalPosition ?? GlobalPosition;
         return true;
     }

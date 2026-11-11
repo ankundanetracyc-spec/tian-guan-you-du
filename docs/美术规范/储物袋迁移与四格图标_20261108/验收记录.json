@@ -1,0 +1,131 @@
+{
+  "date": "2026-11-08",
+  "build": {
+    "warnings": 0,
+    "errors": 0
+  },
+  "scenes": [
+    {
+      "scene": "bag",
+      "passed": true,
+      "markers": [
+        "STORAGE_BAG_MODEL_OK 49",
+        "STORAGE_BAG_INTERFACE_OK 79",
+        "STORAGE_BAG_SMOKE_OK 79"
+      ],
+      "errors": 0,
+      "warnings": [
+        "WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs"
+      ]
+    },
+    {
+      "scene": "restart",
+      "passed": true,
+      "markers": [
+        "STORAGE_BAG_RESTART_OK 3"
+      ],
+      "errors": 0,
+      "warnings": []
+    },
+    {
+      "scene": "spatial",
+      "passed": true,
+      "markers": [
+        "SPATIAL_NATIVE_MODEL: 34 checks passed"
+      ],
+      "errors": 0,
+      "warnings": [
+        "WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs",
+        "WARNING: 1 RID of type \"CanvasItem\" was leaked.",
+        "WARNING: 1 ObjectDB instance was leaked at exit (run with `--verbose` for details)."
+      ]
+    },
+    {
+      "scene": "inventory",
+      "passed": true,
+      "markers": [
+        "INVENTORY_NATIVE_UI_SMOKE_OK 31"
+      ],
+      "errors": 0,
+      "warnings": []
+    },
+    {
+      "scene": "trade",
+      "passed": true,
+      "markers": [
+        "NATIVE_TRADE_INTEGRATION_OK: 25 checks; native source/offer rows, quantity, actual transaction, stamina, stale NPC, capacity and exact position conservation"
+      ],
+      "errors": 0,
+      "warnings": []
+    },
+    {
+      "scene": "claim",
+      "passed": true,
+      "markers": [
+        "ITEM_CLAIM_SPATIAL_NATIVE_OK 83"
+      ],
+      "errors": 0,
+      "warnings": [
+        "WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs"
+      ]
+    },
+    {
+      "scene": "bag_window",
+      "passed": true,
+      "markers": [
+        "STORAGE_BAG_MODEL_OK 49",
+        "STORAGE_BAG_INTERFACE_OK 87",
+        "STORAGE_BAG_SMOKE_OK 87"
+      ],
+      "errors": 0,
+      "warnings": [
+        "WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs"
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "实机/储物空间/01_行囊尺度1920.png",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "file": "实机/储物空间/02_储物袋矩形收纳1920.png",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "file": "实机/储物空间/03_储物袋矩形收纳1280.png",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "file": "实机/储物空间/04_行囊尺度1280.png",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "file": "实机/储物空间/05_整屏储物袋1920.png",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "file": "实机/储物空间/06_整屏储物袋1280.png",
+      "width": 1280,
+      "height": 720
+    },
+    {
+      "file": "实机/储物空间/07_储物袋暗罩1920.png",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "file": "实机/储物空间/08_储物袋暗罩1280.png",
+      "width": 1280,
+      "height": 720
+    }
+  ],
+  "save_scope": "新规格的保存及跨进程读取；不处理旧档",
+  "import_note": "新资产导入完成。无窗口导入进程的第二个编辑器桥尝试占用既有49631端口而报警；运行场景不依赖该桥，七组运行无ERROR。",
+  "visual_review": "已查看1920行囊、1920储物袋内腔及1280暗罩子页；四格袋图清楚、比例正常，暖褐内衬与格线、物品和下层行囊均可见。"
+}

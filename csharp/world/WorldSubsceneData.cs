@@ -8,4 +8,5 @@ public partial class WorldSubsceneData : Resource
     [Export] public string subscene_name = "";
     [Export(PropertyHint.MultilineText)] public string description = "";
     [Export] public bool unlocked = true;
+    [Export] public WorldConflictRules.Policy hostile_combat_policy = WorldConflictRules.Policy.Inherit;
 }

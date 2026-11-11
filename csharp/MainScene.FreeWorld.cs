@@ -37,6 +37,8 @@ public partial class MainScene
                 if (npc.is_alive && !npc.is_traveling) ids.Add(npc.npc_id);
         foreach (var id in ids.Order(StringComparer.Ordinal))
             if (_npc_world.get_npc(id) is { } npc) result.Add(npc);
+        foreach (var companion in _npc_world.get_player_travel_party())
+            if (result.All(n => n.npc_id != companion.npc_id)) result.Add(companion);
         return result;
     }
 }

@@ -16,6 +16,16 @@ public partial class EastWoodsDungeonPanel
     private void update_visibility()
     {
         _visibleNodes.Clear();
+        if (is_tower_instance)
+        {
+            foreach (var node in route_nodes)
+            {
+                _visibleNodes.Add(node.Id);
+                _discoveredNodes.Add(node.Id);
+            }
+            if (!is_node_visible(_hoveredNode)) clear_hover();
+            return;
+        }
         var center = route_node(_current);
         if (center is null) return;
         foreach (var node in route_nodes)

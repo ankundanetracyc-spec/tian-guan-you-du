@@ -7,6 +7,12 @@ public static class ForgedArtifactInventory
 {
     public static bool IsForged(ArtifactInstanceData item) => !string.IsNullOrWhiteSpace(item.forged_snapshot_json);
 
+    public static int StorageVolume(ProcessForgingTrial.Artifact snapshot)
+    {
+        EnsureStorageVolume(snapshot);
+        return snapshot.StorageVolume;
+    }
+
     // 从快照派生展示路径，旧存档也能使用新图标，不改写器物数据。
     public static string IconPath(ArtifactInstanceData item) => TryRead(item, out var snapshot)
         ? ForgedArtifactPresentation.IconPath(snapshot) : item.form?.icon_path ?? "";
@@ -21,6 +27,7 @@ public static class ForgedArtifactInventory
 
     public static ArtifactInstanceData Create(ProcessForgingTrial.Artifact snapshot)
     {
+        EnsureStorageVolume(snapshot);
         Validate(snapshot);
         return new ArtifactInstanceData
         {
@@ -40,16 +47,17 @@ public static class ForgedArtifactInventory
         {
             var result = JsonSerializer.Deserialize<ProcessForgingTrial.Artifact>(item.forged_snapshot_json);
             if (result is null || result.InstanceId != item.instance_id) return false;
+            EnsureStorageVolume(result);
             Validate(result); snapshot = result; return true;
         }
         catch (Exception error) when (error is JsonException or ArgumentException or NotSupportedException) { return false; }
     }
 
-    public static HoverInfoManager.HoverInfoContent Hover(ArtifactInstanceData item)
+    public static HoverInfoManager.HoverInfoContent Hover(ArtifactInstanceData item, Character? user = null)
     {
         if (!TryRead(item, out var snapshot))
             return new(item.artifact_name, "器物信息暂时无法读取。", Subtitle: "器物");
-        return ForgedArtifactPresentation.Hover(snapshot);
+        return ItemTravelPresentation.Append(EquipmentItemPresentation.Hover(snapshot, item.layout_preview, item.control_preview, user), item.travel_data, item.travel_charge_hours);
     }
 
     private static void Validate(ProcessForgingTrial.Artifact snapshot)
@@ -57,8 +65,26 @@ public static class ForgedArtifactInventory
         if (snapshot.SchemaVersion != 3 || string.IsNullOrWhiteSpace(snapshot.InstanceId) ||
             string.IsNullOrWhiteSpace(snapshot.Name) || string.IsNullOrWhiteSpace(snapshot.Category) ||
             snapshot.Tier is not ("凡器" or "法器") || !double.IsFinite(snapshot.Polarity) || snapshot.Polarity is < -3 or > 3 ||
-            snapshot.Sharpness < 0 || snapshot.Effects is null || snapshot.BondContributions is null ||
+            snapshot.StorageVolume is < 1 or > 64 || snapshot.Sharpness < 0 || snapshot.Effects is null || snapshot.BondContributions is null ||
             snapshot.Effects.Exists(effect => effect is null))
             throw new ArgumentException("成器快照格式不完整或版本暂不支持");
+        if (snapshot.Category != "剑" && (string.IsNullOrWhiteSpace(snapshot.InventoryIconPath) || snapshot.InventoryWidth < 1 || snapshot.InventoryHeight < 1))
+            throw new ArgumentException("非剑类成器必须配置自己的图标与占地");
+    }
+
+    private static void EnsureStorageVolume(ProcessForgingTrial.Artifact snapshot)
+    {
+        // Sword storage uses the physical blade profile, independently of its inventory icon.
+        // Recompute on read so older snapshots pick up the current physical-volume scale.
+        if (snapshot.Category == "剑")
+        {
+            snapshot.StorageVolume = snapshot.Shape.Contains("修长", StringComparison.Ordinal)
+                && !snapshot.Shape.Contains("厚脊", StringComparison.Ordinal) ? 3 : 4;
+            return;
+        }
+        if (snapshot.StorageVolume is >= 1 and <= 64) return;
+        // Non-sword legacy artifacts use their recorded physical volume; incomplete fixtures use 2.
+        snapshot.StorageVolume = double.IsFinite(snapshot.Volume) && snapshot.Volume > 0
+            ? Math.Clamp((int)Math.Ceiling(snapshot.Volume), 1, 64) : 2;
     }
 }

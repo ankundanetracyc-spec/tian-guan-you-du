@@ -50,8 +50,8 @@ public partial class NpcPurchaseSmoke : Node
                 npc_population_version = 1, npc_simulation_enabled = true, npc_last_processed_month = 0,
                 player_data = new HumanData { entity_name = "沈照微", cultivation_realm = "云息三层", current_age = 16,
                     sect_affiliation_id = "yuxu_xianzong", sect_current_rank = "外门弟子", current_world_stamina = 100 },
-                scene_progress = new D { ["qingxi_prologue"] = 3, ["cloud_state_initialized"] = true,
-                    ["xuanjian_awakened"] = true, ["social_membership_month"] = 0 } };
+                scene_progress = new D { ["story_free_start"] = true, ["cloud_state_initialized"] = true,
+                    ["social_membership_month"] = 0 } };
             fixture.world_npcs.Add(Buyer("purchase_smoke"));
             typeof(GameSaveManager).GetField("_pendingLoad", BindingFlags.NonPublic | BindingFlags.Instance)!.SetValue(saves, fixture);
             GetTree().CurrentScene = null;

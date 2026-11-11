@@ -29,6 +29,16 @@ public partial class LocationCraftingPanel : Control
     {
         if (_room is AlchemySlotBrewPreviewScene alchemy) alchemy.ReturnToBaigong();
         else if (_room is ProcessForgingScene forging) forging.ReturnToBaigong();
+        else if (_room is TalismanCraftingScene talisman) talisman.ReturnToLocation();
         else Hide();
+    }
+
+    public void ShowTalismanFor(Character owner)
+    {
+        if (_room is not null && IsInstanceValid(_room) && !_room.IsQueuedForDeletion()) return;
+        var room = GD.Load<PackedScene>("res://tscn/scene/TalismanCraftingScene.tscn").Instantiate<TalismanCraftingScene>();
+        room.OwnerCharacter = owner; _room = room;
+        room.TreeExiting += () => { _room = null; Hide(); };
+        AddChild(room); Show(); MoveToFront();
     }
 }

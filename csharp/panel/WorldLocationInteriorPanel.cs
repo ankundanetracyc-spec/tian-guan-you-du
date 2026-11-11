@@ -11,6 +11,7 @@ public partial class WorldLocationInteriorPanel : Control
 {
     public event System.Action? Closed;
     public event System.Action<string, string>? SubsceneEntered;
+    public event System.Action<string>? DynamicDungeonEntryRequested;
 
     private WorldNodeData? _node;
     private NpcWorldManager? _npc_world;
@@ -32,8 +33,8 @@ public partial class WorldLocationInteriorPanel : Control
     private readonly HashSet<string> _east_woods_visited = ["forest_edge"];
     private readonly HashSet<string> _east_woods_inspected = [];
     private string _selected_subscene_id = "";
-    public bool is_npc_in_current_space(WorldNpcData npc) => Visible && _node?.node_id == npc.current_node_id &&
-        (string.IsNullOrEmpty(_selected_subscene_id) || npc.current_subscene_id == _selected_subscene_id);
+    public bool is_npc_in_current_space(WorldNpcData npc) => Visible && (npc.is_player_travel_companion ||
+        _node?.node_id == npc.current_node_id && (string.IsNullOrEmpty(_selected_subscene_id) || npc.current_subscene_id == _selected_subscene_id));
     private string _east_woods_current = "forest_edge";
     private ColorRect? _sceneShade;
     private TextureRect? _npcBackdrop;
@@ -74,6 +75,7 @@ public partial class WorldLocationInteriorPanel : Control
 
     public void show_for(WorldNodeData node, NpcWorldManager? npc_world)
     {
+        _qingxiOpeningActions?.Hide();
         _baishiView?.Hide();
         _npcBackdrop?.Hide(); _sceneShade?.Show();
         _node = node;
@@ -100,6 +102,26 @@ public partial class WorldLocationInteriorPanel : Control
         if (_east_woods_frame is not null) _east_woods_frame.Hide();
         if (_generic_frame is not null) _generic_frame.Show();
         refresh_content();
+        Show();
+        MoveToFront();
+    }
+
+    public void show_dynamic_dungeon(WorldNodeData node, NpcWorldManager? npc_world, string instanceId, string expectedRealmRange)
+    {
+        show_for(node, npc_world);
+        if (_title is not null) _title.Text = node.node_name;
+        if (_meta is not null) _meta.Text = $"随机秘境　·　预计生灵境界：{expectedRealmRange}";
+        if (_description is not null)
+            _description.Text = "山野间出现的一处小型秘境。你可以先看预计境界，再决定是否进入。副本地图与遭遇已固定，返回后仍可再次进入。";
+        if (_subscene_list is not null)
+        {
+            clear_children(_subscene_list);
+            var enter = button("进入秘境", 0, 48);
+            enter.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+            enter.Pressed += () => DynamicDungeonEntryRequested?.Invoke(instanceId);
+            _subscene_list.AddChild(enter);
+        }
+        if (_subscene_detail is not null) _subscene_detail.Text = "到达出口后离开。资源、遭遇和当前节点会保留。";
         Show();
         MoveToFront();
     }
@@ -217,9 +239,11 @@ public partial class WorldLocationInteriorPanel : Control
         var title = label("东林地 · 循痕入林", 27, new Color("f1dfad"));
         title.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         header.AddChild(title);
-        var close_button = button("返回地图", 120, 38);
+        var close_button = button("返回", 114, 46);
+        close_button.Name = "EastWoodsReturn";
         close_button.Pressed += close;
-        header.AddChild(close_button);
+        AddChild(close_button); CraftingPaperHeader.PlaceReturn(this, close_button);
+        CraftingPaperHeader.AddReturnArrow(close_button, new Color("e2d8c4"));
 
         var meta = label("前期野外探索　·　沿路线深入林地；溪沟处分路，深林会合", 15, new Color("d7c49c"));
         column.AddChild(meta);
@@ -531,11 +555,16 @@ public partial class WorldLocationInteriorPanel : Control
         var roster = string.IsNullOrWhiteSpace(_selected_subscene_id)
             ? _npc_world?.get_node_roster(_node.node_id) ?? new Godot.Collections.Array<WorldNpcData>()
             : _npc_world?.get_subscene_roster(_node.node_id, _selected_subscene_id) ?? new Godot.Collections.Array<WorldNpcData>();
+        if (_npc_world is not null)
+            foreach (var companion in _npc_world.get_player_travel_party())
+                if (!roster.Any(n => n.npc_id == companion.npc_id)) roster.Add(companion);
         var context = string.IsNullOrWhiteSpace(_selected_subscene_id)
             ? $"interior:{_node.node_id}"
             : $"interior:{_node.node_id}:{_selected_subscene_id}";
         _cell_roster.show_world_npcs(roster, context);
     }
+
+    public void refresh_location_roster() => refresh_current_roster();
 
     private static Label label(string text, int font_size, Color color)
     {

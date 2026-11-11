@@ -1,4 +1,4 @@
-/// <summary>体验专用参数；尚未成为正式平衡规则。参见 docs/plans/炼丹新版试验规格_20261016.md。</summary>
+/// <summary>体验专用参数；尚未成为正式平衡规则。参见 docs/plans/百工技艺/炼丹/炼丹新版试验规格_20261016.md。</summary>
 public static class AlchemyPreviewRules
 {
     public const int MinimumAttainment=8, FineLearning=24, FurnaceCapacity=24;

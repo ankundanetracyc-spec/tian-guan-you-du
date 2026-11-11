@@ -7,6 +7,17 @@ using System.Text.RegularExpressions;
 public static class AlchemyPillVisual
 {
     private static readonly string[] Tiers = ["薄效", "良效", "优效", "极效", "满效"];
+
+    public static HoverInfoManager.HoverInfoContent UnbottledHover(PillItemData item, int score, Texture2D? icon = null)
+    {
+        int tier = System.Math.Clamp(item.efficacy_tier, 0, 4);
+        var quality = Tiers[tier];
+        var name = Regex.Replace(item.entity_name, "[·・]" + quality + "$", "");
+        return HoverInfoManager.Structured(name, icon, "",
+            new HoverInfoManager.HoverInfoSection("", $"丹效：{System.Math.Clamp(score, 0, 100)}/100\n效果：{item.EffectText.TrimEnd('。')}"))
+            with { ShowRules = false, Footprint = null, GridDiagrams = null };
+    }
+
     public static void Apply(TextureRect icon, int tier, string pillId = "")
     {
         var material = new ShaderMaterial { Shader = GD.Load<Shader>("res://shaders/alchemy_container_grade.gdshader") };
@@ -28,7 +39,7 @@ public static class AlchemyPillVisual
         icon.Material = material;
     }
     public static HoverInfoManager.HoverInfoContent Hover(PillItemData item, int? score = null,
-        int? contentsCount = null, IReadOnlyList<int>? scores = null, bool singleBottle = false, Character? user = null,
+        int? contentsCount = null, IReadOnlyList<int>? scores = null, Character? user = null,
         string? effectOverride = null)
     {
         int tier = System.Math.Clamp(item.efficacy_tier, 0, 4);
@@ -76,7 +87,8 @@ public static class AlchemyPillVisual
         if (PillToxicityRules.BaseLoads.TryGetValue(item.pill_id, out var basis))
             toxicityText += $" 计算公式：向上取整({basis:0.##}×{factor:0.##})＝{toxicity}";
         var name = Regex.Replace(item.entity_name, "[·・]" + quality + "$", "");
-        return Build(item, name, $"丹阶：{RankName(item.pill_rank)}\n丹效：{quality}\n药效：{effect}\n丹毒：{toxicityText}", introduction);
+        var contents = contentsCount.HasValue ? $"丹药数量：{contentsCount.Value}颗\n" : "";
+        return Build(item, name, contents + $"丹阶：{RankName(item.pill_rank)}\n丹效：{quality}\n药效：{effect}\n丹毒：{toxicityText}", introduction);
     }
 
     public static bool IsPill(ItemData item) => item is PillItemData || item.item_category == "丹药";
@@ -125,7 +137,7 @@ public static class AlchemyPillVisual
     private static HoverInfoManager.HoverInfoContent Build(ItemData item, string name, string fields, string introduction)
     {
         var icon = !string.IsNullOrWhiteSpace(item.icon_path) && ResourceLoader.Exists(item.icon_path) ? GD.Load<Texture2D>(item.icon_path) : null;
-        return HoverInfoManager.Structured(name, icon, "", new("", fields), new("", "简介：" + introduction))
-            with { CardWidth = 340f, IconSize = 96f, ShowRules = false, Footprint = item.get_inventory_size() };
+        return ItemLayoutPresentation.AttachItem(HoverInfoManager.Structured(name, icon, "", new("", fields), new("", "简介：" + introduction))
+            with { ShowRules = false, Footprint = new Vector2I(item.get_storage_volume(), 1) }, item);
     }
 }

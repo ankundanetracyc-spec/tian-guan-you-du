@@ -29,8 +29,7 @@ public partial class InfoPanel
         foreach (var path in human.pack_items)
             if (ResourceLoader.Exists(path) && ResourceLoader.Load<ItemData>(path) is { } item && item.gongfa?.ResourcePath == book.ResourcePath)
                 return _manualIcons[book.ResourcePath] = CharacterLoadIcon(item.icon_path);
-        var sheet = GD.Load<Texture2D>("res://textures/ui/inventory_20261012/category_icons_v1.png");
-        return _manualIcons[book.ResourcePath] = new AtlasTexture { Atlas = sheet, Region = new Rect2(sheet.GetWidth() * .75f, 0, sheet.GetWidth() / 4f, sheet.GetHeight() / 3f) };
+        return _manualIcons[book.ResourcePath] = GD.Load<Texture2D>("res://textures/items/inventory_density_20261029/manual_generic_2x3.png");
     }
 
     private static Texture2D? CharacterLoadIcon(string path) => !string.IsNullOrWhiteSpace(path) && ResourceLoader.Exists(path) ? GD.Load<Texture2D>(path) : null;
@@ -50,15 +49,15 @@ public partial class InfoPanel
     {
         var page = _characterPages[3]; CharacterClear(page);
         var slotScroll = new ScrollContainer { HorizontalScrollMode = ScrollContainer.ScrollMode.Auto, VerticalScrollMode = ScrollContainer.ScrollMode.Disabled };
-        page.AddChild(slotScroll); CharacterRect(slotScroll, 0, 0, 1350, 80);
+        page.AddChild(slotScroll); CharacterRect(slotScroll, 0, 0, 1382, 80);
         _manualSlots = new HBoxContainer(); _manualSlots.AddThemeConstantOverride("separation", 12); slotScroll.AddChild(_manualSlots);
-        var filters = new HBoxContainer(); filters.AddThemeConstantOverride("separation", 10); page.AddChild(filters); CharacterRect(filters, 0, 94, 1350, 44);
+        var filters = new HBoxContainer(); filters.AddThemeConstantOverride("separation", 10); page.AddChild(filters); CharacterRect(filters, 0, 94, 1382, 44);
         var search = CharacterSearch("检索秘籍名、关键词、习得内容"); search.Text = _manualQuery; filters.AddChild(search);
         search.TextChanged += value => { _manualQuery = value; refresh_character_gongfa(human); };
         foreach (var text in new[] { "全部", "已学", "持有" })
         {
             var button = CharacterButton(text, 20, text == _manualFilter); button.CustomMinimumSize = new Vector2(80, 44); filters.AddChild(button);
-            button.Pressed += () => { _manualFilter = text; foreach (var sibling in filters.GetChildren().OfType<Button>().Where(b => b.HasMeta("manual_status"))) sibling.AddThemeStyleboxOverride("normal", CharacterButtonStyle(sibling == button)); refresh_character_gongfa(human); };
+            button.Pressed += () => { _manualFilter = text; foreach (var sibling in filters.GetChildren().OfType<Button>().Where(b => b.HasMeta("manual_status"))) PaperButtonFeedback.Apply(sibling, fontSize: 20, selected: sibling == button); refresh_character_gongfa(human); };
             button.SetMeta("manual_status", true);
         }
         var keyword = CharacterButton(_manualKeyword.Length == 0 ? "关键词：全部 ▾" : _manualKeyword + " ▾", 20); keyword.CustomMinimumSize = new Vector2(190, 44); keyword.ClipText = true; filters.AddChild(keyword);
@@ -68,7 +67,8 @@ public partial class InfoPanel
         var heading = new HBoxContainer(); listBox.AddChild(heading); var title = CharacterText("秘籍库", 29); title.SizeFlagsHorizontal = SizeFlags.ExpandFill; heading.AddChild(title);
         _manualCounter = CharacterText("", 18, true); _manualCounter.CustomMinimumSize = new Vector2(100, 0); _manualCounter.HorizontalAlignment = HorizontalAlignment.Right; heading.AddChild(_manualCounter); listBox.AddChild(new HSeparator());
         _manualList = CharacterBox(CharacterScroll(listBox));
-        _manualWorkspace = new Control(); page.AddChild(_manualWorkspace); CharacterRect(_manualWorkspace, 396, 154, 954, 641);
+        _manualWorkspace = new Control(); page.AddChild(_manualWorkspace); CharacterRect(_manualWorkspace, 396, 154, 986, 641);
+        CharacterResponsive(_manualWorkspace, new Vector2(986, 641));
         refresh_character_gongfa(human);
     }
 
@@ -117,7 +117,7 @@ public partial class InfoPanel
     {
         CharacterClear(_manualWorkspace!);
         if (book is null) { CharacterEmpty(_manualWorkspace!, "暂无可查看的秘籍"); return; }
-        var panel = CharacterPanel(_manualWorkspace!, 0, 0, 954, 641); var box = CharacterBox(panel);
+        var panel = CharacterPanel(_manualWorkspace!, 0, 0, 986, 641); var box = CharacterBox(panel);
         var top = new HBoxContainer(); top.AddThemeConstantOverride("separation", 16); box.AddChild(top);
         top.AddChild(CharacterIcon(character_manual_icon(human, book), 72)); var info = CharacterBox(top); info.AddThemeConstantOverride("separation", 6);
         info.AddChild(CharacterClippedText(book.gongfa_name, 28));
@@ -132,26 +132,30 @@ public partial class InfoPanel
         var heart = book.get_heart_method_skill(isMain);
         var heartButton = CharacterButton("心法 · " + (heart?.skill_name ?? book.gongfa_name), 19, padding: 5); heartButton.CustomMinimumSize = new Vector2(0, 36); heartButton.SizeFlagsHorizontal = SizeFlags.ShrinkBegin; box.AddChild(heartButton);
         var state = !human.has_learned_gongfa(book) ? "未学 · 首卷预览" : isMain || isSub ? "已装配 · 当前版本" : "未装配 · 预览效果";
-        CharacterHover(heartButton, heart?.skill_name ?? "心法", $"{state}\n版本：{(order > 0 ? "第" + chinese_volume_number(order) + "卷" : "首卷")}\n\n{CardPresentation.Underline(book.get_heart_method_description(Math.Max(1, order), true))}\n\n主修额外效果仅作为主修时生效。");
+        CharacterHover(heartButton, heart?.skill_name ?? "心法", $"{state}\n版本：{(order > 0 ? "第" + chinese_volume_number(order) + "卷" : "首卷")}\n\n{CardPresentation.Underline(book.get_heart_method_description(Math.Max(1, order), isMain))}\n\n主修额外效果仅作为主修时生效。");
         box.AddChild(new HSeparator()); var scroll = CharacterScroll(box); var rows = CharacterBox(scroll); rows.AddThemeConstantOverride("separation", 8);
         Control? matching = null;
         foreach (var chapter in chapters)
         {
-            var known = human.is_gongfa_chapter_learned(book, chapter.get_id()); var route = human.get_sub_gongfa_chapter_route(book, chapter.get_id());
+            var known = human.is_gongfa_chapter_learned(book, chapter.get_id());
+            var hasChemistry = chapter.get_deck_rewrites(isMain).Any(rewrite => rewrite.enabled);
             var line = new PanelContainer { CustomMinimumSize = new Vector2(0, 66) }; line.AddThemeStyleboxOverride("panel", CharacterStyle(known, 8)); rows.AddChild(line);
             var row = new HBoxContainer(); row.AddThemeConstantOverride("separation", 12); line.AddChild(row);
             var name = CharacterButton($"第{chinese_volume_number(chapter.order)}卷 · {chapter.chapter_name}", 22); name.ClipText = true; name.CustomMinimumSize = new Vector2(240, 42); name.Alignment = HorizontalAlignment.Left; name.SizeFlagsHorizontal = SizeFlags.ExpandFill; row.AddChild(name);
             CharacterHover(name, chapter.chapter_name, character_chapter_detail(human, book, chapter));
             var status = CharacterText(known ? "已掌握" : "未掌握", 18, true); status.CustomMinimumSize = new Vector2(68, 0); status.HorizontalAlignment = HorizontalAlignment.Center; row.AddChild(status);
-            foreach (var branch in new[] { (name: "修持", id: "left"), (name: "化法", id: "right"), (name: "习得", id: "learn") })
+            foreach (var branch in new[] { (name: "修持", id: "left"), (name: hasChemistry ? "化法" : "无化法", id: "right"), (name: "习得", id: "learn") })
             {
-                var entry = CharacterButton(branch.name, 20, known && (isMain && branch.id != "learn" || isSub && route == branch.id), 6); entry.CustomMinimumSize = new Vector2(88, 40); row.AddChild(entry);
+                var equipped = isMain || isSub;
+                var statusText = branch.id == "learn" ? (known ? "已掌握" : "未掌握")
+                    : branch.id == "right" && !hasChemistry ? "未设置"
+                    : !known ? "未研读" : equipped ? "已生效" : "装配后生效";
+                var entry = CharacterText($"{branch.name}\n{statusText}", 16, known); entry.CustomMinimumSize = new Vector2(88, 40); entry.HorizontalAlignment = HorizontalAlignment.Center; entry.VerticalAlignment = VerticalAlignment.Center; row.AddChild(entry);
                 var detail = branch.id == "learn" ? character_chapter_learning(human, book, chapter) : gongfa_branch_tooltip(chapter, branch.id == "left", isMain, human);
-                CharacterHover(entry, $"{chapter.chapter_name} · {branch.name}", $"{(known ? "已掌握" : "未掌握 · 效果预览")}\n{(isMain ? "主修两条分支均生效" : isSub ? route == branch.id ? "此分支已激活" : "此分支未激活" : "秘籍未装配")}\n\n{detail}");
-                if (branch.id != "learn")
-                {
-                    entry.Pressed += () => { if (!known || !isSub) return; human.set_sub_gongfa_chapter_route(book, chapter.get_id(), branch.id); refresh_character_gongfa(human); };
-                }
+                var stateText = branch.id == "learn" ? (known ? "已掌握" : "未掌握 · 效果预览")
+                    : branch.id == "right" && !hasChemistry ? "本卷没有配置化法"
+                    : !known ? "未研读 · 效果预览" : equipped ? "修持与已配置化法均已生效" : "装配后生效";
+                CharacterHover(entry, $"{chapter.chapter_name} · {branch.name}", $"{stateText}\n\n{detail}");
             }
             var chapterSkills = chapter.get_learned_skills(true).OfType<ActiveSkillData>()
                 .Concat(chapter.get_deck_rewrites(true).Where(rewrite => rewrite.enabled).Select(rewrite => rewrite.get_result_skill(true)).OfType<ActiveSkillData>()).ToList();
@@ -161,17 +165,16 @@ public partial class InfoPanel
                 && (_manualKeyword.Length == 0 || chapterSkills.Any(skill => skill.tags.Contains(_manualKeyword)))) matching ??= line;
         }
         if (matching is not null) { var target = matching; scroll.CallDeferred(ScrollContainer.MethodName.EnsureControlVisible, target); }
-        box.AddChild(CharacterText("悬停查看完整效果；辅修已学卷章可点击修持／化法切换分支。", 17, true));
+        box.AddChild(CharacterText("悬停查看完整效果；已掌握卷章的修持与已配置化法同时生效。", 17, true));
     }
 
     private static string character_chapter_learning(Character human, GongfaResource book, GongfaChapterConfig chapter)
     {
         var known = human.is_gongfa_chapter_learned(book, chapter.get_id());
-        var skills = chapter.learned_active_skills.OfType<ActiveSkillData>().Select(skill => $"[b]{skill.skill_name}[/b]\n{CardPresentation.Underline(CardPresentation.Face(skill, human))}")
-            .Concat(chapter.main_learned_active_skills.OfType<ActiveSkillData>().Select(skill => $"[b]{skill.skill_name} · 主修限定[/b]\n{CardPresentation.Underline(CardPresentation.Face(skill, human))}"));
+        var skills = chapter.get_learned_skills(true).OfType<ActiveSkillData>().Select(skill => $"[b]{skill.skill_name}[/b]\n{CardPresentation.Underline(CardPresentation.Face(skill, human))}");
         var permanent = chapter.learn_permanent_bonuses.Keys.Select(key => $"{battle_attribute_name(key.AsString())} +{chapter.learn_permanent_bonuses[key]}")
             .Concat(chapter.learn_permanent_multipliers.Keys.Select(key => $"{battle_attribute_name(key.AsString())} +{chapter.learn_permanent_multipliers[key].AsSingle() * 100:0.#}%"));
-        return $"{(known ? "已掌握" : "学习后可掌握")}\n\n[b]永久所得[/b]\n{(permanent.Any() ? string.Join("\n", permanent) : "无永久属性奖励")}\n\n[b]战斗技能[/b]\n{(skills.Any() ? string.Join("\n\n", skills) : "无新增主动技能")}\n\n{gongfa_chapter_world_spell_details(chapter, known)}\n\n[b]本卷心法版本[/b]\n{CardPresentation.Underline(book.get_heart_method_description(chapter.order, true))}";
+        return $"{(known ? "已掌握" : "学习后可掌握")}\n\n[b]永久所得[/b]\n{(permanent.Any() ? string.Join("\n", permanent) : "无永久属性奖励")}\n\n[b]战斗技能[/b]\n{(skills.Any() ? string.Join("\n\n", skills) : "无新增主动技能")}\n\n{gongfa_chapter_world_spell_details(chapter, known)}\n\n[b]本卷心法版本[/b]\n{CardPresentation.Underline(book.get_heart_method_description(chapter.order, book == human.main_gongfa))}";
     }
 
     private static string character_chapter_detail(Character human, GongfaResource book, GongfaChapterConfig chapter)

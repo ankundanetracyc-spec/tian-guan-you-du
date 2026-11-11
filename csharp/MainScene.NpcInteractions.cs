@@ -24,6 +24,7 @@ public partial class MainScene
         new BaishiTownNpcInteractionComponent(),
         new SparNpcInteractionComponent(),
         new AttackNpcInteractionComponent(),
+        new ProbeNpcInteractionComponent(),
         new PurchaseNpcInteractionComponent(),
         new YuxuCaseNpcInteractionComponent()
     ];
@@ -77,6 +78,7 @@ public partial class MainScene
             foreach (var action in baishi_actor_actions(npc)) yield return action;
             foreach (var action in new SparNpcInteractionComponent().GetActions(this, npc)) yield return action;
             foreach (var action in new AttackNpcInteractionComponent().GetActions(this, npc)) yield return action;
+            foreach (var action in new ProbeNpcInteractionComponent().GetActions(this, npc)) yield return action;
             yield break;
         }
         var contactFailure = social_contact_failure_reason(npc);

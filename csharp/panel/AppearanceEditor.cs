@@ -193,7 +193,7 @@ public partial class AppearanceEditor : Control
             "skin" when catalog?.allows_color_tint(_gender, "skin") == true => new List<int> { 0, 1, 2, 3, 4 },
             "hair_color" when catalog?.allows_color_tint(_gender, "hair") == true => new List<int> { 0, 1, 2, 3, 4 },
             "skin" or "hair_color" => new List<int>(),
-            _ => available_variants(part),
+            _ => available_variants(part, includeManualBeard: true),
         };
         if (values.Count == 0) return;
         var rowData = new ChoiceRow { Key = key, Title = title, Field = field, Part = part, Values = values };
@@ -207,7 +207,7 @@ public partial class AppearanceEditor : Control
         _choiceRows[key] = rowData;
     }
 
-    private List<int> available_variants(string part)
+    private List<int> available_variants(string part, bool includeManualBeard = false)
     {
         var result = new List<int>();
         if (GetNodeOrNull<AppearanceModCatalog>("/root/AppearanceModCatalog") is not { } catalog) return result;
@@ -217,7 +217,7 @@ public partial class AppearanceEditor : Control
             if (index >= 0 && !result.Contains(index)) result.Add(index);
         }
         result.Sort();
-        if (part == "beard" && _age < 35) result.RemoveAll(value => value != 0);
+        if (part == "beard" && !includeManualBeard && _age < 35) result.RemoveAll(value => value != 0);
         return result;
     }
 
@@ -244,9 +244,20 @@ public partial class AppearanceEditor : Control
 
     private int normalize(int current, string part, int seed)
     {
-        var values = available_variants(part);
+        var values = available_variants(part, includeManualBeard: true);
         if (values.Count == 0) return Math.Max(0, current);
         if (values.Contains(current)) return current;
+        if ((part == "beard" || part == "hair_front" || part == "hair_back") && current >= 0 && GetNodeOrNull<AppearanceModCatalog>("/root/AppearanceModCatalog") is { } catalog)
+            foreach (Godot.Collections.Dictionary entry in catalog.get_parts(_gender, part))
+            {
+                var aliases = entry.GetValueOrDefault("variant_aliases", new Godot.Collections.Dictionary());
+                if (aliases.VariantType != Variant.Type.Dictionary) continue;
+                var mapping = aliases.AsGodotDictionary();
+                if (mapping.TryGetValue(current.ToString(), out var retained) && values.Contains(retained.AsInt32()))
+                    return retained.AsInt32();
+            }
+        values = available_variants(part);
+        if (values.Count == 0) return Math.Max(0, current);
         return values[stable_pick(seed, part, values.Count)];
     }
 
@@ -295,9 +306,10 @@ public partial class AppearanceEditor : Control
         if (_draftData is null) return;
         foreach (var row in _choiceRows.Values)
         {
-            if (row.Values.Count == 0) continue;
+            var values = row.Part == "beard" ? available_variants(row.Part) : row.Values;
+            if (values.Count == 0) continue;
             var rng = new RandomNumberGenerator { Seed = GD.Randi() };
-            set_field(_draftData, row.Field, row.Values[rng.RandiRange(0, row.Values.Count - 1)]);
+            set_field(_draftData, row.Field, values[rng.RandiRange(0, values.Count - 1)]);
             if (row.Key == "eye") _draftData.appearance_eyebrow_style = _draftData.appearance_eye_style;
         }
         refresh_controls(); refresh_previews();

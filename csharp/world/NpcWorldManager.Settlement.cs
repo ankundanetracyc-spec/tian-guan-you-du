@@ -14,6 +14,7 @@ public partial class NpcWorldManager
     private Dictionary<string, WorldNpcData[]>? _monthlyResidents;
     private readonly Dictionary<(Vector2I From, Vector2I To), Vector2I[]> _settlementPaths = new();
     private readonly Dictionary<(Vector2I Cell, float Speed), double> _settlementTravelHours = new();
+    private readonly Dictionary<(Vector2I From, Vector2I To, float Speed), double> _settlementEdgeTravelHours = new();
 
     public void begin_east_woods_route_signal_batch()
     {
@@ -44,7 +45,7 @@ public partial class NpcWorldManager
     {
         _settlementBatch = true;
         _settlementChanged = false;
-        _settlementPaths.Clear(); _settlementTravelHours.Clear();
+        _settlementPaths.Clear(); _settlementTravelHours.Clear(); _settlementEdgeTravelHours.Clear();
     }
 
     private void notify_settlement_changed()
@@ -58,7 +59,7 @@ public partial class NpcWorldManager
         var changed = _settlementChanged;
         _settlementBatch = _settlementChanged = false;
         _monthlyResidents = null;
-        _settlementPaths.Clear(); _settlementTravelHours.Clear();
+        _settlementPaths.Clear(); _settlementTravelHours.Clear(); _settlementEdgeTravelHours.Clear();
         if (changed) EmitSignal(SignalName.world_npcs_changed);
     }
 

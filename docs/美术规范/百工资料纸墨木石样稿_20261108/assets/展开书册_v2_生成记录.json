@@ -1,0 +1,81 @@
+{
+  "date": "2026-11-08",
+  "asset": "展开书册_v2.png",
+  "purpose": "百工资料独立样稿的无字展开书册底图；尚未接入正式游戏",
+  "tool": "image_gen__imagegen",
+  "mode": "内置图像生成；参考现有材质生成一次，并仅用 imagegen 定向清理透明外缘一次",
+  "transparent_background": true,
+  "reference": {
+    "path": "E:/stacklands/textures/ui/yuxu_library_20261107/library_frame.png",
+    "sha256": "5d311b0aeb04d8de57fddbc6aef492e7e11ffbadba3ce558fe2f67579a4da7ce",
+    "use": "仅参考浅纸、灰蓝布封皮与哑光水彩色调，不继承书架或面板构图"
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "intent": "按材质参考生成真正打开的无字双页书册",
+      "prompt": "Use case: stylized-concept.\nAsset type: a production game UI background asset, a SINGLE genuinely open antique Chinese craft book with COMPLETELY BLANK pages, isolated on real transparent alpha.\n\nInput reference: the attached library_frame.png is ONLY a reference for the existing game's warm pale paper, muted grey-blue cloth, matte hand-painted watercolor texture and restrained grey-brown outlines. DO NOT copy its bookshelf, wood frame, architecture, rectangular UI panels, mountain painting or composition. Recompose the image as a physical OPEN BOOK.\n\nComposition: landscape canvas about 1.8:1, ideally 1800 by 1000 pixels. Strictly directly overhead, near orthographic view, no diagonal view, no isometric perspective, no foreshortening. The book is centered, opened flat horizontally. The gutter/spine is exactly at the horizontal midpoint x=50%, running vertically. Left and right facing pages have the SAME WIDTH and SAME HEIGHT and their tops and bottoms align. Both pages should occupy most of the canvas, with only a small transparent margin around the complete silhouette. Reserve an uninterrupted clean reading area on EACH page about 40% of the full image width. Keep these main page surfaces very calm and almost flat so real UI text can be placed later.\n\nPhysical construction: TWO continuous warm ivory handmade-paper pages joined at the central book gutter, not two separate rectangles or two framed panels. Pages bend very gently up from the center seam and slightly curl at the outer edges, with a subtly curved page outline, believable gently wavy top and bottom paper edges. Several thin stacked page edges and the thickness of the book block are clearly visible at outer edges and the bottom. A thin muted grey-blue fabric cover extends just a little beyond the paper underneath, with an extremely fine grey-brown cloth-cover edge. A quiet real contact shadow directly beneath the book, small and soft, fading to transparent. The center gutter is narrow and softly shaded, not a huge dark division. Very subtle handmade paper fibers, matte pale cream paper, no stains in reading areas.\n\nStyle: match the reference's restrained hand-painted watercolor and ink game-art finish, warm ivory paper, muted grey-blue cloth, a touch of grey-brown edge line. Flat diffuse ambient illumination. Not photography, not a 3D render. Make it visibly a tactile, opened blank book whose curved paper and layered thickness distinguish it from an ordinary UI frame.\n\nText: NONE whatsoever. Absolutely no letters, numbers, Chinese characters, glyphs, icons, symbols, handwriting, drawings, borders printed on pages, decorative corner brackets, mountain artwork, ruled lines, grids, tabs, ribbons, bookmarks, widgets, controls, buttons, separate panels or title plaques. No shelf or surrounding table. No gold edging, no glossy varnish, no glow, no fantasy effects, no neon. No one-narrow-one-wide pages; equal facing pages is essential. The transparent background must be clean true alpha, never a grey rectangle, white backdrop or painted checkerboard.",
+      "referenced_image_paths": [
+        "E:/stacklands/textures/ui/yuxu_library_20261107/library_frame.png"
+      ],
+      "generatedPath": "E:/tmp/CodexData/generated_images/01a1ba6b-72e7-7e20-9155-f2c64a266dba/exec-a4ebe884-56cb-4d5b-8a0b-0ff1a842de5b.png",
+      "sha256": "59d889fd9993819aa60c28575ef772712371fd62e6280cd45ec69590f53b1caf",
+      "selected": false
+    },
+    {
+      "round": 2,
+      "intent": "保留书册结构和材质，只定向清理透明边缘",
+      "prompt": "Use case: precise-object-edit. Edit the attached OPEN BOOK image only to clean its transparency.\nKeep its already correct antique open-book design, equal-width and equal-height left and right blank pages, perfectly central vertical gutter, directly overhead view, warm ivory paper, very subtle paper fibers, layered page edges, thin muted grey-blue cloth cover, restrained hand-painted game-art finish and approximately 1.8:1 landscape canvas.\nThe only needed change is clean production alpha: remove every stray white, red and yellow speck and fringe outside the real book silhouette, especially above the top page edges and along the left/right edges. Use true zero-alpha empty background everywhere outside the book and its very short natural grey-brown contact shadow. No colored fringes. Keep page surfaces and the book itself fully opaque; transparency is only for the background and the short, neutral soft contact shadow. Keep a small clean transparent margin around all sides, never clip the book.\nDo not add anything. All facing pages stay COMPLETELY BLANK with no letters, symbols, illustrations, frames, tab shapes, controls, decorations, icons, grids or ruled lines. Do not turn the book into rectangles or panels. Do not alter page proportions, center gutter alignment, blank reading areas, paper color, cloth color, page curvature or thickness. No gold, no glow, no photograph or 3D. Output one isolated finished open-book asset with clean alpha.",
+      "referenced_image_paths": [
+        "E:/tmp/CodexData/generated_images/01a1ba6b-72e7-7e20-9155-f2c64a266dba/exec-a4ebe884-56cb-4d5b-8a0b-0ff1a842de5b.png"
+      ],
+      "generatedPath": "E:/tmp/CodexData/generated_images/01a1ba6b-72e7-7e20-9155-f2c64a266dba/exec-299aebef-888d-4120-8bb1-af2c907fd7ec.png",
+      "sha256": "0ee60992910c4bfd213a9fbb4ee3972d8ba4b69ce1cbf08b583664e7d347258c",
+      "selected": true
+    }
+  ],
+  "savedPath": "E:/stacklands/docs/美术规范/百工资料纸墨木石样稿_20261108/assets/展开书册_v2.png",
+  "savedSha256": "0ee60992910c4bfd213a9fbb4ee3972d8ba4b69ce1cbf08b583664e7d347258c",
+  "generatedBytesPreserved": true,
+  "noScriptPixelModification": true,
+  "dimensions": {
+    "width": 1681,
+    "height": 936,
+    "aspectRatio": 1.795940170940171
+  },
+  "readingSafeAreas": {
+    "note": "以下为目视确认后的建议文字区，坐标相对原始PNG左上角，按整图同比例缩放；左右等宽，约各占图宽38%，不覆盖书沟、曲面与纸边",
+    "left": {
+      "x": 135,
+      "y": 105,
+      "width": 640,
+      "height": 695
+    },
+    "right": {
+      "x": 905,
+      "y": 105,
+      "width": 640,
+      "height": 695
+    },
+    "centerGutterApproxX": 840
+  },
+  "inspection": {
+    "visual": "已查看参考图与生成原图，目视左右页近等宽等高、中央书沟、弧形纸边、可辨层叠厚度与薄灰蓝布封皮；无文字、图标、边框、页签或控件",
+    "imageMode": "RGBA",
+    "alphaRange": [
+      0,
+      255
+    ],
+    "fullyTransparentPixels": 106949,
+    "alpha1to3PixelCount": 20236,
+    "highlySaturatedRedPixelsWithAlphaAtLeast8": 0,
+    "highlySaturatedYellowPixelsWithAlphaAtLeast8": 0,
+    "alphaNote": "四角及背景包含真实透明像素；书册外缘仍有接近透明的抗锯齿／软接触影像素，不宣称全图仅二值Alpha。透明清理后低Alpha像素数量减少，未做任何脚本抠图或像素后处理。"
+  },
+  "notChanged": [
+    "任何C#、场景或网页代码",
+    "角色与静室样稿",
+    "既有library_frame.png及其他旧素材",
+    "其他策划或审计文档"
+  ]
+}

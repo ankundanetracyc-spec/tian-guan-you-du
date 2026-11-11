@@ -198,7 +198,8 @@ public partial class StartMenu
         }
 
         var combat = AddGroup("CombatAndVfxPreviews", "战斗与特效", true);
-        AddExisting(combat, "BattleTest", "自定义战斗 · 秘籍与队列");
+        AddScene(combat,"CombatBoardTest","新版战斗 · 招式盘试演",CombatBoardTestEntry.ScenePath);
+        AddExisting(combat, "BattleTest", "旧配置 · 自定义战斗");
         AddExisting(combat, "InkVfxTest");
 
         var appearance = AddGroup("AppearancePreviews", "人物与衣装");
@@ -209,6 +210,11 @@ public partial class StartMenu
         var cultivation = AddGroup("CultivationAndCraftingPreviews", "修行与工坊");
         AddExisting(cultivation, "CondensationTest");
         AddExisting(cultivation, "YuanxiPreview");
+        AddEntry(cultivation, "FormationWorkspacePreview", "阵法", () =>
+        {
+            var workspace = new FormationPaperWorkspace { Name = "FormationPaperWorkspace" };
+            GetTree().Root.AddChild(workspace);
+        });
         AddScene(cultivation, "AlchemyPreview", "炼丹配伍", "res://tscn/scene/AlchemyPreviewScene.tscn");
         AddScene(cultivation, "ForgingPreview", "炼器工坊 · 剑类试炼", "res://tscn/scene/ProcessForgingScene.tscn");
 

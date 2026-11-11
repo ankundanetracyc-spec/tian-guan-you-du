@@ -45,19 +45,26 @@ public partial class InfoPanel
         return "通用";
     }
 
-    private string character_skill_detail(Character? human, ActiveSkillData skill) =>
-        $"{battle_skill_category(skill)}\n关键词：{(skill.get_presentation_tags().Count > 0 ? string.Join(" · ", skill.get_presentation_tags()) : "无")}\n体力 {skill.energy_cost}　法力 {skill.mana_cost}\n目标：{gongfa_skill_target(skill)}\n使用次数：{CardPresentation.CombatUseLimitText(skill, current_card, null)}\n{CardPresentation.CombatCooldownText(skill, current_card, null)}\n\n{CardPresentation.Underline(CardPresentation.Face(skill, current_card))}{skill_rewrite_assignment_detail(human, skill)}\n\n来源：{character_skill_source(human, skill)}\n\n规则详解\n{CardPresentation.Underline(CardPresentation.Details(skill, current_card))}";
+    private string character_skill_detail(Character? human, ActiveSkillData skill)
+    {
+        if (skill.has_board_definition())
+        {
+            var basis = ResourceLoader.Exists(skill.get_board_skill_key()) ? ResourceLoader.Load<ActiveSkillData>(skill.get_board_skill_key()) : skill;
+            return CombatBoardPresentation.Skill(basis ?? skill, current_card)
+                + "\n\n来源：" + character_skill_source(human, basis ?? skill);
+        }
+        return $"{battle_skill_category(skill)}\n关键词：{(skill.get_presentation_tags().Count > 0 ? string.Join(" · ", skill.get_presentation_tags()) : "无")}\n体力 {skill.energy_cost}　法力 {skill.mana_cost}\n目标：{gongfa_skill_target(skill)}\n使用次数：{CardPresentation.CombatUseLimitText(skill, current_card, null)}\n{CardPresentation.CombatCooldownText(skill, current_card, null)}\n\n{CardPresentation.Underline(CardPresentation.Face(skill, current_card))}{skill_rewrite_assignment_detail(human, skill)}\n\n来源：{character_skill_source(human, skill)}\n\n规则详解\n{CardPresentation.Underline(CardPresentation.Details(skill, current_card))}";
+    }
 
-    private void build_character_battle(Creature unit)
+    private void build_character_legacy_battle(Creature unit)
     {
         clear_skill_rewrite_drag_state();
         var page = _characterPages[2]; CharacterClear(page); var human = unit as Character;
         _characterSkillList = null; _characterSkillSlots = null; _characterSkillRewritePanel = null;
-        build_skill_library_mode_tabs(page, unit);
-        if (_showSkillNodeNetwork) { build_character_skill_node_network(page, human); return; }
+        _showSkillNodeNetwork = false;
 
         var filters = new HBoxContainer(); filters.AddThemeConstantOverride("separation", 12);
-        CharacterBox(CharacterPanel(page, 0, 58, 1350, 76)).AddChild(filters);
+        CharacterBox(CharacterPanel(page, 0, 0, 1382, 76)).AddChild(filters);
         var search = CharacterSearch("搜索技能名称或效果"); search.Text = _skillQuery; filters.AddChild(search);
         search.TextChanged += value => { _skillQuery = value; refresh_character_battle(unit); };
         var source = CharacterButton("来源：" + (_skillSource.Length == 0 ? "全部" : _skillSource) + " ▾", 20);
@@ -73,25 +80,15 @@ public partial class InfoPanel
         var reset = CharacterButton("重置", 20); reset.CustomMinimumSize = new Vector2(90, 44); filters.AddChild(reset);
         reset.Pressed += () => { _skillQuery = _skillSource = _skillKeyword = ""; _battleFilter = "all"; build_character_battle(unit); };
 
-        var library = CharacterBox(CharacterPanel(page, 0, 142, 330, 653), "已学技能");
-        var categories = new HBoxContainer(); categories.AddThemeConstantOverride("separation", 4); library.AddChild(categories);
-        foreach (var (title, id) in new[] { ("全部", "all"), ("攻伐", "attack"), ("术诀", "technique"), ("守御", "defense") })
-        {
-            var button = CharacterButton(title, 18, _battleFilter == id); button.SizeFlagsHorizontal = SizeFlags.ExpandFill; categories.AddChild(button);
-            button.Pressed += () =>
-            {
-                _battleFilter = id;
-                foreach (var sibling in categories.GetChildren().OfType<Button>()) sibling.AddThemeStyleboxOverride("normal", CharacterButtonStyle(sibling == button));
-                refresh_character_battle(unit);
-            };
-        }
+        var library = CharacterBox(CharacterPanel(page, 0, 92, 330, 703), "已学技能");
+        _battleFilter = "all";
         _characterSkillMatches = CharacterText("", 17, true); library.AddChild(_characterSkillMatches);
         _characterSkillList = CharacterBox(CharacterScroll(library)); _characterSkillList.Name = "CharacterSkillLibrary";
         _characterSkillList.AddThemeConstantOverride("separation", 6);
 
-        var loadout = CharacterBox(CharacterPanel(page, 346, 142, 694, 653));
+        var loadout = CharacterBox(CharacterPanel(page, 346, 92, 726, 703));
         var heading = new HBoxContainer(); loadout.AddChild(heading);
-        var titleLabel = CharacterText("装配技能", 28); titleLabel.SizeFlagsHorizontal = SizeFlags.ExpandFill; heading.AddChild(titleLabel);
+        var titleLabel = CharacterText("兽战装配", 28); titleLabel.SizeFlagsHorizontal = SizeFlags.ExpandFill; heading.AddChild(titleLabel);
         _characterSkillCount = CharacterText("", 23); _characterSkillCount.Name = "CombatSlotCount";
         _characterSkillCount.HorizontalAlignment = HorizontalAlignment.Right; heading.AddChild(_characterSkillCount);
         loadout.AddChild(new HSeparator());
@@ -100,43 +97,28 @@ public partial class InfoPanel
         _characterSkillSlots.AddThemeConstantOverride("h_separation", 10); _characterSkillSlots.AddThemeConstantOverride("v_separation", 14);
         loadout.AddChild(_characterSkillSlots);
         loadout.AddChild(CharacterParagraph("点击空槽后选择技能 · 点击已装配技能卸下 · 拖拽换位", 17, true));
-        loadout.AddChild(CharacterText("心法由主修与辅修提供，不占技能槽。", 17, true));
+        loadout.AddChild(CharacterText("人类对战在战前及每轮结束配置招式盘。", 17, true));
         build_character_skill_rewrites(page, human);
         refresh_character_battle(unit);
     }
 
-    private void build_skill_library_mode_tabs(Control page, Creature unit)
+    private void build_character_proficiency(Character? human)
     {
-        var tabs = new HBoxContainer { MouseFilter = MouseFilterEnum.Stop };
-        tabs.AddThemeConstantOverride("separation", 14);
-        var panel = CharacterPanel(page, 0, 0, 1350, 52, 5);
-        var row = CharacterBox(panel);
-        row.AddChild(tabs);
-        CharacterRect(tabs, 0, 0, 1320, 42);
-        foreach (var (title, mode) in new[] { ("战斗配置", 0), ("造诣图谱", 1) })
-        {
-            var selected = mode == (_showSkillNodeNetwork ? 1 : 0);
-            var button = CharacterButton(title, 21, selected, 7);
-            button.CustomMinimumSize = new Vector2(150, 40);
-            tabs.AddChild(button);
-            button.Pressed += () =>
-            {
-                if (selected) return;
-                _showSkillNodeNetwork = mode == 1;
-                build_character_battle(unit);
-            };
-        }
+        clear_skill_rewrite_drag_state();
+        var page = _characterPages[4]; CharacterClear(page);
+        _showSkillNodeNetwork = true;
+        build_character_skill_node_network(page, human);
     }
 
     private void build_character_skill_node_network(Control page, Character? human)
     {
-        CharacterPanel(page, 0, 58, 1350, 737, 14);
+        CharacterPanel(page, 0, 0, 1382, 795, 14);
         var graph = new Control { Name = "SkillNodeNetwork", ClipContents = true, MouseFilter = MouseFilterEnum.Ignore };
         page.AddChild(graph);
-        CharacterRect(graph, 0, 58, 1350, 737);
+        CharacterRect(graph, 0, 0, 1382, 795); CharacterResponsive(graph, new Vector2(1382, 795));
 
         var viewport = new Control { Name = "SkillNodeViewport", ClipContents = true, MouseFilter = MouseFilterEnum.Stop };
-        graph.AddChild(viewport); CharacterRect(viewport, 0, 0, 900, 737);
+        graph.AddChild(viewport); CharacterRect(viewport, 0, 0, 900, 795);
         var graphCanvas = new Control { Name = "SkillNodeCanvas", MouseFilter = MouseFilterEnum.Ignore };
         viewport.AddChild(graphCanvas); CharacterRect(graphCanvas, 0, 0, 900, 737);
         graphCanvas.Scale = Vector2.One * _skillNodeZoom;
@@ -204,6 +186,7 @@ public partial class InfoPanel
             var markerTexture = GD.Load<Texture2D>(major ? MultiSkillNodeTexturePath : SmallSkillNodeTexturePath);
             var marker = new TextureButton
             {
+                Name = "SkillNode_" + node.node_id,
                 TextureNormal = markerTexture,
                 TextureHover = markerTexture,
                 TexturePressed = markerTexture,
@@ -229,7 +212,7 @@ public partial class InfoPanel
             var state = CharacterText(statusText, 17, true);
             state.HorizontalAlignment = HorizontalAlignment.Center; state.VerticalAlignment = VerticalAlignment.Center; state.MouseFilter = MouseFilterEnum.Ignore;
             marker.AddChild(state); CharacterRect(state, 12, size.Y * .62f, size.X - 24, size.Y * .11f);
-            marker.Pressed += () => { _selectedSkillNodeId = node.node_id; build_character_battle(human); };
+            marker.Pressed += () => { _selectedSkillNodeId = node.node_id; build_character_proficiency(human); };
             var contextualTint = node.face_id == _selectedSkillNodeFaceId || seam ? Colors.White : new Color(1, 1, 1, .58f);
             marker.MouseEntered += () => marker.SelfModulate = skill_node_marker_tint(unlocked, canUnlock, selected, true) * contextualTint;
             marker.MouseExited += () => marker.SelfModulate = skill_node_marker_tint(unlocked, canUnlock, selected) * contextualTint;
@@ -278,36 +261,15 @@ public partial class InfoPanel
             var width = faces.Count <= 4
                 ? Mathf.Min(118f, 350f / Mathf.Max(1, faces.Count))
                 : Mathf.Clamp(76f + faceNodeCount * 3f, 88f, 118f);
-            var tile = new Control { CustomMinimumSize = new Vector2(width, 48), MouseFilter = MouseFilterEnum.Ignore };
-            row.AddChild(tile);
-            var points = i % 2 == 0
-                ? new[] { new Vector2(0, 5), new Vector2(width - 20, 0), new Vector2(width, 11), new Vector2(width - 9, 48), new Vector2(12, 45), new Vector2(0, 34) }
-                : new[] { new Vector2(0, 11), new Vector2(14, 0), new Vector2(width, 5), new Vector2(width, 37), new Vector2(width - 14, 48), new Vector2(0, 42) };
             var active = face.face_id == _selectedSkillNodeFaceId;
-            tile.AddChild(new Polygon2D
-            {
-                Name = "FacetFill",
-                Polygon = points,
-                Color = active ? new Color("b29a67", .30f) : new Color("57534b", .09f)
-            });
-            var outline = new Line2D { Name = "FacetInk", Width = active ? 2.2f : 1.2f, DefaultColor = new Color("514d45", active ? .85f : .43f), Antialiased = true };
-            foreach (var point in points) outline.AddPoint(point);
-            outline.AddPoint(points[0]); tile.AddChild(outline);
             var button = CharacterButton(face.face_name, 17, active, 0);
-            button.AddThemeStyleboxOverride("normal", new StyleBoxEmpty());
-            button.AddThemeStyleboxOverride("hover", new StyleBoxEmpty());
-            button.AddThemeStyleboxOverride("pressed", new StyleBoxEmpty());
-            button.AddThemeStyleboxOverride("hover_pressed", new StyleBoxEmpty());
-            button.AddThemeStyleboxOverride("focus", new StyleBoxEmpty());
-            button.AddThemeStyleboxOverride("disabled", new StyleBoxEmpty());
-            button.AddThemeColorOverride("font_color", new Color("3d392f"));
-            button.AddThemeColorOverride("font_hover_color", new Color("795f34"));
-            tile.AddChild(button); button.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+            button.Name = "SkillNodeFace_" + face.face_id; button.CustomMinimumSize = new Vector2(width, 48);
+            row.AddChild(button);
             button.Pressed += () =>
             {
                 _selectedSkillNodeFaceId = face.face_id;
                 _selectedSkillNodeId = nodes.FirstOrDefault(node => node.face_id == face.face_id)?.node_id ?? "";
-                build_character_battle(human);
+                build_character_proficiency(human);
             };
         }
     }
@@ -325,7 +287,7 @@ public partial class InfoPanel
     private void build_skill_node_empty_details(Control graph, string faceId, IReadOnlyList<SkillNodeFaceConfig> faces)
     {
         var faceName = faces.FirstOrDefault(face => face.face_id == faceId)?.face_name ?? "当前脉面";
-        var frame = CharacterPanel(graph, 924, 58, 410, 647, 16);
+        var frame = CharacterPanel(graph, 924, 58, 410, 705, 16);
         var column = CharacterBox(frame); column.AddThemeConstantOverride("separation", 8);
         column.AddChild(CharacterText(faceName, 25));
         column.AddChild(new HSeparator());
@@ -338,16 +300,16 @@ public partial class InfoPanel
         _skillNodeZoomCanvas = canvas;
         var controls = new HBoxContainer { Name = "SkillNodeZoomControls", MouseFilter = MouseFilterEnum.Stop };
         controls.AddThemeConstantOverride("separation", 6);
-        graph.AddChild(controls); CharacterRect(controls, 20, 683, 245, 40);
-        var zoomOut = CharacterButton("−", 22); zoomOut.CustomMinimumSize = new Vector2(42, 38); controls.AddChild(zoomOut);
+        graph.AddChild(controls); CharacterRect(controls, 20, 741, 245, 40);
+        var zoomOut = CharacterButton("−", 22); zoomOut.Name = "SkillNodeZoomOut"; zoomOut.CustomMinimumSize = new Vector2(42, 38); controls.AddChild(zoomOut);
         var zoomLabel = CharacterText($"{Mathf.RoundToInt(_skillNodeZoom * 100)}%", 17, true);
         zoomLabel.CustomMinimumSize = new Vector2(62, 38); zoomLabel.HorizontalAlignment = HorizontalAlignment.Center;
         zoomLabel.VerticalAlignment = VerticalAlignment.Center;
         zoomLabel.TooltipText = "滚轮缩放；按住鼠标中键上下拖动缩放";
         _skillNodeZoomLabel = zoomLabel;
         controls.AddChild(zoomLabel);
-        var zoomIn = CharacterButton("＋", 22); zoomIn.CustomMinimumSize = new Vector2(42, 38); controls.AddChild(zoomIn);
-        var reset = CharacterButton("复位", 16); reset.CustomMinimumSize = new Vector2(64, 38); controls.AddChild(reset);
+        var zoomIn = CharacterButton("＋", 22); zoomIn.Name = "SkillNodeZoomIn"; zoomIn.CustomMinimumSize = new Vector2(42, 38); controls.AddChild(zoomIn);
+        var reset = CharacterButton("复位", 16); reset.Name = "SkillNodeZoomReset"; reset.CustomMinimumSize = new Vector2(64, 38); controls.AddChild(reset);
         zoomOut.Pressed += () => set_skill_node_zoom(canvas, viewport, zoomLabel, _skillNodeZoom / (1 + SkillNodeZoomStep), viewport.Size * .5f);
         zoomIn.Pressed += () => set_skill_node_zoom(canvas, viewport, zoomLabel, _skillNodeZoom * (1 + SkillNodeZoomStep), viewport.Size * .5f);
         reset.Pressed += () => set_skill_node_zoom(canvas, viewport, zoomLabel, 1f, viewport.Size * .5f);
@@ -449,7 +411,7 @@ public partial class InfoPanel
             ? "交界节点 · " + string.Join(" × ", faceNames)
             : (major ? "多前置节点" : node.prerequisite_node_ids.Count == 0 ? "初始根节点" : "单前置节点")
                 + (faceNames.Length == 1 ? " · " + faceNames[0] : "");
-        var frame = CharacterPanel(graph, 924, 58, 410, 647, 16);
+        var frame = CharacterPanel(graph, 924, 58, 410, 705, 16);
         var column = CharacterBox(frame); column.AddThemeConstantOverride("separation", 8);
         column.AddChild(CharacterText("参悟详情", 25));
         column.AddChild(new HSeparator());
@@ -525,8 +487,9 @@ public partial class InfoPanel
             : canUnlock ? "条件已齐，可以直接参悟；不消耗修习点。" : reason, 17, true));
 
         var learn = CharacterButton(unlocked ? "已参悟" : "参悟此节点", 19, unlocked, 7);
+        learn.Name = "SkillNodeLearn";
         learn.CustomMinimumSize = new Vector2(0, 42); learn.Disabled = unlocked || !canUnlock; column.AddChild(learn);
-        learn.Pressed += () => { if (human.unlock_skill_node(node.node_id)) build_character_battle(human); };
+        learn.Pressed += () => { if (human.unlock_skill_node(node.node_id)) build_character_proficiency(human); };
     }
 
     private static string skill_node_attribute_name(string id) => id switch
@@ -542,6 +505,8 @@ public partial class InfoPanel
 
     private void refresh_character_battle(Creature unit)
     {
+        if (_combatBoardPage is not null && GodotObject.IsInstanceValid(_combatBoardPage) && _combatBoardPage.Actor == unit)
+        { _combatBoardPage.Refresh(); return; }
         if (_showSkillNodeNetwork || _characterSkillList is null || _characterSkillSlots is null) return;
         hide_tooltip(); var human = unit as Character;
         CharacterClear(_characterSkillList); CharacterClear(_characterSkillSlots);

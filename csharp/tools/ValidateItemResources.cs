@@ -13,7 +13,8 @@ public partial class ValidateItemResources : Node
             {
                 if (!file.EndsWith(".tres")) continue; var path = directory.PathJoin(file); var item = ResourceLoader.Load<ItemData>(path); if (item is null) { failures.Add($"无法作为 ItemData 加载：{path}"); continue; }
                 checkedCount++; foreach (var error in item.validate_definition()) failures.Add($"{path}：{error}");
-                if (item is EquipmentData && (item.can_stack || item.max_stack != 1)) failures.Add($"{path}：装备必须不可堆叠且每件独占一格");
+                if (item.storage_volume < 1) failures.Add($"{path}：必须明确配置正整数收纳体积");
+                if (item is EquipmentData && (item.can_stack || item.max_stack != 1)) failures.Add($"{path}：装备必须不可堆叠且每件独立保存");
                 if (item.item_category == "材料" && !item.can_stack) failures.Add($"{path}：材料必须可堆叠");
                 if (!ids.Add(item.definition_id.ToString())) failures.Add($"重复物品ID：{item.definition_id}");
             }

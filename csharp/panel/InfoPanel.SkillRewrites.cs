@@ -29,7 +29,7 @@ public partial class InfoPanel
 
     private void build_character_skill_rewrites(Control page, Character? human)
     {
-        _characterSkillRewritePanel = CharacterBox(CharacterPanel(page, 1056, 142, 294, 653));
+        _characterSkillRewritePanel = CharacterBox(CharacterPanel(page, 1088, 92, 294, 703));
         _characterSkillRewritePanel.AddThemeConstantOverride("separation", 6);
         _skillRewriteHoldTimer ??= new Godot.Timer { Name = "SkillRewriteLongPress", OneShot = true, WaitTime = SkillRewriteLongPressSeconds };
         if (_skillRewriteHoldTimer.GetParent() is null)
@@ -79,7 +79,7 @@ public partial class InfoPanel
         if (_characterSkillRewritePanel is null || !GodotObject.IsInstanceValid(_characterSkillRewritePanel)) return;
         var detail = _characterSkillRewritePanel;
         CharacterClear(detail);
-        detail.AddChild(CharacterText("化法", 27));
+        detail.AddChild(CharacterText("化法来源", 27));
         if (human is null) { detail.AddChild(CharacterParagraph("暂无可配置的人物。", 18, true)); return; }
         if (_skillRewriteInputHuman != human || _skillRewriteUiStates.Count == 0 && _skillRewriteUiChoices.Count == 0)
             prepare_skill_rewrite_ui_state(human);
@@ -308,9 +308,7 @@ public partial class InfoPanel
             var dragging = candidateSlots is not null;
             var eligible = candidateSlots?.Contains(i) == true;
             var selected = i == _characterDropTarget;
-            slot.AddThemeStyleboxOverride("normal", CharacterButtonStyle(selected || eligible && dragging, 8, eligible && dragging));
-            foreach (var visualState in new[] { "hover", "pressed", "hover_pressed", "focus" })
-                slot.AddThemeStyleboxOverride(visualState, CharacterButtonStyle(selected || eligible && dragging, 8, eligible && dragging));
+            PaperButtonFeedback.Apply(slot, fontSize: slot.GetThemeFontSize("font_size"), selected: selected || eligible && dragging);
         }
         apply_skill_rewrite_drag_slot_tints();
     }

@@ -48,11 +48,18 @@ public partial class AlchemySlotBrewPreviewScene : Control
     private readonly Control[] _assistantSeals = new Control[7];
     private readonly Label[] _doseLabels = new Label[8];
     private Label _spiritHeaderValue = null!;
+    private Button _alchemyStudyButton = null!;
     private Label _brewCondition = null!;
     private PanelContainer _hoverCard = null!;
     private Label _hoverText = null!;
     private Control? _hoverTarget;
     private double _hoverDelay;
+    private string _hoverRenderedSource = "";
+    private PlayerInfoText.InformationMode? _hoverRenderedMode;
+    private Rect2 _hoverRenderedAnchor;
+    private Rect2 _hoverRenderedViewport;
+    private Transform2D _hoverRenderedTransform;
+    private Vector2 _hoverDesiredSize;
     private Control _canvas = null!;
     private MaterialChoice? _main;
     private MaterialChoice? _inspectedMaterial;
@@ -92,8 +99,8 @@ public partial class AlchemySlotBrewPreviewScene : Control
             TotalSpirit = OwnerCharacter.max_spirit_perception;
             OtherSpiritOccupation = OwnerCharacter.used_spirit_perception;
         }
-        Theme = QuietRoomStyle.MakeTheme();
-        Theme.SetStylebox("panel", "TooltipPanel", QuietRoomStyle.Paper(1, 16));
+        Theme = CraftingPaperStyle.MakeTheme();
+        Theme.SetStylebox("panel", "TooltipPanel", CraftingPaperStyle.Paper(16, false, .95f));
         Theme.SetColor("font_color", "TooltipLabel", QuietRoomStyle.Ink);
         Theme.SetFontSize("font_size", "TooltipLabel", 19);
         MouseFilter = MouseFilterEnum.Stop;
@@ -149,7 +156,7 @@ public partial class AlchemySlotBrewPreviewScene : Control
             Texture = GD.Load<Texture2D>(BackgroundPath),
             ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
             StretchMode = TextureRect.StretchModeEnum.KeepAspectCovered,
-            Modulate = Colors.White,
+            Modulate = new Color(.94f, .94f, .92f, 1),
             MouseFilter = MouseFilterEnum.Ignore
         };
         AddChild(background);
@@ -158,7 +165,7 @@ public partial class AlchemySlotBrewPreviewScene : Control
 
         BuildFurnaceWatermark();
         BuildHeader();
-        BuildAlchemyPresentationMode();
+        LoadAlchemyPresentationPreference();
         BuildRecipeColumn();
         BuildSlotColumn();
         BuildPreviewColumn();
@@ -177,37 +184,7 @@ public partial class AlchemySlotBrewPreviewScene : Control
         _furnace.SetState(.45, 30);
     }
 
-    private void BuildHeader()
-    {
-        var back = MakeButton("〈 返回", () => { if (OwnerCharacter is not null) ReturnToBaigong(); else GetTree().ChangeSceneToFile("res://tscn/scene/StartMenu.tscn"); }, 19);
-        ClearButtonBorder(back);
-        back.AddThemeColorOverride("font_color", new Color("f0ead8"));
-        back.AddThemeColorOverride("font_hover_color", Colors.White);
-        Place(_canvas, back, new Vector2(26, 29), new Vector2(130, 48));
-
-        var stats = new HBoxContainer { Alignment = BoxContainer.AlignmentMode.Center };
-        stats.AddThemeConstantOverride("separation", 24);
-        Place(_canvas, stats, new Vector2(650, 24), new Vector2(720, 48));
-        stats.AddChild(StatChip("灵识", $"{AlchemySlotSimulation.AvailableSpirit(TotalSpirit, OtherSpiritOccupation)}/{TotalSpirit}", value => _spiritHeaderValue = value));
-        stats.AddChild(StatChip("精力", AlchemySlotSimulation.EnergyCapacity.ToString(), value => _energyHeaderValue = value));
-        var attainmentLabel = QuietRoomStyle.Text(OwnerCharacter is null ? "试演造诣" : "丹道造诣", 18);
-        attainmentLabel.AddThemeColorOverride("font_color", new Color("e4decd"));
-        stats.AddChild(attainmentLabel);
-        _attainmentInput = new SpinBox
-        {
-            Name = "AttainmentInput", MinValue = 0, MaxValue = 1196,
-            AllowGreater = true, Step = .1, Value = Attainment,
-            CustomMinimumSize = new Vector2(150, 44)
-        };
-        stats.AddChild(_attainmentInput);
-        _attainmentInput.ValueChanged += SetTrialAttainment;
-        if (OwnerCharacter is not null) { _attainmentInput.Editable = false; _attainmentInput.MouseFilter = MouseFilterEnum.Ignore; }
-        var tutorial = MakeButton("教程", () => _tutorialOverlay.Show(), 17);
-        ClearButtonBorder(tutorial);
-        tutorial.AddThemeColorOverride("font_color", new Color("f0ead8"));
-        tutorial.AddThemeColorOverride("font_hover_color", Colors.White);
-        Place(_canvas, tutorial, new Vector2(1577, 26), new Vector2(76, 44));
-    }
+    private void BuildHeader() => BuildPaperHeader();
 
     private void SetTrialAttainment(double value)
     {
@@ -231,40 +208,7 @@ public partial class AlchemySlotBrewPreviewScene : Control
             ShowMessage("试演造诣已调整", $"已清空{cleared}个尚未解锁药位的投料；其余药材保留。");
     }
 
-    private Control StatChip(string name, string value, Action<Label>? onValueCreated = null)
-    {
-        var row = new HBoxContainer { Alignment = BoxContainer.AlignmentMode.Center };
-        row.AddThemeConstantOverride("separation", 6);
-        row.TooltipText = name == "灵识" ? "剩余可支配灵识 / 人物灵识总值\n剩余可支配为人物总值扣除其他事务占用；本炉需求见右侧。" : "";
-        var label = QuietRoomStyle.Text(name, 15);
-        label.AddThemeColorOverride("font_color", new Color("e4decd"));
-        row.AddChild(label);
-        var number = QuietRoomStyle.Text(value, 18);
-        number.AddThemeColorOverride("font_color", new Color("fff9e8"));
-        row.AddChild(number);
-        onValueCreated?.Invoke(number);
-        return row;
-    }
-
-    private void BuildRecipeColumn()
-    {
-        var recipe = MakeButton("", OpenRecipeBook, 20);
-        recipe.Name = "FormulaBookButton";
-        Place(_canvas, recipe, new Vector2(20, 794), new Vector2(186, 100));
-        var row = new HBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
-        row.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        row.OffsetLeft = 8; row.OffsetRight = -8;
-        row.Alignment = BoxContainer.AlignmentMode.Center;
-        recipe.AddChild(row);
-        var icon = IconRect(70);
-        icon.Texture = LoadUiTexture("formula_notebook_v1.png");
-        row.AddChild(icon);
-        var titles = new VBoxContainer { Alignment = BoxContainer.AlignmentMode.Center, MouseFilter = MouseFilterEnum.Ignore };
-        titles.AddChild(QuietRoomStyle.Text("丹方册", 22));
-        titles.AddChild(QuietRoomStyle.Text("样方 · 自拟", 13));
-        row.AddChild(titles);
-        SetHover(recipe, "查看样方，或把当前配伍保存为本地丹方");
-    }
+    private void BuildRecipeColumn() => BuildPaperRecipeButton();
 
     private static AlchemySlotSimulation.SlotRole RoleFor(int slot) => slot switch
     {
@@ -287,136 +231,32 @@ public partial class AlchemySlotBrewPreviewScene : Control
         foreach (var doseBox in _assistantDoseBoxes) { _canvas.AddChild(doseBox); doseBox.Hide(); }
     }
 
-    private void BuildMainSlot(Vector2 position, Vector2 size)
-    {
-        var card = MakeInkSlip();
-        card.Name = "JunHerbCard";
-        Place(_canvas, card, position, size);
-        var body = new VBoxContainer();
-        body.AddThemeConstantOverride("separation", 8);
-        card.AddChild(body);
-        var header = new HBoxContainer(); body.AddChild(header);
-        var title = QuietRoomStyle.Text("君药", 27); title.SizeFlagsHorizontal = SizeFlags.ExpandFill; header.AddChild(title);
-        _mainClearButton = SmallAction("×", () => { _main = null; RefreshPage(); }); header.AddChild(_mainClearButton);
-        _mainPickButton = MakeButton("", () => ShowPicker(-1), 18);
-        _mainPickButton.Name = "PickHerb_0";
-        _mainPickButton.CustomMinimumSize = new Vector2(0, 126);
-        _mainPickButton.SizeFlagsVertical = SizeFlags.ExpandFill;
-        ClearButtonBorder(_mainPickButton); body.AddChild(_mainPickButton);
-        var imageAndName = new VBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
-        _mainPickButton.AddChild(imageAndName); imageAndName.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        _mainIcon = IconRect(84); _mainIcon.SizeFlagsVertical = SizeFlags.ExpandFill; imageAndName.AddChild(_mainIcon);
-        _mainName = QuietRoomStyle.Text("点击选药", 20); _mainName.HorizontalAlignment = HorizontalAlignment.Center; imageAndName.AddChild(_mainName);
-        _mainDoseBox = DoseBox(1); _mainDoseBox.ValueChanged += value => SetDose(-1, value);
-        body.AddChild(DoseStepper(-1));
-    }
+    private void BuildMainSlot(Vector2 position, Vector2 size) => BuildPaperSingleSlot(-1, position, size, "君药");
 
-    private void BuildAssistantSlot(int index, Vector2 position, Vector2 size)
-    {
-        var card = MakeInkSlip(); card.Name = "ChenHerbCard";
-        Place(_canvas, card, position, size);
-        var body = new VBoxContainer(); body.AddThemeConstantOverride("separation", 8); card.AddChild(body);
-        var header = new HBoxContainer(); body.AddChild(header);
-        var title = QuietRoomStyle.Text("臣药", 27); title.SizeFlagsHorizontal = SizeFlags.ExpandFill; header.AddChild(title);
-        _assistantClearButtons[index] = SmallAction("×", () => ClearAssistant(index)); header.AddChild(_assistantClearButtons[index]);
-        _assistantPickButtons[index] = MakeButton("", () => ShowPicker(index), 18);
-        _assistantPickButtons[index].Name = $"PickHerb_{index + 1}";
-        _assistantPickButtons[index].CustomMinimumSize = new Vector2(0, 126);
-        _assistantPickButtons[index].SizeFlagsVertical = SizeFlags.ExpandFill;
-        ClearButtonBorder(_assistantPickButtons[index]); body.AddChild(_assistantPickButtons[index]);
-        var imageAndName = new VBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
-        _assistantPickButtons[index].AddChild(imageAndName); imageAndName.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        _assistantIcons[index] = IconRect(84); _assistantIcons[index].SizeFlagsVertical = SizeFlags.ExpandFill; imageAndName.AddChild(_assistantIcons[index]);
-        _assistantNames[index] = QuietRoomStyle.Text("点击选药", 20); _assistantNames[index].HorizontalAlignment = HorizontalAlignment.Center; imageAndName.AddChild(_assistantNames[index]);
-        _assistantDoseBoxes[index] = DoseBox(1); _assistantDoseBoxes[index].ValueChanged += value => SetDose(index, value);
-        body.AddChild(DoseStepper(index));
-        _assistantRows[index] = card; _assistantSeals[index] = new Control();
-        _canvas.AddChild(_assistantSeals[index]);
-    }
+    private void BuildAssistantSlot(int index, Vector2 position, Vector2 size) => BuildPaperSingleSlot(index, position, size, "臣药");
 
-    private void BuildRoleGroup(string title, int[] slots, Vector2 position)
-    {
-        var card = MakeInkSlip(); card.Name = title == "佐药" ? "ZuoHerbGroup" : "ShiHerbGroup";
-        Place(_canvas, card, position, new Vector2(284, 304));
-        var body = new VBoxContainer(); body.AddThemeConstantOverride("separation", 5); card.AddChild(body);
-        body.AddChild(QuietRoomStyle.Text(title, 26));
-        for (int ordinal = 0; ordinal < slots.Length; ordinal++)
-        {
-            int index = slots[ordinal];
-            var row = new HBoxContainer { Name = $"HerbSlot_{index}", CustomMinimumSize = new Vector2(0, 70) };
-            row.AddThemeConstantOverride("separation", 6); body.AddChild(row); _assistantRows[index] = row;
-            var pick = MakeButton("", () => ShowPicker(index), 17); ClearButtonBorder(pick);
-            pick.Name = $"PickHerb_{index + 1}";
-            pick.SizeFlagsHorizontal = SizeFlags.ExpandFill; row.AddChild(pick); _assistantPickButtons[index] = pick;
-            var contents = new HBoxContainer { MouseFilter = MouseFilterEnum.Ignore }; contents.AddThemeConstantOverride("separation", 6);
-            pick.AddChild(contents); contents.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-            _assistantIcons[index] = IconRect(52); contents.AddChild(_assistantIcons[index]);
-            var text = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, Alignment = BoxContainer.AlignmentMode.Center, MouseFilter = MouseFilterEnum.Ignore };
-            contents.AddChild(text);
-            _assistantNames[index] = QuietRoomStyle.Text("＋ 添药", 18); text.AddChild(_assistantNames[index]);
-            _assistantDoseBoxes[index] = DoseBox(1); _assistantDoseBoxes[index].ValueChanged += value => SetDose(index, value);
-            text.AddChild(DoseStepper(index));
-            _assistantClearButtons[index] = SmallAction("×", () => ClearAssistant(index)); row.AddChild(_assistantClearButtons[index]);
-            var seal = MakeButton($"第{(ordinal == 1 ? "二" : "三")}味 · 造诣{UnlockAt(index)}", () => {}, 16);
-            seal.Name = $"LockedSlot_{index}";
-            seal.CustomMinimumSize = new Vector2(0, 42); seal.Disabled = true;
-            seal.AddThemeStyleboxOverride("disabled", new StyleBoxFlat { BgColor = new Color("b3ae9622"), BorderColor = new Color("b3ae9666"), BorderWidthBottom = 1, ContentMarginLeft = 4, ContentMarginRight = 4 });
-            SetHover(seal, $"有效炼丹造诣达到{UnlockAt(index)}后，可在{title}组添入这一味药材。");
-            body.AddChild(seal); _assistantSeals[index] = seal;
-        }
-    }
+    private void BuildRoleGroup(string title, int[] slots, Vector2 position) => BuildPaperRoleGroup(title, slots, position);
 
     private void ClearAssistant(int slot) { _assistants[slot] = null; _assistantDoses[slot] = 1; RefreshPage(); }
 
-    private Control DoseStepper(int slot)
-    {
-        var row = new HBoxContainer { Alignment = BoxContainer.AlignmentMode.Center, MouseFilter = MouseFilterEnum.Pass };
-        row.AddThemeConstantOverride("separation", 7);
-        var less = SmallAction("−", () => SetDose(slot, (slot < 0 ? _mainDose : _assistantDoses[slot]) - 1));
-        less.Name = $"DoseMinus_{slot + 1}"; row.AddChild(less);
-        var label = QuietRoomStyle.Text("1份", 18); label.HorizontalAlignment = HorizontalAlignment.Center;
-        label.CustomMinimumSize = new Vector2(40, 26); row.AddChild(label); _doseLabels[slot + 1] = label;
-        var more = SmallAction("＋", () => SetDose(slot, (slot < 0 ? _mainDose : _assistantDoses[slot]) + 1));
-        more.Name = $"DosePlus_{slot + 1}"; row.AddChild(more);
-        return row;
-    }
+    private Control DoseStepper(int slot) => BuildPaperDoseStepper(slot);
 
     private Button SmallAction(string text, Action action)
     {
-        var button = MakeButton(text, action, 18); button.CustomMinimumSize = new Vector2(28, 28);
-        var normal = new StyleBoxFlat
-        {
-            BgColor = new Color("b9ad8755"), CornerRadiusTopLeft = 14, CornerRadiusTopRight = 14,
-            CornerRadiusBottomLeft = 14, CornerRadiusBottomRight = 14
-        };
-        button.AddThemeStyleboxOverride("normal", normal);
-        button.AddThemeStyleboxOverride("hover", new StyleBoxFlat { BgColor = new Color("b9ad8799"), CornerRadiusTopLeft = 14, CornerRadiusTopRight = 14, CornerRadiusBottomLeft = 14, CornerRadiusBottomRight = 14 });
-        if (text == "×") button.AddThemeColorOverride("font_color", new Color("975b47"));
+        var button = MakeButton(text, action, 20);
+        CraftingPaperStyle.ApplyButton(button, CraftingPaperStyle.ButtonKind.Icon, 20);
         return button;
     }
 
     private static void ClearButtonBorder(Button button)
     {
-        button.AddThemeStyleboxOverride("normal", new StyleBoxEmpty());
-        button.AddThemeStyleboxOverride("hover", QuietRoomStyle.Edge(true, 0));
-        button.AddThemeStyleboxOverride("pressed", QuietRoomStyle.Edge(true, 0));
+        var normal = CraftingPaperStyle.Paper(3, false, .96f, .20f);
+        var hover = CraftingPaperStyle.Paper(3, false, .96f, .55f);
+        button.AddThemeStyleboxOverride("normal", normal); button.AddThemeStyleboxOverride("hover", hover);
+        button.AddThemeStyleboxOverride("pressed", hover); button.AddThemeStyleboxOverride("disabled", normal);
     }
 
-    private void BuildPreviewColumn()
-    {
-        var panel = MakeInkSlip(vertical: true); panel.Name = "BatchRequirements";
-        Place(_canvas, panel, new Vector2(1454, 132), new Vector2(202, 684));
-        var body = new VBoxContainer(); body.AddThemeConstantOverride("separation", 18); panel.AddChild(body);
-        var heading = QuietRoomStyle.Text("本炉用度", 25); heading.HorizontalAlignment = HorizontalAlignment.Center; body.AddChild(heading);
-        body.AddChild(HSeparatorLine());
-        body.AddChild(JournalLine("产量由药材配伍与用量决定，开炉后揭晓。"));
-        _resourceSummary = QuietRoomStyle.Text("", 19); _resourceSummary.Name = "BatchSummary"; _resourceSummary.AddThemeConstantOverride("line_spacing", 12);
-        _resourceSummary.SizeFlagsVertical = SizeFlags.ExpandFill; body.AddChild(_resourceSummary);
-        _brewCondition = QuietRoomStyle.Text("先选择君药", 14); _brewCondition.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-        _brewCondition.AddThemeColorOverride("font_color", new Color("8d5645")); body.AddChild(_brewCondition);
-        _brewButton = MakeButton("炼丹", ShowBrewSimulation, 28); _brewButton.Name = "BrewButton";
-        _brewButton.CustomMinimumSize = new Vector2(0, 62); ApplyInkBrushButtonStyle(_brewButton); body.AddChild(_brewButton);
-    }
+    private void BuildPreviewColumn() => BuildPaperCosts();
 
     private static Label JournalLine(string text)
     {
@@ -468,7 +308,7 @@ public partial class AlchemySlotBrewPreviewScene : Control
         var footer = new HBoxContainer();
         footer.AddThemeConstantOverride("separation", 12);
         layout.AddChild(footer);
-        AddTutorialSection(content, "六、自动分丹、逐颗丹效与正式消耗", "本炉自动形成0—4颗候选丹，数量由君药实际可用药性、剂量及臣位聚性决定，不设置颗数选择。各颗再独立判断是否成丹；想改变数量，需要调整配伍或用量。引只在丹胚之间搬运君药药性，不增加总药性。\n\n每颗独立按关键短板判分，同炉可以出现相邻丹效档；少数丹被引性集中时，其余丹可能降档。同档成品药效一致：薄效20—50、良效51—75、优效76—90、极效91—99、满效100，低于20不成丹。高档需要明显更好的实际配伍，核心药力过量不能抵消阴阳或纯度缺陷。\n\n天工峰丹房使用人物行囊和精力：预检失败零消耗，普通失败或炸炉也消耗投料与精力。合格丹药在领取页确认后入包，可先整理空间或明确放弃。独立试演免扣资源。正式炼制结束按显示耗时推进历法。丹方只保存药材、位置与剂量，不保存指定产量。结果逐颗展示具体丹效分，悬停查看物品信息；同档药效相同；入包后逐件占格，清册汇总同类数量。");
+        AddTutorialSection(content, "六、自动分丹、逐颗丹效与正式消耗", "本炉自动形成0—4颗候选丹，数量由君药实际可用药性、剂量及臣位聚性决定，不设置颗数选择。各颗再独立判断是否成丹；想改变数量，需要调整配伍或用量。引只在丹胚之间搬运君药药性，不增加总药性。\n\n每颗独立按关键短板判分，同炉可以出现相邻丹效档；少数丹被引性集中时，其余丹可能降档。同档成品药效一致：薄效20—50、良效51—75、优效76—90、极效91—99、满效100，低于20不成丹。高档需要明显更好的实际配伍，核心药力过量不能抵消阴阳或纯度缺陷。\n\n天工峰丹房使用人物行囊和精力：预检失败零消耗，普通失败或炸炉也消耗投料与精力。合格丹药在领取页确认后入包，可先整理行囊或明确放弃。独立试演免扣资源。正式炼制结束按显示耗时推进历法。丹方只保存药材、位置与剂量，不保存指定产量。结果逐颗展示具体丹效分，悬停查看物品信息；同档药效相同；入包后按体积计入容量，清册汇总同类数量。");
         var example = MakeButton("载入回春丹样方甲", () => ApplySampleRoute(
             AlchemyRecipeCatalog.GetPill("huichun").SampleRoutes[2], true), 16);
         example.CustomMinimumSize = new Vector2(280, 46);
@@ -628,95 +468,7 @@ public partial class AlchemySlotBrewPreviewScene : Control
         RefreshPage();
     }
 
-    private void BuildPicker()
-    {
-        _pickerOverlay = new Control { Name = "MaterialPickerOverlay", Visible = false, ZIndex = 100 };
-        _pickerOverlay.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        _canvas.AddChild(_pickerOverlay);
-        var veil = new ColorRect { Color = new Color(.10f, .14f, .12f, .56f), MouseFilter = MouseFilterEnum.Stop };
-        veil.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        _pickerOverlay.AddChild(veil);
-        var panel = MakePaperPanel(.99f, 20);
-        panel.Position = new Vector2(230, 112);
-        panel.Size = new Vector2(1212, 716);
-        _pickerOverlay.AddChild(panel);
-        var body = new VBoxContainer();
-        body.AddThemeConstantOverride("separation", 12);
-        panel.AddChild(body);
-        var header = new HBoxContainer();
-        body.AddChild(header);
-        _pickerSearch = new LineEdit { PlaceholderText = "搜索药材名称、五行或功用", SizeFlagsHorizontal = SizeFlags.ExpandFill };
-        _pickerSearch.AddThemeColorOverride("font_color", QuietRoomStyle.Ink);
-        _pickerSearch.AddThemeColorOverride("font_placeholder_color", new Color("788276"));
-        _pickerSearch.TextChanged += _ => RefreshPickerGrid();
-        header.AddChild(_pickerSearch);
-        header.AddChild(MakeButton("关闭", () => _pickerOverlay.Hide(), 16));
-        var filters = new HBoxContainer();
-        filters.AddThemeConstantOverride("separation", 14);
-        body.AddChild(filters);
-        filters.AddChild(QuietRoomStyle.Text("五行", 16));
-        _elementFilter = new OptionButton { Name = "ElementFilter", CustomMinimumSize = new Vector2(136, 36) };
-        foreach (var text in new[] { "全部五行", "金", "木", "水", "火", "土" }) _elementFilter.AddItem(text);
-        filters.AddChild(_elementFilter);
-        filters.AddChild(QuietRoomStyle.Text("阴阳", 16));
-        _polarityFilter = new OptionButton { Name = "PolarityFilter", CustomMinimumSize = new Vector2(136, 36) };
-        foreach (var text in new[] { "全部阴阳", "阴", "和", "阳" }) _polarityFilter.AddItem(text);
-        filters.AddChild(_polarityFilter);
-        _effectiveOnly = new CheckBox { Name = "EffectiveOnlyFilter", Text = "仅显示本位功用有效" };
-        filters.AddChild(_effectiveOnly);
-        var resetFilters = MakeButton("重置筛选", () =>
-        {
-            _elementFilter.Select(0);
-            _polarityFilter.Select(0);
-            _effectiveOnly.ButtonPressed = false;
-            _utilityFilters.Clear();
-            foreach (var button in _utilityFilterButtons)
-            {
-                button.SetPressedNoSignal(false);
-                button.AddThemeStyleboxOverride("normal", QuietRoomStyle.Edge(false, 8));
-            }
-            _pickerSearch.Clear();
-            RefreshPickerGrid();
-        }, 15);
-        resetFilters.Name = "ResetPickerFilters";
-        filters.AddChild(resetFilters);
-        _elementFilter.ItemSelected += _ => RefreshPickerGrid();
-        _polarityFilter.ItemSelected += _ => RefreshPickerGrid();
-        _effectiveOnly.Toggled += _ => RefreshPickerGrid();
-        var utilities = new HBoxContainer();
-        utilities.AddThemeConstantOverride("separation", 8);
-        body.AddChild(utilities);
-        utilities.AddChild(QuietRoomStyle.Text("功用", 16));
-        foreach (var utility in FilterUtilities)
-        {
-            var selectedUtility = utility;
-            var button = MakeButton(utility, () => { }, 16);
-            button.Name = $"UtilityFilter_{utility}";
-            button.ToggleMode = true;
-            button.CustomMinimumSize = new Vector2(44, 36);
-            button.Toggled += pressed =>
-            {
-                if (pressed) _utilityFilters.Add(selectedUtility);
-                else _utilityFilters.Remove(selectedUtility);
-                button.AddThemeStyleboxOverride("normal", QuietRoomStyle.Edge(pressed, 8));
-                RefreshPickerGrid();
-            };
-            _utilityFilterButtons.Add(button);
-            utilities.AddChild(button);
-        }
-        utilities.AddChild(QuietRoomStyle.Text("多选 · 任一匹配", 13));
-        _pickerHint = QuietRoomStyle.Text("", 15);
-        _pickerHint.AddThemeColorOverride("font_color", new Color("71796e"));
-        body.AddChild(_pickerHint);
-        _pickerCount = QuietRoomStyle.Text("", 15);
-        body.AddChild(_pickerCount);
-        var scroll = new ScrollContainer { SizeFlagsVertical = SizeFlags.ExpandFill, HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled };
-        body.AddChild(scroll);
-        _pickerGrid = new GridContainer { Name = "MaterialChoiceGrid", Columns = 4, SizeFlagsHorizontal = SizeFlags.ExpandFill };
-        _pickerGrid.AddThemeConstantOverride("h_separation", 10);
-        _pickerGrid.AddThemeConstantOverride("v_separation", 10);
-        scroll.AddChild(_pickerGrid);
-    }
+    private void BuildPicker() => BuildPaperPicker();
 
     private void ShowPicker(int target)
     {
@@ -753,27 +505,7 @@ public partial class AlchemySlotBrewPreviewScene : Control
         foreach (var material in choices)
         {
             var choice = material;
-            var tile = MakeButton("", () => ChooseMaterial(choice), 15);
-            tile.Name = $"Material_{choice.Name}";
-            tile.CustomMinimumSize = new Vector2(0, 104);
-            tile.SizeFlagsHorizontal = SizeFlags.ExpandFill;
-            ApplyPaperButtonStyle(tile);
-            var row = new HBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
-            row.AddThemeConstantOverride("separation", 8);
-            row.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-            row.OffsetLeft = 12; row.OffsetRight = -12; row.OffsetTop = 10; row.OffsetBottom = -10;
-            tile.AddChild(row);
-            var icon = IconRect(56);
-            icon.Texture = MaterialIcon(choice);
-            row.AddChild(icon);
-            var labels = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, Alignment = BoxContainer.AlignmentMode.Center, MouseFilter = MouseFilterEnum.Ignore };
-            labels.AddThemeConstantOverride("separation", 3);
-            row.AddChild(labels);
-            var name = QuietRoomStyle.Text(choice.Name, 16);
-            name.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-            labels.AddChild(name);
-            SetHover(tile, MaterialTooltip(choice, _pickerTarget));
-            _pickerGrid.AddChild(tile);
+            _pickerGrid.AddChild(BuildPaperMaterialChoice(choice));
         }
     }
 
@@ -829,7 +561,7 @@ public partial class AlchemySlotBrewPreviewScene : Control
             SetHover(_assistantPickButtons[i], material is null ? $"选择{AssistantRoleShort(i)}" : MaterialTooltip(material, i));
             _assistantIcons[i].Texture = material is null ? null : MaterialIcon(material);
             _assistantIcons[i].Visible = material is not null;
-            if (i > 0) _assistantRows[i].CustomMinimumSize = new Vector2(0, material is null ? 36 : 70);
+            // Paper rows keep their measured three-row geometry; only their contents change.
             _assistantClearButtons[i].Visible = material is not null;
         }
         if (_inspectedMaterial is null || (_inspectedSlot < 0 && _main is null) || (_inspectedSlot >= 0 && _assistants[_inspectedSlot] is null))
@@ -838,6 +570,7 @@ public partial class AlchemySlotBrewPreviewScene : Control
             _inspectedMaterial = _inspectedSlot < 0 ? null : _assistants[_inspectedSlot];
             if (_inspectedSlot == -1) _inspectedMaterial = _main;
         }
+        RefreshPaperFields();
         RefreshSummary();
     }
 
@@ -866,9 +599,14 @@ public partial class AlchemySlotBrewPreviewScene : Control
         SetHover(_spiritHeaderValue, $"剩余可支配灵识 / 人物灵识总值\n人物总值 {TotalSpirit}，其他事务占用 {OtherSpiritOccupation}，剩余可支配 {availableSpirit}。\n当前配伍不提前占用灵识；本炉需求在右侧列出，开炼时只能使用剩余额度。");
         _resourceSummary.Modulate = spiritOccupation > availableSpirit ? new Color(.65f, .22f, .16f) : Colors.White;
         _resourceSummary.MouseFilter = MouseFilterEnum.Pass;
-        SetHover(_resourceSummary, "本炉灵识占用明细\n各味保留小数，整炉合计后向上取整。\n\n" +
-            string.Join("\n", AlchemySlotSimulation.SpiritLoads(simulationInputs).Select(line =>
-                $"{line.Material.Name}　{line.Material.Dose}份　占用{line.Occupation:0.00}")));
+        var spiritLoads = AlchemySlotSimulation.SpiritLoads(simulationInputs);
+        var spiritSummary = $"本炉灵识占用：{spiritOccupation}\n\n" + string.Join("\n", spiritLoads.Select(line =>
+            $"{line.Material.Name}：{line.Material.Dose}份，灵识占用{HoverNumber(line.Occupation)}"));
+        if (spiritLoads.Count > 0)
+            spiritSummary += "\n\n计算来源\n" + $"本炉灵识占用：{spiritOccupation} = " +
+                string.Join("＋", spiritLoads.Select(line => HoverNumber(line.Occupation))) + "\n\n" +
+                string.Join("\n\n", spiritLoads.Select(line => SpiritLoadSource(line, line.Material.Name + "灵识占用")));
+        SetHover(_resourceSummary, spiritSummary);
         _resourceSummary.Text = $"药材种类　{count}味\n投料总量　{totalDose}份\n\n本炉灵识占用\n{spiritOccupation}\n\n精力消耗\n{simulation.EnergyNeed}\n\n炼制耗时\n{(count == 0 ? "—" : $"{hours:0.##}时辰")}";
         _brewCondition.Text = simulation.CanSimulate ? "" : simulation.BlockingReason;
         _brewButton.Disabled = !simulation.CanSimulate || _brewing || _brewStage is not null;
@@ -879,6 +617,8 @@ public partial class AlchemySlotBrewPreviewScene : Control
             if (missing is not null) { _brewCondition.Text = $"{missing.Name}数量不足，需要{missing.Dose}份。"; _brewButton.Disabled = true; }
             else if (!OwnerCharacter.can_spend_world_stamina(simulation.EnergyNeed)) { _brewCondition.Text = "当前精力不足。"; _brewButton.Disabled = true; }
         }
+        RefreshAlchemyStudyButton();
+        RefreshPaperCosts(count, totalDose, spiritOccupation, simulation.EnergyNeed, hours);
     }
 
     private List<AlchemySlotSimulation.Input> GetSimulationInputs()
@@ -908,6 +648,7 @@ public partial class AlchemySlotBrewPreviewScene : Control
             if (Math.Abs(_assistantDoseBoxes[slot].Value - value) > .001) _assistantDoseBoxes[slot].SetValueNoSignal(value);
         }
         _doseLabels[slot + 1].Text = $"{value}份";
+        RefreshPaperFields();
         RefreshSummary();
     }
 
@@ -1054,6 +795,7 @@ public partial class AlchemySlotBrewPreviewScene : Control
         _hoverCard.ZIndex = 300; _hoverCard.MouseFilter = MouseFilterEnum.Ignore;
         _hoverText = QuietRoomStyle.Text("", 17);
         _hoverText.AutowrapMode = TextServer.AutowrapMode.WordSmart;
+        _hoverText.SetMeta("player_information_source_bound", true);
         _hoverCard.AddChild(_hoverText); _canvas.AddChild(_hoverCard); _hoverCard.Hide();
     }
 
@@ -1061,15 +803,18 @@ public partial class AlchemySlotBrewPreviewScene : Control
     {
         control.TooltipText = "";
         control.SetMeta("alchemy_hover_text", text);
+        if (_hoverTarget == control && _hoverCard.Visible) RefreshHoverCard();
         if (control.HasMeta("alchemy_hover_bound")) return;
         control.SetMeta("alchemy_hover_bound", true);
-        control.MouseEntered += () => { _hoverTarget = control; _hoverDelay = 0; };
+        control.MouseEntered += () => { HideHover(); _hoverTarget = control; _hoverDelay = 0; };
         control.MouseExited += () => { if (_hoverTarget == control) HideHover(); };
     }
 
     private void HideHover()
     {
         _hoverTarget = null;
+        _hoverRenderedSource = "";
+        _hoverRenderedMode = null;
         _hoverCard?.Hide();
     }
 
@@ -1080,39 +825,85 @@ public partial class AlchemySlotBrewPreviewScene : Control
         if (_hoverTarget is null) return;
         if (!GodotObject.IsInstanceValid(_hoverTarget) || !_hoverTarget.IsVisibleInTree()) { HideHover(); return; }
         _hoverDelay += delta;
-        if (_hoverDelay < .35 || _hoverCard.Visible) return;
-        var text = _hoverTarget.GetMeta("alchemy_hover_text").AsString();
-        var desiredSize = new Vector2(330, Math.Min(420, (text.Split('\n').Length + 2) * 24 + 40));
-        // Shape wrapped text at its final width before PanelContainer computes its minimum height.
-        _hoverText.Size = desiredSize - new Vector2(44, 50);
+        if (_hoverDelay < .35) return;
+        RefreshHoverCard();
+    }
+
+    private void RefreshHoverCard()
+    {
+        if (_hoverTarget is null || !GodotObject.IsInstanceValid(_hoverTarget)) return;
+        var source = _hoverTarget.GetMeta("alchemy_hover_text", "").AsString();
+        var mode = PlayerInfoText.Mode;
+        var anchorTransform = _hoverTarget.GetGlobalTransformWithCanvas();
+        var anchorOrigin = anchorTransform * Vector2.Zero;
+        var bounds = new Rect2(anchorOrigin, anchorTransform * _hoverTarget.Size - anchorOrigin);
+        var viewport = GetViewport().GetVisibleRect();
+        var transform = _canvas.GetGlobalTransformWithCanvas();
+        var inverse = transform.AffineInverse();
+        var topLeft = inverse * viewport.Position;
+        var available = new Rect2(topLeft, inverse * viewport.End - topLeft).Grow(-12);
+        if (_hoverCard.Visible && _hoverRenderedSource == source && _hoverRenderedMode == mode &&
+            _hoverRenderedAnchor == bounds && _hoverRenderedViewport == viewport && _hoverRenderedTransform == transform &&
+            _hoverCard.Size.X <= Math.Min(available.Size.X, _hoverDesiredSize.X) + 1 &&
+            _hoverCard.Size.Y <= Math.Min(available.Size.Y, _hoverDesiredSize.Y) + 1) return;
+
+        var text = PlayerInfoText.LayoutLongParagraphs(PlayerInfoText.Display(source));
+        if (string.IsNullOrWhiteSpace(text)) { _hoverCard.Hide(); return; }
+        var style = _hoverCard.GetThemeStylebox("panel");
+        var padding = new Vector2(style.GetContentMargin(Side.Left) + style.GetContentMargin(Side.Right),
+            style.GetContentMargin(Side.Top) + style.GetContentMargin(Side.Bottom));
         _hoverText.Text = text;
+        _hoverCard.CustomMinimumSize = Vector2.Zero;
+        _hoverText.CustomMinimumSize = Vector2.Zero;
+        var fontSize = 17;
+        _hoverText.AddThemeFontSizeOverride("font_size", fontSize);
+        float MeasureLabel(float cardWidth)
+        {
+            var contentWidth = Math.Max(1, cardWidth - padding.X);
+            _hoverText.CustomMinimumSize = new Vector2(contentWidth, 0);
+            _hoverText.Size = new Vector2(contentWidth, 0);
+            // Force this Label to shape at its final width; the Font estimate does not include all Label layout rules.
+            _hoverText.GetLineCount();
+            _hoverText.UpdateMinimumSize();
+            return Mathf.Ceil(_hoverText.GetMinimumSize().Y + padding.Y + 2);
+        }
+        var width = Math.Min(330f, available.Size.X);
+        var height = MeasureLabel(width);
+        while (height > available.Size.Y && width < available.Size.X)
+        {
+            width = Math.Min(width + 80, available.Size.X);
+            height = MeasureLabel(width);
+        }
+        // Only this hover may reduce its font, after using all available width; no page font or source is changed.
+        while (height > available.Size.Y && fontSize > 14)
+        {
+            _hoverText.AddThemeFontSizeOverride("font_size", --fontSize);
+            height = MeasureLabel(width);
+        }
+        var desiredSize = new Vector2(width, height);
+        // Leave the vertical minimum intrinsic so switching to a shorter mode cannot retain the previous card height.
+        _hoverText.CustomMinimumSize = new Vector2(Math.Max(1, width - padding.X), 0);
+        _hoverText.Size = new Vector2(Math.Max(1, width - padding.X), Math.Max(1, height - padding.Y));
+        _hoverCard.ResetSize();
         _hoverCard.Size = desiredSize;
-        var bounds = _hoverTarget.GetGlobalRect();
-        var inverse = _canvas.GetGlobalTransform().AffineInverse();
         var origin = inverse * bounds.Position;
         var end = inverse * bounds.End;
         float x = end.X + 12;
-        if (x + _hoverCard.Size.X > 1654) x = origin.X - _hoverCard.Size.X - 12;
-        _hoverCard.Position = new Vector2(Math.Clamp(x, 12, Math.Max(12, 1660 - _hoverCard.Size.X)), Math.Clamp(origin.Y, 84, Math.Max(84, 929 - _hoverCard.Size.Y)));
+        if (x + _hoverCard.Size.X > available.End.X) x = origin.X - _hoverCard.Size.X - 12;
+        _hoverCard.Position = new Vector2(Math.Clamp(x, available.Position.X, Math.Max(available.Position.X, available.End.X - _hoverCard.Size.X)),
+            Math.Clamp(origin.Y, available.Position.Y, Math.Max(available.Position.Y, available.End.Y - _hoverCard.Size.Y)));
+        _hoverRenderedSource = source;
+        _hoverRenderedMode = mode;
+        _hoverRenderedAnchor = bounds;
+        _hoverRenderedViewport = viewport;
+        _hoverRenderedTransform = transform;
+        _hoverDesiredSize = desiredSize;
         _hoverCard.Show();
     }
 
     private static Texture2D LoadUiTexture(string filename) => AlchemyPreviewScene.LoadRoomTexture("res://textures/ui/alchemy_20261019/" + filename);
 
-    private static PanelContainer MakeInkSlip(bool vertical = false)
-    {
-        var texture = LoadUiTexture(vertical ? "batch_ledger_v3.png" : "role_portrait_v3.png");
-        var style = new StyleBoxTexture
-        {
-            Texture = texture,
-            TextureMarginLeft = 0, TextureMarginRight = 0,
-            TextureMarginTop = 0, TextureMarginBottom = 0,
-            ContentMarginLeft = vertical ? 20 : 22,
-            ContentMarginRight = vertical ? 20 : 22,
-            ContentMarginTop = 26, ContentMarginBottom = 24
-        };
-        var panel = new PanelContainer(); panel.AddThemeStyleboxOverride("panel", style); return panel;
-    }
+    private static PanelContainer MakeInkSlip(bool vertical = false) => PaperPanel(vertical ? 22 : 18);
 
     private static bool FunctionActsInSlot(int slot, string utility) =>
         slot < 0
@@ -1131,77 +922,35 @@ public partial class AlchemySlotBrewPreviewScene : Control
         var active = material.Craft.utilities.Where(u => u is not null && Active(u.utility_id)).Select(u => u.utility_id).Distinct().ToArray();
         var inactive = material.Craft.utilities.Where(u => u is not null && !Active(u.utility_id)).Select(u => u.utility_id).Distinct().ToArray();
         var load = AlchemySlotSimulation.SpiritLoads([input], core).Single();
-        return $"{material.Name} · {material.Craft.material_grade_name()}\n五行　{material.Craft.element}　阴阳　{PolarityName(material.Craft.polarity)}\n材性　{material.Craft.texture}\n功用　{material.UtilityText}\n\n本位发挥　{(active.Length == 0 ? "无对应功用" : string.Join("、", active))}"
-            + (inactive.Length == 0 ? "" : $"\n本位不发挥　{string.Join("、", inactive)}")
-            + $"\n\n本位{dose}份 · 灵识占用 {load.Occupation:0.00}\n材料负担 {load.BaseLoad:0.00} ＋ 功用负担 {load.FunctionLoad:0.00}\n药位倍率 ×{load.RoleMultiplier:0.0} · 用量倍率 ×{load.DoseMultiplier:0.00}\n各味合计后统一向上取整"
-            + (OwnerCharacter is null ? "" : $"\n行囊存量 {OwnerCharacter.get_inventory_total_count(material.Path)}份");
+        return $"{material.Name} · {material.Craft.material_grade_name()}\n五行：{material.Craft.element}　阴阳：{PolarityName(material.Craft.polarity)}\n材性：{material.Craft.texture}\n功用：{material.UtilityText}\n\n本位发挥：\n{(active.Length == 0 ? "无对应功用" : string.Join("、", active))}"
+            + (inactive.Length == 0 ? "" : $"\n本位不发挥：\n{string.Join("、", inactive)}")
+            + $"\n\n本位用量：{dose}份\n灵识占用：{HoverNumber(load.Occupation)}"
+            + (OwnerCharacter is null ? "" : $"\n行囊存量：{OwnerCharacter.get_inventory_total_count(material.Path)}份")
+            + "\n\n计算来源\n" + SpiritLoadSource(load, "灵识占用");
     }
+
+    private static string HoverNumber(double value) => value.ToString("0.##", System.Globalization.CultureInfo.InvariantCulture);
+
+    private static string SpiritLoadSource(AlchemySlotSimulation.SpiritLoad load, string name) =>
+        $"{name}：{HoverNumber(load.Occupation)} = (材料负担[{HoverNumber(load.BaseLoad)}]＋功用负担[{HoverNumber(load.FunctionLoad)}])" +
+        $"×药位倍率[{HoverNumber(load.RoleMultiplier)}]×用量倍率[{HoverNumber(load.DoseMultiplier)}]";
 
     private static PanelContainer MakePaperPanel(float alpha = .98f, int padding = 18)
     {
         var panel = new PanelContainer();
-        panel.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper(alpha, padding));
+        panel.AddThemeStyleboxOverride("panel", CraftingPaperHeader.Paper(padding, true, alpha: alpha));
         return panel;
     }
 
-    private static void ApplyPaperButtonStyle(Button button)
-    {
-        var normal = new StyleBoxTexture
-        {
-            Texture = LoadUiTexture("role_paper_v2.png"),
-            TextureMarginLeft = 0,
-            TextureMarginRight = 0,
-            TextureMarginTop = 0,
-            TextureMarginBottom = 0,
-            ContentMarginLeft = 16,
-            ContentMarginRight = 16,
-            ContentMarginTop = 8,
-            ContentMarginBottom = 8
-        };
-        var hover = normal.Duplicate() as StyleBoxTexture ?? normal;
-        hover.ModulateColor = new Color(1.02f, 1.02f, .98f, 1);
-        var pressed = normal.Duplicate() as StyleBoxTexture ?? normal;
-        pressed.ModulateColor = new Color(.94f, .95f, .91f, 1);
-        button.AddThemeStyleboxOverride("normal", normal);
-        button.AddThemeStyleboxOverride("hover", hover);
-        button.AddThemeStyleboxOverride("pressed", pressed);
-        button.AddThemeColorOverride("font_color", new Color("344c43"));
-        button.AddThemeColorOverride("font_hover_color", new Color("2e6254"));
-    }
+    private static void ApplyPaperButtonStyle(Button button) => CraftingPaperStyle.ApplyButton(button, CraftingPaperStyle.ButtonKind.Regular, button.GetThemeFontSize("font_size"));
 
-    private static void ApplyInkBrushButtonStyle(Button button)
-    {
-        var normal = new StyleBoxTexture
-        {
-            Texture = GD.Load<Texture2D>("res://textures/ui/alchemy_20261019/brew_brush_v1.png"),
-            ContentMarginLeft = 30,
-            ContentMarginRight = 30,
-            ContentMarginTop = 8,
-            ContentMarginBottom = 8
-        };
-        var hover = normal.Duplicate() as StyleBoxTexture ?? normal;
-        hover.ModulateColor = new Color(1.08f, 1.08f, 1.04f, 1);
-        var pressed = normal.Duplicate() as StyleBoxTexture ?? normal;
-        pressed.ModulateColor = new Color(.90f, .93f, .90f, 1);
-        button.AddThemeStyleboxOverride("normal", normal);
-        button.AddThemeStyleboxOverride("hover", hover);
-        button.AddThemeStyleboxOverride("pressed", pressed);
-        button.AddThemeColorOverride("font_color", new Color("f1eee0"));
-        button.AddThemeColorOverride("font_hover_color", Colors.White);
-        button.AddThemeColorOverride("font_pressed_color", new Color("e1dfd2"));
-        button.AddThemeFontSizeOverride("font_size", 24);
-    }
+    private static void ApplyInkBrushButtonStyle(Button button) => CraftingPaperStyle.ApplyButton(button, CraftingPaperStyle.ButtonKind.Primary, button.GetThemeFontSize("font_size"));
 
     private Button MakeButton(string text, Action action, int size)
     {
         var button = new Button { Text = text, FocusMode = FocusModeEnum.All, MouseDefaultCursorShape = CursorShape.PointingHand };
-        button.AddThemeFontSizeOverride("font_size", size);
-        button.AddThemeColorOverride("font_color", new Color("344c43"));
-        button.AddThemeColorOverride("font_hover_color", new Color("2e6254"));
-        button.AddThemeStyleboxOverride("normal", QuietRoomStyle.Edge(false, 8));
-        button.AddThemeStyleboxOverride("hover", QuietRoomStyle.Edge(true, 8));
-        button.AddThemeStyleboxOverride("pressed", QuietRoomStyle.Edge(true, 8));
-        button.Pressed += () => { HideHover(); action(); };
+        CraftingPaperStyle.ApplyButton(button, CraftingPaperStyle.ButtonKind.Regular, size);
+        button.Pressed += action;
         return button;
     }
 

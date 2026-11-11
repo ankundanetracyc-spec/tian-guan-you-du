@@ -15,7 +15,7 @@ public partial class InfoPanel
 
     private void build_equipment_supplies(Control page, Character? human)
     {
-        var panel = CharacterPanel(page, 788, 600, 562, 195); panel.Name = "EquipmentSuppliesPanel";
+        var panel = CharacterPanel(page, 788, 600, 594, 195); panel.Name = "EquipmentSuppliesPanel";
         var canvas = new Control(); panel.AddChild(canvas);
         var title = CharacterText("随身战备", 26); canvas.AddChild(title); CharacterRect(title, 0, 0, 300, 34);
         var locked = human?.HasMeta("artifact_battle_clone") == true;
@@ -38,9 +38,12 @@ public partial class InfoPanel
                 if (icon is not null) AlchemyPillVisual.Apply(icon, pill.efficacy_tier, pill.pill_id);
                 var count = CharacterText($"×{slot!.count}", 18); count.MouseFilter = MouseFilterEnum.Ignore;
                 tile.AddChild(count); CharacterRect(count, 118, 6, 42, 24); count.HorizontalAlignment = HorizontalAlignment.Right;
-                HoverInfoManager.SetInfo(tile, new(BattleSupplyRules.Name(pill),
-                    pill.EffectText + $"\n\n已编入{slot.count}颗 · 本人使用。\n每次占1行动位，成功生效才消耗。\n服用后丹毒＋{PillToxicityRules.Load(pill.pill_id, pill.efficacy_tier)}。",
-                    CharacterLoadIcon(pill.icon_path), $"九品丹药 · {BattleSupplyRules.QualityNames[pill.efficacy_tier]}"));
+                var info = AlchemyPillVisual.Hover(pill, user: human);
+                HoverInfoManager.SetInfo(tile, info with
+                {
+                    Body = info.Body + $"\n\n已编入{slot.count}颗 · 本人使用。\n每次占1行动位，成功生效才消耗。",
+                    Sections = null,
+                });
             }
             else CharacterHover(tile, $"战备位 {i + 1}", "丹药与消耗型符箓共用三个战备位，每位最多5件同种同档物品。当前支持回春丹、通脉丹，从本人行囊配置。");
             tile.Disabled = human is null; // 战斗中仍可悬停，点击不打开编辑器。
@@ -86,8 +89,7 @@ public partial class InfoPanel
             var choice = options.IndexOf(button.Text);
             if (choice < 0 || choice >= candidates.Count) { button.Disabled = true; continue; }
             var entry = candidates[choice];
-            HoverInfoManager.SetInfo(button, new(BattleSupplyRules.Name(entry.Pill), entry.Pill.EffectText,
-                CharacterLoadIcon(entry.Pill.icon_path), $"九品丹药 · {BattleSupplyRules.QualityNames[entry.Pill.efficacy_tier]}"));
+            HoverInfoManager.SetInfo(button, AlchemyPillVisual.Hover(entry.Pill, user: human));
         }
     }
 }

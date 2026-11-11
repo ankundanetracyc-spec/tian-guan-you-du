@@ -22,7 +22,7 @@ public partial class LiveWheelRoutingSmoke : Node
             GetWindow().ContentScaleSize = new(1920, 1080);
             var saves = GetNode<GameSaveManager>("/root/GameSaveManager");
             var fixture = new PersistentGameSave { year = 5, player_data = new HumanData { entity_name = "滚轮验收", cultivation_realm = "云息三层" }, current_node_id = "yuxu_xianzong_core", world_cell = new(34, 166), npc_population_version = 1,
-                scene_progress = new() { ["qingxi_prologue"] = 3, ["cloud_state_initialized"] = true, ["xuanjian_awakened"] = true } };
+                scene_progress = new() { ["story_free_start"] = true, ["cloud_state_initialized"] = true } };
             for (var i = 0; i < 25; i++) fixture.world_npcs.Add(new WorldNpcData { npc_id = "wheel_" + i, npc_name = "同修" + i, current_node_id = "yuxu_xianzong_core" });
             typeof(GameSaveManager).GetField("_pendingLoad", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(saves, fixture);
             GetTree().CurrentScene = null;

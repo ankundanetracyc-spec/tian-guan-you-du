@@ -1,0 +1,2363 @@
+{
+  "status": "passed",
+  "width": 1920,
+  "height": 1080,
+  "headless": false,
+  "passed": 466,
+  "failed": 0,
+  "failure": "",
+  "materialCatalogCount": 50,
+  "captures": [
+    "talisman_paper_empty_1920.png",
+    "talisman_knowledge_1920.png",
+    "talisman_paper_ready_1920.png",
+    "talisman_paper_run_1920.png",
+    "talisman_paper_run_middle_1920.png",
+    "talisman_paper_run_finish_1920.png",
+    "talisman_paper_result_1920.png",
+    "talisman_ink_ready_1920.png",
+    "talisman_ink_run_1920.png",
+    "talisman_ink_run_middle_1920.png",
+    "talisman_ink_result_1920.png",
+    "talisman_drawing_ready_1920.png",
+    "talisman_drawing_run_1920.png",
+    "talisman_drawing_run_middle_1920.png",
+    "talisman_drawing_run_finish_1920.png",
+    "talisman_drawing_result_1920.png"
+  ],
+  "checks": [
+    {
+      "Name": "\u7528\u6237\u76EE\u5F55\u9694\u79BB\u4E8E\u9879\u76EEoutput",
+      "Passed": true,
+      "Detail": "E:\\stacklands\\output\\talisman-native-20261109\\1920\\profile\\SlayTheSpire2\\"
+    },
+    {
+      "Name": "\u4ECE\u6B63\u5F0F\u6750\u6027\u76EE\u5F55\u81EA\u52A8\u53D1\u73B0\u5168\u90E8\u5408\u6CD5\u539F\u6599",
+      "Passed": true,
+      "Detail": "50"
+    },
+    {
+      "Name": "\u672A\u7ED1\u5B9A\u4EBA\u7269\u53EF\u8BFB\u76EE\u5F55\u4F46\u4E0D\u7F16\u9020\u5E93\u5B58",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u7EB8\u58A8\u8D28\u5730\u8DEF\u7EBF\u5206\u5F00",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u975E\u6CD5\u54C1\u7EA7\u4FDD\u7559\u539F\u503C\u62A5\u9519\uFF0C\u4E0D\u5939\u53D6\u6210\u5408\u6CD5\u54C1\u7EA7",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u4EBA\u7269\u5B9E\u9645\u5165\u6599 \u5C71\u8695\u957F\u4E1D\u00D74",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u4EBA\u7269\u5B9E\u9645\u5165\u6599 \u7075\u6CC9\u9732\u00D74",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u4EBA\u7269\u5B9E\u9645\u5165\u6599 \u6591\u7532\u58F3\u7247\u00D72",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u4EBA\u7269\u5B9E\u9645\u5165\u6599 \u6C89\u4E91\u7389\u5C51\u00D71",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u4EBA\u7269\u5B9E\u9645\u5165\u6599 \u51DD\u9732\u677E\u8102\u00D71",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u7EB8\u6599\u53EF\u5B9E\u9645\u751F\u6210",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u7EB8\u6599\u7ED3\u679C\u5408\u540C\u5408\u6CD5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u7EB8\u6599\u6CA1\u6709\u51ED\u7A7A\u529F\u7528\u6216\u5347\u9AD8\u539F\u6599\u54C1\u7EA7",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u7EB8\u6599\u9010\u4EFD\u6765\u6E90\u53BB\u5411\u5B88\u6052",
+      "Passed": true,
+      "Detail": "1.293554/1.293554"
+    },
+    {
+      "Name": "\u7EB8\u6599\u8F93\u5165\u8D26\u7B49\u4E8E\u5B9E\u9645\u539F\u6599\u5171\u4EAB\u9884\u7B97",
+      "Passed": true,
+      "Detail": "3/3"
+    },
+    {
+      "Name": "\u7EB8\u6599\u5206\u5F20\u540E\u7ED3\u4F59\u7B49\u4E8E\u672C\u6279\u4FDD\u7559\u8D26",
+      "Passed": true,
+      "Detail": "2.587108/2.587108"
+    },
+    {
+      "Name": "\u7EB8\u6599\u4FDD\u7559\u52A0\u5DE5\u635F\u5931\u4E0E\u539F\u6599\u5B8C\u6574\u5B88\u6052",
+      "Passed": true,
+      "Detail": "\u7ED3\u4F592.587108\u002B\u52A0\u5DE50.254\u002B\u635F\u59310.158892=3/3"
+    },
+    {
+      "Name": "\u56FA\u6DB2\u914D\u58A8\u53EF\u5B9E\u9645\u751F\u6210",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u56FA\u6DB2\u914D\u58A8\u7ED3\u679C\u5408\u540C\u5408\u6CD5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u56FA\u6DB2\u914D\u58A8\u6CA1\u6709\u51ED\u7A7A\u529F\u7528\u6216\u5347\u9AD8\u539F\u6599\u54C1\u7EA7",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u56FA\u6DB2\u914D\u58A8\u9010\u4EFD\u6765\u6E90\u53BB\u5411\u5B88\u6052",
+      "Passed": true,
+      "Detail": "0.8240500000000001/0.82405"
+    },
+    {
+      "Name": "\u56FA\u6DB2\u914D\u58A8\u6210\u58A8\u6700\u591A\u56DB\u9879\u771F\u5B9E\u4FDD\u7559\u529F\u7528",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u56FA\u6DB2\u914D\u58A8\u8F93\u5165\u8D26\u7B49\u4E8E\u5B9E\u9645\u539F\u6599\u5171\u4EAB\u9884\u7B97",
+      "Passed": true,
+      "Detail": "5/5"
+    },
+    {
+      "Name": "\u56FA\u6DB2\u914D\u58A8\u5206\u5F20\u540E\u7ED3\u4F59\u7B49\u4E8E\u672C\u6279\u4FDD\u7559\u8D26",
+      "Passed": true,
+      "Detail": "3.2962/3.2962"
+    },
+    {
+      "Name": "\u56FA\u6DB2\u914D\u58A8\u4FDD\u7559\u52A0\u5DE5\u635F\u5931\u4E0E\u539F\u6599\u5B8C\u6574\u5B88\u6052",
+      "Passed": true,
+      "Detail": "\u7ED3\u4F593.2962\u002B\u52A0\u5DE50.371\u002B\u635F\u59311.3328=5/5"
+    },
+    {
+      "Name": "\u7EAF\u6DB2\u58A8\u53EF\u5B9E\u9645\u751F\u6210",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u7EAF\u6DB2\u58A8\u7ED3\u679C\u5408\u540C\u5408\u6CD5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u7EAF\u6DB2\u58A8\u6CA1\u6709\u51ED\u7A7A\u529F\u7528\u6216\u5347\u9AD8\u539F\u6599\u54C1\u7EA7",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u7EAF\u6DB2\u58A8\u9010\u4EFD\u6765\u6E90\u53BB\u5411\u5B88\u6052",
+      "Passed": true,
+      "Detail": "0.88/0.88"
+    },
+    {
+      "Name": "\u7EAF\u6DB2\u58A8\u6210\u58A8\u6700\u591A\u56DB\u9879\u771F\u5B9E\u4FDD\u7559\u529F\u7528",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u7EAF\u6DB2\u58A8\u8F93\u5165\u8D26\u7B49\u4E8E\u5B9E\u9645\u539F\u6599\u5171\u4EAB\u9884\u7B97",
+      "Passed": true,
+      "Detail": "2/2"
+    },
+    {
+      "Name": "\u7EAF\u6DB2\u58A8\u5206\u5F20\u540E\u7ED3\u4F59\u7B49\u4E8E\u672C\u6279\u4FDD\u7559\u8D26",
+      "Passed": true,
+      "Detail": "1.76/1.76"
+    },
+    {
+      "Name": "\u7EAF\u6DB2\u58A8\u4FDD\u7559\u52A0\u5DE5\u635F\u5931\u4E0E\u539F\u6599\u5B8C\u6574\u5B88\u6052",
+      "Passed": true,
+      "Detail": "\u7ED3\u4F591.76\u002B\u52A0\u5DE50.18\u002B\u635F\u59310.06=2/2"
+    },
+    {
+      "Name": "\u7EAF\u80F6\u7F3A\u4E3B\u58A8\u6E90\u62D2\u7EDD\u63D0\u4EA4",
+      "Passed": true,
+      "Detail": "\u7F3A\u5C11\u4E3B\u58A8\u6E90\uFF1B\u80F6\u6599\u4E0D\u80FD\u72EC\u7ACB\u6210\u58A8\u3002"
+    },
+    {
+      "Name": "\u7EAF\u80F6\u7F3A\u4E3B\u58A8\u6E90\u4E0D\u6263\u7269\u54C1\u7CBE\u529B\u3001\u4E0D\u5199\u8BB0\u5F55\u3001\u4E0D\u52A0\u9020\u8BE3",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u56FA\u58A8\u7F3A\u914D\u6DB2\u62D2\u7EDD\u63D0\u4EA4",
+      "Passed": true,
+      "Detail": "\u56FA\u4F53\u58A8\u6E90\u9700\u8981\u914D\u5165\u6DB2\u4F53\u3002"
+    },
+    {
+      "Name": "\u56FA\u58A8\u7F3A\u914D\u6DB2\u4E0D\u6263\u7269\u54C1\u7CBE\u529B\u3001\u4E0D\u5199\u8BB0\u5F55\u3001\u4E0D\u52A0\u9020\u8BE3",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u539F\u6599\u4E0D\u8DB3\u62D2\u7EDD\u63D0\u4EA4",
+      "Passed": true,
+      "Detail": "\u5C71\u8695\u957F\u4E1D\u5B58\u91CF\u4E0D\u8DB3\u3002\n\u4E00\u6279\u6700\u591A\u6295\u516564\u4EFD\u6750\u6599\u3002"
+    },
+    {
+      "Name": "\u539F\u6599\u4E0D\u8DB3\u4E0D\u6263\u7269\u54C1\u7CBE\u529B\u3001\u4E0D\u5199\u8BB0\u5F55\u3001\u4E0D\u52A0\u9020\u8BE3",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u7CBE\u529B\u4E0D\u8DB3\u62D2\u7EDD\u63D0\u4EA4",
+      "Passed": true,
+      "Detail": "\u5F53\u524D\u7CBE\u529B\u4E0D\u8DB3\u3002"
+    },
+    {
+      "Name": "\u7CBE\u529B\u4E0D\u8DB3\u4E0D\u6263\u7269\u54C1\u7CBE\u529B\u3001\u4E0D\u5199\u8BB0\u5F55\u3001\u4E0D\u52A0\u9020\u8BE3",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9020\u8BE3\u5B9E\u9645\u6539\u53D8\u52A0\u5DE5\u7528\u5EA6",
+      "Passed": true,
+      "Detail": "\u4F4E:5/0.586;\u9AD8:4/0.476613"
+    },
+    {
+      "Name": "\u9020\u8BE3\u5F71\u54CD\u5B9E\u9645\u4F59\u8574\u4FDD\u7559",
+      "Passed": true,
+      "Detail": "1.3692039999999999/1.482252"
+    },
+    {
+      "Name": "\u9AD8\u9020\u8BE3\u7EB8\u6599\u53EF\u5B9E\u9645\u751F\u6210",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9AD8\u9020\u8BE3\u7EB8\u6599\u7ED3\u679C\u5408\u540C\u5408\u6CD5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9AD8\u9020\u8BE3\u7EB8\u6599\u6CA1\u6709\u51ED\u7A7A\u529F\u7528\u6216\u5347\u9AD8\u539F\u6599\u54C1\u7EA7",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9AD8\u9020\u8BE3\u7EB8\u6599\u9010\u4EFD\u6765\u6E90\u53BB\u5411\u5B88\u6052",
+      "Passed": true,
+      "Detail": "1.300222/1.300222"
+    },
+    {
+      "Name": "\u9AD8\u9020\u8BE3\u7EB8\u6599\u8F93\u5165\u8D26\u7B49\u4E8E\u5B9E\u9645\u539F\u6599\u5171\u4EAB\u9884\u7B97",
+      "Passed": true,
+      "Detail": "3/3"
+    },
+    {
+      "Name": "\u9AD8\u9020\u8BE3\u7EB8\u6599\u5206\u5F20\u540E\u7ED3\u4F59\u7B49\u4E8E\u672C\u6279\u4FDD\u7559\u8D26",
+      "Passed": true,
+      "Detail": "2.600444/2.600444"
+    },
+    {
+      "Name": "\u9AD8\u9020\u8BE3\u7EB8\u6599\u4FDD\u7559\u52A0\u5DE5\u635F\u5931\u4E0E\u539F\u6599\u5B8C\u6574\u5B88\u6052",
+      "Passed": true,
+      "Detail": "\u7ED3\u4F592.600444\u002B\u52A0\u5DE50.254\u002B\u635F\u59310.145556=3/3"
+    },
+    {
+      "Name": "\u540C\u539F\u6599\u62C6\u5206\u53CA\u52A0\u5165\u987A\u5E8F\u4E0D\u6539\u53D8\u7ED3\u679C",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u4EBA\u7269\u5B9E\u9645\u5165\u6599 \u4E91\u96FE\u83CC\u00D71",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u4EBA\u7269\u5B9E\u9645\u5165\u6599 \u783E\u5730\u83CC\u4F1E\u00D71",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5F02\u540D\u540C\u6750\u6027\u4E0D\u6309\u540D\u79F0\u7ED9\u4E88\u989D\u5916\u6536\u76CA",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u53EF\u7528\u7075\u8BC6\u4E0D\u8DB3\u62D2\u7EDD\u63D0\u4EA4",
+      "Passed": true,
+      "Detail": "\u5F53\u524D\u53EF\u7528\u7075\u8BC6\u4E0D\u8DB3\u3002"
+    },
+    {
+      "Name": "\u53EF\u7528\u7075\u8BC6\u4E0D\u8DB3\u4E0D\u6263\u7269\u54C1\u7CBE\u529B\u3001\u4E0D\u5199\u8BB0\u5F55\u3001\u4E0D\u52A0\u9020\u8BE3",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u5408\u540C\u5939\u5177\u6821\u9A8C paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u5408\u540C\u5939\u5177\u5165\u5305 paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u5408\u540C\u5939\u5177\u6821\u9A8C brush",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u5408\u540C\u5939\u5177\u5165\u5305 brush",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u5408\u540C\u5939\u5177\u6821\u9A8C ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u5408\u540C\u5939\u5177\u5165\u5305 ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65E0\u6280\u6CD5\u6765\u6E90\u5BF9\u7167\u4ECD\u53EF\u5E38\u6CD5\u6210\u7B26",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9AD8\u9020\u8BE3\u65E0\u805A\u4E0D\u80FD\u51DD\u6BEB\u805A\u52BF\u62D2\u7EDD\u63D0\u4EA4",
+      "Passed": true,
+      "Detail": "\u805A\u52BF\u3001\u4E3B\u7EB9\u6216\u6536\u53E3\u652F\u6301\u4E0D\u8DB3\uFF0C\u8BF7\u68C0\u67E5\u805A\u7684\u771F\u5B9E\u4F59\u8574\u4E0E\u7EB8\u7B14\u627F\u58A8\u3002"
+    },
+    {
+      "Name": "\u9AD8\u9020\u8BE3\u65E0\u805A\u4E0D\u80FD\u51DD\u6BEB\u805A\u52BF\u4E0D\u6263\u7269\u54C1\u7CBE\u529B\u3001\u4E0D\u5199\u8BB0\u5F55\u3001\u4E0D\u52A0\u9020\u8BE3",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9AD8\u9020\u8BE3\u65E0\u901A\u884C\u4E0D\u80FD\u900F\u7EB8\u884C\u58A8\u62D2\u7EDD\u63D0\u4EA4",
+      "Passed": true,
+      "Detail": "\u900F\u7EB8\u6240\u9700\u901A\u884C\u3001\u4E3B\u7EB9\u6216\u6536\u53E3\u652F\u6301\u4E0D\u8DB3\u3002"
+    },
+    {
+      "Name": "\u9AD8\u9020\u8BE3\u65E0\u901A\u884C\u4E0D\u80FD\u900F\u7EB8\u884C\u58A8\u4E0D\u6263\u7269\u54C1\u7CBE\u529B\u3001\u4E0D\u5199\u8BB0\u5F55\u3001\u4E0D\u52A0\u9020\u8BE3",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u5408\u540C\u5939\u5177\u6821\u9A8C ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u5408\u540C\u5939\u5177\u5165\u5305 ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4E24\u4EFD\u57FA\u7840\u7528\u58A8\u80FD\u5B8C\u6210\u4E24\u5F20\u5E38\u6CD5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u51DD\u6BEB\u5148\u4FDD\u4E24\u5F20\u57FA\u7840\u5305\uFF0C\u4E0D\u541E\u7B2C\u4E8C\u5F20\u7528\u58A8",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u6EE1\u5305\u6D4B\u8BD5\u6301\u6709\u771F\u5B9E\u4E24\u679A\u7075\u77F3",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4E24\u679A\u7075\u77F3\u5206\u79BB\u6446\u653E",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4EC5\u5728output\u4FDD\u5B58\u9694\u79BB\u5360\u4F4D\u7269",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u7A7A\u95F4\u5E93\u5B58\u586B\u6EE1200\u683C",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65E0\u6CD5\u5B89\u653E\u7B26\u7B14\u65F6\u62D2\u7EDD\u8D2D\u4E70",
+      "Passed": true,
+      "Detail": "\u7075\u77F3\u4E0D\u8DB3\u6216\u884C\u56CA\u653E\u4E0D\u4E0B\u7B26\u7B14\uFF0C\u672A\u6263\u7075\u77F3\u3002"
+    },
+    {
+      "Name": "\u5BB9\u91CF\u5931\u8D25\u4E0D\u6263\u7075\u77F3\u7CBE\u529B\uFF0C\u4E0D\u6539\u53D8\u5B9E\u4F8B\u4F4D\u7F6E",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u4EBA\u7269\u5B9E\u9645\u5165\u6599 \u5C71\u8695\u957F\u4E1D\u00D74",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u4EBA\u7269\u5B9E\u9645\u5165\u6599 \u7075\u6CC9\u9732\u00D75",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u4EBA\u7269\u5B9E\u9645\u5165\u6599 \u6591\u7532\u58F3\u7247\u00D73",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u4EBA\u7269\u5B9E\u9645\u5165\u6599 \u6C89\u4E91\u7389\u5C51\u00D72",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u4EBA\u7269\u5B9E\u9645\u5165\u6599 \u51DD\u9732\u677E\u8102\u00D72",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9875\u9762\u4EBA\u7269\u6301\u6709\u771F\u5B9E\u8D2D\u7B14\u7075\u77F3",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u6B63\u5F0F\u7B26\u5DE5\u9875\u9762\u7ED1\u5B9A\u5B9E\u9645\u5236\u4F5C\u4EBA\u7269",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u5173\u952E\u63A7\u4EF6\u5B8C\u6574\u5728\u5C4F\u5185 CraftTab_paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u5173\u952E\u63A7\u4EF6\u5B8C\u6574\u5728\u5C4F\u5185 CraftTab_ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u5173\u952E\u63A7\u4EF6\u5B8C\u6574\u5728\u5C4F\u5185 CraftTab_drawing",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u5173\u952E\u63A7\u4EF6\u5B8C\u6574\u5728\u5C4F\u5185 ReturnButton",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u5173\u952E\u63A7\u4EF6\u5B8C\u6574\u5728\u5C4F\u5185 StartCraftButton",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u5173\u952E\u63A7\u4EF6\u5B8C\u6574\u5728\u5C4F\u5185 CentralArt",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u9876\u680F\u6309\u94AE\u540C\u4E00\u6C34\u5E73\u4E2D\u5FC3\u548C22\u5B57\u53F7 CraftTab_paper",
+      "Passed": true,
+      "Detail": "(196.99998, 18), (122.999985, 45.999996); font=22"
+    },
+    {
+      "Name": "paper\u9876\u680F\u6309\u94AE\u540C\u4E00\u6C34\u5E73\u4E2D\u5FC3\u548C22\u5B57\u53F7 CraftTab_ink",
+      "Passed": true,
+      "Detail": "(325.99997, 18), (123.00003, 45.999996); font=22"
+    },
+    {
+      "Name": "paper\u9876\u680F\u6309\u94AE\u540C\u4E00\u6C34\u5E73\u4E2D\u5FC3\u548C22\u5B57\u53F7 CraftTab_drawing",
+      "Passed": true,
+      "Detail": "(454.99994, 18), (123, 45.999996); font=22"
+    },
+    {
+      "Name": "paper\u9876\u680F\u6309\u94AE\u540C\u4E00\u6C34\u5E73\u4E2D\u5FC3\u548C22\u5B57\u53F7 KnowledgeButton",
+      "Passed": true,
+      "Detail": "(1313.9999, 18), (108, 45.999996); font=22"
+    },
+    {
+      "Name": "paper\u9876\u680F\u6309\u94AE\u540C\u4E00\u6C34\u5E73\u4E2D\u5FC3\u548C22\u5B57\u53F7 ReturnButton",
+      "Passed": true,
+      "Detail": "(1533.9999, 18), (114, 45.999996); font=22"
+    },
+    {
+      "Name": "paper\u8FD4\u56DE\u6CBF\u70BC\u4E39\u70BC\u5668\u9876\u680F\u4F4D\u7F6E\u4E0E\u9AD8\u5EA6",
+      "Passed": true,
+      "Detail": "(1533.9999, 18), (114, 45.999996)"
+    },
+    {
+      "Name": "paper\u5DE6\u53F3\u680F\u5E95\u8FB9\u5BF9\u9F50",
+      "Passed": true,
+      "Detail": "left=(23.999998, 117.999985), (399.99997, 796.99994); right=(1233.9998, 117.999985), (414, 796.99994)"
+    },
+    {
+      "Name": "paper\u6280\u827A\u7AD6\u6392\u5B8C\u6574 Technique_yangmai",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_yangmai/@Label@52",
+      "Passed": true,
+      "Detail": "text=\u517B\u8109; label=(1463.8468, 239.87247), (286.92883, 41.31775); card=(1444.3357, 229.54303), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_yangmai/@Label@53",
+      "Passed": true,
+      "Detail": "text=\u5DF2\u9009; label=(1753.071, 244.46333), (88.37402, 33.283737); card=(1444.3357, 229.54303), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_yangmai/@Label@54",
+      "Passed": true,
+      "Detail": "text=\u8212\u5C55\u7EB8\u8109\uFF0C\u517C\u987E\u6210\u7EB8\u4E0E\u4F59\u8574\u3002; label=(1463.8468, 282.33792), (383.3369, 48.20404); card=(1444.3357, 229.54303), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_yangmai/@Label@55",
+      "Passed": true,
+      "Detail": "text=\u627F\u58A8\u4E0E\u97E7\u6027\u53D6\u5E73\u8861\u3002; label=(1463.8468, 335.1328), (383.3369, 35.579163); card=(1444.3357, 229.54303), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "paper\u6280\u827A\u7AD6\u6392\u5B8C\u6574 Technique_ningwen",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u4E92\u4E0D\u906E\u6321 1",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_ningwen/@Label@56",
+      "Passed": true,
+      "Detail": "text=\u51DD\u7EB9; label=(1463.8468, 403.99576), (286.92883, 41.31775); card=(1444.3357, 393.66632), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_ningwen/@Label@57",
+      "Passed": true,
+      "Detail": "text=\u7814\u4E60; label=(1753.071, 408.5866), (88.37402, 33.283752); card=(1444.3357, 393.66632), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_ningwen/@Label@58",
+      "Passed": true,
+      "Detail": "text=\u51DD\u5B9E\u7EB8\u7EB9\uFF0C\u51CF\u5C11\u6D07\u6563\u3002; label=(1463.8468, 446.4612), (383.3369, 48.20404); card=(1444.3357, 393.66632), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_ningwen/@Label@59",
+      "Passed": true,
+      "Detail": "text=\u627F\u58A8\u7565\u5C11\uFF0C\u7528\u65F6\u8F83\u957F\u3002; label=(1463.8468, 499.2561), (383.3369, 35.579163); card=(1444.3357, 393.66632), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "paper\u6280\u827A\u7AD6\u6392\u5B8C\u6574 Technique_diemai",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u4E92\u4E0D\u906E\u6321 2",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_diemai/@Label@60",
+      "Passed": true,
+      "Detail": "text=\u53E0\u8109; label=(1463.8468, 568.119), (286.92883, 41.31775); card=(1444.3357, 557.78955), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_diemai/@Label@61",
+      "Passed": true,
+      "Detail": "text=\u7814\u4E60; label=(1753.071, 572.70984), (88.37402, 33.283752); card=(1444.3357, 557.78955), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_diemai/@Label@62",
+      "Passed": true,
+      "Detail": "text=\u53E0\u5408\u7EB8\u8109\uFF0C\u589E\u52A0\u627F\u58A8\u4E0E\u97E7\u6027\u3002; label=(1463.8468, 610.5845), (383.3369, 48.20404); card=(1444.3357, 557.78955), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_diemai/@Label@63",
+      "Passed": true,
+      "Detail": "text=\u540C\u6279\u6210\u7EB8\u8F83\u5C11\u3002; label=(1463.8468, 663.37933), (383.3369, 35.579163); card=(1444.3357, 557.78955), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "paper\u6750\u6599\u6587\u5B57\u9A8C\u6536\u8986\u76D6\u5168\u90E8\u5DF2\u9009\u5361",
+      "Passed": true,
+      "Detail": "cards=0; selected=0"
+    },
+    {
+      "Name": "paper\u51C6\u5907\u9875\u4E0D\u5C55\u793A\u5C1A\u672A\u751F\u4EA7\u7684\u7ED3\u679C\u5B57\u6BB5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u4E0D\u6062\u590D\u5DF2\u5220\u9664\u7684\u8BF4\u660E\u4E0E\u9759\u6001\u6D41\u7A0B\u6761",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u4E2D\u592E\u4F7F\u7528\u5B9E\u9645\u610F\u8C61\u7D20\u6750",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u622A\u56FE\u4E3A\u539F\u751F\u7A97\u53E3\u5C3A\u5BF8 paper_empty",
+      "Passed": true,
+      "Detail": "1920x1080"
+    },
+    {
+      "Name": "\u4FDD\u5B58\u622A\u56FE paper_empty",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB KnowledgeButton",
+      "Passed": true,
+      "Detail": "(1508.6079, 20.658875), (123.95325, 52.7949)"
+    },
+    {
+      "Name": "\u6253\u5F00\u7B26\u5DE5\u5F55\u4E0D\u6263\u7075\u77F3",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB BuyTalismanBrushButton",
+      "Passed": true,
+      "Detail": "(1262.9968, 253.64507), (231.8385, 55.090347)"
+    },
+    {
+      "Name": "\u8D2D\u7B14\u771F\u5B9E\u6263\u4E24\u679A\u7075\u77F3\u5E76\u5165\u884C\u56CA",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB Learn_ningwen",
+      "Passed": true,
+      "Detail": "(1271.0308, 840.1275), (226.09985, 58.533447)"
+    },
+    {
+      "Name": "\u7814\u4E60\u540E\u5B9E\u9645\u638C\u63E1\u5236\u7EB8\u6280\u827A",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u622A\u56FE\u4E3A\u539F\u751F\u7A97\u53E3\u5C3A\u5BF8 knowledge",
+      "Passed": true,
+      "Detail": "1920x1080"
+    },
+    {
+      "Name": "\u4FDD\u5B58\u622A\u56FE knowledge",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB CloseCraftingModal",
+      "Passed": true,
+      "Detail": "(1509.7555, 90.6695), (48.20398, 48.204033)"
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB SelectMaterialsButton",
+      "Passed": true,
+      "Detail": "(340.23376, 162.97556), (119.362366, 48.20404)"
+    },
+    {
+      "Name": "\u9009\u6750\u641C\u7D22\u6765\u81EA\u771F\u5B9E\u76EE\u5F55 \u5C71\u8695\u957F\u4E1D",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB PickMaterial_mat_mountain_silkworm_thread",
+      "Passed": true,
+      "Detail": "(358.59723, 406.86505), (359.23486, 41.31775)"
+    },
+    {
+      "Name": "\u6307\u9488\u9009\u5165\u771F\u5B9E\u6750\u6599 \u5C71\u8695\u957F\u4E1D",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB FinishMaterialSelection",
+      "Passed": true,
+      "Detail": "(1343.3369, 925.6323), (228.39526, 52.79492)"
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB SelectMaterialsButton",
+      "Passed": true,
+      "Detail": "(340.23376, 162.97556), (119.362366, 48.20404)"
+    },
+    {
+      "Name": "\u9009\u6750\u641C\u7D22\u6765\u81EA\u771F\u5B9E\u76EE\u5F55 \u7075\u6CC9\u9732",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB PickMaterial_mat_spirit_spring_dew",
+      "Passed": true,
+      "Detail": "(358.59723, 406.86505), (359.23486, 41.31775)"
+    },
+    {
+      "Name": "\u6307\u9488\u9009\u5165\u771F\u5B9E\u6750\u6599 \u7075\u6CC9\u9732",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB FinishMaterialSelection",
+      "Passed": true,
+      "Detail": "(1343.3369, 925.6323), (228.39526, 52.79492)"
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB MaterialDose_mat_mountain_silkworm_threadPlus",
+      "Passed": true,
+      "Detail": "(288.5866, 368.41656), (44.760895, 41.31775)"
+    },
+    {
+      "Name": "\u7528\u91CF\u52A0\u53F7\u540C\u6B65\u771F\u5B9E\u8349\u7A3F",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB MaterialDose_mat_mountain_silkworm_threadMinus",
+      "Passed": true,
+      "Detail": "(168.07649, 368.41656), (44.760895, 41.31775)"
+    },
+    {
+      "Name": "\u7528\u91CF\u51CF\u53F7\u540C\u6B65\u771F\u5B9E\u8349\u7A3F",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB MaterialDose_mat_mountain_silkworm_threadPlus",
+      "Passed": true,
+      "Detail": "(288.5866, 368.41656), (44.760895, 41.31775)"
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB Technique_ningwen",
+      "Passed": true,
+      "Detail": "(1444.3357, 393.66632), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "\u5DF2\u5B66\u6280\u827A\u53EF\u7531\u5B9E\u9645\u6307\u9488\u5207\u6362",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB Technique_yangmai",
+      "Passed": true,
+      "Detail": "(1444.3357, 229.54303), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "paper\u5173\u952E\u63A7\u4EF6\u5B8C\u6574\u5728\u5C4F\u5185 CraftTab_paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u5173\u952E\u63A7\u4EF6\u5B8C\u6574\u5728\u5C4F\u5185 CraftTab_ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u5173\u952E\u63A7\u4EF6\u5B8C\u6574\u5728\u5C4F\u5185 CraftTab_drawing",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u5173\u952E\u63A7\u4EF6\u5B8C\u6574\u5728\u5C4F\u5185 ReturnButton",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u5173\u952E\u63A7\u4EF6\u5B8C\u6574\u5728\u5C4F\u5185 StartCraftButton",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u5173\u952E\u63A7\u4EF6\u5B8C\u6574\u5728\u5C4F\u5185 CentralArt",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u9876\u680F\u6309\u94AE\u540C\u4E00\u6C34\u5E73\u4E2D\u5FC3\u548C22\u5B57\u53F7 CraftTab_paper",
+      "Passed": true,
+      "Detail": "(196.99998, 18), (122.999985, 45.999996); font=22"
+    },
+    {
+      "Name": "paper\u9876\u680F\u6309\u94AE\u540C\u4E00\u6C34\u5E73\u4E2D\u5FC3\u548C22\u5B57\u53F7 CraftTab_ink",
+      "Passed": true,
+      "Detail": "(325.99997, 18), (123.00003, 45.999996); font=22"
+    },
+    {
+      "Name": "paper\u9876\u680F\u6309\u94AE\u540C\u4E00\u6C34\u5E73\u4E2D\u5FC3\u548C22\u5B57\u53F7 CraftTab_drawing",
+      "Passed": true,
+      "Detail": "(454.99994, 18), (123, 45.999996); font=22"
+    },
+    {
+      "Name": "paper\u9876\u680F\u6309\u94AE\u540C\u4E00\u6C34\u5E73\u4E2D\u5FC3\u548C22\u5B57\u53F7 KnowledgeButton",
+      "Passed": true,
+      "Detail": "(1313.9999, 18), (108, 45.999996); font=22"
+    },
+    {
+      "Name": "paper\u9876\u680F\u6309\u94AE\u540C\u4E00\u6C34\u5E73\u4E2D\u5FC3\u548C22\u5B57\u53F7 ReturnButton",
+      "Passed": true,
+      "Detail": "(1533.9999, 18), (114, 45.999996); font=22"
+    },
+    {
+      "Name": "paper\u8FD4\u56DE\u6CBF\u70BC\u4E39\u70BC\u5668\u9876\u680F\u4F4D\u7F6E\u4E0E\u9AD8\u5EA6",
+      "Passed": true,
+      "Detail": "(1533.9999, 18), (114, 45.999996)"
+    },
+    {
+      "Name": "paper\u7528\u91CF\u4E09\u4EF6\u7EC4\u540C\u9876\u540C\u5E95\u4E14\u9AD836 MaterialDose_mat_mountain_silkworm_thread",
+      "Passed": true,
+      "Detail": "minus=(145.99998, 320.99997), (39, 36); input=(188.99998, 320.99997), (58, 36); plus=(251, 320.99997), (39, 36)"
+    },
+    {
+      "Name": "paper\u7528\u91CF\u51CF\u53F7\u6570\u503C\u52A0\u53F7\u4E92\u4E0D\u4EA4\u53E0 MaterialDose_mat_mountain_silkworm_thread",
+      "Passed": true,
+      "Detail": "minus=(145.99998, 320.99997), (39, 36); input=(188.99998, 320.99997), (58, 36); plus=(251, 320.99997), (39, 36)"
+    },
+    {
+      "Name": "paper\u7528\u91CF\u4E09\u4EF6\u7EC4\u540C\u9876\u540C\u5E95\u4E14\u9AD836 MaterialDose_mat_spirit_spring_dew",
+      "Passed": true,
+      "Detail": "minus=(145.99998, 498.9999), (39, 36.00003); input=(188.99998, 498.9999), (58, 36.00003); plus=(251, 498.9999), (39, 36.00003)"
+    },
+    {
+      "Name": "paper\u7528\u91CF\u51CF\u53F7\u6570\u503C\u52A0\u53F7\u4E92\u4E0D\u4EA4\u53E0 MaterialDose_mat_spirit_spring_dew",
+      "Passed": true,
+      "Detail": "minus=(145.99998, 498.9999), (39, 36.00003); input=(188.99998, 498.9999), (58, 36.00003); plus=(251, 498.9999), (39, 36.00003)"
+    },
+    {
+      "Name": "paper\u5DE6\u53F3\u680F\u5E95\u8FB9\u5BF9\u9F50",
+      "Passed": true,
+      "Detail": "left=(23.999998, 117.999985), (399.99997, 796.99994); right=(1233.9998, 117.999985), (414, 796.99994)"
+    },
+    {
+      "Name": "paper\u6280\u827A\u7AD6\u6392\u5B8C\u6574 Technique_yangmai",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_yangmai/@Label@679",
+      "Passed": true,
+      "Detail": "text=\u517B\u8109; label=(1463.8468, 239.87247), (286.92883, 41.31775); card=(1444.3357, 229.54303), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_yangmai/@Label@680",
+      "Passed": true,
+      "Detail": "text=\u5DF2\u9009; label=(1753.071, 244.46333), (88.37402, 33.283737); card=(1444.3357, 229.54303), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_yangmai/@Label@681",
+      "Passed": true,
+      "Detail": "text=\u8212\u5C55\u7EB8\u8109\uFF0C\u517C\u987E\u6210\u7EB8\u4E0E\u4F59\u8574\u3002; label=(1463.8468, 282.33792), (383.3369, 48.20404); card=(1444.3357, 229.54303), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_yangmai/@Label@682",
+      "Passed": true,
+      "Detail": "text=\u627F\u58A8\u4E0E\u97E7\u6027\u53D6\u5E73\u8861\u3002; label=(1463.8468, 335.1328), (383.3369, 35.579163); card=(1444.3357, 229.54303), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "paper\u6280\u827A\u7AD6\u6392\u5B8C\u6574 Technique_ningwen",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u4E92\u4E0D\u906E\u6321 1",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_ningwen/@Label@683",
+      "Passed": true,
+      "Detail": "text=\u51DD\u7EB9; label=(1463.8468, 403.99576), (286.92883, 41.31775); card=(1444.3357, 393.66632), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_ningwen/@Label@684",
+      "Passed": true,
+      "Detail": "text=; label=(1753.071, 408.5866), (88.37402, 33.283752); card=(1444.3357, 393.66632), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_ningwen/@Label@685",
+      "Passed": true,
+      "Detail": "text=\u51DD\u5B9E\u7EB8\u7EB9\uFF0C\u51CF\u5C11\u6D07\u6563\u3002; label=(1463.8468, 446.4612), (383.3369, 48.20404); card=(1444.3357, 393.66632), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_ningwen/@Label@686",
+      "Passed": true,
+      "Detail": "text=\u627F\u58A8\u7565\u5C11\uFF0C\u7528\u65F6\u8F83\u957F\u3002; label=(1463.8468, 499.2561), (383.3369, 35.579163); card=(1444.3357, 393.66632), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "paper\u6280\u827A\u7AD6\u6392\u5B8C\u6574 Technique_diemai",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u4E92\u4E0D\u906E\u6321 2",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_diemai/@Label@687",
+      "Passed": true,
+      "Detail": "text=\u53E0\u8109; label=(1463.8468, 568.119), (286.92883, 41.31775); card=(1444.3357, 557.78955), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_diemai/@Label@688",
+      "Passed": true,
+      "Detail": "text=\u7814\u4E60; label=(1753.071, 572.70984), (88.37402, 33.283752); card=(1444.3357, 557.78955), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_diemai/@Label@689",
+      "Passed": true,
+      "Detail": "text=\u53E0\u5408\u7EB8\u8109\uFF0C\u589E\u52A0\u627F\u58A8\u4E0E\u97E7\u6027\u3002; label=(1463.8468, 610.5845), (383.3369, 48.20404); card=(1444.3357, 557.78955), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "paper\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_diemai/@Label@690",
+      "Passed": true,
+      "Detail": "text=\u540C\u6279\u6210\u7EB8\u8F83\u5C11\u3002; label=(1463.8468, 663.37933), (383.3369, 35.579163); card=(1444.3357, 557.78955), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "paper\u6750\u6599\u6587\u5B57\u9A8C\u6536\u8986\u76D6\u5168\u90E8\u5DF2\u9009\u5361",
+      "Passed": true,
+      "Detail": "cards=2; selected=2"
+    },
+    {
+      "Name": "paper\u6750\u6599\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 MaterialCard_mat_mountain_silkworm_thread/@Label@663",
+      "Passed": true,
+      "Detail": "text=\u6728 \u00B7 \u7EA4\u7EF4 \u00B7 4\u4EFD; label=(170.37192, 281.19022), (267.41763, 32.136017); card=(55.600403, 229.54303), (403.99576, 190.52072)"
+    },
+    {
+      "Name": "paper\u6750\u6599\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 MaterialCard_mat_mountain_silkworm_thread/@Label@664",
+      "Passed": true,
+      "Detail": "text=\u56FA\u4E5D\u54C1\u3001\u85CF\u4E5D\u54C1; label=(170.37192, 313.32623), (260.53134, 49.351746); card=(55.600403, 229.54303), (403.99576, 190.52072)"
+    },
+    {
+      "Name": "paper\u6750\u6599\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 MaterialCard_mat_mountain_silkworm_thread/@Label@665",
+      "Passed": true,
+      "Detail": "text=\u7528\u91CF; label=(71.66841, 368.41656), (74.60149, 41.31775); card=(55.600403, 229.54303), (403.99576, 190.52072)"
+    },
+    {
+      "Name": "paper\u6750\u6599\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 MaterialCard_mat_spirit_spring_dew/@Label@670",
+      "Passed": true,
+      "Detail": "text=\u6C34 \u00B7 \u6DB2\u4F53 \u00B7 5\u4EFD; label=(170.37192, 485.48352), (267.41763, 32.136047); card=(55.600403, 433.83633), (403.99576, 190.52072)"
+    },
+    {
+      "Name": "paper\u6750\u6599\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 MaterialCard_mat_spirit_spring_dew/@Label@671",
+      "Passed": true,
+      "Detail": "text=\u805A\u4E03\u54C1\u3001\u5316\u516B\u54C1; label=(170.37192, 517.61957), (260.53134, 49.351746); card=(55.600403, 433.83633), (403.99576, 190.52072)"
+    },
+    {
+      "Name": "paper\u6750\u6599\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 MaterialCard_mat_spirit_spring_dew/@Label@672",
+      "Passed": true,
+      "Detail": "text=\u7528\u91CF; label=(71.66841, 572.70984), (74.60149, 41.31775); card=(55.600403, 433.83633), (403.99576, 190.52072)"
+    },
+    {
+      "Name": "paper\u51C6\u5907\u9875\u4E0D\u5C55\u793A\u5C1A\u672A\u751F\u4EA7\u7684\u7ED3\u679C\u5B57\u6BB5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u4E0D\u6062\u590D\u5DF2\u5220\u9664\u7684\u8BF4\u660E\u4E0E\u9759\u6001\u6D41\u7A0B\u6761",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u4E2D\u592E\u4F7F\u7528\u5B9E\u9645\u610F\u8C61\u7D20\u6750",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u622A\u56FE\u4E3A\u539F\u751F\u7A97\u53E3\u5C3A\u5BF8 paper_ready",
+      "Passed": true,
+      "Detail": "1920x1080"
+    },
+    {
+      "Name": "\u4FDD\u5B58\u622A\u56FE paper_ready",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u771F\u5B9E\u8F93\u5165\u53EF\u63D0\u4EA4",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB StartCraftButton",
+      "Passed": true,
+      "Detail": "(1444.3357, 982.4442), (420.06372, 61.976562)"
+    },
+    {
+      "Name": "paper\u81EA\u52A8\u6F14\u51FA\u4F7F\u7528\u672C\u5DE5\u827A\u4E0E\u5F53\u524D\u72B6\u6001",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u6F14\u51FA\u4E0E\u8DF3\u8FC7\u63A7\u4EF6\u5B8C\u6574\u53EF\u89C1",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u6F14\u51FA\u9690\u85CF\u9876\u680F\u4E0E\u5176\u4F59\u51C6\u5907\u7A7A\u95F4",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u4FDD\u7559\u539F\u573A\u666F\u80CC\u666F\u4E14\u4E2D\u592E\u6F14\u51FA\u6CA1\u6709\u7EB8\u9762\u5F39\u7A97",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u4E2D\u592E\u5C55\u793A\u610F\u8C61\u4E14\u8DF3\u8FC7\u4F4D\u4E8E\u53F3\u4E0A",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u91CD\u590D\u70B9\u51FB\u53EA\u6263\u4E00\u6B21\u7CBE\u529B\u5E76\u8BB0\u4E00\u6761\u751F\u4EA7",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u5F00\u5DE5\u53EA\u63A8\u8FDB\u4E00\u6B21\u672C\u6279\u5B9E\u9645\u6E38\u620F\u5DE5\u65F6",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u4EC5\u6263\u672C\u6279\u5B9E\u9645\u7528\u6599 res://resources/entities/items/\u5C71\u8695\u957F\u4E1D.tres",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u4EC5\u6263\u672C\u6279\u5B9E\u9645\u7528\u6599 res://resources/entities/items/\u7075\u6CC9\u9732.tres",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u65E7\u6279\u6B21\u5B8C\u6210\u56DE\u8C03\u4E0D\u5F71\u54CD\u5F53\u524D\u6F14\u51FA",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u6F14\u51FA\u4E2DEscape\u4E0D\u64A4\u6389\u906E\u7F69\u6216\u63D0\u524D\u6253\u5F00\u9274\u770B",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u6F14\u51FA\u906E\u7F69\u4E0E\u5FD9\u788C\u4FDD\u62A4\u62E6\u622A\u5207\u9875\u914D\u4F0D\u518C\u548C\u8FD4\u56DE",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u64AD\u653E\u53CA\u88AB\u62E6\u622A\u8F93\u5165\u4E0D\u518D\u6263\u53D1\u8D44\u6E90\u6216\u63A8\u8FDB\u5386\u6CD5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u622A\u56FE\u4E3A\u539F\u751F\u7A97\u53E3\u5C3A\u5BF8 paper_run",
+      "Passed": true,
+      "Detail": "1920x1080"
+    },
+    {
+      "Name": "\u4FDD\u5B58\u622A\u56FE paper_run",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u81EA\u52A8\u6F14\u51FA\u8FDB\u5165\u4E2D\u6BB5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u4E2D\u6BB5\u72B6\u6001\u8DDF\u968F\u6F14\u51FA\u66F4\u65B0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u622A\u56FE\u4E3A\u539F\u751F\u7A97\u53E3\u5C3A\u5BF8 paper_run_middle",
+      "Passed": true,
+      "Detail": "1920x1080"
+    },
+    {
+      "Name": "\u4FDD\u5B58\u622A\u56FE paper_run_middle",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u81EA\u7136\u6F14\u51FA\u8FDB\u5165\u51DD\u5B9A\u6536\u53E3",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u6536\u53E3\u72B6\u6001\u8DDF\u968F\u6F14\u51FA\u66F4\u65B0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u622A\u56FE\u4E3A\u539F\u751F\u7A97\u53E3\u5C3A\u5BF8 paper_run_finish",
+      "Passed": true,
+      "Detail": "1920x1080"
+    },
+    {
+      "Name": "\u4FDD\u5B58\u622A\u56FE paper_run_finish",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u81EA\u7136\u7ED3\u675F\u8FDB\u5165\u5B9E\u9645\u9274\u770B",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u5B8C\u6210\u4E0E\u91CD\u590D\u8DF3\u8FC7\u53EA\u4FDD\u7559\u4E00\u4EFD\u9274\u770B",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u6F14\u51FA\u7ED3\u675F\u53EA\u63ED\u793A\u65E2\u5B9A\u7ED3\u679C\u4E0D\u91CD\u65B0\u5236\u4F5C",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u81EA\u7136\u6216\u8DF3\u8FC7\u7ED3\u675F\u540E\u6062\u590D\u539F\u754C\u9762\u53EF\u89C1\u6027",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u6210\u54C1\u540E\u5C55\u793A\u56DB\u4E2A\u771F\u5B9E\u5B57\u6BB5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u622A\u56FE\u4E3A\u539F\u751F\u7A97\u53E3\u5C3A\u5BF8 paper_result",
+      "Passed": true,
+      "Detail": "1920x1080"
+    },
+    {
+      "Name": "\u4FDD\u5B58\u622A\u56FE paper_result",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB ContinueCraftButton",
+      "Passed": true,
+      "Detail": "(1285.951, 932.5186), (263.9745, 49.351746)"
+    },
+    {
+      "Name": "paper\u8FD4\u56DE\u6848\u524D\u540E\u65E7\u6F14\u51FA\u56DE\u8C03\u4E0D\u518D\u6253\u5F00\u7ED3\u679C\u6216\u91CD\u6263\u53D1",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB CraftTab_ink",
+      "Passed": true,
+      "Detail": "(374.66522, 20.658875), (141.169, 52.7949)"
+    },
+    {
+      "Name": "\u5B9E\u9645\u9875\u7B7E\u8FDB\u5165\u7814\u58A8",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB SelectMaterialsButton",
+      "Passed": true,
+      "Detail": "(340.23376, 162.97556), (119.362366, 48.20404)"
+    },
+    {
+      "Name": "\u9009\u6750\u641C\u7D22\u6765\u81EA\u771F\u5B9E\u76EE\u5F55 \u6591\u7532\u58F3\u7247",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB PickMaterial_mat_mottled_beetle_shell",
+      "Passed": true,
+      "Detail": "(358.59723, 406.86505), (359.23486, 41.31775)"
+    },
+    {
+      "Name": "\u6307\u9488\u9009\u5165\u771F\u5B9E\u6750\u6599 \u6591\u7532\u58F3\u7247",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB FinishMaterialSelection",
+      "Passed": true,
+      "Detail": "(1343.3369, 925.6323), (228.39526, 52.79492)"
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB SelectMaterialsButton",
+      "Passed": true,
+      "Detail": "(340.23376, 162.97556), (119.362366, 48.20404)"
+    },
+    {
+      "Name": "\u9009\u6750\u641C\u7D22\u6765\u81EA\u771F\u5B9E\u76EE\u5F55 \u6C89\u4E91\u7389\u5C51",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB PickMaterial_mat_sinking_cloud_jade_shard",
+      "Passed": true,
+      "Detail": "(358.59723, 406.86505), (359.23486, 41.31775)"
+    },
+    {
+      "Name": "\u6307\u9488\u9009\u5165\u771F\u5B9E\u6750\u6599 \u6C89\u4E91\u7389\u5C51",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB FinishMaterialSelection",
+      "Passed": true,
+      "Detail": "(1343.3369, 925.6323), (228.39526, 52.79492)"
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB SelectMaterialsButton",
+      "Passed": true,
+      "Detail": "(340.23376, 162.97556), (119.362366, 48.20404)"
+    },
+    {
+      "Name": "\u9009\u6750\u641C\u7D22\u6765\u81EA\u771F\u5B9E\u76EE\u5F55 \u7075\u6CC9\u9732",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB PickMaterial_mat_spirit_spring_dew",
+      "Passed": true,
+      "Detail": "(358.59723, 406.86505), (359.23486, 41.31775)"
+    },
+    {
+      "Name": "\u6307\u9488\u9009\u5165\u771F\u5B9E\u6750\u6599 \u7075\u6CC9\u9732",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB FinishMaterialSelection",
+      "Passed": true,
+      "Detail": "(1343.3369, 925.6323), (228.39526, 52.79492)"
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB SelectMaterialsButton",
+      "Passed": true,
+      "Detail": "(340.23376, 162.97556), (119.362366, 48.20404)"
+    },
+    {
+      "Name": "\u9009\u6750\u641C\u7D22\u6765\u81EA\u771F\u5B9E\u76EE\u5F55 \u51DD\u9732\u677E\u8102",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB PickMaterial_mat_dew_pine_resin",
+      "Passed": true,
+      "Detail": "(358.59723, 406.86505), (359.23486, 41.31775)"
+    },
+    {
+      "Name": "\u6307\u9488\u9009\u5165\u771F\u5B9E\u6750\u6599 \u51DD\u9732\u677E\u8102",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB FinishMaterialSelection",
+      "Passed": true,
+      "Detail": "(1343.3369, 925.6323), (228.39526, 52.79492)"
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB MaterialDose_mat_mottled_beetle_shellPlus",
+      "Passed": true,
+      "Detail": "(288.5866, 368.41656), (44.760895, 41.31775)"
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB Retain_\u56FA",
+      "Passed": true,
+      "Detail": "(682.2529, 756.34436), (49.351746, 44.760864)"
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB Retain_\u85CF",
+      "Passed": true,
+      "Detail": "(893.4325, 756.34436), (49.351746, 44.760864)"
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB Retain_\u805A",
+      "Passed": true,
+      "Detail": "(735.0478, 756.34436), (49.351746, 44.760864)"
+    },
+    {
+      "Name": "\u7559\u58A8\u529F\u7528\u7531\u73A9\u5BB6\u9009\u62E9\u81F3\u591A\u56DB\u9879",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u5173\u952E\u63A7\u4EF6\u5B8C\u6574\u5728\u5C4F\u5185 CraftTab_paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u5173\u952E\u63A7\u4EF6\u5B8C\u6574\u5728\u5C4F\u5185 CraftTab_ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u5173\u952E\u63A7\u4EF6\u5B8C\u6574\u5728\u5C4F\u5185 CraftTab_drawing",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u5173\u952E\u63A7\u4EF6\u5B8C\u6574\u5728\u5C4F\u5185 ReturnButton",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u5173\u952E\u63A7\u4EF6\u5B8C\u6574\u5728\u5C4F\u5185 StartCraftButton",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u5173\u952E\u63A7\u4EF6\u5B8C\u6574\u5728\u5C4F\u5185 CentralArt",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u9876\u680F\u6309\u94AE\u540C\u4E00\u6C34\u5E73\u4E2D\u5FC3\u548C22\u5B57\u53F7 CraftTab_paper",
+      "Passed": true,
+      "Detail": "(196.99998, 18), (122.999985, 45.999996); font=22"
+    },
+    {
+      "Name": "ink\u9876\u680F\u6309\u94AE\u540C\u4E00\u6C34\u5E73\u4E2D\u5FC3\u548C22\u5B57\u53F7 CraftTab_ink",
+      "Passed": true,
+      "Detail": "(325.99997, 18), (123.00003, 45.999996); font=22"
+    },
+    {
+      "Name": "ink\u9876\u680F\u6309\u94AE\u540C\u4E00\u6C34\u5E73\u4E2D\u5FC3\u548C22\u5B57\u53F7 CraftTab_drawing",
+      "Passed": true,
+      "Detail": "(454.99994, 18), (123, 45.999996); font=22"
+    },
+    {
+      "Name": "ink\u9876\u680F\u6309\u94AE\u540C\u4E00\u6C34\u5E73\u4E2D\u5FC3\u548C22\u5B57\u53F7 KnowledgeButton",
+      "Passed": true,
+      "Detail": "(1313.9999, 18), (108, 45.999996); font=22"
+    },
+    {
+      "Name": "ink\u9876\u680F\u6309\u94AE\u540C\u4E00\u6C34\u5E73\u4E2D\u5FC3\u548C22\u5B57\u53F7 ReturnButton",
+      "Passed": true,
+      "Detail": "(1533.9999, 18), (114, 45.999996); font=22"
+    },
+    {
+      "Name": "ink\u8FD4\u56DE\u6CBF\u70BC\u4E39\u70BC\u5668\u9876\u680F\u4F4D\u7F6E\u4E0E\u9AD8\u5EA6",
+      "Passed": true,
+      "Detail": "(1533.9999, 18), (114, 45.999996)"
+    },
+    {
+      "Name": "ink\u7528\u91CF\u4E09\u4EF6\u7EC4\u540C\u9876\u540C\u5E95\u4E14\u9AD836 MaterialDose_mat_mottled_beetle_shell",
+      "Passed": true,
+      "Detail": "minus=(145.99998, 320.99997), (39, 36); input=(188.99998, 320.99997), (58, 36); plus=(251, 320.99997), (39, 36)"
+    },
+    {
+      "Name": "ink\u7528\u91CF\u51CF\u53F7\u6570\u503C\u52A0\u53F7\u4E92\u4E0D\u4EA4\u53E0 MaterialDose_mat_mottled_beetle_shell",
+      "Passed": true,
+      "Detail": "minus=(145.99998, 320.99997), (39, 36); input=(188.99998, 320.99997), (58, 36); plus=(251, 320.99997), (39, 36)"
+    },
+    {
+      "Name": "ink\u7528\u91CF\u4E09\u4EF6\u7EC4\u540C\u9876\u540C\u5E95\u4E14\u9AD836 MaterialDose_mat_sinking_cloud_jade_shard",
+      "Passed": true,
+      "Detail": "minus=(145.99998, 498.9999), (39, 36.00003); input=(188.99998, 498.9999), (58, 36.00003); plus=(251, 498.9999), (39, 36.00003)"
+    },
+    {
+      "Name": "ink\u7528\u91CF\u51CF\u53F7\u6570\u503C\u52A0\u53F7\u4E92\u4E0D\u4EA4\u53E0 MaterialDose_mat_sinking_cloud_jade_shard",
+      "Passed": true,
+      "Detail": "minus=(145.99998, 498.9999), (39, 36.00003); input=(188.99998, 498.9999), (58, 36.00003); plus=(251, 498.9999), (39, 36.00003)"
+    },
+    {
+      "Name": "ink\u7528\u91CF\u4E09\u4EF6\u7EC4\u540C\u9876\u540C\u5E95\u4E14\u9AD836 MaterialDose_mat_spirit_spring_dew",
+      "Passed": true,
+      "Detail": "minus=(145.99998, 676.99994), (39, 36); input=(188.99998, 676.99994), (58, 36); plus=(251, 676.99994), (39, 36)"
+    },
+    {
+      "Name": "ink\u7528\u91CF\u51CF\u53F7\u6570\u503C\u52A0\u53F7\u4E92\u4E0D\u4EA4\u53E0 MaterialDose_mat_spirit_spring_dew",
+      "Passed": true,
+      "Detail": "minus=(145.99998, 676.99994), (39, 36); input=(188.99998, 676.99994), (58, 36); plus=(251, 676.99994), (39, 36)"
+    },
+    {
+      "Name": "ink\u7528\u91CF\u4E09\u4EF6\u7EC4\u540C\u9876\u540C\u5E95\u4E14\u9AD836 MaterialDose_mat_dew_pine_resin",
+      "Passed": true,
+      "Detail": "minus=(145.99998, 854.99994), (39, 36); input=(188.99998, 854.99994), (58, 36); plus=(251, 854.99994), (39, 36)"
+    },
+    {
+      "Name": "ink\u7528\u91CF\u51CF\u53F7\u6570\u503C\u52A0\u53F7\u4E92\u4E0D\u4EA4\u53E0 MaterialDose_mat_dew_pine_resin",
+      "Passed": true,
+      "Detail": "minus=(145.99998, 854.99994), (39, 36); input=(188.99998, 854.99994), (58, 36); plus=(251, 854.99994), (39, 36)"
+    },
+    {
+      "Name": "ink\u7559\u58A8\u529F\u7528\u6309\u94AE\u4E92\u4E0D\u4EA4\u53E0 Retain_\u56FA/Retain_\u805A",
+      "Passed": true,
+      "Detail": "(594, 659), (43, 38.99994); (640, 659), (42.99994, 38.99994)"
+    },
+    {
+      "Name": "ink\u7559\u58A8\u529F\u7528\u6309\u94AE\u4E92\u4E0D\u4EA4\u53E0 Retain_\u56FA/Retain_\u5316",
+      "Passed": true,
+      "Detail": "(594, 659), (43, 38.99994); (686, 659), (43, 38.99994)"
+    },
+    {
+      "Name": "ink\u7559\u58A8\u529F\u7528\u6309\u94AE\u4E92\u4E0D\u4EA4\u53E0 Retain_\u56FA/Retain_\u62A4",
+      "Passed": true,
+      "Detail": "(594, 659), (43, 38.99994); (731.99994, 659), (43, 38.99994)"
+    },
+    {
+      "Name": "ink\u7559\u58A8\u529F\u7528\u6309\u94AE\u4E92\u4E0D\u4EA4\u53E0 Retain_\u56FA/Retain_\u85CF",
+      "Passed": true,
+      "Detail": "(594, 659), (43, 38.99994); (777.99994, 659), (43, 38.99994)"
+    },
+    {
+      "Name": "ink\u7559\u58A8\u529F\u7528\u6309\u94AE\u4E92\u4E0D\u4EA4\u53E0 Retain_\u805A/Retain_\u5316",
+      "Passed": true,
+      "Detail": "(640, 659), (42.99994, 38.99994); (686, 659), (43, 38.99994)"
+    },
+    {
+      "Name": "ink\u7559\u58A8\u529F\u7528\u6309\u94AE\u4E92\u4E0D\u4EA4\u53E0 Retain_\u805A/Retain_\u62A4",
+      "Passed": true,
+      "Detail": "(640, 659), (42.99994, 38.99994); (731.99994, 659), (43, 38.99994)"
+    },
+    {
+      "Name": "ink\u7559\u58A8\u529F\u7528\u6309\u94AE\u4E92\u4E0D\u4EA4\u53E0 Retain_\u805A/Retain_\u85CF",
+      "Passed": true,
+      "Detail": "(640, 659), (42.99994, 38.99994); (777.99994, 659), (43, 38.99994)"
+    },
+    {
+      "Name": "ink\u7559\u58A8\u529F\u7528\u6309\u94AE\u4E92\u4E0D\u4EA4\u53E0 Retain_\u5316/Retain_\u62A4",
+      "Passed": true,
+      "Detail": "(686, 659), (43, 38.99994); (731.99994, 659), (43, 38.99994)"
+    },
+    {
+      "Name": "ink\u7559\u58A8\u529F\u7528\u6309\u94AE\u4E92\u4E0D\u4EA4\u53E0 Retain_\u5316/Retain_\u85CF",
+      "Passed": true,
+      "Detail": "(686, 659), (43, 38.99994); (777.99994, 659), (43, 38.99994)"
+    },
+    {
+      "Name": "ink\u7559\u58A8\u529F\u7528\u6309\u94AE\u4E92\u4E0D\u4EA4\u53E0 Retain_\u62A4/Retain_\u85CF",
+      "Passed": true,
+      "Detail": "(731.99994, 659), (43, 38.99994); (777.99994, 659), (43, 38.99994)"
+    },
+    {
+      "Name": "ink\u5DE6\u53F3\u680F\u5E95\u8FB9\u5BF9\u9F50",
+      "Passed": true,
+      "Detail": "left=(23.999998, 117.999985), (399.99997, 796.99994); right=(1233.9998, 117.999985), (414, 796.99994)"
+    },
+    {
+      "Name": "ink\u6280\u827A\u7AD6\u6392\u5B8C\u6574 Technique_junyan",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_junyan/@Label@1437",
+      "Passed": true,
+      "Detail": "text=\u5747\u7814; label=(1463.8468, 239.87247), (286.92883, 41.31775); card=(1444.3357, 229.54303), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "ink\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_junyan/@Label@1438",
+      "Passed": true,
+      "Detail": "text=\u5DF2\u9009; label=(1753.071, 244.46333), (88.37402, 33.283737); card=(1444.3357, 229.54303), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "ink\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_junyan/@Label@1439",
+      "Passed": true,
+      "Detail": "text=\u5300\u5F00\u58A8\u6E90\uFF0C\u517C\u987E\u7528\u91CF\u4E0E\u6D41\u52A8\u3002; label=(1463.8468, 282.33792), (383.3369, 48.20404); card=(1444.3357, 229.54303), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "ink\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_junyan/@Label@1440",
+      "Passed": true,
+      "Detail": "text=\u6D53\u58A8\u4ECD\u9700\u5408\u9002\u7EB8\u7B14\u3002; label=(1463.8468, 335.1328), (383.3369, 35.579163); card=(1444.3357, 229.54303), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "ink\u6280\u827A\u7AD6\u6392\u5B8C\u6574 Technique_chengling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u6280\u827A\u5361\u4E92\u4E0D\u906E\u6321 1",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_chengling/@Label@1441",
+      "Passed": true,
+      "Detail": "text=\u6F84\u7075; label=(1463.8468, 403.99576), (286.92883, 41.31775); card=(1444.3357, 393.66632), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "ink\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_chengling/@Label@1442",
+      "Passed": true,
+      "Detail": "text=\u7814\u4E60; label=(1753.071, 408.5866), (88.37402, 33.283752); card=(1444.3357, 393.66632), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "ink\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_chengling/@Label@1443",
+      "Passed": true,
+      "Detail": "text=\u6F84\u53BB\u7ED3\u6EDE\uFF0C\u6539\u5584\u94FA\u5C55\u4E0E\u9644\u7EB8\u3002; label=(1463.8468, 446.4612), (383.3369, 48.20404); card=(1444.3357, 393.66632), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "ink\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_chengling/@Label@1444",
+      "Passed": true,
+      "Detail": "text=\u5F03\u53BB\u90E8\u5206\u58A8\u6599\uFF0C\u7528\u65F6\u8F83\u957F\u3002; label=(1463.8468, 499.2561), (383.3369, 35.579163); card=(1444.3357, 393.66632), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "ink\u6280\u827A\u7AD6\u6392\u5B8C\u6574 Technique_juyun",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u6280\u827A\u5361\u4E92\u4E0D\u906E\u6321 2",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_juyun/@Label@1445",
+      "Passed": true,
+      "Detail": "text=\u805A\u8574; label=(1463.8468, 568.119), (286.92883, 41.31775); card=(1444.3357, 557.78955), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "ink\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_juyun/@Label@1446",
+      "Passed": true,
+      "Detail": "text=\u7814\u4E60; label=(1753.071, 572.70984), (88.37402, 33.283752); card=(1444.3357, 557.78955), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "ink\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_juyun/@Label@1447",
+      "Passed": true,
+      "Detail": "text=\u6536\u914D\u58A8\u6DB2\uFF0C\u96C6\u4E2D\u5DF2\u7ECF\u53D6\u5F97\u7684\u58A8\u8574\u3002; label=(1463.8468, 610.5845), (383.3369, 48.20404); card=(1444.3357, 557.78955), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "ink\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_juyun/@Label@1448",
+      "Passed": true,
+      "Detail": "text=\u6210\u58A8\u8F83\u5C11\uFF0C\u627F\u58A8\u8D1F\u62C5\u8F83\u91CD\u3002; label=(1463.8468, 663.37933), (383.3369, 35.579163); card=(1444.3357, 557.78955), (420.06372, 151.49841)"
+    },
+    {
+      "Name": "ink\u6750\u6599\u6587\u5B57\u9A8C\u6536\u8986\u76D6\u5168\u90E8\u5DF2\u9009\u5361",
+      "Passed": true,
+      "Detail": "cards=4; selected=4"
+    },
+    {
+      "Name": "ink\u6750\u6599\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 MaterialCard_mat_mottled_beetle_shell/@Label@1407",
+      "Passed": true,
+      "Detail": "text=\u571F \u00B7 \u81F4\u5BC6 \u00B7 3\u4EFD; label=(170.37192, 281.19022), (267.41763, 32.136017); card=(55.600403, 229.54303), (389.07547, 190.52072)"
+    },
+    {
+      "Name": "ink\u6750\u6599\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 MaterialCard_mat_mottled_beetle_shell/@Label@1408",
+      "Passed": true,
+      "Detail": "text=\u62A4\u516B\u54C1; label=(170.37192, 313.32623), (260.53134, 49.351746); card=(55.600403, 229.54303), (389.07547, 190.52072)"
+    },
+    {
+      "Name": "ink\u6750\u6599\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 MaterialCard_mat_mottled_beetle_shell/@Label@1409",
+      "Passed": true,
+      "Detail": "text=\u7528\u91CF; label=(71.66841, 368.41656), (74.60149, 41.31775); card=(55.600403, 229.54303), (389.07547, 190.52072)"
+    },
+    {
+      "Name": "ink\u6750\u6599\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 MaterialCard_mat_sinking_cloud_jade_shard/@Label@1414",
+      "Passed": true,
+      "Detail": "text=\u571F \u00B7 \u9897\u7C92 \u00B7 2\u4EFD; label=(170.37192, 485.48352), (267.41763, 32.136047); card=(55.600403, 433.83633), (389.07547, 190.52072)"
+    },
+    {
+      "Name": "ink\u6750\u6599\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 MaterialCard_mat_sinking_cloud_jade_shard/@Label@1415",
+      "Passed": true,
+      "Detail": "text=\u85CF\u516B\u54C1; label=(170.37192, 517.61957), (260.53134, 49.351746); card=(55.600403, 433.83633), (389.07547, 190.52072)"
+    },
+    {
+      "Name": "ink\u6750\u6599\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 MaterialCard_mat_sinking_cloud_jade_shard/@Label@1416",
+      "Passed": true,
+      "Detail": "text=\u7528\u91CF; label=(71.66841, 572.70984), (74.60149, 41.31775); card=(55.600403, 433.83633), (389.07547, 190.52072)"
+    },
+    {
+      "Name": "ink\u6750\u6599\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 MaterialCard_mat_spirit_spring_dew/@Label@1421",
+      "Passed": true,
+      "Detail": "text=\u6C34 \u00B7 \u6DB2\u4F53 \u00B7 4\u4EFD; label=(170.37192, 689.77686), (267.41763, 32.136047); card=(55.600403, 638.12964), (389.07547, 190.52075)"
+    },
+    {
+      "Name": "ink\u6750\u6599\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 MaterialCard_mat_spirit_spring_dew/@Label@1422",
+      "Passed": true,
+      "Detail": "text=\u805A\u4E03\u54C1\u3001\u5316\u516B\u54C1; label=(170.37192, 721.91284), (260.53134, 49.351746); card=(55.600403, 638.12964), (389.07547, 190.52075)"
+    },
+    {
+      "Name": "ink\u6750\u6599\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 MaterialCard_mat_spirit_spring_dew/@Label@1423",
+      "Passed": true,
+      "Detail": "text=\u7528\u91CF; label=(71.66841, 777.0032), (74.60149, 41.31775); card=(55.600403, 638.12964), (389.07547, 190.52075)"
+    },
+    {
+      "Name": "ink\u6750\u6599\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 MaterialCard_mat_dew_pine_resin/@Label@1428",
+      "Passed": true,
+      "Detail": "text=\u6728 \u00B7 \u9ECF\u80F6 \u00B7 2\u4EFD; label=(170.37192, 894.0702), (267.41763, 32.136047); card=(55.600403, 842.423), (389.07547, 190.52075)"
+    },
+    {
+      "Name": "ink\u6750\u6599\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 MaterialCard_mat_dew_pine_resin/@Label@1429",
+      "Passed": true,
+      "Detail": "text=\u56FA\u4E5D\u54C1; label=(170.37192, 926.2062), (260.53134, 49.351746); card=(55.600403, 842.423), (389.07547, 190.52075)"
+    },
+    {
+      "Name": "ink\u6750\u6599\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 MaterialCard_mat_dew_pine_resin/@Label@1430",
+      "Passed": true,
+      "Detail": "text=\u7528\u91CF; label=(71.66841, 981.2965), (74.60149, 41.31775); card=(55.600403, 842.423), (389.07547, 190.52075)"
+    },
+    {
+      "Name": "ink\u51C6\u5907\u9875\u4E0D\u5C55\u793A\u5C1A\u672A\u751F\u4EA7\u7684\u7ED3\u679C\u5B57\u6BB5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u4E0D\u6062\u590D\u5DF2\u5220\u9664\u7684\u8BF4\u660E\u4E0E\u9759\u6001\u6D41\u7A0B\u6761",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u4E2D\u592E\u4F7F\u7528\u5B9E\u9645\u610F\u8C61\u7D20\u6750",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u622A\u56FE\u4E3A\u539F\u751F\u7A97\u53E3\u5C3A\u5BF8 ink_ready",
+      "Passed": true,
+      "Detail": "1920x1080"
+    },
+    {
+      "Name": "\u4FDD\u5B58\u622A\u56FE ink_ready",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u771F\u5B9E\u8F93\u5165\u53EF\u63D0\u4EA4",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB StartCraftButton",
+      "Passed": true,
+      "Detail": "(1444.3357, 982.4442), (420.06372, 61.976562)"
+    },
+    {
+      "Name": "ink\u81EA\u52A8\u6F14\u51FA\u4F7F\u7528\u672C\u5DE5\u827A\u4E0E\u5F53\u524D\u72B6\u6001",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u6F14\u51FA\u4E0E\u8DF3\u8FC7\u63A7\u4EF6\u5B8C\u6574\u53EF\u89C1",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u6F14\u51FA\u9690\u85CF\u9876\u680F\u4E0E\u5176\u4F59\u51C6\u5907\u7A7A\u95F4",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u4FDD\u7559\u539F\u573A\u666F\u80CC\u666F\u4E14\u4E2D\u592E\u6F14\u51FA\u6CA1\u6709\u7EB8\u9762\u5F39\u7A97",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u4E2D\u592E\u5C55\u793A\u610F\u8C61\u4E14\u8DF3\u8FC7\u4F4D\u4E8E\u53F3\u4E0A",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u91CD\u590D\u70B9\u51FB\u53EA\u6263\u4E00\u6B21\u7CBE\u529B\u5E76\u8BB0\u4E00\u6761\u751F\u4EA7",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u5F00\u5DE5\u53EA\u63A8\u8FDB\u4E00\u6B21\u672C\u6279\u5B9E\u9645\u6E38\u620F\u5DE5\u65F6",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u4EC5\u6263\u672C\u6279\u5B9E\u9645\u7528\u6599 res://resources/entities/items/\u6591\u7532\u58F3\u7247.tres",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u4EC5\u6263\u672C\u6279\u5B9E\u9645\u7528\u6599 res://resources/entities/items/\u6C89\u4E91\u7389\u5C51.tres",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u4EC5\u6263\u672C\u6279\u5B9E\u9645\u7528\u6599 res://resources/entities/items/\u7075\u6CC9\u9732.tres",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u4EC5\u6263\u672C\u6279\u5B9E\u9645\u7528\u6599 res://resources/entities/items/\u51DD\u9732\u677E\u8102.tres",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u65E7\u6279\u6B21\u5B8C\u6210\u56DE\u8C03\u4E0D\u5F71\u54CD\u5F53\u524D\u6F14\u51FA",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u6F14\u51FA\u4E2DEscape\u4E0D\u64A4\u6389\u906E\u7F69\u6216\u63D0\u524D\u6253\u5F00\u9274\u770B",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u6F14\u51FA\u906E\u7F69\u4E0E\u5FD9\u788C\u4FDD\u62A4\u62E6\u622A\u5207\u9875\u914D\u4F0D\u518C\u548C\u8FD4\u56DE",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u64AD\u653E\u53CA\u88AB\u62E6\u622A\u8F93\u5165\u4E0D\u518D\u6263\u53D1\u8D44\u6E90\u6216\u63A8\u8FDB\u5386\u6CD5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u622A\u56FE\u4E3A\u539F\u751F\u7A97\u53E3\u5C3A\u5BF8 ink_run",
+      "Passed": true,
+      "Detail": "1920x1080"
+    },
+    {
+      "Name": "\u4FDD\u5B58\u622A\u56FE ink_run",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u81EA\u52A8\u6F14\u51FA\u8FDB\u5165\u4E2D\u6BB5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u4E2D\u6BB5\u72B6\u6001\u8DDF\u968F\u6F14\u51FA\u66F4\u65B0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u622A\u56FE\u4E3A\u539F\u751F\u7A97\u53E3\u5C3A\u5BF8 ink_run_middle",
+      "Passed": true,
+      "Detail": "1920x1080"
+    },
+    {
+      "Name": "\u4FDD\u5B58\u622A\u56FE ink_run_middle",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB SkipCraftPresentation",
+      "Passed": true,
+      "Detail": "(1627.9702, 20.658875), (263.9745, 52.7949)"
+    },
+    {
+      "Name": "ink\u8DF3\u8FC7\u540E\u8FDB\u5165\u540C\u4E00\u5B9E\u9645\u9274\u770B",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u5B8C\u6210\u4E0E\u91CD\u590D\u8DF3\u8FC7\u53EA\u4FDD\u7559\u4E00\u4EFD\u9274\u770B",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u6F14\u51FA\u7ED3\u675F\u53EA\u63ED\u793A\u65E2\u5B9A\u7ED3\u679C\u4E0D\u91CD\u65B0\u5236\u4F5C",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u81EA\u7136\u6216\u8DF3\u8FC7\u7ED3\u675F\u540E\u6062\u590D\u539F\u754C\u9762\u53EF\u89C1\u6027",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u6210\u54C1\u540E\u5C55\u793A\u56DB\u4E2A\u771F\u5B9E\u5B57\u6BB5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u622A\u56FE\u4E3A\u539F\u751F\u7A97\u53E3\u5C3A\u5BF8 ink_result",
+      "Passed": true,
+      "Detail": "1920x1080"
+    },
+    {
+      "Name": "\u4FDD\u5B58\u622A\u56FE ink_result",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB ContinueCraftButton",
+      "Passed": true,
+      "Detail": "(1285.951, 932.5186), (263.9745, 49.351746)"
+    },
+    {
+      "Name": "ink\u8FD4\u56DE\u6848\u524D\u540E\u65E7\u6F14\u51FA\u56DE\u8C03\u4E0D\u518D\u6253\u5F00\u7ED3\u679C\u6216\u91CD\u6263\u53D1",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB CraftTab_drawing",
+      "Passed": true,
+      "Detail": "(522.72046, 20.658875), (141.16895, 52.7949)"
+    },
+    {
+      "Name": "\u753B\u7B26\u4E0D\u6CE8\u5165\u865A\u6784\u9ED8\u8BA4\u7EB8\u58A8\u7B14",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB ChooseProduct_paper",
+      "Passed": true,
+      "Detail": "(351.71094, 319.06482), (109.03296, 40.170044)"
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB PickProduct_talisman_50740c65d7acb35b0dccc081175bd120",
+      "Passed": true,
+      "Detail": "(1289.3943, 254.21893), (221.50903, 56.238037)"
+    },
+    {
+      "Name": "\u753B\u7B26\u901A\u8FC7\u6307\u9488\u9009\u62E9\u6301\u6709\u6210\u54C1 paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB ChooseProduct_ink",
+      "Passed": true,
+      "Detail": "(351.71094, 531.39215), (109.03296, 40.170044)"
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB PickProduct_talisman_e446dbc5b145e6e7227f8bbca6e93e76",
+      "Passed": true,
+      "Detail": "(1289.3943, 254.21893), (221.50903, 56.238037)"
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB FinishProductSelection",
+      "Passed": true,
+      "Detail": "(1344.4846, 924.4846), (227.24756, 52.79492)"
+    },
+    {
+      "Name": "\u753B\u7B26\u901A\u8FC7\u6307\u9488\u9009\u62E9\u6301\u6709\u6210\u54C1 ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB ChooseProduct_brush",
+      "Passed": true,
+      "Detail": "(351.71094, 809.13916), (109.03296, 40.170044)"
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB PickProduct_talisman_acf36fe6000078522d8a772a558bb598",
+      "Passed": true,
+      "Detail": "(1289.3943, 254.21893), (221.50903, 56.238037)"
+    },
+    {
+      "Name": "\u753B\u7B26\u901A\u8FC7\u6307\u9488\u9009\u62E9\u6301\u6709\u6210\u54C1 brush",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB Technique_common",
+      "Passed": true,
+      "Detail": "(1444.3357, 229.54303), (420.06372, 84.93091)"
+    },
+    {
+      "Name": "drawing\u5173\u952E\u63A7\u4EF6\u5B8C\u6574\u5728\u5C4F\u5185 CraftTab_paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u5173\u952E\u63A7\u4EF6\u5B8C\u6574\u5728\u5C4F\u5185 CraftTab_ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u5173\u952E\u63A7\u4EF6\u5B8C\u6574\u5728\u5C4F\u5185 CraftTab_drawing",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u5173\u952E\u63A7\u4EF6\u5B8C\u6574\u5728\u5C4F\u5185 ReturnButton",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u5173\u952E\u63A7\u4EF6\u5B8C\u6574\u5728\u5C4F\u5185 StartCraftButton",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u5173\u952E\u63A7\u4EF6\u5B8C\u6574\u5728\u5C4F\u5185 CentralArt",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u9876\u680F\u6309\u94AE\u540C\u4E00\u6C34\u5E73\u4E2D\u5FC3\u548C22\u5B57\u53F7 CraftTab_paper",
+      "Passed": true,
+      "Detail": "(196.99998, 18), (122.999985, 45.999996); font=22"
+    },
+    {
+      "Name": "drawing\u9876\u680F\u6309\u94AE\u540C\u4E00\u6C34\u5E73\u4E2D\u5FC3\u548C22\u5B57\u53F7 CraftTab_ink",
+      "Passed": true,
+      "Detail": "(325.99997, 18), (123.00003, 45.999996); font=22"
+    },
+    {
+      "Name": "drawing\u9876\u680F\u6309\u94AE\u540C\u4E00\u6C34\u5E73\u4E2D\u5FC3\u548C22\u5B57\u53F7 CraftTab_drawing",
+      "Passed": true,
+      "Detail": "(454.99994, 18), (123, 45.999996); font=22"
+    },
+    {
+      "Name": "drawing\u9876\u680F\u6309\u94AE\u540C\u4E00\u6C34\u5E73\u4E2D\u5FC3\u548C22\u5B57\u53F7 KnowledgeButton",
+      "Passed": true,
+      "Detail": "(1313.9999, 18), (108, 45.999996); font=22"
+    },
+    {
+      "Name": "drawing\u9876\u680F\u6309\u94AE\u540C\u4E00\u6C34\u5E73\u4E2D\u5FC3\u548C22\u5B57\u53F7 ReturnButton",
+      "Passed": true,
+      "Detail": "(1533.9999, 18), (114, 45.999996); font=22"
+    },
+    {
+      "Name": "drawing\u8FD4\u56DE\u6CBF\u70BC\u4E39\u70BC\u5668\u9876\u680F\u4F4D\u7F6E\u4E0E\u9AD8\u5EA6",
+      "Passed": true,
+      "Detail": "(1533.9999, 18), (114, 45.999996)"
+    },
+    {
+      "Name": "drawing\u7528\u91CF\u4E09\u4EF6\u7EC4\u540C\u9876\u540C\u5E95\u4E14\u9AD836 InkDose_talisman_e446dbc5b145e6e7227f8bbca6e93e76",
+      "Passed": true,
+      "Detail": "minus=(136.99998, 644.99994), (39, 36); input=(179.99998, 644.99994), (58, 36); plus=(241.99997, 644.99994), (39, 36)"
+    },
+    {
+      "Name": "drawing\u7528\u91CF\u51CF\u53F7\u6570\u503C\u52A0\u53F7\u4E92\u4E0D\u4EA4\u53E0 InkDose_talisman_e446dbc5b145e6e7227f8bbca6e93e76",
+      "Passed": true,
+      "Detail": "minus=(136.99998, 644.99994), (39, 36); input=(179.99998, 644.99994), (58, 36); plus=(241.99997, 644.99994), (39, 36)"
+    },
+    {
+      "Name": "drawing\u7528\u91CF\u4E09\u4EF6\u7EC4\u540C\u9876\u540C\u5E95\u4E14\u9AD836 DrawingQuantity",
+      "Passed": true,
+      "Detail": "minus=(1438.9998, 632.9999), (39, 36); input=(1481.9998, 632.9999), (58, 36); plus=(1543.9998, 632.9999), (39, 36)"
+    },
+    {
+      "Name": "drawing\u7528\u91CF\u51CF\u53F7\u6570\u503C\u52A0\u53F7\u4E92\u4E0D\u4EA4\u53E0 DrawingQuantity",
+      "Passed": true,
+      "Detail": "minus=(1438.9998, 632.9999), (39, 36); input=(1481.9998, 632.9999), (58, 36); plus=(1543.9998, 632.9999), (39, 36)"
+    },
+    {
+      "Name": "drawing\u5DE6\u53F3\u680F\u5E95\u8FB9\u5BF9\u9F50",
+      "Passed": true,
+      "Detail": "left=(23.999998, 117.999985), (399.99997, 796.99994); right=(1233.9998, 117.999985), (414, 796.99994)"
+    },
+    {
+      "Name": "drawing\u6280\u827A\u7AD6\u6392\u5B8C\u6574 Technique_common",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_common/@Label@1853",
+      "Passed": true,
+      "Detail": "text=\u5E38\u6CD5; label=(1463.8468, 239.87247), (286.92883, 41.31775); card=(1444.3357, 229.54303), (420.06372, 84.93091)"
+    },
+    {
+      "Name": "drawing\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_common/@Label@1854",
+      "Passed": true,
+      "Detail": "text=\u5DF2\u9009; label=(1753.071, 244.46333), (88.37402, 33.283737); card=(1444.3357, 229.54303), (420.06372, 84.93091)"
+    },
+    {
+      "Name": "drawing\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_common/@Label@1855",
+      "Passed": true,
+      "Detail": "text=\u4F9D\u7B26\u8C31\u884C\u7EB9\uFF0C\u5747\u8861\u7528\u58A8\u4E0E\u6536\u53E3\u3002; label=(1463.8468, 282.33792), (383.3369, 27.545166); card=(1444.3357, 229.54303), (420.06372, 84.93091)"
+    },
+    {
+      "Name": "drawing\u6280\u827A\u7AD6\u6392\u5B8C\u6574 Technique_shumo",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u6280\u827A\u5361\u4E92\u4E0D\u906E\u6321 1",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_shumo/@Label@1856",
+      "Passed": true,
+      "Detail": "text=\u675F\u58A8\u7559\u75D5; label=(1463.8468, 333.98514), (286.92883, 41.31775); card=(1444.3357, 323.6557), (420.06372, 84.93091)"
+    },
+    {
+      "Name": "drawing\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_shumo/@Label@1857",
+      "Passed": true,
+      "Detail": "text=\u7814\u4E60; label=(1753.071, 338.576), (88.37402, 33.283752); card=(1444.3357, 323.6557), (420.06372, 84.93091)"
+    },
+    {
+      "Name": "drawing\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_shumo/@Label@1858",
+      "Passed": true,
+      "Detail": "text=\u6536\u675F\u843D\u58A8\uFF0C\u6291\u5236\u6613\u6D07\u7684\u58A8\u8FF9\u3002; label=(1463.8468, 376.4506), (383.3369, 27.545166); card=(1444.3357, 323.6557), (420.06372, 84.93091)"
+    },
+    {
+      "Name": "drawing\u6280\u827A\u7AD6\u6392\u5B8C\u6574 Technique_touzhi",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u6280\u827A\u5361\u4E92\u4E0D\u906E\u6321 2",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_touzhi/@Label@1859",
+      "Passed": true,
+      "Detail": "text=\u900F\u7EB8\u884C\u58A8; label=(1463.8468, 428.09778), (286.92883, 41.31775); card=(1444.3357, 417.76834), (420.06372, 84.93094)"
+    },
+    {
+      "Name": "drawing\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_touzhi/@Label@1860",
+      "Passed": true,
+      "Detail": "text=\u7814\u4E60; label=(1753.071, 432.68863), (88.37402, 33.283752); card=(1444.3357, 417.76834), (420.06372, 84.93094)"
+    },
+    {
+      "Name": "drawing\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_touzhi/@Label@1861",
+      "Passed": true,
+      "Detail": "text=\u501F\u7EB8\u8109\u5165\u58A8\uFF0C\u9002\u5408\u8F83\u5BC6\u7EB8\u6750\u3002; label=(1463.8468, 470.56323), (383.3369, 27.545166); card=(1444.3357, 417.76834), (420.06372, 84.93094)"
+    },
+    {
+      "Name": "drawing\u6280\u827A\u7AD6\u6392\u5B8C\u6574 Technique_yunpu",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u6280\u827A\u5361\u4E92\u4E0D\u906E\u6321 3",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_yunpu/@Label@1862",
+      "Passed": true,
+      "Detail": "text=\u5300\u94FA\u957F\u884C; label=(1463.8468, 522.21045), (286.92883, 41.31775); card=(1444.3357, 511.88098), (420.06372, 84.93091)"
+    },
+    {
+      "Name": "drawing\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_yunpu/@Label@1863",
+      "Passed": true,
+      "Detail": "text=\u7814\u4E60; label=(1753.071, 526.8013), (88.37402, 33.283752); card=(1444.3357, 511.88098), (420.06372, 84.93091)"
+    },
+    {
+      "Name": "drawing\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_yunpu/@Label@1864",
+      "Passed": true,
+      "Detail": "text=\u5300\u9001\u58A8\u6E90\uFF0C\u63A5\u7EED\u590D\u6742\u7EB9\u8DEF\u3002; label=(1463.8468, 564.6759), (383.3369, 27.545166); card=(1444.3357, 511.88098), (420.06372, 84.93091)"
+    },
+    {
+      "Name": "drawing\u6280\u827A\u7AD6\u6392\u5B8C\u6574 Technique_ninghao",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u6280\u827A\u5361\u4E92\u4E0D\u906E\u6321 4",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_ninghao/@Label@1865",
+      "Passed": true,
+      "Detail": "text=\u51DD\u6BEB\u805A\u52BF; label=(1463.8468, 616.3231), (286.92883, 41.31775); card=(1444.3357, 605.99365), (420.06372, 84.93091)"
+    },
+    {
+      "Name": "drawing\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_ninghao/@Label@1866",
+      "Passed": true,
+      "Detail": "text=\u7814\u4E60; label=(1753.071, 620.91394), (88.37402, 33.283752); card=(1444.3357, 605.99365), (420.06372, 84.93091)"
+    },
+    {
+      "Name": "drawing\u6280\u827A\u5361\u6587\u5B57\u4F4D\u4E8E\u5361\u5185 Technique_ninghao/@Label@1867",
+      "Passed": true,
+      "Detail": "text=\u96C6\u4E2D\u4F59\u8574\uFF0C\u5C1D\u8BD5\u66F4\u9AD8\u7B26\u6548\u6863\u3002; label=(1463.8468, 658.7886), (383.3369, 27.545166); card=(1444.3357, 605.99365), (420.06372, 84.93091)"
+    },
+    {
+      "Name": "drawing\u4E0D\u6062\u590D\u5DF2\u5220\u9664\u7684\u8BF4\u660E\u4E0E\u9759\u6001\u6D41\u7A0B\u6761",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u4E2D\u592E\u4F7F\u7528\u5B9E\u9645\u610F\u8C61\u7D20\u6750",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u622A\u56FE\u4E3A\u539F\u751F\u7A97\u53E3\u5C3A\u5BF8 drawing_ready",
+      "Passed": true,
+      "Detail": "1920x1080"
+    },
+    {
+      "Name": "\u4FDD\u5B58\u622A\u56FE drawing_ready",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u771F\u5B9E\u8F93\u5165\u53EF\u63D0\u4EA4",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB StartCraftButton",
+      "Passed": true,
+      "Detail": "(1444.3357, 982.4442), (420.06372, 61.976562)"
+    },
+    {
+      "Name": "drawing\u81EA\u52A8\u6F14\u51FA\u4F7F\u7528\u672C\u5DE5\u827A\u4E0E\u5F53\u524D\u72B6\u6001",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u6F14\u51FA\u4E0E\u8DF3\u8FC7\u63A7\u4EF6\u5B8C\u6574\u53EF\u89C1",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u6F14\u51FA\u9690\u85CF\u9876\u680F\u4E0E\u5176\u4F59\u51C6\u5907\u7A7A\u95F4",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u4FDD\u7559\u539F\u573A\u666F\u80CC\u666F\u4E14\u4E2D\u592E\u6F14\u51FA\u6CA1\u6709\u7EB8\u9762\u5F39\u7A97",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u4E2D\u592E\u5C55\u793A\u610F\u8C61\u4E14\u8DF3\u8FC7\u4F4D\u4E8E\u53F3\u4E0A",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u91CD\u590D\u70B9\u51FB\u53EA\u6263\u4E00\u6B21\u7CBE\u529B\u5E76\u8BB0\u4E00\u6761\u751F\u4EA7",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u5F00\u5DE5\u53EA\u63A8\u8FDB\u4E00\u6B21\u672C\u6279\u5B9E\u9645\u6E38\u620F\u5DE5\u65F6",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u4EC5\u6263\u672C\u6279\u5B9E\u9645\u7528\u6599 user://talisman/products/e446dbc5b145e6e7227f8bbca6e93e76.tres",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u4EC5\u6263\u672C\u6279\u5B9E\u9645\u7528\u6599 user://talisman/products/50740c65d7acb35b0dccc081175bd120.tres",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u753B\u7B26\u4FDD\u7559\u771F\u5B9E\u7B26\u7B14",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u753B\u7B26\u6DE1\u5F71\u6309\u663E\u793A\u5C3A\u5BF8\u6536\u5728\u6F14\u51FA\u533A\u5185\uFF0C\u4E0D\u6309\u539F\u753B\u5C3A\u5BF8\u6EA2\u51FA",
+      "Passed": true,
+      "Detail": "(500.9139, 117.06695), (918.1721, 746.0149)"
+    },
+    {
+      "Name": "drawing\u65E7\u6279\u6B21\u5B8C\u6210\u56DE\u8C03\u4E0D\u5F71\u54CD\u5F53\u524D\u6F14\u51FA",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u6F14\u51FA\u4E2DEscape\u4E0D\u64A4\u6389\u906E\u7F69\u6216\u63D0\u524D\u6253\u5F00\u9274\u770B",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u6F14\u51FA\u906E\u7F69\u4E0E\u5FD9\u788C\u4FDD\u62A4\u62E6\u622A\u5207\u9875\u914D\u4F0D\u518C\u548C\u8FD4\u56DE",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u64AD\u653E\u53CA\u88AB\u62E6\u622A\u8F93\u5165\u4E0D\u518D\u6263\u53D1\u8D44\u6E90\u6216\u63A8\u8FDB\u5386\u6CD5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u622A\u56FE\u4E3A\u539F\u751F\u7A97\u53E3\u5C3A\u5BF8 drawing_run",
+      "Passed": true,
+      "Detail": "1920x1080"
+    },
+    {
+      "Name": "\u4FDD\u5B58\u622A\u56FE drawing_run",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u81EA\u52A8\u6F14\u51FA\u8FDB\u5165\u4E2D\u6BB5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u4E2D\u6BB5\u72B6\u6001\u8DDF\u968F\u6F14\u51FA\u66F4\u65B0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u622A\u56FE\u4E3A\u539F\u751F\u7A97\u53E3\u5C3A\u5BF8 drawing_run_middle",
+      "Passed": true,
+      "Detail": "1920x1080"
+    },
+    {
+      "Name": "\u4FDD\u5B58\u622A\u56FE drawing_run_middle",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u81EA\u7136\u6F14\u51FA\u8FDB\u5165\u51DD\u5B9A\u6536\u53E3",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u6536\u53E3\u72B6\u6001\u8DDF\u968F\u6F14\u51FA\u66F4\u65B0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u622A\u56FE\u4E3A\u539F\u751F\u7A97\u53E3\u5C3A\u5BF8 drawing_run_finish",
+      "Passed": true,
+      "Detail": "1920x1080"
+    },
+    {
+      "Name": "\u4FDD\u5B58\u622A\u56FE drawing_run_finish",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u81EA\u7136\u7ED3\u675F\u8FDB\u5165\u5B9E\u9645\u9274\u770B",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u5B8C\u6210\u4E0E\u91CD\u590D\u8DF3\u8FC7\u53EA\u4FDD\u7559\u4E00\u4EFD\u9274\u770B",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u6F14\u51FA\u7ED3\u675F\u53EA\u63ED\u793A\u65E2\u5B9A\u7ED3\u679C\u4E0D\u91CD\u65B0\u5236\u4F5C",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "drawing\u81EA\u7136\u6216\u8DF3\u8FC7\u7ED3\u675F\u540E\u6062\u590D\u539F\u754C\u9762\u53EF\u89C1\u6027",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u622A\u56FE\u4E3A\u539F\u751F\u7A97\u53E3\u5C3A\u5BF8 drawing_result",
+      "Passed": true,
+      "Detail": "1920x1080"
+    },
+    {
+      "Name": "\u4FDD\u5B58\u622A\u56FE drawing_result",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB ContinueCraftButton",
+      "Passed": true,
+      "Detail": "(1285.951, 932.5186), (263.9745, 49.351746)"
+    },
+    {
+      "Name": "drawing\u8FD4\u56DE\u6848\u524D\u540E\u65E7\u6F14\u51FA\u56DE\u8C03\u4E0D\u518D\u6253\u5F00\u7ED3\u679C\u6216\u91CD\u6263\u53D1",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u7EB8\u58A8\u7B14\u7ECF\u8FC7\u884C\u7EB9\u5C01\u7B26\u4EA7\u51FA\u62A4\u8EAB\u7B26",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5B8C\u6574\u751F\u4EA7\u786E\u5B9E\u6539\u53D8\u5E93\u5B58\u53CA\u7528\u5EA6",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u4EBA\u7269\u53CA\u7EB8\u58A8\u5B9A\u4E49\u4FDD\u5B58\u81F3output",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u8BFB\u6863\u4FDD\u7559\u7814\u4E60\u8BB0\u5F55\u4E0E\u51BB\u7ED3\u4EA7\u7269\u5408\u540C",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u8BFB\u6863\u4FDD\u7559\u6BCF\u4EFD\u7EB8\u58A8\u548C\u7B26\u7B14\u7684\u5B8C\u6574\u51BB\u7ED3\u5B57\u6BB5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u8BFB\u6863\u4E0D\u6309\u65B0\u9020\u8BE3\u91CD\u7B97 paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u8BFB\u6863\u4E0D\u6309\u65B0\u9020\u8BE3\u91CD\u7B97 ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u8BFB\u6863\u4E0D\u6309\u65B0\u9020\u8BE3\u91CD\u7B97 brush",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u8BFB\u6863\u4E0D\u6309\u65B0\u9020\u8BE3\u91CD\u7B97 talisman",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u8BFB\u6863\u4FDD\u7559\u7A7A\u95F4\u7269\u54C1\u8EAB\u4EFD\u4F4D\u7F6E\u4E0E\u671D\u5411",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB ReturnButton",
+      "Passed": true,
+      "Detail": "(1761.1052, 20.658875), (130.8396, 52.7949)"
+    },
+    {
+      "Name": "\u8FD4\u56DE\u53EA\u5173\u95ED\u7B26\u5DE5\u9875\uFF0C\u4FDD\u7559\u5730\u70B9\u5BBF\u4E3B\u548C\u5F53\u524D\u65C5\u7A0B\u573A\u666F",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u4EBA\u7269\u5B9E\u9645\u5165\u6599 \u5C71\u8695\u957F\u4E1D\u00D72",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u4EBA\u7269\u5B9E\u9645\u5165\u6599 \u7075\u6CC9\u9732\u00D72",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u79FB\u51FA\u573A\u666F\u7528\u771F\u5B9E\u7EB8\u6599\u914D\u4F0D\u53EF\u5236\u4F5C",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u6307\u9488\u53EF\u70B9\u51FB StartCraftButton",
+      "Passed": true,
+      "Detail": "(1444.3357, 982.4442), (420.06372, 61.976562)"
+    },
+    {
+      "Name": "\u79FB\u51FA\u6F14\u51FA\u524D\u6210\u54C1\u5DF2\u7ECF\u771F\u5B9E\u5165\u5305",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u573A\u666F\u79FB\u51FA\u65F6\u505C\u6B62\u6F14\u51FA\u5E76\u4F7F\u5B8C\u6210\u56DE\u8C03\u5931\u6548",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u573A\u666F\u79FB\u51FA\u65F6\u6062\u590D\u6F14\u51FA\u524D\u5404\u9879\u53EF\u89C1\u6027\u6807\u8BB0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u79FB\u51FA\u540E\u65E7\u6F14\u51FA\u4E0D\u8865\u5F00\u9274\u770B\u4E0D\u9000\u6B3E\u6216\u91CD\u590D\u5165\u5305",
+      "Passed": true,
+      "Detail": ""
+    }
+  ],
+  "inputMethod": "Viewport.PushInput mouse hit testing",
+  "ownerIsIsolatedFixture": true,
+  "playerJourneyRead": false
+}

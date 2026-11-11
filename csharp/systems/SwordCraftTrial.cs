@@ -7,7 +7,7 @@ using System.Text.Json;
 /// <summary>剑类候选工艺的隔离试炼。只读取资源，不接触人物、库存或战斗资源。</summary>
 public sealed class SwordCraftTrial
 {
-    public const string ParameterPath = "res://docs/plans/剑类炼器首轮试算参数_20261021.json";
+    public const string ParameterPath = "res://docs/plans/百工技艺/炼器/剑类炼器首轮试算参数_20261021.json";
     public readonly JsonElement Parameters;
     public readonly Dictionary<string, ItemData> Materials = [];
     public static readonly string[] Polarities = ["至阴", "阴", "偏阴", "和", "偏阳", "阳", "至阳"];

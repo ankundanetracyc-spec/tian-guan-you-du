@@ -26,6 +26,7 @@ public partial class EncyclopediaPanel : Control
         public string BasicAttack { get; set; } = "";
         public string Talent { get; set; } = "";
         public string Technique { get; set; } = "";
+        public string DesignStatus { get; set; } = "";
         public string Portrait { get; set; } = "";
         public CreatureStats? Stats { get; set; }
         public float? PhysicalDefense { get; set; }
@@ -613,7 +614,9 @@ public partial class EncyclopediaPanel : Control
         usageGrid.AddThemeConstantOverride("h_separation", 12);
         usageGrid.AddThemeConstantOverride("v_separation", 12);
         usage.AddChild(usageGrid);
-        AddItemPropertyCard(usageGrid, "堆叠", item.can_stack ? "可堆叠 · 不限单格数量" : "不可堆叠 · 每件占一格");
+        AddItemPropertyCard(usageGrid, "堆叠与体积", item.can_stack
+            ? $"可堆叠，上限{item.max_stack} · 每件占{item.get_storage_volume()}容量"
+            : $"不可堆叠 · 每件占{item.get_storage_volume()}容量");
         AddItemPropertyCard(usageGrid, "使用范围", item.usage_type switch
         {
             1 => "仅限战斗",
@@ -858,11 +861,18 @@ public partial class EncyclopediaPanel : Control
         else AppendSection(body, "基础四维", "境界高于云息；本轮只定境界和术法方向，数值范围待单独校准。");
         if (creature.PhysicalDefense is { } defense) AppendSection(body, "物理防御参考", defense.ToString("0.#"));
         AppendSection(body, "普通攻击", creature.BasicAttack);
-        if (!string.IsNullOrWhiteSpace(creature.Talent)) AppendSection(body, "种族天赋（初稿）", creature.Talent);
-        if (!string.IsNullOrWhiteSpace(creature.Technique)) AppendSection(body, "术法意向（初稿）", creature.Technique);
-        AppendSection(body, "设定说明", "首轮百科设定，尚未接入战斗模板；术法按现行自身／单体目标规则表达，不新增状态、射程或位移。");
+        var hasTrialCombat = HasTrialCombatIntegration(creature);
+        if (!string.IsNullOrWhiteSpace(creature.Talent)) AppendSection(body, hasTrialCombat ? "种族天赋（试玩）" : "种族天赋（初稿）", creature.Talent);
+        if (!string.IsNullOrWhiteSpace(creature.Technique))
+            AppendSection(body, hasTrialCombat ? "专属招式（试玩）" : "术法意向（初稿）", creature.Technique);
+        AppendSection(body, "设定说明", hasTrialCombat
+            ? "已接入副本遭遇与固定招式盘；技能公式为试玩首轮候选，待战斗平衡。"
+            : "首轮百科设定，尚未接入战斗模板；术法按现行自身／单体目标规则表达，不新增状态、射程或位移。");
         return EmptyBody(body);
     }
+
+    private static bool HasTrialCombatIntegration(CreatureRecord creature) =>
+        creature.DesignStatus.StartsWith("已接入副本试玩", StringComparison.Ordinal);
 
     private static void AddRange(List<string> rows, string label, CreatureStat? range)
     {
@@ -884,9 +894,14 @@ public partial class EncyclopediaPanel : Control
         else AddDossierSection("属性范围").AddChild(MakeLabel("高于云息境界，数值待后续校准。", 18, MutedInk));
         AddDossierSection("栖息与习性").AddChild(MakeLabel($"{creature.Habitat}\n{creature.Habit}", 18, MutedInk));
         AddDossierSection("普通攻击").AddChild(MakeLabel(creature.BasicAttack, 18, MutedInk));
-        if (!string.IsNullOrWhiteSpace(creature.Talent)) AddDossierSection("种族天赋（初稿）").AddChild(MakeLabel(creature.Talent, 18, MutedInk));
-        if (!string.IsNullOrWhiteSpace(creature.Technique)) AddDossierSection("术法意向（初稿）").AddChild(MakeLabel(creature.Technique, 18, MutedInk));
-        _beastDossier.AddChild(MakeLabel("首轮百科设定，尚未接入战斗模板。", 16, MutedInk));
+        var hasTrialCombat = HasTrialCombatIntegration(creature);
+        if (!string.IsNullOrWhiteSpace(creature.Talent))
+            AddDossierSection(hasTrialCombat ? "种族天赋（试玩）" : "种族天赋（初稿）").AddChild(MakeLabel(creature.Talent, 18, MutedInk));
+        if (!string.IsNullOrWhiteSpace(creature.Technique))
+            AddDossierSection(hasTrialCombat ? "专属招式（试玩）" : "术法意向（初稿）").AddChild(MakeLabel(creature.Technique, 18, MutedInk));
+        _beastDossier.AddChild(MakeLabel(hasTrialCombat
+            ? "已接入副本遭遇与固定招式盘；技能公式为试玩首轮候选，待战斗平衡。"
+            : "首轮百科设定，尚未接入战斗模板。", 16, MutedInk));
     }
 
     private static void AddStat(List<StatRange> rows, string name, CreatureStat? stat)
@@ -1259,7 +1274,9 @@ public partial class EncyclopediaPanel : Control
                 AppendSection(body, "品阶", item.get_grade_string());
             var tags = StoragePanel.build_tags(item.tags, material);
             if (tags != "无词缀") AppendSection(body, "物品词缀", tags);
-            AppendSection(body, "堆叠", item.can_stack ? "可堆叠，不限单格数量" : "不可堆叠，每件占一格");
+            AppendSection(body, "堆叠与体积", item.can_stack
+                ? $"可堆叠，上限{item.max_stack}；每件占{item.get_storage_volume()}容量"
+                : $"不可堆叠；每件占{item.get_storage_volume()}容量");
             AppendSection(body, "使用范围", item.usage_type switch { 1 => "仅限战斗", 2 => "大世界与战斗均可使用", _ => "大世界物品" });
             if (!string.IsNullOrWhiteSpace(item.battle_skill_path) && ResourceLoader.Load<ActiveSkillData>(item.battle_skill_path) is { } battleSkill)
                 AppendSection(body, "战斗效果", CardPresentation.Underline(CardPresentation.Face(battleSkill, null)));

@@ -1,25 +1,23 @@
-<mxfile host="app.diagrams.net" agent="Codex" version="24.7.17">
-  <diagram id="taihe-heart" name="太和感物养元">
-    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="720" math="0" shadow="0">
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" agent="Codex">
+  <diagram name="心法" id="player">
+    <mxGraphModel page="1" pageWidth="1400" pageHeight="900" grid="1" gridSize="10">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="card" value="心法被动：太和感物养元&#10;关键词：气血、应对&#10;效果：自身每次触发应对后，获得气血1层，受气血上限限制。&#10;第四卷升级：每回合首次触发应对后获得气血2层；本回合后续每次触发应对仍获得气血1层，均受上限限制。&#10;主修额外效果：无。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e7eee4;strokeColor=#769078;fontSize=18;align=left;spacingLeft=18;spacingTop=16;" vertex="1" parent="1">
-          <mxGeometry x="120" y="48" width="1260" height="430" as="geometry" />
-        </mxCell>
-        <mxCell id="player-rules-entry" value="本图为详细版：效果后以括号列出公式；游戏内可设置简略／详细。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eee8d8;strokeColor=#9a8967;fontSize=16;" vertex="1" parent="1">
-          <mxGeometry x="40" y="510" width="1000" height="60" as="geometry" />
+        <mxCell id="body" parent="1" vertex="1" value="第一卷：听息&lt;br&gt;心法被动：太和感物养元&lt;br&gt;关键词：气血、应对&lt;br&gt;效果：自身每次触发应对后，获得气血1层；受气血上限限制。&lt;br&gt;&lt;br&gt;第二卷：回澜&lt;br&gt;心法被动：太和感物养元（沿用第一卷，无新增效果）&lt;br&gt;&lt;br&gt;第三卷：藏锋&lt;br&gt;心法被动：太和感物养元（沿用第一卷，无新增效果）&lt;br&gt;&lt;br&gt;第四卷：返元&lt;br&gt;心法被动：太和感物养元&lt;br&gt;关键词：气血、应对&lt;br&gt;效果：每回合首次触发自身应对后，获得气血2层；本回合后续每次触发自身应对后，获得气血1层，均受气血上限限制。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ebe6d6;strokeColor=#857c61;fontSize=20;align=left;verticalAlign=top;spacing=24;">
+          <mxGeometry as="geometry" x="50" y="50" width="1300" height="780" />
         </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="taihe-heart-rules" name="太和感物养元 · 规则详解">
-    <mxGraphModel dx="1200" dy="700" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="720" math="0" shadow="0">
+  <diagram name="策划说明" id="notes">
+    <mxGraphModel page="1" pageWidth="1400" pageHeight="880" grid="1" gridSize="10">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="card" value="&lt;div style=&quot;text-align:left;&quot;&gt;心法被动：太和感物养元&lt;br&gt;资源路径：res://resources/activeskills/太和感物养元宝册/太和感物养元.tres&lt;br&gt;关键词：气血、应对&lt;br&gt;效果：自身每次触发&lt;u&gt;应对&lt;/u&gt;后，获得&lt;u&gt;气血&lt;/u&gt;1层，受&lt;u&gt;气血&lt;/u&gt;上限限制。&lt;br&gt;第四卷升级：每回合首次触发&lt;u&gt;应对&lt;/u&gt;后获得&lt;u&gt;气血&lt;/u&gt;2层；本回合后续每次触发&lt;u&gt;应对&lt;/u&gt;仍获得&lt;u&gt;气血&lt;/u&gt;1层，均受上限限制。&lt;br&gt;主修额外效果：无。&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e7eee4;strokeColor=#769078;fontSize=18;align=left;spacingLeft=18;spacingTop=16;" vertex="1" parent="1">
-          <mxGeometry x="120" y="48" width="1260" height="430" as="geometry" />
+        <mxCell id="body" parent="1" vertex="1" value="现行规则：docs/plans/战斗与构筑/人类招式心法全效果迁移_20261108.md&lt;br&gt;平衡与名称标注：docs/plans/战斗与构筑/人类招式首轮平衡与名称标注_20261108.md&lt;br&gt;实施与时序：docs/plans/战斗与构筑/人类招式盘实施与验收_20261107.md&lt;br&gt;资源：res://resources/activeskills/太和感物养元宝册/太和感物养元.tres&lt;br&gt;主图仅为玩家详细文案。&lt;br&gt;名称*N为可摆份数；限N只表示整场共享次数，每回合次数另写。&lt;br&gt;首次扫到整份检查，失败本轮不重试，下一共同回合重新点亮。&lt;br&gt;同招共享原限次和冷却；每项化法只影响实际指向的一份。&lt;br&gt;寄念目标、妖兽布阵及新器物参战仍按各自专题，未在本图补造。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ebe6d6;strokeColor=#857c61;fontSize=20;align=left;verticalAlign=top;spacing=24;">
+          <mxGeometry as="geometry" x="50" y="50" width="1300" height="700" />
         </mxCell>
       </root>
     </mxGraphModel>

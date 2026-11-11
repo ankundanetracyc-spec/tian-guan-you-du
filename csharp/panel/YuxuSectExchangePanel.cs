@@ -6,7 +6,8 @@ public partial class YuxuSectExchangePanel : Control
     [Signal] public delegate void back_requestedEventHandler();
     [Signal] public delegate void purchase_requestedEventHandler(string item_path, int contribution_cost);
     private static readonly Vector2 DesignSize = new(1664, 936);
-    private const string FramePath = "res://docs/美术规范/交易列表与物品占格悬停_20261029/善功堂_分类分列文字目录_v2.png";
+    private const int ColumnWidth = 360;
+    private const string FramePath = "res://textures/ui/yuxu_library_20261107/exchange_frame.png";
     private const string ColumnPath = "res://textures/ui/shangong_columns_20261030/column_mountain_paper_v1.png";
     private sealed record CatalogEntry(ItemData Item, string Category, int ContributionCost);
     private readonly List<CatalogEntry> _catalog = [];
@@ -24,6 +25,7 @@ public partial class YuxuSectExchangePanel : Control
     private CatalogEntry? _selectedItem;
     private long _contributionBalance;
     private bool _purchasePending, _purchaseCompleted, _panning;
+    private Character? _hoverActor;
     private Vector2 _panStart;
     private int _panScroll;
 
@@ -45,6 +47,8 @@ public partial class YuxuSectExchangePanel : Control
 
     public override void _ExitTree() { if (GetWindow() is { } window) window.FocusExited -= cancel_pan; }
     private void cancel_pan() => _panning = false;
+
+    public void set_hover_actor(Character? actor) => _hoverActor = actor;
 
     public void open_panel(long contributionBalance)
     {
@@ -81,6 +85,16 @@ public partial class YuxuSectExchangePanel : Control
         {
             _panning = false; handle_back(); GetViewport().SetInputAsHandled();
         }
+        if (_purchaseDialog?.Visible == true) { _panning = false; return; }
+        // Handle horizontal wheels before nested item lists consume their vertical wheel input.
+        if (_categoryScroll is not null && input is InputEventMouseButton { Pressed: true } mouse
+            && mouse.ButtonIndex is MouseButton.WheelUp or MouseButton.WheelDown or MouseButton.WheelLeft or MouseButton.WheelRight
+            && (mouse.ShiftPressed || mouse.ButtonIndex is MouseButton.WheelLeft or MouseButton.WheelRight)
+            && _categoryScroll.GetGlobalRect().HasPoint(mouse.Position))
+        {
+            _categoryScroll.ScrollHorizontal += mouse.ButtonIndex is MouseButton.WheelUp or MouseButton.WheelLeft ? -100 : 100;
+            HoverInfoManager.HideAll(); refresh_arrows(); GetViewport().SetInputAsHandled(); return;
+        }
         if (!_panning || _categoryScroll is null || _canvas is null) return;
         if (input is InputEventMouseMotion motion)
         {
@@ -100,24 +114,34 @@ public partial class YuxuSectExchangePanel : Control
     {
         var matte = new ColorRect { Color = new("d1d5cf"), MouseFilter = MouseFilterEnum.Ignore };
         AddChild(matte); matte.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        _canvas = new Control { Name = "PavilionCanvas", MouseFilter = MouseFilterEnum.Pass };
+        _canvas = new Control { Name = "PavilionCanvas", Size = DesignSize, MouseFilter = MouseFilterEnum.Pass };
         AddChild(_canvas); _canvas.Size = DesignSize;
-        place(new TextureRect { Name = "PavilionFrame", Texture = GD.Load<Texture2D>(FramePath), ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize, StretchMode = TextureRect.StretchModeEnum.Scale, MouseFilter = MouseFilterEnum.Ignore }, _canvas, 0, 0, 1664, 936);
-        // Cover the concept's baked status text; all changing data below is live UI.
+        place(new TextureRect { Name = "PavilionFrame", Texture = YuxuLibraryArt.Texture(FramePath), ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize, StretchMode = TextureRect.StretchModeEnum.Scale, MouseFilter = MouseFilterEnum.Ignore }, _canvas, 0, 0, 1664, 936);
+        var hallTitle = label("善功堂", 55); hallTitle.HorizontalAlignment = HorizontalAlignment.Center;
+        place(hallTitle, _canvas, 585, 78, 495, 80);
+        // 纸面状态区继续显示真实余额，原四列布局保持。
         place(paper(new("f5eddf")), _canvas, 126, 204, 385, 31);
         _balanceLabel = label("可用贡献：0", 22); place(_balanceLabel, _canvas, 128, 202, 380, 34);
-        _previous = button("‹", 29); place(_previous, _canvas, 1154, 199, 30, 36); _previous.Pressed += () => pan_categories(-1);
-        _next = button("›", 29); place(_next, _canvas, 1186, 199, 30, 36); _next.Pressed += () => pan_categories(1);
+        _previous = button("‹", 29); place(_previous, _canvas, 1461, 199, 30, 36); _previous.Pressed += () => pan_categories(-1);
+        _next = button("›", 29); place(_next, _canvas, 1493, 199, 30, 36); _next.Pressed += () => pan_categories(1);
         _search = new LineEdit { Name = "CatalogSearch", PlaceholderText = "搜索物品名称", ClearButtonEnabled = true };
         _search.AddThemeFontOverride("font", _font); _search.AddThemeFontSizeOverride("font_size", 19);
         _search.AddThemeColorOverride("font_color", new("353c30"));
+        _search.AddThemeColorOverride("font_placeholder_color", YuxuLibraryArt.Muted);
         _search.AddThemeStyleboxOverride("normal", flat(new("f5eddf"))); _search.AddThemeStyleboxOverride("focus", flat(new("f5eddf"), new("a99b75")));
         place(_search, _canvas, 1242, 201, 194, 33); _search.TextChanged += _ => rebuild_rows();
-        var back = button("返回", 22); back.AddThemeStyleboxOverride("normal", flat(new("f5eddf"))); place(back, _canvas, 1444, 202, 88, 31); back.Pressed += () => handle_back();
+        var back = button("返回", 22); PaperButtonFeedback.Apply(back, CraftingPaperStyle.ButtonKind.Regular, 22);
+        _canvas.AddChild(back); CraftingPaperHeader.PlaceReturn(_canvas, back); CraftingPaperHeader.AddReturnArrow(back); back.Pressed += () => handle_back();
         _categoryScroll = new ScrollContainer { Name = "CategoryScroll", HorizontalScrollMode = ScrollContainer.ScrollMode.Auto, VerticalScrollMode = ScrollContainer.ScrollMode.Disabled, ClipContents = true };
-        place(_categoryScroll, _canvas, 110, 246, 1440, 584);
+        place(_categoryScroll, _canvas, 110, 246, ColumnWidth * 4, 590);
         _categoryScroll.AddThemeStyleboxOverride("panel", flat(new("f3ecdb")));
-        _categoryScroll.GetHScrollBar().ValueChanged += _ => { HoverInfoManager.HideAll(); refresh_arrows(); };
+        var rail = _categoryScroll.GetHScrollBar(); rail.Name = "CategoryRail";
+        rail.AddThemeStyleboxOverride("scroll", rail_style(new("ddd5c3"), false));
+        rail.AddThemeStyleboxOverride("grabber", rail_style(new("91a093"), true));
+        rail.AddThemeStyleboxOverride("grabber_highlight", rail_style(new("7e9283"), true));
+        rail.AddThemeStyleboxOverride("grabber_pressed", rail_style(new("687f70"), true));
+        rail.ValueChanged += _ => { HoverInfoManager.HideAll(); refresh_arrows(); };
+        rail.Changed += refresh_arrows;
         _categoryScroll.GuiInput += input => on_rail_input(input, _categoryScroll);
         _categoryColumns = new HBoxContainer { Name = "CategoryColumns", SizeFlagsVertical = SizeFlags.ExpandFill };
         _categoryColumns.AddThemeConstantOverride("separation", 0); _categoryScroll.AddChild(_categoryColumns);
@@ -133,7 +157,7 @@ public partial class YuxuSectExchangePanel : Control
 
     private void build_column(string category)
     {
-        var column = new Control { Name = "Category_" + category, CustomMinimumSize = new(360, 574), MouseFilter = MouseFilterEnum.Pass };
+        var column = new Control { Name = "Category_" + category, CustomMinimumSize = new(ColumnWidth, 574), MouseFilter = MouseFilterEnum.Pass };
         _categoryColumns!.AddChild(column);
         place(new TextureRect { Texture = GD.Load<Texture2D>(ColumnPath), ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize, StretchMode = TextureRect.StretchModeEnum.Scale, MouseFilter = MouseFilterEnum.Ignore }, column, 0, 0, 360, 574);
         var heading = new Control { Name = "CategoryHeading", MouseFilter = MouseFilterEnum.Stop }; place(heading, column, 0, 0, 360, 71);
@@ -153,19 +177,18 @@ public partial class YuxuSectExchangePanel : Control
         if (input is InputEventMouseButton mouse)
         {
             if (mouse.ButtonIndex == MouseButton.Left && mouse.Pressed) { _panning = true; _panStart = origin.GetGlobalTransformWithCanvas() * mouse.Position; _panScroll = _categoryScroll.ScrollHorizontal; }
-            else if (mouse.Pressed && (mouse.ShiftPressed || mouse.ButtonIndex is MouseButton.WheelLeft or MouseButton.WheelRight))
-            {
-                _categoryScroll.ScrollHorizontal += mouse.ButtonIndex is MouseButton.WheelUp or MouseButton.WheelLeft ? -100 : 100; refresh_arrows(); AcceptEvent();
-            }
         }
         else if (input is InputEventScreenTouch { Pressed: true } touch) { _panning = true; _panStart = origin.GetGlobalTransformWithCanvas() * touch.Position; _panScroll = _categoryScroll.ScrollHorizontal; }
     }
 
-    private void pan_categories(int direction) { if (_categoryScroll is not null) _categoryScroll.ScrollHorizontal += direction * 360; HoverInfoManager.HideAll(); refresh_arrows(); }
+    private void pan_categories(int direction) { if (_categoryScroll is not null) _categoryScroll.ScrollHorizontal += direction * ColumnWidth; HoverInfoManager.HideAll(); refresh_arrows(); }
     private void refresh_arrows()
     {
         if (_categoryScroll is null || _previous is null || _next is null) return;
-        var bar = _categoryScroll.GetHScrollBar(); _previous.Disabled = bar.Value <= bar.MinValue + 1; _next.Disabled = bar.Value >= bar.MaxValue - bar.Page - 1;
+        var bar = _categoryScroll.GetHScrollBar();
+        var overflow = bar.MaxValue - bar.Page > bar.MinValue + 1;
+        _previous.Visible = _next.Visible = overflow;
+        _previous.Disabled = bar.Value <= bar.MinValue + 1; _next.Disabled = bar.Value >= bar.MaxValue - bar.Page - 1;
     }
 
     private void rebuild_rows()
@@ -188,7 +211,7 @@ public partial class YuxuSectExchangePanel : Control
         var name = label(entry.Item.entity_name, 19); name.ClipText = true; name.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis; place(name, row, 8, 0, 204, 42);
         var stock = label("—", 19); stock.HorizontalAlignment = HorizontalAlignment.Right; place(stock, row, 220, 0, 42, 42);
         var price = label(entry.ContributionCost.ToString(), 19); price.Name = "ContributionPrice"; price.HorizontalAlignment = HorizontalAlignment.Right; place(price, row, 270, 0, 48, 42);
-        HoverInfoManager.SetInfo(row, StoragePanel.ItemHover(entry.Item));
+        HoverInfoManager.SetProvider(row, () => StoragePanel.ItemHover(entry.Item, user: _hoverActor));
         row.Pressed += () => select_entry(entry);
         row.GuiInput += input => { if (input is InputEventMouseButton { Pressed: true, DoubleClick: true, ButtonIndex: MouseButton.Left }) { select_entry(entry); open_purchase_dialog(entry); } };
         _rows[entry.Item.definition_id.ToString()] = row; return row;
@@ -267,6 +290,7 @@ public partial class YuxuSectExchangePanel : Control
     private Label label(string value, int size) { var result = new Label { Text = value, VerticalAlignment = VerticalAlignment.Center, MouseFilter = MouseFilterEnum.Ignore }; result.AddThemeFontOverride("font", _font); result.AddThemeFontSizeOverride("font_size", size); result.AddThemeColorOverride("font_color", new("30382e")); return result; }
     private Button button(string value, int size) { var result = new Button { Text = value, MouseDefaultCursorShape = CursorShape.PointingHand }; result.AddThemeFontOverride("font", _font); result.AddThemeFontSizeOverride("font_size", size); result.AddThemeColorOverride("font_color", new("30382e")); result.AddThemeColorOverride("font_disabled_color", new("92957f")); result.AddThemeStyleboxOverride("normal", new StyleBoxEmpty()); result.AddThemeStyleboxOverride("hover", flat(new(.72f,.79f,.64f,.25f))); result.AddThemeStyleboxOverride("pressed", flat(new(.62f,.71f,.54f,.35f))); result.AddThemeStyleboxOverride("disabled", new StyleBoxEmpty()); return result; }
     private static StyleBoxFlat row_style(bool selected) => new() { BgColor = selected ? new(.69f,.77f,.60f,.40f) : Colors.Transparent, BorderColor = new(.73f,.66f,.51f,.25f), BorderWidthBottom = 1, ContentMarginLeft = 0, ContentMarginRight = 0, ContentMarginTop = 0, ContentMarginBottom = 0 };
+    private static StyleBoxFlat rail_style(Color color, bool thumb) => new() { BgColor = color, CornerRadiusTopLeft = 6, CornerRadiusTopRight = 6, CornerRadiusBottomLeft = 6, CornerRadiusBottomRight = 6, ContentMarginTop = 6, ContentMarginBottom = 6, ContentMarginLeft = thumb ? 24 : 0, ContentMarginRight = thumb ? 24 : 0 };
     private static ColorRect paper(Color color) => new() { Color = color, MouseFilter = MouseFilterEnum.Ignore };
     private static StyleBoxFlat flat(Color color, Color? border = null) => new() { BgColor = color, BorderColor = border ?? Colors.Transparent, BorderWidthLeft = border.HasValue ? 1 : 0, BorderWidthRight = border.HasValue ? 1 : 0, BorderWidthTop = border.HasValue ? 1 : 0, BorderWidthBottom = border.HasValue ? 1 : 0, ContentMarginLeft = 0, ContentMarginRight = 0, ContentMarginTop = 0, ContentMarginBottom = 0 };
     private static void place(Control child, Control parent, float x, float y, float width, float height) { parent.AddChild(child); child.Position = new(x,y); child.Size = new(width,height); }

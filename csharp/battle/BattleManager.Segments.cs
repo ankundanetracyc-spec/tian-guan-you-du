@@ -185,8 +185,17 @@ public partial class BattleManager
 
     private void AdvancePlanning(float frames)
     {
-        if (_segmentPhase != SegmentPhase.Planning) return;
-        // 单机规划无倒计时；只由玩家确认后推进。
+        if (_segmentPhase != SegmentPhase.Planning || !auto_battle || !Alive(_mainPlayerUnit)) return;
+        var player = _mainPlayerUnit!;
+        // 自动只替换尚未确认的队列；执行仍走与手动队列相同的结算入口。
+        var state = get_battle_unit(player);
+        state.skill_queue.Clear();
+        state.segment_action_index = 0;
+        _playerPlanningHistory.Clear();
+        var forecast = CreateHealthForecast();
+        BuildAiQueue(player, forecast, false, allowSupplies: false);
+        EnsureSegmentSlots(player);
+        StartConfirmedQueue();
     }
 
     public void confirm_player_queue()
@@ -309,6 +318,13 @@ public partial class BattleManager
 
     public string get_skill_uses_remaining(GodotObject unit, ActiveSkillData skill)
     {
+        if (_boardMode && skill.has_board_definition() && get_board_state(unit) is { } board)
+        {
+            var limits = new List<string>();
+            if (board.RemainingRoundUses(skill) is var roundUses && roundUses >= 0) limits.Add($"轮 {roundUses}");
+            if (board.RemainingBattleUses(skill) is var battleUses && battleUses >= 0) limits.Add($"场 {battleUses}");
+            return string.Join(" / ", limits);
+        }
         var queued = QueuedUseCount(unit, skill);
         var parts = new List<string>();
         if (skill.uses_per_round > 0)

@@ -3,6 +3,9 @@ using System;
 /// <summary>秘籍及器物化法共用的选择项；效果仍由各来源自己的实现结算。</summary>
 public sealed class SkillRewriteChoice
 {
+    public string BoardIconPath { get; init; } = "";
+    public int BoardDefinitionVersion { get; init; }
+    public int BoardMaxPlacements { get; init; }
     public required string Id { get; init; }
     public required string Source { get; init; }
     public required string Title { get; init; }

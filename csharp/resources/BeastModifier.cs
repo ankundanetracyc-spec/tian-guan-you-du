@@ -11,4 +11,5 @@ public partial class BeastModifier : Resource
     [Export] public float soul_multiplier = 1f;
     [Export] public BeastRacialTalent? racial_talent_override;
     [Export] public BasicDeckResource? deck_override;
+    [Export] public CombatBoardLayout? combat_board_layout_override;
 }

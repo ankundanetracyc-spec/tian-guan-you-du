@@ -12,9 +12,9 @@ public partial class BattleManager
     // 有限束搜索比较整段草案。预测全为独立值，不调用支付、加状态、随机或技能执行。
     private sealed class AiDraft
     {
-        public int Stamina, Mana, Capacity, Qi, Blood, Shield, SwordIntent, EmptyManaTriggers;
-        public bool EmptyGuardQiUsed, CloudIntentExtraUsed;
-        public bool ConversionReady, CapQiUsed;
+        public int Stamina, Mana, Capacity, Qi, Blood, Shield, SwordIntent, EmptyManaTriggers, PendingDelayedBlood, ManaBeforeLastSkill;
+        public bool EmptyGuardQiUsed;
+        public bool CapacityBurnReady, CapQiUsed;
         public float Value;
         public double PillToxicity;
         public ActiveSkillData? Last;
@@ -27,12 +27,12 @@ public partial class BattleManager
         public HashSet<string> Statuses = [];
         public Dictionary<string, int> SupplyWounds = [];
         public AiDraft Copy() => new() { Stamina=Stamina,Mana=Mana,Capacity=Capacity,Qi=Qi,Blood=Blood,Shield=Shield,
-            SwordIntent=SwordIntent,EmptyManaTriggers=EmptyManaTriggers,EmptyGuardQiUsed=EmptyGuardQiUsed,CloudIntentExtraUsed=CloudIntentExtraUsed,
-            ConversionReady=ConversionReady,CapQiUsed=CapQiUsed,Value=Value,Last=Last,PillToxicity=PillToxicity,
+            SwordIntent=SwordIntent,EmptyManaTriggers=EmptyManaTriggers,EmptyGuardQiUsed=EmptyGuardQiUsed,
+            CapacityBurnReady=CapacityBurnReady,CapQiUsed=CapQiUsed,PendingDelayedBlood=PendingDelayedBlood,ManaBeforeLastSkill=ManaBeforeLastSkill,Value=Value,Last=Last,PillToxicity=PillToxicity,
             Actions=new(Actions),Health=new(Health),Shields=new(Shields),Uses=new(Uses),Converted=new(Converted),Summoned=new(Summoned),Statuses=new(Statuses),SupplyWounds=new(SupplyWounds) };
     }
 
-    private void BuildConstructedAiQueue(GodotObject unit, Dictionary<GodotObject,float> forecast, bool teammate)
+    private void BuildConstructedAiQueue(GodotObject unit, Dictionary<GodotObject,float> forecast, bool teammate, bool allowSupplies)
     {
         if (!Alive(unit) || !_combatSkills.TryGetValue(unit,out var loadout)) return;
         _aiRawDamage.Clear();
@@ -40,7 +40,7 @@ public partial class BattleManager
         var flags=gongfa_combat.GetPlanningFlags(unit);
         var initial=new AiDraft { Stamina=unit.Get("current_stamina").AsInt32(), Mana=unit.Get("current_mana").AsInt32(),
             Capacity=get_effective_mana_capacity(unit), Qi=get_battle_qi(unit),Blood=Mathf.RoundToInt(CardRules.Number(unit,"qi_blood")),
-            Shield=unit.Get("shield").AsInt32(),Health=new(forecast),ConversionReady=flags.ConversionReady,CapQiUsed=flags.CapQiUsed,
+            Shield=unit.Get("shield").AsInt32(),Health=new(forecast),CapacityBurnReady=flags.CapacityBurnReady,CapQiUsed=flags.CapQiUsed,PendingDelayedBlood=flags.PendingBaihaiQiBlood,
             SwordIntent=GetStatus(unit,"剑意"),
             Last=gongfa_combat.GetLastNonResponseSkill(unit), PillToxicity = unit is Character owner ? owner.PillToxicity : 0 };
         foreach(var target in get_target_candidates().Where(Alive)) initial.Shields[target]=Math.Max(0,target.Get("shield").AsInt32());
@@ -72,7 +72,7 @@ public partial class BattleManager
                     next.Add(branch);
                 }
                 // 休整也参与方案比较；必须至少还有一个位置，且能支撑后续实际可用的技能。
-                AddAiSupplyBranches(unit, draft, next, loadout, teammate, slots - index);
+                if (allowSupplies) AddAiSupplyBranches(unit, draft, next, loadout, teammate, slots - index);
                 if(urgent.Count==0&&index+1<slots&&draft.Stamina<unit.Get("max_stamina").AsInt32())
                 {
                     var recovered=draft.Copy(); recovered.Stamina=Math.Min(unit.Get("max_stamina").AsInt32(),draft.Stamina+2);
@@ -110,7 +110,7 @@ public partial class BattleManager
             var execution=AiDraftExecution(unit,skill,draft);
             if(execution.artifact_is_summon&&!can_plan_artifact_summon(unit,skill))continue;
             var costs=AiDraftCosts(unit,execution,draft);
-            if(!AiCanPay(unit,draft,costs.Energy,costs.Mana))continue;
+            if(!AiCanPay(unit,draft,costs.Energy,costs.Mana,costs.Capacity))continue;
             if(execution.artifact_is_summon)
             {
                 var items=_artifactItems.GetValueOrDefault(unit,[]);
@@ -128,7 +128,7 @@ public partial class BattleManager
             if(skill.skill_name=="复命"&&draft.Last is { } copy)
             {
                 var second=AiDraftCosts(unit,copy,draft);
-                if(!AiCanPay(unit,draft,costs.Energy+second.Energy,costs.Mana+second.Mana))continue;
+                if(!AiCanPay(unit,draft,costs.Energy+second.Energy,costs.Mana+second.Mana,costs.Capacity+second.Capacity))continue;
             }
             foreach(var target in AiTargets(unit,skill))
             {
@@ -171,7 +171,7 @@ public partial class BattleManager
                     if(skill.skill_name=="焚元")
                     {
                         var gainedMana=preview.Mana-draft.Mana;
-                        var canUseConversion=preview.ConversionReady&&loadout.Any(card=>card.mana_cost>0&&!IsXuanShuSkillSlot10(unit,card));
+                        var canUseConversion=preview.CapacityBurnReady&&loadout.Any(card=>card.mana_cost>0&&!IsXuanShuSkillSlot10(unit,card));
                         candidate.Priority=remaining>1&&(gainedMana>0||preview.Qi>draft.Qi||canUseConversion)?2:0;
                         candidate.Score=gainedMana*80+(canUseConversion?90:0)-60;
                     }
@@ -210,25 +210,32 @@ public partial class BattleManager
         return (skill.uses_per_round<=0||used<perRound)&&(battleLimit<=0||used<perBattle);
     }
 
-    private (int Energy,int Mana) AiDraftCosts(GodotObject unit,ActiveSkillData skill,AiDraft draft)
+    private (int Energy,int Mana,int Capacity) AiDraftCosts(GodotObject unit,ActiveSkillData skill,AiDraft draft)
     {
-        (int Energy,int Mana) Branch(ActiveSkillData branch)
+        (int Energy,int Mana,int Capacity) Branch(ActiveSkillData branch)
         {
             var wounds=get_realtime_wound_counts(unit);
             var energy=gongfa_combat.Cost(unit,branch);
             var mana=Mathf.CeilToInt(branch.mana_cost*BattleWoundRules.get_mana_cost_multiplier(wounds,branch));
-            if(draft.ConversionReady||draft.Converted.Contains(skill)){energy+=mana;mana=0;}
+            var capacity=0;
+            if(draft.CapacityBurnReady&&mana>0){capacity=mana;mana=0;}
+            else if(draft.Converted.Contains(branch)&&mana>0){energy+=mana;mana=0;}
             if(branch.skill_type==ActiveSkillData.SkillType.MOVEMENT)
                 energy=Mathf.CeilToInt(energy*BattleWoundRules.get_energy_cost_multiplier(wounds,branch));
-            return(energy,mana);
+            return(energy,mana,capacity);
         }
         var cost=Branch(skill);
         if(CardRules.IsResponse(skill)&&CardRules.NormalCast(skill) is { } normal)
-        {var second=Branch(normal);return(Math.Max(cost.Energy,second.Energy),Math.Max(cost.Mana,second.Mana));}
+        {var second=Branch(normal);return(Math.Max(cost.Energy,second.Energy),Math.Max(cost.Mana,second.Mana),Math.Max(cost.Capacity,second.Capacity));}
         return cost;
     }
-    private bool AiCanPay(GodotObject unit,AiDraft draft,int energy,int mana) => energy<=draft.Stamina &&
-        (mana<=draft.Mana||gongfa_combat.HasPower(unit,"斫基损契")&&mana-draft.Mana<=draft.Capacity-1);
+    private bool AiCanPay(GodotObject unit,AiDraft draft,int energy,int mana,int capacity)
+    {
+        var manaShortfall=Math.Max(0,mana-draft.Mana);
+        return energy<=draft.Stamina&&capacity<=Math.Max(0,draft.Capacity-1)
+            &&(manaShortfall==0||gongfa_combat.HasPower(unit,"斫基损契")
+                &&manaShortfall+capacity<=Math.Max(0,draft.Capacity-1));
+    }
     private ActiveSkillData AiDraftExecution(GodotObject unit,ActiveSkillData skill,AiDraft draft) =>
         skill.artifact_instance_id.Length>0&&draft.Summoned.Contains(skill.artifact_instance_id)?skill:get_next_action_skill(unit,skill);
 
@@ -238,34 +245,32 @@ public partial class BattleManager
         if(skill.skill_name=="涤髓"&&draft.Blood<1)return false;
         var execution=AiDraftExecution(unit,skill,draft);
         var costs=AiDraftCosts(unit,execution,draft);
-        if(!AiCanPay(unit,draft,costs.Energy,costs.Mana)||!AiDraftReady(unit,skill,draft))return false;
+        if(!AiCanPay(unit,draft,costs.Energy,costs.Mana,costs.Capacity)||!AiDraftReady(unit,skill,draft))return false;
         var manaBefore=draft.Mana;
+        draft.ManaBeforeLastSkill=manaBefore;
         draft.Stamina-=costs.Energy;
+        var manaBurned=Math.Max(0,costs.Mana-draft.Mana);
+        draft.Mana=Math.Max(0,draft.Mana-costs.Mana);
+        draft.Capacity-=manaBurned+costs.Capacity;
+        draft.Mana=Math.Min(draft.Mana,draft.Capacity);
+        if(costs.Capacity>0)draft.CapacityBurnReady=false;
         if(execution.artifact_is_summon)
         {
             // 只预估祭出费用与占用，不能把尚未御使的伤害算到祭出动作里。
-            draft.Mana=Math.Max(0,draft.Mana-costs.Mana);draft.Capacity-=Math.Max(0,costs.Mana-manaBefore);
             draft.Summoned.Add(skill.artifact_instance_id);
-            if(execution.mana_cost>0&&draft.ConversionReady)draft.ConversionReady=false;
             AiCheckZhouTian(unit,draft,automatic);
             return true;
         }
         // 应对费用预留，但不把触发后的状态、治疗、返还视为确定已获得。
         if(CardRules.IsResponse(skill))
         {
-            draft.Mana=Math.Max(0,draft.Mana-costs.Mana);
-            draft.Capacity-=Math.Max(0,costs.Mana-manaBefore);
             draft.Uses[skill]=draft.Uses.GetValueOrDefault(skill)+1;
-            if(skill.mana_cost>0&&draft.ConversionReady&&!draft.Converted.Contains(skill))draft.ConversionReady=false;
             // 两个分支结果不确定，均不提前兑现状态/回复；费用采用逐资源较大值。
             return true;
         }
-        var burned=Math.Max(0,costs.Mana-draft.Mana);
-        draft.Mana=Math.Max(0,draft.Mana-costs.Mana);draft.Capacity-=burned;
         var emptyAfterPayment=draft.Mana==0;
-        if(costs.Mana==0&&skill.mana_cost>0&&draft.ConversionReady&&!draft.Converted.Contains(skill))draft.ConversionReady=false;
         draft.Uses[skill]=draft.Uses.GetValueOrDefault(skill)+1;
-        if(burned>0&&unit is Character character&&character.main_gongfa?.gongfa_name=="斫基损契玄经")draft.Converted.Add(skill);
+        if((manaBurned>0||costs.Capacity>0)&&unit is Character character&&character.main_gongfa?.gongfa_name=="斫基损契玄经")draft.Converted.Add(skill);
         AiCheckZhouTian(unit,draft,automatic);
         if(skill.skill_name=="复命")
         {
@@ -273,8 +278,8 @@ public partial class BattleManager
             if(!AiAdvanceRandomDraft(unit,draft,copy))return false;
         }
         else { AiDraftEffects(unit,draft,skill,target,automatic); draft.Last=skill; }
-        if(GongfaSkillRewriteRuntime.HasEffect(skill,"zhuo_ji_c2_jianzhu"))draft.ConversionReady=true;
-        if(burned>0&&!draft.CapQiUsed&&AiHeartUpgrade(unit,"斫基损契玄经|zhuo_ji_c3"))
+        if(GongfaSkillRewriteRuntime.HasEffect(skill,"zhuo_ji_c2_jianzhu"))draft.CapacityBurnReady=true;
+        if(costs.Capacity>0&&!draft.CapQiUsed&&AiHeartUpgrade(unit,"斫基损契玄经|zhuo_ji_c3"))
         {draft.CapQiUsed=true;draft.Qi++;AiCheckZhouTian(unit,draft,automatic);}
         AiSevenBookAfterSkill(unit,draft,skill,emptyAfterPayment,automatic);
         return true;
@@ -282,6 +287,11 @@ public partial class BattleManager
 
     private void AiDraftEffects(GodotObject unit,AiDraft draft,ActiveSkillData skill,GodotObject? target,bool automatic)
     {
+        if(skill.skill_type==ActiveSkillData.SkillType.ATTACK&&skill.damage_type=="physical"&&skill.attack_style=="melee"&&draft.PendingDelayedBlood>0)
+        {
+            draft.Blood=Math.Min(Mathf.RoundToInt(CardRules.Number(unit,"max_qi_blood")),draft.Blood+draft.PendingDelayedBlood);
+            draft.PendingDelayedBlood=0;
+        }
         var bloodBefore=draft.Blood;
         AiSevenBookUtility(unit,draft,skill,automatic);
         if(target is not null&&AiRawDamage(unit,skill)>0)
@@ -290,20 +300,21 @@ public partial class BattleManager
             foreach(var victim in victims)
             {
                 var raw=AiRawDamage(unit,skill);
-                var segments=new List<float>{raw};
                 var arms=skill.attack_style=="melee"&&skill.damage_type=="physical"?gongfa_combat.PreviewBloodArmCount(unit,draft.Blood):0;
-                if(arms>0&&skill.skill_name=="血臂撼岳"&&GongfaSkillRewriteRuntime.HasEffect(skill,"baihai_c2_cuishan"))segments.Add(raw);
-                var weaponSegments=segments.Count;
-                for(var arm=0;arm<arms;arm++)segments.Add(gongfa_combat.PreviewBloodArmDamage(unit,draft.Blood));
+                var segments=new List<(float Damage,bool Weapon)>();
+                segments.Add((raw,true));
+                for(var arm=0;arm<arms;arm++)segments.Add((gongfa_combat.PreviewBloodArmDamage(unit,draft.Blood),false));
                 var shield=draft.Shields.GetValueOrDefault(victim);float damage=0;
                 var block=skill.damage_type=="physical"?GetStatus(victim,"化解"):0;
-                var ignoresShield=GongfaSkillRewriteRuntime.HasEffect(skill,"xuan_shu_c1_jingzhe");
+                var bypassShield=automatic&&skill.skill_name=="惊蛰"&&GongfaSkillRewriteRuntime.HasEffect(skill,"xuan_shu_c1_jingzhe");
                 for(var segmentIndex=0;segmentIndex<segments.Count;segmentIndex++)
                 {
                     var segment=segments[segmentIndex];
-                    var amount=Math.Max(0,Mathf.RoundToInt(segment));var blocked=Math.Min(block,amount);block-=blocked;amount-=blocked;
-                    amount=BattleActionResolver.apply_defense(amount,skill.damage_type,victim,skill.physical_defense_ignore_ratio,segmentIndex<weaponSegments?ForgedEquipmentLoadout.WeaponIgnore(unit,skill):0);
-                    var absorbed=ignoresShield?0:Math.Min(shield,amount);shield-=absorbed;damage+=amount-absorbed;
+                    var amount=Math.Max(0,Mathf.RoundToInt(segment.Damage));var blocked=Math.Min(block,amount);block-=blocked;amount-=blocked;
+                    amount=BattleActionResolver.apply_defense(amount,skill.damage_type,victim,skill.physical_defense_ignore_ratio,segment.Weapon?ForgedEquipmentLoadout.WeaponIgnore(unit,skill):0);
+                    var absorbed=bypassShield?0:Math.Min(shield,amount);
+                    if(!bypassShield)shield-=absorbed;
+                    damage+=amount-absorbed;
                 }
                 var hit=BattleActionResolver.preview_hit_chance(unit,victim);
                 draft.Health[victim]=Math.Max(0,draft.Health.GetValueOrDefault(victim)-damage*hit);
@@ -323,9 +334,7 @@ public partial class BattleManager
                 case "gain_qi":draft.Qi+=count;AiCheckZhouTian(unit,draft,automatic);break;
                 case "gain_qi_blood":draft.Blood=Math.Min(Mathf.RoundToInt(CardRules.Number(unit,"max_qi_blood")),draft.Blood+count);break;
                 case "gain_sword_intent":
-                    var extra=GongfaSkillRewriteRuntime.HasEffect(skill,"shujuan_c1")&&draft.SwordIntent<=5&&!draft.CloudIntentExtraUsed;
-                    draft.SwordIntent=Math.Min(10,draft.SwordIntent+count+(extra?1:0));
-                    if(extra)draft.CloudIntentExtraUsed=true;
+                    draft.SwordIntent=Math.Min(10,draft.SwordIntent+count);
                     break;
                 case "consume_sword_intent":draft.SwordIntent=0;break;
                 case "restore_health_percent":draft.Health[unit]=Math.Min(unit.Get("max_health").AsInt32(),draft.Health[unit]+unit.Get("max_health").AsInt32()*effect.GetValueOrDefault("percent",.03f).AsSingle());break;
@@ -334,8 +343,16 @@ public partial class BattleManager
         if(skill.skill_name=="催血")
         {
             // 专属化法资源省略基础效果数组，运行时仍保留基础两层。
-            if(!skill.special_effects.Any(effect=>effect.GetValueOrDefault("effect","").AsString()=="gain_qi_blood"))draft.Blood+=2;
-            if(bloodBefore<=3&&GongfaSkillRewriteRuntime.HasEffect(skill,"baihai_c1_cuixue"))draft.Blood++;
+            if(!skill.special_effects.Any(effect=>effect.GetValueOrDefault("effect","").AsString()=="gain_qi_blood"))
+            {
+                var baseGain=2;
+                if(bloodBefore<=3&&GongfaSkillRewriteRuntime.HasEffect(skill,"baihai_c1_cuixue"))
+                {
+                    draft.Blood++;
+                    draft.PendingDelayedBlood+=baseGain-1;
+                }
+                else draft.Blood+=baseGain;
+            }
             draft.Blood=Math.Min(Mathf.RoundToInt(CardRules.Number(unit,"max_qi_blood")),draft.Blood);
         }
         foreach(var effect in skill.status_effects)
@@ -367,7 +384,8 @@ public partial class BattleManager
         if(outcomes.Count==0)return false;
         var first=outcomes[0];
         draft.Stamina=first.Stamina;draft.Mana=first.Mana;draft.Capacity=first.Capacity;draft.Qi=first.Qi;
-        draft.Blood=first.Blood;draft.Shield=first.Shield;draft.ConversionReady=first.ConversionReady;draft.CapQiUsed=first.CapQiUsed;
+        draft.Blood=first.Blood;draft.Shield=first.Shield;draft.PendingDelayedBlood=first.PendingDelayedBlood;
+        draft.ManaBeforeLastSkill=first.ManaBeforeLastSkill;draft.CapacityBurnReady=first.CapacityBurnReady;draft.CapQiUsed=first.CapQiUsed;
         draft.Last=first.Last;draft.Uses=first.Uses;draft.Converted=first.Converted;draft.Summoned=first.Summoned;
         foreach(var target in draft.Health.Keys.ToArray())draft.Health[target]=outcomes.Average(outcome=>outcome.Health[target]);
         foreach(var target in draft.Shields.Keys.ToArray())draft.Shields[target]=Mathf.RoundToInt((float)outcomes.Average(outcome=>outcome.Shields[target]));

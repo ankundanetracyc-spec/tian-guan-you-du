@@ -90,8 +90,8 @@ public partial class BaiChuanFreeWorldFlowSmoke : Node
         var deadline = Time.GetTicksMsec() + 90000UL;
         while (!_main.StartupComplete && Time.GetTicksMsec() < deadline) await Frames();
         Require(_main.StartupComplete && _main.StartupError is null, "真实 MainScene 完成启动：" + _main.StartupError);
-        var stage = typeof(MainScene).GetField("_qingxi_prologue", Private)!;
-        stage.SetValue(_main, Enum.Parse(stage.FieldType, "Departed"));
+        typeof(MainScene).GetField("_story_free_start", Private)!.SetValue(_main, true);
+        typeof(MainScene).GetField("_baishiLecture", Private)!.SetValue(_main, null);
         if (Field(_main, "_baishiLecture") is BaishiLectureProgress lecture) lecture.departed_qingxi = true;
         (Field(_main, "story_dialogue") as Control)?.Hide();
         Invoke(_main, "open_world"); await Frames(8);
@@ -139,7 +139,8 @@ public partial class BaiChuanFreeWorldFlowSmoke : Node
 
     private Vector2 GroundTarget(float minLength = 320)
     {
-        foreach (var offset in new[] { new Vector2(420, 0), new Vector2(-420, 0), new Vector2(0, 420), new Vector2(0, -420), new Vector2(400, 250), new Vector2(-400, -250) })
+        var radius = Math.Max(420f, minLength * 1.25f);
+        foreach (var offset in new[] { new Vector2(radius, 0), new Vector2(-radius, 0), new Vector2(0, radius), new Vector2(0, -radius), new Vector2(radius * .95f, radius * .6f), new Vector2(-radius * .95f, -radius * .6f) })
         {
             var point = Position + offset;
             var path = _nav.Call("find_path", Position, point).AsVector2Array();
@@ -199,9 +200,31 @@ public partial class BaiChuanFreeWorldFlowSmoke : Node
         var cell = _terrainData["cell_size"].AsSingle();
         var home = Positions["bc_place_001"].AsVector2();
         var candidates = new System.Collections.Generic.List<TerrainLeg>();
+        if (code == "C")
+        {
+            // Bridge decks use the finer navigation grid; a coarse terrain
+            // cell's centre can lie in water beside a narrow rotated deck.
+            var landscape = _map.Get("landscape").AsGodotObject().Get("metadata").AsGodotDictionary();
+            if (landscape.ContainsKey("bridges"))
+            {
+                var navCell = _nav.Get("cell_size").AsSingle();
+                foreach (var bridgeValue in landscape["bridges"].AsGodotArray())
+                foreach (var runValue in bridgeValue.AsGodotDictionary()["open_runs"].AsGodotArray())
+                {
+                    var run = runValue.AsGodotArray();
+                    for (var x = run[1].AsInt32(); x < run[2].AsInt32(); x++)
+                    {
+                        var centre = new Vector2((x + .5f) * navCell, (run[0].AsInt32() + .5f) * navCell);
+                        candidates.Add(new TerrainLeg(code, centre - Vector2.Right * length * .5f, centre + Vector2.Right * length * .5f));
+                    }
+                }
+            }
+        }
+        var useNativeCrossings = candidates.Count > 0;
         for (var y = 3; y < rows.Length - 3; y++)
         for (var x = 3; x < rows[y].Length - 3; x++)
         {
+            if (useNativeCrossings) continue;
             if (rows[y][x].ToString() != code) continue;
             var start = new Vector2((x + .5f) * cell, (y + .5f) * cell);
             if (length < cell) start.X -= length * .5f;
@@ -269,7 +292,7 @@ public partial class BaiChuanFreeWorldFlowSmoke : Node
             Check(Godot.FileAccess.GetSha256(path).Equals(source.Value.AsString(), StringComparison.OrdinalIgnoreCase), "原文件保持校验值 " + path);
         }
         var scale = GD.Load<Script>("res://gdscripts/world/BaiChuanWorldScale.gd").GetScriptConstantMap();
-        Check((scale["ART_BASE"].AsString() + scale["MASTER_FILE"].AsString()).Contains("original_3x3_20261104"), "正式地图仍使用用户选定的原黄绿底图");
+        Check((scale["ART_BASE"].AsString() + scale["MASTER_FILE"].AsString()).Contains("original_3x3_20261104"), "原黄绿地图继续作为不可变地理来源");
         Check(State["terrain_speed_profile"].AsString() == _terrainData["profile_id"].AsString(), "正式地图存档带当前地形速度版本");
     }
 
@@ -736,7 +759,8 @@ public partial class BaiChuanFreeWorldFlowSmoke : Node
         saved = _main!.capture_battle_world_snapshot()!;
         Check(saved.node_world_state["version"].AsInt32() == 2, "迁移后写入连续地图版本");
         Check(saved.node_world_state["terrain_speed_profile"].AsString() == _terrainData["profile_id"].AsString(), "迁移后存档写地形配置标记");
-        saved.node_world_state = new GDictionary { ["current_node"] = "bc_place_001", ["remaining_route"] = new GArray(), ["terrain_speed_profile"] = _terrainData["profile_id"] };
+        Check(saved.node_world_state["npc_navigation_profile"].AsString() == _world.get_navigation_profile(), "已迁移NPC记录独立导航标记");
+        saved.node_world_state = new GDictionary { ["current_node"] = "bc_place_001", ["remaining_route"] = new GArray(), ["terrain_speed_profile"] = _terrainData["profile_id"], ["npc_navigation_profile"] = _world.get_navigation_profile() };
         await StartMain(DiskRead(saved, "free_world_tagged_v1_npc"));
         migrated = _world.get_npc("qa_free_world_traveler");
         Check(migrated is not null && Math.Abs(migrated.world_travel_cell_progress_hours - once) < .001, "已迁移但地图仍是v1的序章存档重读不再放大或换算NPC进度");
@@ -903,6 +927,18 @@ public partial class BaiChuanFreeWorldFlowSmoke : Node
             VerifyIsolation();
             DisplayServer.WindowSetMode(DisplayServer.WindowMode.Windowed); GetWindow().Size = new Vector2I(1920, 1080);
             await StartMain();
+            if (OS.GetCmdlineUserArgs().Contains("--npc-avatar-only"))
+            {
+                await Stage("npc_avatar_same_player", NpcAvatar);
+                GD.Print($"BAICHUAN_NPC_AVATAR_{(_failures == 0 ? "OK" : "FAILED")} {_checks} checks {_failures} failures");
+                return;
+            }
+            if (OS.GetCmdlineUserArgs().Contains("--performance-only"))
+            {
+                await Stage("travel_performance", TravelPerformance);
+                GD.Print($"BAICHUAN_TRAVEL_PERFORMANCE_{(_failures == 0 ? "OK" : "FAILED")} {_checks} checks {_failures} failures");
+                return;
+            }
             if (OS.GetCmdlineUserArgs().Contains("--terrain-only"))
             {
                 await Stage("terrain_speed_real_main", TerrainSpeed);
@@ -932,6 +968,7 @@ public partial class BaiChuanFreeWorldFlowSmoke : Node
             {
                 await Stage("real_npc_and_month_boundary", Npcs);
                 await Stage("legacy_ordinary_and_npc_hours", LegacyTravelAndNpcHours);
+                await Stage("old_complete_mountain_navigation", OldMountainNavigation);
                 await Stage("assigned_escort_and_interruption", Escort);
                 GD.Print($"BAICHUAN_FREE_WORLD_COMPAT_{(_failures == 0 ? "OK" : "FAILED")} {_checks} checks {_failures} failures");
                 return;
@@ -943,6 +980,7 @@ public partial class BaiChuanFreeWorldFlowSmoke : Node
             await Stage("disk_restart_visible_event", SaveAndEncounter);
             await Stage("real_npc_and_month_boundary", Npcs);
             await Stage("legacy_ordinary_and_npc_hours", LegacyTravelAndNpcHours);
+            await Stage("old_complete_mountain_navigation", OldMountainNavigation);
             await Stage("assigned_escort_and_interruption", Escort);
             await Stage("enter_location_and_small_window", EnterAndWindow);
             await Stage("native_terrain_resources", () => { VerifyNativeTerrain(); return Task.CompletedTask; });

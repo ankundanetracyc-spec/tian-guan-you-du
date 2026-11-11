@@ -1,0 +1,708 @@
+{
+  "date": "2026-11-09",
+  "status": "passed",
+  "scope": "隔离三页界面与选择操作；不验证生产公式或人物存档",
+  "count": 97,
+  "checks": [
+    {
+      "name": "1920 paper 主要区域完整可见",
+      "pass": true,
+      "detail": {
+        "escaped": [],
+        "rightOverflow": 0,
+        "leftOverflow": 0,
+        "mainFont": "25px",
+        "backRight": 24.361377716064453,
+        "materials": 3
+      }
+    },
+    {
+      "name": "1920 paper 两侧正文不横溢",
+      "pass": true,
+      "detail": {
+        "escaped": [],
+        "rightOverflow": 0,
+        "leftOverflow": 0,
+        "mainFont": "25px",
+        "backRight": 24.361377716064453,
+        "materials": 3
+      }
+    },
+    {
+      "name": "1920 paper 返回位于页眉右端",
+      "pass": true,
+      "detail": {
+        "escaped": [],
+        "rightOverflow": 0,
+        "leftOverflow": 0,
+        "mainFont": "25px",
+        "backRight": 24.361377716064453,
+        "materials": 3
+      }
+    },
+    {
+      "name": "1920 paper 开始按钮可操作",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1920 paper 主区未出现内部公式",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1920 paper 中央无题句流程条且分隔为直线",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1920 paper 准备页没有成品属性占位",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1920 paper 三项技艺竖排且单选",
+      "pass": true,
+      "detail": [
+        {
+          "top": 259.01666259765625,
+          "bottom": 405.1845703125,
+          "pressed": "false"
+        },
+        {
+          "top": 417.365234375,
+          "bottom": 563.5331420898438,
+          "pressed": "true"
+        },
+        {
+          "top": 575.7138061523438,
+          "bottom": 721.8817138671875,
+          "pressed": "false"
+        }
+      ]
+    },
+    {
+      "name": "1920 paper 技艺可切换且保留用料",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1920 ink 主要区域完整可见",
+      "pass": true,
+      "detail": {
+        "escaped": [],
+        "rightOverflow": 0,
+        "leftOverflow": 0,
+        "mainFont": "25px",
+        "backRight": 24.361377716064453,
+        "materials": 3
+      }
+    },
+    {
+      "name": "1920 ink 两侧正文不横溢",
+      "pass": true,
+      "detail": {
+        "escaped": [],
+        "rightOverflow": 0,
+        "leftOverflow": 0,
+        "mainFont": "25px",
+        "backRight": 24.361377716064453,
+        "materials": 3
+      }
+    },
+    {
+      "name": "1920 ink 返回位于页眉右端",
+      "pass": true,
+      "detail": {
+        "escaped": [],
+        "rightOverflow": 0,
+        "leftOverflow": 0,
+        "mainFont": "25px",
+        "backRight": 24.361377716064453,
+        "materials": 3
+      }
+    },
+    {
+      "name": "1920 ink 开始按钮可操作",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1920 ink 主区未出现内部公式",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1920 ink 中央无题句流程条且分隔为直线",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1920 ink 准备页没有成品属性占位",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1920 ink 三项技艺竖排且单选",
+      "pass": true,
+      "detail": [
+        {
+          "top": 259.01666259765625,
+          "bottom": 405.1845703125,
+          "pressed": "true"
+        },
+        {
+          "top": 417.365234375,
+          "bottom": 563.5331420898438,
+          "pressed": "false"
+        },
+        {
+          "top": 575.7138061523438,
+          "bottom": 721.8817138671875,
+          "pressed": "false"
+        }
+      ]
+    },
+    {
+      "name": "1920 ink 技艺可切换且保留用料",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1920 draw 主要区域完整可见",
+      "pass": true,
+      "detail": {
+        "escaped": [],
+        "rightOverflow": 0,
+        "leftOverflow": 0,
+        "mainFont": "23px",
+        "backRight": 24.361377716064453,
+        "materials": null
+      }
+    },
+    {
+      "name": "1920 draw 两侧正文不横溢",
+      "pass": true,
+      "detail": {
+        "escaped": [],
+        "rightOverflow": 0,
+        "leftOverflow": 0,
+        "mainFont": "23px",
+        "backRight": 24.361377716064453,
+        "materials": null
+      }
+    },
+    {
+      "name": "1920 draw 返回位于页眉右端",
+      "pass": true,
+      "detail": {
+        "escaped": [],
+        "rightOverflow": 0,
+        "leftOverflow": 0,
+        "mainFont": "23px",
+        "backRight": 24.361377716064453,
+        "materials": null
+      }
+    },
+    {
+      "name": "1920 draw 开始按钮可操作",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1920 draw 主区未出现内部公式",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1920 draw 中央无题句流程条且分隔为直线",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1920 画符读取纸墨四字段",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1920 默认只选一种主写法",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1920 纸鉴看展示真实字段结构",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1920 鉴看外层明确为样例",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1920 墨鉴看展示真实字段结构",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1920 应变只展示当前选择",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1920 有镇墨时才能镇纹",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1920 跳过不代选应变",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1920 舍势并非保底成符",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1920 进阶配置只按需展开",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1920 不提供自动跳过未决选择开关",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1280 paper 主要区域完整可见",
+      "pass": true,
+      "detail": {
+        "escaped": [],
+        "rightOverflow": 0,
+        "leftOverflow": 0,
+        "mainFont": "25px",
+        "backRight": 15.944557189941406,
+        "materials": 3
+      }
+    },
+    {
+      "name": "1280 paper 两侧正文不横溢",
+      "pass": true,
+      "detail": {
+        "escaped": [],
+        "rightOverflow": 0,
+        "leftOverflow": 0,
+        "mainFont": "25px",
+        "backRight": 15.944557189941406,
+        "materials": 3
+      }
+    },
+    {
+      "name": "1280 paper 返回位于页眉右端",
+      "pass": true,
+      "detail": {
+        "escaped": [],
+        "rightOverflow": 0,
+        "leftOverflow": 0,
+        "mainFont": "25px",
+        "backRight": 15.944557189941406,
+        "materials": 3
+      }
+    },
+    {
+      "name": "1280 paper 开始按钮可操作",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1280 paper 主区未出现内部公式",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1280 paper 中央无题句流程条且分隔为直线",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1280 paper 准备页没有成品属性占位",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1280 paper 三项技艺竖排且单选",
+      "pass": true,
+      "detail": [
+        {
+          "top": 182.65774536132812,
+          "bottom": 278.326171875,
+          "pressed": "false"
+        },
+        {
+          "top": 286.2985534667969,
+          "bottom": 381.96697998046875,
+          "pressed": "true"
+        },
+        {
+          "top": 389.9393615722656,
+          "bottom": 485.6077880859375,
+          "pressed": "false"
+        }
+      ]
+    },
+    {
+      "name": "1280 paper 技艺可切换且保留用料",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1280 ink 主要区域完整可见",
+      "pass": true,
+      "detail": {
+        "escaped": [],
+        "rightOverflow": 0,
+        "leftOverflow": 0,
+        "mainFont": "25px",
+        "backRight": 15.944557189941406,
+        "materials": 3
+      }
+    },
+    {
+      "name": "1280 ink 两侧正文不横溢",
+      "pass": true,
+      "detail": {
+        "escaped": [],
+        "rightOverflow": 0,
+        "leftOverflow": 0,
+        "mainFont": "25px",
+        "backRight": 15.944557189941406,
+        "materials": 3
+      }
+    },
+    {
+      "name": "1280 ink 返回位于页眉右端",
+      "pass": true,
+      "detail": {
+        "escaped": [],
+        "rightOverflow": 0,
+        "leftOverflow": 0,
+        "mainFont": "25px",
+        "backRight": 15.944557189941406,
+        "materials": 3
+      }
+    },
+    {
+      "name": "1280 ink 开始按钮可操作",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1280 ink 主区未出现内部公式",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1280 ink 中央无题句流程条且分隔为直线",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1280 ink 准备页没有成品属性占位",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1280 ink 三项技艺竖排且单选",
+      "pass": true,
+      "detail": [
+        {
+          "top": 182.65774536132812,
+          "bottom": 278.326171875,
+          "pressed": "true"
+        },
+        {
+          "top": 286.2985534667969,
+          "bottom": 381.96697998046875,
+          "pressed": "false"
+        },
+        {
+          "top": 389.9393615722656,
+          "bottom": 485.6077880859375,
+          "pressed": "false"
+        }
+      ]
+    },
+    {
+      "name": "1280 ink 技艺可切换且保留用料",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1280 draw 主要区域完整可见",
+      "pass": true,
+      "detail": {
+        "escaped": [],
+        "rightOverflow": 0,
+        "leftOverflow": 0,
+        "mainFont": "23px",
+        "backRight": 15.944557189941406,
+        "materials": null
+      }
+    },
+    {
+      "name": "1280 draw 两侧正文不横溢",
+      "pass": true,
+      "detail": {
+        "escaped": [],
+        "rightOverflow": 0,
+        "leftOverflow": 0,
+        "mainFont": "23px",
+        "backRight": 15.944557189941406,
+        "materials": null
+      }
+    },
+    {
+      "name": "1280 draw 返回位于页眉右端",
+      "pass": true,
+      "detail": {
+        "escaped": [],
+        "rightOverflow": 0,
+        "leftOverflow": 0,
+        "mainFont": "23px",
+        "backRight": 15.944557189941406,
+        "materials": null
+      }
+    },
+    {
+      "name": "1280 draw 开始按钮可操作",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1280 draw 主区未出现内部公式",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1280 draw 中央无题句流程条且分隔为直线",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1280 画符读取纸墨四字段",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1280 默认只选一种主写法",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1280 纸鉴看展示真实字段结构",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1280 鉴看外层明确为样例",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1280 墨鉴看展示真实字段结构",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1280 应变只展示当前选择",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1280 有镇墨时才能镇纹",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1280 跳过不代选应变",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1280 舍势并非保底成符",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1280 进阶配置只按需展开",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1280 不提供自动跳过未决选择开关",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "制纸选材自动匹配23候选",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "材料可加入本批且不重复",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "投入份数不超过演示库存",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "投入份数保持正整数",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "材料资料保留真实单项品级",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Esc只收起资料",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "研墨自动匹配32候选",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "纤维不能进入研墨",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "筛选空状态明确",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "保留功用最多四项",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "纯液体可以开始研墨",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "开始后角色自动完成",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "跳过演出进入鉴看",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "兼用墨不是三个必填槽",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "多墨时左栏仍能完整操作",
+      "pass": true,
+      "detail": {
+        "panel": 701.1561813354492,
+        "footer": 658.1575317382812
+      }
+    },
+    {
+      "name": "缺破来源时阻止画对应符谱",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "透纸行墨不能凭写法补来源",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "记方只保存在样稿会话",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "空投料不能开始",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "配伍册可载入材料和工法",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "返回收起页面且不丢用料",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "可回到符工继续查看",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "减少动态效果可正常使用",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "全程不扣演示库存、不生成正式物品",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "全程不写浏览器存储",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "浏览器无脚本错误",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "素材资源均成功加载",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "captures": [
+    "制符纸_1920.png",
+    "研墨_1920.png",
+    "画符_1920.png",
+    "符纸鉴看_1920.png",
+    "符墨鉴看_1920.png",
+    "画符应变_1920.png",
+    "画符进阶_1920.png",
+    "制符纸_1280.png",
+    "研墨_1280.png",
+    "画符_1280.png",
+    "符纸鉴看_1280.png",
+    "符墨鉴看_1280.png",
+    "画符应变_1280.png",
+    "画符进阶_1280.png",
+    "选材_1280.png",
+    "选择纸墨_1280.png",
+    "自动画符_1920.png"
+  ],
+  "errors": [],
+  "failedResources": [],
+  "reviewNote": "顶部三个工艺按钮已与下方技艺统一为普通纸面款式，选中状态保留；两档97项检查与17张图已刷新。"
+}

@@ -10,8 +10,11 @@ public partial class StoragePanel
     {
         _spatialPreviewFilter = filter;
         _spatialPreviewOrganize = organize;
-        _grid_scroll!.Hide();
-        _empty!.Hide();
+        _grid_scroll?.Hide();
+        _empty?.Hide();
+        if (_volumeCards is not null)
+            foreach (var child in _canvas!.GetChildren().OfType<Control>())
+                if (child.Name != "StorageReturn") child.Hide();
         _canvas!.AddChild(board);
         board.Position = new(284, 156);
         board.Size = new(1348, 704);

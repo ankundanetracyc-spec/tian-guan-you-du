@@ -61,9 +61,8 @@ public partial class InfoPanel : Control
     private Label? _gongfaModalTitle;
     private Label? _gongfaModalBody;
     private VBoxContainer? _gongfaModalChoices;
-    private Button? _gongfaBranchActivate;
     private int _gongfaSelectedChapter = -1;
-    private string _gongfaSelectedBranch = "";
+    private string _gongfaSelectedEffect = "";
     private GongfaResource? _viewedGongfa;
     private bool _viewingSubGongfa;
     private string _gongfaPickerSlot = "";
@@ -188,6 +187,7 @@ public partial class InfoPanel : Control
         current_card = null;
         _npc_card = npc;
         _npc_read_only = true;
+        _npcAttributesSelected = false;
         configure_npc_layout();
         ZIndex = 300;
         Show();
@@ -213,7 +213,8 @@ public partial class InfoPanel : Control
         if (title is not null) title.Text = "概览";
         set_label("NameValue", string.IsNullOrWhiteSpace(_npc_card?.npc_name) ? "无名" : _npc_card!.npc_name);
         set_label("RealmValue", string.IsNullOrWhiteSpace(_npc_card?.cultivation_realm) ? "境界未详" : _npc_card!.cultivation_realm);
-        set_label("SpiritrootValue", string.IsNullOrWhiteSpace(_npc_card?.spirit_root_name) ? "灵根未详" : _npc_card!.spirit_root_name);
+        set_label("SpiritrootValue", _npc_card is { } npc && NpcProbeKnowledge.HasSnapshot(npc)
+            ? NpcProbeKnowledge.Snapshot(npc).GetValueOrDefault("root", "未探明").AsString() : "未探明");
         set_tab_mode(true);
         _staticOverviewPage?.Hide();
         _staticAttributePage?.Hide();
@@ -238,6 +239,7 @@ public partial class InfoPanel : Control
 
     private void leave_npc_mode()
     {
+        _npcProbePage?.Hide(); _npcAttributesSelected = false;
         if (!_npc_read_only && _npc_card is null) return;
         _npc_card = null;
         _npc_read_only = false;
@@ -252,7 +254,11 @@ public partial class InfoPanel : Control
     private void clear_runtime_body()
     {
         if (_staticOverviewPage is not null)
-            foreach (var child in _staticOverviewPage.GetChildren().Where(child => child.Name == "NpcSupplementMargin").ToList()) { _staticOverviewPage.RemoveChild(child); child.QueueFree(); }
+        {
+            var supplement = _staticOverviewPage.GetNodeOrNull<Control>("CharacterPaperOverview/NpcSupplementMargin")
+                ?? _staticOverviewPage.GetNodeOrNull<Control>("NpcSupplementMargin");
+            if (supplement is not null) { supplement.GetParent().RemoveChild(supplement); supplement.QueueFree(); }
+        }
         if (_newBody is null) return;
         foreach (var child in _newBody.GetChildren())
             if (child != _staticOverviewPage && child != _staticAttributePage && child != _staticBattlePage && child != _staticGongfaPage)
@@ -260,7 +266,11 @@ public partial class InfoPanel : Control
         _npc_page = null;
     }
 
-    private void render_npc_page() => render_shared_npc_overview();
+    private void render_npc_page()
+    {
+        if (_npcAttributesSelected) render_npc_attribute_snapshot();
+        else { _npcProbePage?.Hide(); render_shared_npc_overview(); }
+    }
 
     public static string npc_faction_name(string faction_id) => faction_id switch
     {
@@ -412,7 +422,7 @@ public partial class InfoPanel : Control
         _staticOverviewPage.MoveChild(_appearanceEntry, Math.Min(1, _staticOverviewPage.GetChildCount() - 1));
         build_overview_world_status_section();
 
-        _wardrobe = new WardrobePicker { Name = "WardrobePicker" };
+        _wardrobe = new WardrobePicker { Name = "WardrobePicker", UsePaperControls = true };
         _wardrobe.ClothingApplied += () => { refresh_profile_portrait(); AppearanceChanged?.Invoke(); render_new_page(_activeNewPage); };
         AddChild(_wardrobe); _wardrobe.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
     }
@@ -876,48 +886,32 @@ public partial class InfoPanel : Control
     private void bind_static_gongfa_controls()
     {
         build_gongfa_modal();
-        var detailBox = GetNodeOrNull<VBoxContainer>("Content/Page/Body/GongfaLayout/Workspace/DetailPanel/Box");
-        if (detailBox is not null)
-        {
-            _gongfaBranchActivate = gongfa_popup_button("激活此分支");
-            _gongfaBranchActivate.Visible = false;
-            _gongfaBranchActivate.Pressed += activate_selected_gongfa_branch;
-            detailBox.AddChild(_gongfaBranchActivate);
-        }
         GetNodeOrNull<Button>("Content/Page/Body/GongfaLayout/SlotSelectorRow/EquipPanel/Box/SlotButtons/MainSlot")!.Pressed += () => { if (current_card is Character human) show_gongfa_equip_popup(human, false); };
         GetNodeOrNull<Button>("Content/Page/Body/GongfaLayout/SlotSelectorRow/EquipPanel/Box/SlotButtons/SubSlot")!.Pressed += () => { if (current_card is Character human) show_gongfa_equip_popup(human, true); };
         for (var i = 0; i < 5; i++)
         {
             var chapterIndex = i;
-            GetNodeOrNull<Button>($"Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row{i + 1}/Left")!.Pressed += () => select_static_gongfa_route(chapterIndex, "left");
-            GetNodeOrNull<Button>($"Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row{i + 1}/Right")!.Pressed += () => select_static_gongfa_route(chapterIndex, "right");
+            GetNodeOrNull<Button>($"Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row{i + 1}/Left")!.Pressed += () => select_static_gongfa_effect(chapterIndex, "left");
+            GetNodeOrNull<Button>($"Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row{i + 1}/Right")!.Pressed += () => select_static_gongfa_effect(chapterIndex, "right");
             var chapter = GetNodeOrNull<Label>($"Content/Page/Body/GongfaLayout/Workspace/TreePanel/TreeRows/Row{i + 1}/Chapter");
             if (chapter is not null) chapter.GuiInput += input => { if (input is InputEventMouseButton mouse && mouse.ButtonIndex == MouseButton.Left && mouse.Pressed) select_static_gongfa_node(chapterIndex); };
         }
     }
 
-    private void select_static_gongfa_route(int chapterIndex, string routeName)
+    private void select_static_gongfa_effect(int chapterIndex, string effectName)
     {
         if (current_card is not Character human || _viewedGongfa is null) return;
         var chapters = _viewedGongfa.get_sorted_chapters();
         if (chapterIndex < 0 || chapterIndex >= chapters.Count) return;
-        _gongfaSelectedChapter = chapterIndex; _gongfaSelectedBranch = routeName;
+        if (effectName == "right" && !chapters[chapterIndex].get_deck_rewrites(!_viewingSubGongfa).Any(item => item.enabled)) return;
+        _gongfaSelectedChapter = chapterIndex; _gongfaSelectedEffect = effectName;
         populate_static_gongfa_page(human);
     }
 
     private void select_static_gongfa_node(int chapterIndex)
     {
         if (current_card is not Character human || _viewedGongfa is null || chapterIndex < 0 || chapterIndex >= _viewedGongfa.get_sorted_chapters().Count) return;
-        _gongfaSelectedChapter = chapterIndex; _gongfaSelectedBranch = ""; populate_static_gongfa_page(human);
-    }
-
-    private void activate_selected_gongfa_branch()
-    {
-        if (current_card is not Character human || _viewedGongfa is null || !_viewingSubGongfa || _gongfaSelectedChapter < 0 || string.IsNullOrEmpty(_gongfaSelectedBranch)) return;
-        var chapters = _viewedGongfa.get_sorted_chapters(); if (_gongfaSelectedChapter >= chapters.Count) return;
-        var chapter = chapters[_gongfaSelectedChapter]; if (!human.is_gongfa_chapter_learned(_viewedGongfa, chapter.get_id())) return;
-        human.set_sub_gongfa_chapter_route(_viewedGongfa, chapter.get_id(), _gongfaSelectedBranch);
-        populate_static_gongfa_page(human);
+        _gongfaSelectedChapter = chapterIndex; _gongfaSelectedEffect = ""; populate_static_gongfa_page(human);
     }
 
     private void build_gongfa_modal()
@@ -930,11 +924,13 @@ public partial class InfoPanel : Control
         // 研读总览需要同时容纳三个位与每卷条件，正文区独立滚动，不能把信息硬挤进小窗。
         var panel = new PanelContainer { CustomMinimumSize = new Vector2(640, 650), MouseFilter = MouseFilterEnum.Stop };
         panel.SetAnchorsPreset(LayoutPreset.Center); panel.OffsetLeft = -320; panel.OffsetTop = -325; panel.OffsetRight = 320; panel.OffsetBottom = 325;
-        panel.AddThemeStyleboxOverride("panel", new StyleBoxFlat { BgColor = new Color(.91f, .86f, .74f, .98f), BorderColor = new Color(.25f, .18f, .09f, .92f), BorderWidthLeft = 2, BorderWidthTop = 2, BorderWidthRight = 2, BorderWidthBottom = 2, CornerRadiusTopLeft = 9, CornerRadiusTopRight = 9, CornerRadiusBottomLeft = 9, CornerRadiusBottomRight = 9, ContentMarginLeft = 24, ContentMarginRight = 24, ContentMarginTop = 20, ContentMarginBottom = 20 }); overlay.AddChild(panel);
+        panel.AddThemeStyleboxOverride("panel", CharacterPaper(padding: 27)); overlay.AddChild(panel);
         var box = new VBoxContainer(); box.AddThemeConstantOverride("separation", 12); panel.AddChild(box);
-        var title = new Label { HorizontalAlignment = HorizontalAlignment.Center }; title.AddThemeFontSizeOverride("font_size", 25); title.AddThemeColorOverride("font_color", new Color(.12f, .095f, .065f)); box.AddChild(title);
-        var body = new Label { AutowrapMode = TextServer.AutowrapMode.WordSmart }; body.AddThemeFontSizeOverride("font_size", 16); body.AddThemeColorOverride("font_color", new Color(.20f, .16f, .10f)); box.AddChild(body);
-        var line = new HSeparator(); line.AddThemeStyleboxOverride("separator", new StyleBoxFlat { BgColor = new Color(.30f, .23f, .13f, .55f), ContentMarginTop = 1, ContentMarginBottom = 1 }); box.AddChild(line);
+        var heading = new HBoxContainer(); box.AddChild(heading);
+        var title = CharacterText("", 29); title.HorizontalAlignment = HorizontalAlignment.Center; title.SizeFlagsHorizontal = SizeFlags.ExpandFill; heading.AddChild(title);
+        var close = new Button { Icon = CraftingPaperStyle.Sprite("close") }; PaperButtonFeedback.Apply(close, CraftingPaperStyle.ButtonKind.Icon, 20); heading.AddChild(close); close.Pressed += () => overlay.Hide();
+        var body = CharacterParagraph("", 20, true); box.AddChild(body);
+        box.AddChild(new HSeparator());
         var choiceScroll = new ScrollContainer { SizeFlagsVertical = SizeFlags.ExpandFill, HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled, VerticalScrollMode = ScrollContainer.ScrollMode.Auto };
         box.AddChild(choiceScroll);
         var choices = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill }; choices.AddThemeConstantOverride("separation", 8); choiceScroll.AddChild(choices);
@@ -1074,11 +1070,7 @@ public partial class InfoPanel : Control
         var label = new Label { Text = $"{(met ? "✓" : "✕")} {text}" }; label.AddThemeFontSizeOverride("font_size", 14); label.AddThemeColorOverride("font_color", met ? new Color(.16f, .43f, .22f) : new Color(.64f, .16f, .12f)); return label;
     }
 
-    private static Button gongfa_popup_button(string text)
-    {
-        var button = new Button { Text = text, CustomMinimumSize = new Vector2(0, 44) }; button.AddThemeFontSizeOverride("font_size", 17); button.AddThemeColorOverride("font_color", new Color(.12f, .095f, .065f));
-        button.AddThemeStyleboxOverride("normal", new StyleBoxFlat { BgColor = new Color(.77f, .67f, .40f, .45f), BorderColor = new Color(.38f, .26f, .08f, .7f), BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1, CornerRadiusTopLeft = 5, CornerRadiusTopRight = 5, CornerRadiusBottomLeft = 5, CornerRadiusBottomRight = 5 }); return button;
-    }
+    private static Button gongfa_popup_button(string text) => CharacterButton(text, 20);
 
     private static string gongfa_tempering_benefit(string key, float value) => key switch
     {
@@ -1166,11 +1158,10 @@ public partial class InfoPanel : Control
         return string.Join("\n", lines);
     }
 
-    private static string gongfa_branch_status(bool learned, bool isMain, string route, string branch)
+    private static string gongfa_branch_status(bool learned, bool equipped)
     {
         if (!learned) return "未研读";
-        if (isMain) return "主脉通达";
-        return route == branch ? "已激活" : "可选择";
+        return equipped ? "已生效" : "装配后生效";
     }
 
     private static List<string> gongfa_branch_preview(GongfaChapterConfig chapter, bool left, bool isMain, GodotObject owner)
@@ -1184,8 +1175,10 @@ public partial class InfoPanel : Control
             return tempering.Take(2).ToList();
         }
 
+        var rewrites = chapter.get_deck_rewrites(isMain).Where(item => item.enabled).ToList();
+        if (rewrites.Count == 0) return ["本卷无化法"];
         var previews = new List<string>();
-        foreach (var rewrite in chapter.get_deck_rewrites(isMain).Where(item => item.enabled).Take(2))
+        foreach (var rewrite in rewrites.Take(2))
         {
             if (rewrite.get_result_skill(isMain) is not ActiveSkillData skill) continue;
             var sourceName = !string.IsNullOrWhiteSpace(rewrite.source_skill_name)
@@ -1207,9 +1200,11 @@ public partial class InfoPanel : Control
 
     private static string gongfa_branch_tooltip(GongfaChapterConfig chapter, bool left, bool isMain, GodotObject owner)
     {
+        var rewrites = chapter.get_deck_rewrites(isMain).Where(item => item.enabled).ToList();
+        if (!left && rewrites.Count == 0) return "本卷未设置化法。";
         var lines = left
             ? new List<string> { "修持（仅战斗内）", "战斗属性：" }.Concat(gongfa_tempering_lines(chapter)).ToList()
-            : chapter.get_deck_rewrites(isMain).Where(item => item.enabled).Select(item => gongfa_rewrite_detail(item, isMain, owner)).ToList();
+            : rewrites.Select(item => gongfa_rewrite_detail(item, isMain, owner)).ToList();
         return lines.Count > 0 ? string.Join("\n", lines) : left ? "修持（仅战斗内）\n无" : "化法\n无";
     }
 
@@ -1264,38 +1259,39 @@ public partial class InfoPanel : Control
             if (!present) continue;
             var chapter = chapters[i];
             var learned = human.is_gongfa_chapter_learned(_viewedGongfa!, chapter.get_id());
+            var hasChemistry = chapter.get_deck_rewrites(!_viewingSubGongfa).Any(item => item.enabled);
             layer.SetMeta("gongfa_learned", learned);
             var leftName = string.IsNullOrWhiteSpace(chapter.left_branch_name) ? "修持" : chapter.left_branch_name;
-            var rightName = string.IsNullOrWhiteSpace(chapter.right_branch_name) ? "化法" : chapter.right_branch_name;
+            var rightName = hasChemistry
+                ? (string.IsNullOrWhiteSpace(chapter.right_branch_name) ? "化法" : chapter.right_branch_name)
+                : "无化法";
             layer.Text = $"第{chinese_volume_number(chapter.order)}卷\n{chapter.chapter_name}";
             var worldSpellNames = chapter.learned_world_spells.OfType<WorldSpellData>()
                 .Select(spell => spell.spell_name).Where(name => !string.IsNullOrWhiteSpace(name)).ToList();
             layer.TooltipText = $"《{_viewedGongfa!.gongfa_name}》第{chapter.order}卷 · {chapter.chapter_name}" +
                 (worldSpellNames.Count > 0 ? $"\n大世界术法：{string.Join("、", worldSpellNames)}" : "");
-            var route = human.get_sub_gongfa_chapter_route(_viewedGongfa!, chapter.get_id());
+            var equipped = _viewedGongfa == human.main_gongfa || human.sub_gongfa_list.Contains(_viewedGongfa);
             var leftPreview = gongfa_branch_preview(chapter, true, !_viewingSubGongfa, human);
-            var rightPreview = gongfa_branch_preview(chapter, false, !_viewingSubGongfa, human);
-            left.Text = $"{leftName} · {gongfa_branch_status(learned, !_viewingSubGongfa, route, "left")}\n{string.Join("\n", leftPreview)}";
-            right.Text = $"{rightName} · {gongfa_branch_status(learned, !_viewingSubGongfa, route, "right")}\n{string.Join("\n", rightPreview)}";
+            var rightPreview = hasChemistry ? gongfa_branch_preview(chapter, false, !_viewingSubGongfa, human) : new List<string> { "本卷无化法" };
+            left.Text = $"{leftName} · {gongfa_branch_status(learned, equipped)}\n{string.Join("\n", leftPreview)}";
+            right.Text = hasChemistry
+                ? $"{rightName} · {gongfa_branch_status(learned, equipped)}\n{string.Join("\n", rightPreview)}"
+                : $"{rightName} · 未设置\n{string.Join("\n", rightPreview)}";
             left.TooltipText = gongfa_branch_tooltip(chapter, true, !_viewingSubGongfa, human);
-            right.TooltipText = gongfa_branch_tooltip(chapter, false, !_viewingSubGongfa, human);
-            left.Disabled = right.Disabled = !learned;
-            var leftActive = learned && !_viewingSubGongfa;
-            var rightActive = learned && !_viewingSubGongfa;
-            if (_viewingSubGongfa && learned)
-            {
-                leftActive = route == "left";
-                rightActive = route == "right";
-            }
+            right.TooltipText = hasChemistry ? gongfa_branch_tooltip(chapter, false, !_viewingSubGongfa, human) : "本卷未设置化法。";
+            left.Disabled = !learned;
+            right.Disabled = !learned || !hasChemistry;
+            var leftActive = learned && equipped;
+            var rightActive = learned && equipped && hasChemistry;
             left.SetMeta("gongfa_active", leftActive); right.SetMeta("gongfa_active", rightActive);
-            // 选中与已激活始终用深墨字，避免落在浅色金笺上失去可读性。
+            // 选中与已生效效果始终用深墨字，避免落在浅色金笺上失去可读性。
             left.Modulate = learned ? Colors.White : new Color(1f, 1f, 1f, .62f);
             right.Modulate = learned ? Colors.White : new Color(1f, 1f, 1f, .62f);
-            var selectedLeft = i == _gongfaSelectedChapter && _gongfaSelectedBranch == "left";
-            var selectedRight = i == _gongfaSelectedChapter && _gongfaSelectedBranch == "right";
+            var selectedLeft = i == _gongfaSelectedChapter && _gongfaSelectedEffect == "left";
+            var selectedRight = hasChemistry && i == _gongfaSelectedChapter && _gongfaSelectedEffect == "right";
             left.AddThemeColorOverride("font_color", selectedLeft || leftActive ? new Color(.14f, .085f, .025f) : new Color(.17f, .13f, .08f));
             right.AddThemeColorOverride("font_color", selectedRight || rightActive ? new Color(.14f, .085f, .025f) : new Color(.17f, .13f, .08f));
-            // 已激活分支用金墨染色；未激活保持淡墨，避免只靠文字状态辨认。
+            // 已生效的修持与化法同时用金墨标出，避免读成互斥选择。
             left.GetNodeOrNull<TextureRect>("Backdrop")?.Set("modulate", leftActive ? new Color(1.38f, .78f, .24f, 1f) : learned ? new Color(.90f, .86f, .72f, 1f) : new Color(.56f, .53f, .45f, .78f));
             right.GetNodeOrNull<TextureRect>("Backdrop")?.Set("modulate", rightActive ? new Color(1.38f, .78f, .24f, 1f) : learned ? new Color(.90f, .86f, .72f, 1f) : new Color(.56f, .53f, .45f, .78f));
         }
@@ -1649,7 +1645,7 @@ public partial class InfoPanel : Control
         ContentMarginLeft = 3, ContentMarginRight = 3, ContentMarginTop = 3, ContentMarginBottom = 3
     };
 
-    private static string battle_attribute_name(string name) => name switch { "physique" => "体魄", "coordination" => "身心协调值", "intelligence" => "灵慧", "soul" => "神魂", "comprehension" => "悟性", "body_proficiency" => "体道造诣", "magic_proficiency" => "术法造诣", "sword_proficiency" => "剑道造诣", "talisman_proficiency" => "符道造诣", "cultivation_rate" => "修炼效率", "mind_regen_rate" => "神识恢复", "mana_regen_rate" => "法力恢复", "physical_damage" => "物理伤害", "max_health" => "生命上限", "max_qi_blood" => "气血上限", "blood_furnace_value_cap" => "血炉上限", "physical_defense" => "物理防御", "precision" => "精准", "dodge" => "身法", "critical" => "会心", "crit_resist" => "护心", "crit_damage_mult" => "会心伤害", "initiative_speed" => "速度", _ => name };
+    private static string battle_attribute_name(string name) => name switch { "physique" => "体魄", "coordination" => "身心协调值", "intelligence" => "灵慧", "soul" => "神魂", "comprehension" => "悟性", "body_proficiency" => "体道造诣", "magic_proficiency" => "术法造诣", "sword_proficiency" => "剑道造诣", "talisman_proficiency" => "符道造诣", "cultivation_rate" => "修炼效率", "mind_regen_rate" => "灵识恢复", "mana_regen_rate" => "法力恢复", "physical_damage" => "物理伤害", "max_health" => "生命上限", "max_qi_blood" => "气血上限", "blood_furnace_value_cap" => "血炉上限", "physical_defense" => "物理防御", "precision" => "精准", "dodge" => "身法", "critical" => "会心", "crit_resist" => "护心", "crit_damage_mult" => "会心伤害", "initiative_speed" => "速度", _ => name };
 
     private static string gongfa_chapter_name(GongfaResource? book, string chapterId)
     {
@@ -1697,7 +1693,7 @@ public partial class InfoPanel : Control
             var worldSpellSummary = chapters.SelectMany(chapter => chapter.learned_world_spells.OfType<WorldSpellData>()
                 .Select(spell => $"{spell.get_icon_bbcode(42)} 第{chinese_volume_number(chapter.order)}卷 · {spell.spell_name} · {(human.is_gongfa_chapter_learned(_viewedGongfa, chapter.get_id()) ? "已解锁" : "学会本卷后解锁")}"))
                 .ToList();
-            var overview = _viewedGongfa.description.Length > 0 ? _viewedGongfa.description : "每卷对应本功法的一层传承。主修可同时启用两支；辅修可随时切换每层已研读的一支。";
+            var overview = _viewedGongfa.description.Length > 0 ? _viewedGongfa.description : "每卷对应本功法的一层传承。已研读卷章的修持与已配置化法均生效；主修与辅修仅在心法额外效果上有区别。";
             detailText.BbcodeEnabled = true;
             detailText.Text = overview + (worldSpellSummary.Count > 0
                 ? $"\n\n[b]本功法的大世界术法[/b]\n{string.Join("\n", worldSpellSummary)}\n点击对应卷章可查看完整效果。"
@@ -1722,17 +1718,20 @@ public partial class InfoPanel : Control
 
     private void update_gongfa_tree_selection_detail(Character human, Label title, Label state, RichTextLabel text)
     {
-        if (_gongfaBranchActivate is not null) _gongfaBranchActivate.Visible = false;
         if (_viewedGongfa is null || _gongfaSelectedChapter < 0) return;
         var chapters = _viewedGongfa.get_sorted_chapters();
-        if (_gongfaSelectedChapter >= chapters.Count) { _gongfaSelectedChapter = -1; _gongfaSelectedBranch = ""; return; }
+        if (_gongfaSelectedChapter >= chapters.Count) { _gongfaSelectedChapter = -1; _gongfaSelectedEffect = ""; return; }
         var chapter = chapters[_gongfaSelectedChapter]; var learned = human.is_gongfa_chapter_learned(_viewedGongfa, chapter.get_id());
         var isMain = !_viewingSubGongfa;
         text.BbcodeEnabled = true;
-        if (string.IsNullOrEmpty(_gongfaSelectedBranch))
+        if (string.IsNullOrEmpty(_gongfaSelectedEffect))
         {
             title.Text = $"第{chinese_volume_number(chapter.order)}卷 · {chapter.chapter_name}";
-            state.Text = learned ? "本卷已研读 · 可查看两条分支" : "本卷尚未研读 · 查看解锁条件";
+            var equippedBook = _viewedGongfa == human.main_gongfa || human.sub_gongfa_list.Contains(_viewedGongfa);
+            var hasChemistry = chapter.get_deck_rewrites(isMain).Any(item => item.enabled);
+            state.Text = learned
+                ? (equippedBook ? hasChemistry ? "本卷已研读 · 修持与化法均生效" : "本卷已研读 · 修持生效；无化法" : "本卷已研读 · 装配后生效")
+                : "本卷尚未研读 · 查看解锁条件";
             var requirements = new List<string>();
             if (_viewedGongfa.wuxing != GongfaResource.Wuxing.NONE)
             {
@@ -1765,10 +1764,22 @@ public partial class InfoPanel : Control
                 heartDetails + (worldSpellDetails.Length > 0 ? $"\n\n{worldSpellDetails}" : "") + $"\n\n{chapter.description}";
             return;
         }
-        var left = _gongfaSelectedBranch == "left"; var branchName = left ? chapter.left_branch_name : chapter.right_branch_name;
+        var left = _gongfaSelectedEffect == "left"; var branchName = left ? chapter.left_branch_name : chapter.right_branch_name;
+        var hasSelectedChemistry = chapter.get_deck_rewrites(isMain).Any(item => item.enabled);
+        if (!left && !hasSelectedChemistry)
+        {
+            title.Text = $"第{chinese_volume_number(chapter.order)}卷 · 无化法";
+            state.Text = "本卷未设置化法";
+            var spellDetails = gongfa_chapter_world_spell_details(chapter, learned);
+            text.Text = "[b]化法[/b]\n本卷没有配置化法效果。" +
+                (spellDetails.Length > 0 ? $"\n\n{spellDetails}" : "") + $"\n\n{chapter.description}";
+            return;
+        }
         title.Text = $"第{chinese_volume_number(chapter.order)}卷 · {branchName}";
-        var route = isMain ? "主修两条分支均生效" : human.get_sub_gongfa_chapter_route(_viewedGongfa, chapter.get_id());
-        state.Text = !learned ? "本卷尚未研读，无法激活" : isMain ? route : route == _gongfaSelectedBranch ? "此分支已激活" : "待确认激活";
+        var equipped = _viewedGongfa == human.main_gongfa || human.sub_gongfa_list.Contains(_viewedGongfa);
+        state.Text = !learned ? "本卷尚未研读" : equipped
+            ? (hasSelectedChemistry ? "本卷已研读 · 修持与化法均生效" : "本卷已研读 · 修持生效；无化法")
+            : "本卷已研读 · 装配后生效";
         var benefits = new List<string>();
         if (left)
         {
@@ -1780,12 +1791,6 @@ public partial class InfoPanel : Control
         var branchWorldSpellDetails = gongfa_chapter_world_spell_details(chapter, learned);
         text.Text = $"[b]{(left ? "修持属性（仅战斗内）" : "化法效果")}[/b]\n{string.Join("\n", benefits)}" +
             (branchWorldSpellDetails.Length > 0 ? $"\n\n{branchWorldSpellDetails}" : "") + $"\n\n{chapter.description}";
-        if (_gongfaBranchActivate is not null)
-        {
-            _gongfaBranchActivate.Visible = true;
-            _gongfaBranchActivate.Disabled = !learned || isMain || route == _gongfaSelectedBranch;
-            _gongfaBranchActivate.Text = isMain ? "主修两支均已生效" : route == _gongfaSelectedBranch ? "此分支已激活" : "激活此分支";
-        }
     }
 
     private void equip_selected_gongfa(Character human, GongfaResource book)
@@ -1907,7 +1912,7 @@ public partial class InfoPanel : Control
         Base("CultivationRow", "修炼效率", "影响灵力积累速度；灵根、环境与主修功法缺一不可。", $"修炼效率 = 0.0020 × 境界倍率 × 灵根倍率 × 环境系数\n灵根倍率 = 灵根资质 × 功法五行匹配\n灵石、阵法与机缘均提高环境灵气浓度\n当前：{(human?.get_cultivation_rate() ?? 0):0.000}/小时");
 
         foreach (var (row, name) in new[] { ("SwordRow", "剑道"), ("BladeRow", "刀道"), ("SpearRow", "枪道"), ("BodyRow", "体道"), ("MagicRow", "术法"), ("ForgingRow", "器道"), ("TalismanRow", "符道"), ("FormationRow", "阵道"), ("AlchemyRow", "丹道") })
-            Base(row, name, $"{name}造诣影响相关技艺、配方与战斗手段的掌握。", $"当前{name}造诣 = 基础造诣 + 功法/装备/技艺修正\n当前值：{data_number(unit, row switch { "SwordRow" => "sword_proficiency", "BladeRow" => "blade_proficiency", "SpearRow" => "spear_proficiency", "BodyRow" => "body_proficiency", "MagicRow" => "magic_proficiency", "ForgingRow" => "forging_proficiency", "TalismanRow" => "talisman_proficiency", "FormationRow" => "formation_proficiency", _ => "alchemy_proficiency" }):0.0}");
+            Base(row, name, $"{name}造诣影响相关技艺、配方与战斗手段的掌握。", $"当前{name}造诣 = 天赋基础造诣×成长倍率 + 定额加成\n定额加成可来自境界、功法、装备及研习实践。\n当前值：{data_number(unit, row switch { "SwordRow" => "sword_proficiency", "BladeRow" => "blade_proficiency", "SpearRow" => "spear_proficiency", "BodyRow" => "body_proficiency", "MagicRow" => "magic_proficiency", "ForgingRow" => "forging_proficiency", "TalismanRow" => "talisman_proficiency", "FormationRow" => "formation_proficiency", _ => "alchemy_proficiency" }):0.0}");
     }
 
     private void populate(WorldEntity entity)
@@ -2066,7 +2071,7 @@ public partial class InfoPanel : Control
 
     private static void clear_children(Container? container) { if (container is not null) foreach (var child in container.GetChildren()) child.QueueFree(); }
     private static Label muted(string text) { var label = new Label { Text = text, AutowrapMode = TextServer.AutowrapMode.WordSmart }; label.Modulate = new Color(.38f, .36f, .3f); label.AddThemeFontSizeOverride("font_size", 14); return label; }
-    private static StyleBoxFlat gongfa_card_style() => new() { BgColor = new Color(.87f, .83f, .71f, .38f), BorderColor = new Color(.42f, .34f, .22f, .6f), BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1, CornerRadiusTopLeft = 5, CornerRadiusTopRight = 5, CornerRadiusBottomLeft = 5, CornerRadiusBottomRight = 5, ContentMarginLeft = 10, ContentMarginRight = 10, ContentMarginTop = 6, ContentMarginBottom = 6 };
+    private static StyleBoxTexture gongfa_card_style() => CraftingPaperStyle.Paper(10, false, 1);
 
     private void populate_equip(Character? human) => set_label("PackTitle", human is null || human.pack_items.Count == 0 ? "随身物资：暂无" : $"随身物资：{human.pack_items.Count} 类");
     private void populate_relations() => set_label("EmptyRelations", "亲缘、声望与往来会在家族发展中逐步记录。");

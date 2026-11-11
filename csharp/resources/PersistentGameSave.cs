@@ -5,7 +5,7 @@ using Godot.Collections;
 [GlobalClass]
 public partial class PersistentGameSave : Resource
 {
-    public const int CurrentFormatVersion = 12;
+    public const int CurrentFormatVersion = 13;
 
     [Export] public int format_version = CurrentFormatVersion;
     [Export] public string slot_id = "";
@@ -135,6 +135,14 @@ public partial class PersistentGameSave : Resource
                 // v12 stores automatic inspiration refinement thresholds as bottleneck-penalty percentages.
                 // Existing tier thresholds remain available for lazy conversion by HumanData.
                 format_version = 12;
+                continue;
+            }
+            if (format_version == 12)
+            {
+                // 新盘独立保存；首次进入布阵再生成预览，不在读档时覆盖旧十槽或猜测学习资格。
+                player_data?.preserve_legacy_cloud_veil_learning();
+                foreach (var npc in world_npcs) npc.preserve_legacy_cloud_veil_learning();
+                format_version = 13;
                 continue;
             }
             return false;

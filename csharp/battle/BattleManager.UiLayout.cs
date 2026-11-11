@@ -3,9 +3,12 @@ using Godot;
 public partial class BattleManager
 {
     private Vector2 _layoutViewportSize;
+    private TextureRect? _legacyBattleBackground;
+    private BattleBoardStoneStage? _boardStoneStage;
     // Explicit art-trial flag. Ordinary encounters retain their existing layout.
     public bool distant_avatar_preview;
     public bool is_distant_avatar_preview() => isolated_trial_battle && distant_avatar_preview;
+    public bool uses_compact_battle_presentation() => is_board_battle() || is_distant_avatar_preview();
     private void ApplyBattleArtwork(Node scene)
     {
         scene.GetNodeOrNull<CanvasItem>("InkMountainValley")?.Hide();
@@ -22,11 +25,32 @@ public partial class BattleManager
             MouseFilter = Control.MouseFilterEnum.Ignore
         };
         layer.AddChild(background);
+        _legacyBattleBackground=background;
         background.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
+        _boardStoneStage=new BattleBoardStoneStage{Name="BoardStoneStage",Visible=false};layer.AddChild(_boardStoneStage);
+        _boardStoneStage.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
     }
 
-    public float get_unit_display_height() => (is_distant_avatar_preview() ? 160f
-        : new[] { 320f, 280f, 240f, 210f, 190f }[Mathf.Clamp(Math.Max(player_units.Count, enemy_units.Count), 1, 5) - 1]) * BattleUiArt.Scale(GetViewport());
+    private void RefreshBoardStage()
+    {
+        if(_legacyBattleBackground is not null)_legacyBattleBackground.Visible=!is_board_battle();
+        if(_boardStoneStage is not null)_boardStoneStage.Visible=is_board_battle();
+        if(is_board_battle())SetMeta("combat_presentation_profile",BattleBoardStoneStage.ProfileId);
+        else RemoveMeta("combat_presentation_profile");
+        FitBattleFormation(true);
+    }
+    private void ResetBoardStage()
+    {
+        if(GodotObject.IsInstanceValid(_legacyBattleBackground))_legacyBattleBackground!.Show();
+        if(GodotObject.IsInstanceValid(_boardStoneStage))_boardStoneStage!.Hide();
+        if(HasMeta("combat_presentation_profile"))RemoveMeta("combat_presentation_profile");
+    }
+
+    private bool UsesBasicPairFormation() => !uses_compact_battle_presentation() && all_units.OfType<Node>()
+        .Any(unit=>unit.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.uses_basic_pair_avatar()==true);
+    public float get_unit_display_height() => (uses_compact_battle_presentation() ? 160f
+        : (UsesBasicPairFormation()?new[] {288f,260f,237f,210f,190f}:new[] {320f,280f,240f,210f,190f})
+            [Mathf.Clamp(Math.Max(player_units.Count, enemy_units.Count),1,5)-1]) * BattleUiArt.Scale(GetViewport());
     public Rect2 get_unit_screen_rect(Node2D unit)
     {
         if (unit is ArtifactBody) return BattleLocalFocusView.FrameUnitRect(unit, new Rect2(unit.GetGlobalTransformWithCanvas().Origin + new Vector2(-65, -52), new Vector2(130, 115)));
@@ -42,6 +66,7 @@ public partial class BattleManager
         var size = viewport.GetVisibleRect().Size;
         if (!force && size == _layoutViewportSize || all_units.Count == 0) return;
         _layoutViewportSize = size;
+        if (UsesBasicPairFormation()) { FitBasicPairFormation(); return; }
         // X 为相对半场中心的偏移，Y 为前后排系数；左右镜像，不向中线挤。
         Vector2[][] layouts =
         [
@@ -55,16 +80,16 @@ public partial class BattleManager
         var origin = BattleUiArt.Origin(viewport);
         var canvasInverse = viewport.GetCanvasTransform().AffineInverse();
         var height = get_unit_display_height() / scale;
-        var rowDepth = is_distant_avatar_preview() ? 96f : Mathf.Clamp(360f - height, 0f, 170f);
+        var rowDepth = uses_compact_battle_presentation() ? 96f : Mathf.Clamp(360f - height, 0f, 170f);
         var fit = 1f;
-        var centerY = is_distant_avatar_preview() ? 500f : Math.Max(player_units.Count, enemy_units.Count) == 1 ? 495f : 540f;
+        var centerY = uses_compact_battle_presentation() ? 500f : Math.Max(player_units.Count, enemy_units.Count) == 1 ? 495f : 540f;
         foreach (var team in new[] { player_units, enemy_units })
         {
             if (team.Count == 0) continue;
-            var positions = is_distant_avatar_preview() && team.Count == 3
+            var positions = uses_compact_battle_presentation() && team.Count == 3
                 ? new Vector2[] { new(-160, -.55f), new(165, 0), new(-20, .65f) }
                 : layouts[Mathf.Clamp(team.Count, 1, 5) - 1];
-            var center = new Vector2(BattleUiArt.Canvas.X * (team == enemy_units ? .75f : .25f), centerY);
+            var center = new Vector2(BattleUiArt.Canvas.X * (team == enemy_units ? (uses_compact_battle_presentation()?.69f:.75f) : (uses_compact_battle_presentation()?.31f:.25f)), centerY);
             Rect2? teamBounds = null;
             for (var i = 0; i < team.Count; i++)
             {
@@ -89,7 +114,7 @@ public partial class BattleManager
         if (fit < 1f)
             foreach (var team in new[] { player_units, enemy_units })
             {
-                var center = origin + new Vector2(BattleUiArt.Canvas.X * (team == enemy_units ? .75f : .25f), centerY) * scale;
+                var center = origin + new Vector2(BattleUiArt.Canvas.X * (team == enemy_units ? (uses_compact_battle_presentation()?.69f:.75f) : (uses_compact_battle_presentation()?.31f:.25f)), centerY) * scale;
                 foreach (var unit in team.OfType<Node2D>())
                 {
                     var screen = viewport.GetCanvasTransform() * unit.GlobalPosition;
@@ -98,5 +123,35 @@ public partial class BattleManager
                     if (doll is not null) doll.Scale *= fit;
                 }
             }
+    }
+
+    private void FitBasicPairFormation()
+    {
+        // The native basic figures keep their full feet above the existing skill HUD.
+        // These screen anchors affect presentation only, never cells or target rules.
+        Vector2[][] anchors =
+        [
+            [new(430,550)],
+            [new(285,510),new(510,570)],
+            [new(550,525),new(245,485),new(385,570)],
+            [new(240,475),new(485,475),new(345,565),new(590,565)],
+            [new(180,470),new(390,470),new(600,470),new(285,565),new(510,565)]
+        ];
+        var viewport=GetViewport(); var scale=BattleUiArt.Scale(viewport); var origin=BattleUiArt.Origin(viewport);
+        var inverse=viewport.GetCanvasTransform().AffineInverse();
+        foreach(var team in new[]{player_units,enemy_units})
+        {
+            var positions=anchors[Mathf.Clamp(team.Count,1,5)-1];
+            for(var i=0;i<team.Count;i++)
+            {
+                if(team[i] is not Node2D unit) continue;
+                var point=positions[Math.Min(i,positions.Length-1)];
+                if(team==enemy_units) point.X=1440-point.X;
+                var canvasPoint=point*new Vector2(BattleUiArt.Canvas.X/1440f,BattleUiArt.Canvas.Y/810f);
+                unit.GlobalPosition=inverse*(origin+canvasPoint*scale);
+                unit.ZIndex=Mathf.RoundToInt(canvasPoint.Y);
+                unit.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.SetDisplayHeight(get_unit_display_height()/viewport.GetCanvasTransform().Scale.Y);
+            }
+        }
     }
 }

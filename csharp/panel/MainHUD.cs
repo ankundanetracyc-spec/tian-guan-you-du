@@ -144,8 +144,6 @@ public partial class MainHUD : Control
     }
 
     // 迁移期间保留旧调用点；资源、民力等不再显示在常驻 HUD。
-    public void bind_estate_resources(EstateResourceSystem? _) { }
-    public void bind_territory_state(QingxiTerritoryState? _) { }
     public void set_estate_summary_visible(bool visible)
     {
         if (GetNodeOrNull<Control>("PlayerStatus") is { } panel) panel.Visible = visible;

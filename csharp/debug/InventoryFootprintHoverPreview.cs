@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 /// <summary>Read-only metadata coverage and real shared-hover edge-layout capture.</summary>
 public partial class InventoryFootprintHoverPreview : Control
 {
-    private const string Review = "res://docs/美术规范/物品列表与占格悬停_20261029/";
+    private const string Review = "res://tmp/item_hover_capacity_preview/";
     private int _checks;
     private Vector2 _pointer;
 
@@ -39,38 +39,46 @@ public partial class InventoryFootprintHoverPreview : Control
             Theme = QuietRoomStyle.MakeTheme();
             var background = new ColorRect { Color = new Color("eae2cc"), MouseFilter = MouseFilterEnum.Ignore };
             AddChild(background); background.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-            var rows = Json.ParseString(Godot.FileAccess.GetFileAsString(InventoryIconDensityPack.Manifest)).AsGodotArray();
-            foreach (var value in rows)
-            {
-                var row = value.AsGodotDictionary();
-                var item = GD.Load<ItemData>("res://" + row["path"].AsString());
-                var expected = new Vector2I(row["width"].AsInt32(), row["height"].AsInt32());
-                Check(StoragePanel.ItemHover(item).Footprint == expected, "Shared hover footprint differs from catalog: " + item.entity_name);
-            }
-            // Deliberately pair a 1x1 sprite with a 2x5 definition: metadata wins.
-            var synthetic = new ItemData { entity_name = "占地读取验证", item_category = "材料", inventory_width = 2, inventory_height = 5,
+            // Deliberately pair a 1x1 sprite and a 2x5 display shape with an independent volume of 7.
+            var synthetic = new ItemData { entity_name = "体积读取验证", item_category = "材料", storage_volume = 7, inventory_width = 2, inventory_height = 5,
                 icon_path = InventoryIconDensityPack.Root + "spirit_stone_1x1.png" };
-            Check(StoragePanel.ItemHover(synthetic).Footprint == new Vector2I(2, 5), "Footprint must never be inferred from the icon's dimensions");
+            var syntheticHover = StoragePanel.ItemHover(synthetic);
+            var syntheticFields = syntheticHover.Sections is { Count: > 0 } ? syntheticHover.Sections[0].Body : syntheticHover.Body;
+            Check(syntheticHover.Footprint is null && syntheticFields.StartsWith("单件体积：7 容量", StringComparison.Ordinal),
+                "Volume must be a text field and never inferred from icon dimensions");
             var anchor = new Button { Text = "物品", Position = new Vector2(40, 40), Size = new Vector2(156, 54) };
             AddChild(anchor);
             var manager = GetNode<HoverInfoManager>("/root/HoverInfoManager");
             var card = manager.GetNode<Control>("SharedHoverInfoCard");
-            var grid = card.FindChild("InventoryFootprint", true, false) as InventoryFootprintView
+            var grid = card.FindChild("HeaderInventoryFootprint", true, false) as InventoryFootprintView
                 ?? throw new InvalidOperationException("Shared hover has no footprint view");
-            var examples = new[] { "灵石", "秘籍", "丹药", "玄青云竹袍", "承露剑", "玄铁" };
+            var examples = new (string Name, string Path, int? Count)[]
+            {
+                ("灵石", "res://resources/entities/items/灵石.tres", null),
+                ("丹药", "res://resources/entities/items/alchemy/huichun_1.tres", 5),
+                ("秘籍", "res://resources/entities/items/灵枢经筋篇秘籍.tres", null),
+                ("衣袍", "res://resources/entities/items/clothing/男_玄青云竹袍.tres", null),
+                ("铁剑", "res://resources/entities/equipment/铁剑.tres", null),
+                ("玄铁", "res://resources/entities/items/玄铁.tres", null),
+            };
             for (var index = 0; index < examples.Length; index++)
             {
-                var key = examples[index];
-                var row = rows.Select(v => v.AsGodotDictionary()).First(r => r["name"].AsString().Contains(key) || r["category"].AsString() == key);
-                var item = GD.Load<ItemData>("res://" + row["path"].AsString());
-                var info = StoragePanel.ItemHover(item);
+                var (key, path, count) = examples[index];
+                var item = GD.Load<ItemData>(path) ?? throw new InvalidOperationException("物品资源加载失败：" + path);
+                var info = StoragePanel.ItemHover(item, count);
                 var viewport = GetViewport().GetVisibleRect().Size;
                 anchor.Position = index % 2 == 0 ? new Vector2(20, viewport.Y - 80) : new Vector2(viewport.X - 180, viewport.Y - 80);
                 anchor.Text = info.Title;
                 Move(anchor.GetGlobalTransformWithCanvas() * (anchor.Size / 2));
                 HoverInfoManager.SetInfo(anchor, info, true); await Settle();
-                Check(grid.Visible && grid.Footprint == info.Footprint && grid.MouseFilter == MouseFilterEnum.Ignore, "Item footprint must be visible and mouse-transparent: " + key);
-                Check(grid.OccupiedCellCount == row["area"].AsInt32(), "Occupied cell count differs from item catalog: " + key);
+                var footerInventory = card.FindChild("InventoryFootprint", true, false) as InventoryFootprintView;
+                var firstFields = info.Sections is { Count: > 0 } ? info.Sections[0].Body : info.Body;
+                Check(!grid.Visible && footerInventory?.Visible != true && info.Footprint is null,
+                    "Capacity mini-grid must be hidden from item hover: " + key);
+                string expectedFields = $"单件体积：{item.get_storage_volume()} 容量"
+                    + (count is > 1 ? $"\n当前堆叠容量：{(long)item.get_storage_volume() * count.Value} 容量" : "");
+                Check(firstFields.StartsWith(expectedFields, StringComparison.Ordinal),
+                    "Item volume must be the first field: " + key);
                 var bounds = card.GetGlobalRect();
                 Check(bounds.Position.X >= 0 && bounds.Position.Y >= 0 && bounds.End.X <= viewport.X + 1 && bounds.End.Y <= viewport.Y + 1,
                     "Footprint header pushes the full hover outside the viewport: " + key);
@@ -81,14 +89,18 @@ public partial class InventoryFootprintHoverPreview : Control
                     DirAccess.MakeDirRecursiveAbsolute(ProjectSettings.GlobalizePath(Review));
                     await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
                     using var image = GetViewport().GetTexture().GetImage();
-                    using var crop = image.GetRegion(new Rect2I((Vector2I)bounds.Position, (Vector2I)bounds.Size));
-                    Check(crop.SavePng(Review + $"占格悬停_{index + 1:00}_{key}.png") == Error.Ok, "Hover capture failed");
+                    var scale = new Vector2(image.GetWidth() / viewport.X, image.GetHeight() / viewport.Y);
+                    var cropRect = new Rect2I(
+                        Mathf.RoundToInt(bounds.Position.X * scale.X), Mathf.RoundToInt(bounds.Position.Y * scale.Y),
+                        Mathf.RoundToInt(bounds.Size.X * scale.X), Mathf.RoundToInt(bounds.Size.Y * scale.Y));
+                    using var crop = image.GetRegion(cropRect);
+                    Check(crop.SavePng(Review + $"物品体积悬停_{index + 1:00}_{key}.png") == Error.Ok, "Hover capture failed");
                 }
             }
             HoverInfoManager.SetInfo(anchor, new HoverInfoManager.HoverInfoContent("状态", "效果：测试非物品信息隔离。", ShowRules: false), true);
             await Settle();
             Check(!grid.Visible && grid.Footprint is null, "Non-item hover must clear the previous footprint");
-            GD.Print($"INVENTORY_FOOTPRINT_HOVER_OK: {_checks} checks; 96 item definitions; six edge-layout samples; non-item isolation");
+            GD.Print($"CAPACITY_VOLUME_HOVER_OK: {_checks} checks; item-volume hover; six edge-layout samples; non-item isolation");
             HoverInfoManager.HideAll(); GetTree().Quit();
         }
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }

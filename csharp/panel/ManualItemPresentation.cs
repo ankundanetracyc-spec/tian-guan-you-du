@@ -52,9 +52,9 @@ public static class ManualItemPresentation
         var keywordText = keywords.Count > 0 ? string.Join("、", keywords.Distinct()) : "无";
         var introduction = !string.IsNullOrWhiteSpace(book?.description) ? book.description.Trim() : item.description.Trim();
         var icon = !string.IsNullOrWhiteSpace(item.icon_path) && ResourceLoader.Exists(item.icon_path) ? GD.Load<Texture2D>(item.icon_path) : null;
-        return HoverInfoManager.Structured(item.entity_name, icon, "",
+        return ItemLayoutPresentation.AttachItem(HoverInfoManager.Structured(item.entity_name, icon, "",
             new("", $"修习境界：{realm}\n修习要求：{(requirements.Count > 0 ? string.Join("、", requirements.Distinct()) : "无")}\n关键词：{keywordText}"),
-            new("", "简介：" + introduction)) with { CardWidth = 340f, IconSize = 96f, ShowRules = false, Footprint = item.get_inventory_size() };
+            new("", "简介：" + introduction)) with { ShowRules = false, Footprint = new Vector2I(item.get_storage_volume(), 1) }, item);
     }
 
     private static string AttributeName(string name) => name switch

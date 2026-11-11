@@ -11,7 +11,7 @@ public sealed partial class GongfaCombatRuntime
     private sealed class ExpansionState
     {
         public int EmptyManaTriggers;
-        public bool ShieldBloodUsed, PendingShieldBlood, EmptyExtraUsed, EmptyGuardUsed, CloudCultivateUsed, CloudGuardUsed, EmptyStrikeShieldUsed;
+        public bool ShieldBloodUsed, PendingShieldBlood, EmptyExtraUsed, EmptyGuardUsed, EmptyStrikeShieldUsed;
         public int PendingYuSuiShield;
         public readonly System.Collections.Generic.Dictionary<string, CastSnapshot> Casts = new(StringComparer.Ordinal);
     }
@@ -126,15 +126,6 @@ public sealed partial class GongfaCombatRuntime
         state.Casts.Remove(ManaSkillKey(skill));
     }
 
-    public void AfterSwordIntentGain(GodotObject unit, ActiveSkillData skill, int intentBefore)
-    {
-        var state=Expansion(unit);
-        if (HasEffect(skill,"shujuan_c1") && intentBefore<=5 && !state.CloudCultivateUsed)
-        { state.CloudCultivateUsed=true; Add(unit,"剑意",1); }
-        if (HasEffect(skill,"shujuan_c2") && Stacks(unit,"剑意")>=6 && !state.CloudGuardUsed)
-        { state.CloudGuardUsed=true; Add(unit,"剑意",1); }
-    }
-
     private void GrantExpansionQi(GodotObject unit, int amount)
     {
         if (manager.gain_battle_qi(unit,amount,out var completed)) manager.show_status_gain(unit,completed?"周天":"炁",completed?1:amount);
@@ -143,7 +134,6 @@ public sealed partial class GongfaCombatRuntime
     private float ExpansionDamageMultiplier(GodotObject unit, ActiveSkillData skill)
     {
         var start=CastAtStart(unit,skill);
-        if (skill.combat_is_cloud_segment && HasEffect(skill,"shujuan_c4")) return 1.2f;
         if (skill.combat_is_gongfa_bonus_damage_segment) return 1;
         if (HasEffect(skill,"yusui_c2_mingquan") && start.Shield>0) return 1.2f;
         if (HasEffect(skill,"baoxu_c1_sanzhao") && start.EmptyMana) return 1.2f;
@@ -164,7 +154,6 @@ public sealed partial class GongfaCombatRuntime
         if (index<0 || index>=3) return 0;
         if (skill.skill_name!="云岚三叠" || skill.source_gongfa_name!=CloudBook) return 1;
         var first=Mathf.Clamp(.40f+CastAtStart(unit,skill).Intent*.05f+CardRules.Number(unit,"sword_proficiency")*.005f,.40f,.80f);
-        if (HasEffect(skill,"shujuan_c3")) first=Math.Min(.80f,first+.10f);
         return Math.Max(0,first-.20f*index);
     }
 
@@ -175,7 +164,9 @@ public sealed partial class GongfaCombatRuntime
         var bonus=HasHeartUpgrade(unit,CloudBook,"shujuan_c2") || HasHeartUpgrade(unit,CloudBook,"shujuan_c3")
             || HasHeartUpgrade(unit,CloudBook,"shujuan_c4") || skill.skill_name=="云岚三叠"
             ?Math.Max(0,CastAtStart(unit,skill).Intent-6):0;
-        clone.damage_formula=$"round(2 + 体魄×0.20 + 剑道造诣×0.30 + {bonus})";
+        clone.damage_formula=skill.source_gongfa_name==CloudBook && skill.skill_name=="云岚三叠"
+            ?$"round(4 + 体魄×0.30 + 剑道造诣×0.50 + {bonus}*4)"
+            :$"round(2 + 体魄×0.20 + 剑道造诣×0.30 + {bonus})";
         return clone;
     }
 }

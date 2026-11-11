@@ -46,6 +46,7 @@ public partial class WorldNpcData : Resource
     /// <summary>明确习得的卷章；仅有书名不自动补卷章。</summary>
     [Export] public Dictionary learned_gongfa_chapters = [];
     [Export] public Array<string> unlocked_skill_node_ids = [];
+    [Export] public Array<string> legacy_learned_combat_skill_paths = [];
     [Export] public string combat_main_gongfa_path = "";
     [Export] public Array<string> combat_sub_gongfa_paths = [];
     [Export] public Dictionary combat_chapter_routes = [];
@@ -121,6 +122,8 @@ public partial class WorldNpcData : Resource
     [Export] public string death_cause = "";
     /// <summary>Non-empty while this saved NPC is temporarily travelling as a player's case-task party member.</summary>
     [Export] public string temporary_party_task_id = "";
+    /// <summary>随玩家自由行旅；实际位置由玩家的连续地图位置决定。</summary>
+    [Export] public bool is_player_travel_companion;
     /// <summary>副本内持久位置与行程；不覆盖大世界 node/subscene 位置。</summary>
     [Export] public string dungeon_id = "";
     [Export] public string dungeon_node_id = "";

@@ -75,6 +75,7 @@ public partial class BattleManager : Node2D
     // 现行队列战斗的命中入口必须等待特写；同步入口保留给旧模式与规则调用。
     public async System.Threading.Tasks.Task<bool> PresentAutoResponse(GodotObject defender, GodotObject attacker, string damageType,ActiveSkillData? incomingSkill=null)
     {
+        if (_boardMode) return TryBoardResponse(defender, attacker, damageType, incomingSkill);
         // Preserve the queued response decision and payment, but skip its visible
         // freeze-frame focus during unattended NPC battles.
         if (_spectatorBattle) return try_auto_response(defender, attacker, damageType,incomingSkill);
@@ -110,6 +111,7 @@ public partial class BattleManager : Node2D
     /// <summary>攻击命中判定前自动触发一张可用的“应对”牌。</summary>
     public bool try_auto_response(GodotObject defender, GodotObject attacker, string damageType = "physical",ActiveSkillData? incomingSkill=null)
     {
+        if (_boardMode) return TryBoardResponse(defender, attacker, damageType, incomingSkill);
         if(incomingSkill is not null&&gongfa_combat.PreventsResponse(attacker,incomingSkill))return false;
         if (_realtimeMode)
         {

@@ -494,6 +494,13 @@ public partial class StartMenu : Control
 
     private static float RoundOne(float value)=>Mathf.Round(value*10f)/10f;
     private static float CeilOne(float value)=>Mathf.Ceil(value*10f)/10f;
+    private static Godot.Collections.Array<string> BeastSkillPaths(BasicDeckResource? deck)
+    {
+        var paths = new Godot.Collections.Array<string>();
+        if (deck is not null)
+            foreach (var path in deck.get_deck_skills().Distinct(StringComparer.Ordinal)) paths.Add(path);
+        return paths;
+    }
     private static BattleEntityData CreateGreybackBoarTestUnit(BeastModifier? modifier,bool elite,int index=0)
     {
         var physique=13.5f;var intelligence=2f;var soul=4.5f;
@@ -502,7 +509,9 @@ public partial class StartMenu : Control
         var name=modifier?.display_name??"灰背野猪";if(elite)name="精英·"+name;
         var coordination=Mathf.Min(physique,soul);var maxHealth=Mathf.RoundToInt(60+physique*11+soul*3+intelligence*1.5f);var maxMind=Mathf.RoundToInt(30+soul*4+intelligence*1.5f+physique*.5f);
         var iron=modifier?.modifier_id=="greyback_boar_iron_bristle";var swift=modifier?.modifier_id=="greyback_boar_swift_trot";
-        return new BattleEntityData{uid=$"battle_test_greyback_boar_{index}",entity_name=name,entity_type=(int)WorldEntity.EntityType.BEAST,faction=(int)WorldEntity.Faction.ENEMY,cultivation_realm="通智",physique=physique,intelligence=intelligence,soul=soul,max_health=maxHealth,current_health=maxHealth,max_mind=maxMind,current_mind=maxMind,max_mana=0,current_mana=0,physical_defense=Mathf.RoundToInt(physique*(iron?.5f:.3f)),precision=Mathf.RoundToInt(intelligence*7+soul+physique*.5f),dodge=Mathf.RoundToInt(coordination*4+soul*2+intelligence+physique*.5f),critical=Mathf.RoundToInt(physique*.5f+soul*2+intelligence*.3f),crit_resist=Mathf.RoundToInt(physique*3+intelligence*2+coordination*2+soul*1.5f),crit_damage_mult=1.5f,initiative_speed=Creature.calculate_base_initiative_speed(physique,intelligence,soul)+(swift?coordination*.5f:0),initial_hand_size=5,cards_per_turn=3,battle_portrait_path="res://textures/bestiary/static/gray_back_boar.png"};
+        var deck=modifier?.deck_override??ResourceLoader.Load<BasicDeckResource>("res://resources/beast_decks/灰背野猪.tres");
+        var layout=modifier?.combat_board_layout_override??ResourceLoader.Load<CombatBoardLayout>("res://resources/combat_boards/生灵/灰背野猪固定盘.tres");
+        return new BattleEntityData{uid=$"battle_test_greyback_boar_{index}",entity_name=name,entity_type=(int)WorldEntity.EntityType.BEAST,faction=(int)WorldEntity.Faction.ENEMY,cultivation_realm="通智",physique=physique,intelligence=intelligence,soul=soul,max_health=maxHealth,current_health=maxHealth,max_mind=maxMind,current_mind=maxMind,max_mana=0,current_mana=0,physical_defense=Mathf.RoundToInt(physique*(iron?.5f:.3f)),precision=Mathf.RoundToInt(intelligence*7+soul+physique*.5f),dodge=Mathf.RoundToInt(coordination*4+soul*2+intelligence+physique*.5f),critical=Mathf.RoundToInt(physique*.5f+soul*2+intelligence*.3f),crit_resist=Mathf.RoundToInt(physique*3+intelligence*2+coordination*2+soul*1.5f),crit_damage_mult=1.5f,initiative_speed=Creature.calculate_base_initiative_speed(physique,intelligence,soul)+(swift?coordination*.5f:0),initial_hand_size=5,cards_per_turn=3,battle_portrait_path="res://textures/bestiary/static/gray_back_boar.png",active_skill_paths=BeastSkillPaths(deck),combat_board_layout=layout?.CopyConfiguration()};
     }
 
     private static PackedScene CreateForestWolfScene(BeastModifier? modifier,bool elite)
@@ -518,7 +527,10 @@ public partial class StartMenu : Control
         if(elite){physique=CeilOne(physique*1.25f);intelligence=CeilOne(intelligence*1.25f);soul=CeilOne(soul*1.25f);}
         var name=modifier?.display_name??"林地凶狼";if(elite)name="精英·"+name;
         var coordination=Mathf.Min(physique,soul);var maxHealth=Mathf.RoundToInt(60+physique*11+soul*3+intelligence*1.5f);var maxMind=Mathf.RoundToInt(30+soul*4+intelligence*1.5f+physique*.5f);var shadow=modifier?.modifier_id=="forest_wolf_shadowfoot";
-        return new BattleEntityData{uid=$"battle_test_forest_wolf_{index}",entity_name=name,entity_type=(int)WorldEntity.EntityType.BEAST,faction=(int)WorldEntity.Faction.ENEMY,cultivation_realm="通智",physique=physique,intelligence=intelligence,soul=soul,max_health=maxHealth,current_health=maxHealth,max_mind=maxMind,current_mind=maxMind,max_mana=0,current_mana=0,physical_defense=0,precision=Mathf.RoundToInt(intelligence*7+soul+physique*.5f),dodge=Mathf.RoundToInt(coordination*4+soul*2+intelligence+physique*.5f)+(shadow?Mathf.RoundToInt(coordination*.25f):0),critical=Mathf.RoundToInt(physique*.5f+soul*2+intelligence*.3f),crit_resist=Mathf.RoundToInt(physique*3+intelligence*2+coordination*2+soul*1.5f),crit_damage_mult=1.5f,initiative_speed=Creature.calculate_base_initiative_speed(physique,intelligence,soul),initial_hand_size=5,cards_per_turn=3,battle_portrait_path=BattlePaperDoll.DefaultPortraitPath};
+        var template=ResourceLoader.Load<BeastTemplate>("res://resources/beast_templates/林地凶狼.tres");
+        var deck=modifier?.deck_override??template?.deck;
+        var layout=modifier?.combat_board_layout_override??template?.combat_board_layout;
+        return new BattleEntityData{uid=$"battle_test_forest_wolf_{index}",entity_name=name,entity_type=(int)WorldEntity.EntityType.BEAST,faction=(int)WorldEntity.Faction.ENEMY,cultivation_realm="通智",physique=physique,intelligence=intelligence,soul=soul,max_health=maxHealth,current_health=maxHealth,max_mind=maxMind,current_mind=maxMind,max_mana=0,current_mana=0,physical_defense=0,precision=Mathf.RoundToInt(intelligence*7+soul+physique*.5f),dodge=Mathf.RoundToInt(coordination*4+soul*2+intelligence+physique*.5f)+(shadow?Mathf.RoundToInt(coordination*.25f):0),critical=Mathf.RoundToInt(physique*.5f+soul*2+intelligence*.3f),crit_resist=Mathf.RoundToInt(physique*3+intelligence*2+coordination*2+soul*1.5f),crit_damage_mult=1.5f,initiative_speed=Creature.calculate_base_initiative_speed(physique,intelligence,soul),initial_hand_size=5,cards_per_turn=3,battle_portrait_path=BattlePaperDoll.DefaultPortraitPath,active_skill_paths=BeastSkillPaths(deck),combat_board_layout=layout?.CopyConfiguration()};
     }
 
     private void OpenNewGameSetup()

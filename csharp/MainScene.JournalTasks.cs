@@ -10,12 +10,7 @@ public partial class MainScene
     // 固定标识与显示文案分离；旧存档只在迁移入口按已知旧名称匹配。
     private static string JournalTaskId(JournalPanel.Entry entry) => entry.Title switch
     {
-        "初醒青溪" => "phase.qingxi", "行旅与积累" => "phase.travel",
-        "初醒" => "qingxi.awakening", "与李守拙道别" => "qingxi.farewell",
-        "村中岁月" => "qingxi.village_life", "明日上山" => "qingxi.wait_for_morning",
-        "后山初探" => "qingxi.back_hill", "夜深" => "qingxi.first_rest", "问道" => "qingxi.ask_for_room",
-        "玄鉴初读" => "qingxi.first_volume", "定为主修" => "qingxi.equip_gongfa",
-        "初入云息" => "qingxi.report_breakthrough", "静室引气" => "qingxi.cultivate",
+        "行旅与积累" => "phase.travel",
         "师兄师姐带你入门" => "yuxu.lineage.choose_first_volume",
         "研读师门首卷" => "yuxu.lineage.study_first_volume",
         "向带教师兄师姐汇报" => "yuxu.lineage.report_first_volume",
@@ -41,17 +36,19 @@ public partial class MainScene
         var duty = get_active_yuxu_journal_task();
         var lecture = get_active_yuxu_true_disciple_lecture_journal_task();
         var lineage = get_active_yuxu_lineage_journal_task();
+        var exam = get_yuxu_provisional_exam_tasks().FirstOrDefault(entry => entry.State != "已完成");
         var invitation = get_letter_invitation_tasks().FirstOrDefault(entry => entry.State != "已完成");
-        var current = (_baishiLecture is { finished: false } ? IdentifyJournalTask(baishi_current_task()) : null) ?? duty ?? lecture ?? lineage ?? invitation ?? IdentifyJournalTask(has_open_world_access() ? get_cultivation_guidance_task() : _active_quest ?? get_phase_goal());
+        var current = (_baishiLecture is { finished: false } ? IdentifyJournalTask(baishi_current_task()) : null) ?? get_yuxu_registration_journal_task() ?? duty ?? lecture ?? lineage ?? exam ?? invitation ?? IdentifyJournalTask(has_open_world_access() ? get_cultivation_guidance_task() : get_phase_goal());
         var ongoing = get_quest_entries().Where(e => e.State != "已完成").DistinctBy(e => e.Id).ToList();
         if (!_journalTrackingChosen || (!string.IsNullOrEmpty(_trackedJournalTask) && ongoing.All(e => e.Id != _trackedJournalTask)))
             _trackedJournalTask = current.Id;
         var tracked = ongoing.FirstOrDefault(e => e.Id == _trackedJournalTask);
         var visible = new List<JournalPanel.Entry>();
         if (tracked is not null) visible.Add(tracked);
-        visible.AddRange(ongoing.Where(e => e.Id != tracked?.Id).OrderByDescending(e => e.AcceptedOrder).Take(2 - visible.Count));
+        visible.AddRange(ongoing.Where(e => e.Id != tracked?.Id &&
+            (tracked is null || GetJournalTaskTrackerObjective(e) != GetJournalTaskTrackerObjective(tracked)))
+            .OrderByDescending(e => e.AcceptedOrder).Take(2 - visible.Count));
         if (journal is not null) journal.TrackedTaskId = _trackedJournalTask;
-        estate?.set_compact_task_tracker_visible(false);
         var people = _npc_world?.npcs
             .Where(npc => npc is not null && !string.IsNullOrWhiteSpace(npc.npc_name))
             .Select(npc => npc.npc_name.Trim()).Distinct(StringComparer.Ordinal).ToArray() ?? [];
@@ -70,9 +67,8 @@ public partial class MainScene
     {
         var source = $"{entry.Title}\n{entry.Place}\n{entry.Body}";
         var candidates = new HashSet<string>(StringComparer.Ordinal);
-        foreach (var place in new[] { "玉虚仙宗", "和光峰", "玄览峰", "紫府峰", "瑶圃峰", "东林地", "静冠洼地", "百川区域", "青溪里", "后山", "李宅", "偏院旧屋", "静室", "宗门事务处" })
+        foreach (var place in new[] { "玉虚仙宗", "和光峰", "观复峰", "玄览峰", "紫府峰", "天问峰", "瑶圃峰", "东林地", "静冠洼地", "百川区域", "青溪里", "静室", "宗门事务处" })
             if (source.Contains(place, StringComparison.Ordinal)) candidates.Add(place);
-        if (source.Contains("李守拙", StringComparison.Ordinal)) candidates.Add("李守拙");
         foreach (var place in entry.Place.Split(['→', '·', '／', '/', '、', '，', ','], StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries))
             if (place.Length > 1 && source.Contains(place, StringComparison.Ordinal)) candidates.Add(place);
         foreach (var person in people)
@@ -121,19 +117,7 @@ public partial class MainScene
         if (entry.Id.StartsWith("letter.invitation.", StringComparison.Ordinal))
             return $"前往{entry.Place}赴约";
 
-        if (entry.Title == "与李守拙道别") return "回李宅向李守拙道别";
-        if (entry.Title == "村中岁月") return "留在青溪里修行、采集并积蓄力量";
-        if (entry.Title == "明日上山") return "休息至次日清晨，再去后山";
-        if (entry.Title == "后山初探") return "前往后山完成外围探查";
-        if (entry.Title == "夜深") return "休息至明日，再作打算";
-        if (entry.Title == "问道") return "向李守拙问起偏院旧屋";
-        if (entry.Title == "玄鉴初读") return "前往静室研读玄鉴第一卷";
-        if (entry.Title == "定为主修") return "在角色页装配已研读功法";
-        if (entry.Title == "初入云息") return "回李宅向李守拙报告突破";
-        if (entry.Title == "静室引气") return "前往静室继续引气修行";
-        if (entry.Title == "初醒") return "与李守拙交谈，确认身在何处";
         if (entry.Title == "行旅与积累") return "在百川区域修炼、历练，积累突破条件";
-        if (entry.Title == "初醒青溪") return "弄清身在何处，踏入云息后离村";
         if (entry.Title == "精进修为")
             return entry.Body.Contains("云息六层", StringComparison.Ordinal)
                 ? "继续修炼，达到云息六层"
@@ -143,7 +127,7 @@ public partial class MainScene
         if (entry.Title == "核成阵") return "准备核成阵，突破云息十层";
         if (entry.Title == "归元养息") return "修习归元九息，直至圆满";
         if (entry.Title == "准备铸玄基") return "云息十层圆满；后续修行尚未开放";
-        if (entry.Title == "继续精进") return "继续修行，查看当前境界目标";
+        if (entry.Title == "继续精进") return "提升修为";
 
         if (entry.Title == "苦苔根交付")
         {
@@ -216,59 +200,16 @@ public partial class MainScene
 
     private List<JournalPanel.Entry> get_yuxu_lineage_journal_tasks()
     {
-        if (player?.entity_data is not HumanData human || human.sect_affiliation_id != YuxuSectId ||
-            !is_yuxu_true_disciple(human.sect_current_rank))
+        if (player?.entity_data is not HumanData human || human.sect_affiliation_id != YuxuSectId)
             return [];
 
         var tasks = new List<JournalPanel.Entry>();
-        if (string.IsNullOrWhiteSpace(human.sect_teacher_npc_id) || string.IsNullOrWhiteSpace(human.sect_guide_npc_id))
-            return tasks;
-
-        var guide = (_npc_world ?? GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager"))?.get_npc(human.sect_guide_npc_id);
-        var guideName = string.IsNullOrWhiteSpace(guide?.npc_name) ? "带教师兄师姐" : guide.npc_name;
-        var bookPath = human.sect_lineage_gongfa_path;
-        var book = string.IsNullOrWhiteSpace(bookPath) ? null : ResourceLoader.Load<GongfaResource>(bookPath);
-        var bookName = string.IsNullOrWhiteSpace(book?.gongfa_name) ? "师门首卷" : book.gongfa_name;
-
-        if (string.IsNullOrWhiteSpace(bookPath))
-        {
-            tasks.Add(IdentifyJournalTask(new JournalPanel.Entry(
-                "同门引路",
-                $"赴玄览峰与{guideName}相见，择取一部符合当前条件的云息秘籍为师门首卷；择定后，返紫府峰静室研读。",
-                "玉虚仙宗·真传带教", "玄览峰", "进行中", Id: "yuxu.lineage.choose_first_volume")));
-            return tasks;
-        }
-
+        var firstCopy = human.sect_library_first_manual_path;
+        var hasFirstCopy = !string.IsNullOrWhiteSpace(firstCopy);
+        var copiedBook = hasFirstCopy ? ResourceLoader.Load<GongfaResource>(firstCopy) : null;
         tasks.Add(IdentifyJournalTask(new JournalPanel.Entry(
-            "同门引路",
-            $"已与{guideName}在玄览峰择定《{bookName}》为师门首卷。",
-            "玉虚仙宗·真传带教", "玄览峰", "已完成", Id: "yuxu.lineage.choose_first_volume")));
-
-        var firstChapter = book?.get_sorted_chapters().FirstOrDefault();
-        var firstVolumeComplete = firstChapter is not null && player is not null &&
-            player.is_gongfa_chapter_learned(book!, firstChapter.get_id());
-        if (!firstVolumeComplete)
-        {
-            tasks.Add(IdentifyJournalTask(new JournalPanel.Entry(
-                "静室研读首卷",
-                $"于紫府峰静室研读《{bookName}》首卷。研读门槛、所需时日与精力消耗均依此卷现行规制；读毕后，再向{guideName}陈报所得。",
-                "玉虚仙宗·真传带教", "紫府峰·静室", "进行中", Id: "yuxu.lineage.study_first_volume")));
-            return tasks;
-        }
-
-        tasks.Add(IdentifyJournalTask(new JournalPanel.Entry(
-            "静室研读首卷",
-            $"《{bookName}》首卷已依原有章节规则研读完成。",
-            "玉虚仙宗·真传带教", "紫府峰·静室", "已完成", Id: "yuxu.lineage.study_first_volume")));
-
-        var reportBody = $"返紫府峰向{guideName}复命，陈述《{bookName}》首卷研读所得。是否完成，以该卷首章的既有完成记录为准。";
-        tasks.Add(IdentifyJournalTask(new JournalPanel.Entry(
-            "首卷复命",
-            human.sect_lineage_reported_first_volume
-                ? $"已向{guideName}复命，呈报《{bookName}》首卷研读所得。"
-                : reportBody,
-            "玉虚仙宗·真传带教", "紫府峰", human.sect_lineage_reported_first_volume ? "已完成" : "进行中",
-            Id: "yuxu.lineage.report_first_volume")));
+            "玄览藏书", !hasFirstCopy ? "在玄览峰拓印一本秘籍。" : copiedBook is null ? "首本秘籍已领取。" : $"已领取《{copiedBook.gongfa_name}》的拓印本。",
+            "玉虚仙宗", "玄览峰", hasFirstCopy ? "已完成" : "进行中", Id: "yuxu.library.first_copy")));
         return tasks;
     }
     private void OnJournalTrackingRequested(string? id)

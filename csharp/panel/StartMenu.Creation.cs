@@ -10,6 +10,7 @@ public partial class StartMenu
     {
         public Control Root = null!;
         public Action Refresh = () => { };
+        public Action Commit = () => { };
     }
 
     private sealed class AppearanceChoiceControl
@@ -155,6 +156,7 @@ public partial class StartMenu
             if (SceneLoadingScreen.IsChangingScene || JourneyCreationLoadingView.IsLoading) return;
             next.Disabled = true;
             profile.player_name = string.IsNullOrWhiteSpace(profile.player_name) ? "苏醒者" : profile.player_name.Trim();
+            appearancePage.Commit();
             var error = await JourneyCreationLoadingView.EnterAsync(GetTree(), profile.player_name);
             if (GodotObject.IsInstanceValid(next)) next.Disabled = false;
             if (error != Error.Ok && error != Error.Busy && GodotObject.IsInstanceValid(this))
@@ -265,7 +267,7 @@ public partial class StartMenu
             var genderName = data.gender == 1 ? "female" : "male";
             if (catalog?.allows_color_tint(genderName, "skin") != true) data.appearance_skin_tone = -1;
             if (catalog?.allows_color_tint(genderName, "hair") != true) data.appearance_hair_color = -1;
-            var context = portraitCatalog.get_context(data, genderName, 18, data.faction_name, "凡人");
+            var context = portraitCatalog.get_context(data, genderName, 16, data.faction_name, "凡人");
             var requested = portraitCatalog.get_requested_appearance(data);
             if (data.appearance_hair_back_style < 0) requested["hair_back"] = "";
             portrait.configure(data, context, requested);
@@ -280,7 +282,6 @@ public partial class StartMenu
                 var index = entry.GetValueOrDefault("variant_index", -1).AsInt32();
                 if (index >= 0 && !values.Contains(index)) values.Add(index);
             }
-            if (part == "beard") values.RemoveAll(index => index != 0);
             values.Sort();
             return values;
         }
@@ -365,6 +366,7 @@ public partial class StartMenu
         randomAppearance.Pressed += () => { profile.randomize_player_appearance(); refresh(); };
         resetAppearance.Pressed += () => { reset_appearance_parts(profile.player_appearance_data, true); refresh(); };
         result.Refresh = refresh;
+        result.Commit = () => profile.capture_resolved_player_appearance(portrait.get_resolved_appearance());
         return result;
     }
 

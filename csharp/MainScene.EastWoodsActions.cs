@@ -31,7 +31,7 @@ public partial class MainScene
         if (!player.can_spend_world_stamina(action.Stamina))
         { dungeon.show_action_result("精力不足", $"本次行动需要 {action.Stamina:0.#} 点精力。可以离开林地休息后再来；没有扣除费用。"); return; }
         if (action.ItemPath.Length > 0 && !player.can_add_item_to_inventory(action.ItemPath, finalQuantity))
-        { dungeon.show_action_result("行囊已满", "无法收纳本次采集物，没有消耗时间、精力或储量。"); return; }
+        { dungeon.show_action_result("行囊容量不足", "无法收纳本次采集物，没有消耗时间、精力或储量。"); return; }
         if (!player.try_spend_world_stamina(action.Stamina))
         { dungeon.show_action_result("精力不足", $"本次行动需要 {action.Stamina:0.#} 点精力。可以离开林地休息后再来；没有扣除费用。"); return; }
         if (reservedGatheringInspiration is not null &&

@@ -110,7 +110,7 @@ public partial class TradePanel : Control
         root.AddThemeConstantOverride("separation", 12); margin.AddChild(root);
         var header = new HBoxContainer(); root.AddChild(header);
         var back = make_button("‹", 32, new Vector2(52, 48));
-        back.TooltipText = "返回"; back.Pressed += close; header.AddChild(back);
+        back.Pressed += close; header.AddChild(back);
         var title = make_label("交易", 34, QuietRoomStyle.Ink); header.AddChild(title);
         _npc_name_label = make_label("", 20, WorldHudStyle.SecondaryInk);
         _npc_name_label.SizeFlagsHorizontal = SizeFlags.ExpandFill;
@@ -244,7 +244,7 @@ public partial class TradePanel : Control
             entry.row = button; entry.quantity_picker = picker;
             button.Pressed += () => set_entry_quantity(entry, Math.Min(entry.count, entry.selected_count + 1));
             picker.ValueChanged += value => set_entry_quantity(entry, (int)Math.Round(value));
-            HoverInfoManager.SetInfo(button, StoragePanel.ItemHover(item, entry.count, entry.path));
+            HoverInfoManager.SetProvider(button, () => StoragePanel.ItemHover(item, entry.count, entry.path, _player));
             grid.AddChild(button);
         }
         if (entries.Count == 0) grid.AddChild(make_label("暂无可交易物品", 20, WorldHudStyle.SecondaryInk));
@@ -296,7 +296,7 @@ public partial class TradePanel : Control
             count.Name = "SelectedCount"; count.CustomMinimumSize = new Vector2(40, 0); count.HorizontalAlignment = HorizontalAlignment.Right;
             count.VerticalAlignment = VerticalAlignment.Center; count.MouseFilter = MouseFilterEnum.Ignore; row.AddChild(count);
             button.Pressed += () => set_entry_quantity(entry, entry.selected_count - 1);
-            HoverInfoManager.SetInfo(button, StoragePanel.ItemHover(item, entry.selected_count, entry.path));
+            HoverInfoManager.SetProvider(button, () => StoragePanel.ItemHover(item, entry.selected_count, entry.path, _player));
             list.AddChild(button);
         }
         if (list.GetChildCount() == 0) list.AddChild(make_label("尚未选择物品", 19, WorldHudStyle.SecondaryInk));
@@ -407,7 +407,7 @@ public partial class TradePanel : Control
                 beforeCommit: () => player.try_spend_world_stamina(WorldStaminaRules.InteractionCost)))
         {
             trade_failure(player.can_spend_world_stamina(WorldStaminaRules.InteractionCost)
-                ? "行囊空间不足，或所选物品已不可交易。请调整后重试。"
+                ? "行囊容量不足，或所选物品已不可交易。请调整后重试。"
                 : $"精力不足，完成交易需要 {WorldStaminaRules.InteractionCost:0.#} 点。");
             return;
         }
@@ -452,7 +452,8 @@ public partial class TradePanel : Control
 
     private void ensure_npc_offer()
     {
-        if (_npc is null || _npc.trade_inventory.Count > 0) return;
+        // 玉虚同门与宗内坊市共用真实库存；售空后不能由当面交易凭空补货。
+        if (_npc is null || _npc.trade_inventory.Count > 0 || _npc.faction_id == YuxuMarketRules.SectId) return;
         var seed = stable_seed(_npc.npc_id);
         for (var i = 0; i < 5; i++)
         {

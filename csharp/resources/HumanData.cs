@@ -6,7 +6,15 @@ public partial class HumanData : LivingData
 {
     [Export] public Array<string> alchemy_records = [];
     [Export] public Array<string> forging_records = [];
+    /// <summary>已完成的丹道成长来源，稳定 ID 用于防止重复授课或实践奖励。</summary>
+    [Export] public Array<string> alchemy_proficiency_growth_sources = [];
+    /// <summary>各丹种已达到的最高丹效档，-1／缺省表示尚无实践记录。</summary>
+    [Export] public Godot.Collections.Dictionary<string, int> alchemy_growth_highest_tier_by_pill = new();
+    /// <summary>已完成的器道成长来源，使用真实材料定义与岗位身份去重。</summary>
+    [Export] public Array<string> forging_proficiency_growth_sources = [];
     [Export] public Array<CombatSkillReference> combat_skill_references = [];
+    /// <summary>新版盘面独立保存，旧十槽与化法绑定保留为迁移核对来源。</summary>
+    [Export] public CombatBoardLayout? combat_board_layout;
     /// <summary>化法稳定来源 ID → 玩家明确选择的原始技能标识；不绑定槽位序号。</summary>
     [Export] public Godot.Collections.Dictionary<string, string> skill_rewrite_bindings = new();
     /// <summary>局外阵盘中已启用的个人战斗阵图；其运行资源不会写回本字段。</summary>
@@ -94,6 +102,8 @@ public partial class HumanData : LivingData
     [Export] public Array<string> basic_deck_upgrade_ids = [];
     /// <summary>角色已参悟的公共技能节点稳定 ID；旧存档默认为空。</summary>
     [Export] public Array<string> unlocked_skill_node_ids = [];
+    /// <summary>授予来源迁移后保留的旧版已学技能；不授予节点或永久属性。</summary>
+    [Export] public Array<string> legacy_learned_combat_skill_paths = [];
     /// <summary>即时战斗固定技能槽；凝核牌局仍使用独立的牌局数据。</summary>
     [Export] public Array<string> combat_skill_slot_paths = [];
     /// <summary>是否已经手动确认过即时战斗技能槽；用于区分默认装配与玩家主动清空。</summary>
@@ -165,10 +175,16 @@ public partial class HumanData : LivingData
     [Export] public float body_proficiency = 5.0f;
     [Export] public float magic_proficiency = 5.0f;
 
+    /// <summary>器道天赋基础值；研习和实践成长另记在固定加成中。</summary>
     [Export] public float base_forging_proficiency = 5.0f;
     [Export] public float base_talisman_proficiency = 5.0f;
     [Export] public float base_formation_proficiency = 5.0f;
+    /// <summary>丹道天赋基础值；研习和实践成长另记在固定加成中。</summary>
     [Export] public float base_alchemy_proficiency = 5.0f;
+    /// <summary>研习与实践形成的器道固定造诣加成；不改写表示天赋的基础值。</summary>
+    [Export] public float forging_proficiency_training_bonus;
+    /// <summary>研习与实践形成的丹道固定造诣加成；不改写表示天赋的基础值。</summary>
+    [Export] public float alchemy_proficiency_training_bonus;
     [Export] public float forging_proficiency = 5.0f;
     [Export] public float talisman_proficiency = 5.0f;
     [Export] public float formation_proficiency = 5.0f;
@@ -248,6 +264,7 @@ public partial class HumanData : LivingData
     /// <summary>已写入基础属性的卷章永久加成，避免读档或刷新时重复叠加。</summary>
     [Export] public Dictionary applied_gongfa_permanent_bonuses = [];
     [Export] public Dictionary gongfa_chapter_study_progress = [];
+    /// <summary>旧存档兼容字段；当前卷章修持与化法同时生效，不再读取分支选择。</summary>
     [Export] public Dictionary equipped_gongfa_chapter_routes = [];
     [Export] public Array<string> loaded_skill_paths = [];
     /// <summary>首次手动调整战斗牌组后启用；未配置的旧存档保持原有“已解锁牌全部入组”行为。</summary>
@@ -264,7 +281,7 @@ public partial class HumanData : LivingData
     [Export] public Array<int> artifact_inventory_positions = [];
     [Export] public Array<InventoryPlacementData> inventory_placements = [];
     /// <summary>Separate storage only; take items out before using existing inventory consumers.</summary>
-    [Export] public Array<StorageRingContentsData> storage_ring_contents = [];
+    [Export] public Array<StorageBagContentsData> storage_bag_contents = [];
 
     [Export] public string weapon_path = "";
     // 武器已并入法宝体系；常规穿戴仅保留四个直观属性位。

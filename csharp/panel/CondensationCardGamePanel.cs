@@ -11,7 +11,7 @@ public partial class CondensationCardGamePanel : Control
     private readonly List<int> _swapSelection = [];
     private readonly List<HandVisual> _cards = [];
     private Control _canvas = null!, _handLayer = null!, _modal = null!;
-    private Label _score = null!, _disorder = null!, _actions = null!, _status = null!, _forecast = null!, _itemHint = null!;
+    private Label _score = null!, _disorder = null!, _recoilInfo = null!, _actions = null!, _status = null!, _forecast = null!, _itemHint = null!;
     private CondensationTurnTrack _track = null!;
     private Button _draw = null!, _discard = null!, _swap = null!, _extra = null!, _start = null!, _end = null!;
     private Button _itemButton = null!, _returnButton = null!, _restartButton = null!;
@@ -34,7 +34,8 @@ public partial class CondensationCardGamePanel : Control
     private static readonly Color Ink = new("28251e"), Cream = new("e5d6b5");
     private sealed class HandVisual
     {
-        public Button Node = null!;
+        public Control Node = null!;
+        public string Name = "";
         public float X, Y, Angle, Zoom = 1, VX, VY, VA, VZ;
         public int Index;
     }
@@ -62,12 +63,14 @@ public partial class CondensationCardGamePanel : Control
         Text(_canvas, "凝核程度", 23, new Rect2(32, 195, 250, 34), Cream);
         _score = Text(_canvas, "", 65, new Rect2(32, 235, 220, 85), Cream);
         Text(_canvas, "成核需达到100", 19, new Rect2(32, 322, 250, 30), Cream);
-        _disorder = Text(_canvas, "", 21, new Rect2(32, 365, 280, 68), Cream);
-        _actions = Text(_canvas, "", 21, new Rect2(32, 448, 270, 68), Cream);
+        _disorder = Text(_canvas, "", 21, new Rect2(32, 360, 300, 62), Cream);
+        _recoilInfo = Text(_canvas, "", 19, new Rect2(32, 429, 320, 66), Cream);
+        _disorder.MouseFilter = _recoilInfo.MouseFilter = MouseFilterEnum.Pass;
+        _actions = Text(_canvas, "", 21, new Rect2(32, 502, 270, 60), Cream);
         _status = Text(_canvas, "", 21, new Rect2(450, 475, 740, 50), Cream, true);
         _forecast = Text(_canvas, "", 17, new Rect2(450, 527, 740, 42), new Color("c1b497"), true);
-        _itemButton = InkButtonAt(_canvas, "道具", new Rect2(32, 532, 150, 48), ShowItems);
-        _itemHint = Text(_canvas, "使用不占施展次数", 16, new Rect2(32, 584, 250, 28), Cream);
+        _itemButton = InkButtonAt(_canvas, "道具", new Rect2(32, 570, 150, 45), ShowItems);
+        _itemHint = Text(_canvas, "使用不占施展次数", 16, new Rect2(32, 618, 250, 27), Cream);
         _draw = Pile(new Rect2(110, 650, 132, 152), CondensationUiArt.DrawPile, () => ShowPile(false));
         _discard = Pile(new Rect2(1440, 655, 116, 146), CondensationUiArt.DiscardPile, () => ShowPile(true));
         _drawCount = Text(_draw, "", 23, new Rect2(-25, 157, 185, 36), Cream, true);
@@ -84,13 +87,15 @@ public partial class CondensationCardGamePanel : Control
         ButtonAt(_canvas, "收益", new Rect2(1205, 25, 85, 38), () => ShowRewards());
         ButtonAt(_canvas, "玩法", new Rect2(1300, 25, 85, 38), ShowHelp);
         _restartButton = ButtonAt(_canvas, "重开", new Rect2(1395, 25, 85, 38), ConfirmRestart);
-        _returnButton = ButtonAt(_canvas, "返回", new Rect2(1490, 25, 85, 38), RequestClose);
+        _returnButton = ButtonAt(_canvas, "返回", new Rect2(1534, 18, 114, 46), RequestClose);
+        CraftingPaperHeader.AddReturnArrow(_returnButton);
         _modal = new Control { Size = _canvas.Size, Visible = false, MouseFilter = MouseFilterEnum.Stop, ZIndex = 100 };
         _canvas.AddChild(_modal);
         var theme = new Theme();
         theme.DefaultFont = GD.Load<Font>("res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf");
         _canvas.Theme = theme;
         Resized += LayoutCanvas; LayoutCanvas();
+        VisibilityChanged += () => { if (!IsVisibleInTree()) CancelHandDrag(); };
         Hide();
     }
 
@@ -98,6 +103,7 @@ public partial class CondensationCardGamePanel : Control
     {
         _target = target;
         _testMode = testMode;
+        _openingSwapPending = _openingHelpVisible = false;
         _game = null;
         _resultReported = false;
         _resumeResultAfterRealmPresentation = false;
@@ -125,11 +131,15 @@ public partial class CondensationCardGamePanel : Control
     }
     public override void _Process(double delta)
     {
+        UpdateHandHold(delta);
         // 保存位置速度，升起和回落均经过弹簧，邻牌也随悬停让位。
         var steps = Math.Max(1, (int)Math.Ceiling(Math.Min(delta, .05) / (1.0 / 120)));
         var dt = (float)Math.Min(delta, .05) / steps;
         foreach (var c in _cards)
         {
+            if (MoveDraggedCard(c)) continue;
+            // 按住时先固定牌面，避免悬浮动画把鼠标移出牌面而错过长按信息。
+            if (_pressedHandCard == c) continue;
             var offset = c.Index - (_cards.Count - 1) / 2f;
             var lifted = c.Index == _hover || _swapSelection.Contains(c.Index);
             var x = 836 + offset * 151 - 100;
@@ -152,7 +162,9 @@ public partial class CondensationCardGamePanel : Control
     private void BeginGame()
     {
         _game = new CondensationCardGame(_comprehension, _intelligence, _rootWeight, _counts, _items);
-        _animating = false; _successAnimationPlayed = false; _swapSelection.Clear(); _qi.ShowCloud(1); UpdateModeVisibility(); HideModal(); Refresh(); ShowHelp();
+        _openingSwapPending = _openingHelpVisible = false;
+        _animating = false; _successAnimationPlayed = false; _swapSelection.Clear(); _qi.ShowCloud(1); UpdateModeVisibility(); HideModal(); Refresh();
+        _openingSwapPending = true; ShowOpeningSwap();
     }
     private void ShowSetup()
     {
@@ -173,7 +185,8 @@ public partial class CondensationCardGamePanel : Control
         for (var i = 0; i < CondensationCardGame.Pool.Length; i++)
         {
             var card = CondensationCardGame.Pool[i]; var col = i % 3; var row = i / 3; var x = 25 + col * 415; var y = 195 + row * 67;
-            Text(box, card.Name, 23, new Rect2(x, y, 115, 42), Cream).TooltipText = card.Description;
+            var cardName = Text(box, card.Name, 23, new Rect2(x, y, 115, 42), Cream);
+            cardName.MouseFilter = MouseFilterEnum.Pass; BindCondensationHover(cardName, card.Name, false);
             var count = Text(box, _counts[card.Name].ToString(), 23, new Rect2(x + 165, y, 45, 42), Cream, true);
             ButtonAt(box, "−", new Rect2(x + 115, y, 44, 40), () => { _counts[card.Name] = Math.Max(0, _counts[card.Name] - 1); count.Text = _counts[card.Name].ToString(); UpdateSummary(); });
             ButtonAt(box, "+", new Rect2(x + 215, y, 44, 40), () => { _counts[card.Name] = Math.Min(4, _counts[card.Name] + 1); count.Text = _counts[card.Name].ToString(); UpdateSummary(); });
@@ -219,7 +232,8 @@ public partial class CondensationCardGamePanel : Control
         if (_restartButton is not null) _restartButton.Visible = _testMode;
         if (_returnButton is not null)
         {
-            _returnButton.Text = _testMode ? "返回" : "返回修炼";
+            _returnButton.Text = "返回";
+            _returnButton.Size = new Vector2(114, 46);
             _returnButton.Visible = _testMode || _game is null || _game.Finished;
         }
     }
@@ -227,16 +241,24 @@ public partial class CondensationCardGamePanel : Control
     private void Refresh()
     {
         if (_game is null) return;
+        CancelHandDrag();
         var g = _game; _hover = -1;
         _score.Text = g.Score.ToString();
-        _disorder.Text = $"气息紊乱  {g.Disorder} / 10\n本轮凝核损失  {CondensationCardGame.DisorderLoss(g.Disorder)}";
+        _disorder.Text = $"气息紊乱  {g.Disorder} / 10\n回合末预计扣除  {CondensationCardGame.DisorderLoss(g.Disorder)}";
+        var currentRecoils = g.Recoils.Where(r => r.Round == g.Round).ToArray();
+        var currentStrength = currentRecoils.Sum(r => r.Strength);
+        var recoilResult = g.ReturnActive
+            ? $"预计引回  +{currentStrength + (currentRecoils.Length >= 2 ? 4 : 0) + (g.FollowActive ? Math.Min(6, currentRecoils.Length * 2) : 0)}"
+            : $"未引回扣除至多  {Math.Max(0, currentStrength - g.Protection)}";
+        _recoilInfo.Text = $"本回合回弹  {currentStrength}（{currentRecoils.Length}股）\n{recoilResult}";
+        UpdateStatusHover(g, currentRecoils);
         _actions.Text = "本回合可施展\n" + new string('◆', g.Actions) + new string('◇', 3 - g.Actions);
         _track.SetState(g);
-        _status.Text = g.Finished ? g.Disorder > 10 ? "紊乱失控 · 凝核失败" : $"最终凝核程度 {g.Score} · {(g.Failed ? "凝核未成" : "灵核已成")}" : g.SwapOpen ? "准备阶段：可选手牌换牌，再开始行功" : "选择手法，压聚灵气";
-        _forecast.Text = g.Finished ? (_testMode ? "本次试演结果不写入正式人物。" : "正式凝核已结算。") : $"灵根：压聚+{g.RootBonus}  ·  灵慧：理气额外降{g.InsightBonus}  ·  悟性换牌余{g.ExtraSwaps}" + (g.ChargeActive ? "  ·  蓄劲待发" : "") + (g.ReturnActive ? "  ·  本轮引回" : "");
+        _status.Text = g.Finished ? g.Disorder > 10 ? "紊乱失控 · 凝核失败" : $"最终凝核程度 {g.Score} · {(g.Failed ? "凝核未成" : "灵核已成")}" : g.SwapOpen ? "准备阶段：可换牌，或拖手牌至灵力团施展" : "长按手牌查看详情，拖至灵力团施展";
+        _forecast.Text = g.Finished ? (_testMode ? "本次试演结果不写入正式人物。" : "正式凝核已结算。") : $"灵根：压聚+{g.RootBonus}  ·  灵慧：理气额外降{g.InsightBonus}  ·  悟性换牌余{g.ExtraSwaps}" + (g.ChargeActive ? "  ·  蓄劲待发" : "") + (g.ReturnActive ? "  ·  本回合引回" : "");
         UpdateModeVisibility();
         _drawCount.Text = $"抽牌堆 {g.Deck.Count}"; _discardCount.Text = $"弃牌堆 {g.Discard.Count}";
-        _swap.Visible = _start.Visible = g.SwapOpen && !g.Finished;
+        _swap.Visible = _start.Visible = g.SwapOpen && g.Round > 1 && !g.Finished;
         _extra.Visible = g.SwapOpen && g.Round > 1 && !g.Finished;
         _swap.Text = g.Round == 1 ? "换起手（选0—2张）" : "换牌（选一张）";
         _swap.Disabled = g.OrdinarySwapUsed;
@@ -262,31 +284,21 @@ public partial class CondensationCardGamePanel : Control
     private void BuildHandCard(int index, string name)
     {
         var c = CondensationCardGame.Definition(name); var offset = index - (_game!.Hand.Count - 1) / 2f;
-        var button = new Button { Size = new Vector2(200, 310), PivotOffset = new Vector2(100, 280), MouseFilter = MouseFilterEnum.Stop, ClipContents = true };
-        ClearButton(button);
-        button.TooltipText = c.Description + (c.Kind == "压聚" ? $"\n本角色压聚额外凝核+{_game.RootBonus}" : "");
+        var button = new Control { Size = new Vector2(200, 310), PivotOffset = new Vector2(100, 280), MouseFilter = MouseFilterEnum.Stop, FocusMode = FocusModeEnum.All, MouseDefaultCursorShape = CursorShape.PointingHand, ClipContents = true };
         _handLayer.AddChild(button);
         Art(button, CondensationUiArt.Card, new Rect2(0, 0, 200, 310));
         Text(button, name, 31, new Rect2(12, 13, 176, 48), Ink, true);
         Text(button, c.Kind, 17, new Rect2(12, 58, 176, 28), Ink, true);
         var artIndex = CardIconIndex(name);
         Art(button, CondensationUiArt.Icon(artIndex), new Rect2(22, 83, 156, 117));
-        Text(button, c.Description + (c.Kind == "压聚" ? $"\n灵根额外+{_game.RootBonus}" : ""), 19, new Rect2(17, 202, 166, 100), Ink, true);
-        var visual = new HandVisual { Node = button, Index = index, X = 736 + offset * 151, Y = 652 + Math.Abs(offset) * 7, Angle = offset * .045f };
+        Text(button, CondensationCardText.Face(name, _game, index), 18, new Rect2(17, 201, 166, 106), Ink, true);
+        var visual = new HandVisual { Node = button, Name = name, Index = index, X = 736 + offset * 151, Y = 652 + Math.Abs(offset) * 7, Angle = offset * .045f };
         button.Position = new Vector2(visual.X, visual.Y); button.Rotation = visual.Angle; _cards.Add(visual);
-        button.MouseEntered += () => _hover = index;
-        button.MouseExited += () => { if (_hover == index) _hover = -1; };
-        button.Pressed += () =>
-        {
-            if (_animating || _game.Finished) return;
-            if (_game.SwapOpen)
-            {
-                if (_swapSelection.Contains(index)) _swapSelection.Remove(index);
-                else if (_swapSelection.Count < (_game.Round == 1 ? 2 : 1)) _swapSelection.Add(index);
-                return;
-            }
-            SelectAction(name, index, false);
-        };
+        BindCondensationHover(button, name, true, index);
+        HoverInfoManager.SuspendFor(button, true);
+        button.MouseEntered += () => { if (!_handDragging) _hover = index; };
+        button.MouseExited += () => { if (!_handDragging && _hover == index) _hover = -1; };
+        button.GuiInput += input => HandleHandInput(visual, input);
     }
     private void DoSwap() => ApplySwap(false);
     private void DoExtraSwap() => ApplySwap(true);
@@ -301,6 +313,7 @@ public partial class CondensationCardGamePanel : Control
     private void SelectAction(string name, int index, bool item)
     {
         if (_game is null || _animating) return;
+        _dragSelectingTargets = false;
         _selectionName = name; _selectionIndex = index; _selectionItem = item; _targets.Clear(); _shift = -1;
         if (_game.TargetCount(name) > 0) ShowTargets(); else ConfirmAction();
     }
@@ -308,7 +321,7 @@ public partial class CondensationCardGamePanel : Control
     {
         var g = _game!; var box = Modal($"{_selectionName} · 选择回弹", 940, 720);
         Text(box, "点击选择目标；未确认前不扣牌或施展次数。", 22, new Rect2(30, 65, 880, 42), Cream);
-        var list = new VBoxContainer { Position = new Vector2(30, 120), Size = new Vector2(880, 450) };
+        var list = new VBoxContainer { Position = new Vector2(30, 120), Size = new Vector2(880, _dragSelectingTargets ? 280 : 450) };
         var scroll = new ScrollContainer { Position = list.Position, Size = list.Size }; box.AddChild(scroll);
         list.Position = Vector2.Zero; list.SizeFlagsHorizontal = SizeFlags.ExpandFill; scroll.AddChild(list);
         foreach (var r in g.LegalTargets(_selectionName).OrderBy(r => r.Round).ToArray())
@@ -324,7 +337,8 @@ public partial class CondensationCardGamePanel : Control
             ButtonAt(box, _shift == -1 ? "◆ 提前一回合" : "提前一回合", new Rect2(30, 585, 250, 45), () => { _shift = -1; ShowTargets(); });
             ButtonAt(box, _shift == 1 ? "◆ 延后一回合" : "延后一回合", new Rect2(300, 585, 250, 45), () => { _shift = 1; ShowTargets(); });
         }
-        ButtonAt(box, "查看效果", new Rect2(650, 650, 240, 45), ConfirmAction);
+        if (_dragSelectingTargets) ShowSelectedTargetPreview(box);
+        ButtonAt(box, _dragSelectingTargets ? "确认并施展" : "查看效果", new Rect2(650, 650, 240, 45), _dragSelectingTargets ? CommitDraggedTargets : ConfirmAction);
         ButtonAt(box, "取消", new Rect2(30, 650, 180, 45), HideModal);
     }
     private void ConfirmAction()
@@ -341,9 +355,7 @@ public partial class CondensationCardGamePanel : Control
         Text(box, forecast, 20, new Rect2(35, 330, 860, 170), copy.Failed ? new Color("edb391") : Cream);
         ButtonAt(box, copy.Failed ? "仍然施展（将失败）" : "确认施展", new Rect2(600, 545, 285, 48), () =>
         {
-            var result = g.Play(_selectionName, _selectionIndex, _targets, _selectionItem, _shift);
-            if (result != "") { Notice(result); return; }
-            HideModal(); Refresh(); ResolvePending();
+            CommitSelectedAction();
         });
         ButtonAt(box, "取消", new Rect2(35, 545, 180, 48), HideModal);
     }
@@ -478,14 +490,14 @@ public partial class CondensationCardGamePanel : Control
             var definition = CondensationCardGame.Definition(name);
             var cell = new Control { CustomMinimumSize = new Vector2(225, 355), MouseFilter = MouseFilterEnum.Pass };
             grid.AddChild(cell);
-            var face = new Control { Position = new Vector2(12, 0), Size = new Vector2(200, 340), MouseFilter = MouseFilterEnum.Pass, TooltipText = definition.Description };
+            var face = new Control { Position = new Vector2(12, 0), Size = new Vector2(200, 340), MouseFilter = MouseFilterEnum.Pass };
             cell.AddChild(face);
+            BindCondensationHover(face, name);
             Art(face, CondensationUiArt.Card, new Rect2(0, 0, 200, 340));
             Text(face, name, 30, new Rect2(14, 16, 172, 42), Ink, true);
             Text(face, definition.Kind, 17, new Rect2(14, 61, 172, 26), Ink, true);
             Art(face, CondensationUiArt.Icon(CardIconIndex(name)), new Rect2(22, 86, 156, 110));
-            var effect = definition.Description + (definition.Kind == "压聚" ? $"\n本角色额外凝核+{_game.RootBonus}" : "");
-            Text(face, effect, 18, new Rect2(17, 201, 166, 126), Ink, true);
+            Text(face, CondensationCardText.Face(name, _game), 17, new Rect2(17, 201, 166, 126), Ink, true);
         }
         if (pile.Count == 0) Text(page, "这里暂时没有牌。", 30, new Rect2(300, 390, 1070, 60), Cream, true);
     }
@@ -493,16 +505,17 @@ public partial class CondensationCardGamePanel : Control
     {
         var box = Modal("行功记录", 1050, 770);
         var scroll = new ScrollContainer { Position = new Vector2(35, 90), Size = new Vector2(980, 585) }; box.AddChild(scroll);
-        var label = new Label { Text = string.Join("\n", _game!.Log), CustomMinimumSize = new Vector2(950, 0), AutowrapMode = TextServer.AutowrapMode.WordSmart };
+        var label = new Label { Text = CondensationCardText.Wording(string.Join("\n", _game!.Log)), CustomMinimumSize = new Vector2(950, 0), AutowrapMode = TextServer.AutowrapMode.WordSmart };
         label.AddThemeFontSizeOverride("font_size", 22); scroll.AddChild(label);
         ButtonAt(box, "返回结果", new Rect2(765, 695, 235, 45), ShowResult);
     }
     private void ShowHelp()
     {
+        _openingHelpVisible = _openingSwapPending;
         var box = Modal("初次凝核 · 如何游玩", 1120, 790);
         var itemHelp = _testMode
-            ? "② 行功：点开始行功，再点手牌，查看效果并确认。每轮三次施展，\n调息也占一次。道具每轮最多一件，本局各一次，不占施展。\n\n"
-            : "② 行功：正式局不开放道具。点开始行功，再点手牌查看效果并确认；\n每轮三次施展，调息也占一次。\n\n";
+            ? "② 行功：长按手牌查看详情，拖到灵力团施展；选回弹或风险时确认。\n每回合三次施展（含调息）；道具每回合最多一件，本局各一次。\n\n"
+            : "② 行功：长按手牌查看详情，拖到灵力团施展；选回弹或风险时确认。\n每回合三次施展（含调息），正式局不开放道具。\n\n";
         Text(box,
             "目标：八回合全部结算后，凝核程度达到100。分数上不封顶。\n\n" +
             "① 准备：起手六张，可统一换零至两张；之后每回合补足六张，\n可弃一抽一。未打的牌保留，牌库不会回洗。\n\n" +
@@ -511,9 +524,9 @@ public partial class CondensationCardGamePanel : Control
             "④ 紊乱：连续压聚会增紊乱；理气、调息可降低。凝核在同回合\n涨—降—涨或降—涨—降，额外紊乱+1。超过10立即失败！\n\n" +
             "⑤ 结算：紊乱0—10分别扣0/0/1/2/4/6/9/12/16/20/25，\n再自然下降1。最后一轮还会扣掉全部未结回弹，之后才判成核。\n\n" +
             (_testMode ? "人物：试演可调悟性、灵慧和匹配权重；" : "人物属性：正式局锁定当前人物的悟性、灵慧和匹配权重；") +
-            "悟性追加换牌；灵慧提高理气效率；匹配灵根权重增加\n压聚收益。牌面与确认页会列出补正。可随时点右上玩法重看。",
+            "悟性追加换牌；灵慧提高理气效率；匹配灵根权重增加\n压聚收益。牌面与施展预览会列出补正。可随时点右上玩法重看。",
             23, new Rect2(35, 85, 1050, 610), Cream);
-        ButtonAt(box, "开始尝试", new Rect2(835, 715, 235, 48), HideModal);
+        ButtonAt(box, _openingSwapPending ? "返回换牌" : "开始尝试", new Rect2(835, 715, 235, 48), HideModal);
     }
     private void ConfirmRestart()
     {
@@ -531,6 +544,8 @@ public partial class CondensationCardGamePanel : Control
     }
     private Control Modal(string title, float width, float height)
     {
+        CancelHandDrag();
+        HoverInfoManager.HideAll();
         foreach (var child in _modal.GetChildren()) { _modal.RemoveChild(child); child.QueueFree(); }
         _modal.Show(); _modal.MoveToFront(); _hover = -1;
         var shade = new ColorRect { Color = new Color(0.06f, .045f, .025f, .75f), Size = _canvas.Size, MouseFilter = MouseFilterEnum.Stop }; _modal.AddChild(shade);
@@ -540,6 +555,12 @@ public partial class CondensationCardGamePanel : Control
     }
     private void HideModal()
     {
+        if (_openingSwapPending)
+        {
+            if (_openingHelpVisible) ShowOpeningSwap();
+            return;
+        }
+        _dragSelectingTargets = false;
         _modal.Hide(); _hover = -1;
         // 玩法/牌堆等窗口不能使尚未完成的选牌或弃牌消失。
         if (_game?.Busy == true && !_game.Finished) ResolvePending();
@@ -548,6 +569,7 @@ public partial class CondensationCardGamePanel : Control
     {
         if (!IsVisibleInTree()) return;
         if (@event is not InputEventKey { Pressed: true, Echo: false, Keycode: Key.Escape }) return;
+        if (_pressedHandCard is not null) { CancelHandDrag(); GetViewport().SetInputAsHandled(); return; }
         if (_game?.Busy == true) return;
         if (_modal.Visible) HideModal();
         else if (_testMode && _game is not null) ConfirmRestart();
@@ -618,21 +640,20 @@ public partial class CondensationCardGamePanel : Control
         var label = new Label { AutowrapMode = TextServer.AutowrapMode.WordSmart, ClipText = true, MouseFilter = MouseFilterEnum.Ignore, HorizontalAlignment = center ? HorizontalAlignment.Center : HorizontalAlignment.Left };
         label.AddThemeFontSizeOverride("font_size", size); label.AddThemeColorOverride("font_color", color);
         parent.AddChild(label);
-        label.Position = rect.Position; label.Size = rect.Size; label.Text = text;
+        label.Position = rect.Position; label.Size = rect.Size; label.Text = CondensationCardText.Wording(text);
         return label;
     }
     private static Button ButtonAt(Control parent, string text, Rect2 rect, Action click)
     {
-        var b = new Button { Text = text, Position = rect.Position, Size = rect.Size }; Style(b); b.Pressed += click; parent.AddChild(b); return b;
+        var b = new Button { Text = text, Position = rect.Position, Size = rect.Size, MouseDefaultCursorShape = CursorShape.PointingHand }; Style(b); b.Pressed += click; parent.AddChild(b); return b;
     }
     private static Button InkButtonAt(Control parent, string text, Rect2 rect, Action click)
     {
-        // 固定原素材纵横比，按给定区域等比放入；底纹与按钮文字使用同一中心。
         var texture = CondensationUiArt.Rest;
         var ratio = texture.GetWidth() / (float)texture.GetHeight();
         var width = Mathf.Min(rect.Size.X, rect.Size.Y * ratio);
         var fitted = new Vector2(width, width / ratio);
-        var button = new Button { Alignment = HorizontalAlignment.Center };
+        var button = new Button { Alignment = HorizontalAlignment.Center, MouseDefaultCursorShape = CursorShape.PointingHand };
         ClearButton(button);
         foreach (var state in new[] { "normal", "hover", "pressed", "disabled", "focus" })
         {
@@ -665,9 +686,20 @@ public partial class CondensationCardGamePanel : Control
     };
     private static void Style(Button b)
     {
-        b.AddThemeFontSizeOverride("font_size", 21); b.AddThemeColorOverride("font_color", Cream);
+        var texture = CondensationUiArt.Rest;
+        b.AddThemeFontSizeOverride("font_size", 21);
+        b.AddThemeColorOverride("font_color", Cream);
+        b.AddThemeColorOverride("font_hover_color", new Color("fff0c7"));
+        b.AddThemeColorOverride("font_pressed_color", new Color("fff0c7"));
+        b.AddThemeColorOverride("font_disabled_color", new Color(.9f, .84f, .71f, .42f));
         foreach (var state in new[] { "normal", "hover", "pressed", "disabled" })
-            b.AddThemeStyleboxOverride(state, new StyleBoxFlat { BgColor = new Color(state == "hover" ? "64543b" : "393227"), BorderColor = new Color("a08b64"), BorderWidthLeft = 1, BorderWidthRight = 1, BorderWidthTop = 1, BorderWidthBottom = 1 });
+            b.AddThemeStyleboxOverride(state, new StyleBoxTexture
+            {
+                Texture = texture,
+                ContentMarginLeft = 4, ContentMarginRight = 4, ContentMarginTop = 3, ContentMarginBottom = 3,
+                ModulateColor = state == "disabled" ? new Color(1, 1, 1, .42f) : state == "hover" ? new Color(1.22f, 1.15f, 1f) : state == "pressed" ? new Color(.8f, .8f, .8f) : Colors.White
+            });
+        b.AddThemeStyleboxOverride("focus", new StyleBoxTexture { Texture = texture, ContentMarginLeft = 4, ContentMarginRight = 4, ContentMarginTop = 3, ContentMarginBottom = 3, ModulateColor = new Color(1.22f, 1.15f, 1f) });
     }
     private static void ClearButton(Button button)
     {

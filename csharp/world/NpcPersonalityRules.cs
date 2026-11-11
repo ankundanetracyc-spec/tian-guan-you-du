@@ -72,7 +72,7 @@ public static class NpcPersonalityRules
             foreach (var key in npc.player_known_npc_info.Keys)
             {
                 var entry = npc.player_known_npc_info[key].AsGodotDictionary();
-                lines.Add(entry["value"].AsString() + "（" + entry["source"].AsString() + "）");
+                lines.Add((entry["value"].AsString() + "（" + entry["source"].AsString() + "）").Replace("神识", "灵识"));
             }
             if (npc.player_known_npc_info.Count == 0) lines.Add("尚无了解。");
         }

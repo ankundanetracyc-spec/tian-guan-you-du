@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-/// <summary>节点网 v0.1 参数，见 docs/plans/炼丹节点网初始数值表_20261018.md。</summary>
+/// <summary>节点网 v0.1 参数，见 docs/plans/百工技艺/炼丹/炼丹节点网初始数值表_20261018.md。</summary>
 public static class AlchemyProcessConfig
 {
     public const int MinimumAttainment=8,MainMana=600,HelperMana=420,MainSpirit=24,HelperSpirit=18,HelperAttainment=30;

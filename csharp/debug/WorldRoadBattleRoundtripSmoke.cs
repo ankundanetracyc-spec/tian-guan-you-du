@@ -27,7 +27,7 @@ public partial class WorldRoadBattleRoundtripSmoke : Node
                     current_health = 10000, max_health = 10000 },
                 current_node_id = "white_stone_town", year = 2, month = 4, day = 8, hour = 9,
                 node_world_state = new D { ["current_node"] = "bc_place_021", ["remaining_route"] = new Godot.Collections.Array<string>() },
-                scene_progress = new D { ["story_free_start"] = true, ["qingxi_prologue"] = 3, ["cloud_state_initialized"] = true,
+                scene_progress = new D { ["story_free_start"] = true, ["cloud_state_initialized"] = true,
                     ["world_road_encounter"] = new D { ["pending"] = new D { ["id"] = "real_roundtrip", ["kind"] = "wildlife" } } }
             };
             typeof(GameSaveManager).GetField("_pendingLoad", Private)!.SetValue(saves, fixture);

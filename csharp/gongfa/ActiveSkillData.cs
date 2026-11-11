@@ -131,6 +131,8 @@ public partial class ActiveSkillData : Resource
     /// <summary>所有卡牌共用的牌面短描述：只写目标、数值与关键机制，不使用叙事性长句。</summary>
     public string get_brief_description(GodotObject? owner = null)
     {
+        if (has_board_definition() && (owner?.HasMeta("artifact_battle_clone") != true || owner?.HasMeta("combat_board_mode") == true))
+            return CardPresentation.BoardFace(this, owner);
         var lines = new List<string>();
         if (!Mathf.IsZeroApprox(base_damage) || damage_bonuses.Count > 0 || !string.IsNullOrWhiteSpace(damage_formula))
             lines.Add($"对一名指定敌人造成 {Mathf.RoundToInt(BattleActionResolver.preview_damage(owner,this))} 点{damage_name()}伤害。");

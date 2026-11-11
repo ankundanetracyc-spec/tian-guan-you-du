@@ -64,7 +64,7 @@ public partial class BattleSupplyHud : CanvasLayer
         if (_root is null || !GodotObject.IsInstanceValid(_manager)) return;
         BattleUiArt.Fit(_root);
         var detailsOpen = GetTree().GetNodesInGroup("human_info_panel").OfType<CanvasItem>().Any(item => item.IsVisibleInTree());
-        var visible = _manager.SupplyHudVisible && _manager.get_main_player_unit() is Character && !detailsOpen;
+        var visible = !_manager.is_board_battle() && _manager.SupplyHudVisible && _manager.get_main_player_unit() is Character && !detailsOpen;
         _root.Visible = visible;
         if (!visible) SetExpanded(false);
         Refresh();

@@ -23,8 +23,8 @@ public partial class BaiChuanFormalNodeSmoke : Node
             Check(main.StartupComplete && main.StartupError is null, "真实旅程启动失败："+main.StartupError);
             Check(!ResourceLoader.HasCached("res://resources/world/yunqu_state_nodes.tres") &&
                 !ResourceLoader.HasCached("res://textures/world_map/bai_chuan/bai_chuan_master_v9_hd.png"), "正式启动仍加载旧地图资源");
-            var stage = typeof(MainScene).GetField("_qingxi_prologue",BindingFlags.Instance|BindingFlags.NonPublic)!;
-            stage.SetValue(main,Enum.Parse(stage.FieldType,"Departed"));
+            typeof(MainScene).GetField("_story_free_start", BindingFlags.Instance|BindingFlags.NonPublic)!.SetValue(main, true);
+            typeof(MainScene).GetField("_baishiLecture", BindingFlags.Instance|BindingFlags.NonPublic)!.SetValue(main, null);
             Invoke(main,"open_world");
             await Frames(5);
             var map = main.GetNodeOrNull<Control>("MapLayer/BaiChuanNodeWorld");

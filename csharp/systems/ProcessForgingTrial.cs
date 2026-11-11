@@ -152,6 +152,12 @@ public sealed partial class ProcessForgingTrial
         public string Name { get; set; } = "";
         public string Category { get; set; } = "剑";
         public string Tier { get; set; } = "";
+        // Non-sword categories must explicitly provide their own icon and
+        // footprint; old sword snapshots retain their existing presentation.
+        public string InventoryIconPath { get; set; } = "";
+        public int InventoryWidth { get; set; }
+        public int InventoryHeight { get; set; }
+        public int StorageVolume { get; set; }
         public int Sharpness { get; set; }
         public string RulesVersion { get; set; } = "";
         public string InputHash { get; set; } = "";
@@ -192,6 +198,8 @@ public sealed partial class ProcessForgingTrial
     {
         public List<string> Failures { get; set; } = [];
         public Artifact? Product { get; set; }
+        /// <summary>正式人物成器后获得的器道造诣；独立试炼恒为0。</summary>
+        public float ProficiencyGrowth { get; set; }
         public bool Success => CanSubmit && Failures.Count == 0 && Product is not null;
     }
     public Config Parameters => Clone(_parameters);

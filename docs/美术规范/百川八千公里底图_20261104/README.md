@@ -2,7 +2,7 @@
 
 显示分片最新修订：用户反馈5×5地图过大，已改为[3×3紧凑底图](../百川八千公里3x3紧凑底图_20261104/README.md)，世界仍8000公里见方。本文保留25张原生图的生成、校色和拼接来源，6270母图继续复用。
 
-2026-11-04。本轮按用户最新要求，将百川用于自由行旅的底图重画为纸墨青灰山水，并采用 **5×5、共25张独立原生细化图**。美术资源已发布并冻结，地图尺度为 **8000公里×8000公里**，运行时虚拟画布为 **12288×12288**；地点、导航与运行验收见[百川全域自由行旅现行案](../../plans/百川全域自由行旅_20261104.md)。
+2026-11-04。本轮按用户最新要求，将百川用于自由行旅的底图重画为纸墨青灰山水，并采用 **5×5、共25张独立原生细化图**。美术资源已发布并冻结，地图尺度为 **8000公里×8000公里**，运行时虚拟画布为 **12288×12288**；地点、导航与运行验收见[百川全域自由行旅现行案](../../plans/世界与探索/百川全域自由行旅_20261104.md)。
 
 ## 画风与地理约束
 
@@ -27,12 +27,12 @@
 正式文件入口：
 
 - [master_8000.png](../../../textures/world/bai_chuan/free_world_8000_20261104/master_8000.png)：冻结的正式6270母图。
-- [tiles/](../../../textures/world/bai_chuan/free_world_8000_20261104/tiles/)：`bc_r0c0.png`至`bc_r4c4.png`，行号从上向下、列号从左向右，均从0计数。
+- [tiles/](../../../textures/world/bai_chuan/free_world_8000_20261104/tiles)：`bc_r0c0.png`至`bc_r4c4.png`，行号从上向下、列号从左向右，均从0计数。
 - [preview_2090.png](../../../textures/world/bai_chuan/free_world_8000_20261104/preview_2090.png)：完整总览预览。
-- [tiles_5x5_native/](../../../textures/world/bai_chuan/free_world_8000_20261104/tiles_5x5_native/)：25张最终选用原生生成图及分工生成记录。
+- [tiles_5x5_native/](../../../textures/world/bai_chuan/free_world_8000_20261104/tiles_5x5_native)：25张最终选用原生生成图及分工生成记录。
 - [master_8000_5x5_native.png](../../../textures/world/bai_chuan/free_world_8000_20261104/master_8000_5x5_native.png)：未校色、未接缝处理的6270拼合图。
 - [master_1254_native_v1.png](../../../textures/world/bai_chuan/free_world_8000_20261104/master_1254_native_v1.png)：第一张连续1254母图。
-- [native_sources/](../../../textures/world/bai_chuan/free_world_8000_20261104/native_sources/)与`references_5x5/variants/`：原生来源副本和被替换候选；生成记录同时保留原始`generated_images`文件路径。
+- [native_sources/](../../../textures/world/bai_chuan/free_world_8000_20261104/native_sources)与`references_5x5/variants/`：原生来源副本和被替换候选；生成记录同时保留原始`generated_images`文件路径。
 
 ## 生成方式与提示词
 

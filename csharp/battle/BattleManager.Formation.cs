@@ -3,31 +3,41 @@ using Godot.Collections;
 
 public partial class BattleManager : Node2D
 {
-    public void emit_formation_event(GodotObject owner, string eventId, string sourceTag, int amplitude = 1)
+    public void emit_formation_event(GodotObject owner, string eventId, string sourceTag, int amplitude = 1, string? occurrenceId = null)
     {
-        foreach (var circuit in _formationCircuits.GetValueOrDefault(owner, [])) circuit.emit(eventId, sourceTag, amplitude);
+        foreach (var circuit in _formationCircuits.GetValueOrDefault(owner, [])) circuit.emit(eventId, sourceTag, amplitude, occurrenceId);
     }
     /// <summary>阵器最终只调用已有的战斗效果入口；不伪装成一张手牌，也不支付体力/法力。</summary>
     public void resolve_formation_actuator(GodotObject owner, FormationNodeData actuator)
+        => try_resolve_formation_actuator(owner, actuator);
+
+    /// <summary>提交适配器报告实际是否生效，供阵能预留失败时回滚；不额外发成功信号。</summary>
+    public bool try_resolve_formation_actuator(GodotObject owner, FormationNodeData actuator)
     {
+        if (!GodotObject.IsInstanceValid(owner)) return false;
         var value = Mathf.Max(0, actuator.effect_value);
+        if (value == 0) return false;
         switch (actuator.actuator_effect)
         {
             case FormationNodeData.ActuatorEffect.SHIELD:
                 owner.Set("shield", owner.Get("shield").AsInt32() + value);
-                break;
+                return true;
             case FormationNodeData.ActuatorEffect.RESTORE_MANA:
-                owner.Set("current_mana", Mathf.Min(owner.Get("max_mana").AsInt32(), owner.Get("current_mana").AsInt32() + value));
-                break;
+                var mana = owner.Get("current_mana").AsInt32();
+                var nextMana = Mathf.Min(owner.Get("max_mana").AsInt32(), mana + value);
+                if (nextMana <= mana) return false;
+                owner.Set("current_mana", nextMana);
+                return true;
             case FormationNodeData.ActuatorEffect.MAGIC_DAMAGE:
                 var target = FindTarget(owner);
-                if (!GodotObject.IsInstanceValid(target)) return;
+                if (!GodotObject.IsInstanceValid(target) || target!.Get("current_health").AsInt32() <= 0) return false;
                 var damage = Mathf.Max(1, BattleActionResolver.apply_defense(value, "magic", target!));
                 target!.Set("current_health", Mathf.Max(0, target.Get("current_health").AsInt32() - damage));
                 if (target.HasMethod("update_ui")) target.Call("update_ui");
                 show_damage_number(target, damage, "magic");
-                break;
+                return true;
         }
+        return false;
     }
     public Array<Dictionary> get_formation_snapshot(GodotObject owner)
     {

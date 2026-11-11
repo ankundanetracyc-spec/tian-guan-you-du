@@ -6,21 +6,32 @@ using System.Linq;
 using GArray = Godot.Collections.Array;
 using GDictionary = Godot.Collections.Dictionary;
 
-/// <summary>Persisted lifecycle, layout, actions and ecology for optional limited-time field instances.</summary>
+/// <summary>Persisted lifecycle, layout, actions and ecology for randomly generated field towers.</summary>
 public static class DynamicDungeonExpedition
 {
     public const string TemplateId = "mist_hidden_valley";
     public const string DisplayName = "雾隐幽谷";
     public const string DungeonIdPrefix = "mist_hidden_valley:";
+    public const int TowerLayerCount = 15;
+    public const int MapColumns = 7;
+    public const int MapRows = TowerLayerCount + 2;
+    public const int MinimumNodesPerLayer = 3;
+    public const int MaximumNodesPerLayer = 4;
+    public const string EntryNodeId = "tower_entry";
+    public const string ExitNodeId = "tower_exit";
+    public const string BattleNodeType = "battle";
+    public const string ResourceNodeType = "resource";
+    public const string RestNodeType = "rest";
     public const int ScheduleIntervalHours = 180 * 24;
     public const int OpenDurationHours = 360 * 24;
     public const int MaximumOpenInstances = 2;
-    public const int MapColumns = 16;
-    public const int MapRows = 8;
-    public const int MapCellCount = MapColumns * MapRows;
+    private const int LegacyMapColumns = 16;
+    private const int LegacyMapRows = 8;
+    private const int LegacyMapCellCount = LegacyMapColumns * LegacyMapRows;
     private const int HoursPerDay = 24;
     private const int OrdinaryBeastCheckHours = 14 * HoursPerDay;
-    private const string EntryNodeId = "valley_00_04";
+    private const string LegacyEntryNodeId = "valley_00_04";
+    private const string TowerLayoutVersion = "tower_15x7_v1";
     private const string ItemRoot = "res://resources/entities/items/";
     private static readonly Vector2I[] Directions = [Vector2I.Right, Vector2I.Down, Vector2I.Left, Vector2I.Up];
     private static readonly System.Collections.Generic.Dictionary<string, LayoutRuntime> LayoutCache = new(StringComparer.Ordinal);
@@ -39,8 +50,142 @@ public static class DynamicDungeonExpedition
             ["activated"] = false,
             ["last_schedule_hour"] = Math.Max(0, currentGameHour),
             ["next_instance_sequence"] = 1,
+            ["world_seed"] = Guid.NewGuid().ToString("N"),
             ["instances"] = new GArray(),
         };
+
+    /// <summary>Creates one persistent world-map entrance and replenishes it only after completion.</summary>
+    public static bool SynchronizeTowerOpportunities(GDictionary state, int currentGameHour)
+    {
+        var changed = EnsureState(state, currentGameHour);
+        var now = Math.Max(0, currentGameHour);
+        var instances = state["instances"].AsGodotArray();
+        foreach (var value in instances)
+        {
+            if (value.VariantType != Variant.Type.Dictionary) continue;
+            var existingInstance = value.AsGodotDictionary();
+            if (IsCompactInstance(existingInstance))
+            {
+                changed |= SynchronizeEcology(existingInstance, now);
+                continue;
+            }
+            if (!existingInstance.GetValueOrDefault("entry_open", false).AsBool()) continue;
+            changed |= SynchronizeEcology(existingInstance, now);
+            if (!IsTowerInstance(existingInstance) && !existingInstance.GetValueOrDefault("inside", false).AsBool())
+            {
+                // Retire pre-tower opportunities on upgraded saves. An expedition
+                // already in progress is allowed to finish before a new tower appears.
+                existingInstance["entry_open"] = false;
+                existingInstance["completed"] = true;
+                changed = true;
+            }
+        }
+
+        if (instances.Any(value => value.VariantType == Variant.Type.Dictionary &&
+                !IsCompactInstance(value.AsGodotDictionary()) &&
+                value.AsGodotDictionary().GetValueOrDefault("entry_open", false).AsBool() &&
+                !value.AsGodotDictionary().GetValueOrDefault("completed", false).AsBool()))
+            return changed;
+
+        // An active expedition survives map reloads. A new one appears only after
+        // the previous tower has been completed at its exit.
+        if (instances.Any(value => value.VariantType == Variant.Type.Dictionary &&
+                !IsCompactInstance(value.AsGodotDictionary()) &&
+                value.AsGodotDictionary().GetValueOrDefault("inside", false).AsBool()))
+            return changed;
+
+        var sequence = Math.Max(1, state.GetValueOrDefault("next_instance_sequence", 1).AsInt32());
+        var worldSeed = state.GetValueOrDefault("world_seed", "").AsString();
+        if (string.IsNullOrWhiteSpace(worldSeed))
+        {
+            worldSeed = Guid.NewGuid().ToString("N");
+            state["world_seed"] = worldSeed;
+            changed = true;
+        }
+        var id = "tower_" + sequence.ToString("D6");
+        var seed = worldSeed + "|" + id + "|" + now;
+        var instance = CreateInstance(id, seed, Vector2I.Zero, now);
+        instance["expires_hour"] = int.MaxValue;
+        instance["world_position"] = new Vector2(-1, -1);
+        instance["world_node_id"] = GetWorldNodeId(instance);
+        instances.Add(instance);
+        state["next_instance_sequence"] = sequence + 1;
+        state["activated"] = true;
+        state["last_schedule_hour"] = now;
+        return true;
+    }
+
+    public static string GetWorldNodeId(GDictionary instance)
+        => "tower_entrance_" + instance.GetValueOrDefault("instance_id", "unknown").AsString();
+
+    public static GDictionary? FindInstanceByWorldNodeId(GDictionary state, string nodeId)
+    {
+        foreach (var value in state.GetValueOrDefault("instances", new GArray()).AsGodotArray())
+            if (value.VariantType == Variant.Type.Dictionary && GetWorldNodeId(value.AsGodotDictionary()) == nodeId)
+                return value.AsGodotDictionary();
+        return null;
+    }
+
+    public static bool IsTowerInstance(GDictionary instance)
+        => !IsCompactInstance(instance) && instance.GetValueOrDefault("template_id", "").AsString() == TemplateId &&
+           instance.GetValueOrDefault("map_snapshot", new GDictionary()).AsGodotDictionary().GetValueOrDefault("layout_version", "").AsString() == TowerLayoutVersion;
+
+    public static string GetNodeType(EastWoodsDungeonRules.NodeDefinition? node)
+        => node?.ContentType ?? "";
+
+    public static float MovementStaminaCost(GDictionary instance, string nodeId)
+        => GetNode(instance, nodeId)?.ContentType switch
+        {
+            BattleNodeType => 3.0f,
+            ResourceNodeType => 2.0f,
+            RestNodeType => 0.5f,
+            "exit" => 1.0f,
+            _ => 0.0f,
+        };
+
+    public static string ExpectedRealmRange(GDictionary instance)
+    {
+        var labels = new List<string>();
+        foreach (var value in instance.GetValueOrDefault("beasts", new GArray()).AsGodotArray())
+        {
+            if (value.VariantType != Variant.Type.Dictionary) continue;
+            var record = value.AsGodotDictionary();
+            foreach (var creatureId in GetEncounterCreatureIds(instance, record.GetValueOrDefault("encounter_id", "").AsString()))
+            {
+                var path = creatureId switch
+                {
+                    "gray_back_boar" => "res://resources/beast_templates/灰背野猪_试玩.tres",
+                    "forest_bei" => "res://resources/beast_templates/林地妖狈.tres",
+                    "qing_tail_fox" => "res://resources/beast_templates/青尾狐.tres",
+                    "red_mane_wolf" => "res://resources/beast_templates/赤鬃狼.tres",
+                    "rock_back_badger" => "res://resources/beast_templates/岩背獾.tres",
+                    _ => "res://resources/beast_templates/林地凶狼.tres",
+                };
+                if (GD.Load<BeastTemplate>(path) is not { } template) continue;
+                labels.Add(string.IsNullOrWhiteSpace(template.cultivation_stage)
+                    ? template.cultivation_realm
+                    : template.cultivation_realm + template.cultivation_stage);
+            }
+        }
+        var ordered = labels.Distinct(StringComparer.Ordinal).OrderBy(RealmOrder).ThenBy(label => label, StringComparer.Ordinal).ToArray();
+        return ordered.Length switch
+        {
+            0 => "未详",
+            1 => ordered[0],
+            _ => ordered[0] + "—" + ordered[^1],
+        };
+    }
+
+    private static int RealmOrder(string label)
+    {
+        var realm = label.StartsWith("凡", StringComparison.Ordinal) ? 0 :
+            label.StartsWith("通智", StringComparison.Ordinal) ? 1 :
+            label.StartsWith("结丹", StringComparison.Ordinal) ? 2 : 3;
+        var stage = label.EndsWith("初期", StringComparison.Ordinal) ? 0 :
+            label.EndsWith("中期", StringComparison.Ordinal) ? 1 :
+            label.EndsWith("后期", StringComparison.Ordinal) ? 2 : 0;
+        return realm * 10 + stage;
+    }
 
     public static bool IsCompactInstance(GDictionary instance)
         => instance.GetValueOrDefault("template_id", "").AsString() == CompactDungeonExpedition.TemplateId;
@@ -59,6 +204,7 @@ public static class DynamicDungeonExpedition
         {
             if (!IsCompactInstance(existing)) throw new InvalidOperationException("蕨林采径的实例标识被其他模板占用。");
             ValidateLayout(existing["map_snapshot"].AsGodotDictionary());
+            MigrateCompactEncounterContent(existing);
             SynchronizeInstanceEcology(existing, currentGameHour);
             return existing;
         }
@@ -205,112 +351,205 @@ public static class DynamicDungeonExpedition
         return instance;
     }
 
+    private static void MigrateCompactEncounterContent(GDictionary instance)
+    {
+        var authored = CompactDungeonExpedition.GenerateLayout(instance.GetValueOrDefault("seed", "").AsString());
+        var currentNodes = instance["map_snapshot"].AsGodotDictionary()["nodes"].AsGodotArray();
+        var authoredNodes = authored["nodes"].AsGodotArray();
+        for (var index = 0; index < Math.Min(currentNodes.Count, authoredNodes.Count); index++)
+        {
+            var current = currentNodes[index].AsGodotDictionary();
+            var next = authoredNodes[index].AsGodotDictionary();
+            current["title"] = next.GetValueOrDefault("title", "");
+            current["description"] = next.GetValueOrDefault("description", "");
+        }
+
+        var route = GetRoute(instance);
+        var actions = route.GetValueOrDefault("actions", new GDictionary()).AsGodotDictionary();
+        foreach (var value in instance.GetValueOrDefault("beasts", new GArray()).AsGodotArray())
+        {
+            if (value.VariantType != Variant.Type.Dictionary) continue;
+            var record = value.AsGodotDictionary();
+            var nodeId = record.GetValueOrDefault("node", "").AsString();
+            var actionId = record.GetValueOrDefault("action_id", "").AsString();
+            var desiredCreatureId = CompactDungeonExpedition.CreatureIdForNode(nodeId);
+            if (desiredCreatureId.Length == 0 || record.GetValueOrDefault("status", "active").AsString() != "active" ||
+                actions.GetValueOrDefault(nodeId + ":" + actionId, 0).AsInt32() > 0) continue;
+            record["creature_id"] = desiredCreatureId;
+        }
+    }
+
     private static GDictionary NewBeastRecord(GDictionary instance, string nodeId, EastWoodsActions.ActionDef source, int hour)
     {
         var sequence = Math.Max(1, instance.GetValueOrDefault("beast_sequence", 1).AsInt32());
         instance["beast_sequence"] = sequence + 1;
         var identity = instance.GetValueOrDefault("instance_id", "unknown").AsString() + "_beast_" + sequence.ToString("D4");
+        var creatureId = string.IsNullOrWhiteSpace(source.CreatureId) ? "forest_wolf" : source.CreatureId;
+        var creatureCount = creatureId switch
+        {
+            "qing_tail_fox" or "red_mane_wolf" or "rock_back_badger" => 2 + (int)(StableSeed(instance.GetValueOrDefault("seed", "").AsString() + "|" + identity + "|pack") % 2),
+            "forest_bei_pack" => 2,
+            _ => 1,
+        };
         return new GDictionary
         {
             ["encounter_id"] = identity,
             ["action_id"] = "beast_" + sequence.ToString("D4"),
             ["node"] = nodeId,
-            ["creature_id"] = "forest_wolf",
+            ["creature_id"] = creatureId,
+            ["creature_count"] = creatureCount,
             ["created_hour"] = hour,
             ["resolved_hour"] = -1,
             ["status"] = "active",
         };
     }
 
+    public static string[] GetEncounterCreatureIds(GDictionary instance, string encounterIdentity)
+    {
+        foreach (var value in instance.GetValueOrDefault("beasts", new GArray()).AsGodotArray())
+        {
+            if (value.VariantType != Variant.Type.Dictionary) continue;
+            var record = value.AsGodotDictionary();
+            if (record.GetValueOrDefault("encounter_id", "").AsString() != encounterIdentity) continue;
+            var creatureId = record.GetValueOrDefault("creature_id", "forest_wolf").AsString();
+            return creatureId switch
+            {
+                "forest_bei_pack" => ["forest_bei", "forest_wolf"],
+                "qing_tail_fox" or "red_mane_wolf" or "rock_back_badger" => Enumerable.Repeat(
+                    creatureId, Math.Clamp(record.GetValueOrDefault("creature_count", 2).AsInt32(), 2, 3)).ToArray(),
+                "forest_wolf" or "gray_back_boar" or "forest_bei" => [creatureId],
+                _ => ["forest_wolf"],
+            };
+        }
+        return [];
+    }
+
     private static GDictionary GenerateLayout(string seed)
     {
         var nodes = new GArray();
         var edges = new GArray();
-        var layoutSeed = StableSeed(seed);
-        for (var y = 0; y < MapRows; y++)
-        for (var x = 0; x < MapColumns; x++)
+        var rng = new RandomNumberGenerator { Seed = StableSeed(seed) };
+        var coreColumns = new List<int>[TowerLayerCount + 1];
+        var startColumns = new[] { 2, 3, 4 };
+        var exitColumns = new[] { 2, 3, 4 };
+        coreColumns[1] = [.. startColumns];
+        for (var layer = 2; layer <= TowerLayerCount; layer++)
         {
-            var id = node_id(x, y);
-            var terrainNoise = StableSeed(seed + "|terrain|" + x + "," + y) % 7;
-            var terrain = x <= 5
-                ? terrainNoise == 0 ? 0 : 6
-                : x <= 9 ? y is >= 2 and <= 5 ? 5 : terrainNoise % 3 == 0 ? 3 : 1
-                : (terrainNoise % 3 == 0 ? 7 : 2);
-            var feature = x == 7 && y == 4 ? "spring" : "";
-            var resourceId = (x, y) switch
+            var previous = coreColumns[layer - 1];
+            var remainingSteps = TowerLayerCount - layer;
+            var candidates = new List<int[]>();
+            for (var first = Math.Max(0, previous[0] - 1); first <= Math.Min(MapColumns - 1, previous[0] + 1); first++)
+            for (var second = Math.Max(0, previous[1] - 1); second <= Math.Min(MapColumns - 1, previous[1] + 1); second++)
+            for (var third = Math.Max(0, previous[2] - 1); third <= Math.Min(MapColumns - 1, previous[2] + 1); third++)
             {
-                (2, 1) or (3, 6) => "common_herb",
-                (4, 2) or (5, 5) => "common_moss",
-                (7, 6) => "mistbell_slow",
-                (12, 2) => "spirit_stone_vein",
-                _ => "",
+                var next = new[] { first, second, third };
+                if (first >= second || second >= third || next.Where((column, index) => Math.Abs(column - exitColumns[index]) > remainingSteps).Any()) continue;
+                candidates.Add(next);
+            }
+            if (candidates.Count == 0) throw new InvalidOperationException("爬塔主干无法保持通往出口的连接。");
+            coreColumns[layer] = [.. candidates[(int)rng.RandiRange(0, candidates.Count - 1)]];
+        }
+
+        var columnsByLayer = new List<int>[TowerLayerCount + 1];
+        for (var layer = 1; layer <= TowerLayerCount; layer++)
+        {
+            columnsByLayer[layer] = [.. coreColumns[layer]];
+            IReadOnlyList<int> previous = layer == 1 ? new[] { 3 } : coreColumns[layer - 1];
+            IReadOnlyList<int> next = layer == TowerLayerCount ? new[] { 3 } : coreColumns[layer + 1];
+            var branches = Enumerable.Range(0, MapColumns)
+                .Where(column => !columnsByLayer[layer].Contains(column) &&
+                    previous.Any(parent => Math.Abs(parent - column) <= 1) &&
+                    next.Any(child => Math.Abs(child - column) <= 1))
+                .ToList();
+            if (branches.Count > 0 && rng.RandiRange(0, 99) < 52)
+                columnsByLayer[layer].Add(branches[(int)rng.RandiRange(0, branches.Count - 1)]);
+            columnsByLayer[layer].Sort();
+        }
+
+        add_node(EntryNodeId, "入口", "副本入口。每次只沿一条连接进入下一层。", 3, TowerLayerCount + 1, "entry", "", rng.RandiRange(0, 7));
+        var typeCounts = new System.Collections.Generic.Dictionary<string, int>(StringComparer.Ordinal);
+        var resourceIds = new[] { "common_herb", "common_moss", "mistbell_slow", "spirit_stone_vein" };
+        var creatureIds = new[] { "forest_wolf", "gray_back_boar", "forest_bei_pack", "qing_tail_fox", "red_mane_wolf", "rock_back_badger" };
+        for (var layer = 1; layer <= TowerLayerCount; layer++)
+        foreach (var column in columnsByLayer[layer])
+        {
+            var type = (int)rng.RandiRange(0, 14) switch
+            {
+                < 5 => BattleNodeType,
+                < 11 => ResourceNodeType,
+                _ => RestNodeType,
             };
+            typeCounts[type] = typeCounts.GetValueOrDefault(type) + 1;
+            var resourceId = type == ResourceNodeType ? resourceIds[(int)rng.RandiRange(0, resourceIds.Length - 1)] : "";
+            var creatureId = type == BattleNodeType ? creatureIds[(int)rng.RandiRange(0, creatureIds.Length - 1)] : "";
+            var terrain = (int)rng.RandiRange(0, 7);
+            var id = tower_node_id(layer, column);
+            var title = type switch
+            {
+                BattleNodeType => "战斗",
+                ResourceNodeType => "资源",
+                _ => "休整",
+            };
+            var description = type switch
+            {
+                BattleNodeType => "一处生灵活动地。抵达后可查看战前信息，再决定是否应战。",
+                ResourceNodeType => "一处已确定采集内容的资源点。可按现有行动规则采集。",
+                _ => "可在此休息；恢复量按通用休息规则结算。",
+            };
+            add_node(id, title, description, column, TowerLayerCount - layer + 1, type, resourceId, terrain, creatureId);
+        }
+        add_node(ExitNodeId, "出口", "抵达出口后可离开副本；不附加额外奖励。", 3, 0, "exit", "", rng.RandiRange(0, 7));
+
+        for (var column = 0; column < MapColumns; column++)
+            if (Math.Abs(column - 3) <= 1 && columnsByLayer[1].Contains(column))
+                edges.Add(new GDictionary { ["from"] = EntryNodeId, ["to"] = tower_node_id(1, column) });
+        for (var layer = 1; layer < TowerLayerCount; layer++)
+        foreach (var fromColumn in columnsByLayer[layer])
+        foreach (var toColumn in columnsByLayer[layer + 1])
+            if (Math.Abs(fromColumn - toColumn) <= 1)
+                edges.Add(new GDictionary { ["from"] = tower_node_id(layer, fromColumn), ["to"] = tower_node_id(layer + 1, toColumn) });
+        foreach (var column in columnsByLayer[TowerLayerCount])
+            if (Math.Abs(column - 3) <= 1)
+                edges.Add(new GDictionary { ["from"] = tower_node_id(TowerLayerCount, column), ["to"] = ExitNodeId });
+
+        var snapshot = new GDictionary
+        {
+            ["template_id"] = TemplateId,
+            ["layout_version"] = TowerLayoutVersion,
+            ["seed"] = seed,
+            ["seed_hash"] = (long)(StableSeed(seed) & long.MaxValue),
+            ["version"] = 2,
+            ["columns"] = MapColumns,
+            ["rows"] = MapRows,
+            ["layers"] = TowerLayerCount,
+            ["minimum_nodes_per_layer"] = MinimumNodesPerLayer,
+            ["maximum_nodes_per_layer"] = MaximumNodesPerLayer,
+            ["type_counts"] = new GDictionary { [BattleNodeType] = typeCounts.GetValueOrDefault(BattleNodeType), [ResourceNodeType] = typeCounts.GetValueOrDefault(ResourceNodeType), [RestNodeType] = typeCounts.GetValueOrDefault(RestNodeType) },
+            ["entry_node_id"] = EntryNodeId,
+            ["exit_node_id"] = ExitNodeId,
+            ["nodes"] = nodes,
+            ["edges"] = edges,
+        };
+        ValidateLayout(snapshot);
+        return snapshot;
+
+        void add_node(string id, string title, string description, int x, int y, string type, string resourceId, int terrain, string creatureId = "")
+        {
             var category = resourceId switch
             {
                 "common_herb" or "common_moss" or "mistbell_slow" => EastWoodsResourceCategory.Plant,
                 "spirit_stone_vein" => EastWoodsResourceCategory.Mineral,
                 _ => EastWoodsResourceCategory.None,
             };
-            var eventId = (x, y) switch
-            {
-                (2, 4) => "bamboo_tracks",
-                (7, 4) => "spring_flow",
-                (12, 4) => "rock_marks",
-                _ => "",
-            };
-            var title = (x, y) switch
-            {
-                (0, 4) => "幽谷入口",
-                (7, 4) => "回涌泉眼",
-                (7, 3) => "中段湿地",
-                (2, 4) => "竹影旧痕",
-                (12, 4) => "岩隙爪痕",
-                (15, 4) => "岩壁回环",
-                _ => "",
-            };
-            var description = terrain switch
-            {
-                6 => "竹影层叠，窄径在林间相接；可留意现有草木与地上的旧痕。",
-                5 => "湿地浅水沿石间缓慢流动，脚下仍有可通行的干地。",
-                7 => "阴岩裂隙交错，路边留着妖兽经过的痕迹。",
-                2 => "岩隙路向谷内延伸，两侧偶有岔道和兽迹。",
-                3 => "浅水切过低洼地，沿可见的干燥地块能够绕行。",
-                _ => "谷中林地暂时平静，几条相连的路可以继续深入。",
-            };
-            if (!string.IsNullOrEmpty(feature)) description = "泉水从岩下涌出，在湿地中段分作两股，周围仍可沿干地通行。";
-            if (!string.IsNullOrEmpty(resourceId)) description += " 此处有可辨认的采集资源。";
-            if (!string.IsNullOrEmpty(eventId)) description += " 现场留有值得亲自判断的线索。";
-            var grid = new Vector2I(x, y);
-            var showTitle = title.Length > 0;
-            var node = new EastWoodsDungeonRules.NodeDefinition(id, title, description, grid, showTitle,
-                terrain, feature, resourceId, category);
             nodes.Add(new GDictionary
             {
-                ["id"] = node.Id, ["title"] = node.Title, ["description"] = node.Description,
-                ["x"] = x, ["y"] = y, ["show_title"] = node.ShowTitleOnMap,
-                ["terrain"] = node.Terrain, ["feature"] = node.Feature,
-                ["resource_id"] = node.ResourceNodeId, ["resource_category"] = (int)node.ResourceCategory,
-                ["event_id"] = eventId,
+                ["id"] = id, ["title"] = title, ["description"] = description,
+                ["x"] = x, ["y"] = y, ["show_title"] = true,
+                ["terrain"] = terrain, ["feature"] = "",
+                ["resource_id"] = resourceId, ["resource_category"] = (int)category,
+                ["content_type"] = type, ["creature_id"] = creatureId,
             });
-            if (x + 1 < MapColumns) edges.Add(new GDictionary { ["from"] = id, ["to"] = node_id(x + 1, y) });
-            if (y + 1 < MapRows) edges.Add(new GDictionary { ["from"] = id, ["to"] = node_id(x, y + 1) });
         }
-
-        var snapshot = new GDictionary
-        {
-            ["template_id"] = TemplateId,
-            ["seed"] = seed,
-            ["seed_hash"] = (long)(layoutSeed & long.MaxValue),
-            ["version"] = 1,
-            ["columns"] = MapColumns,
-            ["rows"] = MapRows,
-            ["entry_node_id"] = EntryNodeId,
-            ["exit_node_id"] = EntryNodeId,
-            ["nodes"] = nodes,
-            ["edges"] = edges,
-        };
-        ValidateLayout(snapshot);
-        return snapshot;
     }
 
     private static bool SynchronizeEcology(GDictionary instance, int hour)
@@ -454,6 +693,8 @@ public static class DynamicDungeonExpedition
                 "你采下雾铃花 ×1。", ItemRoot + "雾铃花.tres", 1, 2, Recovery: EastWoodsActions.ResourceRecoveryGroup.SlowGrowth),
             "spirit_stone_vein" => new("mine_spirit_stone", "采矿", "岩层裂隙中有一处灵石脉。每次可采一份，按90日矿脉周期恢复。", 1, 2,
                 "你采得灵石 ×1。", ItemRoot + "灵石.tres", 1, 2, Recovery: EastWoodsActions.ResourceRecoveryGroup.Mineral),
+            _ when node.ContentType == RestNodeType => new("rest_hour", "休息一小时", "休息一小时，按通用休息规则恢复大世界精力。", 1, 0,
+                "休息过后，你的精力有所恢复。", Quantity: 1, Stock: 100, Rest: true),
             _ => GetBeastSource(node),
         };
 
@@ -484,10 +725,33 @@ public static class DynamicDungeonExpedition
     };
 
     private static EastWoodsActions.ActionDef? GetBeastSource(EastWoodsDungeonRules.NodeDefinition node)
-        => (node.Id is "valley_11_01" or "valley_12_06" or "valley_14_03") || CompactDungeonExpedition.IsWolfNode(node.Id)
-            ? new("wolf", "应战", "一头林地凶狼在岩隙间活动。你可以应战，也可以沿其他路线绕行；胜负使用现有战斗与战利品结算。", 0, 0,
-                "此处妖兽已被击败。", Battle: true, OrdinaryBeastSource: true, OrdinaryBeastCapacity: 1)
-            : null;
+    {
+        var creatureId = !string.IsNullOrWhiteSpace(node.CreatureId) ? node.CreatureId : CompactDungeonExpedition.CreatureIdForNode(node.Id);
+        if (creatureId.Length == 0)
+            creatureId = node.Id switch
+            {
+                "valley_11_01" => "qing_tail_fox",
+                "valley_12_06" => "red_mane_wolf",
+                "valley_14_03" => "rock_back_badger",
+                _ => "",
+            };
+        if (creatureId.Length == 0) return null;
+        return creatureId switch
+        {
+            "gray_back_boar" => new("boar", "挑战灰背野猪", "一头灰背野猪在盘根间拱食草根，已有通智初期修为。可以查看战前情报后决定是否交手。", 0, 0,
+                "灰背野猪已被击败。", Battle: true, OrdinaryBeastSource: true, OrdinaryBeastCapacity: 1, CreatureId: creatureId),
+            "forest_bei_pack" => new("wolf_bei", "挑战狼狈同行", "林地妖狈与一头凶狼一同活动，均有通智初期修为。狈首天赋会令凶狼的群猎本能更容易累积。可以查看战前情报后决定是否交手。", 0, 0,
+                "狼狈同行已被击败。", Battle: true, OrdinaryBeastSource: true, OrdinaryBeastCapacity: 1, CreatureId: creatureId),
+            "qing_tail_fox" => new("qing_tail_fox_pack", "挑战青尾狐群", "两三只青尾狐在松林边缘活动，皆为通智初期。可以查看战前情报后决定是否交手。", 0, 0,
+                "青尾狐群已被击败。", Battle: true, OrdinaryBeastSource: true, OrdinaryBeastCapacity: 1, CreatureId: creatureId),
+            "red_mane_wolf" => new("red_mane_wolf_pack", "挑战赤鬃狼群", "两三只赤鬃狼沿兽径追踪猎物，皆为通智初期。可以查看战前情报后决定是否交手。", 0, 0,
+                "赤鬃狼群已被击败。", Battle: true, OrdinaryBeastSource: true, OrdinaryBeastCapacity: 1, CreatureId: creatureId),
+            "rock_back_badger" => new("rock_back_badger_pack", "挑战岩背獾群", "两三只岩背獾在碎石坡下掘洞，皆为通智初期。可以查看战前情报后决定是否交手。", 0, 0,
+                "岩背獾群已被击败。", Battle: true, OrdinaryBeastSource: true, OrdinaryBeastCapacity: 1, CreatureId: creatureId),
+            _ => new("wolf", "挑战林地凶狼", "一头林地凶狼在林径间活动，已有通智初期修为。可以查看战前情报后决定是否交手。", 0, 0,
+                "林地凶狼已被击败。", Battle: true, OrdinaryBeastSource: true, OrdinaryBeastCapacity: 1, CreatureId: creatureId),
+        };
+    }
 
     public static List<EastWoodsActions.ActionDef> AvailableActions(GDictionary instance, string nodeId, GDictionary actions)
     {
@@ -497,6 +761,9 @@ public static class DynamicDungeonExpedition
         if (GetResourceAction(node) is { } fixedAction && fixedAction.Recovery != EastWoodsActions.ResourceRecoveryGroup.None &&
             Math.Max(0, fixedAction.Stock - actions.GetValueOrDefault(nodeId + ":" + fixedAction.Id, 0).AsInt32()) >= Math.Max(1, fixedAction.Quantity))
             result.Add(fixedAction);
+        else if (GetResourceAction(node) is { Rest: true } restAction &&
+                 actions.GetValueOrDefault(nodeId + ":" + restAction.Id, 0).AsInt32() < restAction.Stock)
+            result.Add(restAction);
         var eventId = GetEventId(node);
         if (eventId.Length > 0 && !instance.GetValueOrDefault("event_results", new GDictionary()).AsGodotDictionary().ContainsKey(eventId))
             result.AddRange(GetEventActions(node));
@@ -509,8 +776,12 @@ public static class DynamicDungeonExpedition
                 record.GetValueOrDefault("status", "active").AsString() != "active") continue;
             var actionId = record.GetValueOrDefault("action_id", "").AsString();
             if (actions.GetValueOrDefault(nodeId + ":" + actionId, 0).AsInt32() > 0) continue;
-            var source = GetBeastSource(node);
-            if (source is not null) result.Add(source with { Id = actionId, EncounterIdentity = record.GetValueOrDefault("encounter_id", "").AsString() });
+            var creatureId = record.GetValueOrDefault("creature_id", "forest_wolf").AsString();
+            var source = creatureId == CompactDungeonExpedition.CreatureIdForNode(node.Id) || !IsCompactInstance(instance)
+                ? GetBeastSource(node)
+                : null;
+            if (source is not null)
+                result.Add(source with { Id = actionId, EncounterIdentity = record.GetValueOrDefault("encounter_id", "").AsString(), CreatureId = creatureId });
         }
         return result;
     }
@@ -614,8 +885,19 @@ public static class DynamicDungeonExpedition
     public static IReadOnlyList<string> GetNeighbors(GDictionary instance, string nodeId)
         => GetLayout(instance).Neighbors.TryGetValue(nodeId, out var neighbors) ? neighbors : System.Array.Empty<string>();
 
-    public static string GetEntryNodeId(GDictionary instance) => IsCompactInstance(instance) ? CompactDungeonExpedition.EntryNodeId : EntryNodeId;
-    public static string GetExitNodeId(GDictionary instance) => instance.GetValueOrDefault("map_snapshot", new GDictionary()).AsGodotDictionary().GetValueOrDefault("exit_node_id", EntryNodeId).AsString();
+    public static string GetEntryNodeId(GDictionary instance)
+    {
+        if (IsCompactInstance(instance)) return CompactDungeonExpedition.EntryNodeId;
+        var snapshot = instance.GetValueOrDefault("map_snapshot", new GDictionary()).AsGodotDictionary();
+        return snapshot.GetValueOrDefault("entry_node_id", LegacyEntryNodeId).AsString();
+    }
+
+    public static string GetExitNodeId(GDictionary instance)
+    {
+        if (IsCompactInstance(instance)) return CompactDungeonExpedition.ExitNodeId;
+        var snapshot = instance.GetValueOrDefault("map_snapshot", new GDictionary()).AsGodotDictionary();
+        return snapshot.GetValueOrDefault("exit_node_id", LegacyEntryNodeId).AsString();
+    }
     public static string GetDungeonId(GDictionary instance) => (IsCompactInstance(instance) ? CompactDungeonExpedition.TemplateId + ":" : DungeonIdPrefix) + instance.GetValueOrDefault("instance_id", "unknown").AsString();
     public static string GetLayoutSeed(GDictionary instance) => instance.GetValueOrDefault("seed", "missing").AsString();
 
@@ -670,7 +952,9 @@ public static class DynamicDungeonExpedition
                 data.GetValueOrDefault("terrain", 0).AsInt32(),
                 data.GetValueOrDefault("feature", "").AsString(),
                 data.GetValueOrDefault("resource_id", "").AsString(),
-                (EastWoodsResourceCategory)data.GetValueOrDefault("resource_category", 0).AsInt32());
+                (EastWoodsResourceCategory)data.GetValueOrDefault("resource_category", 0).AsInt32(),
+                data.GetValueOrDefault("content_type", "").AsString(),
+                data.GetValueOrDefault("creature_id", "").AsString());
             nodes.Add(node);
             byId[node.Id] = node;
             neighbors[node.Id] = new List<string>();
@@ -695,14 +979,24 @@ public static class DynamicDungeonExpedition
             CompactDungeonExpedition.ValidateLayout(snapshot);
             return;
         }
+        if (snapshot.GetValueOrDefault("layout_version", "").AsString() == TowerLayoutVersion)
+        {
+            ValidateTowerLayout(snapshot);
+            return;
+        }
+        ValidateLegacyGridLayout(snapshot);
+    }
+
+    private static void ValidateLegacyGridLayout(GDictionary snapshot)
+    {
         var nodes = snapshot.GetValueOrDefault("nodes", new GArray()).AsGodotArray();
         var edges = snapshot.GetValueOrDefault("edges", new GArray()).AsGodotArray();
         if (snapshot.GetValueOrDefault("template_id", "").AsString() != TemplateId ||
-            snapshot.GetValueOrDefault("columns", 0).AsInt32() != MapColumns ||
-            snapshot.GetValueOrDefault("rows", 0).AsInt32() != MapRows || nodes.Count != MapCellCount ||
-            snapshot.GetValueOrDefault("entry_node_id", "").AsString() != EntryNodeId ||
-            snapshot.GetValueOrDefault("exit_node_id", "").AsString() != EntryNodeId)
-            throw new InvalidOperationException("雾隐幽谷实例地图的模板尺寸、入口或格数无效。");
+            snapshot.GetValueOrDefault("columns", 0).AsInt32() != LegacyMapColumns ||
+            snapshot.GetValueOrDefault("rows", 0).AsInt32() != LegacyMapRows || nodes.Count != LegacyMapCellCount ||
+            snapshot.GetValueOrDefault("entry_node_id", "").AsString() != LegacyEntryNodeId ||
+            snapshot.GetValueOrDefault("exit_node_id", "").AsString() != LegacyEntryNodeId)
+            throw new InvalidOperationException("旧雾隐幽谷实例地图的模板尺寸、入口或格数无效。");
         var byId = new System.Collections.Generic.Dictionary<string, Vector2I>(StringComparer.Ordinal);
         var byGrid = new HashSet<Vector2I>();
         foreach (var value in nodes)
@@ -711,7 +1005,7 @@ public static class DynamicDungeonExpedition
             var node = value.AsGodotDictionary();
             var id = node.GetValueOrDefault("id", "").AsString();
             var grid = new Vector2I(node.GetValueOrDefault("x", -1).AsInt32(), node.GetValueOrDefault("y", -1).AsInt32());
-            if (id != node_id(grid.X, grid.Y) || grid.X < 0 || grid.X >= MapColumns || grid.Y < 0 || grid.Y >= MapRows ||
+            if (id != legacy_node_id(grid.X, grid.Y) || grid.X < 0 || grid.X >= LegacyMapColumns || grid.Y < 0 || grid.Y >= LegacyMapRows ||
                 !byId.TryAdd(id, grid) || !byGrid.Add(grid) || node.GetValueOrDefault("terrain", -1).AsInt32() is < 0 or > 7)
                 throw new InvalidOperationException("雾隐幽谷地图含有重复、越界或非法节点。");
         }
@@ -728,16 +1022,104 @@ public static class DynamicDungeonExpedition
             adjacency[from].Add(to);
             adjacency[to].Add(from);
         }
-        if (!byId.ContainsKey(EntryNodeId) || edges.Count < MapCellCount - 1)
+        if (!byId.ContainsKey(LegacyEntryNodeId) || edges.Count < LegacyMapCellCount - 1)
             throw new InvalidOperationException("雾隐幽谷入口或连通路线缺失。");
-        var visited = new HashSet<string>(StringComparer.Ordinal) { EntryNodeId };
-        var queue = new Queue<string>(); queue.Enqueue(EntryNodeId);
+        var visited = new HashSet<string>(StringComparer.Ordinal) { LegacyEntryNodeId };
+        var queue = new Queue<string>(); queue.Enqueue(LegacyEntryNodeId);
         while (queue.Count > 0)
             foreach (var next in adjacency[queue.Dequeue()])
                 if (visited.Add(next)) queue.Enqueue(next);
-        if (visited.Count != MapCellCount) throw new InvalidOperationException("雾隐幽谷地图不能从出口连通全部128格。");
+        if (visited.Count != LegacyMapCellCount) throw new InvalidOperationException("旧雾隐幽谷地图不能从入口连通全部128格。");
     }
 
-    private static string node_id(int x, int y) => "valley_" + x.ToString("D2") + "_" + y.ToString("D2");
+    private static void ValidateTowerLayout(GDictionary snapshot)
+    {
+        var nodes = snapshot.GetValueOrDefault("nodes", new GArray()).AsGodotArray();
+        var edges = snapshot.GetValueOrDefault("edges", new GArray()).AsGodotArray();
+        if (snapshot.GetValueOrDefault("template_id", "").AsString() != TemplateId ||
+            snapshot.GetValueOrDefault("columns", 0).AsInt32() != MapColumns ||
+            snapshot.GetValueOrDefault("rows", 0).AsInt32() != MapRows ||
+            snapshot.GetValueOrDefault("layers", 0).AsInt32() != TowerLayerCount ||
+            snapshot.GetValueOrDefault("entry_node_id", "").AsString() != EntryNodeId ||
+            snapshot.GetValueOrDefault("exit_node_id", "").AsString() != ExitNodeId ||
+            nodes.Count < TowerLayerCount * MinimumNodesPerLayer + 2 ||
+            nodes.Count > TowerLayerCount * MaximumNodesPerLayer + 2)
+            throw new InvalidOperationException("15层爬塔模板尺寸、出入口或节点数无效。");
+
+        var positions = new System.Collections.Generic.Dictionary<string, Vector2I>(StringComparer.Ordinal);
+        var byLayer = Enumerable.Range(1, TowerLayerCount).ToDictionary(layer => layer, _ => new HashSet<int>());
+        var outgoing = new System.Collections.Generic.Dictionary<string, List<string>>(StringComparer.Ordinal);
+        var incoming = new System.Collections.Generic.Dictionary<string, List<string>>(StringComparer.Ordinal);
+        foreach (var value in nodes)
+        {
+            if (value.VariantType != Variant.Type.Dictionary) throw new InvalidOperationException("爬塔节点数据无效。");
+            var node = value.AsGodotDictionary();
+            var id = node.GetValueOrDefault("id", "").AsString();
+            var x = node.GetValueOrDefault("x", -1).AsInt32();
+            var y = node.GetValueOrDefault("y", -1).AsInt32();
+            var type = node.GetValueOrDefault("content_type", "").AsString();
+            if (x < 0 || x >= MapColumns || y < 0 || y > TowerLayerCount + 1 ||
+                !positions.TryAdd(id, new Vector2I(x, y)) || node.GetValueOrDefault("terrain", -1).AsInt32() is < 0 or > 7)
+                throw new InvalidOperationException("爬塔地图含有重复、越界或非法节点。");
+            outgoing[id] = [];
+            incoming[id] = [];
+            if (id == EntryNodeId)
+            {
+                if (x != 3 || y != TowerLayerCount + 1 || type != "entry") throw new InvalidOperationException("爬塔入口坐标或类型无效。");
+            }
+            else if (id == ExitNodeId)
+            {
+                if (x != 3 || y != 0 || type != "exit") throw new InvalidOperationException("爬塔出口坐标或类型无效。");
+            }
+            else
+            {
+                var layer = TowerLayerCount - y + 1;
+                if (layer is < 1 or > TowerLayerCount || id != tower_node_id(layer, x) ||
+                    type is not (BattleNodeType or ResourceNodeType or RestNodeType) || !byLayer[layer].Add(x))
+                    throw new InvalidOperationException("爬塔层节点编号、类型或列位置无效。");
+                if (type == BattleNodeType && string.IsNullOrWhiteSpace(node.GetValueOrDefault("creature_id", "").AsString()))
+                    throw new InvalidOperationException("战斗节点没有固定遭遇生灵。");
+                if (type == ResourceNodeType && string.IsNullOrWhiteSpace(node.GetValueOrDefault("resource_id", "").AsString()))
+                    throw new InvalidOperationException("资源节点没有预设采集类型。");
+            }
+        }
+        if (!positions.ContainsKey(EntryNodeId) || !positions.ContainsKey(ExitNodeId))
+            throw new InvalidOperationException("爬塔出入口缺失。");
+        foreach (var layer in byLayer.Keys)
+            if (byLayer[layer].Count is < MinimumNodesPerLayer or > MaximumNodesPerLayer)
+                throw new InvalidOperationException($"爬塔第{layer}层节点数超出约定范围。");
+
+        var seenEdges = new HashSet<string>(StringComparer.Ordinal);
+        foreach (var value in edges)
+        {
+            if (value.VariantType != Variant.Type.Dictionary) throw new InvalidOperationException("爬塔连接数据无效。");
+            var edge = value.AsGodotDictionary();
+            var from = edge.GetValueOrDefault("from", "").AsString();
+            var to = edge.GetValueOrDefault("to", "").AsString();
+            if (!positions.TryGetValue(from, out var a) || !positions.TryGetValue(to, out var b) ||
+                a.Y != b.Y + 1 || Math.Abs(a.X - b.X) > 1 || !seenEdges.Add(from + "|" + to))
+                throw new InvalidOperationException("爬塔连接必须只通向相邻上层，且横向不超过一列。");
+            outgoing[from].Add(to);
+            incoming[to].Add(from);
+        }
+        var reachable = traverse(EntryNodeId, outgoing);
+        var canExit = traverse(ExitNodeId, incoming);
+        if (reachable.Count != nodes.Count || canExit.Count != nodes.Count)
+            throw new InvalidOperationException("爬塔存在入口不可达或没有通往出口的节点。");
+
+        static HashSet<string> traverse(string start, System.Collections.Generic.Dictionary<string, List<string>> graph)
+        {
+            var result = new HashSet<string>(StringComparer.Ordinal) { start };
+            var queue = new Queue<string>();
+            queue.Enqueue(start);
+            while (queue.Count > 0)
+                foreach (var next in graph[queue.Dequeue()])
+                    if (result.Add(next)) queue.Enqueue(next);
+            return result;
+        }
+    }
+
+    private static string tower_node_id(int layer, int column) => "tower_" + layer.ToString("D2") + "_" + column.ToString("D2");
+    private static string legacy_node_id(int x, int y) => "valley_" + x.ToString("D2") + "_" + y.ToString("D2");
     private static string edge_key(string from, string to) => string.CompareOrdinal(from, to) <= 0 ? from + "|" + to : to + "|" + from;
 }

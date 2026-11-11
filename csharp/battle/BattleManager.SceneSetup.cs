@@ -143,6 +143,10 @@ public partial class BattleManager : Node2D
             unit.SetMeta("combat_skill_slot_paths", snapshot.combat_skill_slot_paths);
             unit.SetMeta("combat_resolved_skills", snapshot.combat_resolved_skills.Duplicate(true));
             unit.SetMeta("combat_skill_slots_configured", snapshot.combat_skill_slots_configured);
+            if (snapshot.combat_board_catalog is not null)
+                unit.SetMeta("combat_board_catalog",snapshot.combat_board_catalog.Duplicate(true));
+            if (snapshot.combat_board_layout is not null)
+                unit.SetMeta("combat_board_layout", snapshot.combat_board_layout.CopyConfiguration());
             unit.SetMeta("combat_passive_paths", snapshot.combat_passive_paths);
             unit.SetMeta("combat_heart_method_upgrades", snapshot.combat_heart_method_upgrades);
             unit.SetMeta("battle_deck_configured", snapshot.battle_deck_configured);

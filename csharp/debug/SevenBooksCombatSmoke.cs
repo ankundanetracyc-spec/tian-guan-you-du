@@ -41,7 +41,8 @@ public partial class SevenBooksCombatSmoke : Node
             {
                 var book=Load<GongfaResource>($"res://resources/gongfa/{name}.tres");
                 Check(book.chapters.Count==4,"四卷："+name);
-                Check(book.chapters.Sum(c=>c.sub_deck_rewrites.Count)==4,"四项化法："+name);
+                var expectedRewrites = name == Cloud ? 1 : 4;
+                Check(book.chapters.Sum(c=>c.sub_deck_rewrites.Count)==expectedRewrites,"当前保留化法数量："+name);
                 Check(book.chapters.Sum(c=>c.learn_permanent_bonuses.GetValueOrDefault(name==Cloud?"sword_proficiency":name==Yu?"body_proficiency":"magic_proficiency",0).AsSingle())==3,"造诣奖励合计3："+name);
                 foreach(var chapter in book.chapters)
                 {
@@ -67,7 +68,7 @@ public partial class SevenBooksCombatSmoke : Node
                 learned.learned_gongfa_chapters[book.ResourcePath]=new Godot.Collections.Array<string>(book.chapters.Select(c=>c.get_id()));
                 var character=new Character();AddChild(character);character.load_from_data(learned);
                 var choices=character.get_skill_rewrite_choices().Where(c=>c.Source.StartsWith(name,StringComparison.Ordinal)).ToArray();
-                Check(choices.Length==4,"真实角色提供四卷化法来源："+name);
+                Check(choices.Length==expectedRewrites,"真实角色只提供现行化法来源："+name);
                 foreach(var choice in choices)
                 {
                     var available=character.get_skill_rewrite_candidates(choice.Id);
@@ -175,9 +176,6 @@ public partial class SevenBooksCombatSmoke : Node
             Check(runtime.CloudFollowUpLimit(cloud,triple,true)==3,"云岚使用自身三段，不叠加固定两段");
             Check(Mathf.IsEqualApprox(runtime.CloudFollowUpChance(cloud,triple,0),.8f)&&Mathf.IsEqualApprox(runtime.CloudFollowUpChance(cloud,triple,1),.6f)&&Mathf.IsEqualApprox(runtime.CloudFollowUpChance(cloud,triple,2),.4f),"递减概率与80%上限");
             Check(runtime.CloudFollowUpChance(cloud,triple,-1)==0&&runtime.CloudFollowUpChance(cloud,triple,3)==0,"概率索引越界返回0");
-            var cultivate=Skill(Cloud,"化法/养锋第1卷");cloud.consume_status_stacks("剑意",10);cloud.add_status(intent,-1,5);runtime.BeginRound(cloud);
-            runtime.AfterSwordIntentGain(cloud,cultivate,4);runtime.AfterSwordIntentGain(cloud,cultivate,4);
-            Check(cloud.get_status_stacks("剑意")==6,"养锋化法每回合只额外补1层");
             var info=CardPresentation.Face(triple,cloud);
             Check(!info.Contains("以C概率")&&!info.Contains("以D、E概率")&&info.Contains('%'),"技能详情解析概率字母与百分比");
             Check(Mathf.IsEqualApprox(CardRules.Evaluate("clamp(40% + 6×5%,40%,80%)",cloud),.7f),"百分比公式与clamp可计算");

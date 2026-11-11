@@ -26,6 +26,7 @@ public partial class BattleManager : Node2D
 
     private void InitializeRealtimeBattle()
     {
+        _boardEntryRejectionReason = "";
         _pendingZhouTianAutoCasts.Clear();
         _runningZhouTianAutoCasts.Clear();
         foreach (var unit in all_units)
@@ -39,6 +40,16 @@ public partial class BattleManager : Node2D
             foreach (var skill in loadout) if (skill.max_charges > 0) _skillCharges[unit][skill] = skill.max_charges;
             _energyRegen[unit] = 0;
             _enemyPlanTimers[unit] = 0;
+        }
+        if (TryInitializeCombatBoards(out var boardFailure)) return;
+        if (all_units.OfType<Beast>().Any())
+        {
+            _boardEntryRejectionReason = string.IsNullOrWhiteSpace(boardFailure)
+                ? "生灵没有完整的固定招式盘，未进入战斗。"
+                : boardFailure;
+            battle_running = false;
+            GD.PushWarning("BattleManager: " + _boardEntryRejectionReason);
+            return;
         }
         CallDeferred(nameof(BeginPlanningSegment));
     }
@@ -72,6 +83,23 @@ public partial class BattleManager : Node2D
             foreach (var item in value.AsGodotArray()) { var path = item.AsString(); if (!string.IsNullOrEmpty(path) && !paths.Contains(path)) paths.Add(path); }
         }
         AddMetaPaths("combat_skill_slot_paths");
+        if (unit is Beast beast)
+        {
+            if (paths.Count == 0) AddMetaPaths("active_skill_paths");
+            if (paths.Count == 0 && beast.beast_deck is not null)
+                foreach (var path in beast.beast_deck.get_deck_skills()) if (!string.IsNullOrWhiteSpace(path) && !paths.Contains(path)) paths.Add(path);
+            foreach (var path in paths)
+            {
+                var definition = ResourceLoader.Load<ActiveSkillData>(path);
+                if (definition is null || !Character.is_combat_skill_slot_eligible(definition)) continue;
+                var skill = definition.Duplicate() as ActiveSkillData ?? definition;
+                skill.combat_source_key = path;
+                skill.board_base_skill_path = path;
+                result.Add(skill);
+                if (result.Count >= CombatSlotCapacity) break;
+            }
+            return result;
+        }
         var slotConfigExplicit = unit.HasMeta("combat_skill_slots_configured") && unit.GetMeta("combat_skill_slots_configured").AsBool();
         if (paths.Count == 0 && !slotConfigExplicit && unit is Character character)
             foreach (var path in character.get_combat_skill_slot_paths()) if (!string.IsNullOrEmpty(path) && !paths.Contains(path)) paths.Add(path);
@@ -125,6 +153,7 @@ public partial class BattleManager : Node2D
 
     private void ProcessRealtimeBattle(float frames)
     {
+        if (_boardMode) { ProcessCombatBoards(frames); return; }
         if (_segmentPhase == SegmentPhase.Planning)
         {
             AdvancePlanning(frames);

@@ -19,11 +19,19 @@ public partial class SpatialInventoryNativeSmoke : Node
         try
         {
             using var player = Player();
-            Check(Character.InventoryRegions.Sum(r => r.Width*r.Height) == 120, "五区容量错误");
-            Check(player.add_item_to_inventory(Stone, 120), "120个灵石应可放入");
-            Check(player.get_spatial_inventory().Count == 120 && player.pack_counts.All(n => n == 1), "实际实例必须不堆叠");
-            Check(player.get_spatial_inventory().Select(i => i.InstanceId).Distinct().Count() == 120, "实例身份不唯一");
-            Check(player.get_inventory_occupied_cell_count() == 120, "满包占格错误");
+            Check(Character.InventorySlotCapacity == 200 && Character.InventoryRegions.Sum(r => r.Width*r.Height) == 200, "五区容量错误");
+            Check(player.add_item_to_inventory(Stone, Character.InventorySlotCapacity), "200个灵石应可放入");
+            Check(player.get_spatial_inventory().Count == Character.InventorySlotCapacity && player.pack_counts.All(n => n == 1), "实际实例必须不堆叠");
+            Check(player.get_spatial_inventory().Select(i => i.InstanceId).Distinct().Count() == Character.InventorySlotCapacity, "实例身份不唯一");
+            Check(player.get_inventory_occupied_cell_count() == Character.InventorySlotCapacity, "满包占格错误");
+            using var expanded = Player();
+            Check(expanded.add_item_to_inventory(Stone), "新增格测试物品入包失败");
+            var expandedStone = expanded.get_spatial_inventory().Single();
+            Check(expanded.move_spatial_item(expandedStone.InstanceId, "chest", 7, 4, 0), "新增胸前边缘格不可使用");
+            Check(expanded.move_spatial_item(expandedStone.InstanceId, "back", 7, 9, 0), "新增背囊边缘格不可使用");
+            Check(expanded.move_spatial_item(expandedStone.InstanceId, "sleeve-left", 2, 3, 0), "原有效坐标不可使用");
+            var retained = Fingerprint(expanded);
+            Check(expanded.add_item_to_inventory(Book) && Fingerprint(expanded).Split('|').Contains(retained), "扩格或加入物品改变原有效摆放");
             string original = Fingerprint(player); int called = 0;
             Check(!player.add_item_to_inventory(Stone), "满包仍可加物品");
             Check(Fingerprint(player) == original, "入包失败改变原库存");
@@ -33,8 +41,8 @@ public partial class SpatialInventoryNativeSmoke : Node
             Check(called == 1 && Fingerprint(player) == original, $"扣费失败改变原位置（回调{called}次，位置一致{Fingerprint(player) == original}，可交换{player.can_exchange_inventory(Batch(Stone,12),Batch(Book,1))}）");
             int notifications=0; player.InventoryChanged += _ => notifications++;
             Check(player.try_exchange_inventory(Batch(Stone, 12), Batch(Book, 1), beforeCommit: () => { called++; return true; }), "释放空间后交换应成功");
-            Check(player.get_inventory_total_count(Stone) == 108 && player.get_inventory_total_count(Book) == 1 && notifications == 1, "原子交换数量或通知错误");
-            Check(player.get_inventory_occupied_cell_count() == 114, "交换后占格错误");
+            Check(player.get_inventory_total_count(Stone) == Character.InventorySlotCapacity - 12 && player.get_inventory_total_count(Book) == 1 && notifications == 1, "原子交换数量或通知错误");
+            Check(player.get_inventory_occupied_cell_count() == Character.InventorySlotCapacity - 6, "交换后占格错误");
             using var moving = Player();
             Check(moving.add_item_to_inventory(Book, 2) && moving.add_item_to_inventory(Sword), "混装入包失败");
             var books = moving.get_spatial_inventory().Where(i => i.ItemPath == Book).ToArray();
@@ -42,7 +50,7 @@ public partial class SpatialInventoryNativeSmoke : Node
             var book = books[0]; var sword = moving.get_spatial_inventory().Single(i => i.ItemPath == Sword);
             Check(!moving.move_spatial_item(book.InstanceId, sword.RegionId, sword.X, sword.Y, 0), "碰撞未阻止");
             Check(!moving.move_spatial_item(book.InstanceId, "chest", -1, 0, 0), "负坐标未阻止");
-            Check(!moving.move_spatial_item(book.InstanceId, "sleeve-left", 1, 2, 1), "分区边界未阻止");
+            Check(!moving.move_spatial_item(book.InstanceId, "sleeve-left", 2, 4, 1), "分区边界未阻止");
             Check(moving.move_spatial_item(book.InstanceId, "back", 2, 0, 3), "合法旋转跨区移动失败");
             var rotated = moving.get_spatial_inventory().Single(i => i.InstanceId == book.InstanceId);
             Check(rotated.Width == 3 && rotated.Height == 2 && rotated.Rotation == 3, "旋转尺寸或朝向错误");
@@ -63,7 +71,7 @@ public partial class SpatialInventoryNativeSmoke : Node
             Check(!restored.add_artifact_to_inventory(unknown) && Fingerprint(restored) == unchanged, "不得猜测未知法宝占地或半入包");
             var initialized = Player(); AddChild(initialized);
             Check(initialized.add_item_to_inventory(Stone) && initialized.get_spatial_inventory().All(i => i.IsPlaced), "真实人物初始化或自带衣物占地失败");
-            Check(initialized.get_inventory_occupied_cell_count() <= 120, "新人物初始化溢出行囊");
+            Check(initialized.get_inventory_occupied_cell_count() <= Character.InventorySlotCapacity, "新人物初始化溢出行囊");
             initialized.Free(); player.Free(); moving.Free(); restored.Free();
             GD.Print($"SPATIAL_NATIVE_MODEL: {_checks} checks passed"); GetTree().Quit();
         }

@@ -72,16 +72,17 @@ public partial class NpcInteractionDirectionSmoke : Node
             Check(player.current_world_stamina == before - 1 && Read<System.Collections.Generic.IReadOnlyList<NpcSocialPresentationText.Line>>(dialogue, "_socialLines").Any(line => line.Rule == "player_accepted"), "接受来访未按原费用结算或方向反馈错误");
             CloseResult(dialogue);
 
-            foreach (var roots in new[] { 0, 1, 3, 5 })
+            var entryRank = typeof(MainScene).GetMethod("get_yuxu_entry_rank", BindingFlags.NonPublic | BindingFlags.Static)!;
+            foreach (var (roots, rank) in new[] { (0, ""), (1, "预备真传"), (2, "内门弟子"), (3, "外门弟子"), (4, "杂役"), (5, "杂役") })
             {
                 human.root_weights.Clear();
                 for (var index = 0; index < 5; index++) human.root_weights.Add(index < roots ? 1 : 0);
                 human.spirit_root_name = roots == 0 ? "无灵根" : roots == 1 ? "天灵根" : $"{roots}灵根";
-                var text = (string)Call(main, "get_yuxu_gate_aptitude_line", human)!;
-                Check(!text.Contains("神识") && (roots == 1 || text.Contains("灵识")), "金丹长老资质分流仍误用神识");
+                var savedRoots = (int)Call(main, "get_player_spirit_root_count")!;
+                Check(savedRoots == roots && (string)entryRank.Invoke(null, [savedRoots])! == rank, "入门身份未沿用已有灵根记录");
             }
             world.npcs.Remove(npc);
-            GD.Print("NPC_INTERACTION_DIRECTION PASS: formal menu without test entries, player approach/familiar chat/cancellation, NPC accept/decline, one-time cost, admission perception wording");
+            GD.Print("NPC_INTERACTION_DIRECTION PASS: formal menu without test entries, player approach/familiar chat/cancellation, NPC accept/decline, one-time cost, entry rank from saved roots");
             GetTree().Quit();
         }
         catch (Exception exception) { GD.PushError(exception.ToString()); GetTree().Quit(1); }

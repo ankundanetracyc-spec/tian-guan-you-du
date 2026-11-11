@@ -40,6 +40,13 @@ public partial class GameplayInputRouter : Node
             _rightPressActive = false;
             return;
         }
+        if (@event is InputEventMouseButton { ButtonIndex: MouseButton.Right } && HoverInfoManager.IsDragInProgress())
+        {
+            // Drag rotation belongs to the dragged control, not world back-navigation.
+            _rightPressActive = false;
+            _rightPressDragged = false;
+            return;
+        }
         if (GetTree().GetFirstNodeInGroup("action_transition") is ActionTransitionPanel { IsPlaying: true })
         {
             _rightPressActive = false;

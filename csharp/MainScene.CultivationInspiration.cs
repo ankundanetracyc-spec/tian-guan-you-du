@@ -84,7 +84,7 @@ public partial class MainScene
         if (!summary.GetValueOrDefault("player_victory", false).AsBool() ||
             summary.GetValueOrDefault("escaped", false).AsBool() ||
             context.GetValueOrDefault("is_training", false).AsBool() ||
-            kind is "yuxu_tianwen_practice" or "yuxu_npc_spar" ||
+            kind is "yuxu_tianwen_practice" or "yuxu_npc_spar" or "yuxu_provisional_exam_trial" ||
             (kind == "east_woods_npc_encounter" && !context.GetValueOrDefault("target_player", false).AsBool()))
             return;
         var battleId = summary.GetValueOrDefault("battle_id", "").AsString();

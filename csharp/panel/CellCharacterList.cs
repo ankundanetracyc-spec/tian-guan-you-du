@@ -326,12 +326,12 @@ public partial class CellCharacterList : Control
     private Button make_world_row(WorldNpcData npc)
     {
         var display = string.IsNullOrWhiteSpace(npc.npc_name) ? "无名" : npc.npc_name.Trim();
-        var identity = string.IsNullOrWhiteSpace(npc.formal_identity) ? "身份未详" : npc.formal_identity.Trim();
+        var identity = NpcPublicIdentity.Title(npc);
         var realm = string.IsNullOrWhiteSpace(npc.cultivation_realm) ? "凡人" : npc.cultivation_realm.Trim();
         var nowHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
         var activity = npc.is_in_seclusion_at_hour(nowHour) ? "闭关中" : npc.current_state;
         if (string.IsNullOrWhiteSpace(activity) || activity == "空闲") activity = "";
-        var subtitle = $"{identity}  ·  {realm}" + (activity.Length > 0 ? $"  ·  {activity}" : "");
+        var subtitle = (identity.Length > 0 ? identity + "  ·  " : "") + realm + (activity.Length > 0 ? $"  ·  {activity}" : "");
         return make_character_row(display, subtitle, portrait => portrait.CallDeferred("show_world_npc", npc), () => click(npc));
     }
 
@@ -480,7 +480,8 @@ public partial class CellCharacterList : Control
         if (_toggle_button is not null)
         {
             _toggle_button.Text = _expanded ? "◀" : "▶";
-            _toggle_button.TooltipText = _expanded ? "收起人物名单" : "展开人物名单";
+            _toggle_button.TooltipText = "";
+            HoverInfoManager.SetTooltip(_toggle_button, "");
             _toggle_button.Size = new Vector2(30, 48);
             _toggle_button.ZIndex = 1;
             var targetPosition = new Vector2(_expanded ? PanelWidth : 0, (_expanded_height - _toggle_button.Size.Y) * .5f);

@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using GDictionary = Godot.Collections.Dictionary;
 
 /// <summary>Authored East Woods encounters. Event outcomes are independent from battle victory.</summary>
@@ -81,18 +82,25 @@ public static partial class ForestWolfEvent
         var chance = Chance(record, choice, player);
         var approach = choice == "observe" ? "凝神细察，辨清它的动静与迟疑。" : "站稳身形，以沉稳的声势迫它退让。";
         var effects = choice == "observe" ? "成功后驱赶机会提高15个百分点；失败后降低10个百分点。" : "成功将狼驱离，不获得击杀奖励；失败后仍可迎战或退开。";
-        var text = $"{approach}\n耗时0.5小时 · 精力1\n{effects}";
-        if (PlayerInfoText.Mode == PlayerInfoText.InformationMode.Detailed)
-        {
-            text += $"\n成功率 {Math.Round(chance * 100, MidpointRounding.AwayFromZero):0}%";
-            var wolf = Wolf(record)!;
-            var a = choice == "observe" ? .7 * player.soul + .3 * player.intelligence : .6 * player.physique + .4 * player.soul;
-            var b = choice == "observe" ? wolf.soul : .6 * wolf.physique + .4 * wolf.soul;
-            var modifier = choice == "observe" ? 0 : record.GetValueOrDefault("observation", "").AsString() switch { "success" => 15, "failure" => -10, _ => 0 };
-            text += $"\n（{(choice == "observe" ? "0.7×神魂＋0.3×灵慧" : "0.6×体魄＋0.4×神魂")} = {a:0.##}；对方对应值 {b:0.##}；100×{a:0.##}÷({a:0.##}＋{b:0.##}){modifier:+0;-0;+0}，限制到5%～95%）";
-        }
-        return text;
+        var wolf = Wolf(record)!;
+        var a = choice == "observe" ? .7 * player.soul + .3 * player.intelligence : .6 * player.physique + .4 * player.soul;
+        var b = choice == "observe" ? wolf.soul : .6 * wolf.physique + .4 * wolf.soul;
+        var modifier = choice == "observe" ? 0 : record.GetValueOrDefault("observation", "").AsString() switch { "success" => 15, "failure" => -10, _ => 0 };
+        var playerFormula = choice == "observe"
+            ? $"神魂[{HintNumber(player.soul)}]×0.7＋灵慧[{HintNumber(player.intelligence)}]×0.3"
+            : $"体魄[{HintNumber(player.physique)}]×0.6＋神魂[{HintNumber(player.soul)}]×0.4";
+        var wolfFormula = choice == "observe" ? $"凶狼神魂[{HintNumber(wolf.soul)}]"
+            : $"凶狼体魄[{HintNumber(wolf.physique)}]×0.6＋凶狼神魂[{HintNumber(wolf.soul)}]×0.4";
+        var adjustment = modifier > 0 ? $"＋{modifier}%" : modifier < 0 ? $"－{-modifier}%" : "";
+        var percent = Math.Round(chance * 100, MidpointRounding.AwayFromZero).ToString("0", CultureInfo.InvariantCulture);
+        // Keep the complete source independent of the selected display mode. The
+        // shared hover reader hides this block in simple mode and can restore it later.
+        return $"{approach}\n耗时0.5小时 · 精力1\n{effects}\n\n计算来源\n"
+            + $"人物评分：{HintNumber(a)} = {playerFormula}\n\n"
+            + $"凶狼评分：{HintNumber(b)} = {wolfFormula}\n\n"
+            + $"成功率：{percent}% = min(95%,max(5%,人物评分[{HintNumber(a)}]÷(人物评分[{HintNumber(a)}]＋凶狼评分[{HintNumber(b)}])×100%{adjustment}))";
     }
+    private static string HintNumber(double value) => value.ToString("0.##", CultureInfo.InvariantCulture);
     private static Page DescribeBase(GDictionary record, BattleEntityData player)
     {
         var stage = record.GetValueOrDefault("stage", "opening").AsString();

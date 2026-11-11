@@ -8,6 +8,7 @@ public partial class QueueCombatRestorationSmoke : Node
     private const string Heavy = "res://resources/activeskills/痛击.tres";
     private const string Guard = "res://resources/activeskills/架招.tres";
     private const string Book = "res://resources/gongfa/玄枢含章经.tres";
+    private const string RewriteBook = "res://resources/gongfa/百骸衍枝化生宝册.tres";
     private const BindingFlags Private = BindingFlags.Instance | BindingFlags.NonPublic;
     private InfoPanel _panel = null!;
     private Character _owner = null!;
@@ -71,11 +72,13 @@ public partial class QueueCombatRestorationSmoke : Node
             DirAccess.MakeDirRecursiveAbsolute(ProjectSettings.GlobalizePath(_scratch));
             GetWindow().ContentScaleSize = new Vector2I(1672, 941); GetWindow().Size = new Vector2I(1672, 941);
             var book = GD.Load<GongfaResource>(Book);
+            var rewriteBook = GD.Load<GongfaResource>(RewriteBook);
             var data = new HumanData { entity_name = "回合战斗还原验收", cultivation_realm = "云息九层",
-                main_gongfa_path = Book, learned_gongfa_paths = [Book], base_physique = 12, base_intelligence = 12, base_soul = 12,
+                main_gongfa_path = Book, sub_gongfa_paths = [RewriteBook], learned_gongfa_paths = [Book, RewriteBook], base_physique = 12, base_intelligence = 12, base_soul = 12,
                 spirit_root_type = (int)GongfaResource.Wuxing.METAL_WOOD_WATER, spirit_root_name = "三灵根", root_weights = [34, 33, 33, 0, 0],
                 action_combat_skill_slots_configured = true, action_combat_skill_slot_paths = [Heavy, Guard, "", "", ""] };
             data.learned_gongfa_chapters[Book] = new Godot.Collections.Array<string>(book.get_sorted_chapters().Select(chapter => chapter.get_id()));
+            data.learned_gongfa_chapters[RewriteBook] = new Godot.Collections.Array<string>(rewriteBook.get_sorted_chapters().Select(chapter => chapter.get_id()));
             _owner = new Character { entity_data = data, Visible = false }; AddChild(_owner);
             _owner.set_combat_skill_slot_paths([Attack, "", Heavy]);
             var initial = _owner.get_combat_skill_slot_paths().ToArray(); var historicalAction = data.action_combat_skill_slot_paths.ToArray();
@@ -94,14 +97,14 @@ public partial class QueueCombatRestorationSmoke : Node
             Check(_owner.get_combat_skill_slot_paths()[0] == Heavy && _owner.get_combat_skill_slot_paths()[2] == Attack, "真实拖拽交换已有技能");
             await Drag(Slot(1), Slot(9));
             Check(_owner.get_combat_skill_slot_paths()[1] == Guard && _owner.get_combat_skill_slot_paths()[9] == "", "玄枢第十槽拒绝应对技能");
-            var choice = _owner.get_skill_rewrite_choices().Single(item => item.Available && item.Source.StartsWith("玄枢含章经") && item.Title == "架招化法");
+            var choice = _owner.get_skill_rewrite_choices().Single(item => item.Available && item.Source.StartsWith("百骸衍枝化生宝册") && item.Title == "架招化法");
             var rows = (Dictionary<string, Button>)typeof(InfoPanel).GetField("_skillRewriteSourceRows", Private)!.GetValue(_panel)!;
             var source = rows[choice.Id];
             var sourceScroll = Find<ScrollContainer>("RewriteSourceListScroll"); sourceScroll.EnsureControlVisible(source); await Frames();
             await Drag(source, Slot(1), hold: true);
             Check(_owner.get_skill_rewrite_binding(choice) == Guard, "真实长按拖拽恢复化法显式绑定");
             Check(Slot(1).FindChild("SkillRewriteBadge", true, false) is not null, "已绑定技能显示化法标记");
-            Check(_owner.get_snapshot_data().combat_resolved_skills.Any(skill => skill is not null && skill.gongfa_rewrite_effect_ids.Contains("xuan_shu_c3_jiazhao")), "绑定进入原战斗快照");
+            Check(_owner.get_snapshot_data().combat_resolved_skills.Any(skill => skill is not null && skill.gongfa_rewrite_effect_ids.Contains("baihai_c4_jiazhao")), "绑定进入原战斗快照");
             Fits(); await Capture("十槽与化法_1672");
             await Click(Slot(1));
             Check(_owner.get_combat_skill_slot_paths()[1] == "" && _owner.get_skill_rewrite_binding(choice) == Guard, "卸下只清空原槽且保留化法来源绑定");

@@ -12,6 +12,7 @@ public static class NpcCombatBuildPlanner
     public static void ImportLearning(WorldNpcData npc, HumanData data)
     {
         data.unlocked_skill_node_ids=npc.unlocked_skill_node_ids.Duplicate();
+        data.legacy_learned_combat_skill_paths=npc.legacy_learned_combat_skill_paths.Duplicate();
         foreach (var id in npc.learned_gongfa_ids)
             if (ResolveBook(id) is { } book && !data.learned_gongfa_paths.Contains(book.ResourcePath))
                 data.learned_gongfa_paths.Add(book.ResourcePath);
@@ -42,16 +43,12 @@ public static class NpcCombatBuildPlanner
         return data;
     }
 
-    /// <summary>测试全卷配置仍走角色的化法合并与辅修左右支规则。</summary>
+    /// <summary>测试全卷配置走角色的已学卷章化法合并规则。</summary>
     public static void ResolveTestLoadout(BattleEntityData unit)
     {
         var books=new[]{unit.main_gongfa_path}.Concat(unit.sub_gongfa_paths).Select(ResolveBook).OfType<GongfaResource>().ToArray();
         var data=TestLearning(books);
         data.main_gongfa_path=unit.main_gongfa_path;data.sub_gongfa_paths=unit.sub_gongfa_paths.Duplicate();
-        foreach(var book in books.Where(book=>unit.sub_gongfa_paths.Contains(book.ResourcePath)))
-        foreach(var chapter in book.get_sorted_chapters())
-            data.equipped_gongfa_chapter_routes[book.ResourcePath+":"+chapter.get_id()]=
-                chapter.get_deck_rewrites(false).Any(rewrite=>rewrite.enabled)?"right":"left";
         var actor=new Character();actor.load_from_data(data);
         // 同一次装配只构造一次技能池，持有资源至复制完成。
         // 逐槽调用角色完整快照会反复重建/回收整套 C# Resource，触发原生句柄回收竞态。
@@ -71,6 +68,7 @@ public static class NpcCombatBuildPlanner
         }
         // 存档/测试选项仍保存原引用；只有运行时副本应用化法。
         unit.combat_resolved_skills=resolved;
+        unit.combat_board_catalog=CombatBoardCatalog.FromCharacter(actor);
         unit.combat_passive_paths=actor.get_combat_passive_paths();
         unit.combat_heart_method_upgrades=actor.get_combat_heart_method_upgrades();
         unit.combat_tempering_by_gongfa=actor.get_active_combat_tempering_by_gongfa();
@@ -95,9 +93,6 @@ public static class NpcCombatBuildPlanner
         foreach (var book in subs.OrderByDescending(book => SubValue(actor, main, book)).Take(actor.max_sub_slots))
         {
             actor.add_sub_gongfa(book);
-            foreach (var chapter in book.get_sorted_chapters().Where(chapter => actor.is_gongfa_chapter_learned(book, chapter.get_id())))
-                actor.set_sub_gongfa_chapter_route(book, chapter.get_id(),
-                    chapter.get_deck_rewrites(false).Any(rewrite => rewrite.enabled) ? "right" : "left");
         }
         // 换主辅修会刷新派生属性；不能把测试资源上限或世界角色当前生命重置。
         actor.max_health=resources.max_health;actor.current_health=resources.current_health;

@@ -2,13 +2,35 @@ using Godot;
 
 public partial class Creature
 {
-    private int _shieldValue, _qiBloodValue, _bloodFurnaceValue;
+    private int _qiBloodValue, _bloodFurnaceValue;
+    private readonly FormationShieldLedger _shieldSources = new();
+    private bool _shieldFeedbackSubscribed;
+
+    // 首次取得账本时订阅，未入树的隔离人物和直接来源写入也走同一反馈入口。
+    public FormationShieldLedger ShieldSources
+    {
+        get
+        {
+            if (!_shieldFeedbackSubscribed)
+            {
+                _shieldFeedbackSubscribed = true;
+                _shieldSources.Changed += OnShieldSourcesChanged;
+            }
+            return _shieldSources;
+        }
+    }
+
+    private void OnShieldSourcesChanged(int oldTotal, int newTotal)
+    {
+        if (GodotObject.IsInstanceValid(this) && newTotal > oldTotal)
+            ReportBattleStatusGain("护盾", newTotal - oldTotal);
+    }
 
     // 捕获实际增量，覆盖技能、心法、受击触发与周期效果的所有写入入口。
     public int shield
     {
-        get => _shieldValue;
-        set { var gain = value - _shieldValue; _shieldValue = value; ReportBattleStatusGain("护盾", gain); }
+        get => ShieldSources.Total;
+        set => ShieldSources.SetLegacyTotal(value);
     }
     public int qi_blood
     {

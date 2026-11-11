@@ -1,0 +1,828 @@
+[
+  {
+    "source": "docs/plans/界面与美术/参考归墟行单一移动步态_20261104.md",
+    "target": "docs/美术规范/鬼谷原作网格与素材重构_20261104/README.md",
+    "raw": "../../美术规范/鬼谷原作网格与素材重构_20261104/README.md",
+    "text": "[鬼谷原作网格与素材重构](../../美术规范/鬼谷原作网格与素材重构_20261104/README.md)",
+    "line": 47
+  },
+  {
+    "source": "docs/美术规范/局内人物高清水墨装配标准_20261104.md",
+    "target": "docs/美术规范/鬼谷原作网格与素材重构_20261104/本轮实装",
+    "raw": "鬼谷原作网格与素材重构_20261104/本轮实装/",
+    "text": "[本轮实装目录](鬼谷原作网格与素材重构_20261104/本轮实装/)",
+    "line": 78
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/rig/portrait_rig_v2.json",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/rig/portrait_rig_v2.json",
+    "text": "[固定几何模板 V2](../../mods/appearance/approved_portrait_split_20261002_v2/rig/portrait_rig_v2.json)",
+    "line": 13
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/rig/rig_qa_report.json",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/rig/rig_qa_report.json",
+    "text": "[拼接检查](../../mods/appearance/approved_portrait_split_20261002_v2/rig/rig_qa_report.json)",
+    "line": 19
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/preview/portraits_light.png",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/preview/portraits_light.png",
+    "text": "[男女完整组合](../../mods/appearance/approved_portrait_split_20261002_v2/preview/portraits_light.png)",
+    "line": 21
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/preview/skin_edge_review.png",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/preview/skin_edge_review.png",
+    "text": "[颌颈轮廓修稿](../../mods/appearance/approved_portrait_split_20261002_v2/preview/skin_edge_review.png)",
+    "line": 21
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/preview/fixed_anchor_review.png",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/preview/fixed_anchor_review.png",
+    "text": "[固定模板](../../mods/appearance/approved_portrait_split_20261002_v2/preview/fixed_anchor_review.png)",
+    "line": 21
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/preview/collar_comparison.png",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/preview/collar_comparison.png",
+    "text": "[领口对照](../../mods/appearance/approved_portrait_split_20261002_v2/preview/collar_comparison.png)",
+    "line": 21
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/preview/male_front_ear_review.png",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/preview/male_front_ear_review.png",
+    "text": "[前发盖耳](../../mods/appearance/approved_portrait_split_20261002_v2/preview/male_front_ear_review.png)",
+    "line": 21
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/index.html",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/index.html",
+    "text": "[可切换预览](../../mods/appearance/approved_portrait_split_20261002_v2/index.html)",
+    "line": 21
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2",
+    "text": "[`approved_portrait_split_20261002_v2/`](../../mods/appearance/approved_portrait_split_20261002_v2)",
+    "line": 24
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/reference/male_clothing_final_authority_v10.png",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/reference/male_clothing_final_authority_v10.png",
+    "text": "[`male_clothing_final_authority_v10.png`](../../mods/appearance/approved_portrait_split_20261002_v2/reference/male_clothing_final_authority_v10.png)",
+    "line": 25
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/preview/male_clothing_authority_review.png",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/preview/male_clothing_authority_review.png",
+    "text": "[指定衣服与当前素材](../../mods/appearance/approved_portrait_split_20261002_v2/preview/male_clothing_authority_review.png)",
+    "line": 25
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/preview/face_seam_review.png",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/preview/face_seam_review.png",
+    "text": "[实际拼合放大对照](../../mods/appearance/approved_portrait_split_20261002_v2/preview/face_seam_review.png)",
+    "line": 27
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/preview/portraits_light.png",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/preview/portraits_light.png",
+    "text": "[浅底](../../mods/appearance/approved_portrait_split_20261002_v2/preview/portraits_light.png)",
+    "line": 27
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/preview/portraits_dark.png",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/preview/portraits_dark.png",
+    "text": "[深底](../../mods/appearance/approved_portrait_split_20261002_v2/preview/portraits_dark.png)",
+    "line": 27
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/preview/collar_comparison.png",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/preview/collar_comparison.png",
+    "text": "[领口](../../mods/appearance/approved_portrait_split_20261002_v2/preview/collar_comparison.png)",
+    "line": 27
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/qa_report.json",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/qa_report.json",
+    "text": "[`qa_report.json`](../../mods/appearance/approved_portrait_split_20261002_v2/qa_report.json)",
+    "line": 28
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/index.html",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/index.html",
+    "text": "[可切换预览](../../mods/appearance/approved_portrait_split_20261002_v2/index.html)",
+    "line": 29
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/portrait_manifest.json",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/portrait_manifest.json",
+    "text": "[素材清单](../../mods/appearance/approved_portrait_split_20261002_v2/portrait_manifest.json)",
+    "line": 29
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/generation_manifest.json",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/generation_manifest.json",
+    "text": "[提示词与选用来源](../../mods/appearance/approved_portrait_split_20261002_v2/generation_manifest.json)",
+    "line": 29
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v1/reference",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v1/reference/",
+    "text": "[`reference/`](../../mods/appearance/approved_portrait_split_20261002_v1/reference/)",
+    "line": 34
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v1/female",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v1/female/",
+    "text": "[`female/`](../../mods/appearance/approved_portrait_split_20261002_v1/female/)",
+    "line": 37
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v1/male",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v1/male/",
+    "text": "[`male/`](../../mods/appearance/approved_portrait_split_20261002_v1/male/)",
+    "line": 37
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v1/preview/portraits_light.png",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v1/preview/portraits_light.png",
+    "text": "[完整浅底](../../mods/appearance/approved_portrait_split_20261002_v1/preview/portraits_light.png)",
+    "line": 37
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v1/preview/portraits_dark.png",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v1/preview/portraits_dark.png",
+    "text": "[完整深底](../../mods/appearance/approved_portrait_split_20261002_v1/preview/portraits_dark.png)",
+    "line": 37
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v1/preview/sleeve_comparison.png",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v1/preview/sleeve_comparison.png",
+    "text": "[袖子前后](../../mods/appearance/approved_portrait_split_20261002_v1/preview/sleeve_comparison.png)",
+    "line": 37
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v1/preview/head_comparison.png",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v1/preview/head_comparison.png",
+    "text": "[确认头脸与拆件](../../mods/appearance/approved_portrait_split_20261002_v1/preview/head_comparison.png)",
+    "line": 37
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v1/preview/hair_layers.png",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v1/preview/hair_layers.png",
+    "text": "[前后发检查](../../mods/appearance/approved_portrait_split_20261002_v1/preview/hair_layers.png)",
+    "line": 37
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v1/index.html",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v1/index.html",
+    "text": "[`index.html`](../../mods/appearance/approved_portrait_split_20261002_v1/index.html)",
+    "line": 37
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v1/qa_report.json",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v1/qa_report.json",
+    "text": "[`qa_report.json`](../../mods/appearance/approved_portrait_split_20261002_v1/qa_report.json)",
+    "line": 38
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v1/portrait_manifest.json",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v1/portrait_manifest.json",
+    "text": "[`portrait_manifest.json`](../../mods/appearance/approved_portrait_split_20261002_v1/portrait_manifest.json)",
+    "line": 38
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v1/generation_manifest.json",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v1/generation_manifest.json",
+    "text": "[`generation_manifest.json`](../../mods/appearance/approved_portrait_split_20261002_v1/generation_manifest.json)",
+    "line": 38
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/head_material_review_20261002_v1/reference/female_geometry_approved.png",
+    "raw": "../../mods/appearance/head_material_review_20261002_v1/reference/female_geometry_approved.png",
+    "text": "[`female_geometry_approved.png`](../../mods/appearance/head_material_review_20261002_v1/reference/female_geometry_approved.png)",
+    "line": 42
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/head_material_review_20261002_v1/female/ink_portrait.png",
+    "raw": "../../mods/appearance/head_material_review_20261002_v1/female/ink_portrait.png",
+    "text": "[`female/ink_portrait.png`](../../mods/appearance/head_material_review_20261002_v1/female/ink_portrait.png)",
+    "line": 43
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/head_material_review_20261002_v1/male/bald_portrait.png",
+    "raw": "../../mods/appearance/head_material_review_20261002_v1/male/bald_portrait.png",
+    "text": "[`male/bald_portrait.png`](../../mods/appearance/head_material_review_20261002_v1/male/bald_portrait.png)",
+    "line": 44
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/head_material_review_20261002_v1/male/face_0.png",
+    "raw": "../../mods/appearance/head_material_review_20261002_v1/male/face_0.png",
+    "text": "[`male/face_0.png`](../../mods/appearance/head_material_review_20261002_v1/male/face_0.png)",
+    "line": 44
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/head_material_review_20261002_v1/preview/style_comparison.png",
+    "raw": "../../mods/appearance/head_material_review_20261002_v1/preview/style_comparison.png",
+    "text": "[女性原参考／轻水墨／男性光头](../../mods/appearance/head_material_review_20261002_v1/preview/style_comparison.png)",
+    "line": 45
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/head_material_review_20261002_v1/preview/male_head_review.png",
+    "raw": "../../mods/appearance/head_material_review_20261002_v1/preview/male_head_review.png",
+    "text": "[男性原图／光头／独立皮肤](../../mods/appearance/head_material_review_20261002_v1/preview/male_head_review.png)",
+    "line": 45
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/head_material_review_20261002_v1/generation_manifest.json",
+    "raw": "../../mods/appearance/head_material_review_20261002_v1/generation_manifest.json",
+    "text": "[`generation_manifest.json`](../../mods/appearance/head_material_review_20261002_v1/generation_manifest.json)",
+    "line": 45
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/head_shape_rebuild_20261001_v1/reference/female_ear_authority_20261002.png",
+    "raw": "../../mods/appearance/head_shape_rebuild_20261001_v1/reference/female_ear_authority_20261002.png",
+    "text": "[`female_ear_authority_20261002.png`](../../mods/appearance/head_shape_rebuild_20261001_v1/reference/female_ear_authority_20261002.png)",
+    "line": 50
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/head_shape_rebuild_20261001_v1/female/ear_0.png",
+    "raw": "../../mods/appearance/head_shape_rebuild_20261001_v1/female/ear_0.png",
+    "text": "[`female/ear_0.png`](../../mods/appearance/head_shape_rebuild_20261001_v1/female/ear_0.png)",
+    "line": 51
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/head_shape_rebuild_20261001_v1/preview/female_ear_correction_20261002.png",
+    "raw": "../../mods/appearance/head_shape_rebuild_20261001_v1/preview/female_ear_correction_20261002.png",
+    "text": "[第二张参照／修正前／修正后](../../mods/appearance/head_shape_rebuild_20261001_v1/preview/female_ear_correction_20261002.png)",
+    "line": 52
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/head_shape_rebuild_20261001_v1/qa_report.json",
+    "raw": "../../mods/appearance/head_shape_rebuild_20261001_v1/qa_report.json",
+    "text": "[`qa_report.json`](../../mods/appearance/head_shape_rebuild_20261001_v1/qa_report.json)",
+    "line": 52
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/head_shape_rebuild_20261001_v1/female_ear_revision_20261002_v3.json",
+    "raw": "../../mods/appearance/head_shape_rebuild_20261001_v1/female_ear_revision_20261002_v3.json",
+    "text": "[`female_ear_revision_20261002_v3.json`](../../mods/appearance/head_shape_rebuild_20261001_v1/female_ear_revision_20261002_v3.json)",
+    "line": 53
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/head_shape_rebuild_20261001_v1/reference",
+    "raw": "../../mods/appearance/head_shape_rebuild_20261001_v1/reference/",
+    "text": "[`head_shape_rebuild_20261001_v1/reference/`](../../mods/appearance/head_shape_rebuild_20261001_v1/reference/)",
+    "line": 57
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/head_shape_rebuild_20261001_v1/female",
+    "raw": "../../mods/appearance/head_shape_rebuild_20261001_v1/female/",
+    "text": "[`female/`](../../mods/appearance/head_shape_rebuild_20261001_v1/female/)",
+    "line": 60
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/head_shape_rebuild_20261001_v1/male",
+    "raw": "../../mods/appearance/head_shape_rebuild_20261001_v1/male/",
+    "text": "[`male/`](../../mods/appearance/head_shape_rebuild_20261001_v1/male/)",
+    "line": 60
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/head_shape_rebuild_20261001_v1/preview/head_review.png",
+    "raw": "../../mods/appearance/head_shape_rebuild_20261001_v1/preview/head_review.png",
+    "text": "[原图／光头组合／独立皮肤对照](../../mods/appearance/head_shape_rebuild_20261001_v1/preview/head_review.png)",
+    "line": 60
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/head_shape_rebuild_20261001_v1/preview/parts_dark.png",
+    "raw": "../../mods/appearance/head_shape_rebuild_20261001_v1/preview/parts_dark.png",
+    "text": "[深底部件检查](../../mods/appearance/head_shape_rebuild_20261001_v1/preview/parts_dark.png)",
+    "line": 60
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/head_shape_rebuild_20261001_v1/qa_report.json",
+    "raw": "../../mods/appearance/head_shape_rebuild_20261001_v1/qa_report.json",
+    "text": "[`qa_report.json`](../../mods/appearance/head_shape_rebuild_20261001_v1/qa_report.json)",
+    "line": 60
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/head_shape_rebuild_20261001_v1/generation_manifest.json",
+    "raw": "../../mods/appearance/head_shape_rebuild_20261001_v1/generation_manifest.json",
+    "text": "[`generation_manifest.json`](../../mods/appearance/head_shape_rebuild_20261001_v1/generation_manifest.json)",
+    "line": 61
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/head_shape_rebuild_20261001_v1/alignment.json",
+    "raw": "../../mods/appearance/head_shape_rebuild_20261001_v1/alignment.json",
+    "text": "[`alignment.json`](../../mods/appearance/head_shape_rebuild_20261001_v1/alignment.json)",
+    "line": 61
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/head_contour_reference_20261001",
+    "raw": "../../mods/appearance/head_contour_reference_20261001/",
+    "text": "[`head_contour_reference_20261001/`](../../mods/appearance/head_contour_reference_20261001/)",
+    "line": 65
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/腰上男修拆件演示_v2/test_sources/hair_clean_full_1.png",
+    "raw": "../../mods/appearance/腰上男修拆件演示_v2/test_sources/hair_clean_full_1.png",
+    "text": "[`test_sources/hair_clean_full_1.png`](../../mods/appearance/腰上男修拆件演示_v2/test_sources/hair_clean_full_1.png)",
+    "line": 67
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/腰上男修拆件演示_v2/test_assets_green_reference_v1",
+    "raw": "../../mods/appearance/腰上男修拆件演示_v2/test_assets_green_reference_v1/",
+    "text": "[`test_assets_green_reference_v1/`](../../mods/appearance/腰上男修拆件演示_v2/test_assets_green_reference_v1/)",
+    "line": 68
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/腰上女修拆件演示_v1/test_assets_green_reference_v1",
+    "raw": "../../mods/appearance/腰上女修拆件演示_v1/test_assets_green_reference_v1/",
+    "text": "[`test_assets_green_reference_v1/`](../../mods/appearance/腰上女修拆件演示_v1/test_assets_green_reference_v1/)",
+    "line": 68
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/reference_face_sample_20260930",
+    "raw": "../../mods/appearance/reference_face_sample_20260930/",
+    "text": "[`reference_face_sample_20260930/`](../../mods/appearance/reference_face_sample_20260930/)",
+    "line": 75
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/reference_face_sample_20260930/face_comparison.png",
+    "raw": "../../mods/appearance/reference_face_sample_20260930/face_comparison.png",
+    "text": "[`眉毛上移前后对照`](../../mods/appearance/reference_face_sample_20260930/face_comparison.png)",
+    "line": 76
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/reference_face_sample_20260930/generation_manifest.json",
+    "raw": "../../mods/appearance/reference_face_sample_20260930/generation_manifest.json",
+    "text": "[`generation_manifest.json`](../../mods/appearance/reference_face_sample_20260930/generation_manifest.json)",
+    "line": 76
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/腰上男修拆件演示_v2/reference/user_selected_portrait.png",
+    "raw": "../../mods/appearance/腰上男修拆件演示_v2/reference/user_selected_portrait.png",
+    "text": "[user_selected_portrait.png](../../mods/appearance/腰上男修拆件演示_v2/reference/user_selected_portrait.png)",
+    "line": 99
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/腰上男修拆件演示_v2/reference/brow_eye_distance_reference.jpg",
+    "raw": "../../mods/appearance/腰上男修拆件演示_v2/reference/brow_eye_distance_reference.jpg",
+    "text": "[brow_eye_distance_reference.jpg](../../mods/appearance/腰上男修拆件演示_v2/reference/brow_eye_distance_reference.jpg)",
+    "line": 99
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/腰上男修拆件演示_v2/index.html",
+    "raw": "../../mods/appearance/腰上男修拆件演示_v2/index.html",
+    "text": "[index.html](../../mods/appearance/腰上男修拆件演示_v2/index.html)",
+    "line": 100
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/腰上男修拆件演示_v2/preview/facial_composer/index.html",
+    "raw": "../../mods/appearance/腰上男修拆件演示_v2/preview/facial_composer/index.html",
+    "text": "[五官演示](../../mods/appearance/腰上男修拆件演示_v2/preview/facial_composer/index.html)",
+    "line": 104
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/腰上男修拆件演示_v2/index.html",
+    "raw": "../../mods/appearance/腰上男修拆件演示_v2/index.html",
+    "text": "[全层切换页](../../mods/appearance/腰上男修拆件演示_v2/index.html)",
+    "line": 104
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/腰上男修拆件演示_v2/preview/appearance_variants/appearance_variants.png",
+    "raw": "../../mods/appearance/腰上男修拆件演示_v2/preview/appearance_variants/appearance_variants.png",
+    "text": "[外观方向试稿](../../mods/appearance/腰上男修拆件演示_v2/preview/appearance_variants/appearance_variants.png)",
+    "line": 104
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/腰上男修拆件演示_v2/preview/facial_composer/placement.json",
+    "raw": "../../mods/appearance/腰上男修拆件演示_v2/preview/facial_composer/placement.json",
+    "text": "[锚点记录](../../mods/appearance/腰上男修拆件演示_v2/preview/facial_composer/placement.json)",
+    "line": 104
+  },
+  {
+    "source": "docs/美术规范/模块化角色立绘系统.md",
+    "target": "mods/appearance/腰上女修拆件演示_v1/README.md",
+    "raw": "../../mods/appearance/腰上女修拆件演示_v1/README.md",
+    "text": "[`腰上女修拆件演示_v1`](../../mods/appearance/腰上女修拆件演示_v1/README.md)",
+    "line": 114
+  },
+  {
+    "source": "docs/美术规范/立绘拼接锚点与换款模板.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/rig/portrait_rig_v2.json",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/rig/portrait_rig_v2.json",
+    "text": "[固定 rig](../../mods/appearance/approved_portrait_split_20261002_v2/rig/portrait_rig_v2.json)",
+    "line": 11
+  },
+  {
+    "source": "docs/美术规范/立绘拼接锚点与换款模板.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/rig/rig_qa_report.json",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/rig/rig_qa_report.json",
+    "text": "[检查记录](../../mods/appearance/approved_portrait_split_20261002_v2/rig/rig_qa_report.json)",
+    "line": 83
+  },
+  {
+    "source": "docs/美术规范/立绘拼接锚点与换款模板.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/preview/fixed_anchor_review.png",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/preview/fixed_anchor_review.png",
+    "text": "[拼接模板预览](../../mods/appearance/approved_portrait_split_20261002_v2/preview/fixed_anchor_review.png)",
+    "line": 89
+  },
+  {
+    "source": "docs/美术规范/立绘拼接锚点与换款模板.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/preview/collar_comparison.png",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/preview/collar_comparison.png",
+    "text": "[两套领口重绘对照](../../mods/appearance/approved_portrait_split_20261002_v2/preview/collar_comparison.png)",
+    "line": 89
+  },
+  {
+    "source": "docs/美术规范/立绘拼接锚点与换款模板.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/preview/male_front_ear_review.png",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/preview/male_front_ear_review.png",
+    "text": "[男修前发盖耳对照](../../mods/appearance/approved_portrait_split_20261002_v2/preview/male_front_ear_review.png)",
+    "line": 89
+  },
+  {
+    "source": "docs/美术规范/立绘拼接锚点与换款模板.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/index.html",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/index.html",
+    "text": "[可切换预览](../../mods/appearance/approved_portrait_split_20261002_v2/index.html)",
+    "line": 89
+  },
+  {
+    "source": "docs/美术规范/立绘拼接锚点与换款模板.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/rig/generation_requests_v13.json",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/rig/generation_requests_v13.json",
+    "text": "[本轮提示词](../../mods/appearance/approved_portrait_split_20261002_v2/rig/generation_requests_v13.json)",
+    "line": 89
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2",
+    "text": "[`approved_portrait_split_20261002_v2/`](../../mods/appearance/approved_portrait_split_20261002_v2)",
+    "line": 5
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/preview/portraits_light.png",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/preview/portraits_light.png",
+    "text": "[完整立绘](../../mods/appearance/approved_portrait_split_20261002_v2/preview/portraits_light.png)",
+    "line": 5
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/preview/face_seam_review.png",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/preview/face_seam_review.png",
+    "text": "[面部接缝放大](../../mods/appearance/approved_portrait_split_20261002_v2/preview/face_seam_review.png)",
+    "line": 5
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/preview/male_clothing_authority_review.png",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/preview/male_clothing_authority_review.png",
+    "text": "[指定男修衣服与当前素材](../../mods/appearance/approved_portrait_split_20261002_v2/preview/male_clothing_authority_review.png)",
+    "line": 5
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/preview/collar_comparison.png",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/preview/collar_comparison.png",
+    "text": "[领口](../../mods/appearance/approved_portrait_split_20261002_v2/preview/collar_comparison.png)",
+    "line": 5
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/preview/hair_layers.png",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/preview/hair_layers.png",
+    "text": "[前后发](../../mods/appearance/approved_portrait_split_20261002_v2/preview/hair_layers.png)",
+    "line": 5
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/approved_portrait_split_20261002_v2/index.html",
+    "raw": "../../mods/appearance/approved_portrait_split_20261002_v2/index.html",
+    "text": "[可切换预览](../../mods/appearance/approved_portrait_split_20261002_v2/index.html)",
+    "line": 5
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/head_material_review_20261002_v1/preview/style_comparison.png",
+    "raw": "../../mods/appearance/head_material_review_20261002_v1/preview/style_comparison.png",
+    "text": "[女性原参考、轻水墨与男性光头](../../mods/appearance/head_material_review_20261002_v1/preview/style_comparison.png)",
+    "line": 7
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/head_material_review_20261002_v1/preview/male_head_review.png",
+    "raw": "../../mods/appearance/head_material_review_20261002_v1/preview/male_head_review.png",
+    "text": "[男性原图、光头与独立皮肤](../../mods/appearance/head_material_review_20261002_v1/preview/male_head_review.png)",
+    "line": 7
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/head_shape_rebuild_20261001_v1/preview/head_review.png",
+    "raw": "../../mods/appearance/head_shape_rebuild_20261001_v1/preview/head_review.png",
+    "text": "[原图与头型对照](../../mods/appearance/head_shape_rebuild_20261001_v1/preview/head_review.png)",
+    "line": 9
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/head_shape_rebuild_20261001_v1/preview/parts_dark.png",
+    "raw": "../../mods/appearance/head_shape_rebuild_20261001_v1/preview/parts_dark.png",
+    "text": "[独立透明部件](../../mods/appearance/head_shape_rebuild_20261001_v1/preview/parts_dark.png)",
+    "line": 9
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/head_shape_rebuild_20261001_v1/preview/female_ear_correction_20261002.png",
+    "raw": "../../mods/appearance/head_shape_rebuild_20261001_v1/preview/female_ear_correction_20261002.png",
+    "text": "[第二张参照、修正前后](../../mods/appearance/head_shape_rebuild_20261001_v1/preview/female_ear_correction_20261002.png)",
+    "line": 11
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/腰上男修拆件演示_v2/test_assets_green_reference_v1",
+    "raw": "../../mods/appearance/腰上男修拆件演示_v2/test_assets_green_reference_v1/",
+    "text": "[`test_assets_green_reference_v1/`](../../mods/appearance/腰上男修拆件演示_v2/test_assets_green_reference_v1/)",
+    "line": 17
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/腰上女修拆件演示_v1/test_assets_green_reference_v1",
+    "raw": "../../mods/appearance/腰上女修拆件演示_v1/test_assets_green_reference_v1/",
+    "text": "[`test_assets_green_reference_v1/`](../../mods/appearance/腰上女修拆件演示_v1/test_assets_green_reference_v1/)",
+    "line": 17
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/reference_face_sample_20260930",
+    "raw": "../../mods/appearance/reference_face_sample_20260930/",
+    "text": "[`reference_face_sample_20260930/`](../../mods/appearance/reference_face_sample_20260930/)",
+    "line": 24
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/reference_face_sample_20260930/male_brows_raised_sample.png",
+    "raw": "../../mods/appearance/reference_face_sample_20260930/male_brows_raised_sample.png",
+    "text": "[`男修`](../../mods/appearance/reference_face_sample_20260930/male_brows_raised_sample.png)",
+    "line": 25
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/reference_face_sample_20260930/female_brows_raised_sample.png",
+    "raw": "../../mods/appearance/reference_face_sample_20260930/female_brows_raised_sample.png",
+    "text": "[`女修`](../../mods/appearance/reference_face_sample_20260930/female_brows_raised_sample.png)",
+    "line": 25
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/reference_face_sample_20260930/face_comparison.png",
+    "raw": "../../mods/appearance/reference_face_sample_20260930/face_comparison.png",
+    "text": "[`前后对照`](../../mods/appearance/reference_face_sample_20260930/face_comparison.png)",
+    "line": 25
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/reference_face_sample_20260930/generation_manifest.json",
+    "raw": "../../mods/appearance/reference_face_sample_20260930/generation_manifest.json",
+    "text": "[`提示词与来源`](../../mods/appearance/reference_face_sample_20260930/generation_manifest.json)",
+    "line": 25
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/腰上女修拆件演示_v1/source/reuse_repair_sample_v13",
+    "raw": "../../mods/appearance/腰上女修拆件演示_v1/source/reuse_repair_sample_v13/",
+    "text": "[`source/reuse_repair_sample_v13/`](../../mods/appearance/腰上女修拆件演示_v1/source/reuse_repair_sample_v13/)",
+    "line": 32
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/腰上女修拆件演示_v1/preview/reuse_repair_sample_v13/before_after.png",
+    "raw": "../../mods/appearance/腰上女修拆件演示_v1/preview/reuse_repair_sample_v13/before_after.png",
+    "text": "[前后对照](../../mods/appearance/腰上女修拆件演示_v1/preview/reuse_repair_sample_v13/before_after.png)",
+    "line": 32
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/腰上男修拆件演示_v2/test_sources/aesthetic_v16/generation_manifest.json",
+    "raw": "../../mods/appearance/腰上男修拆件演示_v2/test_sources/aesthetic_v16/generation_manifest.json",
+    "text": "[`test_sources/aesthetic_v16/generation_manifest.json`](../../mods/appearance/腰上男修拆件演示_v2/test_sources/aesthetic_v16/generation_manifest.json)",
+    "line": 55
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/腰上女修拆件演示_v1/source/aesthetic_v12/generation_manifest.json",
+    "raw": "../../mods/appearance/腰上女修拆件演示_v1/source/aesthetic_v12/generation_manifest.json",
+    "text": "[`source/aesthetic_v12/generation_manifest.json`](../../mods/appearance/腰上女修拆件演示_v1/source/aesthetic_v12/generation_manifest.json)",
+    "line": 55
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/腰上男修拆件演示_v2/test_sources/portrait_cleanup_v14",
+    "raw": "../../mods/appearance/腰上男修拆件演示_v2/test_sources/portrait_cleanup_v14/",
+    "text": "[`test_sources/portrait_cleanup_v14/`](../../mods/appearance/腰上男修拆件演示_v2/test_sources/portrait_cleanup_v14/)",
+    "line": 163
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/腰上女修拆件演示_v1/source/portrait_cleanup_v10",
+    "raw": "../../mods/appearance/腰上女修拆件演示_v1/source/portrait_cleanup_v10/",
+    "text": "[`source/portrait_cleanup_v10/`](../../mods/appearance/腰上女修拆件演示_v1/source/portrait_cleanup_v10/)",
+    "line": 163
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/腰上男修拆件演示_v2/test_assets_v7",
+    "raw": "../../mods/appearance/腰上男修拆件演示_v2/test_assets_v7/",
+    "text": "[`test_assets_v7/`](../../mods/appearance/腰上男修拆件演示_v2/test_assets_v7/)",
+    "line": 163
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/腰上女修拆件演示_v1/test_assets_v5",
+    "raw": "../../mods/appearance/腰上女修拆件演示_v1/test_assets_v5/",
+    "text": "[`test_assets_v5/`](../../mods/appearance/腰上女修拆件演示_v1/test_assets_v5/)",
+    "line": 163
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/腰上男修拆件演示_v2/test_sources/anatomy_v15",
+    "raw": "../../mods/appearance/腰上男修拆件演示_v2/test_sources/anatomy_v15/",
+    "text": "[`test_sources/anatomy_v15/`](../../mods/appearance/腰上男修拆件演示_v2/test_sources/anatomy_v15/)",
+    "line": 175
+  },
+  {
+    "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+    "target": "mods/appearance/腰上女修拆件演示_v1/source/anatomy_v11",
+    "raw": "../../mods/appearance/腰上女修拆件演示_v1/source/anatomy_v11/",
+    "text": "[`source/anatomy_v11/`](../../mods/appearance/腰上女修拆件演示_v1/source/anatomy_v11/)",
+    "line": 175
+  },
+  {
+    "source": "docs/美术规范/俯视衣服骨骼化_20261104/README.md",
+    "target": "docs/美术规范/俯视衣服骨骼化_20261104/clothing_14s.gif",
+    "raw": "clothing_14s.gif",
+    "text": "![14秒七套男修衣装与骨骼动态](clothing_14s.gif)",
+    "line": 11
+  },
+  {
+    "source": "docs/美术规范/俯视衣服骨骼化_20261104/README.md",
+    "target": "docs/美术规范/俯视衣服骨骼化_20261104/combat_12s.gif",
+    "raw": "combat_12s.gif",
+    "text": "![12秒四招与凶狼实机](combat_12s.gif)",
+    "line": 17
+  },
+  {
+    "source": "docs/美术规范/全界面纸墨木石风格盘点_20261108/README.md",
+    "target": "csharp/panel/StoragePanel.RingModal.cs",
+    "raw": "../../../csharp/panel/StoragePanel.RingModal.cs",
+    "text": "[StoragePanel.RingModal.cs L8](../../../csharp/panel/StoragePanel.RingModal.cs)",
+    "line": 43
+  },
+  {
+    "source": "docs/美术规范/四方向圆手人物与前后发同步_20261105/README.md",
+    "target": "mods/appearance/ink_three_variants_20261004/male/hair_front/02.png",
+    "raw": "../../../mods/appearance/ink_three_variants_20261004/male/hair_front/02.png",
+    "text": "[前发02](../../../mods/appearance/ink_three_variants_20261004/male/hair_front/02.png)",
+    "line": 36
+  },
+  {
+    "source": "docs/美术规范/四方向圆手人物与前后发同步_20261105/README.md",
+    "target": "mods/appearance/ink_three_variants_20261004/male/hair_front/03.png",
+    "raw": "../../../mods/appearance/ink_three_variants_20261004/male/hair_front/03.png",
+    "text": "[前发03](../../../mods/appearance/ink_three_variants_20261004/male/hair_front/03.png)",
+    "line": 37
+  },
+  {
+    "source": "docs/美术规范/四方向圆手人物与前后发同步_20261105/README.md",
+    "target": "mods/appearance/ink_three_variants_20261004/male/hair_back/02.png",
+    "raw": "../../../mods/appearance/ink_three_variants_20261004/male/hair_back/02.png",
+    "text": "[后发02](../../../mods/appearance/ink_three_variants_20261004/male/hair_back/02.png)",
+    "line": 39
+  },
+  {
+    "source": "docs/美术规范/四方向圆手人物与前后发同步_20261105/README.md",
+    "target": "mods/appearance/ink_three_variants_20261004/male/hair_back/03.png",
+    "raw": "../../../mods/appearance/ink_three_variants_20261004/male/hair_back/03.png",
+    "text": "[后发03](../../../mods/appearance/ink_three_variants_20261004/male/hair_back/03.png)",
+    "line": 40
+  },
+  {
+    "source": "docs/美术规范/斗法移动上身张力_20261104/README.md",
+    "target": "docs/美术规范/斗法移动上身张力_20261104/参考_用户52秒大图.png",
+    "raw": "参考_用户52秒大图.png",
+    "text": "[用户52秒截图](参考_用户52秒大图.png)",
+    "line": 5
+  },
+  {
+    "source": "docs/美术规范/炼丹围炉四角色界面_20261019/README.md",
+    "target": "outputs/alchemy_notebook_capture_20261022.log",
+    "raw": "../../../outputs/alchemy_notebook_capture_20261022.log",
+    "text": "[丹方与画面检查](../../../outputs/alchemy_notebook_capture_20261022.log)",
+    "line": 78
+  },
+  {
+    "source": "docs/美术规范/炼丹围炉四角色界面_20261019/README.md",
+    "target": "outputs/alchemy_notebook_regression_20261022.log",
+    "raw": "../../../outputs/alchemy_notebook_regression_20261022.log",
+    "text": "[原有功能回归](../../../outputs/alchemy_notebook_regression_20261022.log)",
+    "line": 79
+  },
+  {
+    "source": "docs/美术规范/炼丹围炉四角色界面_20261019/README.md",
+    "target": "outputs/alchemy_notebook_restart_write_20261022.log",
+    "raw": "../../../outputs/alchemy_notebook_restart_write_20261022.log",
+    "text": "[跨进程写入](../../../outputs/alchemy_notebook_restart_write_20261022.log)",
+    "line": 80
+  },
+  {
+    "source": "docs/美术规范/炼丹围炉四角色界面_20261019/README.md",
+    "target": "outputs/alchemy_notebook_restart_read_20261022.log",
+    "raw": "../../../outputs/alchemy_notebook_restart_read_20261022.log",
+    "text": "[跨进程读取](../../../outputs/alchemy_notebook_restart_read_20261022.log)",
+    "line": 81
+  },
+  {
+    "source": "docs/美术规范/炼丹围炉四角色界面_20261019/README.md",
+    "target": "outputs/alchemy_cleanup_filter_20261023.log",
+    "raw": "../../../outputs/alchemy_cleanup_filter_20261023.log",
+    "text": "[116项检查日志](../../../outputs/alchemy_cleanup_filter_20261023.log)",
+    "line": 105
+  },
+  {
+    "source": "docs/美术规范/行囊原面积200格扩容_20261107/README.md",
+    "target": "csharp/panel/StoragePanel.RingModal.cs",
+    "raw": "../../../csharp/panel/StoragePanel.RingModal.cs",
+    "text": "[弹窗下方行囊](../../../csharp/panel/StoragePanel.RingModal.cs)",
+    "line": 13
+  }
+]

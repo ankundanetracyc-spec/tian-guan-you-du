@@ -9,7 +9,14 @@ public partial class HoverWheelNavigationSmoke : Node
 {
     private static void Check(bool value, string message) { if (!value) throw new InvalidOperationException(message); }
     private async Task Frames(int count = 6) { for (var i = 0; i < count; i++) await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame); }
-    private static void Set(MainScene main, string field, object value) => typeof(MainScene).GetField(field, BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(main, value);
+    private static void Set(MainScene main, string field, object value)
+    {
+        var target = typeof(MainScene).GetField(field, BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public)
+            ?? throw new MissingFieldException(typeof(MainScene).FullName, field);
+        if (!target.FieldType.IsInstanceOfType(value))
+            throw new InvalidOperationException($"验收装配字段{field}需要{target.FieldType.Name}，实际为{value.GetType().Name}");
+        target.SetValue(main, value);
+    }
     private void Move(Vector2 point) => GetViewport().PushInput(new InputEventMouseMotion { Position = point, GlobalPosition = point }, true);
     private void Click(Vector2 point, MouseButton button)
     {
@@ -52,16 +59,21 @@ public partial class HoverWheelNavigationSmoke : Node
             var first = rows.GetChild<Button>(0);
             var second = rows.GetChild<Button>(1);
             Move(Center(first));
-            HoverInfoManager.SetInfo(first, new HoverInfoManager.HoverInfoContent("长说明", string.Join("\n", Enumerable.Range(0, 90).Select(i => "第 " + i + " 行：对应 UI 的悬停详情与滚轮内容"))), true);
+            HoverInfoManager.SetInfo(first, new HoverInfoManager.HoverInfoContent("长说明", string.Join("\n", Enumerable.Range(0, 16).Select(i => "第 " + i + " 行：只读悬停详情"))), true);
             await Frames(16);
             var manager = GetNode<HoverInfoManager>("/root/HoverInfoManager");
             var card = manager.GetNode<PanelContainer>("SharedHoverInfoCard");
             var reader = card.FindChildren("*", "ScrollContainer", true, false).OfType<ScrollContainer>().Single();
-            Check(card.Visible && reader.GetVScrollBar().MaxValue > reader.GetVScrollBar().Page, "变换后的目标没有显示可滚动长详情");
-            Click(Center(card), MouseButton.WheelDown);
+            Check(card.Visible && reader.VerticalScrollMode == ScrollContainer.ScrollMode.Disabled, "变换后的目标没有显示完整只读详情");
+            card.Position = Center(second) - new Vector2(60, 30);
+            var beforeReadonlyWheel = list.ScrollVertical;
+            Click(Center(second), MouseButton.WheelDown);
             await Frames();
-            Check(reader.ScrollVertical > 0, "透明悬停卡未收到真实滚轮输入");
+            Check(list.ScrollVertical > beforeReadonlyWheel && reader.ScrollVertical == 0, "只读悬停仍拦截底下列表的滚轮");
 
+            list.ScrollVertical = 0;
+            await Frames();
+            Move(Center(first));
             HoverInfoManager.SetInfo(first, new HoverInfoManager.HoverInfoContent("短说明", "简短内容"), true);
             await Frames(12);
             card.Position = Center(second) - new Vector2(60, 30);
@@ -92,7 +104,7 @@ public partial class HoverWheelNavigationSmoke : Node
             var roster = GD.Load<PackedScene>("res://tscn/panel/CellCharacterList.tscn").Instantiate<CellCharacterList>();
             hud.AddChild(roster);
             roster.show_world_npcs(new Godot.Collections.Array<WorldNpcData> { new() { npc_id = "wheel-navigation", npc_name = "同修" } }, "world:test");
-            Set(main, "tile_world_map", world);
+            Set(main, "_nodeWorldMap", world);
             Set(main, "_interactionRoster", roster);
             var actions = new NpcInteractionPanel();
             hud.AddChild(actions);
@@ -122,7 +134,7 @@ public partial class HoverWheelNavigationSmoke : Node
             Check(depth.GetChildren().OfType<Sprite2D>().Any(sprite => sprite.Name.ToString().EndsWith("_DepthIllustration")), "建筑插画未参与排序");
             var fogMaterial = (ShaderMaterial)world.Get("_known_illustration_fog_material").AsGodotObject();
             Check(fogMaterial.GetShaderParameter("world_fog").AsGodotObject() == world.Get("_fog_texture").AsGodotObject(), "已知地点的迷雾图示未绑定实际迷雾");
-            GD.Print("HOVER_WHEEL_NAVIGATION PASS: scaled UI wheel, map isolation, long-card scrolling, short-hint passthrough, hover switch, clipping, right-back roster, shared ground sorting, terrain semantics, known-place fog");
+            GD.Print("HOVER_WHEEL_NAVIGATION PASS: scaled UI wheel, map isolation, readonly-card wheel passthrough, short-hint passthrough, hover switch, clipping, right-back roster, shared ground sorting, terrain semantics, known-place fog");
             GetTree().Quit();
         }
         catch (Exception e) { GD.PushError(e.ToString()); GetTree().Quit(1); }

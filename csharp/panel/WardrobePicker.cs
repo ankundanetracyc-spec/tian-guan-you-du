@@ -6,6 +6,7 @@ using System;
 public partial class WardrobePicker : Control
 {
     public event Action? ClothingApplied;
+    public bool UsePaperControls { get; set; }
     private HumanData? _source;
     private HumanData? _draft;
     private string _gender = "male";
@@ -22,11 +23,19 @@ public partial class WardrobePicker : Control
     {
         SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         MouseFilter = MouseFilterEnum.Stop; ZAsRelative = false; ZIndex = 500;
+        if (UsePaperControls)
+        {
+            Theme = CraftingPaperStyle.MakeTheme();
+            Theme.SetStylebox("hover", "PopupMenu", PaperButtonFeedback.Face(CraftingPaperStyle.ButtonKind.Regular,
+                CraftingPaperStyle.ButtonState.Hover, selected: true));
+        }
         var dim = new ColorRect { Color = new Color(0, 0, 0, .5f), MouseFilter = MouseFilterEnum.Stop };
         AddChild(dim); dim.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        var center = new CenterContainer(); AddChild(center); center.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        var host = UsePaperControls ? QuietRoomStyle.Canvas(this) : this;
+        var center = new CenterContainer(); host.AddChild(center); center.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         var paper = new PanelContainer { CustomMinimumSize = new Vector2(700, 720) }; center.AddChild(paper);
-        paper.AddThemeStyleboxOverride("panel", new StyleBoxFlat {
+        if (UsePaperControls) paper.AddThemeStyleboxOverride("panel", CraftingPaperStyle.Paper(26, brightness: .97f));
+        else paper.AddThemeStyleboxOverride("panel", new StyleBoxFlat {
             BgColor = new Color(.91f, .88f, .80f), BorderColor = new Color(.30f, .25f, .19f),
             BorderWidthLeft = 2, BorderWidthTop = 2, BorderWidthRight = 2, BorderWidthBottom = 2,
             ContentMarginLeft = 26, ContentMarginRight = 26, ContentMarginTop = 22, ContentMarginBottom = 20 });
@@ -48,6 +57,11 @@ public partial class WardrobePicker : Control
         var apply = new Button { Name = "ApplyClothing", Text = "换上", CustomMinimumSize = new Vector2(150, 44) }; apply.Pressed += apply_clothing; footer.AddChild(apply);
         foreach (var button in new Button[] { _choices, cancelButton, apply })
         {
+            if (UsePaperControls)
+            {
+                PaperButtonFeedback.Apply(button, button is OptionButton ? CraftingPaperStyle.ButtonKind.Input : CraftingPaperStyle.ButtonKind.Regular, 22);
+                continue;
+            }
             WorldHudStyle.StyleSmallButton(button, 19);
             button.AddThemeColorOverride("font_hover_pressed_color", WorldHudStyle.Ink);
             foreach (var state in new[] { "normal", "hover", "pressed", "hover_pressed" }) button.AddThemeStyleboxOverride(state, WorldHudStyle.Paper());
@@ -93,6 +107,7 @@ public partial class WardrobePicker : Control
             _name!.Text = "当前未持有可更换的衣物"; _itemIcon!.Texture = null;
             _choices?.AddItem("没有可试穿的持有衣物");
             _choices?.SetItemDisabled(0, true);
+            if (UsePaperControls) refresh_preview();
             Show(); MoveToFront();
             return;
         }

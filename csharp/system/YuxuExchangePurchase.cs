@@ -49,7 +49,7 @@ public static class YuxuExchangePurchase
             ? player.try_add_artifact_to_inventory(artifact, Charge)
             : player.try_exchange_inventory(new Dictionary<string, int>(), new Dictionary<string, int> { [itemPath] = 1 }, beforeCommit: Charge);
         if (!success)
-            return Fail(chargeFailed ? "贡献流水未能登记，兑换未提交且未扣除贡献。" : "行囊空间不足，物品未兑换，贡献未扣除。");
+            return Fail(chargeFailed ? "贡献流水未能登记，兑换未提交且未扣除贡献。" : "行囊容量不足，物品未兑换，贡献未扣除。");
         if (artifact is null) player.publish_item_acquired_notice(itemPath);
         var name = item.item_category == "秘籍" ? $"《{item.entity_name}》" : item.entity_name;
         return new(true, Balance(), cost == 0

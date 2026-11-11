@@ -26,12 +26,20 @@ public partial class NpcWorldManager
         if (_tile_world_map?.HasMethod("project_map_position") != true) return result;
         var fractional = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_pending_hours() ?? 0f;
         var radiusSquared = radius * radius;
+        // A map lookup clones and scans the legacy node array. Resolve its types
+        // once for this query, rather than repeating that work for every resident.
+        // Rebuilding here also observes dynamic locations without a stale cache.
+        var locationTypes = new System.Collections.Generic.Dictionary<string, WorldNodeData.NodeType>(StringComparer.Ordinal);
+        if (_map_data is not null)
+            foreach (var location in _map_data.get_all_nodes())
+                if (location is not null) locationTypes.TryAdd(location.node_id, location.node_type);
         foreach (var npc in npcs)
         {
             if (npc is null || !npc.is_alive || !npc.has_world_grid_position ||
-                !string.IsNullOrEmpty(npc.dungeon_id) || !string.IsNullOrEmpty(npc.temporary_party_task_id)) continue;
+                !string.IsNullOrEmpty(npc.dungeon_id) || !string.IsNullOrEmpty(npc.temporary_party_task_id) || npc.is_player_travel_companion) continue;
             if (!npc.is_traveling && (!string.IsNullOrEmpty(npc.current_subscene_id) ||
-                _map_data?.get_node(npc.current_node_id) is { node_type: WorldNodeData.NodeType.City or WorldNodeData.NodeType.Sect or WorldNodeData.NodeType.Village or WorldNodeData.NodeType.Home })) continue;
+                (locationTypes.TryGetValue(npc.current_node_id, out var locationType) &&
+                 locationType is WorldNodeData.NodeType.City or WorldNodeData.NodeType.Sect or WorldNodeData.NodeType.Village or WorldNodeData.NodeType.Home))) continue;
             var position = npc.is_traveling
                 ? _tile_world_map.Call("project_map_position", npc.current_grid_cell, npc.world_travel_path,
                     npc.world_travel_next_cell_index, npc.world_travel_cell_progress_hours, fractional, npc.dun_speed).AsVector2()

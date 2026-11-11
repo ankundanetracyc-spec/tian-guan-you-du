@@ -28,10 +28,10 @@ public partial class InfoPanel
         populate_static_attribute_page(unit, human);
         var basic = CharacterBox(CharacterPanel(page, 0, 0, 426, 594), "基础属性");
         var battle = CharacterBox(CharacterPanel(page, 442, 0, 466, 594), "战斗属性");
-        var cultivation = CharacterBox(CharacterPanel(page, 924, 0, 426, 594), "修行属性");
+        var cultivation = CharacterBox(CharacterPanel(page, 924, 0, 458, 594), "修行属性");
         void Stat(Control parent, string name, string value, string rowName, bool large = false)
         {
-            var row = new HBoxContainer { CustomMinimumSize = new Vector2(0, large ? 82 : 36), SizeFlagsHorizontal = SizeFlags.ExpandFill };
+            var row = new HBoxContainer { CustomMinimumSize = new Vector2(0, large ? 52 : 36), SizeFlagsHorizontal = SizeFlags.ExpandFill };
             row.AddThemeConstantOverride("separation", 8); parent.AddChild(row);
             if (large)
             {
@@ -39,28 +39,30 @@ public partial class InfoPanel
                 if (index >= 0)
                 {
                     var sheet = GD.Load<Texture2D>("res://textures/ui/infopanel_attribute_icons_ink_v2.png");
-                    row.AddChild(CharacterIcon(new AtlasTexture { Atlas = sheet, Region = new Rect2(index % 3 * 512, index / 3 * 512, 512, 512) }, 48));
+                    row.AddChild(CharacterIcon(new AtlasTexture { Atlas = sheet, Region = new Rect2(index % 3 * 512, index / 3 * 512, 512, 512) }, 31));
                 }
-                var column = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ShrinkCenter }; column.AddThemeConstantOverride("separation", 2); row.AddChild(column);
-                var caption = CharacterText(name, 22); caption.MouseFilter = MouseFilterEnum.Stop; column.AddChild(caption);
-                var figure = CharacterText(value, 29); figure.MouseFilter = MouseFilterEnum.Stop; column.AddChild(figure);
+                var caption = CharacterText(name, 23); caption.MouseFilter = MouseFilterEnum.Stop; caption.SizeFlagsHorizontal = SizeFlags.ExpandFill; row.AddChild(caption);
+                var figure = CharacterText(value, 25); figure.MouseFilter = MouseFilterEnum.Stop; figure.HorizontalAlignment = HorizontalAlignment.Right; row.AddChild(figure);
                 CharacterAttributePresentation.Bind(caption, unit, rowName, name); CharacterAttributePresentation.Bind(figure, unit, rowName, name); return;
             }
             var title = CharacterText(name, large ? 23 : 20); title.SizeFlagsHorizontal = SizeFlags.ExpandFill; title.MouseFilter = MouseFilterEnum.Stop; row.AddChild(title);
             var number = CharacterText(value, large ? 29 : 21); number.MouseFilter = MouseFilterEnum.Stop; number.CustomMinimumSize = new Vector2(55, 0); number.HorizontalAlignment = HorizontalAlignment.Right; row.AddChild(number);
+            if (rowName == "StrandsRow") number.AddThemeColorOverride("font_color", new Color("5d9da8"));
             CharacterAttributePresentation.Bind(title, unit, rowName, name); CharacterAttributePresentation.Bind(number, unit, rowName, name);
         }
-        var grid = new GridContainer { Columns = 2, SizeFlagsHorizontal = SizeFlags.ExpandFill }; grid.AddThemeConstantOverride("h_separation", 24); basic.AddChild(grid);
+        var grid = new GridContainer { Columns = 1, SizeFlagsHorizontal = SizeFlags.ExpandFill }; grid.AddThemeConstantOverride("h_separation", 24); basic.AddChild(grid);
         foreach (var stat in new[] { ("体魄", unit.physique, "PhysiqueRow"), ("灵慧", unit.intelligence, "IntelligenceRow"), ("神魂", unit.soul, "SoulRow"), ("福缘", unit.fortune, "FortuneRow"), ("悟性", unit.comprehension, "ComprehensionRow") })
             Stat(grid, stat.Item1, stat.Item2.ToString("0.0"), stat.Item3, true);
         basic.AddChild(new HSeparator()); basic.AddChild(CharacterText("社交属性", 23));
         foreach (var stat in new[] { ("魅力", "charisma", "CharismaRow"), ("交际", "social", "SocialRow"), ("治事", "management", "ManagementRow") }) Stat(basic, stat.Item1, data_number(unit, stat.Item2).ToString("0.0"), stat.Item3);
         foreach (var resource in new[] { ("生命", unit.current_health, unit.max_health, "HealthRow"), ("体力", unit.current_stamina, unit.max_stamina, "StaminaRow"), ("法力", unit.current_mana, unit.max_mana, "ManaRow") })
         {
-            var row = new HBoxContainer { CustomMinimumSize = new Vector2(0, 48) }; row.AddThemeConstantOverride("separation", 12); battle.AddChild(row);
-            var name = CharacterText(resource.Item1, 22); name.CustomMinimumSize = new Vector2(62, 0); name.MouseFilter = MouseFilterEnum.Stop; row.AddChild(name);
-            var bar = WorldHudStyle.Bar(WorldHudStyle.StaminaInk); bar.MaxValue = Math.Max(1, resource.Item3); bar.Value = resource.Item2; row.AddChild(bar);
-            var value = CharacterText($"{resource.Item2}/{resource.Item3}", 21); value.CustomMinimumSize = new Vector2(100, 0); value.HorizontalAlignment = HorizontalAlignment.Right; value.MouseFilter = MouseFilterEnum.Stop; row.AddChild(value);
+            var block = new VBoxContainer { CustomMinimumSize = new Vector2(0, 69) }; block.AddThemeConstantOverride("separation", 4); battle.AddChild(block);
+            var row = new HBoxContainer(); block.AddChild(row);
+            var name = CharacterText(resource.Item1, 22); name.SizeFlagsHorizontal = SizeFlags.ExpandFill; name.MouseFilter = MouseFilterEnum.Stop; row.AddChild(name);
+            var value = CharacterText($"{resource.Item2}/{resource.Item3}", 21); value.HorizontalAlignment = HorizontalAlignment.Right; value.MouseFilter = MouseFilterEnum.Stop; row.AddChild(value);
+            var tint = resource.Item1 == "生命" ? new Color("c58f7f") : resource.Item1 == "法力" ? new Color("95bdc8") : Colors.White;
+            var bar = CharacterProgress(tint); bar.MaxValue = Math.Max(1, resource.Item3); bar.Value = resource.Item2; block.AddChild(bar);
             CharacterAttributePresentation.Bind(name, unit, resource.Item4, resource.Item1); CharacterAttributePresentation.Bind(value, unit, resource.Item4, resource.Item1);
             CharacterAttributePresentation.Bind(bar, unit, resource.Item4, resource.Item1);
         }
@@ -76,12 +78,12 @@ public partial class InfoPanel
             var rootName = CharacterText(roots[i], 20); row.AddChild(rootName); var number = CharacterText(value.ToString(), 20); number.CustomMinimumSize = new Vector2(44, 0); row.AddChild(number);
             rootName.MouseFilter = MouseFilterEnum.Pass; number.MouseFilter = MouseFilterEnum.Pass;
             CharacterAttributePresentation.Bind(rootName, unit, "RootWeight:" + i, roots[i] + "灵根权重"); CharacterAttributePresentation.Bind(number, unit, "RootWeight:" + i, roots[i] + "灵根权重");
-            var bar = WorldHudStyle.Bar(i == 3 ? new Color("a36150") : WorldHudStyle.StaminaInk); bar.Value = value; row.AddChild(bar);
+            var bar = CharacterProgress(i == 3 ? new Color("c58f7f") : Colors.White); bar.Value = value; row.AddChild(bar);
         }
-        var prof = CharacterBox(CharacterPanel(page, 0, 610, 1350, 185, 12)); prof.AddThemeConstantOverride("separation", 8);
+        var prof = CharacterBox(CharacterPanel(page, 0, 610, 1382, 185, 12)); prof.AddThemeConstantOverride("separation", 8);
         var heading = new HBoxContainer(); heading.AddThemeConstantOverride("separation", 12); prof.AddChild(heading);
         heading.AddChild(CharacterText("造诣", 27));
-        var rows = new GridContainer { Columns = 3, SizeFlagsHorizontal = SizeFlags.ExpandFill }; rows.AddThemeConstantOverride("h_separation", 46); rows.AddThemeConstantOverride("v_separation", 4);
+        var rows = new GridContainer { Columns = 4, SizeFlagsHorizontal = SizeFlags.ExpandFill }; rows.AddThemeConstantOverride("h_separation", 46); rows.AddThemeConstantOverride("v_separation", 4);
         void Refresh()
         {
             CharacterClear(rows);
@@ -96,7 +98,7 @@ public partial class InfoPanel
         }
         var buttons = new List<Button>();
         foreach (var group in new[] { "全部", "武艺", "术法", "百工" })
-        { var button = CharacterButton(group, 18, _proficiencyGroup == group, 6); button.CustomMinimumSize = new Vector2(64, 36); heading.AddChild(button); buttons.Add(button); button.Pressed += () => { _proficiencyGroup = group; foreach (var sibling in buttons) sibling.AddThemeStyleboxOverride("normal", CharacterButtonStyle(sibling == button, 6)); Refresh(); }; }
+        { var button = CharacterButton(group, 18, _proficiencyGroup == group, 6); button.CustomMinimumSize = new Vector2(64, 36); heading.AddChild(button); buttons.Add(button); button.Pressed += () => { _proficiencyGroup = group; foreach (var sibling in buttons) PaperButtonFeedback.Apply(sibling, fontSize: 18, selected: sibling == button); Refresh(); }; }
         var spacer = new Control { SizeFlagsHorizontal = SizeFlags.ExpandFill }; heading.AddChild(spacer);
         var search = CharacterSearch("搜索造诣"); search.SizeFlagsHorizontal = SizeFlags.ShrinkEnd; search.CustomMinimumSize = new Vector2(260, 38); heading.AddChild(search); search.Text = _proficiencyQuery;
         search.TextChanged += value => { _proficiencyQuery = value; Refresh(); }; CharacterScroll(prof).AddChild(rows); Refresh();

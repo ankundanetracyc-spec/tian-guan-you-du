@@ -1,0 +1,211 @@
+{
+  "date": "2026-11-09",
+  "build": {
+    "status": "passed",
+    "warnings": 0,
+    "errors": 0,
+    "log": "编译.log"
+  },
+  "runs": [
+    {
+      "page": "alchemy",
+      "width": 1280,
+      "height": 720,
+      "status": "passed",
+      "processExitCode": 0,
+      "checkCount": 146,
+      "report": "alchemy_checks_1280.json",
+      "captures": [
+        "alchemy_paper_main_1280.png",
+        "alchemy_paper_picker_utility_1280.png",
+        "alchemy_paper_picker_1280.png",
+        "alchemy_paper_notebook_1280.png",
+        "alchemy_paper_full_eight_1280.png"
+      ],
+      "log": "alchemy_原生验收_1280.log",
+      "scope": "header and existing alchemy UI"
+    },
+    {
+      "page": "alchemy",
+      "width": 1920,
+      "height": 1080,
+      "status": "passed",
+      "processExitCode": 0,
+      "checkCount": 146,
+      "report": "alchemy_checks_1920.json",
+      "captures": [
+        "alchemy_paper_main_1920.png",
+        "alchemy_paper_picker_utility_1920.png",
+        "alchemy_paper_picker_1920.png",
+        "alchemy_paper_notebook_1920.png",
+        "alchemy_paper_full_eight_1920.png"
+      ],
+      "log": "alchemy_原生验收_1920.log",
+      "scope": "header and existing alchemy UI"
+    },
+    {
+      "page": "talisman",
+      "width": 1280,
+      "height": 720,
+      "status": "passed",
+      "processExitCode": 0,
+      "checkCount": 149,
+      "report": "talisman_checks_1280.json",
+      "captures": [
+        "talisman_header_paper_1280.png",
+        "talisman_header_ink_1280.png",
+        "talisman_header_drawing_1280.png"
+      ],
+      "log": "talisman_原生验收_1280.log",
+      "scope": "header-only UI; no crafting transactions"
+    },
+    {
+      "page": "talisman",
+      "width": 1920,
+      "height": 1080,
+      "status": "passed",
+      "processExitCode": 0,
+      "checkCount": 149,
+      "report": "talisman_checks_1920.json",
+      "captures": [
+        "talisman_header_paper_1920.png",
+        "talisman_header_ink_1920.png",
+        "talisman_header_drawing_1920.png"
+      ],
+      "log": "talisman_原生验收_1920.log",
+      "scope": "header-only UI; no crafting transactions"
+    },
+    {
+      "page": "forging",
+      "width": 1280,
+      "height": 720,
+      "status": "passed",
+      "processExitCode": 0,
+      "checkCount": 262,
+      "report": "forging_checks_1280.json",
+      "captures": [
+        "炼器_主界面_1280.png",
+        "炼器_按钮悬停_1280.png",
+        "炼器_按钮按下_1280.png",
+        "炼器_质材_1280.png",
+        "炼器_选材_1280.png",
+        "炼器_性材_1280.png",
+        "炼器_和材_1280.png",
+        "炼器_器物册_1280.png",
+        "炼器_说明_1280.png",
+        "炼器_炉火定器_1280.png"
+      ],
+      "log": "forging_原生验收_1280.log",
+      "scope": "independent native forging preview; no owner binding"
+    },
+    {
+      "page": "forging",
+      "width": 1920,
+      "height": 1080,
+      "status": "passed",
+      "processExitCode": 0,
+      "checkCount": 262,
+      "report": "forging_checks_1920.json",
+      "captures": [
+        "炼器_主界面_1920.png",
+        "炼器_按钮悬停_1920.png",
+        "炼器_按钮按下_1920.png",
+        "炼器_质材_1920.png",
+        "炼器_选材_1920.png",
+        "炼器_性材_1920.png",
+        "炼器_和材_1920.png",
+        "炼器_器物册_1920.png",
+        "炼器_说明_1920.png",
+        "炼器_炉火定器_1920.png"
+      ],
+      "log": "forging_原生验收_1920.log",
+      "scope": "independent native forging preview; no owner binding"
+    }
+  ],
+  "totalChecks": 1114,
+  "totalCaptures": 36,
+  "sources": [
+    {
+      "path": "csharp/panel/CraftingPaperHeader.cs",
+      "sha256": "277f492477cc373848e7b6b46413a7d22e9cd514723a1586286490734c82ff43"
+    },
+    {
+      "path": "csharp/panel/PaperScrollbarStyle.cs",
+      "sha256": "dd3ddf435b4fb1f1f48192636d640b60436c4e57904a2144ffcf1a30b05e7017"
+    },
+    {
+      "path": "csharp/panel/CraftingPaperStyle.cs",
+      "sha256": "aaaba28109359bc828445fe4455cb0605f8c87154eac51531bb88f2866f73672"
+    },
+    {
+      "path": "csharp/scene/AlchemySlotBrewPreviewScene.PaperSkin.cs",
+      "sha256": "2c0ec6159b364ce8eba7f283e26ba639d621269b437e6d82a89d3cc315f0070a"
+    },
+    {
+      "path": "csharp/scene/AlchemySlotBrewPreviewScene.cs",
+      "sha256": "3e8b8daef22e0f363dd938631e68229a95c27fc7986b01dc940ec61695387244"
+    },
+    {
+      "path": "csharp/scene/AlchemySlotBrewPreviewScene.Receipt.cs",
+      "sha256": "2c77fa6a918db8e016f41ccd706ff8760306d3ea458d58b76686b7ab5e3f1fed"
+    },
+    {
+      "path": "csharp/scene/AlchemySlotBrewPreviewScene.PaperDialogs.cs",
+      "sha256": "e258ed9a4a7b699551d47c636effaa37da120e052f5f573fc9a483b26607e698"
+    },
+    {
+      "path": "csharp/scene/AlchemySlotBrewPreviewScene.Notebook.cs",
+      "sha256": "82efdffbd54b8018d969c761df4a22de374291f8002358f105c7ad727bbceb74"
+    },
+    {
+      "path": "csharp/scene/TalismanCraftingScene.cs",
+      "sha256": "ba75d0728ded68deb54835167dcfea5cb0462bfed2ed15321c8e7146d78c7dee"
+    },
+    {
+      "path": "csharp/scene/ForgingPaperPreviewScene.cs",
+      "sha256": "7ee2bc449c983ae7b00ec6795b1155ca6207ac934ca2db27cb2995479306d1b5"
+    },
+    {
+      "path": "csharp/debug/AlchemyPaperUiSmoke.cs",
+      "sha256": "e6b0e9d1ea280c6153cb563aacc950e9aa78afd11ac5909a3838640f03a65315"
+    },
+    {
+      "path": "csharp/debug/TalismanCraftingNativeSmoke.cs",
+      "sha256": "ce1400acec1ceac7bf592eb4c662f83edc9d98a85dfe9d75bef09af1f544b8c3"
+    },
+    {
+      "path": "tools/verify_forging_paper_preview.gd",
+      "sha256": "e8feb7df9ea49853bb239e80c94d906cf144ff7e87c4e2441c437b2ee8db25b4"
+    },
+    {
+      "path": "tools/NativePaperCaptureHost.gd",
+      "sha256": "2292ce0b000d9548c5eb785d9c634e11d0e270995da35b9cd9c673f665cd4772"
+    },
+    {
+      "path": "textures/ui/alchemy_20261019/formula_notebook_v2_20261109.png",
+      "sha256": "519d855c90247aeb36bafca3c9c034d5dea9c59569f29bbea3614e3fc5b0f425"
+    }
+  ],
+  "isolatedAppData": true,
+  "playerJourneyReadOrWritten": false,
+  "forgingNewSkinIntegrated": false,
+  "talismanScope": "Topbar geometry, three mode tabs, original dialogs and return only; earlier full production checks are separate.",
+  "knownWarning": "Existing 卸力.tres UID fallback to text path; no runtime error in final logs.",
+  "iterationNotes": [
+    "Alchemy header statistics originally shrank to font minimum height; fixed explicit46 high labels before final capture.",
+    "Forging help/title overlap caught visually; title moved to172 and pairwise header overlap checks added.",
+    "Forging GDScript review host initially passed then hit CLR array finalizer during native teardown; final host flushes managed interop before engine shutdown; both final exits0."
+  ],
+  "visualReview": {
+    "alchemyScreenshots": 10,
+    "talismanScreenshots": 6,
+    "forgingScreenshots": 20,
+    "result": "All36 reviewed individually; topbar spacing, labels, dialogs and pressed/selected states checked.",
+    "tradeSeparateReview": "14 screenshots reviewed by assigned subagent; separate trade report."
+  },
+  "documentationLinkValidation": {
+    "count": 142,
+    "missing": 0,
+    "scope": "New role plan, craft plan/gallery, audit summary and trade gallery Markdown links"
+  }
+}

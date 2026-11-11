@@ -179,11 +179,11 @@ public partial class NpcInteractionPanel : Control
         var state = npc.is_in_seclusion_at_hour(hour) ? "闭关中" : TextOr(npc.current_state, "空闲");
         if (_details is not null) _details.Text =
             "境界：" + TextOr(npc.cultivation_realm, "未详") +
-            "\n身份：" + TextOr(npc.formal_identity, "未详") +
+            (NpcPublicIdentity.Title(npc) is { Length: > 0 } title ? "\n身份：" + title : "") +
             "\n所属：" + faction + "\n状态：" + state;
         if (_introduction is not null)
         {
-            _introduction.Text = _notice.Length > 0 ? _notice : npc.origin_description;
+            _introduction.Text = _notice;
             _introduction.TooltipText = _introduction.Text;
             _introduction.AutowrapMode = _notice.Length > 0 ? TextServer.AutowrapMode.WordSmart : TextServer.AutowrapMode.Off;
             _introduction.ClipText = _notice.Length == 0;
@@ -206,7 +206,7 @@ public partial class NpcInteractionPanel : Control
             var button = ActionButton(option.Label);
             button.SetMeta("action_id", option.Id);
             button.Disabled = !option.Enabled;
-            button.TooltipText = option.UnavailableReason.Length > 0 ? option.UnavailableReason : option.Label;
+            button.TooltipText = option.UnavailableReason;
             if (option.Id is "attack" or "attack.confirm")
                 foreach (var color in new[] { "font_color", "font_hover_color", "font_pressed_color", "font_focus_color" })
                     button.AddThemeColorOverride(color, new Color("824d40"));

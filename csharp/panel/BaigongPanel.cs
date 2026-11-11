@@ -7,6 +7,7 @@ public partial class BaigongPanel : Control
     private Character? _owner;
     private VBoxContainer? _body;
     private string _page = "阵法";
+    private FormationPaperWorkspace? _formationWorkspace;
     private readonly System.Collections.Generic.Dictionary<string, Button> _tabs = [];
     private readonly System.Collections.Generic.Dictionary<string, string> _materialNames = [];
 
@@ -16,7 +17,11 @@ public partial class BaigongPanel : Control
     }
 
     public void show_for(Character owner) { _owner = owner; Show(); select_page("阵法"); }
-    public void close() => Hide();
+    public void close()
+    {
+        if (IsInstanceValid(_formationWorkspace)) _formationWorkspace!.Close();
+        Hide();
+    }
 
     private void build()
     {
@@ -124,30 +129,28 @@ public partial class BaigongPanel : Control
 
     private void build_formation()
     {
-        var proficiency = _owner?.entity_data?.Get("formation_proficiency").AsSingle() ?? 0;
-        _body!.AddChild(title("阵法", 27, new Color("8fe5d6")));
-        _body.AddChild(muted($"阵道造诣 {proficiency:0}　·　阵脉传递信息，阵源提供能量。"));
-        var columns = new HBoxContainer(); columns.SizeFlagsVertical = SizeFlags.ExpandFill; columns.AddThemeConstantOverride("separation", 12); _body.AddChild(columns);
-        var library = card("阵法录与元件", 260); columns.AddChild(library);
-        var manuals = _owner?.entity_data is HumanData human ? human.formation_manual_ids : [];
-        library.AddChild(muted("阵法录端口"));
-        library.AddChild(item("术法感应接口", proficiency >= 5 && manuals.Contains("manual_small_circulation_input"), "《小周天聚灵阵录》"));
-        library.AddChild(item("护持阵器接口", proficiency >= 5 && manuals.Contains("manual_guard_output"), "《护元阵录》"));
-        library.AddChild(muted("阵道元件"));
-        foreach (var node in unlocks(proficiency)) library.AddChild(item(node.name, node.ready, node.detail));
-        var board = card("阵盘 · 云息示范阵", 410); board.SizeFlagsHorizontal = SizeFlags.ExpandFill; columns.AddChild(board);
-        board.AddChild(muted("细线为脉纹：传递触发信号。粗线为灵络：从阵源向阵器供能。"));
-        board.AddChild(title("术法感应枢", 16, new Color("eaf7f2")));
-        board.AddChild(flow("↓  脉纹")); board.AddChild(title("三候枢", 16, new Color("f1d77a")));
-        board.AddChild(muted("每 3 次术法脉冲，放行 1 次控制信号。")); board.AddChild(flow("↓  脉纹"));
-        board.AddChild(title("护持阵器", 16, new Color("8fe5d6")));
-        board.AddChild(flow("阵源 ━━━ 灵络 ━━━ 护持阵器"));
-        var hasManuals = _owner?.entity_data is HumanData ownerData && ownerData.formation_manual_ids.Contains("manual_small_circulation_input") && ownerData.formation_manual_ids.Contains("manual_guard_output");
-        var install = new Button { Text = !hasManuals ? "需要两本阵法录" : proficiency < 15 ? "需要阵道造诣 15" : "装配此示范阵图", Disabled = _owner is null || proficiency < 15 || !hasManuals }; install.Pressed += install_sample; board.AddChild(install);
-        var status = card("硬件校验", 250); columns.AddChild(status);
-        status.AddChild(item("阵盘格位", true, "3 / 4")); status.AddChild(item("阵眼复杂度", true, "4 / 5"));
-        status.AddChild(item("阵源", true, "4 容量 · 每行动回复 1")); status.AddChild(item("灵络 / 负荷", true, "峰值 2 / 2"));
-        status.AddChild(item("运行状态", proficiency >= 15, proficiency >= 15 ? "可运行" : "需要阵道造诣 15：解锁候枢"));
+        _body!.AddChild(title("阵图与布线", 27, new Color("f4f0df")));
+        _body.AddChild(muted("在案上摆放部件，连接信号与供能，保存自己的阵图草稿。"));
+        _body.AddChild(muted("初阶草图 · 4×4 · 单层接线"));
+        var open = new Button { Name = "OpenFormationWorkspace", Text = "绘制阵图", CustomMinimumSize = new Vector2(210, 52), SizeFlagsHorizontal = SizeFlags.ShrinkBegin };
+        CraftingPaperStyle.ApplyButton(open, CraftingPaperStyle.ButtonKind.Primary);
+        open.Pressed += OpenFormationWorkspace; _body.AddChild(open);
+        _body.AddChild(muted("草图不消耗材料。阵盘内件的摆放、转向与线路将在独立案面中编辑。"));
+    }
+
+    private void OpenFormationWorkspace()
+    {
+        if (IsInstanceValid(_formationWorkspace) && !_formationWorkspace!.IsQueuedForDeletion())
+        { _formationWorkspace.Show(); _formationWorkspace.MoveToFront(); return; }
+        var workspace = new FormationPaperWorkspace { Name = "FormationPaperWorkspace" };
+        _formationWorkspace = workspace;
+        workspace.TreeExiting += () => { if (ReferenceEquals(_formationWorkspace, workspace)) _formationWorkspace = null; };
+        GetTree().Root.AddChild(workspace);
+    }
+
+    public override void _ExitTree()
+    {
+        if (IsInstanceValid(_formationWorkspace)) _formationWorkspace!.QueueFree();
     }
 
     private void install_sample()

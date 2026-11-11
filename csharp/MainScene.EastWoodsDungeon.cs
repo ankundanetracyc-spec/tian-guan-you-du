@@ -28,12 +28,13 @@ public partial class MainScene
         _east_woods_dungeon.CompactRouteRequested += open_compact_fern_path;
         bind_forest_wolf_event(_east_woods_dungeon);
         _east_woods_dungeon.CanMove = () => GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is not null;
+        _east_woods_dungeon.CanEnterRouteNode = try_spend_dynamic_dungeon_movement_stamina;
         return _east_woods_dungeon;
     }
 
     private void open_east_woods_dungeon()
     {
-        estate?.Hide();
+
         location_interior?.hide_roster();
         location_interior?.Hide();
         _nodeWorldMap?.Hide();
@@ -436,7 +437,7 @@ public partial class MainScene
                 else _npc_world.add_carried_item(loser, path);
             }
         }
-        return transferred.Count > 0 ? "掠得 " + string.Join("、", transferred) + "。" : "对方没有可转移的随身物品，或你的行囊已满。";
+        return transferred.Count > 0 ? "掠得 " + string.Join("、", transferred) + "。" : "对方没有可转移的随身物品，或你的行囊容量不足。";
     }
 
     private string transfer_npc_loot_to_npc(

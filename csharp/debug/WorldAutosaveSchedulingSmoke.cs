@@ -34,7 +34,7 @@ public partial class WorldAutosaveSchedulingSmoke : Node
                 current_node_id = "yuxu_xianzong_core", world_cell = new(34, 166),
                 npc_population_version = 1, npc_simulation_enabled = false, npc_last_processed_month = 48,
                 player_data = new HumanData { entity_name = "调度回归", cultivation_realm = "云息三层", current_age = 20, current_world_stamina = 100 },
-                scene_progress = new D { ["qingxi_prologue"] = 3, ["cloud_state_initialized"] = true, ["xuanjian_awakened"] = true } };
+                scene_progress = new D { ["story_free_start"] = true, ["cloud_state_initialized"] = true } };
             var sourceNpc = new WorldNpcData { npc_id = "autosave_smoke", npc_name = "旧年行客", current_node_id = "yuxu_xianzong_core" };
             for (var i = 0; i < 40; i++) sourceNpc.action_history.Add(new NpcActionRecord { action_id = "rest", month_index = i, outcome = "旧记录" + i });
             fixture.world_npcs.Add(sourceNpc);

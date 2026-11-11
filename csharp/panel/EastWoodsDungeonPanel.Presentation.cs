@@ -126,6 +126,8 @@ public partial class EastWoodsDungeonPanel
         if (!_dynamicMode) title = EastWoodsDungeonRules.forest_region(node.Id) + " · " + title;
         var showContents = _dynamicMode || node.Id == _current;
         var description = showContents ? node.Description : forest_ambience(node.Id);
+        if (is_tower_instance && node.Id != route_entry_node_id)
+            description += $"\n前往此节点消耗 {DynamicDungeonExpedition.MovementStaminaCost(_dynamicInstanceState, node.Id):0.#} 点精力。";
         var resourceNode = _dynamicMode
             ? EastWoodsResourceNodes.Find(node.ResourceNodeId)
             : EastWoodsResourceNodes.ForNode(node);

@@ -1,0 +1,38 @@
+Use case: ui-mockup / style-transfer.
+Create the next revised "玄览峰 · 藏经阁" UI, with shared art direction below.
+Input 1 E:/stacklands/textures/baishi/interiors_20261105/study_room.png is the PRIMARY palette, matte material and interior light reference.
+Input 2 E:/stacklands/docs/美术规范/玄览峰藏经阁选书_20261106/玄览峰藏经阁_理想图_v2.png is ONLY the functional organization reference: floor tabs, keyword buttons, spine selection on left, detail leaf on right. DISCARD its outdoor skies, floating roof banner, decorative filler books, different book widths and radiant outlines.
+Input 3 E:/stacklands/textures/baishi/interiors_20261105/inn_lobby.png is a supporting reference for credible wooden beams, grey-brick joins, feet on stone flooring, and ordinary muted indoor paint, NOT a composition to copy.
+Most important: EXACTLY FIVE book-shaped objects in the ENTIRE IMAGE. Each is a single upright NARROW SPINE of the SAME width and height. No other books anywhere, not even decorative blank books in the background or piles on the counter. All five real manuals shown once:
+"玄枢含章经"
+"太和感物养元宝册"
+"舒卷天章"
+"百骸衍枝化生宝册"
+"斫基损契玄经"
+Arrange them together left-to-right on ONE COMPACT shallow cabinet shelf, not scattered across three mostly empty tiers. Shared narrow-spine proportions roughly 64px thick by 264px tall at the 1920x1080 design scale, equal 16px gaps, five identical cream vertical title slips, all using the same 22px dark-ink vertical Chinese characters. The longest titles fit in one vertical column at the same font size. No wide front cover, no turning a book toward camera, no duplicate volume. Only the second spine selected by a small unlit pine-grey border or tiny ink pointer. Its dimensions must be exactly the same as the other four.
+Cabinet is proportioned sensibly to this real five-item catalogue. The group is kept close together, neatly aligned to the shelf baseline and supported by simple wooden bookends, not enlarged into giant covers to fill the screen. Below it, sensible CLOSED wooden cupboard doors or shallow drawers, not two empty shelf rows and not fake extra books. There are no blank slots, pagination arrows or empty placeholder rows when all five fit. This is an honest five-book view, not a hundred-book-capacity illustration.
+Layout: a real quiet sect library interior with one substantial wooden catalogue cabinet / counter against a grey-blue wall. A modest physical wall-mounted title sign reads "玄览峰 · 藏经阁", no roof-shaped frame. The cabinet/counter and the detail board form one physically connected piece of furniture, not separated floating rectangles. Use a moderate margin showing wall/posts and some real floor; remain a useful legible PC function screen.
+Above the left shelf, on two narrow rails attached to the cabinet:
+floor tabs "第一层 · 云息" selected, "第二层 · 玄基" subdued, "第三层 · 金丹" subdued, plus a modest field "查找秘籍".
+Keyword row "关键词" then "全部" selected, "周天" "气血" "应对" "剑" "剑意". Optional small checkbox "可修习". Both rows readable, no oversized headline.
+On the RIGHT side of the same cabinet, an off-white single sheet fixed into a plain timber detail backboard with the lower edge resting on the countertop. This must look supported. Compact well-spaced details, dark-ink readable Chinese:
+"太和感物养元宝册" as the selected title, restrained size rather than huge calligraphy.
+Small keyword chips "气血" and "应对".
+Small horizontal tabs "简介" active and "卷章".
+"修习境界" / "凡人至云息十层"
+"修习要求" / "体魄 5"
+"简介" / "以自身应对积累气血。"
+"首卷 · 听息"
+"可习招式：叩山"
+Use purposeful page spacing, not a huge empty book spread. No fake extra stats or gameplay changes.
+Action area attached to the counter at lower right: text EXACTLY "首本免费", and one paper button EXACTLY "拓印". The button edge is matte, no glow. No other explanatory line or "尚未领取". No full-screen footer text.
+Preserve the restrained material quality of the actual study-room painting; don't make it a glowing shop mockup. This image will be paired with a 善功堂 redesigned in the SAME indoor art style.
+
+COMMON ART DIRECTION — indoor functional interfaces for this existing Chinese cultivation RPG.
+Match the project's ACTUALLY INSTALLED interior painting, especially the reference study_room.png: MATTE, low-saturation hand-painted gouache/watercolor pigment planes, broad coherent form-following brushwork, clear controlled contours, grey-blue brick and stone, desaturated grey-brown timber, muted blue-grey cloth, off-white rice paper, tiny pine-grey green selection accents, deep warm-grey ink lettering. Natural quiet indoor daylight. Keep the local colors solid and readable rather than pale washed-out.
+Lighting is physically ordinary indoor diffuse daylight: absolutely NO bloom, halos, radiant paper, glowing button borders, white edge highlights, rim lights, volumetric rays, mist, atmospheric veil, glitter, stippling or floating pale dots. A subtle real contact shadow is okay. No gold ornamental UI, roof-shaped interface crowns, pagoda roofs, clouds under menus, outdoor palace frames, engraved gold filigree, giant badges or cartoon shine.
+The setting is a REAL ROOM: grey-blue brick wall, timber posts and ceiling beams, modest lattice window and a visible strip of grounded floor. Cabinet feet touch the floor; boards touch cabinets, walls or the counter. Title sign is physically fastened to a beam or backboard, not hovering. Detail paper is attached to a rigid cabinet-mounted board; action area is part of the counter. Interfaces may be neatly front-facing for legibility, but all furniture has convincing joints, backing, support and contact shadows. No unsupported architecture or panels floating in a mountain sky. Outside through windows occupies at most 8–10% of the frame and remains subordinate. No outdoor roof canopy inside the room.
+Consistent fine plain timber / dry-ink paper edges, not thick multilayer gilded ornamental frames. The paper is lightly textured and matte, never a light source. Dark ink text everywhere; no white text.
+Typography target at a 1920x1080 design scale: main title about 36px, tabs and section headings 24px, book-spine names and body 22px, primary button 28px. Preserve relative hierarchy and readability, no giant heading that consumes usable space, no font shrinkage for individual long book names. All book spines use one fixed width, height, title-slip size and font size. Long titles fit vertically in the shared standard height. Never widen, enlarge or thicken a selected or long-title book. Selection is a quiet ink marker or pine-grey outline, no glow or enlargement.
+Only show actual configured available records: no filler books, blank dummy spines, locked placeholder manuals, duplicates, made-up commodities, fake stocks, decorative books or false catalogue capacity. UI content is sparse if the actual catalogue is sparse; furniture and its closed doors fit the catalogue rather than simulating dozens of entries.
+Output one polished coherent 16:9 game-interface concept screenshot. No people, dialogue, English, editorial notes, watermarks, blurred corners, vignette, 3D rendering or photorealism. This is a full new matte rendering, not a brightness filter over the old glowing concept. The primary indoor art reference overrides old interface decoration.

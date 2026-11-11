@@ -87,7 +87,8 @@ public partial class MainScene
         var manager = _npc_world ?? GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager");
         if (manager is null) return;
         var config = YuxuSectDraftLawEvaluator.LoadConfig();
-        var cases = manager.get_all_east_woods_incidents();
+        var cases = manager.get_all_east_woods_incidents()
+            .Where(item => item.case_status != EastWoodsNpcIncidentRecord.StatusPlayerConflictPendingReview).ToArray();
 
         if (actionId == "zhizhong_case_handoff")
         {

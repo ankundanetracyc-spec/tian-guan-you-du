@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 /// <summary>Isolated attribute layout review. Does not replace the character page.</summary>
 public partial class AttributeHoverLayoutPreview : Node
 {
+    private const string Evidence = "res://docs/美术规范/悬停公式与长段排版统一_20261109/属性/";
     private Vector2 _pointer;
     private async Task Settle()
     {
@@ -77,6 +78,7 @@ public partial class AttributeHoverLayoutPreview : Node
         {
             GetWindow().ContentScaleSize = new Vector2I(1672, 941);
             GetWindow().Size = new Vector2I(1672, 941);
+            DirAccess.MakeDirRecursiveAbsolute(ProjectSettings.GlobalizePath(Evidence));
             var owner = new Character { entity_data = new HumanData {
                 entity_name = "属性排版预览", cultivation_realm = "云息一层",
                 base_physique = 8, base_intelligence = 10, base_soul = 8 } };
@@ -89,10 +91,10 @@ public partial class AttributeHoverLayoutPreview : Node
             var checks = 0;
             PlayerInfoText.SetMode(PlayerInfoText.InformationMode.Detailed, persist: false);
             var roundingSource = "当前值：87 计算公式：round(7×10.5＋8.6＋0.5×9.6)＝87";
-            if (PlayerInfoText.Display(roundingSource) != "当前值：87（(7×10.5＋8.6＋0.5×9.6)＝87）")
+            if (PlayerInfoText.Display(roundingSource) != "当前值：87\n\n计算来源\n87 = (7×10.5＋8.6＋0.5×9.6)")
                 throw new Exception("去掉取整用语后须保留全部算术项、分组与实际结果");
             checks++;
-            if (PlayerInfoText.Detailed("当前值：10 计算公式：向上取整(8×1.2)＝10") != "当前值：10（(8×1.2)＝10）")
+            if (PlayerInfoText.Detailed("当前值：10 计算公式：向上取整(8×1.2)＝10") != "当前值：10\n\n计算来源\n10 = (8×1.2)")
                 throw new Exception("原有中文取整用语同样不应显示");
             checks++;
             foreach (var example in new[] { (0, false, "体魄_简略"), (0, true, "体魄_详细"), (1, true, "灵慧_详细"), (2, true, "神魂_详细"), (3, true, "生命上限_详细"), (4, true, "精准_详细") })
@@ -104,8 +106,8 @@ public partial class AttributeHoverLayoutPreview : Node
                 if (!text.Contains("当前值：") || !text.Contains("作用：") || text.Contains("简介："))
                     throw new Exception("字段不完整 " + example.Item3);
                 checks++;
-                if (text.Contains("（") != example.Item2 || !text.StartsWith("当前值：")) throw new Exception("简略／详细公式不符");
-                if (example.Item2 && !text.Contains("＝")) throw new Exception("详细必须包含完整算式及结果");
+                if (text.Contains("计算来源") != example.Item2 || !text.StartsWith("当前值：")) throw new Exception("简略／详细公式不符");
+                if (example.Item2 && (!text.Contains(" = ") || text.Contains("，计算："))) throw new Exception("详细必须包含结果在前、等号两侧空格的完整计算来源");
                 if (text.Contains("四舍五入") || text.Contains("向上取整") || text.Contains("向下取整")) throw new Exception("悬停不展开取整规则");
                 checks++;
                 var rect = card.GetGlobalRect(); var bounds = GetViewport().GetVisibleRect();
@@ -116,7 +118,7 @@ public partial class AttributeHoverLayoutPreview : Node
                 await ToSignal(RenderingServer.Singleton, RenderingServer.SignalName.FramePostDraw);
                 using var screen = GetViewport().GetTexture().GetImage();
                 using var crop = screen.GetRegion(new Rect2I((Vector2I)rect.Position, (Vector2I)rect.Size));
-                if (crop.SavePng("res://docs/美术规范/信息栏整理_20261025/26_属性计算预览_" + example.Item3 + ".png") != Error.Ok)
+                if (crop.SavePng(Evidence + "属性计算预览_" + example.Item3 + ".png") != Error.Ok)
                     throw new Exception("截图保存失败");
                 checks++;
             }

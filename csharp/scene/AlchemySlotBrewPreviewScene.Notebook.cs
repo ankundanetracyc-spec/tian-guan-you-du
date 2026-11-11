@@ -33,76 +33,7 @@ public partial class AlchemySlotBrewPreviewScene
         _recipeOverlay.Show();
     }
 
-    private void BuildRecipeOverlay()
-    {
-        _recipeOverlay = new Control { Name = "KnownFormulaOverlay", Visible = false, ZIndex = 120, MouseFilter = MouseFilterEnum.Stop };
-        _recipeOverlay.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        _canvas.AddChild(_recipeOverlay);
-        var veil = new ColorRect { Color = new Color(.10f, .14f, .12f, .58f), MouseFilter = MouseFilterEnum.Stop };
-        veil.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        _recipeOverlay.AddChild(veil);
-        var panel = MakePaperPanel(.99f, 26);
-        PlaceCentered(_recipeOverlay, panel, new Vector2(1200, 780));
-        var body = new VBoxContainer();
-        body.AddThemeConstantOverride("separation", 14);
-        panel.AddChild(body);
-        var header = new HBoxContainer();
-        header.AddThemeConstantOverride("separation", 16);
-        body.AddChild(header);
-        var icon = IconRect(76); icon.Texture = LoadUiTexture("formula_notebook_v1.png"); header.AddChild(icon);
-        var title = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
-        title.AddChild(QuietRoomStyle.Text("丹方册", 28));
-        title.AddChild(QuietRoomStyle.Text("记下配伍，留待下次开炉", 15));
-        header.AddChild(title);
-        header.AddChild(MakeButton("收起", () => _recipeOverlay.Hide(), 17));
-        body.AddChild(new HSeparator());
-        var tabs = new HBoxContainer();
-        tabs.AddThemeConstantOverride("separation", 10);
-        body.AddChild(tabs);
-        _builtinTab = MakeButton("内置样方", () => { _showSaved = false; RefreshNotebookList(); }, 17);
-        _savedTab = MakeButton("我的丹方", () => { _showSaved = true; RefreshNotebookList(); }, 17);
-        tabs.AddChild(_builtinTab); tabs.AddChild(_savedTab);
-        var content = new HBoxContainer { SizeFlagsVertical = SizeFlags.ExpandFill };
-        content.AddThemeConstantOverride("separation", 20);
-        body.AddChild(content);
-        var listScroll = new ScrollContainer { CustomMinimumSize = new Vector2(320, 0), HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled };
-        content.AddChild(listScroll);
-        _notebookList = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
-        _notebookList.AddThemeConstantOverride("separation", 8);
-        listScroll.AddChild(_notebookList);
-        content.AddChild(new VSeparator());
-        var detailScroll = new ScrollContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled };
-        content.AddChild(detailScroll);
-        _notebookDetail = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
-        _notebookDetail.AddThemeConstantOverride("separation", 12);
-        detailScroll.AddChild(_notebookDetail);
-        body.AddChild(new HSeparator());
-        var actions = new HBoxContainer();
-        actions.AddThemeConstantOverride("separation", 12);
-        body.AddChild(actions);
-        _recipeLoad = MakeButton("载入此方", LoadNotebookSelection, 18);
-        actions.AddChild(_recipeLoad);
-        _recipeDelete = MakeButton("删除", DeleteNotebookSelection, 16);
-        actions.AddChild(_recipeDelete);
-        var note = QuietRoomStyle.Text("载入只替换投料，开炉后才揭晓结果", 14);
-        note.SizeFlagsHorizontal = SizeFlags.ExpandFill;
-        actions.AddChild(note);
-        var saveRow = new HBoxContainer();
-        saveRow.AddThemeConstantOverride("separation", 10);
-        body.AddChild(saveRow);
-        saveRow.AddChild(QuietRoomStyle.Text("保存当前配伍", 17));
-        _recipeName = new LineEdit { Name = "RecipeName", PlaceholderText = "为当前丹方起名", MaxLength = 40, SizeFlagsHorizontal = SizeFlags.ExpandFill };
-        _recipeName.AddThemeStyleboxOverride("normal", QuietRoomStyle.Edge(false, 10));
-        _recipeName.AddThemeStyleboxOverride("focus", QuietRoomStyle.Edge(true, 10));
-        _recipeName.AddThemeColorOverride("font_color", QuietRoomStyle.Ink);
-        saveRow.AddChild(_recipeName);
-        saveRow.AddChild(MakeButton("保存新方", () => SaveCurrentRecipe(false), 17));
-        saveRow.AddChild(MakeButton("覆盖同名", () => SaveCurrentRecipe(true), 16));
-        _notebookStatus = QuietRoomStyle.Text("", 14);
-        _notebookStatus.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-        body.AddChild(_notebookStatus);
-        RefreshNotebookList();
-    }
+    private void BuildRecipeOverlay() => BuildPaperNotebook();
 
     private static void ClearNotebookChildren(Node parent)
     {
@@ -112,8 +43,8 @@ public partial class AlchemySlotBrewPreviewScene
     private void RefreshNotebookList()
     {
         ClearNotebookChildren(_notebookList);
-        _builtinTab.AddThemeStyleboxOverride("normal", QuietRoomStyle.Edge(!_showSaved, 10));
-        _savedTab.AddThemeStyleboxOverride("normal", QuietRoomStyle.Edge(_showSaved, 10));
+        _builtinTab.AddThemeStyleboxOverride("normal", CraftingPaperStyle.ButtonStyle(CraftingPaperStyle.ButtonKind.Regular, !_showSaved ? CraftingPaperStyle.ButtonState.Selected : CraftingPaperStyle.ButtonState.Normal));
+        _savedTab.AddThemeStyleboxOverride("normal", CraftingPaperStyle.ButtonStyle(CraftingPaperStyle.ButtonKind.Regular, _showSaved ? CraftingPaperStyle.ButtonState.Selected : CraftingPaperStyle.ButtonState.Normal));
         _savedTab.Text = $"我的丹方 · {_savedRecipes.Count}";
         _selectedRoute = null; _selectedSaved = null; _pendingDelete = "";
         if (_showSaved)
@@ -183,7 +114,8 @@ public partial class AlchemySlotBrewPreviewScene
     {
         var button = MakeButton("", action, 17);
         button.SetMeta("recipe_name", name);
-        button.CustomMinimumSize = new Vector2(0, 66);
+        CraftingPaperStyle.ApplyButton(button, CraftingPaperStyle.ButtonKind.Regular, 22);
+        button.CustomMinimumSize = new Vector2(0, 74);
         button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         button.ClipContents = true;
         var labels = new VBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
@@ -192,11 +124,11 @@ public partial class AlchemySlotBrewPreviewScene
         labels.OffsetTop = 9; labels.OffsetBottom = -9;
         labels.AddThemeConstantOverride("separation", 4);
         button.AddChild(labels);
-        var title = QuietRoomStyle.Text(name, 17);
+        var title = PaperText(name, 22);
         title.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
         title.MouseFilter = MouseFilterEnum.Ignore;
         labels.AddChild(title);
-        var detail = QuietRoomStyle.Text(summary, 13);
+        var detail = PaperText(summary, 16, true);
         detail.AddThemeColorOverride("font_color", new Color("737c70"));
         detail.MouseFilter = MouseFilterEnum.Ignore;
         labels.AddChild(detail);
@@ -207,7 +139,7 @@ public partial class AlchemySlotBrewPreviewScene
     {
         foreach (var child in _notebookList.GetChildren())
             if (child is Button button)
-                button.AddThemeStyleboxOverride("normal", QuietRoomStyle.Edge(button.GetMeta("recipe_name", "").AsString() == name, 10));
+                button.AddThemeStyleboxOverride("normal", CraftingPaperStyle.ButtonStyle(CraftingPaperStyle.ButtonKind.Regular, button.GetMeta("recipe_name", "").AsString() == name ? CraftingPaperStyle.ButtonState.Selected : CraftingPaperStyle.ButtonState.Normal));
     }
 
     private static double NotebookRequiredAttainment(AlchemyRecipeCatalog.SampleRoute route)

@@ -100,7 +100,8 @@ public partial class BattleManager : Node2D
         var fixedSpeed = CardRules.Number(unit, "initiative_speed");
         Godot.Collections.Array woundCards = [];
         foreach (var card in Hand(unit)) woundCards.Add(card);
-        var woundMultiplier = BattleWoundRules.get_action_speed_multiplier(BattleWoundRules.count_wounds_in_skills(woundCards));
+        var woundMultiplier = _boardMode ? get_realtime_action_speed_multiplier(unit)
+            : BattleWoundRules.get_action_speed_multiplier(BattleWoundRules.count_wounds_in_skills(woundCards));
         var speciesMultiplier=unit.HasMethod("get_species_action_speed_multiplier")?unit.Call("get_species_action_speed_multiplier").AsSingle():1f;
         return Mathf.Max(20f, fixedSpeed * speciesMultiplier * woundMultiplier);
     }
@@ -175,7 +176,10 @@ public partial class BattleManager : Node2D
     }
     private void ResetBattle()
     {
+        ResetCombatBoards();
         SetBattlePaused(false);
+        auto_battle=false;
+        unitOverlay?.refresh_auto_button();
         _battleVisualElapsedSeconds=0;
         _segmentPhase=SegmentPhase.None; _planningElapsed=0; _playerQueueConfirmed=false; _mainPlayerUnit=null; _resolvingUnit=null; _segmentNumber=0;
         _selectingQueueTargets=false; _targetQueueIndex=-1; _targetSelectionHistory.Clear(); _layoutViewportSize=Vector2.Zero;

@@ -86,6 +86,25 @@ public partial class GameStartProfile : Node
     {
         foreach (var field in PortraitFields) player_appearance_data.Set(field, source.Get(field));
     }
+    public void capture_resolved_player_appearance(Dictionary resolved)
+    {
+        void store(string part, System.Action<int> set)
+        {
+            var index = resolved.GetValueOrDefault(part, -1).AsInt32();
+            if (index >= 0) set(index);
+        }
+        store("face", index => player_appearance_data.appearance_face_style = index);
+        store("ear", index => player_appearance_data.appearance_ear_style = index);
+        store("eye", index => player_appearance_data.appearance_eye_style = index);
+        store("brow", index => player_appearance_data.appearance_brow_style = index);
+        store("nose", index => player_appearance_data.appearance_nose_style = index);
+        store("mouth", index => player_appearance_data.appearance_mouth_style = index);
+        store("makeup", index => player_appearance_data.appearance_makeup_style = index);
+        store("beard", index => player_appearance_data.appearance_beard_style = index);
+        store("hair_back", index => player_appearance_data.appearance_hair_back_style = index);
+        store("hair_front", index => player_appearance_data.appearance_hair_style = index);
+        store("clothes", index => player_appearance_data.appearance_clothes_style = index);
+    }
     public void randomize_player_appearance()
     {
         var rng = new RandomNumberGenerator();
@@ -108,7 +127,21 @@ public partial class GameStartProfile : Node
     }
     public void apply_player_appearance(HumanData target)
     {
-        foreach (var field in PortraitFields) target.Set(field, player_appearance_data.Get(field));
+        target.appearance_seed = player_appearance_data.appearance_seed;
+        target.appearance_face_style = player_appearance_data.appearance_face_style;
+        target.appearance_eyebrow_style = player_appearance_data.appearance_eyebrow_style;
+        target.appearance_eye_style = player_appearance_data.appearance_eye_style;
+        target.appearance_brow_style = player_appearance_data.appearance_brow_style;
+        target.appearance_nose_style = player_appearance_data.appearance_nose_style;
+        target.appearance_mouth_style = player_appearance_data.appearance_mouth_style;
+        target.appearance_makeup_style = player_appearance_data.appearance_makeup_style;
+        target.appearance_skin_tone = player_appearance_data.appearance_skin_tone;
+        target.appearance_hair_color = player_appearance_data.appearance_hair_color;
+        target.appearance_hair_style = player_appearance_data.appearance_hair_style;
+        target.appearance_hair_back_style = player_appearance_data.appearance_hair_back_style;
+        target.appearance_ear_style = player_appearance_data.appearance_ear_style;
+        target.appearance_clothes_style = player_appearance_data.appearance_clothes_style;
+        target.appearance_beard_style = player_appearance_data.appearance_beard_style;
         if (target.appearance_hair_back_style < 0 && target.appearance_hair_style >= 0
             && GetNodeOrNull<PortraitCatalog>("/root/PortraitCatalog") is { } portraitCatalog)
         {

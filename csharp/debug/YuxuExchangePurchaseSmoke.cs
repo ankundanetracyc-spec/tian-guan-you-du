@@ -49,9 +49,9 @@ public partial class YuxuExchangePurchaseSmoke : Node
             Check(!YuxuExchangePurchase.Purchase(outsider, Pill, 8, Date).Success && outsiderData.get_yuxu_contribution_total() == 100 && outsider.get_inventory_total_count(Pill) == 0, "非宗门成员仍能兑换");
 
             using var full = Member(100); var fullData = (HumanData)full.entity_data!;
-            Check(full.add_item_to_inventory(Stone, 120), "满包测试准备失败");
+            Check(full.add_item_to_inventory(Stone, Character.InventorySlotCapacity), "满包测试准备失败");
             string fullBefore = Fingerprint(full); int fullChanges = 0; full.InventoryChanged += _ => fullChanges++;
-            Check(!YuxuExchangePurchase.Purchase(full, Pill, 8, Date).Success, "满120格仍兑换丹药");
+            Check(!YuxuExchangePurchase.Purchase(full, Pill, 8, Date).Success, "满包仍兑换丹药");
             Check(fullData.get_yuxu_contribution_total() == 100 && fullData.sect_contribution_records.Count == 1 && Fingerprint(full) == fullBefore && fullChanges == 0, "满包失败扣费、记流水或改变身份摆位");
             Check(!YuxuExchangePurchase.Purchase(full, Qinghe, 0, Date).Success && Fingerprint(full) == fullBefore && full.get_artifact_items().Count == 0, "满包0价法器被放入或移动原物品");
 
@@ -68,11 +68,12 @@ public partial class YuxuExchangePurchaseSmoke : Node
             Check(!aborted.try_add_artifact_to_inventory(artifact, () => { callbackCalls++; return false; }), "法器扣费回调拒绝仍然提交");
             Check(callbackCalls == 1 && aborted.get_artifact_items().Count == 0 && aborted.get_inventory_occupied_cell_count() == 0, "法器失败回调留下实例或占格");
 
-            using var clothes = Member(100); var clothing = YuxuExchangeCatalog.LoadItems().OfType<PortraitClothingData>().First();
+            using var clothes = Member(100); var clothing = GD.Load<PortraitClothingData>("res://resources/entities/items/clothing/男_绛霞流云袍.tres");
             result = YuxuExchangePurchase.Purchase(clothes, clothing.ResourcePath, YuxuExchangeCatalog.Price(clothing), Date);
-            Check(result.Success && result.Balance == 80 && clothes.get_inventory_total_count(clothing.ResourcePath) == 1 && clothes.get_inventory_occupied_cell_count() == 12, "衣着新增兑换没有使用临时价和真实占格");
+            Check(!YuxuExchangeCatalog.IsAvailable(clothing) && !result.Success, "已移除的装备仍可从兑换服务购买");
+            Check(((HumanData)clothes.entity_data!).get_yuxu_contribution_total() == 100 && clothes.get_inventory_total_count(clothing.ResourcePath) == 0 && clothes.get_inventory_occupied_cell_count() == 0, "下架装备的失败购买改变了贡献或库存");
             foreach (var character in new[] { paid, poor, outsider, full, free, aborted, clothes }) character.Free();
-            GD.Print($"YUXU_EXCHANGE_PURCHASE_OK: {_checks} checks; real MainScene service, contribution ledger, capacity, exact identity preservation, 0-price artifact and clothing");
+            GD.Print($"YUXU_EXCHANGE_PURCHASE_OK: {_checks} checks; real MainScene service, contribution ledger, capacity, exact identity preservation, 0-price artifact and delisted equipment rejection");
             GetTree().Quit();
         }
         catch (Exception error) { GD.PushError(error.ToString()); GetTree().Quit(1); }

@@ -134,7 +134,7 @@ public partial class InventorySpatialLayoutPreview : Control
                 if (image.IsEmpty() || image.GetPixel(0, 0).A > .01f) throw new InvalidOperationException("素材无法加载或透明边缘异常: " + file);
                 return ImageTexture.CreateFromImage(image);
             }
-            var stone = Load("spirit_stone_1x1.png"); var pill = Load("pill_container_empty_porcelain.png");
+            var stone = Load("spirit_stone_1x1.png"); var pill = Load("pill_2x2.png");
             var book = Load("manual_generic_2x3.png"); var sword = Load("slender_sword_2x6.png");
             var herb = Load("bitter_moss_root_2x4.png"); var ore = Load("xuantie_3x3.png");
             Items.Add(new("长剑", "器物", 2, 6, 0, 0, sword));
@@ -142,8 +142,8 @@ public partial class InventorySpatialLayoutPreview : Control
             Items.Add(new("秘籍", "秘籍", 2, 3, 4, 0, book));
             Items.Add(new("苦苔根", "材料", 2, 4, 10, 0, herb));
             Items.Add(new("玄铁", "材料", 3, 3, 6, 4, ore));
-            Items.Add(new("丹药", "丹药", 2, 3, 12, 0, pill));
-            Items.Add(new("丹药", "丹药", 2, 3, 12, 4, pill));
+            Items.Add(new("丹药", "丹药", 2, 2, 12, 0, pill));
+            Items.Add(new("丹药", "丹药", 2, 2, 12, 4, pill));
             for (var i = 0; i < 4; i++) Items.Add(new("灵石", "材料", 1, 1, 6 + i, 0, stone));
             for (var i = 0; i < 4; i++) Items.Add(new("灵石", "材料", 1, 1, 14, i, stone));
             for (var i = 0; i < 4; i++) Items.Add(new("灵石", "材料", 1, 1, 14, 4 + i, stone));

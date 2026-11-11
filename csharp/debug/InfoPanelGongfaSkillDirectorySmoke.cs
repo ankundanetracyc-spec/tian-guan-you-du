@@ -135,8 +135,7 @@ public partial class InfoPanelGongfaSkillDirectorySmoke : Node
             Check(!lockedHuman.can_unlock_skill_node(nodes[0].node_id, out var lockedReason) && lockedReason.Contains("体魄"),
                 "未达门槛的人物没有被节点条件拦下或缺少明确说明");
 
-            typeof(InfoPanel).GetField("_showSkillNodeNetwork", HiddenInstance)!.SetValue(panel, true);
-            InvokeHiddenVoid(panel, "build_character_battle", human);
+            RenderPage(panel, 4);
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             var faces = human.get_skill_node_face_configs().ToArray();
             Check(faces.Length == 4 && faces.Any(face => face.face_name == "剑修"), "首批脉面配置不完整");

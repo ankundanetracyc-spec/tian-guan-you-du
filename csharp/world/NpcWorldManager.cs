@@ -455,7 +455,7 @@ public partial class NpcWorldManager : Node
             task.task_type != "appeal_transport" || task.target_npc_id != npcId ||
             task.status != YuxuSectCaseTaskRecord.StatusAssigned || task.duty_instance_id != dutyInstanceId ||
             task.journey_status != YuxuSectCaseTaskRecord.JourneyNotStarted ||
-            !string.IsNullOrEmpty(npc.temporary_party_task_id) ||
+            (!string.IsNullOrEmpty(npc.temporary_party_task_id) || npc.is_player_travel_companion) ||
             string.IsNullOrWhiteSpace(destinationNodeId))
             return false;
 
@@ -650,7 +650,7 @@ public partial class NpcWorldManager : Node
         var actionStamp = time?.get_total_game_hours() ?? 0;
         foreach (var npc in npcs.Where(item => item is not null && item.is_alive && item.has_world_grid_position &&
                      item.current_grid_cell == cell && string.IsNullOrEmpty(item.dungeon_id) &&
-                     string.IsNullOrEmpty(item.temporary_party_task_id))
+                     string.IsNullOrEmpty(item.temporary_party_task_id) && !item.is_player_travel_companion)
                      .OrderBy(item => item.npc_id, StringComparer.Ordinal))
         {
             var chance = EastWoodsDungeonRules.attack_chance(
@@ -1010,7 +1010,7 @@ public partial class NpcWorldManager : Node
         foreach (var npc in npcs)
         {
             if (npc is null || !npc.is_alive || !string.IsNullOrEmpty(npc.dungeon_id) || !npc.has_world_grid_position ||
-                !string.IsNullOrEmpty(npc.temporary_party_task_id)) continue;
+                !string.IsNullOrEmpty(npc.temporary_party_task_id) || npc.is_player_travel_companion) continue;
             if (!npc.is_traveling && npc.current_node_id == nodeId)
             {
                 count++;
@@ -1038,7 +1038,7 @@ public partial class NpcWorldManager : Node
         foreach (var npc in npcs)
         {
             if (npc is null || !npc.is_alive || !string.IsNullOrEmpty(npc.dungeon_id) || !npc.has_world_grid_position ||
-                !string.IsNullOrEmpty(npc.temporary_party_task_id)) continue;
+                !string.IsNullOrEmpty(npc.temporary_party_task_id) || npc.is_player_travel_companion) continue;
             var nodeId = npc.is_traveling ? get_location_node_id_at_cell(npc.current_grid_cell) : npc.current_node_id;
             if (string.IsNullOrEmpty(nodeId)) continue;
             counts[nodeId] = counts.ContainsKey(nodeId) ? counts[nodeId].AsInt32() + 1 : 1;
@@ -1254,7 +1254,7 @@ public partial class NpcWorldManager : Node
         // Scan and order the East Woods roster once per route edge, then reuse it
         // for movement, player encounters, and NPC conflict checks.
         var local = npcs.Where(npc => npc is not null && npc.is_alive && npc.dungeon_id == EastWoodsDungeonRules.DungeonId &&
-                string.IsNullOrEmpty(npc.temporary_party_task_id))
+                string.IsNullOrEmpty(npc.temporary_party_task_id) && !npc.is_player_travel_companion)
             .OrderBy(npc => npc.npc_id, StringComparer.Ordinal).ToArray();
         var moved = new HashSet<string>();
         var previousNodes = new System.Collections.Generic.Dictionary<string, string>(StringComparer.Ordinal);
@@ -1596,7 +1596,7 @@ public partial class NpcWorldManager : Node
 
     private void initialize_world_grid_position(WorldNpcData npc)
     {
-        if (_tile_world_map is null || npc is null) return;
+        if (_tile_world_map is null || npc is null || npc.is_player_travel_companion) return;
         if (!npc.is_traveling)
         {
             if (!npc.has_world_grid_position || !is_valid_world_grid_cell(npc.current_grid_cell))
@@ -1666,7 +1666,14 @@ public partial class NpcWorldManager : Node
     {
         if (_tile_world_map is null) return 2400.0 / Math.Max(0.01, dunSpeed);
         if (_tile_world_map.HasMethod("get_npc_edge_travel_hours"))
-            return _tile_world_map.Call("get_npc_edge_travel_hours", from, cell, dunSpeed).AsDouble();
+        {
+            if (!_settlementBatch) return _tile_world_map.Call("get_npc_edge_travel_hours", from, cell, dunSpeed).AsDouble();
+            var key = (from, cell, dunSpeed);
+            if (_settlementEdgeTravelHours.TryGetValue(key, out var cachedHours)) return cachedHours;
+            var edgeHours = _tile_world_map.Call("get_npc_edge_travel_hours", from, cell, dunSpeed).AsDouble();
+            _settlementEdgeTravelHours[key] = edgeHours;
+            return edgeHours;
+        }
         if (!_settlementBatch) return _tile_world_map.Call("get_npc_cell_travel_hours", cell, dunSpeed).AsDouble();
         // Cache the exact cell/speed pair so floating-point behavior matches the old bridge.
         if (_settlementTravelHours.TryGetValue((cell, dunSpeed), out var hours)) return hours;
@@ -1691,12 +1698,12 @@ public partial class NpcWorldManager : Node
 
     private System.Collections.Generic.IEnumerable<int> simulate_month_steps(int month)
     {
-        _monthlyResidents = _tile_world_map is null ? null : npcs.Where(n => n.is_alive && !n.is_traveling && string.IsNullOrEmpty(n.temporary_party_task_id))
+        _monthlyResidents = _tile_world_map is null ? null : npcs.Where(n => n.is_alive && !n.is_traveling && string.IsNullOrEmpty(n.temporary_party_task_id) && !n.is_player_travel_companion)
             .GroupBy(n => n.current_node_id).ToDictionary(g => g.Key, g => g.ToArray(), StringComparer.Ordinal);
         foreach (var npc in npcs)
         {
             if (!npc.is_alive) continue;
-            if (!string.IsNullOrEmpty(npc.temporary_party_task_id)) continue;
+            if (!string.IsNullOrEmpty(npc.temporary_party_task_id) || npc.is_player_travel_companion) continue;
             CharacterRelationshipRules.SettleMonth(npc, month);
             // 复用月度遍历；无新证据立即返回，不额外扫描人口或历史。
             NpcPlayerImpressionRules.SettleMonth(npc, month);
@@ -1737,7 +1744,11 @@ public partial class NpcWorldManager : Node
 
         var roll = rng.RandiRange(0, 99);
         if (roll < 28) cultivate(npc, month, rng);
-        else if (roll < 53) work(npc, month, rng);
+        else if (roll < 53)
+        {
+            // 坊市成交属于本月工作行动；没有真实需求、货品或余额时继续原工作。
+            if (!YuxuMarketRules.TryAutomaticSale(_playerData, npc, month)) work(npc, month, rng);
+        }
         else if (roll < 72) socialize(npc, month, rng);
         else if (roll < 88) explore(npc, month, rng);
         else travel(npc, month, rng);
@@ -1995,6 +2006,7 @@ public partial class NpcWorldManager : Node
 
     private bool normalize_npc_location(WorldNpcData npc)
     {
+        if (npc.is_player_travel_companion) return true;
         if (_map_data is null) return true;
         var node = _map_data.get_node(npc.current_node_id);
         if (node is null)

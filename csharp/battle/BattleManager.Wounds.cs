@@ -34,24 +34,34 @@ public partial class BattleManager : Node2D
         return counts;
     }
     public int get_effective_mana_capacity(GodotObject u)=>Math.Max(0,u.Get("max_mana").AsInt32()-(u is Creature creature?Math.Min(2,creature.get_status_stacks("内伤")):0));
-    public int get_skill_mana_cost(GodotObject u,ActiveSkillData skill)
+    public int get_raw_skill_mana_cost(GodotObject u,ActiveSkillData skill)
     {
         var wounds=get_realtime_wound_counts(u);
         var multiplier=BattleWoundRules.get_mana_cost_multiplier(wounds,skill);
-        var cost=Mathf.CeilToInt(skill.mana_cost*multiplier);
-        return gongfa_combat.ManaCostTransferredToStamina(u,skill,cost)>0?0:cost;
+        return Mathf.CeilToInt(skill.mana_cost*multiplier);
     }
+    public int get_skill_mana_cost(GodotObject u,ActiveSkillData skill)
+    {
+        var cost=get_raw_skill_mana_cost(u,skill);
+        return gongfa_combat.ForceManaCapacityPayment(u,skill,cost)||gongfa_combat.ManaCostTransferredToStamina(u,skill,cost)>0?0:cost;
+    }
+    public int get_skill_mana_capacity_cost(GodotObject u,ActiveSkillData skill) =>
+        gongfa_combat.ForcedManaCapacityCost(u,skill,get_raw_skill_mana_cost(u,skill));
     public int get_skill_energy_cost(GodotObject u,ActiveSkillData skill)
     {
         var cost=gongfa_combat.Cost(u,skill);
         var wounds=get_realtime_wound_counts(u);
-        var mana= Mathf.CeilToInt(skill.mana_cost*BattleWoundRules.get_mana_cost_multiplier(wounds,skill));
+        var mana=get_raw_skill_mana_cost(u,skill);
         cost+=gongfa_combat.ManaCostTransferredToStamina(u,skill,mana);
         return skill.skill_type==ActiveSkillData.SkillType.MOVEMENT?Mathf.CeilToInt(cost*BattleWoundRules.get_energy_cost_multiplier(wounds,skill)):cost;
     }
     public bool can_pay_skill_mana_cost(GodotObject unit,ActiveSkillData skill)
     {
-        return CanReserveForgedSpirit(unit, skill) && can_pay_mana_amount(unit,get_skill_mana_cost(unit,skill));
+        var rawCost=get_raw_skill_mana_cost(unit,skill);
+        if(!CanReserveForgedSpirit(unit,skill))return false;
+        if(gongfa_combat.ForceManaCapacityPayment(unit,skill,rawCost))
+            return gongfa_combat.CanPayForcedManaCapacity(unit,skill,rawCost);
+        return can_pay_mana_amount(unit,get_skill_mana_cost(unit,skill));
     }
     public bool can_pay_mana_amount(GodotObject unit,int amount)
     {
@@ -72,6 +82,19 @@ public partial class BattleManager : Node2D
     }
     private void PaySkillManaCost(GodotObject unit,ActiveSkillData skill,int cost)
     {
+        var rawCost=get_raw_skill_mana_cost(unit,skill);
+        if(gongfa_combat.ForceManaCapacityPayment(unit,skill,rawCost))
+        {
+            gongfa_combat.BeginForcedManaCapacityPayment(unit,skill,rawCost);
+            for(var i=0;i<rawCost;i++)
+            {
+                if(!spend_mana_capacity(unit,1))break;
+                gongfa_combat.RecordManaCapacityPayment(unit,skill);
+                gongfa_combat.ConsumeForcedManaCapacityPoint(unit,skill);
+            }
+            gongfa_combat.CompleteForcedManaCapacityPayment(unit,skill);
+            return;
+        }
         for(var i=0;i<cost;i++)
         {
             var current=Math.Max(0,unit.Get("current_mana").AsInt32());

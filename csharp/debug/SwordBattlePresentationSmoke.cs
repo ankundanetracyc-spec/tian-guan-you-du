@@ -58,7 +58,7 @@ public partial class SwordBattlePresentationSmoke : Node
             await Verify("斩剑","cut",_target,pause:true);
             var intent=((Creature)_actor).get_status_stacks("剑意");
             await Verify("养锋","nurture",_actor);
-            Check(((Creature)_actor).get_status_stacks("剑意")==intent+1,"养锋仍按原规则获得剑意");
+            Check(((Creature)_actor).get_status_stacks("剑意")==Math.Min(10,intent+2),"养锋获得两层剑意并受十层上限限制");
             await Verify("尽锋","finish",_target);
             Check(((Creature)_actor).get_status_stacks("剑意")==0,"尽锋命中仍消耗剑意");
             var defenderIntent=((Creature)_target).get_status_stacks("剑意");

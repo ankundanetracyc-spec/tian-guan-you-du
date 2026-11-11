@@ -1,0 +1,50 @@
+{
+  "date": "2026-11-06",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "status": "concepts_pending_visual_review_not_runtime",
+  "common_prompt": "室内功能界面_共用提示词.txt",
+  "art_spec": "../室内功能界面统一规范_20261106.md",
+  "authoritative_references": [
+    "textures/baishi/interiors_20261105/study_room.png",
+    "textures/baishi/interiors_20261105/inn_lobby.png"
+  ],
+  "historical_function_references": [
+    "docs/美术规范/玄览峰藏经阁选书_20261106/玄览峰藏经阁_理想图_v2.png",
+    "docs/美术规范/行囊交易善功堂实装_20261031/05_原生善功堂四分类.png"
+  ],
+  "library_count": 5,
+  "named_manuals": [
+    "玄枢含章经",
+    "太和感物养元宝册",
+    "舒卷天章",
+    "百骸衍枝化生宝册",
+    "斫基损契玄经"
+  ],
+  "filler_books_allowed": false,
+  "shop_prices_source": "docs/plans/物品与装备/善功堂临时贡献价_20261030.json",
+  "displayed_balance_source": "existing native screenshot example 100; not live player data",
+  "runtime_changes": false,
+  "outputs": [
+    {
+      "id": "xuanlan_v3",
+      "image": "藏经阁_室内哑光_v3.png",
+      "source_file": "E:/tmp/CodexData/generated_images/01a1a0bb-bca0-7622-87eb-903f01e63b98/exec-e4f25da4-b108-448d-8f40-9101da7cead1.png",
+      "prompt": "藏经阁_v3_完整提示词.txt",
+      "width": 1672,
+      "height": 941,
+      "sha256": "0D6261E1CE6489DFB656EEA488D04D780C8DAA9475EEF2A6D26276EFAF9DD961",
+      "original_copy_match": true
+    },
+    {
+      "id": "shangong_indoor_v1",
+      "image": "善功堂_室内哑光_v1.png",
+      "source_file": "E:/tmp/CodexData/generated_images/01a1a0bb-bca0-7622-87eb-903f01e63b98/exec-589688c5-2d9a-4e97-bf86-84e7beb8f3c0.png",
+      "prompt": "善功堂_v1_完整提示词.txt",
+      "width": 1672,
+      "height": 941,
+      "sha256": "99607661607080313D5069BF17E21632E3B21825860E3D39E5DC2BE90E9841CA",
+      "original_copy_match": true
+    }
+  ]
+}

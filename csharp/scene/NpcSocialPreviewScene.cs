@@ -305,7 +305,6 @@ public partial class NpcSocialPreviewScene : Control
             gender = 0, current_age = 120, appearance_seed = 761230 };
         var visitorData = (HumanData)_admissionPlayer.entity_data!;
         var evidence = new System.Collections.Generic.List<string>(visitorData.get_yuxu_gate_judgment_lines());
-        evidence.Add("长老察看灵机，目光微凝，随即颔首：‘土灵根（天灵根）。依宗门规制，入门即列真传。’");
         _dialogue.show_yuxu_admission_review(elder, evidence, () =>
             _dialogue.show_yuxu_admission_question(elder, hasSect =>
                 _dialogue.show_yuxu_admission_result(elder, hasSect
@@ -313,7 +312,7 @@ public partial class NpcSocialPreviewScene : Control
                     : ["长老唤来接引弟子：‘小友既无宗门，便随他去办入门之礼。’"],
                     () => { }, player: _admissionPlayer, testMode: true),
                 player: _admissionPlayer, testMode: true),
-            player: _admissionPlayer, lastLineIsAptitude: true, testMode: true);
+            player: _admissionPlayer, testMode: true);
     }
 
     private static Button MakeButton(string text)

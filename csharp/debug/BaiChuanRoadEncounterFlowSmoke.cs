@@ -22,8 +22,8 @@ public partial class BaiChuanRoadEncounterFlowSmoke : Node
             var deadline = Time.GetTicksMsec() + 90000UL;
             while (!main.StartupComplete && Time.GetTicksMsec() < deadline) await Frames();
             Check(main.StartupComplete && main.StartupError is null, "startup: " + main.StartupError);
-            var stage = typeof(MainScene).GetField("_qingxi_prologue", BindingFlags.Instance | BindingFlags.NonPublic)!;
-            stage.SetValue(main, Enum.Parse(stage.FieldType, "Departed"));
+            typeof(MainScene).GetField("_story_free_start", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(main, true);
+            typeof(MainScene).GetField("_baishiLecture", BindingFlags.Instance | BindingFlags.NonPublic)!.SetValue(main, null);
             Invoke(main, "open_world");
             await Frames(4);
             var map = main.GetNode<Control>("MapLayer/BaiChuanNodeWorld");

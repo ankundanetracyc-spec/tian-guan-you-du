@@ -1,0 +1,1446 @@
+{
+  "status": "passed",
+  "width": 1920,
+  "height": 1080,
+  "headless": false,
+  "passed": 279,
+  "failed": 0,
+  "failure": "",
+  "captures": [
+    "talisman_art_inventory_seven_products_1920.png",
+    "talisman_art_inventory_hover_paper_1920.png",
+    "talisman_art_inventory_hover_ink_1920.png",
+    "talisman_art_inventory_hover_qingzhu_1920.png",
+    "talisman_art_inventory_hover_jinghao_1920.png",
+    "talisman_art_inventory_hover_cangfeng_1920.png",
+    "talisman_art_paper_painted_scene_1920.png",
+    "talisman_art_picker_hover_paper_1920.png",
+    "talisman_art_picker_hover_ink_1920.png",
+    "talisman_art_picker_hover_brush_1920.png"
+  ],
+  "checks": [
+    {
+      "Name": "\u7528\u6237\u8D44\u6599\u9694\u79BB\u4E8Eoutput",
+      "Passed": true,
+      "Detail": "E:/stacklands/output/talisman-art-20261109/check/1920/profile/SlayTheSpire2/"
+    },
+    {
+      "Name": "\u6B63\u5F0FPNG\u5DF2\u5BFC\u5165 paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u80CC\u5305\u56FE\u6807\u6BCF\u683C128\u6E90\u50CF\u7D20 paper",
+      "Passed": true,
+      "Detail": "(128, 256)"
+    },
+    {
+      "Name": "\u56FE\u6807\u4FDD\u7559\u771F\u5B9E\u900F\u660E paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u56FE\u6807\u56DB\u89D2\u5168\u900F\u660E paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u6B63\u5F0FPNG\u5DF2\u5BFC\u5165 ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u80CC\u5305\u56FE\u6807\u6BCF\u683C128\u6E90\u50CF\u7D20 ink",
+      "Passed": true,
+      "Detail": "(128, 128)"
+    },
+    {
+      "Name": "\u56FE\u6807\u4FDD\u7559\u771F\u5B9E\u900F\u660E ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u56FE\u6807\u56DB\u89D2\u5168\u900F\u660E ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u6B63\u5F0FPNG\u5DF2\u5BFC\u5165 hushen",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u80CC\u5305\u56FE\u6807\u6BCF\u683C128\u6E90\u50CF\u7D20 hushen",
+      "Passed": true,
+      "Detail": "(128, 256)"
+    },
+    {
+      "Name": "\u56FE\u6807\u4FDD\u7559\u771F\u5B9E\u900F\u660E hushen",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u56FE\u6807\u56DB\u89D2\u5168\u900F\u660E hushen",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u6B63\u5F0FPNG\u5DF2\u5BFC\u5165 yanshi",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u80CC\u5305\u56FE\u6807\u6BCF\u683C128\u6E90\u50CF\u7D20 yanshi",
+      "Passed": true,
+      "Detail": "(128, 256)"
+    },
+    {
+      "Name": "\u56FE\u6807\u4FDD\u7559\u771F\u5B9E\u900F\u660E yanshi",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u56FE\u6807\u56DB\u89D2\u5168\u900F\u660E yanshi",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u6B63\u5F0FPNG\u5DF2\u5BFC\u5165 brush_qingzhu",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u80CC\u5305\u56FE\u6807\u6BCF\u683C128\u6E90\u50CF\u7D20 brush_qingzhu",
+      "Passed": true,
+      "Detail": "(128, 256)"
+    },
+    {
+      "Name": "\u56FE\u6807\u4FDD\u7559\u771F\u5B9E\u900F\u660E brush_qingzhu",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u56FE\u6807\u56DB\u89D2\u5168\u900F\u660E brush_qingzhu",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u6B63\u5F0FPNG\u5DF2\u5BFC\u5165 brush_jinghao",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u80CC\u5305\u56FE\u6807\u6BCF\u683C128\u6E90\u50CF\u7D20 brush_jinghao",
+      "Passed": true,
+      "Detail": "(128, 256)"
+    },
+    {
+      "Name": "\u56FE\u6807\u4FDD\u7559\u771F\u5B9E\u900F\u660E brush_jinghao",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u56FE\u6807\u56DB\u89D2\u5168\u900F\u660E brush_jinghao",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u6B63\u5F0FPNG\u5DF2\u5BFC\u5165 brush_cangfeng",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u80CC\u5305\u56FE\u6807\u6BCF\u683C128\u6E90\u50CF\u7D20 brush_cangfeng",
+      "Passed": true,
+      "Detail": "(128, 256)"
+    },
+    {
+      "Name": "\u56FE\u6807\u4FDD\u7559\u771F\u5B9E\u900F\u660E brush_cangfeng",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u56FE\u6807\u56DB\u89D2\u5168\u900F\u660E brush_cangfeng",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4E2D\u592E\u7EB8\u5F20\u660E\u786E\u547D\u4E2D\u65B0PNG",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4E09\u652F\u7B26\u7B14\u4F7F\u7528\u72EC\u7ACB\u56FE\u6807\u8DEF\u5F84",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u6218\u6597\u6280\u80FD\u4E0E\u6210\u7B26\u5171\u7528\u65B0PNG hushen0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u6218\u6597\u6280\u80FD\u4E0E\u6210\u7B26\u5171\u7528\u65B0PNG hushen1",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u6218\u6597\u6280\u80FD\u4E0E\u6210\u7B26\u5171\u7528\u65B0PNG hushen2",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u6218\u6597\u6280\u80FD\u4E0E\u6210\u7B26\u5171\u7528\u65B0PNG hushen3",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u6218\u6597\u6280\u80FD\u4E0E\u6210\u7B26\u5171\u7528\u65B0PNG hushen4",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u6218\u6597\u6280\u80FD\u4E0E\u6210\u7B26\u5171\u7528\u65B0PNG yanshi0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u6218\u6597\u6280\u80FD\u4E0E\u6210\u7B26\u5171\u7528\u65B0PNG yanshi1",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u6218\u6597\u6280\u80FD\u4E0E\u6210\u7B26\u5171\u7528\u65B0PNG yanshi2",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u6218\u6597\u6280\u80FD\u4E0E\u6210\u7B26\u5171\u7528\u65B0PNG yanshi3",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u6218\u6597\u6280\u80FD\u4E0E\u6210\u7B26\u5171\u7528\u65B0PNG yanshi4",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65E7\u7269\u5939\u5177\u4FDD\u6301\u5408\u6CD5\u80FD\u529B paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65E7SVG\u7269\u54C1\u5939\u5177\u4EC5\u5199\u9694\u79BB\u8D44\u6599 paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65E7\u7269\u8FDB\u5165\u771F\u5B9E\u7A7A\u95F4\u5E93\u5B58 paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65E7\u7269\u5939\u5177\u4FDD\u6301\u5408\u6CD5\u80FD\u529B ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65E7SVG\u7269\u54C1\u5939\u5177\u4EC5\u5199\u9694\u79BB\u8D44\u6599 ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65E7\u7269\u8FDB\u5165\u771F\u5B9E\u7A7A\u95F4\u5E93\u5B58 ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65E7\u7269\u5939\u5177\u4FDD\u6301\u5408\u6CD5\u80FD\u529B hushen",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65E7SVG\u7269\u54C1\u5939\u5177\u4EC5\u5199\u9694\u79BB\u8D44\u6599 hushen",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65E7\u7269\u8FDB\u5165\u771F\u5B9E\u7A7A\u95F4\u5E93\u5B58 hushen",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65E7\u7269\u5939\u5177\u4FDD\u6301\u5408\u6CD5\u80FD\u529B yanshi",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65E7SVG\u7269\u54C1\u5939\u5177\u4EC5\u5199\u9694\u79BB\u8D44\u6599 yanshi",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65E7\u7269\u8FDB\u5165\u771F\u5B9E\u7A7A\u95F4\u5E93\u5B58 yanshi",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65E7\u7269\u5939\u5177\u4FDD\u6301\u5408\u6CD5\u80FD\u529B qingzhu",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65E7SVG\u7269\u54C1\u5939\u5177\u4EC5\u5199\u9694\u79BB\u8D44\u6599 qingzhu",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65E7\u7269\u8FDB\u5165\u771F\u5B9E\u7A7A\u95F4\u5E93\u5B58 qingzhu",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65E7\u7269\u5939\u5177\u4FDD\u6301\u5408\u6CD5\u80FD\u529B jinghao",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65E7SVG\u7269\u54C1\u5939\u5177\u4EC5\u5199\u9694\u79BB\u8D44\u6599 jinghao",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65E7\u7269\u8FDB\u5165\u771F\u5B9E\u7A7A\u95F4\u5E93\u5B58 jinghao",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65E7\u7269\u5939\u5177\u4FDD\u6301\u5408\u6CD5\u80FD\u529B cangfeng",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65E7SVG\u7269\u54C1\u5939\u5177\u4EC5\u5199\u9694\u79BB\u8D44\u6599 cangfeng",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65E7\u7269\u8FDB\u5165\u771F\u5B9E\u7A7A\u95F4\u5E93\u5B58 cangfeng",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u6301\u6709\u771F\u5B9E\u7075\u77F3\u4EE5\u68C0\u67E5\u7EAF\u663E\u793A\u5237\u65B0\u4E0D\u6263\u8D39",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u6446\u653E\u4E03\u7C7B\u7269\u54C1 paper0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u6446\u653E\u4E03\u7C7B\u7269\u54C1 paper1",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u6446\u653E\u4E03\u7C7B\u7269\u54C1 ink0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u6446\u653E\u4E03\u7C7B\u7269\u54C1 ink1",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u6446\u653E\u4E03\u7C7B\u7269\u54C1 hushen0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u6446\u653E\u4E03\u7C7B\u7269\u54C1 hushen1",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u6446\u653E\u4E03\u7C7B\u7269\u54C1 yanshi0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u6446\u653E\u4E03\u7C7B\u7269\u54C1 yanshi1",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u6446\u653E\u4E03\u7C7B\u7269\u54C1 qingzhu0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u6446\u653E\u4E03\u7C7B\u7269\u54C1 jinghao0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9694\u79BB\u6446\u653E\u4E03\u7C7B\u7269\u54C1 cangfeng0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5C31\u7EEA\u524D\u786E\u5B9E\u52A0\u8F7D\u65E7SVG\u663E\u793A\u5939\u5177",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "Character.Ready\u771F\u5B9EItemData\u66F4\u65B0\u4E3APNG paper",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/paper.png"
+    },
+    {
+      "Name": "Character.Ready\u80FD\u529BJSON\u548C\u771F\u5B9E\u6570\u91CF\u4E0D\u53D8 paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "Character.Ready\u771F\u5B9EItemData\u66F4\u65B0\u4E3APNG ink",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/ink.png"
+    },
+    {
+      "Name": "Character.Ready\u80FD\u529BJSON\u548C\u771F\u5B9E\u6570\u91CF\u4E0D\u53D8 ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "Character.Ready\u771F\u5B9EItemData\u66F4\u65B0\u4E3APNG hushen",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/hushen.png"
+    },
+    {
+      "Name": "Character.Ready\u80FD\u529BJSON\u548C\u771F\u5B9E\u6570\u91CF\u4E0D\u53D8 hushen",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "Character.Ready\u771F\u5B9EItemData\u66F4\u65B0\u4E3APNG yanshi",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/yanshi.png"
+    },
+    {
+      "Name": "Character.Ready\u80FD\u529BJSON\u548C\u771F\u5B9E\u6570\u91CF\u4E0D\u53D8 yanshi",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "Character.Ready\u771F\u5B9EItemData\u66F4\u65B0\u4E3APNG qingzhu",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/brush_qingzhu.png"
+    },
+    {
+      "Name": "Character.Ready\u80FD\u529BJSON\u548C\u771F\u5B9E\u6570\u91CF\u4E0D\u53D8 qingzhu",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "Character.Ready\u771F\u5B9EItemData\u66F4\u65B0\u4E3APNG jinghao",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/brush_jinghao.png"
+    },
+    {
+      "Name": "Character.Ready\u80FD\u529BJSON\u548C\u771F\u5B9E\u6570\u91CF\u4E0D\u53D8 jinghao",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "Character.Ready\u771F\u5B9EItemData\u66F4\u65B0\u4E3APNG cangfeng",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/brush_cangfeng.png"
+    },
+    {
+      "Name": "Character.Ready\u80FD\u529BJSON\u548C\u771F\u5B9E\u6570\u91CF\u4E0D\u53D8 cangfeng",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "Character.Ready\u6240\u6709\u65E2\u5B58\u5B9E\u7269\u8DEF\u5F84\u8EAB\u4EFD\u4F4D\u7F6E\u671D\u5411\u5B8C\u5168\u4E0D\u53D8",
+      "Passed": true,
+      "Detail": "added=8fca97bbee85460f834c50634e6a5411:res://resources/entities/items/clothing/\u7389\u865A\u5185\u95E8\u5E38\u670D.tres:chest:2,0:0; removed="
+    },
+    {
+      "Name": "Character.Ready\u4EC5\u5141\u8BB8\u6B63\u5E38\u9996\u6B21\u7A7F\u6234\u521D\u59CB\u5316\u7684\u4E00\u4EF6\u771F\u5B9E\u8863\u7740",
+      "Passed": true,
+      "Detail": "added=8fca97bbee85460f834c50634e6a5411:res://resources/entities/items/clothing/\u7389\u865A\u5185\u95E8\u5E38\u670D.tres:chest:2,0:0; removed="
+    },
+    {
+      "Name": "Character.Ready\u4E0D\u6263\u7CBE\u529B\u7075\u77F3\u3001\u4E0D\u589E\u52A0\u5236\u4F5C\u8BB0\u5F55",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u7F13\u5B58\u547D\u4E2D\u4E5F\u6D3E\u751F\u66F4\u65B0PNG paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u7F13\u5B58\u547D\u4E2D\u4E5F\u6D3E\u751F\u66F4\u65B0PNG ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u7F13\u5B58\u547D\u4E2D\u4E5F\u6D3E\u751F\u66F4\u65B0PNG hushen",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u7F13\u5B58\u547D\u4E2D\u4E5F\u6D3E\u751F\u66F4\u65B0PNG yanshi",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u7F13\u5B58\u547D\u4E2D\u4E5F\u6D3E\u751F\u66F4\u65B0PNG qingzhu",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u7F13\u5B58\u547D\u4E2D\u4E5F\u6D3E\u751F\u66F4\u65B0PNG jinghao",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u7F13\u5B58\u547D\u4E2D\u4E5F\u6D3E\u751F\u66F4\u65B0PNG cangfeng",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "RestoreDefinitions\u5DF2\u6709\u6587\u4EF6\u771F\u5B9EItemData\u66F4\u65B0\u4E3APNG paper",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/paper.png"
+    },
+    {
+      "Name": "RestoreDefinitions\u5DF2\u6709\u6587\u4EF6\u80FD\u529BJSON\u548C\u771F\u5B9E\u6570\u91CF\u4E0D\u53D8 paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "RestoreDefinitions\u5DF2\u6709\u6587\u4EF6\u771F\u5B9EItemData\u66F4\u65B0\u4E3APNG ink",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/ink.png"
+    },
+    {
+      "Name": "RestoreDefinitions\u5DF2\u6709\u6587\u4EF6\u80FD\u529BJSON\u548C\u771F\u5B9E\u6570\u91CF\u4E0D\u53D8 ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "RestoreDefinitions\u5DF2\u6709\u6587\u4EF6\u771F\u5B9EItemData\u66F4\u65B0\u4E3APNG hushen",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/hushen.png"
+    },
+    {
+      "Name": "RestoreDefinitions\u5DF2\u6709\u6587\u4EF6\u80FD\u529BJSON\u548C\u771F\u5B9E\u6570\u91CF\u4E0D\u53D8 hushen",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "RestoreDefinitions\u5DF2\u6709\u6587\u4EF6\u771F\u5B9EItemData\u66F4\u65B0\u4E3APNG yanshi",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/yanshi.png"
+    },
+    {
+      "Name": "RestoreDefinitions\u5DF2\u6709\u6587\u4EF6\u80FD\u529BJSON\u548C\u771F\u5B9E\u6570\u91CF\u4E0D\u53D8 yanshi",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "RestoreDefinitions\u5DF2\u6709\u6587\u4EF6\u771F\u5B9EItemData\u66F4\u65B0\u4E3APNG qingzhu",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/brush_qingzhu.png"
+    },
+    {
+      "Name": "RestoreDefinitions\u5DF2\u6709\u6587\u4EF6\u80FD\u529BJSON\u548C\u771F\u5B9E\u6570\u91CF\u4E0D\u53D8 qingzhu",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "RestoreDefinitions\u5DF2\u6709\u6587\u4EF6\u771F\u5B9EItemData\u66F4\u65B0\u4E3APNG jinghao",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/brush_jinghao.png"
+    },
+    {
+      "Name": "RestoreDefinitions\u5DF2\u6709\u6587\u4EF6\u80FD\u529BJSON\u548C\u771F\u5B9E\u6570\u91CF\u4E0D\u53D8 jinghao",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "RestoreDefinitions\u5DF2\u6709\u6587\u4EF6\u771F\u5B9EItemData\u66F4\u65B0\u4E3APNG cangfeng",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/brush_cangfeng.png"
+    },
+    {
+      "Name": "RestoreDefinitions\u5DF2\u6709\u6587\u4EF6\u80FD\u529BJSON\u548C\u771F\u5B9E\u6570\u91CF\u4E0D\u53D8 cangfeng",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "RestoreDefinitions\u5DF2\u6709\u6587\u4EF6\u8DEF\u5F84\u8EAB\u4EFD\u4F4D\u7F6E\u671D\u5411\u5B8C\u5168\u4E0D\u53D8",
+      "Passed": true,
+      "Detail": "added=; removed="
+    },
+    {
+      "Name": "RestoreDefinitions\u5DF2\u6709\u6587\u4EF6\u4E0D\u6263\u7CBE\u529B\u7075\u77F3\u3001\u4E0D\u589E\u52A0\u5236\u4F5C\u8BB0\u5F55",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4F7F\u7528\u6B63\u5F0F200\u683C\u539F\u751F\u884C\u56CA",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u666E\u901A\u884C\u56CA\u5B9E\u9645\u56FE\u50CF\u63A7\u4EF6\u52A0\u8F7D\u65B0PNG paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u666E\u901A\u884C\u56CA\u5B9E\u9645\u56FE\u50CF\u63A7\u4EF6\u52A0\u8F7D\u65B0PNG ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u666E\u901A\u884C\u56CA\u5B9E\u9645\u56FE\u50CF\u63A7\u4EF6\u52A0\u8F7D\u65B0PNG hushen",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u666E\u901A\u884C\u56CA\u5B9E\u9645\u56FE\u50CF\u63A7\u4EF6\u52A0\u8F7D\u65B0PNG yanshi",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u666E\u901A\u884C\u56CA\u5B9E\u9645\u56FE\u50CF\u63A7\u4EF6\u52A0\u8F7D\u65B0PNG qingzhu",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u666E\u901A\u884C\u56CA\u5B9E\u9645\u56FE\u50CF\u63A7\u4EF6\u52A0\u8F7D\u65B0PNG jinghao",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u666E\u901A\u884C\u56CA\u5B9E\u9645\u56FE\u50CF\u63A7\u4EF6\u52A0\u8F7D\u65B0PNG cangfeng",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u622A\u56FE\u4F7F\u7528\u539F\u751F\u7A97\u53E3 inventory_seven_products",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4FDD\u5B58\u7F8E\u672F\u5B9E\u673A inventory_seven_products",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65E7\u7269\u5939\u5177\u786E\u5B9E\u6CA1\u6709\u53EF\u501F\u7528\u7684description paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u5171\u7528\u60AC\u505C\u9010\u884C\u5C55\u793A\u56DB\u4E2A\u771F\u5B9E\u51BB\u7ED3\u5B57\u6BB5",
+      "Passed": true,
+      "Detail": "\u7075\u6027\uFF1A\u65E0\u54C1\n\u627F\u58A8\u91CF\uFF1A\u4E2D\n\u6E17\u58A8\u6027\uFF1A\u9002\u4E2D\n\u97E7\u6027\uFF1A\u9002\u4E2D"
+    },
+    {
+      "Name": "paper\u6B63\u6587\u4E0D\u6CC4\u9732\u5185\u90E8\u5206\u7C7B\u8DEF\u5F84\u9884\u7B97\u6216\u65E7\u5360\u4F4D\u8BF4\u660E",
+      "Passed": true,
+      "Detail": "\u7B26\u7EB8\u4E94\u884C\uFF1A\u65E0\u7075\u6027\uFF1A\u65E0\u54C1\n\u627F\u58A8\u91CF\uFF1A\u4E2D\n\u6E17\u58A8\u6027\uFF1A\u9002\u4E2D\n\u97E7\u6027\uFF1A\u9002\u4E2D"
+    },
+    {
+      "Name": "paper\u4F7F\u7528\u5E38\u89C4\u7269\u54C1\u680F\u5BBD\u56FE\u6807\u548C\u540D\u79F0\u4E0B\u771F\u5B9E\u884C\u56CA\u683C\u56FE\uFF0C\u4E0D\u751F\u6210\u6218\u6597\u5E95\u680F",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "paper\u60AC\u505C\u4F7F\u7528\u5DF2\u6709\u5B9E\u9645\u7269\u54C1PNG",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/paper.png"
+    },
+    {
+      "Name": "\u65E7\u7269\u5939\u5177\u786E\u5B9E\u6CA1\u6709\u53EF\u501F\u7528\u7684description ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u5171\u7528\u60AC\u505C\u9010\u884C\u5C55\u793A\u56DB\u4E2A\u771F\u5B9E\u51BB\u7ED3\u5B57\u6BB5",
+      "Passed": true,
+      "Detail": "\u529F\u7528\uFF1A\u62A4\u3001\u56FA\n\u7075\u6027\uFF1A\u4E5D\u54C1\n\u6D53\u6DE1\uFF1A\u9002\u4E2D\n\u6D41\u52A8\u6027\uFF1A\u9002\u4E2D"
+    },
+    {
+      "Name": "ink\u6B63\u6587\u4E0D\u6CC4\u9732\u5185\u90E8\u5206\u7C7B\u8DEF\u5F84\u9884\u7B97\u6216\u65E7\u5360\u4F4D\u8BF4\u660E",
+      "Passed": true,
+      "Detail": "\u7B26\u58A8\u4E94\u884C\uFF1A\u65E0\u529F\u7528\uFF1A\u62A4\u3001\u56FA\n\u7075\u6027\uFF1A\u4E5D\u54C1\n\u6D53\u6DE1\uFF1A\u9002\u4E2D\n\u6D41\u52A8\u6027\uFF1A\u9002\u4E2D"
+    },
+    {
+      "Name": "ink\u4F7F\u7528\u5E38\u89C4\u7269\u54C1\u680F\u5BBD\u56FE\u6807\u548C\u540D\u79F0\u4E0B\u771F\u5B9E\u884C\u56CA\u683C\u56FE\uFF0C\u4E0D\u751F\u6210\u6218\u6597\u5E95\u680F",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "ink\u60AC\u505C\u4F7F\u7528\u5DF2\u6709\u5B9E\u9645\u7269\u54C1PNG",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/ink.png"
+    },
+    {
+      "Name": "\u65E7\u7269\u5939\u5177\u786E\u5B9E\u6CA1\u6709\u53EF\u501F\u7528\u7684description qingzhu",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "qingzhu\u5171\u7528\u60AC\u505C\u9010\u884C\u5C55\u793A\u56DB\u4E2A\u771F\u5B9E\u51BB\u7ED3\u5B57\u6BB5",
+      "Passed": true,
+      "Detail": "\u627F\u58A8\uFF1A\u9002\u4E2D\n\u63A7\u58A8\uFF1A\u9002\u4E2D\n\u8FD0\u950B\uFF1A\u9002\u4E2D\n\u6536\u950B\uFF1A\u9002\u4E2D"
+    },
+    {
+      "Name": "qingzhu\u6B63\u6587\u4E0D\u6CC4\u9732\u5185\u90E8\u5206\u7C7B\u8DEF\u5F84\u9884\u7B97\u6216\u65E7\u5360\u4F4D\u8BF4\u660E",
+      "Passed": true,
+      "Detail": "\u9752\u7AF9\u7B26\u7B14\u753B\u7B26\u7528\u5177\u627F\u58A8\uFF1A\u9002\u4E2D\n\u63A7\u58A8\uFF1A\u9002\u4E2D\n\u8FD0\u950B\uFF1A\u9002\u4E2D\n\u6536\u950B\uFF1A\u9002\u4E2D"
+    },
+    {
+      "Name": "qingzhu\u4F7F\u7528\u5E38\u89C4\u7269\u54C1\u680F\u5BBD\u56FE\u6807\u548C\u540D\u79F0\u4E0B\u771F\u5B9E\u884C\u56CA\u683C\u56FE\uFF0C\u4E0D\u751F\u6210\u6218\u6597\u5E95\u680F",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "qingzhu\u60AC\u505C\u4F7F\u7528\u5DF2\u6709\u5B9E\u9645\u7269\u54C1PNG",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/brush_qingzhu.png"
+    },
+    {
+      "Name": "\u65E7\u7269\u5939\u5177\u786E\u5B9E\u6CA1\u6709\u53EF\u501F\u7528\u7684description jinghao",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "jinghao\u5171\u7528\u60AC\u505C\u9010\u884C\u5C55\u793A\u56DB\u4E2A\u771F\u5B9E\u51BB\u7ED3\u5B57\u6BB5",
+      "Passed": true,
+      "Detail": "\u627F\u58A8\uFF1A\u9002\u4E2D\n\u63A7\u58A8\uFF1A\u504F\u9AD8\n\u8FD0\u950B\uFF1A\u9002\u4E2D\n\u6536\u950B\uFF1A\u504F\u9AD8"
+    },
+    {
+      "Name": "jinghao\u6B63\u6587\u4E0D\u6CC4\u9732\u5185\u90E8\u5206\u7C7B\u8DEF\u5F84\u9884\u7B97\u6216\u65E7\u5360\u4F4D\u8BF4\u660E",
+      "Passed": true,
+      "Detail": "\u9759\u6BEB\u7B26\u7B14\u753B\u7B26\u7528\u5177\u627F\u58A8\uFF1A\u9002\u4E2D\n\u63A7\u58A8\uFF1A\u504F\u9AD8\n\u8FD0\u950B\uFF1A\u9002\u4E2D\n\u6536\u950B\uFF1A\u504F\u9AD8"
+    },
+    {
+      "Name": "jinghao\u4F7F\u7528\u5E38\u89C4\u7269\u54C1\u680F\u5BBD\u56FE\u6807\u548C\u540D\u79F0\u4E0B\u771F\u5B9E\u884C\u56CA\u683C\u56FE\uFF0C\u4E0D\u751F\u6210\u6218\u6597\u5E95\u680F",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "jinghao\u60AC\u505C\u4F7F\u7528\u5DF2\u6709\u5B9E\u9645\u7269\u54C1PNG",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/brush_jinghao.png"
+    },
+    {
+      "Name": "\u65E7\u7269\u5939\u5177\u786E\u5B9E\u6CA1\u6709\u53EF\u501F\u7528\u7684description cangfeng",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "cangfeng\u5171\u7528\u60AC\u505C\u9010\u884C\u5C55\u793A\u56DB\u4E2A\u771F\u5B9E\u51BB\u7ED3\u5B57\u6BB5",
+      "Passed": true,
+      "Detail": "\u627F\u58A8\uFF1A\u504F\u9AD8\n\u63A7\u58A8\uFF1A\u9002\u4E2D\n\u8FD0\u950B\uFF1A\u504F\u9AD8\n\u6536\u950B\uFF1A\u9002\u4E2D"
+    },
+    {
+      "Name": "cangfeng\u6B63\u6587\u4E0D\u6CC4\u9732\u5185\u90E8\u5206\u7C7B\u8DEF\u5F84\u9884\u7B97\u6216\u65E7\u5360\u4F4D\u8BF4\u660E",
+      "Passed": true,
+      "Detail": "\u85CF\u950B\u7B26\u7B14\u753B\u7B26\u7528\u5177\u627F\u58A8\uFF1A\u504F\u9AD8\n\u63A7\u58A8\uFF1A\u9002\u4E2D\n\u8FD0\u950B\uFF1A\u504F\u9AD8\n\u6536\u950B\uFF1A\u9002\u4E2D"
+    },
+    {
+      "Name": "cangfeng\u4F7F\u7528\u5E38\u89C4\u7269\u54C1\u680F\u5BBD\u56FE\u6807\u548C\u540D\u79F0\u4E0B\u771F\u5B9E\u884C\u56CA\u683C\u56FE\uFF0C\u4E0D\u751F\u6210\u6218\u6597\u5E95\u680F",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "cangfeng\u60AC\u505C\u4F7F\u7528\u5DF2\u6709\u5B9E\u9645\u7269\u54C1PNG",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/brush_cangfeng.png"
+    },
+    {
+      "Name": "\u65E7\u63CF\u8FF0\u6210\u54C1\u5171\u7528\u60AC\u505C\u9010\u884C\u5C55\u793A\u56DB\u4E2A\u771F\u5B9E\u51BB\u7ED3\u5B57\u6BB5",
+      "Passed": true,
+      "Detail": "\u7075\u6027\uFF1A\u65E0\u54C1\n\u627F\u58A8\u91CF\uFF1A\u4E2D\n\u6E17\u58A8\u6027\uFF1A\u9002\u4E2D\n\u97E7\u6027\uFF1A\u9002\u4E2D"
+    },
+    {
+      "Name": "\u65E7\u63CF\u8FF0\u6210\u54C1\u6B63\u6587\u4E0D\u6CC4\u9732\u5185\u90E8\u5206\u7C7B\u8DEF\u5F84\u9884\u7B97\u6216\u65E7\u5360\u4F4D\u8BF4\u660E",
+      "Passed": true,
+      "Detail": "\u65E7\u8BF4\u660E\u7B26\u7EB8\u4E94\u884C\uFF1A\u65E0\u7075\u6027\uFF1A\u65E0\u54C1\n\u627F\u58A8\u91CF\uFF1A\u4E2D\n\u6E17\u58A8\u6027\uFF1A\u9002\u4E2D\n\u97E7\u6027\uFF1A\u9002\u4E2D"
+    },
+    {
+      "Name": "\u65E7\u63CF\u8FF0\u6210\u54C1\u4F7F\u7528\u5E38\u89C4\u7269\u54C1\u680F\u5BBD\u56FE\u6807\u548C\u540D\u79F0\u4E0B\u771F\u5B9E\u884C\u56CA\u683C\u56FE\uFF0C\u4E0D\u751F\u6210\u6218\u6597\u5E95\u680F",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65E7\u63CF\u8FF0\u6210\u54C1\u60AC\u505C\u4F7F\u7528\u5DF2\u6709\u5B9E\u9645\u7269\u54C1PNG",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/paper.png"
+    },
+    {
+      "Name": "\u663E\u793A\u4E0D\u501F\u65E7description\u4E5F\u4E0D\u6539\u5199\u65E7\u7269\u8D44\u6599",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4E0D\u540C\u7EB8\u6027\u4E0E\u5B9E\u9645\u4FDD\u7559\u4E94\u884C\u7684\u9694\u79BB\u53D8\u4F53\u4ECD\u662F\u5408\u6CD5\u51BB\u7ED3\u6210\u54C1",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4E0D\u540C\u6210\u54C1\u5404\u8BFB\u81EA\u5DF1\u7684\u7EB8\u6027\u548C\u5DF2\u4FDD\u7559\u4E94\u884C",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5F53\u524D\u9020\u8BE3\u6539\u53D8\u4E0D\u4F1A\u91CD\u7B97\u65E7\u7EB8\u7684\u51BB\u7ED3\u5C5E\u6027",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u7B80\u7565\u548C\u8BE6\u7EC6\u90FD\u663E\u793A\u76F8\u540C\u6210\u54C1\u5B57\u6BB5\uFF0C\u4E0D\u8FFD\u52A0\u6765\u6E90\u8D26\u6216\u8BA1\u7B97\u5360\u4F4D",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5931\u6548\u6210\u54C1\u660E\u786E\u63D0\u793A\u4E14\u4E0D\u9000\u56DE\u901A\u7528\u4E16\u754C\u4F7F\u7528\u8BF4\u660E 1",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5931\u6548\u6210\u54C1\u660E\u786E\u63D0\u793A\u4E14\u4E0D\u9000\u56DE\u901A\u7528\u4E16\u754C\u4F7F\u7528\u8BF4\u660E 0",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5931\u6548\u6210\u54C1\u660E\u786E\u63D0\u793A\u4E14\u4E0D\u9000\u56DE\u901A\u7528\u4E16\u754C\u4F7F\u7528\u8BF4\u660E 29",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u56FA\u5B9A\u6218\u6597\u7B26\u7EE7\u7EED\u4F7F\u7528\u539F\u6709\u6548\u679C\u8D39\u7528\u548C\u6218\u6597\u5360\u683C hushen",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u56FA\u5B9A\u6218\u6597\u7B26\u7EE7\u7EED\u4F7F\u7528\u539F\u6709\u6548\u679C\u8D39\u7528\u548C\u6218\u6597\u5360\u683C yanshi",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u666E\u901A\u539F\u6599\u7EE7\u7EED\u4F7F\u7528\u65E2\u6709\u6750\u6027\u60AC\u505C\u5206\u6D3E",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u6210\u54C1\u4FE1\u606F\u751F\u6210\u53CA\u6A21\u5F0F\u5207\u6362\u4E0D\u6539\u53D8\u7269\u54C1\u80FD\u529B\u5E93\u5B58\u9020\u8BE3\u7528\u5EA6\u548C\u5386\u6CD5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA paper\u771F\u5B9E\u60AC\u505C\u6765\u6E90\u5728\u7A97\u53E3\u5185",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA paper\u771F\u5B9E\u6307\u9488\u89E6\u53D1\u6B63\u786E\u6210\u54C1\u4FE1\u606F\u680F",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA paper\u5C4F\u5E55\u6B63\u6587\u5B8C\u6574\u5448\u73B0\u5171\u7528\u51BB\u7ED3\u6210\u54C1\u4FE1\u606F\u4E00\u6B21",
+      "Passed": true,
+      "Detail": "\u7075\u6027\uFF1A\u65E0\u54C1\n\u627F\u58A8\u91CF\uFF1A\u4E2D\n\u6E17\u58A8\u6027\uFF1A\u9002\u4E2D\n\u97E7\u6027\uFF1A\u9002\u4E2D"
+    },
+    {
+      "Name": "\u884C\u56CA paper\u5B8C\u6574\u4FE1\u606F\u680F\u4F4D\u4E8E\u7A97\u53E3\u5185",
+      "Passed": true,
+      "Detail": "(0, 0), (340, 288)"
+    },
+    {
+      "Name": "\u884C\u56CA paper\u4FE1\u606F\u680F\u548C\u5168\u90E8\u5B50\u63A7\u4EF6\u900F\u4F20\u9F20\u6807",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA paper\u5B9E\u9645\u884C\u56CA\u683C\u56FE\u4F4D\u4E8E\u540D\u79F0\u4E0B\u65B9",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA paper\u7EB8\u58A8\u7B14\u4E0D\u7559\u4E0B\u6218\u6597\u5E95\u680F\u6216\u7A7A\u6807\u7B7E",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA paper\u5B9E\u9645\u4FE1\u606F\u680F\u4FDD\u630196\u50CF\u7D20PNG\u4E3B\u56FE",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4FDD\u5B58\u5B9E\u9645\u60AC\u505C\u56FE inventory_hover_paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA ink\u771F\u5B9E\u60AC\u505C\u6765\u6E90\u5728\u7A97\u53E3\u5185",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA ink\u771F\u5B9E\u6307\u9488\u89E6\u53D1\u6B63\u786E\u6210\u54C1\u4FE1\u606F\u680F",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA ink\u5C4F\u5E55\u6B63\u6587\u5B8C\u6574\u5448\u73B0\u5171\u7528\u51BB\u7ED3\u6210\u54C1\u4FE1\u606F\u4E00\u6B21",
+      "Passed": true,
+      "Detail": "\u529F\u7528\uFF1A\u62A4\u3001\u56FA\n\u7075\u6027\uFF1A\u4E5D\u54C1\n\u6D53\u6DE1\uFF1A\u9002\u4E2D\n\u6D41\u52A8\u6027\uFF1A\u9002\u4E2D"
+    },
+    {
+      "Name": "\u884C\u56CA ink\u5B8C\u6574\u4FE1\u606F\u680F\u4F4D\u4E8E\u7A97\u53E3\u5185",
+      "Passed": true,
+      "Detail": "(1172, 432), (340, 288)"
+    },
+    {
+      "Name": "\u884C\u56CA ink\u4FE1\u606F\u680F\u548C\u5168\u90E8\u5B50\u63A7\u4EF6\u900F\u4F20\u9F20\u6807",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA ink\u5B9E\u9645\u884C\u56CA\u683C\u56FE\u4F4D\u4E8E\u540D\u79F0\u4E0B\u65B9",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA ink\u7EB8\u58A8\u7B14\u4E0D\u7559\u4E0B\u6218\u6597\u5E95\u680F\u6216\u7A7A\u6807\u7B7E",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA ink\u5B9E\u9645\u4FE1\u606F\u680F\u4FDD\u630196\u50CF\u7D20PNG\u4E3B\u56FE",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4FDD\u5B58\u5B9E\u9645\u60AC\u505C\u56FE inventory_hover_ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA qingzhu\u771F\u5B9E\u60AC\u505C\u6765\u6E90\u5728\u7A97\u53E3\u5185",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA qingzhu\u771F\u5B9E\u6307\u9488\u89E6\u53D1\u6B63\u786E\u6210\u54C1\u4FE1\u606F\u680F",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA qingzhu\u5C4F\u5E55\u6B63\u6587\u5B8C\u6574\u5448\u73B0\u5171\u7528\u51BB\u7ED3\u6210\u54C1\u4FE1\u606F\u4E00\u6B21",
+      "Passed": true,
+      "Detail": "\u627F\u58A8\uFF1A\u9002\u4E2D\n\u63A7\u58A8\uFF1A\u9002\u4E2D\n\u8FD0\u950B\uFF1A\u9002\u4E2D\n\u6536\u950B\uFF1A\u9002\u4E2D"
+    },
+    {
+      "Name": "\u884C\u56CA qingzhu\u5B8C\u6574\u4FE1\u606F\u680F\u4F4D\u4E8E\u7A97\u53E3\u5185",
+      "Passed": true,
+      "Detail": "(1208, 432), (340, 288)"
+    },
+    {
+      "Name": "\u884C\u56CA qingzhu\u4FE1\u606F\u680F\u548C\u5168\u90E8\u5B50\u63A7\u4EF6\u900F\u4F20\u9F20\u6807",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA qingzhu\u5B9E\u9645\u884C\u56CA\u683C\u56FE\u4F4D\u4E8E\u540D\u79F0\u4E0B\u65B9",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA qingzhu\u7EB8\u58A8\u7B14\u4E0D\u7559\u4E0B\u6218\u6597\u5E95\u680F\u6216\u7A7A\u6807\u7B7E",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA qingzhu\u5B9E\u9645\u4FE1\u606F\u680F\u4FDD\u630196\u50CF\u7D20PNG\u4E3B\u56FE",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4FDD\u5B58\u5B9E\u9645\u60AC\u505C\u56FE inventory_hover_qingzhu",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA jinghao\u771F\u5B9E\u60AC\u505C\u6765\u6E90\u5728\u7A97\u53E3\u5185",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA jinghao\u771F\u5B9E\u6307\u9488\u89E6\u53D1\u6B63\u786E\u6210\u54C1\u4FE1\u606F\u680F",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA jinghao\u5C4F\u5E55\u6B63\u6587\u5B8C\u6574\u5448\u73B0\u5171\u7528\u51BB\u7ED3\u6210\u54C1\u4FE1\u606F\u4E00\u6B21",
+      "Passed": true,
+      "Detail": "\u627F\u58A8\uFF1A\u9002\u4E2D\n\u63A7\u58A8\uFF1A\u504F\u9AD8\n\u8FD0\u950B\uFF1A\u9002\u4E2D\n\u6536\u950B\uFF1A\u504F\u9AD8"
+    },
+    {
+      "Name": "\u884C\u56CA jinghao\u5B8C\u6574\u4FE1\u606F\u680F\u4F4D\u4E8E\u7A97\u53E3\u5185",
+      "Passed": true,
+      "Detail": "(1316, 432), (340, 288)"
+    },
+    {
+      "Name": "\u884C\u56CA jinghao\u4FE1\u606F\u680F\u548C\u5168\u90E8\u5B50\u63A7\u4EF6\u900F\u4F20\u9F20\u6807",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA jinghao\u5B9E\u9645\u884C\u56CA\u683C\u56FE\u4F4D\u4E8E\u540D\u79F0\u4E0B\u65B9",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA jinghao\u7EB8\u58A8\u7B14\u4E0D\u7559\u4E0B\u6218\u6597\u5E95\u680F\u6216\u7A7A\u6807\u7B7E",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA jinghao\u5B9E\u9645\u4FE1\u606F\u680F\u4FDD\u630196\u50CF\u7D20PNG\u4E3B\u56FE",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4FDD\u5B58\u5B9E\u9645\u60AC\u505C\u56FE inventory_hover_jinghao",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA cangfeng\u771F\u5B9E\u60AC\u505C\u6765\u6E90\u5728\u7A97\u53E3\u5185",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA cangfeng\u771F\u5B9E\u6307\u9488\u89E6\u53D1\u6B63\u786E\u6210\u54C1\u4FE1\u606F\u680F",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA cangfeng\u5C4F\u5E55\u6B63\u6587\u5B8C\u6574\u5448\u73B0\u5171\u7528\u51BB\u7ED3\u6210\u54C1\u4FE1\u606F\u4E00\u6B21",
+      "Passed": true,
+      "Detail": "\u627F\u58A8\uFF1A\u504F\u9AD8\n\u63A7\u58A8\uFF1A\u9002\u4E2D\n\u8FD0\u950B\uFF1A\u504F\u9AD8\n\u6536\u950B\uFF1A\u9002\u4E2D"
+    },
+    {
+      "Name": "\u884C\u56CA cangfeng\u5B8C\u6574\u4FE1\u606F\u680F\u4F4D\u4E8E\u7A97\u53E3\u5185",
+      "Passed": true,
+      "Detail": "(1352, 432), (340, 288)"
+    },
+    {
+      "Name": "\u884C\u56CA cangfeng\u4FE1\u606F\u680F\u548C\u5168\u90E8\u5B50\u63A7\u4EF6\u900F\u4F20\u9F20\u6807",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA cangfeng\u5B9E\u9645\u884C\u56CA\u683C\u56FE\u4F4D\u4E8E\u540D\u79F0\u4E0B\u65B9",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA cangfeng\u7EB8\u58A8\u7B14\u4E0D\u7559\u4E0B\u6218\u6597\u5E95\u680F\u6216\u7A7A\u6807\u7B7E",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u884C\u56CA cangfeng\u5B9E\u9645\u4FE1\u606F\u680F\u4FDD\u630196\u50CF\u7D20PNG\u4E3B\u56FE",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4FDD\u5B58\u5B9E\u9645\u60AC\u505C\u56FE inventory_hover_cangfeng",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5B9E\u9645\u884C\u56CA\u8FDE\u7EED\u60AC\u505C\u4E0D\u6539\u53D8\u5E93\u5B58\u8EAB\u4EFD\u51BB\u7ED3\u6570\u636E\u9020\u8BE3\u7CBE\u529B\u548C\u5386\u6CD5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9996\u6B21\u6253\u5F00\u666E\u901A\u884C\u56CA\u771F\u5B9EItemData\u66F4\u65B0\u4E3APNG paper",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/paper.png"
+    },
+    {
+      "Name": "\u9996\u6B21\u6253\u5F00\u666E\u901A\u884C\u56CA\u80FD\u529BJSON\u548C\u771F\u5B9E\u6570\u91CF\u4E0D\u53D8 paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9996\u6B21\u6253\u5F00\u666E\u901A\u884C\u56CA\u771F\u5B9EItemData\u66F4\u65B0\u4E3APNG ink",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/ink.png"
+    },
+    {
+      "Name": "\u9996\u6B21\u6253\u5F00\u666E\u901A\u884C\u56CA\u80FD\u529BJSON\u548C\u771F\u5B9E\u6570\u91CF\u4E0D\u53D8 ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9996\u6B21\u6253\u5F00\u666E\u901A\u884C\u56CA\u771F\u5B9EItemData\u66F4\u65B0\u4E3APNG hushen",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/hushen.png"
+    },
+    {
+      "Name": "\u9996\u6B21\u6253\u5F00\u666E\u901A\u884C\u56CA\u80FD\u529BJSON\u548C\u771F\u5B9E\u6570\u91CF\u4E0D\u53D8 hushen",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9996\u6B21\u6253\u5F00\u666E\u901A\u884C\u56CA\u771F\u5B9EItemData\u66F4\u65B0\u4E3APNG yanshi",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/yanshi.png"
+    },
+    {
+      "Name": "\u9996\u6B21\u6253\u5F00\u666E\u901A\u884C\u56CA\u80FD\u529BJSON\u548C\u771F\u5B9E\u6570\u91CF\u4E0D\u53D8 yanshi",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9996\u6B21\u6253\u5F00\u666E\u901A\u884C\u56CA\u771F\u5B9EItemData\u66F4\u65B0\u4E3APNG qingzhu",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/brush_qingzhu.png"
+    },
+    {
+      "Name": "\u9996\u6B21\u6253\u5F00\u666E\u901A\u884C\u56CA\u80FD\u529BJSON\u548C\u771F\u5B9E\u6570\u91CF\u4E0D\u53D8 qingzhu",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9996\u6B21\u6253\u5F00\u666E\u901A\u884C\u56CA\u771F\u5B9EItemData\u66F4\u65B0\u4E3APNG jinghao",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/brush_jinghao.png"
+    },
+    {
+      "Name": "\u9996\u6B21\u6253\u5F00\u666E\u901A\u884C\u56CA\u80FD\u529BJSON\u548C\u771F\u5B9E\u6570\u91CF\u4E0D\u53D8 jinghao",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9996\u6B21\u6253\u5F00\u666E\u901A\u884C\u56CA\u771F\u5B9EItemData\u66F4\u65B0\u4E3APNG cangfeng",
+      "Passed": true,
+      "Detail": "res://textures/ui/talisman_crafting_painted_20261109/brush_cangfeng.png"
+    },
+    {
+      "Name": "\u9996\u6B21\u6253\u5F00\u666E\u901A\u884C\u56CA\u80FD\u529BJSON\u548C\u771F\u5B9E\u6570\u91CF\u4E0D\u53D8 cangfeng",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9996\u6B21\u6253\u5F00\u666E\u901A\u884C\u56CA\u8DEF\u5F84\u8EAB\u4EFD\u4F4D\u7F6E\u671D\u5411\u5B8C\u5168\u4E0D\u53D8",
+      "Passed": true,
+      "Detail": "added=; removed="
+    },
+    {
+      "Name": "\u9996\u6B21\u6253\u5F00\u666E\u901A\u884C\u56CA\u4E0D\u6263\u7CBE\u529B\u7075\u77F3\u3001\u4E0D\u589E\u52A0\u5236\u4F5C\u8BB0\u5F55",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u663E\u793A\u66F4\u65B0\u4E0E\u884C\u56CA\u6D4F\u89C8\u4E0D\u63A8\u8FDB\u5386\u6CD5",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65B0\u5236\u54C1\u4F7F\u7528\u6B63\u5F0F\u539F\u6599\u5B9E\u9645\u5E93\u5B58",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u5236\u4F5C\u6210\u529F paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65B0\u5236\u7EB8\u58A8\u7ED1\u5B9APNG\u4E14\u80FD\u529B\u72EC\u7ACB\u4FDD\u5B58 paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u771F\u5B9E\u5236\u4F5C\u6210\u529F ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u65B0\u5236\u7EB8\u58A8\u7ED1\u5B9APNG\u4E14\u80FD\u529B\u72EC\u7ACB\u4FDD\u5B58 ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5236\u7EB8\u754C\u9762\u4E2D\u592E\u5B9E\u9645\u52A0\u8F7D\u65B0\u5BA3\u7EB8PNG\u800C\u975ESVG\u56DE\u9000",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u622A\u56FE\u4F7F\u7528\u539F\u751F\u7A97\u53E3 paper_painted_scene",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4FDD\u5B58\u7F8E\u672F\u5B9E\u673A paper_painted_scene",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5B9E\u9645\u9009\u62E9\u6309\u94AE\u53EF\u7528 CraftTab_drawing",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5B9E\u9645\u9009\u62E9\u6309\u94AE\u53EF\u7528 ChooseProduct_paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9009\u62E9\u5361\u786E\u5B9E\u6CE8\u518C\u6210\u54C1\u4FE1\u606F\u6765\u6E90 paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5236\u7B26\u9009\u62E9 paper\u771F\u5B9E\u60AC\u505C\u6765\u6E90\u5728\u7A97\u53E3\u5185",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5236\u7B26\u9009\u62E9 paper\u771F\u5B9E\u6307\u9488\u89E6\u53D1\u6B63\u786E\u6210\u54C1\u4FE1\u606F\u680F",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5236\u7B26\u9009\u62E9 paper\u5C4F\u5E55\u6B63\u6587\u5B8C\u6574\u5448\u73B0\u5171\u7528\u51BB\u7ED3\u6210\u54C1\u4FE1\u606F\u4E00\u6B21",
+      "Passed": true,
+      "Detail": "\u7075\u6027\uFF1A\u65E0\u54C1\n\u627F\u58A8\u91CF\uFF1A\u4E2D\n\u6E17\u58A8\u6027\uFF1A\u9002\u4E2D\n\u97E7\u6027\uFF1A\u9002\u4E2D"
+    },
+    {
+      "Name": "\u5236\u7B26\u9009\u62E9 paper\u5B8C\u6574\u4FE1\u606F\u680F\u4F4D\u4E8E\u7A97\u53E3\u5185",
+      "Passed": true,
+      "Detail": "(970.3357, 393.66632), (340, 280)"
+    },
+    {
+      "Name": "\u5236\u7B26\u9009\u62E9 paper\u4FE1\u606F\u680F\u548C\u5168\u90E8\u5B50\u63A7\u4EF6\u900F\u4F20\u9F20\u6807",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5236\u7B26\u9009\u62E9 paper\u5B9E\u9645\u884C\u56CA\u683C\u56FE\u4F4D\u4E8E\u540D\u79F0\u4E0B\u65B9",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5236\u7B26\u9009\u62E9 paper\u7EB8\u58A8\u7B14\u4E0D\u7559\u4E0B\u6218\u6597\u5E95\u680F\u6216\u7A7A\u6807\u7B7E",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5236\u7B26\u9009\u62E9 paper\u5B9E\u9645\u4FE1\u606F\u680F\u4FDD\u630196\u50CF\u7D20PNG\u4E3B\u56FE",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4FDD\u5B58\u5B9E\u9645\u60AC\u505C\u56FE picker_hover_paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5B9E\u9645\u9009\u62E9\u6309\u94AE\u53EF\u7528 PickProduct_talisman_art_fixture_paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4FE1\u606F\u680F\u663E\u793A\u671F\u95F4\u771F\u5B9E\u9009\u62E9\u70B9\u51FB\u4ECD\u751F\u6548 paper",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5B9E\u9645\u9009\u62E9\u6309\u94AE\u53EF\u7528 ChooseProduct_ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9009\u62E9\u5361\u786E\u5B9E\u6CE8\u518C\u6210\u54C1\u4FE1\u606F\u6765\u6E90 ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5236\u7B26\u9009\u62E9 ink\u771F\u5B9E\u60AC\u505C\u6765\u6E90\u5728\u7A97\u53E3\u5185",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5236\u7B26\u9009\u62E9 ink\u771F\u5B9E\u6307\u9488\u89E6\u53D1\u6B63\u786E\u6210\u54C1\u4FE1\u606F\u680F",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5236\u7B26\u9009\u62E9 ink\u5C4F\u5E55\u6B63\u6587\u5B8C\u6574\u5448\u73B0\u5171\u7528\u51BB\u7ED3\u6210\u54C1\u4FE1\u606F\u4E00\u6B21",
+      "Passed": true,
+      "Detail": "\u529F\u7528\uFF1A\u62A4\u3001\u56FA\n\u7075\u6027\uFF1A\u4E5D\u54C1\n\u6D53\u6DE1\uFF1A\u9002\u4E2D\n\u6D41\u52A8\u6027\uFF1A\u9002\u4E2D"
+    },
+    {
+      "Name": "\u5236\u7B26\u9009\u62E9 ink\u5B8C\u6574\u4FE1\u606F\u680F\u4F4D\u4E8E\u7A97\u53E3\u5185",
+      "Passed": true,
+      "Detail": "(970.3357, 393.66632), (340, 280)"
+    },
+    {
+      "Name": "\u5236\u7B26\u9009\u62E9 ink\u4FE1\u606F\u680F\u548C\u5168\u90E8\u5B50\u63A7\u4EF6\u900F\u4F20\u9F20\u6807",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5236\u7B26\u9009\u62E9 ink\u5B9E\u9645\u884C\u56CA\u683C\u56FE\u4F4D\u4E8E\u540D\u79F0\u4E0B\u65B9",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5236\u7B26\u9009\u62E9 ink\u7EB8\u58A8\u7B14\u4E0D\u7559\u4E0B\u6218\u6597\u5E95\u680F\u6216\u7A7A\u6807\u7B7E",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5236\u7B26\u9009\u62E9 ink\u5B9E\u9645\u4FE1\u606F\u680F\u4FDD\u630196\u50CF\u7D20PNG\u4E3B\u56FE",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4FDD\u5B58\u5B9E\u9645\u60AC\u505C\u56FE picker_hover_ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5B9E\u9645\u9009\u62E9\u6309\u94AE\u53EF\u7528 PickProduct_talisman_art_fixture_ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4FE1\u606F\u680F\u663E\u793A\u671F\u95F4\u771F\u5B9E\u9009\u62E9\u70B9\u51FB\u4ECD\u751F\u6548 ink",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5B9E\u9645\u9009\u62E9\u6309\u94AE\u53EF\u7528 FinishProductSelection",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5B9E\u9645\u9009\u62E9\u6309\u94AE\u53EF\u7528 ChooseProduct_brush",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u9009\u62E9\u5361\u786E\u5B9E\u6CE8\u518C\u6210\u54C1\u4FE1\u606F\u6765\u6E90 brush",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5236\u7B26\u9009\u62E9 brush\u771F\u5B9E\u60AC\u505C\u6765\u6E90\u5728\u7A97\u53E3\u5185",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5236\u7B26\u9009\u62E9 brush\u771F\u5B9E\u6307\u9488\u89E6\u53D1\u6B63\u786E\u6210\u54C1\u4FE1\u606F\u680F",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5236\u7B26\u9009\u62E9 brush\u5C4F\u5E55\u6B63\u6587\u5B8C\u6574\u5448\u73B0\u5171\u7528\u51BB\u7ED3\u6210\u54C1\u4FE1\u606F\u4E00\u6B21",
+      "Passed": true,
+      "Detail": "\u627F\u58A8\uFF1A\u9002\u4E2D\n\u63A7\u58A8\uFF1A\u9002\u4E2D\n\u8FD0\u950B\uFF1A\u9002\u4E2D\n\u6536\u950B\uFF1A\u9002\u4E2D"
+    },
+    {
+      "Name": "\u5236\u7B26\u9009\u62E9 brush\u5B8C\u6574\u4FE1\u606F\u680F\u4F4D\u4E8E\u7A97\u53E3\u5185",
+      "Passed": true,
+      "Detail": "(970.3357, 393.66632), (340, 280)"
+    },
+    {
+      "Name": "\u5236\u7B26\u9009\u62E9 brush\u4FE1\u606F\u680F\u548C\u5168\u90E8\u5B50\u63A7\u4EF6\u900F\u4F20\u9F20\u6807",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5236\u7B26\u9009\u62E9 brush\u5B9E\u9645\u884C\u56CA\u683C\u56FE\u4F4D\u4E8E\u540D\u79F0\u4E0B\u65B9",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5236\u7B26\u9009\u62E9 brush\u7EB8\u58A8\u7B14\u4E0D\u7559\u4E0B\u6218\u6597\u5E95\u680F\u6216\u7A7A\u6807\u7B7E",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5236\u7B26\u9009\u62E9 brush\u5B9E\u9645\u4FE1\u606F\u680F\u4FDD\u630196\u50CF\u7D20PNG\u4E3B\u56FE",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4FDD\u5B58\u5B9E\u9645\u60AC\u505C\u56FE picker_hover_brush",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u5B9E\u9645\u9009\u62E9\u6309\u94AE\u53EF\u7528 PickProduct_talisman_art_fixture_qingzhu",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u4FE1\u606F\u680F\u663E\u793A\u671F\u95F4\u771F\u5B9E\u9009\u62E9\u70B9\u51FB\u4ECD\u751F\u6548 brush",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "\u67E5\u770B\u548C\u9009\u62E9\u7EB8\u58A8\u7B14\u53EA\u6539\u754C\u9762\u8349\u7A3F\uFF0C\u4E0D\u6263\u6599\u4E0D\u63A8\u8FDB\u5386\u6CD5\u6216\u6539\u5199\u51BB\u7ED3\u80FD\u529B",
+      "Passed": true,
+      "Detail": ""
+    }
+  ],
+  "inventoryTransitions": [
+    {
+      "Stage": "Character.Ready",
+      "Before": "017e3d78d21e4b45ac58431fbaad5891:user://talisman/products/art_legacy_paper_1920_cbc6b0c6857246ba93695722045a4e70.tres:back:0,0:0|17bc5196a916489a9451c417f17f9f42:user://talisman/products/art_legacy_yanshi_1920_71a37a817a754099a41617d2f44790a3.tres:back:3,0:0|323e42cfa8f3412fbba38bbc7ca05b02:res://resources/entities/items/\u7075\u77F3.tres:chest:4,2:0|3701803c37414a84a8b6eb3465ed6316:user://talisman/products/art_legacy_paper_1920_cbc6b0c6857246ba93695722045a4e70.tres:back:0,3:0|52712b6d2de44eec86823d03584e58b5:user://talisman/products/art_legacy_cangfeng_1920_bd49a4dccfb344518c652fe0c98bbc24.tres:back:6,0:0|66a3ee77643745bb86e924b276bf5c32:user://talisman/products/art_legacy_jinghao_1920_9d965eb30a224e1785e3bcadecf04ee4.tres:back:5,0:0|694b814ed875412491f64103e638bce4:res://resources/entities/items/\u7075\u77F3.tres:chest:1,2:0|69e5f1e770ed4d498c69719c4c2c4367:user://talisman/products/art_legacy_qingzhu_1920_e6c1c2aaec35478598de487c18dfb923.tres:back:4,0:0|87dbe49224e140f7b33e2c654cf39d4e:user://talisman/products/art_legacy_yanshi_1920_71a37a817a754099a41617d2f44790a3.tres:back:3,3:0|90cca60e899c4ba787d90dc059f23da2:user://talisman/products/art_legacy_ink_1920_82c9140686d54b1fbe3d5149ca658d17.tres:back:1,0:0|95c9b5984bb04d2bb341108fbd8173f5:user://talisman/products/art_legacy_ink_1920_82c9140686d54b1fbe3d5149ca658d17.tres:back:1,3:0|c59b57415afe499c8327128aa39a6580:user://talisman/products/art_legacy_hushen_1920_1629f7048fe54310806eb415475871a7.tres:back:2,3:0|f6779a4d4a4e4db4a524ccabb84e1aeb:res://resources/entities/items/\u7075\u77F3.tres:chest:5,2:0|fc0cb718897c4c24a2f21712f809e6c8:user://talisman/products/art_legacy_hushen_1920_1629f7048fe54310806eb415475871a7.tres:back:2,0:0",
+      "After": "017e3d78d21e4b45ac58431fbaad5891:user://talisman/products/art_legacy_paper_1920_cbc6b0c6857246ba93695722045a4e70.tres:back:0,0:0|17bc5196a916489a9451c417f17f9f42:user://talisman/products/art_legacy_yanshi_1920_71a37a817a754099a41617d2f44790a3.tres:back:3,0:0|323e42cfa8f3412fbba38bbc7ca05b02:res://resources/entities/items/\u7075\u77F3.tres:chest:4,2:0|3701803c37414a84a8b6eb3465ed6316:user://talisman/products/art_legacy_paper_1920_cbc6b0c6857246ba93695722045a4e70.tres:back:0,3:0|52712b6d2de44eec86823d03584e58b5:user://talisman/products/art_legacy_cangfeng_1920_bd49a4dccfb344518c652fe0c98bbc24.tres:back:6,0:0|66a3ee77643745bb86e924b276bf5c32:user://talisman/products/art_legacy_jinghao_1920_9d965eb30a224e1785e3bcadecf04ee4.tres:back:5,0:0|694b814ed875412491f64103e638bce4:res://resources/entities/items/\u7075\u77F3.tres:chest:1,2:0|69e5f1e770ed4d498c69719c4c2c4367:user://talisman/products/art_legacy_qingzhu_1920_e6c1c2aaec35478598de487c18dfb923.tres:back:4,0:0|87dbe49224e140f7b33e2c654cf39d4e:user://talisman/products/art_legacy_yanshi_1920_71a37a817a754099a41617d2f44790a3.tres:back:3,3:0|8fca97bbee85460f834c50634e6a5411:res://resources/entities/items/clothing/\u7389\u865A\u5185\u95E8\u5E38\u670D.tres:chest:2,0:0|90cca60e899c4ba787d90dc059f23da2:user://talisman/products/art_legacy_ink_1920_82c9140686d54b1fbe3d5149ca658d17.tres:back:1,0:0|95c9b5984bb04d2bb341108fbd8173f5:user://talisman/products/art_legacy_ink_1920_82c9140686d54b1fbe3d5149ca658d17.tres:back:1,3:0|c59b57415afe499c8327128aa39a6580:user://talisman/products/art_legacy_hushen_1920_1629f7048fe54310806eb415475871a7.tres:back:2,3:0|f6779a4d4a4e4db4a524ccabb84e1aeb:res://resources/entities/items/\u7075\u77F3.tres:chest:5,2:0|fc0cb718897c4c24a2f21712f809e6c8:user://talisman/products/art_legacy_hushen_1920_1629f7048fe54310806eb415475871a7.tres:back:2,0:0",
+      "Added": [
+        "8fca97bbee85460f834c50634e6a5411:res://resources/entities/items/clothing/\u7389\u865A\u5185\u95E8\u5E38\u670D.tres:chest:2,0:0"
+      ],
+      "Removed": []
+    },
+    {
+      "Stage": "RestoreDefinitions\u5DF2\u6709\u6587\u4EF6",
+      "Before": "017e3d78d21e4b45ac58431fbaad5891:user://talisman/products/art_legacy_paper_1920_cbc6b0c6857246ba93695722045a4e70.tres:back:0,0:0|17bc5196a916489a9451c417f17f9f42:user://talisman/products/art_legacy_yanshi_1920_71a37a817a754099a41617d2f44790a3.tres:back:3,0:0|323e42cfa8f3412fbba38bbc7ca05b02:res://resources/entities/items/\u7075\u77F3.tres:chest:4,2:0|3701803c37414a84a8b6eb3465ed6316:user://talisman/products/art_legacy_paper_1920_cbc6b0c6857246ba93695722045a4e70.tres:back:0,3:0|52712b6d2de44eec86823d03584e58b5:user://talisman/products/art_legacy_cangfeng_1920_bd49a4dccfb344518c652fe0c98bbc24.tres:back:6,0:0|66a3ee77643745bb86e924b276bf5c32:user://talisman/products/art_legacy_jinghao_1920_9d965eb30a224e1785e3bcadecf04ee4.tres:back:5,0:0|694b814ed875412491f64103e638bce4:res://resources/entities/items/\u7075\u77F3.tres:chest:1,2:0|69e5f1e770ed4d498c69719c4c2c4367:user://talisman/products/art_legacy_qingzhu_1920_e6c1c2aaec35478598de487c18dfb923.tres:back:4,0:0|87dbe49224e140f7b33e2c654cf39d4e:user://talisman/products/art_legacy_yanshi_1920_71a37a817a754099a41617d2f44790a3.tres:back:3,3:0|8fca97bbee85460f834c50634e6a5411:res://resources/entities/items/clothing/\u7389\u865A\u5185\u95E8\u5E38\u670D.tres:chest:2,0:0|90cca60e899c4ba787d90dc059f23da2:user://talisman/products/art_legacy_ink_1920_82c9140686d54b1fbe3d5149ca658d17.tres:back:1,0:0|95c9b5984bb04d2bb341108fbd8173f5:user://talisman/products/art_legacy_ink_1920_82c9140686d54b1fbe3d5149ca658d17.tres:back:1,3:0|c59b57415afe499c8327128aa39a6580:user://talisman/products/art_legacy_hushen_1920_1629f7048fe54310806eb415475871a7.tres:back:2,3:0|f6779a4d4a4e4db4a524ccabb84e1aeb:res://resources/entities/items/\u7075\u77F3.tres:chest:5,2:0|fc0cb718897c4c24a2f21712f809e6c8:user://talisman/products/art_legacy_hushen_1920_1629f7048fe54310806eb415475871a7.tres:back:2,0:0",
+      "After": "017e3d78d21e4b45ac58431fbaad5891:user://talisman/products/art_legacy_paper_1920_cbc6b0c6857246ba93695722045a4e70.tres:back:0,0:0|17bc5196a916489a9451c417f17f9f42:user://talisman/products/art_legacy_yanshi_1920_71a37a817a754099a41617d2f44790a3.tres:back:3,0:0|323e42cfa8f3412fbba38bbc7ca05b02:res://resources/entities/items/\u7075\u77F3.tres:chest:4,2:0|3701803c37414a84a8b6eb3465ed6316:user://talisman/products/art_legacy_paper_1920_cbc6b0c6857246ba93695722045a4e70.tres:back:0,3:0|52712b6d2de44eec86823d03584e58b5:user://talisman/products/art_legacy_cangfeng_1920_bd49a4dccfb344518c652fe0c98bbc24.tres:back:6,0:0|66a3ee77643745bb86e924b276bf5c32:user://talisman/products/art_legacy_jinghao_1920_9d965eb30a224e1785e3bcadecf04ee4.tres:back:5,0:0|694b814ed875412491f64103e638bce4:res://resources/entities/items/\u7075\u77F3.tres:chest:1,2:0|69e5f1e770ed4d498c69719c4c2c4367:user://talisman/products/art_legacy_qingzhu_1920_e6c1c2aaec35478598de487c18dfb923.tres:back:4,0:0|87dbe49224e140f7b33e2c654cf39d4e:user://talisman/products/art_legacy_yanshi_1920_71a37a817a754099a41617d2f44790a3.tres:back:3,3:0|8fca97bbee85460f834c50634e6a5411:res://resources/entities/items/clothing/\u7389\u865A\u5185\u95E8\u5E38\u670D.tres:chest:2,0:0|90cca60e899c4ba787d90dc059f23da2:user://talisman/products/art_legacy_ink_1920_82c9140686d54b1fbe3d5149ca658d17.tres:back:1,0:0|95c9b5984bb04d2bb341108fbd8173f5:user://talisman/products/art_legacy_ink_1920_82c9140686d54b1fbe3d5149ca658d17.tres:back:1,3:0|c59b57415afe499c8327128aa39a6580:user://talisman/products/art_legacy_hushen_1920_1629f7048fe54310806eb415475871a7.tres:back:2,3:0|f6779a4d4a4e4db4a524ccabb84e1aeb:res://resources/entities/items/\u7075\u77F3.tres:chest:5,2:0|fc0cb718897c4c24a2f21712f809e6c8:user://talisman/products/art_legacy_hushen_1920_1629f7048fe54310806eb415475871a7.tres:back:2,0:0",
+      "Added": [],
+      "Removed": []
+    },
+    {
+      "Stage": "\u9996\u6B21\u6253\u5F00\u666E\u901A\u884C\u56CA",
+      "Before": "017e3d78d21e4b45ac58431fbaad5891:user://talisman/products/art_legacy_paper_1920_cbc6b0c6857246ba93695722045a4e70.tres:back:0,0:0|17bc5196a916489a9451c417f17f9f42:user://talisman/products/art_legacy_yanshi_1920_71a37a817a754099a41617d2f44790a3.tres:back:3,0:0|323e42cfa8f3412fbba38bbc7ca05b02:res://resources/entities/items/\u7075\u77F3.tres:chest:4,2:0|3701803c37414a84a8b6eb3465ed6316:user://talisman/products/art_legacy_paper_1920_cbc6b0c6857246ba93695722045a4e70.tres:back:0,3:0|52712b6d2de44eec86823d03584e58b5:user://talisman/products/art_legacy_cangfeng_1920_bd49a4dccfb344518c652fe0c98bbc24.tres:back:6,0:0|66a3ee77643745bb86e924b276bf5c32:user://talisman/products/art_legacy_jinghao_1920_9d965eb30a224e1785e3bcadecf04ee4.tres:back:5,0:0|694b814ed875412491f64103e638bce4:res://resources/entities/items/\u7075\u77F3.tres:chest:1,2:0|69e5f1e770ed4d498c69719c4c2c4367:user://talisman/products/art_legacy_qingzhu_1920_e6c1c2aaec35478598de487c18dfb923.tres:back:4,0:0|87dbe49224e140f7b33e2c654cf39d4e:user://talisman/products/art_legacy_yanshi_1920_71a37a817a754099a41617d2f44790a3.tres:back:3,3:0|8fca97bbee85460f834c50634e6a5411:res://resources/entities/items/clothing/\u7389\u865A\u5185\u95E8\u5E38\u670D.tres:chest:2,0:0|90cca60e899c4ba787d90dc059f23da2:user://talisman/products/art_legacy_ink_1920_82c9140686d54b1fbe3d5149ca658d17.tres:back:1,0:0|95c9b5984bb04d2bb341108fbd8173f5:user://talisman/products/art_legacy_ink_1920_82c9140686d54b1fbe3d5149ca658d17.tres:back:1,3:0|c59b57415afe499c8327128aa39a6580:user://talisman/products/art_legacy_hushen_1920_1629f7048fe54310806eb415475871a7.tres:back:2,3:0|f6779a4d4a4e4db4a524ccabb84e1aeb:res://resources/entities/items/\u7075\u77F3.tres:chest:5,2:0|fc0cb718897c4c24a2f21712f809e6c8:user://talisman/products/art_legacy_hushen_1920_1629f7048fe54310806eb415475871a7.tres:back:2,0:0",
+      "After": "017e3d78d21e4b45ac58431fbaad5891:user://talisman/products/art_legacy_paper_1920_cbc6b0c6857246ba93695722045a4e70.tres:back:0,0:0|17bc5196a916489a9451c417f17f9f42:user://talisman/products/art_legacy_yanshi_1920_71a37a817a754099a41617d2f44790a3.tres:back:3,0:0|323e42cfa8f3412fbba38bbc7ca05b02:res://resources/entities/items/\u7075\u77F3.tres:chest:4,2:0|3701803c37414a84a8b6eb3465ed6316:user://talisman/products/art_legacy_paper_1920_cbc6b0c6857246ba93695722045a4e70.tres:back:0,3:0|52712b6d2de44eec86823d03584e58b5:user://talisman/products/art_legacy_cangfeng_1920_bd49a4dccfb344518c652fe0c98bbc24.tres:back:6,0:0|66a3ee77643745bb86e924b276bf5c32:user://talisman/products/art_legacy_jinghao_1920_9d965eb30a224e1785e3bcadecf04ee4.tres:back:5,0:0|694b814ed875412491f64103e638bce4:res://resources/entities/items/\u7075\u77F3.tres:chest:1,2:0|69e5f1e770ed4d498c69719c4c2c4367:user://talisman/products/art_legacy_qingzhu_1920_e6c1c2aaec35478598de487c18dfb923.tres:back:4,0:0|87dbe49224e140f7b33e2c654cf39d4e:user://talisman/products/art_legacy_yanshi_1920_71a37a817a754099a41617d2f44790a3.tres:back:3,3:0|8fca97bbee85460f834c50634e6a5411:res://resources/entities/items/clothing/\u7389\u865A\u5185\u95E8\u5E38\u670D.tres:chest:2,0:0|90cca60e899c4ba787d90dc059f23da2:user://talisman/products/art_legacy_ink_1920_82c9140686d54b1fbe3d5149ca658d17.tres:back:1,0:0|95c9b5984bb04d2bb341108fbd8173f5:user://talisman/products/art_legacy_ink_1920_82c9140686d54b1fbe3d5149ca658d17.tres:back:1,3:0|c59b57415afe499c8327128aa39a6580:user://talisman/products/art_legacy_hushen_1920_1629f7048fe54310806eb415475871a7.tres:back:2,3:0|f6779a4d4a4e4db4a524ccabb84e1aeb:res://resources/entities/items/\u7075\u77F3.tres:chest:5,2:0|fc0cb718897c4c24a2f21712f809e6c8:user://talisman/products/art_legacy_hushen_1920_1629f7048fe54310806eb415475871a7.tres:back:2,0:0",
+      "Added": [],
+      "Removed": []
+    }
+  ],
+  "usesOrdinaryStoragePanel": true,
+  "playerJourneyRead": false,
+  "oldProductsAreIsolatedFixtures": true
+}

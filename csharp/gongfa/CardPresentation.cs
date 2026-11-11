@@ -3,7 +3,7 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 
 /// <summary>从卡表生成牌面与机制说明，所有数值使用当前持有者计算。</summary>
-public static class CardPresentation
+public static partial class CardPresentation
 {
     private static JsonDocument? _reference;
     private static string[]? _encyclopediaResourceTerms;
@@ -34,10 +34,11 @@ public static class CardPresentation
     /// <summary>统一格式化技能说明；可传入已经按当前秘籍升级整理过的原文。</summary>
     public static string Face(ActiveSkillData skill, GodotObject? owner, string? descriptionOverride)
     {
+        if (descriptionOverride is null && UseBoardPresentation(skill, owner))
+            return BoardFace(skill, owner);
         var text=descriptionOverride ?? skill.get_brief_description(owner);
         var preferResourceDescription=descriptionOverride is null && !string.IsNullOrWhiteSpace(skill.description) &&
             (skill.source_gongfa_name is "赤阳参同经" or "玄枢含章经" or "百骸衍枝化生宝册" or "太和感物养元宝册" or "舒卷天章" or "玉髓回澜养真宝册" or "抱虚养晦通玄录" || (skill.skill_name is "架招" or "卸力"));
-        var hasXuanShuRewrite=skill.gongfa_rewrite_effect_ids.Any(id=>id.StartsWith("xuan_shu_",StringComparison.Ordinal));
         var referenceName=ReferenceName(skill);
         if(descriptionOverride is not null)
             text=descriptionOverride;
@@ -47,7 +48,6 @@ public static class CardPresentation
             text=skill.skill_type==ActiveSkillData.SkillType.POWER?(string.IsNullOrWhiteSpace(skill.description)?text:skill.description):(card.GetProperty("text").GetString()??"");
         foreach(var mechanic in skill.keywords.Where(k=>k!="固有"&&Mechanics.ContainsKey(k)))
         {
-            if(hasXuanShuRewrite)continue;
             if(!text.Contains(mechanic) && !(mechanic=="散血" && text.Contains("打散"))) text += $"\n{mechanic}。";
         }
         if(skill.get_presentation_tags().Contains("散血")&&!text.Contains("不经行动队列施展时"))
@@ -62,12 +62,7 @@ public static class CardPresentation
             }
         }
         var rewriteEffects = GongfaSkillRewriteRuntime.GetAdditionalEffectDescriptions(skill, excludePrimary: !responseBaseOnly).ToArray();
-        if(hasXuanShuRewrite)
-        {
-            text=$"原技能效果：{text.Trim()}";
-            if(rewriteEffects.Length>0)text+="\n\n"+string.Join("\n",rewriteEffects);
-        }
-        else if(rewriteEffects.Length>0)text+="\n"+string.Join("\n",rewriteEffects);
+        if(rewriteEffects.Length>0)text+="\n"+string.Join("\n",rewriteEffects);
         if(skill.keywords.Contains("乘势"))text=text.Replace("\n乘势。","")+$"\n乘势：上一张为攻击牌时，本次会心率提高 {Mathf.RoundToInt(CardRules.Evaluate(skill.momentum_effect_params,owner)*100)}%。";
         if (CardRules.IsResponse(skill))
         {
@@ -388,18 +383,6 @@ public static class CardPresentation
             };
             var amount=effectId=="shield"?Math.Max(0,Mathf.RoundToInt(CardRules.Evaluate(formula,owner))):Mathf.RoundToInt(CardRules.Evaluate(formula,owner));
             entries.Add($"{label}：{amount} 点。计算公式：{FormulaWithValues(formula, owner)} = {amount} 点。");
-            if (effectId=="shield"&&GongfaSkillRewriteRuntime.HasEffect(skill,"xuan_shu_c2_yunpei"))
-            {
-                var ownShield=Math.Max(0,Mathf.RoundToInt(CardRules.Evaluate(formula,owner)));
-                var sharedShield=Mathf.RoundToInt(ownShield*.5f);
-                entries.Add($"技能槽10自动施展时，队友护盾：{sharedShield} 点。计算公式：round(自身护盾值[{ownShield}]×0.50) = {sharedShield} 点。");
-            }
-        }
-
-        if (GongfaSkillRewriteRuntime.HasEffect(skill,"xuan_shu_c3_jiazhao")&&!string.IsNullOrWhiteSpace(skill.stacks_formula))
-        {
-            var maximumBlock=CardRules.Block(skill,owner);
-            entries.Add($"化法追加护盾：架招最多获得 {maximumBlock} 层化解。计算公式：{FormulaWithValues(skill.stacks_formula,owner)} = {maximumBlock} 层；本次来袭的全部伤害段结算后，按实际抵消的物理伤害总点数获得护盾。");
         }
 
         foreach (Match match in Regex.Matches(RawSkillText(skill), @"最大生命\s*[×x*]\s*(?<rate>\d+(?:\.\d+)?)%"))
@@ -418,21 +401,6 @@ public static class CardPresentation
                 entries.Add($"本次复制：{copied.skill_name}");
                 var copiedDetails=CombatCalculationDetails(copied,owner,manager);
                 if(!string.IsNullOrWhiteSpace(copiedDetails))entries.Add($"复制招式数值：\n{copiedDetails}");
-                if(GongfaSkillRewriteRuntime.HasEffect(skill,"xuan_shu_c4_fuming"))
-                {
-                    var shieldEffect=copied.special_effects.FirstOrDefault(effect=>effect.GetValueOrDefault("effect","").AsString()=="shield"&&!string.IsNullOrWhiteSpace(effect.GetValueOrDefault("formula","").AsString()));
-                    if(shieldEffect is not null)
-                    {
-                        var shield=Math.Max(0,Mathf.RoundToInt(CardRules.Evaluate(shieldEffect.GetValueOrDefault("formula","").AsString(),owner)));
-                        entries.Add($"复制技能化法追加护盾：{shield} 点（与被复制技能本次施加的护盾等量）。");
-                        if(manager.IsXuanShuSkillSlot10(owner!,skill)&&GongfaSkillRewriteRuntime.HasEffect(copied,"xuan_shu_c2_yunpei"))
-                        {
-                            var half=Mathf.RoundToInt(shield*.5f);
-                            entries.Add($"技能槽10复制云帔时，两项化法分别结算，队友护盾合计 {shield+half} 点（等量护盾 {shield} 点 + 一半护盾 {half} 点）；两次各自重新选择当前护盾值最低的队友，并列随机。");
-                        }
-                    }
-                    else entries.Add("复制技能化法追加护盾：被复制技能本次施加护盾时，为一名其他队友施加等量护盾。");
-                }
             }
             else entries.Add("本次复制：尚无可复制的非应对技能。");
         }
@@ -667,6 +635,8 @@ public static class CardPresentation
         foreach(var term in terms)
         {
             var explanation=Mechanics.GetValueOrDefault(term,"");
+            if (term == "应对" && UseBoardPresentation(skill, owner))
+                explanation = "扫到后变暗并待命，持续至共同回合结束。真实来袭时才检查费用与条件；同次攻击只尝试盘序最前的一份合格应对，触发失败不继续找其他份。实际成功才扣费及次数。";
             if(string.IsNullOrEmpty(explanation) && Reference.GetProperty("terms").TryGetProperty(term,out var entry)) explanation=entry.GetString()??"";
             if(string.IsNullOrEmpty(explanation) && Reference.GetProperty("cards").TryGetProperty(term,out var power))explanation=power.GetProperty("text").GetString()??"";
             if(term.EndsWith("伤害"))

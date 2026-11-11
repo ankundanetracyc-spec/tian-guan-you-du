@@ -12,14 +12,14 @@ public partial class StoragePanel
     private readonly Dictionary<string, string> _nativeCursors = [];
     private readonly Dictionary<string, Rect2> _nativeRegions = new()
     {
-        ["chest"] = new(412, 48, 288, 192), ["sleeve-left"] = new(120, 272, 144, 192),
-        ["sleeve-right"] = new(812, 272, 144, 192), ["waist"] = new(412, 492, 288, 192),
-        ["back"] = new(1040, 162, 288, 384)
+        ["chest"] = InventoryGridMetrics.CenteredRegion(556, 144, 8, 5), ["sleeve-left"] = InventoryGridMetrics.CenteredRegion(192, 368, 4, 5),
+        ["sleeve-right"] = InventoryGridMetrics.CenteredRegion(884, 368, 4, 5), ["waist"] = InventoryGridMetrics.CenteredRegion(556, 588, 8, 5),
+        ["back"] = InventoryGridMetrics.CenteredRegion(1184, 354, 8, 10)
     };
     private string _nativeLocated = "", _nativeSelected = "";
-    private static string native_group(SpatialInventoryEntry item) => item.Item is StorageRingItemData ? "ring:" + item.InstanceId : item.Artifact is not null ? "artifact:" + item.ArtifactId : item.ItemPath;
-    private string native_name(SpatialInventoryEntry item) => item.Item is StorageRingItemData
-        ? _player?.get_storage_rings().FirstOrDefault(r => r.InstanceId == item.InstanceId)?.DisplayName ?? StorageRingItemData.ItemName
+    private static string native_group(SpatialInventoryEntry item) => item.Item is StorageBagItemData ? "bag:" + item.InstanceId : item.Artifact is not null ? "artifact:" + item.ArtifactId : item.ItemPath;
+    private string native_name(SpatialInventoryEntry item) => item.Item is StorageBagItemData
+        ? _player?.get_storage_bags().FirstOrDefault(r => r.InstanceId == item.InstanceId)?.DisplayName ?? StorageBagItemData.ItemName
         : item.Artifact is not null ? artifact_name(item.Artifact) : item.Item?.entity_name ?? "未知物品";
     private static string native_category(SpatialInventoryEntry item) => item.Artifact is not null || item.Item is EquipmentData || item.Item is SectArtifactOfferData ? "器物" : item.Item?.item_category ?? "";
     private List<SpatialInventoryEntry> native_entries() => _player?.get_accessible_spatial_inventory().ToList() ?? [];
@@ -38,21 +38,21 @@ public partial class StoragePanel
         _inventory_font = GD.Load<FontFile>("res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf");
         _canvas = new Control { Name = "InventoryCanvas", Size = DesignSize, MouseFilter = MouseFilterEnum.Pass };
         AddChild(_canvas);
-        place(new ColorRect { Color = new("ebe1c9"), MouseFilter = MouseFilterEnum.Ignore }, _canvas, 0, 0, 1920, 1080);
+        place(new ColorRect { Color = new("e8e0c9"), MouseFilter = MouseFilterEnum.Ignore }, _canvas, 0, 0, 1920, 1080);
         place(new TextureRect { Texture = GD.Load<Texture2D>("res://textures/ui/inventory_20261012/approved_shell_v1.png"),
             ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize, StretchMode = TextureRect.StretchModeEnum.Scale,
             Modulate = new(1, 1, 1, .2f), MouseFilter = MouseFilterEnum.Ignore }, _canvas, 0, 0, 1920, 1080);
-        var back = paper_button("‹", 39, true);
+        var back = paper_button("返回", CraftingPaperHeader.FontSize, true);
+        back.Name = "StorageReturn";
         _nativeMainBack = back;
-        foreach (var state in new[] { "normal", "hover", "pressed", "hover_pressed" })
-            back.AddThemeStyleboxOverride(state, new StyleBoxTexture { Texture = GD.Load<Texture2D>("res://textures/ui/gongfa_back_button_v1.png") });
-        place(back, _canvas, 48, 32, 54, 54); back.Pressed += () => { if (_nativeContainerId.Length > 0) open_native_container(""); else hide_panel(); };
+        _canvas.AddChild(back); CraftingPaperHeader.PlaceReturn(_canvas, back); CraftingPaperHeader.AddReturnArrow(back);
+        back.Pressed += () => { if (_nativeContainerId.Length > 0) open_native_container(""); else hide_panel(); };
         _nativePageTitle = text("行囊", 44, Ink); _nativePageTitle.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
         place(_nativePageTitle, _canvas, 124, 26, 1380, 70);
         _nativePageRule = rule(); place(_nativePageRule, _canvas, 48, 102, 1824, 1);
         var indexPanel = native_panel(42, 124, 392, 906);
         _nativeIndexPanel = indexPanel;
-        var search = new LineEdit { PlaceholderText = "搜索物品名称", ClearButtonEnabled = true };
+        var search = new LineEdit { PlaceholderText = "查找物品", ClearButtonEnabled = true };
         style_input(search); place(search, indexPanel, 30, 30, 332, 48);
         search.TextChanged += value => { _search_text = value.Trim(); refresh_slots(); };
         var prev = paper_button("‹", 28, true); var next = paper_button("›", 28, true);
@@ -85,19 +85,21 @@ public partial class StoragePanel
         _nativeIndex.AddThemeConstantOverride("separation", 4); _nativeIndexScroll.AddChild(_nativeIndex); style_scrollbar(_nativeIndexScroll.GetVScrollBar());
         var space = native_panel(458, 124, 1416, 906);
         _nativeSpacePanel = space;
-        _nativeRingFrame = native_panel(36, 120, 1848, 888); _nativeRingFrame.Hide();
-        _nativeSpaceTitle = text("行囊", 28, Ink); place(_nativeSpaceTitle, space, 28, 20, 1060, 45);
-        _nativeBodyReturn = paper_button("返回行囊", 23, true); place(_nativeBodyReturn, _canvas, 1640, 32, 232, 48);
+        build_native_garment_lining(space);
+        _nativeBagFrame = native_panel(36, 120, 1848, 888); _nativeBagFrame.Hide();
+        _nativeSpaceTitle = text("行囊", 28, new("4b5142")); place(_nativeSpaceTitle, space, 28, 20, 1060, 45);
+        _nativeBodyReturn = paper_button("返回", CraftingPaperHeader.FontSize, true); _nativeBodyReturn.Name = "StorageBagReturn";
+        _canvas.AddChild(_nativeBodyReturn); CraftingPaperHeader.AddReturnArrow(_nativeBodyReturn);
         _nativeBodyReturn.Pressed += () => open_native_container(""); _nativeBodyReturn.Hide();
-        place(rule(), space, 28, 76, 1356, 1);
+        var spaceRule = rule(); spaceRule.Color = new("a59e856e"); place(spaceRule, space, 28, 76, 1356, 1);
         _nativeStatus = text("", 18, new("5a7b50")); place(_nativeStatus, _canvas, 486, 204, 1300, 38);
         _nativeSpaceScroll = new ScrollContainer { Name = "StorageSpaceScroll", MouseFilter = MouseFilterEnum.Pass };
         place(_nativeSpaceScroll, _canvas, 486, 258, 1362, 710);
         _nativeSurface = new NativeInventorySurface { Name = "BodyStorage", MouseFilter = MouseFilterEnum.Pass, CustomMinimumSize = new(1350, 698) };
         _nativeSpaceScroll.AddChild(_nativeSurface); _nativeSurface.DrawContents = draw_native_inventory;
-        _nativeBodyRegions = new(_nativeRegions); build_ring_modal(); configure_native_container();
-        place(rule(), space, 28, 846, 1356, 1);
-        _nativeCount = text("", 18, new("7d8b70")); _nativeCount.HorizontalAlignment = HorizontalAlignment.Right;
+        _nativeBodyRegions = new(_nativeRegions); build_bag_modal(); configure_native_container();
+        var bottomRule = rule(); bottomRule.Color = new("a59e856e"); place(bottomRule, space, 28, 846, 1356, 1);
+        _nativeCount = text("", 18, new("73775e")); _nativeCount.HorizontalAlignment = HorizontalAlignment.Right;
         place(_nativeCount, _canvas, 1458, 982, 384, 32);
         // Keep the existing shared action popup and legacy review attachment interfaces available.
         _grid_scroll = new ScrollContainer { Visible = false }; _canvas.AddChild(_grid_scroll);
@@ -109,11 +111,12 @@ public partial class StoragePanel
 
     private HoverInfoManager.HoverInfoContent native_hover(SpatialInventoryEntry item)
     {
-        var info = item.Artifact is not null ? EquipmentItemPresentation.Hover(item.Artifact) : item.Item is not null ? ItemHover(item.Item, path: item.ItemPath, user: _player) : new HoverInfoManager.HoverInfoContent(native_name(item), "");
-        if (item.Item is StorageRingItemData && _player?.get_storage_rings().FirstOrDefault(r => r.InstanceId == item.InstanceId) is { } ring)
-            info = info with { Title = StorageRingItemData.ItemName, Subtitle = $"器具 · {ring.Quality}", Sections = null,
-                Body = $"戒内空间：{ring.Width} × {ring.Height} 格\n占用：{ring.OccupiedCells} / {(long)ring.Width * ring.Height} 格\n不能放入储物戒指。" };
-        return info with { Footprint = item.Size };
+        var info = item.Artifact is not null ? EquipmentItemPresentation.Hover(item.Artifact, _player) : item.Item is not null ? ItemHover(item.Item, item.Count, item.ItemPath, _player) : new HoverInfoManager.HoverInfoContent(native_name(item), "");
+        if (item.Item is StorageBagItemData && _player?.get_storage_bags().FirstOrDefault(r => r.InstanceId == item.InstanceId) is { } bag)
+            info = info with { Title = StorageBagItemData.ItemName, Subtitle = $"器具 · {bag.Quality}", Sections = null,
+                Body = $"袋内容量：{bag.Width} × {bag.Height}\n已用容量：{bag.UsedCapacity} / {bag.Capacity}\n不能放入储物袋。" };
+        return ItemLayoutPresentation.AttachStorageVolume(info, item.Item is not null
+            ? item.Volume : InventoryCapacityRules.ArtifactVolume(item.Artifact), item.Item?.can_stack == true ? item.Count : null);
     }
     private void refresh_native_inventory()
     {
@@ -134,13 +137,13 @@ public partial class StoragePanel
             var slot = scene.Instantiate<StorageItemSlot>(); _nativeSurface.AddChild(slot);
             slot.spatial_drag_enabled = true;
             if (entry.Artifact is not null) { slot.set_artifact(entry.Artifact); slot.slot_index = entry.SlotIndex; }
-            else if (entry.Item is not null) slot.set_item(entry.SlotIndex, entry.ItemPath, entry.Item, 1);
+            else if (entry.Item is not null) slot.set_item(entry.SlotIndex, entry.ItemPath, entry.Item, entry.Count);
             var original = (entry.Rotation & 1) == 0 ? entry.Size : new Vector2I(entry.Height, entry.Width);
             slot.configure_spatial_layout(new(entry.Width * NativeCell, entry.Height * NativeCell), new(original.X * NativeCell, original.Y * NativeCell), entry.Rotation);
             slot.Position = rect.Position + new Vector2(entry.X, entry.Y) * NativeCell;
             slot.Modulate = native_matches(entry) ? Colors.White : new(1, 1, 1, .25f);
             slot.SetMeta("spatial_instance_id", entry.InstanceId);
-            HoverInfoManager.SetInfo(slot, native_hover(entry));
+            HoverInfoManager.SetProvider(slot, () => native_hover(entry));
             slot.GuiInput += ev => native_slot_input(entry, slot, ev);
             slot.MouseEntered += () => { if (_nativeDrag is null && !_pinned_selection) { _nativeSelected = entry.InstanceId; _nativeSurface.QueueRedraw(); } };
             slot.MouseExited += () => { if (_nativeDrag is null && !_pinned_selection) { _nativeSelected = ""; _nativeSurface.QueueRedraw(); } };
@@ -157,12 +160,12 @@ public partial class StoragePanel
             _nativeIndex.AddChild(row); _nativeRows[group.Key] = row;
             var name = text(native_name(entry), 22, Ink); name.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
             place(name, row, 24, 17, 220, 38);
-            var count = text("×" + list.Count, 25, new("587650")); count.HorizontalAlignment = HorizontalAlignment.Right;
+            var count = text("×" + list.Sum(e => e.Count), 25, new("587650")); count.HorizontalAlignment = HorizontalAlignment.Right;
             var progress = list.FindIndex(e => _nativeCursors.GetValueOrDefault(group.Key) == e.InstanceId);
             place(count, row, 246, progress >= 0 ? 6 : 18, 62, 34);
             if (progress >= 0)
             { var label = text($"第{progress + 1}/{list.Count}件", 12, new("77876b")); label.HorizontalAlignment = HorizontalAlignment.Right; place(label, row, 228, 43, 80, 20); }
-            HoverInfoManager.SetInfo(row, native_hover(entry));
+            HoverInfoManager.SetProvider(row, () => native_hover(entry));
             row.SetMeta("spatial_group", group.Key);
             row.GuiInput += ev =>
             {
@@ -172,8 +175,10 @@ public partial class StoragePanel
             };
         }
         if (_nativeIndex.GetChildCount() == 0) _nativeIndex.AddChild(text("没有找到对应物品", 20, new("858d75")));
-        var visible = entries.Where(e => e.ContainerId == _nativeContainerId && e.IsPlaced);
-        _nativeCount!.Text = $"占用 {visible.Sum(e => e.Width * e.Height)} / {native_current_regions().Sum(r => (long)r.Width * r.Height)} 格";
+        var visible = entries.Where(e => e.ContainerId == _nativeContainerId);
+        int capacity = _nativeContainerId.Length == 0 ? Character.InventoryCapacity
+            : _player?.get_storage_bags().FirstOrDefault(b => b.InstanceId == _nativeContainerId)?.Capacity ?? 0;
+        _nativeCount!.Text = $"已用容量 {visible.Sum(e => e.CapacityUsed)} / {capacity}";
         set_parent_inventory_focus(_nativeContainerId.Length == 0);
         _nativeSurface.QueueRedraw();
     }
@@ -198,14 +203,20 @@ public partial class StoragePanel
         foreach (var region in native_current_regions())
         {
             var rect = _nativeRegions[region.Id];
-            surface.DrawRect(rect, new(.84f, .88f, .75f, .25f));
-            for (var x = 0; x <= region.Width; x++) surface.DrawLine(rect.Position + new Vector2(x * NativeCell, 0), rect.Position + new Vector2(x * NativeCell, rect.Size.Y), new(.55f, .62f, .47f, .5f));
-            for (var y = 0; y <= region.Height; y++) surface.DrawLine(rect.Position + new Vector2(0, y * NativeCell), rect.Position + new Vector2(rect.Size.X, y * NativeCell), new(.55f, .62f, .47f, .5f));
+            if (_nativeContainerId.Length == 0)
+            {
+                draw_native_garment_grid(surface, region, rect);
+                continue;
+            }
+            draw_native_bag_grid(surface, region, rect);
         }
-        foreach (var entry in native_entries().Where(e => e.IsPlaced && e.ContainerId == _nativeContainerId && (e.InstanceId == _nativeLocated || e.InstanceId == _nativeSelected)))
+        var draggingId = _nativeDrag is { Active: true } drag ? drag.Item.InstanceId : "";
+        foreach (var entry in native_entries().Where(e => e.IsPlaced && e.ContainerId == _nativeContainerId && e.InstanceId != draggingId && (e.InstanceId == _nativeLocated || e.InstanceId == _nativeSelected)))
         {
             var rect = new Rect2(_nativeRegions[entry.RegionId].Position + new Vector2(entry.X, entry.Y) * NativeCell, new Vector2(entry.Width, entry.Height) * NativeCell);
-            surface.DrawRect(rect, new(.55f, .7f, .44f, .15f)); surface.DrawRect(rect.Grow(3), new("5f8150"), false, 2);
+            surface.DrawRect(rect, new(.55f, .7f, .44f, _nativeContainerId.Length == 0 ? .06f : .15f));
+            // 描边中心线内缩半个线宽，让外缘与图标显示格形一致。
+            surface.DrawRect(rect.Grow(-1), new(_nativeContainerId.Length == 0 ? "7e8869" : "5f8150"), false, 2);
         }
         draw_native_drop(surface);
     }

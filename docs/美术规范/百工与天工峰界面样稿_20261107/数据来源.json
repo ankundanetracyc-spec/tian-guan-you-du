@@ -1,0 +1,61 @@
+{
+  "pills": 11,
+  "routes": 25,
+  "materials": 50,
+  "sources": [
+    "csharp/scene/AlchemyRecipeCatalog.cs",
+    "csharp/scene/AlchemyRecipeCatalog.Expansion.cs",
+    "csharp/scene/AlchemyRecipeCatalog.Breakthrough.cs",
+    "csharp/systems/AlchemyProductCatalog.cs",
+    "resources/crafting/process_forging_candidate_v3.json"
+  ],
+  "archiveSample": {
+    "name": "修长薄脊剑",
+    "tier": "法器",
+    "proficiency": 40,
+    "inputs": [
+      {
+        "Role": "主体",
+        "Material": "玄铁",
+        "Quantity": 3
+      },
+      {
+        "Role": "承接",
+        "Material": "青木芯",
+        "Quantity": 1
+      },
+      {
+        "Role": "复合身材",
+        "Material": "铜髓矿",
+        "Quantity": 2
+      },
+      {
+        "Role": "质材",
+        "Material": "铜髓矿",
+        "Quantity": 4
+      },
+      {
+        "Role": "性材",
+        "Material": "裂甲石",
+        "Quantity": 4
+      },
+      {
+        "Role": "性材",
+        "Material": "玄铁",
+        "Quantity": 3
+      },
+      {
+        "Role": "和材",
+        "Material": "灵石",
+        "Quantity": 6
+      },
+      {
+        "Role": "和材",
+        "Material": "风纹石英",
+        "Quantity": 1
+      }
+    ],
+    "source": "csharp/scene/ForgingAnimationPreview.cs / ExampleDraft(1)"
+  },
+  "notice": "丹方与材料来自项目资源；器物记录采用现有独立演出样方作排版示例；未读取玩家资料。"
+}

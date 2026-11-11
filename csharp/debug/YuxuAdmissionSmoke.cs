@@ -94,13 +94,13 @@ public partial class YuxuAdmissionSmoke : Node
             foreach (var hasSect in new[] { true, false })
             {
                 var answerCount = 0; var completedCount = 0;
-                string[] facts = ["长老静静看了你片刻，收回灵识，神色如常。", "长老察看灵机，颔首确认天灵根资质。"];
+                string[] facts = ["长老静静看了你片刻，收回灵识，神色如常。", "长老提起你在青溪里平息兽患的经历。"];
                 dialogue.show_yuxu_admission_review(elder, facts, () =>
                     dialogue.show_yuxu_admission_question(elder, answer => {
                         Check(answer == hasSect, "宗门问答分支反转"); answerCount++;
                         dialogue.show_yuxu_admission_result(elder, [answer ? "既有所属，小友请便。" : "小友随接引弟子去办入门之礼。"],
                             () => completedCount++, player: actor);
-                    }, player: actor), player: actor, lastLineIsAptitude: true);
+                    }, player: actor), player: actor);
                 await Frames();
                 var stage = dialogue.GetNode<Control>("YuxuAdmissionInteraction");
                 Check(stage.FindChildren("YuxuAdmissionPaper", "*", true, false).Count == 0 &&
@@ -112,7 +112,7 @@ public partial class YuxuAdmissionSmoke : Node
                     Read<Character?>(dialogue, "_socialPlayer") == actor, "迎真没有使用玩家和长老各自立绘");
                 var rows = Read<List<Label>>(dialogue, "_socialFactors");
                 var words = Read<IReadOnlyList<NpcSocialPresentationText.Line>>(dialogue, "_socialLines");
-                Check(words.Select(line => line.Result).SequenceEqual(facts) && words.Last().Rule == "yuxu_aptitude", "迎真证据被改写、重排或与资质混同");
+                Check(words.Select(line => line.Result).SequenceEqual(facts) && words.All(line => line.Rule == "yuxu_evidence"), "迎真经历被改写、重排或掺入重复验灵");
                 Call(dialogue, "process_social_reveal", .25);
                 Check(rows[0].VisibleCharacters > 0 && rows[0].VisibleCharacters < words[0].Pending.Length && rows[1].Modulate.A == 0,
                     "迎真未逐字展示，或后续行提前出现");

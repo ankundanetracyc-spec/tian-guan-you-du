@@ -47,8 +47,12 @@ public partial class BattleFlowView
             var item = Button(list, $"{BattleSupplyRules.Name(pill)} · {BattleSupplyRules.QualityNames[pill.efficacy_tier]}    持有 {total} 颗    此位可编入 {Math.Min(5, available)} 颗",
                 () => { BattleSupplyRules.Set(owner, selected, path, 5); Supplies(owner, back, selected); });
             item.CustomMinimumSize = new(1330, 62); item.Disabled = available <= 0;
-            HoverInfoManager.SetInfo(item, new(BattleSupplyRules.Name(pill), pill.EffectText + "\n\n只从本人真实行囊配置，每位最多5颗同种同档丹药。",
-                GD.Load<Texture2D>(pill.icon_path), $"九品丹药 · {BattleSupplyRules.QualityNames[pill.efficacy_tier]}"));
+            var info = AlchemyPillVisual.Hover(pill);
+            HoverInfoManager.SetInfo(item, info with
+            {
+                Body = info.Body + "\n\n只从本人真实行囊配置，每位最多5颗同种同档丹药。",
+                Sections = null,
+            });
         }
         if (candidates.Count == 0) Text(list, "本人的行囊中没有可用的战斗丹药。", Vector2.Zero, new(1300, 64), 20);
         Button(_buttons, "完成战备配置", back);

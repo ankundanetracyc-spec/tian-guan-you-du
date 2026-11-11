@@ -2,6 +2,7 @@ using Godot;
 
 public partial class WorldLocationInteriorPanel
 {
+    public string get_current_subscene_id() => _selected_subscene_id;
     public event System.Action<string>? BaishiLocationActionRequested;
     private Control? _baishiView;
     private Godot.Collections.Array<string> _baishiActions = ["notice.lecture", "notice.city", "notice.admission", "books.catalog"];
@@ -44,6 +45,9 @@ public partial class WorldLocationInteriorPanel
         _baishiActions = actions;
         _baishiView?.Call("configure_actions", actions);
     }
+
+    public void set_baishi_guidance(string actionId, string text) =>
+        _baishiView?.Call("configure_guidance", actionId, text);
 
     public void show_baishi_space(WorldNodeData node, NpcWorldManager? world, string space)
     {

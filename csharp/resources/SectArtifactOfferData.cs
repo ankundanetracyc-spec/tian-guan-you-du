@@ -12,6 +12,9 @@ public partial class SectArtifactOfferData : ItemData
         if (!result.Success || result.Product is not { Tier: "法器" } snapshot)
             throw new InvalidOperationException("宗门法器样本未达到法器水准，兑换已停止。");
         snapshot.Name = entity_name; snapshot.InstanceId = "sect-artifact-" + Guid.NewGuid().ToString("N");
-        return ForgedArtifactInventory.Create(snapshot);
+        var item = ForgedArtifactInventory.Create(snapshot);
+        item.layout_preview = layout_preview?.Duplicate(true) as ItemLayoutPreviewData;
+        item.control_preview = control_preview?.Duplicate(true) as SwordControlPreviewData;
+        return item;
     }
 }

@@ -51,6 +51,29 @@ public partial class Character
         return !_usingBattlePill && pill is not null && slot.count > 0 && has_inventory_item(slot.item_path) && CanReceiveBattlePill(pill);
     }
 
+    public bool CanUseBoardPill(string path) => human is not null && current_health > 0 && !_usingBattlePill
+        && BattleSupplyRules.Load(path) is { } pill && has_inventory_item(path) && CanReceiveBattlePill(pill);
+
+    /// <summary>盘内一块一颗，直接扣本人行囊；不虚构或借用旧三战备位。</summary>
+    public bool TryUseBoardPill(string path, int manaCapacity, out int restored)
+    {
+        restored = 0;
+        if (!CanUseBoardPill(path)) return false;
+        var pill = BattleSupplyRules.Load(path)!; var toxicity = PillToxicity;
+        var amount = BattleSupplyRules.Amount(pill, manaCapacity, toxicity);
+        var healing = PillToxicityRules.Absorb(AlchemyProductCatalog.WoundHealing[pill.efficacy_tier], toxicity);
+        _usingBattlePill = true;
+        try
+        {
+            if (!remove_item_from_inventory(path, 1)) return false;
+            restored = ApplyBattlePill(pill, amount, healing);
+            AddPillToxicity(pill.pill_id, pill.efficacy_tier);
+            BattleSupplyRules.Normalize(battle_supplies, pack_items, pack_counts);
+            return true;
+        }
+        finally { _usingBattlePill = false; }
+    }
+
     public bool TryUseBattlePill(int index, int manaCapacity, out int restored)
     {
         restored = 0;

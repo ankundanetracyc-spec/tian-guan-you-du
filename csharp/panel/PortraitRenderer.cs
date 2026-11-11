@@ -9,6 +9,7 @@ public partial class PortraitRenderer : Control
     private static readonly Color[] HairTones=[new("ffffff"),new("c8a77b"),new("8a6550"),new("89919a"),new("9b4b38")];
     private static readonly System.Collections.Generic.Dictionary<string,Dictionary> SelectionCache=[];
     private readonly System.Collections.Generic.Dictionary<string,TextureRect> _layers=[];
+    private Dictionary _resolvedAppearance=[];
     private string _current_key="";
     private bool _headshotMode;
     private Control? _headshotComposition;
@@ -51,6 +52,7 @@ public partial class PortraitRenderer : Control
         var catalog=GetNode<PortraitCatalog>("/root/PortraitCatalog");
         var key=catalog.make_cache_key(data,context,requested);
         if(!SelectionCache.TryGetValue(key,out var selected)){selected=catalog.select_portrait(context,requested);SelectionCache[key]=selected;}
+        _resolvedAppearance=selected;
         _current_key=key;
         foreach(var part in LayerOrder)
         {
@@ -68,8 +70,19 @@ public partial class PortraitRenderer : Control
         apply_appearance(data,selected);
         apply_headshot_crop();
     }
-    public void clear_portrait(){foreach(var layer in _layers.Values){layer.Texture=null;layer.Visible=false;}_current_key="";}
+    public void clear_portrait(){foreach(var layer in _layers.Values){layer.Texture=null;layer.Visible=false;}_resolvedAppearance=[];_current_key="";}
     public string get_cache_key()=>_current_key;
+    public Dictionary get_resolved_appearance()
+    {
+        Dictionary resolved=[];
+        foreach(var part in new[]{"face","ear","eye","brow","nose","mouth","makeup","beard","hair_back","hair_front","clothes"})
+        {
+            var entry=_resolvedAppearance.GetValueOrDefault(part,new Dictionary()).AsGodotDictionary();
+            var index=entry.GetValueOrDefault("variant_index",-1).AsInt32();
+            if(index>=0)resolved[part]=index;
+        }
+        return resolved;
+    }
     public bool has_required_layers()=>_layers.TryGetValue("face",out var face)&&face.Texture is not null&&_layers.TryGetValue("clothes",out var clothes)&&clothes.Texture is not null;
     public static void clear_selection_cache()=>SelectionCache.Clear();
     private void ensure_layers()

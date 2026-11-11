@@ -7,7 +7,8 @@ public static partial class EastWoodsDungeonRules
 {
     public sealed record NodeDefinition(string Id, string Title, string Description, Vector2I GridPosition, bool ShowTitleOnMap = false,
         int Terrain = 0, string Feature = "", string ResourceNodeId = "",
-        EastWoodsResourceCategory ResourceCategory = EastWoodsResourceCategory.None);
+        EastWoodsResourceCategory ResourceCategory = EastWoodsResourceCategory.None,
+        string ContentType = "", string CreatureId = "");
 
     public const string DungeonId = "east_woods_route";
     public const float BaseDunSpeed = 100.0f;

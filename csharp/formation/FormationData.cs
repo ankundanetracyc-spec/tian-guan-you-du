@@ -10,8 +10,6 @@ public partial class FormationData : Resource
     [Export] public float max_durability = 1.0f;
     [Export] public Array<string> body_tag_requirements = [];
     [Export] public Array<string> ink_tag_requirements = [];
-    [Export] public Array<string> eye_tag_requirements = [];
-    [Export] public Dictionary eye_bonus_tags = [];
     [Export] public Array<string> pivot_tag_requirements = [];
     [Export] public Dictionary pivot_bonus_tags = [];
     [Export] public Array<string> fuel_tag_requirements = [];
@@ -20,5 +18,4 @@ public partial class FormationData : Resource
     [Export] public float battle_physical_defense_bonus;
     [Export] public float spirit_pressure_bonus;
     [Export] public Dictionary pivot_effect_mults = [];
-    [Export] public Dictionary eye_range_mults = [];
 }
