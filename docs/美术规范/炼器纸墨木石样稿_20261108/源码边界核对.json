@@ -1,0 +1,111 @@
+{
+  "date": "2026-11-08",
+  "status": "两档原生233项各通过；顶栏同22字46高，独立样稿未接入游戏",
+  "builtByThisAgent": false,
+  "godotLaunchedByThisAgent": false,
+  "originalFileCount": 10,
+  "originalFilesUnchanged": true,
+  "originalFileSha256": {
+    "csharp/scene/ProcessForgingScene.cs": "3ab3c488941e22aa4712dc1e43ffa440e5c339f4ca9b253539a9c0643f1200fe",
+    "csharp/scene/ProcessForgingScene.Workspace.cs": "d434e201ee682c13bdf112decee8a9580e5d1f6daa6d61f993103d156267a6c0",
+    "csharp/scene/ProcessForgingScene.FirePreview.cs": "5428c393ecabca3dca940fe96263fb8021781d2255b3fc16066202c1ef12dbd0",
+    "csharp/scene/ProcessForgingScene.Audit.cs": "1e064ad16836a9b33b5c1f378e9d5a2d953bc1170a1ddd62cceca2d45512a8c3",
+    "csharp/scene/ProcessForgingScene.ItemPreview.cs": "58c3a5879cfdd7e92f6556af4b533908f1b6f3661db8a7147f590c529a711590",
+    "csharp/panel/ForgingSurfacePalette.cs": "9047d4f75f9b1f1e0b94ff3e4f9a77ee01df8022a046a331c789bc62bf0a6560",
+    "csharp/systems/ProcessForgingTrial.cs": "7946753cb7354b101c1056f7768383a750d78af1b16c8bbd61ad635485556665",
+    "csharp/systems/ProcessForgingTrial.Spirit.cs": "ee534fba47702af6416484f1818ad021f57ef3de2e2d5cfc70f17de226f11900",
+    "resources/crafting/process_forging_candidate_v3.json": "d09f346c7331031654fe1b24cdd8a44a04261e438bcef20c7cf580e7856e0174",
+    "tscn/scene/ProcessForgingScene.tscn": "ae76d5d019d11e6e05e770a8b69cdc70a13a2c765c46be2de342d9798e54d443"
+  },
+  "addedScene": "tscn/scene/ForgingPaperPreview.tscn",
+  "addedWrapper": "csharp/scene/ForgingPaperPreviewScene.cs",
+  "entryIntegrated": false,
+  "ownerCharacterBound": false,
+  "scope": "本实例局部换肤；原返回连接已断开；小时仅变换显示文字；模型与人物数据不写",
+  "rootCaptureApi": [
+    "NativeFirePreview",
+    "PreviewLedger",
+    "OriginalInputsVisible",
+    "SkinPassCount",
+    "StyledControlCount"
+  ],
+  "pending": [
+    "用户查看炼器样稿"
+  ],
+  "rootValidation": {
+    "compiled": true,
+    "buildWarnings": 0,
+    "buildErrors": 0,
+    "nativeWidths": [
+      1280,
+      1920
+    ],
+    "totalChecks": 466,
+    "originalFiles": [
+      {
+        "path": "csharp/scene/ProcessForgingScene.cs",
+        "before": "3ab3c488941e22aa4712dc1e43ffa440e5c339f4ca9b253539a9c0643f1200fe",
+        "current": "3ab3c488941e22aa4712dc1e43ffa440e5c339f4ca9b253539a9c0643f1200fe",
+        "unchanged": true
+      },
+      {
+        "path": "csharp/scene/ProcessForgingScene.Workspace.cs",
+        "before": "d434e201ee682c13bdf112decee8a9580e5d1f6daa6d61f993103d156267a6c0",
+        "current": "d434e201ee682c13bdf112decee8a9580e5d1f6daa6d61f993103d156267a6c0",
+        "unchanged": true
+      },
+      {
+        "path": "csharp/scene/ProcessForgingScene.FirePreview.cs",
+        "before": "5428c393ecabca3dca940fe96263fb8021781d2255b3fc16066202c1ef12dbd0",
+        "current": "5428c393ecabca3dca940fe96263fb8021781d2255b3fc16066202c1ef12dbd0",
+        "unchanged": true
+      },
+      {
+        "path": "csharp/scene/ProcessForgingScene.Audit.cs",
+        "before": "1e064ad16836a9b33b5c1f378e9d5a2d953bc1170a1ddd62cceca2d45512a8c3",
+        "current": "1e064ad16836a9b33b5c1f378e9d5a2d953bc1170a1ddd62cceca2d45512a8c3",
+        "unchanged": true
+      },
+      {
+        "path": "csharp/scene/ProcessForgingScene.ItemPreview.cs",
+        "before": "58c3a5879cfdd7e92f6556af4b533908f1b6f3661db8a7147f590c529a711590",
+        "current": "58c3a5879cfdd7e92f6556af4b533908f1b6f3661db8a7147f590c529a711590",
+        "unchanged": true
+      },
+      {
+        "path": "csharp/panel/ForgingSurfacePalette.cs",
+        "before": "9047d4f75f9b1f1e0b94ff3e4f9a77ee01df8022a046a331c789bc62bf0a6560",
+        "current": "9047d4f75f9b1f1e0b94ff3e4f9a77ee01df8022a046a331c789bc62bf0a6560",
+        "unchanged": true
+      },
+      {
+        "path": "csharp/systems/ProcessForgingTrial.cs",
+        "before": "7946753cb7354b101c1056f7768383a750d78af1b16c8bbd61ad635485556665",
+        "current": "7946753cb7354b101c1056f7768383a750d78af1b16c8bbd61ad635485556665",
+        "unchanged": true
+      },
+      {
+        "path": "csharp/systems/ProcessForgingTrial.Spirit.cs",
+        "before": "ee534fba47702af6416484f1818ad021f57ef3de2e2d5cfc70f17de226f11900",
+        "current": "ee534fba47702af6416484f1818ad021f57ef3de2e2d5cfc70f17de226f11900",
+        "unchanged": true
+      },
+      {
+        "path": "resources/crafting/process_forging_candidate_v3.json",
+        "before": "d09f346c7331031654fe1b24cdd8a44a04261e438bcef20c7cf580e7856e0174",
+        "current": "d09f346c7331031654fe1b24cdd8a44a04261e438bcef20c7cf580e7856e0174",
+        "unchanged": true
+      },
+      {
+        "path": "tscn/scene/ProcessForgingScene.tscn",
+        "before": "ae76d5d019d11e6e05e770a8b69cdc70a13a2c765c46be2de342d9798e54d443",
+        "current": "ae76d5d019d11e6e05e770a8b69cdc70a13a2c765c46be2de342d9798e54d443",
+        "unchanged": true
+      }
+    ],
+    "noStockDebit": true,
+    "noCharacterBound": true,
+    "productionEntryChanged": false,
+    "readonlyFireChecked": true
+  }
+}

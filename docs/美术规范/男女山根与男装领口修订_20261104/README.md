@@ -42,7 +42,7 @@
 
 ## 接入与最终验收
 
-原生来源与最终件保存于[本轮素材包](../../../mods/appearance/portrait_nasion_clothing_20261104_v4/)，已安装至活动包`mods/appearance/ink_three_variants_20261004/`。共16张PNG：7张前衣、7张后领、2张鼻子；44个可选款式保持，物理纹理由44张增至51张。每套男装的两层仍由同一个衣服编号选择，合成顺序为后发→后领→脸颈→前衣→五官→前发；无后领的旧快照按空层处理。
+原生来源与最终件保存于[本轮素材包](../../../mods/appearance/portrait_nasion_clothing_20261104_v4)，已安装至活动包`mods/appearance/ink_three_variants_20261004/`。共16张PNG：7张前衣、7张后领、2张鼻子；44个可选款式保持，物理纹理由44张增至51张。每套男装的两层仍由同一个衣服编号选择，合成顺序为后发→后领→脸颈→前衣→五官→前发；无后领的旧快照按空层处理。
 
 接入前44张活动PNG及两份配置已备份于[原始快照](../../../mods/appearance/portrait_nasion_clothing_20261104_v4/installation/before_install.zip)。[安装器](../../../mods/appearance/portrait_nasion_clothing_20261104_v4/source/install_in_game.cjs)在16件齐备、来源及两层守卫检查通过后写入，保留其余35张旧PNG；配置仅追加上述两项绑定。[安装记录](../../../mods/appearance/portrait_nasion_clothing_20261104_v4/installation/install_report.json)保存最终哈希与原始基线。
 

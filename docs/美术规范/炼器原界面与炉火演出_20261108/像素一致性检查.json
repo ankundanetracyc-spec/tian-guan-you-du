@@ -1,0 +1,86 @@
+{
+  "size": [
+    2560,
+    1440
+  ],
+  "regions": {
+    "ready.png": {
+      "header": {
+        "box": [
+          37,
+          28,
+          2523,
+          144
+        ],
+        "max_rgba_diff": 0
+      },
+      "left": {
+        "box": [
+          37,
+          171,
+          818,
+          1371
+        ],
+        "max_rgba_diff": 0
+      },
+      "right": {
+        "box": [
+          1840,
+          171,
+          2523,
+          1371
+        ],
+        "max_rgba_diff": 0
+      },
+      "polarity": {
+        "box": [
+          845,
+          1044,
+          1813,
+          1371
+        ],
+        "max_rgba_diff": 0
+      }
+    },
+    "restored.png": {
+      "header": {
+        "box": [
+          37,
+          28,
+          2523,
+          144
+        ],
+        "max_rgba_diff": 0
+      },
+      "left": {
+        "box": [
+          37,
+          171,
+          818,
+          1371
+        ],
+        "max_rgba_diff": 0
+      },
+      "right": {
+        "box": [
+          1840,
+          171,
+          2523,
+          1371
+        ],
+        "max_rgba_diff": 0
+      },
+      "polarity": {
+        "box": [
+          845,
+          1044,
+          1813,
+          1371
+        ],
+        "max_rgba_diff": 0
+      }
+    }
+  },
+  "original_style_files_unchanged": 4,
+  "result": "PASS"
+}

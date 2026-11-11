@@ -1,0 +1,997 @@
+{
+  "date": "2026-11-09",
+  "method": "Source occurrence inventory plus manual route review; counts are not runtime visits.",
+  "excluded": [
+    "csharp/debug",
+    "editor-only addons",
+    "historical outputs and web mockups"
+  ],
+  "matched_files": 70,
+  "source_occurrences": 150,
+  "files": [
+    {
+      "path": "csharp/autoload/HoverInfoManager.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 199
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 213
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 435
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 452
+        }
+      ]
+    },
+    {
+      "path": "csharp/battle/BattleBoardHud.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 405
+        },
+        {
+          "kind": "SetProvider",
+          "line": 418
+        },
+        {
+          "kind": "SetInfo",
+          "line": 419
+        },
+        {
+          "kind": "SetProvider",
+          "line": 420
+        },
+        {
+          "kind": "SetInfo",
+          "line": 468
+        }
+      ]
+    },
+    {
+      "path": "csharp/battle/BattleBoardView.cs",
+      "occurrences": [
+        {
+          "kind": "SetProvider",
+          "line": 125
+        },
+        {
+          "kind": "custom_tooltip_override",
+          "line": 332
+        },
+        {
+          "kind": "custom_tooltip_override",
+          "line": 340
+        }
+      ]
+    },
+    {
+      "path": "csharp/battle/BattleFlowView.Supplies.cs",
+      "occurrences": [
+        {
+          "kind": "SetInfo",
+          "line": 51
+        }
+      ]
+    },
+    {
+      "path": "csharp/battle/BattleFlowView.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 207
+        }
+      ]
+    },
+    {
+      "path": "csharp/battle/BattlePlanHud.cs",
+      "occurrences": [
+        {
+          "kind": "SetInfo",
+          "line": 139
+        },
+        {
+          "kind": "SetInfo",
+          "line": 149
+        }
+      ]
+    },
+    {
+      "path": "csharp/battle/BattleSupplyHud.cs",
+      "occurrences": [
+        {
+          "kind": "SetInfo",
+          "line": 95
+        }
+      ]
+    },
+    {
+      "path": "csharp/battle/BattleUnitOverlay.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 32
+        },
+        {
+          "kind": "SetInfo",
+          "line": 421
+        }
+      ]
+    },
+    {
+      "path": "csharp/battle/CombatSkillBar.cs",
+      "occurrences": [
+        {
+          "kind": "SetTooltip",
+          "line": 325
+        },
+        {
+          "kind": "SetInfo",
+          "line": 596
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/BattleActionProgress.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 64
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/CellCharacterList.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 483
+        },
+        {
+          "kind": "SetTooltip",
+          "line": 484
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/CharacterAttributePresentation.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 44
+        },
+        {
+          "kind": "SetInfo",
+          "line": 45
+        },
+        {
+          "kind": "SetInfo",
+          "line": 52
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/CharacterCombatBoardEditor.cs",
+      "occurrences": [
+        {
+          "kind": "SetInfo",
+          "line": 215
+        },
+        {
+          "kind": "SetInfo",
+          "line": 233
+        },
+        {
+          "kind": "SetInfo",
+          "line": 252
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/CharacterCombatBoardPage.cs",
+      "occurrences": [
+        {
+          "kind": "SetInfo",
+          "line": 73
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/CondensationCardGamePanel.Opening.cs",
+      "occurrences": [
+        {
+          "kind": "SetInfo",
+          "line": 13
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/CondensationCardGamePanel.Status.cs",
+      "occurrences": [
+        {
+          "kind": "SetInfo",
+          "line": 14
+        },
+        {
+          "kind": "SetInfo",
+          "line": 33
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/CondensationCardGamePanel.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 206
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/CultivationUI.Inspiration.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 200
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 310
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/CultivationUI.Room.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 215
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/CultivationUI.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 298
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/EastWoodsDungeonPanel.Presentation.cs",
+      "occurrences": [
+        {
+          "kind": "SetInfo",
+          "line": 119
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/EastWoodsDungeonPanel.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 434
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 492
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 780
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/EncyclopediaPanel.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 237
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 478
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/ForestWolfEventView.cs",
+      "occurrences": [
+        {
+          "kind": "SetInfo",
+          "line": 101
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/FormationBoardCanvas.cs",
+      "occurrences": [
+        {
+          "kind": "SetTooltip",
+          "line": 318
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/FormationGuardBoardCanvas.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 47
+        },
+        {
+          "kind": "SetProvider",
+          "line": 254
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/InfoPanel.EquipmentLayout.cs",
+      "occurrences": [
+        {
+          "kind": "SetProvider",
+          "line": 31
+        },
+        {
+          "kind": "SetProvider",
+          "line": 32
+        },
+        {
+          "kind": "SetInfo",
+          "line": 41
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/InfoPanel.Redesign.cs",
+      "occurrences": [
+        {
+          "kind": "SetInfo",
+          "line": 213
+        },
+        {
+          "kind": "SetInfo",
+          "line": 221
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/InfoPanel.SkillLibrary.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 308
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/InfoPanel.Supplies.cs",
+      "occurrences": [
+        {
+          "kind": "SetInfo",
+          "line": 42
+        },
+        {
+          "kind": "SetInfo",
+          "line": 92
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/InfoPanel.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 832
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 971
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 1282
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 1289
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 1290
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 1474
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 1552
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 2016
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 2070
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 2154
+        },
+        {
+          "kind": "SetInfo",
+          "line": 2157
+        },
+        {
+          "kind": "SetInfo",
+          "line": 2161
+        },
+        {
+          "kind": "SetInfo",
+          "line": 2178
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/InspirationActionPicker.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 172
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/InspirationQualityMark.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 34
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/ItemClaimPanel.LeftList.cs",
+      "occurrences": [
+        {
+          "kind": "SetProvider",
+          "line": 26
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/ItemClaimPanel.cs",
+      "occurrences": [
+        {
+          "kind": "SetProvider",
+          "line": 99
+        },
+        {
+          "kind": "SetProvider",
+          "line": 124
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/MainHUD.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 117
+        },
+        {
+          "kind": "SetTooltip",
+          "line": 280
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/MoodDiscControl.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 103
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/NpcInteractionPanel.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 187
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 209
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/PackSlot.cs",
+      "occurrences": [
+        {
+          "kind": "SetTooltip",
+          "line": 11
+        },
+        {
+          "kind": "SetInfo",
+          "line": 12
+        },
+        {
+          "kind": "SetInfo",
+          "line": 12
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/PlayerInfoText.cs",
+      "occurrences": [
+        {
+          "kind": "SetInfo",
+          "line": 208
+        },
+        {
+          "kind": "SetTooltip",
+          "line": 210
+        },
+        {
+          "kind": "SetInfo",
+          "line": 221
+        },
+        {
+          "kind": "SetTooltip",
+          "line": 223
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/QuietRoomNumber.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 24
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 25
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/RestPaperControls.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 23
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 27
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 28
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/StartMenu.CreationProficiencies.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 56
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/StoragePanel.Native.cs",
+      "occurrences": [
+        {
+          "kind": "SetProvider",
+          "line": 144
+        },
+        {
+          "kind": "SetProvider",
+          "line": 166
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/StoragePanel.cs",
+      "occurrences": [
+        {
+          "kind": "SetProvider",
+          "line": 176
+        },
+        {
+          "kind": "SetTooltip",
+          "line": 385
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/StoryDialoguePanel.Choices.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 58
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/StoryDialoguePanel.Social.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 167
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/TradePanel.cs",
+      "occurrences": [
+        {
+          "kind": "SetProvider",
+          "line": 247
+        },
+        {
+          "kind": "SetProvider",
+          "line": 299
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/WardrobePicker.cs",
+      "occurrences": [
+        {
+          "kind": "SetInfo",
+          "line": 129
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/YuxuMarketPanel.cs",
+      "occurrences": [
+        {
+          "kind": "SetProvider",
+          "line": 166
+        },
+        {
+          "kind": "SetProvider",
+          "line": 207
+        }
+      ]
+    },
+    {
+      "path": "csharp/panel/YuxuSectExchangePanel.cs",
+      "occurrences": [
+        {
+          "kind": "SetProvider",
+          "line": 213
+        }
+      ]
+    },
+    {
+      "path": "csharp/scene/AlchemyPreviewScene.Room.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 140
+        }
+      ]
+    },
+    {
+      "path": "csharp/scene/AlchemyPreviewScene.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 132
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 135
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 139
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 148
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 156
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 206
+        }
+      ]
+    },
+    {
+      "path": "csharp/scene/AlchemySlotBrewPreviewScene.Checks.cs",
+      "occurrences": [
+        {
+          "kind": "SetInfo",
+          "line": 79
+        }
+      ]
+    },
+    {
+      "path": "csharp/scene/AlchemySlotBrewPreviewScene.PaperDialogs.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 366
+        }
+      ]
+    },
+    {
+      "path": "csharp/scene/AlchemySlotBrewPreviewScene.Receipt.cs",
+      "occurrences": [
+        {
+          "kind": "SetInfo",
+          "line": 98
+        }
+      ]
+    },
+    {
+      "path": "csharp/scene/AlchemySlotBrewPreviewScene.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 790
+        }
+      ]
+    },
+    {
+      "path": "csharp/scene/ForgingPaperPreviewScene.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 155
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 361
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 393
+        }
+      ]
+    },
+    {
+      "path": "csharp/scene/NpcInteractionPaperCardPreview.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 52
+        }
+      ]
+    },
+    {
+      "path": "csharp/scene/ProcessForgingScene.Workspace.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 36
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 40
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 105
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 111
+        }
+      ]
+    },
+    {
+      "path": "csharp/scene/ProcessForgingScene.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 162
+        },
+        {
+          "kind": "SetInfo",
+          "line": 182
+        },
+        {
+          "kind": "SetInfo",
+          "line": 215
+        }
+      ]
+    },
+    {
+      "path": "csharp/scene/SwordCraftingScene.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 49
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 95
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 128
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 230
+        }
+      ]
+    },
+    {
+      "path": "csharp/scene/TalismanCraftingScene.Choices.cs",
+      "occurrences": [
+        {
+          "kind": "SetProvider",
+          "line": 64
+        }
+      ]
+    },
+    {
+      "path": "csharp/scene/TalismanCraftingScene.Plans.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 37
+        }
+      ]
+    },
+    {
+      "path": "csharp/scene/TalismanCraftingScene.cs",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 225
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 248
+        }
+      ]
+    },
+    {
+      "path": "gdscripts/world/BaiChuanFreeWorldRuntime.gd",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 653
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 916
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 1021
+        }
+      ]
+    },
+    {
+      "path": "gdscripts/world/TileWorldMapPresentation.gd",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 545
+        }
+      ]
+    },
+    {
+      "path": "scripts/world/bai_chuan/BaiChuanNineTileTest.gd",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 571
+        }
+      ]
+    },
+    {
+      "path": "tscn/panel/BattleCard.tscn",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 246
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 265
+        }
+      ]
+    },
+    {
+      "path": "tscn/world/bai_chuan/YuxuXianzongOverview.tscn",
+      "occurrences": [
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 138
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 190
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 243
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 296
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 349
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 402
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 455
+        },
+        {
+          "kind": "native_tooltip_assignment",
+          "line": 508
+        }
+      ]
+    }
+  ],
+  "independent_displays": [
+    {
+      "path": "csharp/scene/AlchemySlotBrewPreviewScene.cs",
+      "runtime_status": "formal; instantiated by LocationCraftingPanel",
+      "status": "repaired; native real-source cards passed in both modes and both viewports"
+    },
+    {
+      "path": "scripts/world/bai_chuan/YuxuSectDutyBoard.gd",
+      "runtime_status": "formal task preview",
+      "status": "independent short summary; title separate and body autowrap; no numeric formula"
+    },
+    {
+      "path": "scripts/world/map/WorldMapViewport.gd",
+      "runtime_status": "older map viewport",
+      "status": "short location name only; no long prose or formula"
+    },
+    {
+      "path": "gdscripts/world/BaiChuanNodeMapRuntime.gd",
+      "runtime_status": "map hint",
+      "status": "short distant-city navigation hint; no formula"
+    }
+  ],
+  "source_sha256": {
+    "csharp/panel/PlayerInfoText.cs": "2613a99f4203bbb67ed12f7e923a4d9ba5e9dae69031c19d9504710a9aaddcc1",
+    "csharp/autoload/HoverInfoManager.cs": "c92ecd8aceb08af776374fd1ed057b7a9700fea291ae0c79862e58d17ed101d5",
+    "csharp/scene/AlchemySlotBrewPreviewScene.cs": "e165036c9446e56e0c548bbe9c00677a2db75d0aa17348b9d6d60a43414c8fa4",
+    "csharp/world/ForestWolfEvent.cs": "36f61fe0aee97aac1e350afde1a77536b1cf205e73b8719d8c3baa9d45ca305d",
+    "csharp/panel/InfoPanel.Redesign.cs": "db5d5e54fe6fb70b5bc481ff54c5b4cb104a6ad0b49f3634e986fcd8c9a2b23a",
+    "csharp/panel/InfoPanel.EquipmentTotals.cs": "67901e5e91d730136800af43d08025d142c39118659a3a67a987d8a26fb44d93",
+    "csharp/panel/MaterialItemPresentation.cs": "384542d11bf374858630a76f50b2bbc589d6ce6d125b5e62690cb9a5fa667a8f",
+    "csharp/scene/ProcessForgingScene.Workspace.cs": "4c88de0250e693fd53f235e8dd90baa7212a4a0f51f7ec584f2490e225eeba8b"
+  },
+  "runtime_evidence": "410 representative checks per viewport; not all business scenes or random states",
+  "last_forging_budget_repair": "source-reviewed and full build passed; no new physical-entry screenshot included in the 820 checks"
+}

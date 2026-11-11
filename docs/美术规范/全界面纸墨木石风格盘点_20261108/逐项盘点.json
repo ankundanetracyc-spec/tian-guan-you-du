@@ -1,0 +1,6155 @@
+{
+  "date": "2026-11-08",
+  "scope": "按2026-11-08审计；2026-11-10按当前裁定移除不再采用页面及专属UI素材后，清单已去除相应条目。",
+  "engineBridge": "编辑器桥接未连接，未宣称新截全部实机画面",
+  "baseline": [
+    "docs/plans/界面与美术/全局界面统一风格规范_20261108.md",
+    "docs/plans/界面与美术/角色与静室纸墨木石样稿_20261108.md"
+  ],
+  "counts": {
+    "csharpFiles": 783,
+    "uiClasses": 129,
+    "scenes": 111,
+    "auditGroups": 48,
+    "gdsUIProducers": 3
+  },
+  "statusCounts": {
+    "专项保留": 2,
+    "专项复核": 1,
+    "历史／备用": 3,
+    "同族可留": 3,
+    "基准保留": 4,
+    "局部未统一": 22,
+    "已批准专用": 1,
+    "已批准保留": 1,
+    "已选专用样式": 1,
+    "开发工具／组件": 1,
+    "待重做": 2,
+    "明显不同": 7
+  },
+  "rows": [
+    {
+      "id": "A01",
+      "name": "百工资料：法宝、丹药、符箓、阵法",
+      "status": "明显不同",
+      "scope": "正式",
+      "issue": "深绿黑底、金色标题与金边卡片；页签仍是普通按钮。",
+      "action": "首个逐面板验收对象；本轮仅制作百工资料独立样稿，待用户查看验收，未接入正式游戏。",
+      "sources": [
+        {
+          "path": "csharp/panel/BaigongPanel.cs",
+          "line": 174,
+          "excerpt": "private static StyleBoxFlat panel_style() => new() { BgColor = new Color(.055f, .07f, .065f, .98f), BorderColor = new Color(.68f, .56f, .32f, .9f), BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1, CornerRadiusTopLeft = 10, CornerRadiusTopRight = 10, CornerRadiusBottomLeft = 10, CornerRadiusBo",
+          "sha256": "715322000b2acee2cb69db5c60efc5ccaef1ac1c34eea8cc1348ef3e16778d2e"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "A08",
+      "name": "同门雅集：筹备、活动、回应",
+      "status": "局部未统一",
+      "scope": "正式",
+      "issue": "浅纸筹备卡与暗色标题／次操作混用，棕金描边和控件尚未归一。",
+      "action": "保留聚会场景与浅纸内容，统一标题承托、次操作及回应控件。",
+      "sources": [
+        {
+          "path": "csharp/panel/BanquetPanel.cs",
+          "line": 824,
+          "excerpt": "result.AddThemeStyleboxOverride(\"normal\", button_style(new Color(0.15f, 0.13f, 0.095f, 0.92f), new Color(\"756340\")));",
+          "sha256": "d3a0be1f8b0054ad3e84463fe1d7cfe1748c952848253a019bdcd1be1915a050"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "A09",
+      "name": "观复峰真传讲席",
+      "status": "局部未统一",
+      "scope": "正式",
+      "issue": "已有浅纸讲述卡，但暗标题与棕金按钮仍沿旧体系。",
+      "action": "保留讲述卡与场景，统一标题、回应及普通操作。",
+      "sources": [
+        {
+          "path": "csharp/panel/TrueDiscipleLecturePanel.cs",
+          "line": 155,
+          "excerpt": "headerCard.AddThemeStyleboxOverride(\"panel\", panel_style(new Color(0.075f, 0.09f, 0.095f, 0.80f), new Color(\"b5a57c\"), 7, 14));",
+          "sha256": "3746a1f95d63510a2dc85b1d9a0f84ea1b9606aee4ddc61620e11010533d8ef1"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "A10",
+      "name": "凝核牌局：主体、轨道、结算与起手",
+      "status": "已批准保留",
+      "scope": "正式",
+      "issue": "用户已明确批准当前凝核牌局整体表现；主体、回合轨道、结算／说明浮层、起手水墨纸纹和原笔触按钮均保持。",
+      "action": "完全保持现状，不列入待统一或重画清单；不修改牌局玩法、数值与交互。",
+      "sources": [
+        {
+          "path": "docs/plans/界面与美术/全局界面统一风格规范_20261108.md",
+          "line": 3,
+          "excerpt": "2026-11-08 用户最新裁定：后山路线试炼、青溪家业总览与旧地点页两项废案已清理，专属旧设计、入口、代码／场景及素材不再留作迁移对象；当前青溪野地、方远同行、白石与玉虚叙事及共享控件保留。凝核牌局主体、回合轨道、结算浮层、起手纸纹与原笔触按钮全部保持，不再列入待统一。后续每次只做一个面板的独立样稿，待用户查看验收后再继续；首个为百工资料，当前待验收，不宣称完成或已接入。",
+          "sha256": "00d28fc9d7305fef8ecdc09a827ec787ecf4ae4296ab6223d647b8cd42fc8362"
+        },
+        {
+          "path": "docs/美术规范/凝核起手与牌面信息_20261106/README.md",
+          "line": 5,
+          "excerpt": "按用户最新要求，凝核界面按钮统一复用原“结束回合”的水墨笔触素材，包括起手、正式局、试演、回弹选择和结算窗口；普通、悬停、按下和禁用状态保留可辨反馈。右上角“收益／玩法／重开／返回”及对应的正式局按钮同样使用，正式“返回修炼”加宽以容纳文字；不再使用上一版新生成的金边按钮。",
+          "sha256": "cedd3cd162582924e7dc8dea2e773ca6bfe00aa140775ea9fa9b067c0f31e6e1"
+        }
+      ],
+      "images": [
+        "docs/美术规范/凝核起手与牌面信息_20261106/正式凝核按钮.png"
+      ]
+    },
+    {
+      "id": "A11",
+      "name": "地点内景的说明卡与普通行动按钮",
+      "status": "明显不同",
+      "scope": "正式",
+      "issue": "通用内景按钮仍为深咖底、米白字、金棕悬停；与场景吊牌应分开判断。",
+      "action": "保留白石城／玉虚场景和吊牌，统一额外说明面及普通操作。",
+      "sources": [
+        {
+          "path": "csharp/panel/WorldLocationInteriorPanel.cs",
+          "line": 559,
+          "excerpt": "result.AddThemeColorOverride(\"font_color\", new Color(\"eadfca\"));",
+          "sha256": "2b2dcbc4f326d5a0773bfb60b3f2159db844416139ac389de307b5f148ce0588"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "A12",
+      "name": "设置面板",
+      "status": "明显不同",
+      "scope": "正式",
+      "issue": "纯色圆角设置表单，缺少当前木石／纸面控件层次。",
+      "action": "设置内容保留，统一下拉、滑条、选项和外框。",
+      "sources": [
+        {
+          "path": "csharp/panel/GameSettingsPanel.cs",
+          "line": 70,
+          "excerpt": "panel.AddThemeStyleboxOverride(\"panel\", new StyleBoxFlat",
+          "sha256": "1c8f52d760f9cc82511a25d34e6891c6d27e93ab5cbfabfd5b16e7593cd527f9"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "A13",
+      "name": "外观编辑／捏脸",
+      "status": "明显不同",
+      "scope": "正式",
+      "issue": "暖褐纯色工具面与普通参数控件，缺少材质分型。",
+      "action": "保留立绘与选择逻辑，统一编辑区、下拉和确认操作。",
+      "sources": [
+        {
+          "path": "csharp/panel/AppearanceEditor.cs",
+          "line": 111,
+          "excerpt": "_frame.AddThemeStyleboxOverride(\"panel\", panel_style(new Color(.82f, .77f, .65f, .99f)));",
+          "sha256": "61f6670a734f413c2073b0e0dcb73eae7c9affcea3be49c8b2f48cec81de11c3"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "A14",
+      "name": "新旅程人物创建与资质／造诣配置",
+      "status": "明显不同",
+      "scope": "正式",
+      "issue": "已有纸墨底图，但参数按钮、输入和下拉仍是纯色描边体系。",
+      "action": "保留配点结构及背景，补齐表单和分页材质。",
+      "sources": [
+        {
+          "path": "csharp/panel/StartMenu.CreationControls.cs",
+          "line": 10,
+          "excerpt": "private static StyleBoxFlat creation_edge(Color fill, Color edge, int bottom = 1, bool outline = false) => new()",
+          "sha256": "c6c602a5ba64762fa561ba39bfc5be71c18a6afa0cdf2712fb0196309f878d5c"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "A15",
+      "name": "暂停、读档、保存／返回首页确认",
+      "status": "明显不同",
+      "scope": "正式",
+      "issue": "暂停和读档沿独立浅色素框；与新弹窗和按钮未归一。",
+      "action": "统一菜单、存档条目和确认层，不改变存读行为。",
+      "sources": [
+        {
+          "path": "csharp/autoload/GameplayInputRouter.cs",
+          "line": 180,
+          "excerpt": "_menuPanel.AddThemeStyleboxOverride(\"panel\", new StyleBoxFlat",
+          "sha256": "eb63152a86ffc3f584829abaa914698d9d44610f922acde0d850a34e2395f55c"
+        },
+        {
+          "path": "csharp/panel/StartMenu.cs",
+          "line": 154,
+          "excerpt": "private void OpenLoadSaves()",
+          "sha256": "3a9d43b768a04b1c73df9dc6b69e126d28e1f7ab45c8436b081440585f6e2ea6"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "A16",
+      "name": "正式人类对战：配招、方案、战斗HUD",
+      "status": "明显不同",
+      "scope": "正式",
+      "issue": "仍是旧灰绿板、金边胶囊按钮与整块浅色网格；新版逐格拼接素材尚未替换。",
+      "action": "沿用已接入的新盘规则，对接专用逐格皮肤、来源栏、资源及方案页；保持战场暗幕。",
+      "sources": [
+        {
+          "path": "csharp/battle/BattleUiArt.cs",
+          "line": 6,
+          "excerpt": "internal const string Directory = \"res://textures/ui/combat/queue_ui_20261009_muted_v2/\";",
+          "sha256": "f63e1003ec3167e5aac1dcf89bf5345d6d99430e0810433d627e2ccf01cbc202"
+        },
+        {
+          "path": "csharp/battle/BattleBoardHud.cs",
+          "line": 247,
+          "excerpt": "var popup = new AcceptDialog { Title = \"方案\", Size = new(440, 340) }; AddChild(popup);",
+          "sha256": "65a3844895f2485f8066ed1efa78d08eef87613948cd770b497fc401cf47adbd"
+        },
+        {
+          "path": "docs/plans/界面与美术/局内战斗UI重设计_20261107.md",
+          "line": 3,
+          "excerpt": "> 2026-11-07。**38逐格拼接参考已获用户选择，现按授权完成39首批界面素材：五张透明源图、十九个区域引用、深／浅底实际拼接预览和原生资源读取验证。格面与边缘按真实可用格拼接，不用整张矩形底板限制后续盘形。这套新皮肤尚未替换进正式战斗。**",
+          "sha256": "a74d1956777789cd4c5f3a33afc559f083775e78d2d34ed9e2b5f911b01311ac"
+        }
+      ],
+      "images": [
+        "docs/美术规范/人类招式图标新版_20261107/正式场景_配招_1280.png"
+      ]
+    },
+    {
+      "id": "B01",
+      "name": "正式角色六页",
+      "status": "局部未统一",
+      "scope": "正式",
+      "issue": "正式角色仍沿旧纸框、暗侧栏与题签，其材质做工和状态反馈尚未达到当前独立样稿；战斗页另有结构缺口。",
+      "action": "按功能保留各页构图，归一材质、字级与状态；战斗页另待新版局外预装配，不要求全部页面采用同一外框或控件形状。",
+      "sources": [
+        {
+          "path": "csharp/panel/InfoPanel.cs",
+          "line": 330,
+          "excerpt": "_selectedTabPlaque = GD.Load<Texture2D>(\"res://textures/ui/infopanel_nav_plaque_clean_v2.png\");",
+          "sha256": "5505d0c0dfdd17f3007c42bd5f9a95977bf97f5189cf1570dc606504cd1f8b9b"
+        },
+        {
+          "path": "csharp/panel/InfoPanel.SkillLibrary.cs",
+          "line": 102,
+          "excerpt": "var titleLabel = CharacterText(\"兽战装配\", 28); titleLabel.SizeFlagsHorizontal = SizeFlags.ExpandFill; heading.AddChild(titleLabel);",
+          "sha256": "f070282c0d31230c92b0c9d86bbb819914c2e1c6857b49ae73e56384897e0bce"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "B02",
+      "name": "正式静室的现存修行页",
+      "status": "局部未统一",
+      "scope": "正式",
+      "issue": "旧暗色导航、带装饰纸签、旧按钮／日期控件；当前新样稿未接入。",
+      "action": "后续迁移新样稿，并按最新裁定处理延期入口和文案；本轮不改正式游戏。",
+      "sources": [
+        {
+          "path": "csharp/panel/CultivationUI.Room.cs",
+          "line": 78,
+          "excerpt": "var plaque = new StyleBoxTexture { Texture = GD.Load<Texture2D>(\"res://textures/ui/infopanel_nav_plaque_clean_v2.png\"), TextureMarginLeft = 24, TextureMarginRight = 24, TextureMarginTop = 12, TextureMarginBottom = 12, ContentMarginTop = 8, ContentMarginBottom = 8 };",
+          "sha256": "08f6403d574d311362722e30cbcc8fb4c6a4e00658297812bc22eabf893727ea"
+        },
+        {
+          "path": "csharp/panel/QuietRoomStyle.cs",
+          "line": 53,
+          "excerpt": "public static Theme MakeTheme()",
+          "sha256": "5d4306a0b9fd1ee6170dcd9372e66691cb8cb6752b07d796736faeef78ee79f9"
+        }
+      ],
+      "images": [
+        "docs/美术规范/静室休息与交易统一_20261014/01_吐纳.png"
+      ]
+    },
+    {
+      "id": "B03",
+      "name": "休息：时长、日期、昼夜、剧情限定",
+      "status": "局部未统一",
+      "scope": "正式",
+      "issue": "沿旧QuietRoomStyle按钮、日期与选择边线。",
+      "action": "保留昼夜卧房插画和规则，统一纸面承托与表单。",
+      "sources": [
+        {
+          "path": "csharp/panel/RestPanel.cs",
+          "line": 24,
+          "excerpt": "Theme = QuietRoomStyle.MakeTheme();",
+          "sha256": "3985e3a5507e171b98fdab4bd71666bbdb501703cec5c58fac31de02723aba02"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "B04",
+      "name": "归元九息",
+      "status": "局部未统一",
+      "scope": "正式",
+      "issue": "仍沿静室旧纸面／边线与入口按钮。",
+      "action": "复用当前修行面板与提示控件，保留九息专用图示。",
+      "sources": [
+        {
+          "path": "csharp/panel/YuanxiPanel.cs",
+          "line": 47,
+          "excerpt": "diagramPaper.AddThemeStyleboxOverride(\"panel\", QuietRoomStyle.Paper(1, 0)); AddChild(diagramPaper); MoveChild(diagramPaper, 1);",
+          "sha256": "4c8c326c188177a0446bebea693df2154ea9db773bf1bca721d239e5ba5f8dfc"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "B05",
+      "name": "境界与修为累计",
+      "status": "局部未统一",
+      "scope": "正式",
+      "issue": "独立境界题签、旧阅读纸和按钮，不是当前面板组件。",
+      "action": "灵云／灵核与境界演出保留，整理外框、说明层和操作。",
+      "sources": [
+        {
+          "path": "csharp/panel/RealmPanel.cs",
+          "line": 614,
+          "excerpt": "Texture = ResourceLoader.Load<Texture2D>(\"res://textures/ui/realm_tag_opaque_v1.png\")",
+          "sha256": "2ad95c09efe97c873b9eb4c7e480a2b1b3794a85f2ad866ea32f3d1d7b8311f8"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "B06",
+      "name": "见闻、任务、记录",
+      "status": "局部未统一",
+      "scope": "正式",
+      "issue": "仍是旧满屏纸墨底与旧侧栏纸签，未用本次页签及控件。",
+      "action": "保留条目与追踪，统一导航、检索和详情层。",
+      "sources": [
+        {
+          "path": "csharp/panel/JournalPanel.cs",
+          "line": 116,
+          "excerpt": "StyleBox background = selected ? new StyleBoxTexture { Texture = GD.Load<Texture2D>(\"res://textures/ui/infopanel_nav_plaque_clean_v2.png\"), TextureMarginLeft = 32, TextureMarginRight = 32, ContentMarginLeft = 12, ContentMarginRight = 12 } : new StyleBoxEmpty();",
+          "sha256": "071021910b8c445f60516d8a09bad0fc6670d7d4639d545c7d72f096f08e0e74"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "B07",
+      "name": "信件与邀约",
+      "status": "局部未统一",
+      "scope": "正式",
+      "issue": "暗墨侧栏、装饰纸签、薄线纸卡及旧应邀／排序按钮。",
+      "action": "保留信纸阅读与邀约字段，统一分页、排序和操作。",
+      "sources": [
+        {
+          "path": "csharp/panel/LetterPanel.cs",
+          "line": 217,
+          "excerpt": "StyleBox material = selected ? new StyleBoxTexture { Texture = GD.Load<Texture2D>(\"res://textures/ui/infopanel_nav_plaque_clean_v2.png\") } : new StyleBoxEmpty();",
+          "sha256": "3443b69d8b7786759d1656b6125aa437b55f781c76a917eb9c75fb53f043cbb0"
+        }
+      ],
+      "images": [
+        "docs/美术规范/信件界面_20261014/实际界面_邀约.png"
+      ]
+    },
+    {
+      "id": "B08",
+      "name": "修行百科：状态、物品、生灵、术语",
+      "status": "局部未统一",
+      "scope": "正式",
+      "issue": "纸墨背景已在，但分类和条目大量采用土黄选中、圆角纯色卡。",
+      "action": "统一分类、搜索、条目、动画控制及详情卡，保留图鉴内容。",
+      "sources": [
+        {
+          "path": "csharp/panel/EncyclopediaPanel.cs",
+          "line": 1403,
+          "excerpt": "BgColor = selected ? new Color(.84f, .74f, .52f, .65f) : new Color(1f, .98f, .91f, .42f),",
+          "sha256": "6df5343973d66dc3f6193151524747031bcdfaccc99146f319a4e74eea5ca0a3"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "B09",
+      "name": "NPC互动菜单",
+      "status": "局部未统一",
+      "scope": "正式",
+      "issue": "沿旧静室主题与普通按钮，未区分新主次操作和小图标。",
+      "action": "统一行动菜单与浮层，不改人物或交往规则。",
+      "sources": [
+        {
+          "path": "csharp/panel/NpcInteractionPanel.cs",
+          "line": 26,
+          "excerpt": "Theme = QuietRoomStyle.MakeTheme();",
+          "sha256": "d8b9928f4f0bd909a8fabe265bd7406487a44cb0426bd2b8858f16f0284a92c4"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "B10",
+      "name": "剧情对话与选项",
+      "status": "局部未统一",
+      "scope": "正式",
+      "issue": "已有纸墨方向，但选项、回应及通知仍来自旧控件。",
+      "action": "保留认可的对话位置和人物立绘，统一选项状态及小控件。",
+      "sources": [
+        {
+          "path": "csharp/panel/StoryDialoguePanel.Choices.cs",
+          "line": 53,
+          "excerpt": "arrow.AddThemeFontSizeOverride(\"font_size\", 25); arrow.AddThemeColorOverride(\"font_color\", QuietRoomStyle.Teal);",
+          "sha256": "29d75b66a493fcddb2d5c5ac2cd53ef70224038c076596be221fd0116b31cc7c"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "B11",
+      "name": "普通交易及数量选择",
+      "status": "局部未统一",
+      "scope": "正式",
+      "issue": "纸面目录已同族，返回、成交与数量仍是旧轻边控件。",
+      "action": "保留四列交易结构，统一主次按钮、数量框和确认。",
+      "sources": [
+        {
+          "path": "csharp/panel/TradePanel.cs",
+          "line": 57,
+          "excerpt": "Theme = QuietRoomStyle.MakeTheme();",
+          "sha256": "3dfc6ae6a4763921c003aa83ea56b9f0909be94026f85a544cb6065c076a212c"
+        }
+      ],
+      "images": [
+        "docs/美术规范/行囊交易善功堂实装_20261031/04_原生交易文字目录.png"
+      ]
+    },
+    {
+      "id": "B12",
+      "name": "宗内坊市当前正式页",
+      "status": "局部未统一",
+      "scope": "正式",
+      "issue": "仍是试玩首版及旧库存／操作风格，新中央格子样板也未接入。",
+      "action": "保留真实买卖规则，后续将新版布局与共用控件一起评审迁移。",
+      "sources": [
+        {
+          "path": "csharp/panel/YuxuMarketPanel.cs",
+          "line": 60,
+          "excerpt": "_search = Place(new LineEdit { Name = \"MarketSearch\", PlaceholderText = \"搜索物品\" }, _market, 735, 15, 240, 42);",
+          "sha256": "57a9f820f447182350232d75f26a653a24e1ed452a77a2e622e1f6dfa81a8e41"
+        },
+        {
+          "path": "docs/美术规范/宗内坊市交易界面_20261107/README.md",
+          "line": 1,
+          "excerpt": "# 玉虚宗内坊市：试玩界面与交互样板",
+          "sha256": "413883732f0a6f9a2720e506a8c03b5608c9b6567e1e9346cb8ed245a1af6f11"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "B13",
+      "name": "宗门办理：请假、晋升、案件核验等确认层",
+      "status": "局部未统一",
+      "scope": "正式",
+      "issue": "存在直接创建ConfirmationDialog的分散入口，未共用新纸木确认面。",
+      "action": "统一标题、说明、费用／条件与确认取消。",
+      "sources": [
+        {
+          "path": "csharp/MainScene.YuxuSectLife.cs",
+          "line": 344,
+          "excerpt": "var dialog = new ConfirmationDialog",
+          "sha256": "8a03a25350fa09eda2ebb8ba98003837611161c85583e58c198b2ee8f0e25943"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "B14",
+      "name": "行囊详情、换衣、储物内腔、领取结束等浮层",
+      "status": "局部未统一",
+      "scope": "正式",
+      "issue": "主收纳浅绢已认可；周边菜单、搜索、数量和结束确认仍有旧公共控件。",
+      "action": "保留200格、占格、浅绢和拖拽，只统一周边控件。",
+      "sources": [
+        {
+          "path": "csharp/panel/WardrobePicker.cs",
+          "line": 51,
+          "excerpt": "WorldHudStyle.StyleSmallButton(button, 19);",
+          "sha256": "87e085b15d18f68308e7c29b0c1b984835821ce874d807698f7fcd30dad83313"
+        },
+        {
+          "path": "csharp/panel/StoragePanel.RingModal.cs",
+          "line": 8,
+          "excerpt": "private Button? _nativeMainBack;",
+          "sha256": "e079bdecd2bfd23e31c5d0bc5a52e3c77c60f0cb5c57bed683fdf3436c20e364"
+        },
+        {
+          "path": "csharp/panel/ItemClaimPanel.cs",
+          "line": 199,
+          "excerpt": "? \"左侧仍有从行囊移出的物品，结束领取后将丢弃；未领取的物品也将放弃。是否结束？\"",
+          "sha256": "e6ffd7840063885cb36d44bfd90c2d9a95cc97dcc0e1822da0d10eb6061cf4b9"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "B15",
+      "name": "东林地的行动、遭遇与战前情报",
+      "status": "局部未统一",
+      "scope": "正式",
+      "issue": "地图叠加页混用WorldHudStyle与局部素框。",
+      "action": "保留副本场景和标记，统一行动条／情报面。",
+      "sources": [
+        {
+          "path": "csharp/panel/EastWoodsDungeonPanel.cs",
+          "line": 327,
+          "excerpt": "footer.AddThemeStyleboxOverride(\"panel\", WorldHudStyle.Paper());",
+          "sha256": "54b095520ef03e1a969f9abfd9d349d87857d440ac09ab97668057efe08456ff"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "B16",
+      "name": "兽战手牌、牌堆与旧战备窗口",
+      "status": "局部未统一",
+      "scope": "正式",
+      "issue": "旧卡牌面板与牌堆窗口独立维护样式。",
+      "action": "统一外围阅读框和操作；保留当前兽战分支，不把旧十槽冒充人类新盘。",
+      "sources": [
+        {
+          "path": "csharp/panel/SkillHandPanel.cs",
+          "line": 17,
+          "excerpt": "private Button pile_button(string text,Vector2 pos){var b=new Button{Text=text,Position=pos,Size=new(92,68),MouseFilter=MouseFilterEnum.Stop};b.AddThemeFontSizeOverride(\"font_size\",16);b.AddThemeStyleboxOverride(\"normal\",style());b.AddThemeStyleboxOverride(\"hover\",new StyleBoxFlat{BgColor=new(.19f,.16f,.09f,.98f),BorderColor=new",
+          "sha256": "2f3fa1dbf24225de95ab392bed90fbd1d483f6e5222526ddb6d219aafebf1136"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "B17",
+      "name": "共用按钮、下拉／数量、搜索、滑条／滚动、提示／通知",
+      "status": "局部未统一",
+      "scope": "共用",
+      "issue": "公共控件由多处分别维护，部分页面的边沿做工、字级和可读状态不一致；新独立样稿素材尚未接入正式运行。",
+      "action": "逐面板验收同族材料、字级和状态语言；允许不同控件轮廓与布局，不强制所有页面引用同一套PNG。",
+      "sources": [
+        {
+          "path": "csharp/panel/PaperButton.cs",
+          "line": 13,
+          "excerpt": "public static void ApplyStyle(Button button, int fontSize, bool light)",
+          "sha256": "4da8140c64e0b6bbcfa7c7e072e5ba2e317b5e0b964702c87b5516387f7741e3"
+        },
+        {
+          "path": "csharp/panel/QuietRoomStyle.cs",
+          "line": 67,
+          "excerpt": "theme.SetStylebox(\"normal\", type, Edge());",
+          "sha256": "5d4306a0b9fd1ee6170dcd9372e66691cb8cb6752b07d796736faeef78ee79f9"
+        },
+        {
+          "path": "csharp/autoload/HoverInfoManager.cs",
+          "line": 6,
+          "excerpt": "public partial class HoverInfoManager : CanvasLayer",
+          "sha256": "bdc35cbb58a9f07a19f8c6284b5cf74ce89988b400b054bd627efc26798e4ba7"
+        },
+        {
+          "path": "csharp/panel/GameNotificationFeed.cs",
+          "line": 66,
+          "excerpt": "card.AddThemeStyleboxOverride(\"panel\", WorldHudStyle.Paper());",
+          "sha256": "3fc4b956ab342d46e2b7b3b66414599fbfc470e3472f20eef71b1e31fdcc5af2"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "K01",
+      "name": "善功堂",
+      "status": "基准保留",
+      "scope": "正式",
+      "issue": "已是本轮风格锚点。",
+      "action": "保持现有主体、分类和交互，本轮不改。",
+      "sources": [
+        {
+          "path": "csharp/panel/YuxuSectExchangePanel.cs",
+          "line": 4,
+          "excerpt": "public partial class YuxuSectExchangePanel : Control",
+          "sha256": "0a46bd579cb17639c03fddd5e36243fbeb596ca2636c1e61b081e84f8798693e"
+        }
+      ],
+      "images": [
+        "docs/美术规范/行囊交易善功堂实装_20261031/07_善功堂去装备与滑轨_20261107.png"
+      ]
+    },
+    {
+      "id": "K02",
+      "name": "藏经阁",
+      "status": "基准保留",
+      "scope": "正式",
+      "issue": "已是木架、灰蓝书册、浅纸详情的风格锚点。",
+      "action": "保持架位、书脊和抽书等交互，本轮不改。",
+      "sources": [
+        {
+          "path": "csharp/panel/YuxuManualLibraryPanel.cs",
+          "line": 4,
+          "excerpt": "public partial class YuxuManualLibraryPanel : Control",
+          "sha256": "cb41f619ad1a671199877ecc3429d41d9917b56d1a02186562c8299c07c35fc8"
+        }
+      ],
+      "images": [
+        "docs/美术规范/玄览峰拓印接入_20261107/封面侧面_1920.png"
+      ]
+    },
+    {
+      "id": "K03",
+      "name": "行囊与领取页的浅绢收纳主体",
+      "status": "基准保留",
+      "scope": "正式",
+      "issue": "浅暖灰衣物内衬、淡格线与占地已单独认可。",
+      "action": "保留浅绢和真实空间，不强行改成纸页；外围控件见B14。",
+      "sources": [
+        {
+          "path": "csharp/panel/InventoryGarmentStyle.cs",
+          "line": 4,
+          "excerpt": "internal static class InventoryGarmentStyle",
+          "sha256": "2db13c96cb2fd735609f790d912c0b54c037d090a1fb41c6dbbcad6f250969fc"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "K04",
+      "name": "大地图HUD、名单、任务条、日期与小纸签主体",
+      "status": "同族可留",
+      "scope": "正式",
+      "issue": "已有水墨纸面、墨刷、资源笔触和轻量纸签。",
+      "action": "不套厚木框；后续只归一必要的小控件与字级。",
+      "sources": [
+        {
+          "path": "csharp/panel/WorldHudStyle.cs",
+          "line": 4,
+          "excerpt": "public static class WorldHudStyle",
+          "sha256": "f108b26addc92af3e2a7eded353cec95cee509f87ec1cee8486f73bb688d4e98"
+        },
+        {
+          "path": "csharp/panel/MainHUD.cs",
+          "line": 4,
+          "excerpt": "public partial class MainHUD : Control",
+          "sha256": "24f78ce81a8eebb7ed7d70875d9ca25d97dace8015be6bb3146e37748a28de6d"
+        }
+      ],
+      "images": [
+        "docs/美术规范/主界面水墨美术迭代_20261104/主界面_1280x720.png"
+      ]
+    },
+    {
+      "id": "K05",
+      "name": "首页主菜单本体",
+      "status": "同族可留",
+      "scope": "正式",
+      "issue": "已使用独立纸墨按钮图集，并非默认纯色按钮。",
+      "action": "保留首页插画及主菜单；子表单与弹窗按A12—A15处理。",
+      "sources": [
+        {
+          "path": "csharp/panel/StartMenu.Visual.cs",
+          "line": 9,
+          "excerpt": "private const string MenuButtonAtlasPath = \"res://textures/start_menu/ui_paper_ink_v3/button_atlas.png\";",
+          "sha256": "7e223151776f1c29ca6fdae24ed55b7c0084e04906ea2e8116a5c4613bc216b4"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "K06",
+      "name": "地图、白石／宗门内景插画及场所吊牌",
+      "status": "同族可留",
+      "scope": "正式",
+      "issue": "属于场所与场景表现，不应因为构图不同而判为普通面板不统一。",
+      "action": "保留场景个性和挂牌；额外说明／办理层见A11、B13。",
+      "sources": [
+        {
+          "path": "docs/美术规范/白石城分层与挂牌_20261106/README.md",
+          "line": 7,
+          "excerpt": "挂牌复用现有宣纸墨框素材，配灰绿木压条、穿绳孔及暗朱绳结，深墨字按牌面留白适配。主绳为两端固定的分段弹性绳，有局部受力、张力传播和阻尼，可轻拉后松手；挂点带动牌面，红绳穗独立滞后。不使用持续循环晃动，隐藏后停止，窗口及入口数量变化后重排。玉虚峰内和和光公事仍复用同一控件。",
+          "sha256": "4d62a3c7909fc0012cbe74d050aed166abd22bc28b959cc9f18d500eaacf7ac2"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "K07",
+      "name": "当前角色／静室独立样稿及六类控件",
+      "status": "基准保留",
+      "scope": "独立样稿",
+      "issue": "当前木纸壳、材质分型与选中侧栏按本会话继续沿用；战斗功能另有需求。",
+      "action": "暂不接游戏，战斗页升级为新版局外预装配。",
+      "sources": [
+        {
+          "path": "docs/plans/界面与美术/角色与静室纸墨木石样稿_20261108.md",
+          "line": 3,
+          "excerpt": "2026-11-08 · **当前修订5，待查看；只做独立样稿，不接游戏。** 数字／日期增减箭头按用户新指示改成裸三角，其余控件继续使用素材；善功堂和藏经阁保持。",
+          "sha256": "e65f41be2f2868e1ca0ac558d62c5b7b8a3dece40237f70a749d034762af78f9"
+        }
+      ],
+      "images": [
+        "docs/美术规范/角色与静室纸墨木石样稿_20261108/角色_首页.png",
+        "docs/美术规范/角色与静室纸墨木石样稿_20261108/静室_首页.png"
+      ]
+    },
+    {
+      "id": "E01",
+      "name": "加载、场景转场与行动过渡",
+      "status": "已批准专用",
+      "scope": "正式",
+      "issue": "深墨与暗旧金笔环在全局规范中有明确例外。",
+      "action": "保留金环，不推广到普通面板；附属返回／通知使用公共控件。",
+      "sources": [
+        {
+          "path": "docs/plans/界面与美术/全局界面统一风格规范_20261108.md",
+          "line": 159,
+          "excerpt": "| 加载与转场 | 保留既有深墨与暗旧金笔环 | 这是已确认的局部专用表现，不把金环与金色强调推广到普通面板 |",
+          "sha256": "00d28fc9d7305fef8ecdc09a827ec787ecf4ae4296ab6223d647b8cd42fc8362"
+        },
+        {
+          "path": "csharp/panel/SceneLoadingScreen.cs",
+          "line": 18,
+          "excerpt": "_view = new ActionTransitionPanel { RegisterAsAction = false };",
+          "sha256": "9525b5b4e3513e28ddf5a3afc653d762c157dbcd76b0379f7fcb3cce52712e7d"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "E02",
+      "name": "炼器操作页与当前原生炉火预览",
+      "status": "专项保留",
+      "scope": "正式＋原生预览",
+      "issue": "本日刚按用户要求保留原生风格并降低白底亮度，控件分层仍属旧丹器体系。",
+      "action": "保留原生布局、灰米／灰青／灰褐分层；仅列控件差距，不擅自回退或重画整页。",
+      "sources": [
+        {
+          "path": "docs/美术规范/炼器底色分层_20261108/README.md",
+          "line": 11,
+          "excerpt": "主面板采用灰米色，材料条目采用灰青色，数量框是灰棕色，普通按钮压为灰褐；选中页签和开炼按钮仍使用原深绿色。纸纹、山纹、角线和控件尺寸保持。只改背景StyleBox，不给整个控件染色，原物品图和文字保持本色。",
+          "sha256": "9554e851b6c5a6a4fc9fdeb01ff163e2b18b32bb54f7462d5701e652c4b53260"
+        },
+        {
+          "path": "csharp/panel/ForgingSurfacePalette.cs",
+          "line": 4,
+          "excerpt": "public static class ForgingSurfacePalette",
+          "sha256": "9047d4f75f9b1f1e0b94ff3e4f9a77ee01df8022a046a331c789bc62bf0a6560"
+        }
+      ],
+      "images": [
+        "docs/美术规范/炼器底色分层_20261108/03_文案精简.png"
+      ]
+    },
+    {
+      "id": "E03",
+      "name": "炼丹操作页",
+      "status": "专项保留",
+      "scope": "正式",
+      "issue": "当前实际入口是药位配伍页，材质同族但仍使用旧丹器／静室控件。",
+      "action": "按用户此前“操作页够了”保留主体；后续需要时只归一公共控件，不重做炼丹流程。",
+      "sources": [
+        {
+          "path": "csharp/panel/LocationCraftingPanel.cs",
+          "line": 17,
+          "excerpt": "var room = GD.Load<PackedScene>(\"res://tscn/scene/AlchemyPreviewScene.tscn\").Instantiate<AlchemySlotBrewPreviewScene>();",
+          "sha256": "b93db21ac66b328cb44ab6066eb9d8c90201a6194949d4844f0e7a22ee16069f"
+        },
+        {
+          "path": "csharp/scene/AlchemySlotBrewPreviewScene.cs",
+          "line": 95,
+          "excerpt": "Theme = QuietRoomStyle.MakeTheme();",
+          "sha256": "c9154eabefb2546fb4f743f91cceff00d49661cb15aa6ecdf73a5e677ef600ab"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "E04",
+      "name": "现行野地开场、白石旁白与章节演出",
+      "status": "专项复核",
+      "scope": "正式",
+      "issue": "现行叙事遮罩与演出属于专用表现；旧李宅开场与幼子引导已删除，不再算当前开场。",
+      "action": "保留当前野地、方远同行和白石／玉虚叙事；后续单独验收其必要轻控件。",
+      "sources": [
+        {
+          "path": "csharp/MainScene.BaishiLecture.cs",
+          "line": 11,
+          "excerpt": "private void show_baishi_opening()",
+          "sha256": "1dbe5d4a1c57233120868c84e87ec6db7c9b7579fa1250dde84c507f2e16ee67"
+        },
+        {
+          "path": "docs/plans/剧情与宗门/白石讲法会与序章入道流程_20261103.md",
+          "line": 5,
+          "excerpt": "> 2026-11-07 当前入口：开场同行，以及旁听、验灵、择宗、候验、登舟和道别等流程，均使用场景中央吊牌；山门迎真与观复峰报到同样使用吊牌。人物仍出现在对白与人物列表中，但流程不要求寻找或点击 NPC。相关运行时已接入，[实机与验证](../美术规范/序章与玉虚报到吊牌_20261107/README.md)；本条覆盖下文“验灵等从人物办理”及“入口尚待调整”的历史描述。",
+          "sha256": "3c2ae2e5f68c4795871149ce9ae208031c054ba152fa83890d13bfb6c38b36a6"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "P01",
+      "name": "天工峰丹房租用入口v2",
+      "status": "待重做",
+      "scope": "独立样稿",
+      "issue": "完成度此前已被否定，目录已标为暂停，不是认可母版。",
+      "action": "按现风格重新做进入炼丹房之前的租用页，仍按时长收贡献，未定单价不猜。",
+      "sources": [
+        {
+          "path": "docs/美术规范/天工峰丹房器作租用入口_20261107/README.md",
+          "line": 3,
+          "excerpt": "> **2026-11-08：先定全局风格。**用户认为 v2 完成度不足，并要求先统一人物、静室等各面板。[全局规范与母板](../全局界面风格母板_20261108/README.md)是当前任务入口；本目录暂停细化、留作待改进历史样稿，不作为已认可风格。租用方向与未定收费参数保持。",
+          "sha256": "74dc72108ca8293a52a5ba9c02e7d4a230bf80961c03b0ef8c0d41861dd0283c"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "P02",
+      "name": "天工峰器作租用入口v2",
+      "status": "待重做",
+      "scope": "独立样稿",
+      "issue": "与丹房入口同一暂停样稿，不能冒充已统一的正式入口。",
+      "action": "同P01，保持与炼器操作页分工。",
+      "sources": [
+        {
+          "path": "docs/美术规范/天工峰丹房器作租用入口_20261107/README.md",
+          "line": 9,
+          "excerpt": "[打开两页可切换样稿](index.html) · [丹房租用](index.html#alchemy) · [器作租用](index.html#forging) · [现行专题与待定项](../../plans/剧情与宗门/天工峰丹房与器作租用入口_20261107.md)",
+          "sha256": "74dc72108ca8293a52a5ba9c02e7d4a230bf80961c03b0ef8c0d41861dd0283c"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "P03",
+      "name": "种植v1.3：概况、基质、成长",
+      "status": "局部未统一",
+      "scope": "独立样稿",
+      "issue": "纸色和墨字接近，但部分表单、页签的材质承托与可读状态层次仍偏薄；差异不在于是否复用同一套底图。",
+      "action": "保留已明确的行囊列表与直接加入交互；按种植功能设计页签和表单，改善同族材质、字级与状态反馈。",
+      "sources": [
+        {
+          "path": "docs/美术规范/种植系统分页面原型_20261107/README.md",
+          "line": 1,
+          "excerpt": "# 种植界面 v1.3：从行囊直接加入基质",
+          "sha256": "3ac6cfe70337ee403cf829a84ee2baf862bb4f1f036e98aba1aa46fe2f3b1e48"
+        }
+      ],
+      "images": [
+        "docs/美术规范/种植系统分页面原型_20261107/基质列表_v13_1280.png"
+      ]
+    },
+    {
+      "id": "P04",
+      "name": "画符纸墨配伍：准备、演出、鉴看",
+      "status": "局部未统一",
+      "scope": "独立样稿",
+      "issue": "已沿丹器纸墨材质，仍有旧丹器按钮、撕边材料卡和素色表单。",
+      "action": "保留自动画符与材料配伍方向；按画符用途处理纸边、主次层级和状态，控件与构图可自行变化。",
+      "sources": [
+        {
+          "path": "docs/美术规范/画符纸墨配伍样稿_20261108/README.md",
+          "line": 13,
+          "excerpt": "符纸在案面的色调仅作候选示意，复用项目纸面纹理；没有新造专属纸材图标或覆盖美术源图。场景、笔砚、丹器纸面、控件及字体来源见[原素材记录](../画符界面样稿_20261108/生成记录.json)。顶端准备／演出／鉴看为审图工具栏，不属于正式玩家操作。",
+          "sha256": "fd1fbe5387acca2f1f51cf04f3290fcdb1b1bfd16d9673a390884531a74fa2e2"
+        }
+      ],
+      "images": [
+        "docs/美术规范/画符纸墨配伍样稿_20261108/04_纸墨准备_1280.png"
+      ]
+    },
+    {
+      "id": "P05",
+      "name": "宗内坊市中央格子新版",
+      "status": "局部未统一",
+      "scope": "独立样稿",
+      "issue": "新布局与拖拽样板不等于正式页已迁移，周边表单仍需公共化。",
+      "action": "保留中央格子和浅绢空间；报价／改价／租期浮层按交易用途设计，归一材质、字级与状态语言。",
+      "sources": [
+        {
+          "path": "docs/美术规范/宗内坊市交易界面_20261107/README.md",
+          "line": 1,
+          "excerpt": "# 玉虚宗内坊市：试玩界面与交互样板",
+          "sha256": "413883732f0a6f9a2720e506a8c03b5608c9b6567e1e9346cb8ed245a1af6f11"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "P06",
+      "name": "局内战斗38逐格拼接及首批素材",
+      "status": "已选专用样式",
+      "scope": "独立样稿／素材包",
+      "issue": "已选择专用暗幕与逐格拼接，尚未替换正式战斗皮肤。",
+      "action": "作为A16与局外新盘共用的盘面依据，保留非矩形、缺口与唯一外围手持。",
+      "sources": [
+        {
+          "path": "docs/美术规范/局内战斗布阵与开战理想图_20261107/39_首批素材与验证.md",
+          "line": 3,
+          "excerpt": "> 2026-11-07。用户授权按38选定样式开始准备素材。本批已完成透明源图、Godot区域引用、可点拼接预览及基础验证；尚未将这套新皮肤替换进正式战斗。这里是界面素材记录，不重定招式占格、费用、目标、应对、资源或存档规则。",
+          "sha256": "33133a9b620c8db38dd2d7f6af3ee3066724d4647f4cf1438b1f88bef9cd27be"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "H01",
+      "name": "旧东林地点、备用功法树与延期隐藏控件",
+      "status": "历史／备用",
+      "scope": "保留代码",
+      "issue": "旧东林地点、GongfaTree等保留分支需逐入口确认；灵感组件当前全局关闭。GongfaTreeFlow仍用于现行角色功法页，已归B01，不列纯历史。",
+      "action": "不把延期隐藏控件算当前可见面板；保留清单，恢复旧入口时再决定迁移或下架。",
+      "sources": [
+        {
+          "path": "csharp/panel/EastWoodsLocationPanel.cs",
+          "line": 5,
+          "excerpt": "public partial class EastWoodsLocationPanel : Control",
+          "sha256": "90c2db6b522a5c365f95965fa54dd37f6f386cdead7378761b090b6d1369d05d"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "H02",
+      "name": "旧炼丹节点网与厚脊剑试炼",
+      "status": "历史／备用",
+      "scope": "保留代码／试演",
+      "issue": "与当前正式药位炼丹／过程炼器不是同一入口，不应混算当前页面。",
+      "action": "留档，不用旧图替换本日页面。",
+      "sources": [
+        {
+          "path": "csharp/scene/AlchemyPreviewScene.cs",
+          "line": 7,
+          "excerpt": "public partial class AlchemyPreviewScene : Control",
+          "sha256": "2c5f70bc61eb34f3b36d40ebce3827b84a55b62b0316460b1caecd2c913f4c25"
+        },
+        {
+          "path": "csharp/scene/SwordCraftingScene.cs",
+          "line": 7,
+          "excerpt": "public partial class SwordCraftingScene : Control",
+          "sha256": "4a61c5a6e6a5ebbdbb0a364f0cae602d5a30f2f1accd989fbb8463c2e1b5cefe"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "H03",
+      "name": "旧CondensationPanel",
+      "status": "历史／备用",
+      "scope": "保留代码",
+      "issue": "当前主场景创建的是CondensationCardGamePanel。",
+      "action": "不把旧凝核控件当成新牌局重复报告。",
+      "sources": [
+        {
+          "path": "csharp/MainScene.cs",
+          "line": 33,
+          "excerpt": "condensation_panel = new CondensationCardGamePanel { Name = \"CondensationCardGamePanel\" };",
+          "sha256": "9f7287e8a855ef06ddd70dc836e645e9876ed3bf132eac62e5c016d4955a98d8"
+        },
+        {
+          "path": "csharp/panel/CondensationPanel.cs",
+          "line": 10,
+          "excerpt": "public partial class CondensationPanel : Control",
+          "sha256": "c4dca784decfbf1c8f5a94490b40f534e4aacfa4f45b317acebf252ea787ddda"
+        }
+      ],
+      "images": []
+    },
+    {
+      "id": "H04",
+      "name": "外观实验室、预览场景、各类Smoke与美术组件",
+      "status": "开发工具／组件",
+      "scope": "开发／测试",
+      "issue": "工程界面和内部绘制组件不等于玩家面板；风格不齐仍单独覆盖在源清单。",
+      "action": "不混入正式玩家换肤优先级，随父页面或开发工具单列。",
+      "sources": [
+        {
+          "path": "csharp/panel/AppearanceLab.cs",
+          "line": 4,
+          "excerpt": "public partial class AppearanceLab : Control",
+          "sha256": "74aa896aa3c769fe8e6fcd1eafadd4d20a791b85c68c4804ed9bff058e29a089"
+        },
+        {
+          "path": "csharp/panel/CharacterAppearanceTest.cs",
+          "line": 4,
+          "excerpt": "public partial class CharacterAppearanceTest : Control",
+          "sha256": "e64365e200055188c71531be502dbb04802264a37a83202e343ca98b9d372b59"
+        }
+      ],
+      "images": []
+    }
+  ],
+  "uiClassCoverage": [
+    {
+      "name": "ActionTimelineStrip",
+      "parent": "Control",
+      "path": "csharp/panel/ActionTransitionPanel.cs",
+      "files": [
+        "csharp/panel/ActionTransitionPanel.cs"
+      ],
+      "resources": [
+        "res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [
+        "时光流转中…",
+        "正在准备…",
+        "已就绪",
+        "载入未完成",
+        "预计结束 · ",
+        "现在 · ",
+        "结束 · ",
+        "正在结算…",
+        "本次未推进时间，请返回静室查看当前修炼条件。",
+        "人物、行旅与行动记录结算完成后继续。"
+      ],
+      "references": [],
+      "auditGroup": "E01",
+      "auditGroupName": "加载、场景转场与行动过渡",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "ActionTransitionPanel",
+      "parent": "Control",
+      "path": "csharp/panel/ActionTransitionPanel.cs",
+      "files": [
+        "csharp/panel/ActionTransitionPanel.cs"
+      ],
+      "resources": [
+        "res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [
+        "时光流转中…",
+        "正在准备…",
+        "已就绪",
+        "载入未完成",
+        "预计结束 · ",
+        "现在 · ",
+        "结束 · ",
+        "正在结算…",
+        "本次未推进时间，请返回静室查看当前修炼条件。",
+        "人物、行旅与行动记录结算完成后继续。"
+      ],
+      "references": [
+        "csharp/debug/NpcSettlementPerformanceSmoke.cs",
+        "csharp/debug/UnifiedLoadingSmoke.cs",
+        "csharp/scene/CultivationTransitionPreviewScene.cs"
+      ],
+      "auditGroup": "E01",
+      "auditGroupName": "加载、场景转场与行动过渡",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "AlchemyClothRevealEdge",
+      "parent": "Control",
+      "path": "csharp/scene/AlchemyHerbClothPanel.cs",
+      "files": [
+        "csharp/scene/AlchemyHerbClothPanel.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "E03",
+      "auditGroupName": "炼丹操作页",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "AlchemyClothScrollMarker",
+      "parent": "Control",
+      "path": "csharp/scene/AlchemyHerbClothPanel.cs",
+      "files": [
+        "csharp/scene/AlchemyHerbClothPanel.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "E03",
+      "auditGroupName": "炼丹操作页",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "AlchemyDragTile",
+      "parent": "PanelContainer",
+      "path": "csharp/scene/AlchemyDragTile.cs",
+      "files": [
+        "csharp/scene/AlchemyDragTile.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "E03",
+      "auditGroupName": "炼丹操作页",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "AlchemyFurnaceRelationGraph",
+      "parent": "Control",
+      "path": "csharp/scene/AlchemyFurnaceRelationGraph.cs",
+      "files": [
+        "csharp/scene/AlchemyFurnaceRelationGraph.cs"
+      ],
+      "resources": [],
+      "helpers": [
+        "QuietRoomStyle"
+      ],
+      "flatStyles": 4,
+      "textureStyles": 0,
+      "buttonCreations": 3,
+      "labels": [
+        "自动跑炉中 · 节点网已锁定",
+        "丹炉口 · 点击查看汇合药性",
+        "原料可预先牵出功用线 · 再点收起详情",
+        "行",
+        "已选行 · 点击一条已布置的通路线，开炉后增流",
+        "已选",
+        " · 点击目标节点接线",
+        "已安排",
+        "。随炉令按需工作。",
+        "线路已锁定；灵识不足的线路会自动轮候。"
+      ],
+      "references": [],
+      "auditGroup": "H02",
+      "auditGroupName": "旧炼丹节点网与厚脊剑试炼",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "AlchemyFurnaceView",
+      "parent": "Control",
+      "path": "csharp/scene/AlchemyFurnaceView.cs",
+      "files": [
+        "csharp/scene/AlchemyFurnaceView.cs"
+      ],
+      "resources": [
+        "res://textures/ui/alchemy_room_20261017/furnace_front_half_soft_v13.png",
+        "res://textures/ui/alchemy_room_20261017/furnace_rear_half_soft_v13.png"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [
+        "csharp/scene/AlchemyPreviewScene.Room.cs"
+      ],
+      "auditGroup": "E03",
+      "auditGroupName": "炼丹操作页",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "AlchemyHerbClothPanel",
+      "parent": "Control",
+      "path": "csharp/scene/AlchemyHerbClothPanel.cs",
+      "files": [
+        "csharp/scene/AlchemyHerbClothPanel.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "E03",
+      "auditGroupName": "炼丹操作页",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "AlchemyHerbClothSurface",
+      "parent": "Control",
+      "path": "csharp/scene/AlchemyHerbClothPanel.cs",
+      "files": [
+        "csharp/scene/AlchemyHerbClothPanel.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "E03",
+      "auditGroupName": "炼丹操作页",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "AlchemyIngredientFlow",
+      "parent": "Control",
+      "path": "csharp/scene/AlchemyIngredientFlow.cs",
+      "files": [
+        "csharp/scene/AlchemyIngredientFlow.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "E03",
+      "auditGroupName": "炼丹操作页",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "AlchemyInkVortex",
+      "parent": "Control",
+      "path": "csharp/scene/AlchemyInkVortex.cs",
+      "files": [
+        "csharp/scene/AlchemyInkVortex.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "E03",
+      "auditGroupName": "炼丹操作页",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "AlchemyPillAura",
+      "parent": "Control",
+      "path": "csharp/scene/AlchemyPillAura.cs",
+      "files": [
+        "csharp/scene/AlchemyPillAura.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "E03",
+      "auditGroupName": "炼丹操作页",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "AlchemyPolarityGauge",
+      "parent": "Control",
+      "path": "csharp/scene/AlchemyPolarityGauge.cs",
+      "files": [
+        "csharp/scene/AlchemyPolarityGauge.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "E03",
+      "auditGroupName": "炼丹操作页",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "AlchemyPreviewScene",
+      "parent": "Control",
+      "path": "csharp/scene/AlchemyPreviewScene.cs",
+      "files": [
+        "csharp/scene/AlchemyPreviewScene.cs",
+        "csharp/scene/AlchemyPreviewScene.PointerChecks.cs",
+        "csharp/scene/AlchemyPreviewScene.Room.cs",
+        "csharp/scene/AlchemyPreviewScene.Sidebar.cs",
+        "csharp/scene/AlchemyPreviewScene.SimpleLesson.cs",
+        "csharp/scene/AlchemyPreviewScene.Tutorials.cs",
+        "csharp/scene/AlchemyPreviewScene.UtilityTutorials.cs"
+      ],
+      "resources": [
+        "res://textures/ui/alchemy_room_20261017/herb_cloth_roll_icon_v1.png",
+        "res://textures/ui/alchemy_room_20261017/room_ui_source_v1.png",
+        "res://tscn/scene/StartMenu.tscn",
+        "res://tscn/ui/alchemy/FurnaceSidebar.tscn"
+      ],
+      "helpers": [
+        "QuietRoomStyle"
+      ],
+      "flatStyles": 2,
+      "textureStyles": 2,
+      "buttonCreations": 3,
+      "labels": [
+        "安排",
+        "丹 室   ·   第 {_model.Breath} 息",
+        "已学会所选技术",
+        "阴阳 · 暂无已炼出的药性",
+        "较平衡",
+        "偏阳",
+        "偏阴",
+        "本炉已结束。\\n已显示实际耗时、法力、功用瓶颈与逐颗成品结果。",
+        "重新开炉",
+        "暂停演示，自己接手",
+        "自动讲解演示",
+        "下一步演示 →",
+        "逐步看演示 →",
+        "教程",
+        "演示 / 暂停",
+        "更多",
+        "炉况详情",
+        "炉记",
+        "自动演示 / 暂停",
+        "逐步演示",
+        "设置",
+        "整理节点布局",
+        "百草卷",
+        "炼丹设置 · 体验参数"
+      ],
+      "references": [
+        "csharp/panel/LocationCraftingPanel.cs",
+        "csharp/panel/StartMenu.Visual.cs"
+      ],
+      "auditGroup": "H02",
+      "auditGroupName": "旧炼丹节点网与厚脊剑试炼",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "AlchemySlotBrewPreviewScene",
+      "parent": "Control",
+      "path": "csharp/scene/AlchemySlotBrewPreviewScene.cs",
+      "files": [
+        "csharp/scene/AlchemySlotBrewPreviewScene.Checks.cs",
+        "csharp/scene/AlchemySlotBrewPreviewScene.CompleteChecks.cs",
+        "csharp/scene/AlchemySlotBrewPreviewScene.cs",
+        "csharp/scene/AlchemySlotBrewPreviewScene.Notebook.cs",
+        "csharp/scene/AlchemySlotBrewPreviewScene.NotebookChecks.cs",
+        "csharp/scene/AlchemySlotBrewPreviewScene.Presentation.cs",
+        "csharp/scene/AlchemySlotBrewPreviewScene.Receipt.cs"
+      ],
+      "resources": [
+        "res://outputs/alchemy_absorption_20261023.png",
+        "res://outputs/alchemy_complete_page_20261023.png",
+        "res://outputs/alchemy_complete_result_20261023.png",
+        "res://outputs/alchemy_enter_bottle_20261024.png",
+        "res://outputs/alchemy_mouth_fire_20261023.png",
+        "res://outputs/alchemy_notebook_20261022.png",
+        "res://outputs/alchemy_notebook_builtin_20261022.png",
+        "res://outputs/alchemy_notebook_entry_20261022.png",
+        "res://outputs/alchemy_pill_hover_20261023.png",
+        "res://outputs/alchemy_receipt_20261024.png",
+        "res://outputs/alchemy_result_clean_20261023.png",
+        "res://outputs/alchemy_skip_early_20261024.png",
+        "res://outputs/alchemy_skip_late_20261024.png",
+        "res://outputs/alchemy_spirit_detail_20261023.png",
+        "res://outputs/alchemy_stopper_seat_20261024.png",
+        "res://outputs/alchemy_utility_filter_20261023.png",
+        "res://textures/ui/alchemy_20261019/brew_brush_v1.png",
+        "res://textures/ui/alchemy_room_20261017/wall_only_front_v8.png",
+        "res://tscn/scene/StartMenu.tscn"
+      ],
+      "helpers": [
+        "QuietRoomStyle"
+      ],
+      "flatStyles": 5,
+      "textureStyles": 7,
+      "buttonCreations": 3,
+      "labels": [
+        "本炉灵识占用\\n0",
+        "本炉需求等于剩余额度可炼",
+        "固",
+        "不存在的药材",
+        "生",
+        "化",
+        "明",
+        "丹药",
+        "进入炼丹房",
+        "〈 返回",
+        "灵识",
+        "炼丹配伍",
+        "搜索药材名称、五行或功用",
+        "仅显示本位功用有效",
+        "没有符合筛选条件的材料，可放宽筛选或重置。",
+        "当前药位：{(_pickerTarget < 0 ? ",
+        "点击选药",
+        "{_mainDose}份",
+        "＋ 添药",
+        "{_assistantDoses[i]}份",
+        "{hours:0.##}时辰",
+        "{missing.Name}数量不足，需要{missing.Dose}份。",
+        "当前精力不足。",
+        "{value}份"
+      ],
+      "references": [],
+      "auditGroup": "E03",
+      "auditGroupName": "炼丹操作页",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "AppearanceEditor",
+      "parent": "Control",
+      "path": "csharp/panel/AppearanceEditor.cs",
+      "files": [
+        "csharp/panel/AppearanceEditor.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 6,
+      "labels": [
+        "局外 · 半身立绘",
+        "局内 · 水墨",
+        "随机一组",
+        "取消",
+        "应用",
+        "暂无素材"
+      ],
+      "references": [],
+      "auditGroup": "A13",
+      "auditGroupName": "外观编辑／捏脸",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "AppearanceLab",
+      "parent": "Control",
+      "path": "csharp/panel/AppearanceLab.cs",
+      "files": [
+        "csharp/panel/AppearanceLab.cs"
+      ],
+      "resources": [
+        "res://mods/appearance/皮影局内男修_v5/body/vermilion_body.png"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 1,
+      "labels": [
+        "局内皮影 · 模块测试",
+        "返回开始界面"
+      ],
+      "references": [],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "AppearancePreview",
+      "parent": "Control",
+      "path": "csharp/panel/AppearancePreview.cs",
+      "files": [
+        "csharp/panel/AppearancePreview.cs"
+      ],
+      "resources": [
+        "res://tscn/entity/character/CharacterToken.tscn"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "B01",
+      "auditGroupName": "正式角色六页",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "BaigongPanel",
+      "parent": "Control",
+      "path": "csharp/panel/BaigongPanel.cs",
+      "files": [
+        "csharp/panel/BaigongPanel.cs"
+      ],
+      "resources": [
+        "res://resources/formations/云息周天护持阵.tres"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 3,
+      "labels": [
+        "关闭",
+        "需要两本阵法录",
+        "需要阵道造诣 15",
+        "装配此示范阵图",
+        "未解锁 · {name}"
+      ],
+      "references": [
+        "csharp/debug/CraftingIntegrationSmoke.cs",
+        "csharp/scene/AlchemySlotBrewPreviewScene.CompleteChecks.cs"
+      ],
+      "auditGroup": "A01",
+      "auditGroupName": "百工资料：法宝、丹药、符箓、阵法",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "BanquetPanel",
+      "parent": "Control",
+      "path": "csharp/panel/BanquetPanel.cs",
+      "files": [
+        "csharp/panel/BanquetPanel.cs"
+      ],
+      "resources": [
+        "res://resources/font/default_theme.tres",
+        "res://textures/ui/banquet/banquet_outside_window_v2.png"
+      ],
+      "helpers": [],
+      "flatStyles": 2,
+      "textureStyles": 0,
+      "buttonCreations": 2,
+      "labels": [
+        "同门雅集",
+        "主持者　{host.Name}　·　相聚、交谈与结识",
+        "{_responseRemaining:0} 秒回应",
+        "{_responseRemaining:0} 秒",
+        "暂无可用席面。",
+        "费用：{venue.CostText}　·　席位包含主持者",
+        "{beat.SpeakerName}　·　问你"
+      ],
+      "references": [],
+      "auditGroup": "A08",
+      "auditGroupName": "同门雅集：筹备、活动、回应",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "BattleActionProgress",
+      "parent": "Control",
+      "path": "csharp/panel/BattleActionProgress.cs",
+      "files": [
+        "csharp/panel/BattleActionProgress.cs"
+      ],
+      "resources": [],
+      "helpers": [
+        "BattleUiArt"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [
+        "csharp/battle/BattlePlanHud.cs"
+      ],
+      "auditGroup": "A16",
+      "auditGroupName": "正式人类对战：配招、方案、战斗HUD",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "BattleBoardHud",
+      "parent": "Control",
+      "path": "csharp/battle/BattleBoardHud.cs",
+      "files": [
+        "csharp/battle/BattleBoardHud.cs"
+      ],
+      "resources": [
+        "res://textures/ui/combat/board_skill_icons/zhoutian_indicator.png"
+      ],
+      "helpers": [
+        "BattleUiArt",
+        "CombatBoardPresentation"
+      ],
+      "flatStyles": 3,
+      "textureStyles": 0,
+      "buttonCreations": 3,
+      "labels": [
+        "搜索…",
+        "配招",
+        "继续",
+        "暂停",
+        "体力    {_owner.Get(",
+        ").AsInt32()}\\n法力    {_owner.Get(",
+        " · 已走完",
+        " · 行{actorState?.NextRow + 1}",
+        "配招后开始战斗",
+        "第{_manager.get_board_round()}回合 · ",
+        "本盘已走完",
+        "下一行 {state.NextRow + 1}",
+        "{skill.skill_name}已达可摆上限。",
+        "同一项化法只能摆一块。",
+        "这颗丹药已放入盘中，或当前行囊数量不足。",
+        "此处放不下，请调整位置或朝向。",
+        "此处放不下。",
+        "已旋转待摆对象。",
+        "旋转后放不下。",
+        "周天指示可以移动、转向，不能移出。",
+        "行囊中没有可补入的同种丹药。",
+        "已补入一颗，服用时扣除库存。",
+        "方案",
+        "当前角色无法使用此方案，请检查来源或容量。"
+      ],
+      "references": [],
+      "auditGroup": "A16",
+      "auditGroupName": "正式人类对战：配招、方案、战斗HUD",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "BattleBoardSource",
+      "parent": "Control",
+      "path": "csharp/battle/BattleBoardView.cs",
+      "files": [
+        "csharp/battle/BattleBoardView.cs"
+      ],
+      "resources": [
+        "res://textures/ui/combat/board_skill_icons/zhoutian_indicator.png"
+      ],
+      "helpers": [
+        "CombatBoardPresentation",
+        "FumingPresentation"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [
+        "指向",
+        "摆入招式盘"
+      ],
+      "references": [],
+      "auditGroup": "A16",
+      "auditGroupName": "正式人类对战：配招、方案、战斗HUD",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "BattleBoardView",
+      "parent": "Control",
+      "path": "csharp/battle/BattleBoardView.cs",
+      "files": [
+        "csharp/battle/BattleBoardView.cs"
+      ],
+      "resources": [
+        "res://textures/ui/combat/board_skill_icons/zhoutian_indicator.png"
+      ],
+      "helpers": [
+        "CombatBoardPresentation",
+        "FumingPresentation"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [
+        "指向",
+        "摆入招式盘"
+      ],
+      "references": [],
+      "auditGroup": "A16",
+      "auditGroupName": "正式人类对战：配招、方案、战斗HUD",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "BattleFlowView",
+      "parent": "CanvasLayer",
+      "path": "csharp/battle/BattleFlowView.cs",
+      "files": [
+        "csharp/battle/BattleFlowView.cs",
+        "csharp/battle/BattleFlowView.Supplies.cs"
+      ],
+      "resources": [
+        "res://textures/battle/ink_mountain_valley_background_v1.png",
+        "res://textures/ui/combat/flow_ui_20261009/flow_panel_v1.png"
+      ],
+      "helpers": [
+        "BattleUiArt"
+      ],
+      "flatStyles": 3,
+      "textureStyles": 0,
+      "buttonCreations": 3,
+      "labels": [
+        "返回",
+        "选择角色以查看战斗属性",
+        "当前查看：{_selected.entity_name} · 点击其他角色可切换",
+        "当前查看：{unit.entity_name}",
+        "请选择我方角色，从该角色本人的行囊配置战备。",
+        "演练不发放正式战利品",
+        "返回后开启通用领取页 · 领取前可整理行囊",
+        "从本人行囊编入；每位最多5颗同种同档丹药，战斗中实际生效才消耗。"
+      ],
+      "references": [
+        "csharp/autoload/BattleTransitionManager.Flow.cs",
+        "csharp/debug/BattleFlowVisualPreview.cs"
+      ],
+      "auditGroup": "A16",
+      "auditGroupName": "正式人类对战：配招、方案、战斗HUD",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "BattleHealthBar",
+      "parent": "Control",
+      "path": "csharp/battle/BattleHealthBar.cs",
+      "files": [
+        "csharp/battle/BattleHealthBar.cs"
+      ],
+      "resources": [],
+      "helpers": [
+        "BattleUiArt"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "A16",
+      "auditGroupName": "正式人类对战：配招、方案、战斗HUD",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "BattleLocalFocusView",
+      "parent": "CanvasLayer",
+      "path": "csharp/battle/BattleLocalFocusView.cs",
+      "files": [
+        "csharp/battle/BattleLocalFocusView.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [
+        "csharp/battle/BattleContactFocus.cs",
+        "csharp/battle/BattleResponseFocus.cs",
+        "csharp/scene/SwordActionSequencePreview.cs"
+      ],
+      "auditGroup": "A16",
+      "auditGroupName": "正式人类对战：配招、方案、战斗HUD",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "BattlePlanHud",
+      "parent": "Control",
+      "path": "csharp/battle/BattlePlanHud.cs",
+      "files": [
+        "csharp/battle/BattlePlanHud.cs"
+      ],
+      "resources": [
+        "res://tscn/panel/BattleActionProgress.tscn"
+      ],
+      "helpers": [
+        "BattleUiArt",
+        "FumingPresentation"
+      ],
+      "flatStyles": 2,
+      "textureStyles": 0,
+      "buttonCreations": 1,
+      "labels": [
+        "隐藏队列",
+        "显示队列"
+      ],
+      "references": [
+        "csharp/battle/BattleManager.SceneSetup.cs",
+        "csharp/debug/FumingHoverSmoke.cs"
+      ],
+      "auditGroup": "A16",
+      "auditGroupName": "正式人类对战：配招、方案、战斗HUD",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "BattlePortraitView",
+      "parent": "Control",
+      "path": "csharp/battle/BattlePortraitView.cs",
+      "files": [
+        "csharp/battle/BattlePortraitView.cs"
+      ],
+      "resources": [],
+      "helpers": [
+        "BattleUiArt"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [
+        "暂无立绘"
+      ],
+      "references": [],
+      "auditGroup": "A16",
+      "auditGroupName": "正式人类对战：配招、方案、战斗HUD",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "BattleSceneTransition",
+      "parent": "SceneLoadingScreen",
+      "path": "csharp/battle/BattleSceneTransition.cs",
+      "files": [
+        "csharp/battle/BattleSceneTransition.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [
+        "csharp/autoload/BattleTransitionManager.Flow.cs",
+        "csharp/debug/UnifiedLoadingSmoke.cs"
+      ],
+      "auditGroup": "E01",
+      "auditGroupName": "加载、场景转场与行动过渡",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "BattleStatusPanel",
+      "parent": "Control",
+      "path": "csharp/panel/BattleStatusPanel.cs",
+      "files": [
+        "csharp/panel/BattleStatusPanel.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "A16",
+      "auditGroupName": "正式人类对战：配招、方案、战斗HUD",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "BattleSupplyHud",
+      "parent": "CanvasLayer",
+      "path": "csharp/battle/BattleSupplyHud.cs",
+      "files": [
+        "csharp/battle/BattleSupplyHud.cs"
+      ],
+      "resources": [],
+      "helpers": [
+        "BattleUiArt"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 2,
+      "labels": [
+        "未编入",
+        " · 已排{planned}"
+      ],
+      "references": [
+        "csharp/battle/BattleManager.SceneSetup.cs"
+      ],
+      "auditGroup": "A16",
+      "auditGroupName": "正式人类对战：配招、方案、战斗HUD",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "BattleUnitOverlay",
+      "parent": "CanvasLayer",
+      "path": "csharp/battle/BattleUnitOverlay.cs",
+      "files": [
+        "csharp/battle/BattleUnitOverlay.cs"
+      ],
+      "resources": [
+        "res://resources/battle/statuses/{id}.tres",
+        "res://textures/items/inventory_density_20261029/pill_container_empty_porcelain.png",
+        "res://textures/ui/battle_status_icons_v1.png",
+        "res://textures/ui/combat/status_icons/{iconStem}.png"
+      ],
+      "helpers": [
+        "BattleStatusPresentation",
+        "BattleUiArt"
+      ],
+      "flatStyles": 5,
+      "textureStyles": 0,
+      "buttonCreations": 4,
+      "labels": [
+        "暂停",
+        "撤退",
+        "继续",
+        "倍速 ×{manager.get_battle_speed_scale():0}",
+        "自动：开",
+        "自动：关",
+        "技能",
+        "念 {nian}"
+      ],
+      "references": [
+        "csharp/battle/BattleManager.SceneSetup.cs",
+        "csharp/debug/StatusHoverSmoke.cs"
+      ],
+      "auditGroup": "A16",
+      "auditGroupName": "正式人类对战：配招、方案、战斗HUD",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "CellCharacterList",
+      "parent": "Control",
+      "path": "csharp/panel/CellCharacterList.cs",
+      "files": [
+        "csharp/panel/CellCharacterList.cs",
+        "csharp/panel/CellCharacterList.SideToggle.cs"
+      ],
+      "resources": [],
+      "helpers": [
+        "WorldHudStyle"
+      ],
+      "flatStyles": 3,
+      "textureStyles": 0,
+      "buttonCreations": 2,
+      "labels": [
+        "当前位置",
+        "0 位",
+        "{count} 位",
+        "当前地点",
+        "在场人物",
+        "此处暂无其他人物"
+      ],
+      "references": [
+        "csharp/debug/HoverWheelNavigationSmoke.cs",
+        "csharp/debug/NpcPresentationSmoke.cs",
+        "csharp/debug/RosterScrollSmoke.cs",
+        "csharp/debug/WorldDungeonNavigationSmoke.cs"
+      ],
+      "auditGroup": "K04",
+      "auditGroupName": "大地图HUD、名单、任务条、日期与小纸签主体",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "CharacterAppearanceTest",
+      "parent": "Control",
+      "path": "csharp/panel/CharacterAppearanceTest.cs",
+      "files": [
+        "csharp/panel/CharacterAppearanceTest.cs"
+      ],
+      "resources": [
+        "res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf",
+        "res://textures/start_menu/ink_mountain_dawn_v2.png",
+        "res://tscn/scene/StartMenu.tscn"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 1,
+      "labels": [
+        "性别",
+        "显示锚点",
+        "呼吸",
+        "正面半身立绘",
+        "当前：{(_female ? "
+      ],
+      "references": [
+        "csharp/panel/StartMenu.cs"
+      ],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "CharacterOverviewPreviewScene",
+      "parent": "Control",
+      "path": "csharp/scene/CharacterOverviewPreviewScene.cs",
+      "files": [
+        "csharp/scene/CharacterOverviewPreviewScene.cs"
+      ],
+      "resources": [
+        "res://docs/美术规范/人物概览与心境圆盘_20261010/人物共用概览_v4.png",
+        "res://docs/美术规范/人物概览与心境圆盘_20261010/实际界面_{revision}.png",
+        "res://docs/美术规范/人物概览与心境圆盘_20261010/心境详情_v4.png",
+        "res://docs/美术规范/人物概览与心境圆盘_20261010/灵根悬停_{revision}.png",
+        "res://resources/world/yunqu_state_nodes.tres",
+        "res://tscn/panel/InfoPanel.tscn"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "CloudSevenFormalJourneySmoke",
+      "parent": "Control",
+      "path": "csharp/debug/CloudSevenFormalJourneySmoke.cs",
+      "files": [
+        "csharp/debug/CloudSevenFormalJourneySmoke.cs"
+      ],
+      "resources": [
+        "res://resources/gongfa/玄枢含章经.tres",
+        "res://tscn/scene/MainScene.tscn"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [
+        "准备铸玄基"
+      ],
+      "references": [],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "CombatSkillBar",
+      "parent": "Control",
+      "path": "csharp/battle/CombatSkillBar.cs",
+      "files": [
+        "csharp/battle/CombatSkillBar.cs",
+        "csharp/battle/CombatSkillBar.ResourceDisplay.cs"
+      ],
+      "resources": [
+        "res://textures/ui/combat/combat_skill_slot_frame_generated_v1.png"
+      ],
+      "helpers": [
+        "BattleUiArt",
+        "CardPresentation",
+        "FumingPresentation"
+      ],
+      "flatStyles": 2,
+      "textureStyles": 0,
+      "buttonCreations": 1,
+      "labels": [
+        "行动队列 0/3",
+        "冷却中，"
+      ],
+      "references": [
+        "csharp/debug/AutoBattleSmoke.cs",
+        "csharp/debug/FumingHoverSmoke.cs",
+        "csharp/debug/HumanCombatBoardSmoke.cs"
+      ],
+      "auditGroup": "A16",
+      "auditGroupName": "正式人类对战：配招、方案、战斗HUD",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "CondensationBalanceSmoke",
+      "parent": "Control",
+      "path": "csharp/debug/CondensationBalanceSmoke.cs",
+      "files": [
+        "csharp/debug/CondensationBalanceSmoke.cs"
+      ],
+      "resources": [
+        "res://resources/gongfa/玄枢含章经.tres",
+        "res://tscn/scene/MainScene.tscn"
+      ],
+      "helpers": [
+        "CondensationUiArt"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 3,
+      "buttonCreations": 0,
+      "labels": [
+        "返回修炼",
+        "换牌并开始",
+        "不换，直接开始"
+      ],
+      "references": [],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "CondensationCardGamePanel",
+      "parent": "Control",
+      "path": "csharp/panel/CondensationCardGamePanel.cs",
+      "files": [
+        "csharp/panel/CondensationCardGamePanel.cs",
+        "csharp/panel/CondensationCardGamePanel.Drag.cs",
+        "csharp/panel/CondensationCardGamePanel.Opening.cs",
+        "csharp/panel/CondensationCardGamePanel.Status.cs"
+      ],
+      "resources": [
+        "res://docs/prototypes/凝核牌局效果图_v2.png",
+        "res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf",
+        "res://textures/ui/realm_yunxi_paper_v6.png"
+      ],
+      "helpers": [
+        "CondensationUiArt"
+      ],
+      "flatStyles": 3,
+      "textureStyles": 3,
+      "buttonCreations": 5,
+      "labels": [
+        "牌组：{_counts.Values.Sum()} / 36 张",
+        "携带道具（选两件，同名一件）：",
+        "请将牌组调整为36张。",
+        "返回",
+        "返回修炼",
+        "本回合可施展\\n",
+        "紊乱失控 · 凝核失败",
+        "最终凝核程度 {g.Score} · {(g.Failed ? ",
+        "准备阶段：可换牌，或拖手牌至灵力团施展",
+        "长按手牌查看详情，拖至灵力团施展",
+        "本次试演结果不写入正式人物。",
+        "正式凝核已结算。",
+        "抽牌堆 {g.Deck.Count}",
+        "弃牌堆 {g.Discard.Count}",
+        "换起手（选0—2张）",
+        "换牌（选一张）",
+        "悟性换牌 · 余{g.ExtraSwaps}",
+        "结算并定形",
+        "结束回合",
+        "回弹节点未变",
+        "已选择 {_swapSelection.Count} / 2 张"
+      ],
+      "references": [
+        "csharp/debug/CondensationDragSmoke.cs"
+      ],
+      "auditGroup": "A10",
+      "auditGroupName": "凝核牌局：主体、轨道、结算与起手",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "CondensationDragSmoke",
+      "parent": "Control",
+      "path": "csharp/debug/CondensationDragSmoke.cs",
+      "files": [
+        "csharp/debug/CondensationDragSmoke.cs"
+      ],
+      "resources": [],
+      "helpers": [
+        "CondensationUiArt"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 4,
+      "buttonCreations": 0,
+      "labels": [
+        "换牌并开始",
+        "不换，直接开始",
+        "收益",
+        "返回牌局",
+        "玩法",
+        "开始尝试",
+        "重开",
+        "继续当前",
+        "确认施展",
+        "回弹6·2股",
+        "确认并施展",
+        "仍然施展（将失败）"
+      ],
+      "references": [],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "CondensationPanel",
+      "parent": "Control",
+      "path": "csharp/panel/CondensationPanel.cs",
+      "files": [
+        "csharp/panel/CondensationPanel.cs"
+      ],
+      "resources": [
+        "res://addons/vfx_library/effects/magic_aura.tscn",
+        "res://textures/cards/expressive_ink/fajin_ink_v4.png",
+        "res://textures/cards/expressive_ink/hanshan_ink_v4.png",
+        "res://textures/cards/expressive_ink/jiazhao_ink_v4.png",
+        "res://textures/cards/expressive_ink/jingguan_ink_v4.png",
+        "res://textures/cards/expressive_ink/yangxi_ink_v4.png",
+        "res://textures/cards/expressive_ink/zhuangzhuang_ink_v4.png",
+        "res://textures/cultivation/condensation_background_ink_v1.png",
+        "res://textures/ui/battle_pile_panel_v1.png",
+        "res://textures/ui/cultivation/clouds/cloud_cold_rain_v1.png",
+        "res://textures/ui/cultivation/clouds/cloud_condensation_v1.png",
+        "res://textures/ui/cultivation/clouds/cloud_continuous_overcast_v1.png",
+        "res://textures/ui/cultivation/clouds/cloud_layered_v1.png",
+        "res://textures/ui/cultivation/clouds/cloud_light_rain_v1.png",
+        "res://textures/ui/cultivation/clouds/cloud_returning_wind_v1.png",
+        "res://textures/ui/cultivation/clouds/cloud_sudden_rain_v1.png",
+        "res://textures/ui/cultivation/clouds/cloud_warm_rain_v1.png",
+        "res://textures/ui/cultivation/condensation_title_plaque_transparent_v1.png",
+        "res://tscn/panel/BattleCard.tscn",
+        "res://tscn/panel/CondensationTitlePlaque.tscn"
+      ],
+      "helpers": [],
+      "flatStyles": 5,
+      "textureStyles": 0,
+      "buttonCreations": 5,
+      "labels": [
+        "暂离",
+        "凝核记录",
+        "六席手牌",
+        "牌堆",
+        "凝核",
+        "当前回合1/总回合8",
+        "返回手牌",
+        "抽牌堆：{_deck.Count}　弃牌堆：{_discard.Count}",
+        "抽牌堆\\n{_deck.Count}",
+        "弃牌堆\\n{_discard.Count}",
+        "【险】",
+        "【记】"
+      ],
+      "references": [],
+      "auditGroup": "H03",
+      "auditGroupName": "旧CondensationPanel",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "CondensationTestScene",
+      "parent": "Control",
+      "path": "csharp/scene/CondensationTestScene.cs",
+      "files": [
+        "csharp/scene/CondensationTestScene.cs"
+      ],
+      "resources": [
+        "res://textures/start_menu/ink_mountain_dawn_v2.png",
+        "res://tscn/scene/StartMenu.tscn"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [
+        "csharp/panel/StartMenu.cs"
+      ],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "CondensationTurnTrack",
+      "parent": "Control",
+      "path": "csharp/panel/CondensationTurnTrack.cs",
+      "files": [
+        "csharp/panel/CondensationTurnTrack.cs"
+      ],
+      "resources": [],
+      "helpers": [
+        "CondensationUiArt"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [
+        "第{new[] { ",
+        " }[_round - 1]}回合 / 八回合",
+        "回弹{_strengths[i]}·{arriving.Length}股",
+        "第八回合后仍有回弹 {future} · 定形前须结清"
+      ],
+      "references": [],
+      "auditGroup": "A10",
+      "auditGroupName": "凝核牌局：主体、轨道、结算与起手",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "CultivationTransitionPreviewScene",
+      "parent": "Control",
+      "path": "csharp/scene/CultivationTransitionPreviewScene.cs",
+      "files": [
+        "csharp/scene/CultivationTransitionPreviewScene.cs"
+      ],
+      "resources": [
+        "res://resources/gongfa/黄庭养形篇.tres"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [
+        "开始修炼"
+      ],
+      "references": [],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "CultivationUI",
+      "parent": "Control",
+      "path": "csharp/panel/CultivationUI.cs",
+      "files": [
+        "csharp/panel/CultivationUI.cs",
+        "csharp/panel/CultivationUI.Inspiration.cs",
+        "csharp/panel/CultivationUI.Room.cs"
+      ],
+      "resources": [
+        "res://textures/ui/infopanel_nav_plaque_clean_v2.png",
+        "res://textures/ui/qingxi/body_part_sigil_sheet_ink_v1.png"
+      ],
+      "helpers": [
+        "QuietRoomStyle",
+        "WorldHudStyle"
+      ],
+      "flatStyles": 2,
+      "textureStyles": 2,
+      "buttonCreations": 21,
+      "labels": [
+        "本期初学研习已结束。可返回地点安排后续修行。",
+        "本期初学研习已结束，请返回地点。",
+        "战斗构筑：公共基础技能池与已学秘籍；技能和心法效果按各自规则联动。",
+        "进行中：{body.GetValueOrDefault(",
+        "当前没有进行中的淬体。",
+        "修行总览",
+        "返回修炼",
+        "收起",
+        "行观一日",
+        "修命·淬体",
+        "开始淬体",
+        "{nodeLevels[i]}炼",
+        ").AsString()}　·　修性面向所有修士开放",
+        "尚无观想结算记录。",
+        "上次：{last.GetValueOrDefault(",
+        ").AsString()}，以{last.GetValueOrDefault(",
+        "当前重数没有适用观法；探索、事件与后段观法会在后续内容中补入。",
+        "修命·淬体总览 · 查看态",
+        "返回角色",
+        "静室·修命淬体 · 行动态",
+        "{level}炼　炼度 {progress:0.0}　已达当前上限",
+        "当前节点：{part.GetValueOrDefault(",
+        "当前淬体：{state.GetValueOrDefault(",
+        "尚无淬体结算记录。"
+      ],
+      "references": [
+        "csharp/debug/CultivationInspirationSmoke.cs",
+        "csharp/debug/QuietRoomSmoke.cs",
+        "csharp/scene/CultivationTransitionPreviewScene.cs",
+        "csharp/scene/QuietRoomRestTradePreviewScene.cs"
+      ],
+      "auditGroup": "B02",
+      "auditGroupName": "正式静室的现存修行页",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "DungeonEncounterMarkerSmoke",
+      "parent": "DungeonForestRedesignSmoke",
+      "path": "csharp/debug/DungeonEncounterMarkerSmoke.cs",
+      "files": [
+        "csharp/debug/DungeonEncounterMarkerSmoke.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "DungeonForestRedesignSmoke",
+      "parent": "Control",
+      "path": "csharp/debug/DungeonForestRedesignSmoke.cs",
+      "files": [
+        "csharp/debug/DungeonForestRedesignSmoke.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [
+        "查看战前情报"
+      ],
+      "references": [],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "DungeonMovementLockSmoke",
+      "parent": "Control",
+      "path": "csharp/debug/DungeonMovementLockSmoke.cs",
+      "files": [
+        "csharp/debug/DungeonMovementLockSmoke.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "DungeonRefreshPerformanceSmoke",
+      "parent": "Control",
+      "path": "csharp/debug/DungeonRefreshPerformanceSmoke.cs",
+      "files": [
+        "csharp/debug/DungeonRefreshPerformanceSmoke.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "EastWoodsDungeonPanel",
+      "parent": "Control",
+      "path": "csharp/panel/EastWoodsDungeonPanel.cs",
+      "files": [
+        "csharp/panel/EastWoodsDungeonPanel.Actions.cs",
+        "csharp/panel/EastWoodsDungeonPanel.Arrival.cs",
+        "csharp/panel/EastWoodsDungeonPanel.Camera.cs",
+        "csharp/panel/EastWoodsDungeonPanel.cs",
+        "csharp/panel/EastWoodsDungeonPanel.EncounterMarkers.cs",
+        "csharp/panel/EastWoodsDungeonPanel.ForestEvent.cs",
+        "csharp/panel/EastWoodsDungeonPanel.LocalActions.cs",
+        "csharp/panel/EastWoodsDungeonPanel.Motion.cs",
+        "csharp/panel/EastWoodsDungeonPanel.Notes.cs",
+        "csharp/panel/EastWoodsDungeonPanel.NpcMotion.cs",
+        "csharp/panel/EastWoodsDungeonPanel.Presentation.cs",
+        "csharp/panel/EastWoodsDungeonPanel.Visibility.cs"
+      ],
+      "resources": [
+        "res://textures/ui/encyclopedia/portraits/{portrait.Sha256Text()[..16]}.png",
+        "res://textures/ui/world/player_pawn_marker_v6.tres",
+        "res://textures/world_locations/east_woods_ink_20261011/forest_background_v1.png"
+      ],
+      "helpers": [
+        "WorldHudStyle"
+      ],
+      "flatStyles": 3,
+      "textureStyles": 0,
+      "buttonCreations": 2,
+      "labels": [
+        "离开{route_display_name}",
+        "离开林地",
+        "东林地 · ",
+        "确认行动",
+        "查看战前情报",
+        "东林地",
+        "资源点：{(isPlant ? ",
+        "}；每{days}日恢复",
+        "你",
+        "修行者"
+      ],
+      "references": [
+        "csharp/debug/DungeonForestRedesignSmoke.cs",
+        "csharp/debug/DungeonMovementLockSmoke.cs",
+        "csharp/debug/DungeonRefreshPerformanceSmoke.cs",
+        "csharp/debug/DungeonSeededLayoutSmoke.cs",
+        "csharp/debug/EastWoodsMapSmoke.cs",
+        "csharp/debug/RosterScrollSmoke.cs"
+      ],
+      "auditGroup": "B15",
+      "auditGroupName": "东林地的行动、遭遇与战前情报",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "EastWoodsLocationPanel",
+      "parent": "Control",
+      "path": "csharp/panel/EastWoodsLocationPanel.cs",
+      "files": [
+        "csharp/panel/EastWoodsLocationPanel.cs"
+      ],
+      "resources": [
+        "res://resources/font/default_theme.tres",
+        "res://textures/world_locations/east_woods_overview_v1.png"
+      ],
+      "helpers": [],
+      "flatStyles": 2,
+      "textureStyles": 0,
+      "buttonCreations": 2,
+      "labels": [],
+      "references": [],
+      "auditGroup": "H01",
+      "auditGroupName": "旧东林地点、备用功法树与延期隐藏控件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "EncyclopediaPanel",
+      "parent": "Control",
+      "path": "csharp/panel/EncyclopediaPanel.cs",
+      "files": [
+        "csharp/panel/EncyclopediaPanel.cs",
+        "csharp/panel/EncyclopediaPanel.Loading.cs",
+        "csharp/panel/EncyclopediaPanel.Terms.cs"
+      ],
+      "resources": [
+        "res://textures/ui/encyclopedia/encyclopedia_close_cross_v1.png",
+        "res://textures/ui/encyclopedia/encyclopedia_paper_fullscreen_v1.png",
+        "res://textures/ui/encyclopedia/portraits/{sourcePath.Sha256Text()[..16]}.png"
+      ],
+      "helpers": [
+        "CardPresentation"
+      ],
+      "flatStyles": 13,
+      "textureStyles": 0,
+      "buttonCreations": 5,
+      "labels": [
+        "目录暂时未能载入",
+        "可切换分类后重试。",
+        "状态",
+        "物品",
+        "生灵",
+        "术语介绍",
+        "搜索名称、来源或说明…",
+        "打开完整动作展示",
+        "收录 {visibleEntries.Count} 条",
+        "暂无{title}",
+        "此类内容尚未收录。",
+        "没有找到与“{query}”相符的词条。",
+        "可切换分类，或尝试缩短搜索词。",
+        "请使用项目的「打开项目」入口查看完整动作。",
+        "已打开完整动作展示窗口。",
+        "未能打开，请使用项目的「打开项目」入口。",
+        "正在载入…",
+        "正在整理{SectionTitle(section)}目录…"
+      ],
+      "references": [
+        "csharp/debug/EncyclopediaLoadingSmoke.cs",
+        "csharp/debug/EncyclopediaPerformanceSmoke.cs"
+      ],
+      "auditGroup": "B08",
+      "auditGroupName": "修行百科：状态、物品、生灵、术语",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "ExchangeItemListPreview",
+      "parent": "Control",
+      "path": "csharp/debug/ExchangeItemListPreview.cs",
+      "files": [
+        "csharp/debug/ExchangeItemListPreview.cs"
+      ],
+      "resources": [
+        "res://tscn/scene/StartMenu.tscn"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "ForestWolfEventView",
+      "parent": "Control",
+      "path": "csharp/panel/ForestWolfEventView.cs",
+      "files": [
+        "csharp/panel/ForestWolfEventView.cs"
+      ],
+      "resources": [
+        "res://textures/ui/wildlife_encounter_20261027/grass_eyes.png",
+        "res://textures/ui/wildlife_encounter_20261027/grass_quiet.png"
+      ],
+      "helpers": [
+        "WorldHudStyle",
+        "paperStyle"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 2,
+      "labels": [],
+      "references": [],
+      "auditGroup": "B15",
+      "auditGroupName": "东林地的行动、遭遇与战前情报",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "ForgedSwordIconPreview",
+      "parent": "Control",
+      "path": "csharp/debug/ForgedSwordIconPreview.cs",
+      "files": [
+        "csharp/debug/ForgedSwordIconPreview.cs"
+      ],
+      "resources": [
+        "res://docs/美术规范/器物斜放图标_20261025/02_宗门兑换.png",
+        "res://docs/美术规范/行囊全物品图标与占地_20261029/剑器共用入口.png",
+        "res://tscn/panel/StorageItemSlot.tscn"
+      ],
+      "helpers": [
+        "ForgedArtifactPresentation",
+        "ForgingInkStyle",
+        "QuietRoomStyle"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "ForgingAnimationPreview",
+      "parent": "Control",
+      "path": "csharp/scene/ForgingAnimationPreview.cs",
+      "files": [
+        "csharp/scene/ForgingAnimationPreview.cs"
+      ],
+      "resources": [
+        "res://tscn/scene/StartMenu.tscn"
+      ],
+      "helpers": [
+        "ForgedArtifactPresentation",
+        "ForgingInkStyle",
+        "QuietRoomStyle"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 1,
+      "labels": [],
+      "references": [],
+      "auditGroup": "E02",
+      "auditGroupName": "炼器操作页与当前原生炉火预览",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "ForgingNativeFirePresentation",
+      "parent": "Control",
+      "path": "csharp/scene/ForgingNativeFirePresentation.cs",
+      "files": [
+        "csharp/scene/ForgingNativeFirePresentation.cs"
+      ],
+      "resources": [],
+      "helpers": [
+        "ForgedArtifactPresentation",
+        "QuietRoomStyle"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 1,
+      "labels": [
+        "投料",
+        "炼合",
+        "凝形",
+        "收火",
+        "定器"
+      ],
+      "references": [],
+      "auditGroup": "E02",
+      "auditGroupName": "炼器操作页与当前原生炉火预览",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "ForgingOriginalStylePreview",
+      "parent": "Control",
+      "path": "csharp/scene/ForgingOriginalStylePreview.cs",
+      "files": [
+        "csharp/scene/ForgingOriginalStylePreview.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "E02",
+      "auditGroupName": "炼器操作页与当前原生炉火预览",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "ForgingProcessInk",
+      "parent": "Control",
+      "path": "csharp/scene/ForgingAnimationPreview.cs",
+      "files": [
+        "csharp/scene/ForgingAnimationPreview.cs"
+      ],
+      "resources": [
+        "res://tscn/scene/StartMenu.tscn"
+      ],
+      "helpers": [
+        "ForgedArtifactPresentation",
+        "ForgingInkStyle",
+        "QuietRoomStyle"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 1,
+      "labels": [],
+      "references": [],
+      "auditGroup": "E02",
+      "auditGroupName": "炼器操作页与当前原生炉火预览",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "GameNotificationFeed",
+      "parent": "Control",
+      "path": "csharp/panel/GameNotificationFeed.cs",
+      "files": [
+        "csharp/panel/GameNotificationFeed.cs"
+      ],
+      "resources": [],
+      "helpers": [
+        "WorldHudStyle"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "B17",
+      "auditGroupName": "共用按钮、下拉／数量、搜索、滑条／滚动、提示／通知",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "GameSettingsPanel",
+      "parent": "Control",
+      "path": "csharp/panel/GameSettingsPanel.cs",
+      "files": [
+        "csharp/panel/GameSettingsPanel.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 1,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [
+        "设　置",
+        "画面、声音与信息显示　·　改动会即时生效并自动保存",
+        "窗口模式下可选择常用的 16:9 分辨率。"
+      ],
+      "references": [
+        "csharp/debug/InformationPanelSmoke.cs"
+      ],
+      "auditGroup": "A12",
+      "auditGroupName": "设置面板",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "GameTimeUI",
+      "parent": "Control",
+      "path": "csharp/panel/GameTimeUI.cs",
+      "files": [
+        "csharp/panel/GameTimeUI.cs"
+      ],
+      "resources": [],
+      "helpers": [
+        "WorldHudStyle"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 1,
+      "labels": [
+        "切换",
+        "{year}{_manager.month}月{_manager.day}日"
+      ],
+      "references": [],
+      "auditGroup": "K04",
+      "auditGroupName": "大地图HUD、名单、任务条、日期与小纸签主体",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "GongfaTree",
+      "parent": "Control",
+      "path": "csharp/panel/GongfaTree.cs",
+      "files": [
+        "csharp/panel/GongfaTree.cs"
+      ],
+      "resources": [
+        "res://textures/ui/gongfa_branch_node_v1.png"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "H01",
+      "auditGroupName": "旧东林地点、备用功法树与延期隐藏控件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "GongfaTreeFlow",
+      "parent": "Control",
+      "path": "csharp/panel/GongfaTreeFlow.cs",
+      "files": [
+        "csharp/panel/GongfaTreeFlow.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "B01",
+      "auditGroupName": "正式角色六页",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "HoverInfoManager",
+      "parent": "CanvasLayer",
+      "path": "csharp/autoload/HoverInfoManager.cs",
+      "files": [
+        "csharp/autoload/HoverInfoManager.cs"
+      ],
+      "resources": [
+        "res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf"
+      ],
+      "helpers": [],
+      "flatStyles": 1,
+      "textureStyles": 0,
+      "buttonCreations": 1,
+      "labels": [
+        "规则详解  [F1]"
+      ],
+      "references": [],
+      "auditGroup": "B17",
+      "auditGroupName": "共用按钮、下拉／数量、搜索、滑条／滚动、提示／通知",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "InfoPanel",
+      "parent": "Control",
+      "path": "csharp/panel/InfoPanel.cs",
+      "files": [
+        "csharp/panel/InfoPanel.Attributes.cs",
+        "csharp/panel/InfoPanel.BaishiLecture.cs",
+        "csharp/panel/InfoPanel.cs",
+        "csharp/panel/InfoPanel.EquipmentLayout.cs",
+        "csharp/panel/InfoPanel.EquipmentTotals.cs",
+        "csharp/panel/InfoPanel.ManualLibrary.cs",
+        "csharp/panel/InfoPanel.NpcProbe.cs",
+        "csharp/panel/InfoPanel.Overview.cs",
+        "csharp/panel/InfoPanel.Redesign.cs",
+        "csharp/panel/InfoPanel.RelationsLayout.cs",
+        "csharp/panel/InfoPanel.SkillLibrary.cs",
+        "csharp/panel/InfoPanel.SkillRewrites.cs",
+        "csharp/panel/InfoPanel.Supplies.cs",
+        "csharp/panel/InfoPanel.WorldStatus.cs"
+      ],
+      "resources": [
+        "res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf",
+        "res://resources/world/bai_chuan/bai_chuan_locations_20261101.tres",
+        "res://textures/ui/character_20261012/relations_bridge_v1.png",
+        "res://textures/ui/gongfa_back_button_v1.png",
+        "res://textures/ui/infopanel_attribute_icons_ink_v2.png",
+        "res://textures/ui/infopanel_nav_icons_ink_v1.png",
+        "res://textures/ui/infopanel_nav_plaque_clean_v2.png",
+        "res://textures/ui/inventory_20261012/approved_shell_v1.png",
+        "res://textures/ui/inventory_20261012/category_icons_v1.png",
+        "res://textures/ui/skill_nodes/skill_node_multi_ink_circle_v1.png",
+        "res://textures/ui/skill_nodes/skill_node_small_ink_circle_v1.png"
+      ],
+      "helpers": [
+        "CardPresentation",
+        "CharacterAttributePresentation",
+        "ClothingItemPresentation",
+        "CombatBoardPresentation",
+        "WorldHudStyle"
+      ],
+      "flatStyles": 20,
+      "textureStyles": 2,
+      "buttonCreations": 15,
+      "labels": [
+        "搜索造诣",
+        "确认选读这一卷",
+        "概览",
+        "无名",
+        "未详",
+        "声望：百川 未详",
+        "业力：未详",
+        "心境",
+        "越近圆心，心绪越轻",
+        "心境：未详",
+        "暂无已确认的长期心绪记录。",
+        "查看心境详情",
+        "声望：百川 {renown}",
+        "当前心境　{_overviewMoodScale.CurrentName}",
+        "衣着 · ",
+        "法宝御使",
+        "查看炼器",
+        "战备",
+        "{slotName}尚未穿戴",
+        "{bodyPart}穿戴：{resource?.entity_name ?? ",
+        "尚未穿戴",
+        "预留",
+        "更换辅修秘籍",
+        "更换主修秘籍"
+      ],
+      "references": [
+        "csharp/debug/ActionBattlePanelSmoke.cs",
+        "csharp/debug/ArtifactBondSmoke.cs",
+        "csharp/debug/ArtifactCombatPreview.cs",
+        "csharp/debug/CharacterAttributeHoverSmoke.cs",
+        "csharp/debug/EquipmentPagePreview.cs",
+        "csharp/debug/ForgedSwordAdapterSmoke.cs",
+        "csharp/debug/InfoPanelGongfaSkillDirectorySmoke.cs",
+        "csharp/debug/QueueCombatRestorationSmoke.cs",
+        "csharp/debug/SceneResourceLifecycleSmoke.cs",
+        "csharp/debug/SkillRewriteSelectionSmoke.cs",
+        "csharp/debug/WorldDungeonNavigationSmoke.cs",
+        "csharp/scene/CharacterOverviewPreviewScene.cs"
+      ],
+      "auditGroup": "B01",
+      "auditGroupName": "正式角色六页",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "InkVfxShowcase",
+      "parent": "Control",
+      "path": "csharp/scene/InkVfxShowcase.cs",
+      "files": [
+        "csharp/scene/InkVfxShowcase.BloodArms.cs",
+        "csharp/scene/InkVfxShowcase.cs",
+        "csharp/scene/InkVfxShowcase.SwordActions.cs",
+        "csharp/scene/InkVfxShowcase.SwordIdle.cs"
+      ],
+      "resources": [
+        "res://resources/activeskills/发劲.tres",
+        "res://resources/activeskills/妖兽/林地凶狼/掠影扑杀.tres",
+        "res://resources/activeskills/妖兽/林地凶狼/撕咬.tres",
+        "res://resources/activeskills/妖兽/林地妖狈/唤猎.tres",
+        "res://resources/activeskills/妖兽/林地妖狈/狈啸.tres",
+        "res://resources/activeskills/应敌.tres",
+        "res://resources/activeskills/架招.tres",
+        "res://resources/activeskills/灵击.tres",
+        "res://resources/activeskills/玄枢含章经/惊蛰.tres",
+        "res://resources/activeskills/聚炁.tres",
+        "res://textures/start_menu/ink_mountain_dawn_v2.png",
+        "res://textures/ui/forged_swords_20261023_v1/broad_sword.png",
+        "res://textures/ui/forged_swords_20261023_v1/slender_sword.png",
+        "res://textures/ui/forged_swords_20261023_v1/spined_sword.png",
+        "res://tscn/scene/StartMenu.tscn"
+      ],
+      "helpers": [],
+      "flatStyles": 2,
+      "textureStyles": 0,
+      "buttonCreations": 1,
+      "labels": [
+        "追击：双臂",
+        "追击：单臂",
+        "播放完成  ·  点击“重播”或按空格再次观看",
+        "常驻显示",
+        "准备播放",
+        "友方凶狼",
+        "目标",
+        "暂停演出",
+        "继续演出",
+        "继续浮动",
+        "暂停浮动",
+        "御剑待机 · ",
+        "持剑待机 · "
+      ],
+      "references": [
+        "csharp/panel/StartMenu.cs"
+      ],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "InspirationActionPicker",
+      "parent": "PanelContainer",
+      "path": "csharp/panel/InspirationActionPicker.cs",
+      "files": [
+        "csharp/panel/InspirationActionPicker.cs"
+      ],
+      "resources": [],
+      "helpers": [
+        "QuietRoomStyle"
+      ],
+      "flatStyles": 1,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [
+        "下一次{_actionLabel}使用的灵感",
+        "当前角色数据不可用。",
+        "已取消下一次{_actionLabel}的灵感选择。",
+        "下一次行动不会使用灵感。",
+        "这份灵感当前不可用，请重新选择。"
+      ],
+      "references": [
+        "csharp/debug/CultivationInspirationSmoke.cs"
+      ],
+      "auditGroup": "H01",
+      "auditGroupName": "旧东林地点、备用功法树与延期隐藏控件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "InspirationQualityMark",
+      "parent": "Control",
+      "path": "csharp/panel/InspirationQualityMark.cs",
+      "files": [
+        "csharp/panel/InspirationQualityMark.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [
+        "csharp/panel/CultivationUI.Inspiration.cs",
+        "csharp/panel/CultivationUI.Room.cs",
+        "csharp/panel/InspirationActionPicker.cs"
+      ],
+      "auditGroup": "H01",
+      "auditGroupName": "旧东林地点、备用功法树与延期隐藏控件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "InventoryFootprintHoverPreview",
+      "parent": "Control",
+      "path": "csharp/debug/InventoryFootprintHoverPreview.cs",
+      "files": [
+        "csharp/debug/InventoryFootprintHoverPreview.cs"
+      ],
+      "resources": [],
+      "helpers": [
+        "QuietRoomStyle"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 1,
+      "labels": [
+        "物品"
+      ],
+      "references": [],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "InventoryFootprintView",
+      "parent": "Control",
+      "path": "csharp/panel/InventoryFootprintView.cs",
+      "files": [
+        "csharp/panel/InventoryFootprintView.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [
+        "csharp/autoload/HoverInfoManager.cs"
+      ],
+      "auditGroup": "B14",
+      "auditGroupName": "行囊详情、换衣、储物内腔、领取结束等浮层",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "InventoryIconCatalogPreview",
+      "parent": "Control",
+      "path": "csharp/debug/InventoryIconCatalogPreview.cs",
+      "files": [
+        "csharp/debug/InventoryIconCatalogPreview.cs"
+      ],
+      "resources": [
+        "res://tscn/scene/StartMenu.tscn"
+      ],
+      "helpers": [
+        "ForgingInkStyle",
+        "QuietRoomStyle"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [
+        "csharp/panel/StartMenu.Visual.cs"
+      ],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "InventoryPaperFrame",
+      "parent": "Control",
+      "path": "csharp/panel/InventoryPaperFrame.cs",
+      "files": [
+        "csharp/panel/InventoryPaperFrame.cs"
+      ],
+      "resources": [
+        "res://textures/ui/inventory_20261012/approved_shell_v1.png"
+      ],
+      "helpers": [
+        "WorldHudStyle"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [
+        "csharp/panel/LetterPanel.cs",
+        "csharp/panel/StorageItemSlot.cs"
+      ],
+      "auditGroup": "K03",
+      "auditGroupName": "行囊与领取页的浅绢收纳主体",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "InventorySpatialLayoutPreview",
+      "parent": "Control",
+      "path": "csharp/debug/InventorySpatialLayoutPreview.cs",
+      "files": [
+        "csharp/debug/InventorySpatialLayoutPreview.cs"
+      ],
+      "resources": [
+        "res://tscn/scene/StartMenu.tscn"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [
+        "csharp/panel/StartMenu.Visual.cs"
+      ],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "ItemClaimPanel",
+      "parent": "CanvasLayer",
+      "path": "csharp/panel/ItemClaimPanel.cs",
+      "files": [
+        "csharp/panel/ItemClaimPanel.cs",
+        "csharp/panel/ItemClaimPanel.Drag.cs",
+        "csharp/panel/ItemClaimPanel.LeftList.cs",
+        "csharp/panel/ItemClaimPanel.View.cs"
+      ],
+      "resources": [
+        "res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf",
+        "res://textures/ui/gongfa_back_button_v1.png",
+        "res://textures/ui/inventory_20261012/approved_shell_v1.png",
+        "res://tscn/panel/StorageItemSlot.tscn"
+      ],
+      "helpers": [
+        "EquipmentItemPresentation",
+        "InventoryGarmentStyle"
+      ],
+      "flatStyles": 1,
+      "textureStyles": 1,
+      "buttonCreations": 3,
+      "labels": [
+        "结束领取",
+        "继续整理",
+        "已取消拖动",
+        "R 旋转 · Esc 取消 · 左侧可暂放",
+        "戒内有物，不能丢弃"
+      ],
+      "references": [
+        "csharp/debug/BreakthroughAlchemySmoke.cs",
+        "csharp/debug/CraftingIntegrationSmoke.cs",
+        "csharp/debug/ItemClaimSpatialNativeSmoke.cs",
+        "csharp/debug/YuxuManualLibrarySmoke.cs",
+        "csharp/scene/ItemClaimPreviewScene.cs"
+      ],
+      "auditGroup": "B14",
+      "auditGroupName": "行囊详情、换衣、储物内腔、领取结束等浮层",
+      "relatedAuditGroups": [
+        "K03"
+      ]
+    },
+    {
+      "name": "ItemClaimPreviewScene",
+      "parent": "Control",
+      "path": "csharp/scene/ItemClaimPreviewScene.cs",
+      "files": [
+        "csharp/scene/ItemClaimPreviewScene.cs"
+      ],
+      "resources": [
+        "res://resources/entities/items/alchemy/huichun_2.tres",
+        "res://resources/entities/items/兽皮.tres",
+        "res://resources/entities/items/灵石.tres",
+        "res://resources/entities/items/玄枢含章经秘籍.tres",
+        "res://resources/entities/items/玄铁.tres",
+        "res://tscn/scene/StartMenu.tscn"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "JournalPanel",
+      "parent": "Control",
+      "path": "csharp/panel/JournalPanel.cs",
+      "files": [
+        "csharp/panel/JournalPanel.cs"
+      ],
+      "resources": [
+        "res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf",
+        "res://textures/ui/infopanel_fullscreen_bg_v1.png",
+        "res://textures/ui/infopanel_nav_plaque_clean_v2.png"
+      ],
+      "helpers": [],
+      "flatStyles": 2,
+      "textureStyles": 1,
+      "buttonCreations": 1,
+      "labels": [
+        "{time.year}年{time.month}月{time.day}日",
+        "暂无",
+        "已完成任务",
+        "进行中任务",
+        "记录",
+        "见闻会随你的经历逐渐补全。",
+        "此处暂未收录新的内容。",
+        "取消追踪",
+        "追踪任务",
+        " · 待续",
+        "此栏入口已留出。",
+        "随着游历展开，这里会逐步收录相关见闻。"
+      ],
+      "references": [
+        "csharp/debug/JournalUiSmoke.cs"
+      ],
+      "auditGroup": "B06",
+      "auditGroupName": "见闻、任务、记录",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "JournalUiSmoke",
+      "parent": "Control",
+      "path": "csharp/debug/JournalUiSmoke.cs",
+      "files": [
+        "csharp/debug/JournalUiSmoke.cs"
+      ],
+      "resources": [
+        "res://textures/ui/infopanel_fullscreen_bg_v1.png",
+        "res://tscn/panel/MainHUD.tscn"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 1,
+      "buttonCreations": 0,
+      "labels": [
+        "双击按稳定标识定位任务",
+        "取消追踪",
+        "追踪任务",
+        "已完成",
+        "已完成筛选且不可追踪",
+        "传闻",
+        "03_见闻阅读",
+        "任务",
+        "全部记录",
+        "此处暂未收录新的内容。",
+        "空栏目显示",
+        "地志",
+        "地志 · 待续",
+        "预留入口保留",
+        "这是用于验证任务名称较长时独立换行且不会挤入目标文字的测试标题",
+        "长正文应当在自己的区域滚动，不挤占标题与返回入口。",
+        "进行中",
+        "返回",
+        "返回入口保持可达"
+      ],
+      "references": [],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "JourneyCreationLoadingView",
+      "parent": "Control",
+      "path": "csharp/panel/JourneyCreationLoadingView.cs",
+      "files": [
+        "csharp/panel/JourneyCreationLoadingView.cs"
+      ],
+      "resources": [
+        "res://textures/ui/cultivation_transition_20261015/ink_background_v1.png",
+        "res://tscn/scene/MainScene.tscn",
+        "res://tscn/scene/StartMenu.tscn"
+      ],
+      "helpers": [
+        "WorldHudStyle"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 1,
+      "labels": [
+        "返回首页"
+      ],
+      "references": [
+        "csharp/debug/UnifiedLoadingSmoke.cs"
+      ],
+      "auditGroup": "E01",
+      "auditGroupName": "加载、场景转场与行动过渡",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "LetterPanel",
+      "parent": "Control",
+      "path": "csharp/panel/LetterPanel.cs",
+      "files": [
+        "csharp/panel/LetterPanel.cs"
+      ],
+      "resources": [
+        "res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf",
+        "res://textures/ui/gongfa_back_button_v1.png",
+        "res://textures/ui/infopanel_nav_plaque_clean_v2.png",
+        "res://textures/ui/inventory_20261012/approved_shell_v1.png",
+        "res://textures/ui/qingxi/bottom_nav_letters_ink_v1.png"
+      ],
+      "helpers": [
+        "WorldHudStyle"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 2,
+      "buttonCreations": 1,
+      "labels": [
+        "尺素往来",
+        "搜索署名、标题、信中内容",
+        "旧信在前 ▴",
+        "新信在前 ▾",
+        "{shown.Count} 封信笺",
+        "寄信人",
+        "落款",
+        "标为未读",
+        "标为已读",
+        "相约地点　",
+        "应答截止　",
+        "举办日期　",
+        "赴约",
+        "赴约 · 待开放"
+      ],
+      "references": [],
+      "auditGroup": "B07",
+      "auditGroupName": "信件与邀约",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "LettersPreviewScene",
+      "parent": "Control",
+      "path": "csharp/scene/LettersPreviewScene.cs",
+      "files": [
+        "csharp/scene/LettersPreviewScene.cs"
+      ],
+      "resources": [
+        "res://tscn/scene/StartMenu.tscn"
+      ],
+      "helpers": [
+        "WorldHudStyle"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [
+        "csharp/panel/StartMenu.Visual.cs"
+      ],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "LocationCraftingPanel",
+      "parent": "Control",
+      "path": "csharp/panel/LocationCraftingPanel.cs",
+      "files": [
+        "csharp/panel/LocationCraftingPanel.cs"
+      ],
+      "resources": [
+        "res://tscn/scene/AlchemyPreviewScene.tscn",
+        "res://tscn/scene/ProcessForgingScene.tscn"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [
+        "csharp/debug/AlchemyExpansionSmoke.cs",
+        "csharp/debug/BreakthroughAlchemySmoke.cs",
+        "csharp/debug/CraftingIntegrationSmoke.cs",
+        "csharp/debug/ForgingBattleFlowSmoke.cs",
+        "csharp/debug/ItemClaimSpatialNativeSmoke.cs",
+        "csharp/debug/SceneResourceLifecycleSmoke.cs"
+      ],
+      "auditGroup": "E03",
+      "auditGroupName": "炼丹操作页",
+      "relatedAuditGroups": [
+        "E02"
+      ]
+    },
+    {
+      "name": "MainHUD",
+      "parent": "Control",
+      "path": "csharp/panel/MainHUD.cs",
+      "files": [
+        "csharp/panel/MainHUD.cs",
+        "csharp/panel/MainHUD.Letters.cs",
+        "csharp/panel/MainHUD.Navigation.cs",
+        "csharp/panel/MainHUD.PlayerProfile.cs",
+        "csharp/panel/MainHUD.TaskTracker.cs"
+      ],
+      "resources": [
+        "res://textures/ui/player_profile_frame_v1.png"
+      ],
+      "helpers": [
+        "WorldHudStyle",
+        "_taskTrackerPresentation"
+      ],
+      "flatStyles": 2,
+      "textureStyles": 0,
+      "buttonCreations": 4,
+      "labels": [
+        "见闻 · 新{count}",
+        "见闻",
+        "收起",
+        "宗门贡献流水"
+      ],
+      "references": [
+        "csharp/debug/JournalUiSmoke.cs",
+        "csharp/debug/TaskTrackerStabilitySmoke.cs"
+      ],
+      "auditGroup": "K04",
+      "auditGroupName": "大地图HUD、名单、任务条、日期与小纸签主体",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "MoodDiscControl",
+      "parent": "Control",
+      "path": "csharp/panel/MoodDiscControl.cs",
+      "files": [
+        "csharp/panel/MoodDiscControl.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [
+        "无心绪"
+      ],
+      "references": [],
+      "auditGroup": "B01",
+      "auditGroupName": "正式角色六页",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "NativeInventorySurface",
+      "parent": "Control",
+      "path": "csharp/panel/StoragePanel.Native.cs",
+      "files": [
+        "csharp/panel/StoragePanel.Native.cs"
+      ],
+      "resources": [
+        "res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf",
+        "res://textures/ui/gongfa_back_button_v1.png",
+        "res://textures/ui/inventory_20261012/approved_shell_v1.png",
+        "res://tscn/panel/StorageItemSlot.tscn"
+      ],
+      "helpers": [
+        "EquipmentItemPresentation"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 2,
+      "buttonCreations": 1,
+      "labels": [
+        "行囊",
+        "查找物品",
+        "数量",
+        "器具 · {ring.Quality}"
+      ],
+      "references": [],
+      "auditGroup": "B14",
+      "auditGroupName": "行囊详情、换衣、储物内腔、领取结束等浮层",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "NpcInteractionPanel",
+      "parent": "Control",
+      "path": "csharp/panel/NpcInteractionPanel.cs",
+      "files": [
+        "csharp/panel/NpcInteractionPanel.cs"
+      ],
+      "resources": [],
+      "helpers": [
+        "QuietRoomStyle"
+      ],
+      "flatStyles": 1,
+      "textureStyles": 0,
+      "buttonCreations": 1,
+      "labels": [
+        "无名修士"
+      ],
+      "references": [
+        "csharp/debug/HoverWheelNavigationSmoke.cs",
+        "csharp/debug/NpcInteractionDirectionSmoke.cs"
+      ],
+      "auditGroup": "B09",
+      "auditGroupName": "NPC互动菜单",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "NpcSocialPreviewScene",
+      "parent": "Control",
+      "path": "csharp/scene/NpcSocialPreviewScene.cs",
+      "files": [
+        "csharp/scene/NpcSocialPreviewScene.cs"
+      ],
+      "resources": [
+        "res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf",
+        "res://textures/start_menu/title_menu_world_v2.png",
+        "res://tscn/panel/StoryDialoguePanel.tscn",
+        "res://tscn/scene/StartMenu.tscn"
+      ],
+      "helpers": [],
+      "flatStyles": 3,
+      "textureStyles": 0,
+      "buttonCreations": 1,
+      "labels": [
+        "人物交往试演",
+        "交谈、切磋、交易仅作表现试演。不进入战斗、不交换财物，也不改写正式存档。"
+      ],
+      "references": [
+        "csharp/debug/NpcSocialSmoke.cs",
+        "csharp/panel/StartMenu.cs"
+      ],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "PackSlot",
+      "parent": "Control",
+      "path": "csharp/panel/PackSlot.cs",
+      "files": [
+        "csharp/panel/PackSlot.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [
+        "（空）",
+        "行囊物品",
+        "取出"
+      ],
+      "references": [],
+      "auditGroup": "B14",
+      "auditGroupName": "行囊详情、换衣、储物内腔、领取结束等浮层",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "PaperButton",
+      "parent": "Button",
+      "path": "csharp/panel/PaperButton.cs",
+      "files": [
+        "csharp/panel/PaperButton.cs"
+      ],
+      "resources": [
+        "res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf"
+      ],
+      "helpers": [
+        "WorldHudStyle"
+      ],
+      "flatStyles": 2,
+      "textureStyles": 0,
+      "buttonCreations": 1,
+      "labels": [],
+      "references": [],
+      "auditGroup": "B17",
+      "auditGroupName": "共用按钮、下拉／数量、搜索、滑条／滚动、提示／通知",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "PortraitRenderer",
+      "parent": "Control",
+      "path": "csharp/panel/PortraitRenderer.cs",
+      "files": [
+        "csharp/panel/PortraitRenderer.cs",
+        "csharp/panel/PortraitRenderer.Npc.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [
+        "csharp/debug/BattleFlowVisualPreview.cs",
+        "csharp/panel/AppearancePreview.cs"
+      ],
+      "auditGroup": "B01",
+      "auditGroupName": "正式角色六页",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "ProcessForgingScene",
+      "parent": "Control",
+      "path": "csharp/scene/ProcessForgingScene.cs",
+      "files": [
+        "csharp/scene/ProcessForgingScene.Audit.cs",
+        "csharp/scene/ProcessForgingScene.cs",
+        "csharp/scene/ProcessForgingScene.FirePreview.cs",
+        "csharp/scene/ProcessForgingScene.ItemPreview.cs",
+        "csharp/scene/ProcessForgingScene.Workspace.cs"
+      ],
+      "resources": [
+        "res://textures/ui/forging_fire_20261107/workshop_unlit_v1.png",
+        "res://textures/ui/forging_polarity_20261024/yin_yang_axis.png",
+        "res://tools/ForgedEquipmentPreview.tscn",
+        "res://tscn/scene/StartMenu.tscn"
+      ],
+      "helpers": [
+        "ForgedArtifactPresentation",
+        "ForgingInkStyle",
+        "QuietRoomStyle",
+        "WorldHudStyle"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 1,
+      "labels": [
+        "锋锐 ",
+        "信息栏读取本实例名称品阶锋锐图标",
+        "搜索材料名",
+        "份数范围：1—8。"
+      ],
+      "references": [
+        "csharp/debug/ForgedEquipmentSmoke.cs",
+        "csharp/debug/ForgingBattleEntrySmoke.cs",
+        "csharp/debug/ForgingWorkspaceSmoke.cs",
+        "csharp/panel/LocationCraftingPanel.cs",
+        "csharp/panel/StartMenu.Visual.cs",
+        "csharp/scene/ForgingOriginalStylePreview.cs"
+      ],
+      "auditGroup": "E02",
+      "auditGroupName": "炼器操作页与当前原生炉火预览",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "QueueSkillVisual",
+      "parent": "Control",
+      "path": "csharp/battle/BattleUnitOverlay.cs",
+      "files": [
+        "csharp/battle/BattleUnitOverlay.cs"
+      ],
+      "resources": [
+        "res://resources/battle/statuses/{id}.tres",
+        "res://textures/items/inventory_density_20261029/pill_container_empty_porcelain.png",
+        "res://textures/ui/battle_status_icons_v1.png",
+        "res://textures/ui/combat/status_icons/{iconStem}.png"
+      ],
+      "helpers": [
+        "BattleStatusPresentation",
+        "BattleUiArt"
+      ],
+      "flatStyles": 5,
+      "textureStyles": 0,
+      "buttonCreations": 4,
+      "labels": [
+        "暂停",
+        "撤退",
+        "继续",
+        "倍速 ×{manager.get_battle_speed_scale():0}",
+        "自动：开",
+        "自动：关",
+        "技能",
+        "念 {nian}"
+      ],
+      "references": [],
+      "auditGroup": "A16",
+      "auditGroupName": "正式人类对战：配招、方案、战斗HUD",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "QuietRoomRestTradePreviewScene",
+      "parent": "Control",
+      "path": "csharp/scene/QuietRoomRestTradePreviewScene.cs",
+      "files": [
+        "csharp/scene/QuietRoomRestTradePreviewScene.cs"
+      ],
+      "resources": [
+        "res://resources/entities/items/兽皮.tres",
+        "res://resources/entities/items/兽骨.tres",
+        "res://resources/entities/items/灵石.tres",
+        "res://resources/entities/items/黄庭养形篇秘籍.tres",
+        "res://resources/gongfa/乘物游骸真经.tres",
+        "res://resources/gongfa/黄庭养形篇.tres"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "RealmPanel",
+      "parent": "Control",
+      "path": "csharp/panel/RealmPanel.cs",
+      "files": [
+        "csharp/panel/RealmPanel.cs"
+      ],
+      "resources": [
+        "res://textures/ui/realm_tag_opaque_v1.png",
+        "res://textures/ui/realm_yunxi_paper_v6.png"
+      ],
+      "helpers": [
+        "PendingPresentation"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 1,
+      "buttonCreations": 5,
+      "labels": [
+        "关闭",
+        "跳过动画",
+        "查看累计",
+        "云息",
+        "累计加成",
+        "本境界加成",
+        "查看本境界",
+        "境界预览（不改变修为）",
+        "当前境界",
+        "下一层　{Stages[index + 1]}",
+        "灵核已成，内部气息缓缓流动",
+        "灵云充盈，尚未凝核",
+        "灵气渐聚，随修炼逐渐充盈",
+        "云息十层圆满",
+        "云息十层",
+        "后续　准备铸玄基",
+        "归元息　{_player.yuanxi_count}／九息"
+      ],
+      "references": [
+        "csharp/debug/RealmPresentationPreview.cs",
+        "csharp/scene/RealmProgressionSmokeScene.cs"
+      ],
+      "auditGroup": "B05",
+      "auditGroupName": "境界与修为累计",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "RealmPoemVisual",
+      "parent": "Control",
+      "path": "csharp/panel/RealmPoemVisual.cs",
+      "files": [
+        "csharp/panel/RealmPoemVisual.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [
+        "csharp/panel/RealmPanel.cs"
+      ],
+      "auditGroup": "B05",
+      "auditGroupName": "境界与修为累计",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "RealmPresentationPreview",
+      "parent": "Control",
+      "path": "csharp/debug/RealmPresentationPreview.cs",
+      "files": [
+        "csharp/debug/RealmPresentationPreview.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [
+        "关闭"
+      ],
+      "references": [],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "RealmProgressionSmokeScene",
+      "parent": "Control",
+      "path": "csharp/scene/RealmProgressionSmokeScene.cs",
+      "files": [
+        "csharp/scene/RealmProgressionSmokeScene.cs"
+      ],
+      "resources": [
+        "res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf",
+        "res://resources/gongfa/黄庭养形篇.tres",
+        "res://tmp/realm_completion_smoke.png",
+        "res://tmp/realm_progression_smoke.tres"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "RealmQiVisual",
+      "parent": "ColorRect",
+      "path": "csharp/panel/RealmQiVisual.cs",
+      "files": [
+        "csharp/panel/RealmQiVisual.cs"
+      ],
+      "resources": [
+        "res://textures/particle_vfx/1024/alpha/effect_4.png"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [
+        "csharp/panel/RealmPanel.cs"
+      ],
+      "auditGroup": "B05",
+      "auditGroupName": "境界与修为累计",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "RestPanel",
+      "parent": "Control",
+      "path": "csharp/panel/RestPanel.cs",
+      "files": [
+        "csharp/panel/RestPanel.cs"
+      ],
+      "resources": [],
+      "helpers": [
+        "QuietRoomStyle"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 4,
+      "labels": [
+        "返回",
+        "按时长",
+        "指定日期",
+        "开始休息",
+        " · 昼",
+        " · 夜",
+        "当前精力  {current:0.#} / {max:0.#}",
+        "请选择晚于当前日期的醒来日期。"
+      ],
+      "references": [
+        "csharp/debug/QuietRoomSmoke.cs",
+        "csharp/MainScene.Rest.cs",
+        "csharp/scene/QuietRoomRestTradePreviewScene.cs"
+      ],
+      "auditGroup": "B03",
+      "auditGroupName": "休息：时长、日期、昼夜、剧情限定",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "SceneLoadingScreen",
+      "parent": "CanvasLayer",
+      "path": "csharp/panel/SceneLoadingScreen.cs",
+      "files": [
+        "csharp/panel/SceneLoadingScreen.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "E01",
+      "auditGroupName": "加载、场景转场与行动过渡",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "SkillCard",
+      "parent": "Control",
+      "path": "csharp/entity/SkillCard.cs",
+      "files": [
+        "csharp/entity/SkillCard.cs"
+      ],
+      "resources": [],
+      "helpers": [
+        "CardPresentation"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "B16",
+      "auditGroupName": "兽战手牌、牌堆与旧战备窗口",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "SkillCooldownVisual",
+      "parent": "Control",
+      "path": "csharp/battle/CombatSkillBar.cs",
+      "files": [
+        "csharp/battle/CombatSkillBar.cs",
+        "csharp/battle/CombatSkillBar.ResourceDisplay.cs"
+      ],
+      "resources": [
+        "res://textures/ui/combat/combat_skill_slot_frame_generated_v1.png"
+      ],
+      "helpers": [
+        "BattleUiArt",
+        "CardPresentation",
+        "FumingPresentation"
+      ],
+      "flatStyles": 2,
+      "textureStyles": 0,
+      "buttonCreations": 1,
+      "labels": [
+        "行动队列 0/3",
+        "冷却中，"
+      ],
+      "references": [],
+      "auditGroup": "A16",
+      "auditGroupName": "正式人类对战：配招、方案、战斗HUD",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "SkillHandPanel",
+      "parent": "Control",
+      "path": "csharp/panel/SkillHandPanel.cs",
+      "files": [
+        "csharp/panel/SkillHandPanel.cs"
+      ],
+      "resources": [
+        "res://resources/battle/statuses/{id}.tres",
+        "res://textures/ui/battle_pile_panel_v1.png",
+        "res://tscn/panel/BattleCard.tscn"
+      ],
+      "helpers": [
+        "CardPresentation"
+      ],
+      "flatStyles": 2,
+      "textureStyles": 0,
+      "buttonCreations": 3,
+      "labels": [
+        "返回",
+        "已打出 · {skill.skill_name}",
+        "{title} · {cards.Length} 张",
+        "暂无卡牌",
+        "体力 {e}/{me}",
+        "法力 {m}/{mm}",
+        "灵识 {us}/{ms}",
+        "抽牌堆 {d} | 弃牌堆 {x} | 消耗 {e}",
+        "抽牌堆\\n{d}",
+        "弃牌堆\\n{x}",
+        "消耗\\n{e}"
+      ],
+      "references": [],
+      "auditGroup": "B16",
+      "auditGroupName": "兽战手牌、牌堆与旧战备窗口",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "SkillIconVisual",
+      "parent": "Control",
+      "path": "csharp/battle/CombatSkillBar.cs",
+      "files": [
+        "csharp/battle/CombatSkillBar.cs",
+        "csharp/battle/CombatSkillBar.ResourceDisplay.cs"
+      ],
+      "resources": [
+        "res://textures/ui/combat/combat_skill_slot_frame_generated_v1.png"
+      ],
+      "helpers": [
+        "BattleUiArt",
+        "CardPresentation",
+        "FumingPresentation"
+      ],
+      "flatStyles": 2,
+      "textureStyles": 0,
+      "buttonCreations": 1,
+      "labels": [
+        "行动队列 0/3",
+        "冷却中，"
+      ],
+      "references": [],
+      "auditGroup": "A16",
+      "auditGroupName": "正式人类对战：配招、方案、战斗HUD",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "StartMenu",
+      "parent": "Control",
+      "path": "csharp/panel/StartMenu.cs",
+      "files": [
+        "csharp/panel/StartMenu.BattleTestPresets.cs",
+        "csharp/panel/StartMenu.Creation.cs",
+        "csharp/panel/StartMenu.CreationControls.cs",
+        "csharp/panel/StartMenu.CreationProficiencies.cs",
+        "csharp/panel/StartMenu.cs",
+        "csharp/panel/StartMenu.ForestBei.cs",
+        "csharp/panel/StartMenu.Settings.cs",
+        "csharp/panel/StartMenu.Visual.cs"
+      ],
+      "resources": [
+        "res://resources/activeskills/应敌.tres",
+        "res://resources/activeskills/架招.tres",
+        "res://resources/activeskills/痛击.tres",
+        "res://resources/basic_decks/公共基础技能池.tres",
+        "res://resources/beast_decks/灰背野猪.tres",
+        "res://resources/beast_modifiers/影足凶狼.tres",
+        "res://resources/beast_modifiers/血牙凶狼.tres",
+        "res://resources/beast_modifiers/迅蹄野猪.tres",
+        "res://resources/beast_modifiers/铁鬃野猪.tres",
+        "res://resources/beast_talents/灰背野猪·厚皮.tres",
+        "res://resources/beast_templates/林地凶狼.tres",
+        "res://resources/beast_templates/林地妖狈.tres",
+        "res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf",
+        "res://textures/bestiary/static/gray_back_boar.png",
+        "res://textures/start_menu/new_game_ink_study_bg.png",
+        "res://textures/start_menu/title_menu_dawn_v2.png",
+        "res://textures/start_menu/title_menu_power_v4.png",
+        "res://textures/start_menu/title_menu_world_v2.png",
+        "res://textures/start_menu/ui_paper_ink_v3/button_atlas.png",
+        "res://textures/ui/journey_creation_20261015/paper_landscape.png",
+        "res://tools/InventoryIconCatalogPreview.tscn",
+        "res://tools/InventorySpatialLayoutPreview.tscn",
+        "res://tools/QueueAvatarBattlePreview.tscn",
+        "res://tscn/battle/BattleTestCharacter.tscn",
+        "res://tscn/scene/AlchemyPreviewScene.tscn",
+        "res://tscn/scene/BattlePoseLibraryShowcase.tscn",
+        "res://tscn/scene/CharacterAppearanceTest.tscn",
+        "res://tscn/scene/CondensationTestScene.tscn",
+        "res://tscn/scene/InkVfxShowcase.tscn",
+        "res://tscn/scene/LettersPreviewScene.tscn",
+        "res://tscn/scene/MainScene.tscn",
+        "res://tscn/scene/NpcSocialPreviewScene.tscn",
+        "res://tscn/scene/ProcessForgingScene.tscn",
+        "res://tscn/scene/StartMenu.tscn",
+        "res://tscn/scene/YuanxiPreviewScene.tscn",
+        "res://tscn/world/bai_chuan/BaiChuanNineTileTest.tscn"
+      ],
+      "helpers": [
+        "WorldHudStyle"
+      ],
+      "flatStyles": 11,
+      "textureStyles": 2,
+      "buttonCreations": 7,
+      "labels": [
+        "对练方案读取失败，原文件已保留：",
+        "对练方案名称",
+        "保存双方配置，重启后仍可载入；同名保存会覆盖，旧文件另留备份。",
+        "请先填写方案名称。",
+        "已保存：",
+        "保存失败，原方案保留：",
+        "已载入：",
+        "；{missing}项资源已失效，已清空对应选择，请重新配置。",
+        "落笔此生",
+        "下一页",
+        "入世",
+        "苏醒者",
+        "方案名称",
+        "剩余资质点：{profile.fated_remaining_points}",
+        "灵根：",
+        "权重合计：{rootWeightTotalValue}%",
+        "输入 0～10 的造诣，可保留一位小数",
+        "续接修行",
+        "选择一段已保存的旅程。读档将恢复时间、角色、地图与同行人物。",
+        "战斗测试配置",
+        "主修、辅修秘籍与十个技能槽可分别配置；技能可跨秘籍选择。",
+        "敌方单位",
+        "试炼盗匪",
+        "灰背野猪"
+      ],
+      "references": [
+        "csharp/autoload/GameplayInputRouter.cs",
+        "csharp/battle/ActionHumanSparringRuntime.cs",
+        "csharp/debug/AlchemyExpansionSmoke.cs",
+        "csharp/debug/AutoBattleSmoke.cs",
+        "csharp/debug/BattleSuppliesSmoke.cs",
+        "csharp/debug/BattleTestEntryCrashSmoke.cs",
+        "csharp/debug/ExchangeItemListPreview.cs",
+        "csharp/debug/InventoryIconCatalogPreview.cs",
+        "csharp/debug/InventorySpatialLayoutPreview.cs",
+        "csharp/debug/NpcSocialSmoke.cs",
+        "csharp/debug/QueueAvatarBattlePreview.cs",
+        "csharp/debug/QueueCombatRestorationSmoke.cs",
+        "csharp/panel/CharacterAppearanceTest.cs",
+        "csharp/panel/JourneyCreationLoadingView.cs",
+        "csharp/scene/AlchemyPreviewScene.Room.cs",
+        "csharp/scene/AlchemySlotBrewPreviewScene.cs",
+        "csharp/scene/BattlePoseLibraryShowcase.cs",
+        "csharp/scene/CharacterSequenceShowcase.cs",
+        "csharp/scene/CondensationTestScene.cs",
+        "csharp/scene/ForgingAnimationPreview.cs",
+        "csharp/scene/InkVfxShowcase.cs",
+        "csharp/scene/ItemClaimPreviewScene.cs",
+        "csharp/scene/LettersPreviewScene.cs",
+        "csharp/scene/NpcSocialPreviewScene.cs",
+        "csharp/scene/ProcessForgingScene.cs",
+        "csharp/scene/SwordCraftingScene.cs",
+        "csharp/scene/YuanxiPreviewScene.cs"
+      ],
+      "auditGroup": "A15",
+      "auditGroupName": "暂停、读档、保存／返回首页确认",
+      "relatedAuditGroups": [
+        "A14",
+        "K05"
+      ]
+    },
+    {
+      "name": "StatusBarGroup",
+      "parent": "Control",
+      "path": "csharp/panel/StatusBarGroup.cs",
+      "files": [
+        "csharp/panel/StatusBarGroup.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [
+        " [阵亡]"
+      ],
+      "references": [],
+      "auditGroup": "K04",
+      "auditGroupName": "大地图HUD、名单、任务条、日期与小纸签主体",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "StorageItemSlot",
+      "parent": "Control",
+      "path": "csharp/panel/StorageItemSlot.cs",
+      "files": [
+        "csharp/panel/StorageItemSlot.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [
+        "未命名法宝"
+      ],
+      "references": [
+        "csharp/debug/ForgedSwordIconPreview.cs",
+        "csharp/panel/ItemClaimPanel.cs",
+        "csharp/panel/StoragePanel.cs",
+        "csharp/panel/StoragePanel.Native.cs"
+      ],
+      "auditGroup": "B14",
+      "auditGroupName": "行囊详情、换衣、储物内腔、领取结束等浮层",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "StoragePanel",
+      "parent": "Control",
+      "path": "csharp/panel/StoragePanel.cs",
+      "files": [
+        "csharp/panel/StoragePanel.cs",
+        "csharp/panel/StoragePanel.GarmentLining.cs",
+        "csharp/panel/StoragePanel.Native.cs",
+        "csharp/panel/StoragePanel.NativeCategories.cs",
+        "csharp/panel/StoragePanel.NativeDrag.cs",
+        "csharp/panel/StoragePanel.RingModal.cs",
+        "csharp/panel/StoragePanel.SpatialPreview.cs",
+        "csharp/panel/StoragePanel.StorageRings.cs",
+        "csharp/panel/StoragePanel.View.cs"
+      ],
+      "resources": [
+        "res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf",
+        "res://textures/ui/gongfa_back_button_v1.png",
+        "res://textures/ui/inventory_20261012/approved_shell_v1.png",
+        "res://textures/ui/inventory_20261012/category_icons_v1.png",
+        "res://tscn/panel/StorageItemSlot.tscn"
+      ],
+      "helpers": [
+        "CardPresentation",
+        "ClothingItemPresentation",
+        "EquipmentItemPresentation",
+        "InventoryGarmentStyle",
+        "ItemTravelPresentation",
+        "ManualItemPresentation",
+        "MaterialItemPresentation",
+        "WorldHudStyle"
+      ],
+      "flatStyles": 2,
+      "textureStyles": 2,
+      "buttonCreations": 2,
+      "labels": [
+        "未找到匹配物品",
+        "行囊中暂无此类物品",
+        "数量　{count.Value}",
+        "用途",
+        "装备收益",
+        "衣着说明",
+        "功法与研读",
+        "使用效果",
+        "卸下",
+        "装备",
+        "已穿着",
+        "穿上",
+        "使用",
+        "行囊",
+        "查找物品",
+        "数量",
+        "器具 · {ring.Quality}",
+        "已取消移动",
+        "已放置：",
+        "无法放置，已保留原位",
+        "R 旋转 · Esc 取消",
+        "松开放置",
+        "不可放置",
+        "已转移："
+      ],
+      "references": [
+        "csharp/debug/EquipmentHoverSmoke.cs",
+        "csharp/debug/ForgedArtifactInventorySmoke.cs",
+        "csharp/debug/InformationPanelSmoke.cs",
+        "csharp/debug/InventoryNativeUiSmoke.cs",
+        "csharp/debug/InventorySpatialLayoutPreview.cs",
+        "csharp/debug/StorageRingInventorySmoke.cs",
+        "csharp/debug/WorldDungeonNavigationSmoke.cs"
+      ],
+      "auditGroup": "B14",
+      "auditGroupName": "行囊详情、换衣、储物内腔、领取结束等浮层",
+      "relatedAuditGroups": [
+        "K03"
+      ]
+    },
+    {
+      "name": "StoryDialoguePanel",
+      "parent": "Control",
+      "path": "csharp/panel/StoryDialoguePanel.cs",
+      "files": [
+        "csharp/panel/StoryDialoguePanel.Choices.cs",
+        "csharp/panel/StoryDialoguePanel.cs",
+        "csharp/panel/StoryDialoguePanel.Layout.cs",
+        "csharp/panel/StoryDialoguePanel.Portraits.cs",
+        "csharp/panel/StoryDialoguePanel.Social.cs",
+        "csharp/panel/StoryDialoguePanel.YuxuAdmission.cs"
+      ],
+      "resources": [],
+      "helpers": [
+        "QuietRoomStyle",
+        "WorldHudStyle"
+      ],
+      "flatStyles": 3,
+      "textureStyles": 0,
+      "buttonCreations": 3,
+      "labels": [
+        "选择回应",
+        "旁白",
+        "点击任意处继续　›",
+        "对方收住话头，交谈暂告一段落。",
+        "继续",
+        "确定"
+      ],
+      "references": [
+        "csharp/debug/NpcInteractionDirectionSmoke.cs",
+        "csharp/debug/YuxuAdmissionSmoke.cs",
+        "csharp/debug/YuxuSectLifeSmoke.cs",
+        "csharp/scene/NpcSocialPreviewScene.cs"
+      ],
+      "auditGroup": "B10",
+      "auditGroupName": "剧情对话与选项",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "SundialClock",
+      "parent": "Control",
+      "path": "csharp/panel/SundialClock.cs",
+      "files": [
+        "csharp/panel/SundialClock.cs"
+      ],
+      "resources": [
+        "res://textures/ui/time/month_dial_clean_v2.png"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "K04",
+      "auditGroupName": "大地图HUD、名单、任务条、日期与小纸签主体",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "SwordCraftDiagram",
+      "parent": "Control",
+      "path": "csharp/scene/SwordCraftingScene.cs",
+      "files": [
+        "csharp/scene/SwordCraftingScene.Audit.cs",
+        "csharp/scene/SwordCraftingScene.cs",
+        "csharp/scene/SwordCraftingScene.Example.cs"
+      ],
+      "resources": [
+        "res://textures/ui/forging_20261021/ink_workshop.png",
+        "res://tscn/scene/StartMenu.tscn"
+      ],
+      "helpers": [
+        "ForgingInkStyle",
+        "QuietRoomStyle"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 1,
+      "labels": [
+        "剑身",
+        "召出御使",
+        "厚脊剑",
+        "细身剑",
+        "调整本页试炼造诣，不影响人物",
+        "查找可用材料",
+        "旧模型留档：厚脊双功 · 本例预选功用与器形，不代表材料与过程量驱动的新规则",
+        "开炼 · 试炼"
+      ],
+      "references": [],
+      "auditGroup": "H02",
+      "auditGroupName": "旧炼丹节点网与厚脊剑试炼",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "SwordCraftingScene",
+      "parent": "Control",
+      "path": "csharp/scene/SwordCraftingScene.cs",
+      "files": [
+        "csharp/scene/SwordCraftingScene.Audit.cs",
+        "csharp/scene/SwordCraftingScene.cs",
+        "csharp/scene/SwordCraftingScene.Example.cs"
+      ],
+      "resources": [
+        "res://textures/ui/forging_20261021/ink_workshop.png",
+        "res://tscn/scene/StartMenu.tscn"
+      ],
+      "helpers": [
+        "ForgingInkStyle",
+        "QuietRoomStyle"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 1,
+      "labels": [
+        "剑身",
+        "召出御使",
+        "厚脊剑",
+        "细身剑",
+        "调整本页试炼造诣，不影响人物",
+        "查找可用材料",
+        "旧模型留档：厚脊双功 · 本例预选功用与器形，不代表材料与过程量驱动的新规则",
+        "开炼 · 试炼"
+      ],
+      "references": [],
+      "auditGroup": "H02",
+      "auditGroupName": "旧炼丹节点网与厚脊剑试炼",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "TargetFrameLayer",
+      "parent": "Control",
+      "path": "csharp/battle/BattleUnitOverlay.cs",
+      "files": [
+        "csharp/battle/BattleUnitOverlay.cs"
+      ],
+      "resources": [
+        "res://resources/battle/statuses/{id}.tres",
+        "res://textures/items/inventory_density_20261029/pill_container_empty_porcelain.png",
+        "res://textures/ui/battle_status_icons_v1.png",
+        "res://textures/ui/combat/status_icons/{iconStem}.png"
+      ],
+      "helpers": [
+        "BattleStatusPresentation",
+        "BattleUiArt"
+      ],
+      "flatStyles": 5,
+      "textureStyles": 0,
+      "buttonCreations": 4,
+      "labels": [
+        "暂停",
+        "撤退",
+        "继续",
+        "倍速 ×{manager.get_battle_speed_scale():0}",
+        "自动：开",
+        "自动：关",
+        "技能",
+        "念 {nian}"
+      ],
+      "references": [],
+      "auditGroup": "A16",
+      "auditGroupName": "正式人类对战：配招、方案、战斗HUD",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "TaskTrackerStabilitySmoke",
+      "parent": "Control",
+      "path": "csharp/debug/TaskTrackerStabilitySmoke.cs",
+      "files": [
+        "csharp/debug/TaskTrackerStabilitySmoke.cs"
+      ],
+      "resources": [
+        "res://tscn/panel/MainHUD.tscn"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "TradeNativeIntegrationSmoke",
+      "parent": "Control",
+      "path": "csharp/debug/TradeNativeIntegrationSmoke.cs",
+      "files": [
+        "csharp/debug/TradeNativeIntegrationSmoke.cs"
+      ],
+      "resources": [
+        "res://outputs/native_inventory_20261031/交易_文字目录与双侧清单.png",
+        "res://resources/entities/items/兽骨.tres",
+        "res://resources/entities/items/灵石.tres"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "TradePanel",
+      "parent": "Control",
+      "path": "csharp/panel/TradePanel.cs",
+      "files": [
+        "csharp/panel/TradePanel.cs"
+      ],
+      "resources": [
+        "res://resources/entities/items/兽皮.tres",
+        "res://resources/entities/items/兽骨.tres",
+        "res://resources/entities/items/灵石.tres",
+        "res://resources/entities/items/黄庭养形篇秘籍.tres",
+        "res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf",
+        "res://textures/ui/inventory_20261012/approved_shell_v1.png"
+      ],
+      "helpers": [
+        "QuietRoomStyle",
+        "WorldHudStyle"
+      ],
+      "flatStyles": 1,
+      "textureStyles": 0,
+      "buttonCreations": 3,
+      "labels": [
+        "对方不愿接受这笔交易"
+      ],
+      "references": [
+        "csharp/debug/TradeNativeIntegrationSmoke.cs",
+        "csharp/debug/YuxuMarketSmoke.cs",
+        "csharp/scene/QuietRoomRestTradePreviewScene.cs"
+      ],
+      "auditGroup": "B11",
+      "auditGroupName": "普通交易及数量选择",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "TrueDiscipleLecturePanel",
+      "parent": "Control",
+      "path": "csharp/panel/TrueDiscipleLecturePanel.cs",
+      "files": [
+        "csharp/panel/TrueDiscipleLecturePanel.cs"
+      ],
+      "resources": [
+        "res://resources/font/default_theme.tres",
+        "res://textures/ui/true_disciple_lecture/yuxu_lecture_ambient_window_v1.png"
+      ],
+      "helpers": [],
+      "flatStyles": 1,
+      "textureStyles": 0,
+      "buttonCreations": 1,
+      "labels": [
+        "观复峰 · 真传讲席",
+        "本期到场履职　·　{periodLabel}",
+        "继续",
+        "返回观复峰"
+      ],
+      "references": [],
+      "auditGroup": "A09",
+      "auditGroupName": "观复峰真传讲席",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "UnknownIntentVisual",
+      "parent": "Control",
+      "path": "csharp/battle/BattleUnitOverlay.cs",
+      "files": [
+        "csharp/battle/BattleUnitOverlay.cs"
+      ],
+      "resources": [
+        "res://resources/battle/statuses/{id}.tres",
+        "res://textures/items/inventory_density_20261029/pill_container_empty_porcelain.png",
+        "res://textures/ui/battle_status_icons_v1.png",
+        "res://textures/ui/combat/status_icons/{iconStem}.png"
+      ],
+      "helpers": [
+        "BattleStatusPresentation",
+        "BattleUiArt"
+      ],
+      "flatStyles": 5,
+      "textureStyles": 0,
+      "buttonCreations": 4,
+      "labels": [
+        "暂停",
+        "撤退",
+        "继续",
+        "倍速 ×{manager.get_battle_speed_scale():0}",
+        "自动：开",
+        "自动：关",
+        "技能",
+        "念 {nian}"
+      ],
+      "references": [],
+      "auditGroup": "A16",
+      "auditGroupName": "正式人类对战：配招、方案、战斗HUD",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "WardrobePicker",
+      "parent": "Control",
+      "path": "csharp/panel/WardrobePicker.cs",
+      "files": [
+        "csharp/panel/WardrobePicker.cs"
+      ],
+      "resources": [],
+      "helpers": [
+        "ClothingItemPresentation",
+        "WorldHudStyle"
+      ],
+      "flatStyles": 1,
+      "textureStyles": 0,
+      "buttonCreations": 3,
+      "labels": [
+        "衣着",
+        "取消",
+        "换上",
+        "当前未持有可更换的衣物"
+      ],
+      "references": [],
+      "auditGroup": "B14",
+      "auditGroupName": "行囊详情、换衣、储物内腔、领取结束等浮层",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "WorldHudFrame",
+      "parent": "Control",
+      "path": "csharp/panel/WorldHudFrame.cs",
+      "files": [
+        "csharp/panel/WorldHudFrame.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 1,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [
+        "csharp/panel/MainHUD.cs"
+      ],
+      "auditGroup": "K04",
+      "auditGroupName": "大地图HUD、名单、任务条、日期与小纸签主体",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "WorldLocationInteriorPanel",
+      "parent": "Control",
+      "path": "csharp/panel/WorldLocationInteriorPanel.cs",
+      "files": [
+        "csharp/panel/WorldLocationInteriorPanel.Baishi.cs",
+        "csharp/panel/WorldLocationInteriorPanel.cs",
+        "csharp/panel/WorldLocationInteriorPanel.EditorCompatibility.cs",
+        "csharp/panel/WorldLocationInteriorPanel.Opening.cs"
+      ],
+      "resources": [
+        "res://textures/world_locations/east_woods_overview_v1.png",
+        "res://tscn/panel/SceneActionButton.tscn",
+        "res://tscn/world/bai_chuan/BaishiCityOverview.tscn"
+      ],
+      "helpers": [],
+      "flatStyles": 1,
+      "textureStyles": 0,
+      "buttonCreations": 1,
+      "labels": [
+        "林缘日照带",
+        "暂时没有更多线索。",
+        "已辨明 {_east_woods_visited.Count} / 4 处地貌",
+        "未详",
+        "选择一处空间查看说明。"
+      ],
+      "references": [
+        "csharp/debug/WorldDungeonNavigationSmoke.cs"
+      ],
+      "auditGroup": "A11",
+      "auditGroupName": "地点内景的说明卡与普通行动按钮",
+      "relatedAuditGroups": [
+        "K06",
+        "B13"
+      ]
+    },
+    {
+      "name": "YuanxiPanel",
+      "parent": "Control",
+      "path": "csharp/panel/YuanxiPanel.cs",
+      "files": [
+        "csharp/panel/YuanxiPanel.cs"
+      ],
+      "resources": [
+        "res://textures/ui/realm_yunxi_paper_v6.png"
+      ],
+      "helpers": [
+        "QuietRoomStyle"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 2,
+      "labels": [
+        "收起",
+        "云息十层圆满",
+        "云息十层",
+        "归元息　{count}／九息\\n\\n",
+        "九息俱全，可准备铸玄基。\\n铸玄基后的修行内容暂未开放。",
+        "有效主修功法与灵根"
+      ],
+      "references": [
+        "csharp/scene/YuanxiPreviewScene.cs"
+      ],
+      "auditGroup": "B04",
+      "auditGroupName": "归元九息",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "YuanxiPreviewScene",
+      "parent": "Control",
+      "path": "csharp/scene/YuanxiPreviewScene.cs",
+      "files": [
+        "csharp/scene/YuanxiPreviewScene.cs"
+      ],
+      "resources": [
+        "res://resources/gongfa/黄庭养形篇.tres",
+        "res://tscn/scene/StartMenu.tscn"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 2,
+      "labels": [
+        "临时角色：普通精力100",
+        "临时角色：零精力（仍可修炼）"
+      ],
+      "references": [
+        "csharp/panel/StartMenu.cs"
+      ],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "YuxuExchangeNativeSmoke",
+      "parent": "Control",
+      "path": "csharp/debug/YuxuExchangeNativeSmoke.cs",
+      "files": [
+        "csharp/debug/YuxuExchangeNativeSmoke.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [
+        "回春丹"
+      ],
+      "references": [],
+      "auditGroup": "H04",
+      "auditGroupName": "外观实验室、预览场景、各类Smoke与美术组件",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "YuxuManualLibraryPanel",
+      "parent": "Control",
+      "path": "csharp/panel/YuxuManualLibraryPanel.cs",
+      "files": [
+        "csharp/panel/YuxuManualLibraryPanel.cs"
+      ],
+      "resources": [
+        "res://textures/items/inventory_density_20261029/manual_generic_2x3.png",
+        "res://textures/ui/yuxu_library_20261107/library_frame.png"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 1,
+      "labels": [
+        "查找秘籍",
+        "可修习",
+        "全部",
+        "首本免费",
+        "{YuxuManualCopy.Cost(human)} 贡献"
+      ],
+      "references": [],
+      "auditGroup": "K02",
+      "auditGroupName": "藏经阁",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "YuxuManualSpine",
+      "parent": "Button",
+      "path": "csharp/panel/YuxuManualSpine.cs",
+      "files": [
+        "csharp/panel/YuxuManualSpine.cs"
+      ],
+      "resources": [],
+      "helpers": [],
+      "flatStyles": 1,
+      "textureStyles": 0,
+      "buttonCreations": 0,
+      "labels": [],
+      "references": [],
+      "auditGroup": "K02",
+      "auditGroupName": "藏经阁",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "YuxuMarketPanel",
+      "parent": "Control",
+      "path": "csharp/panel/YuxuMarketPanel.cs",
+      "files": [
+        "csharp/panel/YuxuMarketPanel.cs"
+      ],
+      "resources": [
+        "res://textures/sect_overview/peaks/yuxu_peak_heguang_v4.png"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 1,
+      "labels": [
+        "搜索物品",
+        "摊货详情",
+        "选择一件物品查看详情。",
+        "购买",
+        "结束摆摊",
+        "租用摊位",
+        "选择一件行囊物品",
+        "上架 · "
+      ],
+      "references": [
+        "csharp/debug/YuxuMarketSmoke.cs"
+      ],
+      "auditGroup": "B12",
+      "auditGroupName": "宗内坊市当前正式页",
+      "relatedAuditGroups": []
+    },
+    {
+      "name": "YuxuSectExchangePanel",
+      "parent": "Control",
+      "path": "csharp/panel/YuxuSectExchangePanel.cs",
+      "files": [
+        "csharp/panel/YuxuSectExchangePanel.cs"
+      ],
+      "resources": [
+        "res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf",
+        "res://textures/ui/shangong_columns_20261030/column_mountain_paper_v1.png",
+        "res://textures/ui/yuxu_library_20261107/exchange_frame.png"
+      ],
+      "helpers": [],
+      "flatStyles": 0,
+      "textureStyles": 0,
+      "buttonCreations": 1,
+      "labels": [
+        "选择物品查看兑换信息",
+        "可用贡献：{_contributionBalance:N0}",
+        "善功堂",
+        "搜索物品名称",
+        "确认兑换",
+        "兑换一件，成功后放入行囊；履职累计不变。",
+        "取消",
+        "正在核验贡献与行囊空间……",
+        "兑换完成",
+        "完成",
+        "消耗 {entry.ContributionCost} 点贡献"
+      ],
+      "references": [
+        "csharp/debug/ExchangeItemListPreview.cs",
+        "csharp/debug/ForgedSwordIconPreview.cs",
+        "csharp/debug/InformationPanelSmoke.cs",
+        "csharp/debug/YuxuExchangeNativeSmoke.cs",
+        "csharp/debug/YuxuManualLibrarySmoke.cs"
+      ],
+      "auditGroup": "K01",
+      "auditGroupName": "善功堂",
+      "relatedAuditGroups": []
+    }
+  ],
+  "scenes": [
+    {
+      "path": "tscn/battle/BattleSandbox.tscn",
+      "root": [
+        "BattleSandbox",
+        "Node2D"
+      ],
+      "scripts": [
+        "res://csharp/battle/BattleSandbox.cs",
+        "res://csharp/battle/BattleManager.cs",
+        "res://csharp/battle/BattleMap.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/battle/BattleScene.tscn",
+      "root": null,
+      "scripts": [
+        "res://csharp/battle/BattleManager.cs",
+        "res://csharp/battle/BattleScene.cs",
+        "res://csharp/battle/BattleMap.cs",
+        "res://csharp/CameraController.cs"
+      ],
+      "flatStyles": 1,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/battle/BattleTestCharacter.tscn",
+      "root": [
+        "BattleTestCharacter",
+        "Area2D"
+      ],
+      "scripts": [
+        "res://csharp/entity/Character.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/battle/CardSystemSmoke.tscn",
+      "root": [
+        "CardSystemSmoke",
+        "Node"
+      ],
+      "scripts": [
+        "res://csharp/battle/CardSystemSmoke.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/battle/FloatingText.tscn",
+      "root": null,
+      "scripts": [
+        "res://csharp/battle/FloatingText.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/battle/InstantBattleDamageSmoke.tscn",
+      "root": [
+        "InstantBattleDamageSmoke",
+        "Node"
+      ],
+      "scripts": [
+        "res://csharp/battle/InstantBattleDamageSmoke.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/battle/ShadowPuppetTest.tscn",
+      "root": null,
+      "scripts": [],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/battle/ZhuoJiCombatSmoke.tscn",
+      "root": null,
+      "scripts": [
+        "res://csharp/battle/ZhuoJiCombatSmoke.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/debug/ApprovedOutfitGameCapture.tscn",
+      "root": [
+        "ApprovedOutfitGameCapture",
+        "Node2D"
+      ],
+      "scripts": [
+        "res://tools/action_battle_test/capture_approved_outfit_game.gd"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/debug/BaishiLectureSmoke.tscn",
+      "root": [
+        "BaishiLectureSmoke",
+        "Node"
+      ],
+      "scripts": [
+        "res://csharp/debug/BaishiLectureSmoke.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/debug/BaishiPlaqueSmoke.tscn",
+      "root": [
+        "BaishiPlaqueSmoke",
+        "Node"
+      ],
+      "scripts": [
+        "res://csharp/debug/BaishiPlaqueSmoke.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/debug/CombatBoardMigrationSmoke.tscn",
+      "root": [
+        "CombatBoardMigrationSmoke",
+        "Node"
+      ],
+      "scripts": [
+        "res://csharp/debug/CombatBoardMigrationSmoke.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/debug/GuiguNativeGameSmoke.tscn",
+      "root": [
+        "GuiguNativeGameSmoke",
+        "Node2D"
+      ],
+      "scripts": [
+        "res://tools/action_battle_test/smoke_guigu_native_game.gd"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/debug/GuiguNativeMovingAttackCapture.tscn",
+      "root": [
+        "GuiguNativeMovingAttackCapture",
+        "Node2D"
+      ],
+      "scripts": [
+        "res://tools/action_battle_test/capture_guigu_native_moving_attack.gd"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/debug/HumanCombatBoardFormalSmoke.tscn",
+      "root": [
+        "HumanCombatBoardFormalSmoke",
+        "Node"
+      ],
+      "scripts": [
+        "res://csharp/debug/HumanCombatBoardFormalSmoke.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/debug/HumanCombatBoardReturnWorld.tscn",
+      "root": [
+        "HumanCombatBoardReturnWorld",
+        "Node2D"
+      ],
+      "scripts": [
+        "res://csharp/debug/HumanCombatBoardReturnWorld.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/debug/HumanCombatBoardSmoke.tscn",
+      "root": [
+        "HumanCombatBoardSmoke",
+        "Node"
+      ],
+      "scripts": [
+        "res://csharp/debug/HumanCombatBoardSmoke.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/debug/inventory_native_ui_smoke.tscn",
+      "root": [
+        "InventoryNativeUiSmoke",
+        "Node"
+      ],
+      "scripts": [
+        "res://csharp/debug/InventoryNativeUiSmoke.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/debug/item_claim_spatial_native_smoke.tscn",
+      "root": [
+        "ItemClaimSpatialNativeSmoke",
+        "Node"
+      ],
+      "scripts": [
+        "res://csharp/debug/ItemClaimSpatialNativeSmoke.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/debug/ItemTravelSmoke.tscn",
+      "root": [
+        "ItemTravelSmoke",
+        "Node"
+      ],
+      "scripts": [
+        "res://csharp/debug/ItemTravelSmoke.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/debug/PawnEightWayPlayground.tscn",
+      "root": [
+        "PawnEightWayPlayground",
+        "Node2D"
+      ],
+      "scripts": [
+        "res://tools/action_battle_test/pawn_eight_way_playground.gd"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/debug/PawnFourWayPreview.tscn",
+      "root": [
+        "PawnFourWayPreview",
+        "Node2D"
+      ],
+      "scripts": [
+        "res://tools/action_battle_test/pawn_four_way_room.gd"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/debug/PawnPaperVfxPreview.tscn",
+      "root": [
+        "PawnPaperVfxPreview",
+        "Node2D"
+      ],
+      "scripts": [
+        "res://tools/action_battle_test/pawn_paper_vfx_room.gd"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/debug/PawnTwoViewPlayground.tscn",
+      "root": [
+        "PawnTwoViewPlayground",
+        "Node2D"
+      ],
+      "scripts": [
+        "res://tools/action_battle_test/pawn_two_view_playground.gd"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/debug/PlayerSpiritBoatFlowSmoke.tscn",
+      "root": [
+        "PlayerSpiritBoatFlowSmoke",
+        "Node"
+      ],
+      "scripts": [
+        "res://csharp/debug/PlayerSpiritBoatFlowSmoke.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/debug/SpiritBoatFuelSmoke.tscn",
+      "root": [
+        "SpiritBoatFuelSmoke",
+        "Node"
+      ],
+      "scripts": [
+        "res://csharp/debug/SpiritBoatFuelSmoke.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/debug/yuxu_exchange_native_smoke.tscn",
+      "root": [
+        "YuxuExchangeNativeSmoke",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/debug/YuxuExchangeNativeSmoke.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/debug/yuxu_manual_library_smoke.tscn",
+      "root": [
+        "YuxuManualLibrarySmoke",
+        "Node"
+      ],
+      "scripts": [
+        "res://csharp/debug/YuxuManualLibrarySmoke.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/debug/YuxuMarketSmoke.tscn",
+      "root": [
+        "YuxuMarketSmoke",
+        "Node"
+      ],
+      "scripts": [
+        "res://csharp/debug/YuxuMarketSmoke.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/debug/YuxuProvisionalExamSmoke.tscn",
+      "root": [
+        "YuxuProvisionalExamSmoke",
+        "Node"
+      ],
+      "scripts": [
+        "res://csharp/debug/YuxuProvisionalExamSmoke.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/entity/building/Building.tscn",
+      "root": [
+        "Building",
+        "Area2D"
+      ],
+      "scripts": [
+        "res://csharp/entity/Building.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/entity/character/CharacterToken.tscn",
+      "root": null,
+      "scripts": [
+        "res://csharp/entity/character/CharacterToken.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/panel/BattleActionProgress.tscn",
+      "root": [
+        "BattleActionProgress",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/panel/BattleActionProgress.cs"
+      ],
+      "flatStyles": 1,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/panel/BattleCard.tscn",
+      "root": null,
+      "scripts": [
+        "res://csharp/entity/SkillCard.cs",
+        "res://csharp/battle/BattleCornerFrame.cs"
+      ],
+      "flatStyles": 8,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/panel/BattleStatusPanel.tscn",
+      "root": null,
+      "scripts": [
+        "res://csharp/panel/BattleStatusPanel.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/panel/CellCharacterList.tscn",
+      "root": null,
+      "scripts": [
+        "res://csharp/panel/CellCharacterList.cs"
+      ],
+      "flatStyles": 1,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/panel/CombatSkillBar.tscn",
+      "root": [
+        "CombatSkillBar",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/battle/CombatSkillBar.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/panel/CondensationTitlePlaque.tscn",
+      "root": [
+        "CondensationTitlePlaque",
+        "Control"
+      ],
+      "scripts": [],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/panel/CultivationUI.tscn",
+      "root": [
+        "CultivationUi",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/panel/CultivationUI.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/panel/formation_field.tscn",
+      "root": [
+        "FormationField",
+        "Area2D"
+      ],
+      "scripts": [
+        "res://csharp/formation/FormationField.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/panel/InfoPanel.tscn",
+      "root": null,
+      "scripts": [
+        "res://csharp/panel/InfoPanel.cs",
+        "res://csharp/panel/GongfaTreeFlow.cs"
+      ],
+      "flatStyles": 9,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/panel/MainHUD.tscn",
+      "root": [
+        "MainHUD",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/panel/MainHUD.cs"
+      ],
+      "flatStyles": 2,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/panel/NpcInteractionPanel.tscn",
+      "root": [
+        "NpcInteractionPanel",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/panel/NpcInteractionPanel.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/panel/PackSlot.tscn",
+      "root": null,
+      "scripts": [
+        "res://csharp/panel/PackSlot.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/panel/RealmPanel.tscn",
+      "root": [
+        "RealmPanel",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/panel/RealmPanel.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/panel/RosterRow.tscn",
+      "root": [
+        "RosterRow",
+        "Button"
+      ],
+      "scripts": [],
+      "flatStyles": 3,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/panel/SceneActionButton.tscn",
+      "root": [
+        "SceneActionButton",
+        "Button"
+      ],
+      "scripts": [
+        "res://scripts/ui/SceneActionButton.gd",
+        "res://scripts/ui/SceneActionTassel.gd"
+      ],
+      "flatStyles": 2,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/panel/SkillCard.tscn",
+      "root": null,
+      "scripts": [
+        "res://csharp/entity/SkillCard.cs"
+      ],
+      "flatStyles": 5,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/panel/StatusBar.tscn",
+      "root": null,
+      "scripts": [
+        "res://csharp/panel/StatusBarGroup.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/panel/StorageItemSlot.tscn",
+      "root": [
+        "StorageItemSlot",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/panel/StorageItemSlot.cs"
+      ],
+      "flatStyles": 1,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/panel/StoragePanel.tscn",
+      "root": [
+        "StoragePanel",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/panel/StoragePanel.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/panel/StoryDialoguePanel.tscn",
+      "root": [
+        "StoryDialoguePanel",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/panel/StoryDialoguePanel.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/panel/TimePanel.tscn",
+      "root": null,
+      "scripts": [
+        "res://csharp/panel/GameTimeUI.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/ActionBattleBilanCapture.tscn",
+      "root": [
+        "ActionBattleBilanCapture",
+        "Node2D"
+      ],
+      "scripts": [
+        "res://tools/action_battle_test/capture_bilan_rig.gd"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/ActionBattleBilanExperimentScene.tscn",
+      "root": [
+        "ActionBattleBilanExperimentScene",
+        "Node2D"
+      ],
+      "scripts": [
+        "res://tools/action_battle_test/action_battle_feel_test.gd"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/ActionBattleOriginalWandererScene.tscn",
+      "root": [
+        "ActionBattleOriginalWandererScene",
+        "Node2D"
+      ],
+      "scripts": [
+        "res://tools/action_battle_test/action_battle_feel_test.gd"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/ActionBattleTrialScene.tscn",
+      "root": [
+        "ActionBattleTrialScene",
+        "Node2D"
+      ],
+      "scripts": [
+        "res://tools/action_battle_test/action_battle_feel_test.gd"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/ActionHumanSparringScene.tscn",
+      "root": [
+        "ActionHumanSparringScene",
+        "Node2D"
+      ],
+      "scripts": [
+        "res://tools/action_battle_test/human_sparring_arena.gd",
+        "res://csharp/battle/ActionHumanSparringRuntime.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/ActionManualBattleScene.tscn",
+      "root": [
+        "ActionManualBattleScene",
+        "Node2D"
+      ],
+      "scripts": [
+        "res://tools/action_battle_test/manual_battle_arena.gd",
+        "res://csharp/battle/ActionManualBattleRuntime.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/ActionManualBattleSetupScene.tscn",
+      "root": [
+        "ActionManualBattleSetup",
+        "Control"
+      ],
+      "scripts": [
+        "res://tools/action_battle_test/manual_battle_setup.gd"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/AlchemyPreviewScene.tscn",
+      "root": [
+        "AlchemyPreviewScene",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/scene/AlchemySlotBrewPreviewScene.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/AppearanceLabScene.tscn",
+      "root": null,
+      "scripts": [
+        "res://csharp/panel/AppearanceLab.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/BattlePoseLibraryShowcase.tscn",
+      "root": null,
+      "scripts": [],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/BloodWaveNpcTrialScene.tscn",
+      "root": [
+        "BloodWaveNpcTrialScene",
+        "Node2D"
+      ],
+      "scripts": [
+        "res://tools/action_battle_test/blood_wave_npc_trial.gd",
+        "res://csharp/battle/ActionHumanSparringRuntime.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/CharacterAppearanceTest.tscn",
+      "root": [
+        "CharacterAppearanceTest",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/panel/CharacterAppearanceTest.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/CharacterOverviewPreviewScene.tscn",
+      "root": [
+        "CharacterOverviewPreviewScene",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/scene/CharacterOverviewPreviewScene.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/CharacterSequenceShowcase.tscn",
+      "root": null,
+      "scripts": [],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/CondensationTestScene.tscn",
+      "root": [
+        "CondensationTestScene",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/scene/CondensationTestScene.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/CondensationTitlePlaquePreview.tscn",
+      "root": [
+        "CondensationTitlePlaquePreview",
+        "Control"
+      ],
+      "scripts": [],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/CultivationInspirationSmoke.tscn",
+      "root": [
+        "CultivationInspirationSmoke",
+        "Node"
+      ],
+      "scripts": [
+        "res://csharp/debug/CultivationInspirationSmoke.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/CultivationTransitionPreviewScene.tscn",
+      "root": [
+        "CultivationTransitionPreviewScene",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/scene/CultivationTransitionPreviewScene.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/ForgingAnimationPreview.tscn",
+      "root": [
+        "ForgingAnimationPreview",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/scene/ForgingAnimationPreview.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/ForgingOriginalStylePreview.tscn",
+      "root": [
+        "ForgingOriginalStylePreview",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/scene/ForgingOriginalStylePreview.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/InkCasterIdleTest.tscn",
+      "root": null,
+      "scripts": [],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/InkVfxShowcase.tscn",
+      "root": [
+        "InkVfxShowcase",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/scene/InkVfxShowcase.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/ItemClaimPreviewScene.tscn",
+      "root": [
+        "ItemClaimPreviewScene",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/scene/ItemClaimPreviewScene.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/LettersPreviewScene.tscn",
+      "root": [
+        "LettersPreviewScene",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/scene/LettersPreviewScene.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/MainScene.tscn",
+      "root": null,
+      "scripts": [
+        "res://csharp/CameraController.cs",
+        "res://csharp/battle/CombatTrigger.cs",
+        "res://csharp/MainScene.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/NpcSocialPreviewScene.tscn",
+      "root": [
+        "NpcSocialPreviewScene",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/scene/NpcSocialPreviewScene.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/ProcessForgingScene.tscn",
+      "root": [
+        "ProcessForgingScene",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/scene/ProcessForgingScene.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/PuppetAssemblyWorkbench.tscn",
+      "root": null,
+      "scripts": [],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/QuietRoomRestTradePreviewScene.tscn",
+      "root": [
+        "QuietRoomRestTradePreviewScene",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/scene/QuietRoomRestTradePreviewScene.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/RealmProgressionSmokeScene.tscn",
+      "root": null,
+      "scripts": [
+        "res://csharp/scene/RealmProgressionSmokeScene.cs",
+        "res://scripts/GeneratedNode.gd"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/SideInkChopPreview.tscn",
+      "root": [
+        "SideInkChopPreview",
+        "Node2D"
+      ],
+      "scripts": [
+        "res://gdscripts/test/SideInkChopPreview.gd"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/SkillRewriteSelectionSmoke.tscn",
+      "root": [
+        "SkillRewriteSelectionSmoke",
+        "Node"
+      ],
+      "scripts": [
+        "res://csharp/debug/SkillRewriteSelectionSmoke.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/StartMenu.tscn",
+      "root": [
+        "StartMenu",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/panel/StartMenu.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/StartMenuMenu.tscn",
+      "root": [
+        "StartMenuMenu",
+        "VBoxContainer"
+      ],
+      "scripts": [],
+      "flatStyles": 7,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/SwordCraftingScene.tscn",
+      "root": [
+        "SwordCraftingScene",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/scene/SwordCraftingScene.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/TopDownBattleTrialScene.tscn",
+      "root": [
+        "TopDownBattleTrial",
+        "Node2D"
+      ],
+      "scripts": [
+        "res://tools/action_battle_test/topdown_battle_trial.gd"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/scene/YuanxiPreviewScene.tscn",
+      "root": [
+        "YuanxiPreviewScene",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/scene/YuanxiPreviewScene.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/ui/alchemy/FurnaceSidebar.tscn",
+      "root": [
+        "FurnaceSidebar",
+        "PanelContainer"
+      ],
+      "scripts": [],
+      "flatStyles": 3,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/world/bai_chuan/BaiChuanFactionNodeLayout.tscn",
+      "root": null,
+      "scripts": [
+        "res://scripts/world/map/FactionNodeAnchor.gd"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/world/bai_chuan/BaiChuanMapLayers.tscn",
+      "root": null,
+      "scripts": [],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/world/bai_chuan/BaiChuanNineTileTest.tscn",
+      "root": [
+        "BaiChuanNineTileTest",
+        "Control"
+      ],
+      "scripts": [
+        "res://scripts/world/bai_chuan/BaiChuanNineTileTest.gd"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/world/bai_chuan/BaiChuanNodeLayout.tscn",
+      "root": null,
+      "scripts": [],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/world/bai_chuan/BaiChuanSecondLevelNodeLayout.tscn",
+      "root": null,
+      "scripts": [],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/world/bai_chuan/BaiChuanWorldMap.tscn",
+      "root": null,
+      "scripts": [
+        "res://scripts/world/map/WorldMapRoads.gd",
+        "res://scripts/world/map/FactionNodeAnchor.gd",
+        "res://scripts/world/map/WorldMapLocation.gd"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/world/bai_chuan/BaiChuanWorldMapPreview.tscn",
+      "root": null,
+      "scripts": [],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/world/bai_chuan/BaishiCityOverview.tscn",
+      "root": [
+        "BaishiCityOverview",
+        "Control"
+      ],
+      "scripts": [
+        "res://scripts/world/bai_chuan/BaishiCityOverview.gd"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/world/bai_chuan/dual_grid_v1/BaiChuanDualGridTerrainPrototype_v1.tscn",
+      "root": null,
+      "scripts": [
+        "res://scripts/world/bai_chuan/BaiChuanDualGridSampleControls_v1.gd",
+        "res://scripts/world/bai_chuan/BaiChuanTemplateLayoutEditor.gd"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/world/bai_chuan/SpiritBoatWake.tscn",
+      "root": [
+        "SpiritBoatWake",
+        "Node2D"
+      ],
+      "scripts": [
+        "res://gdscripts/world/SpiritBoatWake.gd"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/world/bai_chuan/WorldMapLocation.tscn",
+      "root": null,
+      "scripts": [
+        "res://scripts/world/map/WorldMapLocation.gd"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/world/bai_chuan/WorldMapViewport.tscn",
+      "root": null,
+      "scripts": [
+        "res://scripts/world/map/WorldMapViewport.gd"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/world/bai_chuan/YuxuPeakInterior.tscn",
+      "root": [
+        "YuxuPeakInterior",
+        "Control"
+      ],
+      "scripts": [
+        "res://scripts/world/bai_chuan/YuxuPeakInterior.gd",
+        "res://scripts/ui/SceneActionRope.gd"
+      ],
+      "flatStyles": 1,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/world/bai_chuan/YuxuSectDutyBoard.tscn",
+      "root": [
+        "YuxuSectDutyBoard",
+        "Control"
+      ],
+      "scripts": [
+        "res://scripts/world/bai_chuan/YuxuSectDutyBoard.gd"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/world/bai_chuan/YuxuSectExchangePanel.tscn",
+      "root": [
+        "YuxuSectExchangePanel",
+        "Control"
+      ],
+      "scripts": [
+        "res://csharp/panel/YuxuSectExchangePanel.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/world/bai_chuan/YuxuXianzongOverview.tscn",
+      "root": [
+        "YuxuXianzongOverview",
+        "Control"
+      ],
+      "scripts": [
+        "res://scripts/world/bai_chuan/YuxuXianzongOverview.gd"
+      ],
+      "flatStyles": 3,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/world/legacy/continent_01/Continent01MapLayers.tscn",
+      "root": [
+        "Continent01MapLayers",
+        "Node2D"
+      ],
+      "scripts": [],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/world/legacy/continent_01/Continent01WorldMapPreview.tscn",
+      "root": [
+        "Continent01WorldMapPreview",
+        "Node2D"
+      ],
+      "scripts": [],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/world/legacy/WorldLocationMarker.tscn",
+      "root": [
+        "WorldLocationMarker",
+        "Node2D"
+      ],
+      "scripts": [
+        "res://csharp/world/legacy/WorldLocationMarker.cs"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    },
+    {
+      "path": "tscn/world/TileWorldMapPresentation.tscn",
+      "root": [
+        "TileWorldMapPresentation",
+        "Control"
+      ],
+      "scripts": [
+        "res://gdscripts/world/TileWorldMapPresentation.gd",
+        "res://csharp/world/TileWorldMapRuntimeBridge.cs",
+        "res://scripts/world/WorldMapWeatherOverlay.gd"
+      ],
+      "flatStyles": 0,
+      "textureStyles": 0
+    }
+  ],
+  "extraUIProducers": {
+    "csharp": [
+      {
+        "path": "csharp/autoload/BattleTransitionManager.Flow.cs",
+        "creations": 1,
+        "labels": [
+          "待领战利品"
+        ],
+        "auditGroup": "B14"
+      },
+      {
+        "path": "csharp/autoload/GameplayInputRouter.cs",
+        "creations": 2,
+        "labels": [
+          "暂歇",
+          "修行暂驻于此。",
+          "要先保存当前进度再返回首页吗？",
+          "进度已保存。",
+          "保存失败；请确认当前行动已经结算。",
+          "保存失败；当前进度仍在本次修行中。",
+          "战前进度未能保存，仍可选择不保存返回。",
+          "暂时无法返回首页：{error}"
+        ],
+        "auditGroup": "A15"
+      },
+      {
+        "path": "csharp/MainScene.YuxuSectLife.cs",
+        "creations": 4,
+        "labels": [
+          "暂无缺席记档",
+          "缺席记档 {missedCount} 期",
+          "真传讲席请假",
+          "递交请假",
+          "再考虑",
+          "执中峰 · 案件核验",
+          "核验并上呈",
+          "返回案卷",
+          "申请晋升",
+          "\\n\\n是否向观复峰登记晋升？",
+          "确认申请",
+          "暂不申请"
+        ],
+        "auditGroup": "B13"
+      },
+      {
+        "path": "csharp/panel/WorldHudStyle.cs",
+        "creations": 1,
+        "labels": [],
+        "auditGroup": "B17"
+      },
+      {
+        "path": "csharp/scene/BattlePoseLibraryShowcase.cs",
+        "creations": 4,
+        "labels": [
+          "局内动作姿势库 · 男修 V2",
+          "一套衣装一张待机姿势；动作按类别制作本衣装对应的全身姿势图",
+          "动作状态",
+          "男修 V2 · 无剑姿势样片",
+          "待机",
+          "暂停  [Space]",
+          "继续  [Space]",
+          "待机 · 暂停"
+        ],
+        "auditGroup": "H04"
+      },
+      {
+        "path": "csharp/scene/CharacterSequenceShowcase.cs",
+        "creations": 4,
+        "labels": [
+          "男修",
+          "女修",
+          ")} · 骨架数据不可用：{rigFailureReason}"
+        ],
+        "auditGroup": "H04"
+      }
+    ],
+    "gdscripts": [
+      {
+        "path": "gdscripts/world/BaiChuanFreeWorldRuntime.gd",
+        "lines": [
+          166
+        ],
+        "auditGroup": "B17"
+      },
+      {
+        "path": "gdscripts/world/BaiChuanNodeMapRuntime.gd",
+        "lines": [
+          184,
+          365
+        ],
+        "auditGroup": "B17"
+      },
+      {
+        "path": "gdscripts/world/TileWorldMapPresentation.gd",
+        "lines": [
+          1096,
+          1244
+        ],
+        "auditGroup": "K06"
+      }
+    ]
+  },
+  "newPrototypeAssetsReferencedByRuntime": [],
+  "runtimeModified": true,
+  "battlePresetRequest": {
+    "requested": true,
+    "implementedThisAudit": false,
+    "current": "局内配招已有保存当前草稿／载入方案，人物战斗页仍显示兽战槽位并说明人类盘在战前配置",
+    "target": "局外预装配与多套搭配组合；局内直接套用并可调整",
+    "preserve": "只保存配置，载入不能恢复资源／次数／冷却或复制实物"
+  },
+  "runtimeChangeScope": "仅按用户裁定清理后山路线、青溪家业／旧地点及专属开场引导；未批量换肤，凝核保持，独立样稿未接入游戏",
+  "currentReview": {
+    "mode": "每次只做一个面板，交付后等待用户验收",
+    "firstPanel": "百工资料",
+    "status": "待验收",
+    "integrated": false
+  },
+  "userDecisions": {
+    "removedAuditGroups": [
+      "A17",
+      "B18"
+    ],
+    "condensation": "A10全界面批准保持；不在待统一清单",
+    "preserveShared": "当前青溪野地、方远同行、白石／玉虚叙事和公共吊牌保留"
+  }
+}

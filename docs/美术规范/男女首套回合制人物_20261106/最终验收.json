@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "build": "0 warnings, 0 errors",
+  "formal_cases": [
+    "1v1",
+    "3v3",
+    "two gender renderers",
+    "four pose events",
+    "response freeze/resume respecting hit hold",
+    "feet above skill HUD",
+    "real 应敌 damage/finish",
+    "source wardrobe and hair preserved"
+  ],
+  "capture_records": 4,
+  "female_atlas": "textures/characters/turn_based_pair_20261106/female_atlas_master_v1.png",
+  "generation": "built-in image_gen",
+  "revision": "native-size v3, shared male base head and separate female hair",
+  "female_runtime_native_directory": "textures/characters/turn_based_pair_20261106/female_native_v3",
+  "base_head_rgba_matches_male": true,
+  "native_size_and_alpha_checks": true,
+  "female_head_canvas": [
+    24,
+    24
+  ],
+  "female_front_back_hair_canvas": [
+    21,
+    56
+  ],
+  "female_mesh_count": 8
+}

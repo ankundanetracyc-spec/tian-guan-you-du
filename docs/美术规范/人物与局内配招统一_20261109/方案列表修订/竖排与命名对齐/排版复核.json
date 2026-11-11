@@ -1,0 +1,118 @@
+{
+  "date": "2026-11-09",
+  "scope": "应用改名竖排、命名弹窗对齐、长文字约束；未修改原生代码或方案保存规则。",
+  "layout": {
+    "states": 13,
+    "issues": [],
+    "errors": [],
+    "missing": [],
+    "details": [
+      {
+        "label": "三套方案",
+        "width": 1920,
+        "kind": "列表",
+        "issues": []
+      },
+      {
+        "label": "命名保存",
+        "width": 1920,
+        "kind": "弹窗",
+        "issues": [],
+        "inputScroll": false,
+        "bodyScroll": false
+      },
+      {
+        "label": "空名提示",
+        "width": 1920,
+        "kind": "弹窗",
+        "issues": [],
+        "inputScroll": false,
+        "bodyScroll": false
+      },
+      {
+        "label": "长名称方案",
+        "width": 1920,
+        "kind": "列表",
+        "issues": []
+      },
+      {
+        "label": "长名称覆盖提示",
+        "width": 1920,
+        "kind": "弹窗",
+        "issues": [],
+        "inputScroll": true,
+        "bodyScroll": false
+      },
+      {
+        "label": "逐项改名",
+        "width": 1920,
+        "kind": "弹窗",
+        "issues": [],
+        "inputScroll": false,
+        "bodyScroll": false
+      },
+      {
+        "label": "三套方案",
+        "width": 1280,
+        "kind": "列表",
+        "issues": []
+      },
+      {
+        "label": "命名保存",
+        "width": 1280,
+        "kind": "弹窗",
+        "issues": [],
+        "inputScroll": false,
+        "bodyScroll": false
+      },
+      {
+        "label": "空名提示",
+        "width": 1280,
+        "kind": "弹窗",
+        "issues": [],
+        "inputScroll": false,
+        "bodyScroll": false
+      },
+      {
+        "label": "长名称方案",
+        "width": 1280,
+        "kind": "列表",
+        "issues": []
+      },
+      {
+        "label": "长名称覆盖提示",
+        "width": 1280,
+        "kind": "弹窗",
+        "issues": [],
+        "inputScroll": true,
+        "bodyScroll": false
+      },
+      {
+        "label": "窄窗口长名称",
+        "width": 640,
+        "kind": "弹窗",
+        "issues": [],
+        "inputScroll": true,
+        "bodyScroll": false
+      },
+      {
+        "label": "逐项改名",
+        "width": 1280,
+        "kind": "弹窗",
+        "issues": [],
+        "inputScroll": false,
+        "bodyScroll": false
+      }
+    ]
+  },
+  "interaction_baseline": {
+    "passed": 155,
+    "rerun_for_this_layout": false
+  },
+  "source_sha256": {
+    "battle-preview.js": "4c4e22d6390319cb01c6fd4d3f368977c79279ebd5ca953810a3d11e36d73bc3",
+    "battle-preview.css": "441ce3e2b16a6ccc670974d9f0c8fe9acfc894ab6056fe626b71c1909548322b",
+    "index.html": "7caf2bd79a390042f89a7e18b9eb3bdbe92cf9fef3aa9a540eb89cb1905711fa",
+    "battle-workspace.html": "45e70914c7bcfcc796a599d6cf39ea53c398b9790f64eb8a2228c9d4e84153da"
+  }
+}

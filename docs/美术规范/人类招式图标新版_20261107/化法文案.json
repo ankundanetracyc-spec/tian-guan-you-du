@@ -1,0 +1,182 @@
+[
+  {
+    "book": "玄枢含章经",
+    "chapter": "蛰雷",
+    "order": 1,
+    "target": "惊蛰",
+    "description": "化法追加：本次攻击无视目标护盾。",
+    "icon": "res://textures/ui/combat/board_skill_icons/huafa_xuanshu_1.png",
+    "path": "化法/玄枢含章经·蛰雷.drawio"
+  },
+  {
+    "book": "玄枢含章经",
+    "chapter": "云垂",
+    "order": 2,
+    "target": "云帔",
+    "description": "化法追加：由周天额外施放时，为当前护盾值最低的一名其他存活队友施加自身本次获得护盾值一半的护盾；并列时随机选择。",
+    "icon": "res://textures/ui/combat/board_skill_icons/huafa_xuanshu_2.png",
+    "path": "化法/玄枢含章经·云垂.drawio"
+  },
+  {
+    "book": "玄枢含章经",
+    "chapter": "折冲",
+    "order": 3,
+    "target": "架招",
+    "description": "化法追加：本次来袭的全部伤害段结算后，按架招实际抵消的物理伤害总点数获得等量护盾；未用于抵消伤害的化解不计入。",
+    "icon": "res://textures/ui/combat/board_skill_icons/huafa_xuanshu_3.png",
+    "path": "化法/玄枢含章经·折冲.drawio"
+  },
+  {
+    "book": "玄枢含章经",
+    "chapter": "照影",
+    "order": 4,
+    "target": "复命",
+    "description": "化法追加：复制的技能本次施加护盾后，为当前护盾值最低的一名其他存活队友施加等量护盾；并列时随机选择。",
+    "icon": "res://textures/ui/combat/board_skill_icons/huafa_xuanshu_4.png",
+    "path": "化法/玄枢含章经·照影.drawio"
+  },
+  {
+    "book": "斫基损契玄经",
+    "chapter": "秉烛",
+    "order": 1,
+    "target": "折锋",
+    "description": "化法追加：施展前法力为0时，命中后获得炁1；每回合最多触发一次。",
+    "icon": "res://textures/ui/combat/board_skill_icons/huafa_zhuoji_1.png",
+    "path": "化法/斫基损契玄经·秉烛.drawio"
+  },
+  {
+    "book": "斫基损契玄经",
+    "chapter": "剪灯",
+    "order": 2,
+    "target": "焚元",
+    "description": "化法追加：本回合下一项仍需支付法力的技能，法力费用改为等量体力费用。",
+    "icon": "res://textures/ui/combat/board_skill_icons/huafa_zhuoji_2.png",
+    "path": "化法/斫基损契玄经·剪灯.drawio"
+  },
+  {
+    "book": "斫基损契玄经",
+    "chapter": "续照",
+    "order": 3,
+    "target": "架招",
+    "description": "化法追加：本次架招抵消至少1点物理伤害后，攻击者失去 B（B=min(攻击者当前护盾值, 本次架招实际抵消的物理伤害总点数)） 点护盾。",
+    "icon": "res://textures/ui/combat/board_skill_icons/huafa_zhuoji_3.png",
+    "path": "化法/斫基损契玄经·续照.drawio"
+  },
+  {
+    "book": "斫基损契玄经",
+    "chapter": "长明",
+    "order": 4,
+    "target": "折锋",
+    "description": "化法追加：法力上限为1时，目标不能以应对技能应对此次攻击。",
+    "icon": "res://textures/ui/combat/board_skill_icons/huafa_zhuoji_4.png",
+    "path": "化法/斫基损契玄经·长明.drawio"
+  },
+  {
+    "book": "百骸衍枝化生宝册",
+    "chapter": "养络",
+    "order": 1,
+    "target": "催血",
+    "description": "化法追加：施展前自身气血层数不高于3层时，额外获得气血1层。",
+    "icon": "res://textures/ui/combat/board_skill_icons/huafa_baihai_1.png",
+    "path": "化法/百骸衍枝化生宝册·养络.drawio"
+  },
+  {
+    "book": "百骸衍枝化生宝册",
+    "chapter": "生枝",
+    "order": 2,
+    "target": "血臂撼岳",
+    "description": "化法追加：至少一只手臂显化时，额外追加一段与《血臂撼岳》基础伤害等量的物理伤害。",
+    "icon": "res://textures/ui/combat/board_skill_icons/huafa_baihai_2.png",
+    "path": "化法/百骸衍枝化生宝册·生枝.drawio"
+  },
+  {
+    "book": "百骸衍枝化生宝册",
+    "chapter": "双擎",
+    "order": 3,
+    "target": "架招",
+    "description": "化法追加：第二只手臂显化时，本次架招额外获得B层（B=min(round(架招基础化解层数×0.20),20)）化解。",
+    "icon": "res://textures/ui/combat/board_skill_icons/huafa_baihai_3.png",
+    "path": "化法/百骸衍枝化生宝册·双擎.drawio"
+  },
+  {
+    "book": "百骸衍枝化生宝册",
+    "chapter": "化生",
+    "order": 4,
+    "target": "架招",
+    "description": "化法追加：显化至少一只手臂时，本次架招额外获得化解1层；双臂显化时，再额外获得B层（B=min(round(架招基础化解层数×0.20),20)）化解，本次架招实际抵消至少1点物理伤害后，若自身气血未满，获得气血1层。",
+    "icon": "res://textures/ui/combat/board_skill_icons/huafa_baihai_4.png",
+    "path": "化法/百骸衍枝化生宝册·化生.drawio"
+  },
+  {
+    "book": "太和感物养元宝册",
+    "chapter": "听息",
+    "order": 1,
+    "target": "乘势再攻",
+    "description": "化法追加：目标应对此次攻击时，首个追加段伤害提高20%；每回合限一次。",
+    "icon": "res://textures/ui/combat/board_skill_icons/huafa_taihe_1.png",
+    "path": "化法/太和感物养元宝册·听息.drawio"
+  },
+  {
+    "book": "太和感物养元宝册",
+    "chapter": "回澜",
+    "order": 2,
+    "target": "虚怀纳劲",
+    "description": "化法追加：触发应对时，若自身有气血，消耗气血1层，本次基础护盾提高50%；每回合限一次。",
+    "icon": "res://textures/ui/combat/board_skill_icons/huafa_taihe_2.png",
+    "path": "化法/太和感物养元宝册·回澜.drawio"
+  },
+  {
+    "book": "太和感物养元宝册",
+    "chapter": "藏锋",
+    "order": 3,
+    "target": "架招",
+    "description": "化法追加：应对触发时，若自身至少有1层气血，消耗气血1层，并使本次架招化解层数变为基础值的2倍；心法仍按本次应对结算气血获得。",
+    "icon": "res://textures/ui/combat/board_skill_icons/huafa_taihe_3.png",
+    "path": "化法/太和感物养元宝册·藏锋.drawio"
+  },
+  {
+    "book": "太和感物养元宝册",
+    "chapter": "返元",
+    "order": 4,
+    "target": "乘势再攻",
+    "description": "化法追加：每段由《乘势再攻》追加的攻击命中后，独立判定B（B=clamp(15% + 施加者体魄×1% − 目标体魄×0.75% + 卡牌境界修正 + 高境界修正, 0%, 99%)×跨境界削减倍率）；判定通过时使目标获得C层（C=floor(clamp(60 + (施加者体魄−目标体魄)×3, 0, 120)×跨境界削减倍率)）僵直。",
+    "icon": "res://textures/ui/combat/board_skill_icons/huafa_taihe_4.png",
+    "path": "化法/太和感物养元宝册·返元.drawio"
+  },
+  {
+    "book": "舒卷天章",
+    "chapter": "云舒",
+    "order": 1,
+    "target": "养锋",
+    "description": "化法追加：施放前剑意不高于5层时，额外获得剑意1层；每回合最多触发1次，仍受剑意上限限制。",
+    "icon": "res://textures/ui/combat/board_skill_icons/huafa_shujuan_1.png",
+    "path": "化法/舒卷天章·云舒.drawio"
+  },
+  {
+    "book": "舒卷天章",
+    "chapter": "回岚",
+    "order": 2,
+    "target": "格剑",
+    "description": "化法追加：格剑触发并结算后，若剑意达到6层，额外获得剑意1层；每回合最多触发1次，仍受剑意上限限制。",
+    "icon": "res://textures/ui/combat/board_skill_icons/huafa_shujuan_2.png",
+    "path": "化法/舒卷天章·回岚.drawio"
+  },
+  {
+    "book": "舒卷天章",
+    "chapter": "逐影",
+    "order": 3,
+    "target": "云岚三叠",
+    "description": "化法追加：首次追加攻击概率提高10个百分点，上限80%。",
+    "icon": "res://textures/ui/combat/board_skill_icons/huafa_shujuan_3.png",
+    "path": "化法/舒卷天章·逐影.drawio"
+  },
+  {
+    "book": "舒卷天章",
+    "chapter": "天章",
+    "order": 4,
+    "target": "尽锋",
+    "description": "化法追加：若本次行动开始时剑意已达到心法要求，且尽锋首段命中，心法追加的每段攻击伤害提高20%。尽锋命中后消耗剑意，不取消本次行动已触发的追加攻击。",
+    "icon": "res://textures/ui/combat/board_skill_icons/huafa_shujuan_4.png",
+    "path": "化法/舒卷天章·天章.drawio"
+  }
+]

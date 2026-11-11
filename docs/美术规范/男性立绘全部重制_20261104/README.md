@@ -40,7 +40,7 @@
 
 ## 资产与撤旧安排
 
-新素材包为[portrait_male_regenerated_20261104_v3](../../../mods/appearance/portrait_male_regenerated_20261104_v3/)。新包不另启用外观配置；活动包继续使用`mods/appearance/ink_three_variants_20261004/`。
+新素材包为[portrait_male_regenerated_20261104_v3](../../../mods/appearance/portrait_male_regenerated_20261104_v3)。新包不另启用外观配置；活动包继续使用`mods/appearance/ink_three_variants_20261004/`。
 
 [接入前备份](../../../mods/appearance/portrait_male_regenerated_20261104_v3/installation/before_install.zip)已保存14件被否定的男性PNG及两份配置；[备份记录](../../../mods/appearance/portrait_male_regenerated_20261104_v3/installation/backup_report.json)与[30件保留基线](../../../mods/appearance/portrait_male_regenerated_20261104_v3/installation/preserved_baseline.json)用于确认替换范围。备份仅作追溯，不代表允许恢复旧造型。
 

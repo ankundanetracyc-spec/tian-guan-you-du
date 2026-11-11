@@ -1,0 +1,1282 @@
+{
+  "captures": [
+    "炼器_主界面_1280.png",
+    "炼器_按钮悬停_1280.png",
+    "炼器_按钮按下_1280.png",
+    "炼器_质材_1280.png",
+    "炼器_选材_1280.png",
+    "炼器_性材_1280.png",
+    "炼器_和材_1280.png",
+    "炼器_器物册_1280.png",
+    "炼器_说明_1280.png",
+    "炼器_炉火定器_1280.png"
+  ],
+  "checkCount": 233,
+  "checks": [
+    {
+      "detail": null,
+      "name": "输出仅在项目output",
+      "pass": true
+    },
+    {
+      "detail": 115,
+      "name": "原生控件与只读炉火已就绪",
+      "pass": true
+    },
+    {
+      "detail": {
+        "Attempts": 0.0,
+        "Count": 0.0,
+        "Draft": "434a52d141963abc55bb2f802cb470c735eb9019d2e58dec90649f4437f8b7a8",
+        "Energy": 0.0,
+        "Hours": 0.0,
+        "Revision": 1.0,
+        "Stock": {
+          "兽骨": 30.0,
+          "灵泉露": 30.0,
+          "灵石": 30.0,
+          "玄铁": 30.0,
+          "紫砂灵土": 30.0,
+          "裂甲石": 30.0,
+          "褐铜砂": 30.0,
+          "赤纹燧石": 30.0,
+          "铜髓矿": 30.0,
+          "青木芯": 30.0,
+          "风纹石英": 30.0
+        }
+      },
+      "name": "未提交试演账目",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "右上统一返回存在",
+      "pass": true
+    },
+    {
+      "detail": "(1534.0, 18.0)",
+      "name": "返回位置遵守统一边距",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "材料卡使用原图大图标 3",
+      "pass": true
+    },
+    {
+      "detail": {
+        "text": 174.0,
+        "width": 370.0
+      },
+      "name": "材料资料单行且完整容纳 玄铁  ·  金 · 阳 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": {
+        "icon": "(80.0, 93.0)",
+        "quantities": "(370.0, 47.0)",
+        "selector": "(370.0, 38.0)"
+      },
+      "name": "图标跨资料与份数两行 玄铁  ·  金 · 阳 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "材料卡不超出投料栏 玄铁  ·  金 · 阳 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": {
+        "text": 190.0,
+        "width": 370.0
+      },
+      "name": "材料资料单行且完整容纳 青木芯  ·  木 · 和 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": {
+        "icon": "(80.0, 93.0)",
+        "quantities": "(370.0, 47.0)",
+        "selector": "(370.0, 38.0)"
+      },
+      "name": "图标跨资料与份数两行 青木芯  ·  木 · 和 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "材料卡不超出投料栏 青木芯  ·  木 · 和 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": {
+        "text": 190.0,
+        "width": 370.0
+      },
+      "name": "材料资料单行且完整容纳 铜髓矿  ·  金 · 和 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": {
+        "icon": "(80.0, 93.0)",
+        "quantities": "(370.0, 47.0)",
+        "selector": "(370.0, 38.0)"
+      },
+      "name": "图标跨资料与份数两行 铜髓矿  ·  金 · 和 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "材料卡不超出投料栏 铜髓矿  ·  金 · 和 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "顶栏五个按钮共用一种纸面样式",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "顶栏标题造诣数值按钮同字级同行高同位置",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "顶栏标签垂直居中与按钮对齐",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "清空投料与顶栏使用同一种普通按钮",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 返回 normal",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 返回 hover",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 返回 pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 返回 hover_pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 返回 disabled",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 器类：剑 normal",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 器类：剑 hover",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 器类：剑 pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 器类：剑 hover_pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 器类：剑 disabled",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 参考投料 normal",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 参考投料 hover",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 参考投料 pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 参考投料 hover_pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 参考投料 disabled",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 器物册 · 0 normal",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 器物册 · 0 hover",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 器物册 · 0 pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 器物册 · 0 hover_pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 器物册 · 0 disabled",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 炼器说明 normal",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 炼器说明 hover",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 炼器说明 pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 炼器说明 hover_pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 炼器说明 disabled",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 身材 normal",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 身材 hover",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 身材 pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 身材 hover_pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 身材 disabled",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 质材 normal",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 质材 hover",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 质材 pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 质材 hover_pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 质材 disabled",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 性材 normal",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 性材 hover",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 性材 pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 性材 hover_pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 性材 disabled",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 和材 normal",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 和材 hover",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 和材 pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 和材 hover_pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 和材 disabled",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 添加材料 normal",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 添加材料 hover",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 添加材料 pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 添加材料 hover_pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 添加材料 disabled",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 玄铁  ·  金 · 阳 · 库存30 normal",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 玄铁  ·  金 · 阳 · 库存30 hover",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 玄铁  ·  金 · 阳 · 库存30 pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 玄铁  ·  金 · 阳 · 库存30 hover_pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 玄铁  ·  金 · 阳 · 库存30 disabled",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 － normal",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 － hover",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 － pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 － hover_pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 － disabled",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 ＋ normal",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 ＋ hover",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 ＋ pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 ＋ hover_pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 ＋ disabled",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 移除 normal",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 移除 hover",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 移除 pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 移除 hover_pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 移除 disabled",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 添加材料 normal",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 添加材料 hover",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 添加材料 pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 添加材料 hover_pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 添加材料 disabled",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 青木芯  ·  木 · 和 · 库存30 normal",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 青木芯  ·  木 · 和 · 库存30 hover",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 青木芯  ·  木 · 和 · 库存30 pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 青木芯  ·  木 · 和 · 库存30 hover_pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 青木芯  ·  木 · 和 · 库存30 disabled",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 － normal",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 － hover",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 － pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 － hover_pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 － disabled",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 ＋ normal",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 ＋ hover",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 ＋ pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 ＋ hover_pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 ＋ disabled",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 移除 normal",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 移除 hover",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 移除 pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 移除 hover_pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 移除 disabled",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 添加材料 normal",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 添加材料 hover",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 添加材料 pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 添加材料 hover_pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 添加材料 disabled",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 铜髓矿  ·  金 · 和 · 库存30 normal",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 铜髓矿  ·  金 · 和 · 库存30 hover",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 铜髓矿  ·  金 · 和 · 库存30 pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 铜髓矿  ·  金 · 和 · 库存30 hover_pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 铜髓矿  ·  金 · 和 · 库存30 disabled",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 － normal",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 － hover",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 － pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 － hover_pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 － disabled",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 ＋ normal",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 ＋ hover",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 ＋ pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 ＋ hover_pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 ＋ disabled",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 移除 normal",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 移除 hover",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 移除 pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 移除 hover_pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 移除 disabled",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 清空投料 normal",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 清空投料 hover",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 清空投料 pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 清空投料 hover_pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 清空投料 disabled",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 开 炼 normal",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 开 炼 hover",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 开 炼 pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 开 炼 hover_pressed",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮各状态都是整面原纸无中央染色 开 炼 disabled",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "悬停选中按下文字保持深墨且无暗色文字阴影",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "分类选中整纸变色且无中央方形染色",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "原生截图尺寸 炼器_主界面_1280.png",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "原生截图写入 炼器_主界面_1280.png",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "原生截图尺寸 炼器_按钮悬停_1280.png",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "原生截图写入 炼器_按钮悬停_1280.png",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "真实按下进入反馈状态",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按下整张纸面变深并下沉一单位",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "原生截图尺寸 炼器_按钮按下_1280.png",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "原生截图写入 炼器_按钮按下_1280.png",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "移出后释放不误触清空",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "大图标仍打开原生选材",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮可操作 关闭",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮可操作 ＋",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "右侧份数操作仍走原生回调",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮可操作 －",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "材料卡使用原图大图标 3",
+      "pass": true
+    },
+    {
+      "detail": {
+        "text": 174.0,
+        "width": 370.0
+      },
+      "name": "材料资料单行且完整容纳 玄铁  ·  金 · 阳 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": {
+        "icon": "(80.0, 93.0)",
+        "quantities": "(370.0, 47.0)",
+        "selector": "(370.0, 38.0)"
+      },
+      "name": "图标跨资料与份数两行 玄铁  ·  金 · 阳 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "材料卡不超出投料栏 玄铁  ·  金 · 阳 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": {
+        "text": 190.0,
+        "width": 370.0
+      },
+      "name": "材料资料单行且完整容纳 青木芯  ·  木 · 和 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": {
+        "icon": "(80.0, 93.0)",
+        "quantities": "(370.0, 47.0)",
+        "selector": "(370.0, 38.0)"
+      },
+      "name": "图标跨资料与份数两行 青木芯  ·  木 · 和 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "材料卡不超出投料栏 青木芯  ·  木 · 和 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": {
+        "text": 190.0,
+        "width": 370.0
+      },
+      "name": "材料资料单行且完整容纳 铜髓矿  ·  金 · 和 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": {
+        "icon": "(80.0, 93.0)",
+        "quantities": "(370.0, 47.0)",
+        "selector": "(370.0, 38.0)"
+      },
+      "name": "图标跨资料与份数两行 铜髓矿  ·  金 · 和 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "材料卡不超出投料栏 铜髓矿  ·  金 · 和 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮可操作 质材",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "投料页签可切换",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "切换后仅当前分类带选中纸色",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "材料卡使用原图大图标 1",
+      "pass": true
+    },
+    {
+      "detail": {
+        "text": 190.0,
+        "width": 370.0
+      },
+      "name": "材料资料单行且完整容纳 铜髓矿  ·  金 · 和 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": {
+        "icon": "(80.0, 93.0)",
+        "quantities": "(370.0, 47.0)",
+        "selector": "(370.0, 38.0)"
+      },
+      "name": "图标跨资料与份数两行 铜髓矿  ·  金 · 和 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "材料卡不超出投料栏 铜髓矿  ·  金 · 和 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "原生截图尺寸 炼器_质材_1280.png",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "原生截图写入 炼器_质材_1280.png",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮可操作 铜髓矿  ·  金 · 和 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "选材弹窗可打开",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "原生截图尺寸 炼器_选材_1280.png",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "原生截图写入 炼器_选材_1280.png",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮可操作 关闭",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮可操作 性材",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "材料卡使用原图大图标 2",
+      "pass": true
+    },
+    {
+      "detail": {
+        "text": 190.0,
+        "width": 370.0
+      },
+      "name": "材料资料单行且完整容纳 裂甲石  ·  金 · 阳 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": {
+        "icon": "(80.0, 93.0)",
+        "quantities": "(370.0, 47.0)",
+        "selector": "(370.0, 38.0)"
+      },
+      "name": "图标跨资料与份数两行 裂甲石  ·  金 · 阳 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "材料卡不超出投料栏 裂甲石  ·  金 · 阳 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": {
+        "text": 174.0,
+        "width": 370.0
+      },
+      "name": "材料资料单行且完整容纳 玄铁  ·  金 · 阳 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": {
+        "icon": "(80.0, 93.0)",
+        "quantities": "(370.0, 47.0)",
+        "selector": "(370.0, 38.0)"
+      },
+      "name": "图标跨资料与份数两行 玄铁  ·  金 · 阳 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "材料卡不超出投料栏 玄铁  ·  金 · 阳 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "原生截图尺寸 炼器_性材_1280.png",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "原生截图写入 炼器_性材_1280.png",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮可操作 和材",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "材料卡使用原图大图标 2",
+      "pass": true
+    },
+    {
+      "detail": {
+        "text": 174.0,
+        "width": 370.0
+      },
+      "name": "材料资料单行且完整容纳 灵石  ·  土 · 和 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": {
+        "icon": "(80.0, 93.0)",
+        "quantities": "(370.0, 47.0)",
+        "selector": "(370.0, 38.0)"
+      },
+      "name": "图标跨资料与份数两行 灵石  ·  土 · 和 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "材料卡不超出投料栏 灵石  ·  土 · 和 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": {
+        "text": 206.0,
+        "width": 370.0
+      },
+      "name": "材料资料单行且完整容纳 风纹石英  ·  金 · 和 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": {
+        "icon": "(80.0, 93.0)",
+        "quantities": "(370.0, 47.0)",
+        "selector": "(370.0, 38.0)"
+      },
+      "name": "图标跨资料与份数两行 风纹石英  ·  金 · 和 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "材料卡不超出投料栏 风纹石英  ·  金 · 和 · 库存30",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "原生截图尺寸 炼器_和材_1280.png",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "原生截图写入 炼器_和材_1280.png",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮可操作 身材",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮可操作 器物册 · 0",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "器物册保持空预览",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "原生截图尺寸 炼器_器物册_1280.png",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "原生截图写入 炼器_器物册_1280.png",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮可操作 关闭",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮可操作 炼器说明",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "说明弹窗可打开",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "原生截图尺寸 炼器_说明_1280.png",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "原生截图写入 炼器_说明_1280.png",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮可操作 关闭",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮可操作 开 炼",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "原生只读炉火可进入",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮可操作 跳过演出",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "原生演出可定器",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "原生截图尺寸 炼器_炉火定器_1280.png",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "原生截图写入 炼器_炉火定器_1280.png",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮可操作 返回投料",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "演出返回保留原投料",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "查看与切页不变账目",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮可操作 返回",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "返回只收起独立预览",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "按钮可操作 继续查看",
+      "pass": true
+    },
+    {
+      "detail": null,
+      "name": "可继续查看独立样稿",
+      "pass": true
+    }
+  ],
+  "gameIntegrated": false,
+  "status": "passed",
+  "width": 1280
+}

@@ -1,0 +1,77 @@
+{
+  "status": "2026-11-08 全局视觉提案；未改源位图；未接正式游戏",
+  "displayMethod": "完整参考图、CSS材质区域引用及原生SVG八区拼框；HTML文字与状态保持独立；未提取或改写源位图",
+  "sources": [
+    {
+      "path": "docs/美术规范/行囊交易善功堂实装_20261031/07_善功堂去装备与滑轨_20261107.png",
+      "use": "当前善功堂完整实机参考",
+      "role": "用户满意的视觉锚点",
+      "sha256AtReview": "febdeff014d6011d0954713dac030636b38b078edba7a42dab3ad989496b7c91"
+    },
+    {
+      "path": "docs/美术规范/玄览峰拓印接入_20261107/封面侧面_1920.png",
+      "use": "当前藏经阁完整实机参考",
+      "role": "用户满意的视觉锚点",
+      "sha256AtReview": "d48061638a7860545f52b31f46b88fabb0101cc70e9b5cad0b3c255da39f365a"
+    },
+    {
+      "path": "textures/ui/yuxu_library_20261107/library_frame.png",
+      "use": "材质局部引用",
+      "restriction": "不复制整页架子、三排和右侧详情结构给其他页面",
+      "sha256AtReview": "5d311b0aeb04d8de57fddbc6aef492e7e11ffbadba3ce558fe2f67579a4da7ce"
+    },
+    {
+      "path": "textures/ui/forging_20261021/material_panel_v3.png",
+      "use": "纸面与边角山纹",
+      "restriction": "不修改既有炼器操作页",
+      "sha256AtReview": "ca9398e87c8a8a7dadb0a5ab7a7afe184f06b2fb22a4d75bff1ca289f5864826"
+    },
+    {
+      "path": "textures/ui/inventory_material_20261107/garment_inventory_panel_v5.png",
+      "use": "浅绢材质样本与局部格线示意",
+      "restriction": "200格、36格距与各区位置沿现行主案",
+      "sha256AtReview": "e0571c3d7e8107b1e2a6ad7aee36160f03a0c6346031b3c5723e55bbed508b9b"
+    },
+    {
+      "path": "resources/font/LXGWZhenKaiSlabGB-Regular.ttf",
+      "use": "实际母板文字",
+      "sha256AtReview": "086fa66af57b7a0d7a007067097cd1ac27eb8b8db810fb83ac3de620be1eb3a1"
+    }
+  ],
+  "frameRegions": {
+    "source": "textures/ui/yuxu_library_20261107/library_frame.png",
+    "sourceSize": [
+      1672,
+      941
+    ],
+    "paperFrame": {
+      "bounds": [
+        1105,
+        160,
+        537,
+        744
+      ],
+      "slicesLeftTopRightBottom": [
+        38,
+        38,
+        38,
+        38
+      ]
+    },
+    "labelFrame": {
+      "bounds": [
+        96,
+        131,
+        218,
+        47
+      ],
+      "slicesLeftTopRightBottom": [
+        16,
+        8,
+        16,
+        8
+      ]
+    },
+    "method": "忽略中心区，八个SVG视窗分别引用源图；文字与控件尺寸独立"
+  }
+}

@@ -1,0 +1,795 @@
+{
+  "date": "2026-11-09",
+  "scope": "人物配招样稿方案列表与命名保存；原生局内、人物存档未在本轮接入。",
+  "web": {
+    "passed": 155,
+    "failed": 0,
+    "errors": [],
+    "missing": [],
+    "checks": [
+      {
+        "name": "1920px: overview has applied opening board",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: removed ribbon and combat preview stay absent",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: homepage is owned collection and keeps configuration inside editor",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: loadout occupies complete viewport",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: editor has sources combos and full-board plans",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: all persistent board control bars are removed",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: editor only has return above floating board",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: source panel uses actual in-battle material",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: every placed object has material frame",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: frames use eight texture slices without center",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: editing cannot change default opening",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: return without applying preserves opening",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: unapplied draft survives reopening",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: bare background closes without applying or discarding draft",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: apply commits an empty valid opening",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: opening API returns an independent copy",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: hover shows before dragging",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: drag hides hover and shows full candidate art",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: right click rotates complete source while dragging",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: only dragged original art is hidden",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: escape cancels drag without changing board or closing editor",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: invalid inside drop restores complete original",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: dragging outside removes placed object and keeps editor open",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: source outside cancels without a later ghost placement",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: reducing multiselect to one keeps keyboard target synchronized",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: empty cell clears selection without hidden keyboard target",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: combo inserts both sources together",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: combo placement leaves applied opening unchanged",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: out-of-bounds combo is atomic",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: duplicate rewrite limit rejects complete combo",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: group movement uses explicit selected objects",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: selected group moves as one unit",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: moving group preserves placement identities",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: group rotation keeps actual arrow direction",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: empty combo name is rejected",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: selected relative arrangement is saved",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: Delete removes entire selected group",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: removing objects cannot edit saved combo",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: saved vertical combo retains relative cells",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: combo renaming keeps layout",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: deleting a combo keeps placed objects",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: shift selects separate objects without persistent multiselect button",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: user selection creates a reusable combo",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: same-name combo save replaces only that combo",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: right panel contains only plan rows with two explicit actions",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: save as scheme lives beside apply below the board",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: unavailable scheme disables apply but still permits rename",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: unavailable scheme leaves draft and opening unchanged",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: row body cannot silently apply a scheme",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: row apply switches opening and draft together",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: row apply stays inside the plan list",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: row apply never overwrites saved templates",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: blank save name keeps the dialog and data unchanged",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: cancelling named save leaves all templates and opening unchanged",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: named save creates the complete current board",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: saving is independent from applied opening",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: successful save exposes its list entry",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: editing draft cannot mutate the saved copy",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: same name clearly announces overwrite before confirmation",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: cancelling overwrite cannot edit a saved scheme",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: confirmed same-name save overwrites exactly one scheme",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: overwriting an applied template cannot mutate its opening copy",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: changed template is not falsely marked as currently applied",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: explicit row apply adopts the overwritten board",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: rename rejects duplicate names without closing the form",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: blank rename cannot erase an existing name",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: rename targets the chosen row rather than the active plan",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: renaming another row cannot change opening or draft",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: renaming the applied plan updates captions without editing geometry",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: named schemes have no fixed slot count",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: newly saved rows scroll into the available list",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: scheme operations never consume the source inventory",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: board apply still commits the current draft and closes",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: board apply does not overwrite stored templates",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: opening API returns the applied snapshot",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: applying keeps the learned collection unchanged",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: overview has applied opening board",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: removed ribbon and combat preview stay absent",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: homepage is owned collection and keeps configuration inside editor",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: loadout occupies complete viewport",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: editor has sources combos and full-board plans",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: all persistent board control bars are removed",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: editor only has return above floating board",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: source panel uses actual in-battle material",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: every placed object has material frame",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: frames use eight texture slices without center",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: editing cannot change default opening",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: return without applying preserves opening",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: unapplied draft survives reopening",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: bare background closes without applying or discarding draft",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: apply commits an empty valid opening",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: opening API returns an independent copy",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: hover shows before dragging",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: drag hides hover and shows full candidate art",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: right click rotates complete source while dragging",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: only dragged original art is hidden",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: escape cancels drag without changing board or closing editor",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: invalid inside drop restores complete original",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: dragging outside removes placed object and keeps editor open",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: source outside cancels without a later ghost placement",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: reducing multiselect to one keeps keyboard target synchronized",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: empty cell clears selection without hidden keyboard target",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: combo inserts both sources together",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: combo placement leaves applied opening unchanged",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: out-of-bounds combo is atomic",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: duplicate rewrite limit rejects complete combo",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: group movement uses explicit selected objects",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: selected group moves as one unit",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: moving group preserves placement identities",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: group rotation keeps actual arrow direction",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: empty combo name is rejected",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: selected relative arrangement is saved",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: Delete removes entire selected group",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: removing objects cannot edit saved combo",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: saved vertical combo retains relative cells",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: combo renaming keeps layout",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: deleting a combo keeps placed objects",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: shift selects separate objects without persistent multiselect button",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: user selection creates a reusable combo",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: same-name combo save replaces only that combo",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: right panel contains only plan rows with two explicit actions",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: save as scheme lives beside apply below the board",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: unavailable scheme disables apply but still permits rename",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: unavailable scheme leaves draft and opening unchanged",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: row body cannot silently apply a scheme",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: row apply switches opening and draft together",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: row apply stays inside the plan list",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: row apply never overwrites saved templates",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: blank save name keeps the dialog and data unchanged",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: cancelling named save leaves all templates and opening unchanged",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: named save creates the complete current board",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: saving is independent from applied opening",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: successful save exposes its list entry",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: editing draft cannot mutate the saved copy",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: same name clearly announces overwrite before confirmation",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: cancelling overwrite cannot edit a saved scheme",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: confirmed same-name save overwrites exactly one scheme",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: overwriting an applied template cannot mutate its opening copy",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: changed template is not falsely marked as currently applied",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: explicit row apply adopts the overwritten board",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: rename rejects duplicate names without closing the form",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: blank rename cannot erase an existing name",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: rename targets the chosen row rather than the active plan",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: renaming another row cannot change opening or draft",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: renaming the applied plan updates captions without editing geometry",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: named schemes have no fixed slot count",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: newly saved rows scroll into the available list",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: scheme operations never consume the source inventory",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: board apply still commits the current draft and closes",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: board apply does not overwrite stored templates",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: opening API returns the applied snapshot",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: applying keeps the learned collection unchanged",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "no script errors",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "all material assets load",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "no browser storage writes",
+        "passed": true,
+        "detail": ""
+      }
+    ]
+  },
+  "source_sha256": {
+    "battle-preview.js": "16493b2b990675b654ad6bf49542d56cbac99b6911588852b3b4a861dd838880",
+    "battle-preview.css": "79db497d72a0e8aaa4055580f1b6979fcdd802a9765ec1c525c544753a693bc7",
+    "battle-workspace.html": "180e1b3607d2920a7f11395c0344c13e73c0ebc48faf227210c93eaef66e6547",
+    "index.html": "17558191af91a270251f3f214d567065b8aa688fa907c7b273c79bfae6a2d5cc"
+  },
+  "native_checks_rerun": false,
+  "storage": "仅内存，刷新重置"
+}

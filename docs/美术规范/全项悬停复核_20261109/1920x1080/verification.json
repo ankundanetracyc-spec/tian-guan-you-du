@@ -1,0 +1,2843 @@
+{
+  "status": "passed_representative_samples",
+  "resolution": "1920x1080",
+  "checks_passed": 410,
+  "checks_failed": 0,
+  "checks": [
+    {
+      "Name": "all autoload/settings/recipe access isolated from player data",
+      "Passed": true,
+      "Detail": "E:/stacklands/tmp/hover_category_20261109/profile_1920x1080/SlayTheSpire2/"
+    },
+    {
+      "Name": "材料_简略: every actual source character appears once",
+      "Passed": true,
+      "Detail": "品阶：8品下 \n五行：金\n质地：致密\n相性：阳\n功用：\n固·八品\n\n简介："
+    },
+    {
+      "Name": "材料_简略: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "品阶：8品下 \n五行：金\n质地：致密\n相性：阳\n功用：\n固·八品\n\n简介："
+    },
+    {
+      "Name": "材料_简略: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "材料_简略: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "材料_简略: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "材料_简略: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "材料_简略: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 677), (340, 381)"
+    },
+    {
+      "Name": "材料_简略: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "材料_详细: every actual source character appears once",
+      "Passed": true,
+      "Detail": "品阶：8品下 \n五行：金\n质地：致密\n相性：阳\n功用：\n固·八品\n\n简介：\n\n计算来源\n材评：4 = 2×2"
+    },
+    {
+      "Name": "材料_详细: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "品阶：8品下 \n五行：金\n质地：致密\n相性：阳\n功用：\n固·八品\n\n简介：\n\n计算来源\n材评：4 = 2×2"
+    },
+    {
+      "Name": "材料_详细: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "材料_详细: final sources do not expose internal rounding instructions",
+      "Passed": true,
+      "Detail": "\n材评：4 = 2×2"
+    },
+    {
+      "Name": "材料_详细: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "材料_详细: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "材料_详细: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "材料_详细: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 596), (340, 462)"
+    },
+    {
+      "Name": "材料_详细: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "衣着_简略: every actual source character appears once",
+      "Passed": true,
+      "Detail": "适用人物：通用\n\n简介：\n玉虚仙宗内门弟子衣着。"
+    },
+    {
+      "Name": "衣着_简略: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "适用人物：通用\n\n简介：\n玉虚仙宗内门弟子衣着。"
+    },
+    {
+      "Name": "衣着_简略: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "衣着_简略: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "衣着_简略: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "衣着_简略: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "衣着_简略: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 785), (340, 273)"
+    },
+    {
+      "Name": "衣着_简略: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "衣着_详细: every actual source character appears once",
+      "Passed": true,
+      "Detail": "适用人物：通用\n\n简介：\n玉虚仙宗内门弟子衣着。"
+    },
+    {
+      "Name": "衣着_详细: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "适用人物：通用\n\n简介：\n玉虚仙宗内门弟子衣着。"
+    },
+    {
+      "Name": "衣着_详细: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "衣着_详细: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "衣着_详细: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "衣着_详细: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "衣着_详细: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 785), (340, 273)"
+    },
+    {
+      "Name": "衣着_详细: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "储物袋_简略: every actual source character appears once",
+      "Passed": true,
+      "Detail": "袋内空间：3 × 2 格\n不能放入储物袋。"
+    },
+    {
+      "Name": "储物袋_简略: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "袋内空间：3 × 2 格\n不能放入储物袋。"
+    },
+    {
+      "Name": "储物袋_简略: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "储物袋_简略: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "储物袋_简略: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "储物袋_简略: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "储物袋_简略: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 824), (340, 234)"
+    },
+    {
+      "Name": "储物袋_简略: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "储物袋_详细: every actual source character appears once",
+      "Passed": true,
+      "Detail": "袋内空间：3 × 2 格\n不能放入储物袋。"
+    },
+    {
+      "Name": "储物袋_详细: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "袋内空间：3 × 2 格\n不能放入储物袋。"
+    },
+    {
+      "Name": "储物袋_详细: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "储物袋_详细: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "储物袋_详细: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "储物袋_详细: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "储物袋_详细: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 824), (340, 234)"
+    },
+    {
+      "Name": "储物袋_详细: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "秘籍_简略: every actual source character appears once",
+      "Passed": true,
+      "Detail": "修习境界：凡人至云息十层\n修习要求：灵慧≥5\n关键词：周天\n\n简介：\n以周天为枢机，使周天指示所指招式额外施放。"
+    },
+    {
+      "Name": "秘籍_简略: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "修习境界：凡人至云息十层\n修习要求：灵慧≥5\n关键词：周天\n\n简介：\n以周天为枢机，使周天指示所指招式额外施放。"
+    },
+    {
+      "Name": "秘籍_简略: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "秘籍_简略: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "秘籍_简略: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "秘籍_简略: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "秘籍_简略: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 704), (340, 354)"
+    },
+    {
+      "Name": "秘籍_简略: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "秘籍_详细: every actual source character appears once",
+      "Passed": true,
+      "Detail": "修习境界：凡人至云息十层\n修习要求：灵慧≥5\n关键词：周天\n\n简介：\n以周天为枢机，使周天指示所指招式额外施放。"
+    },
+    {
+      "Name": "秘籍_详细: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "修习境界：凡人至云息十层\n修习要求：灵慧≥5\n关键词：周天\n\n简介：\n以周天为枢机，使周天指示所指招式额外施放。"
+    },
+    {
+      "Name": "秘籍_详细: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "秘籍_详细: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "秘籍_详细: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "秘籍_详细: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "秘籍_详细: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 704), (340, 354)"
+    },
+    {
+      "Name": "秘籍_详细: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "凡器_简略: every actual source character appears once",
+      "Passed": true,
+      "Detail": "品阶：凡器\n器类：剑\n器蕴：无\n锋锐：无\n\n装备效果：\n精准＋2\n\n化法：\n无\n\n技能：\n无\n\n简介：\n宗门制式凡器"
+    },
+    {
+      "Name": "凡器_简略: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "品阶：凡器\n器类：剑\n器蕴：无\n锋锐：无\n\n装备效果：\n精准＋2\n\n化法：\n无\n\n技能：\n无\n\n简介：\n宗门制式凡器"
+    },
+    {
+      "Name": "凡器_简略: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "凡器_简略: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "凡器_简略: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "凡器_简略: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "凡器_简略: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 377), (340, 681)"
+    },
+    {
+      "Name": "凡器_简略: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "凡器_详细: every actual source character appears once",
+      "Passed": true,
+      "Detail": "品阶：凡器\n器类：剑\n器蕴：无\n锋锐：无\n\n装备效果：\n精准＋2\n\n化法：\n无\n\n技能：\n无\n\n简介：\n宗门制式凡器"
+    },
+    {
+      "Name": "凡器_详细: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "品阶：凡器\n器类：剑\n器蕴：无\n锋锐：无\n\n装备效果：\n精准＋2\n\n化法：\n无\n\n技能：\n无\n\n简介：\n宗门制式凡器"
+    },
+    {
+      "Name": "凡器_详细: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "凡器_详细: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "凡器_详细: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "凡器_详细: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "凡器_详细: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 377), (340, 681)"
+    },
+    {
+      "Name": "凡器_详细: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "清和_简略: every actual source character appears once",
+      "Passed": true,
+      "Detail": "品阶：法器\n器类：剑（修长薄脊剑）\n器蕴：惊鸿 2、抱朴 3\n锋锐：5\n\n装备效果：\n物理伤害 +3.31%\n物理防御 +4\n带“剑”关键词的技能，物理伤害 +1.27%\n\n化法：\n适用范围：能应对并施加化解，且带“气血”关键词的单体物理伤害技能\n追加效果：\n· 实际应对追加化解 +1\n· 本次物理防御忽略 2.1%\n\n技能：\n飞斩\n费用：体力0、法力0\n目标：随机单敌·远程\n灵识占用：2\n物理伤害9。\n稳定34。\n\n简介："
+    },
+    {
+      "Name": "清和_简略: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "品阶：法器\n器类：剑（修长薄脊剑）\n器蕴：惊鸿 2、抱朴 3\n锋锐：5\n\n装备效果：\n物理伤害 +3.31%\n物理防御 +4\n带“剑”关键词的技能，物理伤害 +1.27%\n\n化法：\n适用范围：能应对并施加化解，且带“气血”关键词的单体物理伤害技能\n追加效果：\n· 实际应对追加化解 +1\n· 本次物理防御忽略 2.1%\n\n技能：\n飞斩\n费用：体力0、法力0\n目标：随机单敌·远程\n灵识占用：2\n物理伤害9。\n稳定34。\n\n简介："
+    },
+    {
+      "Name": "清和_简略: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "清和_简略: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "清和_简略: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "清和_简略: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "清和_简略: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 41), (340, 1017)"
+    },
+    {
+      "Name": "清和_简略: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "清和_详细: every actual source character appears once",
+      "Passed": true,
+      "Detail": "品阶：法器\n器类：剑（修长薄脊剑）\n器蕴：惊鸿 2、抱朴 3\n锋锐：5\n\n装备效果：\n物理伤害 +3.31%\n物理防御 +4\n带“剑”关键词的技能，物理伤害 +1.27%\n\n化法：\n适用范围：能应对并施加化解，且带“气血”关键词的单体物理伤害技能\n追加效果：\n· 实际应对追加化解 +1\n· 本次物理防御忽略 2.1%\n\n技能：\n飞斩\n费用：体力0、法力0\n目标：随机单敌·远程\n灵识占用：2\n物理伤害9。\n稳定34。\n\n简介：\n\n计算来源\n9 = 3.89＋神魂[19.05]×0.2＋剑道造诣[5]×0.33\n\n34 = 11.39＋神魂[19.05]×0.87＋剑道造诣[5]×0.27＋本器占用[2]×2.7"
+    },
+    {
+      "Name": "清和_详细: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "品阶：法器\n器类：剑（修长薄脊剑）\n器蕴：惊鸿 2、抱朴 3\n锋锐：5\n\n装备效果：\n物理伤害 +3.31%\n物理防御 +4\n带“剑”关键词的技能，物理伤害 +1.27%\n\n化法：\n适用范围：能应对并施加化解，且带“气血”关键词的单体物理伤害技能\n追加效果：\n· 实际应对追加化解 +1\n· 本次物理防御忽略 2.1%\n\n技能：\n飞斩\n费用：体力0、法力0\n目标：随机单敌·远程\n灵识占用：2\n物理伤害9。\n稳定34。\n\n简介：\n\n计算来源\n9 = 3.89＋神魂[19.05]×0.2＋剑道造诣[5]×0.33\n\n34 = 11.39＋神魂[19.05]×0.87＋剑道造诣[5]×0.27＋本器占用[2]×2.7"
+    },
+    {
+      "Name": "清和_详细: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "清和_详细: final sources do not expose internal rounding instructions",
+      "Passed": true,
+      "Detail": "\n9 = 3.89＋神魂[19.05]×0.2＋剑道造诣[5]×0.33\n\n34 = 11.39＋神魂[19.05]×0.87＋剑道造诣[5]×0.27＋本器占用[2]×2.7"
+    },
+    {
+      "Name": "清和_详细: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "清和_详细: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "清和_详细: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "清和_详细: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1026, 338), (700, 720)"
+    },
+    {
+      "Name": "清和_详细: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "突破丹_简略: every actual source character appears once",
+      "Passed": true,
+      "Detail": "丹阶：九品\n丹效：薄效\n药效：\n成功突破至云息四层后，补入1缕吐纳进度；不溢出、不自动晋层。\n丹毒：＋18\n\n简介：\n只用于云息三层晋升四层的闭关突破，不可直接服用或编入战备。只用于云息三层晋升四层的闭关突破；成功后补入1缕吐纳进度并消耗"
+    },
+    {
+      "Name": "突破丹_简略: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "丹阶：九品\n丹效：薄效\n药效：\n成功突破至云息四层后，补入1缕吐纳进度；不溢出、不自动晋层。\n丹毒：＋18\n\n简介：\n只用于云息三层晋升四层的闭关突破，不可直接服用或编入战备。只用于云息三层晋升四层的闭关突破；成功后补入1缕吐纳进度并消耗"
+    },
+    {
+      "Name": "突破丹_简略: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "突破丹_简略: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "突破丹_简略: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "突破丹_简略: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "突破丹_简略: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 583), (340, 475)"
+    },
+    {
+      "Name": "突破丹_简略: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "突破丹_详细: every actual source character appears once",
+      "Passed": true,
+      "Detail": "丹阶：九品\n丹效：薄效\n药效：\n成功突破至云息四层后，补入1缕吐纳进度；不溢出、不自动晋层。\n丹毒：＋18\n\n简介：\n只用于云息三层晋升四层的闭关突破，不可直接服用或编入战备。只用于云息三层晋升四层的闭关突破；成功后补入1缕吐纳进度并消耗\n\n计算来源\n18 = (12×1.5)"
+    },
+    {
+      "Name": "突破丹_详细: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "丹阶：九品\n丹效：薄效\n药效：\n成功突破至云息四层后，补入1缕吐纳进度；不溢出、不自动晋层。\n丹毒：＋18\n\n简介：\n只用于云息三层晋升四层的闭关突破，不可直接服用或编入战备。只用于云息三层晋升四层的闭关突破；成功后补入1缕吐纳进度并消耗\n\n计算来源\n18 = (12×1.5)"
+    },
+    {
+      "Name": "突破丹_详细: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "突破丹_详细: final sources do not expose internal rounding instructions",
+      "Passed": true,
+      "Detail": "\n18 = (12×1.5)"
+    },
+    {
+      "Name": "突破丹_详细: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "突破丹_详细: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "突破丹_详细: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "突破丹_详细: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 502), (340, 556)"
+    },
+    {
+      "Name": "突破丹_详细: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "real fractional material assessment and actual grade remain unchanged",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "fractional material source preserves weighted inputs without internal mapping notes",
+      "Passed": true,
+      "Detail": "品阶：9品上 \n五行：木\n质地：纤维\n相性：阳\n功用：固·九品、护·九品\n\n简介：\n\n计算来源\n材评：2.5 = 1×2＋1×0.5"
+    },
+    {
+      "Name": "符工_paper_简略: every actual source character appears once",
+      "Passed": true,
+      "Detail": "灵性：八品\n承墨量：中\n渗墨性：适中\n韧性：适中"
+    },
+    {
+      "Name": "符工_paper_简略: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "灵性：八品\n承墨量：中\n渗墨性：适中\n韧性：适中"
+    },
+    {
+      "Name": "符工_paper_简略: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符工_paper_简略: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符工_paper_简略: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符工_paper_简略: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符工_paper_简略: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 770), (340, 288)"
+    },
+    {
+      "Name": "符工_paper_简略: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符工_paper_详细: every actual source character appears once",
+      "Passed": true,
+      "Detail": "灵性：八品\n承墨量：中\n渗墨性：适中\n韧性：适中"
+    },
+    {
+      "Name": "符工_paper_详细: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "灵性：八品\n承墨量：中\n渗墨性：适中\n韧性：适中"
+    },
+    {
+      "Name": "符工_paper_详细: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符工_paper_详细: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符工_paper_详细: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符工_paper_详细: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符工_paper_详细: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 770), (340, 288)"
+    },
+    {
+      "Name": "符工_paper_详细: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符工_ink_简略: every actual source character appears once",
+      "Passed": true,
+      "Detail": "功用：\n聚、化\n灵性：八品\n浓淡：适中\n流动性：偏高"
+    },
+    {
+      "Name": "符工_ink_简略: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "功用：\n聚、化\n灵性：八品\n浓淡：适中\n流动性：偏高"
+    },
+    {
+      "Name": "符工_ink_简略: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符工_ink_简略: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符工_ink_简略: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符工_ink_简略: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符工_ink_简略: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 743), (340, 315)"
+    },
+    {
+      "Name": "符工_ink_简略: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符工_ink_详细: every actual source character appears once",
+      "Passed": true,
+      "Detail": "功用：\n聚、化\n灵性：八品\n浓淡：适中\n流动性：偏高"
+    },
+    {
+      "Name": "符工_ink_详细: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "功用：\n聚、化\n灵性：八品\n浓淡：适中\n流动性：偏高"
+    },
+    {
+      "Name": "符工_ink_详细: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符工_ink_详细: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符工_ink_详细: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符工_ink_详细: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符工_ink_详细: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 743), (340, 315)"
+    },
+    {
+      "Name": "符工_ink_详细: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符笔_简略: every actual source character appears once",
+      "Passed": true,
+      "Detail": "承墨：适中\n控墨：适中\n运锋：适中\n收锋：适中"
+    },
+    {
+      "Name": "符笔_简略: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "承墨：适中\n控墨：适中\n运锋：适中\n收锋：适中"
+    },
+    {
+      "Name": "符笔_简略: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符笔_简略: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符笔_简略: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符笔_简略: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符笔_简略: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 770), (340, 288)"
+    },
+    {
+      "Name": "符笔_简略: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符笔_详细: every actual source character appears once",
+      "Passed": true,
+      "Detail": "承墨：适中\n控墨：适中\n运锋：适中\n收锋：适中"
+    },
+    {
+      "Name": "符笔_详细: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "承墨：适中\n控墨：适中\n运锋：适中\n收锋：适中"
+    },
+    {
+      "Name": "符笔_详细: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符笔_详细: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符笔_详细: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符笔_详细: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "符笔_详细: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 770), (340, 288)"
+    },
+    {
+      "Name": "符笔_详细: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "成符_hushen_简略: every actual source character appears once",
+      "Passed": true,
+      "Detail": "消耗：体力1、法力0；符箓1张。\n目标：自身\n\n效果\n自身获得13点护盾。\n\n首次读到时检查一次；未能施用则保留。"
+    },
+    {
+      "Name": "成符_hushen_简略: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "消耗：体力1、法力0；符箓1张。\n目标：自身\n\n效果\n自身获得13点护盾。\n\n首次读到时检查一次；未能施用则保留。"
+    },
+    {
+      "Name": "成符_hushen_简略: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "成符_hushen_简略: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "成符_hushen_简略: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "成符_hushen_简略: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "成符_hushen_简略: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 563), (340, 495)"
+    },
+    {
+      "Name": "成符_hushen_简略: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "成符_hushen_详细: every actual source character appears once",
+      "Passed": true,
+      "Detail": "消耗：体力1、法力0；符箓1张。\n目标：自身\n\n效果\n自身获得13点护盾。\n\n首次读到时检查一次；未能施用则保留。"
+    },
+    {
+      "Name": "成符_hushen_详细: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "消耗：体力1、法力0；符箓1张。\n目标：自身\n\n效果\n自身获得13点护盾。\n\n首次读到时检查一次；未能施用则保留。"
+    },
+    {
+      "Name": "成符_hushen_详细: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "成符_hushen_详细: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "成符_hushen_详细: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "成符_hushen_详细: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "成符_hushen_详细: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 563), (340, 495)"
+    },
+    {
+      "Name": "成符_hushen_详细: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "成符_yanshi_简略: every actual source character appears once",
+      "Passed": true,
+      "Detail": "消耗：体力1、法力0；符箓1张。\n目标：随机一名敌人\n出手方式：远程\n\n效果\n对一名随机敌人造成17点远程物理伤害。\n\n首次读到时检查一次；未能施用则保留。"
+    },
+    {
+      "Name": "成符_yanshi_简略: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "消耗：体力1、法力0；符箓1张。\n目标：随机一名敌人\n出手方式：远程\n\n效果\n对一名随机敌人造成17点远程物理伤害。\n\n首次读到时检查一次；未能施用则保留。"
+    },
+    {
+      "Name": "成符_yanshi_简略: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "成符_yanshi_简略: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "成符_yanshi_简略: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "成符_yanshi_简略: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "成符_yanshi_简略: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 509), (340, 549)"
+    },
+    {
+      "Name": "成符_yanshi_简略: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "成符_yanshi_详细: every actual source character appears once",
+      "Passed": true,
+      "Detail": "消耗：体力1、法力0；符箓1张。\n目标：随机一名敌人\n出手方式：远程\n\n效果\n对一名随机敌人造成17点远程物理伤害。\n\n首次读到时检查一次；未能施用则保留。"
+    },
+    {
+      "Name": "成符_yanshi_详细: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "消耗：体力1、法力0；符箓1张。\n目标：随机一名敌人\n出手方式：远程\n\n效果\n对一名随机敌人造成17点远程物理伤害。\n\n首次读到时检查一次；未能施用则保留。"
+    },
+    {
+      "Name": "成符_yanshi_详细: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "成符_yanshi_详细: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "成符_yanshi_详细: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "成符_yanshi_详细: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "成符_yanshi_详细: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 509), (340, 549)"
+    },
+    {
+      "Name": "成符_yanshi_详细: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "行旅_简略: every actual source character appears once",
+      "Passed": true,
+      "Detail": "使用效果\n世界内使用；具体效果尚未配置说明。\n\n行旅\n遁速：4800\n可承载人数：6人\n消耗：灵石 ×1／24小时"
+    },
+    {
+      "Name": "行旅_简略: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "使用效果\n世界内使用；具体效果尚未配置说明。\n\n行旅\n遁速：4800\n可承载人数：6人\n消耗：灵石 ×1／24小时"
+    },
+    {
+      "Name": "行旅_简略: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "行旅_简略: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "行旅_简略: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "行旅_简略: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "行旅_简略: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 672), (340, 386)"
+    },
+    {
+      "Name": "行旅_简略: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "行旅_详细: every actual source character appears once",
+      "Passed": true,
+      "Detail": "使用效果\n世界内使用；具体效果尚未配置说明。\n\n行旅\n遁速：4800\n可承载人数：6人\n消耗：灵石 ×1／24小时"
+    },
+    {
+      "Name": "行旅_详细: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "使用效果\n世界内使用；具体效果尚未配置说明。\n\n行旅\n遁速：4800\n可承载人数：6人\n消耗：灵石 ×1／24小时"
+    },
+    {
+      "Name": "行旅_详细: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "行旅_详细: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "行旅_详细: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "行旅_详细: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "行旅_详细: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 672), (340, 386)"
+    },
+    {
+      "Name": "行旅_详细: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "status 外伤: actual viewport pointer hits the production source",
+      "Passed": true,
+      "Detail": "/root/HoverCategoryNativeSmoke/@HBoxContainer@37/@PanelContainer@39"
+    },
+    {
+      "Name": "状态_外伤_简略: every actual source character appears once",
+      "Passed": true,
+      "Detail": "当前层数：2/4\n持续时间：剩余1回合\n\n效果：\n每层使行动速度降低5%、闪避降低8%。新增层数会刷新持续时间。"
+    },
+    {
+      "Name": "状态_外伤_简略: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "当前层数：2/4\n持续时间：剩余1回合\n\n效果：\n每层使行动速度降低5%、闪避降低8%。新增层数会刷新持续时间。"
+    },
+    {
+      "Name": "状态_外伤_简略: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "状态_外伤_简略: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "状态_外伤_简略: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "状态_外伤_简略: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "状态_外伤_简略: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(150, 715), (340, 313)"
+    },
+    {
+      "Name": "状态_外伤_简略: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "status 外伤: actual viewport pointer hits the production source",
+      "Passed": true,
+      "Detail": "/root/HoverCategoryNativeSmoke/@HBoxContainer@37/@PanelContainer@39"
+    },
+    {
+      "Name": "状态_外伤_详细: every actual source character appears once",
+      "Passed": true,
+      "Detail": "当前层数：2/4\n持续时间：剩余1回合\n\n效果：\n每层使行动速度降低5%、闪避降低8%。新增层数会刷新持续时间。"
+    },
+    {
+      "Name": "状态_外伤_详细: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "当前层数：2/4\n持续时间：剩余1回合\n\n效果：\n每层使行动速度降低5%、闪避降低8%。新增层数会刷新持续时间。"
+    },
+    {
+      "Name": "状态_外伤_详细: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "状态_外伤_详细: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "状态_外伤_详细: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "状态_外伤_详细: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "状态_外伤_详细: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(150, 715), (340, 313)"
+    },
+    {
+      "Name": "状态_外伤_详细: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "status 僵直: actual viewport pointer hits the production source",
+      "Passed": true,
+      "Detail": "/root/HoverCategoryNativeSmoke/@HBoxContainer@37/@PanelContainer@41"
+    },
+    {
+      "Name": "状态_僵直_简略: every actual source character appears once",
+      "Passed": true,
+      "Detail": "当前层数：30/120\n持续时间：剩余30战斗帧\n\n效果：\n期间行动条停止推进，已有进度保留。再次施加刷新为本次层数，不累加。"
+    },
+    {
+      "Name": "状态_僵直_简略: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "当前层数：30/120\n持续时间：剩余30战斗帧\n\n效果：\n期间行动条停止推进，已有进度保留。再次施加刷新为本次层数，不累加。"
+    },
+    {
+      "Name": "状态_僵直_简略: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "状态_僵直_简略: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "状态_僵直_简略: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "状态_僵直_简略: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "状态_僵直_简略: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(190, 688), (340, 340)"
+    },
+    {
+      "Name": "状态_僵直_简略: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "status 僵直: actual viewport pointer hits the production source",
+      "Passed": true,
+      "Detail": "/root/HoverCategoryNativeSmoke/@HBoxContainer@37/@PanelContainer@41"
+    },
+    {
+      "Name": "状态_僵直_详细: every actual source character appears once",
+      "Passed": true,
+      "Detail": "当前层数：30/120\n持续时间：剩余30战斗帧\n\n效果：\n期间行动条停止推进，已有进度保留。再次施加刷新为本次层数，不累加。"
+    },
+    {
+      "Name": "状态_僵直_详细: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "当前层数：30/120\n持续时间：剩余30战斗帧\n\n效果：\n期间行动条停止推进，已有进度保留。再次施加刷新为本次层数，不累加。"
+    },
+    {
+      "Name": "状态_僵直_详细: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "状态_僵直_详细: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "状态_僵直_详细: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "状态_僵直_详细: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "状态_僵直_详细: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(190, 688), (340, 340)"
+    },
+    {
+      "Name": "状态_僵直_详细: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "status 护盾: actual viewport pointer hits the production source",
+      "Passed": true,
+      "Detail": "/root/HoverCategoryNativeSmoke/@HBoxContainer@37/@PanelContainer@43"
+    },
+    {
+      "Name": "状态_护盾_简略: every actual source character appears once",
+      "Passed": true,
+      "Detail": "当前层数：24\n持续时间：本场战斗\n\n效果：\n优先吸收伤害，按实际吸收量扣除。"
+    },
+    {
+      "Name": "状态_护盾_简略: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "当前层数：24\n持续时间：本场战斗\n\n效果：\n优先吸收伤害，按实际吸收量扣除。"
+    },
+    {
+      "Name": "状态_护盾_简略: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "状态_护盾_简略: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "状态_护盾_简略: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "状态_护盾_简略: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "状态_护盾_简略: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(230, 742), (340, 286)"
+    },
+    {
+      "Name": "状态_护盾_简略: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "status 护盾: actual viewport pointer hits the production source",
+      "Passed": true,
+      "Detail": "/root/HoverCategoryNativeSmoke/@HBoxContainer@37/@PanelContainer@43"
+    },
+    {
+      "Name": "状态_护盾_详细: every actual source character appears once",
+      "Passed": true,
+      "Detail": "当前层数：24\n持续时间：本场战斗\n\n效果：\n优先吸收伤害，按实际吸收量扣除。"
+    },
+    {
+      "Name": "状态_护盾_详细: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "当前层数：24\n持续时间：本场战斗\n\n效果：\n优先吸收伤害，按实际吸收量扣除。"
+    },
+    {
+      "Name": "状态_护盾_详细: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "状态_护盾_详细: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "状态_护盾_详细: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "状态_护盾_详细: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "状态_护盾_详细: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(230, 742), (340, 286)"
+    },
+    {
+      "Name": "状态_护盾_详细: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "炁_简略: every actual source character appears once",
+      "Passed": true,
+      "Detail": "当前层数：0\n持续时间：本场战斗\n\n效果：\n当前法力上限为0，不触发周天。"
+    },
+    {
+      "Name": "炁_简略: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "当前层数：0\n持续时间：本场战斗\n\n效果：\n当前法力上限为0，不触发周天。"
+    },
+    {
+      "Name": "炁_简略: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "炁_简略: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "炁_简略: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "炁_简略: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "炁_简略: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 772), (340, 286)"
+    },
+    {
+      "Name": "炁_简略: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "炁_详细: every actual source character appears once",
+      "Passed": true,
+      "Detail": "当前层数：0\n持续时间：本场战斗\n\n效果：\n当前法力上限为0，不触发周天。"
+    },
+    {
+      "Name": "炁_详细: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "当前层数：0\n持续时间：本场战斗\n\n效果：\n当前法力上限为0，不触发周天。"
+    },
+    {
+      "Name": "炁_详细: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "炁_详细: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "炁_详细: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "炁_详细: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "炁_详细: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1386, 772), (340, 286)"
+    },
+    {
+      "Name": "炁_详细: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "actual attribute: actual viewport pointer hits the production source",
+      "Passed": true,
+      "Detail": "/root/HoverCategoryNativeSmoke/InfoPanel/CharacterDesignCanvas/CharacterPage1/@PanelContainer@175/@VBoxContainer@176/@GridContainer@187/@HBoxContainer@188/@Label@190"
+    },
+    {
+      "Name": "人物实际属性_简略: every actual source character appears once",
+      "Passed": true,
+      "Detail": "当前值：24.05\n\n作用：\n提高生命上限。\n影响行动速度。\n影响精准。\n影响身法。\n影响会心。\n影响护心。\n与神魂共同影响身心协调。\n影响以体魄计算的技能效果。\n\n加成明细：\n境界累计成长倍率：1.27\n境界累计定额加成：5"
+    },
+    {
+      "Name": "人物实际属性_简略: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "当前值：24.05\n\n作用：\n提高生命上限。\n影响行动速度。\n影响精准。\n影响身法。\n影响会心。\n影响护心。\n与神魂共同影响身心协调。\n影响以体魄计算的技能效果。\n\n加成明细：\n境界累计成长倍率：1.27\n境界累计定额加成：5"
+    },
+    {
+      "Name": "人物实际属性_简略: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "人物实际属性_简略: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "人物实际属性_简略: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "人物实际属性_简略: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "人物实际属性_简略: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(696.8905, 185.92987), (340, 556)"
+    },
+    {
+      "Name": "人物实际属性_简略: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "actual attribute: actual viewport pointer hits the production source",
+      "Passed": true,
+      "Detail": "/root/HoverCategoryNativeSmoke/InfoPanel/CharacterDesignCanvas/CharacterPage1/@PanelContainer@175/@VBoxContainer@176/@GridContainer@187/@HBoxContainer@188/@Label@190"
+    },
+    {
+      "Name": "人物实际属性_详细: every actual source character appears once",
+      "Passed": true,
+      "Detail": "当前值：24.05\n\n作用：\n提高生命上限。\n影响行动速度。\n影响精准。\n影响身法。\n影响会心。\n影响护心。\n与神魂共同影响身心协调。\n影响以体魄计算的技能效果。\n\n加成明细：\n境界累计成长倍率：1.27\n境界累计定额加成：5\n\n计算来源\n24.05 = 基础值[15]×成长倍率[1.27]＋定额加成[5]"
+    },
+    {
+      "Name": "人物实际属性_详细: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "当前值：24.05\n\n作用：\n提高生命上限。\n影响行动速度。\n影响精准。\n影响身法。\n影响会心。\n影响护心。\n与神魂共同影响身心协调。\n影响以体魄计算的技能效果。\n\n加成明细：\n境界累计成长倍率：1.27\n境界累计定额加成：5\n\n计算来源\n24.05 = 基础值[15]×成长倍率[1.27]＋定额加成[5]"
+    },
+    {
+      "Name": "人物实际属性_详细: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "人物实际属性_详细: final sources do not expose internal rounding instructions",
+      "Passed": true,
+      "Detail": "\n24.05 = 基础值[15]×成长倍率[1.27]＋定额加成[5]"
+    },
+    {
+      "Name": "人物实际属性_详细: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "人物实际属性_详细: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "人物实际属性_详细: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "人物实际属性_详细: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(696.8905, 185.92987), (340, 664)"
+    },
+    {
+      "Name": "人物实际属性_详细: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "actual equipment page contains no temporary spirit occupation wording",
+      "Passed": true,
+      "Detail": "人物 · 装备\n分类复核人物\n云息三层\n无灵根\n武器\n素行剑\n甲\n护具\n空位\n器\n器物一\n空位\n器\n器物二\n空位\n衣着\n玉虚·内门常服\n穿戴汇总\n物理伤害\n0%\n物理防御\n0\n剑技物伤\n0%\n精准\n+2\n身法\n0\n会心\n0\n护心\n0\n会心伤害\n0\n器蕴\n灵识 0/100\n惊鸿  0/2\n未激活\n抱朴  0/2\n未激活\n随身战备\n＋\n战备位 1\n未编入\n＋\n战备位 2\n未编入\n＋\n战备位 3\n未编入"
+    },
+    {
+      "Name": "正式穿戴说明: actual page evidence saved separately from hover samples",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "actual equipment spirit: actual viewport pointer hits the production source",
+      "Passed": true,
+      "Detail": "/root/HoverCategoryNativeSmoke/InfoPanel/CharacterDesignCanvas/CharacterPage5/EquipmentBondsPanel/@Control@388/@Label@390"
+    },
+    {
+      "Name": "actual equipment spirit hover describes persistent occupation",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "穿戴灵识_Simple: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1075.9374, 583.50134), (460, 139)"
+    },
+    {
+      "Name": "穿戴灵识_Simple: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "actual equipment spirit: actual viewport pointer hits the production source",
+      "Passed": true,
+      "Detail": "/root/HoverCategoryNativeSmoke/InfoPanel/CharacterDesignCanvas/CharacterPage5/EquipmentBondsPanel/@Control@388/@Label@390"
+    },
+    {
+      "Name": "actual equipment spirit hover describes persistent occupation",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "穿戴灵识_Detailed: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1075.9374, 583.50134), (460, 139)"
+    },
+    {
+      "Name": "穿戴灵识_Detailed: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "actual unobserved NPC page preserves unknown private attributes",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "NPC未知资料: actual page evidence saved separately from hover samples",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "formation actual canvas hover reads its actual component parameters",
+      "Passed": true,
+      "Detail": "术法感应 · 1×1 · 术法\n点选改参数 · 拖动移动 · R旋转"
+    },
+    {
+      "Name": "阵法_sensor_Simple: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(550, 88), (460, 109)"
+    },
+    {
+      "Name": "阵法_sensor_Simple: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "formation actual canvas hover reads its actual component parameters",
+      "Passed": true,
+      "Detail": "术法感应 · 1×1 · 术法\n点选改参数 · 拖动移动 · R旋转"
+    },
+    {
+      "Name": "阵法_sensor_Detailed: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(550, 88), (460, 109)"
+    },
+    {
+      "Name": "阵法_sensor_Detailed: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "formation actual canvas hover reads its actual component parameters",
+      "Passed": true,
+      "Detail": "阵源 · 2×1\n点选改参数 · 拖动移动 · R旋转"
+    },
+    {
+      "Name": "阵法_source_Simple: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(550, 88), (460, 109)"
+    },
+    {
+      "Name": "阵法_source_Simple: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "formation actual canvas hover reads its actual component parameters",
+      "Passed": true,
+      "Detail": "阵源 · 2×1\n点选改参数 · 拖动移动 · R旋转"
+    },
+    {
+      "Name": "阵法_source_Detailed: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(550, 88), (460, 109)"
+    },
+    {
+      "Name": "阵法_source_Detailed: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "林地资源_简略: every actual source character appears once",
+      "Passed": true,
+      "Detail": "低处蕨叶密生，草间有浅浅水痕，未见明显踩踏或折损。\n资源类别：植物（苦苔根）\n蕨叶下生着几丛苦苔根。每次可采两份，此处现有余量有限；资源会随时间缓慢恢复。"
+    },
+    {
+      "Name": "林地资源_简略: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "低处蕨叶密生，草间有浅浅水痕，未见明显踩踏或折损。\n资源类别：植物（苦苔根）\n蕨叶下生着几丛苦苔根。每次可采两份，此处现有余量有限；资源会随时间缓慢恢复。"
+    },
+    {
+      "Name": "林地资源_简略: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "林地资源_简略: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "林地资源_简略: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "林地资源_简略: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "林地资源_简略: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1266, 838), (460, 220)"
+    },
+    {
+      "Name": "林地资源_简略: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "林地资源_详细: every actual source character appears once",
+      "Passed": true,
+      "Detail": "低处蕨叶密生，草间有浅浅水痕，未见明显踩踏或折损。\n资源类别：植物（苦苔根）\n蕨叶下生着几丛苦苔根。每次可采两份，此处现有余量有限；资源会随时间缓慢恢复。"
+    },
+    {
+      "Name": "林地资源_详细: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "低处蕨叶密生，草间有浅浅水痕，未见明显踩踏或折损。\n资源类别：植物（苦苔根）\n蕨叶下生着几丛苦苔根。每次可采两份，此处现有余量有限；资源会随时间缓慢恢复。"
+    },
+    {
+      "Name": "林地资源_详细: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "林地资源_详细: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "林地资源_详细: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "林地资源_详细: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "林地资源_详细: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1266, 838), (460, 220)"
+    },
+    {
+      "Name": "林地资源_详细: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "remote forest content does not expose current-node-only resource details",
+      "Passed": true,
+      "Detail": "日光穿过疏林，脚下的旧径仍清晰可辨。\n预计耗时：3 小时"
+    },
+    {
+      "Name": "actual forest event choice: actual viewport pointer hits the production source",
+      "Passed": true,
+      "Detail": "/root/HoverCategoryNativeSmoke/ActualForestEvent/EventPaper/@MarginContainer@694/@HBoxContainer@695/@VBoxContainer@696/ChoiceScroll/Choices/Choice_observe"
+    },
+    {
+      "Name": "林地事件Simple: every actual source character appears once",
+      "Passed": true,
+      "Detail": "凝神细察，辨清它的动静与迟疑。\n耗时0.5小时 · 精力1\n成功后驱赶机会提高15个百分点；失败后降低10个百分点。"
+    },
+    {
+      "Name": "林地事件Simple: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "凝神细察，辨清它的动静与迟疑。\n耗时0.5小时 · 精力1\n成功后驱赶机会提高15个百分点；失败后降低10个百分点。"
+    },
+    {
+      "Name": "林地事件Simple: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "林地事件Simple: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "林地事件Simple: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "林地事件Simple: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "real event choice retains complete detailed probability source while hiding it in simple mode",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "林地事件_Simple: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(463, 598), (460, 229)"
+    },
+    {
+      "Name": "林地事件_Simple: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "actual forest event choice: actual viewport pointer hits the production source",
+      "Passed": true,
+      "Detail": "/root/HoverCategoryNativeSmoke/ActualForestEvent/EventPaper/@MarginContainer@694/@HBoxContainer@695/@VBoxContainer@696/ChoiceScroll/Choices/Choice_observe"
+    },
+    {
+      "Name": "林地事件Detailed: every actual source character appears once",
+      "Passed": true,
+      "Detail": "凝神细察，辨清它的动静与迟疑。\n耗时0.5小时 · 精力1\n成功后驱赶机会提高15个百分点；失败后降低10个百分点。\n\n计算来源\n人物评分：18.65 = 神魂[19.05]×0.7＋灵慧[17.7]×0.3\n\n凶狼评分：10 = 凶狼神魂[10]\n\n成功率：65% = min(95%,max(5%,人物评分[18.65]÷(人物评分[18.65]＋凶狼评分[10])×100%))"
+    },
+    {
+      "Name": "林地事件Detailed: canonical sources and min/max spelling",
+      "Passed": true,
+      "Detail": "凝神细察，辨清它的动静与迟疑。\n耗时0.5小时 · 精力1\n成功后驱赶机会提高15个百分点；失败后降低10个百分点。\n\n计算来源\n人物评分：18.65 = 神魂[19.05]×0.7＋灵慧[17.7]×0.3\n\n凶狼评分：10 = 凶狼神魂[10]\n\n成功率：65% = min(95%,max(5%,人物评分[18.65]÷(人物评分[18.65]＋凶狼评分[10])×100%))"
+    },
+    {
+      "Name": "林地事件Detailed: only the appropriate final source block",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "林地事件Detailed: final sources do not expose internal rounding instructions",
+      "Passed": true,
+      "Detail": "\n人物评分：18.65 = 神魂[19.05]×0.7＋灵慧[17.7]×0.3\n\n凶狼评分：10 = 凶狼神魂[10]\n\n成功率：65% = min(95%,max(5%,人物评分[18.65]÷(人物评分[18.65]＋凶狼评分[10])×100%))"
+    },
+    {
+      "Name": "林地事件Detailed: main hover has no scrolling",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "林地事件Detailed: occupancy diagrams pass through input",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "林地事件Detailed: source remains readable",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "real event choice retains complete detailed probability source while hiding it in simple mode",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "林地事件_Detailed: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(463, 141), (460, 499)"
+    },
+    {
+      "Name": "林地事件_Detailed: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "open authored event hover refreshes mode without reconstructing its page",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "event 12.5-percent display preserves its original away-from-zero thirteen-percent result",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "formal alchemy retains its actual independent hover card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "formal alchemy uses a real registered source 君药",
+      "Passed": true,
+      "Detail": "/root/HoverCategoryNativeSmoke/AlchemyPreviewScene/MaterialCanvas/JunHerbCard/@Control@711/PickHerb_0"
+    },
+    {
+      "Name": "actual alchemy 君药: actual viewport pointer hits the production source",
+      "Passed": true,
+      "Detail": "/root/HoverCategoryNativeSmoke/AlchemyPreviewScene/MaterialCanvas/JunHerbCard/@Control@711/PickHerb_0"
+    },
+    {
+      "Name": "open alchemy independent card refreshes the mode without reentering 君药Detailed",
+      "Passed": true,
+      "Detail": "灵石 · 9品上\n五行：土\u3000阴阳：和\n材性：致密\n功用：\n聚九品、藏九品、通九品\n\n本位发挥：\n聚\n本位不发挥：\n藏、通\n\n本位用量：1份\n灵识占用：3.08\n行囊存量：1份\n\n计算来源\n灵识占用：3.08 = (材料负担[1.45]＋功用负担[0.75])×药位倍率[1.4]×用量倍率[1]"
+    },
+    {
+      "Name": "alchemy text region stays within its actual card 君药Detailed",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "alchemy displays every naturally wrapped line 君药Detailed",
+      "Passed": true,
+      "Detail": "19/19"
+    },
+    {
+      "Name": "alchemy source opens only its existing independent card 君药Detailed",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "炼丹_君药_Detailed: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(567.4813, 252.49733), (378.7461, 563.5282)"
+    },
+    {
+      "Name": "炼丹_君药_Detailed: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "open alchemy independent card refreshes the mode without reentering 君药Simple",
+      "Passed": true,
+      "Detail": "灵石 · 9品上\n五行：土\u3000阴阳：和\n材性：致密\n功用：\n聚九品、藏九品、通九品\n\n本位发挥：\n聚\n本位不发挥：\n藏、通\n\n本位用量：1份\n灵识占用：3.08\n行囊存量：1份"
+    },
+    {
+      "Name": "alchemy text region stays within its actual card 君药Simple",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "alchemy displays every naturally wrapped line 君药Simple",
+      "Passed": true,
+      "Detail": "14/14"
+    },
+    {
+      "Name": "alchemy source opens only its existing independent card 君药Simple",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "炼丹_君药_Simple: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(567.4813, 252.49733), (378.7461, 425.80237)"
+    },
+    {
+      "Name": "炼丹_君药_Simple: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "open alchemy independent card refreshes the mode without reentering 君药Detailed",
+      "Passed": true,
+      "Detail": "灵石 · 9品上\n五行：土\u3000阴阳：和\n材性：致密\n功用：\n聚九品、藏九品、通九品\n\n本位发挥：\n聚\n本位不发挥：\n藏、通\n\n本位用量：1份\n灵识占用：3.08\n行囊存量：1份\n\n计算来源\n灵识占用：3.08 = (材料负担[1.45]＋功用负担[0.75])×药位倍率[1.4]×用量倍率[1]"
+    },
+    {
+      "Name": "alchemy text region stays within its actual card 君药Detailed",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "alchemy displays every naturally wrapped line 君药Detailed",
+      "Passed": true,
+      "Detail": "19/19"
+    },
+    {
+      "Name": "alchemy source opens only its existing independent card 君药Detailed",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "alchemy card shrinks after switching to simple mode 君药",
+      "Passed": true,
+      "Detail": "(378.7461, 563.5282) → (378.7461, 425.80237)"
+    },
+    {
+      "Name": "formal alchemy uses a real registered source 八味本炉灵识",
+      "Passed": true,
+      "Detail": "/root/HoverCategoryNativeSmoke/AlchemyPreviewScene/MaterialCanvas/BatchRequirements/@Control@800/@Label@808"
+    },
+    {
+      "Name": "actual alchemy 八味本炉灵识: actual viewport pointer hits the production source",
+      "Passed": true,
+      "Detail": "/root/HoverCategoryNativeSmoke/AlchemyPreviewScene/MaterialCanvas/BatchRequirements/@Control@800/@Label@808"
+    },
+    {
+      "Name": "open alchemy independent card refreshes the mode without reentering 八味本炉灵识Detailed",
+      "Passed": true,
+      "Detail": "本炉灵识占用：18\n\n灵石：1份，灵识占用3.08\n凝露松脂：1份，灵识占用2.44\n回泉珠：1份，灵识占用2.56\n山蚕长丝：1份，灵识占用2.95\n月露苔：1份，灵识占用1.83\n朱阳花籽：1份，灵识占用1.29\n沉云玉屑：1份，灵识占用2.36\n瘴泥珠：1份，灵识占用1.16\n\n计算来源\n本炉灵识占用：18 = 3.08＋2.44＋2.56＋2.95＋1.83＋1.29＋2.36＋1.16\n\n灵石灵识占用：3.08 = (材料负担[1.45]＋功用负担[0.75])×药位倍率[1.4]×用量倍率[1]\n\n凝露松脂灵识占用：2.44 = (材料负担[1.29]＋功用负担[0.75])×药位倍率[1.2]×用量倍率[1]\n\n回泉珠灵识占用：2.56 = (材料负担[1.81]＋功用负担[0.75])×药位倍率[1]×用量倍率[1]\n\n山蚕长丝灵识占用：2.95 = (材料负担[1.45]＋功用负担[1.5])×药位倍率[1]×用量倍率[1]\n\n月露苔灵识占用：1.83 = (材料负担[1.29]＋功用负担[0.75])×药位倍率[0.9]×用量倍率[1]\n\n朱阳花籽灵识占用：1.29 = (材料负担[1.29]＋功用负担[0])×药位倍率[1]×用量倍率[1]\n\n沉云玉屑灵识占用：2.36 = (材料负担[1.62]＋功用负担[1])×药位倍率[0.9]×用量倍率[1]\n\n瘴泥珠灵识占用：1.16 = (材料负担[1.29]＋功用负担[0])×药位倍率[0.9]×用量倍率[1]"
+    },
+    {
+      "Name": "alchemy text region stays within its actual card 八味本炉灵识Detailed",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "alchemy displays every naturally wrapped line 八味本炉灵识Detailed",
+      "Passed": true,
+      "Detail": "31/31"
+    },
+    {
+      "Name": "alchemy source opens only its existing independent card 八味本炉灵识Detailed",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "炼丹_八味本炉灵识_Detailed: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(816.5356, 172.15721), (837.8321, 894.07007)"
+    },
+    {
+      "Name": "炼丹_八味本炉灵识_Detailed: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "open alchemy independent card refreshes the mode without reentering 八味本炉灵识Simple",
+      "Passed": true,
+      "Detail": "本炉灵识占用：18\n\n灵石：1份，灵识占用3.08\n凝露松脂：1份，灵识占用2.44\n回泉珠：1份，灵识占用2.56\n山蚕长丝：1份，灵识占用2.95\n月露苔：1份，灵识占用1.83\n朱阳花籽：1份，灵识占用1.29\n沉云玉屑：1份，灵识占用2.36\n瘴泥珠：1份，灵识占用1.16"
+    },
+    {
+      "Name": "alchemy text region stays within its actual card 八味本炉灵识Simple",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "alchemy displays every naturally wrapped line 八味本炉灵识Simple",
+      "Passed": true,
+      "Detail": "10/10"
+    },
+    {
+      "Name": "alchemy source opens only its existing independent card 八味本炉灵识Simple",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "炼丹_八味本炉灵识_Simple: complete native card fits actual viewport",
+      "Passed": true,
+      "Detail": "(1275.6216, 409.73434), (378.7461, 315.62167)"
+    },
+    {
+      "Name": "炼丹_八味本炉灵识_Simple: saved actual rendered view and card",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "open alchemy independent card refreshes the mode without reentering 八味本炉灵识Detailed",
+      "Passed": true,
+      "Detail": "本炉灵识占用：18\n\n灵石：1份，灵识占用3.08\n凝露松脂：1份，灵识占用2.44\n回泉珠：1份，灵识占用2.56\n山蚕长丝：1份，灵识占用2.95\n月露苔：1份，灵识占用1.83\n朱阳花籽：1份，灵识占用1.29\n沉云玉屑：1份，灵识占用2.36\n瘴泥珠：1份，灵识占用1.16\n\n计算来源\n本炉灵识占用：18 = 3.08＋2.44＋2.56＋2.95＋1.83＋1.29＋2.36＋1.16\n\n灵石灵识占用：3.08 = (材料负担[1.45]＋功用负担[0.75])×药位倍率[1.4]×用量倍率[1]\n\n凝露松脂灵识占用：2.44 = (材料负担[1.29]＋功用负担[0.75])×药位倍率[1.2]×用量倍率[1]\n\n回泉珠灵识占用：2.56 = (材料负担[1.81]＋功用负担[0.75])×药位倍率[1]×用量倍率[1]\n\n山蚕长丝灵识占用：2.95 = (材料负担[1.45]＋功用负担[1.5])×药位倍率[1]×用量倍率[1]\n\n月露苔灵识占用：1.83 = (材料负担[1.29]＋功用负担[0.75])×药位倍率[0.9]×用量倍率[1]\n\n朱阳花籽灵识占用：1.29 = (材料负担[1.29]＋功用负担[0])×药位倍率[1]×用量倍率[1]\n\n沉云玉屑灵识占用：2.36 = (材料负担[1.62]＋功用负担[1])×药位倍率[0.9]×用量倍率[1]\n\n瘴泥珠灵识占用：1.16 = (材料负担[1.29]＋功用负担[0])×药位倍率[0.9]×用量倍率[1]"
+    },
+    {
+      "Name": "alchemy text region stays within its actual card 八味本炉灵识Detailed",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "alchemy displays every naturally wrapped line 八味本炉灵识Detailed",
+      "Passed": true,
+      "Detail": "31/31"
+    },
+    {
+      "Name": "alchemy source opens only its existing independent card 八味本炉灵识Detailed",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "alchemy card shrinks after switching to simple mode 八味本炉灵识",
+      "Passed": true,
+      "Detail": "(837.8321, 894.07007) → (378.7461, 315.62167)"
+    },
+    {
+      "Name": "eight real materials expose total plus eight separate occupation sources",
+      "Passed": true,
+      "Detail": "本炉灵识占用：18\n\n灵石：1份，灵识占用3.08\n凝露松脂：1份，灵识占用2.44\n回泉珠：1份，灵识占用2.56\n山蚕长丝：1份，灵识占用2.95\n月露苔：1份，灵识占用1.83\n朱阳花籽：1份，灵识占用1.29\n沉云玉屑：1份，灵识占用2.36\n瘴泥珠：1份，灵识占用1.16\n\n计算来源\n本炉灵识占用：18 = 3.08＋2.44＋2.56＋2.95＋1.83＋1.29＋2.36＋1.16\n\n灵石灵识占用：3.08 = (材料负担[1.45]＋功用负担[0.75])×药位倍率[1.4]×用量倍率[1]\n\n凝露松脂灵识占用：2.44 = (材料负担[1.29]＋功用负担[0.75])×药位倍率[1.2]×用量倍率[1]\n\n回泉珠灵识占用：2.56 = (材料负担[1.81]＋功用负担[0.75])×药位倍率[1]×用量倍率[1]\n\n山蚕长丝灵识占用：2.95 = (材料负担[1.45]＋功用负担[1.5])×药位倍率[1]×用量倍率[1]\n\n月露苔灵识占用：1.83 = (材料负担[1.29]＋功用负担[0.75])×药位倍率[0.9]×用量倍率[1]\n\n朱阳花籽灵识占用：1.29 = (材料负担[1.29]＋功用负担[0])×药位倍率[1]×用量倍率[1]\n\n沉云玉屑灵识占用：2.36 = (材料负担[1.62]＋功用负担[1])×药位倍率[0.9]×用量倍率[1]\n\n瘴泥珠灵识占用：1.16 = (材料负担[1.29]＋功用负担[0])×药位倍率[0.9]×用量倍率[1]"
+    },
+    {
+      "Name": "long actual eight-material source uses measured height or greater width rather than a 420-pixel clipping cap",
+      "Passed": true,
+      "Detail": "(837.8321, 894.07007)"
+    },
+    {
+      "Name": "viewing alchemy sources does not consume ingredients or world stamina",
+      "Passed": true,
+      "Detail": ""
+    },
+    {
+      "Name": "read-only hover leaves isolated owner health stamina inventory and attributes unchanged",
+      "Passed": true,
+      "Detail": ""
+    }
+  ],
+  "captures": [
+    {
+      "id": "材料_简略",
+      "category": "材料",
+      "scope": "分类内容样本",
+      "source": "StoragePanel.ItemHover",
+      "origin": "res://resources/entities/items/玄铁.tres",
+      "text": "品阶：8品下 \n五行：金\n质地：致密\n相性：阳\n功用：\n固·八品\n\n简介：",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 381,
+      "card": "1920x1080/材料_简略_hover.png",
+      "full": "1920x1080/材料_简略_full.png"
+    },
+    {
+      "id": "材料_详细",
+      "category": "材料",
+      "scope": "分类内容样本",
+      "source": "StoragePanel.ItemHover",
+      "origin": "res://resources/entities/items/玄铁.tres",
+      "text": "品阶：8品下 \n五行：金\n质地：致密\n相性：阳\n功用：\n固·八品\n\n简介：\n\n计算来源\n材评：4 = 2×2",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 462,
+      "card": "1920x1080/材料_详细_hover.png",
+      "full": "1920x1080/材料_详细_full.png"
+    },
+    {
+      "id": "衣着_简略",
+      "category": "衣着",
+      "scope": "分类内容样本",
+      "source": "StoragePanel.ItemHover",
+      "origin": "res://resources/entities/items/clothing/玉虚内门常服.tres",
+      "text": "适用人物：通用\n\n简介：\n玉虚仙宗内门弟子衣着。",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 273,
+      "card": "1920x1080/衣着_简略_hover.png",
+      "full": "1920x1080/衣着_简略_full.png"
+    },
+    {
+      "id": "衣着_详细",
+      "category": "衣着",
+      "scope": "分类内容样本",
+      "source": "StoragePanel.ItemHover",
+      "origin": "res://resources/entities/items/clothing/玉虚内门常服.tres",
+      "text": "适用人物：通用\n\n简介：\n玉虚仙宗内门弟子衣着。",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 273,
+      "card": "1920x1080/衣着_详细_hover.png",
+      "full": "1920x1080/衣着_详细_full.png"
+    },
+    {
+      "id": "储物袋_简略",
+      "category": "储物袋（既有隔离定义）",
+      "scope": "分类内容样本",
+      "source": "StoragePanel.ItemHover",
+      "origin": "res://tools/fixtures/storage_bag_narrow.tres",
+      "text": "袋内空间：3 × 2 格\n不能放入储物袋。",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 234,
+      "card": "1920x1080/储物袋_简略_hover.png",
+      "full": "1920x1080/储物袋_简略_full.png"
+    },
+    {
+      "id": "储物袋_详细",
+      "category": "储物袋（既有隔离定义）",
+      "scope": "分类内容样本",
+      "source": "StoragePanel.ItemHover",
+      "origin": "res://tools/fixtures/storage_bag_narrow.tres",
+      "text": "袋内空间：3 × 2 格\n不能放入储物袋。",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 234,
+      "card": "1920x1080/储物袋_详细_hover.png",
+      "full": "1920x1080/储物袋_详细_full.png"
+    },
+    {
+      "id": "秘籍_简略",
+      "category": "秘籍",
+      "scope": "分类内容样本",
+      "source": "StoragePanel.ItemHover",
+      "origin": "res://resources/entities/items/玄枢含章经秘籍.tres",
+      "text": "修习境界：凡人至云息十层\n修习要求：灵慧≥5\n关键词：周天\n\n简介：\n以周天为枢机，使周天指示所指招式额外施放。",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 354,
+      "card": "1920x1080/秘籍_简略_hover.png",
+      "full": "1920x1080/秘籍_简略_full.png"
+    },
+    {
+      "id": "秘籍_详细",
+      "category": "秘籍",
+      "scope": "分类内容样本",
+      "source": "StoragePanel.ItemHover",
+      "origin": "res://resources/entities/items/玄枢含章经秘籍.tres",
+      "text": "修习境界：凡人至云息十层\n修习要求：灵慧≥5\n关键词：周天\n\n简介：\n以周天为枢机，使周天指示所指招式额外施放。",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 354,
+      "card": "1920x1080/秘籍_详细_hover.png",
+      "full": "1920x1080/秘籍_详细_full.png"
+    },
+    {
+      "id": "凡器_简略",
+      "category": "普通剑器",
+      "scope": "分类内容样本",
+      "source": "StoragePanel.ItemHover",
+      "origin": "res://resources/entities/equipment/素行剑.tres",
+      "text": "品阶：凡器\n器类：剑\n器蕴：无\n锋锐：无\n\n装备效果：\n精准＋2\n\n化法：\n无\n\n技能：\n无\n\n简介：\n宗门制式凡器",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 681,
+      "card": "1920x1080/凡器_简略_hover.png",
+      "full": "1920x1080/凡器_简略_full.png"
+    },
+    {
+      "id": "凡器_详细",
+      "category": "普通剑器",
+      "scope": "分类内容样本",
+      "source": "StoragePanel.ItemHover",
+      "origin": "res://resources/entities/equipment/素行剑.tres",
+      "text": "品阶：凡器\n器类：剑\n器蕴：无\n锋锐：无\n\n装备效果：\n精准＋2\n\n化法：\n无\n\n技能：\n无\n\n简介：\n宗门制式凡器",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 681,
+      "card": "1920x1080/凡器_详细_hover.png",
+      "full": "1920x1080/凡器_详细_full.png"
+    },
+    {
+      "id": "清和_简略",
+      "category": "清和正式商品",
+      "scope": "分类内容样本",
+      "source": "StoragePanel.ItemHover",
+      "origin": "res://resources/entities/equipment/清和剑.tres",
+      "text": "品阶：法器\n器类：剑（修长薄脊剑）\n器蕴：惊鸿 2、抱朴 3\n锋锐：5\n\n装备效果：\n物理伤害 +3.31%\n物理防御 +4\n带“剑”关键词的技能，物理伤害 +1.27%\n\n化法：\n适用范围：能应对并施加化解，且带“气血”关键词的单体物理伤害技能\n追加效果：\n· 实际应对追加化解 +1\n· 本次物理防御忽略 2.1%\n\n技能：\n飞斩\n费用：体力0、法力0\n目标：随机单敌·远程\n灵识占用：2\n物理伤害9。\n稳定34。\n\n简介：",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 1017,
+      "card": "1920x1080/清和_简略_hover.png",
+      "full": "1920x1080/清和_简略_full.png"
+    },
+    {
+      "id": "清和_详细",
+      "category": "清和正式商品",
+      "scope": "分类内容样本",
+      "source": "StoragePanel.ItemHover",
+      "origin": "res://resources/entities/equipment/清和剑.tres",
+      "text": "品阶：法器\n器类：剑（修长薄脊剑）\n器蕴：惊鸿 2、抱朴 3\n锋锐：5\n\n装备效果：\n物理伤害 +3.31%\n物理防御 +4\n带“剑”关键词的技能，物理伤害 +1.27%\n\n化法：\n适用范围：能应对并施加化解，且带“气血”关键词的单体物理伤害技能\n追加效果：\n· 实际应对追加化解 +1\n· 本次物理防御忽略 2.1%\n\n技能：\n飞斩\n费用：体力0、法力0\n目标：随机单敌·远程\n灵识占用：2\n物理伤害9。\n稳定34。\n\n简介：\n\n计算来源\n9 = 3.89＋神魂[19.05]×0.2＋剑道造诣[5]×0.33\n\n34 = 11.39＋神魂[19.05]×0.87＋剑道造诣[5]×0.27＋本器占用[2]×2.7",
+      "complete_in_viewport": true,
+      "width": 700,
+      "height": 720,
+      "card": "1920x1080/清和_详细_hover.png",
+      "full": "1920x1080/清和_详细_full.png"
+    },
+    {
+      "id": "突破丹_简略",
+      "category": "突破丹",
+      "scope": "分类内容样本",
+      "source": "StoragePanel.ItemHover",
+      "origin": "res://resources/entities/items/定脉丹.tres",
+      "text": "丹阶：九品\n丹效：薄效\n药效：\n成功突破至云息四层后，补入1缕吐纳进度；不溢出、不自动晋层。\n丹毒：＋18\n\n简介：\n只用于云息三层晋升四层的闭关突破，不可直接服用或编入战备。只用于云息三层晋升四层的闭关突破；成功后补入1缕吐纳进度并消耗",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 475,
+      "card": "1920x1080/突破丹_简略_hover.png",
+      "full": "1920x1080/突破丹_简略_full.png"
+    },
+    {
+      "id": "突破丹_详细",
+      "category": "突破丹",
+      "scope": "分类内容样本",
+      "source": "StoragePanel.ItemHover",
+      "origin": "res://resources/entities/items/定脉丹.tres",
+      "text": "丹阶：九品\n丹效：薄效\n药效：\n成功突破至云息四层后，补入1缕吐纳进度；不溢出、不自动晋层。\n丹毒：＋18\n\n简介：\n只用于云息三层晋升四层的闭关突破，不可直接服用或编入战备。只用于云息三层晋升四层的闭关突破；成功后补入1缕吐纳进度并消耗\n\n计算来源\n18 = (12×1.5)",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 556,
+      "card": "1920x1080/突破丹_详细_hover.png",
+      "full": "1920x1080/突破丹_详细_full.png"
+    },
+    {
+      "id": "符工_paper_简略",
+      "category": "符纸",
+      "scope": "分类内容样本",
+      "source": "TalismanCraftingService.Evaluate → StoragePanel.ItemHover",
+      "origin": "res://resources/entities/items/乌羽片.tres；res://resources/entities/items/回泉珠.tres；只报价未执行制作",
+      "text": "灵性：八品\n承墨量：中\n渗墨性：适中\n韧性：适中",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 288,
+      "card": "1920x1080/符工_paper_简略_hover.png",
+      "full": "1920x1080/符工_paper_简略_full.png"
+    },
+    {
+      "id": "符工_paper_详细",
+      "category": "符纸",
+      "scope": "分类内容样本",
+      "source": "TalismanCraftingService.Evaluate → StoragePanel.ItemHover",
+      "origin": "res://resources/entities/items/乌羽片.tres；res://resources/entities/items/回泉珠.tres；只报价未执行制作",
+      "text": "灵性：八品\n承墨量：中\n渗墨性：适中\n韧性：适中",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 288,
+      "card": "1920x1080/符工_paper_详细_hover.png",
+      "full": "1920x1080/符工_paper_详细_full.png"
+    },
+    {
+      "id": "符工_ink_简略",
+      "category": "符墨",
+      "scope": "分类内容样本",
+      "source": "TalismanCraftingService.Evaluate → StoragePanel.ItemHover",
+      "origin": "res://resources/entities/items/回泉珠.tres；只报价未执行制作",
+      "text": "功用：\n聚、化\n灵性：八品\n浓淡：适中\n流动性：偏高",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 315,
+      "card": "1920x1080/符工_ink_简略_hover.png",
+      "full": "1920x1080/符工_ink_简略_full.png"
+    },
+    {
+      "id": "符工_ink_详细",
+      "category": "符墨",
+      "scope": "分类内容样本",
+      "source": "TalismanCraftingService.Evaluate → StoragePanel.ItemHover",
+      "origin": "res://resources/entities/items/回泉珠.tres；只报价未执行制作",
+      "text": "功用：\n聚、化\n灵性：八品\n浓淡：适中\n流动性：偏高",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 315,
+      "card": "1920x1080/符工_ink_详细_hover.png",
+      "full": "1920x1080/符工_ink_详细_full.png"
+    },
+    {
+      "id": "符笔_简略",
+      "category": "符笔",
+      "scope": "分类内容样本",
+      "source": "TalismanCraftingService.BrushSnapshot → StoragePanel.ItemHover",
+      "origin": "正式青竹符笔冻结参数",
+      "text": "承墨：适中\n控墨：适中\n运锋：适中\n收锋：适中",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 288,
+      "card": "1920x1080/符笔_简略_hover.png",
+      "full": "1920x1080/符笔_简略_full.png"
+    },
+    {
+      "id": "符笔_详细",
+      "category": "符笔",
+      "scope": "分类内容样本",
+      "source": "TalismanCraftingService.BrushSnapshot → StoragePanel.ItemHover",
+      "origin": "正式青竹符笔冻结参数",
+      "text": "承墨：适中\n控墨：适中\n运锋：适中\n收锋：适中",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 288,
+      "card": "1920x1080/符笔_详细_hover.png",
+      "full": "1920x1080/符笔_详细_full.png"
+    },
+    {
+      "id": "成符_hushen_简略",
+      "category": "成符",
+      "scope": "分类内容样本",
+      "source": "StoragePanel.ItemHover → TalismanCombatCatalog.Hover",
+      "origin": "res://resources/activeskills/符箓成品/hushen_2.tres；隔离冻结档位定义",
+      "text": "消耗：体力1、法力0；符箓1张。\n目标：自身\n\n效果\n自身获得13点护盾。\n\n首次读到时检查一次；未能施用则保留。",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 495,
+      "card": "1920x1080/成符_hushen_简略_hover.png",
+      "full": "1920x1080/成符_hushen_简略_full.png"
+    },
+    {
+      "id": "成符_hushen_详细",
+      "category": "成符",
+      "scope": "分类内容样本",
+      "source": "StoragePanel.ItemHover → TalismanCombatCatalog.Hover",
+      "origin": "res://resources/activeskills/符箓成品/hushen_2.tres；隔离冻结档位定义",
+      "text": "消耗：体力1、法力0；符箓1张。\n目标：自身\n\n效果\n自身获得13点护盾。\n\n首次读到时检查一次；未能施用则保留。",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 495,
+      "card": "1920x1080/成符_hushen_详细_hover.png",
+      "full": "1920x1080/成符_hushen_详细_full.png"
+    },
+    {
+      "id": "成符_yanshi_简略",
+      "category": "成符",
+      "scope": "分类内容样本",
+      "source": "StoragePanel.ItemHover → TalismanCombatCatalog.Hover",
+      "origin": "res://resources/activeskills/符箓成品/yanshi_2.tres；隔离冻结档位定义",
+      "text": "消耗：体力1、法力0；符箓1张。\n目标：随机一名敌人\n出手方式：远程\n\n效果\n对一名随机敌人造成17点远程物理伤害。\n\n首次读到时检查一次；未能施用则保留。",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 549,
+      "card": "1920x1080/成符_yanshi_简略_hover.png",
+      "full": "1920x1080/成符_yanshi_简略_full.png"
+    },
+    {
+      "id": "成符_yanshi_详细",
+      "category": "成符",
+      "scope": "分类内容样本",
+      "source": "StoragePanel.ItemHover → TalismanCombatCatalog.Hover",
+      "origin": "res://resources/activeskills/符箓成品/yanshi_2.tres；隔离冻结档位定义",
+      "text": "消耗：体力1、法力0；符箓1张。\n目标：随机一名敌人\n出手方式：远程\n\n效果\n对一名随机敌人造成17点远程物理伤害。\n\n首次读到时检查一次；未能施用则保留。",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 549,
+      "card": "1920x1080/成符_yanshi_详细_hover.png",
+      "full": "1920x1080/成符_yanshi_详细_full.png"
+    },
+    {
+      "id": "行旅_简略",
+      "category": "行旅字段（真实接引舟参数组合）",
+      "scope": "分类内容样本",
+      "source": "StoragePanel.ItemHover → ItemTravelPresentation.Append",
+      "origin": "res://resources/world/bai_chuan/yuxu_escort_boat_travel_20261106.tres；隔离载体，非玩家已有成器",
+      "text": "使用效果\n世界内使用；具体效果尚未配置说明。\n\n行旅\n遁速：4800\n可承载人数：6人\n消耗：灵石 ×1／24小时",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 386,
+      "card": "1920x1080/行旅_简略_hover.png",
+      "full": "1920x1080/行旅_简略_full.png"
+    },
+    {
+      "id": "行旅_详细",
+      "category": "行旅字段（真实接引舟参数组合）",
+      "scope": "分类内容样本",
+      "source": "StoragePanel.ItemHover → ItemTravelPresentation.Append",
+      "origin": "res://resources/world/bai_chuan/yuxu_escort_boat_travel_20261106.tres；隔离载体，非玩家已有成器",
+      "text": "使用效果\n世界内使用；具体效果尚未配置说明。\n\n行旅\n遁速：4800\n可承载人数：6人\n消耗：灵石 ×1／24小时",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 386,
+      "card": "1920x1080/行旅_详细_hover.png",
+      "full": "1920x1080/行旅_详细_full.png"
+    },
+    {
+      "id": "状态_外伤_简略",
+      "category": "状态",
+      "scope": "正式状态徽标控件（隔离容器）",
+      "source": "BattleUnitOverlay.CreateStatusBadge → BuildStatusHoverInfo",
+      "origin": "/root/HoverCategoryNativeSmoke/@HBoxContainer@37/@PanelContainer@39",
+      "text": "当前层数：2/4\n持续时间：剩余1回合\n\n效果：\n每层使行动速度降低5%、闪避降低8%。新增层数会刷新持续时间。",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 313,
+      "card": "1920x1080/状态_外伤_简略_hover.png",
+      "full": "1920x1080/状态_外伤_简略_full.png"
+    },
+    {
+      "id": "状态_外伤_详细",
+      "category": "状态",
+      "scope": "正式状态徽标控件（隔离容器）",
+      "source": "BattleUnitOverlay.CreateStatusBadge → BuildStatusHoverInfo",
+      "origin": "/root/HoverCategoryNativeSmoke/@HBoxContainer@37/@PanelContainer@39",
+      "text": "当前层数：2/4\n持续时间：剩余1回合\n\n效果：\n每层使行动速度降低5%、闪避降低8%。新增层数会刷新持续时间。",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 313,
+      "card": "1920x1080/状态_外伤_详细_hover.png",
+      "full": "1920x1080/状态_外伤_详细_full.png"
+    },
+    {
+      "id": "状态_僵直_简略",
+      "category": "状态",
+      "scope": "正式状态徽标控件（隔离容器）",
+      "source": "BattleUnitOverlay.CreateStatusBadge → BuildStatusHoverInfo",
+      "origin": "/root/HoverCategoryNativeSmoke/@HBoxContainer@37/@PanelContainer@41",
+      "text": "当前层数：30/120\n持续时间：剩余30战斗帧\n\n效果：\n期间行动条停止推进，已有进度保留。再次施加刷新为本次层数，不累加。",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 340,
+      "card": "1920x1080/状态_僵直_简略_hover.png",
+      "full": "1920x1080/状态_僵直_简略_full.png"
+    },
+    {
+      "id": "状态_僵直_详细",
+      "category": "状态",
+      "scope": "正式状态徽标控件（隔离容器）",
+      "source": "BattleUnitOverlay.CreateStatusBadge → BuildStatusHoverInfo",
+      "origin": "/root/HoverCategoryNativeSmoke/@HBoxContainer@37/@PanelContainer@41",
+      "text": "当前层数：30/120\n持续时间：剩余30战斗帧\n\n效果：\n期间行动条停止推进，已有进度保留。再次施加刷新为本次层数，不累加。",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 340,
+      "card": "1920x1080/状态_僵直_详细_hover.png",
+      "full": "1920x1080/状态_僵直_详细_full.png"
+    },
+    {
+      "id": "状态_护盾_简略",
+      "category": "状态",
+      "scope": "正式状态徽标控件（隔离容器）",
+      "source": "BattleUnitOverlay.CreateStatusBadge → BuildStatusHoverInfo",
+      "origin": "/root/HoverCategoryNativeSmoke/@HBoxContainer@37/@PanelContainer@43",
+      "text": "当前层数：24\n持续时间：本场战斗\n\n效果：\n优先吸收伤害，按实际吸收量扣除。",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 286,
+      "card": "1920x1080/状态_护盾_简略_hover.png",
+      "full": "1920x1080/状态_护盾_简略_full.png"
+    },
+    {
+      "id": "状态_护盾_详细",
+      "category": "状态",
+      "scope": "正式状态徽标控件（隔离容器）",
+      "source": "BattleUnitOverlay.CreateStatusBadge → BuildStatusHoverInfo",
+      "origin": "/root/HoverCategoryNativeSmoke/@HBoxContainer@37/@PanelContainer@43",
+      "text": "当前层数：24\n持续时间：本场战斗\n\n效果：\n优先吸收伤害，按实际吸收量扣除。",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 286,
+      "card": "1920x1080/状态_护盾_详细_hover.png",
+      "full": "1920x1080/状态_护盾_详细_full.png"
+    },
+    {
+      "id": "炁_简略",
+      "category": "公共资源",
+      "scope": "分类内容样本",
+      "source": "BattleStatusPresentation.Resource",
+      "origin": "隔离人物实际法力上限0；零炁计数样本",
+      "text": "当前层数：0\n持续时间：本场战斗\n\n效果：\n当前法力上限为0，不触发周天。",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 286,
+      "card": "1920x1080/炁_简略_hover.png",
+      "full": "1920x1080/炁_简略_full.png"
+    },
+    {
+      "id": "炁_详细",
+      "category": "公共资源",
+      "scope": "分类内容样本",
+      "source": "BattleStatusPresentation.Resource",
+      "origin": "隔离人物实际法力上限0；零炁计数样本",
+      "text": "当前层数：0\n持续时间：本场战斗\n\n效果：\n当前法力上限为0，不触发周天。",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 286,
+      "card": "1920x1080/炁_详细_hover.png",
+      "full": "1920x1080/炁_详细_full.png"
+    },
+    {
+      "id": "人物实际属性_简略",
+      "category": "人物资料",
+      "scope": "正式人物属性行",
+      "source": "CharacterAttributePresentation.Bind",
+      "origin": "/root/HoverCategoryNativeSmoke/InfoPanel/CharacterDesignCanvas/CharacterPage1/@PanelContainer@175/@VBoxContainer@176/@GridContainer@187/@HBoxContainer@188/@Label@190",
+      "text": "当前值：24.05\n\n作用：\n提高生命上限。\n影响行动速度。\n影响精准。\n影响身法。\n影响会心。\n影响护心。\n与神魂共同影响身心协调。\n影响以体魄计算的技能效果。\n\n加成明细：\n境界累计成长倍率：1.27\n境界累计定额加成：5",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 556,
+      "card": "1920x1080/人物实际属性_简略_hover.png",
+      "full": "1920x1080/人物实际属性_简略_full.png"
+    },
+    {
+      "id": "人物实际属性_详细",
+      "category": "人物资料",
+      "scope": "正式人物属性行",
+      "source": "CharacterAttributePresentation.Bind",
+      "origin": "/root/HoverCategoryNativeSmoke/InfoPanel/CharacterDesignCanvas/CharacterPage1/@PanelContainer@175/@VBoxContainer@176/@GridContainer@187/@HBoxContainer@188/@Label@190",
+      "text": "当前值：24.05\n\n作用：\n提高生命上限。\n影响行动速度。\n影响精准。\n影响身法。\n影响会心。\n影响护心。\n与神魂共同影响身心协调。\n影响以体魄计算的技能效果。\n\n加成明细：\n境界累计成长倍率：1.27\n境界累计定额加成：5\n\n计算来源\n24.05 = 基础值[15]×成长倍率[1.27]＋定额加成[5]",
+      "complete_in_viewport": true,
+      "width": 340,
+      "height": 664,
+      "card": "1920x1080/人物实际属性_详细_hover.png",
+      "full": "1920x1080/人物实际属性_详细_full.png"
+    },
+    {
+      "id": "穿戴灵识_Simple",
+      "category": "穿戴说明",
+      "scope": "正式穿戴页说明控件",
+      "source": "InfoPanel.build_equipment_bonds → CharacterHover",
+      "origin": "/root/HoverCategoryNativeSmoke/InfoPanel/CharacterDesignCanvas/CharacterPage5/EquipmentBondsPanel/@Control@388/@Label@390",
+      "text": "御使器物持续占用灵识，跨回合保持；收回或停用时释放。技能自身的体力、法力费用另算。",
+      "complete_in_viewport": true,
+      "width": 460,
+      "height": 139,
+      "card": "1920x1080/穿戴灵识_Simple_hover.png",
+      "full": "1920x1080/穿戴灵识_Simple_full.png"
+    },
+    {
+      "id": "穿戴灵识_Detailed",
+      "category": "穿戴说明",
+      "scope": "正式穿戴页说明控件",
+      "source": "InfoPanel.build_equipment_bonds → CharacterHover",
+      "origin": "/root/HoverCategoryNativeSmoke/InfoPanel/CharacterDesignCanvas/CharacterPage5/EquipmentBondsPanel/@Control@388/@Label@390",
+      "text": "御使器物持续占用灵识，跨回合保持；收回或停用时释放。技能自身的体力、法力费用另算。",
+      "complete_in_viewport": true,
+      "width": 460,
+      "height": 139,
+      "card": "1920x1080/穿戴灵识_Detailed_hover.png",
+      "full": "1920x1080/穿戴灵识_Detailed_full.png"
+    },
+    {
+      "id": "阵法_sensor_Simple",
+      "category": "阵法部件",
+      "scope": "正式FormationBoardCanvas鼠标处理",
+      "source": "FormationBoardCanvas.UpdateHoverText → Describe",
+      "origin": "/root/HoverCategoryNativeSmoke/ActualFormationCanvas",
+      "text": "术法感应 · 1×1 · 术法\n点选改参数 · 拖动移动 · R旋转",
+      "complete_in_viewport": true,
+      "width": 460,
+      "height": 109,
+      "card": "1920x1080/阵法_sensor_Simple_hover.png",
+      "full": "1920x1080/阵法_sensor_Simple_full.png"
+    },
+    {
+      "id": "阵法_sensor_Detailed",
+      "category": "阵法部件",
+      "scope": "正式FormationBoardCanvas鼠标处理",
+      "source": "FormationBoardCanvas.UpdateHoverText → Describe",
+      "origin": "/root/HoverCategoryNativeSmoke/ActualFormationCanvas",
+      "text": "术法感应 · 1×1 · 术法\n点选改参数 · 拖动移动 · R旋转",
+      "complete_in_viewport": true,
+      "width": 460,
+      "height": 109,
+      "card": "1920x1080/阵法_sensor_Detailed_hover.png",
+      "full": "1920x1080/阵法_sensor_Detailed_full.png"
+    },
+    {
+      "id": "阵法_source_Simple",
+      "category": "阵法部件",
+      "scope": "正式FormationBoardCanvas鼠标处理",
+      "source": "FormationBoardCanvas.UpdateHoverText → Describe",
+      "origin": "/root/HoverCategoryNativeSmoke/ActualFormationCanvas",
+      "text": "阵源 · 2×1\n点选改参数 · 拖动移动 · R旋转",
+      "complete_in_viewport": true,
+      "width": 460,
+      "height": 109,
+      "card": "1920x1080/阵法_source_Simple_hover.png",
+      "full": "1920x1080/阵法_source_Simple_full.png"
+    },
+    {
+      "id": "阵法_source_Detailed",
+      "category": "阵法部件",
+      "scope": "正式FormationBoardCanvas鼠标处理",
+      "source": "FormationBoardCanvas.UpdateHoverText → Describe",
+      "origin": "/root/HoverCategoryNativeSmoke/ActualFormationCanvas",
+      "text": "阵源 · 2×1\n点选改参数 · 拖动移动 · R旋转",
+      "complete_in_viewport": true,
+      "width": 460,
+      "height": 109,
+      "card": "1920x1080/阵法_source_Detailed_hover.png",
+      "full": "1920x1080/阵法_source_Detailed_full.png"
+    },
+    {
+      "id": "林地资源_简略",
+      "category": "林地当前资源",
+      "scope": "分类内容样本",
+      "source": "EastWoodsDungeonPanel.build_node_hover_content",
+      "origin": "fern_lowland",
+      "text": "低处蕨叶密生，草间有浅浅水痕，未见明显踩踏或折损。\n资源类别：植物（苦苔根）\n蕨叶下生着几丛苦苔根。每次可采两份，此处现有余量有限；资源会随时间缓慢恢复。",
+      "complete_in_viewport": true,
+      "width": 460,
+      "height": 220,
+      "card": "1920x1080/林地资源_简略_hover.png",
+      "full": "1920x1080/林地资源_简略_full.png"
+    },
+    {
+      "id": "林地资源_详细",
+      "category": "林地当前资源",
+      "scope": "分类内容样本",
+      "source": "EastWoodsDungeonPanel.build_node_hover_content",
+      "origin": "fern_lowland",
+      "text": "低处蕨叶密生，草间有浅浅水痕，未见明显踩踏或折损。\n资源类别：植物（苦苔根）\n蕨叶下生着几丛苦苔根。每次可采两份，此处现有余量有限；资源会随时间缓慢恢复。",
+      "complete_in_viewport": true,
+      "width": 460,
+      "height": 220,
+      "card": "1920x1080/林地资源_详细_hover.png",
+      "full": "1920x1080/林地资源_详细_full.png"
+    },
+    {
+      "id": "林地事件_Simple",
+      "category": "林地事件",
+      "scope": "正式ForestWolfEventView选项按钮",
+      "source": "ForestWolfEvent.Describe → ForestWolfEventView.Display",
+      "origin": "/root/HoverCategoryNativeSmoke/ActualForestEvent/EventPaper/@MarginContainer@694/@HBoxContainer@695/@VBoxContainer@696/ChoiceScroll/Choices/Choice_observe",
+      "text": "凝神细察，辨清它的动静与迟疑。\n耗时0.5小时 · 精力1\n成功后驱赶机会提高15个百分点；失败后降低10个百分点。",
+      "complete_in_viewport": true,
+      "width": 460,
+      "height": 229,
+      "card": "1920x1080/林地事件_Simple_hover.png",
+      "full": "1920x1080/林地事件_Simple_full.png"
+    },
+    {
+      "id": "林地事件_Detailed",
+      "category": "林地事件",
+      "scope": "正式ForestWolfEventView选项按钮",
+      "source": "ForestWolfEvent.Describe → ForestWolfEventView.Display",
+      "origin": "/root/HoverCategoryNativeSmoke/ActualForestEvent/EventPaper/@MarginContainer@694/@HBoxContainer@695/@VBoxContainer@696/ChoiceScroll/Choices/Choice_observe",
+      "text": "凝神细察，辨清它的动静与迟疑。\n耗时0.5小时 · 精力1\n成功后驱赶机会提高15个百分点；失败后降低10个百分点。\n\n计算来源\n人物评分：18.65 = 神魂[19.05]×0.7＋灵慧[17.7]×0.3\n\n凶狼评分：10 = 凶狼神魂[10]\n\n成功率：65% = min(95%,max(5%,人物评分[18.65]÷(人物评分[18.65]＋凶狼评分[10])×100%))",
+      "complete_in_viewport": true,
+      "width": 460,
+      "height": 499,
+      "card": "1920x1080/林地事件_Detailed_hover.png",
+      "full": "1920x1080/林地事件_Detailed_full.png"
+    },
+    {
+      "id": "炼丹_君药_Detailed",
+      "category": "正式炼丹独立卡",
+      "scope": "正式页真实来源控件",
+      "source": "AlchemySlotBrewPreviewScene.SetHover → RefreshHoverCard",
+      "origin": "/root/HoverCategoryNativeSmoke/AlchemyPreviewScene/MaterialCanvas/JunHerbCard/@Control@711/PickHerb_0",
+      "text": "灵石 · 9品上\n五行：土\u3000阴阳：和\n材性：致密\n功用：\n聚九品、藏九品、通九品\n\n本位发挥：\n聚\n本位不发挥：\n藏、通\n\n本位用量：1份\n灵识占用：3.08\n行囊存量：1份\n\n计算来源\n灵识占用：3.08 = (材料负担[1.45]＋功用负担[0.75])×药位倍率[1.4]×用量倍率[1]",
+      "complete_in_viewport": true,
+      "width": 378.7461,
+      "height": 563.5282,
+      "card": "1920x1080/炼丹_君药_Detailed_hover.png",
+      "full": "1920x1080/炼丹_君药_Detailed_full.png"
+    },
+    {
+      "id": "炼丹_君药_Simple",
+      "category": "正式炼丹独立卡",
+      "scope": "正式页真实来源控件",
+      "source": "AlchemySlotBrewPreviewScene.SetHover → RefreshHoverCard",
+      "origin": "/root/HoverCategoryNativeSmoke/AlchemyPreviewScene/MaterialCanvas/JunHerbCard/@Control@711/PickHerb_0",
+      "text": "灵石 · 9品上\n五行：土\u3000阴阳：和\n材性：致密\n功用：\n聚九品、藏九品、通九品\n\n本位发挥：\n聚\n本位不发挥：\n藏、通\n\n本位用量：1份\n灵识占用：3.08\n行囊存量：1份",
+      "complete_in_viewport": true,
+      "width": 378.7461,
+      "height": 425.80237,
+      "card": "1920x1080/炼丹_君药_Simple_hover.png",
+      "full": "1920x1080/炼丹_君药_Simple_full.png"
+    },
+    {
+      "id": "炼丹_八味本炉灵识_Detailed",
+      "category": "正式炼丹独立卡",
+      "scope": "正式页真实来源控件",
+      "source": "AlchemySlotBrewPreviewScene.SetHover → RefreshHoverCard",
+      "origin": "/root/HoverCategoryNativeSmoke/AlchemyPreviewScene/MaterialCanvas/BatchRequirements/@Control@800/@Label@808",
+      "text": "本炉灵识占用：18\n\n灵石：1份，灵识占用3.08\n凝露松脂：1份，灵识占用2.44\n回泉珠：1份，灵识占用2.56\n山蚕长丝：1份，灵识占用2.95\n月露苔：1份，灵识占用1.83\n朱阳花籽：1份，灵识占用1.29\n沉云玉屑：1份，灵识占用2.36\n瘴泥珠：1份，灵识占用1.16\n\n计算来源\n本炉灵识占用：18 = 3.08＋2.44＋2.56＋2.95＋1.83＋1.29＋2.36＋1.16\n\n灵石灵识占用：3.08 = (材料负担[1.45]＋功用负担[0.75])×药位倍率[1.4]×用量倍率[1]\n\n凝露松脂灵识占用：2.44 = (材料负担[1.29]＋功用负担[0.75])×药位倍率[1.2]×用量倍率[1]\n\n回泉珠灵识占用：2.56 = (材料负担[1.81]＋功用负担[0.75])×药位倍率[1]×用量倍率[1]\n\n山蚕长丝灵识占用：2.95 = (材料负担[1.45]＋功用负担[1.5])×药位倍率[1]×用量倍率[1]\n\n月露苔灵识占用：1.83 = (材料负担[1.29]＋功用负担[0.75])×药位倍率[0.9]×用量倍率[1]\n\n朱阳花籽灵识占用：1.29 = (材料负担[1.29]＋功用负担[0])×药位倍率[1]×用量倍率[1]\n\n沉云玉屑灵识占用：2.36 = (材料负担[1.62]＋功用负担[1])×药位倍率[0.9]×用量倍率[1]\n\n瘴泥珠灵识占用：1.16 = (材料负担[1.29]＋功用负担[0])×药位倍率[0.9]×用量倍率[1]",
+      "complete_in_viewport": true,
+      "width": 837.8321,
+      "height": 894.07007,
+      "card": "1920x1080/炼丹_八味本炉灵识_Detailed_hover.png",
+      "full": "1920x1080/炼丹_八味本炉灵识_Detailed_full.png"
+    },
+    {
+      "id": "炼丹_八味本炉灵识_Simple",
+      "category": "正式炼丹独立卡",
+      "scope": "正式页真实来源控件",
+      "source": "AlchemySlotBrewPreviewScene.SetHover → RefreshHoverCard",
+      "origin": "/root/HoverCategoryNativeSmoke/AlchemyPreviewScene/MaterialCanvas/BatchRequirements/@Control@800/@Label@808",
+      "text": "本炉灵识占用：18\n\n灵石：1份，灵识占用3.08\n凝露松脂：1份，灵识占用2.44\n回泉珠：1份，灵识占用2.56\n山蚕长丝：1份，灵识占用2.95\n月露苔：1份，灵识占用1.83\n朱阳花籽：1份，灵识占用1.29\n沉云玉屑：1份，灵识占用2.36\n瘴泥珠：1份，灵识占用1.16",
+      "complete_in_viewport": true,
+      "width": 378.7461,
+      "height": 315.62167,
+      "card": "1920x1080/炼丹_八味本炉灵识_Simple_hover.png",
+      "full": "1920x1080/炼丹_八味本炉灵识_Simple_full.png"
+    }
+  ],
+  "page_evidence": [
+    {
+      "id": "正式穿戴说明",
+      "source": "InfoPanel.render_new_page(5)",
+      "boundary": "正式穿戴页文本核对，不代表执行过装备或交易流程",
+      "image": "1920x1080/正式穿戴说明_page.png"
+    },
+    {
+      "id": "NPC未知资料",
+      "source": "InfoPanel.show_npc",
+      "boundary": "普通资料页展示；不计作NPC属性悬停浮层验收",
+      "image": "1920x1080/NPC未知资料_page.png"
+    }
+  ],
+  "geometry": [
+    {
+      "type": "alchemy",
+      "id": "君药",
+      "mode": "Detailed",
+      "card_size": "(330.00003, 491)",
+      "card_minimum": "(330, 489)",
+      "card_combined_minimum": "(330, 489)",
+      "actual_bounds": "(567.4813, 252.49733), (378.7461, 563.5282)",
+      "label_size": "(294.00003, 453)",
+      "label_custom_minimum": "(294, 0)",
+      "label_minimum": "(1, 453)",
+      "lines": 19,
+      "visible_lines": 19,
+      "font_size": 17,
+      "line_spacing": 3,
+      "canvas_transform": "[X: (1.1477152, 0), Y: (0, 1.1477152), O: (0.5100708, 0)]",
+      "viewport": "(0, 0), (1920, 1080)"
+    },
+    {
+      "type": "alchemy",
+      "id": "君药",
+      "mode": "Simple",
+      "card_size": "(330.00003, 371)",
+      "card_minimum": "(330, 369)",
+      "card_combined_minimum": "(330, 369)",
+      "actual_bounds": "(567.4813, 252.49733), (378.7461, 425.80237)",
+      "label_size": "(294.00003, 333)",
+      "label_custom_minimum": "(294, 0)",
+      "label_minimum": "(1, 333)",
+      "lines": 14,
+      "visible_lines": 14,
+      "font_size": 17,
+      "line_spacing": 3,
+      "canvas_transform": "[X: (1.1477152, 0), Y: (0, 1.1477152), O: (0.5100708, 0)]",
+      "viewport": "(0, 0), (1920, 1080)"
+    },
+    {
+      "type": "alchemy",
+      "id": "君药",
+      "mode": "Detailed",
+      "card_size": "(330.00003, 491)",
+      "card_minimum": "(330, 489)",
+      "card_combined_minimum": "(330, 489)",
+      "actual_bounds": "(567.4813, 252.49733), (378.7461, 563.5282)",
+      "label_size": "(294.00003, 453)",
+      "label_custom_minimum": "(294, 0)",
+      "label_minimum": "(1, 453)",
+      "lines": 19,
+      "visible_lines": 19,
+      "font_size": 17,
+      "line_spacing": 3,
+      "canvas_transform": "[X: (1.1477152, 0), Y: (0, 1.1477152), O: (0.5100708, 0)]",
+      "viewport": "(0, 0), (1920, 1080)"
+    },
+    {
+      "type": "alchemy",
+      "id": "八味本炉灵识",
+      "mode": "Detailed",
+      "card_size": "(730, 779)",
+      "card_minimum": "(730, 777)",
+      "card_combined_minimum": "(730, 777)",
+      "actual_bounds": "(816.5356, 172.15721), (837.8321, 894.07007)",
+      "label_size": "(694, 741)",
+      "label_custom_minimum": "(694, 0)",
+      "label_minimum": "(1, 741)",
+      "lines": 31,
+      "visible_lines": 31,
+      "font_size": 17,
+      "line_spacing": 3,
+      "canvas_transform": "[X: (1.1477152, 0), Y: (0, 1.1477152), O: (0.5100708, 0)]",
+      "viewport": "(0, 0), (1920, 1080)"
+    },
+    {
+      "type": "alchemy",
+      "id": "八味本炉灵识",
+      "mode": "Simple",
+      "card_size": "(330, 275)",
+      "card_minimum": "(330, 273)",
+      "card_combined_minimum": "(330, 273)",
+      "actual_bounds": "(1275.6216, 409.73434), (378.7461, 315.62167)",
+      "label_size": "(294, 237)",
+      "label_custom_minimum": "(294, 0)",
+      "label_minimum": "(1, 237)",
+      "lines": 10,
+      "visible_lines": 10,
+      "font_size": 17,
+      "line_spacing": 3,
+      "canvas_transform": "[X: (1.1477152, 0), Y: (0, 1.1477152), O: (0.5100708, 0)]",
+      "viewport": "(0, 0), (1920, 1080)"
+    },
+    {
+      "type": "alchemy",
+      "id": "八味本炉灵识",
+      "mode": "Detailed",
+      "card_size": "(730, 779)",
+      "card_minimum": "(730, 777)",
+      "card_combined_minimum": "(730, 777)",
+      "actual_bounds": "(816.5356, 172.15721), (837.8321, 894.07007)",
+      "label_size": "(694, 741)",
+      "label_custom_minimum": "(694, 0)",
+      "label_minimum": "(1, 741)",
+      "lines": 31,
+      "visible_lines": 31,
+      "font_size": 17,
+      "line_spacing": 3,
+      "canvas_transform": "[X: (1.1477152, 0), Y: (0, 1.1477152), O: (0.5100708, 0)]",
+      "viewport": "(0, 0), (1920, 1080)"
+    }
+  ],
+  "limitations": [
+    "普通物品兜底：当前根物品目录没有合格的真实定义，不用临时手写正文补齐类别。",
+    "NPC调用了正式InfoPanel.show_npc并核对未知资料；该资料页当前为普通文字、无可独立调用的属性悬停，本轮不计作NPC浮层入口通过。",
+    "分类内容样本只证明生产生成器输出及共用渲染；没有逐一完成交易、坊市、兑换、领取等页面业务流程。",
+    "本轮未遍历全部随机事件、全部地图地点、所有状态组合及所有NPC知识状态；未操作玩家旅程或执行服药、购买、炼制。"
+  ],
+  "player_save_read": false,
+  "player_save_written": false,
+  "trade_or_consumption_executed": false
+}

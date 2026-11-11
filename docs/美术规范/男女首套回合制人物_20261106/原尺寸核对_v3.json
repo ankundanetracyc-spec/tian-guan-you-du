@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "file": "sprite_65806.png",
+      "canvas": [
+        24,
+        24
+      ],
+      "matches_male_canvas": true,
+      "alpha_matches_male": true,
+      "same_rgba_head": true
+    },
+    {
+      "file": "sprite_79543.png",
+      "canvas": [
+        60,
+        60
+      ],
+      "matches_male_canvas": true,
+      "alpha_matches_male": true,
+      "same_rgba_head": null
+    },
+    {
+      "file": "sprite_84807.png",
+      "canvas": [
+        60,
+        60
+      ],
+      "matches_male_canvas": true,
+      "alpha_matches_male": true,
+      "same_rgba_head": null
+    },
+    {
+      "file": "sprite_85649.png",
+      "canvas": [
+        60,
+        100
+      ],
+      "matches_male_canvas": true,
+      "alpha_matches_male": true,
+      "same_rgba_head": null
+    },
+    {
+      "file": "sprite_87557.png",
+      "canvas": [
+        50,
+        80
+      ],
+      "matches_male_canvas": true,
+      "alpha_matches_male": true,
+      "same_rgba_head": null
+    }
+  ],
+  "hair_canvases": [
+    21,
+    56
+  ],
+  "base_head_pixels_equal": true
+}

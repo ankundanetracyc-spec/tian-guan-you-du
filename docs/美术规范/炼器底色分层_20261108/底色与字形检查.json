@@ -1,0 +1,98 @@
+{
+  "size": [
+    2560,
+    1440
+  ],
+  "samples": {
+    "大面板": {
+      "point": [
+        140,
+        400
+      ],
+      "before_rgb": [
+        244,
+        240,
+        228
+      ],
+      "after_rgb": [
+        201,
+        198,
+        177
+      ],
+      "relative_luminance_reduction": 0.358,
+      "ink_contrast": 6.74
+    },
+    "材料块": {
+      "point": [
+        100,
+        700
+      ],
+      "before_rgb": [
+        247,
+        242,
+        234
+      ],
+      "after_rgb": [
+        178,
+        193,
+        173
+      ],
+      "relative_luminance_reduction": 0.433,
+      "ink_contrast": 6.15
+    },
+    "数量输入框": {
+      "point": [
+        490,
+        670
+      ],
+      "before_rgb": [
+        240,
+        228,
+        203
+      ],
+      "after_rgb": [
+        182,
+        180,
+        174
+      ],
+      "relative_luminance_reduction": 0.417,
+      "ink_contrast": 5.6
+    },
+    "普通按钮": {
+      "point": [
+        650,
+        680
+      ],
+      "before_rgb": [
+        247,
+        243,
+        234
+      ],
+      "after_rgb": [
+        187,
+        188,
+        169
+      ],
+      "relative_luminance_reduction": 0.45,
+      "ink_contrast": 6.02
+    }
+  },
+  "font_anchors": {
+    "页面标题": {
+      "solid_ink_pixels": 366,
+      "unchanged_at_same_position": 366
+    },
+    "投料标题": {
+      "solid_ink_pixels": 71,
+      "unchanged_at_same_position": 71
+    },
+    "用度标题": {
+      "solid_ink_pixels": 200,
+      "unchanged_at_same_position": 200
+    }
+  },
+  "unchanged_files": [
+    "E:\\stacklands\\csharp\\panel\\QuietRoomStyle.cs",
+    "E:\\stacklands\\resources\\font\\LXGWZhenKaiSlabGB-Regular.ttf"
+  ]
+}

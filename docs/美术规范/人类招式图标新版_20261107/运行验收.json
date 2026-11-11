@@ -1,0 +1,48 @@
+{
+  "verified_date": "2026-11-08",
+  "status": "passed_with_existing_character_texture_exit_warning",
+  "runtime_scope": "human_vs_human",
+  "build": { "exit_code": 0, "warnings": 0, "errors": 0 },
+  "checks": {
+    "board_state_and_migration": 121,
+    "human_battle": 126,
+    "formal_scene_roundtrip": 21,
+    "static_data_and_art": 736,
+    "total": 1004
+  },
+  "scenes": [
+    "res://tscn/debug/CombatBoardMigrationSmoke.tscn",
+    "res://tscn/debug/HumanCombatBoardSmoke.tscn",
+    "res://tscn/debug/HumanCombatBoardFormalSmoke.tscn"
+  ],
+  "logs": [
+    "tmp/combat_board_20261107/board_smoke_final.log",
+    "tmp/combat_board_20261107/human_board_smoke_final.log",
+    "tmp/combat_board_20261107/formal_board_visual.log",
+    "tmp/combat_board_20261107/formal_console_final.log"
+  ],
+  "screenshots": [
+    "正式场景_配招_1672.png",
+    "正式场景_配招_1280.png",
+    "正式场景_查看战场.png",
+    "正式场景_扫盘战斗.png"
+  ],
+  "save_format": 13,
+  "layout_version": 1,
+  "real_user_save_opened_or_modified": false,
+  "original_skill_effect_fields_unchanged": true,
+  "old_ten_slots_and_rewrite_backups_preserved": true,
+  "combat_balance_tested": false,
+  "deferred": ["寄念目标规则", "器物新卡与入盘", "妖兽布阵", "新版撤退时机", "符箓候选效果定稿"],
+  "known_exit_warning": {
+    "description": "退出时旧人物贴图缓存未释放；四组检查通过，本任务未改造旧人物缓存。",
+    "texture_rids": 10,
+    "resources": [
+      "res://textures/characters/c1_male_puppet_v2/layers/head.png",
+      "res://textures/characters/c1_male_puppet_v2/layers/arm_far.png",
+      "res://textures/characters/c1_male_puppet_v2/layers/body.png",
+      "res://textures/characters/c1_male_puppet_v2/layers/arm_near.png",
+      "res://textures/characters/c1_male_puppet_v2/layers/body_kneel.png"
+    ]
+  }
+}

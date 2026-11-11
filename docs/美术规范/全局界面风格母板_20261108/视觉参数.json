@@ -1,0 +1,27 @@
+{
+  "name": "纸墨木石",
+  "version": "2026-11-08-proposal-1",
+  "status": "待视觉审阅；仅母板使用，未接运行时",
+  "font": "resources/font/LXGWZhenKaiSlabGB-Regular.ttf",
+  "referenceCanvas": { "width": 1672, "height": 941 },
+  "colors": {
+    "ink": "#303D38", "inkMuted": "#626B60",
+    "paper": "#EFE7D6", "paperLight": "#F5EFE2",
+    "wood": "#70615A", "slate": "#687681",
+    "selected": "#C7CFB5", "accent": "#526D60",
+    "edge": "#9A8A71", "danger": "#985344",
+    "tooltip": "#20251E", "inverseInk": "#EFE6CD"
+  },
+  "type": { "page": 40, "section": 28, "body": 22, "button": 22, "secondary": 18 },
+  "spacing": { "unit": 8, "panelPadding": 24, "sectionGap": 24, "controlGap": 8 },
+  "controls": { "buttonHeight": 46, "primaryHeight": 52, "radius": 2 },
+  "motion": { "commonMs": 130, "reducedMotion": "关闭过渡；保留结果状态" },
+  "scopedExceptions": [
+    "已认可书脊槽位42×170、上限18动态字级、抽书240毫秒保持",
+    "物品操作菜单27号字、52高度保持",
+    "36格距、200格行囊与浅绢v5保持",
+    "暗底悬停、轻量HUD保持专用表现",
+    "战斗逐格石盘与无标题配招暗幕按其最新专题",
+    "加载深墨与暗旧金笔环为局部例外，不推广到普通面板"
+  ]
+}

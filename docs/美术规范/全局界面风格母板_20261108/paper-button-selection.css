@@ -1,0 +1,22 @@
+/* Selection belongs to the complete material surface, never its center slice. */
+.skin-layer[data-control-family]{transition:filter 160ms ease}
+:is(button,a)[data-skin]:is(.is-selected,.is-selected-true,[aria-pressed="true"],[aria-selected="true"])>.skin-layer{
+  --paper-selection-filter:brightness(.84);
+}
+:is(button,a)[data-skin]:is(.is-selected,.is-selected-true,[aria-pressed="true"],[aria-selected="true"]):not(:disabled){
+  color:#303e37;
+}
+:is(button,a)[data-skin]:is(.is-selected,.is-selected-true,[aria-pressed="true"],[aria-selected="true"])>.skin-layer .skin-center{
+  filter:none;
+}
+/* Some selectable directory entries use a paper frame instead of a button frame. */
+:is(button,a)[data-skin]:is(.is-selected,.is-selected-true,[aria-pressed="true"],[aria-selected="true"]):not(:disabled)>.skin-layer:not([data-control-family]){
+  filter:var(--paper-selection-filter) var(--paper-selection-state,brightness(1));
+}
+:is(button,a)[data-skin]:is(.is-selected,.is-selected-true,[aria-pressed="true"],[aria-selected="true"]):hover:not(:disabled)>.skin-layer{
+  --paper-selection-state:brightness(1.04);
+}
+:is(button,a)[data-skin]:is(.is-selected,.is-selected-true,[aria-pressed="true"],[aria-selected="true"]):active:not(:disabled)>.skin-layer{
+  --paper-selection-state:brightness(.94);
+}
+@media(prefers-reduced-motion:reduce){.skin-layer[data-control-family]{transition:none!important}}

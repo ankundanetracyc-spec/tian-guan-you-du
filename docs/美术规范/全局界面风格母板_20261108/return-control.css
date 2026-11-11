@@ -1,0 +1,4 @@
+/* Page-level return control, shared by standalone review pages. */
+.game-shell>.page-return,#stage>.page-return{position:absolute;top:18px;right:24px;z-index:6;min-width:114px;min-height:46px;padding:7px 18px;font-size:22px;line-height:1.35;white-space:nowrap}
+.page-return>.button-content{display:flex;align-items:center;justify-content:center;gap:9px;white-space:nowrap}
+.return-triangle{display:inline-block;width:0;height:0;flex:0 0 auto;border-left:6px solid currentColor;border-top:4px solid transparent;border-bottom:4px solid transparent;pointer-events:none}

@@ -1,0 +1,298 @@
+{
+  "status": "passed",
+  "passed": 42,
+  "failed": 0,
+  "scope": "仅网页风格母板；未验证正式Godot迁移",
+  "results": [
+    {
+      "name": "1920/basis/无横向溢出",
+      "passed": true,
+      "detail": {
+        "documentWidth": 1905,
+        "viewportWidth": 1905,
+        "overflowing": [],
+        "panels": [
+          "basis"
+        ]
+      }
+    },
+    {
+      "name": "1920/basis/文字控件无裁切",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/basis/单一可见分册",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/components/无横向溢出",
+      "passed": true,
+      "detail": {
+        "documentWidth": 1905,
+        "viewportWidth": 1905,
+        "overflowing": [],
+        "panels": [
+          "components"
+        ]
+      }
+    },
+    {
+      "name": "1920/components/文字控件无裁切",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/components/单一可见分册",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/applications/无横向溢出",
+      "passed": true,
+      "detail": {
+        "documentWidth": 1905,
+        "viewportWidth": 1905,
+        "overflowing": [],
+        "panels": [
+          "applications"
+        ]
+      }
+    },
+    {
+      "name": "1920/applications/文字控件无裁切",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/applications/单一可见分册",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/character/切换与边界",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/quiet/切换与边界",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/inventory/切换与边界",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/rental/切换与边界",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/租用未虚构价格",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/basis/无横向溢出",
+      "passed": true,
+      "detail": {
+        "documentWidth": 1265,
+        "viewportWidth": 1265,
+        "overflowing": [],
+        "panels": [
+          "basis"
+        ]
+      }
+    },
+    {
+      "name": "1280/basis/文字控件无裁切",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/basis/单一可见分册",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/components/无横向溢出",
+      "passed": true,
+      "detail": {
+        "documentWidth": 1265,
+        "viewportWidth": 1265,
+        "overflowing": [],
+        "panels": [
+          "components"
+        ]
+      }
+    },
+    {
+      "name": "1280/components/文字控件无裁切",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/components/单一可见分册",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/applications/无横向溢出",
+      "passed": true,
+      "detail": {
+        "documentWidth": 1265,
+        "viewportWidth": 1265,
+        "overflowing": [],
+        "panels": [
+          "applications"
+        ]
+      }
+    },
+    {
+      "name": "1280/applications/文字控件无裁切",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/applications/单一可见分册",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/character/切换与边界",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/quiet/切换与边界",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/inventory/切换与边界",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/rental/切换与边界",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/租用未虚构价格",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "按钮六种状态",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "目录切换",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "选项与列表联动",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "输入控件可用",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "深墨悬停无内部滚动",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "确认弹窗打开",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "Esc关闭与焦点归还",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "确认按钮关闭",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "键盘页签切换",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "键盘Home切回首册",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "减少动画设置",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "项目字体加载",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "脚本无异常",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "资源无失败",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "date": "2026-11-08",
+  "viewports": [
+    {
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "width": 1280,
+      "height": 720
+    }
+  ],
+  "exports": [
+    "风格基准_1920.png",
+    "公共控件_1920.png",
+    "人物_材质组合_1920.png",
+    "静室_材质组合_1920.png",
+    "行囊_材质组合_1920.png",
+    "设施入口_材质组合_1920.png",
+    "风格基准_1280.png",
+    "公共控件_1280.png",
+    "人物_材质组合_1280.png",
+    "静室_材质组合_1280.png",
+    "行囊_材质组合_1280.png",
+    "设施入口_材质组合_1280.png",
+    "确认样式_1280.png",
+    "公共控件_局部.png"
+  ],
+  "fileChecks": {
+    "sourceAssetsExist": true,
+    "paletteMatchesJson": true,
+    "exportCount": 14,
+    "runtimeChangedByThisTask": false,
+    "validationScope": "网页母板与文档；未进行正式游戏接入或场景测试",
+    "localDocumentLinks": {
+      "checked": 32,
+      "broken": []
+    }
+  }
+}

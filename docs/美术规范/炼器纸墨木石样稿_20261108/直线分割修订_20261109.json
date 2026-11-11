@@ -1,0 +1,123 @@
+{
+  "date": "2026-11-09",
+  "change": "普通细直线替换中央花纹分割线；原按钮和功能保持",
+  "scene": "res://tools/ForgingPaperUiSmoke.tscn",
+  "runtimeManifest": {
+    "phase": "straight dividers and centered icon",
+    "recordedAt": "2026-11-09T12:39:56.581208+08:00",
+    "sha256": {
+      ".godot/mono/temp/bin/Debug/stacklands.dll": "61b3f685603d99082fd76f56f6a42f9268982b7fced6177dbe4ee3312060822e",
+      "csharp/panel/CraftingPaperStyle.cs": "89e4d262d9240ca94fd3e295a59ec4937c1868eb7673d76ecfd6370fbdde0aec",
+      "csharp/panel/PaperButtonFeedback.cs": "74894219692f987a32ac356e170377e0950dacc10de809f7ca8b941ea26ace7c",
+      "csharp/panel/CultivationUI.Paper.cs": "42ff62fbb47551351f440c11681dd834b5f30b233a3874fadc6d8fbfcd2125fc",
+      "csharp/panel/RestPanel.cs": "e948d15913fc11c489368c3d773ea83c8939d1effea5629d9785af9a56de8167",
+      "csharp/scene/AlchemySlotBrewPreviewScene.PaperSkin.cs": "2e95ef688dceb5428d2542b290ed95b30385c3ee6e42a31fa5d6bd65e7ae191c",
+      "csharp/debug/CharacterPaperUiSmoke.cs": "a0ffc4b312d888e3c99ec053d6e0b822dcf13626f3d3159b2c26970679f632d7",
+      "tools/NativePaperCaptureHost.gd": "88cde01bf83fc43d7d184fe7b31ed0bed02be2d322a18501cc24936a872fb106"
+    }
+  },
+  "runs": [
+    {
+      "width": 1280,
+      "checks": 233,
+      "exitCode": 0,
+      "errorCount": 0,
+      "warningCount": 1,
+      "record": "验收记录_1280.json",
+      "log": "分割线复验_1280.log",
+      "images": [
+        {
+          "name": "炼器_主界面_1280.png",
+          "sha256": "0f9bd2c33bd92e37edf8004490d0107ce2ec0d30e9b9505704c1cf0900de496b"
+        },
+        {
+          "name": "炼器_和材_1280.png",
+          "sha256": "f04cbef75d40272ccc31eb2d5feef43e877dc03d991ac60220720e2c9f46dcc0"
+        },
+        {
+          "name": "炼器_器物册_1280.png",
+          "sha256": "7496a9fbc9013d5072920aee71413847e1d4c94eb56c447c94c667bc87c90cc8"
+        },
+        {
+          "name": "炼器_性材_1280.png",
+          "sha256": "4fd57988f447a3a5198d4fb61db5c0d3fbb7505faeabb2067b703345911aa711"
+        },
+        {
+          "name": "炼器_按钮悬停_1280.png",
+          "sha256": "2bce2bcd7abe06c57ec9898a0e0ebf0b711a1dead67a93618018b11b6b498893"
+        },
+        {
+          "name": "炼器_按钮按下_1280.png",
+          "sha256": "ed03b75026fa0ff00ad1ecd4e0674f82070db8e1eafb10d48b06a2e6dca0dc4d"
+        },
+        {
+          "name": "炼器_炉火定器_1280.png",
+          "sha256": "e445cb1a207997cfbe5617997dcb67f990c986bd7a90f7058cc916f20f534f9e"
+        },
+        {
+          "name": "炼器_说明_1280.png",
+          "sha256": "50d6f16be9452dc75c2910a5791900109c96fdbea1a5018e8f8f29dab4ed9d07"
+        },
+        {
+          "name": "炼器_质材_1280.png",
+          "sha256": "dad395b75bee78640579fbca1ebae4f931566ba79fc91820f5aa8e2341e51ea7"
+        },
+        {
+          "name": "炼器_选材_1280.png",
+          "sha256": "8a033c355f0f70edc0b405e1f5db164ec3667d555eaaf5fd96bc750994914eaf"
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "checks": 233,
+      "exitCode": 0,
+      "errorCount": 0,
+      "warningCount": 1,
+      "record": "验收记录_1920.json",
+      "log": "分割线复验_1920.log",
+      "images": [
+        {
+          "name": "炼器_主界面_1920.png",
+          "sha256": "3c548c7e0edabe9966407bc01d746942d7e2503c1706070a8d87901567b849e1"
+        },
+        {
+          "name": "炼器_和材_1920.png",
+          "sha256": "98acaa709e83136d854448025e3ce630dd187f94313b8c1df5133083b4c26c0f"
+        },
+        {
+          "name": "炼器_器物册_1920.png",
+          "sha256": "c4a2de11d4fc3b0afd8a11bb3db7995c2f92644aba3772ade75876461fc82c6d"
+        },
+        {
+          "name": "炼器_性材_1920.png",
+          "sha256": "28817a83ce2085f7c6ad8c8ff781e6f616bf68f42a442b5581eaf395521d0d0b"
+        },
+        {
+          "name": "炼器_按钮悬停_1920.png",
+          "sha256": "76900759df04ccf0e51e816dc555d08accbd59cb40b27e6278a6770d98ed47ec"
+        },
+        {
+          "name": "炼器_按钮按下_1920.png",
+          "sha256": "35fb686727bc72756d79fcd98265b69d3ec2963dd510b6d36c579d09ea29dd12"
+        },
+        {
+          "name": "炼器_炉火定器_1920.png",
+          "sha256": "e282e7113e1c4e1ffe8c401a4c006f54f5211e585b5a8240fe0c06bb204939f3"
+        },
+        {
+          "name": "炼器_说明_1920.png",
+          "sha256": "80bf8fcc8bc3cf09f002a141b8fddadd500208fc73ce6ab5e2187b66b8d2353b"
+        },
+        {
+          "name": "炼器_质材_1920.png",
+          "sha256": "4420d6ff89ff7f51ffb243befe6df601c95d2ebfcf11e41bad57b54057eab771"
+        },
+        {
+          "name": "炼器_选材_1920.png",
+          "sha256": "24dda83d8dfa24ffc199e7d155bc312dd00f95bf5d9f3f864ed09e18673a10e7"
+        }
+      ]
+    }
+  ]
+}

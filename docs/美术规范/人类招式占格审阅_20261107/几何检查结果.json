@@ -1,0 +1,706 @@
+{
+  "date": "2026-11-07",
+  "status": "approved_human_runtime_verified",
+  "source": "../../plans/人类二十招与化法新版迁移方案_20261107.md",
+  "runtime_implemented": true,
+  "combat_balance_tested": false,
+  "geometry_only": false,
+  "skills": [
+    {
+      "number": "01",
+      "name": "应敌",
+      "cost": "1／0",
+      "size": [
+        1,
+        1
+      ],
+      "area": 1,
+      "max_placements": 3,
+      "trigger": "扫格；随机合法单敌，近身物理",
+      "resource": "res://resources/activeskills/应敌.tres"
+    },
+    {
+      "number": "02",
+      "name": "架招",
+      "cost": "1／0",
+      "size": [
+        1,
+        1
+      ],
+      "area": 1,
+      "max_placements": 3,
+      "trigger": "扫格待命；敌方物理来袭时应对自身",
+      "resource": "res://resources/activeskills/架招.tres"
+    },
+    {
+      "number": "03",
+      "name": "痛击",
+      "cost": "2／0",
+      "size": [
+        2,
+        1
+      ],
+      "area": 2,
+      "max_placements": 2,
+      "trigger": "扫格；随机合法单敌，近身物理",
+      "resource": "res://resources/activeskills/痛击.tres"
+    },
+    {
+      "number": "04",
+      "name": "催血",
+      "cost": "1／0",
+      "size": [
+        2,
+        1
+      ],
+      "area": 2,
+      "max_placements": 2,
+      "trigger": "扫格；自身气血",
+      "resource": "res://resources/activeskills/催血.tres"
+    },
+    {
+      "number": "05",
+      "name": "聚炁",
+      "cost": "1／0",
+      "size": [
+        2,
+        1
+      ],
+      "area": 2,
+      "max_placements": 2,
+      "trigger": "扫格；自身产炁",
+      "resource": "res://resources/activeskills/聚炁.tres"
+    },
+    {
+      "number": "06",
+      "name": "灵击",
+      "cost": "2／0",
+      "size": [
+        2,
+        1
+      ],
+      "area": 2,
+      "max_placements": 2,
+      "trigger": "扫格；随机合法单敌，远程物理",
+      "resource": "res://resources/activeskills/灵击.tres"
+    },
+    {
+      "number": "07",
+      "name": "寄念",
+      "cost": "1／0",
+      "size": [
+        1,
+        1
+      ],
+      "area": 1,
+      "max_placements": 2,
+      "trigger": "扫格；为后续不同招式赋念，选择规则待迁",
+      "resource": "res://resources/activeskills/寄念.tres"
+    },
+    {
+      "number": "08",
+      "name": "斩剑",
+      "cost": "1／0",
+      "size": [
+        2,
+        1
+      ],
+      "area": 2,
+      "max_placements": 3,
+      "trigger": "扫格；随机合法单敌，近身物理",
+      "resource": "res://resources/activeskills/剑修基础/斩剑.tres"
+    },
+    {
+      "number": "09",
+      "name": "养锋",
+      "cost": "1／0",
+      "size": [
+        1,
+        1
+      ],
+      "area": 1,
+      "max_placements": 2,
+      "trigger": "扫格；自身剑意",
+      "resource": "res://resources/activeskills/剑修基础/养锋.tres"
+    },
+    {
+      "number": "10",
+      "name": "格剑",
+      "cost": "1／0",
+      "size": [
+        2,
+        1
+      ],
+      "area": 2,
+      "max_placements": 2,
+      "trigger": "扫格待命；敌方物理来袭时应对自身",
+      "resource": "res://resources/activeskills/剑修基础/格剑.tres"
+    },
+    {
+      "number": "11",
+      "name": "尽锋",
+      "cost": "2／1",
+      "size": [
+        3,
+        1
+      ],
+      "area": 3,
+      "max_placements": 2,
+      "trigger": "扫格；随机合法单敌，近身物理",
+      "resource": "res://resources/activeskills/剑修基础/尽锋.tres"
+    },
+    {
+      "number": "12",
+      "name": "云帔",
+      "cost": "0／1",
+      "size": [
+        2,
+        1
+      ],
+      "area": 2,
+      "max_placements": 3,
+      "trigger": "扫格；自身护盾",
+      "resource": "res://resources/activeskills/玄枢含章经/云帔.tres"
+    },
+    {
+      "number": "13",
+      "name": "惊蛰",
+      "cost": "0／1",
+      "size": [
+        3,
+        1
+      ],
+      "area": 3,
+      "max_placements": 2,
+      "trigger": "扫格或周天来源待分；随机合法单敌，远程物理",
+      "resource": "res://resources/activeskills/玄枢含章经/惊蛰.tres"
+    },
+    {
+      "number": "14",
+      "name": "复命",
+      "cost": "0／1，另付复制技能费用",
+      "size": [
+        2,
+        2
+      ],
+      "area": 4,
+      "max_placements": 1,
+      "trigger": "扫格或周天来源待分；按复制技能选合法目标",
+      "resource": "res://resources/activeskills/玄枢含章经/复命.tres"
+    },
+    {
+      "number": "15",
+      "name": "折锋",
+      "cost": "1／1",
+      "size": [
+        3,
+        1
+      ],
+      "area": 3,
+      "max_placements": 2,
+      "trigger": "扫格；随机合法单敌，近身物理",
+      "resource": "res://resources/activeskills/斫基损契玄经/折锋.tres"
+    },
+    {
+      "number": "16",
+      "name": "焚元",
+      "cost": "1／0",
+      "size": [
+        2,
+        1
+      ],
+      "area": 2,
+      "max_placements": 1,
+      "trigger": "扫格；自身，法力上限至少2",
+      "resource": "res://resources/activeskills/斫基损契玄经/焚元.tres"
+    },
+    {
+      "number": "17",
+      "name": "血臂撼岳",
+      "cost": "2／0",
+      "size": [
+        3,
+        1
+      ],
+      "area": 3,
+      "max_placements": 2,
+      "trigger": "扫格；随机合法单敌，近身物理",
+      "resource": "res://resources/activeskills/百骸衍枝化生宝册/摧山.tres"
+    },
+    {
+      "number": "18",
+      "name": "乘势再攻",
+      "cost": "1／0",
+      "size": [
+        2,
+        2
+      ],
+      "area": 4,
+      "max_placements": 2,
+      "trigger": "扫格；随机合法单敌，近身物理",
+      "resource": "res://resources/activeskills/太和感物养元宝册/叩山.tres"
+    },
+    {
+      "number": "19",
+      "name": "虚怀纳劲",
+      "cost": "1／0",
+      "size": [
+        2,
+        1
+      ],
+      "area": 2,
+      "max_placements": 2,
+      "trigger": "扫格待命；敌方攻击来袭时应对自身",
+      "resource": "res://resources/activeskills/太和感物养元宝册/涵虚.tres"
+    },
+    {
+      "number": "20",
+      "name": "云岚三叠",
+      "cost": "2／0",
+      "size": [
+        2,
+        2
+      ],
+      "area": 4,
+      "max_placements": 2,
+      "trigger": "扫格；随机合法单敌，近身物理",
+      "resource": "res://resources/activeskills/舒卷天章/云岚三叠.tres"
+    }
+  ],
+  "summary": {
+    "skills": 20,
+    "area_counts": {
+      "1": 4,
+      "2": 9,
+      "3": 4,
+      "4": 3
+    },
+    "one_of_each_cells": 46,
+    "repeatable_skills": 18,
+    "one_placement_candidates": [
+      "复命",
+      "焚元"
+    ],
+    "maximum_defined_placements": 42,
+    "maximum_defined_cells": 92,
+    "rotation_geometry_cases": 80,
+    "costs_match_live_resources": true
+  },
+  "valid_examples": {
+    "九格基础双应敌": {
+      "width": 3,
+      "height": 3,
+      "occupied_cells": 5,
+      "empty_cells": 4,
+      "placements": [
+        {
+          "skill": "架招",
+          "x": 0,
+          "y": 0,
+          "angle": 0,
+          "label": "架招",
+          "placement_id": "placement_1",
+          "cells": [
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "skill": "应敌",
+          "x": 1,
+          "y": 0,
+          "angle": 0,
+          "label": "应敌A",
+          "placement_id": "placement_2",
+          "cells": [
+            [
+              1,
+              0
+            ]
+          ]
+        },
+        {
+          "skill": "应敌",
+          "x": 2,
+          "y": 0,
+          "angle": 0,
+          "label": "应敌B",
+          "placement_id": "placement_3",
+          "cells": [
+            [
+              2,
+              0
+            ]
+          ]
+        },
+        {
+          "skill": "痛击",
+          "x": 0,
+          "y": 1,
+          "angle": 0,
+          "label": "痛击",
+          "placement_id": "placement_4",
+          "cells": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        }
+      ]
+    },
+    "九格剑意构筑": {
+      "width": 3,
+      "height": 3,
+      "occupied_cells": 8,
+      "empty_cells": 1,
+      "placements": [
+        {
+          "skill": "养锋",
+          "x": 0,
+          "y": 0,
+          "angle": 0,
+          "label": "养锋",
+          "placement_id": "placement_1",
+          "cells": [
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "skill": "格剑",
+          "x": 1,
+          "y": 0,
+          "angle": 0,
+          "label": "格剑",
+          "placement_id": "placement_2",
+          "cells": [
+            [
+              1,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ]
+        },
+        {
+          "skill": "斩剑",
+          "x": 0,
+          "y": 1,
+          "angle": 0,
+          "label": "斩剑",
+          "placement_id": "placement_3",
+          "cells": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        },
+        {
+          "skill": "尽锋",
+          "x": 0,
+          "y": 2,
+          "angle": 0,
+          "label": "尽锋",
+          "placement_id": "placement_4",
+          "cells": [
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              2
+            ],
+            [
+              2,
+              2
+            ]
+          ]
+        }
+      ]
+    },
+    "十六格双云岚": {
+      "width": 4,
+      "height": 4,
+      "occupied_cells": 14,
+      "empty_cells": 2,
+      "placements": [
+        {
+          "skill": "养锋",
+          "x": 0,
+          "y": 0,
+          "angle": 0,
+          "label": "养锋",
+          "placement_id": "placement_1",
+          "cells": [
+            [
+              0,
+              0
+            ]
+          ]
+        },
+        {
+          "skill": "格剑",
+          "x": 1,
+          "y": 0,
+          "angle": 0,
+          "label": "格剑",
+          "placement_id": "placement_2",
+          "cells": [
+            [
+              1,
+              0
+            ],
+            [
+              2,
+              0
+            ]
+          ]
+        },
+        {
+          "skill": "云岚三叠",
+          "x": 0,
+          "y": 1,
+          "angle": 0,
+          "label": "云岚A",
+          "placement_id": "placement_3",
+          "cells": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              2
+            ]
+          ]
+        },
+        {
+          "skill": "云岚三叠",
+          "x": 2,
+          "y": 1,
+          "angle": 0,
+          "label": "云岚B",
+          "placement_id": "placement_4",
+          "cells": [
+            [
+              2,
+              1
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        },
+        {
+          "skill": "斩剑",
+          "x": 0,
+          "y": 3,
+          "angle": 0,
+          "label": "斩剑",
+          "placement_id": "placement_5",
+          "cells": [
+            [
+              0,
+              3
+            ],
+            [
+              1,
+              3
+            ]
+          ]
+        },
+        {
+          "rewrite": "示例化法",
+          "x": 2,
+          "y": 3,
+          "angle": 0,
+          "label": "化法",
+          "direction": [
+            0,
+            -1
+          ],
+          "target": "云岚B",
+          "placement_id": "placement_6",
+          "cells": [
+            [
+              2,
+              3
+            ]
+          ]
+        }
+      ]
+    },
+    "十六格三云帔": {
+      "width": 4,
+      "height": 4,
+      "occupied_cells": 11,
+      "empty_cells": 5,
+      "placements": [
+        {
+          "skill": "云帔",
+          "x": 0,
+          "y": 0,
+          "angle": 0,
+          "label": "云帔A",
+          "placement_id": "placement_1",
+          "cells": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ]
+          ]
+        },
+        {
+          "skill": "云帔",
+          "x": 2,
+          "y": 0,
+          "angle": 0,
+          "label": "云帔B",
+          "placement_id": "placement_2",
+          "cells": [
+            [
+              2,
+              0
+            ],
+            [
+              3,
+              0
+            ]
+          ]
+        },
+        {
+          "skill": "云帔",
+          "x": 0,
+          "y": 1,
+          "angle": 0,
+          "label": "云帔C",
+          "placement_id": "placement_3",
+          "cells": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ]
+        },
+        {
+          "skill": "聚炁",
+          "x": 2,
+          "y": 1,
+          "angle": 0,
+          "label": "聚炁",
+          "placement_id": "placement_4",
+          "cells": [
+            [
+              2,
+              1
+            ],
+            [
+              3,
+              1
+            ]
+          ]
+        },
+        {
+          "rewrite": "示例化法",
+          "x": 0,
+          "y": 2,
+          "angle": 0,
+          "label": "化法",
+          "direction": [
+            0,
+            -1
+          ],
+          "target": "云帔C",
+          "placement_id": "placement_5",
+          "cells": [
+            [
+              0,
+              2
+            ]
+          ]
+        },
+        {
+          "skill": "应敌",
+          "x": 1,
+          "y": 2,
+          "angle": 0,
+          "label": "应敌",
+          "placement_id": "placement_6",
+          "cells": [
+            [
+              1,
+              2
+            ]
+          ]
+        },
+        {
+          "skill": "架招",
+          "x": 2,
+          "y": 2,
+          "angle": 0,
+          "label": "架招",
+          "placement_id": "placement_7",
+          "cells": [
+            [
+              2,
+              2
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "rejected_examples": {
+    "overlap": "overlap",
+    "out_of_bounds": "out_of_bounds",
+    "duplicate_fuming": "exceeds_placement_limit",
+    "third_cloud": "exceeds_placement_limit"
+  },
+  "image": "二十招占格与可摆份数.png",
+  "art_exported": true,
+  "runtime_scope": "human_vs_human",
+  "verified_date": "2026-11-08",
+  "validation_report": "../人类招式图标新版_20261107/运行验收.json"
+}

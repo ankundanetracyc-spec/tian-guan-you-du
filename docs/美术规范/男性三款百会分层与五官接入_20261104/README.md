@@ -15,7 +15,7 @@
 
 ## 素材与来源
 
-[素材包](../../../mods/appearance/portrait_male_reference_20261104_v1/)保存原附件、原生透明图、定位记录与预览；游戏活动目录仍为`mods/appearance/ink_three_variants_20261004/`，候选目录不启用第二份外观配置。
+[素材包](../../../mods/appearance/portrait_male_reference_20261104_v1)保存原附件、原生透明图、定位记录与预览；游戏活动目录仍为`mods/appearance/ink_three_variants_20261004/`，候选目录不启用第二份外观配置。
 
 - [本轮男性原附件](../../../mods/appearance/portrait_male_reference_20261104_v1/source/reference_user.png)及[原尺寸单人放置记录](../../../mods/appearance/portrait_male_reference_20261104_v1/source/reference_placements.json)：三列分别从x=0、593、1187取590、589、587像素宽，不把整列拉伸成游戏画布。
 - [头发生成提示词](../../../mods/appearance/portrait_male_reference_20261104_v1/source/hair_generation_prompts.json)、[五官生成提示词](../../../mods/appearance/portrait_male_reference_20261104_v1/source/feature_generation_prompts.json)、[肤色提示词](../../../mods/appearance/portrait_male_reference_20261104_v1/source/skin_generation_prompt.json)：本轮原生素材均使用内置image_gen。后续耳侧重构提示与试稿仅作过程追溯，最终选择由头发定位记录确定，不执行中间安装或恢复脚本覆盖本轮结果。
