@@ -1,0 +1,138 @@
+{
+  "status": "passed",
+  "date": "2026-11-09",
+  "scope": "独立信件样稿，未接入游戏或正式信匣",
+  "checks": 116,
+  "captures": 18,
+  "visuallyReviewedImages": 18,
+  "whiteEdgeFix": "撤去偏移旋转的底层信纸，保留完整单张展信纸面",
+  "runs": [
+    {
+      "width": 1280,
+      "passed": true,
+      "checks": 58,
+      "captures": 9,
+      "report": "验收记录_1280.json",
+      "log": "运行_1280.log",
+      "runtimeErrors": 0
+    },
+    {
+      "width": 1920,
+      "passed": true,
+      "checks": 58,
+      "captures": 9,
+      "report": "验收记录_1920.json",
+      "log": "运行_1920.log",
+      "runtimeErrors": 0
+    }
+  ],
+  "images": [
+    {
+      "file": "信件_信匣初开_1280.png",
+      "sha256": "11c5296343f21e577fc6de0c44847f27b28f5e326f6b0ab10c9e0b05a9ef82d8",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "信件_邀约展信_1280.png",
+      "sha256": "b834b97e6de83517f7bfd9e7f05b453014bbf0fd0cf679b2f3542e6aad0fefad",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "信件_已应邀_1280.png",
+      "sha256": "b69ce7c0993298d833776b6d1e90cd34481cb67386d26f93d60439d3933cfc89",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "信件_过期邀约_1280.png",
+      "sha256": "35672b17e613e837277666d36eff7245f533b16c331af5a1177f8b2c652a0fce",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "信件_普通来信_1280.png",
+      "sha256": "c1a2839ffc3b6b7a6d17c7901e3bc20584bfa1f670854188fe7357188de446bc",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "信件_检索_1280.png",
+      "sha256": "848f0d98fad34de2534110685435d6afc06e64f6f9b136c38afda951d239aab8",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "信件_检索排序_1280.png",
+      "sha256": "87da57b40d866eece925f3c802859ab9c6ff502db637e70f66482a4e8c6c3fd5",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "信件_长信末尾_1280.png",
+      "sha256": "fe0de13ade257e1132f4abb55539366e25007e26aa1ac0dcf11b978734f10fa2",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "信件_空信匣_1280.png",
+      "sha256": "7ebbe799cf4131887f09bc15d924fe60a3757efe41a730bc4b4b28499345258f",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "信件_信匣初开_1920.png",
+      "sha256": "18e7c2f2565f335877a837b3b353447cff5b57dfff8365ce95dfb929363b374c",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "信件_邀约展信_1920.png",
+      "sha256": "c85251c5cf6f1fd487fe293030be1667fe8cde4b8ff1c8767b2854fcb16f4fdc",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "信件_已应邀_1920.png",
+      "sha256": "7d4649a8d7aaae491e9028274a176407d1c65257a84823a43a5e1fc18db86433",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "信件_过期邀约_1920.png",
+      "sha256": "71a08a90e7ad3f1962b4a4c527509a40d2e87da5cd02e0717dacd9df57b520e4",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "信件_普通来信_1920.png",
+      "sha256": "80ee251460f78dcc67ee398b549b9fcc8863fc6077f4d505a9e5924b35a8c316",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "信件_检索_1920.png",
+      "sha256": "a2b4fd364418c3747f31fb06171641ee9c2d8fddf62deab6cd58ec21fcb779f3",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "信件_检索排序_1920.png",
+      "sha256": "aaf323ee26f5d3a9e4ccb641fac302a4cfa99e7b93a377670103717b03a710dd",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "信件_长信末尾_1920.png",
+      "sha256": "ecab391d0de91815da3758c877d13a03d0968a56a9201a9ba64e6690258e8749",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "信件_空信匣_1920.png",
+      "sha256": "d258abfaf607bcd58f7f25920e8fbd1d80992f681be61b7d25a019d702dfd720",
+      "visuallyReviewed": true
+    }
+  ],
+  "runtimeAtCapture": {
+    ".godot/mono/temp/bin/Debug/stacklands.dll": "47c49d5ac321b817c802af579d2f15c4a71f36000e050fc840751c9ae860a3bf",
+    "csharp/scene/LetterPaperPreviewScene.cs": "97ef02ab60e7959ac92415e17cb7ae376fc862bc39342ffb9de4cbe6c0e4674b",
+    "csharp/debug/LetterPaperUiSmoke.cs": "d253878e75458e1616a2e481c5c602156199b26c37f1d6aa132cf472f0dc14b6",
+    "csharp/panel/CraftingPaperStyle.cs": "89e4d262d9240ca94fd3e295a59ec4937c1868eb7673d76ecfd6370fbdde0aec",
+    "csharp/panel/PaperButtonFeedback.cs": "74894219692f987a32ac356e170377e0950dacc10de809f7ca8b941ea26ace7c",
+    "tools/NativePaperCaptureHost.gd": "2dd5a67ede08ca01678ec1a83c5117783a6d4d08b81d34fd4b068f3c00ccebaa"
+  },
+  "formalSourcesUnchanged": {
+    "csharp/panel/LetterPanel.cs": "3443b69d8b7786759d1656b6125aa437b55f781c76a917eb9c75fb53f043cbb0",
+    "csharp/scene/LettersPreviewScene.cs": "8d7891e3bbd5c49ba073ef148a3be096b9853d20f882d826eb2f9abc800af01f",
+    "csharp/resources/LetterMailbox.cs": "ccc374eb2121bc50969e0f6bc1a2c22fad4fe452a7970a4ab3c4ef31bc0ea9a3",
+    "csharp/resources/LetterData.cs": "c6fe24782c22a2e978f52cbb8f23801b4e6c0a7d92380721f0cf32d7f7b02532",
+    "csharp/resources/LetterInvitationData.cs": "459845def36de7ade127db377612436cc69bf83d0c501fb2cdddeb996213914a",
+    "csharp/MainScene.Letters.cs": "26dac6222ef3b642f0c0e22bb111bc48e1f7a1951adecb1146c2ecffe59206a9",
+    "csharp/panel/MainHUD.Letters.cs": "9097bede9d8825fc35d8439066e60e683149f42f99be4a79c0ec5a2fb3576712"
+  }
+}

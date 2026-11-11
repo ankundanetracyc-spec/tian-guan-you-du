@@ -1,0 +1,526 @@
+{
+  "version": 1,
+  "date": "2026-11-09",
+  "status": "B墨绘铜纹守攻阵素材；新件正式占格与成长未定",
+  "style_reference": "../阵盘项目画风对照_20261108/B_墨绘铜纹.png",
+  "units_per_cell": 128,
+  "board_image": "board_base.png",
+  "board_native_size": [
+    1254,
+    1254
+  ],
+  "formal_starting_board": [
+    4,
+    4
+  ],
+  "display_layout_is_official_board_size": false,
+  "wire_style_reference": "../铜纹阵盘基础元件_20261108/components.json",
+  "reused_catalogs": [
+    "../铜纹阵盘基础元件_20261108/components.json",
+    "../铜纹阵盘逻辑元件_20261108/components.json"
+  ],
+  "bitmap_processing": "none; native generated PNG copied byte-identical; runtime display transforms only",
+  "components": [
+    {
+      "id": "state",
+      "name": "状态输入",
+      "image": "state_1x1.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "display_size": [
+        128,
+        128
+      ],
+      "formal_footprint_status": "未定；仅本次素材试排矩形",
+      "art_offset_128": [
+        0,
+        0.61
+      ],
+      "ports": [
+        {
+          "id": "value",
+          "kind": "signal",
+          "signal_type": "number",
+          "direction": "output",
+          "side": "east",
+          "cell": [
+            0,
+            0
+          ],
+          "logical_boundary": [
+            128,
+            64.0
+          ],
+          "slot_center_uv": [
+            0.87161,
+            0.49522
+          ],
+          "mouth_uv": [
+            0.92026,
+            0.49522
+          ],
+          "color_mouth_uv": [
+            0.90431,
+            0.49522
+          ],
+          "slot_inner_width_at_128": 4.29,
+          "overlay_bridge": 2.34
+        }
+      ]
+    },
+    {
+      "id": "compare",
+      "name": "比较器",
+      "image": "compare_2x1.png",
+      "native_size": [
+        1774,
+        887
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "display_size": [
+        256,
+        128
+      ],
+      "formal_footprint_status": "未定；仅本次素材试排矩形",
+      "art_offset_128": [
+        0,
+        0.36
+      ],
+      "ports": [
+        {
+          "id": "value",
+          "kind": "signal",
+          "signal_type": "number",
+          "direction": "input",
+          "side": "west",
+          "cell": [
+            0,
+            0
+          ],
+          "logical_boundary": [
+            0,
+            64.0
+          ],
+          "slot_center_uv": [
+            0.09329,
+            0.49718
+          ],
+          "mouth_uv": [
+            0.0389,
+            0.49718
+          ],
+          "color_mouth_uv": [
+            0.06144,
+            0.49718
+          ],
+          "slot_inner_width_at_128": 6.64,
+          "overlay_bridge": 6.07
+        },
+        {
+          "id": "state",
+          "kind": "signal",
+          "signal_type": "switch",
+          "direction": "output",
+          "side": "east",
+          "cell": [
+            1,
+            0
+          ],
+          "logical_boundary": [
+            256,
+            64.0
+          ],
+          "slot_center_uv": [
+            0.90699,
+            0.49718
+          ],
+          "mouth_uv": [
+            0.96054,
+            0.49718
+          ],
+          "color_mouth_uv": [
+            0.93856,
+            0.49718
+          ],
+          "slot_inner_width_at_128": 6.64,
+          "overlay_bridge": 5.93
+        }
+      ]
+    },
+    {
+      "id": "gate",
+      "name": "开关",
+      "image": "gate_1x1.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "display_size": [
+        128,
+        128
+      ],
+      "formal_footprint_status": "未定；仅本次素材试排矩形",
+      "art_offset_128": [
+        0,
+        -13
+      ],
+      "ports": [
+        {
+          "id": "event_in",
+          "kind": "signal",
+          "signal_type": "event",
+          "direction": "input",
+          "side": "west",
+          "cell": [
+            0,
+            0
+          ],
+          "logical_boundary": [
+            0,
+            64.0
+          ],
+          "slot_center_uv": [
+            0.128389,
+            0.601675
+          ],
+          "mouth_uv": [
+            0.101276,
+            0.601675
+          ],
+          "color_mouth_uv": [
+            0.101276,
+            0.601675
+          ],
+          "slot_inner_width_at_128": 5.92,
+          "overlay_bridge": 5.0,
+          "overlay_bridge_segment_128": {
+            "from": [
+              11.163,
+              64.014
+            ],
+            "to": [
+              16.163,
+              64.014
+            ],
+            "width": 5.21,
+            "coordinates": "after art_offset_128; rotate together with sprite"
+          }
+        },
+        {
+          "id": "permit",
+          "kind": "signal",
+          "signal_type": "switch",
+          "direction": "input",
+          "side": "north",
+          "cell": [
+            0,
+            0
+          ],
+          "logical_boundary": [
+            64.0,
+            0
+          ],
+          "slot_center_uv": [
+            0.501196,
+            0.221
+          ],
+          "mouth_uv": [
+            0.501196,
+            0.173844
+          ],
+          "color_mouth_uv": [
+            0.501196,
+            0.173844
+          ],
+          "slot_inner_width_at_128": 5.92,
+          "overlay_bridge": 5.0,
+          "overlay_bridge_segment_128": {
+            "from": [
+              64.153,
+              7.452
+            ],
+            "to": [
+              64.153,
+              12.452
+            ],
+            "width": 5.21,
+            "coordinates": "after art_offset_128; rotate together with sprite"
+          }
+        },
+        {
+          "id": "event_out",
+          "kind": "signal",
+          "signal_type": "event",
+          "direction": "output",
+          "side": "east",
+          "cell": [
+            0,
+            0
+          ],
+          "logical_boundary": [
+            128,
+            64.0
+          ],
+          "slot_center_uv": [
+            0.869617,
+            0.601675
+          ],
+          "mouth_uv": [
+            0.898724,
+            0.601675
+          ],
+          "color_mouth_uv": [
+            0.898724,
+            0.601675
+          ],
+          "slot_inner_width_at_128": 5.72,
+          "overlay_bridge": 5.0,
+          "overlay_bridge_segment_128": {
+            "from": [
+              116.837,
+              64.014
+            ],
+            "to": [
+              111.837,
+              64.014
+            ],
+            "width": 5.034,
+            "coordinates": "after art_offset_128; rotate together with sprite"
+          }
+        }
+      ]
+    },
+    {
+      "id": "invert",
+      "name": "取反",
+      "image": "invert_1x1.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "display_size": [
+        128,
+        128
+      ],
+      "formal_footprint_status": "未定；仅本次素材试排矩形",
+      "art_offset_128": [
+        0,
+        -0.9
+      ],
+      "ports": [
+        {
+          "id": "state_in",
+          "kind": "signal",
+          "signal_type": "switch",
+          "direction": "input",
+          "side": "west",
+          "cell": [
+            0,
+            0
+          ],
+          "logical_boundary": [
+            0,
+            64.0
+          ],
+          "slot_center_uv": [
+            0.175439,
+            0.507576
+          ],
+          "mouth_uv": [
+            0.132376,
+            0.507576
+          ],
+          "color_mouth_uv": [
+            0.132376,
+            0.507576
+          ],
+          "slot_inner_width_at_128": 6.74,
+          "overlay_bridge": 5.0,
+          "overlay_bridge_segment_128": {
+            "from": [
+              15.144,
+              64.07
+            ],
+            "to": [
+              20.144,
+              64.07
+            ],
+            "width": 5.931,
+            "coordinates": "after art_offset_128; rotate together with sprite"
+          }
+        },
+        {
+          "id": "state_out",
+          "kind": "signal",
+          "signal_type": "switch",
+          "direction": "output",
+          "side": "east",
+          "cell": [
+            0,
+            0
+          ],
+          "logical_boundary": [
+            128,
+            64.0
+          ],
+          "slot_center_uv": [
+            0.821372,
+            0.505981
+          ],
+          "mouth_uv": [
+            0.862041,
+            0.505981
+          ],
+          "color_mouth_uv": [
+            0.862041,
+            0.505981
+          ],
+          "slot_inner_width_at_128": 7.15,
+          "overlay_bridge": 5.0,
+          "overlay_bridge_segment_128": {
+            "from": [
+              112.141,
+              63.866
+            ],
+            "to": [
+              107.141,
+              63.866
+            ],
+            "width": 6.292,
+            "coordinates": "after art_offset_128; rotate together with sprite"
+          }
+        }
+      ]
+    },
+    {
+      "id": "fire",
+      "name": "火击",
+      "image": "fire_1x2.png",
+      "native_size": [
+        887,
+        1774
+      ],
+      "footprint": [
+        1,
+        2
+      ],
+      "display_size": [
+        128,
+        256
+      ],
+      "formal_footprint_status": "未定；仅本次素材试排矩形",
+      "art_offset_128": [
+        0,
+        0
+      ],
+      "ports": [
+        {
+          "id": "event",
+          "kind": "signal",
+          "signal_type": "event",
+          "direction": "input",
+          "side": "north",
+          "cell": [
+            0,
+            0
+          ],
+          "logical_boundary": [
+            64.0,
+            0
+          ],
+          "slot_center_uv": [
+            0.501691,
+            0.121477
+          ],
+          "mouth_uv": [
+            0.501691,
+            0.087373
+          ],
+          "color_mouth_uv": [
+            0.501691,
+            0.087373
+          ],
+          "slot_inner_width_at_128": 6.49,
+          "overlay_bridge": 5.0,
+          "overlay_bridge_segment_128": {
+            "from": [
+              64.216,
+              20.567
+            ],
+            "to": [
+              64.216,
+              25.567
+            ],
+            "width": 5.711,
+            "coordinates": "after art_offset_128; rotate together with sprite"
+          }
+        },
+        {
+          "id": "energy_in",
+          "kind": "energy",
+          "signal_type": null,
+          "direction": "input",
+          "side": "south",
+          "cell": [
+            0,
+            1
+          ],
+          "logical_boundary": [
+            64.0,
+            256
+          ],
+          "slot_center_uv": [
+            0.499436,
+            0.86584
+          ],
+          "mouth_uv": [
+            0.499436,
+            0.898534
+          ],
+          "color_mouth_uv": [
+            0.499436,
+            0.898534
+          ],
+          "slot_inner_width_at_128": 8.23,
+          "overlay_bridge": 5.0,
+          "overlay_bridge_segment_128": {
+            "from": [
+              63.928,
+              231.825
+            ],
+            "to": [
+              63.928,
+              226.825
+            ],
+            "width": 7.242,
+            "coordinates": "after art_offset_128; rotate together with sprite"
+          }
+        }
+      ]
+    }
+  ],
+  "renderer_contract": [
+    "线路主体在PNG下，延伸到slot_center_uv。",
+    "art_offset_128与图片、端口及补桥同步旋转。",
+    "overlay_bridge为128显示单位的短补桥；有overlay_bridge_segment_128时以精确端点为准。",
+    "补桥只盖封口墨边中部，不覆盖铜唇；颜色与对应线路一致。",
+    "所有新footprint仅本次试排，不能据此开放正式等级或扩大初始4×4。"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-08",
+  "asset": "阵眼",
+  "logical_footprint": [
+    1,
+    1
+  ],
+  "generator": "built-in image_gen.imagegen",
+  "prompt": "Use case: precise-object-edit.\nAsset type: ONE standalone 1x1 formation-core component PNG for the same Chinese cultivation game as the reference.\nThe supplied image is the USER-SELECTED HIGHEST visual authority. Extract/redraw ONLY the small square jade-seal component on the LEFT MIDDLE of that board (roughly x=0.25, y=0.48), as one independent complete object. Do NOT redraw the large board or any other part. Enlarge/repaint the component cleanly in exactly the reference's same hand-painted 2D ink-and-color style; do not make it a new 3D product design.\nKeep its recognizable construction: a small SQUARE grey-celadon jade seal face held in a shallow muted grey-brown bronze frame, slightly clipped corners, decisive dark charcoal outer contours, broad flat color planes, ivory bright edges and a little loose dry-brush scumble. There are exactly FOUR short plain bronze mounting EARS / LUGS, one centered on each side. These are structural fixing pieces in the same muted bronze color, not modern chip legs and NOT colored cable sockets. The central jade square should be the main clear silhouette, with a quiet pale celadon face and restrained ivory planes, never glossy or jewel-like.\nONE targeted change to the supplied component: replace the continuous seal mark that resembles a digit with a SMALL ABSTRACT arrangement of THREE SEPARATED short angular seal-script-like strokes. They should be short bent incisions, spaced apart; NOT a readable number, G, Z, letter, text or complete word. Keep the markings secondary and coarse enough to read at 64px. Do not form a numeral or an eyeball.\nSTRICT orthographic 90-degree TOP-DOWN view, upright square orientation. SQUARE image canvas, single component centered with about 10-12% genuine transparent safety margin on every side. The whole frame and all four mounting ears must be visible and unclipped. Prioritize strong outlines and simplified hand-painted grey-brown / grey-green / ivory color fields like the reference, NOT realistic metal rust, tiny engraved ornament, glossy bevels or sculpted bas-relief. This is a functional coordinating seal, not jewelry, a medallion, steering wheel, compass or CPU chip.\nFunctional boundary: this component has NO connection ports. Draw no signal line, power line, lead, trace, connector arrow, red/gold socket or network mark. Mounting ears are plain fasteners only.\nTrue alpha-transparent surrounding background; no plate/board underneath, no paper or colored square background, no UI, grid, text, numbers, labels, floor, cast shadow outside the object, glow or halo. Exactly ONE small standalone square jade core in the selected board's art style, no other objects and no comparison sheet.",
+  "references": [
+    {
+      "path": "E:/stacklands/docs/美术规范/阵盘项目画风对照_20261108/B_墨绘铜纹.png",
+      "role": "User-selected highest visual authority and subject extraction/redraw reference. Only the left-middle small square core is extracted/redrawn; no board or other object included."
+    }
+  ],
+  "native_size": [
+    1254,
+    1254
+  ],
+  "mode": "RGBA",
+  "alpha_extrema": [
+    0,
+    255
+  ],
+  "raw_default_path": "E:\\tmp\\CodexData\\generated_images\\01a1ba83-5aca-73e3-bb57-8641b5917811\\exec-96a3a755-bae8-4f44-8181-ee7abbb9436e.png",
+  "project_raw_path": "E:\\stacklands\\docs\\美术规范\\铜纹阵盘基础元件_20261108\\raw\\eye_1x1_generated.png",
+  "output_path": "E:\\stacklands\\docs\\美术规范\\铜纹阵盘基础元件_20261108\\eye_1x1.png",
+  "sha256": "2a1055bb2638f6a5410c129dd945ad1e8c7173748a8e7a5617547e7eeddc7caf",
+  "processing": "Copied original generated RGBA PNG unchanged; no Python or other pixel editing, no crop, no resize, no CLI generation. Pillow used read-only to inspect PNG metadata.",
+  "visual_checks": [
+    "One upright top-down square jade seal only",
+    "Four plain bronze mounting ears, no colored network sockets",
+    "Three separated abstract bent seal strokes rather than the original digit-like mark",
+    "Same charcoal outline, flat grey-brown bronze, pale celadon and ivory edge treatment as selected B",
+    "Full silhouette and ears unclipped with transparent safety margin",
+    "No board, signal wire, energy wire, grid, labels or exterior cast shadow"
+  ],
+  "functional_boundary": "This component has no signal or energy ports. Copper ears are fixing pieces, not network connectors.",
+  "scope": "Independent concept/base component artwork only; native resolution retained. Not integrated into the game, not declared final user approval or engine/64px UI validation."
+}

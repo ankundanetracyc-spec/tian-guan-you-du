@@ -1142,5 +1142,18 @@
     ],
     "subject_en": "A neat elongated portion of pale blue-green vine fibers, flexible fine strands folded lengthwise with clearly readable natural longitudinal veins.",
     "semantic_notes": "按原文藤茎抽出的浅青纤维，不是整藤、枝条、藤圈或编制绳；收拢竖向2×4。"
+  },
+  {
+    "key": "shared_pill",
+    "file": "pill_2x2.png",
+    "name": "统一丹丸",
+    "cells": [
+      2,
+      2
+    ],
+    "source": "res://textures/items/inventory_density_20261029/raw_unified_final/pill_2x2.png",
+    "reuse_existing_source": true,
+    "prompt": "复用现有统一圆形丹丸源图，不生成瓷瓶或丹种／丹效分化图。所有丹药物品共用这一枚2×2图标；同一图同时用于炼丹演出。",
+    "semantic_notes": "2026-11-10用户更新：正式丹药统一使用丹丸图，瓷瓶不再作为丹药图标。"
   }
 ]

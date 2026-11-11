@@ -1,0 +1,153 @@
+{
+  "date": "2026-11-09",
+  "phase": "整纸按钮、日期对齐及普通直线最终修订",
+  "allFourteenImagesViewed": true,
+  "renderer": "Vulkan 1.4.329 / Forward Mobile / NVIDIA GeForce RTX 4060 Laptop GPU",
+  "cases": [
+    {
+      "state": "按时长",
+      "observation": "两档默认8小时、输入裸三角、精力48/100、主行动及页脚完整；日期与返回文字同一行。 方式按钮现为Regular整张染色，无中央灰绿方块或折角页签。"
+    },
+    {
+      "state": "精力回满",
+      "observation": "两档60小时和100/100结果完整，选择态清楚，无裁字或重复展示。 方式按钮现为Regular整张染色，无中央灰绿方块或折角页签。"
+    },
+    {
+      "state": "精力已满",
+      "observation": "两档0小时、红褐提示及禁用主按钮完整；1000/1000是隔离边界夹具。"
+    },
+    {
+      "state": "指定日期",
+      "observation": "两档三个数字纸槽及年月日单位完整，跨年2年1月1日结果可读，当前夜景沿实际时钟。 方式按钮现为Regular整张染色，无中央灰绿方块或折角页签。"
+    },
+    {
+      "state": "剧情限定",
+      "observation": "两档隐藏方式按钮后间距已收紧；短剧情备注首屏完整，未出现滚动条，开始按钮固定底部。"
+    },
+    {
+      "state": "入夜",
+      "observation": "两档保留原夜间卧房图，纸笺对比和文字清楚，页面不出现昼夜或钟点文本。"
+    },
+    {
+      "state": "未绑定",
+      "observation": "两档人物、日期及结果使用—，方式与主行动灰显，无假状态。"
+    }
+  ],
+  "header": {
+    "fontSize": 22,
+    "dateY": 18,
+    "dateHeight": 46,
+    "returnY": 18,
+    "returnHeight": 46,
+    "dateVerticalAlignment": "Center",
+    "visualBaseline": "两档截图已逐张核对与返回同一行"
+  },
+  "input": {
+    "mode": "图形Viewport.PushInput鼠标命中",
+    "fullStamina": "点击选择回满后60小时且区域可见",
+    "numberPlus": "点击按时长后裸三角增加1小时",
+    "return": "点击返回收起面板，人物、时钟、回调次数不变"
+  },
+  "sourceBoundary": "本轮未改变休息结算或历法；按真实人物缺口和原恢复率计算；图内数值均为隔离夹具。",
+  "remainingVisualDefects": [],
+  "runtimeCaveat": "当前日志与实际运行程序集见直线分割修订_20261109.json；旧DLL与旧警告情况不当作本次记录。",
+  "images": [
+    {
+      "file": "休息_按时长_1280.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "43B87C4A09943C9160181663B6A2625E104E21F04E60EDFD07FA1BA31A90A9DF"
+    },
+    {
+      "file": "休息_按时长_1920.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "31BBE77FE8E6D0C3CBC59ED073A05970ECEFE7D5550B50EFE0D1AC9B1F3752D1"
+    },
+    {
+      "file": "休息_精力回满_1280.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "71B3889CDBFB330706161C50EC6C5E0217B71AA9AA90E571510178E2FA447B15"
+    },
+    {
+      "file": "休息_精力回满_1920.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "53BA02CB85EB9A6160024BAD186AE55DCC946D506E501FA30DCD25327009BD6D"
+    },
+    {
+      "file": "休息_精力已满_1280.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "F7403A40BCB78793A676F8318E5858E4A7BD77EF264C36797F0A247051E43C80"
+    },
+    {
+      "file": "休息_精力已满_1920.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "FDD2E288ECF67F3CE06BF59C0FB70E5615FE9FB3AF991140462AE8E2896F6CCE"
+    },
+    {
+      "file": "休息_剧情限定_1280.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "E9A02E52038A5AE8A9DCDB7D9B19CEB3F05157B31BA31D83F708CB72907349A9"
+    },
+    {
+      "file": "休息_剧情限定_1920.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "F1C9F707DA9B5CFC51B9ED93E6B6CD899B387106DE4772D64E800EE71433AC7D"
+    },
+    {
+      "file": "休息_入夜_1280.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "7A9DB9296F512B12DBBC18382F4BE4F445A84D913994E0B245EB716E420ABC89"
+    },
+    {
+      "file": "休息_入夜_1920.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "BAC2AB62E0D2E397A5F0BF61CFCEE1E27E5566B4CD4090495A3E61CC968AEFC3"
+    },
+    {
+      "file": "休息_未绑定_1280.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "94883C8C8B615354068F10964469F2BA5C9F22CE028AA77BC52EBD4357EFD75E"
+    },
+    {
+      "file": "休息_未绑定_1920.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "D72A68ECE410AB814913318A7F8B4B160C49DC1F520A370C829D3B87C03036BB"
+    },
+    {
+      "file": "休息_指定日期_1280.png",
+      "width": 1280,
+      "height": 720,
+      "sha256": "DF97B89CC683001691EA5B317EA9164E2454AA2D8B708CC5CE064F72AF6D295A"
+    },
+    {
+      "file": "休息_指定日期_1920.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "D57A5C04E190FE11BAEA2175D34FECEAF6E992984FE5012F85F5A2CA78D8B18F"
+    }
+  ],
+  "wholePaperSelection": {
+    "modes": "三种方式均Regular",
+    "sourceTexture": "CraftingPaper/button_regular.png/.../selectedFalse",
+    "noCentralRectangle": true,
+    "noFoldedTabs": true,
+    "observation": "按时长、日期、回满两档图中选中均为整张纸面轻微染色，未见中央方块或旧折角底边。"
+  },
+  "pressedFeedback": {
+    "helper": "PaperButtonFeedback.Face",
+    "sourceContract": "按下状态ExpandMarginTop=-1/Bottom=1，并将内容Top+1/Bottom-1",
+    "validationBoundary": "真实PushInput完成回满、手动/裸三角、返回；14张为静态状态图，未单独拍按住瞬间，不把静态图当作按下动效证据。"
+  },
+  "captureHost": "tools/NativePaperCaptureHost.tscn：固定GPU SubViewport，避免桌面指针和物理窗口尺寸干扰；没有截取桌面"
+}

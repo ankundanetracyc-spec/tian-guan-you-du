@@ -1,0 +1,138 @@
+{
+  "date": "2026-11-08",
+  "newBitmapAssets": 0,
+  "screenshotsAreBrowserCaptures": true,
+  "sharedFilesModified": false,
+  "playerFilesRead": false,
+  "sources": [
+    {
+      "path": "textures/ui/cultivation/quiet_room_20261010/rest_day.png",
+      "purpose": "白昼卧房原图，完整只读引用",
+      "sha256": "ae5620f2a76242e7ec8f2892057d6437f99ac990884bc3f9215f2b8590a0e731",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/cultivation/quiet_room_20261010/rest_night.png",
+      "purpose": "同一卧房夜景原图，完整只读引用",
+      "sha256": "3202ef3efdb084421c262081eec9c427959d2e63a6cce13f07734019ee62c914",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/yuxu_library_20261107/library_frame.png",
+      "purpose": "静室同族纸页、窄木压边及标题题签，局部九区伸缩；原图不变",
+      "sha256": "5d311b0aeb04d8de57fddbc6aef492e7e11ffbadba3ce558fe2f67579a4da7ce",
+      "mode": "只读引用"
+    },
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/materials.js",
+      "purpose": "只读素材组件",
+      "sha256": "9b6e5f149bd3612c65a9a47b15eabe058a9c16955878daefa19394ee48516214",
+      "mode": "只读引用"
+    },
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/skin-data.js",
+      "purpose": "只读六类素材与图集坐标",
+      "sha256": "24aeb018c43d2ba81017e3bfdca46fe2437b86d74cd959dce15b675e7dd4341a",
+      "mode": "只读引用"
+    },
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/控件补充图集_v1.png",
+      "purpose": "进度槽／填充与分隔线原素材",
+      "sha256": "4ff46165045d1e5c644ac9fe87c12e783d3343102acbeef4d585e42f142588be",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/font/LXGWZhenKaiSlabGB-Regular.ttf",
+      "purpose": "项目现有字体",
+      "sha256": "086fa66af57b7a0d7a007067097cd1ac27eb8b8db810fb83ac3de620be1eb3a1",
+      "mode": "只读引用"
+    },
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_常规_v4.png",
+      "purpose": "按尺寸与用途复用，沿原低Alpha显示过滤，不改原图",
+      "sha256": "dff0f81e6d21615106eea2023aa73429ccd003e7e3e1e7c49cbc5e3bcec6e495",
+      "mode": "只读引用"
+    },
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_短页签_v4.png",
+      "purpose": "按尺寸与用途复用，沿原低Alpha显示过滤，不改原图",
+      "sha256": "6512258e52c3c63a70a1618ab0af9cfd74e96039ffcf82bace9a1b58de40c4eb",
+      "mode": "只读引用"
+    },
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_主操作_v4.png",
+      "purpose": "按尺寸与用途复用，沿原低Alpha显示过滤，不改原图",
+      "sha256": "fcd81aceb22be83c5cb3d3c1ad4c7b1b8e2cbaac7d1b923409d1edd3c6e3727e",
+      "mode": "只读引用"
+    },
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/控件_输入槽_v4.png",
+      "purpose": "按尺寸与用途复用，沿原低Alpha显示过滤，不改原图",
+      "sha256": "b73575d23fb26a0efec9eedfd6fefb45c2dd5cf8afcf283e3077cc6f102db8c9",
+      "mode": "只读引用"
+    },
+    {
+      "path": "csharp/panel/RestPanel.cs",
+      "purpose": "时长／日期／固定限制与恢复预览",
+      "sha256": "3985e3a5507e171b98fdab4bd71666bbdb501703cec5c58fac31de02723aba02",
+      "mode": "只读引用"
+    },
+    {
+      "path": "csharp/panel/QuietRoomStyle.cs",
+      "purpose": "昼夜边界与原卧房路径",
+      "sha256": "5d4306a0b9fd1ee6170dcd9372e66691cb8cb6752b07d796736faeef78ee79f9",
+      "mode": "只读引用"
+    },
+    {
+      "path": "csharp/system/WorldStaminaRules.cs",
+      "purpose": "每小时恢复1点精力",
+      "sha256": "a583d46bfc94b42ddc1621763c2a3ade6de3fabd9971fe5935e2f6b11dfe552d",
+      "mode": "只读引用"
+    },
+    {
+      "path": "csharp/debug/QuietRoomSmoke.cs",
+      "purpose": "1年3月15日、40／100与固定8小时的隔离样例来源",
+      "sha256": "a9ca3d5b101c11541c7764d6647dfecf9556e406b620e64ba329311e411c83c8",
+      "mode": "只读引用"
+    },
+    {
+      "path": "csharp/MainScene.YuxuSectLife.cs",
+      "purpose": "当前观复峰居所文字来源",
+      "sha256": "8a03a25350fa09eda2ebb8ba98003837611161c85583e58c198b2ee8f0e25943",
+      "mode": "只读引用"
+    }
+  ],
+  "materialException": "数字增减采用裸三角；所有按钮／输入／进度与便笺仍用素材。",
+  "revision": 2,
+  "localFrameAliases": {
+    "restNote": {
+      "source": "panel",
+      "rendered": [
+        12,
+        12,
+        12,
+        12
+      ]
+    },
+    "restTitle": {
+      "source": "title",
+      "rendered": [
+        16,
+        12,
+        16,
+        12
+      ]
+    }
+  },
+  "fullRecoveryMode": {
+    "formula": "ceil(max(0, maximum-current)/recoveryPerHour)",
+    "recoveryPerHour": 1,
+    "alreadyFullHours": 0,
+    "manualHoursLimitApplies": false,
+    "gameIntegrated": false
+  },
+  "comparison": {
+    "reference": "docs/美术规范/角色与静室纸墨木石样稿_20261108/静室_首页.png",
+    "treatment": "同源纸色/字体/按钮/窄木压边与题签；保留卧房场景和独立构图。"
+  }
+}

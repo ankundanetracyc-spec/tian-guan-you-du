@@ -1,0 +1,94 @@
+{
+  "title": "合脉枢 Merge 1×1",
+  "date": "2026-11-08",
+  "generator": "built-in image_gen",
+  "calls": 1,
+  "prompt": "Use case: stylized-concept. Production asset: ONE independent MERGE PULSE NEXUS, a square 1x1 component icon for the supplied Chinese cultivation game. Reference 1, the selected B ink-painted bronze formation plate, is the HIGHEST visual authority. References 2 and 3, its real eye and sensor icons, establish the matching dark ink outlines, broad grey-brown copper planes, muted grey-celadon jade, narrow ivory edges and dry-brush handmade painting. These are STYLE/FAMILY references only, not edit targets. Do not copy a forked copper split-node or simply rotate a previous node: this object has a different physical design.\n\nDesign: TWO COMPACT CURVED JADE WEDGES fitted against one another in a low grey-brown copper cradle, their curved channels collecting into ONE short common copper mouth on the RIGHT. One jade wedge curls in from the LEFT, the other curls upward from the BOTTOM, and they nest together toward a single rightward neck. The paired curved jade pieces should be the dominant silhouette feature, clearly different from a thick branching metal spine. An asymmetrical pair of fitted crescent/scroll-like wedges is appropriate, but no decorative moon jewelry, shield, flower or yin-yang emblem. Keep a quiet solid CLOSED TOP shoulder with NO opening.\n\nMANDATORY THREE actual shallow copper contact sockets ONLY: LEFT/WEST midpoint signal INPUT; BOTTOM/SOUTH midpoint second signal INPUT; RIGHT/EAST midpoint single signal OUTPUT. The LEFT and RIGHT colored socket centers MUST lie on the exact same horizontal centerline halfway down the square canvas. The BOTTOM colored socket center MUST lie on the exact vertical canvas centerline. Keep enough upper and lower body balance that the left/right sockets really appear at y=50%, not below center. NO NORTH/TOP socket and no fourth colored mark. All three socket cores are MUTED CINNABAR RED signal pigment, never energy gold, yellow, cyan or blue ports. Each socket has a pale dull copper contact lip and a very short recessed red groove that remains within the component; do not draw projecting wire stubs or any lines on the transparent background. Thin red channels inside the jade/copper material lead from either input into the shared right mouth, all physically supported by the component body.\n\nMeaning: this collects/report-routes individual incoming events through one outlet and deduplicates the same event identity. It is NOT an AND gate requiring two simultaneous inputs, so do not draw paired locks, a closed shutter waiting for both sides, two switches or multiplication imagery. It does not sum energy, create power or amplify a pulse. No arrows, digits, letters, printed logic-diagram symbols or explanatory text.\n\nComposition: ONE whole low-profile object on a native SQUARE canvas with genuinely TRANSPARENT ALPHA and safe margins. EXACT strict 90-degree orthographic overhead; top faces only with shallow ink-painted bevels, no perspective, upright post, tall extrusion, 3D-render or photographic texture. Strong simple silhouette legible at 64px, restrained ordinary-tier handcrafted component. Do not draw a disk, board tile, background slab, other parts, grid, frame, UI, labels, modern chip pins, PCB, background free T-lines, cables, tubes, neon, sparkle, shield, flag or separate ground shadow. Match the project's actual hand-painted item family, not museum realism. Preserve original native-resolution PNG output.",
+  "referenced_image_paths": [
+    "E:/stacklands/docs/美术规范/阵盘项目画风对照_20261108/B_墨绘铜纹.png",
+    "E:/stacklands/docs/美术规范/铜纹阵盘基础元件_20261108/eye_1x1.png",
+    "E:/stacklands/docs/美术规范/铜纹阵盘基础元件_20261108/sensor_1x1.png"
+  ],
+  "reference_role": "生成前已view_image查看；B为最高画风依据，阵眼与感应枢为同族基础件参考，没有以Split旋转或复制生成Merge。",
+  "raw_path": "E:/tmp/CodexData/generated_images/01a1ba6c-5f78-7ae3-a6b7-fe90e469ba47/exec-22c54eb6-44b3-4ea2-9a7e-d2e2ff598ed2.png",
+  "raw_backup": "raw/merge_1x1_generated.png",
+  "output": "merge_1x1.png",
+  "native_size": [
+    1254,
+    1254
+  ],
+  "alpha": {
+    "format": "RGBA",
+    "extrema": [
+      0,
+      255
+    ],
+    "true_transparency": true
+  },
+  "sha256": "15addeebe408aeeb6129a69243b890fbf4589808d95ba35daef1f2ccac744869",
+  "port_spec": {
+    "W": "signal input",
+    "S": "signal input",
+    "E": "signal output",
+    "N": "closed, no port"
+  },
+  "function": "汇集多路输入；保持原事件身份，同一事件去重后送出。不是AND，不要求两路同时，不合成能量或放大振幅。",
+  "visual_check": "两块对扣弧形灰青玉楔汇入右侧单铜口，西南东三处朱砂槽；北实体闭合，与Split分叉铜脊轮廓不同。无供能口、箭头、字母、数字、额外背景线路或盘底。",
+  "port_measurement": {
+    "W": {
+      "core_uv": [
+        0.17982,
+        0.4996
+      ],
+      "face_uv": [
+        0.10128,
+        0.4996
+      ],
+      "width_128": 3.98,
+      "core_bbox": [
+        183,
+        607,
+        268,
+        646
+      ]
+    },
+    "E": {
+      "core_uv": [
+        0.83094,
+        0.4996
+      ],
+      "face_uv": [
+        0.89952,
+        0.4996
+      ],
+      "width_128": 3.98,
+      "core_bbox": [
+        1004,
+        607,
+        1080,
+        646
+      ]
+    },
+    "S": {
+      "core_uv": [
+        0.48764,
+        0.80343
+      ],
+      "face_uv": [
+        0.48764,
+        0.87321
+      ],
+      "width_128": 3.78,
+      "core_bbox": [
+        593,
+        965,
+        630,
+        1050
+      ]
+    }
+  },
+  "measurement_convention": "只读PIL颜色/alpha分析；UV基于完整原生PNG含安全留白。core为真实朱砂槽芯中心，face为沿口向外的主体透明边界。face不表示铜唇已开透。",
+  "preview_adaptation": "信号主干可维持6.5逻辑px，但三口末端须收至约3.8-4px。外线在PNG下延至口面；铜框封边只有接入时在预览层补短朱砂槽，不编辑原PNG。南口横向偏移约-1.6逻辑px。",
+  "postprocess": "原生PNG原样复制与raw备份，无裁切、缩放、改色、抠图或像素编辑；两份字节一致。",
+  "status": "逻辑元件独立美术候选、未实装；不改变现行端口、复杂度、事件或战斗结算。"
+}

@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-07",
+  "version": 2,
+  "mode": "built-in image_gen",
+  "use_case": "new background illustration with style references",
+  "references": [
+    {
+      "path": "textures/baishi/interiors_20261105/study_room.png",
+      "role": "style only"
+    },
+    {
+      "path": "textures/sect_overview/repaint_20261103/live_composition_item_style_20261104/tiangong.png",
+      "role": "style and setting only"
+    }
+  ],
+  "generated_file": "E:/tmp/CodexData/generated_images/01a1b645-e61d-7002-84e5-777bc18177de/exec-c7330ef9-656f-42ad-bcac-58349d54cc23.png",
+  "workspace_file": "租用入口_场所底图_v2.png",
+  "prompt": "场所底图_v2_完整提示词.txt",
+  "note": "新画面的构图为独立租用接待入口；不编辑原参考，不复用善功堂外框。"
+}

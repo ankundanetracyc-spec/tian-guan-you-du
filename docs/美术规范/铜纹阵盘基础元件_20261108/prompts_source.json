@@ -1,0 +1,72 @@
+{
+  "asset": "source_2x1.png",
+  "status": "完成，待整体美术验收；未实装",
+  "generator": "built-in image_gen.imagegen",
+  "mode": "reference extraction and re-render",
+  "transparent_background": true,
+  "full_prompt": "Use case: precise-object-edit. The provided image is the SELECTED PROJECT ART-STYLE AND OBJECT REFERENCE, highest priority. Extract and re-render ONLY the HORIZONTAL MARROW-SOURCE TROUGH at the bottom of this reference array plate as ONE complete standalone physical component. Remove the entire surrounding array plate, every other component and all connecting paths. Do not redesign it into another art style.\n\nPreserve this reference's exact visual language: confident dark ink outlines, simplified broad gray-brown copper and gray-celadon color planes, ivory-white painted edge highlights, restrained dry-brush/mineral watercolor texture, a few clear hand-painted shadows. Match the existing piece rather than polished realistic metal or photoreal patina. This is a little Chinese cultivation array vessel, not a modern battery, modern CPU, pendant or shield.\n\nObject construction: a SHALLOW warm-gray/light-bronze elongated trough cradles ONE continuous solid bar of gray-green / ivory-white chalcedony or spirit marrow. TWO simple broad copper retaining straps cross the bar, approximately one near each end, rendered with clear dark contours and ivory bevel highlights. Keep the whole component an intact unified trough, no loose fragments, no separate crystals or glass tube. The framing lip is a shallow clipped-corner trough, not an ornate gold jewelry frame. The two straps and their ends stay flush within the silhouette so they are not fake plugs or terminals.\n\nGeometry: STRICT ORTHOGRAPHIC 90-DEGREE TOP VIEW, look exactly down at the full TOP FACE. Not isometric, not 3/4, no exposed tall front/side wall, no tilted perspective. The complete physical object AND the canvas must each be a HORIZONTAL 2:1 rectangle, width about exactly twice height. It is a TWO-CELL component, visibly larger horizontally than a one-cell part, broad and substantial, not a skinny stick in a huge empty frame. Compose the actual object to fill about 88-92% of BOTH canvas width and height, with a small clean transparent safety margin. Preserve the complete silhouette. Do not cut off the output socket, and do not add surrounding empty landscape.\n\nPort: EXACTLY ONE energy exit, at the CENTER OF THE RIGHT NARROW SIDE. In the light-copper right end of the trough, draw a single small keyed notch / tenon socket with a SHORT DARK-GOLD SLOT INTERIOR. It visibly opens rightward but ends at the component boundary: NO outgoing line, wire, pipe or long connector tongue. This small right-center aperture is the only exposed port. LEFT, TOP and BOTTOM outer edges remain continuous CLOSED metal with no notches, sockets, holes or extra contacts. The top straps are retaining structure, not additional terminals. Make the right-center socket easy to identify by its actual shape, no drawn arrow or label.\n\nBackground: genuine transparent alpha everywhere outside the object and through any true empty socket gap. NO board or backing card, no ground plane, outside drop shadow, checkerboard backdrop, white rectangle or parchment. No text, numerals, runes, UI, health bar, grid, chessboard, circuit paths, connecting lines, arrows, plus/minus battery marks, flags, glow or halos. No shield shape. Deliver only this one source component, using the reference image's hand-painted ink style.",
+  "references": [
+    {
+      "path": "E:/stacklands/docs/美术规范/阵盘项目画风对照_20261108/B_墨绘铜纹.png",
+      "role": "最高视觉与对象依据：用户已选整盘底部横向玉髓槽"
+    }
+  ],
+  "logic_footprint": [
+    2,
+    1
+  ],
+  "expected_port": {
+    "count": 1,
+    "direction": "east/right",
+    "position": "right side center",
+    "kind": "energy output"
+  },
+  "raw_path": "E:\\stacklands\\docs\\美术规范\\铜纹阵盘基础元件_20261108\\raw\\source_2x1_v2.png",
+  "actual_size": [
+    1774,
+    887
+  ],
+  "alpha": {
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "canvas_aspect": "2:1",
+    "whole_file_sha256": "425637e4df4a605cf01488e8f41e4ce35a07223fe01f9bc45174013794e2f2c3",
+    "identical_to_native_output": true
+  },
+  "visual_port_review": "目视唯一供能出口位于右侧中点：铜框小开口内为短暗金槽芯，向右开放且未被裁切。左、上、下三侧没有接口；两道铜夹为束件，无外延线路。",
+  "pixel_processing": "无：原生PNG字节直接复制，未缩放、裁切、调色或像素重绘。",
+  "scope": "只生成独立阵源PNG；未接正式游戏、未改共享README或代码",
+  "initial_generated_path": "E:\\tmp\\CodexData\\generated_images\\01a1ba79-d569-7cc3-9b48-2e8e042c4ff0\\exec-bd0b0c1d-95ae-4928-b874-197c8836bc8a.png",
+  "initial_raw_path": "E:\\stacklands\\docs\\美术规范\\铜纹阵盘基础元件_20261108\\raw\\source_2x1_v1.png",
+  "refinements": [
+    {
+      "generator": "built-in image_gen.imagegen",
+      "purpose": "增加实体高度并清理外部透明留白；不以像素变形适配",
+      "full_prompt": "Precise proportion-and-cutout correction. Image 1 is the editable standalone source component; Image 2 is the user's selected array artwork and remains the HIGHEST authority for painted style. Keep Image 1's gray-green/ivory single chalcedony bar, simple shallow copper trough, exactly two copper straps, confident dark ink outline and dry-brush simplified color planes. Keep the one small energy notch at the exact CENTER OF THE RIGHT SIDE and keep left/top/bottom sides closed with no other socket.\n\nChange only the object's physical proportions and exterior cutout: redraw the complete trough-and-two-straps silhouette with MORE HEIGHT, so the actual visible solid object is approximately EXACTLY TWO TIMES AS WIDE AS IT IS TALL. The current visible solid piece is too thin, nearer 2.6:1; thicken the trough and make the jade bar broader and the two straps taller naturally, not by stretching pixels. Use a landscape 2:1 canvas. The complete solid object should occupy about 88-92% of BOTH canvas width AND height, leaving only a small transparent margin on all sides. Do not count very faint stray alpha or shadow as part of the object; all exterior area must be fully clear transparent alpha. Remove external haze or ground shadow. All parts remain fully inside the image, especially the right-center outlet. Do not crop or resize the entire composition as a shortcut.\n\nMaintain STRICT 90-DEGREE ORTHOGRAPHIC TOP VIEW. Match Image 2's few broad gray-brown copper/gray-celadon planes and ivory highlight edges, never photoreal or ornate. No surrounding board, other components, wires, pipe, outgoing line, long connector tongue, background, text, numbers, UI, shields, battery marks, modern chip or chess grid. One complete substantial two-cell ancient source vessel and nothing else.",
+      "references": [
+        {
+          "path": "E:\\stacklands\\docs\\美术规范\\铜纹阵盘基础元件_20261108\\raw\\source_2x1_v1.png",
+          "role": "待微调首稿"
+        },
+        {
+          "path": "E:/stacklands/docs/美术规范/阵盘项目画风对照_20261108/B_墨绘铜纹.png",
+          "role": "最高画风依据"
+        }
+      ],
+      "source_generated_path": "E:\\tmp\\CodexData\\generated_images\\01a1ba79-d569-7cc3-9b48-2e8e042c4ff0\\exec-22d2fafc-e22b-453b-b6e4-df6f31383dbe.png",
+      "project_raw_path": "E:\\stacklands\\docs\\美术规范\\铜纹阵盘基础元件_20261108\\raw\\source_2x1_v2.png"
+    }
+  ],
+  "source_generated_path": "E:\\tmp\\CodexData\\generated_images\\01a1ba79-d569-7cc3-9b48-2e8e042c4ff0\\exec-22d2fafc-e22b-453b-b6e4-df6f31383dbe.png",
+  "project_path": "E:\\stacklands\\docs\\美术规范\\铜纹阵盘基础元件_20261108\\source_2x1.png",
+  "visual_style_review": "延续B的墨线轮廓、概括铜灰/灰青色面和象牙白亮边；横长单条玉髓、两道简洁铜夹、正俯视完整实物。"
+}

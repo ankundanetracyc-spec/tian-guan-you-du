@@ -1,0 +1,141 @@
+{
+  "date": "2026-11-09",
+  "result": "PASS",
+  "generation": "built-in image_gen.imagegen",
+  "png_postprocessing": "none",
+  "new_assets": [
+    {
+      "file": "board_base.png",
+      "raw": "raw/board_base_generated.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "alpha_corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "final_equals_raw": true,
+      "sha256": "46706a3470f9aad4c8c1019759ee32393e1ee3e5ff429b04998a4341328f9206"
+    },
+    {
+      "file": "state_1x1.png",
+      "raw": "raw/state_1x1_generated.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "alpha_corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "final_equals_raw": true,
+      "sha256": "954f57dce720a6d06b42275b7d5df28b4faa0777fd42ddcbfcee0ac4b647f5a4"
+    },
+    {
+      "file": "compare_2x1.png",
+      "raw": "raw/compare_2x1_generated.png",
+      "native_size": [
+        1774,
+        887
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "alpha_corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "final_equals_raw": true,
+      "sha256": "5aa387be15230eb1f3422a81e3b55e8a9e1a2b0dc83f14a6f8803d7106ff1be2"
+    },
+    {
+      "file": "gate_1x1.png",
+      "raw": "raw/gate_blank_jade_native.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "alpha_corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "final_equals_raw": true,
+      "sha256": "ef41173239c87ef5cba0f3712ee3ff72efa627d871e43e297d88132e8ab014b4"
+    },
+    {
+      "file": "invert_1x1.png",
+      "raw": "raw/invert_native.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "alpha_corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "final_equals_raw": true,
+      "sha256": "af78f8a4644d346beca267139ffd37dc786780f2e2e4fa9759216991736c3101"
+    },
+    {
+      "file": "fire_1x2.png",
+      "raw": "raw/fire_native.png",
+      "native_size": [
+        887,
+        1774
+      ],
+      "mode": "RGBA",
+      "alpha_range": [
+        0,
+        255
+      ],
+      "alpha_corners": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "final_equals_raw": true,
+      "sha256": "47d80230dd2500fb0145f1ecba0a8e199e11d3f63a261c1685f0c32dd8963918"
+    }
+  ],
+  "components": 5,
+  "signal_ports": 9,
+  "energy_ports": 1,
+  "candidate_aspect_ratios_match_native": true,
+  "port_uv_in_image_bounds": true,
+  "formal_footprints_approved": false,
+  "visual_inspection": "Root viewed all 6 final PNGs; selected B family, strict overhead, no grid, no shield logo or modern PCB."
+}

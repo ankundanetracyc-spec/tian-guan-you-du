@@ -1,0 +1,124 @@
+{
+  "date": "2026-11-09",
+  "phase": "五格自由构筑基线；分类与线路动态传导之前",
+  "passed": true,
+  "new_native_checks": 106,
+  "screenshot_count": 12,
+  "visual_review_method": "逐张view_image核对最终两档12张原生视口图；未重绘、裁切或合成",
+  "resolutions": [
+    {
+      "resolution": [
+        1920,
+        1080
+      ],
+      "native_checks": 53,
+      "screenshots": 6,
+      "visual_passed": true,
+      "process_exit_code": 0,
+      "stderr_bytes": 0,
+      "report": "1920/原生验收.json",
+      "findings": [
+        {
+          "file": "01_五格完整编辑页.png",
+          "passed": true,
+          "finding": "5×5、独立取反、14部件格/10线格/1空格及复杂度9/10均可见；B同族实物和两类线路清楚，无盘内常驻标签。此为分类/传导动效前基线。"
+        },
+        {
+          "file": "02_真实比较器阈值.png",
+          "passed": true,
+          "finding": "当前比较器的区间、百分比与30/60阈值可读；应用按钮和输入完整落在右侧纸栏。"
+        },
+        {
+          "file": "03_当前草图二十生命开罩.png",
+          "passed": true,
+          "finding": "真实20生命、2阵能付款、18公共盾与其中本阵18显示一致，未画第二条盾资源。"
+        },
+        {
+          "file": "04_当前草图八十生命伤敌.png",
+          "passed": true,
+          "finding": "真实80生命撤本器罩，新事件伤敌至91、阵能余7；同次重发没有重复伤害或扣费。"
+        },
+        {
+          "file": "05_改阈值后同生命转攻.png",
+          "passed": true,
+          "finding": "真实将节点改5/15后，同样20生命转为攻击；敌方91、阵能9，表现取自当前草图。"
+        },
+        {
+          "file": "06_断线明确拒绝运行.png",
+          "passed": true,
+          "finding": "实际擦线后给出纯中文断点原因、动作禁用、读数清空；无英文异常参数名，没有继续旧图。"
+        }
+      ]
+    },
+    {
+      "resolution": [
+        1280,
+        720
+      ],
+      "native_checks": 53,
+      "screenshots": 6,
+      "visual_passed": true,
+      "process_exit_code": 0,
+      "stderr_bytes": 0,
+      "report": "1280/原生验收.json",
+      "findings": [
+        {
+          "file": "01_五格完整编辑页.png",
+          "passed": true,
+          "finding": "5×5、独立取反、14部件格/10线格/1空格及复杂度9/10均可见；B同族实物和两类线路清楚，无盘内常驻标签。此为分类/传导动效前基线。"
+        },
+        {
+          "file": "02_真实比较器阈值.png",
+          "passed": true,
+          "finding": "当前比较器的区间、百分比与30/60阈值可读；应用按钮和输入完整落在右侧纸栏。"
+        },
+        {
+          "file": "03_当前草图二十生命开罩.png",
+          "passed": true,
+          "finding": "真实20生命、2阵能付款、18公共盾与其中本阵18显示一致，未画第二条盾资源。"
+        },
+        {
+          "file": "04_当前草图八十生命伤敌.png",
+          "passed": true,
+          "finding": "真实80生命撤本器罩，新事件伤敌至91、阵能余7；同次重发没有重复伤害或扣费。"
+        },
+        {
+          "file": "05_改阈值后同生命转攻.png",
+          "passed": true,
+          "finding": "真实将节点改5/15后，同样20生命转为攻击；敌方91、阵能9，表现取自当前草图。"
+        },
+        {
+          "file": "06_断线明确拒绝运行.png",
+          "passed": true,
+          "finding": "实际擦线后给出纯中文断点原因、动作禁用、读数清空；无英文异常参数名，没有继续旧图。"
+        }
+      ]
+    }
+  ],
+  "pure_checks": {
+    "new_grid_compiler_runtime": {
+      "groups": 16,
+      "assertions": 248,
+      "report": "纯核心验收.json"
+    },
+    "legacy_four_grid_current_run": {
+      "groups": 23,
+      "assertions": 8886,
+      "project": "tools/formation_grid_checks/FormationGridChecks.csproj"
+    }
+  },
+  "classification_and_dynamic_propagation_checked": false,
+  "latest_user_request_pending": [
+    "输入/逻辑/输出/阵眼阵源分类切换",
+    "同一次实际试演的信号与供能沿线传播"
+  ],
+  "scope": "本轮旧4兼容、5格真占格/编译/试演/阈值/断线及Q/E隔离基线；不把106项当作刚追加分类或动效需求的验收。旧590/72项与固定8格图均未复用计数。",
+  "isolation": {
+    "appdata": true,
+    "draft_path": true,
+    "real_journey_loaded": false,
+    "character_save_opened": false,
+    "items_or_knowledge_granted": false
+  },
+  "processes_exited": true
+}

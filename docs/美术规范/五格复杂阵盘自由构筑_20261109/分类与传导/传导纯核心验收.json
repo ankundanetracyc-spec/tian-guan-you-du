@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-09",
+  "passed": true,
+  "error": null,
+  "assertion_count": 67,
+  "groups": [
+    {
+      "name": "ordered physical paths and shared power prefix",
+      "passed": true,
+      "checks": 22
+    },
+    {
+      "name": "successful output and causal delivery use its real payment",
+      "passed": true,
+      "checks": 17
+    },
+    {
+      "name": "blocked event and failed quota do not pretend to transmit energy",
+      "passed": true,
+      "checks": 4
+    },
+    {
+      "name": "known false and numeric zero transmit; unknown does not",
+      "passed": true,
+      "checks": 4
+    },
+    {
+      "name": "unknown renewal uses held permission without invented signal",
+      "passed": true,
+      "checks": 2
+    },
+    {
+      "name": "filters and counters stop the visual path at the real gate",
+      "passed": true,
+      "checks": 4
+    },
+    {
+      "name": "merge departs on first arrival rather than waiting as AND",
+      "passed": true,
+      "checks": 7
+    },
+    {
+      "name": "duplicate and repeated plan construction cannot replay transactions",
+      "passed": true,
+      "checks": 4
+    },
+    {
+      "name": "legacy signal trial never claims real payment",
+      "passed": true,
+      "checks": 3
+    }
+  ],
+  "scope": "Actual runtime results and payment deltas -> physical playback plans; no Godot build or native frame checks.",
+  "old_baseline_reused": false
+}

@@ -1,0 +1,670 @@
+{
+  "status": "素材试排，正式足迹与盘级未定",
+  "logical_working_area": [
+    8,
+    8
+  ],
+  "units_per_cell": 128,
+  "pieces": [
+    {
+      "id": "health",
+      "image": "res://docs/美术规范/守攻阵铜纹素材_20261109/state_1x1.png",
+      "origin": [
+        1,
+        1
+      ],
+      "image_rectangle": [
+        1,
+        1
+      ],
+      "rotation": 0,
+      "art_offset_128": [
+        0,
+        0.61
+      ],
+      "ports": [
+        {
+          "id": "out",
+          "side": "east",
+          "energy": false,
+          "logical_boundary": [
+            256,
+            192
+          ],
+          "slot": [
+            239.56607,
+            191.99817
+          ],
+          "mouth": [
+            245.79327,
+            191.99817
+          ]
+        }
+      ]
+    },
+    {
+      "id": "compare",
+      "image": "res://docs/美术规范/守攻阵铜纹素材_20261109/compare_2x1.png",
+      "origin": [
+        3,
+        1
+      ],
+      "image_rectangle": [
+        2,
+        1
+      ],
+      "rotation": 0,
+      "art_offset_128": [
+        0,
+        0.36
+      ],
+      "ports": [
+        {
+          "id": "in",
+          "side": "west",
+          "energy": false,
+          "logical_boundary": [
+            384,
+            192
+          ],
+          "slot": [
+            407.88223,
+            191.99904
+          ],
+          "mouth": [
+            393.9584,
+            191.99904
+          ]
+        },
+        {
+          "id": "out",
+          "side": "east",
+          "energy": false,
+          "logical_boundary": [
+            640,
+            192
+          ],
+          "slot": [
+            616.18945,
+            191.99904
+          ],
+          "mouth": [
+            629.89825,
+            191.99904
+          ]
+        }
+      ]
+    },
+    {
+      "id": "branch",
+      "image": "res://docs/美术规范/铜纹阵盘逻辑元件_20261108/split_1x1.png",
+      "origin": [
+        6,
+        1
+      ],
+      "image_rectangle": [
+        1,
+        1
+      ],
+      "rotation": 0,
+      "art_offset_128": [
+        -0.77,
+        -9.27
+      ],
+      "ports": [
+        {
+          "id": "in",
+          "side": "west",
+          "energy": false,
+          "logical_boundary": [
+            768,
+            192
+          ],
+          "slot": [
+            788.3628,
+            192.0228
+          ],
+          "mouth": [
+            782.0268,
+            192.0228
+          ]
+        },
+        {
+          "id": "guard",
+          "side": "east",
+          "energy": false,
+          "logical_boundary": [
+            896,
+            192
+          ],
+          "slot": [
+            874.6604,
+            191.9716
+          ],
+          "mouth": [
+            880.5356,
+            191.9716
+          ]
+        },
+        {
+          "id": "invert",
+          "side": "north",
+          "energy": false,
+          "logical_boundary": [
+            832,
+            128
+          ],
+          "slot": [
+            831.998,
+            146.5956
+          ],
+          "mouth": [
+            831.998,
+            139.96521
+          ]
+        }
+      ]
+    },
+    {
+      "id": "guard",
+      "image": "res://docs/美术规范/铜纹阵盘基础元件_20261108/ward_1x2.png",
+      "origin": [
+        7,
+        2
+      ],
+      "image_rectangle": [
+        1,
+        2
+      ],
+      "rotation": 0,
+      "art_offset_128": [
+        -0.0768,
+        0
+      ],
+      "ports": [
+        {
+          "id": "in",
+          "side": "north",
+          "energy": false,
+          "logical_boundary": [
+            960,
+            256
+          ],
+          "slot": [
+            960,
+            283.85278
+          ],
+          "mouth": [
+            960,
+            278.528
+          ]
+        },
+        {
+          "id": "energy",
+          "side": "south",
+          "energy": true,
+          "logical_boundary": [
+            960,
+            512
+          ],
+          "slot": [
+            960,
+            481.91998
+          ],
+          "mouth": [
+            960,
+            489.344
+          ]
+        }
+      ]
+    },
+    {
+      "id": "invert",
+      "image": "res://docs/美术规范/守攻阵铜纹素材_20261109/invert_1x1.png",
+      "origin": [
+        1,
+        3
+      ],
+      "image_rectangle": [
+        1,
+        1
+      ],
+      "rotation": 0,
+      "art_offset_128": [
+        0,
+        -0.9
+      ],
+      "ports": [
+        {
+          "id": "in",
+          "side": "west",
+          "energy": false,
+          "logical_boundary": [
+            128,
+            448
+          ],
+          "slot": [
+            150.45619,
+            448.06973
+          ],
+          "mouth": [
+            144.94412,
+            448.06973
+          ]
+        },
+        {
+          "id": "out",
+          "side": "east",
+          "energy": false,
+          "logical_boundary": [
+            256,
+            448
+          ],
+          "slot": [
+            233.13562,
+            447.86557
+          ],
+          "mouth": [
+            238.34125,
+            447.86557
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cast",
+      "image": "res://docs/美术规范/铜纹阵盘基础元件_20261108/sensor_1x1.png",
+      "origin": [
+        1,
+        5
+      ],
+      "image_rectangle": [
+        1,
+        1
+      ],
+      "rotation": 0,
+      "art_offset_128": [
+        0,
+        -0.7168
+      ],
+      "ports": [
+        {
+          "id": "out",
+          "side": "east",
+          "energy": false,
+          "logical_boundary": [
+            256,
+            704
+          ],
+          "slot": [
+            230.0672,
+            704
+          ],
+          "mouth": [
+            237.2224,
+            704
+          ]
+        }
+      ]
+    },
+    {
+      "id": "switch",
+      "image": "res://docs/美术规范/守攻阵铜纹素材_20261109/gate_1x1.png",
+      "origin": [
+        4,
+        5
+      ],
+      "image_rectangle": [
+        1,
+        1
+      ],
+      "rotation": 0,
+      "art_offset_128": [
+        0,
+        -13
+      ],
+      "ports": [
+        {
+          "id": "event",
+          "side": "west",
+          "energy": false,
+          "logical_boundary": [
+            512,
+            704
+          ],
+          "slot": [
+            528.4338,
+            704.0144
+          ],
+          "mouth": [
+            524.9633,
+            704.0144
+          ]
+        },
+        {
+          "id": "permit",
+          "side": "north",
+          "energy": false,
+          "logical_boundary": [
+            576,
+            640
+          ],
+          "slot": [
+            576.1531,
+            655.288
+          ],
+          "mouth": [
+            576.1531,
+            649.252
+          ]
+        },
+        {
+          "id": "out",
+          "side": "east",
+          "energy": false,
+          "logical_boundary": [
+            640,
+            704
+          ],
+          "slot": [
+            623.311,
+            704.0144
+          ],
+          "mouth": [
+            627.0367,
+            704.0144
+          ]
+        }
+      ]
+    },
+    {
+      "id": "attack",
+      "image": "res://docs/美术规范/守攻阵铜纹素材_20261109/fire_1x2.png",
+      "origin": [
+        6,
+        4
+      ],
+      "image_rectangle": [
+        1,
+        2
+      ],
+      "rotation": 0,
+      "art_offset_128": [
+        0,
+        0
+      ],
+      "ports": [
+        {
+          "id": "in",
+          "side": "north",
+          "energy": false,
+          "logical_boundary": [
+            832,
+            512
+          ],
+          "slot": [
+            832.21643,
+            543.09814
+          ],
+          "mouth": [
+            832.21643,
+            534.3675
+          ]
+        },
+        {
+          "id": "energy",
+          "side": "south",
+          "energy": true,
+          "logical_boundary": [
+            832,
+            768
+          ],
+          "slot": [
+            831.9278,
+            733.655
+          ],
+          "mouth": [
+            831.9278,
+            742.0247
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eye",
+      "image": "res://docs/美术规范/铜纹阵盘基础元件_20261108/eye_1x1.png",
+      "origin": [
+        2,
+        2
+      ],
+      "image_rectangle": [
+        1,
+        1
+      ],
+      "rotation": 0,
+      "art_offset_128": [
+        0,
+        0
+      ],
+      "ports": []
+    },
+    {
+      "id": "source",
+      "image": "res://docs/美术规范/铜纹阵盘基础元件_20261108/source_2x1.png",
+      "origin": [
+        2,
+        6
+      ],
+      "image_rectangle": [
+        2,
+        1
+      ],
+      "rotation": 0,
+      "art_offset_128": [
+        0,
+        0.4352
+      ],
+      "ports": [
+        {
+          "id": "energy",
+          "side": "east",
+          "energy": true,
+          "logical_boundary": [
+            512,
+            832
+          ],
+          "slot": [
+            500.30078,
+            832
+          ],
+          "mouth": [
+            503.7824,
+            832
+          ]
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "from": "health",
+      "to": "compare",
+      "energy": false,
+      "points": [
+        [
+          256,
+          192
+        ],
+        [
+          384,
+          192
+        ]
+      ]
+    },
+    {
+      "from": "compare",
+      "to": "branch",
+      "energy": false,
+      "points": [
+        [
+          640,
+          192
+        ],
+        [
+          768,
+          192
+        ]
+      ]
+    },
+    {
+      "from": "branch",
+      "to": "guard",
+      "energy": false,
+      "points": [
+        [
+          896,
+          192
+        ],
+        [
+          960,
+          192
+        ],
+        [
+          960,
+          256
+        ]
+      ]
+    },
+    {
+      "from": "branch",
+      "to": "invert",
+      "energy": false,
+      "points": [
+        [
+          832,
+          128
+        ],
+        [
+          832,
+          64
+        ],
+        [
+          64,
+          64
+        ],
+        [
+          64,
+          448
+        ],
+        [
+          128,
+          448
+        ]
+      ]
+    },
+    {
+      "from": "invert",
+      "to": "switch",
+      "energy": false,
+      "points": [
+        [
+          256,
+          448
+        ],
+        [
+          576,
+          448
+        ],
+        [
+          576,
+          640
+        ]
+      ]
+    },
+    {
+      "from": "cast",
+      "to": "switch",
+      "energy": false,
+      "points": [
+        [
+          256,
+          704
+        ],
+        [
+          512,
+          704
+        ]
+      ]
+    },
+    {
+      "from": "switch",
+      "to": "attack",
+      "energy": false,
+      "points": [
+        [
+          640,
+          704
+        ],
+        [
+          704,
+          704
+        ],
+        [
+          704,
+          448
+        ],
+        [
+          832,
+          448
+        ],
+        [
+          832,
+          512
+        ]
+      ]
+    },
+    {
+      "from": "source",
+      "to": "guard",
+      "energy": true,
+      "points": [
+        [
+          512,
+          832
+        ],
+        [
+          832,
+          832
+        ],
+        [
+          960,
+          832
+        ],
+        [
+          960,
+          512
+        ]
+      ]
+    },
+    {
+      "from": "source",
+      "to": "attack",
+      "energy": true,
+      "points": [
+        [
+          512,
+          832
+        ],
+        [
+          832,
+          832
+        ],
+        [
+          832,
+          768
+        ]
+      ]
+    }
+  ],
+  "issues": []
+}

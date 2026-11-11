@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-08",
+  "component": "鉴脉门",
+  "kind": "Filter",
+  "footprint": [
+    1,
+    1
+  ],
+  "complexity": 1,
+  "generator": "built-in image_gen.imagegen",
+  "prompt": "Use case: stylized-concept. Asset type: ONE isolated modular logic component icon for the same Chinese cultivation formation disk project.\nThe first supplied image is the user-selected bronze formation disk master; the second is its already-created square array-eye component. These references define the SAME ART FAMILY: confident dark charcoal ink contours, simplified broad grey-brown antique-bronze and grey-celadon jade planes, ivory narrow edge highlights and restrained dry-brush strokes. Match that exact construction scale, line weight and matte hand-painted game illustration. Do not make a photorealistic metal object, 3D sculpted render or modern electronic chip.\nCreate the FILTER component 鉴脉门, a compact ONE-CELL square footprint physical jade-and-bronze gate. Not another square seal: its distinguishing structure is a small shallow bronze frame containing two or three flat jade comb/slit leaves, staggered like a tiny adjustable ritual gate, with a clearly recognizable central narrow passage. Everything lies horizontally FLAT, seen from exact 90-degree orthographic TOP VIEW. The body is low profile and slightly clipped-cornered, a functional handmade formation part. Use only a few strong broad silhouettes, not miniature dense ornament.\nExactly TWO functional terminal collars: a small muted CINNABAR signal inlet at the WEST edge midpoint and matching CINNABAR signal outlet at the EAST edge midpoint. Both are aligned on the same horizontal central axis. A short dark-red inset path can show inside the little gate, but all red stops within the part; leave no outgoing wire in the transparent margin. The top and bottom edges are CLOSED with no socket, colored notch or fake contact. The bronze frame around each terminal is shallow and simple; terminal mouths visibly face outward, suitable for a separate thin line to enter.\nThis is a signal condition gate that passes already-matching events. Its imagery must NOT imply an energy source, battery, elemental effect, shield, switch requiring two simultaneous events or numeric counter. No clock face, letters, numbers, labels, arrows, CPU pins, electronic plugs, external wires, backdrop slab, board, UI, cells or grid.\nSquare native canvas. Entire component centered, filling roughly 78-84% of the canvas width and similar height, with true transparent alpha background and clean safety margin around the complete silhouette. NO cast ground shadow or halo outside the object. Strong readable icon at 64px. Keep the component compact in the same physical scale as the reference array eye; make the comb/gate silhouette distinct enough to distinguish it from a seal, trough, fork or paired protective plates.",
+  "referenced_image_paths": [
+    "E:/stacklands/docs/美术规范/阵盘项目画风对照_20261108/B_墨绘铜纹.png",
+    "E:/stacklands/docs/美术规范/铜纹阵盘基础元件_20261108/eye_1x1.png"
+  ],
+  "edit_prompt": "Use case: precise-object-edit. Edit the provided isolated bronze-and-jade filter game component. Preserve the exact outside square bronze frame, WEST/EAST two red signal slots, ink-and-dry-brush painting, grey-brown and grey-celadon colors, native square composition and genuine transparent background.\nONE correction: the three inner jade leaves currently look like tall standing walls in isometric perspective. Replace ONLY those raised inner jade structures with a SINGLE FLAT FLUSH jade comb/lattice insert lying horizontally inside the frame, like a pierced jade gate seen directly from above. The insert has three narrow straight parallel slots and a stepped gap that suggest screening a signal, but no tall upright face, no deep front wall and no isometric diagonal extrusion. All visible major surfaces are TOP faces; use only tiny restrained beveled-edge highlights, like the existing square array-eye component in this game. The red signal path can be faintly visible underneath in the slots. Keep both red mouths at their exact original W/E midpoints, do not add or remove sockets.\nMake the plate truly orthographic 90-degree OVERHEAD: face dimensions are not foreshortened, slots are flat incisions, depth is very shallow. No camera tilt. No other new shapes, letters, numbers, switch handle, wires outside the object, shield, base board, UI, glow or outside shadow. Keep the artist's confident irregular charcoal contours and simple hand-painted broad planes. The isolated icon should retain the same compact silhouette and scale.",
+  "edit_target": "E:/tmp/CodexData/generated_images/01a1b682-03fd-7651-8d4c-8018f1185e66/exec-a205536d-16e4-4e76-bbae-f2e16b40eccb.png",
+  "raw_selected": "E:/tmp/CodexData/generated_images/01a1b682-03fd-7651-8d4c-8018f1185e66/exec-3dad785f-3f06-4796-bd56-e117f386e7aa.png",
+  "output_path": "E:/stacklands/docs/美术规范/铜纹阵盘逻辑元件_20261108/filter_1x1.png",
+  "native_size": [
+    1254,
+    1254
+  ],
+  "ports": [
+    {
+      "side": "west",
+      "kind": "signal",
+      "input": true
+    },
+    {
+      "side": "east",
+      "kind": "signal",
+      "input": false
+    }
+  ],
+  "function": "按既有来源/振幅条件筛选已有信号；不制造新事件或阵能。",
+  "art_change": "首稿内部玉梳侧面过高，内置编辑为低矮平伏镂槽玉片，保留外框与两红口。",
+  "processing": "原生RGBA复制，无像素后处理；原始两版均保留。",
+  "status": "铜纹逻辑元件设计候选，未接入正式游戏。"
+}

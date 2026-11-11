@@ -1,5 +1,7 @@
 # 四方向圆手人物与前后发同步
 
+> **历史试演状态核对（2026-11-09）：**下表是2026-11-05当时的独立试演，前后发02／03原路径已缺失。当前[活动配置](../../../mods/appearance/ink_three_variants_20261004/appearance_parts.json)使用01、04—09，旧款ID 1／2回退0；同名历史备份的SHA不同，尚不能认定试演当时使用的是哪一份。
+
 **历史方案，已被[正背双视圆手人物最小试玩](../正背双视圆手人物最小试玩_20261105/README.md)覆盖。** 用户最新要求先完成正背两个主体视图、一款前发与一款后发独立合成，不画眼睛；采用双脚上下交替、躯干仅垂直反馈、双手收近及无地平线轻斜俯视场地。下文四方向、无腿脚、三前发×三后发、62×2与461×2均仅为旧阶段记录，不能作为新MVP验证或当前制作目标。
 
 2026-11-05，独立美术原型。用户已确认大头、重发型、无肢体的简化方向，并要求躯干改为锥形筒、相对首稿增加约15%体量。首版只做正面、背面、左侧、右侧四方向，一套玉虚内门常服和三款前发、三款后发的独立组合。
@@ -33,11 +35,11 @@
 | --- | --- | --- |
 | 衣服 `appearance_clothes_style` | 5／`male_clothes_05` | [前衣06](../../../mods/appearance/ink_three_variants_20261004/male/clothing/06.png)＋[同款后领06](../../../mods/appearance/ink_three_variants_20261004/male/clothing_back/06.png) |
 | 前发 `appearance_hair_style` | 0／`male_front_hair_00` | [前发01](../../../mods/appearance/ink_three_variants_20261004/male/hair_front/01.png) |
-| 同上 | 1／`male_front_hair_01` | [前发02](../../../mods/appearance/ink_three_variants_20261004/male/hair_front/02.png) |
-| 同上 | 2／`male_front_hair_02` | [前发03](../../../mods/appearance/ink_three_variants_20261004/male/hair_front/03.png) |
+| 同上 | 1／`male_front_hair_01` | [前发02（原附件缺失，查记录）](../../引用与附件核对.md#ref-caf90df2757a) |
+| 同上 | 2／`male_front_hair_02` | [前发03（原附件缺失，查记录）](../../引用与附件核对.md#ref-6bff75d2dac1) |
 | 后发 `appearance_hair_back_style` | 0／`male_back_hair_00` | [后发01](../../../mods/appearance/ink_three_variants_20261004/male/hair_back/01.png) |
-| 同上 | 1／`male_back_hair_01` | [后发02](../../../mods/appearance/ink_three_variants_20261004/male/hair_back/02.png) |
-| 同上 | 2／`male_back_hair_02` | [后发03](../../../mods/appearance/ink_three_variants_20261004/male/hair_back/03.png) |
+| 同上 | 1／`male_back_hair_01` | [后发02（原附件缺失，查记录）](../../引用与附件核对.md#ref-1edcb7b1088e) |
+| 同上 | 2／`male_back_hair_02` | [后发03（原附件缺失，查记录）](../../引用与附件核对.md#ref-aa3c0d1909cd) |
 
 内门保存值5实际对应文件06.png，物品为[玉虚内门常服](../../../resources/entities/items/clothing/玉虚内门常服.tres)。前后发0／1／2各自对应01／02／03.png，改其中一项保留另一项及衣服编号。
 

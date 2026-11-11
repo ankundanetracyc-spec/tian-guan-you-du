@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>休息 · 卧房便笺独立样稿</title><link rel="icon" href="data:,">
+  <link rel="stylesheet" href="rest.css?v=7">
+  <script src="../角色与静室纸墨木石样稿_20261108/skin-data.js?v=5"></script>
+  <script>
+    (()=>{const base=new URL('../角色与静室纸墨木石样稿_20261108/',document.baseURI);const d=structuredClone(window.SKIN_DATA);d.file=new URL(d.file,base).href;d.frameFile=new URL(d.frameFile,base).href;for(const spec of Object.values(d.frames))if(spec.file)spec.file=new URL(spec.file,base).href;d.frames.restNote={...d.frames.panel,rendered:[12,12,12,12]};d.frames.restTitle={...d.frames.title,rendered:[16,12,16,12]};window.SKIN_DATA=d;})();
+  </script>
+  <script defer src="../角色与静室纸墨木石样稿_20261108/materials.js?v=5"></script>
+  <script defer src="fixture.js?v=2"></script><script defer src="rest.js?v=3"></script>
+</head>
+<body>
+  <header class="review-bar" data-skin="paper">
+    <div class="review-title"><b>休息 · 卧房便笺</b><span>独立样稿，不接游戏</span></div>
+    <nav aria-label="样例状态">
+      <button data-skin="button" data-button-kind="buttonTab" data-case="day">白昼</button>
+      <button data-skin="button" data-button-kind="buttonTab" data-case="night">入夜</button>
+      <button data-skin="button" data-button-kind="buttonTab" data-case="date">指定日期</button>
+      <button data-skin="button" data-button-kind="buttonTab" data-case="fixed">剧情限定</button>
+      <button data-skin="button" data-button-kind="buttonTab" data-case="unbound">未绑定</button>
+    </nav>
+    <a data-skin="button" data-button-kind="buttonTab" href="README.md">说明</a>
+  </header>
+  <div id="viewport">
+    <main id="stage" aria-label="休息样稿" tabindex="-1">
+      <img id="room-background" class="room-background" src="../../../textures/ui/cultivation/quiet_room_20261010/rest_day.png" alt="">
+      <div class="room-title"><h1 data-skin="restTitle">休息</h1><span id="place">观复峰居所</span></div>
+      <header class="room-header">
+        <div class="room-date" id="current-date">1年3月15日</div>
+      </header>
+      <button id="leave" class="ui-button page-return" data-skin="button" aria-label="返回"><span class="button-content"><span>返回</span><span class="return-triangle" aria-hidden="true"></span></span></button>
+      <section id="rest-note" class="rest-note" data-skin="restNote" aria-labelledby="note-title">
+        <div class="note-inner">
+          <div class="note-heading"><h2 id="note-title">安心歇息</h2><span class="note-mark" id="fixed-mark" hidden>剧情限定</span></div>
+          <div class="stamina-summary"><span>当前精力</span><strong id="current-stamina">40 <small>/ 100</small></strong></div>
+          <div id="current-progress"></div>
+          <div class="mode-tabs" role="group" aria-label="休息方式" id="mode-tabs">
+            <button id="mode-hours" class="ui-button" data-skin="button" data-button-kind="buttonTab" aria-pressed="true"><span class="button-content">按时长</span></button>
+            <button id="mode-date" class="ui-button" data-skin="button" data-button-kind="buttonTab" aria-pressed="false"><span class="button-content">指定日期</span></button>
+            <button id="mode-full" class="ui-button" data-skin="button" data-button-kind="buttonTab" aria-label="恢复精力至上限" aria-pressed="false"><span class="button-content">精力回满</span></button>
+          </div>
+          <section class="selection-section" aria-label="休息安排">
+            <div id="hours-section"><label class="field-heading" for="hours">休息时长</label><div class="duration-row"><div class="number-well" data-skin="input"><input id="hours" type="number" min="1" max="720" step="1" value="8" aria-label="休息时长"><div class="step-arrows"><button class="step-arrow" data-field="hours" data-delta="1" aria-label="增加休息时长"><span class="triangle up"></span></button><button class="step-arrow" data-field="hours" data-delta="-1" aria-label="减少休息时长"><span class="triangle down"></span></button></div></div><span class="duration-unit">小时</span></div></div>
+            <div id="date-section" hidden><div class="field-heading">醒来日期</div><div class="date-fields">
+              <label class="date-field"><span class="number-well" data-skin="input"><input id="year" type="number" min="1" max="9999" step="1" value="1" aria-label="醒来年份"><span class="step-arrows"><button class="step-arrow" data-field="year" data-delta="1" aria-label="增加醒来年份"><span class="triangle up"></span></button><button class="step-arrow" data-field="year" data-delta="-1" aria-label="减少醒来年份"><span class="triangle down"></span></button></span></span><span>年</span></label>
+              <label class="date-field"><span class="number-well" data-skin="input"><input id="month" type="number" min="1" max="12" step="1" value="3" aria-label="醒来月份"><span class="step-arrows"><button class="step-arrow" data-field="month" data-delta="1" aria-label="增加醒来月份"><span class="triangle up"></span></button><button class="step-arrow" data-field="month" data-delta="-1" aria-label="减少醒来月份"><span class="triangle down"></span></button></span></span><span>月</span></label>
+              <label class="date-field"><span class="number-well" data-skin="input"><input id="day" type="number" min="1" max="30" step="1" value="16" aria-label="醒来日期"><span class="step-arrows"><button class="step-arrow" data-field="day" data-delta="1" aria-label="增加醒来日期"><span class="triangle up"></span></button><button class="step-arrow" data-field="day" data-delta="-1" aria-label="减少醒来日期"><span class="triangle down"></span></button></span></span><span>日</span></label>
+            </div></div>
+            <div id="full-section" hidden><span class="field-heading">预计休息时长</span><p class="full-duration"><strong id="full-hours">60</strong><span>小时</span></p></div>
+            <div id="fixed-section" hidden><span class="field-heading">休息时长</span><p class="fixed-duration">8 <span>小时</span></p><p class="fixed-note">剧情限定休息时长。</p></div>
+          </section>
+          <div class="note-divider" data-sprite="divider" data-stretch="true"></div>
+          <section class="wake-preview" aria-labelledby="wake-title">
+            <h3 id="wake-title">醒来后</h3>
+            <dl><div><dt>精力</dt><dd id="after-stamina">48 <small>/ 100</small></dd></div><div><dt>恢复精力</dt><dd id="recovered-stamina">8 点</dd></div><div><dt>生命</dt><dd id="health-result">恢复至上限</dd></div><div><dt>醒来日期</dt><dd id="wake-date">1年3月15日</dd></div></dl>
+          </section>
+          <p id="validation-message" class="validation-message" role="status" aria-live="polite"></p>
+          <div class="note-action"><button id="start-rest" class="ui-button primary" data-skin="button"><span class="button-content">开始休息</span></button><p>每小时恢复 <span id="recovery-rate">1</span> 点精力 · 开始后推进时间</p></div>
+        </div>
+      </section>
+      <div id="closed-view" hidden><section class="closed-note" data-skin="paper"><h2>休息已收起</h2><button class="ui-button" id="reopen" data-skin="button"><span class="button-content">继续查看</span></button></section></div>
+    </main>
+  </div>
+  <dialog id="arrangement-dialog" class="arrangement-dialog" data-skin="paper" aria-labelledby="arrangement-title"><h2 id="arrangement-title">休息安排</h2><p id="arrangement-copy"></p><button id="return-arrangement" class="ui-button" data-skin="button"><span class="button-content">返回安排</span></button></dialog>
+  <noscript>请启用脚本查看休息样稿。</noscript>
+</body>
+</html>

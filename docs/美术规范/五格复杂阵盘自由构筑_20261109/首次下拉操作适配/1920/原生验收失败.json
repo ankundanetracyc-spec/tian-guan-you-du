@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-09",
+  "passed": false,
+  "error": "System.Exception: 真实菜单未展开\r\n   at FormationFreeBuildUiSmoke.PickPopup(PopupMenu popup, Int32 index)\r\n   at FormationFreeBuildUiSmoke.Pick(OptionButton option, Int32 index)\r\n   at FormationFreeBuildUiSmoke._Ready()",
+  "stage": "真实载入五格守攻",
+  "preview_only": true,
+  "native_checks": 3,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "appdata": "E:\\stacklands\\.godot\\test-results\\formation_freebuild_ui\\20261109_173914_198_1920\\isolated_appdata",
+  "draft_path": "user://formation_freebuild_ui/1920/isolated_draft.json",
+  "real_journey_loaded": false,
+  "character_save_opened": false,
+  "items_or_knowledge_granted": false,
+  "scope": "Actual five-grid editing and current compiled circuit trial. Earlier fixed graph/UI counts are not reused.",
+  "checks": [
+    "视口与独立用户资料均为本轮配置",
+    "真实入口仍保留初阶四格，未载入人物旅程",
+    "保存本档真实视口 失败现场.png"
+  ],
+  "bounds": [],
+  "screenshots": [
+    {
+      "file": "失败现场.png",
+      "width": 1920,
+      "height": 1080
+    }
+  ],
+  "visual_review": "pending per-image inspection"
+}

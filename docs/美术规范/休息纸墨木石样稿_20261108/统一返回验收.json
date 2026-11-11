@@ -1,0 +1,608 @@
+{
+  "status": "passed",
+  "scope": "年月日显示与统一右上返回；历史休息规则验收另存",
+  "checkCount": 39,
+  "checks": [
+    {
+      "name": "1920 day 单一右上返回",
+      "pass": true,
+      "detail": {
+        "count": 1,
+        "direct": true,
+        "date": "1年3月15日",
+        "text": "返回",
+        "accessible": "返回",
+        "arrow": true,
+        "right": 23.99999892021918,
+        "top": 17.999999190164385,
+        "size": [
+          113.99999487104111,
+          46.00000263196576
+        ],
+        "font": 22,
+        "arrowInside": true,
+        "material": true,
+        "headerClear": true,
+        "noTimeOfDay": true,
+        "background": "../../../textures/ui/cultivation/quiet_room_20261010/rest_day.png"
+      }
+    },
+    {
+      "name": "1920 day 返回文字与右三角",
+      "pass": true,
+      "detail": {
+        "count": 1,
+        "direct": true,
+        "date": "1年3月15日",
+        "text": "返回",
+        "accessible": "返回",
+        "arrow": true,
+        "right": 23.99999892021918,
+        "top": 17.999999190164385,
+        "size": [
+          113.99999487104111,
+          46.00000263196576
+        ],
+        "font": 22,
+        "arrowInside": true,
+        "material": true,
+        "headerClear": true,
+        "noTimeOfDay": true,
+        "background": "../../../textures/ui/cultivation/quiet_room_20261010/rest_day.png"
+      }
+    },
+    {
+      "name": "1920 day 日期与标题避让",
+      "pass": true,
+      "detail": "1年3月15日"
+    },
+    {
+      "name": "1920 day 场景昼夜保留",
+      "pass": true,
+      "detail": "../../../textures/ui/cultivation/quiet_room_20261010/rest_day.png"
+    },
+    {
+      "name": "1920 night 单一右上返回",
+      "pass": true,
+      "detail": {
+        "count": 1,
+        "direct": true,
+        "date": "1年3月15日",
+        "text": "返回",
+        "accessible": "返回",
+        "arrow": true,
+        "right": 23.99999892021918,
+        "top": 17.999999190164385,
+        "size": [
+          113.99999487104111,
+          46.00000263196576
+        ],
+        "font": 22,
+        "arrowInside": true,
+        "material": true,
+        "headerClear": true,
+        "noTimeOfDay": true,
+        "background": "../../../textures/ui/cultivation/quiet_room_20261010/rest_night.png"
+      }
+    },
+    {
+      "name": "1920 night 返回文字与右三角",
+      "pass": true,
+      "detail": {
+        "count": 1,
+        "direct": true,
+        "date": "1年3月15日",
+        "text": "返回",
+        "accessible": "返回",
+        "arrow": true,
+        "right": 23.99999892021918,
+        "top": 17.999999190164385,
+        "size": [
+          113.99999487104111,
+          46.00000263196576
+        ],
+        "font": 22,
+        "arrowInside": true,
+        "material": true,
+        "headerClear": true,
+        "noTimeOfDay": true,
+        "background": "../../../textures/ui/cultivation/quiet_room_20261010/rest_night.png"
+      }
+    },
+    {
+      "name": "1920 night 日期与标题避让",
+      "pass": true,
+      "detail": "1年3月15日"
+    },
+    {
+      "name": "1920 night 场景昼夜保留",
+      "pass": true,
+      "detail": "../../../textures/ui/cultivation/quiet_room_20261010/rest_night.png"
+    },
+    {
+      "name": "1920 date 单一右上返回",
+      "pass": true,
+      "detail": {
+        "count": 1,
+        "direct": true,
+        "date": "1年12月30日",
+        "text": "返回",
+        "accessible": "返回",
+        "arrow": true,
+        "right": 23.99999892021918,
+        "top": 17.999999190164385,
+        "size": [
+          113.99999487104111,
+          46.00000263196576
+        ],
+        "font": 22,
+        "arrowInside": true,
+        "material": true,
+        "headerClear": true,
+        "noTimeOfDay": true,
+        "background": "../../../textures/ui/cultivation/quiet_room_20261010/rest_night.png"
+      }
+    },
+    {
+      "name": "1920 date 返回文字与右三角",
+      "pass": true,
+      "detail": {
+        "count": 1,
+        "direct": true,
+        "date": "1年12月30日",
+        "text": "返回",
+        "accessible": "返回",
+        "arrow": true,
+        "right": 23.99999892021918,
+        "top": 17.999999190164385,
+        "size": [
+          113.99999487104111,
+          46.00000263196576
+        ],
+        "font": 22,
+        "arrowInside": true,
+        "material": true,
+        "headerClear": true,
+        "noTimeOfDay": true,
+        "background": "../../../textures/ui/cultivation/quiet_room_20261010/rest_night.png"
+      }
+    },
+    {
+      "name": "1920 date 日期与标题避让",
+      "pass": true,
+      "detail": "1年12月30日"
+    },
+    {
+      "name": "1920 fixed 单一右上返回",
+      "pass": true,
+      "detail": {
+        "count": 1,
+        "direct": true,
+        "date": "1年3月15日",
+        "text": "返回",
+        "accessible": "返回",
+        "arrow": true,
+        "right": 23.99999892021918,
+        "top": 17.999999190164385,
+        "size": [
+          113.99999487104111,
+          46.00000263196576
+        ],
+        "font": 22,
+        "arrowInside": true,
+        "material": true,
+        "headerClear": true,
+        "noTimeOfDay": true,
+        "background": "../../../textures/ui/cultivation/quiet_room_20261010/rest_night.png"
+      }
+    },
+    {
+      "name": "1920 fixed 返回文字与右三角",
+      "pass": true,
+      "detail": {
+        "count": 1,
+        "direct": true,
+        "date": "1年3月15日",
+        "text": "返回",
+        "accessible": "返回",
+        "arrow": true,
+        "right": 23.99999892021918,
+        "top": 17.999999190164385,
+        "size": [
+          113.99999487104111,
+          46.00000263196576
+        ],
+        "font": 22,
+        "arrowInside": true,
+        "material": true,
+        "headerClear": true,
+        "noTimeOfDay": true,
+        "background": "../../../textures/ui/cultivation/quiet_room_20261010/rest_night.png"
+      }
+    },
+    {
+      "name": "1920 fixed 日期与标题避让",
+      "pass": true,
+      "detail": "1年3月15日"
+    },
+    {
+      "name": "1920 unbound 单一右上返回",
+      "pass": true,
+      "detail": {
+        "count": 1,
+        "direct": true,
+        "date": "—",
+        "text": "返回",
+        "accessible": "返回",
+        "arrow": true,
+        "right": 23.99999892021918,
+        "top": 17.999999190164385,
+        "size": [
+          113.99999487104111,
+          46.00000263196576
+        ],
+        "font": 22,
+        "arrowInside": true,
+        "material": true,
+        "headerClear": true,
+        "noTimeOfDay": true,
+        "background": "../../../textures/ui/cultivation/quiet_room_20261010/rest_day.png"
+      }
+    },
+    {
+      "name": "1920 unbound 返回文字与右三角",
+      "pass": true,
+      "detail": {
+        "count": 1,
+        "direct": true,
+        "date": "—",
+        "text": "返回",
+        "accessible": "返回",
+        "arrow": true,
+        "right": 23.99999892021918,
+        "top": 17.999999190164385,
+        "size": [
+          113.99999487104111,
+          46.00000263196576
+        ],
+        "font": 22,
+        "arrowInside": true,
+        "material": true,
+        "headerClear": true,
+        "noTimeOfDay": true,
+        "background": "../../../textures/ui/cultivation/quiet_room_20261010/rest_day.png"
+      }
+    },
+    {
+      "name": "1920 unbound 日期与标题避让",
+      "pass": true,
+      "detail": "—"
+    },
+    {
+      "name": "1920 精力回满可用",
+      "pass": true,
+      "detail": "60"
+    },
+    {
+      "name": "1280 day 单一右上返回",
+      "pass": true,
+      "detail": {
+        "count": 1,
+        "direct": true,
+        "date": "1年3月15日",
+        "text": "返回",
+        "accessible": "返回",
+        "arrow": true,
+        "right": 23.999939025205144,
+        "top": 17.999997911822096,
+        "size": [
+          114.00001587015208,
+          46.0000067865782
+        ],
+        "font": 22,
+        "arrowInside": true,
+        "material": true,
+        "headerClear": true,
+        "noTimeOfDay": true,
+        "background": "../../../textures/ui/cultivation/quiet_room_20261010/rest_day.png"
+      }
+    },
+    {
+      "name": "1280 day 返回文字与右三角",
+      "pass": true,
+      "detail": {
+        "count": 1,
+        "direct": true,
+        "date": "1年3月15日",
+        "text": "返回",
+        "accessible": "返回",
+        "arrow": true,
+        "right": 23.999939025205144,
+        "top": 17.999997911822096,
+        "size": [
+          114.00001587015208,
+          46.0000067865782
+        ],
+        "font": 22,
+        "arrowInside": true,
+        "material": true,
+        "headerClear": true,
+        "noTimeOfDay": true,
+        "background": "../../../textures/ui/cultivation/quiet_room_20261010/rest_day.png"
+      }
+    },
+    {
+      "name": "1280 day 日期与标题避让",
+      "pass": true,
+      "detail": "1年3月15日"
+    },
+    {
+      "name": "1280 day 场景昼夜保留",
+      "pass": true,
+      "detail": "../../../textures/ui/cultivation/quiet_room_20261010/rest_day.png"
+    },
+    {
+      "name": "1280 night 单一右上返回",
+      "pass": true,
+      "detail": {
+        "count": 1,
+        "direct": true,
+        "date": "1年3月15日",
+        "text": "返回",
+        "accessible": "返回",
+        "arrow": true,
+        "right": 23.999939025205144,
+        "top": 17.999997911822096,
+        "size": [
+          114.00001587015208,
+          46.0000067865782
+        ],
+        "font": 22,
+        "arrowInside": true,
+        "material": true,
+        "headerClear": true,
+        "noTimeOfDay": true,
+        "background": "../../../textures/ui/cultivation/quiet_room_20261010/rest_night.png"
+      }
+    },
+    {
+      "name": "1280 night 返回文字与右三角",
+      "pass": true,
+      "detail": {
+        "count": 1,
+        "direct": true,
+        "date": "1年3月15日",
+        "text": "返回",
+        "accessible": "返回",
+        "arrow": true,
+        "right": 23.999939025205144,
+        "top": 17.999997911822096,
+        "size": [
+          114.00001587015208,
+          46.0000067865782
+        ],
+        "font": 22,
+        "arrowInside": true,
+        "material": true,
+        "headerClear": true,
+        "noTimeOfDay": true,
+        "background": "../../../textures/ui/cultivation/quiet_room_20261010/rest_night.png"
+      }
+    },
+    {
+      "name": "1280 night 日期与标题避让",
+      "pass": true,
+      "detail": "1年3月15日"
+    },
+    {
+      "name": "1280 night 场景昼夜保留",
+      "pass": true,
+      "detail": "../../../textures/ui/cultivation/quiet_room_20261010/rest_night.png"
+    },
+    {
+      "name": "1280 date 单一右上返回",
+      "pass": true,
+      "detail": {
+        "count": 1,
+        "direct": true,
+        "date": "1年12月30日",
+        "text": "返回",
+        "accessible": "返回",
+        "arrow": true,
+        "right": 23.999939025205144,
+        "top": 17.999997911822096,
+        "size": [
+          114.00001587015208,
+          46.0000067865782
+        ],
+        "font": 22,
+        "arrowInside": true,
+        "material": true,
+        "headerClear": true,
+        "noTimeOfDay": true,
+        "background": "../../../textures/ui/cultivation/quiet_room_20261010/rest_night.png"
+      }
+    },
+    {
+      "name": "1280 date 返回文字与右三角",
+      "pass": true,
+      "detail": {
+        "count": 1,
+        "direct": true,
+        "date": "1年12月30日",
+        "text": "返回",
+        "accessible": "返回",
+        "arrow": true,
+        "right": 23.999939025205144,
+        "top": 17.999997911822096,
+        "size": [
+          114.00001587015208,
+          46.0000067865782
+        ],
+        "font": 22,
+        "arrowInside": true,
+        "material": true,
+        "headerClear": true,
+        "noTimeOfDay": true,
+        "background": "../../../textures/ui/cultivation/quiet_room_20261010/rest_night.png"
+      }
+    },
+    {
+      "name": "1280 date 日期与标题避让",
+      "pass": true,
+      "detail": "1年12月30日"
+    },
+    {
+      "name": "1280 fixed 单一右上返回",
+      "pass": true,
+      "detail": {
+        "count": 1,
+        "direct": true,
+        "date": "1年3月15日",
+        "text": "返回",
+        "accessible": "返回",
+        "arrow": true,
+        "right": 23.999939025205144,
+        "top": 17.999997911822096,
+        "size": [
+          114.00001587015208,
+          46.0000067865782
+        ],
+        "font": 22,
+        "arrowInside": true,
+        "material": true,
+        "headerClear": true,
+        "noTimeOfDay": true,
+        "background": "../../../textures/ui/cultivation/quiet_room_20261010/rest_night.png"
+      }
+    },
+    {
+      "name": "1280 fixed 返回文字与右三角",
+      "pass": true,
+      "detail": {
+        "count": 1,
+        "direct": true,
+        "date": "1年3月15日",
+        "text": "返回",
+        "accessible": "返回",
+        "arrow": true,
+        "right": 23.999939025205144,
+        "top": 17.999997911822096,
+        "size": [
+          114.00001587015208,
+          46.0000067865782
+        ],
+        "font": 22,
+        "arrowInside": true,
+        "material": true,
+        "headerClear": true,
+        "noTimeOfDay": true,
+        "background": "../../../textures/ui/cultivation/quiet_room_20261010/rest_night.png"
+      }
+    },
+    {
+      "name": "1280 fixed 日期与标题避让",
+      "pass": true,
+      "detail": "1年3月15日"
+    },
+    {
+      "name": "1280 unbound 单一右上返回",
+      "pass": true,
+      "detail": {
+        "count": 1,
+        "direct": true,
+        "date": "—",
+        "text": "返回",
+        "accessible": "返回",
+        "arrow": true,
+        "right": 23.999939025205144,
+        "top": 17.999997911822096,
+        "size": [
+          114.00001587015208,
+          46.0000067865782
+        ],
+        "font": 22,
+        "arrowInside": true,
+        "material": true,
+        "headerClear": true,
+        "noTimeOfDay": true,
+        "background": "../../../textures/ui/cultivation/quiet_room_20261010/rest_day.png"
+      }
+    },
+    {
+      "name": "1280 unbound 返回文字与右三角",
+      "pass": true,
+      "detail": {
+        "count": 1,
+        "direct": true,
+        "date": "—",
+        "text": "返回",
+        "accessible": "返回",
+        "arrow": true,
+        "right": 23.999939025205144,
+        "top": 17.999997911822096,
+        "size": [
+          114.00001587015208,
+          46.0000067865782
+        ],
+        "font": 22,
+        "arrowInside": true,
+        "material": true,
+        "headerClear": true,
+        "noTimeOfDay": true,
+        "background": "../../../textures/ui/cultivation/quiet_room_20261010/rest_day.png"
+      }
+    },
+    {
+      "name": "1280 unbound 日期与标题避让",
+      "pass": true,
+      "detail": "—"
+    },
+    {
+      "name": "1280 精力回满可用",
+      "pass": true,
+      "detail": "60"
+    },
+    {
+      "name": "返回仍收起样稿",
+      "pass": true
+    },
+    {
+      "name": "返回支持键盘",
+      "pass": true
+    },
+    {
+      "name": "无脚本或资源错误",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "captures": [
+    "休息_白昼_1920.png",
+    "休息_入夜_1920.png",
+    "休息_指定日期_1920.png",
+    "休息_剧情限定_1920.png",
+    "休息_未绑定_1920.png",
+    "休息_精力回满_1920.png",
+    "休息_白昼_1280.png",
+    "休息_入夜_1280.png",
+    "休息_指定日期_1280.png",
+    "休息_剧情限定_1280.png",
+    "休息_未绑定_1280.png",
+    "休息_精力回满_1280.png",
+    "休息_无效日期_1280.png",
+    "休息_安排预览_1280.png",
+    "休息_左上题签_1920.png",
+    "休息_统一返回_1920.png"
+  ],
+  "viewports": [
+    [
+      1920,
+      1080
+    ],
+    [
+      1280,
+      720
+    ]
+  ]
+}

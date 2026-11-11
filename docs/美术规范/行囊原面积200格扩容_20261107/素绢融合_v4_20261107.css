@@ -1,0 +1,17 @@
+/* Visual draft only. Grid dimensions and coordinates come from the existing 200-cell sample. */
+html,body{color:#44473a}
+.cloth-ground{position:absolute;left:474px;top:140px;width:1384px;height:874px;pointer-events:none;background:#e8e3d5 url('../../../textures/ui/inventory_material_20261107/garment_lining_warm_v4.png') center/100% 100%;border-radius:2px;box-shadow:inset 0 0 34px 18px #eee9db70,inset 0 1px 1px #fff9e8;opacity:.95}
+.cloth-ground::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,#f5f0df26,transparent 36%,#ded9cb14 74%,#f7f2e52b);pointer-events:none}
+.space-title{color:#4b5142}
+.space-rule,.bottom-rule{border-color:#a59e856e}
+.region h2{top:-39px;font-size:25px;color:#626951;text-shadow:0 1px #fff9e99c}
+.surface{background:linear-gradient(110deg,#f8f2e535,#eeead72b);outline:1px solid #8d88715c;outline-offset:-1px;box-shadow:inset 0 2px 4px #7a735112,inset 0 -1px 1px #fffbea94}
+.surface::before{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 4px 1px -2px #fbf6e8c4,inset 0 6px 4px -5px #81765a96,inset 2px 0 2px -1px #fffbee73,inset -2px 0 2px -1px #766c4b15}
+.surface::after{background-image:linear-gradient(to right,rgba(97,91,72,.47) 0 1px,rgba(255,252,232,.38) 1px 2px,transparent 2px),linear-gradient(to bottom,rgba(97,91,72,.47) 0 1px,rgba(255,252,232,.38) 1px 2px,transparent 2px);background-size:36px 36px;box-shadow:inset 0 0 0 1px #7d785f7a}
+.region::after{content:"";position:absolute;inset:0;pointer-events:none;border:1px solid #7d775c2e;box-shadow:inset 0 -3px 2px -2px #9e927236}
+.piece img{filter:drop-shadow(0 1px 1px #594a2c2b)}
+.selection{border-color:#7e8869;box-shadow:inset 0 0 0 1px #fff7dcad}
+.capacity{color:#73775e}
+.fold-hints{position:absolute;left:474px;top:140px;width:1384px;height:874px;pointer-events:none;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.fold-hints .light{stroke:#fff9e7;stroke-width:2;opacity:.18}
+.fold-hints .shade{stroke:#a3997d;stroke-width:1;opacity:.08}

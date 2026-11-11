@@ -1,0 +1,99 @@
+{
+  "date": "2026-11-09",
+  "change": "普通细直线替换中央花纹分割线；原按钮和功能保持",
+  "scene": "res://tscn/debug/RestPaperUiSmoke.tscn",
+  "runtimeManifest": {
+    "phase": "straight dividers and centered icon",
+    "recordedAt": "2026-11-09T12:39:56.581208+08:00",
+    "sha256": {
+      ".godot/mono/temp/bin/Debug/stacklands.dll": "61b3f685603d99082fd76f56f6a42f9268982b7fced6177dbe4ee3312060822e",
+      "csharp/panel/CraftingPaperStyle.cs": "89e4d262d9240ca94fd3e295a59ec4937c1868eb7673d76ecfd6370fbdde0aec",
+      "csharp/panel/PaperButtonFeedback.cs": "74894219692f987a32ac356e170377e0950dacc10de809f7ca8b941ea26ace7c",
+      "csharp/panel/CultivationUI.Paper.cs": "42ff62fbb47551351f440c11681dd834b5f30b233a3874fadc6d8fbfcd2125fc",
+      "csharp/panel/RestPanel.cs": "e948d15913fc11c489368c3d773ea83c8939d1effea5629d9785af9a56de8167",
+      "csharp/scene/AlchemySlotBrewPreviewScene.PaperSkin.cs": "2e95ef688dceb5428d2542b290ed95b30385c3ee6e42a31fa5d6bd65e7ae191c",
+      "csharp/debug/CharacterPaperUiSmoke.cs": "a0ffc4b312d888e3c99ec053d6e0b822dcf13626f3d3159b2c26970679f632d7",
+      "tools/NativePaperCaptureHost.gd": "88cde01bf83fc43d7d184fe7b31ed0bed02be2d322a18501cc24936a872fb106"
+    }
+  },
+  "runs": [
+    {
+      "width": 1280,
+      "checks": 68,
+      "exitCode": 0,
+      "errorCount": 0,
+      "warningCount": 0,
+      "record": "验证记录_1280.json",
+      "log": "分割线复验_1280.log",
+      "images": [
+        {
+          "name": "休息_入夜_1280.png",
+          "sha256": "7a9db9296f512b12dbbc18382f4be4f445a84d913994e0b245eb716e420abc89"
+        },
+        {
+          "name": "休息_剧情限定_1280.png",
+          "sha256": "e9a02e52038a5ae8a9dcdb7d9b19ceb3f05157b31ba31d83f708cb72907349a9"
+        },
+        {
+          "name": "休息_指定日期_1280.png",
+          "sha256": "df97b89cc683001691ea5b317ea9164e2454aa2d8b708cc5ce064f72af6d295a"
+        },
+        {
+          "name": "休息_按时长_1280.png",
+          "sha256": "43b87c4a09943c9160181663b6a2625e104e21f04e60edfd07fa1ba31a90a9df"
+        },
+        {
+          "name": "休息_未绑定_1280.png",
+          "sha256": "94883c8c8b615354068f10964469f2ba5c9f22ce028aa77bc52ebd4357efd75e"
+        },
+        {
+          "name": "休息_精力回满_1280.png",
+          "sha256": "71b3889cdbfb330706161c50ec6c5e0217b71aa9aa90e571510178e2fa447b15"
+        },
+        {
+          "name": "休息_精力已满_1280.png",
+          "sha256": "f7403a40bcb78793a676f8318e5858e4a7bd77ef264c36797f0a247051e43c80"
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "checks": 68,
+      "exitCode": 0,
+      "errorCount": 0,
+      "warningCount": 0,
+      "record": "验证记录_1920.json",
+      "log": "分割线复验_1920.log",
+      "images": [
+        {
+          "name": "休息_入夜_1920.png",
+          "sha256": "bac2ab62e0d2e397a5f0bf61cfcee1e27e5566b4cd4090495a3e61cc968aefc3"
+        },
+        {
+          "name": "休息_剧情限定_1920.png",
+          "sha256": "f1c9f707da9b5cfc51b9ed93e6b6cd899b387106de4772d64e800ee71433ac7d"
+        },
+        {
+          "name": "休息_指定日期_1920.png",
+          "sha256": "d57a5c04e190fe11baea2175d34feceaf6e992984fe5012f85f5a2ca78d8b18f"
+        },
+        {
+          "name": "休息_按时长_1920.png",
+          "sha256": "31bbe77fe8e6d0c3cbc59ed073a05970ecefe7d5550b50efe0d1ac9b1f3752d1"
+        },
+        {
+          "name": "休息_未绑定_1920.png",
+          "sha256": "d72a68ece410ab814913318a7f8b4b160c49dc1f520a370c829d3b87c03036bb"
+        },
+        {
+          "name": "休息_精力回满_1920.png",
+          "sha256": "53ba02cb85eb9a6160024bad186ae55dcc946d506e501fa30dcd25327009bd6d"
+        },
+        {
+          "name": "休息_精力已满_1920.png",
+          "sha256": "fdd2e288ecf67f3ce06bf59c0fb70e5615fe9fb3af991140462ae8e2896f6cce"
+        }
+      ]
+    }
+  ]
+}

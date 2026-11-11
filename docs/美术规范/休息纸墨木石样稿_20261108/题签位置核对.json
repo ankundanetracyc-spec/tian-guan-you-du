@@ -1,0 +1,113 @@
+{
+  "status": "passed",
+  "scope": "仅题签位置与布局核对，休息逻辑未修改",
+  "checks": [
+    {
+      "width": 1920,
+      "case": "day",
+      "nearLeft": true,
+      "nearTop": true,
+      "inside": true,
+      "clear": true
+    },
+    {
+      "width": 1920,
+      "case": "night",
+      "nearLeft": true,
+      "nearTop": true,
+      "inside": true,
+      "clear": true
+    },
+    {
+      "width": 1920,
+      "case": "date",
+      "nearLeft": true,
+      "nearTop": true,
+      "inside": true,
+      "clear": true
+    },
+    {
+      "width": 1920,
+      "case": "fixed",
+      "nearLeft": true,
+      "nearTop": true,
+      "inside": true,
+      "clear": true
+    },
+    {
+      "width": 1920,
+      "case": "unbound",
+      "nearLeft": true,
+      "nearTop": true,
+      "inside": true,
+      "clear": true
+    },
+    {
+      "width": 1280,
+      "case": "day",
+      "nearLeft": true,
+      "nearTop": true,
+      "inside": true,
+      "clear": true
+    },
+    {
+      "width": 1280,
+      "case": "night",
+      "nearLeft": true,
+      "nearTop": true,
+      "inside": true,
+      "clear": true
+    },
+    {
+      "width": 1280,
+      "case": "date",
+      "nearLeft": true,
+      "nearTop": true,
+      "inside": true,
+      "clear": true
+    },
+    {
+      "width": 1280,
+      "case": "fixed",
+      "nearLeft": true,
+      "nearTop": true,
+      "inside": true,
+      "clear": true
+    },
+    {
+      "width": 1280,
+      "case": "unbound",
+      "nearLeft": true,
+      "nearTop": true,
+      "inside": true,
+      "clear": true
+    }
+  ],
+  "captures": [
+    "休息_白昼_1920.png",
+    "休息_入夜_1920.png",
+    "休息_指定日期_1920.png",
+    "休息_剧情限定_1920.png",
+    "休息_未绑定_1920.png",
+    "休息_精力回满_1920.png",
+    "休息_白昼_1280.png",
+    "休息_入夜_1280.png",
+    "休息_指定日期_1280.png",
+    "休息_剧情限定_1280.png",
+    "休息_未绑定_1280.png",
+    "休息_精力回满_1280.png",
+    "休息_无效日期_1280.png",
+    "休息_安排预览_1280.png",
+    "休息_左上题签_1920.png"
+  ],
+  "viewports": [
+    [
+      1920,
+      1080
+    ],
+    [
+      1280,
+      720
+    ]
+  ]
+}

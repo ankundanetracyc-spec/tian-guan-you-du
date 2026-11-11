@@ -1,0 +1,159 @@
+{
+  "date": "2026-11-09",
+  "passed": true,
+  "error": null,
+  "stage": "短中文和真实一基坐标",
+  "preview_only": false,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "native_checks": 54,
+  "checks": [
+    "视口与独立用户资料均为本轮配置",
+    "真实入口仍保留初阶四格，未载入人物旅程",
+    "默认输入分类",
+    "分类仅显示自身页面 Inputs",
+    "该类部件清楚归属 Inputs",
+    "切分类不改图或清账本 Inputs",
+    "保存本档真实视口 01_Inputs分类.png",
+    "分类仅显示自身页面 Logic",
+    "该类部件清楚归属 Logic",
+    "切分类不改图或清账本 Logic",
+    "保存本档真实视口 02_Logic分类.png",
+    "分类仅显示自身页面 Outputs",
+    "该类部件清楚归属 Outputs",
+    "切分类不改图或清账本 Outputs",
+    "保存本档真实视口 03_Outputs分类.png",
+    "分类仅显示自身页面 Core",
+    "该类部件清楚归属 Core",
+    "切分类不改图或清账本 Core",
+    "保存本档真实视口 04_Core分类.png",
+    "阵眼只展示固定状态，不能重复放置",
+    "常驻坐标说明明确一基列行方向",
+    "切走正在放置件所属分类时回移动且不误放件",
+    "本次真实事件仅结算一次伤害与费用",
+    "红线有真实信息，金线只连本次实际付款火击",
+    "原生画布实际播放同一发生的计划",
+    "实际绘制从出口向外、沿入口向内，区分同名入出口 branch→guard",
+    "实际绘制从出口向外、沿入口向内，区分同名入出口 branch→invert",
+    "实际绘制从出口向外、沿入口向内，区分同名入出口 cast→switch",
+    "实际绘制从出口向外、沿入口向内，区分同名入出口 compare→branch",
+    "实际绘制从出口向外、沿入口向内，区分同名入出口 health→compare",
+    "实际绘制从出口向外、沿入口向内，区分同名入出口 invert→switch",
+    "实际绘制从出口向外、沿入口向内，区分同名入出口 switch→attack",
+    "实际绘制从出口向外、沿入口向内，区分同名入出口 source→attack",
+    "实际绘制从出口向外、沿入口向内，区分同名入出口 source→guard",
+    "同次发生的前中后真实盘面像素不同，脉点确实移动",
+    "完整覆盖播放末尾，wall仅作看门狗",
+    "所有动画帧保持同一事件和结算快照",
+    "真实回放按钮只重播显示，不再扣费或攻击",
+    "同次重发不自动播放旧信号或旧付款",
+    "关着的开关确实收到事件，但不传火击或假画金线",
+    "次数已用时请求可到阵器，但没有付款金线或重复伤害",
+    "玩家报错简短且无内部ID或英文异常尾巴",
+    "显示的坐标为本盘一基列行",
+    "信号断口用正确一基接口坐标和盘面标记说明",
+    "坏图清理旧播放，不能沿旧路线继续动画",
+    "保存本档真实视口 08_短报错与断口坐标.png",
+    "玩家报错简短且无内部ID或英文异常尾巴",
+    "显示的坐标为本盘一基列行",
+    "断供提示对应真实供能入口坐标，不是内部错误链",
+    "玩家报错简短且无内部ID或英文异常尾巴",
+    "空源给短中文原因并拒绝试演",
+    "玩家报错简短且无内部ID或英文异常尾巴",
+    "未知坏保存给玩家中文提示，保留旧图和账目",
+    "返回清理试演与动画宿主"
+  ],
+  "screenshots": [
+    {
+      "file": "01_Inputs分类.png",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "file": "02_Logic分类.png",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "file": "03_Outputs分类.png",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "file": "04_Core分类.png",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "file": "05_同次传导_1.png",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "file": "06_同次传导_2.png",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "file": "07_同次传导_3.png",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "file": "08_短报错与断口坐标.png",
+      "width": 1920,
+      "height": 1080
+    }
+  ],
+  "flow_occurrence": "editor_1_2",
+  "settled_snapshot": {
+    "Round": 1,
+    "Health": 80,
+    "MaxHealth": 100,
+    "Mana": 20,
+    "EnemyHealth": 91,
+    "Shield": 0,
+    "GuardRemaining": 0,
+    "GuardRunning": false,
+    "GuardPaidThisRound": false,
+    "SourceEnergy": 9,
+    "Mode": 1,
+    "AttackAllowed": 2,
+    "Enabled": true,
+    "ObservationKnown": true,
+    "SupplyValid": true,
+    "GuardPayments": 0,
+    "Attacks": 1,
+    "EnergySpent": 3,
+    "ModeText": "攻"
+  },
+  "flow_frame_count": 52,
+  "player_errors": [
+    {
+      "text": "无法试演：护罩未接信号线（4,1）。",
+      "board_size": 5,
+      "marker_count": 1
+    },
+    {
+      "text": "无法试演：火击未接供能线（1,3）。",
+      "board_size": 5,
+      "marker_count": 1
+    },
+    {
+      "text": "无法试演：缺少阵源。",
+      "board_size": 5,
+      "marker_count": 0
+    },
+    {
+      "text": "移动 · 草图无法读取，当前盘面和已有记录保留。",
+      "board_size": 5,
+      "marker_count": 0
+    }
+  ],
+  "real_journey_loaded": false,
+  "character_save_opened": false,
+  "older_106_baseline_reused": false,
+  "visual_review": "pending category and raw-frame inspection"
+}
