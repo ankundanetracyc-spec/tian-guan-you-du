@@ -110,7 +110,7 @@ def main():
         if updated != original:
             path.write_text(updated, encoding='utf-8', newline='\n'); changed.append(path.relative_to(ROOT).as_posix())
 
-    plan = ROOT / 'docs/plans/行囊全物品图标与占地规划_20261029.md'
+    plan = ROOT / 'docs/plans/物品与装备/行囊全物品图标与占地规划_20261029.md'
     content = plan.read_text(encoding='utf-8-sig')
     content = content.replace('丹药瓷瓶改1×1', '丹药瓷瓶改1×2')
     note = '2026-11-04修订：以[储物戒指与行囊尺度修订](储物戒指与行囊尺度修订_20261104.md)为当前补充。书册正俯视，丹药瓷瓶改1×2、折衣改2×3；下表已同步。'

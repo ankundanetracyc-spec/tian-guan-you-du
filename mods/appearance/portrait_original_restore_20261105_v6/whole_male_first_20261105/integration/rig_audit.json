@@ -1,0 +1,302 @@
+{
+  "mode": "read-only rig/catalog audit",
+  "master_source": "E:\\stacklands\\mods\\appearance\\portrait_original_restore_20261105_v6\\whole_male_first_20261105\\male_whole_01.png",
+  "master_sha256": "76e789ffa97e72c8ece941401e4b7aa93ba74e7567e881ed2e7f48a67ae266c2",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "native_landmarks": {
+    "left_pupil": [
+      465.78,
+      365.09
+    ],
+    "right_pupil": [
+      570.24,
+      364.66
+    ],
+    "nose_tip": [
+      520,
+      444
+    ],
+    "left_nostril": [
+      506,
+      442
+    ],
+    "right_nostril": [
+      531,
+      442
+    ],
+    "lip_center": [
+      519.5,
+      475
+    ],
+    "lip_corners": [
+      [
+        484,
+        474
+      ],
+      [
+        555,
+        474
+      ]
+    ],
+    "chin": [
+      520,
+      537
+    ],
+    "hairline_center": [
+      520,
+      257
+    ],
+    "posterior_bun_top": [
+      512,
+      96
+    ],
+    "wood_pin_center": [
+      513,
+      156
+    ],
+    "collar_v_low_point": [
+      529,
+      680
+    ]
+  },
+  "landmark_measurement": "Pupils: darkness-weighted centroids in local iris patches; other landmarks: annotated native-pixel inspection, about 1-2 px precision. These are design measurements, not proof of exact alpha registration.",
+  "native_feature_shift_vs_previous_rig": {
+    "pupil_y": -14,
+    "nose_tip_y": -8,
+    "lip_y": -9,
+    "chin_y": -9,
+    "warning": "Keep approved mother parts at their own native coordinates; do not independently scale/translate feature parts to old rig points."
+  },
+  "active_head_source": "E:\\stacklands\\mods\\appearance\\ink_three_variants_20261004\\male\\face_shape\\01.png",
+  "active_head_sha256": "ed790ac8bcd41fd54d9a2e0a7be55f21704413ff5b86213a91285782a5d6f7c2",
+  "active_fixed_neck_alpha_sha256_y520_plus": "969e11df208bd875a40ba347fff68a5dae5ebed0c11eeaf4b162b8d961404695",
+  "active_fixed_neck_rows": [
+    {
+      "y": 500,
+      "alpha_threshold": 230,
+      "left": 429,
+      "right": 599,
+      "width": 171
+    },
+    {
+      "y": 510,
+      "alpha_threshold": 230,
+      "left": 429,
+      "right": 599,
+      "width": 171
+    },
+    {
+      "y": 520,
+      "alpha_threshold": 230,
+      "left": 428,
+      "right": 600,
+      "width": 173
+    },
+    {
+      "y": 530,
+      "alpha_threshold": 230,
+      "left": 428,
+      "right": 601,
+      "width": 174
+    },
+    {
+      "y": 540,
+      "alpha_threshold": 230,
+      "left": 427,
+      "right": 602,
+      "width": 176
+    },
+    {
+      "y": 550,
+      "alpha_threshold": 230,
+      "left": 426,
+      "right": 603,
+      "width": 178
+    },
+    {
+      "y": 560,
+      "alpha_threshold": 230,
+      "left": 424,
+      "right": 605,
+      "width": 182
+    },
+    {
+      "y": 570,
+      "alpha_threshold": 230,
+      "left": 423,
+      "right": 606,
+      "width": 184
+    },
+    {
+      "y": 580,
+      "alpha_threshold": 230,
+      "left": 421,
+      "right": 608,
+      "width": 188
+    },
+    {
+      "y": 590,
+      "alpha_threshold": 230,
+      "left": 425,
+      "right": 604,
+      "width": 180
+    },
+    {
+      "y": 600,
+      "alpha_threshold": 230,
+      "left": 431,
+      "right": 599,
+      "width": 169
+    },
+    {
+      "y": 620,
+      "alpha_threshold": 230,
+      "left": 445,
+      "right": 587,
+      "width": 143
+    },
+    {
+      "y": 650,
+      "alpha_threshold": 230,
+      "left": 466,
+      "right": 570,
+      "width": 105
+    },
+    {
+      "y": 680,
+      "alpha_threshold": 230,
+      "left": 486,
+      "right": 552,
+      "width": 67
+    },
+    {
+      "y": 700,
+      "alpha_threshold": 230,
+      "left": 499,
+      "right": 541,
+      "width": 43
+    },
+    {
+      "y": 720,
+      "alpha_threshold": 230,
+      "left": 511,
+      "right": 529,
+      "width": 19
+    },
+    {
+      "y": 729,
+      "alpha_threshold": 230,
+      "left": 517,
+      "right": 524,
+      "width": 8
+    },
+    {
+      "y": 730,
+      "alpha_threshold": 230,
+      "left": 518,
+      "right": 524,
+      "width": 7
+    },
+    {
+      "y": 731,
+      "alpha_threshold": 230,
+      "left": 518,
+      "right": 523,
+      "width": 6
+    },
+    {
+      "y": 733,
+      "alpha_threshold": 230,
+      "left": 519,
+      "right": 522,
+      "width": 4
+    }
+  ],
+  "neck_recommendation": [
+    "Use current active head_final_native neck anchors, not obsolete x430/605 checkpoints from earlier v6.",
+    "Keep approved mother portrait on 1024x1536 native canvas and reconstruct its hidden neck skin to the fixed current Alpha where needed.",
+    "The native approved collar V is around (529,680). Earlier old first clothing V was about (531,696); do not globally transform the face/neck to align those two different clothes.",
+    "If preserving all seven old garment PNGs literally, the new approved whole garment is not installed; clarify internally whether first outfit should be replaced. Current install plan records first front/rear clothes as replacements while preserving other six outfits."
+  ],
+  "configuration_change": {
+    "male_counts": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      7,
+      1
+    ],
+    "female_counts": [
+      3,
+      3,
+      3,
+      2,
+      1,
+      1,
+      1,
+      7,
+      1
+    ],
+    "male_options": 15,
+    "female_options": 22,
+    "all_options": 37,
+    "male_registered_pngs": 22,
+    "female_registered_pngs": 22,
+    "all_registered_pngs": 44,
+    "retired_old_pngs": 7,
+    "new_records": 9,
+    "preserved_registered_pngs": 35,
+    "retired_parts": {
+      "hair_front": [
+        2,
+        3
+      ],
+      "hair_back": [
+        2,
+        3
+      ],
+      "eyebrows": [
+        2,
+        3
+      ],
+      "eyes": [
+        2
+      ]
+    },
+    "single_variant_indices": [
+      1
+    ],
+    "single_variant_style_ids": [
+      0
+    ],
+    "saved_style_aliases_recommendation": {
+      "1": 0,
+      "2": 0
+    }
+  },
+  "implementation_paths": {
+    "catalog": "csharp/autoload/AppearanceModCatalog.cs",
+    "renderer": "csharp/panel/PortraitRenderer.cs",
+    "test_composer": "csharp/panel/InkPortraitTestComposer.cs",
+    "test_ui": "csharp/panel/CharacterAppearanceTest.cs",
+    "save_fallback": "csharp/autoload/PortraitCatalog.cs",
+    "editor_normalization": "csharp/panel/AppearanceEditor.cs",
+    "new_verification_draft": "tools/verify_portrait_approved_whole_20261105.gd"
+  },
+  "implementation_notes": [
+    "AppearanceModCatalog loops only variant_count and uses variant_indices/style_ids; change four male multi-variant components to one item with arrays truncated to [1]/[0]. Existing nose/mouth/face/beard are already one.",
+    "PortraitRenderer consumes selected entries dynamically and requires no variant-count changes; retain rear_clothes->face->clothes and nose below eyes/brows.",
+    "InkPortraitTestComposer and CharacterAppearanceTest read counts from config; new scene initializes all choices at zero. Composer still builds canonical active resource paths gender/part/NN.png, so install to those canonical paths rather than only changing file templates to an integration folder.",
+    "AppearanceModCatalog.reload clears PortraitRenderer selection cache. InkPortraitTestComposer.ReleaseResources clears its static config/image caches; reopen test scene after reducing options.",
+    "PortraitCatalog.choose_part falls back to the sole remaining candidate for saved removed IDs; explicit variant_aliases 1/2->0 make intent clear.",
+    "Verification script has sex-specific counts, nine installed records, 35 retained SHA files, complete unchanged female component comparison, all seven clothes and source/imported pixel tests. It was written but not run.",
+    "New verification expects report.config_before_resource_path or integration/installation/appearance_parts.before.json as before-config snapshot."
+  ]
+}

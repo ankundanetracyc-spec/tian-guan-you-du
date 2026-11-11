@@ -1,0 +1,44 @@
+{
+	"assets": [
+		{
+			"alpha": 2,
+			"asset": "board_base.png",
+			"export": "Godot Image.resize, Lanczos, aspect preserved, no redraw or alpha cleanup",
+			"source_size": [
+				1254,
+				1254
+			],
+			"target_size": [
+				640,
+				640
+			]
+		},
+		{
+			"alpha": 2,
+			"asset": "eye_1x1.png",
+			"export": "Godot Image.resize, Lanczos, aspect preserved, no redraw or alpha cleanup",
+			"source_size": [
+				1254,
+				1254
+			],
+			"target_size": [
+				128,
+				128
+			]
+		},
+		{
+			"alpha": 2,
+			"asset": "source_2x1.png",
+			"export": "Godot Image.resize, Lanczos, aspect preserved, no redraw or alpha cleanup",
+			"source_size": [
+				1774,
+				887
+			],
+			"target_size": [
+				256,
+				128
+			]
+		}
+	],
+	"tool": "Godot Image"
+}

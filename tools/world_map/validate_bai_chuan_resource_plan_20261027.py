@@ -4,7 +4,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[2]
 p=ROOT/'docs/prototypes/百川宗门城镇资源规划数据_20261027.json'
 d=json.loads(p.read_text(encoding='utf-8'))
-s=(ROOT/'docs/plans/百川命名与资源归属修订_20261027.md').read_text(encoding='utf-8')
+s=(ROOT/'docs/plans/世界与探索/百川命名与资源归属修订_20261027.md').read_text(encoding='utf-8')
 rows={}
 for line in s.splitlines():
  c=[x.strip() for x in line.split('|')[1:-1]]

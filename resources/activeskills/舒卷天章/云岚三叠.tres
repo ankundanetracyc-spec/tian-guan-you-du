@@ -8,14 +8,19 @@ skill_name = "云岚三叠"
 skill_type = 0
 slot_category = "active"
 source_gongfa_name = "舒卷天章"
-description = "造成A点物理伤害。首段命中后，以C概率追加攻击；追加攻击命中后，依次以D、E概率继续追加，最多追加3段。任一概率判定失败、攻击未命中或目标离场，后续攻击停止。每段追加攻击均攻击原目标，造成B点物理伤害。计算公式：A=round(5 + 体魄×0.40 + 剑道造诣×0.50)；B=round(2 + 体魄×0.20 + 剑道造诣×0.30 + max(本次行动开始时剑意层数−6,0))；C=clamp(40% + 本次行动开始时剑意层数×5% + 剑道造诣×0.5%,40%,80%)；D=max(0%,C−20个百分点)；E=max(0%,C−40个百分点)。"
+description = "造成A点物理伤害。首段命中后，以C概率追加攻击；追加攻击命中后，依次以D、E概率继续追加，最多追加3段。任一概率判定失败、攻击未命中或目标离场，后续攻击停止。每段追加攻击均攻击原目标，造成B点物理伤害。计算公式：A=round(8 + 体魄×0.50 + 剑道造诣×0.60)；B=round(4 + 体魄×0.30 + 剑道造诣×0.50 + max(本次行动开始时剑意层数−6,0)×4)；C=clamp(40% + 本次行动开始时剑意层数×5% + 剑道造诣×0.5%,40%,80%)；D=max(0%,C−20个百分点)；E=max(0%,C−40个百分点)。"
 tags = Array[String](["剑", "剑意"])
 energy_cost = 2
 mana_cost = 0
 target_type = 2
 attack_style = "melee"
 damage_type = "physical"
-damage_formula = "round(5 + 体魄×0.40 + 剑道造诣×0.50)"
+damage_formula = "round(8 + 体魄×0.50 + 剑道造诣×0.60)"
 uses_per_round = 0
-icon_path = "res://textures/ui/combat/skill_icons/剑修基础_斩剑_v1.png"
+icon_path = "res://textures/ui/combat/board_skill_icons/yunlan.png"
 gongfa_rewrite_effect_ids = Array[String]([])
+board_definition_version = 1
+board_size = Vector2i(2, 2)
+board_max_placements = 2
+board_rotation_allowed = false
+board_base_skill_path = "res://resources/activeskills/舒卷天章/云岚三叠.tres"

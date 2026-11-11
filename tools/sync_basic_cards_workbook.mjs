@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import { FileBlob, SpreadsheetFile } from '@oai/artifact-tool';
 
-const path = 'docs/锻躯气血体系卡牌规划.xlsx';
+const path = 'docs/plans/战斗与构筑/历史表格/锻躯气血体系卡牌规划.xlsx';
 const outputPath = 'outputs/锻躯气血体系卡牌规划_同步版.xlsx';
 const workbook = await SpreadsheetFile.importXlsx(await FileBlob.load(path));
 const jiazhao = '敌方攻击自身时使用；获得化解。化解层数 = 3 + floor(体魄/4) + floor(敏捷/5)。化解仅抵消本次攻击的物理伤害：每层抵消1点；该次攻击结算后全部消散。';

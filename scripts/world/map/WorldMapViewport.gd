@@ -723,7 +723,7 @@ func _apply_terrain_visibility() -> void:
 	if state_layers == null:
 		return
 	for child in state_layers.get_children():
-		if child is not Sprite2D:
+		if not child is Sprite2D:
 			continue
 		var node_name := str(child.name)
 		if node_name.begins_with("Tile") or node_name == "LandBase" or node_name == "Terrain":
@@ -1146,7 +1146,7 @@ func refresh_map() -> void:
 	_rebuild_map()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not is_visible_in_tree() or event is not InputEventMouseButton:
+	if not is_visible_in_tree() or not event is InputEventMouseButton:
 		return
 	var mouse := event as InputEventMouseButton
 	if mouse.button_index != MOUSE_BUTTON_LEFT or not mouse.pressed:

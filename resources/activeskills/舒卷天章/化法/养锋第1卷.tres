@@ -5,8 +5,8 @@
 [resource]
 script = ExtResource("1")
 skill_name = "养锋"
-description = "获得剑意1层。"
-icon_path = "res://textures/ui/combat/skill_icons/剑修基础_养锋_v1.png"
+description = "自身获得剑意2层。\n化法追加：养锋施放后，原本获得的剑意延至下一共同回合开始时结算；在此之前，其他招式仍读取施放前的剑意层数。"
+icon_path = "res://textures/ui/combat/board_skill_icons/yangfeng.png"
 skill_type = 3
 energy_cost = 1
 mana_cost = 0
@@ -14,6 +14,11 @@ target_type = 0
 range_min = 0
 range_max = 0
 tags = Array[String](["剑", "剑意"])
-special_effects = Array[Dictionary]([{"effect":"gain_sword_intent","count":1}])
+special_effects = Array[Dictionary]([{"effect":"gain_sword_intent","count":2}])
 
 gongfa_rewrite_effect_ids = Array[String](["shujuan_c1"])
+board_definition_version = 1
+board_size = Vector2i(1, 1)
+board_max_placements = 2
+board_rotation_allowed = false
+board_base_skill_path = "res://resources/activeskills/剑修基础/养锋.tres"

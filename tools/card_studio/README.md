@@ -53,7 +53,7 @@ node tools/card_studio/generate_catalog.mjs
 
 - `docs/README.md`
 - `docs/策划案摘要/README.md`
-- `docs/plans/design-plan.md`
+- `docs/plans/战斗与构筑/design-plan.md`
 - `docs/卡牌词典/README.md`
 - `docs/卡牌词典/_卡牌模板.md`
 - `docs/秘籍词典/README.md`

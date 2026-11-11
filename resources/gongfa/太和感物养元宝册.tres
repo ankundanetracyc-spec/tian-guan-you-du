@@ -6,24 +6,19 @@
 [ext_resource type="Resource" path="res://resources/activeskills/太和感物养元宝册/太和感物养元.tres" id="4_heart"]
 [ext_resource type="Resource" path="res://resources/activeskills/太和感物养元宝册/叩山.tres" id="5_koushan"]
 [ext_resource type="Resource" path="res://resources/activeskills/太和感物养元宝册/涵虚.tres" id="6_hanxu"]
-[ext_resource type="Resource" path="res://resources/activeskills/架招.tres" id="7_jiazhao"]
-[ext_resource type="Resource" path="res://resources/activeskills/太和感物养元宝册/化法/架招.tres" id="8_huafa_jiazhao"]
-[ext_resource type="Resource" path="res://resources/activeskills/太和感物养元宝册/化法/叩山.tres" id="9_huafa_koushan"]
+[ext_resource type="Resource" path="res://resources/activeskills/太和感物养元宝册/化法/乘势再攻第一卷.tres" id="10_huafa_koushan_c1"]
 
-[sub_resource type="Resource" id="RewriteJiazhaoC3"]
-script = ExtResource("3")
-mode = 1
-target_scope = 0
-source_skill = ExtResource("7_jiazhao")
-source_skill_name = "架招"
-result_skill = ExtResource("8_huafa_jiazhao")
-
-[sub_resource type="Resource" id="RewriteKoushanC4"]
+[sub_resource type="Resource" id="RewriteKoushanC1"]
 script = ExtResource("3")
 mode = 1
 target_scope = 1
 source_skill_name = "乘势再攻"
-result_skill = ExtResource("9_huafa_koushan")
+result_skill = ExtResource("10_huafa_koushan_c1")
+board_definition_version = 1
+board_size = Vector2i(1, 1)
+board_max_placements = 1
+board_icon_path = "res://textures/ui/combat/board_skill_icons/huafa_taihe_1.png"
+
 
 [sub_resource type="Resource" id="ChapterTingXi"]
 script = ExtResource("2")
@@ -38,66 +33,65 @@ left_branch_name = "修持"
 right_branch_name = "化法"
 learn_permanent_bonuses = {"physique":1.0, "body_proficiency":0.5}
 learned_active_skills = Array[Resource]([ExtResource("5_koushan")])
+sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteKoushanC1")])
 combat_tempering_bonuses = {"max_health_percent":15.0}
-heart_method_description = "心法被动：太和感物养元\n效果：自身每次触发应对后，获得气血1层；受气血上限限制。"
+heart_method_description = "心法被动：太和感物养元\n关键词：气血、应对\n效果：自身每次触发应对后，获得气血1层；受气血上限限制。"
 
 [sub_resource type="Resource" id="ChapterHuiLan"]
 script = ExtResource("2")
 chapter_id = "hui_lan"
 chapter_name = "回澜"
-description = "以护盾承接敌方攻势。"
+description = "施展虚怀纳劲，预置护盾承接攻势。"
 order = 2
 required_study_progress = 48.0
 required_realm = "云息三层"
 required_attributes = {"physique":6.0, "body_proficiency":0.5}
 required_chapter_ids = Array[String](["ting_xi"])
 left_branch_name = "修持"
-right_branch_name = "化法"
+right_branch_name = "无化法"
 learn_permanent_bonuses = {"physique":0.5, "body_proficiency":0.5}
 learned_active_skills = Array[Resource]([ExtResource("6_hanxu")])
 combat_tempering_bonuses = {"qi_blood_cap":1.0}
-heart_method_description = "心法被动：太和感物养元\n效果：沿用第一卷。"
+heart_method_description = "心法被动：太和感物养元\n关键词：气血、应对\n效果：自身每次触发应对后，获得气血1层；受气血上限限制。"
 
 [sub_resource type="Resource" id="ChapterCangFeng"]
 script = ExtResource("2")
 chapter_id = "cang_feng"
 chapter_name = "藏锋"
-description = "以气血强化架招化解。"
+description = "本卷无化法，以守势沉淀修为。"
 order = 3
 required_study_progress = 84.0
 required_realm = "云息六层"
 required_attributes = {"physique":8.0, "body_proficiency":1.0}
 required_chapter_ids = Array[String](["hui_lan"])
 left_branch_name = "修持"
-right_branch_name = "化法"
 learn_permanent_bonuses = {"physique":0.5, "body_proficiency":1.0}
 combat_tempering_bonuses = {"physical_damage_percent":4.0}
-sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteJiazhaoC3")])
-heart_method_description = "心法被动：太和感物养元\n效果：沿用第一卷。"
+right_branch_name = "无化法"
+heart_method_description = "心法被动：太和感物养元\n关键词：气血、应对\n效果：自身每次触发应对后，获得气血1层；受气血上限限制。"
 
 [sub_resource type="Resource" id="ChapterFanYuan"]
 script = ExtResource("2")
 chapter_id = "fan_yuan"
 chapter_name = "返元"
-description = "提升每回合首次应对收益，以僵直延缓攻势。"
+description = "调整乘势再攻两类追加段的结算方式。"
 order = 4
 required_study_progress = 128.0
 required_realm = "云息九层"
 required_attributes = {"physique":10.0, "body_proficiency":2.0}
 required_chapter_ids = Array[String](["cang_feng"])
 left_branch_name = "修持"
-right_branch_name = "化法"
+right_branch_name = "无化法"
 learn_permanent_bonuses = {"physique":1.0, "body_proficiency":1.0}
 heart_method_upgrade_id = "taihe_c4"
-heart_method_upgrade_description = "每回合首次触发应对后获得气血2层；本回合后续应对仍各获得气血1层。"
-heart_method_description = "心法被动：太和感物养元\n效果：自身每次触发应对后，获得气血1层；受气血上限限制。第四卷升级：每回合首次触发应对后获得气血2层；本回合后续应对仍各获得气血1层。"
+heart_method_upgrade_description = "心法被动：太和感物养元\n关键词：气血、应对\n效果：每回合首次触发自身应对后，获得气血2层；本回合后续每次触发自身应对后，获得气血1层，均受气血上限限制。"
+heart_method_description = "心法被动：太和感物养元\n关键词：气血、应对\n效果：每回合首次触发自身应对后，获得气血2层；本回合后续每次触发自身应对后，获得气血1层，均受气血上限限制。"
 combat_tempering_bonuses = {"max_health_percent":10.0, "physical_damage_percent":6.0}
-sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteKoushanC4")])
 
 [resource]
 script = ExtResource("1")
 gongfa_name = "太和感物养元宝册"
-description = "以气血积养应对之势，以乘势再攻追击、虚怀纳劲承攻。"
+description = "以气血积养应对之势，以乘势再攻追击，并施展虚怀纳劲预置护盾。"
 gameplay_enabled = true
 wuxing = 0
 can_be_main = true

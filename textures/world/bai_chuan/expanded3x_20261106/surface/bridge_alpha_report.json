@@ -1,0 +1,184 @@
+{
+  "atlas_native_size": [
+    1774,
+    887
+  ],
+  "native_alpha_preserved": true,
+  "source_sha256": {
+    "textures\\world\\bai_chuan\\layered_20261106\\feature_data.png": "7a515dd05bcdc9811c9ddc71d3bfccbb924f956c980745115dffcf23a1da4c08",
+    "resources\\world\\bai_chuan\\free_layout_mountains_20261106.json": "38749bca6ddb99462d7ecc0a4231e00b781663f215593bb21c5bf07906474dad",
+    "textures\\world\\bai_chuan\\expanded3x_20261106\\surface\\water_native.png": "439adf72b8f88d12878c19e53ad83284a0a88e8d62e74a4e6aee8fbd1cd1515b",
+    "textures\\world\\bai_chuan\\expanded3x_20261106\\surface\\bridges_native.png": "fb454dd49c17b8a4ad917bdef409dd3d5e1f4decce96efc9b4ea2d20208f01e3"
+  },
+  "catalog_regions": [
+    {
+      "asset": "wood_crossbeam",
+      "region": [
+        39,
+        193,
+        777,
+        150
+      ],
+      "pivot": [
+        0.4967824967824968,
+        0.4866666666666667
+      ],
+      "deck_rect_atlas": [
+        85,
+        225,
+        765,
+        307
+      ],
+      "deck_alpha_min": 252,
+      "all_original_alpha_preserved": true
+    },
+    {
+      "asset": "stone_slab",
+      "region": [
+        920,
+        193,
+        820,
+        150
+      ],
+      "pivot": [
+        0.5036585365853659,
+        0.49
+      ],
+      "deck_rect_atlas": [
+        980,
+        223,
+        1686,
+        310
+      ],
+      "deck_alpha_min": 252,
+      "all_original_alpha_preserved": true
+    },
+    {
+      "asset": "timber_short",
+      "region": [
+        139,
+        604,
+        522,
+        165
+      ],
+      "pivot": [
+        0.5028735632183908,
+        0.4090909090909091
+      ],
+      "deck_rect_atlas": [
+        211,
+        631,
+        592,
+        712
+      ],
+      "deck_alpha_min": 251,
+      "all_original_alpha_preserved": true
+    },
+    {
+      "asset": "timber_long",
+      "region": [
+        791,
+        604,
+        931,
+        162
+      ],
+      "pivot": [
+        0.4983888292158969,
+        0.39197530864197533
+      ],
+      "deck_rect_atlas": [
+        855,
+        631,
+        1655,
+        704
+      ],
+      "deck_alpha_min": 252,
+      "all_original_alpha_preserved": true
+    }
+  ],
+  "opened_cell_coverage": [
+    {
+      "bridge": "bc_bridge_001",
+      "candidate_id": 1,
+      "opened_cells": 35,
+      "all_cell_corners_inside_native_deck": true,
+      "minimum_corner_alpha": 252,
+      "native_corner_samples": 140,
+      "both_end_footings_dry": true
+    },
+    {
+      "bridge": "bc_bridge_002",
+      "candidate_id": 4,
+      "opened_cells": 40,
+      "all_cell_corners_inside_native_deck": true,
+      "minimum_corner_alpha": 252,
+      "native_corner_samples": 160,
+      "both_end_footings_dry": true
+    },
+    {
+      "bridge": "bc_bridge_003",
+      "candidate_id": 12,
+      "opened_cells": 31,
+      "all_cell_corners_inside_native_deck": true,
+      "minimum_corner_alpha": 252,
+      "native_corner_samples": 124,
+      "both_end_footings_dry": true
+    },
+    {
+      "bridge": "bc_bridge_004",
+      "candidate_id": 21,
+      "opened_cells": 36,
+      "all_cell_corners_inside_native_deck": true,
+      "minimum_corner_alpha": 252,
+      "native_corner_samples": 144,
+      "both_end_footings_dry": true
+    },
+    {
+      "bridge": "bc_bridge_005",
+      "candidate_id": 24,
+      "opened_cells": 29,
+      "all_cell_corners_inside_native_deck": true,
+      "minimum_corner_alpha": 252,
+      "native_corner_samples": 116,
+      "both_end_footings_dry": true
+    },
+    {
+      "bridge": "bc_bridge_006",
+      "candidate_id": 35,
+      "opened_cells": 33,
+      "all_cell_corners_inside_native_deck": true,
+      "minimum_corner_alpha": 252,
+      "native_corner_samples": 132,
+      "both_end_footings_dry": true
+    },
+    {
+      "bridge": "bc_bridge_007",
+      "candidate_id": 44,
+      "opened_cells": 27,
+      "all_cell_corners_inside_native_deck": true,
+      "minimum_corner_alpha": 252,
+      "native_corner_samples": 108,
+      "both_end_footings_dry": true
+    },
+    {
+      "bridge": "bc_bridge_008",
+      "candidate_id": 46,
+      "opened_cells": 46,
+      "all_cell_corners_inside_native_deck": true,
+      "minimum_corner_alpha": 252,
+      "native_corner_samples": 184,
+      "both_end_footings_dry": true
+    },
+    {
+      "bridge": "bc_bridge_009",
+      "candidate_id": 68,
+      "opened_cells": 29,
+      "all_cell_corners_inside_native_deck": true,
+      "minimum_corner_alpha": 252,
+      "native_corner_samples": 116,
+      "both_end_footings_dry": true
+    }
+  ],
+  "every_opened_water_cell_covered": true,
+  "minimum_corner_alpha": 252
+}

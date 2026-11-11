@@ -11,7 +11,7 @@ from typing import Tuple
 from PIL import Image
 
 
-OUT = Path("docs/昭明纪环海大世界地图底稿.drawio")
+OUT = Path("docs/plans/世界与探索/历史地图/昭明纪环海大世界地图底稿.drawio")
 CELL = 300
 LEFT = 50
 TOP = 110
@@ -465,7 +465,7 @@ def migrated_nodes_xml() -> str:
     """Carry every old node forward at the same relative location in its new cell."""
     # This is the pre-5×5 nine-state blueprint; the generated current file
     # must never become its own input on a subsequent rebuild.
-    candidates = [Path("docs/世界地图九域功能底稿.drawio")]
+    candidates = [Path("docs/plans/世界与探索/历史地图/世界地图九域功能底稿.drawio")]
     if not candidates:
         raise RuntimeError("旧九域功能底稿未找到")
     if not candidates[0].exists():

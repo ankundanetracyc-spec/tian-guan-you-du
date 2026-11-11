@@ -39,11 +39,11 @@ def png_size(path: Path) -> tuple[int, int]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--apply", action="store_true", help="Write only after all 96 resources and 65 packed images pass preflight")
+    parser.add_argument("--apply", action="store_true", help="Write only after all 96 resources and 66 packed images pass preflight")
     args = parser.parse_args()
     rows = json.loads(MANIFEST.read_text(encoding="utf-8-sig"))
     assert len(rows) == 96 and len({r["path"] for r in rows}) == 96
-    assert len({r["new_icon"] for r in rows}) == 65
+    assert len({r["new_icon"] for r in rows}) == 66
     changes: list[tuple[Path, str]] = []
     for row in rows:
         target = (ROOT / row["path"]).resolve()
@@ -57,7 +57,9 @@ def main() -> None:
         assert png_size(image_path) == (row["pixels_w"], row["pixels_h"]), image_path
         if row["category"] == "秘籍":
             assert image_path.name == "manual_generic_2x3.png"
-        if row["category"] == "丹药" or row["script"] == "PillContainerItemData":
+        if row["category"] == "丹药":
+            assert image_path.name == "pill_2x2.png"
+        if row["script"] == "PillContainerItemData":
             assert image_path.name == "pill_container_empty_porcelain.png"
         original = target.read_text(encoding="utf-8")
         assert re.search(rf'^definition_id\s*=\s*(?:&)?"{re.escape(row["id"])}"\s*$', original, re.M), target
@@ -72,7 +74,7 @@ def main() -> None:
     if args.apply:
         for target, updated in changes:
             target.write_text(updated, encoding="utf-8", newline="\n")
-    print(f'INVENTORY_CATALOG_{"APPLIED" if args.apply else "DRY_RUN"}_OK: 96 resources, 65 packed icons, {len(changes)} resource changes')
+    print(f'INVENTORY_CATALOG_{"APPLIED" if args.apply else "DRY_RUN"}_OK: 96 resources, 66 packed icons, {len(changes)} resource changes')
 
 
 if __name__ == "__main__":

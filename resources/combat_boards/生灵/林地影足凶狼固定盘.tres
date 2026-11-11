@@ -1,0 +1,32 @@
+[gd_resource type="Resource" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/CombatBoardLayout.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/resources/CombatBoardPlacement.cs" id="2"]
+
+[sub_resource type="Resource" id="Bite"]
+script = ExtResource("2")
+placement_id = "shadowfoot_bite"
+kind = 0
+source_key = "res://resources/activeskills/妖兽/林地凶狼/撕咬.tres"
+cell = Vector2i(0, 0)
+
+[sub_resource type="Resource" id="Guard"]
+script = ExtResource("2")
+placement_id = "shadowfoot_guard"
+kind = 0
+source_key = "res://resources/activeskills/妖兽/林地凶狼/游身架招.tres"
+cell = Vector2i(2, 1)
+
+[sub_resource type="Resource" id="Pounce"]
+script = ExtResource("2")
+placement_id = "shadowfoot_pounce"
+kind = 0
+source_key = "res://resources/activeskills/妖兽/林地凶狼/掠影扑杀.tres"
+cell = Vector2i(0, 2)
+
+[resource]
+script = ExtResource("1")
+layout_version = 1
+size = Vector2i(3, 3)
+confirmed = true
+placements = Array[ExtResource("2")]([SubResource("Bite"), SubResource("Guard"), SubResource("Pounce")])

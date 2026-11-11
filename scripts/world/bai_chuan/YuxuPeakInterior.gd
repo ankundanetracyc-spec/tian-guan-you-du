@@ -19,19 +19,19 @@ const PEAKS := {
 	"guanfu": {
 		"title": "观复峰",
 		"subtitle": "外门、内门与日常修持",
-		"body": "这里是杂役、外门与内门弟子的日常居所、修习与授业活动之处；静室与休息处按身份供弟子使用，月例在此按月发放。真传入宗满一年后，每半年一期的答疑讲席也在此开设，面向外门与内门弟子。",
+		"body": "这里设有接引处、静室和休息处，也是杂役、外门与内门弟子日常起居修行的地方。",
 		"background": "res://textures/sect_overview/repaint_20261103/live_composition_item_style_20261104/guanfu.png"
 	},
 	"zifu": {
 		"title": "紫府峰",
 		"subtitle": "真传起居、长老与宗门中枢",
-		"body": "天灵根入门的真传弟子在此居住并使用专属静室与休息处；首座、长老与宗主也在此处理宗门中枢事务。",
+		"body": "正式真传弟子在此居住并使用静室与休息处；预备真传考核期间也可使用静室与休息处。首座、长老与宗主在此处理宗门中枢事务。",
 		"background": "res://textures/sect_overview/repaint_20261103/live_composition_item_style_20261104/zifu.png"
 	},
 	"xuanlan": {
 		"title": "玄览峰",
 		"subtitle": "藏经、研读与传承",
-		"body": "可在此研读当前已有权限的典籍；真传首卷仍按师承流程回紫府峰静室研读并汇报。",
+		"body": "这里有藏经阁和研读典籍的地方。弟子可在阁中选取秘籍拓印，第一本免费。",
 		"background": "res://textures/sect_overview/repaint_20261103/live_composition_item_style_20261104/xuanlan.png"
 	},
 	"tianwen": {
@@ -67,6 +67,8 @@ var _admission_member := false
 var _admission_context_initialized := false
 var _admission_current_rank := ""
 var _has_other_affiliation := false
+var _registration_pending := false
+var _provisional_exam_trial_available := false
 var _life_member := false
 var _life_rank := ""
 var _life_monthly_allowance := 0
@@ -86,6 +88,7 @@ var _lineage_is_true_disciple := false
 var _lineage_teacher_name := ""
 var _lineage_guide_name := ""
 var _lineage_book_name := ""
+var _lineage_first_manual_claimed := false
 var _lineage_first_volume_complete := false
 var _lineage_reported_first_volume := false
 var _lineage_lecture_available := false
@@ -186,6 +189,16 @@ func refresh_admission_detail() -> void:
 	_refresh_content()
 	_refresh_admission_button()
 
+func set_registration_context(pending: bool) -> void:
+	_registration_pending = pending
+	if is_visible_in_tree() and not _life_page_open:
+		_refresh_main_actions()
+
+func set_provisional_exam_context(available: bool) -> void:
+	_provisional_exam_trial_available = available
+	if is_visible_in_tree() and not _life_page_open:
+		_refresh_main_actions()
+
 func set_life_context(is_member: bool, current_rank: String, monthly_allowance: int, unclaimed_allowance: int) -> void:
 	_life_member = is_member
 	_life_rank = current_rank
@@ -221,13 +234,14 @@ func set_sect_duty_context(is_member: bool, active_duty_id: String, ready: bool 
 	elif is_visible_in_tree():
 		_refresh_main_actions()
 
-func set_lineage_context(is_true_disciple: bool, teacher_name: String, guide_name: String, book_name: String, first_volume_complete: bool, reported_first_volume: bool) -> void:
+func set_lineage_context(is_true_disciple: bool, teacher_name: String, guide_name: String, book_name: String, first_volume_complete: bool, reported_first_volume: bool, first_manual_claimed: bool) -> void:
 	_lineage_is_true_disciple = is_true_disciple
 	_lineage_teacher_name = teacher_name
 	_lineage_guide_name = guide_name
 	_lineage_book_name = book_name
 	_lineage_first_volume_complete = first_volume_complete
 	_lineage_reported_first_volume = reported_first_volume
+	_lineage_first_manual_claimed = first_manual_claimed
 	if _life_page_open:
 		_refresh_life_page()
 	elif is_visible_in_tree():
@@ -292,27 +306,31 @@ func _refresh_admission_button() -> void:
 
 func _build_life_actions() -> void:
 	var items := [
+		["yuxu_registration", "入门报到"],
 		["meditation", "静室"],
 		["rest", "休息"],
-		["teaching", "授业"],
+		["teaching", "研读"],
 		["claim_allowance", "领取月例"],
 		["promotion", "申请晋升"],
 		["heguang_duties", "宗门事务"],
 		["heguang_peer_qa", "同门答疑"],
 		["heguang_banquet", "举办宗门宴席"],
+		["heguang_market", "宗内坊市"],
 		["sect_exchange", "善功堂"],
 		["yaopu_watch", "药园值守"],
 		["yaopu_cultivate", "培护灵植"],
 		["tianwen_practice", "演法台"],
+		["provisional_exam_trial", "真传考核"],
 		["xuanlan_study", "研读典籍"],
 		["lineage_choose_teacher", "择师"],
-		["lineage_book_selection", "师门选书"],
+		["lineage_book_selection", "选书拓印"],
 		["lineage_report", "首卷汇报"],
 		["lineage_lecture_checkin", "开设讲席"],
 		["lineage_lecture_leave_request", "讲席请假"],
 		["tiangong_baigong", "百工"],
 		["tiangong_alchemy", "丹房 · 炼丹"],
 		["tiangong_forging", "器作 · 炼器"],
+		["tiangong_talisman", "符工 · 制符"],
 		["zhizhong_case_review", "案件核验"],
 		["zhizhong_case_docket", "裁断与申诉复核"],
 		["zhizhong_case_enforce", "执行终局裁断"],
@@ -365,8 +383,9 @@ func _is_true_disciple() -> bool:
 func _can_open_life_page() -> bool:
 	if not _life_member:
 		return false
-	var regular_disciple := _life_rank in ["杂役", "杂役弟子", "外门", "外门弟子", "内门", "内门弟子"]
-	return (_current_peak_id == "guanfu" and regular_disciple) or (_current_peak_id == "zifu" and _is_true_disciple())
+	var regular_disciple := _life_rank in ["杂役", "杂役弟子", "外门", "外门弟子", "内门", "内门弟子", "预备真传"]
+	var provisional_disciple := _life_rank == "预备真传"
+	return (_current_peak_id == "guanfu" and regular_disciple) or (_current_peak_id == "zifu" and (_is_true_disciple() or provisional_disciple))
 
 func _open_life_page() -> void:
 	if not _can_open_life_page():
@@ -397,10 +416,13 @@ func _close_life_page() -> void:
 func _refresh_life_page() -> void:
 	if not _life_page_open:
 		return
-	title_label.text = ("紫府峰" if _current_peak_id == "zifu" else "观复峰") + " · 起居修习"
+	for button in _life_action_buttons:
+		button.hide()
+	title_label.text = ("紫府峰" if _current_peak_id == "zifu" else "观复峰") + (" · 修习与休息" if _life_rank == "预备真传" else " · 起居修习")
 	subtitle_label.text = "静室、休息与月例"
 	body_label.visible = true
-	body_label.text = "这里是你在宗门中的基础居所。\n未领取月例：%d 枚灵石；本月月例：%d 枚。未领取部分持续累积，不生利息。" % [_life_unclaimed_allowance, _life_monthly_allowance]
+	var place_text := "这里设有静室和休息处。" if _life_rank == "预备真传" else "这里是你在宗门中的基础居所。"
+	body_label.text = place_text + "\n未领取月例：%d 枚灵石；本月月例：%d 枚。未领取部分持续累积，不生利息。" % [_life_unclaimed_allowance, _life_monthly_allowance]
 	admission_button.hide()
 	var life_actions := ["meditation", "rest", "claim_allowance"]
 	if _is_true_disciple():
@@ -409,21 +431,16 @@ func _refresh_life_page() -> void:
 			body_label.text += "\n真传讲席：%s。" % _lineage_lecture_status
 		if _lineage_teacher_name.is_empty():
 			life_actions.insert(0, "lineage_choose_teacher")
-			body_label.text += "\n师承尚未登记；先选择一位宗内师父。"
+			body_label.text += "\n可在紫府峰择师。"
 		else:
-			body_label.text += "\n师父：%s；带教师兄/师姐：%s。" % [_lineage_teacher_name, _lineage_guide_name if not _lineage_guide_name.is_empty() else "待安排"]
-			if _lineage_book_name.is_empty():
-				body_label.text += "\n可前往玄览峰，在已有门槛允许的首卷中选择一本云息秘籍。"
-			elif _lineage_first_volume_complete and not _lineage_reported_first_volume:
-				body_label.text += "\n《%s》第一卷已读成，可向带教师兄/师姐汇报。" % _lineage_book_name
-				life_actions.append("lineage_report")
-			elif _lineage_reported_first_volume:
-				body_label.text += "\n《%s》首卷汇报已完成；后续修行由你自行安排。" % _lineage_book_name
-			else:
-				body_label.text += "\n所选首卷：《%s》。回静室研读，完成第一卷后再来汇报。" % _lineage_book_name
+			body_label.text += "\n师父：%s。" % _lineage_teacher_name
+			if not _lineage_guide_name.is_empty():
+				body_label.text += " 带教同门：%s。" % _lineage_guide_name
+			if not _lineage_first_manual_claimed:
+				body_label.text += "\n可前往玄览峰拓印秘籍，首本免费；修习仍需满足书中条件。"
 	if _current_peak_id == "guanfu" and _life_rank in ["杂役", "杂役弟子", "外门", "外门弟子", "内门", "内门弟子"]:
 		life_actions.insert(2, "teaching")
-		body_label.text += "\n授业处可研读已掌握的功法；研读内容与时间消耗沿用现有修行系统。"
+		body_label.text += "\n可在此研读已有功法。"
 		if _life_rank in ["杂役", "杂役弟子", "外门", "外门弟子"]:
 			life_actions.append("promotion")
 	for action_id in life_actions:
@@ -482,12 +499,16 @@ func _close_duty_board() -> void:
 func _refresh_main_actions() -> void:
 	for button in _life_action_buttons:
 		button.hide()
+	if _current_peak_id == "guanfu" and _registration_pending and not _admission_member:
+		var registration_button := _action_buttons.get("yuxu_registration") as Button
+		if registration_button != null:
+			registration_button.show()
 	if not _current_peak_id.is_empty() and PEAKS.has(_current_peak_id):
 		subtitle_label.text = str(PEAKS[_current_peak_id]["subtitle"])
 		if _current_peak_id == "guanfu" and _lineage_is_true_disciple and not _lineage_lecture_status.is_empty():
 			subtitle_label.text += " · " + _lineage_lecture_status
 	if _current_peak_id == "heguang" and _sect_is_member:
-		for action_id in ["heguang_duties", "heguang_peer_qa", "heguang_banquet", "sect_exchange"]:
+		for action_id in ["heguang_duties", "heguang_peer_qa", "heguang_banquet", "heguang_market", "sect_exchange"]:
 			var button := _action_buttons.get(action_id) as Button
 			if button != null:
 				button.show()
@@ -495,8 +516,12 @@ func _refresh_main_actions() -> void:
 		var practice_button := _action_buttons.get("tianwen_practice") as Button
 		if practice_button != null:
 			practice_button.show()
+		if _provisional_exam_trial_available:
+			var trial_button := _action_buttons.get("provisional_exam_trial") as Button
+			if trial_button != null:
+				trial_button.show()
 	if _current_peak_id == "tiangong" and _sect_is_member:
-		for action_id in ["tiangong_baigong", "tiangong_alchemy", "tiangong_forging"]:
+		for action_id in ["tiangong_baigong", "tiangong_alchemy", "tiangong_forging", "tiangong_talisman"]:
 			var workshop_button := _action_buttons.get(action_id) as Button
 			if workshop_button != null:
 				workshop_button.show()
@@ -516,7 +541,7 @@ func _refresh_main_actions() -> void:
 			var button := _action_buttons.get(action_id) as Button
 			if button != null:
 				button.show()
-	if _current_peak_id == "xuanlan" and _sect_is_member and _lineage_is_true_disciple and not _lineage_teacher_name.is_empty() and _lineage_book_name.is_empty():
+	if _current_peak_id == "xuanlan" and _sect_is_member:
 		var lineage_button := _action_buttons.get("lineage_book_selection") as Button
 		if lineage_button != null:
 			lineage_button.show()
@@ -524,7 +549,7 @@ func _refresh_main_actions() -> void:
 		var lecture_button := _action_buttons.get("lineage_lecture_checkin") as Button
 		if lecture_button != null:
 			lecture_button.show()
-	if _current_peak_id == "xuanlan" and _sect_is_member and (not _lineage_is_true_disciple or _lineage_reported_first_volume):
+	if _current_peak_id == "xuanlan" and _sect_is_member:
 		var study_button := _action_buttons.get("xuanlan_study") as Button
 		if study_button != null:
 			study_button.show()

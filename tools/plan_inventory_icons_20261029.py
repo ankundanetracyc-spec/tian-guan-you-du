@@ -91,13 +91,18 @@ def main():
             subject = ("Recompose reference sword " + row["name"] + " fully VERTICAL, tip UP, grip DOWN. Preserve recognizable blade, guard and pommel. "
                 "Broad blade and crossguard" if wide else "Slender blade and jade-bronze crossguard")
             subject += ". Orthographic front view; no diagonal tilt, scabbard or perspective foreshortening. Entire sword inside canvas. "
-        elif row["category"] == "丹药" or row["script"] == "PillContainerItemData":
-            size = (2, 3)
+        elif row["category"] == "丹药":
+            size = (2, 2)
+            key = "pill_2x2"
+            subject = ("One universal round cinnamon-brown alchemical pill with quiet hand-painted texture. "
+                "Every medicine uses this same 2x2 pill icon regardless of pill type or efficacy tier. "
+                "No bottle, jar, wrapper, label, extra pills, aura or effects. ")
+        elif row["script"] == "PillContainerItemData":
+            size = (1, 2)
             key = "pill_container_empty_porcelain"
-            subject = ("One universal small ivory ceramic medicine vial with wooden stopper. "
-                "All inventory medicines use this same porcelain bottle silhouette, not a naked pill. "
-                "Preserve the reference bottle identity, pale glazed ceramic, restrained blue-grey neck accent. "
-                "Simple, upright, complete, no label text, no painted medicine names and no visible contents. ")
+            subject = ("One separate empty ivory porcelain medicine bottle with a wooden stopper. "
+                "This is only the empty bottle template and brewing-animation prop, never the pill inventory icon. "
+                "Preserve the pale glaze and restrained blue-grey neck accent. No medicine names or visible contents. ")
         else:
             raise ValueError("Unplanned item: " + ident)
         filename = REUSE.get(ident, key + ".png")
@@ -111,7 +116,7 @@ def main():
             ratio = f"{w}:{h}"
             reference = row["old_icon"]
             if row["category"] == "丹药":
-                reference = "res://textures/items/alchemy_20261024/porcelain_bottle_closed.png"
+                reference = ASSET_ROOT + "pill_2x2.png"
             elif row["category"] == "秘籍":
                 reference = ASSET_ROOT + "manual_2x3.png"
             jobs[filename] = {"key": key, "file": filename, "name": row["name"], "cells": [w,h],
@@ -123,12 +128,12 @@ def main():
     (OUT / "生成任务.json").write_text(json.dumps(list(jobs.values()), ensure_ascii=False, indent=2), encoding="utf-8")
     table = "# 全物品图标与占地规划\n\n2026-10-29。用户授权：当前所有带图标物品全部替换并规定形状与格数。\n\n"
     table += "逐项登记，不只检查独立图片。占地先用实心矩形，方形、长条和竖长矩形是其长宽分类；图片轮廓不改变可占格区域。允许90度旋转。每格128源像素；不改变物品数值、来源、配方、堆叠或穿戴规则。\n\n"
-    table += "用户最新裁定：所有秘籍共用一张朴素通用书册图（2×3），不加复杂花纹；所有丹药的行囊图标共用瓷瓶图（2×3），裸药丸图只用于动画，不按丹种或丹效档生成行囊药丸图。瓷瓶图不另定义装药数量、堆叠或消耗规则。清和剑和修长剑型共用新剑图，衣物按折叠形态3×4；灵石特殊1×1，其余普通小件从2×2起。\n\n"
+    table += "当前后续裁定：所有丹药统一使用现有2×2丹丸图，不按丹种或丹效档分图；瓷瓶仅用于独立空瓶模板及炼丹演出。旧秘籍共用朴素书册等图标决定继续有效。清和剑和修长剑型共用新剑图，衣物按折叠形态3×4；灵石特殊1×1，其余普通小件从2×2起。\n\n"
     table += f"本轮共{len(rows)}份物品定义、{len(jobs)}份目标图。生成、替换与实机验收状态见[制作记录](../美术规范/行囊全物品图标与占地_20261029/README.md)。\n\n"
     table += "| 物品 | 分类 | 占地外形 | 宽×高 | 格数 | 源图像素 |\n| --- | --- | --- | --- | --- | --- |\n"
     for row in rows:
         table += f"| {row['name']} | {row['category']} | {row['silhouette']} | {row['width']}×{row['height']} | {row['area']} | {row['pixels_w']}×{row['pixels_h']} |\n"
-    (ROOT / "docs/plans/行囊全物品图标与占地规划_20261029.md").write_text(table, encoding="utf-8")
+    (ROOT / "docs/plans/物品与装备/行囊全物品图标与占地规划_20261029.md").write_text(table, encoding="utf-8")
     # The audited unified batch supersedes the historical subject/style fragments above.
     # Always restore its clean prompts after rebuilding the footprint table.
     if (OUT / "物品形态语义审计.json").exists():

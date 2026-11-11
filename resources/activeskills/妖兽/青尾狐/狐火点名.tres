@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ActiveSkillData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://csharp/gongfa/ActiveSkillData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+skill_name = "狐火点名"
+description = "狐尾一摆，青焰直取一名敌方，造成A点物理伤害。A = round(7 + 灵慧×0.8 + 神魂×0.8)。"
+skill_type = 0
+energy_cost = 1
+mana_cost = 0
+spirit_occupy = 0
+target_type = 2
+range_min = 1
+range_max = 1
+preparation_frames = 144
+recovery_frames = 96
+cooldown_frames = 240
+slot_category = "active"
+board_definition_version = 1
+board_size = Vector2i(2, 1)
+board_max_placements = 1
+board_rotation_allowed = false
+damage_type = "physical"
+attack_style = "ranged"
+damage_formula = "round(7 + intelligence*0.8 + soul*0.8)"

@@ -7,10 +7,10 @@
     "stage": "初期",
     "humanParity": "云息",
     "habitat": "栖于松林、旧祠与山道边缘",
-    "habit": "栖于松林、旧祠与山道边缘，常以灵火标记猎物，再把目标引向同伴伏击圈。",
+    "habit": "栖于松林、旧祠与山道边缘，常吐出幽青狐火，远远试探靠近的猎物。",
     "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
-    "talent": "青尾狐习性：偏向提升身心协调与反应能力；首轮不附加新状态或额外行动。",
-    "technique": "狐火点名：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "talent": "",
+    "technique": "狐火点名：对1名合法敌方造成A点物理伤害。A = round(7 + 灵慧×0.8 + 神魂×0.8)。",
     "portrait": "res://textures/bestiary/static/qing_tail_fox.png",
     "stats": {
       "physique": {
@@ -30,7 +30,7 @@
       }
     },
     "physicalDefense": null,
-    "designStatus": "首轮百科设定·待战斗校准"
+    "designStatus": "已接入副本试玩·待战斗平衡"
   },
   {
     "id": "red_mane_wolf",
@@ -42,8 +42,8 @@
     "habitat": "以小群活动",
     "habit": "以小群活动，沿兽径追踪受伤猎物；争夺猎场时会先试探，再集中扑击。",
     "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
-    "talent": "赤鬃狼习性：偏向提升身心协调与反应能力；首轮不附加新状态或额外行动。",
-    "technique": "裂风扑击：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "talent": "",
+    "technique": "裂风扑击：对1名合法敌方造成A点物理伤害。A = round(9 + 体魄×1.5)。",
     "portrait": "res://textures/bestiary/static/red_mane_wolf.png",
     "stats": {
       "physique": {
@@ -63,7 +63,7 @@
       }
     },
     "physicalDefense": null,
-    "designStatus": "首轮百科设定·待战斗校准"
+    "designStatus": "已接入副本试玩·待战斗平衡"
   },
   {
     "id": "rock_back_badger",
@@ -75,8 +75,8 @@
     "habitat": "在松土和碎石坡下掘洞",
     "habit": "在松土和碎石坡下掘洞，洞口会留下新翻的湿土与断根。",
     "basicAttack": "普通攻击：对单个目标造成基础物理伤害，不附加额外状态。",
-    "talent": "岩背獾习性：偏向提高物理防御相关能力；首轮不附加新状态或额外行动。",
-    "technique": "翻土突袭：对单个目标造成物理伤害；删去标记、范围、位移与持续控制，保留直伤意象。",
+    "talent": "",
+    "technique": "翻土突袭：对1名合法敌方造成A点物理伤害。A = round(12 + 体魄 + 神魂×0.5)。",
     "portrait": "res://textures/bestiary/static/rock_back_badger.png",
     "stats": {
       "physique": {
@@ -95,8 +95,8 @@
         "max": 9.5
       }
     },
-    "physicalDefense": 3,
-    "designStatus": "首轮百科设定·待战斗校准"
+    "physicalDefense": null,
+    "designStatus": "已接入副本试玩·待战斗平衡"
   },
   {
     "id": "wind_feather_ape",

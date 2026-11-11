@@ -1,0 +1,311 @@
+{
+  "version": 1,
+  "mode": "built_in_imagegen",
+  "atlas": "res://textures/world/bai_chuan/ground_details_20261106/ground_details_native.png",
+  "runtime_atlas": "res://textures/world/bai_chuan/ground_details_20261106/ground_details_native.res",
+  "atlas_size": [
+    1254,
+    1254
+  ],
+  "source_sha256": "8227f0228bce62be61540253fbc32297b60bb9c23dc4615bbf1b956aba0ed7ee",
+  "source_unchanged": true,
+  "assets": {
+    "meadow_wash": {
+      "region": [
+        20,
+        138,
+        386,
+        195
+      ],
+      "native_size": [
+        386,
+        195
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "width_range": [
+        135,
+        220
+      ],
+      "opacity_range": [
+        0.34,
+        0.56
+      ],
+      "layer": "ground_decals",
+      "z": 24,
+      "cell": [
+        0,
+        0,
+        418,
+        418
+      ],
+      "cell_edge_alpha_max": 1
+    },
+    "moss_wash": {
+      "region": [
+        439,
+        140,
+        377,
+        191
+      ],
+      "native_size": [
+        377,
+        191
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "width_range": [
+        135,
+        220
+      ],
+      "opacity_range": [
+        0.34,
+        0.56
+      ],
+      "layer": "ground_decals",
+      "z": 24,
+      "cell": [
+        418,
+        0,
+        418,
+        418
+      ],
+      "cell_edge_alpha_max": 2
+    },
+    "sand_wash": {
+      "region": [
+        846,
+        148,
+        388,
+        184
+      ],
+      "native_size": [
+        388,
+        184
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "width_range": [
+        135,
+        220
+      ],
+      "opacity_range": [
+        0.34,
+        0.56
+      ],
+      "layer": "ground_decals",
+      "z": 24,
+      "cell": [
+        836,
+        0,
+        418,
+        418
+      ],
+      "cell_edge_alpha_max": 1
+    },
+    "grass_green": {
+      "region": [
+        39,
+        518,
+        356,
+        200
+      ],
+      "native_size": [
+        356,
+        200
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "width_range": [
+        70,
+        115
+      ],
+      "opacity_range": [
+        0.72,
+        0.95
+      ],
+      "layer": "ground_decals",
+      "z": 24,
+      "cell": [
+        0,
+        418,
+        418,
+        418
+      ],
+      "cell_edge_alpha_max": 2
+    },
+    "grass_dry": {
+      "region": [
+        449,
+        519,
+        349,
+        209
+      ],
+      "native_size": [
+        349,
+        209
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "width_range": [
+        70,
+        115
+      ],
+      "opacity_range": [
+        0.72,
+        0.95
+      ],
+      "layer": "ground_decals",
+      "z": 24,
+      "cell": [
+        418,
+        418,
+        418,
+        418
+      ],
+      "cell_edge_alpha_max": 1
+    },
+    "wildflowers": {
+      "region": [
+        861,
+        535,
+        343,
+        186
+      ],
+      "native_size": [
+        343,
+        186
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "width_range": [
+        70,
+        115
+      ],
+      "opacity_range": [
+        0.72,
+        0.95
+      ],
+      "layer": "ground_decals",
+      "z": 24,
+      "cell": [
+        836,
+        418,
+        418,
+        418
+      ],
+      "cell_edge_alpha_max": 1
+    },
+    "pebbles": {
+      "region": [
+        42,
+        989,
+        349,
+        144
+      ],
+      "native_size": [
+        349,
+        144
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "width_range": [
+        70,
+        115
+      ],
+      "opacity_range": [
+        0.72,
+        0.95
+      ],
+      "layer": "ground_decals",
+      "z": 24,
+      "cell": [
+        0,
+        836,
+        418,
+        418
+      ],
+      "cell_edge_alpha_max": 1
+    },
+    "flat_stones": {
+      "region": [
+        444,
+        971,
+        353,
+        168
+      ],
+      "native_size": [
+        353,
+        168
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "width_range": [
+        70,
+        115
+      ],
+      "opacity_range": [
+        0.72,
+        0.95
+      ],
+      "layer": "ground_decals",
+      "z": 24,
+      "cell": [
+        418,
+        836,
+        418,
+        418
+      ],
+      "cell_edge_alpha_max": 1
+    },
+    "shore_reeds": {
+      "region": [
+        854,
+        950,
+        357,
+        182
+      ],
+      "native_size": [
+        357,
+        182
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "width_range": [
+        70,
+        115
+      ],
+      "opacity_range": [
+        0.72,
+        0.95
+      ],
+      "layer": "ground_decals",
+      "z": 24,
+      "cell": [
+        836,
+        836,
+        418,
+        418
+      ],
+      "cell_edge_alpha_max": 1
+    }
+  }
+}

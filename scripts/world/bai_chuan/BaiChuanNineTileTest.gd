@@ -8,6 +8,8 @@ const WORLD_SIZE := TILE_SIZE * 3.0
 const FreeWorldScale = preload("res://gdscripts/world/BaiChuanWorldScale.gd")
 const LOCATION_NAMEPLATE_STYLE = preload("res://scripts/ui/WorldLocationNameplateStyle.gd")
 const FORMAL_ZOOM_LEVELS := [0.24, 0.48, 0.96]
+const FREE_WORLD_ZOOM_LEVELS := [0.24, 0.4, 0.8]
+const FREE_WORLD_NODE_ART_SCALE := 0.85
 const FORMAL_DOUBLE_CLICK_WINDOW_MS := 450
 const FAR_ZOOM_FILL := 0.90
 # 1280x720 HUD safe bounds: beyond the roster/date strip, left of task cards,
@@ -37,6 +39,7 @@ var data: Dictionary = {}
 var presentation: Dictionary = {}
 var place_views: Dictionary = {}
 var icon_cache: Dictionary = {}
+var atlas_texture_cache: Dictionary = {}
 var camera_pos := Vector2.ZERO
 var world_zoom := 1.0
 var zoom_level := -1
@@ -102,7 +105,12 @@ class EntranceHitButton extends Button:
 			return false
 		if silhouette == null:
 			return true
-		var pixel := Vector2i(point.floor())
+		var bitmap_size := silhouette.get_size()
+		if size.x <= 0.0 or size.y <= 0.0 or bitmap_size.x <= 0 or bitmap_size.y <= 0:
+			return false
+		var pixel := Vector2i((point / size * Vector2(bitmap_size)).floor())
+		if pixel.x < 0 or pixel.y < 0 or pixel.x >= bitmap_size.x or pixel.y >= bitmap_size.y:
+			return false
 		return silhouette.get_bitv(pixel)
 
 class NaturalSiteMark extends Node2D:
@@ -364,20 +372,42 @@ func _layout_nameplates() -> void:
 		occupied.append(best)
 
 func _apply_free_world_layout() -> void:
-	# Spread anchors and curves, retaining each building's authored dimensions
-	# and its local offset from the entrance. Labels are laid out afterwards.
+	# Atlas regions retain native pixels; the layout owns their world footprint.
 	var free_layout = JSON.parse_string(FileAccess.get_file_as_string(FreeWorldScale.LAYOUT_PATH))
 	if not free_layout is Dictionary:
 		push_error("百川自由地图：地点布局数据加载失败")
 		return
+	var native_assets: Dictionary = {}
+	var native_catalog_path := str(free_layout.get("native_node_catalog", ""))
+	if not native_catalog_path.is_empty():
+		var native_catalog = JSON.parse_string(FileAccess.get_file_as_string(native_catalog_path))
+		if not native_catalog is Dictionary or not native_catalog.get("assets") is Dictionary:
+			push_error("百川自由地图：原生地点图集加载失败")
+			return
+		native_assets = native_catalog.assets
+		for asset_id: String in native_assets:
+			var asset: Dictionary = native_assets[asset_id]
+			presentation.catalog[asset_id] = {"file": str(asset.atlas), "region": asset.region, "native_size": asset.native_size}
 	for row: Dictionary in presentation.placements:
 		var old_anchor := Vector2(row.drawPos[0], row.drawPos[1])
 		var placement: Dictionary = free_layout.locations[row.id]
 		var anchor := Vector2(placement.drawPos[0], placement.drawPos[1])
 		row.drawPos = [anchor.x, anchor.y]
 		row.rect = [placement.rect[0], placement.rect[1], placement.rect[2] - placement.rect[0], placement.rect[3] - placement.rect[1]]
+		if not native_assets.is_empty():
+			var asset_id := str(placement.get("native_asset", ""))
+			row.asset = asset_id
+			row.drawIcon = not asset_id.is_empty() and native_assets.has(asset_id)
+			if not asset_id.is_empty() and not row.drawIcon:
+				push_error("百川自由地图：地点素材不存在：" + asset_id)
+			if row.drawIcon:
+				var art_position := anchor + (Vector2(float(row.rect[0]), float(row.rect[1])) - anchor) * FREE_WORLD_NODE_ART_SCALE
+				row.rect = [art_position.x, art_position.y, float(row.rect[2]) * FREE_WORLD_NODE_ART_SCALE, float(row.rect[3]) * FREE_WORLD_NODE_ART_SCALE]
+		row.logical_z = float(placement.get("z", anchor.y))
 		row.labelRect[0] = anchor.x + float(row.labelRect[0]) - old_anchor.x
 		row.labelRect[1] = anchor.y + float(row.labelRect[1]) - old_anchor.y
+		if not native_assets.is_empty() and bool(row.drawIcon):
+			row.labelRect[0] = anchor.x + (float(row.labelRect[0]) - anchor.x) * FREE_WORLD_NODE_ART_SCALE
 		if row.has("approach"):
 			for p: Array in row.approach:
 				p[0] = anchor.x + float(p[0]) - old_anchor.x
@@ -399,14 +429,39 @@ func _background_color_at(point: Vector2, ground: Array[Image]) -> Color:
 func _nameplate_style(fill: String, _border: String) -> StyleBoxTexture:
 	return LOCATION_NAMEPLATE_STYLE.create(fill != "ead3a3", _nameplate_texture)
 
-func _image_texture(path: String) -> Texture2D:
+func _image_texture(path: String, with_mipmaps := false) -> Texture2D:
 	# Read original PNG bytes without import timing dependencies or resampling.
 	var source := Image.new()
 	var status := source.load_png_from_buffer(FileAccess.get_file_as_bytes(path))
 	if status != OK or source.is_empty():
 		push_error("百川测试素材缺失：" + path)
 		return null
+	if with_mipmaps:
+		source.generate_mipmaps()
 	return ImageTexture.create_from_image(source)
+
+func _catalog_icon_texture(key: String) -> Texture2D:
+	if icon_cache.has(key):
+		return icon_cache[key] as Texture2D
+	var asset: Dictionary = presentation.catalog[key]
+	var texture: Texture2D
+	if _is_free_world() and asset.has("region"):
+		var atlas_path := str(asset.file)
+		if not atlas_texture_cache.has(atlas_path):
+			atlas_texture_cache[atlas_path] = _image_texture(atlas_path, true)
+		var source: Texture2D = atlas_texture_cache[atlas_path]
+		if source == null:
+			return null
+		var region: Array = asset.region
+		var atlas := AtlasTexture.new()
+		atlas.atlas = source
+		atlas.region = Rect2(float(region[0]), float(region[1]), float(region[2]), float(region[3]))
+		atlas.filter_clip = true
+		texture = atlas
+	else:
+		texture = _image_texture(str(asset.file))
+	icon_cache[key] = texture
+	return texture
 
 func _point(pos: Array) -> Vector2:
 	return Vector2(float(pos[0]), float(pos[1])) * get_world_size() / 100.0
@@ -487,11 +542,15 @@ func _build_places() -> void:
 		places.add_child(marker)
 		var key: String = row.asset
 		var draw_icon := bool(row.get("drawIcon",true))
-		if draw_icon and not icon_cache.has(key):
-			icon_cache[key] = _image_texture(presentation.catalog[key].file)
 		var image_view := Sprite2D.new()
 		image_view.name = "NativeIcon"
-		if draw_icon: image_view.texture = icon_cache[key]
+		if draw_icon:
+			image_view.texture = _catalog_icon_texture(key)
+			if _is_free_world() and image_view.texture != null:
+				image_view.scale = Vector2(float(row.rect[2]), float(row.rect[3])) / Vector2(image_view.texture.get_size())
+				image_view.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
+		if _is_free_world():
+			image_view.set_meta("logical_z", float(row.get("logical_z", row.drawPos[1])))
 		image_view.visible = draw_icon and not bool(row.get("hoverOnly",false))
 		image_view.set_meta("hover_only",bool(row.get("hoverOnly",false)))
 		image_view.centered = false
@@ -511,7 +570,7 @@ func _build_places() -> void:
 		hit.size = Vector2(row.rect[2],row.rect[3])
 		hit.tooltip_text = str(node.name)
 		hit.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
-		if draw_icon:
+		if draw_icon and image_view.texture != null:
 			if not hit_mask_cache.has(key):
 				var mask := BitMap.new()
 				mask.create_from_image_alpha(image_view.texture.get_image(), 0.12)
@@ -863,7 +922,7 @@ func _zoom_for_level(level: int, viewport_size: Vector2) -> float:
 		var safe_rect := _map_safe_rect_for_viewport(viewport_size)
 		var fit_zoom := minf(safe_rect.size.x, safe_rect.size.y) * FAR_ZOOM_FILL / get_world_size()
 		return minf(FORMAL_ZOOM_LEVELS[0], maxf(fit_zoom, 0.01))
-	return FORMAL_ZOOM_LEVELS[bounded_level]
+	return FREE_WORLD_ZOOM_LEVELS[bounded_level] if _is_free_world() else FORMAL_ZOOM_LEVELS[bounded_level]
 
 func focus_world_point(point: Vector2) -> void:
 	var focus_screen_point := get_viewport_rect().size * 0.5
@@ -886,6 +945,7 @@ func _set_zoom_level(level: int, anchor_screen_position: Vector2) -> void:
 	map_zoom_changed.emit(world_zoom, zoom_level)
 
 func _update_camera() -> void:
+	if not is_inside_tree(): return
 	var viewport_size := get_viewport_rect().size
 	var viewport_world_size := viewport_size / maxf(world_zoom, 0.001)
 	var formal_map := is_in_group("node_world_map_presentation")

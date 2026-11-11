@@ -9,7 +9,6 @@
 script = ExtResource("2_hardware")
 component_slots = 4
 pulse_layers = 1
-eye_complexity = 4
 source_capacity = 4
 source_recharge_per_turn = 1
 source_peak_output = 2
@@ -17,13 +16,12 @@ spirit_link_peak_output = 2
 board_peak_load = 2
 board_material_tags = Array[String](["五行[土]", "功用[固本]"])
 ink_material_tags = Array[String](["质地[液体]", "功用[通脉]"])
-eye_material_tags = Array[String](["功用[蕴灵]"])
-source_material_tags = Array[String](["质地[致密]", "功用[聚灵]"])
+source_material_tags = Array[String](["质地[致密]", "功用[蕴灵]", "功用[聚灵]"])
 
 [sub_resource type="Resource" id="Input"]
 script = ExtResource("3_node")
 node_id = &"spell_input"
-display_name = "术法感应枢"
+display_name = "术法感应器"
 kind = 0
 input_event = "spell_played"
 accepted_source_tags = Array[String](["spell"])
@@ -31,7 +29,7 @@ accepted_source_tags = Array[String](["spell"])
 [sub_resource type="Resource" id="Counter"]
 script = ExtResource("3_node")
 node_id = &"third_spell_counter"
-display_name = "三候枢"
+display_name = "计数器"
 kind = 2
 interval = 3
 
@@ -60,8 +58,8 @@ to_node_id = &"ward_actuator"
 [resource]
 script = ExtResource("1_circuit")
 circuit_id = &"yunxi_third_spell_ward"
-circuit_name = "云息·三候护持阵"
-description = "每打出三张消耗法力的术法，候枢送出一次控制脉冲；护持阵器从阵源抽取阵能后获得护持。"
+circuit_name = "云息·计数护持阵"
+description = "每打出三张消耗法力的术法，计数器送出一次控制信号；护持仍须支付阵能并满足供能与次数限制。"
 required_formation_proficiency = 5.0
 required_manual_ids = Array[String](["manual_small_circulation_input", "manual_guard_output"])
 hardware = SubResource("Hardware")

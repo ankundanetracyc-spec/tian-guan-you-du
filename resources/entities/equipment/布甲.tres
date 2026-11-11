@@ -5,6 +5,7 @@
 
 [resource]
 script = ExtResource("2")
+storage_volume = 3
 definition_id = &"equip_cloth_armor"
 entity_name = "布甲"
 can_stack = false

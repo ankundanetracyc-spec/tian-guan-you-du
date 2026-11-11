@@ -2235,7 +2235,7 @@ theme_override_colors/default_color = Color(0.12, 0.095, 0.065, 1)
 bbcode_enabled = true
 fit_content = false
 scroll_active = true
-text = "已研读的每一卷会在中央展开为一层；主修可同时启用两条分支，辅修每层只能启用其一。"
+text = "已研读卷章的修持与化法同时生效；主修与辅修仅在心法额外效果上有区别。"
 
 [node name="EquipPanel" type="PanelContainer" parent="Content/Page/Body/GongfaLayout/Workspace/EquipColumn" unique_id=1634229097]
 custom_minimum_size = Vector2(300, 0)

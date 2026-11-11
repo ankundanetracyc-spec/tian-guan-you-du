@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemTravelData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/ItemTravelData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+travel_mode = "flight"
+visual_id = "spirit_boat"
+has_dun_speed = true
+dun_speed = 4800.0
+passenger_capacity = 6
+consumption_resource_path = "res://resources/entities/items/灵石.tres"
+consumption_amount = 1
+consumption_period_hours = 24.0

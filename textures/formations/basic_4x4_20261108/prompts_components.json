@@ -1,0 +1,152 @@
+{
+  "generator": "built-in image_gen.imagegen",
+  "created_date": "2026-11-08",
+  "style_references": [
+    "textures/items/item_sinking_cloud_jade_shard.png",
+    "textures/items/item_clear_chime_jade_shard.png",
+    "textures/items/inventory_density_20261029/slender_sword_2x6.png"
+  ],
+  "coordinated_board_reference": "E:/tmp/CodexData/generated_images/01a1ba83-5aca-73e3-bb57-8641b5917811/exec-65122aee-ac26-4dbb-8077-2f9e507fdb37.png",
+  "common_style": "Use case: stylized-concept. Asset type: one production-ready Chinese cultivation game inventory/circuit component sprite, a single isolated physical object on a genuinely transparent alpha background. Style: finely hand-painted ink outlines and restrained watercolor shading, matching aged celadon jade and matte old bronze Chinese equipment. Palette: low-saturation gray-green pale jade, warm gray antique bronze, very dark gray fine contours; softly lit from upper left. View: exact orthographic straight top-down plan view, no isometric perspective and no visible vertical side wall or raised pedestal. One complete compact assembled object, readable when reduced to game-icon scale; clean closed silhouette. The object should occupy about 88-92 percent of its intended rectangular footprint with a small clear transparent safety margin. Preserve its intended aspect ratio by drawing the actual object to that proportion. Materials are opaque with subtle jade grain and worn bronze; only the exterior is transparent. No background of any kind, no white fill, no paper card, no checkerboard baked into image, no cast shadow outside the object. Absolutely no text, Chinese characters, numbers, ticks, runes, arrows, UI, grid, wiring, electrical traces, connecting cables, health bar, frame around the canvas, magic glow, halo, sparkles, or extra unattached objects. Produce only one distinct object, not a sprite sheet and not a board.",
+  "assets": [
+    {
+      "name": "sensor_1x1.png",
+      "width": 128,
+      "height": 128,
+      "subject": "A small round sensing pivot: one shallow antique bronze collar securely encloses a pale celadon jade sensory needle and a single jade sensing crystal. It resembles a physical precise sensing instrument, but has no compass letters, dial marks or ticks. Compact approximately square 1:1 overall footprint. The pale jade needle/crystal and open bronze collar must read clearly at 128 pixels.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready Chinese cultivation game inventory/circuit component sprite, a single isolated physical object on a genuinely transparent alpha background. Style: finely hand-painted ink outlines and restrained watercolor shading, matching aged celadon jade and matte old bronze Chinese equipment. Palette: low-saturation gray-green pale jade, warm gray antique bronze, very dark gray fine contours; softly lit from upper left. View: exact orthographic straight top-down plan view, no isometric perspective and no visible vertical side wall or raised pedestal. One complete compact assembled object, readable when reduced to game-icon scale; clean closed silhouette. The object should occupy about 88-92 percent of its intended rectangular footprint with a small clear transparent safety margin. Preserve its intended aspect ratio by drawing the actual object to that proportion. Materials are opaque with subtle jade grain and worn bronze; only the exterior is transparent. No background of any kind, no white fill, no paper card, no checkerboard baked into image, no cast shadow outside the object. Absolutely no text, Chinese characters, numbers, ticks, runes, arrows, UI, grid, wiring, electrical traces, connecting cables, health bar, frame around the canvas, magic glow, halo, sparkles, or extra unattached objects. Produce only one distinct object, not a sprite sheet and not a board.\nSubject and geometry: A small round sensing pivot: one shallow antique bronze collar securely encloses a pale celadon jade sensory needle and a single jade sensing crystal. It resembles a physical precise sensing instrument, but has no compass letters, dial marks or ticks. Compact approximately square 1:1 overall footprint. The pale jade needle/crystal and open bronze collar must read clearly at 128 pixels.\nOutput composition: 128 x 128 final game sprite, intended 128:128 rectangular aspect ratio. Generate the actual physical object in this aspect; do not stretch a square design.",
+      "status": "ready",
+      "source_generated_path": "E:\\tmp\\CodexData\\generated_images\\01a1ba79-d569-7cc3-9b48-2e8e042c4ff0\\exec-e721e196-256a-4a5d-8a44-a40dd99e2283.png",
+      "project_raw_path": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\raw\\sensor_1x1.png",
+      "selected_raw_path": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\raw\\sensor_1x1.png",
+      "final_path": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\sensor_1x1.png",
+      "final_sha256": "f678167bb7876cbc1244cf35b4f477cf7312b9280bc0a40ad6814c6b0d8788d0",
+      "export": "Godot Image.resize Lanczos; aspect ratio preserved; no redraw/crop/alpha cleanup",
+      "verification_record": "image_export_verification_components.json"
+    },
+    {
+      "name": "ward_1x2.png",
+      "width": 128,
+      "height": 256,
+      "subject": "A built-in protective ward actuator: one complete elongated vertical narrow pale-jade shield-shaped tablet with a thin worn bronze rim and a subtly pointed lower end. Its solid jade shield body spans the entire portrait 1:2 footprint, length exactly about twice its width, with one restrained raised central jade ridge. A physical jade shielding component, not a flag, not a standing sign and not a human-held combat shield. No handle, symbols or drawing of an emitted shield.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready Chinese cultivation game inventory/circuit component sprite, a single isolated physical object on a genuinely transparent alpha background. Style: finely hand-painted ink outlines and restrained watercolor shading, matching aged celadon jade and matte old bronze Chinese equipment. Palette: low-saturation gray-green pale jade, warm gray antique bronze, very dark gray fine contours; softly lit from upper left. View: exact orthographic straight top-down plan view, no isometric perspective and no visible vertical side wall or raised pedestal. One complete compact assembled object, readable when reduced to game-icon scale; clean closed silhouette. The object should occupy about 88-92 percent of its intended rectangular footprint with a small clear transparent safety margin. Preserve its intended aspect ratio by drawing the actual object to that proportion. Materials are opaque with subtle jade grain and worn bronze; only the exterior is transparent. No background of any kind, no white fill, no paper card, no checkerboard baked into image, no cast shadow outside the object. Absolutely no text, Chinese characters, numbers, ticks, runes, arrows, UI, grid, wiring, electrical traces, connecting cables, health bar, frame around the canvas, magic glow, halo, sparkles, or extra unattached objects. Produce only one distinct object, not a sprite sheet and not a board.\nSubject and geometry: A built-in protective ward actuator: one complete elongated vertical narrow pale-jade shield-shaped tablet with a thin worn bronze rim and a subtly pointed lower end. Its solid jade shield body spans the entire portrait 1:2 footprint, length exactly about twice its width, with one restrained raised central jade ridge. A physical jade shielding component, not a flag, not a standing sign and not a human-held combat shield. No handle, symbols or drawing of an emitted shield.\nOutput composition: 128 x 256 final game sprite, intended 128:256 rectangular aspect ratio. Generate the actual physical object in this aspect; do not stretch a square design.",
+      "status": "ready",
+      "source_generated_path": "E:\\tmp\\CodexData\\generated_images\\01a1ba79-d569-7cc3-9b48-2e8e042c4ff0\\exec-9494bf78-a7f1-48e0-bce1-4aaa091e60a6.png",
+      "project_raw_path": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\raw\\ward_1x2.png",
+      "refinements": [
+        {
+          "generator": "built-in image_gen.imagegen",
+          "intent": "proportion correction by redraw, not stretching",
+          "reference": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\raw\\ward_1x2.png",
+          "prompt": "Precise object edit of the single jade ward actuator in the reference. Preserve its hand-painted pale gray-green celadon jade, old matte bronze rim, simple vertical raised jade ridge, exact top-down viewpoint and genuinely transparent alpha background. Change only its physical proportions: the current shield/tablet body is too thin, almost 1:3. Redraw it as a broader substantial 1:2 body, height exactly about twice its width. Keep a portrait 1:2 canvas and let the WHOLE shield occupy 88-92% of both canvas width AND height, with a small clear margin. Broaden the jade body and rim naturally; do NOT stretch the existing pixels, do not crop the pointed top/bottom, do not add a pedestal. Still one complete narrow jade ward plate, not a flag. No text, symbols, runes, grid, circuits, wires, glow, halos, shadow outside object, or decorative background.",
+          "source_generated_path": "E:\\tmp\\CodexData\\generated_images\\01a1ba79-d569-7cc3-9b48-2e8e042c4ff0\\exec-a56abe9d-804f-4457-bb8c-c9d94cdbe61d.png",
+          "project_raw_path": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\raw\\ward_1x2_v2.png"
+        }
+      ],
+      "selected_raw_path": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\raw\\ward_1x2_v2.png",
+      "final_path": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\ward_1x2.png",
+      "final_sha256": "2889926d0efbe29f6da0f6321302f5c3a2618e293ef9a7f484b0f2e64c737efb",
+      "export": "Godot Image.resize Lanczos; aspect ratio preserved; no redraw/crop/alpha cleanup",
+      "verification_record": "image_export_verification_components.json"
+    },
+    {
+      "name": "counter_2x1.png",
+      "width": 256,
+      "height": 128,
+      "subject": "One complete horizontal two-cell counting pivot mechanism: three pale celadon jade counting beads or rounded jade rollers arranged left-to-right inside a single unified low-profile antique bronze rail capsule. The three beads are visibly distinct, but mechanically joined into the same one-piece object. Entire object is twice as wide as tall (landscape 2:1), filling this long footprint naturally. No numerals, symbols, marks or detached beads.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready Chinese cultivation game inventory/circuit component sprite, a single isolated physical object on a genuinely transparent alpha background. Style: finely hand-painted ink outlines and restrained watercolor shading, matching aged celadon jade and matte old bronze Chinese equipment. Palette: low-saturation gray-green pale jade, warm gray antique bronze, very dark gray fine contours; softly lit from upper left. View: exact orthographic straight top-down plan view, no isometric perspective and no visible vertical side wall or raised pedestal. One complete compact assembled object, readable when reduced to game-icon scale; clean closed silhouette. The object should occupy about 88-92 percent of its intended rectangular footprint with a small clear transparent safety margin. Preserve its intended aspect ratio by drawing the actual object to that proportion. Materials are opaque with subtle jade grain and worn bronze; only the exterior is transparent. No background of any kind, no white fill, no paper card, no checkerboard baked into image, no cast shadow outside the object. Absolutely no text, Chinese characters, numbers, ticks, runes, arrows, UI, grid, wiring, electrical traces, connecting cables, health bar, frame around the canvas, magic glow, halo, sparkles, or extra unattached objects. Produce only one distinct object, not a sprite sheet and not a board.\nSubject and geometry: One complete horizontal two-cell counting pivot mechanism: three pale celadon jade counting beads or rounded jade rollers arranged left-to-right inside a single unified low-profile antique bronze rail capsule. The three beads are visibly distinct, but mechanically joined into the same one-piece object. Entire object is twice as wide as tall (landscape 2:1), filling this long footprint naturally. No numerals, symbols, marks or detached beads.\nOutput composition: 256 x 128 final game sprite, intended 256:128 rectangular aspect ratio. Generate the actual physical object in this aspect; do not stretch a square design.",
+      "status": "ready",
+      "source_generated_path": "E:\\tmp\\CodexData\\generated_images\\01a1ba79-d569-7cc3-9b48-2e8e042c4ff0\\exec-064b25a3-cdc8-4d76-8d7e-4073ceb99260.png",
+      "project_raw_path": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\raw\\counter_2x1.png",
+      "refinements": [
+        {
+          "generator": "built-in image_gen.imagegen",
+          "intent": "proportion correction by redraw, not stretching",
+          "reference": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\raw\\counter_2x1.png",
+          "prompt": "Precise object edit of the single three-bead jade counting mechanism in the reference. Preserve the same hand-painted low-saturation pale jade and matte old bronze, three distinct left-to-right jade rollers on one unified mechanical rail, top-down viewpoint, clean transparency, and restrained Chinese antique ornament. Change only its physical proportions: the object is currently too flat and long inside its 2:1 canvas. Redraw a thicker, taller unified rail housing with three more substantial vertically fuller jade rollers, so the WHOLE object has about a true 2:1 width-to-height silhouette. Keep a landscape 2:1 canvas and fill 88-92% of both its width AND height with the complete object; retain only a small transparent margin. Redraw the actual anatomy naturally, do not stretch the old pixels or crop any part. No text, numbers, runes, dial ticks, grid, circuits, external wire, glow, halo, exterior shadow or extra objects.",
+          "source_generated_path": "E:\\tmp\\CodexData\\generated_images\\01a1ba79-d569-7cc3-9b48-2e8e042c4ff0\\exec-b22e4f51-87b4-4864-86af-936555abb324.png",
+          "project_raw_path": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\raw\\counter_2x1_v2.png"
+        }
+      ],
+      "selected_raw_path": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\raw\\counter_2x1_v2.png",
+      "final_path": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\counter_2x1.png",
+      "final_sha256": "99a768cf681a14a5419e32ba3c33792ee16bb950ce35d33a2c5e27a44f52c055",
+      "export": "Godot Image.resize Lanczos; aspect ratio preserved; no redraw/crop/alpha cleanup",
+      "verification_record": "image_export_verification_components.json"
+    },
+    {
+      "name": "filter_1x1.png",
+      "width": 128,
+      "height": 128,
+      "subject": "One compact physical event-filter gate component: a small squared antique bronze gate pivot frame holding a narrow opaque celadon jade gate insert with one simple central slot. It is a miniature solid mechanical jade-and-bronze assembly, not a doorway in a wall and not a decorative necklace. Square 1:1 footprint. Distinct simple squared gate silhouette, finely worn bronze edges, no symbols or labels.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready Chinese cultivation game inventory/circuit component sprite, a single isolated physical object on a genuinely transparent alpha background. Style: finely hand-painted ink outlines and restrained watercolor shading, matching aged celadon jade and matte old bronze Chinese equipment. Palette: low-saturation gray-green pale jade, warm gray antique bronze, very dark gray fine contours; softly lit from upper left. View: exact orthographic straight top-down plan view, no isometric perspective and no visible vertical side wall or raised pedestal. One complete compact assembled object, readable when reduced to game-icon scale; clean closed silhouette. The object should occupy about 88-92 percent of its intended rectangular footprint with a small clear transparent safety margin. Preserve its intended aspect ratio by drawing the actual object to that proportion. Materials are opaque with subtle jade grain and worn bronze; only the exterior is transparent. No background of any kind, no white fill, no paper card, no checkerboard baked into image, no cast shadow outside the object. Absolutely no text, Chinese characters, numbers, ticks, runes, arrows, UI, grid, wiring, electrical traces, connecting cables, health bar, frame around the canvas, magic glow, halo, sparkles, or extra unattached objects. Produce only one distinct object, not a sprite sheet and not a board.\nSubject and geometry: One compact physical event-filter gate component: a small squared antique bronze gate pivot frame holding a narrow opaque celadon jade gate insert with one simple central slot. It is a miniature solid mechanical jade-and-bronze assembly, not a doorway in a wall and not a decorative necklace. Square 1:1 footprint. Distinct simple squared gate silhouette, finely worn bronze edges, no symbols or labels.\nOutput composition: 128 x 128 final game sprite, intended 128:128 rectangular aspect ratio. Generate the actual physical object in this aspect; do not stretch a square design.",
+      "status": "ready",
+      "source_generated_path": "E:\\tmp\\CodexData\\generated_images\\01a1ba79-d569-7cc3-9b48-2e8e042c4ff0\\exec-25ae9c22-e7b1-4b1b-b4e7-f92b488f1e2a.png",
+      "project_raw_path": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\raw\\filter_1x1.png",
+      "selected_raw_path": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\raw\\filter_1x1.png",
+      "final_path": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\filter_1x1.png",
+      "final_sha256": "1912ce5308d5e4a66ff5badbd8b7c3f69cdc55ee31fac71a5f61d99f46a370f3",
+      "export": "Godot Image.resize Lanczos; aspect ratio preserved; no redraw/crop/alpha cleanup",
+      "verification_record": "image_export_verification_components.json"
+    },
+    {
+      "name": "split_1x1.png",
+      "width": 128,
+      "height": 128,
+      "subject": "One compact three-way branching pivot: a unified antique bronze and pale-jade body with a small central jade hub and three broad petal-like lobes opening outward into a clear three-lobed silhouette. The bronze body physically joins all lobes. Emphasize outward-spreading geometry without using any drawn arrows, cables or circuit lines. Square 1:1 overall footprint. A physical assembled component rather than a graphic diagram.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready Chinese cultivation game inventory/circuit component sprite, a single isolated physical object on a genuinely transparent alpha background. Style: finely hand-painted ink outlines and restrained watercolor shading, matching aged celadon jade and matte old bronze Chinese equipment. Palette: low-saturation gray-green pale jade, warm gray antique bronze, very dark gray fine contours; softly lit from upper left. View: exact orthographic straight top-down plan view, no isometric perspective and no visible vertical side wall or raised pedestal. One complete compact assembled object, readable when reduced to game-icon scale; clean closed silhouette. The object should occupy about 88-92 percent of its intended rectangular footprint with a small clear transparent safety margin. Preserve its intended aspect ratio by drawing the actual object to that proportion. Materials are opaque with subtle jade grain and worn bronze; only the exterior is transparent. No background of any kind, no white fill, no paper card, no checkerboard baked into image, no cast shadow outside the object. Absolutely no text, Chinese characters, numbers, ticks, runes, arrows, UI, grid, wiring, electrical traces, connecting cables, health bar, frame around the canvas, magic glow, halo, sparkles, or extra unattached objects. Produce only one distinct object, not a sprite sheet and not a board.\nSubject and geometry: One compact three-way branching pivot: a unified antique bronze and pale-jade body with a small central jade hub and three broad petal-like lobes opening outward into a clear three-lobed silhouette. The bronze body physically joins all lobes. Emphasize outward-spreading geometry without using any drawn arrows, cables or circuit lines. Square 1:1 overall footprint. A physical assembled component rather than a graphic diagram.\nOutput composition: 128 x 128 final game sprite, intended 128:128 rectangular aspect ratio. Generate the actual physical object in this aspect; do not stretch a square design.",
+      "status": "ready",
+      "source_generated_path": "E:\\tmp\\CodexData\\generated_images\\01a1ba79-d569-7cc3-9b48-2e8e042c4ff0\\exec-ed62b436-70a2-4281-b3f5-0c0550f894f9.png",
+      "project_raw_path": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\raw\\split_1x1.png",
+      "selected_raw_path": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\raw\\split_1x1.png",
+      "final_path": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\split_1x1.png",
+      "final_sha256": "73a998bbf4ace9fe21cb1e916e5c6b52ce2eb19026287c4868bdab9bab94b51b",
+      "export": "Godot Image.resize Lanczos; aspect ratio preserved; no redraw/crop/alpha cleanup",
+      "verification_record": "image_export_verification_components.json"
+    },
+    {
+      "name": "merge_1x1.png",
+      "width": 128,
+      "height": 128,
+      "subject": "One compact three-way merging pivot: three broad pale-jade scoop-like petals point inward and converge around a small recessed central antique bronze cup, enclosed in one unified rounded bronze body. Emphasize inward-gathering, nested geometry, visibly distinct from an outward three-lobed branching shape. Square 1:1 overall footprint. A physical assembled component, without any graphic arrows, cables or circuit lines.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready Chinese cultivation game inventory/circuit component sprite, a single isolated physical object on a genuinely transparent alpha background. Style: finely hand-painted ink outlines and restrained watercolor shading, matching aged celadon jade and matte old bronze Chinese equipment. Palette: low-saturation gray-green pale jade, warm gray antique bronze, very dark gray fine contours; softly lit from upper left. View: exact orthographic straight top-down plan view, no isometric perspective and no visible vertical side wall or raised pedestal. One complete compact assembled object, readable when reduced to game-icon scale; clean closed silhouette. The object should occupy about 88-92 percent of its intended rectangular footprint with a small clear transparent safety margin. Preserve its intended aspect ratio by drawing the actual object to that proportion. Materials are opaque with subtle jade grain and worn bronze; only the exterior is transparent. No background of any kind, no white fill, no paper card, no checkerboard baked into image, no cast shadow outside the object. Absolutely no text, Chinese characters, numbers, ticks, runes, arrows, UI, grid, wiring, electrical traces, connecting cables, health bar, frame around the canvas, magic glow, halo, sparkles, or extra unattached objects. Produce only one distinct object, not a sprite sheet and not a board.\nSubject and geometry: One compact three-way merging pivot: three broad pale-jade scoop-like petals point inward and converge around a small recessed central antique bronze cup, enclosed in one unified rounded bronze body. Emphasize inward-gathering, nested geometry, visibly distinct from an outward three-lobed branching shape. Square 1:1 overall footprint. A physical assembled component, without any graphic arrows, cables or circuit lines.\nOutput composition: 128 x 128 final game sprite, intended 128:128 rectangular aspect ratio. Generate the actual physical object in this aspect; do not stretch a square design.",
+      "status": "ready",
+      "source_generated_path": "E:\\tmp\\CodexData\\generated_images\\01a1ba79-d569-7cc3-9b48-2e8e042c4ff0\\exec-54ea6303-f40b-47e7-bb53-0d0def905946.png",
+      "project_raw_path": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\raw\\merge_1x1.png",
+      "selected_raw_path": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\raw\\merge_1x1.png",
+      "final_path": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\merge_1x1.png",
+      "final_sha256": "9d911ad29772905829937d31ef914c783d83ab45c68e5b3516acd6c08a6362d8",
+      "export": "Godot Image.resize Lanczos; aspect ratio preserved; no redraw/crop/alpha cleanup",
+      "verification_record": "image_export_verification_components.json"
+    },
+    {
+      "name": "rhythm_2x1.png",
+      "width": 256,
+      "height": 128,
+      "subject": "One complete horizontal rhythm regulator mechanism: a single elongated antique bronze escapement frame unites two shallow celadon jade regulator wheels and a short internal pendulum tongue with jade bob. The pendulum is physically inside the horizontal mechanism, not dangling far outside it. Entire one-piece object is twice as wide as tall, landscape 2:1. Fine restrained mechanical construction, readable at 256 by 128 pixels. No clock face, numerals, dial marks or tick marks.",
+      "prompt": "Use case: stylized-concept. Asset type: one production-ready Chinese cultivation game inventory/circuit component sprite, a single isolated physical object on a genuinely transparent alpha background. Style: finely hand-painted ink outlines and restrained watercolor shading, matching aged celadon jade and matte old bronze Chinese equipment. Palette: low-saturation gray-green pale jade, warm gray antique bronze, very dark gray fine contours; softly lit from upper left. View: exact orthographic straight top-down plan view, no isometric perspective and no visible vertical side wall or raised pedestal. One complete compact assembled object, readable when reduced to game-icon scale; clean closed silhouette. The object should occupy about 88-92 percent of its intended rectangular footprint with a small clear transparent safety margin. Preserve its intended aspect ratio by drawing the actual object to that proportion. Materials are opaque with subtle jade grain and worn bronze; only the exterior is transparent. No background of any kind, no white fill, no paper card, no checkerboard baked into image, no cast shadow outside the object. Absolutely no text, Chinese characters, numbers, ticks, runes, arrows, UI, grid, wiring, electrical traces, connecting cables, health bar, frame around the canvas, magic glow, halo, sparkles, or extra unattached objects. Produce only one distinct object, not a sprite sheet and not a board.\nSubject and geometry: One complete horizontal rhythm regulator mechanism: a single elongated antique bronze escapement frame unites two shallow celadon jade regulator wheels and a short internal pendulum tongue with jade bob. The pendulum is physically inside the horizontal mechanism, not dangling far outside it. Entire one-piece object is twice as wide as tall, landscape 2:1. Fine restrained mechanical construction, readable at 256 by 128 pixels. No clock face, numerals, dial marks or tick marks.\nOutput composition: 256 x 128 final game sprite, intended 256:128 rectangular aspect ratio. Generate the actual physical object in this aspect; do not stretch a square design.",
+      "status": "ready",
+      "source_generated_path": "E:\\tmp\\CodexData\\generated_images\\01a1ba79-d569-7cc3-9b48-2e8e042c4ff0\\exec-a4ea4064-f93d-4fca-a4e7-e29de7ee8bea.png",
+      "project_raw_path": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\raw\\rhythm_2x1.png",
+      "selected_raw_path": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\raw\\rhythm_2x1_v2.png",
+      "refinements": [
+        {
+          "generator": "built-in image_gen.imagegen",
+          "intent": "transparent open-hole color leakage correction",
+          "reference": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\raw\\rhythm_2x1.png",
+          "prompt": "Precise transparent-background correction of this one horizontal jade-and-bronze rhythm regulator. Preserve the entire complete top-down mechanical object, all existing bronze frame, two pale celadon jade wheels, internal pendulum, material colors, restrained hand-painted texture, and 2:1 landscape proportions. Change only unwanted background/color leakage: REMOVE ALL yellow, lime-green, neon-green and red speckles or underpaint visible in the open holes between the gear spokes, between wheels and frame, around the pendulum, and around the silhouette. Every open hole and all exterior background must be clean fully transparent alpha, not filled black, white, yellow, green or any color. Jade and bronze surfaces themselves remain solid and unaltered. Crisp clean alpha edges, no colored fringe, no glow, no halo, no new outlines, no cast shadow outside the object. One isolated intact game component, no text or UI. Maintain the same 2:1 canvas aspect.",
+          "source_generated_path": "E:\\tmp\\CodexData\\generated_images\\01a1ba79-d569-7cc3-9b48-2e8e042c4ff0\\exec-c29ca252-1112-4bf0-aeb9-9d2eb448e8da.png",
+          "project_raw_path": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\raw\\rhythm_2x1_v2.png"
+        }
+      ],
+      "final_path": "E:\\stacklands\\textures\\formations\\basic_4x4_20261108\\rhythm_2x1.png",
+      "final_sha256": "250cfee02bf9ab391f56e7aa2496d7a158b15a376380963bc320b18237f2093b",
+      "export": "Godot Image.resize Lanczos; aspect ratio preserved; no redraw/crop/alpha cleanup",
+      "verification_record": "image_export_verification_components.json"
+    }
+  ],
+  "status": "all_seven_components_ready",
+  "generation_count": 7,
+  "targeted_edit_count": 3,
+  "used_cli_fallback": false
+}

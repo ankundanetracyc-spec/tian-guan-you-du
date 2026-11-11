@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="BeastTemplate" load_steps=4 format=3]
+[gd_resource type="Resource" script_class="BeastTemplate" load_steps=5 format=3]
 
 [ext_resource type="Script" path="res://csharp/resources/BeastTemplate.cs" id="1"]
 [ext_resource type="Resource" path="res://resources/beast_talents/林地凶狼·群猎本能.tres" id="2"]
 [ext_resource type="Resource" path="res://resources/beast_decks/林地凶狼.tres" id="3"]
+[ext_resource type="Resource" path="res://resources/combat_boards/生灵/林地凶狼固定盘.tres" id="4"]
 
 [resource]
 script = ExtResource("1")
@@ -22,5 +23,6 @@ soul_mean = 7.75
 soul_max = 9.25
 racial_talent = ExtResource("2")
 deck = ExtResource("3")
+combat_board_layout = ExtResource("4")
 initial_hand_size = 5
 cards_per_turn = 3

@@ -5,10 +5,10 @@
 [resource]
 script = ExtResource("1")
 skill_name = "虚怀纳劲"
-icon_path = "res://textures/ui/combat/skill_icons/玄枢_云帔_v2.png"
-description = "应对：受到敌方攻击时获得A点护盾。A=round(4 + 体魄×0.20 + min(体魄×0.20,神魂×0.20))。"
+icon_path = "res://textures/ui/combat/board_skill_icons/xuhuai.png"
+description = "施展时，自身获得A点护盾。A=round(4+体魄×0.20+min(体魄×0.20,神魂×0.20))。"
 skill_type = 3
-slot_category = "response"
+slot_category = "active"
 source_gongfa_name = "太和感物养元宝册"
 energy_cost = 1
 mana_cost = 0
@@ -17,5 +17,8 @@ range_min = 0
 range_max = 0
 special_effects = Array[Dictionary]( [{"effect":"shield", "formula":"round(4 + physique*0.20 + min(physique*0.20,soul*0.20))"}] )
 tags = Array[String]( ["护盾"] )
-keywords = Array[String]( ["应对"] )
-counter_condition = "on_attacked"
+board_definition_version = 1
+board_size = Vector2i(2, 1)
+board_max_placements = 2
+board_rotation_allowed = true
+board_base_skill_path = "res://resources/activeskills/太和感物养元宝册/涵虚.tres"

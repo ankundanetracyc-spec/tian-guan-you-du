@@ -4,11 +4,15 @@ param(
     [switch]$CompatibilityOnly,
     [switch]$MovementOnly,
     [switch]$EventOnly,
-    [switch]$TerrainOnly
+    [switch]$TerrainOnly,
+    [switch]$PerformanceOnly,
+    [switch]$NpcAvatarOnly,
+    [ValidatePattern('^[a-z0-9_]*$')][string]$PerformanceLocation = ''
 )
 $ErrorActionPreference = 'Stop'
-$selectedGroups = @($CompatibilityOnly, $MovementOnly, $EventOnly, $TerrainOnly) | Where-Object { $_.IsPresent }
+$selectedGroups = @($CompatibilityOnly, $MovementOnly, $EventOnly, $TerrainOnly, $PerformanceOnly, $NpcAvatarOnly) | Where-Object { $_.IsPresent }
 if (@($selectedGroups).Count -gt 1) { throw 'Choose only one acceptance group per isolated process.' }
+if ($PerformanceLocation -and -not $PerformanceOnly) { throw 'PerformanceLocation requires PerformanceOnly.' }
 $projectPath = [System.IO.Path]::GetFullPath((Join-Path $PSScriptRoot '..\..'))
 $qaPath = Join-Path $projectPath 'output\bai_chuan_terrain_speed_20261105\qa'
 New-Item -ItemType Directory -Force -Path $qaPath | Out-Null
@@ -27,6 +31,9 @@ try {
     if ($MovementOnly) { $arguments += '--movement-only' }
     if ($EventOnly) { $arguments += '--event-only' }
     if ($TerrainOnly) { $arguments += '--terrain-only' }
+    if ($PerformanceOnly) { $arguments += '--performance-only' }
+    if ($NpcAvatarOnly) { $arguments += '--npc-avatar-only' }
+    if ($PerformanceLocation) { $arguments += ('--performance-location=' + $PerformanceLocation) }
     $process = Start-Process -FilePath $godotPath -ArgumentList $arguments -WorkingDirectory $projectPath -WindowStyle Hidden -RedirectStandardOutput $outPath -RedirectStandardError $errPath -PassThru
     Write-Output ("QA_PID=" + $process.Id)
     Write-Output ("QA_LOG=" + $logPath)

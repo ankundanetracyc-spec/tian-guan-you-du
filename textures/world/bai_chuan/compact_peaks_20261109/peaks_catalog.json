@@ -1,0 +1,191 @@
+{
+  "version": 1,
+  "mode": "built_in_imagegen",
+  "atlas": "res://textures/world/bai_chuan/compact_peaks_20261109/peaks_compact_native.png",
+  "atlas_size": [
+    1086,
+    1448
+  ],
+  "source_unchanged": true,
+  "mountain_sources": {
+    "compact": {
+      "path": "res://textures/world/bai_chuan/compact_peaks_20261109/peaks_compact_native.png",
+      "runtime_path": "res://textures/world/bai_chuan/compact_peaks_20261109/peaks_compact_native.res",
+      "size": [
+        1086,
+        1448
+      ],
+      "sha256": "a5659a4924bd2ad8c5ed90819fb0cb92d40bd5f93f6b22839e3fdf727dc59306"
+    }
+  },
+  "mountain_catalog": {
+    "compact_steep": {
+      "region": [
+        15,
+        53,
+        499,
+        461
+      ],
+      "native_size": [
+        499,
+        461
+      ],
+      "pivot": [
+        0.5,
+        0.9674620390455532
+      ],
+      "foot_px": [
+        264.5,
+        499
+      ],
+      "complete_opaque_pixels": 111540,
+      "region_edge_alpha_max": 1,
+      "bank": "compact",
+      "kind": "peak",
+      "height_range": [
+        160,
+        360
+      ]
+    },
+    "compact_crag": {
+      "region": [
+        558,
+        94,
+        507,
+        396
+      ],
+      "native_size": [
+        507,
+        396
+      ],
+      "pivot": [
+        0.5,
+        0.9621212121212122
+      ],
+      "foot_px": [
+        811.5,
+        475
+      ],
+      "complete_opaque_pixels": 97785,
+      "region_edge_alpha_max": 1,
+      "bank": "compact",
+      "kind": "peak",
+      "height_range": [
+        150,
+        330
+      ]
+    },
+    "compact_round": {
+      "region": [
+        4,
+        599,
+        527,
+        355
+      ],
+      "native_size": [
+        527,
+        355
+      ],
+      "pivot": [
+        0.5,
+        0.9605633802816902
+      ],
+      "foot_px": [
+        267.5,
+        940
+      ],
+      "complete_opaque_pixels": 102328,
+      "region_edge_alpha_max": 1,
+      "bank": "compact",
+      "kind": "peak",
+      "height_range": [
+        140,
+        290
+      ]
+    },
+    "compact_weathered": {
+      "region": [
+        541,
+        615,
+        543,
+        327
+      ],
+      "native_size": [
+        543,
+        327
+      ],
+      "pivot": [
+        0.5,
+        0.9541284403669725
+      ],
+      "foot_px": [
+        812.5,
+        927
+      ],
+      "complete_opaque_pixels": 88078,
+      "region_edge_alpha_max": 1,
+      "bank": "compact",
+      "kind": "peak",
+      "height_range": [
+        140,
+        260
+      ]
+    },
+    "compact_foothill": {
+      "region": [
+        5,
+        1095,
+        540,
+        253
+      ],
+      "native_size": [
+        540,
+        253
+      ],
+      "pivot": [
+        0.5,
+        0.9446640316205533
+      ],
+      "foot_px": [
+        275.0,
+        1334
+      ],
+      "complete_opaque_pixels": 70253,
+      "region_edge_alpha_max": 2,
+      "bank": "compact",
+      "kind": "foothill",
+      "height_range": [
+        90,
+        180
+      ]
+    },
+    "compact_lowhill": {
+      "region": [
+        543,
+        1134,
+        542,
+        185
+      ],
+      "native_size": [
+        542,
+        185
+      ],
+      "pivot": [
+        0.5,
+        0.9135135135135135
+      ],
+      "foot_px": [
+        814.0,
+        1303
+      ],
+      "complete_opaque_pixels": 42962,
+      "region_edge_alpha_max": 1,
+      "bank": "compact",
+      "kind": "foothill",
+      "height_range": [
+        70,
+        150
+      ]
+    }
+  }
+}

@@ -1,0 +1,205 @@
+{
+  "version": 1,
+  "mode": "built_in_imagegen",
+  "atlas": "res://textures/world/bai_chuan/forest_grounding_20261106/transitions_native.png",
+  "runtime_atlas": "res://textures/world/bai_chuan/forest_grounding_20261106/transitions_native.res",
+  "atlas_size": [
+    1536,
+    1024
+  ],
+  "source_sha256": "58038b3b47da121978f0c3fd31a7ababd95ad33d219a17aefdff1c8d1b7838e5",
+  "source_unchanged": true,
+  "assets": {
+    "forest_floor": {
+      "region": [
+        4,
+        213,
+        513,
+        228
+      ],
+      "native_size": [
+        513,
+        228
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "foot_px": [
+        260.5,
+        327.0
+      ],
+      "complete_opaque_pixels": 60835,
+      "region_edge_alpha_max": 4,
+      "role": "forest_floor",
+      "width_range": [
+        150,
+        300
+      ],
+      "opacity_range": [
+        0.25,
+        0.45
+      ]
+    },
+    "forest_edge": {
+      "region": [
+        515,
+        213,
+        505,
+        200
+      ],
+      "native_size": [
+        505,
+        200
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "foot_px": [
+        767.5,
+        313.0
+      ],
+      "complete_opaque_pixels": 37775,
+      "region_edge_alpha_max": 4,
+      "role": "forest_edge",
+      "width_range": [
+        150,
+        300
+      ],
+      "opacity_range": [
+        0.35,
+        0.6
+      ]
+    },
+    "root_shade": {
+      "region": [
+        1019,
+        276,
+        515,
+        135
+      ],
+      "native_size": [
+        515,
+        135
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "foot_px": [
+        1276.5,
+        343.5
+      ],
+      "complete_opaque_pixels": 25905,
+      "region_edge_alpha_max": 3,
+      "role": "root_shade",
+      "width_range": [
+        30,
+        50
+      ],
+      "opacity_range": [
+        0.22,
+        0.42
+      ],
+      "tint": [
+        0.64,
+        0.67,
+        0.5
+      ]
+    },
+    "mountain_scree": {
+      "region": [
+        5,
+        665,
+        508,
+        200
+      ],
+      "native_size": [
+        508,
+        200
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "foot_px": [
+        259.0,
+        765.0
+      ],
+      "complete_opaque_pixels": 38337,
+      "region_edge_alpha_max": 2,
+      "role": "mountain_scree",
+      "width_range": [
+        150,
+        300
+      ],
+      "opacity_range": [
+        0.45,
+        0.75
+      ]
+    },
+    "mountain_soil": {
+      "region": [
+        514,
+        659,
+        507,
+        215
+      ],
+      "native_size": [
+        507,
+        215
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "foot_px": [
+        767.5,
+        766.5
+      ],
+      "complete_opaque_pixels": 55383,
+      "region_edge_alpha_max": 3,
+      "role": "mountain_soil",
+      "width_range": [
+        150,
+        300
+      ],
+      "opacity_range": [
+        0.45,
+        0.75
+      ]
+    },
+    "mountain_meadow": {
+      "region": [
+        1017,
+        678,
+        518,
+        179
+      ],
+      "native_size": [
+        518,
+        179
+      ],
+      "pivot": [
+        0.5,
+        0.5
+      ],
+      "foot_px": [
+        1276.0,
+        767.5
+      ],
+      "complete_opaque_pixels": 41389,
+      "region_edge_alpha_max": 4,
+      "role": "mountain_meadow",
+      "width_range": [
+        150,
+        300
+      ],
+      "opacity_range": [
+        0.45,
+        0.75
+      ]
+    }
+  }
+}

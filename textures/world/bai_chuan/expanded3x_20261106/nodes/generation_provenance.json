@@ -1,0 +1,50 @@
+{
+  "source_mode": "built_in_image_gen",
+  "all_alpha_preserved_by_byte_identical_copy": true,
+  "originals_untouched": true,
+  "latest_boat_style_reference": "res://textures/world/bai_chuan/vehicles/yuxu_boat_layered_20261106/hull_back.png",
+  "atlases": [
+    {
+      "file": "atlas_01_major_sects.png",
+      "tool_source": "E:\\tmp\\CodexData\\generated_images\\01a1afe6-7834-7272-ab46-41200270770b\\exec-06cac6c5-d014-4092-9b9a-f65acb176fe9.png",
+      "prompt_file": "prompts.json",
+      "prompt_job_index": 0,
+      "repair_prompt_file": "prompt_01_layout_repair.txt"
+    },
+    {
+      "file": "atlas_02_mountain_sects.png",
+      "tool_source": "E:\\tmp\\CodexData\\generated_images\\01a1afe6-7834-7272-ab46-41200270770b\\exec-c7e70d04-cddc-4f98-9f40-4143aef8b0e1.png",
+      "prompt_file": "prompts_final.json",
+      "prompt_job_index": 1,
+      "repair_prompt_file": null
+    },
+    {
+      "file": "atlas_03_river_shadow_sects.png",
+      "tool_source": "E:\\tmp\\CodexData\\generated_images\\01a1afe6-7834-7272-ab46-41200270770b\\exec-a2673b5e-03fc-416e-8d7b-cb0dc1d89505.png",
+      "prompt_file": "prompts_final.json",
+      "prompt_job_index": 2,
+      "repair_prompt_file": null
+    },
+    {
+      "file": "atlas_04_landmarks_cities.png",
+      "tool_source": "E:\\tmp\\CodexData\\generated_images\\01a1afe6-7834-7272-ab46-41200270770b\\exec-d128a760-4199-41ea-9db0-c52a22a03b66.png",
+      "prompt_file": "prompts_final.json",
+      "prompt_job_index": 3,
+      "repair_prompt_file": null
+    },
+    {
+      "file": "atlas_05_fortress_towns.png",
+      "tool_source": "E:\\tmp\\CodexData\\generated_images\\01a1afe6-7834-7272-ab46-41200270770b\\exec-3521a98e-11d1-4c0a-a2b5-7520027b20cf.png",
+      "prompt_file": "prompts_final.json",
+      "prompt_job_index": 4,
+      "repair_prompt_file": null
+    },
+    {
+      "file": "atlas_06_market_village_dock.png",
+      "tool_source": "E:\\tmp\\CodexData\\generated_images\\01a1afe6-7834-7272-ab46-41200270770b\\exec-e084b82f-462b-4e69-92d9-cdbd2677c68b.png",
+      "prompt_file": "prompts_final.json",
+      "prompt_job_index": 5,
+      "repair_prompt_file": null
+    }
+  ]
+}

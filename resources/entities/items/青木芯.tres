@@ -12,6 +12,7 @@ item_category = "材料"
 item_subcategory = "灵植"
 tags = Array[String](["五行[木]", "质地[致密]", "功用[生]", "功用[通]", "相性[和]"])
 grade_value = 0
+storage_volume = 3
 can_stack = true
 max_stack = 999
 craft_data = ExtResource("2")

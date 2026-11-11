@@ -6,8 +6,8 @@
 script = ExtResource("1")
 non_response_skill = null
 skill_name = "架招"
-icon_path = "res://textures/ui/combat/skill_icons/凡俗_架招_v5.png"
-description = "应对：位于队首且遇到敌方物理攻击时立即触发，获得化解。化解层数 = 3 + floor(体魄/4) + floor(min(体魄*0.25,神魂*0.20))；每层抵消该次攻击1点物理伤害，攻击结算后消散。\n使用次数：不限。\n未触发应对时空放，不消耗体力、法力或使用次数，不产生效果。"
+icon_path = "res://textures/ui/combat/board_skill_icons/jiazhao.png"
+description = "应对敌方物理攻击时，获得A层化解。A=3+floor(体魄÷4)+floor(min(体魄×0.25,神魂×0.20))。"
 skill_type = 3
 energy_cost = 1
 preparation_frames = 0
@@ -22,3 +22,8 @@ special_effects = Array[Dictionary]([])
 status_effects = Array[Dictionary]([{"status_id":"化解","stacks":5}])
 stacks_formula = "3 + floor(physique/4) + floor(min(physique*0.25,soul*0.20))"
 counter_condition = "on_physical_attacked"
+board_definition_version = 1
+board_size = Vector2i(1, 1)
+board_max_placements = 3
+board_rotation_allowed = false
+board_base_skill_path = "res://resources/activeskills/架招.tres"

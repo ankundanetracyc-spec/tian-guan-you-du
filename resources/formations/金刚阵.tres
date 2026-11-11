@@ -13,10 +13,6 @@ max_durability = 5
 body_tag_requirements = ["五行[土]", "质地[致密]", "功用[固本]"]
 ink_tag_requirements = ["质地[液体]", "功用[通脉]"]
 
-# 阵眼 CPU — 需承载灵力
-eye_tag_requirements = ["功用[蕴灵]"]
-eye_bonus_tags = {}
-
 # 阵枢 功能芯片 — 防御类需护体
 pivot_tag_requirements = ["功用[护体]"]
 pivot_bonus_tags = {}
@@ -32,7 +28,4 @@ battle_physical_defense_bonus = 0.3
 # 倍率映射
 pivot_effect_mults = {
 	"玄武壳": 1.0
-}
-eye_range_mults = {
-	"空冥石": 1.0
 }

@@ -5,8 +5,8 @@
 [resource]
 script = ExtResource("1")
 skill_name = "尽锋"
-description = "以剑意催发剑锋，造成物理伤害；命中后消耗全部剑意，每层剑意提高本次伤害。"
-icon_path = "res://textures/ui/combat/skill_icons/剑修基础_尽锋_v1.png"
+description = "对一名随机敌人造成A点近身物理伤害；命中后消耗全部剑意，未命中保留。A=round(7+灵慧×0.30+术法造诣×0.35+剑道造诣×0.50+剑意层数×4)。\n化法追加：尽锋命中且触发流云剑势时，尽锋原本会消耗的剑意延至流云剑势追加攻击全部结算后再消耗；未命中仍保留剑意。"
+icon_path = "res://textures/ui/combat/board_skill_icons/jinfeng.png"
 skill_type = 0
 energy_cost = 2
 mana_cost = 1
@@ -16,7 +16,12 @@ range_max = 1
 attack_style = "melee"
 damage_type = "physical"
 tags = Array[String](["剑", "剑意"])
-damage_formula = "round(7 + intelligence*0.30 + magic_proficiency*0.35 + sword_proficiency*0.50 + sword_intent_stacks*2)"
+damage_formula = "round(7 + intelligence*0.30 + magic_proficiency*0.35 + sword_proficiency*0.50 + sword_intent_stacks*4)"
 special_effects = Array[Dictionary]([{"effect":"consume_sword_intent"}])
 
 gongfa_rewrite_effect_ids = Array[String](["shujuan_c4"])
+board_definition_version = 1
+board_size = Vector2i(3, 1)
+board_max_placements = 2
+board_rotation_allowed = true
+board_base_skill_path = "res://resources/activeskills/剑修基础/尽锋.tres"

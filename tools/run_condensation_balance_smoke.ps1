@@ -21,6 +21,7 @@ function Invoke-CondensationCheck([string]$Name, [string[]]$Arguments, [string]$
     $stderr = Join-Path $resultDirectory "$Name.stderr.log"
     $engineArguments = @('--path', ('"' + $repoRoot + '"'), '--rendering-method', 'gl_compatibility', '--scene', 'res://tools/CondensationBalanceSmoke.tscn') + $Arguments
     $run = Start-Process -FilePath $GodotPath -ArgumentList $engineArguments -WindowStyle Hidden -PassThru -RedirectStandardOutput $stdout -RedirectStandardError $stderr
+    $null = $run.Handle
     if (!$run.WaitForExit(60000)) { $run.Kill(); $run.WaitForExit(); throw "Condensation check timed out: $Name" }
     $runExit = $run.ExitCode
     $output = (Get-Content -LiteralPath $stdout -Raw -Encoding utf8) + (Get-Content -LiteralPath $stderr -Raw -Encoding utf8)

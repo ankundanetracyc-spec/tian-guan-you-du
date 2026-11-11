@@ -7,10 +7,10 @@ script = ExtResource("1")
 skill_name = "惊蛰"
 skill_type = 0
 slot_category = "active"
-icon_path = "res://textures/ui/combat/skill_icons/玄枢_惊蛰_v2.png"
+icon_path = "res://textures/ui/combat/board_skill_icons/jingzhe.png"
 source_gongfa_name = "玄枢含章经"
 tags = Array[String](["散血"])
-description = "对指定1名敌方造成 A 点物理伤害。A = round(8 + 灵慧×0.65 + 术法造诣×0.20)。本技能不经行动队列施展时，命中后打散目标1层气血。"
+description = "对一名随机敌人造成A点远程物理伤害；由周天额外施放并命中时，打散目标气血1层。A=round(8+灵慧×0.65+术法造诣×0.20)。"
 energy_cost = 0
 mana_cost = 1
 target_type = 2
@@ -21,3 +21,8 @@ damage_formula = "round(8 + 灵慧×0.65 + 术法造诣×0.20)"
 damage_type = "physical"
 attack_style = "ranged"
 special_effects = Array[Dictionary]([{"effect":"disperse_qi_blood", "count":1}])
+board_definition_version = 1
+board_size = Vector2i(3, 1)
+board_max_placements = 2
+board_rotation_allowed = true
+board_base_skill_path = "res://resources/activeskills/玄枢含章经/惊蛰.tres"

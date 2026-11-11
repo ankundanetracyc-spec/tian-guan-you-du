@@ -7,11 +7,16 @@ script = ExtResource("1")
 skill_name = "云帔"
 skill_type = 3
 slot_category = "active"
-icon_path = "res://textures/ui/combat/skill_icons/玄枢_云帔_v2.png"
+icon_path = "res://textures/ui/combat/board_skill_icons/yunpei.png"
 source_gongfa_name = "玄枢含章经"
 tags = Array[String](["护盾"])
-description = "自身获得 A 点护盾。A = round(6 + 灵慧×0.20 + 神魂×0.20 + 术法造诣×0.25)。"
+description = "自身获得A点护盾。A=round(6+灵慧×0.20+神魂×0.20+术法造诣×0.25)。"
 energy_cost = 0
 mana_cost = 1
 target_type = 0
 special_effects = Array[Dictionary]([{"effect":"shield", "formula":"base:6;intelligence:0.20;soul:0.20;magic_proficiency:0.25"}])
+board_definition_version = 1
+board_size = Vector2i(2, 1)
+board_max_placements = 3
+board_rotation_allowed = true
+board_base_skill_path = "res://resources/activeskills/玄枢含章经/云帔.tres"

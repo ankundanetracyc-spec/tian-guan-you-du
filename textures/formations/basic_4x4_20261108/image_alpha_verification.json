@@ -1,0 +1,66 @@
+{
+  "checks": [
+    {
+      "asset": "board_base.png",
+      "size": [
+        640,
+        640
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha_gt16_bbox": [
+        9,
+        10,
+        631,
+        630
+      ],
+      "sha256": "f0273a5ec6a53e66c47a8ea50976c5cb18f07342eef604c3d71e0ca3bcf31103",
+      "work_area_alpha": [
+        252,
+        254
+      ]
+    },
+    {
+      "asset": "eye_1x1.png",
+      "size": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha_gt16_bbox": [
+        8,
+        10,
+        118,
+        123
+      ],
+      "sha256": "9e8b70e88425f61619f2457594eb6b73d811a50312a79842b277f88cc1193eea"
+    },
+    {
+      "asset": "source_2x1.png",
+      "size": [
+        256,
+        128
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha_gt16_bbox": [
+        12,
+        5,
+        244,
+        122
+      ],
+      "sha256": "39a48c5641188ec0c2787950ce5264f8d48c9732868f0fa2e941719c3a15c71f"
+    }
+  ],
+  "result": "ALL_THREE_RGBA_AND_DIMENSIONS_PASS"
+}

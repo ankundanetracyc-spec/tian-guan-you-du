@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="BeastTemplate" load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/BeastTemplate.cs" id="1"]
+[ext_resource type="Resource" path="res://resources/beast_talents/灰背野猪·厚皮.tres" id="2"]
+[ext_resource type="Resource" path="res://resources/beast_decks/灰背野猪.tres" id="3"]
+[ext_resource type="Resource" path="res://resources/combat_boards/生灵/灰背野猪固定盘.tres" id="4"]
+
+[resource]
+script = ExtResource("1")
+species_id = "wild_boar"
+display_name = "灰背野猪"
+cultivation_realm = "通智"
+cultivation_stage = "初期"
+battle_portrait_path = "res://textures/bestiary/static/gray_back_boar.png"
+physique_min = 13.5
+physique_mean = 13.5
+physique_max = 13.5
+intelligence_min = 2.0
+intelligence_mean = 2.0
+intelligence_max = 2.0
+soul_min = 4.5
+soul_mean = 4.5
+soul_max = 4.5
+racial_talent = ExtResource("2")
+deck = ExtResource("3")
+combat_board_layout = ExtResource("4")
+initial_hand_size = 5
+cards_per_turn = 3

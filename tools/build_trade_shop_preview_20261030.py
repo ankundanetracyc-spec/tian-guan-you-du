@@ -5,7 +5,7 @@ import re,json,base64
 from fontTools import subset
 ROOT=Path(__file__).resolve().parents[1]
 DOC=ROOT/'docs/美术规范/交易与善功堂文字目录_20261030'
-pricing=json.loads((ROOT/'docs/plans/善功堂临时贡献价_20261030.json').read_text(encoding='utf-8'))
+pricing=json.loads((ROOT/'docs/plans/物品与装备/善功堂临时贡献价_20261030.json').read_text(encoding='utf-8'))
 rows=[]
 for path in sorted((ROOT/'resources/entities').rglob('*.tres')):
     text=path.read_text(encoding='utf-8-sig')

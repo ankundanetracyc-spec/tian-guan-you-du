@@ -6,9 +6,7 @@
 [ext_resource type="Script" uid="uid://bmbnhx3skcjiw" path="res://csharp/battle/CombatTrigger.cs" id="7_combo"]
 [ext_resource type="PackedScene" uid="uid://base5bcjm2wd4" path="res://tscn/panel/MainHUD.tscn" id="15_hud"]
 [ext_resource type="PackedScene" path="res://tscn/panel/StoragePanel.tscn" id="21_storage_panel"]
-[ext_resource type="PackedScene" path="res://tscn/panel/bamboo/EstateOverview.tscn" id="38_qingxi_location"]
 [ext_resource type="Script" uid="uid://klkvhlkiyuoo" path="res://csharp/MainScene.cs" id="35_n2d"]
-[ext_resource type="PackedScene" path="res://tscn/explore/DungeonExploreUI.tscn" id="45_back_hill_trial"]
 [ext_resource type="PackedScene" uid="uid://bhf4k8gslmr5p" path="res://tscn/panel/CultivationUI.tscn" id="46_cultivation"]
 [ext_resource type="PackedScene" path="res://tscn/panel/StoryDialoguePanel.tscn" id="47_story_dialogue"]
 [ext_resource type="PackedScene" path="res://tscn/panel/NpcInteractionPanel.tscn" id="48_npc_interactions"]
@@ -24,8 +22,6 @@ layer = 15
 
 [node name="SceneLayer" type="CanvasLayer" parent="."]
 layer = 10
-
-[node name="QingxiLocation" parent="SceneLayer" instance=ExtResource("38_qingxi_location")]
 
 [node name="YuxuXianzongOverview" parent="SceneLayer" instance=ExtResource("51_yuxu_overview")]
 visible = false
@@ -43,8 +39,6 @@ layer = 20
 layer = 30
 
 [node name="HumanInfoPanel" parent="CanvasLayer" unique_id=1249017416 instance=ExtResource("4_info")]
-
-[node name="BackHillTrial" parent="CanvasLayer" instance=ExtResource("45_back_hill_trial")]
 
 [node name="CultivationUI" parent="CanvasLayer" instance=ExtResource("46_cultivation")]
 
@@ -68,15 +62,3 @@ script = ExtResource("5_cam")
 [node name="CombatTrigger" type="Node2D" parent="." unique_id=1439654648]
 position = Vector2(-7, 0)
 script = ExtResource("7_combo")
-
-[node name="TestingOverlay" type="CanvasLayer" parent="."]
-layer = 100
-
-[node name="PrologueSkipButton" type="Button" parent="TestingOverlay"]
-visible = false
-offset_left = 320.0
-offset_top = 16.0
-offset_right = 416.0
-offset_bottom = 50.0
-mouse_filter = 0
-text = "跳过序章"

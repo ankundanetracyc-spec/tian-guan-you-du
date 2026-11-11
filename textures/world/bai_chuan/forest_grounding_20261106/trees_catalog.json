@@ -1,0 +1,176 @@
+{
+  "version": 1,
+  "mode": "built_in_imagegen",
+  "atlas": "res://textures/world/bai_chuan/forest_grounding_20261106/trees_natural_native.png",
+  "runtime_atlas": "res://textures/world/bai_chuan/forest_grounding_20261106/trees_natural_native.res",
+  "atlas_size": [
+    1086,
+    1448
+  ],
+  "source_sha256": "3cb4ec2e6db49c032f237d6058e925e7718564faa40425452a1fe0826aa17657",
+  "source_unchanged": true,
+  "assets": {
+    "natural_oak_mature": {
+      "region": [
+        3,
+        0,
+        602,
+        450
+      ],
+      "native_size": [
+        602,
+        450
+      ],
+      "pivot": [
+        0.42809154669619787,
+        0.9688888888888889
+      ],
+      "foot_px": [
+        260.7111111111111,
+        436
+      ],
+      "complete_opaque_pixels": 122434,
+      "region_edge_alpha_max": 2,
+      "height_range": [
+        115,
+        138
+      ],
+      "family": "broadleaf"
+    },
+    "natural_oak_young": {
+      "region": [
+        643,
+        32,
+        400,
+        418
+      ],
+      "native_size": [
+        400,
+        418
+      ],
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "foot_px": [
+        782.5232558139535,
+        436
+      ],
+      "complete_opaque_pixels": 57802,
+      "region_edge_alpha_max": 1,
+      "height_range": [
+        99,
+        124
+      ],
+      "family": "broadleaf"
+    },
+    "natural_pine_wide": {
+      "region": [
+        0,
+        496,
+        604,
+        403
+      ],
+      "native_size": [
+        604,
+        403
+      ],
+      "pivot": [
+        0.4857034186504385,
+        0.967741935483871
+      ],
+      "foot_px": [
+        293.36486486486484,
+        886
+      ],
+      "complete_opaque_pixels": 83650,
+      "region_edge_alpha_max": 6,
+      "height_range": [
+        110,
+        136
+      ],
+      "family": "pine"
+    },
+    "natural_pine_lean": {
+      "region": [
+        621,
+        511,
+        460,
+        382
+      ],
+      "native_size": [
+        460,
+        382
+      ],
+      "pivot": [
+        0.5606979405034325,
+        0.9659685863874345
+      ],
+      "foot_px": [
+        878.921052631579,
+        880
+      ],
+      "complete_opaque_pixels": 53074,
+      "region_edge_alpha_max": 1,
+      "height_range": [
+        105,
+        132
+      ],
+      "family": "pine"
+    },
+    "natural_elm_wide": {
+      "region": [
+        2,
+        945,
+        614,
+        456
+      ],
+      "native_size": [
+        614,
+        456
+      ],
+      "pivot": [
+        0.442043378088504,
+        0.9671052631578947
+      ],
+      "foot_px": [
+        273.4146341463415,
+        1386
+      ],
+      "complete_opaque_pixels": 117436,
+      "region_edge_alpha_max": 1,
+      "height_range": [
+        112,
+        136
+      ],
+      "family": "broadleaf"
+    },
+    "natural_sapling": {
+      "region": [
+        658,
+        1004,
+        354,
+        366
+      ],
+      "native_size": [
+        354,
+        366
+      ],
+      "pivot": [
+        0.38298565840938725,
+        0.9644808743169399
+      ],
+      "foot_px": [
+        793.5769230769231,
+        1357
+      ],
+      "complete_opaque_pixels": 29272,
+      "region_edge_alpha_max": 1,
+      "height_range": [
+        76,
+        98
+      ],
+      "family": "broadleaf"
+    }
+  }
+}

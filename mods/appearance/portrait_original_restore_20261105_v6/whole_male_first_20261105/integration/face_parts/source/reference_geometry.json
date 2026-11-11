@@ -1,0 +1,62 @@
+{
+  "eyebrows": {
+    "box": [
+      430,
+      328,
+      183,
+      27
+    ],
+    "factor": 4,
+    "reference_insert": {
+      "left": 146,
+      "top": 458,
+      "width": 732,
+      "height": 108
+    }
+  },
+  "eyes": {
+    "box": [
+      434,
+      350,
+      173,
+      38
+    ],
+    "factor": 4,
+    "reference_insert": {
+      "left": 166,
+      "top": 436,
+      "width": 692,
+      "height": 152
+    }
+  },
+  "nose": {
+    "box": [
+      487,
+      348,
+      65,
+      104
+    ],
+    "factor": 6,
+    "reference_insert": {
+      "left": 317,
+      "top": 200,
+      "width": 390,
+      "height": 624
+    }
+  },
+  "mouth": {
+    "box": [
+      477,
+      459,
+      84,
+      34
+    ],
+    "factor": 6,
+    "reference_insert": {
+      "left": 260,
+      "top": 410,
+      "width": 504,
+      "height": 204
+    }
+  }
+}

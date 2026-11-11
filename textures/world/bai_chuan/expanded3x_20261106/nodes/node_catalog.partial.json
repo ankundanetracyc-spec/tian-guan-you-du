@@ -1,0 +1,367 @@
+{
+  "version": 1,
+  "status": "partial_12_of_24",
+  "source_mode": "built_in_imagegen_native_alpha_preserved",
+  "coordinate_rule": "Each asset region is atlas x,y,width,height. foot_px is native atlas coordinates. pivot is within region normalized. Draw at XY foot, Z by foot Y, no source resampling.",
+  "assets": {
+    "yuxu": {
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_01_major_sects.png",
+      "region": [
+        90,
+        129,
+        448,
+        351
+      ],
+      "native_size": [
+        448,
+        351
+      ],
+      "foot_px": [
+        314.0,
+        472
+      ],
+      "pivot": [
+        0.5,
+        0.9772079772079773
+      ],
+      "full_cell": [
+        0,
+        0,
+        627,
+        627
+      ],
+      "native_alpha_unchanged": true
+    },
+    "xuandu": {
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_01_major_sects.png",
+      "region": [
+        705,
+        176,
+        443,
+        305
+      ],
+      "native_size": [
+        443,
+        305
+      ],
+      "foot_px": [
+        927.5,
+        473
+      ],
+      "pivot": [
+        0.5022573363431151,
+        0.9737704918032787
+      ],
+      "full_cell": [
+        627,
+        0,
+        627,
+        627
+      ],
+      "native_alpha_unchanged": true
+    },
+    "wuxiang": {
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_01_major_sects.png",
+      "region": [
+        142,
+        795,
+        344,
+        339
+      ],
+      "native_size": [
+        344,
+        339
+      ],
+      "foot_px": [
+        314.0,
+        1126
+      ],
+      "pivot": [
+        0.5,
+        0.976401179941003
+      ],
+      "full_cell": [
+        0,
+        627,
+        627,
+        627
+      ],
+      "native_alpha_unchanged": true
+    },
+    "taiwei": {
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_01_major_sects.png",
+      "region": [
+        717,
+        767,
+        423,
+        366
+      ],
+      "native_size": [
+        423,
+        366
+      ],
+      "foot_px": [
+        928.0,
+        1125
+      ],
+      "pivot": [
+        0.4988179669030733,
+        0.9781420765027322
+      ],
+      "full_cell": [
+        627,
+        627,
+        627,
+        627
+      ],
+      "native_alpha_unchanged": true
+    },
+    "zhenyue": {
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_02_mountain_sects.png",
+      "region": [
+        40,
+        222,
+        552,
+        335
+      ],
+      "native_size": [
+        552,
+        335
+      ],
+      "foot_px": [
+        316.0,
+        549
+      ],
+      "pivot": [
+        0.5,
+        0.9761194029850746
+      ],
+      "full_cell": [
+        0,
+        0,
+        627,
+        627
+      ],
+      "native_alpha_unchanged": true
+    },
+    "baopu": {
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_02_mountain_sects.png",
+      "region": [
+        662,
+        248,
+        557,
+        315
+      ],
+      "native_size": [
+        557,
+        315
+      ],
+      "foot_px": [
+        941.0,
+        553
+      ],
+      "pivot": [
+        0.5008976660682226,
+        0.9682539682539683
+      ],
+      "full_cell": [
+        627,
+        0,
+        627,
+        627
+      ],
+      "native_alpha_unchanged": true
+    },
+    "baiyao": {
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_02_mountain_sects.png",
+      "region": [
+        36,
+        845,
+        556,
+        313
+      ],
+      "native_size": [
+        556,
+        313
+      ],
+      "foot_px": [
+        314.0,
+        1150
+      ],
+      "pivot": [
+        0.5,
+        0.9744408945686901
+      ],
+      "full_cell": [
+        0,
+        627,
+        627,
+        627
+      ],
+      "native_alpha_unchanged": true
+    },
+    "danding": {
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_02_mountain_sects.png",
+      "region": [
+        663,
+        798,
+        555,
+        363
+      ],
+      "native_size": [
+        555,
+        363
+      ],
+      "foot_px": [
+        940.5,
+        1152
+      ],
+      "pivot": [
+        0.5,
+        0.9752066115702479
+      ],
+      "full_cell": [
+        627,
+        627,
+        627,
+        627
+      ],
+      "native_alpha_unchanged": true
+    },
+    "guizang": {
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_03_river_shadow_sects.png",
+      "region": [
+        43,
+        225,
+        542,
+        275
+      ],
+      "native_size": [
+        542,
+        275
+      ],
+      "foot_px": [
+        314.0,
+        492
+      ],
+      "pivot": [
+        0.5,
+        0.9709090909090909
+      ],
+      "full_cell": [
+        0,
+        0,
+        627,
+        627
+      ],
+      "native_alpha_unchanged": true
+    },
+    "cangming": {
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_03_river_shadow_sects.png",
+      "region": [
+        672,
+        206,
+        545,
+        298
+      ],
+      "native_size": [
+        545,
+        298
+      ],
+      "foot_px": [
+        944.5,
+        496
+      ],
+      "pivot": [
+        0.5,
+        0.9731543624161074
+      ],
+      "full_cell": [
+        627,
+        0,
+        627,
+        627
+      ],
+      "native_alpha_unchanged": true
+    },
+    "xuehe": {
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_03_river_shadow_sects.png",
+      "region": [
+        44,
+        823,
+        538,
+        336
+      ],
+      "native_size": [
+        538,
+        336
+      ],
+      "foot_px": [
+        314.0,
+        1151
+      ],
+      "pivot": [
+        0.5018587360594795,
+        0.9761904761904762
+      ],
+      "full_cell": [
+        0,
+        627,
+        627,
+        627
+      ],
+      "native_alpha_unchanged": true
+    },
+    "shiri": {
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_03_river_shadow_sects.png",
+      "region": [
+        694,
+        732,
+        494,
+        427
+      ],
+      "native_size": [
+        494,
+        427
+      ],
+      "foot_px": [
+        940.5,
+        1150
+      ],
+      "pivot": [
+        0.49898785425101216,
+        0.9789227166276346
+      ],
+      "full_cell": [
+        627,
+        627,
+        627,
+        627
+      ],
+      "native_alpha_unchanged": true
+    }
+  },
+  "atlases": {
+    "atlas_01_major_sects.png": {
+      "path": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_01_major_sects.png",
+      "native_size": [
+        1254,
+        1254
+      ]
+    },
+    "atlas_02_mountain_sects.png": {
+      "path": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_02_mountain_sects.png",
+      "native_size": [
+        1254,
+        1254
+      ]
+    },
+    "atlas_03_river_shadow_sects.png": {
+      "path": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_03_river_shadow_sects.png",
+      "native_size": [
+        1254,
+        1254
+      ]
+    }
+  }
+}

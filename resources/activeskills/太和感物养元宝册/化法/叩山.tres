@@ -5,11 +5,11 @@
 [resource]
 script = ExtResource("1")
 skill_name = "乘势再攻"
-icon_path = "res://textures/ui/combat/skill_icons/太和_乘势再攻_v1.png"
-description = "每段由《乘势再攻》追加的攻击命中后，独立判定B；判定通过时使目标获得C层僵直。A=round(8 + 体魄×0.65 + 体道造诣×0.2)；B=clamp(15% + 施加者体魄×1% − 目标体魄×0.75% + 卡牌境界修正 + 高境界修正, 0%, 99%)×跨境界削减倍率；C=floor(clamp(60 + (施加者体魄−目标体魄)×3, 0, 120)×跨境界削减倍率)。"
+icon_path = "res://textures/ui/combat/board_skill_icons/chengshi.png"
+description = "对一名随机敌人造成A点近身物理伤害。目标应对此次攻击、首段未造成生命伤害，两项条件各追加一段同等伤害并触发一次自身应对；可触发太和心法。A=round(8+体魄×0.65+体道造诣×0.20)。\n化法追加：目标应对此次攻击且首段未造成生命伤害时，两项条件仍各追加一段；两段连续结算，共用一次闪避判定，各自按原伤害公式结算。若仅一项条件成立，该段仍单独判定闪避。"
 skill_type = 0
 source_gongfa_name = "太和感物养元宝册"
-energy_cost = 1
+energy_cost = 2
 mana_cost = 0
 target_type = 2
 range_min = 1
@@ -17,5 +17,10 @@ range_max = 1
 attack_style = "melee"
 damage_formula = "round(8 + physique*0.65 + body_proficiency*0.2)"
 damage_type = "physical"
-tags = Array[String]( ["应对", "僵直"] )
+tags = Array[String]( ["应对"] )
 gongfa_rewrite_effect_ids = Array[String]( ["taihe_c4_koushan"] )
+board_definition_version = 1
+board_size = Vector2i(2, 2)
+board_max_placements = 2
+board_rotation_allowed = false
+board_base_skill_path = "res://resources/activeskills/太和感物养元宝册/叩山.tres"

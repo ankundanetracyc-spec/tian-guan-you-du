@@ -61,7 +61,7 @@ for n in d['nodes']:
 p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 subprocess.run([sys.executable,str(ROOT/'tools/world_map/plan_bai_chuan_routes_20261027.py'),'--graph-only'],check=True)
 d=json.loads(p.read_text(encoding='utf-8'));T=d['count']['transit'];R=d['count']['routes'];G=d['count']['graphTotal']
-current=ROOT/'docs/plans/百川节点分层与过渡路线规划_20261027.md'
+current=ROOT/'docs/plans/世界与探索/百川节点分层与过渡路线规划_20261027.md'
 s=current.read_text(encoding='utf-8')
 s=s.replace('287',str(T)).replace('169',str(R)).replace('410',str(G))
 s=s.replace('例如太微倾向玉虚，不直接跨图连线至玉虚。','太微已移入玉虚北侧联系带，通过沿途城市往来，不另建无视地理的直达线。')

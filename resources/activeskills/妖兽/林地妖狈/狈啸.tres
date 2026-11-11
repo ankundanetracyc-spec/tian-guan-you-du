@@ -12,3 +12,7 @@ attack_style = "ranged"
 damage_type = "soul"
 damage_formula = "round(4 + intelligence*0.6 + soul*0.8)"
 slot_category = "active"
+board_definition_version = 1
+board_size = Vector2i(2, 1)
+board_max_placements = 2
+board_rotation_allowed = false

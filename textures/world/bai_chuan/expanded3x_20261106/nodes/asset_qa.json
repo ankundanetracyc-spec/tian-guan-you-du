@@ -1,0 +1,282 @@
+{
+  "source_byte_identity": [
+    "atlas_01_major_sects.png",
+    "atlas_02_mountain_sects.png",
+    "atlas_03_river_shadow_sects.png",
+    "atlas_04_landmarks_cities.png",
+    "atlas_05_fortress_towns.png",
+    "atlas_06_market_village_dock.png"
+  ],
+  "regions_in_bounds": [
+    "yuxu",
+    "xuandu",
+    "wuxiang",
+    "taiwei",
+    "zhenyue",
+    "baopu",
+    "baiyao",
+    "danding",
+    "guizang",
+    "cangming",
+    "xuehe",
+    "shiri",
+    "kugu",
+    "baishi",
+    "city",
+    "city_water",
+    "city_fortress",
+    "town",
+    "town_river",
+    "town_mountain",
+    "market",
+    "market_river",
+    "village",
+    "dock"
+  ],
+  "native_display_sampling": [
+    {
+      "asset": "yuxu",
+      "native_region_width": 448,
+      "nominal_world_width": 400,
+      "screen_width_at_0_8": 320.0,
+      "source_pixels_per_screen_pixel": 1.4
+    },
+    {
+      "asset": "xuandu",
+      "native_region_width": 443,
+      "nominal_world_width": 400,
+      "screen_width_at_0_8": 320.0,
+      "source_pixels_per_screen_pixel": 1.384
+    },
+    {
+      "asset": "wuxiang",
+      "native_region_width": 344,
+      "nominal_world_width": 400,
+      "screen_width_at_0_8": 320.0,
+      "source_pixels_per_screen_pixel": 1.075
+    },
+    {
+      "asset": "taiwei",
+      "native_region_width": 423,
+      "nominal_world_width": 320,
+      "screen_width_at_0_8": 256.0,
+      "source_pixels_per_screen_pixel": 1.652
+    },
+    {
+      "asset": "zhenyue",
+      "native_region_width": 552,
+      "nominal_world_width": 280,
+      "screen_width_at_0_8": 224.0,
+      "source_pixels_per_screen_pixel": 2.464
+    },
+    {
+      "asset": "baopu",
+      "native_region_width": 557,
+      "nominal_world_width": 260,
+      "screen_width_at_0_8": 208.0,
+      "source_pixels_per_screen_pixel": 2.678
+    },
+    {
+      "asset": "baiyao",
+      "native_region_width": 556,
+      "nominal_world_width": 280,
+      "screen_width_at_0_8": 224.0,
+      "source_pixels_per_screen_pixel": 2.482
+    },
+    {
+      "asset": "danding",
+      "native_region_width": 555,
+      "nominal_world_width": 280,
+      "screen_width_at_0_8": 224.0,
+      "source_pixels_per_screen_pixel": 2.478
+    },
+    {
+      "asset": "guizang",
+      "native_region_width": 542,
+      "nominal_world_width": 280,
+      "screen_width_at_0_8": 224.0,
+      "source_pixels_per_screen_pixel": 2.42
+    },
+    {
+      "asset": "cangming",
+      "native_region_width": 545,
+      "nominal_world_width": 300,
+      "screen_width_at_0_8": 240.0,
+      "source_pixels_per_screen_pixel": 2.271
+    },
+    {
+      "asset": "xuehe",
+      "native_region_width": 538,
+      "nominal_world_width": 280,
+      "screen_width_at_0_8": 224.0,
+      "source_pixels_per_screen_pixel": 2.402
+    },
+    {
+      "asset": "shiri",
+      "native_region_width": 494,
+      "nominal_world_width": 280,
+      "screen_width_at_0_8": 224.0,
+      "source_pixels_per_screen_pixel": 2.205
+    },
+    {
+      "asset": "kugu",
+      "native_region_width": 447,
+      "nominal_world_width": 260,
+      "screen_width_at_0_8": 208.0,
+      "source_pixels_per_screen_pixel": 2.149
+    },
+    {
+      "asset": "baishi",
+      "native_region_width": 528,
+      "nominal_world_width": 300,
+      "screen_width_at_0_8": 240.0,
+      "source_pixels_per_screen_pixel": 2.2
+    },
+    {
+      "asset": "city",
+      "native_region_width": 561,
+      "nominal_world_width": 280,
+      "screen_width_at_0_8": 224.0,
+      "source_pixels_per_screen_pixel": 2.504
+    },
+    {
+      "asset": "city_water",
+      "native_region_width": 562,
+      "nominal_world_width": 280,
+      "screen_width_at_0_8": 224.0,
+      "source_pixels_per_screen_pixel": 2.509
+    },
+    {
+      "asset": "city_fortress",
+      "native_region_width": 520,
+      "nominal_world_width": 280,
+      "screen_width_at_0_8": 224.0,
+      "source_pixels_per_screen_pixel": 2.321
+    },
+    {
+      "asset": "town",
+      "native_region_width": 544,
+      "nominal_world_width": 220,
+      "screen_width_at_0_8": 176.0,
+      "source_pixels_per_screen_pixel": 3.091
+    },
+    {
+      "asset": "town_river",
+      "native_region_width": 513,
+      "nominal_world_width": 220,
+      "screen_width_at_0_8": 176.0,
+      "source_pixels_per_screen_pixel": 2.915
+    },
+    {
+      "asset": "town_mountain",
+      "native_region_width": 536,
+      "nominal_world_width": 220,
+      "screen_width_at_0_8": 176.0,
+      "source_pixels_per_screen_pixel": 3.045
+    },
+    {
+      "asset": "market",
+      "native_region_width": 529,
+      "nominal_world_width": 180,
+      "screen_width_at_0_8": 144.0,
+      "source_pixels_per_screen_pixel": 3.674
+    },
+    {
+      "asset": "market_river",
+      "native_region_width": 522,
+      "nominal_world_width": 180,
+      "screen_width_at_0_8": 144.0,
+      "source_pixels_per_screen_pixel": 3.625
+    },
+    {
+      "asset": "village",
+      "native_region_width": 514,
+      "nominal_world_width": 150,
+      "screen_width_at_0_8": 120.0,
+      "source_pixels_per_screen_pixel": 4.283
+    },
+    {
+      "asset": "dock",
+      "native_region_width": 484,
+      "nominal_world_width": 160,
+      "screen_width_at_0_8": 128.0,
+      "source_pixels_per_screen_pixel": 3.781
+    }
+  ],
+  "atlas_summaries": [
+    {
+      "file": "atlas_01_major_sects.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "fully_transparent_pixels": 1252867,
+      "fully_opaque_pixels": 605,
+      "partial_alpha_pixels": 319044
+    },
+    {
+      "file": "atlas_02_mountain_sects.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "fully_transparent_pixels": 913922,
+      "fully_opaque_pixels": 837,
+      "partial_alpha_pixels": 657757
+    },
+    {
+      "file": "atlas_03_river_shadow_sects.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "fully_transparent_pixels": 1099538,
+      "fully_opaque_pixels": 916,
+      "partial_alpha_pixels": 472062
+    },
+    {
+      "file": "atlas_04_landmarks_cities.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "fully_transparent_pixels": 1033457,
+      "fully_opaque_pixels": 745,
+      "partial_alpha_pixels": 538314
+    },
+    {
+      "file": "atlas_05_fortress_towns.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "fully_transparent_pixels": 1074701,
+      "fully_opaque_pixels": 1210,
+      "partial_alpha_pixels": 496605
+    },
+    {
+      "file": "atlas_06_market_village_dock.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "fully_transparent_pixels": 1209602,
+      "fully_opaque_pixels": 955,
+      "partial_alpha_pixels": 361959
+    }
+  ],
+  "coverage": {
+    "built_locations": 53,
+    "wild_locations": 70,
+    "unique_sect_assets": 13,
+    "types": {
+      "sect": 13,
+      "city": 16,
+      "town": 14,
+      "market": 5,
+      "village": 3,
+      "dock": 2
+    },
+    "all_assets_used": true
+  }
+}

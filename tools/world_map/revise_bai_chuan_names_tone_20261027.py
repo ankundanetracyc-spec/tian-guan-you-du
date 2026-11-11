@@ -18,7 +18,7 @@ d=json.loads(replace(p.read_text(encoding='utf-8')))
 for n in d['nodes']:
  if n['name']=='万毒谷':n['terrain']='药谷，含有毒生境与可开放采集区域；名称不新增毒性材料或效果'
 p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-p=ROOT/'docs/plans/百川命名与资源归属修订_20261027.md'
+p=ROOT/'docs/plans/世界与探索/百川命名与资源归属修订_20261027.md'
 s=p.read_text(encoding='utf-8')
 s=s.replace('地方宗门不齐字、不齐尾','地方宗门保留不同道统气质')
 s=s.replace('以山称宗的独立传承，药圃、泉源与养生修持','以山称宗的独立传承，药圃、泉源与内炼修持')

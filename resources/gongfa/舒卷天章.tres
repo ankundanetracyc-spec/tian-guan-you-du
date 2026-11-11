@@ -5,31 +5,8 @@
 [ext_resource type="Script" path="res://csharp/gongfa/GongfaDeckRewriteConfig.cs" id="3"]
 [ext_resource type="Resource" path="res://resources/activeskills/舒卷天章/心法.tres" id="heart"]
 [ext_resource type="Resource" path="res://resources/activeskills/舒卷天章/云岚三叠.tres" id="skill0"]
-[ext_resource type="Resource" path="res://resources/activeskills/剑修基础/养锋.tres" id="original1"]
-[ext_resource type="Resource" path="res://resources/activeskills/舒卷天章/化法/养锋第1卷.tres" id="chem1"]
-[ext_resource type="Resource" path="res://resources/activeskills/剑修基础/格剑.tres" id="original2"]
-[ext_resource type="Resource" path="res://resources/activeskills/舒卷天章/化法/格剑第2卷.tres" id="chem2"]
 [ext_resource type="Resource" path="res://resources/activeskills/舒卷天章/云岚三叠.tres" id="original3"]
 [ext_resource type="Resource" path="res://resources/activeskills/舒卷天章/化法/云岚三叠第3卷.tres" id="chem3"]
-[ext_resource type="Resource" path="res://resources/activeskills/剑修基础/尽锋.tres" id="original4"]
-[ext_resource type="Resource" path="res://resources/activeskills/舒卷天章/化法/尽锋第4卷.tres" id="chem4"]
-
-[sub_resource type="Resource" id="Rewrite1"]
-script = ExtResource("3")
-mode = 1
-target_scope = 0
-source_skill = ExtResource("original1")
-source_skill_name = "养锋"
-result_skill = ExtResource("chem1")
-
-[sub_resource type="Resource" id="Rewrite2"]
-script = ExtResource("3")
-mode = 1
-target_scope = 0
-source_skill = ExtResource("original2")
-source_skill_name = "格剑"
-result_skill = ExtResource("chem2")
-
 [sub_resource type="Resource" id="Rewrite3"]
 script = ExtResource("3")
 mode = 1
@@ -37,14 +14,11 @@ target_scope = 1
 source_skill = ExtResource("original3")
 source_skill_name = "云岚三叠"
 result_skill = ExtResource("chem3")
+board_definition_version = 1
+board_size = Vector2i(1, 1)
+board_max_placements = 1
+board_icon_path = "res://textures/ui/combat/board_skill_icons/huafa_shujuan_3.png"
 
-[sub_resource type="Resource" id="Rewrite4"]
-script = ExtResource("3")
-mode = 1
-target_scope = 0
-source_skill = ExtResource("original4")
-source_skill_name = "尽锋"
-result_skill = ExtResource("chem4")
 
 [sub_resource type="Resource" id="Chapter1"]
 script = ExtResource("2")
@@ -58,9 +32,9 @@ required_chapter_ids = Array[String]([])
 learn_permanent_bonuses = {"physique": 0.5, "sword_proficiency": 0.5}
 combat_tempering_bonuses = {"max_health_percent": 10.0}
 heart_method_upgrade_id = "shujuan_c1"
-heart_method_upgrade_description = "心法被动：流云剑势\n类型：心法\n关键词：剑、剑意\n效果：剑意达到6层时，流云剑势生效。带剑关键词的攻伐技能首段命中后，在原技能攻击段结算完毕时追加1段攻击，沿用原目标，造成A点物理伤害；剑意层数超过6时，每多1层使追加攻击伤害提高1点。\n主修额外效果：触发所需剑意层数减少1层。\n计算公式：A=round(2 + 体魄×0.20 + 剑道造诣×0.30 + max(本次行动开始时剑意层数−6,0))"
-heart_method_description = "心法被动：流云剑势\n类型：心法\n关键词：剑、剑意\n效果：剑意达到6层时，流云剑势生效。带剑关键词的攻伐技能首段命中后，在原技能攻击段结算完毕时追加1段攻击，沿用原目标，造成A点物理伤害；剑意层数超过6时，每多1层使追加攻击伤害提高1点。\n主修额外效果：触发所需剑意层数减少1层。\n计算公式：A=round(2 + 体魄×0.20 + 剑道造诣×0.30 + max(本次行动开始时剑意层数−6,0))"
-sub_deck_rewrites = Array[ExtResource("3")]([SubResource("Rewrite1")])
+heart_method_upgrade_description = "心法被动：流云剑势\n关键词：剑、剑意\n效果：本次行动开始时剑意达到6层，带剑关键词的攻击招式首段命中后，在原招式攻击段结算完毕时追加1段攻击；每段对原目标造成A点（A=round(2 + 体魄×0.20 + 剑道造诣×0.30)）物理伤害。云岚三叠按自身追加段数结算，不另加心法攻击段。\n主修额外效果：触发所需剑意层数减少1层。"
+heart_method_description = "心法被动：流云剑势\n关键词：剑、剑意\n效果：本次行动开始时剑意达到6层，带剑关键词的攻击招式首段命中后，在原招式攻击段结算完毕时追加1段攻击；每段对原目标造成A点（A=round(2 + 体魄×0.20 + 剑道造诣×0.30)）物理伤害。云岚三叠按自身追加段数结算，不另加心法攻击段。\n主修额外效果：触发所需剑意层数减少1层。"
+right_branch_name = "无化法"
 
 [sub_resource type="Resource" id="Chapter2"]
 script = ExtResource("2")
@@ -74,9 +48,9 @@ required_chapter_ids = Array[String](["yun_shu"])
 learn_permanent_bonuses = {"sword_proficiency": 0.5}
 combat_tempering_bonuses = {"precision_percent": 8.0}
 heart_method_upgrade_id = "shujuan_c2"
-heart_method_upgrade_description = "心法被动：流云剑势\n类型：心法\n关键词：剑、剑意\n效果：剑意达到6层时，流云剑势生效。带剑关键词的攻伐技能首段命中后，在原技能攻击段结算完毕时追加1段攻击，沿用原目标，造成A点物理伤害；剑意层数超过6时，每多1层使追加攻击伤害提高1点。\n主修额外效果：触发所需剑意层数减少1层。\n计算公式：A=round(2 + 体魄×0.20 + 剑道造诣×0.30 + max(本次行动开始时剑意层数−6,0))"
-heart_method_description = "心法被动：流云剑势\n类型：心法\n关键词：剑、剑意\n效果：剑意达到6层时，流云剑势生效。带剑关键词的攻伐技能首段命中后，在原技能攻击段结算完毕时追加1段攻击，沿用原目标，造成A点物理伤害；剑意层数超过6时，每多1层使追加攻击伤害提高1点。\n主修额外效果：触发所需剑意层数减少1层。\n计算公式：A=round(2 + 体魄×0.20 + 剑道造诣×0.30 + max(本次行动开始时剑意层数−6,0))"
-sub_deck_rewrites = Array[ExtResource("3")]([SubResource("Rewrite2")])
+heart_method_upgrade_description = "心法被动：流云剑势\n关键词：剑、剑意\n效果：本次行动开始时剑意达到6层，带剑关键词的攻击招式首段命中后，在原招式攻击段结算完毕时追加1段攻击；每段对原目标造成A点（A=round(2 + 体魄×0.20 + 剑道造诣×0.30 + max(本次行动开始时剑意层数−6,0))）物理伤害。云岚三叠按自身追加段数结算，不另加心法攻击段。\n主修额外效果：触发所需剑意层数减少1层。"
+heart_method_description = "心法被动：流云剑势\n关键词：剑、剑意\n效果：本次行动开始时剑意达到6层，带剑关键词的攻击招式首段命中后，在原招式攻击段结算完毕时追加1段攻击；每段对原目标造成A点（A=round(2 + 体魄×0.20 + 剑道造诣×0.30 + max(本次行动开始时剑意层数−6,0))）物理伤害。云岚三叠按自身追加段数结算，不另加心法攻击段。\n主修额外效果：触发所需剑意层数减少1层。"
+right_branch_name = "无化法"
 
 [sub_resource type="Resource" id="Chapter3"]
 script = ExtResource("2")
@@ -90,8 +64,8 @@ required_chapter_ids = Array[String](["hui_lan"])
 learn_permanent_bonuses = {"sword_proficiency": 1.0}
 combat_tempering_bonuses = {"physical_damage_percent": 5.0}
 heart_method_upgrade_id = "shujuan_c3"
-heart_method_upgrade_description = "心法被动：流云剑势\n类型：心法\n关键词：剑、剑意\n效果：剑意达到6层时，流云剑势生效。带剑关键词的攻伐技能首段命中后，在原技能攻击段结算完毕时追加1段攻击，沿用原目标，造成A点物理伤害；剑意层数超过6时，每多1层使追加攻击伤害提高1点。\n主修额外效果：触发所需剑意层数减少1层。\n计算公式：A=round(2 + 体魄×0.20 + 剑道造诣×0.30 + max(本次行动开始时剑意层数−6,0))"
-heart_method_description = "心法被动：流云剑势\n类型：心法\n关键词：剑、剑意\n效果：剑意达到6层时，流云剑势生效。带剑关键词的攻伐技能首段命中后，在原技能攻击段结算完毕时追加1段攻击，沿用原目标，造成A点物理伤害；剑意层数超过6时，每多1层使追加攻击伤害提高1点。\n主修额外效果：触发所需剑意层数减少1层。\n计算公式：A=round(2 + 体魄×0.20 + 剑道造诣×0.30 + max(本次行动开始时剑意层数−6,0))"
+heart_method_upgrade_description = "心法被动：流云剑势\n关键词：剑、剑意\n效果：本次行动开始时剑意达到6层，带剑关键词的攻击招式首段命中后，在原招式攻击段结算完毕时追加1段攻击；每段对原目标造成A点（A=round(2 + 体魄×0.20 + 剑道造诣×0.30 + max(本次行动开始时剑意层数−6,0))）物理伤害。云岚三叠按自身追加段数结算，不另加心法攻击段。\n主修额外效果：触发所需剑意层数减少1层。"
+heart_method_description = "心法被动：流云剑势\n关键词：剑、剑意\n效果：本次行动开始时剑意达到6层，带剑关键词的攻击招式首段命中后，在原招式攻击段结算完毕时追加1段攻击；每段对原目标造成A点（A=round(2 + 体魄×0.20 + 剑道造诣×0.30 + max(本次行动开始时剑意层数−6,0))）物理伤害。云岚三叠按自身追加段数结算，不另加心法攻击段。\n主修额外效果：触发所需剑意层数减少1层。"
 sub_deck_rewrites = Array[ExtResource("3")]([SubResource("Rewrite3")])
 learned_active_skills = Array[Resource]([ExtResource("skill0")])
 
@@ -107,9 +81,9 @@ required_chapter_ids = Array[String](["zhu_ying"])
 learn_permanent_bonuses = {"physique": 0.5, "sword_proficiency": 1.0}
 combat_tempering_bonuses = {"max_health_percent": 10.0, "physical_damage_percent": 7.0}
 heart_method_upgrade_id = "shujuan_c4"
-heart_method_upgrade_description = "心法被动：流云剑势\n类型：心法\n关键词：剑、剑意\n效果：剑意达到6层时，流云剑势生效。带剑关键词的攻伐技能首段命中后，在原技能攻击段结算完毕时追加1段攻击，沿用原目标，造成A点物理伤害；剑意层数超过6时，每多1层使追加攻击伤害提高1点。\n主修额外效果：触发所需剑意层数减少1层。\n计算公式：A=round(2 + 体魄×0.20 + 剑道造诣×0.30 + max(本次行动开始时剑意层数−6,0))"
-heart_method_description = "心法被动：流云剑势\n类型：心法\n关键词：剑、剑意\n效果：剑意达到6层时，流云剑势生效。带剑关键词的攻伐技能首段命中后，在原技能攻击段结算完毕时追加1段攻击，沿用原目标，造成A点物理伤害；剑意层数超过6时，每多1层使追加攻击伤害提高1点。\n主修额外效果：触发所需剑意层数减少1层。\n计算公式：A=round(2 + 体魄×0.20 + 剑道造诣×0.30 + max(本次行动开始时剑意层数−6,0))"
-sub_deck_rewrites = Array[ExtResource("3")]([SubResource("Rewrite4")])
+heart_method_upgrade_description = "心法被动：流云剑势\n关键词：剑、剑意\n效果：本次行动开始时剑意达到6层，带剑关键词的攻击招式首段命中后，在原招式攻击段结算完毕时追加攻击；本次行动开始时剑意达到10层则追加2段，否则追加1段；每段对原目标造成A点（A=round(2 + 体魄×0.20 + 剑道造诣×0.30 + max(本次行动开始时剑意层数−6,0))）物理伤害。云岚三叠按自身追加段数结算，不另加心法攻击段。\n主修额外效果：触发所需剑意层数减少1层。"
+heart_method_description = "心法被动：流云剑势\n关键词：剑、剑意\n效果：本次行动开始时剑意达到6层，带剑关键词的攻击招式首段命中后，在原招式攻击段结算完毕时追加攻击；本次行动开始时剑意达到10层则追加2段，否则追加1段；每段对原目标造成A点（A=round(2 + 体魄×0.20 + 剑道造诣×0.30 + max(本次行动开始时剑意层数−6,0))）物理伤害。云岚三叠按自身追加段数结算，不另加心法攻击段。\n主修额外效果：触发所需剑意层数减少1层。"
+right_branch_name = "无化法"
 
 [resource]
 script = ExtResource("1")

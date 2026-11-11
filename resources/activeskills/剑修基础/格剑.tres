@@ -5,8 +5,8 @@
 [resource]
 script = ExtResource("1")
 skill_name = "格剑"
-description = "应对：受到敌方物理攻击时获得化解；触发后获得剑意1层。"
-icon_path = "res://textures/ui/combat/skill_icons/剑修基础_格剑_v1.png"
+description = "应对敌方物理攻击时，获得A层化解与剑意1层。A=2+floor(体魄÷5)+floor(神魂÷8)+floor(剑道造诣÷5)。"
+icon_path = "res://textures/ui/combat/board_skill_icons/gejian.png"
 skill_type = 3
 energy_cost = 1
 mana_cost = 0
@@ -20,3 +20,8 @@ status_effects = Array[Dictionary]([{"status_id":"化解","stacks":1}])
 special_effects = Array[Dictionary]([{"effect":"gain_sword_intent","count":1}])
 stacks_formula = "2 + floor(physique/5) + floor(soul/8) + floor(sword_proficiency/5)"
 counter_condition = "on_physical_attacked"
+board_definition_version = 1
+board_size = Vector2i(2, 1)
+board_max_placements = 2
+board_rotation_allowed = true
+board_base_skill_path = "res://resources/activeskills/剑修基础/格剑.tres"

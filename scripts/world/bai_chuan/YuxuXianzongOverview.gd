@@ -13,6 +13,8 @@ var _admission_current_rank := ""
 var _has_other_affiliation := false
 
 const LOCATION_NAMEPLATE_STYLE = preload("res://scripts/ui/WorldLocationNameplateStyle.gd")
+const SCENE_ACTION_BUTTON = preload("res://tscn/panel/SceneActionButton.tscn")
+const SCENE_ACTION_ROPE = preload("res://scripts/ui/SceneActionRope.gd")
 
 const PEAK_LABELS := {
 	"heguang": "和\n光\n峰",
@@ -32,6 +34,8 @@ const PEAK_LABELS := {
 @onready var overview_subtitle: Label = $Subtitle
 @onready var overview_hint: Label = $Hint
 var _current_peak_id := ""
+var _gate_waiting := false
+var _gate_actions: Control
 
 func _ready() -> void:
 	# 全屏总览本身不抢鼠标；只有峰位标签与场景内交互接收点击。
@@ -72,9 +76,28 @@ func _ready() -> void:
 	peak_interior.connect("admission_requested", func() -> void: admission_requested.emit())
 	peak_interior.connect("life_action_requested", func(action_id: String, peak_id: String) -> void: life_action_requested.emit(action_id, peak_id))
 	peak_interior.connect("exchange_purchase_requested", func(item_path: String, contribution_cost: int) -> void: exchange_purchase_requested.emit(item_path, contribution_cost))
+	_gate_actions = Control.new()
+	_gate_actions.name = "GateActions"
+	_gate_actions.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(_gate_actions)
+	_gate_actions.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	var rope := Control.new()
+	rope.name = "ActionRope"
+	rope.set_script(SCENE_ACTION_ROPE)
+	_gate_actions.add_child(rope)
+	rope.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	var welcome := SCENE_ACTION_BUTTON.instantiate() as Button
+	welcome.name = "GateWelcome"
+	welcome.text = "山门迎真"
+	welcome.set_meta("action_id", "yuxu.welcome")
+	_gate_actions.add_child(welcome)
+	welcome.pressed.connect(func() -> void: admission_requested.emit())
+	_gate_actions.hide()
 	peak_interior.hide()
 
 func open_overview() -> void:
+	_gate_waiting = false
+	_gate_actions.hide()
 	_close_peak_interior()
 	_refresh_peak_population_badges()
 	_show_roster("")
@@ -84,6 +107,13 @@ func open_overview() -> void:
 		world_map.hide()
 	show()
 	move_to_front()
+
+func open_gate_welcome() -> void:
+	open_overview()
+	_gate_waiting = true
+	peak_layer.hide()
+	_hide_roster()
+	_gate_actions.show()
 
 func set_admission_context(root_name: String, rank: String, is_member: bool, current_rank: String, has_other_affiliation: bool) -> void:
 	_admission_root_name = root_name if not root_name.is_empty() else "无灵根"
@@ -111,6 +141,8 @@ func handle_back() -> bool:
 	return false
 
 func close_overview() -> void:
+	_gate_waiting = false
+	_gate_actions.hide()
 	_close_peak_interior()
 	var roster := get_tree().get_first_node_in_group("cell_character_list")
 	if roster != null and roster.has_method("hide_world_npcs"):
@@ -122,7 +154,7 @@ func close_overview() -> void:
 	overview_closed.emit()
 
 func _on_peak_pressed(peak_id: String) -> void:
-	if not PEAK_LABELS.has(peak_id):
+	if _gate_waiting or not PEAK_LABELS.has(peak_id):
 		return
 	_current_peak_id = peak_id
 	_refresh_peak_population_badges()
@@ -176,7 +208,7 @@ func _peak_label_style(hovered: bool) -> StyleBoxTexture:
 func _refresh_peak_population_badges() -> void:
 	var manager := get_node_or_null("/root/NpcWorldManager")
 	for child in peak_layer.get_children():
-		if child is not Button:
+		if not child is Button:
 			continue
 		var peak_id := str(child.get_meta("peak_id", ""))
 		var count := 0

@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://gdscripts/world/SpiritBoatWake.gd" id="1_wake"]
+[ext_resource type="Texture2D" path="res://textures/world/bai_chuan/vehicles/spirit_boat_wake_20261106/ink_cloud_wisp.png" id="2_wisp"]
+
+[node name="SpiritBoatWake" type="Node2D"]
+script = ExtResource("1_wake")
+wisp_texture = ExtResource("2_wisp")

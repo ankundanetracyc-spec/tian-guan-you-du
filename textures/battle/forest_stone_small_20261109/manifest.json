@@ -1,0 +1,31 @@
+{
+  "profile_id": "forest_stone_small_cultivators_20261109",
+  "reference": "res://docs/美术规范/局内战斗布阵与开战理想图_20261107/38_用户选定_逐格拼接参考.png",
+  "visual_height": 160,
+  "team_centers": [
+    0.31,
+    0.69
+  ],
+  "male_runtime": "res://tools/action_battle_test/guigu_native_first_runtime.gd",
+  "female_runtime": "res://tools/action_battle_test/turn_based_female_runtime_20261106.gd",
+  "assets": [
+    {
+      "file": "ground.png",
+      "source": "res://tools/action_battle_test/art/battle_ground_stone_v1.png",
+      "sha256": "57427ee8ce4455e1e35ed3899cf1e14b931d40aeddf7a9cf557cbfb6c1c4f187",
+      "source_sha256": "57427ee8ce4455e1e35ed3899cf1e14b931d40aeddf7a9cf557cbfb6c1c4f187"
+    },
+    {
+      "file": "pines.png",
+      "source": "res://textures/world/bai_chuan/scenery_ink_20261104/sprites/pine_group.png",
+      "sha256": "46d05accc2fe8713bfbf4f69a06c23b7320ffb76800f2d1dc98db1dda7298349",
+      "source_sha256": "46d05accc2fe8713bfbf4f69a06c23b7320ffb76800f2d1dc98db1dda7298349"
+    },
+    {
+      "file": "rocks.png",
+      "source": "res://textures/world/bai_chuan/scenery_ink_20261104/sprites/rock_group.png",
+      "sha256": "bba3822529e52354a3c8b090c2e443c5397ac1ee9150fdb9f70bd1d69704d0da",
+      "source_sha256": "bba3822529e52354a3c8b090c2e443c5397ac1ee9150fdb9f70bd1d69704d0da"
+    }
+  ]
+}

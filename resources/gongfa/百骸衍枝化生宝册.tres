@@ -8,8 +8,6 @@
 [ext_resource type="Resource" path="res://resources/activeskills/催血.tres" id="6_cuixue"]
 [ext_resource type="Resource" path="res://resources/activeskills/架招.tres" id="7_jiazhao"]
 [ext_resource type="Resource" path="res://resources/activeskills/百骸衍枝化生宝册/化法/催血.tres" id="8_huafa_cuixue"]
-[ext_resource type="Resource" path="res://resources/activeskills/百骸衍枝化生宝册/化法/摧山.tres" id="9_huafa_cuishan"]
-[ext_resource type="Resource" path="res://resources/activeskills/百骸衍枝化生宝册/化法/架招第三卷.tres" id="10_huafa_jiazhao_c3"]
 [ext_resource type="Resource" path="res://resources/activeskills/百骸衍枝化生宝册/化法/架招第四卷.tres" id="11_huafa_jiazhao_c4"]
 
 [sub_resource type="Resource" id="RewriteCuixueFirst"]
@@ -19,21 +17,11 @@ target_scope = 0
 source_skill = ExtResource("6_cuixue")
 source_skill_name = "催血"
 result_skill = ExtResource("8_huafa_cuixue")
+board_definition_version = 1
+board_size = Vector2i(1, 1)
+board_max_placements = 1
+board_icon_path = "res://textures/ui/combat/board_skill_icons/huafa_baihai_1.png"
 
-[sub_resource type="Resource" id="RewriteCuishan"]
-script = ExtResource("3")
-mode = 1
-target_scope = 1
-source_skill_name = "血臂撼岳"
-result_skill = ExtResource("9_huafa_cuishan")
-
-[sub_resource type="Resource" id="RewriteJiazhaoThird"]
-script = ExtResource("3")
-mode = 1
-target_scope = 0
-source_skill = ExtResource("7_jiazhao")
-source_skill_name = "架招"
-result_skill = ExtResource("10_huafa_jiazhao_c3")
 
 [sub_resource type="Resource" id="RewriteJiazhaoFourth"]
 script = ExtResource("3")
@@ -42,6 +30,11 @@ target_scope = 0
 source_skill = ExtResource("7_jiazhao")
 source_skill_name = "架招"
 result_skill = ExtResource("11_huafa_jiazhao_c4")
+board_definition_version = 1
+board_size = Vector2i(1, 1)
+board_max_placements = 1
+board_icon_path = "res://textures/ui/combat/board_skill_icons/huafa_baihai_4.png"
+
 
 [sub_resource type="Resource" id="ChapterYangLuo"]
 script = ExtResource("2")
@@ -57,7 +50,7 @@ left_branch_name = "修持"
 right_branch_name = "化法"
 combat_tempering_bonuses = {"max_health_percent":5.0}
 sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteCuixueFirst")])
-heart_method_description = "心法被动：百骸衍枝化生\n效果：自身气血层数达到5层时显化1只手臂，最多显化1只。每次近身攻击结算时，显化的手臂追加一段A点物理伤害；气血层数变化后立即重新判定显化状态。\n主修额外效果：手臂追加攻击伤害提高20%。\n计算公式：A=round(1 + 气血层数×0.15 + 体魄×0.10 + 体道造诣×0.15)。"
+heart_method_description = "心法被动：百骸衍枝化生\n关键词：气血\n效果：自身气血层数达到5层时显化1只手臂，最多显化1只。每次近身物理攻击结算时，显化的手臂追加一段A点（A=round(1 + 气血层数×0.15 + 体魄×0.10 + 体道造诣×0.15)）物理伤害；气血层数变化后立即重新判定显化状态。\n主修额外效果：手臂追加攻击伤害提高20%。"
 
 [sub_resource type="Resource" id="ChapterShengZhi"]
 script = ExtResource("2")
@@ -71,19 +64,18 @@ required_attributes = {"physique":6.0,"body_proficiency":0.5}
 required_chapter_ids = Array[String](["yang_luo"])
 learn_permanent_bonuses = {"body_proficiency":0.5}
 left_branch_name = "修持"
-right_branch_name = "化法"
+right_branch_name = "无化法"
 learned_active_skills = Array[Resource]([ExtResource("5_cuishan")])
 combat_tempering_bonuses = {"physical_damage_percent":3.0}
-sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteCuishan")])
 heart_method_upgrade_id = "baihai_c2"
-heart_method_upgrade_description = "气血层数达到4层时显化1只手臂。"
-heart_method_description = "心法被动：百骸衍枝化生\n效果：自身气血层数达到4层时显化1只手臂，最多显化1只。每次近身攻击结算时，显化的手臂追加一段A点物理伤害；气血层数变化后立即重新判定显化状态。\n主修额外效果：手臂追加攻击伤害提高20%。\n计算公式：A=round(1 + 气血层数×0.15 + 体魄×0.10 + 体道造诣×0.15)。"
+heart_method_upgrade_description = "心法被动：百骸衍枝化生\n关键词：气血\n效果：自身气血层数达到4层时显化1只手臂，最多显化1只。每次近身物理攻击结算时，显化的手臂追加一段A点（A=round(1 + 气血层数×0.15 + 体魄×0.10 + 体道造诣×0.15)）物理伤害；气血层数变化后立即重新判定显化状态。\n主修额外效果：手臂追加攻击伤害提高20%。"
+heart_method_description = "心法被动：百骸衍枝化生\n关键词：气血\n效果：自身气血层数达到4层时显化1只手臂，最多显化1只。每次近身物理攻击结算时，显化的手臂追加一段A点（A=round(1 + 气血层数×0.15 + 体魄×0.10 + 体道造诣×0.15)）物理伤害；气血层数变化后立即重新判定显化状态。\n主修额外效果：手臂追加攻击伤害提高20%。"
 
 [sub_resource type="Resource" id="ChapterShuangQing"]
 script = ExtResource("2")
 chapter_id = "shuang_qing"
 chapter_name = "双擎"
-description = "显化双臂，以自动应对化解近身来袭。"
+description = "本卷无化法，心法继续显化双臂。"
 order = 3
 required_study_progress = 84.0
 required_realm = "云息六层"
@@ -91,12 +83,11 @@ required_attributes = {"physique":8.0,"body_proficiency":1.0}
 required_chapter_ids = Array[String](["sheng_zhi"])
 learn_permanent_bonuses = {"body_proficiency":1.0}
 left_branch_name = "修持"
-right_branch_name = "化法"
 combat_tempering_bonuses = {"max_health_percent":5.0}
-sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteJiazhaoThird")])
+right_branch_name = "无化法"
 heart_method_upgrade_id = "baihai_c3"
-heart_method_upgrade_description = "气血层数达到4层时显化第一只手臂，达到8层时显化第二只。双臂显化时，近身物理攻击可触发自动应对。"
-heart_method_description = "心法被动：百骸衍枝化生\n效果：自身气血层数达到4层时显化第1只手臂，达到8层时显化第2只，最多显化2只。每次近身攻击结算时，每只显化手臂各追加一段A点物理伤害；气血层数变化后立即重新判定显化状态。双臂显化时，受到近身物理攻击并进入伤害结算前，每个来袭技能至多判定一次：以B概率自动应对，获得C层化解；触发后，本次来袭攻击结算完毕时气血层数降低1层，并触发气血层数降低时的回复效果。\n主修额外效果：每段手臂追加攻击伤害提高20%。\n计算公式：A=round(1 + 气血层数×0.20 + 体魄×0.12 + 体道造诣×0.20)；B=clamp(30% + 4%×(自身气血层数−攻击者气血层数) + 0.5%×自身体魄 + 1%×体道造诣 − 0.5%×攻击者体魄, 5%, 80%)；C=round(1 + 气血层数×0.20 + 体魄×0.10 + 体道造诣×0.20)。"
+heart_method_upgrade_description = "心法被动：百骸衍枝化生\n关键词：气血\n效果：自身气血层数达到4层时显化第1只手臂，达到8层时显化第2只，最多显化2只。每次近身物理攻击结算时，每只显化手臂各追加一段A点（A=round(1 + 气血层数×0.20 + 体魄×0.12 + 体道造诣×0.20)）物理伤害；气血层数变化后立即重新判定显化状态。\n主修额外效果：每段手臂追加攻击伤害提高20%。"
+heart_method_description = "心法被动：百骸衍枝化生\n关键词：气血\n效果：自身气血层数达到4层时显化第1只手臂，达到8层时显化第2只，最多显化2只。每次近身物理攻击结算时，每只显化手臂各追加一段A点（A=round(1 + 气血层数×0.20 + 体魄×0.12 + 体道造诣×0.20)）物理伤害；气血层数变化后立即重新判定显化状态。\n主修额外效果：每段手臂追加攻击伤害提高20%。"
 
 [sub_resource type="Resource" id="ChapterHuaSheng"]
 script = ExtResource("2")
@@ -114,8 +105,8 @@ right_branch_name = "化法"
 combat_tempering_bonuses = {"physical_damage_percent":4.0}
 sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteJiazhaoFourth")])
 heart_method_upgrade_id = "baihai_c4"
-heart_method_upgrade_description = "气血层数达到3层时显化第一只手臂，达到7层时显化第二只。"
-heart_method_description = "心法被动：百骸衍枝化生\n效果：自身气血层数达到3层时显化第1只手臂，达到7层时显化第2只，最多显化2只。每次近身攻击结算时，每只显化手臂各追加一段A点物理伤害；气血层数变化后立即重新判定显化状态。双臂显化时，受到近身物理攻击并进入伤害结算前，每个来袭技能至多判定一次：以B概率自动应对，获得C层化解；触发后，本次来袭攻击结算完毕时气血层数降低1层，并触发气血层数降低时的回复效果。\n主修额外效果：每段手臂追加攻击伤害提高20%。\n计算公式：A=round(1 + 气血层数×0.20 + 体魄×0.12 + 体道造诣×0.20)；B=clamp(30% + 4%×(自身气血层数−攻击者气血层数) + 0.5%×自身体魄 + 1%×体道造诣 − 0.5%×攻击者体魄, 5%, 80%)；C=round(1 + 气血层数×0.20 + 体魄×0.10 + 体道造诣×0.20)。"
+heart_method_upgrade_description = "心法被动：百骸衍枝化生\n关键词：气血\n效果：自身气血层数达到3层时显化第1只手臂，达到7层时显化第2只，最多显化2只。每次近身物理攻击结算时，每只显化手臂各追加一段A点（A=round(1 + 气血层数×0.20 + 体魄×0.12 + 体道造诣×0.20)）物理伤害；气血层数变化后立即重新判定显化状态。\n主修额外效果：每段手臂追加攻击伤害提高20%。"
+heart_method_description = "心法被动：百骸衍枝化生\n关键词：气血\n效果：自身气血层数达到3层时显化第1只手臂，达到7层时显化第2只，最多显化2只。每次近身物理攻击结算时，每只显化手臂各追加一段A点（A=round(1 + 气血层数×0.20 + 体魄×0.12 + 体道造诣×0.20)）物理伤害；气血层数变化后立即重新判定显化状态。\n主修额外效果：每段手臂追加攻击伤害提高20%。"
 
 [resource]
 gameplay_enabled = true

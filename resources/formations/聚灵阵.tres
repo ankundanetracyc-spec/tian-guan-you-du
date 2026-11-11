@@ -8,7 +8,3 @@ formation_name = "聚灵阵"
 description = "凝聚天地灵气，提升地块灵压。"
 ink_tag_requirements = Array[String](["质地[液体]", "功用[通脉]"])
 fuel_rate = 0.5
-eye_range_mults = {
-"空冥石": 1.0,
-"蕴灵玉": 1.15
-}

@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ItemLayoutPreviewData" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/ItemLayoutPreviewData.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/resources/ItemLayoutRangeData.cs" id="2"]
+
+[sub_resource type="Resource" id="Range_sharpness"]
+script = ExtResource("2")
+purpose = 1
+title = "锋锐范围"
+source_label = "剑尖"
+source_anchor = Vector2i(1, 0)
+offsets = Array[Vector2i]([Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)])
+direction = 0
+rotation_allowed = true
+caption = "仅人物剑招"
+description = "手持本器且启用时，剑尖向前连续3格内的剑关键词人物招式获得本剑锋锐；随剑尖转向。"
+
+[resource]
+script = ExtResource("1")
+definition_version = 1
+definition_key = "sword.qinghe.layout.v1"
+board_cells = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0)])
+board_rotation_allowed = true
+ranges = Array[ExtResource("2")]([SubResource("Range_sharpness")])

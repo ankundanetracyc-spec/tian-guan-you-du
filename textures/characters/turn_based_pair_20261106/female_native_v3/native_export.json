@@ -1,0 +1,89 @@
+{
+	"back_hair_registration": "lowered three source-head pixels to keep the half-up knot inside the original canvas",
+	"filter": "4x4 premultiplied area sampling",
+	"front_hair_occlusion": "preserve existing side-profile face silhouette",
+	"parts": [
+		{
+			"canvas": [
+				60,
+				60
+			],
+			"id": 84807,
+			"original_alpha_preserved": true,
+			"shared_base_head": false
+		},
+		{
+			"canvas": [
+				50,
+				80
+			],
+			"id": 87557,
+			"original_alpha_preserved": true,
+			"shared_base_head": false
+		},
+		{
+			"canvas": [
+				60,
+				100
+			],
+			"id": 85649,
+			"original_alpha_preserved": true,
+			"shared_base_head": false
+		},
+		{
+			"canvas": [
+				24,
+				24
+			],
+			"id": 65806,
+			"original_alpha_preserved": true,
+			"shared_base_head": true
+		},
+		{
+			"canvas": [
+				60,
+				60
+			],
+			"id": 79543,
+			"original_alpha_preserved": true,
+			"shared_base_head": false
+		},
+		{
+			"anchor": "same original hair renderer UV and head/neck transform as male",
+			"canvas": [
+				21,
+				56
+			],
+			"part": "hair_front.png",
+			"visible_xywh": [
+				5,
+				3,
+				14,
+				25
+			]
+		},
+		{
+			"anchor": "same original hair renderer UV and head/neck transform as male",
+			"canvas": [
+				21,
+				56
+			],
+			"part": "hair_back.png",
+			"visible_xywh": [
+				2,
+				1,
+				17,
+				49
+			]
+		}
+	],
+	"scale": "one native texture pixel per source pixel; body/arm/leg canvases unchanged",
+	"source_hair_canvas": [
+		21,
+		56
+	],
+	"source_head_canvas": [
+		24,
+		24
+	]
+}

@@ -1,0 +1,174 @@
+{
+  "master_sha256": "76e789ffa97e72c8ece941401e4b7aa93ba74e7567e881ed2e7f48a67ae266c2",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "layer_order": [
+    "nose",
+    "eyes",
+    "eyebrows",
+    "mouth"
+  ],
+  "user_approved_master": true,
+  "head_neck_changed": false,
+  "approved_ink_strokes_preserved_in_narrow_anatomical_regions": true,
+  "records": [
+    {
+      "part": "eyebrows",
+      "index": 1,
+      "source": "source\\eyebrows_raw.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "89f572f95a9b5b317478d37cbfacedca7c2f1808eb93c6567b9a8244a6b3bebe",
+      "file": "male\\eyebrows\\01.png",
+      "transform": {
+        "uniform_scale": 0.19141914191419143,
+        "source_anchor": [
+          629.5,
+          637.5
+        ],
+        "target_anchor": [
+          521,
+          342.5
+        ],
+        "tx": 400.5016501650165,
+        "ty": 220.47029702970298
+      },
+      "rgb_bias_to_approved_master": null,
+      "colored_edge_noise_removed": 0,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "pair_registered_together": true,
+      "native_registered_file": "male_native\\eyebrows\\01.png",
+      "visible_pixel_count": 1446,
+      "visible_rgb_source": "Approved male_whole_01.png at identical full-canvas coordinates except original hair-occluded brow/eye tips",
+      "visible_rgb_difference_count": 0,
+      "hidden_tip_reconstruction_pixels": 293,
+      "hidden_tip_reconstruction": "Native generated tiny tips under original front-hair occlusion, to prevent baking crossing hair fragments into facial pieces",
+      "alpha_source": "Built-in image_gen transparent extraction, whole-feature uniform scale and translation; chromatic alpha noise removed",
+      "final_pixels_mode": "Approved visible RGB with generated registered alpha; only hair-hidden tips reconstructed; no old/rejected facial pixels"
+    },
+    {
+      "part": "eyes",
+      "index": 1,
+      "source": "source\\eyes_raw.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "c028d3b183184994aae23aa69bd40beebbe894134c781d9c6820794c8f9db20e",
+      "file": "male\\eyes\\01.png",
+      "transform": {
+        "uniform_scale": 0.20934786803325986,
+        "source_anchor": [
+          621.1721374045801,
+          596.8777877563239
+        ],
+        "target_anchor": [
+          518.7251773049645,
+          362.4100635852286
+        ],
+        "tx": 388.6841146576525,
+        "ty": 237.45497124203365
+      },
+      "rgb_bias_to_approved_master": null,
+      "colored_edge_noise_removed": 1,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "pair_registered_together": true,
+      "native_registered_file": "male_native\\eyes\\01.png",
+      "visible_pixel_count": 1884,
+      "visible_rgb_source": "Approved male_whole_01.png at identical full-canvas coordinates except original hair-occluded brow/eye tips",
+      "visible_rgb_difference_count": 0,
+      "hidden_tip_reconstruction_pixels": 295,
+      "hidden_tip_reconstruction": "Native generated tiny tips under original front-hair occlusion, to prevent baking crossing hair fragments into facial pieces",
+      "alpha_source": "Built-in image_gen transparent extraction, whole-feature uniform scale and translation; chromatic alpha noise removed",
+      "final_pixels_mode": "Approved visible RGB with generated registered alpha; only hair-hidden tips reconstructed; no old/rejected facial pixels"
+    },
+    {
+      "part": "nose",
+      "index": 1,
+      "source": "source\\nose_raw.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "2bcbd3cf8ccd464383132e69e61e88f1692b5a0e6881a690cfb88601befad53b",
+      "file": "male\\nose\\01.png",
+      "transform": {
+        "uniform_scale": 0.15352697095435686,
+        "source_anchor": [
+          626.4521739130435,
+          933
+        ],
+        "target_anchor": [
+          519.5,
+          443
+        ],
+        "tx": 423.32269529135846,
+        "ty": 299.7593360995851
+      },
+      "rgb_bias_to_approved_master": null,
+      "colored_edge_noise_removed": 124,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "pair_registered_together": false,
+      "native_registered_file": "male_native\\nose\\01.png",
+      "visible_pixel_count": 4217,
+      "visible_rgb_source": "Approved male_whole_01.png at identical full-canvas coordinates except original hair-occluded brow/eye tips",
+      "visible_rgb_difference_count": 0,
+      "hidden_tip_reconstruction_pixels": 0,
+      "hidden_tip_reconstruction": "Native generated tiny tips under original front-hair occlusion, to prevent baking crossing hair fragments into facial pieces",
+      "alpha_source": "Built-in image_gen transparent extraction, whole-feature uniform scale and translation; chromatic alpha noise removed",
+      "final_pixels_mode": "Approved visible RGB with generated registered alpha; only hair-hidden tips reconstructed; no old/rejected facial pixels"
+    },
+    {
+      "part": "mouth",
+      "index": 1,
+      "source": "source\\mouth_raw.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "639d88453f7339da9c6bd6ce087ff3c6c3eb26bdfa1ab30d3990ef98043ace32",
+      "file": "male\\mouth\\01.png",
+      "transform": {
+        "uniform_scale": 0.13559322033898305,
+        "source_anchor": [
+          633.7848837209302,
+          624
+        ],
+        "target_anchor": [
+          520,
+          475
+        ],
+        "tx": 434.06306661411116,
+        "ty": 390.3898305084746
+      },
+      "rgb_bias_to_approved_master": null,
+      "colored_edge_noise_removed": 6,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "pair_registered_together": false,
+      "native_registered_file": "male_native\\mouth\\01.png",
+      "visible_pixel_count": 1214,
+      "visible_rgb_source": "Approved male_whole_01.png at identical full-canvas coordinates except original hair-occluded brow/eye tips",
+      "visible_rgb_difference_count": 0,
+      "hidden_tip_reconstruction_pixels": 0,
+      "hidden_tip_reconstruction": "Native generated tiny tips under original front-hair occlusion, to prevent baking crossing hair fragments into facial pieces",
+      "alpha_source": "Built-in image_gen transparent extraction, whole-feature uniform scale and translation; chromatic alpha noise removed",
+      "final_pixels_mode": "Approved visible RGB with generated registered alpha; only hair-hidden tips reconstructed; no old/rejected facial pixels"
+    }
+  ]
+}

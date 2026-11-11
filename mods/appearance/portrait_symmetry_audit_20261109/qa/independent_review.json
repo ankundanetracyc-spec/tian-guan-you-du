@@ -1,0 +1,120 @@
+{
+  "schema": "portrait-symmetry-independent-readonly-review/v1",
+  "date": "2026-11-09",
+  "reviewer": "/root/portrait_audit",
+  "status": "read_only_audit_complete_two_open_issues",
+  "scope": "Only current active assets reviewed; noactivePNG/configuration/preset/document changed. Only this QA JSON written. No repair or aesthetic acceptance signed.",
+  "issues": [
+    {
+      "file": "female/eyes/03.png",
+      "sha256": "749867dd34d4c41e933fcaac9bce5e7fd2dc2deda841bbdaa817502a6b89361b",
+      "name": "舒展长目",
+      "priority": 1,
+      "severity": "clear_repeated_mild_to_moderate",
+      "finding": "At normal-size current face, imageLEFT eye is rounder with more iris exposed; imageRIGHT upper lid is flatter and outer half more collected/narrow. Same pattern persists across all4brows and3hairstyles and in actual game output, so it is not caused by hair occlusion or just a highlight.",
+      "recommendation": "Present actual native-size eye03crop; if subsequently authorized to repair, keep original gentle long-eye size, brushwork and clarity and change this layer only. Do not revive old failed big-eye generations or enlarge pupils to hide eyelid shape."
+    },
+    {
+      "file": "female/eyebrows/02.png",
+      "sha256": "5b0c2767c3936a2356de249b1c451cc1065090cd8168dcd02d2dac50b679d833",
+      "name": "弯挑细眉",
+      "priority": 2,
+      "severity": "mild_secondary",
+      "finding": "ImageRIGHT brow peak/tail rises more and its outer half is fuller/blunter than imageLEFT. Normal nohair face reads one side more lifted and the other flatter. It is less conspicuous thaneyes03 and is not a hard-skin seam.",
+      "recommendation": "Keep as a small paired-brow shape/weight issue for later focused review. Do not regenerate all brows or darken the thin style."
+    }
+  ],
+  "male_conclusion": {
+    "status": "no_obvious_additional_normal_size_deviation_or_seam",
+    "nose_mouth": "Nasal columella/philtrum/lip center form a coherent center with the fixed head. No conspicuous normal-size crooked nose/mouth, skin rectangle, white edge or newly broken layer seam seen. This is direct visual assessment, not inferred from unchanged source.",
+    "five_nonempty_beards": "Moustache/chin centers of5nonempty styles do not visibly drift to one side or float away from jaw.06has sparse cheek-rim hair tips/short stubble in nohair view, without a continuous hard skin strip; observation only.",
+    "brows_eyes_head": "Current mirrored brows/eyes and fixedhead read coherent at normal scale. Foreground hair can obscure one side; no new underlying size discrepancy or head/neck step seen.",
+    "reused_static_sources_verified_same_current_SHA": 43
+  },
+  "female_other_observations": "Eyes01/02andbrows01/03have smaller stroke/tail differences only; eyes02is intentionally rounder/larger. Brow04softness is a style, not a defect. These are observations, not extra priority issues. No normal-size large whole-face lateral drift or hard skin seam identified.",
+  "female_source_authority": {
+    "feature_document": "docs/美术规范/三组参考五官去重接入_20261104/README.md, 2026-11-06 top override and current expansion section",
+    "head_skin_document": "docs/美术规范/百会分层与发型肤色修订_20261104/README.md",
+    "nose_document": "docs/美术规范/男女山根与男装领口修订_20261104/README.md (female portion remains applicable)",
+    "trusted_actual_reference": "mods/appearance/portrait_original_restore_20261105_v6/whole_male_first_20261105/reference/female_active.png",
+    "trusted_reference_all8layers_match_current_SHA": true,
+    "current_head_sha256": "f61eee9537f62da3c93c2afdf1570c97a1e5a5644986e6e71c983f58f81c09c8",
+    "eye03_current_sha256": "749867dd34d4c41e933fcaac9bce5e7fd2dc2deda841bbdaa817502a6b89361b",
+    "brow04_current_sha256": "8f8836916c809fb9ad1e834dfa2bd1184bd99c8e7b4e3377b490c7335ff045ed",
+    "version_boundary": "Currenteye03is final V4from approved02; earlier oversizedV2/changedV3were rolledback and are not active defects.",
+    "approved_eye03_native_size_reference": {
+      "canvas": [
+        1024,
+        1536
+      ],
+      "iris_center_targets": [
+        [
+          465,
+          381
+        ],
+        [
+          575,
+          381
+        ]
+      ],
+      "upper_lower_y_at_iris": [
+        375,
+        389
+      ],
+      "dark_iris_width_proxy_px": [
+        22,
+        22
+      ],
+      "central_dark_height_proxy_px": [
+        15,
+        15
+      ],
+      "note": "Approved original-scale painted/threshold proxies,~1px reading uncertainty; not exact anatomy or permission to enlarge/normalize pupils."
+    }
+  },
+  "female_axis_observation": {
+    "head_jaw_axis_support_x": "approximately518-519, not male513",
+    "jaw_curve_vertex_proxy_x": 518.082,
+    "nostril_midpoint_proxy_x": 518.64,
+    "lip_center_proxy_x": 518.858,
+    "eye_dark_kernel_midpoint_proxy_x": 520.5,
+    "interpretation": "Small~1.6-2px rightward eye-center question, not a confirmed normal-size off-center defect; not added to the2priority items. Alpha span is corroboration only, not sole axis authority."
+  },
+  "runtime": {
+    "file": "mods/appearance/portrait_symmetry_audit_20261109/installation/runtime_check.json",
+    "sha256": "9ccf7255324c676179c88df569a5ad156f3a1fe4d91783be9b5054ec94d602d4",
+    "pass": true,
+    "technical_checks": 229,
+    "failures": 0,
+    "current_cases": "12female nohair,9female hair/eye,3male actual outputs",
+    "integrity": "Current67PNG/configurations/manifest/preset unchanged. Technical pass does not make the2art issues pass."
+  },
+  "evidence": [
+    {
+      "file": "mods/appearance/portrait_symmetry_audit_20261109/installation/female_actual_bald_4brow_3eye_contact_1x.png",
+      "sha256": "ba45743781b87efdf7b88dbf14c3e9690dd5439273fa0771307d3eaab72f5100",
+      "kind": "runtime"
+    },
+    {
+      "file": "mods/appearance/portrait_symmetry_audit_20261109/installation/female_hair_01_eye_03_face_1x.png",
+      "sha256": "41af5b0676934da2515454b88a23ddb00f9fdce7e74624083c925d18067848ec",
+      "kind": "runtime"
+    },
+    {
+      "file": "mods/appearance/portrait_symmetry_audit_20261109/installation/male_current_b04_e04_face_1x.png",
+      "sha256": "c5856ab4ab2e091d529428c13be853c57ab2a2741b289f6e1d58b3097cfa9416",
+      "kind": "runtime"
+    },
+    {
+      "file": "mods/appearance/portrait_symmetry_audit_20261109/qa/female_static_eyes_layers_4x.png",
+      "sha256": "f4e5cdfb4a7b556c886917a5457858469e2e39454a25319bab78f01bde28a7bb",
+      "kind": "static"
+    },
+    {
+      "file": "mods/appearance/portrait_symmetry_audit_20261109/qa/female_static_eyebrows_layers_4x.png",
+      "sha256": "a800491863d60162a70cdfaa3d9a3aa3251b52e3db9af691d08e788539bd9b3c",
+      "kind": "static"
+    }
+  ],
+  "decision": "Two open items only: clear femaleeye03paired lid/opening shape, mild femalebrow02peak/outer-weight mismatch. Present actual crops; no asset replaced by this audit."
+}

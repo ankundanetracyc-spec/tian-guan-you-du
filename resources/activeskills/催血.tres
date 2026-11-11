@@ -4,10 +4,10 @@
 
 [resource]
 script = ExtResource("1")
-tags = Array[String](["生命"])
+tags = Array[String](["气血"])
 skill_name = "催血"
-icon_path = "res://textures/ui/combat/skill_icons/基础技能_催血_v3.png"
-description = "获得气血2层。"
+icon_path = "res://textures/ui/combat/board_skill_icons/cuixue.png"
+description = "自身获得气血2层。"
 skill_type = 3
 energy_cost = 1
 mana_cost = 0
@@ -21,3 +21,8 @@ range_min = 0
 range_max = 0
 special_effects = Array[Dictionary]([{"effect":"gain_qi_blood","count":2}])
 keywords = Array[String]([])
+board_definition_version = 1
+board_size = Vector2i(2, 1)
+board_max_placements = 2
+board_rotation_allowed = true
+board_base_skill_path = "res://resources/activeskills/催血.tres"

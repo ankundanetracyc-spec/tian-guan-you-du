@@ -6,6 +6,9 @@ signal close_requested
 signal location_action_requested(action_id: String)
 
 const NAMEPLATE = preload("res://scripts/ui/WorldLocationNameplateStyle.gd")
+const ACTION_TAG = preload("res://tscn/panel/SceneActionButton.tscn")
+const ACTION_ROPE = preload("res://scripts/ui/SceneActionRope.gd")
+const ACTION_GUIDE = preload("res://scripts/ui/SceneActionGuide.gd")
 const CONTENT_PATH := "res://resources/world/bai_chuan/baishi_city_content_v1.json"
 var _content: Dictionary = {}
 var _available: Array[String] = []
@@ -13,11 +16,16 @@ var _visible_actions: Array[String] = []
 var _backgrounds: Dictionary = {}
 var _current_id := ""
 var _district := ""
+var _overview_places: Control
 var _district_layer: Control
 var _facility_layer: Control
+var _facility_rope: Control
 var _heading: Label
 var _note: Label
 var _back: Button
+var _guidance: Control
+var _guided_action := ""
+var _guidance_text := ""
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_IGNORE
@@ -26,8 +34,24 @@ func _ready() -> void:
 		push_error("白石城场景配置无法读取")
 		return
 	_content = parsed
+	_overview_places = _full_layer("OverviewPlaces")
+	for place_tag: Dictionary in _content["overview"].get("place_tags", []):
+		var place_id := str(place_tag["id"])
+		if not _content["places"].has(place_id):
+			continue
+		var tag := _location_tag(str(_content["places"][place_id]["title"]))
+		tag.name = "Place_" + place_id
+		tag.set_meta("subscene_id", place_id)
+		_overview_places.add_child(tag)
+		_place_overview_tag(tag, _point(place_tag["at"]))
+		tag.pressed.connect(open_space.bind(place_id))
 	_district_layer = _full_layer("DistrictLabels")
 	_facility_layer = _full_layer("FacilityLabels")
+	_facility_rope = Control.new()
+	_facility_rope.name = "ActionRope"
+	_facility_rope.set_script(ACTION_ROPE)
+	_facility_layer.add_child(_facility_rope)
+	_facility_rope.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	for district_id: String in _content["districts"]:
 		var info: Dictionary = _content["districts"][district_id]
 		var tag := _paper_tag(str(info["title"]))
@@ -56,6 +80,11 @@ func _ready() -> void:
 	_ink_label(_note, 1)
 	add_child(_note)
 	_note.set_anchors_and_offsets_preset(Control.PRESET_CENTER_TOP)
+	_guidance = Control.new()
+	_guidance.set_script(ACTION_GUIDE)
+	_guidance.name = "LectureGuidance"
+	add_child(_guidance)
+	_guidance.hide()
 	_back = Button.new()
 	_back.name = "ReturnButton"
 	_back.add_theme_font_size_override("font_size", 18)
@@ -91,12 +120,19 @@ func configure_actions(ids: Array[String]) -> void:
 func get_current_space_id() -> String:
 	return _current_id
 
+func configure_guidance(action_id: String, text: String) -> void:
+	_guided_action = action_id
+	_guidance_text = text
+	_layout_guidance()
+
 func open_overview() -> void:
 	_current_id = ""
 	_district = ""
 	_set_background(str(_content["overview"]["background"]))
-	_district_layer.show()
+	_overview_places.show()
+	_district_layer.hide()
 	_facility_layer.hide()
+	_guidance.hide()
 	_heading.text = "白石城"
 	_note.text = str(_content["overview"]["description"])
 	_back.text = "返回百川地图"
@@ -113,6 +149,7 @@ func open_district(district_id: String) -> void:
 		return
 	_district = district_id
 	_current_id = space_id
+	_overview_places.hide()
 	_district_layer.hide()
 	_set_background(str(entry["background"]))
 	_heading.text = "白石城 · " + str(entry["title"])
@@ -135,13 +172,12 @@ func open_space(space_id: String) -> void:
 	var entry: Dictionary = _content["places"][space_id]
 	_current_id = space_id
 	_district = _district_for(space_id)
+	_overview_places.hide()
 	_district_layer.hide()
 	_set_background(str(entry["background"]))
 	_heading.text = "白石城 · " + str(entry["title"])
 	_note.text = str(entry["description"])
-	var parent_id := str(entry["parent"])
-	var parent_entry: Dictionary = _content["districts"].get(parent_id, _content["places"].get(parent_id, {}))
-	_back.text = "返回" + str(parent_entry.get("title", "白石城"))
+	_back.text = "返回白石城"
 	_render_facilities()
 	show()
 	subscene_selected.emit(space_id)
@@ -149,14 +185,7 @@ func open_space(space_id: String) -> void:
 func handle_back() -> bool:
 	if _current_id.is_empty():
 		return false
-	if _current_id.begins_with("street_"):
-		open_overview()
-		return true
-	var parent_id := str(_content["places"][_current_id]["parent"])
-	if _content["districts"].has(parent_id):
-		open_district(parent_id)
-	else:
-		open_space(parent_id)
+	open_overview()
 	return true
 
 func show_courtyard_controls() -> void:
@@ -173,6 +202,8 @@ func _render_facilities() -> void:
 	if not is_instance_valid(_facility_layer):
 		return
 	for child in _facility_layer.get_children():
+		if child == _facility_rope:
+			continue
 		_facility_layer.remove_child(child)
 		child.queue_free()
 	if _current_id.is_empty():
@@ -183,23 +214,24 @@ func _render_facilities() -> void:
 		var id := str(entrance["id"])
 		if not _available.is_empty() and not _available.has(id):
 			continue
-		var tag := _paper_tag(str(_content["places"][id]["title"]))
+		var tag := ACTION_TAG.instantiate() as Button
+		tag.text = str(_content["places"][id]["title"])
 		tag.name = "Facility_" + id
 		tag.set_meta("subscene_id", id)
 		_facility_layer.add_child(tag)
-		_place(tag, _point(entrance["at"]))
 		tag.pressed.connect(open_space.bind(id))
 	for action: Dictionary in entry.get("actions", []):
 		var id := str(action["id"])
 		if not _visible_actions.has(id):
 			continue
-		var tag := _paper_tag(str(action["label"]))
+		var tag := ACTION_TAG.instantiate() as Button
+		tag.text = str(action["label"])
 		tag.name = "Action_" + id.replace(".", "_")
 		tag.set_meta("action_id", id)
 		_facility_layer.add_child(tag)
-		_place(tag, _point(action["at"]))
 		tag.pressed.connect(func() -> void: location_action_requested.emit(id))
 	_facility_layer.show()
+	_facility_rope.call("_refresh_tags")
 	_layout_tags()
 
 func _district_for(space_id: String) -> String:
@@ -229,6 +261,14 @@ func _paper_tag(title: String) -> Button:
 	_style_button(tag)
 	return tag
 
+func _location_tag(title: String) -> Button:
+	var tag := Button.new()
+	tag.text = title
+	tag.add_theme_font_size_override("font_size", 19)
+	tag.custom_minimum_size = Vector2(164, 52)
+	_style_button(tag)
+	return tag
+
 func _style_button(button: Button) -> void:
 	button.add_theme_stylebox_override("normal", NAMEPLATE.create(false))
 	button.add_theme_stylebox_override("hover", NAMEPLATE.create(true))
@@ -255,15 +295,58 @@ func _place(tag: Control, at: Vector2) -> void:
 	tag.offset_top = -74.0
 	tag.offset_bottom = 74.0
 
+func _place_overview_tag(tag: Control, at: Vector2) -> void:
+	tag.set_meta("scene_anchor", at)
+	var x := clampf(at.x * size.x, 102.0, size.x - 102.0)
+	var y := clampf(at.y * size.y, 184.0, maxf(184.0, size.y - 48.0))
+	tag.anchor_left = x / maxf(1.0, size.x)
+	tag.anchor_right = tag.anchor_left
+	tag.anchor_top = y / maxf(1.0, size.y)
+	tag.anchor_bottom = tag.anchor_top
+	tag.offset_left = -82.0
+	tag.offset_right = 82.0
+	tag.offset_top = -26.0
+	tag.offset_bottom = 26.0
+
 func _layout_tags() -> void:
-	for layer: Control in [_district_layer, _facility_layer]:
+	if is_instance_valid(_overview_places):
+		for tag: Control in _overview_places.get_children():
+			_place_overview_tag(tag, tag.get_meta("scene_anchor"))
+	for layer: Control in [_district_layer]:
 		if not is_instance_valid(layer):
 			continue
 		for tag: Control in layer.get_children():
 			_place(tag, tag.get_meta("scene_anchor"))
+	if is_instance_valid(_facility_rope):
+		_facility_rope.call_deferred("_layout_tags")
+	call_deferred("_layout_guidance")
 	if is_instance_valid(_note):
 		var width := clampf(size.x - 800.0, 280.0, 720.0)
 		_note.offset_left = -width * 0.5
 		_note.offset_right = width * 0.5
 		_note.offset_top = 103
 		_note.offset_bottom = 150
+
+func _layout_guidance() -> void:
+	if not is_instance_valid(_guidance) or not is_inside_tree():
+		return
+	_guidance.hide()
+	if _guidance_text.is_empty():
+		return
+	var target: Control = null
+	if _current_id.is_empty() and _guided_action.begins_with("place:"):
+		var place_id := _guided_action.trim_prefix("place:")
+		for tag in _overview_places.get_children():
+			if tag is Button and str(tag.get_meta("subscene_id", "")) == place_id:
+				target = tag
+				break
+	elif _current_id == "lecture":
+		for tag in _facility_layer.get_children():
+			if tag is Button and str(tag.get_meta("action_id", "")) == _guided_action:
+				target = tag
+				break
+	if target != null:
+		_guidance.call("set_instruction", _guidance_text)
+		_guidance.size = Vector2(410, 84)
+		_guidance.position = Vector2(target.position.x + target.size.x * 0.5 - 205, maxf(155.0, target.position.y - 128))
+		_guidance.show()

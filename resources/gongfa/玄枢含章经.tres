@@ -5,48 +5,25 @@
 [ext_resource type="Script" path="res://csharp/gongfa/GongfaDeckRewriteConfig.cs" id="3"]
 [ext_resource type="Resource" path="res://resources/activeskills/玄枢含章经/玄枢含章.tres" id="4_heart"]
 [ext_resource type="Resource" path="res://resources/activeskills/玄枢含章经/惊蛰.tres" id="5_jingzhe"]
-[ext_resource type="Resource" path="res://resources/activeskills/玄枢含章经/云帔.tres" id="6_yunpei"]
+[ext_resource type="Resource" path="res://resources/activeskills/玄枢含章经/化法/惊蛰.tres" id="6_huafa_jingzhe"]
 [ext_resource type="Resource" path="res://resources/activeskills/玄枢含章经/复命.tres" id="7_fuming"]
-[ext_resource type="Resource" path="res://resources/activeskills/玄枢含章经/化法/惊蛰.tres" id="8_huafa_jingzhe"]
-[ext_resource type="Resource" path="res://resources/activeskills/玄枢含章经/化法/云帔.tres" id="9_huafa_yunpei"]
-[ext_resource type="Resource" path="res://resources/activeskills/玄枢含章经/化法/架招.tres" id="10_huafa_jiazhao"]
-[ext_resource type="Resource" path="res://resources/activeskills/玄枢含章经/化法/复命.tres" id="11_huafa_fuming"]
-[ext_resource type="Resource" path="res://resources/activeskills/架招.tres" id="12_jiazhao"]
-
-[sub_resource type="Resource" id="RewriteJingzhe"]
+[sub_resource type="Resource" id="RewriteJingzheC1"]
 script = ExtResource("3")
 mode = 1
 target_scope = 1
+source_skill = ExtResource("5_jingzhe")
 source_skill_name = "惊蛰"
-result_skill = ExtResource("8_huafa_jingzhe")
-
-[sub_resource type="Resource" id="RewriteYunpei"]
-script = ExtResource("3")
-mode = 1
-target_scope = 1
-source_skill_name = "云帔"
-result_skill = ExtResource("9_huafa_yunpei")
-
-[sub_resource type="Resource" id="RewriteJiazhao"]
-script = ExtResource("3")
-mode = 1
-target_scope = 0
-source_skill = ExtResource("12_jiazhao")
-source_skill_name = "架招"
-result_skill = ExtResource("10_huafa_jiazhao")
-
-[sub_resource type="Resource" id="RewriteFuming"]
-script = ExtResource("3")
-mode = 1
-target_scope = 1
-source_skill_name = "复命"
-result_skill = ExtResource("11_huafa_fuming")
+result_skill = ExtResource("6_huafa_jingzhe")
+board_definition_version = 1
+board_size = Vector2i(1, 1)
+board_max_placements = 1
+board_icon_path = "res://textures/ui/combat/board_skill_icons/huafa_xuanshu_1.png"
 
 [sub_resource type="Resource" id="ChapterJingzhe"]
 script = ExtResource("2")
 chapter_id = "shou_shu_1"
 chapter_name = "蛰雷"
-description = "每次周天完成后，自动施展技能槽10中的技能。"
+description = "完成周天时，使周天指示所指招式额外施放；每回合最多一次。"
 order = 1
 required_study_progress = 24.0
 required_attributes = {"intelligence":5.0}
@@ -54,43 +31,40 @@ left_branch_name = "修持"
 right_branch_name = "化法"
 learn_permanent_bonuses = {"intelligence":0.5, "magic_proficiency":0.5}
 learned_active_skills = Array[Resource]([ExtResource("5_jingzhe")])
-sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteJingzhe")])
-heart_method_description = "效果：技能槽10限装非应对技能，且不可排入行动队列。周天完成后自动施展；需要目标时随机选择合法目标。无合法目标则落空，不支付费用、不计次数或冷却。自动施展期间再次周天仍清炁、回满法力，但不再次触发自动施展。"
+sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteJingzheC1")])
+heart_method_description = "心法被动：玄枢含章\n关键词：周天\n效果：招式盘内默认放置一枚单格周天指示，可移动转向、不能卸下。指向共边紧邻的一份非应对招式；每回合允许其在普通扫格之外，由周天额外施放一次，照常支付费用并检查原次数及冷却。无效指向或无合法目标时不施放、不付费。额外施放中再次周天只清炁、回满法力，不递归施放。"
 
 [sub_resource type="Resource" id="ChapterYunpei"]
 script = ExtResource("2")
 chapter_id = "yun_pei_2"
 chapter_name = "云垂"
-description = "以护盾为周天自动施展提供守御与队伍承接。"
+description = "本卷无化法，继续修习玄枢含章。"
 order = 2
 required_study_progress = 48.0
 required_realm = "云息三层"
 required_attributes = {"intelligence":6.0, "magic_proficiency":0.5}
 required_chapter_ids = Array[String](["shou_shu_1"])
 left_branch_name = "修持"
-right_branch_name = "化法"
+right_branch_name = "无化法"
 learn_permanent_bonuses = {"magic_proficiency":0.5}
-learned_active_skills = Array[Resource]([ExtResource("6_yunpei")])
 combat_tempering_bonuses = {"critical_percent":8.0}
-sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteYunpei")])
-heart_method_description = "效果：技能槽10限装非应对技能，且不可排入行动队列。周天完成后自动施展；需要目标时随机选择合法目标。无合法目标则落空，不支付费用、不计次数或冷却。自动施展期间再次周天仍清炁、回满法力，但不再次触发自动施展。"
+heart_method_description = "心法被动：玄枢含章\n关键词：周天\n效果：招式盘内默认放置一枚单格周天指示，可移动转向、不能卸下。指向共边紧邻的一份非应对招式；每回合允许其在普通扫格之外，由周天额外施放一次，照常支付费用并检查原次数及冷却。无效指向或无合法目标时不施放、不付费。额外施放中再次周天只清炁、回满法力，不递归施放。"
 
 [sub_resource type="Resource" id="ChapterJiazhao"]
 script = ExtResource("2")
 chapter_id = "jia_zhao_3"
 chapter_name = "折冲"
-description = "以架招承接来势，把实际化解的攻势凝为护盾。"
+description = "本卷无化法，继续修习玄枢含章。"
 order = 3
 required_study_progress = 84.0
 required_realm = "云息六层"
 required_attributes = {"intelligence":8.0, "magic_proficiency":1.0}
 required_chapter_ids = Array[String](["yun_pei_2"])
 left_branch_name = "修持"
-right_branch_name = "化法"
+right_branch_name = "无化法"
 learn_permanent_bonuses = {"intelligence":0.5, "magic_proficiency":1.0}
 combat_tempering_bonuses = {"physical_damage_percent":5.0}
-sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteJiazhao")])
-heart_method_description = "效果：技能槽10限装非应对技能，且不可排入行动队列。周天完成后自动施展；需要目标时随机选择合法目标。无合法目标则落空，不支付费用、不计次数或冷却。自动施展期间再次周天仍清炁、回满法力，但不再次触发自动施展。"
+heart_method_description = "心法被动：玄枢含章\n关键词：周天\n效果：招式盘内默认放置一枚单格周天指示，可移动转向、不能卸下。指向共边紧邻的一份非应对招式；每回合允许其在普通扫格之外，由周天额外施放一次，照常支付费用并检查原次数及冷却。无效指向或无合法目标时不施放、不付费。额外施放中再次周天只清炁、回满法力，不递归施放。"
 
 [sub_resource type="Resource" id="ChapterFuming"]
 script = ExtResource("2")
@@ -103,18 +77,17 @@ required_realm = "云息九层"
 required_attributes = {"intelligence":10.0, "magic_proficiency":2.0}
 required_chapter_ids = Array[String](["jia_zhao_3"])
 left_branch_name = "修持"
-right_branch_name = "化法"
+right_branch_name = "无化法"
 learn_permanent_bonuses = {"magic_proficiency":1.0}
 learned_active_skills = Array[Resource]([ExtResource("7_fuming")])
 combat_tempering_bonuses = {"max_health_percent":10.0, "physical_damage_percent":7.0}
-sub_deck_rewrites = Array[ExtResource("3")]([SubResource("RewriteFuming")])
-heart_method_description = "效果：技能槽10限装非应对技能，且不可排入行动队列。周天完成后自动施展；需要目标时随机选择合法目标。无合法目标则落空，不支付费用、不计次数或冷却。自动施展期间再次周天仍清炁、回满法力，但不再次触发自动施展。"
+heart_method_description = "心法被动：玄枢含章\n关键词：周天\n效果：招式盘内默认放置一枚单格周天指示，可移动转向、不能卸下。指向共边紧邻的一份非应对招式；每回合允许其在普通扫格之外，由周天额外施放一次，照常支付费用并检查原次数及冷却。无效指向或无合法目标时不施放、不付费。额外施放中再次周天只清炁、回满法力，不递归施放。"
 
 [resource]
 gameplay_enabled = true
 script = ExtResource("1")
 gongfa_name = "玄枢含章经"
-description = "以周天为枢机，使技能槽10中的技能自动施展。"
+description = "以周天为枢机，使周天指示所指招式额外施放。"
 wuxing = 0
 can_be_main = true
 can_be_sub = true

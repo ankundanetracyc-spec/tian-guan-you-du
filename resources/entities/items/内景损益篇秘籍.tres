@@ -3,6 +3,7 @@
 [ext_resource type="Resource" path="res://resources/gongfa/内景损益篇.tres" id="2"]
 [resource]
 script=ExtResource("1")
+storage_volume = 2
 definition_id=&"manual_neijing_sunyi"
 entity_name="内景损益篇"
 icon_path = "res://textures/items/inventory_density_20261029/manual_generic_2x3.png"

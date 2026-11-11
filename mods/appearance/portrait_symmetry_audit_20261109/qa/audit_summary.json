@@ -1,0 +1,55 @@
+{
+  "schema": "active-portrait-symmetry-readonly-audit/v1",
+  "scope": "Current male3eyes/3brows, female3eyes/4brows, face axes, nose/mouth and male5nonempty beards; current enabled catalog and runtime selections.",
+  "active_assets_or_configuration_modified": false,
+  "active_inventory_sha256": "062b24ea7c0899221561b11961eccc2028599713cb473ff86f1bdc159a21f756",
+  "runtime_report_sha256": "9ccf7255324c676179c88df569a5ad156f3a1fe4d91783be9b5054ec94d602d4",
+  "runtime_checks": 229,
+  "technical_results_are_not_aesthetic_approval": true,
+  "confirmed_findings": [
+    {
+      "file": "female/eyes/03.png",
+      "name": "舒展长目",
+      "style_id": 3,
+      "severity": "clear_local_shape_difference",
+      "observation": "Screen-left eye is rounder and exposes more iris; screen-right upper lid is flatter and outer half narrower. Repeats with all4brows and3hair choices in actual game output.",
+      "source_sha256": "749867dd34d4c41e933fcaac9bce5e7fd2dc2deda841bbdaa817502a6b89361b",
+      "cause_scope": "Shape is in the current eye layer; it is not caused by hair occlusion or old-package fallback."
+    },
+    {
+      "file": "female/eyebrows/02.png",
+      "name": "弯挑细眉",
+      "style_id": 1,
+      "severity": "mild_visible_brow_imbalance",
+      "observation": "Screen-right peak/tail sit higher and the outer half carries more solid pigment; one side reads more lifted at normal face size.",
+      "source_sha256": "5b0c2767c3936a2356de249b1c451cc1065090cd8168dcd02d2dac50b679d833",
+      "cause_scope": "Current brow shape itself; actual normal-scale bald combinations confirm it."
+    }
+  ],
+  "not_same_level_findings": [
+    "Female eyes01/02 and brows01/03/04 have smaller local painted differences; they are not classified as equally obvious size mismatch.",
+    "Female eyes02 are intentionally rounder/larger as a separate style; cross-style size is not bilateral asymmetry.",
+    "Female eye center proxy is slightly right of the female head axis; no normal-size major whole-face offset confirmed. Female axis is approximately518..518.5, not male513.",
+    "Small original cheek hairs in male beard06 remain visible without hair; no continuous hard skin seam or comparable imbalance found."
+  ],
+  "negative_results": [
+    "All6current male eye/brow PNGs match the selected mirror hashes and exact RGBA reflection aboutx513; actual3matching portraits use those files.",
+    "Only the intended ink_three_variants package is enabled; numeric/full IDs and retirement aliases resolve to the expected current files.",
+    "No comparable obvious male nose/mouth/beard center shift or new skin seam found in normal-size review.",
+    "All67active PNGs and2active configs in the root inventory remain identical; runtime additionally verifies other scanned configs and existing user preset unchanged."
+  ],
+  "delivery_image": "qa/confirmed_female_issues_actual_1x.png",
+  "delivery_sources": [
+    {
+      "path": "E:\\stacklands\\mods\\appearance\\portrait_symmetry_audit_20261109\\installation\\female_bald_b02_e03_face_1x.png",
+      "sha256": "594fda45e883270a375fdf68aa53780f9455943e8b41d3199df01f07f9c424f0",
+      "resized": false
+    },
+    {
+      "path": "E:\\stacklands\\mods\\appearance\\portrait_symmetry_audit_20261109\\installation\\female_hair_01_eye_03_face_1x.png",
+      "sha256": "41af5b0676934da2515454b88a23ddb00f9fdce7e74624083c925d18067848ec",
+      "resized": false
+    }
+  ],
+  "status": "readonly_audit_complete_two_findings_open_no_replacements"
+}

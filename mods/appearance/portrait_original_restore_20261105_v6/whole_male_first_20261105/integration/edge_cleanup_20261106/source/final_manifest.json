@@ -1,0 +1,167 @@
+{
+  "baseline": {
+    "records": [
+      {
+        "part": "eyebrows",
+        "sha256": "8ac9f6ca50335575f2d6302257a0e242e646dfb02903bae5c7aa65b69e45b3ea",
+        "before": "before\\eyebrows\\01.png",
+        "reference": "source\\eyebrows_reference.png",
+        "box": [
+          424,
+          326,
+          187,
+          31
+        ],
+        "factor": 4,
+        "insert": [
+          138,
+          450
+        ]
+      },
+      {
+        "part": "eyes",
+        "sha256": "ef89963e8e60872ef2bd367eeb012ab69f5e8608d46956a200cbd761e6ecebf1",
+        "before": "before\\eyes\\01.png",
+        "reference": "source\\eyes_reference.png",
+        "box": [
+          420,
+          348,
+          190,
+          34
+        ],
+        "factor": 4,
+        "insert": [
+          132,
+          444
+        ]
+      }
+    ],
+    "unchanged": {
+      "face_shape": "2fd9743feb92f3420355f46c83302f7e60de65892f9c09a8bbff9ce3e3afe7aa",
+      "nose": "af623a6fdc38766b28771e17582a2b308a5c1f7ec21de48e1b535e8ec6b2d139",
+      "mouth": "b92b059a925cad9440530733d7ca99400e4fc8563ac8a8d0c6517e6c870c30b3"
+    },
+    "origin": "CURRENT active, includes5px leftward alignment",
+    "project": "E:\\stacklands"
+  },
+  "records": [
+    {
+      "part": "eyebrows",
+      "before_sha256": "8ac9f6ca50335575f2d6302257a0e242e646dfb02903bae5c7aa65b69e45b3ea",
+      "sha256": "30b5863269415909d37dc6aa2d4c4bb60bc1ebaef72a1feef2b9605e30521dde",
+      "file": "male\\eyebrows\\01.png",
+      "native_source": "source/eyebrows_raw.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "native_mask_transform": {
+        "scale": 0.20951567695181486,
+        "target": [
+          514.5247896826909,
+          342.6777862389257
+        ],
+        "source": [
+          616.5839116294751,
+          635.6905168646254
+        ],
+        "landmarks": {
+          "old": [
+            [
+              463.13348843074846,
+              342.89642742182764
+            ],
+            [
+              565.9160909346333,
+              342.4591450560238
+            ]
+          ],
+          "native": [
+            [
+              371.29772589091783,
+              636.7962607920829
+            ],
+            [
+              861.8700973680324,
+              634.5847729371679
+            ]
+          ]
+        },
+        "tx": 385.3407940400434,
+        "ty": 209.49065726618466
+      },
+      "canvas": [
+        1024,
+        1536
+      ],
+      "original_core_pixels_preserved": 724,
+      "core_rgb_difference_count": 0,
+      "core_alpha_difference_count": 0,
+      "alpha_changed_pixels": 656,
+      "edge_rgb_changed_pixels": 103,
+      "isolated_matte_specks_removed": 2,
+      "position_changed": false,
+      "only_alpha_reduced": true
+    },
+    {
+      "part": "eyes",
+      "before_sha256": "ef89963e8e60872ef2bd367eeb012ab69f5e8608d46956a200cbd761e6ecebf1",
+      "sha256": "5dda037bd050c927c1d802fc696a54eb2a558fe9623cbab0c593e125b17f819d",
+      "file": "male\\eyes\\01.png",
+      "native_source": "source/eyes_raw.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "native_mask_transform": {
+        "scale": 0.2045815192991115,
+        "target": [
+          513.6878787878788,
+          361.97121212121215
+        ],
+        "source": [
+          622.14419270614,
+          615.838778588547
+        ],
+        "landmarks": {
+          "old": [
+            [
+              462.24242424242425,
+              362.24242424242425
+            ],
+            [
+              565.1333333333333,
+              361.7
+            ]
+          ],
+          "native": [
+            [
+              370.6774193548387,
+              615.3929618768328
+            ],
+            [
+              873.6109660574413,
+              616.2845953002611
+            ]
+          ]
+        },
+        "tx": 386.4086746209375,
+        "ty": 235.98197915425806
+      },
+      "canvas": [
+        1024,
+        1536
+      ],
+      "original_core_pixels_preserved": 883,
+      "core_rgb_difference_count": 0,
+      "core_alpha_difference_count": 0,
+      "alpha_changed_pixels": 851,
+      "edge_rgb_changed_pixels": 88,
+      "isolated_matte_specks_removed": 0,
+      "position_changed": false,
+      "only_alpha_reduced": true
+    }
+  ],
+  "status": "candidate only; active files untouched",
+  "method": "Built-in image_gen edge-only extraction; registered generated alpha trims existing mask, protects nonrectangular inner ink; tiny matte-edge RGB only"
+}

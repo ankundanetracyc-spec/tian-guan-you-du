@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="BeastModifier" load_steps=3 format=3]
+[gd_resource type="Resource" script_class="BeastModifier" load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://csharp/resources/BeastModifier.cs" id="1"]
 [ext_resource type="Resource" path="res://resources/beast_decks/血牙凶狼.tres" id="2"]
+[ext_resource type="Resource" path="res://resources/combat_boards/生灵/林地血牙凶狼固定盘.tres" id="3"]
 
 [resource]
 script = ExtResource("1")
@@ -10,3 +11,4 @@ display_name = "血牙凶狼"
 physique_multiplier = 1.08
 soul_multiplier = 1.035
 deck_override = ExtResource("2")
+combat_board_layout_override = ExtResource("3")

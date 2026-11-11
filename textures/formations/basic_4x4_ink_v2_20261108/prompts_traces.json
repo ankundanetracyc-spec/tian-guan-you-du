@@ -1,0 +1,58 @@
+{
+  "date": "2026-11-08",
+  "generator": "built-in image_gen",
+  "transparent_background": true,
+  "selected_style": "strict overhead ceramic-jade PCB conductors; fine etched cinnabar and smoky celadon energy channel",
+  "assets": [
+    {
+      "file": "signal_material.png",
+      "raw": "raw/signal_pcb_generated.png",
+      "prompt": "Use case: stylized-concept. Production asset: one narrow straight horizontally tileable material strip for strict overhead precision PCB-like routing on an ancient Chinese ceramic-jade circuit board. TRUE TRANSPARENT BACKGROUND. The conductor is a very thin, perfectly straight etched cinnabar-copper trace, a long continuous precision-manufactured conductive ribbon, not a rope, pipe or brushstroke. The strip spans the full image width, crosses both left/right canvas edges with continuous matching cross-section; absolutely no end caps or connectors. Very narrow physical vein: visible material thickness about 1/50th of image width, centered vertically. Low-relief dark muted cinnabar red mineral ink bonded to a microscopic copper etch channel, parallel sharply engineered edges with minute granular wear; two extremely fine darker red edge incisions and a subtle warm-red inner conductor, exquisite tiny material detail visible when magnified, completely flat orthographic overhead. Subdued fine shallow contact-level bevel only, no cast shadow. Keep the trace solid, continuous and straight, uniform narrow width with only microscopic edge grain. No slab or background, no text, runes, frames, corner, branches, large metal tube, woven fibers, knots, gems, neon glow, bright saturated orange, perspective, macro depth or UI diagram. Desired panoramic asset, about 2048x256.",
+      "crop": {
+        "x": 512,
+        "y": 352,
+        "width": 1120,
+        "height": 18
+      },
+      "edge_core_alpha": [
+        251,
+        252
+      ]
+    },
+    {
+      "file": "energy_material.png",
+      "raw": "raw/energy_pcb_generated.png",
+      "prompt": "Use case: stylized-concept. Production asset: one narrow straight horizontally tileable energy conductor material for strict overhead precision PCB-like routing on an ancient Chinese ceramic-jade substrate. TRUE TRANSPARENT BACKGROUND. A meticulously manufactured flat smoky celadon conductive microchannel with two precise parallel edge rails, hair-thin subdued pale blue-white center filament, and occasional extremely narrow flush pale-bronze cross-contact strips. Much more like an engraved semiconductor interconnect than a rope or natural mineral vein. The strip is perfectly horizontal, uniform and narrow, visible thickness about 1/40th image width, centered vertically, spanning the entire left and right canvas edges with matching continuous cross-section for seamless repeating. Micrograin smoky jade-blue enamel, tiny restrained copper etching, precision long parallel sides and hairline incision at each edge, extremely low relief, directly overhead orthographic with no perspective or deep extrusion. Copper cross-contact marks must be very fine flush planar etched lines, not rings around a pipe; cyan center is an embedded thin conductor, not lightning and not a bright glow. Color subdued grey-teal, smoky blue-green, pale blue-white core, dull aged copper. No text, symbols, connectors, endpoint, border, panel, backdrop, checkerboard, rock, irregular waving outline, twisted cord, fibers, tube, square metal conduit, gemstones, neon or electrical spark. Desired panoramic asset, about 2048x256.",
+      "crop": {
+        "x": 304,
+        "y": 345,
+        "width": 1552,
+        "height": 33
+      },
+      "edge_core_alpha": [
+        253,
+        253
+      ]
+    }
+  ],
+  "normalization": "Export selected continuous central tile from original generated RGBA pixels. Crop only; no redrawing, recoloring, alpha synthesis or edge blending. Select matching solid cross-sections at left/right boundaries to avoid repeated end caps.",
+  "history": [
+    {
+      "raw": "raw/signal_material_generated.png",
+      "prompt": "Use case: stylized-concept. Asset type: production material texture for an ancient cultivation game, intended to bend along a thin curved inscription. Generate ONE single perfectly horizontal continuous cinnabar inscription vein, a narrow repeating material strip, isolated on genuine transparent alpha. The vein runs the entire canvas width and exits flush at both left and right edges, with matching edges for seamless horizontal repetition; no rounded end caps, no endpoints, no terminals. Desired canvas 2048 by 256 panoramic; the strip itself centered vertically, with transparent margins above and below. Material: dark muted red cinnabar pigment rubbed into a shallow engraved groove on stone, fine etched parallel red-brown fissures and granular mineral edges, organically worn and tactile, delicate thin line rather than pipe, subtle dust-dark side fringes, very restrained fine warm highlights. Top-down orthographic material sample, no perspective, no cast drop shadow outside the thin vein. Color palette deep desaturated brick red, oxidized vermilion, tiny subdued earth-orange mineral flecks. Avoid flat vector strokes, modern wire, neon, white background, stone slab background, checkerboard, typography, runes, letters, symbols, border, labels, endpoint rings, connector, branching or any bends. Only the continuously straight, detailed cinnabar trace texture.",
+      "selected": false,
+      "reason": "superseded by user request for a more precise overhead CPU/PCB surface"
+    },
+    {
+      "raw": "raw/energy_material_generated.png",
+      "prompt": "Use case: stylized-concept. Asset type: production material texture for an ancient cultivation game, intended to bend along a curved energy vein. Generate ONE single perfectly horizontal continuous smoky blue-green spirit marrow vein, a narrow repeating material strip, isolated on genuine transparent alpha. The vein runs the entire canvas width and exits flush at both left and right edges, with matching edges for seamless horizontal repetition; no rounded end caps, no endpoints, no terminals. Desired canvas 2048 by 256 panoramic; the strip itself centered vertically, with transparent margins above and below. Material: a rounded organic semi-translucent smoky celadon mineral channel with a hair-thin pale blue-white luminous core embedded inside it, modest subdued light only, not neon. Faint interrupted aged bronze compression grooves laid across its width at irregular spaced intervals, only small partial bronze cuts embedded into the mineral, not a continuous frame or rectangular metal conduit. Tactile worn jade and spirit quartz, muted deep teal-grey edges, ivory-cyan filament with mineral grain, softly irregular edges, top-down orthographic material sample without perspective. Avoid modern wires, flat UI color bar, metal square pipe, machinery, neon halo, white background, slab background, checkerboard, text, symbols, border, connector, end caps, branches or bends. Only the continuously straight detailed spirit vein texture.",
+      "selected": false,
+      "reason": "superseded by user request for a more precise overhead CPU/PCB surface"
+    }
+  ],
+  "rejected_edit": {
+    "prompt": "Edit only the provided overhead energy-conductor material strip. Remove the tiny saturated green and yellow fringing specks along its two outer edges. The outer edges should instead be clean subtly worn dark smoky blue-grey with genuine transparent alpha immediately outside. Keep the very narrow, perfectly straight PCB microchannel, its exact left-to-right continuous full-width placement, flush tiny bronze cross-contact lines, pale cyan-white fine center filament, restrained subdued grey-celadon color, and all existing inner texture. Do not add a background, do not thicken, do not add glow, no green or yellow neon, no endpoints, no words. Preserve real transparency and the current framing.",
+    "selected": false,
+    "reason": "Builtin edit introduced extraneous backdrop; not copied or used. Final energy texture uses the original second-generation PNG; its slight visible fringe has no saturated green pixels above alpha16."
+  }
+}

@@ -2,7 +2,7 @@
 from pathlib import Path
 import re,json,math
 ROOT=Path(__file__).resolve().parents[1]
-TARGET=ROOT/'docs/plans/善功堂临时贡献价_20261030.json'
+TARGET=ROOT/'docs/plans/物品与装备/善功堂临时贡献价_20261030.json'
 defaults={'材料':10,'秘籍':15,'器物':30,'丹药':10,'装备':20,'阵盘':60,'器具':10,'符箓':8,'灵膳':5}
 pill_prices=[5,8,12,18,25]
 def text(path):return path.read_text(encoding='utf-8-sig')

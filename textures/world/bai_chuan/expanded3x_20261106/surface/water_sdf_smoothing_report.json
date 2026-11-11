@@ -1,0 +1,782 @@
+{
+  "method": "Gaussian signed distance plus topology-preserving local simple-point guard",
+  "sigma_source_pixels": 1.4,
+  "native_size": [
+    3762,
+    3762
+  ],
+  "proposed_zero_sign_changes": 1007,
+  "accepted_zero_sign_changes": 949,
+  "topology_guarded_pixels": 58,
+  "final_zero_sign_changed_pixels": 949,
+  "changed_water_pixels_to_land": 291,
+  "changed_land_pixels_to_water": 658,
+  "topology_before": {
+    "water_4": 7,
+    "water_8": 7,
+    "land_4": 50,
+    "land_8": 50
+  },
+  "topology_after": {
+    "water_4": 7,
+    "water_8": 7,
+    "land_4": 50,
+    "land_8": 50
+  },
+  "topology_unchanged": true,
+  "maximum_shore_displacement_source_pixels": 7.814249804043892,
+  "shore_displacement_measurement": "Bidirectional nearest subpixel zero intersections on horizontal/vertical source-pixel edges (sampled contour distance)",
+  "exact_to_smooth_max_source_pixels": 7.814249804043892,
+  "smooth_to_exact_max_source_pixels": 1.2018507337400284,
+  "shore_displacement_p99_source_pixels": 0.7500002384185791,
+  "max_original_absolute_sdf_at_changed_pixel_centers": 1.4142135381698608,
+  "source_pixel_world_size": 5.879425837320574,
+  "exact_source_and_navigation_unchanged": true,
+  "retreat_samples_over_2_source_pixels": [
+    {
+      "source_position": [
+        3562.0,
+        216.5
+      ],
+      "distance_source_pixels": 2.5999996478741028
+    },
+    {
+      "source_position": [
+        3615.0,
+        613.5
+      ],
+      "distance_source_pixels": 2.23606797749979
+    },
+    {
+      "source_position": [
+        3662.0,
+        901.5
+      ],
+      "distance_source_pixels": 2.3999995961785316
+    },
+    {
+      "source_position": [
+        1739.0,
+        948.5
+      ],
+      "distance_source_pixels": 2.5999996478741028
+    },
+    {
+      "source_position": [
+        1677.0,
+        1094.5
+      ],
+      "distance_source_pixels": 2.599999627241726
+    },
+    {
+      "source_position": [
+        575.0,
+        1321.5
+      ],
+      "distance_source_pixels": 3.75
+    },
+    {
+      "source_position": [
+        571.0,
+        1322.5
+      ],
+      "distance_source_pixels": 7.814249804043892
+    },
+    {
+      "source_position": [
+        2699.0,
+        1467.5
+      ],
+      "distance_source_pixels": 2.5769404254732464
+    },
+    {
+      "source_position": [
+        2694.0,
+        1468.5
+      ],
+      "distance_source_pixels": 2.416666269302368
+    },
+    {
+      "source_position": [
+        2700.0,
+        1468.5
+      ],
+      "distance_source_pixels": 3.3749993592500687
+    },
+    {
+      "source_position": [
+        3584.0,
+        1590.5
+      ],
+      "distance_source_pixels": 2.109260523393618
+    },
+    {
+      "source_position": [
+        3504.0,
+        2002.5
+      ],
+      "distance_source_pixels": 2.0700618169271543
+    },
+    {
+      "source_position": [
+        2820.0,
+        2097.5
+      ],
+      "distance_source_pixels": 2.161853381904129
+    },
+    {
+      "source_position": [
+        3210.0,
+        2137.5
+      ],
+      "distance_source_pixels": 4.447220812645196
+    },
+    {
+      "source_position": [
+        3211.0,
+        2138.5
+      ],
+      "distance_source_pixels": 3.3333327770233154
+    },
+    {
+      "source_position": [
+        3243.0,
+        2152.5
+      ],
+      "distance_source_pixels": 3.1001788773082146
+    },
+    {
+      "source_position": [
+        3242.0,
+        2153.5
+      ],
+      "distance_source_pixels": 3.2058968519518296
+    },
+    {
+      "source_position": [
+        3244.0,
+        2153.5
+      ],
+      "distance_source_pixels": 4.503085012006175
+    },
+    {
+      "source_position": [
+        3243.0,
+        2154.5
+      ],
+      "distance_source_pixels": 4.576509606610838
+    },
+    {
+      "source_position": [
+        3245.0,
+        2154.5
+      ],
+      "distance_source_pixels": 5.911382256241029
+    },
+    {
+      "source_position": [
+        3275.0,
+        2194.5
+      ],
+      "distance_source_pixels": 2.449999749660492
+    },
+    {
+      "source_position": [
+        3281.0,
+        2195.5
+      ],
+      "distance_source_pixels": 3.5800005652823876
+    },
+    {
+      "source_position": [
+        3596.0,
+        2439.5
+      ],
+      "distance_source_pixels": 2.75
+    },
+    {
+      "source_position": [
+        3603.0,
+        2439.5
+      ],
+      "distance_source_pixels": 2.3333327770233154
+    },
+    {
+      "source_position": [
+        3597.0,
+        2440.5
+      ],
+      "distance_source_pixels": 2.0155644370746373
+    },
+    {
+      "source_position": [
+        2961.0,
+        2570.5
+      ],
+      "distance_source_pixels": 2.57694041173981
+    },
+    {
+      "source_position": [
+        2830.0,
+        2579.5
+      ],
+      "distance_source_pixels": 2.23606797749979
+    },
+    {
+      "source_position": [
+        2831.0,
+        2580.5
+      ],
+      "distance_source_pixels": 2.7950837110455917
+    },
+    {
+      "source_position": [
+        2832.0,
+        2580.5
+      ],
+      "distance_source_pixels": 2.7950837110455917
+    },
+    {
+      "source_position": [
+        1123.0,
+        2960.5
+      ],
+      "distance_source_pixels": 2.599999627241726
+    },
+    {
+      "source_position": [
+        1123.0,
+        2961.5
+      ],
+      "distance_source_pixels": 2.3999995961785316
+    },
+    {
+      "source_position": [
+        1101.0,
+        2978.5
+      ],
+      "distance_source_pixels": 2.2499987483024597
+    },
+    {
+      "source_position": [
+        1101.0,
+        2979.5
+      ],
+      "distance_source_pixels": 2.462213306633411
+    },
+    {
+      "source_position": [
+        3562.5,
+        217.0
+      ],
+      "distance_source_pixels": 2.4207433879730385
+    },
+    {
+      "source_position": [
+        3615.5,
+        614.0
+      ],
+      "distance_source_pixels": 2.10818528269966
+    },
+    {
+      "source_position": [
+        1739.5,
+        949.0
+      ],
+      "distance_source_pixels": 2.3584946038208323
+    },
+    {
+      "source_position": [
+        1676.5,
+        1094.0
+      ],
+      "distance_source_pixels": 2.35849461961602
+    },
+    {
+      "source_position": [
+        575.5,
+        1321.0
+      ],
+      "distance_source_pixels": 3.2882366094914763
+    },
+    {
+      "source_position": [
+        576.5,
+        1321.0
+      ],
+      "distance_source_pixels": 2.3048861143232218
+    },
+    {
+      "source_position": [
+        571.5,
+        1322.0
+      ],
+      "distance_source_pixels": 7.267220926874317
+    },
+    {
+      "source_position": [
+        572.5,
+        1322.0
+      ],
+      "distance_source_pixels": 6.269968101992227
+    },
+    {
+      "source_position": [
+        573.5,
+        1322.0
+      ],
+      "distance_source_pixels": 5.273755777432247
+    },
+    {
+      "source_position": [
+        574.5,
+        1322.0
+      ],
+      "distance_source_pixels": 4.2793106921559225
+    },
+    {
+      "source_position": [
+        571.5,
+        1323.0
+      ],
+      "distance_source_pixels": 7.403546447480424
+    },
+    {
+      "source_position": [
+        572.5,
+        1323.0
+      ],
+      "distance_source_pixels": 6.427480066091221
+    },
+    {
+      "source_position": [
+        573.5,
+        1323.0
+      ],
+      "distance_source_pixels": 5.460082416960389
+    },
+    {
+      "source_position": [
+        574.5,
+        1323.0
+      ],
+      "distance_source_pixels": 4.5069390943299865
+    },
+    {
+      "source_position": [
+        575.5,
+        1323.0
+      ],
+      "distance_source_pixels": 3.5794552658190883
+    },
+    {
+      "source_position": [
+        576.5,
+        1323.0
+      ],
+      "distance_source_pixels": 2.704163456597992
+    },
+    {
+      "source_position": [
+        2698.5,
+        1467.0
+      ],
+      "distance_source_pixels": 2.4011710886957154
+    },
+    {
+      "source_position": [
+        2699.5,
+        1468.0
+      ],
+      "distance_source_pixels": 2.918153751207826
+    },
+    {
+      "source_position": [
+        2699.5,
+        1469.0
+      ],
+      "distance_source_pixels": 2.918153751207826
+    },
+    {
+      "source_position": [
+        3607.5,
+        1563.0
+      ],
+      "distance_source_pixels": 2.1999987959861755
+    },
+    {
+      "source_position": [
+        3210.5,
+        2137.0
+      ],
+      "distance_source_pixels": 4.11636249368314
+    },
+    {
+      "source_position": [
+        3211.5,
+        2137.0
+      ],
+      "distance_source_pixels": 3.2058968519518296
+    },
+    {
+      "source_position": [
+        3212.5,
+        2137.0
+      ],
+      "distance_source_pixels": 2.3687779700318097
+    },
+    {
+      "source_position": [
+        3210.5,
+        2138.0
+      ],
+      "distance_source_pixels": 3.8658039499438255
+    },
+    {
+      "source_position": [
+        3211.5,
+        2139.0
+      ],
+      "distance_source_pixels": 2.8771122024270537
+    },
+    {
+      "source_position": [
+        3242.5,
+        2152.0
+      ],
+      "distance_source_pixels": 2.4037005417240946
+    },
+    {
+      "source_position": [
+        3241.5,
+        2153.0
+      ],
+      "distance_source_pixels": 2.5385905239583906
+    },
+    {
+      "source_position": [
+        3243.5,
+        2153.0
+      ],
+      "distance_source_pixels": 3.8005844087891716
+    },
+    {
+      "source_position": [
+        3242.5,
+        2154.0
+      ],
+      "distance_source_pixels": 3.887300786198306
+    },
+    {
+      "source_position": [
+        3244.5,
+        2154.0
+      ],
+      "distance_source_pixels": 5.2068327611301255
+    },
+    {
+      "source_position": [
+        3243.5,
+        2155.0
+      ],
+      "distance_source_pixels": 5.270462309553555
+    },
+    {
+      "source_position": [
+        3244.5,
+        2155.0
+      ],
+      "distance_source_pixels": 5.897268262206206
+    },
+    {
+      "source_position": [
+        3275.5,
+        2194.0
+      ],
+      "distance_source_pixels": 2.0130819714249046
+    },
+    {
+      "source_position": [
+        3275.5,
+        2195.0
+      ],
+      "distance_source_pixels": 2.0130819714249046
+    },
+    {
+      "source_position": [
+        3279.5,
+        2195.0
+      ],
+      "distance_source_pixels": 2.0009760139859525
+    },
+    {
+      "source_position": [
+        3280.5,
+        2195.0
+      ],
+      "distance_source_pixels": 2.9797490444326313
+    },
+    {
+      "source_position": [
+        3279.5,
+        2196.0
+      ],
+      "distance_source_pixels": 2.4502867196610096
+    },
+    {
+      "source_position": [
+        3280.5,
+        2196.0
+      ],
+      "distance_source_pixels": 3.2983184151620626
+    },
+    {
+      "source_position": [
+        3596.5,
+        2439.0
+      ],
+      "distance_source_pixels": 2.3048861143232218
+    },
+    {
+      "source_position": [
+        3596.5,
+        2440.0
+      ],
+      "distance_source_pixels": 2.3048861143232218
+    },
+    {
+      "source_position": [
+        2961.5,
+        2570.0
+      ],
+      "distance_source_pixels": 2.4011710770598653
+    },
+    {
+      "source_position": [
+        2830.5,
+        2580.0
+      ],
+      "distance_source_pixels": 2.462213279399707
+    },
+    {
+      "source_position": [
+        2831.5,
+        2581.0
+      ],
+      "distance_source_pixels": 3.2499987185001373
+    },
+    {
+      "source_position": [
+        1653.5,
+        2717.0
+      ],
+      "distance_source_pixels": 2.249999165534973
+    },
+    {
+      "source_position": [
+        1122.5,
+        2960.0
+      ],
+      "distance_source_pixels": 2.420743370429543
+    },
+    {
+      "source_position": [
+        1101.5,
+        2980.0
+      ],
+      "distance_source_pixels": 2.304885163963744
+    }
+  ],
+  "bridge_end_footings": [
+    {
+      "bridge": "bc_bridge_001",
+      "end": 0,
+      "position": [
+        905.0612161863208,
+        4750.501460697171
+      ],
+      "smooth_signed_distance_source_pixels": 12.0,
+      "on_rendered_land": true
+    },
+    {
+      "bridge": "bc_bridge_001",
+      "end": 1,
+      "position": [
+        1075.0918506372416,
+        4363.754312639271
+      ],
+      "smooth_signed_distance_source_pixels": 12.0,
+      "on_rendered_land": true
+    },
+    {
+      "bridge": "bc_bridge_002",
+      "end": 0,
+      "position": [
+        5324.8524307047965,
+        5112.727072224979
+      ],
+      "smooth_signed_distance_source_pixels": 12.0,
+      "on_rendered_land": true
+    },
+    {
+      "bridge": "bc_bridge_002",
+      "end": 1,
+      "position": [
+        5513.409751052899,
+        4684.703020253145
+      ],
+      "smooth_signed_distance_source_pixels": 12.0,
+      "on_rendered_land": true
+    },
+    {
+      "bridge": "bc_bridge_003",
+      "end": 0,
+      "position": [
+        10830.161777002988,
+        7045.858858280477
+      ],
+      "smooth_signed_distance_source_pixels": 12.0,
+      "on_rendered_land": true
+    },
+    {
+      "bridge": "bc_bridge_003",
+      "end": 1,
+      "position": [
+        11134.354210494264,
+        6722.85763738688
+      ],
+      "smooth_signed_distance_source_pixels": 4.96833610534668,
+      "on_rendered_land": true
+    },
+    {
+      "bridge": "bc_bridge_004",
+      "end": 0,
+      "position": [
+        4428.977556142415,
+        8060.409280191194
+      ],
+      "smooth_signed_distance_source_pixels": 12.0,
+      "on_rendered_land": true
+    },
+    {
+      "bridge": "bc_bridge_004",
+      "end": 1,
+      "position": [
+        4654.244213359362,
+        8442.47893566857
+      ],
+      "smooth_signed_distance_source_pixels": 12.0,
+      "on_rendered_land": true
+    },
+    {
+      "bridge": "bc_bridge_005",
+      "end": 0,
+      "position": [
+        16367.981736888974,
+        9963.3744535653
+      ],
+      "smooth_signed_distance_source_pixels": 12.0,
+      "on_rendered_land": true
+    },
+    {
+      "bridge": "bc_bridge_005",
+      "end": 1,
+      "position": [
+        16534.390513562517,
+        9572.15075403986
+      ],
+      "smooth_signed_distance_source_pixels": 12.0,
+      "on_rendered_land": true
+    },
+    {
+      "bridge": "bc_bridge_006",
+      "end": 0,
+      "position": [
+        9023.854413776942,
+        11357.648538374284
+      ],
+      "smooth_signed_distance_source_pixels": 12.0,
+      "on_rendered_land": true
+    },
+    {
+      "bridge": "bc_bridge_006",
+      "end": 1,
+      "position": [
+        9231.123834293647,
+        10927.442341575565
+      ],
+      "smooth_signed_distance_source_pixels": 12.0,
+      "on_rendered_land": true
+    },
+    {
+      "bridge": "bc_bridge_007",
+      "end": 0,
+      "position": [
+        15901.879612326653,
+        12657.005586507888
+      ],
+      "smooth_signed_distance_source_pixels": 12.0,
+      "on_rendered_land": true
+    },
+    {
+      "bridge": "bc_bridge_007",
+      "end": 1,
+      "position": [
+        16314.538079923112,
+        12696.301576271524
+      ],
+      "smooth_signed_distance_source_pixels": 12.0,
+      "on_rendered_land": true
+    },
+    {
+      "bridge": "bc_bridge_008",
+      "end": 0,
+      "position": [
+        1001.3343624937601,
+        13683.19950461168
+      ],
+      "smooth_signed_distance_source_pixels": 12.0,
+      "on_rendered_land": true
+    },
+    {
+      "bridge": "bc_bridge_008",
+      "end": 1,
+      "position": [
+        1182.7430522973614,
+        13289.081941002758
+      ],
+      "smooth_signed_distance_source_pixels": 12.0,
+      "on_rendered_land": true
+    },
+    {
+      "bridge": "bc_bridge_009",
+      "end": 0,
+      "position": [
+        8000.409175471129,
+        18809.222154360938
+      ],
+      "smooth_signed_distance_source_pixels": 12.0,
+      "on_rendered_land": true
+    },
+    {
+      "bridge": "bc_bridge_009",
+      "end": 1,
+      "position": [
+        8006.913849571659,
+        19099.428232128346
+      ],
+      "smooth_signed_distance_source_pixels": 11.934830665588379,
+      "on_rendered_land": true
+    }
+  ],
+  "all_bridge_ends_on_rendered_land": true,
+  "navigation_review": "res://textures/world/bai_chuan/expanded3x_20261106/surface/water_sdf_navigation_review.json",
+  "newly_flooded_old_land_cell_centers": 0,
+  "all_123_original_location_entries_on_rendered_land": true,
+  "navigation_and_bridge_fields_unchanged": [
+    "water_rows",
+    "bridge_open_rows",
+    "bridge_catalog",
+    "bridges"
+  ]
+}

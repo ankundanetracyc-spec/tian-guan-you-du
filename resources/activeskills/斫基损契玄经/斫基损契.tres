@@ -10,4 +10,4 @@ slot_category = "passive"
 icon_path = "res://textures/ui/combat/status_icons/心法_斫基损契_v1.png"
 source_gongfa_name = "斫基损契玄经"
 tags = Array[String](["周天"])
-description = "法力不足的部分，可燃烧等量法力上限支付，至少保留1点法力上限；无法补足费用时，不可施展。"
+description = "心法被动：斫基损契\n关键词：周天\n效果：法力不足的部分，可燃烧等量法力上限支付，至少保留1点法力上限；无法补足费用时，不可施展。\n主修额外效果：曾以燃烧法力上限支付过费用的技能，本场后续施展时，以等量体力替代法力费用。"

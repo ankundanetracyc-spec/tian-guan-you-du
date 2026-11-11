@@ -11,8 +11,8 @@ from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
-PARAMETERS = ROOT / "docs/plans/剑类炼器首轮试算参数_20261021.json"
-REPORT = ROOT / "docs/plans/剑类炼器首轮试算结果_20261021.md"
+PARAMETERS = ROOT / "docs/plans/百工技艺/炼器/剑类炼器首轮试算参数_20261021.json"
+REPORT = ROOT / "docs/plans/百工技艺/炼器/剑类炼器首轮试算结果_20261021.md"
 CYCLE = ["木", "火", "土", "金", "水"]
 POLARITIES = ["至阴", "阴", "偏阴", "和", "偏阳", "阳", "至阳"]
 

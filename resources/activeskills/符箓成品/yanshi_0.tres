@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ActiveSkillData" format=3]
+
+[ext_resource type="Script" path="res://csharp/gongfa/ActiveSkillData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+combat_source_key = "talisman:yanshi:0"
+skill_name = "炎矢符"
+skill_type = 0
+icon_path = "res://textures/ui/talisman_crafting_painted_20261109/yanshi.png"
+description = "对一名随机敌人造成8点远程物理伤害。"
+energy_cost = 1
+mana_cost = 0
+spirit_occupy = 0
+target_type = 2
+range_min = 0
+range_max = 0
+attack_style = "ranged"
+damage_type = "physical"
+base_damage = 8.0
+

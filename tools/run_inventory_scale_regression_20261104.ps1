@@ -8,14 +8,14 @@ New-Item -ItemType Directory -Force -Path $inventoryLogs | Out-Null
 $env:DOTNET_ROOT = Join-Path $inventoryRuntime 'dotnet'
 $env:DOTNET_ROLL_FORWARD = 'LatestMinor'
 $inventoryCases = @(
-    @{ Name='ring_final'; Scene='StorageRingInventorySmoke'; Marker='STORAGE_RING_SMOKE_OK' },
-    @{ Name='ring_restart'; Scene='StorageRingInventorySmoke'; Marker='STORAGE_RING_RESTART_OK'; Args=@('--read-ring-save') },
+    @{ Name='ring_final'; Scene='StorageBagInventorySmoke'; Marker='STORAGE_BAG_SMOKE_OK' },
+    @{ Name='ring_restart'; Scene='StorageBagInventorySmoke'; Marker='STORAGE_BAG_RESTART_OK'; Args=@('--read-bag-save') },
     @{ Name='spatial_model'; Scene='SpatialInventoryNativeSmoke'; Marker='SPATIAL_NATIVE_MODEL:' },
     @{ Name='inventory_ui'; Scene='InventoryNativeUiSmoke'; Marker='INVENTORY_NATIVE_UI_SMOKE_OK' },
     @{ Name='trade'; Scene='TradeNativeIntegrationSmoke'; Marker='NATIVE_TRADE_INTEGRATION_OK' },
     @{ Name='claim'; Scene='ItemClaimSpatialNativeSmoke'; Marker='ITEM_CLAIM' }
 )
-if ($IncludeWindow) { $inventoryCases += @{ Name='ring_window_final'; Scene='StorageRingInventorySmoke'; Marker='STORAGE_RING_SMOKE_OK'; Window=$true } }
+if ($IncludeWindow) { $inventoryCases += @{ Name='ring_window_final'; Scene='StorageBagInventorySmoke'; Marker='STORAGE_BAG_SMOKE_OK'; Window=$true } }
 foreach ($inventoryCase in $inventoryCases) {
     $inventoryStdout = Join-Path $inventoryLogs ($inventoryCase.Name + '.stdout.log')
     $inventoryStderr = Join-Path $inventoryLogs ($inventoryCase.Name + '.stderr.log')

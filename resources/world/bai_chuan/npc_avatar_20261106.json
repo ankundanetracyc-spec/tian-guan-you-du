@@ -1,0 +1,899 @@
+{
+	"animations": {
+		"idle_left": {
+			"duration": 1.63333332538605,
+			"fps": 9.79591841501079,
+			"frames": [
+				32,
+				33,
+				34,
+				35,
+				36,
+				37,
+				38,
+				39,
+				40,
+				41,
+				42,
+				43,
+				44,
+				45,
+				46,
+				47
+			],
+			"source_clip": "Idle"
+		},
+		"idle_right": {
+			"duration": 1.63333332538605,
+			"fps": 9.79591841501079,
+			"frames": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14,
+				15
+			],
+			"source_clip": "Idle"
+		},
+		"walk_left": {
+			"duration": 0.583333313465118,
+			"fps": 27.428572362783,
+			"frames": [
+				48,
+				49,
+				50,
+				51,
+				52,
+				53,
+				54,
+				55,
+				56,
+				57,
+				58,
+				59,
+				60,
+				61,
+				62,
+				63
+			],
+			"source_clip": "Run_New1"
+		},
+		"walk_right": {
+			"duration": 0.583333313465118,
+			"fps": 27.428572362783,
+			"frames": [
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29,
+				30,
+				31
+			],
+			"source_clip": "Run_New1"
+		}
+	},
+	"appearance": "current_world_player_native_101",
+	"atlas": "res://textures/world/bai_chuan/npc_native_20261106/avatar_atlas.png",
+	"atlas_sha256": "309eb66a768e521b60549a2263b3987d7c9bb4e2e2768e9e5aecf25a144b3fa1",
+	"columns": 8,
+	"frame_audit": [
+		{
+			"clip": "Idle",
+			"direction": "right",
+			"phase": 0.0,
+			"slot": 0,
+			"used_rect": [
+				77,
+				16,
+				43,
+				130
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "right",
+			"phase": 0.0625,
+			"slot": 1,
+			"used_rect": [
+				77,
+				16,
+				44,
+				130
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "right",
+			"phase": 0.125,
+			"slot": 2,
+			"used_rect": [
+				77,
+				16,
+				43,
+				130
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "right",
+			"phase": 0.1875,
+			"slot": 3,
+			"used_rect": [
+				77,
+				16,
+				43,
+				130
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "right",
+			"phase": 0.25,
+			"slot": 4,
+			"used_rect": [
+				76,
+				17,
+				43,
+				129
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "right",
+			"phase": 0.3125,
+			"slot": 5,
+			"used_rect": [
+				75,
+				17,
+				44,
+				129
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "right",
+			"phase": 0.375,
+			"slot": 6,
+			"used_rect": [
+				75,
+				17,
+				44,
+				129
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "right",
+			"phase": 0.4375,
+			"slot": 7,
+			"used_rect": [
+				74,
+				17,
+				45,
+				129
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "right",
+			"phase": 0.5,
+			"slot": 8,
+			"used_rect": [
+				74,
+				17,
+				45,
+				129
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "right",
+			"phase": 0.5625,
+			"slot": 9,
+			"used_rect": [
+				74,
+				17,
+				45,
+				129
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "right",
+			"phase": 0.625,
+			"slot": 10,
+			"used_rect": [
+				74,
+				17,
+				45,
+				129
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "right",
+			"phase": 0.6875,
+			"slot": 11,
+			"used_rect": [
+				75,
+				17,
+				44,
+				129
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "right",
+			"phase": 0.75,
+			"slot": 12,
+			"used_rect": [
+				75,
+				17,
+				44,
+				129
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "right",
+			"phase": 0.8125,
+			"slot": 13,
+			"used_rect": [
+				76,
+				16,
+				43,
+				130
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "right",
+			"phase": 0.875,
+			"slot": 14,
+			"used_rect": [
+				77,
+				16,
+				42,
+				130
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "right",
+			"phase": 0.9375,
+			"slot": 15,
+			"used_rect": [
+				77,
+				16,
+				43,
+				130
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "right",
+			"phase": 0.0,
+			"slot": 16,
+			"used_rect": [
+				51,
+				15,
+				88,
+				131
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "right",
+			"phase": 0.0625,
+			"slot": 17,
+			"used_rect": [
+				44,
+				17,
+				95,
+				129
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "right",
+			"phase": 0.125,
+			"slot": 18,
+			"used_rect": [
+				37,
+				22,
+				102,
+				124
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "right",
+			"phase": 0.1875,
+			"slot": 19,
+			"used_rect": [
+				29,
+				20,
+				109,
+				125
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "right",
+			"phase": 0.25,
+			"slot": 20,
+			"used_rect": [
+				29,
+				23,
+				108,
+				123
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "right",
+			"phase": 0.3125,
+			"slot": 21,
+			"used_rect": [
+				37,
+				21,
+				102,
+				125
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "right",
+			"phase": 0.375,
+			"slot": 22,
+			"used_rect": [
+				48,
+				18,
+				86,
+				128
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "right",
+			"phase": 0.4375,
+			"slot": 23,
+			"used_rect": [
+				51,
+				14,
+				82,
+				132
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "right",
+			"phase": 0.5,
+			"slot": 24,
+			"used_rect": [
+				51,
+				13,
+				81,
+				133
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "right",
+			"phase": 0.5625,
+			"slot": 25,
+			"used_rect": [
+				35,
+				22,
+				97,
+				124
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "right",
+			"phase": 0.625,
+			"slot": 26,
+			"used_rect": [
+				22,
+				22,
+				109,
+				124
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "right",
+			"phase": 0.6875,
+			"slot": 27,
+			"used_rect": [
+				24,
+				21,
+				108,
+				125
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "right",
+			"phase": 0.75,
+			"slot": 28,
+			"used_rect": [
+				29,
+				20,
+				106,
+				126
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "right",
+			"phase": 0.8125,
+			"slot": 29,
+			"used_rect": [
+				34,
+				16,
+				101,
+				130
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "right",
+			"phase": 0.875,
+			"slot": 30,
+			"used_rect": [
+				39,
+				14,
+				98,
+				132
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "right",
+			"phase": 0.9375,
+			"slot": 31,
+			"used_rect": [
+				50,
+				17,
+				88,
+				129
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "left",
+			"phase": 0.0,
+			"slot": 32,
+			"used_rect": [
+				72,
+				16,
+				43,
+				130
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "left",
+			"phase": 0.0625,
+			"slot": 33,
+			"used_rect": [
+				71,
+				16,
+				44,
+				130
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "left",
+			"phase": 0.125,
+			"slot": 34,
+			"used_rect": [
+				72,
+				16,
+				43,
+				130
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "left",
+			"phase": 0.1875,
+			"slot": 35,
+			"used_rect": [
+				72,
+				16,
+				43,
+				130
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "left",
+			"phase": 0.25,
+			"slot": 36,
+			"used_rect": [
+				73,
+				17,
+				43,
+				129
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "left",
+			"phase": 0.3125,
+			"slot": 37,
+			"used_rect": [
+				73,
+				17,
+				44,
+				129
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "left",
+			"phase": 0.375,
+			"slot": 38,
+			"used_rect": [
+				73,
+				17,
+				44,
+				129
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "left",
+			"phase": 0.4375,
+			"slot": 39,
+			"used_rect": [
+				73,
+				17,
+				45,
+				129
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "left",
+			"phase": 0.5,
+			"slot": 40,
+			"used_rect": [
+				73,
+				17,
+				45,
+				129
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "left",
+			"phase": 0.5625,
+			"slot": 41,
+			"used_rect": [
+				73,
+				17,
+				45,
+				129
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "left",
+			"phase": 0.625,
+			"slot": 42,
+			"used_rect": [
+				73,
+				17,
+				45,
+				129
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "left",
+			"phase": 0.6875,
+			"slot": 43,
+			"used_rect": [
+				73,
+				17,
+				44,
+				129
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "left",
+			"phase": 0.75,
+			"slot": 44,
+			"used_rect": [
+				73,
+				17,
+				44,
+				129
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "left",
+			"phase": 0.8125,
+			"slot": 45,
+			"used_rect": [
+				73,
+				16,
+				43,
+				130
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "left",
+			"phase": 0.875,
+			"slot": 46,
+			"used_rect": [
+				73,
+				16,
+				42,
+				130
+			]
+		},
+		{
+			"clip": "Idle",
+			"direction": "left",
+			"phase": 0.9375,
+			"slot": 47,
+			"used_rect": [
+				72,
+				16,
+				43,
+				130
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "left",
+			"phase": 0.0,
+			"slot": 48,
+			"used_rect": [
+				53,
+				15,
+				88,
+				131
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "left",
+			"phase": 0.0625,
+			"slot": 49,
+			"used_rect": [
+				53,
+				17,
+				95,
+				129
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "left",
+			"phase": 0.125,
+			"slot": 50,
+			"used_rect": [
+				53,
+				22,
+				102,
+				124
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "left",
+			"phase": 0.1875,
+			"slot": 51,
+			"used_rect": [
+				54,
+				20,
+				109,
+				125
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "left",
+			"phase": 0.25,
+			"slot": 52,
+			"used_rect": [
+				55,
+				23,
+				108,
+				123
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "left",
+			"phase": 0.3125,
+			"slot": 53,
+			"used_rect": [
+				53,
+				21,
+				102,
+				125
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "left",
+			"phase": 0.375,
+			"slot": 54,
+			"used_rect": [
+				58,
+				18,
+				86,
+				128
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "left",
+			"phase": 0.4375,
+			"slot": 55,
+			"used_rect": [
+				59,
+				14,
+				82,
+				132
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "left",
+			"phase": 0.5,
+			"slot": 56,
+			"used_rect": [
+				60,
+				13,
+				81,
+				133
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "left",
+			"phase": 0.5625,
+			"slot": 57,
+			"used_rect": [
+				60,
+				22,
+				97,
+				124
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "left",
+			"phase": 0.625,
+			"slot": 58,
+			"used_rect": [
+				61,
+				22,
+				109,
+				124
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "left",
+			"phase": 0.6875,
+			"slot": 59,
+			"used_rect": [
+				60,
+				21,
+				108,
+				125
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "left",
+			"phase": 0.75,
+			"slot": 60,
+			"used_rect": [
+				57,
+				20,
+				106,
+				126
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "left",
+			"phase": 0.8125,
+			"slot": 61,
+			"used_rect": [
+				57,
+				16,
+				101,
+				130
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "left",
+			"phase": 0.875,
+			"slot": 62,
+			"used_rect": [
+				55,
+				14,
+				98,
+				132
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"direction": "left",
+			"phase": 0.9375,
+			"slot": 63,
+			"used_rect": [
+				54,
+				17,
+				88,
+				129
+			]
+		}
+	],
+	"frame_size": [
+		192,
+		160
+	],
+	"pivot": [
+		96.0,
+		144.0
+	],
+	"source_files": {
+		"res://gdscripts/world/WorldActionTraveler.gd": "f0ef541dccd6129f72f53b7252bfef734f857dacefb33438b7a43b5c25ef224c",
+		"res://resources/appearance/guigu_native_first_20261105/animations.json": "b8131a73445fafd7c850382a74fc720171325a52809e8779d7053c6147675063",
+		"res://resources/appearance/guigu_native_first_20261105/grounding_profile.json": "5bb2928ba34bdbe615582f598cb75e548750836dbbdf67f258a69c7d4094b06b",
+		"res://resources/appearance/guigu_native_first_20261105/rig.json": "59a56da10dea11afbb4f6c4aaa19388bb72fc7ebc772c215189da17e90e04ffd",
+		"res://resources/appearance/guigu_native_first_20261105/skins.json": "52c438bc6fb939a418a4bb7d9185e90c05c84be01ee038f8dd796649b1104ade",
+		"res://tools/action_battle_test/art/guigu_native_first_20261105/own_hair_master.png": "68b528cdae5afc8894d78057734ee9f323a33372ce275b3cf2bcfb195c89058d",
+		"res://tools/action_battle_test/art/guigu_native_first_20261105/paint_master.png": "41778bb96b31c00a779f9e871f29c8d23c97e8ea120f122c84b8cda950f864a3",
+		"res://tools/action_battle_test/art/guigu_native_first_20261105/source_atlas_120x180.png": "870dd71617a56642b2febb3769ac549c9dcf63caf31573423dc87daaecc21c61",
+		"res://tools/action_battle_test/art/guigu_native_first_20261105/source_atlas_reference_10x.png": "91271fe7b95954165646e25ddfbcbfb56df1157f195f3517cbdec66b30fe3df0",
+		"res://tools/action_battle_test/art/guigu_native_first_20261105/sprite_65806.png": "0839360c06fd031985cee19a69295bfa220b5dad01a3e206ce7654b480722411",
+		"res://tools/action_battle_test/art/guigu_native_first_20261105/sprite_79543.png": "04062885765d4f871120c81c87adeddf3933c8723c8adfc1855bc4e92036e4ec",
+		"res://tools/action_battle_test/art/guigu_native_first_20261105/sprite_84807.png": "18f774cb9ffb54a1adcf00f81531d4f45578ee32d9fe959bbac3c2eb57a98962",
+		"res://tools/action_battle_test/art/guigu_native_first_20261105/sprite_85649.png": "89b58e63d46a23f5bd6b11b61c4d178b14daf1ba087d9220d15bb76ad9888349",
+		"res://tools/action_battle_test/art/guigu_native_first_20261105/sprite_87557.png": "373c92c6bdc135194d610c494f03c6a71e1b83696817ea60278a4ed691d08256",
+		"res://tools/action_battle_test/art/guigu_native_first_20261105/sprite_87679.png": "79299a97b9cf8761b0878277c5836f578519df5e3da7219aa264748c2fcc91c5",
+		"res://tools/action_battle_test/guigu_native_first_skin.gd": "21bb48c7bc6fd33ba10b8327efb73bc140b71034e612560b4359cb114f6f2966",
+		"res://tools/action_battle_test/guigu_rig_runtime.gd": "b9bcf7fe3b4caea536736900240e3dbc45f0e63209c0b31bdc1c09dfb04ac943"
+	},
+	"version": 1,
+	"visual_height": 128.0
+}

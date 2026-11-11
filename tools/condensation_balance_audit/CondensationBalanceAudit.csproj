@@ -7,6 +7,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="../../csharp/cultivation/CondensationCardGame.cs" Link="CondensationCardGame.cs" />
+    <Compile Include="../../csharp/panel/CondensationCardText.cs" Link="CondensationCardText.cs" />
     <Compile Include="../../csharp/cultivation/CondensationOutcomeRules.cs" Link="CondensationOutcomeRules.cs" />
     <Compile Include="../../csharp/debug/CondensationBalanceAuditPolicy.cs" Link="CondensationBalanceAuditPolicy.cs" />
   </ItemGroup>

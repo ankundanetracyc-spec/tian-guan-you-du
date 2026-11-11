@@ -1,5 +1,5 @@
 {
-  "source": "resources/activeskills/*.tres；docs/状态系统设计.md",
+  "source": "resources/activeskills/*.tres；docs/plans/战斗与构筑/状态系统设计.md",
   "cards": {
     "应敌": {
       "text": "对指定1名敌方造成物理伤害。伤害 = round(7 + 体魄×0.25 + 体魄×0.20)。",

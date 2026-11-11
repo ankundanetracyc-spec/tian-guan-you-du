@@ -16,8 +16,8 @@ multiplier = 0.30
 [resource]
 script = ExtResource("1")
 skill_name = "痛击"
-icon_path = "res://textures/ui/combat/skill_icons/凡俗_痛击_v5.png"
-description = "看准破绽的一记重击；比两次应敌更省体力，但准备更久，需要提前预留体力。"
+icon_path = "res://textures/ui/combat/board_skill_icons/tongji.png"
+description = "对一名随机敌人造成A点近身物理伤害。A=11+体魄×0.45+体魄×0.30。"
 skill_type = 0
 energy_cost = 2
 preparation_frames = 336
@@ -27,7 +27,13 @@ target_type = 2
 range_min = 1
 range_max = 1
 base_damage = 11.0
-damage_type = "physical"
+damage_type = "physical"
+
 attack_style = "melee"
 keywords = Array[String]([])
 damage_bonuses = Array[ExtResource("2")]([SubResource("Physique"), SubResource("ExtraPhysique")])
+board_definition_version = 1
+board_size = Vector2i(2, 1)
+board_max_placements = 2
+board_rotation_allowed = true
+board_base_skill_path = "res://resources/activeskills/痛击.tres"

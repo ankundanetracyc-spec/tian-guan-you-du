@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BasicDeckResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://csharp/gongfa/BasicDeckResource.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+deck_name = "岩背獾·试玩"
+deck_description = "固定招式盘使用拱撞、翻土突袭与拱身架招。"
+skill_paths = Array[String](["res://resources/activeskills/妖兽/灰背野猪/拱撞.tres", "res://resources/activeskills/妖兽/岩背獾/翻土突袭.tres", "res://resources/activeskills/妖兽/灰背野猪/拱身戒备.tres"])

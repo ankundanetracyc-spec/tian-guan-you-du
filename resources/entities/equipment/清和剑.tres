@@ -1,7 +1,10 @@
-[gd_resource type="Resource" script_class="SectArtifactOfferData" format=3]
+[gd_resource type="Resource" script_class="SectArtifactOfferData" load_steps=4 format=3]
 [ext_resource type="Script" path="res://csharp/resources/SectArtifactOfferData.cs" id="1"]
+[ext_resource type="Resource" path="res://resources/items_layout/qinghe_sword_layout.tres" id="2"]
+[ext_resource type="Resource" path="res://resources/items_layout/qinghe_control_preview.tres" id="3"]
 [resource]
 script = ExtResource("1")
+storage_volume = 3
 definition_id = &"sect_artifact_qinghe"
 entity_name = "清和剑"
 item_category = "器具"
@@ -14,3 +17,5 @@ example_index = 1
 inventory_width = 2
 inventory_height = 6
 inventory_can_rotate = true
+layout_preview = ExtResource("2")
+control_preview = ExtResource("3")
