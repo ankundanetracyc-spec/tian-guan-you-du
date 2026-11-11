@@ -1,0 +1,35 @@
+{
+  "status": "installed_and_runtime_verified",
+  "selected_source_sha256": "b0e58ce2489e1e2ae3e77f00388ea982edb51f16245b6940a8442ac2177df9f5",
+  "installed_file": "mods/appearance/ink_three_variants_20261004/male/face_accessory/02.png",
+  "installed_sha256": "8b44416a488007d1bd25c83540024bf7dfb0cc2869c7ea99a92b19220bfd1769",
+  "physical_index": 2,
+  "style_id": 3,
+  "full_id": "male_beard_03",
+  "old_beard_aliases_preserved": {
+    "1": 0,
+    "2": 0
+  },
+  "old_pngs_preserved": 54,
+  "total_active_pngs": 55,
+  "total_choices": 48,
+  "source_mode": "built-in image_gen support plus Godot source-foreground matting",
+  "other_candidate_combinations_installed": false,
+  "middle_age_work_resumed": false,
+  "runtime_checks": 354,
+  "manual_save_checks": 36,
+  "total_checks": 390,
+  "runtime_pass": true,
+  "manual_save_pass": true,
+  "user_preset_unchanged": true,
+  "build_result": {
+    "success": true,
+    "warnings": 0,
+    "errors": 0
+  },
+  "runtime_evidence": "installation/game_male_short_beard_viewport.png",
+  "manual_ui_evidence": [
+    "installation/editor_short_beard_viewport.png",
+    "installation/creator_short_beard_viewport.png"
+  ]
+}

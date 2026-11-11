@@ -1,0 +1,27 @@
+{
+  "mode": "built-in image_gen",
+  "prompt": "source/skin_palette_correction_prompt.txt",
+  "records": [
+    {
+      "id": "01_mature_clean_shaven",
+      "name": "无须中年·清儒",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-8916f4dc-84f0-4d5a-b508-d12f424b83d7.png",
+      "edit_target": "preview/01_mature_clean_shaven.png",
+      "final_file": "preview/01_mature_clean_shaven_palette_v2.png"
+    },
+    {
+      "id": "02_mature_short_beard",
+      "name": "短须中年·沉稳",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-f772db9f-ec9c-47dc-99a5-674ab5f7a68b.png",
+      "edit_target": "preview/02_mature_short_beard.png",
+      "final_file": "preview/02_mature_short_beard_palette_v2.png"
+    },
+    {
+      "id": "03_mature_scholar_beard",
+      "name": "长髯中年·儒雅",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-d81c9ef1-5fd1-4d4a-be15-b681b6499f49.png",
+      "edit_target": "preview/03_mature_scholar_beard.png",
+      "final_file": "preview/03_mature_scholar_beard_palette_v2.png"
+    }
+  ]
+}

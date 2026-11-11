@@ -1,0 +1,78 @@
+{
+  "schema": "left-eye-seam-continuous-reimport/v1",
+  "status": "two_technical_candidates_for_visual_selection",
+  "before_sha256": "6c3f023df0d845a979727f4fab210c3ad95a03a881a40f3ea493d19dc0252f14",
+  "base": "E:\\stacklands\\mods\\appearance\\male_layer_seam_fix_20261107\\reference\\current_male\\eyes\\04.png",
+  "approved_source": {
+    "path": "E:\\stacklands\\mods\\appearance\\male_loose_style_install_20261106\\source\\approved_male.png",
+    "sha256": "5ca3f4cc0ea0410c22bcf07dfef278a9496a0fea968c38008dfe8f7dc5cf6ee3"
+  },
+  "registered_native": {
+    "path": "E:\\stacklands\\mods\\appearance\\male_loose_style_install_20261106\\raw\\features\\eyes_native_v2.png",
+    "sha256": "c35d530fb72b57a4dd3b2b50f152634b80b44795dd2faedabee713852e7cb31e"
+  },
+  "geometry_source": "E:\\stacklands\\mods\\appearance\\male_loose_style_install_20261106\\source\\feature_import.json",
+  "shared_source_to_frame": [
+    [
+      0.9975364831,
+      0.0036289844,
+      -0.7327878529
+    ],
+    [
+      -0.0036289844,
+      0.9975364831,
+      10.4185928627
+    ]
+  ],
+  "combined_native_to_frame": {
+    "a": 0.5442475674436176,
+    "b": -0.0029135129813846407,
+    "tx": 231.47530406639368,
+    "ty": 163.2221309109286
+  },
+  "geometry_changes": false,
+  "alpha_changes": false,
+  "right_half_changes": false,
+  "source_of_defect": "Original import hidden() used fixed sx<440 nativeRGB vs approvedRGB, a binary boundary at currentx439.46; this location has no hairguard. Different existing lash/fold RGB curves produce the vertical step even with continuous Alpha.",
+  "scope": "Only left RGB near original switch; no pupil/iris center pixels or right-half RGBA change. No image generation, painting or local warp.",
+  "variants": [
+    {
+      "variant": "symmetric_8px",
+      "file": "candidate/left_eye_symmetric_8px.png",
+      "candidate_sha256": "81723d5ca8413f3ecdb5a4a962a8850bf191aa7fd63c1a1818489eff4bd2f23a",
+      "mix": "native*(1-smoothstep(source_x,left,right)) + approved*smoothstep; existing pixels only",
+      "source_x_transition": [
+        436,
+        444
+      ],
+      "diff_bbox_xyxy": [
+        436,
+        355,
+        444,
+        381
+      ],
+      "rgb_changed_pixels": 181,
+      "alpha_differing_pixels": 0,
+      "right_half_rgba_differing_pixels": 0
+    },
+    {
+      "variant": "native_corner_6px",
+      "file": "candidate/left_eye_native_corner_6px.png",
+      "candidate_sha256": "4f5e4653c72891e143cb67a615fba10ea24016c6185e81c84738ec5816f0f474",
+      "mix": "native*(1-smoothstep(source_x,left,right)) + approved*smoothstep; existing pixels only",
+      "source_x_transition": [
+        444,
+        450
+      ],
+      "diff_bbox_xyxy": [
+        440,
+        356,
+        450,
+        381
+      ],
+      "rgb_changed_pixels": 239,
+      "alpha_differing_pixels": 0,
+      "right_half_rgba_differing_pixels": 0
+    }
+  ]
+}

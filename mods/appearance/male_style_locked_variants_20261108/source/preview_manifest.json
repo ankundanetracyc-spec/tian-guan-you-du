@@ -1,0 +1,112 @@
+{
+  "status": "whole_portrait_previews_pending_user_style_review",
+  "date": "2026-11-08",
+  "mode": "built-in image_gen",
+  "outputs": [
+    {
+      "id": "01_clear_low_coil",
+      "name": "清正·后收束发",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-b4633fbf-1665-47f0-b6d8-38e3fbf3056e.png",
+      "workspace_file": "preview/01_clear_low_coil.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "sha256": "5c0ee43f79a474cd9980f456f04b227cb8c7d3203d94e2cf80e6d9ee8a776db2",
+      "native_copy_identical": true
+    },
+    {
+      "id": "02_gentle_side_sweep",
+      "name": "温雅·斜扫低尾",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-90c7d1ad-2a4b-4d3f-b9b2-dce04fb804c8.png",
+      "workspace_file": "preview/02_gentle_side_sweep.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "sha256": "5a4540db18dc7fcf538be46d8d4d411f5cb1f5fd8eea1efc2e4cf24f65ae4d7d",
+      "native_copy_identical": true
+    },
+    {
+      "id": "03_bright_fringe_braid",
+      "name": "明朗·碎发低辫",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-ff6fef41-3291-48c0-9b4c-35845ea6ff2d.png",
+      "workspace_file": "preview/03_bright_fringe_braid.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "sha256": "7a931a291d830ce7a71c2ded0348134f590970b9b1c078ee9f73af6754268ff1",
+      "native_copy_identical": true
+    },
+    {
+      "id": "04_heroic_high_tail",
+      "name": "英气·露额高尾",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-3ebe9a6d-1026-4036-bdef-bb0bc045021d.png",
+      "workspace_file": "preview/04_heroic_high_tail.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "sha256": "32984304c29c80b492d71d7b8190b15be76f581093851c71b97520f2664745da",
+      "native_copy_identical": true
+    },
+    {
+      "id": "05_calm_loose_back",
+      "name": "清和·露耳松披",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-27b52faa-70d8-4994-9f37-7488056ea6fe.png",
+      "workspace_file": "preview/05_calm_loose_back.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "sha256": "a3a82d5597f9b6df84685b01c9df88b00b79f83f5ac628f9e5f7a3d490e3b146",
+      "native_copy_identical": true
+    },
+    {
+      "id": "06_composed_temple_plait",
+      "name": "沉静·偏束细辫",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-cfca1c23-a793-4d09-9de7-43ba7bd4485e.png",
+      "workspace_file": "preview/06_composed_temple_plait.png",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "sha256": "d27eb0ef862249490d3e3ef899994b5433b6531dc95d1e5c4999c55c9afc7898",
+      "native_copy_identical": true
+    }
+  ],
+  "baseline_check": {
+    "png": 59,
+    "config": 2,
+    "items": 61,
+    "unchanged": true
+  },
+  "edit_strategy": "Project approved male master is the edit target, current active head/neck is a palette/shape reference. No rejected round3/refined images or external game screenshots supplied. Preserve nose, mouth and head silhouette; vary hair and subtle eyebrow/eyelid shape.",
+  "visual_review": {
+    "root_viewed_all_six": true,
+    "comparison": "Root reviewed all six: softer, more muted skin/hair and shadows closer to approved master than rejected batch; still pending user judgment.",
+    "limitations": [
+      "Generated full portraits are not pixel-identical to active skin layer.",
+      "Neck shading and tiny eye/skin differences remain; no modular anchors validated.",
+      "These are mainly hairstyle variants with subtle brow/eye differences, not six unique faces."
+    ],
+    "independent_review": {
+      "reviewed_all_six": true,
+      "conclusion": "Closer to installed style than rejected refined batch; no whole-image rework required before user review.",
+      "remaining": [
+        "02 slightly warmer/darker.",
+        "Neck shadows remain slightly brighter than active layer.",
+        "03 is long irregular forelocks with a loose low braid, not a short neat fringe."
+      ],
+      "user_approval": false
+    }
+  },
+  "scope": "No active PNG/configuration, production code, or saves changed; no build/runtime tests needed for previews.",
+  "independent_file_check": {
+    "six_png_dimensions": true,
+    "native_hashes_match": true,
+    "active_baseline_61_unchanged": true
+  },
+  "color_measurements": "color_comparison.json"
+}

@@ -1,0 +1,52 @@
+{
+  "active_option_count": 47,
+  "affected04_viewport_captured": true,
+  "affected_target": "male/eyes/04.png",
+  "baseline_backup_pngs_checked": 54,
+  "checks": 2029,
+  "configuration_unchanged": true,
+  "failures": [],
+  "female_hair_feature_combinations": 108,
+  "female_preserved": 24,
+  "female_viewport_captured": true,
+  "imported_texture_checks": [
+    {
+      "alpha_different_pixels": 0,
+      "border_processing": "Existing Godot process/fix_alpha_border setting retained; raw-PNG UI compositions are checked separately pixel for pixel.",
+      "file": "res://mods/appearance/ink_three_variants_20261004/male/eyes/04.png",
+      "opaque_core_rgb_different_pixels": 0,
+      "rgba_exact": false,
+      "transparent_rgb_different_pixels": 1180,
+      "visible_rgb_different_pixels": 384
+    }
+  ],
+  "installed_pngs_checked": 1,
+  "male_hair_feature_combinations": 81,
+  "male_viewport_captured": true,
+  "manifest_unchanged": true,
+  "pass": true,
+  "physical_png_count": 54,
+  "pixel_composites_verified": true,
+  "preserved_pngs_checked": 53,
+  "rear_pair_visibility_checks": 14,
+  "renderer_pair_checks": 14,
+  "seam_preservation": {
+    "alpha_unchanged": true,
+    "diff_bbox": [
+      436.0,
+      355.0,
+      444.0,
+      381.0
+    ],
+    "right_half_rgba_unchanged": true,
+    "right_half_x_start": 512.0
+  },
+  "verification_combination": {
+    "clothing": 1,
+    "eyebrows": 4,
+    "eyes": 4,
+    "hair_back": 4,
+    "hair_front": 4
+  },
+  "visual_acceptance": "Engineering verifies the single replacement, preserved Alpha/right RGBA and real compositions. Left-lash seam and likeness still require visual review."
+}

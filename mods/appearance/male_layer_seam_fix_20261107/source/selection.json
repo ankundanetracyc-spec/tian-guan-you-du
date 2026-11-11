@@ -1,0 +1,8 @@
+{
+  "schema": "male-eye-seam-fix/v1",
+  "target": "male/eyes/04.png",
+  "source": "res://mods/appearance/male_layer_seam_fix_20261107/candidate/new_male_eyes04.png",
+  "source_report": "res://mods/appearance/male_layer_seam_fix_20261107/source/seam_reimport.json",
+  "reference_screenshot": "res://mods/appearance/male_layer_seam_fix_20261107/reference/reported_seam.png",
+  "reason": "修复左外上睫缘在source/native颜色硬切换处的竖向断层，保持整图Alpha、几何和已平衡右眼原像素。"
+}

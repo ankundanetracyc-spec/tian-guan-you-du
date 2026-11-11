@@ -1,0 +1,61 @@
+{
+  "schema": "male-left-lash-seam-final-audit/v1",
+  "scope": "Only this QA JSON and earlier diagnostic canvases written. No active/source/candidate PNG or configuration edited.",
+  "selected_variant": "symmetric_8px",
+  "candidate": "E:\\stacklands\\mods\\appearance\\male_layer_seam_fix_20261107\\candidate\\left_eye_symmetric_8px.png",
+  "candidate_sha256": "81723d5ca8413f3ecdb5a4a962a8850bf191aa7fd63c1a1818489eff4bd2f23a",
+  "expected_sha256": "81723d5ca8413f3ecdb5a4a962a8850bf191aa7fd63c1a1818489eff4bd2f23a",
+  "before_sha256": "6c3f023df0d845a979727f4fab210c3ad95a03a881a40f3ea493d19dc0252f14",
+  "technical_checks": {
+    "pass": true,
+    "rgb_changed_pixels": 181,
+    "rgb_diff_bbox_xyxy": [
+      436,
+      355,
+      444,
+      381
+    ],
+    "alpha_changed_pixels": 0,
+    "right_half_rgba_changed_pixels": 0,
+    "protected_core_regions": {
+      "left_pupil_iris_and_core_lids": {
+        "rect_xyxy": [
+          449,
+          355,
+          479,
+          379
+        ],
+        "rgba_changed_pixels": 0
+      },
+      "right_pupil_iris_and_core_lids": {
+        "rect_xyxy": [
+          550,
+          352,
+          590,
+          380
+        ],
+        "rgba_changed_pixels": 0
+      }
+    },
+    "eye_opening_preservation": "All four previously used core x458/466/564/572 sampling columns are outside the RGB edit bbox and RGBA-identical. Prior left15/right14.5px balance is therefore unchanged.",
+    "geometry": "Alpha and existing whole-pair frame unchanged; local operation is existing-source/native RGB mixing only."
+  },
+  "visual_review": {
+    "images": [
+      "qa/reported_crop_variant_comparison_8x.png",
+      "qa/left_seam_variants_native1x_light.png"
+    ],
+    "precise_user_crop": "Former vertical color/height break at image-left outer upper-lash crossing is no longer visibly cut in the8px variant. Main lash/fold transition reads continuously through the reported position.",
+    "no_front_hair": "No conspicuous secondary lash line, dark block or generalized blur introduced at normal native size.",
+    "front04": "Reported strand crossing no longer reads as a hard vertical notch; actual foreground strand remains naturally visible.",
+    "front05": "Exposed left outer-lash contour remains continuous without the notch or an extra shadow lump.",
+    "not_selected": "native_corner_6px adds a deeper corner shadow concentration and was not selected.",
+    "limits": "The8px transition blends two existing reconstructed/approved painted contours; very close inspection can reveal slightly different pigment softness. This is a local technical continuity repair, not a claim of original-source pixel identity or new user aesthetic approval."
+  },
+  "decision": {
+    "ready_for_root_install": true,
+    "stop_further_art_iteration": true,
+    "basis": "Precise user location visibly continuous, protected eye balance/core unchanged, no obvious double line or general blur at normal size.",
+    "installation_runtime_checks": "Not performed by this read-only visual audit."
+  }
+}

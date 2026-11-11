@@ -1,0 +1,263 @@
+{
+  "review_id": "male_new_pairs_features_review_02",
+  "status": "用户全部否定，已弃用；禁止接入。现改为先审阅整张立绘，再制作部件。",
+  "user_visual_approval": false,
+  "canvas": [
+    1024,
+    1536
+  ],
+  "head_neck_sha256": "ed790ac8bcd41fd54d9a2e0a7be55f21704413ff5b86213a91285782a5d6f7c2",
+  "configuration_sha256": "cc0d9047c2c272625a7fb3fe1f54262de0da7fb722e54ca850d1c80c16a54331",
+  "pairs": [
+    {
+      "id": 1,
+      "name": "疏朗半束",
+      "front": "male/hair_front/01.png",
+      "back": "male/hair_back/01.png"
+    },
+    {
+      "id": 2,
+      "name": "清劲高束",
+      "front": "male/hair_front/02.png",
+      "back": "male/hair_back/02.png"
+    },
+    {
+      "id": 3,
+      "name": "松风低束",
+      "front": "male/hair_front/03.png",
+      "back": "male/hair_back/03.png"
+    }
+  ],
+  "shared_new_features": [
+    "eyebrows",
+    "eyes",
+    "nose",
+    "mouth"
+  ],
+  "feature_count_each": 1,
+  "layers": [
+    "hair_back",
+    "clothing_back",
+    "face_shape",
+    "clothing",
+    "nose",
+    "eyes",
+    "eyebrows",
+    "mouth",
+    "hair_front"
+  ],
+  "records": [
+    {
+      "part": "hair_front",
+      "index": 1,
+      "source": "source\\pair1_front_raw.png",
+      "file": "male\\hair_front\\01.png",
+      "sha256": "2ad0b1ba59487b47303af80fabd446e4814165f7494bda4497f82a19f629589c",
+      "source_luminance": {
+        "median": 90.27159999999999,
+        "p95": 117.702
+      },
+      "target_luminance": {
+        "median": 76,
+        "p95": 110
+      },
+      "geometry": "native full canvas; no resizing/translation",
+      "alpha": "distant background residuals removed, local strand antialiasing retained",
+      "frozen_file": "male/hair_front/01.png"
+    },
+    {
+      "part": "hair_front",
+      "index": 2,
+      "source": "source\\pair2_front_raw.png",
+      "file": "male\\hair_front\\02.png",
+      "sha256": "0e4cce38fb03f42a0e1a2bf29eb8ac412a73a3c1f1d3306b1ff94d76f894aae9",
+      "source_luminance": {
+        "median": 77.9868,
+        "p95": 109.6968
+      },
+      "target_luminance": {
+        "median": 76,
+        "p95": 110
+      },
+      "geometry": "native full canvas; no resizing/translation",
+      "alpha": "distant background residuals removed, local strand antialiasing retained",
+      "frozen_file": "male/hair_front/02.png"
+    },
+    {
+      "part": "hair_front",
+      "index": 3,
+      "source": "source\\pair3_front_raw.png",
+      "file": "male\\hair_front\\03.png",
+      "sha256": "64dd8bd2646e20c4acc1993e49f4c1e2df6c34f061a0537540e0ff7e368165fd",
+      "source_luminance": {
+        "median": 80.5616,
+        "p95": 109.0642
+      },
+      "target_luminance": {
+        "median": 76,
+        "p95": 110
+      },
+      "geometry": "native full canvas; no resizing/translation",
+      "alpha": "distant background residuals removed, local strand antialiasing retained",
+      "frozen_file": "male/hair_front/03.png"
+    },
+    {
+      "part": "hair_back",
+      "index": 1,
+      "source": "source\\pair1_back_raw.png",
+      "file": "male\\hair_back\\01.png",
+      "sha256": "ca0cf5fd5b9d40e5f0dd36fef3f6b4e643771886aee535a31bcdef78b4e0332f",
+      "source_luminance": {
+        "median": 61.2716,
+        "p95": 87.8424
+      },
+      "target_luminance": {
+        "median": 68,
+        "p95": 98
+      },
+      "geometry": "native full canvas; no resizing/translation",
+      "alpha": "distant background residuals removed, local strand antialiasing retained",
+      "frozen_file": "male/hair_back/01.png"
+    },
+    {
+      "part": "hair_back",
+      "index": 2,
+      "source": "source\\pair2_back_raw.png",
+      "file": "male\\hair_back\\02.png",
+      "sha256": "cfc44793dbdc7bbfa3fad8e7f17783a69ceef27618d239d396eec7efb856a950",
+      "source_luminance": {
+        "median": 60.5616,
+        "p95": 81.9868
+      },
+      "target_luminance": {
+        "median": 68,
+        "p95": 98
+      },
+      "geometry": "native full canvas; no resizing/translation",
+      "alpha": "distant background residuals removed, local strand antialiasing retained",
+      "frozen_file": "male/hair_back/02.png"
+    },
+    {
+      "part": "hair_back",
+      "index": 3,
+      "source": "source\\pair3_back_raw.png",
+      "file": "male\\hair_back\\03.png",
+      "sha256": "80891d56915d8b09946b14aa489dc81a34b63f13eabe04d4a183f30ef2942351",
+      "source_luminance": {
+        "median": 58.412,
+        "p95": 83.7702
+      },
+      "target_luminance": {
+        "median": 68,
+        "p95": 98
+      },
+      "geometry": "native full canvas; no resizing/translation",
+      "alpha": "distant background residuals removed, local strand antialiasing retained",
+      "frozen_file": "male/hair_back/03.png"
+    },
+    {
+      "part": "eyebrows",
+      "index": 1,
+      "source": "features\\source\\eyebrows_refined_raw.png",
+      "file": "features\\male\\eyebrows\\01.png",
+      "sha256": "f4b9c85766d8ccd27606236f9cfb57f98167518a771b35c5ceb2e059725aec9b",
+      "registration": {
+        "s": 0.6640316205533597,
+        "source": [
+          512.5,
+          356.5
+        ],
+        "target": [
+          516,
+          350
+        ],
+        "tx": 175.68379446640313,
+        "ty": 113.27272727272725
+      },
+      "geometry": "single uniform scale and translation per whole feature; eye pair kept together",
+      "frozen_file": "male/eyebrows/01.png"
+    },
+    {
+      "part": "eyes",
+      "index": 1,
+      "source": "features\\source\\eyes_clean_raw.png",
+      "file": "features\\male\\eyes\\01.png",
+      "sha256": "d8fac8545fab2e55b5023e8468f104a865b21c0eae95239621361683d8011f2d",
+      "registration": {
+        "pupils": [
+          [
+            445.8181818181818,
+            429.5272727272727
+          ],
+          [
+            581.3191489361702,
+            429.2127659574468
+          ]
+        ],
+        "s": 0.7527621549090701,
+        "source": [
+          513.568665377176,
+          429.37001934235974
+        ],
+        "target": [
+          515,
+          379
+        ],
+        "tx": 128.4049447569019,
+        "ty": 55.78649898649621
+      },
+      "geometry": "single uniform scale and translation per whole feature; eye pair kept together",
+      "frozen_file": "male/eyes/01.png"
+    },
+    {
+      "part": "nose",
+      "index": 1,
+      "source": "features\\source\\nose_refined_raw.png",
+      "file": "features\\male\\nose\\01.png",
+      "sha256": "0b718a606ec747a3563247fb9ff68e36498071bd90de371689848afb078914c3",
+      "registration": {
+        "s": 0.6,
+        "source": [
+          516,
+          551
+        ],
+        "target": [
+          516,
+          451
+        ],
+        "tx": 206.40000000000003,
+        "ty": 120.40000000000003
+      },
+      "geometry": "single uniform scale and translation per whole feature; eye pair kept together",
+      "frozen_file": "male/nose/01.png"
+    },
+    {
+      "part": "mouth",
+      "index": 1,
+      "source": "features\\source\\mouth_refined_raw.png",
+      "file": "features\\male\\mouth\\01.png",
+      "sha256": "a2a468ab0dadecd687959503399d64c926517b8b0c1cfb3435748bb872d114bc",
+      "registration": {
+        "s": 0.56,
+        "source": [
+          514,
+          541
+        ],
+        "target": [
+          516,
+          484
+        ],
+        "tx": 228.15999999999997,
+        "ty": 181.03999999999996
+      },
+      "geometry": "single uniform scale and translation per whole feature; eye pair kept together",
+      "frozen_file": "male/mouth/01.png"
+    }
+  ],
+  "preview_sha256": "41f4ab8f391a4147862d2f64a56b48c0dea09de20425bfbf21cb76f5f8ac7175",
+  "collars_status": "七套前衣和后领已接入；新头发五官待确认",
+  "collars_runtime_checks": 1250,
+  "approval_rule": "用户认可哪个编号，就使用本清单冻结PNG及哈希；不得重新生成后冒充同一选稿。",
+  "rejected_by_user": true,
+  "superseded_by": "whole_male_first_20261105/male_whole_01.png"
+}

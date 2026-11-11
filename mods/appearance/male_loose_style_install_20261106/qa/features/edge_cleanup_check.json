@@ -1,0 +1,46 @@
+{
+  "pass": true,
+  "scope": "Final noncore matte reduction; no feature movement, no alpha additions, no core repainting, no iris/sclera holes.",
+  "records": [
+    {
+      "part": "eyebrows",
+      "before_sha256": "a5a3fd72b979e221068adc8264aea16d6a394924ab8597f109952081375679df",
+      "sha256": "f7d71d00f80370ddc6610a99aa8a001b7ae4f57abafe2d2eb4b0033fb9f63298",
+      "alpha_added_pixels": 0,
+      "alpha_reduced_pixels": 493,
+      "alpha_reduction_bbox": [
+        442,
+        334,
+        557,
+        357
+      ],
+      "protected_pixels": 828,
+      "protected_core_alpha_changed": 0,
+      "protected_core_rgb_changed": 0,
+      "noncore_edge_rgb_changed_pixels": 529,
+      "light_semitransparent_matte_alpha_mass_before": 14769,
+      "light_semitransparent_matte_alpha_mass_after": 9767,
+      "metric_scope": "Descriptive alpha mass, not a standalone visual-pass criterion"
+    },
+    {
+      "part": "eyes",
+      "before_sha256": "c3ab1e4754f3841915387b7050c9b7086d7456908d5da494e76f2a14d249476b",
+      "sha256": "fd3f04b779e0849bbe9c9cf46fcfa2b5bd6b8fcb8839b2aac5c1d26819acba89",
+      "alpha_added_pixels": 0,
+      "alpha_reduced_pixels": 715,
+      "alpha_reduction_bbox": [
+        440,
+        352,
+        571,
+        382
+      ],
+      "protected_pixels": 1436,
+      "protected_core_alpha_changed": 0,
+      "protected_core_rgb_changed": 0,
+      "noncore_edge_rgb_changed_pixels": 313,
+      "light_semitransparent_matte_alpha_mass_before": 52942,
+      "light_semitransparent_matte_alpha_mass_after": 31611,
+      "metric_scope": "Descriptive alpha mass, not a standalone visual-pass criterion"
+    }
+  ]
+}

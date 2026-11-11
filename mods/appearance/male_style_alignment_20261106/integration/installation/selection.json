@@ -1,0 +1,50 @@
+{
+  "schema": "male-style-replacement/v1",
+  "approved_portrait": "res://mods/appearance/male_style_alignment_20261106/integration/source/approved_male.png",
+  "head_alpha_policy": "preserve_existing",
+  "replacements": [
+    {
+      "target": "male/face_shape/01.png",
+      "source": "res://mods/appearance/male_style_alignment_20261106/integration/male/face_shape/01.png"
+    },
+    {
+      "target": "male/hair_front/01.png",
+      "source": "res://mods/appearance/male_style_alignment_20261106/integration/male/hair_front/01.png"
+    },
+    {
+      "target": "male/hair_back/01.png",
+      "source": "res://mods/appearance/male_style_alignment_20261106/integration/male/hair_back/01.png"
+    },
+    {
+      "target": "male/eyebrows/01.png",
+      "source": "res://mods/appearance/male_style_alignment_20261106/integration/male/eyebrows/01.png"
+    },
+    {
+      "target": "male/eyes/01.png",
+      "source": "res://mods/appearance/male_style_alignment_20261106/integration/male/eyes/01.png"
+    },
+    {
+      "target": "male/nose/01.png",
+      "source": "res://mods/appearance/male_style_alignment_20261106/integration/male/nose/01.png"
+    },
+    {
+      "target": "male/mouth/01.png",
+      "source": "res://mods/appearance/male_style_alignment_20261106/integration/male/mouth/01.png"
+    },
+    {
+      "target": "male/clothing/01.png",
+      "source": "res://mods/appearance/male_style_alignment_20261106/integration/male/clothing/01.png"
+    },
+    {
+      "target": "male/clothing_back/01.png",
+      "source": "res://mods/appearance/male_style_alignment_20261106/integration/male/clothing_back/01.png"
+    }
+  ],
+  "provenance": "User-approved whole01 original warm skin. Built-in image_gen component extraction and hidden-area completion; whole-layer technical registration, approved-source core RGB retention, frozen head/neck Alpha, and one global head material color calibration against unobscured approved skin samples. No local anatomical warps; not a claim of whole-portrait pixel identity.",
+  "source_reviews": [
+    "qa/approved_geometry.json",
+    "qa/head_color_transfer.json",
+    "source/feature_import.json",
+    "source/hair_clothes_import.json"
+  ]
+}

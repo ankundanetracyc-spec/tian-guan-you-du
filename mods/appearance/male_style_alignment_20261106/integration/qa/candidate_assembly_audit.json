@@ -1,0 +1,172 @@
+{
+  "canvas": [
+    1024,
+    1536
+  ],
+  "order_back_to_front": [
+    "hair_back",
+    "clothing_back",
+    "face_shape",
+    "clothing",
+    "nose",
+    "eyes",
+    "eyebrows",
+    "mouth",
+    "hair_front"
+  ],
+  "new_replacement_layers_ready": 9,
+  "all_nine_new": true,
+  "diagnostic_fallback_parts": [],
+  "mode": "final_all_new",
+  "inputs": {
+    "hair_back/01.png": {
+      "file": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\male\\hair_back\\01.png",
+      "new": true,
+      "diagnostic_fallback": false,
+      "preserved_other_outfit": false,
+      "sha256": "fd68eb34a86268596634df8512e3f468d0768aba8592800d8429dc94655865a3"
+    },
+    "clothing_back/01.png": {
+      "file": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\male\\clothing_back\\01.png",
+      "new": true,
+      "diagnostic_fallback": false,
+      "preserved_other_outfit": false,
+      "sha256": "cf9a4158283c3dc81463c07c08f2df5d01fa4cbb0e4b02ad016bdd2c721980b1"
+    },
+    "face_shape/01.png": {
+      "file": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\male\\face_shape\\01.png",
+      "new": true,
+      "diagnostic_fallback": false,
+      "preserved_other_outfit": false,
+      "sha256": "d86319252035a286a92e8892b9816bdb917a39f7f41f4cb1edf40f4dee51c357"
+    },
+    "clothing/01.png": {
+      "file": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\male\\clothing\\01.png",
+      "new": true,
+      "diagnostic_fallback": false,
+      "preserved_other_outfit": false,
+      "sha256": "812f23c90be2527fa29d8f0ad76c166bef6c7546fcea8fd2a5416f0f00981851"
+    },
+    "nose/01.png": {
+      "file": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\male\\nose\\01.png",
+      "new": true,
+      "diagnostic_fallback": false,
+      "preserved_other_outfit": false,
+      "sha256": "e7271b38d96922434dbdf4a085b83a0d35ea5560989d0cfda9177beb085a2e79"
+    },
+    "eyes/01.png": {
+      "file": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\male\\eyes\\01.png",
+      "new": true,
+      "diagnostic_fallback": false,
+      "preserved_other_outfit": false,
+      "sha256": "88832ee619c5377491b554e29412f1162aa3b25fc47338232babe402ae832e48"
+    },
+    "eyebrows/01.png": {
+      "file": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\male\\eyebrows\\01.png",
+      "new": true,
+      "diagnostic_fallback": false,
+      "preserved_other_outfit": false,
+      "sha256": "2169f4505c4b30ba130794b98d1d1ca96d89f05e700b12da4ff1e4634224d2db"
+    },
+    "mouth/01.png": {
+      "file": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\male\\mouth\\01.png",
+      "new": true,
+      "diagnostic_fallback": false,
+      "preserved_other_outfit": false,
+      "sha256": "471666da8f5b161007491c7f557e6aaf23c0b467d0414bc0839f7d54d942aa03"
+    },
+    "hair_front/01.png": {
+      "file": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\male\\hair_front\\01.png",
+      "new": true,
+      "diagnostic_fallback": false,
+      "preserved_other_outfit": false,
+      "sha256": "1bd9ccc12beb55970225414c698cd2c18bb0fc93489e31254e6d1bcbb6021b0e"
+    },
+    "clothing_back/02.png": {
+      "file": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\reference\\current_male\\clothing_back\\02.png",
+      "new": false,
+      "diagnostic_fallback": false,
+      "preserved_other_outfit": true,
+      "sha256": "60dcb9ba8fe14516a161a3bca3fe2de53ce4e741f66ebad87f651475ab7ada21"
+    },
+    "clothing/02.png": {
+      "file": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\reference\\current_male\\clothing\\02.png",
+      "new": false,
+      "diagnostic_fallback": false,
+      "preserved_other_outfit": true,
+      "sha256": "9c37e7fde5a353f034fbdee301d4484da3de91e88943a792918c0443c5d346af"
+    },
+    "clothing_back/03.png": {
+      "file": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\reference\\current_male\\clothing_back\\03.png",
+      "new": false,
+      "diagnostic_fallback": false,
+      "preserved_other_outfit": true,
+      "sha256": "97ec93c4b684fd41bf4061d540a9e669ebe596e620c1aec26342397eece2838a"
+    },
+    "clothing/03.png": {
+      "file": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\reference\\current_male\\clothing\\03.png",
+      "new": false,
+      "diagnostic_fallback": false,
+      "preserved_other_outfit": true,
+      "sha256": "e312ab1747ece1f5cad7976de013c2ee474169f9aa0feb5c61a6fe84eb22347b"
+    },
+    "clothing_back/04.png": {
+      "file": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\reference\\current_male\\clothing_back\\04.png",
+      "new": false,
+      "diagnostic_fallback": false,
+      "preserved_other_outfit": true,
+      "sha256": "d84fff75cefc9af2dc3829ba49d6e1b7ec23362b3d89ea1ff41862e60056e26b"
+    },
+    "clothing/04.png": {
+      "file": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\reference\\current_male\\clothing\\04.png",
+      "new": false,
+      "diagnostic_fallback": false,
+      "preserved_other_outfit": true,
+      "sha256": "3a034405f7f612ad670839f058549f390843fb93fa8343df8898a456276554ac"
+    },
+    "clothing_back/05.png": {
+      "file": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\reference\\current_male\\clothing_back\\05.png",
+      "new": false,
+      "diagnostic_fallback": false,
+      "preserved_other_outfit": true,
+      "sha256": "9d7db6db8c99a3df67ac860a208c61fbee8a68768c80ed1b391b086c141c3d7d"
+    },
+    "clothing/05.png": {
+      "file": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\reference\\current_male\\clothing\\05.png",
+      "new": false,
+      "diagnostic_fallback": false,
+      "preserved_other_outfit": true,
+      "sha256": "f7a4c9833cd4f4a161c0edd9b089c8b95f15319aba2cdf37e41b1e814a537e4a"
+    },
+    "clothing_back/06.png": {
+      "file": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\reference\\current_male\\clothing_back\\06.png",
+      "new": false,
+      "diagnostic_fallback": false,
+      "preserved_other_outfit": true,
+      "sha256": "0df5d4611ceea963d138ff9bc4bed0d0c21e31e502602bc8269e5ccda292801f"
+    },
+    "clothing/06.png": {
+      "file": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\reference\\current_male\\clothing\\06.png",
+      "new": false,
+      "diagnostic_fallback": false,
+      "preserved_other_outfit": true,
+      "sha256": "999a8d6e5f63ce25c3a409cd1d21974688ee86d322542844762b8a8185a9bd78"
+    },
+    "clothing_back/07.png": {
+      "file": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\reference\\current_male\\clothing_back\\07.png",
+      "new": false,
+      "diagnostic_fallback": false,
+      "preserved_other_outfit": true,
+      "sha256": "ef7af6f7ee87e1ad4a81d9aabd2d78306b0ce8438899e517c2ee53f9457c50ee"
+    },
+    "clothing/07.png": {
+      "file": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\reference\\current_male\\clothing\\07.png",
+      "new": false,
+      "diagnostic_fallback": false,
+      "preserved_other_outfit": true,
+      "sha256": "b4606a0de5c6fcdf42b9389b1e22e9e848b3489a01bf544c1382d53b679752ac"
+    }
+  },
+  "note": "Other outfits02–07 intentionally retain frozen clothes. A missing first-outfit layer may appear only in diagnostic mode; final mode refuses all nine such fallbacks.",
+  "installed": false
+}

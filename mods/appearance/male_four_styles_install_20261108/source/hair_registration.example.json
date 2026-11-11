@@ -1,0 +1,364 @@
+{
+  "schema": "male-four-hair-registration/v1",
+  "placeholder": true,
+  "maximum_frame_residual_px": 2.5,
+  "note": "Replace native paths/transforms with delivered measured masks, visually confirm the common frame and remove placeholder only when ready. This is not art approval or an install operation.",
+  "styles": [
+    {
+      "key": "low_coil",
+      "approved": "source/approved/low_coil.png",
+      "approved_sha256": "5c0ee43f79a474cd9980f456f04b227cb8c7d3203d94e2cf80e6d9ee8a776db2",
+      "index": 6,
+      "style_id": 5,
+      "source_to_frame": {
+        "control_names": [
+          "pupil_left",
+          "pupil_right",
+          "chin"
+        ],
+        "source_controls": [
+          [
+            462.68817569864683,
+            364.38036309240476
+          ],
+          [
+            569.0209252414452,
+            363.9149278645522
+          ],
+          [
+            517.1901927912825,
+            544.6917609588788
+          ]
+        ],
+        "target_controls": [
+          [
+            462.5633505472122,
+            364.8594827739334
+          ],
+          [
+            568.9791437615572,
+            363.9655158130669
+          ],
+          [
+            513.3771714335847,
+            543.2991035411874
+          ]
+        ],
+        "basis": "Draft read-only dark centroids and jaw trace; confirm source/fixed head at normal size before staging."
+      },
+      "layers": {
+        "hair_front": {
+          "native": "native/low_coil_front.png",
+          "name": "后收拢发",
+          "noise_alpha_max": 2,
+          "native_to_source": {
+            "matrix_2x3": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0
+              ]
+            ],
+            "basis": "IDENTITY PLACEHOLDER ONLY. Confirm full-canvas shape against source or replace with measured source_controls/target_controls."
+          }
+        },
+        "hair_back": {
+          "native": "native/low_coil_back.png",
+          "name": "后颈低髻",
+          "noise_alpha_max": 2,
+          "native_to_source": {
+            "matrix_2x3": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0
+              ]
+            ],
+            "basis": "IDENTITY PLACEHOLDER ONLY. Confirm full-canvas shape against source or replace with measured source_controls/target_controls."
+          }
+        }
+      },
+      "boundaries": {
+        "front": "Frontal swept-back crown, forehead hairline and ear-front wisps; no low bun.",
+        "back": "Low coiled bun at viewer-left nape and complete narrow posterior cap; no invented shoulder hair."
+      }
+    },
+    {
+      "key": "high_tail",
+      "approved": "source/approved/high_tail.png",
+      "approved_sha256": "32984304c29c80b492d71d7b8190b15be76f581093851c71b97520f2664745da",
+      "index": 7,
+      "style_id": 6,
+      "source_to_frame": {
+        "control_names": [
+          "pupil_left",
+          "pupil_right",
+          "chin"
+        ],
+        "source_controls": [
+          [
+            462.79048697621755,
+            364.49412514156313
+          ],
+          [
+            568.8031736995661,
+            363.80338717711527
+          ],
+          [
+            516.8436742164264,
+            544.374778574496
+          ]
+        ],
+        "target_controls": [
+          [
+            462.5633505472122,
+            364.8594827739334
+          ],
+          [
+            568.9791437615572,
+            363.9655158130669
+          ],
+          [
+            513.3771714335847,
+            543.2991035411874
+          ]
+        ],
+        "basis": "Draft read-only dark centroids and jaw trace; confirm source/fixed head at normal size before staging."
+      },
+      "layers": {
+        "hair_front": {
+          "native": "native/high_tail_front.png",
+          "name": "露额拢发",
+          "noise_alpha_max": 2,
+          "native_to_source": {
+            "matrix_2x3": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0
+              ]
+            ],
+            "basis": "IDENTITY PLACEHOLDER ONLY. Confirm full-canvas shape against source or replace with measured source_controls/target_controls."
+          }
+        },
+        "hair_back": {
+          "native": "native/high_tail_back.png",
+          "name": "长尾高束",
+          "noise_alpha_max": 2,
+          "native_to_source": {
+            "matrix_2x3": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0
+              ]
+            ],
+            "basis": "IDENTITY PLACEHOLDER ONLY. Confirm full-canvas shape against source or replace with measured source_controls/target_controls."
+          }
+        }
+      },
+      "boundaries": {
+        "front": "Visible upswept frontal crown, hairline and short temple wisps.",
+        "back": "High ponytail, cloth tie and continuous posterior support behind head/neck/shoulders."
+      }
+    },
+    {
+      "key": "loose_back",
+      "approved": "source/approved/loose_back.png",
+      "approved_sha256": "a3a82d5597f9b6df84685b01c9df88b00b79f83f5ac628f9e5f7a3d490e3b146",
+      "index": 8,
+      "style_id": 7,
+      "source_to_frame": {
+        "control_names": [
+          "pupil_left",
+          "pupil_right",
+          "chin"
+        ],
+        "source_controls": [
+          [
+            462.84704073789385,
+            364.67415597469403
+          ],
+          [
+            568.6610197100504,
+            363.99560188955866
+          ],
+          [
+            517.3947974319238,
+            544.6340426272326
+          ]
+        ],
+        "target_controls": [
+          [
+            462.5633505472122,
+            364.8594827739334
+          ],
+          [
+            568.9791437615572,
+            363.9655158130669
+          ],
+          [
+            513.3771714335847,
+            543.2991035411874
+          ]
+        ],
+        "basis": "Draft read-only dark centroids and jaw trace; confirm source/fixed head at normal size before staging."
+      },
+      "layers": {
+        "hair_front": {
+          "native": "native/loose_back_front.png",
+          "name": "露耳后梳",
+          "noise_alpha_max": 2,
+          "native_to_source": {
+            "matrix_2x3": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0
+              ]
+            ],
+            "basis": "IDENTITY PLACEHOLDER ONLY. Confirm full-canvas shape against source or replace with measured source_controls/target_controls."
+          }
+        },
+        "hair_back": {
+          "native": "native/loose_back_back.png",
+          "name": "自然松披",
+          "noise_alpha_max": 2,
+          "native_to_source": {
+            "matrix_2x3": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0
+              ]
+            ],
+            "basis": "IDENTITY PLACEHOLDER ONLY. Confirm full-canvas shape against source or replace with measured source_controls/target_controls."
+          }
+        }
+      },
+      "boundaries": {
+        "front": "Visible frontal crown, ear-front wisps, and ANY actual lock proven to lie on top of robe embroidery. Determine from source crop; do not assign a front lock to back simply because the hairstyle is loose.",
+        "back": "Long loose hair behind head, ears, neck and robe. Complete hidden hair continuously; do not include actual robe-front strands in this layer."
+      }
+    },
+    {
+      "key": "temple_plait",
+      "approved": "source/approved/temple_plait.png",
+      "approved_sha256": "d27eb0ef862249490d3e3ef899994b5433b6531dc95d1e5c4999c55c9afc7898",
+      "index": 9,
+      "style_id": 8,
+      "source_to_frame": {
+        "control_names": [
+          "pupil_left",
+          "pupil_right",
+          "chin"
+        ],
+        "source_controls": [
+          [
+            463.2587000552388,
+            364.5581538083842
+          ],
+          [
+            569.3869373345099,
+            363.8122388937921
+          ],
+          [
+            517.3452984464432,
+            544.5760450448092
+          ]
+        ],
+        "target_controls": [
+          [
+            462.5633505472122,
+            364.8594827739334
+          ],
+          [
+            568.9791437615572,
+            363.9655158130669
+          ],
+          [
+            513.3771714335847,
+            543.2991035411874
+          ]
+        ],
+        "basis": "Draft read-only dark centroids and jaw trace; confirm source/fixed head at normal size before staging."
+      },
+      "layers": {
+        "hair_front": {
+          "native": "native/temple_plait_front.png",
+          "name": "偏分鬓辫",
+          "noise_alpha_max": 2,
+          "native_to_source": {
+            "matrix_2x3": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0
+              ]
+            ],
+            "basis": "IDENTITY PLACEHOLDER ONLY. Confirm full-canvas shape against source or replace with measured source_controls/target_controls."
+          }
+        },
+        "hair_back": {
+          "native": "native/temple_plait_back.png",
+          "name": "半束长披",
+          "noise_alpha_max": 2,
+          "native_to_source": {
+            "matrix_2x3": [
+              [
+                1,
+                0,
+                0
+              ],
+              [
+                0,
+                1,
+                0
+              ]
+            ],
+            "basis": "IDENTITY PLACEHOLDER ONLY. Confirm full-canvas shape against source or replace with measured source_controls/target_controls."
+          }
+        }
+      },
+      "boundaries": {
+        "front": "Asymmetric frontal sweep, ear-front strands and the visible temple braid running beside the forehead/temple.",
+        "back": "Posterior half-up support, hidden braid continuation behind ear if needed, and long rear locks. No newly invented chest-front braid."
+      }
+    }
+  ]
+}

@@ -1,0 +1,256 @@
+{
+  "native_source": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\raw\\head.png",
+  "native_sha256": "d584ba9ce2bbb4f432a835eb9489cc047ac3fe29b2b2fcd450c55ab6742ebab4",
+  "frozen_alpha_source": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\reference\\current_male\\face_shape\\01.png",
+  "frozen_sha256": "2fd9743feb92f3420355f46c83302f7e60de65892f9c09a8bbff9ce3e3afe7aa",
+  "approved_source": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\source\\approved_male.png",
+  "approved_sha256": "d97b79e3372df42db24b4dd5c3ec42f376d652616d9fa25d78a393b004da81a8",
+  "output": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\male\\face_shape\\01.png",
+  "output_sha256": "44257a5b89b2b417e18e3b000c12d8c6823cb6e453f13c1a1573408d6b8a23b6",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "transform": "none; same native origin and dimensions",
+  "head_neck_alpha_changed_pixels": 0,
+  "native_solid_rgb_changed_pixels": 0,
+  "native_solid_rgb_preserved_pixels": 104121,
+  "edge_rgb_extended_from_new_native_only_pixels": 4354,
+  "max_extension_distance_alpha_ge128": 5.0,
+  "old_head_rgb_used": false,
+  "alpha_sha256": "3ebe335476d7f5911ba6e7d238eb2cb64c5f0fd1f18548156eed29e35a222c43",
+  "frozen_alpha_sha256": "3ebe335476d7f5911ba6e7d238eb2cb64c5f0fd1f18548156eed29e35a222c43",
+  "neck_alpha230_rows": [
+    {
+      "y": 500,
+      "new": [
+        429,
+        599
+      ],
+      "frozen": [
+        429,
+        599
+      ],
+      "identical": true
+    },
+    {
+      "y": 510,
+      "new": [
+        429,
+        599
+      ],
+      "frozen": [
+        429,
+        599
+      ],
+      "identical": true
+    },
+    {
+      "y": 520,
+      "new": [
+        428,
+        600
+      ],
+      "frozen": [
+        428,
+        600
+      ],
+      "identical": true
+    },
+    {
+      "y": 530,
+      "new": [
+        428,
+        601
+      ],
+      "frozen": [
+        428,
+        601
+      ],
+      "identical": true
+    },
+    {
+      "y": 540,
+      "new": [
+        427,
+        602
+      ],
+      "frozen": [
+        427,
+        602
+      ],
+      "identical": true
+    },
+    {
+      "y": 550,
+      "new": [
+        426,
+        603
+      ],
+      "frozen": [
+        426,
+        603
+      ],
+      "identical": true
+    },
+    {
+      "y": 560,
+      "new": [
+        424,
+        605
+      ],
+      "frozen": [
+        424,
+        605
+      ],
+      "identical": true
+    },
+    {
+      "y": 570,
+      "new": [
+        423,
+        606
+      ],
+      "frozen": [
+        423,
+        606
+      ],
+      "identical": true
+    },
+    {
+      "y": 580,
+      "new": [
+        421,
+        608
+      ],
+      "frozen": [
+        421,
+        608
+      ],
+      "identical": true
+    },
+    {
+      "y": 590,
+      "new": [
+        425,
+        604
+      ],
+      "frozen": [
+        425,
+        604
+      ],
+      "identical": true
+    },
+    {
+      "y": 600,
+      "new": [
+        431,
+        599
+      ],
+      "frozen": [
+        431,
+        599
+      ],
+      "identical": true
+    }
+  ],
+  "skin_samples": [
+    {
+      "name": "forehead",
+      "rect_xyxy": [
+        496,
+        292,
+        526,
+        320
+      ],
+      "native_head_rgb_median": [
+        229.0,
+        198.0,
+        183.0
+      ],
+      "approved_whole01_rgb_median": [
+        231.0,
+        204.0,
+        188.0
+      ],
+      "rgb_delta": [
+        -2.0,
+        -6.0,
+        -5.0
+      ]
+    },
+    {
+      "name": "left_cheek",
+      "rect_xyxy": [
+        435,
+        402,
+        453,
+        427
+      ],
+      "native_head_rgb_median": [
+        228.0,
+        196.0,
+        180.0
+      ],
+      "approved_whole01_rgb_median": [
+        229.0,
+        198.0,
+        182.0
+      ],
+      "rgb_delta": [
+        -1.0,
+        -2.0,
+        -2.0
+      ]
+    },
+    {
+      "name": "right_cheek",
+      "rect_xyxy": [
+        573,
+        402,
+        591,
+        427
+      ],
+      "native_head_rgb_median": [
+        227.0,
+        195.0,
+        180.0
+      ],
+      "approved_whole01_rgb_median": [
+        229.0,
+        199.0,
+        182.0
+      ],
+      "rgb_delta": [
+        -2.0,
+        -4.0,
+        -2.0
+      ]
+    },
+    {
+      "name": "neck",
+      "rect_xyxy": [
+        490,
+        570,
+        530,
+        590
+      ],
+      "native_head_rgb_median": [
+        211.0,
+        172.0,
+        152.0
+      ],
+      "approved_whole01_rgb_median": [
+        220.0,
+        186.0,
+        166.0
+      ],
+      "rgb_delta": [
+        -9.0,
+        -14.0,
+        -14.0
+      ]
+    }
+  ],
+  "visual_limit": "Native blank head is AI generated; inspect unfeatured skin, ears, jaw and collar contact. Exact Alpha does not certify artistic likeness."
+}

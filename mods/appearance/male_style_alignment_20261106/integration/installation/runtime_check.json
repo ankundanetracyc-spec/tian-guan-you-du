@@ -1,0 +1,103 @@
+{
+  "active_option_count": 39,
+  "baseline_backup_pngs_checked": 46,
+  "checks": 1328,
+  "failures": [],
+  "female_hair_feature_combinations": 108,
+  "female_preserved": 24,
+  "female_viewport_captured": true,
+  "head_alpha_unchanged": true,
+  "imported_texture_checks": [
+    {
+      "alpha_different_pixels": 0,
+      "border_processing": "Existing Godot process/fix_alpha_border setting retained; raw-PNG UI compositions are checked separately pixel for pixel.",
+      "file": "res://mods/appearance/ink_three_variants_20261004/male/face_shape/01.png",
+      "opaque_core_rgb_different_pixels": 0,
+      "rgba_exact": false,
+      "transparent_rgb_different_pixels": 3774,
+      "visible_rgb_different_pixels": 1882
+    },
+    {
+      "alpha_different_pixels": 0,
+      "border_processing": "Existing Godot process/fix_alpha_border setting retained; raw-PNG UI compositions are checked separately pixel for pixel.",
+      "file": "res://mods/appearance/ink_three_variants_20261004/male/hair_front/01.png",
+      "opaque_core_rgb_different_pixels": 0,
+      "rgba_exact": false,
+      "transparent_rgb_different_pixels": 8337,
+      "visible_rgb_different_pixels": 35782
+    },
+    {
+      "alpha_different_pixels": 0,
+      "border_processing": "Existing Godot process/fix_alpha_border setting retained; raw-PNG UI compositions are checked separately pixel for pixel.",
+      "file": "res://mods/appearance/ink_three_variants_20261004/male/hair_back/01.png",
+      "opaque_core_rgb_different_pixels": 0,
+      "rgba_exact": false,
+      "transparent_rgb_different_pixels": 5249,
+      "visible_rgb_different_pixels": 41768
+    },
+    {
+      "alpha_different_pixels": 0,
+      "border_processing": "Existing Godot process/fix_alpha_border setting retained; raw-PNG UI compositions are checked separately pixel for pixel.",
+      "file": "res://mods/appearance/ink_three_variants_20261004/male/eyebrows/01.png",
+      "opaque_core_rgb_different_pixels": 0,
+      "rgba_exact": false,
+      "transparent_rgb_different_pixels": 1620,
+      "visible_rgb_different_pixels": 194
+    },
+    {
+      "alpha_different_pixels": 0,
+      "border_processing": "Existing Godot process/fix_alpha_border setting retained; raw-PNG UI compositions are checked separately pixel for pixel.",
+      "file": "res://mods/appearance/ink_three_variants_20261004/male/eyes/01.png",
+      "opaque_core_rgb_different_pixels": 0,
+      "rgba_exact": false,
+      "transparent_rgb_different_pixels": 1187,
+      "visible_rgb_different_pixels": 307
+    },
+    {
+      "alpha_different_pixels": 0,
+      "border_processing": "Existing Godot process/fix_alpha_border setting retained; raw-PNG UI compositions are checked separately pixel for pixel.",
+      "file": "res://mods/appearance/ink_three_variants_20261004/male/nose/01.png",
+      "opaque_core_rgb_different_pixels": 0,
+      "rgba_exact": false,
+      "transparent_rgb_different_pixels": 667,
+      "visible_rgb_different_pixels": 729
+    },
+    {
+      "alpha_different_pixels": 0,
+      "border_processing": "Existing Godot process/fix_alpha_border setting retained; raw-PNG UI compositions are checked separately pixel for pixel.",
+      "file": "res://mods/appearance/ink_three_variants_20261004/male/mouth/01.png",
+      "opaque_core_rgb_different_pixels": 0,
+      "rgba_exact": false,
+      "transparent_rgb_different_pixels": 772,
+      "visible_rgb_different_pixels": 139
+    },
+    {
+      "alpha_different_pixels": 0,
+      "border_processing": "Existing Godot process/fix_alpha_border setting retained; raw-PNG UI compositions are checked separately pixel for pixel.",
+      "file": "res://mods/appearance/ink_three_variants_20261004/male/clothing/01.png",
+      "opaque_core_rgb_different_pixels": 0,
+      "rgba_exact": false,
+      "transparent_rgb_different_pixels": 5767,
+      "visible_rgb_different_pixels": 4221
+    },
+    {
+      "alpha_different_pixels": 0,
+      "border_processing": "Existing Godot process/fix_alpha_border setting retained; raw-PNG UI compositions are checked separately pixel for pixel.",
+      "file": "res://mods/appearance/ink_three_variants_20261004/male/clothing_back/01.png",
+      "opaque_core_rgb_different_pixels": 0,
+      "rgba_exact": false,
+      "transparent_rgb_different_pixels": 1317,
+      "visible_rgb_different_pixels": 922
+    }
+  ],
+  "installed_pngs_checked": 9,
+  "male_hair_feature_combinations": 1,
+  "male_viewport_captured": true,
+  "pass": true,
+  "physical_png_count": 46,
+  "pixel_composites_verified": true,
+  "preserved_pngs_checked": 37,
+  "rear_pair_visibility_checks": 14,
+  "renderer_pair_checks": 14,
+  "visual_acceptance": "Engineering checks verify installation and composition; generated hidden areas and final likeness remain subject to user review."
+}

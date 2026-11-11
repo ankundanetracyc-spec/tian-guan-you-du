@@ -1,0 +1,355 @@
+{
+  "task": "Approved male whole01 source and native geometry audit before modular integration",
+  "authorization": "User explicitly selected the attached warmer whole01 skin and requested replacement/integration; prior preview manifest selection whole02 is superseded by this exact attachment match.",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "origin": "top_left, x_right, y_down",
+  "source_identity": {
+    "attachment_path": "C:\\Users\\34784\\AppData\\Local\\Temp\\codex-clipboard-7809f4ed-35ea-47dd-b931-19e1cc433b1b.png",
+    "attachment_sha256": "d97b79e3372df42db24b4dd5c3ec42f376d652616d9fa25d78a393b004da81a8",
+    "approved_preview_path": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\preview\\male_whole_01.png",
+    "approved_preview_sha256": "d97b79e3372df42db24b4dd5c3ec42f376d652616d9fa25d78a393b004da81a8",
+    "byte_identical": true,
+    "rejected_for_this_install_preview02_sha256": "9c684be0411eec72c2b5050abe414037300d4262a51263d2556ad2be6cae98dd",
+    "use_whole01_original_skin_rgb": true
+  },
+  "measurement_method": {
+    "pupils": "Darkness-weighted local iris patch centroid, weights=max(100-meanRGB,0), x=center+-7, y363:373; central pupil points are approximate painted controls, not exact anatomical centers.",
+    "nostrils_and_lip": "Darkness-weighted local painted shadows, max(150-meanRGB,0); nostril boxes x497:512/x521:537, y437:453; lip box x479:554,y470:484.",
+    "hairline": "Maximum positive vertical meanRGB gradient across x510:518, y240:290. This is front hair/forehead interface, not baihui.",
+    "chin": "Darkest painted centerline at x513 in y530:552; silhouette alpha does not describe the interior chin/neck painted line.",
+    "precision": "About 1px for dark centroids; 1-2px painted landmark reading. Hidden ear/neck contacts are not measurable exact source anchors from this full portrait."
+  },
+  "approved_measurements": {
+    "pupil_left": [
+      461.5689530030847,
+      365.25258573761573
+    ],
+    "pupil_right": [
+      566.4229137199434,
+      365.08718933117797
+    ],
+    "left_nostril": [
+      504.7573311810601,
+      443.9114877589453
+    ],
+    "right_nostril": [
+      529.3398776134626,
+      444.19428862825094
+    ],
+    "lip_dark_stroke_center": [
+      515.9415143603135,
+      477.41288076588336
+    ],
+    "pupil_midpoint": [
+      513.9959333615141,
+      365.1698875343968
+    ],
+    "pupil_distance_px": 104.85409116474096,
+    "nostril_midpoint": [
+      517.0486043972613,
+      444.05288819359816
+    ],
+    "central_hairline_max_positive_gradient": [
+      514,
+      268
+    ],
+    "central_chin_darkest_y_at_x513": [
+      513,
+      544
+    ]
+  },
+  "current_same_method_measurements": {
+    "pupil_left": [
+      461.1678386763186,
+      365.1041365046536
+    ],
+    "pupil_right": [
+      565.5675227837614,
+      364.8954905906024
+    ],
+    "left_nostril": [
+      503.09249949728536,
+      441.58576312085273
+    ],
+    "right_nostril": [
+      525.6090909090909,
+      441.43285123966945
+    ],
+    "lip_dark_stroke_center": [
+      514.3870061699972,
+      474.4970531356479
+    ],
+    "pupil_midpoint": [
+      513.36768073004,
+      364.999813547628
+    ],
+    "pupil_distance_px": 104.39989259980733,
+    "nostril_midpoint": [
+      514.3507952031881,
+      441.5093071802611
+    ],
+    "central_hairline_max_positive_gradient": [
+      514,
+      265
+    ],
+    "central_chin_darkest_y_at_x513": [
+      513,
+      543
+    ]
+  },
+  "comparison_controls": [
+    {
+      "control": "pupil_left",
+      "approved_xy": [
+        461.5689530030847,
+        365.25258573761573
+      ],
+      "current_same_method_xy": [
+        461.1678386763186,
+        365.1041365046536
+      ],
+      "delta_xy": [
+        0.4011143267661055,
+        0.1484492329621503
+      ]
+    },
+    {
+      "control": "pupil_right",
+      "approved_xy": [
+        566.4229137199434,
+        365.08718933117797
+      ],
+      "current_same_method_xy": [
+        565.5675227837614,
+        364.8954905906024
+      ],
+      "delta_xy": [
+        0.8553909361819478,
+        0.191698740575589
+      ]
+    },
+    {
+      "control": "pupil_midpoint",
+      "approved_xy": [
+        513.9959333615141,
+        365.1698875343968
+      ],
+      "current_same_method_xy": [
+        513.36768073004,
+        364.999813547628
+      ],
+      "delta_xy": [
+        0.6282526314740835,
+        0.17007398676884122
+      ]
+    },
+    {
+      "control": "left_nostril",
+      "approved_xy": [
+        504.7573311810601,
+        443.9114877589453
+      ],
+      "current_same_method_xy": [
+        503.09249949728536,
+        441.58576312085273
+      ],
+      "delta_xy": [
+        1.6648316837747643,
+        2.325724638092595
+      ]
+    },
+    {
+      "control": "right_nostril",
+      "approved_xy": [
+        529.3398776134626,
+        444.19428862825094
+      ],
+      "current_same_method_xy": [
+        525.6090909090909,
+        441.43285123966945
+      ],
+      "delta_xy": [
+        3.730786704371667,
+        2.7614373885814985
+      ]
+    },
+    {
+      "control": "nostril_midpoint",
+      "approved_xy": [
+        517.0486043972613,
+        444.05288819359816
+      ],
+      "current_same_method_xy": [
+        514.3507952031881,
+        441.5093071802611
+      ],
+      "delta_xy": [
+        2.6978091940732156,
+        2.543581013337075
+      ]
+    },
+    {
+      "control": "lip_dark_stroke_center",
+      "approved_xy": [
+        515.9415143603135,
+        477.41288076588336
+      ],
+      "current_same_method_xy": [
+        514.3870061699972,
+        474.4970531356479
+      ],
+      "delta_xy": [
+        1.5545081903162554,
+        2.9158276302354693
+      ]
+    },
+    {
+      "control": "central_hairline_max_positive_gradient",
+      "approved_xy": [
+        514,
+        268
+      ],
+      "current_same_method_xy": [
+        514,
+        265
+      ],
+      "delta_xy": [
+        0,
+        3
+      ]
+    },
+    {
+      "control": "central_chin_darkest_y_at_x513",
+      "approved_xy": [
+        513,
+        544
+      ],
+      "current_same_method_xy": [
+        513,
+        543
+      ],
+      "delta_xy": [
+        0,
+        1
+      ]
+    }
+  ],
+  "fixed_current_head_neck": {
+    "path": "E:\\stacklands\\mods\\appearance\\ink_three_variants_20261004\\male\\face_shape\\01.png",
+    "sha256": "2fd9743feb92f3420355f46c83302f7e60de65892f9c09a8bbff9ce3e3afe7aa",
+    "head_axis_x_range": [
+      512.5,
+      513.0
+    ],
+    "neck_alpha230_rows": [
+      {
+        "y": 530,
+        "alpha_threshold": 230,
+        "left_x": 428,
+        "right_x": 601
+      },
+      {
+        "y": 550,
+        "alpha_threshold": 230,
+        "left_x": 426,
+        "right_x": 603
+      },
+      {
+        "y": 580,
+        "alpha_threshold": 230,
+        "left_x": 421,
+        "right_x": 608
+      }
+    ],
+    "preserve_alpha_and_native_position": true
+  },
+  "collar_comparison": {
+    "current_clothing01_formal_alpha_controls": [
+      [
+        433,
+        545
+      ],
+      [
+        599,
+        545
+      ],
+      [
+        532,
+        680
+      ]
+    ],
+    "approved_visual_neck_collar_contacts_approx": [
+      [
+        433,
+        553
+      ],
+      [
+        599,
+        556
+      ]
+    ],
+    "approved_visual_contacts_precision_px": 3,
+    "approved_rendered_inner_V_dark_seam": [
+      532,
+      684
+    ],
+    "current_rendered_inner_V_dark_seam": [
+      532,
+      684
+    ],
+    "note": "Formal alpha points describe isolated garment geometry. Visible skin/hair/fabric shadow intersections are different observables and partially occluded; do not interpret y553/556 vs545 as a whole-body registration offset. Source native full V seam is already co-located with current displayed seam."
+  },
+  "additional_native_visual_guides_approx": {
+    "visible_lower_ear_neck_junctions": [
+      [
+        412,
+        441
+      ],
+      [
+        616,
+        442
+      ]
+    ],
+    "visible_front_hairline_center": [
+      514,
+      268
+    ],
+    "chin_painted_bottom": [
+      513,
+      544
+    ],
+    "hair_bun_top": [
+      511,
+      95
+    ],
+    "wood_pin_center": [
+      513,
+      156
+    ],
+    "shoulder_outer_corners": [
+      [
+        110,
+        719
+      ],
+      [
+        913,
+        719
+      ]
+    ],
+    "waist_sash_top_y_approx": 1215,
+    "baihui": null,
+    "note": "Ear roots/neck side are occluded by hair; these are visual guides only, not three-point registration anchors. Baihui has a current spatial layering definition but no approved frozen numeric coordinate; do not substitute bun top."
+  },
+  "integration_guidance": [
+    "Use approved whole01 native actual coordinates, not old y379 eye rig or whole02 palette.",
+    "Do not repeat the previous five-pixel left shift: approved whole01 eye midpoint is already about514, near the current fixed head axis.",
+    "Keep each pair of eyes/brows on one full 1024x1536 layer. Preserve approved eye-fissure and iris dimensions; do not scale a new extraction by pupil spacing alone.",
+    "Current whole01 differs from fixed current face mainly by small feature drift: nose/lip shadows about2-3px lower and1-3px right; retain approved source relationships rather than independently snapping each part to old points.",
+    "Freeze fixed head/neck alpha and seven garment compatibility; source visible jaw about1-2px lower is a painted RGB contour difference, not permission to move the neck.",
+    "Extract native source clothing geometry first, and check collar contact on the fixed neck; preserve source native shoulder/waist placement."
+  ],
+  "scope": "Only this JSON was written by this reviewer; no image, active resource or configuration edited."
+}

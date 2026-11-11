@@ -1,0 +1,34 @@
+{
+  "alignment_basis": "Three manually read moustache-tail/chin guide pairs; uniform fit, approximate residuals2.27/2.10/2.98 canvas pixels before placement rounding. Native[[305,402],[1297,401],[803,936]] maps near active[[468,485],[566,485],[517,544]]. Final visual review required; no local warps or individual hair movement.",
+  "alpha1_to4_removed": 105969,
+  "canvas": [
+    1024,
+    1536
+  ],
+  "final": "res://mods/appearance/male_short_beard_install_20261108/male/face_accessory/02.png",
+  "final_sha256": "ab608c9f90ee5b63e4da8dded862a72af69028f21a8fead1c7d8eacdec666e9a",
+  "integer_translation": [
+    435,
+    446
+  ],
+  "limitations": "Image generation extracted/reconstructed beard strokes; not pixel-identical source matting. No existing facial feature pixels changed.",
+  "maximum_removed_alpha": 4,
+  "native_supported_pixels_before_resampling": 304346,
+  "no_local_warp": true,
+  "no_rgb_repaint": true,
+  "pipeline": "Built-in image_gen extracts the approved close-up hair. Godot import removes alpha1..4 dust, performs one premultiplied-alpha uniform Lanczos reduction, then places the whole layer on the shared canvas.",
+  "resized_source": [
+    164,
+    100
+  ],
+  "runtime_offset": [
+    0,
+    0
+  ],
+  "source": "res://mods/appearance/male_short_beard_install_20261108/raw/short_beard_extraction_v4.png",
+  "source_sha256": "9a7fe0ca59a78e816a8a855dec559093570e39813ecd471d111d013e487b6487",
+  "uniform_scale": 0.102025117632062,
+  "stage": "generated_support_before_source_matting",
+  "generated_support_canvas": "raw/v4_generated_support_on_canvas.png",
+  "hash_note": "final_sha256 here records the pre-matting generated support only; final installed SHA is recorded in source/matting_report.json and installation/install_report.json."
+}

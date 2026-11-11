@@ -1,0 +1,29 @@
+{
+  "schema": "male-high-tie-visual-review/v1",
+  "status": "root_final_normal_size_passed_for_installation",
+  "user_final_visual_acceptance": "pending",
+  "reviewed_sha256": {
+    "hair_front": "346e4d42c8890b2cf084075ee5751db92ff17cba890672ab3738f8825b9f811f",
+    "hair_back": "b6ffb0366f15b3528a9ac66107e751a3da9afb17e2b77ad0cff0814656c7e741",
+    "eyebrows": "f5e0908457fb3b30a33dc7961af0b4c0e046f6794d8768104b79d1a0714839fd",
+    "eyes": "46d6b972e5667199e274b1c2dd8bc1686f01e0ed3f68eac4301f1fbf648f88fd"
+  },
+  "evidence": [
+    "qa/source_vs_selected_face.png",
+    "qa/candidate_selected_light.png",
+    "qa/candidate_selected_dark.png",
+    "qa/candidate_selected_nine_hair_mixes_light.png",
+    "qa/features/source_frame_left_actual_right_light.png"
+  ],
+  "findings": [
+    "Correct original-size front-hair extraction selected; oversized first native rejected.",
+    "Independent hair audit passed light/dark hairline and all nine existing/new front/back combinations. Top knot belongs to back hair; chest stays clear.",
+    "Eyebrow outer hard-switch artifacts corrected. Confirmed source-hair remnants removed; both principal brow cores unchanged.",
+    "Third eye extraction keeps the original faint upper folds; whole-pair native/source maximum residual1.808px, no local warps or eye enlargement. Root reviewed refreshed same-frame comparison after final removal."
+  ],
+  "limits": [
+    "Minor regenerated fine-hair and hidden pigment differences remain.",
+    "Existing head/skin/nose/mouth/clothes are reused intentionally; the whole portrait is not pixel-identical.",
+    "New source narrower eye spacing is retained through the shared frame; maximum three-point frame residual1.755px. Nose/mouth source deltas remain recorded rather than independently moved."
+  ]
+}

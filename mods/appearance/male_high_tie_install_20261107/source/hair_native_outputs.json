@@ -1,0 +1,28 @@
+{
+  "mode": "built-in image_gen",
+  "source_sha256": "fe7b9280cbb19019e76ffd6d451679e5e3ff3dc2b685b9020471b96451312f18",
+  "records": [
+    {
+      "part": "hair_front",
+      "native": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-db339ca1-0cc9-4717-8520-181c8ed6fd18.png",
+      "raw": "raw/hair_front_first.png",
+      "status": "rejected",
+      "reason": "Tool enlarged the source front hair to about713px core width. Never imported or installed."
+    },
+    {
+      "part": "hair_front",
+      "native": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-6e8ffa87-6db5-4532-b706-1159e12d0dcb.png",
+      "raw": "raw/hair_front.png",
+      "status": "selected",
+      "prompt": "source/hair_front_retry_prompt.txt",
+      "source_coordinates": "Same original source-sized front-hair position; shared whole-group frame applied at import."
+    },
+    {
+      "part": "hair_back",
+      "native": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-30763ee7-93db-4eb4-9263-f165e6c2de53.png",
+      "raw": "raw/hair_back.png",
+      "status": "selected",
+      "prompt": "source/hair_generation_prompts.json:hair_back"
+    }
+  ]
+}

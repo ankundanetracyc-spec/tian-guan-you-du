@@ -1,0 +1,12 @@
+Use case: precise-object-edit / background-extraction.
+Refine the supplied transparent beard layer to restore the EXACT SMALL SHAPE DETAILS of the user's approved portrait.
+Image1 = edit target, the current transparent1024x1536 beard extraction, not yet correct.
+Image2 = sole approved SHAPE reference, whole original1024x1536 male portrait.
+Image3 = nearest-neighbour4x enlarged original crop from image2 (original ROI x400,y430,width230,height140). Use it to read fine strand shapes; it is NOT a new scale or a portrait to copy onto the layer.
+Return one1024x1536 RGBA file with genuine transparency, beard in the ORIGINAL WHOLE PORTRAIT facial position, tiny near x467..569,y454..545, all else transparent. Never enlarge or center on the canvas.
+Fix only these missing features:
+1. Original moustache has fine feathered ends that extend a little DOWN beside the two mouth corners. Current target wrongly has two thick flat short-ended dashes. Reproduce the original finer, uneven, tapered hair strokes and subtle descending tails (near left x468,y481..487 and rightx564,y481..487), while keeping lips fully transparent. Central division at philtrum should be subtle and natural, not a hard blank split.
+2. Recover the very SMALL SPARSE hair tuft below the lower lip (nearx515,y493..500). Hair strokes only, no painted skin shadow or lips.
+3. Restore the sparse upward-growing hairs at CENTER OF CHIN: original chin-hair upper boundary rises in the middle nearx510..524,y516..528, not a uniform low U band. Preserve the low curved short jaw edge near y540 and the thin side jaw hairs. Look closely at original enlarged crop; reproduce these exact short whisker directions.
+Keep beard muted charcoal brown-black, finely tapered matte gongbi brush strokes at the original density. No full cheek beard, no long hanging hair, no broad dark filled regions, no thick geometric moustache, no photorealism. The original jaw hair starts low near y508; no long arms towards sideburns.
+Erase ALL skin, pink/beige haze, lips, nose, mouth, background and all non-beard pixels to alpha0. No alpha dust outside the small beard region. Transparent spaces between strokes must remain transparent; never patch skin or add a blurred shadow to fake beard hair. Keep the exact1024x1536 canvas from image2, full-canvas position unchanged. Only extract the approved beard, no new beard design.

@@ -1,0 +1,141 @@
+{
+  "schema": "male-four-hair-expansion-draft/v1",
+  "status": "four user-selected hairstyles; eight hair layers not staged or installed by this draft",
+  "additions": [
+    {
+      "key": "low_coil",
+      "part": "hair_front",
+      "name": "后收拢发",
+      "source": "res://mods/appearance/male_four_styles_install_20261108/male/hair_front/06.png",
+      "index": 6,
+      "style_id": 5,
+      "approved_portrait": "res://mods/appearance/male_four_styles_install_20261108/source/approved/low_coil.png",
+      "approved_sha256": "5c0ee43f79a474cd9980f456f04b227cb8c7d3203d94e2cf80e6d9ee8a776db2"
+    },
+    {
+      "key": "low_coil",
+      "part": "hair_back",
+      "name": "后颈低髻",
+      "source": "res://mods/appearance/male_four_styles_install_20261108/male/hair_back/06.png",
+      "index": 6,
+      "style_id": 5,
+      "approved_portrait": "res://mods/appearance/male_four_styles_install_20261108/source/approved/low_coil.png",
+      "approved_sha256": "5c0ee43f79a474cd9980f456f04b227cb8c7d3203d94e2cf80e6d9ee8a776db2"
+    },
+    {
+      "key": "high_tail",
+      "part": "hair_front",
+      "name": "露额拢发",
+      "source": "res://mods/appearance/male_four_styles_install_20261108/male/hair_front/07.png",
+      "index": 7,
+      "style_id": 6,
+      "approved_portrait": "res://mods/appearance/male_four_styles_install_20261108/source/approved/high_tail.png",
+      "approved_sha256": "32984304c29c80b492d71d7b8190b15be76f581093851c71b97520f2664745da"
+    },
+    {
+      "key": "high_tail",
+      "part": "hair_back",
+      "name": "长尾高束",
+      "source": "res://mods/appearance/male_four_styles_install_20261108/male/hair_back/07.png",
+      "index": 7,
+      "style_id": 6,
+      "approved_portrait": "res://mods/appearance/male_four_styles_install_20261108/source/approved/high_tail.png",
+      "approved_sha256": "32984304c29c80b492d71d7b8190b15be76f581093851c71b97520f2664745da"
+    },
+    {
+      "key": "loose_back",
+      "part": "hair_front",
+      "name": "露耳后梳",
+      "source": "res://mods/appearance/male_four_styles_install_20261108/male/hair_front/08.png",
+      "index": 8,
+      "style_id": 7,
+      "approved_portrait": "res://mods/appearance/male_four_styles_install_20261108/source/approved/loose_back.png",
+      "approved_sha256": "a3a82d5597f9b6df84685b01c9df88b00b79f83f5ac628f9e5f7a3d490e3b146"
+    },
+    {
+      "key": "loose_back",
+      "part": "hair_back",
+      "name": "自然松披",
+      "source": "res://mods/appearance/male_four_styles_install_20261108/male/hair_back/08.png",
+      "index": 8,
+      "style_id": 7,
+      "approved_portrait": "res://mods/appearance/male_four_styles_install_20261108/source/approved/loose_back.png",
+      "approved_sha256": "a3a82d5597f9b6df84685b01c9df88b00b79f83f5ac628f9e5f7a3d490e3b146"
+    },
+    {
+      "key": "temple_plait",
+      "part": "hair_front",
+      "name": "偏分鬓辫",
+      "source": "res://mods/appearance/male_four_styles_install_20261108/male/hair_front/09.png",
+      "index": 9,
+      "style_id": 8,
+      "approved_portrait": "res://mods/appearance/male_four_styles_install_20261108/source/approved/temple_plait.png",
+      "approved_sha256": "d27eb0ef862249490d3e3ef899994b5433b6531dc95d1e5c4999c55c9afc7898"
+    },
+    {
+      "key": "temple_plait",
+      "part": "hair_back",
+      "name": "半束长披",
+      "source": "res://mods/appearance/male_four_styles_install_20261108/male/hair_back/09.png",
+      "index": 9,
+      "style_id": 8,
+      "approved_portrait": "res://mods/appearance/male_four_styles_install_20261108/source/approved/temple_plait.png",
+      "approved_sha256": "d27eb0ef862249490d3e3ef899994b5433b6531dc95d1e5c4999c55c9afc7898"
+    }
+  ],
+  "deduplication": [
+    {
+      "part": "face_shape",
+      "decision": "reuse_existing_01",
+      "reason": "Keep current skin/head/neck and all seven collars unchanged; approved whole-paint neck color differs."
+    },
+    {
+      "part": "eyebrows",
+      "decision": "reuse_existing_01",
+      "reason": "Viewed approved variants retain closely related mother-template eyebrows; no distinctive new option justified."
+    },
+    {
+      "part": "eyes",
+      "decision": "reuse_existing_01",
+      "reason": "Same measurement method places source dark pupils within about0.1–0.8px of existing01; do not regenerate or resize the eyes."
+    },
+    {
+      "part": "nose",
+      "decision": "reuse_existing_01",
+      "reason": "Shape and placement are very close to the approved base; avoid duplicate parts."
+    },
+    {
+      "part": "mouth",
+      "decision": "reuse_existing_01",
+      "reason": "Same base lip construction with only subtle painting changes; no new lip style."
+    }
+  ],
+  "boundaries": {
+    "low_coil": {
+      "front": "Frontal swept-back crown, forehead hairline and ear-front wisps; no low bun.",
+      "back": "Low coiled bun at viewer-left nape and complete narrow posterior cap; no invented shoulder hair."
+    },
+    "high_tail": {
+      "front": "Visible upswept frontal crown, hairline and short temple wisps.",
+      "back": "High ponytail, cloth tie and continuous posterior support behind head/neck/shoulders."
+    },
+    "loose_back": {
+      "front": "Visible frontal crown, ear-front wisps, and ANY actual lock proven to lie on top of robe embroidery. Determine from source crop; do not assign a front lock to back simply because the hairstyle is loose.",
+      "back": "Long loose hair behind head, ears, neck and robe. Complete hidden hair continuously; do not include actual robe-front strands in this layer."
+    },
+    "temple_plait": {
+      "front": "Asymmetric frontal sweep, ear-front strands and the visible temple braid running beside the forehead/temple.",
+      "back": "Posterior half-up support, hidden braid continuation behind ear if needed, and long rear locks. No newly invented chest-front braid."
+    }
+  },
+  "processing": "One common source-to-frame similarity per style, shared identically by front/back. Combine native-to-source with this frame and sample nativeRGBA once with premultiplied-alpha bilinear interpolation. No sourceRGB paste, color reconstruction, recolor, local warp or existing feature movement.",
+  "expected_new_pngs": 8,
+  "old_pngs_to_preserve": 59,
+  "runtime_offset": [
+    0,
+    0
+  ],
+  "active_package_written": false,
+  "geometry_evidence": "qa/geometry_draft.json",
+  "limitation": "Deduplication keeps current facial features and head/neck; assembled face is not claimed pixel-identical to the whole approved preview."
+}

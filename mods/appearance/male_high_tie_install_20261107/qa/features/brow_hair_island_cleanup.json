@@ -1,0 +1,32 @@
+{
+  "pass": true,
+  "before_sha256": "fe5886b5aa9877e5938cbc5e3e625caebf14e7ef3afcff5a14f1cf212c32fb86",
+  "after_sha256": "f5e0908457fb3b30a33dc7961af0b4c0e046f6794d8768104b79d1a0714839fd",
+  "removed_pixels": 188,
+  "removed_components": [
+    {
+      "alpha128_pixels": 52,
+      "bbox": [
+        416,
+        333,
+        423,
+        343
+      ],
+      "classification": "Confirmed source-front-hair residue; vertical block, not eyebrow fine hair"
+    },
+    {
+      "alpha128_pixels": 18,
+      "bbox": [
+        605,
+        338,
+        609,
+        343
+      ],
+      "classification": "Confirmed source-front-hair residue; vertical block, not eyebrow fine hair"
+    }
+  ],
+  "main_body_alpha128_pixels_preserved": 1197,
+  "main_body_rgba_differences": 0,
+  "alpha_added_pixels": 0,
+  "method": "Remove only reviewed outer-island Voronoi territory within3.5px, retaining both main eyebrow components and their closer soft edge. No rectangular clip, no new pigment, no movement."
+}

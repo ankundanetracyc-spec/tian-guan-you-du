@@ -1,0 +1,47 @@
+{
+  "schema": "male-style-expansion/v1",
+  "approved_portrait": "res://mods/appearance/male_high_tie_install_20261107/source/approved_male.png",
+  "additions": [
+    {
+      "part": "hair_front",
+      "name": "露额上梳",
+      "source": "res://mods/appearance/male_high_tie_install_20261107/male/hair_front/05.png",
+      "index": 5,
+      "style_id": 4
+    },
+    {
+      "part": "hair_back",
+      "name": "高束披发",
+      "source": "res://mods/appearance/male_high_tie_install_20261107/male/hair_back/05.png",
+      "index": 5,
+      "style_id": 4
+    },
+    {
+      "part": "eyebrows",
+      "name": "清峻挑眉",
+      "source": "res://mods/appearance/male_high_tie_install_20261107/male/eyebrows/05.png",
+      "index": 5,
+      "style_id": 4
+    },
+    {
+      "part": "eyes",
+      "name": "清锐长目",
+      "source": "res://mods/appearance/male_high_tie_install_20261107/male/eyes/05.png",
+      "index": 5,
+      "style_id": 4
+    }
+  ],
+  "deduplication": [
+    {
+      "part": "nose",
+      "decision": "reuse_existing_01",
+      "reason": "鼻尖、鼻翼与鼻孔结构近似，原稿共同定位后的轻微位置变化不作为独立款。见qa/geometry_and_dedup.json。"
+    },
+    {
+      "part": "mouth",
+      "decision": "reuse_existing_01",
+      "reason": "唇峰、闭口线和下唇形近似，不因色深或微小位置差异增加重复款。"
+    }
+  ],
+  "provenance": "Built-in image_gen extraction. New hair and paired brow/eye share one source-to-fixed-head similarity; no local warps or independent old feature snapping. Existing head/skin, nose/mouth and seven clothing pairs reused; original choices retained. Not a whole-portrait pixel-identity claim."
+}

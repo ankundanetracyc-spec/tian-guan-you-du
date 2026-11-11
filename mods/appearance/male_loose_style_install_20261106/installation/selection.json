@@ -1,0 +1,47 @@
+{
+  "schema": "male-style-expansion/v1",
+  "approved_portrait": "res://mods/appearance/male_loose_style_install_20261106/source/approved_male.png",
+  "additions": [
+    {
+      "part": "hair_front",
+      "name": "温雅偏分",
+      "source": "res://mods/appearance/male_loose_style_install_20261106/male/hair_front/04.png",
+      "index": 4,
+      "style_id": 3
+    },
+    {
+      "part": "hair_back",
+      "name": "松披长发",
+      "source": "res://mods/appearance/male_loose_style_install_20261106/male/hair_back/04.png",
+      "index": 4,
+      "style_id": 3
+    },
+    {
+      "part": "eyebrows",
+      "name": "温雅疏眉",
+      "source": "res://mods/appearance/male_loose_style_install_20261106/male/eyebrows/04.png",
+      "index": 4,
+      "style_id": 3
+    },
+    {
+      "part": "eyes",
+      "name": "温雅杏目",
+      "source": "res://mods/appearance/male_loose_style_install_20261106/male/eyes/04.png",
+      "index": 4,
+      "style_id": 3
+    }
+  ],
+  "deduplication": [
+    {
+      "part": "nose",
+      "decision": "reuse_existing_01",
+      "reason": "窄圆鼻尖、鼻翼和鼻孔结构近似；新源鼻在共同frame下高约3.12px，保留来源记录但不以单纯位置变化增加重复鼻型。"
+    },
+    {
+      "part": "mouth",
+      "decision": "reuse_existing_01",
+      "reason": "唇峰与下唇形近似，微小色深与嘴角差异不作为新款。"
+    }
+  ],
+  "provenance": "Built-in image_gen extraction. New hair/brows/eyes share one head-frame similarity transform based on both pupils and chin; source-relative proportions retained. Current fixed head/skin, nose, mouth and seven clothing pairs reused. Not a whole-face pixel-identity claim."
+}

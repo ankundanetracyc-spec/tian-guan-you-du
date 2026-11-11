@@ -1,0 +1,97 @@
+{
+  "status": "middle_aged_male_whole_portrait_candidates_for_visual_review",
+  "mode": "built-in image_gen",
+  "project_master": "reference/project_male_master.png",
+  "project_master_sha256": "d97b79e3372df42db24b4dd5c3ec42f376d652616d9fa25d78a393b004da81a8",
+  "prompt_set": "source/generation_prompts.json",
+  "records": [
+    {
+      "file": "preview/01_mature_clean_shaven_palette_v2.png",
+      "name": "无须中年·清儒",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "dafde740e1fe97476c615819c95303160f604e2b4f3d0a331413c2fd3e3468b2",
+      "native_source": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-8916f4dc-84f0-4d5a-b508-d12f424b83d7.png",
+      "native_unmodified_output": true,
+      "user_selected": false
+    },
+    {
+      "file": "preview/02_mature_short_beard_palette_v2.png",
+      "name": "短须中年·沉稳",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "d4e1d61024f19dd256d70826c889f1b6270d58f53b6a3746df751e7e2b54f964",
+      "native_source": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-f772db9f-ec9c-47dc-99a5-674ab5f7a68b.png",
+      "native_unmodified_output": true,
+      "user_selected": false
+    },
+    {
+      "file": "preview/03_mature_scholar_beard_palette_v2.png",
+      "name": "长髯中年·儒雅",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "c6ccc21d2048144c4483408292a601ccfa6feaa2a67362c030e67c70e96939fc",
+      "native_source": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-d81c9ef1-5fd1-4d4a-be15-b681b6499f49.png",
+      "native_unmodified_output": true,
+      "user_selected": false
+    }
+  ],
+  "active_assets_or_config_modified": false,
+  "baseline_files_preserved": 56,
+  "active_pngs_preserved": 54,
+  "parts_extracted": false,
+  "anchor_status": "Same full-canvas composition and neck/collar guides only; native outputs are not modularly registered or measured-anchor-certified. Mature face/jaw contours are intentionally new.",
+  "age_rule_status": "No age/realm mapping or save data changed. Numerical ages in prompts are only visual design directions. Existing current_age filter machinery is not a separate approved apparent-age policy.",
+  "next_artwork_scope": "If selected, extract mature head/skin, coordinated brows/eyes/nose/mouth and optional beard at common frame. Reuse existing hair/clothes when compatible and deduplicate tiny differences; verify eye balance and continuous RGB/alpha edges before installation.",
+  "first_generation_records": [
+    {
+      "file": "preview/01_mature_clean_shaven.png",
+      "name": "无须中年·清儒",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "8e0630557d50b52612e5ce0214437cffb81208096e9e07fed7dd20879ee1201d",
+      "native_source": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-6eee0bcd-adc0-4faf-8718-2ae431438351.png",
+      "native_unmodified_output": true,
+      "user_selected": false
+    },
+    {
+      "file": "preview/02_mature_short_beard.png",
+      "name": "短须中年·沉稳",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "6e8d64f5b763362ad097ee035c515e6cba30fef08b0e8d7ec3f471d6cc4fb759",
+      "native_source": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-36367352-2e2d-48e4-afe9-00dbd136ebb8.png",
+      "native_unmodified_output": true,
+      "user_selected": false
+    },
+    {
+      "file": "preview/03_mature_scholar_beard.png",
+      "name": "长髯中年·儒雅",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "f79098643910ff34c0d828887ceb3767f42a043a035232d7cd305360324cdb75",
+      "native_source": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-67342d53-28fe-411e-b825-d1497e53272a.png",
+      "native_unmodified_output": true,
+      "user_selected": false
+    }
+  ],
+  "skin_palette_refinement": "source/skin_palette_correction_prompt.txt",
+  "first_generation_status": "Superseded for darker/yellower skin; kept for provenance. Final palette_v2 outputs are the intended candidates.",
+  "visual_review": {
+    "age": "Three coherent visibly middle-aged faces; clean-shaven, short-beard and long-beard directions.",
+    "style": "Same project delicate ink/gongbi finish, black-gray hair and warm pale skin after built-in palette refinement.",
+    "limit": "02/03 remain a related face family, largely distinguished by beard and expression. They are not all assumed to contain nonduplicate feature parts."
+  }
+}
