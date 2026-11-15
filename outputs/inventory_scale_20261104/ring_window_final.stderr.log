@@ -1,0 +1,15 @@
+ERROR: Parameter "mem" is null.
+   at: Memory::alloc_static (core\os\memory.cpp:104)
+ERROR: Parameter "mem_new" is null.
+   at: CowData<char32_t>::_alloc_exact (.\core/templates/cowdata.h:476)
+ERROR: Parameter "mem" is null.
+   at: Memory::alloc_static (core\os\memory.cpp:104)
+ERROR: Parameter "mem_new" is null.
+   at: CowData<char32_t>::_alloc_exact (.\core/templates/cowdata.h:476)
+ERROR: FATAL: Condition "_copy_on_write()" is true.
+   at: CowData<char32_t>::ptrw (.\core/templates/cowdata.h:166)
+
+================================================================
+CrashHandlerException: Program crashed
+Engine version: Godot Engine v4.7.2.stable.mono.custom_build (ed1daf0bf001b61586d9930840f2f1394092c079)
+Dumping the backtrace. Please include this when reporting the bug on: https://github.com/godotengine/godot/issues

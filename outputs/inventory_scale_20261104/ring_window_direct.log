@@ -1,0 +1,63 @@
+Godot Engine v4.7.2.stable.mono.custom_build.ed1daf0bf (2026-08-17 01:18:38 UTC) - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 596.36 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4060 Laptop GPU
+
+WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs
+   at: ResourceLoaderText::load (scene\resources\resource_format_text.cpp:501)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1268(nint, nint, string, string, int) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\NativeCalls.cs:11632)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\ResourceLoader.cs:120)
+       [2] ProcessForgingTrial..ctor()
+       [3] ArtifactInstanceData SectArtifactOfferData.CreateArtifact()
+       [4] void StorageRingInventorySmoke.Models()
+       [5] void StorageRingInventorySmoke+<_Ready>d__27.MoveNext()
+       [6] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [7] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [8] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [9] void System.Threading.Tasks.Task.RunContinuations(object)
+       [10] bool System.Threading.Tasks.Task`1.TrySetResult(TResult)
+       [11] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.SetExistingTaskResult(System.Threading.Tasks.Task`1[TResult], TResult)
+       [12] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [13] void StorageRingInventorySmoke+<Frames>d__20.MoveNext()
+       [14] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [15] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [16] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\SignalAwaiter.cs:65)
+INVENTORY_ICON_MANIFEST_OK: 96 items, 65 inventory icons; animation pill excluded
+INVENTORY_ICON_DENSITY_OK: 65 inventory sprites + 1 animation pill, alpha, 128 source pixels per cell
+INVENTORY_ICON_MANIFEST_OK: 96 items, 65 inventory icons; animation pill excluded
+INVENTORY_ICON_BINDINGS_OK: 96 formal item resources
+STORAGE_RING_MODEL_OK 41
+ERROR: STORAGE_RING_SMOKE_FAILED System.InvalidOperationException: 实际取回按钮失败
+   at StorageRingInventorySmoke.Check(Boolean ok, String why)
+   at StorageRingInventorySmoke.Interface()
+   at StorageRingInventorySmoke._Ready()
+   at: void StorageRingInventorySmoke+<_Ready>d__27.MoveNext() (res://:0)
+   C# backtrace (most recent call first):
+       [0] void Godot.GD.PushError(string) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\GD.cs:366)
+       [1] void StorageRingInventorySmoke+<_Ready>d__27.MoveNext()
+       [2] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [3] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [4] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [5] void System.Threading.Tasks.Task.RunContinuations(object)
+       [6] void System.Threading.Tasks.Task.FinishSlow(bool)
+       [7] bool System.Threading.Tasks.Task.TrySetException(object)
+       [8] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.SetException(System.Exception, System.Threading.Tasks.Task`1[TResult]&)
+       [9] void StorageRingInventorySmoke+<Interface>d__26.MoveNext()
+       [10] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [11] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [12] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [13] void System.Threading.Tasks.Task.RunContinuations(object)
+       [14] bool System.Threading.Tasks.Task`1.TrySetResult(TResult)
+       [15] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.SetExistingTaskResult(System.Threading.Tasks.Task`1[TResult], TResult)
+       [16] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [17] void StorageRingInventorySmoke+<Click>d__23.MoveNext()
+       [18] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [19] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [20] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [21] void System.Threading.Tasks.Task.RunContinuations(object)
+       [22] bool System.Threading.Tasks.Task`1.TrySetResult(TResult)
+       [23] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.SetExistingTaskResult(System.Threading.Tasks.Task`1[TResult], TResult)
+       [24] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [25] void StorageRingInventorySmoke+<Frames>d__20.MoveNext()
+       [26] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [27] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [28] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\SignalAwaiter.cs:65)

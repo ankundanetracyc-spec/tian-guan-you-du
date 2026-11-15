@@ -1,0 +1,30 @@
+Godot Engine v4.7.2.stable.mono.custom_build.ed1daf0bf (2026-08-17 01:18:38 UTC) - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 596.36 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4060 Laptop GPU
+
+WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs
+   at: ResourceLoaderText::load (scene\resources\resource_format_text.cpp:501)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1268(nint, nint, string, string, int) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\NativeCalls.cs:11632)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\ResourceLoader.cs:120)
+       [2] ProcessForgingTrial..ctor()
+       [3] ArtifactInstanceData SectArtifactOfferData.CreateArtifact()
+       [4] void StorageRingInventorySmoke.Models()
+       [5] void StorageRingInventorySmoke+<_Ready>d__29.MoveNext()
+       [6] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [7] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [8] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [9] void System.Threading.Tasks.Task.RunContinuations(object)
+       [10] bool System.Threading.Tasks.Task`1.TrySetResult(TResult)
+       [11] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.SetExistingTaskResult(System.Threading.Tasks.Task`1[TResult], TResult)
+       [12] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [13] void StorageRingInventorySmoke+<Frames>d__21.MoveNext()
+       [14] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [15] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [16] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\SignalAwaiter.cs:65)
+INVENTORY_ICON_MANIFEST_OK: 96 items, 65 inventory icons; animation pill excluded
+INVENTORY_ICON_DENSITY_OK: 65 inventory sprites + 1 animation pill, alpha, 128 source pixels per cell
+INVENTORY_ICON_MANIFEST_OK: 96 items, 65 inventory icons; animation pill excluded
+INVENTORY_ICON_BINDINGS_OK: 96 formal item resources
+STORAGE_RING_MODEL_OK 42
+STORAGE_RING_INTERFACE_OK 80
+STORAGE_RING_SMOKE_OK 80

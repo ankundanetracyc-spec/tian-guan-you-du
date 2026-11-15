@@ -1,0 +1,62 @@
+Godot Engine v4.7.stable.official.5b4e0cb0f - https://godotengine.org
+
+ERROR: No loader found for resource: res://csharp/autoload/BattleTransitionManager.cs (expected type: unknown)
+   at: _load (core/io/resource_loader.cpp:332)
+ERROR: Failed to instantiate an autoload, can't load from path: res://csharp/autoload/BattleTransitionManager.cs.
+   at: start (main/main.cpp:4529)
+ERROR: No loader found for resource: res://csharp/autoload/GameTimeMgr.cs (expected type: unknown)
+   at: _load (core/io/resource_loader.cpp:332)
+ERROR: Failed to instantiate an autoload, can't load from path: res://csharp/autoload/GameTimeMgr.cs.
+   at: start (main/main.cpp:4529)
+ERROR: No loader found for resource: res://csharp/world/NpcWorldManager.cs (expected type: unknown)
+   at: _load (core/io/resource_loader.cpp:332)
+ERROR: Failed to instantiate an autoload, can't load from path: res://csharp/world/NpcWorldManager.cs.
+   at: start (main/main.cpp:4529)
+ERROR: No loader found for resource: res://csharp/autoload/RealmManager.cs (expected type: unknown)
+   at: _load (core/io/resource_loader.cpp:332)
+ERROR: Failed to instantiate an autoload, can't load from path: res://csharp/autoload/RealmManager.cs.
+   at: start (main/main.cpp:4529)
+ERROR: No loader found for resource: res://csharp/autoload/EntityRegistry.cs (expected type: unknown)
+   at: _load (core/io/resource_loader.cpp:332)
+ERROR: Failed to instantiate an autoload, can't load from path: res://csharp/autoload/EntityRegistry.cs.
+   at: start (main/main.cpp:4529)
+ERROR: No loader found for resource: res://csharp/autoload/NameGenerator.cs (expected type: unknown)
+   at: _load (core/io/resource_loader.cpp:332)
+ERROR: Failed to instantiate an autoload, can't load from path: res://csharp/autoload/NameGenerator.cs.
+   at: start (main/main.cpp:4529)
+ERROR: No loader found for resource: res://csharp/autoload/WeatherMgr.cs (expected type: unknown)
+   at: _load (core/io/resource_loader.cpp:332)
+ERROR: Failed to instantiate an autoload, can't load from path: res://csharp/autoload/WeatherMgr.cs.
+   at: start (main/main.cpp:4529)
+ERROR: No loader found for resource: res://csharp/autoload/CursorSetup.cs (expected type: unknown)
+   at: _load (core/io/resource_loader.cpp:332)
+ERROR: Failed to instantiate an autoload, can't load from path: res://csharp/autoload/CursorSetup.cs.
+   at: start (main/main.cpp:4529)
+ERROR: No loader found for resource: res://csharp/autoload/GameStartProfile.cs (expected type: unknown)
+   at: _load (core/io/resource_loader.cpp:332)
+ERROR: Failed to instantiate an autoload, can't load from path: res://csharp/autoload/GameStartProfile.cs.
+   at: start (main/main.cpp:4529)
+ERROR: No loader found for resource: res://csharp/autoload/GameSaveManager.cs (expected type: unknown)
+   at: _load (core/io/resource_loader.cpp:332)
+ERROR: Failed to instantiate an autoload, can't load from path: res://csharp/autoload/GameSaveManager.cs.
+   at: start (main/main.cpp:4529)
+ERROR: No loader found for resource: res://csharp/autoload/AppearanceModCatalog.cs (expected type: unknown)
+   at: _load (core/io/resource_loader.cpp:332)
+ERROR: Failed to instantiate an autoload, can't load from path: res://csharp/autoload/AppearanceModCatalog.cs.
+   at: start (main/main.cpp:4529)
+ERROR: No loader found for resource: res://csharp/autoload/PortraitCatalog.cs (expected type: unknown)
+   at: _load (core/io/resource_loader.cpp:332)
+ERROR: Failed to instantiate an autoload, can't load from path: res://csharp/autoload/PortraitCatalog.cs.
+   at: start (main/main.cpp:4529)
+ERROR: No loader found for resource: res://csharp/autoload/HoverInfoManager.cs (expected type: unknown)
+   at: _load (core/io/resource_loader.cpp:332)
+ERROR: Failed to instantiate an autoload, can't load from path: res://csharp/autoload/HoverInfoManager.cs.
+   at: start (main/main.cpp:4529)
+ERROR: No loader found for resource: res://csharp/autoload/GameplayInputRouter.cs (expected type: unknown)
+   at: _load (core/io/resource_loader.cpp:332)
+ERROR: Failed to instantiate an autoload, can't load from path: res://csharp/autoload/GameplayInputRouter.cs.
+   at: start (main/main.cpp:4529)
+ERROR: No loader found for resource: res://csharp/debug/CraftingIntegrationSmoke.cs (expected type: Script)
+   at: _load (core/io/resource_loader.cpp:332)
+ERROR: res://tools/CraftingIntegrationSmoke.tscn:4 - Parse Error: [ext_resource] referenced non-existent resource at: res://csharp/debug/CraftingIntegrationSmoke.cs.
+   at: _printerr (scene/resources/resource_format_text.cpp:41)

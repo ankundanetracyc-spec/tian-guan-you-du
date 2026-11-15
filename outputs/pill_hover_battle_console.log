@@ -1,0 +1,147 @@
+Godot Engine v4.7.2.stable.mono.official.ed1daf0bf - https://godotengine.org
+OpenGL API 3.3.0 NVIDIA 596.36 - Compatibility - Using Device: NVIDIA - NVIDIA GeForce RTX 4060 Laptop GPU
+
+SUPPLY_CHECK: 快照携带真实库存及原格位
+SUPPLY_CHECK: 单战备位最多5颗
+SUPPLY_CHECK: 重复丹药位不能超额预留本人库存
+SUPPLY_CHECK: 库存全部被预留后不能凭空再装一堆
+SUPPLY_CHECK: 世界静心丹不进入战斗战备
+SUPPLY_CHECK: 战备深复制不共享可变数量
+ERROR: Cannot get class 'Spine'.
+   at: can_instantiate (core/object/class_db.cpp:850)
+   C# backtrace (most recent call first):
+       [0] Godot.NativeInterop.godot_bool Godot.NativeCalls.godot_icall_1_129(nint, nint, Godot.NativeInterop.godot_string_name) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:1165)
+       [1] bool Godot.ClassDB.CanInstantiate(Godot.StringName) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/ClassDB.cs:110)
+       [2] bool BattlePaperDoll.TryCreateSpineCharacter(bool, bool, bool, System.String&)
+       [3] void BattlePaperDoll.Configure(BattleEntityData)
+       [4] void BattleManager.AddPaperDoll(Godot.Node, BattleEntityData)
+       [5] void BattleManager.SpawnTeam(Godot.Collections.Array, Godot.Collections.Array)
+       [6] void BattleManager.setup_team_battle(Godot.Collections.Array, Godot.Collections.Array, Godot.Collections.Array, Godot.Collections.Array)
+       [7] bool BattleManager.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [8] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+       [9] Godot.NativeInterop.godot_variant Godot.NativeInterop.NativeFuncs.godotsharp_method_bind_call(nint, nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Godot.SourceGenerators.Internal/Godot.SourceGenerators.Internal.UnmanagedCallbacksGenerator/Godot.NativeInterop.NativeFuncs.generated.cs:388)
+       [10] Godot.Variant Godot.NativeCalls.godot_icall_2_923(nint, nint, Godot.NativeInterop.godot_string_name, System.ReadOnlySpan`1[Godot.Variant], Godot.NativeInterop.godot_string_name) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:8222)
+       [11] Godot.Variant Godot.GodotObject.Call(Godot.StringName, Godot.Variant[]) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/GodotObject.cs:749)
+       [12] void BattleScene.InitializeBattle()
+       [13] bool BattleScene.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [14] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ERROR: 战斗角色未使用 Spine：当前 Godot 不是 Spine 3.8 运行时
+   at: void BattlePaperDoll.Configure(BattleEntityData) (res://:0)
+   C# backtrace (most recent call first):
+       [0] void Godot.GD.PushError(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:366)
+       [1] void BattlePaperDoll.Configure(BattleEntityData)
+       [2] void BattleManager.AddPaperDoll(Godot.Node, BattleEntityData)
+       [3] void BattleManager.SpawnTeam(Godot.Collections.Array, Godot.Collections.Array)
+       [4] void BattleManager.setup_team_battle(Godot.Collections.Array, Godot.Collections.Array, Godot.Collections.Array, Godot.Collections.Array)
+       [5] bool BattleManager.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [6] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+       [7] Godot.NativeInterop.godot_variant Godot.NativeInterop.NativeFuncs.godotsharp_method_bind_call(nint, nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Godot.SourceGenerators.Internal/Godot.SourceGenerators.Internal.UnmanagedCallbacksGenerator/Godot.NativeInterop.NativeFuncs.generated.cs:388)
+       [8] Godot.Variant Godot.NativeCalls.godot_icall_2_923(nint, nint, Godot.NativeInterop.godot_string_name, System.ReadOnlySpan`1[Godot.Variant], Godot.NativeInterop.godot_string_name) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:8222)
+       [9] Godot.Variant Godot.GodotObject.Call(Godot.StringName, Godot.Variant[]) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/GodotObject.cs:749)
+       [10] void BattleScene.InitializeBattle()
+       [11] bool BattleScene.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [12] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+SUPPLY_CHECK: 战前UI配置完整进入本人战斗快照
+SUPPLY_CHECK: 战前配置与入场均未扣除丹药
+SUPPLY_CHECK: AI依据自身伤势编排本人丹药且不超库存、不预先消耗
+SUPPLY_CHECK: 点击正式战备入口向上展开
+SUPPLY_CHECK: 战备入口不与技能栏重叠
+SUPPLY_CHECK: 战备及悬停层级高于常规HUD
+SUPPLY_CHECK: 库存范围内逐颗排入独立行动位
+SUPPLY_CHECK: 库存范围内逐颗排入独立行动位
+SUPPLY_CHECK: 库存范围内逐颗排入独立行动位
+SUPPLY_CHECK: 库存范围内逐颗排入独立行动位
+SUPPLY_CHECK: 库存范围内逐颗排入独立行动位
+SUPPLY_CHECK: 不允许超过战备堆／行动位容量排队
+SUPPLY_CHECK: 仅排队不扣库存
+SUPPLY_CHECK: 取消预留立即返还可排次数
+SUPPLY_CHECK: 服丹拖动保留原空位
+SUPPLY_CHECK: 服丹与通脉按第一个空位编排
+SUPPLY_CHECK: 服丹自动以本人为目标
+SUPPLY_CHECK: 正式悬停说明可见
+SUPPLY_CHECK: 既有良效回血18与薄效回蓝实际生效
+SUPPLY_CHECK: 仅成功结算扣除2颗回春与1颗通脉
+SUPPLY_CHECK: 战备堆与真实行囊数量同步
+SUPPLY_CHECK: 实际服丹按丹种及档位累积丹毒
+SUPPLY_CHECK: 战斗克隆不直接修改世界角色
+SUPPLY_CHECK: 无收益跳过不扣药不加毒
+SUPPLY_CHECK: 确认行动后自动关闭战备入口
+SUPPLY_CHECK: 战末库存可回传真实角色
+SUPPLY_CHECK: 结算保留完整行囊原格位且不补入替身服装
+SUPPLY_CHECK: 丹毒随战末角色状态回传
+SUPPLY_CHECK: 战备与库存可保存
+SUPPLY_CHECK: 保存后数量仍一致
+SUPPLY_CHECK: 部分缺口与受治疗加成沿公共治疗入口截断
+SUPPLY_CHECK: 无有效法力上限不消耗通脉丹
+SUPPLY_CHECK: 非主控角色仅能服用本人实际备药，耗尽不能再用
+BATTLE_SUPPLIES_OK: 39 checks
+ERROR: 30 RID allocations of type 'N5GLES37TextureE' were leaked at exit.
+ERROR: 2 RID allocations of type 'PN18TextServerAdvanced12FontAdvancedE' were leaked at exit.
+WARNING: 21 RIDs of type "CanvasItem" were leaked.
+   at: _free_rids (servers/rendering/renderer_canvas_cull.cpp:2735)
+ERROR: Texture with GL ID of 23: leaked 12280 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 50: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 51: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 52: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 53: leaked 174762 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 54: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 55: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 57: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 58: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 59: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 61: leaked 699050 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 62: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 65: leaked 699050 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 75: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 97: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 101: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 102: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 103: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 104: leaked 174762 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 105: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 106: leaked 174762 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 107: leaked 174762 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 114: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 115: leaked 174762 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 118: leaked 524288 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 119: leaked 699050 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 120: leaked 524288 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 121: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 122: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Texture with GL ID of 123: leaked 131072 bytes.
+   at: ~Utilities (drivers/gles3/storage/utilities.cpp:82)
+ERROR: Parameter "RenderingServer::get_singleton()" is null.
+   at: ~ImageTexture (scene/resources/image_texture.cpp:245)
+WARNING: 127 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: cleanup (core/object/object.cpp:2536)
+ERROR: 1 resources still in use at exit (run with --verbose for details).
+   at: clear (core/io/resource.cpp:822)
