@@ -1,0 +1,1099 @@
+{
+  "worldSize": 6144,
+  "grid": [
+    5,
+    5
+  ],
+  "patchFrame": 1254,
+  "sourceMaster": "master_composition_08.png",
+  "palette": "warm_ochre_gray_olive",
+  "terrainDensity": "open_cartographic_map",
+  "trees": "small_conifers_on_flat_ground_only",
+  "patches": [
+    {
+      "id": "r1c1",
+      "row": 0,
+      "col": 0,
+      "worldOrigin": [
+        -12,
+        -12
+      ],
+      "coreRect": [
+        0,
+        0,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r1c1_scene.png",
+      "placementGuide": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r1c1_placement_guide.png",
+      "places": [],
+      "bridges": []
+    },
+    {
+      "id": "r1c2",
+      "row": 0,
+      "col": 1,
+      "worldOrigin": [
+        1216,
+        -12
+      ],
+      "coreRect": [
+        1229,
+        0,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r1c2_scene.png",
+      "placementGuide": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r1c2_placement_guide.png",
+      "places": [
+        {
+          "name": "金阙城",
+          "x": 873,
+          "y": 626,
+          "footing": "open_ground"
+        }
+      ],
+      "bridges": []
+    },
+    {
+      "id": "r1c3",
+      "row": 0,
+      "col": 2,
+      "worldOrigin": [
+        2445,
+        -12
+      ],
+      "coreRect": [
+        2458,
+        0,
+        1228,
+        1229
+      ],
+      "reference": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r1c3_scene.png",
+      "placementGuide": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r1c3_placement_guide.png",
+      "places": [
+        {
+          "name": "玄都天府",
+          "x": 197,
+          "y": 1179,
+          "footing": "mountain_terrace_or_valley"
+        },
+        {
+          "name": "绛阙城",
+          "x": 873,
+          "y": 1179,
+          "footing": "open_ground"
+        },
+        {
+          "name": "含光镇",
+          "x": 197,
+          "y": 565,
+          "footing": "open_ground"
+        },
+        {
+          "name": "琼华坊",
+          "x": 443,
+          "y": 872,
+          "footing": "open_ground"
+        }
+      ],
+      "bridges": []
+    },
+    {
+      "id": "r1c4",
+      "row": 0,
+      "col": 3,
+      "worldOrigin": [
+        3674,
+        -12
+      ],
+      "coreRect": [
+        3686,
+        0,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r1c4_scene.png",
+      "placementGuide": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r1c4_placement_guide.png",
+      "places": [
+        {
+          "name": "丹鼎宗",
+          "x": 74,
+          "y": 504,
+          "footing": "mountain_terrace_or_valley"
+        },
+        {
+          "name": "沧溟水府",
+          "x": 750,
+          "y": 1056,
+          "footing": "mountain_terrace_or_valley"
+        },
+        {
+          "name": "听风镇",
+          "x": 1180,
+          "y": 626,
+          "footing": "open_ground"
+        }
+      ],
+      "bridges": []
+    },
+    {
+      "id": "r1c5",
+      "row": 0,
+      "col": 4,
+      "worldOrigin": [
+        4902,
+        -12
+      ],
+      "coreRect": [
+        4915,
+        0,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r1c5_scene.png",
+      "placementGuide": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r1c5_placement_guide.png",
+      "places": [
+        {
+          "name": "镇海城",
+          "x": 505,
+          "y": 749,
+          "footing": "open_ground"
+        },
+        {
+          "name": "澜浦渡",
+          "x": 935,
+          "y": 1118,
+          "footing": "shore"
+        }
+      ],
+      "bridges": []
+    },
+    {
+      "id": "r2c1",
+      "row": 1,
+      "col": 0,
+      "worldOrigin": [
+        -12,
+        1216
+      ],
+      "coreRect": [
+        0,
+        1229,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r2c1_scene.png",
+      "placementGuide": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r2c1_placement_guide.png",
+      "places": [
+        {
+          "name": "松风镇",
+          "x": 872,
+          "y": 627,
+          "footing": "open_ground"
+        }
+      ],
+      "bridges": []
+    },
+    {
+      "id": "r2c2",
+      "row": 1,
+      "col": 1,
+      "worldOrigin": [
+        1216,
+        1216
+      ],
+      "coreRect": [
+        1229,
+        1229,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r2c2_scene.png",
+      "placementGuide": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r2c2_placement_guide.png",
+      "places": [],
+      "bridges": []
+    },
+    {
+      "id": "r2c3",
+      "row": 1,
+      "col": 2,
+      "worldOrigin": [
+        2445,
+        1216
+      ],
+      "coreRect": [
+        2458,
+        1229,
+        1228,
+        1229
+      ],
+      "reference": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r2c3_scene.png",
+      "placementGuide": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r2c3_placement_guide.png",
+      "places": [
+        {
+          "name": "承天城",
+          "x": 197,
+          "y": 1057,
+          "footing": "open_ground"
+        }
+      ],
+      "bridges": []
+    },
+    {
+      "id": "r2c4",
+      "row": 1,
+      "col": 3,
+      "worldOrigin": [
+        3674,
+        1216
+      ],
+      "coreRect": [
+        3686,
+        1229,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r2c4_scene.png",
+      "placementGuide": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r2c4_placement_guide.png",
+      "places": [
+        {
+          "name": "归藏书院",
+          "x": 135,
+          "y": 1057,
+          "footing": "mountain_terrace_or_valley"
+        },
+        {
+          "name": "临渊城",
+          "x": 627,
+          "y": 381,
+          "footing": "open_ground"
+        }
+      ],
+      "bridges": []
+    },
+    {
+      "id": "r2c5",
+      "row": 1,
+      "col": 4,
+      "worldOrigin": [
+        4902,
+        1216
+      ],
+      "coreRect": [
+        4915,
+        1229,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r2c5_scene.png",
+      "placementGuide": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r2c5_placement_guide.png",
+      "places": [
+        {
+          "name": "枯骨寺",
+          "x": 198,
+          "y": 996,
+          "footing": "mountain_terrace_or_valley"
+        },
+        {
+          "name": "白蘋里",
+          "x": 689,
+          "y": 259,
+          "footing": "open_ground"
+        }
+      ],
+      "bridges": [
+        {
+          "id": "bc_landmark_005",
+          "x": 277,
+          "y": 797,
+          "angle": -1.1720688094132388
+        },
+        {
+          "id": "bc_landmark_016",
+          "x": 371,
+          "y": 722,
+          "angle": 0.5692115253778474
+        }
+      ]
+    },
+    {
+      "id": "r3c1",
+      "row": 2,
+      "col": 0,
+      "worldOrigin": [
+        -12,
+        2445
+      ],
+      "coreRect": [
+        0,
+        2458,
+        1229,
+        1228
+      ],
+      "reference": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r3c1_scene.png",
+      "placementGuide": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r3c1_placement_guide.png",
+      "places": [
+        {
+          "name": "镇岳观",
+          "x": 749,
+          "y": 443,
+          "footing": "mountain_terrace_or_valley"
+        },
+        {
+          "name": "岚溪镇",
+          "x": 1179,
+          "y": 1057,
+          "footing": "open_ground"
+        }
+      ],
+      "bridges": []
+    },
+    {
+      "id": "r3c2",
+      "row": 2,
+      "col": 1,
+      "worldOrigin": [
+        1216,
+        2445
+      ],
+      "coreRect": [
+        1229,
+        2458,
+        1229,
+        1228
+      ],
+      "reference": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r3c2_scene.png",
+      "placementGuide": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r3c2_placement_guide.png",
+      "places": [
+        {
+          "name": "太微道宫",
+          "x": 934,
+          "y": 627,
+          "footing": "mountain_terrace_or_valley"
+        },
+        {
+          "name": "赤水城",
+          "x": 320,
+          "y": 504,
+          "footing": "open_ground"
+        },
+        {
+          "name": "临皋镇",
+          "x": 136,
+          "y": 811,
+          "footing": "open_ground"
+        }
+      ],
+      "bridges": [
+        {
+          "id": "bc_landmark_015",
+          "x": 519,
+          "y": 342,
+          "angle": -1.3574415320268913
+        }
+      ]
+    },
+    {
+      "id": "r3c3",
+      "row": 2,
+      "col": 2,
+      "worldOrigin": [
+        2445,
+        2445
+      ],
+      "coreRect": [
+        2458,
+        2458,
+        1228,
+        1228
+      ],
+      "reference": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r3c3_scene.png",
+      "placementGuide": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r3c3_placement_guide.png",
+      "places": [
+        {
+          "name": "春水府",
+          "x": 566,
+          "y": 934,
+          "footing": "open_ground"
+        },
+        {
+          "name": "烟柳镇",
+          "x": 811,
+          "y": 1180,
+          "footing": "open_ground"
+        },
+        {
+          "name": "桑落镇",
+          "x": 197,
+          "y": 873,
+          "footing": "open_ground"
+        },
+        {
+          "name": "荷汀镇",
+          "x": 996,
+          "y": 566,
+          "footing": "open_ground"
+        }
+      ],
+      "bridges": [
+        {
+          "id": "bc_landmark_008",
+          "x": 1172,
+          "y": 272,
+          "angle": -0.9766044803967799
+        },
+        {
+          "id": "bc_landmark_013",
+          "x": 706,
+          "y": 435,
+          "angle": -1.8432274255262084
+        },
+        {
+          "id": "bc_landmark_021",
+          "x": 476,
+          "y": 348,
+          "angle": 2.388089101592208
+        },
+        {
+          "id": "bc_landmark_024",
+          "x": 100,
+          "y": 210,
+          "angle": 1.2293048299961526
+        }
+      ]
+    },
+    {
+      "id": "r3c4",
+      "row": 2,
+      "col": 3,
+      "worldOrigin": [
+        3674,
+        2445
+      ],
+      "coreRect": [
+        3686,
+        2458,
+        1229,
+        1228
+      ],
+      "reference": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r3c4_scene.png",
+      "placementGuide": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r3c4_placement_guide.png",
+      "places": [
+        {
+          "name": "通济城",
+          "x": 320,
+          "y": 688,
+          "footing": "open_ground"
+        },
+        {
+          "name": "问津渡",
+          "x": 442,
+          "y": 934,
+          "footing": "shore"
+        }
+      ],
+      "bridges": [
+        {
+          "id": "bc_landmark_009",
+          "x": 498,
+          "y": 968,
+          "angle": 0.5794629387402765
+        },
+        {
+          "id": "bc_landmark_028",
+          "x": 427,
+          "y": 613,
+          "angle": -0.5724826624792798
+        }
+      ]
+    },
+    {
+      "id": "r3c5",
+      "row": 2,
+      "col": 4,
+      "worldOrigin": [
+        4902,
+        2445
+      ],
+      "coreRect": [
+        4915,
+        2458,
+        1229,
+        1228
+      ],
+      "reference": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r3c5_scene.png",
+      "placementGuide": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r3c5_placement_guide.png",
+      "places": [
+        {
+          "name": "归寂城",
+          "x": 382,
+          "y": 74,
+          "footing": "open_ground"
+        },
+        {
+          "name": "夜泊坊",
+          "x": 75,
+          "y": 934,
+          "footing": "open_ground"
+        }
+      ],
+      "bridges": []
+    },
+    {
+      "id": "r4c1",
+      "row": 3,
+      "col": 0,
+      "worldOrigin": [
+        -12,
+        3674
+      ],
+      "coreRect": [
+        0,
+        3686,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r4c1_scene.png",
+      "placementGuide": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r4c1_placement_guide.png",
+      "places": [
+        {
+          "name": "太和城",
+          "x": 688,
+          "y": 504,
+          "footing": "open_ground"
+        },
+        {
+          "name": "洗心镇",
+          "x": 872,
+          "y": 1118,
+          "footing": "open_ground"
+        },
+        {
+          "name": "松月坊",
+          "x": 1179,
+          "y": 627,
+          "footing": "open_ground"
+        }
+      ],
+      "bridges": []
+    },
+    {
+      "id": "r4c2",
+      "row": 3,
+      "col": 1,
+      "worldOrigin": [
+        1216,
+        3674
+      ],
+      "coreRect": [
+        1229,
+        3686,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r4c2_scene.png",
+      "placementGuide": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r4c2_placement_guide.png",
+      "places": [
+        {
+          "name": "玉虚仙宗",
+          "x": 136,
+          "y": 873,
+          "footing": "mountain_terrace_or_valley"
+        },
+        {
+          "name": "白石城",
+          "x": 504,
+          "y": 320,
+          "footing": "open_ground"
+        }
+      ],
+      "bridges": [
+        {
+          "id": "bc_landmark_029",
+          "x": 1135,
+          "y": 951,
+          "angle": -1.8724315344876257
+        }
+      ]
+    },
+    {
+      "id": "r4c3",
+      "row": 3,
+      "col": 2,
+      "worldOrigin": [
+        2445,
+        3674
+      ],
+      "coreRect": [
+        2458,
+        3686,
+        1228,
+        1229
+      ],
+      "reference": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r4c3_scene.png",
+      "placementGuide": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r4c3_placement_guide.png",
+      "places": [
+        {
+          "name": "抱朴山",
+          "x": 197,
+          "y": 320,
+          "footing": "mountain_terrace_or_valley"
+        },
+        {
+          "name": "溪云城",
+          "x": 566,
+          "y": 873,
+          "footing": "open_ground"
+        },
+        {
+          "name": "望岚镇",
+          "x": 197,
+          "y": 995,
+          "footing": "open_ground"
+        },
+        {
+          "name": "桑榆里",
+          "x": 381,
+          "y": 688,
+          "footing": "open_ground"
+        }
+      ],
+      "bridges": [
+        {
+          "id": "bc_landmark_007",
+          "x": 335,
+          "y": 402,
+          "angle": 0.5237329160395243
+        }
+      ]
+    },
+    {
+      "id": "r4c4",
+      "row": 3,
+      "col": 3,
+      "worldOrigin": [
+        3674,
+        3674
+      ],
+      "coreRect": [
+        3686,
+        3686,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r4c4_scene.png",
+      "placementGuide": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r4c4_placement_guide.png",
+      "places": [],
+      "bridges": [
+        {
+          "id": "bc_landmark_003",
+          "x": 987,
+          "y": 1013,
+          "angle": 0.9849617847930321
+        },
+        {
+          "id": "bc_landmark_017",
+          "x": 769,
+          "y": 376,
+          "angle": 2.4546390176114325
+        }
+      ]
+    },
+    {
+      "id": "r4c5",
+      "row": 3,
+      "col": 4,
+      "worldOrigin": [
+        4902,
+        3674
+      ],
+      "coreRect": [
+        4915,
+        3686,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r4c5_scene.png",
+      "placementGuide": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r4c5_placement_guide.png",
+      "places": [
+        {
+          "name": "无相圣宗",
+          "x": 198,
+          "y": 74,
+          "footing": "mountain_terrace_or_valley"
+        },
+        {
+          "name": "槐安镇",
+          "x": 443,
+          "y": 995,
+          "footing": "open_ground"
+        },
+        {
+          "name": "永夜关",
+          "x": 689,
+          "y": 197,
+          "footing": "open_ground"
+        },
+        {
+          "name": "听澜镇",
+          "x": 443,
+          "y": 565,
+          "footing": "open_ground"
+        }
+      ],
+      "bridges": []
+    },
+    {
+      "id": "r5c1",
+      "row": 4,
+      "col": 0,
+      "worldOrigin": [
+        -12,
+        4902
+      ],
+      "coreRect": [
+        0,
+        4915,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r5c1_scene.png",
+      "placementGuide": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r5c1_placement_guide.png",
+      "places": [],
+      "bridges": []
+    },
+    {
+      "id": "r5c2",
+      "row": 4,
+      "col": 1,
+      "worldOrigin": [
+        1216,
+        4902
+      ],
+      "coreRect": [
+        1229,
+        4915,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r5c2_scene.png",
+      "placementGuide": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r5c2_placement_guide.png",
+      "places": [
+        {
+          "name": "百药谷",
+          "x": 996,
+          "y": 689,
+          "footing": "mountain_terrace_or_valley"
+        },
+        {
+          "name": "青萝城",
+          "x": 675,
+          "y": 563,
+          "footing": "riverside_setback"
+        },
+        {
+          "name": "采薇里",
+          "x": 381,
+          "y": 628,
+          "footing": "open_ground"
+        }
+      ],
+      "bridges": [
+        {
+          "id": "bc_landmark_023",
+          "x": 604,
+          "y": 405,
+          "angle": -2.1418294932740123
+        }
+      ]
+    },
+    {
+      "id": "r5c3",
+      "row": 4,
+      "col": 2,
+      "worldOrigin": [
+        2445,
+        4902
+      ],
+      "coreRect": [
+        2458,
+        4915,
+        1228,
+        1229
+      ],
+      "reference": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r5c3_scene.png",
+      "placementGuide": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r5c3_placement_guide.png",
+      "places": [],
+      "bridges": []
+    },
+    {
+      "id": "r5c4",
+      "row": 4,
+      "col": 3,
+      "worldOrigin": [
+        3674,
+        4902
+      ],
+      "coreRect": [
+        3686,
+        4915,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r5c4_scene.png",
+      "placementGuide": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r5c4_placement_guide.png",
+      "places": [
+        {
+          "name": "血河教",
+          "x": 320,
+          "y": 136,
+          "footing": "mountain_terrace_or_valley"
+        },
+        {
+          "name": "暮烟城",
+          "x": 750,
+          "y": 198,
+          "footing": "open_ground"
+        },
+        {
+          "name": "雁回镇",
+          "x": 1190,
+          "y": 51,
+          "footing": "riverside_setback"
+        },
+        {
+          "name": "忘机坊",
+          "x": 627,
+          "y": 505,
+          "footing": "open_ground"
+        }
+      ],
+      "bridges": [
+        {
+          "id": "bc_landmark_012",
+          "x": 1098,
+          "y": 81,
+          "angle": 2.835101170929862
+        }
+      ]
+    },
+    {
+      "id": "r5c5",
+      "row": 4,
+      "col": 4,
+      "worldOrigin": [
+        4902,
+        4902
+      ],
+      "coreRect": [
+        4915,
+        4915,
+        1229,
+        1229
+      ],
+      "reference": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r5c5_scene.png",
+      "placementGuide": "E:\\stacklands\\textures\\world\\bai_chuan\\whole_paint_v2\\reference\\r5c5_placement_guide.png",
+      "places": [
+        {
+          "name": "蚀日宫",
+          "x": 505,
+          "y": 505,
+          "footing": "mountain_terrace_or_valley"
+        }
+      ],
+      "bridges": []
+    }
+  ],
+  "registration": [
+    {
+      "id": "bc_landmark_003",
+      "target": [
+        951.2480340000001,
+        956.6226780000001
+      ],
+      "paintedWaterCenter": [
+        960.0,
+        951.0
+      ],
+      "referenceShiftPixels": 10.4
+    },
+    {
+      "id": "bc_landmark_005",
+      "target": [
+        1057.048014,
+        410.86933799999997
+      ],
+      "paintedWaterCenter": [
+        1060.0,
+        421.0
+      ],
+      "referenceShiftPixels": 10.55
+    },
+    {
+      "id": "bc_landmark_007",
+      "target": [
+        567.371046,
+        831.990126
+      ],
+      "paintedWaterCenter": [
+        572.0,
+        838.0
+      ],
+      "referenceShiftPixels": 7.59
+    },
+    {
+      "id": "bc_landmark_008",
+      "target": [
+        738.2247839999999,
+        554.486196
+      ],
+      "paintedWaterCenter": [
+        734.0,
+        558.0
+      ],
+      "referenceShiftPixels": 5.5
+    },
+    {
+      "id": "bc_landmark_009",
+      "target": [
+        851.5801139999999,
+        696.54057
+      ],
+      "paintedWaterCenter": [
+        860.0,
+        695.0
+      ],
+      "referenceShiftPixels": 8.56
+    },
+    {
+      "id": "bc_landmark_012",
+      "target": [
+        973.940418,
+        1017.1331939999999
+      ],
+      "paintedWaterCenter": [
+        978.0,
+        1016.0
+      ],
+      "referenceShiftPixels": 4.21
+    },
+    {
+      "id": "bc_landmark_013",
+      "target": [
+        643.197918,
+        587.8125
+      ],
+      "paintedWaterCenter": [
+        654.0,
+        590.0
+      ],
+      "referenceShiftPixels": 11.02
+    },
+    {
+      "id": "bc_landmark_015",
+      "target": [
+        354.059376,
+        568.806876
+      ],
+      "paintedWaterCenter": [
+        374.0,
+        568.0
+      ],
+      "referenceShiftPixels": 19.96
+    },
+    {
+      "id": "bc_landmark_016",
+      "target": [
+        1076.160228,
+        395.58057
+      ],
+      "paintedWaterCenter": [
+        1072.0,
+        416.0
+      ],
+      "referenceShiftPixels": 20.84
+    },
+    {
+      "id": "bc_landmark_017",
+      "target": [
+        906.7385579999999,
+        826.675674
+      ],
+      "paintedWaterCenter": [
+        918.0,
+        827.0
+      ],
+      "referenceShiftPixels": 11.27
+    },
+    {
+      "id": "bc_landmark_021",
+      "target": [
+        596.13279,
+        570.08721
+      ],
+      "paintedWaterCenter": [
+        597.0,
+        564.0
+      ],
+      "referenceShiftPixels": 6.15
+    },
+    {
+      "id": "bc_landmark_023",
+      "target": [
+        371.377116,
+        1083.262884
+      ],
+      "paintedWaterCenter": [
+        373.0,
+        1082.0
+      ],
+      "referenceShiftPixels": 2.06
+    },
+    {
+      "id": "bc_landmark_024",
+      "target": [
+        519.5146440000001,
+        541.907322
+      ],
+      "paintedWaterCenter": [
+        518.0,
+        549.0
+      ],
+      "referenceShiftPixels": 7.25
+    },
+    {
+      "id": "bc_landmark_028",
+      "target": [
+        837.100176,
+        624.139626
+      ],
+      "paintedWaterCenter": [
+        830.0,
+        627.0
+      ],
+      "referenceShiftPixels": 7.65
+    },
+    {
+      "id": "bc_landmark_029",
+      "target": [
+        479.939658,
+        943.919658
+      ],
+      "paintedWaterCenter": [
+        470.0,
+        943.0
+      ],
+      "referenceShiftPixels": 9.98
+    }
+  ],
+  "sourceCompositionPixels": [
+    1254,
+    1254
+  ],
+  "deliveryTiles": [
+    2048,
+    2048,
+    9
+  ]
+}
