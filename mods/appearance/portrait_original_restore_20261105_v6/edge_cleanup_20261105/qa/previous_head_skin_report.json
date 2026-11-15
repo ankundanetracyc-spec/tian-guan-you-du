@@ -1,0 +1,104 @@
+{
+  "source": "E:\\stacklands\\mods\\appearance\\portrait_original_restore_20261105_v6\\edge_cleanup_20261105\\before_male\\face_shape\\01.png",
+  "source_sha256": "95dfb8b9d4b9f348275dbf6e53d77e89f2a25e3679e663542d8b6ab0d621511b",
+  "output_sha256": "c0a2e150eae66f3c10506fc4ff082e06cefedfdb23ff29dc8b32d7516ae7603a",
+  "new_regenerated_head_used": false,
+  "reference": "E:\\stacklands\\mods\\appearance\\portrait_original_restore_20261105_v6\\source\\reference_canvas_03.png",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "alpha_identical": true,
+  "changed_alpha_pixels": 0,
+  "neck_rows": [
+    {
+      "y": 530,
+      "left": 430,
+      "right": 605,
+      "width": 176
+    },
+    {
+      "y": 550,
+      "left": 430,
+      "right": 605,
+      "width": 176
+    },
+    {
+      "y": 580,
+      "left": 430,
+      "right": 605,
+      "width": 176
+    },
+    {
+      "y": 600,
+      "left": 441,
+      "right": 598,
+      "width": 158
+    },
+    {
+      "y": 650,
+      "left": 480,
+      "right": 575,
+      "width": 96
+    },
+    {
+      "y": 700,
+      "left": 513,
+      "right": 548,
+      "width": 36
+    }
+  ],
+  "sample_boxes": [
+    [
+      485,
+      295,
+      570,
+      331
+    ],
+    [
+      461,
+      409,
+      485,
+      439
+    ],
+    [
+      547,
+      410,
+      576,
+      439
+    ]
+  ],
+  "skin_sample_count": 4621,
+  "sample_mean_lab_before": [
+    83.84615325927734,
+    7.392014503479004,
+    12.210810661315918
+  ],
+  "sample_mean_lab_target": [
+    83.84615325927734,
+    7.392014503479004,
+    12.210810661315918
+  ],
+  "sample_mean_lab_after": [
+    83.84615325927734,
+    7.392014503479004,
+    12.210810661315918
+  ],
+  "applied_lab_shift": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "sample_mean_deltaE76_before": 0.0,
+  "sample_mean_deltaE76_after": 0.0,
+  "sample_max_rgb_difference_from_reference": 0,
+  "colour_decision": "Previous uncovered forehead and cheek pixels already equal third reference; no additional colour shift needed.",
+  "cleanup_regions": [
+    "left cheek hair",
+    "right neck edge black/white specks",
+    "left neck garment colour",
+    "lower hidden neck dark contamination"
+  ],
+  "changed_visible_rgb_pixels": 3236,
+  "ears_and_main_jaw_geometry_unchanged": true
+}

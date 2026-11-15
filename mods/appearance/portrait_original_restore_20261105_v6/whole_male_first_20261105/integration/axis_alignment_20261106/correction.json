@@ -1,0 +1,58 @@
+{
+  "date": "2026-11-06",
+  "reason": "Head axis near513 vs approved features near518; remove five-pixel right offset",
+  "head_axis_x_before": 513,
+  "feature_axis_x_before": 518.01,
+  "feature_axis_x_after": 513.01,
+  "head_neck_sha256": "2fd9743feb92f3420355f46c83302f7e60de65892f9c09a8bbff9ce3e3afe7aa",
+  "head_neck_changed": false,
+  "clothes_changed": false,
+  "configuration_changed": false,
+  "records": [
+    {
+      "part": "eyebrows",
+      "before_sha256": "89f572f95a9b5b317478d37cbfacedca7c2f1808eb93c6567b9a8244a6b3bebe",
+      "after_sha256": "8ac9f6ca50335575f2d6302257a0e242e646dfb02903bae5c7aa65b69e45b3ea",
+      "dx": -5,
+      "dy": 0,
+      "transform": "Integer translation only; no scaling, warping, filtering, or repainting",
+      "candidate": "male/eyebrows/01.png"
+    },
+    {
+      "part": "eyes",
+      "before_sha256": "c028d3b183184994aae23aa69bd40beebbe894134c781d9c6820794c8f9db20e",
+      "after_sha256": "ef89963e8e60872ef2bd367eeb012ab69f5e8608d46956a200cbd761e6ecebf1",
+      "dx": -5,
+      "dy": 0,
+      "transform": "Integer translation only; no scaling, warping, filtering, or repainting",
+      "candidate": "male/eyes/01.png"
+    },
+    {
+      "part": "nose",
+      "before_sha256": "2bcbd3cf8ccd464383132e69e61e88f1692b5a0e6881a690cfb88601befad53b",
+      "after_sha256": "af623a6fdc38766b28771e17582a2b308a5c1f7ec21de48e1b535e8ec6b2d139",
+      "dx": -5,
+      "dy": 0,
+      "transform": "Integer translation only; no scaling, warping, filtering, or repainting",
+      "candidate": "male/nose/01.png"
+    },
+    {
+      "part": "mouth",
+      "before_sha256": "639d88453f7339da9c6bd6ce087ff3c6c3eb26bdfa1ab30d3990ef98043ace32",
+      "after_sha256": "b92b059a925cad9440530733d7ca99400e4fc8563ac8a8d0c6517e6c870c30b3",
+      "dx": -5,
+      "dy": 0,
+      "transform": "Integer translation only; no scaling, warping, filtering, or repainting",
+      "candidate": "male/mouth/01.png"
+    },
+    {
+      "part": "hair_front",
+      "before_sha256": "6253fdbc68fa38c2e40f2e33467c620b847dcb13170163bfe548eb5a4c9b8c93",
+      "after_sha256": "7710450f3d7833ffc29e0f58f5ba0bd915a68bc888b708f54d70a68ae7bc9806",
+      "dx": -5,
+      "dy": 0,
+      "transform": "Integer translation only; no scaling, warping, filtering, or repainting",
+      "candidate": "male/hair_front/01.png"
+    }
+  ]
+}

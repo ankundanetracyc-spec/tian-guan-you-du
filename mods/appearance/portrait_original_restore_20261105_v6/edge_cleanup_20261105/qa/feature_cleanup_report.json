@@ -1,0 +1,109 @@
+{
+  "canvas": [
+    1024,
+    1536
+  ],
+  "unchanged_geometry": true,
+  "records": [
+    {
+      "part": "eyebrows",
+      "index": 1,
+      "before_sha256": "01c3a50e390d2434b24f9d980e00be575bcfe97f47b1a92470163c032512ce0d",
+      "after_sha256": "ab1ae7e07549529832f7631389f5a5f019ef7695da82e9e995b5927e008efd95",
+      "rgb_changed": 0,
+      "alpha_changed": 1630,
+      "central_rgba_unchanged": true,
+      "peripheral_x_limits": [
+        450,
+        583
+      ]
+    },
+    {
+      "part": "eyebrows",
+      "index": 2,
+      "before_sha256": "476399099a523386e913bb0b47d6987fa5fd065ab85d26845af896616e07a76c",
+      "after_sha256": "796b61b08824a009916b6586f628235f25f5fa1014a0cdec5727c72d674e840a",
+      "rgb_changed": 0,
+      "alpha_changed": 1371,
+      "central_rgba_unchanged": true,
+      "peripheral_x_limits": [
+        442,
+        585
+      ]
+    },
+    {
+      "part": "eyebrows",
+      "index": 3,
+      "before_sha256": "8f3da2ca66098ce46f6a260f22ba07fe3ca3b88757b26b157a0edf1eea33feab",
+      "after_sha256": "d809d6540b2722cb24964896532741fe7c07f730394d45d2dc5affd33e558452",
+      "rgb_changed": 0,
+      "alpha_changed": 1895,
+      "central_rgba_unchanged": true,
+      "peripheral_x_limits": [
+        459,
+        585
+      ]
+    },
+    {
+      "part": "eyes",
+      "index": 1,
+      "before_sha256": "f90e7abdd9dc38812f7663c4ba6c26db451ce53af5e37bf1b52a1821e5eb794e",
+      "after_sha256": "452344763646dc0b1f2a16dd7f670c57ad2607002d79b169c28a23e4232af289",
+      "rgb_changed": 0,
+      "alpha_changed": 2084,
+      "central_rgba_unchanged": true,
+      "peripheral_x_limits": [
+        446,
+        584
+      ]
+    },
+    {
+      "part": "eyes",
+      "index": 2,
+      "before_sha256": "bbfe846046ca7432f148057f0cc9999bcbd657307571e6ee50d4cfa5aaca4ffa",
+      "after_sha256": "67f4dd7fadd2a1637f97987b3a1249fb58a539dfa8a6e491097227eda99d8111",
+      "rgb_changed": 0,
+      "alpha_changed": 2349,
+      "central_rgba_unchanged": true,
+      "peripheral_x_limits": [
+        454,
+        584
+      ]
+    },
+    {
+      "part": "face_shape",
+      "index": 1,
+      "before_sha256": "95dfb8b9d4b9f348275dbf6e53d77e89f2a25e3679e663542d8b6ab0d621511b",
+      "after_sha256": "4fed38da15037a3bc87dcf13347842a6b6e69ba3c0fe76008622dc39e20da6b8",
+      "alpha_changed": 0,
+      "rgb_changed": 14858,
+      "neck_alpha_and_canvas_unchanged": true,
+      "repair_regions": [
+        [
+          419,
+          446,
+          439,
+          505
+        ],
+        [
+          598,
+          480,
+          615,
+          518
+        ],
+        [
+          422,
+          570,
+          436,
+          603
+        ],
+        [
+          500,
+          630,
+          595,
+          740
+        ]
+      ]
+    }
+  ]
+}

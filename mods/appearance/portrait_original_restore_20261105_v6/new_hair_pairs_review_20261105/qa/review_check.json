@@ -1,0 +1,101 @@
+{
+  "status": "preview only; not installed",
+  "head_neck_unchanged": true,
+  "head_sha256": "ed790ac8bcd41fd54d9a2e0a7be55f21704413ff5b86213a91285782a5d6f7c2",
+  "configuration_unchanged": true,
+  "canvas": [
+    1024,
+    1536
+  ],
+  "hair_width_checks": [
+    {
+      "pair": 1,
+      "rows": [
+        {
+          "y": 250,
+          "front_width": 295,
+          "back_width": 235
+        },
+        {
+          "y": 300,
+          "front_width": 336,
+          "back_width": 264
+        },
+        {
+          "y": 350,
+          "front_width": 349,
+          "back_width": 266
+        },
+        {
+          "y": 400,
+          "front_width": 318,
+          "back_width": 255
+        }
+      ]
+    },
+    {
+      "pair": 2,
+      "rows": [
+        {
+          "y": 250,
+          "front_width": 304,
+          "back_width": 224
+        },
+        {
+          "y": 300,
+          "front_width": 333,
+          "back_width": 262
+        },
+        {
+          "y": 350,
+          "front_width": 326,
+          "back_width": 272
+        },
+        {
+          "y": 400,
+          "front_width": 302,
+          "back_width": 253
+        }
+      ]
+    },
+    {
+      "pair": 3,
+      "rows": [
+        {
+          "y": 250,
+          "front_width": 327,
+          "back_width": 217
+        },
+        {
+          "y": 300,
+          "front_width": 352,
+          "back_width": 253
+        },
+        {
+          "y": 350,
+          "front_width": 366,
+          "back_width": 264
+        },
+        {
+          "y": 400,
+          "front_width": 347,
+          "back_width": 259
+        }
+      ]
+    }
+  ],
+  "layer_order": [
+    "hair_back",
+    "clothing_back",
+    "face_shape",
+    "clothing",
+    "nose",
+    "eyes",
+    "eyebrows",
+    "mouth",
+    "hair_front"
+  ],
+  "new_features_each": 1,
+  "new_pairs": 3,
+  "old_feature_pixels_used": false
+}

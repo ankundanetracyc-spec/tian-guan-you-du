@@ -1,0 +1,35 @@
+{
+  "source": "E:\\stacklands\\mods\\appearance\\portrait_original_restore_20261105_v6\\skull_partition_fix_20261105\\source\\restored_head_before_edge_cleanup.png",
+  "source_sha256": "58f1deb244769a0bc0b1ac18861a787a5e4f40cf06b7751717eeb386ec908565",
+  "output": "E:\\stacklands\\mods\\appearance\\portrait_original_restore_20261105_v6\\skull_partition_fix_20261105\\male\\face_shape\\01.png",
+  "output_sha256": "5b9fed0fe714fd51b56aca016f815cffb9e2df7c65b09dc42d0b2f960aa00cf2",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "no_resize_or_translation": true,
+  "neck_y520_plus_rgba_identical": true,
+  "maximum_50pct_contour_shift_px": 1.0,
+  "before_50pct_bbox": [
+    370,
+    172,
+    659,
+    730
+  ],
+  "after_50pct_bbox": [
+    370,
+    172,
+    659,
+    730
+  ],
+  "changed_50pct_shape_pixels": 4,
+  "changed_alpha_pixels": 3550,
+  "changed_visible_rgb_pixels": 2695,
+  "ink_rim_pixels_treated": 2808,
+  "isolated_dark_skin_pixels_repaired": 68,
+  "notes": [
+    "Only the painted outer ink rim and detected tiny skin marks are repaired.",
+    "Ear inner anatomy and natural chin structure are not masked out.",
+    "All RGBA at y520 and below are copied byte-for-byte from the restored-head source."
+  ]
+}
