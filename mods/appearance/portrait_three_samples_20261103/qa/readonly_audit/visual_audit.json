@@ -1,0 +1,38 @@
+{
+  "purpose": "Read-only visual QA of actual modular composites. Visual observations, not approval by the user.",
+  "material_edits": false,
+  "blend_order": [
+    "hair_back",
+    "face_shape",
+    "clothing",
+    "eyes",
+    "eyebrows",
+    "nose",
+    "mouth",
+    "hair_front"
+  ],
+  "set01": {
+    "viewed": [
+      "preview/set01_portrait.jpg",
+      "preview/set01_head_chest.jpg",
+      "qa/readonly_audit/set01_dark_head_chest.jpg",
+      "qa/readonly_audit/set01_black_full.jpg",
+      "qa/readonly_audit/set01_dark_face_3x.jpg",
+      "qa/readonly_audit/set01_front_dark.jpg"
+    ],
+    "overall": "Usable as a review sample; no part currently merits discarding solely on the inspected composite.",
+    "face": "No obvious rectangular skin patches around eyes, nose or mouth. Warm nose and lip shading blends with the shared face. Nose retains bridge, tip and alar volume. The eyes and brows look grainier than the smoother nose and lips at 3x magnification, but this is modest at native portrait scale.",
+    "hair_material": "Front crown has broader, brighter ribbon-shaped highlights; back curtains are finer-stranded and more matte. Mild material mismatch remains visible, without a strong color break.",
+    "hairline": "A light grey edge traces the forehead hairline and the inside edges of the side locks. It can read as a drawn outline at close range. If refined later, this is the first area to soften.",
+    "head_and_balance": "The crown is compact and fairly close to the head. It is not oversized in the inspected composite. Overall left-right balance is stable.",
+    "occlusion": "Ear outlines, neck-to-collar join and the shoulder curtains connect without an obvious hole or hard horizontal cut. The complete front locks lie over the garment and end around y900, well above the waist belt at about y1210.",
+    "alpha": "The raw PNG RGB displays a diffuse cloud when viewed without correct alpha. Correct source-over compositing on dark grey and black does not show a comparable cloud. Very low-alpha peripheral pixels exist; none formed a major visible stain in the checked renders.",
+    "recommendation": "Keep all six as sample 01 for user comparison. Treat material consistency and light hairline edging as refinement notes; no automated approval claimed."
+  },
+  "set02": {
+    "status": "Not yet complete at time of this report."
+  },
+  "set03": {
+    "status": "Not yet complete at time of this report."
+  }
+}

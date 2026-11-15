@@ -1,0 +1,61 @@
+{
+  "schema": "female-readonly-visual-findings/v1",
+  "status": "read_only_audit_complete",
+  "scope": "当前女性四眉三眼；静态拼合及原尺寸目测，非游戏实机截图。未改素材、配置、文档或建立baseline。",
+  "priority_findings": [
+    {
+      "part": "eyes",
+      "physical_index": 3,
+      "severity": "mild_to_moderate",
+      "visible_at_normal_size": true,
+      "finding": "画面左侧眼裂与虹膜显露较圆，右上睑较平、显得略窄，左右眼尾收势也有差别。四眉组合及三前发下趋势仍在，不只来自高光或遮发。",
+      "evidence": [
+        "qa/female_static_twelve_brows_eyes_1x.png",
+        "qa/female_static_eyes_layers_1x.png",
+        "qa/female_static_three_hair_eye_context_1x.png"
+      ],
+      "active_source": "mods/appearance/ink_three_variants_20261004/female/eyes/03.png",
+      "source_sha256": "749867dd34d4c41e933fcaac9bce5e7fd2dc2deda841bbdaa817502a6b89361b"
+    },
+    {
+      "part": "eyebrows",
+      "physical_index": 2,
+      "severity": "mild",
+      "visible_at_normal_size": true,
+      "finding": "画面右眉外半段比左侧略厚、尾端较钝，长短与拱度有轻度差异。程度低于眼03。",
+      "evidence": [
+        "qa/female_static_twelve_brows_eyes_1x.png",
+        "qa/female_static_eyebrows_layers_1x.png",
+        "qa/female_static_brows02_03_three_hair_context_1x.png"
+      ],
+      "active_source": "mods/appearance/ink_three_variants_20261004/female/eyebrows/02.png",
+      "source_sha256": "5b0c2767c3936a2356de249b1c451cc1065090cd8168dcd02d2dac50b679d833"
+    }
+  ],
+  "minor_observations": [
+    {
+      "part": "eyes",
+      "physical_indices": [
+        1,
+        2
+      ],
+      "finding": "睫毛、眼尾和明暗有细笔触差异，当前正常尺寸不列为与眼03同级的明显大小眼。眼02比其他款更圆属于款式差异，不能据跨款大小判同款左右失衡。"
+    },
+    {
+      "part": "eyebrows",
+      "physical_indices": [
+        1,
+        3,
+        4
+      ],
+      "finding": "有细毛、内段轻重及收尾差异；眉03右尾略长挑，眉04更淡软，均仅列观察，不夸为同等级明显高低眉或断层。"
+    }
+  ],
+  "axis_and_seam_note": "女性以自身face_shape04与脸颌为参照，不套男性x513；正常尺寸未确认与上述眼03同等级的严重整组偏心或硬色阶断层。未用Alpha外框、散点或高光差替代解剖眼裂判断。",
+  "source_manifest": "source/source_hashes_pipeline.json",
+  "active_pngs_or_configuration_modified": false,
+  "documents_modified": false,
+  "baseline_created": false,
+  "image_generation_or_pixel_repair": false,
+  "user_aesthetic_approval_assumed": false
+}

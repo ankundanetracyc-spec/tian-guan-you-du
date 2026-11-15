@@ -1,0 +1,170 @@
+{
+  "created": "2026-11-13",
+  "parts": [
+    {
+      "row": 1.0,
+      "slot": "hair_back",
+      "crop": {
+        "width": 352,
+        "y": 0,
+        "height": 373,
+        "x": 0
+      },
+      "column": 1,
+      "file": "layers/01_hair_back.png"
+    },
+    {
+      "row": 1.0,
+      "slot": "head_base",
+      "crop": {
+        "width": 351,
+        "y": 0,
+        "height": 373,
+        "x": 352
+      },
+      "column": 2,
+      "file": "layers/02_head_base.png"
+    },
+    {
+      "row": 1.0,
+      "slot": "face_features",
+      "crop": {
+        "width": 352,
+        "y": 0,
+        "height": 373,
+        "x": 703
+      },
+      "column": 3,
+      "file": "layers/03_face_features.png"
+    },
+    {
+      "row": 2.0,
+      "slot": "front_hair",
+      "crop": {
+        "width": 352,
+        "y": 373,
+        "height": 373,
+        "x": 0
+      },
+      "column": 1,
+      "file": "layers/04_front_hair.png"
+    },
+    {
+      "row": 2.0,
+      "slot": "headband_ribbon",
+      "crop": {
+        "width": 351,
+        "y": 373,
+        "height": 373,
+        "x": 352
+      },
+      "column": 2,
+      "file": "layers/05_headband_ribbon.png"
+    },
+    {
+      "row": 2.0,
+      "slot": "upper_torso",
+      "crop": {
+        "width": 352,
+        "y": 373,
+        "height": 373,
+        "x": 703
+      },
+      "column": 3,
+      "file": "layers/06_upper_torso.png"
+    },
+    {
+      "row": 3.0,
+      "slot": "sleeve_left",
+      "crop": {
+        "width": 352,
+        "y": 746,
+        "height": 373,
+        "x": 0
+      },
+      "column": 1,
+      "file": "layers/07_sleeve_left.png"
+    },
+    {
+      "row": 3.0,
+      "slot": "sleeve_right",
+      "crop": {
+        "width": 351,
+        "y": 746,
+        "height": 373,
+        "x": 352
+      },
+      "column": 2,
+      "file": "layers/08_sleeve_right.png"
+    },
+    {
+      "row": 3.0,
+      "slot": "arm_left_gesture",
+      "crop": {
+        "width": 352,
+        "y": 746,
+        "height": 373,
+        "x": 703
+      },
+      "column": 3,
+      "file": "layers/09_arm_left_gesture.png"
+    },
+    {
+      "row": 4.0,
+      "slot": "arm_right",
+      "crop": {
+        "width": 352,
+        "y": 1119,
+        "height": 372,
+        "x": 0
+      },
+      "column": 1,
+      "file": "layers/10_arm_right.png"
+    },
+    {
+      "row": 4.0,
+      "slot": "lower_robe_sash",
+      "crop": {
+        "width": 351,
+        "y": 1119,
+        "height": 372,
+        "x": 352
+      },
+      "column": 2,
+      "file": "layers/11_lower_robe_sash.png"
+    },
+    {
+      "row": 4.0,
+      "slot": "legs_feet",
+      "crop": {
+        "width": 352,
+        "y": 1119,
+        "height": 372,
+        "x": 703
+      },
+      "column": 3,
+      "file": "layers/12_legs_feet.png"
+    }
+  ],
+  "assembled_master": {
+    "width": 1064,
+    "transparent": true,
+    "height": 1478,
+    "file": "preview/assembled_master.png"
+  },
+  "character": "project white-and-teal male sword cultivator",
+  "status": "review_sample_not_runtime_integrated",
+  "parts_atlas": {
+    "height": 1491,
+    "rows": 4,
+    "width": 1055,
+    "file": "preview/parts_atlas.png",
+    "columns": 3,
+    "transparent": true
+  },
+  "tool": "built-in ImageGen",
+  "references": [
+    "mods/appearance/附图剑修_Spine四动作_v3/preview/assembled_jianfinger_v3.png",
+    "local Library of Ruina Roland assembly preview from char_571.pres"
+  ]
+}

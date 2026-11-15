@@ -1,0 +1,53 @@
+{
+  "title": "水墨手绘战斗动作状态样稿",
+  "status": "候选预览；未接入游戏；未获用户美术验收",
+  "atlas": "preview/actions_atlas.png",
+  "atlas_pixels": "3072x1024; 4 columns x 2 rows; each cell 768x512 RGBA",
+  "atlas_sha256": "4d4ad5c853d585b27d857dab47d05a81d7bd644dac432ae7588621d890fedde4",
+  "source_artworks": [
+    "source/raw_eight_pose_atlas.png supplies poses 1-6",
+    "source/raw_slash_thrust_pair.png supplies refined poses 7-8"
+  ],
+  "poses": [
+    {
+      "file": "actions/01_idle.png",
+      "name": "待机",
+      "order": 1
+    },
+    {
+      "file": "actions/02_move.png",
+      "name": "移动",
+      "order": 2
+    },
+    {
+      "file": "actions/03_evade.png",
+      "name": "闪避",
+      "order": 3
+    },
+    {
+      "file": "actions/04_guard.png",
+      "name": "防御",
+      "order": 4
+    },
+    {
+      "file": "actions/05_hit.png",
+      "name": "受击",
+      "order": 5
+    },
+    {
+      "file": "actions/06_stagger.png",
+      "name": "失衡",
+      "order": 6
+    },
+    {
+      "file": "actions/07_slash.png",
+      "name": "斩击",
+      "order": 7
+    },
+    {
+      "file": "actions/08_thrust.png",
+      "name": "突刺",
+      "order": 8
+    }
+  ]
+}
