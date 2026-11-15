@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:,">
+<title>玉虚仙宗 · 山腰落位样板</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#eee5d1;color:#493e30;font:16px/1.7 system-ui,"Microsoft YaHei",sans-serif}main{max-width:1180px;margin:auto;padding:30px 24px}h1{font-size:27px;margin:0 0 6px}p{margin:8px 0 18px}.muted{font-size:14px;color:#746957}.row{display:grid;grid-template-columns:280px 1fr;gap:22px;align-items:start}.card{border:1px solid #cbbd9e;border-radius:8px;background:#f7f0df;overflow:hidden}h2{font-size:17px;padding:12px 18px;margin:0;border-bottom:1px solid #d8ccb4}.old{height:474px;display:flex;align-items:center;justify-content:center;background:#e6c986}.old img{width:164px;height:auto}.stage{overflow:auto;background:#e6c986}.scene{width:474px;height:474px;position:relative;margin:auto}.scene>img{display:block;width:100%;height:100%}.hotspot{position:absolute;left:37%;top:29%;width:35%;height:23%;border:1px solid transparent;border-radius:8px;background:transparent;cursor:pointer}.hotspot:hover,.hotspot:focus-visible{border-color:#7c4c27;outline:2px solid #f7ecd4aa}.caption{padding:10px 18px;font-size:14px}.toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:16px 0}button,a.button{font:inherit;color:inherit;border:1px solid #b5a17a;border-radius:5px;padding:5px 14px;background:#fbf4e4;cursor:pointer;text-decoration:none}button[aria-pressed="true"]{background:#6a5a42;color:#fff8e9}.detail{padding:14px 18px;border-left:3px solid #8d7350;background:#faf4e7;min-height:68px}.zoom .scene{width:948px;height:948px}.zoom .stage{max-height:760px}.note{margin-top:18px;max-width:860px}@media(max-width:850px){.row{grid-template-columns:1fr}.old{height:150px}.stage{overflow:auto}.scene{margin:0 auto}main{padding:18px 12px}}
+</style>
+<main>
+<h1>玉虚仙宗 · 山腰落位</h1>
+<p>后山托住主殿，院落落在山腰台地上，前坡与石阶把建筑接回山体。</p>
+<div class="toolbar"><button id="normal" aria-pressed="true">地图尺寸</button><button id="large" aria-pressed="false">放大看接地</button><a class="button" href="玉虚山腰落位_整体样板_v1.png">查看原图</a></div>
+<div class="row">
+<section class="card"><h2>原建筑 · 宽164像素</h2><div class="old"><img src="../../../textures/world/bai_chuan/acceptance_v1/icons/sect_164.png" alt="现有玉虚宗门通用院落，宽164像素"></div><div class="caption">建筑单独展示，供大小与建筑风格对照。</div></section>
+<section class="card" id="sample"><h2>山腰样板 · 建筑约164像素宽</h2><div class="stage"><div class="scene"><img id="sceneImage" src="玉虚山腰落位_整体样板_v1.png" alt="玉虚仙宗嵌在山腰台地上，后有山脊，前有山坡，石阶向山脚延伸"><button class="hotspot" aria-label="查看玉虚仙宗" title="玉虚仙宗"></button></div></div><div class="caption" id="scaleNote">整幅局部图按474像素宽显示，建筑主体约164像素宽；用于观察地图尺度下的接地感。</div></section>
+</div>
+<p class="detail" id="detail" role="status" aria-live="polite">可点选山腰建筑，查看这处地点的落位说明。</p>
+<p class="muted note">这是一张完整绘制的局部美术样板，原图1254×1254。它展示山体与建筑的遮挡效果，尚未拆成后山、建筑、前坡独立贴图，也未接入游戏。建筑宽度依据画面边界估算，未作为正式尺寸定稿。</p>
+</main>
+<script>
+const sample=document.querySelector('#sample'),normal=document.querySelector('#normal'),large=document.querySelector('#large'),note=document.querySelector('#scaleNote');
+function setZoom(on){sample.classList.toggle('zoom',on);normal.setAttribute('aria-pressed',String(!on));large.setAttribute('aria-pressed',String(on));note.textContent=on?'放大两倍检查：主殿脚下的台地、墙脚遮挡、护坡及下山石阶。':'整幅局部图按474像素宽显示，建筑主体约164像素宽；用于观察地图尺度下的接地感。'}
+normal.addEventListener('click',()=>setZoom(false));large.addEventListener('click',()=>setZoom(true));
+document.querySelector('.hotspot').addEventListener('click',()=>{document.querySelector('#detail').textContent='玉虚仙宗｜原规划坐标22／74，地点ID bc_place_001。样板采用山腰台地：后山在主殿之后，前侧山石与坡面遮住部分台地边缘，石阶沿坡落到山脚。此处仅演示独立点击区域，不执行旅行。'});
+</script>
+</html>

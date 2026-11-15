@@ -1,0 +1,62 @@
+Godot Engine v4.7.2.stable.mono.custom_build.ed1daf0bf (2026-08-17 01:18:38 UTC) - https://godotengine.org
+
+WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs
+   at: ResourceLoaderText::load (scene\resources\resource_format_text.cpp:501)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1268(nint, nint, string, string, int) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\NativeCalls.cs:11632)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\ResourceLoader.cs:120)
+       [2] ProcessForgingTrial..ctor()
+       [3] void CraftingIntegrationSmoke+<Run>d__5.MoveNext()
+       [4] void System.Runtime.CompilerServices.AsyncMethodBuilderCore.Start<TStateMachine>(TStateMachine&)
+       [5] void CraftingIntegrationSmoke.Run()
+       [6] bool CraftingIntegrationSmoke.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [7] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\Bridge\CSharpInstanceBridge.cs:24)
+PASS 真实库存炼器成功
+PASS 同材跨岗位只扣整炉合计
+PASS 正式工时与精力采用确认参数
+PASS 成器入包且保留其他灵识占用
+PASS 正式唯一实例带完整快照
+PASS 重新投料可再炼且实例不同
+PASS 精力不足零扣料
+PASS 其他占用导致灵识不足时拒绝
+PASS 缺材料不扣精力
+PASS 非法岗位拒绝开炼
+PASS 满包保护夹具按真实尺寸摆放木芯
+PASS 满包碎片空间不足时不吞料
+PASS 扣料腾位夹具合法旋转木芯
+PASS 扣料后可腾出连续3乘6空间
+PASS 满包可使用本炉扣料腾出的实际空间
+PASS 炼成器写入正式保存容器
+PASS 存档读回保留器物快照
+PASS 炼器过往记录随人物存档读回
+PASS 百工丹药页只有资料，没有炼制入口
+PASS 百工法宝页只有记录，没有炼制入口
+PASS 查阅百工不消耗材料或精力
+PASS 不在天工峰不能打开丹房
+PASS 天工峰显示丹房与器作地点入口
+PASS 沿用宗门身份限制
+PASS 地点丹房绑定当前人物
+PASS 炼丹投料实际摆入行囊
+PASS 正式炼丹自动产量成功
+PASS 正式开炉新增一条炼丹记录
+PASS 炼丹过往记录随人物存档读回
+PASS 开炼只扣投料，成品等待领取
+PASS 炼丹成果进入通用领取页
+PASS 确认领取后丹药入包
+PASS 炼丹结算期间返回不会隐藏成果
+PASS 返回关闭丹房并保留实际地点
+PASS 游戏内工坊显示真实库存
+PASS 重新进入器物册读取正式持有物
+PASS 工坊返回优先关闭详情弹层
+PASS 器作返回天工峰
+PASS 再次返回关闭百工
+PASS 树内正式炼器推进真实历法且时辰换算正确
+PASS 下一炉重新装入真实投料
+PASS 真实炼丹鉴看后确认装瓶完成
+PASS 真实炼丹页面开炼扣除行囊投料并打开领取页
+PASS 真实开炉同时扣精力并推进历法
+PASS 真实领取确认前不提前发丹
+PASS 自动放入仅预览，未确认前不发丹
+PASS 点击真实领取按钮后丹药进入人物行囊
+PASS 真实领取完成后可以返回地点
+CRAFTING_INTEGRATION_OK 48

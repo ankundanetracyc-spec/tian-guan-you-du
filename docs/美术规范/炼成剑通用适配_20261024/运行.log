@@ -1,0 +1,69 @@
+Godot Engine v4.7.2.stable.mono.official.ed1daf0bf - https://godotengine.org
+
+PASS 不同投料剑可入包装备 0
+PASS 实例替换与装备免费
+PASS 只生成真实主动能力
+PASS 主动能力手动装槽
+PASS 保留其他持续实体占用
+PASS 战斗结束释放在场占用
+PASS 卸下清空来源且保留槽位
+PASS 不同投料剑可入包装备 1
+PASS 实例替换与装备免费
+PASS 只生成真实主动能力
+PASS 主动能力手动装槽
+PASS 保留其他持续实体占用
+PASS 战斗结束释放在场占用
+PASS 卸下清空来源且保留槽位
+PASS 不同投料剑可入包装备 2
+PASS 实例替换与装备免费
+PASS 只生成真实主动能力
+PASS 主动能力手动装槽
+PASS 保留其他持续实体占用
+PASS 战斗结束释放在场占用
+PASS 卸下清空来源且保留槽位
+PASS 不同投料剑可入包装备 3
+PASS 实例替换与装备免费
+PASS 只生成真实主动能力
+PASS 主动能力手动装槽
+PASS 保留其他持续实体占用
+PASS 施法峰值不足拒绝
+WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs
+   at: load (scene/resources/resource_format_text.cpp:501)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1268(nint, nint, string, string, int) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:11611)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/ResourceLoader.cs:120)
+       [2] T Godot.ResourceLoader.Load<T>(string, string, Godot.ResourceLoader+CacheMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Extensions/ResourceLoaderExtensions.cs:27)
+       [3] void GongfaAvailability.EnsureCatalog()
+       [4] bool GongfaAvailability.IsBookNameEnabled(string)
+       [5] bool GongfaCombatRuntime.Main(Godot.GodotObject, string)
+       [6] int GongfaCombatRuntime.ManaCostTransferredToStamina(Godot.GodotObject, ActiveSkillData, int)
+       [7] int BattleManager.get_skill_mana_cost(Godot.GodotObject, ActiveSkillData)
+       [8] bool BattleManager.can_pay_skill_mana_cost(Godot.GodotObject, ActiveSkillData)
+       [9] void ForgedSwordAdapterSmoke.Run()
+       [10] bool ForgedSwordAdapterSmoke.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [11] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+PASS 额外一灵识可施法
+PASS 施法临时登记
+PASS 释放只还临时部分且幂等
+PASS 战斗结束释放在场占用
+PASS 卸下清空来源且保留槽位
+PASS 不同投料剑可入包装备 4
+PASS 实例替换与装备免费
+PASS 只生成真实主动能力
+PASS 主动能力手动装槽
+PASS 保留其他持续实体占用
+PASS 召出真实器体及在场占用
+PASS 施法峰值不足拒绝
+PASS 额外一灵识可施法
+PASS 施法临时登记
+PASS 释放只还临时部分且幂等
+PASS 施法峰值不足拒绝
+PASS 额外一灵识可施法
+PASS 施法临时登记
+PASS 释放只还临时部分且幂等
+PASS 战斗结束释放在场占用
+PASS 卸下清空来源且保留槽位
+PASS 实际投料形成主动能力
+PASS 保存装备与技能来源
+PASS 读回按实例重建技能，不保存召出态
+FORGED_SWORD_ADAPTER_OK 51
