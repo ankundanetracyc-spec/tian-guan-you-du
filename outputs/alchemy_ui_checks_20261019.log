@@ -1,0 +1,45 @@
+Godot Engine v4.7.2.stable.mono.official.ed1daf0bf - https://godotengine.org
+D3D12 12_0 - Forward Mobile - Using Device #0: NVIDIA - NVIDIA GeForce RTX 4060 Laptop GPU
+
+WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs
+   at: load (scene/resources/resource_format_text.cpp:501)
+   GDScript backtrace (most recent call first):
+       [0] _run (res://tmp/check_alchemy_ui_20261019.gd:38)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1268(nint, nint, string, string, int) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:11611)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/ResourceLoader.cs:120)
+       [2] T Godot.ResourceLoader.Load<T>(string, string, Godot.ResourceLoader+CacheMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Extensions/ResourceLoaderExtensions.cs:27)
+       [3] T Godot.GD.Load<T>(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:129)
+       [4] void AlchemySlotBrewPreviewScene.LoadMaterials()
+       [5] void AlchemySlotBrewPreviewScene._Ready()
+       [6] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2660)
+       [7] bool Godot.CanvasItem.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/CanvasItem.cs:1845)
+       [8] bool Godot.Control.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Control.cs:4029)
+       [9] bool AlchemySlotBrewPreviewScene.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [10] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+药位边界 8 => 4 味 PASS
+四味方 青芽多味方 => 九品回春丹 | 成丹 4 枚 · 优效 · 丹效 86。 |  | 本炉耗时　2时辰 |  | 实际成丹　4枚 | 成色　优效 · 丹效 86分 | 药效　每枚约 39点
+四味方 藻丝多味方 => 九品通脉丹 | 成丹 3 枚 · 优效 · 丹效 76。 |  | 本炉耗时　2时辰 |  | 实际成丹　3枚 | 成色　优效 · 丹效 76分 | 药效　每枚约 25点
+四味方 泥脉木水方 => 九品静心丹 | 成丹 4 枚 · 良效 · 丹效 66。 |  | 本炉耗时　4时辰 |  | 实际成丹　4枚 | 成色　良效 · 丹效 66分 | 药效　每枚约 24点
+药位边界 31 => 4 味 PASS
+药位边界 32 => 5 味 PASS
+药位边界 67 => 5 味 PASS
+药位边界 68 => 6 味 PASS
+药位边界 202 => 6 味 PASS
+药位边界 203 => 7 味 PASS
+药位边界 507 => 7 味 PASS
+药位边界 508 => 8 味 PASS
+ICON_MODE_DIAG /root/AlchemyPreviewScene/MaterialCanvas/MaterialPickerOverlay/@PanelContainer@1561/@VBoxContainer@1562/@ScrollContainer@1569/@TextureRect@1567 mode=0 parent=@ScrollContainer@1569
+ICON_MODE_DIAG /root/AlchemyPreviewScene/MaterialCanvas/MaterialPickerOverlay/@PanelContainer@1561/@VBoxContainer@1562/@ScrollContainer@1569/@TextureRect@1568 mode=0 parent=@ScrollContainer@1569
+ICON_MODE_DIAG /root/AlchemyPreviewScene/MaterialCanvas/KnownFormulaOverlay/@PanelContainer@1571/@VBoxContainer@1572/@ScrollContainer@1579/@TextureRect@1577 mode=0 parent=@ScrollContainer@1579
+ICON_MODE_DIAG /root/AlchemyPreviewScene/MaterialCanvas/KnownFormulaOverlay/@PanelContainer@1571/@VBoxContainer@1572/@ScrollContainer@1579/@TextureRect@1578 mode=0 parent=@ScrollContainer@1579
+ICON_MODE_DIAG /root/AlchemyPreviewScene/AlchemyTutorialOverlay/@PanelContainer@1586/@VBoxContainer@1587/@ScrollContainer@1593/@TextureRect@1591 mode=0 parent=@ScrollContainer@1593
+ICON_MODE_DIAG /root/AlchemyPreviewScene/AlchemyTutorialOverlay/@PanelContainer@1586/@VBoxContainer@1587/@ScrollContainer@1593/@TextureRect@1592 mode=0 parent=@ScrollContainer@1593
+ICON_MODE_DIAG /root/AlchemyPreviewScene/AlchemyMessageOverlay/@PanelContainer@1619/@VBoxContainer@1620/@ScrollContainer@1626/@TextureRect@1624 mode=0 parent=@ScrollContainer@1626
+ICON_MODE_DIAG /root/AlchemyPreviewScene/AlchemyMessageOverlay/@PanelContainer@1619/@VBoxContainer@1620/@ScrollContainer@1626/@TextureRect@1625 mode=0 parent=@ScrollContainer@1626
+ALCHEMY_UI_CHECK_PASS
+ERROR: 1 RID allocations of type 'N10RendererRD14TextureStorage7TextureE' were leaked at exit.
+ERROR: Parameter "RenderingServer::get_singleton()" is null.
+   at: ~ImageTexture (scene/resources/image_texture.cpp:245)
+WARNING: 2 RIDs of type "Texture" were leaked.
+   at: finalize (servers/rendering/rendering_device.cpp:8900)

@@ -1,0 +1,157 @@
+Godot Engine v4.7.2.stable.mono.official.ed1daf0bf - https://godotengine.org
+
+WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs
+   at: load (scene/resources/resource_format_text.cpp:501)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1268(nint, nint, string, string, int) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:11611)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/ResourceLoader.cs:120)
+       [2] T Godot.ResourceLoader.Load<T>(string, string, Godot.ResourceLoader+CacheMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Extensions/ResourceLoaderExtensions.cs:27)
+       [3] T Godot.GD.Load<T>(string) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/GD.cs:129)
+       [4] void AlchemySlotBrewPreviewScene.LoadMaterials()
+       [5] void AlchemySlotBrewPreviewScene._Ready()
+       [6] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2660)
+       [7] bool Godot.CanvasItem.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/CanvasItem.cs:1845)
+       [8] bool Godot.Control.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Control.cs:4029)
+       [9] bool AlchemySlotBrewPreviewScene.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [10] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+ALCHEMY_SLOT_UI_OK 相同固药臣位占用高于佐位
+ALCHEMY_SLOT_UI_OK 增量提高占用但不按两味翻倍
+ALCHEMY_SLOT_UI_OK 高品功用与材料占用上升
+ALCHEMY_SLOT_UI_OK 本位功用越多负担越高
+ALCHEMY_SLOT_UI_OK 非本位功用不收功用负担但高材阶保留基础负担
+ALCHEMY_SLOT_UI_OK 空炉零占用且无君药仍计辅药
+ALCHEMY_SLOT_UI_OK 其他占用扣除且可支配上限不为负
+ALCHEMY_SLOT_UI_OK 五味各有贡献且评分全满时可达满效
+ALCHEMY_SLOT_UI_OK 可支配灵识等于需求可炼少一点则阻塞
+ALCHEMY_SLOT_UI_OK 其他持续占用影响本炉准入
+ALCHEMY_SLOT_UI_OK 开炼与缺君药的读数共用占用算法
+ALCHEMY_SLOT_UI_OK 未知丹种共用占用算法
+ALCHEMY_SLOT_UI_OK 青木清露方整数投料
+ALCHEMY_SLOT_UI_OK 青木清露方造诣8成丹
+ALCHEMY_SLOT_UI_OK 青木清露方造诣8载入
+RECIPE_RESULT 青木清露方 A=8 九品回春丹 Q=51 count=1 L=15 E=27 blocked=
+ALCHEMY_SLOT_UI_OK 青木清露方整数投料
+ALCHEMY_SLOT_UI_OK 青木清露方造诣36成丹
+ALCHEMY_SLOT_UI_OK 青木清露方造诣36载入
+RECIPE_RESULT 青木清露方 A=36 九品回春丹 Q=99 count=4 L=15 E=31 blocked=
+ALCHEMY_SLOT_UI_OK 青芽明净方整数投料
+ALCHEMY_SLOT_UI_OK 青芽明净方造诣8成丹
+ALCHEMY_SLOT_UI_OK 青芽明净方造诣8载入
+RECIPE_RESULT 青芽明净方 A=8 九品回春丹 Q=78 count=4 L=10 E=31 blocked=
+ALCHEMY_SLOT_UI_OK 青芽明净方整数投料
+ALCHEMY_SLOT_UI_OK 青芽明净方造诣36成丹
+ALCHEMY_SLOT_UI_OK 青芽明净方造诣36载入
+RECIPE_RESULT 青芽明净方 A=36 九品回春丹 Q=99 count=4 L=10 E=31 blocked=
+ALCHEMY_SLOT_UI_OK 石英泉珠方整数投料
+ALCHEMY_SLOT_UI_OK 石英泉珠方造诣8成丹
+ALCHEMY_SLOT_UI_OK 石英泉珠方造诣8载入
+RECIPE_RESULT 石英泉珠方 A=8 九品通脉丹 Q=77 count=3 L=11 E=30 blocked=
+ALCHEMY_SLOT_UI_OK 石英泉珠方整数投料
+ALCHEMY_SLOT_UI_OK 石英泉珠方造诣36成丹
+ALCHEMY_SLOT_UI_OK 石英泉珠方造诣36载入
+RECIPE_RESULT 石英泉珠方 A=36 九品通脉丹 Q=83 count=4 L=11 E=31 blocked=
+ALCHEMY_SLOT_UI_OK 藻丝清露方整数投料
+ALCHEMY_SLOT_UI_OK 藻丝清露方造诣8成丹
+ALCHEMY_SLOT_UI_OK 藻丝清露方造诣8载入
+RECIPE_RESULT 藻丝清露方 A=8 九品通脉丹 Q=69 count=3 L=12 E=30 blocked=
+ALCHEMY_SLOT_UI_OK 藻丝清露方整数投料
+ALCHEMY_SLOT_UI_OK 藻丝清露方造诣36成丹
+ALCHEMY_SLOT_UI_OK 藻丝清露方造诣36载入
+RECIPE_RESULT 藻丝清露方 A=36 九品通脉丹 Q=89 count=4 L=12 E=31 blocked=
+ALCHEMY_SLOT_UI_OK 瘴泥清音方整数投料
+ALCHEMY_SLOT_UI_OK 瘴泥清音方造诣8成丹
+ALCHEMY_SLOT_UI_OK 瘴泥清音方造诣8载入
+RECIPE_RESULT 瘴泥清音方 A=8 九品静心丹 Q=68 count=4 L=10 E=31 blocked=
+ALCHEMY_SLOT_UI_OK 瘴泥清音方整数投料
+ALCHEMY_SLOT_UI_OK 瘴泥清音方造诣36成丹
+ALCHEMY_SLOT_UI_OK 瘴泥清音方造诣36载入
+RECIPE_RESULT 瘴泥清音方 A=36 九品静心丹 Q=89 count=4 L=10 E=31 blocked=
+ALCHEMY_SLOT_UI_OK 泥脉月露方整数投料
+ALCHEMY_SLOT_UI_OK 泥脉月露方造诣8成丹
+ALCHEMY_SLOT_UI_OK 泥脉月露方造诣8载入
+RECIPE_RESULT 泥脉月露方 A=8 九品静心丹 Q=66 count=4 L=10 E=31 blocked=
+ALCHEMY_SLOT_UI_OK 泥脉月露方整数投料
+ALCHEMY_SLOT_UI_OK 泥脉月露方造诣36成丹
+ALCHEMY_SLOT_UI_OK 泥脉月露方造诣36载入
+RECIPE_RESULT 泥脉月露方 A=36 九品静心丹 Q=74 count=4 L=10 E=31 blocked=
+ALCHEMY_SLOT_UI_OK 造诣控件开放八味
+ALCHEMY_SLOT_UI_OK 药位-1有效功用筛选
+ALCHEMY_SLOT_UI_OK 药位-1组合筛选金阴固
+ALCHEMY_SLOT_UI_OK 药位-1组合筛选木阴固
+ALCHEMY_SLOT_UI_OK 药位-1组合筛选水阴固
+ALCHEMY_SLOT_UI_OK 药位-1组合筛选火阴固
+ALCHEMY_SLOT_UI_OK 药位-1组合筛选土阴固
+ALCHEMY_SLOT_UI_OK 药位0有效功用筛选
+ALCHEMY_SLOT_UI_OK 药位0组合筛选金阴固
+ALCHEMY_SLOT_UI_OK 药位0组合筛选木阴固
+ALCHEMY_SLOT_UI_OK 药位0组合筛选水阴固
+ALCHEMY_SLOT_UI_OK 药位0组合筛选火阴固
+ALCHEMY_SLOT_UI_OK 药位0组合筛选土阴固
+ALCHEMY_SLOT_UI_OK 药位1有效功用筛选
+ALCHEMY_SLOT_UI_OK 药位1组合筛选金阴固
+ALCHEMY_SLOT_UI_OK 药位1组合筛选木阴固
+ALCHEMY_SLOT_UI_OK 药位1组合筛选水阴固
+ALCHEMY_SLOT_UI_OK 药位1组合筛选火阴固
+ALCHEMY_SLOT_UI_OK 药位1组合筛选土阴固
+ALCHEMY_SLOT_UI_OK 药位2有效功用筛选
+ALCHEMY_SLOT_UI_OK 药位2组合筛选金阴固
+ALCHEMY_SLOT_UI_OK 药位2组合筛选木阴固
+ALCHEMY_SLOT_UI_OK 药位2组合筛选水阴固
+ALCHEMY_SLOT_UI_OK 药位2组合筛选火阴固
+ALCHEMY_SLOT_UI_OK 药位2组合筛选土阴固
+ALCHEMY_SLOT_UI_OK 药位3有效功用筛选
+ALCHEMY_SLOT_UI_OK 药位3组合筛选金阴固
+ALCHEMY_SLOT_UI_OK 药位3组合筛选木阴固
+ALCHEMY_SLOT_UI_OK 药位3组合筛选水阴固
+ALCHEMY_SLOT_UI_OK 药位3组合筛选火阴固
+ALCHEMY_SLOT_UI_OK 药位3组合筛选土阴固
+ALCHEMY_SLOT_UI_OK 药位4有效功用筛选
+ALCHEMY_SLOT_UI_OK 药位4组合筛选金阴固
+ALCHEMY_SLOT_UI_OK 药位4组合筛选木阴固
+ALCHEMY_SLOT_UI_OK 药位4组合筛选水阴固
+ALCHEMY_SLOT_UI_OK 药位4组合筛选火阴固
+ALCHEMY_SLOT_UI_OK 药位4组合筛选土阴固
+ALCHEMY_SLOT_UI_OK 药位5有效功用筛选
+ALCHEMY_SLOT_UI_OK 药位5组合筛选金阴固
+ALCHEMY_SLOT_UI_OK 药位5组合筛选木阴固
+ALCHEMY_SLOT_UI_OK 药位5组合筛选水阴固
+ALCHEMY_SLOT_UI_OK 药位5组合筛选火阴固
+ALCHEMY_SLOT_UI_OK 药位5组合筛选土阴固
+ALCHEMY_SLOT_UI_OK 药位6有效功用筛选
+ALCHEMY_SLOT_UI_OK 药位6组合筛选金阴固
+ALCHEMY_SLOT_UI_OK 药位6组合筛选木阴固
+ALCHEMY_SLOT_UI_OK 药位6组合筛选水阴固
+ALCHEMY_SLOT_UI_OK 药位6组合筛选火阴固
+ALCHEMY_SLOT_UI_OK 药位6组合筛选土阴固
+ALCHEMY_SLOT_UI_OK 空结果反馈
+ALCHEMY_SLOT_UI_OK 重置后恢复全部材料
+ALCHEMY_SLOT_UI_OK 降造诣清除锁定位且刷新布局
+ALCHEMY_SLOT_UI_OK 降造诣清料提示
+ALCHEMY_SLOT_UI_OK 动态药位门槛31
+ALCHEMY_SLOT_UI_OK 动态药位门槛32
+ALCHEMY_SLOT_UI_OK 动态药位门槛67
+ALCHEMY_SLOT_UI_OK 动态药位门槛68
+ALCHEMY_SLOT_UI_OK 动态药位门槛202
+ALCHEMY_SLOT_UI_OK 动态药位门槛203
+ALCHEMY_SLOT_UI_OK 动态药位门槛507
+ALCHEMY_SLOT_UI_OK 动态药位门槛508
+ALCHEMY_SLOT_UI_OK 造诣保留小数
+ALCHEMY_SLOT_UI_OK 单功用筛选破
+ALCHEMY_SLOT_UI_OK 单功用筛选化
+ALCHEMY_SLOT_UI_OK 单功用筛选通
+ALCHEMY_SLOT_UI_OK 单功用筛选行
+ALCHEMY_SLOT_UI_OK 单功用筛选引
+ALCHEMY_SLOT_UI_OK 单功用筛选聚
+ALCHEMY_SLOT_UI_OK 单功用筛选固
+ALCHEMY_SLOT_UI_OK 单功用筛选镇
+ALCHEMY_SLOT_UI_OK 单功用筛选护
+ALCHEMY_SLOT_UI_OK 单功用筛选生
+ALCHEMY_SLOT_UI_OK 单功用筛选明
+ALCHEMY_SLOT_UI_OK 单功用筛选藏
+ALCHEMY_SLOT_UI_OK 多功用按或匹配
+ALCHEMY_SLOT_UI_OK 功用与五行阴阳本位组合
+ALCHEMY_SLOT_UI_OK 实际重置按钮清除全部功用
+ALCHEMY_SLOT_UI_OK 清理药效曲线不改变成丹评分
+ALCHEMY_SLOT_UI_OK 结果和详情无废弃药效值
+ALCHEMY_SLOT_UI_OK 曲线及结果旧字段已删除
+ALCHEMY_SLOT_UI_PASS 128
