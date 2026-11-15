@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>阵法策略演示 · 受袭补防与余力转攻</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="preview.css">
+  <script src="preview.js" defer></script>
+</head>
+<body>
+<main class="sheet">
+  <header class="page-head">
+    <div><p class="eyebrow">策划对照 · 高阶逻辑</p><h1>受袭先补防，有余力再转攻</h1><p class="intro">重击、本窗或上一窗密集时保留防护，只停止可选攻击。不会等到第三次才补盾。</p></div>
+    <figure class="style-reference"><img src="../阵盘项目画风对照_20261108/B_墨绘铜纹.png" alt="已选铜纹阵盘画风参考"><figcaption>铜纹画风参考</figcaption></figure>
+  </header>
+
+  <section class="preset-section" aria-label="演示情境">
+    <div class="section-heading"><h2>先选一个情境</h2><button id="reset-demo" class="subtle" type="button">重置当前情境</button></div>
+    <div class="presets">
+      <button type="button" data-preset="ready" class="selected" aria-pressed="true">已有盾、有余力</button>
+      <button type="button" data-preset="guard" aria-pressed="false">无盾、供能足</button>
+      <button type="button" data-preset="shortage" aria-pressed="false">无盾、暂缺能</button>
+      <button type="button" data-preset="barrage" aria-pressed="false">已有盾、连续受袭</button>
+    </div>
+    <p id="preset-note" class="section-note"></p>
+  </section>
+
+  <div class="window-line"><span id="window-name">共同回合1 · 完整观测</span><label>演示密集阈值 N＝<select id="threshold" aria-label="演示密集阈值"><option value="2">2</option><option value="3" selected>3</option><option value="4">4</option></select></label><span class="quiet">仅为演示参数，改动会重置本情境</span><span id="enabled-state" class="enabled-state">阵盘启用中</span></div>
+  <dl class="state-ribbon" id="state-ribbon">
+    <div><dt>当前实际护盾</dt><dd id="state-shield">有盾</dd></div>
+    <div><dt>未完成补防 P</dt><dd id="state-pending">0 · 无待补防</dd></div>
+    <div><dt>本窗独立受袭</dt><dd id="state-count">0 次</dd></div>
+    <div><dt>当前守备判断</dt><dd id="state-pressure">尚无新受袭</dd></div>
+    <div><dt>上一窗／观测可信</dt><dd id="state-previous">开场 · 无前窗</dd><span id="previous-trust" class="quiet">仅真正开场视为中性</span></div>
+  </dl>
+
+  <div class="work-layout">
+    <section class="flow-section" aria-labelledby="flow-title">
+      <h2 id="flow-title">看这一次走哪条路</h2><p class="section-note">朱砂色是本次实际经过的流程；中断处会说明原因。</p>
+      <svg id="flow-diagram" viewBox="0 0 800 720" role="img" aria-label="受袭先观频记录，再记需并检查护盾；无盾时先提交护持，实际成功才继续；最后检查受袭入口、压力、预算与共享峰值后决定攻击。补盾观测只清需结束。"></svg>
+      <p class="flow-note">文字节点仅表示策划流程，不是最终元件图标、端口或盘内占格。</p>
+    </section>
+
+    <section class="operation-section" aria-labelledby="operate-title">
+      <h2 id="operate-title">送入一次真实变化</h2>
+      <label class="hit-state">本次伤害结算后<select id="after-hit-shield"><option value="yes">仍有护盾</option><option value="no">已经无盾</option></select></label>
+      <div class="hit-buttons"><button type="button" id="light-hit"><span>轻击</span><small>低于重击门槛</small></button><button type="button" id="heavy-hit"><span>重击</span><small>达到图谱重击门槛</small></button></div>
+      <p class="quiet hit-note">每次点击是一整个独立敌方动作，伤害已结算且本人仍可战斗；补盾只保护之后的伤害。本页不猜伤害值。</p>
+      <div class="other-events"><button type="button" id="supply-opportunity">新的供能机会</button><button type="button" id="external-shield">外界实际补盾</button><button type="button" id="next-window">下个共同回合</button></div>
+      <p class="quiet event-note">供能机会使本情境的护持供能通过，再查询P；换回合只更新统计窗口。</p>
+      <p class="quiet fixture-note">同窗多攻仅为观察分路的演示条件；真实图谱的次数限制另行核验。</p>
+
+      <section class="result-section" aria-labelledby="result-title">
+        <div class="section-heading"><h3 id="result-title">本次结果</h3><span id="last-source" class="quiet">尚无输入</span></div>
+        <p id="last-summary" class="result-summary" aria-live="polite">先点击轻击或重击。</p>
+        <dl class="result-ledger"><div><dt>护持</dt><dd id="last-guard">未请求</dd></div><div><dt>可选攻击</dt><dd id="last-attack">未请求</dd></div><div><dt>本次支付</dt><dd id="last-payment">无</dd></div></dl>
+        <p id="commit-total" class="quiet">演示累计提交：护持0次，攻击0次。</p>
+        <p id="snapshot-note" class="snapshot-note"></p>
+      </section>
+
+      <details id="execution-details"><summary>查看、调整本情境的执行条件</summary><p class="quiet">以下是场景给定的核验结果，不是新硬件数值；更改条件本身不会发动阵法。</p><div class="condition-list">
+        <label><input type="checkbox" id="guard-supply" checked>护持供能通过</label>
+        <label><input type="checkbox" id="guard-eligible" checked>护持原资格与峰值通过</label>
+        <label><input type="checkbox" id="guard-commit" checked>护持事务实际提交成功</label>
+        <label><input type="checkbox" id="attack-budget" checked>支付C攻后，实际还能留下C护</label>
+        <label><input type="checkbox" id="shared-peak" checked>本原始事件剩余共享峰值足够攻击</label>
+        <label><input type="checkbox" id="attack-eligible" checked>攻击目标、原费用、冷却与限次通过</label>
+        <label><input type="checkbox" id="attack-commit" checked>攻击事务实际提交成功</label>
+      </div><p class="quiet">护持和后续攻击共用本次原始事件的峰值账本，成功回执不重开额度。攻击提交时再次核验保底预算。</p><button type="button" id="refresh-fixture" class="subtle fixture-button">设定执行资格为通过（演示）</button><p class="quiet">仅调整上面的核验条件，不改P、护盾、观频历史或已付费用；不代表游戏刷新次数。</p></details>
+      <details id="boundary-details"><summary>再看几种边界</summary><div class="boundary-buttons"><button type="button" id="duplicate-hit">重复通知刚才的受袭</button><button type="button" id="toggle-enabled">主动停用</button><button type="button" id="clear-external-shield">情境设为无盾</button></div><p class="quiet">重复通知不再计次；停用清P，同窗重启不补旧事件。设为无盾只改变外部状态，不发送新受袭通知。</p></details>
+    </section>
+  </div>
+
+  <section class="history-section" aria-labelledby="history-title"><div class="section-heading"><h2 id="history-title">最近输入与回执</h2><span class="quiet">最多保留8条 · 每条显示原始身份与入口</span></div><ol id="event-history" class="event-history"><li class="empty">尚无输入。</li></ol></section>
+  <footer>策略演示；图谱费用与输出值不在此定案。C护／C攻表示实际图谱费用，本页不填写正式数值。</footer>
+</main>
+</body>
+</html>

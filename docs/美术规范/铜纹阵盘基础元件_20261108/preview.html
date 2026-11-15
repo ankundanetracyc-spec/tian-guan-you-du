@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>铜纹阵盘 · 基础元件与接线对照</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="preview.css">
+  <script src="preview.js" defer></script>
+</head>
+<body>
+  <main class="sheet">
+    <header class="page-head">
+      <div>
+        <p class="eyebrow">当前为设计对照</p>
+        <h1>铜纹阵盘 · 基础元件与接线</h1>
+        <p class="intro">四件独立原图，按实际占格比例展示。这里只看摆放与接线外观。</p>
+      </div>
+      <figure class="chosen-reference">
+        <a href="../阵盘项目画风对照_20261108/B_墨绘铜纹.png" target="_blank" rel="noopener"><img src="../阵盘项目画风对照_20261108/B_墨绘铜纹.png" alt="用户已选B墨绘铜纹整盘画风参考"></a>
+        <figcaption>已选画风 B</figcaption>
+      </figure>
+    </header>
+
+    <div class="main-layout">
+      <section class="parts-section" aria-labelledby="parts-title">
+        <h2 id="parts-title">四件基础阵材</h2>
+        <p class="section-note">按实际占格比例显示。</p>
+        <div class="parts-gallery">
+          <figure class="part">
+            <div class="part-stage"><img class="one-cell" src="eye_1x1.png" alt="一格方玉印阵眼，四侧铜耳仅用于固定"></div>
+            <figcaption><strong>阵眼</strong><span>1×1 · 无接线口</span></figcaption>
+          </figure>
+          <figure class="part">
+            <div class="part-stage"><img class="two-wide" src="source_2x1.png" alt="两格横向阵源，右侧为供能出口"></div>
+            <figcaption><strong>阵源</strong><span>2×1 · 右侧供能出</span></figcaption>
+          </figure>
+          <figure class="part lower-row">
+            <div class="part-stage"><img class="one-cell" src="sensor_1x1.png" alt="一格感应枢，右侧为信号出口"></div>
+            <figcaption><strong>感应枢</strong><span>1×1 · 右侧信号出</span></figcaption>
+          </figure>
+          <figure class="part lower-row">
+            <div class="part-stage"><img class="two-tall" src="ward_1x2.png" alt="两格竖向护持阵器，上侧接信号，下侧接供能"></div>
+            <figcaption><strong>护持阵器</strong><span>1×2 · 上信号入／下供能入</span></figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="wiring-section" aria-labelledby="wiring-title">
+        <div class="section-heading"><h2 id="wiring-title">接线对照</h2><label class="grid-toggle"><input id="show-grid" type="checkbox">查看格位／接点</label></div>
+        <fieldset class="scene-controls">
+          <legend class="sr-only">接线场景</legend>
+          <label><input type="radio" name="scene" value="complete" checked>完整</label>
+          <label><input type="radio" name="scene" value="signal">断开信号</label>
+          <label><input type="radio" name="scene" value="energy">断开供能</label>
+        </fieldset>
+        <svg id="board-demo" class="board-demo" viewBox="-24 -24 560 560" role="img" aria-label="四乘四护持接线对照：感应在左上，阵眼在第二列第二行，阵源在左下，护持阵器在右侧，信号走上边，供能走下边。"></svg>
+        <div id="scene-status" class="scene-status" aria-live="polite"></div>
+        <p class="demo-caption">中性灰褐衬面对照，非盘底定稿。阵眼的铜耳不作为接点。</p>
+      </section>
+    </div>
+
+    <section class="detail-section" aria-labelledby="details-title">
+      <div class="detail-heading"><h2 id="details-title">接线样式近景</h2><p>朱砂细纹传信号，淡赭金宽纹供能。</p></div>
+      <div class="detail-grid">
+        <figure><svg id="detail-straight" viewBox="0 0 300 104" role="img" aria-label="朱砂信号直线与淡赭金供能直线"></svg><figcaption>直线 · 墨边与浅色干笔</figcaption></figure>
+        <figure><svg id="detail-corner" viewBox="0 0 300 104" role="img" aria-label="两种线路的小圆角，保持各自独立"></svg><figcaption>圆转角 · 保持单层路线</figcaption></figure>
+        <figure><svg id="detail-tee" viewBox="0 0 300 104" role="img" aria-label="只展示供能同源T形分支，不展示信号T形分支"></svg><figcaption>供能同源T · 信号分合须元件</figcaption></figure>
+      </div>
+    </section>
+    <section class="socket-section" aria-labelledby="socket-title">
+      <h2 id="socket-title">接口衔接近景</h2>
+      <div class="socket-grid">
+        <figure><svg id="socket-sensor" viewBox="86 40 68 48" role="img" aria-label="感应枢右侧朱砂信号出口近景"></svg><figcaption>感应枢 · 信号出</figcaption></figure>
+        <figure><svg id="socket-source" viewBox="226 424 56 48" role="img" aria-label="阵源右侧淡赭金供能出口近景"></svg><figcaption>阵源 · 供能出</figcaption></figure>
+        <figure><svg id="socket-wardNorth" viewBox="424 104 48 72" role="img" aria-label="护持阵器北侧信号入口近景"></svg><figcaption>护持阵器 · 信号入</figcaption></figure>
+        <figure><svg id="socket-wardSouth" viewBox="424 336 48 72" role="img" aria-label="护持阵器南侧供能入口近景"></svg><figcaption>护持阵器 · 供能入</figcaption></figure>
+      </div>
+    </section>
+    <footer>设计对照稿</footer>
+  </main>
+</body>
+</html>

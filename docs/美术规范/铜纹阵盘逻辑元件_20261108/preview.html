@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>铜纹阵盘 · 逻辑元件</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="preview.css">
+  <script src="preview.js" defer></script>
+</head>
+<body>
+  <main class="sheet">
+    <header class="page-head">
+      <div><p class="eyebrow">设计对照稿</p><h1>铜纹阵盘 · 五种逻辑元件</h1><p class="intro">把“何时放行、放哪一路”交给阵枢。它们只处理信号，没有供能口。</p></div>
+      <figure class="chosen-reference"><a href="../阵盘项目画风对照_20261108/B_墨绘铜纹.png" target="_blank" rel="noopener"><img src="../阵盘项目画风对照_20261108/B_墨绘铜纹.png" alt="已选墨绘铜纹整体画风参考"></a><figcaption>已选画风 B</figcaption></figure>
+    </header>
+
+    <section id="logic-gallery" class="gallery-section" aria-labelledby="gallery-title">
+      <h2 id="gallery-title">五件阵枢，五种用途</h2><p class="section-note">按真实占格比例显示；下列均为普通元件。</p>
+      <div class="parts-gallery">
+        <figure class="part wide"><div class="part-stage"><img src="counter_2x1.png" class="two-wide" alt="候枢：浅铜托内的玉筹滑尺与扣闩，左入、右格上出"></div><figcaption><div class="part-name"><strong>候枢</strong><span>2×1 · 复杂度2</span></div><p>数够N次才放行</p><small>信号：左入 → 右格上出</small></figcaption></figure>
+        <figure class="part wide"><div class="part-stage"><img src="rhythm_2x1.png" class="two-wide" alt="节律枢：双玉簧与开口节环，左入、右格上出"></div><figcaption><div class="part-name"><strong>节律枢</strong><span>2×1 · 复杂度2</span></div><p>按节拍控制已有信号</p><small>信号：左入 → 右格上出</small></figcaption></figure>
+        <figure class="part"><div class="part-stage"><img src="filter_1x1.png" class="one-cell" alt="鉴脉门：筛选信号的铜玉门枢，左入、右出"></div><figcaption><div class="part-name"><strong>鉴脉门</strong><span>1×1 · 复杂度1</span></div><p>只放符合条件的信号</p><small>信号：左入 → 右出</small></figcaption></figure>
+        <figure class="part"><div class="part-stage"><img src="split_1x1.png" class="one-cell" alt="分脉枢：一路分开为两路，左入、上出及右出"></div><figcaption><div class="part-name"><strong>分脉枢</strong><span>1×1 · 复杂度1</span></div><p>一路分成两路</p><small>信号：左入 → 上／右出</small></figcaption></figure>
+        <figure class="part"><div class="part-stage"><img src="merge_1x1.png" class="one-cell" alt="合脉枢：多路信号汇一处，左入及下入、右出"></div><figcaption><div class="part-name"><strong>合脉枢</strong><span>1×1 · 复杂度1</span></div><p>多路汇一处，同一事件只算一次</p><small>信号：左／下入 → 右出</small></figcaption></figure>
+      </div>
+    </section>
+
+    <section id="logic-examples" class="examples-section" aria-labelledby="examples-title">
+      <div class="examples-heading"><h2 id="examples-title">看一次信号怎样走</h2><label class="guides-toggle"><input type="checkbox" id="show-guides">查看格位／接点</label></div>
+      <div class="examples-grid">
+        <article class="counter-example" aria-labelledby="counter-title">
+          <h3 id="counter-title">候枢：本例N＝3</h3><p class="example-intro">前两次记下，第三次放行，再从零计数。</p>
+          <svg id="counter-diagram" viewBox="0 0 512 256" role="img" aria-label="候枢左侧接收信号，右格上侧发出控制信号"></svg>
+          <div class="counter-controls"><button type="button" id="send-signal">送入一次信号</button><button type="button" id="reset-counter" class="subtle">重置</button><span id="counter-value">已数0／3次</span></div>
+          <p id="counter-status" class="counter-status" aria-live="polite">送入信号，看看候枢如何计次。</p>
+        </article>
+        <article class="branch-example" aria-labelledby="branch-title">
+          <h3 id="branch-title">分出去，再汇到一处</h3><p class="example-intro">任一路都能进入合脉；同一事件绕两路抵达，仍只算一次。</p>
+          <svg id="branch-diagram" viewBox="0 0 640 448" role="img" aria-label="分脉枢从左接收信号，一路直走，一路绕上方进入旋转的合脉枢，最后从下侧输出；没有跨线"></svg>
+          <p class="example-caption">合脉枢顺时针转90°，上／左入、下出。此处只看局部接线关系。</p>
+        </article>
+      </div>
+    </section>
+    <section id="four-grid" class="four-grid-section" aria-labelledby="four-grid-title">
+      <h2 id="four-grid-title">加候枢后的4×4摆法</h2>
+      <div class="four-grid-layout">
+        <svg id="four-grid-diagram" viewBox="-24 -24 560 560" role="img" aria-label="四乘四三候护持摆法：右上竖向候枢，右下感应直接接入；信号沿顶边进入左侧护持阵器，底部阵源独立供能，阵眼仍在第二列第二行。"></svg>
+        <div class="four-grid-notes"><p class="four-grid-lead">先数够三次，再传给护持阵器。</p><ol><li>右侧感应枢，直接接入候枢下口。</li><li>候枢从左口放行，信号沿盘上边进入护持阵器。</li><li>底部阵源通过供能线，接入阵器下口。</li></ol><p class="four-grid-complexity">复杂度4／4</p><p class="example-caption">阵眼固定在第二列、第二行。这里展示摆法，不演算护持效果。</p></div>
+      </div>
+    </section>
+    <footer>设计对照稿 · 元件原图保持完整</footer>
+  </main>
+</body>
+</html>

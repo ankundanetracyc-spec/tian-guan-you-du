@@ -1,0 +1,88 @@
+Godot Engine v4.7.2.stable.mono.custom_build.ed1daf0bf (2026-08-17 01:18:38 UTC) - https://godotengine.org
+
+BOARD_PREPARATION_OK 使用预装配独立APPDATA
+BOARD_PREPARATION_OK 未打开正式旅程
+BOARD_PREPARATION_OK 无玄枢心法不生造周天
+BOARD_PREPARATION_OK 夹具仅向内存行囊放两颗真实战斗丹药
+BOARD_PREPARATION_OK 旧档草稿不提前保存或共享运行盘
+BOARD_PREPARATION_OK 真实已学招式与行囊丹药可用
+BOARD_PREPARATION_OK 显式设置出战预装配
+BOARD_PREPARATION_OK 设置预装配逐项复制且不改运行盘
+BOARD_PREPARATION_OK 拒绝空名称
+BOARD_PREPARATION_OK 名称去首尾空白后保存
+BOARD_PREPARATION_OK 方案使用真实保存名称
+BOARD_PREPARATION_OK 另存拒绝重名
+BOARD_PREPARATION_OK 显式同名覆盖
+BOARD_PREPARATION_OK 允许命名新空盘
+BOARD_PREPARATION_OK 不限固定套数 0
+BOARD_PREPARATION_OK 不限固定套数 1
+BOARD_PREPARATION_OK 不限固定套数 2
+BOARD_PREPARATION_OK 不限固定套数 3
+BOARD_PREPARATION_OK 不限固定套数 4
+BOARD_PREPARATION_OK 不限固定套数 5
+BOARD_PREPARATION_OK 不限固定套数 6
+BOARD_PREPARATION_OK 不限固定套数 7
+BOARD_PREPARATION_OK 不限固定套数 8
+BOARD_PREPARATION_OK 不限固定套数 9
+BOARD_PREPARATION_OK 不限固定套数 10
+BOARD_PREPARATION_OK 不限固定套数 11
+BOARD_PREPARATION_OK 命名库超过固定三套仍完整
+BOARD_PREPARATION_OK 读取方案逐项副本
+BOARD_PREPARATION_OK 改名拒绝已有名称
+BOARD_PREPARATION_OK 原名确认成功且无改动
+BOARD_PREPARATION_OK 改名保留布局
+BOARD_PREPARATION_OK 删除命名方案
+BOARD_PREPARATION_OK 重复删除不改变库
+BOARD_PREPARATION_OK 命名CRUD不暗改默认主辅修资源库存
+BOARD_PREPARATION_OK 缺真实学习来源整盘拒绝
+BOARD_PREPARATION_OK 缺项不覆盖预装配
+BOARD_PREPARATION_OK 丹药缺项显示真实需有缺数量
+BOARD_PREPARATION_OK 运行空瓶不转换成局外药品
+BOARD_PREPARATION_OK 未开放盘形不按总格数套用
+BOARD_PREPARATION_OK 原几何拒绝占格重叠
+BOARD_PREPARATION_OK 合法方案只返回草稿副本
+BOARD_PREPARATION_OK 预览及载入不复制耗材或回资源
+BOARD_PREPARATION_OK 真实玄枢心法沿原指示物校验
+BOARD_PREPARATION_OK 出战快照读取显式预装配
+BOARD_PREPARATION_OK 快照包含角色命名库副本
+BOARD_PREPARATION_OK BattleEntityData.copy_from逐项深拷贝
+BOARD_PREPARATION_OK 局内读取本人物方案库
+BOARD_PREPARATION_OK 局内拒绝写局外命名和默认
+BOARD_PREPARATION_OK 克隆通过真实服丹流程消耗一颗
+BOARD_PREPARATION_OK 战斗快照保留运行空瓶
+BOARD_PREPARATION_OK 战后回传不回写局外预装配命名库
+BOARD_PREPARATION_OK 运行空瓶与真实消费继续沿原回传
+BOARD_PREPARATION_OK 下场用布局意图但不补库存
+BOARD_PREPARATION_OK 隔离正式存档保存新字段
+BOARD_PREPARATION_OK 存档重载保留默认与完整命名库
+BOARD_PREPARATION_OK 新字段与旧运行空瓶独立持久化
+BOARD_PREPARATION_OK 正式后台Capture/Materialize保留每个方案名称
+BOARD_PREPARATION_OK 后台重建的显式名称与旧ResourceName同步
+BOARD_PREPARATION_OK 后台重建保留默认布局
+BOARD_PREPARATION_OK 后台重建后按原名称改名
+BOARD_PREPARATION_OK 后台重建后覆盖不增加重复方案
+BOARD_PREPARATION_OK 后台重建后按新名称删除
+BOARD_PREPARATION_OK 后台副本CRUD不写活跃人物命名库
+BOARD_PREPARATION_OK 旧只设ResourceName也经显式导出名称保存
+BOARD_PREPARATION_OK 真实冷却招式可设预装配
+BOARD_PREPARATION_OK 局内来源为角色命名方案
+BOARD_PREPARATION_OK 实际人类场景进入原配招边界
+BOARD_PREPARATION_OK 实际入场使用预装配副本
+BOARD_PREPARATION_OK 局内选方案只替换草稿不提交或补资源
+BOARD_PREPARATION_OK 局内库存缺项整盘保留原草稿
+BOARD_PREPARATION_OK 原真实账本记录复命成功及冷却
+BOARD_PREPARATION_OK 切方案及新摆放ID不刷新原冷却
+BOARD_PREPARATION_OK 确认沿原提交与回合推进但不重置冷却到期轮
+BOARD_PREPARATION_OK 局内编辑提交不触及世界配置
+BOARD_PREPARATION_OK 非整理时禁止即时载入
+BOARD_PREPARATION_OK 完整验收未使用正式旅程
+BOARD_PREPARATION_PASS 76 checks
+Fatal error. System.AccessViolationException: Attempted to read or write protected memory. This is often an indication that other memory is corrupt.
+   at Godot.NativeInterop.NativeFuncs.godotsharp_array_destroy(Godot.NativeInterop.godot_array ByRef)
+   at Godot.NativeInterop.godot_array.Dispose()
+   at Godot.Collections.Array.Dispose(Boolean)
+   at Godot.Collections.Array.Finalize()
+WARNING: 68 ObjectDB instances were leaked at exit (run with `--verbose` for details).
+   at: ObjectDB::cleanup (core\object\object.cpp:2536)
+ERROR: 16 resources still in use at exit (run with --verbose for details).
+   at: ResourceCache::clear (core\io\resource.cpp:822)
