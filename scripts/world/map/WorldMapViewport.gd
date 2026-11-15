@@ -81,6 +81,7 @@ var _world_map_font: Font
 
 func _ready() -> void:
 	mouse_filter = Control.MOUSE_FILTER_PASS
+	visibility_changed.connect(func() -> void: panning = false)
 	texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR_WITH_MIPMAPS
 	map_root = $MapRoot
 	state_layers = $MapRoot/BaiChuanMapLayers
@@ -164,7 +165,7 @@ func _build_overlay() -> void:
 	overlay.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	overlay_layer.add_child(overlay)
 	title_label = _label("百川区域 · 行旅图", 24, Color("f1dfad"))
-	help_label = _label("滚轮缩放　右键/中键拖动　单击选中后查看　双击沿路启程", 15, Color("e4d5b4"))
+	help_label = _label("滚轮缩放　中键拖动　单击选中后查看　双击沿路启程", 15, Color("e4d5b4"))
 	hover_label = _label("", 16, Color("f1dfad"))
 	hover_label.visible = false
 	legend_label = _label("百川区域行旅图　·　单击选中并查看　·　双击沿最短道路启程", 13, Color("cfc3a8"))
@@ -179,7 +180,6 @@ func _build_overlay() -> void:
 	enter_button = _button("进入", 15)
 	enter_button.pressed.connect(_on_enter_button_pressed)
 	enter_button.visible = false
-	enter_button.tooltip_text = "进入当前节点的地点内部"
 	view_button = _button("查看", 15)
 	view_button.pressed.connect(_on_view_button_pressed)
 	view_button.visible = false
@@ -723,7 +723,7 @@ func _apply_terrain_visibility() -> void:
 	if state_layers == null:
 		return
 	for child in state_layers.get_children():
-		if child is not Sprite2D:
+		if not child is Sprite2D:
 			continue
 		var node_name := str(child.name)
 		if node_name.begins_with("Tile") or node_name == "LandBase" or node_name == "Terrain":
@@ -884,7 +884,12 @@ func _on_location_unhovered(id: String) -> void:
 	if hover_label.text == "地点：" + str(location_nodes.get(id).node_data.node_name if location_nodes.get(id) != null else ""):
 		hover_label.visible = false
 
-func _input(event: InputEvent) -> void:
+func _gui_input(event: InputEvent) -> void:
+	# Hidden compatibility maps must not intercept another page's wheel.
+	# GUI dispatch also gives overlaid lists and panels priority over this map.
+	if not is_visible_in_tree():
+		panning = false
+		return
 	if event is InputEventMouseButton:
 		var mouse := event as InputEventMouseButton
 		if mouse.button_index == MOUSE_BUTTON_WHEEL_UP and mouse.pressed:
@@ -893,7 +898,7 @@ func _input(event: InputEvent) -> void:
 		elif mouse.button_index == MOUSE_BUTTON_WHEEL_DOWN and mouse.pressed:
 			_apply_zoom(1.0 / zoom_step, mouse.position)
 			get_viewport().set_input_as_handled()
-		elif mouse.button_index == MOUSE_BUTTON_RIGHT or mouse.button_index == MOUSE_BUTTON_MIDDLE:
+		elif mouse.button_index == MOUSE_BUTTON_MIDDLE:
 			panning = mouse.pressed
 			pan_button = mouse.button_index
 			get_viewport().set_input_as_handled()
@@ -1141,7 +1146,7 @@ func refresh_map() -> void:
 	_rebuild_map()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is not InputEventMouseButton:
+	if not is_visible_in_tree() or not event is InputEventMouseButton:
 		return
 	var mouse := event as InputEventMouseButton
 	if mouse.button_index != MOUSE_BUTTON_LEFT or not mouse.pressed:

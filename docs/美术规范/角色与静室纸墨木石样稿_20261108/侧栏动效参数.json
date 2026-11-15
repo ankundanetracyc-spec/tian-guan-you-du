@@ -1,0 +1,77 @@
+{
+  "revision": 5,
+  "scope": "角色与静室独立样稿侧栏；未接正式游戏",
+  "selected": {
+    "paperTranslateX": 18,
+    "bindingOpacity": 1
+  },
+  "unselected": {
+    "paperTranslateX": 0,
+    "bindingOpacity": 0
+  },
+  "durationMs": 220,
+  "bindingFadeMs": 140,
+  "easing": "cubic-bezier(.22,.61,.36,1)",
+  "reducedMotion": "立即切换到正确终态",
+  "material": "assets/按钮分型_v4/按钮_侧栏分页_v4.png",
+  "sourceBitmapChanged": false,
+  "parts": {
+    "paper": {
+      "family": "navigation",
+      "file": "assets/按钮分型_v4/按钮_侧栏分页_v4.png",
+      "size": [
+        2172,
+        724
+      ],
+      "bounds": [
+        253,
+        110,
+        1853,
+        502
+      ],
+      "slices": [
+        85,
+        85,
+        90,
+        80
+      ],
+      "rendered": [
+        8,
+        8,
+        10,
+        8
+      ],
+      "alphaFloor": 8,
+      "part": "paper"
+    },
+    "binding": {
+      "family": "navigation",
+      "file": "assets/按钮分型_v4/按钮_侧栏分页_v4.png",
+      "size": [
+        2172,
+        724
+      ],
+      "bounds": [
+        68,
+        110,
+        184,
+        502
+      ],
+      "slices": [
+        30,
+        85,
+        30,
+        80
+      ],
+      "rendered": [
+        3,
+        8,
+        3,
+        8
+      ],
+      "alphaFloor": 8,
+      "part": "binding"
+    }
+  },
+  "rendering": "分页时保留侧栏节点，纸面和文字一起平移，装订边在下层显露；正文独立更新，不整体重建侧栏"
+}

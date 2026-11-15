@@ -1,0 +1,167 @@
+{
+  "date": "2026-11-07",
+  "status": "implemented in game, accepted v5 appearance",
+  "runtimeSkinChanged": true,
+  "capacity": 200,
+  "designCell": 36,
+  "allRegionCoordinatesKept": true,
+  "regions": [
+    {
+      "id": "chest",
+      "columns": 8,
+      "rows": 5,
+      "x": 898,
+      "y": 312
+    },
+    {
+      "id": "sleeve-left",
+      "columns": 4,
+      "rows": 5,
+      "x": 606,
+      "y": 536
+    },
+    {
+      "id": "sleeve-right",
+      "columns": 4,
+      "rows": 5,
+      "x": 1298,
+      "y": 536
+    },
+    {
+      "id": "waist",
+      "columns": 8,
+      "rows": 5,
+      "x": 898,
+      "y": 756
+    },
+    {
+      "id": "back",
+      "columns": 8,
+      "rows": 10,
+      "x": 1526,
+      "y": 432
+    }
+  ],
+  "panelOrigin": [
+    458,
+    124
+  ],
+  "panelSize": [
+    1416,
+    906
+  ],
+  "gridSurfaceOrigin": [
+    486,
+    258
+  ],
+  "cellTint": [
+    "faf5e84d",
+    "f5f0e33d"
+  ],
+  "gridDarkLineAlpha": 0.35,
+  "gridLightLineAlpha": 0.3,
+  "material": "../../../textures/ui/inventory_material_20261107/garment_inventory_panel_v5.png",
+  "materialSize": [
+    1416,
+    906
+  ],
+  "layoutSourceSha256": "951f055b8cb354995f70f823fa3e3bfee6173b21a6b4874309f2c94bb9b7c0c3",
+  "itemResourcesChanged": false,
+  "savedPlacementsChanged": false,
+  "storageInteriorSizeChanged": false,
+  "storageInteriorMaterialChanged": false,
+  "receiptMaterialChanged": false,
+  "marketMaterialChanged": false,
+  "build": {
+    "passed": true,
+    "warnings": 0,
+    "errors": 0
+  },
+  "checks": [
+    {
+      "scene": "InventoryNativeUiSmoke",
+      "mode": "window",
+      "passed": true,
+      "count": 30
+    },
+    {
+      "scene": "StorageRingInventorySmoke",
+      "mode": "window",
+      "passed": true,
+      "count": 80
+    },
+    {
+      "scene": "InventoryJourneyEntrySmoke",
+      "mode": "headless",
+      "passed": true,
+      "count": 26
+    }
+  ],
+  "passedChecks": 136,
+  "nativeScreenshots": 11,
+  "viewports": [
+    [
+      1280,
+      720
+    ],
+    [
+      1920,
+      1080
+    ],
+    [
+      2560,
+      1440
+    ]
+  ],
+  "realPlayerSavesWritten": false,
+  "testSaveRoot": "output/inventory_lining_v5_20261107/lining_v5_appdata",
+  "testMaintenance": "Replace outdated nine-category expectation with current catalog length; gameplay unchanged",
+  "initialImportFailure": "First window attempt started before new background import completed; rerun passed after import",
+  "knownRuntimeWarning": "existing 卸力.tres UID falls back to text path",
+  "captureSizes": {
+    "浅绢接入_v5_实机/储物空间/01_行囊尺度1920.png": [
+      1920,
+      1080
+    ],
+    "浅绢接入_v5_实机/储物空间/02_戒指矩形收纳1920.png": [
+      1920,
+      1080
+    ],
+    "浅绢接入_v5_实机/储物空间/03_戒指矩形收纳1280.png": [
+      1280,
+      720
+    ],
+    "浅绢接入_v5_实机/储物空间/04_行囊尺度1280.png": [
+      1280,
+      720
+    ],
+    "浅绢接入_v5_实机/储物空间/05_整屏戒指1920.png": [
+      1920,
+      1080
+    ],
+    "浅绢接入_v5_实机/储物空间/06_整屏戒指1280.png": [
+      1280,
+      720
+    ],
+    "浅绢接入_v5_实机/储物空间/07_戒指暗罩1920.png": [
+      1920,
+      1080
+    ],
+    "浅绢接入_v5_实机/储物空间/08_戒指暗罩1280.png": [
+      1280,
+      720
+    ],
+    "浅绢接入_v5_实机/行囊/01_原生行囊旋转拖动.png": [
+      2560,
+      1440
+    ],
+    "浅绢接入_v5_实机/行囊/02_原生行囊空间与清册.png": [
+      2560,
+      1440
+    ],
+    "浅绢接入_v5_实机/行囊/03_原生行囊1280.png": [
+      1280,
+      720
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="PillContainerItemData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/PillContainerItemData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+definition_id = &"pill_container_empty_porcelain"
+entity_name = "瓷瓶外观模板"
+description = "定义丹药共用的瓷瓶图标与装瓶动画外观；丹药按颗计数并各占1容量。本定义不作为丹药收纳容器。"
+icon_path = "res://textures/items/inventory_density_20261029/pill_container_empty_porcelain.png"
+item_category = "器具"
+item_subcategory = "瓷瓶"
+grade_value = 0
+storage_volume = 1
+can_stack = true
+max_stack = 999
+material_id = "porcelain"
+pill_capacity = 0
+animation_from_closed_icon = true
+animation_mouth_uv = Vector2(0.5, 0.198)
+animation_stopper_region_uv = Rect2(0.2734375, 0.0546875, 0.453125, 0.13671875)
+animation_body_cutoff_uv = 0.19140625
+inventory_width = 1
+inventory_height = 2
+inventory_can_rotate = true

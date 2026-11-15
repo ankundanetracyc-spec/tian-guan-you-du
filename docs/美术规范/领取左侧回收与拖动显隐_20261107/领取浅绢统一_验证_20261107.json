@@ -1,0 +1,209 @@
+{
+  "date": "2026-11-07",
+  "implemented": true,
+  "scope": "Receipt right inventory uses the normal inventory v5 pale-silk style",
+  "sharedStyle": "csharp/panel/InventoryGarmentStyle.cs",
+  "sharedTexture": "textures/ui/inventory_material_20261107/garment_inventory_panel_v5.png",
+  "textureSize": [
+    1416,
+    906
+  ],
+  "receiptPanelDesignRect": [
+    504,
+    124,
+    1370,
+    906
+  ],
+  "receiptSurfaceDesignOrigin": [
+    594,
+    244
+  ],
+  "capacity": 200,
+  "designCell": 36,
+  "regionPositionsChanged": false,
+  "receiptRegions": {
+    "chest": {
+      "center": [
+        436,
+        141
+      ],
+      "columns": 8,
+      "rows": 5,
+      "globalDesignRect": [
+        886,
+        295,
+        288,
+        180
+      ]
+    },
+    "sleeve-left": {
+      "center": [
+        72,
+        365
+      ],
+      "columns": 4,
+      "rows": 5,
+      "globalDesignRect": [
+        594,
+        519,
+        144,
+        180
+      ]
+    },
+    "sleeve-right": {
+      "center": [
+        764,
+        365
+      ],
+      "columns": 4,
+      "rows": 5,
+      "globalDesignRect": [
+        1286,
+        519,
+        144,
+        180
+      ]
+    },
+    "waist": {
+      "center": [
+        436,
+        585
+      ],
+      "columns": 8,
+      "rows": 5,
+      "globalDesignRect": [
+        886,
+        739,
+        288,
+        180
+      ]
+    },
+    "back": {
+      "center": [
+        1064,
+        353
+      ],
+      "columns": 8,
+      "rows": 10,
+      "globalDesignRect": [
+        1514,
+        417,
+        288,
+        360
+      ]
+    }
+  },
+  "backgroundAcceptsMouseInput": false,
+  "singlePendingList": true,
+  "sameDefinitionMergedIntoOneRow": true,
+  "restoreOwnedFirst": true,
+  "originsKeptForSettlementOnly": true,
+  "autoPlaceRuleChanged": false,
+  "inventoryModelChanged": false,
+  "build": {
+    "passed": true,
+    "warnings": 0,
+    "errors": 0
+  },
+  "checks": [
+    {
+      "case": "claim",
+      "checks": 83
+    },
+    {
+      "case": "claim_window",
+      "checks": 89
+    },
+    {
+      "case": "inventory_window",
+      "checks": 34
+    },
+    {
+      "case": "ring_window",
+      "checks": 80
+    },
+    {
+      "case": "manual",
+      "checks": 63
+    }
+  ],
+  "passedChecks": 349,
+  "realPlayerSavesWritten": false,
+  "nativeScreenshotCount": 17,
+  "captureSizes": {
+    "浅绢统一_实机/储物空间/01_行囊尺度1920.png": [
+      1920,
+      1080
+    ],
+    "浅绢统一_实机/储物空间/02_戒指矩形收纳1920.png": [
+      1920,
+      1080
+    ],
+    "浅绢统一_实机/储物空间/03_戒指矩形收纳1280.png": [
+      1280,
+      720
+    ],
+    "浅绢统一_实机/储物空间/04_行囊尺度1280.png": [
+      1280,
+      720
+    ],
+    "浅绢统一_实机/储物空间/05_整屏戒指1920.png": [
+      1920,
+      1080
+    ],
+    "浅绢统一_实机/储物空间/06_整屏戒指1280.png": [
+      1280,
+      720
+    ],
+    "浅绢统一_实机/储物空间/07_戒指暗罩1920.png": [
+      1920,
+      1080
+    ],
+    "浅绢统一_实机/储物空间/08_戒指暗罩1280.png": [
+      1280,
+      720
+    ],
+    "浅绢统一_实机/行囊/01_原生行囊旋转拖动.png": [
+      1920,
+      1080
+    ],
+    "浅绢统一_实机/行囊/02_原生行囊空间与清册.png": [
+      1920,
+      1080
+    ],
+    "浅绢统一_实机/行囊/03_原生行囊1280.png": [
+      1280,
+      720
+    ],
+    "浅绢统一_实机/领取/01_领取收纳_1920.png": [
+      1920,
+      1080
+    ],
+    "浅绢统一_实机/领取/02_领取收纳_完整.png": [
+      1920,
+      1080
+    ],
+    "浅绢统一_实机/领取/03_领取收纳_1280.png": [
+      1280,
+      720
+    ],
+    "浅绢统一_实机/领取/04_领取收纳_拖动预览.png": [
+      1280,
+      720
+    ],
+    "浅绢统一_实机/领取/04_领取收纳_旋转.png": [
+      1280,
+      720
+    ],
+    "浅绢统一_实机/领取/05_领取_移出后可拖回.png": [
+      1920,
+      1080
+    ]
+  },
+  "visualReview": [
+    "receipt large and 1280 silk, all regions and legible grid edges",
+    "receipt drag preview and return to the single pending list",
+    "normal inventory matching silk and unchanged layout",
+    "storage modal underlay"
+  ]
+}

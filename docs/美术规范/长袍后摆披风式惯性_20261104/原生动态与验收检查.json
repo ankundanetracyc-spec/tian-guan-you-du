@@ -1,0 +1,591 @@
+{
+  "current_target": "original_robed_shape_and_shoes_with_cape_like_rear_hem",
+  "source_capture": "tools\\action_battle_test\\output\\cape_like_robe_open_full",
+  "source_sha256": {
+    "capture_cape_like_robe.gd": "a4e64cc2d3d45ac2bd3e510018f6701fcaff51cb3f75750026d5484a8f21f31a",
+    "capture_leg_supported_robe.gd": "0cf726094ca0a0f81084640fcd255d7acf8284cf5c42e1e2365fd3a803689642",
+    "cape_like_robe_skin.gd": "06fd1a5c73830a5f20164c28bac62642adafc342c9362e4622bf0dda440b19fc"
+  },
+  "simulated_frames": 300,
+  "seconds": 10,
+  "native_comparison_resolution": [
+    880,
+    600
+  ],
+  "native_detail_resolution": [
+    440,
+    500
+  ],
+  "full_capture": true,
+  "mirrored_physics_probe_300_frames_checked": true,
+  "all_facing_correct": true,
+  "mirror_check_scope": "Supplemental open-leg rear-robe/leg physics probe predates the final arm-amplitude coordination; final full capture itself includes both facings.",
+  "all_frames_two_complete_leg_chains_and_visible_leg_meshes": true,
+  "natural_legs_outside_robe_allowed": true,
+  "standing_comparison": {
+    "baseline": "approved_v21",
+    "native_size": [
+      440,
+      500
+    ],
+    "max_outline_row_difference_px": 0,
+    "mean_outline_row_difference_px": 0,
+    "body_and_leg_joint_position_error": 0.0,
+    "standing_shoes_and_ground_pixels_identical": true,
+    "edge_tolerance_reason": "Original split panels versus the new hanging rear-robe mesh."
+  },
+  "actual_speed_gait_comparison": {
+    "sample_slow": {
+      "actual_speed": 114.001457214355,
+      "mean_cadence_hz": 1.3606172665912253,
+      "observed_phase_cycles_per_second": 1.3606172665912273,
+      "stride_half": 18.484938132729816,
+      "lift": 9.662808736790002,
+      "window_frames": [
+        33,
+        53
+      ],
+      "mean_arm_swing_scale": 0.8402244605786275
+    },
+    "sample_fast": {
+      "actual_speed": 170.998519897461,
+      "mean_cadence_hz": 1.57542012873036,
+      "observed_phase_cycles_per_second": 1.5754201287303629,
+      "stride_half": 20.203361029842895,
+      "lift": 10.552763276543576,
+      "window_frames": [
+        75,
+        95
+      ],
+      "mean_arm_swing_scale": 0.9183345922655858
+    },
+    "character_slow": {
+      "actual_speed": 234.997543334961,
+      "mean_cadence_hz": 1.7999877031534948,
+      "observed_phase_cycles_per_second": 1.7999877031534963,
+      "stride_half": 21.999901625227942,
+      "lift": 11.499947738428896,
+      "window_frames": [
+        117,
+        137
+      ],
+      "mean_arm_swing_scale": 0.9999955284194524
+    },
+    "character_fast": {
+      "actual_speed": 352.499969482422,
+      "mean_cadence_hz": 2.183153742616912,
+      "observed_phase_cycles_per_second": 2.1831537426169136,
+      "stride_half": 25.065229940935282,
+      "lift": 13.145921702422704,
+      "window_frames": [
+        159,
+        179
+      ],
+      "mean_arm_swing_scale": 1.1393286336788757
+    }
+  },
+  "stop_release_samples": [
+    {
+      "frame": 204,
+      "angles": [
+        0.0950348898768425,
+        0.111723184585571,
+        0.0813636481761932
+      ],
+      "angular_velocity": [
+        -0.701959669589996,
+        -1.04664778709412,
+        -1.16039967536926
+      ],
+      "angle_norm": 0.16773116440418726
+    },
+    {
+      "frame": 205,
+      "angles": [
+        0.0710170939564705,
+        0.0778077766299248,
+        0.0454276353120804
+      ],
+      "angular_velocity": [
+        -0.722743153572083,
+        -0.983877539634705,
+        -1.00662004947662
+      ],
+      "angle_norm": 0.11472204578093004
+    },
+    {
+      "frame": 207,
+      "angles": [
+        0.0269688051193953,
+        0.0213711932301521,
+        -0.00799144245684147
+      ],
+      "angular_velocity": [
+        -0.577540099620819,
+        -0.704265654087067,
+        -0.612221658229828
+      ],
+      "angle_norm": 0.03532573427671999
+    },
+    {
+      "frame": 210,
+      "angles": [
+        -0.0118977939710021,
+        -0.0233154371380806,
+        -0.0402623116970062
+      ],
+      "angular_velocity": [
+        -0.21538545191288,
+        -0.225453689694405,
+        -0.0915010571479797
+      ],
+      "angle_norm": 0.04802312831858296
+    },
+    {
+      "frame": 215,
+      "angles": [
+        -0.0143587738275528,
+        -0.0216003153473139,
+        -0.0217854604125023
+      ],
+      "angular_velocity": [
+        0.0935546606779099,
+        0.132992342114449,
+        0.191875264048576
+      ],
+      "angle_norm": 0.03387261865163254
+    },
+    {
+      "frame": 216,
+      "angles": [
+        -0.0143587738275528,
+        -0.0216003153473139,
+        -0.0217854604125023
+      ],
+      "angular_velocity": [
+        0.0935546606779099,
+        0.132992342114449,
+        0.191875264048576
+      ],
+      "angle_norm": 0.03387261865163254
+    },
+    {
+      "frame": 227,
+      "angles": [
+        -0.0143587738275528,
+        -0.0216003153473139,
+        -0.0217854604125023
+      ],
+      "angular_velocity": [
+        0.0935546606779099,
+        0.132992342114449,
+        0.191875264048576
+      ],
+      "angle_norm": 0.03387261865163254
+    },
+    {
+      "frame": 228,
+      "angles": [
+        -0.0110681829974055,
+        -0.0169983692467213,
+        -0.0155363455414772
+      ],
+      "angular_velocity": [
+        0.100834533572197,
+        0.139834374189377,
+        0.182144373655319
+      ],
+      "angle_norm": 0.02555048462742175
+    },
+    {
+      "frame": 234,
+      "angles": [
+        0.00217665499076247,
+        0.0021262604277581,
+        0.00534052588045597
+      ],
+      "angular_velocity": [
+        0.020433496683836,
+        0.0379436053335667,
+        0.0276560485363007
+      ],
+      "angle_norm": 0.006146545943477624
+    },
+    {
+      "frame": 246,
+      "angles": [
+        -0.000348740082699806,
+        2.81408188129717e-06,
+        -0.000289821880869567
+      ],
+      "angular_velocity": [
+        -0.00167005695402622,
+        -0.00635140156373382,
+        -0.00831982679665089
+      ],
+      "angle_norm": 0.0004534581424663975
+    },
+    {
+      "frame": 270,
+      "angles": [
+        -7.25801965018036e-06,
+        1.73231783264782e-05,
+        5.0019945774693e-05
+      ],
+      "angular_velocity": [
+        3.12689712700376e-06,
+        -0.00012024529860355,
+        -0.000289457850158215
+      ],
+      "angle_norm": 5.3430013399554715e-05
+    },
+    {
+      "frame": 299,
+      "angles": [
+        -1.76781060901021e-08,
+        3.37428531338446e-07,
+        1.23107304261794e-06
+      ],
+      "angular_velocity": [
+        5.21620165727654e-07,
+        -2.32327738558524e-06,
+        -2.73940167971887e-06
+      ],
+      "angle_norm": 1.2766014904647205e-06
+    }
+  ],
+  "double_tap_fast_step_and_stamina": {
+    "validated": true,
+    "base_speeds_unchanged": [
+      114,
+      235
+    ],
+    "multiplier": 1.5,
+    "input_source": "Real double_tap_fast_step.feed_key press/release state",
+    "fast_seconds": 3.5999999999999903,
+    "stamina_rate_per_second": 0.5,
+    "stamina_spent_in_two_uninterrupted_fast_stages": [
+      0.7,
+      1.1
+    ],
+    "first_fast_frame_stamina": 5.98333333333333,
+    "hud_fraction_matches_actual_stamina_all_frames": true,
+    "hud_and_stamina_samples": [
+      {
+        "frame": 0,
+        "stamina": 6.0,
+        "hud_cells": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "frame": 53,
+        "stamina": 6.0,
+        "hud_cells": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "frame": 54,
+        "stamina": 5.98333333333333,
+        "hud_cells": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.983333333333333
+        ]
+      },
+      {
+        "frame": 55,
+        "stamina": 5.96666666666667,
+        "hud_cells": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.966666666666667
+        ]
+      },
+      {
+        "frame": 84,
+        "stamina": 5.48333333333334,
+        "hud_cells": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.483333333333335
+        ]
+      },
+      {
+        "frame": 95,
+        "stamina": 5.3,
+        "hud_cells": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.300000000000002
+        ]
+      },
+      {
+        "frame": 138,
+        "stamina": 5.28333333333334,
+        "hud_cells": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.283333333333336
+        ]
+      },
+      {
+        "frame": 168,
+        "stamina": 4.78333333333334,
+        "hud_cells": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.783333333333338,
+          0.0
+        ]
+      },
+      {
+        "frame": 203,
+        "stamina": 4.20000000000001,
+        "hud_cells": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.200000000000006,
+          0.0
+        ]
+      },
+      {
+        "frame": 204,
+        "stamina": 4.20000000000001,
+        "hud_cells": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.200000000000006,
+          0.0
+        ]
+      },
+      {
+        "frame": 215,
+        "stamina": 4.20000000000001,
+        "hud_cells": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.200000000000006,
+          0.0
+        ]
+      },
+      {
+        "frame": 228,
+        "stamina": 4.20000000000001,
+        "hud_cells": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          0.200000000000006,
+          0.0
+        ]
+      },
+      {
+        "frame": 299,
+        "stamina": 6.0,
+        "hud_cells": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      }
+    ],
+    "input_events": [
+      {
+        "frame": 12,
+        "events": [
+          {
+            "key": 68,
+            "pressed": true,
+            "seconds": 0.4
+          }
+        ]
+      },
+      {
+        "frame": 54,
+        "events": [
+          {
+            "key": 68,
+            "pressed": false,
+            "seconds": 1.59
+          },
+          {
+            "key": 68,
+            "pressed": true,
+            "seconds": 1.6
+          },
+          {
+            "key": 68,
+            "pressed": false,
+            "seconds": 1.7
+          },
+          {
+            "key": 68,
+            "pressed": true,
+            "seconds": 1.8
+          }
+        ]
+      },
+      {
+        "frame": 96,
+        "events": [
+          {
+            "key": 68,
+            "pressed": false,
+            "seconds": 3.2
+          },
+          {
+            "key": 68,
+            "pressed": true,
+            "seconds": 3.2
+          }
+        ]
+      },
+      {
+        "frame": 138,
+        "events": [
+          {
+            "key": 68,
+            "pressed": false,
+            "seconds": 4.39
+          },
+          {
+            "key": 68,
+            "pressed": true,
+            "seconds": 4.4
+          },
+          {
+            "key": 68,
+            "pressed": false,
+            "seconds": 4.5
+          },
+          {
+            "key": 68,
+            "pressed": true,
+            "seconds": 4.6
+          }
+        ]
+      },
+      {
+        "frame": 180,
+        "events": [
+          {
+            "key": 68,
+            "pressed": false,
+            "seconds": 5.78
+          },
+          {
+            "key": 65,
+            "pressed": false,
+            "seconds": 5.79
+          },
+          {
+            "key": 65,
+            "pressed": true,
+            "seconds": 5.8
+          },
+          {
+            "key": 65,
+            "pressed": false,
+            "seconds": 5.9
+          },
+          {
+            "key": 65,
+            "pressed": true,
+            "seconds": 6.0
+          }
+        ]
+      },
+      {
+        "frame": 204,
+        "events": [
+          {
+            "key": 65,
+            "pressed": false,
+            "seconds": 6.8
+          }
+        ]
+      }
+    ]
+  },
+  "pause_12_frames_simulation_and_phase_frozen": true,
+  "cloth_lowest_y_range": [
+    -13.271107673645,
+    -6.25243091583252
+  ],
+  "native_pngs_repainted": false,
+  "scope": "Lightweight 2D hanging rear-robe inertia with actual speed and acceleration; no full 3D cloth self-collision claim.",
+  "artifacts": {
+    "两种基准慢步与150%快步_四个原生相位.png": 163779,
+    "原生同输入对照_原版静站与新袍.png": 71092,
+    "原生同输入对照_回落中段.png": 79765,
+    "原生同输入对照_回落稳定.png": 74467,
+    "原生同输入对照_急停.png": 107280,
+    "原生同输入对照_样例快步171.png": 116376,
+    "原生同输入对照_样例慢步114.png": 111784,
+    "原生同输入对照_角色快步352.5.png": 114959,
+    "原生同输入对照_角色慢步235.png": 116531,
+    "原生同输入对照_转向甩摆.png": 120688,
+    "实际战场_原版静站与新袍.png": 918922,
+    "实际战场_回落中段.png": 778106,
+    "实际战场_回落稳定.png": 777489,
+    "实际战场_急停.png": 781442,
+    "实际战场_样例快步171.png": 892363,
+    "实际战场_样例慢步114.png": 915769,
+    "实际战场_角色快步352.5.png": 797049,
+    "实际战场_角色慢步235.png": 841551,
+    "实际战场_转向甩摆.png": 787896,
+    "急停延续与回落_六相位.png": 213166,
+    "转向后摆甩动_五相位.png": 210612,
+    "长袍后摆垂坠与惯性_原生10秒.gif": 3272067
+  },
+  "independent_smoke": {
+    "passed": true,
+    "checks": 20,
+    "maximum_phase_error": 0.0,
+    "settled_angles": 1.23868062473775e-08,
+    "settled_angular_speed": 1.6343371100902e-07
+  },
+  "arm_coordination_smoke": {
+    "passed": true,
+    "checks": 12
+  }
+}

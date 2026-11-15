@@ -1,0 +1,8322 @@
+{
+  "version": 1,
+  "seed": 2026110417,
+  "visual_only": true,
+  "bounds": [
+    0,
+    0,
+    7372.8,
+    7372.8
+  ],
+  "world_km": 8000.0,
+  "catalog_path": "res://textures/world/bai_chuan/scenery_ink_20261104/catalog.json",
+  "layout_path": "res://resources/world/bai_chuan/free_layout_3x3_20261104.json",
+  "navigation_path": "res://resources/world/bai_chuan/free_navigation_3x3_20261104.json",
+  "placements": [
+    {
+      "id": "bc_scenery_0001",
+      "asset": "pine_group",
+      "position": [
+        468.532,
+        1251.899
+      ],
+      "height": 55.758,
+      "flip_h": false,
+      "opacity": 0.855,
+      "composition": "edge_01_01",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0002",
+      "asset": "pine_single",
+      "position": [
+        508.796,
+        1242.535
+      ],
+      "height": 42.438,
+      "flip_h": false,
+      "opacity": 0.823,
+      "composition": "edge_01_01",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0003",
+      "asset": "pine_single",
+      "position": [
+        543.545,
+        1196.486
+      ],
+      "height": 39.842,
+      "flip_h": true,
+      "opacity": 0.826,
+      "composition": "edge_01_01",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0004",
+      "asset": "pine_group",
+      "position": [
+        1230.113,
+        1578.235
+      ],
+      "height": 54.137,
+      "flip_h": true,
+      "opacity": 0.798,
+      "composition": "edge_01_02",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0005",
+      "asset": "pine_single",
+      "position": [
+        1189.013,
+        1493.897
+      ],
+      "height": 42.491,
+      "flip_h": false,
+      "opacity": 0.823,
+      "composition": "edge_01_02",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0006",
+      "asset": "pine_single",
+      "position": [
+        1194.326,
+        1616.302
+      ],
+      "height": 41.859,
+      "flip_h": false,
+      "opacity": 0.841,
+      "composition": "edge_01_02",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0007",
+      "asset": "pine_single",
+      "position": [
+        1293.929,
+        1649.112
+      ],
+      "height": 40.699,
+      "flip_h": false,
+      "opacity": 0.889,
+      "composition": "edge_01_02",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0008",
+      "asset": "pine_single",
+      "position": [
+        1131.085,
+        1474.198
+      ],
+      "height": 40.95,
+      "flip_h": false,
+      "opacity": 0.88,
+      "composition": "edge_01_02",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0009",
+      "asset": "shrub",
+      "position": [
+        1146.452,
+        1631.676
+      ],
+      "height": 13.439,
+      "flip_h": true,
+      "opacity": 0.881,
+      "composition": "edge_01_02",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0010",
+      "asset": "pine_group",
+      "position": [
+        1862.75,
+        1178.104
+      ],
+      "height": 55.791,
+      "flip_h": true,
+      "opacity": 0.849,
+      "composition": "edge_01_03",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0011",
+      "asset": "pine_single",
+      "position": [
+        1818.725,
+        1145.508
+      ],
+      "height": 40.017,
+      "flip_h": false,
+      "opacity": 0.904,
+      "composition": "edge_01_03",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0012",
+      "asset": "pine_single",
+      "position": [
+        1839.19,
+        1211.528
+      ],
+      "height": 41.544,
+      "flip_h": false,
+      "opacity": 0.93,
+      "composition": "edge_01_03",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0013",
+      "asset": "pine_single",
+      "position": [
+        1858.612,
+        1286.259
+      ],
+      "height": 38.609,
+      "flip_h": false,
+      "opacity": 0.93,
+      "composition": "edge_01_03",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0014",
+      "asset": "rock_group",
+      "position": [
+        1769.209,
+        1247.149
+      ],
+      "height": 17.096,
+      "flip_h": false,
+      "opacity": 0.803,
+      "composition": "edge_01_03",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0015",
+      "asset": "pine_group",
+      "position": [
+        2145.84,
+        924.781
+      ],
+      "height": 57.936,
+      "flip_h": false,
+      "opacity": 0.896,
+      "composition": "edge_01_04",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0016",
+      "asset": "pine_single",
+      "position": [
+        2187.94,
+        926.052
+      ],
+      "height": 41.674,
+      "flip_h": false,
+      "opacity": 0.83,
+      "composition": "edge_01_04",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0017",
+      "asset": "pine_single",
+      "position": [
+        2114.38,
+        896.823
+      ],
+      "height": 38.045,
+      "flip_h": true,
+      "opacity": 0.873,
+      "composition": "edge_01_04",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0018",
+      "asset": "pine_single",
+      "position": [
+        2010.128,
+        940.025
+      ],
+      "height": 38.04,
+      "flip_h": false,
+      "opacity": 0.939,
+      "composition": "edge_01_04",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0019",
+      "asset": "pine_group",
+      "position": [
+        1508.112,
+        1280.84
+      ],
+      "height": 58.334,
+      "flip_h": false,
+      "opacity": 0.864,
+      "composition": "edge_01_05",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0020",
+      "asset": "pine_single",
+      "position": [
+        1532.26,
+        1340.706
+      ],
+      "height": 38.01,
+      "flip_h": true,
+      "opacity": 0.922,
+      "composition": "edge_01_05",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0021",
+      "asset": "pine_single",
+      "position": [
+        1436.885,
+        1169.114
+      ],
+      "height": 42.426,
+      "flip_h": true,
+      "opacity": 0.897,
+      "composition": "edge_01_05",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0022",
+      "asset": "pine_single",
+      "position": [
+        1578.883,
+        1354.012
+      ],
+      "height": 39.25,
+      "flip_h": true,
+      "opacity": 0.863,
+      "composition": "edge_01_05",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0023",
+      "asset": "shrub",
+      "position": [
+        1545.42,
+        1248.214
+      ],
+      "height": 14.497,
+      "flip_h": true,
+      "opacity": 0.906,
+      "composition": "edge_01_05",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0024",
+      "asset": "pine_group",
+      "position": [
+        4300.492,
+        1042.941
+      ],
+      "height": 57.682,
+      "flip_h": false,
+      "opacity": 0.817,
+      "composition": "edge_02_01",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0025",
+      "asset": "pine_single",
+      "position": [
+        4216.757,
+        1057.212
+      ],
+      "height": 41.227,
+      "flip_h": true,
+      "opacity": 0.86,
+      "composition": "edge_02_01",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0026",
+      "asset": "pine_single",
+      "position": [
+        4360.504,
+        1084.823
+      ],
+      "height": 40.422,
+      "flip_h": false,
+      "opacity": 0.901,
+      "composition": "edge_02_01",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0027",
+      "asset": "pine_single",
+      "position": [
+        4404.489,
+        1036.704
+      ],
+      "height": 40.749,
+      "flip_h": false,
+      "opacity": 0.907,
+      "composition": "edge_02_01",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0028",
+      "asset": "pine_single",
+      "position": [
+        4185.701,
+        1062.8
+      ],
+      "height": 41.873,
+      "flip_h": true,
+      "opacity": 0.825,
+      "composition": "edge_02_01",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0029",
+      "asset": "shrub",
+      "position": [
+        4325.503,
+        1123.625
+      ],
+      "height": 13.093,
+      "flip_h": true,
+      "opacity": 0.822,
+      "composition": "edge_02_01",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0030",
+      "asset": "pine_group",
+      "position": [
+        3003.259,
+        907.783
+      ],
+      "height": 54.057,
+      "flip_h": false,
+      "opacity": 0.832,
+      "composition": "edge_02_02",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0031",
+      "asset": "pine_single",
+      "position": [
+        2969.941,
+        943.498
+      ],
+      "height": 42.784,
+      "flip_h": false,
+      "opacity": 0.911,
+      "composition": "edge_02_02",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0032",
+      "asset": "pine_single",
+      "position": [
+        3049.061,
+        910.959
+      ],
+      "height": 42.865,
+      "flip_h": true,
+      "opacity": 0.805,
+      "composition": "edge_02_02",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0033",
+      "asset": "pine_single",
+      "position": [
+        3018.318,
+        982.297
+      ],
+      "height": 41.8,
+      "flip_h": true,
+      "opacity": 0.843,
+      "composition": "edge_02_02",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0034",
+      "asset": "pine_group",
+      "position": [
+        3403.052,
+        1153.418
+      ],
+      "height": 56.981,
+      "flip_h": true,
+      "opacity": 0.899,
+      "composition": "edge_02_03",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0035",
+      "asset": "pine_single",
+      "position": [
+        3448.267,
+        1219.584
+      ],
+      "height": 42.867,
+      "flip_h": true,
+      "opacity": 0.887,
+      "composition": "edge_02_03",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0036",
+      "asset": "pine_single",
+      "position": [
+        3421.979,
+        1105.251
+      ],
+      "height": 42.427,
+      "flip_h": true,
+      "opacity": 0.84,
+      "composition": "edge_02_03",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0037",
+      "asset": "pine_single",
+      "position": [
+        3320.455,
+        1058.472
+      ],
+      "height": 43.642,
+      "flip_h": false,
+      "opacity": 0.807,
+      "composition": "edge_02_03",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0038",
+      "asset": "pine_single",
+      "position": [
+        3508.62,
+        1238.784
+      ],
+      "height": 42.106,
+      "flip_h": false,
+      "opacity": 0.816,
+      "composition": "edge_02_03",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0039",
+      "asset": "rock_group",
+      "position": [
+        3477.554,
+        1094.695
+      ],
+      "height": 18.058,
+      "flip_h": true,
+      "opacity": 0.838,
+      "composition": "edge_02_03",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0040",
+      "asset": "pine_group",
+      "position": [
+        3734.753,
+        1190.998
+      ],
+      "height": 56.595,
+      "flip_h": false,
+      "opacity": 0.791,
+      "composition": "edge_02_04",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0041",
+      "asset": "pine_single",
+      "position": [
+        3765.267,
+        1172.521
+      ],
+      "height": 38.454,
+      "flip_h": true,
+      "opacity": 0.905,
+      "composition": "edge_02_04",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0042",
+      "asset": "pine_group",
+      "position": [
+        2998.083,
+        616.49
+      ],
+      "height": 54.563,
+      "flip_h": false,
+      "opacity": 0.822,
+      "composition": "edge_02_05",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0043",
+      "asset": "pine_single",
+      "position": [
+        3046.035,
+        634.159
+      ],
+      "height": 37.459,
+      "flip_h": false,
+      "opacity": 0.843,
+      "composition": "edge_02_05",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0044",
+      "asset": "pine_single",
+      "position": [
+        2983.158,
+        572.444
+      ],
+      "height": 42.527,
+      "flip_h": false,
+      "opacity": 0.842,
+      "composition": "edge_02_05",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0045",
+      "asset": "pine_single",
+      "position": [
+        2871.28,
+        602.55
+      ],
+      "height": 39.365,
+      "flip_h": true,
+      "opacity": 0.855,
+      "composition": "edge_02_05",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0046",
+      "asset": "pine_single",
+      "position": [
+        3089.637,
+        648.194
+      ],
+      "height": 39.5,
+      "flip_h": false,
+      "opacity": 0.885,
+      "composition": "edge_02_05",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0047",
+      "asset": "shrub",
+      "position": [
+        3013.556,
+        521.631
+      ],
+      "height": 14.297,
+      "flip_h": true,
+      "opacity": 0.797,
+      "composition": "edge_02_05",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0048",
+      "asset": "pine_group",
+      "position": [
+        5837.703,
+        1141.442
+      ],
+      "height": 55.758,
+      "flip_h": false,
+      "opacity": 0.885,
+      "composition": "edge_03_01",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0049",
+      "asset": "pine_single",
+      "position": [
+        5810.937,
+        1098.043
+      ],
+      "height": 39.189,
+      "flip_h": true,
+      "opacity": 0.892,
+      "composition": "edge_03_01",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0050",
+      "asset": "pine_single",
+      "position": [
+        5841.281,
+        1207.686
+      ],
+      "height": 42.939,
+      "flip_h": false,
+      "opacity": 0.797,
+      "composition": "edge_03_01",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0051",
+      "asset": "pine_single",
+      "position": [
+        5860.936,
+        1186.873
+      ],
+      "height": 43.645,
+      "flip_h": true,
+      "opacity": 0.886,
+      "composition": "edge_03_01",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0052",
+      "asset": "pine_single",
+      "position": [
+        5802.947,
+        1027.913
+      ],
+      "height": 41.639,
+      "flip_h": true,
+      "opacity": 0.9,
+      "composition": "edge_03_01",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0053",
+      "asset": "shrub",
+      "position": [
+        5735.872,
+        1158.537
+      ],
+      "height": 13.521,
+      "flip_h": false,
+      "opacity": 0.939,
+      "composition": "edge_03_01",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0054",
+      "asset": "pine_group",
+      "position": [
+        5819.932,
+        1479.139
+      ],
+      "height": 56.041,
+      "flip_h": true,
+      "opacity": 0.896,
+      "composition": "edge_03_02",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0055",
+      "asset": "pine_single",
+      "position": [
+        5796.86,
+        1436.293
+      ],
+      "height": 41.377,
+      "flip_h": false,
+      "opacity": 0.794,
+      "composition": "edge_03_02",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0056",
+      "asset": "pine_single",
+      "position": [
+        5809.309,
+        1541.077
+      ],
+      "height": 38.165,
+      "flip_h": true,
+      "opacity": 0.877,
+      "composition": "edge_03_02",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0057",
+      "asset": "pine_single",
+      "position": [
+        5852.98,
+        1530.389
+      ],
+      "height": 38.607,
+      "flip_h": true,
+      "opacity": 0.835,
+      "composition": "edge_03_02",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0058",
+      "asset": "pine_single",
+      "position": [
+        5773.251,
+        1464.737
+      ],
+      "height": 38.095,
+      "flip_h": false,
+      "opacity": 0.833,
+      "composition": "edge_03_02",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0059",
+      "asset": "shrub",
+      "position": [
+        5742.012,
+        1529.041
+      ],
+      "height": 13.148,
+      "flip_h": true,
+      "opacity": 0.814,
+      "composition": "edge_03_02",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0060",
+      "asset": "pine_group",
+      "position": [
+        6115.433,
+        1110.12
+      ],
+      "height": 52.794,
+      "flip_h": true,
+      "opacity": 0.876,
+      "composition": "edge_03_03",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0061",
+      "asset": "pine_single",
+      "position": [
+        6093.084,
+        1079.754
+      ],
+      "height": 42.992,
+      "flip_h": false,
+      "opacity": 0.877,
+      "composition": "edge_03_03",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0062",
+      "asset": "pine_single",
+      "position": [
+        6035.018,
+        1031.398
+      ],
+      "height": 42.094,
+      "flip_h": false,
+      "opacity": 0.853,
+      "composition": "edge_03_03",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0063",
+      "asset": "rock_group",
+      "position": [
+        6010.514,
+        1171.144
+      ],
+      "height": 17.378,
+      "flip_h": false,
+      "opacity": 0.791,
+      "composition": "edge_03_03",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0064",
+      "asset": "pine_group",
+      "position": [
+        6013.175,
+        1730.367
+      ],
+      "height": 56.598,
+      "flip_h": true,
+      "opacity": 0.895,
+      "composition": "edge_03_04",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0065",
+      "asset": "pine_single",
+      "position": [
+        6018.737,
+        1798.602
+      ],
+      "height": 38.299,
+      "flip_h": true,
+      "opacity": 0.892,
+      "composition": "edge_03_04",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0066",
+      "asset": "pine_single",
+      "position": [
+        6052.624,
+        1676.841
+      ],
+      "height": 40.931,
+      "flip_h": true,
+      "opacity": 0.934,
+      "composition": "edge_03_04",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0067",
+      "asset": "pine_single",
+      "position": [
+        6061.066,
+        1813.999
+      ],
+      "height": 38.12,
+      "flip_h": false,
+      "opacity": 0.794,
+      "composition": "edge_03_04",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0068",
+      "asset": "shrub",
+      "position": [
+        6111.529,
+        1717.558
+      ],
+      "height": 14.032,
+      "flip_h": false,
+      "opacity": 0.871,
+      "composition": "edge_03_04",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0069",
+      "asset": "pine_group",
+      "position": [
+        5573.434,
+        1608.7
+      ],
+      "height": 55.103,
+      "flip_h": true,
+      "opacity": 0.931,
+      "composition": "edge_03_05",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0070",
+      "asset": "pine_single",
+      "position": [
+        5631.703,
+        1642.89
+      ],
+      "height": 40.676,
+      "flip_h": true,
+      "opacity": 0.839,
+      "composition": "edge_03_05",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0071",
+      "asset": "pine_single",
+      "position": [
+        5571.016,
+        1579.264
+      ],
+      "height": 40.222,
+      "flip_h": false,
+      "opacity": 0.819,
+      "composition": "edge_03_05",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0072",
+      "asset": "pine_single",
+      "position": [
+        5501.174,
+        1558.527
+      ],
+      "height": 42.8,
+      "flip_h": true,
+      "opacity": 0.914,
+      "composition": "edge_03_05",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0073",
+      "asset": "pine_single",
+      "position": [
+        5680.907,
+        1664.545
+      ],
+      "height": 38.695,
+      "flip_h": true,
+      "opacity": 0.87,
+      "composition": "edge_03_05",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0074",
+      "asset": "shrub",
+      "position": [
+        5603.182,
+        1529.007
+      ],
+      "height": 13.111,
+      "flip_h": false,
+      "opacity": 0.883,
+      "composition": "edge_03_05",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0075",
+      "asset": "willow_group",
+      "position": [
+        835.644,
+        2805.447
+      ],
+      "height": 49.987,
+      "flip_h": false,
+      "opacity": 0.839,
+      "composition": "edge_04_01",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0076",
+      "asset": "willow_single",
+      "position": [
+        819.817,
+        2905.431
+      ],
+      "height": 42.996,
+      "flip_h": true,
+      "opacity": 0.867,
+      "composition": "edge_04_01",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0077",
+      "asset": "shrub",
+      "position": [
+        769.789,
+        2849.452
+      ],
+      "height": 13.221,
+      "flip_h": true,
+      "opacity": 0.934,
+      "composition": "edge_04_01",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0078",
+      "asset": "pine_group",
+      "position": [
+        2057.096,
+        3051.612
+      ],
+      "height": 54.597,
+      "flip_h": true,
+      "opacity": 0.928,
+      "composition": "edge_04_02",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0079",
+      "asset": "pine_single",
+      "position": [
+        2057.493,
+        3108.301
+      ],
+      "height": 43.612,
+      "flip_h": true,
+      "opacity": 0.808,
+      "composition": "edge_04_02",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0080",
+      "asset": "pine_single",
+      "position": [
+        2102.954,
+        3039.238
+      ],
+      "height": 38.724,
+      "flip_h": false,
+      "opacity": 0.81,
+      "composition": "edge_04_02",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0081",
+      "asset": "shrub",
+      "position": [
+        2136.128,
+        3080.873
+      ],
+      "height": 12.533,
+      "flip_h": false,
+      "opacity": 0.894,
+      "composition": "edge_04_02",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0082",
+      "asset": "pine_group",
+      "position": [
+        1165.123,
+        2128.879
+      ],
+      "height": 56.439,
+      "flip_h": false,
+      "opacity": 0.888,
+      "composition": "edge_04_03",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0083",
+      "asset": "pine_single",
+      "position": [
+        1152.906,
+        2068.124
+      ],
+      "height": 39.486,
+      "flip_h": true,
+      "opacity": 0.915,
+      "composition": "edge_04_03",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0084",
+      "asset": "pine_single",
+      "position": [
+        1121.515,
+        2042.414
+      ],
+      "height": 43.42,
+      "flip_h": false,
+      "opacity": 0.938,
+      "composition": "edge_04_03",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0085",
+      "asset": "willow_group",
+      "position": [
+        1698.496,
+        2580.233
+      ],
+      "height": 52.588,
+      "flip_h": false,
+      "opacity": 0.824,
+      "composition": "edge_04_04",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0086",
+      "asset": "willow_single",
+      "position": [
+        1649.151,
+        2626.988
+      ],
+      "height": 44.522,
+      "flip_h": true,
+      "opacity": 0.888,
+      "composition": "edge_04_04",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0087",
+      "asset": "willow_single",
+      "position": [
+        1756.495,
+        2622.451
+      ],
+      "height": 43.15,
+      "flip_h": true,
+      "opacity": 0.907,
+      "composition": "edge_04_04",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0088",
+      "asset": "willow_single",
+      "position": [
+        1797.042,
+        2567.569
+      ],
+      "height": 44.126,
+      "flip_h": false,
+      "opacity": 0.822,
+      "composition": "edge_04_04",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0089",
+      "asset": "willow_single",
+      "position": [
+        1597.577,
+        2669.119
+      ],
+      "height": 45.19,
+      "flip_h": false,
+      "opacity": 0.839,
+      "composition": "edge_04_04",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0090",
+      "asset": "shrub",
+      "position": [
+        1750.93,
+        2653.527
+      ],
+      "height": 13.897,
+      "flip_h": true,
+      "opacity": 0.877,
+      "composition": "edge_04_04",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0091",
+      "asset": "pine_group",
+      "position": [
+        902.483,
+        2402.738
+      ],
+      "height": 51.656,
+      "flip_h": false,
+      "opacity": 0.83,
+      "composition": "edge_04_05",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0092",
+      "asset": "pine_single",
+      "position": [
+        844.039,
+        2438.247
+      ],
+      "height": 43.369,
+      "flip_h": true,
+      "opacity": 0.913,
+      "composition": "edge_04_05",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0093",
+      "asset": "pine_single",
+      "position": [
+        908.032,
+        2476.947
+      ],
+      "height": 41.447,
+      "flip_h": false,
+      "opacity": 0.836,
+      "composition": "edge_04_05",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0094",
+      "asset": "shrub",
+      "position": [
+        796.24,
+        2420.028
+      ],
+      "height": 12.731,
+      "flip_h": false,
+      "opacity": 0.879,
+      "composition": "edge_04_05",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0095",
+      "asset": "mixed_group",
+      "position": [
+        3773.317,
+        2851.561
+      ],
+      "height": 56.772,
+      "flip_h": true,
+      "opacity": 0.792,
+      "composition": "edge_05_01",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0096",
+      "asset": "broadleaf_single",
+      "position": [
+        3781.238,
+        2899.146
+      ],
+      "height": 39.688,
+      "flip_h": false,
+      "opacity": 0.812,
+      "composition": "edge_05_01",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0097",
+      "asset": "broadleaf_single",
+      "position": [
+        3825.107,
+        2802.935
+      ],
+      "height": 37.814,
+      "flip_h": false,
+      "opacity": 0.939,
+      "composition": "edge_05_01",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0098",
+      "asset": "shrub",
+      "position": [
+        3862.437,
+        2818.577
+      ],
+      "height": 12.817,
+      "flip_h": false,
+      "opacity": 0.808,
+      "composition": "edge_05_01",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0099",
+      "asset": "mixed_group",
+      "position": [
+        4086.959,
+        3107.689
+      ],
+      "height": 52.946,
+      "flip_h": true,
+      "opacity": 0.866,
+      "composition": "edge_05_02",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0100",
+      "asset": "broadleaf_single",
+      "position": [
+        4047.096,
+        3056.261
+      ],
+      "height": 40.046,
+      "flip_h": true,
+      "opacity": 0.8,
+      "composition": "edge_05_02",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0101",
+      "asset": "broadleaf_single",
+      "position": [
+        4063.881,
+        3178.441
+      ],
+      "height": 38.779,
+      "flip_h": false,
+      "opacity": 0.846,
+      "composition": "edge_05_02",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0102",
+      "asset": "broadleaf_single",
+      "position": [
+        4165.226,
+        3183.423
+      ],
+      "height": 41.222,
+      "flip_h": false,
+      "opacity": 0.895,
+      "composition": "edge_05_02",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0103",
+      "asset": "broadleaf_single",
+      "position": [
+        3989.171,
+        3078.062
+      ],
+      "height": 37.437,
+      "flip_h": false,
+      "opacity": 0.793,
+      "composition": "edge_05_02",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0104",
+      "asset": "shrub",
+      "position": [
+        4007.99,
+        3153.154
+      ],
+      "height": 13.28,
+      "flip_h": false,
+      "opacity": 0.871,
+      "composition": "edge_05_02",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0105",
+      "asset": "mixed_group",
+      "position": [
+        3087.133,
+        2603.335
+      ],
+      "height": 57.961,
+      "flip_h": true,
+      "opacity": 0.908,
+      "composition": "edge_05_03",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0106",
+      "asset": "broadleaf_single",
+      "position": [
+        3141.174,
+        2619.909
+      ],
+      "height": 42.023,
+      "flip_h": false,
+      "opacity": 0.846,
+      "composition": "edge_05_03",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0107",
+      "asset": "broadleaf_single",
+      "position": [
+        3070.947,
+        2557.489
+      ],
+      "height": 42.175,
+      "flip_h": true,
+      "opacity": 0.803,
+      "composition": "edge_05_03",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0108",
+      "asset": "rock_group",
+      "position": [
+        3136.864,
+        2553.872
+      ],
+      "height": 16.565,
+      "flip_h": false,
+      "opacity": 0.792,
+      "composition": "edge_05_03",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0109",
+      "asset": "mixed_group",
+      "position": [
+        3979.45,
+        2654.298
+      ],
+      "height": 57.661,
+      "flip_h": true,
+      "opacity": 0.862,
+      "composition": "edge_05_04",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0110",
+      "asset": "broadleaf_single",
+      "position": [
+        3902.67,
+        2671.021
+      ],
+      "height": 41.782,
+      "flip_h": false,
+      "opacity": 0.812,
+      "composition": "edge_05_04",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0111",
+      "asset": "broadleaf_single",
+      "position": [
+        4046.131,
+        2654.47
+      ],
+      "height": 40.387,
+      "flip_h": true,
+      "opacity": 0.827,
+      "composition": "edge_05_04",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0112",
+      "asset": "broadleaf_single",
+      "position": [
+        4085.238,
+        2632.913
+      ],
+      "height": 41.347,
+      "flip_h": false,
+      "opacity": 0.803,
+      "composition": "edge_05_04",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0113",
+      "asset": "mixed_group",
+      "position": [
+        3316.615,
+        3155.952
+      ],
+      "height": 53.912,
+      "flip_h": false,
+      "opacity": 0.878,
+      "composition": "edge_05_05",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0114",
+      "asset": "broadleaf_single",
+      "position": [
+        3257.814,
+        3164.069
+      ],
+      "height": 43.286,
+      "flip_h": true,
+      "opacity": 0.89,
+      "composition": "edge_05_05",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0115",
+      "asset": "broadleaf_single",
+      "position": [
+        3325.059,
+        3190.344
+      ],
+      "height": 41.196,
+      "flip_h": false,
+      "opacity": 0.851,
+      "composition": "edge_05_05",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0116",
+      "asset": "broadleaf_single",
+      "position": [
+        3219.292,
+        3217.678
+      ],
+      "height": 39.75,
+      "flip_h": true,
+      "opacity": 0.792,
+      "composition": "edge_05_05",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0117",
+      "asset": "mixed_group",
+      "position": [
+        5040.107,
+        2640.664
+      ],
+      "height": 56.476,
+      "flip_h": false,
+      "opacity": 0.814,
+      "composition": "edge_06_01",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0118",
+      "asset": "broadleaf_single",
+      "position": [
+        4994.583,
+        2595.364
+      ],
+      "height": 38.603,
+      "flip_h": false,
+      "opacity": 0.899,
+      "composition": "edge_06_01",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0119",
+      "asset": "broadleaf_single",
+      "position": [
+        4998.382,
+        2695.964
+      ],
+      "height": 43.426,
+      "flip_h": true,
+      "opacity": 0.904,
+      "composition": "edge_06_01",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0120",
+      "asset": "broadleaf_single",
+      "position": [
+        4971.634,
+        2534.214
+      ],
+      "height": 43.588,
+      "flip_h": true,
+      "opacity": 0.791,
+      "composition": "edge_06_01",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0121",
+      "asset": "shrub",
+      "position": [
+        4960.537,
+        2667.594
+      ],
+      "height": 12.644,
+      "flip_h": true,
+      "opacity": 0.841,
+      "composition": "edge_06_01",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0122",
+      "asset": "mixed_group",
+      "position": [
+        5360.694,
+        2654.668
+      ],
+      "height": 56.678,
+      "flip_h": false,
+      "opacity": 0.851,
+      "composition": "edge_06_02",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0123",
+      "asset": "broadleaf_single",
+      "position": [
+        5393.35,
+        2725.725
+      ],
+      "height": 39.777,
+      "flip_h": false,
+      "opacity": 0.796,
+      "composition": "edge_06_02",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0124",
+      "asset": "broadleaf_single",
+      "position": [
+        5406.592,
+        2628.175
+      ],
+      "height": 41.412,
+      "flip_h": false,
+      "opacity": 0.83,
+      "composition": "edge_06_02",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0125",
+      "asset": "broadleaf_single",
+      "position": [
+        5334.781,
+        2562.531
+      ],
+      "height": 42.95,
+      "flip_h": false,
+      "opacity": 0.932,
+      "composition": "edge_06_02",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0126",
+      "asset": "shrub",
+      "position": [
+        5425.404,
+        2606.851
+      ],
+      "height": 13.08,
+      "flip_h": true,
+      "opacity": 0.86,
+      "composition": "edge_06_02",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0127",
+      "asset": "willow_group",
+      "position": [
+        5666.75,
+        3018.781
+      ],
+      "height": 48.622,
+      "flip_h": true,
+      "opacity": 0.835,
+      "composition": "edge_06_03",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0128",
+      "asset": "willow_single",
+      "position": [
+        5632.476,
+        2961.727
+      ],
+      "height": 39.442,
+      "flip_h": true,
+      "opacity": 0.819,
+      "composition": "edge_06_03",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0129",
+      "asset": "mixed_group",
+      "position": [
+        4646.781,
+        3465.435
+      ],
+      "height": 52.447,
+      "flip_h": false,
+      "opacity": 0.849,
+      "composition": "edge_06_04",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0130",
+      "asset": "broadleaf_single",
+      "position": [
+        4642.112,
+        3536.919
+      ],
+      "height": 38.322,
+      "flip_h": true,
+      "opacity": 0.821,
+      "composition": "edge_06_04",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0131",
+      "asset": "broadleaf_single",
+      "position": [
+        4716.645,
+        3453.027
+      ],
+      "height": 38.322,
+      "flip_h": true,
+      "opacity": 0.848,
+      "composition": "edge_06_04",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0132",
+      "asset": "broadleaf_single",
+      "position": [
+        4713.993,
+        3400.294
+      ],
+      "height": 40.785,
+      "flip_h": false,
+      "opacity": 0.913,
+      "composition": "edge_06_04",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0133",
+      "asset": "broadleaf_single",
+      "position": [
+        4641.646,
+        3564.503
+      ],
+      "height": 37.974,
+      "flip_h": false,
+      "opacity": 0.866,
+      "composition": "edge_06_04",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0134",
+      "asset": "mixed_group",
+      "position": [
+        6099.147,
+        3009.491
+      ],
+      "height": 55.119,
+      "flip_h": true,
+      "opacity": 0.806,
+      "composition": "edge_06_05",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0135",
+      "asset": "broadleaf_single",
+      "position": [
+        6098.377,
+        3047.866
+      ],
+      "height": 43.855,
+      "flip_h": false,
+      "opacity": 0.91,
+      "composition": "edge_06_05",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0136",
+      "asset": "broadleaf_single",
+      "position": [
+        6144.78,
+        3068.815
+      ],
+      "height": 42.056,
+      "flip_h": false,
+      "opacity": 0.811,
+      "composition": "edge_06_05",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0137",
+      "asset": "pine_group",
+      "position": [
+        1830.069,
+        4247.471
+      ],
+      "height": 53.361,
+      "flip_h": false,
+      "opacity": 0.82,
+      "composition": "edge_07_01",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0138",
+      "asset": "pine_single",
+      "position": [
+        1886.157,
+        4290.02
+      ],
+      "height": 40.47,
+      "flip_h": true,
+      "opacity": 0.927,
+      "composition": "edge_07_01",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0139",
+      "asset": "pine_single",
+      "position": [
+        1827.3,
+        4205.287
+      ],
+      "height": 39.606,
+      "flip_h": true,
+      "opacity": 0.876,
+      "composition": "edge_07_01",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0140",
+      "asset": "pine_single",
+      "position": [
+        1753.383,
+        4187.427
+      ],
+      "height": 41.962,
+      "flip_h": false,
+      "opacity": 0.845,
+      "composition": "edge_07_01",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0141",
+      "asset": "pine_single",
+      "position": [
+        1916.129,
+        4314.513
+      ],
+      "height": 41.215,
+      "flip_h": true,
+      "opacity": 0.908,
+      "composition": "edge_07_01",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0142",
+      "asset": "shrub",
+      "position": [
+        1875.432,
+        4174.039
+      ],
+      "height": 12.847,
+      "flip_h": false,
+      "opacity": 0.885,
+      "composition": "edge_07_01",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0143",
+      "asset": "pine_group",
+      "position": [
+        2106.41,
+        3874.972
+      ],
+      "height": 58.224,
+      "flip_h": true,
+      "opacity": 0.824,
+      "composition": "edge_07_02",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0144",
+      "asset": "pine_single",
+      "position": [
+        2072.839,
+        3902.479
+      ],
+      "height": 41.708,
+      "flip_h": true,
+      "opacity": 0.886,
+      "composition": "edge_07_02",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0145",
+      "asset": "pine_single",
+      "position": [
+        2161.208,
+        3884.66
+      ],
+      "height": 43.719,
+      "flip_h": true,
+      "opacity": 0.939,
+      "composition": "edge_07_02",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0146",
+      "asset": "shrub",
+      "position": [
+        2197.785,
+        3943.833
+      ],
+      "height": 13.8,
+      "flip_h": false,
+      "opacity": 0.811,
+      "composition": "edge_07_02",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0147",
+      "asset": "pine_group",
+      "position": [
+        1521.216,
+        4105.969
+      ],
+      "height": 56.896,
+      "flip_h": false,
+      "opacity": 0.792,
+      "composition": "edge_07_03",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0148",
+      "asset": "pine_single",
+      "position": [
+        1447.184,
+        4118.765
+      ],
+      "height": 41.662,
+      "flip_h": true,
+      "opacity": 0.825,
+      "composition": "edge_07_03",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0149",
+      "asset": "pine_single",
+      "position": [
+        1438.546,
+        4175.277
+      ],
+      "height": 42.507,
+      "flip_h": true,
+      "opacity": 0.9,
+      "composition": "edge_07_03",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0150",
+      "asset": "rock_group",
+      "position": [
+        1432.128,
+        4045.382
+      ],
+      "height": 16.974,
+      "flip_h": true,
+      "opacity": 0.893,
+      "composition": "edge_07_03",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0151",
+      "asset": "pine_group",
+      "position": [
+        761.914,
+        4142.03
+      ],
+      "height": 52.394,
+      "flip_h": true,
+      "opacity": 0.912,
+      "composition": "edge_07_04",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0152",
+      "asset": "pine_single",
+      "position": [
+        716.922,
+        4159.166
+      ],
+      "height": 42.87,
+      "flip_h": true,
+      "opacity": 0.793,
+      "composition": "edge_07_04",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0153",
+      "asset": "pine_single",
+      "position": [
+        812.363,
+        4146.079
+      ],
+      "height": 39.9,
+      "flip_h": true,
+      "opacity": 0.929,
+      "composition": "edge_07_04",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0154",
+      "asset": "pine_single",
+      "position": [
+        859.107,
+        4142.2
+      ],
+      "height": 42.894,
+      "flip_h": true,
+      "opacity": 0.834,
+      "composition": "edge_07_04",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0155",
+      "asset": "shrub",
+      "position": [
+        820.969,
+        4218.709
+      ],
+      "height": 13.985,
+      "flip_h": true,
+      "opacity": 0.912,
+      "composition": "edge_07_04",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0156",
+      "asset": "pine_group",
+      "position": [
+        1242.903,
+        4043.21
+      ],
+      "height": 54.611,
+      "flip_h": false,
+      "opacity": 0.857,
+      "composition": "edge_07_05",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0157",
+      "asset": "pine_single",
+      "position": [
+        1304.414,
+        4013.079
+      ],
+      "height": 43.397,
+      "flip_h": true,
+      "opacity": 0.855,
+      "composition": "edge_07_05",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0158",
+      "asset": "pine_single",
+      "position": [
+        1184.591,
+        4015.972
+      ],
+      "height": 39.388,
+      "flip_h": false,
+      "opacity": 0.933,
+      "composition": "edge_07_05",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0159",
+      "asset": "pine_single",
+      "position": [
+        1362.101,
+        3937.623
+      ],
+      "height": 40.95,
+      "flip_h": true,
+      "opacity": 0.913,
+      "composition": "edge_07_05",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0160",
+      "asset": "mixed_group",
+      "position": [
+        2722.515,
+        4368.32
+      ],
+      "height": 58.259,
+      "flip_h": false,
+      "opacity": 0.835,
+      "composition": "edge_08_01",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0161",
+      "asset": "broadleaf_single",
+      "position": [
+        2770.895,
+        4342.895
+      ],
+      "height": 37.557,
+      "flip_h": false,
+      "opacity": 0.829,
+      "composition": "edge_08_01",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0162",
+      "asset": "broadleaf_single",
+      "position": [
+        2692.687,
+        4376.208
+      ],
+      "height": 39.724,
+      "flip_h": false,
+      "opacity": 0.94,
+      "composition": "edge_08_01",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0163",
+      "asset": "broadleaf_single",
+      "position": [
+        2659.424,
+        4466.439
+      ],
+      "height": 41.045,
+      "flip_h": false,
+      "opacity": 0.852,
+      "composition": "edge_08_01",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0164",
+      "asset": "broadleaf_single",
+      "position": [
+        2790.502,
+        4288.441
+      ],
+      "height": 40.023,
+      "flip_h": false,
+      "opacity": 0.912,
+      "composition": "edge_08_01",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0165",
+      "asset": "shrub",
+      "position": [
+        2677.662,
+        4326.043
+      ],
+      "height": 12.939,
+      "flip_h": true,
+      "opacity": 0.829,
+      "composition": "edge_08_01",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0166",
+      "asset": "mixed_group",
+      "position": [
+        3844.345,
+        4321.005
+      ],
+      "height": 57.427,
+      "flip_h": false,
+      "opacity": 0.814,
+      "composition": "edge_08_02",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0167",
+      "asset": "broadleaf_single",
+      "position": [
+        3933.257,
+        4303.068
+      ],
+      "height": 38.822,
+      "flip_h": true,
+      "opacity": 0.863,
+      "composition": "edge_08_02",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0168",
+      "asset": "shrub",
+      "position": [
+        3949.552,
+        4334.91
+      ],
+      "height": 13.607,
+      "flip_h": false,
+      "opacity": 0.924,
+      "composition": "edge_08_02",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0169",
+      "asset": "mixed_group",
+      "position": [
+        2689.31,
+        4756.851
+      ],
+      "height": 56.414,
+      "flip_h": false,
+      "opacity": 0.88,
+      "composition": "edge_08_03",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0170",
+      "asset": "broadleaf_single",
+      "position": [
+        2729.036,
+        4813.637
+      ],
+      "height": 42.341,
+      "flip_h": true,
+      "opacity": 0.924,
+      "composition": "edge_08_03",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0171",
+      "asset": "broadleaf_single",
+      "position": [
+        2714.117,
+        4712.82
+      ],
+      "height": 43.864,
+      "flip_h": true,
+      "opacity": 0.793,
+      "composition": "edge_08_03",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0172",
+      "asset": "broadleaf_single",
+      "position": [
+        2807.641,
+        4815.323
+      ],
+      "height": 41.58,
+      "flip_h": true,
+      "opacity": 0.793,
+      "composition": "edge_08_03",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0173",
+      "asset": "rock_group",
+      "position": [
+        2751.171,
+        4719.15
+      ],
+      "height": 16.622,
+      "flip_h": true,
+      "opacity": 0.911,
+      "composition": "edge_08_03",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0174",
+      "asset": "pine_group",
+      "position": [
+        2505.58,
+        4116.195
+      ],
+      "height": 53.31,
+      "flip_h": false,
+      "opacity": 0.833,
+      "composition": "edge_08_04",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0175",
+      "asset": "pine_single",
+      "position": [
+        2555.021,
+        4067.433
+      ],
+      "height": 38.632,
+      "flip_h": false,
+      "opacity": 0.843,
+      "composition": "edge_08_04",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0176",
+      "asset": "pine_single",
+      "position": [
+        2488.542,
+        4067.828
+      ],
+      "height": 38.188,
+      "flip_h": false,
+      "opacity": 0.808,
+      "composition": "edge_08_04",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0177",
+      "asset": "pine_single",
+      "position": [
+        2447.707,
+        4182.186
+      ],
+      "height": 39.49,
+      "flip_h": false,
+      "opacity": 0.882,
+      "composition": "edge_08_04",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0178",
+      "asset": "pine_single",
+      "position": [
+        2546.493,
+        4021.785
+      ],
+      "height": 38.104,
+      "flip_h": true,
+      "opacity": 0.926,
+      "composition": "edge_08_04",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0179",
+      "asset": "shrub",
+      "position": [
+        2419.764,
+        4035.772
+      ],
+      "height": 14.469,
+      "flip_h": false,
+      "opacity": 0.825,
+      "composition": "edge_08_04",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0180",
+      "asset": "mixed_group",
+      "position": [
+        3319.903,
+        4173.067
+      ],
+      "height": 57.196,
+      "flip_h": false,
+      "opacity": 0.903,
+      "composition": "edge_08_05",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0181",
+      "asset": "broadleaf_single",
+      "position": [
+        3322.699,
+        4131.061
+      ],
+      "height": 41.015,
+      "flip_h": true,
+      "opacity": 0.825,
+      "composition": "edge_08_05",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0182",
+      "asset": "shrub",
+      "position": [
+        3254.054,
+        4183.73
+      ],
+      "height": 14.21,
+      "flip_h": false,
+      "opacity": 0.88,
+      "composition": "edge_08_05",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0183",
+      "asset": "mixed_group",
+      "position": [
+        4703.197,
+        4464.927
+      ],
+      "height": 56.343,
+      "flip_h": true,
+      "opacity": 0.864,
+      "composition": "edge_09_01",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0184",
+      "asset": "broadleaf_single",
+      "position": [
+        4693.24,
+        4514.026
+      ],
+      "height": 39.746,
+      "flip_h": false,
+      "opacity": 0.833,
+      "composition": "edge_09_01",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0185",
+      "asset": "broadleaf_single",
+      "position": [
+        4681.083,
+        4583.331
+      ],
+      "height": 42.559,
+      "flip_h": false,
+      "opacity": 0.863,
+      "composition": "edge_09_01",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0186",
+      "asset": "mixed_group",
+      "position": [
+        4738.165,
+        4986.658
+      ],
+      "height": 53.54,
+      "flip_h": false,
+      "opacity": 0.809,
+      "composition": "edge_09_02",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0187",
+      "asset": "broadleaf_single",
+      "position": [
+        4680.065,
+        5008.464
+      ],
+      "height": 42.772,
+      "flip_h": true,
+      "opacity": 0.793,
+      "composition": "edge_09_02",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0188",
+      "asset": "broadleaf_single",
+      "position": [
+        4819.688,
+        5008.947
+      ],
+      "height": 43.67,
+      "flip_h": true,
+      "opacity": 0.882,
+      "composition": "edge_09_02",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0189",
+      "asset": "broadleaf_single",
+      "position": [
+        4857.258,
+        4920.119
+      ],
+      "height": 43.155,
+      "flip_h": false,
+      "opacity": 0.931,
+      "composition": "edge_09_02",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0190",
+      "asset": "mixed_group",
+      "position": [
+        4441.188,
+        4994.874
+      ],
+      "height": 55.941,
+      "flip_h": true,
+      "opacity": 0.886,
+      "composition": "edge_09_03",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0191",
+      "asset": "broadleaf_single",
+      "position": [
+        4434.019,
+        5077.799
+      ],
+      "height": 41.539,
+      "flip_h": true,
+      "opacity": 0.856,
+      "composition": "edge_09_03",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0192",
+      "asset": "broadleaf_single",
+      "position": [
+        4490.172,
+        5067.084
+      ],
+      "height": 42.848,
+      "flip_h": false,
+      "opacity": 0.901,
+      "composition": "edge_09_03",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0193",
+      "asset": "rock_group",
+      "position": [
+        4386.441,
+        5053.494
+      ],
+      "height": 16.934,
+      "flip_h": true,
+      "opacity": 0.882,
+      "composition": "edge_09_03",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0194",
+      "asset": "willow_group",
+      "position": [
+        6081.195,
+        5146.327
+      ],
+      "height": 51.1,
+      "flip_h": false,
+      "opacity": 0.882,
+      "composition": "edge_09_04",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0195",
+      "asset": "willow_single",
+      "position": [
+        6035.037,
+        5144.129
+      ],
+      "height": 43.501,
+      "flip_h": false,
+      "opacity": 0.82,
+      "composition": "edge_09_04",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0196",
+      "asset": "willow_single",
+      "position": [
+        6098.369,
+        5181.562
+      ],
+      "height": 42.205,
+      "flip_h": false,
+      "opacity": 0.917,
+      "composition": "edge_09_04",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0197",
+      "asset": "willow_single",
+      "position": [
+        6179.36,
+        5176.684
+      ],
+      "height": 39.986,
+      "flip_h": true,
+      "opacity": 0.798,
+      "composition": "edge_09_04",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0198",
+      "asset": "willow_group",
+      "position": [
+        5170.53,
+        4779.586
+      ],
+      "height": 52.286,
+      "flip_h": true,
+      "opacity": 0.912,
+      "composition": "edge_09_05",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0199",
+      "asset": "willow_single",
+      "position": [
+        5202.694,
+        4768.181
+      ],
+      "height": 44.979,
+      "flip_h": false,
+      "opacity": 0.804,
+      "composition": "edge_09_05",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0200",
+      "asset": "willow_single",
+      "position": [
+        5155.951,
+        4695.844
+      ],
+      "height": 44.966,
+      "flip_h": true,
+      "opacity": 0.816,
+      "composition": "edge_09_05",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0201",
+      "asset": "shrub",
+      "position": [
+        5282.651,
+        4769.425
+      ],
+      "height": 12.832,
+      "flip_h": false,
+      "opacity": 0.897,
+      "composition": "edge_09_05",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0202",
+      "asset": "mixed_group",
+      "position": [
+        5622.816,
+        4460.848
+      ],
+      "height": 56.452,
+      "flip_h": true,
+      "opacity": 0.891,
+      "composition": "edge_09_06",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0203",
+      "asset": "broadleaf_single",
+      "position": [
+        5676.035,
+        4445.013
+      ],
+      "height": 43.073,
+      "flip_h": false,
+      "opacity": 0.819,
+      "composition": "edge_09_06",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0204",
+      "asset": "broadleaf_single",
+      "position": [
+        5551.444,
+        4415.637
+      ],
+      "height": 41.037,
+      "flip_h": true,
+      "opacity": 0.811,
+      "composition": "edge_09_06",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0205",
+      "asset": "broadleaf_single",
+      "position": [
+        5517.914,
+        4455.554
+      ],
+      "height": 40.612,
+      "flip_h": false,
+      "opacity": 0.812,
+      "composition": "edge_09_06",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0206",
+      "asset": "rock_group",
+      "position": [
+        5633.312,
+        4373.774
+      ],
+      "height": 16.343,
+      "flip_h": false,
+      "opacity": 0.851,
+      "composition": "edge_09_06",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0207",
+      "asset": "pine_group",
+      "position": [
+        2159.179,
+        6148.488
+      ],
+      "height": 53.295,
+      "flip_h": false,
+      "opacity": 0.798,
+      "composition": "edge_10_01",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0208",
+      "asset": "pine_single",
+      "position": [
+        2145.409,
+        6206.37
+      ],
+      "height": 41.572,
+      "flip_h": true,
+      "opacity": 0.828,
+      "composition": "edge_10_01",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0209",
+      "asset": "pine_single",
+      "position": [
+        2244.687,
+        6140.705
+      ],
+      "height": 40.729,
+      "flip_h": true,
+      "opacity": 0.893,
+      "composition": "edge_10_01",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0210",
+      "asset": "pine_single",
+      "position": [
+        2151.55,
+        6028.961
+      ],
+      "height": 41.815,
+      "flip_h": false,
+      "opacity": 0.822,
+      "composition": "edge_10_01",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0211",
+      "asset": "pine_single",
+      "position": [
+        2199.718,
+        6252.623
+      ],
+      "height": 42.993,
+      "flip_h": true,
+      "opacity": 0.91,
+      "composition": "edge_10_01",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0212",
+      "asset": "shrub",
+      "position": [
+        2272.04,
+        6171.47
+      ],
+      "height": 12.556,
+      "flip_h": true,
+      "opacity": 0.911,
+      "composition": "edge_10_01",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0213",
+      "asset": "pine_group",
+      "position": [
+        1107.858,
+        6039.388
+      ],
+      "height": 51.5,
+      "flip_h": false,
+      "opacity": 0.822,
+      "composition": "edge_10_02",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0214",
+      "asset": "pine_single",
+      "position": [
+        1107.314,
+        5996.409
+      ],
+      "height": 40.859,
+      "flip_h": true,
+      "opacity": 0.888,
+      "composition": "edge_10_02",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0215",
+      "asset": "shrub",
+      "position": [
+        1048.713,
+        6024.56
+      ],
+      "height": 12.574,
+      "flip_h": true,
+      "opacity": 0.903,
+      "composition": "edge_10_02",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0216",
+      "asset": "willow_group",
+      "position": [
+        2033.038,
+        5523.102
+      ],
+      "height": 49.79,
+      "flip_h": true,
+      "opacity": 0.896,
+      "composition": "edge_10_03",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0217",
+      "asset": "willow_single",
+      "position": [
+        2095.61,
+        5527.827
+      ],
+      "height": 44.988,
+      "flip_h": true,
+      "opacity": 0.86,
+      "composition": "edge_10_03",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0218",
+      "asset": "pine_group",
+      "position": [
+        1573.862,
+        5796.824
+      ],
+      "height": 51.912,
+      "flip_h": false,
+      "opacity": 0.865,
+      "composition": "edge_10_04",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0219",
+      "asset": "pine_single",
+      "position": [
+        1498.612,
+        5728.722
+      ],
+      "height": 39.807,
+      "flip_h": false,
+      "opacity": 0.842,
+      "composition": "edge_10_04",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0220",
+      "asset": "pine_single",
+      "position": [
+        1634.459,
+        5898.58
+      ],
+      "height": 39.332,
+      "flip_h": true,
+      "opacity": 0.925,
+      "composition": "edge_10_04",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0221",
+      "asset": "pine_single",
+      "position": [
+        1452.259,
+        5731.966
+      ],
+      "height": 37.394,
+      "flip_h": true,
+      "opacity": 0.917,
+      "composition": "edge_10_04",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0222",
+      "asset": "shrub",
+      "position": [
+        1524.934,
+        5873.422
+      ],
+      "height": 14.345,
+      "flip_h": false,
+      "opacity": 0.929,
+      "composition": "edge_10_04",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0223",
+      "asset": "pine_group",
+      "position": [
+        785.41,
+        5422.924
+      ],
+      "height": 58.115,
+      "flip_h": true,
+      "opacity": 0.905,
+      "composition": "edge_10_05",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0224",
+      "asset": "pine_single",
+      "position": [
+        819.929,
+        5388.553
+      ],
+      "height": 37.94,
+      "flip_h": true,
+      "opacity": 0.919,
+      "composition": "edge_10_05",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0225",
+      "asset": "pine_single",
+      "position": [
+        751.309,
+        5436.927
+      ],
+      "height": 38.732,
+      "flip_h": true,
+      "opacity": 0.829,
+      "composition": "edge_10_05",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0226",
+      "asset": "pine_single",
+      "position": [
+        732.954,
+        5470.107
+      ],
+      "height": 42.498,
+      "flip_h": false,
+      "opacity": 0.827,
+      "composition": "edge_10_05",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0227",
+      "asset": "shrub",
+      "position": [
+        725.637,
+        5388.526
+      ],
+      "height": 14.501,
+      "flip_h": false,
+      "opacity": 0.805,
+      "composition": "edge_10_05",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0228",
+      "asset": "pine_group",
+      "position": [
+        1230.261,
+        5541.489
+      ],
+      "height": 52.464,
+      "flip_h": true,
+      "opacity": 0.805,
+      "composition": "edge_10_06",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0229",
+      "asset": "pine_single",
+      "position": [
+        1191.219,
+        5567.391
+      ],
+      "height": 43.52,
+      "flip_h": false,
+      "opacity": 0.893,
+      "composition": "edge_10_06",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0230",
+      "asset": "pine_single",
+      "position": [
+        1247.882,
+        5443.476
+      ],
+      "height": 40.298,
+      "flip_h": true,
+      "opacity": 0.804,
+      "composition": "edge_10_06",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0231",
+      "asset": "rock_group",
+      "position": [
+        1152.582,
+        5523.209
+      ],
+      "height": 17.893,
+      "flip_h": false,
+      "opacity": 0.934,
+      "composition": "edge_10_06",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0232",
+      "asset": "mixed_group",
+      "position": [
+        3249.502,
+        6177.236
+      ],
+      "height": 50.977,
+      "flip_h": true,
+      "opacity": 0.8,
+      "composition": "edge_11_01",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0233",
+      "asset": "broadleaf_single",
+      "position": [
+        3203.526,
+        6106.208
+      ],
+      "height": 40.398,
+      "flip_h": false,
+      "opacity": 0.907,
+      "composition": "edge_11_01",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0234",
+      "asset": "broadleaf_single",
+      "position": [
+        3275.844,
+        6217.591
+      ],
+      "height": 42.592,
+      "flip_h": false,
+      "opacity": 0.891,
+      "composition": "edge_11_01",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0235",
+      "asset": "broadleaf_single",
+      "position": [
+        3303.391,
+        6212.247
+      ],
+      "height": 42.244,
+      "flip_h": false,
+      "opacity": 0.81,
+      "composition": "edge_11_01",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0236",
+      "asset": "broadleaf_single",
+      "position": [
+        3134.738,
+        6113.891
+      ],
+      "height": 37.408,
+      "flip_h": false,
+      "opacity": 0.911,
+      "composition": "edge_11_01",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0237",
+      "asset": "mixed_group",
+      "position": [
+        3954.521,
+        6533.495
+      ],
+      "height": 53.564,
+      "flip_h": false,
+      "opacity": 0.812,
+      "composition": "edge_11_02",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0238",
+      "asset": "broadleaf_single",
+      "position": [
+        4052.558,
+        6563.678
+      ],
+      "height": 38.739,
+      "flip_h": true,
+      "opacity": 0.798,
+      "composition": "edge_11_02",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0239",
+      "asset": "broadleaf_single",
+      "position": [
+        3943.832,
+        6474.332
+      ],
+      "height": 37.537,
+      "flip_h": false,
+      "opacity": 0.862,
+      "composition": "edge_11_02",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0240",
+      "asset": "broadleaf_single",
+      "position": [
+        3899.114,
+        6462.812
+      ],
+      "height": 41.687,
+      "flip_h": false,
+      "opacity": 0.892,
+      "composition": "edge_11_02",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0241",
+      "asset": "broadleaf_single",
+      "position": [
+        4047.512,
+        6614.493
+      ],
+      "height": 41.654,
+      "flip_h": false,
+      "opacity": 0.922,
+      "composition": "edge_11_02",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0242",
+      "asset": "shrub",
+      "position": [
+        3994.603,
+        6479.552
+      ],
+      "height": 13.923,
+      "flip_h": true,
+      "opacity": 0.805,
+      "composition": "edge_11_02",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0243",
+      "asset": "mixed_group",
+      "position": [
+        3415.662,
+        6421.81
+      ],
+      "height": 57.54,
+      "flip_h": true,
+      "opacity": 0.916,
+      "composition": "edge_11_03",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0244",
+      "asset": "broadleaf_single",
+      "position": [
+        3428.449,
+        6495.526
+      ],
+      "height": 37.43,
+      "flip_h": true,
+      "opacity": 0.847,
+      "composition": "edge_11_03",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0245",
+      "asset": "broadleaf_single",
+      "position": [
+        3489.331,
+        6394.124
+      ],
+      "height": 41.775,
+      "flip_h": true,
+      "opacity": 0.873,
+      "composition": "edge_11_03",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0246",
+      "asset": "broadleaf_single",
+      "position": [
+        3467.826,
+        6548.164
+      ],
+      "height": 41.653,
+      "flip_h": false,
+      "opacity": 0.883,
+      "composition": "edge_11_03",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0247",
+      "asset": "rock_group",
+      "position": [
+        3542.121,
+        6383.746
+      ],
+      "height": 17.603,
+      "flip_h": false,
+      "opacity": 0.832,
+      "composition": "edge_11_03",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0248",
+      "asset": "mixed_group",
+      "position": [
+        4019.312,
+        6807.207
+      ],
+      "height": 54.884,
+      "flip_h": false,
+      "opacity": 0.909,
+      "composition": "edge_11_04",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0249",
+      "asset": "broadleaf_single",
+      "position": [
+        4124.683,
+        6784.802
+      ],
+      "height": 37.905,
+      "flip_h": true,
+      "opacity": 0.884,
+      "composition": "edge_11_04",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0250",
+      "asset": "broadleaf_single",
+      "position": [
+        3987.759,
+        6775.818
+      ],
+      "height": 41.18,
+      "flip_h": false,
+      "opacity": 0.88,
+      "composition": "edge_11_04",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0251",
+      "asset": "broadleaf_single",
+      "position": [
+        3919.964,
+        6838.782
+      ],
+      "height": 41.118,
+      "flip_h": false,
+      "opacity": 0.836,
+      "composition": "edge_11_04",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0252",
+      "asset": "willow_group",
+      "position": [
+        4008.675,
+        5917.539
+      ],
+      "height": 49.502,
+      "flip_h": false,
+      "opacity": 0.939,
+      "composition": "edge_11_05",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0253",
+      "asset": "willow_single",
+      "position": [
+        4074.202,
+        5911.329
+      ],
+      "height": 40.397,
+      "flip_h": false,
+      "opacity": 0.927,
+      "composition": "edge_11_05",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0254",
+      "asset": "willow_single",
+      "position": [
+        3986.695,
+        5863.672
+      ],
+      "height": 40.875,
+      "flip_h": false,
+      "opacity": 0.804,
+      "composition": "edge_11_05",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0255",
+      "asset": "willow_single",
+      "position": [
+        4156.677,
+        5957.207
+      ],
+      "height": 41.256,
+      "flip_h": true,
+      "opacity": 0.87,
+      "composition": "edge_11_05",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0256",
+      "asset": "shrub",
+      "position": [
+        4050.674,
+        5835.626
+      ],
+      "height": 13.307,
+      "flip_h": false,
+      "opacity": 0.795,
+      "composition": "edge_11_05",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0257",
+      "asset": "mixed_group",
+      "position": [
+        3652.29,
+        6786.576
+      ],
+      "height": 57.77,
+      "flip_h": true,
+      "opacity": 0.864,
+      "composition": "edge_11_06",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0258",
+      "asset": "broadleaf_single",
+      "position": [
+        3601.582,
+        6873.705
+      ],
+      "height": 39.424,
+      "flip_h": true,
+      "opacity": 0.877,
+      "composition": "edge_11_06",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0259",
+      "asset": "broadleaf_single",
+      "position": [
+        3724.893,
+        6805.178
+      ],
+      "height": 38.546,
+      "flip_h": false,
+      "opacity": 0.823,
+      "composition": "edge_11_06",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0260",
+      "asset": "broadleaf_single",
+      "position": [
+        3733.957,
+        6727.093
+      ],
+      "height": 37.752,
+      "flip_h": false,
+      "opacity": 0.911,
+      "composition": "edge_11_06",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0261",
+      "asset": "broadleaf_single",
+      "position": [
+        3588.927,
+        6913.061
+      ],
+      "height": 37.501,
+      "flip_h": false,
+      "opacity": 0.928,
+      "composition": "edge_11_06",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0262",
+      "asset": "rock_group",
+      "position": [
+        3738.38,
+        6843.358
+      ],
+      "height": 18.397,
+      "flip_h": true,
+      "opacity": 0.93,
+      "composition": "edge_11_06",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0263",
+      "asset": "willow_group",
+      "position": [
+        4798.901,
+        6375.658
+      ],
+      "height": 51.964,
+      "flip_h": false,
+      "opacity": 0.865,
+      "composition": "edge_12_01",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0264",
+      "asset": "willow_single",
+      "position": [
+        4846.98,
+        6367.46
+      ],
+      "height": 41.539,
+      "flip_h": false,
+      "opacity": 0.845,
+      "composition": "edge_12_01",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0265",
+      "asset": "shrub",
+      "position": [
+        4882.758,
+        6387.148
+      ],
+      "height": 13.622,
+      "flip_h": false,
+      "opacity": 0.904,
+      "composition": "edge_12_01",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0266",
+      "asset": "mixed_group",
+      "position": [
+        5597.579,
+        6027.461
+      ],
+      "height": 54.317,
+      "flip_h": false,
+      "opacity": 0.89,
+      "composition": "edge_12_02",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0267",
+      "asset": "broadleaf_single",
+      "position": [
+        5577.857,
+        5965.772
+      ],
+      "height": 42.696,
+      "flip_h": true,
+      "opacity": 0.821,
+      "composition": "edge_12_02",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0268",
+      "asset": "broadleaf_single",
+      "position": [
+        5597.111,
+        6090.523
+      ],
+      "height": 41.356,
+      "flip_h": true,
+      "opacity": 0.88,
+      "composition": "edge_12_02",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0269",
+      "asset": "broadleaf_single",
+      "position": [
+        5589.682,
+        6152.155
+      ],
+      "height": 37.699,
+      "flip_h": false,
+      "opacity": 0.813,
+      "composition": "edge_12_02",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0270",
+      "asset": "shrub",
+      "position": [
+        5517.514,
+        6016.7
+      ],
+      "height": 14.178,
+      "flip_h": true,
+      "opacity": 0.845,
+      "composition": "edge_12_02",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0271",
+      "asset": "mixed_group",
+      "position": [
+        4501.407,
+        6028.906
+      ],
+      "height": 52.567,
+      "flip_h": true,
+      "opacity": 0.908,
+      "composition": "edge_12_03",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0272",
+      "asset": "broadleaf_single",
+      "position": [
+        4427.027,
+        6065.018
+      ],
+      "height": 40.547,
+      "flip_h": true,
+      "opacity": 0.931,
+      "composition": "edge_12_03",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0273",
+      "asset": "broadleaf_single",
+      "position": [
+        4540.465,
+        6061.053
+      ],
+      "height": 39.008,
+      "flip_h": true,
+      "opacity": 0.909,
+      "composition": "edge_12_03",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0274",
+      "asset": "broadleaf_single",
+      "position": [
+        4600.949,
+        5963.883
+      ],
+      "height": 39.842,
+      "flip_h": true,
+      "opacity": 0.831,
+      "composition": "edge_12_03",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0275",
+      "asset": "broadleaf_single",
+      "position": [
+        4430.802,
+        6110.318
+      ],
+      "height": 40.577,
+      "flip_h": false,
+      "opacity": 0.86,
+      "composition": "edge_12_03",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0276",
+      "asset": "rock_group",
+      "position": [
+        4579.403,
+        6110.198
+      ],
+      "height": 17.068,
+      "flip_h": true,
+      "opacity": 0.86,
+      "composition": "edge_12_03",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0277",
+      "asset": "willow_group",
+      "position": [
+        5899.097,
+        6746.186
+      ],
+      "height": 54.439,
+      "flip_h": true,
+      "opacity": 0.826,
+      "composition": "edge_12_04",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0278",
+      "asset": "willow_single",
+      "position": [
+        5910.729,
+        6698.998
+      ],
+      "height": 45.502,
+      "flip_h": true,
+      "opacity": 0.835,
+      "composition": "edge_12_04",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0279",
+      "asset": "willow_single",
+      "position": [
+        5840.189,
+        6793.835
+      ],
+      "height": 42.375,
+      "flip_h": true,
+      "opacity": 0.91,
+      "composition": "edge_12_04",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0280",
+      "asset": "willow_single",
+      "position": [
+        5909.6,
+        6850.759
+      ],
+      "height": 40.285,
+      "flip_h": true,
+      "opacity": 0.892,
+      "composition": "edge_12_04",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0281",
+      "asset": "shrub",
+      "position": [
+        5829.588,
+        6754.104
+      ],
+      "height": 13.938,
+      "flip_h": false,
+      "opacity": 0.853,
+      "composition": "edge_12_04",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0282",
+      "asset": "mixed_group",
+      "position": [
+        5566.32,
+        6392.881
+      ],
+      "height": 53.746,
+      "flip_h": true,
+      "opacity": 0.869,
+      "composition": "edge_12_05",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0283",
+      "asset": "mixed_group",
+      "position": [
+        5003.069,
+        6066.239
+      ],
+      "height": 52.192,
+      "flip_h": true,
+      "opacity": 0.851,
+      "composition": "edge_12_06",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0284",
+      "asset": "broadleaf_single",
+      "position": [
+        5090.824,
+        6032.481
+      ],
+      "height": 42.345,
+      "flip_h": false,
+      "opacity": 0.864,
+      "composition": "edge_12_06",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0285",
+      "asset": "broadleaf_single",
+      "position": [
+        4965.845,
+        6051.123
+      ],
+      "height": 42.512,
+      "flip_h": false,
+      "opacity": 0.927,
+      "composition": "edge_12_06",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0286",
+      "asset": "broadleaf_single",
+      "position": [
+        4907.325,
+        6046.871
+      ],
+      "height": 41.664,
+      "flip_h": false,
+      "opacity": 0.791,
+      "composition": "edge_12_06",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0287",
+      "asset": "broadleaf_single",
+      "position": [
+        5114.348,
+        6066.226
+      ],
+      "height": 38.138,
+      "flip_h": false,
+      "opacity": 0.938,
+      "composition": "edge_12_06",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0288",
+      "asset": "rock_group",
+      "position": [
+        4963.073,
+        5996.749
+      ],
+      "height": 18.458,
+      "flip_h": true,
+      "opacity": 0.846,
+      "composition": "edge_12_06",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0289",
+      "asset": "reeds",
+      "position": [
+        6429.006,
+        5382.007
+      ],
+      "height": 22.793,
+      "flip_h": true,
+      "opacity": 0.885,
+      "composition": "bank_01",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0290",
+      "asset": "reeds",
+      "position": [
+        6453.136,
+        5359.751
+      ],
+      "height": 22.0,
+      "flip_h": false,
+      "opacity": 0.846,
+      "composition": "bank_01",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0291",
+      "asset": "reeds",
+      "position": [
+        389.381,
+        2767.523
+      ],
+      "height": 20.255,
+      "flip_h": false,
+      "opacity": 0.894,
+      "composition": "bank_02",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0292",
+      "asset": "reeds",
+      "position": [
+        433.572,
+        2754.655
+      ],
+      "height": 22.0,
+      "flip_h": false,
+      "opacity": 0.906,
+      "composition": "bank_02",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0293",
+      "asset": "reeds",
+      "position": [
+        1485.592,
+        3464.201
+      ],
+      "height": 23.599,
+      "flip_h": false,
+      "opacity": 0.928,
+      "composition": "bank_03",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0294",
+      "asset": "willow_single",
+      "position": [
+        1482.887,
+        3424.766
+      ],
+      "height": 44.0,
+      "flip_h": false,
+      "opacity": 0.854,
+      "composition": "bank_03",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0295",
+      "asset": "reeds",
+      "position": [
+        1170.686,
+        1899.71
+      ],
+      "height": 20.602,
+      "flip_h": true,
+      "opacity": 0.874,
+      "composition": "bank_04",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0296",
+      "asset": "reeds",
+      "position": [
+        1128.291,
+        1890.571
+      ],
+      "height": 22.0,
+      "flip_h": false,
+      "opacity": 0.904,
+      "composition": "bank_04",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0297",
+      "asset": "reeds",
+      "position": [
+        4991.396,
+        4915.807
+      ],
+      "height": 23.272,
+      "flip_h": true,
+      "opacity": 0.871,
+      "composition": "bank_05",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0298",
+      "asset": "reeds",
+      "position": [
+        5027.373,
+        4938.745
+      ],
+      "height": 22.0,
+      "flip_h": true,
+      "opacity": 0.808,
+      "composition": "bank_05",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0299",
+      "asset": "reeds",
+      "position": [
+        1933.199,
+        4459.642
+      ],
+      "height": 20.985,
+      "flip_h": false,
+      "opacity": 0.805,
+      "composition": "bank_06",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0300",
+      "asset": "willow_single",
+      "position": [
+        1977.201,
+        4404.503
+      ],
+      "height": 44.0,
+      "flip_h": true,
+      "opacity": 0.871,
+      "composition": "bank_06",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0301",
+      "asset": "reeds",
+      "position": [
+        757.065,
+        2775.556
+      ],
+      "height": 22.208,
+      "flip_h": true,
+      "opacity": 0.867,
+      "composition": "bank_07",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0302",
+      "asset": "reeds",
+      "position": [
+        772.411,
+        2808.23
+      ],
+      "height": 22.0,
+      "flip_h": true,
+      "opacity": 0.795,
+      "composition": "bank_07",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0303",
+      "asset": "reeds",
+      "position": [
+        2055.579,
+        5779.422
+      ],
+      "height": 20.435,
+      "flip_h": true,
+      "opacity": 0.871,
+      "composition": "bank_08",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0304",
+      "asset": "reeds",
+      "position": [
+        2112.437,
+        5795.453
+      ],
+      "height": 22.0,
+      "flip_h": false,
+      "opacity": 0.811,
+      "composition": "bank_08",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0305",
+      "asset": "reeds",
+      "position": [
+        1725.07,
+        2479.618
+      ],
+      "height": 23.503,
+      "flip_h": true,
+      "opacity": 0.792,
+      "composition": "bank_09",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0306",
+      "asset": "willow_single",
+      "position": [
+        1714.6,
+        2516.873
+      ],
+      "height": 44.0,
+      "flip_h": false,
+      "opacity": 0.844,
+      "composition": "bank_09",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0307",
+      "asset": "reeds",
+      "position": [
+        2388.702,
+        5997.922
+      ],
+      "height": 20.959,
+      "flip_h": false,
+      "opacity": 0.821,
+      "composition": "bank_10",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0308",
+      "asset": "reeds",
+      "position": [
+        2352.963,
+        5972.037
+      ],
+      "height": 22.0,
+      "flip_h": true,
+      "opacity": 0.882,
+      "composition": "bank_10",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0309",
+      "asset": "reeds",
+      "position": [
+        1075.919,
+        5795.408
+      ],
+      "height": 22.59,
+      "flip_h": false,
+      "opacity": 0.826,
+      "composition": "bank_11",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0310",
+      "asset": "reeds",
+      "position": [
+        1038.15,
+        5812.962
+      ],
+      "height": 22.0,
+      "flip_h": true,
+      "opacity": 0.898,
+      "composition": "bank_11",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0311",
+      "asset": "reeds",
+      "position": [
+        2431.454,
+        6208.293
+      ],
+      "height": 22.366,
+      "flip_h": false,
+      "opacity": 0.847,
+      "composition": "bank_12",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0312",
+      "asset": "willow_single",
+      "position": [
+        2407.032,
+        6218.095
+      ],
+      "height": 44.0,
+      "flip_h": false,
+      "opacity": 0.937,
+      "composition": "bank_12",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0313",
+      "asset": "reeds",
+      "position": [
+        1032.086,
+        1019.736
+      ],
+      "height": 23.684,
+      "flip_h": false,
+      "opacity": 0.908,
+      "composition": "bank_13",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0314",
+      "asset": "reeds",
+      "position": [
+        1085.378,
+        1004.121
+      ],
+      "height": 22.0,
+      "flip_h": true,
+      "opacity": 0.81,
+      "composition": "bank_13",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0315",
+      "asset": "reeds",
+      "position": [
+        2220.958,
+        3636.127
+      ],
+      "height": 22.308,
+      "flip_h": false,
+      "opacity": 0.938,
+      "composition": "bank_14",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0316",
+      "asset": "reeds",
+      "position": [
+        2248.752,
+        3639.062
+      ],
+      "height": 22.0,
+      "flip_h": false,
+      "opacity": 0.917,
+      "composition": "bank_14",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0317",
+      "asset": "reeds",
+      "position": [
+        2912.85,
+        2002.22
+      ],
+      "height": 23.661,
+      "flip_h": true,
+      "opacity": 0.884,
+      "composition": "bank_15",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0318",
+      "asset": "willow_single",
+      "position": [
+        2981.284,
+        2038.721
+      ],
+      "height": 44.0,
+      "flip_h": true,
+      "opacity": 0.875,
+      "composition": "bank_15",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0319",
+      "asset": "reeds",
+      "position": [
+        5597.178,
+        5393.628
+      ],
+      "height": 22.893,
+      "flip_h": false,
+      "opacity": 0.828,
+      "composition": "bank_16",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0320",
+      "asset": "reeds",
+      "position": [
+        5538.717,
+        5436.949
+      ],
+      "height": 22.0,
+      "flip_h": false,
+      "opacity": 0.83,
+      "composition": "bank_16",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0321",
+      "asset": "reeds",
+      "position": [
+        4877.34,
+        2652.246
+      ],
+      "height": 21.066,
+      "flip_h": true,
+      "opacity": 0.926,
+      "composition": "bank_17",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0322",
+      "asset": "reeds",
+      "position": [
+        4940.501,
+        2611.051
+      ],
+      "height": 22.0,
+      "flip_h": false,
+      "opacity": 0.804,
+      "composition": "bank_17",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0323",
+      "asset": "reeds",
+      "position": [
+        1110.758,
+        2460.237
+      ],
+      "height": 21.515,
+      "flip_h": true,
+      "opacity": 0.894,
+      "composition": "bank_18",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0324",
+      "asset": "willow_single",
+      "position": [
+        1056.177,
+        2475.929
+      ],
+      "height": 44.0,
+      "flip_h": true,
+      "opacity": 0.903,
+      "composition": "bank_18",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0325",
+      "asset": "reeds",
+      "position": [
+        3987.847,
+        1940.315
+      ],
+      "height": 20.383,
+      "flip_h": false,
+      "opacity": 0.934,
+      "composition": "bank_19",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0326",
+      "asset": "reeds",
+      "position": [
+        3961.943,
+        1945.133
+      ],
+      "height": 22.0,
+      "flip_h": false,
+      "opacity": 0.93,
+      "composition": "bank_19",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0327",
+      "asset": "reeds",
+      "position": [
+        496.779,
+        525.547
+      ],
+      "height": 22.218,
+      "flip_h": false,
+      "opacity": 0.891,
+      "composition": "bank_20",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0328",
+      "asset": "reeds",
+      "position": [
+        547.318,
+        566.136
+      ],
+      "height": 22.0,
+      "flip_h": false,
+      "opacity": 0.868,
+      "composition": "bank_20",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0329",
+      "asset": "reeds",
+      "position": [
+        3025.214,
+        1846.736
+      ],
+      "height": 20.92,
+      "flip_h": false,
+      "opacity": 0.835,
+      "composition": "bank_21",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0330",
+      "asset": "willow_single",
+      "position": [
+        2987.94,
+        1871.678
+      ],
+      "height": 44.0,
+      "flip_h": true,
+      "opacity": 0.884,
+      "composition": "bank_21",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0331",
+      "asset": "reeds",
+      "position": [
+        1407.621,
+        1305.396
+      ],
+      "height": 20.89,
+      "flip_h": false,
+      "opacity": 0.894,
+      "composition": "bank_22",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0332",
+      "asset": "reeds",
+      "position": [
+        1368.935,
+        1276.959
+      ],
+      "height": 22.0,
+      "flip_h": true,
+      "opacity": 0.797,
+      "composition": "bank_22",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0333",
+      "asset": "reeds",
+      "position": [
+        881.497,
+        1505.059
+      ],
+      "height": 21.263,
+      "flip_h": false,
+      "opacity": 0.82,
+      "composition": "bank_23",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0334",
+      "asset": "reeds",
+      "position": [
+        847.604,
+        1532.265
+      ],
+      "height": 22.0,
+      "flip_h": false,
+      "opacity": 0.924,
+      "composition": "bank_23",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0335",
+      "asset": "reeds",
+      "position": [
+        1965.21,
+        3624.177
+      ],
+      "height": 22.988,
+      "flip_h": true,
+      "opacity": 0.791,
+      "composition": "bank_24",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0336",
+      "asset": "willow_single",
+      "position": [
+        1935.749,
+        3618.238
+      ],
+      "height": 44.0,
+      "flip_h": false,
+      "opacity": 0.91,
+      "composition": "bank_24",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0337",
+      "asset": "reeds",
+      "position": [
+        853.514,
+        698.458
+      ],
+      "height": 22.247,
+      "flip_h": true,
+      "opacity": 0.826,
+      "composition": "bank_25",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0338",
+      "asset": "reeds",
+      "position": [
+        789.089,
+        675.213
+      ],
+      "height": 22.0,
+      "flip_h": false,
+      "opacity": 0.926,
+      "composition": "bank_25",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0339",
+      "asset": "reeds",
+      "position": [
+        2672.091,
+        3769.122
+      ],
+      "height": 21.284,
+      "flip_h": true,
+      "opacity": 0.865,
+      "composition": "bank_26",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0340",
+      "asset": "reeds",
+      "position": [
+        2651.084,
+        3814.561
+      ],
+      "height": 22.0,
+      "flip_h": true,
+      "opacity": 0.923,
+      "composition": "bank_26",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0341",
+      "asset": "shrub",
+      "position": [
+        5806.112,
+        5985.618
+      ],
+      "height": 14.137,
+      "flip_h": false,
+      "opacity": 0.937,
+      "composition": "outlier",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0342",
+      "asset": "broadleaf_single",
+      "position": [
+        4791.988,
+        3382.199
+      ],
+      "height": 42.99,
+      "flip_h": false,
+      "opacity": 0.865,
+      "composition": "outlier",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0343",
+      "asset": "shrub",
+      "position": [
+        3414.126,
+        6599.966
+      ],
+      "height": 14.011,
+      "flip_h": true,
+      "opacity": 0.845,
+      "composition": "outlier",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0344",
+      "asset": "shrub",
+      "position": [
+        4745.381,
+        3332.836
+      ],
+      "height": 13.618,
+      "flip_h": true,
+      "opacity": 0.798,
+      "composition": "outlier",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0345",
+      "asset": "rock_group",
+      "position": [
+        3742.558,
+        1039.029
+      ],
+      "height": 17.542,
+      "flip_h": false,
+      "opacity": 0.853,
+      "composition": "outlier",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0346",
+      "asset": "broadleaf_single",
+      "position": [
+        3518.046,
+        6485.697
+      ],
+      "height": 39.504,
+      "flip_h": true,
+      "opacity": 0.808,
+      "composition": "outlier",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0347",
+      "asset": "rock_group",
+      "position": [
+        4125.923,
+        5962.937
+      ],
+      "height": 18.315,
+      "flip_h": true,
+      "opacity": 0.912,
+      "composition": "outlier",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0348",
+      "asset": "pine_single",
+      "position": [
+        4544.416,
+        4864.098
+      ],
+      "height": 41.242,
+      "flip_h": true,
+      "opacity": 0.903,
+      "composition": "outlier",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0349",
+      "asset": "rock_group",
+      "position": [
+        1403.546,
+        4070.191
+      ],
+      "height": 18.469,
+      "flip_h": true,
+      "opacity": 0.918,
+      "composition": "outlier",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0350",
+      "asset": "shrub",
+      "position": [
+        5311.0,
+        2742.419
+      ],
+      "height": 13.462,
+      "flip_h": true,
+      "opacity": 0.903,
+      "composition": "outlier",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0351",
+      "asset": "broadleaf_single",
+      "position": [
+        732.469,
+        5285.977
+      ],
+      "height": 40.078,
+      "flip_h": false,
+      "opacity": 0.853,
+      "composition": "outlier",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0352",
+      "asset": "broadleaf_single",
+      "position": [
+        3342.656,
+        6287.998
+      ],
+      "height": 38.774,
+      "flip_h": true,
+      "opacity": 0.899,
+      "composition": "outlier",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0353",
+      "asset": "rock_group",
+      "position": [
+        4789.161,
+        4845.18
+      ],
+      "height": 17.066,
+      "flip_h": false,
+      "opacity": 0.869,
+      "composition": "outlier",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0354",
+      "asset": "rock_group",
+      "position": [
+        4361.275,
+        5999.778
+      ],
+      "height": 18.62,
+      "flip_h": false,
+      "opacity": 0.848,
+      "composition": "outlier",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0355",
+      "asset": "shrub",
+      "position": [
+        4415.03,
+        6136.968
+      ],
+      "height": 13.187,
+      "flip_h": false,
+      "opacity": 0.838,
+      "composition": "outlier",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0356",
+      "asset": "shrub",
+      "position": [
+        2687.89,
+        4253.208
+      ],
+      "height": 13.021,
+      "flip_h": true,
+      "opacity": 0.794,
+      "composition": "outlier",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0357",
+      "asset": "shrub",
+      "position": [
+        5305.086,
+        2832.276
+      ],
+      "height": 13.441,
+      "flip_h": true,
+      "opacity": 0.879,
+      "composition": "outlier",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0358",
+      "asset": "rock_group",
+      "position": [
+        1634.318,
+        4184.075
+      ],
+      "height": 18.272,
+      "flip_h": false,
+      "opacity": 0.845,
+      "composition": "outlier",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0359",
+      "asset": "shrub",
+      "position": [
+        1324.232,
+        4115.572
+      ],
+      "height": 13.478,
+      "flip_h": true,
+      "opacity": 0.869,
+      "composition": "outlier",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0360",
+      "asset": "shrub",
+      "position": [
+        2794.601,
+        4542.194
+      ],
+      "height": 13.441,
+      "flip_h": false,
+      "opacity": 0.818,
+      "composition": "outlier",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0361",
+      "asset": "rock_group",
+      "position": [
+        1814.304,
+        1309.804
+      ],
+      "height": 17.424,
+      "flip_h": false,
+      "opacity": 0.834,
+      "composition": "outlier",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0362",
+      "asset": "shrub",
+      "position": [
+        5945.418,
+        1074.2
+      ],
+      "height": 14.412,
+      "flip_h": false,
+      "opacity": 0.857,
+      "composition": "outlier",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0363",
+      "asset": "broadleaf_single",
+      "position": [
+        1620.373,
+        1357.895
+      ],
+      "height": 40.001,
+      "flip_h": false,
+      "opacity": 0.795,
+      "composition": "outlier",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0364",
+      "asset": "rock_group",
+      "position": [
+        3565.112,
+        1117.053
+      ],
+      "height": 16.81,
+      "flip_h": false,
+      "opacity": 0.916,
+      "composition": "outlier",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0365",
+      "asset": "pine_single",
+      "position": [
+        4618.493,
+        6161.242
+      ],
+      "height": 42.984,
+      "flip_h": false,
+      "opacity": 0.792,
+      "composition": "outlier",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0366",
+      "asset": "rock_group",
+      "position": [
+        785.009,
+        2367.014
+      ],
+      "height": 17.127,
+      "flip_h": true,
+      "opacity": 0.866,
+      "composition": "outlier",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0367",
+      "asset": "shrub",
+      "position": [
+        3335.454,
+        6552.817
+      ],
+      "height": 14.166,
+      "flip_h": false,
+      "opacity": 0.865,
+      "composition": "outlier",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0368",
+      "asset": "broadleaf_single",
+      "position": [
+        5861.747,
+        2974.924
+      ],
+      "height": 39.144,
+      "flip_h": true,
+      "opacity": 0.927,
+      "composition": "outlier",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0369",
+      "asset": "shrub",
+      "position": [
+        1928.915,
+        1278.946
+      ],
+      "height": 14.197,
+      "flip_h": true,
+      "opacity": 0.848,
+      "composition": "outlier",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0370",
+      "asset": "shrub",
+      "position": [
+        4920.752,
+        2629.301
+      ],
+      "height": 12.928,
+      "flip_h": false,
+      "opacity": 0.881,
+      "composition": "outlier",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0371",
+      "asset": "shrub",
+      "position": [
+        5950.94,
+        1123.68
+      ],
+      "height": 14.279,
+      "flip_h": false,
+      "opacity": 0.798,
+      "composition": "outlier",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0372",
+      "asset": "broadleaf_single",
+      "position": [
+        5185.111,
+        4680.426
+      ],
+      "height": 43.127,
+      "flip_h": false,
+      "opacity": 0.914,
+      "composition": "outlier",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0373",
+      "asset": "pine_single",
+      "position": [
+        690.284,
+        4069.741
+      ],
+      "height": 42.925,
+      "flip_h": false,
+      "opacity": 0.858,
+      "composition": "outlier",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0374",
+      "asset": "rock_group",
+      "position": [
+        721.787,
+        4360.582
+      ],
+      "height": 17.034,
+      "flip_h": true,
+      "opacity": 0.898,
+      "composition": "outlier",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0375",
+      "asset": "rock_group",
+      "position": [
+        6106.461,
+        1808.347
+      ],
+      "height": 18.506,
+      "flip_h": false,
+      "opacity": 0.834,
+      "composition": "outlier",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0376",
+      "asset": "rock_group",
+      "position": [
+        1010.084,
+        1571.352
+      ],
+      "height": 17.6,
+      "flip_h": false,
+      "opacity": 0.793,
+      "composition": "outlier",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0377",
+      "asset": "broadleaf_single",
+      "position": [
+        2196.101,
+        3155.268
+      ],
+      "height": 40.313,
+      "flip_h": false,
+      "opacity": 0.937,
+      "composition": "outlier",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0378",
+      "asset": "broadleaf_single",
+      "position": [
+        1322.21,
+        1566.333
+      ],
+      "height": 41.309,
+      "flip_h": true,
+      "opacity": 0.931,
+      "composition": "outlier",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0379",
+      "asset": "rock_group",
+      "position": [
+        1661.791,
+        1323.163
+      ],
+      "height": 17.302,
+      "flip_h": false,
+      "opacity": 0.794,
+      "composition": "outlier",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0380",
+      "asset": "broadleaf_single",
+      "position": [
+        1709.361,
+        5710.418
+      ],
+      "height": 40.448,
+      "flip_h": false,
+      "opacity": 0.884,
+      "composition": "outlier",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0381",
+      "asset": "broadleaf_single",
+      "position": [
+        1229.338,
+        3858.798
+      ],
+      "height": 39.863,
+      "flip_h": false,
+      "opacity": 0.791,
+      "composition": "outlier",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0382",
+      "asset": "pine_single",
+      "position": [
+        1753.975,
+        4286.436
+      ],
+      "height": 39.839,
+      "flip_h": true,
+      "opacity": 0.818,
+      "composition": "outlier",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0383",
+      "asset": "broadleaf_single",
+      "position": [
+        3007.517,
+        691.442
+      ],
+      "height": 42.366,
+      "flip_h": false,
+      "opacity": 0.903,
+      "composition": "outlier",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0384",
+      "asset": "pine_single",
+      "position": [
+        4149.489,
+        3047.854
+      ],
+      "height": 38.999,
+      "flip_h": false,
+      "opacity": 0.838,
+      "composition": "outlier",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0385",
+      "asset": "rock_group",
+      "position": [
+        962.348,
+        2215.62
+      ],
+      "height": 18.257,
+      "flip_h": true,
+      "opacity": 0.935,
+      "composition": "outlier",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0386",
+      "asset": "pine_single",
+      "position": [
+        5976.073,
+        1461.235
+      ],
+      "height": 41.028,
+      "flip_h": true,
+      "opacity": 0.919,
+      "composition": "outlier",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0387",
+      "asset": "pine_single",
+      "position": [
+        1242.951,
+        1491.663
+      ],
+      "height": 42.601,
+      "flip_h": true,
+      "opacity": 0.907,
+      "composition": "outlier",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0388",
+      "asset": "pine_single",
+      "position": [
+        2101.061,
+        743.342
+      ],
+      "height": 38.803,
+      "flip_h": true,
+      "opacity": 0.897,
+      "composition": "outlier",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0389",
+      "asset": "broadleaf_single",
+      "position": [
+        1763.006,
+        1131.048
+      ],
+      "height": 39.526,
+      "flip_h": false,
+      "opacity": 0.91,
+      "composition": "outlier",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0390",
+      "asset": "rock_group",
+      "position": [
+        5733.379,
+        2922.662
+      ],
+      "height": 17.762,
+      "flip_h": true,
+      "opacity": 0.866,
+      "composition": "outlier",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0391",
+      "asset": "broadleaf_single",
+      "position": [
+        1598.0,
+        2499.885
+      ],
+      "height": 39.954,
+      "flip_h": true,
+      "opacity": 0.935,
+      "composition": "outlier",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0392",
+      "asset": "broadleaf_single",
+      "position": [
+        847.177,
+        4048.927
+      ],
+      "height": 41.271,
+      "flip_h": true,
+      "opacity": 0.81,
+      "composition": "outlier",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0393",
+      "asset": "shrub",
+      "position": [
+        4578.432,
+        4465.856
+      ],
+      "height": 13.419,
+      "flip_h": false,
+      "opacity": 0.852,
+      "composition": "outlier",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0394",
+      "asset": "broadleaf_single",
+      "position": [
+        1826.456,
+        2472.139
+      ],
+      "height": 43.289,
+      "flip_h": false,
+      "opacity": 0.857,
+      "composition": "outlier",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0395",
+      "asset": "pine_single",
+      "position": [
+        3889.591,
+        2502.88
+      ],
+      "height": 39.318,
+      "flip_h": true,
+      "opacity": 0.912,
+      "composition": "outlier",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0396",
+      "asset": "broadleaf_single",
+      "position": [
+        4846.42,
+        6109.257
+      ],
+      "height": 39.946,
+      "flip_h": true,
+      "opacity": 0.933,
+      "composition": "outlier",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0397",
+      "asset": "broadleaf_single",
+      "position": [
+        2690.213,
+        4916.135
+      ],
+      "height": 40.56,
+      "flip_h": false,
+      "opacity": 0.916,
+      "composition": "outlier",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0398",
+      "asset": "pine_single",
+      "position": [
+        2562.291,
+        4187.171
+      ],
+      "height": 40.242,
+      "flip_h": false,
+      "opacity": 0.867,
+      "composition": "outlier",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0399",
+      "asset": "shrub",
+      "position": [
+        2770.863,
+        4847.702
+      ],
+      "height": 13.447,
+      "flip_h": true,
+      "opacity": 0.833,
+      "composition": "outlier",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0400",
+      "asset": "broadleaf_single",
+      "position": [
+        5486.673,
+        4444.941
+      ],
+      "height": 43.282,
+      "flip_h": false,
+      "opacity": 0.848,
+      "composition": "outlier",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0401",
+      "asset": "shrub",
+      "position": [
+        2084.528,
+        2971.801
+      ],
+      "height": 12.988,
+      "flip_h": false,
+      "opacity": 0.871,
+      "composition": "outlier",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0402",
+      "asset": "broadleaf_single",
+      "position": [
+        4938.09,
+        2530.043
+      ],
+      "height": 39.292,
+      "flip_h": false,
+      "opacity": 0.803,
+      "composition": "outlier",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0403",
+      "asset": "shrub",
+      "position": [
+        2024.436,
+        1081.497
+      ],
+      "height": 12.946,
+      "flip_h": true,
+      "opacity": 0.905,
+      "composition": "outlier",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0404",
+      "asset": "shrub",
+      "position": [
+        900.792,
+        4197.98
+      ],
+      "height": 13.763,
+      "flip_h": true,
+      "opacity": 0.845,
+      "composition": "outlier",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0405",
+      "asset": "broadleaf_single",
+      "position": [
+        3388.853,
+        6213.632
+      ],
+      "height": 40.447,
+      "flip_h": false,
+      "opacity": 0.831,
+      "composition": "outlier",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0406",
+      "asset": "broadleaf_single",
+      "position": [
+        4070.318,
+        6019.586
+      ],
+      "height": 41.407,
+      "flip_h": false,
+      "opacity": 0.815,
+      "composition": "outlier",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0407",
+      "asset": "shrub",
+      "position": [
+        3390.655,
+        6546.004
+      ],
+      "height": 14.004,
+      "flip_h": true,
+      "opacity": 0.849,
+      "composition": "outlier",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0408",
+      "asset": "rock_group",
+      "position": [
+        3125.709,
+        551.928
+      ],
+      "height": 17.175,
+      "flip_h": false,
+      "opacity": 0.849,
+      "composition": "outlier",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0409",
+      "asset": "rock_group",
+      "position": [
+        2090.887,
+        2830.501
+      ],
+      "height": 17.842,
+      "flip_h": true,
+      "opacity": 0.861,
+      "composition": "outlier",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0410",
+      "asset": "pine_single",
+      "position": [
+        4419.618,
+        1069.68
+      ],
+      "height": 40.456,
+      "flip_h": true,
+      "opacity": 0.89,
+      "composition": "outlier",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0411",
+      "asset": "rock_group",
+      "position": [
+        4110.85,
+        2661.12
+      ],
+      "height": 16.575,
+      "flip_h": false,
+      "opacity": 0.81,
+      "composition": "outlier",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0412",
+      "asset": "pine_single",
+      "position": [
+        1747.322,
+        5690.007
+      ],
+      "height": 38.679,
+      "flip_h": false,
+      "opacity": 0.918,
+      "composition": "outlier",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0413",
+      "asset": "broadleaf_single",
+      "position": [
+        2184.184,
+        3245.094
+      ],
+      "height": 39.696,
+      "flip_h": false,
+      "opacity": 0.863,
+      "composition": "outlier",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0414",
+      "asset": "pine_single",
+      "position": [
+        3659.541,
+        2857.423
+      ],
+      "height": 43.441,
+      "flip_h": true,
+      "opacity": 0.873,
+      "composition": "outlier",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0415",
+      "asset": "broadleaf_single",
+      "position": [
+        4373.498,
+        5113.685
+      ],
+      "height": 40.616,
+      "flip_h": false,
+      "opacity": 0.909,
+      "composition": "outlier",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0416",
+      "asset": "pine_single",
+      "position": [
+        5642.474,
+        6418.473
+      ],
+      "height": 42.576,
+      "flip_h": true,
+      "opacity": 0.796,
+      "composition": "outlier",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0417",
+      "asset": "rock_group",
+      "position": [
+        3528.526,
+        3141.262
+      ],
+      "height": 17.146,
+      "flip_h": false,
+      "opacity": 0.888,
+      "composition": "outlier",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0418",
+      "asset": "broadleaf_single",
+      "position": [
+        3840.051,
+        2684.363
+      ],
+      "height": 43.206,
+      "flip_h": false,
+      "opacity": 0.921,
+      "composition": "outlier",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0419",
+      "asset": "shrub",
+      "position": [
+        841.54,
+        2211.775
+      ],
+      "height": 14.089,
+      "flip_h": false,
+      "opacity": 0.842,
+      "composition": "outlier",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0420",
+      "asset": "rock_group",
+      "position": [
+        5248.12,
+        2589.097
+      ],
+      "height": 17.201,
+      "flip_h": true,
+      "opacity": 0.914,
+      "composition": "outlier",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0421",
+      "asset": "broadleaf_single",
+      "position": [
+        4848.645,
+        4867.19
+      ],
+      "height": 40.327,
+      "flip_h": true,
+      "opacity": 0.861,
+      "composition": "outlier",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0422",
+      "asset": "broadleaf_single",
+      "position": [
+        2885.709,
+        697.513
+      ],
+      "height": 41.479,
+      "flip_h": true,
+      "opacity": 0.855,
+      "composition": "outlier",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0423",
+      "asset": "rock_group",
+      "position": [
+        3215.176,
+        6511.629
+      ],
+      "height": 17.576,
+      "flip_h": false,
+      "opacity": 0.823,
+      "composition": "outlier",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0424",
+      "asset": "shrub",
+      "position": [
+        4268.081,
+        2994.805
+      ],
+      "height": 14.377,
+      "flip_h": false,
+      "opacity": 0.806,
+      "composition": "outlier",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0425",
+      "asset": "broadleaf_single",
+      "position": [
+        4616.831,
+        3280.878
+      ],
+      "height": 40.348,
+      "flip_h": true,
+      "opacity": 0.898,
+      "composition": "outlier",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0426",
+      "asset": "shrub",
+      "position": [
+        941.929,
+        2712.769
+      ],
+      "height": 13.032,
+      "flip_h": true,
+      "opacity": 0.791,
+      "composition": "outlier",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0427",
+      "asset": "rock_group",
+      "position": [
+        4571.381,
+        3410.417
+      ],
+      "height": 18.045,
+      "flip_h": true,
+      "opacity": 0.932,
+      "composition": "outlier",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0428",
+      "asset": "shrub",
+      "position": [
+        4863.299,
+        4893.668
+      ],
+      "height": 13.159,
+      "flip_h": true,
+      "opacity": 0.823,
+      "composition": "outlier",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0429",
+      "asset": "broadleaf_single",
+      "position": [
+        2227.269,
+        3913.165
+      ],
+      "height": 43.382,
+      "flip_h": true,
+      "opacity": 0.868,
+      "composition": "outlier",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0430",
+      "asset": "broadleaf_single",
+      "position": [
+        3766.32,
+        3025.026
+      ],
+      "height": 42.806,
+      "flip_h": true,
+      "opacity": 0.936,
+      "composition": "outlier",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0431",
+      "asset": "broadleaf_single",
+      "position": [
+        950.482,
+        2507.993
+      ],
+      "height": 40.79,
+      "flip_h": true,
+      "opacity": 0.933,
+      "composition": "outlier",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0432",
+      "asset": "shrub",
+      "position": [
+        4341.466,
+        5969.711
+      ],
+      "height": 13.432,
+      "flip_h": false,
+      "opacity": 0.917,
+      "composition": "outlier",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0433",
+      "asset": "broadleaf_single",
+      "position": [
+        5190.133,
+        6074.15
+      ],
+      "height": 42.412,
+      "flip_h": false,
+      "opacity": 0.848,
+      "composition": "outlier",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0434",
+      "asset": "shrub",
+      "position": [
+        1337.576,
+        3986.247
+      ],
+      "height": 14.144,
+      "flip_h": false,
+      "opacity": 0.797,
+      "composition": "outlier",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0435",
+      "asset": "pine_single",
+      "position": [
+        5698.09,
+        5996.855
+      ],
+      "height": 38.975,
+      "flip_h": false,
+      "opacity": 0.868,
+      "composition": "outlier",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0436",
+      "asset": "broadleaf_single",
+      "position": [
+        5791.438,
+        5952.285
+      ],
+      "height": 42.023,
+      "flip_h": false,
+      "opacity": 0.927,
+      "composition": "outlier",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0437",
+      "asset": "rock_group",
+      "position": [
+        4123.481,
+        5861.555
+      ],
+      "height": 17.5,
+      "flip_h": true,
+      "opacity": 0.866,
+      "composition": "outlier",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0438",
+      "asset": "shrub",
+      "position": [
+        3321.306,
+        1147.955
+      ],
+      "height": 12.949,
+      "flip_h": true,
+      "opacity": 0.823,
+      "composition": "outlier",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0439",
+      "asset": "pine_single",
+      "position": [
+        5669.143,
+        5942.007
+      ],
+      "height": 39.815,
+      "flip_h": false,
+      "opacity": 0.84,
+      "composition": "outlier",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0440",
+      "asset": "shrub",
+      "position": [
+        1952.47,
+        1156.859
+      ],
+      "height": 13.309,
+      "flip_h": true,
+      "opacity": 0.896,
+      "composition": "outlier",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0441",
+      "asset": "pine_single",
+      "position": [
+        3798.036,
+        2671.267
+      ],
+      "height": 42.991,
+      "flip_h": false,
+      "opacity": 0.809,
+      "composition": "outlier",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0442",
+      "asset": "shrub",
+      "position": [
+        5747.425,
+        3189.705
+      ],
+      "height": 14.089,
+      "flip_h": false,
+      "opacity": 0.939,
+      "composition": "outlier",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0443",
+      "asset": "pine_single",
+      "position": [
+        3070.08,
+        552.211
+      ],
+      "height": 42.012,
+      "flip_h": false,
+      "opacity": 0.885,
+      "composition": "outlier",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0444",
+      "asset": "shrub",
+      "position": [
+        1581.863,
+        1314.596
+      ],
+      "height": 13.893,
+      "flip_h": false,
+      "opacity": 0.901,
+      "composition": "outlier",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0445",
+      "asset": "shrub",
+      "position": [
+        5810.552,
+        1702.702
+      ],
+      "height": 13.474,
+      "flip_h": true,
+      "opacity": 0.848,
+      "composition": "outlier",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0446",
+      "asset": "rock_group",
+      "position": [
+        5223.146,
+        2627.345
+      ],
+      "height": 17.311,
+      "flip_h": true,
+      "opacity": 0.831,
+      "composition": "outlier",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0447",
+      "asset": "broadleaf_single",
+      "position": [
+        4545.58,
+        4629.836
+      ],
+      "height": 39.764,
+      "flip_h": true,
+      "opacity": 0.803,
+      "composition": "outlier",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0448",
+      "asset": "shrub",
+      "position": [
+        5743.988,
+        6450.744
+      ],
+      "height": 13.374,
+      "flip_h": true,
+      "opacity": 0.885,
+      "composition": "outlier",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0449",
+      "asset": "broadleaf_single",
+      "position": [
+        4766.032,
+        4864.84
+      ],
+      "height": 42.177,
+      "flip_h": true,
+      "opacity": 0.862,
+      "composition": "outlier",
+      "lod_rank": 9
+    },
+    {
+      "id": "bc_scenery_0450",
+      "asset": "shrub",
+      "position": [
+        1031.519,
+        2859.123
+      ],
+      "height": 14.101,
+      "flip_h": false,
+      "opacity": 0.876,
+      "composition": "outlier",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0451",
+      "asset": "rock_group",
+      "position": [
+        3037.801,
+        670.05
+      ],
+      "height": 16.665,
+      "flip_h": true,
+      "opacity": 0.816,
+      "composition": "outlier",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0452",
+      "asset": "rock_group",
+      "position": [
+        3887.563,
+        6851.738
+      ],
+      "height": 18.479,
+      "flip_h": true,
+      "opacity": 0.843,
+      "composition": "outlier",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0453",
+      "asset": "broadleaf_single",
+      "position": [
+        4520.392,
+        6219.911
+      ],
+      "height": 40.757,
+      "flip_h": true,
+      "opacity": 0.82,
+      "composition": "outlier",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0454",
+      "asset": "rock_group",
+      "position": [
+        2860.01,
+        787.685
+      ],
+      "height": 18.119,
+      "flip_h": true,
+      "opacity": 0.907,
+      "composition": "outlier",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0455",
+      "asset": "broadleaf_single",
+      "position": [
+        2029.178,
+        3934.863
+      ],
+      "height": 41.793,
+      "flip_h": true,
+      "opacity": 0.876,
+      "composition": "outlier",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0456",
+      "asset": "shrub",
+      "position": [
+        1360.896,
+        4073.494
+      ],
+      "height": 13.883,
+      "flip_h": false,
+      "opacity": 0.803,
+      "composition": "outlier",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0457",
+      "asset": "shrub",
+      "position": [
+        2279.051,
+        3937.688
+      ],
+      "height": 14.231,
+      "flip_h": false,
+      "opacity": 0.816,
+      "composition": "outlier",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0458",
+      "asset": "broadleaf_single",
+      "position": [
+        3360.721,
+        6619.017
+      ],
+      "height": 41.923,
+      "flip_h": false,
+      "opacity": 0.802,
+      "composition": "outlier",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0459",
+      "asset": "shrub",
+      "position": [
+        6012.088,
+        1092.486
+      ],
+      "height": 13.395,
+      "flip_h": true,
+      "opacity": 0.809,
+      "composition": "outlier",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0460",
+      "asset": "broadleaf_single",
+      "position": [
+        4914.714,
+        4464.085
+      ],
+      "height": 41.697,
+      "flip_h": false,
+      "opacity": 0.859,
+      "composition": "outlier",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0461",
+      "asset": "broadleaf_single",
+      "position": [
+        1972.645,
+        4229.46
+      ],
+      "height": 42.491,
+      "flip_h": false,
+      "opacity": 0.907,
+      "composition": "outlier",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0462",
+      "asset": "broadleaf_single",
+      "position": [
+        3506.162,
+        1163.474
+      ],
+      "height": 42.252,
+      "flip_h": true,
+      "opacity": 0.85,
+      "composition": "outlier",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0463",
+      "asset": "broadleaf_single",
+      "position": [
+        5023.376,
+        5858.695
+      ],
+      "height": 38.99,
+      "flip_h": false,
+      "opacity": 0.904,
+      "composition": "outlier",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0464",
+      "asset": "broadleaf_single",
+      "position": [
+        5911.853,
+        1384.004
+      ],
+      "height": 40.202,
+      "flip_h": true,
+      "opacity": 0.845,
+      "composition": "outlier",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0465",
+      "asset": "rock_group",
+      "position": [
+        3819.822,
+        3067.978
+      ],
+      "height": 16.59,
+      "flip_h": true,
+      "opacity": 0.899,
+      "composition": "outlier",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0466",
+      "asset": "shrub",
+      "position": [
+        5886.495,
+        6838.627
+      ],
+      "height": 14.459,
+      "flip_h": true,
+      "opacity": 0.906,
+      "composition": "outlier",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0467",
+      "asset": "shrub",
+      "position": [
+        2895.8,
+        4506.13
+      ],
+      "height": 14.177,
+      "flip_h": false,
+      "opacity": 0.791,
+      "composition": "outlier",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0468",
+      "asset": "broadleaf_single",
+      "position": [
+        6001.291,
+        6685.906
+      ],
+      "height": 42.446,
+      "flip_h": false,
+      "opacity": 0.911,
+      "composition": "outlier",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0469",
+      "asset": "broadleaf_single",
+      "position": [
+        4627.891,
+        5964.335
+      ],
+      "height": 39.84,
+      "flip_h": false,
+      "opacity": 0.838,
+      "composition": "outlier",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0470",
+      "asset": "broadleaf_single",
+      "position": [
+        5740.183,
+        2959.971
+      ],
+      "height": 41.469,
+      "flip_h": false,
+      "opacity": 0.793,
+      "composition": "outlier",
+      "lod_rank": 1
+    },
+    {
+      "id": "bc_scenery_0471",
+      "asset": "pine_single",
+      "position": [
+        5474.124,
+        2715.553
+      ],
+      "height": 39.247,
+      "flip_h": true,
+      "opacity": 0.861,
+      "composition": "outlier",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0472",
+      "asset": "rock_group",
+      "position": [
+        1998.91,
+        907.347
+      ],
+      "height": 18.423,
+      "flip_h": false,
+      "opacity": 0.805,
+      "composition": "outlier",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0473",
+      "asset": "pine_single",
+      "position": [
+        4889.902,
+        4908.672
+      ],
+      "height": 42.459,
+      "flip_h": false,
+      "opacity": 0.856,
+      "composition": "outlier",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0474",
+      "asset": "rock_group",
+      "position": [
+        1212.041,
+        1386.954
+      ],
+      "height": 18.447,
+      "flip_h": false,
+      "opacity": 0.938,
+      "composition": "outlier",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0475",
+      "asset": "pine_single",
+      "position": [
+        1318.084,
+        1171.376
+      ],
+      "height": 39.987,
+      "flip_h": true,
+      "opacity": 0.874,
+      "composition": "outlier",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0476",
+      "asset": "rock_group",
+      "position": [
+        3211.481,
+        992.272
+      ],
+      "height": 17.57,
+      "flip_h": false,
+      "opacity": 0.878,
+      "composition": "outlier",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0477",
+      "asset": "broadleaf_single",
+      "position": [
+        2023.177,
+        4385.224
+      ],
+      "height": 42.365,
+      "flip_h": false,
+      "opacity": 0.886,
+      "composition": "outlier",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0478",
+      "asset": "shrub",
+      "position": [
+        1262.783,
+        6050.488
+      ],
+      "height": 12.972,
+      "flip_h": true,
+      "opacity": 0.914,
+      "composition": "outlier",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0479",
+      "asset": "rock_group",
+      "position": [
+        1758.273,
+        5883.395
+      ],
+      "height": 18.279,
+      "flip_h": true,
+      "opacity": 0.89,
+      "composition": "outlier",
+      "lod_rank": 7
+    },
+    {
+      "id": "bc_scenery_0480",
+      "asset": "broadleaf_single",
+      "position": [
+        4910.139,
+        2663.239
+      ],
+      "height": 39.204,
+      "flip_h": false,
+      "opacity": 0.919,
+      "composition": "outlier",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0481",
+      "asset": "shrub",
+      "position": [
+        4458.876,
+        6203.977
+      ],
+      "height": 13.048,
+      "flip_h": false,
+      "opacity": 0.929,
+      "composition": "outlier",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0482",
+      "asset": "rock_group",
+      "position": [
+        5954.263,
+        6879.374
+      ],
+      "height": 17.725,
+      "flip_h": true,
+      "opacity": 0.877,
+      "composition": "outlier",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0483",
+      "asset": "broadleaf_single",
+      "position": [
+        510.419,
+        1117.218
+      ],
+      "height": 40.476,
+      "flip_h": false,
+      "opacity": 0.909,
+      "composition": "outlier",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0484",
+      "asset": "shrub",
+      "position": [
+        398.071,
+        1125.035
+      ],
+      "height": 14.083,
+      "flip_h": true,
+      "opacity": 0.911,
+      "composition": "outlier",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0485",
+      "asset": "broadleaf_single",
+      "position": [
+        1030.029,
+        2508.497
+      ],
+      "height": 40.644,
+      "flip_h": false,
+      "opacity": 0.819,
+      "composition": "outlier",
+      "lod_rank": 6
+    },
+    {
+      "id": "bc_scenery_0486",
+      "asset": "shrub",
+      "position": [
+        1976.588,
+        1238.976
+      ],
+      "height": 14.363,
+      "flip_h": true,
+      "opacity": 0.836,
+      "composition": "outlier",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0487",
+      "asset": "rock_group",
+      "position": [
+        5373.477,
+        4844.583
+      ],
+      "height": 18.567,
+      "flip_h": false,
+      "opacity": 0.859,
+      "composition": "outlier",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0488",
+      "asset": "broadleaf_single",
+      "position": [
+        4456.492,
+        1142.354
+      ],
+      "height": 40.933,
+      "flip_h": true,
+      "opacity": 0.828,
+      "composition": "outlier",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0489",
+      "asset": "pine_single",
+      "position": [
+        5643.77,
+        1671.962
+      ],
+      "height": 39.575,
+      "flip_h": true,
+      "opacity": 0.901,
+      "composition": "outlier",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0490",
+      "asset": "pine_single",
+      "position": [
+        4849.568,
+        2660.856
+      ],
+      "height": 41.093,
+      "flip_h": true,
+      "opacity": 0.872,
+      "composition": "outlier",
+      "lod_rank": 3
+    },
+    {
+      "id": "bc_scenery_0491",
+      "asset": "broadleaf_single",
+      "position": [
+        4281.18,
+        5000.825
+      ],
+      "height": 40.283,
+      "flip_h": false,
+      "opacity": 0.926,
+      "composition": "outlier",
+      "lod_rank": 10
+    },
+    {
+      "id": "bc_scenery_0492",
+      "asset": "rock_group",
+      "position": [
+        3882.615,
+        3075.263
+      ],
+      "height": 17.771,
+      "flip_h": true,
+      "opacity": 0.815,
+      "composition": "outlier",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0493",
+      "asset": "broadleaf_single",
+      "position": [
+        1559.197,
+        5931.337
+      ],
+      "height": 40.376,
+      "flip_h": true,
+      "opacity": 0.906,
+      "composition": "outlier",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0494",
+      "asset": "rock_group",
+      "position": [
+        4476.584,
+        6135.236
+      ],
+      "height": 17.517,
+      "flip_h": true,
+      "opacity": 0.795,
+      "composition": "outlier",
+      "lod_rank": 4
+    },
+    {
+      "id": "bc_scenery_0495",
+      "asset": "broadleaf_single",
+      "position": [
+        5223.262,
+        4645.026
+      ],
+      "height": 43.101,
+      "flip_h": true,
+      "opacity": 0.877,
+      "composition": "outlier",
+      "lod_rank": 8
+    },
+    {
+      "id": "bc_scenery_0496",
+      "asset": "broadleaf_single",
+      "position": [
+        5179.23,
+        6046.893
+      ],
+      "height": 43.143,
+      "flip_h": true,
+      "opacity": 0.902,
+      "composition": "outlier",
+      "lod_rank": 5
+    },
+    {
+      "id": "bc_scenery_0497",
+      "asset": "rock_group",
+      "position": [
+        5674.101,
+        6321.185
+      ],
+      "height": 17.689,
+      "flip_h": false,
+      "opacity": 0.836,
+      "composition": "outlier",
+      "lod_rank": 2
+    },
+    {
+      "id": "bc_scenery_0498",
+      "asset": "rock_group",
+      "position": [
+        2946.5,
+        965.235
+      ],
+      "height": 18.145,
+      "flip_h": true,
+      "opacity": 0.878,
+      "composition": "outlier",
+      "lod_rank": 11
+    },
+    {
+      "id": "bc_scenery_0499",
+      "asset": "pine_single",
+      "position": [
+        3362.619,
+        6170.783
+      ],
+      "height": 38.797,
+      "flip_h": true,
+      "opacity": 0.893,
+      "composition": "outlier",
+      "lod_rank": 0
+    },
+    {
+      "id": "bc_scenery_0500",
+      "asset": "rock_group",
+      "position": [
+        2011.347,
+        1110.838
+      ],
+      "height": 17.511,
+      "flip_h": true,
+      "opacity": 0.805,
+      "composition": "outlier",
+      "lod_rank": 7
+    }
+  ],
+  "roads": [
+    {
+      "id": "bc_scenery_road_01",
+      "source_edge": "bc_place_113~bc_spur_mid_04",
+      "near_place": "bc_place_113",
+      "asset": "road_dirt",
+      "points": [
+        [
+          3070.132,
+          316.17
+        ],
+        [
+          3076.843,
+          317.91
+        ],
+        [
+          3083.554,
+          319.65
+        ],
+        [
+          3090.265,
+          321.39
+        ],
+        [
+          3096.977,
+          323.13
+        ],
+        [
+          3103.688,
+          324.87
+        ],
+        [
+          3110.399,
+          326.61
+        ],
+        [
+          3117.111,
+          328.35
+        ],
+        [
+          3123.822,
+          330.09
+        ],
+        [
+          3130.533,
+          331.829
+        ],
+        [
+          3137.244,
+          333.569
+        ],
+        [
+          3143.956,
+          335.309
+        ],
+        [
+          3150.667,
+          337.049
+        ],
+        [
+          3157.378,
+          338.789
+        ],
+        [
+          3164.089,
+          340.529
+        ],
+        [
+          3170.801,
+          342.269
+        ],
+        [
+          3177.512,
+          344.009
+        ],
+        [
+          3184.223,
+          345.749
+        ],
+        [
+          3190.934,
+          347.489
+        ],
+        [
+          3197.646,
+          349.229
+        ],
+        [
+          3204.357,
+          350.969
+        ],
+        [
+          3211.068,
+          352.709
+        ],
+        [
+          3217.779,
+          354.449
+        ],
+        [
+          3224.491,
+          356.189
+        ],
+        [
+          3231.202,
+          357.929
+        ],
+        [
+          3237.913,
+          359.669
+        ],
+        [
+          3244.625,
+          361.409
+        ],
+        [
+          3251.336,
+          363.149
+        ],
+        [
+          3258.047,
+          364.889
+        ],
+        [
+          3264.758,
+          366.629
+        ],
+        [
+          3271.47,
+          368.369
+        ],
+        [
+          3277.179,
+          369.674
+        ],
+        [
+          3282.303,
+          370.542
+        ],
+        [
+          3287.052,
+          371.122
+        ],
+        [
+          3291.635,
+          371.564
+        ],
+        [
+          3296.26,
+          372.017
+        ],
+        [
+          3301.135,
+          372.63
+        ],
+        [
+          3306.471,
+          373.553
+        ],
+        [
+          3312.475,
+          374.934
+        ],
+        [
+          3315.916,
+          375.93
+        ],
+        [
+          3319.356,
+          376.925
+        ],
+        [
+          3323.34,
+          378.299
+        ],
+        [
+          3327.324,
+          379.674
+        ],
+        [
+          3331.955,
+          381.501
+        ],
+        [
+          3336.587,
+          383.329
+        ],
+        [
+          3341.97,
+          385.686
+        ],
+        [
+          3347.353,
+          388.042
+        ]
+      ],
+      "width": 7.5,
+      "opacity": 0.48,
+      "length": 286.876,
+      "min_zoom": 0.28
+    },
+    {
+      "id": "bc_scenery_road_02",
+      "source_edge": "bc_place_034~bc_transit_025_01",
+      "near_place": "bc_place_034",
+      "asset": "road_dirt",
+      "points": [
+        [
+          1170.715,
+          4356.738
+        ],
+        [
+          1163.973,
+          4355.119
+        ],
+        [
+          1157.232,
+          4353.5
+        ],
+        [
+          1150.491,
+          4351.881
+        ],
+        [
+          1143.75,
+          4350.262
+        ],
+        [
+          1137.009,
+          4348.642
+        ],
+        [
+          1130.268,
+          4347.023
+        ],
+        [
+          1123.526,
+          4345.404
+        ],
+        [
+          1116.785,
+          4343.785
+        ],
+        [
+          1110.044,
+          4342.166
+        ],
+        [
+          1103.303,
+          4340.546
+        ],
+        [
+          1096.562,
+          4338.927
+        ],
+        [
+          1089.82,
+          4337.308
+        ],
+        [
+          1083.079,
+          4335.689
+        ],
+        [
+          1076.338,
+          4334.069
+        ],
+        [
+          1069.597,
+          4332.45
+        ],
+        [
+          1062.856,
+          4330.831
+        ],
+        [
+          1056.115,
+          4329.212
+        ],
+        [
+          1049.373,
+          4327.593
+        ],
+        [
+          1042.632,
+          4325.973
+        ],
+        [
+          1035.891,
+          4324.354
+        ],
+        [
+          1029.15,
+          4322.735
+        ],
+        [
+          1022.409,
+          4321.116
+        ],
+        [
+          1015.668,
+          4319.497
+        ],
+        [
+          1008.926,
+          4317.877
+        ],
+        [
+          1002.185,
+          4316.258
+        ],
+        [
+          995.444,
+          4314.639
+        ],
+        [
+          988.703,
+          4313.02
+        ],
+        [
+          981.962,
+          4311.401
+        ],
+        [
+          975.22,
+          4309.781
+        ],
+        [
+          968.479,
+          4308.162
+        ],
+        [
+          961.738,
+          4306.543
+        ],
+        [
+          954.997,
+          4304.924
+        ],
+        [
+          948.256,
+          4303.305
+        ],
+        [
+          941.515,
+          4301.685
+        ],
+        [
+          934.773,
+          4300.066
+        ],
+        [
+          928.032,
+          4298.447
+        ],
+        [
+          921.291,
+          4296.828
+        ],
+        [
+          914.55,
+          4295.209
+        ],
+        [
+          907.809,
+          4293.589
+        ]
+      ],
+      "width": 7.5,
+      "opacity": 0.48,
+      "length": 270.384,
+      "min_zoom": 0.28
+    },
+    {
+      "id": "bc_scenery_road_03",
+      "source_edge": "bc_place_030~bc_transit_137_01",
+      "near_place": "bc_place_030",
+      "asset": "road_dirt",
+      "points": [
+        [
+          5918.239,
+          327.331
+        ],
+        [
+          5924.054,
+          330.931
+        ],
+        [
+          5929.87,
+          334.531
+        ],
+        [
+          5935.685,
+          338.131
+        ],
+        [
+          5941.501,
+          341.731
+        ],
+        [
+          5947.316,
+          345.331
+        ],
+        [
+          5953.132,
+          348.931
+        ],
+        [
+          5958.947,
+          352.531
+        ],
+        [
+          5964.763,
+          356.131
+        ],
+        [
+          5970.578,
+          359.732
+        ],
+        [
+          5976.394,
+          363.332
+        ],
+        [
+          5982.21,
+          366.932
+        ],
+        [
+          5988.025,
+          370.532
+        ],
+        [
+          5993.841,
+          374.132
+        ],
+        [
+          5999.656,
+          377.732
+        ],
+        [
+          6005.472,
+          381.332
+        ],
+        [
+          6011.287,
+          384.932
+        ],
+        [
+          6017.103,
+          388.532
+        ],
+        [
+          6022.918,
+          392.132
+        ],
+        [
+          6028.734,
+          395.732
+        ],
+        [
+          6034.549,
+          399.333
+        ],
+        [
+          6040.365,
+          402.933
+        ],
+        [
+          6046.18,
+          406.533
+        ],
+        [
+          6051.996,
+          410.133
+        ],
+        [
+          6057.812,
+          413.733
+        ],
+        [
+          6063.627,
+          417.333
+        ],
+        [
+          6068.619,
+          420.365
+        ],
+        [
+          6073.059,
+          422.962
+        ],
+        [
+          6077.145,
+          425.277
+        ],
+        [
+          6081.072,
+          427.461
+        ],
+        [
+          6085.036,
+          429.669
+        ],
+        [
+          6089.233,
+          432.052
+        ],
+        [
+          6093.859,
+          434.764
+        ],
+        [
+          6099.11,
+          437.957
+        ],
+        [
+          6102.146,
+          439.87
+        ],
+        [
+          6105.181,
+          441.784
+        ],
+        [
+          6108.726,
+          444.09
+        ],
+        [
+          6112.27,
+          446.397
+        ],
+        [
+          6116.421,
+          449.174
+        ],
+        [
+          6120.571,
+          451.95
+        ],
+        [
+          6125.426,
+          455.273
+        ],
+        [
+          6130.281,
+          458.595
+        ]
+      ],
+      "width": 7.5,
+      "opacity": 0.48,
+      "length": 249.425,
+      "min_zoom": 0.28
+    },
+    {
+      "id": "bc_scenery_road_04",
+      "source_edge": "bc_place_014~bc_transit_156_01",
+      "near_place": "bc_place_014",
+      "asset": "road_dirt",
+      "points": [
+        [
+          1468.499,
+          2302.729
+        ],
+        [
+          1468.138,
+          2297.46
+        ],
+        [
+          1467.535,
+          2291.865
+        ],
+        [
+          1466.932,
+          2286.269
+        ],
+        [
+          1466.691,
+          2281.044
+        ],
+        [
+          1466.45,
+          2275.818
+        ],
+        [
+          1467.173,
+          2271.658
+        ],
+        [
+          1467.897,
+          2267.499
+        ],
+        [
+          1469.801,
+          2265.067
+        ],
+        [
+          1472.796,
+          2262.599
+        ],
+        [
+          1475.792,
+          2260.131
+        ],
+        [
+          1477.696,
+          2257.7
+        ],
+        [
+          1478.223,
+          2253.364
+        ],
+        [
+          1477.694,
+          2247.9
+        ],
+        [
+          1477.167,
+          2242.436
+        ],
+        [
+          1477.696,
+          2238.101
+        ],
+        [
+          1479.532,
+          2235.631
+        ],
+        [
+          1482.415,
+          2233.101
+        ],
+        [
+          1485.395,
+          2230.621
+        ],
+        [
+          1487.525,
+          2228.302
+        ],
+        [
+          1488.908,
+          2225.073
+        ],
+        [
+          1490.29,
+          2221.843
+        ],
+        [
+          1491.468,
+          2217.707
+        ],
+        [
+          1492.645,
+          2213.571
+        ],
+        [
+          1493.835,
+          2209.443
+        ],
+        [
+          1495.025,
+          2205.315
+        ],
+        [
+          1496.445,
+          2202.11
+        ],
+        [
+          1497.866,
+          2198.905
+        ],
+        [
+          1500.177,
+          2195.975
+        ],
+        [
+          1502.489,
+          2193.045
+        ],
+        [
+          1505.508,
+          2190.036
+        ],
+        [
+          1508.526,
+          2187.026
+        ],
+        [
+          1512.089,
+          2183.952
+        ],
+        [
+          1515.651,
+          2180.877
+        ],
+        [
+          1519.593,
+          2177.751
+        ],
+        [
+          1523.536,
+          2174.625
+        ],
+        [
+          1527.695,
+          2171.461
+        ],
+        [
+          1531.854,
+          2168.298
+        ],
+        [
+          1536.066,
+          2165.11
+        ],
+        [
+          1540.279,
+          2161.923
+        ],
+        [
+          1544.381,
+          2158.726
+        ],
+        [
+          1548.483,
+          2155.529
+        ],
+        [
+          1552.311,
+          2152.336
+        ],
+        [
+          1556.14,
+          2149.143
+        ],
+        [
+          1559.531,
+          2145.968
+        ],
+        [
+          1562.922,
+          2142.793
+        ],
+        [
+          1565.713,
+          2139.65
+        ],
+        [
+          1568.503,
+          2136.507
+        ],
+        [
+          1570.53,
+          2133.409
+        ],
+        [
+          1572.556,
+          2130.312
+        ],
+        [
+          1573.827,
+          2126.95
+        ],
+        [
+          1575.099,
+          2123.588
+        ],
+        [
+          1575.92,
+          2119.537
+        ],
+        [
+          1576.741,
+          2115.487
+        ],
+        [
+          1577.422,
+          2109.022
+        ],
+        [
+          1577.86,
+          2102.747
+        ]
+      ],
+      "width": 7.5,
+      "opacity": 0.48,
+      "length": 244.462,
+      "min_zoom": 0.28
+    },
+    {
+      "id": "bc_scenery_road_05",
+      "source_edge": "bc_place_019~bc_transit_058_01",
+      "near_place": "bc_place_019",
+      "asset": "road_dirt",
+      "points": [
+        [
+          5172.043,
+          2076.154
+        ],
+        [
+          5177.614,
+          2072.027
+        ],
+        [
+          5183.184,
+          2067.9
+        ],
+        [
+          5188.755,
+          2063.773
+        ],
+        [
+          5194.326,
+          2059.646
+        ],
+        [
+          5199.897,
+          2055.52
+        ],
+        [
+          5205.467,
+          2051.393
+        ],
+        [
+          5211.038,
+          2047.266
+        ],
+        [
+          5216.609,
+          2043.139
+        ],
+        [
+          5222.18,
+          2039.012
+        ],
+        [
+          5227.75,
+          2034.885
+        ],
+        [
+          5233.321,
+          2030.759
+        ],
+        [
+          5238.892,
+          2026.632
+        ],
+        [
+          5244.463,
+          2022.505
+        ],
+        [
+          5250.033,
+          2018.378
+        ],
+        [
+          5255.604,
+          2014.251
+        ],
+        [
+          5261.175,
+          2010.124
+        ],
+        [
+          5266.746,
+          2005.998
+        ],
+        [
+          5272.316,
+          2001.871
+        ],
+        [
+          5277.887,
+          1997.744
+        ],
+        [
+          5283.458,
+          1993.617
+        ],
+        [
+          5289.029,
+          1989.49
+        ],
+        [
+          5293.619,
+          1985.844
+        ],
+        [
+          5297.482,
+          1982.334
+        ],
+        [
+          5300.871,
+          1978.907
+        ],
+        [
+          5304.04,
+          1975.508
+        ],
+        [
+          5307.245,
+          1972.083
+        ],
+        [
+          5310.739,
+          1968.578
+        ],
+        [
+          5314.777,
+          1964.938
+        ],
+        [
+          5319.612,
+          1961.11
+        ],
+        [
+          5322.556,
+          1959.075
+        ],
+        [
+          5325.5,
+          1957.039
+        ],
+        [
+          5329.097,
+          1954.855
+        ],
+        [
+          5332.694,
+          1952.671
+        ],
+        [
+          5337.072,
+          1950.311
+        ],
+        [
+          5341.449,
+          1947.952
+        ],
+        [
+          5346.734,
+          1945.389
+        ],
+        [
+          5352.02,
+          1942.826
+        ]
+      ],
+      "width": 7.5,
+      "opacity": 0.48,
+      "length": 224.649,
+      "min_zoom": 0.28
+    },
+    {
+      "id": "bc_scenery_road_06",
+      "source_edge": "bc_place_027~bc_transit_042_01",
+      "near_place": "bc_place_027",
+      "asset": "road_dirt",
+      "points": [
+        [
+          913.875,
+          1965.409
+        ],
+        [
+          920.637,
+          1964.689
+        ],
+        [
+          927.4,
+          1963.969
+        ],
+        [
+          934.162,
+          1963.249
+        ],
+        [
+          940.925,
+          1962.53
+        ],
+        [
+          947.687,
+          1961.81
+        ],
+        [
+          954.45,
+          1961.09
+        ],
+        [
+          961.212,
+          1960.37
+        ],
+        [
+          967.975,
+          1959.65
+        ],
+        [
+          974.737,
+          1958.93
+        ],
+        [
+          981.5,
+          1958.21
+        ],
+        [
+          988.262,
+          1957.491
+        ],
+        [
+          995.025,
+          1956.771
+        ],
+        [
+          1001.787,
+          1956.051
+        ],
+        [
+          1008.55,
+          1955.331
+        ],
+        [
+          1015.312,
+          1954.611
+        ],
+        [
+          1022.075,
+          1953.891
+        ],
+        [
+          1028.837,
+          1953.171
+        ],
+        [
+          1035.6,
+          1952.452
+        ],
+        [
+          1042.362,
+          1951.732
+        ],
+        [
+          1048.23,
+          1950.657
+        ],
+        [
+          1053.502,
+          1948.908
+        ],
+        [
+          1058.391,
+          1946.708
+        ],
+        [
+          1063.111,
+          1944.281
+        ],
+        [
+          1067.874,
+          1941.849
+        ],
+        [
+          1072.894,
+          1939.635
+        ],
+        [
+          1078.382,
+          1937.863
+        ],
+        [
+          1084.553,
+          1936.756
+        ],
+        [
+          1088.086,
+          1936.646
+        ],
+        [
+          1091.618,
+          1936.536
+        ],
+        [
+          1095.705,
+          1936.982
+        ],
+        [
+          1099.792,
+          1937.427
+        ],
+        [
+          1104.539,
+          1938.54
+        ],
+        [
+          1109.286,
+          1939.652
+        ],
+        [
+          1114.8,
+          1941.543
+        ],
+        [
+          1120.314,
+          1943.434
+        ]
+      ],
+      "width": 7.5,
+      "opacity": 0.48,
+      "length": 210.973,
+      "min_zoom": 0.28
+    },
+    {
+      "id": "bc_scenery_road_07",
+      "source_edge": "bc_place_020~bc_transit_160_04",
+      "near_place": "bc_place_020",
+      "asset": "road_dirt",
+      "points": [
+        [
+          3648.103,
+          3975.553
+        ],
+        [
+          3643.293,
+          3980.362
+        ],
+        [
+          3638.483,
+          3985.172
+        ],
+        [
+          3633.674,
+          3989.982
+        ],
+        [
+          3628.864,
+          3994.791
+        ],
+        [
+          3624.055,
+          3999.601
+        ],
+        [
+          3619.245,
+          4004.411
+        ],
+        [
+          3614.435,
+          4009.22
+        ],
+        [
+          3609.626,
+          4014.03
+        ],
+        [
+          3604.816,
+          4018.839
+        ],
+        [
+          3600.006,
+          4023.649
+        ],
+        [
+          3595.197,
+          4028.459
+        ],
+        [
+          3590.387,
+          4033.268
+        ],
+        [
+          3585.578,
+          4038.078
+        ],
+        [
+          3580.768,
+          4042.888
+        ],
+        [
+          3575.958,
+          4047.697
+        ],
+        [
+          3571.149,
+          4052.507
+        ],
+        [
+          3566.339,
+          4057.317
+        ],
+        [
+          3561.529,
+          4062.126
+        ],
+        [
+          3557.463,
+          4066.324
+        ],
+        [
+          3553.994,
+          4070.14
+        ],
+        [
+          3550.913,
+          4073.711
+        ],
+        [
+          3548.01,
+          4077.176
+        ],
+        [
+          3545.077,
+          4080.672
+        ],
+        [
+          3541.903,
+          4084.336
+        ],
+        [
+          3538.28,
+          4088.306
+        ],
+        [
+          3533.998,
+          4092.719
+        ],
+        [
+          3531.423,
+          4095.216
+        ],
+        [
+          3528.848,
+          4097.713
+        ],
+        [
+          3525.735,
+          4100.57
+        ],
+        [
+          3522.621,
+          4103.426
+        ],
+        [
+          3518.864,
+          4106.711
+        ],
+        [
+          3515.107,
+          4109.995
+        ],
+        [
+          3510.602,
+          4113.777
+        ],
+        [
+          3506.098,
+          4117.558
+        ]
+      ],
+      "width": 7.5,
+      "opacity": 0.48,
+      "length": 200.974,
+      "min_zoom": 0.28
+    }
+  ],
+  "bridges": [],
+  "footings": [
+    {
+      "place_id": "bc_place_001",
+      "position": [
+        1622.722,
+        5455.107
+      ],
+      "width": 82.0,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_002",
+      "position": [
+        3076.9,
+        1376.745
+      ],
+      "width": 82.0,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_003",
+      "position": [
+        5906.863,
+        4849.526
+      ],
+      "width": 82.0,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_004",
+      "position": [
+        2316.494,
+        3487.459
+      ],
+      "width": 59.04,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_005",
+      "position": [
+        772.165,
+        3236.604
+      ],
+      "width": 59.04,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_006",
+      "position": [
+        3186.649,
+        4679.023
+      ],
+      "width": 59.04,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_007",
+      "position": [
+        2645.742,
+        7164.06
+      ],
+      "width": 59.04,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_008",
+      "position": [
+        4597.711,
+        492.872
+      ],
+      "width": 59.04,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_009",
+      "position": [
+        4111.678,
+        2875.999
+      ],
+      "width": 59.04,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_010",
+      "position": [
+        5311.081,
+        845.637
+      ],
+      "width": 59.04,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_013",
+      "position": [
+        6416.413,
+        2468.359
+      ],
+      "width": 59.04,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_014",
+      "position": [
+        1454.178,
+        2335.092
+      ],
+      "width": 71.34,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_015",
+      "position": [
+        3923.537,
+        1378.705
+      ],
+      "width": 71.34,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_016",
+      "position": [
+        3029.864,
+        2389.967
+      ],
+      "width": 71.34,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_017",
+      "position": [
+        1712.873,
+        3871.582
+      ],
+      "width": 71.34,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_018",
+      "position": [
+        6761.34,
+        524.229
+      ],
+      "width": 71.34,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_019",
+      "position": [
+        5138.618,
+        2099.915
+      ],
+      "width": 71.34,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_020",
+      "position": [
+        3696.199,
+        3926.456
+      ],
+      "width": 71.34,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_021",
+      "position": [
+        1932.371,
+        4804.451
+      ],
+      "width": 71.34,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_022",
+      "position": [
+        3798.109,
+        5572.696
+      ],
+      "width": 71.34,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_023",
+      "position": [
+        2206.744,
+        6505.565
+      ],
+      "width": 71.34,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_024",
+      "position": [
+        5154.297,
+        6262.548
+      ],
+      "width": 71.34,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_025",
+      "position": [
+        6436.011,
+        2954.391
+      ],
+      "width": 71.34,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_026",
+      "position": [
+        5083.744,
+        3448.263
+      ],
+      "width": 71.34,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_027",
+      "position": [
+        819.2,
+        1974.487
+      ],
+      "width": 50.02,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_028",
+      "position": [
+        2810.366,
+        2938.713
+      ],
+      "width": 50.02,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_029",
+      "position": [
+        1062.216,
+        3691.279
+      ],
+      "width": 50.02,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_031",
+      "position": [
+        3852.984,
+        4530.078
+      ],
+      "width": 50.02,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_032",
+      "position": [
+        2998.507,
+        4122.437
+      ],
+      "width": 50.02,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_033",
+      "position": [
+        4182.232,
+        3542.334
+      ],
+      "width": 50.02,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_034",
+      "position": [
+        1211.162,
+        4365.454
+      ],
+      "width": 50.02,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_035",
+      "position": [
+        3139.613,
+        5847.069
+      ],
+      "width": 50.02,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_037",
+      "position": [
+        6486.967,
+        5572.696
+      ],
+      "width": 50.02,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_038",
+      "position": [
+        4511.479,
+        1292.474
+      ],
+      "width": 47.56,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_039",
+      "position": [
+        5193.493,
+        7062.15
+      ],
+      "width": 47.56,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_040",
+      "position": [
+        6980.838,
+        1786.345
+      ],
+      "width": 36.08,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_041",
+      "position": [
+        2810.366,
+        5353.197
+      ],
+      "width": 36.08,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_042",
+      "position": [
+        1712.873,
+        6999.436
+      ],
+      "width": 36.08,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_043",
+      "position": [
+        7035.713,
+        1072.975
+      ],
+      "width": 38.54,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_044",
+      "position": [
+        5068.065,
+        4012.688
+      ],
+      "width": 38.54,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_106",
+      "position": [
+        450.756,
+        5306.162
+      ],
+      "width": 71.34,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_107",
+      "position": [
+        717.29,
+        6019.532
+      ],
+      "width": 50.02,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_108",
+      "position": [
+        1109.252,
+        5094.502
+      ],
+      "width": 47.56,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_112",
+      "position": [
+        2371.368,
+        547.746
+      ],
+      "width": 71.34,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_113",
+      "position": [
+        3029.864,
+        304.73
+      ],
+      "width": 50.02,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_114",
+      "position": [
+        3359.112,
+        798.602
+      ],
+      "width": 47.56,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_119",
+      "position": [
+        6651.59,
+        4804.451
+      ],
+      "width": 50.02,
+      "height": 6.5,
+      "opacity": 0.055
+    },
+    {
+      "place_id": "bc_place_120",
+      "position": [
+        6047.969,
+        3926.456
+      ],
+      "width": 47.56,
+      "height": 6.5,
+      "opacity": 0.055
+    }
+  ],
+  "avoidance": {
+    "building_paper_margin_x": 195,
+    "building_paper_margin_y_above": 125,
+    "building_paper_margin_y_below": 92,
+    "entrance_half_extent": [
+      88,
+      85
+    ],
+    "route_centreline_clearance": 32,
+    "max_sprite_compensation": 2.0,
+    "runtime_actual_paper_rect_check": true
+  },
+  "audit": {
+    "visual_only": true,
+    "navigation_and_graph_mutations": 0,
+    "interactive_nodes": 0,
+    "place_count_unchanged": 123,
+    "existing_display_edge_count_unchanged": 575,
+    "terrain_sampling_size": [
+      1024,
+      1024
+    ],
+    "natural_land_validation": "existing nav 0 AND original preview dry ground; full 5x5 sprite rectangle sampled",
+    "dry_land_placement_violations": 0,
+    "building_paper_entrance_violations": 0,
+    "centreline_clearance_world_units": 32,
+    "centreline_placement_violations": 0,
+    "vegetation_count": 500,
+    "by_asset": {
+      "pine_group": 29,
+      "pine_single": 109,
+      "shrub": 75,
+      "rock_group": 52,
+      "willow_group": 9,
+      "willow_single": 27,
+      "mixed_group": 26,
+      "broadleaf_single": 129,
+      "reeds": 44
+    },
+    "rhythm": {
+      "forest_edge_compositions": 64,
+      "dry_bank_compositions": 26,
+      "outlier_count": 160
+    },
+    "rejected_candidate_counts": {
+      "water_or_mountain_or_nonwalkable": 1528,
+      "building_paper_or_entrance": 133,
+      "existing_dense_ink": 381,
+      "route_centreline": 337,
+      "trunk_spacing": 63
+    },
+    "main_corridor_source_route_count": 73,
+    "selected_road_count": 7,
+    "selected_road_length": 1687.743,
+    "bridge_count": 0,
+    "dry_building_footings": 48,
+    "source_layout_sha256": "29044a4b10acc61e8fd35169c78370c4a0bb0eff4927ae191749a72bee65b090",
+    "source_navigation_sha256": "68b75e8cd519e1c61d71f20b5f08534768d46ccf94789abfd06c12f0233bf38b",
+    "source_preview_sha256": "b96a73c2eac1105e72629e6a3003f75ba35f5775b7ce1d5541aa8d40dbf3a348"
+  }
+}

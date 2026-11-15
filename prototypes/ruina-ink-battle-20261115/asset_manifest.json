@@ -1,0 +1,261 @@
+{
+  "kind": "standalone_choreographed_visual_preview",
+  "production_runtime_changed": false,
+  "rule_source": "docs/plans/战斗与构筑/灵台选行战斗规则_20261111.md",
+  "character_reference": "textures/characters/ruina_ink_modular_candidate_20261115/revision_v4",
+  "generation_mode": "built-in image_gen",
+  "actors": {
+    "inner": {
+      "move": {
+        "file": "assets/inner_move.png",
+        "width": 627,
+        "height": 627,
+        "bbox": [
+          110,
+          30,
+          494,
+          590
+        ],
+        "foot": [
+          306,
+          590
+        ],
+        "visibleHeight": 560,
+        "sha256": "93c63a8d43eb9c8c3e8c3d5210bdb999021dae1938dad74fc2f86b90b1a2fb22"
+      },
+      "strike": {
+        "file": "assets/inner_strike.png",
+        "width": 627,
+        "height": 627,
+        "bbox": [
+          72,
+          38,
+          566,
+          583
+        ],
+        "foot": [
+          301.5,
+          583
+        ],
+        "visibleHeight": 545,
+        "sha256": "a6d1a201e3ba54296ef889fdba888b3534625c04aa75f47da76a151d00f037d5"
+      },
+      "guard": {
+        "file": "assets/inner_guard.png",
+        "width": 627,
+        "height": 627,
+        "bbox": [
+          152,
+          19,
+          497,
+          602
+        ],
+        "foot": [
+          325.5,
+          602
+        ],
+        "visibleHeight": 583,
+        "sha256": "d6b097aa5070fb7de4f648c1d7b117240c11f07d2e5dcb45384bc62e50b0126a"
+      },
+      "hurt": {
+        "file": "assets/inner_hurt.png",
+        "width": 627,
+        "height": 627,
+        "bbox": [
+          77,
+          23,
+          497,
+          603
+        ],
+        "foot": [
+          312,
+          603
+        ],
+        "visibleHeight": 580,
+        "sha256": "3dcfda1e5e8708f07088c99f1d577b9c0247742fab08e6d9499b0c2bd44fa6e1"
+      },
+      "idle": {
+        "file": "assets/inner_idle.png",
+        "width": 627,
+        "height": 627,
+        "bbox": [
+          177,
+          35,
+          450,
+          595
+        ],
+        "foot": [
+          311,
+          595
+        ],
+        "visibleHeight": 560,
+        "source_sha256": "e0cd65908e559b67c9b972434bb12294f38d0513a823def5446dc137b3a176fa",
+        "sha256": "8fb6a72867eb44f43e0bd724c3d939b456e7f21d3531f65054ba89109379868e"
+      }
+    },
+    "outer": {
+      "move": {
+        "file": "assets/outer_move.png",
+        "width": 627,
+        "height": 627,
+        "bbox": [
+          130,
+          29,
+          519,
+          564
+        ],
+        "foot": [
+          305.5,
+          564
+        ],
+        "visibleHeight": 535,
+        "sha256": "29de584620945145bf3866c4ecf1e775dfbaf4748f3c9fcc054622d1bd99b45a"
+      },
+      "strike": {
+        "file": "assets/outer_strike.png",
+        "width": 627,
+        "height": 627,
+        "bbox": [
+          78,
+          30,
+          530,
+          560
+        ],
+        "foot": [
+          289.5,
+          560
+        ],
+        "visibleHeight": 530,
+        "sha256": "7dcc8e3bdbcbbdbcb87a6f826bb2ec0954f66fe2493c2d2db0920cc7bc42ff2d"
+      },
+      "guard": {
+        "file": "assets/outer_guard.png",
+        "width": 627,
+        "height": 627,
+        "bbox": [
+          138,
+          22,
+          488,
+          581
+        ],
+        "foot": [
+          309,
+          581
+        ],
+        "visibleHeight": 559,
+        "sha256": "35f48cb9e3a7d6c1f4e7ee2d0921e4074283c1bb092f8ad7d1622833987766a7"
+      },
+      "hurt": {
+        "file": "assets/outer_hurt.png",
+        "width": 627,
+        "height": 627,
+        "bbox": [
+          91,
+          28,
+          502,
+          581
+        ],
+        "foot": [
+          338,
+          581
+        ],
+        "visibleHeight": 553,
+        "sha256": "3689e2b34a598412ebe049fec2316f03aec7913a4f4e5f9262ea355ac197de87"
+      },
+      "idle": {
+        "file": "assets/outer_idle.png",
+        "width": 627,
+        "height": 627,
+        "bbox": [
+          177,
+          35,
+          451,
+          595
+        ],
+        "foot": [
+          312,
+          595
+        ],
+        "visibleHeight": 560,
+        "source_sha256": "371532c2c215724e7ab5714fc1092f8161d5447cb9ec0a9bad73291d4ab0c34b",
+        "sha256": "d3db40ced9f88490b66b2cf7199cf941801abf282e79f3524b34e3c81c836cb5"
+      }
+    }
+  },
+  "effects": {
+    "sweep": {
+      "file": "assets/fx_sweep.png",
+      "width": 627,
+      "height": 627,
+      "bbox": [
+        41,
+        81,
+        608,
+        550
+      ],
+      "foot": [
+        318,
+        550
+      ],
+      "visibleHeight": 469,
+      "sha256": "24a18ff216194c1cc060f1f206beeeb19146ed8e851509a39487d305edeb0aad"
+    },
+    "deflect": {
+      "file": "assets/fx_deflect.png",
+      "width": 627,
+      "height": 627,
+      "bbox": [
+        64,
+        102,
+        584,
+        539
+      ],
+      "foot": [
+        308,
+        539
+      ],
+      "visibleHeight": 437,
+      "sha256": "c90ae7dd6dac14af23dc48279f212d5f1ec5755d9b179edd3d4f9233b40390fd"
+    },
+    "impact": {
+      "file": "assets/fx_impact.png",
+      "width": 627,
+      "height": 627,
+      "bbox": [
+        75,
+        62,
+        567,
+        529
+      ],
+      "foot": [
+        328,
+        529
+      ],
+      "visibleHeight": 467,
+      "sha256": "03e1e7d6e58d845c7eacbff159a7dea681e9909f703ac04873ff18bae8680d00"
+    },
+    "wake": {
+      "file": "assets/fx_wake.png",
+      "width": 627,
+      "height": 627,
+      "bbox": [
+        33,
+        222,
+        600,
+        422
+      ],
+      "foot": [
+        318.5,
+        422
+      ],
+      "visibleHeight": 200,
+      "sha256": "1cebce9413c42be94af2dd9169947967cfbbc86f3267678f2ff1c829d7664e66"
+    }
+  },
+  "source_hashes": {
+    "background": "cc22a24ffc344d73d705e4a530e810c8a934f5a0ba5cb668b0a56dd9214951b9",
+    "vfx_atlas": "cddf080ebddc68a1cca529ea14758731a819ceed9701ffa7d529ab25e57deafd",
+    "poses_inner": "74039ac99dbcc29acdef902c72c8623fcb652ab409fa60d229eac18ee6d2e924",
+    "poses_outer": "f1bddaccfc4e63ba18e48c00d8f583831eafd959438b7e3430af7a556f97ebf6"
+  }
+}

@@ -1,0 +1,186 @@
+{
+  "date": "2026-11-09",
+  "method": "Playwright CLI / Microsoft Edge；真实鼠标dragTo、点击、数量输入、切田、子页与本地文件打开",
+  "version": "2.2",
+  "passed": 62,
+  "checks": [
+    "阵法入口位于田地正文并退出顶栏",
+    "概况不展示田图或空图占位",
+    "首页列出全部五项地块环境",
+    "首页直接指出灵力差项",
+    "基质和阵法并列为田内操作",
+    "原型版本2.2",
+    "材料以行囊列表呈现",
+    "只列可作为基质且有剩余的演示行囊物品",
+    "未选择材料不能加入",
+    "无需保存方案或确认步骤",
+    "真实拖拽直接加入田地",
+    "加入同步减少行囊可用量",
+    "再次拖入同材合并",
+    "重复投递拖放事件不复制材料",
+    "拖到接收区以外不加入",
+    "取消拖拽清理反馈",
+    "选中行同步底部操作栏",
+    "选中后点击直接加入数量",
+    "加入不弹保存确认",
+    "拒绝非法或超量件数:-1",
+    "拒绝非法或超量件数:0",
+    "拒绝非法或超量件数:1.5",
+    "拒绝非法或超量件数:",
+    "拒绝非法或超量件数:5",
+    "功用详情按需打开且品级真实",
+    "搜索只保留匹配的可用材料",
+    "搜索保持输入焦点",
+    "筛掉选中物品后不会误加旧材料",
+    "拖拽尊重已选加入数量",
+    "无匹配时有空态且不能加入",
+    "键盘也能选中材料",
+    "当前田地直接记录三种七件",
+    "加入记录按田隔离",
+    "同一演示行囊跨田共用剩余数",
+    "阵法保持独立入口",
+    "功用来源只含本田已加入基质",
+    "成长页读取即时加入记录",
+    "未知培育作用不伪造环境改善",
+    "加入材料不伪造生境或推进阶段",
+    "已定植田地禁止用预览切换植株",
+    "子页返回概况且保留当前田",
+    "概况返回可选择其他田地",
+    "田地选择实际切换",
+    "空田允许预览目标灵草",
+    "未改造田显示共同基础环境",
+    "雾铃花未知需求保留未知",
+    "阵法回调仅传当前田地身份",
+    "反复打开子窗保留共用纸框",
+    "搜索刷新后操作栏仍有共用纸面",
+    "1920 substrates 布局和图片",
+    "1920 overview 布局和图片",
+    "1920 growth 布局和图片",
+    "1280 substrates 布局和图片",
+    "1280 overview 布局和图片",
+    "1280 growth 布局和图片",
+    "field-2 未知需求或空田排版",
+    "field-3 未知需求或空田排版",
+    "耗尽后从可用行囊列表移出",
+    "其他田用完余量不丢失本田已加记录",
+    "外部或不合资格拖入不改变记录",
+    "刷新恢复隔离演示数据",
+    "无脚本错误"
+  ],
+  "screenshots": [
+    "田地概况_v22_1920.png",
+    "田地概况_v22_1280.png",
+    "基质列表_v22_1920.png",
+    "基质列表_v22_1280.png",
+    "培育详览_v22_1920.png",
+    "培育详览_v22_1280.png",
+    "雾铃花待明_v22_1280.png",
+    "空田概况_v22_1280.png"
+  ],
+  "errors": [],
+  "viewports": [
+    {
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "width": 1280,
+      "height": 720
+    }
+  ],
+  "driver": "output/playwright/planting_controls_v22_20261109/audit.js",
+  "localFileCheck": {
+    "version": "2.2",
+    "font": true,
+    "eligibleRows": 3,
+    "hasDropzone": true,
+    "missingImages": [],
+    "added": {
+      "id": "mat_zisha_spirit_soil",
+      "qty": 1
+    },
+    "errors": [],
+    "failed": []
+  },
+  "materialSourceChecks": [
+    {
+      "name": "紫砂灵土",
+      "source": "resources/entities/items/紫砂灵土.tres",
+      "craftSource": "resources/material_craft/紫砂灵土材性.tres",
+      "utilities": [
+        {
+          "id": "藏",
+          "grade": 1
+        }
+      ],
+      "verified": true
+    },
+    {
+      "name": "泥脉石团",
+      "source": "resources/entities/items/泥脉石团.tres",
+      "craftSource": "resources/material_craft/泥脉石团材性.tres",
+      "utilities": [
+        {
+          "id": "镇",
+          "grade": 1
+        }
+      ],
+      "verified": true
+    },
+    {
+      "name": "兽骨",
+      "source": "resources/entities/items/兽骨.tres",
+      "craftSource": "resources/material_craft/兽骨材性.tres",
+      "utilities": [
+        {
+          "id": "固",
+          "grade": 1
+        },
+        {
+          "id": "生",
+          "grade": 1
+        }
+      ],
+      "verified": true
+    },
+    {
+      "name": "地脉焰炭",
+      "source": "resources/entities/items/地脉焰炭.tres",
+      "craftSource": "resources/material_craft/地脉焰炭材性.tres",
+      "utilities": [
+        {
+          "id": "聚",
+          "grade": 2
+        },
+        {
+          "id": "通",
+          "grade": 1
+        }
+      ],
+      "verified": true
+    }
+  ],
+  "sharedImageChecks": [
+    "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/控件补充图集_v1.png",
+    "textures/ui/yuxu_library_20261107/library_frame.png",
+    "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_常规_v4.png",
+    "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_主操作_v4.png",
+    "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_短页签_v4.png",
+    "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_侧栏分页_v4.png",
+    "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_小图标_v4.png",
+    "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/控件_输入槽_v4.png"
+  ],
+  "syntaxChecks": [
+    "catalog.js",
+    "scene-fixture.js",
+    "skin-config.js",
+    "prototype.js"
+  ],
+  "capture": "通过界面拖入紫砂灵土两件、点击加入兽骨两件、按所选数量拖入泥脉石团三件后截取两档三页；无截图状态注入。",
+  "layoutTolerance": "屏内安全区按缩放换算，保留1物理像素的小数舍入容差；实际溢出与末行／操作控件另查。",
+  "limitations": [
+    "独立浏览器UI，未读写真实行囊、人物或存档。",
+    "环境、阶段、植株状况、资格及持有量为夹具，不确立正式规则。",
+    "加入不自动计算未知材料作用；未运行Godot编译或正式种植场景。"
+  ]
+}

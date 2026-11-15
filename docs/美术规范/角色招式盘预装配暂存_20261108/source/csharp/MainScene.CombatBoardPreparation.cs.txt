@@ -1,0 +1,8 @@
+public partial class MainScene
+{
+    /// <summary>配招配置沿现有旅程保存链记录，不推进日期或触碰库存。</summary>
+    public void notify_combat_board_preparation_changed(Character owner)
+    {
+        if (owner == player) mark_save_dirty();
+    }
+}

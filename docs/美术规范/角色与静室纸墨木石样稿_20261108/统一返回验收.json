@@ -1,0 +1,901 @@
+{
+  "version": "统一返回专项1",
+  "date": "2026-11-08",
+  "status": "passed",
+  "passed": 107,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "1920/吐纳修行/唯一返回按钮",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "1920/吐纳修行/返回名称与原动作",
+      "passed": true,
+      "detail": {
+        "label": "返回",
+        "text": "返回",
+        "action": "leave"
+      }
+    },
+    {
+      "name": "1920/吐纳修行/直接定位于静室外框",
+      "passed": true,
+      "detail": {
+        "direct": true,
+        "nestedInHeader": false
+      }
+    },
+    {
+      "name": "1920/吐纳修行/右上角统一偏移",
+      "passed": true,
+      "detail": {
+        "top": 18.0000042852457,
+        "right": 23.999824202080394
+      }
+    },
+    {
+      "name": "1920/吐纳修行/统一字号与命中尺寸",
+      "passed": true,
+      "detail": {
+        "width": 114.00012506061051,
+        "height": 45.999995029114984,
+        "font": 22
+      }
+    },
+    {
+      "name": "1920/吐纳修行/右向实心三角",
+      "passed": true,
+      "detail": {
+        "hidden": "true",
+        "width": "6px",
+        "height": "8px",
+        "boxSizing": "border-box",
+        "left": "6px",
+        "leftColor": "rgb(48, 61, 56)",
+        "top": "4px",
+        "topColor": "rgba(0, 0, 0, 0)",
+        "bottom": "4px",
+        "bottomColor": "rgba(0, 0, 0, 0)",
+        "right": "0px"
+      }
+    },
+    {
+      "name": "1920/吐纳修行/沿用普通按钮素材",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "1920/吐纳修行/分页保留返回节点",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "1920/吐纳修行/侧栏节点与选中动效保持",
+      "passed": true,
+      "detail": {
+        "sameNavNode": true,
+        "selected": "practice",
+        "navTransform": "matrix(1, 0, 0, 1, 18, 0)"
+      }
+    },
+    {
+      "name": "1920/吐纳修行/年月日无昼夜时辰",
+      "passed": true,
+      "detail": "苏醒者\n云息三层　元年三月十五"
+    },
+    {
+      "name": "1920/吐纳修行/按钮可见且窗口无横溢出",
+      "passed": true,
+      "detail": {
+        "inViewport": true,
+        "noHorizontalOverflow": true
+      }
+    },
+    {
+      "name": "1920/吐纳修行/保持离开静室弹窗",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/吐纳修行/取消返回当前分页并恢复焦点",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/吐纳修行/键盘激活原返回行为",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/吐纳修行/Esc关闭弹窗并保留页面",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/功法研读/唯一返回按钮",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "1920/功法研读/返回名称与原动作",
+      "passed": true,
+      "detail": {
+        "label": "返回",
+        "text": "返回",
+        "action": "leave"
+      }
+    },
+    {
+      "name": "1920/功法研读/直接定位于静室外框",
+      "passed": true,
+      "detail": {
+        "direct": true,
+        "nestedInHeader": false
+      }
+    },
+    {
+      "name": "1920/功法研读/右上角统一偏移",
+      "passed": true,
+      "detail": {
+        "top": 18.0000042852457,
+        "right": 23.999824202080394
+      }
+    },
+    {
+      "name": "1920/功法研读/统一字号与命中尺寸",
+      "passed": true,
+      "detail": {
+        "width": 114.00012506061051,
+        "height": 45.999995029114984,
+        "font": 22
+      }
+    },
+    {
+      "name": "1920/功法研读/右向实心三角",
+      "passed": true,
+      "detail": {
+        "hidden": "true",
+        "width": "6px",
+        "height": "8px",
+        "boxSizing": "border-box",
+        "left": "6px",
+        "leftColor": "rgb(48, 61, 56)",
+        "top": "4px",
+        "topColor": "rgba(0, 0, 0, 0)",
+        "bottom": "4px",
+        "bottomColor": "rgba(0, 0, 0, 0)",
+        "right": "0px"
+      }
+    },
+    {
+      "name": "1920/功法研读/沿用普通按钮素材",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "1920/功法研读/分页保留返回节点",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "1920/功法研读/侧栏节点与选中动效保持",
+      "passed": true,
+      "detail": {
+        "sameNavNode": true,
+        "selected": "study",
+        "navTransform": "matrix(1, 0, 0, 1, 18, 0)"
+      }
+    },
+    {
+      "name": "1920/功法研读/年月日无昼夜时辰",
+      "passed": true,
+      "detail": "苏醒者\n云息三层　元年三月十五"
+    },
+    {
+      "name": "1920/功法研读/按钮可见且窗口无横溢出",
+      "passed": true,
+      "detail": {
+        "inViewport": true,
+        "noHorizontalOverflow": true
+      }
+    },
+    {
+      "name": "1920/功法研读/保持离开静室弹窗",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/功法研读/取消返回当前分页并恢复焦点",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/功法研读/键盘激活原返回行为",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/功法研读/Esc关闭弹窗并保留页面",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/闭关突破/唯一返回按钮",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "1920/闭关突破/返回名称与原动作",
+      "passed": true,
+      "detail": {
+        "label": "返回",
+        "text": "返回",
+        "action": "leave"
+      }
+    },
+    {
+      "name": "1920/闭关突破/直接定位于静室外框",
+      "passed": true,
+      "detail": {
+        "direct": true,
+        "nestedInHeader": false
+      }
+    },
+    {
+      "name": "1920/闭关突破/右上角统一偏移",
+      "passed": true,
+      "detail": {
+        "top": 18.0000042852457,
+        "right": 23.999824202080394
+      }
+    },
+    {
+      "name": "1920/闭关突破/统一字号与命中尺寸",
+      "passed": true,
+      "detail": {
+        "width": 114.00012506061051,
+        "height": 45.999995029114984,
+        "font": 22
+      }
+    },
+    {
+      "name": "1920/闭关突破/右向实心三角",
+      "passed": true,
+      "detail": {
+        "hidden": "true",
+        "width": "6px",
+        "height": "8px",
+        "boxSizing": "border-box",
+        "left": "6px",
+        "leftColor": "rgb(48, 61, 56)",
+        "top": "4px",
+        "topColor": "rgba(0, 0, 0, 0)",
+        "bottom": "4px",
+        "bottomColor": "rgba(0, 0, 0, 0)",
+        "right": "0px"
+      }
+    },
+    {
+      "name": "1920/闭关突破/沿用普通按钮素材",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "1920/闭关突破/分页保留返回节点",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "1920/闭关突破/侧栏节点与选中动效保持",
+      "passed": true,
+      "detail": {
+        "sameNavNode": true,
+        "selected": "breakthrough",
+        "navTransform": "matrix(1, 0, 0, 1, 18, 0)"
+      }
+    },
+    {
+      "name": "1920/闭关突破/年月日无昼夜时辰",
+      "passed": true,
+      "detail": "苏醒者\n云息三层　元年三月十五"
+    },
+    {
+      "name": "1920/闭关突破/按钮可见且窗口无横溢出",
+      "passed": true,
+      "detail": {
+        "inViewport": true,
+        "noHorizontalOverflow": true
+      }
+    },
+    {
+      "name": "1920/闭关突破/保持离开静室弹窗",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/闭关突破/取消返回当前分页并恢复焦点",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/闭关突破/键盘激活原返回行为",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/闭关突破/Esc关闭弹窗并保留页面",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/确认仍为原样稿确认",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/角色保留行囊且无静室返回",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/角色行囊原行为保持",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/素材册无静室返回泄漏",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/跨样稿往返仍唯一返回",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/吐纳修行/唯一返回按钮",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "1280/吐纳修行/返回名称与原动作",
+      "passed": true,
+      "detail": {
+        "label": "返回",
+        "text": "返回",
+        "action": "leave"
+      }
+    },
+    {
+      "name": "1280/吐纳修行/直接定位于静室外框",
+      "passed": true,
+      "detail": {
+        "direct": true,
+        "nestedInHeader": false
+      }
+    },
+    {
+      "name": "1280/吐纳修行/右上角统一偏移",
+      "passed": true,
+      "detail": {
+        "top": 17.999990797056256,
+        "right": 24.000017549799697
+      }
+    },
+    {
+      "name": "1280/吐纳修行/统一字号与命中尺寸",
+      "passed": true,
+      "detail": {
+        "width": 114.00001626566802,
+        "height": 45.99999636162689,
+        "font": 22
+      }
+    },
+    {
+      "name": "1280/吐纳修行/右向实心三角",
+      "passed": true,
+      "detail": {
+        "hidden": "true",
+        "width": "6px",
+        "height": "8px",
+        "boxSizing": "border-box",
+        "left": "6px",
+        "leftColor": "rgb(48, 61, 56)",
+        "top": "4px",
+        "topColor": "rgba(0, 0, 0, 0)",
+        "bottom": "4px",
+        "bottomColor": "rgba(0, 0, 0, 0)",
+        "right": "0px"
+      }
+    },
+    {
+      "name": "1280/吐纳修行/沿用普通按钮素材",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "1280/吐纳修行/分页保留返回节点",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "1280/吐纳修行/侧栏节点与选中动效保持",
+      "passed": true,
+      "detail": {
+        "sameNavNode": true,
+        "selected": "practice",
+        "navTransform": "matrix(1, 0, 0, 1, 18, 0)"
+      }
+    },
+    {
+      "name": "1280/吐纳修行/年月日无昼夜时辰",
+      "passed": true,
+      "detail": "苏醒者\n云息三层　元年三月十五"
+    },
+    {
+      "name": "1280/吐纳修行/按钮可见且窗口无横溢出",
+      "passed": true,
+      "detail": {
+        "inViewport": true,
+        "noHorizontalOverflow": true
+      }
+    },
+    {
+      "name": "1280/吐纳修行/保持离开静室弹窗",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/吐纳修行/取消返回当前分页并恢复焦点",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/吐纳修行/键盘激活原返回行为",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/吐纳修行/Esc关闭弹窗并保留页面",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/功法研读/唯一返回按钮",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "1280/功法研读/返回名称与原动作",
+      "passed": true,
+      "detail": {
+        "label": "返回",
+        "text": "返回",
+        "action": "leave"
+      }
+    },
+    {
+      "name": "1280/功法研读/直接定位于静室外框",
+      "passed": true,
+      "detail": {
+        "direct": true,
+        "nestedInHeader": false
+      }
+    },
+    {
+      "name": "1280/功法研读/右上角统一偏移",
+      "passed": true,
+      "detail": {
+        "top": 17.999990797056256,
+        "right": 24.000017549799697
+      }
+    },
+    {
+      "name": "1280/功法研读/统一字号与命中尺寸",
+      "passed": true,
+      "detail": {
+        "width": 114.00001626566802,
+        "height": 45.99999636162689,
+        "font": 22
+      }
+    },
+    {
+      "name": "1280/功法研读/右向实心三角",
+      "passed": true,
+      "detail": {
+        "hidden": "true",
+        "width": "6px",
+        "height": "8px",
+        "boxSizing": "border-box",
+        "left": "6px",
+        "leftColor": "rgb(48, 61, 56)",
+        "top": "4px",
+        "topColor": "rgba(0, 0, 0, 0)",
+        "bottom": "4px",
+        "bottomColor": "rgba(0, 0, 0, 0)",
+        "right": "0px"
+      }
+    },
+    {
+      "name": "1280/功法研读/沿用普通按钮素材",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "1280/功法研读/分页保留返回节点",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "1280/功法研读/侧栏节点与选中动效保持",
+      "passed": true,
+      "detail": {
+        "sameNavNode": true,
+        "selected": "study",
+        "navTransform": "matrix(1, 0, 0, 1, 18, 0)"
+      }
+    },
+    {
+      "name": "1280/功法研读/年月日无昼夜时辰",
+      "passed": true,
+      "detail": "苏醒者\n云息三层　元年三月十五"
+    },
+    {
+      "name": "1280/功法研读/按钮可见且窗口无横溢出",
+      "passed": true,
+      "detail": {
+        "inViewport": true,
+        "noHorizontalOverflow": true
+      }
+    },
+    {
+      "name": "1280/功法研读/保持离开静室弹窗",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/功法研读/取消返回当前分页并恢复焦点",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/功法研读/键盘激活原返回行为",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/功法研读/Esc关闭弹窗并保留页面",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/闭关突破/唯一返回按钮",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "1280/闭关突破/返回名称与原动作",
+      "passed": true,
+      "detail": {
+        "label": "返回",
+        "text": "返回",
+        "action": "leave"
+      }
+    },
+    {
+      "name": "1280/闭关突破/直接定位于静室外框",
+      "passed": true,
+      "detail": {
+        "direct": true,
+        "nestedInHeader": false
+      }
+    },
+    {
+      "name": "1280/闭关突破/右上角统一偏移",
+      "passed": true,
+      "detail": {
+        "top": 17.999990797056256,
+        "right": 24.000017549799697
+      }
+    },
+    {
+      "name": "1280/闭关突破/统一字号与命中尺寸",
+      "passed": true,
+      "detail": {
+        "width": 114.00001626566802,
+        "height": 45.99999636162689,
+        "font": 22
+      }
+    },
+    {
+      "name": "1280/闭关突破/右向实心三角",
+      "passed": true,
+      "detail": {
+        "hidden": "true",
+        "width": "6px",
+        "height": "8px",
+        "boxSizing": "border-box",
+        "left": "6px",
+        "leftColor": "rgb(48, 61, 56)",
+        "top": "4px",
+        "topColor": "rgba(0, 0, 0, 0)",
+        "bottom": "4px",
+        "bottomColor": "rgba(0, 0, 0, 0)",
+        "right": "0px"
+      }
+    },
+    {
+      "name": "1280/闭关突破/沿用普通按钮素材",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "1280/闭关突破/分页保留返回节点",
+      "passed": true,
+      "detail": true
+    },
+    {
+      "name": "1280/闭关突破/侧栏节点与选中动效保持",
+      "passed": true,
+      "detail": {
+        "sameNavNode": true,
+        "selected": "breakthrough",
+        "navTransform": "matrix(1, 0, 0, 1, 18, 0)"
+      }
+    },
+    {
+      "name": "1280/闭关突破/年月日无昼夜时辰",
+      "passed": true,
+      "detail": "苏醒者\n云息三层　元年三月十五"
+    },
+    {
+      "name": "1280/闭关突破/按钮可见且窗口无横溢出",
+      "passed": true,
+      "detail": {
+        "inViewport": true,
+        "noHorizontalOverflow": true
+      }
+    },
+    {
+      "name": "1280/闭关突破/保持离开静室弹窗",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/闭关突破/取消返回当前分页并恢复焦点",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/闭关突破/键盘激活原返回行为",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/闭关突破/Esc关闭弹窗并保留页面",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/确认仍为原样稿确认",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/角色保留行囊且无静室返回",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/角色行囊原行为保持",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/素材册无静室返回泄漏",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/跨样稿往返仍唯一返回",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "本轮运行无脚本或资源错误",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/practice/纯三角零内容区域与6/4边框",
+      "passed": true,
+      "detail": {
+        "clientWidth": 0,
+        "clientHeight": 0,
+        "left": "6px",
+        "top": "4px",
+        "bottom": "4px",
+        "right": "0px"
+      }
+    },
+    {
+      "name": "1920/study/纯三角零内容区域与6/4边框",
+      "passed": true,
+      "detail": {
+        "clientWidth": 0,
+        "clientHeight": 0,
+        "left": "6px",
+        "top": "4px",
+        "bottom": "4px",
+        "right": "0px"
+      }
+    },
+    {
+      "name": "1920/breakthrough/纯三角零内容区域与6/4边框",
+      "passed": true,
+      "detail": {
+        "clientWidth": 0,
+        "clientHeight": 0,
+        "left": "6px",
+        "top": "4px",
+        "bottom": "4px",
+        "right": "0px"
+      }
+    },
+    {
+      "name": "1280/practice/纯三角零内容区域与6/4边框",
+      "passed": true,
+      "detail": {
+        "clientWidth": 0,
+        "clientHeight": 0,
+        "left": "6px",
+        "top": "4px",
+        "bottom": "4px",
+        "right": "0px"
+      }
+    },
+    {
+      "name": "1280/study/纯三角零内容区域与6/4边框",
+      "passed": true,
+      "detail": {
+        "clientWidth": 0,
+        "clientHeight": 0,
+        "left": "6px",
+        "top": "4px",
+        "bottom": "4px",
+        "right": "0px"
+      }
+    },
+    {
+      "name": "1280/breakthrough/纯三角零内容区域与6/4边框",
+      "passed": true,
+      "detail": {
+        "clientWidth": 0,
+        "clientHeight": 0,
+        "left": "6px",
+        "top": "4px",
+        "bottom": "4px",
+        "right": "0px"
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "page": "practice",
+      "width": 1920,
+      "height": 1080,
+      "path": "output/playwright/静室_吐纳修行_1920.png",
+      "published": "docs/美术规范/角色与静室纸墨木石样稿_20261108/静室_吐纳修行_1920.png",
+      "sha256": "1b1bd26814ea1bfe4b4f35b0e088328ab5576abd65ee5bc0ebd2d9078b83430a"
+    },
+    {
+      "page": "study",
+      "width": 1920,
+      "height": 1080,
+      "path": "output/playwright/静室_功法研读_1920.png",
+      "published": "docs/美术规范/角色与静室纸墨木石样稿_20261108/静室_功法研读_1920.png",
+      "sha256": "91cf1cff62b6274b3d091fc5fb093c4c711693a6e1fb2b27ff20fc8bea66a5f0"
+    },
+    {
+      "page": "breakthrough",
+      "width": 1920,
+      "height": 1080,
+      "path": "output/playwright/静室_闭关突破_1920.png",
+      "published": "docs/美术规范/角色与静室纸墨木石样稿_20261108/静室_闭关突破_1920.png",
+      "sha256": "52bf8e02e8af98929431c2e923084f633952bc8139b00817c7b75bccfaa240e8"
+    },
+    {
+      "page": "practice",
+      "width": 1280,
+      "height": 720,
+      "path": "output/playwright/静室_吐纳修行_1280.png",
+      "published": "docs/美术规范/角色与静室纸墨木石样稿_20261108/静室_吐纳修行_1280.png",
+      "sha256": "4586f0cc81fe4152e4ebf8d1ea36364cc763b35278195ffc5ca6a39d6c750373"
+    },
+    {
+      "page": "study",
+      "width": 1280,
+      "height": 720,
+      "path": "output/playwright/静室_功法研读_1280.png",
+      "published": "docs/美术规范/角色与静室纸墨木石样稿_20261108/静室_功法研读_1280.png",
+      "sha256": "f12117f9a540ea1f604b84ceed1821c720fc18c9b1718f1e0e0018e3823f6a09"
+    },
+    {
+      "page": "breakthrough",
+      "width": 1280,
+      "height": 720,
+      "path": "output/playwright/静室_闭关突破_1280.png",
+      "published": "docs/美术规范/角色与静室纸墨木石样稿_20261108/静室_闭关突破_1280.png",
+      "sha256": "5d21e9080c90a45fea68c3c3d24a47fb8a43619a15fddc0abe7726dfe0c2e49e"
+    }
+  ],
+  "errors": [],
+  "homeScreenshot": {
+    "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/静室_首页.png",
+    "sameAs": "静室_吐纳修行_1920.png",
+    "sha256": "1b1bd26814ea1bfe4b4f35b0e088328ab5576abd65ee5bc0ebd2d9078b83430a"
+  },
+  "scope": "静室三页独立样稿；不接游戏，不读写玩家存档。",
+  "browser": {
+    "session": "quiet-return-review",
+    "engine": "msedge",
+    "base": "http://127.0.0.1:8876",
+    "screenshotsCapturedIn": "output/playwright/"
+  },
+  "sourceFiles": [
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/preview.js",
+      "sha256": "0e39b82d1590bf0b4d19788f5f8e40532f0549d4dfa5e920461690cfc116fa8e"
+    },
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/preview.css",
+      "sha256": "aae29b36294ea143dcf5e66beeb649fc3344a6d2d3bc363f3ab4450e3ba9550d"
+    },
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/index.html",
+      "sha256": "b69a9715e531519f642bb8abc6fba28009b582e67e63c0fe3378c108dd6327e2"
+    }
+  ],
+  "sharedReturnCss": {
+    "path": "docs/美术规范/全局界面风格母板_20261108/return-control.css",
+    "owner": "root",
+    "sha256": "dbce839b896d3879f64526da3da750a9a3809273ba952be7436be501ad8266b0"
+  },
+  "previous205Record": {
+    "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/验收记录.json",
+    "sha256": "30e6620217a5b6d870d9df83cb7e951d95126841799ee3fd38309f9981255fb6",
+    "untouched": true
+  },
+  "preserved": [
+    "角色行囊按钮及原入口",
+    "静室原leave弹窗与确认行为",
+    "年月日、人物数据及其余文案",
+    "静室三页侧栏节点及18px选中动效",
+    "共享Materials、skin-data、fixture与全部源PNG",
+    "Rest、百工、善功堂、藏经阁和正式游戏代码"
+  ],
+  "visualReview": {
+    "status": "passed",
+    "pages": [
+      "吐纳修行",
+      "功法研读",
+      "闭关突破"
+    ],
+    "viewports": [
+      "1920×1080",
+      "1280×720"
+    ],
+    "notes": "右上角返回与实心右三角一致；未见遮挡或重复按钮。六张图均在测试通知自行消失后保留完整画面。"
+  },
+  "rawLogs": [
+    "output/playwright/quiet-return-qa.log",
+    "output/playwright/quiet-return-glyph-qa.log"
+  ],
+  "preparationNotes": [
+    "共享CSS创建前首次查看出现404；随后强制完整导航加载新CSS。最终本轮无资源或脚本错误。",
+    "三角采用全局border-box，computed宽6px/高8px为边框总和；专项补测clientWidth与clientHeight均0。",
+    "测试原确认行为会产生现有短通知；等待其自行消失后重拍，未修改该行为。"
+  ]
+}

@@ -1,0 +1,183 @@
+{
+	"blade_angular_speeds_degrees_per_second": [
+		{
+			"clip": "Idle",
+			"cut": 1248.96497653395,
+			"facing": -1.0,
+			"lift": 466.775127878671,
+			"recovery": 338.319760158242,
+			"scale": 1.0
+		},
+		{
+			"clip": "Run_New1",
+			"cut": 1248.96497653395,
+			"facing": -1.0,
+			"lift": 466.764882594916,
+			"recovery": 338.320613931888,
+			"scale": 1.0
+		},
+		{
+			"clip": "AttackIdle",
+			"cut": 1248.98205200687,
+			"facing": -1.0,
+			"lift": 466.771712784086,
+			"recovery": 338.320613931888,
+			"scale": 1.0
+		},
+		{
+			"clip": "AttackRun",
+			"cut": 1248.95131615561,
+			"facing": -1.0,
+			"lift": 466.775127878671,
+			"recovery": 338.320613931888,
+			"scale": 1.0
+		},
+		{
+			"clip": "Idle",
+			"cut": 1248.96497653395,
+			"facing": -1.0,
+			"lift": 466.768297689501,
+			"recovery": 338.325736573765,
+			"scale": 2.6
+		},
+		{
+			"clip": "Run_New1",
+			"cut": 1248.96326898665,
+			"facing": -1.0,
+			"lift": 466.778542973256,
+			"recovery": 338.328297894704,
+			"scale": 2.6
+		},
+		{
+			"clip": "AttackIdle",
+			"cut": 1248.98205200687,
+			"facing": -1.0,
+			"lift": 466.775127878671,
+			"recovery": 338.336835631167,
+			"scale": 2.6
+		},
+		{
+			"clip": "AttackRun",
+			"cut": 1248.94960860831,
+			"facing": -1.0,
+			"lift": 466.771712784086,
+			"recovery": 338.321467705534,
+			"scale": 2.6
+		},
+		{
+			"clip": "Idle",
+			"cut": 1248.96497653395,
+			"facing": 1.0,
+			"lift": 466.775127878671,
+			"recovery": 338.319760158242,
+			"scale": 1.0
+		},
+		{
+			"clip": "Run_New1",
+			"cut": 1248.96497653395,
+			"facing": 1.0,
+			"lift": 466.764882594916,
+			"recovery": 338.320613931888,
+			"scale": 1.0
+		},
+		{
+			"clip": "AttackIdle",
+			"cut": 1248.98205200687,
+			"facing": 1.0,
+			"lift": 466.771712784086,
+			"recovery": 338.320613931888,
+			"scale": 1.0
+		},
+		{
+			"clip": "AttackRun",
+			"cut": 1248.95131615561,
+			"facing": 1.0,
+			"lift": 466.775127878671,
+			"recovery": 338.320613931888,
+			"scale": 1.0
+		},
+		{
+			"clip": "Idle",
+			"cut": 1248.96497653395,
+			"facing": 1.0,
+			"lift": 466.768297689501,
+			"recovery": 338.325736573765,
+			"scale": 2.6
+		},
+		{
+			"clip": "Run_New1",
+			"cut": 1248.96326898665,
+			"facing": 1.0,
+			"lift": 466.778542973256,
+			"recovery": 338.328297894704,
+			"scale": 2.6
+		},
+		{
+			"clip": "AttackIdle",
+			"cut": 1248.98205200687,
+			"facing": 1.0,
+			"lift": 466.775127878671,
+			"recovery": 338.336835631167,
+			"scale": 2.6
+		},
+		{
+			"clip": "AttackRun",
+			"cut": 1248.94960860831,
+			"facing": 1.0,
+			"lift": 466.771712784086,
+			"recovery": 338.321467705534,
+			"scale": 2.6
+		}
+	],
+	"checks": 61,
+	"elbow_flex_degrees": [
+		41.7946662580963,
+		86.3826093696524
+	],
+	"failures": [],
+	"isolated_actual_wrist_turns": [
+		{
+			"actual_blade_change_degrees": -29.9999974197315,
+			"clip": "Idle",
+			"elbow_displacement": 0.0,
+			"facing": -1.0,
+			"wrist_displacement": 0.0,
+			"wrist_only_degrees": 30.0
+		},
+		{
+			"actual_blade_change_degrees": -29.9999974197315,
+			"clip": "Run_New1",
+			"elbow_displacement": 0.0,
+			"facing": -1.0,
+			"wrist_displacement": 0.0,
+			"wrist_only_degrees": 30.0
+		},
+		{
+			"actual_blade_change_degrees": 29.9999974197315,
+			"clip": "Idle",
+			"elbow_displacement": 0.0,
+			"facing": 1.0,
+			"wrist_displacement": 0.0,
+			"wrist_only_degrees": 30.0
+		},
+		{
+			"actual_blade_change_degrees": 29.9999974197315,
+			"clip": "Run_New1",
+			"elbow_displacement": 0.0,
+			"facing": 1.0,
+			"wrist_displacement": 0.0,
+			"wrist_only_degrees": 30.0
+		}
+	],
+	"maximum_actual_wrist_axis_error_degrees": 0.0000213980749228559,
+	"maximum_blade_angle_step_degrees": 1.24898205200687,
+	"maximum_commanded_wrist_axis_error_degrees": 0.00000884853506260109,
+	"maximum_grip_error_native_pixels": 0.0000307550726574846,
+	"maximum_source_arm_length_error_native_pixels": 0.0000149011611938477,
+	"maximum_sword_length_error_native_pixels": 0.0000196236837695096,
+	"passed": true,
+	"project_root": "E:/stacklands/tools/action_battle_test/",
+	"resource_script": "res://smoke_guigu_native_sword_motion.gd",
+	"samples": 11540,
+	"scope": "Actual NativeRuntime/NativeSkin/51 source transforms, original grip bindpose and fixed sword PNG. Stand/run, both facings/scales, isolated wrist rotation, loop/pause/off/single controls. Visual preview only; no damage, hitbox, input or four-stage combat rules."
+}

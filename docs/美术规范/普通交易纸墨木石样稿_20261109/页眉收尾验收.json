@@ -1,0 +1,246 @@
+{
+  "date": "2026-11-09",
+  "status": "passed",
+  "scope": "普通交易独立样稿页眉左侧12设计单位内边距；未替换正式交易入口",
+  "change": {
+    "titleDesignX": 36,
+    "paperDesignX": 24,
+    "leftPadding": 12,
+    "returnDesignPosition": [
+      1534,
+      18
+    ],
+    "returnDesignSize": [
+      114,
+      46
+    ],
+    "changedSources": [
+      {
+        "file": "csharp/scene/TradePaperPreviewPanel.cs",
+        "sha256": "998ba74cd89adfe4ebc6e47912dfcda208aa9c9c995489f9b266b49a0daa380e"
+      },
+      {
+        "file": "csharp/debug/TradePaperUiSmoke.cs",
+        "sha256": "67ecb3ab842c3f352089a27ba46404f136edb49ad06fd02fea37da601ebac9fb"
+      }
+    ],
+    "previewSceneUnchanged": true
+  },
+  "build": {
+    "owner": "主线统一构建",
+    "log": "编译_页眉收尾.log",
+    "exitCode": 0,
+    "warnings": 0,
+    "errors": 0
+  },
+  "totals": {
+    "checks": 86,
+    "captures": 14,
+    "visuallyReviewed": 14
+  },
+  "runs": [
+    {
+      "width": 1280,
+      "height": 720,
+      "exitCode": 0,
+      "status": "passed",
+      "checks": 43,
+      "captures": 7,
+      "profile": "output/trade_paper_header_profile_1280",
+      "log": "原生验收_页眉收尾_1280.log",
+      "details": "验收记录_1280.json"
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "exitCode": 0,
+      "status": "passed",
+      "checks": 43,
+      "captures": 7,
+      "profile": "output/trade_paper_header_profile_1920",
+      "log": "原生验收_页眉收尾_1920.log",
+      "details": "验收记录_1920.json"
+    }
+  ],
+  "visualReview": {
+    "method": "直接逐张打开本轮两档全部14张Godot完整原生PNG，未加工画面",
+    "screenshots": [
+      {
+        "file": "普通交易_初开目录_1280.png",
+        "width": 1280,
+        "height": 720,
+        "sha256": "2055951468c8298ac74294956580d72ebb5ee8222b16258b08e0afea2848646d",
+        "visuallyReviewed": true,
+        "result": "标题留白/日期返回/四列内容/数量槽/当前反馈均完整，无越界或裁切"
+      },
+      {
+        "file": "普通交易_数量编辑_1280.png",
+        "width": 1280,
+        "height": 720,
+        "sha256": "2137891589a8bdb80377fd6f039b528df7dc67dd577b7a41da17733f9b40b4b5",
+        "visuallyReviewed": true,
+        "result": "标题留白/日期返回/四列内容/数量槽/当前反馈均完整，无越界或裁切"
+      },
+      {
+        "file": "普通交易_交换清单_1280.png",
+        "width": 1280,
+        "height": 720,
+        "sha256": "fec7084ae14383ec74c5652728f947a3b431335f5d73462ad39653c1b89d0077",
+        "visuallyReviewed": true,
+        "result": "标题留白/日期返回/四列内容/数量槽/当前反馈均完整，无越界或裁切"
+      },
+      {
+        "file": "普通交易_按钮按下_1280.png",
+        "width": 1280,
+        "height": 720,
+        "sha256": "9adff1ff9114f730c79ede85ca18a19d7e4a5cb885f88af00eb00c9cfdff038c",
+        "visuallyReviewed": true,
+        "result": "标题留白/日期返回/四列内容/数量槽/当前反馈均完整，无越界或裁切"
+      },
+      {
+        "file": "普通交易_不可成交_1280.png",
+        "width": 1280,
+        "height": 720,
+        "sha256": "36e18d6ee1184eaef0203fd20671c0008251d65407357d063c410646a3d84379",
+        "visuallyReviewed": true,
+        "result": "标题留白/日期返回/四列内容/数量槽/当前反馈均完整，无越界或裁切"
+      },
+      {
+        "file": "普通交易_交易完成_1280.png",
+        "width": 1280,
+        "height": 720,
+        "sha256": "83d7f370bf74d8e263e949da0663400b4af58f0899304af87e38f7958d0c263f",
+        "visuallyReviewed": true,
+        "result": "标题留白/日期返回/四列内容/数量槽/当前反馈均完整，无越界或裁切"
+      },
+      {
+        "file": "普通交易_空目录_1280.png",
+        "width": 1280,
+        "height": 720,
+        "sha256": "6c6b8aa168e5a4d71a6ac6a03f11d33c5577ce5bdb1fff0b835a1ac4e8c5d11d",
+        "visuallyReviewed": true,
+        "result": "标题留白/日期返回/四列内容/数量槽/当前反馈均完整，无越界或裁切"
+      },
+      {
+        "file": "普通交易_初开目录_1920.png",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "50127b562befa6b6558fdad0d761db02fe9c53a2058f07b5391feef443cf34db",
+        "visuallyReviewed": true,
+        "result": "标题留白/日期返回/四列内容/数量槽/当前反馈均完整，无越界或裁切"
+      },
+      {
+        "file": "普通交易_数量编辑_1920.png",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "93d2f57c0eed0772a62f349d2f4d2fdf8f04187a27df7c661322485caa2c8386",
+        "visuallyReviewed": true,
+        "result": "标题留白/日期返回/四列内容/数量槽/当前反馈均完整，无越界或裁切"
+      },
+      {
+        "file": "普通交易_交换清单_1920.png",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "3fcfbc8b713f5ccac4999c5da8cec9818b033e653725128189567455e323f1c7",
+        "visuallyReviewed": true,
+        "result": "标题留白/日期返回/四列内容/数量槽/当前反馈均完整，无越界或裁切"
+      },
+      {
+        "file": "普通交易_按钮按下_1920.png",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "3adf451bcf00f2b66b5edd78721cb90913dd7b2b5252f294bd57c8e31dd0b1e4",
+        "visuallyReviewed": true,
+        "result": "标题留白/日期返回/四列内容/数量槽/当前反馈均完整，无越界或裁切"
+      },
+      {
+        "file": "普通交易_不可成交_1920.png",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "10f831ab3c512041897f01e9106a4a808f7be91bd9002b5854f8cb6260903741",
+        "visuallyReviewed": true,
+        "result": "标题留白/日期返回/四列内容/数量槽/当前反馈均完整，无越界或裁切"
+      },
+      {
+        "file": "普通交易_交易完成_1920.png",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "cbaeb757ad6b271a2c659de1285c96649180391fce0341837865a4afea9bb8ba",
+        "visuallyReviewed": true,
+        "result": "标题留白/日期返回/四列内容/数量槽/当前反馈均完整，无越界或裁切"
+      },
+      {
+        "file": "普通交易_空目录_1920.png",
+        "width": 1920,
+        "height": 1080,
+        "sha256": "66ddbba6dfb3865a878e703880bf6b3002cacebcefa6e70c990665db66fb4bcf",
+        "visuallyReviewed": true,
+        "result": "标题留白/日期返回/四列内容/数量槽/当前反馈均完整，无越界或裁切"
+      }
+    ]
+  },
+  "preservedSources": {
+    "baselineFile": "output/trade_paper_protected_sources.json",
+    "unchangedCount": 6,
+    "files": [
+      {
+        "file": "csharp/panel/TradePanel.cs",
+        "baseline": "0d0161275fa99c7ea8ccb966d132dbbdb8aeb6f401c7a56332d4f7a07d1b2e1a",
+        "current": "0d0161275fa99c7ea8ccb966d132dbbdb8aeb6f401c7a56332d4f7a07d1b2e1a",
+        "unchanged": true
+      },
+      {
+        "file": "csharp/panel/QuietRoomNumber.cs",
+        "baseline": "3d86be216c8772990efea8fcfd4dd756fe7c9e8c5b7b0bffacaf40c2655a8012",
+        "current": "3d86be216c8772990efea8fcfd4dd756fe7c9e8c5b7b0bffacaf40c2655a8012",
+        "unchanged": true
+      },
+      {
+        "file": "csharp/panel/PaperButtonFeedback.cs",
+        "baseline": "275a8540a06a858370ed7e8eb3cff4beec35d8a75c8fda5a86d0e41db9f7a6a3",
+        "current": "275a8540a06a858370ed7e8eb3cff4beec35d8a75c8fda5a86d0e41db9f7a6a3",
+        "unchanged": true
+      },
+      {
+        "file": "csharp/system/WorldStaminaRules.cs",
+        "baseline": "a583d46bfc94b42ddc1621763c2a3ade6de3fabd9971fe5935e2f6b11dfe552d",
+        "current": "a583d46bfc94b42ddc1621763c2a3ade6de3fabd9971fe5935e2f6b11dfe552d",
+        "unchanged": true
+      },
+      {
+        "file": "csharp/panel/YuxuSectExchangePanel.cs",
+        "baseline": "44b595b5faf5ea89c66c6d62e72441b4969a7e456bc1ee8f52a057742f47a2c5",
+        "current": "44b595b5faf5ea89c66c6d62e72441b4969a7e456bc1ee8f52a057742f47a2c5",
+        "unchanged": true
+      },
+      {
+        "file": "csharp/panel/YuxuMarketPanel.cs",
+        "baseline": "dec507b41cc5aadb55203505f3e2395213109527ee9d6eccd4b4fbccbdb80ee0",
+        "current": "dec507b41cc5aadb55203505f3e2395213109527ee9d6eccd4b4fbccbdb80ee0",
+        "unchanged": true
+      }
+    ],
+    "authorizedSharedChange": {
+      "file": "csharp/panel/CraftingPaperStyle.cs",
+      "baseline": "3630cd6f44991072bb7db8aa9a2a3646577eb7b164d9833c40afe39a6d384cb6",
+      "current": "aaaba28109359bc828445fe4455cb0605f8c87154eac51531bb88f2866f73672",
+      "unchanged": false,
+      "scope": "主线本轮授权滑轨与PopupMenu修订；不纳入六个未改文件的断言"
+    }
+  },
+  "runtime": {
+    "errorOrWarningLines": 0,
+    "testProcessExitCodes": [
+      0,
+      0
+    ],
+    "input": "固定GPU子视口Viewport.PushInput；不使用系统鼠标",
+    "saveBoundary": "APPDATA隔离于output；未打开正式存档，原交易只绑定临时人物与NPC库存"
+  },
+  "history": {
+    "previousChecksPerWidth": 41,
+    "previousCapturesPerWidth": 7,
+    "beforeEvidence": "output/trade_paper_header_before_20261109",
+    "note": "本轮在原41项基础上新增标题内边距与返回坐标两项，最终每档43项，不沿用旧41项作为本轮计数"
+  }
+}

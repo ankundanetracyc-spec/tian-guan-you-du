@@ -1,0 +1,372 @@
+{
+  "status": "Current candidate independently captured and reviewed; final user evaluation pending",
+  "skin_sha256": "a89b5c239217753e31efc01a7c18dc6186f483720d5276ce20df3d949d883b88",
+  "materials": {
+    "body": {
+      "native_size": [
+        971,
+        1620
+      ],
+      "sha256": "9a87016e7b3aaf208d369fd7033cb0fa62f31ec8690cb2727d050120099a3109",
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\body.png"
+    },
+    "leg": {
+      "native_size": [
+        992,
+        1586
+      ],
+      "sha256": "1a34b9c4f232f77e67bd56f64fdbeb4734a8e7271bfb50d71528bc0d3e656ec0",
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\leg.png"
+    },
+    "sleeve_far": {
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "3045f76c238120f3440cdbc24b00ea78871c9ed7bf39f77815c392b86db17f09",
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_far.png"
+    },
+    "sleeve_near": {
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "3dbd0516571a25c84710bc3675b518fc40744f8627da7491553e2fc32db31082",
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near.png"
+    },
+    "sleeve_far_fist": {
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "25de5070de5816921e1c7cb292c183bcef7cf026d1d9b22e6f6b43b044c5202e",
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_far_fist.png"
+    },
+    "sleeve_near_fist": {
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "4d9566e8ff9f85f0bf2b9f85b22393f67db7835f66e20de158e54d799b1919e1",
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near_fist.png"
+    }
+  },
+  "visual_review": [
+    "1200x800 whole outfit",
+    "800x400 nominal 150px source-envelope comparison",
+    "Idle/Run1/Run2 24 phases each, all 72 board cells",
+    "four native isolated hand closeups",
+    "source/current Idle joint overlay",
+    "Run/Idle/backstep/Step/Attack native frames",
+    "run-to-Idle transition frames"
+  ],
+  "results": [
+    "普通Idle双手舒展，Run1/Run2双手松拳，无常驻剑指",
+    "近手手背、远手掌面朝屏幕；近open指端补载体后完整",
+    "袖身固定使用open底图，腕后局部切换，未见明显腕口断裂或肩袖纹样跳变",
+    "旧肩根黑圆框已去，72相位未见透明肩断口；淡灰衣褶与回纹边仍可辨",
+    "闭袍后缘/底弧连续，后摆新增1点3面；alpha70%实色越域0",
+    "前腰裤根出头已修复，3旧黑点真实原生RGB均恢复背景",
+    "上裤腿与髋帽按真实侧腰收束，膝下/靴区保留，未整体缩放腿链"
+  ],
+  "data_checks": {
+    "passed": true,
+    "count": 46,
+    "aesthetic_completion_inferred": false
+  },
+  "body_carrier_extension": {
+    "added_triangles": [
+      [
+        30,
+        31,
+        40
+      ],
+      [
+        31,
+        32,
+        40
+      ],
+      [
+        32,
+        33,
+        40
+      ]
+    ],
+    "affine_weights": [
+      0.581574440002441,
+      0.851899147033691,
+      -0.433473587036133
+    ],
+    "carrier_triangle_count": 46,
+    "carrier_vertex_count": 41,
+    "full_canvas_px": [
+      12.1999998092651,
+      94.5
+    ],
+    "motion": "engineered local affine extension of adjacent evaluated source cloth",
+    "new_vertex": 40,
+    "original_source_document_unchanged": true,
+    "original_triangle_count": 43,
+    "original_vertex_count": 40,
+    "original_vertices_unchanged": true,
+    "purpose": "cover the new continuous rear hem; original mesh had no topological slit",
+    "source_basis": [
+      32,
+      31,
+      35
+    ],
+    "uv": "unchanged crop-to-full-canvas affine"
+  },
+  "near_hand_carrier_extension": {
+    "added_triangles": [
+      [
+        15,
+        16,
+        35
+      ],
+      [
+        16,
+        17,
+        35
+      ]
+    ],
+    "affine_weights": [
+      1.96450090408325,
+      0.562674999237061,
+      -1.52717590332031
+    ],
+    "carrier_triangle_count": 49,
+    "carrier_vertex_count": 36,
+    "full_canvas_px": [
+      26.5,
+      48.5
+    ],
+    "motion": "local affine extension of the adjacent source hand segment",
+    "new_vertex": 35,
+    "original_source_document_unchanged": true,
+    "original_triangle_count": 47,
+    "original_vertex_count": 35,
+    "original_vertices_unchanged": true,
+    "purpose": "preserve the full natural open fingers beyond the old short source hand silhouette",
+    "source_basis": [
+      17,
+      16,
+      0
+    ],
+    "wrist_and_sleeve_unchanged": true
+  },
+  "hand_alpha_coverage": {
+    "threshold": 0.7,
+    "before_near_open_outside_fraction": 0.16195551436515293,
+    "final_all_four_outside_fraction": 0.0
+  },
+  "hand_variants": {
+    "active": {
+      "sleeve_far": "open",
+      "sleeve_near": "open"
+    },
+    "base": "open sleeve remains unchanged; variants sampled only at wrist/hand",
+    "materials": {
+      "sleeve_far": {
+        "fist": {
+          "native_size": [
+            1254,
+            1254
+          ],
+          "path": "res://art/ink_outfit_01_20261104/assets/sleeve_far_fist.png",
+          "sampling": "normalized complete-canvas UV, independent of base PNG pixel dimensions",
+          "scope": "wrist and hand only; shoulder and sleeve stay on the open base material",
+          "sha256": "25de5070de5816921e1c7cb292c183bcef7cf026d1d9b22e6f6b43b044c5202e"
+        }
+      },
+      "sleeve_near": {
+        "fist": {
+          "native_size": [
+            1254,
+            1254
+          ],
+          "path": "res://art/ink_outfit_01_20261104/assets/sleeve_near_fist.png",
+          "sampling": "normalized complete-canvas UV, independent of base PNG pixel dimensions",
+          "scope": "wrist and hand only; shoulder and sleeve stay on the open base material",
+          "sha256": "4d9566e8ff9f85f0bf2b9f85b22393f67db7835f66e20de158e54d799b1919e1"
+        }
+      }
+    },
+    "ordinary_idle": "open",
+    "ordinary_run": "fist",
+    "override": "",
+    "regions": {
+      "sleeve_far": {
+        "cut_v": 0.65,
+        "feather": 0.003
+      },
+      "sleeve_near": {
+        "cut_v": 0.662,
+        "feather": 0.003
+      }
+    },
+    "sampling": "normalized full-canvas coordinates per native texture",
+    "strict_required": true,
+    "sword": "explicit single near-hand override only; no skill mapping",
+    "unspecified_special_action": "open"
+  },
+  "optional_sword": {
+    "status": "unavailable_optional",
+    "interface": "explicit near-only override, far remains open",
+    "skill_mapping": null,
+    "completion_dependency": false
+  },
+  "waist_hidden_leg_insertion": {
+    "status": "fixed",
+    "method": "waist-hidden leg insertion; fragment alpha only above source pelvis/head plane, leg meshes only",
+    "skin_sha256": "a89b5c239217753e31efc01a7c18dc6186f483720d5276ce20df3d949d883b88",
+    "source_vertices_and_native_uv_unchanged": true,
+    "pause_frozen": true,
+    "plane": {
+      "frozen_when_paused": true,
+      "native_uv_unchanged": true,
+      "normal": "head-pelvis",
+      "point": [
+        1.39509081840515,
+        -55.2085990905762
+      ],
+      "scope": "leg fragments only; hide insertion above source pelvis/waist center",
+      "source_anchor": "pelvis / shenti2",
+      "source_vertices_unchanged": true,
+      "up_normal": [
+        -0.0208405423909426,
+        -0.999782860279083
+      ]
+    },
+    "native_screenshot_pixel_samples": [
+      {
+        "screen": [
+          340,
+          385
+        ],
+        "before_rgb": [
+          68,
+          64,
+          66
+        ],
+        "after_rgb": [
+          221,
+          220,
+          209
+        ],
+        "after_is_native_background": true
+      },
+      {
+        "screen": [
+          340,
+          393
+        ],
+        "before_rgb": [
+          67,
+          63,
+          65
+        ],
+        "after_rgb": [
+          221,
+          220,
+          209
+        ],
+        "after_is_native_background": true
+      },
+      {
+        "screen": [
+          341,
+          400
+        ],
+        "before_rgb": [
+          67,
+          63,
+          65
+        ],
+        "after_rgb": [
+          221,
+          220,
+          209
+        ],
+        "after_is_native_background": true
+      }
+    ],
+    "separate_proportion_fix": "upper pants silhouette narrowed; knee/boot placement preserved; not a whole-leg scale"
+  },
+  "proportion_review": {
+    "static_source_and_current": {
+      "far": {
+        "hip_knee_ankle_sum": 56.4110839850004,
+        "hip_to_knee": 27.7782073379572,
+        "knee_to_ankle": 28.6328766470432,
+        "leg_chain_over_neck_waist": 1.63834966850205
+      },
+      "hip_mount_horizontal_projection": 0.0999999940395355,
+      "hip_mount_separation": 7.00072612411517,
+      "hip_mount_vertical_projection": 7.0000114440918,
+      "joints": {
+        "far_calf": [
+          2.88508987426758,
+          -40.1545562744141
+        ],
+        "far_foot": [
+          1.98868000507355,
+          -11.535719871521
+        ],
+        "far_thigh": [
+          0.225559994578362,
+          -67.8051605224609
+        ],
+        "far_upper": [
+          -1.42356705665588,
+          -84.2301940917969
+        ],
+        "head": [
+          0.807985663414001,
+          -94.7958908081055
+        ],
+        "near_calf": [
+          -2.11091995239258,
+          -33.117130279541
+        ],
+        "near_foot": [
+          -6.40541934967041,
+          -4.80812978744507
+        ],
+        "near_thigh": [
+          0.125559985637665,
+          -60.8051452636719
+        ],
+        "near_upper": [
+          0.0514071397483349,
+          -83.0870742797852
+        ],
+        "pelvis": [
+          1.52555990219116,
+          -60.3717155456543
+        ]
+      },
+      "near": {
+        "hip_knee_ankle_sum": 56.4110818992761,
+        "hip_to_knee": 27.7781969093359,
+        "knee_to_ankle": 28.6328849899402,
+        "leg_chain_over_neck_waist": 1.63834960792627
+      },
+      "neck_to_waist": 34.4316509897287,
+      "unit": "source pixels at PPU100; not native artwork pixels"
+    },
+    "pixel_alpha_profile_record": "裤根与侧腰素材比例复核_20261105.json",
+    "new_hip_cap_max_over_side_waist": 0.836,
+    "old_hd_hip_cap_max_over_side_waist": 1.118,
+    "knee_down_alpha_IoU": 0.9839,
+    "boot_down_alpha_IoU": 0.9895,
+    "whole_leg_rescaled": false
+  },
+  "limits": [
+    "淡灰肩帽衣褶和回纹边可辨，不称完全无缝",
+    "跑停下摆最长0.58秒过渡为工程代理，并非原DynamicBone",
+    "无五官人台用于试衣，本轮头发不在范围",
+    "默认游戏入口、玩法和技能映射未改"
+  ],
+  "png_packaging": "Godot native PNGs copied byte-for-byte; GIFs palette encoded only; outfit art untouched"
+}

@@ -1,0 +1,4146 @@
+{
+  "version": 1,
+  "profile": "baishi_forest_grounding_sample_20261106_v2",
+  "world_size": 22118.4,
+  "bounds": [
+    3800.0,
+    12900.0,
+    3200.0,
+    2400.0
+  ],
+  "seed": 2026110615,
+  "tree_catalog": "res://textures/world/bai_chuan/forest_grounding_20261106/trees_catalog.json",
+  "tree_sources": {},
+  "removed_tree_ids": [
+    "tree_03027",
+    "tree_03029",
+    "tree_03030",
+    "tree_03031",
+    "tree_03032",
+    "tree_03033",
+    "tree_03034",
+    "tree_03036",
+    "tree_03037",
+    "tree_03038",
+    "tree_03063",
+    "tree_03064",
+    "tree_03065",
+    "tree_03066",
+    "tree_03067",
+    "tree_03068",
+    "tree_03069",
+    "tree_03070",
+    "tree_03071",
+    "tree_03072",
+    "tree_03073",
+    "tree_03074",
+    "tree_03075",
+    "tree_03076",
+    "tree_03077",
+    "tree_03078",
+    "tree_03079",
+    "tree_03080",
+    "tree_03104",
+    "tree_03105",
+    "tree_03106",
+    "tree_03107",
+    "tree_03108",
+    "tree_03109",
+    "tree_03110",
+    "tree_03111",
+    "tree_03112",
+    "tree_03143",
+    "tree_03156",
+    "tree_03157",
+    "tree_03158",
+    "tree_03159",
+    "tree_03175",
+    "tree_03176",
+    "tree_03177",
+    "tree_03178",
+    "tree_03179",
+    "tree_03180",
+    "tree_03181",
+    "tree_03182",
+    "tree_03183",
+    "tree_03184",
+    "tree_03185",
+    "tree_03197",
+    "tree_03198",
+    "tree_03199",
+    "tree_03200",
+    "tree_03201",
+    "tree_03202",
+    "tree_03203",
+    "tree_03204",
+    "tree_03205",
+    "tree_03206",
+    "tree_03221",
+    "tree_03222",
+    "tree_03223",
+    "tree_03224",
+    "tree_03225",
+    "tree_03226",
+    "tree_03227",
+    "tree_03228",
+    "tree_03229",
+    "tree_03230",
+    "tree_03231",
+    "tree_03248",
+    "tree_03249",
+    "tree_03250",
+    "tree_03251",
+    "tree_03252",
+    "tree_03253",
+    "tree_03254",
+    "tree_03255",
+    "tree_03256",
+    "tree_03257",
+    "tree_03258",
+    "tree_03259",
+    "tree_03273",
+    "tree_03274",
+    "tree_03275",
+    "tree_03276",
+    "tree_03277",
+    "tree_03278",
+    "tree_03279",
+    "tree_03280",
+    "tree_03281",
+    "tree_03282",
+    "tree_03302",
+    "tree_03303",
+    "tree_03304",
+    "tree_03305",
+    "tree_03306",
+    "tree_03307",
+    "tree_03308",
+    "tree_03309",
+    "tree_03334",
+    "tree_03335",
+    "tree_03336",
+    "tree_03337",
+    "tree_03370",
+    "tree_03409",
+    "tree_03430",
+    "tree_03431",
+    "tree_03464",
+    "tree_03482",
+    "tree_03483",
+    "tree_03484",
+    "tree_03494",
+    "tree_03495",
+    "tree_03496",
+    "tree_03503",
+    "tree_03504",
+    "tree_03505",
+    "tree_03506",
+    "tree_03507",
+    "tree_03517",
+    "tree_03518",
+    "tree_03519",
+    "tree_03520",
+    "tree_03521",
+    "tree_03522",
+    "tree_03523",
+    "tree_03524",
+    "tree_03546",
+    "tree_03547",
+    "tree_03548",
+    "tree_03580",
+    "tree_03581",
+    "tree_03582",
+    "tree_03604",
+    "tree_03605",
+    "tree_03606",
+    "tree_03607",
+    "tree_03608",
+    "tree_03609",
+    "tree_03610",
+    "tree_03611",
+    "tree_03626",
+    "tree_03627",
+    "tree_03628",
+    "tree_03629",
+    "tree_03630",
+    "tree_03631",
+    "tree_03632",
+    "tree_03633",
+    "tree_03640"
+  ],
+  "trees": [
+    {
+      "id": "forest_grounding_tree_0000",
+      "kind": "tree",
+      "asset": "natural_oak_mature",
+      "x": 6033.86275,
+      "y": 14621.99956,
+      "z": 14621.99956,
+      "position": [
+        6033.86275,
+        14621.99956
+      ],
+      "height": 123.24599,
+      "width": 164.87575,
+      "pivot": [
+        0.42809154669619787,
+        0.9688888888888889
+      ],
+      "flip": false,
+      "bounds": [
+        5963.28084,
+        14502.58789,
+        164.87575,
+        123.24599
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_00",
+      "minimum_trunk_gap_world": 65.96398,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0001",
+      "kind": "tree",
+      "asset": "natural_oak_mature",
+      "x": 6150.03398,
+      "y": 14730.81658,
+      "z": 14730.81658,
+      "position": [
+        6150.03398,
+        14730.81658
+      ],
+      "height": 119.0359,
+      "width": 159.24358,
+      "pivot": [
+        0.42809154669619787,
+        0.9688888888888889
+      ],
+      "flip": true,
+      "bounds": [
+        6058.96123,
+        14615.48402,
+        159.24358,
+        119.0359
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_00",
+      "minimum_trunk_gap_world": 82.52521,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0002",
+      "kind": "tree",
+      "asset": "natural_oak_mature",
+      "x": 6015.76718,
+      "y": 14783.24363,
+      "z": 14783.24363,
+      "position": [
+        6015.76718,
+        14783.24363
+      ],
+      "height": 128.94891,
+      "width": 172.50499,
+      "pivot": [
+        0.42809154669619787,
+        0.9688888888888889
+      ],
+      "flip": false,
+      "bounds": [
+        5941.91925,
+        14658.30646,
+        172.50499,
+        128.94891
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_00",
+      "minimum_trunk_gap_world": 65.36476,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0003",
+      "kind": "tree",
+      "asset": "natural_oak_young",
+      "x": 5911.7617,
+      "y": 14619.50831,
+      "z": 14619.50831,
+      "position": [
+        5911.7617,
+        14619.50831
+      ],
+      "height": 112.43728,
+      "width": 107.59549,
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "flip": false,
+      "bounds": [
+        5874.23152,
+        14510.83687,
+        107.59549,
+        112.43728
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_00",
+      "minimum_trunk_gap_world": 75.33413,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0004",
+      "kind": "tree",
+      "asset": "natural_sapling",
+      "x": 5931.11177,
+      "y": 14741.05442,
+      "z": 14741.05442,
+      "position": [
+        5931.11177,
+        14741.05442
+      ],
+      "height": 92.08169,
+      "width": 89.06261,
+      "pivot": [
+        0.38298565840938725,
+        0.9644808743169399
+      ],
+      "flip": false,
+      "bounds": [
+        5897.00207,
+        14652.2434,
+        89.06261,
+        92.08169
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_00",
+      "minimum_trunk_gap_world": 72.78787,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0005",
+      "kind": "tree",
+      "asset": "natural_oak_young",
+      "x": 5999.552,
+      "y": 14716.19789,
+      "z": 14716.19789,
+      "position": [
+        5999.552,
+        14716.19789
+      ],
+      "height": 110.76961,
+      "width": 105.99963,
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "flip": true,
+      "bounds": [
+        5930.5259,
+        14609.13827,
+        105.99963,
+        110.76961
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_00",
+      "minimum_trunk_gap_world": 65.27069,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0006",
+      "kind": "tree",
+      "asset": "natural_sapling",
+      "x": 6141.02419,
+      "y": 14835.67438,
+      "z": 14835.67438,
+      "position": [
+        6141.02419,
+        14835.67438
+      ],
+      "height": 81.77333,
+      "width": 79.09223,
+      "pivot": [
+        0.38298565840938725,
+        0.9644808743169399
+      ],
+      "flip": true,
+      "bounds": [
+        6092.22314,
+        14756.80557,
+        79.09223,
+        81.77333
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_00",
+      "minimum_trunk_gap_world": 92.95231,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0007",
+      "kind": "tree",
+      "asset": "natural_oak_mature",
+      "x": 5676.07632,
+      "y": 14649.26461,
+      "z": 14649.26461,
+      "position": [
+        5676.07632,
+        14649.26461
+      ],
+      "height": 127.78651,
+      "width": 170.94995,
+      "pivot": [
+        0.42809154669619787,
+        0.9688888888888889
+      ],
+      "flip": true,
+      "bounds": [
+        5578.30859,
+        14525.45369,
+        170.94995,
+        127.78651
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_00",
+      "minimum_trunk_gap_world": 88.8162,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0008",
+      "kind": "tree",
+      "asset": "natural_oak_mature",
+      "x": 5929.77264,
+      "y": 14870.29705,
+      "z": 14870.29705,
+      "position": [
+        5929.77264,
+        14870.29705
+      ],
+      "height": 122.09411,
+      "width": 163.33479,
+      "pivot": [
+        0.42809154669619787,
+        0.9688888888888889
+      ],
+      "flip": false,
+      "bounds": [
+        5859.85039,
+        14752.00142,
+        163.33479,
+        122.09411
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_00",
+      "minimum_trunk_gap_world": 67.49894,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0009",
+      "kind": "tree",
+      "asset": "natural_oak_mature",
+      "x": 6159.91556,
+      "y": 14619.91759,
+      "z": 14619.91759,
+      "position": [
+        6159.91556,
+        14619.91759
+      ],
+      "height": 131.4244,
+      "width": 175.81664,
+      "pivot": [
+        0.42809154669619787,
+        0.9688888888888889
+      ],
+      "flip": true,
+      "bounds": [
+        6059.36453,
+        14492.58195,
+        175.81664,
+        131.4244
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_00",
+      "minimum_trunk_gap_world": 88.28928,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0010",
+      "kind": "tree",
+      "asset": "natural_oak_young",
+      "x": 5691.28135,
+      "y": 14855.98713,
+      "z": 14855.98713,
+      "position": [
+        5691.28135,
+        14855.98713
+      ],
+      "height": 107.2102,
+      "width": 102.59349,
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "flip": true,
+      "bounds": [
+        5624.4733,
+        14752.36771,
+        102.59349,
+        107.2102
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_00",
+      "minimum_trunk_gap_world": 96.93284,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0011",
+      "kind": "tree",
+      "asset": "natural_oak_mature",
+      "x": 6135.92213,
+      "y": 14530.85255,
+      "z": 14530.85255,
+      "position": [
+        6135.92213,
+        14530.85255
+      ],
+      "height": 122.55771,
+      "width": 163.95499,
+      "pivot": [
+        0.42809154669619787,
+        0.9688888888888889
+      ],
+      "flip": false,
+      "bounds": [
+        6065.73439,
+        14412.10774,
+        163.95499,
+        122.55771
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_00",
+      "minimum_trunk_gap_world": 91.35921,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0012",
+      "kind": "tree",
+      "asset": "natural_oak_young",
+      "x": 6075.47772,
+      "y": 14690.47331,
+      "z": 14690.47331,
+      "position": [
+        6075.47772,
+        14690.47331
+      ],
+      "height": 105.46995,
+      "width": 100.92818,
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "flip": true,
+      "bounds": [
+        6009.75411,
+        14588.53585,
+        100.92818,
+        105.46995
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_00",
+      "minimum_trunk_gap_world": 67.71523,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0013",
+      "kind": "tree",
+      "asset": "natural_oak_mature",
+      "x": 6038.56021,
+      "y": 14858.12778,
+      "z": 14858.12778,
+      "position": [
+        6038.56021,
+        14858.12778
+      ],
+      "height": 119.6909,
+      "width": 160.11983,
+      "pivot": [
+        0.42809154669619787,
+        0.9688888888888889
+      ],
+      "flip": true,
+      "bounds": [
+        5946.98632,
+        14742.16059,
+        160.11983,
+        119.6909
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_00",
+      "minimum_trunk_gap_world": 77.14065,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0014",
+      "kind": "tree",
+      "asset": "natural_oak_young",
+      "x": 6029.45405,
+      "y": 14490.05324,
+      "z": 14490.05324,
+      "position": [
+        6029.45405,
+        14490.05324
+      ],
+      "height": 106.51011,
+      "width": 101.92355,
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "flip": false,
+      "bounds": [
+        5993.90229,
+        14387.11046,
+        101.92355,
+        106.51011
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_00",
+      "minimum_trunk_gap_world": 87.58127,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0015",
+      "kind": "tree",
+      "asset": "natural_pine_wide",
+      "x": 6409.48798,
+      "y": 13530.8126,
+      "z": 13530.8126,
+      "position": [
+        6409.48798,
+        13530.8126
+      ],
+      "height": 117.49978,
+      "width": 176.1039,
+      "pivot": [
+        0.4857034186504385,
+        0.967741935483871
+      ],
+      "flip": true,
+      "bounds": [
+        6318.91835,
+        13417.10313,
+        176.1039,
+        117.49978
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_01",
+      "minimum_trunk_gap_world": 96.16533,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0016",
+      "kind": "tree",
+      "asset": "natural_pine_lean",
+      "x": 6288.97682,
+      "y": 13417.05058,
+      "z": 13417.05058,
+      "position": [
+        6288.97682,
+        13417.05058
+      ],
+      "height": 125.60544,
+      "width": 151.25263,
+      "pivot": [
+        0.5606979405034325,
+        0.9659685863874345
+      ],
+      "flip": true,
+      "bounds": [
+        6222.53123,
+        13295.71967,
+        151.25263,
+        125.60544
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_01",
+      "minimum_trunk_gap_world": 75.81261,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0017",
+      "kind": "tree",
+      "asset": "natural_pine_wide",
+      "x": 6409.45199,
+      "y": 13171.25885,
+      "z": 13171.25885,
+      "position": [
+        6409.45199,
+        13171.25885
+      ],
+      "height": 112.49384,
+      "width": 168.60119,
+      "pivot": [
+        0.4857034186504385,
+        0.967741935483871
+      ],
+      "flip": true,
+      "bounds": [
+        6322.74097,
+        13062.39385,
+        168.60119,
+        112.49384
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_01",
+      "minimum_trunk_gap_world": 80.36466,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0018",
+      "kind": "tree",
+      "asset": "natural_pine_lean",
+      "x": 6099.59902,
+      "y": 13294.68422,
+      "z": 13294.68422,
+      "position": [
+        6099.59902,
+        13294.68422
+      ],
+      "height": 115.7913,
+      "width": 139.43455,
+      "pivot": [
+        0.5606979405034325,
+        0.9659685863874345
+      ],
+      "flip": true,
+      "bounds": [
+        6038.34513,
+        13182.83346,
+        139.43455,
+        115.7913
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_01",
+      "minimum_trunk_gap_world": 95.03703,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0019",
+      "kind": "tree",
+      "asset": "natural_pine_wide",
+      "x": 6277.078,
+      "y": 13199.57464,
+      "z": 13199.57464,
+      "position": [
+        6277.078,
+        13199.57464
+      ],
+      "height": 114.05867,
+      "width": 170.94649,
+      "pivot": [
+        0.4857034186504385,
+        0.967741935483871
+      ],
+      "flip": false,
+      "bounds": [
+        6194.04871,
+        13089.19528,
+        170.94649,
+        114.05867
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_01",
+      "minimum_trunk_gap_world": 82.53562,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0020",
+      "kind": "tree",
+      "asset": "natural_pine_wide",
+      "x": 6192.68264,
+      "y": 13488.08314,
+      "z": 13488.08314,
+      "position": [
+        6192.68264,
+        13488.08314
+      ],
+      "height": 127.64745,
+      "width": 191.31281,
+      "pivot": [
+        0.4857034186504385,
+        0.967741935483871
+      ],
+      "flip": true,
+      "bounds": [
+        6094.29111,
+        13364.55334,
+        191.31281,
+        127.64745
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_01",
+      "minimum_trunk_gap_world": 92.23335,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0021",
+      "kind": "tree",
+      "asset": "natural_pine_wide",
+      "x": 6297.43007,
+      "y": 13322.25102,
+      "z": 13322.25102,
+      "position": [
+        6297.43007,
+        13322.25102
+      ],
+      "height": 134.94764,
+      "width": 202.25403,
+      "pivot": [
+        0.4857034186504385,
+        0.967741935483871
+      ],
+      "flip": false,
+      "bounds": [
+        6199.1946,
+        13191.65653,
+        202.25403,
+        134.94764
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_01",
+      "minimum_trunk_gap_world": 65.0576,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0022",
+      "kind": "tree",
+      "asset": "natural_sapling",
+      "x": 6520.61098,
+      "y": 13410.03815,
+      "z": 13410.03815,
+      "position": [
+        6520.61098,
+        13410.03815
+      ],
+      "height": 83.28687,
+      "width": 80.55615,
+      "pivot": [
+        0.38298565840938725,
+        0.9644808743169399
+      ],
+      "flip": false,
+      "bounds": [
+        6489.75913,
+        13329.70956,
+        80.55615,
+        83.28687
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_01",
+      "minimum_trunk_gap_world": 87.45837,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0023",
+      "kind": "tree",
+      "asset": "natural_pine_wide",
+      "x": 6430.21896,
+      "y": 13291.76126,
+      "z": 13291.76126,
+      "position": [
+        6430.21896,
+        13291.76126
+      ],
+      "height": 131.29139,
+      "width": 196.77419,
+      "pivot": [
+        0.4857034186504385,
+        0.967741935483871
+      ],
+      "flip": false,
+      "bounds": [
+        6334.64506,
+        13164.70507,
+        196.77419,
+        131.29139
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_01",
+      "minimum_trunk_gap_world": 69.81982,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0024",
+      "kind": "tree",
+      "asset": "natural_sapling",
+      "x": 6226.66461,
+      "y": 13063.83167,
+      "z": 13063.83167,
+      "position": [
+        6226.66461,
+        13063.83167
+      ],
+      "height": 86.47896,
+      "width": 83.64359,
+      "pivot": [
+        0.38298565840938725,
+        0.9644808743169399
+      ],
+      "flip": false,
+      "bounds": [
+        6194.63032,
+        12980.42436,
+        83.64359,
+        86.47896
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_01",
+      "minimum_trunk_gap_world": 80.46169,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0025",
+      "kind": "tree",
+      "asset": "natural_pine_wide",
+      "x": 6126.05168,
+      "y": 13193.90188,
+      "z": 13193.90188,
+      "position": [
+        6126.05168,
+        13193.90188
+      ],
+      "height": 120.46793,
+      "width": 180.55243,
+      "pivot": [
+        0.4857034186504385,
+        0.967741935483871
+      ],
+      "flip": false,
+      "bounds": [
+        6038.35675,
+        13077.32001,
+        180.55243,
+        120.46793
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_01",
+      "minimum_trunk_gap_world": 97.37785,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0026",
+      "kind": "tree",
+      "asset": "natural_pine_lean",
+      "x": 6413.2625,
+      "y": 13414.08798,
+      "z": 13414.08798,
+      "position": [
+        6413.2625,
+        13414.08798
+      ],
+      "height": 125.22196,
+      "width": 150.79085,
+      "pivot": [
+        0.5606979405034325,
+        0.9659685863874345
+      ],
+      "flip": true,
+      "bounds": [
+        6347.01977,
+        13293.1275,
+        150.79085,
+        125.22196
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_01",
+      "minimum_trunk_gap_world": 66.26611,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0027",
+      "kind": "tree",
+      "asset": "natural_pine_wide",
+      "x": 6368.48251,
+      "y": 13245.49921,
+      "z": 13245.49921,
+      "position": [
+        6368.48251,
+        13245.49921
+      ],
+      "height": 111.52914,
+      "width": 167.15534,
+      "pivot": [
+        0.4857034186504385,
+        0.967741935483871
+      ],
+      "flip": false,
+      "bounds": [
+        6287.29459,
+        13137.56778,
+        167.15534,
+        111.52914
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_01",
+      "minimum_trunk_gap_world": 74.20961,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0028",
+      "kind": "tree",
+      "asset": "natural_pine_lean",
+      "x": 6199.21164,
+      "y": 13304.54482,
+      "z": 13304.54482,
+      "position": [
+        6199.21164,
+        13304.54482
+      ],
+      "height": 117.80186,
+      "width": 141.85564,
+      "pivot": [
+        0.5606979405034325,
+        0.9659685863874345
+      ],
+      "flip": true,
+      "bounds": [
+        6136.89417,
+        13190.75193,
+        141.85564,
+        117.80186
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_01",
+      "minimum_trunk_gap_world": 69.10303,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0029",
+      "kind": "tree",
+      "asset": "natural_pine_wide",
+      "x": 6364.73149,
+      "y": 13039.26304,
+      "z": 13039.26304,
+      "position": [
+        6364.73149,
+        13039.26304
+      ],
+      "height": 131.15403,
+      "width": 196.56832,
+      "pivot": [
+        0.4857034186504385,
+        0.967741935483871
+      ],
+      "flip": true,
+      "bounds": [
+        6263.63707,
+        12912.33979,
+        196.56832,
+        131.15403
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_01",
+      "minimum_trunk_gap_world": 83.3803,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0030",
+      "kind": "tree",
+      "asset": "natural_pine_wide",
+      "x": 6025.60882,
+      "y": 13391.58037,
+      "z": 13391.58037,
+      "position": [
+        6025.60882,
+        13391.58037
+      ],
+      "height": 110.72478,
+      "width": 165.9498,
+      "pivot": [
+        0.4857034186504385,
+        0.967741935483871
+      ],
+      "flip": true,
+      "bounds": [
+        5940.26141,
+        13284.42736,
+        165.9498,
+        110.72478
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_01",
+      "minimum_trunk_gap_world": 81.67533,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0031",
+      "kind": "tree",
+      "asset": "natural_pine_lean",
+      "x": 6545.15795,
+      "y": 13215.18525,
+      "z": 13215.18525,
+      "position": [
+        6545.15795,
+        13215.18525
+      ],
+      "height": 131.80683,
+      "width": 158.72027,
+      "pivot": [
+        0.5606979405034325,
+        0.9659685863874345
+      ],
+      "flip": true,
+      "bounds": [
+        6475.43181,
+        13087.86399,
+        158.72027,
+        131.80683
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_01",
+      "minimum_trunk_gap_world": 96.02782,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0032",
+      "kind": "tree",
+      "asset": "natural_elm_wide",
+      "x": 4992.67714,
+      "y": 13674.81425,
+      "z": 13674.81425,
+      "position": [
+        4992.67714,
+        13674.81425
+      ],
+      "height": 126.98874,
+      "width": 170.98922,
+      "pivot": [
+        0.442043378088504,
+        0.9671052631578947
+      ],
+      "flip": false,
+      "bounds": [
+        4917.09249,
+        13552.00277,
+        170.98922,
+        126.98874
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_02",
+      "minimum_trunk_gap_world": 71.0235,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0033",
+      "kind": "tree",
+      "asset": "natural_elm_wide",
+      "x": 4661.94031,
+      "y": 13694.43171,
+      "z": 13694.43171,
+      "position": [
+        4661.94031,
+        13694.43171
+      ],
+      "height": 117.88101,
+      "width": 158.72574,
+      "pivot": [
+        0.442043378088504,
+        0.9671052631578947
+      ],
+      "flip": true,
+      "bounds": [
+        4573.37823,
+        13580.42837,
+        158.72574,
+        117.88101
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_02",
+      "minimum_trunk_gap_world": 94.94422,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0034",
+      "kind": "tree",
+      "asset": "natural_sapling",
+      "x": 4729.5956,
+      "y": 13875.77936,
+      "z": 13875.77936,
+      "position": [
+        4729.5956,
+        13875.77936
+      ],
+      "height": 90.68149,
+      "width": 87.70832,
+      "pivot": [
+        0.38298565840938725,
+        0.9644808743169399
+      ],
+      "flip": true,
+      "bounds": [
+        4675.4783,
+        13788.3188,
+        87.70832,
+        90.68149
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_02",
+      "minimum_trunk_gap_world": 97.16243,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0035",
+      "kind": "tree",
+      "asset": "natural_elm_wide",
+      "x": 4852.94017,
+      "y": 13794.37324,
+      "z": 13794.37324,
+      "position": [
+        4852.94017,
+        13794.37324
+      ],
+      "height": 133.86695,
+      "width": 180.25068,
+      "pivot": [
+        0.442043378088504,
+        0.9671052631578947
+      ],
+      "flip": false,
+      "bounds": [
+        4773.26155,
+        13664.90981,
+        180.25068,
+        133.86695
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_02",
+      "minimum_trunk_gap_world": 79.89638,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0036",
+      "kind": "tree",
+      "asset": "natural_sapling",
+      "x": 4796.82629,
+      "y": 13963.25295,
+      "z": 13963.25295,
+      "position": [
+        4796.82629,
+        13963.25295
+      ],
+      "height": 90.13326,
+      "width": 87.17808,
+      "pivot": [
+        0.38298565840938725,
+        0.9644808743169399
+      ],
+      "flip": false,
+      "bounds": [
+        4763.43834,
+        13876.32114,
+        87.17808,
+        90.13326
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_02",
+      "minimum_trunk_gap_world": 97.38403,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0037",
+      "kind": "tree",
+      "asset": "natural_elm_wide",
+      "x": 4900.55678,
+      "y": 13612.89722,
+      "z": 13612.89722,
+      "position": [
+        4900.55678,
+        13612.89722
+      ],
+      "height": 130.3964,
+      "width": 175.57761,
+      "pivot": [
+        0.442043378088504,
+        0.9671052631578947
+      ],
+      "flip": false,
+      "bounds": [
+        4822.94385,
+        13486.79017,
+        175.57761,
+        130.3964
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_02",
+      "minimum_trunk_gap_world": 82.09711,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0038",
+      "kind": "tree",
+      "asset": "natural_oak_young",
+      "x": 5007.96511,
+      "y": 13873.36051,
+      "z": 13873.36051,
+      "position": [
+        5007.96511,
+        13873.36051
+      ],
+      "height": 118.67081,
+      "width": 113.56058,
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "flip": false,
+      "bounds": [
+        4968.35426,
+        13758.66432,
+        113.56058,
+        118.67081
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_02",
+      "minimum_trunk_gap_world": 83.45442,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0039",
+      "kind": "tree",
+      "asset": "natural_elm_wide",
+      "x": 4705.31785,
+      "y": 13438.90524,
+      "z": 13438.90524,
+      "position": [
+        4705.31785,
+        13438.90524
+      ],
+      "height": 118.14108,
+      "width": 159.07593,
+      "pivot": [
+        0.442043378088504,
+        0.9671052631578947
+      ],
+      "flip": true,
+      "bounds": [
+        4616.56038,
+        13324.65038,
+        159.07593,
+        118.14108
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_02",
+      "minimum_trunk_gap_world": 87.99885,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0040",
+      "kind": "tree",
+      "asset": "natural_elm_wide",
+      "x": 4848.5417,
+      "y": 13452.33721,
+      "z": 13452.33721,
+      "position": [
+        4848.5417,
+        13452.33721
+      ],
+      "height": 119.43275,
+      "width": 160.81514,
+      "pivot": [
+        0.442043378088504,
+        0.9671052631578947
+      ],
+      "flip": true,
+      "bounds": [
+        4758.81383,
+        13336.83317,
+        160.81514,
+        119.43275
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_02",
+      "minimum_trunk_gap_world": 90.40772,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0041",
+      "kind": "tree",
+      "asset": "natural_oak_young",
+      "x": 4841.09106,
+      "y": 13672.6005,
+      "z": 13672.6005,
+      "position": [
+        4841.09106,
+        13672.6005
+      ],
+      "height": 101.39005,
+      "width": 97.02397,
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "flip": true,
+      "bounds": [
+        4777.90984,
+        13574.60629,
+        97.02397,
+        101.39005
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_02",
+      "minimum_trunk_gap_world": 66.16332,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0042",
+      "kind": "tree",
+      "asset": "natural_oak_young",
+      "x": 4701.49018,
+      "y": 13547.11467,
+      "z": 13547.11467,
+      "position": [
+        4701.49018,
+        13547.11467
+      ],
+      "height": 114.25301,
+      "width": 109.33302,
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "flip": false,
+      "bounds": [
+        4663.35393,
+        13436.68832,
+        109.33302,
+        114.25301
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_02",
+      "minimum_trunk_gap_world": 84.98288,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0043",
+      "kind": "tree",
+      "asset": "natural_elm_wide",
+      "x": 4772.49554,
+      "y": 13718.5475,
+      "z": 13718.5475,
+      "position": [
+        4772.49554,
+        13718.5475
+      ],
+      "height": 117.79796,
+      "width": 158.61392,
+      "pivot": [
+        0.442043378088504,
+        0.9671052631578947
+      ],
+      "flip": true,
+      "bounds": [
+        4683.99586,
+        13604.62447,
+        158.61392,
+        117.79796
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_02",
+      "minimum_trunk_gap_world": 81.75478,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0044",
+      "kind": "tree",
+      "asset": "natural_oak_young",
+      "x": 4776.18826,
+      "y": 13608.39159,
+      "z": 13608.39159,
+      "position": [
+        4776.18826,
+        13608.39159
+      ],
+      "height": 119.9108,
+      "width": 114.74718,
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "flip": false,
+      "bounds": [
+        4736.16351,
+        13492.49694,
+        114.74718,
+        119.9108
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_02",
+      "minimum_trunk_gap_world": 73.75618,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0045",
+      "kind": "tree",
+      "asset": "natural_oak_young",
+      "x": 4992.27329,
+      "y": 13761.20959,
+      "z": 13761.20959,
+      "position": [
+        4992.27329,
+        13761.20959
+      ],
+      "height": 122.94785,
+      "width": 117.65345,
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "flip": true,
+      "bounds": [
+        4915.65832,
+        13642.3796,
+        117.65345,
+        122.94785
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_02",
+      "minimum_trunk_gap_world": 77.70859,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0046",
+      "kind": "tree",
+      "asset": "natural_elm_wide",
+      "x": 4794.40762,
+      "y": 13527.44296,
+      "z": 13527.44296,
+      "position": [
+        4794.40762,
+        13527.44296
+      ],
+      "height": 133.59282,
+      "width": 179.88156,
+      "pivot": [
+        0.442043378088504,
+        0.9671052631578947
+      ],
+      "flip": false,
+      "bounds": [
+        4714.89217,
+        13398.24464,
+        179.88156,
+        133.59282
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_02",
+      "minimum_trunk_gap_world": 81.88094,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0047",
+      "kind": "tree",
+      "asset": "natural_elm_wide",
+      "x": 4891.92118,
+      "y": 13916.58227,
+      "z": 13916.58227,
+      "position": [
+        4891.92118,
+        13916.58227
+      ],
+      "height": 134.70609,
+      "width": 181.38057,
+      "pivot": [
+        0.442043378088504,
+        0.9671052631578947
+      ],
+      "flip": true,
+      "bounds": [
+        4790.71869,
+        13786.3073,
+        181.38057,
+        134.70609
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_02",
+      "minimum_trunk_gap_world": 85.34124,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0048",
+      "kind": "tree",
+      "asset": "natural_sapling",
+      "x": 4187.00802,
+      "y": 13438.22214,
+      "z": 13438.22214,
+      "position": [
+        4187.00802,
+        13438.22214
+      ],
+      "height": 95.01589,
+      "width": 91.90061,
+      "pivot": [
+        0.38298565840938725,
+        0.9644808743169399
+      ],
+      "flip": true,
+      "bounds": [
+        4130.30402,
+        13346.58113,
+        91.90061,
+        95.01589
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_03",
+      "minimum_trunk_gap_world": 96.77107,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0049",
+      "kind": "tree",
+      "asset": "natural_pine_wide",
+      "x": 4364.89622,
+      "y": 13501.43981,
+      "z": 13501.43981,
+      "position": [
+        4364.89622,
+        13501.43981
+      ],
+      "height": 123.87483,
+      "width": 185.65855,
+      "pivot": [
+        0.4857034186504385,
+        0.967741935483871
+      ],
+      "flip": true,
+      "bounds": [
+        4269.41267,
+        13381.56094,
+        185.65855,
+        123.87483
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_03",
+      "minimum_trunk_gap_world": 66.04023,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0050",
+      "kind": "tree",
+      "asset": "natural_pine_lean",
+      "x": 4142.76055,
+      "y": 13610.9877,
+      "z": 13610.9877,
+      "position": [
+        4142.76055,
+        13610.9877
+      ],
+      "height": 116.00783,
+      "width": 139.6953,
+      "pivot": [
+        0.5606979405034325,
+        0.9659685863874345
+      ],
+      "flip": true,
+      "bounds": [
+        4081.39211,
+        13498.92777,
+        139.6953,
+        116.00783
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_03",
+      "minimum_trunk_gap_world": 81.70996,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0051",
+      "kind": "tree",
+      "asset": "natural_pine_wide",
+      "x": 4241.30413,
+      "y": 13546.26199,
+      "z": 13546.26199,
+      "position": [
+        4241.30413,
+        13546.26199
+      ],
+      "height": 125.89331,
+      "width": 188.68377,
+      "pivot": [
+        0.4857034186504385,
+        0.967741935483871
+      ],
+      "flip": false,
+      "bounds": [
+        4149.65977,
+        13424.42975,
+        188.68377,
+        125.89331
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_03",
+      "minimum_trunk_gap_world": 74.43622,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0052",
+      "kind": "tree",
+      "asset": "natural_pine_lean",
+      "x": 4430.35609,
+      "y": 13736.54861,
+      "z": 13736.54861,
+      "position": [
+        4430.35609,
+        13736.54861
+      ],
+      "height": 113.39509,
+      "width": 136.54906,
+      "pivot": [
+        0.5606979405034325,
+        0.9659685863874345
+      ],
+      "flip": false,
+      "bounds": [
+        4353.79331,
+        13627.01252,
+        136.54906,
+        113.39509
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_03",
+      "minimum_trunk_gap_world": 91.98611,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0053",
+      "kind": "tree",
+      "asset": "natural_sapling",
+      "x": 4447.14008,
+      "y": 13501.48893,
+      "z": 13501.48893,
+      "position": [
+        4447.14008,
+        13501.48893
+      ],
+      "height": 97.16845,
+      "width": 93.9826,
+      "pivot": [
+        0.38298565840938725,
+        0.9644808743169399
+      ],
+      "flip": false,
+      "bounds": [
+        4411.14609,
+        13407.77181,
+        93.9826,
+        97.16845
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_03",
+      "minimum_trunk_gap_world": 76.14544,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0054",
+      "kind": "tree",
+      "asset": "natural_pine_lean",
+      "x": 4361.51417,
+      "y": 13605.12248,
+      "z": 13605.12248,
+      "position": [
+        4361.51417,
+        13605.12248
+      ],
+      "height": 124.31404,
+      "width": 149.69754,
+      "pivot": [
+        0.5606979405034325,
+        0.9659685863874345
+      ],
+      "flip": false,
+      "bounds": [
+        4277.57906,
+        13485.03902,
+        149.69754,
+        124.31404
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_03",
+      "minimum_trunk_gap_world": 75.2843,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0055",
+      "kind": "tree",
+      "asset": "natural_pine_lean",
+      "x": 4276.47158,
+      "y": 13734.7265,
+      "z": 13734.7265,
+      "position": [
+        4276.47158,
+        13734.7265
+      ],
+      "height": 117.82921,
+      "width": 141.88858,
+      "pivot": [
+        0.5606979405034325,
+        0.9659685863874345
+      ],
+      "flip": true,
+      "bounds": [
+        4214.13963,
+        13620.90718,
+        141.88858,
+        117.82921
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_03",
+      "minimum_trunk_gap_world": 97.4788,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0056",
+      "kind": "tree",
+      "asset": "natural_pine_wide",
+      "x": 4127.01657,
+      "y": 13523.4577,
+      "z": 13523.4577,
+      "position": [
+        4127.01657,
+        13523.4577
+      ],
+      "height": 122.32058,
+      "width": 183.3291,
+      "pivot": [
+        0.4857034186504385,
+        0.967741935483871
+      ],
+      "flip": true,
+      "bounds": [
+        4032.73104,
+        13405.08295,
+        183.3291,
+        122.32058
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_03",
+      "minimum_trunk_gap_world": 83.42523,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0057",
+      "kind": "tree",
+      "asset": "natural_pine_lean",
+      "x": 4400.17977,
+      "y": 13417.93635,
+      "z": 13417.93635,
+      "position": [
+        4400.17977,
+        13417.93635
+      ],
+      "height": 121.28543,
+      "width": 146.05052,
+      "pivot": [
+        0.5606979405034325,
+        0.9659685863874345
+      ],
+      "flip": true,
+      "bounds": [
+        4336.01948,
+        13300.77844,
+        146.05052,
+        121.28543
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_03",
+      "minimum_trunk_gap_world": 68.92069,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0058",
+      "kind": "tree",
+      "asset": "natural_pine_wide",
+      "x": 4277.28825,
+      "y": 13475.72429,
+      "z": 13475.72429,
+      "position": [
+        4277.28825,
+        13475.72429
+      ],
+      "height": 132.61157,
+      "width": 198.75282,
+      "pivot": [
+        0.4857034186504385,
+        0.967741935483871
+      ],
+      "flip": true,
+      "bounds": [
+        4175.07036,
+        13347.39051,
+        198.75282,
+        132.61157
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_03",
+      "minimum_trunk_gap_world": 75.07294,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0059",
+      "kind": "tree",
+      "asset": "natural_pine_lean",
+      "x": 4253.7072,
+      "y": 13622.47611,
+      "z": 13622.47611,
+      "position": [
+        4253.7072,
+        13622.47611
+      ],
+      "height": 128.4177,
+      "width": 154.63912,
+      "pivot": [
+        0.5606979405034325,
+        0.9659685863874345
+      ],
+      "flip": true,
+      "bounds": [
+        4185.77392,
+        13498.42865,
+        154.63912,
+        128.4177
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_03",
+      "minimum_trunk_gap_world": 65.9312,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0060",
+      "kind": "tree",
+      "asset": "natural_pine_lean",
+      "x": 4173.52265,
+      "y": 13698.19935,
+      "z": 13698.19935,
+      "position": [
+        4173.52265,
+        13698.19935
+      ],
+      "height": 116.67618,
+      "width": 140.50011,
+      "pivot": [
+        0.5606979405034325,
+        0.9659685863874345
+      ],
+      "flip": true,
+      "bounds": [
+        4111.80066,
+        13585.49383,
+        140.50011,
+        116.67618
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_03",
+      "minimum_trunk_gap_world": 88.21736,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0061",
+      "kind": "tree",
+      "asset": "natural_oak_mature",
+      "x": 6697.88018,
+      "y": 14891.64852,
+      "z": 14891.64852,
+      "position": [
+        6697.88018,
+        14891.64852
+      ],
+      "height": 119.281,
+      "width": 159.57148,
+      "pivot": [
+        0.42809154669619787,
+        0.9688888888888889
+      ],
+      "flip": false,
+      "bounds": [
+        6629.56898,
+        14776.07848,
+        159.57148,
+        119.281
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_04",
+      "minimum_trunk_gap_world": 95.9062,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0062",
+      "kind": "tree",
+      "asset": "natural_oak_young",
+      "x": 6441.16789,
+      "y": 14639.07182,
+      "z": 14639.07182,
+      "position": [
+        6441.16789,
+        14639.07182
+      ],
+      "height": 103.71774,
+      "width": 99.25143,
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "flip": false,
+      "bounds": [
+        6406.54819,
+        14538.82788,
+        99.25143,
+        103.71774
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_04",
+      "minimum_trunk_gap_world": 83.97596,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0063",
+      "kind": "tree",
+      "asset": "natural_oak_mature",
+      "x": 6553.48247,
+      "y": 14742.93649,
+      "z": 14742.93649,
+      "position": [
+        6553.48247,
+        14742.93649
+      ],
+      "height": 130.86087,
+      "width": 175.06276,
+      "pivot": [
+        0.42809154669619787,
+        0.9688888888888889
+      ],
+      "flip": true,
+      "bounds": [
+        6453.36259,
+        14616.14685,
+        175.06276,
+        130.86087
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_04",
+      "minimum_trunk_gap_world": 79.84771,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0064",
+      "kind": "tree",
+      "asset": "natural_oak_young",
+      "x": 6558.51901,
+      "y": 14388.84621,
+      "z": 14388.84621,
+      "position": [
+        6558.51901,
+        14388.84621
+      ],
+      "height": 118.44286,
+      "width": 113.34245,
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "flip": false,
+      "bounds": [
+        6518.98425,
+        14274.37034,
+        113.34245,
+        118.44286
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_04",
+      "minimum_trunk_gap_world": 99.14002,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0065",
+      "kind": "tree",
+      "asset": "natural_oak_young",
+      "x": 6411.3014,
+      "y": 14560.51299,
+      "z": 14560.51299,
+      "position": [
+        6411.3014,
+        14560.51299
+      ],
+      "height": 102.20823,
+      "width": 97.80692,
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "flip": true,
+      "bounds": [
+        6347.61033,
+        14461.728,
+        97.80692,
+        102.20823
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_04",
+      "minimum_trunk_gap_world": 82.30259,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0066",
+      "kind": "tree",
+      "asset": "natural_sapling",
+      "x": 6683.99991,
+      "y": 14760.41994,
+      "z": 14760.41994,
+      "position": [
+        6683.99991,
+        14760.41994
+      ],
+      "height": 79.74431,
+      "width": 77.12975,
+      "pivot": [
+        0.38298565840938725,
+        0.9644808743169399
+      ],
+      "flip": false,
+      "bounds": [
+        6654.46033,
+        14683.50808,
+        77.12975,
+        79.74431
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_04",
+      "minimum_trunk_gap_world": 84.13255,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0067",
+      "kind": "tree",
+      "asset": "natural_oak_mature",
+      "x": 6385.76057,
+      "y": 14424.98269,
+      "z": 14424.98269,
+      "position": [
+        6385.76057,
+        14424.98269
+      ],
+      "height": 115.50033,
+      "width": 154.51377,
+      "pivot": [
+        0.42809154669619787,
+        0.9688888888888889
+      ],
+      "flip": false,
+      "bounds": [
+        6319.61453,
+        14313.07571,
+        154.51377,
+        115.50033
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_04",
+      "minimum_trunk_gap_world": 96.05988,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0068",
+      "kind": "tree",
+      "asset": "natural_oak_mature",
+      "x": 6578.54782,
+      "y": 14516.04348,
+      "z": 14516.04348,
+      "position": [
+        6578.54782,
+        14516.04348
+      ],
+      "height": 136.85874,
+      "width": 183.08658,
+      "pivot": [
+        0.42809154669619787,
+        0.9688888888888889
+      ],
+      "flip": true,
+      "bounds": [
+        6473.83906,
+        14383.44256,
+        183.08658,
+        136.85874
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_04",
+      "minimum_trunk_gap_world": 82.05341,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0069",
+      "kind": "tree",
+      "asset": "natural_sapling",
+      "x": 6811.81903,
+      "y": 14838.91033,
+      "z": 14838.91033,
+      "position": [
+        6811.81903,
+        14838.91033
+      ],
+      "height": 93.2911,
+      "width": 90.23237,
+      "pivot": [
+        0.38298565840938725,
+        0.9644808743169399
+      ],
+      "flip": true,
+      "bounds": [
+        6756.14437,
+        14748.93285,
+        90.23237,
+        93.2911
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_04",
+      "minimum_trunk_gap_world": 91.03292,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0070",
+      "kind": "tree",
+      "asset": "natural_oak_mature",
+      "x": 6555.42053,
+      "y": 14625.50491,
+      "z": 14625.50491,
+      "position": [
+        6555.42053,
+        14625.50491
+      ],
+      "height": 132.9607,
+      "width": 177.87187,
+      "pivot": [
+        0.42809154669619787,
+        0.9688888888888889
+      ],
+      "flip": false,
+      "bounds": [
+        6479.27509,
+        14496.68076,
+        177.87187,
+        132.9607
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_04",
+      "minimum_trunk_gap_world": 80.9963,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0071",
+      "kind": "tree",
+      "asset": "natural_oak_mature",
+      "x": 6369.94638,
+      "y": 14831.33753,
+      "z": 14831.33753,
+      "position": [
+        6369.94638,
+        14831.33753
+      ],
+      "height": 118.81955,
+      "width": 158.95416,
+      "pivot": [
+        0.42809154669619787,
+        0.9688888888888889
+      ],
+      "flip": false,
+      "bounds": [
+        6301.89945,
+        14716.21458,
+        158.95416,
+        118.81955
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_04",
+      "minimum_trunk_gap_world": 80.31729,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0072",
+      "kind": "tree",
+      "asset": "natural_oak_young",
+      "x": 6394.61268,
+      "y": 14718.75756,
+      "z": 14718.75756,
+      "position": [
+        6394.61268,
+        14718.75756
+      ],
+      "height": 100.65182,
+      "width": 96.31753,
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "flip": true,
+      "bounds": [
+        6331.89149,
+        14621.47685,
+        96.31753,
+        100.65182
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_04",
+      "minimum_trunk_gap_world": 75.32214,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0073",
+      "kind": "tree",
+      "asset": "natural_oak_mature",
+      "x": 6492.25897,
+      "y": 14540.89779,
+      "z": 14540.89779,
+      "position": [
+        6492.25897,
+        14540.89779
+      ],
+      "height": 135.93607,
+      "width": 181.85225,
+      "pivot": [
+        0.42809154669619787,
+        0.9688888888888889
+      ],
+      "flip": true,
+      "bounds": [
+        6388.25613,
+        14409.19085,
+        181.85225,
+        135.93607
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_04",
+      "minimum_trunk_gap_world": 69.79854,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0074",
+      "kind": "tree",
+      "asset": "natural_elm_wide",
+      "x": 5969.55864,
+      "y": 14024.16875,
+      "z": 14024.16875,
+      "position": [
+        5969.55864,
+        14024.16875
+      ],
+      "height": 117.44529,
+      "width": 158.13905,
+      "pivot": [
+        0.442043378088504,
+        0.9671052631578947
+      ],
+      "flip": false,
+      "bounds": [
+        5899.65432,
+        13910.58679,
+        158.13905,
+        117.44529
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_05",
+      "minimum_trunk_gap_world": 97.06691,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0075",
+      "kind": "tree",
+      "asset": "natural_sapling",
+      "x": 5818.08437,
+      "y": 14069.36191,
+      "z": 14069.36191,
+      "position": [
+        5818.08437,
+        14069.36191
+      ],
+      "height": 76.9577,
+      "width": 74.4345,
+      "pivot": [
+        0.38298565840938725,
+        0.9644808743169399
+      ],
+      "flip": true,
+      "bounds": [
+        5772.15722,
+        13995.13768,
+        74.4345,
+        76.9577
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_05",
+      "minimum_trunk_gap_world": 85.84426,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0076",
+      "kind": "tree",
+      "asset": "natural_oak_young",
+      "x": 5857.4588,
+      "y": 13909.44101,
+      "z": 13909.44101,
+      "position": [
+        5857.4588,
+        13909.44101
+      ],
+      "height": 117.85702,
+      "width": 112.78184,
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "flip": true,
+      "bounds": [
+        5784.01619,
+        13795.53136,
+        112.78184,
+        117.85702
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_05",
+      "minimum_trunk_gap_world": 70.34973,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0077",
+      "kind": "tree",
+      "asset": "natural_elm_wide",
+      "x": 5671.15789,
+      "y": 13852.72244,
+      "z": 13852.72244,
+      "position": [
+        5671.15789,
+        13852.72244
+      ],
+      "height": 115.92958,
+      "width": 156.09817,
+      "pivot": [
+        0.442043378088504,
+        0.9671052631578947
+      ],
+      "flip": true,
+      "bounds": [
+        5584.06189,
+        13740.60633,
+        156.09817,
+        115.92958
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_05",
+      "minimum_trunk_gap_world": 96.16817,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0078",
+      "kind": "tree",
+      "asset": "natural_elm_wide",
+      "x": 5726.53748,
+      "y": 13980.74948,
+      "z": 13980.74948,
+      "position": [
+        5726.53748,
+        13980.74948
+      ],
+      "height": 121.31145,
+      "width": 163.3448,
+      "pivot": [
+        0.442043378088504,
+        0.9671052631578947
+      ],
+      "flip": false,
+      "bounds": [
+        5654.332,
+        13863.42854,
+        163.3448,
+        121.31145
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_05",
+      "minimum_trunk_gap_world": 93.40106,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0079",
+      "kind": "tree",
+      "asset": "natural_sapling",
+      "x": 6026.86361,
+      "y": 13827.5106,
+      "z": 13827.5106,
+      "position": [
+        6026.86361,
+        13827.5106
+      ],
+      "height": 80.21485,
+      "width": 77.58486,
+      "pivot": [
+        0.38298565840938725,
+        0.9644808743169399
+      ],
+      "flip": false,
+      "bounds": [
+        5997.14972,
+        13750.14491,
+        77.58486,
+        80.21485
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_05",
+      "minimum_trunk_gap_world": 92.34183,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0080",
+      "kind": "tree",
+      "asset": "natural_oak_young",
+      "x": 5917.87107,
+      "y": 13827.12724,
+      "z": 13827.12724,
+      "position": [
+        5917.87107,
+        13827.12724
+      ],
+      "height": 102.2573,
+      "width": 97.85388,
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "flip": true,
+      "bounds": [
+        5854.14942,
+        13728.29482,
+        97.85388,
+        102.2573
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_05",
+      "minimum_trunk_gap_world": 70.22128,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0081",
+      "kind": "tree",
+      "asset": "natural_elm_wide",
+      "x": 6096.44439,
+      "y": 13910.99124,
+      "z": 13910.99124,
+      "position": [
+        6096.44439,
+        13910.99124
+      ],
+      "height": 121.03219,
+      "width": 162.96879,
+      "pivot": [
+        0.442043378088504,
+        0.9671052631578947
+      ],
+      "flip": false,
+      "bounds": [
+        6024.40511,
+        13793.94037,
+        162.96879,
+        121.03219
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_05",
+      "minimum_trunk_gap_world": 97.03169,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0082",
+      "kind": "tree",
+      "asset": "natural_oak_young",
+      "x": 5960.44161,
+      "y": 13922.26803,
+      "z": 13922.26803,
+      "position": [
+        5960.44161,
+        13922.26803
+      ],
+      "height": 106.62584,
+      "width": 102.03429,
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "flip": false,
+      "bounds": [
+        5924.85122,
+        13819.2134,
+        102.03429,
+        106.62584
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_05",
+      "minimum_trunk_gap_world": 79.8283,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0083",
+      "kind": "tree",
+      "asset": "natural_oak_young",
+      "x": 5844.46713,
+      "y": 13824.64987,
+      "z": 13824.64987,
+      "position": [
+        5844.46713,
+        13824.64987
+      ],
+      "height": 107.32714,
+      "width": 102.7054,
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "flip": false,
+      "bounds": [
+        5808.64265,
+        13720.91742,
+        102.7054,
+        107.32714
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_05",
+      "minimum_trunk_gap_world": 65.86545,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0084",
+      "kind": "tree",
+      "asset": "natural_elm_wide",
+      "x": 5777.87545,
+      "y": 13868.46191,
+      "z": 13868.46191,
+      "position": [
+        5777.87545,
+        13868.46191
+      ],
+      "height": 121.77701,
+      "width": 163.97167,
+      "pivot": [
+        0.442043378088504,
+        0.9671052631578947
+      ],
+      "flip": true,
+      "bounds": [
+        5686.38637,
+        13750.69072,
+        163.97167,
+        121.77701
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_05",
+      "minimum_trunk_gap_world": 74.43505,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0085",
+      "kind": "tree",
+      "asset": "natural_elm_wide",
+      "x": 5827.8184,
+      "y": 13981.02563,
+      "z": 13981.02563,
+      "position": [
+        5827.8184,
+        13981.02563
+      ],
+      "height": 116.71244,
+      "width": 157.15228,
+      "pivot": [
+        0.442043378088504,
+        0.9671052631578947
+      ],
+      "flip": false,
+      "bounds": [
+        5758.35027,
+        13868.15241,
+        157.15228,
+        116.71244
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_05",
+      "minimum_trunk_gap_world": 70.00833,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0086",
+      "kind": "tree",
+      "asset": "natural_sapling",
+      "x": 6684.52385,
+      "y": 13788.06007,
+      "z": 13788.06007,
+      "position": [
+        6684.52385,
+        13788.06007
+      ],
+      "height": 77.06748,
+      "width": 74.54068,
+      "pivot": [
+        0.38298565840938725,
+        0.9644808743169399
+      ],
+      "flip": true,
+      "bounds": [
+        6638.53118,
+        13713.72996,
+        74.54068,
+        77.06748
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_06",
+      "minimum_trunk_gap_world": 95.36592,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0087",
+      "kind": "tree",
+      "asset": "natural_sapling",
+      "x": 6757.05315,
+      "y": 13359.62877,
+      "z": 13359.62877,
+      "position": [
+        6757.05315,
+        13359.62877
+      ],
+      "height": 96.94227,
+      "width": 93.76384,
+      "pivot": [
+        0.38298565840938725,
+        0.9644808743169399
+      ],
+      "flip": false,
+      "bounds": [
+        6721.14295,
+        13266.1298,
+        93.76384,
+        96.94227
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_06",
+      "minimum_trunk_gap_world": 87.62309,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0088",
+      "kind": "tree",
+      "asset": "natural_oak_young",
+      "x": 6827.41416,
+      "y": 13592.41134,
+      "z": 13592.41134,
+      "position": [
+        6827.41416,
+        13592.41134
+      ],
+      "height": 101.12354,
+      "width": 96.76894,
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "flip": false,
+      "bounds": [
+        6793.66037,
+        13494.67471,
+        96.76894,
+        101.12354
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_06",
+      "minimum_trunk_gap_world": 68.21096,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0089",
+      "kind": "tree",
+      "asset": "natural_oak_mature",
+      "x": 6800.52502,
+      "y": 13513.20372,
+      "z": 13513.20372,
+      "position": [
+        6800.52502,
+        13513.20372
+      ],
+      "height": 127.99465,
+      "width": 171.2284,
+      "pivot": [
+        0.42809154669619787,
+        0.9688888888888889
+      ],
+      "flip": false,
+      "bounds": [
+        6727.22359,
+        13389.19112,
+        171.2284,
+        127.99465
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_06",
+      "minimum_trunk_gap_world": 83.00844,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0090",
+      "kind": "tree",
+      "asset": "natural_oak_mature",
+      "x": 6888.03015,
+      "y": 13894.59471,
+      "z": 13894.59471,
+      "position": [
+        6888.03015,
+        13894.59471
+      ],
+      "height": 118.18344,
+      "width": 158.10318,
+      "pivot": [
+        0.42809154669619787,
+        0.9688888888888889
+      ],
+      "flip": false,
+      "bounds": [
+        6820.34752,
+        13780.08808,
+        158.10318,
+        118.18344
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_06",
+      "minimum_trunk_gap_world": 91.05822,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0091",
+      "kind": "tree",
+      "asset": "natural_oak_mature",
+      "x": 6828.32886,
+      "y": 13822.40267,
+      "z": 13822.40267,
+      "position": [
+        6828.32886,
+        13822.40267
+      ],
+      "height": 122.08495,
+      "width": 163.32253,
+      "pivot": [
+        0.42809154669619787,
+        0.9688888888888889
+      ],
+      "flip": true,
+      "bounds": [
+        6734.92332,
+        13704.11592,
+        163.32253,
+        122.08495
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_06",
+      "minimum_trunk_gap_world": 92.03647,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0092",
+      "kind": "tree",
+      "asset": "natural_oak_mature",
+      "x": 6761.1771,
+      "y": 13711.60093,
+      "z": 13711.60093,
+      "position": [
+        6761.1771,
+        13711.60093
+      ],
+      "height": 137.22168,
+      "width": 183.57212,
+      "pivot": [
+        0.42809154669619787,
+        0.9688888888888889
+      ],
+      "flip": false,
+      "bounds": [
+        6682.59143,
+        13578.64837,
+        183.57212,
+        137.22168
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_06",
+      "minimum_trunk_gap_world": 83.45314,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0093",
+      "kind": "tree",
+      "asset": "natural_oak_young",
+      "x": 6851.40245,
+      "y": 13437.47411,
+      "z": 13437.47411,
+      "position": [
+        6851.40245,
+        13437.47411
+      ],
+      "height": 102.34966,
+      "width": 97.94226,
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "flip": true,
+      "bounds": [
+        6787.62325,
+        13338.55243,
+        97.94226,
+        102.34966
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_06",
+      "minimum_trunk_gap_world": 73.59168,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0094",
+      "kind": "tree",
+      "asset": "natural_sapling",
+      "x": 6929.29272,
+      "y": 13381.98302,
+      "z": 13381.98302,
+      "position": [
+        6929.29272,
+        13381.98302
+      ],
+      "height": 82.08657,
+      "width": 79.3952,
+      "pivot": [
+        0.38298565840938725,
+        0.9644808743169399
+      ],
+      "flip": false,
+      "bounds": [
+        6898.88549,
+        13302.8121,
+        79.3952,
+        82.08657
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_06",
+      "minimum_trunk_gap_world": 81.91092,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0095",
+      "kind": "tree",
+      "asset": "natural_oak_mature",
+      "x": 6851.0695,
+      "y": 13339.09787,
+      "z": 13339.09787,
+      "position": [
+        6851.0695,
+        13339.09787
+      ],
+      "height": 125.23972,
+      "width": 167.54292,
+      "pivot": [
+        0.42809154669619787,
+        0.9688888888888889
+      ],
+      "flip": true,
+      "bounds": [
+        6755.25028,
+        13217.75449,
+        167.54292,
+        125.23972
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_06",
+      "minimum_trunk_gap_world": 83.99945,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0096",
+      "kind": "tree",
+      "asset": "natural_oak_young",
+      "x": 6918.11656,
+      "y": 13702.44073,
+      "z": 13702.44073,
+      "position": [
+        6918.11656,
+        13702.44073
+      ],
+      "height": 116.03214,
+      "width": 111.03554,
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "flip": true,
+      "bounds": [
+        6845.81112,
+        13590.29484,
+        111.03554,
+        116.03214
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_06",
+      "minimum_trunk_gap_world": 70.34175,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0097",
+      "kind": "tree",
+      "asset": "natural_oak_mature",
+      "x": 6687.02542,
+      "y": 13659.25633,
+      "z": 13659.25633,
+      "position": [
+        6687.02542,
+        13659.25633
+      ],
+      "height": 118.17861,
+      "width": 158.09672,
+      "pivot": [
+        0.42809154669619787,
+        0.9688888888888889
+      ],
+      "flip": true,
+      "bounds": [
+        6596.60858,
+        13544.75439,
+        158.09672,
+        118.17861
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_06",
+      "minimum_trunk_gap_world": 65.21872,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0098",
+      "kind": "tree",
+      "asset": "natural_oak_young",
+      "x": 6606.12108,
+      "y": 13708.54802,
+      "z": 13708.54802,
+      "position": [
+        6606.12108,
+        13708.54802
+      ],
+      "height": 109.46509,
+      "width": 104.75128,
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "flip": true,
+      "bounds": [
+        6537.9079,
+        13602.74923,
+        104.75128,
+        109.46509
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_06",
+      "minimum_trunk_gap_world": 85.25873,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0099",
+      "kind": "tree",
+      "asset": "natural_oak_mature",
+      "x": 6744.48048,
+      "y": 13601.59773,
+      "z": 13601.59773,
+      "position": [
+        6744.48048,
+        13601.59773
+      ],
+      "height": 124.24625,
+      "width": 166.21387,
+      "pivot": [
+        0.42809154669619787,
+        0.9688888888888889
+      ],
+      "flip": true,
+      "bounds": [
+        6649.42137,
+        13481.21692,
+        166.21387,
+        124.24625
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_06",
+      "minimum_trunk_gap_world": 70.53336,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0100",
+      "kind": "tree",
+      "asset": "natural_oak_mature",
+      "x": 6835.93086,
+      "y": 13673.75396,
+      "z": 13673.75396,
+      "position": [
+        6835.93086,
+        13673.75396
+      ],
+      "height": 116.93132,
+      "width": 156.42812,
+      "pivot": [
+        0.42809154669619787,
+        0.9688888888888889
+      ],
+      "flip": false,
+      "bounds": [
+        6768.9653,
+        13560.4605,
+        156.42812,
+        116.93132
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_06",
+      "minimum_trunk_gap_world": 72.19057,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0101",
+      "kind": "tree",
+      "asset": "natural_pine_wide",
+      "x": 5584.6169,
+      "y": 15135.13067,
+      "z": 15135.13067,
+      "position": [
+        5584.6169,
+        15135.13067
+      ],
+      "height": 126.40652,
+      "width": 189.45294,
+      "pivot": [
+        0.4857034186504385,
+        0.967741935483871
+      ],
+      "flip": true,
+      "bounds": [
+        5487.18189,
+        15012.80178,
+        189.45294,
+        126.40652
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_07",
+      "minimum_trunk_gap_world": 68.61923,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0102",
+      "kind": "tree",
+      "asset": "natural_pine_wide",
+      "x": 5459.20046,
+      "y": 15043.308,
+      "z": 15043.308,
+      "position": [
+        5459.20046,
+        15043.308
+      ],
+      "height": 111.98444,
+      "width": 167.83772,
+      "pivot": [
+        0.4857034186504385,
+        0.967741935483871
+      ],
+      "flip": false,
+      "bounds": [
+        5377.6811,
+        14934.93597,
+        167.83772,
+        111.98444
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_07",
+      "minimum_trunk_gap_world": 67.88284,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0103",
+      "kind": "tree",
+      "asset": "natural_pine_lean",
+      "x": 5616.81587,
+      "y": 15254.95468,
+      "z": 15254.95468,
+      "position": [
+        5616.81587,
+        15254.95468
+      ],
+      "height": 125.11739,
+      "width": 150.66492,
+      "pivot": [
+        0.5606979405034325,
+        0.9659685863874345
+      ],
+      "flip": false,
+      "bounds": [
+        5532.33836,
+        15134.09521,
+        150.66492,
+        125.11739
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_07",
+      "minimum_trunk_gap_world": 87.45537,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0104",
+      "kind": "tree",
+      "asset": "natural_sapling",
+      "x": 5406.29101,
+      "y": 15119.04514,
+      "z": 15119.04514,
+      "position": [
+        5406.29101,
+        15119.04514
+      ],
+      "height": 79.14871,
+      "width": 76.55367,
+      "pivot": [
+        0.38298565840938725,
+        0.9644808743169399
+      ],
+      "flip": false,
+      "bounds": [
+        5376.97205,
+        15042.70772,
+        76.55367,
+        79.14871
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_07",
+      "minimum_trunk_gap_world": 87.63828,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0105",
+      "kind": "tree",
+      "asset": "natural_sapling",
+      "x": 5477.81745,
+      "y": 15249.91435,
+      "z": 15249.91435,
+      "position": [
+        5477.81745,
+        15249.91435
+      ],
+      "height": 81.04927,
+      "width": 78.39192,
+      "pivot": [
+        0.38298565840938725,
+        0.9644808743169399
+      ],
+      "flip": false,
+      "bounds": [
+        5447.79447,
+        15171.74388,
+        78.39192,
+        81.04927
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_07",
+      "minimum_trunk_gap_world": 88.61791,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0106",
+      "kind": "tree",
+      "asset": "natural_pine_wide",
+      "x": 5570.1007,
+      "y": 15061.28935,
+      "z": 15061.28935,
+      "position": [
+        5570.1007,
+        15061.28935
+      ],
+      "height": 127.82573,
+      "width": 191.58001,
+      "pivot": [
+        0.4857034186504385,
+        0.967741935483871
+      ],
+      "flip": true,
+      "bounds": [
+        5471.57176,
+        14937.58703,
+        191.58001,
+        127.82573
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_07",
+      "minimum_trunk_gap_world": 70.48241,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0107",
+      "kind": "tree",
+      "asset": "natural_pine_wide",
+      "x": 5376.38106,
+      "y": 14913.02995,
+      "z": 14913.02995,
+      "position": [
+        5376.38106,
+        14913.02995
+      ],
+      "height": 135.41551,
+      "width": 202.95526,
+      "pivot": [
+        0.4857034186504385,
+        0.967741935483871
+      ],
+      "flip": true,
+      "bounds": [
+        5272.00187,
+        14781.98269,
+        202.95526,
+        135.41551
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_07",
+      "minimum_trunk_gap_world": 93.69751,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0108",
+      "kind": "tree",
+      "asset": "natural_pine_wide",
+      "x": 5372.68846,
+      "y": 15029.52435,
+      "z": 15029.52435,
+      "position": [
+        5372.68846,
+        15029.52435
+      ],
+      "height": 128.25853,
+      "width": 192.22866,
+      "pivot": [
+        0.4857034186504385,
+        0.967741935483871
+      ],
+      "flip": true,
+      "bounds": [
+        5273.82592,
+        14905.40319,
+        192.22866,
+        128.25853
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_07",
+      "minimum_trunk_gap_world": 81.00702,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0109",
+      "kind": "tree",
+      "asset": "natural_pine_lean",
+      "x": 5486.22165,
+      "y": 14843.17329,
+      "z": 14843.17329,
+      "position": [
+        5486.22165,
+        14843.17329
+      ],
+      "height": 108.49369,
+      "width": 130.64685,
+      "pivot": [
+        0.5606979405034325,
+        0.9659685863874345
+      ],
+      "flip": false,
+      "bounds": [
+        5412.96823,
+        14738.3718,
+        130.64685,
+        108.49369
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_07",
+      "minimum_trunk_gap_world": 85.21834,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0110",
+      "kind": "tree",
+      "asset": "natural_pine_lean",
+      "x": 5508.11195,
+      "y": 15150.582,
+      "z": 15150.582,
+      "position": [
+        5508.11195,
+        15150.582
+      ],
+      "height": 124.36193,
+      "width": 149.7552,
+      "pivot": [
+        0.5606979405034325,
+        0.9659685863874345
+      ],
+      "flip": false,
+      "bounds": [
+        5424.14452,
+        15030.45228,
+        149.7552,
+        124.36193
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_07",
+      "minimum_trunk_gap_world": 66.98189,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0111",
+      "kind": "tree",
+      "asset": "natural_oak_young",
+      "x": 5648.13574,
+      "y": 13218.74174,
+      "z": 13218.74174,
+      "position": [
+        5648.13574,
+        13218.74174
+      ],
+      "height": 120.75246,
+      "width": 115.5526,
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "flip": true,
+      "bounds": [
+        5572.88883,
+        13102.03362,
+        115.5526,
+        120.75246
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_08",
+      "minimum_trunk_gap_world": 80.82936,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0112",
+      "kind": "tree",
+      "asset": "natural_oak_young",
+      "x": 5597.89575,
+      "y": 13087.40804,
+      "z": 13087.40804,
+      "position": [
+        5597.89575,
+        13087.40804
+      ],
+      "height": 113.71781,
+      "width": 108.82087,
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "flip": false,
+      "bounds": [
+        5559.93815,
+        12977.49896,
+        108.82087,
+        113.71781
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_08",
+      "minimum_trunk_gap_world": 65.44321,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0113",
+      "kind": "tree",
+      "asset": "natural_sapling",
+      "x": 5757.41363,
+      "y": 13051.31757,
+      "z": 13051.31757,
+      "position": [
+        5757.41363,
+        13051.31757
+      ],
+      "height": 91.32461,
+      "width": 88.33036,
+      "pivot": [
+        0.38298565840938725,
+        0.9644808743169399
+      ],
+      "flip": false,
+      "bounds": [
+        5723.58437,
+        12963.23673,
+        88.33036,
+        91.32461
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_08",
+      "minimum_trunk_gap_world": 81.18558,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0114",
+      "kind": "tree",
+      "asset": "natural_oak_young",
+      "x": 5500.65048,
+      "y": 13240.58227,
+      "z": 13240.58227,
+      "position": [
+        5500.65048,
+        13240.58227
+      ],
+      "height": 103.19522,
+      "width": 98.75141,
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "flip": false,
+      "bounds": [
+        5466.20519,
+        13140.84335,
+        98.75141,
+        103.19522
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_08",
+      "minimum_trunk_gap_world": 86.94325,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0115",
+      "kind": "tree",
+      "asset": "natural_elm_wide",
+      "x": 5766.27481,
+      "y": 13180.86077,
+      "z": 13180.86077,
+      "position": [
+        5766.27481,
+        13180.86077
+      ],
+      "height": 121.41188,
+      "width": 163.48003,
+      "pivot": [
+        0.442043378088504,
+        0.9671052631578947
+      ],
+      "flip": false,
+      "bounds": [
+        5694.00954,
+        13063.4427,
+        163.48003,
+        121.41188
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_08",
+      "minimum_trunk_gap_world": 81.76014,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0116",
+      "kind": "tree",
+      "asset": "natural_elm_wide",
+      "x": 5410.47158,
+      "y": 13181.29482,
+      "z": 13181.29482,
+      "position": [
+        5410.47158,
+        13181.29482
+      ],
+      "height": 127.62187,
+      "width": 171.84173,
+      "pivot": [
+        0.442043378088504,
+        0.9671052631578947
+      ],
+      "flip": true,
+      "bounds": [
+        5314.59135,
+        13057.87104,
+        171.84173,
+        127.62187
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_08",
+      "minimum_trunk_gap_world": 85.44661,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0117",
+      "kind": "tree",
+      "asset": "natural_sapling",
+      "x": 5341.42439,
+      "y": 13066.83702,
+      "z": 13066.83702,
+      "position": [
+        5341.42439,
+        13066.83702
+      ],
+      "height": 77.07472,
+      "width": 74.54768,
+      "pivot": [
+        0.38298565840938725,
+        0.9644808743169399
+      ],
+      "flip": false,
+      "bounds": [
+        5312.8737,
+        12992.49992,
+        74.54768,
+        77.07472
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_08",
+      "minimum_trunk_gap_world": 80.54698,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0118",
+      "kind": "tree",
+      "asset": "natural_elm_wide",
+      "x": 5663.27399,
+      "y": 13300.47726,
+      "z": 13300.47726,
+      "position": [
+        5663.27399,
+        13300.47726
+      ],
+      "height": 129.48713,
+      "width": 174.35328,
+      "pivot": [
+        0.442043378088504,
+        0.9671052631578947
+      ],
+      "flip": true,
+      "bounds": [
+        5565.99242,
+        13175.24957,
+        174.35328,
+        129.48713
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_08",
+      "minimum_trunk_gap_world": 82.91859,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0119",
+      "kind": "tree",
+      "asset": "natural_elm_wide",
+      "x": 5662.38305,
+      "y": 13134.94971,
+      "z": 13134.94971,
+      "position": [
+        5662.38305,
+        13134.94971
+      ],
+      "height": 132.89077,
+      "width": 178.93625,
+      "pivot": [
+        0.442043378088504,
+        0.9671052631578947
+      ],
+      "flip": true,
+      "bounds": [
+        5562.54438,
+        13006.43035,
+        178.93625,
+        132.89077
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_08",
+      "minimum_trunk_gap_world": 79.4974,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0120",
+      "kind": "tree",
+      "asset": "natural_oak_young",
+      "x": 5574.97172,
+      "y": 13302.71812,
+      "z": 13302.71812,
+      "position": [
+        5574.97172,
+        13302.71812
+      ],
+      "height": 105.12714,
+      "width": 100.60013,
+      "pivot": [
+        0.3488081395348837,
+        0.9665071770334929
+      ],
+      "flip": true,
+      "bounds": [
+        5509.46173,
+        13201.11198,
+        100.60013,
+        105.12714
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_08",
+      "minimum_trunk_gap_world": 80.09334,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0121",
+      "kind": "tree",
+      "asset": "natural_elm_wide",
+      "x": 5565.84197,
+      "y": 13182.46467,
+      "z": 13182.46467,
+      "position": [
+        5565.84197,
+        13182.46467
+      ],
+      "height": 120.36424,
+      "width": 162.06939,
+      "pivot": [
+        0.442043378088504,
+        0.9671052631578947
+      ],
+      "flip": false,
+      "bounds": [
+        5494.20027,
+        13066.05978,
+        162.06939,
+        120.36424
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_08",
+      "minimum_trunk_gap_world": 72.36206,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0122",
+      "kind": "tree",
+      "asset": "natural_elm_wide",
+      "x": 5330.02908,
+      "y": 13148.73028,
+      "z": 13148.73028,
+      "position": [
+        5330.02908,
+        13148.73028
+      ],
+      "height": 112.94355,
+      "width": 152.0775,
+      "pivot": [
+        0.442043378088504,
+        0.9671052631578947
+      ],
+      "flip": true,
+      "bounds": [
+        5245.17643,
+        13039.50197,
+        152.0775,
+        112.94355
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_08",
+      "minimum_trunk_gap_world": 80.80645,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0123",
+      "kind": "tree",
+      "asset": "natural_pine_wide",
+      "x": 5096.57962,
+      "y": 14340.1005,
+      "z": 14340.1005,
+      "position": [
+        5096.57962,
+        14340.1005
+      ],
+      "height": 111.78436,
+      "width": 167.53786,
+      "pivot": [
+        0.4857034186504385,
+        0.967741935483871
+      ],
+      "flip": true,
+      "bounds": [
+        5010.41547,
+        14231.92208,
+        167.53786,
+        111.78436
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_09",
+      "minimum_trunk_gap_world": 71.1965,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0124",
+      "kind": "tree",
+      "asset": "natural_sapling",
+      "x": 4914.78139,
+      "y": 14513.26365,
+      "z": 14513.26365,
+      "position": [
+        4914.78139,
+        14513.26365
+      ],
+      "height": 95.38307,
+      "width": 92.25575,
+      "pivot": [
+        0.38298565840938725,
+        0.9644808743169399
+      ],
+      "flip": false,
+      "bounds": [
+        4879.44876,
+        14421.26851,
+        92.25575,
+        95.38307
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_09",
+      "minimum_trunk_gap_world": 95.66206,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0125",
+      "kind": "tree",
+      "asset": "natural_pine_lean",
+      "x": 5303.69459,
+      "y": 14240.95636,
+      "z": 14240.95636,
+      "position": [
+        5303.69459,
+        14240.95636
+      ],
+      "height": 118.34872,
+      "width": 142.51416,
+      "pivot": [
+        0.5606979405034325,
+        0.9659685863874345
+      ],
+      "flip": true,
+      "bounds": [
+        5241.08782,
+        14126.63522,
+        142.51416,
+        118.34872
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_09",
+      "minimum_trunk_gap_world": 88.39662,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0126",
+      "kind": "tree",
+      "asset": "natural_pine_wide",
+      "x": 5060.03176,
+      "y": 14250.8235,
+      "z": 14250.8235,
+      "position": [
+        5060.03176,
+        14250.8235
+      ],
+      "height": 120.26365,
+      "width": 180.24626,
+      "pivot": [
+        0.4857034186504385,
+        0.967741935483871
+      ],
+      "flip": true,
+      "bounds": [
+        4967.33173,
+        14134.43933,
+        180.24626,
+        120.26365
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_09",
+      "minimum_trunk_gap_world": 69.08404,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0127",
+      "kind": "tree",
+      "asset": "natural_sapling",
+      "x": 4859.65156,
+      "y": 14302.85791,
+      "z": 14302.85791,
+      "position": [
+        4859.65156,
+        14302.85791
+      ],
+      "height": 97.86798,
+      "width": 94.65919,
+      "pivot": [
+        0.38298565840938725,
+        0.9644808743169399
+      ],
+      "flip": true,
+      "bounds": [
+        4801.24548,
+        14208.46611,
+        94.65919,
+        97.86798
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_09",
+      "minimum_trunk_gap_world": 94.38395,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0128",
+      "kind": "tree",
+      "asset": "natural_pine_lean",
+      "x": 5340.94312,
+      "y": 14408.13245,
+      "z": 14408.13245,
+      "position": [
+        5340.94312,
+        14408.13245
+      ],
+      "height": 108.74181,
+      "width": 130.94564,
+      "pivot": [
+        0.5606979405034325,
+        0.9659685863874345
+      ],
+      "flip": true,
+      "bounds": [
+        5283.41843,
+        14303.09127,
+        130.94564,
+        108.74181
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_09",
+      "minimum_trunk_gap_world": 88.0565,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0129",
+      "kind": "tree",
+      "asset": "natural_pine_lean",
+      "x": 5256.25719,
+      "y": 14325.12942,
+      "z": 14325.12942,
+      "position": [
+        5256.25719,
+        14325.12942
+      ],
+      "height": 116.82359,
+      "width": 140.67762,
+      "pivot": [
+        0.5606979405034325,
+        0.9659685863874345
+      ],
+      "flip": true,
+      "bounds": [
+        5194.45722,
+        14212.2815,
+        140.67762,
+        116.82359
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_09",
+      "minimum_trunk_gap_world": 71.22525,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0130",
+      "kind": "tree",
+      "asset": "natural_pine_lean",
+      "x": 5405.59197,
+      "y": 14288.00194,
+      "z": 14288.00194,
+      "position": [
+        5405.59197,
+        14288.00194
+      ],
+      "height": 129.26983,
+      "width": 155.66524,
+      "pivot": [
+        0.5606979405034325,
+        0.9659685863874345
+      ],
+      "flip": true,
+      "bounds": [
+        5337.20791,
+        14163.13135,
+        155.66524,
+        129.26983
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_09",
+      "minimum_trunk_gap_world": 96.42723,
+      "cluster_zone": "edge"
+    },
+    {
+      "id": "forest_grounding_tree_0131",
+      "kind": "tree",
+      "asset": "natural_pine_lean",
+      "x": 5046.27301,
+      "y": 14417.98031,
+      "z": 14417.98031,
+      "position": [
+        5046.27301,
+        14417.98031
+      ],
+      "height": 124.76728,
+      "width": 150.24332,
+      "pivot": [
+        0.5606979405034325,
+        0.9659685863874345
+      ],
+      "flip": false,
+      "bounds": [
+        4962.03189,
+        14297.45904,
+        150.24332,
+        124.76728
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_09",
+      "minimum_trunk_gap_world": 73.78302,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0132",
+      "kind": "tree",
+      "asset": "natural_pine_lean",
+      "x": 5197.92824,
+      "y": 14202.55338,
+      "z": 14202.55338,
+      "position": [
+        5197.92824,
+        14202.55338
+      ],
+      "height": 113.25825,
+      "width": 136.38428,
+      "pivot": [
+        0.5606979405034325,
+        0.9659685863874345
+      ],
+      "flip": false,
+      "bounds": [
+        5121.45785,
+        14093.14947,
+        136.38428,
+        113.25825
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_09",
+      "minimum_trunk_gap_world": 83.82088,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0133",
+      "kind": "tree",
+      "asset": "natural_pine_wide",
+      "x": 4968.41263,
+      "y": 14232.86837,
+      "z": 14232.86837,
+      "position": [
+        4968.41263,
+        14232.86837
+      ],
+      "height": 132.25933,
+      "width": 198.2249,
+      "pivot": [
+        0.4857034186504385,
+        0.967741935483871
+      ],
+      "flip": false,
+      "bounds": [
+        4872.13412,
+        14104.87547,
+        198.2249,
+        132.25933
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_09",
+      "minimum_trunk_gap_world": 66.61664,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0134",
+      "kind": "tree",
+      "asset": "natural_pine_lean",
+      "x": 5177.98112,
+      "y": 14312.45051,
+      "z": 14312.45051,
+      "position": [
+        5177.98112,
+        14312.45051
+      ],
+      "height": 108.39763,
+      "width": 130.53118,
+      "pivot": [
+        0.5606979405034325,
+        0.9659685863874345
+      ],
+      "flip": false,
+      "bounds": [
+        5104.79256,
+        14207.74181,
+        130.53118,
+        108.39763
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_09",
+      "minimum_trunk_gap_world": 68.26204,
+      "cluster_zone": "core"
+    },
+    {
+      "id": "forest_grounding_tree_0135",
+      "kind": "tree",
+      "asset": "natural_pine_wide",
+      "x": 4848.03246,
+      "y": 14443.65507,
+      "z": 14443.65507,
+      "position": [
+        4848.03246,
+        14443.65507
+      ],
+      "height": 111.88879,
+      "width": 167.69437,
+      "pivot": [
+        0.4857034186504385,
+        0.967741935483871
+      ],
+      "flip": true,
+      "bounds": [
+        4761.78782,
+        14335.37559,
+        167.69437,
+        111.88879
+      ],
+      "layer": "ground_props",
+      "cluster_id": "forest_grounding_cluster_09",
+      "minimum_trunk_gap_world": 95.21303,
+      "cluster_zone": "edge"
+    }
+  ],
+  "ground_details_path": "res://resources/world/bai_chuan/forest_grounding_details_20261106.json",
+  "grounded_mountain_ids": [
+    "mountain_00299",
+    "mountain_00300",
+    "mountain_00306",
+    "mountain_00314"
+  ],
+  "source_sha256": {
+    "resources/world/bai_chuan/expanded_water_20261106.json": "f3ef2964ea4ed25ae8ede11050d2357a6e31a4aa79b67b5911a4cbf3ca2aa326",
+    "resources/world/bai_chuan/free_layout_20261104.json": "885ffac9dff84a5d6779aab17c516937a81454f1280f1c27d1236596c370a839",
+    "resources/world/bai_chuan/free_layout_3x3_20261104.json": "29044a4b10acc61e8fd35169c78370c4a0bb0eff4927ae191749a72bee65b090",
+    "resources/world/bai_chuan/free_layout_expanded3x_20261106.json": "2332487cebba4edc01ede87bce50c08bf71c205c902abb581db13ee7fdf2b369",
+    "resources/world/bai_chuan/free_layout_mountains_20261106.json": "38749bca6ddb99462d7ecc0a4231e00b781663f215593bb21c5bf07906474dad",
+    "resources/world/bai_chuan/free_navigation_20261104.json": "e16b26552e4de268bb968317232bfa07f6a5f8abb0e4d9d5660c2572f08adb3a",
+    "resources/world/bai_chuan/free_navigation_3x3_20261104.json": "68b75e8cd519e1c61d71f20b5f08534768d46ccf94789abfd06c12f0233bf38b",
+    "resources/world/bai_chuan/free_navigation_expanded3x_20261106.json": "ac7674e625bc3480bdd61597b0e6d324cacc41a7340b7c22bf8fee1abed7edcb",
+    "resources/world/bai_chuan/free_navigation_mountains_20261106.json": "ef8e79cfc42f1d4e223924de366ce08d73636517649debd6a0a0b8e51b080978",
+    "resources/world/bai_chuan/ground_decorations_20261106.json": "bee6c8338d808e162c6ecb8d9fc25afd99096a2cb740984a208ef4384ef358b9",
+    "resources/world/bai_chuan/landscape_expanded3x_20261106.json": "5d5c8af9ba68674946826debe050dd9c0f1f3ba3b8ec23d25dc998552ba4a06e",
+    "resources/world/bai_chuan/layered_landscape_20261106.json": "2da199769841a63d26bd3282709daf7be667dbbdb0f911c50b0f8ab070debed7",
+    "resources/world/bai_chuan/terrain_travel_20261105.json": "d6fbdd362911fedf35bb8a29708fba86691e0d7d6e114a3cb11fd3e682ef70c9",
+    "resources/world/bai_chuan/terrain_travel_expanded3x_20261106.json": "9a29d6bc5cc4b1503c9390df13ef61ac7bdcb7b96faf199523b9508a3187941b",
+    "textures/world/bai_chuan/expanded3x_20261106/surface/water_sdf_smooth.png": "ce107375322e272f8e21afc2ecc72e2e839add6eb95b48a6440137b8fda03274",
+    "textures/world/bai_chuan/layered_20261106/source/mountains_solid_a.png": "0160de7d5eb2be78004c8649e8ae30f60e89df7a560d574903503e7441b5f805",
+    "textures/world/bai_chuan/layered_20261106/source/mountains_solid_b.png": "471b16230dbe739be8c2e791f7ca7fc00b7821346ac5b3ff3fcc4444c5072920",
+    "textures/world/bai_chuan/layered_20261106/source/trees_native.png": "ac15c1f2f75a2bee36b00db8229c98e0ee883d9a50ab007ac42056cc015461af"
+  },
+  "coordinate_rule": "XY are immutable world feet; tree Z=Y; complete native-aspect bboxes avoid all nonzero navigation cells",
+  "sample_membership": "Only old trees with complete bounds contained in bounds are removed; crossing-edge trees remain unchanged"
+}

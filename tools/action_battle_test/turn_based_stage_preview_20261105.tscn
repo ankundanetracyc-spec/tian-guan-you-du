@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://turn_based_stage_preview_20261105.gd" id="1_preview"]
+
+[node name="TurnBasedStagePreview" type="Node2D"]
+script = ExtResource("1_preview")

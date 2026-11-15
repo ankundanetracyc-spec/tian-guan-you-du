@@ -1,0 +1,13 @@
+Generated with the built-in imagegen tool on 2026-11-03.
+Source: arm.png. Original files preserved. First claw-like candidate was rejected and not integrated.
+
+Open relaxed palm prompt:
+Use case: precise-object-edit.
+Edit ONLY the hand of the attached original sleeve sprite. Keep the complete original sleeve, cuff, elbow, position and canvas unchanged.
+Replace the rigid pointed flat hand with a SMALL natural relaxed hand seen from the back: the four fingers lie loosely NEXT TO EACH OTHER and mostly overlap, fingertips softly rounded and staggered, only very slightly bent. Keep finger gaps almost invisible. The fingers should make one soft, compact descending silhouette, like a resting hand, not an extended fan. Make a clearly attached modest thumb relaxed beside the index finger. No claw shape, no hooked fingers, no wide gaps, no splayed fingers, no thin pointed tips, no clenched fist. Show just 2 or 3 subtle short internal finger lines rather than four long parallel lines. Keep approximately the original hand length, do not enlarge it.
+Use the original simple flat cream skin color, soft warm shadow and gray outline. Preserve all opaque sleeve pixels and its same blue-gray cuff exactly. Exact original 1024x1536 canvas placement. Hand extends toward upper right out of existing cuff and connects naturally to it. Genuine transparent background, no glow, no shadow, no text.
+
+Resting half-closed hand prompt:
+Use case: precise-object-edit. This is an animation sprite. Change only the visible skin-colored hand beyond the gray-blue cuff. Keep the original entire sleeve and cuff, bent arm silhouette, position, size, style, cloud pattern and 1024x1536 transparent canvas exactly the same.
+The new hand is a softly half-closed RESTING hand, with the fingers gently curled INWARD, loosely gathered together. Show the back of the hand, a rounded set of knuckles, and just the ends of the relaxed fingers wrapping down under the palm. The thumb rests loosely along the side, visibly attached. Think of a completely relaxed hand before closing a fist: not an open straight palm, not a fist gripping hard, not a claw. The finger tips should NOT point straight out; the hand's silhouette should be shorter, more compact and rounded than the original open hand. It must read as five normal fingers with no extra digits. Do not spread the fingers. No long parallel finger lines.
+Same ivory-peach skin, subtle flat shading, gray outlines as original. No realism, no fingernail detail. Do not change the sleeve or shift the cuff. Transparent background without any glow or shadow.

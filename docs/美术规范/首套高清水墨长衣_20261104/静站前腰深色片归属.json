@@ -1,0 +1,316 @@
+{
+	"finding": "The old dark patch belonged to source left pants mesh1. The new leg-only source-waist fragment mask hides this upper insertion; native UV and all source vertices are unchanged. Native screenshot pixels are verified separately.",
+	"materials": {
+		"body": {
+			"mapping": "source crop to complete Sprite canvas affine; no local registration",
+			"native_per_template_x": 0.674305555555556,
+			"native_per_template_y": 0.675,
+			"native_size": [
+				971,
+				1620
+			],
+			"path": "res://art/ink_outfit_01_20261104/assets/body.png",
+			"sha256": "9a87016e7b3aaf208d369fd7033cb0fa62f31ec8690cb2727d050120099a3109",
+			"source_canvas": [
+				60.0,
+				100.0
+			],
+			"target_ppu": 2400.0,
+			"template_size": [
+				1440.0,
+				2400.0
+			]
+		},
+		"leg": {
+			"mapping": "source crop to complete Sprite canvas affine; no local registration",
+			"native_per_template_x": 0.826666666666667,
+			"native_per_template_y": 0.826041666666667,
+			"native_size": [
+				992,
+				1586
+			],
+			"path": "res://art/ink_outfit_01_20261104/assets/leg.png",
+			"sha256": "1a34b9c4f232f77e67bd56f64fdbeb4734a8e7271bfb50d71528bc0d3e656ec0",
+			"source_canvas": [
+				50.0,
+				80.0
+			],
+			"target_ppu": 2400.0,
+			"template_size": [
+				1200.0,
+				1920.0
+			]
+		},
+		"sleeve_far": {
+			"mapping": "source crop to complete Sprite canvas affine; no local registration",
+			"native_per_template_x": 0.870833333333333,
+			"native_per_template_y": 0.870833333333333,
+			"native_size": [
+				1254,
+				1254
+			],
+			"path": "res://art/ink_outfit_01_20261104/assets/sleeve_far.png",
+			"sha256": "3045f76c238120f3440cdbc24b00ea78871c9ed7bf39f77815c392b86db17f09",
+			"source_canvas": [
+				60.0,
+				60.0
+			],
+			"target_ppu": 2400.0,
+			"template_size": [
+				1440.0,
+				1440.0
+			]
+		},
+		"sleeve_near": {
+			"mapping": "source crop to complete Sprite canvas affine; no local registration",
+			"native_per_template_x": 0.870833333333333,
+			"native_per_template_y": 0.870833333333333,
+			"native_size": [
+				1254,
+				1254
+			],
+			"path": "res://art/ink_outfit_01_20261104/assets/sleeve_near.png",
+			"sha256": "3dbd0516571a25c84710bc3675b518fc40744f8627da7491553e2fc32db31082",
+			"source_canvas": [
+				60.0,
+				60.0
+			],
+			"target_ppu": 2400.0,
+			"template_size": [
+				1440.0,
+				1440.0
+			]
+		}
+	},
+	"results": [
+		{
+			"layers_back_to_front": [
+				{
+					"component": "leg",
+					"effective_alpha": 0.0,
+					"renderer": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+					"source_mesh_index": 1,
+					"texture_rgba": [
+						0.0,
+						0.0,
+						0.0,
+						0.0
+					],
+					"uv_pixels": [
+						626.072448730469,
+						248.283004760742
+					],
+					"waist_masked": true,
+					"z": 31
+				},
+				{
+					"component": "body",
+					"effective_alpha": 0.0,
+					"renderer": "/HumanRootMan/Root/Body/yifu/yifu",
+					"source_mesh_index": 3,
+					"texture_rgba": [
+						0.0,
+						0.0,
+						0.0,
+						0.0
+					],
+					"uv_pixels": [
+						644.403991699219,
+						585.172424316406
+					],
+					"waist_masked": false,
+					"z": 33
+				},
+				{
+					"component": "sleeve_near",
+					"effective_alpha": 0.0,
+					"renderer": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi",
+					"source_mesh_index": 5,
+					"texture_rgba": [
+						0.0,
+						0.0,
+						0.0,
+						0.0
+					],
+					"uv_pixels": [
+						476.867553710938,
+						666.74609375
+					],
+					"waist_masked": false,
+					"z": 35
+				}
+			],
+			"screen": [
+				340.0,
+				385.0
+			]
+		},
+		{
+			"layers_back_to_front": [
+				{
+					"component": "leg",
+					"effective_alpha": 0.0,
+					"renderer": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+					"source_mesh_index": 1,
+					"texture_rgba": [
+						0.0,
+						0.0,
+						0.0,
+						0.0
+					],
+					"uv_pixels": [
+						621.287841796875,
+						281.87109375
+					],
+					"waist_masked": true,
+					"z": 31
+				},
+				{
+					"component": "body",
+					"effective_alpha": 0.0,
+					"renderer": "/HumanRootMan/Root/Body/yifu/yifu",
+					"source_mesh_index": 3,
+					"texture_rgba": [
+						0.0,
+						0.0,
+						0.0,
+						0.0
+					],
+					"uv_pixels": [
+						645.96875,
+						611.457275390625
+					],
+					"waist_masked": false,
+					"z": 33
+				}
+			],
+			"screen": [
+				340.0,
+				393.0
+			]
+		},
+		{
+			"layers_back_to_front": [
+				{
+					"component": "leg",
+					"effective_alpha": 0.0,
+					"renderer": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+					"source_mesh_index": 1,
+					"texture_rgba": [
+						0.0,
+						0.0,
+						0.0,
+						0.0
+					],
+					"uv_pixels": [
+						621.303100585938,
+						311.858032226563
+					],
+					"waist_masked": true,
+					"z": 31
+				},
+				{
+					"component": "body",
+					"effective_alpha": 0.0,
+					"renderer": "/HumanRootMan/Root/Body/yifu/yifu",
+					"source_mesh_index": 3,
+					"texture_rgba": [
+						0.0,
+						0.0,
+						0.0,
+						0.0
+					],
+					"uv_pixels": [
+						650.723510742188,
+						633.408996582031
+					],
+					"waist_masked": false,
+					"z": 33
+				}
+			],
+			"screen": [
+				341.0,
+				400.0
+			]
+		},
+		{
+			"layers_back_to_front": [
+				{
+					"component": "leg",
+					"effective_alpha": 0.0,
+					"renderer": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+					"source_mesh_index": 1,
+					"texture_rgba": [
+						0.0,
+						0.0,
+						0.0,
+						0.0
+					],
+					"uv_pixels": [
+						612.914916992188,
+						340.649993896484
+					],
+					"waist_masked": true,
+					"z": 31
+				},
+				{
+					"component": "leg",
+					"effective_alpha": 0.0,
+					"renderer": "/HumanRootMan/Root/Body/Foot/youtui/youtui",
+					"source_mesh_index": 2,
+					"texture_rgba": [
+						0.0,
+						0.0,
+						0.0,
+						0.0
+					],
+					"uv_pixels": [
+						625.746948242188,
+						173.574295043945
+					],
+					"waist_masked": true,
+					"z": 32
+				},
+				{
+					"component": "body",
+					"effective_alpha": 0.964705884456635,
+					"renderer": "/HumanRootMan/Root/Body/yifu/yifu",
+					"source_mesh_index": 3,
+					"texture_rgba": [
+						0.52549022436142,
+						0.560784339904785,
+						0.556862771511078,
+						0.964705884456635
+					],
+					"uv_pixels": [
+						648.49169921875,
+						655.468872070313
+					],
+					"waist_masked": false,
+					"z": 33
+				}
+			],
+			"screen": [
+				340.0,
+				407.0
+			]
+		}
+	],
+	"view": "1200x800 showcase left Idle_041; time42/60",
+	"waist_mask": {
+		"frozen_when_paused": true,
+		"native_uv_unchanged": true,
+		"normal": "head-pelvis",
+		"point": [
+			1.39509081840515,
+			-55.2085990905762
+		],
+		"scope": "leg fragments only; hide insertion above source pelvis/waist center",
+		"source_anchor": "pelvis / shenti2",
+		"source_vertices_unchanged": true,
+		"up_normal": [
+			-0.0208405423909426,
+			-0.999782860279083
+		]
+	}
+}

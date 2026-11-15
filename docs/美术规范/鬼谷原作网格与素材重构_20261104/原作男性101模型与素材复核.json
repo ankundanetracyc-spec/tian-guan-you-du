@@ -1,0 +1,468 @@
+{
+  "source": {
+    "path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\guigubahuang_Data\\resources.assets",
+    "sizeBytes": 1764255120,
+    "sha256": "0d1e14ae4a2719b91055e201fadf294b600f730e5bfbba14f4806b7619ec3ced",
+    "unityVersion": "2020.3f1c1"
+  },
+  "genderEvidence": {
+    "resourceManagerFile": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\guigubahuang_Data\\globalgamemanagers",
+    "resourceManagerPathId": 13,
+    "maleRootResource": "battle/human/humanrootman",
+    "maleRootPathId": 114095,
+    "maleBodyResource": "battle/human/humanbodyman",
+    "maleBodyPathId": 355292,
+    "clothingResourcePrefix": "battle/human/man/body/101/"
+  },
+  "assembly": [
+    {
+      "sourceResource": "battle/human/humanrootman (Root child)",
+      "sourceGameObjectPathId": 120384,
+      "targetPath": "/HumanRootMan/Root",
+      "parentPath": null,
+      "rootNameOverride": null
+    },
+    {
+      "sourceResource": "battle/human/man/body/101/yifu",
+      "sourceGameObjectPathId": 129435,
+      "targetPath": "/HumanRootMan/Root/Body/yifu/yifu",
+      "parentPath": "/HumanRootMan/Root/Body/yifu",
+      "rootNameOverride": null
+    },
+    {
+      "sourceResource": "battle/human/humanbodyman child zuobi",
+      "sourceGameObjectPathId": 111395,
+      "targetPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1",
+      "rootNameOverride": null
+    },
+    {
+      "sourceResource": "battle/human/humanbodyman child youbi",
+      "sourceGameObjectPathId": 143655,
+      "targetPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1",
+      "rootNameOverride": null
+    },
+    {
+      "sourceResource": "battle/human/humanbodyman child beiqian",
+      "sourceGameObjectPathId": 384627,
+      "targetPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/beiqian",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1",
+      "rootNameOverride": null
+    },
+    {
+      "sourceResource": "battle/human/humanbodyman child beihou",
+      "sourceGameObjectPathId": 127289,
+      "targetPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/beihou",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1",
+      "rootNameOverride": null
+    },
+    {
+      "sourceResource": "battle/human/humanbodyman child tou",
+      "sourceGameObjectPathId": 403938,
+      "targetPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1",
+      "rootNameOverride": null
+    },
+    {
+      "sourceResource": "battle/human/man/body/101/zuobi",
+      "sourceGameObjectPathId": 373383,
+      "targetPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi",
+      "rootNameOverride": null
+    },
+    {
+      "sourceResource": "battle/human/man/body/101/youbi",
+      "sourceGameObjectPathId": 391256,
+      "targetPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi",
+      "rootNameOverride": null
+    },
+    {
+      "sourceResource": "battle/human/man/body/101/tui",
+      "sourceGameObjectPathId": 150497,
+      "targetPath": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+      "parentPath": "/HumanRootMan/Root/Body/Foot/zuotui",
+      "rootNameOverride": "zuotui"
+    },
+    {
+      "sourceResource": "battle/human/man/body/101/tui",
+      "sourceGameObjectPathId": 150497,
+      "targetPath": "/HumanRootMan/Root/Body/Foot/youtui/youtui",
+      "parentPath": "/HumanRootMan/Root/Body/Foot/youtui",
+      "rootNameOverride": "youtui"
+    },
+    {
+      "sourceResource": "battle/human/man/head/101",
+      "sourceGameObjectPathId": 466843,
+      "targetPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/101(Clone)",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou",
+      "rootNameOverride": null
+    },
+    {
+      "sourceResource": "battle/human/man/hair/101",
+      "sourceGameObjectPathId": 396215,
+      "targetPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)",
+      "parentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa",
+      "rootNameOverride": null
+    }
+  ],
+  "textures": [
+    {
+      "id": 60765,
+      "name": "yinying",
+      "size": [
+        189,
+        100
+      ]
+    },
+    {
+      "id": 85649,
+      "name": "yifu",
+      "size": [
+        42,
+        95
+      ]
+    },
+    {
+      "id": 84807,
+      "name": "zuobi",
+      "size": [
+        21,
+        43
+      ]
+    },
+    {
+      "id": 79543,
+      "name": "youbi",
+      "size": [
+        16,
+        44
+      ]
+    },
+    {
+      "id": 87557,
+      "name": "tui",
+      "size": [
+        24,
+        68
+      ]
+    },
+    {
+      "id": 65806,
+      "name": "101",
+      "size": [
+        24,
+        24
+      ]
+    },
+    {
+      "id": 87679,
+      "name": "101",
+      "size": [
+        21,
+        56
+      ]
+    }
+  ],
+  "meshes": [
+    {
+      "rendererPath": "/HumanRootMan/Root/Body/Shadow",
+      "spriteId": 60765,
+      "spriteName": "yinying",
+      "vertices": 5,
+      "triangles": 3,
+      "bones": [],
+      "referenceOnly": true
+    },
+    {
+      "rendererPath": "/HumanRootMan/Root/Body/yifu/yifu",
+      "spriteId": 85649,
+      "spriteName": "yifu",
+      "vertices": 40,
+      "triangles": 43,
+      "bones": [
+        {
+          "name": "shenti1",
+          "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1"
+        },
+        {
+          "name": "shenti2",
+          "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti2"
+        },
+        {
+          "name": "shenti2_1",
+          "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5/shenti2_1"
+        },
+        {
+          "name": "shenti2_2",
+          "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5/shenti2_1/shenti2_2"
+        },
+        {
+          "name": "bone_3",
+          "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5/bone_3"
+        },
+        {
+          "name": "bone_4",
+          "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5/bone_3/bone_4"
+        },
+        {
+          "name": "bone_5",
+          "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5"
+        }
+      ],
+      "referenceOnly": true
+    },
+    {
+      "rendererPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi",
+      "spriteId": 84807,
+      "spriteName": "zuobi",
+      "vertices": 39,
+      "triangles": 53,
+      "bones": [
+        {
+          "name": "zuobi1",
+          "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1"
+        },
+        {
+          "name": "zuobi2",
+          "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1/zuobi2"
+        },
+        {
+          "name": "zuobi3",
+          "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1/zuobi2/zuobi3"
+        }
+      ],
+      "referenceOnly": true
+    },
+    {
+      "rendererPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi",
+      "spriteId": 79543,
+      "spriteName": "youbi",
+      "vertices": 35,
+      "triangles": 47,
+      "bones": [
+        {
+          "name": "youbi1",
+          "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1"
+        },
+        {
+          "name": "youbi2",
+          "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2"
+        },
+        {
+          "name": "youbi3",
+          "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/youbi3"
+        }
+      ],
+      "referenceOnly": true
+    },
+    {
+      "rendererPath": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui",
+      "spriteId": 87557,
+      "spriteName": "tui",
+      "vertices": 37,
+      "triangles": 43,
+      "bones": [
+        {
+          "name": "tui1",
+          "path": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1"
+        },
+        {
+          "name": "tui2",
+          "path": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1/tui2"
+        },
+        {
+          "name": "tui3",
+          "path": "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1/tui2/tui3"
+        }
+      ],
+      "referenceOnly": true
+    },
+    {
+      "rendererPath": "/HumanRootMan/Root/Body/Foot/youtui/youtui",
+      "spriteId": 87557,
+      "spriteName": "tui",
+      "vertices": 37,
+      "triangles": 43,
+      "bones": [
+        {
+          "name": "tui1",
+          "path": "/HumanRootMan/Root/Body/Foot/youtui/youtui/tui1"
+        },
+        {
+          "name": "tui2",
+          "path": "/HumanRootMan/Root/Body/Foot/youtui/youtui/tui1/tui2"
+        },
+        {
+          "name": "tui3",
+          "path": "/HumanRootMan/Root/Body/Foot/youtui/youtui/tui1/tui2/tui3"
+        }
+      ],
+      "referenceOnly": true
+    },
+    {
+      "rendererPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/101(Clone)/lian",
+      "spriteId": 65806,
+      "spriteName": "101",
+      "vertices": 4,
+      "triangles": 2,
+      "bones": [],
+      "referenceOnly": true
+    },
+    {
+      "rendererPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa",
+      "spriteId": 87679,
+      "spriteName": "101",
+      "vertices": 41,
+      "triangles": 54,
+      "bones": [
+        {
+          "name": "bone_1",
+          "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1"
+        },
+        {
+          "name": "bone_2",
+          "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2"
+        },
+        {
+          "name": "bone_3",
+          "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3"
+        },
+        {
+          "name": "bone_4",
+          "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3/bone_4"
+        },
+        {
+          "name": "bone_5",
+          "path": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3/bone_4/bone_5"
+        }
+      ],
+      "referenceOnly": true
+    }
+  ],
+  "controllerClips": [
+    {
+      "name": "Idle",
+      "pathId": 38442
+    },
+    {
+      "name": "Run_New1",
+      "pathId": 38451
+    },
+    {
+      "name": "AttackIdle",
+      "pathId": 38432
+    },
+    {
+      "name": "Die",
+      "pathId": 38435
+    },
+    {
+      "name": "Run_New2",
+      "pathId": 38452
+    },
+    {
+      "name": "AttackRun",
+      "pathId": 38433
+    },
+    {
+      "name": "Ultimate",
+      "pathId": 38458
+    },
+    {
+      "name": "Step1",
+      "pathId": 38455
+    },
+    {
+      "name": "IdleHores",
+      "pathId": 38443
+    },
+    {
+      "name": "AttackHores",
+      "pathId": 38431
+    },
+    {
+      "name": "DieDown",
+      "pathId": 38436
+    },
+    {
+      "name": "Puppet",
+      "pathId": 38450
+    },
+    {
+      "name": "SpriteUse",
+      "pathId": 38454
+    },
+    {
+      "name": "Sit",
+      "pathId": 38453
+    },
+    {
+      "name": "Jump",
+      "pathId": 38446
+    },
+    {
+      "name": "Bubble",
+      "pathId": 38434
+    },
+    {
+      "name": "Stoop",
+      "pathId": 38456
+    },
+    {
+      "name": "Lie",
+      "pathId": 38447
+    },
+    {
+      "name": "LieStart",
+      "pathId": 38448
+    },
+    {
+      "name": "IdleHoresStand",
+      "pathId": 38445
+    },
+    {
+      "name": "IdleHoresHalf",
+      "pathId": 38444
+    },
+    {
+      "name": "Transmission",
+      "pathId": 38457
+    },
+    {
+      "name": "Practice",
+      "pathId": 38449
+    },
+    {
+      "name": "Run_New1",
+      "pathId": 38451
+    },
+    {
+      "name": "Run_New2",
+      "pathId": 38452
+    }
+  ],
+  "excludedAnimationBindings": {
+    "Idle": [],
+    "Run_New1": [
+      {
+        "path": null,
+        "pathHash": 569651382,
+        "attributeId": 4,
+        "curveIndex": 72
+      }
+    ],
+    "Run_New2": [
+      {
+        "path": null,
+        "pathHash": 569651382,
+        "attributeId": 4,
+        "curveIndex": 57
+      }
+    ],
+    "AttackIdle": [],
+    "AttackRun": [],
+    "Step1": []
+  }
+}

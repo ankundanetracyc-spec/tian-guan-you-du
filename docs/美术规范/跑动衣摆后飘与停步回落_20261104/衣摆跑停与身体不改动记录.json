@@ -1,0 +1,1032 @@
+{
+  "base_speed": 114,
+  "capture_scene": "res://capture_running_cloth_return.tscn",
+  "enemy_fixture_offset": [
+    -650,
+    0
+  ],
+  "main_run_frames": 90,
+  "main_stop_frames": 60,
+  "new_source_sha256": "8f231a7f034902910e5b7520b7ba761c1fd9f9306672c3c25bc457e3ebbaf859",
+  "old_source_sha256": "1daba5359212c43277861c2c8e5eccce2a068e3ae5a8949d9c2d716ebb0d735a",
+  "sample_rate": 30,
+  "source_capture": "tools\\action_battle_test\\output\\running_cloth_return_final",
+  "diagnostic_frames": 192,
+  "primary_gif_seconds": 5,
+  "primary_run_seconds": 3,
+  "primary_release_seconds": 2,
+  "ordinary_movement_stamina_cost": 0,
+  "ai_and_camera_rules": "unchanged",
+  "old_v3_vs_new_body_position_max_error": 0.0,
+  "old_v3_vs_new_body_rotation_max_error": 0.0,
+  "idle_detail_pixel_equal": true,
+  "native_pixels_repainted": false,
+  "native_crops_resampled": false,
+  "selected_phases": [
+    {
+      "frame": 12,
+      "label": "起步 0.43秒",
+      "old": {
+        "acceleration_drive": 0.0,
+        "angles": [
+          0.0487141869962215,
+          0.0572989098727703,
+          0.0495483763515949
+        ],
+        "angular_velocity": [
+          -0.0574202612042427,
+          -0.0961906909942627,
+          -0.28166601061821
+        ],
+        "arm_speed_correction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "arm_swing_scale": 0.892689018970668,
+        "continuous_mesh": false,
+        "front_bones_resting": true,
+        "gait_amount": 0.998496560807022,
+        "gait_cadence_hz": 1.54728821930441,
+        "gait_lift": 9.56155989127,
+        "gait_phase": 0.657460402159202,
+        "gait_phase_advance_location": "update_cloth_once_per_clock",
+        "gait_speed_actual": 114.001457214355,
+        "gait_speed_smoothed": 113.372560831572,
+        "gait_stride_half": 22.9457643860883,
+        "gait_style": "regular",
+        "ground_shift": 0.0,
+        "hidden_leg_meshes": 0,
+        "leg_rendering": "original_full_legs_and_boots",
+        "locomotion_style": "ground",
+        "lowest_cloth_y": -11.1918840408325,
+        "mode": "cape_like_open_robe",
+        "original_split_panels": true,
+        "outline_samples": 0,
+        "pants_uv_clipped": false,
+        "rear_anchor": [
+          1.33029174804688,
+          -54.3408813476563
+        ],
+        "rear_tip": [
+          -2.82901000976563,
+          -9.84375
+        ],
+        "rear_wind": 1.00001278258207,
+        "reference_anchor_acceleration": [
+          -14.1216278076172,
+          -79.2873840332031
+        ],
+        "reference_anchor_drive": -0.0470720926920573,
+        "reference_anchor_reset_count": 0,
+        "reference_anchor_samples": 2,
+        "reference_arm_samples": {
+          "far": {
+            "elbow_flex": 1.26095241356432,
+            "forearm_angle": 0.932687836055351,
+            "leg_phase": 0.157460402159201,
+            "same_side_foot_projection": 0.492063220297376,
+            "shoulder_angle": 2.19364024961967
+          },
+          "near": {
+            "elbow_flex": 1.43038090000092,
+            "forearm_angle": -0.261249940860312,
+            "leg_phase": 0.657460402159202,
+            "same_side_foot_projection": -0.919840833341011,
+            "shoulder_angle": 1.16913095914061
+          }
+        },
+        "reference_arm_stride_half": 16.5147468509574,
+        "reference_chest_angle": 0.384951531887054,
+        "reference_chest_counter": 0.0102741483892064,
+        "reference_chest_target": 0.393338769674301,
+        "reference_chest_velocity": -0.0659760683774948,
+        "reference_elastic_tail": true,
+        "reference_far_hand_from_shoulder": [
+          1.92531585693359,
+          20.9678268432617
+        ],
+        "reference_hip_loading": -0.467006744963926,
+        "reference_lean_inertia": 0.0,
+        "reference_measured_body_lean": 0.277710485790881,
+        "reference_near_arm_pose": "alternating_contralateral_swing",
+        "reference_near_hand_from_shoulder": [
+          18.4836730957031,
+          6.84326934814453
+        ],
+        "reference_parameter_source": "project_visual_fit_not_video_measurement",
+        "reference_pelvis_drop": 1.91718673706055,
+        "reference_pose_active": true,
+        "reset_count": 0,
+        "rest_hem_source_y": 1340.0,
+        "simulation_steps": 14,
+        "source_geometry_preserved": true,
+        "support_model": "hip_hung_rear_chain_gravity_inertia",
+        "travel_drag": 1.00001278258207,
+        "visible_leg_meshes": 2,
+        "walk_profile": "reference_run_like_single_movement_project_fit",
+        "walk_support_fraction": 0.62
+      },
+      "new": {
+        "acceleration_drive": 0.0,
+        "angles": [
+          0.360070258378983,
+          0.149868905544281,
+          0.149996399879456
+        ],
+        "angular_velocity": [
+          0.0965302214026451,
+          -0.0841155350208282,
+          -0.160079434514046
+        ],
+        "arm_speed_correction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "arm_swing_scale": 0.892689018970668,
+        "continuous_mesh": false,
+        "front_bones_resting": false,
+        "gait_amount": 0.998496560807022,
+        "gait_cadence_hz": 1.54728821930441,
+        "gait_lift": 9.56155989127,
+        "gait_phase": 0.657460402159202,
+        "gait_phase_advance_location": "update_cloth_once_per_clock",
+        "gait_speed_actual": 114.001457214355,
+        "gait_speed_smoothed": 113.372560831572,
+        "gait_stride_half": 22.9457643860883,
+        "gait_style": "regular",
+        "ground_shift": 0.0,
+        "hidden_leg_meshes": 0,
+        "leg_rendering": "original_full_legs_and_boots",
+        "locomotion_style": "ground",
+        "lowest_cloth_y": -10.8912591934204,
+        "mode": "cape_like_open_robe",
+        "original_split_panels": true,
+        "outline_samples": 0,
+        "pants_uv_clipped": false,
+        "rear_anchor": [
+          1.33029174804688,
+          -54.3408813476563
+        ],
+        "rear_tip": [
+          -19.22412109375,
+          -14.9606323242188
+        ],
+        "rear_wind": 1.00001278258207,
+        "reference_anchor_acceleration": [
+          -14.1216278076172,
+          -79.2873840332031
+        ],
+        "reference_anchor_drive": -0.0470720926920573,
+        "reference_anchor_reset_count": 0,
+        "reference_anchor_samples": 2,
+        "reference_arm_samples": {
+          "far": {
+            "elbow_flex": 1.26095241356432,
+            "forearm_angle": 0.932687836055351,
+            "leg_phase": 0.157460402159201,
+            "same_side_foot_projection": 0.492063220297376,
+            "shoulder_angle": 2.19364024961967
+          },
+          "near": {
+            "elbow_flex": 1.43038090000092,
+            "forearm_angle": -0.261249940860312,
+            "leg_phase": 0.657460402159202,
+            "same_side_foot_projection": -0.919840833341011,
+            "shoulder_angle": 1.16913095914061
+          }
+        },
+        "reference_arm_stride_half": 16.5147468509574,
+        "reference_chest_angle": 0.384951531887054,
+        "reference_chest_counter": 0.0102741483892064,
+        "reference_chest_target": 0.393338769674301,
+        "reference_chest_velocity": -0.0659760683774948,
+        "reference_elastic_tail": true,
+        "reference_far_hand_from_shoulder": [
+          1.92531585693359,
+          20.9678268432617
+        ],
+        "reference_front_angles": [
+          0.0793592929840088,
+          0.0396155267953873,
+          0.0466401912271976
+        ],
+        "reference_front_angular_velocity": [
+          0.00276020774617791,
+          -0.0344963669776917,
+          -0.0619041286408901
+        ],
+        "reference_front_tip_from_anchor": [
+          -5.0399169921875,
+          44.4208984375
+        ],
+        "reference_hip_loading": -0.467006744963926,
+        "reference_lean_inertia": 0.0,
+        "reference_measured_body_lean": 0.277710485790881,
+        "reference_near_arm_pose": "alternating_contralateral_swing",
+        "reference_near_hand_from_shoulder": [
+          18.4836730957031,
+          6.84326934814453
+        ],
+        "reference_parameter_source": "project_visual_fit_not_video_measurement",
+        "reference_pelvis_drop": 1.91718673706055,
+        "reference_pose_active": true,
+        "reference_rear_tip_from_anchor": [
+          -20.5544128417969,
+          39.3802490234375
+        ],
+        "reference_target_wind_load": 1.00000639127061,
+        "reference_trailing_wind_load": 0.995564434455108,
+        "reset_count": 0,
+        "rest_hem_source_y": 1340.0,
+        "simulation_steps": 14,
+        "source_geometry_preserved": true,
+        "support_model": "hip_hung_rear_chain_gravity_inertia",
+        "travel_drag": 1.00001278258207,
+        "visible_leg_meshes": 2,
+        "walk_profile": "reference_run_like_single_movement_project_fit",
+        "walk_support_fraction": 0.62
+      }
+    },
+    {
+      "frame": 74,
+      "label": "持续跑动 2.50秒",
+      "old": {
+        "acceleration_drive": 0.0,
+        "angles": [
+          0.0449521355330944,
+          0.0525444000959396,
+          0.0322562865912914
+        ],
+        "angular_velocity": [
+          3.24513052873954e-07,
+          0.0218546111136675,
+          0.0361247844994068
+        ],
+        "arm_speed_correction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "arm_swing_scale": 0.893364949080926,
+        "continuous_mesh": false,
+        "front_bones_resting": true,
+        "gait_amount": 1.0,
+        "gait_cadence_hz": 1.54825011984593,
+        "gait_lift": 9.56810081495235,
+        "gait_phase": 0.857112177815099,
+        "gait_phase_advance_location": "update_cloth_once_per_clock",
+        "gait_speed_actual": 114.001457214355,
+        "gait_speed_smoothed": 114.001457214345,
+        "gait_stride_half": 22.9650023969187,
+        "gait_style": "regular",
+        "ground_shift": 0.0,
+        "hidden_leg_meshes": 0,
+        "leg_rendering": "original_full_legs_and_boots",
+        "locomotion_style": "ground",
+        "lowest_cloth_y": -11.844349861145,
+        "mode": "cape_like_open_robe",
+        "original_split_panels": true,
+        "outline_samples": 0,
+        "pants_uv_clipped": false,
+        "rear_anchor": [
+          0.814483642578125,
+          -54.9933471679688
+        ],
+        "rear_tip": [
+          -2.87881469726563,
+          -10.441650390625
+        ],
+        "rear_wind": 1.00001278258207,
+        "reference_anchor_acceleration": [
+          64.064208984375,
+          49.9789085388184
+        ],
+        "reference_anchor_drive": 0.21354736328125,
+        "reference_anchor_reset_count": 0,
+        "reference_anchor_samples": 2,
+        "reference_arm_samples": {
+          "far": {
+            "elbow_flex": 1.33823697189458,
+            "forearm_angle": 0.272752774342517,
+            "leg_phase": 0.357112177815099,
+            "same_side_foot_projection": -0.151974765788136,
+            "shoulder_angle": 1.61098974623709
+          },
+          "near": {
+            "elbow_flex": 1.27879543841647,
+            "forearm_angle": 0.737239293111605,
+            "leg_phase": 0.857112177815099,
+            "same_side_foot_projection": 0.34337134652943,
+            "shoulder_angle": 2.01603473152807
+          }
+        },
+        "reference_arm_stride_half": 16.5272515579971,
+        "reference_chest_angle": 0.400356620550156,
+        "reference_chest_counter": 0.0216815577170959,
+        "reference_chest_target": 0.404746204614639,
+        "reference_chest_velocity": 0.157497406005859,
+        "reference_elastic_tail": true,
+        "reference_far_hand_from_shoulder": [
+          13.4920501708984,
+          15.3737335205078
+        ],
+        "reference_hip_loading": -0.985525350777089,
+        "reference_lean_inertia": 0.0,
+        "reference_measured_body_lean": 0.30267112093525,
+        "reference_near_arm_pose": "alternating_contralateral_swing",
+        "reference_near_hand_from_shoulder": [
+          5.782470703125,
+          20.1008682250977
+        ],
+        "reference_parameter_source": "project_visual_fit_not_video_measurement",
+        "reference_pelvis_drop": 1.26473236083984,
+        "reference_pose_active": true,
+        "reset_count": 0,
+        "rest_hem_source_y": 1340.0,
+        "simulation_steps": 76,
+        "source_geometry_preserved": true,
+        "support_model": "hip_hung_rear_chain_gravity_inertia",
+        "travel_drag": 1.00001278258207,
+        "visible_leg_meshes": 2,
+        "walk_profile": "reference_run_like_single_movement_project_fit",
+        "walk_support_fraction": 0.62
+      },
+      "new": {
+        "acceleration_drive": 0.0,
+        "angles": [
+          0.33381849527359,
+          0.144328981637955,
+          0.140360847115517
+        ],
+        "angular_velocity": [
+          6.34710295344121e-06,
+          0.0211947336792946,
+          0.0331257879734039
+        ],
+        "arm_speed_correction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "arm_swing_scale": 0.893364949080926,
+        "continuous_mesh": false,
+        "front_bones_resting": false,
+        "gait_amount": 1.0,
+        "gait_cadence_hz": 1.54825011984593,
+        "gait_lift": 9.56810081495235,
+        "gait_phase": 0.857112177815099,
+        "gait_phase_advance_location": "update_cloth_once_per_clock",
+        "gait_speed_actual": 114.001457214355,
+        "gait_speed_smoothed": 114.001457214345,
+        "gait_stride_half": 22.9650023969187,
+        "gait_style": "regular",
+        "ground_shift": 0.0,
+        "hidden_leg_meshes": 0,
+        "leg_rendering": "original_full_legs_and_boots",
+        "locomotion_style": "ground",
+        "lowest_cloth_y": -11.5398082733154,
+        "mode": "cape_like_open_robe",
+        "original_split_panels": true,
+        "outline_samples": 0,
+        "pants_uv_clipped": false,
+        "rear_anchor": [
+          0.814483642578125,
+          -54.9933471679688
+        ],
+        "rear_tip": [
+          -18.4961853027344,
+          -14.9557495117188
+        ],
+        "rear_wind": 1.00001278258207,
+        "reference_anchor_acceleration": [
+          64.064208984375,
+          49.9789085388184
+        ],
+        "reference_anchor_drive": 0.21354736328125,
+        "reference_anchor_reset_count": 0,
+        "reference_anchor_samples": 2,
+        "reference_arm_samples": {
+          "far": {
+            "elbow_flex": 1.33823697189458,
+            "forearm_angle": 0.272752774342517,
+            "leg_phase": 0.357112177815099,
+            "same_side_foot_projection": -0.151974765788136,
+            "shoulder_angle": 1.61098974623709
+          },
+          "near": {
+            "elbow_flex": 1.27879543841647,
+            "forearm_angle": 0.737239293111605,
+            "leg_phase": 0.857112177815099,
+            "same_side_foot_projection": 0.34337134652943,
+            "shoulder_angle": 2.01603473152807
+          }
+        },
+        "reference_arm_stride_half": 16.5272515579971,
+        "reference_chest_angle": 0.400356620550156,
+        "reference_chest_counter": 0.0216815577170959,
+        "reference_chest_target": 0.404746204614639,
+        "reference_chest_velocity": 0.157497406005859,
+        "reference_elastic_tail": true,
+        "reference_far_hand_from_shoulder": [
+          13.4920501708984,
+          15.3737335205078
+        ],
+        "reference_front_angles": [
+          0.0762303918600082,
+          0.0395917817950249,
+          0.0468772239983082
+        ],
+        "reference_front_angular_velocity": [
+          9.81724568305253e-08,
+          0.0117163434624672,
+          0.0271472688764334
+        ],
+        "reference_front_tip_from_anchor": [
+          -4.9027099609375,
+          44.4361572265625
+        ],
+        "reference_hip_loading": -0.985525350777089,
+        "reference_lean_inertia": 0.0,
+        "reference_measured_body_lean": 0.30267112093525,
+        "reference_near_arm_pose": "alternating_contralateral_swing",
+        "reference_near_hand_from_shoulder": [
+          5.782470703125,
+          20.1008682250977
+        ],
+        "reference_parameter_source": "project_visual_fit_not_video_measurement",
+        "reference_pelvis_drop": 1.26473236083984,
+        "reference_pose_active": true,
+        "reference_rear_tip_from_anchor": [
+          -19.3106689453125,
+          40.03759765625
+        ],
+        "reference_target_wind_load": 1.00000639127061,
+        "reference_trailing_wind_load": 1.00000639127058,
+        "reset_count": 0,
+        "rest_hem_source_y": 1340.0,
+        "simulation_steps": 76,
+        "source_geometry_preserved": true,
+        "support_model": "hip_hung_rear_chain_gravity_inertia",
+        "travel_drag": 1.00001278258207,
+        "visible_leg_meshes": 2,
+        "walk_profile": "reference_run_like_single_movement_project_fit",
+        "walk_support_fraction": 0.62
+      }
+    },
+    {
+      "frame": 92,
+      "label": "松键余势 0.10秒",
+      "old": {
+        "acceleration_drive": 0.0,
+        "angles": [
+          0.0105336969718337,
+          -0.000201363596715964,
+          -0.040046039968729
+        ],
+        "angular_velocity": [
+          -0.321886122226715,
+          -0.431651949882507,
+          -0.603143155574799
+        ],
+        "arm_speed_correction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "arm_swing_scale": 0.8,
+        "continuous_mesh": false,
+        "front_bones_resting": true,
+        "gait_amount": 0.149568619222635,
+        "gait_cadence_hz": 1.34158793273039,
+        "gait_lift": 8.16279794256666,
+        "gait_phase": 0.736278371803596,
+        "gait_phase_advance_location": "update_cloth_once_per_clock",
+        "gait_speed_actual": 0.0,
+        "gait_speed_smoothed": 18.8443141331737,
+        "gait_stride_half": 18.8317586546078,
+        "gait_style": "slow",
+        "ground_shift": 0.0,
+        "hidden_leg_meshes": 0,
+        "leg_rendering": "original_full_legs_and_boots",
+        "locomotion_style": "ground",
+        "lowest_cloth_y": -12.8450975418091,
+        "mode": "cape_like_open_robe",
+        "original_split_panels": true,
+        "outline_samples": 0,
+        "pants_uv_clipped": false,
+        "rear_anchor": [
+          0.14483642578125,
+          -56.1367797851563
+        ],
+        "rear_tip": [
+          0.092193603515625,
+          -11.4119873046875
+        ],
+        "rear_wind": 0.0,
+        "reference_anchor_acceleration": [
+          78.2064361572266,
+          111.73991394043
+        ],
+        "reference_anchor_drive": 0.260688120524089,
+        "reference_anchor_reset_count": 0,
+        "reference_anchor_samples": 2,
+        "reference_arm_samples": {
+          "far": {
+            "elbow_flex": 1.29146259543586,
+            "forearm_angle": 0.539992305132625,
+            "leg_phase": 0.236278371803596,
+            "same_side_foot_projection": 0.237811704701198,
+            "shoulder_angle": 1.83145490056848
+          },
+          "near": {
+            "elbow_flex": 1.38277703220599,
+            "forearm_angle": 0.00196375646772582,
+            "leg_phase": 0.736278371803596,
+            "same_side_foot_projection": -0.523141935049881,
+            "shoulder_angle": 1.38474078867371
+          }
+        },
+        "reference_arm_stride_half": 13.8406431254951,
+        "reference_chest_angle": 0.167447477579117,
+        "reference_chest_counter": 0.00273628460538837,
+        "reference_chest_target": 0.00273628463037312,
+        "reference_chest_velocity": -2.43135070800781,
+        "reference_elastic_tail": true,
+        "reference_far_hand_from_shoulder": [
+          -0.865303039550781,
+          24.6231842041016
+        ],
+        "reference_hip_loading": -0.124376572972199,
+        "reference_lean_inertia": 0.0,
+        "reference_measured_body_lean": 0.0115635638377197,
+        "reference_near_arm_pose": "alternating_contralateral_swing",
+        "reference_near_hand_from_shoulder": [
+          7.90781402587891,
+          22.4535751342773
+        ],
+        "reference_parameter_source": "project_visual_fit_not_video_measurement",
+        "reference_pelvis_drop": 0.12127685546875,
+        "reference_pose_active": true,
+        "reset_count": 0,
+        "rest_hem_source_y": 1340.0,
+        "simulation_steps": 94,
+        "source_geometry_preserved": true,
+        "support_model": "hip_hung_rear_chain_gravity_inertia",
+        "travel_drag": 0.0,
+        "visible_leg_meshes": 2,
+        "walk_profile": "reference_run_like_single_movement_project_fit",
+        "walk_support_fraction": 0.62
+      },
+      "new": {
+        "acceleration_drive": 0.0,
+        "angles": [
+          0.288902848958969,
+          0.0978559032082558,
+          0.0791135281324387
+        ],
+        "angular_velocity": [
+          -0.631636440753937,
+          -0.437203735113144,
+          -0.573566675186157
+        ],
+        "arm_speed_correction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "arm_swing_scale": 0.8,
+        "continuous_mesh": false,
+        "front_bones_resting": false,
+        "gait_amount": 0.149568619222635,
+        "gait_cadence_hz": 1.34158793273039,
+        "gait_lift": 8.16279794256666,
+        "gait_phase": 0.736278371803596,
+        "gait_phase_advance_location": "update_cloth_once_per_clock",
+        "gait_speed_actual": 0.0,
+        "gait_speed_smoothed": 18.8443141331737,
+        "gait_stride_half": 18.8317586546078,
+        "gait_style": "slow",
+        "ground_shift": 0.0,
+        "hidden_leg_meshes": 0,
+        "leg_rendering": "original_full_legs_and_boots",
+        "locomotion_style": "ground",
+        "lowest_cloth_y": -12.7881650924683,
+        "mode": "cape_like_open_robe",
+        "original_split_panels": true,
+        "outline_samples": 0,
+        "pants_uv_clipped": false,
+        "rear_anchor": [
+          0.14483642578125,
+          -56.1367797851563
+        ],
+        "rear_tip": [
+          -15.7240905761719,
+          -14.4336547851563
+        ],
+        "rear_wind": 0.0,
+        "reference_anchor_acceleration": [
+          78.2064361572266,
+          111.73991394043
+        ],
+        "reference_anchor_drive": 0.260688120524089,
+        "reference_anchor_reset_count": 0,
+        "reference_anchor_samples": 2,
+        "reference_arm_samples": {
+          "far": {
+            "elbow_flex": 1.29146259543586,
+            "forearm_angle": 0.539992305132625,
+            "leg_phase": 0.236278371803596,
+            "same_side_foot_projection": 0.237811704701198,
+            "shoulder_angle": 1.83145490056848
+          },
+          "near": {
+            "elbow_flex": 1.38277703220599,
+            "forearm_angle": 0.00196375646772582,
+            "leg_phase": 0.736278371803596,
+            "same_side_foot_projection": -0.523141935049881,
+            "shoulder_angle": 1.38474078867371
+          }
+        },
+        "reference_arm_stride_half": 13.8406431254951,
+        "reference_chest_angle": 0.167447477579117,
+        "reference_chest_counter": 0.00273628460538837,
+        "reference_chest_target": 0.00273628463037312,
+        "reference_chest_velocity": -2.43135070800781,
+        "reference_elastic_tail": true,
+        "reference_far_hand_from_shoulder": [
+          -0.865303039550781,
+          24.6231842041016
+        ],
+        "reference_front_angles": [
+          0.0604170225560665,
+          0.0158722437918186,
+          0.0105863343924284
+        ],
+        "reference_front_angular_velocity": [
+          -0.17053958773613,
+          -0.16005802154541,
+          -0.243061557412148
+        ],
+        "reference_front_tip_from_anchor": [
+          -3.21841430664063,
+          44.6126708984375
+        ],
+        "reference_hip_loading": -0.124376572972199,
+        "reference_lean_inertia": 0.0,
+        "reference_measured_body_lean": 0.0115635638377197,
+        "reference_near_arm_pose": "alternating_contralateral_swing",
+        "reference_near_hand_from_shoulder": [
+          7.90781402587891,
+          22.4535751342773
+        ],
+        "reference_parameter_source": "project_visual_fit_not_video_measurement",
+        "reference_pelvis_drop": 0.12127685546875,
+        "reference_pose_active": true,
+        "reference_rear_tip_from_anchor": [
+          -15.8689270019531,
+          41.703125
+        ],
+        "reference_target_wind_load": 0.0,
+        "reference_trailing_wind_load": 0.606534536214212,
+        "reset_count": 0,
+        "rest_hem_source_y": 1340.0,
+        "simulation_steps": 94,
+        "source_geometry_preserved": true,
+        "support_model": "hip_hung_rear_chain_gravity_inertia",
+        "travel_drag": 0.0,
+        "visible_leg_meshes": 2,
+        "walk_profile": "reference_run_like_single_movement_project_fit",
+        "walk_support_fraction": 0.62
+      }
+    },
+    {
+      "frame": 148,
+      "label": "停步回垂 1.97秒",
+      "old": {
+        "acceleration_drive": 0.0,
+        "angles": [
+          -1.01038961020095e-06,
+          -3.34068181473413e-06,
+          0.000846319948323071
+        ],
+        "angular_velocity": [
+          1.96565051737707e-05,
+          -3.2685598853277e-05,
+          -0.00538923591375351
+        ],
+        "arm_speed_correction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "arm_swing_scale": 0.727272733781307,
+        "continuous_mesh": false,
+        "front_bones_resting": true,
+        "gait_amount": 5.91374861777283e-17,
+        "gait_cadence_hz": 1.20000000715944,
+        "gait_lift": 7.20000004868418,
+        "gait_phase": 0.751273402790216,
+        "gait_phase_advance_location": "update_cloth_once_per_clock",
+        "gait_speed_actual": 0.0,
+        "gait_speed_smoothed": 4.81821020727096e-14,
+        "gait_stride_half": 16.0000001431888,
+        "gait_style": "slow",
+        "ground_shift": 0.0,
+        "hidden_leg_meshes": 0,
+        "leg_rendering": "original_full_legs_and_boots",
+        "locomotion_style": "ground",
+        "lowest_cloth_y": -13.0649919509888,
+        "mode": "cape_like_open_robe",
+        "original_split_panels": true,
+        "outline_samples": 0,
+        "pants_uv_clipped": false,
+        "rear_anchor": [
+          0.0,
+          -56.2139892578125
+        ],
+        "rear_tip": [
+          -0.00860595703125,
+          -11.4828491210938
+        ],
+        "rear_wind": 0.0,
+        "reference_anchor_acceleration": [
+          4.49322419548981e-11,
+          -0.277835935354233
+        ],
+        "reference_anchor_drive": 1.4977413984966e-13,
+        "reference_anchor_reset_count": 0,
+        "reference_anchor_samples": 2,
+        "reference_arm_samples": {},
+        "reference_arm_stride_half": 12.0000000930727,
+        "reference_chest_angle": 5.22279073322807e-08,
+        "reference_chest_counter": 1.14507491647091e-18,
+        "reference_chest_target": 1.14507491075116e-18,
+        "reference_chest_velocity": -2.97972133012081e-06,
+        "reference_elastic_tail": true,
+        "reference_far_hand_from_shoulder": [
+          -2.38442230224609,
+          25.0718078613281
+        ],
+        "reference_hip_loading": -5.20488598395867e-17,
+        "reference_lean_inertia": 0.0,
+        "reference_measured_body_lean": -0.100629146143709,
+        "reference_near_arm_pose": "alternating_contralateral_swing",
+        "reference_near_hand_from_shoulder": [
+          5.50762176513672,
+          23.892936706543
+        ],
+        "reference_parameter_source": "project_visual_fit_not_video_measurement",
+        "reference_pelvis_drop": 0.0441017150878906,
+        "reference_pose_active": true,
+        "reset_count": 0,
+        "rest_hem_source_y": 1340.0,
+        "simulation_steps": 150,
+        "source_geometry_preserved": true,
+        "support_model": "hip_hung_rear_chain_gravity_inertia",
+        "travel_drag": 0.0,
+        "visible_leg_meshes": 2,
+        "walk_profile": "reference_run_like_single_movement_project_fit",
+        "walk_support_fraction": 0.62
+      },
+      "new": {
+        "acceleration_drive": 0.0,
+        "angles": [
+          2.19800713239238e-05,
+          -1.65965866472106e-05,
+          0.000237307933275588
+        ],
+        "angular_velocity": [
+          -0.000162196432938799,
+          -0.000107888750790153,
+          -0.00342417997308075
+        ],
+        "arm_speed_correction": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "arm_swing_scale": 0.727272733781307,
+        "continuous_mesh": false,
+        "front_bones_resting": false,
+        "gait_amount": 5.91374861777283e-17,
+        "gait_cadence_hz": 1.20000000715944,
+        "gait_lift": 7.20000004868418,
+        "gait_phase": 0.751273402790216,
+        "gait_phase_advance_location": "update_cloth_once_per_clock",
+        "gait_speed_actual": 0.0,
+        "gait_speed_smoothed": 4.81821020727096e-14,
+        "gait_stride_half": 16.0000001431888,
+        "gait_style": "slow",
+        "ground_shift": 0.0,
+        "hidden_leg_meshes": 0,
+        "leg_rendering": "original_full_legs_and_boots",
+        "locomotion_style": "ground",
+        "lowest_cloth_y": -13.0649585723877,
+        "mode": "cape_like_open_robe",
+        "original_split_panels": true,
+        "outline_samples": 0,
+        "pants_uv_clipped": false,
+        "rear_anchor": [
+          0.0,
+          -56.2139892578125
+        ],
+        "rear_tip": [
+          -0.003021240234375,
+          -11.4828491210938
+        ],
+        "rear_wind": 0.0,
+        "reference_anchor_acceleration": [
+          4.49322419548981e-11,
+          -0.277835935354233
+        ],
+        "reference_anchor_drive": 1.4977413984966e-13,
+        "reference_anchor_reset_count": 0,
+        "reference_anchor_samples": 2,
+        "reference_arm_samples": {},
+        "reference_arm_stride_half": 12.0000000930727,
+        "reference_chest_angle": 5.22279073322807e-08,
+        "reference_chest_counter": 1.14507491647091e-18,
+        "reference_chest_target": 1.14507491075116e-18,
+        "reference_chest_velocity": -2.97972133012081e-06,
+        "reference_elastic_tail": true,
+        "reference_far_hand_from_shoulder": [
+          -2.38442230224609,
+          25.0718078613281
+        ],
+        "reference_front_angles": [
+          5.49757760381908e-06,
+          2.16653529605537e-06,
+          -2.26537322305376e-05
+        ],
+        "reference_front_angular_velocity": [
+          -2.76997416222002e-05,
+          4.79573327538674e-06,
+          8.85528133949265e-05
+        ],
+        "reference_front_tip_from_anchor": [
+          -9.1552734375e-05,
+          44.7311401367188
+        ],
+        "reference_hip_loading": -5.20488598395867e-17,
+        "reference_lean_inertia": 0.0,
+        "reference_measured_body_lean": -0.100629146143709,
+        "reference_near_arm_pose": "alternating_contralateral_swing",
+        "reference_near_hand_from_shoulder": [
+          5.50762176513672,
+          23.892936706543
+        ],
+        "reference_parameter_source": "project_visual_fit_not_video_measurement",
+        "reference_pelvis_drop": 0.0441017150878906,
+        "reference_pose_active": true,
+        "reference_rear_tip_from_anchor": [
+          -0.003021240234375,
+          44.7311401367188
+        ],
+        "reference_target_wind_load": 0.0,
+        "reference_trailing_wind_load": 5.36340225556418e-05,
+        "reset_count": 0,
+        "rest_hem_source_y": 1340.0,
+        "simulation_steps": 150,
+        "source_geometry_preserved": true,
+        "support_model": "hip_hung_rear_chain_gravity_inertia",
+        "travel_drag": 0.0,
+        "visible_leg_meshes": 2,
+        "walk_profile": "reference_run_like_single_movement_project_fit",
+        "walk_support_fraction": 0.62
+      }
+    }
+  ],
+  "turn_check_frames": [
+    150,
+    160,
+    162,
+    164,
+    170,
+    174,
+    182,
+    190,
+    191
+  ],
+  "artifacts": {
+    "arena_0012.png": 794103,
+    "arena_0074.png": 838806,
+    "arena_0092.png": 841288,
+    "arena_0148.png": 833927,
+    "arena_0150.png": 833268,
+    "arena_0160.png": 833021,
+    "arena_0162.png": 832898,
+    "arena_0164.png": 832988,
+    "arena_0170.png": 832864,
+    "arena_0174.png": 832890,
+    "arena_0182.png": 833353,
+    "arena_0190.png": 833585,
+    "arena_0191.png": 832346,
+    "compare_0012.png": 92860,
+    "compare_0074.png": 92412,
+    "compare_0092.png": 87104,
+    "compare_0148.png": 70348,
+    "new_0012.png": 52309,
+    "new_0074.png": 52224,
+    "new_0092.png": 46194,
+    "new_0148.png": 43436,
+    "new_0150.png": 42928,
+    "new_0160.png": 43637,
+    "new_0162.png": 51107,
+    "new_0164.png": 50664,
+    "new_0170.png": 50955,
+    "new_0174.png": 50989,
+    "new_0182.png": 45659,
+    "new_0190.png": 43810,
+    "new_0191.png": 43763,
+    "原v3与新衣摆_同输入跑停5秒.gif": 1748617,
+    "实际尺寸未缩放_跑停四相位.png": 246891,
+    "新版原静止轮廓.png": 43559,
+    "新版衣摆_跑动3秒与松键回落2秒_实际局内.gif": 24941365,
+    "新版衣摆_跑动3秒与松键回落2秒_近景.gif": 932487,
+    "起步_持续后飘_松键余势_回垂四相位.png": 181356,
+    "鬼谷原骨链_八相位.png": 156953
+  },
+  "cloth_checks": {
+    "backward_stop_samples": {
+      "0.1": {
+        "front_tip_x": 14.3193511962891,
+        "rear_tip_x": 17.0566711425781,
+        "wind_load": -0.606521977391069
+      },
+      "0.2": {
+        "front_tip_x": 10.4940338134766,
+        "rear_tip_x": 12.8920593261719,
+        "wind_load": -0.367874175077216
+      },
+      "0.3": {
+        "front_tip_x": 6.27740478515625,
+        "rear_tip_x": 7.94886779785156,
+        "wind_load": -0.223126966100825
+      },
+      "0.6": {
+        "front_tip_x": 0.96038818359375,
+        "rear_tip_x": 0.96441650390625,
+        "wind_load": -0.0497863556795103
+      },
+      "1.0": {
+        "front_tip_x": 0.162506103515625,
+        "rear_tip_x": 0.223907470703125,
+        "wind_load": -0.00673785054720528
+      },
+      "2.0": {
+        "front_tip_x": 0.0010986328125,
+        "rear_tip_x": -0.000885009765625,
+        "wind_load": -4.53992798748283e-05
+      }
+    },
+    "clock_reset": true,
+    "forward_stop_samples": {
+      "0.0": {
+        "front_tip_x": -4.92880249023438,
+        "rear_tip_x": -19.3822326660156,
+        "wind_load": 0.999999999986112
+      },
+      "0.1": {
+        "front_tip_x": -3.7401123046875,
+        "rear_tip_x": -16.8839416503906,
+        "wind_load": 0.60653065970421
+      },
+      "0.2": {
+        "front_tip_x": -2.67279052734375,
+        "rear_tip_x": -12.6671447753906,
+        "wind_load": 0.367879441166333
+      },
+      "0.3": {
+        "front_tip_x": -1.72381591796875,
+        "rear_tip_x": -7.8643798828125,
+        "wind_load": 0.223130160145331
+      },
+      "0.6": {
+        "front_tip_x": -0.36065673828125,
+        "rear_tip_x": -1.08218383789063,
+        "wind_load": 0.0497870683671726
+      },
+      "1.0": {
+        "front_tip_x": -0.037994384765625,
+        "rear_tip_x": -0.19525146484375,
+        "wind_load": 0.00673794699899191
+      }
+    },
+    "maximum_sampled_opaque_cloth_y": -7.02874612808228,
+    "noncloth_angle_error": 0.0,
+    "noncloth_position_error": 0.0,
+    "passed": true,
+    "pause_frozen": true,
+    "rear_trail_first_stopped_frame": 19.1597595214844,
+    "steady_backward_front_tip_x": 16.1466758728027,
+    "steady_backward_rear_tip_x": 19.2789138793945,
+    "steady_forward_front_tip_x": -4.93255360921224,
+    "steady_forward_rear_tip_x": -19.4056055704753,
+    "stopped_settled": true,
+    "teleport_reset": true,
+    "world_turn_angle_error": 0.0,
+    "world_turn_load_error": 0.0
+  }
+}

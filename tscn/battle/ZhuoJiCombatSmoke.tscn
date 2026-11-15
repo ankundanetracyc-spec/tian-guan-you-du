@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dn8mkf1l2ixom"]
+
+[ext_resource type="Script" uid="uid://b6bqruie6qvwm" path="res://csharp/battle/ZhuoJiCombatSmoke.cs" id="1"]
+
+[node name="ZhuoJiCombatSmoke" type="Node" unique_id=622145505]
+script = ExtResource("1")

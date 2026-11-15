@@ -1,0 +1,422 @@
+{
+  "date": "2026-10-29",
+  "scope": "independent HTML fixture only; local reference not played",
+  "checks": 55,
+  "console": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "suites": [
+    {
+      "checks": 15,
+      "results": [
+        "real_size_ghost",
+        "tooltip_hidden",
+        "rotated_3_by_2_valid",
+        "valid_drop_commits_orientation",
+        "rotated_art_not_stretched",
+        "counts_and_occupancy_unchanged",
+        "collision_preview_red",
+        "invalid_drop_keeps_item",
+        "escape_restores_rotation",
+        "cancel_cleans_overlays",
+        "four_turns_restore_dimensions",
+        "boundary_preview_red",
+        "boundary_keeps_item",
+        "outside_drop_keeps_item",
+        "scaled_window_places_correct_cell"
+      ]
+    },
+    {
+      "checks": 32,
+      "results": [
+        {
+          "name": "six_groups_keep_nineteen_instances",
+          "detail": {
+            "groups": [
+              [
+                "素行剑",
+                1
+              ],
+              [
+                "胎息经",
+                2
+              ],
+              [
+                "苦苔根",
+                1
+              ],
+              [
+                "玄铁",
+                1
+              ],
+              [
+                "回春丹·良效",
+                2
+              ],
+              [
+                "灵石",
+                12
+              ]
+            ]
+          }
+        },
+        {
+          "name": "position_column_removed",
+          "detail": {
+            "columns": "物品\n数量"
+          }
+        },
+        {
+          "name": "single_click_does_not_locate",
+          "detail": {}
+        },
+        {
+          "name": "stone_double_click_1",
+          "detail": {
+            "expected": "stone:01",
+            "actual": "stone:01"
+          }
+        },
+        {
+          "name": "stone_double_click_2",
+          "detail": {
+            "expected": "stone:02",
+            "actual": "stone:02"
+          }
+        },
+        {
+          "name": "stone_double_click_3",
+          "detail": {
+            "expected": "stone:03",
+            "actual": "stone:03"
+          }
+        },
+        {
+          "name": "stone_double_click_4",
+          "detail": {
+            "expected": "stone:04",
+            "actual": "stone:04"
+          }
+        },
+        {
+          "name": "stone_double_click_5",
+          "detail": {
+            "expected": "stone:05",
+            "actual": "stone:05"
+          }
+        },
+        {
+          "name": "stone_double_click_6",
+          "detail": {
+            "expected": "stone:06",
+            "actual": "stone:06"
+          }
+        },
+        {
+          "name": "stone_double_click_7",
+          "detail": {
+            "expected": "stone:07",
+            "actual": "stone:07"
+          }
+        },
+        {
+          "name": "stone_double_click_8",
+          "detail": {
+            "expected": "stone:08",
+            "actual": "stone:08"
+          }
+        },
+        {
+          "name": "stone_double_click_9",
+          "detail": {
+            "expected": "stone:09",
+            "actual": "stone:09"
+          }
+        },
+        {
+          "name": "stone_double_click_10",
+          "detail": {
+            "expected": "stone:10",
+            "actual": "stone:10"
+          }
+        },
+        {
+          "name": "stone_double_click_11",
+          "detail": {
+            "expected": "stone:11",
+            "actual": "stone:11"
+          }
+        },
+        {
+          "name": "stone_double_click_12",
+          "detail": {
+            "expected": "stone:12",
+            "actual": "stone:12"
+          }
+        },
+        {
+          "name": "stone_double_click_13",
+          "detail": {
+            "expected": "stone:01",
+            "actual": "stone:01"
+          }
+        },
+        {
+          "name": "cycle_does_not_mutate_inventory",
+          "detail": {
+            "sequence": [
+              "stone:01",
+              "stone:02",
+              "stone:03",
+              "stone:04",
+              "stone:05",
+              "stone:06",
+              "stone:07",
+              "stone:08",
+              "stone:09",
+              "stone:10",
+              "stone:11",
+              "stone:12",
+              "stone:01"
+            ]
+          }
+        },
+        {
+          "name": "manual_first",
+          "detail": {}
+        },
+        {
+          "name": "manual_second",
+          "detail": {}
+        },
+        {
+          "name": "manual_wrap",
+          "detail": {}
+        },
+        {
+          "name": "independent_group_cursors",
+          "detail": {}
+        },
+        {
+          "name": "search_is_grouped_and_keeps_space",
+          "detail": {}
+        },
+        {
+          "name": "search_keeps_cursor",
+          "detail": {}
+        },
+        {
+          "name": "category_is_grouped",
+          "detail": {}
+        },
+        {
+          "name": "category_keeps_cursor",
+          "detail": {}
+        },
+        {
+          "name": "group_hover_keeps_real_footprint",
+          "detail": {
+            "visible": "false",
+            "columns": "2",
+            "rows": "3",
+            "cells": 6
+          }
+        },
+        {
+          "name": "cross_container_still_one_group",
+          "detail": {}
+        },
+        {
+          "name": "cycle_opens_external_container",
+          "detail": {
+            "located": "manual:02",
+            "container": "fixture:external"
+          }
+        },
+        {
+          "name": "cycle_returns_to_bag",
+          "detail": {
+            "located": "manual:01",
+            "container": "bag:player"
+          }
+        },
+        {
+          "name": "grouping_uses_definition_and_effect",
+          "detail": {
+            "sameDefinitionSameGroup": true,
+            "sameNameDifferentDefinition": true,
+            "sameIconDifferentDefinition": true,
+            "differentVariant": true,
+            "variantFieldOrder": true,
+            "unknownUniqueArtifactsStaySeparate": true
+          }
+        },
+        {
+          "name": "all_five_regions_visible_at_1280",
+          "detail": [
+            {
+              "inside": true,
+              "cell": 32
+            },
+            {
+              "inside": true,
+              "cell": 32
+            },
+            {
+              "inside": true,
+              "cell": 32
+            },
+            {
+              "inside": true,
+              "cell": 32
+            },
+            {
+              "inside": true,
+              "cell": 32
+            }
+          ]
+        },
+        {
+          "name": "default_reset_restores_quantity",
+          "detail": {}
+        }
+      ],
+      "defaultCounts": [
+        {
+          "name": "素行剑",
+          "count": 1
+        },
+        {
+          "name": "胎息经",
+          "count": 2
+        },
+        {
+          "name": "苦苔根",
+          "count": 1
+        },
+        {
+          "name": "玄铁",
+          "count": 1
+        },
+        {
+          "name": "回春丹·良效",
+          "count": 2
+        },
+        {
+          "name": "灵石",
+          "count": 12
+        }
+      ],
+      "sourceSnapshotUnchangedBeforeFixture": true
+    },
+    {
+      "checks": 8,
+      "results": [
+        {
+          "name": "all_original_ten_categories",
+          "detail": {
+            "left": 0,
+            "width": 284,
+            "total": 725,
+            "names": [
+              "全部",
+              "装备",
+              "材料",
+              "秘籍",
+              "阵盘",
+              "器具",
+              "符箓",
+              "丹药",
+              "灵膳",
+              "器物"
+            ]
+          }
+        },
+        {
+          "name": "categories_overflow_in_narrow_list",
+          "detail": {
+            "width": 284,
+            "total": 725
+          }
+        },
+        {
+          "name": "right_arrow_scrolls",
+          "detail": {
+            "left": 227,
+            "width": 284,
+            "total": 725,
+            "names": [
+              "全部",
+              "装备",
+              "材料",
+              "秘籍",
+              "阵盘",
+              "器具",
+              "符箓",
+              "丹药",
+              "灵膳",
+              "器物"
+            ]
+          }
+        },
+        {
+          "name": "last_category_can_be_selected",
+          "detail": {
+            "category": "器物"
+          }
+        },
+        {
+          "name": "empty_category_keeps_actual_inventory",
+          "detail": {}
+        },
+        {
+          "name": "drag_scrolls_without_selecting_tab",
+          "detail": {
+            "scroll": 248
+          }
+        },
+        {
+          "name": "wheel_scrolls_categories",
+          "detail": {
+            "left": 205,
+            "width": 284,
+            "total": 725,
+            "names": [
+              "全部",
+              "装备",
+              "材料",
+              "秘籍",
+              "阵盘",
+              "器具",
+              "符箓",
+              "丹药",
+              "灵膳",
+              "器物"
+            ]
+          }
+        },
+        {
+          "name": "left_arrow_returns",
+          "detail": {
+            "left": 0,
+            "width": 284,
+            "total": 725,
+            "names": [
+              "全部",
+              "装备",
+              "材料",
+              "秘籍",
+              "阵盘",
+              "器具",
+              "符箓",
+              "丹药",
+              "灵膳",
+              "器物"
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

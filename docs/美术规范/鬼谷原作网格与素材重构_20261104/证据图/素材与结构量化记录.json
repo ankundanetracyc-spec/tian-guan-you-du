@@ -1,0 +1,114 @@
+{
+  "current_arm": {
+    "upper_pixels": 133.4541119636259,
+    "lower_pixels": 168.4339633209407,
+    "lower_over_upper": 1.2621114542116834,
+    "same_texture_and_rest_chain_both_sides": true
+  },
+  "source_arm_run_samples": {
+    "left": {
+      "mean_upper": 0.18115737955799655,
+      "mean_lower": 0.08188228202163518,
+      "lower_over_upper": 0.45199528841396724
+    },
+    "right": {
+      "mean_upper": 0.16148583954184192,
+      "mean_lower": 0.12487916876449814,
+      "lower_over_upper": 0.773313431808002
+    }
+  },
+  "current_meshes": [
+    {
+      "name": "head",
+      "vertices": 513,
+      "bone_count": 2,
+      "keys": [
+        "head",
+        "torso"
+      ]
+    },
+    {
+      "name": "robe_back",
+      "vertices": 513,
+      "bone_count": 8,
+      "keys": [
+        "torso",
+        "pelvis",
+        "front_cloth",
+        "front_hem",
+        "back_cloth",
+        "back_hem",
+        "front_edge",
+        "back_edge"
+      ]
+    },
+    {
+      "name": "robe_front",
+      "vertices": 513,
+      "bone_count": 8,
+      "keys": [
+        "torso",
+        "pelvis",
+        "front_cloth",
+        "front_hem",
+        "back_cloth",
+        "back_hem",
+        "front_edge",
+        "back_edge"
+      ]
+    },
+    {
+      "name": "far_arm",
+      "vertices": 513,
+      "bone_count": 4,
+      "keys": [
+        "far_upper",
+        "far_forearm",
+        "far_hand",
+        "torso"
+      ]
+    },
+    {
+      "name": "far_leg",
+      "vertices": 513,
+      "bone_count": 3,
+      "keys": [
+        "far_thigh",
+        "far_calf",
+        "far_foot"
+      ]
+    },
+    {
+      "name": "near_arm",
+      "vertices": 513,
+      "bone_count": 4,
+      "keys": [
+        "near_upper",
+        "near_forearm",
+        "near_hand",
+        "torso"
+      ]
+    },
+    {
+      "name": "near_leg",
+      "vertices": 513,
+      "bone_count": 3,
+      "keys": [
+        "near_thigh",
+        "near_calf",
+        "near_foot"
+      ]
+    }
+  ],
+  "source_clothing": {
+    "vertices": 21,
+    "triangles": 19,
+    "bones": [
+      "shenti1",
+      "shenti2",
+      "shenti2_1",
+      "shenti2_2"
+    ]
+  },
+  "source_material_is_distinct_from_current": true
+}

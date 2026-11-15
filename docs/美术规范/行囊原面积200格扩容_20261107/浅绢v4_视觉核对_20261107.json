@@ -1,0 +1,72 @@
+{
+  "date": "2026-11-07",
+  "status": "visual draft, awaiting user review",
+  "mode": "built-in image generation for cloth; native HTML composition for exact UI",
+  "capacity": 200,
+  "designCell": 36,
+  "allRegionCoordinatesKept": true,
+  "itemResourcesKept": true,
+  "sampleInventoryOccupied": 43,
+  "layoutSource": "200格示例_20261107.json",
+  "layoutSourceSha256": "951f055b8cb354995f70f823fa3e3bfee6173b21a6b4874309f2c94bb9b7c0c3",
+  "regions": [
+    {
+      "id": "chest",
+      "columns": 8,
+      "rows": 5,
+      "x": 898,
+      "y": 312
+    },
+    {
+      "id": "sleeve-left",
+      "columns": 4,
+      "rows": 5,
+      "x": 606,
+      "y": 536
+    },
+    {
+      "id": "sleeve-right",
+      "columns": 4,
+      "rows": 5,
+      "x": 1298,
+      "y": 536
+    },
+    {
+      "id": "waist",
+      "columns": 8,
+      "rows": 5,
+      "x": 898,
+      "y": 756
+    },
+    {
+      "id": "back",
+      "columns": 8,
+      "rows": 10,
+      "x": 1526,
+      "y": 432
+    }
+  ],
+  "views": [
+    {
+      "width": 1920,
+      "height": 1080,
+      "cellScreenPixels": 36,
+      "allFiveRegionsVisible": true,
+      "failedImages": 0
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "cellScreenPixels": 24,
+      "allFiveRegionsVisible": true,
+      "failedImages": 0
+    }
+  ],
+  "browserErrors": 0,
+  "browserWarnings": 0,
+  "runtimeSkinChanged": false,
+  "gameplayRulesChanged": false,
+  "material": "../../../textures/ui/inventory_material_20261107/garment_lining_warm_v4.png",
+  "prompt": "素绢底面_v4_生成提示词.txt",
+  "generatedSource": "E:/tmp/CodexData/generated_images/01a1b27c-bc52-76a3-810c-a0211d7b2701/exec-1c6b4005-ea79-4437-b2c0-0969f4323714.png"
+}

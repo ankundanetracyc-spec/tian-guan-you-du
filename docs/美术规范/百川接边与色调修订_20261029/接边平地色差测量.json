@@ -1,0 +1,95 @@
+{
+  "note": "Flat-paper color measurements supplement native visual inspection, not a semantic seam pass.",
+  "seams": [
+    {
+      "axis": "vertical",
+      "boundary": 1024,
+      "nativeContactSheet": "纵向接边_1.png",
+      "plainSamples": 1251,
+      "medianRGBDelta": 2.1505813167606567,
+      "p95RGBDelta": 7.640353394968063,
+      "maximumRGBDelta": 38.60375629391524
+    },
+    {
+      "axis": "vertical",
+      "boundary": 2048,
+      "nativeContactSheet": "纵向接边_2.png",
+      "plainSamples": 1391,
+      "medianRGBDelta": 1.8200274723201295,
+      "p95RGBDelta": 6.349212549600146,
+      "maximumRGBDelta": 32.64391214300149
+    },
+    {
+      "axis": "vertical",
+      "boundary": 3072,
+      "nativeContactSheet": "纵向接边_3.png",
+      "plainSamples": 1306,
+      "medianRGBDelta": 1.6770509831248424,
+      "p95RGBDelta": 6.800735254367721,
+      "maximumRGBDelta": 32.13837270304768
+    },
+    {
+      "axis": "vertical",
+      "boundary": 4096,
+      "nativeContactSheet": "纵向接边_4.png",
+      "plainSamples": 1128,
+      "medianRGBDelta": 1.9685019685029528,
+      "p95RGBDelta": 9.91526600752597,
+      "maximumRGBDelta": 47.12019206242691
+    },
+    {
+      "axis": "vertical",
+      "boundary": 5120,
+      "nativeContactSheet": "纵向接边_5.png",
+      "plainSamples": 1183,
+      "medianRGBDelta": 1.8874586088176875,
+      "p95RGBDelta": 7.8182478855559445,
+      "maximumRGBDelta": 30.60330864465475
+    },
+    {
+      "axis": "horizontal",
+      "boundary": 1024,
+      "nativeContactSheet": "横向接边_1.png",
+      "plainSamples": 1324,
+      "medianRGBDelta": 1.8027756377319948,
+      "p95RGBDelta": 6.919176251549024,
+      "maximumRGBDelta": 20.38841582860228
+    },
+    {
+      "axis": "horizontal",
+      "boundary": 2048,
+      "nativeContactSheet": "横向接边_2.png",
+      "plainSamples": 1327,
+      "medianRGBDelta": 1.8874586088176875,
+      "p95RGBDelta": 5.98957427535547,
+      "maximumRGBDelta": 32.81482134645867
+    },
+    {
+      "axis": "horizontal",
+      "boundary": 3072,
+      "nativeContactSheet": "横向接边_3.png",
+      "plainSamples": 1251,
+      "medianRGBDelta": 2.1794494717703365,
+      "p95RGBDelta": 7.685213074469699,
+      "maximumRGBDelta": 37.02870508132846
+    },
+    {
+      "axis": "horizontal",
+      "boundary": 4096,
+      "nativeContactSheet": "横向接边_4.png",
+      "plainSamples": 1337,
+      "medianRGBDelta": 2.1505813167606567,
+      "p95RGBDelta": 8.381527307120106,
+      "maximumRGBDelta": 48.686497101352444
+    },
+    {
+      "axis": "horizontal",
+      "boundary": 5120,
+      "nativeContactSheet": "横向接边_5.png",
+      "plainSamples": 1355,
+      "medianRGBDelta": 2.0766559657295187,
+      "p95RGBDelta": 6.819090848492928,
+      "maximumRGBDelta": 48.998724473194194
+    }
+  ]
+}

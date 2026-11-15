@@ -1,0 +1,340 @@
+{
+  "enabled": true,
+  "package_id": "ink_three_variants_20261004",
+  "rig_id": "ink_three_variants_20261004_active88",
+  "rig_file": "res://mods/appearance/new_ink_hair_20261003_v1/rig/portrait_rig.json",
+  "canvas": {
+    "width": 1024,
+    "height": 1536
+  },
+  "index_start": 1,
+  "index_padding": 2,
+  "allow_skin_tone_tint": false,
+  "allow_hair_color_tint": false,
+  "components": [
+    {
+      "id": "male_front_hair",
+      "gender": "male",
+      "part": "hair_front",
+      "file": "male/hair_front/{index}.png",
+      "variant_count": 7,
+      "variant_names": [
+        "墨云中分",
+        "疏额双垂",
+        "清风垂鬓",
+        "清雅分流",
+        "束风露额",
+        "守真拢发",
+        "行舟短发"
+      ],
+      "variant_indices": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "male_back_hair",
+      "gender": "male",
+      "part": "hair_back",
+      "file": "male/hair_back/{index}.png",
+      "variant_count": 8,
+      "variant_names": [
+        "墨发长披",
+        "高束散尾",
+        "低束长披",
+        "清雅半束",
+        "高束流风",
+        "束风短尾",
+        "守真束髻",
+        "行舟短垂"
+      ],
+      "variant_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "male_eyebrows",
+      "gender": "male",
+      "part": "brow",
+      "file": "male/eyebrows/{index}.png",
+      "variant_count": 9,
+      "variant_names": [
+        "墨锋平眉",
+        "疏柳斜眉",
+        "折锋细眉",
+        "凝岳剑眉",
+        "磐石浓眉",
+        "凌锋扬眉",
+        "温玉柔眉",
+        "长风平眉",
+        "苍山厚眉"
+      ]
+    },
+    {
+      "id": "male_eyes",
+      "gender": "male",
+      "part": "eye",
+      "file": "male/eyes/{index}.png",
+      "variant_count": 8,
+      "variant_names": [
+        "清朗凤目",
+        "温润长目",
+        "凝岳沉目",
+        "磐石朗目",
+        "凌锋锐目",
+        "温玉和目",
+        "长风清目",
+        "苍山静目"
+      ],
+      "variant_indices": [
+        1,
+        2,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ]
+    },
+    {
+      "id": "male_nose",
+      "gender": "male",
+      "part": "nose",
+      "file": "male/nose/{index}.png",
+      "variant_count": 3,
+      "variant_names": [
+        "修直鼻",
+        "温钝鼻",
+        "挺秀鼻"
+      ]
+    },
+    {
+      "id": "male_mouth",
+      "gender": "male",
+      "part": "mouth",
+      "file": "male/mouth/{index}.png",
+      "variant_count": 3,
+      "variant_names": [
+        "薄唇淡赭",
+        "柔唇暖桃",
+        "平唇浅棕"
+      ]
+    },
+    {
+      "id": "male_face",
+      "gender": "male",
+      "part": "face",
+      "file": "male/face_shape/{index}.png",
+      "variant_count": 3,
+      "variant_names": [
+        "清俊长脸",
+        "温润卵面",
+        "削颏秀面"
+      ]
+    },
+    {
+      "id": "male_clothes",
+      "gender": "male",
+      "part": "clothes",
+      "file": "male/clothing/{index}.png",
+      "variant_count": 7,
+      "variant_names": [
+        "碧岚云叶袍",
+        "玄青云竹袍",
+        "绛霞流云袍",
+        "玉虚·杂役常服",
+        "玉虚·外门常服",
+        "玉虚·内门常服",
+        "玉虚·真传常服"
+      ],
+      "item_paths": [
+        "res://resources/entities/items/clothing/男_碧岚云叶袍.tres",
+        "res://resources/entities/items/clothing/男_玄青云竹袍.tres",
+        "res://resources/entities/items/clothing/男_绛霞流云袍.tres",
+        "res://resources/entities/items/clothing/玉虚杂役常服.tres",
+        "res://resources/entities/items/clothing/玉虚外门常服.tres",
+        "res://resources/entities/items/clothing/玉虚内门常服.tres",
+        "res://resources/entities/items/clothing/玉虚真传常服.tres"
+      ]
+    },
+    {
+      "id": "male_beard",
+      "gender": "male",
+      "part": "beard",
+      "file": "male/face_accessory/{index}.png",
+      "variant_count": 3,
+      "variant_names": [
+        "无须",
+        "短八字须",
+        "八字颏须"
+      ]
+    },
+    {
+      "id": "female_front_hair",
+      "gender": "female",
+      "part": "hair_front",
+      "file": "female/hair_front/{index}.png",
+      "variant_count": 7,
+      "variant_names": [
+        "流云中分",
+        "柔丝垂鬓",
+        "疏影双垂",
+        "清雅分流",
+        "拂云露额",
+        "素心分缕",
+        "听雨短帘"
+      ],
+      "variant_indices": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "female_back_hair",
+      "gender": "female",
+      "part": "hair_back",
+      "file": "female/hair_back/{index}.png",
+      "variant_count": 8,
+      "variant_names": [
+        "墨发长披",
+        "云髻散尾",
+        "柔波长披",
+        "清雅半束",
+        "高束流风",
+        "拂云轻束",
+        "素心盘髻",
+        "听雨齐颈"
+      ],
+      "variant_indices": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "female_eyebrows",
+      "gender": "female",
+      "part": "brow",
+      "file": "female/eyebrows/{index}.png",
+      "variant_count": 4,
+      "variant_names": [
+        "清秀平眉",
+        "柔柳细眉",
+        "微扬秀眉",
+        "温和远山眉"
+      ]
+    },
+    {
+      "id": "female_eyes",
+      "gender": "female",
+      "part": "eye",
+      "file": "female/eyes/{index}.png",
+      "variant_count": 4,
+      "variant_names": [
+        "清润杏目",
+        "柔和圆目",
+        "含锋凤目",
+        "温婉杏目"
+      ]
+    },
+    {
+      "id": "female_nose",
+      "gender": "female",
+      "part": "nose",
+      "file": "female/nose/{index}.png",
+      "variant_count": 4,
+      "variant_names": [
+        "清秀鼻",
+        "圆润鼻",
+        "小巧鼻",
+        "温润鼻"
+      ]
+    },
+    {
+      "id": "female_mouth",
+      "gender": "female",
+      "part": "mouth",
+      "file": "female/mouth/{index}.png",
+      "variant_count": 4,
+      "variant_names": [
+        "桃色薄唇",
+        "朱粉柔唇",
+        "淡玫平唇",
+        "暖桃微唇"
+      ]
+    },
+    {
+      "id": "female_face",
+      "gender": "female",
+      "part": "face",
+      "file": "female/face_shape/{index}.png",
+      "variant_count": 4,
+      "variant_names": [
+        "清秀鹅蛋面",
+        "温婉圆颏面",
+        "秀长尖颏面",
+        "柔和卵面"
+      ]
+    },
+    {
+      "id": "female_clothes",
+      "gender": "female",
+      "part": "clothes",
+      "file": "female/clothing/{index}.png",
+      "variant_count": 7,
+      "variant_names": [
+        "青瓷云梅袍",
+        "月白竹影袍",
+        "藕荷花云袍",
+        "玉虚·杂役常服",
+        "玉虚·外门常服",
+        "玉虚·内门常服",
+        "玉虚·真传常服"
+      ],
+      "item_paths": [
+        "res://resources/entities/items/clothing/女_青瓷云梅袍.tres",
+        "res://resources/entities/items/clothing/女_月白竹影袍.tres",
+        "res://resources/entities/items/clothing/女_藕荷花云袍.tres",
+        "res://resources/entities/items/clothing/玉虚杂役常服.tres",
+        "res://resources/entities/items/clothing/玉虚外门常服.tres",
+        "res://resources/entities/items/clothing/玉虚内门常服.tres",
+        "res://resources/entities/items/clothing/玉虚真传常服.tres"
+      ]
+    },
+    {
+      "id": "female_makeup",
+      "gender": "female",
+      "part": "makeup",
+      "file": "female/face_accessory/{index}.png",
+      "variant_count": 3,
+      "variant_names": [
+        "素颜",
+        "淡花叶颊妆",
+        "浅玫眼妆"
+      ]
+    }
+  ]
+}

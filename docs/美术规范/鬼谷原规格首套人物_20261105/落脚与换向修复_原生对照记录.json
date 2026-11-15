@@ -1,0 +1,1080 @@
+{
+	"fps": 30,
+	"frames": 300,
+	"native": true,
+	"own_hair_override": true,
+	"records": [
+		{
+			"frame": 0,
+			"left": {
+				"anatomical_skin": {
+					"errors": [],
+					"mesh_count": 7,
+					"mode": "original_male101_native_canvas_3d",
+					"native_height": 113.726114273071,
+					"original_textures": true,
+					"own_hairstyle_override": false,
+					"physics": {
+						"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+						"components": [
+							{
+								"particles": 7,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+								"sourceTotalLength": 0.335419170558453,
+								"virtualEndParticles": 2
+							},
+							{
+								"particles": 4,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+								"sourceTotalLength": 0.303497962653637,
+								"virtualEndParticles": 1
+							}
+						],
+						"coordinateSystem": "full 3D Unity units before XY projection",
+						"setupErrors": [],
+						"unsupportedActiveBranches": [
+							"nonempty collider geometry",
+							"camera distant-disable",
+							"non-Normal Unity scheduling",
+							"weighted AnimationCurve keys"
+						]
+					},
+					"physics_enabled": true,
+					"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+					"pixels_per_unit": 100.0,
+					"project_bone_length_retargeting": false,
+					"rig_root": "/HumanRootMan/Root",
+					"sampled_clip": "Idle",
+					"sampled_time": 0.0333333333333333,
+					"source_alpha_and_uv": true,
+					"source_body_alpha_and_uv": true,
+					"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+					"transforms": 51,
+					"visible_hair_motion": "original source DynamicBone"
+				},
+				"art": "guigu_native_first_20261105",
+				"bone_bound_art_ready": true,
+				"errors": [],
+				"loaded": true,
+				"pipeline": "original male101 full canvases and 3D source animation/skin/DynamicBone"
+			},
+			"right": {
+				"anatomical_skin": {
+					"errors": [],
+					"mesh_count": 7,
+					"mode": "original_male101_native_canvas_3d",
+					"native_height": 113.726114273071,
+					"original_textures": false,
+					"own_hairstyle_override": true,
+					"physics": {
+						"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+						"components": [
+							{
+								"particles": 7,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+								"sourceTotalLength": 0.335419170558453,
+								"virtualEndParticles": 2
+							},
+							{
+								"particles": 4,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+								"sourceTotalLength": 0.303497962653637,
+								"virtualEndParticles": 1
+							}
+						],
+						"coordinateSystem": "full 3D Unity units before XY projection",
+						"setupErrors": [],
+						"unsupportedActiveBranches": [
+							"nonempty collider geometry",
+							"camera distant-disable",
+							"non-Normal Unity scheduling",
+							"weighted AnimationCurve keys"
+						]
+					},
+					"physics_enabled": true,
+					"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+					"pixels_per_unit": 100.0,
+					"project_bone_length_retargeting": false,
+					"rig_root": "/HumanRootMan/Root",
+					"sampled_clip": "Idle",
+					"sampled_time": 0.0333333333333333,
+					"source_alpha_and_uv": false,
+					"source_body_alpha_and_uv": true,
+					"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+					"transforms": 51,
+					"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+				},
+				"art": "guigu_native_first_20261105",
+				"bone_bound_art_ready": true,
+				"errors": [],
+				"loaded": true,
+				"pipeline": "original male101 full canvases and 3D source animation/skin/DynamicBone"
+			}
+		},
+		{
+			"frame": 30,
+			"left": {
+				"anatomical_skin": {
+					"errors": [],
+					"mesh_count": 7,
+					"mode": "original_male101_native_canvas_3d",
+					"native_height": 113.726114273071,
+					"original_textures": true,
+					"own_hairstyle_override": false,
+					"physics": {
+						"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+						"components": [
+							{
+								"particles": 7,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+								"sourceTotalLength": 0.335419170558453,
+								"virtualEndParticles": 2
+							},
+							{
+								"particles": 4,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+								"sourceTotalLength": 0.303497962653637,
+								"virtualEndParticles": 1
+							}
+						],
+						"coordinateSystem": "full 3D Unity units before XY projection",
+						"setupErrors": [],
+						"unsupportedActiveBranches": [
+							"nonempty collider geometry",
+							"camera distant-disable",
+							"non-Normal Unity scheduling",
+							"weighted AnimationCurve keys"
+						]
+					},
+					"physics_enabled": true,
+					"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+					"pixels_per_unit": 100.0,
+					"project_bone_length_retargeting": false,
+					"rig_root": "/HumanRootMan/Root",
+					"sampled_clip": "Run_New1",
+					"sampled_time": 0.0333333333333333,
+					"source_alpha_and_uv": true,
+					"source_body_alpha_and_uv": true,
+					"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+					"transforms": 51,
+					"visible_hair_motion": "original source DynamicBone"
+				},
+				"art": "guigu_native_first_20261105",
+				"bone_bound_art_ready": true,
+				"errors": [],
+				"loaded": true,
+				"pipeline": "original male101 full canvases and 3D source animation/skin/DynamicBone"
+			},
+			"right": {
+				"anatomical_skin": {
+					"errors": [],
+					"mesh_count": 7,
+					"mode": "original_male101_native_canvas_3d",
+					"native_height": 113.726114273071,
+					"original_textures": false,
+					"own_hairstyle_override": true,
+					"physics": {
+						"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+						"components": [
+							{
+								"particles": 7,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+								"sourceTotalLength": 0.335419170558453,
+								"virtualEndParticles": 2
+							},
+							{
+								"particles": 4,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+								"sourceTotalLength": 0.303497962653637,
+								"virtualEndParticles": 1
+							}
+						],
+						"coordinateSystem": "full 3D Unity units before XY projection",
+						"setupErrors": [],
+						"unsupportedActiveBranches": [
+							"nonempty collider geometry",
+							"camera distant-disable",
+							"non-Normal Unity scheduling",
+							"weighted AnimationCurve keys"
+						]
+					},
+					"physics_enabled": true,
+					"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+					"pixels_per_unit": 100.0,
+					"project_bone_length_retargeting": false,
+					"rig_root": "/HumanRootMan/Root",
+					"sampled_clip": "Run_New1",
+					"sampled_time": 0.0333333333333333,
+					"source_alpha_and_uv": false,
+					"source_body_alpha_and_uv": true,
+					"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+					"transforms": 51,
+					"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+				},
+				"art": "guigu_native_first_20261105",
+				"bone_bound_art_ready": true,
+				"errors": [],
+				"loaded": true,
+				"pipeline": "original male101 full canvases and 3D source animation/skin/DynamicBone"
+			}
+		},
+		{
+			"frame": 60,
+			"left": {
+				"anatomical_skin": {
+					"errors": [],
+					"mesh_count": 7,
+					"mode": "original_male101_native_canvas_3d",
+					"native_height": 113.726114273071,
+					"original_textures": true,
+					"own_hairstyle_override": false,
+					"physics": {
+						"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+						"components": [
+							{
+								"particles": 7,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+								"sourceTotalLength": 0.335419170558453,
+								"virtualEndParticles": 2
+							},
+							{
+								"particles": 4,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+								"sourceTotalLength": 0.303497962653637,
+								"virtualEndParticles": 1
+							}
+						],
+						"coordinateSystem": "full 3D Unity units before XY projection",
+						"setupErrors": [],
+						"unsupportedActiveBranches": [
+							"nonempty collider geometry",
+							"camera distant-disable",
+							"non-Normal Unity scheduling",
+							"weighted AnimationCurve keys"
+						]
+					},
+					"physics_enabled": true,
+					"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+					"pixels_per_unit": 100.0,
+					"project_bone_length_retargeting": false,
+					"rig_root": "/HumanRootMan/Root",
+					"sampled_clip": "Run_New1",
+					"sampled_time": 0.450000019868215,
+					"source_alpha_and_uv": true,
+					"source_body_alpha_and_uv": true,
+					"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+					"transforms": 51,
+					"visible_hair_motion": "original source DynamicBone"
+				},
+				"art": "guigu_native_first_20261105",
+				"bone_bound_art_ready": true,
+				"errors": [],
+				"loaded": true,
+				"pipeline": "original male101 full canvases and 3D source animation/skin/DynamicBone"
+			},
+			"right": {
+				"anatomical_skin": {
+					"errors": [],
+					"mesh_count": 7,
+					"mode": "original_male101_native_canvas_3d",
+					"native_height": 113.726114273071,
+					"original_textures": false,
+					"own_hairstyle_override": true,
+					"physics": {
+						"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+						"components": [
+							{
+								"particles": 7,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+								"sourceTotalLength": 0.335419170558453,
+								"virtualEndParticles": 2
+							},
+							{
+								"particles": 4,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+								"sourceTotalLength": 0.303497962653637,
+								"virtualEndParticles": 1
+							}
+						],
+						"coordinateSystem": "full 3D Unity units before XY projection",
+						"setupErrors": [],
+						"unsupportedActiveBranches": [
+							"nonempty collider geometry",
+							"camera distant-disable",
+							"non-Normal Unity scheduling",
+							"weighted AnimationCurve keys"
+						]
+					},
+					"physics_enabled": true,
+					"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+					"pixels_per_unit": 100.0,
+					"project_bone_length_retargeting": false,
+					"rig_root": "/HumanRootMan/Root",
+					"sampled_clip": "Run_New1",
+					"sampled_time": 0.450000019868215,
+					"source_alpha_and_uv": false,
+					"source_body_alpha_and_uv": true,
+					"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+					"transforms": 51,
+					"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+				},
+				"art": "guigu_native_first_20261105",
+				"bone_bound_art_ready": true,
+				"errors": [],
+				"loaded": true,
+				"pipeline": "original male101 full canvases and 3D source animation/skin/DynamicBone"
+			}
+		},
+		{
+			"frame": 90,
+			"left": {
+				"anatomical_skin": {
+					"errors": [],
+					"mesh_count": 7,
+					"mode": "original_male101_native_canvas_3d",
+					"native_height": 113.726114273071,
+					"original_textures": true,
+					"own_hairstyle_override": false,
+					"physics": {
+						"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+						"components": [
+							{
+								"particles": 7,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+								"sourceTotalLength": 0.335419170558453,
+								"virtualEndParticles": 2
+							},
+							{
+								"particles": 4,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+								"sourceTotalLength": 0.303497962653637,
+								"virtualEndParticles": 1
+							}
+						],
+						"coordinateSystem": "full 3D Unity units before XY projection",
+						"setupErrors": [],
+						"unsupportedActiveBranches": [
+							"nonempty collider geometry",
+							"camera distant-disable",
+							"non-Normal Unity scheduling",
+							"weighted AnimationCurve keys"
+						]
+					},
+					"physics_enabled": true,
+					"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+					"pixels_per_unit": 100.0,
+					"project_bone_length_retargeting": false,
+					"rig_root": "/HumanRootMan/Root",
+					"sampled_clip": "Run_New1",
+					"sampled_time": 0.283333392937981,
+					"source_alpha_and_uv": true,
+					"source_body_alpha_and_uv": true,
+					"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+					"transforms": 51,
+					"visible_hair_motion": "original source DynamicBone"
+				},
+				"art": "guigu_native_first_20261105",
+				"bone_bound_art_ready": true,
+				"errors": [],
+				"loaded": true,
+				"pipeline": "original male101 full canvases and 3D source animation/skin/DynamicBone"
+			},
+			"right": {
+				"anatomical_skin": {
+					"errors": [],
+					"mesh_count": 7,
+					"mode": "original_male101_native_canvas_3d",
+					"native_height": 113.726114273071,
+					"original_textures": false,
+					"own_hairstyle_override": true,
+					"physics": {
+						"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+						"components": [
+							{
+								"particles": 7,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+								"sourceTotalLength": 0.335419170558453,
+								"virtualEndParticles": 2
+							},
+							{
+								"particles": 4,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+								"sourceTotalLength": 0.303497962653637,
+								"virtualEndParticles": 1
+							}
+						],
+						"coordinateSystem": "full 3D Unity units before XY projection",
+						"setupErrors": [],
+						"unsupportedActiveBranches": [
+							"nonempty collider geometry",
+							"camera distant-disable",
+							"non-Normal Unity scheduling",
+							"weighted AnimationCurve keys"
+						]
+					},
+					"physics_enabled": true,
+					"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+					"pixels_per_unit": 100.0,
+					"project_bone_length_retargeting": false,
+					"rig_root": "/HumanRootMan/Root",
+					"sampled_clip": "Run_New1",
+					"sampled_time": 0.283333392937981,
+					"source_alpha_and_uv": false,
+					"source_body_alpha_and_uv": true,
+					"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+					"transforms": 51,
+					"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+				},
+				"art": "guigu_native_first_20261105",
+				"bone_bound_art_ready": true,
+				"errors": [],
+				"loaded": true,
+				"pipeline": "original male101 full canvases and 3D source animation/skin/DynamicBone"
+			}
+		},
+		{
+			"frame": 120,
+			"left": {
+				"anatomical_skin": {
+					"errors": [],
+					"mesh_count": 7,
+					"mode": "original_male101_native_canvas_3d",
+					"native_height": 113.726114273071,
+					"original_textures": true,
+					"own_hairstyle_override": false,
+					"physics": {
+						"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+						"components": [
+							{
+								"particles": 7,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+								"sourceTotalLength": 0.335419170558453,
+								"virtualEndParticles": 2
+							},
+							{
+								"particles": 4,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+								"sourceTotalLength": 0.303497962653637,
+								"virtualEndParticles": 1
+							}
+						],
+						"coordinateSystem": "full 3D Unity units before XY projection",
+						"setupErrors": [],
+						"unsupportedActiveBranches": [
+							"nonempty collider geometry",
+							"camera distant-disable",
+							"non-Normal Unity scheduling",
+							"weighted AnimationCurve keys"
+						]
+					},
+					"physics_enabled": true,
+					"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+					"pixels_per_unit": 100.0,
+					"project_bone_length_retargeting": false,
+					"rig_root": "/HumanRootMan/Root",
+					"sampled_clip": "Run_New1",
+					"sampled_time": 0.11666676600774,
+					"source_alpha_and_uv": true,
+					"source_body_alpha_and_uv": true,
+					"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+					"transforms": 51,
+					"visible_hair_motion": "original source DynamicBone"
+				},
+				"art": "guigu_native_first_20261105",
+				"bone_bound_art_ready": true,
+				"errors": [],
+				"loaded": true,
+				"pipeline": "original male101 full canvases and 3D source animation/skin/DynamicBone"
+			},
+			"right": {
+				"anatomical_skin": {
+					"errors": [],
+					"mesh_count": 7,
+					"mode": "original_male101_native_canvas_3d",
+					"native_height": 113.726114273071,
+					"original_textures": false,
+					"own_hairstyle_override": true,
+					"physics": {
+						"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+						"components": [
+							{
+								"particles": 7,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+								"sourceTotalLength": 0.335419170558453,
+								"virtualEndParticles": 2
+							},
+							{
+								"particles": 4,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+								"sourceTotalLength": 0.303497962653637,
+								"virtualEndParticles": 1
+							}
+						],
+						"coordinateSystem": "full 3D Unity units before XY projection",
+						"setupErrors": [],
+						"unsupportedActiveBranches": [
+							"nonempty collider geometry",
+							"camera distant-disable",
+							"non-Normal Unity scheduling",
+							"weighted AnimationCurve keys"
+						]
+					},
+					"physics_enabled": true,
+					"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+					"pixels_per_unit": 100.0,
+					"project_bone_length_retargeting": false,
+					"rig_root": "/HumanRootMan/Root",
+					"sampled_clip": "Run_New1",
+					"sampled_time": 0.11666676600774,
+					"source_alpha_and_uv": false,
+					"source_body_alpha_and_uv": true,
+					"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+					"transforms": 51,
+					"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+				},
+				"art": "guigu_native_first_20261105",
+				"bone_bound_art_ready": true,
+				"errors": [],
+				"loaded": true,
+				"pipeline": "original male101 full canvases and 3D source animation/skin/DynamicBone"
+			}
+		},
+		{
+			"frame": 150,
+			"left": {
+				"anatomical_skin": {
+					"errors": [],
+					"mesh_count": 7,
+					"mode": "original_male101_native_canvas_3d",
+					"native_height": 113.726114273071,
+					"original_textures": true,
+					"own_hairstyle_override": false,
+					"physics": {
+						"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+						"components": [
+							{
+								"particles": 7,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+								"sourceTotalLength": 0.335419170558453,
+								"virtualEndParticles": 2
+							},
+							{
+								"particles": 4,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+								"sourceTotalLength": 0.303497962653637,
+								"virtualEndParticles": 1
+							}
+						],
+						"coordinateSystem": "full 3D Unity units before XY projection",
+						"setupErrors": [],
+						"unsupportedActiveBranches": [
+							"nonempty collider geometry",
+							"camera distant-disable",
+							"non-Normal Unity scheduling",
+							"weighted AnimationCurve keys"
+						]
+					},
+					"physics_enabled": true,
+					"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+					"pixels_per_unit": 100.0,
+					"project_bone_length_retargeting": false,
+					"rig_root": "/HumanRootMan/Root",
+					"sampled_clip": "Idle",
+					"sampled_time": 0.0333333333333333,
+					"source_alpha_and_uv": true,
+					"source_body_alpha_and_uv": true,
+					"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+					"transforms": 51,
+					"visible_hair_motion": "original source DynamicBone"
+				},
+				"art": "guigu_native_first_20261105",
+				"bone_bound_art_ready": true,
+				"errors": [],
+				"loaded": true,
+				"pipeline": "original male101 full canvases and 3D source animation/skin/DynamicBone"
+			},
+			"right": {
+				"anatomical_skin": {
+					"errors": [],
+					"mesh_count": 7,
+					"mode": "original_male101_native_canvas_3d",
+					"native_height": 113.726114273071,
+					"original_textures": false,
+					"own_hairstyle_override": true,
+					"physics": {
+						"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+						"components": [
+							{
+								"particles": 7,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+								"sourceTotalLength": 0.335419170558453,
+								"virtualEndParticles": 2
+							},
+							{
+								"particles": 4,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+								"sourceTotalLength": 0.303497962653637,
+								"virtualEndParticles": 1
+							}
+						],
+						"coordinateSystem": "full 3D Unity units before XY projection",
+						"setupErrors": [],
+						"unsupportedActiveBranches": [
+							"nonempty collider geometry",
+							"camera distant-disable",
+							"non-Normal Unity scheduling",
+							"weighted AnimationCurve keys"
+						]
+					},
+					"physics_enabled": true,
+					"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+					"pixels_per_unit": 100.0,
+					"project_bone_length_retargeting": false,
+					"rig_root": "/HumanRootMan/Root",
+					"sampled_clip": "Idle",
+					"sampled_time": 0.0333333333333333,
+					"source_alpha_and_uv": false,
+					"source_body_alpha_and_uv": true,
+					"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+					"transforms": 51,
+					"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+				},
+				"art": "guigu_native_first_20261105",
+				"bone_bound_art_ready": true,
+				"errors": [],
+				"loaded": true,
+				"pipeline": "original male101 full canvases and 3D source animation/skin/DynamicBone"
+			}
+		},
+		{
+			"frame": 180,
+			"left": {
+				"anatomical_skin": {
+					"errors": [],
+					"mesh_count": 7,
+					"mode": "original_male101_native_canvas_3d",
+					"native_height": 113.726114273071,
+					"original_textures": true,
+					"own_hairstyle_override": false,
+					"physics": {
+						"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+						"components": [
+							{
+								"particles": 7,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+								"sourceTotalLength": 0.335419170558453,
+								"virtualEndParticles": 2
+							},
+							{
+								"particles": 4,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+								"sourceTotalLength": 0.303497962653637,
+								"virtualEndParticles": 1
+							}
+						],
+						"coordinateSystem": "full 3D Unity units before XY projection",
+						"setupErrors": [],
+						"unsupportedActiveBranches": [
+							"nonempty collider geometry",
+							"camera distant-disable",
+							"non-Normal Unity scheduling",
+							"weighted AnimationCurve keys"
+						]
+					},
+					"physics_enabled": true,
+					"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+					"pixels_per_unit": 100.0,
+					"project_bone_length_retargeting": false,
+					"rig_root": "/HumanRootMan/Root",
+					"sampled_clip": "Idle",
+					"sampled_time": 1.03333333333333,
+					"source_alpha_and_uv": true,
+					"source_body_alpha_and_uv": true,
+					"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+					"transforms": 51,
+					"visible_hair_motion": "original source DynamicBone"
+				},
+				"art": "guigu_native_first_20261105",
+				"bone_bound_art_ready": true,
+				"errors": [],
+				"loaded": true,
+				"pipeline": "original male101 full canvases and 3D source animation/skin/DynamicBone"
+			},
+			"right": {
+				"anatomical_skin": {
+					"errors": [],
+					"mesh_count": 7,
+					"mode": "original_male101_native_canvas_3d",
+					"native_height": 113.726114273071,
+					"original_textures": false,
+					"own_hairstyle_override": true,
+					"physics": {
+						"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+						"components": [
+							{
+								"particles": 7,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+								"sourceTotalLength": 0.335419170558453,
+								"virtualEndParticles": 2
+							},
+							{
+								"particles": 4,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+								"sourceTotalLength": 0.303497962653637,
+								"virtualEndParticles": 1
+							}
+						],
+						"coordinateSystem": "full 3D Unity units before XY projection",
+						"setupErrors": [],
+						"unsupportedActiveBranches": [
+							"nonempty collider geometry",
+							"camera distant-disable",
+							"non-Normal Unity scheduling",
+							"weighted AnimationCurve keys"
+						]
+					},
+					"physics_enabled": true,
+					"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+					"pixels_per_unit": 100.0,
+					"project_bone_length_retargeting": false,
+					"rig_root": "/HumanRootMan/Root",
+					"sampled_clip": "Idle",
+					"sampled_time": 1.03333333333333,
+					"source_alpha_and_uv": false,
+					"source_body_alpha_and_uv": true,
+					"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+					"transforms": 51,
+					"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+				},
+				"art": "guigu_native_first_20261105",
+				"bone_bound_art_ready": true,
+				"errors": [],
+				"loaded": true,
+				"pipeline": "original male101 full canvases and 3D source animation/skin/DynamicBone"
+			}
+		},
+		{
+			"frame": 210,
+			"left": {
+				"anatomical_skin": {
+					"errors": [],
+					"mesh_count": 7,
+					"mode": "original_male101_native_canvas_3d",
+					"native_height": 113.726114273071,
+					"original_textures": true,
+					"own_hairstyle_override": false,
+					"physics": {
+						"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+						"components": [
+							{
+								"particles": 7,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+								"sourceTotalLength": 0.335419170558453,
+								"virtualEndParticles": 2
+							},
+							{
+								"particles": 4,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+								"sourceTotalLength": 0.303497962653637,
+								"virtualEndParticles": 1
+							}
+						],
+						"coordinateSystem": "full 3D Unity units before XY projection",
+						"setupErrors": [],
+						"unsupportedActiveBranches": [
+							"nonempty collider geometry",
+							"camera distant-disable",
+							"non-Normal Unity scheduling",
+							"weighted AnimationCurve keys"
+						]
+					},
+					"physics_enabled": true,
+					"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+					"pixels_per_unit": 100.0,
+					"project_bone_length_retargeting": false,
+					"rig_root": "/HumanRootMan/Root",
+					"sampled_clip": "Run_New1",
+					"sampled_time": 0.0333333333333333,
+					"source_alpha_and_uv": true,
+					"source_body_alpha_and_uv": true,
+					"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+					"transforms": 51,
+					"visible_hair_motion": "original source DynamicBone"
+				},
+				"art": "guigu_native_first_20261105",
+				"bone_bound_art_ready": true,
+				"errors": [],
+				"loaded": true,
+				"pipeline": "original male101 full canvases and 3D source animation/skin/DynamicBone"
+			},
+			"right": {
+				"anatomical_skin": {
+					"errors": [],
+					"mesh_count": 7,
+					"mode": "original_male101_native_canvas_3d",
+					"native_height": 113.726114273071,
+					"original_textures": false,
+					"own_hairstyle_override": true,
+					"physics": {
+						"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+						"components": [
+							{
+								"particles": 7,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+								"sourceTotalLength": 0.335419170558453,
+								"virtualEndParticles": 2
+							},
+							{
+								"particles": 4,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+								"sourceTotalLength": 0.303497962653637,
+								"virtualEndParticles": 1
+							}
+						],
+						"coordinateSystem": "full 3D Unity units before XY projection",
+						"setupErrors": [],
+						"unsupportedActiveBranches": [
+							"nonempty collider geometry",
+							"camera distant-disable",
+							"non-Normal Unity scheduling",
+							"weighted AnimationCurve keys"
+						]
+					},
+					"physics_enabled": true,
+					"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+					"pixels_per_unit": 100.0,
+					"project_bone_length_retargeting": false,
+					"rig_root": "/HumanRootMan/Root",
+					"sampled_clip": "Run_New1",
+					"sampled_time": 0.0333333333333333,
+					"source_alpha_and_uv": false,
+					"source_body_alpha_and_uv": true,
+					"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+					"transforms": 51,
+					"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+				},
+				"art": "guigu_native_first_20261105",
+				"bone_bound_art_ready": true,
+				"errors": [],
+				"loaded": true,
+				"pipeline": "original male101 full canvases and 3D source animation/skin/DynamicBone"
+			}
+		},
+		{
+			"frame": 240,
+			"left": {
+				"anatomical_skin": {
+					"errors": [],
+					"mesh_count": 7,
+					"mode": "original_male101_native_canvas_3d",
+					"native_height": 113.726114273071,
+					"original_textures": true,
+					"own_hairstyle_override": false,
+					"physics": {
+						"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+						"components": [
+							{
+								"particles": 7,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+								"sourceTotalLength": 0.335419170558453,
+								"virtualEndParticles": 2
+							},
+							{
+								"particles": 4,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+								"sourceTotalLength": 0.303497962653637,
+								"virtualEndParticles": 1
+							}
+						],
+						"coordinateSystem": "full 3D Unity units before XY projection",
+						"setupErrors": [],
+						"unsupportedActiveBranches": [
+							"nonempty collider geometry",
+							"camera distant-disable",
+							"non-Normal Unity scheduling",
+							"weighted AnimationCurve keys"
+						]
+					},
+					"physics_enabled": true,
+					"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+					"pixels_per_unit": 100.0,
+					"project_bone_length_retargeting": false,
+					"rig_root": "/HumanRootMan/Root",
+					"sampled_clip": "Run_New1",
+					"sampled_time": 0.450000019868215,
+					"source_alpha_and_uv": true,
+					"source_body_alpha_and_uv": true,
+					"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+					"transforms": 51,
+					"visible_hair_motion": "original source DynamicBone"
+				},
+				"art": "guigu_native_first_20261105",
+				"bone_bound_art_ready": true,
+				"errors": [],
+				"loaded": true,
+				"pipeline": "original male101 full canvases and 3D source animation/skin/DynamicBone"
+			},
+			"right": {
+				"anatomical_skin": {
+					"errors": [],
+					"mesh_count": 7,
+					"mode": "original_male101_native_canvas_3d",
+					"native_height": 113.726114273071,
+					"original_textures": false,
+					"own_hairstyle_override": true,
+					"physics": {
+						"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+						"components": [
+							{
+								"particles": 7,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+								"sourceTotalLength": 0.335419170558453,
+								"virtualEndParticles": 2
+							},
+							{
+								"particles": 4,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+								"sourceTotalLength": 0.303497962653637,
+								"virtualEndParticles": 1
+							}
+						],
+						"coordinateSystem": "full 3D Unity units before XY projection",
+						"setupErrors": [],
+						"unsupportedActiveBranches": [
+							"nonempty collider geometry",
+							"camera distant-disable",
+							"non-Normal Unity scheduling",
+							"weighted AnimationCurve keys"
+						]
+					},
+					"physics_enabled": true,
+					"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+					"pixels_per_unit": 100.0,
+					"project_bone_length_retargeting": false,
+					"rig_root": "/HumanRootMan/Root",
+					"sampled_clip": "Run_New1",
+					"sampled_time": 0.450000019868215,
+					"source_alpha_and_uv": false,
+					"source_body_alpha_and_uv": true,
+					"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+					"transforms": 51,
+					"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+				},
+				"art": "guigu_native_first_20261105",
+				"bone_bound_art_ready": true,
+				"errors": [],
+				"loaded": true,
+				"pipeline": "original male101 full canvases and 3D source animation/skin/DynamicBone"
+			}
+		},
+		{
+			"frame": 270,
+			"left": {
+				"anatomical_skin": {
+					"errors": [],
+					"mesh_count": 7,
+					"mode": "original_male101_native_canvas_3d",
+					"native_height": 113.726114273071,
+					"original_textures": true,
+					"own_hairstyle_override": false,
+					"physics": {
+						"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+						"components": [
+							{
+								"particles": 7,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+								"sourceTotalLength": 0.335419170558453,
+								"virtualEndParticles": 2
+							},
+							{
+								"particles": 4,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+								"sourceTotalLength": 0.303497962653637,
+								"virtualEndParticles": 1
+							}
+						],
+						"coordinateSystem": "full 3D Unity units before XY projection",
+						"setupErrors": [],
+						"unsupportedActiveBranches": [
+							"nonempty collider geometry",
+							"camera distant-disable",
+							"non-Normal Unity scheduling",
+							"weighted AnimationCurve keys"
+						]
+					},
+					"physics_enabled": true,
+					"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+					"pixels_per_unit": 100.0,
+					"project_bone_length_retargeting": false,
+					"rig_root": "/HumanRootMan/Root",
+					"sampled_clip": "Idle",
+					"sampled_time": 0.0333333333333333,
+					"source_alpha_and_uv": true,
+					"source_body_alpha_and_uv": true,
+					"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+					"transforms": 51,
+					"visible_hair_motion": "original source DynamicBone"
+				},
+				"art": "guigu_native_first_20261105",
+				"bone_bound_art_ready": true,
+				"errors": [],
+				"loaded": true,
+				"pipeline": "original male101 full canvases and 3D source animation/skin/DynamicBone"
+			},
+			"right": {
+				"anatomical_skin": {
+					"errors": [],
+					"mesh_count": 7,
+					"mode": "original_male101_native_canvas_3d",
+					"native_height": 113.726114273071,
+					"original_textures": false,
+					"own_hairstyle_override": true,
+					"physics": {
+						"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+						"components": [
+							{
+								"particles": 7,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+								"sourceTotalLength": 0.335419170558453,
+								"virtualEndParticles": 2
+							},
+							{
+								"particles": 4,
+								"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+								"sourceTotalLength": 0.303497962653637,
+								"virtualEndParticles": 1
+							}
+						],
+						"coordinateSystem": "full 3D Unity units before XY projection",
+						"setupErrors": [],
+						"unsupportedActiveBranches": [
+							"nonempty collider geometry",
+							"camera distant-disable",
+							"non-Normal Unity scheduling",
+							"weighted AnimationCurve keys"
+						]
+					},
+					"physics_enabled": true,
+					"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+					"pixels_per_unit": 100.0,
+					"project_bone_length_retargeting": false,
+					"rig_root": "/HumanRootMan/Root",
+					"sampled_clip": "Idle",
+					"sampled_time": 0.0333333333333333,
+					"source_alpha_and_uv": false,
+					"source_body_alpha_and_uv": true,
+					"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+					"transforms": 51,
+					"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+				},
+				"art": "guigu_native_first_20261105",
+				"bone_bound_art_ready": true,
+				"errors": [],
+				"loaded": true,
+				"pipeline": "original male101 full canvases and 3D source animation/skin/DynamicBone"
+			}
+		}
+	],
+	"same_body_geometry_animation_and_cloth_physics": true,
+	"view_zoom": 4.0
+}

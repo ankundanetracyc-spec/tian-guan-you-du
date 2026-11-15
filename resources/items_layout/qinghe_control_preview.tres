@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="SwordControlPreviewData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/SwordControlPreviewData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+definition_version = 1
+rules_version = "sword-material-profile-trial-2-shape-pools"
+input_sha256 = "a67bf26420590ba57d380073b63be527860d595bf5aea0cc9bc3a50be0ae8a19"
+has_coefficients = true
+spirit_required = 2
+skill_name = "飞斩"
+energy_cost = 0
+mana_cost = 0
+target_text = "随机单敌·远程"
+stable_base = 11.3916
+stable_soul = 0.8741
+stable_sword = 0.2719
+stable_occupation = 2.6992
+attack_base = 3.8905
+attack_soul = 0.2045
+attack_sword = 0.3282

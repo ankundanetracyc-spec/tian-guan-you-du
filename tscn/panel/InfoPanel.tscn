@@ -518,20 +518,20 @@ text = "灵慧　—"
 layout_mode = 2
 theme_override_constants/separation = 28
 
-[node name="AgilityRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/BasicSection/RowTwo" unique_id=1432524807]
+[node name="CoordinationRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/BasicSection/RowTwo" unique_id=1432524807]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Icon" type="TextureRect" parent="Content/Page/Body/AttributeLayout/BasicSection/RowTwo/AgilityRow" unique_id=392043834]
+[node name="Icon" type="TextureRect" parent="Content/Page/Body/AttributeLayout/BasicSection/RowTwo/CoordinationRow" unique_id=392043834]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 texture = SubResource("attr_icon_feather")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/BasicSection/RowTwo/AgilityRow" unique_id=495500398]
+[node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/BasicSection/RowTwo/CoordinationRow" unique_id=495500398]
 layout_mode = 2
-text = "敏捷　—"
+text = "身心协调　—"
 
 [node name="SoulRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/BasicSection/RowTwo" unique_id=1904148106]
 layout_mode = 2
@@ -663,7 +663,7 @@ size_flags_horizontal = 3
 
 [node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/CombatSection/RowTwo/StaminaRow" unique_id=1946156976]
 layout_mode = 2
-text = "精力　—"
+text = "体力　—"
 
 [node name="ManaRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CombatSection/RowTwo" unique_id=1995333097]
 layout_mode = 2
@@ -759,7 +759,7 @@ size_flags_horizontal = 3
 
 [node name="Display" type="Label" parent="Content/Page/Body/AttributeLayout/CombatSection/RowSeven/StaminaRegenRow" unique_id=402201083]
 layout_mode = 2
-text = "精力回复　—"
+text = "体力回复　—"
 
 [node name="ManaRegenRow" type="HBoxContainer" parent="Content/Page/Body/AttributeLayout/CombatSection/RowSeven" unique_id=402201084]
 layout_mode = 2
@@ -2235,7 +2235,7 @@ theme_override_colors/default_color = Color(0.12, 0.095, 0.065, 1)
 bbcode_enabled = true
 fit_content = false
 scroll_active = true
-text = "已研读的每一卷会在中央展开为一层；主修可同时启用两条分支，辅修每层只能启用其一。"
+text = "已研读卷章的修持与化法同时生效；主修与辅修仅在心法额外效果上有区别。"
 
 [node name="EquipPanel" type="PanelContainer" parent="Content/Page/Body/GongfaLayout/Workspace/EquipColumn" unique_id=1634229097]
 custom_minimum_size = Vector2(300, 0)

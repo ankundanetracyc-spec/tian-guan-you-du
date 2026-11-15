@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>松风试演 · 头身一体与前后发换装</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#141d1b;color:#e5e0d1;font-family:"Microsoft YaHei",sans-serif}body{padding:20px 24px 18px}.wrap{max-width:1600px;margin:auto}.stage{position:relative;border:1px solid #77847755;box-shadow:0 18px 65px #030a0780;background:#b7b7a3}canvas{display:block;width:100%;aspect-ratio:16/9;touch-action:none}.tools{display:flex;align-items:center;gap:9px;padding:17px 2px 12px;flex-wrap:wrap}button,select{font:14px "Microsoft YaHei";border:1px solid #76847666;background:#24332e;color:#e7e1d1;border-radius:4px;padding:9px 17px;cursor:pointer;transition:.15s}button:hover,select:hover{background:#33443a;border-color:#afa383}button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #d2b57c;outline-offset:3px}button.primary{background:#c3af80;color:#23332b;border-color:#c3af80;font-weight:600}button[aria-pressed="false"]{color:#98a9a0}.tools .space{flex:1}.hint{font-size:12px;color:#a8afa1;letter-spacing:.04em;margin-left:8px}.timeline{display:flex;align-items:center;gap:13px;color:#bfc4b5;font-size:12px}input[type=range]{width:100%;accent-color:#c8b27e;cursor:pointer}#time{min-width:81px;text-align:right;font-variant-numeric:tabular-nums}.note{font-size:12px;color:#829188;margin:13px 0 0;line-height:1.7}.error{padding:40px;color:#ffdda8;display:none}@media(max-width:700px){body{padding:8px}.tools{gap:6px}.tools button,.tools select{padding:8px 10px}.hint,.space{display:none}}
+.appearance{display:flex;flex-wrap:wrap;gap:12px 28px;padding:8px 2px 16px;border-bottom:1px solid #76847644;margin-bottom:12px}.appearance .actor-choice{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.appearance strong{font-size:14px;color:#cdbb93}.appearance label{font-size:13px;color:#bfc9b7;display:flex;align-items:center;gap:6px}.appearance select{padding:6px 10px;max-width:125px}
+</style>
+</head>
+<body><main class="wrap">
+<div class="stage"><canvas id="battle" width="1600" height="900" aria-label="松风试演，一对一水墨修仙战斗动画"></canvas><div id="error" class="error"></div></div>
+<div class="tools">
+<button id="replay" class="primary">重演一轮</button><button id="play">暂停</button>
+<select id="speed" aria-label="播放速度"><option value="0.5">0.5× 慢放</option><option value="1" selected>1× 原速</option><option value="1.5">1.5× 加速</option></select>
+<button id="fx" aria-pressed="true">特效：开</button><button id="focus" aria-pressed="true">聚焦：开</button><button id="sound" aria-pressed="false">音效：关</button>
+<span class="space"></span><span class="hint">空格 暂停 · ← → 逐段查看</span>
+</div>
+<div class="appearance" aria-label="分别更换前发和后发">
+<div class="actor-choice"><strong>玉虚内门</strong>
+<label>前发<select id="inner-front" aria-label="内门前发"><option value="woodpin">拢发</option><option value="sidepart">偏分</option><option value="none">无前发</option></select></label>
+<label>后发<select id="inner-back" aria-label="内门后发"><option value="woodpin">木簪半束</option><option value="sidepart">松披长发</option><option value="none">无后发</option></select></label></div>
+<div class="actor-choice"><strong>玉虚外门</strong>
+<label>前发<select id="outer-front" aria-label="外门前发"><option value="woodpin">拢发</option><option value="sidepart" selected>偏分</option><option value="none">无前发</option></select></label>
+<label>后发<select id="outer-back" aria-label="外门后发"><option value="woodpin">木簪半束</option><option value="sidepart" selected>松披长发</option><option value="none">无后发</option></select></label></div>
+<div class="actor-choice"><label>动作查看<select id="pose" aria-label="动作查看"><option value="auto">跟随演出</option><option value="idle">待机</option><option value="move">进身</option><option value="strike">出掌</option><option value="guard">架招</option><option value="hurt">受击</option></select></label></div>
+</div>
+<div class="timeline"><input id="scrub" type="range" min="0" max="22.5" step="0.01" value="0" aria-label="演出进度"><span id="time">0.0 / 22.5 s</span></div>
+<p class="note">两人的前发、后发均可分别更换，播放中即时生效；都选“无”可查看完整头身底图。短脖子与拼接修订，待看图确认。独立演出预览。</p>
+</main><script src="assets.js"></script><script src="battle.js"></script></body></html>

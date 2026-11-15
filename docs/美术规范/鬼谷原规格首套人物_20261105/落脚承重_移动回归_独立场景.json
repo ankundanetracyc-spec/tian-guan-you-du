@@ -1,0 +1,203 @@
+{
+	"checks": 38,
+	"failures": [],
+	"groups": {
+		"after_cancel": {
+			"frames": 18,
+			"maximum_leg_clock_advance_error": 0.0000000000000000208166817117217,
+			"maximum_local_leg_vertex_displacement_pixels": 104.565719604492,
+			"maximum_speed_to_gait_ruler_ratio": 1.00002071299451,
+			"minimum_speed_to_gait_ruler_ratio": 1.00002071299451
+		},
+		"after_run_dodge_stop": {
+			"frames": 20,
+			"maximum_leg_clock_advance_error": 0.0,
+			"maximum_local_leg_vertex_displacement_pixels": 89.4109039306641,
+			"maximum_speed_to_gait_ruler_ratio": 0.0,
+			"minimum_speed_to_gait_ruler_ratio": 0.0
+		},
+		"attack_paused": {
+			"frames": 8,
+			"maximum_leg_clock_advance_error": 0.0,
+			"maximum_local_leg_vertex_displacement_pixels": 0.0,
+			"maximum_speed_to_gait_ruler_ratio": 0.0,
+			"minimum_speed_to_gait_ruler_ratio": 0.0
+		},
+		"backward": {
+			"frames": 36,
+			"maximum_leg_clock_advance_error": 0.000000000000000423272528138341,
+			"maximum_local_leg_vertex_displacement_pixels": 109.178657531738,
+			"maximum_speed_to_gait_ruler_ratio": 1.00002071299451,
+			"minimum_speed_to_gait_ruler_ratio": 0.999989546106217
+		},
+		"before_cancel": {
+			"frames": 8,
+			"maximum_leg_clock_advance_error": 0.000000000000000402455846426619,
+			"maximum_local_leg_vertex_displacement_pixels": 42.4017181396484,
+			"maximum_speed_to_gait_ruler_ratio": 0.999989546106217,
+			"minimum_speed_to_gait_ruler_ratio": 0.999989546106217
+		},
+		"cancel_dodge": {
+			"frames": 16,
+			"maximum_leg_clock_advance_error": 0.000000000000000305311331771918,
+			"maximum_local_leg_vertex_displacement_pixels": 67.7357559204102,
+			"maximum_speed_to_gait_ruler_ratio": 2.12763866668052,
+			"minimum_speed_to_gait_ruler_ratio": 0.0
+		},
+		"guard_finish": {
+			"frames": 8,
+			"maximum_leg_clock_advance_error": 0.0000000000000000416333634234434,
+			"maximum_local_leg_vertex_displacement_pixels": 50.4043273925781,
+			"maximum_speed_to_gait_ruler_ratio": 0.999989546106217,
+			"minimum_speed_to_gait_ruler_ratio": 0.999989546106217
+		},
+		"held_combo": {
+			"frames": 142,
+			"maximum_leg_clock_advance_error": 0.00000000000000012490009027033,
+			"maximum_local_leg_vertex_displacement_pixels": 80.1854934692383,
+			"maximum_speed_to_gait_ruler_ratio": 0.999989546106217,
+			"minimum_speed_to_gait_ruler_ratio": 0.827592370865193
+		},
+		"left_facing": {
+			"frames": 36,
+			"maximum_leg_clock_advance_error": 0.000000000000000402455846426619,
+			"maximum_local_leg_vertex_displacement_pixels": 108.930107116699,
+			"maximum_speed_to_gait_ruler_ratio": 0.999989546106217,
+			"minimum_speed_to_gait_ruler_ratio": 0.999989546106217
+		},
+		"moving_guard": {
+			"frames": 9,
+			"maximum_leg_clock_advance_error": 0.0000000000000000416333634234434,
+			"maximum_local_leg_vertex_displacement_pixels": 47.7601509094238,
+			"maximum_speed_to_gait_ruler_ratio": 0.999989546106217,
+			"minimum_speed_to_gait_ruler_ratio": 0.999989546106217
+		},
+		"moving_heavy": {
+			"frames": 18,
+			"maximum_leg_clock_advance_error": 0.0000000000000000416333634234434,
+			"maximum_local_leg_vertex_displacement_pixels": 64.8599700927734,
+			"maximum_speed_to_gait_ruler_ratio": 0.999989546106217,
+			"minimum_speed_to_gait_ruler_ratio": 0.999989546106217
+		},
+		"moving_self_cast": {
+			"frames": 70,
+			"maximum_leg_clock_advance_error": 0.0000000000000000294902990916057,
+			"maximum_local_leg_vertex_displacement_pixels": 72.1011581420898,
+			"maximum_speed_to_gait_ruler_ratio": 1.00002071299451,
+			"minimum_speed_to_gait_ruler_ratio": 0.499979189608959
+		},
+		"npc_override": {
+			"frames": 42,
+			"maximum_leg_clock_advance_error": 0.0000000000000000173472347597681,
+			"maximum_local_leg_vertex_displacement_pixels": 53.9256324768066,
+			"maximum_speed_to_gait_ruler_ratio": 0.485106382978723,
+			"minimum_speed_to_gait_ruler_ratio": 0.485106382978723
+		},
+		"paused": {
+			"frames": 18,
+			"maximum_leg_clock_advance_error": 0.0,
+			"maximum_local_leg_vertex_displacement_pixels": 0.0,
+			"maximum_speed_to_gait_ruler_ratio": 0.0,
+			"minimum_speed_to_gait_ruler_ratio": 0.0
+		},
+		"restart_idle": {
+			"frames": 20,
+			"maximum_leg_clock_advance_error": 0.0,
+			"maximum_local_leg_vertex_displacement_pixels": 0.0,
+			"maximum_speed_to_gait_ruler_ratio": 0.0,
+			"minimum_speed_to_gait_ruler_ratio": 0.0
+		},
+		"resume_after_pause": {
+			"frames": 18,
+			"maximum_leg_clock_advance_error": 0.000000000000000402455846426619,
+			"maximum_local_leg_vertex_displacement_pixels": 103.799430847168,
+			"maximum_speed_to_gait_ruler_ratio": 0.999989546106217,
+			"minimum_speed_to_gait_ruler_ratio": 0.999989546106217
+		},
+		"resume_during_attack": {
+			"frames": 8,
+			"maximum_leg_clock_advance_error": 0.000000000000000402455846426619,
+			"maximum_local_leg_vertex_displacement_pixels": 52.1937026977539,
+			"maximum_speed_to_gait_ruler_ratio": 0.999989546106217,
+			"minimum_speed_to_gait_ruler_ratio": 0.999989546106217
+		},
+		"resume_run": {
+			"frames": 18,
+			"maximum_leg_clock_advance_error": 0.000000000000000402455846426619,
+			"maximum_local_leg_vertex_displacement_pixels": 96.9539260864258,
+			"maximum_speed_to_gait_ruler_ratio": 0.999989546106217,
+			"minimum_speed_to_gait_ruler_ratio": 0.999989546106217
+		},
+		"run_before_dodge": {
+			"frames": 18,
+			"maximum_leg_clock_advance_error": 0.0000000000000000208166817117217,
+			"maximum_local_leg_vertex_displacement_pixels": 52.3912620544434,
+			"maximum_speed_to_gait_ruler_ratio": 0.999997337828291,
+			"minimum_speed_to_gait_ruler_ratio": 0.999997337828291
+		},
+		"run_to_dodge": {
+			"frames": 16,
+			"maximum_leg_clock_advance_error": 0.0000000000000000242861286636753,
+			"maximum_local_leg_vertex_displacement_pixels": 97.0547637939453,
+			"maximum_speed_to_gait_ruler_ratio": 2.12765425012467,
+			"minimum_speed_to_gait_ruler_ratio": 0.0
+		},
+		"run_warmup": {
+			"frames": 18,
+			"maximum_leg_clock_advance_error": 0.0000000000000000138777878078145,
+			"maximum_local_leg_vertex_displacement_pixels": 52.3911361694336,
+			"maximum_speed_to_gait_ruler_ratio": 0.999989546106217,
+			"minimum_speed_to_gait_ruler_ratio": 0.999989546106217
+		},
+		"stop_during_attack": {
+			"frames": 13,
+			"maximum_leg_clock_advance_error": 0.0,
+			"maximum_local_leg_vertex_displacement_pixels": 64.9043884277344,
+			"maximum_speed_to_gait_ruler_ratio": 0.0,
+			"minimum_speed_to_gait_ruler_ratio": 0.0
+		},
+		"stop_settle": {
+			"frames": 14,
+			"maximum_leg_clock_advance_error": 0.0,
+			"maximum_local_leg_vertex_displacement_pixels": 79.9283218383789,
+			"maximum_speed_to_gait_ruler_ratio": 0.0,
+			"minimum_speed_to_gait_ruler_ratio": 0.0
+		},
+		"stopped": {
+			"frames": 36,
+			"maximum_leg_clock_advance_error": 0.0,
+			"maximum_local_leg_vertex_displacement_pixels": 0.0,
+			"maximum_speed_to_gait_ruler_ratio": 0.0,
+			"minimum_speed_to_gait_ruler_ratio": 0.0
+		}
+	},
+	"locomotion_composition_enabled": true,
+	"maximum_alpha_sole_penetration_native_pixels": 0.0000476837158203125,
+	"maximum_source_all_local_position_error_units": 0.000000298860243219679,
+	"maximum_source_all_local_scale_error": 0.000000505762159264123,
+	"maximum_source_attack_upper_local_basis_error": 0.000000245756240246919,
+	"maximum_source_foot_local_basis_error": 0.0,
+	"maximum_source_foot_local_position_error_units": 0.0,
+	"maximum_source_foot_local_rotation_error_radians": 0.0009765625,
+	"maximum_source_foot_local_scale_error": 0.0,
+	"moving_attack_frames": 258,
+	"passed": true,
+	"run_to_dodge": {
+		"actual_step_frames": 11,
+		"animated_world_transform_samples": 561,
+		"dedicated_step_context_preserved": true,
+		"maximum_source_dedicated_landing_offset_error_pixels": 0.0000000696487632012577,
+		"maximum_source_world_basis_error": 0.0,
+		"maximum_source_world_position_error_units": 0.0,
+		"scope": "All51 source animated world TRS are compared before native secondary physics; source DynamicBone remains active in the actual rendered actor."
+	},
+	"sampled_actual_frames": 628,
+	"scope": "Actual arena held movement keys, actual left-button held four-stage attack input, original heavy/guard/self-cast/cancel runtimes; source Run local TRS oracle;65 opaque-alpha source sole hull samples; actual NPC presentation override exercised separately without AI or gameplay claims.",
+	"source_foot_local_samples": 4411,
+	"speed_driven_gait": {
+		"maximum_leg_clock_advance_error_seconds": 0.000000000000000423272528138341,
+		"measured_actual_frames": 625,
+		"native_gait_ruler_pixels_per_second": 235.0,
+		"scope": "Consecutive actual arena/NPC presentation samples compare independent stride-clock increments with actual velocity magnitude divided by the public native ruler; a reset starts a fresh sequence."
+	}
+}

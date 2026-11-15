@@ -1,0 +1,178 @@
+using Godot;
+
+public partial class CharacterCombatBoardPanel
+{
+    private sealed record SourceEntry(string Key, string Name, string Source, CombatBoardPlacement.ObjectKind Kind, Vector2I Shape);
+    private IEnumerable<SourceEntry> AvailableSources()
+    {
+        if (_owner is null) yield break;
+        if (_category == "招式")
+        {
+            foreach (var skill in _catalog.skills)
+                yield return new(skill.get_board_skill_key(), skill.get_board_display_name(), SkillSource(skill), CombatBoardPlacement.ObjectKind.Skill, skill.board_size);
+        }
+        else if (_category == "化法")
+        {
+            foreach (var rewrite in _catalog.rewrites)
+                yield return new(rewrite.source_key, rewrite.get_board_display_name(), rewrite.source_name, CombatBoardPlacement.ObjectKind.Rewrite, Vector2I.One);
+            if (CombatBoardPreparationService.RequiresIndicator(_owner))
+                yield return new("heart:xuan_shu", "周天指示", "玄枢含章经", CombatBoardPlacement.ObjectKind.ZhouTianIndicator, Vector2I.One);
+        }
+        else if (_category == "丹药")
+            foreach (string path in _owner.pack_items.Distinct())
+            {
+                var pill = BattleSupplyRules.Load(path); if (pill is null || _owner.get_inventory_total_count(path) <= 0) continue;
+                yield return new(path, pill.entity_name, "普通行囊", CombatBoardPlacement.ObjectKind.Pill, pill.get_inventory_size());
+            }
+    }
+    private string SkillSource(ActiveSkillData skill)
+    {
+        if (skill.source_gongfa_name.Length > 0) return skill.source_gongfa_name;
+        if (_owner is not null)
+            foreach (var node in _owner.get_skill_node_configs())
+                if (_owner.has_unlocked_skill_node(node.node_id) && node.get_skill_paths().Contains(skill.get_board_skill_key())) return "造诣 · " + node.node_name;
+        return "通用";
+    }
+    private void SelectCategory(string category)
+    {
+        _category = category; _picked = ""; _sourceScroll.ScrollVertical = 0; RebuildFilters(); RefreshState();
+    }
+    private void RebuildFilters()
+    {
+        string previous = _filter.Selected >= 0 ? _filter.GetItemText(_filter.Selected) : "全部来源";
+        _filter.Clear(); _filter.AddItem("全部来源");
+        foreach (var name in AvailableSources().Select(item => item.Source).Where(name => name.Length > 0).Distinct()) _filter.AddItem(name);
+        for (int index = 0; index < _filter.ItemCount; index++) if (_filter.GetItemText(index) == previous) { _filter.Select(index); break; }
+    }
+    private static void ClearChildren(Node parent)
+    { foreach (var child in parent.GetChildren()) { parent.RemoveChild(child); child.QueueFree(); } }
+    private void RebuildSources()
+    {
+        if (!_built) return;
+        int scroll = _sourceScroll.ScrollVertical; ClearChildren(_sourceList);
+        string query = _search.Text.Trim(); string filter = _filter.Selected > 0 ? _filter.GetItemText(_filter.Selected) : "";
+        foreach (var entry in AvailableSources().Where(entry => (query.Length == 0 || entry.Name.Contains(query, StringComparison.OrdinalIgnoreCase)) && (filter.Length == 0 || entry.Source == filter)))
+        {
+            var item = new BattleBoardSource { Name = "BoardSource", SourceKey = entry.Key, Board = _board, CustomMinimumSize = new Vector2(0, Math.Max(78, entry.Shape.Y * 52 + 16)), SizeFlagsHorizontal = SizeFlags.ExpandFill };
+            var backing = new Panel { MouseFilter = MouseFilterEnum.Ignore }; backing.AddThemeStyleboxOverride("panel", CraftingPaperStyle.Paper(8, false, .98f));
+            item.AddChild(backing); backing.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+            var sample = new CombatBoardLayout { size = entry.Shape };
+            sample.placements.Add(new CombatBoardPlacement { placement_id = "source-preview", source_key = entry.Key, kind = entry.Kind, locked = entry.Kind == CombatBoardPlacement.ObjectKind.ZhouTianIndicator });
+            var drawing = new BattleBoardView { Layout = sample, Catalog = _catalog, CombatOwner = _owner, CellSize = 52, Position = new Vector2(8, 8), MouseFilter = MouseFilterEnum.Ignore };
+            item.AddChild(drawing);
+            var label = Text(entry.Name, 22); label.AutowrapMode = TextServer.AutowrapMode.WordSmart; label.VerticalAlignment = VerticalAlignment.Center;
+            item.AddChild(label); label.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect); label.OffsetLeft = 184; label.OffsetRight = -10;
+            item.Picked += () => { _search.ReleaseFocus(); _picked = entry.Key; _pickedTurns = 0; _selected = ""; _board.Selected = ""; _board.QueueRedraw(); RefreshSelection(); _notice.Text = ""; };
+            _sourceList.AddChild(item);
+            if (entry.Kind == CombatBoardPlacement.ObjectKind.Skill && _catalog.FindSkill(entry.Key) is { } skill)
+                HoverInfoManager.SetProvider(item, () => CombatBoardPresentation.SkillHover(skill, _owner));
+            else HoverInfoManager.SetProvider(item, () => CombatBoardPresentation.PlacementHover(sample, _catalog, sample.placements[0], _owner));
+        }
+        if (_sourceList.GetChildCount() == 0)
+        {
+            var empty = Text(query.Length > 0 ? "没有匹配的条目" : "当前没有可用的" + _category, 20, true);
+            empty.AutowrapMode = TextServer.AutowrapMode.WordSmart; _sourceList.AddChild(empty);
+        }
+        _sourceScroll.SetDeferred(ScrollContainer.PropertyName.ScrollVertical, scroll);
+    }
+    private void ShowSources()
+    {
+        _plansVisible = false; _sourcePage.Show(); _plansPage.Hide(); _plansButton.Show(); _clearButton.Show();
+    }
+    private void ShowPlans()
+    {
+        _plansVisible = true; _sourcePage.Hide(); _plansPage.Show(); _plansButton.Hide(); _clearButton.Hide(); RebuildPlans();
+    }
+    private void RebuildPlans()
+    {
+        ClearChildren(_planList); if (_owner is null) return;
+        var plans = CombatBoardPreparationService.GetPlans(_owner);
+        foreach (var plan in plans)
+        {
+            var row = new Button { Name = "NamedBoardPlan", Text = "", CustomMinimumSize = new Vector2(0, 100), SizeFlagsHorizontal = SizeFlags.ExpandFill };
+            PaperButtonFeedback.Apply(row, CraftingPaperStyle.ButtonKind.Regular, 22, plan.ResourceName == _activeName);
+            var preview = new BattleBoardView { Layout = plan.CopyConfiguration(), Catalog = _catalog, CombatOwner = _owner, CellSize = Math.Min(26, 78f / Math.Max(1, Math.Max(plan.size.X, plan.size.Y))), Position = new Vector2(12, 11), MouseFilter = MouseFilterEnum.Ignore };
+            if (plan.size == _draft.size && plan.size.X > 0 && plan.size.Y > 0) row.AddChild(preview);
+            else preview.QueueFree();
+            var text = new VBoxContainer { Position = new Vector2(106, 13), MouseFilter = MouseFilterEnum.Ignore };
+            row.AddChild(text); text.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect); text.OffsetLeft = 106; text.OffsetRight = -14; text.OffsetTop = 13; text.OffsetBottom = -10;
+            var title = Text(plan.ResourceName, 23); title.ClipText = true; text.AddChild(title);
+            var issues = CombatBoardPreparationService.Validate(_owner, plan);
+            var availability = Text(issues.Count == 0 ? "可载入" : string.Join("；", issues), 17, issues.Count == 0);
+            if (issues.Count > 0) availability.AddThemeColorOverride("font_color", CraftingPaperStyle.Danger);
+            availability.AutowrapMode = TextServer.AutowrapMode.WordSmart; text.AddChild(availability);
+            availability.MinimumSizeChanged += () => row.CustomMinimumSize = new Vector2(0, Math.Max(100, text.GetCombinedMinimumSize().Y + 26));
+            row.Pressed += () => TryLoadPlan(plan); _planList.AddChild(row);
+        }
+        if (plans.Count == 0) _planList.AddChild(Text("尚未保存方案", 21, true));
+        _deleteButton.Disabled = !plans.Any(plan => plan.ResourceName == _activeName);
+    }
+    private void NameDialog(string mode)
+    {
+        if (_owner is null) return;
+        var title = mode == "new" ? "新建方案" : mode == "rename" ? "修改方案名称" : "另存方案";
+        var box = Dialog(title, 650, 300);
+        var input = new LineEdit { Name = "BoardPlanName", PlaceholderText = "为这套搭配取个名字", Text = mode == "rename" ? _activeName : "" };
+        CraftingPaperStyle.ApplyInput(input, 22); box.AddChild(input);
+        var error = Text("", 18); error.AddThemeColorOverride("font_color", CraftingPaperStyle.Danger); error.AutowrapMode = TextServer.AutowrapMode.WordSmart; box.AddChild(error);
+        var buttons = Row(box);
+        buttons.AddChild(ActionButton("返回", CloseDialog));
+        void Submit()
+        {
+            if (_owner is null) return;
+            string name = input.Text.Trim(); bool ok; string reason;
+            bool renameSaved = mode == "rename" && _activeName.Length > 0 && CombatBoardPreparationService.GetPlans(_owner).Any(plan => plan.ResourceName == _activeName);
+            bool wasDirty = _dirty;
+            if (renameSaved)
+                ok = CombatBoardPreparationService.TryRenamePlan(_owner, _activeName, name, out reason);
+            else
+            {
+                var layout = mode == "new" ? CombatBoardMigration.CreatePreview([], [], _catalog.FindSkill, CombatBoardPreparationService.RequiresIndicator(_owner), _draft.size) : _draft;
+                ok = CombatBoardPreparationService.TrySavePlan(_owner, layout, name, false, out reason);
+                if (ok && mode == "new") { _draft = layout; _selected = _picked = ""; }
+            }
+            if (!ok) { error.Text = reason; return; }
+            NotifySaved();
+            _activeName = _draft.ResourceName = name; _dirty = renameSaved && wasDirty; CloseDialog(); RefreshState(); _notice.Text = renameSaved ? "方案名称已更新。" : "已保存「" + name + "」。";
+        }
+        buttons.AddChild(ActionButton(title, Submit)); input.TextSubmitted += _ => Submit(); input.GrabFocus();
+    }
+    private void DeleteDialog()
+    {
+        if (_owner is null || _activeName.Length == 0) return;
+        var box = Dialog("删除方案", 650, 280);
+        var explanation = Text("删除「" + _activeName + "」？当前盘面保留为未保存草稿。", 22);
+        explanation.AutowrapMode = TextServer.AutowrapMode.WordSmart; box.AddChild(explanation);
+        var buttons = Row(box); buttons.AddChild(ActionButton("返回", CloseDialog));
+        buttons.AddChild(ActionButton("删除方案", () =>
+        {
+            if (!CombatBoardPreparationService.TryDeletePlan(_owner, _activeName, out var reason)) { _notice.Text = reason; return; }
+            NotifySaved();
+            _activeName = _draft.ResourceName = ""; _dirty = true; CloseDialog(); RefreshState();
+        }));
+    }
+    private VBoxContainer Dialog(string title, float width, float height)
+    {
+        CloseDialog(); HoverInfoManager.HideAll();
+        _dialog = new Control { Name = "PreparationDialog", ZIndex = 30, MouseFilter = MouseFilterEnum.Stop }; AddChild(_dialog); _dialog.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        var shade = new ColorRect { Color = new Color(0, 0, 0, .38f), MouseFilter = MouseFilterEnum.Stop }; _dialog.AddChild(shade); shade.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        var paper = Paper(24); paper.Position = new Vector2(Math.Max(0, (Size.X - width) / 2), Math.Max(0, (Size.Y - height) / 2)); paper.Size = new Vector2(width, height); _dialog.AddChild(paper);
+        var box = Stack(paper, 18); box.AddChild(Text(title, 28)); return box;
+    }
+    private void CloseDialog() { if (_dialog is null) return; RemoveChild(_dialog); _dialog.QueueFree(); _dialog = null; }
+    private void ShowHelp()
+    {
+        var box = Dialog("配招说明", 760, 520);
+        var text = Text("拖入来源，或先点选来源，再点盘面摆放。R转向，方向键移动，Delete移出。\n\n"
+            + "从左到右逐行读取。每份招式首次检查后变暗，本轮失败不重试；应对扫到后待命。\n\n"
+            + "化法只强化箭头指向、共边相邻的一份适用招式，无效指向可保留。\n\n"
+            + "丹药一块一颗，摆放只预留，实际服用后留下空瓶。切换方案不恢复资源、次数、冷却或库存。\n\n"
+            + "保存方案保留这套搭配；设为预装配后供出战时读取。", 21);
+        text.AutowrapMode = TextServer.AutowrapMode.WordSmart; box.AddChild(text); box.AddChild(ActionButton("返回", CloseDialog));
+    }
+    public override void _Input(InputEvent input)
+    {
+        if (_dialog is null || !IsVisibleInTree() || input is not InputEventKey { Pressed: true, Echo: false, Keycode: Key.Escape }) return;
+        CloseDialog(); GetViewport().SetInputAsHandled();
+    }
+}

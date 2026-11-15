@@ -1,0 +1,555 @@
+{
+  "status": "passed",
+  "scope": "佐使各三味真实填满布局与操作专项，不接游戏、不定义新丹方",
+  "checkCount": 20,
+  "checks": [
+    {
+      "name": "1920 佐使各三味全部装入",
+      "pass": true,
+      "detail": [
+        {
+          "role": "佐药",
+          "height": 326.00001824871873,
+          "count": 3,
+          "rowsInside": true,
+          "controlsInside": true,
+          "names": [
+            {
+              "text": "灵泉露",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "回泉珠",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "清音玉片",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            }
+          ]
+        },
+        {
+          "role": "使药",
+          "height": 326.00001824871873,
+          "count": 3,
+          "rowsInside": true,
+          "controlsInside": true,
+          "names": [
+            {
+              "text": "溪纹藻丝",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "灵石",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "朱阳花籽",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "1920 满配药签自动增高且行完整",
+      "pass": true,
+      "detail": [
+        {
+          "role": "佐药",
+          "height": 326.00001824871873,
+          "count": 3,
+          "rowsInside": true,
+          "controlsInside": true,
+          "names": [
+            {
+              "text": "灵泉露",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "回泉珠",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "清音玉片",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            }
+          ]
+        },
+        {
+          "role": "使药",
+          "height": 326.00001824871873,
+          "count": 3,
+          "rowsInside": true,
+          "controlsInside": true,
+          "names": [
+            {
+              "text": "溪纹藻丝",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "灵石",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "朱阳花籽",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "1920 份数和移除按钮保留内边距",
+      "pass": true,
+      "detail": [
+        {
+          "role": "佐药",
+          "height": 326.00001824871873,
+          "count": 3,
+          "rowsInside": true,
+          "controlsInside": true,
+          "names": [
+            {
+              "text": "灵泉露",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "回泉珠",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "清音玉片",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            }
+          ]
+        },
+        {
+          "role": "使药",
+          "height": 326.00001824871873,
+          "count": 3,
+          "rowsInside": true,
+          "controlsInside": true,
+          "names": [
+            {
+              "text": "溪纹藻丝",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "灵石",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "朱阳花籽",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "1920 六个药名完整且字体保持20",
+      "pass": true,
+      "detail": [
+        {
+          "role": "佐药",
+          "height": 326.00001824871873,
+          "count": 3,
+          "rowsInside": true,
+          "controlsInside": true,
+          "names": [
+            {
+              "text": "灵泉露",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "回泉珠",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "清音玉片",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            }
+          ]
+        },
+        {
+          "role": "使药",
+          "height": 326.00001824871873,
+          "count": 3,
+          "rowsInside": true,
+          "controlsInside": true,
+          "names": [
+            {
+              "text": "溪纹藻丝",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "灵石",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "朱阳花籽",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "1920 两张药签不重叠",
+      "pass": true,
+      "detail": 16.000005971088125
+    },
+    {
+      "name": "1920 八味互不重复",
+      "pass": true
+    },
+    {
+      "name": "1920 第三味增量仍可操作",
+      "pass": true
+    },
+    {
+      "name": "1920 第三味减量仍可操作",
+      "pass": true
+    },
+    {
+      "name": "1920 移除只清对应药位且三行高度稳定",
+      "pass": true
+    },
+    {
+      "name": "1920 补回第三味后重新展开",
+      "pass": true
+    },
+    {
+      "name": "1280 佐使各三味全部装入",
+      "pass": true,
+      "detail": [
+        {
+          "role": "佐药",
+          "height": 325.9999553029344,
+          "count": 3,
+          "rowsInside": true,
+          "controlsInside": true,
+          "names": [
+            {
+              "text": "灵泉露",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "回泉珠",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "清音玉片",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            }
+          ]
+        },
+        {
+          "role": "使药",
+          "height": 325.999998551484,
+          "count": 3,
+          "rowsInside": true,
+          "controlsInside": true,
+          "names": [
+            {
+              "text": "溪纹藻丝",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "灵石",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "朱阳花籽",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "1280 满配药签自动增高且行完整",
+      "pass": true,
+      "detail": [
+        {
+          "role": "佐药",
+          "height": 325.9999553029344,
+          "count": 3,
+          "rowsInside": true,
+          "controlsInside": true,
+          "names": [
+            {
+              "text": "灵泉露",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "回泉珠",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "清音玉片",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            }
+          ]
+        },
+        {
+          "role": "使药",
+          "height": 325.999998551484,
+          "count": 3,
+          "rowsInside": true,
+          "controlsInside": true,
+          "names": [
+            {
+              "text": "溪纹藻丝",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "灵石",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "朱阳花籽",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "1280 份数和移除按钮保留内边距",
+      "pass": true,
+      "detail": [
+        {
+          "role": "佐药",
+          "height": 325.9999553029344,
+          "count": 3,
+          "rowsInside": true,
+          "controlsInside": true,
+          "names": [
+            {
+              "text": "灵泉露",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "回泉珠",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "清音玉片",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            }
+          ]
+        },
+        {
+          "role": "使药",
+          "height": 325.999998551484,
+          "count": 3,
+          "rowsInside": true,
+          "controlsInside": true,
+          "names": [
+            {
+              "text": "溪纹藻丝",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "灵石",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "朱阳花籽",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "1280 六个药名完整且字体保持20",
+      "pass": true,
+      "detail": [
+        {
+          "role": "佐药",
+          "height": 325.9999553029344,
+          "count": 3,
+          "rowsInside": true,
+          "controlsInside": true,
+          "names": [
+            {
+              "text": "灵泉露",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "回泉珠",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "清音玉片",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            }
+          ]
+        },
+        {
+          "role": "使药",
+          "height": 325.999998551484,
+          "count": 3,
+          "rowsInside": true,
+          "controlsInside": true,
+          "names": [
+            {
+              "text": "溪纹藻丝",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "灵石",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            },
+            {
+              "text": "朱阳花籽",
+              "font": "20px",
+              "inside": true,
+              "clipped": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "1280 两张药签不重叠",
+      "pass": true,
+      "detail": 15.99997392671171
+    },
+    {
+      "name": "1280 八味互不重复",
+      "pass": true
+    },
+    {
+      "name": "1280 第三味增量仍可操作",
+      "pass": true
+    },
+    {
+      "name": "1280 第三味减量仍可操作",
+      "pass": true
+    },
+    {
+      "name": "1280 移除只清对应药位且三行高度稳定",
+      "pass": true
+    },
+    {
+      "name": "1280 补回第三味后重新展开",
+      "pass": true
+    }
+  ],
+  "captures": [
+    "炼丹_佐使各三味_1920.png",
+    "炼丹_扩展药位_1920.png",
+    "炼丹_佐使各三味_1280.png",
+    "炼丹_扩展药位_1280.png",
+    "炼丹_佐使满配_完整图_1920.png",
+    "炼丹_佐使满配_局部.png"
+  ],
+  "viewports": [
+    [
+      1920,
+      1080
+    ],
+    [
+      1280,
+      720
+    ]
+  ]
+}

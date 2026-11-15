@@ -1,0 +1,84 @@
+{
+  "source_capture": "tools\\action_battle_test\\output\\leg_supported_robe_full",
+  "source_sha256": {
+    "capture_leg_supported_robe.gd": "fa4a0dafcf7c62f69bb1871316945ffeb1a36f1661f2fbff1b36df00df75789c",
+    "leg_supported_robe_skin.gd": "48f6de88758c5a7248faf1a3ca63180a9e315bffb06512c527ea236e183e5781",
+    "smoke_leg_support_causality.gd": "214e490390d902984a431d923d27d76ba17514993dfee686b83d8c95ab4da485"
+  },
+  "simulated_frames": 270,
+  "capture_seconds": 9,
+  "native_detail_scale": 4,
+  "native_comparison_resolution": [
+    880,
+    600
+  ],
+  "native_new_detail_resolution": [
+    440,
+    500
+  ],
+  "full_capture": true,
+  "mirrored_270_frames_verified": true,
+  "all_facing_correct": true,
+  "all_270_frames_complete_two_leg_chains": true,
+  "all_270_frames_hidden_two_leg_meshes": true,
+  "all_270_frames_continuous_mesh": true,
+  "cloth_lowest_y_range": [
+    -1.05808675289154,
+    -0.549999952316284
+  ],
+  "local_support_peak_range": [
+    4.41463184356689,
+    19.90456199646
+  ],
+  "knee_support_peak_range": [
+    0.0,
+    14.1179876327515
+  ],
+  "pause_12_frames_simulation_frozen": true,
+  "causality": {
+    "fixed_legs_90_frames_translation_and_clock_peak": 4.1961669921875e-05,
+    "passed": true,
+    "pause_12_frames_surface_delta": {
+      "changed_vertices": 0,
+      "peak": 0.0,
+      "rms": 0.0,
+      "upper_peak": 0.0
+    },
+    "released_90_frames_final_delta": {
+      "changed_vertices": 0,
+      "peak": 4.76837158203125e-07,
+      "rms": 8.99282950051468e-08,
+      "upper_peak": 0.0
+    },
+    "static_leg_only_pose_delta": {
+      "changed_vertices": 156,
+      "peak": 6.01190662384033,
+      "rms": 1.07991103485825,
+      "upper_peak": 0.0
+    }
+  },
+  "scope": "Lightweight 2D actual-leg capsule support and local spring release. Hidden leg meshes guarantee zero external leg/foot rendering; this is not full 3D cloth self-collision.",
+  "native_pngs_repainted": false,
+  "artifacts": {
+    "停下后的局部释放与回落_五相位.png": 183370,
+    "前跑一周期_六个原生中间相位.png": 244771,
+    "反朝向错步中相_旧新对照.png": 114148,
+    "实际战场_前跑.png": 870180,
+    "实际战场_后退.png": 852613,
+    "实际战场_转向.png": 847892,
+    "实际战场_错步.png": 823615,
+    "旧新同相位_停下回落.png": 105268,
+    "旧新同相位_前跑中相一.png": 114874,
+    "旧新同相位_前跑中相三.png": 115670,
+    "旧新同相位_前跑中相二.png": 111577,
+    "旧新同相位_后退.png": 106431,
+    "旧新同相位_待机.png": 70336,
+    "旧新同相位_急停回落.png": 86977,
+    "旧新同相位_恢复稳定.png": 75753,
+    "旧新同相位_转向前进.png": 111536,
+    "旧新同相位_错步中相.png": 116673,
+    "旧新同输入对照_原生9秒.gif": 2760066,
+    "袍内双腿支撑_原生近景9秒.gif": 1494576,
+    "错步全过程_五个原生中间相位.png": 207584
+  }
+}

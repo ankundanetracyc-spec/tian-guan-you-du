@@ -1,0 +1,31 @@
+{
+  "rig": {
+    "nodeCount": 71,
+    "spriteRendererCount": 15,
+    "spriteBonePathMappingErrors": [],
+    "boneNodeCount": 32
+  },
+  "skins": {
+    "rendererCount": 15,
+    "skinnedRendererCount": 9,
+    "spriteSkinComponentCount": 9,
+    "totalVertices": 228,
+    "totalTriangles": 204,
+    "unmappedSpriteBones": [],
+    "weightSumMin": 0.9999999403953552,
+    "weightSumMax": 1.0000001192092896,
+    "invalidBoneWeightIndices": []
+  },
+  "animations": {
+    "clipCount": 6,
+    "unresolvedBindingPaths": [],
+    "streamWordCounts": {
+      "Idle": 440,
+      "Run_New1": 3068,
+      "Run_New2": 2210,
+      "AttackIdle": 370,
+      "AttackRun": 310,
+      "Step1": 929
+    }
+  }
+}

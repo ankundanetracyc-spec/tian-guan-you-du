@@ -1,0 +1,113 @@
+{
+  "date": "2026-11-05",
+  "status": "current combined pinky-length candidate; hand direction confirmed by user, new pinky appearance pending evaluation",
+  "user_direction_confirmation": "第二张方向对了",
+  "request": "Keep second960c/b1ed right-hand dorsal orientation; use first3278 pinky length, remove twist, keep five digits clear.",
+  "change": "Only near sword-hand pinky length/curvature. Two distinct curled fingers remain; intermediate b218 third lobe removed.",
+  "mode": "built-in image_gen",
+  "prompt_record": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\right_sword_pinky_length_final_20261105.json",
+  "asset_inventory": {
+    "body.png": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\body.png",
+      "sha256": "9a87016e7b3aaf208d369fd7033cb0fa62f31ec8690cb2727d050120099a3109",
+      "native_size": [
+        971,
+        1620
+      ]
+    },
+    "leg.png": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\leg.png",
+      "sha256": "1a34b9c4f232f77e67bd56f64fdbeb4734a8e7271bfb50d71528bc0d3e656ec0",
+      "native_size": [
+        992,
+        1586
+      ]
+    },
+    "sleeve_far.png": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_far.png",
+      "sha256": "40c510c31d0b60c818304d9f58eca32d3e08ab73724265fc9e46474e6cc380de",
+      "native_size": [
+        1254,
+        1254
+      ]
+    },
+    "sleeve_far_fist.png": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_far_fist.png",
+      "sha256": "482f474bea8156a4425306aa3d13cacf66458fc2406fa5d6a0200a921d334d8f",
+      "native_size": [
+        1254,
+        1254
+      ]
+    },
+    "sleeve_near.png": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near.png",
+      "sha256": "b5637eb58dd30de992295a09037a13fb7703ca2756b178148cf20fbf94b894ba",
+      "native_size": [
+        1254,
+        1254
+      ]
+    },
+    "sleeve_near_fist.png": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near_fist.png",
+      "sha256": "4d2cacfb8a58827d5f56f5637bfd8ddd7754d23a9f7e41d5469b77137f8d5d80",
+      "native_size": [
+        1254,
+        1254
+      ]
+    },
+    "sleeve_near_grip.png": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near_grip.png",
+      "sha256": "a92e11d85325c42fe7918ee83babe5b32e88b63f53a3d9b96c39dccc79d41e73",
+      "native_size": [
+        1254,
+        1254
+      ]
+    },
+    "sleeve_near_sword.png": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near_sword.png",
+      "sha256": "2c0be6a02e82964a329bebfcae6b12282debaf4354463c4f3151d2a60bee86e2",
+      "native_size": [
+        1254,
+        1254
+      ]
+    }
+  },
+  "captures": [
+    {
+      "directory": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v20_pinky_final_single",
+      "native_png": "E:\\stacklands\\docs\\美术规范\\首套高清水墨长衣_20261104\\右手剑指_小指长度综合_原生近景_20261105.png",
+      "sha256": "39270f3c5f63d41df8e8bdc42313dd7c25957ba10c7c94e241e765e80e64ea77",
+      "canvas": [
+        300,
+        600
+      ],
+      "current_sword_hash_present": true,
+      "pixels_identical_to_native": true
+    },
+    {
+      "directory": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v20_pinky_final_optional",
+      "native_png": "E:\\stacklands\\docs\\美术规范\\首套高清水墨长衣_20261104\\近侧右手_剑指与握柄_原生近景.png",
+      "sha256": "c92163de4e2afcf13cea6c8383594b5d0f27e0b0e1832c23b8bc3ec49b1d6f51",
+      "canvas": [
+        600,
+        600
+      ],
+      "current_sword_hash_present": true,
+      "pixels_identical_to_native": true
+    }
+  ],
+  "runtime_modules_sha256": {
+    "ink_outfit_fitting_skin.gd": "564487b0d4431046abf31e042685ca140a7fb17ad1f2b7943df8a9601d8710f6",
+    "ink_outfit_fitting_runtime.gd": "706e21b6b255fda64c98f3dc9c21a19434a2eb3141876bda841f6599fc076355",
+    "ink_outfit_sleeve_mesh.gd": "c62ff8a62a3190c4ccfb43771d25c17afdde996aef68a00e5a8ccb10bc798335",
+    "ink_outfit_hem_secondary.gd": "294fb9290be5f7a6aaca8e3500d9990a49af2ed261f2dd69ac12528a7c653c16"
+  },
+  "visual_review": [
+    "approved right-hand BACK orientation maintained",
+    "little finger longer than b1ed; smooth inward curl, no twisted hook",
+    "two long fingers plus two folded fingers plus thumb side edge, no third folded lobe",
+    "native bent pose preserves wrist connection and complete hand"
+  ],
+  "verification_scope": "Only single and optional-hand native captures repeated, both exited0; no runtime code or ordinary hand changes; previous49/19 checks not rerun or treated as visual evidence.",
+  "intermediate_rejected": "b218 created three folded-finger-like lobes and is archived; chosen output is001215e9."
+}

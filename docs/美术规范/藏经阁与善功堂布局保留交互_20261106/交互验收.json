@@ -1,0 +1,39 @@
+{
+  "browser": "Edge via Playwright CLI",
+  "transport": "localhost HTTP",
+  "manual_count": 5,
+  "fixed_spine_size": true,
+  "keyword_only_dims": true,
+  "keyword_does_not_reposition": true,
+  "keyword_does_not_change_selection": true,
+  "dim_book_remains_selectable": true,
+  "new_selected_pulls_out": true,
+  "previous_selected_returns": true,
+  "viewports": [
+    {
+      "size": [
+        1920,
+        1080
+      ],
+      "spine_width": 48.4615,
+      "spine_height": 196.1538,
+      "all_title_labels_fit": true
+    },
+    {
+      "size": [
+        1280,
+        720
+      ],
+      "spine_width": 32.3077,
+      "all_title_labels_fit": true
+    }
+  ],
+  "screenshot_source": "actual interactive browser page",
+  "game_integration_tested": false,
+  "unconnected": [
+    "可修习角色资格",
+    "真实拓印与兑换",
+    "行囊",
+    "存档"
+  ]
+}

@@ -1,0 +1,75 @@
+{
+	"cases": [
+		{
+			"case": "static right",
+			"frames": 120,
+			"max_bone_angle_error_degrees": 0.0,
+			"max_cloth_vertex_error_px": 0.0000019073486328125,
+			"max_visible_triangle_flips": 0,
+			"minimum_actor_determinant": 1.0,
+			"visible_triangles_sampled": 43
+		},
+		{
+			"case": "static left",
+			"frames": 120,
+			"max_bone_angle_error_degrees": 180.0,
+			"max_cloth_vertex_error_px": 57.2937965393066,
+			"max_visible_triangle_flips": 11,
+			"minimum_actor_determinant": -1.0,
+			"visible_triangles_sampled": 43
+		},
+		{
+			"case": "static",
+			"facing_changes": 35,
+			"frames": 600,
+			"max_bone_angle_difference_from_control_degrees": 179.965735979904,
+			"max_cloth_difference_from_unturned_control_px": 62.7438507080078,
+			"max_control_flips_against_physics_off": 0,
+			"max_turn_induced_triangle_flips": 15,
+			"max_turning_flips_against_physics_off": 15
+		},
+		{
+			"case": "run",
+			"facing_changes": 35,
+			"frames": 600,
+			"max_bone_angle_difference_from_control_degrees": 179.873331187514,
+			"max_cloth_difference_from_unturned_control_px": 65.8350067138672,
+			"max_control_flips_against_physics_off": 4,
+			"max_turn_induced_triangle_flips": 13,
+			"max_turning_flips_against_physics_off": 13
+		},
+		{
+			"case": "clip_transitions",
+			"facing_changes": 35,
+			"frames": 600,
+			"max_bone_angle_difference_from_control_degrees": 180.0,
+			"max_cloth_difference_from_unturned_control_px": 73.0705718994141,
+			"max_control_flips_against_physics_off": 4,
+			"max_turn_induced_triangle_flips": 16,
+			"max_turning_flips_against_physics_off": 16
+		}
+	],
+	"checks": 32,
+	"duplicate_same_clock_cloth_error_px": 27.5581436157227,
+	"failures": [
+		"static left: 3D actor frame has positive determinant",
+		"static left: no force-free cloth deformation",
+		"static left: no spontaneous bone half-turn",
+		"static left: zero alpha-visible triangle flips against physics-off pose",
+		"static: pure turn preserves cloth shape against unturned physics control",
+		"static: pure turn introduces no half-turn relative to control",
+		"static: no additional alpha-visible flips caused by facing",
+		"static repeated turns: zero visible flips against physics-off pose",
+		"run: pure turn preserves cloth shape against unturned physics control",
+		"run: pure turn introduces no half-turn relative to control",
+		"run: no additional alpha-visible flips caused by facing",
+		"duplicate pose in same motion clock preserves last physics solution",
+		"clip_transitions: pure turn preserves cloth shape against unturned physics control",
+		"clip_transitions: pure turn introduces no half-turn relative to control",
+		"clip_transitions: no additional alpha-visible flips caused by facing"
+	],
+	"limits": "Animated control may itself contain source/secondary cloth folds; these are reported separately and never labelled no-intersection merely because turning matches it.",
+	"passed": false,
+	"samples": 2040,
+	"scope": "Actual native runtime/skin, both static facings and 3x600frame repeated pure-turn cases. Inspect 3D bone orientation and alpha-visible cloth triangle signs; length/finite checks alone are insufficient."
+}

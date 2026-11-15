@@ -1,0 +1,43 @@
+{
+  "engineering_guide_only": true,
+  "canvas": [
+    1254,
+    1254
+  ],
+  "common_to_both_sides": true,
+  "shoulder": [
+    620,
+    272
+  ],
+  "elbow": [
+    600,
+    610
+  ],
+  "wrist": [
+    610,
+    862
+  ],
+  "cuff_lower_edge": [
+    490,
+    885
+  ],
+  "cuff_upper_edge": [
+    670,
+    850
+  ],
+  "cuff_width_px": 183.3712082089225,
+  "intended_upper_lower_clearance_ratio": [
+    1,
+    2
+  ],
+  "upper_arm_mid_width_px": [
+    130,
+    145
+  ],
+  "forearm_cloth_width_px": [
+    200,
+    215
+  ],
+  "hand_scale_same_for_both_sides": true,
+  "note": "Authored target, not measurement of an AI image. Actual output landmarks require reinspection; source motion rig coordinates remain separately referenced."
+}

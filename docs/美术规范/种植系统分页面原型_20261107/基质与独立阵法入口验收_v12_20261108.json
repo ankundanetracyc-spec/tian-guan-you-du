@@ -1,0 +1,159 @@
+{
+  "date": "2026-11-08",
+  "version": "1.2",
+  "method": "Playwright CLI / Microsoft Edge，真实点击、搜索、筛选、数量输入、保存、换田及两档排版",
+  "passed": 55,
+  "checks": [
+    "当前版本1.2",
+    "三个主要页签",
+    "阵法具体目录与编辑器已撤去",
+    "田地切换使用深色文字",
+    "阵法只显示独立入口",
+    "关闭阵法入口恢复焦点",
+    "接入函数只收到当前田地身份",
+    "调用独立阵法不改变基质方案",
+    "阵法入口随当前田地切换",
+    "目录有四种现有材料",
+    "保留全部十二功用筛选",
+    "生筛选仅保留兽骨",
+    "筛选同步所选详情",
+    "兽骨分别显示固生与九品",
+    "功用含真实语义",
+    "功用说明归属基质",
+    "拦截非法或超量件数:-1",
+    "拦截非法或超量件数:0",
+    "拦截非法或超量件数:1.5",
+    "拦截非法或超量件数:",
+    "拦截非法或超量件数:99",
+    "重复添加按实物合并",
+    "聚筛选自动选择地脉焰炭",
+    "单项品级与材料总品阶分开",
+    "无匹配时不展示过期材料详情",
+    "空筛选不清除已有方案",
+    "搜索结果与材料详情同步",
+    "搜索更新保持输入焦点",
+    "保存确认保留材料与件数",
+    "取消保存不提交",
+    "保存本田三种六件",
+    "还原恢复保存方案",
+    "材料草案逐田隔离",
+    "跨田可用数扣除已准备的量",
+    "已种灵草不被目标切换替换",
+    "物种需求缺失明确展示",
+    "五项环境对照保留",
+    "满足和不足同时有文字标记",
+    "预览读取本田基质方案",
+    "未定义基质效果不改变环境",
+    "未定义周期不编造成熟日期",
+    "来源清单只列基质功用",
+    "来源保留材料数量及品级",
+    "不汇总为万能培育总分",
+    "概况没有添加控件或完整功用表",
+    "概况显示当前环境和基质摘要",
+    "1920 overview 排版和图片",
+    "1920 substrates 排版和图片",
+    "1920 growth 排版和图片",
+    "1280 overview 排版和图片",
+    "1280 substrates 排版和图片",
+    "1280 growth 排版和图片",
+    "允许保存清空方案",
+    "刷新恢复初始演示",
+    "无脚本错误"
+  ],
+  "screenshots": [
+    "田地概况_v12_1920.png",
+    "田地概况_v12_1280.png",
+    "基质材料_v12_1920.png",
+    "基质材料_v12_1280.png",
+    "成长预览_v12_1920.png",
+    "成长预览_v12_1280.png",
+    "基质功用来源_v12_1920.png",
+    "基质功用来源_v12_1280.png",
+    "阵法入口_v12_1920.png",
+    "阵法入口_v12_1280.png"
+  ],
+  "errors": [],
+  "viewports": [
+    {
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "width": 1280,
+      "height": 720
+    }
+  ],
+  "driver": "output/playwright/planting_substrate_v12_20261108/audit.js",
+  "local_file_check": {
+    "version": "1.2",
+    "page": "substrates",
+    "font": true,
+    "tabs": 3,
+    "materialCount": 4,
+    "missing_images": []
+  },
+  "material_source_checks": [
+    {
+      "name": "紫砂灵土",
+      "resource": "resources/entities/items/紫砂灵土.tres",
+      "craft_resource": "resources/material_craft/紫砂灵土材性.tres",
+      "utilities": [
+        {
+          "id": "藏",
+          "grade": 1
+        }
+      ],
+      "verified": true
+    },
+    {
+      "name": "泥脉石团",
+      "resource": "resources/entities/items/泥脉石团.tres",
+      "craft_resource": "resources/material_craft/泥脉石团材性.tres",
+      "utilities": [
+        {
+          "id": "镇",
+          "grade": 1
+        }
+      ],
+      "verified": true
+    },
+    {
+      "name": "兽骨",
+      "resource": "resources/entities/items/兽骨.tres",
+      "craft_resource": "resources/material_craft/兽骨材性.tres",
+      "utilities": [
+        {
+          "id": "固",
+          "grade": 1
+        },
+        {
+          "id": "生",
+          "grade": 1
+        }
+      ],
+      "verified": true
+    },
+    {
+      "name": "地脉焰炭",
+      "resource": "resources/entities/items/地脉焰炭.tres",
+      "craft_resource": "resources/material_craft/地脉焰炭材性.tres",
+      "utilities": [
+        {
+          "id": "聚",
+          "grade": 2
+        },
+        {
+          "id": "通",
+          "grade": 1
+        }
+      ],
+      "verified": true
+    }
+  ],
+  "capture": "通过界面准备并保存三种六件材料后捕获；等待通知收起，无截图状态注入。阵法只显示独立入口提示。",
+  "limitations": [
+    "仅独立浏览器UI，未接Godot、真实人物、库存或存档。",
+    "材料功用用于基质，具体培育作用与周期未定，不估算虚构增益或成熟日期。",
+    "阵法仅一个打开接口；无具体阵式、布阵、功用映射或供能设计。"
+  ]
+}

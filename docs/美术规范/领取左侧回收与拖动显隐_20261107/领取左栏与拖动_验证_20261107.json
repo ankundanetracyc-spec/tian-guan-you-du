@@ -1,0 +1,128 @@
+{
+  "date": "2026-11-07",
+  "implemented": true,
+  "capacity": 200,
+  "designCell": 36,
+  "regionPositionsChanged": false,
+  "ownedItemsCanReturnFromLeft": true,
+  "ownedIdentityAndRotationPreserved": true,
+  "forgedSnapshotPreserved": true,
+  "returnedRewardsRestorePendingCount": true,
+  "sameNameOriginsSeparated": true,
+  "duplicateRewardNotifications": false,
+  "finalLeftoverConfirmationIncludesOwned": true,
+  "cancelFinishKeepsPreview": true,
+  "dragOriginHidden": true,
+  "dragSelfCollisionExcluded": true,
+  "cancelRestoresOrigin": true,
+  "appliesTo": [
+    "ItemClaimPanel",
+    "StoragePanel body",
+    "StoragePanel storage modal"
+  ],
+  "previewIsPersistentStorage": false,
+  "realInventoryChangesOnlyOnReceiptCommit": true,
+  "staleInventoryResetsBothLists": true,
+  "build": {
+    "passed": true,
+    "warnings": 0,
+    "errors": 0
+  },
+  "checks": [
+    {
+      "case": "claim",
+      "checks": 82
+    },
+    {
+      "case": "claim_window",
+      "checks": 88
+    },
+    {
+      "case": "inventory_window",
+      "checks": 34
+    },
+    {
+      "case": "ring_window",
+      "checks": 80
+    },
+    {
+      "case": "manual",
+      "checks": 63
+    }
+  ],
+  "passedChecks": 347,
+  "nativeScreenshotCount": 17,
+  "captureSizes": {
+    "实机/储物空间/01_行囊尺度1920.png": [
+      1920,
+      1080
+    ],
+    "实机/储物空间/02_戒指矩形收纳1920.png": [
+      1920,
+      1080
+    ],
+    "实机/储物空间/03_戒指矩形收纳1280.png": [
+      1280,
+      720
+    ],
+    "实机/储物空间/04_行囊尺度1280.png": [
+      1280,
+      720
+    ],
+    "实机/储物空间/05_整屏戒指1920.png": [
+      1920,
+      1080
+    ],
+    "实机/储物空间/06_整屏戒指1280.png": [
+      1280,
+      720
+    ],
+    "实机/储物空间/07_戒指暗罩1920.png": [
+      1920,
+      1080
+    ],
+    "实机/储物空间/08_戒指暗罩1280.png": [
+      1280,
+      720
+    ],
+    "实机/行囊/01_原生行囊旋转拖动.png": [
+      2560,
+      1440
+    ],
+    "实机/行囊/02_原生行囊空间与清册.png": [
+      2560,
+      1440
+    ],
+    "实机/行囊/03_原生行囊1280.png": [
+      1280,
+      720
+    ],
+    "实机/领取/01_领取收纳_1920.png": [
+      2560,
+      1440
+    ],
+    "实机/领取/02_领取收纳_完整.png": [
+      2560,
+      1440
+    ],
+    "实机/领取/03_领取收纳_1280.png": [
+      1280,
+      720
+    ],
+    "实机/领取/04_领取收纳_拖动预览.png": [
+      1280,
+      720
+    ],
+    "实机/领取/04_领取收纳_旋转.png": [
+      1280,
+      720
+    ],
+    "实机/领取/05_领取_移出后可拖回.png": [
+      2560,
+      1440
+    ]
+  },
+  "realPlayerSavesWritten": false,
+  "testSaveRoot": "output/item_claim_left_return_20261107/manual_library_appdata",
+  "knownRuntimeWarning": "existing 卸力.tres UID falls back to text path"
+}

@@ -1,0 +1,14 @@
+Use case: precise-object-edit. Asset type: transparent cut-apart animation atlas for a 2D game.
+The input wolf is the approved DIRECTION for this revision: natural proportions, soft muted ash-brown charcoal and warm offwhite, painterly ink-and-wash shading, soft broken edges, small natural head and ears, minimal detail. Preserve this EXACT visual rendering and identity. Do not switch to cartoon/vector/cel shading, do not add hard outlines or sharp stylized tufts.
+Create ONE transparent 3x3 sheet, perfectly equal cells. Only 8 ISOLATED COMPONENTS of this same wolf, all strictly SIDE VIEW facing RIGHT. Smooth joint overlap caps, components matching each other in lighting/fur. Alpha truly transparent with absolutely no surrounding glow, shadow or wash. Painted texture only inside body. No background, no labels, no grid.
+Layout:
+row1 col1: main torso horizontal, rump LEFT, shoulder/thick short neck RIGHT. NO head, NO tail, NO legs. Lean natural wolf torso, soft warm pale belly. Torso entire body surface continuous with rounded ends, wide 420 by230 in its cell.
+row1 col2: small realistic wolf head and ears facing RIGHT, neck ruff on LEFT, long upper muzzle, amber eye. NO lower jaw; separated from the neck. 380x300.
+row1 col3: only the lower jaw/chin, LEFT hinge to RIGHT lip, thin natural greyish-cream jaw, 300x90. No nose on lower jaw, no giant teeth, closed shape fits under head in row1col2.
+row2 col1: continuous complete NEAR FRONT LEG from round shoulder cap at top to paw on ground at bottom, relaxed almost vertical, paw points RIGHT. Complete 420 high, slender natural proportion, soft unoutlined shoulder blends into torso.
+row2 col2: complete FAR FRONT LEG same but slightly darker, 420 high.
+row2 col3: loose natural bushy TAIL, attachment root at upper RIGHT, relaxed curve down to LEFT tip. 420x200. Do not make a giant plume, soft fur edge.
+row3 col1: continuous complete NEAR HIND LEG, rounded thigh cap at top, upper thigh goes forward RIGHT to knee then tibia backward LEFT to hock then paw pointing RIGHT. 420 high. Natural flexible digitigrade anatomy, not mechanical pipe shapes.
+row3 col2: FAR HIND LEG same anatomy but slightly darker, 420 high.
+row3 col3: absolutely EMPTY transparent.
+Every piece remains centered in its cell with 30px margin, no overlap across cells. Return only atlas. Realistic soft painterly muted wolf, expressive natural anatomy, no ornamental blue patches, no bold black outlines, no hard graphic color blocks.

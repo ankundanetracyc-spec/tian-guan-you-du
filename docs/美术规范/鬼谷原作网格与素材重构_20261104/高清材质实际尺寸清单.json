@@ -1,0 +1,191 @@
+{
+  "schema_version": 1,
+  "inspection_started_at": "2026-11-04T21:40:20.433+08:00",
+  "inspected_at": "2026-11-04T21:40:20.602+08:00",
+  "timezone": "Asia/Shanghai",
+  "input_directory": "E:\\stacklands\\tools\\action_battle_test\\art\\guigu_male101_ink_hd",
+  "status": "本轮待最终注册验收",
+  "approval_status": "本清单仅记录本轮实际文件元数据，不代表用户已视觉批准，也不代替最终注册与动态验收。",
+  "bbox_convention": "[left, top, right, bottom]；右界和下界不包含；全透明图为null。alpha_nonzero_bbox使用alpha>0；alpha_ge_128_bbox使用alpha>=128。",
+  "source_of_dimensions": "直接读取PNG字节得到实际W/H和Alpha范围；未从提示词、理想尺寸或锚点注册预期值推断。",
+  "batch_stability": {
+    "final_file_hashes_match_records": true,
+    "final_check_passes": 1
+  },
+  "materials": [
+    {
+      "sprite_id": 65806,
+      "png_path": "E:\\stacklands\\tools\\action_battle_test\\art\\guigu_male101_ink_hd\\sprite_65806.png",
+      "width": 1254,
+      "height": 1254,
+      "png_mode": "RGBA",
+      "png_sha256": "0b53a249395b340960e54d49327249e236f82c8f464dc372dbff51a69a4cc0b6",
+      "file_size_bytes": 1294223,
+      "alpha_nonzero_bbox": [
+        0,
+        3,
+        1234,
+        1254
+      ],
+      "alpha_ge_128_bbox": [
+        191,
+        126,
+        995,
+        1179
+      ],
+      "read_at": "2026-11-04T21:40:20.433+08:00",
+      "status": "本轮待最终注册验收",
+      "stable_read_check": {
+        "before_sha256": "0b53a249395b340960e54d49327249e236f82c8f464dc372dbff51a69a4cc0b6",
+        "after_sha256": "0b53a249395b340960e54d49327249e236f82c8f464dc372dbff51a69a4cc0b6",
+        "match": true,
+        "attempts": 1
+      }
+    },
+    {
+      "sprite_id": 79543,
+      "png_path": "E:\\stacklands\\tools\\action_battle_test\\art\\guigu_male101_ink_hd\\sprite_79543.png",
+      "width": 756,
+      "height": 2079,
+      "png_mode": "RGBA",
+      "png_sha256": "c33fb2dc5b24b017c672ba4afb3cb825f87bf407c02e69457895228427c5c0a2",
+      "file_size_bytes": 776567,
+      "alpha_nonzero_bbox": [
+        161,
+        168,
+        545,
+        1811
+      ],
+      "alpha_ge_128_bbox": [
+        163,
+        172,
+        537,
+        1808
+      ],
+      "read_at": "2026-11-04T21:40:20.504+08:00",
+      "status": "本轮待最终注册验收",
+      "stable_read_check": {
+        "before_sha256": "c33fb2dc5b24b017c672ba4afb3cb825f87bf407c02e69457895228427c5c0a2",
+        "after_sha256": "c33fb2dc5b24b017c672ba4afb3cb825f87bf407c02e69457895228427c5c0a2",
+        "match": true,
+        "attempts": 1
+      }
+    },
+    {
+      "sprite_id": 84807,
+      "png_path": "E:\\stacklands\\tools\\action_battle_test\\art\\guigu_male101_ink_hd\\sprite_84807.png",
+      "width": 887,
+      "height": 1774,
+      "png_mode": "RGBA",
+      "png_sha256": "0381c2d24909e6f6f07c0ab983daa59b11dd889fb13b8fb35cc9632741ddabf8",
+      "file_size_bytes": 779482,
+      "alpha_nonzero_bbox": [
+        35,
+        71,
+        867,
+        1685
+      ],
+      "alpha_ge_128_bbox": [
+        63,
+        110,
+        687,
+        1681
+      ],
+      "read_at": "2026-11-04T21:40:20.520+08:00",
+      "status": "本轮待最终注册验收",
+      "stable_read_check": {
+        "before_sha256": "0381c2d24909e6f6f07c0ab983daa59b11dd889fb13b8fb35cc9632741ddabf8",
+        "after_sha256": "0381c2d24909e6f6f07c0ab983daa59b11dd889fb13b8fb35cc9632741ddabf8",
+        "match": true,
+        "attempts": 1
+      }
+    },
+    {
+      "sprite_id": 85649,
+      "png_path": "E:\\stacklands\\tools\\action_battle_test\\art\\guigu_male101_ink_hd\\sprite_85649.png",
+      "width": 834,
+      "height": 1886,
+      "png_mode": "RGBA",
+      "png_sha256": "143375ba3154c8d7f9c5e8b2d2a713c9b6228edfa26953781e4de4f20fb50e14",
+      "file_size_bytes": 1574165,
+      "alpha_nonzero_bbox": [
+        47,
+        31,
+        786,
+        1862
+      ],
+      "alpha_ge_128_bbox": [
+        55,
+        39,
+        779,
+        1846
+      ],
+      "read_at": "2026-11-04T21:40:20.537+08:00",
+      "status": "本轮待最终注册验收",
+      "stable_read_check": {
+        "before_sha256": "143375ba3154c8d7f9c5e8b2d2a713c9b6228edfa26953781e4de4f20fb50e14",
+        "after_sha256": "143375ba3154c8d7f9c5e8b2d2a713c9b6228edfa26953781e4de4f20fb50e14",
+        "match": true,
+        "attempts": 1
+      }
+    },
+    {
+      "sprite_id": 87557,
+      "png_path": "E:\\stacklands\\tools\\action_battle_test\\art\\guigu_male101_ink_hd\\sprite_87557.png",
+      "width": 745,
+      "height": 2110,
+      "png_mode": "RGBA",
+      "png_sha256": "c3570306be65e9cc185ad5791d8f4c976802c4f54cd67b1c132c1a403fd72947",
+      "file_size_bytes": 1197204,
+      "alpha_nonzero_bbox": [
+        33,
+        16,
+        723,
+        2067
+      ],
+      "alpha_ge_128_bbox": [
+        43,
+        21,
+        631,
+        2062
+      ],
+      "read_at": "2026-11-04T21:40:20.558+08:00",
+      "status": "本轮待最终注册验收",
+      "stable_read_check": {
+        "before_sha256": "c3570306be65e9cc185ad5791d8f4c976802c4f54cd67b1c132c1a403fd72947",
+        "after_sha256": "c3570306be65e9cc185ad5791d8f4c976802c4f54cd67b1c132c1a403fd72947",
+        "match": true,
+        "attempts": 1
+      }
+    },
+    {
+      "sprite_id": 87679,
+      "png_path": "E:\\stacklands\\tools\\action_battle_test\\art\\guigu_male101_ink_hd\\sprite_87679.png",
+      "width": 887,
+      "height": 1774,
+      "png_mode": "RGBA",
+      "png_sha256": "ea41ecbf39deaf65f36a549b842c606993293466424efe11c6ba118d72016a70",
+      "file_size_bytes": 974706,
+      "alpha_nonzero_bbox": [
+        27,
+        0,
+        873,
+        1774
+      ],
+      "alpha_ge_128_bbox": [
+        195,
+        14,
+        682,
+        1760
+      ],
+      "read_at": "2026-11-04T21:40:20.578+08:00",
+      "status": "本轮待最终注册验收",
+      "stable_read_check": {
+        "before_sha256": "ea41ecbf39deaf65f36a549b842c606993293466424efe11c6ba118d72016a70",
+        "after_sha256": "ea41ecbf39deaf65f36a549b842c606993293466424efe11c6ba118d72016a70",
+        "match": true,
+        "attempts": 1
+      }
+    }
+  ]
+}

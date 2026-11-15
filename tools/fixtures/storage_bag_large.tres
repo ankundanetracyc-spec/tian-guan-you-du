@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="StorageBagItemData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/StorageBagItemData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+entity_name = "储物袋"
+definition_id = &"debug_storage_bag_large"
+description = "隔离滚动与大容量测试，不是正式品质或产出配置。"
+icon_path = "res://textures/items/storage_bag_20261108/storage_bag_2x2.png"
+item_category = "器具"
+item_subcategory = "储物袋"
+storage_quality = "一品"
+storage_width = 40
+storage_height = 22
+inventory_width = 2
+inventory_height = 2
+

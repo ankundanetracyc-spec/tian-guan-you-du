@@ -1,0 +1,102 @@
+{
+  "title": "分脉枢 Split 1×1",
+  "date": "2026-11-08",
+  "generator": "built-in image_gen",
+  "calls": 1,
+  "prompt": "Use case: stylized-concept. Asset type: ONE independent game-item component, a 1x1 SPLIT PULSE NEXUS for the supplied Chinese cultivation-game formation instrument. Image 1, the selected B ink-painted bronze formation plate, is the HIGHEST style reference; images 2 and 3 are the actual matching eye and sensor component references. These are STYLE/FAMILY REFERENCES ONLY, not edit targets. Match their bold dark ink contour, simplified grey-brown ancient copper planes, restrained grey-celadon jade accents, narrow ivory painted highlights, hand-painted dry-brush shading. Plain functional component, not modern machinery or photorealistic artifact.\n\nNative SQUARE canvas, true TRANSPARENT ALPHA background, safe clear margin. Strict exact 90-degree orthographic TOP VIEW, one complete low-profile component, only top faces and shallow painted edges, no upright post, perspective or external ground shadow. Readable at small game icon size.\n\nUnique physical silhouette: a substantial SINGLE COPPER SPINE entering from the LEFT and forking into TWO substantial copper branches, one toward TOP and one toward RIGHT, with a very small muted grey-celadon jade wedge nested between the two branches. Make it look like a crafted physical forked copper routing nexus with clear material body and two-prong division, NOT merely free-standing T-shaped painted lines or a thin cable junction. The two branches belong to the one integrated object. A compact asymmetrical notched fork / Y-like copper mechanism is suitable; keep it solid and restrained, not an ornate ornament.\n\nEXACTLY THREE and only three shallow copper signal contact sockets with tiny inset CINNABAR RED groove cores. Placement is mandatory: WEST/LEFT side at its vertical midpoint is the INPUT; NORTH/TOP side at its horizontal midpoint is one OUTPUT; EAST/RIGHT side at its vertical midpoint is the second OUTPUT. West and east socket centers must be horizontally aligned with the image center; north socket must be vertically aligned with the image center. The SOUTH/BOTTOM edge is CLOSED solid copper, with NO socket, no red contact and no fourth branch. Make each socket face outward in its specified cardinal direction, with the red core reaching the contact lip so a line could later meet it. Do not project any long line from any socket. All three red grooves are clearly inset in the copper object's own body, subtly leading from the single input copper spine into the two branches. Keep the core groove narrower than the body.\n\nFunction informs form only: it splits the SAME signal/event into two paths; it does NOT create energy or amplify anything. All contacts are signal cinnabar, there is NO gold/yellow/cyan energy outlet or additional port. No arrows, letters, numbers, AND gates, logic-diagram symbols, magical particle burst or power multiplier indicators.\n\nDo not draw a plate base, disk, square tile, other parts, UI, grid, frame, label, shield, flags, modern circuit board, chip pins, background wires, tubes, ropes, neon, sparkle or ground shadow. Genuine empty transparent exterior. Preserve original native-resolution output, no pre-rendered scene. ONE physical split-nexus item only.",
+  "referenced_image_paths": [
+    "E:/stacklands/docs/美术规范/阵盘项目画风对照_20261108/B_墨绘铜纹.png",
+    "E:/stacklands/docs/美术规范/铜纹阵盘基础元件_20261108/eye_1x1.png",
+    "E:/stacklands/docs/美术规范/铜纹阵盘基础元件_20261108/sensor_1x1.png"
+  ],
+  "reference_role": "均为生成前已查看的画风与器物家族参考；B为最高依据，不是编辑目标",
+  "raw_path": "E:/tmp/CodexData/generated_images/01a1ba6c-5f78-7ae3-a6b7-fe90e469ba47/exec-b72bc0a4-9936-4146-949b-dd92885fb84f.png",
+  "raw_backup": "raw/split_1x1_generated.png",
+  "output": "split_1x1.png",
+  "native_size": [
+    1254,
+    1254
+  ],
+  "alpha": {
+    "pixel_format": "Format32bppArgb",
+    "corner_alpha": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "center_alpha": 253,
+    "true_transparency": true,
+    "extrema": [
+      0,
+      255
+    ]
+  },
+  "sha256": "6055E7D360E8287363983C85AE25EA4C4B9221591F7ACB694602724C606424DF",
+  "port_spec": {
+    "W": "signal input",
+    "N": "signal output",
+    "E": "signal output",
+    "S": "closed, no port"
+  },
+  "function": "一入两出，保持同一事件身份，不复制能源、不放大阵脉振幅。",
+  "visual_check": "分叉铜脊、单枚灰青玉楔与三处朱砂槽；南侧实体封闭；无箭头、文字、供能色口或背景自由T线。",
+  "alignment_note": "图内三口的实际有色芯UV另做只读测量；西东口在原生画布中略偏下，接线预览须按实际锚点适配，不宣称像素中心已严格位于边中点。",
+  "postprocess": "仅复制内置生图原生PNG与raw备份，无裁切、缩放、改色、抠图或像素编辑。",
+  "status": "逻辑元件美术候选，未接入正式游戏或事件运行；端口方向与1×1占格依现行主案。",
+  "port_measurement": {
+    "W": {
+      "core_uv": [
+        0.16507,
+        0.57257
+      ],
+      "face_uv": [
+        0.11563,
+        0.57257
+      ],
+      "width_128": 5.51,
+      "core_bbox": [
+        162,
+        691,
+        252,
+        745
+      ]
+    },
+    "E": {
+      "core_uv": [
+        0.83931,
+        0.57217
+      ],
+      "face_uv": [
+        0.88517,
+        0.57217
+      ],
+      "width_128": 5.61,
+      "core_bbox": [
+        1012,
+        690,
+        1093,
+        745
+      ]
+    },
+    "N": {
+      "core_uv": [
+        0.50598,
+        0.2177
+      ],
+      "face_uv": [
+        0.50598,
+        0.16587
+      ],
+      "width_128": 5.21,
+      "core_bbox": [
+        609,
+        225,
+        660,
+        321
+      ]
+    }
+  },
+  "measurement_convention": "只读PIL颜色/alpha分析；UV基于完整原生PNG含安全留白。core为真实朱砂槽芯中心，face为沿口向外的主体透明边界，不表示铜唇已开透。",
+  "preview_adaptation": "信号主干6.5逻辑px，三口收至约5.2-5.6px。西东口较模型格边中点向下约9.3逻辑px，预览须在透明留白内弯接；北口横向偏移约0.8px。三口端面有约1.7px墨边，连接时仅预览层补短槽，无像素编辑。"
+}

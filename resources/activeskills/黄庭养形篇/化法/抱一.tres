@@ -10,8 +10,8 @@ skill_name = "抱一"
 skill_type = 3
 description = "本场已主动使气血下降后可用；获得气血1层。若施放前气血为0层，获得气血后额外回复最大生命×3%。
 使用次数：本场1次"
-source_gongfa_name = "黄庭养形篇"
-gongfa_rewrite_effect_ids = Array[String](["huangting_c2_baoyi"])
+source_gongfa_name = "胎息经"
+gongfa_rewrite_effect_ids = Array[String](["zhuanxi_c2_baoyi"])
 energy_cost = 0
 target_type = 1
 special_effects = Array[Dictionary]([{"effect":"gain_qi_blood", "count":1}])

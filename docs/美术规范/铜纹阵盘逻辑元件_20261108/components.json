@@ -1,0 +1,419 @@
+{
+  "version": 1,
+  "date": "2026-11-08",
+  "status": "铜纹逻辑元件设计候选，未接正式运行",
+  "style_reference": "../阵盘项目画风对照_20261108/B_墨绘铜纹.png",
+  "units_per_cell": 128,
+  "wire_style_reference": "../铜纹阵盘基础元件_20261108/components.json",
+  "art_layout": "完整PNG在逻辑矩形内按art_offset_128平移显示；旋转时连同UV与偏移一起旋转，逻辑格和端口不动。",
+  "no_energy_ports": true,
+  "components": [
+    {
+      "id": "counter",
+      "name": "普通候枢",
+      "image": "counter_2x1.png",
+      "native_size": [
+        1774,
+        887
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "complexity": 2,
+      "art_offset_128": [
+        3.33,
+        -1.23
+      ],
+      "function": "每N个不同合格事件输出一次，计数重新开始。",
+      "ports": [
+        {
+          "id": "signal_in",
+          "kind": "signal",
+          "direction": "input",
+          "side": "west",
+          "cell": [
+            0,
+            0
+          ],
+          "logical_boundary": [
+            0,
+            64
+          ],
+          "slot_center_uv": [
+            0.0716,
+            0.5096
+          ],
+          "color_mouth_uv": [
+            0.0519,
+            0.5096
+          ],
+          "slot_inner_width_at_128": 6.49
+        },
+        {
+          "id": "signal_out",
+          "kind": "signal",
+          "direction": "output",
+          "side": "north",
+          "cell": [
+            1,
+            0
+          ],
+          "logical_boundary": [
+            192,
+            0
+          ],
+          "slot_center_uv": [
+            0.737,
+            0.2266
+          ],
+          "color_mouth_uv": [
+            0.737,
+            0.1871
+          ],
+          "slot_inner_width_at_128": 6.35
+        }
+      ],
+      "display_size": [
+        256,
+        128
+      ]
+    },
+    {
+      "id": "rhythm",
+      "name": "节律枢",
+      "image": "rhythm_2x1.png",
+      "native_size": [
+        1774,
+        887
+      ],
+      "footprint": [
+        2,
+        1
+      ],
+      "complexity": 2,
+      "art_offset_128": [
+        -3.33,
+        -6.49
+      ],
+      "function": "按既有节拍规则控制已有信号通过，本轮不设置新间隔。",
+      "ports": [
+        {
+          "id": "signal_in",
+          "kind": "signal",
+          "direction": "input",
+          "side": "west",
+          "cell": [
+            0,
+            0
+          ],
+          "logical_boundary": [
+            0,
+            64
+          ],
+          "slot_center_uv": [
+            0.0829,
+            0.5507
+          ],
+          "color_mouth_uv": [
+            0.0631,
+            0.5507
+          ],
+          "slot_inner_width_at_128": 11.26
+        },
+        {
+          "id": "signal_out",
+          "kind": "signal",
+          "direction": "output",
+          "side": "north",
+          "cell": [
+            1,
+            0
+          ],
+          "logical_boundary": [
+            192,
+            0
+          ],
+          "slot_center_uv": [
+            0.763,
+            0.1736
+          ],
+          "color_mouth_uv": [
+            0.763,
+            0.1342
+          ],
+          "slot_inner_width_at_128": 11.26
+        }
+      ],
+      "display_size": [
+        256,
+        128
+      ]
+    },
+    {
+      "id": "filter",
+      "name": "鉴脉门",
+      "image": "filter_1x1.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "complexity": 1,
+      "art_offset_128": [
+        0,
+        -1.02
+      ],
+      "function": "按已有来源或振幅条件筛选信号。",
+      "ports": [
+        {
+          "id": "signal_in",
+          "kind": "signal",
+          "direction": "input",
+          "side": "west",
+          "cell": [
+            0,
+            0
+          ],
+          "logical_boundary": [
+            0,
+            64
+          ],
+          "slot_center_uv": [
+            0.1922,
+            0.508
+          ],
+          "color_mouth_uv": [
+            0.1643,
+            0.508
+          ],
+          "slot_inner_width_at_128": 7.25
+        },
+        {
+          "id": "signal_out",
+          "kind": "signal",
+          "direction": "output",
+          "side": "east",
+          "cell": [
+            0,
+            0
+          ],
+          "logical_boundary": [
+            128,
+            64
+          ],
+          "slot_center_uv": [
+            0.8094,
+            0.508
+          ],
+          "color_mouth_uv": [
+            0.8373,
+            0.508
+          ],
+          "slot_inner_width_at_128": 7.25
+        }
+      ],
+      "display_size": [
+        128,
+        128
+      ]
+    },
+    {
+      "id": "split",
+      "name": "分脉枢",
+      "image": "split_1x1.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "complexity": 1,
+      "art_offset_128": [
+        -0.77,
+        -9.27
+      ],
+      "function": "一入分送两出，保持同一事件身份。",
+      "ports": [
+        {
+          "id": "signal_in",
+          "kind": "signal",
+          "direction": "input",
+          "side": "west",
+          "cell": [
+            0,
+            0
+          ],
+          "logical_boundary": [
+            0,
+            64
+          ],
+          "slot_center_uv": [
+            0.1651,
+            0.5726
+          ],
+          "color_mouth_uv": [
+            0.1156,
+            0.5726
+          ],
+          "slot_inner_width_at_128": 5.5
+        },
+        {
+          "id": "signal_out_n",
+          "kind": "signal",
+          "direction": "output",
+          "side": "north",
+          "cell": [
+            0,
+            0
+          ],
+          "logical_boundary": [
+            64,
+            0
+          ],
+          "slot_center_uv": [
+            0.506,
+            0.2177
+          ],
+          "color_mouth_uv": [
+            0.506,
+            0.1659
+          ],
+          "slot_inner_width_at_128": 5.2
+        },
+        {
+          "id": "signal_out_e",
+          "kind": "signal",
+          "direction": "output",
+          "side": "east",
+          "cell": [
+            0,
+            0
+          ],
+          "logical_boundary": [
+            128,
+            64
+          ],
+          "slot_center_uv": [
+            0.8393,
+            0.5722
+          ],
+          "color_mouth_uv": [
+            0.8852,
+            0.5722
+          ],
+          "slot_inner_width_at_128": 5.6
+        }
+      ],
+      "display_size": [
+        128,
+        128
+      ]
+    },
+    {
+      "id": "merge",
+      "name": "合脉枢",
+      "image": "merge_1x1.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "footprint": [
+        1,
+        1
+      ],
+      "complexity": 1,
+      "art_offset_128": [
+        1.59,
+        0.05
+      ],
+      "function": "任一路可转发，同一事件从多路回到此处只传一次。",
+      "ports": [
+        {
+          "id": "signal_in_w",
+          "kind": "signal",
+          "direction": "input",
+          "side": "west",
+          "cell": [
+            0,
+            0
+          ],
+          "logical_boundary": [
+            0,
+            64
+          ],
+          "slot_center_uv": [
+            0.1798,
+            0.4996
+          ],
+          "color_mouth_uv": [
+            0.1013,
+            0.4996
+          ],
+          "slot_inner_width_at_128": 4
+        },
+        {
+          "id": "signal_in_s",
+          "kind": "signal",
+          "direction": "input",
+          "side": "south",
+          "cell": [
+            0,
+            0
+          ],
+          "logical_boundary": [
+            64,
+            128
+          ],
+          "slot_center_uv": [
+            0.4876,
+            0.8034
+          ],
+          "color_mouth_uv": [
+            0.4876,
+            0.8732
+          ],
+          "slot_inner_width_at_128": 3.8
+        },
+        {
+          "id": "signal_out",
+          "kind": "signal",
+          "direction": "output",
+          "side": "east",
+          "cell": [
+            0,
+            0
+          ],
+          "logical_boundary": [
+            128,
+            64
+          ],
+          "slot_center_uv": [
+            0.8309,
+            0.4996
+          ],
+          "color_mouth_uv": [
+            0.8995,
+            0.4996
+          ],
+          "slot_inner_width_at_128": 4
+        }
+      ],
+      "display_size": [
+        128,
+        128
+      ]
+    }
+  ],
+  "rendering_notes": [
+    "朱砂主干内芯沿基础组6.5，接头按实际口宽缓收；图库只作真实比例展示。",
+    "仅补口内封边短槽，保留铜唇；不生成新的端口。",
+    "五件的状态和计数另层显示，原图的筹片数量不等于参数。"
+  ],
+  "rules_reference": "../../plans/基础阵盘四格单层接线实施_20261108.md"
+}

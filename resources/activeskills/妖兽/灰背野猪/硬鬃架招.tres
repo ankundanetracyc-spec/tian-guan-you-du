@@ -6,13 +6,17 @@
 script = ExtResource("1")
 non_response_skill = null
 skill_name = "硬鬃架招"
-description = "敌方物理攻击自身时自动打出。化解层数 = 5 + floor(体魄/3)。\n未触发应对时空放，不消耗精力、法力或使用次数，不产生效果。"
+description = "敌方物理攻击自身时自动打出。化解层数 = 5 + floor(体魄/3)。\n未触发应对时空放，不消耗体力、法力或使用次数，不产生效果。"
 skill_type = 3
 energy_cost = 0
 target_type = 0
 range_min = 0
 range_max = 0
 keywords = Array[String](["应对"])
+board_definition_version = 1
+board_size = Vector2i(1, 1)
+board_max_placements = 1
+board_rotation_allowed = false
 counter_condition = "on_physical_attacked"
 stacks_formula = "5 + floor(physique/3)"
 status_effects = Array[Dictionary]([{"status_id":"化解","stacks":5}])

@@ -1,0 +1,188 @@
+{
+	"baseline_sha256": "8f231a7f034902910e5b7520b7ba761c1fd9f9306672c3c25bc457e3ebbaf859",
+	"checks": 29,
+	"clock_reset": true,
+	"failures": [],
+	"first_release_rear_trail": 25.769062936306,
+	"gaits": {
+		"114.0": {
+			"body_axis_lean_degrees": [
+				16.1002082824707,
+				21.2147655487061
+			],
+			"elbow_flex_degrees": {
+				"far": [
+					24.6519012451172,
+					112.30753326416
+				],
+				"near": [
+					98.9218978881836,
+					112.532203674316
+				]
+			},
+			"far_hand_span": 1.18699648976326,
+			"hand_x_over_own_arm_length": {
+				"far": [
+					-0.790983915328979,
+					0.39601257443428
+				],
+				"near": [
+					0.461638212203979,
+					0.602973520755768
+				]
+			},
+			"maximum_knee_flex_degrees": 100.423113649633,
+			"mean_front_trail": -17.3995190938314,
+			"mean_rear_trail": -23.2902249654134,
+			"near_hand_span": 0.141335308551788
+		},
+		"235.0": {
+			"body_axis_lean_degrees": [
+				16.9398555755615,
+				21.9571838378906
+			],
+			"elbow_flex_degrees": {
+				"far": [
+					24.6528301239014,
+					112.297889709473
+				],
+				"near": [
+					98.9187698364258,
+					112.530281066895
+				]
+			},
+			"far_hand_span": 1.18695890903473,
+			"hand_x_over_own_arm_length": {
+				"far": [
+					-0.790953397750854,
+					0.396005511283875
+				],
+				"near": [
+					0.461513638496399,
+					0.602970004081726
+				]
+			},
+			"maximum_knee_flex_degrees": 104.654398764983,
+			"mean_front_trail": -24.7798227945964,
+			"mean_rear_trail": -31.7193532307943,
+			"near_hand_span": 0.141456365585327
+		}
+	},
+	"maximum_actual_sole_error": 0.00005340576171875,
+	"maximum_arm_length_error": 0.000133514404296875,
+	"maximum_floor_penetration": 0.00005340576171875,
+	"maximum_leg_length_error": 0.00011444091796875,
+	"maximum_opaque_hem_y": -8.81277465820313,
+	"passed": true,
+	"pause_frozen": true,
+	"planted_turn": {
+		"actual_near_contact_lift": 0.0,
+		"expected_mapped_phase": 0.09,
+		"mapped_sample_lift": 0.0,
+		"phase_before": 0.45,
+		"phase_mapping_error": 0.0
+	},
+	"preserved_poses": {
+		"AttackIdle": {
+			"maximum_angle_error": 0.0,
+			"maximum_position_error": 0.0,
+			"passed": true
+		},
+		"Idle": {
+			"maximum_angle_error": 0.0,
+			"maximum_position_error": 0.0,
+			"passed": true
+		},
+		"Step1": {
+			"maximum_angle_error": 0.0,
+			"maximum_position_error": 0.0,
+			"passed": true
+		},
+		"combo1": {
+			"maximum_angle_error": 0.0,
+			"maximum_position_error": 0.0,
+			"passed": true
+		},
+		"combo2": {
+			"maximum_angle_error": 0.0,
+			"maximum_position_error": 0.0,
+			"passed": true
+		},
+		"combo3": {
+			"maximum_angle_error": 0.0,
+			"maximum_position_error": 0.0,
+			"passed": true
+		},
+		"combo4": {
+			"maximum_angle_error": 0.0,
+			"maximum_position_error": 0.0,
+			"passed": true
+		},
+		"guard": {
+			"maximum_angle_error": 0.0,
+			"maximum_position_error": 0.0,
+			"passed": true
+		},
+		"preparing": {
+			"maximum_angle_error": 0.0,
+			"maximum_position_error": 0.0,
+			"passed": true
+		}
+	},
+	"sampled_contact_frames": 1080,
+	"settled": true,
+	"source_sha256": "2ff75793fd401beabf8c6afb2c4ab01efb63b313550625056f94a93564aee279",
+	"stop_samples": {
+		"1": {
+			"front_angle": 0.492788255214691,
+			"rear_angle": 0.691024780273438,
+			"rear_tip_x": 25.769062936306,
+			"seconds": 0.0166666666666667
+		},
+		"12": {
+			"front_angle": 0.381936579942703,
+			"rear_angle": 0.469212263822556,
+			"rear_tip_x": 14.057844825089,
+			"seconds": 0.2
+		},
+		"120": {
+			"front_angle": 0.0000765161239542067,
+			"rear_angle": 0.000134197020088322,
+			"rear_tip_x": -0.00111794541589921,
+			"seconds": 2.0
+		},
+		"18": {
+			"front_angle": 0.235818222165108,
+			"rear_angle": 0.273149102926254,
+			"rear_tip_x": 6.71905050706118,
+			"seconds": 0.3
+		},
+		"240": {
+			"front_angle": 0.0000000196145286679439,
+			"rear_angle": 0.0000155207271745894,
+			"rear_tip_x": 0.000159725401317701,
+			"seconds": 4.0
+		},
+		"36": {
+			"front_angle": 0.0355845354497433,
+			"rear_angle": 0.0558097325265408,
+			"rear_tip_x": 1.71560389078331,
+			"seconds": 0.6
+		},
+		"6": {
+			"front_angle": 0.48714742064476,
+			"rear_angle": 0.638302266597748,
+			"rear_tip_x": 21.9161425977945,
+			"seconds": 0.1
+		},
+		"60": {
+			"front_angle": 0.00694630621001124,
+			"rear_angle": 0.0105880098417401,
+			"rear_tip_x": 0.187355105956607,
+			"seconds": 1.0
+		}
+	},
+	"teleport_reset": true,
+	"world_load_error": 0.0,
+	"world_turn_error": 0.0
+}

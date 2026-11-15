@@ -1,0 +1,217 @@
+{
+  "date": "2026-11-07",
+  "browser": "Microsoft Edge / Playwright CLI",
+  "scope": "浏览器独立样稿，不是Godot实机",
+  "passed": 49,
+  "failed": [],
+  "checks": [
+    {
+      "name": "11种现行丹药、25套样方",
+      "pass": true
+    },
+    {
+      "name": "开放目录不包含通脉和静心",
+      "pass": true
+    },
+    {
+      "name": "丹方列表全部可查",
+      "pass": true
+    },
+    {
+      "name": "丹药名称检索",
+      "pass": true
+    },
+    {
+      "name": "归元定息方配伍",
+      "pass": true
+    },
+    {
+      "name": "切换样方显示真实投料",
+      "pass": true
+    },
+    {
+      "name": "我的丹方空白状态",
+      "pass": true
+    },
+    {
+      "name": "百工没有开炉或传送入口",
+      "pass": true
+    },
+    {
+      "name": "开炉按钮禁用",
+      "pass": true
+    },
+    {
+      "name": "炼丹不套用炼器8份上限",
+      "pass": true
+    },
+    {
+      "name": "同一药材不能重复占药位",
+      "pass": true
+    },
+    {
+      "name": "选材零检索状态",
+      "pass": true
+    },
+    {
+      "name": "五行和功用组合筛选",
+      "pass": true
+    },
+    {
+      "name": "Esc只关闭选材并保留份数",
+      "pass": true
+    },
+    {
+      "name": "载入样方恢复完整剂量",
+      "pass": true
+    },
+    {
+      "name": "空丹方名拒绝保存",
+      "pass": true
+    },
+    {
+      "name": "临时丹方可在百工查阅",
+      "pass": true
+    },
+    {
+      "name": "自拟配伍保留药位与数量",
+      "pass": true
+    },
+    {
+      "name": "保存丹方不随草稿改动",
+      "pass": true
+    },
+    {
+      "name": "取消清空保留配伍",
+      "pass": true
+    },
+    {
+      "name": "空炉提示缺君药且不可存方",
+      "pass": true
+    },
+    {
+      "name": "开炼按钮禁用",
+      "pass": true
+    },
+    {
+      "name": "基础投料用度按当前公式",
+      "pass": true
+    },
+    {
+      "name": "炼器8份上界",
+      "pass": true
+    },
+    {
+      "name": "炼器非法份数恢复原值",
+      "pass": true
+    },
+    {
+      "name": "炼器按岗位筛选",
+      "pass": true
+    },
+    {
+      "name": "更换材料保留份数",
+      "pass": true
+    },
+    {
+      "name": "性材岗位当前上限",
+      "pass": true
+    },
+    {
+      "name": "辅体岗位当前上限",
+      "pass": true
+    },
+    {
+      "name": "空器作显示必需岗位",
+      "pass": true
+    },
+    {
+      "name": "设施返回天工峰不跨地点",
+      "pass": true
+    },
+    {
+      "name": "存录来自现有样例",
+      "pass": true
+    },
+    {
+      "name": "空存录状态",
+      "pass": true
+    },
+    {
+      "name": "说明与主界面分离",
+      "pass": true
+    },
+    {
+      "name": "Esc收起说明",
+      "pass": true
+    },
+    {
+      "name": "刷新后临时配伍不持久保存",
+      "pass": true
+    },
+    {
+      "name": "无网络写入、无浏览器持久存储",
+      "pass": true
+    },
+    {
+      "name": "1920 recipes边界、中央内容与字体",
+      "pass": true
+    },
+    {
+      "name": "1920 records边界、中央内容与字体",
+      "pass": true
+    },
+    {
+      "name": "1920 alchemy边界、中央内容与字体",
+      "pass": true
+    },
+    {
+      "name": "1920 forging边界、中央内容与字体",
+      "pass": true
+    },
+    {
+      "name": "1280 recipes边界、中央内容与字体",
+      "pass": true
+    },
+    {
+      "name": "1280 records边界、中央内容与字体",
+      "pass": true
+    },
+    {
+      "name": "1280 alchemy边界、中央内容与字体",
+      "pass": true
+    },
+    {
+      "name": "1280 forging边界、中央内容与字体",
+      "pass": true
+    },
+    {
+      "name": "小窗口选材窗不越界",
+      "pass": true
+    },
+    {
+      "name": "沉浸查看与返回入口",
+      "pass": true
+    },
+    {
+      "name": "Esc恢复样稿切换栏",
+      "pass": true
+    },
+    {
+      "name": "没有页面脚本错误",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "mutations": [],
+  "screenshots": [
+    "output/playwright/baigong20261107-recipes-1920.png",
+    "output/playwright/baigong20261107-records-1920.png",
+    "output/playwright/baigong20261107-alchemy-1920.png",
+    "output/playwright/baigong20261107-forging-1920.png",
+    "output/playwright/baigong20261107-recipes-1280.png",
+    "output/playwright/baigong20261107-records-1280.png",
+    "output/playwright/baigong20261107-alchemy-1280.png",
+    "output/playwright/baigong20261107-forging-1280.png"
+  ]
+}

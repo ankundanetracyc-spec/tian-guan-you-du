@@ -1,0 +1,287 @@
+{
+  "schema_version": 1,
+  "inspected_at": "2026-11-05T02:27:00.685+08:00",
+  "input": {
+    "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near.png",
+    "width": 1254,
+    "height": 1254,
+    "png_sha256": "b5637eb58dd30de992295a09037a13fb7703ca2756b178148cf20fbf94b894ba",
+    "actual_alpha_core_bbox": [
+      468,
+      147,
+      708,
+      1004
+    ]
+  },
+  "scope": "只读实际masterPNG；本JSON不是production registration/skin修改。",
+  "actual_landmarks": {
+    "shoulder_cap_top_y": 147,
+    "shoulder_broad_section_y_approx": [
+      241,
+      280
+    ],
+    "shoulder_broad_section_width_approx": 185,
+    "shoulder_axis_suggestion": [
+      615,
+      272
+    ],
+    "shoulder_qualification": "肩骨pivot不画在图上；(615,272)是结合实际肩帽中轴给的canonical挂接建议，不能称实际测得骨pivot。",
+    "elbow_narrowest": {
+      "minimum_width_px": 98,
+      "plateau_y": [
+        572,
+        582
+      ],
+      "center_x": 595,
+      "canonical_suggestion": [
+        595,
+        577
+      ]
+    },
+    "wrist_skin_contact": {
+      "canonical_suggestion": [
+        610,
+        870
+      ],
+      "x600_first_stable_skin_y": 873,
+      "x610_first_stable_skin_y": 870,
+      "x620_first_stable_skin_y": 867,
+      "definition": "R-G>22,G-B>12,A>=200,R>150连续4行；斜袖口的皮肤出口随x变化，不能只读单个y或照搬guide875。"
+    },
+    "opening": {
+      "lower_left": [
+        468.0,
+        907.9672343814075
+      ],
+      "upper_right": [
+        688.0,
+        847.0444319236451
+      ],
+      "line_y_equals_mx_plus_b": [
+        -0.27692182935346527,
+        1037.5666505188292
+      ],
+      "line_fit_max_residual_px": 0.9672343814074793,
+      "length_px": 228.27962646567377,
+      "wrist_to_upper_px": 81.30779855406347,
+      "wrist_to_lower_px": 146.9881317881574,
+      "upper_to_lower_clearance_ratio": [
+        1,
+        1.8077986909265726
+      ]
+    },
+    "palm_transverse_width_samples": [
+      {
+        "y": 900,
+        "left": 567,
+        "right_exclusive": 652,
+        "width": 85
+      },
+      {
+        "y": 910,
+        "left": 565,
+        "right_exclusive": 653,
+        "width": 88
+      },
+      {
+        "y": 920,
+        "left": 565,
+        "right_exclusive": 653,
+        "width": 88
+      },
+      {
+        "y": 930,
+        "left": 566,
+        "right_exclusive": 655,
+        "width": 89
+      },
+      {
+        "y": 940,
+        "left": 566,
+        "right_exclusive": 657,
+        "width": 91
+      }
+    ],
+    "opening_to_palm_width_ratio_range": [
+      2.508567323798613,
+      2.6856426643020446
+    ],
+    "cloth_width_samples": [
+      {
+        "y": 250,
+        "left": 523,
+        "right_exclusive": 708,
+        "width": 185
+      },
+      {
+        "y": 280,
+        "left": 523,
+        "right_exclusive": 706,
+        "width": 183
+      },
+      {
+        "y": 350,
+        "left": 528,
+        "right_exclusive": 692,
+        "width": 164
+      },
+      {
+        "y": 400,
+        "left": 533,
+        "right_exclusive": 681,
+        "width": 148
+      },
+      {
+        "y": 450,
+        "left": 538,
+        "right_exclusive": 669,
+        "width": 131
+      },
+      {
+        "y": 577,
+        "left": 546,
+        "right_exclusive": 644,
+        "width": 98
+      },
+      {
+        "y": 650,
+        "left": 529,
+        "right_exclusive": 653,
+        "width": 124
+      },
+      {
+        "y": 700,
+        "left": 516,
+        "right_exclusive": 662,
+        "width": 146
+      },
+      {
+        "y": 750,
+        "left": 504,
+        "right_exclusive": 671,
+        "width": 167
+      },
+      {
+        "y": 800,
+        "left": 492,
+        "right_exclusive": 681,
+        "width": 189
+      },
+      {
+        "y": 830,
+        "left": 485,
+        "right_exclusive": 687,
+        "width": 202
+      },
+      {
+        "y": 840,
+        "left": 483,
+        "right_exclusive": 689,
+        "width": 206
+      }
+    ]
+  },
+  "intent_vs_actual": {
+    "guide_v15_shoulders": [
+      620,
+      272
+    ],
+    "guide_v15_elbow": [
+      600,
+      610
+    ],
+    "guide_v15_wrist": [
+      610,
+      875
+    ],
+    "actual_elbow_is_above_guide_px": 33,
+    "two_palm_intent": "实测斜口长约228px、掌横宽85..91px，即约2.5..2.7倍，不等同精确2倍。",
+    "one_to_two_clearance_intent": "以实际出口W=(610,870)计算约1:1.81，接近但不是精确1:2。",
+    "flare_intent": "肘最细98，随后650/700/750/800/830行依次124/146/167/189/202，支持单调喇叭展开；实际前臂近口比上臂中段148/131宽。",
+    "shared_chart": "near/far若采用同一master，应复用同一canonical chart与同一physicalScale，手背/掌面与拳状态不应另缩整条袖。"
+  },
+  "color": {
+    "master": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near.png",
+      "sha256": "b5637eb58dd30de992295a09037a13fb7703ca2756b178148cf20fbf94b894ba",
+      "roi_px": [
+        580,
+        180,
+        620,
+        220
+      ],
+      "opaque_pixels": 1600,
+      "rgb_median": [
+        244.0,
+        231.0,
+        221.0
+      ],
+      "Lab_D65": [
+        92.4008382432414,
+        2.7340535439407954,
+        6.437889436068955
+      ]
+    },
+    "body": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\body.png",
+      "sha256": "9a87016e7b3aaf208d369fd7033cb0fa62f31ec8690cb2727d050120099a3109",
+      "roi_px": [
+        445,
+        250,
+        475,
+        290
+      ],
+      "opaque_pixels": 1200,
+      "rgb_median": [
+        247.0,
+        237.0,
+        229.0
+      ],
+      "Lab_D65": [
+        94.31254184148787,
+        2.0124756239888186,
+        5.06786088236475
+      ]
+    },
+    "comparison": {
+      "delta_Lab_master_minus_body": [
+        -1.9117035982464756,
+        0.7215779199519767,
+        1.3700285537042056
+      ],
+      "delta_E76": 2.460134870301948,
+      "interpretation": "新master比当前body净米白略暗、稍偏暖黄；已比旧near的5.14L*差距缩小，但不能说完全同色。"
+    }
+  },
+  "alpha_edge_observations": {
+    "alpha_band_counts": {
+      "1..15": 8467,
+      "16..63": 954,
+      "64..127": 830,
+      "128..249": 4261,
+      "250..255": 114360
+    },
+    "near_white_rgb_ge245_nonzero_pixels": 4941,
+    "near_white_rgb_ge245_max_alpha": 11,
+    "connected_components_by_alpha_threshold": {
+      "1": {
+        "component_count": 469,
+        "pixels_outside_largest_component": 887
+      },
+      "16": {
+        "component_count": 1,
+        "pixels_outside_largest_component": 0
+      },
+      "64": {
+        "component_count": 1,
+        "pixels_outside_largest_component": 0
+      },
+      "128": {
+        "component_count": 1,
+        "pixels_outside_largest_component": 0
+      }
+    },
+    "assessment": "RGB有白色散点与边缘残留，但这些RGB三通道>=245的像素Alpha全部低于16；A>=16只有一个连通主体。未发现高不透明纯白毛边或独立雾团。Alpha1..15的散点是否在实际放大/混合中可见仍需正确Alpha实绘，不能仅凭黑底预览把它们叫不透明白块。"
+  },
+  "approval_status": "真实输出测量，不据提示词宣称匹配；未代替整套动作试穿或用户视觉批准。"
+}

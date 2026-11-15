@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="StatusEffect" format=3]
+
+[ext_resource type="Script" path="res://csharp/battle/StatusEffect.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+effect_id = "僵直"
+name = "僵直"
+description = "每层对应1战斗帧，每推进1战斗帧减少1层，层数归零解除。期间行动条停止推进，已有进度保留。计时跟随战斗倍速，暂停与动作演出不计时。再次施加刷新为本次层数，不累加。层数由施加招式按双方属性计算；施加者每低一个大境界，施加概率与时长各乘20%；最终不足1帧时不施加。"
+is_debuff = true
+max_stacks = 120
+frame_counted_layers = true
+duration_default = 1
+duration_type = 4

@@ -1,0 +1,94 @@
+{
+  "scope": "角色七页与按钮原生实装；等待统一构建后的两档GPU原生鼠标验证，此记录不代替运行验收。",
+  "sources": [
+    {
+      "path": "csharp/panel/InfoPanel.Paper.cs",
+      "sha256": "8063a703b312d554efaa5d7d1386ef86308c2f2e05b14c4177a93a362652c273"
+    },
+    {
+      "path": "csharp/panel/InfoPanel.Redesign.cs",
+      "sha256": "f5e7c026d48ff8a56bcfdc15413c227ed58aab4b003c729d8a247fef0578022b"
+    },
+    {
+      "path": "csharp/panel/InfoPanel.Attributes.cs",
+      "sha256": "71254ceb781670e299dd79b258c805b6de5b4f56eed6d29bdbed3df906e00224"
+    },
+    {
+      "path": "csharp/panel/InfoPanel.WorldStatus.cs",
+      "sha256": "efbf825594b3364e97e54f4bc2fbda3b4efbf920a44a8c963e3021e291d5a4a9"
+    },
+    {
+      "path": "csharp/panel/InfoPanel.Overview.cs",
+      "sha256": "b777a971ce644729d62584410f744108fafbca2b9f2be3209725613c70ff6c84"
+    },
+    {
+      "path": "csharp/panel/InfoPanel.EquipmentLayout.cs",
+      "sha256": "4d159d4fc2c2434a9d2befa824e09c87356907300efe2cb89b7921a41d335483"
+    },
+    {
+      "path": "csharp/panel/InfoPanel.EquipmentTotals.cs",
+      "sha256": "bffb977063f2523a75e2554c0ee2d000190a93568a388e8993dcd04478e6a7fd"
+    },
+    {
+      "path": "csharp/panel/InfoPanel.Supplies.cs",
+      "sha256": "51e2870a959610964609b95be6b012a242a98868a8c9c189cdc19ccf5fe93da0"
+    },
+    {
+      "path": "csharp/panel/InfoPanel.ManualLibrary.cs",
+      "sha256": "5790ee4904c8f58b9b5739abbc7570e659f31eba6d074efcee4eb0feed02cff2"
+    },
+    {
+      "path": "csharp/panel/InfoPanel.SkillLibrary.cs",
+      "sha256": "d013e1fc1a95ac20a331dd7082fd8a379fa1738e6f5acde607c6b17da613485d"
+    },
+    {
+      "path": "csharp/panel/InfoPanel.SkillRewrites.cs",
+      "sha256": "be568cc9235fd3ee1960258e3792f566ff60d9553f8f5c0dd2336cf84165f1c2"
+    },
+    {
+      "path": "csharp/panel/InfoPanel.RelationsLayout.cs",
+      "sha256": "de1485fd4fa5cd56b629a328b6d119271b529123ba4ccd6e18f8f1e1c61529ce"
+    },
+    {
+      "path": "csharp/panel/InfoPanel.NpcProbe.cs",
+      "sha256": "6e4191624a5ccf1e3ed6408c92473d7e42cf068f2beb411431ff36bc33d3c872"
+    },
+    {
+      "path": "csharp/panel/InfoPanel.cs",
+      "sha256": "4992221567cd5c177662580425df1979b4cd34ecf317a06383aa5d21b7759451"
+    },
+    {
+      "path": "csharp/debug/CharacterPaperUiSmoke.cs",
+      "sha256": "b428e681a771b277bf4774010cfc841c41c69c30563bf83d651916905b7031f8"
+    },
+    {
+      "path": "tools/CharacterPaperUiSmoke.tscn",
+      "sha256": "b0675de607343b453a2504d91fac25e28e711814f9741ef92c295253f5ecf036"
+    }
+  ],
+  "runtimeAssets": [
+    "textures/ui/crafting_paper_20261108/frame_atlas.png",
+    "textures/ui/crafting_paper_20261108/control_atlas.png",
+    "textures/ui/crafting_paper_20261108/button_regular.png",
+    "textures/ui/crafting_paper_20261108/button_primary.png",
+    "textures/ui/crafting_paper_20261108/button_tab.png",
+    "textures/ui/crafting_paper_20261108/button_icon.png",
+    "textures/ui/crafting_paper_20261108/input.png",
+    "textures/ui/crafting_paper_20261108/button_navigation.png",
+    "textures/ui/infopanel_nav_icons_ink_v1.png",
+    "textures/ui/infopanel_attribute_icons_ink_v2.png",
+    "textures/ui/character_20261012/relations_bridge_v1.png",
+    "resources/font/LXGWZhenKaiSlabGB-Regular.ttf"
+  ],
+  "sample": [
+    "docs/美术规范/角色与静室纸墨木石样稿_20261108/index.html#character/overview",
+    "docs/plans/界面与美术/角色与静室纸墨木石样稿_20261108.md"
+  ],
+  "notes": [
+    "源PNG不重绘、不修改；内部资料面板保持25显示边，最外层直接取原深木区域且不加外框。",
+    "七页为概览、属性、战斗、功法、造诣、装备、关系；独立造诣页继续读取人物真实图谱与学习资格。",
+    "普通操作、选择、书目使用Regular原纸纹与PaperButtonFeedback整面轻染，导航保留18单位／220毫秒及140毫秒装订边。",
+    "人物属性、技能、功法、装备、关系和状态来自现有运行提供者；八维心境无持久数据时显示未详。",
+    "当前正式战斗与装备字段保持，不接预装配、全屏配招、局部组合、卡牌规则或新存档字段。"
+  ]
+}

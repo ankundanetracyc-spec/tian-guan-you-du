@@ -6,4 +6,4 @@
 script = ExtResource("1")
 talent_id = "greyback_boar_swift_trot"
 talent_name = "迅蹄"
-description = "保留厚皮；额外行动速度 = 敏捷 × 0.5。"
+description = "保留厚皮；额外行动速度 = min(体魄×0.50, 神魂×0.50)。"

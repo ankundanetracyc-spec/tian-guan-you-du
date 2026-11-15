@@ -1,0 +1,123 @@
+{
+  "title": "玉虚内门·归墟行侧面骨骼分件候选",
+  "generated_source": "generated_source_atlas.png",
+  "illustration": "textures/characters/queue_avatar_design_20261103/yuxu_neimen_shouzhen_v3_ink.png",
+  "reference": "Guixu Mortal Realm / male cloud-robe skeleton",
+  "source_height": 200,
+  "source_scale": 0.21097,
+  "skeleton_nodes": 67,
+  "weighted_meshes": 7,
+  "rigid_bone_attachments": 2,
+  "active_parts": [
+    "torso",
+    "head",
+    "hair",
+    "sleeve_n",
+    "sleeve_f",
+    "mantle",
+    "shoes_n",
+    "shoes_f"
+  ],
+  "additional_overlay": "waist_sash",
+  "unmounted": "crown: pale tie is already part of the generated hair image",
+  "excluded_visual_parts": [
+    "arm_n",
+    "arm_f",
+    "leg_n",
+    "leg_f",
+    "pants_n",
+    "pants_f",
+    "body_contact",
+    "sit_cloth"
+  ],
+  "texture_dimensions": {
+    "torso": {
+      "texture": [
+        390,
+        1030
+      ],
+      "sourceMesh": [
+        195,
+        515
+      ]
+    },
+    "sleeve_n": {
+      "texture": [
+        236,
+        568
+      ],
+      "sourceMesh": [
+        118,
+        284
+      ]
+    },
+    "sleeve_f": {
+      "texture": [
+        236,
+        568
+      ],
+      "sourceMesh": [
+        118,
+        284
+      ]
+    },
+    "head": {
+      "texture": [
+        160,
+        246
+      ],
+      "sourceMesh": [
+        80,
+        123
+      ]
+    },
+    "hair": {
+      "texture": [
+        268,
+        618
+      ],
+      "sourceMesh": [
+        134,
+        309
+      ]
+    },
+    "shoes_n": {
+      "texture": [
+        194,
+        226
+      ],
+      "sourceMesh": [
+        97,
+        113
+      ]
+    },
+    "mantle": {
+      "texture": [
+        244,
+        194
+      ],
+      "sourceMesh": [
+        122,
+        97
+      ]
+    },
+    "shoes_f": {
+      "texture": [
+        194,
+        226
+      ],
+      "sourceMesh": [
+        97,
+        113
+      ]
+    }
+  },
+  "generated_source_atlas": "generated_source_atlas.png",
+  "generated_head_source": "generated_head_source.png",
+  "generated_shoe_source": "generated_shoe_source.png",
+  "source_rigid_part": "mantle",
+  "waist_sash_binding": "hips (node 1)",
+  "animation_preview": "bound_pose_preview.png",
+  "rest_preview": "assembled_clean.png",
+  "bone_overlay_preview": "rigged_preview.png"
+}

@@ -1,0 +1,33 @@
+{
+  "date": "2026-11-07",
+  "page": "田地改造子页",
+  "version": "v1",
+  "use_case": "ui-mockup",
+  "method": "内置 image_gen，v10 主页面作连续性参照，善功堂实机作风格参照",
+  "output": "田地改造子页_理想图_v1.png",
+  "dimensions": {
+    "width": 1672,
+    "height": 941
+  },
+  "references": [
+    {
+      "path": "田地切换与详细信息_理想图_v10.png",
+      "role": "主页面连续性与当前地块状态"
+    },
+    {
+      "path": "../玄览峰拓印接入_20261107/08_善功堂_1920.png",
+      "role": "木框、暖纸、灰蓝、楷体与纸面按钮风格"
+    }
+  ],
+  "user_request": "给我看看理想图，管理界面的这个子页面",
+  "state": "一号田未定植，目标月露苔，普通土层。添加材料页打开，未选择物品或数量，尚未预览。",
+  "operations": [
+    "查看实际已加入材料",
+    "从行囊选择准备加入的实物",
+    "选择材料后填写数量",
+    "预览当前/加入后/灵草需求，查看剩余缺项",
+    "按实际规则核对用量、时长与费用后确认"
+  ],
+  "scope": "静态子页理想图，与主页面 v10 配套，不替代主页面。未确定材料清单、资格、作用、用量、时长、费用或其他改造能力；未修改游戏代码或存档。",
+  "prompt": "Use case: ui-mockup.\nDeliver ONE polished landscape 16:9 Chinese cultivation-game MANAGEMENT SUBPAGE ideal UI, titled “田地改造”.\nThis is what opens from the existing single-field main page's “管理田地” button. It must be visibly an operational subpage, not another field overview.\n\nInput image roles:\nImage 1: the existing v10 field MAIN PAGE, continuity/style and context reference. Same world, 一号田, target 月露苔, currently unplanted, ordinary soil. Do NOT copy its large field illustration or previous/next field navigation.\nImage 2: actual 善功堂 screenshot, STYLE REFERENCE ONLY. Closely match its connected desaturated grey-brown wooden UI structure, matte depth, warm ivory paper insets, restrained blue-grey details and pale landscape wash in paper margins, readable dark ordinary Kaiti/slab Chinese, warm-paper framed buttons, subdued sage selected tabs. Do NOT copy its roof, pavilion background, hanging signs, tassels, flowers, shop counter, four goods columns or goods.\n\nPurpose:\nA separate “田地改造” child page for this ONE current field. Show how adding actual materials is operated: view existing inputs -> select an item from inventory -> set amount -> preview environment changes and remaining needs -> review actual inputs -> confirm.\nShow the legitimate INITIAL state with no material selected yet. There are no defined material recipes, effects, quantities, costs or times to invent. The screen must still look finished and useful, not like a loading skeleton.\nNo gameplay numbers, no fabricated item names or inventory, no imaginary material effects, no corpse recipe, no soil-type package. Do NOT use the word 基质.\n\nOVERALL LAYOUT:\nAn original near-fullscreen shallow connected grey-brown timber rectangular frame, warm ivory sheets inset, narrow desaturated blue-grey outer margin, readable restrained corner details, no scene background.\nTop slim title/context bar:\nLeft context “瑶圃峰 · 一号田”.\nCenter paper title “田地改造”.\nRight paper button “返回田地主页”.\nNo previous/next field controls on this child page; current field identity remains fixed while preparing a change.\nDirectly below header, a slim factual context row:\n“目标灵草：月露苔” and “未定植” and “原有土层：普通土层”.\nThen ONE horizontal navigation row of plain paper tabs:\n“添加材料” (selected subdued sage), “控温”, “水分”, “光照”, “聚灵”.\nThese are sections in this operational subpage. Only 添加材料 is open in this image.\nBody has TWO aligned functional areas: left about 52% width for material preparation, right about 48% for effects/needs preview. Shared timber divider. No giant farmland picture, no character, no multiple fields or mini-map. Do not waste space on decorative room/furniture.\n\nLEFT PAPER AREA — MATERIAL OPERATION:\nMain heading “材料投入”.\nA compact first section with heading “已加入材料”, value “暂无”. It represents actual inputs already in the ground, not today's pending selection. Do not give this empty list a giant blank region.\nFine divider.\nSecond section heading “本次准备加入”.\nA modest empty outlined PAPER ITEM SLOT with a plus sign, next to an obvious framed paper button “从行囊选择”.\nA concise value line “尚未选择材料”.\nBelow a clearly labeled quantity control:\n“添加数量” with a visibly disabled empty quantity field showing an em dash “—” and small disabled decrement/increment controls. The em dash is an empty state, not a number.\nSmall help line “选择材料后填写数量。”\nFine divider.\nThird compact section heading “本次投入”.\nText “选定材料后显示用量、操作时长与费用。”\nNo numeric cost, inventory, time, coin or formula.\nToward lower edge of this left preparation area, framed disabled paper button “预览变化” and a small disabled secondary text control “清空选择”.\nThese are disabled because no item/quantity has been chosen, not because of an error.\n\nRIGHT PAPER AREA — ENVIRONMENT BEFORE/AFTER VS NEEDS:\nHeading “环境变化预览”.\nSmall quiet state “尚未预览”.\nClean readable table with FOUR columns:\n“条件” | “当前” | “加入后” | “灵草需求”\nExactly five rows:\n“温度” | “偏暖” | “—” | “凉润”\n“灵力浓度” | “偏低” | “—” | “充足”\n“水分” | “湿润” | “—” | “湿润”\n“光照” | “直射” | “—” | “遮阴”\n“土层” | “普通土层” | “—” | “阴湿岩面”\nMake the headings and values sharp and aligned, fine horizontal rules, no dense dark spreadsheet grid.\nAll 加入后 values are em dashes because no material has been chosen and no preview performed. Do NOT fill them with improvements or arrows suggesting any material solves these issues.\nBelow the table, heading “当前缺项”.\nText “温度偏暖、灵力不足。”\nText “光照过强，土层不符。”\nThen one subtle explanatory line “预览后查看改善项与剩余缺项。”\nAt the bottom of this SAME right paper area, one framed disabled paper button “确认加入”.\nA short help line beside/above it “先选择材料并预览。”\nThere is no actual damage yet: this is an unplanted field. No stopped-growth/damaged badge, health bar, crop age, timers or harvest action.\n\nVISUAL / SEMANTIC HARD CONSTRAINTS:\n- This is a full separate management child page, not a popup piled over the main page, not two screens, not a storyboard.\n- Make the actual operations clear and reviewable: existing vs pending materials distinct, item entry, quantity, preview, inputs and final confirmation.\n- Root ground remains; adding a material does not select a preset soil profession or replace the whole ground automatically.\n- No invented amounts, material names, eligibility, effect mappings, costs, inventory or duration. No actual recipe or remains illustration.\n- Current state and uncommitted preview distinct. No previews or material slots have leaked onto the main screen because the main screen is not shown.\n- Match the existing game's 木框/暖纸/灰蓝/楷体 family, with connected original UI framing, no copied 善功堂 roof or scene.\n- Restrained matte hand-painted textures, consistent dark text and legible grey disabled text, no giant brush-calligraphy, gold glare, neon, bloom, glitter, fog or watermark.\n- Render every specified Chinese phrase legibly. No developer annotations, example labels, debug notes or blank decorative cards.\nDeliver the complete finished child-page ideal screenshot."
+}

@@ -104,7 +104,7 @@
               <fieldset>
                 <legend>费用与目标</legend>
                 <div class="form-grid three-columns">
-                  <label>精力费用<input id="cardEnergyCost" name="cardEnergyCost" type="number" min="0" max="3" step="1"></label>
+                  <label>体力费用<input id="cardEnergyCost" name="cardEnergyCost" type="number" min="0" max="3" step="1"></label>
                   <label>法力费用<input id="cardManaCost" name="cardManaCost" type="number" min="0" max="3" step="1"></label>
                   <label>灵识占用<input id="cardSpiritOccupy" name="cardSpiritOccupy" type="number" min="0" max="3" step="1"></label>
                   <label>目标类型<select id="cardTargetType" name="cardTargetType"></select></label>
@@ -287,8 +287,8 @@
               </div>
               <div class="test-section">
                 <div class="form-grid three-columns">
-                  <label>精力<input id="testEnergy" type="number" min="0" max="6" step="1"></label>
-                  <label>精力上限<input id="testMaxEnergy" type="number" min="1" max="12" step="1"></label>
+                  <label>体力<input id="testEnergy" type="number" min="0" max="6" step="1"></label>
+                  <label>体力上限<input id="testMaxEnergy" type="number" min="1" max="12" step="1"></label>
                   <label>法力<input id="testMana" type="number" min="0" max="9" step="1"></label>
                   <label>法力上限<input id="testMaxMana" type="number" min="0" max="9" step="1"></label>
                   <label>灵识占用<input id="testSpirit" type="number" min="0" max="9" step="1"></label>
@@ -305,7 +305,7 @@
 
             <section class="test-board panel-card">
               <div class="test-resource-bar">
-                <div class="resource-chip"><span>精力</span><strong id="testEnergyReadout">0/0</strong></div>
+                <div class="resource-chip"><span>体力</span><strong id="testEnergyReadout">0/0</strong></div>
                 <div class="resource-chip"><span>法力</span><strong id="testManaReadout">0/0</strong></div>
                 <div class="resource-chip"><span>灵识</span><strong id="testSpiritReadout">0/0</strong></div>
                 <div class="resource-chip enemy-chip"><span>敌方生命</span><strong id="testEnemyReadout">0</strong></div>
@@ -345,8 +345,8 @@
             </div>
           </div>
           <div class="rules-grid">
-            <article class="rule-card"><span class="rule-number">01</span><h2>三资源费用</h2><p>精力负责常规动作，每回合增加 3、上限通常为 6；法力回合开始恢复、回合结束清零；灵识是持续实体的占用容量。</p><code>energy_cost · mana_cost · spirit_occupy</code></article>
-            <article class="rule-card"><span class="rule-number">02</span><h2>卡牌牌头</h2><p>每张牌都应写明类型、关键词、精力、法力、灵识占用、目标与射程。应对和消耗属于关键词，不是牌型或资源。</p><code>ActiveSkillData</code></article>
+            <article class="rule-card"><span class="rule-number">01</span><h2>三资源费用</h2><p>体力负责常规动作，每回合增加 3、上限通常为 6；法力回合开始恢复、回合结束清零；灵识是持续实体的占用容量。</p><code>energy_cost · mana_cost · spirit_occupy</code></article>
+            <article class="rule-card"><span class="rule-number">02</span><h2>卡牌牌头</h2><p>每张牌都应写明类型、关键词、体力、法力、灵识占用、目标与射程。应对和消耗属于关键词，不是牌型或资源。</p><code>ActiveSkillData</code></article>
             <article class="rule-card"><span class="rule-number">03</span><h2>秘籍层级</h2><p>学会永久加成、辅修被动、纳气加成、化法改写和习得卡牌分开填写，不把技能库收益伪装成属性收益。</p><code>GongfaResource · GongfaChapterConfig</code></article>
             <article class="rule-card"><span class="rule-number">04</span><h2>化法边界</h2><p>加入只填结果牌与数量；替换必须写原基础牌、结果牌和数量，且原牌应存在于当前路线的基础技能库。</p><code>ADD · REPLACE</code></article>
             <article class="rule-card"><span class="rule-number">05</span><h2>词典权威</h2><p>正式设计仍以 docs/ 下的主文档、卡牌词典图谱和秘籍词典图谱为准。工具是编辑和推演助手，不反向覆盖主稿。</p><code>docs/README.md · docs/策划案摘要/README.md</code></article>

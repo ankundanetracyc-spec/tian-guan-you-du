@@ -1,0 +1,227 @@
+using Godot;
+using System.Text.Json;
+
+/// <summary>命名方案、预装配、真实战斗载入及隔离存档往返；不打开玩家旅程。</summary>
+public partial class CombatBoardPreparationSmoke : Node
+{
+    private const string Pill = "res://resources/entities/items/alchemy/huichun_1.tres";
+    private const string Folder = "res://docs/美术规范/角色招式盘预装配正式接入_20261108/";
+    private readonly List<object> _checks = [];
+    private Character _world = null!;
+    private Node2D? _battleScene;
+    private string _failure = "";
+    private void Check(bool passed, string name)
+    {
+        _checks.Add(new { name, passed });
+        if (!passed) throw new InvalidOperationException(name);
+        GD.Print("BOARD_PREPARATION_OK " + name);
+    }
+    private static string Stamp(CombatBoardLayout? layout) => layout is null ? "null" :
+        $"{layout.ResourceName}|{layout.size}|{layout.confirmed}|" + string.Join(";", layout.placements.Select(p =>
+            $"{p.placement_id}/{p.kind}/{p.source_key}/{p.cell}/{p.quarter_turns}/{p.rewrite_direction}/{p.expended}"));
+    private static string Plans(Character actor) => string.Join("\n", CombatBoardPreparationService.GetPlans(actor).Select(Stamp));
+    private static string Resources(Character actor) => $"{actor.current_health}|{actor.current_mana}|{actor.current_stamina}|{actor.used_spirit_perception}|{actor.current_world_stamina}|{actor.PillToxicity}|"
+        + string.Join(",", actor.pack_items) + "|" + string.Join(",", actor.pack_counts)
+        + "|" + actor.main_gongfa?.ResourcePath + "|" + string.Join(",", actor.sub_gongfa_list.Select(book => book.ResourcePath));
+    private async Task Frames(int count = 3)
+    { for (int i = 0; i < count; i++) await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame); }
+    private Character Actor(bool xuan = false)
+    {
+        var books = GongfaAvailability.EnabledBooks().Where(book => new[]
+            { "玄枢含章经", "斫基损契玄经", "百骸衍枝化生宝册", "太和感物养元宝册", "舒卷天章" }.Contains(book.gongfa_name));
+        var data = NpcCombatBuildPlanner.TestLearning(books);
+        data.main_gongfa_path = xuan ? HumanData.XuanShuBookPath : "";
+        data.sub_gongfa_paths.Clear();
+        var actor = new Character(); AddChild(actor); actor.load_from_data(data); actor.Hide(); return actor;
+    }
+    private static CombatBoardPlacement Skill(CombatBoardCatalog catalog, string title, int x, int y, string id) => new()
+    { placement_id = id, source_key = catalog.skills.First(s => s.skill_name == title).get_board_skill_key(), cell = new(x, y) };
+    private static CombatBoardPlacement Bottle(int x, int y, string id, bool expended = false) => new()
+    { placement_id = id, kind = CombatBoardPlacement.ObjectKind.Pill, source_key = Pill, cell = new(x, y), expended = expended };
+
+    public override void _Ready() => CallDeferred(nameof(Run));
+    private async void Run()
+    {
+        await RunChecks();
+        if (GodotObject.IsInstanceValid(_battleScene)) _battleScene!.QueueFree();
+        _battleScene = null;
+        if (GodotObject.IsInstanceValid(_world)) _world.QueueFree();
+        _world = null!;
+        await Frames(4);
+        // Release the completed scenario's native Array wrappers while the engine
+        // is still alive, after all of its async locals have left their task.
+        GC.Collect(); GC.WaitForPendingFinalizers(); GC.Collect();
+        await Frames(2);
+        GetTree().Quit(_failure.Length == 0 ? 0 : 1);
+    }
+    private async Task RunChecks()
+    {
+        try
+        {
+            Check(OS.GetEnvironment("APPDATA").Contains("board_preparation", StringComparison.OrdinalIgnoreCase), "使用预装配独立APPDATA");
+            Check(!GetNode<GameSaveManager>("/root/GameSaveManager").has_active_slot, "未打开正式旅程");
+            _world = Actor(); var human = (HumanData)_world.entity_data!;
+            var catalog = CombatBoardCatalog.FromCharacter(_world);
+            Check(!CombatBoardPreparationService.RequiresIndicator(_world), "无玄枢心法不生造周天");
+            Check(_world.add_item_to_inventory(Pill, 2), "夹具仅向内存行囊放两颗真实战斗丹药");
+            _world.current_health = Math.Max(1, _world.max_health / 2);
+            var layout = new CombatBoardLayout { placements = [Skill(catalog, "应敌", 0, 0, "skill"), Bottle(1, 0, "pill")] };
+            human.combat_board_layout = layout.CopyConfiguration();
+            string originalRunning = Stamp(human.combat_board_layout), resources = Resources(_world);
+            var draft = CombatBoardPreparationService.GetDraft(_world);
+            draft.placements[0].cell = new(0, 2);
+            Check(Stamp(human.combat_board_layout) == originalRunning && human.combat_board_preparation is null, "旧档草稿不提前保存或共享运行盘");
+            Check(CombatBoardPreparationService.Validate(_world, layout).Count == 0, "真实已学招式与行囊丹药可用");
+            Check(CombatBoardPreparationService.TrySetPreparation(_world, layout, out _), "显式设置出战预装配");
+            string prepared = Stamp(human.combat_board_preparation);
+            layout.placements[0].cell = new(0, 2);
+            Check(Stamp(human.combat_board_preparation) == prepared && Stamp(human.combat_board_layout) == originalRunning, "设置预装配逐项复制且不改运行盘");
+            layout = CombatBoardPreparationService.GetDraft(_world);
+            Check(!CombatBoardPreparationService.TrySavePlan(_world, layout, "  ", false, out _), "拒绝空名称");
+            Check(CombatBoardPreparationService.TrySavePlan(_world, layout, " 守势 ", false, out _), "名称去首尾空白后保存");
+            Check(CombatBoardPreparationService.GetPlans(_world).Single().ResourceName == "守势", "方案使用真实保存名称");
+            Check(!CombatBoardPreparationService.TrySavePlan(_world, layout, "守势", false, out _), "另存拒绝重名");
+            Check(CombatBoardPreparationService.TrySavePlan(_world, layout, "守势", true, out _), "显式同名覆盖");
+            var empty = new CombatBoardLayout();
+            Check(CombatBoardPreparationService.TrySavePlan(_world, empty, "空盘", false, out _), "允许命名新空盘");
+            for (int i = 0; i < 12; i++)
+                Check(CombatBoardPreparationService.TrySavePlan(_world, layout, "方案" + i, false, out _), "不限固定套数 " + i);
+            Check(CombatBoardPreparationService.GetPlans(_world).Count == 14, "命名库超过固定三套仍完整");
+            string plansBefore = Plans(_world);
+            var view = CombatBoardPreparationService.GetPlans(_world);
+            view[0].placements.Clear(); view[0].ResourceName = "外部改写";
+            Check(Plans(_world) == plansBefore, "读取方案逐项副本");
+            Check(!CombatBoardPreparationService.TryRenamePlan(_world, "守势", "空盘", out _), "改名拒绝已有名称");
+            string beforeSameName = Plans(_world);
+            Check(CombatBoardPreparationService.TryRenamePlan(_world, "守势", "守势", out _) && Plans(_world) == beforeSameName, "原名确认成功且无改动");
+            Check(CombatBoardPreparationService.TryRenamePlan(_world, "守势", "稳守", out _), "改名保留布局");
+            Check(CombatBoardPreparationService.TryDeletePlan(_world, "稳守", out _), "删除命名方案");
+            Check(!CombatBoardPreparationService.TryDeletePlan(_world, "稳守", out _), "重复删除不改变库");
+            Check(Stamp(human.combat_board_preparation) == prepared && Resources(_world) == resources, "命名CRUD不暗改默认主辅修资源库存");
+
+            var missing = layout.CopyConfiguration(); missing.placements[0].source_key = "res://missing_board_source.tres";
+            Check(!CombatBoardPreparationService.TryLoadPlan(_world, missing, out _, out var missingReason) && missingReason.Contains("来源"), "缺真实学习来源整盘拒绝");
+            Check(Stamp(human.combat_board_preparation) == prepared, "缺项不覆盖预装配");
+            var shortage = new CombatBoardLayout { placements = [Bottle(0, 0, "a"), Bottle(1, 0, "b"), Bottle(2, 0, "c")] };
+            Check(!CombatBoardPreparationService.TryLoadPlan(_world, shortage, out _, out var shortageReason)
+                && shortageReason.Contains("需3颗") && shortageReason.Contains("缺1颗"), "丹药缺项显示真实需有缺数量");
+            var emptyBottle = new CombatBoardLayout { placements = [Bottle(0, 0, "empty", true)] };
+            Check(!CombatBoardPreparationService.TrySetPreparation(_world, emptyBottle, out _)
+                && !CombatBoardPreparationService.TrySavePlan(_world, emptyBottle, "空瓶", false, out _), "运行空瓶不转换成局外药品");
+            var incompatible = layout.CopyConfiguration(); incompatible.size = new(4, 4);
+            Check(!CombatBoardPreparationService.TryLoadPlan(_world, incompatible, out _, out _), "未开放盘形不按总格数套用");
+            var overlap = layout.CopyConfiguration(); overlap.placements[1].cell = Vector2I.Zero;
+            Check(!CombatBoardPreparationService.TryLoadPlan(_world, overlap, out _, out _), "原几何拒绝占格重叠");
+            Check(CombatBoardPreparationService.TryLoadPlan(_world, layout, out var loadedDraft, out _), "合法方案只返回草稿副本");
+            loadedDraft.placements.Clear();
+            Check(Stamp(human.combat_board_preparation) == prepared && Resources(_world) == resources, "预览及载入不复制耗材或回资源");
+            var xuan = Actor(true);
+            Check(CombatBoardPreparationService.RequiresIndicator(xuan) && CombatBoardPreparationService.Validate(xuan, empty).Any(v => v.Contains("周天")), "真实玄枢心法沿原指示物校验");
+            xuan.Free();
+
+            string sourcePlans = Plans(_world);
+            var snapshot = _world.get_snapshot_data();
+            Check(Stamp(snapshot.combat_board_layout) == prepared, "出战快照读取显式预装配");
+            Check(snapshot.combat_board_preparation_included && snapshot.combat_board_named_plans.Count == human.combat_board_named_plans.Count, "快照包含角色命名库副本");
+            var snapshotCopy = new BattleEntityData(); snapshotCopy.copy_from(snapshot);
+            snapshotCopy.combat_board_preparation!.placements.Clear(); snapshotCopy.combat_board_named_plans.Clear();
+            Check(snapshot.combat_board_preparation!.placements.Count == 2 && snapshot.combat_board_named_plans.Count > 0, "BattleEntityData.copy_from逐项深拷贝");
+            var clone = new Character(); AddChild(clone); clone.Hide(); clone.SetMeta("artifact_battle_clone", true);
+            clone.apply_battle_data(snapshot); clone.SetMeta("combat_passive_paths", snapshot.combat_passive_paths);
+            var battleHuman = (HumanData)clone.entity_data!;
+            Check(CombatBoardPreparationService.GetPlans(clone).Count == human.combat_board_named_plans.Count, "局内读取本人物方案库");
+            Check(!CombatBoardPreparationService.TrySavePlan(clone, layout, "战中覆盖", true, out _)
+                && !CombatBoardPreparationService.TrySetPreparation(clone, layout, out _), "局内拒绝写局外命名和默认");
+            Check(clone.TryUseBoardPill(Pill, clone.max_mana, out _), "克隆通过真实服丹流程消耗一颗");
+            battleHuman.combat_board_layout!.placements.Single(p => p.kind == CombatBoardPlacement.ObjectKind.Pill).expended = true;
+            var returned = clone.get_snapshot_data();
+            Check(returned.combat_board_layout!.placements.Any(p => p.expended), "战斗快照保留运行空瓶");
+            returned.combat_board_preparation!.placements.Clear(); returned.combat_board_named_plans.Clear();
+            _world.apply_battle_data(returned);
+            Check(Stamp(human.combat_board_preparation) == prepared && Plans(_world) == sourcePlans, "战后回传不回写局外预装配命名库");
+            Check(human.combat_board_layout!.placements.Any(p => p.expended) && _world.get_inventory_total_count(Pill) == 1, "运行空瓶与真实消费继续沿原回传");
+            Check(!_world.get_snapshot_data().combat_board_layout!.placements.Any(p => p.expended)
+                && _world.get_inventory_total_count(Pill) == 1, "下场用布局意图但不补库存");
+            clone.Free();
+
+            const string savePath = "user://combat_board_preparation_smoke.tres";
+            Check(ResourceSaver.Save(new PersistentGameSave { player_data = human }, savePath) == Error.Ok, "隔离正式存档保存新字段");
+            var save = ResourceLoader.Load<PersistentGameSave>(savePath, cacheMode: ResourceLoader.CacheMode.Ignore)!;
+            Check(Stamp(save.player_data!.combat_board_preparation) == prepared && save.player_data.combat_board_named_plans.Count == human.combat_board_named_plans.Count, "存档重载保留默认与完整命名库");
+            Check(save.player_data.combat_board_layout!.placements.Any(p => p.expended), "新字段与旧运行空瓶独立持久化");
+            var detached = DetachedResourceSnapshot.Capture(new PersistentGameSave { player_data = human });
+            var materialized = (PersistentGameSave)detached.Materialize();
+            Check(materialized.player_data!.combat_board_named_plans.Select(p => p.preset_name)
+                .SequenceEqual(human.combat_board_named_plans.Select(p => p.ResourceName)), "正式后台Capture/Materialize保留每个方案名称");
+            Check(materialized.player_data.combat_board_named_plans.All(p => p.preset_name == p.ResourceName), "后台重建的显式名称与旧ResourceName同步");
+            Check(Stamp(materialized.player_data.combat_board_preparation) == prepared, "后台重建保留默认布局");
+            var reloaded = new Character(); AddChild(reloaded); reloaded.Hide(); reloaded.load_from_data(materialized.player_data);
+            int planCount = CombatBoardPreparationService.GetPlans(reloaded).Count;
+            Check(CombatBoardPreparationService.TryRenamePlan(reloaded, "方案0", "后台重建改名", out _), "后台重建后按原名称改名");
+            Check(CombatBoardPreparationService.TrySavePlan(reloaded, layout, "后台重建改名", true, out _)
+                && CombatBoardPreparationService.GetPlans(reloaded).Count == planCount, "后台重建后覆盖不增加重复方案");
+            Check(CombatBoardPreparationService.TryDeletePlan(reloaded, "后台重建改名", out _)
+                && CombatBoardPreparationService.GetPlans(reloaded).Count == planCount - 1, "后台重建后按新名称删除");
+            Check(Plans(_world) == sourcePlans, "后台副本CRUD不写活跃人物命名库");
+            reloaded.Free();
+            var legacyName = new CombatBoardLayout { ResourceName = "旧ResourceName" };
+            var legacyRoundTrip = (CombatBoardLayout)DetachedResourceSnapshot.Capture(legacyName).Materialize();
+            Check(legacyRoundTrip.preset_name == "旧ResourceName" && legacyRoundTrip.ResourceName == "旧ResourceName", "旧只设ResourceName也经显式导出名称保存");
+            await CheckBattleLoading();
+            Check(!GetNode<GameSaveManager>("/root/GameSaveManager").has_active_slot, "完整验收未使用正式旅程");
+            GD.Print($"BOARD_PREPARATION_PASS {_checks.Count} checks");
+        }
+        catch (Exception error) { _failure = error.ToString(); GD.PushError("BOARD_PREPARATION_FAIL " + error); }
+        finally
+        {
+            string output = ProjectSettings.GlobalizePath(Folder + "验证记录.json");
+            System.IO.Directory.CreateDirectory(System.IO.Path.GetDirectoryName(output)!);
+            System.IO.File.WriteAllText(output, JsonSerializer.Serialize(new { headless = DisplayServer.GetName() == "headless",
+                scope = "独立APPDATA与内存人物，不读取正式旅程", checks = _checks, failure = _failure }, new JsonSerializerOptions { WriteIndented = true }));
+        }
+    }
+
+    private async Task CheckBattleLoading()
+    {
+        var catalog = CombatBoardCatalog.FromCharacter(_world);
+        var fuming = catalog.skills.First(skill => skill.skill_name == "复命");
+        var board = new CombatBoardLayout { placements = [Skill(catalog, "复命", 0, 0, "replay"), Bottle(2, 0, "pill")] };
+        Check(CombatBoardPreparationService.TrySetPreparation(_world, board, out _), "真实冷却招式可设预装配");
+        Check(CombatBoardPreparationService.TrySavePlan(_world, board, "局内载入", false, out _), "局内来源为角色命名方案");
+        var snapshot = _world.get_snapshot_data(); snapshot.faction = 1;
+        var foe = new BattleEntityData { entity_name = "预装配隔离对手", faction = 2, uid = "board_preparation_foe",
+            max_health = 100, current_health = 100, physique = 5, intelligence = 5, soul = 5,
+            combat_board_catalog = catalog, combat_board_layout = new CombatBoardLayout(), combat_skill_slots_configured = true };
+        var scene = GD.Load<PackedScene>("res://tscn/battle/BattleScene.tscn").Instantiate<Node2D>();
+        _battleScene = scene;
+        GetTree().Root.AddChild(scene); await Frames();
+        var manager = scene.GetNode<BattleManager>("BattleMgr");
+        var packed = GD.Load<PackedScene>("res://tscn/battle/BattleTestCharacter.tscn");
+        manager.setup_team_battle([packed], [packed], [snapshot], [foe]); await Frames();
+        Check(manager.is_board_battle() && manager.is_board_editing(), "实际人类场景进入原配招边界");
+        var actor = (Character)manager.get_main_player_unit()!;
+        var state = manager.get_board_state(actor)!;
+        var hud = scene.GetNode<CanvasLayer>("UILayer").GetChildren().OfType<BattleBoardHud>().Single();
+        string worldPrepared = Stamp(((HumanData)_world.entity_data!).combat_board_preparation), worldPlans = Plans(_world);
+        Check(Stamp(state.Layout) == worldPrepared, "实际入场使用预装配副本");
+        var plan = CombatBoardPreparationService.GetPlans(actor).Single(p => p.ResourceName == "局内载入");
+        string before = Resources(actor), running = Stamp(state.Layout);
+        Check(hud.TryApplyPlan(plan) && Resources(actor) == before && Stamp(state.Layout) == running, "局内选方案只替换草稿不提交或补资源");
+        string draft = Stamp(hud.Draft);
+        var bad = new CombatBoardLayout { placements = [Bottle(0, 0, "a"), Bottle(1, 0, "b")] };
+        Check(!hud.TryApplyPlan(bad) && Stamp(hud.Draft) == draft, "局内库存缺项整盘保留原草稿");
+        state.BeginRound(1); state.TryReadNextCell(out var visit);
+        Check(state.RecordSuccessfulCast(visit.Placement!), "原真实账本记录复命成功及冷却");
+        while (state.TryReadNextCell(out _)) { }
+        int cooldown = state.CooldownRoundsRemaining(fuming);
+        int readyRound = state.Round + cooldown;
+        plan.placements[0].placement_id = "renamed-placement";
+        Check(cooldown > 0 && hud.TryApplyPlan(plan) && state.CooldownRoundsRemaining(fuming) == cooldown, "切方案及新摆放ID不刷新原冷却");
+        Check(manager.commit_player_board(hud.Draft, out _) && state.CooldownRoundsRemaining(fuming) > 0
+            && state.Round + state.CooldownRoundsRemaining(fuming) == readyRound, "确认沿原提交与回合推进但不重置冷却到期轮");
+        manager.battle_running = false;
+        Check(Stamp(((HumanData)_world.entity_data!).combat_board_preparation) == worldPrepared && Plans(_world) == worldPlans, "局内编辑提交不触及世界配置");
+        Check(!manager.try_load_player_board_plan(plan, out _, out _), "非整理时禁止即时载入");
+        scene.QueueFree(); await Frames(); _battleScene = null;
+    }
+}

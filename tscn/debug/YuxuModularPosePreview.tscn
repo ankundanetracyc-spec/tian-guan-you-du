@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://tools/queue_small_avatar/yuxu_modular_pose_preview.gd" id="1"]
+
+[node name="YuxuModularPosePreview" type="CanvasLayer"]
+script = ExtResource("1")

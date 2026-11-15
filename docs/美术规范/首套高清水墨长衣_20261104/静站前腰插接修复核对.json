@@ -1,0 +1,77 @@
+{
+  "status": "fixed",
+  "method": "waist-hidden leg insertion; fragment alpha only above source pelvis/head plane, leg meshes only",
+  "skin_sha256": "a89b5c239217753e31efc01a7c18dc6186f483720d5276ce20df3d949d883b88",
+  "source_vertices_and_native_uv_unchanged": true,
+  "pause_frozen": true,
+  "plane": {
+    "frozen_when_paused": true,
+    "native_uv_unchanged": true,
+    "normal": "head-pelvis",
+    "point": [
+      1.39509081840515,
+      -55.2085990905762
+    ],
+    "scope": "leg fragments only; hide insertion above source pelvis/waist center",
+    "source_anchor": "pelvis / shenti2",
+    "source_vertices_unchanged": true,
+    "up_normal": [
+      -0.0208405423909426,
+      -0.999782860279083
+    ]
+  },
+  "native_screenshot_pixel_samples": [
+    {
+      "screen": [
+        340,
+        385
+      ],
+      "before_rgb": [
+        68,
+        64,
+        66
+      ],
+      "after_rgb": [
+        221,
+        220,
+        209
+      ],
+      "after_is_native_background": true
+    },
+    {
+      "screen": [
+        340,
+        393
+      ],
+      "before_rgb": [
+        67,
+        63,
+        65
+      ],
+      "after_rgb": [
+        221,
+        220,
+        209
+      ],
+      "after_is_native_background": true
+    },
+    {
+      "screen": [
+        341,
+        400
+      ],
+      "before_rgb": [
+        67,
+        63,
+        65
+      ],
+      "after_rgb": [
+        221,
+        220,
+        209
+      ],
+      "after_is_native_background": true
+    }
+  ],
+  "separate_proportion_fix": "upper pants silhouette narrowed; knee/boot placement preserved; not a whole-leg scale"
+}

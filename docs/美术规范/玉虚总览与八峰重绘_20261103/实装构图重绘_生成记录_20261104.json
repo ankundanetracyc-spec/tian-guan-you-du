@@ -1,0 +1,121 @@
+{
+  "date": "2026-11-04",
+  "status": "generated_all_9_pending_review",
+  "tool": "built-in image_gen",
+  "request": "总览重构；参照当前实装背景恢复八峰不同的构图，沿用已认可的物品图标笔触。",
+  "output_dir": "textures/sect_overview/repaint_20261103/live_composition_item_style_20261104",
+  "style_reference": "textures/sect_overview/repaint_20261103/local_20261104/heguang_item_style_v1.png",
+  "common_prompt": "Use case: style-transfer. Create one finished environment illustration for a Chinese cultivation RPG, horizontal 16:9, target 1672 by 941 pixels. INPUT ROLES ARE CRITICAL: Image 1 is the currently implemented environment: use its own distinctive camera, landforms, focal placement, spatial arrangement and functional scene as the composition reference. Image 2 is ONLY the approved painting/material/palette reference. Never borrow Image 2's courtyard, kitchen, central stair or layout. Repaint Image 1 in the matte hand-painted style of Image 2: broad soft gouache/watercolor pigment planes, restrained contour drawing, coherent form-following brushwork, blue-grey mountains and tile roofs, muted olive pine foliage, warm grey stone, off-white plaster and muted ochre timber accents. Keep the same restrained palette and gentle value range across this series. NO dense pale stippling, scattered white or gold dots, sparkling leaves, white blossom textures, glitter, pointillism or crunchy etched linework. Simplify foliage into large legible clusters and rocks into broad planes. Keep the original mountain scene's dramatic altitude and spacious depth, and clear architectural silhouettes. This is a local functional place inside a first-rank immortal sect, not a miniature village and not a complete peak masterplan. Preserve the scene-specific asymmetry described below. Draw usable stairs with landings, real ground supporting buildings, doors meeting their walkways, and bridges only where necessary with both ends grounded. Correct confusing connections rather than adding decorative roads everywhere. Full bleed: all four edges and corners have clear painted forms; no peripheral blur, vignette, faded paper border, radial focus effect, bokeh or empty white wash at the edges. Natural valley clouds may be painted as broad coherent shapes, with distinct distant ridge silhouettes; do not hide structural errors in fog. No people, silhouettes, human statues, readable text, plaques with characters, UI, labels, frames, logos or watermarks. Do not add generic huge foreground courtyards to every scene. The scene-specific composition below takes priority over any layout in Image 2.",
+  "tasks": [
+    {
+      "id": "overview",
+      "name": "玉虚仙宗 · 山域总览",
+      "source": "textures/sect_overview/yuxu_xianzong_inner_overview_v6.png",
+      "composition": "高峻山脉和纵深山域，宗门宫阙顺山脊延伸；主峰居上方，边缘峰域被遮挡或出画。",
+      "prompt": "OVERVIEW EXCEPTION: This is the grand sect mountain-domain panorama, not a local interior. Use Image 1 for the tall sheer crags, elevated viewpoint and dominant sacred mountain in the upper middle; discard the tidy arrangement of eight isolated courtyard-islands. Recompose as an immense connected mountainous domain seen from very high above at an oblique angle. Sharp lofty peaks and long broken ridges overlap into the distance, cloud-filled chasms create vertical scale. The major summit complex sits above and behind subsidiary districts; sweeping clusters of blue-grey palace roofs follow real mountain shoulders, disappear behind rock and continue beyond the left, right and lower frame. Show only partial districts, NOT eight complete isolated compounds which can be counted. Architecture is subordinate to huge mountain masses and painted in broad grouped roof silhouettes, without obsessing over tiny buildings. A few closer roof groups establish the enormous size of the far complexes. Preserve space between mountain ranges; avoid filling every slope with repetitive roofs. Avoid the previously rejected suburban hillside town, giant S-shaped paved road, central road roundabout or broad valley street. Do not interconnect all peaks with a spaghetti web of bridges; only a very few short physically plausible bridges. Form a coherent mountain panorama with monumental elevation changes, not a top-down flat town or a single courtyard. Same matte palette and broad brush rendering as Image 2, but NO transfer of its yard geometry. Full bleed clear foreground corners."
+    },
+    {
+      "id": "heguang",
+      "name": "和光峰",
+      "source": "textures/sect_overview/peaks/yuxu_peak_heguang_v4.png",
+      "composition": "庶务工作坪偏左，膳房、仓库和修缮棚；右侧向山谷敞开。",
+      "prompt": "HEGUANG: Preserve Image 1's left-weighted functional scene. Open cooking hall on the LEFT foreground, sacks and jars at a rear storehouse in the MIDDLE, open timber repair bay farther right on the same working terrace. The RIGHT third opens out into an immense mountain valley, with a small communications lookout on a distant separate grounded ridge. A pine frames the upper-left and a stream drops below the near-left terrace. Do not turn this into Image 2's full-width straight row of buildings facing an empty front yard. Preserve the oblique rocky ledge composition and natural crop of the left kitchen. Refine buildings into well-maintained substantial sect service halls with restrained immortal-sect craftsmanship, not poor straw cottages. Cargo access reaches the warehouse on the same level from a practical broad path; no loading dock connected solely by a steep stair. Modest working space only, visually interlock stone ledges and stores rather than a huge central square."
+    },
+    {
+      "id": "guanfu",
+      "name": "观复峰",
+      "source": "textures/sect_overview/peaks/yuxu_peak_guanfu_v4.png",
+      "composition": "左侧斜坡住居与曲折阶路，右侧开阔水面、临水小亭。",
+      "prompt": "GUANFU: Preserve Image 1's lakeside diagonal hillside composition, an inhabited pocket of the sect rather than a front court. LEFT two-thirds: substantial quiet disciple residences and a modest open teaching pavilion stagger up a bamboo and pine slope, with a clear zigzag staircase linking their doors and small landings. A little practice landing with wooden training posts is integrated into the lower-left slope, not an enormous plaza. RIGHT third and lower-right: open pale blue-grey water, a shoreline and a small wooden pier with a roofed pavilion; towering distant cliffs rise beyond the lake. Keep the lake as a strong horizontal counterweight to the diagonal stepped houses. The camera looks down obliquely across the slope and cove. NO grand central palace, NO courtyard ringed by halls, NO huge staircase up the exact middle. Matte muted foliage without white blossom speckles; architectural quality suits a major immortal sect."
+    },
+    {
+      "id": "zifu",
+      "name": "紫府峰",
+      "source": "textures/sect_overview/peaks/yuxu_peak_zifu_v4.png",
+      "composition": "右上方宗门中枢高殿，沿崖斜升的长阶；左侧深谷。",
+      "prompt": "ZIFU: Keep Image 1's elevated ceremonial composition: a monumental governing hall on a high rock platform in the UPPER RIGHT, reached by a long rising processional stair across several genuinely supported cliff terraces. The approach ascends diagonally from the lower-middle toward the upper-right hall, with substantial intermediate landings. LEFT half remains a vast steep mountain-and-cloud valley, not paved courtyard. Stone retaining walls, restrained gate pavilions and a few small side halls support the ritual axis. Broad facade and high dark blue-grey roof convey first-rank sect authority without excessive gold. This is a partial ceremonial approach and hall, not an entire peak town or symmetrical courtyard blueprint. Keep vertically tall rocks and architecture above the viewer's foreground ledges. No giant empty near-level court, no bell pavilion or workshops."
+    },
+    {
+      "id": "xuanlan",
+      "name": "玄览峰",
+      "source": "textures/sect_overview/peaks/yuxu_peak_xuanlan_v4.png",
+      "composition": "右侧直壁、多层藏书阁与横向廊道；下层研读亭，左侧空谷。",
+      "prompt": "XUANLAN: Keep Image 1's right-side vertical cliff library, with several levels of narrow supported terraces hugging the huge sheer cliff. A tall multi-storey scripture archive occupies the upper-right ledge; below it, long horizontal sheltered reading galleries follow the rock contours, with a smaller open reading pavilion in the middle-right. One legible stair route follows the far-right rock, with real landings connecting the levels. LEFT half opens into the deep mountains and valley. Show a few shelves and unlettered scroll/book silhouettes in sheltered recesses so this reads as an archive, not another ceremonial hall. Emphasize layered narrow cliff galleries and vertical height, NO huge forecourt or generic central stair plaza. Avoid gratuitous bridges, unsupported overhangs and stairs terminating at blank walls."
+    },
+    {
+      "id": "tianwen",
+      "name": "天问峰",
+      "source": "textures/sect_overview/peaks/yuxu_peak_tianwen_v4.png",
+      "composition": "高低错落的露天演法台与沿山路径，建筑极少。",
+      "prompt": "TIANWEN: Preserve Image 1's exposed rugged mountain training grounds, dramatically different from all the building scenes. A large circular stone practice platform sits on the mid-right cliff shoulder, with two smaller circular practice landings at lower elevations. Engraved concentric stone rings are simple abstract geometry with NO glyphs or letters. A clear climbing mountain stair links platforms and continues to a ridge lookout at the upper-right. Broad natural valley depth fills the LEFT. Platforms rest on solid broad rock, not floating saucers or narrow impossible stilts. Keep several isolated pines, rough native rock outcrops and modest safety stone posts. There is NO grand hall and NO roofed courtyard. The main visual is the relation between the circular stone planes, rugged crags and open mountain depth. Use matte large brush planes, without dots along every rock edge."
+    },
+    {
+      "id": "tiangong",
+      "name": "天工峰",
+      "source": "textures/sect_overview/peaks/yuxu_peak_tiangong_v3.png",
+      "composition": "靠崖错层工坊；上层丹炉、中层锻器、下层案桌，功能通过器物辨识。",
+      "prompt": "TIANGONG: Preserve Image 1's asymmetrical multi-level open craft galleries on the RIGHT cliff slope. Upper-right roofed furnace workshop with a substantial bronze alchemical furnace, middle-right open forge bay with an anvil and neatly stored tools, lower-middle sheltered worktable with paper sheets and brushes, plus a modest geometric formation-work stone landing. Each workshop is grounded on its own broad rock shelf, linked by short practical stairs and clear landings along the terrain. Keep the LEFT mountain valley visible, do not pave over it. No readable talisman writing: blank papers or nonlinguistic small marks only. One restrained plume of furnace vapour, no explosions, glowing magical effects or humans. This is a close local view of usable craft rooms at different heights, not one giant ceremonial hall behind a generic blank courtyard. Roofs and work tools are focal, retain the craft-specific staggered silhouette."
+    },
+    {
+      "id": "zhizhong",
+      "name": "执中峰",
+      "source": "textures/sect_overview/peaks/yuxu_peak_zhizhong_v4.png",
+      "composition": "右前景大钟亭、后方戒律殿、沿崖阶道，强调前后遮挡。",
+      "prompt": "ZHIZHONG: Retain Image 1's distinctive LARGE BRONZE BELL under an open timber pavilion in the RIGHT FOREGROUND, sharply readable as the primary nearby landmark. The bell is not a human statue. Behind and to the left of the bell pavilion stands a restrained formal discipline hall farther away on a separate higher landing. A broad staircase climbs along the cliff from the lower-right toward the hearing hall, and a shorter branch serves the bell landing without blocking the hall entrance. LEFT half is a solemn immense mountain valley. Use strong near/far overlap and a cropped foreground pine, so this does not become Zifu's upper-right palace over an empty wide plaza. Muted patinated bronze, blue-grey roofs, warm grey stone, minimal ochre trim, NO flashy gold bell. No central empty square or extra monumental palace compound."
+    },
+    {
+      "id": "yaopu",
+      "name": "瑶圃峰",
+      "source": "textures/sect_overview/peaks/yuxu_peak_yaopu_v3.png",
+      "composition": "左侧层叠药田与育苗棚，右下荷池，水渠串联。",
+      "prompt": "YAOPU: Preserve Image 1's productive mountain medicinal garden, not a courtyard. Broad curved stone-walled PLANTING TERRACES fill the LEFT and middle, stepping down around a clearly descending water channel. Bamboo nursery and open timber drying/propagation shelters sit on the upper-left and middle terraces. The LOWER RIGHT contains a calm lotus pond fed by a small controlled channel; clear narrow stone paths and short stairs connect nursery, beds and pond. Distant cliffs and open valley beyond. Use cultivated foliage as large distinct muted green masses and planted rows, minimal small accent flowers, NO scattered white bloom dots. Retain at most a few small deer at the left garden margin and cranes beside the pond as in Image 1, anatomically coherent and subordinate. No people. Only modest practical roofed structures, no monumental central hall, no generic stone forecourt. The eye follows curved garden terraces and water, not a palace stair axis."
+    }
+  ],
+  "results": [
+    {
+      "id": "overview",
+      "path": "E:/stacklands/textures/sect_overview/repaint_20261103/live_composition_item_style_20261104/overview.png",
+      "source": "E:\\tmp\\CodexData\\generated_images\\01a1a0bb-bca0-7622-87eb-903f01e63b98\\exec-8da5d11b-2800-48b4-8053-2fd64a0bba03.png"
+    },
+    {
+      "id": "heguang",
+      "path": "E:/stacklands/textures/sect_overview/repaint_20261103/live_composition_item_style_20261104/heguang.png",
+      "source": "E:\\tmp\\CodexData\\generated_images\\01a1a0bb-bca0-7622-87eb-903f01e63b98\\exec-18f0656d-64d4-4d33-990a-98c91c2c5c23.png"
+    },
+    {
+      "id": "guanfu",
+      "path": "E:/stacklands/textures/sect_overview/repaint_20261103/live_composition_item_style_20261104/guanfu.png",
+      "source": "E:\\tmp\\CodexData\\generated_images\\01a1a0bb-bca0-7622-87eb-903f01e63b98\\exec-93cb2e83-5d1d-4c9c-a60a-8296d95e93bc.png"
+    },
+    {
+      "id": "zifu",
+      "path": "E:/stacklands/textures/sect_overview/repaint_20261103/live_composition_item_style_20261104/zifu.png",
+      "source": "E:\\tmp\\CodexData\\generated_images\\01a1a0bb-bca0-7622-87eb-903f01e63b98\\exec-e959cd29-232e-42b2-b24d-9bfc57a7833c.png"
+    },
+    {
+      "id": "xuanlan",
+      "path": "E:/stacklands/textures/sect_overview/repaint_20261103/live_composition_item_style_20261104/xuanlan.png",
+      "source": "E:\\tmp\\CodexData\\generated_images\\01a1a0bb-bca0-7622-87eb-903f01e63b98\\exec-f624e2cb-b2e4-4407-8772-c48a9ddc1c6f.png"
+    },
+    {
+      "id": "tianwen",
+      "path": "E:/stacklands/textures/sect_overview/repaint_20261103/live_composition_item_style_20261104/tianwen.png",
+      "source": "E:\\tmp\\CodexData\\generated_images\\01a1a0bb-bca0-7622-87eb-903f01e63b98\\exec-b504fa6b-0fc2-47d2-b900-b70cb8bcbd96.png"
+    },
+    {
+      "id": "tiangong",
+      "path": "E:/stacklands/textures/sect_overview/repaint_20261103/live_composition_item_style_20261104/tiangong.png",
+      "source": "E:\\tmp\\CodexData\\generated_images\\01a1a0bb-bca0-7622-87eb-903f01e63b98\\exec-47efc913-b9b3-43cd-b64c-d41b7627ed31.png"
+    },
+    {
+      "id": "zhizhong",
+      "path": "E:/stacklands/textures/sect_overview/repaint_20261103/live_composition_item_style_20261104/zhizhong.png",
+      "source": "E:\\tmp\\CodexData\\generated_images\\01a1a0bb-bca0-7622-87eb-903f01e63b98\\exec-8f6fef4d-09d6-4935-9479-c767edfec208.png"
+    },
+    {
+      "id": "yaopu",
+      "path": "E:/stacklands/textures/sect_overview/repaint_20261103/live_composition_item_style_20261104/yaopu.png",
+      "source": "E:\\tmp\\CodexData\\generated_images\\01a1a0bb-bca0-7622-87eb-903f01e63b98\\exec-1fdb1d7c-4cc6-41d4-864e-c7e04e571182.png"
+    }
+  ]
+}

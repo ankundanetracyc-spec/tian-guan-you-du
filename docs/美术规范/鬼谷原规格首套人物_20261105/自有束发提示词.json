@@ -1,0 +1,7 @@
+{
+  "mode": "built-in image_gen",
+  "prompt": "Use case: precise-object-edit.\nAsset type: isolated hair-only 2D game sprite for a small side-view male character.\nReference image is the exact approved OUR character. Extract and faithfully reproduce ONLY this character's existing plain dark hair and small tied bun, viewed facing RIGHT. Keep this same recognizable simple bun, pale small hair tie, swept-back dark locks, short nape tufts and small front lock. Do not use a long ponytail, braid, hanging ribbon or elaborate crown. Remove all skin, face, ear, neck, clothing and background so their space is transparent. Preserve an ear/face opening and the right-facing hairline. No facial features.\nThis is hair only, not a whole head. The intended final native canvas is 21 by 56 pixels; the visible compact bun/cap occupies approximately the top 21 by 23 pixels, with the lower 33 pixels completely empty. Hair-to-neck attachment is near native (12.8,20.1) in the 21x56 canvas. Draw a large clean transparent master in this same tall canvas layout; keep the compact hairstyle in the top part with that lower empty space.\nUse the restrained matte grey-black ink painting of the reference, simplified broad locks suitable for reduction to a 21-pixel width, no photoreal texture, no glossy strands. Keep the hairstyle's width and volume suited to a 14-by-17 pixel face. Actual transparent background, no checkerboard, no labels, no other parts.",
+  "saved_master": "own_hair_master.png",
+  "native_asset": "sprite_87679.png",
+  "own_hairstyle_exception": true
+}

@@ -1,0 +1,318 @@
+{
+  "schema": "male-portrait-feature-frame/v1",
+  "coordinate_system": "Unscaled1024x1536 canvas; x right/y down; left/right mean image sides. Pixel centers are integer coordinates.",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "axis_x": 513,
+  "authority": {
+    "basis": "Locked face_shape01 and anatomical whole-face review. The axis is authored from the fixed face, not recomputed from an alpha bounding box, feature ink centroid, importer transform or rig constant.",
+    "user_direction": "2026-11-09 latest explicit user instruction: 不对称，你生成一边镜像一下不就好了吗. Single-side mirroring is authorized and supersedes the prior default no-mirror constraint. For current natural01/04/05assets, select complete imageLEFT eyes and imageRIGHT brows, preserve original-sideRGBA and reflect the complete counterpart aboutx513 (x_prime=1026-x), including catchlights. Do not reconfirm authorized work, regenerate/blur the painting, individually stretch eyes or reuse rejected generated artwork. Source quality, clarity, expression and final user aesthetic judgment remain separate requirements.",
+    "face_reference_rows_note": "Existing face and jaw observation supports approximatelyx513. Ear/hair/neck extents and transparent margins must not redefine the facial axis."
+  },
+  "fixed_face": {
+    "file": "male/face_shape/01.png",
+    "sha256": "d86319252035a286a92e8892b9816bdb917a39f7f41f4cb1edf40f4dee51c357"
+  },
+  "empty_beard": {
+    "file": "male/face_accessory/01.png",
+    "sha256": "1913847bf9091720c48139f49dfbb3aa70c4d20de82f2718e3dcd8348c6e5e9c"
+  },
+  "tolerances": {
+    "axis_midpoint_px": 1.25,
+    "paired_landmark_px": 2.0,
+    "paired_width_px": 2.5,
+    "paired_opening_px": 2.0,
+    "paired_iris_px": 2.0,
+    "paired_brow_thickness_px": 2.0,
+    "paired_darkness_0_255": 25.0,
+    "ink_envelope_difference_px": 2.0,
+    "beard_ink_extent_midpoint_px": 2.0,
+    "point_support_radius_px": 2,
+    "semantic_to_probe_px": 2.5,
+    "sample_fraction_x_px": 1.5
+  },
+  "tolerance_interpretation": "Approximately1px natural/reading variation is tolerated. Pairwise contour readings allow2px and width probes2.5px; larger differences hold for repair/review. Thresholds are transparent pixel/gray-value gates, not a synthetic symmetry score. Even all numerical gates passing requires native-scale visual acceptance. A changed SHA always requires remeasurement and independent re-review.",
+  "pixel_probes": {
+    "eyes": {
+      "side_rois": [
+        [
+          414,
+          350,
+          500,
+          383
+        ],
+        [
+          526,
+          350,
+          616,
+          383
+        ]
+      ],
+      "pupil_rois": [
+        [
+          450,
+          355,
+          473,
+          376
+        ],
+        [
+          554,
+          355,
+          577,
+          376
+        ]
+      ],
+      "profile_y_range": [
+        354,
+        382
+      ],
+      "method": "MeanRGB darkness times alpha. Pupil100, extent170, eyelid ink-envelope190; fixed ROI with alpha floor24. The1/99% pigment span and5/95% vertical quantiles are screening proxies, never anatomical corner or lid replacements."
+    },
+    "brows": {
+      "side_rois": [
+        [
+          410,
+          325,
+          503,
+          360
+        ],
+        [
+          527,
+          325,
+          617,
+          360
+        ]
+      ],
+      "method": "MeanRGB<170 weighted by alpha; span1/99% ink quantiles. Semantic head/crest/tail plus three paired thickness/depth readings and whole-face review are required separately."
+    },
+    "nose": {
+      "nostril_rois": [
+        [
+          491,
+          436,
+          514,
+          454
+        ],
+        [
+          515,
+          436,
+          539,
+          454
+        ]
+      ],
+      "method": "MeanRGB darkness150 times alpha; actual paired nostril centroid midpoint is an axis proxy; semantic nostrils and lower center still required."
+    },
+    "mouth": {
+      "seam_roi": [
+        474,
+        470,
+        558,
+        485
+      ],
+      "method": "MeanRGB darkness160 times alpha in lip seam ROI; dark seam center is only an axis proxy and requires semantic seam center/corners plus whole-face review."
+    },
+    "beard": {
+      "region_rois": {
+        "upper": [
+          451,
+          451,
+          575,
+          491
+        ],
+        "lower": [
+          451,
+          492,
+          575,
+          565
+        ]
+      },
+      "minimum_region_pixels": 40,
+      "method": "Separate upper/lower bands, meanRGB darkness170 times alpha.1/99% ink extents give midpoint screens. Each region actually present needs its own semantic center; cheek/jaw reach and lip compatibility require native-scale whole-face review."
+    }
+  },
+  "features": [
+    {
+      "file": "male/eyes/01.png",
+      "part": "eye",
+      "index": 1,
+      "pixel_probe": "eyes"
+    },
+    {
+      "file": "male/eyes/04.png",
+      "part": "eye",
+      "index": 4,
+      "pixel_probe": "eyes"
+    },
+    {
+      "file": "male/eyes/05.png",
+      "part": "eye",
+      "index": 5,
+      "pixel_probe": "eyes"
+    },
+    {
+      "file": "male/eyebrows/01.png",
+      "part": "brow",
+      "index": 1,
+      "pixel_probe": "brows"
+    },
+    {
+      "file": "male/eyebrows/04.png",
+      "part": "brow",
+      "index": 4,
+      "pixel_probe": "brows"
+    },
+    {
+      "file": "male/eyebrows/05.png",
+      "part": "brow",
+      "index": 5,
+      "pixel_probe": "brows"
+    },
+    {
+      "file": "male/nose/01.png",
+      "part": "nose",
+      "index": 1,
+      "pixel_probe": "nose"
+    },
+    {
+      "file": "male/mouth/01.png",
+      "part": "mouth",
+      "index": 1,
+      "pixel_probe": "mouth"
+    },
+    {
+      "file": "male/face_accessory/02.png",
+      "part": "beard",
+      "index": 2,
+      "pixel_probe": "beard"
+    },
+    {
+      "file": "male/face_accessory/03.png",
+      "part": "beard",
+      "index": 3,
+      "pixel_probe": "beard"
+    },
+    {
+      "file": "male/face_accessory/04.png",
+      "part": "beard",
+      "index": 4,
+      "pixel_probe": "beard"
+    },
+    {
+      "file": "male/face_accessory/05.png",
+      "part": "beard",
+      "index": 5,
+      "pixel_probe": "beard"
+    },
+    {
+      "file": "male/face_accessory/06.png",
+      "part": "beard",
+      "index": 6,
+      "pixel_probe": "beard"
+    }
+  ],
+  "measurement_schema": {
+    "schema": "male-face-final-semantics/v1",
+    "top_required": [
+      "axis_x",
+      "fixed_head_sha256",
+      "records"
+    ],
+    "record_required": [
+      "file",
+      "part",
+      "index",
+      "sha256",
+      "points",
+      "measurements"
+    ],
+    "part_names": [
+      "eye",
+      "brow",
+      "nose",
+      "mouth",
+      "beard"
+    ],
+    "eyes_points": [
+      "pupils:[L,R]",
+      "inner_corners:[L,R]",
+      "outer_corners:[L,R]",
+      "iris_centers:[L,R]",
+      "upper_lid_samples:[L3,R3]",
+      "lower_lid_samples:[L3,R3]"
+    ],
+    "eyes_measurements": [
+      "iris_widths:[L,R]",
+      "iris_heights:[L,R]",
+      "upper_lid_occlusion_px:[L,R]"
+    ],
+    "brow_points": [
+      "inner_heads:[L,R]",
+      "crests:[L,R]",
+      "outer_tails:[L,R]"
+    ],
+    "brow_measurements": [
+      "widths:[L,R] horizontal anatomical head-to-tail span",
+      "thickness_at_quartiles:[L3,R3] pixels at25/50/75% inner-to-outer",
+      "mean_darkness_at_quartiles:[L3,R3] 0..255 where255=black"
+    ],
+    "nose_points": [
+      "nostrils:[L,R]",
+      "center:[x,y] lower anatomic center"
+    ],
+    "mouth_points": [
+      "seam_center:[x,y]",
+      "corners:[L,R]"
+    ],
+    "beard_points": [
+      "upper_center:[x,y] semantic midpoint for actual upper region; philtrum may be transparent",
+      "upper_endpoints:[L,R] actual paired pigment endpoints if upper region present",
+      "lower_center:[x,y] semantic center for actual lower region",
+      "lower_endpoints:[L,R] actual paired pigment endpoints if lower region present"
+    ],
+    "beard_measurements": [
+      "present_regions:[upper and/or lower]"
+    ],
+    "reading_note": "Eye lid samples progress25/50/75% from inner corner toward outer corner for each eye. Read complete upper/lower contour, iris exposure/occlusion, and brow anatomy from actual current PNGs; no template target points or old transform residuals count as observations."
+  },
+  "visual_review_schema": {
+    "schema": "male-face-visual-review/v1",
+    "top_required": [
+      "status:accepted",
+      "reviewer",
+      "fixed_head_sha256",
+      "records",
+      "composition_review"
+    ],
+    "record_required": [
+      "file",
+      "sha256",
+      "status:accepted",
+      "checks",
+      "notes"
+    ],
+    "common_checks": [
+      "whole_face_native_scale",
+      "light_dark_backgrounds",
+      "axis_alignment"
+    ],
+    "eye_checks": [
+      "eye_corners_and_lid_contours",
+      "iris_same_scale"
+    ],
+    "brow_checks": [
+      "brow_shape_width_depth"
+    ],
+    "composition_required": [
+      "status:accepted",
+      "nine_brow_eye_nohair:true",
+      "seven_front_hair:true",
+      "five_nonempty_beards:true",
+      "hair09_occlusion:true",
+      "input_hashes:{relativefile:SHA256} for all configured feature files, fixed head and all front/back hair",
+      "evidence:[{file:package-relative PNG,sha256:actual evidence SHA}]"
+    ],
+    "evidence_path_rule": "With a review in qa/, evidence files are relative to its parent package; otherwise relative to the review JSON directory. Contact sheets are allowed; records must describe actual normal-scale inspection, not claim hashes prove symmetry."
+  }
+}

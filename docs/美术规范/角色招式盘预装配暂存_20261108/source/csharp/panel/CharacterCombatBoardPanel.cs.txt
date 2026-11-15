@@ -1,0 +1,182 @@
+using Godot;
+
+/// <summary>角色页的真实局外配招；不创建战斗管理器，不结算资源。</summary>
+public partial class CharacterCombatBoardPanel : PanelContainer
+{
+    private Character? _owner;
+    private CombatBoardCatalog _catalog = new();
+    private CombatBoardLayout _draft = new();
+    private bool _built, _dirty, _plansVisible;
+    private string _selected = "", _picked = "", _activeName = "", _category = "招式";
+    private int _pickedTurns;
+    private BattleBoardView _board = null!;
+    private Control _boardHost = null!, _sourcePage = null!, _plansPage = null!;
+    private VBoxContainer _sourceList = null!, _planList = null!;
+    private ScrollContainer _sourceScroll = null!;
+    private Label _name = null!, _status = null!, _summary = null!, _notice = null!, _selection = null!;
+    private LineEdit _search = null!;
+    private OptionButton _filter = null!;
+    private Button _hand = null!, _plansButton = null!, _clearButton = null!, _deleteButton = null!;
+    private readonly Dictionary<string, Button> _categories = [];
+    private Control? _dialog;
+    public CombatBoardLayout DraftSnapshot => _draft.CopyConfiguration();
+    public Character? BoundOwner => _owner;
+    public bool HasUnsavedChanges => _dirty;
+    public int StoredPlanCount => _owner is null ? 0 : CombatBoardPreparationService.GetPlans(_owner).Count;
+
+    public override void _Ready() => Build();
+    public void Bind(Character owner)
+    {
+        Build();
+        if (ReferenceEquals(_owner, owner))
+        {
+            _catalog = CombatBoardCatalog.FromCharacter(owner); _board.Catalog = _catalog;
+            RebuildFilters(); RefreshState(); return;
+        }
+        CloseDialog(); _owner = owner; _catalog = CombatBoardCatalog.FromCharacter(owner);
+        _draft = CombatBoardPreparationService.GetDraft(owner);
+        _activeName = _draft.ResourceName; _dirty = false; _selected = _picked = "";
+        _board.CombatOwner = owner; _board.Catalog = _catalog;
+        _notice.Text = _draft.pending_entries.Count > 0 ? $"原配置有{_draft.pending_entries.Count}项待重新摆入。" : "";
+        RebuildFilters(); ShowSources(); RefreshState();
+    }
+    public void ClearOwner()
+    {
+        CloseDialog(); _owner = null; _picked = _selected = _activeName = "";
+        _draft = new(); _catalog = new();
+        if (_built) { _board.CombatOwner = null; _board.Layout = _draft; _board.Catalog = _catalog; }
+    }
+
+    private static Label Text(string text, int size = 22, bool muted = false) => CraftingPaperStyle.Text(text, size, muted);
+    private static PanelContainer Paper(int padding = 22)
+    {
+        var panel = new PanelContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill };
+        panel.AddThemeStyleboxOverride("panel", CraftingPaperStyle.Paper(padding, brightness: .97f)); return panel;
+    }
+    private static Button ActionButton(string text, Action action, int size = 21, bool primary = false)
+    {
+        var button = new Button { Text = text, CustomMinimumSize = new Vector2(0, 46), SizeFlagsHorizontal = SizeFlags.ExpandFill };
+        PaperButtonFeedback.Apply(button, primary ? CraftingPaperStyle.ButtonKind.Primary : CraftingPaperStyle.ButtonKind.Regular, size);
+        button.Pressed += action; return button;
+    }
+    private static VBoxContainer Stack(Control parent, int gap = 12)
+    { var box = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill }; box.AddThemeConstantOverride("separation", gap); parent.AddChild(box); return box; }
+    private static HBoxContainer Row(Control parent, int gap = 12)
+    { var row = new HBoxContainer(); row.AddThemeConstantOverride("separation", gap); parent.AddChild(row); return row; }
+    private void Build()
+    {
+        if (_built) return; _built = true; Name = "CharacterCombatBoardEditor";
+        Theme = CraftingPaperStyle.MakeTheme(); AddThemeStyleboxOverride("panel", new StyleBoxEmpty());
+        SizeFlagsHorizontal = SizeFlags.ExpandFill; SizeFlagsVertical = SizeFlags.ExpandFill;
+        var columns = new HBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill };
+        columns.AddThemeConstantOverride("separation", 18); AddChild(columns);
+        var left = Paper(); left.CustomMinimumSize = new Vector2(620, 0); left.SizeFlagsStretchRatio = 1.25f; columns.AddChild(left);
+        var content = Stack(left);
+        var header = Row(content); _name = Text("未命名草稿", 27); _name.ClipText = true; _name.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+        _name.VerticalAlignment = VerticalAlignment.Center; header.AddChild(_name);
+        _status = Text("已调整", 18, true); _status.VerticalAlignment = VerticalAlignment.Center; header.AddChild(_status);
+        var rename = ActionButton("改名", () => NameDialog("rename"), 20); rename.SizeFlagsHorizontal = SizeFlags.ShrinkEnd; rename.CustomMinimumSize = new Vector2(90, 46); header.AddChild(rename);
+        var help = ActionButton("配招说明", ShowHelp, 20); help.SizeFlagsHorizontal = SizeFlags.ShrinkEnd; help.CustomMinimumSize = new Vector2(126, 46); header.AddChild(help);
+        _boardHost = new Control { Name = "PreparationBoardHost", CustomMinimumSize = new Vector2(0, 280), SizeFlagsVertical = SizeFlags.ExpandFill };
+        content.AddChild(_boardHost);
+        _board = new BattleBoardView { Name = "PreparationBoard", Catalog = _catalog, Layout = _draft, Editable = true, CellSize = 96 };
+        _boardHost.AddChild(_board);
+        _board.SelectedChanged += id => { _selected = id; _search.ReleaseFocus(); RefreshSelection(); };
+        _board.CellPressed += cell => { if (_picked.Length > 0) TryPlaceSource(_picked, cell, _pickedTurns); };
+        _board.PlacementAllowed = CanPlace;
+        _board.PlacementCommitted = CommitPlacement;
+        _board.PlacementRemoved += RemovePlacement;
+        _board.GuiInput += input =>
+        {
+            if (input is not InputEventMouseButton { Pressed: true, ButtonIndex: MouseButton.Right } click) return;
+            var cell = new Vector2I(Mathf.FloorToInt(click.Position.X / _board.CellSize), Mathf.FloorToInt(click.Position.Y / _board.CellSize));
+            var item = CombatBoardGeometry.At(_draft, cell, _catalog.FindSkill);
+            if (item is not null) RemovePlacement(item.placement_id);
+            _board.AcceptEvent();
+        };
+        _hand = new Button { Name = "ReservedHandSlot", Text = "手持", Disabled = true, Size = new Vector2(88, 88), CustomMinimumSize = new Vector2(88, 88), TooltipText = "此处暂不可配置。" };
+        PaperButtonFeedback.Apply(_hand, CraftingPaperStyle.ButtonKind.Icon, 20); _boardHost.AddChild(_hand);
+        _boardHost.Resized += FitBoard;
+        var selection = Row(content); _selection = Text("点选来源后摆入盘面", 20, true); _selection.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+        _selection.VerticalAlignment = VerticalAlignment.Center; _selection.ClipText = true; selection.AddChild(_selection);
+        selection.AddChild(ActionButton("旋转 R", RotateSelected, 20)); selection.AddChild(ActionButton("移出", RemoveSelected, 20));
+        _summary = Text("", 19, true); content.AddChild(_summary);
+        _notice = Text("", 18); _notice.Name = "PreparationNotice"; _notice.AutowrapMode = TextServer.AutowrapMode.WordSmart; content.AddChild(_notice);
+        var saving = Row(content); saving.AddChild(ActionButton("另存方案", () => NameDialog("save-as")));
+        var save = ActionButton("保存方案", SaveCurrent); save.Name = "SaveBoardPlan"; saving.AddChild(save);
+        var prepare = ActionButton("设为预装配", SetPreparation, 23, primary: true); prepare.Name = "SetPreparation"; content.AddChild(prepare);
+
+        var right = Paper(); right.CustomMinimumSize = new Vector2(470, 0); right.SizeFlagsStretchRatio = .85f; columns.AddChild(right);
+        var sidebar = Stack(right);
+        _sourcePage = Stack(sidebar); _sourcePage.Name = "PreparationSources";
+        var tabs = new HBoxContainer(); tabs.AddThemeConstantOverride("separation", 6); _sourcePage.AddChild(tabs);
+        foreach (var category in new[] { "招式", "化法", "丹药", "符箓", "法宝" })
+        {
+            var captured = category; var tab = ActionButton(category, () => SelectCategory(captured), 20);
+            tab.Name = "BoardCategory" + category; tab.ToggleMode = true; tab.Disabled = category is "符箓" or "法宝";
+            if (tab.Disabled) tab.TooltipText = "当前暂无可配置的来源。";
+            tabs.AddChild(tab); _categories[category] = tab;
+        }
+        var filtering = Row(_sourcePage, 8);
+        _search = new LineEdit { Name = "BoardSourceSearch", PlaceholderText = "检索名称", SizeFlagsHorizontal = SizeFlags.ExpandFill, CustomMinimumSize = new Vector2(190, 43) };
+        CraftingPaperStyle.ApplyInput(_search, 20); filtering.AddChild(_search); _search.TextChanged += _ => RebuildSources();
+        _filter = new OptionButton { Name = "BoardSourceFilter", CustomMinimumSize = new Vector2(155, 43) };
+        PaperButtonFeedback.Apply(_filter, CraftingPaperStyle.ButtonKind.Input, 19); filtering.AddChild(_filter); _filter.ItemSelected += _ => RebuildSources();
+        _sourceScroll = new ScrollContainer { Name = "PreparationSourceScroll", HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled, SizeFlagsVertical = SizeFlags.ExpandFill };
+        _sourcePage.AddChild(_sourceScroll); _sourceList = Stack(_sourceScroll, 10);
+        _plansPage = Stack(sidebar); _plansPage.Name = "PreparationPlans"; _plansPage.Hide();
+        var planHeader = Row(_plansPage); var planTitle = Text("我的方案", 26); planTitle.SizeFlagsHorizontal = SizeFlags.ExpandFill; planHeader.AddChild(planTitle);
+        var back = ActionButton("返回", ShowSources, 22); back.SizeFlagsHorizontal = SizeFlags.ShrinkEnd; back.CustomMinimumSize = new Vector2(114, 46); planHeader.AddChild(back);
+        var arrow = new QuietRoomTriangle { Right = true, MouseFilter = MouseFilterEnum.Ignore, Size = new Vector2(6, 8) }; back.AddChild(arrow);
+        arrow.AnchorLeft = arrow.AnchorRight = 1; arrow.AnchorTop = arrow.AnchorBottom = .5f; arrow.OffsetLeft = -24; arrow.OffsetRight = -18; arrow.OffsetTop = -4; arrow.OffsetBottom = 4;
+        var planScroll = new ScrollContainer { HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled, SizeFlagsVertical = SizeFlags.ExpandFill };
+        _plansPage.AddChild(planScroll); _planList = Stack(planScroll, 12);
+        var management = Row(_plansPage); management.AddChild(ActionButton("新建方案", () => NameDialog("new")));
+        _deleteButton = ActionButton("删除方案", DeleteDialog); management.AddChild(_deleteButton);
+        var tools = Row(sidebar); _clearButton = ActionButton("清空盘面", ClearDraft); tools.AddChild(_clearButton);
+        _plansButton = ActionButton("方案", ShowPlans); _plansButton.Name = "ShowBoardPlans"; tools.AddChild(_plansButton);
+        RefreshState();
+    }
+
+    private void FitBoard()
+    {
+        if (!_built || _boardHost.Size.X <= 0) return;
+        float available = Math.Min(_boardHost.Size.Y - 12, _boardHost.Size.X - 126);
+        float cell = Math.Min(100, available / Math.Max(1, Math.Max(_draft.size.X, _draft.size.Y)));
+        _board.CellSize = Math.Max(36, cell); _board.Size = (Vector2)_draft.size * _board.CellSize;
+        _board.Position = new Vector2(Math.Max(0, (_boardHost.Size.X - _board.Size.X - 112) / 2), Math.Max(0, (_boardHost.Size.Y - _board.Size.Y) / 2));
+        _hand.Position = _board.Position + new Vector2(_board.Size.X + 20, (_board.Size.Y - 88) / 2);
+    }
+    private void RefreshState()
+    {
+        if (!_built) return;
+        _board.Layout = _draft; _board.Catalog = _catalog; _board.Selected = _selected; _board.QueueRedraw(); FitBoard();
+        _name.Text = _activeName.Length > 0 ? _activeName : "未命名草稿"; _status.Text = _dirty ? "已调整" : _activeName.Length > 0 ? "已保存" : "草稿";
+        int used = _draft.placements.SelectMany(item => CombatBoardGeometry.Cells(item, CombatBoardGeometry.Footprint(item, _catalog.FindSkill))).Distinct().Count();
+        int capacity = _draft.size.X * _draft.size.Y; _summary.Text = $"占用 {used} / {capacity} · 留空 {Math.Max(0, capacity - used)}";
+        foreach (var (category, tab) in _categories) { tab.SetPressedNoSignal(category == _category); PaperButtonFeedback.Apply(tab, CraftingPaperStyle.ButtonKind.Regular, 20, category == _category); }
+        _deleteButton.Disabled = _owner is null || !CombatBoardPreparationService.GetPlans(_owner).Any(plan => plan.ResourceName == _activeName);
+        RefreshSelection(); RebuildSources(); if (_plansVisible) RebuildPlans();
+    }
+    private void RefreshSelection()
+    {
+        var item = _draft.placements.FirstOrDefault(item => item.placement_id == _selected);
+        _selection.Text = item is not null ? PlacementName(item) : _picked.Length > 0 ? "待摆入：" + SourceName(_picked) : "点选来源后摆入盘面";
+    }
+    private void Changed() { _dirty = true; _notice.Text = ""; RefreshState(); }
+    public override void _UnhandledKeyInput(InputEvent input)
+    {
+        if (!IsVisibleInTree() || _owner is null || _dialog is not null || !input.IsPressed() || input.IsEcho() || GetViewport().GuiGetFocusOwner() is LineEdit) return;
+        if (input is not InputEventKey key) return;
+        if (key.Keycode == Key.R) RotateSelected();
+        else if (key.Keycode == Key.Delete) RemoveSelected();
+        else if (key.Keycode is Key.Left or Key.Right or Key.Up or Key.Down)
+        {
+            var item = _draft.placements.FirstOrDefault(item => item.placement_id == _selected); if (item is null) return;
+            var direction = key.Keycode switch { Key.Left => Vector2I.Left, Key.Right => Vector2I.Right, Key.Up => Vector2I.Up, _ => Vector2I.Down };
+            MovePlacement(item.placement_id, item.cell + direction);
+        }
+        else return;
+        GetViewport().SetInputAsHandled();
+    }
+}

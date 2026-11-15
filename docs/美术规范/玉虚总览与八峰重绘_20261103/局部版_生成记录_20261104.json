@@ -1,0 +1,141 @@
+{
+  "date": "2026-11-04",
+  "status": "九张局部版候选已保存，未接入游戏",
+  "scope": "一张八峰总览，八张各峰局部内景；局部取景与现有功能场景同层级",
+  "overview": "textures/sect_overview/repaint_20261103/local_20261104/overview.png",
+  "master": "textures/sect_overview/repaint_20261103/local_20261104/heguang.png",
+  "common_prompt": "One finished 1672x941 landscape environment background for a Chinese cultivation RPG, Yuxu first-rank immortal sect.\nUse provided Heguang image as EXACT COLOR, LIGHTING, BRUSHWORK AND LOCAL-SCENE SCALE reference. Same warm neutral stone/paper tone, muted slate-gray-blue roofs and rocks, olive pines, ivory walls, restrained gold edges, same daylight, brightness and saturation. No individual thematic filter, purple, cold blue or red grade. No extra gilding. Clean hand-painted game-map illustration with solid coherent architecture, no photo/3D or engraving noise.\n\nNEW USER SCOPE: SHOW JUST ONE LOCAL FUNCTIONAL PLACE INSIDE THE PEAK, like this reference. Do not show the whole peak, whole mountain campus, countless background roof-bands or interconnected far-off institutions. A close elevated oblique view of one clear local scene, comparable to the Heguang yard: an open playable foreground ground plane, one principal building/terrace and a few partial supporting structures. The framing crops side wings or roof at edge so this is only a portion of a larger peak. Background mountain and pines, only occasional distant roof glimpse, not repeated halls on every ridge. Grand first-rank sect standard, no shabby village.\n\nPHYSICAL SPACE: first design ONE broad continuous natural rock-supported bench with a clear pale-stone approach path. Forecourt, veranda and visible doors meet at matching height. One upper terrace allowed with a coherent short stair and flat landings at both ends; no stairs into roofs, cliffs, water or railing. Structures have stable foundations; columns support beams and roofs, no roof-face collisions or floating galleries. Never force unrelated eaves into a continuous roof. Every visible local facility has access from the same ground system. Do not add bridges unless specifically requested. Keep any water separate from building foundations and above/below ground logic coherent. Main scene anchors within x20–80%,y18–78%, central foreground has open readable ground, good for future UI.\nAll four corners and borders fully painted, sharp and in focus. No blur, feathering, white fade, vignette, DOF or fog hiding connections. No sky dominating half image; nearby terrain fills surroundings naturally. No readable signs, writing, labels, calligraphy, UI, border, watermark, people/silhouettes or humanoid statues. Environment only; no new game mechanics.\nLOCAL PLACE:\n",
+  "tasks": [
+    {
+      "id": "guanfu",
+      "name": "观复峰",
+      "spec": "One daily teaching and residential courtyard portion. A dignified teaching hall sits on a broad hillside bench in middle-right, front veranda opens to a clear wide paved court. Residential/study-room side wing partly crops at left edge and continues behind bamboo, neither dormitory block shown in full. Calm pines and bamboo on natural slope behind, no distant roof city. One clear stone footpath enters lower-left, follows level courtyard and visibly reaches hall doors and residence veranda. A small adjacent quiet practice corner at same level, not huge separate arena. OPTIONAL small glimpse of still mountain water lower-right below terrace, no jetty disconnected from path. The whole peak is not visible; local disciples' daily place, calm useful grandeur."
+    },
+    {
+      "id": "zifu",
+      "name": "紫府峰",
+      "spec": "A single local forecourt and entry stretch of the sect governing/true-disciple precinct. A stately grand main hall partly occupies upper-middle-right on a natural raised stone bench, pale-stone ceremonial court in foreground; one short stair flight with clear bottom and top landings connects forecourt to hall's visible entrance. Quiet side residence/study pavilion partly cropped at left, approached by same level side path, olive pines and carefully kept stone garden. Side colonnade may leave frame, but its roof doesn't collide with hall or stair. Main hall is dignified, not entire imperial palace; no distant fields of identical palaces. Exact master colors, NO PURPLE light or increased gold."
+    },
+    {
+      "id": "xuanlan",
+      "name": "玄览峰",
+      "spec": "The entrance court and reading veranda beside one scripture library. A fine multistory archive/library building stands middle-right on rock-supported ground, its front door opens onto a raised veranda reached by a short broad stair from a spacious connected pale-stone court. Left side is a partly cropped open reading gallery with a glimpse of tidy book cabinets and closed manuscript boxes. Reading tables under roof, not obstructing doors or path. Upper-left rocky pine slope, background hints of another library wing mostly behind rock but not a city. One approach path from lower-middle reaches court, gallery and library front landing clearly. No floating giant book, full mountain campus or countable pagoda lineup."
+    },
+    {
+      "id": "tianwen",
+      "name": "天问峰",
+      "spec": "ONE local sparring/practice stone terrace. Broad pale stone dueling platform with plain circular/concentric engraved paving occupies middle-right and is partially cropped at lower edge. Its ground is supported on a massive natural rock bench with a clearly visible rim/retaining structure, not floating. A broad level approach from left enters the terrace through a clear opening in stone balustrade; do not place an unbroken railing across the entrance. Small observation pavilion on upper-left side approached by same terrace, a nearby resting hall partly crops at right. Steps only if needed with explicit landings. Rugged pine-covered mountain slope behind. No giant multiple arenas, testing dungeon, fighters, glowing magic circle or dramatic effects."
+    },
+    {
+      "id": "tiangong",
+      "name": "天工峰",
+      "spec": "One local crafting courtyard, not the entire crafts peak. On ONE continuous broad hillside work bench, a dignified open alchemy gallery on left with bronze furnace, shelves of jars and very faint white wisp; a separate open refining workshop on right has anvil, tools, work tables. A partly cropped near veranda hints at brush/paper and formation-craft implements without lettering. All open bays face a shared clear stone work yard at the SAME ground level with unobstructed thresholds. A broad gently curved cart road enters from lower-right and passes directly in front of both workshops, no stairs on the cargo route. Supporting storage continues beyond edge. Rock/pine slope behind buildings, no stream through yard, random bridges, multiple peaks or red lighting. Separate roof faces/ends, no eaves crossing a stair or cliff."
+    },
+    {
+      "id": "zhizhong",
+      "name": "执中峰",
+      "spec": "One local law-hall forecourt. Solemn main discipline/hearing hall middle-upper-right on a stable natural stone bench, a broad short stair with flat landings leads from open foreground court to the visible entry. A bronze bell pavilion stands off left-middle on the SAME forecourt terrace, with a clearly continuous level path between pavilion and hall stair. An archival side wing partly crops at right edge and opens onto the court at its own consistent level. Rock and old olive pines behind, dignified calm. No hanging bridge, roof path, maze of stairs or whole mountain domain. No dungeon, torture, weapon statue, invented justice icon or dark/red thematic filter. Same color and daylight master."
+    },
+    {
+      "id": "yaopu",
+      "name": "瑶圃峰",
+      "spec": "One local medicinal nursery/garden section. A broad natural hillside bench has an orderly herb plot partially continuing out of right edge, one open nursery/seedling gallery at left with bamboo plant trellises, baskets and pots, a small storage/caretaking pavilion upper-middle. A wide gently sloped pale-stone service path enters lower-left and continues between nursery and plots to the pavilion entrance, all facilities have actual direct path access; no need for bridge. A narrow irrigation rill follows the SIDE of the path and visibly drains downhill to a small lower-right lotus/irrigation pool below the garden; it never runs beneath doors or abruptly rises across a terrace. A couple low garden retaining steps for plant beds, not random cliff fields. Rock and olive pines behind, no entire peak's enumerated circular beds. Muted master vegetation palette, no luminous plants or emerald/purple grade, no people."
+    }
+  ],
+  "completed": [
+    "overview",
+    "heguang",
+    "guanfu",
+    "zifu",
+    "xuanlan",
+    "tianwen",
+    "tiangong",
+    "zhizhong",
+    "yaopu"
+  ],
+  "files": [
+    {
+      "id": "overview",
+      "path": "textures/sect_overview/repaint_20261103/local_20261104/overview.png",
+      "native_size": [
+        1672,
+        941
+      ],
+      "sha256": "2c5f0283001da7ea05f3016ff144ec4872a58c8d2ee5a82a1397451467f9f6d5"
+    },
+    {
+      "id": "heguang",
+      "path": "textures/sect_overview/repaint_20261103/local_20261104/heguang.png",
+      "native_size": [
+        1671,
+        941
+      ],
+      "sha256": "f8fcdbabbad1558ff46ac3fac430829452affcb37ec1ddc589e6f68437062f37"
+    },
+    {
+      "id": "guanfu",
+      "path": "textures/sect_overview/repaint_20261103/local_20261104/guanfu.png",
+      "native_size": [
+        1672,
+        941
+      ],
+      "sha256": "f7d789b2b168013f18b25a20c0d7ec6a5730a10cb829de71c599ba178d4f4a37"
+    },
+    {
+      "id": "zifu",
+      "path": "textures/sect_overview/repaint_20261103/local_20261104/zifu.png",
+      "native_size": [
+        1672,
+        941
+      ],
+      "sha256": "76e3a7fa7a639af32cc4a93322db6af02d97b1f89aff885e627656f6467dab17"
+    },
+    {
+      "id": "xuanlan",
+      "path": "textures/sect_overview/repaint_20261103/local_20261104/xuanlan.png",
+      "native_size": [
+        1672,
+        941
+      ],
+      "sha256": "6ee7048e5f9002bfbef9e734cdc0ced53af8ea62090fd58d6d8bc4e57434e0f3"
+    },
+    {
+      "id": "tianwen",
+      "path": "textures/sect_overview/repaint_20261103/local_20261104/tianwen.png",
+      "native_size": [
+        1672,
+        941
+      ],
+      "sha256": "23bfe413ca489dd1f20c34596827a10c84ddb604e1cf501783efff85ff8634b0"
+    },
+    {
+      "id": "tiangong",
+      "path": "textures/sect_overview/repaint_20261103/local_20261104/tiangong.png",
+      "native_size": [
+        1672,
+        941
+      ],
+      "sha256": "0862e89f5e35ccf6f987d99400d98de1bb364b7e68ec034a2492b8fb2374416d"
+    },
+    {
+      "id": "zhizhong",
+      "path": "textures/sect_overview/repaint_20261103/local_20261104/zhizhong.png",
+      "native_size": [
+        1672,
+        941
+      ],
+      "sha256": "5c51a9e2cf3c31e6d507a9c00f1dcce5056206008b99d58457bb3deced20802d"
+    },
+    {
+      "id": "yaopu",
+      "path": "textures/sect_overview/repaint_20261103/local_20261104/yaopu.png",
+      "native_size": [
+        1672,
+        941
+      ],
+      "sha256": "9c67502cee87222a80dbce1f4c7ae4c9a52dc57d25b4ca8e66ff8599d9a5a69d"
+    }
+  ],
+  "overview_source": "textures/sect_overview/repaint_20261103/yuxu_overview_spatial_v2.png",
+  "heguang_source": "textures/sect_overview/repaint_20261103/peaks/heguang_spatial_v2.png"
+}

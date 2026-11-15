@@ -1,0 +1,129 @@
+[gd_resource type="Resource" script_class="GongfaResource" format=3]
+
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaResource.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaChapterConfig.cs" id="2"]
+[ext_resource type="Script" path="res://csharp/gongfa/GongfaDeckRewriteConfig.cs" id="3"]
+[ext_resource type="Resource" path="res://resources/activeskills/抱虚养晦通玄录/心法.tres" id="heart"]
+[ext_resource type="Resource" path="res://resources/activeskills/抱虚养晦通玄录/散照.tres" id="skill0"]
+[ext_resource type="Resource" path="res://resources/activeskills/抱虚养晦通玄录/守寂.tres" id="skill1"]
+[ext_resource type="Resource" path="res://resources/activeskills/抱虚养晦通玄录/散照.tres" id="original1"]
+[ext_resource type="Resource" path="res://resources/activeskills/抱虚养晦通玄录/化法/散照第1卷.tres" id="chem1"]
+[ext_resource type="Resource" path="res://resources/activeskills/抱虚养晦通玄录/守寂.tres" id="original2"]
+[ext_resource type="Resource" path="res://resources/activeskills/抱虚养晦通玄录/化法/守寂第2卷.tres" id="chem2"]
+[ext_resource type="Resource" path="res://resources/activeskills/架招.tres" id="original3"]
+[ext_resource type="Resource" path="res://resources/activeskills/抱虚养晦通玄录/化法/架招第3卷.tres" id="chem3"]
+[ext_resource type="Resource" path="res://resources/activeskills/抱虚养晦通玄录/散照.tres" id="original4"]
+[ext_resource type="Resource" path="res://resources/activeskills/抱虚养晦通玄录/化法/散照第4卷.tres" id="chem4"]
+
+[sub_resource type="Resource" id="Rewrite1"]
+script = ExtResource("3")
+mode = 1
+target_scope = 1
+source_skill = ExtResource("original1")
+source_skill_name = "散照"
+result_skill = ExtResource("chem1")
+
+[sub_resource type="Resource" id="Rewrite2"]
+script = ExtResource("3")
+mode = 1
+target_scope = 1
+source_skill = ExtResource("original2")
+source_skill_name = "守寂"
+result_skill = ExtResource("chem2")
+
+[sub_resource type="Resource" id="Rewrite3"]
+script = ExtResource("3")
+mode = 1
+target_scope = 0
+source_skill = ExtResource("original3")
+source_skill_name = "架招"
+result_skill = ExtResource("chem3")
+
+[sub_resource type="Resource" id="Rewrite4"]
+script = ExtResource("3")
+mode = 1
+target_scope = 1
+source_skill = ExtResource("original4")
+source_skill_name = "散照"
+result_skill = ExtResource("chem4")
+
+[sub_resource type="Resource" id="Chapter1"]
+script = ExtResource("2")
+chapter_id = "baoxu_c1"
+chapter_name = "散照"
+order = 1
+required_study_progress = 24.0
+required_realm = "凡人"
+required_attributes = {"intelligence": 5, "magic_proficiency": 0}
+required_chapter_ids = Array[String]([])
+learn_permanent_bonuses = {"intelligence": 0.5, "magic_proficiency": 0.5}
+combat_tempering_bonuses = {"max_mana_yunxi": 1.0}
+heart_method_upgrade_id = "baoxu_c1"
+heart_method_upgrade_description = "心法被动：虚室生白\n关键词：周天\n效果：非应对技能支付费用后，若自身法力为0，该技能结算后获得炁1；每回合最多触发两次。\n主修额外效果：每回合首次触发本心法时，额外获得炁1。"
+heart_method_description = "心法被动：虚室生白\n关键词：周天\n效果：非应对技能支付费用后，若自身法力为0，该技能结算后获得炁1；每回合最多触发两次。\n主修额外效果：每回合首次触发本心法时，额外获得炁1。"
+sub_deck_rewrites = Array[ExtResource("3")]([SubResource("Rewrite1")])
+learned_active_skills = Array[Resource]([ExtResource("skill0")])
+
+[sub_resource type="Resource" id="Chapter2"]
+script = ExtResource("2")
+chapter_id = "baoxu_c2"
+chapter_name = "守寂"
+order = 2
+required_study_progress = 48.0
+required_realm = "云息三层"
+required_attributes = {"intelligence": 6, "magic_proficiency": 0.5}
+required_chapter_ids = Array[String](["baoxu_c1"])
+learn_permanent_bonuses = {"magic_proficiency": 0.5}
+combat_tempering_bonuses = {"max_health_percent": 10.0}
+heart_method_upgrade_id = "baoxu_c2"
+heart_method_upgrade_description = "心法被动：虚室生白\n关键词：周天\n效果：非应对技能支付费用后，若自身法力为0，该技能结算后获得炁1；每回合最多触发两次。\n主修额外效果：每回合首次触发本心法时，额外获得炁1。"
+heart_method_description = "心法被动：虚室生白\n关键词：周天\n效果：非应对技能支付费用后，若自身法力为0，该技能结算后获得炁1；每回合最多触发两次。\n主修额外效果：每回合首次触发本心法时，额外获得炁1。"
+sub_deck_rewrites = Array[ExtResource("3")]([SubResource("Rewrite2")])
+learned_active_skills = Array[Resource]([ExtResource("skill1")])
+
+[sub_resource type="Resource" id="Chapter3"]
+script = ExtResource("2")
+chapter_id = "baoxu_c3"
+chapter_name = "虚室"
+order = 3
+required_study_progress = 84.0
+required_realm = "云息六层"
+required_attributes = {"intelligence": 8, "magic_proficiency": 1}
+required_chapter_ids = Array[String](["baoxu_c2"])
+learn_permanent_bonuses = {"intelligence": 0.5, "magic_proficiency": 1.0}
+combat_tempering_bonuses = {"physical_damage_percent": 5.0}
+heart_method_upgrade_id = "baoxu_c3"
+heart_method_upgrade_description = "心法被动：虚室生白\n关键词：周天\n效果：非应对技能支付费用后，若自身法力为0，该技能结算后获得炁1；每回合最多触发两次。\n主修额外效果：每回合首次触发本心法时，额外获得炁1。"
+heart_method_description = "心法被动：虚室生白\n关键词：周天\n效果：非应对技能支付费用后，若自身法力为0，该技能结算后获得炁1；每回合最多触发两次。\n主修额外效果：每回合首次触发本心法时，额外获得炁1。"
+sub_deck_rewrites = Array[ExtResource("3")]([SubResource("Rewrite3")])
+
+[sub_resource type="Resource" id="Chapter4"]
+script = ExtResource("2")
+chapter_id = "baoxu_c4"
+chapter_name = "生白"
+order = 4
+required_study_progress = 128.0
+required_realm = "云息九层"
+required_attributes = {"intelligence": 10, "magic_proficiency": 2}
+required_chapter_ids = Array[String](["baoxu_c3"])
+learn_permanent_bonuses = {"magic_proficiency": 1.0}
+combat_tempering_bonuses = {"physical_damage_percent": 5.0}
+heart_method_upgrade_id = "baoxu_c4"
+heart_method_upgrade_description = "心法被动：虚室生白\n关键词：周天\n效果：非应对技能支付费用后，若自身法力为0，该技能结算后获得炁1；每回合最多触发两次。\n主修额外效果：每回合首次触发本心法时，额外获得炁1。"
+heart_method_description = "心法被动：虚室生白\n关键词：周天\n效果：非应对技能支付费用后，若自身法力为0，该技能结算后获得炁1；每回合最多触发两次。\n主修额外效果：每回合首次触发本心法时，额外获得炁1。"
+sub_deck_rewrites = Array[ExtResource("3")]([SubResource("Rewrite4")])
+
+[resource]
+script = ExtResource("1")
+gameplay_enabled = false
+gongfa_name = "抱虚养晦通玄录"
+description = "法力耗尽后，以纯体力技能继续积炁，完成周天后重启施法。"
+can_be_main = true
+can_be_sub = true
+required_study_progress = 24.0
+school_tags = Array[String](["cloud_breath"])
+main_realm_start = "凡人"
+main_realm_end = "云息十层"
+heart_method_skill = ExtResource("heart")
+default_unlocked_chapter_count = 1
+chapters = Array[Resource]([SubResource("Chapter1"), SubResource("Chapter2"), SubResource("Chapter3"), SubResource("Chapter4")])

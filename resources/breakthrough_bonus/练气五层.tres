@@ -6,21 +6,19 @@
 script = ExtResource("1")
 realm = "练气五层"
 multipliers = {
-"agility": 0.08,
 "comprehension": 0.05,
 "cultivation_rate": 0.08,
 "intelligence": 0.08,
 "mana_regen_rate": 0.05,
-"physique": 0.08,
-"soul": 0.08,
+"physique": 0.12,
+"soul": 0.12,
 }
 fixed = {
-"agility": 1,
 "intelligence": 2,
 "max_health": 30,
 "max_mana": 15,
 "max_mind": 5,
 "max_stamina": 10,
-"physique": 2,
-"soul": 2,
+"physique": 2.5,
+"soul": 2.5,
 }

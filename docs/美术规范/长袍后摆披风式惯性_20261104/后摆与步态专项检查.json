@@ -1,0 +1,136 @@
+{
+	"checks": 20,
+	"diagnostics": {
+		"acceleration_drive": 0.0,
+		"angles": [
+			0.0,
+			0.0,
+			0.0
+		],
+		"angular_velocity": [
+			0.0,
+			0.0,
+			0.0
+		],
+		"arm_speed_correction": [
+			0.0426857694983482,
+			0.0314514264464378,
+			0.00325840665027499
+		],
+		"arm_swing_scale": 0.72,
+		"continuous_mesh": false,
+		"front_bones_resting": true,
+		"gait_amount": 0.530819442477644,
+		"gait_cadence_hz": 0.8,
+		"gait_lift": 7.5,
+		"gait_phase": 0.0133333333333333,
+		"gait_phase_advance_location": "update_cloth_once_per_clock",
+		"gait_speed_actual": 0.0,
+		"gait_speed_smoothed": 0.0,
+		"gait_stride_half": 14.0,
+		"gait_style": "slow",
+		"ground_shift": 0.0,
+		"hidden_leg_meshes": 0,
+		"leg_rendering": "original_full_legs_and_boots",
+		"locomotion_style": "ground",
+		"lowest_cloth_y": -10.5974712371826,
+		"mode": "cape_like_open_robe",
+		"original_split_panels": true,
+		"outline_samples": 0,
+		"pants_uv_clipped": false,
+		"rear_anchor": [
+			2.010986328125,
+			-53.7464790344238
+		],
+		"rear_tip": [
+			2.010986328125,
+			-9.01529502868652
+		],
+		"rear_wind": 0.0,
+		"reset_count": 2,
+		"rest_hem_source_y": 1340.0,
+		"simulation_steps": 944,
+		"source_geometry_preserved": true,
+		"support_model": "hip_hung_rear_chain_gravity_inertia",
+		"travel_drag": 0.0,
+		"visible_leg_meshes": 2
+	},
+	"failures": [],
+	"maximum_phase_error": 0.0,
+	"passed": true,
+	"settled_angles": 0.0000000123868062473775,
+	"settled_angular_speed": 0.00000016343371100902,
+	"source_geometry_error": 0.240000009536743,
+	"speeds": {
+		"114.0": {
+			"angles": [
+				0.0449403859674931,
+				0.054117314517498,
+				0.0421847775578499
+			],
+			"frequency": 1.36062129286675,
+			"lift": 9.66282524052986,
+			"stride_half": 18.484970342934
+		},
+		"117.5": {
+			"angles": [
+				0.0463311895728111,
+				0.0557929202914238,
+				0.0434494093060493
+			],
+			"frequency": 1.37434917729007,
+			"lift": 9.71913894327997,
+			"stride_half": 18.5947934183206
+		},
+		"171.0": {
+			"angles": [
+				0.0674255713820457,
+				0.0812959223985672,
+				0.0635809302330017
+			],
+			"frequency": 1.57542999601433,
+			"lift": 10.5528045511255,
+			"stride_half": 20.2034399681146
+		},
+		"235.0": {
+			"angles": [
+				0.0926819890737534,
+				0.111975573003292,
+				0.0880974978208542
+			],
+			"frequency": 1.79999999668181,
+			"lift": 11.4999999858977,
+			"stride_half": 21.9999999734545
+		},
+		"352.5": {
+			"angles": [
+				0.112429201602936,
+				0.136100172996521,
+				0.107751451432705
+			],
+			"frequency": 2.18316186160512,
+			"lift": 13.1459569147783,
+			"stride_half": 25.0652948928409
+		},
+		"400.0": {
+			"angles": [
+				0.112438023090363,
+				0.136096552014351,
+				0.107731819152832
+			],
+			"frequency": 2.33036034139204,
+			"lift": 13.7864186566787,
+			"stride_half": 26.2428827311363
+		},
+		"57.0": {
+			"angles": [
+				0.0224629119038582,
+				0.0270301308482885,
+				0.0210466701537371
+			],
+			"frequency": 1.1219923764846,
+			"lift": 8.6999024223882,
+			"stride_half": 16.5759390118768
+		}
+	}
+}

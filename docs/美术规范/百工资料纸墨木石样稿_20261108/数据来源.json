@@ -1,0 +1,149 @@
+{
+  "date": "2026-11-08",
+  "scope": "只读界面样稿；内置11种丹/25套样方来自现行目录快照；个人丹方/记录默认空；器物存录仅沿用既有演出样例，不增加实例或属性。阵法仅展示已有资源，不处理装配与资格。",
+  "pills": 11,
+  "routes": 25,
+  "runtimeIntegrated": false,
+  "playerDataRead": false,
+  "sources": [
+    {
+      "file": "docs/美术规范/百工与天工峰界面样稿_20261107/catalog.js",
+      "sha256": "ef811554e322a7b7fad71497a894bc61c5acc25636fd9b67a9ac9683a282b870"
+    },
+    {
+      "file": "csharp/panel/BaigongPanel.cs",
+      "sha256": "715322000b2acee2cb69db5c60efc5ccaef1ac1c34eea8cc1348ef3e16778d2e"
+    },
+    {
+      "file": "csharp/scene/AlchemyRecipeCatalog.cs",
+      "sha256": "36ce23029e195a2ddd20d5f5f902d9109edc6e2af20e06da2790663636e2f204"
+    },
+    {
+      "file": "csharp/scene/AlchemyRecipeCatalog.Expansion.cs",
+      "sha256": "4d5cf5fbd0da414d82f83ead8ffa3d8591195271c44a0ad37645e667c65dbadb"
+    },
+    {
+      "file": "csharp/scene/AlchemyRecipeCatalog.Breakthrough.cs",
+      "sha256": "d251704a14dddd284a1c6f977a2cb3c0d881ba9dac53e76cf82602a81ae4b753"
+    },
+    {
+      "file": "resources/formations/云息周天护持阵.tres",
+      "sha256": "84661431ec2562614c75ae1b6e765fb58fe6568a292c79a7a1f2c544e28a650f"
+    },
+    {
+      "file": "csharp/systems/AlchemyRecipeStore.cs",
+      "sha256": "21dfb35a49574cec21206ef89c973027f9db73738ab3cdaa0af5bf75f7b2d529"
+    },
+    {
+      "file": "csharp/scene/AlchemySlotBrewPreviewScene.Notebook.cs",
+      "sha256": "97af15dc98532b524867edb5893fb71a01fa6ba75497f0c222d0880fc2bd00f1"
+    }
+  ],
+  "materials": "新增完整书册RGBA底图；其余控件与图标沿用同族已有素材。PNG原字节保留，文字与交互独立。",
+  "design": "书外上方器物化大分类，书侧系统内标签；个人丹方、寻方夹笺、500ms真翻页。",
+  "navigation": {
+    "reveal": 8,
+    "durationMs": 180,
+    "reducedMotion": "immediate"
+  },
+  "assets": [
+    {
+      "file": "textures/ui/yuxu_library_20261107/library_frame.png",
+      "sha256": "5d311b0aeb04d8de57fddbc6aef492e7e11ffbadba3ce558fe2f67579a4da7ce"
+    },
+    {
+      "file": "textures/ui/talisman_crafting_20261108/desk_v1.png",
+      "sha256": "16e12a32dd74336f167611056cf3d4a40c4bdfd70163224bcbc229f5e82e7121"
+    },
+    {
+      "file": "textures/ui/forged_swords_icons_20261025_v1/slender_sword.png",
+      "sha256": "2963312005dfc515dd8918668f03c576ca11b8f2a38f1bbceb134030d7b3e8f4"
+    },
+    {
+      "file": "resources/font/LXGWZhenKaiSlabGB-Regular.ttf",
+      "sha256": "086fa66af57b7a0d7a007067097cd1ac27eb8b8db810fb83ac3de620be1eb3a1"
+    },
+    {
+      "file": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_主操作_v4.png",
+      "sha256": "fcd81aceb22be83c5cb3d3c1ad4c7b1b8e2cbaac7d1b923409d1edd3c6e3727e"
+    },
+    {
+      "file": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_侧栏分页_v4.png",
+      "sha256": "efdffe5ce28de8364b6cd5dbdea7930075573de538ad0e8ad08993e4d302f943"
+    },
+    {
+      "file": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_小图标_v4.png",
+      "sha256": "d66d0c1d7a1f19f5ee46b234ddedec66a714a59b1f6cd9cca874753641e8b52b"
+    },
+    {
+      "file": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_常规_v4.png",
+      "sha256": "dff0f81e6d21615106eea2023aa73429ccd003e7e3e1e7c49cbc5e3bcec6e495"
+    },
+    {
+      "file": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_短页签_v4.png",
+      "sha256": "6512258e52c3c63a70a1618ab0af9cfd74e96039ffcf82bace9a1b58de40c4eb"
+    },
+    {
+      "file": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/控件_输入槽_v4.png",
+      "sha256": "b73575d23fb26a0efec9eedfd6fefb45c2dd5cf8afcf283e3077cc6f102db8c9"
+    },
+    {
+      "file": "docs/美术规范/百工资料纸墨木石样稿_20261108/assets/展开书册_v2.png",
+      "sha256": "0ee60992910c4bfd213a9fbb4ee3972d8ba4b69ce1cbf08b583664e7d347258c",
+      "newAsset": true
+    },
+    {
+      "file": "textures/ui/talisman_crafting_20261108/tools_v1.png",
+      "sha256": "59d4a3e43e484dfc67d466e0f6fc05acc69f42a3b0778f7182c6739e09b77cc2"
+    },
+    {
+      "file": "textures/ui/formation/formation_logic_atlas_v1.png",
+      "sha256": "9a6b545698541132ca90297e821e15dafc2527475f26591dadbd4bd0f902fa7f"
+    }
+  ],
+  "revision": 3,
+  "bookReadingSafeAreas": {
+    "originalSize": [
+      1681,
+      936
+    ],
+    "left": [
+      135,
+      105,
+      640,
+      695
+    ],
+    "right": [
+      905,
+      105,
+      640,
+      695
+    ]
+  },
+  "bookGeneration": "assets/展开书册_v2_生成记录.json",
+  "personalRecipeFixture": "个人丹方样例.js",
+  "personalRecipeCount": 8,
+  "personalDataConnected": false,
+  "pageSize": 6,
+  "pageSizeIsLayoutOnly": true,
+  "categoryPlacement": "outside-top",
+  "systemTabsPlacement": "right-book-edge",
+  "lookupEntryPlacement": "outside-top",
+  "bookDrawBounds": [
+    70,
+    106,
+    1455,
+    810
+  ],
+  "flipDurationMs": 500,
+  "otherPanels": "按用户最新要求暂停",
+  "formalRecipeFields": [
+    "Id",
+    "Name",
+    "Ingredients(MaterialId,Dose,Slot)"
+  ],
+  "fixtureOnlyFields": [
+    "previewOrigin:collected/recorded",
+    "referencePill"
+  ]
+}

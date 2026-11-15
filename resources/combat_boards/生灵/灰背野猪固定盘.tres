@@ -1,0 +1,32 @@
+[gd_resource type="Resource" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/CombatBoardLayout.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/resources/CombatBoardPlacement.cs" id="2"]
+
+[sub_resource type="Resource" id="BoarChargeEarly"]
+script = ExtResource("2")
+placement_id = "boar_charge_early"
+kind = 0
+source_key = "res://resources/activeskills/妖兽/灰背野猪/拱撞.tres"
+cell = Vector2i(0, 0)
+
+[sub_resource type="Resource" id="BoarBrace"]
+script = ExtResource("2")
+placement_id = "boar_brace"
+kind = 0
+source_key = "res://resources/activeskills/妖兽/灰背野猪/拱身戒备.tres"
+cell = Vector2i(2, 1)
+
+[sub_resource type="Resource" id="BoarChargeLate"]
+script = ExtResource("2")
+placement_id = "boar_charge_late"
+kind = 0
+source_key = "res://resources/activeskills/妖兽/灰背野猪/拱撞.tres"
+cell = Vector2i(0, 2)
+
+[resource]
+script = ExtResource("1")
+layout_version = 1
+size = Vector2i(3, 3)
+confirmed = true
+placements = Array[ExtResource("2")]([SubResource("BoarChargeEarly"), SubResource("BoarBrace"), SubResource("BoarChargeLate")])

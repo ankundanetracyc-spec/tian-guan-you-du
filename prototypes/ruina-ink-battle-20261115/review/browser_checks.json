@@ -1,0 +1,104 @@
+{
+  "entry": "battle_preview.html",
+  "passed": 15,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "idle frame rendered",
+      "passed": true,
+      "data": {
+        "time": 0.5,
+        "poseA": "idle",
+        "poseB": "idle",
+        "zoom": 1
+      }
+    },
+    {
+      "name": "deflect frame rendered",
+      "passed": true,
+      "data": {
+        "time": 4.34,
+        "poseA": "strike",
+        "poseB": "guard",
+        "zoom": 1.16
+      }
+    },
+    {
+      "name": "return frame rendered",
+      "passed": true,
+      "data": {
+        "time": 7.16,
+        "poseA": "guard",
+        "poseB": "strike",
+        "zoom": 1.16
+      }
+    },
+    {
+      "name": "heavy frame rendered",
+      "passed": true,
+      "data": {
+        "time": 10.47,
+        "poseA": "strike",
+        "poseB": "hurt",
+        "zoom": 1.24
+      }
+    },
+    {
+      "name": "last_hit frame rendered",
+      "passed": true,
+      "data": {
+        "time": 17.03,
+        "poseA": "strike",
+        "poseB": "hurt",
+        "zoom": 1.24
+      }
+    },
+    {
+      "name": "settle frame rendered",
+      "passed": true,
+      "data": {
+        "time": 18.85,
+        "poseA": "idle",
+        "poseB": "idle",
+        "zoom": 1
+      }
+    },
+    {
+      "name": "FX toggle disables generated effects",
+      "passed": true
+    },
+    {
+      "name": "Focus off keeps zoom at one",
+      "passed": true
+    },
+    {
+      "name": "Focus on restores contact zoom",
+      "passed": true
+    },
+    {
+      "name": "Speed control changes playback multiplier",
+      "passed": true
+    },
+    {
+      "name": "Replay starts from beginning",
+      "passed": true
+    },
+    {
+      "name": "Pause freezes timeline",
+      "passed": true
+    },
+    {
+      "name": "Keyboard seeks by 0.2s",
+      "passed": true
+    },
+    {
+      "name": "Narrow viewport has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "No browser errors",
+      "passed": true,
+      "data": []
+    }
+  ]
+}

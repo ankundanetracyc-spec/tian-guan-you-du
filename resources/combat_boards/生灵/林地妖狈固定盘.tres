@@ -1,0 +1,32 @@
+[gd_resource type="Resource" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/CombatBoardLayout.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/resources/CombatBoardPlacement.cs" id="2"]
+
+[sub_resource type="Resource" id="BeiCryEarly"]
+script = ExtResource("2")
+placement_id = "bei_cry_early"
+kind = 0
+source_key = "res://resources/activeskills/妖兽/林地妖狈/狈啸.tres"
+cell = Vector2i(0, 0)
+
+[sub_resource type="Resource" id="BeiCryLate"]
+script = ExtResource("2")
+placement_id = "bei_cry_late"
+kind = 0
+source_key = "res://resources/activeskills/妖兽/林地妖狈/狈啸.tres"
+cell = Vector2i(0, 1)
+
+[sub_resource type="Resource" id="BeiCallHunt"]
+script = ExtResource("2")
+placement_id = "bei_call_hunt"
+kind = 0
+source_key = "res://resources/activeskills/妖兽/林地妖狈/唤猎.tres"
+cell = Vector2i(2, 2)
+
+[resource]
+script = ExtResource("1")
+layout_version = 1
+size = Vector2i(3, 3)
+confirmed = true
+placements = Array[ExtResource("2")]([SubResource("BeiCryEarly"), SubResource("BeiCryLate"), SubResource("BeiCallHunt")])

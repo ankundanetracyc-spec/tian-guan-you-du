@@ -7,11 +7,15 @@
 script = ExtResource("1")
 definition_id = &"mat_chiwen_suilishi"
 entity_name = "赤纹燧石"
-icon_path = "res://textures/items/item_chiwen_suilishi.png"
+icon_path = "res://textures/items/inventory_density_20261029/mat_chiwen_suilishi.png"
 item_category = "材料"
 item_subcategory = "矿石"
-tags = Array[String](["五行[火]", "质地[石]", "功用[破]", "相性[阳]"])
+tags = Array[String](["五行[火]", "质地[致密]", "功用[破]", "相性[阳]"])
 grade_value = 2
+storage_volume = 2
 can_stack = true
 max_stack = 999
 craft_data = ExtResource("2")
+inventory_width = 3
+inventory_height = 3
+inventory_can_rotate = true

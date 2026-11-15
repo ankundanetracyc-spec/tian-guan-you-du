@@ -1,21 +1,34 @@
-[gd_resource type="Resource" script_class="MaterialCraftData" load_steps=5 format=3]
+[gd_resource type="Resource" script_class="MaterialCraftData" load_steps=7 format=3]
 
 [ext_resource type="Script" path="res://csharp/resources/MaterialCraftData.cs" id="1"]
 [ext_resource type="Script" path="res://csharp/resources/MaterialUtilityGrade.cs" id="2"]
 
-[sub_resource type="Resource" id="聚"]
+[ext_resource type="Script" path="res://csharp/resources/MaterialForgingData.cs" id="forging_script"]
+
+[sub_resource type="Resource" id="utility_ju"]
 script = ExtResource("2")
 utility_id = "聚"
 grade = 3
 
-[sub_resource type="Resource" id="化"]
+[sub_resource type="Resource" id="utility_hua"]
 script = ExtResource("2")
 utility_id = "化"
 grade = 2
+
+[sub_resource type="Resource" id="forging_data"]
+script = ExtResource("forging_script")
+roles = PackedStringArray("和材")
+difficulty = 8
+retention = 0.8
+edge = 0.0
+strength = 0.0
+connection = 0.0
 
 [resource]
 script = ExtResource("1")
 element = "水"
 polarity = 0
-texture = "液"
-utilities = Array[ExtResource("2")]([SubResource("聚"), SubResource("化")])
+texture = "液体"
+legacy_texture = "液"
+utilities = Array[ExtResource("2")]([SubResource("utility_ju"), SubResource("utility_hua")])
+forging = SubResource("forging_data")

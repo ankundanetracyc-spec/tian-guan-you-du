@@ -1,0 +1,392 @@
+{
+  "status": "passed",
+  "count": 18,
+  "checks": [
+    {
+      "name": "1280 papers selection uses full paper",
+      "pass": true,
+      "detail": [
+        {
+          "text": "✓ 已选",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.3) hue-rotate(52deg) saturate(0.8) brightness(0.78) contrast(1.07) brightness(0.93) saturate(0.74)",
+          "color": "rgb(23, 60, 44)",
+          "centers": [
+            "none"
+          ],
+          "shadow": "none"
+        }
+      ]
+    },
+    {
+      "name": "1280 inks selection uses full paper",
+      "pass": true,
+      "detail": [
+        {
+          "text": "✓ 已选",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.3) hue-rotate(52deg) saturate(0.8) brightness(0.78) contrast(1.07) brightness(0.93) saturate(0.74)",
+          "color": "rgb(23, 60, 44)",
+          "centers": [
+            "none"
+          ],
+          "shadow": "none"
+        }
+      ]
+    },
+    {
+      "name": "1280 brushes selection uses full paper",
+      "pass": true,
+      "detail": [
+        {
+          "text": "✓ 已选",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.3) hue-rotate(52deg) saturate(0.8) brightness(0.78) contrast(1.07) brightness(0.93) saturate(0.74)",
+          "color": "rgb(23, 60, 44)",
+          "centers": [
+            "none"
+          ],
+          "shadow": "none"
+        }
+      ]
+    },
+    {
+      "name": "1280 recipes selection uses full paper",
+      "pass": true,
+      "detail": [
+        {
+          "text": "✓ 已选",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.3) hue-rotate(52deg) saturate(0.8) brightness(0.78) contrast(1.07) brightness(0.93) saturate(0.74)",
+          "color": "rgb(23, 60, 44)",
+          "centers": [
+            "none"
+          ],
+          "shadow": "none"
+        }
+      ]
+    },
+    {
+      "name": "1280 selected hover preserves selection",
+      "pass": true,
+      "detail": [
+        {
+          "text": "凝纹✓重在均匀与完整，稳住纸基。处理更细，可能多耗纸料与工时。",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.3) hue-rotate(52deg) saturate(0.8) brightness(0.78) contrast(1.07) brightness(0.99) saturate(0.8)",
+          "color": "rgb(23, 60, 44)",
+          "centers": [
+            "none"
+          ],
+          "shadow": "none"
+        }
+      ]
+    },
+    {
+      "name": "1280 selected held preserves selection",
+      "pass": true,
+      "detail": [
+        {
+          "text": "凝纹✓重在均匀与完整，稳住纸基。处理更细，可能多耗纸料与工时。",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.3) hue-rotate(52deg) saturate(0.8) brightness(0.78) contrast(1.07) brightness(0.87)",
+          "color": "rgb(23, 60, 44)",
+          "centers": [
+            "none"
+          ],
+          "shadow": "none"
+        }
+      ]
+    },
+    {
+      "name": "1280 release retains same choice",
+      "pass": true,
+      "detail": [
+        {
+          "text": "凝纹✓重在均匀与完整，稳住纸基。处理更细，可能多耗纸料与工时。",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.3) hue-rotate(52deg) saturate(0.8) brightness(0.78) contrast(1.07) brightness(0.93) saturate(0.74)",
+          "color": "rgb(23, 60, 44)",
+          "centers": [
+            "none"
+          ],
+          "shadow": "none"
+        }
+      ]
+    },
+    {
+      "name": "1280 selection does not move hit area",
+      "pass": true,
+      "detail": {
+        "before": {
+          "x": 943.6748046875,
+          "y": 286.2985534667969,
+          "width": 269.611083984375,
+          "height": 95.66842651367188
+        },
+        "after": {
+          "x": 943.6748046875,
+          "y": 286.2985534667969,
+          "width": 269.611083984375,
+          "height": 95.66842651367188
+        }
+      }
+    },
+    {
+      "name": "1280 selected children keep dark ink",
+      "pass": true
+    },
+    {
+      "name": "1920 papers selection uses full paper",
+      "pass": true,
+      "detail": [
+        {
+          "text": "✓ 已选",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.3) hue-rotate(52deg) saturate(0.8) brightness(0.78) contrast(1.07) brightness(0.93) saturate(0.74)",
+          "color": "rgb(23, 60, 44)",
+          "centers": [
+            "none"
+          ],
+          "shadow": "none"
+        }
+      ]
+    },
+    {
+      "name": "1920 inks selection uses full paper",
+      "pass": true,
+      "detail": [
+        {
+          "text": "✓ 已选",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.3) hue-rotate(52deg) saturate(0.8) brightness(0.78) contrast(1.07) brightness(0.93) saturate(0.74)",
+          "color": "rgb(23, 60, 44)",
+          "centers": [
+            "none"
+          ],
+          "shadow": "none"
+        }
+      ]
+    },
+    {
+      "name": "1920 brushes selection uses full paper",
+      "pass": true,
+      "detail": [
+        {
+          "text": "✓ 已选",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.3) hue-rotate(52deg) saturate(0.8) brightness(0.78) contrast(1.07) brightness(0.93) saturate(0.74)",
+          "color": "rgb(23, 60, 44)",
+          "centers": [
+            "none"
+          ],
+          "shadow": "none"
+        }
+      ]
+    },
+    {
+      "name": "1920 recipes selection uses full paper",
+      "pass": true,
+      "detail": [
+        {
+          "text": "✓ 已选",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.3) hue-rotate(52deg) saturate(0.8) brightness(0.78) contrast(1.07) brightness(0.93) saturate(0.74)",
+          "color": "rgb(23, 60, 44)",
+          "centers": [
+            "none"
+          ],
+          "shadow": "none"
+        }
+      ]
+    },
+    {
+      "name": "1920 selected hover preserves selection",
+      "pass": true,
+      "detail": [
+        {
+          "text": "凝纹✓重在均匀与完整，稳住纸基。处理更细，可能多耗纸料与工时。",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.3) hue-rotate(52deg) saturate(0.8) brightness(0.78) contrast(1.07) brightness(0.99) saturate(0.8)",
+          "color": "rgb(23, 60, 44)",
+          "centers": [
+            "none"
+          ],
+          "shadow": "none"
+        }
+      ]
+    },
+    {
+      "name": "1920 selected held preserves selection",
+      "pass": true,
+      "detail": [
+        {
+          "text": "凝纹✓重在均匀与完整，稳住纸基。处理更细，可能多耗纸料与工时。",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.3) hue-rotate(52deg) saturate(0.8) brightness(0.78) contrast(1.07) brightness(0.87)",
+          "color": "rgb(23, 60, 44)",
+          "centers": [
+            "none"
+          ],
+          "shadow": "none"
+        }
+      ]
+    },
+    {
+      "name": "1920 release retains same choice",
+      "pass": true,
+      "detail": [
+        {
+          "text": "凝纹✓重在均匀与完整，稳住纸基。处理更细，可能多耗纸料与工时。",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.3) hue-rotate(52deg) saturate(0.8) brightness(0.78) contrast(1.07) brightness(0.93) saturate(0.74)",
+          "color": "rgb(23, 60, 44)",
+          "centers": [
+            "none"
+          ],
+          "shadow": "none"
+        }
+      ]
+    },
+    {
+      "name": "1920 selection does not move hit area",
+      "pass": true,
+      "detail": {
+        "before": {
+          "x": 1423.972412109375,
+          "y": 417.365234375,
+          "width": 411.927734375,
+          "height": 146.16790771484375
+        },
+        "after": {
+          "x": 1423.972412109375,
+          "y": 417.365234375,
+          "width": 411.927734375,
+          "height": 146.16790771484375
+        }
+      }
+    },
+    {
+      "name": "1920 selected children keep dark ink",
+      "pass": true
+    }
+  ],
+  "captures": [
+    "papers_1280.png",
+    "inks_1280.png",
+    "brushes_1280.png",
+    "recipes_1280.png",
+    "papers_1920.png",
+    "inks_1920.png",
+    "brushes_1920.png",
+    "recipes_1920.png"
+  ],
+  "states": [
+    {
+      "width": 1280,
+      "kind": "papers",
+      "data": [
+        {
+          "text": "✓ 已选",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.3) hue-rotate(52deg) saturate(0.8) brightness(0.78) contrast(1.07) brightness(0.93) saturate(0.74)",
+          "color": "rgb(23, 60, 44)",
+          "centers": [
+            "none"
+          ],
+          "shadow": "none"
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "kind": "inks",
+      "data": [
+        {
+          "text": "✓ 已选",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.3) hue-rotate(52deg) saturate(0.8) brightness(0.78) contrast(1.07) brightness(0.93) saturate(0.74)",
+          "color": "rgb(23, 60, 44)",
+          "centers": [
+            "none"
+          ],
+          "shadow": "none"
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "kind": "brushes",
+      "data": [
+        {
+          "text": "✓ 已选",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.3) hue-rotate(52deg) saturate(0.8) brightness(0.78) contrast(1.07) brightness(0.93) saturate(0.74)",
+          "color": "rgb(23, 60, 44)",
+          "centers": [
+            "none"
+          ],
+          "shadow": "none"
+        }
+      ]
+    },
+    {
+      "width": 1280,
+      "kind": "recipes",
+      "data": [
+        {
+          "text": "✓ 已选",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.3) hue-rotate(52deg) saturate(0.8) brightness(0.78) contrast(1.07) brightness(0.93) saturate(0.74)",
+          "color": "rgb(23, 60, 44)",
+          "centers": [
+            "none"
+          ],
+          "shadow": "none"
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "kind": "papers",
+      "data": [
+        {
+          "text": "✓ 已选",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.3) hue-rotate(52deg) saturate(0.8) brightness(0.78) contrast(1.07) brightness(0.93) saturate(0.74)",
+          "color": "rgb(23, 60, 44)",
+          "centers": [
+            "none"
+          ],
+          "shadow": "none"
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "kind": "inks",
+      "data": [
+        {
+          "text": "✓ 已选",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.3) hue-rotate(52deg) saturate(0.8) brightness(0.78) contrast(1.07) brightness(0.93) saturate(0.74)",
+          "color": "rgb(23, 60, 44)",
+          "centers": [
+            "none"
+          ],
+          "shadow": "none"
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "kind": "brushes",
+      "data": [
+        {
+          "text": "✓ 已选",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.3) hue-rotate(52deg) saturate(0.8) brightness(0.78) contrast(1.07) brightness(0.93) saturate(0.74)",
+          "color": "rgb(23, 60, 44)",
+          "centers": [
+            "none"
+          ],
+          "shadow": "none"
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "kind": "recipes",
+      "data": [
+        {
+          "text": "✓ 已选",
+          "filter": "url(\"#control-alpha-clean\") sepia(0.3) hue-rotate(52deg) saturate(0.8) brightness(0.78) contrast(1.07) brightness(0.93) saturate(0.74)",
+          "color": "rgb(23, 60, 44)",
+          "centers": [
+            "none"
+          ],
+          "shadow": "none"
+        }
+      ]
+    }
+  ]
+}

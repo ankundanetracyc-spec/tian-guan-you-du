@@ -1,0 +1,91 @@
+{
+  "verified_date": "2026-11-06",
+  "build": {
+    "warnings": 0,
+    "errors": 0
+  },
+  "scripts": [
+    "SceneActionRope.gd",
+    "SceneActionButton.gd",
+    "SceneActionTassel.gd",
+    "BaishiCityOverview.gd"
+  ],
+  "groups": [
+    {
+      "name": "原生挂牌及物理检查",
+      "checks": 52,
+      "exit_code": 0,
+      "error_count": 0,
+      "log": "tmp/baishi_plaque_native_20261106_retry/stdout.log",
+      "diagnostics": "tmp/baishi_plaque_native_20261106_retry/stderr.log"
+    },
+    {
+      "name": "白石序章与同行回归",
+      "checks": 73,
+      "exit_code": 0,
+      "error_count": 0,
+      "log": "tmp/baishi_lecture_plaque_regression_20261106/stdout.log",
+      "diagnostics": "tmp/baishi_lecture_plaque_regression_20261106/stderr.log"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "白石总览.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 4008195
+    },
+    {
+      "file": "城守府_侧院挂牌.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 3147329
+    },
+    {
+      "file": "东市_1280.png",
+      "width": 1280,
+      "height": 720,
+      "bytes": 1818699
+    },
+    {
+      "file": "东市_二级挂牌.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 3633267
+    },
+    {
+      "file": "东市_拉绳反馈.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 3636880
+    },
+    {
+      "file": "告示所_三项挂牌.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 3305599
+    },
+    {
+      "file": "书坊_功能挂牌.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 3233314
+    }
+  ],
+  "video": {
+    "file": "悬绳与挂牌实机.mp4",
+    "width": 1920,
+    "height": 1080,
+    "frames": 120,
+    "fps": 24,
+    "duration_seconds": 5,
+    "audio": false,
+    "full_decode_pass": true
+  },
+  "notes": [
+    "分组有重叠，不累计为独立用例总数",
+    "隔离存档与稳定NPC数据，正式场景原生渲染",
+    "首轮触碰断言失败已定位为输入时鼠标缓存，直接使用事件坐标修复后完整通过",
+    "原有资源UID回退等提示保留在日志"
+  ]
+}

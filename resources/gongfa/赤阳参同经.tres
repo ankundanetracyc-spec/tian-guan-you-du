@@ -134,6 +134,7 @@ previous_learn_permanent_bonuses = {"body_proficiency": 1.0}
 [resource]
 script = ExtResource("1_gongfa")
 gongfa_name = "赤阳参同经"
+gameplay_enabled = false
 description = "主动烧气血，将公共回血转为血炉，再以炉火维持输出或清炉爆发。"
 wuxing = 0
 can_be_main = true

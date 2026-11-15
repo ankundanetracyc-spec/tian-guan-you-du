@@ -1,0 +1,2127 @@
+{
+  "source": {
+    "path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\guigubahuang_Data\\resources.assets",
+    "sizeBytes": 1764255120,
+    "sha256": "0d1e14ae4a2719b91055e201fadf294b600f730e5bfbba14f4806b7619ec3ced",
+    "unityVersion": "2020.3f1c1"
+  },
+  "scope": "Only character 10002 active layout's seven unique sprites; no broad texture sweep",
+  "images": [
+    {
+      "spriteId": 79450,
+      "spriteName": "yifu",
+      "size": [
+        39,
+        87
+      ],
+      "freshPng": "tools/action_battle_test/output/guigu_source_reference_v2/readback/textures/sprite_79450.png",
+      "existingPng": "tools/action_battle_test/art/guigu_reference/sprite_79450.png",
+      "freshPngSha256": "079a7ee3704a245056dc24dfb90f984481c327aec50517d7f937b2c03d206851",
+      "existingPngSha256": "079a7ee3704a245056dc24dfb90f984481c327aec50517d7f937b2c03d206851",
+      "rgbaPixelsEqual": true,
+      "alphaPixelsEqual": true
+    },
+    {
+      "spriteId": 78517,
+      "spriteName": "zuobi",
+      "size": [
+        24,
+        48
+      ],
+      "freshPng": "tools/action_battle_test/output/guigu_source_reference_v2/readback/textures/sprite_78517.png",
+      "existingPng": "tools/action_battle_test/art/guigu_reference/sprite_78517.png",
+      "freshPngSha256": "ac126bb9bf664cbc323ddb1cf220ca7e4dbbb761c29ff747861870874aa24020",
+      "existingPngSha256": "ac126bb9bf664cbc323ddb1cf220ca7e4dbbb761c29ff747861870874aa24020",
+      "rgbaPixelsEqual": true,
+      "alphaPixelsEqual": true
+    },
+    {
+      "spriteId": 89721,
+      "spriteName": "youbi",
+      "size": [
+        13,
+        44
+      ],
+      "freshPng": "tools/action_battle_test/output/guigu_source_reference_v2/readback/textures/sprite_89721.png",
+      "existingPng": "tools/action_battle_test/art/guigu_reference/sprite_89721.png",
+      "freshPngSha256": "38e94cb12b3dd6cb39556f02099100d61061695301c4c4735c5ea6110352839c",
+      "existingPngSha256": "38e94cb12b3dd6cb39556f02099100d61061695301c4c4735c5ea6110352839c",
+      "rgbaPixelsEqual": true,
+      "alphaPixelsEqual": true
+    },
+    {
+      "spriteId": 71535,
+      "spriteName": "youbi_1",
+      "size": [
+        55,
+        44
+      ],
+      "freshPng": "tools/action_battle_test/output/guigu_source_reference_v2/readback/textures/sprite_71535.png",
+      "existingPng": "tools/action_battle_test/art/guigu_reference/sprite_71535.png",
+      "freshPngSha256": "e33e82e91d24a478dd7c133eb49dd285cb114a7a3068806684ed5f873afcf745",
+      "existingPngSha256": "e33e82e91d24a478dd7c133eb49dd285cb114a7a3068806684ed5f873afcf745",
+      "rgbaPixelsEqual": true,
+      "alphaPixelsEqual": true
+    },
+    {
+      "spriteId": 56808,
+      "spriteName": "10002",
+      "size": [
+        29,
+        48
+      ],
+      "freshPng": "tools/action_battle_test/output/guigu_source_reference_v2/readback/textures/sprite_56808.png",
+      "existingPng": "tools/action_battle_test/art/guigu_reference/sprite_56808.png",
+      "freshPngSha256": "af5a4ab7348cb31054ea189f210215f3f1d56a5f1ed3e3fb8f0fbe0636c20047",
+      "existingPngSha256": "af5a4ab7348cb31054ea189f210215f3f1d56a5f1ed3e3fb8f0fbe0636c20047",
+      "rgbaPixelsEqual": true,
+      "alphaPixelsEqual": true
+    },
+    {
+      "spriteId": 76416,
+      "spriteName": "101",
+      "size": [
+        24,
+        24
+      ],
+      "freshPng": "tools/action_battle_test/output/guigu_source_reference_v2/readback/textures/sprite_76416.png",
+      "existingPng": "tools/action_battle_test/art/guigu_reference/sprite_76416.png",
+      "freshPngSha256": "13b3b63e6f2f5665c1acfb9e23fe7d01eb02b4b73aaf74d46064513922af3eff",
+      "existingPngSha256": "13b3b63e6f2f5665c1acfb9e23fe7d01eb02b4b73aaf74d46064513922af3eff",
+      "rgbaPixelsEqual": true,
+      "alphaPixelsEqual": true
+    },
+    {
+      "spriteId": 61872,
+      "spriteName": "tui",
+      "size": [
+        19,
+        73
+      ],
+      "freshPng": "tools/action_battle_test/output/guigu_source_reference_v2/readback/textures/sprite_61872.png",
+      "existingPng": "tools/action_battle_test/art/guigu_reference/sprite_61872.png",
+      "freshPngSha256": "9be6dff3127e95fc656b88061765c7de345802f5adf480968cd83551e5621ba8",
+      "existingPngSha256": "9be6dff3127e95fc656b88061765c7de345802f5adf480968cd83551e5621ba8",
+      "rgbaPixelsEqual": true,
+      "alphaPixelsEqual": true
+    }
+  ],
+  "meshChecks": [
+    {
+      "spriteId": 79450,
+      "rendererPath": "/10002/Root/Body/yifu/yifu",
+      "spriteName": "yifu",
+      "activeInHierarchy": true,
+      "vertices": 21,
+      "triangles": 19,
+      "bones": [
+        {
+          "name": "shenti1",
+          "path": "/10002/Root/Body/yifu/yifu/shenti1",
+          "influencedVertexCount": 8
+        },
+        {
+          "name": "shenti2",
+          "path": "/10002/Root/Body/yifu/yifu/shenti2",
+          "influencedVertexCount": 6
+        },
+        {
+          "name": "shenti2_1",
+          "path": "/10002/Root/Body/yifu/yifu/shenti2/shenti2_1",
+          "influencedVertexCount": 6
+        },
+        {
+          "name": "shenti2_2",
+          "path": "/10002/Root/Body/yifu/yifu/shenti2/shenti2_1/shenti2_2",
+          "influencedVertexCount": 10
+        }
+      ],
+      "blendedVertices": 9,
+      "weights": [
+        [
+          {
+            "boneIndex": 3,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti2/shenti2_1/shenti2_2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 3,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti2/shenti2_1/shenti2_2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 3,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti2/shenti2_1/shenti2_2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 3,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti2/shenti2_1/shenti2_2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 0.5701809525489807,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti2/shenti2_1"
+          },
+          {
+            "boneIndex": 3,
+            "weight": 0.4298190474510193,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti2/shenti2_1/shenti2_2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 0.798210620880127,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti2/shenti2_1"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.20178940892219543,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 0.6024633049964905,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.3975367248058319,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 0.7783554196357727,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.2216445803642273,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.8889502882957458,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti2"
+          },
+          {
+            "boneIndex": 0,
+            "weight": 0.11104968935251236,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.5572085380554199,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti2"
+          },
+          {
+            "boneIndex": 2,
+            "weight": 0.4427914023399353,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti2/shenti2_1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 0.7295846939086914,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti2/shenti2_1"
+          },
+          {
+            "boneIndex": 3,
+            "weight": 0.2704153060913086,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti2/shenti2_1/shenti2_2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 3,
+            "weight": 0.7167108058929443,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti2/shenti2_1/shenti2_2"
+          },
+          {
+            "boneIndex": 2,
+            "weight": 0.2832891643047333,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti2/shenti2_1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 3,
+            "weight": 0.8399930596351624,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti2/shenti2_1/shenti2_2"
+          },
+          {
+            "boneIndex": 2,
+            "weight": 0.16000692546367645,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti2/shenti2_1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 3,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti2/shenti2_1/shenti2_2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 3,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti2/shenti2_1/shenti2_2"
+          }
+        ]
+      ]
+    },
+    {
+      "spriteId": 78517,
+      "rendererPath": "/10002/Root/Body/yifu/yifu/shenti1/zuobi/zuobi",
+      "spriteName": "zuobi",
+      "activeInHierarchy": true,
+      "vertices": 14,
+      "triangles": 12,
+      "bones": [
+        {
+          "name": "zuobi1",
+          "path": "/10002/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1",
+          "influencedVertexCount": 8
+        },
+        {
+          "name": "zuobi2",
+          "path": "/10002/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1/zuobi2",
+          "influencedVertexCount": 4
+        },
+        {
+          "name": "zuobi3",
+          "path": "/10002/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1/zuobi2/zuobi3",
+          "influencedVertexCount": 5
+        }
+      ],
+      "blendedVertices": 3,
+      "weights": [
+        [
+          {
+            "boneIndex": 2,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1/zuobi2/zuobi3"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1/zuobi2/zuobi3"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1/zuobi2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 0.5726698040962219,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.42733025550842285,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1/zuobi2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.6368259191513062,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1/zuobi2"
+          },
+          {
+            "boneIndex": 0,
+            "weight": 0.36317405104637146,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 0.5821753144264221,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1/zuobi2/zuobi3"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.41782471537590027,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1/zuobi2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1/zuobi2/zuobi3"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1/zuobi2/zuobi3"
+          }
+        ]
+      ]
+    },
+    {
+      "spriteId": 89721,
+      "rendererPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi",
+      "spriteName": "youbi",
+      "activeInHierarchy": true,
+      "vertices": 13,
+      "triangles": 11,
+      "bones": [
+        {
+          "name": "youbi1",
+          "path": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1",
+          "influencedVertexCount": 7
+        },
+        {
+          "name": "youbi2",
+          "path": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2",
+          "influencedVertexCount": 4
+        },
+        {
+          "name": "youbi3",
+          "path": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/youbi3",
+          "influencedVertexCount": 5
+        }
+      ],
+      "blendedVertices": 3,
+      "weights": [
+        [
+          {
+            "boneIndex": 2,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/youbi3"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.7809308171272278,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2"
+          },
+          {
+            "boneIndex": 2,
+            "weight": 0.21906915307044983,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/youbi3"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.8144605755805969,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2"
+          },
+          {
+            "boneIndex": 0,
+            "weight": 0.18553943932056427,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 0.6305718421936035,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/youbi3"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.3694281280040741,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 0.9999999403953552,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/youbi3"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/youbi3"
+          }
+        ]
+      ]
+    },
+    {
+      "spriteId": 71535,
+      "rendererPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1",
+      "spriteName": "youbi_1",
+      "activeInHierarchy": true,
+      "vertices": 29,
+      "triangles": 27,
+      "bones": [
+        {
+          "name": "bone_1",
+          "path": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1",
+          "influencedVertexCount": 11
+        },
+        {
+          "name": "bone_2",
+          "path": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2",
+          "influencedVertexCount": 10
+        },
+        {
+          "name": "bone_3",
+          "path": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3",
+          "influencedVertexCount": 5
+        },
+        {
+          "name": "bone_4",
+          "path": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3/bone_4",
+          "influencedVertexCount": 9
+        },
+        {
+          "name": "bone_5",
+          "path": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3/bone_4/bone_5",
+          "influencedVertexCount": 10
+        }
+      ],
+      "blendedVertices": 15,
+      "weights": [
+        [
+          {
+            "boneIndex": 4,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3/bone_4/bone_5"
+          }
+        ],
+        [
+          {
+            "boneIndex": 4,
+            "weight": 0.9999999403953552,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3/bone_4/bone_5"
+          }
+        ],
+        [
+          {
+            "boneIndex": 3,
+            "weight": 0.7213031053543091,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3/bone_4"
+          },
+          {
+            "boneIndex": 4,
+            "weight": 0.2786969244480133,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3/bone_4/bone_5"
+          }
+        ],
+        [
+          {
+            "boneIndex": 3,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3/bone_4"
+          }
+        ],
+        [
+          {
+            "boneIndex": 3,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3/bone_4"
+          }
+        ],
+        [
+          {
+            "boneIndex": 3,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3/bone_4"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 0.8685329556465149,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3"
+          },
+          {
+            "boneIndex": 3,
+            "weight": 0.1314670592546463,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3/bone_4"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 0.8422682881355286,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.15773168206214905,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.6426059603691101,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2"
+          },
+          {
+            "boneIndex": 2,
+            "weight": 0.3573940396308899,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.7227810621261597,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2"
+          },
+          {
+            "boneIndex": 0,
+            "weight": 0.27721890807151794,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 0.8654196262359619,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.13458040356636047,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 0.7379148602485657,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.2620851397514343,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 0.5859887003898621,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.4140113294124603,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.5831922292709351,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2"
+          },
+          {
+            "boneIndex": 0,
+            "weight": 0.4168078303337097,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.7179017066955566,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2"
+          },
+          {
+            "boneIndex": 0,
+            "weight": 0.28209829330444336,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.7695077061653137,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2"
+          },
+          {
+            "boneIndex": 0,
+            "weight": 0.2304922491312027,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 0.6277827024459839,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.23242409527301788,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2"
+          },
+          {
+            "boneIndex": 3,
+            "weight": 0.13979321718215942,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3/bone_4"
+          }
+        ],
+        [
+          {
+            "boneIndex": 3,
+            "weight": 0.6295857429504395,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3/bone_4"
+          },
+          {
+            "boneIndex": 2,
+            "weight": 0.37041425704956055,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3"
+          }
+        ],
+        [
+          {
+            "boneIndex": 3,
+            "weight": 0.6424435973167419,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3/bone_4"
+          },
+          {
+            "boneIndex": 4,
+            "weight": 0.35755640268325806,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3/bone_4/bone_5"
+          }
+        ],
+        [
+          {
+            "boneIndex": 4,
+            "weight": 0.8241048455238342,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3/bone_4/bone_5"
+          },
+          {
+            "boneIndex": 3,
+            "weight": 0.17589516937732697,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3/bone_4"
+          }
+        ],
+        [
+          {
+            "boneIndex": 4,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3/bone_4/bone_5"
+          }
+        ],
+        [
+          {
+            "boneIndex": 4,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3/bone_4/bone_5"
+          }
+        ],
+        [
+          {
+            "boneIndex": 4,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3/bone_4/bone_5"
+          }
+        ],
+        [
+          {
+            "boneIndex": 4,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3/bone_4/bone_5"
+          }
+        ],
+        [
+          {
+            "boneIndex": 4,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/101_youbi_1/bone_1/bone_2/bone_3/bone_4/bone_5"
+          }
+        ]
+      ]
+    },
+    {
+      "spriteId": 56808,
+      "rendererPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117",
+      "spriteName": "10002",
+      "activeInHierarchy": true,
+      "vertices": 32,
+      "triangles": 35,
+      "bones": [
+        {
+          "name": "bone_1",
+          "path": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1",
+          "influencedVertexCount": 10
+        },
+        {
+          "name": "bone_2",
+          "path": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2",
+          "influencedVertexCount": 16
+        },
+        {
+          "name": "bone_3",
+          "path": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3",
+          "influencedVertexCount": 12
+        },
+        {
+          "name": "bone_4",
+          "path": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3/bone_4",
+          "influencedVertexCount": 6
+        },
+        {
+          "name": "bone_5",
+          "path": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3/bone_4/bone_5",
+          "influencedVertexCount": 7
+        }
+      ],
+      "blendedVertices": 19,
+      "weights": [
+        [
+          {
+            "boneIndex": 4,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3/bone_4/bone_5"
+          }
+        ],
+        [
+          {
+            "boneIndex": 4,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3/bone_4/bone_5"
+          }
+        ],
+        [
+          {
+            "boneIndex": 4,
+            "weight": 0.8221895098686218,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3/bone_4/bone_5"
+          },
+          {
+            "boneIndex": 3,
+            "weight": 0.17781057953834534,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3/bone_4"
+          }
+        ],
+        [
+          {
+            "boneIndex": 3,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3/bone_4"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 0.5696327686309814,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3"
+          },
+          {
+            "boneIndex": 3,
+            "weight": 0.43036726117134094,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3/bone_4"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 0.9999999403953552,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.7127301096916199,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2"
+          },
+          {
+            "boneIndex": 2,
+            "weight": 0.2872698903083801,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.6232153177261353,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2"
+          },
+          {
+            "boneIndex": 0,
+            "weight": 0.37678465247154236,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 0.8261100053787231,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.17388993501663208,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 0.8607617020606995,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.13923828303813934,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 0.7333724498748779,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.26662757992744446,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.5925323367118835,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2"
+          },
+          {
+            "boneIndex": 0,
+            "weight": 0.40746772289276123,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.8677002191543579,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2"
+          },
+          {
+            "boneIndex": 2,
+            "weight": 0.1322997510433197,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.7080301642417908,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2"
+          },
+          {
+            "boneIndex": 2,
+            "weight": 0.29196983575820923,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.5904961228370667,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2"
+          },
+          {
+            "boneIndex": 2,
+            "weight": 0.40950390696525574,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 0.5326974987983704,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.4673026204109192,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 0.5832046866416931,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.4167953133583069,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 0.6226360201835632,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.37736400961875916,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 0.8311660289764404,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3"
+          },
+          {
+            "boneIndex": 3,
+            "weight": 0.16883401572704315,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3/bone_4"
+          }
+        ],
+        [
+          {
+            "boneIndex": 3,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3/bone_4"
+          }
+        ],
+        [
+          {
+            "boneIndex": 4,
+            "weight": 0.7905543446540833,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3/bone_4/bone_5"
+          },
+          {
+            "boneIndex": 3,
+            "weight": 0.20944567024707794,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3/bone_4"
+          }
+        ],
+        [
+          {
+            "boneIndex": 4,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3/bone_4/bone_5"
+          }
+        ],
+        [
+          {
+            "boneIndex": 4,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3/bone_4/bone_5"
+          }
+        ],
+        [
+          {
+            "boneIndex": 4,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3/bone_4/bone_5"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 0.7796111702919006,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.22038881480693817,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.6418715715408325,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2"
+          },
+          {
+            "boneIndex": 2,
+            "weight": 0.3581284284591675,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2/bone_3"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 0.7564364671707153,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.24356351792812347,
+            "rigPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/toufa/10002(Clone)/117/bone_1/bone_2"
+          }
+        ]
+      ]
+    },
+    {
+      "spriteId": 76416,
+      "rendererPath": "/10002/Root/Body/yifu/yifu/shenti1/tou/101(Clone)/lian",
+      "spriteName": "101",
+      "activeInHierarchy": true,
+      "vertices": 4,
+      "triangles": 2,
+      "bones": [],
+      "blendedVertices": 0,
+      "weights": [
+        [],
+        [],
+        [],
+        []
+      ]
+    },
+    {
+      "spriteId": 61872,
+      "rendererPath": "/10002/Root/Body/Foot/zuotui/zuotui",
+      "spriteName": "tui",
+      "activeInHierarchy": true,
+      "vertices": 20,
+      "triangles": 18,
+      "bones": [
+        {
+          "name": "tui1",
+          "path": "/10002/Root/Body/Foot/zuotui/zuotui/tui1",
+          "influencedVertexCount": 9
+        },
+        {
+          "name": "tui2",
+          "path": "/10002/Root/Body/Foot/zuotui/zuotui/tui1/tui2",
+          "influencedVertexCount": 10
+        },
+        {
+          "name": "tui3",
+          "path": "/10002/Root/Body/Foot/zuotui/zuotui/tui1/tui2/tui3",
+          "influencedVertexCount": 6
+        }
+      ],
+      "blendedVertices": 5,
+      "weights": [
+        [
+          {
+            "boneIndex": 2,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/zuotui/zuotui/tui1/tui2/tui3"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 0.8561400175094604,
+            "rigPath": "/10002/Root/Body/Foot/zuotui/zuotui/tui1/tui2/tui3"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.14385999739170074,
+            "rigPath": "/10002/Root/Body/Foot/zuotui/zuotui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.8903645873069763,
+            "rigPath": "/10002/Root/Body/Foot/zuotui/zuotui/tui1/tui2"
+          },
+          {
+            "boneIndex": 2,
+            "weight": 0.10963542014360428,
+            "rigPath": "/10002/Root/Body/Foot/zuotui/zuotui/tui1/tui2/tui3"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/zuotui/zuotui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/zuotui/zuotui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 0.7940422892570496,
+            "rigPath": "/10002/Root/Body/Foot/zuotui/zuotui/tui1"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.20595772564411163,
+            "rigPath": "/10002/Root/Body/Foot/zuotui/zuotui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/zuotui/zuotui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/zuotui/zuotui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/zuotui/zuotui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/zuotui/zuotui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/zuotui/zuotui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/zuotui/zuotui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/zuotui/zuotui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.7956682443618774,
+            "rigPath": "/10002/Root/Body/Foot/zuotui/zuotui/tui1/tui2"
+          },
+          {
+            "boneIndex": 0,
+            "weight": 0.20433177053928375,
+            "rigPath": "/10002/Root/Body/Foot/zuotui/zuotui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/zuotui/zuotui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.9999999403953552,
+            "rigPath": "/10002/Root/Body/Foot/zuotui/zuotui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/zuotui/zuotui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 0.7845259308815002,
+            "rigPath": "/10002/Root/Body/Foot/zuotui/zuotui/tui1/tui2/tui3"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.21547406911849976,
+            "rigPath": "/10002/Root/Body/Foot/zuotui/zuotui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/zuotui/zuotui/tui1/tui2/tui3"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/zuotui/zuotui/tui1/tui2/tui3"
+          }
+        ]
+      ]
+    },
+    {
+      "spriteId": 61872,
+      "rendererPath": "/10002/Root/Body/Foot/youtui/youtui",
+      "spriteName": "tui",
+      "activeInHierarchy": true,
+      "vertices": 20,
+      "triangles": 18,
+      "bones": [
+        {
+          "name": "tui1",
+          "path": "/10002/Root/Body/Foot/youtui/youtui/tui1",
+          "influencedVertexCount": 9
+        },
+        {
+          "name": "tui2",
+          "path": "/10002/Root/Body/Foot/youtui/youtui/tui1/tui2",
+          "influencedVertexCount": 10
+        },
+        {
+          "name": "tui3",
+          "path": "/10002/Root/Body/Foot/youtui/youtui/tui1/tui2/tui3",
+          "influencedVertexCount": 6
+        }
+      ],
+      "blendedVertices": 5,
+      "weights": [
+        [
+          {
+            "boneIndex": 2,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/youtui/youtui/tui1/tui2/tui3"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 0.8561400175094604,
+            "rigPath": "/10002/Root/Body/Foot/youtui/youtui/tui1/tui2/tui3"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.14385999739170074,
+            "rigPath": "/10002/Root/Body/Foot/youtui/youtui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.8903645873069763,
+            "rigPath": "/10002/Root/Body/Foot/youtui/youtui/tui1/tui2"
+          },
+          {
+            "boneIndex": 2,
+            "weight": 0.10963542014360428,
+            "rigPath": "/10002/Root/Body/Foot/youtui/youtui/tui1/tui2/tui3"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/youtui/youtui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/youtui/youtui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 0.7940422892570496,
+            "rigPath": "/10002/Root/Body/Foot/youtui/youtui/tui1"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.20595772564411163,
+            "rigPath": "/10002/Root/Body/Foot/youtui/youtui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/youtui/youtui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/youtui/youtui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/youtui/youtui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/youtui/youtui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/youtui/youtui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/youtui/youtui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/youtui/youtui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.7956682443618774,
+            "rigPath": "/10002/Root/Body/Foot/youtui/youtui/tui1/tui2"
+          },
+          {
+            "boneIndex": 0,
+            "weight": 0.20433177053928375,
+            "rigPath": "/10002/Root/Body/Foot/youtui/youtui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/youtui/youtui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.9999999403953552,
+            "rigPath": "/10002/Root/Body/Foot/youtui/youtui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/youtui/youtui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 0.7845259308815002,
+            "rigPath": "/10002/Root/Body/Foot/youtui/youtui/tui1/tui2/tui3"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.21547406911849976,
+            "rigPath": "/10002/Root/Body/Foot/youtui/youtui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/youtui/youtui/tui1/tui2/tui3"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Body/Foot/youtui/youtui/tui1/tui2/tui3"
+          }
+        ]
+      ]
+    },
+    {
+      "spriteId": 61872,
+      "rendererPath": "/10002/Root/Foot2/Foot/zuotui/zuotui",
+      "spriteName": "tui",
+      "activeInHierarchy": false,
+      "vertices": 20,
+      "triangles": 18,
+      "bones": [
+        {
+          "name": "tui1",
+          "path": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1",
+          "influencedVertexCount": 9
+        },
+        {
+          "name": "tui2",
+          "path": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1/tui2",
+          "influencedVertexCount": 10
+        },
+        {
+          "name": "tui3",
+          "path": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1/tui2/tui3",
+          "influencedVertexCount": 6
+        }
+      ],
+      "blendedVertices": 5,
+      "weights": [
+        [
+          {
+            "boneIndex": 2,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1/tui2/tui3"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 0.8561400175094604,
+            "rigPath": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1/tui2/tui3"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.14385999739170074,
+            "rigPath": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.8903645873069763,
+            "rigPath": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1/tui2"
+          },
+          {
+            "boneIndex": 2,
+            "weight": 0.10963542014360428,
+            "rigPath": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1/tui2/tui3"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 0.7940422892570496,
+            "rigPath": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.20595772564411163,
+            "rigPath": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.7956682443618774,
+            "rigPath": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1/tui2"
+          },
+          {
+            "boneIndex": 0,
+            "weight": 0.20433177053928375,
+            "rigPath": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.9999999403953552,
+            "rigPath": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 0.7845259308815002,
+            "rigPath": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1/tui2/tui3"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.21547406911849976,
+            "rigPath": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1/tui2/tui3"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/zuotui/zuotui/tui1/tui2/tui3"
+          }
+        ]
+      ]
+    },
+    {
+      "spriteId": 61872,
+      "rendererPath": "/10002/Root/Foot2/Foot/youtui/youtui",
+      "spriteName": "tui",
+      "activeInHierarchy": false,
+      "vertices": 20,
+      "triangles": 18,
+      "bones": [
+        {
+          "name": "tui1",
+          "path": "/10002/Root/Foot2/Foot/youtui/youtui/tui1",
+          "influencedVertexCount": 9
+        },
+        {
+          "name": "tui2",
+          "path": "/10002/Root/Foot2/Foot/youtui/youtui/tui1/tui2",
+          "influencedVertexCount": 10
+        },
+        {
+          "name": "tui3",
+          "path": "/10002/Root/Foot2/Foot/youtui/youtui/tui1/tui2/tui3",
+          "influencedVertexCount": 6
+        }
+      ],
+      "blendedVertices": 5,
+      "weights": [
+        [
+          {
+            "boneIndex": 2,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/youtui/youtui/tui1/tui2/tui3"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 0.8561400175094604,
+            "rigPath": "/10002/Root/Foot2/Foot/youtui/youtui/tui1/tui2/tui3"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.14385999739170074,
+            "rigPath": "/10002/Root/Foot2/Foot/youtui/youtui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.8903645873069763,
+            "rigPath": "/10002/Root/Foot2/Foot/youtui/youtui/tui1/tui2"
+          },
+          {
+            "boneIndex": 2,
+            "weight": 0.10963542014360428,
+            "rigPath": "/10002/Root/Foot2/Foot/youtui/youtui/tui1/tui2/tui3"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/youtui/youtui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/youtui/youtui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 0.7940422892570496,
+            "rigPath": "/10002/Root/Foot2/Foot/youtui/youtui/tui1"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.20595772564411163,
+            "rigPath": "/10002/Root/Foot2/Foot/youtui/youtui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/youtui/youtui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/youtui/youtui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/youtui/youtui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/youtui/youtui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/youtui/youtui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/youtui/youtui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 0,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/youtui/youtui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.7956682443618774,
+            "rigPath": "/10002/Root/Foot2/Foot/youtui/youtui/tui1/tui2"
+          },
+          {
+            "boneIndex": 0,
+            "weight": 0.20433177053928375,
+            "rigPath": "/10002/Root/Foot2/Foot/youtui/youtui/tui1"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/youtui/youtui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 0.9999999403953552,
+            "rigPath": "/10002/Root/Foot2/Foot/youtui/youtui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 1,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/youtui/youtui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 0.7845259308815002,
+            "rigPath": "/10002/Root/Foot2/Foot/youtui/youtui/tui1/tui2/tui3"
+          },
+          {
+            "boneIndex": 1,
+            "weight": 0.21547406911849976,
+            "rigPath": "/10002/Root/Foot2/Foot/youtui/youtui/tui1/tui2"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/youtui/youtui/tui1/tui2/tui3"
+          }
+        ],
+        [
+          {
+            "boneIndex": 2,
+            "weight": 1.0,
+            "rigPath": "/10002/Root/Foot2/Foot/youtui/youtui/tui1/tui2/tui3"
+          }
+        ]
+      ]
+    }
+  ],
+  "freshRawStreamChecks": {
+    "Idle": {
+      "rawFrames": 5,
+      "finiteFrames": 3,
+      "wordCount": 440,
+      "decodedCoefficientsEqual": true
+    },
+    "Run_New1": {
+      "rawFrames": 34,
+      "finiteFrames": 32,
+      "wordCount": 3068,
+      "decodedCoefficientsEqual": true
+    },
+    "Run_New2": {
+      "rawFrames": 25,
+      "finiteFrames": 23,
+      "wordCount": 2210,
+      "decodedCoefficientsEqual": true
+    },
+    "AttackIdle": {
+      "rawFrames": 5,
+      "finiteFrames": 3,
+      "wordCount": 370,
+      "decodedCoefficientsEqual": true
+    },
+    "AttackRun": {
+      "rawFrames": 5,
+      "finiteFrames": 3,
+      "wordCount": 310,
+      "decodedCoefficientsEqual": true
+    },
+    "Step1": {
+      "rawFrames": 7,
+      "finiteFrames": 5,
+      "wordCount": 929,
+      "decodedCoefficientsEqual": true
+    }
+  },
+  "allSourcePngPixelsEqual": true,
+  "checks": {
+    "rendererCount": 15,
+    "skinnedRendererCount": 9,
+    "spriteSkinComponentCount": 9,
+    "totalVertices": 228,
+    "totalTriangles": 204,
+    "unmappedSpriteBones": [],
+    "weightSumMin": 0.9999999403953552,
+    "weightSumMax": 1.0000001192092896,
+    "invalidBoneWeightIndices": []
+  }
+}

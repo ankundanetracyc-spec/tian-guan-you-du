@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="EquipmentData" format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/EquipmentData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+storage_volume = 3
+definition_id = &"sect_sword_suxing"
+entity_name = "素行剑"
+description = "宗门制式凡器。精准 +2。"
+icon_path = "res://textures/items/inventory_density_20261029/slender_sword_2x6.png"
+item_category = "装备"
+item_subcategory = "凡器·剑"
+can_stack = false
+max_stack = 1
+equip_type = 0
+weapon_type = 1
+fixed_bonuses = {
+"precision": 2
+}
+inventory_width = 2
+inventory_height = 6
+inventory_can_rotate = true

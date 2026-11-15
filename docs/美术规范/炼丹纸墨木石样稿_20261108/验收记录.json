@@ -1,0 +1,528 @@
+{
+  "status": "passed",
+  "gameIntegrated": false,
+  "playerSaveReadOrWritten": false,
+  "checkCount": 49,
+  "checks": [
+    {
+      "name": "原v13炉体按88三角和前后层绘制",
+      "pass": true,
+      "detail": {
+        "ok": true,
+        "triangles": 88,
+        "paths": {
+          "rear": "res://textures/ui/alchemy_room_20261017/furnace_rear_half_soft_v13.png",
+          "front": "res://textures/ui/alchemy_room_20261017/furnace_front_half_soft_v13.png"
+        },
+        "size": [
+          1216,
+          1738
+        ],
+        "baseline": 869,
+        "filled": 334305,
+        "errors": []
+      }
+    },
+    {
+      "name": "1920 真实样方与当前用度",
+      "pass": true,
+      "detail": {
+        "count": 4,
+        "total": 7,
+        "spirit": 19,
+        "energy": 31,
+        "hours": 8,
+        "availableSpirit": 24,
+        "loads": [
+          {
+            "slot": "jun",
+            "role": "jun",
+            "material": {
+              "id": "mat_qingmu_core",
+              "name": "青木芯",
+              "icon": "../../../textures/items/inventory_density_20261029/mat_qingmu_core.png",
+              "itemPath": "resources/entities/items/青木芯.tres",
+              "craftPath": "resources/material_craft/青木芯材性.tres",
+              "element": "木",
+              "texture": "致密",
+              "polarity": 0,
+              "grade": 7,
+              "utilities": {
+                "通": 2,
+                "生": 3
+              }
+            },
+            "dose": 2,
+            "used": [
+              "生"
+            ],
+            "occupation": 7.315055999999999
+          },
+          {
+            "slot": "chen",
+            "role": "chen",
+            "material": {
+              "id": "mat_mountain_silkworm_thread",
+              "name": "山蚕长丝",
+              "icon": "../../../textures/items/inventory_density_20261029/mat_mountain_silkworm_thread.png",
+              "itemPath": "resources/entities/items/山蚕长丝.tres",
+              "craftPath": "resources/material_craft/山蚕长丝材性.tres",
+              "element": "木",
+              "texture": "纤维",
+              "polarity": 0,
+              "grade": 3,
+              "utilities": {
+                "固": 1,
+                "藏": 1
+              }
+            },
+            "dose": 1,
+            "used": [
+              "固"
+            ],
+            "occupation": 2.6382
+          },
+          {
+            "slot": "zuo1",
+            "role": "zuo",
+            "material": {
+              "id": "mat_spirit_spring_dew",
+              "name": "灵泉露",
+              "icon": "../../../textures/items/inventory_density_20261029/mat_spirit_spring_dew.png",
+              "itemPath": "resources/entities/items/灵泉露.tres",
+              "craftPath": "resources/material_craft/灵泉露材性.tres",
+              "element": "水",
+              "texture": "液体",
+              "polarity": 0,
+              "grade": 7,
+              "utilities": {
+                "聚": 3,
+                "化": 2
+              }
+            },
+            "dose": 2,
+            "used": [
+              "化"
+            ],
+            "occupation": 4.64904
+          },
+          {
+            "slot": "shi1",
+            "role": "shi",
+            "material": {
+              "id": "mat_streampattern_algae_fiber",
+              "name": "溪纹藻丝",
+              "icon": "../../../textures/items/inventory_density_20261029/mat_streampattern_algae_fiber.png",
+              "itemPath": "resources/entities/items/溪纹藻丝.tres",
+              "craftPath": "resources/material_craft/溪纹藻丝材性.tres",
+              "element": "水",
+              "texture": "纤维",
+              "polarity": 0,
+              "grade": 4,
+              "utilities": {
+                "通": 2
+              }
+            },
+            "dose": 2,
+            "used": [
+              "通"
+            ],
+            "occupation": 3.400704
+          }
+        ],
+        "valid": true,
+        "reason": ""
+      }
+    },
+    {
+      "name": "1920 页框、药签和用度完整",
+      "pass": true,
+      "detail": {
+        "inside": true,
+        "returnRight": 23.999987923641992,
+        "returnTop": 18.00000496472496,
+        "triangle": true,
+        "cards": true,
+        "noPrediction": true
+      }
+    },
+    {
+      "name": "1920 右上返回及三角统一",
+      "pass": true,
+      "detail": {
+        "inside": true,
+        "returnRight": 23.999987923641992,
+        "returnTop": 18.00000496472496,
+        "triangle": true,
+        "cards": true,
+        "noPrediction": true
+      }
+    },
+    {
+      "name": "1920 炼前无结果或时辰预告",
+      "pass": true
+    },
+    {
+      "name": "1920 可见控件均使用素材或约定的裸三角",
+      "pass": true,
+      "detail": 36
+    },
+    {
+      "name": "1920 扩展药位全部可见且不裁切",
+      "pass": true
+    },
+    {
+      "name": "1920 空炉禁开炼",
+      "pass": true
+    },
+    {
+      "name": "1920 灵识不足阻止开炼",
+      "pass": true
+    },
+    {
+      "name": "1920 未绑定显示未知且禁开炼",
+      "pass": true
+    },
+    {
+      "name": "1920 拣药弹窗完整落在窗口",
+      "pass": true,
+      "detail": {
+        "x": 370,
+        "y": 155,
+        "width": 1180,
+        "height": 770
+      }
+    },
+    {
+      "name": "1920 已在其他药位的材料不可重复选择",
+      "pass": true
+    },
+    {
+      "name": "1920 丹方册提供三份现行样方",
+      "pass": true
+    },
+    {
+      "name": "1920 弹窗反复打开仍有完整纸面",
+      "pass": true
+    },
+    {
+      "name": "1920 记方输入与目录两行排版正常",
+      "pass": true
+    },
+    {
+      "name": "1280 真实样方与当前用度",
+      "pass": true,
+      "detail": {
+        "count": 4,
+        "total": 7,
+        "spirit": 19,
+        "energy": 31,
+        "hours": 8,
+        "availableSpirit": 24,
+        "loads": [
+          {
+            "slot": "jun",
+            "role": "jun",
+            "material": {
+              "id": "mat_qingmu_core",
+              "name": "青木芯",
+              "icon": "../../../textures/items/inventory_density_20261029/mat_qingmu_core.png",
+              "itemPath": "resources/entities/items/青木芯.tres",
+              "craftPath": "resources/material_craft/青木芯材性.tres",
+              "element": "木",
+              "texture": "致密",
+              "polarity": 0,
+              "grade": 7,
+              "utilities": {
+                "通": 2,
+                "生": 3
+              }
+            },
+            "dose": 2,
+            "used": [
+              "生"
+            ],
+            "occupation": 7.315055999999999
+          },
+          {
+            "slot": "chen",
+            "role": "chen",
+            "material": {
+              "id": "mat_mountain_silkworm_thread",
+              "name": "山蚕长丝",
+              "icon": "../../../textures/items/inventory_density_20261029/mat_mountain_silkworm_thread.png",
+              "itemPath": "resources/entities/items/山蚕长丝.tres",
+              "craftPath": "resources/material_craft/山蚕长丝材性.tres",
+              "element": "木",
+              "texture": "纤维",
+              "polarity": 0,
+              "grade": 3,
+              "utilities": {
+                "固": 1,
+                "藏": 1
+              }
+            },
+            "dose": 1,
+            "used": [
+              "固"
+            ],
+            "occupation": 2.6382
+          },
+          {
+            "slot": "zuo1",
+            "role": "zuo",
+            "material": {
+              "id": "mat_spirit_spring_dew",
+              "name": "灵泉露",
+              "icon": "../../../textures/items/inventory_density_20261029/mat_spirit_spring_dew.png",
+              "itemPath": "resources/entities/items/灵泉露.tres",
+              "craftPath": "resources/material_craft/灵泉露材性.tres",
+              "element": "水",
+              "texture": "液体",
+              "polarity": 0,
+              "grade": 7,
+              "utilities": {
+                "聚": 3,
+                "化": 2
+              }
+            },
+            "dose": 2,
+            "used": [
+              "化"
+            ],
+            "occupation": 4.64904
+          },
+          {
+            "slot": "shi1",
+            "role": "shi",
+            "material": {
+              "id": "mat_streampattern_algae_fiber",
+              "name": "溪纹藻丝",
+              "icon": "../../../textures/items/inventory_density_20261029/mat_streampattern_algae_fiber.png",
+              "itemPath": "resources/entities/items/溪纹藻丝.tres",
+              "craftPath": "resources/material_craft/溪纹藻丝材性.tres",
+              "element": "水",
+              "texture": "纤维",
+              "polarity": 0,
+              "grade": 4,
+              "utilities": {
+                "通": 2
+              }
+            },
+            "dose": 2,
+            "used": [
+              "通"
+            ],
+            "occupation": 3.400704
+          }
+        ],
+        "valid": true,
+        "reason": ""
+      }
+    },
+    {
+      "name": "1280 页框、药签和用度完整",
+      "pass": true,
+      "detail": {
+        "inside": true,
+        "returnRight": 24.00026362991492,
+        "returnTop": 18.000003103962893,
+        "triangle": true,
+        "cards": true,
+        "noPrediction": true
+      }
+    },
+    {
+      "name": "1280 右上返回及三角统一",
+      "pass": true,
+      "detail": {
+        "inside": true,
+        "returnRight": 24.00026362991492,
+        "returnTop": 18.000003103962893,
+        "triangle": true,
+        "cards": true,
+        "noPrediction": true
+      }
+    },
+    {
+      "name": "1280 炼前无结果或时辰预告",
+      "pass": true
+    },
+    {
+      "name": "1280 可见控件均使用素材或约定的裸三角",
+      "pass": true,
+      "detail": 36
+    },
+    {
+      "name": "1280 扩展药位全部可见且不裁切",
+      "pass": true
+    },
+    {
+      "name": "1280 空炉禁开炼",
+      "pass": true
+    },
+    {
+      "name": "1280 灵识不足阻止开炼",
+      "pass": true
+    },
+    {
+      "name": "1280 未绑定显示未知且禁开炼",
+      "pass": true
+    },
+    {
+      "name": "1280 拣药弹窗完整落在窗口",
+      "pass": true,
+      "detail": {
+        "x": 50,
+        "y": 20,
+        "width": 1180,
+        "height": 680
+      }
+    },
+    {
+      "name": "1280 已在其他药位的材料不可重复选择",
+      "pass": true
+    },
+    {
+      "name": "1280 丹方册提供三份现行样方",
+      "pass": true
+    },
+    {
+      "name": "1280 弹窗反复打开仍有完整纸面",
+      "pass": true
+    },
+    {
+      "name": "1280 记方输入与目录两行排版正常",
+      "pass": true
+    },
+    {
+      "name": "份数遵守当前整数规则且不套旧4份8份限制",
+      "pass": true,
+      "detail": {
+        "dose": 5,
+        "total": 10,
+        "spirit": 28
+      }
+    },
+    {
+      "name": "份数最小一整份",
+      "pass": true
+    },
+    {
+      "name": "移除君药只清本位并禁开炼",
+      "pass": true
+    },
+    {
+      "name": "五行筛选只保留对应材料",
+      "pass": true
+    },
+    {
+      "name": "空检索结果禁放入",
+      "pass": true
+    },
+    {
+      "name": "仅本位有效筛选可用",
+      "pass": true
+    },
+    {
+      "name": "换药只更换当前药位",
+      "pass": true
+    },
+    {
+      "name": "未解锁样方不覆盖当前配伍",
+      "pass": true
+    },
+    {
+      "name": "载入现行样方仅填投料",
+      "pass": true
+    },
+    {
+      "name": "记方仅保存本页当前配伍",
+      "pass": true
+    },
+    {
+      "name": "删除丹方需要二次确认",
+      "pass": true
+    },
+    {
+      "name": "确认删除后显示空目录",
+      "pass": true
+    },
+    {
+      "name": "展示模式切换不改配伍",
+      "pass": true
+    },
+    {
+      "name": "说明内容可滚动且不连接炼制",
+      "pass": true
+    },
+    {
+      "name": "开炉用度只展示配置，不消耗演示资源",
+      "pass": true
+    },
+    {
+      "name": "统一返回支持键盘收起",
+      "pass": true
+    },
+    {
+      "name": "可继续查看且返回恢复",
+      "pass": true
+    },
+    {
+      "name": "原夹具与浏览器存储均未写入",
+      "pass": true
+    },
+    {
+      "name": "刷新复位且不冒充玩家存档",
+      "pass": true
+    },
+    {
+      "name": "无脚本与资源加载错误",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "responses": []
+      }
+    }
+  ],
+  "captures": [
+    "炼丹_配伍_1920.png",
+    "炼丹_扩展药位_1920.png",
+    "炼丹_空炉_1920.png",
+    "炼丹_拣药_1920.png",
+    "炼丹_丹方册_1920.png",
+    "炼丹_配伍_1280.png",
+    "炼丹_扩展药位_1280.png",
+    "炼丹_空炉_1280.png",
+    "炼丹_拣药_1280.png",
+    "炼丹_丹方册_1280.png",
+    "炼丹_本炉用度_1280.png",
+    "炼丹_完整样稿_1920.png"
+  ],
+  "viewports": [
+    [
+      1920,
+      1080
+    ],
+    [
+      1280,
+      720
+    ]
+  ],
+  "furnace": {
+    "ok": true,
+    "triangles": 88,
+    "paths": {
+      "rear": "res://textures/ui/alchemy_room_20261017/furnace_rear_half_soft_v13.png",
+      "front": "res://textures/ui/alchemy_room_20261017/furnace_front_half_soft_v13.png"
+    },
+    "size": [
+      1216,
+      1738
+    ],
+    "baseline": 869,
+    "filled": 334305,
+    "errors": []
+  },
+  "source": "output/playwright/alchemy_review.js"
+}

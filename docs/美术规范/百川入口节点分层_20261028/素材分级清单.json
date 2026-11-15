@@ -1,0 +1,640 @@
+{
+  "version": 1,
+  "sourcePixels": [
+    1536,
+    1024
+  ],
+  "noStairs": true,
+  "noScenicCompounds": true,
+  "catalog": {
+    "sect_main_164": {
+      "file": "res://textures/world/bai_chuan/entrance_v1/icons/sect_main_164.png",
+      "size": [
+        164,
+        116
+      ],
+      "sourceRect": {
+        "left": 58,
+        "top": 110,
+        "width": 507,
+        "height": 359
+      }
+    },
+    "sect_local_118": {
+      "file": "res://textures/world/bai_chuan/entrance_v1/icons/sect_local_118.png",
+      "size": [
+        118,
+        108
+      ],
+      "sourceRect": {
+        "left": 653,
+        "top": 145,
+        "width": 334,
+        "height": 305
+      }
+    },
+    "sect_austere_118": {
+      "file": "res://textures/world/bai_chuan/entrance_v1/icons/sect_austere_118.png",
+      "size": [
+        118,
+        106
+      ],
+      "sourceRect": {
+        "left": 1133,
+        "top": 140,
+        "width": 364,
+        "height": 326
+      }
+    },
+    "sect_austere_164": {
+      "file": "res://textures/world/bai_chuan/entrance_v1/icons/sect_austere_164.png",
+      "size": [
+        164,
+        147
+      ],
+      "sourceRect": {
+        "left": 1133,
+        "top": 140,
+        "width": 364,
+        "height": 326
+      }
+    },
+    "city_gate_142": {
+      "file": "res://textures/world/bai_chuan/entrance_v1/icons/city_gate_142.png",
+      "size": [
+        142,
+        104
+      ],
+      "sourceRect": {
+        "left": 69,
+        "top": 562,
+        "width": 469,
+        "height": 342
+      }
+    },
+    "town_gate_100": {
+      "file": "res://textures/world/bai_chuan/entrance_v1/icons/town_gate_100.png",
+      "size": [
+        100,
+        71
+      ],
+      "sourceRect": {
+        "left": 605,
+        "top": 611,
+        "width": 424,
+        "height": 303
+      }
+    },
+    "market_gate_94": {
+      "file": "res://textures/world/bai_chuan/entrance_v1/icons/market_gate_94.png",
+      "size": [
+        94,
+        71
+      ],
+      "sourceRect": {
+        "left": 1093,
+        "top": 611,
+        "width": 382,
+        "height": 289
+      }
+    }
+  },
+  "placements": [
+    {
+      "id": "bc_place_001",
+      "asset": "sect_main_164",
+      "rect": [
+        1288,
+        4436,
+        164,
+        116
+      ],
+      "tier": "sect_1"
+    },
+    {
+      "id": "bc_place_002",
+      "asset": "sect_main_164",
+      "rect": [
+        2560,
+        1057,
+        164,
+        116
+      ],
+      "tier": "sect_1"
+    },
+    {
+      "id": "bc_place_003",
+      "asset": "sect_austere_164",
+      "rect": [
+        5018,
+        3608,
+        164,
+        147
+      ],
+      "tier": "sect_1"
+    },
+    {
+      "id": "bc_place_004",
+      "asset": "sect_local_118",
+      "rect": [
+        2104,
+        2969,
+        118,
+        108
+      ],
+      "tier": "sect_2"
+    },
+    {
+      "id": "bc_place_005",
+      "asset": "sect_local_118",
+      "rect": [
+        691,
+        2785,
+        118,
+        108
+      ],
+      "tier": "sect_2"
+    },
+    {
+      "id": "bc_place_006",
+      "asset": "sect_local_118",
+      "rect": [
+        2596,
+        3891,
+        118,
+        108
+      ],
+      "tier": "sect_2"
+    },
+    {
+      "id": "bc_place_007",
+      "asset": "sect_local_118",
+      "rect": [
+        2166,
+        5488,
+        118,
+        108
+      ],
+      "tier": "sect_2"
+    },
+    {
+      "id": "bc_place_008",
+      "asset": "sect_local_118",
+      "rect": [
+        3702,
+        389,
+        118,
+        108
+      ],
+      "tier": "sect_2"
+    },
+    {
+      "id": "bc_place_009",
+      "asset": "sect_local_118",
+      "rect": [
+        3750,
+        2171,
+        118,
+        108
+      ],
+      "tier": "sect_2"
+    },
+    {
+      "id": "bc_place_010",
+      "asset": "sect_local_118",
+      "rect": [
+        4378,
+        942,
+        118,
+        108
+      ],
+      "tier": "sect_2"
+    },
+    {
+      "id": "bc_place_011",
+      "asset": "sect_local_118",
+      "rect": [
+        3948,
+        4935,
+        118,
+        108
+      ],
+      "tier": "sect_2"
+    },
+    {
+      "id": "bc_place_012",
+      "asset": "sect_austere_118",
+      "rect": [
+        5348,
+        5306,
+        118,
+        106
+      ],
+      "tier": "sect_2"
+    },
+    {
+      "id": "bc_place_013",
+      "asset": "sect_austere_118",
+      "rect": [
+        5041,
+        2111,
+        118,
+        106
+      ],
+      "tier": "sect_2"
+    },
+    {
+      "id": "bc_place_014",
+      "asset": "city_gate_142",
+      "rect": [
+        1162,
+        1681,
+        142,
+        104
+      ],
+      "tier": "city"
+    },
+    {
+      "id": "bc_place_015",
+      "asset": "city_gate_142",
+      "rect": [
+        3251,
+        1066,
+        142,
+        104
+      ],
+      "tier": "city"
+    },
+    {
+      "id": "bc_place_016",
+      "asset": "city_gate_142",
+      "rect": [
+        2575,
+        2172,
+        142,
+        104
+      ],
+      "tier": "city"
+    },
+    {
+      "id": "bc_place_017",
+      "asset": "city_gate_142",
+      "rect": [
+        1469,
+        2848,
+        142,
+        104
+      ],
+      "tier": "city"
+    },
+    {
+      "id": "bc_place_018",
+      "asset": "city_gate_142",
+      "rect": [
+        5340,
+        636,
+        142,
+        104
+      ],
+      "tier": "city"
+    },
+    {
+      "id": "bc_place_019",
+      "asset": "city_gate_142",
+      "rect": [
+        4234,
+        1497,
+        142,
+        104
+      ],
+      "tier": "city"
+    },
+    {
+      "id": "bc_place_020",
+      "asset": "city_gate_142",
+      "rect": [
+        2944,
+        3278,
+        142,
+        104
+      ],
+      "tier": "city"
+    },
+    {
+      "id": "bc_place_021",
+      "asset": "city_gate_142",
+      "rect": [
+        1654,
+        3893,
+        142,
+        104
+      ],
+      "tier": "city"
+    },
+    {
+      "id": "bc_place_022",
+      "asset": "city_gate_142",
+      "rect": [
+        2944,
+        4446,
+        142,
+        104
+      ],
+      "tier": "city"
+    },
+    {
+      "id": "bc_place_023",
+      "asset": "city_gate_142",
+      "rect": [
+        1776,
+        5244,
+        142,
+        104
+      ],
+      "tier": "city"
+    },
+    {
+      "id": "bc_place_024",
+      "asset": "city_gate_142",
+      "rect": [
+        4357,
+        4999,
+        142,
+        104
+      ],
+      "tier": "city"
+    },
+    {
+      "id": "bc_place_025",
+      "asset": "city_gate_142",
+      "rect": [
+        5217,
+        2418,
+        142,
+        104
+      ],
+      "tier": "city"
+    },
+    {
+      "id": "bc_place_026",
+      "asset": "city_gate_142",
+      "rect": [
+        3927,
+        3033,
+        142,
+        104
+      ],
+      "tier": "city"
+    },
+    {
+      "id": "bc_place_027",
+      "asset": "town_gate_100",
+      "rect": [
+        810,
+        1776,
+        100,
+        71
+      ],
+      "tier": "town"
+    },
+    {
+      "id": "bc_place_028",
+      "asset": "town_gate_100",
+      "rect": [
+        2408,
+        2390,
+        100,
+        71
+      ],
+      "tier": "town"
+    },
+    {
+      "id": "bc_place_029",
+      "asset": "town_gate_100",
+      "rect": [
+        1302,
+        3189,
+        100,
+        71
+      ],
+      "tier": "town"
+    },
+    {
+      "id": "bc_place_030",
+      "asset": "town_gate_100",
+      "rect": [
+        4804,
+        547,
+        100,
+        71
+      ],
+      "tier": "town"
+    },
+    {
+      "id": "bc_place_031",
+      "asset": "town_gate_100",
+      "rect": [
+        3206,
+        3558,
+        100,
+        71
+      ],
+      "tier": "town"
+    },
+    {
+      "id": "bc_place_032",
+      "asset": "town_gate_100",
+      "rect": [
+        2592,
+        3250,
+        100,
+        71
+      ],
+      "tier": "town"
+    },
+    {
+      "id": "bc_place_033",
+      "asset": "town_gate_100",
+      "rect": [
+        3391,
+        2943,
+        100,
+        71
+      ],
+      "tier": "town"
+    },
+    {
+      "id": "bc_place_034",
+      "asset": "town_gate_100",
+      "rect": [
+        1117,
+        3435,
+        100,
+        71
+      ],
+      "tier": "town"
+    },
+    {
+      "id": "bc_place_035",
+      "asset": "town_gate_100",
+      "rect": [
+        2592,
+        4602,
+        100,
+        71
+      ],
+      "tier": "town"
+    },
+    {
+      "id": "bc_place_036",
+      "asset": "town_gate_100",
+      "rect": [
+        4742,
+        4909,
+        100,
+        71
+      ],
+      "tier": "town"
+    },
+    {
+      "id": "bc_place_037",
+      "asset": "town_gate_100",
+      "rect": [
+        5295,
+        4602,
+        100,
+        71
+      ],
+      "tier": "town"
+    },
+    {
+      "id": "bc_place_038",
+      "asset": "market_gate_94",
+      "rect": [
+        3578,
+        1161,
+        94,
+        71
+      ],
+      "tier": "market"
+    },
+    {
+      "id": "bc_place_039",
+      "asset": "market_gate_94",
+      "rect": [
+        4254,
+        5339,
+        94,
+        71
+      ],
+      "tier": "market"
+    },
+    {
+      "id": "bc_place_106",
+      "asset": "city_gate_142",
+      "rect": [
+        609,
+        4077,
+        142,
+        104
+      ],
+      "tier": "city"
+    },
+    {
+      "id": "bc_place_107",
+      "asset": "town_gate_100",
+      "rect": [
+        810,
+        4725,
+        100,
+        71
+      ],
+      "tier": "town"
+    },
+    {
+      "id": "bc_place_108",
+      "asset": "market_gate_94",
+      "rect": [
+        1120,
+        4233,
+        94,
+        71
+      ],
+      "tier": "market"
+    },
+    {
+      "id": "bc_place_112",
+      "asset": "city_gate_142",
+      "rect": [
+        2022,
+        514,
+        142,
+        104
+      ],
+      "tier": "city"
+    },
+    {
+      "id": "bc_place_113",
+      "asset": "town_gate_100",
+      "rect": [
+        2592,
+        486,
+        100,
+        71
+      ],
+      "tier": "town"
+    },
+    {
+      "id": "bc_place_114",
+      "asset": "market_gate_94",
+      "rect": [
+        2841,
+        793,
+        94,
+        71
+      ],
+      "tier": "market"
+    },
+    {
+      "id": "bc_place_118",
+      "asset": "city_gate_142",
+      "rect": [
+        5524,
+        3770,
+        142,
+        104
+      ],
+      "tier": "city"
+    },
+    {
+      "id": "bc_place_119",
+      "asset": "town_gate_100",
+      "rect": [
+        5295,
+        4172,
+        100,
+        71
+      ],
+      "tier": "town"
+    },
+    {
+      "id": "bc_place_120",
+      "asset": "market_gate_94",
+      "rect": [
+        4930,
+        3312,
+        94,
+        71
+      ],
+      "tier": "market"
+    }
+  ],
+  "nodeCount": 123,
+  "counts": {
+    "sect_1": 3,
+    "sect_2": 10,
+    "city": 16,
+    "town": 14,
+    "market": 5
+  }
+}

@@ -1,0 +1,2275 @@
+{
+	"failures": [],
+	"fps": 30,
+	"frames": 300,
+	"native_window": [
+		1280,
+		720
+	],
+	"passed": true,
+	"records": [
+		{
+			"clip": [
+				"Idle",
+				0.0333333333333333
+			],
+			"enemy_hp": 100,
+			"facing": 1.0,
+			"frame": 0,
+			"garment": {
+				"errors": [],
+				"mesh_count": 7,
+				"mode": "original_male101_native_canvas_3d",
+				"native_height": 113.726114273071,
+				"original_textures": false,
+				"own_hairstyle_override": true,
+				"physics": {
+					"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+					"components": [
+						{
+							"particles": 7,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+							"sourceTotalLength": 0.335419170558453,
+							"virtualEndParticles": 2
+						},
+						{
+							"particles": 4,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+							"sourceTotalLength": 0.303497962653637,
+							"virtualEndParticles": 1
+						}
+					],
+					"coordinateSystem": "full 3D Unity units before XY projection",
+					"setupErrors": [],
+					"unsupportedActiveBranches": [
+						"nonempty collider geometry",
+						"camera distant-disable",
+						"non-Normal Unity scheduling",
+						"weighted AnimationCurve keys"
+					]
+				},
+				"physics_enabled": true,
+				"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+				"pixels_per_unit": 100.0,
+				"project_bone_length_retargeting": false,
+				"rig_root": "/HumanRootMan/Root",
+				"sampled_clip": "Idle",
+				"sampled_time": 0.0333333333333333,
+				"source_alpha_and_uv": false,
+				"source_body_alpha_and_uv": true,
+				"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+				"transforms": 51,
+				"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+			},
+			"hp": 100,
+			"player": [
+				1400.0,
+				950.0
+			],
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {},
+				"loaded": true,
+				"mode": "off",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://tools/action_battle_test/art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": [
+				"Idle",
+				0.533333333333333
+			],
+			"enemy_hp": 100,
+			"facing": 1.0,
+			"frame": 15,
+			"garment": {
+				"errors": [],
+				"mesh_count": 7,
+				"mode": "original_male101_native_canvas_3d",
+				"native_height": 113.726114273071,
+				"original_textures": false,
+				"own_hairstyle_override": true,
+				"physics": {
+					"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+					"components": [
+						{
+							"particles": 7,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+							"sourceTotalLength": 0.335419170558453,
+							"virtualEndParticles": 2
+						},
+						{
+							"particles": 4,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+							"sourceTotalLength": 0.303497962653637,
+							"virtualEndParticles": 1
+						}
+					],
+					"coordinateSystem": "full 3D Unity units before XY projection",
+					"setupErrors": [],
+					"unsupportedActiveBranches": [
+						"nonempty collider geometry",
+						"camera distant-disable",
+						"non-Normal Unity scheduling",
+						"weighted AnimationCurve keys"
+					]
+				},
+				"physics_enabled": true,
+				"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+				"pixels_per_unit": 100.0,
+				"project_bone_length_retargeting": false,
+				"rig_root": "/HumanRootMan/Root",
+				"sampled_clip": "Idle",
+				"sampled_time": 0.533333333333333,
+				"source_alpha_and_uv": false,
+				"source_body_alpha_and_uv": true,
+				"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+				"transforms": 51,
+				"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+			},
+			"hp": 100,
+			"player": [
+				1400.0,
+				950.0
+			],
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {},
+				"loaded": true,
+				"mode": "off",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://tools/action_battle_test/art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": [
+				"Idle",
+				1.03333333333333
+			],
+			"enemy_hp": 100,
+			"facing": 1.0,
+			"frame": 30,
+			"garment": {
+				"errors": [],
+				"mesh_count": 7,
+				"mode": "original_male101_native_canvas_3d",
+				"native_height": 113.726114273071,
+				"original_textures": false,
+				"own_hairstyle_override": true,
+				"physics": {
+					"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+					"components": [
+						{
+							"particles": 7,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+							"sourceTotalLength": 0.335419170558453,
+							"virtualEndParticles": 2
+						},
+						{
+							"particles": 4,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+							"sourceTotalLength": 0.303497962653637,
+							"virtualEndParticles": 1
+						}
+					],
+					"coordinateSystem": "full 3D Unity units before XY projection",
+					"setupErrors": [],
+					"unsupportedActiveBranches": [
+						"nonempty collider geometry",
+						"camera distant-disable",
+						"non-Normal Unity scheduling",
+						"weighted AnimationCurve keys"
+					]
+				},
+				"physics_enabled": true,
+				"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+				"pixels_per_unit": 100.0,
+				"project_bone_length_retargeting": false,
+				"rig_root": "/HumanRootMan/Root",
+				"sampled_clip": "Idle",
+				"sampled_time": 1.03333333333333,
+				"source_alpha_and_uv": false,
+				"source_body_alpha_and_uv": true,
+				"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+				"transforms": 51,
+				"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+			},
+			"hp": 100,
+			"player": [
+				1400.0,
+				950.0
+			],
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {},
+				"loaded": true,
+				"mode": "off",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://tools/action_battle_test/art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": [
+				"Run_New1",
+				1.53333333333333
+			],
+			"enemy_hp": 100,
+			"facing": 1.0,
+			"frame": 45,
+			"garment": {
+				"errors": [],
+				"mesh_count": 7,
+				"mode": "original_male101_native_canvas_3d",
+				"native_height": 113.726114273071,
+				"original_textures": false,
+				"own_hairstyle_override": true,
+				"physics": {
+					"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+					"components": [
+						{
+							"particles": 7,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+							"sourceTotalLength": 0.335419170558453,
+							"virtualEndParticles": 2
+						},
+						{
+							"particles": 4,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+							"sourceTotalLength": 0.303497962653637,
+							"virtualEndParticles": 1
+						}
+					],
+					"coordinateSystem": "full 3D Unity units before XY projection",
+					"setupErrors": [],
+					"unsupportedActiveBranches": [
+						"nonempty collider geometry",
+						"camera distant-disable",
+						"non-Normal Unity scheduling",
+						"weighted AnimationCurve keys"
+					]
+				},
+				"physics_enabled": true,
+				"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+				"pixels_per_unit": 100.0,
+				"project_bone_length_retargeting": false,
+				"rig_root": "/HumanRootMan/Root",
+				"sampled_clip": "Run_New1",
+				"sampled_time": 0.366666706403098,
+				"source_alpha_and_uv": false,
+				"source_body_alpha_and_uv": true,
+				"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+				"transforms": 51,
+				"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+			},
+			"hp": 100,
+			"player": [
+				1457.00073242188,
+				950.0
+			],
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {},
+				"loaded": true,
+				"mode": "off",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://tools/action_battle_test/art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": [
+				"Run_New1",
+				2.03333333333334
+			],
+			"enemy_hp": 100,
+			"facing": 1.0,
+			"frame": 60,
+			"garment": {
+				"errors": [],
+				"mesh_count": 7,
+				"mode": "original_male101_native_canvas_3d",
+				"native_height": 113.726114273071,
+				"original_textures": false,
+				"own_hairstyle_override": true,
+				"physics": {
+					"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+					"components": [
+						{
+							"particles": 7,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+							"sourceTotalLength": 0.335419170558453,
+							"virtualEndParticles": 2
+						},
+						{
+							"particles": 4,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+							"sourceTotalLength": 0.303497962653637,
+							"virtualEndParticles": 1
+						}
+					],
+					"coordinateSystem": "full 3D Unity units before XY projection",
+					"setupErrors": [],
+					"unsupportedActiveBranches": [
+						"nonempty collider geometry",
+						"camera distant-disable",
+						"non-Normal Unity scheduling",
+						"weighted AnimationCurve keys"
+					]
+				},
+				"physics_enabled": true,
+				"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+				"pixels_per_unit": 100.0,
+				"project_bone_length_retargeting": false,
+				"rig_root": "/HumanRootMan/Root",
+				"sampled_clip": "Run_New1",
+				"sampled_time": 0.283333392937981,
+				"source_alpha_and_uv": false,
+				"source_body_alpha_and_uv": true,
+				"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+				"transforms": 51,
+				"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+			},
+			"hp": 100,
+			"player": [
+				1514.00146484375,
+				950.0
+			],
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {},
+				"loaded": true,
+				"mode": "off",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://tools/action_battle_test/art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": [
+				"Run_New1",
+				2.53333333333333
+			],
+			"enemy_hp": 100,
+			"facing": 1.0,
+			"frame": 75,
+			"garment": {
+				"errors": [],
+				"mesh_count": 7,
+				"mode": "original_male101_native_canvas_3d",
+				"native_height": 113.726114273071,
+				"original_textures": false,
+				"own_hairstyle_override": true,
+				"physics": {
+					"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+					"components": [
+						{
+							"particles": 7,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+							"sourceTotalLength": 0.335419170558453,
+							"virtualEndParticles": 2
+						},
+						{
+							"particles": 4,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+							"sourceTotalLength": 0.303497962653637,
+							"virtualEndParticles": 1
+						}
+					],
+					"coordinateSystem": "full 3D Unity units before XY projection",
+					"setupErrors": [],
+					"unsupportedActiveBranches": [
+						"nonempty collider geometry",
+						"camera distant-disable",
+						"non-Normal Unity scheduling",
+						"weighted AnimationCurve keys"
+					]
+				},
+				"physics_enabled": true,
+				"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+				"pixels_per_unit": 100.0,
+				"project_bone_length_retargeting": false,
+				"rig_root": "/HumanRootMan/Root",
+				"sampled_clip": "Run_New1",
+				"sampled_time": 0.20000007947286,
+				"source_alpha_and_uv": false,
+				"source_body_alpha_and_uv": true,
+				"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+				"transforms": 51,
+				"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+			},
+			"hp": 100,
+			"player": [
+				1571.00219726562,
+				950.0
+			],
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {},
+				"loaded": true,
+				"mode": "off",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://tools/action_battle_test/art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": [
+				"Run_New1",
+				3.03333333333333
+			],
+			"enemy_hp": 100,
+			"facing": 1.0,
+			"frame": 90,
+			"garment": {
+				"errors": [],
+				"mesh_count": 7,
+				"mode": "original_male101_native_canvas_3d",
+				"native_height": 113.726114273071,
+				"original_textures": false,
+				"own_hairstyle_override": true,
+				"physics": {
+					"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+					"components": [
+						{
+							"particles": 7,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+							"sourceTotalLength": 0.335419170558453,
+							"virtualEndParticles": 2
+						},
+						{
+							"particles": 4,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+							"sourceTotalLength": 0.303497962653637,
+							"virtualEndParticles": 1
+						}
+					],
+					"coordinateSystem": "full 3D Unity units before XY projection",
+					"setupErrors": [],
+					"unsupportedActiveBranches": [
+						"nonempty collider geometry",
+						"camera distant-disable",
+						"non-Normal Unity scheduling",
+						"weighted AnimationCurve keys"
+					]
+				},
+				"physics_enabled": true,
+				"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+				"pixels_per_unit": 100.0,
+				"project_bone_length_retargeting": false,
+				"rig_root": "/HumanRootMan/Root",
+				"sampled_clip": "Run_New1",
+				"sampled_time": 0.11666676600774,
+				"source_alpha_and_uv": false,
+				"source_body_alpha_and_uv": true,
+				"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+				"transforms": 51,
+				"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+			},
+			"hp": 100,
+			"player": [
+				1628.0029296875,
+				950.0
+			],
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {},
+				"loaded": true,
+				"mode": "off",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://tools/action_battle_test/art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": [
+				"Run_New1",
+				3.53333333333333
+			],
+			"enemy_hp": 100,
+			"facing": 1.0,
+			"frame": 105,
+			"garment": {
+				"errors": [],
+				"mesh_count": 7,
+				"mode": "original_male101_native_canvas_3d",
+				"native_height": 113.726114273071,
+				"original_textures": false,
+				"own_hairstyle_override": true,
+				"physics": {
+					"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+					"components": [
+						{
+							"particles": 7,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+							"sourceTotalLength": 0.335419170558453,
+							"virtualEndParticles": 2
+						},
+						{
+							"particles": 4,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+							"sourceTotalLength": 0.303497962653637,
+							"virtualEndParticles": 1
+						}
+					],
+					"coordinateSystem": "full 3D Unity units before XY projection",
+					"setupErrors": [],
+					"unsupportedActiveBranches": [
+						"nonempty collider geometry",
+						"camera distant-disable",
+						"non-Normal Unity scheduling",
+						"weighted AnimationCurve keys"
+					]
+				},
+				"physics_enabled": true,
+				"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+				"pixels_per_unit": 100.0,
+				"project_bone_length_retargeting": false,
+				"rig_root": "/HumanRootMan/Root",
+				"sampled_clip": "Run_New1",
+				"sampled_time": 0.0333334525426201,
+				"source_alpha_and_uv": false,
+				"source_body_alpha_and_uv": true,
+				"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+				"transforms": 51,
+				"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+			},
+			"hp": 100,
+			"player": [
+				1685.00366210938,
+				950.0
+			],
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {},
+				"loaded": true,
+				"mode": "off",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://tools/action_battle_test/art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": [
+				"Idle",
+				4.03333333333333
+			],
+			"enemy_hp": 100,
+			"facing": 1.0,
+			"frame": 120,
+			"garment": {
+				"errors": [],
+				"mesh_count": 7,
+				"mode": "original_male101_native_canvas_3d",
+				"native_height": 113.726114273071,
+				"original_textures": false,
+				"own_hairstyle_override": true,
+				"physics": {
+					"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+					"components": [
+						{
+							"particles": 7,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+							"sourceTotalLength": 0.335419170558453,
+							"virtualEndParticles": 2
+						},
+						{
+							"particles": 4,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+							"sourceTotalLength": 0.303497962653637,
+							"virtualEndParticles": 1
+						}
+					],
+					"coordinateSystem": "full 3D Unity units before XY projection",
+					"setupErrors": [],
+					"unsupportedActiveBranches": [
+						"nonempty collider geometry",
+						"camera distant-disable",
+						"non-Normal Unity scheduling",
+						"weighted AnimationCurve keys"
+					]
+				},
+				"physics_enabled": true,
+				"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+				"pixels_per_unit": 100.0,
+				"project_bone_length_retargeting": false,
+				"rig_root": "/HumanRootMan/Root",
+				"sampled_clip": "Idle",
+				"sampled_time": 0.766666682561234,
+				"source_alpha_and_uv": false,
+				"source_body_alpha_and_uv": true,
+				"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+				"transforms": 51,
+				"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+			},
+			"hp": 100,
+			"player": [
+				1685.00366210938,
+				950.0
+			],
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {},
+				"loaded": true,
+				"mode": "off",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://tools/action_battle_test/art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": [
+				"Idle",
+				4.53333333333333
+			],
+			"enemy_hp": 100,
+			"facing": -1.0,
+			"frame": 135,
+			"garment": {
+				"errors": [],
+				"mesh_count": 7,
+				"mode": "original_male101_native_canvas_3d",
+				"native_height": 113.726114273071,
+				"original_textures": false,
+				"own_hairstyle_override": true,
+				"physics": {
+					"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+					"components": [
+						{
+							"particles": 7,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+							"sourceTotalLength": 0.335419170558453,
+							"virtualEndParticles": 2
+						},
+						{
+							"particles": 4,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+							"sourceTotalLength": 0.303497962653637,
+							"virtualEndParticles": 1
+						}
+					],
+					"coordinateSystem": "full 3D Unity units before XY projection",
+					"setupErrors": [],
+					"unsupportedActiveBranches": [
+						"nonempty collider geometry",
+						"camera distant-disable",
+						"non-Normal Unity scheduling",
+						"weighted AnimationCurve keys"
+					]
+				},
+				"physics_enabled": true,
+				"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+				"pixels_per_unit": 100.0,
+				"project_bone_length_retargeting": false,
+				"rig_root": "/HumanRootMan/Root",
+				"sampled_clip": "Idle",
+				"sampled_time": 1.26666668256123,
+				"source_alpha_and_uv": false,
+				"source_body_alpha_and_uv": true,
+				"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+				"transforms": 51,
+				"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+			},
+			"hp": 100,
+			"player": [
+				1685.00366210938,
+				950.0
+			],
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0,
+					"clip": "Idle",
+					"elbow": "(6.244141, -71.50098)",
+					"elbow_flex_degrees": 47.0,
+					"elbow_hyperextension": false,
+					"grip_global": "(1665.414, 887.0621)",
+					"grip_to_tip_world": 55.0,
+					"lower_length": 12.0267095565796,
+					"mode": "hold",
+					"phase": 0.0,
+					"pose_angles_degrees": "(72.0, 25.0, 0.0)",
+					"rotations_only": true,
+					"shoulder": "(2.282959, -83.69238)",
+					"swing_section": "hold",
+					"tip_global": "(1615.567, 910.3061)",
+					"total_length_world": 63.4716679968077,
+					"upper_length": 12.8187885284424,
+					"wrist": "(17.14404, -66.41827)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "hold",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://tools/action_battle_test/art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": [
+				"Run_New1",
+				5.03333333333333
+			],
+			"enemy_hp": 100,
+			"facing": -1.0,
+			"frame": 150,
+			"garment": {
+				"errors": [],
+				"mesh_count": 7,
+				"mode": "original_male101_native_canvas_3d",
+				"native_height": 113.726114273071,
+				"original_textures": false,
+				"own_hairstyle_override": true,
+				"physics": {
+					"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+					"components": [
+						{
+							"particles": 7,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+							"sourceTotalLength": 0.335419170558453,
+							"virtualEndParticles": 2
+						},
+						{
+							"particles": 4,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+							"sourceTotalLength": 0.303497962653637,
+							"virtualEndParticles": 1
+						}
+					],
+					"coordinateSystem": "full 3D Unity units before XY projection",
+					"setupErrors": [],
+					"unsupportedActiveBranches": [
+						"nonempty collider geometry",
+						"camera distant-disable",
+						"non-Normal Unity scheduling",
+						"weighted AnimationCurve keys"
+					]
+				},
+				"physics_enabled": true,
+				"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+				"pixels_per_unit": 100.0,
+				"project_bone_length_retargeting": false,
+				"rig_root": "/HumanRootMan/Root",
+				"sampled_clip": "Run_New1",
+				"sampled_time": 0.366666825612378,
+				"source_alpha_and_uv": false,
+				"source_body_alpha_and_uv": true,
+				"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+				"transforms": 51,
+				"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+			},
+			"hp": 100,
+			"player": [
+				1628.0029296875,
+				950.0
+			],
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0,
+					"clip": "Run_New1",
+					"elbow": "(19.14465, -71.71704)",
+					"elbow_flex_degrees": 47.0,
+					"elbow_hyperextension": false,
+					"grip_global": "(1594.802, 886.4162)",
+					"grip_to_tip_world": 55.0,
+					"lower_length": 12.48801612854,
+					"mode": "hold",
+					"phase": 0.0,
+					"pose_angles_degrees": "(72.0, 25.0, 0.0)",
+					"rotations_only": true,
+					"shoulder": "(14.16296, -87.04895)",
+					"swing_section": "hold",
+					"tip_global": "(1544.955, 909.6602)",
+					"total_length_world": 63.4716679968077,
+					"upper_length": 16.1209392547607,
+					"wrist": "(30.46265, -66.43939)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "hold",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://tools/action_battle_test/art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": [
+				"Run_New1",
+				5.53333333333332
+			],
+			"enemy_hp": 100,
+			"facing": -1.0,
+			"frame": 165,
+			"garment": {
+				"errors": [],
+				"mesh_count": 7,
+				"mode": "original_male101_native_canvas_3d",
+				"native_height": 113.726114273071,
+				"original_textures": false,
+				"own_hairstyle_override": true,
+				"physics": {
+					"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+					"components": [
+						{
+							"particles": 7,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+							"sourceTotalLength": 0.335419170558453,
+							"virtualEndParticles": 2
+						},
+						{
+							"particles": 4,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+							"sourceTotalLength": 0.303497962653637,
+							"virtualEndParticles": 1
+						}
+					],
+					"coordinateSystem": "full 3D Unity units before XY projection",
+					"setupErrors": [],
+					"unsupportedActiveBranches": [
+						"nonempty collider geometry",
+						"camera distant-disable",
+						"non-Normal Unity scheduling",
+						"weighted AnimationCurve keys"
+					]
+				},
+				"physics_enabled": true,
+				"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+				"pixels_per_unit": 100.0,
+				"project_bone_length_retargeting": false,
+				"rig_root": "/HumanRootMan/Root",
+				"sampled_clip": "Run_New1",
+				"sampled_time": 0.283333512147258,
+				"source_alpha_and_uv": false,
+				"source_body_alpha_and_uv": true,
+				"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+				"transforms": 51,
+				"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+			},
+			"hp": 100,
+			"player": [
+				1571.00219726562,
+				950.0
+			],
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0,
+					"clip": "Run_New1",
+					"elbow": "(18.52161, -72.32452)",
+					"elbow_flex_degrees": 47.0,
+					"elbow_hyperextension": false,
+					"grip_global": "(1538.424, 885.8062)",
+					"grip_to_tip_world": 55.0,
+					"lower_length": 12.4878797531128,
+					"mode": "hold",
+					"phase": 0.0,
+					"pose_angles_degrees": "(72.0, 25.0, 0.0)",
+					"rotations_only": true,
+					"shoulder": "(13.70667, -87.14325)",
+					"swing_section": "hold",
+					"tip_global": "(1488.577, 909.0501)",
+					"total_length_world": 63.4716679968077,
+					"upper_length": 15.5813446044922,
+					"wrist": "(29.83948, -67.04694)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "hold",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://tools/action_battle_test/art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": [
+				"Run_New1",
+				6.03333333333332
+			],
+			"enemy_hp": 100,
+			"facing": -1.0,
+			"frame": 180,
+			"garment": {
+				"errors": [],
+				"mesh_count": 7,
+				"mode": "original_male101_native_canvas_3d",
+				"native_height": 113.726114273071,
+				"original_textures": false,
+				"own_hairstyle_override": true,
+				"physics": {
+					"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+					"components": [
+						{
+							"particles": 7,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+							"sourceTotalLength": 0.335419170558453,
+							"virtualEndParticles": 2
+						},
+						{
+							"particles": 4,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+							"sourceTotalLength": 0.303497962653637,
+							"virtualEndParticles": 1
+						}
+					],
+					"coordinateSystem": "full 3D Unity units before XY projection",
+					"setupErrors": [],
+					"unsupportedActiveBranches": [
+						"nonempty collider geometry",
+						"camera distant-disable",
+						"non-Normal Unity scheduling",
+						"weighted AnimationCurve keys"
+					]
+				},
+				"physics_enabled": true,
+				"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+				"pixels_per_unit": 100.0,
+				"project_bone_length_retargeting": false,
+				"rig_root": "/HumanRootMan/Root",
+				"sampled_clip": "Run_New1",
+				"sampled_time": 0.200000198682138,
+				"source_alpha_and_uv": false,
+				"source_body_alpha_and_uv": true,
+				"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+				"transforms": 51,
+				"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+			},
+			"hp": 100,
+			"player": [
+				1514.00146484375,
+				950.0
+			],
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0,
+					"clip": "Run_New1",
+					"elbow": "(19.18225, -69.55939)",
+					"elbow_flex_degrees": 47.0,
+					"elbow_hyperextension": false,
+					"grip_global": "(1480.762, 888.5701)",
+					"grip_to_tip_world": 55.0,
+					"lower_length": 12.48801612854,
+					"mode": "hold",
+					"phase": 0.0,
+					"pose_angles_degrees": "(72.0, 25.0, 0.0)",
+					"rotations_only": true,
+					"shoulder": "(14.32922, -84.49542)",
+					"swing_section": "hold",
+					"tip_global": "(1430.915, 911.8141)",
+					"total_length_world": 63.4716679968077,
+					"upper_length": 15.7046813964844,
+					"wrist": "(30.50024, -64.28174)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "hold",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://tools/action_battle_test/art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": [
+				"Run_New1",
+				6.53333333333332
+			],
+			"enemy_hp": 100,
+			"facing": -1.0,
+			"frame": 195,
+			"garment": {
+				"errors": [],
+				"mesh_count": 7,
+				"mode": "original_male101_native_canvas_3d",
+				"native_height": 113.726114273071,
+				"original_textures": false,
+				"own_hairstyle_override": true,
+				"physics": {
+					"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+					"components": [
+						{
+							"particles": 7,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+							"sourceTotalLength": 0.335419170558453,
+							"virtualEndParticles": 2
+						},
+						{
+							"particles": 4,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+							"sourceTotalLength": 0.303497962653637,
+							"virtualEndParticles": 1
+						}
+					],
+					"coordinateSystem": "full 3D Unity units before XY projection",
+					"setupErrors": [],
+					"unsupportedActiveBranches": [
+						"nonempty collider geometry",
+						"camera distant-disable",
+						"non-Normal Unity scheduling",
+						"weighted AnimationCurve keys"
+					]
+				},
+				"physics_enabled": true,
+				"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+				"pixels_per_unit": 100.0,
+				"project_bone_length_retargeting": false,
+				"rig_root": "/HumanRootMan/Root",
+				"sampled_clip": "Run_New1",
+				"sampled_time": 0.116666885217017,
+				"source_alpha_and_uv": false,
+				"source_body_alpha_and_uv": true,
+				"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+				"transforms": 51,
+				"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+			},
+			"hp": 100,
+			"player": [
+				1457.00073242188,
+				950.0
+			],
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0,
+					"clip": "Run_New1",
+					"elbow": "(20.99146, -69.73846)",
+					"elbow_flex_degrees": 47.0,
+					"elbow_hyperextension": false,
+					"grip_global": "(1421.964, 888.5031)",
+					"grip_to_tip_world": 55.0,
+					"lower_length": 12.4878797531128,
+					"mode": "hold",
+					"phase": 0.0,
+					"pose_angles_degrees": "(72.0, 25.0, 0.0)",
+					"rotations_only": true,
+					"shoulder": "(16.0022, -85.09375)",
+					"swing_section": "hold",
+					"tip_global": "(1372.118, 911.7471)",
+					"total_length_world": 63.4716679968077,
+					"upper_length": 16.1455097198486,
+					"wrist": "(32.30933, -64.46088)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "hold",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://tools/action_battle_test/art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": true,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": [
+				"Idle",
+				7.03333333333332
+			],
+			"enemy_hp": 100,
+			"facing": 1.0,
+			"frame": 210,
+			"garment": {
+				"errors": [],
+				"mesh_count": 7,
+				"mode": "original_male101_native_canvas_3d",
+				"native_height": 113.726114273071,
+				"original_textures": false,
+				"own_hairstyle_override": true,
+				"physics": {
+					"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+					"components": [
+						{
+							"particles": 7,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+							"sourceTotalLength": 0.335419170558453,
+							"virtualEndParticles": 2
+						},
+						{
+							"particles": 4,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+							"sourceTotalLength": 0.303497962653637,
+							"virtualEndParticles": 1
+						}
+					],
+					"coordinateSystem": "full 3D Unity units before XY projection",
+					"setupErrors": [],
+					"unsupportedActiveBranches": [
+						"nonempty collider geometry",
+						"camera distant-disable",
+						"non-Normal Unity scheduling",
+						"weighted AnimationCurve keys"
+					]
+				},
+				"physics_enabled": true,
+				"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+				"pixels_per_unit": 100.0,
+				"project_bone_length_retargeting": false,
+				"rig_root": "/HumanRootMan/Root",
+				"sampled_clip": "Idle",
+				"sampled_time": 0.500000031789129,
+				"source_alpha_and_uv": false,
+				"source_body_alpha_and_uv": true,
+				"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+				"transforms": 51,
+				"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+			},
+			"hp": 100,
+			"player": [
+				1457.00073242188,
+				950.0
+			],
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0,
+					"clip": "Idle",
+					"elbow": "(7.483398, -71.64581)",
+					"elbow_flex_degrees": 46.7377743230302,
+					"elbow_hyperextension": false,
+					"grip_global": "(1478.394, 885.5613)",
+					"grip_to_tip_world": 55.0,
+					"lower_length": 12.0267839431763,
+					"mode": "swing",
+					"phase": 0.0462962962962963,
+					"pose_angles_degrees": "(66.61605, 19.87828, 0.0)",
+					"rotations_only": true,
+					"shoulder": "(2.395752, -83.41174)",
+					"swing_section": "prepare",
+					"tip_global": "(1530.117, 904.2626)",
+					"total_length_world": 63.4716679968077,
+					"upper_length": 12.8187856674194,
+					"wrist": "(18.79358, -67.5564)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://tools/action_battle_test/art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": false,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": [
+				"Idle",
+				7.53333333333332
+			],
+			"enemy_hp": 100,
+			"facing": 1.0,
+			"frame": 225,
+			"garment": {
+				"errors": [],
+				"mesh_count": 7,
+				"mode": "original_male101_native_canvas_3d",
+				"native_height": 113.726114273071,
+				"original_textures": false,
+				"own_hairstyle_override": true,
+				"physics": {
+					"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+					"components": [
+						{
+							"particles": 7,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+							"sourceTotalLength": 0.335419170558453,
+							"virtualEndParticles": 2
+						},
+						{
+							"particles": 4,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+							"sourceTotalLength": 0.303497962653637,
+							"virtualEndParticles": 1
+						}
+					],
+					"coordinateSystem": "full 3D Unity units before XY projection",
+					"setupErrors": [],
+					"unsupportedActiveBranches": [
+						"nonempty collider geometry",
+						"camera distant-disable",
+						"non-Normal Unity scheduling",
+						"weighted AnimationCurve keys"
+					]
+				},
+				"physics_enabled": true,
+				"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+				"pixels_per_unit": 100.0,
+				"project_bone_length_retargeting": false,
+				"rig_root": "/HumanRootMan/Root",
+				"sampled_clip": "Idle",
+				"sampled_time": 1.00000003178913,
+				"source_alpha_and_uv": false,
+				"source_body_alpha_and_uv": true,
+				"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+				"transforms": 51,
+				"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+			},
+			"hp": 100,
+			"player": [
+				1457.00073242188,
+				950.0
+			],
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0001220703125,
+					"clip": "Idle",
+					"elbow": "(3.635498, -70.40448)",
+					"elbow_flex_degrees": 35.9123984083797,
+					"elbow_hyperextension": false,
+					"grip_global": "(1469.767, 893.3486)",
+					"grip_to_tip_world": 55.0,
+					"lower_length": 12.0268707275391,
+					"mode": "swing",
+					"phase": 0.740740740740741,
+					"pose_angles_degrees": "(84.88129, 48.96889, 17.89298)",
+					"rotations_only": true,
+					"shoulder": "(2.491699, -83.17218)",
+					"swing_section": "recover",
+					"tip_global": "(1505.872, 934.838)",
+					"total_length_world": 63.4716679968077,
+					"upper_length": 12.8188314437866,
+					"wrist": "(11.53076, -61.33197)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://tools/action_battle_test/art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": false,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": [
+				"Idle",
+				8.03333333333332
+			],
+			"enemy_hp": 100,
+			"facing": 1.0,
+			"frame": 240,
+			"garment": {
+				"errors": [],
+				"mesh_count": 7,
+				"mode": "original_male101_native_canvas_3d",
+				"native_height": 113.726114273071,
+				"original_textures": false,
+				"own_hairstyle_override": true,
+				"physics": {
+					"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+					"components": [
+						{
+							"particles": 7,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+							"sourceTotalLength": 0.335419170558453,
+							"virtualEndParticles": 2
+						},
+						{
+							"particles": 4,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+							"sourceTotalLength": 0.303497962653637,
+							"virtualEndParticles": 1
+						}
+					],
+					"coordinateSystem": "full 3D Unity units before XY projection",
+					"setupErrors": [],
+					"unsupportedActiveBranches": [
+						"nonempty collider geometry",
+						"camera distant-disable",
+						"non-Normal Unity scheduling",
+						"weighted AnimationCurve keys"
+					]
+				},
+				"physics_enabled": true,
+				"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+				"pixels_per_unit": 100.0,
+				"project_bone_length_retargeting": false,
+				"rig_root": "/HumanRootMan/Root",
+				"sampled_clip": "Idle",
+				"sampled_time": 1.50000003178913,
+				"source_alpha_and_uv": false,
+				"source_body_alpha_and_uv": true,
+				"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+				"transforms": 51,
+				"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+			},
+			"hp": 78,
+			"player": [
+				1457.00073242188,
+				950.0
+			],
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0,
+					"clip": "Idle",
+					"elbow": "(6.079956, -71.90918)",
+					"elbow_flex_degrees": 47.0,
+					"elbow_hyperextension": false,
+					"grip_global": "(1476.32, 886.8427)",
+					"grip_to_tip_world": 55.0,
+					"lower_length": 12.0268459320068,
+					"mode": "hold",
+					"phase": 0.0,
+					"pose_angles_degrees": "(72.0, 25.0, 0.0)",
+					"rotations_only": true,
+					"shoulder": "(2.118774, -84.10059)",
+					"swing_section": "hold",
+					"tip_global": "(1526.167, 910.0867)",
+					"total_length_world": 63.4716679968077,
+					"upper_length": 12.8187885284424,
+					"wrist": "(16.97998, -66.82642)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "hold",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://tools/action_battle_test/art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": false,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": [
+				"Idle",
+				8.53333333333331
+			],
+			"enemy_hp": 100,
+			"facing": 1.0,
+			"frame": 255,
+			"garment": {
+				"errors": [],
+				"mesh_count": 7,
+				"mode": "original_male101_native_canvas_3d",
+				"native_height": 113.726114273071,
+				"original_textures": false,
+				"own_hairstyle_override": true,
+				"physics": {
+					"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+					"components": [
+						{
+							"particles": 7,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+							"sourceTotalLength": 0.335419170558453,
+							"virtualEndParticles": 2
+						},
+						{
+							"particles": 4,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+							"sourceTotalLength": 0.303497962653637,
+							"virtualEndParticles": 1
+						}
+					],
+					"coordinateSystem": "full 3D Unity units before XY projection",
+					"setupErrors": [],
+					"unsupportedActiveBranches": [
+						"nonempty collider geometry",
+						"camera distant-disable",
+						"non-Normal Unity scheduling",
+						"weighted AnimationCurve keys"
+					]
+				},
+				"physics_enabled": true,
+				"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+				"pixels_per_unit": 100.0,
+				"project_bone_length_retargeting": false,
+				"rig_root": "/HumanRootMan/Root",
+				"sampled_clip": "Idle",
+				"sampled_time": 0.366666706403077,
+				"source_alpha_and_uv": false,
+				"source_body_alpha_and_uv": true,
+				"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+				"transforms": 51,
+				"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+			},
+			"hp": 78,
+			"player": [
+				1457.00073242188,
+				950.0
+			],
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0,
+					"clip": "Idle",
+					"elbow": "(5.133179, -71.19452)",
+					"elbow_flex_degrees": 28.2700347230532,
+					"elbow_hyperextension": false,
+					"grip_global": "(1471.27, 892.551)",
+					"grip_to_tip_world": 55.0,
+					"lower_length": 12.026801109314,
+					"mode": "swing",
+					"phase": 0.462962962962963,
+					"pose_angles_degrees": "(77.15308, 48.88304, 12.43642)",
+					"rotations_only": true,
+					"shoulder": "(2.282959, -83.69238)",
+					"swing_section": "cut",
+					"tip_global": "(1507.438, 933.9862)",
+					"total_length_world": 63.4716679968077,
+					"upper_length": 12.8187494277954,
+					"wrist": "(13.04199, -62.13391)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "swing",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://tools/action_battle_test/art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": false,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": [
+				"Idle",
+				9.03333333333331
+			],
+			"enemy_hp": 100,
+			"facing": 1.0,
+			"frame": 270,
+			"garment": {
+				"errors": [],
+				"mesh_count": 7,
+				"mode": "original_male101_native_canvas_3d",
+				"native_height": 113.726114273071,
+				"original_textures": false,
+				"own_hairstyle_override": true,
+				"physics": {
+					"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+					"components": [
+						{
+							"particles": 7,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+							"sourceTotalLength": 0.335419170558453,
+							"virtualEndParticles": 2
+						},
+						{
+							"particles": 4,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+							"sourceTotalLength": 0.303497962653637,
+							"virtualEndParticles": 1
+						}
+					],
+					"coordinateSystem": "full 3D Unity units before XY projection",
+					"setupErrors": [],
+					"unsupportedActiveBranches": [
+						"nonempty collider geometry",
+						"camera distant-disable",
+						"non-Normal Unity scheduling",
+						"weighted AnimationCurve keys"
+					]
+				},
+				"physics_enabled": true,
+				"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+				"pixels_per_unit": 100.0,
+				"project_bone_length_retargeting": false,
+				"rig_root": "/HumanRootMan/Root",
+				"sampled_clip": "Idle",
+				"sampled_time": 0.866666706403075,
+				"source_alpha_and_uv": false,
+				"source_body_alpha_and_uv": true,
+				"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+				"transforms": 51,
+				"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+			},
+			"hp": 78,
+			"player": [
+				1457.00073242188,
+				950.0
+			],
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0,
+					"clip": "Idle",
+					"elbow": "(6.507935, -70.84363)",
+					"elbow_flex_degrees": 47.0,
+					"elbow_hyperextension": false,
+					"grip_global": "(1476.993, 887.4008)",
+					"grip_to_tip_world": 55.0,
+					"lower_length": 12.0267343521118,
+					"mode": "hold",
+					"phase": 0.0,
+					"pose_angles_degrees": "(72.0, 25.0, 0.0)",
+					"rotations_only": true,
+					"shoulder": "(2.546631, -83.03503)",
+					"swing_section": "hold",
+					"tip_global": "(1526.84, 910.6448)",
+					"total_length_world": 63.4716679968077,
+					"upper_length": 12.818826675415,
+					"wrist": "(17.40784, -65.76086)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "hold",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://tools/action_battle_test/art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": false,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		},
+		{
+			"clip": [
+				"Idle",
+				9.53333333333331
+			],
+			"enemy_hp": 100,
+			"facing": 1.0,
+			"frame": 285,
+			"garment": {
+				"errors": [],
+				"mesh_count": 7,
+				"mode": "original_male101_native_canvas_3d",
+				"native_height": 113.726114273071,
+				"original_textures": false,
+				"own_hairstyle_override": true,
+				"physics": {
+					"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+					"components": [
+						{
+							"particles": 7,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+							"sourceTotalLength": 0.335419170558453,
+							"virtualEndParticles": 2
+						},
+						{
+							"particles": 4,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+							"sourceTotalLength": 0.303497962653637,
+							"virtualEndParticles": 1
+						}
+					],
+					"coordinateSystem": "full 3D Unity units before XY projection",
+					"setupErrors": [],
+					"unsupportedActiveBranches": [
+						"nonempty collider geometry",
+						"camera distant-disable",
+						"non-Normal Unity scheduling",
+						"weighted AnimationCurve keys"
+					]
+				},
+				"physics_enabled": true,
+				"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+				"pixels_per_unit": 100.0,
+				"project_bone_length_retargeting": false,
+				"rig_root": "/HumanRootMan/Root",
+				"sampled_clip": "Idle",
+				"sampled_time": 1.36666670640307,
+				"source_alpha_and_uv": false,
+				"source_body_alpha_and_uv": true,
+				"state_machine_scope": "six original clips; explicit caller selection; 102-only hair binding remains absent on source101",
+				"transforms": 51,
+				"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+			},
+			"hp": 78,
+			"player": [
+				1457.00073242188,
+				950.0
+			],
+			"sword": {
+				"alpha_cleanup": "shader0.65..0.90 only; PNG unchanged",
+				"errors": [],
+				"grip_hand": "near right back-facing grip only",
+				"last": {
+					"attachment_error": 0.0,
+					"clip": "Idle",
+					"elbow": "(6.272705, -71.43036)",
+					"elbow_flex_degrees": 47.0,
+					"elbow_hyperextension": false,
+					"grip_global": "(1476.636, 887.0993)",
+					"grip_to_tip_world": 55.0,
+					"lower_length": 12.0268459320068,
+					"mode": "hold",
+					"phase": 0.0,
+					"pose_angles_degrees": "(72.0, 25.0, 0.0)",
+					"rotations_only": true,
+					"shoulder": "(2.311401, -83.62177)",
+					"swing_section": "hold",
+					"tip_global": "(1526.483, 910.3433)",
+					"total_length_world": 63.4716679968077,
+					"upper_length": 12.818826675415,
+					"wrist": "(17.17273, -66.3476)",
+					"z_index": 34
+				},
+				"loaded": true,
+				"mode": "off",
+				"native_size": "(1024.0, 1536.0)",
+				"registration": {
+					"grip_axis_offset_degrees": -90.0,
+					"grip_px": [
+						512.0,
+						1303.0
+					],
+					"guard_px": [
+						512.0,
+						1140.0
+					],
+					"native_size": [
+						1024.0,
+						1536.0
+					],
+					"notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling.",
+					"pommel_px": [
+						512.0,
+						1496.0
+					],
+					"target_grip_to_tip": 55.0,
+					"target_total_length": 63.4725,
+					"tip_px": [
+						512.0,
+						50.0
+					]
+				},
+				"render_order": "sword behind near fingers by one Z layer",
+				"scope": "independent pose/weapon preview; no skill, hitbox or damage changes",
+				"source": "res://tools/action_battle_test/art/approved_outfit_sword_20261105/sword.png",
+				"source_sha256": "b3bc30275edf585418e3d1d10be31b2e23788baacc2cc9aa93c700d325641f18",
+				"swing_duration": 0.72,
+				"swing_loop": false,
+				"uniform_image_scale": 0.0438946528332003,
+				"visible": true
+			}
+		}
+	],
+	"scene": "res://tscn/scene/ActionBattleOriginalWandererScene.tscn",
+	"scope": "Actual root-project wolf arena and shared runtime; deterministic keyboard and facing replay (offscreen pointer is not controllable), no replacement illustration or copied fitting actor",
+	"sequence": "idle0-29; ordinary run30-104; stop105-134; sword left run135-194; left hold195-209; two right single trial swings210-281; sheathe282-299"
+}

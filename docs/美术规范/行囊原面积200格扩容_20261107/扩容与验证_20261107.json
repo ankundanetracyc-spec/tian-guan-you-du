@@ -1,0 +1,56 @@
+{
+  "date": "2026-11-07",
+  "decision": "200格，各区都不超出原边界",
+  "cellDesignUnits": 36,
+  "previousCellDesignUnits": 48,
+  "capacity": 200,
+  "previousCapacity": 120,
+  "displayAreaComparedToOriginal": 0.9375,
+  "regions": [
+    { "id": "chest", "previous": [6, 4], "current": [8, 5], "capacity": 40, "previousDisplay": [288, 192], "currentDisplay": [288, 180] },
+    { "id": "sleeve-left", "previous": [3, 4], "current": [4, 5], "capacity": 20, "previousDisplay": [144, 192], "currentDisplay": [144, 180] },
+    { "id": "sleeve-right", "previous": [3, 4], "current": [4, 5], "capacity": 20, "previousDisplay": [144, 192], "currentDisplay": [144, 180] },
+    { "id": "waist", "previous": [6, 4], "current": [8, 5], "capacity": 40, "previousDisplay": [288, 192], "currentDisplay": [288, 180] },
+    { "id": "back", "previous": [6, 8], "current": [8, 10], "capacity": 80, "previousDisplay": [288, 384], "currentDisplay": [288, 360] }
+  ],
+  "sameRegionCenters": true,
+  "oldValidPlacementsPreserved": true,
+  "sourcePixelsPerCell": 128,
+  "storageInteriorDimensionsChanged": false,
+  "marketCapacityChanged": false,
+  "runtimeCapacityImplemented": true,
+  "materialSkinImplemented": false,
+  "build": {
+    "capacityCodeBuild": "passed, 0 warnings, 0 errors",
+    "latestWorkspaceBuild": "blocked by unrelated in-progress battle reference",
+    "error": "CS0103 CombatBoardPresentation missing in BattleBoardView.cs:115 and BattleBoardHud.cs:169,175",
+    "latestWorkspaceWarnings": 1,
+    "latestWorkspaceErrors": 3,
+    "journeyFixtureLatestEditCompiled": false
+  },
+  "scenes": [
+    { "case": "model", "checks": 34, "passed": true },
+    { "case": "inventory", "checks": 27, "passed": true },
+    { "case": "ring", "checks": 72, "passed": true },
+    { "case": "claim", "checks": 53, "passed": true },
+    { "case": "trade", "checks": 25, "passed": true },
+    { "case": "loot", "checks": 16, "passed": true },
+    { "case": "exchange", "checks": 23, "passed": true },
+    { "case": "manual", "checks": 63, "passed": true },
+    { "case": "inventory_window", "checks": 30, "passed": true },
+    { "case": "ring_window", "checks": 80, "passed": true },
+    { "case": "claim_window", "checks": 58, "passed": true }
+  ],
+  "passedChecks": 481,
+  "journeyEntry": "latest fixture update awaits build and rerun; excluded from passed count",
+  "visuals": [
+    { "viewport": [1920, 1080], "regions": 5, "capacity": 200, "cellPixels": 36, "failedImages": 0 },
+    { "viewport": [1280, 720], "regions": 5, "capacity": 200, "cellPixels": 24, "failedImages": 0 }
+  ],
+  "nativeScreenshots": 16,
+  "fixtureInventoryOccupied": 43,
+  "fixtureInventoryIsPlayerSave": false,
+  "realPlayerSavesWritten": false,
+  "runnerAppData": "output/inventory_capacity200_20261107/manual_library_appdata",
+  "knownRuntimeWarning": "existing 卸力.tres UID falls back to text path"
+}

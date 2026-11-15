@@ -1,0 +1,111 @@
+{
+  "date": "2026-11-09",
+  "passed": true,
+  "scope": "仅常显格线、收纳工具、Q/E快捷键及相关输入隔离修订。旧590项/24图保留，本轮不重跑或累加旧计数。",
+  "native_checks": 72,
+  "screenshot_count": 8,
+  "visual_review_method": "逐张使用view_image检查本轮8张原生视口PNG；不裁切、重绘或拼图。",
+  "resolutions": [
+    {
+      "resolution": [
+        1920,
+        1080
+      ],
+      "native_checks": 36,
+      "visual_passed": true,
+      "screenshots": 4,
+      "process_exit_code": 0,
+      "stderr_bytes": 0,
+      "canvas_comparison": {
+        "old_canvas_height": 717.32196,
+        "method": "旧工具行顶部减旧中央顶部再减原8单位间距",
+        "current_x": 422.86926,
+        "current_y": 135.43039,
+        "current_width": 1049.0117,
+        "current_height": 777.0032,
+        "gain": 59.681213,
+        "scale": 1.1477152,
+        "gain_design_units": 52.00001969129624
+      },
+      "report": "1920/原生专项.json",
+      "findings": [
+        {
+          "file": "01_常显格线与扩大的盘面.png",
+          "passed": true,
+          "finding": "常态4×4格线轻且清楚，动态落点及常驻文字签关闭；底部工具行撤去，铜纹盘增大，三栏无越界。"
+        },
+        {
+          "file": "02_Q信号线.png",
+          "passed": true,
+          "finding": "Q对应朱砂信号线，实际铺三格且状态栏名称仍为信号线；默认格线保持，无幽灵或悬停卡残留。"
+        },
+        {
+          "file": "03_E供能线.png",
+          "passed": true,
+          "finding": "E对应浅金供能线，实际新增三格并保留原朱砂线；状态栏名称为供能线，未改称能源线。"
+        },
+        {
+          "file": "04_收起的六项工具菜单.png",
+          "passed": true,
+          "finding": "左侧部件标题旁展开同族纸面菜单，六项完整、可读且不压盘底；两档均真实鼠标逐项激活通过。"
+        }
+      ]
+    },
+    {
+      "resolution": [
+        1280,
+        720
+      ],
+      "native_checks": 36,
+      "visual_passed": true,
+      "screenshots": 4,
+      "process_exit_code": 0,
+      "stderr_bytes": 0,
+      "canvas_comparison": {
+        "old_canvas_height": 478.21466,
+        "method": "旧工具行顶部减旧中央顶部再减原8单位间距",
+        "current_x": 281.91287,
+        "current_y": 90.28693,
+        "current_width": 699.3411,
+        "current_height": 518.00214,
+        "gain": 39.787476,
+        "scale": 0.76514345,
+        "gain_design_units": 52.000021695278186
+      },
+      "report": "1280/原生专项.json",
+      "findings": [
+        {
+          "file": "01_常显格线与扩大的盘面.png",
+          "passed": true,
+          "finding": "常态4×4格线轻且清楚，动态落点及常驻文字签关闭；底部工具行撤去，铜纹盘增大，三栏无越界。"
+        },
+        {
+          "file": "02_Q信号线.png",
+          "passed": true,
+          "finding": "Q对应朱砂信号线，实际铺三格且状态栏名称仍为信号线；默认格线保持，无幽灵或悬停卡残留。"
+        },
+        {
+          "file": "03_E供能线.png",
+          "passed": true,
+          "finding": "E对应浅金供能线，实际新增三格并保留原朱砂线；状态栏名称为供能线，未改称能源线。"
+        },
+        {
+          "file": "04_收起的六项工具菜单.png",
+          "passed": true,
+          "finding": "左侧部件标题旁展开同族纸面菜单，六项完整、可读且不压盘底；两档均真实鼠标逐项激活通过。"
+        }
+      ]
+    }
+  ],
+  "test_adaptation_archive": "首次输入路由问题/",
+  "test_adaptation_note": "测试最初尝试用Popup子Viewport或未绑定的ui_accept/ui_cancel选择菜单；最终使用Root真实鼠标命中，保持项目InputMap不变。归档属于测试适配，不计业务失败或本轮通过项。",
+  "old_full_helper": "未来复用已适配工具菜单、Root输入、非零Motion位移和嵌入子窗；未来输出另存全链兼容目录，本轮未运行。",
+  "isolation": {
+    "appdata": true,
+    "draft_path": true,
+    "real_journey_loaded": false,
+    "character_save_opened": false,
+    "artifacts_or_knowledge_granted": false,
+    "formal_formation_rules_changed_by_smoke": false
+  }
+}

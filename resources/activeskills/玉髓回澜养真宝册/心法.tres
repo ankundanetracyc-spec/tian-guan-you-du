@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ActiveSkillData" format=3]
+
+[ext_resource type="Script" path="res://csharp/gongfa/ActiveSkillData.cs" id="1"]
+
+[resource]
+script = ExtResource("1")
+skill_name = "玉髓回澜"
+skill_type = 6
+slot_category = "passive"
+source_gongfa_name = "玉髓回澜养真宝册"
+description = "关键词：气血、护盾\n效果：气血层数降低产生回复时，超出生命缺口的回复量的50%转为A点护盾。\n主修额外效果：自身护盾被敌方攻击耗尽后，获得气血1层；每回合限一次。\n计算公式：A=floor(max(0,本次气血回落应回复量−本次实际回复量)×0.50)。"
+tags = Array[String](["气血", "护盾"])
+energy_cost = 0
+mana_cost = 0
+target_type = 0
+attack_style = ""
+damage_type = "physical"
+damage_formula = ""
+uses_per_round = 0
+icon_path = "res://textures/ui/combat/status_icons/心法_太和感物养元_v1.png"
+gongfa_rewrite_effect_ids = Array[String]([])

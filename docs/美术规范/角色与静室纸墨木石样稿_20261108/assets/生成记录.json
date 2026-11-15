@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-08",
+  "method": "内置图像生成工具",
+  "file": "控件补充图集_v1.png",
+  "prompt": "控件补充图集_完整提示词.txt",
+  "transparent_background": true,
+  "actualSize": [1122, 1402],
+  "regions": 20,
+  "referenceRoles": [
+    { "path": "textures/ui/yuxu_library_20261107/library_frame.png", "role": "哑光木作、浅纸和灰青石材质参考；不复制书架构图" },
+    { "path": "docs/美术规范/全局界面风格母板_20261108/公共控件_局部.png", "role": "已认可统一风格方向、字色与控件质感参考" }
+  ],
+  "original": "E:/tmp/CodexData/generated_images/01a1b645-e61d-7002-84e5-777bc18177de/exec-8ed779a4-ee35-4e78-ae28-7a2c673460f3.png",
+  "handling": "原样复制到本目录；未以脚本改写、裁存或重绘源位图。运行时SVG视窗引用区域。"
+}

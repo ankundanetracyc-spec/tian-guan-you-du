@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import { FileBlob, SpreadsheetFile } from '@oai/artifact-tool';
 
-const filePath = 'docs/锻躯气血体系卡牌规划.xlsx';
+const filePath = 'docs/plans/战斗与构筑/历史表格/锻躯气血体系卡牌规划.xlsx';
 const implemented = new Set([
   '黄庭养形', '返照', '抱一', '周行', '归藏',
   '赤阳参同', '伏火', '偃月', '朱明',

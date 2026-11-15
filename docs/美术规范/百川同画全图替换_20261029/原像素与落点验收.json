@@ -1,0 +1,1654 @@
+{
+  "scenes": 31,
+  "builtEntrances": 53,
+  "naturalSites": 70,
+  "namedNodes": 123,
+  "maskPixelDifferences": 0,
+  "sites": [
+    {
+      "id": "bc_place_112",
+      "name": "金阙城",
+      "type": "city",
+      "level": 0,
+      "patch": "r1c3",
+      "localRect": [
+        232,
+        490,
+        184,
+        84
+      ],
+      "rect": [
+        2165,
+        375,
+        184,
+        84
+      ],
+      "logicalPos": [
+        34,
+        10
+      ],
+      "artOffset": [
+        168.03999999999996,
+        -155.39999999999998
+      ],
+      "opaquePixels": 9893,
+      "transparentPixels": 5563,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_113",
+      "name": "含光镇",
+      "type": "town",
+      "level": 0,
+      "patch": "r1c3",
+      "localRect": [
+        701,
+        574,
+        120,
+        68
+      ],
+      "rect": [
+        2634,
+        459,
+        120,
+        68
+      ],
+      "logicalPos": [
+        43,
+        9
+      ],
+      "artOffset": [
+        52.07999999999993,
+        -25.960000000000036
+      ],
+      "opaquePixels": 4831,
+      "transparentPixels": 3329,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_114",
+      "name": "琼华坊",
+      "type": "market",
+      "level": 0,
+      "patch": "r1c3",
+      "localRect": [
+        980,
+        880,
+        142,
+        74
+      ],
+      "rect": [
+        2913,
+        765,
+        142,
+        74
+      ],
+      "logicalPos": [
+        47,
+        14
+      ],
+      "artOffset": [
+        96.32000000000016,
+        -21.159999999999968
+      ],
+      "opaquePixels": 5879,
+      "transparentPixels": 4629,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_008",
+      "name": "丹鼎宗",
+      "type": "sect",
+      "level": 2,
+      "patch": "r1c4",
+      "localRect": [
+        730,
+        524,
+        122,
+        59
+      ],
+      "rect": [
+        3687,
+        409,
+        122,
+        59
+      ],
+      "logicalPos": [
+        61,
+        8
+      ],
+      "artOffset": [
+        0.15999999999985448,
+        -23.519999999999982
+      ],
+      "opaquePixels": 5329,
+      "transparentPixels": 1869,
+      "opaquePixelDifferences": 0,
+      "footing": "continuous mountain shoulder"
+    },
+    {
+      "id": "bc_place_010",
+      "name": "沧溟水府",
+      "type": "sect",
+      "level": 2,
+      "patch": "r1c5",
+      "localRect": [
+        519,
+        863,
+        131,
+        70
+      ],
+      "rect": [
+        4500,
+        748,
+        131,
+        70
+      ],
+      "logicalPos": [
+        72,
+        17
+      ],
+      "artOffset": [
+        141.8199999999997,
+        -226.48000000000002
+      ],
+      "opaquePixels": 6698,
+      "transparentPixels": 2472,
+      "opaquePixelDifferences": 0,
+      "footing": "continuous mountain shoulder"
+    },
+    {
+      "id": "bc_place_030",
+      "name": "听风镇",
+      "type": "town",
+      "level": 0,
+      "patch": "r1c5",
+      "localRect": [
+        902,
+        452,
+        110,
+        60
+      ],
+      "rect": [
+        4883,
+        337,
+        110,
+        60
+      ],
+      "logicalPos": [
+        79,
+        10
+      ],
+      "artOffset": [
+        84.23999999999978,
+        -217.39999999999998
+      ],
+      "opaquePixels": 4002,
+      "transparentPixels": 2598,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_018",
+      "name": "镇海城",
+      "type": "city",
+      "level": 0,
+      "patch": "r1c6",
+      "localRect": [
+        374,
+        760,
+        161,
+        69
+      ],
+      "rect": [
+        5379,
+        645,
+        161,
+        69
+      ],
+      "logicalPos": [
+        88,
+        12
+      ],
+      "artOffset": [
+        52.779999999999745,
+        -23.279999999999973
+      ],
+      "opaquePixels": 7107,
+      "transparentPixels": 4002,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_027",
+      "name": "松风镇",
+      "type": "town",
+      "level": 0,
+      "patch": "r2c1",
+      "localRect": [
+        900,
+        889,
+        143,
+        71
+      ],
+      "rect": [
+        785,
+        1798,
+        143,
+        71
+      ],
+      "logicalPos": [
+        14,
+        30
+      ],
+      "artOffset": [
+        -3.659999999999968,
+        25.799999999999955
+      ],
+      "opaquePixels": 5738,
+      "transparentPixels": 4415,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_014",
+      "name": "望岫城",
+      "type": "city",
+      "level": 0,
+      "patch": "r2c2",
+      "localRect": [
+        282,
+        845,
+        169,
+        68
+      ],
+      "rect": [
+        1191,
+        1754,
+        169,
+        68
+      ],
+      "logicalPos": [
+        20,
+        29
+      ],
+      "artOffset": [
+        46.700000000000045,
+        40.24000000000001
+      ],
+      "opaquePixels": 7333,
+      "transparentPixels": 4159,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_002",
+      "name": "玄都天府",
+      "type": "sect",
+      "level": 1,
+      "patch": "r2c3",
+      "localRect": [
+        708,
+        149,
+        142,
+        74
+      ],
+      "rect": [
+        2641,
+        1058,
+        142,
+        74
+      ],
+      "logicalPos": [
+        43,
+        19
+      ],
+      "artOffset": [
+        70.07999999999993,
+        -35.3599999999999
+      ],
+      "opaquePixels": 7426,
+      "transparentPixels": 3082,
+      "opaquePixelDifferences": 0,
+      "footing": "continuous mountain shoulder"
+    },
+    {
+      "id": "bc_place_015",
+      "name": "绛阙城",
+      "type": "city",
+      "level": 0,
+      "patch": "r2c4",
+      "localRect": [
+        357,
+        278,
+        175,
+        76
+      ],
+      "rect": [
+        3314,
+        1187,
+        175,
+        76
+      ],
+      "logicalPos": [
+        54,
+        19
+      ],
+      "artOffset": [
+        83.73999999999978,
+        95.6400000000001
+      ],
+      "opaquePixels": 8249,
+      "transparentPixels": 5051,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_038",
+      "name": "流丹坊",
+      "type": "market",
+      "level": 0,
+      "patch": "r2c4",
+      "localRect": [
+        780,
+        390,
+        115,
+        62
+      ],
+      "rect": [
+        3737,
+        1299,
+        115,
+        62
+      ],
+      "logicalPos": [
+        59,
+        20
+      ],
+      "artOffset": [
+        169.53999999999996,
+        132.20000000000005
+      ],
+      "opaquePixels": 4981,
+      "transparentPixels": 2149,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_019",
+      "name": "临渊城",
+      "type": "city",
+      "level": 0,
+      "patch": "r2c5",
+      "localRect": [
+        348,
+        540,
+        181,
+        78
+      ],
+      "rect": [
+        4329,
+        1449,
+        181,
+        78
+      ],
+      "logicalPos": [
+        70,
+        26
+      ],
+      "artOffset": [
+        118.69999999999982,
+        -70.44000000000005
+      ],
+      "opaquePixels": 8844,
+      "transparentPixels": 5274,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_040",
+      "name": "白蘋里",
+      "type": "village",
+      "level": 0,
+      "patch": "r2c6",
+      "localRect": [
+        456,
+        539,
+        126,
+        67
+      ],
+      "rect": [
+        5461,
+        1448,
+        126,
+        67
+      ],
+      "logicalPos": [
+        91,
+        24
+      ],
+      "artOffset": [
+        -67.03999999999996,
+        40.440000000000055
+      ],
+      "opaquePixels": 5821,
+      "transparentPixels": 2621,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_043",
+      "name": "澜浦渡",
+      "type": "dock",
+      "level": 0,
+      "patch": "r2c6",
+      "localRect": [
+        686,
+        79,
+        142,
+        102
+      ],
+      "rect": [
+        5691,
+        988,
+        142,
+        102
+      ],
+      "logicalPos": [
+        95,
+        18
+      ],
+      "artOffset": [
+        -74.80000000000018,
+        -15.920000000000073
+      ],
+      "opaquePixels": 5225,
+      "transparentPixels": 9259,
+      "opaquePixelDifferences": 0,
+      "footing": "dry bank and small landing"
+    },
+    {
+      "id": "bc_place_005",
+      "name": "镇岳观",
+      "type": "sect",
+      "level": 2,
+      "patch": "r3c1",
+      "localRect": [
+        838,
+        948,
+        139,
+        74
+      ],
+      "rect": [
+        723,
+        2881,
+        139,
+        74
+      ],
+      "logicalPos": [
+        12,
+        47
+      ],
+      "artOffset": [
+        55.22000000000003,
+        67.32000000000016
+      ],
+      "opaquePixels": 7234,
+      "transparentPixels": 3052,
+      "opaquePixelDifferences": 0,
+      "footing": "continuous mountain shoulder"
+    },
+    {
+      "id": "bc_place_017",
+      "name": "赤水城",
+      "type": "city",
+      "level": 0,
+      "patch": "r3c2",
+      "localRect": [
+        625,
+        940,
+        171,
+        74
+      ],
+      "rect": [
+        1534,
+        2873,
+        171,
+        74
+      ],
+      "logicalPos": [
+        25,
+        48
+      ],
+      "artOffset": [
+        83.5,
+        -2.119999999999891
+      ],
+      "opaquePixels": 7822,
+      "transparentPixels": 4832,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_004",
+      "name": "太微道宫",
+      "type": "sect",
+      "level": 2,
+      "patch": "r3c3",
+      "localRect": [
+        156,
+        1045,
+        151,
+        82
+      ],
+      "rect": [
+        2089,
+        2978,
+        151,
+        82
+      ],
+      "logicalPos": [
+        35,
+        50
+      ],
+      "artOffset": [
+        14.099999999999909,
+        -12
+      ],
+      "opaquePixels": 6653,
+      "transparentPixels": 5729,
+      "opaquePixelDifferences": 0,
+      "footing": "continuous mountain shoulder"
+    },
+    {
+      "id": "bc_place_016",
+      "name": "承天城",
+      "type": "city",
+      "level": 0,
+      "patch": "r3c3",
+      "localRect": [
+        648,
+        235,
+        146,
+        79
+      ],
+      "rect": [
+        2581,
+        2168,
+        146,
+        79
+      ],
+      "logicalPos": [
+        43,
+        37
+      ],
+      "artOffset": [
+        12.079999999999927,
+        -26.2800000000002
+      ],
+      "opaquePixels": 7443,
+      "transparentPixels": 4091,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_028",
+      "name": "玉泉镇",
+      "type": "town",
+      "level": 0,
+      "patch": "r3c3",
+      "localRect": [
+        474,
+        494,
+        119,
+        66
+      ],
+      "rect": [
+        2407,
+        2427,
+        119,
+        66
+      ],
+      "logicalPos": [
+        40,
+        40
+      ],
+      "artOffset": [
+        8.900000000000091,
+        35.40000000000009
+      ],
+      "opaquePixels": 4214,
+      "transparentPixels": 3640,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_009",
+      "name": "归藏书院",
+      "type": "sect",
+      "level": 2,
+      "patch": "r3c4",
+      "localRect": [
+        793,
+        312,
+        106,
+        54
+      ],
+      "rect": [
+        3750,
+        2245,
+        106,
+        54
+      ],
+      "logicalPos": [
+        62,
+        37
+      ],
+      "artOffset": [
+        -6.2800000000002,
+        25.7199999999998
+      ],
+      "opaquePixels": 4075,
+      "transparentPixels": 1649,
+      "opaquePixelDifferences": 0,
+      "footing": "continuous mountain shoulder"
+    },
+    {
+      "id": "bc_place_033",
+      "name": "荷汀镇",
+      "type": "town",
+      "level": 0,
+      "patch": "r3c4",
+      "localRect": [
+        448,
+        756,
+        106,
+        56
+      ],
+      "rect": [
+        3405,
+        2689,
+        106,
+        56
+      ],
+      "logicalPos": [
+        56,
+        49
+      ],
+      "artOffset": [
+        17.360000000000127,
+        -265.55999999999995
+      ],
+      "opaquePixels": 3879,
+      "transparentPixels": 2057,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_013",
+      "name": "枯骨寺",
+      "type": "sect",
+      "level": 2,
+      "patch": "r3c5",
+      "localRect": [
+        1089,
+        212,
+        100,
+        74
+      ],
+      "rect": [
+        5070,
+        2145,
+        100,
+        74
+      ],
+      "logicalPos": [
+        83,
+        36
+      ],
+      "artOffset": [
+        20.479999999999563,
+        7.1599999999998545
+      ],
+      "opaquePixels": 4354,
+      "transparentPixels": 3046,
+      "opaquePixelDifferences": 0,
+      "footing": "continuous mountain shoulder"
+    },
+    {
+      "id": "bc_place_025",
+      "name": "归寂城",
+      "type": "city",
+      "level": 0,
+      "patch": "r3c6",
+      "localRect": [
+        206,
+        446,
+        177,
+        90
+      ],
+      "rect": [
+        5211,
+        2379,
+        177,
+        90
+      ],
+      "logicalPos": [
+        86,
+        41
+      ],
+      "artOffset": [
+        15.659999999999854,
+        -50.039999999999964
+      ],
+      "opaquePixels": 10498,
+      "transparentPixels": 5432,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_021",
+      "name": "白石城",
+      "type": "city",
+      "level": 0,
+      "patch": "r4c2",
+      "localRect": [
+        718,
+        976,
+        191,
+        85
+      ],
+      "rect": [
+        1627,
+        3933,
+        191,
+        85
+      ],
+      "logicalPos": [
+        28,
+        65
+      ],
+      "artOffset": [
+        2.1800000000000637,
+        24.40000000000009
+      ],
+      "opaquePixels": 11305,
+      "transparentPixels": 4930,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_029",
+      "name": "临皋镇",
+      "type": "town",
+      "level": 0,
+      "patch": "r4c2",
+      "localRect": [
+        405,
+        212,
+        104,
+        69
+      ],
+      "rect": [
+        1314,
+        3169,
+        104,
+        69
+      ],
+      "logicalPos": [
+        22,
+        53
+      ],
+      "artOffset": [
+        14.319999999999936,
+        -18.320000000000164
+      ],
+      "opaquePixels": 4581,
+      "transparentPixels": 2595,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_034",
+      "name": "岚溪镇",
+      "type": "town",
+      "level": 0,
+      "patch": "r4c2",
+      "localRect": [
+        181,
+        489,
+        107,
+        66
+      ],
+      "rect": [
+        1090,
+        3446,
+        107,
+        66
+      ],
+      "logicalPos": [
+        19,
+        57
+      ],
+      "artOffset": [
+        -23.8599999999999,
+        9.920000000000073
+      ],
+      "opaquePixels": 4282,
+      "transparentPixels": 2780,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_006",
+      "name": "抱朴山",
+      "type": "sect",
+      "level": 2,
+      "patch": "r4c3",
+      "localRect": [
+        662,
+        968,
+        105,
+        86
+      ],
+      "rect": [
+        2595,
+        3925,
+        105,
+        86
+      ],
+      "logicalPos": [
+        43,
+        65
+      ],
+      "artOffset": [
+        5.579999999999927,
+        17.40000000000009
+      ],
+      "opaquePixels": 5759,
+      "transparentPixels": 3271,
+      "opaquePixelDifferences": 0,
+      "footing": "continuous mountain shoulder"
+    },
+    {
+      "id": "bc_place_020",
+      "name": "春水府",
+      "type": "city",
+      "level": 0,
+      "patch": "r4c3",
+      "localRect": [
+        976,
+        319,
+        162,
+        83
+      ],
+      "rect": [
+        2909,
+        3276,
+        162,
+        83
+      ],
+      "logicalPos": [
+        49,
+        55
+      ],
+      "artOffset": [
+        -20.559999999999945,
+        -20.199999999999818
+      ],
+      "opaquePixels": 10599,
+      "transparentPixels": 2847,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_032",
+      "name": "桑落镇",
+      "type": "town",
+      "level": 0,
+      "patch": "r4c3",
+      "localRect": [
+        654,
+        282,
+        92,
+        65
+      ],
+      "rect": [
+        2587,
+        3239,
+        92,
+        65
+      ],
+      "logicalPos": [
+        43,
+        54
+      ],
+      "artOffset": [
+        -8.920000000000073,
+        -13.760000000000218
+      ],
+      "opaquePixels": 3876,
+      "transparentPixels": 2104,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_026",
+      "name": "通济城",
+      "type": "city",
+      "level": 0,
+      "patch": "r4c4",
+      "localRect": [
+        892,
+        132,
+        163,
+        85
+      ],
+      "rect": [
+        3849,
+        3086,
+        163,
+        85
+      ],
+      "logicalPos": [
+        65,
+        51
+      ],
+      "artOffset": [
+        -63.09999999999991,
+        37.559999999999945
+      ],
+      "opaquePixels": 9781,
+      "transparentPixels": 4074,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_031",
+      "name": "烟柳镇",
+      "type": "town",
+      "level": 0,
+      "patch": "r4c4",
+      "localRect": [
+        241,
+        627,
+        112,
+        70
+      ],
+      "rect": [
+        3198,
+        3581,
+        112,
+        70
+      ],
+      "logicalPos": [
+        53,
+        59
+      ],
+      "artOffset": [
+        -2.3200000000001637,
+        26.039999999999964
+      ],
+      "opaquePixels": 4971,
+      "transparentPixels": 2869,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_003",
+      "name": "无相圣宗",
+      "type": "sect",
+      "level": 1,
+      "patch": "r4c5",
+      "localRect": [
+        984,
+        816,
+        149,
+        93
+      ],
+      "rect": [
+        4965,
+        3773,
+        149,
+        93
+      ],
+      "logicalPos": [
+        83,
+        61
+      ],
+      "artOffset": [
+        -60.02000000000044,
+        118.15999999999985
+      ],
+      "opaquePixels": 8128,
+      "transparentPixels": 5729,
+      "opaquePixelDifferences": 0,
+      "footing": "continuous mountain shoulder"
+    },
+    {
+      "id": "bc_place_044",
+      "name": "问津渡",
+      "type": "dock",
+      "level": 0,
+      "patch": "r4c5",
+      "localRect": [
+        96,
+        355,
+        145,
+        90
+      ],
+      "rect": [
+        4077,
+        3312,
+        145,
+        90
+      ],
+      "logicalPos": [
+        67,
+        55
+      ],
+      "artOffset": [
+        33.02000000000044,
+        22.800000000000182
+      ],
+      "opaquePixels": 4835,
+      "transparentPixels": 8215,
+      "opaquePixelDifferences": 0,
+      "footing": "dry bank and small landing"
+    },
+    {
+      "id": "bc_place_120",
+      "name": "夜泊坊",
+      "type": "market",
+      "level": 0,
+      "patch": "r4c5",
+      "localRect": [
+        928,
+        379,
+        113,
+        79
+      ],
+      "rect": [
+        4909,
+        3336,
+        113,
+        79
+      ],
+      "logicalPos": [
+        81,
+        55
+      ],
+      "artOffset": [
+        -11.140000000000327,
+        35.80000000000018
+      ],
+      "opaquePixels": 7458,
+      "transparentPixels": 1469,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_118",
+      "name": "永夜关",
+      "type": "city",
+      "level": 0,
+      "patch": "r4c6",
+      "localRect": [
+        488,
+        783,
+        159,
+        81
+      ],
+      "rect": [
+        5493,
+        3740,
+        159,
+        81
+      ],
+      "logicalPos": [
+        91,
+        63
+      ],
+      "artOffset": [
+        -18.539999999999964,
+        -49.7199999999998
+      ],
+      "opaquePixels": 9420,
+      "transparentPixels": 3459,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_106",
+      "name": "太和城",
+      "type": "city",
+      "level": 0,
+      "patch": "r5c1",
+      "localRect": [
+        702,
+        143,
+        153,
+        71
+      ],
+      "rect": [
+        587,
+        4124,
+        153,
+        71
+      ],
+      "logicalPos": [
+        11,
+        68
+      ],
+      "artOffset": [
+        -12.340000000000032,
+        17.079999999999927
+      ],
+      "opaquePixels": 7544,
+      "transparentPixels": 3319,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_107",
+      "name": "洗心镇",
+      "type": "town",
+      "level": 0,
+      "patch": "r5c1",
+      "localRect": [
+        906,
+        730,
+        98,
+        76
+      ],
+      "rect": [
+        791,
+        4711,
+        98,
+        76
+      ],
+      "logicalPos": [
+        14,
+        78
+      ],
+      "artOffset": [
+        -20.159999999999968,
+        -5.319999999999709
+      ],
+      "opaquePixels": 4895,
+      "transparentPixels": 2553,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_001",
+      "name": "玉虚仙宗",
+      "type": "sect",
+      "level": 1,
+      "patch": "r5c2",
+      "localRect": [
+        682,
+        453,
+        138,
+        91
+      ],
+      "rect": [
+        1591,
+        4434,
+        138,
+        91
+      ],
+      "logicalPos": [
+        22,
+        74
+      ],
+      "artOffset": [
+        308.31999999999994,
+        -21.5600000000004
+      ],
+      "opaquePixels": 7478,
+      "transparentPixels": 5080,
+      "opaquePixelDifferences": 0,
+      "footing": "continuous mountain shoulder"
+    },
+    {
+      "id": "bc_place_108",
+      "name": "松月坊",
+      "type": "market",
+      "level": 0,
+      "patch": "r5c2",
+      "localRect": [
+        290,
+        294,
+        137,
+        80
+      ],
+      "rect": [
+        1199,
+        4275,
+        137,
+        80
+      ],
+      "logicalPos": [
+        19,
+        70
+      ],
+      "artOffset": [
+        100.1400000000001,
+        54.19999999999982
+      ],
+      "opaquePixels": 5598,
+      "transparentPixels": 5362,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_022",
+      "name": "溪云城",
+      "type": "city",
+      "level": 0,
+      "patch": "r5c3",
+      "localRect": [
+        989,
+        464,
+        164,
+        89
+      ],
+      "rect": [
+        2922,
+        4445,
+        164,
+        89
+      ],
+      "logicalPos": [
+        49,
+        74
+      ],
+      "artOffset": [
+        -6.559999999999945,
+        -12.5600000000004
+      ],
+      "opaquePixels": 10545,
+      "transparentPixels": 4051,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_035",
+      "name": "望岚镇",
+      "type": "town",
+      "level": 0,
+      "patch": "r5c3",
+      "localRect": [
+        654,
+        619,
+        120,
+        70
+      ],
+      "rect": [
+        2587,
+        4600,
+        120,
+        70
+      ],
+      "logicalPos": [
+        43,
+        76
+      ],
+      "artOffset": [
+        5.079999999999927,
+        0.5600000000004002
+      ],
+      "opaquePixels": 5047,
+      "transparentPixels": 3353,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_041",
+      "name": "桑榆里",
+      "type": "village",
+      "level": 0,
+      "patch": "r5c3",
+      "localRect": [
+        891,
+        321,
+        78,
+        70
+      ],
+      "rect": [
+        2824,
+        4302,
+        78,
+        70
+      ],
+      "logicalPos": [
+        46,
+        71
+      ],
+      "artOffset": [
+        36.76000000000022,
+        9.760000000000218
+      ],
+      "opaquePixels": 3353,
+      "transparentPixels": 2107,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_011",
+      "name": "血河教",
+      "type": "sect",
+      "level": 2,
+      "patch": "r5c4",
+      "localRect": [
+        1007,
+        968,
+        89,
+        70
+      ],
+      "rect": [
+        3964,
+        4949,
+        89,
+        70
+      ],
+      "logicalPos": [
+        65,
+        82
+      ],
+      "artOffset": [
+        14.900000000000091,
+        -19.079999999999927
+      ],
+      "opaquePixels": 3848,
+      "transparentPixels": 2382,
+      "opaquePixelDifferences": 0,
+      "footing": "continuous mountain shoulder"
+    },
+    {
+      "id": "bc_place_024",
+      "name": "暮烟城",
+      "type": "city",
+      "level": 0,
+      "patch": "r5c5",
+      "localRect": [
+        370,
+        932,
+        172,
+        91
+      ],
+      "rect": [
+        4351,
+        4913,
+        172,
+        91
+      ],
+      "logicalPos": [
+        72,
+        83
+      ],
+      "artOffset": [
+        13.319999999999709,
+        -95.52000000000044
+      ],
+      "opaquePixels": 11053,
+      "transparentPixels": 4599,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_036",
+      "name": "雁回镇",
+      "type": "town",
+      "level": 0,
+      "patch": "r5c5",
+      "localRect": [
+        767,
+        900,
+        119,
+        68
+      ],
+      "rect": [
+        4748,
+        4881,
+        119,
+        68
+      ],
+      "logicalPos": [
+        78,
+        81
+      ],
+      "artOffset": [
+        15.180000000000291,
+        -27.640000000000327
+      ],
+      "opaquePixels": 4788,
+      "transparentPixels": 3304,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_037",
+      "name": "槐安镇",
+      "type": "town",
+      "level": 0,
+      "patch": "r5c6",
+      "localRect": [
+        378,
+        608,
+        137,
+        74
+      ],
+      "rect": [
+        5383,
+        4589,
+        137,
+        74
+      ],
+      "logicalPos": [
+        87,
+        76
+      ],
+      "artOffset": [
+        106.22000000000025,
+        -6.4399999999996
+      ],
+      "opaquePixels": 5424,
+      "transparentPixels": 4714,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_119",
+      "name": "听澜镇",
+      "type": "town",
+      "level": 0,
+      "patch": "r5c6",
+      "localRect": [
+        299,
+        174,
+        147,
+        71
+      ],
+      "rect": [
+        5304,
+        4155,
+        147,
+        71
+      ],
+      "logicalPos": [
+        87,
+        69
+      ],
+      "artOffset": [
+        32.220000000000255,
+        -13.359999999999673
+      ],
+      "opaquePixels": 5774,
+      "transparentPixels": 4663,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_023",
+      "name": "青萝城",
+      "type": "city",
+      "level": 0,
+      "patch": "r6c2",
+      "localRect": [
+        838,
+        274,
+        162,
+        68
+      ],
+      "rect": [
+        1747,
+        5279,
+        162,
+        68
+      ],
+      "logicalPos": [
+        30,
+        87
+      ],
+      "artOffset": [
+        -15.200000000000045,
+        1.7200000000002547
+      ],
+      "opaquePixels": 7358,
+      "transparentPixels": 3658,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_042",
+      "name": "采薇里",
+      "type": "village",
+      "level": 0,
+      "patch": "r6c2",
+      "localRect": [
+        647,
+        485,
+        110,
+        53
+      ],
+      "rect": [
+        1556,
+        5490,
+        110,
+        53
+      ],
+      "logicalPos": [
+        26,
+        90
+      ],
+      "artOffset": [
+        13.559999999999945,
+        13.399999999999636
+      ],
+      "opaquePixels": 3127,
+      "transparentPixels": 2703,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_007",
+      "name": "百药谷",
+      "type": "sect",
+      "level": 2,
+      "patch": "r6c3",
+      "localRect": [
+        226,
+        452,
+        131,
+        84
+      ],
+      "rect": [
+        2159,
+        5457,
+        131,
+        84
+      ],
+      "logicalPos": [
+        36,
+        91
+      ],
+      "artOffset": [
+        12.659999999999854,
+        -50.039999999999964
+      ],
+      "opaquePixels": 5944,
+      "transparentPixels": 5060,
+      "opaquePixelDifferences": 0,
+      "footing": "continuous mountain shoulder"
+    },
+    {
+      "id": "bc_place_039",
+      "name": "忘机坊",
+      "type": "market",
+      "level": 0,
+      "patch": "r6c5",
+      "localRect": [
+        266,
+        296,
+        160,
+        82
+      ],
+      "rect": [
+        4247,
+        5301,
+        160,
+        82
+      ],
+      "logicalPos": [
+        70,
+        88
+      ],
+      "artOffset": [
+        26.199999999999818,
+        -23.720000000000255
+      ],
+      "opaquePixels": 9614,
+      "transparentPixels": 3506,
+      "opaquePixelDifferences": 0,
+      "footing": "connected level plain"
+    },
+    {
+      "id": "bc_place_012",
+      "name": "蚀日宫",
+      "type": "sect",
+      "level": 2,
+      "patch": "r6c6",
+      "localRect": [
+        371,
+        336,
+        97,
+        66
+      ],
+      "rect": [
+        5376,
+        5341,
+        97,
+        66
+      ],
+      "logicalPos": [
+        88,
+        88
+      ],
+      "artOffset": [
+        17.779999999999745,
+        0.27999999999974534
+      ],
+      "opaquePixels": 3548,
+      "transparentPixels": 2854,
+      "opaquePixelDifferences": 0,
+      "footing": "continuous mountain shoulder"
+    }
+  ],
+  "originalGraphHash": "28fd79f81c136c9e488842add2a69f8fac5a6e59271d1125371fd6553452e6a7",
+  "status": "assembled_pending_runtime_and_visual_review"
+}

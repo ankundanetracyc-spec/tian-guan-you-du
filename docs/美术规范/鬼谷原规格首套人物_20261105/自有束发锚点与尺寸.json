@@ -1,0 +1,40 @@
+{
+	"generation": "built-in image_gen, isolated own hairstyle master",
+	"master": "own_hair_master.png",
+	"master_crop": [
+		136,
+		90,
+		499,
+		530
+	],
+	"mesh_adaptation": "full original canvas quad, rigid original renderer/head attachment; source long ponytail alpha/triangles are an explicit hairstyle exception",
+	"native_alpha_bbox": [
+		0,
+		0,
+		21,
+		22
+	],
+	"native_canvas": [
+		21,
+		56
+	],
+	"native_visible_target": [
+		0,
+		0,
+		21,
+		22
+	],
+	"physics": "original cloth unchanged; original hair chain retained for reference, compact tied bun follows head rigidly",
+	"pixels_per_unit": 100,
+	"png_sha256": "79299a97b9cf8761b0878277c5836f578519df5e3da7219aa264748c2fcc91c5",
+	"source_neck_anchor_px": [
+		12.796864086,
+		20.105417728
+	],
+	"source_pivot": [
+		0.5,
+		0.5
+	],
+	"style_reference": "../yuxu_fullbody_v15/cutout.png",
+	"user_instruction": "Hairstyle follows our own approved plain bun"
+}

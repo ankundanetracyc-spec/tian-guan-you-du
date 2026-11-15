@@ -52,7 +52,20 @@ if ($FocusPaths.Count -gt 0) {
         $resolvedPath = if ([System.IO.Path]::IsPathRooted($focusPath)) { $focusPath } else { Join-Path $ProjectRoot $focusPath }
         [void]$focusSet.Add([System.IO.Path]::GetFullPath($resolvedPath))
     }
-    $documentFiles = @($documentFiles | Where-Object { $focusSet.Contains([System.IO.Path]::GetFullPath($_.FullName)) })
+    # Explicit focus paths may belong to the card dictionary as well as the
+    # manual dictionary. Do not silently turn that request into an empty scan.
+    $documentFiles = @(
+        foreach ($resolvedFocusPath in $focusSet) {
+            if (-not (Test-Path -LiteralPath $resolvedFocusPath -PathType Leaf)) {
+                throw "Validation focus file not found: $resolvedFocusPath"
+            }
+            $focusFile = Get-Item -LiteralPath $resolvedFocusPath
+            if ($focusFile.Extension -notin '.md', '.drawio') {
+                throw "Unsupported validation focus file: $resolvedFocusPath"
+            }
+            $focusFile
+        }
+    )
 }
 $cardDictionaryRoot = Join-Path $ProjectRoot ((Text @(0x0064,0x006F,0x0063,0x0073)) + '\' + (Text @(0x5361,0x724C,0x8BCD,0x5178)))
 $allowedKeywords = @(
@@ -68,7 +81,14 @@ $buildKeywords = @(
     (Text @(0x9632,0x5FA1)), (Text @(0x653B,0x9632,0x8054,0x52A8)),
     (Text @(0x6CD5,0x529B)), (Text @(0x5FAA,0x73AF)), (Text @(0x7206,0x53D1))
 )
-$allowedKeywords += $buildKeywords
+$combatMechanicKeywords = @(
+    (Text @(0x6C14,0x8840)), (Text @(0x62A4,0x76FE)), (Text @(0x5316,0x89E3)), (Text @(0x5468,0x5929)),
+    (Text @(0x6563,0x8840)), (Text @(0x7A7F,0x76FE)), (Text @(0x5FF5)), (Text @(0x5FC3,0x9699)),
+    (Text @(0x5251)), (Text @(0x5251,0x610F)), (Text @(0x6F6E)), (Text @(0x7081)),
+    # 2026-11-04: approved blood-wave displacement control, implemented in the action runtime.
+    (Text @(0x51FB,0x9000))
+)
+$allowedKeywords += $buildKeywords + $combatMechanicKeywords
 
 # Legacy mechanic keywords and the shared build keywords are accepted in keyword
 # lines. The older tag line remains for other systems' faction/element labels.
@@ -80,7 +100,7 @@ $mechanicTags = @(
     (Text @(0x8EAB,0x6CD5)), (Text @(0x6E38,0x9AB8)), (Text @(0x8840,0x7089)),
     (Text @(0x4F24,0x52BF)), (Text @(0x501F,0x529B))
 )
-$mechanicTags += $buildKeywords
+$mechanicTags += $buildKeywords + $combatMechanicKeywords
 $keywordFiles = @($documentFiles | Where-Object { $_.Name -ne $specFileName })
 if ($FocusPaths.Count -eq 0 -and (Test-Path -LiteralPath $cardDictionaryRoot)) {
     $keywordFiles += Get-ChildItem -LiteralPath $cardDictionaryRoot -Recurse -File |
@@ -116,14 +136,9 @@ foreach ($file in $keywordFiles) {
     }
 }
 
-# The game uses an action timeline, not turn rounds.  These phrases are
-# ambiguous in design text because they do not identify a verifiable action node.
+# Round timing is valid under the current combat rules. Only reject wording
+# that leaves the relevant action or settlement point unspecified.
 $forbiddenTimingTerms = @(
-    (Text @(0x672C,0x56DE,0x5408)),
-    (Text @(0x540C,0x4E00,0x56DE,0x5408)),
-    (Text @(0x4E0B,0x4E00,0x56DE,0x5408)),
-    (Text @(0x6BCF,0x56DE,0x5408)),
-    (Text @(0x4E0A,0x56DE,0x5408)),
     (Text @(0x5DF2,0x884C,0x52A8))
 )
 foreach ($file in $keywordFiles) {
@@ -142,11 +157,13 @@ if ($FocusPaths.Count -eq 0 -and (Test-Path -LiteralPath $cardDictionaryRoot)) {
     $allDrawioFiles += Get-ChildItem -LiteralPath $cardDictionaryRoot -Recurse -File -Filter '*.drawio'
 }
 $allDrawioFiles = $allDrawioFiles | Sort-Object FullName -Unique
-$costHeaderPattern = '^' + [regex]::Escape($costLabel) + '.*' + (Text @(0x7CBE,0x529B)) + '\s*\d+.*' + (Text @(0x6CD5,0x529B)) + '\s*\d+.*$'
-$costHeaderLegacyPattern = '^' + [regex]::Escape($costLabel) + (Text @(0x7CBE,0x529B)) + '\s*\d+.*' + (Text @(0x6CD5,0x529B)) + '\s*\d+.*' + (Text @(0x8C03,0x5EA6,0x6CD5,0x529B)) + '\s*\d+.*' + (Text @(0x7075,0x8BC6)) + '\s*\d+$'
+$resourceCostPattern = '(?:' + (Text @(0x89E6,0x53D1,0x65F6)) + '\s*)?(?:' + (Text @(0x4F53,0x529B)) + '|' + (Text @(0x6CD5,0x529B)) + ')\s*\d+'
+$costHeaderPattern = '^' + [regex]::Escape($costLabel) + '\s*' + $resourceCostPattern + '(?:\s*[、，,]\s*' + $resourceCostPattern + ')?\s*$'
+$costHeaderLegacyPattern = '^' + [regex]::Escape($costLabel) + (Text @(0x4F53,0x529B)) + '\s*\d+.*' + (Text @(0x6CD5,0x529B)) + '\s*\d+.*' + (Text @(0x8C03,0x5EA6,0x6CD5,0x529B)) + '\s*\d+.*' + (Text @(0x7075,0x8BC6)) + '\s*\d+$'
 $targetRangeLabel = (Text @(0x76EE,0x6807,0x4E0E,0x5C04,0x7A0B,0xFF1A))
 $simpleTargetLabel = (Text @(0x76EE,0x6807,0xFF1A))
 $damageFormulaLabel = (Text @(0x4F24,0x5BB3,0x516C,0x5F0F,0xFF1A))
+$calculationFormulaLabel = (Text @(0x8BA1,0x7B97,0x516C,0x5F0F,0xFF1A))
 $damageTypeLabel = (Text @(0x4F24,0x5BB3,0x7C7B,0x578B,0xFF1A))
 
 foreach ($file in $allDrawioFiles) {
@@ -177,7 +194,7 @@ foreach ($file in $allDrawioFiles) {
                     continue
                 }
                 if ($index + 2 -ge $lines.Count -or ($lines[$index + 2] -notmatch $costHeaderPattern -and $lines[$index + 2] -notmatch $costHeaderLegacyPattern)) {
-                    $errors.Add("$($file.FullName): card tag line must be followed by a cost line with stamina and mana values.")
+                    $errors.Add("$($file.FullName): card tag line must be followed by a cost line listing the stamina/mana costs used.")
                     continue
                 }
                 if ($index + 3 -ge $lines.Count -or (-not $lines[$index + 3].StartsWith($targetRangeLabel) -and -not $lines[$index + 3].StartsWith($simpleTargetLabel))) {
@@ -186,7 +203,7 @@ foreach ($file in $allDrawioFiles) {
                 }
                 if ($typeValue -eq $cardTypes[0] -or $typeValue -eq $legacyCardTypes[0]) {
                     $cardTail = $lines[$index..($lines.Count - 1)] -join "`n"
-                    if (-not $cardTail.Contains($damageTypeLabel) -or (-not $cardTail.Contains($damageFormulaLabel) -and $cardTail -notmatch '伤害\s*=')) {
+                    if (-not $cardTail.Contains($damageTypeLabel) -or (-not $cardTail.Contains($damageFormulaLabel) -and -not $cardTail.Contains($calculationFormulaLabel) -and $cardTail -notmatch '(?:^|[\s。；，、])[A-Z]\s*=')) {
                         $errors.Add("$($file.FullName): attack card lacks damage type or damage formula.")
                     }
                 }
@@ -230,7 +247,7 @@ foreach ($file in $documentFiles) {
                             continue
                         }
                         if ($index + 2 -ge $lines.Count -or ($lines[$index + 2] -notmatch $costHeaderPattern -and $lines[$index + 2] -notmatch $costHeaderLegacyPattern)) {
-                            $errors.Add("$($file.FullName): card tag line must be followed by a cost line with stamina and mana values.")
+                            $errors.Add("$($file.FullName): card tag line must be followed by a cost line listing the stamina/mana costs used.")
                             continue
                         }
                         if ($index + 3 -ge $lines.Count -or (-not $lines[$index + 3].StartsWith($targetLabel) -and -not $lines[$index + 3].StartsWith($targetRangeLabel))) {

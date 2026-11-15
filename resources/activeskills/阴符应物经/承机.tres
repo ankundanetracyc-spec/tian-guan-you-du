@@ -9,7 +9,7 @@ non_response_skill = null
 tags = Array[String](["防御","攻防联动"])
 skill_name = "承机"
 skill_type = 3
-description = "敌方攻击自身时使用；获得化解。化解层数 = max(1, floor(体魄/2) + floor(体道造诣/3))。该次攻击结算后，若自身生命未因该次攻击减少，获得借力1层。\n未触发应对时空放，不消耗精力、法力或使用次数，不产生效果。"
+description = "敌方攻击自身时使用；获得化解。化解层数 = max(1, floor(体魄/2) + floor(体道造诣/3))。该次攻击结算后，若自身生命未因该次攻击减少，获得借力1层。\n未触发应对时空放，不消耗体力、法力或使用次数，不产生效果。"
 source_gongfa_name = "阴符应物经"
 energy_cost = 1
 target_type = 1

@@ -9,7 +9,7 @@ import xml.etree.ElementTree as ET
 from PIL import Image
 
 
-SOURCE = Path("docs/昭明纪环海大世界地图底稿.drawio")
+SOURCE = Path("docs/plans/世界与探索/历史地图/昭明纪环海大世界地图底稿.drawio")
 OUT = Path("resources/world/zhaoming_node_catalog.txt")
 LEFT = 50.0
 TOP = 110.0

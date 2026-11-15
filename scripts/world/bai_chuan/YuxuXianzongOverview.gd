@@ -5,12 +5,17 @@ signal overview_closed
 signal admission_requested
 signal life_action_requested(action_id: String, peak_id: String)
 signal exchange_purchase_requested(item_path: String, contribution_cost: int)
+signal exchange_batch_purchase_requested(selections: Array)
 
 var _admission_root_name := "无灵根"
 var _admission_rank := ""
 var _admission_member := false
 var _admission_current_rank := ""
 var _has_other_affiliation := false
+
+const LOCATION_NAMEPLATE_STYLE = preload("res://scripts/ui/WorldLocationNameplateStyle.gd")
+const SCENE_ACTION_BUTTON = preload("res://tscn/panel/SceneActionButton.tscn")
+const SCENE_ACTION_ROPE = preload("res://scripts/ui/SceneActionRope.gd")
 
 const PEAK_LABELS := {
 	"heguang": "和\n光\n峰",
@@ -30,6 +35,8 @@ const PEAK_LABELS := {
 @onready var overview_subtitle: Label = $Subtitle
 @onready var overview_hint: Label = $Hint
 var _current_peak_id := ""
+var _gate_waiting := false
+var _gate_actions: Control
 
 func _ready() -> void:
 	# 全屏总览本身不抢鼠标；只有峰位标签与场景内交互接收点击。
@@ -39,13 +46,14 @@ func _ready() -> void:
 		if child is Button:
 			var peak_id := str(child.get_meta("peak_id", ""))
 			child.pressed.connect(_on_peak_pressed.bind(peak_id))
-			# 宗门内景沿用地点标签：竖排以贴合峰位，文字统一使用黑色。
+			# 峰名直接复用大世界地点纸签，竖排文字保留深墨色。
 			child.offset_left = -30.0
 			child.offset_top = -68.0
 			child.offset_right = 30.0
 			child.offset_bottom = 68.0
 			child.add_theme_stylebox_override("normal", _peak_label_style(false))
 			child.add_theme_stylebox_override("hover", _peak_label_style(true))
+			child.add_theme_stylebox_override("pressed", _peak_label_style(true))
 			var icon := child.get_node_or_null("Icon") as Control
 			if icon != null:
 				icon.hide()
@@ -57,7 +65,7 @@ func _ready() -> void:
 				title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 				title.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 				title.add_theme_font_size_override("font_size", 18)
-				title.add_theme_color_override("font_color", Color("1d1912"))
+				title.add_theme_color_override("font_color", Color("292217"))
 				title.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0))
 				title.add_theme_constant_override("outline_size", 0)
 			var subtitle := child.get_node_or_null("Subtitle") as Control
@@ -69,9 +77,29 @@ func _ready() -> void:
 	peak_interior.connect("admission_requested", func() -> void: admission_requested.emit())
 	peak_interior.connect("life_action_requested", func(action_id: String, peak_id: String) -> void: life_action_requested.emit(action_id, peak_id))
 	peak_interior.connect("exchange_purchase_requested", func(item_path: String, contribution_cost: int) -> void: exchange_purchase_requested.emit(item_path, contribution_cost))
+	peak_interior.connect("exchange_batch_purchase_requested", func(selections: Array) -> void: exchange_batch_purchase_requested.emit(selections))
+	_gate_actions = Control.new()
+	_gate_actions.name = "GateActions"
+	_gate_actions.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(_gate_actions)
+	_gate_actions.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	var rope := Control.new()
+	rope.name = "ActionRope"
+	rope.set_script(SCENE_ACTION_ROPE)
+	_gate_actions.add_child(rope)
+	rope.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	var welcome := SCENE_ACTION_BUTTON.instantiate() as Button
+	welcome.name = "GateWelcome"
+	welcome.text = "山门迎真"
+	welcome.set_meta("action_id", "yuxu.welcome")
+	_gate_actions.add_child(welcome)
+	welcome.pressed.connect(func() -> void: admission_requested.emit())
+	_gate_actions.hide()
 	peak_interior.hide()
 
 func open_overview() -> void:
+	_gate_waiting = false
+	_gate_actions.hide()
 	_close_peak_interior()
 	_refresh_peak_population_badges()
 	_show_roster("")
@@ -81,6 +109,13 @@ func open_overview() -> void:
 		world_map.hide()
 	show()
 	move_to_front()
+
+func open_gate_welcome() -> void:
+	open_overview()
+	_gate_waiting = true
+	peak_layer.hide()
+	_hide_roster()
+	_gate_actions.show()
 
 func set_admission_context(root_name: String, rank: String, is_member: bool, current_rank: String, has_other_affiliation: bool) -> void:
 	_admission_root_name = root_name if not root_name.is_empty() else "无灵根"
@@ -108,6 +143,8 @@ func handle_back() -> bool:
 	return false
 
 func close_overview() -> void:
+	_gate_waiting = false
+	_gate_actions.hide()
 	_close_peak_interior()
 	var roster := get_tree().get_first_node_in_group("cell_character_list")
 	if roster != null and roster.has_method("hide_world_npcs"):
@@ -119,7 +156,7 @@ func close_overview() -> void:
 	overview_closed.emit()
 
 func _on_peak_pressed(peak_id: String) -> void:
-	if not PEAK_LABELS.has(peak_id):
+	if _gate_waiting or not PEAK_LABELS.has(peak_id):
 		return
 	_current_peak_id = peak_id
 	_refresh_peak_population_badges()
@@ -167,26 +204,13 @@ func _hide_roster() -> void:
 	if roster != null and roster.has_method("hide_world_npcs"):
 		roster.call("hide_world_npcs")
 
-func _peak_label_style(hovered: bool) -> StyleBoxFlat:
-	var style := StyleBoxFlat.new()
-	style.bg_color = Color(0.93, 0.9, 0.82, 0.92) if not hovered else Color(0.98, 0.93, 0.79, 0.98)
-	style.border_color = Color(0.32, 0.28, 0.2, 0.72) if not hovered else Color(0.64, 0.42, 0.18, 0.96)
-	style.border_width_left = 1
-	style.border_width_top = 1
-	style.border_width_right = 1
-	style.border_width_bottom = 1
-	style.corner_radius_top_left = 6
-	style.corner_radius_top_right = 6
-	style.corner_radius_bottom_left = 6
-	style.corner_radius_bottom_right = 6
-	style.shadow_color = Color(0.06, 0.05, 0.03, 0.2)
-	style.shadow_size = 3
-	return style
+func _peak_label_style(hovered: bool) -> StyleBoxTexture:
+	return LOCATION_NAMEPLATE_STYLE.create(hovered)
 
 func _refresh_peak_population_badges() -> void:
 	var manager := get_node_or_null("/root/NpcWorldManager")
 	for child in peak_layer.get_children():
-		if child is not Button:
+		if not child is Button:
 			continue
 		var peak_id := str(child.get_meta("peak_id", ""))
 		var count := 0
@@ -204,14 +228,12 @@ func _refresh_peak_population_badges() -> void:
 			badge.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 			badge.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			badge.add_theme_font_size_override("font_size", 13)
-			badge.add_theme_color_override("font_color", Color("ffffff"))
-			badge.add_theme_color_override("font_outline_color", Color(0.10, 0.08, 0.06, 0.96))
-			badge.add_theme_constant_override("outline_size", 2)
+			badge.add_theme_color_override("font_color", Color("29231d"))
+			badge.add_theme_constant_override("outline_size", 0)
 			var badge_style := StyleBoxFlat.new()
-			badge_style.bg_color = Color(0.58, 0.16, 0.12, 0.96)
-			badge_style.border_color = Color(0.92, 0.76, 0.48, 0.95)
+			badge_style.bg_color = Color("f4dfb1")
+			badge_style.border_color = Color("5d4d39")
 			badge_style.set_border_width_all(1)
-			badge_style.set_corner_radius_all(13)
 			badge.add_theme_stylebox_override("normal", badge_style)
 			child.add_child(badge)
 		badge.text = str(count)

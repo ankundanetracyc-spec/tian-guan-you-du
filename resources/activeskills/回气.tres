@@ -5,11 +5,11 @@
 [resource]
 script = ExtResource("1")
 skill_name = "回气"
-description = "平复呼吸，恢复精力。"
+description = "平复呼吸，恢复体力。"
 skill_type = 5
 energy_cost = 1
 target_type = 0
 range_min = 0
 range_max = 0
 keywords = Array[String](["消耗"])
-special_effects = Array[Dictionary]([{"effect":"restore_stamina","formula":"base:14;physique:0.15;agility:0.15;intelligence:0.15;soul:0.15"}])
+special_effects = Array[Dictionary]([{"effect":"restore_stamina","formula":"base:14;physique:0.15;physique:0.15;intelligence:0.15;soul:0.15"}])

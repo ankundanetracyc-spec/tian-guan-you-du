@@ -1,6 +1,6 @@
 import { FileBlob, SpreadsheetFile } from '@oai/artifact-tool';
 
-const input = await FileBlob.load('docs/锻躯气血体系卡牌规划.xlsx');
+const input = await FileBlob.load('docs/plans/战斗与构筑/历史表格/锻躯气血体系卡牌规划.xlsx');
 const workbook = await SpreadsheetFile.importXlsx(input);
 const result = await workbook.inspect({
   kind: 'workbook,sheet,table',

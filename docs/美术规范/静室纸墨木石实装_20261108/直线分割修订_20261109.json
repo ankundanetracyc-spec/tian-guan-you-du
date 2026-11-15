@@ -1,0 +1,83 @@
+{
+  "date": "2026-11-09",
+  "change": "普通细直线替换中央花纹分割线；原按钮和功能保持",
+  "scene": "res://tools/QuietRoomPaperUiSmoke.tscn",
+  "runtimeManifest": {
+    "phase": "straight dividers and centered icon",
+    "recordedAt": "2026-11-09T12:39:56.581208+08:00",
+    "sha256": {
+      ".godot/mono/temp/bin/Debug/stacklands.dll": "61b3f685603d99082fd76f56f6a42f9268982b7fced6177dbe4ee3312060822e",
+      "csharp/panel/CraftingPaperStyle.cs": "89e4d262d9240ca94fd3e295a59ec4937c1868eb7673d76ecfd6370fbdde0aec",
+      "csharp/panel/PaperButtonFeedback.cs": "74894219692f987a32ac356e170377e0950dacc10de809f7ca8b941ea26ace7c",
+      "csharp/panel/CultivationUI.Paper.cs": "42ff62fbb47551351f440c11681dd834b5f30b233a3874fadc6d8fbfcd2125fc",
+      "csharp/panel/RestPanel.cs": "e948d15913fc11c489368c3d773ea83c8939d1effea5629d9785af9a56de8167",
+      "csharp/scene/AlchemySlotBrewPreviewScene.PaperSkin.cs": "2e95ef688dceb5428d2542b290ed95b30385c3ee6e42a31fa5d6bd65e7ae191c",
+      "csharp/debug/CharacterPaperUiSmoke.cs": "a0ffc4b312d888e3c99ec053d6e0b822dcf13626f3d3159b2c26970679f632d7",
+      "tools/NativePaperCaptureHost.gd": "88cde01bf83fc43d7d184fe7b31ed0bed02be2d322a18501cc24936a872fb106"
+    }
+  },
+  "runs": [
+    {
+      "width": 1280,
+      "checks": 58,
+      "exitCode": 0,
+      "errorCount": 0,
+      "warningCount": 0,
+      "record": "验收记录_1280.json",
+      "log": "分割线复验_1280.log",
+      "images": [
+        {
+          "name": "静室_闭关突破_1280.png",
+          "sha256": "f15fe2df9dd8443298154d497b60ab62d52ce98b6fbd1a5f5eb6cf6e05d48a7f"
+        },
+        {
+          "name": "静室_指定日期_1280.png",
+          "sha256": "f7d393908c2f72fb723e9714ede4f9ccf23e0a85adfbea9bed5fbda260f243e1"
+        },
+        {
+          "name": "静室_吐纳修行_1280.png",
+          "sha256": "e040895cc319e714e043b1e93ba75de7a298523f955cc58a0b7b49a44323537d"
+        },
+        {
+          "name": "静室_功法研读_1280.png",
+          "sha256": "b88520a5143ebe3d118ef6a35d447d42570e0393481a433967446c8beef04d95"
+        },
+        {
+          "name": "静室_归元九息_1280.png",
+          "sha256": "610a2efb18379de14b427bdbbf196650f4a183fc19c1af6839aed351e9bc23a3"
+        }
+      ]
+    },
+    {
+      "width": 1920,
+      "checks": 58,
+      "exitCode": 0,
+      "errorCount": 0,
+      "warningCount": 0,
+      "record": "验收记录_1920.json",
+      "log": "分割线复验_1920.log",
+      "images": [
+        {
+          "name": "静室_闭关突破_1920.png",
+          "sha256": "25e895e7a1015758ed509ca2133417751775aaa80e0b8f91060c6699f0348c3d"
+        },
+        {
+          "name": "静室_指定日期_1920.png",
+          "sha256": "d6754ce8879cb0fd41f66d2f595e2afc593872bf1f113119f7a03b3914cf4289"
+        },
+        {
+          "name": "静室_吐纳修行_1920.png",
+          "sha256": "383d025c3005bb740446467076fa833551a80800d660cb0b439d086786c8c1ad"
+        },
+        {
+          "name": "静室_功法研读_1920.png",
+          "sha256": "2d7f84d6a0ca6466eefc6d796c72d41c6fd4988dac716f7e162bd9885ba54c64"
+        },
+        {
+          "name": "静室_归元九息_1920.png",
+          "sha256": "4d6ec0036612caa58ec7e8429cd22581d5f6bf33ffba810f318d880f0602b9e4"
+        }
+      ]
+    }
+  ]
+}

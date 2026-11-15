@@ -1,0 +1,124 @@
+extends RefCounted
+## Runtime graph derived from the reviewed display layout; distances are kilometres.
+
+const LAYOUT_PATH := "res://textures/world/bai_chuan/acceptance_20261030/display_layout_v3.json"
+const Scale = preload("res://gdscripts/world/BaiChuanWorldScale.gd")
+const MAP_PIXELS := Scale.LEGACY_MAP_PIXELS
+const WORLD_KM := Scale.LEGACY_WORLD_KM
+const RUNTIME_IDS_PATH := "res://resources/world/bai_chuan/bai_chuan_node_runtime_ids_20261031.json"
+var use_free_world := false
+var coordinate_scale := 1.0
+var km_per_pixel := WORLD_KM / MAP_PIXELS
+var positions: Dictionary = {}
+var adjacency: Dictionary = {}
+var edge_points: Dictionary = {}
+var edge_km: Dictionary = {}
+var runtime_ids: Dictionary = {}
+
+func load_layout(override_path := "") -> bool:
+	var path := override_path if not override_path.is_empty() else (Scale.LAYOUT_PATH if use_free_world else LAYOUT_PATH)
+	var parsed = JSON.parse_string(FileAccess.get_file_as_string(path))
+	if not parsed is Dictionary:
+		return false
+	var parsed_world_size := float(parsed.get("worldSize", 0.0))
+	if use_free_world:
+		if not is_finite(parsed_world_size) or parsed_world_size <= 0.0: return false
+		if override_path.is_empty():
+			if absf(parsed_world_size - Scale.MAP_PIXELS) >= 0.001: return false
+		elif not preload("res://gdscripts/world/WorldMapSourceRegistry.gd").is_known_layout(path, parsed_world_size): return false
+	# An explicit historical graph keeps its own geometry and kilometre ruler.
+	# Using the target world's ruler here moves old weighted NPC progress.
+	coordinate_scale = parsed_world_size / Scale.LEGACY_MAP_PIXELS if use_free_world else 1.0
+	km_per_pixel = Scale.WORLD_KM / parsed_world_size if use_free_world else WORLD_KM / MAP_PIXELS
+	positions.clear()
+	adjacency.clear()
+	edge_points.clear()
+	edge_km.clear()
+	var aliases = JSON.parse_string(FileAccess.get_file_as_string(RUNTIME_IDS_PATH))
+	if not aliases is Dictionary: return false
+	runtime_ids = aliases
+	for id in parsed.locations:
+		var p: Array = parsed.locations[id].drawPos
+		positions[id] = Vector2(p[0],p[1])
+	for id in parsed.transitPositions:
+		var p: Array = parsed.transitPositions[id]
+		positions[id] = Vector2(p[0],p[1])
+	for id in positions: adjacency[id] = []
+	for key in parsed.displayGraph.edges:
+		var edge: Dictionary = parsed.displayGraph.edges[key]
+		if not positions.has(edge.from) or not positions.has(edge.to) or not parsed.displayEdges.has(key): return false
+		var points := PackedVector2Array()
+		for p: Array in parsed.displayEdges[key]: points.append(Vector2(p[0],p[1]))
+		if points.size() < 2 or points[0].distance_to(positions[edge.from]) > 0.01 or points[-1].distance_to(positions[edge.to]) > 0.01: return false
+		var length := 0.0
+		for i in range(1,points.size()): length += points[i-1].distance_to(points[i])
+		length *= km_per_pixel
+		if length <= 0.0: return false
+		edge_points[key] = points
+		edge_km[key] = length
+		adjacency[edge.from].append({"to":edge.to,"edge":key,"km":length})
+		adjacency[edge.to].append({"to":edge.from,"edge":key,"km":length})
+	for runtime_id in runtime_ids:
+		if not positions.has(runtime_ids[runtime_id]): return false
+	return not positions.is_empty() and edge_km.size() == parsed.displayGraph.edges.size()
+
+func node_for_runtime_id(runtime_id: String) -> String:
+	return str(runtime_ids.get(runtime_id,""))
+
+func runtime_id_for_node(node_id: String) -> String:
+	for runtime_id: String in runtime_ids:
+		if runtime_ids[runtime_id] == node_id: return runtime_id
+	return ""
+
+func hours_for_km(km: float, speed: float) -> float:
+	return maxf(km,0.0) * 60.0 / maxf(speed,0.01)
+
+func shortest_path(start: String, destination: String) -> Array[String]:
+	if not positions.has(start) or not positions.has(destination): return []
+	var distance := {start: 0.0}
+	var previous := {}
+	var pending := {start:true}
+	while not pending.is_empty():
+		var current := ""
+		var best := INF
+		for id: String in pending:
+			if float(distance[id]) < best:
+				current = id
+				best = float(distance[id])
+		pending.erase(current)
+		if current == destination:
+			var result: Array[String] = [current]
+			while previous.has(current):
+				current = previous[current]
+				result.push_front(current)
+			return result
+		for link: Dictionary in adjacency[current]:
+			var next: String = link.to
+			var candidate := best + float(link.km)
+			if candidate < float(distance.get(next,INF)):
+				distance[next] = candidate
+				previous[next] = current
+				pending[next] = true
+	return []
+
+func path_km(path: Array[String]) -> float:
+	var total := 0.0
+	for i in range(1,path.size()):
+		if not adjacency.has(path[i-1]): return INF
+		var found := false
+		for link: Dictionary in adjacency[path[i-1]]:
+			if link.to == path[i]:
+				total += float(link.km)
+				found = true
+				break
+		if not found: return INF
+	return total
+
+func points_between(from_id: String, to_id: String) -> PackedVector2Array:
+	if not adjacency.has(from_id): return PackedVector2Array()
+	for link: Dictionary in adjacency[from_id]:
+		if link.to != to_id: continue
+		var points: PackedVector2Array = edge_points[link.edge].duplicate()
+		if points[0].distance_to(positions[from_id]) > 0.01: points.reverse()
+		return points
+	return PackedVector2Array()

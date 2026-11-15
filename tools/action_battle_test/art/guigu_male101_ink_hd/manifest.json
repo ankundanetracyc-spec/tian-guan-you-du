@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "style": "original Chinese ink-wash; faceless; native high definition",
+  "generation_tool": "built-in image_gen",
+  "registration": "resources/appearance/guigu_male101/hd_registration_20261104.json",
+  "prompts": "generation_prompts.json",
+  "source_geometry": "resources/appearance/guigu_male101/model_frames_20261104.json",
+  "sprites": [
+    {
+      "sprite_id": "65806",
+      "path": "sprite_65806.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_bbox_128": [
+        191,
+        126,
+        995,
+        1179
+      ],
+      "sha256": "0b53a249395b340960e54d49327249e236f82c8f464dc372dbff51a69a4cc0b6"
+    },
+    {
+      "sprite_id": "79543",
+      "path": "sprite_79543.png",
+      "size": [
+        756,
+        2079
+      ],
+      "alpha_bbox_128": [
+        163,
+        172,
+        537,
+        1808
+      ],
+      "sha256": "c33fb2dc5b24b017c672ba4afb3cb825f87bf407c02e69457895228427c5c0a2"
+    },
+    {
+      "sprite_id": "84807",
+      "path": "sprite_84807.png",
+      "size": [
+        887,
+        1774
+      ],
+      "alpha_bbox_128": [
+        63,
+        110,
+        687,
+        1681
+      ],
+      "sha256": "0381c2d24909e6f6f07c0ab983daa59b11dd889fb13b8fb35cc9632741ddabf8"
+    },
+    {
+      "sprite_id": "85649",
+      "path": "sprite_85649.png",
+      "size": [
+        834,
+        1886
+      ],
+      "alpha_bbox_128": [
+        55,
+        39,
+        779,
+        1846
+      ],
+      "sha256": "143375ba3154c8d7f9c5e8b2d2a713c9b6228edfa26953781e4de4f20fb50e14"
+    },
+    {
+      "sprite_id": "87557",
+      "path": "sprite_87557.png",
+      "size": [
+        745,
+        2110
+      ],
+      "alpha_bbox_128": [
+        43,
+        21,
+        631,
+        2062
+      ],
+      "sha256": "c3570306be65e9cc185ad5791d8f4c976802c4f54cd67b1c132c1a403fd72947"
+    },
+    {
+      "sprite_id": "87679",
+      "path": "sprite_87679.png",
+      "size": [
+        887,
+        1774
+      ],
+      "alpha_bbox_128": [
+        195,
+        14,
+        682,
+        1760
+      ],
+      "sha256": "ea41ecbf39deaf65f36a549b842c606993293466424efe11c6ba118d72016a70"
+    }
+  ]
+}

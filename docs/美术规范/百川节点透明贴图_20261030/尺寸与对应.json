@@ -1,0 +1,956 @@
+{
+  "world_pixels": [
+    3762,
+    3762
+  ],
+  "baseline_world_pixels": [
+    6144,
+    6144
+  ],
+  "size_method": "Old display widths scaled by 3762/6144; village and dock use small visual sizes 44 and 47 on current map.",
+  "accepted_sprite_count": 9,
+  "mapped_built_locations": 53,
+  "wild_locations": 70,
+  "wild_art": "terrain background; no new empty-node sprite",
+  "assets": [
+    {
+      "id": "yuxu",
+      "name": "玉虚仙宗",
+      "base": 164,
+      "width": 100,
+      "prompt": "Use case: stylized-concept. Create ONE standalone TRANSPARENT PNG world-map location sprite: 玉虚仙宗. A restrained Taoist mountain gate, three openings implied by pale stone pillars, one main double-eaved roof with quiet gray-jade tiles, slightly lifted eave tips, calm symmetrical silhouette. No side buildings.\nImage1 is ONLY a STYLE reference for front-facing map gate icons; ignore its landscape, labels, marker stones and icon size. Image2 is ONLY the target PALETTE/INK style of the current very pale world map.\nKeep one coherent asset family: simplified Chinese game-map architecture, front-facing elevation with barely visible roof depth, fine subdued gray-brown ink contours, pale warm ivory walls, desaturated gray-sage/slate roof washes. Match the light background palette, not heavy black or saturated color. Clean readable silhouette, restrained details, no realistic materials, no dense roof hatching, no heavy shadow. Only enough pillars/eaves/door opening to identify the entrance at small size.\nThis will be displayed at 100 pixels wide on a 3762px whole map (equivalent 164px on a 6144px map); design for that SMALL actual display size. Do not compensate with a giant complex or lots of tiny details. Sprite can be drawn large in the source for clean downsampling, but architecture stays compact. Centered isolated object with generous transparent padding and flat bottom-center anchor.\nNo words, name labels, plaques with writing, flags, emblems, badges, glow, clouds, trees, mountains, grass, terrain pedestal, full courtyards, roads, stairs, people, UI or border. Genuine transparent background including open doorway where appropriate. NO cast shadow, NO glow, NO halo, NO ground wash of any kind. Keep ALL pixels outside the architecture fully transparent; openings between posts also transparent. Output exactly ONE sprite, not a sheet of alternatives.",
+      "path": "E:\\tmp\\CodexData\\generated_images\\01a18871-708e-7e72-bca0-f7f37b460584\\exec-8f4f824c-5e77-41fe-af82-4ebb5f6b652e.png",
+      "source_size": [
+        1402,
+        1122
+      ],
+      "alpha_crop": [
+        153,
+        219,
+        1248,
+        932
+      ],
+      "display_size": [
+        100,
+        65
+      ],
+      "anchor": [
+        0.5,
+        1.0
+      ],
+      "icon": "icons/yuxu.png"
+    },
+    {
+      "id": "xuandu",
+      "name": "玄都天府",
+      "base": 164,
+      "width": 100,
+      "prompt": "Use case: stylized-concept. Create ONE standalone TRANSPARENT PNG world-map location sprite: 玄都天府. A dignified compact gatehouse, one central rounded gateway in pale warm stone, a single upper double-eaved roof with subtle ochre ridge trim and slate-gray tiles; short side pilasters, stately and balanced. No palace compound.\nImage1 is ONLY a STYLE reference for front-facing map gate icons; ignore its landscape, labels, marker stones and icon size. Image2 is ONLY the target PALETTE/INK style of the current very pale world map.\nKeep one coherent asset family: simplified Chinese game-map architecture, front-facing elevation with barely visible roof depth, fine subdued gray-brown ink contours, pale warm ivory walls, desaturated gray-sage/slate roof washes. Match the light background palette, not heavy black or saturated color. Clean readable silhouette, restrained details, no realistic materials, no dense roof hatching, no heavy shadow. Only enough pillars/eaves/door opening to identify the entrance at small size.\nThis will be displayed at 100 pixels wide on a 3762px whole map (equivalent 164px on a 6144px map); design for that SMALL actual display size. Do not compensate with a giant complex or lots of tiny details. Sprite can be drawn large in the source for clean downsampling, but architecture stays compact. Centered isolated object with generous transparent padding and flat bottom-center anchor.\nNo words, name labels, plaques with writing, flags, emblems, badges, glow, clouds, trees, mountains, grass, terrain pedestal, full courtyards, roads, stairs, people, UI or border. Genuine transparent background including open doorway where appropriate. NO cast shadow, NO glow, NO halo, NO ground wash of any kind. Keep ALL pixels outside the architecture fully transparent; openings between posts also transparent. Output exactly ONE sprite, not a sheet of alternatives.",
+      "path": "E:\\tmp\\CodexData\\generated_images\\01a18871-708e-7e72-bca0-f7f37b460584\\exec-bf93c4c7-0814-4b20-ae43-31251db26a87.png",
+      "source_size": [
+        1536,
+        1024
+      ],
+      "alpha_crop": [
+        275,
+        189,
+        1261,
+        892
+      ],
+      "display_size": [
+        100,
+        71
+      ],
+      "anchor": [
+        0.5,
+        1.0
+      ],
+      "icon": "icons/xuandu.png"
+    },
+    {
+      "id": "wuxiang",
+      "name": "无相圣宗",
+      "base": 164,
+      "width": 100,
+      "prompt": "Use case: stylized-concept. Create ONE standalone TRANSPARENT PNG world-map location sprite: 无相圣宗. An austere compact mountain gate, tall narrow central arch between pale stone pillars, charcoal-gray roof with very faint muted plum tint, angular restrained eaves. Darker roof but not solid black. No sinister symbols or extra scenery.\nImage1 is ONLY a STYLE reference for front-facing map gate icons; ignore its landscape, labels, marker stones and icon size. Image2 is ONLY the target PALETTE/INK style of the current very pale world map.\nKeep one coherent asset family: simplified Chinese game-map architecture, front-facing elevation with barely visible roof depth, fine subdued gray-brown ink contours, pale warm ivory walls, desaturated gray-sage/slate roof washes. Match the light background palette, not heavy black or saturated color. Clean readable silhouette, restrained details, no realistic materials, no dense roof hatching, no heavy shadow. Only enough pillars/eaves/door opening to identify the entrance at small size.\nThis will be displayed at 100 pixels wide on a 3762px whole map (equivalent 164px on a 6144px map); design for that SMALL actual display size. Do not compensate with a giant complex or lots of tiny details. Sprite can be drawn large in the source for clean downsampling, but architecture stays compact. Centered isolated object with generous transparent padding and flat bottom-center anchor.\nNo words, name labels, plaques with writing, flags, emblems, badges, glow, clouds, trees, mountains, grass, terrain pedestal, full courtyards, roads, stairs, people, UI or border. Genuine transparent background including open doorway where appropriate. NO cast shadow, NO glow, NO halo, NO ground wash of any kind. Keep ALL pixels outside the architecture fully transparent; openings between posts also transparent. Output exactly ONE sprite, not a sheet of alternatives.",
+      "path": "E:\\tmp\\CodexData\\generated_images\\01a18871-708e-7e72-bca0-f7f37b460584\\exec-60bd6455-b5dc-4893-9a19-6f0057598a7f.png",
+      "source_size": [
+        1536,
+        1024
+      ],
+      "alpha_crop": [
+        263,
+        113,
+        1274,
+        870
+      ],
+      "display_size": [
+        100,
+        75
+      ],
+      "anchor": [
+        0.5,
+        1.0
+      ],
+      "icon": "icons/wuxiang.png"
+    },
+    {
+      "id": "local_dao",
+      "name": "地方宗门·道门",
+      "base": 118,
+      "width": 72,
+      "prompt": "Use case: stylized-concept. Create ONE standalone TRANSPARENT PNG world-map location sprite: 地方宗门·道门. A modest Taoist entrance gate: two pale timber/stone pillars, one simple gray-jade tiled roof and a small lintel, restrained side posts. Simpler than a major sect, compact frontal silhouette.\nImage1 is ONLY a STYLE reference for front-facing map gate icons; ignore its landscape, labels, marker stones and icon size. Image2 is ONLY the target PALETTE/INK style of the current very pale world map.\nKeep one coherent asset family: simplified Chinese game-map architecture, front-facing elevation with barely visible roof depth, fine subdued gray-brown ink contours, pale warm ivory walls, desaturated gray-sage/slate roof washes. Match the light background palette, not heavy black or saturated color. Clean readable silhouette, restrained details, no realistic materials, no dense roof hatching, no heavy shadow. Only enough pillars/eaves/door opening to identify the entrance at small size.\nThis will be displayed at 72 pixels wide on a 3762px whole map (equivalent 118px on a 6144px map); design for that SMALL actual display size. Do not compensate with a giant complex or lots of tiny details. Sprite can be drawn large in the source for clean downsampling, but architecture stays compact. Centered isolated object with generous transparent padding and flat bottom-center anchor.\nNo words, name labels, plaques with writing, flags, emblems, badges, glow, clouds, trees, mountains, grass, terrain pedestal, full courtyards, roads, stairs, people, UI or border. Genuine transparent background including open doorway where appropriate. NO cast shadow, NO glow, NO halo, NO ground wash of any kind. Keep ALL pixels outside the architecture fully transparent; openings between posts also transparent. Output exactly ONE sprite, not a sheet of alternatives.",
+      "path": "E:\\tmp\\CodexData\\generated_images\\01a18871-708e-7e72-bca0-f7f37b460584\\exec-0bbd3847-80ae-4b4e-8c04-68f8f7dc037f.png",
+      "source_size": [
+        1536,
+        1024
+      ],
+      "alpha_crop": [
+        319,
+        180,
+        1217,
+        866
+      ],
+      "display_size": [
+        72,
+        55
+      ],
+      "anchor": [
+        0.5,
+        1.0
+      ],
+      "icon": "icons/local_dao.png"
+    },
+    {
+      "id": "city",
+      "name": "城门",
+      "base": 142,
+      "width": 87,
+      "prompt": "Use case: stylized-concept. Create ONE standalone TRANSPARENT PNG world-map location sprite: 城门. A compact Chinese city gate icon: one central arch in a short pale stone wall, one small tiled gatehouse above, two tiny side wall returns. Slate-gray roof, faint warm earth accents. Only the city entrance, no full city or fortress panorama.\nImage1 is ONLY a STYLE reference for front-facing map gate icons; ignore its landscape, labels, marker stones and icon size. Image2 is ONLY the target PALETTE/INK style of the current very pale world map.\nKeep one coherent asset family: simplified Chinese game-map architecture, front-facing elevation with barely visible roof depth, fine subdued gray-brown ink contours, pale warm ivory walls, desaturated gray-sage/slate roof washes. Match the light background palette, not heavy black or saturated color. Clean readable silhouette, restrained details, no realistic materials, no dense roof hatching, no heavy shadow. Only enough pillars/eaves/door opening to identify the entrance at small size.\nThis will be displayed at 87 pixels wide on a 3762px whole map (equivalent 142px on a 6144px map); design for that SMALL actual display size. Do not compensate with a giant complex or lots of tiny details. Sprite can be drawn large in the source for clean downsampling, but architecture stays compact. Centered isolated object with generous transparent padding and flat bottom-center anchor.\nNo words, name labels, plaques with writing, flags, emblems, badges, glow, clouds, trees, mountains, grass, terrain pedestal, full courtyards, roads, stairs, people, UI or border. Genuine transparent background including open doorway where appropriate. NO cast shadow, NO glow, NO halo, NO ground wash of any kind. Keep ALL pixels outside the architecture fully transparent; openings between posts also transparent. Output exactly ONE sprite, not a sheet of alternatives.",
+      "path": "E:\\tmp\\CodexData\\generated_images\\01a18871-708e-7e72-bca0-f7f37b460584\\exec-f4a6f613-746f-4fcf-aaef-cd77739dd8f2.png",
+      "source_size": [
+        1536,
+        1024
+      ],
+      "alpha_crop": [
+        264,
+        155,
+        1273,
+        845
+      ],
+      "display_size": [
+        87,
+        59
+      ],
+      "anchor": [
+        0.5,
+        1.0
+      ],
+      "icon": "icons/city.png"
+    },
+    {
+      "id": "town",
+      "name": "镇口",
+      "base": 100,
+      "width": 61,
+      "prompt": "Use case: stylized-concept. Create ONE standalone TRANSPARENT PNG world-map location sprite: 镇口. A small Chinese town entrance icon: a simple pale wooden archway with a low gray tiled roof and only two tiny adjacent roof shapes suggesting a town, compact low silhouette, no full street.\nImage1 is ONLY a STYLE reference for front-facing map gate icons; ignore its landscape, labels, marker stones and icon size. Image2 is ONLY the target PALETTE/INK style of the current very pale world map.\nKeep one coherent asset family: simplified Chinese game-map architecture, front-facing elevation with barely visible roof depth, fine subdued gray-brown ink contours, pale warm ivory walls, desaturated gray-sage/slate roof washes. Match the light background palette, not heavy black or saturated color. Clean readable silhouette, restrained details, no realistic materials, no dense roof hatching, no heavy shadow. Only enough pillars/eaves/door opening to identify the entrance at small size.\nThis will be displayed at 61 pixels wide on a 3762px whole map (equivalent 100px on a 6144px map); design for that SMALL actual display size. Do not compensate with a giant complex or lots of tiny details. Sprite can be drawn large in the source for clean downsampling, but architecture stays compact. Centered isolated object with generous transparent padding and flat bottom-center anchor.\nNo words, name labels, plaques with writing, flags, emblems, badges, glow, clouds, trees, mountains, grass, terrain pedestal, full courtyards, roads, stairs, people, UI or border. Genuine transparent background including open doorway where appropriate. NO cast shadow, NO glow, NO halo, NO ground wash of any kind. Keep ALL pixels outside the architecture fully transparent; openings between posts also transparent. Output exactly ONE sprite, not a sheet of alternatives.",
+      "path": "E:\\tmp\\CodexData\\generated_images\\01a18871-708e-7e72-bca0-f7f37b460584\\exec-baa926c0-10c8-47db-897d-6676ec9188a3.png",
+      "source_size": [
+        1536,
+        1024
+      ],
+      "alpha_crop": [
+        211,
+        266,
+        1325,
+        825
+      ],
+      "display_size": [
+        61,
+        31
+      ],
+      "anchor": [
+        0.5,
+        1.0
+      ],
+      "icon": "icons/town.png"
+    },
+    {
+      "id": "market",
+      "name": "坊市",
+      "base": 94,
+      "width": 58,
+      "prompt": "Use case: stylized-concept. Create ONE standalone TRANSPARENT PNG world-map location sprite: 坊市. A tiny cultivator market entrance: simple roofed wooden arch with a pair of modest cloth stall awnings at its sides, muted gray-green roof and pale buff fabric, no goods, banners or text. Compact readable silhouette.\nImage1 is ONLY a STYLE reference for front-facing map gate icons; ignore its landscape, labels, marker stones and icon size. Image2 is ONLY the target PALETTE/INK style of the current very pale world map.\nKeep one coherent asset family: simplified Chinese game-map architecture, front-facing elevation with barely visible roof depth, fine subdued gray-brown ink contours, pale warm ivory walls, desaturated gray-sage/slate roof washes. Match the light background palette, not heavy black or saturated color. Clean readable silhouette, restrained details, no realistic materials, no dense roof hatching, no heavy shadow. Only enough pillars/eaves/door opening to identify the entrance at small size.\nThis will be displayed at 58 pixels wide on a 3762px whole map (equivalent 94px on a 6144px map); design for that SMALL actual display size. Do not compensate with a giant complex or lots of tiny details. Sprite can be drawn large in the source for clean downsampling, but architecture stays compact. Centered isolated object with generous transparent padding and flat bottom-center anchor.\nNo words, name labels, plaques with writing, flags, emblems, badges, glow, clouds, trees, mountains, grass, terrain pedestal, full courtyards, roads, stairs, people, UI or border. Genuine transparent background including open doorway where appropriate. NO cast shadow, NO glow, NO halo, NO ground wash of any kind. Keep ALL pixels outside the architecture fully transparent; openings between posts also transparent. Output exactly ONE sprite, not a sheet of alternatives.",
+      "path": "E:\\tmp\\CodexData\\generated_images\\01a18871-708e-7e72-bca0-f7f37b460584\\exec-17d8de12-8da8-4fca-8b8b-a2fe825e1b29.png",
+      "source_size": [
+        1536,
+        1024
+      ],
+      "alpha_crop": [
+        66,
+        247,
+        1471,
+        830
+      ],
+      "display_size": [
+        58,
+        24
+      ],
+      "anchor": [
+        0.5,
+        1.0
+      ],
+      "icon": "icons/market.png"
+    },
+    {
+      "id": "village",
+      "name": "村落",
+      "base": 72,
+      "width": 44,
+      "prompt": "Use case: stylized-concept. Create ONE standalone TRANSPARENT PNG world-map location sprite: 村落. A tiny Chinese village entrance landmark: two simple pale plaster cottages with gray tile roofs, one slightly behind the other, and a tiny wooden entrance post. Low quiet silhouette, no trees, people, fields or scenery.\nImage1 is ONLY a STYLE reference for front-facing map gate icons; ignore its landscape, labels, marker stones and icon size. Image2 is ONLY the target PALETTE/INK style of the current very pale world map.\nKeep one coherent asset family: simplified Chinese game-map architecture, front-facing elevation with barely visible roof depth, fine subdued gray-brown ink contours, pale warm ivory walls, desaturated gray-sage/slate roof washes. Match the light background palette, not heavy black or saturated color. Clean readable silhouette, restrained details, no realistic materials, no dense roof hatching, no heavy shadow. Only enough pillars/eaves/door opening to identify the entrance at small size.\nThis will be displayed at 44 pixels wide on a 3762px whole map (equivalent 72px on a 6144px map); design for that SMALL actual display size. Do not compensate with a giant complex or lots of tiny details. Sprite can be drawn large in the source for clean downsampling, but architecture stays compact. Centered isolated object with generous transparent padding and flat bottom-center anchor.\nNo words, name labels, plaques with writing, flags, emblems, badges, glow, clouds, trees, mountains, grass, terrain pedestal, full courtyards, roads, stairs, people, UI or border. Genuine transparent background including open doorway where appropriate. NO cast shadow, NO glow, NO halo, NO ground wash of any kind. Keep ALL pixels outside the architecture fully transparent; openings between posts also transparent. Output exactly ONE sprite, not a sheet of alternatives.",
+      "path": "E:\\tmp\\CodexData\\generated_images\\01a18871-708e-7e72-bca0-f7f37b460584\\exec-e5542797-706a-478c-b701-86e17666e49f.png",
+      "source_size": [
+        1402,
+        1122
+      ],
+      "alpha_crop": [
+        303,
+        352,
+        1130,
+        829
+      ],
+      "display_size": [
+        44,
+        25
+      ],
+      "anchor": [
+        0.5,
+        1.0
+      ],
+      "icon": "icons/village.png"
+    },
+    {
+      "id": "dock",
+      "name": "渡口",
+      "base": 76,
+      "width": 47,
+      "prompt": "Use case: stylized-concept. Create ONE standalone TRANSPARENT PNG world-map location sprite: 渡口. A tiny Chinese ferry landing landmark: a short wooden landing platform seen from gently elevated frontal view, two slender mooring posts and one small roofed waiting shelter on one end. No boat, no water tile, no bridge span, no bank scenery.\nImage1 is ONLY a STYLE reference for front-facing map gate icons; ignore its landscape, labels, marker stones and icon size. Image2 is ONLY the target PALETTE/INK style of the current very pale world map.\nKeep one coherent asset family: simplified Chinese game-map architecture, front-facing elevation with barely visible roof depth, fine subdued gray-brown ink contours, pale warm ivory walls, desaturated gray-sage/slate roof washes. Match the light background palette, not heavy black or saturated color. Clean readable silhouette, restrained details, no realistic materials, no dense roof hatching, no heavy shadow. Only enough pillars/eaves/door opening to identify the entrance at small size.\nThis will be displayed at 47 pixels wide on a 3762px whole map (equivalent 76px on a 6144px map); design for that SMALL actual display size. Do not compensate with a giant complex or lots of tiny details. Sprite can be drawn large in the source for clean downsampling, but architecture stays compact. Centered isolated object with generous transparent padding and flat bottom-center anchor.\nNo words, name labels, plaques with writing, flags, emblems, badges, glow, clouds, trees, mountains, grass, terrain pedestal, full courtyards, roads, stairs, people, UI or border. Genuine transparent background including open doorway where appropriate. NO cast shadow, NO glow, NO halo, NO ground wash of any kind. Keep ALL pixels outside the architecture fully transparent; openings between posts also transparent. Output exactly ONE sprite, not a sheet of alternatives.",
+      "path": "E:\\tmp\\CodexData\\generated_images\\01a18871-708e-7e72-bca0-f7f37b460584\\exec-97a6c596-f72c-4db2-8cd7-56cf939a33d1.png",
+      "source_size": [
+        1402,
+        1122
+      ],
+      "alpha_crop": [
+        390,
+        333,
+        1095,
+        868
+      ],
+      "display_size": [
+        47,
+        36
+      ],
+      "anchor": [
+        0.5,
+        1.0
+      ],
+      "icon": "icons/dock.png"
+    }
+  ],
+  "placements": [
+    {
+      "id": "bc_place_001",
+      "name": "玉虚仙宗",
+      "asset": "yuxu",
+      "logical_pos": [
+        22,
+        74
+      ],
+      "display_size": [
+        100,
+        65
+      ]
+    },
+    {
+      "id": "bc_place_002",
+      "name": "玄都天府",
+      "asset": "xuandu",
+      "logical_pos": [
+        43,
+        19
+      ],
+      "display_size": [
+        100,
+        71
+      ]
+    },
+    {
+      "id": "bc_place_003",
+      "name": "无相圣宗",
+      "asset": "wuxiang",
+      "logical_pos": [
+        83,
+        61
+      ],
+      "display_size": [
+        100,
+        75
+      ]
+    },
+    {
+      "id": "bc_place_004",
+      "name": "太微道宫",
+      "asset": "local_dao",
+      "logical_pos": [
+        35,
+        50
+      ],
+      "display_size": [
+        72,
+        55
+      ]
+    },
+    {
+      "id": "bc_place_005",
+      "name": "镇岳观",
+      "asset": "local_dao",
+      "logical_pos": [
+        12,
+        47
+      ],
+      "display_size": [
+        72,
+        55
+      ]
+    },
+    {
+      "id": "bc_place_006",
+      "name": "抱朴山",
+      "asset": "local_dao",
+      "logical_pos": [
+        43,
+        65
+      ],
+      "display_size": [
+        72,
+        55
+      ]
+    },
+    {
+      "id": "bc_place_007",
+      "name": "百药谷",
+      "asset": "local_dao",
+      "logical_pos": [
+        36,
+        91
+      ],
+      "display_size": [
+        72,
+        55
+      ]
+    },
+    {
+      "id": "bc_place_008",
+      "name": "丹鼎宗",
+      "asset": "local_dao",
+      "logical_pos": [
+        61,
+        8
+      ],
+      "display_size": [
+        72,
+        55
+      ]
+    },
+    {
+      "id": "bc_place_009",
+      "name": "归藏书院",
+      "asset": "local_dao",
+      "logical_pos": [
+        62,
+        37
+      ],
+      "display_size": [
+        72,
+        55
+      ]
+    },
+    {
+      "id": "bc_place_010",
+      "name": "沧溟水府",
+      "asset": "local_dao",
+      "logical_pos": [
+        72,
+        17
+      ],
+      "display_size": [
+        72,
+        55
+      ]
+    },
+    {
+      "id": "bc_place_011",
+      "name": "血河教",
+      "asset": "local_dao",
+      "logical_pos": [
+        65,
+        82
+      ],
+      "display_size": [
+        72,
+        55
+      ]
+    },
+    {
+      "id": "bc_place_012",
+      "name": "蚀日宫",
+      "asset": "local_dao",
+      "logical_pos": [
+        88,
+        88
+      ],
+      "display_size": [
+        72,
+        55
+      ]
+    },
+    {
+      "id": "bc_place_013",
+      "name": "枯骨寺",
+      "asset": "local_dao",
+      "logical_pos": [
+        83,
+        36
+      ],
+      "display_size": [
+        72,
+        55
+      ]
+    },
+    {
+      "id": "bc_place_014",
+      "name": "望岫城",
+      "asset": "city",
+      "logical_pos": [
+        20,
+        29
+      ],
+      "display_size": [
+        87,
+        59
+      ]
+    },
+    {
+      "id": "bc_place_015",
+      "name": "绛阙城",
+      "asset": "city",
+      "logical_pos": [
+        54,
+        19
+      ],
+      "display_size": [
+        87,
+        59
+      ]
+    },
+    {
+      "id": "bc_place_016",
+      "name": "承天城",
+      "asset": "city",
+      "logical_pos": [
+        43,
+        37
+      ],
+      "display_size": [
+        87,
+        59
+      ]
+    },
+    {
+      "id": "bc_place_017",
+      "name": "赤水城",
+      "asset": "city",
+      "logical_pos": [
+        25,
+        48
+      ],
+      "display_size": [
+        87,
+        59
+      ]
+    },
+    {
+      "id": "bc_place_018",
+      "name": "镇海城",
+      "asset": "city",
+      "logical_pos": [
+        88,
+        12
+      ],
+      "display_size": [
+        87,
+        59
+      ]
+    },
+    {
+      "id": "bc_place_019",
+      "name": "临渊城",
+      "asset": "city",
+      "logical_pos": [
+        70,
+        26
+      ],
+      "display_size": [
+        87,
+        59
+      ]
+    },
+    {
+      "id": "bc_place_020",
+      "name": "春水府",
+      "asset": "city",
+      "logical_pos": [
+        49,
+        55
+      ],
+      "display_size": [
+        87,
+        59
+      ]
+    },
+    {
+      "id": "bc_place_021",
+      "name": "白石城",
+      "asset": "city",
+      "logical_pos": [
+        28,
+        65
+      ],
+      "display_size": [
+        87,
+        59
+      ]
+    },
+    {
+      "id": "bc_place_022",
+      "name": "溪云城",
+      "asset": "city",
+      "logical_pos": [
+        49,
+        74
+      ],
+      "display_size": [
+        87,
+        59
+      ]
+    },
+    {
+      "id": "bc_place_023",
+      "name": "青萝城",
+      "asset": "city",
+      "logical_pos": [
+        30,
+        87
+      ],
+      "display_size": [
+        87,
+        59
+      ]
+    },
+    {
+      "id": "bc_place_024",
+      "name": "暮烟城",
+      "asset": "city",
+      "logical_pos": [
+        72,
+        83
+      ],
+      "display_size": [
+        87,
+        59
+      ]
+    },
+    {
+      "id": "bc_place_025",
+      "name": "归寂城",
+      "asset": "city",
+      "logical_pos": [
+        86,
+        41
+      ],
+      "display_size": [
+        87,
+        59
+      ]
+    },
+    {
+      "id": "bc_place_026",
+      "name": "通济城",
+      "asset": "city",
+      "logical_pos": [
+        65,
+        51
+      ],
+      "display_size": [
+        87,
+        59
+      ]
+    },
+    {
+      "id": "bc_place_027",
+      "name": "松风镇",
+      "asset": "town",
+      "logical_pos": [
+        14,
+        30
+      ],
+      "display_size": [
+        61,
+        31
+      ]
+    },
+    {
+      "id": "bc_place_028",
+      "name": "玉泉镇",
+      "asset": "town",
+      "logical_pos": [
+        40,
+        40
+      ],
+      "display_size": [
+        61,
+        31
+      ]
+    },
+    {
+      "id": "bc_place_029",
+      "name": "临皋镇",
+      "asset": "town",
+      "logical_pos": [
+        22,
+        53
+      ],
+      "display_size": [
+        61,
+        31
+      ]
+    },
+    {
+      "id": "bc_place_030",
+      "name": "听风镇",
+      "asset": "town",
+      "logical_pos": [
+        79,
+        10
+      ],
+      "display_size": [
+        61,
+        31
+      ]
+    },
+    {
+      "id": "bc_place_031",
+      "name": "烟柳镇",
+      "asset": "town",
+      "logical_pos": [
+        53,
+        59
+      ],
+      "display_size": [
+        61,
+        31
+      ]
+    },
+    {
+      "id": "bc_place_032",
+      "name": "桑落镇",
+      "asset": "town",
+      "logical_pos": [
+        43,
+        54
+      ],
+      "display_size": [
+        61,
+        31
+      ]
+    },
+    {
+      "id": "bc_place_033",
+      "name": "荷汀镇",
+      "asset": "town",
+      "logical_pos": [
+        56,
+        49
+      ],
+      "display_size": [
+        61,
+        31
+      ]
+    },
+    {
+      "id": "bc_place_034",
+      "name": "岚溪镇",
+      "asset": "town",
+      "logical_pos": [
+        19,
+        57
+      ],
+      "display_size": [
+        61,
+        31
+      ]
+    },
+    {
+      "id": "bc_place_035",
+      "name": "望岚镇",
+      "asset": "town",
+      "logical_pos": [
+        43,
+        76
+      ],
+      "display_size": [
+        61,
+        31
+      ]
+    },
+    {
+      "id": "bc_place_036",
+      "name": "雁回镇",
+      "asset": "town",
+      "logical_pos": [
+        78,
+        81
+      ],
+      "display_size": [
+        61,
+        31
+      ]
+    },
+    {
+      "id": "bc_place_037",
+      "name": "槐安镇",
+      "asset": "town",
+      "logical_pos": [
+        87,
+        76
+      ],
+      "display_size": [
+        61,
+        31
+      ]
+    },
+    {
+      "id": "bc_place_038",
+      "name": "流丹坊",
+      "asset": "market",
+      "logical_pos": [
+        59,
+        20
+      ],
+      "display_size": [
+        58,
+        24
+      ]
+    },
+    {
+      "id": "bc_place_039",
+      "name": "忘机坊",
+      "asset": "market",
+      "logical_pos": [
+        70,
+        88
+      ],
+      "display_size": [
+        58,
+        24
+      ]
+    },
+    {
+      "id": "bc_place_040",
+      "name": "白蘋里",
+      "asset": "village",
+      "logical_pos": [
+        91,
+        24
+      ],
+      "display_size": [
+        44,
+        25
+      ]
+    },
+    {
+      "id": "bc_place_041",
+      "name": "桑榆里",
+      "asset": "village",
+      "logical_pos": [
+        46,
+        71
+      ],
+      "display_size": [
+        44,
+        25
+      ]
+    },
+    {
+      "id": "bc_place_042",
+      "name": "采薇里",
+      "asset": "village",
+      "logical_pos": [
+        26,
+        90
+      ],
+      "display_size": [
+        44,
+        25
+      ]
+    },
+    {
+      "id": "bc_place_043",
+      "name": "澜浦渡",
+      "asset": "dock",
+      "logical_pos": [
+        95,
+        18
+      ],
+      "display_size": [
+        47,
+        36
+      ]
+    },
+    {
+      "id": "bc_place_044",
+      "name": "问津渡",
+      "asset": "dock",
+      "logical_pos": [
+        67,
+        55
+      ],
+      "display_size": [
+        47,
+        36
+      ]
+    },
+    {
+      "id": "bc_place_106",
+      "name": "太和城",
+      "asset": "city",
+      "logical_pos": [
+        11,
+        68
+      ],
+      "display_size": [
+        87,
+        59
+      ]
+    },
+    {
+      "id": "bc_place_107",
+      "name": "洗心镇",
+      "asset": "town",
+      "logical_pos": [
+        14,
+        78
+      ],
+      "display_size": [
+        61,
+        31
+      ]
+    },
+    {
+      "id": "bc_place_108",
+      "name": "松月坊",
+      "asset": "market",
+      "logical_pos": [
+        19,
+        70
+      ],
+      "display_size": [
+        58,
+        24
+      ]
+    },
+    {
+      "id": "bc_place_112",
+      "name": "金阙城",
+      "asset": "city",
+      "logical_pos": [
+        34,
+        10
+      ],
+      "display_size": [
+        87,
+        59
+      ]
+    },
+    {
+      "id": "bc_place_113",
+      "name": "含光镇",
+      "asset": "town",
+      "logical_pos": [
+        43,
+        9
+      ],
+      "display_size": [
+        61,
+        31
+      ]
+    },
+    {
+      "id": "bc_place_114",
+      "name": "琼华坊",
+      "asset": "market",
+      "logical_pos": [
+        47,
+        14
+      ],
+      "display_size": [
+        58,
+        24
+      ]
+    },
+    {
+      "id": "bc_place_118",
+      "name": "永夜关",
+      "asset": "city",
+      "logical_pos": [
+        91,
+        63
+      ],
+      "display_size": [
+        87,
+        59
+      ]
+    },
+    {
+      "id": "bc_place_119",
+      "name": "听澜镇",
+      "asset": "town",
+      "logical_pos": [
+        87,
+        69
+      ],
+      "display_size": [
+        61,
+        31
+      ]
+    },
+    {
+      "id": "bc_place_120",
+      "name": "夜泊坊",
+      "asset": "market",
+      "logical_pos": [
+        81,
+        55
+      ],
+      "display_size": [
+        58,
+        24
+      ]
+    }
+  ],
+  "limitations": [
+    "This is an asset and scale preview, not formal runtime placement.",
+    "Sect mountain footing, clearings and water avoidance still require individual placement calibration.",
+    "Extra unused local variants excluded."
+  ]
+}

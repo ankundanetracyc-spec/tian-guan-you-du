@@ -1,0 +1,34 @@
+{
+  "image": "E:\\stacklands\\textures\\world\\bai_chuan\\ink_depth_20261030\\bai_chuan_muted_water_v7.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "method": "blue color mask B-R>60 and G-R>40, 8-connected components, ignore areas<=30 pixels",
+  "components": [
+    {
+      "bounds": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "pixels": 187078,
+      "touches_left": true,
+      "touches_right": true
+    },
+    {
+      "bounds": [
+        0,
+        928,
+        768,
+        326
+      ],
+      "pixels": 7401,
+      "touches_left": true,
+      "touches_right": false
+    }
+  ],
+  "all_significant_water_components_touch_left": true,
+  "limitations": "Undirected color connectivity does not establish upstream flow direction or hydrological elevations. Lowest west-entering river still exits bottom frame."
+}

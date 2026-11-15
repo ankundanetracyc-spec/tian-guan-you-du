@@ -1,0 +1,97 @@
+{
+  "verified_date": "2026-11-06",
+  "build": {
+    "warnings": 0,
+    "errors": 0
+  },
+  "groups": [
+    {
+      "name": "原生择宗候验及启程",
+      "checks": 46,
+      "exit_code": 0,
+      "error_count": 0,
+      "log": "tmp/baishi_plaque_departure_final_20261106/stdout.log",
+      "diagnostics": "tmp/baishi_plaque_departure_final_20261106/stderr.log"
+    },
+    {
+      "name": "白石研习及存档回归",
+      "checks": 80,
+      "exit_code": 0,
+      "error_count": 0,
+      "log": "tmp/baishi_lecture_departure_final_20261106/stdout.log",
+      "diagnostics": "tmp/baishi_lecture_departure_final_20261106/stderr.log"
+    },
+    {
+      "name": "接引航程与山门入宗",
+      "checks": 74,
+      "exit_code": 0,
+      "error_count": 0,
+      "log": "tmp/baishi_lecture_departure_boat_final_20261106/stdout.log",
+      "diagnostics": "tmp/baishi_lecture_departure_boat_final_20261106/stderr.log"
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "登舟后_赴玉虚.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 2656661
+    },
+    {
+      "file": "等候验灵_本场收尾.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 3133433
+    },
+    {
+      "file": "点击挂牌_讲法对白.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 3120884
+    },
+    {
+      "file": "讲法初入_中央挂牌引导.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 3238605
+    },
+    {
+      "file": "讲法引导_1280.png",
+      "width": 1280,
+      "height": 720,
+      "bytes": 1629160
+    },
+    {
+      "file": "听讲后_从人物名单验灵.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 3168737
+    },
+    {
+      "file": "验灵后_选择宗门.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 3063402
+    },
+    {
+      "file": "验灵结束_登舟启程.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 3264310
+    },
+    {
+      "file": "择宗后_静候本场验灵.png",
+      "width": 1920,
+      "height": 1080,
+      "bytes": 3265097
+    }
+  ],
+  "notes": [
+    "任务仅显示阶段目标，点击指路留在独立引导",
+    "选择意向和全场验灵结束分别保存，当前只有玉虚可选",
+    "等候采用原对白过场，不新增固定游戏时长或额外扣费",
+    "分组有重叠，不累计为独立用例总数",
+    "隔离存档和正式主场景原生渲染，未覆盖玩家存档",
+    "日志保留既有资源UID回退等提示"
+  ]
+}

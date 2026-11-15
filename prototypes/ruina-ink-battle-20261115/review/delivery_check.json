@@ -1,0 +1,56 @@
+{
+  "status": "superseded_by_modular_v2",
+  "user_final_aesthetic_approval": false,
+  "production_runtime_changed": false,
+  "browser_checks": 15,
+  "browser_check_failures": 0,
+  "verified_entry": "battle_preview.html",
+  "video_duration_seconds": 22.5,
+  "video_fps": 24,
+  "video_size": [
+    1600,
+    900
+  ],
+  "new_pose_count": 8,
+  "new_effect_count": 4,
+  "new_background_count": 1,
+  "generation_mode": "built-in image_gen",
+  "prompt_files": [
+    "prompts/background.txt",
+    "prompts/vfx.txt",
+    "prompts/poses_inner.txt",
+    "prompts/poses_outer.txt"
+  ],
+  "files": {
+    "battle_preview.html": {
+      "bytes": 11340646,
+      "sha256": "d79b2592c169f3e37ab3dd3a12c71e789dcfd7b45b90258ed4a6b39b06b28aae"
+    },
+    "review/battle_preview.mp4": {
+      "bytes": 14777061,
+      "sha256": "2cd6b80270dd425ad5e1f065445b9f1df9d6b3579fc66ed05f71deb30c143458"
+    },
+    "review/battle_highlight.gif": {
+      "bytes": 7427424,
+      "sha256": "551584f7038e931070105d78b326199423addc429493babe81361127c2809d68"
+    },
+    "assets/fx_sweep.png": {
+      "bytes": 430733,
+      "sha256": "24a18ff216194c1cc060f1f206beeeb19146ed8e851509a39487d305edeb0aad"
+    },
+    "assets/fx_deflect.png": {
+      "bytes": 295166,
+      "sha256": "c90ae7dd6dac14af23dc48279f212d5f1ec5755d9b179edd3d4f9233b40390fd"
+    },
+    "assets/fx_impact.png": {
+      "bytes": 296392,
+      "sha256": "03e1e7d6e58d845c7eacbff159a7dea681e9909f703ac04873ff18bae8680d00"
+    },
+    "assets/fx_wake.png": {
+      "bytes": 201732,
+      "sha256": "1cebce9413c42be94af2dd9169947967cfbbc86f3267678f2ff1c829d7664e66"
+    }
+  },
+  "superseded_by": "../revision_modular_v2/review/delivery_check.json",
+  "superseded_reason": "用户指出长脖子与前后发未独立。旧动作把头发画入底图，不能作为可换发结构验收。旧技术记录保留为历史；旧离线页归档至previous_flattened_preview.html。"
+}

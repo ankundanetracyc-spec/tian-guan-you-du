@@ -1,0 +1,57 @@
+{
+  "title": "铜纹阵盘基础元件：感应枢",
+  "date": "2026-11-08",
+  "generator": "built-in image_gen",
+  "mode": "new independent single-component PNG with selected B as highest visual reference",
+  "prompt": "Use case: stylized-concept. Production asset: ONE independent 1x1-square-footprint sensor component icon for this exact cultivation-game formation plate. The supplied image B is the HIGHEST AND ONLY visual reference. It is a style and exact component-design reference, NOT an edit target. Match the TOP-LEFT sensor in B: a short ivory bone-jade needle LYING FLAT and pointing LEFT, held by a grey-brown ancient bronze U-shaped / forked cradle. Redraw ONLY that one small component as a standalone icon, NOT the plate, not a crop containing its background or connected wire.\n\nComposition: square canvas, entire single component visible with a safe transparent margin all around. Strong simple silhouette legible when displayed at 64 pixels. The short pale ivory needle projects leftward from the open left side of the angular copper U cradle. The cradle wraps around its right/base end and has two short angular arms. A tiny subdued grey-celadon patina accent may sit on the copper, in the same palette as B. The needle is horizontal in the image and physically lies flat, not standing upright. STRICT exact 90-degree orthographic TOP VIEW: only top faces and very shallow painted edges, never a vertical cylinder, raised post, sidewall, slanted camera or 3D pedestal.\n\nExactly ONE functional outlet, at the RIGHTMOST SIDE CENTER facing EAST: a small pale-copper contact mouth with an EXTREMELY SHORT muted cinnabar groove core inside the mouth. This is the signal OUTPUT. It is part of the component silhouette. Do NOT draw a wire projecting out of it. No other colored ports anywhere, no modern metal connector pins, no extra inlets. Keep the tiny red groove short and inset so it reads as a socket contact, not a red cable stub.\n\nMatch B's actual project hand-painted style closely: confident dark ink contour, broad simplified matte color planes, hand-painted dry brush marks in grey-brown bronze and a little muted celadon, ivory narrow edge highlights, dark-grey painted shadow planes. Low-tier, plain functional fantasy component. No realistic engraved metal microtexture, photorealistic sculpture, glossy 3D render, ornate jewel decoration, glow, neon or high polish. No separate cast ground shadow; any dark area must belong to the object's own contour or painted shallow edge.\n\nTRUE TRANSPARENT ALPHA background. No formation disk, plate floor, other components, tabletop, square tile background, border, icon frame, text, letters, digits, labels, UI, grid, shield, flags, extra decorative props, wires, particles or ambient shadow outside the object. One original native-resolution PNG; preserve actual transparency.",
+  "reference": [
+    {
+      "path": "E:/stacklands/docs/美术规范/阵盘项目画风对照_20261108/B_墨绘铜纹.png",
+      "role": "用户已选定整盘；生成前已view_image目视，最高画风与左上骨玉针座造型参考，不是编辑目标"
+    }
+  ],
+  "authority": [
+    "docs/plans/百工技艺/阵法/基础阵盘四格单层接线实施_20261108.md",
+    "docs/美术规范/阵盘项目画风对照_20261108/README.md"
+  ],
+  "native_raw_path": "E:/tmp/CodexData/generated_images/01a1ba6c-5f78-7ae3-a6b7-fe90e469ba47/exec-fc45e251-6ddc-4ad5-912d-ec0f11c6c9b0.png",
+  "raw_backup": "raw/sensor_1x1_generated.png",
+  "output": "sensor_1x1.png",
+  "native_dimensions": [
+    1254,
+    1254
+  ],
+  "alpha": {
+    "format": "Format32bppArgb",
+    "range": [
+      0,
+      255
+    ],
+    "corner_alpha": [
+      1,
+      0,
+      0,
+      0
+    ],
+    "center_alpha": 252,
+    "true_transparency": true
+  },
+  "sha256": "B1DC777B02FFE60CF68E35C53D8558D36A46931571D042C78415AB50DACA2CF6",
+  "raw_sha256": "B1DC777B02FFE60CF68E35C53D8558D36A46931571D042C78415AB50DACA2CF6",
+  "model_spec": {
+    "footprint": "1×1",
+    "kind": "Sensor",
+    "complexity": 1,
+    "port": "东侧正中唯一信号出口；部件旋转时随转，非本轮实现"
+  },
+  "visual_checks": [
+    "平伏左指短象牙骨玉针芯与灰褐铜U形座，灰青补色、深墨边与象牙白亮缘符合B",
+    "严格俯视，仅顶面与浅色绘制边，无竖柱",
+    "右侧正中只有一个浅铜小接口，朱砂槽芯内嵌且极短，没有向外画线路或其他有色口",
+    "无盘底、额外部件、文字数字、网格、UI、盾、现代插针或独立地影",
+    "方形原生画布与安全透明边，小图依靠针尖和U座识别"
+  ],
+  "postprocess": "无裁切、缩放、抠图、重绘或Python后处理；PNG原生输出逐字节复制，未强行导出128px。",
+  "status": "美术候选、未实装；64px可读性为目视剪影判断，尚未接入游戏尺寸验收。",
+  "scope": "仅新增sensor_1x1.png、prompts_sensor.json与raw备份，未改README、索引、代码或其他组件。"
+}

@@ -1,0 +1,50 @@
+Use case: ui-mockup / style-transfer.
+Make ONE finished redesigned "善功堂" interface concept matching the NEW matte interior catalogue cabinet image, not its old roof-shaped ornate storefront.
+REFERENCE ROLES:
+Input 1 E:/stacklands/textures/baishi/interiors_20261105/study_room.png — PRIMARY authoritative color, quiet indoor light, matte brushwork, grey brick and wooden furniture style.
+Input 2 E:/tmp/CodexData/generated_images/01a1a0bb-bca0-7622-87eb-903f01e63b98/exec-e4f25da4-b108-448d-8f40-9101da7cead1.png — companion interface; match this new library's exact muted timber, ink, off-white paper, pine-grey selection, frame scale and grey-blue masonry. Same game, same series. Take material and typography ONLY, not its books or library layout.
+Input 3 E:/stacklands/docs/美术规范/行囊交易善功堂实装_20261031/05_原生善功堂四分类.png — FUNCTIONAL reference for four horizontal category lists, vertical scrolling, contribution/stock columns, name search, balance and selected-item exchange footer. DISCARD its roof, gilded flourishes, hanging ornaments, luminous cream paper, outdoor sky and all book-category content.
+The user's shared revision moves manuals to the library, so the redesigned shop MUST NOT show "秘籍", book names, book objects or any book category. Keep the existing multi-column word-list interaction. Do not turn it into a grid of illustrated item cards.
+ROOM / PHYSICAL SUPPORT:
+A quiet interior of the sect supply hall, in the same controlled matte painting as the companion library. A substantial grey-brown timber administration counter with a connected upright catalogue backboard, fastened against grey-blue brickwork under actual ceiling beams; cabinet legs stand on stone flooring. A small lattice window, not a wall of shining mountain sky. Title "善功堂" is modest dark-ink calligraphy on a plain pale wooden sign visibly screwed into the beam/backboard. Absolutely no unsupported roof-shaped header, gold carving, hanging cloud emblem, floral glitter or floating architecture.
+Large work surface takes up most of the usable screen width, with 5–8% margins showing quiet indoor masonry and believable cabinet support. Four pale-paper category lists are fixed inside the same supported wooden backboard, separated by thin plain wood mullions. Match companion interface's fine matte edges. No large gap between rows of furniture and controls, no giant stage or glowing popup.
+
+TOP CONTROLS:
+One compact paper rail with "可用贡献：100" at left, modest search field "查找物品" and "返回" at right. 100 is the existing screenshot's sample balance; do not add other balances or currencies. Small discreet sideways navigation arrows are okay.
+FOUR visible column titles, left to right EXACTLY:
+"材料" / "器物" / "丹药" / "装备"
+Each column has the small aligned field headers "名称" "库存" "贡献"; stock values are the long dash "—" because actual stock rules are not established. All rows are text only, no row illustrations. Natural shared typography hierarchy: titles about 30px, category labels 24px, rows 22px at 1920 design width, no unreadable tiny prices.
+Use ONLY the following current configured example rows with the EXACT contribution prices; never invent extra rows or prices:
+MATERIALS:
+"斑甲壳片" / "—" / "15"
+"沉云玉屑" / "—" / "15"
+"赤鳞蜕" / "—" / "10"
+ITEMS:
+"承露剑" / "—" / "0"
+"含章剑" / "—" / "0"
+"素行剑" / "—" / "0"
+PILLS:
+"回春丹·薄效" / "—" / "5"
+"回春丹·良效" / "—" / "8"
+"回春丹·优效" / "—" / "12"
+"回春丹·极效" / "—" / "18"
+"回春丹·满效" / "—" / "25"
+EQUIPMENT:
+"玉虚·杂役常服" / "—" / "20"
+"玉虚·外门常服" / "—" / "20"
+"玉虚·内门常服" / "—" / "20"
+The 0 prices are the actual existing prototype equipment prices, do not balance-adjust them.
+Select "回春丹·良效" with a very quiet flat pine-grey paper tint, NOT a luminous outline. Thin subtle dividers, sensible row spacing, generous name widths, contribution numbers all right aligned in a consistent column.
+Do not add blank placeholder lines or fake filled inventory rows to make columns equal. Quiet matte parchment can breathe; use appropriate panel height rather than huge decorative shelf capacity. Small unobtrusive per-column scrollbar if appropriate.
+BOTTOM integrated counter rail: compact readable line "已选：回春丹·良效    数量 1    所需贡献 8" on ivory paper, and the ONE primary action button at right "兑换". Small ink frame and light paper fill, no neon edge. This footer is attached to the cabinet body and matches the library's "首本免费 / 拓印" action rail. Do not show a library free-first-book offer here.
+No extra resource rules, costs, tips, stock counts, item descriptions, promo callouts or tooltip boxes. No character portrait or dialogue.
+This should look as if the SAME artist painted a supply-hall view next to the new library view in the same game, with the same matte indoor shadows and consistent material values, neither a glowing shop nor a gilded web dashboard.
+
+COMMON ART DIRECTION — indoor functional interfaces for this existing Chinese cultivation RPG.
+Match the project's ACTUALLY INSTALLED interior painting, especially the reference study_room.png: MATTE, low-saturation hand-painted gouache/watercolor pigment planes, broad coherent form-following brushwork, clear controlled contours, grey-blue brick and stone, desaturated grey-brown timber, muted blue-grey cloth, off-white rice paper, tiny pine-grey green selection accents, deep warm-grey ink lettering. Natural quiet indoor daylight. Keep the local colors solid and readable rather than pale washed-out.
+Lighting is physically ordinary indoor diffuse daylight: absolutely NO bloom, halos, radiant paper, glowing button borders, white edge highlights, rim lights, volumetric rays, mist, atmospheric veil, glitter, stippling or floating pale dots. A subtle real contact shadow is okay. No gold ornamental UI, roof-shaped interface crowns, pagoda roofs, clouds under menus, outdoor palace frames, engraved gold filigree, giant badges or cartoon shine.
+The setting is a REAL ROOM: grey-blue brick wall, timber posts and ceiling beams, modest lattice window and a visible strip of grounded floor. Cabinet feet touch the floor; boards touch cabinets, walls or the counter. Title sign is physically fastened to a beam or backboard, not hovering. Detail paper is attached to a rigid cabinet-mounted board; action area is part of the counter. Interfaces may be neatly front-facing for legibility, but all furniture has convincing joints, backing, support and contact shadows. No unsupported architecture or panels floating in a mountain sky. Outside through windows occupies at most 8–10% of the frame and remains subordinate. No outdoor roof canopy inside the room.
+Consistent fine plain timber / dry-ink paper edges, not thick multilayer gilded ornamental frames. The paper is lightly textured and matte, never a light source. Dark ink text everywhere; no white text.
+Typography target at a 1920x1080 design scale: main title about 36px, tabs and section headings 24px, book-spine names and body 22px, primary button 28px. Preserve relative hierarchy and readability, no giant heading that consumes usable space, no font shrinkage for individual long book names. All book spines use one fixed width, height, title-slip size and font size. Long titles fit vertically in the shared standard height. Never widen, enlarge or thicken a selected or long-title book. Selection is a quiet ink marker or pine-grey outline, no glow or enlargement.
+Only show actual configured available records: no filler books, blank dummy spines, locked placeholder manuals, duplicates, made-up commodities, fake stocks, decorative books or false catalogue capacity. UI content is sparse if the actual catalogue is sparse; furniture and its closed doors fit the catalogue rather than simulating dozens of entries.
+Output one polished coherent 16:9 game-interface concept screenshot. No people, dialogue, English, editorial notes, watermarks, blurred corners, vignette, 3D rendering or photorealism. This is a full new matte rendering, not a brightness filter over the old glowing concept. The primary indoor art reference overrides old interface decoration.

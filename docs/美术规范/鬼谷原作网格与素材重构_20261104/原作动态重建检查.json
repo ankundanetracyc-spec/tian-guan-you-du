@@ -1,0 +1,92 @@
+{
+  "meshCount": 8,
+  "sourceHash": "0d1e14ae4a2719b91055e201fadf294b600f730e5bfbba14f4806b7619ec3ced",
+  "Idle": {
+    "frames": 48,
+    "excluded": [],
+    "xRange": [
+      -26.57763,
+      25.63558
+    ],
+    "yRange": [
+      -102.49686,
+      11.84239
+    ],
+    "fourPhasesDistinct": true
+  },
+  "Run_New1": {
+    "frames": 48,
+    "excluded": [
+      {
+        "pathHash": 569651382,
+        "attributeId": 4,
+        "curveIndex": 72
+      }
+    ],
+    "xRange": [
+      -64.85755,
+      39.54511
+    ],
+    "yRange": [
+      -108.69948,
+      11.89276
+    ],
+    "fourPhasesDistinct": true
+  },
+  "Run_New2": {
+    "frames": 48,
+    "excluded": [
+      {
+        "pathHash": 569651382,
+        "attributeId": 4,
+        "curveIndex": 57
+      }
+    ],
+    "xRange": [
+      -29.01263,
+      38.25675
+    ],
+    "yRange": [
+      -104.6249,
+      11.90918
+    ],
+    "fourPhasesDistinct": true
+  },
+  "sourceInputsUnchanged": true,
+  "imageCount": 144,
+  "coordinateMethod": "Full source 4x4 world transforms multiplied by original bindposes, normalized original weights retained as-is, then orthographic XY projection",
+  "rendererLog": "SOURCE_REFERENCE_CAPTURE_PASS with no errors, warnings or exit resource leaks",
+  "sourceFileHashes": {
+    "tools/action_battle_test/source_reference_build_frames_20261104.py": "24b3f575bd82a6a817b469c7bfcc3c7ee0e37069f4bec046c7ecad54665574ef",
+    "tools/action_battle_test/source_reference_player_20261104.gd": "173120a252e38a5e5ba7c43a7e9237e0869e3d6d96f3a52aeb1d26c38c500954",
+    "tools/action_battle_test/source_reference_capture_20261104.gd": "63c6a6c4c7512920eb072a64c6065cf3e5a79fc8251725357e802e90062376a4",
+    "tools/action_battle_test/source_reference_capture_20261104.tscn": "a4180ad0f303aff9bb497553367286cf9fc188a30ce7c08a297d32eb1d6cc2b9",
+    "tools/action_battle_test/output/guigu_source_reference_v2/source_reference_vertex_frames.json": "d5345b200881beab020722d7f57d281e4259ae3525a77b7050c14612632990e3"
+  },
+  "gifChecks": {
+    "Run_New1": {
+      "frames": 24,
+      "durationMs": 580,
+      "size": [
+        1000,
+        660
+      ]
+    },
+    "Run_New2": {
+      "frames": 24,
+      "durationMs": 450,
+      "size": [
+        1000,
+        660
+      ]
+    },
+    "Idle": {
+      "frames": 24,
+      "durationMs": 1630,
+      "size": [
+        1000,
+        660
+      ]
+    }
+  }
+}

@@ -1,0 +1,508 @@
+{
+  "date": "2026-11-03",
+  "status": "source_mapping_verified_queue_assets_not_integrated",
+  "source_config": "mods/appearance/ink_three_variants_20261004/appearance_parts.json",
+  "package_id": "ink_three_variants_20261004",
+  "counts": {
+    "clothes": 14,
+    "hair_front": 14,
+    "hair_back": 16,
+    "total": 44
+  },
+  "sample": [
+    {
+      "gender": "male",
+      "part": "hair_front",
+      "saved_variant_index": 5,
+      "component_id": "male_front_hair_05",
+      "name": "守真拢发",
+      "source_path": "mods/appearance/ink_three_variants_20261004/male/hair_front/07.png",
+      "source_sha256": "45140ab0ae0fcec6f0b0fa6eafa788e9243744a05f4827eeecb5f9148886cd00",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "male",
+      "part": "hair_back",
+      "saved_variant_index": 6,
+      "component_id": "male_back_hair_06",
+      "name": "守真束髻",
+      "source_path": "mods/appearance/ink_three_variants_20261004/male/hair_back/07.png",
+      "source_sha256": "89c5d266f8942e412ee27926f0cc8c458bea5ac47f32d51862983b3f5f760e27",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "male",
+      "part": "clothes",
+      "saved_variant_index": 5,
+      "component_id": "male_clothes_05",
+      "name": "玉虚·内门常服",
+      "source_path": "mods/appearance/ink_three_variants_20261004/male/clothing/06.png",
+      "source_sha256": "af93377ba4d93ee0dd40e127cc518fe8ee24b50626a954b40be85f8285ba6a04",
+      "queue_asset_status": "not_produced",
+      "item_path": "res://resources/entities/items/clothing/玉虚内门常服.tres"
+    }
+  ],
+  "entries": [
+    {
+      "gender": "male",
+      "part": "hair_front",
+      "saved_variant_index": 0,
+      "component_id": "male_front_hair_00",
+      "name": "墨云中分",
+      "source_path": "mods/appearance/ink_three_variants_20261004/male/hair_front/01.png",
+      "source_sha256": "49bd81e6eca35a53c527d1de82b184cce6a8bea0f43507cf211645aae27c7024",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "male",
+      "part": "hair_front",
+      "saved_variant_index": 1,
+      "component_id": "male_front_hair_01",
+      "name": "疏额双垂",
+      "source_path": "mods/appearance/ink_three_variants_20261004/male/hair_front/02.png",
+      "source_sha256": "d8576bf9e50eefb00e29303bb7fe2ef1290f06dab11f289ae14facdcbbf6563d",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "male",
+      "part": "hair_front",
+      "saved_variant_index": 2,
+      "component_id": "male_front_hair_02",
+      "name": "清风垂鬓",
+      "source_path": "mods/appearance/ink_three_variants_20261004/male/hair_front/03.png",
+      "source_sha256": "4b0a1da5ba8db3467634c2571beba839dcc1727e6a71d58557d9bc303b34eee3",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "male",
+      "part": "hair_front",
+      "saved_variant_index": 3,
+      "component_id": "male_front_hair_03",
+      "name": "清雅分流",
+      "source_path": "mods/appearance/ink_three_variants_20261004/male/hair_front/04.png",
+      "source_sha256": "ab3f4859c183b3ce624351dd43007cfca297882a49e5381ec78f32870327ab73",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "male",
+      "part": "hair_front",
+      "saved_variant_index": 4,
+      "component_id": "male_front_hair_04",
+      "name": "束风露额",
+      "source_path": "mods/appearance/ink_three_variants_20261004/male/hair_front/06.png",
+      "source_sha256": "c75fd89e90647d1c50367ce4828b44fe368d4826610c19305ba389e6116994dd",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "male",
+      "part": "hair_front",
+      "saved_variant_index": 5,
+      "component_id": "male_front_hair_05",
+      "name": "守真拢发",
+      "source_path": "mods/appearance/ink_three_variants_20261004/male/hair_front/07.png",
+      "source_sha256": "45140ab0ae0fcec6f0b0fa6eafa788e9243744a05f4827eeecb5f9148886cd00",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "male",
+      "part": "hair_front",
+      "saved_variant_index": 6,
+      "component_id": "male_front_hair_06",
+      "name": "行舟短发",
+      "source_path": "mods/appearance/ink_three_variants_20261004/male/hair_front/08.png",
+      "source_sha256": "a6bfb5415190915c9ad478ef6297c06a6d5b965d25058aa9509b327d5f27c209",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "male",
+      "part": "hair_back",
+      "saved_variant_index": 0,
+      "component_id": "male_back_hair_00",
+      "name": "墨发长披",
+      "source_path": "mods/appearance/ink_three_variants_20261004/male/hair_back/01.png",
+      "source_sha256": "b9c80e1189ca59674eae080de33fba6b2112f0f241d7a5db76b6d56df79506fd",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "male",
+      "part": "hair_back",
+      "saved_variant_index": 1,
+      "component_id": "male_back_hair_01",
+      "name": "高束散尾",
+      "source_path": "mods/appearance/ink_three_variants_20261004/male/hair_back/02.png",
+      "source_sha256": "0984dbf16750ee1e760334c1df6cfcc855a847362993b189d6e4526500de6ebd",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "male",
+      "part": "hair_back",
+      "saved_variant_index": 2,
+      "component_id": "male_back_hair_02",
+      "name": "低束长披",
+      "source_path": "mods/appearance/ink_three_variants_20261004/male/hair_back/03.png",
+      "source_sha256": "c3ed2f91ef6fc43dfb5f925ad85efc0f4c4d36df529c476889addd6acb98e6f7",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "male",
+      "part": "hair_back",
+      "saved_variant_index": 3,
+      "component_id": "male_back_hair_03",
+      "name": "清雅半束",
+      "source_path": "mods/appearance/ink_three_variants_20261004/male/hair_back/04.png",
+      "source_sha256": "e33f028540f5ac47dd9c3d12dcb2b0dc99013a9a12ffef5758e854cb6755bb20",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "male",
+      "part": "hair_back",
+      "saved_variant_index": 4,
+      "component_id": "male_back_hair_04",
+      "name": "高束流风",
+      "source_path": "mods/appearance/ink_three_variants_20261004/male/hair_back/05.png",
+      "source_sha256": "4771c25b45db11fc413f5c0df980456f68ec9c38a908910e1132d2a5960e7f66",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "male",
+      "part": "hair_back",
+      "saved_variant_index": 5,
+      "component_id": "male_back_hair_05",
+      "name": "束风短尾",
+      "source_path": "mods/appearance/ink_three_variants_20261004/male/hair_back/06.png",
+      "source_sha256": "2ed3d2cf56ff55a9a20236a4f84ccbe726dd1565ab3538c2cae3940732711e66",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "male",
+      "part": "hair_back",
+      "saved_variant_index": 6,
+      "component_id": "male_back_hair_06",
+      "name": "守真束髻",
+      "source_path": "mods/appearance/ink_three_variants_20261004/male/hair_back/07.png",
+      "source_sha256": "89c5d266f8942e412ee27926f0cc8c458bea5ac47f32d51862983b3f5f760e27",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "male",
+      "part": "hair_back",
+      "saved_variant_index": 7,
+      "component_id": "male_back_hair_07",
+      "name": "行舟短垂",
+      "source_path": "mods/appearance/ink_three_variants_20261004/male/hair_back/08.png",
+      "source_sha256": "87231c6bea514fa69878768b9cc42bdce681c60d691a3aecaa3398f71e8254b4",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "male",
+      "part": "clothes",
+      "saved_variant_index": 0,
+      "component_id": "male_clothes_00",
+      "name": "碧岚云叶袍",
+      "source_path": "mods/appearance/ink_three_variants_20261004/male/clothing/01.png",
+      "source_sha256": "d104a9d8959c91f78df803b8836f9eedd8e67d72af2d8826930c2e7e0b5a4d38",
+      "queue_asset_status": "not_produced",
+      "item_path": "res://resources/entities/items/clothing/男_碧岚云叶袍.tres"
+    },
+    {
+      "gender": "male",
+      "part": "clothes",
+      "saved_variant_index": 1,
+      "component_id": "male_clothes_01",
+      "name": "玄青云竹袍",
+      "source_path": "mods/appearance/ink_three_variants_20261004/male/clothing/02.png",
+      "source_sha256": "8456bf77d0b1a28877d04b81cbd3993873dcf7c2909991e6815baeff17a100b9",
+      "queue_asset_status": "not_produced",
+      "item_path": "res://resources/entities/items/clothing/男_玄青云竹袍.tres"
+    },
+    {
+      "gender": "male",
+      "part": "clothes",
+      "saved_variant_index": 2,
+      "component_id": "male_clothes_02",
+      "name": "绛霞流云袍",
+      "source_path": "mods/appearance/ink_three_variants_20261004/male/clothing/03.png",
+      "source_sha256": "fc45c5d39dd6f9f083cbe295a7af935f81582b3c257b9ce72c983a6852b6d78a",
+      "queue_asset_status": "not_produced",
+      "item_path": "res://resources/entities/items/clothing/男_绛霞流云袍.tres"
+    },
+    {
+      "gender": "male",
+      "part": "clothes",
+      "saved_variant_index": 3,
+      "component_id": "male_clothes_03",
+      "name": "玉虚·杂役常服",
+      "source_path": "mods/appearance/ink_three_variants_20261004/male/clothing/04.png",
+      "source_sha256": "62caf0565c9bb5c53d3b853adddbeccf049840e81728a1dd6419803a6c9a513e",
+      "queue_asset_status": "not_produced",
+      "item_path": "res://resources/entities/items/clothing/玉虚杂役常服.tres"
+    },
+    {
+      "gender": "male",
+      "part": "clothes",
+      "saved_variant_index": 4,
+      "component_id": "male_clothes_04",
+      "name": "玉虚·外门常服",
+      "source_path": "mods/appearance/ink_three_variants_20261004/male/clothing/05.png",
+      "source_sha256": "38ba8f542718ec7223bbdf164279dcb9c48efc2739370026de335d553607d8d2",
+      "queue_asset_status": "not_produced",
+      "item_path": "res://resources/entities/items/clothing/玉虚外门常服.tres"
+    },
+    {
+      "gender": "male",
+      "part": "clothes",
+      "saved_variant_index": 5,
+      "component_id": "male_clothes_05",
+      "name": "玉虚·内门常服",
+      "source_path": "mods/appearance/ink_three_variants_20261004/male/clothing/06.png",
+      "source_sha256": "af93377ba4d93ee0dd40e127cc518fe8ee24b50626a954b40be85f8285ba6a04",
+      "queue_asset_status": "not_produced",
+      "item_path": "res://resources/entities/items/clothing/玉虚内门常服.tres"
+    },
+    {
+      "gender": "male",
+      "part": "clothes",
+      "saved_variant_index": 6,
+      "component_id": "male_clothes_06",
+      "name": "玉虚·真传常服",
+      "source_path": "mods/appearance/ink_three_variants_20261004/male/clothing/07.png",
+      "source_sha256": "d2c25b76321c07f5d37fe5a8bbd99b75110932e2553026e6a4902b8dc9ec2dc5",
+      "queue_asset_status": "not_produced",
+      "item_path": "res://resources/entities/items/clothing/玉虚真传常服.tres"
+    },
+    {
+      "gender": "female",
+      "part": "hair_front",
+      "saved_variant_index": 0,
+      "component_id": "female_front_hair_00",
+      "name": "流云中分",
+      "source_path": "mods/appearance/ink_three_variants_20261004/female/hair_front/01.png",
+      "source_sha256": "5adb30b86de5ba895c0bba72d122e52a88fbaec5e6f5af5788360732bca2e4a2",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "female",
+      "part": "hair_front",
+      "saved_variant_index": 1,
+      "component_id": "female_front_hair_01",
+      "name": "柔丝垂鬓",
+      "source_path": "mods/appearance/ink_three_variants_20261004/female/hair_front/02.png",
+      "source_sha256": "8e99e0b700f1a3509dc1fd98452bfd3c22c096170e3872eab57f9942a71533cc",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "female",
+      "part": "hair_front",
+      "saved_variant_index": 2,
+      "component_id": "female_front_hair_02",
+      "name": "疏影双垂",
+      "source_path": "mods/appearance/ink_three_variants_20261004/female/hair_front/03.png",
+      "source_sha256": "5986ff0aab5131cc43c6783634fac186683edc7adf8a036a7dc6849e690157ea",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "female",
+      "part": "hair_front",
+      "saved_variant_index": 3,
+      "component_id": "female_front_hair_03",
+      "name": "清雅分流",
+      "source_path": "mods/appearance/ink_three_variants_20261004/female/hair_front/04.png",
+      "source_sha256": "bf693702b431a016e820ee335a668d6693ef2d15ec00cec42efb84f96b702d36",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "female",
+      "part": "hair_front",
+      "saved_variant_index": 4,
+      "component_id": "female_front_hair_04",
+      "name": "拂云露额",
+      "source_path": "mods/appearance/ink_three_variants_20261004/female/hair_front/06.png",
+      "source_sha256": "671c759fab1d6c250bc6cf89c1c79ba8d505a9e6eeec6b2985a51f4ae8b1c459",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "female",
+      "part": "hair_front",
+      "saved_variant_index": 5,
+      "component_id": "female_front_hair_05",
+      "name": "素心分缕",
+      "source_path": "mods/appearance/ink_three_variants_20261004/female/hair_front/07.png",
+      "source_sha256": "16a43a2b53ee996350d9660ef4c2413af926c9a3e596b7d668c1b1ac5b58bdcc",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "female",
+      "part": "hair_front",
+      "saved_variant_index": 6,
+      "component_id": "female_front_hair_06",
+      "name": "听雨短帘",
+      "source_path": "mods/appearance/ink_three_variants_20261004/female/hair_front/08.png",
+      "source_sha256": "fb39b1bea62bc92f60c095b77921740b9fe932e84c755c048fa0fc28f56a3d1d",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "female",
+      "part": "hair_back",
+      "saved_variant_index": 0,
+      "component_id": "female_back_hair_00",
+      "name": "墨发长披",
+      "source_path": "mods/appearance/ink_three_variants_20261004/female/hair_back/01.png",
+      "source_sha256": "b3d64dff5ffcdeec012c93b487a5621ddf1450882c22f9f67eb545a25ebad262",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "female",
+      "part": "hair_back",
+      "saved_variant_index": 1,
+      "component_id": "female_back_hair_01",
+      "name": "云髻散尾",
+      "source_path": "mods/appearance/ink_three_variants_20261004/female/hair_back/02.png",
+      "source_sha256": "b82ed4c6f56f43af4eae2adb06e4f0b915a73f934eec7870f7762bcad8589aeb",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "female",
+      "part": "hair_back",
+      "saved_variant_index": 2,
+      "component_id": "female_back_hair_02",
+      "name": "柔波长披",
+      "source_path": "mods/appearance/ink_three_variants_20261004/female/hair_back/03.png",
+      "source_sha256": "26d46170ba5021f04362beac800cf73e667cff1b5e439243f7b756cdac948f52",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "female",
+      "part": "hair_back",
+      "saved_variant_index": 3,
+      "component_id": "female_back_hair_03",
+      "name": "清雅半束",
+      "source_path": "mods/appearance/ink_three_variants_20261004/female/hair_back/04.png",
+      "source_sha256": "ad828cbed176fe0501a721f6d8280da5d4cc39190af8141f627431c81b04128d",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "female",
+      "part": "hair_back",
+      "saved_variant_index": 4,
+      "component_id": "female_back_hair_04",
+      "name": "高束流风",
+      "source_path": "mods/appearance/ink_three_variants_20261004/female/hair_back/05.png",
+      "source_sha256": "8a34b6efe7f501c56b8058f997237dd67cd598a7fbfd45da2b768befba4cfad0",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "female",
+      "part": "hair_back",
+      "saved_variant_index": 5,
+      "component_id": "female_back_hair_05",
+      "name": "拂云轻束",
+      "source_path": "mods/appearance/ink_three_variants_20261004/female/hair_back/06.png",
+      "source_sha256": "d2bb22e86731f7269349190a93afad9d22063c11b140a3f8b0c14ce9d4b60d2e",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "female",
+      "part": "hair_back",
+      "saved_variant_index": 6,
+      "component_id": "female_back_hair_06",
+      "name": "素心盘髻",
+      "source_path": "mods/appearance/ink_three_variants_20261004/female/hair_back/07.png",
+      "source_sha256": "1ba903e2cb2696cf841be3fd6b3eaeccb6d2f2398c82c57cdec64ea1177cb233",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "female",
+      "part": "hair_back",
+      "saved_variant_index": 7,
+      "component_id": "female_back_hair_07",
+      "name": "听雨齐颈",
+      "source_path": "mods/appearance/ink_three_variants_20261004/female/hair_back/08.png",
+      "source_sha256": "f537d7cdf98126e509767956afe0c6ef9d3c479036f6c373b8db1807d22c8f11",
+      "queue_asset_status": "not_produced"
+    },
+    {
+      "gender": "female",
+      "part": "clothes",
+      "saved_variant_index": 0,
+      "component_id": "female_clothes_00",
+      "name": "青瓷云梅袍",
+      "source_path": "mods/appearance/ink_three_variants_20261004/female/clothing/01.png",
+      "source_sha256": "10e6ab3f04527c5c333f07df797b44d976ebdc11df5aa8a3c776aa8cc21edf06",
+      "queue_asset_status": "not_produced",
+      "item_path": "res://resources/entities/items/clothing/女_青瓷云梅袍.tres"
+    },
+    {
+      "gender": "female",
+      "part": "clothes",
+      "saved_variant_index": 1,
+      "component_id": "female_clothes_01",
+      "name": "月白竹影袍",
+      "source_path": "mods/appearance/ink_three_variants_20261004/female/clothing/02.png",
+      "source_sha256": "772badd760de39e1dd0f8ced89faf646284fa867b652d04686cf27eeb30587dd",
+      "queue_asset_status": "not_produced",
+      "item_path": "res://resources/entities/items/clothing/女_月白竹影袍.tres"
+    },
+    {
+      "gender": "female",
+      "part": "clothes",
+      "saved_variant_index": 2,
+      "component_id": "female_clothes_02",
+      "name": "藕荷花云袍",
+      "source_path": "mods/appearance/ink_three_variants_20261004/female/clothing/03.png",
+      "source_sha256": "e29ba111c2a45530144097d1c3b31dedd753cc0c59b4271541a7495b8c6cc8d1",
+      "queue_asset_status": "not_produced",
+      "item_path": "res://resources/entities/items/clothing/女_藕荷花云袍.tres"
+    },
+    {
+      "gender": "female",
+      "part": "clothes",
+      "saved_variant_index": 3,
+      "component_id": "female_clothes_03",
+      "name": "玉虚·杂役常服",
+      "source_path": "mods/appearance/ink_three_variants_20261004/female/clothing/04.png",
+      "source_sha256": "412df74c69591eb7fad69db72785ae91fe854703de203e9071087c93e55681af",
+      "queue_asset_status": "not_produced",
+      "item_path": "res://resources/entities/items/clothing/玉虚杂役常服.tres"
+    },
+    {
+      "gender": "female",
+      "part": "clothes",
+      "saved_variant_index": 4,
+      "component_id": "female_clothes_04",
+      "name": "玉虚·外门常服",
+      "source_path": "mods/appearance/ink_three_variants_20261004/female/clothing/05.png",
+      "source_sha256": "1fc59c19d25aaa9a6727d2a1bf08f374443863c52cf977603d9c05651a381e0d",
+      "queue_asset_status": "not_produced",
+      "item_path": "res://resources/entities/items/clothing/玉虚外门常服.tres"
+    },
+    {
+      "gender": "female",
+      "part": "clothes",
+      "saved_variant_index": 5,
+      "component_id": "female_clothes_05",
+      "name": "玉虚·内门常服",
+      "source_path": "mods/appearance/ink_three_variants_20261004/female/clothing/06.png",
+      "source_sha256": "6f38faebbe01181ddb7cb7b8fae3a79c9019e6bc7e80bc9cf361d8fa7ff2034e",
+      "queue_asset_status": "not_produced",
+      "item_path": "res://resources/entities/items/clothing/玉虚内门常服.tres"
+    },
+    {
+      "gender": "female",
+      "part": "clothes",
+      "saved_variant_index": 6,
+      "component_id": "female_clothes_06",
+      "name": "玉虚·真传常服",
+      "source_path": "mods/appearance/ink_three_variants_20261004/female/clothing/07.png",
+      "source_sha256": "0eb7799be1fdca90823b8b24ec1a3f3c8ecca1dbc74edb5f386c4426e15331ec",
+      "queue_asset_status": "not_produced",
+      "item_path": "res://resources/entities/items/clothing/玉虚真传常服.tres"
+    }
+  ],
+  "checks": {
+    "all_source_files_exist": true,
+    "all_clothes_item_saved_indices_match": true,
+    "source_sha256_recorded": true,
+    "sample_saved_indices_match_names": true,
+    "runtime_test_performed": false
+  }
+}

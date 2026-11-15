@@ -1,0 +1,1174 @@
+{
+  "version": 3,
+  "status": "passed",
+  "passed": 140,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "1920/概览/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/概览/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1920/概览/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/概览/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/基本资料集中且不重复",
+      "passed": true,
+      "detail": [
+        {
+          "value": "苏醒者",
+          "count": 1,
+          "inCaption": true
+        },
+        {
+          "value": "玉虚仙宗",
+          "count": 1,
+          "inCaption": true
+        },
+        {
+          "value": "云息三层",
+          "count": 1,
+          "inCaption": true
+        },
+        {
+          "value": "三灵根",
+          "count": 1,
+          "inCaption": true
+        }
+      ]
+    },
+    {
+      "name": "1920/局外状态独立并扩大",
+      "passed": true,
+      "detail": {
+        "height": 369,
+        "area": 352026
+      }
+    },
+    {
+      "name": "1920/声望业力所在恢复且不杜撰值",
+      "passed": true,
+      "detail": "声望\n百川 —\n玉虚基础声名\n—\n身份倍率\n—\n公开事迹\n—\n业力\n—\n所在\n未详"
+    },
+    {
+      "name": "1920/心境缩成右上角小面板",
+      "passed": true,
+      "detail": {
+        "width": 350,
+        "height": 390,
+        "dial": 232
+      }
+    },
+    {
+      "name": "1920/恢复资料未重复基本身份",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/概览/按钮四角裁显",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/属性/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/属性/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1920/属性/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/属性/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/属性/按钮四角裁显",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/战斗/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/战斗/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1920/战斗/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/战斗/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/战斗/按钮四角裁显",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/功法/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/功法/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1920/功法/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/功法/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/功法/按钮四角裁显",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/装备/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/装备/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1920/装备/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/装备/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/装备/按钮四角裁显",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/关系/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/关系/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1920/关系/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/关系/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/关系/按钮四角裁显",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/吐纳修行/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/吐纳修行/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1920/吐纳修行/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/吐纳修行/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/静室仅保留三页",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/静室日期不显示时辰",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/灵力值为淡青",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/吐纳修行/撤下瓶颈与主修摘要",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/吐纳修行/按钮四角裁显",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/功法研读/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/功法研读/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1920/功法研读/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/功法研读/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/功法研读/撤下瓶颈与主修摘要",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/功法研读/按钮四角裁显",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/闭关突破/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/闭关突破/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1920/闭关突破/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/闭关突破/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/闭关突破/撤下瓶颈与主修摘要",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/闭关突破/按钮四角裁显",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/素材册覆盖和边界",
+      "passed": true,
+      "detail": {
+        "route": "#materials/controls",
+        "controls": 35,
+        "missing": [],
+        "overflow": [],
+        "textOverflow": [],
+        "withinViewport": true,
+        "unwanted": []
+      }
+    },
+    {
+      "name": "1280/概览/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/概览/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1280/概览/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/概览/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/基本资料集中且不重复",
+      "passed": true,
+      "detail": [
+        {
+          "value": "苏醒者",
+          "count": 1,
+          "inCaption": true
+        },
+        {
+          "value": "玉虚仙宗",
+          "count": 1,
+          "inCaption": true
+        },
+        {
+          "value": "云息三层",
+          "count": 1,
+          "inCaption": true
+        },
+        {
+          "value": "三灵根",
+          "count": 1,
+          "inCaption": true
+        }
+      ]
+    },
+    {
+      "name": "1280/局外状态独立并扩大",
+      "passed": true,
+      "detail": {
+        "height": 369,
+        "area": 352026
+      }
+    },
+    {
+      "name": "1280/声望业力所在恢复且不杜撰值",
+      "passed": true,
+      "detail": "声望\n百川 —\n玉虚基础声名\n—\n身份倍率\n—\n公开事迹\n—\n业力\n—\n所在\n未详"
+    },
+    {
+      "name": "1280/心境缩成右上角小面板",
+      "passed": true,
+      "detail": {
+        "width": 350,
+        "height": 390,
+        "dial": 232
+      }
+    },
+    {
+      "name": "1280/恢复资料未重复基本身份",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/概览/按钮四角裁显",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/属性/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/属性/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1280/属性/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/属性/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/属性/按钮四角裁显",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/战斗/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/战斗/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1280/战斗/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/战斗/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/战斗/按钮四角裁显",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/功法/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/功法/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1280/功法/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/功法/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/功法/按钮四角裁显",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/装备/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/装备/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1280/装备/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/装备/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/装备/按钮四角裁显",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/关系/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/关系/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1280/关系/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/关系/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/关系/按钮四角裁显",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/吐纳修行/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/吐纳修行/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1280/吐纳修行/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/吐纳修行/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/静室仅保留三页",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/静室日期不显示时辰",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/灵力值为淡青",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/吐纳修行/撤下瓶颈与主修摘要",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/吐纳修行/按钮四角裁显",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/功法研读/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/功法研读/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1280/功法研读/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/功法研读/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/功法研读/撤下瓶颈与主修摘要",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/功法研读/按钮四角裁显",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/闭关突破/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/闭关突破/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1280/闭关突破/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/闭关突破/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/闭关突破/撤下瓶颈与主修摘要",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/闭关突破/按钮四角裁显",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/素材册覆盖和边界",
+      "passed": true,
+      "detail": {
+        "route": "#materials/controls",
+        "controls": 35,
+        "missing": [],
+        "overflow": [],
+        "textOverflow": [],
+        "withinViewport": true,
+        "unwanted": []
+      }
+    },
+    {
+      "name": "1920/局外Buff显示效果恢复和来源",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/Buff使用素材且不越界",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/状态区允许滚动扩展",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/局外Buff显示效果恢复和来源",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/Buff使用素材且不越界",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/状态区允许滚动扩展",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "目标缕数与单位为淡青",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "缕数输入仍可操作",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "数字增减只用两个三角",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "三角减小不越过最小值",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "指定日期保留三个输入",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "日期三组箭头均无装饰底图",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "日期增减仍有效",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "修炼确认保留素材",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "确认可返回",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "属性页灵力缕数为淡青",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "造诣检索保持",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "深墨悬停无内滚动",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "心境浮层无已删除说明",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "功法页保留实际主辅修装配入口",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "旧链接body不打开延期页面",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "旧链接nature不打开延期页面",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "旧链接inspiration不打开延期页面",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "同材质按钮边角前后对照已输出",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "脚本资源正常",
+      "passed": true,
+      "detail": {
+        "errors": [],
+        "failedResources": []
+      }
+    },
+    {
+      "name": "不写浏览器存储",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "coverage": [
+    {
+      "width": 1920,
+      "route": "#character/overview",
+      "controls": 15,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1920,
+      "route": "#character/attributes",
+      "controls": 26,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1920,
+      "route": "#character/battle",
+      "controls": 53,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1920,
+      "route": "#character/manuals",
+      "controls": 40,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1920,
+      "route": "#character/equipment",
+      "controls": 17,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1920,
+      "route": "#character/relations",
+      "controls": 16,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1920,
+      "route": "#quiet/practice",
+      "controls": 19,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1920,
+      "route": "#quiet/study",
+      "controls": 21,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1920,
+      "route": "#quiet/breakthrough",
+      "controls": 11,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1920,
+      "route": "#materials/controls",
+      "controls": 35,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1280,
+      "route": "#character/overview",
+      "controls": 15,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1280,
+      "route": "#character/attributes",
+      "controls": 26,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1280,
+      "route": "#character/battle",
+      "controls": 53,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1280,
+      "route": "#character/manuals",
+      "controls": 40,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1280,
+      "route": "#character/equipment",
+      "controls": 17,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1280,
+      "route": "#character/relations",
+      "controls": 16,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1280,
+      "route": "#quiet/practice",
+      "controls": 19,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1280,
+      "route": "#quiet/study",
+      "controls": 21,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1280,
+      "route": "#quiet/breakthrough",
+      "controls": 11,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1280,
+      "route": "#materials/controls",
+      "controls": 35,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    }
+  ],
+  "scope": "独立样稿修订3；角色6页、静室3页；三角箭头例外、声望恢复、紧凑心境、按钮边角修正；未接游戏或结算",
+  "cornerSamples": [
+    {
+      "x": 32,
+      "y": 106,
+      "width": 340,
+      "height": 80
+    },
+    {
+      "x": 464,
+      "y": 106,
+      "width": 340,
+      "height": 80
+    }
+  ],
+  "date": "2026-11-08",
+  "exports": [
+    "角色_概览_1920.png",
+    "角色_属性_1920.png",
+    "角色_战斗_1920.png",
+    "角色_功法_1920.png",
+    "角色_装备_1920.png",
+    "角色_关系_1920.png",
+    "静室_吐纳修行_1920.png",
+    "静室_功法研读_1920.png",
+    "静室_闭关突破_1920.png",
+    "控件素材册_1920.png",
+    "局外Buff_1920.png",
+    "角色_首页.png",
+    "静室_首页.png",
+    "角色_概览_1280.png",
+    "角色_属性_1280.png",
+    "角色_战斗_1280.png",
+    "角色_功法_1280.png",
+    "角色_装备_1280.png",
+    "角色_关系_1280.png",
+    "静室_吐纳修行_1280.png",
+    "静室_功法研读_1280.png",
+    "静室_闭关突破_1280.png",
+    "控件素材册_1280.png",
+    "局外Buff_1280.png",
+    "角色_首页_1280.png",
+    "静室_首页_1280.png",
+    "灵力缕数_1280.png",
+    "日期输入_1280.png",
+    "确认弹窗_1280.png",
+    "深墨悬停_1280.png",
+    "按钮边角修正.png"
+  ],
+  "runtimeIntegration": false,
+  "viewports": [
+    {
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "width": 1280,
+      "height": 720
+    }
+  ],
+  "materials": {
+    "auditedViews": 20,
+    "controlInstances": 506,
+    "missingControls": 0,
+    "newBitmapChanges": false
+  },
+  "buttonCornerEvidence": {
+    "background": [
+      197,
+      199,
+      186
+    ],
+    "before": [
+      [
+        59,
+        53,
+        56
+      ],
+      [
+        105,
+        91,
+        90
+      ],
+      [
+        116,
+        102,
+        97
+      ],
+      [
+        122,
+        102,
+        93
+      ]
+    ],
+    "after": [
+      [
+        197,
+        199,
+        186
+      ],
+      [
+        197,
+        199,
+        186
+      ],
+      [
+        197,
+        199,
+        186
+      ],
+      [
+        197,
+        199,
+        186
+      ]
+    ],
+    "allFourCornersTransparentAtSamples": true,
+    "sourceBitmapChanged": false
+  },
+  "bottleneckStatus": {
+    "legacyImplementationExists": true,
+    "enabled": false,
+    "runtimeModified": false
+  },
+  "materialExceptions": [
+    "数字与日期的增减三角：用户明确要求不使用素材"
+  ],
+  "fileChecks": {
+    "sourceFiles": 58,
+    "documentLinks": 56,
+    "atlasRegions": 20,
+    "atlasTransparency": true,
+    "unchangedFrameAndAtlas": true,
+    "noStorageOrNetworkWriteCode": true
+  }
+}

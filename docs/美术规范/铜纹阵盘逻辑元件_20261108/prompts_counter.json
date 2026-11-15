@@ -1,0 +1,64 @@
+{
+  "asset": "counter_2x1.png",
+  "name": "普通候枢",
+  "date": "2026-11-08",
+  "tool": "built-in image_gen.imagegen",
+  "intent": "generate new component using approved images as style references",
+  "fullprompt": "Use case: stylized-concept. Asset type: one transparent PNG game item, ordinary counter logic module “候枢”, 2 by 1 horizontal footprint.\nReference image 1 (B_墨绘铜纹) is the highest visual style authority. Reference image 2 (eye_1x1) is the matching existing independent component. Match their visibly hand-painted game art: strong dark ink outlines, simple flat gray-brown bronze planes, muted gray-green jade, ivory edge highlights, a few dry-brush strokes. This must look painted in the very same asset set, not realistic 3D metalwork.\nCreate a wholly new single physical mechanism: a low shallow rectangular bronze cradle with a jade tally slide-rule inside, several short separated jade tally slips / little incised tally positions, and a small asymmetrical bronze catch/latch. The silhouette is a cohesive long mechanism, clearly distinct from a solid jade energy bar or battery. Its central mechanism suggests counting repeated events; no fixed numeric threshold is pictured. Keep broad readable shapes and room between tally slips, not a decorative dense abacus.\nView is strictly orthographic 90-degree top-down, no perspective, no large visible side walls. Native output canvas must be exactly horizontal 2:1 (like 1774x887 or equivalent); do not make a square illustration stretched sideways. Center the single full item with safe transparent margins, including both socket openings. No board or surrounding objects.\nExactly TWO cinnabar red signal sockets only, made as short recessed red channels between small bronze lips integrated into the body: (1) input on the WEST/left outer edge, vertical center y=50% of the full image; (2) output on the NORTH/top outer edge, x=75% of the full image width, corresponding to the middle of the right-hand cell. Top output must be visibly on the top edge, not on the east. The left socket and top-right socket must open toward the respective canvas edge, but each short colored slot stops at its bronze body; no external wires. Keep sockets simple and continuous, red core with copper lips, not circular buttons. No socket anywhere else: specifically NO east/right socket, NO south/bottom socket, NO gold/energy socket. Mounting details must not resemble extra colored ports.\nReal transparent outer background with preserved alpha. No words, letters, digits, number 3, labels, UI, grid, arrows, shadows cast outside the object, halo, gold jewelry, photorealistic rust, modern plastic, circuit chip pins, clockwork/gears, clock faces, rhythm spring rings, flags, multiple objects or component sheet. At small game scale the bronze outline, separated jade tallies, catch, and two red edge sockets must remain readable.",
+  "references": [
+    "E:/stacklands/docs/美术规范/阵盘项目画风对照_20261108/B_墨绘铜纹.png",
+    "E:/stacklands/docs/美术规范/铜纹阵盘基础元件_20261108/eye_1x1.png"
+  ],
+  "native": {
+    "width": 1774,
+    "height": 887,
+    "format": "PNG",
+    "rgba": true,
+    "transparent_background": true,
+    "validation": "System.Drawing read-only metadata: Format32bppArgb; PNG IHDR color type 6; both sampled corner alpha=0, center body alpha=252; native ratio 2:1. No pixel edits, resize or crop."
+  },
+  "raw_source": "E:/tmp/CodexData/generated_images/01a1ba83-5aca-73e3-bb57-8641b5917811/exec-296cf558-ec74-4361-86e9-7e1fb839144a.png",
+  "raw_backup": "raw/counter_2x1_native.png",
+  "footprint": {
+    "columns": 2,
+    "rows": 1
+  },
+  "ports": [
+    {
+      "network": "signal",
+      "direction": "in",
+      "cell": [
+        0,
+        0
+      ],
+      "side": "W",
+      "canvas_logical_uv": [
+        0,
+        0.5
+      ]
+    },
+    {
+      "network": "signal",
+      "direction": "out",
+      "cell": [
+        1,
+        0
+      ],
+      "side": "N",
+      "canvas_logical_uv": [
+        0.75,
+        0
+      ]
+    }
+  ],
+  "port_artwork_note": "Only west center and right-cell north center cinnabar recessed sockets. Native transparent margins mean final artwork UV must be measured before visual wiring; no external wires baked into image.",
+  "rules": {
+    "variant": "ordinary, not refined",
+    "complexity": 2,
+    "mastery_unlock": 30,
+    "effect": "每 N 次合格事件发一次信号；仅控制频率，不增加阵能、振幅或输出效果。N 为可配置阈值，造型不将它固定为 3。",
+    "source": "docs/plans/百工技艺/阵法/阵法系统设计.md；docs/plans/百工技艺/阵法/基础阵盘四格单层接线实施_20261108.md"
+  },
+  "visual_inspection": "已目视：正俯视横向铜玉滑尺，分隔短玉筹、小扣闩，两个朱砂口，无供能口、东口、外延线、文字、盘底或UI。墨线、象牙白边和灰青玉与选定B一致。",
+  "status": "独立元件设计稿，用户待评，未实装；未执行计次、制作或战斗。"
+}

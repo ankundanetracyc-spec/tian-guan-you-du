@@ -1,0 +1,234 @@
+{
+	"checks": 124,
+	"details": {
+		"alpha_scope": "Five non-hair source PNGs preserve every alpha byte; own hairstyle intentionally changes alpha and quad topology on the original21x56 canvas and head mount.",
+		"diagnostics": {
+			"composition": {},
+			"errors": [],
+			"locomotion_layer_enabled": false,
+			"mesh_count": 7,
+			"mode": "original_male101_native_canvas_3d",
+			"native_height": 113.726114273071,
+			"original_textures": false,
+			"own_hairstyle_override": true,
+			"physics": {
+				"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+				"components": [
+					{
+						"particles": 7,
+						"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+						"sourceTotalLength": 0.335419170558453,
+						"virtualEndParticles": 2
+					},
+					{
+						"particles": 4,
+						"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+						"sourceTotalLength": 0.303497962653637,
+						"virtualEndParticles": 1
+					}
+				],
+				"coordinateSystem": "full 3D Unity units before XY projection",
+				"setupErrors": [],
+				"unsupportedActiveBranches": [
+					"nonempty collider geometry",
+					"camera distant-disable",
+					"non-Normal Unity scheduling",
+					"weighted AnimationCurve keys"
+				]
+			},
+			"physics_enabled": true,
+			"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+			"pixels_per_unit": 100.0,
+			"project_bone_length_retargeting": false,
+			"rig_root": "/HumanRootMan/Root",
+			"sampled_clip": "Run_New1",
+			"sampled_time": 0.1666668653488,
+			"source_alpha_and_uv": false,
+			"source_body_alpha_and_uv": true,
+			"state_machine_scope": "six original clips with continuous Run lower-body and attack upper rotations in actual movement; source evaluator remains separate; 102-only hair binding remains absent on source101",
+			"transforms": 51,
+			"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+		},
+		"original_display_scale": "(1.0, 1.0)",
+		"own_hair_alpha_different_pixels": 565,
+		"own_hair_registration": {
+			"generation": "built-in image_gen, isolated own hairstyle master",
+			"master": "own_hair_master.png",
+			"master_crop": [
+				136.0,
+				90.0,
+				499.0,
+				530.0
+			],
+			"mesh_adaptation": "full original canvas quad, rigid original renderer/head attachment; source long ponytail alpha/triangles are an explicit hairstyle exception",
+			"native_alpha_bbox": [
+				0.0,
+				0.0,
+				21.0,
+				22.0
+			],
+			"native_canvas": [
+				21.0,
+				56.0
+			],
+			"native_visible_target": [
+				0.0,
+				0.0,
+				21.0,
+				22.0
+			],
+			"physics": "original cloth unchanged; original hair chain retained for reference, compact tied bun follows head rigidly",
+			"pixels_per_unit": 100.0,
+			"png_sha256": "79299a97b9cf8761b0878277c5836f578519df5e3da7219aa264748c2fcc91c5",
+			"source_neck_anchor_px": [
+				12.796864086,
+				20.105417728
+			],
+			"source_pivot": [
+				0.5,
+				0.5
+			],
+			"style_reference": "../yuxu_fullbody_v15/cutout.png",
+			"user_instruction": "Hairstyle follows our own approved plain bun"
+		},
+		"own_hair_removed_tail_source_pixels": 223,
+		"physics_switch": "physics_enabled",
+		"runtime_summary": {
+			"anatomical_skin": {
+				"composition": {},
+				"errors": [],
+				"locomotion_layer_enabled": false,
+				"mesh_count": 7,
+				"mode": "original_male101_native_canvas_3d",
+				"native_height": 113.726114273071,
+				"original_textures": false,
+				"own_hairstyle_override": true,
+				"physics": {
+					"algorithmIdentityLimit": "Installed Mod SDK source port; native instruction identity and original gameplay state not established.",
+					"components": [
+						{
+							"particles": 7,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+							"sourceTotalLength": 0.335419170558453,
+							"virtualEndParticles": 2
+						},
+						{
+							"particles": 4,
+							"rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+							"sourceTotalLength": 0.303497962653637,
+							"virtualEndParticles": 1
+						}
+					],
+					"coordinateSystem": "full 3D Unity units before XY projection",
+					"setupErrors": [],
+					"unsupportedActiveBranches": [
+						"nonempty collider geometry",
+						"camera distant-disable",
+						"non-Normal Unity scheduling",
+						"weighted AnimationCurve keys"
+					]
+				},
+				"physics_enabled": true,
+				"physics_source": "local Mod SDK DynamicBone.cs + serialized male101 cloth/hair components",
+				"pixels_per_unit": 100.0,
+				"project_bone_length_retargeting": false,
+				"rig_root": "/HumanRootMan/Root",
+				"sampled_clip": "Run_New1",
+				"sampled_time": 0.1666668653488,
+				"source_alpha_and_uv": false,
+				"source_body_alpha_and_uv": true,
+				"state_machine_scope": "six original clips with continuous Run lower-body and attack upper rotations in actual movement; source evaluator remains separate; 102-only hair binding remains absent on source101",
+				"transforms": 51,
+				"visible_hair_motion": "own tied bun rigidly follows original renderer/head anchor"
+			},
+			"art": "guigu_native_first_20261105",
+			"bone_bound_art_ready": true,
+			"errors": [],
+			"loaded": true,
+			"pipeline": "original male101 full canvases and 3D source animation/skin/DynamicBone"
+		},
+		"source_pose_oracle": "Six non-hair active meshes: independent male101 source world3D*bindpose*vertices, original weights,144 original phases in each of six clips. Own-hair shape is a declared separate renderer/head-mounted exception. secondaryFrames surrogate is never sampled.",
+		"visible_sole_grounding": {
+			"alpha_threshold": 128,
+			"clips": {
+				"AttackIdle": {
+					"airborne_frames_over_0_15px": 0,
+					"contact_frames_within_0_15px": 144,
+					"fixed_render_offset_y": 2.32509994506836,
+					"samples": 144,
+					"visible_sole_y_range_relative_to_actor_foot": [
+						0.000000238418579101562,
+						0.000000238418579101562
+					]
+				},
+				"AttackRun": {
+					"airborne_frames_over_0_15px": 0,
+					"contact_frames_within_0_15px": 144,
+					"fixed_render_offset_y": 7.4138765335083,
+					"samples": 144,
+					"visible_sole_y_range_relative_to_actor_foot": [
+						0.00000095367431640625,
+						0.00000095367431640625
+					]
+				},
+				"Idle": {
+					"airborne_frames_over_0_15px": 0,
+					"contact_frames_within_0_15px": 144,
+					"fixed_render_offset_y": 2.22509980201721,
+					"samples": 144,
+					"visible_sole_y_range_relative_to_actor_foot": [
+						-0.00000143051147460938,
+						-0.00000143051147460938
+					]
+				},
+				"Run_New1": {
+					"airborne_frames_over_0_15px": 140,
+					"contact_frames_within_0_15px": 4,
+					"fixed_render_offset_y": 2.61884307861328,
+					"samples": 144,
+					"visible_sole_y_range_relative_to_actor_foot": [
+						-11.9692249298096,
+						-0.0000057220458984375
+					]
+				},
+				"Run_New2": {
+					"airborne_frames_over_0_15px": 135,
+					"contact_frames_within_0_15px": 9,
+					"fixed_render_offset_y": 0.889638543128967,
+					"samples": 144,
+					"visible_sole_y_range_relative_to_actor_foot": [
+						-3.1642017364502,
+						-0.0000082850456237793
+					]
+				},
+				"Step1": {
+					"airborne_frames_over_0_15px": 138,
+					"contact_frames_within_0_15px": 6,
+					"fixed_render_offset_y": 3.0911386013031,
+					"samples": 144,
+					"visible_sole_y_range_relative_to_actor_foot": [
+						-3.15799832344055,
+						0.00000166893005371094
+					]
+				}
+			},
+			"scope": "Actual rendered-mesh triangle positions plus common rig-root display transform. Source opaque-alpha foot samples are checked separately from transparent mesh bounding vertices.",
+			"source_alpha_sample_hull_count": 65,
+			"source_texture_subpixel_step": 0.125
+		}
+	},
+	"failures": [],
+	"maximum_non_hair_full_texture_uv_error_pixels": 0.0,
+	"maximum_non_hair_source_vertex_error_pixels": 0.000030517578125,
+	"maximum_own_hair_head_mount_error_pixels": 0.0000238418579101562,
+	"maximum_own_hair_rigid_vertex_error_pixels": 0.0,
+	"maximum_physics_segment_length_error_source_units": 0.000000342726707458496,
+	"maximum_reference101_hair_source_vertex_error_pixels": 0.000030532475648215,
+	"maximum_source_bone_projection_error_pixels": 0.0000232038983085658,
+	"nonfinite_values": 0,
+	"own_hair_samples": 2088,
+	"passed": true,
+	"sampled_non_hair_source_vertices": 331776,
+	"sampled_source_poses": 1728,
+	"scope": "Five non-hair PNGs and their six active meshes retain original dimensions, exact alpha, full UVs and independently evaluated source3D geometry. Own bundled hairstyle is a declared21x56 rigid-quad shape/alpha exception on the original renderer/head mount. Source DynamicBone fidelity beyond the bounded supplied algorithm remains an original-runtime comparison boundary."
+}

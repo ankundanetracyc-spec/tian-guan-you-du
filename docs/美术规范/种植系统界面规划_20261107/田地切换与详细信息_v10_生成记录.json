@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-07",
+  "version": "v10",
+  "use_case": "ui-mockup",
+  "method": "内置 image_gen 编辑 v9，善功堂实机作为风格参照",
+  "edit_target": "田地主页面_理想图_v9.png",
+  "style_reference": "../玄览峰拓印接入_20261107/08_善功堂_1920.png",
+  "output": "田地切换与详细信息_理想图_v10.png",
+  "dimensions": {
+    "width": 1672,
+    "height": 941
+  },
+  "user_feedback": [
+    "左边田面太大",
+    "缺少切换按钮",
+    "右侧信息应更详细"
+  ],
+  "changes": [
+    "田面约38%，右侧信息约62%，仅为画面比例",
+    "上一块、当前田地选择、下一块",
+    "五列环境/需求/判定/具体原因，另说明定植前缺项及定植后潜在影响"
+  ],
+  "preserved": [
+    "一地一页",
+    "添加材料与改造操作进入管理子页",
+    "同批田地同起点",
+    "持续严重不适才受损或枯死",
+    "善功堂风格，不照搬背景"
+  ],
+  "scope": "静态主页面理想图及规划修订。没有确定田数、温度阈值、灵力浓度单位、材料作用、用量、周期或费用，没有改动运行代码和存档。",
+  "prompt": "Use case: ui-mockup.\nEdit image 1, the existing single-field main page, into a revised high-fidelity landscape Chinese cultivation game UI.\nImage 2 is the actual 善功堂 game screenshot, STYLE REFERENCE ONLY: match its grey-brown connected timber framing, warm ivory paper, sparse blue-grey paper-edge wash, dark ordinary Kaiti gameplay text and quiet framed paper buttons. Do not copy its roof, building, flowers, hanging signs, four catalogue columns or background.\n\nThe user's NEW corrections are:\n“左边这个太大了不需要，其次，没有切换按钮吗？右边这些信息可以显示详细一点。”\nThree mandatory changes:\n1. Drastically reduce the left field from about 67% to about 38% of the body width. Right information area grows to about 62%. The field remains visible, but is no longer an enormous empty main canvas.\n2. Add highly visible field-switch controls: previous field, current-field dropdown and next field, in the header.\n3. Make the right information considerably more detailed and readable: target plant and current state, environment/current/required/judgment/concrete reason table, then concise current gaps and prospective effects. Do not fill the extra space with ornamental blank paper.\n\nPRESERVE:\nOne field per page. Exactly ONE field shown. Strict top-down ground view, original common baseline soil, unplanted state, target 月露苔. No player character, no multiple-field map, no subplots, no capacity number.\nKeep the reference game family: a shallow connected grey-brown wooden rim and divider, warm-paper information sheet, subdued blue-grey corner details, readable dark Kaiti/slab Chinese, restrained corner/landscape ornament.\nAdding materials and modification controls remain in a CLOSED management subpage. On this main page show only “管理田地” as its entry. No bottom workbench, material slots, inventory, plus-slot, material list, temperature/water/light/spirit control tabs, numerical sliders, effect preview or payment/confirmation buttons. No management-page inset.\n\nNEW COMPOSITION:\nSlim connected timber and paper header about 9% image height.\nAt left modest heading “瑶圃峰 · 灵圃”.\nCentered clearly visible navigation, each with proper button affordance:\n“上一块” with left arrow (disabled grey because current is first),\ncurrent-field dropdown “一号田” with downward triangle,\n“下一块” with right arrow (active).\nAt far right small framed paper “返回田地”.\nDo not hide navigation in tiny glyphs or solely at outer screen edges. Current field name must match all page context. No fake “1/6” fixed field count.\n\nBody is exactly TWO side-by-side connected areas, spanning the remaining height:\nLEFT approximately 38%, RIGHT approximately 62%, no lower full-width panel.\nLeft: compact paper heading “田地”, small “未定植” marker. One continuous rectangular soft grey-brown hand-painted soil field occupies its own left region, not a giant image across two thirds of the canvas. Vertical orthographic ground, faint shallow furrow brush marks, sparse subtle grass only at earthen perimeter, no rocks, pond, shade tree, planted crop or natural advantage.\nShort factual caption under field: “原有土层：普通土层”. No control tabs or crop inventory on this side.\n\nRIGHT: spacious well typeset warm-paper information page:\nTop line large enough to read but not oversized: “灵草与环境”.\nNext line target selector “目标灵草：月露苔” with tiny down triangle, and separate understated state “未定植”. This is a target for an empty field, not an existing crop.\nNo large portrait.\n\nBelow, section heading “环境与需求对照”.\nTable with FIVE clearly aligned columns, ample width, horizontal rules, readable regular Chinese, no dense dark cell grid:\n“条件” | “地块当前” | “灵草需求” | “判定” | “具体原因”\nExactly these five rows, maintaining verbatim text:\n“温度” | “偏暖” | “凉润” | “偏高” | “温度高于适生要求”\n“灵力浓度” | “偏低” | “充足” | “不足” | “环境灵力尚不充足”\n“水分” | “湿润” | “湿润” | “满足” | “干湿条件符合需求”\n“光照” | “直射” | “遮阴” | “过强” | “当前直射，缺少遮阴”\n“土层” | “普通土层” | “阴湿岩面” | “不符” | “尚缺所需附着岩面”\nUse small muted terracotta crosses beside unmet judgments and a subdued sage check beside satisfied water; keep judgment words so meaning never depends on color.\nDo not shrink the text into tiny print. Widen the table and keep all columns visible; wrap a reason only if needed, do not overlap.\n\nBelow table, two compact text blocks with modest headings:\nHeading “定植前需处理”\nText “温度、灵力、光照及土层尚未满足需求。”\nHeading “不适影响”\nText “定植后若持续不适，会长慢、停长；”\nText “持续严重不适才受损或枯死。”\nThis is a FUTURE conditional explanation, not actual damage to an unplanted field. Do not show damaged-plant badges, growth bars, countdown, crop age or harvest button.\n\nAt lower right of this SAME right information sheet, one clear warm-paper button “管理田地”. No text explaining implementation beneath it.\n\nSEMANTIC/ART LIMITS:\nNo invented numeric temperature, thresholds, spiritual-density percentage, costs, rates, inventory, yields or timers. Keep qualitative values, do not use fake placeholders like 0 or ??.\nDo not use the word 基质, do not put additive recipes on the main page.\nNo copied shop background or roof, no new room or architecture, no isometric view, no neon grass, photoreal pebbles, gold glare, glow, fog, bloom, watermark, developer labels or notes.\nDo not revert to the previous 2/3-width field or restore its empty wide footer.\nFinal check: left is COMPACT around 38%, right is DETAILED around 62%; obvious 上一块 / 一号田 dropdown / 下一块 switching; exactly one field; actual-vs-required conditions and concrete causes readable; effects correctly conditional because not planted; 管理田地 only, all modification operations remain in its closed subpage. Render one complete polished screen."
+}

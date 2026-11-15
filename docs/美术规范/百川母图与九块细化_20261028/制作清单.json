@@ -1,0 +1,347 @@
+{
+  "master": "百川整体母图_v01.png",
+  "masterNativeSize": [
+    1254,
+    1254
+  ],
+  "cropNativeSize": [
+    418,
+    418
+  ],
+  "targetTileSize": [
+    1254,
+    1254
+  ],
+  "sharedBoundaryPixels": 96,
+  "transitionPixels": 128,
+  "jobs": [
+    {
+      "key": "11",
+      "row": 0,
+      "col": 0,
+      "masterCrop": [
+        0,
+        0,
+        418,
+        418
+      ],
+      "contextRect": [
+        0,
+        0,
+        466,
+        466
+      ],
+      "core": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\裁切引导\\core_11.png",
+      "context": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\裁切引导\\context_11.png",
+      "prompt": "Enhance ONLY the FIRST reference image, an exact cropped tile of one continuous overworld map. Preserve the FIRST image's composition pixel-for-pixel in spirit: same field of view, same mountain silhouettes and positions, same river centerlines, river widths, shorelines, lake shapes, ground colors and empty spaces. Do not zoom, crop, shift, widen the view, move a bend, add a hill or lake, or invent any objects. The SECOND image is overlapping neighbor CONTEXT ONLY, not another subject to paint or a replacement composition. Output only the FIRST tile, not the wider context.\nRe-render the first tile as a clean crisp high-detail square at the largest native square resolution, target1254 square: very fine grey-brown dry ink, simple mountain folds, pale cool-grey ridge wash, restrained grey-sage valley wash and small ochre dry-slope wash, quiet light ivory ground. Keep it flat and sparse, NOT realistic detailed rock faces or lush landscape painting. Clarify existing lines and subtle washes, reduce coarse paper grain, no new landforms. Match original low saturation and lightness exactly. Same miniature map scale. Existing river and lake outline takes priority over prettier new bends. Keep every edge's color and landform continuation exactly faithful to the crop for seamless reassembly.\nABSOLUTELY NO trees, grass, reeds, shrubs, bushes, forest, vegetation dots, rocks, buildings, bridges, roads, dotted paths, node circles, labels, symbols, text, borders, clouds, fog, leather, cast shadows, horizon or watermark. No frame or margin. Terrain-only continuation. Only enhance clarity of THIS supplied crop.",
+      "status": "refined",
+      "raw": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\细化原图\\refined_11.png",
+      "source": "E:\\tmp\\CodexData\\generated_images\\01a17c6d-4aba-7d13-b435-57d602681fe0\\exec-5fc42896-88e1-48dd-a5f3-bacfde7bb00c.png",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "final": "textures\\world\\bai_chuan\\nine_v03\\bc_11.png",
+      "finalSize": [
+        1254,
+        1254
+      ],
+      "sha256": "92a41e398d565963b9dcf5202965caeba84c0798f97bc7704dbffa3ead5063fd"
+    },
+    {
+      "key": "12",
+      "row": 0,
+      "col": 1,
+      "masterCrop": [
+        418,
+        0,
+        836,
+        418
+      ],
+      "contextRect": [
+        370,
+        0,
+        884,
+        466
+      ],
+      "core": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\裁切引导\\core_12.png",
+      "context": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\裁切引导\\context_12.png",
+      "prompt": "Enhance ONLY the FIRST reference image, an exact cropped tile of one continuous overworld map. Preserve the FIRST image's composition pixel-for-pixel in spirit: same field of view, same mountain silhouettes and positions, same river centerlines, river widths, shorelines, lake shapes, ground colors and empty spaces. Do not zoom, crop, shift, widen the view, move a bend, add a hill or lake, or invent any objects. The SECOND image is overlapping neighbor CONTEXT ONLY, not another subject to paint or a replacement composition. Output only the FIRST tile, not the wider context.\nRe-render the first tile as a clean crisp high-detail square at the largest native square resolution, target1254 square: very fine grey-brown dry ink, simple mountain folds, pale cool-grey ridge wash, restrained grey-sage valley wash and small ochre dry-slope wash, quiet light ivory ground. Keep it flat and sparse, NOT realistic detailed rock faces or lush landscape painting. Clarify existing lines and subtle washes, reduce coarse paper grain, no new landforms. Match original low saturation and lightness exactly. Same miniature map scale. Existing river and lake outline takes priority over prettier new bends. Keep every edge's color and landform continuation exactly faithful to the crop for seamless reassembly.\nABSOLUTELY NO trees, grass, reeds, shrubs, bushes, forest, vegetation dots, rocks, buildings, bridges, roads, dotted paths, node circles, labels, symbols, text, borders, clouds, fog, leather, cast shadows, horizon or watermark. No frame or margin. Terrain-only continuation. Only enhance clarity of THIS supplied crop.",
+      "status": "refined",
+      "raw": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\细化原图\\refined_12.png",
+      "source": "E:\\tmp\\CodexData\\generated_images\\01a17c6d-4aba-7d13-b435-57d602681fe0\\exec-50408530-29f0-4d89-98b5-cdf568c3817f.png",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "final": "textures\\world\\bai_chuan\\nine_v03\\bc_12.png",
+      "finalSize": [
+        1254,
+        1254
+      ],
+      "sha256": "aa651972a0fc5f84cc684e188c40c43be0a2bee881fe4421f6fbf38e8d67f636"
+    },
+    {
+      "key": "13",
+      "row": 0,
+      "col": 2,
+      "masterCrop": [
+        836,
+        0,
+        1254,
+        418
+      ],
+      "contextRect": [
+        788,
+        0,
+        1254,
+        466
+      ],
+      "core": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\裁切引导\\core_13.png",
+      "context": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\裁切引导\\context_13.png",
+      "prompt": "Enhance ONLY the FIRST reference image, an exact cropped tile of one continuous overworld map. Preserve the FIRST image's composition pixel-for-pixel in spirit: same field of view, same mountain silhouettes and positions, same river centerlines, river widths, shorelines, lake shapes, ground colors and empty spaces. Do not zoom, crop, shift, widen the view, move a bend, add a hill or lake, or invent any objects. The SECOND image is overlapping neighbor CONTEXT ONLY, not another subject to paint or a replacement composition. Output only the FIRST tile, not the wider context.\nRe-render the first tile as a clean crisp high-detail square at the largest native square resolution, target1254 square: very fine grey-brown dry ink, simple mountain folds, pale cool-grey ridge wash, restrained grey-sage valley wash and small ochre dry-slope wash, quiet light ivory ground. Keep it flat and sparse, NOT realistic detailed rock faces or lush landscape painting. Clarify existing lines and subtle washes, reduce coarse paper grain, no new landforms. Match original low saturation and lightness exactly. Same miniature map scale. Existing river and lake outline takes priority over prettier new bends. Keep every edge's color and landform continuation exactly faithful to the crop for seamless reassembly.\nABSOLUTELY NO trees, grass, reeds, shrubs, bushes, forest, vegetation dots, rocks, buildings, bridges, roads, dotted paths, node circles, labels, symbols, text, borders, clouds, fog, leather, cast shadows, horizon or watermark. No frame or margin. Terrain-only continuation. Only enhance clarity of THIS supplied crop.",
+      "status": "refined",
+      "raw": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\细化原图\\refined_13.png",
+      "source": "E:\\tmp\\CodexData\\generated_images\\01a17c6d-4aba-7d13-b435-57d602681fe0\\exec-191ff150-23d3-4981-9825-fff2982e36ff.png",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "final": "textures\\world\\bai_chuan\\nine_v03\\bc_13.png",
+      "finalSize": [
+        1254,
+        1254
+      ],
+      "sha256": "65c7976655f6ac71b457aaa43cbd9d40f03d9ca4b0c6016ec5c567be43ccd65e"
+    },
+    {
+      "key": "21",
+      "row": 1,
+      "col": 0,
+      "masterCrop": [
+        0,
+        418,
+        418,
+        836
+      ],
+      "contextRect": [
+        0,
+        370,
+        466,
+        884
+      ],
+      "core": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\裁切引导\\core_21.png",
+      "context": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\裁切引导\\context_21.png",
+      "prompt": "Enhance ONLY the FIRST reference image, an exact cropped tile of one continuous overworld map. Preserve the FIRST image's composition pixel-for-pixel in spirit: same field of view, same mountain silhouettes and positions, same river centerlines, river widths, shorelines, lake shapes, ground colors and empty spaces. Do not zoom, crop, shift, widen the view, move a bend, add a hill or lake, or invent any objects. The SECOND image is overlapping neighbor CONTEXT ONLY, not another subject to paint or a replacement composition. Output only the FIRST tile, not the wider context.\nRe-render the first tile as a clean crisp high-detail square at the largest native square resolution, target1254 square: very fine grey-brown dry ink, simple mountain folds, pale cool-grey ridge wash, restrained grey-sage valley wash and small ochre dry-slope wash, quiet light ivory ground. Keep it flat and sparse, NOT realistic detailed rock faces or lush landscape painting. Clarify existing lines and subtle washes, reduce coarse paper grain, no new landforms. Match original low saturation and lightness exactly. Same miniature map scale. Existing river and lake outline takes priority over prettier new bends. Keep every edge's color and landform continuation exactly faithful to the crop for seamless reassembly.\nABSOLUTELY NO trees, grass, reeds, shrubs, bushes, forest, vegetation dots, rocks, buildings, bridges, roads, dotted paths, node circles, labels, symbols, text, borders, clouds, fog, leather, cast shadows, horizon or watermark. No frame or margin. Terrain-only continuation. Only enhance clarity of THIS supplied crop.",
+      "status": "refined",
+      "raw": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\细化原图\\refined_21.png",
+      "source": "E:\\tmp\\CodexData\\generated_images\\01a17c6d-4aba-7d13-b435-57d602681fe0\\exec-cd1680c3-6342-4efa-b733-8e556abf469d.png",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "final": "textures\\world\\bai_chuan\\nine_v03\\bc_21.png",
+      "finalSize": [
+        1254,
+        1254
+      ],
+      "sha256": "de56ed7dc3373eca133bcdf02996172836d223d5af1decac727862b86a558651"
+    },
+    {
+      "key": "22",
+      "row": 1,
+      "col": 1,
+      "masterCrop": [
+        418,
+        418,
+        836,
+        836
+      ],
+      "contextRect": [
+        370,
+        370,
+        884,
+        884
+      ],
+      "core": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\裁切引导\\core_22.png",
+      "context": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\裁切引导\\context_22.png",
+      "prompt": "Enhance ONLY the FIRST reference image, an exact cropped tile of one continuous overworld map. Preserve the FIRST image's composition pixel-for-pixel in spirit: same field of view, same mountain silhouettes and positions, same river centerlines, river widths, shorelines, lake shapes, ground colors and empty spaces. Do not zoom, crop, shift, widen the view, move a bend, add a hill or lake, or invent any objects. The SECOND image is overlapping neighbor CONTEXT ONLY, not another subject to paint or a replacement composition. Output only the FIRST tile, not the wider context.\nRe-render the first tile as a clean crisp high-detail square at the largest native square resolution, target1254 square: very fine grey-brown dry ink, simple mountain folds, pale cool-grey ridge wash, restrained grey-sage valley wash and small ochre dry-slope wash, quiet light ivory ground. Keep it flat and sparse, NOT realistic detailed rock faces or lush landscape painting. Clarify existing lines and subtle washes, reduce coarse paper grain, no new landforms. Match original low saturation and lightness exactly. Same miniature map scale. Existing river and lake outline takes priority over prettier new bends. Keep every edge's color and landform continuation exactly faithful to the crop for seamless reassembly.\nABSOLUTELY NO trees, grass, reeds, shrubs, bushes, forest, vegetation dots, rocks, buildings, bridges, roads, dotted paths, node circles, labels, symbols, text, borders, clouds, fog, leather, cast shadows, horizon or watermark. No frame or margin. Terrain-only continuation. Only enhance clarity of THIS supplied crop.",
+      "status": "refined",
+      "raw": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\细化原图\\refined_22.png",
+      "source": "E:/tmp/CodexData/generated_images/01a17c6d-4aba-7d13-b435-57d602681fe0/exec-af265bd5-7f11-4962-a91a-110b487f216b.png",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "final": "textures\\world\\bai_chuan\\nine_v03\\bc_22.png",
+      "finalSize": [
+        1254,
+        1254
+      ],
+      "sha256": "b3ae1e3e45414bbecf143f8fe9f72294323b54eb8d701f8966652cd6e91d2330"
+    },
+    {
+      "key": "23",
+      "row": 1,
+      "col": 2,
+      "masterCrop": [
+        836,
+        418,
+        1254,
+        836
+      ],
+      "contextRect": [
+        788,
+        370,
+        1254,
+        884
+      ],
+      "core": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\裁切引导\\core_23.png",
+      "context": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\裁切引导\\context_23.png",
+      "prompt": "Enhance ONLY the FIRST reference image, an exact cropped tile of one continuous overworld map. Preserve the FIRST image's composition pixel-for-pixel in spirit: same field of view, same mountain silhouettes and positions, same river centerlines, river widths, shorelines, lake shapes, ground colors and empty spaces. Do not zoom, crop, shift, widen the view, move a bend, add a hill or lake, or invent any objects. The SECOND image is overlapping neighbor CONTEXT ONLY, not another subject to paint or a replacement composition. Output only the FIRST tile, not the wider context.\nRe-render the first tile as a clean crisp high-detail square at the largest native square resolution, target1254 square: very fine grey-brown dry ink, simple mountain folds, pale cool-grey ridge wash, restrained grey-sage valley wash and small ochre dry-slope wash, quiet light ivory ground. Keep it flat and sparse, NOT realistic detailed rock faces or lush landscape painting. Clarify existing lines and subtle washes, reduce coarse paper grain, no new landforms. Match original low saturation and lightness exactly. Same miniature map scale. Existing river and lake outline takes priority over prettier new bends. Keep every edge's color and landform continuation exactly faithful to the crop for seamless reassembly.\nABSOLUTELY NO trees, grass, reeds, shrubs, bushes, forest, vegetation dots, rocks, buildings, bridges, roads, dotted paths, node circles, labels, symbols, text, borders, clouds, fog, leather, cast shadows, horizon or watermark. No frame or margin. Terrain-only continuation. Only enhance clarity of THIS supplied crop.",
+      "status": "refined",
+      "raw": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\细化原图\\refined_23.png",
+      "source": "E:\\tmp\\CodexData\\generated_images\\01a17c6d-4aba-7d13-b435-57d602681fe0\\exec-8cc6549a-7364-41b5-90eb-cd0b0289fdea.png",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "final": "textures\\world\\bai_chuan\\nine_v03\\bc_23.png",
+      "finalSize": [
+        1254,
+        1254
+      ],
+      "sha256": "3377844a12004a6308531b71b9d9cc4e74dd62d2736144f664ce6e90728e66af"
+    },
+    {
+      "key": "31",
+      "row": 2,
+      "col": 0,
+      "masterCrop": [
+        0,
+        836,
+        418,
+        1254
+      ],
+      "contextRect": [
+        0,
+        788,
+        466,
+        1254
+      ],
+      "core": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\裁切引导\\core_31.png",
+      "context": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\裁切引导\\context_31.png",
+      "prompt": "Enhance ONLY the FIRST reference image, an exact cropped tile of one continuous overworld map. Preserve the FIRST image's composition pixel-for-pixel in spirit: same field of view, same mountain silhouettes and positions, same river centerlines, river widths, shorelines, lake shapes, ground colors and empty spaces. Do not zoom, crop, shift, widen the view, move a bend, add a hill or lake, or invent any objects. The SECOND image is overlapping neighbor CONTEXT ONLY, not another subject to paint or a replacement composition. Output only the FIRST tile, not the wider context.\nRe-render the first tile as a clean crisp high-detail square at the largest native square resolution, target1254 square: very fine grey-brown dry ink, simple mountain folds, pale cool-grey ridge wash, restrained grey-sage valley wash and small ochre dry-slope wash, quiet light ivory ground. Keep it flat and sparse, NOT realistic detailed rock faces or lush landscape painting. Clarify existing lines and subtle washes, reduce coarse paper grain, no new landforms. Match original low saturation and lightness exactly. Same miniature map scale. Existing river and lake outline takes priority over prettier new bends. Keep every edge's color and landform continuation exactly faithful to the crop for seamless reassembly.\nABSOLUTELY NO trees, grass, reeds, shrubs, bushes, forest, vegetation dots, rocks, buildings, bridges, roads, dotted paths, node circles, labels, symbols, text, borders, clouds, fog, leather, cast shadows, horizon or watermark. No frame or margin. Terrain-only continuation. Only enhance clarity of THIS supplied crop.",
+      "status": "refined",
+      "raw": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\细化原图\\refined_31.png",
+      "source": "E:\\tmp\\CodexData\\generated_images\\01a17c6d-4aba-7d13-b435-57d602681fe0\\exec-24539e8a-11e6-48c4-96e4-94ce1f606279.png",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "final": "textures\\world\\bai_chuan\\nine_v03\\bc_31.png",
+      "finalSize": [
+        1254,
+        1254
+      ],
+      "sha256": "bbf73971210ba955aa84eee11be882bc2bd9461ca06ab42ffadfc1f377b44e5d"
+    },
+    {
+      "key": "32",
+      "row": 2,
+      "col": 1,
+      "masterCrop": [
+        418,
+        836,
+        836,
+        1254
+      ],
+      "contextRect": [
+        370,
+        788,
+        884,
+        1254
+      ],
+      "core": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\裁切引导\\core_32.png",
+      "context": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\裁切引导\\context_32.png",
+      "prompt": "Enhance ONLY the FIRST reference image, an exact cropped tile of one continuous overworld map. Preserve the FIRST image's composition pixel-for-pixel in spirit: same field of view, same mountain silhouettes and positions, same river centerlines, river widths, shorelines, lake shapes, ground colors and empty spaces. Do not zoom, crop, shift, widen the view, move a bend, add a hill or lake, or invent any objects. The SECOND image is overlapping neighbor CONTEXT ONLY, not another subject to paint or a replacement composition. Output only the FIRST tile, not the wider context.\nRe-render the first tile as a clean crisp high-detail square at the largest native square resolution, target1254 square: very fine grey-brown dry ink, simple mountain folds, pale cool-grey ridge wash, restrained grey-sage valley wash and small ochre dry-slope wash, quiet light ivory ground. Keep it flat and sparse, NOT realistic detailed rock faces or lush landscape painting. Clarify existing lines and subtle washes, reduce coarse paper grain, no new landforms. Match original low saturation and lightness exactly. Same miniature map scale. Existing river and lake outline takes priority over prettier new bends. Keep every edge's color and landform continuation exactly faithful to the crop for seamless reassembly.\nABSOLUTELY NO trees, grass, reeds, shrubs, bushes, forest, vegetation dots, rocks, buildings, bridges, roads, dotted paths, node circles, labels, symbols, text, borders, clouds, fog, leather, cast shadows, horizon or watermark. No frame or margin. Terrain-only continuation. Only enhance clarity of THIS supplied crop.",
+      "status": "refined",
+      "raw": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\细化原图\\refined_32.png",
+      "source": "E:\\tmp\\CodexData\\generated_images\\01a17c6d-4aba-7d13-b435-57d602681fe0\\exec-2947b321-8cca-4136-b2ab-5b3fac9c4661.png",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "final": "textures\\world\\bai_chuan\\nine_v03\\bc_32.png",
+      "finalSize": [
+        1254,
+        1254
+      ],
+      "sha256": "b235f23a53540038c368c2c7adecab5f6746b732694a3529d15c6778ba32061e"
+    },
+    {
+      "key": "33",
+      "row": 2,
+      "col": 2,
+      "masterCrop": [
+        836,
+        836,
+        1254,
+        1254
+      ],
+      "contextRect": [
+        788,
+        788,
+        1254,
+        1254
+      ],
+      "core": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\裁切引导\\core_33.png",
+      "context": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\裁切引导\\context_33.png",
+      "prompt": "Enhance ONLY the FIRST reference image, an exact cropped tile of one continuous overworld map. Preserve the FIRST image's composition pixel-for-pixel in spirit: same field of view, same mountain silhouettes and positions, same river centerlines, river widths, shorelines, lake shapes, ground colors and empty spaces. Do not zoom, crop, shift, widen the view, move a bend, add a hill or lake, or invent any objects. The SECOND image is overlapping neighbor CONTEXT ONLY, not another subject to paint or a replacement composition. Output only the FIRST tile, not the wider context.\nRe-render the first tile as a clean crisp high-detail square at the largest native square resolution, target1254 square: very fine grey-brown dry ink, simple mountain folds, pale cool-grey ridge wash, restrained grey-sage valley wash and small ochre dry-slope wash, quiet light ivory ground. Keep it flat and sparse, NOT realistic detailed rock faces or lush landscape painting. Clarify existing lines and subtle washes, reduce coarse paper grain, no new landforms. Match original low saturation and lightness exactly. Same miniature map scale. Existing river and lake outline takes priority over prettier new bends. Keep every edge's color and landform continuation exactly faithful to the crop for seamless reassembly.\nABSOLUTELY NO trees, grass, reeds, shrubs, bushes, forest, vegetation dots, rocks, buildings, bridges, roads, dotted paths, node circles, labels, symbols, text, borders, clouds, fog, leather, cast shadows, horizon or watermark. No frame or margin. Terrain-only continuation. Only enhance clarity of THIS supplied crop.",
+      "status": "refined",
+      "raw": "E:\\stacklands\\docs\\美术规范\\百川母图与九块细化_20261028\\细化原图\\refined_33.png",
+      "source": "E:\\tmp\\CodexData\\generated_images\\01a17c6d-4aba-7d13-b435-57d602681fe0\\exec-e8e7bdea-0369-4932-91df-e34efc020e50.png",
+      "nativeSize": [
+        1254,
+        1254
+      ],
+      "final": "textures\\world\\bai_chuan\\nine_v03\\bc_33.png",
+      "finalSize": [
+        1254,
+        1254
+      ],
+      "sha256": "5bf2a1a2f3051cf5169ef1bc5651bd63966482c24a0d19417f4f14eb530307e2"
+    }
+  ],
+  "finalWorldSize": [
+    3762,
+    3762
+  ],
+  "finalTileSize": [
+    1254,
+    1254
+  ],
+  "seamAudit": [
+    {
+      "axis": "x",
+      "position": 1254,
+      "bandMaxError": 0
+    },
+    {
+      "axis": "y",
+      "position": 1254,
+      "bandMaxError": 0
+    },
+    {
+      "axis": "x",
+      "position": 2508,
+      "bandMaxError": 0
+    },
+    {
+      "axis": "y",
+      "position": 2508,
+      "bandMaxError": 0
+    }
+  ],
+  "assembly": "AI-refined interiors with master-locked 96px internal boundary bands; smooth 128px transition; not nine independently painted edges"
+}

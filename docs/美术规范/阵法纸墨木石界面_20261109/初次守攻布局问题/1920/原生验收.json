@@ -1,0 +1,229 @@
+{
+  "date": "2026-11-09",
+  "passed": true,
+  "run_mode": "preview_only",
+  "stage": "首轮画面预览",
+  "error": null,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "input": "Viewport.PushInput mouse hit testing and keyboard text entry; public examples used only as fixture preparation",
+  "isolated_profile": true,
+  "appdata": "E:\\stacklands\\.godot\\test-results\\formation_paper_ui\\20261109_155607_633_1920\\isolated_appdata",
+  "user_data_dir": "E:/stacklands/.godot/test-results/formation_paper_ui/20261109_155607_633_1920/isolated_appdata/SlayTheSpire2",
+  "character_save_opened": false,
+  "real_journey_loaded": false,
+  "artifacts_or_knowledge_granted": false,
+  "draft_path": "user://formation_paper_ui/1920/isolated_draft.json",
+  "scope": "First native workspace and guard screenshots only; full interaction is not yet checked.",
+  "visual_review": "pending screenshot inspection by agent",
+  "checks": [
+    "视口采用本档真实分辨率",
+    "启动器使用本验收专属APPDATA",
+    "百工验收人物未进入世界或载入旅程",
+    "截图真实尺寸 01_百工入口.png",
+    "保存原生画面 01_百工入口.png",
+    "原生目标可见 OpenFormationWorkspace",
+    "原生命中点在视口内 OpenFormationWorkspace",
+    "原生按钮当前可操作 OpenFormationWorkspace",
+    "实际点击百工入口打开全屏原生工作台",
+    "草图只写隔离用户目录",
+    "默认移动模式不常驻显示格线",
+    "原基础4×4草图及连通状态保持",
+    "宿主覆盖完整视口而非百工旧内嵌小框",
+    "1672×941设计画布等比缩放",
+    "案面使用真实贴图且不阻挡绘图",
+    "FormationPaperHeader采用纸框纹理",
+    "界面边界完整 FormationPaperHeader",
+    "FormationPartsPaper采用纸框纹理",
+    "界面边界完整 FormationPartsPaper",
+    "FormationInspectorPaper采用纸框纹理",
+    "界面边界完整 FormationInspectorPaper",
+    "FormationBoardSummary采用纸框纹理",
+    "界面边界完整 FormationBoardSummary",
+    "顶栏采用62设计单位紧凑行",
+    "OpenGuardTrial为22字级46高",
+    "OpenGuardTrial使用同族纸面按钮",
+    "界面边界完整 OpenGuardTrial",
+    "SaveDraft为22字级46高",
+    "SaveDraft使用同族纸面按钮",
+    "界面边界完整 SaveDraft",
+    "LoadDraft为22字级46高",
+    "LoadDraft使用同族纸面按钮",
+    "界面边界完整 LoadDraft",
+    "FormationHelp为22字级46高",
+    "FormationHelp使用同族纸面按钮",
+    "界面边界完整 FormationHelp",
+    "ReturnFormationWorkspace为22字级46高",
+    "ReturnFormationWorkspace使用同族纸面按钮",
+    "界面边界完整 ReturnFormationWorkspace",
+    "顶栏全部按钮实际垂直同心",
+    "顶栏标题与按钮同字号",
+    "返回带独立且穿透的小三角",
+    "界面边界完整 FormationDrawingArea",
+    "界面边界完整 FormationDrawingTools",
+    "界面边界完整 FormationCounts",
+    "界面边界完整 FormationValidation",
+    "界面边界完整 LogicInspector",
+    "三栏实际边界互不覆盖",
+    "中央阵盘保留三栏中最大宽度",
+    "基础盘真正使用已选B空盘底路径",
+    "B盘底实际载入纹理",
+    "基础Sensor实际使用B同族素材",
+    "基础Source实际使用B同族素材",
+    "基础Ward实际使用B同族素材",
+    "基础Eye实际使用B同族素材",
+    "画布未叠加常驻Label控件；绘制文字另由截图目视核对",
+    "截图真实尺寸 02_阵法全屏工作台.png",
+    "保存原生画面 02_阵法全屏工作台.png",
+    "原生目标可见 OpenGuardTrial",
+    "原生命中点在视口内 OpenGuardTrial",
+    "原生按钮当前可操作 OpenGuardTrial",
+    "原生目标可见 @SpinBoxLineEdit@188",
+    "原生命中点在视口内 @SpinBoxLineEdit@188",
+    "GuardHealthInput真实键入数值",
+    "原生目标可见 GuardSetHealth",
+    "原生命中点在视口内 GuardSetHealth",
+    "原生按钮当前可操作 GuardSetHealth",
+    "截图真实尺寸 09_守攻低生命开罩.png",
+    "保存原生画面 09_守攻低生命开罩.png",
+    "原生目标可见 GuardReturn",
+    "原生命中点在视口内 GuardReturn",
+    "原生按钮当前可操作 GuardReturn"
+  ],
+  "bounds": [
+    {
+      "name": "FormationPaperHeader",
+      "type": "PanelContainer",
+      "x": 28.055237,
+      "y": 11.477152,
+      "width": 1863.8895,
+      "height": 71.15834
+    },
+    {
+      "name": "FormationPartsPaper",
+      "type": "PanelContainer",
+      "x": 28.055237,
+      "y": 135.43039,
+      "width": 376.4506,
+      "height": 864.22955
+    },
+    {
+      "name": "FormationInspectorPaper",
+      "type": "PanelContainer",
+      "x": 1490.2444,
+      "y": 135.43039,
+      "width": 401.70032,
+      "height": 864.22955
+    },
+    {
+      "name": "FormationBoardSummary",
+      "type": "PanelContainer",
+      "x": 422.86926,
+      "y": 921.61536,
+      "width": 1049.0117,
+      "height": 78.04463
+    },
+    {
+      "name": "OpenGuardTrial",
+      "type": "Button",
+      "x": 161.1902,
+      "y": 20.658875,
+      "width": 167.56642,
+      "height": 52.7949
+    },
+    {
+      "name": "SaveDraft",
+      "type": "Button",
+      "x": 1343.3369,
+      "y": 20.658875,
+      "width": 142.31668,
+      "height": 52.7949
+    },
+    {
+      "name": "LoadDraft",
+      "type": "Button",
+      "x": 1499.426,
+      "y": 20.658875,
+      "width": 142.31668,
+      "height": 52.7949
+    },
+    {
+      "name": "FormationHelp",
+      "type": "Button",
+      "x": 1655.5154,
+      "y": 20.658875,
+      "width": 91.817215,
+      "height": 52.7949
+    },
+    {
+      "name": "ReturnFormationWorkspace",
+      "type": "Button",
+      "x": 1761.1052,
+      "y": 20.658875,
+      "width": 130.83954,
+      "height": 52.7949
+    },
+    {
+      "name": "FormationDrawingArea",
+      "type": "VBoxContainer",
+      "x": 422.86926,
+      "y": 135.43039,
+      "width": 1049.0117,
+      "height": 864.22955
+    },
+    {
+      "name": "FormationDrawingTools",
+      "type": "HBoxContainer",
+      "x": 422.86926,
+      "y": 861.9341,
+      "width": 1049.0117,
+      "height": 50.49947
+    },
+    {
+      "name": "FormationCounts",
+      "type": "Label",
+      "x": 434.3464,
+      "y": 933.0925,
+      "width": 1026.0574,
+      "height": 25.249735
+    },
+    {
+      "name": "FormationValidation",
+      "type": "Label",
+      "x": 434.3464,
+      "y": 962.9331,
+      "width": 1026.0574,
+      "height": 25.249735
+    },
+    {
+      "name": "LogicInspector",
+      "type": "TabContainer",
+      "x": 1508.6078,
+      "y": 215.77046,
+      "width": 364.97345,
+      "height": 684.03827
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "01_百工入口.png",
+      "width": 1920,
+      "height": 1080,
+      "view": "actual Godot root Viewport; no repaint"
+    },
+    {
+      "file": "02_阵法全屏工作台.png",
+      "width": 1920,
+      "height": 1080,
+      "view": "actual Godot root Viewport; no repaint"
+    },
+    {
+      "file": "09_守攻低生命开罩.png",
+      "width": 1920,
+      "height": 1080,
+      "view": "actual Godot root Viewport; no repaint"
+    }
+  ]
+}

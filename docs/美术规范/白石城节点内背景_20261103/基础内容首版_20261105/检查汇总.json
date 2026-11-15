@@ -1,0 +1,163 @@
+{
+  "date": "2026-11-05",
+  "result": "pass",
+  "build": "0 warnings, 0 errors",
+  "native_checks": 89,
+  "prologue_checks": 51,
+  "new_backgrounds_installed": 10,
+  "existing_lecture_background": 1,
+  "content_spaces": 11,
+  "local_dialogue_passages": 20,
+  "readonly_notice_topics": 3,
+  "screenshots": [
+    {
+      "path": "npc_menu.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "037e3eeedee042c2cdb42f410bfe27aec6500a7b61c4e45ff0e324c627f0a2f4"
+    },
+    {
+      "path": "npc_dialogue.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "72a0ea88962ba999c4216836ed13f6034b3970b496ca51870c6d9bc246ec2c30"
+    },
+    {
+      "path": "npc_trade.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "fbe5f7abab6cf8556478c4dfada43f9be80eb10163bc24bbac4eb1caa178dcec"
+    },
+    {
+      "path": "notice_reading.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "49a58be98deca6f48ec8c8ebbad1263be63fa845d417e7339d0fe2063bf4ea9e"
+    },
+    {
+      "path": "book_catalog.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "264b5c7e3543cf2217c9ffe891eed84fa30ce3422c40ca90e4809b8b26cbd0a8"
+    },
+    {
+      "path": "city_overview.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "4dba091d2e292fdbc1749159f0ea46ad3cc8b5c12d2f5696e460d7eddb01c76d"
+    },
+    {
+      "path": "street_south.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "3a85213f2d5bb510811bc00036a9c6abc99a32a1b5e1d57ba4ce1c400496f620"
+    },
+    {
+      "path": "inn.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "23c554ae24258cb65f4013455fc6bbd524d12de2b485835396e8e788fa14e9d8"
+    },
+    {
+      "path": "street_east.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "892ee98384224d48d96eb12328a9ac26184ccedacf94b0aae248c663fe48a144"
+    },
+    {
+      "path": "market.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "1888cbb6fb716434b9e3f67e150b1086c7817ba2a843c4d440881415a5ee1503"
+    },
+    {
+      "path": "bookshop.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "d38ecdb213d9576f3bb6fd8b02b0e14674406356aa2b69f73e503a64d76c9346"
+    },
+    {
+      "path": "street_fuqian.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "4b14eee35f02c8b0520a309dc8aabd3c227ddf9c1cbfa9b46ef0da75637b011a"
+    },
+    {
+      "path": "notice_hall.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "e9f7b09932ad50a8bda88bd39fefd167c851c728e95feca4f1ea3d38a8a9313c"
+    },
+    {
+      "path": "city_office.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "6acec1bf830a0c19a593b3ee521f556d9a86fe3378170b6d01fc5b24e72cfaa6"
+    },
+    {
+      "path": "lecture.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "cf2acab9cb00dcf98ab8e372155d9d689f87420bba3cebc098051a2d52ba6b38"
+    },
+    {
+      "path": "lecture_study.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "3933a9dd5f831bee2d0b6f6c86f28cfb6b81061c6b60ebf076fe78e53d25c7b1"
+    },
+    {
+      "path": "street_west.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "aa888e158d4d2fd82a6eb180c24807a3fba0dab67259cc6a8b39f23843623d64"
+    },
+    {
+      "path": "notice_1280.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "51567e8615916a25992ef084a1c5c34d6bb5a597a0299e8ff15f790be1ac3609"
+    }
+  ],
+  "gallery_javascript": "syntax_check_pass",
+  "native_log": "tmp/baishi_content_native_20261105/stdout_release.log",
+  "prologue_log": "tmp/baishi_lecture_content_smoke_20261105/stdout_final.log",
+  "known_unchanged_limit": "Existing first-volume attribute requirements leave 248 of 1612 tested legal character combinations with no currently eligible book; mortal attribute growth remains deferred by user direction.",
+  "runtime_warnings": "Existing 卸力.tres UID fallback and ObjectDB exit warnings; no runtime or script errors."
+}

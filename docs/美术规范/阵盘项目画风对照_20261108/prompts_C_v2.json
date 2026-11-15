@@ -1,0 +1,31 @@
+{
+  "title": "C 墨绘青石 v2（当前最终候选）",
+  "date": "2026-11-08",
+  "generator": "built-in image_gen",
+  "mode": "local-edit of existing C target after view_image inspection",
+  "transparent_background": true,
+  "prompt": "Use case: precise-object-edit. This supplied image is the ONLY edit target. Make exactly TWO tiny local corrections to this existing hand-painted cultivation-game formation plate. Preserve the entire rest of the image: exact plate shape, clipped corners, rim patterns, brushwork, light grey-celadon palette, ivory edge highlights, all existing contact shadows, all component placements and sizes, horizontal marrow trough, right-side double curved jade ward, the upper cinnabar signal line and lower pale ochre-gold energy line, their connection points and their non-crossing layout. Preserve true transparent alpha outside the plate. Do not redraw or redesign the overall illustration.\n\nEDIT AREA 1, upper-left sensor, ONLY the tall ivory cylinder inside the small octagonal stone seat: remove that upright cylindrical post and its visible vertical sidewall. Replace it with a very short BONE-JADE FORKED NEEDLE LYING FLAT inside the SAME small shallow stone seat. The ivory needle is viewed from exactly 90 degrees overhead; show its flat top silhouette, a small pointed/forked end and a thin painted edge only, with almost no height. It must NOT be an upright pole, cylinder, peg, button, tall pedestal or something seen obliquely. Keep the outer sensor seat, existing small east-side connector and cinnabar line exactly where they are.\n\nEDIT AREA 2, middle-left square formation-eye stone, ONLY the incised mark on its top face: remove the current mark resembling the number 2. Replace it with a small abstract arrangement of THREE SEPARATE short angular engraved brush-cuts, offset and at differing orientations, modest and nonlinguistic. The cuts must NOT combine into any recognizable digit, Roman letter, Chinese character, number 2, letter Z or S. Keep this square stone, outline, shading and location unchanged.\n\nEverything outside those two local component interiors remains visually identical. No extra wires, no new symbols anywhere else, no extra objects, no UI, no text, no grid, no glow, no change in camera, style, framing, palette or transparency.",
+  "edit_target": "E:/stacklands/docs/美术规范/阵盘项目画风对照_20261108/C_墨绘青石.png",
+  "raw_path": "E:/tmp/CodexData/generated_images/01a1ba6c-5f78-7ae3-a6b7-fe90e469ba47/exec-3b6393f3-dcca-47bc-909f-42c52e760abe.png",
+  "output_path": "docs/美术规范/阵盘项目画风对照_20261108/C_墨绘青石_v2.png",
+  "history": {
+    "previous": "C_墨绘青石.png",
+    "status": "历史稿，仅供追溯；不覆盖或修改",
+    "reason": "感应件原竖柱侧壁削弱俯视，阵眼原纹样近似数字2",
+    "original_sha256": "6ee4c75a2ae8c7d37753a68a5acf0df8880a28571900612b92927413ea43aa37"
+  },
+  "local_changes": [
+    "左上感应件改为小浅座内平伏的分叉骨玉短针，只见顶面与浅边，不再有竖柱侧壁",
+    "中左阵眼改为三组分离短折刻痕，不连成字母或数字"
+  ],
+  "actual_visual_checks": [
+    "墨绘石盘、灰青/象牙白色调、原四件构件位置与剪影尺度保持同一布局",
+    "上朱砂与下浅赭金仍各一条且不交叉，髓槽与双弧护持器接点关系保持",
+    "未产生第三条线、额外构件、网格、旗、文字UI或光晕",
+    "1254×1254 RGBA，Alpha范围0至255，四角完全透明",
+    "原图SHA256与初版交付一致，未覆盖原图"
+  ],
+  "limitations": "风格理想图待用户验收，4x4足迹与接点未逐格验算；图像工具局部编辑保持整体视觉关系，不宣称非编辑区域逐像素一致。",
+  "postprocess": "原始生成PNG原样复制，没有代码合成或重绘。",
+  "scope": "仅新增C_墨绘青石_v2.png和本prompts_C_v2.json，未改README、索引、旧记录或代码。"
+}

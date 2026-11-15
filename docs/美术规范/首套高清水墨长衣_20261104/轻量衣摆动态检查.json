@@ -1,0 +1,3933 @@
+{
+	"checks": 19,
+	"failures": [],
+	"frames_checked": 682,
+	"maximum_applied_offset": 6.99297046661377,
+	"maximum_waist_drift": 0.0,
+	"minimum_safety_scale": 1.0,
+	"minimum_triangle_area_ratio": 0.810070701079008,
+	"model": "lightweight project visual secondary layer; not original DynamicBone",
+	"passed": true,
+	"samples": [
+		{
+			"clip": "Idle",
+			"clock": 0.2,
+			"facing": 1.0,
+			"hem": {
+				"active": false,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							0.0,
+							0.0
+						],
+						"rate_world": [
+							0.0,
+							0.0
+						]
+					},
+					{
+						"offset_world": [
+							0.0,
+							0.0
+						],
+						"rate_world": [
+							0.0,
+							0.0
+						]
+					},
+					{
+						"offset_world": [
+							0.0,
+							0.0
+						],
+						"rate_world": [
+							0.0,
+							0.0
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 0.0,
+				"minimum_triangle_area_ratio": 1.0,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				0.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Idle",
+			"clock": 0.4,
+			"facing": 1.0,
+			"hem": {
+				"active": false,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							0.0,
+							0.0
+						],
+						"rate_world": [
+							0.0,
+							0.0
+						]
+					},
+					{
+						"offset_world": [
+							0.0,
+							0.0
+						],
+						"rate_world": [
+							0.0,
+							0.0
+						]
+					},
+					{
+						"offset_world": [
+							0.0,
+							0.0
+						],
+						"rate_world": [
+							0.0,
+							0.0
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 0.0,
+				"minimum_triangle_area_ratio": 1.0,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				0.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 0.6,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-1.15930724143982,
+							-0.133931636810303
+						],
+						"rate_world": [
+							-10.8648052215576,
+							-1.4598650932312
+						]
+					},
+					{
+						"offset_world": [
+							-1.64211750030518,
+							-0.165072679519653
+						],
+						"rate_world": [
+							-20.462345123291,
+							-2.20616602897644
+						]
+					},
+					{
+						"offset_world": [
+							-1.57798147201538,
+							-0.22888058423996
+						],
+						"rate_world": [
+							-22.5391254425049,
+							-3.25559568405151
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 1.6502867937088,
+				"minimum_triangle_area_ratio": 0.991999355833617,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 0.800000000000001,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-1.96008837223053,
+							-0.316380798816681
+						],
+						"rate_world": [
+							-0.73381096124649,
+							-0.538423418998718
+						]
+					},
+					{
+						"offset_world": [
+							-3.9680027961731,
+							-0.545038819313049
+						],
+						"rate_world": [
+							-3.84320878982544,
+							-1.63124072551727
+						]
+					},
+					{
+						"offset_world": [
+							-5.45015287399292,
+							-0.752403736114502
+						],
+						"rate_world": [
+							-12.2811803817749,
+							-1.73507869243622
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 5.50184345245361,
+				"minimum_triangle_area_ratio": 0.994262805660032,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 1.0,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-1.99905407428741,
+							-0.359021186828613
+						],
+						"rate_world": [
+							-0.0209743268787861,
+							0.095815472304821
+						]
+					},
+					{
+						"offset_world": [
+							-4.14399194717407,
+							-0.845483720302582
+						],
+						"rate_world": [
+							0.232248306274414,
+							-1.27622509002686
+						]
+					},
+					{
+						"offset_world": [
+							-6.53197479248047,
+							-1.07036256790161
+						],
+						"rate_world": [
+							-0.999340057373047,
+							-1.83241498470306
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.61909151077271,
+				"minimum_triangle_area_ratio": 0.984854517131352,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 1.2,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-1.9999932050705,
+							-0.28289520740509
+						],
+						"rate_world": [
+							-0.000268906529527158,
+							0.565223395824432
+						]
+					},
+					{
+						"offset_world": [
+							-4.10485696792603,
+							-0.977517604827881
+						],
+						"rate_world": [
+							0.0902073606848717,
+							0.0346512980759144
+						]
+					},
+					{
+						"offset_world": [
+							-6.44034194946289,
+							-1.50778090953827
+						],
+						"rate_world": [
+							0.913499236106873,
+							-2.25048327445984
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.61448431015015,
+				"minimum_triangle_area_ratio": 0.9917551561724,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 1.4,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-2.00000071525574,
+							-0.171901822090149
+						],
+						"rate_world": [
+							0.00000629951091468683,
+							0.435115188360214
+						]
+					},
+					{
+						"offset_world": [
+							-4.09933471679688,
+							-0.820402085781097
+						],
+						"rate_world": [
+							-0.000356894917786121,
+							1.32958090305328
+						]
+					},
+					{
+						"offset_world": [
+							-6.31385660171509,
+							-1.81297993659973
+						],
+						"rate_world": [
+							0.329134881496429,
+							-0.538667798042297
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.56899547576904,
+				"minimum_triangle_area_ratio": 0.980466461905439,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 1.6,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-2.00000071525574,
+							-0.143484279513359
+						],
+						"rate_world": [
+							0.00000668066240905318,
+							-0.155085310339928
+						]
+					},
+					{
+						"offset_world": [
+							-4.09986782073975,
+							-0.53648841381073
+						],
+						"rate_world": [
+							-0.00186806579586118,
+							1.22777187824249
+						]
+					},
+					{
+						"offset_world": [
+							-6.29018640518188,
+							-1.65429413318634
+						],
+						"rate_world": [
+							-0.00268094800412655,
+							1.89379692077637
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.50408554077148,
+				"minimum_triangle_area_ratio": 0.944910584793741,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 1.8,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-2.00000071525574,
+							-0.227690473198891
+						],
+						"rate_world": [
+							0.00000668095981382066,
+							-0.58130669593811
+						]
+					},
+					{
+						"offset_world": [
+							-4.10000658035278,
+							-0.425399661064148
+						],
+						"rate_world": [
+							-0.000085205290815793,
+							-0.172193735837936
+						]
+					},
+					{
+						"offset_world": [
+							-6.29616689682007,
+							-1.17713761329651
+						],
+						"rate_world": [
+							-0.0320267677307129,
+							2.38633942604065
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.40526151657104,
+				"minimum_triangle_area_ratio": 0.990806502266679,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 2.0,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-2.00000071525574,
+							-0.335485458374023
+						],
+						"rate_world": [
+							0.00000668095981382066,
+							-0.392887771129608
+						]
+					},
+					{
+						"offset_world": [
+							-4.1000018119812,
+							-0.604644238948822
+						],
+						"rate_world": [
+							0.0000259362968790811,
+							-1.39027667045593
+						]
+					},
+					{
+						"offset_world": [
+							-6.29995346069336,
+							-0.881152391433716
+						],
+						"rate_world": [
+							-0.0079460758715868,
+							0.3573157787323
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.36127710342407,
+				"minimum_triangle_area_ratio": 0.989360870443269,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 2.2,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-2.00000071525574,
+							-0.352892994880676
+						],
+						"rate_world": [
+							0.00000668095981382066,
+							0.210948631167412
+						]
+					},
+					{
+						"offset_world": [
+							-4.1000018119812,
+							-0.884713113307953
+						],
+						"rate_world": [
+							0.000014304275282484,
+							-1.13836991786957
+						]
+					},
+					{
+						"offset_world": [
+							-6.30035305023193,
+							-1.0801774263382
+						],
+						"rate_world": [
+							0.00101380608975887,
+							-2.05504941940308
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.39228010177612,
+				"minimum_triangle_area_ratio": 0.98539062901944,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 2.4,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-2.00000071525574,
+							-0.261507302522659
+						],
+						"rate_world": [
+							0.00000668095981382066,
+							0.591739773750305
+						]
+					},
+					{
+						"offset_world": [
+							-4.1000018119812,
+							-0.969477236270905
+						],
+						"rate_world": [
+							0.0000140655838549719,
+							0.317188382148743
+						]
+					},
+					{
+						"offset_world": [
+							-6.30009460449219,
+							-1.56446552276611
+						],
+						"rate_world": [
+							0.00101525615900755,
+							-2.29609346389771
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.49143600463867,
+				"minimum_triangle_area_ratio": 0.998007059465184,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 2.6,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-2.00000071525574,
+							-0.157954439520836
+						],
+						"rate_world": [
+							0.00000668095981382066,
+							0.34685891866684
+						]
+					},
+					{
+						"offset_world": [
+							-4.1000018119812,
+							-0.769311368465424
+						],
+						"rate_world": [
+							0.0000140606853165082,
+							1.43737018108368
+						]
+					},
+					{
+						"offset_world": [
+							-6.29999113082886,
+							-1.82205033302307
+						],
+						"rate_world": [
+							0.000163572622113861,
+							-0.109253153204918
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.55818271636963,
+				"minimum_triangle_area_ratio": 0.964343843868159,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 2.79999999999999,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-2.00000071525574,
+							-0.151725336909294
+						],
+						"rate_world": [
+							0.00000668095981382066,
+							-0.264770984649658
+						]
+					},
+					{
+						"offset_world": [
+							-4.1000018119812,
+							-0.495859622955322
+						],
+						"rate_world": [
+							0.0000140605843625963,
+							1.03775835037231
+						]
+					},
+					{
+						"offset_world": [
+							-6.29998922348022,
+							-1.58053457736969
+						],
+						"rate_world": [
+							-0.0000543433889106382,
+							2.19328618049622
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.49522590637207,
+				"minimum_triangle_area_ratio": 0.94686371109683,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 2.99999999999999,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-2.00000071525574,
+							-0.249406278133392
+						],
+						"rate_world": [
+							0.00000668095981382066,
+							-0.596446931362152
+						]
+					},
+					{
+						"offset_world": [
+							-4.1000018119812,
+							-0.438254296779633
+						],
+						"rate_world": [
+							0.0000140605843625963,
+							-0.459120154380798
+						]
+					},
+					{
+						"offset_world": [
+							-6.29999923706055,
+							-1.09526383876801
+						],
+						"rate_world": [
+							-0.0000236356772802537,
+							2.17680501937866
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.39449882507324,
+				"minimum_triangle_area_ratio": 1.0,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 3.19999999999999,
+			"facing": -1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							1.13997113704681,
+							-0.347714990377426
+						],
+						"rate_world": [
+							12.868353843689,
+							-0.297473967075348
+						]
+					},
+					{
+						"offset_world": [
+							1.04388785362244,
+							-0.657404065132141
+						],
+						"rate_world": [
+							33.6428642272949,
+							-1.47055065631866
+						]
+					},
+					{
+						"offset_world": [
+							-0.820288062095642,
+							-0.879334509372711
+						],
+						"rate_world": [
+							46.2939834594727,
+							-0.141315326094627
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 1.2324036359787,
+				"minimum_triangle_area_ratio": 0.864075060673564,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				-114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 3.39999999999999,
+			"facing": -1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							1.96680200099945,
+							-0.342705368995667
+						],
+						"rate_world": [
+							0.63918274641037,
+							0.316030979156494
+						]
+					},
+					{
+						"offset_world": [
+							4.0885066986084,
+							-0.92159241437912
+						],
+						"rate_world": [
+							3.467937707901,
+							-0.927104294300079
+						]
+					},
+					{
+						"offset_world": [
+							5.59452772140503,
+							-1.16105997562408
+						],
+						"rate_world": [
+							16.7065734863281,
+							-2.31002187728882
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 5.71373844146729,
+				"minimum_triangle_area_ratio": 0.98616011732457,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				-114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 3.59999999999999,
+			"facing": -1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							1.99933838844299,
+							-0.239674374461174
+						],
+						"rate_world": [
+							0.0156157119199634,
+							0.595382750034332
+						]
+					},
+					{
+						"offset_world": [
+							4.16215038299561,
+							-0.951481461524963
+						],
+						"rate_world": [
+							-0.521034181118011,
+							0.596609950065613
+						]
+					},
+					{
+						"offset_world": [
+							6.79732418060303,
+							-1.64256024360657
+						],
+						"rate_world": [
+							-0.12919819355011,
+							-2.03624200820923
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.99297046661377,
+				"minimum_triangle_area_ratio": 1.0,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				-114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 3.79999999999999,
+			"facing": -1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							1.99999928474426,
+							-0.147561103105545
+						],
+						"rate_world": [
+							0.00012882356531918,
+							0.245210602879524
+						]
+					},
+					{
+						"offset_world": [
+							4.10327005386353,
+							-0.715468227863312
+						],
+						"rate_world": [
+							-0.0966003835201263,
+							1.48950231075287
+						]
+					},
+					{
+						"offset_world": [
+							6.49455738067627,
+							-1.81472408771515
+						],
+						"rate_world": [
+							-1.6239447593689,
+							0.390545666217804
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.74333095550537,
+				"minimum_triangle_area_ratio": 0.959494276104842,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				-114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 3.99999999999999,
+			"facing": -1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							2.00000143051147,
+							-0.163760870695114
+						],
+						"rate_world": [
+							-0.0000135044492708403,
+							-0.364233642816544
+						]
+					},
+					{
+						"offset_world": [
+							4.09888458251953,
+							-0.463099807500839
+						],
+						"rate_world": [
+							0.00597191043198109,
+							0.807479381561279
+						]
+					},
+					{
+						"offset_world": [
+							6.3024754524231,
+							-1.49551510810852
+						],
+						"rate_world": [
+							-0.403638154268265,
+							2.40439248085022
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.4774808883667,
+				"minimum_triangle_area_ratio": 0.950683681312249,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				-114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 4.19999999999999,
+			"facing": -1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							2.00000143051147,
+							-0.271145045757294
+						],
+						"rate_world": [
+							-0.0000133620314954896,
+							-0.588557660579681
+						]
+					},
+					{
+						"offset_world": [
+							4.09987926483154,
+							-0.461216151714325
+						],
+						"rate_world": [
+							0.00227096513845026,
+							-0.728326439857483
+						]
+					},
+					{
+						"offset_world": [
+							6.28210830688477,
+							-1.02244710922241
+						],
+						"rate_world": [
+							0.051252868026495,
+							1.87597286701202
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.36476898193359,
+				"minimum_triangle_area_ratio": 1.0,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				-114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 4.39999999999999,
+			"facing": -1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							2.00000143051147,
+							-0.356171637773514
+						],
+						"rate_world": [
+							-0.0000133619214466307,
+							-0.190574049949646
+						]
+					},
+					{
+						"offset_world": [
+							4.10001754760742,
+							-0.711808860301971
+						],
+						"rate_world": [
+							-0.0000181472350959666,
+							-1.49404156208038
+						]
+					},
+					{
+						"offset_world": [
+							6.29518175125122,
+							-0.895714998245239
+						],
+						"rate_world": [
+							0.0515610799193382,
+							-0.635993838310242
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.35858774185181,
+				"minimum_triangle_area_ratio": 0.985325485727913,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				-114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "BackstepWalk",
+			"clock": 4.59999999999999,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							2.00000143051147,
+							-0.328938335180283
+						],
+						"rate_world": [
+							-0.0000133619214466307,
+							0.408911377191544
+						]
+					},
+					{
+						"offset_world": [
+							4.10000371932983,
+							-0.949915528297424
+						],
+						"rate_world": [
+							-0.0000507241602463182,
+							-0.680042386054993
+						]
+					},
+					{
+						"offset_world": [
+							6.30047035217285,
+							-1.24931812286377
+						],
+						"rate_world": [
+							0.00832594558596611,
+							-2.47549629211426
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.42314004898071,
+				"minimum_triangle_area_ratio": 0.851257958185852,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				-114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "BackstepWalk",
+			"clock": 4.79999999999999,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							2.00000143051147,
+							-0.218240141868591
+						],
+						"rate_world": [
+							-0.0000133619214466307,
+							0.576037228107452
+						]
+					},
+					{
+						"offset_world": [
+							4.10000085830688,
+							-0.923775732517242
+						],
+						"rate_world": [
+							-0.00000828641805128427,
+							0.852995216846466
+						]
+					},
+					{
+						"offset_world": [
+							6.30057907104492,
+							-1.70937669277191
+						],
+						"rate_world": [
+							-0.00277908518910408,
+							-1.69754803180695
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.52834367752075,
+				"minimum_triangle_area_ratio": 0.917169873809425,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				-114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "BackstepWalk",
+			"clock": 4.99999999999999,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							2.00000143051147,
+							-0.141122981905937
+						],
+						"rate_world": [
+							-0.0000133619214466307,
+							0.134093895554543
+						]
+					},
+					{
+						"offset_world": [
+							4.10000085830688,
+							-0.661027908325195
+						],
+						"rate_world": [
+							-0.00000705606771589373,
+							1.48412346839905
+						]
+					},
+					{
+						"offset_world": [
+							6.30010414123535,
+							-1.78945088386536
+						],
+						"rate_world": [
+							-0.00150531472172588,
+							0.875291228294373
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.54930877685547,
+				"minimum_triangle_area_ratio": 0.878428367456544,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				-114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "BackstepWalk",
+			"clock": 5.19999999999999,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							2.00000143051147,
+							-0.17912620306015
+						],
+						"rate_world": [
+							-0.0000133619214466307,
+							-0.449632883071899
+						]
+					},
+					{
+						"offset_world": [
+							4.10000085830688,
+							-0.439487040042877
+						],
+						"rate_world": [
+							-0.00000703082014297252,
+							0.54602324962616
+						]
+					},
+					{
+						"offset_world": [
+							6.29997158050537,
+							-1.40487456321716
+						],
+						"rate_world": [
+							-0.000121636156109162,
+							2.52264809608459
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.45471382141113,
+				"minimum_triangle_area_ratio": 0.903828299970734,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				-114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "BackstepWalk",
+			"clock": 5.39999999999999,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							2.00000143051147,
+							-0.292067348957062
+						],
+						"rate_world": [
+							-0.0000133619214466307,
+							-0.557943403720856
+						]
+					},
+					{
+						"offset_world": [
+							4.10000085830688,
+							-0.493397742509842
+						],
+						"rate_world": [
+							-0.00000703030218573986,
+							-0.969410598278046
+						]
+					},
+					{
+						"offset_world": [
+							6.29998350143433,
+							-0.962277293205261
+						],
+						"rate_world": [
+							0.000110840795969125,
+							1.50270092487335
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.37305068969727,
+				"minimum_triangle_area_ratio": 0.932470673713723,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				-114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Idle",
+			"clock": 5.59999999999999,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							1.68884634971619,
+							-0.305897116661072
+						],
+						"rate_world": [
+							-12.4449043273926,
+							2.14741992950439
+						]
+					},
+					{
+						"offset_world": [
+							3.75708603858948,
+							-0.693513095378876
+						],
+						"rate_world": [
+							-14.5660810470581,
+							1.73125290870667
+						]
+					},
+					{
+						"offset_world": [
+							6.0064492225647,
+							-0.879407405853271
+						],
+						"rate_world": [
+							-12.5518817901611,
+							1.20102941989899
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.07048559188843,
+				"minimum_triangle_area_ratio": 0.95587557882469,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				0.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Idle",
+			"clock": 5.79999999999998,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							0.121003061532974,
+							-0.0223813783377409
+						],
+						"rate_world": [
+							-2.07063817977905,
+							0.381834983825684
+						]
+					},
+					{
+						"offset_world": [
+							0.512838900089264,
+							-0.112485483288765
+						],
+						"rate_world": [
+							-8.5459098815918,
+							1.73051071166992
+						]
+					},
+					{
+						"offset_world": [
+							1.83536028862,
+							-0.298514306545258
+						],
+						"rate_world": [
+							-17.9949321746826,
+							2.7283923625946
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 1.85947811603546,
+				"minimum_triangle_area_ratio": 0.957299807321448,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				0.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Idle",
+			"clock": 5.99999999999998,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							0.00353890168480575,
+							-0.000659628538414836
+						],
+						"rate_world": [
+							-0.0733918622136116,
+							0.0136487986892462
+						]
+					},
+					{
+						"offset_world": [
+							-0.0520566627383232,
+							0.00873888563364744
+						],
+						"rate_world": [
+							-0.118361592292786,
+							0.048967931419611
+						]
+					},
+					{
+						"offset_world": [
+							-0.101861909031868,
+							0.00728139467537403
+						],
+						"rate_world": [
+							-3.41382741928101,
+							0.584459722042084
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 0.102121859788895,
+				"minimum_triangle_area_ratio": 0.998567771362096,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				0.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Idle",
+			"clock": 6.19999999999998,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							0.0000476515997434035,
+							-0.00000901674411579734
+						],
+						"rate_world": [
+							-0.00133044086396694,
+							0.000249955133767799
+						]
+					},
+					{
+						"offset_world": [
+							-0.0130653139203787,
+							0.00273491954430938
+						],
+						"rate_world": [
+							0.169585376977921,
+							-0.0331196896731853
+						]
+					},
+					{
+						"offset_world": [
+							-0.200859189033508,
+							0.0302905328571796
+						],
+						"rate_world": [
+							0.839151740074158,
+							-0.110108554363251
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 0.203130215406418,
+				"minimum_triangle_area_ratio": 0.996787414553954,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				0.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Idle",
+			"clock": 6.39999999999998,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-0.000000847636954404152,
+							0.000000152584973989178
+						],
+						"rate_world": [
+							0.00000384530994779198,
+							-0.000000613552515460469
+						]
+					},
+					{
+						"offset_world": [
+							0.000430292042437941,
+							-0.0000457895293948241
+						],
+						"rate_world": [
+							0.0107089746743441,
+							-0.00262193521484733
+						]
+					},
+					{
+						"offset_world": [
+							-0.0417465977370739,
+							0.00706498045474291
+						],
+						"rate_world": [
+							0.540008723735809,
+							-0.0838564112782478
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 0.0423401892185211,
+				"minimum_triangle_area_ratio": 0.999265803189383,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				0.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Idle",
+			"clock": 6.59999999999998,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-0.000000071179890426265,
+							0.0000000131555282223417
+						],
+						"rate_world": [
+							0.00000119191713565669,
+							-0.000000219560703840216
+						]
+					},
+					{
+						"offset_world": [
+							0.00028911343542859,
+							-0.0000583570435992442
+						],
+						"rate_world": [
+							-0.0029570662882179,
+							0.000551607052329928
+						]
+					},
+					{
+						"offset_world": [
+							0.00843389704823494,
+							-0.00107480713631958
+						],
+						"rate_world": [
+							0.058406051248312,
+							-0.0109933093190193
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 0.00850202795118093,
+				"minimum_triangle_area_ratio": 0.999705705964017,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				0.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Idle",
+			"clock": 6.79999999999998,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-0.00000000219548090818478,
+							0.000000000408949291097471
+						],
+						"rate_world": [
+							0.0000000448343300263332,
+							-0.00000000833276292411256
+						]
+					},
+					{
+						"offset_world": [
+							0.0000052865152611048,
+							-0.00000190972446034721
+						],
+						"rate_world": [
+							-0.000364132691174746,
+							0.0000807356045697816
+						]
+					},
+					{
+						"offset_world": [
+							0.00613543298095465,
+							-0.000948042434174567
+						],
+						"rate_world": [
+							-0.0364618599414825,
+							0.00516936555504799
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 0.00620826287195086,
+				"minimum_triangle_area_ratio": 0.999756137524027,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				0.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Idle",
+			"clock": 6.99999999999998,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-0.0000000000325949718604779,
+							0.00000000000615180345900357
+						],
+						"rate_world": [
+							0.000000000869695870875375,
+							-0.000000000163171490208391
+						]
+					},
+					{
+						"offset_world": [
+							-0.00000567457254874171,
+							0.00000110425935417879
+						],
+						"rate_world": [
+							0.0000429007304774132,
+							-0.00000737714253773447
+						]
+					},
+					{
+						"offset_world": [
+							0.00076837046071887,
+							-0.000140476200613193
+						],
+						"rate_world": [
+							-0.0149006331339478,
+							0.00237085367552936
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 0.000781149312388152,
+				"minimum_triangle_area_ratio": 0.999966269722797,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				0.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Idle",
+			"clock": 7.19999999999998,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							0.000000000000404158396203128,
+							-0.0000000000000720561170409681
+						],
+						"rate_world": [
+							-0.0000000000000638926845458743,
+							-0.000000000000049638299113447
+						]
+					},
+					{
+						"offset_world": [
+							-0.000000385546826464633,
+							0.0000000931046315599815
+						],
+						"rate_world": [
+							0.00000956677649810445,
+							-0.00000201691409529303
+						]
+					},
+					{
+						"offset_world": [
+							-0.000387433246942237,
+							0.0000542955021956004
+						],
+						"rate_world": [
+							-0.000344491621945053,
+							0.000115004513645545
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 0.000391461246181279,
+				"minimum_triangle_area_ratio": 0.999994392078641,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				0.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Idle",
+			"clock": 7.39999999999998,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							0.0000000000000416399770566955,
+							-0.00000000000000768944979846926
+						],
+						"rate_world": [
+							-0.00000000000068083272309824,
+							0.000000000000125264056939633
+						]
+					},
+					{
+						"offset_world": [
+							0.0000000976192282564625,
+							-0.000000018113802013886
+						],
+						"rate_world": [
+							-0.000000413229372497881,
+							0.0000000529033492568942
+						]
+					},
+					{
+						"offset_world": [
+							-0.000172400425071828,
+							0.0000272833785857074
+						],
+						"rate_world": [
+							0.00133065332192928,
+							-0.000196304506971501
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 0.000174741784576327,
+				"minimum_triangle_area_ratio": 0.999998109688238,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				0.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Idle",
+			"clock": 7.59999999999998,
+			"facing": 1.0,
+			"hem": {
+				"active": false,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							0.00000000000000135586914383424,
+							-0.000000000000000252391836661462
+						],
+						"rate_world": [
+							-0.0000000000000272729125253609,
+							0.00000000000000506572628083349
+						]
+					},
+					{
+						"offset_world": [
+							0.0000000126778836317953,
+							-0.00000000279495582233835
+						],
+						"rate_world": [
+							-0.000000216489368654038,
+							0.0000000439707079635809
+						]
+					},
+					{
+						"offset_world": [
+							-0.00000726438838682952,
+							0.00000181791415343469
+						],
+						"rate_world": [
+							0.000373625109205022,
+							-0.0000612307776464149
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 0.00000751775041862857,
+				"minimum_triangle_area_ratio": 0.999999873979184,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				0.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Idle",
+			"clock": 7.79999999999998,
+			"facing": 1.0,
+			"hem": {
+				"active": false,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							0.0000000000000000219381814580272,
+							-0.00000000000000000413188172421721
+						],
+						"rate_world": [
+							-0.000000000000000563523131813965,
+							0.000000000000000105601907022464
+						]
+					},
+					{
+						"offset_world": [
+							-0.00000000138416500483629,
+							0.000000000235234220991032
+						],
+						"rate_world": [
+							-0.00000000209071449042142,
+							0.00000000106131625710049
+						]
+					},
+					{
+						"offset_world": [
+							0.0000145559142765705,
+							-0.00000213239172808244
+						],
+						"rate_world": [
+							-0.0000310123468807433,
+							0.00000300968713418115
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 0.0000146680722536985,
+				"minimum_triangle_area_ratio": 0.999999454202158,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				0.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Idle",
+			"clock": 7.99999999999998,
+			"facing": 1.0,
+			"hem": {
+				"active": false,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-0.00000000000000000017702264814579,
+							0.00000000000000000003102045558052
+						],
+						"rate_world": [
+							-0.00000000000000000134501656232169,
+							0.00000000000000000028722608584924
+						]
+					},
+					{
+						"offset_world": [
+							-0.000000000327737059713229,
+							0.0000000000688388096525827
+						],
+						"rate_world": [
+							0.00000000434034364005242,
+							-0.000000000850471748581327
+						]
+					},
+					{
+						"offset_world": [
+							0.00000441995734945522,
+							-0.000000719279285021912
+						],
+						"rate_world": [
+							-0.0000435210567957256,
+							0.00000660147588860127
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 0.00000479215395898791,
+				"minimum_triangle_area_ratio": 0.99999968657913,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				0.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Idle",
+			"clock": 8.19999999999999,
+			"facing": 1.0,
+			"hem": {
+				"active": false,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-0.0000000000000000000242135637016,
+							0.0000000000000000000044673132983
+						],
+						"rate_world": [
+							0.00000000000000000038550979922702,
+							-0.00000000000000000007083130136951
+						]
+					},
+					{
+						"offset_world": [
+							0.0000000000124014071581358,
+							-0.00000000000146595539526895
+						],
+						"rate_world": [
+							0.000000000254823329104426,
+							-0.0000000000633035707187091
+						]
+					},
+					{
+						"offset_world": [
+							-0.000000253975770192483,
+							0.0000000188239237530752
+						],
+						"rate_world": [
+							-0.00000819398246676428,
+							0.00000140424913297466
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 0.000000476837158203125,
+				"minimum_triangle_area_ratio": 1.0,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				0.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Idle",
+			"clock": 8.4,
+			"facing": 1.0,
+			"hem": {
+				"active": false,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-0.00000000000000000000083366487249,
+							0.00000000000000000000015508675968
+						],
+						"rate_world": [
+							0.0000000000000000000165200004451,
+							-0.00000000000000000000306656209471
+						]
+					},
+					{
+						"offset_world": [
+							0.0000000000073307705392156,
+							-0.00000000000148416890756453
+						],
+						"rate_world": [
+							-0.0000000000766231245119542,
+							0.0000000000143610722272425
+						]
+					},
+					{
+						"offset_world": [
+							-0.000000485934265270771,
+							0.0000000733135934183338
+						],
+						"rate_world": [
+							0.00000204548973670171,
+							-0.000000268943267656141
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 0.00000095367431640625,
+				"minimum_triangle_area_ratio": 0.999999892075632,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				0.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Idle",
+			"clock": 8.60000000000001,
+			"facing": 1.0,
+			"hem": {
+				"active": false,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-0.00000000000000000000001457213683,
+							0.0000000000000000000000027398216
+						],
+						"rate_world": [
+							0.00000000000000000000036231399403,
+							-0.00000000000000000000006782454407
+						]
+					},
+					{
+						"offset_world": [
+							0.000000000000103451257705677,
+							-0.0000000000000423841056652538
+						],
+						"rate_world": [
+							-0.00000000000897024642065869,
+							0.00000000000200020013572944
+						]
+					},
+					{
+						"offset_world": [
+							-0.000000100278349179916,
+							0.0000000169853944242959
+						],
+						"rate_world": [
+							0.00000130417174659669,
+							-0.000000202601995624718
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 0.000000119209289550781,
+				"minimum_triangle_area_ratio": 0.999999911870754,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				0.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 8.80000000000002,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-1.73619151115417,
+							-0.217095822095871
+						],
+						"rate_world": [
+							-4.20549821853638,
+							-0.934061825275421
+						]
+					},
+					{
+						"offset_world": [
+							-3.0619945526123,
+							-0.324390470981598
+						],
+						"rate_world": [
+							-13.4057598114014,
+							-1.79634082317352
+						]
+					},
+					{
+						"offset_world": [
+							-3.48353695869446,
+							-0.515101194381714
+						],
+						"rate_world": [
+							-21.6710414886475,
+							-2.93781137466431
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 3.52141499519348,
+				"minimum_triangle_area_ratio": 0.995666576621997,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 9.00000000000003,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-1.99094021320343,
+							-0.341440916061401
+						],
+						"rate_world": [
+							-0.179647639393806,
+							-0.360622733831406
+						]
+					},
+					{
+						"offset_world": [
+							-4.13293170928955,
+							-0.636639535427094
+						],
+						"rate_world": [
+							-0.861568152904511,
+							-1.5101854801178
+						]
+					},
+					{
+						"offset_world": [
+							-6.17816352844238,
+							-0.872911870479584
+						],
+						"rate_world": [
+							-6.11376333236694,
+							-1.17307555675507
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.23952722549438,
+				"minimum_triangle_area_ratio": 0.989105499552458,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 9.20000000000004,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-1.99984240531921,
+							-0.348132222890854
+						],
+						"rate_world": [
+							-0.00392792653292418,
+							0.265763163566589
+						]
+					},
+					{
+						"offset_world": [
+							-4.12290859222412,
+							-0.907044768333435
+						],
+						"rate_world": [
+							0.233027935028076,
+							-1.00831425189972
+						]
+					},
+					{
+						"offset_world": [
+							-6.53698873519897,
+							-1.1781839132309
+						],
+						"rate_world": [
+							0.497668921947479,
+							-2.02519226074219
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.64231443405151,
+				"minimum_triangle_area_ratio": 0.98558464039973,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 9.40000000000005,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-2.00000071525574,
+							-0.250318139791489
+						],
+						"rate_world": [
+							-0.0000181170216819737,
+							0.596489608287811
+						]
+					},
+					{
+						"offset_world": [
+							-4.1004433631897,
+							-0.961528360843658
+						],
+						"rate_world": [
+							0.0290637072175741,
+							0.465427458286285
+						]
+					},
+					{
+						"offset_world": [
+							-6.37230110168457,
+							-1.62097728252411
+						],
+						"rate_world": [
+							0.709643006324768,
+							-2.00813126564026
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.57524251937866,
+				"minimum_triangle_area_ratio": 0.998463515766399,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 9.60000000000006,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-2.00000071525574,
+							-0.152154088020325
+						],
+						"rate_world": [
+							0.00000666162031848216,
+							0.296189665794373
+						]
+					},
+					{
+						"offset_world": [
+							-4.0995512008667,
+							-0.741866528987885
+						],
+						"rate_world": [
+							-0.00336235086433589,
+							1.47079086303711
+						]
+					},
+					{
+						"offset_world": [
+							-6.29595279693604,
+							-1.81898486614227
+						],
+						"rate_world": [
+							0.134372815489769,
+							0.173673212528229
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.55345058441162,
+				"minimum_triangle_area_ratio": 0.962225374434416,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 9.80000000000007,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-2.00000071525574,
+							-0.157446801662445
+						],
+						"rate_world": [
+							0.00000668094480715808,
+							-0.317286193370819
+						]
+					},
+					{
+						"offset_world": [
+							-4.09996891021729,
+							-0.477992027997971
+						],
+						"rate_world": [
+							-0.000759801419917494,
+							0.924116849899292
+						]
+					},
+					{
+						"offset_world": [
+							-6.29207897186279,
+							-1.53600692749023
+						],
+						"rate_world": [
+							-0.0331540033221245,
+							2.30360269546509
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.4768500328064,
+				"minimum_triangle_area_ratio": 0.94897690360817,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 10.0000000000001,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-2.00000071525574,
+							-0.260600060224533
+						],
+						"rate_world": [
+							0.00000668095981382066,
+							-0.59528124332428
+						]
+					},
+					{
+						"offset_world": [
+							-4.1000075340271,
+							-0.448810130357742
+						],
+						"rate_world": [
+							0.0000302256958093494,
+							-0.600001990795136
+						]
+					},
+					{
+						"offset_world": [
+							-6.2983570098877,
+							-1.05619645118713
+						],
+						"rate_world": [
+							-0.0212866999208927,
+							2.02763247489929
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.38630390167236,
+				"minimum_triangle_area_ratio": 1.0,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Idle",
+			"clock": 10.1166666666667,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-2.00000071525574,
+							-0.323727756738663
+						],
+						"rate_world": [
+							0.00000668095981382066,
+							-0.456479042768478
+						]
+					},
+					{
+						"offset_world": [
+							-4.1000018119812,
+							-0.566243708133698
+						],
+						"rate_world": [
+							0.0000259362968790811,
+							-1.29108572006226
+						]
+					},
+					{
+						"offset_world": [
+							-6.29995346069336,
+							-0.894988656044006
+						],
+						"rate_world": [
+							-0.0079460758715868,
+							0.735682189464569
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.36320829391479,
+				"minimum_triangle_area_ratio": 0.996494676993368,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				0.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 10.2000000000001,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-0.535964787006378,
+							-0.060560017824173
+						],
+						"rate_world": [
+							-13.6737127304077,
+							-1.52106535434723
+						]
+					},
+					{
+						"offset_world": [
+							-0.631046831607819,
+							-0.137068212032318
+						],
+						"rate_world": [
+							-18.0467891693115,
+							-3.99599933624268
+						]
+					},
+					{
+						"offset_world": [
+							-0.551425814628601,
+							-0.144575417041779
+						],
+						"rate_world": [
+							-16.3613128662109,
+							-4.5473484992981
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 0.645619571208954,
+				"minimum_triangle_area_ratio": 0.994069111005004,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 10.4000000000001,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-1.9076611995697,
+							-0.153219476342201
+						],
+						"rate_world": [
+							-1.61153483390808,
+							0.174067080020905
+						]
+					},
+					{
+						"offset_world": [
+							-3.71206974983215,
+							-0.70383208990097
+						],
+						"rate_world": [
+							-7.15563011169434,
+							-0.390371203422546
+						]
+					},
+					{
+						"offset_world": [
+							-4.74694442749023,
+							-1.36598300933838
+						],
+						"rate_world": [
+							-16.5821266174316,
+							-4.62228155136108
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 4.93957376480103,
+				"minimum_triangle_area_ratio": 0.963246299621144,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 10.6000000000001,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-1.99743616580963,
+							-0.14572311937809
+						],
+						"rate_world": [
+							-0.0540097989141941,
+							-0.204398050904274
+						]
+					},
+					{
+						"offset_world": [
+							-4.15224361419678,
+							-0.532978415489197
+						],
+						"rate_world": [
+							0.0209468007087708,
+							1.16093742847443
+						]
+					},
+					{
+						"offset_world": [
+							-6.44961261749268,
+							-1.64409387111664
+						],
+						"rate_world": [
+							-2.68921780586243,
+							1.14406216144562
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.65586471557617,
+				"minimum_triangle_area_ratio": 0.994671748249431,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 10.8000000000001,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-1.9999692440033,
+							-0.235705092549324
+						],
+						"rate_world": [
+							-0.000909567519556731,
+							-0.589733481407166
+						]
+					},
+					{
+						"offset_world": [
+							-4.11051177978516,
+							-0.431577026844025
+						],
+						"rate_world": [
+							0.147862881422043,
+							-0.244086623191834
+						]
+					},
+					{
+						"offset_world": [
+							-6.48620891571045,
+							-1.19292318820953
+						],
+						"rate_world": [
+							0.890219807624817,
+							2.49982333183289
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.5949969291687,
+				"minimum_triangle_area_ratio": 0.987231067657736,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				114.0,
+				0.0
+			]
+		},
+		{
+			"clip": "Run_New1",
+			"clock": 11.0000000000001,
+			"facing": 1.0,
+			"hem": {
+				"active": true,
+				"closed_body_vertices": 41,
+				"control_states": [
+					{
+						"offset_world": [
+							-2.00000071525574,
+							-0.340446799993515
+						],
+						"rate_world": [
+							0.00000439837049270864,
+							-0.35899344086647
+						]
+					},
+					{
+						"offset_world": [
+							-4.09944152832031,
+							-0.623812139034271
+						],
+						"rate_world": [
+							0.00679458770900965,
+							-1.42481398582459
+						]
+					},
+					{
+						"offset_world": [
+							-6.33344697952271,
+							-0.88890528678894
+						],
+						"rate_world": [
+							0.484088033437729,
+							0.301720678806305
+						]
+					}
+				],
+				"current_vertices_remain_source_pose": true,
+				"damping": [
+					0.91,
+					0.78,
+					0.7
+				],
+				"dedicated_actions": "source priority; added offsets reset",
+				"enabled": true,
+				"maximum_applied_offset": 6.39552164077759,
+				"minimum_triangle_area_ratio": 0.986434582200978,
+				"model": "three lightweight damped offsets over source pose; project visual tuning, not original DynamicBone",
+				"pause": "no state/plane advance",
+				"response": [
+					17.0,
+					11.5,
+					8.0
+				],
+				"safety_scale": 1.0,
+				"stored_in_world_orientation": true,
+				"trail_native_pose_pixels": [
+					2.0,
+					4.1,
+					6.3
+				],
+				"waist_fixed_until_full_v": 0.46
+			},
+			"velocity": [
+				114.0,
+				0.0
+			]
+		}
+	]
+}

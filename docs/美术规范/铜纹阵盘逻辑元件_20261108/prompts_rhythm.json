@@ -1,0 +1,74 @@
+{
+  "asset": "rhythm_2x1.png",
+  "generator": "built-in image_gen.imagegen",
+  "mode": "reference-based object redesign",
+  "status": "完成，待美术验收；未实装",
+  "full_prompt": "Use case: style-transfer / precise-object redesign. Create one standalone RHYTHM PIVOT cultivation-array component by developing the same physical material language as the referenced artifacts. Reference Image 1 (the selected B array plate) is the HIGHEST art-style authority; Reference Image 2 (the finished eye component) confirms the exact dark ink contour, simplified gray-brown copper / gray-celadon jade planes, narrow ivory-white bevel highlights and restrained dry-brush watercolor texture. Borrow the painting language, NOT the eye's square shape or its four side tabs. No realistic polished metal or photoreal gears.\n\nDesign a NEW distinct intact horizontal RHYTHM PIVOT, a ONE-PIECE low ancient copper-and-jade instrument. True HORIZONTAL 2:1 canvas AND broad physical silhouette: width twice height, full piece occupies about 88-92% of both canvas dimensions, clean small transparent safety margin. It must visibly occupy two cells, never a small square jewel lost in a wide canvas. The component remains flat and shallow.\n\nAnatomy: on the LEFT half, a pair of flat gray-celadon JADE REED LEAVES lies lengthwise within a shallow copper seat. These are two low bowed/slightly curved thin jade strips, secured at one end and lying parallel to the top surface, NOT upright springs and NOT loose stones. On the RIGHT half, a low OPEN COPPER REGULATING COLLAR / PRESSURE LEAF works around a small pale-jade contact bed, its partial stepped arc or C-shaped retaining plate clearly OPEN, not a complete round clock face. The jade reed pair and right pressure collar are physically connected by one subdued shallow copper base and small structural bridges, forming a substantial clean horizontal silhouette with different mechanisms on the two halves. Precise but broadly hand-painted ancient craft, not a fine realistic clock movement. Keep it different from a counting mechanism or jade tally sliding ruler: no ruler, sliding abacus rail, rows of bead counters or tally marks.\n\nEXACTLY TWO SIGNAL SOCKETS with small CINNABAR-RED inset cores: (1) one INPUT socket at the LEFT/WEST SIDE MIDPOINT of the LEFT half, opening LEFT; (2) one OUTPUT socket at the TOP/NORTH SIDE MIDPOINT of the RIGHT half, opening UP, at approximately x=75% across the complete two-cell footprint. Both openings are simple shaped copper notches with short cinnabar cores, completely inside the safe image border. No outward line, pipe, arrow or lead. The ENTIRE RIGHT/EAST edge and BOTTOM/SOUTH edge stay closed, no sockets or misleading contact tabs. No energy/gold socket, no third port. Do not reuse four-direction socket framing from the reference eye.\n\nSTRICT ORTHOGRAPHIC 90-DEGREE TOP-DOWN VIEW: see flat top faces, no isometric tilt, no front-facing/side walls, no raised vertical reeds. Dark ink outlines, a few clear painted light and shadow planes and narrow ivory highlights give restrained physical depth. Palette and brushwork must look as if this belonged to the selected B plate and the eye in the references. Do not draw the plate underneath.\n\nGenuine transparent alpha outside the whole component and any real open cutout. No paper/background card, chess grid, floor or exterior shadow, checkerboard background, text, numerals, runes, labels, UI, clock face, clock numbers, hands of a clock, gears, hourglass, modern electronics, chip package, shield, jewel pendant, emitted effect, magic glow, external wires or extra parts. The idea is a rhythm-regulating physical jade-reed assembly, not a timekeeping icon. It only regulates the frequency of incoming signals and does not depict a new signal source or a chosen time interval.",
+  "references": [
+    {
+      "path": "E:/stacklands/docs/美术规范/阵盘项目画风对照_20261108/B_墨绘铜纹.png",
+      "role": "最高画风依据"
+    },
+    {
+      "path": "E:/stacklands/docs/美术规范/铜纹阵盘基础元件_20261108/eye_1x1.png",
+      "role": "同款独立件墨线与铜玉色面依据"
+    }
+  ],
+  "logic_footprint": [
+    2,
+    1
+  ],
+  "complexity": 2,
+  "qualification": "阵道造诣45；沿底层主案，不由图标授予资格",
+  "function": "按既有规则控制已有信号的放行频率，不自行产生输入；本图不设节拍间隔数值。",
+  "ports": [
+    {
+      "kind": "signal",
+      "direction": "west",
+      "flow": "input",
+      "cell": [
+        0,
+        0
+      ],
+      "position": "left edge midpoint"
+    },
+    {
+      "kind": "signal",
+      "direction": "north",
+      "flow": "output",
+      "cell": [
+        1,
+        0
+      ],
+      "position": "top edge at normalized x=0.75"
+    }
+  ],
+  "transparent_background": true,
+  "raw_path": "E:\\stacklands\\docs\\美术规范\\铜纹阵盘逻辑元件_20261108\\raw\\rhythm_2x1_generated.png",
+  "native_size": [
+    1774,
+    887
+  ],
+  "alpha": {
+    "mode": "RGBA",
+    "extrema": [
+      0,
+      255
+    ],
+    "corners": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "canvas_aspect": "2:1",
+    "native_bytes_preserved": true
+  },
+  "visual_port_review": "目视两朱砂信号口：左半W侧中部入、右半N侧上中部出（整体横向约0.75处）；E/S侧闭合，无供能口或外延线路。",
+  "pixel_processing": "原生输出，不缩放、不裁切、不后处理像素",
+  "scope": "只交独立节律枢PNG与来源记录；未实装，不改README索引或代码",
+  "source_generated_path": "E:\\tmp\\CodexData\\generated_images\\01a1ba79-d569-7cc3-9b48-2e8e042c4ff0\\exec-5ccfbffa-8d15-4b49-8c8f-33352a73395a.png",
+  "project_path": "E:\\stacklands\\docs\\美术规范\\铜纹阵盘逻辑元件_20261108\\rhythm_2x1.png",
+  "sha256": "fa59b5b93fa0f858b847821ad1f028a3e5de6107fe36de01003c367a7b49ec55",
+  "visual_shape_review": "左为两片平伏玉簧，右为低矮开口节环/压片，墨绘铜玉画风与基础件一致；无时钟盘、齿轮或滑尺。"
+}

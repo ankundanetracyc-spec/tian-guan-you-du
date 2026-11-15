@@ -1,0 +1,102 @@
+{
+  "date": "2026-11-05",
+  "status": "current right-hand sword correction candidate; user visual approval pending",
+  "change": "Bare sword hand only changes handedness relative to rejected c636. Sleeve is still shared near master; wrist center remains configured610/870.",
+  "mode": "built-in image_gen",
+  "prompt_record": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\right_sword_local_handedness_correction_20261105.json",
+  "asset_inventory": {
+    "body.png": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\body.png",
+      "sha256": "9a87016e7b3aaf208d369fd7033cb0fa62f31ec8690cb2727d050120099a3109",
+      "native_size": [
+        971,
+        1620
+      ]
+    },
+    "leg.png": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\leg.png",
+      "sha256": "1a34b9c4f232f77e67bd56f64fdbeb4734a8e7271bfb50d71528bc0d3e656ec0",
+      "native_size": [
+        992,
+        1586
+      ]
+    },
+    "sleeve_far.png": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_far.png",
+      "sha256": "40c510c31d0b60c818304d9f58eca32d3e08ab73724265fc9e46474e6cc380de",
+      "native_size": [
+        1254,
+        1254
+      ]
+    },
+    "sleeve_far_fist.png": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_far_fist.png",
+      "sha256": "482f474bea8156a4425306aa3d13cacf66458fc2406fa5d6a0200a921d334d8f",
+      "native_size": [
+        1254,
+        1254
+      ]
+    },
+    "sleeve_near.png": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near.png",
+      "sha256": "b5637eb58dd30de992295a09037a13fb7703ca2756b178148cf20fbf94b894ba",
+      "native_size": [
+        1254,
+        1254
+      ]
+    },
+    "sleeve_near_fist.png": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near_fist.png",
+      "sha256": "4d2cacfb8a58827d5f56f5637bfd8ddd7754d23a9f7e41d5469b77137f8d5d80",
+      "native_size": [
+        1254,
+        1254
+      ]
+    },
+    "sleeve_near_grip.png": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near_grip.png",
+      "sha256": "a92e11d85325c42fe7918ee83babe5b32e88b63f53a3d9b96c39dccc79d41e73",
+      "native_size": [
+        1254,
+        1254
+      ]
+    },
+    "sleeve_near_sword.png": {
+      "path": "E:\\stacklands\\tools\\action_battle_test\\art\\ink_outfit_01_20261104\\assets\\sleeve_near_sword.png",
+      "sha256": "c4bfbd9016646734880db5a19e0aff3a1aed8aa3d36b2e4c780ee99cdfc0eee2",
+      "native_size": [
+        1254,
+        1254
+      ]
+    }
+  },
+  "modules_sha256": {
+    "ink_outfit_fitting_skin.gd": "564487b0d4431046abf31e042685ca140a7fb17ad1f2b7943df8a9601d8710f6",
+    "ink_outfit_fitting_runtime.gd": "706e21b6b255fda64c98f3dc9c21a19434a2eb3141876bda841f6599fc076355",
+    "ink_outfit_sleeve_mesh.gd": "c62ff8a62a3190c4ccfb43771d25c17afdde996aef68a00e5a8ccb10bc798335",
+    "ink_outfit_hem_secondary.gd": "294fb9290be5f7a6aaca8e3500d9990a49af2ed261f2dd69ac12528a7c653c16"
+  },
+  "visible_changes_from_rejected_c636": [
+    "thumb contour left to right",
+    "extended pair old left-short/right-long to left-long/right-short",
+    "folded-finger contour right to left; pinky compact without outward twisted tip"
+  ],
+  "capture": {
+    "directory": "E:\\stacklands\\tools\\action_battle_test\\output\\ink_outfit_v16_right_sword_correction",
+    "native_png": "E:\\stacklands\\docs\\美术规范\\首套高清水墨长衣_20261104\\右手剑指左右纠正_原生近景_20261105.png",
+    "png_sha256": "d7d656a1e5cd61df9b0980229dd85a45d1838feb0de3dd4b2dbf469fa17ff87b",
+    "native_pixels_unchanged": true,
+    "scene": "capture_ink_outfit_hands.tscn --optional",
+    "canvas": [
+      600,
+      600
+    ],
+    "current_sword_hash_present": true,
+    "runtime_errors": []
+  },
+  "verification_scope": "Only optional-hand native render repeated. Earlier49 source/hand behavior and19 hem checks belong to unchanged code; not evidence for hand anatomical correctness.",
+  "previous_rejected_sword_sha256": "2fdc515d0abb28869792ac65379b5fe23566d4a56b90c528e832ac606209c307",
+  "handedness_review": "Independent comparison confirmed actual visible horizontal reversal, not merely changed metadata labels.",
+  "current_sword_record": "E:\\stacklands\\docs\\美术规范\\首套高清水墨长衣_20261104\\右手剑指_手背五指_20261105.json",
+  "scope_status": "Historical c216 before user-requested five-digit and explicit dorsal revision"
+}

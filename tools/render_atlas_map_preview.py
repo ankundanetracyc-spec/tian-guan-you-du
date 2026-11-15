@@ -5,7 +5,7 @@ from PIL import Image, ImageDraw
 
 BASE = Path("textures/world_map/production_samples/zhaoming_continuous_terrain_master_v24_atlas_base.png")
 EDGES = Path("textures/world_map/territory_partition/zhaoming_land_partition_edges.png")
-OUT = Path("docs/预览_昭明纪简略地图_州界道路山脉.png")
+OUT = Path("docs/plans/世界与探索/历史地图/预览_昭明纪简略地图_州界道路山脉.png")
 MAP_SIZE = 6400.0
 RIDGES = [
     [(420, 620), (720, 910), (1030, 1250), (1320, 1580), (1560, 1900)],

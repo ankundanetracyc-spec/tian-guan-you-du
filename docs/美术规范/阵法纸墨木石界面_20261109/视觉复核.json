@@ -1,0 +1,167 @@
+{
+  "date": "2026-11-09",
+  "passed": true,
+  "reviewer": "array_inner_damage_review",
+  "method": "逐张使用view_image检查原生Viewport截图；未重绘、裁切或合成",
+  "total_native_checks": 590,
+  "total_screenshots": 24,
+  "resolutions": [
+    {
+      "resolution": [
+        1920,
+        1080
+      ],
+      "native_checks": 295,
+      "screenshots": 12,
+      "visual_passed": true,
+      "stderr_bytes": 0,
+      "report": "1920/原生验收.json",
+      "findings": [
+        {
+          "file": "01_百工入口.png",
+          "passed": true,
+          "finding": "百工真实阵法入口可见；本轮不重绘百工外层。"
+        },
+        {
+          "file": "02_阵法全屏工作台.png",
+          "passed": true,
+          "finding": "三栏、顶栏与盘面完整；整纸选中和提示托纸正确，B盘与同族实物元件清楚。"
+        },
+        {
+          "file": "03_真实铺线与格位.png",
+          "passed": true,
+          "finding": "铺线编辑时显示对应格位；朱砂实际线段与真实格坐标一致。"
+        },
+        {
+          "file": "04_单层交叉拒绝.png",
+          "passed": true,
+          "finding": "三向供能保留，第四向交叉拒绝；原因在纸面内完整显示。"
+        },
+        {
+          "file": "05_计数器参数纸栏.png",
+          "passed": true,
+          "finding": "旋转元件与朱砂、浅金槽口连接一致；N2参数和应用按钮均在纸栏内。"
+        },
+        {
+          "file": "06_信号实际试运行.png",
+          "passed": true,
+          "finding": "试运行正文、参数和两类按钮完整；N2结果和累计护持请求可读。"
+        },
+        {
+          "file": "07_部件悬停.png",
+          "passed": true,
+          "finding": "共用深色只读信息卡位置可读；盘面没有常驻名称或状态纸签。"
+        },
+        {
+          "file": "08_默认无格线无纸签.png",
+          "passed": true,
+          "finding": "移开后共用信息卡收起，默认无格线无名称状态纸签；选择轮廓不是标签。"
+        },
+        {
+          "file": "09_守攻低生命开罩.png",
+          "passed": true,
+          "finding": "顶栏与工具条不再竖排；试演设置、完整盘面及底部记录均在视口内。"
+        },
+        {
+          "file": "10_守攻高生命施法.png",
+          "passed": true,
+          "finding": "真实生命、敌方扣血、撤罩和阵能记录一致；重复通知没有再次攻击。"
+        },
+        {
+          "file": "11_返回阵盘工作台.png",
+          "passed": true,
+          "finding": "守攻返回后原草图和操作状态保持，全屏工作台恢复。"
+        },
+        {
+          "file": "12_返回百工.png",
+          "passed": true,
+          "finding": "全屏工作台退出后回到百工入口，没有遗留守攻覆盖层。"
+        }
+      ]
+    },
+    {
+      "resolution": [
+        1280,
+        720
+      ],
+      "native_checks": 295,
+      "screenshots": 12,
+      "visual_passed": true,
+      "stderr_bytes": 0,
+      "report": "1280/原生验收.json",
+      "findings": [
+        {
+          "file": "01_百工入口.png",
+          "passed": true,
+          "finding": "百工真实阵法入口可见；本轮不重绘百工外层。"
+        },
+        {
+          "file": "02_阵法全屏工作台.png",
+          "passed": true,
+          "finding": "三栏、顶栏与盘面完整；整纸选中和提示托纸正确，B盘与同族实物元件清楚。"
+        },
+        {
+          "file": "03_真实铺线与格位.png",
+          "passed": true,
+          "finding": "铺线编辑时显示对应格位；朱砂实际线段与真实格坐标一致。"
+        },
+        {
+          "file": "04_单层交叉拒绝.png",
+          "passed": true,
+          "finding": "三向供能保留，第四向交叉拒绝；原因在纸面内完整显示。"
+        },
+        {
+          "file": "05_计数器参数纸栏.png",
+          "passed": true,
+          "finding": "旋转元件与朱砂、浅金槽口连接一致；N2参数和应用按钮均在纸栏内。"
+        },
+        {
+          "file": "06_信号实际试运行.png",
+          "passed": true,
+          "finding": "试运行正文、参数和两类按钮完整；N2结果和累计护持请求可读。"
+        },
+        {
+          "file": "07_部件悬停.png",
+          "passed": true,
+          "finding": "共用深色只读信息卡位置可读；盘面没有常驻名称或状态纸签。"
+        },
+        {
+          "file": "08_默认无格线无纸签.png",
+          "passed": true,
+          "finding": "移开后共用信息卡收起，默认无格线无名称状态纸签；选择轮廓不是标签。"
+        },
+        {
+          "file": "09_守攻低生命开罩.png",
+          "passed": true,
+          "finding": "顶栏与工具条不再竖排；试演设置、完整盘面及底部记录均在视口内。"
+        },
+        {
+          "file": "10_守攻高生命施法.png",
+          "passed": true,
+          "finding": "真实生命、敌方扣血、撤罩和阵能记录一致；重复通知没有再次攻击。"
+        },
+        {
+          "file": "11_返回阵盘工作台.png",
+          "passed": true,
+          "finding": "守攻返回后原草图和操作状态保持，全屏工作台恢复。"
+        },
+        {
+          "file": "12_返回百工.png",
+          "passed": true,
+          "finding": "全屏工作台退出后回到百工入口，没有遗留守攻覆盖层。"
+        }
+      ]
+    }
+  ],
+  "historical_pure_core_checks_reused": false,
+  "first_guard_layout_failure_archived": "初次守攻布局问题/",
+  "scope": {
+    "isolated_appdata": true,
+    "isolated_draft_path": true,
+    "real_journey_loaded": false,
+    "character_save_opened": false,
+    "artifacts_or_knowledge_granted": false,
+    "formal_guard_footprint_or_balance_fixed": false
+  },
+  "runtime_cleanup": "两档退出均成功，stderr为空，无ERROR或SCRIPT ERROR；返回释放守攻页与两名试演人物，返回百工释放工作台。"
+}

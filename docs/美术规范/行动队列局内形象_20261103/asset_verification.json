@@ -1,0 +1,47 @@
+{
+  "source": "E:/tmp/CodexData/generated_images/01a1a0c0-a65b-7192-9a4b-8811f109394f/exec-aa52dffc-e1f7-4eba-9a18-51080d6b7924.png",
+  "workspace_asset": "textures/characters/queue_avatar_design_20261103/yuxu_neimen_shouzhen_v2.png",
+  "generator": "built-in imagegen",
+  "mode": "RGBA",
+  "size": [
+    1024,
+    1536
+  ],
+  "sha256": "754159aec86cc30661feb38ae5c8ef07af1f352cf902a1977132e2ab1a9d8fdc",
+  "alpha_extrema": [
+    0,
+    254
+  ],
+  "alpha_128_bounds": [
+    204,
+    10,
+    784,
+    1531
+  ],
+  "fully_transparent_pixels": 962540,
+  "corner_alpha": [
+    0,
+    0,
+    0,
+    0
+  ],
+  "outside_silhouette_sample_alpha": {
+    "(150, 500)": 0,
+    "(180, 600)": 0,
+    "(100, 750)": 0,
+    "(800, 700)": 0,
+    "(200, 300)": 0,
+    "(150, 1000)": 0
+  },
+  "manual_review": {
+    "full_body_and_soles": true,
+    "featureless_face_facing_right": true,
+    "torso_three_quarter_front_visible": true,
+    "reference_clothing_and_bun_identity": true,
+    "lower_robe_and_shoes_are_new_design_extension": true,
+    "animation_produced": false,
+    "runtime_integrated": false,
+    "user_approved": false
+  },
+  "note": "Transparent pixels can contain RGB from the generator. Alpha outside inspected silhouette points is zero; raw RGB preview is not proof of an opaque halo. No pixels edited after generation."
+}

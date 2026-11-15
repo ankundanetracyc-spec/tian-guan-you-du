@@ -1,0 +1,13 @@
+Use case: stylized-concept. Asset type: production transparent 2D game character cut-apart texture atlas.
+Input image 1 is STYLE reference ONLY: the current in-game Yuxu man, simple thin charcoal outlines, muted flat colors and two-tone painted shading. Input image 2 is wolf IDENTITY reference ONLY: grey forest wolf with cream muzzle/underside/paws, small desaturated blue-grey accents on back, realistic slender wolf proportions. Redraw that wolf in image 1's restrained clean hand-inked Chinese fantasy game style. Do NOT reproduce image 2's realistic dense fur detail or aura.
+Create ONE 1536x1536 transparent PNG sprite atlas on a perfectly regular 3 by 3 grid of nine 512x512 cells. No visible grid, no labels, no background. Each piece must stay within its cell with at least 30 pixels of transparent padding. All pieces face RIGHT in strict side view matching the current player. Complete cut-apart components with rounded OVERLAPPING joint ends for skeletal animation, no severed anatomy, no blood.
+Cell row1 col1: entire horizontal torso from round rump on LEFT to thick neck on RIGHT, grey back, cream belly, neck ruff; NO head, NO legs, NO tail. Body silhouette should fill 440x230, centered.
+Cell row1 col2: entire wolf HEAD facing RIGHT, pointed upright ears, golden eye, closed upper muzzle, cream cheek ruff. NO neck, NO lower jaw. Head fills 390x330.
+Cell row1 col3: ONLY separate thin LOWER JAW of same wolf facing RIGHT, cream furry chin, black lip line, two tiny teeth, horizontal, rounded hinge LEFT. Shape fills 330x110.
+Cell row2 col1: complete NEAR FRONT LEG, shoulder at top, mildly backward-bent elbow, long cream lower leg ending in paw pointing RIGHT, smooth complete flesh, full length about 420. Vertical in relaxed standing pose.
+Cell row2 col2: complete FAR FRONT LEG, same shape/proportions as near front leg but muted slightly darker, full length 420.
+Cell row2 col3: long bushy wolf TAIL, root on RIGHT, taper tip curves gently DOWN-LEFT, charcoal grey upper, cream tip, entire curved tail 420 wide 190 high. No body.
+Cell row3 col1: complete NEAR HIND LEG including rounded thigh at top, knee bends FORWARD RIGHT, hock bends BACK LEFT, paw points RIGHT at bottom. Digitigrade quadruped anatomy, full length 420. No detached segments.
+Cell row3 col2: complete FAR HIND LEG, identical anatomy, slightly darker, full length 420.
+Cell row3 col3: leave FULLY EMPTY transparent.
+Each component isolated, no other wolf, no assembled preview. Uniform line weight, grey/cream palette, minimal fur tufts for readable small sprite, confident fine ink contour, simple 2-tone shading. Real alpha transparency around every piece, NO shadow, NO ground, NO texture behind them, NO checkerboard baked into image, NO text.

@@ -1,0 +1,37 @@
+Use case: ui-mockup, substantial layout revision of the supplied existing game concept.
+EDIT TARGET / PRIMARY STYLE REFERENCE: E:/stacklands/docs/美术规范/玄览峰藏经阁选书_20261106/玄览峰藏经阁_理想图_v1.png.
+Keep the exact muted blue-grey / pale ivory / pine-green / desaturated timber palette, controlled hand-painted gouache-like item-icon brushwork, Chinese Kai typography, cloud-cliff scenery, and polished Chinese PC xianxia RPG identity of this image. Redesign its SPACE USAGE and catalog organization according to the instructions below. This is a single complete 16:9 ideal in-game interface screenshot, not a diagram or a concept-board collage.
+
+MOST IMPORTANT USER CORRECTIONS:
+1. Display manuals by their NARROW SPINES ONLY, like books tightly shelved vertically. Absolutely NO large front covers or large portrait-shaped book cards.
+2. A densely useful bookshelf, THREE compact shelf rows visible, each with roughly a dozen or more slim spines. Increase browsable density substantially compared with the old two-row, five-giant-cover design, while preserving readable titles and comfortable clicks.
+3. Introduce clear REALM classification as library FLOORS: "第一层 · 云息" selected, "第二层 · 玄基" subdued, "第三层 · 金丹" subdued. Floor navigation is SEPARATE from the three physical shelf rows. Do not use a shelf row as a realm floor.
+4. Introduce existing KEYWORD filter buttons "全部" "周天" "气血" "应对" "剑" "剑意". These are actual readable UI buttons, not incidental shelf decorations.
+5. Replace the old enormous open-book preview with a COMPACT SINGLE LIGHT PAPER DETAIL LEAF. No open book spread, no binding, no fluttering page corners, no giant easel, no huge empty half-page.
+6. The primary action button text is EXACTLY "拓印". The separate price position says EXACTLY "首本免费". No "免费拓印", no "尚未领取", no footer explanation about receiving books or all disciples.
+
+LAYOUT:
+Confident, practical, polished, visually calm. At a 1920x1080 design scale:
+- A shallow decorative header no more than about 110px tall: "玄览峰 · 藏经阁" centered, "返回" at top right. Keep restrained existing roof-lintel flavor but do not waste a third of screen height on a roof or scenery.
+- Directly below, two slim control bands aligned above the LEFT bookshelf. Upper band: the three floor tabs, plus modest search field "查找秘籍". Lower band: tiny label "关键词" and the six keyword buttons above; a small "可修习" checkbox is optional. All dark ink text on pale backgrounds.
+- Main LEFT bookshelf occupies about 66–69% of the useful width, and extends from below these filters down almost to the bottom margin. It is THREE usable horizontal rows of orderly upright book SPINES, closely packed with sensible small gaps. Grey-blue cloth, pale green-grey or dull parchment spines with thin cream vertical title slips and a few stitch marks, matching the original manual material. Spines about 35–65 design pixels wide and 160–190 high, never show a broad front cover. Long titles may be split into two short neat vertical columns on a slightly thicker spine.
+- This is a conceptual shelf-capacity illustration. There are only FIVE named currently selectable manuals: "玄枢含章经", "太和感物养元宝册", "舒卷天章", "百骸衍枝化生宝册", "斫基损契玄经". Each of these five titles appears EXACTLY ONCE on a vertical title slip somewhere in the shelf, distributed across its first two rows. Fill other visible shelf positions with visually subordinate PLAIN UNLABELLED book spines / tied archival fascicles as library dressing, NOT invented named items, not new skill books, no fake readable names, no repeated titles. Don't add blank UI cards, prices or level labels to these decorative archive books. All three shelf rows should look orderly and populated, with every interaction visually focused on the named spines.
+- Selected "太和感物养元宝册" remains a NARROW SPINE, subtly pulled 8px forward with a muted pine-green selection edge and a small low-contrast selection marker. No glow. Do not rotate it to expose its broad front cover.
+- A tiny restrained scrollbar or page arrows at the cabinet's lower edge. No huge lower drawer, blank shelf bay or giant instruction banner.
+
+RIGHT DETAILS:
+- About 28–31% of useful width, aligned below the header. A single flat off-white paper leaf set in a slim grey timber frame, a restrained faint blue mountain wash only in its bottom corner. The content is left aligned and neatly grouped, with good text contrast, medium-size readable Kai Chinese. No open book, no easel, no binder, no vertical dangling bookmark, no massive blank page, no extra flowers / ink stone / brush foreground occupying space.
+- Selected title "太和感物养元宝册" clear at top, may use two balanced horizontal lines if necessary. Smaller subtitle "云息功法".
+- Under title, compact keyword chips "气血" and "应对".
+- Below, horizontal small tabs "简介" and "卷章", 简介 active.
+- Structured, compact text, exact Chinese, not invented combat numbers:
+  "修习境界" then "凡人至云息十层"
+  "修习要求" then "体魄 5"
+  "简介" then "以自身应对积累气血。"
+  "首卷 · 听息"
+  "可习招式：叩山"
+These sections should use the available leaf width sensibly, not leave a vast empty spread. Short thin ink dividers between the title and requirements are fine. This is a book-selection preview, not a dense combat card, no need for long formulas or skill stats.
+- At BOTTOM of the RIGHT area, separated from the book details by a fine line, a modest PRICE POSITION reading only "首本免费", then one normal-sized but easy-to-click paper button "拓印", with dark ink lettering and a subtle pine-green brush border. These are the only texts in the purchase area. No line below the button. Absolutely no full-screen bottom sentence.
+- For the overall final interface preserve restrained natural background margins with clear mountain windows. Furniture should be geometrically plausible. Keep the rendering crisp to all corners, no blur, no vignette.
+
+IMPORTANT: All Chinese text dark ink, no white text. No invented price, currency, contribution number, stock count, new keyword, locked requirement number, additional manual name or full-skill explanation. No forced sorting by weapon classes, no "攻伐 / 守御 / 术诀" categories. No modern round-corner app cards, Western book spines, gilded luxury UI, particles, speckles, bloom, magic lighting, depth-of-field, realistic 3D or photography, watermark, labels explaining the mockup, arrows with commentary, or English. The result must look like a careful second iteration of the same original game interface, with much denser SPINE-ONLY browsing, actual floor and keyword navigation, a compact functional single-page detail panel, and the precise two texts "首本免费" and "拓印".

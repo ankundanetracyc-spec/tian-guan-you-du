@@ -1,0 +1,108 @@
+{
+  "date": "2026-11-08",
+  "scope": "见闻任务独立样稿，只读引用既有材质，不改共享素材或正式面板",
+  "newBitmapGenerated": false,
+  "sharedReturnStyle": "../全局界面风格母板_20261108/return-control.css?v=1",
+  "geometryExceptions": "按用户统一约定，返回字样右侧的小实心右三角由CSS边框组成，不新增位图素材。",
+  "scriptDrawnPng": false,
+  "materialComposition": "现有纸纹区域、薄布脊、木纹区域、分类纸签与分型控件组合；使用SVG viewBox区域引用与运行时伸缩，不写入PNG像素",
+  "controlFamilies": {
+    "短分类签、筛选与查看工具": "buttonTab",
+    "返回与取消追踪": "button",
+    "追踪任务主操作": "buttonPrimary",
+    "检索输入槽": "input",
+    "案卷夹薄布脊（仅读取局部，不作侧栏）": "buttonNavBinding"
+  },
+  "otherGlyphs": "搜索、勾选、分隔、固定夹及滚动轨/柄均来自既有控件图集",
+  "assets": [
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/控件补充图集_v1.png",
+      "sha256": "4ff46165045d1e5c644ac9fe87c12e783d3343102acbeef4d585e42f142588be",
+      "readOnly": true,
+      "size": [
+        1122,
+        1402
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "textures/ui/yuxu_library_20261107/library_frame.png",
+      "sha256": "5d311b0aeb04d8de57fddbc6aef492e7e11ffbadba3ce558fe2f67579a4da7ce",
+      "readOnly": true,
+      "size": [
+        1672,
+        941
+      ],
+      "mode": "RGB"
+    },
+    {
+      "path": "resources/font/LXGWZhenKaiSlabGB-Regular.ttf",
+      "sha256": "086fa66af57b7a0d7a007067097cd1ac27eb8b8db810fb83ac3de620be1eb3a1",
+      "readOnly": true
+    },
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_短页签_v4.png",
+      "sha256": "6512258e52c3c63a70a1618ab0af9cfd74e96039ffcf82bace9a1b58de40c4eb",
+      "readOnly": true,
+      "size": [
+        1942,
+        809
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_常规_v4.png",
+      "sha256": "dff0f81e6d21615106eea2023aa73429ccd003e7e3e1e7c49cbc5e3bcec6e495",
+      "readOnly": true,
+      "size": [
+        2065,
+        762
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_主操作_v4.png",
+      "sha256": "fcd81aceb22be83c5cb3d3c1ad4c7b1b8e2cbaac7d1b923409d1edd3c6e3727e",
+      "readOnly": true,
+      "size": [
+        2172,
+        724
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/控件_输入槽_v4.png",
+      "sha256": "b73575d23fb26a0efec9eedfd6fefb45c2dd5cf8afcf283e3077cc6f102db8c9",
+      "readOnly": true,
+      "size": [
+        1774,
+        887
+      ],
+      "mode": "RGBA"
+    },
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_侧栏分页_v4.png",
+      "sha256": "efdffe5ce28de8364b6cd5dbdea7930075573de538ad0e8ad08993e4d302f943",
+      "readOnly": true,
+      "size": [
+        2172,
+        724
+      ],
+      "mode": "RGBA"
+    }
+  ],
+  "sharedScripts": [
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/skin-data.js",
+      "sha256": "24aeb018c43d2ba81017e3bfdca46fe2437b86d74cd959dce15b675e7dd4341a",
+      "readOnly": true
+    },
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/materials.js",
+      "sha256": "9b6e5f149bd3612c65a9a47b15eabe058a9c16955878daefa19394ee48516214",
+      "readOnly": true
+    }
+  ],
+  "ownAdapter": "journal-materials.js只在本独立网页内复制并重定位图集路径，不修改共享目录",
+  "notUsed": "未使用百工摊开书册素材，未使用角色整页框或旧李宅/后山废案内容"
+}

@@ -1,0 +1,1149 @@
+{
+  "schemaVersion": 1,
+  "scope": "One fixed whole-actor display translation per original clip, measured from source core-alpha visible shoe contours. Source vertices, limb lengths, poses, weights and raw JSON stay unchanged. Per-frame forced grounding is not used.",
+  "existing_idle_mesh_ground_offset_y": 9.80515,
+  "source_leg_png_sha256": "49de79f21a7ab9d9345b0c6afce390f3c11ddf8a110ba70abec1d2acdd4b5d89",
+  "source_frame_sha256": "7603c46731ab56f6de5e33e06837636b10820a67495cd6093d489568ad767537",
+  "source_measurement_report": "output/guigu_native_ground_audit_20261105/source_alpha_ground_probe.json",
+  "measurement": {
+    "subpixel_step_source_texture_pixels": 0.125,
+    "filter": "bilinear alpha at texel centers, before mip LOD; source UV triangle clips applied",
+    "visible_foot_region": "source cropped texture y>=60, from existing observed instep/heel/sole anchors",
+    "alpha_core_threshold": 128,
+    "soft_alpha_threshold": 1,
+    "source_alpha_foot_samples": 6545,
+    "core_samples": 3833,
+    "core_source_sole_edge_samples": 131,
+    "model_oracle": "Original non-secondary frames, previously checked against actual runtime3D/LBS within3.1e-5 pixels. Foot chains are not affected by DynamicBone cloth/hair components."
+  },
+  "source_solid_sole_sample_hull_contract": "Per-source-triangle UV convex-hull vertices of the3833 measured core-alpha foot samples. Affine triangle interpolation guarantees their maximumY equals that of all measured core samples under every posed triangle. Shared by both87557 leg instances.",
+  "source_solid_sole_sample_hull": [
+    {
+      "triangle_vertices": [
+        34,
+        27,
+        26
+      ],
+      "barycentric_weights": [
+        0.3243358414952835,
+        0.35414808330279257,
+        0.3215160752019237
+      ],
+      "source_full_uv_pixel": [
+        18.1875,
+        66.0625
+      ]
+    },
+    {
+      "triangle_vertices": [
+        34,
+        27,
+        26
+      ],
+      "barycentric_weights": [
+        0.9752329023978137,
+        0.019378374668830745,
+        0.005388722933355794
+      ],
+      "source_full_uv_pixel": [
+        22.0625,
+        66.0625
+      ]
+    },
+    {
+      "triangle_vertices": [
+        34,
+        27,
+        26
+      ],
+      "barycentric_weights": [
+        0.6032254484161099,
+        0.39638364515290014,
+        0.00039090643099015665
+      ],
+      "source_full_uv_pixel": [
+        19.9375,
+        67.1875
+      ]
+    },
+    {
+      "triangle_vertices": [
+        34,
+        27,
+        26
+      ],
+      "barycentric_weights": [
+        0.2975555669094876,
+        0.6980092066420784,
+        0.004435226448432417
+      ],
+      "source_full_uv_pixel": [
+        18.1875,
+        68.0625
+      ]
+    },
+    {
+      "triangle_vertices": [
+        34,
+        0,
+        28
+      ],
+      "barycentric_weights": [
+        0.31345322871013614,
+        0.006040492317385571,
+        0.6805062789724778
+      ],
+      "source_full_uv_pixel": [
+        19.6875,
+        70.8125
+      ]
+    },
+    {
+      "triangle_vertices": [
+        34,
+        0,
+        28
+      ],
+      "barycentric_weights": [
+        0.4568018697810814,
+        0.0011644368971346353,
+        0.5420336933217822
+      ],
+      "source_full_uv_pixel": [
+        20.1875,
+        69.8125
+      ]
+    },
+    {
+      "triangle_vertices": [
+        34,
+        0,
+        28
+      ],
+      "barycentric_weights": [
+        0.9942318088064805,
+        0.0003185298212162735,
+        0.005449661372302739
+      ],
+      "source_full_uv_pixel": [
+        22.1875,
+        66.0625
+      ]
+    },
+    {
+      "triangle_vertices": [
+        34,
+        0,
+        28
+      ],
+      "barycentric_weights": [
+        0.3084820940749271,
+        0.6861732215680085,
+        0.005344684357065033
+      ],
+      "source_full_uv_pixel": [
+        24.5625,
+        70.8125
+      ]
+    },
+    {
+      "triangle_vertices": [
+        34,
+        0,
+        28
+      ],
+      "barycentric_weights": [
+        0.2904997814457353,
+        0.6955023788705468,
+        0.013997839683717261
+      ],
+      "source_full_uv_pixel": [
+        24.5625,
+        70.9375
+      ]
+    },
+    {
+      "triangle_vertices": [
+        34,
+        0,
+        28
+      ],
+      "barycentric_weights": [
+        0.2938138712025413,
+        0.24208055937013206,
+        0.46410556942732595
+      ],
+      "source_full_uv_pixel": [
+        21.3125,
+        70.9375
+      ]
+    },
+    {
+      "triangle_vertices": [
+        4,
+        0,
+        34
+      ],
+      "barycentric_weights": [
+        0.013299240998644546,
+        0.007248820606484685,
+        0.9794519383948721
+      ],
+      "source_full_uv_pixel": [
+        22.3125,
+        66.0625
+      ]
+    },
+    {
+      "triangle_vertices": [
+        4,
+        0,
+        34
+      ],
+      "barycentric_weights": [
+        0.5179361631921573,
+        0.06190845176471527,
+        0.42015538504312744
+      ],
+      "source_full_uv_pixel": [
+        25.5625,
+        66.0625
+      ]
+    },
+    {
+      "triangle_vertices": [
+        4,
+        0,
+        34
+      ],
+      "barycentric_weights": [
+        0.6538433111284458,
+        0.32927354994306235,
+        0.01688313892849358
+      ],
+      "source_full_uv_pixel": [
+        27.3125,
+        67.8125
+      ]
+    },
+    {
+      "triangle_vertices": [
+        4,
+        0,
+        34
+      ],
+      "barycentric_weights": [
+        0.6344403931923706,
+        0.36326397695636814,
+        0.0022956298512628592
+      ],
+      "source_full_uv_pixel": [
+        27.3125,
+        68.0625
+      ]
+    },
+    {
+      "triangle_vertices": [
+        4,
+        0,
+        34
+      ],
+      "barycentric_weights": [
+        0.3433594574153451,
+        0.65656405903961,
+        7.648354504574684e-05
+      ],
+      "source_full_uv_pixel": [
+        26.5625,
+        70.3125
+      ]
+    },
+    {
+      "triangle_vertices": [
+        4,
+        0,
+        34
+      ],
+      "barycentric_weights": [
+        0.25603393779104056,
+        0.7373355395607035,
+        0.006630522648256587
+      ],
+      "source_full_uv_pixel": [
+        26.3125,
+        70.9375
+      ]
+    },
+    {
+      "triangle_vertices": [
+        4,
+        0,
+        34
+      ],
+      "barycentric_weights": [
+        0.003715476694284847,
+        0.7100057239815882,
+        0.2862787993241298
+      ],
+      "source_full_uv_pixel": [
+        24.6875,
+        70.9375
+      ]
+    },
+    {
+      "triangle_vertices": [
+        4,
+        0,
+        34
+      ],
+      "barycentric_weights": [
+        0.0035977820306070107,
+        0.024244034113136692,
+        0.9721581838562567
+      ],
+      "source_full_uv_pixel": [
+        22.3125,
+        66.1875
+      ]
+    },
+    {
+      "triangle_vertices": [
+        34,
+        28,
+        27
+      ],
+      "barycentric_weights": [
+        0.22157198236938935,
+        0.15477752936671507,
+        0.6236504882638965
+      ],
+      "source_full_uv_pixel": [
+        18.0625,
+        68.9375
+      ]
+    },
+    {
+      "triangle_vertices": [
+        34,
+        28,
+        27
+      ],
+      "barycentric_weights": [
+        0.2905179383222518,
+        0.019186386737453986,
+        0.6902956749402946
+      ],
+      "source_full_uv_pixel": [
+        18.1875,
+        68.1875
+      ]
+    },
+    {
+      "triangle_vertices": [
+        34,
+        28,
+        27
+      ],
+      "barycentric_weights": [
+        0.3165428703901143,
+        0.007187483069188261,
+        0.6762696465406979
+      ],
+      "source_full_uv_pixel": [
+        18.3125,
+        68.0625
+      ]
+    },
+    {
+      "triangle_vertices": [
+        34,
+        28,
+        27
+      ],
+      "barycentric_weights": [
+        0.6468274179690547,
+        0.00023306259057420675,
+        0.35293951944037083
+      ],
+      "source_full_uv_pixel": [
+        20.1875,
+        67.0625
+      ]
+    },
+    {
+      "triangle_vertices": [
+        34,
+        28,
+        27
+      ],
+      "barycentric_weights": [
+        0.9510870334801327,
+        0.005277545780227655,
+        0.04363542073964055
+      ],
+      "source_full_uv_pixel": [
+        21.9375,
+        66.1875
+      ]
+    },
+    {
+      "triangle_vertices": [
+        34,
+        28,
+        27
+      ],
+      "barycentric_weights": [
+        0.9685277607709954,
+        0.01799708990415816,
+        0.013475149324845503
+      ],
+      "source_full_uv_pixel": [
+        22.0625,
+        66.1875
+      ]
+    },
+    {
+      "triangle_vertices": [
+        34,
+        28,
+        27
+      ],
+      "barycentric_weights": [
+        0.7608729397018201,
+        0.2383011986669512,
+        0.0008258616312293299
+      ],
+      "source_full_uv_pixel": [
+        21.3125,
+        67.6875
+      ]
+    },
+    {
+      "triangle_vertices": [
+        34,
+        28,
+        27
+      ],
+      "barycentric_weights": [
+        0.492584049719919,
+        0.5073215625584755,
+        9.438772160486053e-05
+      ],
+      "source_full_uv_pixel": [
+        20.3125,
+        69.5625
+      ]
+    },
+    {
+      "triangle_vertices": [
+        34,
+        28,
+        27
+      ],
+      "barycentric_weights": [
+        0.3281225702726056,
+        0.666189872068605,
+        0.005687557658790254
+      ],
+      "source_full_uv_pixel": [
+        19.6875,
+        70.6875
+      ]
+    },
+    {
+      "triangle_vertices": [
+        34,
+        28,
+        27
+      ],
+      "barycentric_weights": [
+        0.3020976382047431,
+        0.6781887757368708,
+        0.019713586058385246
+      ],
+      "source_full_uv_pixel": [
+        19.5625,
+        70.8125
+      ]
+    },
+    {
+      "triangle_vertices": [
+        34,
+        28,
+        27
+      ],
+      "barycentric_weights": [
+        0.16257181987784142,
+        0.5764324227454178,
+        0.2609957573767403
+      ],
+      "source_full_uv_pixel": [
+        18.5625,
+        70.8125
+      ]
+    },
+    {
+      "triangle_vertices": [
+        34,
+        28,
+        27
+      ],
+      "barycentric_weights": [
+        0.1362745700731156,
+        0.526274886705357,
+        0.3374505432215269
+      ],
+      "source_full_uv_pixel": [
+        18.3125,
+        70.6875
+      ]
+    },
+    {
+      "triangle_vertices": [
+        34,
+        28,
+        27
+      ],
+      "barycentric_weights": [
+        0.13600225233625274,
+        0.46411844699702876,
+        0.3998793006667203
+      ],
+      "source_full_uv_pixel": [
+        18.1875,
+        70.4375
+      ]
+    },
+    {
+      "triangle_vertices": [
+        34,
+        28,
+        27
+      ],
+      "barycentric_weights": [
+        0.16148254893038994,
+        0.32780666391210467,
+        0.5107107871575067
+      ],
+      "source_full_uv_pixel": [
+        18.0625,
+        69.8125
+      ]
+    },
+    {
+      "triangle_vertices": [
+        1,
+        0,
+        4
+      ],
+      "barycentric_weights": [
+        0.00028656729978138173,
+        0.7051480320024337,
+        0.2945654006977865
+      ],
+      "source_full_uv_pixel": [
+        26.4375,
+        70.6875
+      ]
+    },
+    {
+      "triangle_vertices": [
+        1,
+        0,
+        4
+      ],
+      "barycentric_weights": [
+        0.004882158107664125,
+        0.37515884771043145,
+        0.6199589941819053
+      ],
+      "source_full_uv_pixel": [
+        27.3125,
+        68.1875
+      ]
+    },
+    {
+      "triangle_vertices": [
+        1,
+        0,
+        4
+      ],
+      "barycentric_weights": [
+        0.011645406548899118,
+        0.33620521480508964,
+        0.6521493786460102
+      ],
+      "source_full_uv_pixel": [
+        27.4375,
+        67.9375
+      ]
+    },
+    {
+      "triangle_vertices": [
+        1,
+        0,
+        4
+      ],
+      "barycentric_weights": [
+        0.053670002285214125,
+        0.29650711829748194,
+        0.6498228794173038
+      ],
+      "source_full_uv_pixel": [
+        27.6875,
+        67.9375
+      ]
+    },
+    {
+      "triangle_vertices": [
+        1,
+        0,
+        4
+      ],
+      "barycentric_weights": [
+        0.18686831420761862,
+        0.18696512110042757,
+        0.626166564691955
+      ],
+      "source_full_uv_pixel": [
+        28.4375,
+        68.0625
+      ]
+    },
+    {
+      "triangle_vertices": [
+        1,
+        0,
+        4
+      ],
+      "barycentric_weights": [
+        0.2570297325255506,
+        0.1369702686647853,
+        0.6059999988096649
+      ],
+      "source_full_uv_pixel": [
+        28.8125,
+        68.1875
+      ]
+    },
+    {
+      "triangle_vertices": [
+        1,
+        0,
+        4
+      ],
+      "barycentric_weights": [
+        0.45362621432465033,
+        0.016387051937429675,
+        0.5299867337379194
+      ],
+      "source_full_uv_pixel": [
+        29.8125,
+        68.6875
+      ]
+    },
+    {
+      "triangle_vertices": [
+        1,
+        0,
+        4
+      ],
+      "barycentric_weights": [
+        0.4817630369062691,
+        0.006090296009395091,
+        0.5121466670843358
+      ],
+      "source_full_uv_pixel": [
+        29.9375,
+        68.8125
+      ]
+    },
+    {
+      "triangle_vertices": [
+        1,
+        0,
+        4
+      ],
+      "barycentric_weights": [
+        0.7638538152669003,
+        0.00013458719126496765,
+        0.23601159754183598
+      ],
+      "source_full_uv_pixel": [
+        30.9375,
+        70.8125
+      ]
+    },
+    {
+      "triangle_vertices": [
+        1,
+        0,
+        4
+      ],
+      "barycentric_weights": [
+        0.7709783399803616,
+        0.009686879517033786,
+        0.2193347805026047
+      ],
+      "source_full_uv_pixel": [
+        30.9375,
+        70.9375
+      ]
+    },
+    {
+      "triangle_vertices": [
+        1,
+        0,
+        4
+      ],
+      "barycentric_weights": [
+        0.014535616726702116,
+        0.7242526166539713,
+        0.26121176661932743
+      ],
+      "source_full_uv_pixel": [
+        26.4375,
+        70.9375
+      ]
+    },
+    {
+      "triangle_vertices": [
+        3,
+        2,
+        1
+      ],
+      "barycentric_weights": [
+        0.28452041959187646,
+        0.0036813102982868884,
+        0.7117982701098376
+      ],
+      "source_full_uv_pixel": [
+        32.3125,
+        70.6875
+      ]
+    },
+    {
+      "triangle_vertices": [
+        3,
+        2,
+        1
+      ],
+      "barycentric_weights": [
+        0.5571742582520685,
+        0.000710911058732222,
+        0.4421148306891993
+      ],
+      "source_full_uv_pixel": [
+        32.8125,
+        68.9375
+      ]
+    },
+    {
+      "triangle_vertices": [
+        3,
+        2,
+        1
+      ],
+      "barycentric_weights": [
+        0.6205797590135091,
+        0.061069068880923894,
+        0.31835117210556796
+      ],
+      "source_full_uv_pixel": [
+        33.1875,
+        68.4375
+      ]
+    },
+    {
+      "triangle_vertices": [
+        3,
+        2,
+        1
+      ],
+      "barycentric_weights": [
+        0.6483798489330646,
+        0.1077269133010379,
+        0.2438932377658999
+      ],
+      "source_full_uv_pixel": [
+        33.4375,
+        68.1875
+      ]
+    },
+    {
+      "triangle_vertices": [
+        3,
+        2,
+        1
+      ],
+      "barycentric_weights": [
+        0.6405745280107329,
+        0.14068444431907245,
+        0.21874102767019613
+      ],
+      "source_full_uv_pixel": [
+        33.5625,
+        68.1875
+      ]
+    },
+    {
+      "triangle_vertices": [
+        3,
+        2,
+        1
+      ],
+      "barycentric_weights": [
+        0.5520424675974169,
+        0.268442863797107,
+        0.17951466860547544
+      ],
+      "source_full_uv_pixel": [
+        33.9375,
+        68.5625
+      ]
+    },
+    {
+      "triangle_vertices": [
+        3,
+        2,
+        1
+      ],
+      "barycentric_weights": [
+        0.5008264149108701,
+        0.32065761243109847,
+        0.17851597265803212
+      ],
+      "source_full_uv_pixel": [
+        34.0625,
+        68.8125
+      ]
+    },
+    {
+      "triangle_vertices": [
+        3,
+        2,
+        1
+      ],
+      "barycentric_weights": [
+        0.3766889436556671,
+        0.43471571850705715,
+        0.18859533783727658
+      ],
+      "source_full_uv_pixel": [
+        34.3125,
+        69.4375
+      ]
+    },
+    {
+      "triangle_vertices": [
+        3,
+        2,
+        1
+      ],
+      "barycentric_weights": [
+        0.3549835777735595,
+        0.4443443273150347,
+        0.2006720949114068
+      ],
+      "source_full_uv_pixel": [
+        34.3125,
+        69.5625
+      ]
+    },
+    {
+      "triangle_vertices": [
+        3,
+        2,
+        1
+      ],
+      "barycentric_weights": [
+        0.22036725532834645,
+        0.3565855426886877,
+        0.4230472019829667
+      ],
+      "source_full_uv_pixel": [
+        33.6875,
+        70.5625
+      ]
+    },
+    {
+      "triangle_vertices": [
+        3,
+        2,
+        1
+      ],
+      "barycentric_weights": [
+        0.20646721036856874,
+        0.3332566204786307,
+        0.4602761691528007
+      ],
+      "source_full_uv_pixel": [
+        33.5625,
+        70.6875
+      ]
+    },
+    {
+      "triangle_vertices": [
+        3,
+        2,
+        1
+      ],
+      "barycentric_weights": [
+        0.20817780725345436,
+        0.24401263623250458,
+        0.5478095565140423
+      ],
+      "source_full_uv_pixel": [
+        33.1875,
+        70.8125
+      ]
+    },
+    {
+      "triangle_vertices": [
+        3,
+        2,
+        1
+      ],
+      "barycentric_weights": [
+        0.2176937250606681,
+        0.12181112096834568,
+        0.6604951539709867
+      ],
+      "source_full_uv_pixel": [
+        32.6875,
+        70.9375
+      ]
+    },
+    {
+      "triangle_vertices": [
+        3,
+        2,
+        1
+      ],
+      "barycentric_weights": [
+        0.2411096878276613,
+        0.022938527914243778,
+        0.735951784258098
+      ],
+      "source_full_uv_pixel": [
+        32.3125,
+        70.9375
+      ]
+    },
+    {
+      "triangle_vertices": [
+        1,
+        4,
+        3
+      ],
+      "barycentric_weights": [
+        0.48624887135772354,
+        0.4963411824436115,
+        0.017409946198661097
+      ],
+      "source_full_uv_pixel": [
+        30.0625,
+        68.8125
+      ]
+    },
+    {
+      "triangle_vertices": [
+        1,
+        4,
+        3
+      ],
+      "barycentric_weights": [
+        0.4834192856018493,
+        0.47405432914638723,
+        0.04252638525175956
+      ],
+      "source_full_uv_pixel": [
+        30.1875,
+        68.8125
+      ]
+    },
+    {
+      "triangle_vertices": [
+        1,
+        4,
+        3
+      ],
+      "barycentric_weights": [
+        0.46402428360391745,
+        0.015294965394335946,
+        0.5206807510017427
+      ],
+      "source_full_uv_pixel": [
+        32.6875,
+        69.0625
+      ]
+    },
+    {
+      "triangle_vertices": [
+        1,
+        4,
+        3
+      ],
+      "barycentric_weights": [
+        0.5012209967234877,
+        0.0022726675867517088,
+        0.4965063356897567
+      ],
+      "source_full_uv_pixel": [
+        32.6875,
+        69.3125
+      ]
+    },
+    {
+      "triangle_vertices": [
+        1,
+        4,
+        3
+      ],
+      "barycentric_weights": [
+        0.6370686641537304,
+        0.001268331854655358,
+        0.36166300399160883
+      ],
+      "source_full_uv_pixel": [
+        32.4375,
+        70.1875
+      ]
+    },
+    {
+      "triangle_vertices": [
+        1,
+        4,
+        3
+      ],
+      "barycentric_weights": [
+        0.7543179750241897,
+        0.006775145026351126,
+        0.23890687994945392
+      ],
+      "source_full_uv_pixel": [
+        32.1875,
+        70.9375
+      ]
+    },
+    {
+      "triangle_vertices": [
+        1,
+        4,
+        3
+      ],
+      "barycentric_weights": [
+        0.7797842468270666,
+        0.20735682470136219,
+        0.012858928471567777
+      ],
+      "source_full_uv_pixel": [
+        31.0625,
+        70.9375
+      ]
+    },
+    {
+      "triangle_vertices": [
+        1,
+        4,
+        3
+      ],
+      "barycentric_weights": [
+        0.5048472279175087,
+        0.48983003353981935,
+        0.005322738542668071
+      ],
+      "source_full_uv_pixel": [
+        30.0625,
+        68.9375
+      ]
+    }
+  ],
+  "offset_contract": "Apply positive render_offset_y once as whole rig_root_node.position.y after source ground_offset subtraction. source_solid_sole_lowest_y is original projected sourceY before that subtraction; original rootY remains unchanged.",
+  "clips": {
+    "Idle": {
+      "render_offset_y": 2.2250997337185314,
+      "source_solid_sole_lowest_y": 7.580050266281468,
+      "source_local_solid_sole_lowest_y_after_base_offset": -2.2250997337185314,
+      "threshold": 128,
+      "alpha_threshold_0_to_1": 0.5019607843137255,
+      "texture_subpixel_step": 0.125,
+      "sample_count": 144,
+      "lowest_sole_phase": 0.0,
+      "remaining_source_flight_range_pixels": [
+        0.0,
+        0.0
+      ]
+    },
+    "Run_New1": {
+      "render_offset_y": 2.618843037376852,
+      "source_solid_sole_lowest_y": 7.1863069626231475,
+      "source_local_solid_sole_lowest_y_after_base_offset": -2.618843037376852,
+      "threshold": 128,
+      "alpha_threshold_0_to_1": 0.5019607843137255,
+      "texture_subpixel_step": 0.125,
+      "sample_count": 144,
+      "lowest_sole_phase": 0.8819444444444444,
+      "remaining_source_flight_range_pixels": [
+        0.0,
+        11.969227382003757
+      ]
+    },
+    "Run_New2": {
+      "render_offset_y": 0.8896385378818472,
+      "source_solid_sole_lowest_y": 8.915511462118152,
+      "source_local_solid_sole_lowest_y_after_base_offset": -0.8896385378818472,
+      "threshold": 128,
+      "alpha_threshold_0_to_1": 0.5019607843137255,
+      "texture_subpixel_step": 0.125,
+      "sample_count": 144,
+      "lowest_sole_phase": 0.020833333333333332,
+      "remaining_source_flight_range_pixels": [
+        0.0,
+        3.1642032687558537
+      ]
+    },
+    "AttackIdle": {
+      "render_offset_y": 2.3250999308543916,
+      "source_solid_sole_lowest_y": 7.480050069145608,
+      "source_local_solid_sole_lowest_y_after_base_offset": -2.3250999308543916,
+      "threshold": 128,
+      "alpha_threshold_0_to_1": 0.5019607843137255,
+      "texture_subpixel_step": 0.125,
+      "sample_count": 144,
+      "lowest_sole_phase": 0.0,
+      "remaining_source_flight_range_pixels": [
+        0.0,
+        0.0
+      ]
+    },
+    "AttackRun": {
+      "render_offset_y": 7.413876518490229,
+      "source_solid_sole_lowest_y": 2.3912734815097707,
+      "source_local_solid_sole_lowest_y_after_base_offset": -7.413876518490229,
+      "threshold": 128,
+      "alpha_threshold_0_to_1": 0.5019607843137255,
+      "texture_subpixel_step": 0.125,
+      "sample_count": 144,
+      "lowest_sole_phase": 0.0,
+      "remaining_source_flight_range_pixels": [
+        0.0,
+        0.0
+      ]
+    },
+    "Step1": {
+      "render_offset_y": 3.0911385316543374,
+      "source_solid_sole_lowest_y": 6.714011468345662,
+      "source_local_solid_sole_lowest_y_after_base_offset": -3.0911385316543374,
+      "threshold": 128,
+      "alpha_threshold_0_to_1": 0.5019607843137255,
+      "texture_subpixel_step": 0.125,
+      "sample_count": 144,
+      "lowest_sole_phase": 0.3888888888888889,
+      "remaining_source_flight_range_pixels": [
+        0.0,
+        3.1579964824464515
+      ]
+    }
+  }
+}

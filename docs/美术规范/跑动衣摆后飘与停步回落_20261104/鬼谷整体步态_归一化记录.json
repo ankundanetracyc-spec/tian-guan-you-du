@@ -1,0 +1,440 @@
+{
+  "source": {
+    "path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\guigubahuang_Data\\resources.assets",
+    "sizeBytes": 1764255120,
+    "sha256": "0d1e14ae4a2719b91055e201fadf294b600f730e5bfbba14f4806b7619ec3ced",
+    "unityVersion": "2020.3f1c1"
+  },
+  "method": "240 source-clip samples per clip; source hierarchy composition; streamed cubic coefficients plus constant curves; unresolved paths excluded; no DynamicBone runtime",
+  "unresolved_bindings_excluded": {
+    "Idle": [],
+    "Run_New1": [
+      {
+        "curveIndex": 72,
+        "width": 3,
+        "path": null,
+        "pathHash": 569651382,
+        "attributeId": 4,
+        "targetRigPath": "/10002/Root/Body"
+      }
+    ],
+    "Run_New2": [
+      {
+        "curveIndex": 57,
+        "width": 3,
+        "path": null,
+        "pathHash": 569651382,
+        "attributeId": 4,
+        "targetRigPath": "/10002/Root/Body"
+      }
+    ],
+    "AttackIdle": [],
+    "AttackRun": [],
+    "Step1": []
+  },
+  "source_gait": {
+    "Idle": {
+      "duration": 1.6333333253860474,
+      "sampled_frames": 240,
+      "mean_leg_chain_length": 0.5742419963033324,
+      "mean_arm_chain_length": 0.24538111736192855,
+      "sides": {
+        "left": {
+          "hand_forward_of_shoulder_over_A": {
+            "min": 0.11137371551724465,
+            "max": 0.13280024842758661,
+            "range": 0.021426532910341967,
+            "mean": 0.12209085036916968
+          },
+          "ankle_forward_of_hip_over_L": {
+            "min": 0.0226194994788526,
+            "max": 0.0226194994788526,
+            "range": 0.0,
+            "mean": 0.0226194994788526
+          },
+          "ankle_vertical_excursion_over_L": {
+            "min": -0.00014782506246835663,
+            "max": -0.00014782506246835663,
+            "range": 0.0,
+            "mean": -0.00014782506246835663
+          },
+          "same_side_hand_foot_correlation": null,
+          "elbow_flex_degrees": {
+            "min": 20.880971712979836,
+            "max": 20.880971712979928,
+            "range": 9.237055564881302e-14,
+            "mean": 20.88097171297988
+          },
+          "knee_flex_degrees": {
+            "min": 6.9482410408382576,
+            "max": 6.9482410408382576,
+            "range": 0.0,
+            "mean": 6.9482410408382576
+          },
+          "frontmost_ankle_phase": 0.0,
+          "backmost_ankle_phase": 0.0,
+          "highest_ankle_phase": 0.0,
+          "frontmost_wrist_phase": 0.0
+        },
+        "right": {
+          "hand_forward_of_shoulder_over_A": {
+            "min": 0.4576484013121062,
+            "max": 0.5210894448376263,
+            "range": 0.0634410435255201,
+            "mean": 0.48954207837446645
+          },
+          "ankle_forward_of_hip_over_L": {
+            "min": -0.1189123412237555,
+            "max": -0.1189123412237555,
+            "range": 0.0,
+            "mean": -0.1189123412237555
+          },
+          "ankle_vertical_excursion_over_L": {
+            "min": -0.11647369202248645,
+            "max": -0.11647369202248645,
+            "range": 0.0,
+            "mean": -0.11647369202248645
+          },
+          "same_side_hand_foot_correlation": null,
+          "elbow_flex_degrees": {
+            "min": 117.8299973056555,
+            "max": 125.8259995029211,
+            "range": 7.996002197265611,
+            "mean": 121.8279984042883
+          },
+          "knee_flex_degrees": {
+            "min": 3.6682408310297907,
+            "max": 3.6682408310297907,
+            "range": 0.0,
+            "mean": 3.6682408310297907
+          },
+          "frontmost_ankle_phase": 0.0,
+          "backmost_ankle_phase": 0.0,
+          "highest_ankle_phase": 0.0,
+          "frontmost_wrist_phase": 0.0
+        }
+      },
+      "torso_neck_from_waist_lean_degrees": {
+        "min": -7.077314761502022,
+        "max": -5.805319217068438,
+        "range": 1.271995544433584,
+        "mean": -6.44131698928523
+      },
+      "yifu_vertical_excursion_over_leg_length": {
+        "min": 0.774934601983342,
+        "max": 0.795831705632365,
+        "range": 0.020897103649023085,
+        "mean": 0.7853831538078535
+      },
+      "cloth_tip_x_relative_to_root_over_L_without_dynamicbone": {
+        "min": -0.11401015786462186,
+        "max": -0.06398744756153334,
+        "range": 0.050022710303088525,
+        "mean": -0.08903394390010518
+      },
+      "between_legs_x_correlation": null,
+      "between_arms_x_correlation": 0.9999874646578881,
+      "cloth_rearmost_base_phase_without_dynamicbone": 0.5,
+      "body_highest_phase": 0.0,
+      "body_lowest_phase": 0.5,
+      "leg_lengths": {
+        "left": {
+          "min": 0.5742419963033324,
+          "max": 0.5742419963033324,
+          "range": 0.0,
+          "mean": 0.5742419963033324
+        },
+        "right": {
+          "min": 0.5742419963033324,
+          "max": 0.5742419963033324,
+          "range": 0.0,
+          "mean": 0.5742419963033324
+        }
+      }
+    },
+    "Run_New1": {
+      "duration": 0.5833333134651184,
+      "sampled_frames": 240,
+      "mean_leg_chain_length": 0.5822278232095507,
+      "mean_arm_chain_length": 0.27469942892067745,
+      "sides": {
+        "left": {
+          "hand_forward_of_shoulder_over_A": {
+            "min": -0.7575227402534755,
+            "max": 0.37925302551313744,
+            "range": 1.1367757657666129,
+            "mean": -0.23086039852563714
+          },
+          "ankle_forward_of_hip_over_L": {
+            "min": -0.8327269126405858,
+            "max": 0.3767749329674886,
+            "range": 1.2095018456080744,
+            "mean": -0.27818170331914027
+          },
+          "ankle_vertical_excursion_over_L": {
+            "min": -0.08897377691199827,
+            "max": 0.7572234943822177,
+            "range": 0.846197271294216,
+            "mean": 0.35787128284369063
+          },
+          "same_side_hand_foot_correlation": -0.8023259400571522,
+          "elbow_flex_degrees": {
+            "min": 26.434123101224035,
+            "max": 125.91980771458537,
+            "range": 99.48568461336134,
+            "mean": 72.98458318487116
+          },
+          "knee_flex_degrees": {
+            "min": 19.818615571998706,
+            "max": 108.69068810784896,
+            "range": 88.87207253585025,
+            "mean": 67.52037680568688
+          },
+          "frontmost_ankle_phase": 0.29583333333333334,
+          "backmost_ankle_phase": 0.5958333333333333,
+          "highest_ankle_phase": 0.8916666666666667,
+          "frontmost_wrist_phase": 0.7333333333333333
+        },
+        "right": {
+          "hand_forward_of_shoulder_over_A": {
+            "min": 0.48270733421628964,
+            "max": 0.6324107363637949,
+            "range": 0.14970340214750522,
+            "mean": 0.5711956393845226
+          },
+          "ankle_forward_of_hip_over_L": {
+            "min": -0.8858451574318105,
+            "max": 0.27612718239109507,
+            "range": 1.1619723398229056,
+            "mean": -0.33650815703030484
+          },
+          "ankle_vertical_excursion_over_L": {
+            "min": -0.09347521147676773,
+            "max": 0.7035402756133243,
+            "range": 0.7970154870900921,
+            "mean": 0.2628007424901484
+          },
+          "same_side_hand_foot_correlation": -0.9581071388885327,
+          "elbow_flex_degrees": {
+            "min": 98.99610326701689,
+            "max": 112.92184689171881,
+            "range": 13.925743624701923,
+            "mean": 105.64484734379494
+          },
+          "knee_flex_degrees": {
+            "min": 8.240969439505276,
+            "max": 117.44805755834113,
+            "range": 109.20708811883586,
+            "mean": 52.56258417539229
+          },
+          "frontmost_ankle_phase": 0.7708333333333334,
+          "backmost_ankle_phase": 0.19166666666666668,
+          "highest_ankle_phase": 0.32083333333333336,
+          "frontmost_wrist_phase": 0.12916666666666668
+        }
+      },
+      "torso_neck_from_waist_lean_degrees": {
+        "min": 17.80775937329478,
+        "max": 22.805688473361243,
+        "range": 4.9979291000664645,
+        "mean": 20.306687777843997
+      },
+      "yifu_vertical_excursion_over_leg_length": {
+        "min": 0.7299554621412089,
+        "max": 0.7785179072577258,
+        "range": 0.04856244511651697,
+        "mean": 0.7548770604649545
+      },
+      "cloth_tip_x_relative_to_root_over_L_without_dynamicbone": {
+        "min": -0.509589866758456,
+        "max": -0.38833290163907896,
+        "range": 0.121256965119377,
+        "mean": -0.4278257682609861
+      },
+      "between_legs_x_correlation": -0.8616305529864988,
+      "between_arms_x_correlation": -0.9677930336933386,
+      "cloth_rearmost_base_phase_without_dynamicbone": 0.22916666666666666,
+      "body_highest_phase": 0.0,
+      "body_lowest_phase": 0.37083333333333335,
+      "leg_lengths": {
+        "left": {
+          "min": 0.5837630755943464,
+          "max": 0.6092537541625896,
+          "range": 0.025490678568243275,
+          "mean": 0.5962955884879391
+        },
+        "right": {
+          "min": 0.5299573586272686,
+          "max": 0.5838324830531072,
+          "range": 0.05387512442583864,
+          "mean": 0.5681600579311622
+        }
+      }
+    },
+    "Run_New2": {
+      "duration": 0.44999998807907104,
+      "sampled_frames": 240,
+      "mean_leg_chain_length": 0.5742419963033325,
+      "mean_arm_chain_length": 0.24538111736192852,
+      "sides": {
+        "left": {
+          "hand_forward_of_shoulder_over_A": {
+            "min": -0.35771010899174,
+            "max": 0.17504173216888536,
+            "range": 0.5327518411606254,
+            "mean": -0.08150862917901794
+          },
+          "ankle_forward_of_hip_over_L": {
+            "min": -0.40751805085305176,
+            "max": 0.4248343330546463,
+            "range": 0.8323523839076981,
+            "mean": 0.018005297346828576
+          },
+          "ankle_vertical_excursion_over_L": {
+            "min": -0.10679896083602895,
+            "max": 0.060803328022024504,
+            "range": 0.16760228885805345,
+            "mean": -0.03164911036550592
+          },
+          "same_side_hand_foot_correlation": -0.7100996163868022,
+          "elbow_flex_degrees": {
+            "min": 15.27736311055481,
+            "max": 31.98902654226709,
+            "range": 16.71166343171228,
+            "mean": 22.414583146070182
+          },
+          "knee_flex_degrees": {
+            "min": 4.450240895879581,
+            "max": 65.03813810920406,
+            "range": 60.587897213324474,
+            "mean": 26.120495656561605
+          },
+          "frontmost_ankle_phase": 0.13333333333333333,
+          "backmost_ankle_phase": 0.49166666666666664,
+          "highest_ankle_phase": 0.48333333333333334,
+          "frontmost_wrist_phase": 0.7041666666666667
+        },
+        "right": {
+          "hand_forward_of_shoulder_over_A": {
+            "min": 0.4948316154631849,
+            "max": 0.519508144764336,
+            "range": 0.024676529301151162,
+            "mean": 0.5074900648935156
+          },
+          "ankle_forward_of_hip_over_L": {
+            "min": -0.36986896652208706,
+            "max": 0.3434617391377921,
+            "range": 0.7133307056598792,
+            "mean": -0.04268960578235702
+          },
+          "ankle_vertical_excursion_over_L": {
+            "min": -0.10409268809451554,
+            "max": 0.05568512179309415,
+            "range": 0.1597778098876097,
+            "mean": -0.04209688504449955
+          },
+          "same_side_hand_foot_correlation": 0.8523464699095928,
+          "elbow_flex_degrees": {
+            "min": 116.5411809385567,
+            "max": 121.18999791600703,
+            "range": 4.648816977450323,
+            "mean": 118.86550076616072
+          },
+          "knee_flex_degrees": {
+            "min": 10.388442843166805,
+            "max": 57.31286729297695,
+            "range": 46.92442444981014,
+            "mean": 30.96275104411707
+          },
+          "frontmost_ankle_phase": 0.6083333333333333,
+          "backmost_ankle_phase": 0.9041666666666667,
+          "highest_ankle_phase": 0.875,
+          "frontmost_wrist_phase": 0.4625
+        }
+      },
+      "torso_neck_from_waist_lean_degrees": {
+        "min": -7.208319094998122,
+        "max": -7.153320889375971,
+        "range": 0.05499820562215074,
+        "mean": -7.180818942258186
+      },
+      "yifu_vertical_excursion_over_leg_length": {
+        "min": 0.8182363062320954,
+        "max": 0.8305742465490812,
+        "range": 0.012337940316985763,
+        "mean": 0.8251454511068989
+      },
+      "cloth_tip_x_relative_to_root_over_L_without_dynamicbone": {
+        "min": 0.012908400283641203,
+        "max": 0.09560093018859694,
+        "range": 0.08269252990495574,
+        "mean": 0.046611565355439526
+      },
+      "between_legs_x_correlation": -0.8085062931368341,
+      "between_arms_x_correlation": 0.22960668561155936,
+      "cloth_rearmost_base_phase_without_dynamicbone": 0.85,
+      "body_highest_phase": 0.7416666666666667,
+      "body_lowest_phase": 0.0,
+      "leg_lengths": {
+        "left": {
+          "min": 0.5742419963033323,
+          "max": 0.5742419963033326,
+          "range": 3.3306690738754696e-16,
+          "mean": 0.5742419963033325
+        },
+        "right": {
+          "min": 0.5742419963033323,
+          "max": 0.5742419963033326,
+          "range": 3.3306690738754696e-16,
+          "mean": 0.5742419963033325
+        }
+      }
+    }
+  },
+  "project_v3_comparison": {
+    "mean_leg_chain_length": 56.66719445835736,
+    "mean_arm_chain_length": 25.96886612993143,
+    "near": {
+      "ankle_front_back_range_over_L": 0.8126151748201889,
+      "lift_peak_over_L": 0.16692008335097364,
+      "hand_range_over_A": 1.095926206215733
+    },
+    "far": {
+      "ankle_front_back_range_over_L": 0.7939446495412521,
+      "lift_peak_over_L": 0.168836058887256,
+      "hand_range_over_A": 1.0750712255829395
+    }
+  },
+  "binding_crc_validation": {
+    "Idle": {
+      "resolved_bindings": 29,
+      "crc_path_mismatches": [],
+      "unresolved_bindings": 0
+    },
+    "Run_New1": {
+      "resolved_bindings": 34,
+      "crc_path_mismatches": [],
+      "unresolved_bindings": 1
+    },
+    "Run_New2": {
+      "resolved_bindings": 28,
+      "crc_path_mismatches": [],
+      "unresolved_bindings": 1
+    },
+    "AttackIdle": {
+      "resolved_bindings": 24,
+      "crc_path_mismatches": [],
+      "unresolved_bindings": 0
+    },
+    "AttackRun": {
+      "resolved_bindings": 32,
+      "crc_path_mismatches": [],
+      "unresolved_bindings": 0
+    },
+    "Step1": {
+      "resolved_bindings": 16,
+      "crc_path_mismatches": [],
+      "unresolved_bindings": 0
+    }
+  }
+}

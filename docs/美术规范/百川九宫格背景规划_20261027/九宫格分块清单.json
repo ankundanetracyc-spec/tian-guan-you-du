@@ -1,0 +1,441 @@
+{
+  "grid": [
+    3,
+    3
+  ],
+  "worldPixels": [
+    6144,
+    6144
+  ],
+  "corePixels": [
+    2048,
+    2048
+  ],
+  "generationBleed": 128,
+  "generationWorkingPixels": [
+    2304,
+    2304
+  ],
+  "baselineViewport": [
+    1920,
+    1080
+  ],
+  "cameraZoom": 1,
+  "chunks": [
+    {
+      "id": "bc_bg_11",
+      "row": 0,
+      "col": 0,
+      "title": "镇岳山前",
+      "coreRect": [
+        0,
+        0,
+        2048,
+        2048
+      ],
+      "workingRect": [
+        -128,
+        -128,
+        2304,
+        2304
+      ],
+      "workingSize": [
+        2304,
+        2304
+      ],
+      "guide": "guide_11.png",
+      "nodeCount": 5,
+      "majorNodes": [
+        "望岫城"
+      ],
+      "nodes": [
+        "bc_place_014",
+        "bc_place_027",
+        "bc_place_045",
+        "bc_place_048",
+        "bc_place_115"
+      ],
+      "status": "构图引导已生成，正式栅格素材未生成"
+    },
+    {
+      "id": "bc_bg_12",
+      "row": 0,
+      "col": 1,
+      "title": "玄都台原",
+      "coreRect": [
+        2048,
+        0,
+        2048,
+        2048
+      ],
+      "workingRect": [
+        1920,
+        -128,
+        2304,
+        2304
+      ],
+      "workingSize": [
+        2304,
+        2304
+      ],
+      "guide": "guide_12.png",
+      "nodeCount": 18,
+      "majorNodes": [
+        "玄都天府",
+        "丹鼎宗",
+        "绛阙城",
+        "金阙城"
+      ],
+      "nodes": [
+        "bc_place_002",
+        "bc_place_008",
+        "bc_place_015",
+        "bc_place_038",
+        "bc_place_049",
+        "bc_place_050",
+        "bc_place_051",
+        "bc_place_057",
+        "bc_place_059",
+        "bc_place_088",
+        "bc_place_089",
+        "bc_place_091",
+        "bc_place_092",
+        "bc_place_112",
+        "bc_place_113",
+        "bc_place_114",
+        "bc_place_116",
+        "bc_place_117"
+      ],
+      "status": "构图引导已生成，正式栅格素材未生成"
+    },
+    {
+      "id": "bc_bg_13",
+      "row": 0,
+      "col": 2,
+      "title": "沧溟河港",
+      "coreRect": [
+        4096,
+        0,
+        2048,
+        2048
+      ],
+      "workingRect": [
+        3968,
+        -128,
+        2304,
+        2304
+      ],
+      "workingSize": [
+        2304,
+        2304
+      ],
+      "guide": "guide_13.png",
+      "nodeCount": 13,
+      "majorNodes": [
+        "沧溟水府",
+        "镇海城",
+        "临渊城"
+      ],
+      "nodes": [
+        "bc_place_010",
+        "bc_place_018",
+        "bc_place_019",
+        "bc_place_030",
+        "bc_place_040",
+        "bc_place_043",
+        "bc_place_054",
+        "bc_place_055",
+        "bc_place_056",
+        "bc_place_058",
+        "bc_place_060",
+        "bc_place_102",
+        "bc_place_105"
+      ],
+      "status": "构图引导已生成，正式栅格素材未生成"
+    },
+    {
+      "id": "bc_bg_21",
+      "row": 1,
+      "col": 0,
+      "title": "镇岳西岭",
+      "coreRect": [
+        0,
+        2048,
+        2048,
+        2048
+      ],
+      "workingRect": [
+        -128,
+        1920,
+        2304,
+        2304
+      ],
+      "workingSize": [
+        2304,
+        2304
+      ],
+      "guide": "guide_21.png",
+      "nodeCount": 14,
+      "majorNodes": [
+        "镇岳观",
+        "赤水城",
+        "白石城"
+      ],
+      "nodes": [
+        "bc_place_005",
+        "bc_place_017",
+        "bc_place_021",
+        "bc_place_029",
+        "bc_place_034",
+        "bc_place_046",
+        "bc_place_047",
+        "bc_place_064",
+        "bc_place_065",
+        "bc_place_066",
+        "bc_place_090",
+        "bc_place_096",
+        "bc_place_097",
+        "bc_place_100"
+      ],
+      "status": "构图引导已生成，正式栅格素材未生成"
+    },
+    {
+      "id": "bc_bg_22",
+      "row": 1,
+      "col": 1,
+      "title": "归藏涵虚",
+      "coreRect": [
+        2048,
+        2048,
+        2048,
+        2048
+      ],
+      "workingRect": [
+        1920,
+        1920,
+        2304,
+        2304
+      ],
+      "workingSize": [
+        2304,
+        2304
+      ],
+      "guide": "guide_22.png",
+      "nodeCount": 20,
+      "majorNodes": [
+        "太微道宫",
+        "抱朴山",
+        "归藏书院",
+        "承天城",
+        "春水府",
+        "通济城"
+      ],
+      "nodes": [
+        "bc_place_004",
+        "bc_place_006",
+        "bc_place_009",
+        "bc_place_016",
+        "bc_place_020",
+        "bc_place_026",
+        "bc_place_028",
+        "bc_place_031",
+        "bc_place_032",
+        "bc_place_033",
+        "bc_place_052",
+        "bc_place_053",
+        "bc_place_061",
+        "bc_place_062",
+        "bc_place_063",
+        "bc_place_067",
+        "bc_place_070",
+        "bc_place_085",
+        "bc_place_087",
+        "bc_place_094"
+      ],
+      "status": "构图引导已生成，正式栅格素材未生成"
+    },
+    {
+      "id": "bc_bg_23",
+      "row": 1,
+      "col": 2,
+      "title": "古寺东陵",
+      "coreRect": [
+        4096,
+        2048,
+        2048,
+        2048
+      ],
+      "workingRect": [
+        3968,
+        1920,
+        2304,
+        2304
+      ],
+      "workingSize": [
+        2304,
+        2304
+      ],
+      "guide": "guide_23.png",
+      "nodeCount": 14,
+      "majorNodes": [
+        "无相圣宗",
+        "枯骨寺",
+        "归寂城",
+        "永夜关"
+      ],
+      "nodes": [
+        "bc_place_003",
+        "bc_place_013",
+        "bc_place_025",
+        "bc_place_044",
+        "bc_place_073",
+        "bc_place_079",
+        "bc_place_081",
+        "bc_place_082",
+        "bc_place_083",
+        "bc_place_084",
+        "bc_place_086",
+        "bc_place_118",
+        "bc_place_120",
+        "bc_place_123"
+      ],
+      "status": "构图引导已生成，正式栅格素材未生成"
+    },
+    {
+      "id": "bc_bg_31",
+      "row": 2,
+      "col": 0,
+      "title": "玉虚山前",
+      "coreRect": [
+        0,
+        4096,
+        2048,
+        2048
+      ],
+      "workingRect": [
+        -128,
+        3968,
+        2304,
+        2304
+      ],
+      "workingSize": [
+        2304,
+        2304
+      ],
+      "guide": "guide_31.png",
+      "nodeCount": 9,
+      "majorNodes": [
+        "玉虚仙宗",
+        "青萝城",
+        "太和城"
+      ],
+      "nodes": [
+        "bc_place_001",
+        "bc_place_023",
+        "bc_place_042",
+        "bc_place_106",
+        "bc_place_107",
+        "bc_place_108",
+        "bc_place_109",
+        "bc_place_110",
+        "bc_place_111"
+      ],
+      "status": "构图引导已生成，正式栅格素材未生成"
+    },
+    {
+      "id": "bc_bg_32",
+      "row": 2,
+      "col": 1,
+      "title": "百药溪云",
+      "coreRect": [
+        2048,
+        4096,
+        2048,
+        2048
+      ],
+      "workingRect": [
+        1920,
+        3968,
+        2304,
+        2304
+      ],
+      "workingSize": [
+        2304,
+        2304
+      ],
+      "guide": "guide_32.png",
+      "nodeCount": 16,
+      "majorNodes": [
+        "百药谷",
+        "血河教",
+        "溪云城"
+      ],
+      "nodes": [
+        "bc_place_007",
+        "bc_place_011",
+        "bc_place_022",
+        "bc_place_035",
+        "bc_place_041",
+        "bc_place_068",
+        "bc_place_069",
+        "bc_place_071",
+        "bc_place_072",
+        "bc_place_075",
+        "bc_place_077",
+        "bc_place_095",
+        "bc_place_098",
+        "bc_place_099",
+        "bc_place_101",
+        "bc_place_103"
+      ],
+      "status": "构图引导已生成，正式栅格素材未生成"
+    },
+    {
+      "id": "bc_bg_33",
+      "row": 2,
+      "col": 2,
+      "title": "无相南境",
+      "coreRect": [
+        4096,
+        4096,
+        2048,
+        2048
+      ],
+      "workingRect": [
+        3968,
+        3968,
+        2304,
+        2304
+      ],
+      "workingSize": [
+        2304,
+        2304
+      ],
+      "guide": "guide_33.png",
+      "nodeCount": 14,
+      "majorNodes": [
+        "蚀日宫",
+        "暮烟城"
+      ],
+      "nodes": [
+        "bc_place_012",
+        "bc_place_024",
+        "bc_place_036",
+        "bc_place_037",
+        "bc_place_039",
+        "bc_place_074",
+        "bc_place_076",
+        "bc_place_078",
+        "bc_place_080",
+        "bc_place_093",
+        "bc_place_104",
+        "bc_place_119",
+        "bc_place_121",
+        "bc_place_122"
+      ],
+      "status": "构图引导已生成，正式栅格素材未生成"
+    }
+  ],
+  "status": "本轮显示尺度工作方案，不改变逻辑旅行距离或运行时",
+  "note": "原1254整体图仅为画风草稿，不放大冒充6144正式地图，不直接切九块作为正式资产。"
+}

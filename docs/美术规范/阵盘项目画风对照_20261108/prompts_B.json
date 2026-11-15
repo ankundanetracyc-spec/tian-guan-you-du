@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-08",
+  "scheme": "B 墨绘铜纹",
+  "generator": "built-in image_gen.imagegen",
+  "prompt": "Use case: stylized-concept.\nCreate ONE original low-tier Chinese xianxia formation disk for the SAME GAME ART FAMILY as the supplied project images. The first reference is an existing weapon inventory icon: its confident irregular CHARCOAL INK outlines, large simplified wash-painted color planes, ivory highlights, ink-grey shading, and restrained dull bronze/teal palette are the most important style guide. The second is the game's existing hand-painted wood-and-paper interface: use its warm grey-brown / grey-blue harmony and gentle hand-painted feel. Neither reference supplies the target object: invent the formation disk, copy no weapon shape, no roof or UI layout, no captions. Make the new prop look painted by the artist who made those existing game items.\n\nDirection B: 墨绘铜纹, an inexpensive but deliberate formation tool. EXACT 90-DEGREE ORTHOGRAPHIC TOP VIEW. Show the whole thin OCTAGONAL bronze disk, a broad short-square footprint with clipped corners rather than a circular tray. Matte grey-brown bronze face with quiet desaturated teal patina in just a few broad brush patches. Confident dark ink outside contour, thin inner edge, only two or three simplified hand-painted tones to show shallow construction. Spare abstract angular seal motifs along the outer rim suggest an ancient formation instrument; leave calm usable space inside. NO detailed microscopic metal texture or photoreal patina. No glossy 3D product-render lighting. This should read as a flat hand-illustrated game inventory object at small size, with crisp broad forms and visible controlled ink-and-gouache strokes.\n\nExactly FOUR clearly separate small installed components, each individually outlined in the same ink line as the base:\n- upper-left: compact 1x1 sensing piece, a short bone-ivory stylus held in a simple dark-bronze forked seat; no compass wheel.\n- middle-left: 1x1 small square seal-like array eye, ivory-green stone inset in a simple ink-outlined bronze mounting, one abstract incised rune; independent, no wire needed.\n- lower-left: horizontal 2x1 power-source trough, one continuous dull jade-marrow sliver in a modest bronze cradle with two simple grips, like a small crafting part.\n- right-middle: vertical 1x2 protective executor, TWO narrow overlapping flat bronze-and-jade talisman plates with a small curved open gap. Each is a physical mechanical/ritual part, NOT a shield symbol, not a giant ornament.\nAll four have DIFFERENT readable silhouettes. Components remain modest relative to the base, leaving routing room, but must be large enough to recognize without inspecting tiny ornament.\n\nShow precisely TWO separated functional routes: a thin muted vermilion ink-filled carved command line from the upper-left sensor EAST across the top working area then SOUTH into the TOP of the right-side executor; and a somewhat broader flat dull ochre / pale brass spirit-sand inlay energy line from the lower-left trough EAST across the bottom working area then NORTH into the BOTTOM of that executor. Rounded hand-worked corners and short precise contact notches; no disconnected routes. They must NEVER cross, overlap, or run through the square array eye. The two lines look painted and inlaid into an ancient implement, not modern electrical cables or turquoise tubes. No extra connections, no CPU traces, no four-way intersections.\n\nHidden 4x4 construction area, draw NO grid squares, no checkerboard, no cells, no graph paper. True transparent background outside one complete centered prop with about 6% clear margin. No backdrop, paper rectangle, tabletop, shadow outside silhouette, scenery, character, hand, flag, lettering, title or UI. Subtle inner contact shadows only. No glossy gemstones, jewelry medallions, gold frame, big concentric mandala, excessive bloom or permanent magical glow.\nPriority: existing project hand-painted ink icon style > a distinctive elegant formation-implement silhouette > readable modular parts and two noncrossing routes.",
+  "referenced_image_paths": [
+    "E:/stacklands/textures/ui/forged_swords_icons_20261025_v1/broad_sword.png",
+    "E:/stacklands/docs/美术规范/玄览峰拓印接入_20261107/08_善功堂_1920.png"
+  ],
+  "reference_roles": [
+    "现行阔剑图标：墨线轮廓、概括色面、象牙白亮部及青铜青绿",
+    "善功堂原生图：灰褐与灰青手绘材质协调；不复制屋檐或布局"
+  ],
+  "old_disc_images_used": false,
+  "raw_path": "E:/tmp/CodexData/generated_images/01a1b682-03fd-7651-8d4c-8018f1185e66/exec-8896cea0-8cb6-4f44-ae49-3243023c47a5.png",
+  "output_path": "E:/stacklands/docs/美术规范/阵盘项目画风对照_20261108/B_墨绘铜纹.png",
+  "status": "风格候选，待用户选择；未逐格验算4×4布局、未接入运行。",
+  "checks": {
+    "strict_top_down": true,
+    "whole_artifact": true,
+    "project_ink_outline_and_simplified_wash": true,
+    "four_distinct_parts": true,
+    "shield_absent": true,
+    "grid_absent": true,
+    "signal_power_no_crossing": true,
+    "no_typography_or_ui": true
+  },
+  "processing": "原图复制，无像素修改或后处理。"
+}

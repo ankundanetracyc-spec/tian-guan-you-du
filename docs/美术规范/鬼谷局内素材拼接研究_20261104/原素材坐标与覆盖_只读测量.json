@@ -1,0 +1,398 @@
+{
+  "source": {
+    "path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\guigubahuang_Data\\resources.assets",
+    "sizeBytes": 1764255120,
+    "sha256": "0d1e14ae4a2719b91055e201fadf294b600f730e5bfbba14f4806b7619ec3ced",
+    "unityVersion": "2020.3f1c1"
+  },
+  "source_input_hashes": {
+    "rig.json": "59a56da10dea11afbb4f6c4aaa19388bb72fc7ebc772c215189da17e90e04ffd",
+    "skins.json": "52c438bc6fb939a418a4bb7d9185e90c05c84be01ee038f8dd796649b1104ade",
+    "animations.json": "b8131a73445fafd7c850382a74fc720171325a52809e8779d7053c6147675063",
+    "source_reference_vertex_frames.json": "7603c46731ab56f6de5e33e06837636b10820a67495cd6093d489568ad767537"
+  },
+  "measurements": {
+    "85649": {
+      "sprite": 85649,
+      "sprite_rect": [
+        0.0,
+        0.0,
+        60.0,
+        100.0
+      ],
+      "sprite_pivot_fraction": [
+        0.5,
+        0.5
+      ],
+      "ppu": 100.0,
+      "full_texture_size": [
+        60,
+        100
+      ],
+      "trim_texture_rect_y_up": [
+        10.02226734161377,
+        0.0,
+        41.94144821166992,
+        94.97325134277344
+      ],
+      "trim_top_left_in_full_canvas": [
+        10.02226734161377,
+        5.0267486572265625
+      ],
+      "decoded_crop_png_size": [
+        42,
+        95
+      ],
+      "sprite_origin_in_crop_uv": [
+        0.47632434048444616,
+        0.473535976782114
+      ],
+      "alpha_bbox_crop_pixels": [
+        2,
+        4,
+        39,
+        94
+      ],
+      "renderer_depth": 0.03999999910593033,
+      "sorting_layer": 0,
+      "sorting_order": 0,
+      "uv_transform": [
+        100.0,
+        30.0,
+        100.0,
+        50.0
+      ]
+    },
+    "84807": {
+      "sprite": 84807,
+      "sprite_rect": [
+        0.0,
+        0.0,
+        60.0,
+        60.0
+      ],
+      "sprite_pivot_fraction": [
+        0.5,
+        0.5
+      ],
+      "ppu": 100.0,
+      "full_texture_size": [
+        60,
+        60
+      ],
+      "trim_texture_rect_y_up": [
+        20.026750564575195,
+        9.026750564575195,
+        20.897127151489258,
+        42.93034362792969
+      ],
+      "trim_top_left_in_full_canvas": [
+        20.026750564575195,
+        8.042905807495117
+      ],
+      "decoded_crop_png_size": [
+        21,
+        43
+      ],
+      "sprite_origin_in_crop_uv": [
+        0.47725457011989564,
+        0.511458617308155
+      ],
+      "alpha_bbox_crop_pixels": [
+        2,
+        2,
+        18,
+        41
+      ],
+      "renderer_depth": 0.07999999821186066,
+      "sorting_layer": 0,
+      "sorting_order": 0,
+      "uv_transform": [
+        100.0,
+        30.0,
+        100.0,
+        30.0
+      ]
+    },
+    "79543": {
+      "sprite": 79543,
+      "sprite_rect": [
+        0.0,
+        0.0,
+        60.0,
+        60.0
+      ],
+      "sprite_pivot_fraction": [
+        0.5,
+        0.5
+      ],
+      "ppu": 100.0,
+      "full_texture_size": [
+        60,
+        60
+      ],
+      "trim_texture_rect_y_up": [
+        21.026750564575195,
+        11.076120376586914,
+        15.897127151489258,
+        43.847755432128906
+      ],
+      "trim_top_left_in_full_canvas": [
+        21.026750564575195,
+        5.07612419128418
+      ],
+      "decoded_crop_png_size": [
+        16,
+        44
+      ],
+      "sprite_origin_in_crop_uv": [
+        0.5644572978447985,
+        0.5684185099804027
+      ],
+      "alpha_bbox_crop_pixels": [
+        2,
+        2,
+        14,
+        42
+      ],
+      "renderer_depth": 0.009999999776482582,
+      "sorting_layer": 0,
+      "sorting_order": 0,
+      "uv_transform": [
+        100.0,
+        30.0,
+        100.0,
+        30.0
+      ]
+    },
+    "87557": {
+      "sprite": 87557,
+      "sprite_rect": [
+        0.0,
+        0.0,
+        50.0,
+        80.0
+      ],
+      "sprite_pivot_fraction": [
+        0.5,
+        0.5
+      ],
+      "ppu": 100.0,
+      "full_texture_size": [
+        50,
+        80
+      ],
+      "trim_texture_rect_y_up": [
+        13.026750564575195,
+        6.04290771484375,
+        23.897127151489258,
+        67.88097381591797
+      ],
+      "trim_top_left_in_full_canvas": [
+        13.026750564575195,
+        6.076118469238281
+      ],
+      "decoded_crop_png_size": [
+        24,
+        68
+      ],
+      "sprite_origin_in_crop_uv": [
+        0.501033005328368,
+        0.4997553750887208
+      ],
+      "alpha_bbox_crop_pixels": [
+        2,
+        2,
+        21,
+        66
+      ],
+      "renderer_depth": 0.05999999865889549,
+      "sorting_layer": 0,
+      "sorting_order": 0,
+      "uv_transform": [
+        100.0,
+        25.0,
+        100.0,
+        40.0
+      ]
+    },
+    "65806": {
+      "sprite": 65806,
+      "sprite_rect": [
+        0.0,
+        0.0,
+        24.0,
+        24.0
+      ],
+      "sprite_pivot_fraction": [
+        0.5,
+        0.5
+      ],
+      "ppu": 100.0,
+      "full_texture_size": [
+        24,
+        24
+      ],
+      "trim_texture_rect_y_up": [
+        0.0,
+        0.0,
+        24.0,
+        24.0
+      ],
+      "trim_top_left_in_full_canvas": [
+        0.0,
+        0.0
+      ],
+      "decoded_crop_png_size": [
+        24,
+        24
+      ],
+      "sprite_origin_in_crop_uv": [
+        0.5,
+        0.5
+      ],
+      "alpha_bbox_crop_pixels": [
+        3,
+        4,
+        17,
+        21
+      ],
+      "renderer_depth": 0.029999999329447746,
+      "sorting_layer": 0,
+      "sorting_order": 0,
+      "uv_transform": [
+        100.0,
+        12.0,
+        100.0,
+        12.0
+      ]
+    },
+    "87679": {
+      "sprite": 87679,
+      "sprite_rect": [
+        0.0,
+        0.0,
+        21.0,
+        56.0
+      ],
+      "sprite_pivot_fraction": [
+        0.5,
+        0.5
+      ],
+      "ppu": 100.0,
+      "full_texture_size": [
+        21,
+        56
+      ],
+      "trim_texture_rect_y_up": [
+        0.0,
+        0.0,
+        21.0,
+        56.0
+      ],
+      "trim_top_left_in_full_canvas": [
+        0.0,
+        0.0
+      ],
+      "decoded_crop_png_size": [
+        21,
+        56
+      ],
+      "sprite_origin_in_crop_uv": [
+        0.5,
+        0.5
+      ],
+      "alpha_bbox_crop_pixels": [
+        0,
+        4,
+        21,
+        55
+      ],
+      "renderer_depth": -0.020000001415610313,
+      "sorting_layer": 0,
+      "sorting_order": 0,
+      "uv_transform": [
+        100.0,
+        10.5,
+        100.0,
+        28.0
+      ]
+    }
+  },
+  "assembly_overlap_samples": {
+    "method": "Original crop alpha warped through the original triangles at fixed source phases; alpha>=.7 on a 4x diagnostic raster. Pixel areas depend on rasterization and are not engine runtime measurements.",
+    "samples": {
+      "Idle": {
+        "face_opaque_pixels": 2054,
+        "face_hair_overlap_opaque_pixels": 993,
+        "face_hair_overlap_fraction": 0.4834469328140214,
+        "sleeve_cap_body_overlap": {
+          "79543": {
+            "cap_opaque_pixels": 891,
+            "body_overlap_pixels": 891,
+            "fraction": 1.0
+          },
+          "84807": {
+            "cap_opaque_pixels": 684,
+            "body_overlap_pixels": 684,
+            "fraction": 1.0
+          }
+        },
+        "leg_root_body_overlap": {
+          "zuotui": {
+            "root_opaque_pixels": 1830,
+            "body_overlap_pixels": 1830,
+            "fraction": 1.0,
+            "hip_pivot_inside_body_opaque_alpha": true,
+            "root_region_definition": "source crop v<=0.18, alpha>=0.7"
+          },
+          "youtui": {
+            "root_opaque_pixels": 1833,
+            "body_overlap_pixels": 1833,
+            "fraction": 1.0,
+            "hip_pivot_inside_body_opaque_alpha": true,
+            "root_region_definition": "source crop v<=0.18, alpha>=0.7"
+          }
+        }
+      },
+      "Run_New1": {
+        "face_opaque_pixels": 2050,
+        "face_hair_overlap_opaque_pixels": 992,
+        "face_hair_overlap_fraction": 0.48390243902439023,
+        "sleeve_cap_body_overlap": {
+          "79543": {
+            "cap_opaque_pixels": 890,
+            "body_overlap_pixels": 890,
+            "fraction": 1.0
+          },
+          "84807": {
+            "cap_opaque_pixels": 685,
+            "body_overlap_pixels": 675,
+            "fraction": 0.9854014598540146
+          }
+        },
+        "leg_root_body_overlap": {
+          "zuotui": {
+            "root_opaque_pixels": 1835,
+            "body_overlap_pixels": 1835,
+            "fraction": 1.0,
+            "hip_pivot_inside_body_opaque_alpha": true,
+            "root_region_definition": "source crop v<=0.18, alpha>=0.7"
+          },
+          "youtui": {
+            "root_opaque_pixels": 1831,
+            "body_overlap_pixels": 1398,
+            "fraction": 0.7635172037138176,
+            "hip_pivot_inside_body_opaque_alpha": true,
+            "root_region_definition": "source crop v<=0.18, alpha>=0.7"
+          }
+        }
+      }
+    }
+  },
+  "limits": [
+    "No original Animator/state machine or transparency-sort camera was executed.",
+    "Run clips exclude one unresolved path; source secondaryFrames are not used here.",
+    "Trim top-left is derived from UV fields. Explicit TextureRectOffset/atlasRectOffset/settingsRaw/m_Offset are separately recorded in the original serialized-fields evidence; matching values are not generalized to other assets."
+  ]
+}

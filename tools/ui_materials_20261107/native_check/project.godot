@@ -1,0 +1,8 @@
+; Isolated resource-format check; no game scenes, autoloads or saves are loaded.
+config_version=5
+
+[application]
+config/name="UI material resource check"
+
+[rendering]
+renderer/rendering_method="gl_compatibility"

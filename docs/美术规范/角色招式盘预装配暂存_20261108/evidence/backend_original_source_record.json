@@ -1,0 +1,86 @@
+{
+  "date": "2026-11-08",
+  "state": "名称正式保存链修复已冻结，等待主线统一build及通知运行",
+  "api": [
+    "GetDraft(Character) -> CombatBoardLayout副本",
+    "GetPlans(Character) -> IReadOnlyList<CombatBoardLayout>逐项副本",
+    "Validate(Character,layout) -> List<string>",
+    "TrySetPreparation(Character,layout,out reason)",
+    "TrySavePlan(Character,layout,name,overwrite,out reason)",
+    "TryDeletePlan(Character,name,out reason)",
+    "TryRenamePlan(Character,oldName,newName,out reason)",
+    "TryLoadPlan(Character,layout,out loaded,out reason)",
+    "RequiresIndicator(Character) -> bool"
+  ],
+  "battleHook": "BattleManager.try_load_player_board_plan仅返回合法副本，原commit_player_board保留原整理边界",
+  "constraints": [
+    "未改卡牌、费用、数值、学习、库存、资源、次数或冷却结算",
+    "运行expended空瓶不转为新药品",
+    "仅显式TrySetPreparation改变默认",
+    "局内快照库和世界人物库分离，战后不覆盖世界配置",
+    "原名改名确认作为no-op成功；其他重名拒绝",
+    "保存dirty由RootUI成功操作后通知现有MainScene链；本线不修改MainScene"
+  ],
+  "files": [
+    {
+      "path": "csharp/battle/CombatBoardPreparationService.cs",
+      "sha256": "56C39B37AEDBB8C8900D963CAFF020BA8675E54421A053394657D19485D1D5E2"
+    },
+    {
+      "path": "csharp/entity/Character.CombatBoardPreparation.cs",
+      "sha256": "060D59C32790F7E24391CD50711EA8D975C79A140912B1D2764B8C5C16C2A1F8"
+    },
+    {
+      "path": "csharp/battle/BattleEntityData.CombatBoardPreparation.cs",
+      "sha256": "829015FF921008D6C9C70F25ACF333DA4A5A3668135D778D2B72AB79CB97B6E8"
+    },
+    {
+      "path": "csharp/resources/HumanData.CombatBoard.cs",
+      "sha256": "348596ADCFD9288A4E4FDC35E91B556F21DDC1E7B8422A0B6FDD5293C2A19C15"
+    },
+    {
+      "path": "csharp/entity/Character.cs",
+      "sha256": "726E3F6504651686F91A9FF32D5BE107BA17EF066575274920074C69F105A49B"
+    },
+    {
+      "path": "csharp/battle/BattleEntityData.cs",
+      "sha256": "74EBC08B1D9DC703D3897F5E2ACD1D7B8F9C306339CE0381A5EF0EE25C049966"
+    },
+    {
+      "path": "csharp/battle/BattleManager.CombatBoard.cs",
+      "sha256": "8DC660BE35AEEC134C6FF5C95FDE57BDB30ED469F1919C89B8D23952926B9059"
+    },
+    {
+      "path": "csharp/battle/BattleBoardHud.cs",
+      "sha256": "86A9190B0C7E0F339B495912E77074C94AC050BD5C2ABB3AEECE918114A1CEC5"
+    },
+    {
+      "path": "csharp/debug/CombatBoardPreparationSmoke.cs",
+      "sha256": "12E691E66641AF1A7358E39DA9763CDF7ED1405A69E4F02F0838A4771DA0C065"
+    },
+    {
+      "path": "tscn/debug/CombatBoardPreparationSmoke.tscn",
+      "sha256": "BF90FDBB7BC0D2CC63A2D7163E62B8A2F8EEB53B83ED73DD3932723560C5A7DF"
+    },
+    {
+      "path": "csharp/resources/CombatBoardLayout.cs",
+      "sha256": "B12BDC13BB668F477E0EC9DE5BA8827505B2A273C1BAFEF9AE4DCB0B716CEDBD"
+    }
+  ],
+  "validation": {
+    "diffCheck": "通过",
+    "buildRunByThisBranch": false,
+    "smokeRun": false,
+    "scene": "res://tscn/debug/CombatBoardPreparationSmoke.tscn",
+    "requiredAppDataSubstring": "board_preparation"
+  },
+  "notes": "Character.cs与BattleEntityData.cs含既有其他工作；本分线仅3处精确调用，不将整体差异宣称为本轮修改。",
+  "namePersistence": {
+    "member": "CombatBoardLayout.preset_name",
+    "exported": true,
+    "compatibleNativeName": "ResourceName",
+    "strategy": "显式导出可写属性与ResourceName单值同步，兼容旧ResourceName-only，由既有Detached schema捕获。",
+    "serializerModified": false,
+    "testAdded": "真实DetachedResourceSnapshot.Capture(PersistentGameSave).Materialize后逐名、默认、CRUD及旧名兼容"
+  }
+}

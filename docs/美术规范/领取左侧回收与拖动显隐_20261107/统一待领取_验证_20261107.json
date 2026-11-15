@@ -1,0 +1,62 @@
+{
+  "date": "2026-11-07",
+  "implemented": true,
+  "singlePendingList": true,
+  "extraOriginHeadings": false,
+  "sameDefinitionMergedIntoOneRow": true,
+  "combinedCountIncludesOwnedAndRewards": true,
+  "restoreOwnedFirst": true,
+  "originsKeptForSettlementOnly": true,
+  "autoPlaceRuleChanged": false,
+  "capacity": 200,
+  "designCell": 36,
+  "regionPositionsChanged": false,
+  "build": {
+    "passed": true,
+    "warnings": 0,
+    "errors": 0
+  },
+  "checks": [
+    {
+      "case": "claim",
+      "checks": 83
+    },
+    {
+      "case": "claim_window",
+      "checks": 89
+    },
+    {
+      "case": "manual",
+      "checks": 63
+    }
+  ],
+  "passedChecks": 235,
+  "realPlayerSavesWritten": false,
+  "nativeScreenshotCount": 6,
+  "captureSizes": {
+    "统一待领取_实机/领取/01_领取收纳_1920.png": [
+      2560,
+      1440
+    ],
+    "统一待领取_实机/领取/02_领取收纳_完整.png": [
+      2560,
+      1440
+    ],
+    "统一待领取_实机/领取/03_领取收纳_1280.png": [
+      1280,
+      720
+    ],
+    "统一待领取_实机/领取/04_领取收纳_拖动预览.png": [
+      1280,
+      720
+    ],
+    "统一待领取_实机/领取/04_领取收纳_旋转.png": [
+      1280,
+      720
+    ],
+    "统一待领取_实机/领取/05_领取_移出后可拖回.png": [
+      2560,
+      1440
+    ]
+  }
+}

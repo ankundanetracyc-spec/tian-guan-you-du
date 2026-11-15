@@ -1,0 +1,32 @@
+[gd_resource type="Resource" load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://csharp/resources/CombatBoardLayout.cs" id="1"]
+[ext_resource type="Script" path="res://csharp/resources/CombatBoardPlacement.cs" id="2"]
+
+[sub_resource type="Resource" id="FoxBiteEarly"]
+script = ExtResource("2")
+placement_id = "fox_bite_early"
+kind = 0
+source_key = "res://resources/activeskills/妖兽/林地凶狼/撕咬.tres"
+cell = Vector2i(0, 0)
+
+[sub_resource type="Resource" id="FoxDodgeGuard"]
+script = ExtResource("2")
+placement_id = "fox_dodge_guard"
+kind = 0
+source_key = "res://resources/activeskills/妖兽/林地凶狼/游身架招.tres"
+cell = Vector2i(2, 1)
+
+[sub_resource type="Resource" id="FoxFire"]
+script = ExtResource("2")
+placement_id = "fox_fire"
+kind = 0
+source_key = "res://resources/activeskills/妖兽/青尾狐/狐火点名.tres"
+cell = Vector2i(0, 2)
+
+[resource]
+script = ExtResource("1")
+layout_version = 1
+size = Vector2i(3, 3)
+confirmed = true
+placements = Array[ExtResource("2")]([SubResource("FoxBiteEarly"), SubResource("FoxDodgeGuard"), SubResource("FoxFire")])

@@ -1,0 +1,69 @@
+{
+	"hairstyle_exception": "own tied bun uses original21x56 canvas/head anchor with rigid full-canvas quad",
+	"original_body_mesh_uv_pivot_weights_unchanged": true,
+	"paint_master": "res://art/guigu_native_first_20261105/paint_master.png",
+	"parts": [
+		{
+			"canvas": [
+				24.0,
+				24.0
+			],
+			"id": 65806.0,
+			"output": "res://art/guigu_native_first_20261105/sprite_65806.png",
+			"source": "source/sprite_65806.png",
+			"source_alpha_preserved": true
+		},
+		{
+			"canvas": [
+				60.0,
+				60.0
+			],
+			"id": 79543.0,
+			"output": "res://art/guigu_native_first_20261105/sprite_79543.png",
+			"source": "source/sprite_79543.png",
+			"source_alpha_preserved": true
+		},
+		{
+			"canvas": [
+				60.0,
+				60.0
+			],
+			"id": 84807.0,
+			"output": "res://art/guigu_native_first_20261105/sprite_84807.png",
+			"source": "source/sprite_84807.png",
+			"source_alpha_preserved": true
+		},
+		{
+			"canvas": [
+				60.0,
+				100.0
+			],
+			"id": 85649.0,
+			"output": "res://art/guigu_native_first_20261105/sprite_85649.png",
+			"source": "source/sprite_85649.png",
+			"source_alpha_preserved": true
+		},
+		{
+			"canvas": [
+				50.0,
+				80.0
+			],
+			"id": 87557.0,
+			"output": "res://art/guigu_native_first_20261105/sprite_87557.png",
+			"source": "source/sprite_87557.png",
+			"source_alpha_preserved": true
+		},
+		{
+			"canvas": [
+				21.0,
+				56.0
+			],
+			"exception": "user-selected own tied bun",
+			"id": 87679.0,
+			"output": "res://art/guigu_native_first_20261105/sprite_87679.png",
+			"registration": "own_hair_registration.json",
+			"source_alpha_preserved": false
+		}
+	],
+	"source_ppu": 100
+}

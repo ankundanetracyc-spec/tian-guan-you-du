@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="BasicDeckResource" format=3]
+[ext_resource type="Script" path="res://csharp/gongfa/BasicDeckResource.cs" id="1"]
+[resource]
+script = ExtResource("1")
+deck_name = "林地妖狈"
+deck_description = "狈啸造成远程神魂伤害，唤猎令全体友方林地凶狼获得逐猎。"
+skill_paths = Array[String](["res://resources/activeskills/妖兽/林地妖狈/狈啸.tres","res://resources/activeskills/妖兽/林地妖狈/唤猎.tres"])

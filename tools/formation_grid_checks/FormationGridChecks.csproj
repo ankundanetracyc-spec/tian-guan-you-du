@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../csharp/formation/FormationGridModel.cs" Link="FormationGridModel.cs" />
+    <Compile Include="../../csharp/formation/FormationLogicCircuit.cs" Link="FormationLogicCircuit.cs" />
+    <Compile Include="../../csharp/formation/FormationGridSimulation.cs" Link="FormationGridSimulation.cs" />
+    <Compile Include="../../csharp/formation/FormationControlCircuit.cs" Link="FormationControlCircuit.cs" />
+  </ItemGroup>
+</Project>

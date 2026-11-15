@@ -1,0 +1,2239 @@
+{
+  "version": 5,
+  "status": "passed",
+  "passed": 205,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "1920/概览/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/概览/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1920/概览/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/概览/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/基本资料集中且不重复",
+      "passed": true,
+      "detail": [
+        {
+          "value": "苏醒者",
+          "count": 1,
+          "inCaption": true
+        },
+        {
+          "value": "玉虚仙宗",
+          "count": 1,
+          "inCaption": true
+        },
+        {
+          "value": "云息三层",
+          "count": 1,
+          "inCaption": true
+        },
+        {
+          "value": "三灵根",
+          "count": 1,
+          "inCaption": true
+        }
+      ]
+    },
+    {
+      "name": "1920/局外状态独立并扩大",
+      "passed": true,
+      "detail": {
+        "height": 369,
+        "area": 352026
+      }
+    },
+    {
+      "name": "1920/声望业力所在恢复且不杜撰值",
+      "passed": true,
+      "detail": "声望\n百川 —\n玉虚基础声名\n—\n身份倍率\n—\n公开事迹\n—\n业力\n—\n所在\n未详"
+    },
+    {
+      "name": "1920/心境缩成右上角小面板",
+      "passed": true,
+      "detail": {
+        "width": 350,
+        "height": 390,
+        "dial": 232
+      }
+    },
+    {
+      "name": "1920/恢复资料未重复基本身份",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/概览/独立按钮素材实际引用",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/概览/不再使用旧轮廓裁切",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/属性/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/属性/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1920/属性/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/属性/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/属性/独立按钮素材实际引用",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/属性/不再使用旧轮廓裁切",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/战斗/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/战斗/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1920/战斗/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/战斗/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/战斗/独立按钮素材实际引用",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/战斗/不再使用旧轮廓裁切",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/功法/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/功法/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1920/功法/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/功法/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/功法/独立按钮素材实际引用",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/功法/不再使用旧轮廓裁切",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/装备/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/装备/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1920/装备/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/装备/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/装备/独立按钮素材实际引用",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/装备/不再使用旧轮廓裁切",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/关系/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/关系/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1920/关系/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/关系/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/关系/独立按钮素材实际引用",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/关系/不再使用旧轮廓裁切",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/吐纳修行/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/吐纳修行/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1920/吐纳修行/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/吐纳修行/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/静室仅保留三页",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/静室日期不显示时辰",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/灵力值为淡青",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/吐纳修行/撤下瓶颈与主修摘要",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/吐纳修行/独立按钮素材实际引用",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/吐纳修行/不再使用旧轮廓裁切",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/功法研读/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/功法研读/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1920/功法研读/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/功法研读/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/功法研读/撤下瓶颈与主修摘要",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/功法研读/独立按钮素材实际引用",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/功法研读/不再使用旧轮廓裁切",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/闭关突破/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/闭关突破/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1920/闭关突破/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/闭关突破/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/闭关突破/撤下瓶颈与主修摘要",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/闭关突破/独立按钮素材实际引用",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/闭关突破/不再使用旧轮廓裁切",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/素材册覆盖和边界",
+      "passed": true,
+      "detail": {
+        "route": "#materials/controls",
+        "controls": 38,
+        "missing": [],
+        "overflow": [],
+        "textOverflow": [],
+        "withinViewport": true,
+        "unwanted": []
+      }
+    },
+    {
+      "name": "1280/概览/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/概览/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1280/概览/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/概览/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/基本资料集中且不重复",
+      "passed": true,
+      "detail": [
+        {
+          "value": "苏醒者",
+          "count": 1,
+          "inCaption": true
+        },
+        {
+          "value": "玉虚仙宗",
+          "count": 1,
+          "inCaption": true
+        },
+        {
+          "value": "云息三层",
+          "count": 1,
+          "inCaption": true
+        },
+        {
+          "value": "三灵根",
+          "count": 1,
+          "inCaption": true
+        }
+      ]
+    },
+    {
+      "name": "1280/局外状态独立并扩大",
+      "passed": true,
+      "detail": {
+        "height": 369,
+        "area": 352026
+      }
+    },
+    {
+      "name": "1280/声望业力所在恢复且不杜撰值",
+      "passed": true,
+      "detail": "声望\n百川 —\n玉虚基础声名\n—\n身份倍率\n—\n公开事迹\n—\n业力\n—\n所在\n未详"
+    },
+    {
+      "name": "1280/心境缩成右上角小面板",
+      "passed": true,
+      "detail": {
+        "width": 350,
+        "height": 390,
+        "dial": 232
+      }
+    },
+    {
+      "name": "1280/恢复资料未重复基本身份",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/概览/独立按钮素材实际引用",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/概览/不再使用旧轮廓裁切",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/属性/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/属性/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1280/属性/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/属性/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/属性/独立按钮素材实际引用",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/属性/不再使用旧轮廓裁切",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/战斗/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/战斗/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1280/战斗/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/战斗/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/战斗/独立按钮素材实际引用",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/战斗/不再使用旧轮廓裁切",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/功法/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/功法/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1280/功法/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/功法/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/功法/独立按钮素材实际引用",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/功法/不再使用旧轮廓裁切",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/装备/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/装备/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1280/装备/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/装备/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/装备/独立按钮素材实际引用",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/装备/不再使用旧轮廓裁切",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/关系/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/关系/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1280/关系/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/关系/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/关系/独立按钮素材实际引用",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/关系/不再使用旧轮廓裁切",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/吐纳修行/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/吐纳修行/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1280/吐纳修行/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/吐纳修行/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/静室仅保留三页",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/静室日期不显示时辰",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/灵力值为淡青",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/吐纳修行/撤下瓶颈与主修摘要",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/吐纳修行/独立按钮素材实际引用",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/吐纳修行/不再使用旧轮廓裁切",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/功法研读/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/功法研读/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1280/功法研读/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/功法研读/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/功法研读/撤下瓶颈与主修摘要",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/功法研读/独立按钮素材实际引用",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/功法研读/不再使用旧轮廓裁切",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/闭关突破/控件素材覆盖及三角例外",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/闭关突破/面板和文字边界",
+      "passed": true,
+      "detail": {
+        "overflow": [],
+        "text": []
+      }
+    },
+    {
+      "name": "1280/闭关突破/延期系统与指定文案不显示",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/闭关突破/不显示重复导航题头",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/闭关突破/撤下瓶颈与主修摘要",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/闭关突破/独立按钮素材实际引用",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/闭关突破/不再使用旧轮廓裁切",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/素材册覆盖和边界",
+      "passed": true,
+      "detail": {
+        "route": "#materials/controls",
+        "controls": 38,
+        "missing": [],
+        "overflow": [],
+        "textOverflow": [],
+        "withinViewport": true,
+        "unwanted": []
+      }
+    },
+    {
+      "name": "1920/局外Buff显示效果恢复和来源",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/Buff使用素材且不越界",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1920/状态区允许滚动扩展",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/局外Buff显示效果恢复和来源",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/Buff使用素材且不越界",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "1280/状态区允许滚动扩展",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "目标缕数与单位为淡青",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "缕数输入仍可操作",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "数字增减只用两个三角",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "三角减小不越过最小值",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "指定日期保留三个输入",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "日期三组箭头均无装饰底图",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "日期增减仍有效",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "修炼确认保留素材",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "确认可返回",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "属性页灵力缕数为淡青",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "造诣检索保持",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "深墨悬停无内滚动",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "心境浮层无已删除说明",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "功法页保留实际主辅修装配入口",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "旧链接body不打开延期页面",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "旧链接nature不打开延期页面",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "旧链接inspiration不打开延期页面",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "六类底图均为独立文件",
+      "passed": true,
+      "detail": [
+        {
+          "family": "navigation",
+          "backgrounds": [
+            "paper",
+            "ink",
+            "scenery"
+          ],
+          "sources": [
+            "http://127.0.0.1:8876/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E8%A7%92%E8%89%B2%E4%B8%8E%E9%9D%99%E5%AE%A4%E7%BA%B8%E5%A2%A8%E6%9C%A8%E7%9F%B3%E6%A0%B7%E7%A8%BF_20261108/assets/%E6%8C%89%E9%92%AE%E5%88%86%E5%9E%8B_v4/%E6%8C%89%E9%92%AE_%E4%BE%A7%E6%A0%8F%E5%88%86%E9%A1%B5_v4.png"
+          ]
+        },
+        {
+          "family": "tab",
+          "backgrounds": [
+            "paper",
+            "ink",
+            "scenery"
+          ],
+          "sources": [
+            "http://127.0.0.1:8876/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E8%A7%92%E8%89%B2%E4%B8%8E%E9%9D%99%E5%AE%A4%E7%BA%B8%E5%A2%A8%E6%9C%A8%E7%9F%B3%E6%A0%B7%E7%A8%BF_20261108/assets/%E6%8C%89%E9%92%AE%E5%88%86%E5%9E%8B_v4/%E6%8C%89%E9%92%AE_%E7%9F%AD%E9%A1%B5%E7%AD%BE_v4.png"
+          ]
+        },
+        {
+          "family": "regular",
+          "backgrounds": [
+            "paper",
+            "ink",
+            "scenery"
+          ],
+          "sources": [
+            "http://127.0.0.1:8876/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E8%A7%92%E8%89%B2%E4%B8%8E%E9%9D%99%E5%AE%A4%E7%BA%B8%E5%A2%A8%E6%9C%A8%E7%9F%B3%E6%A0%B7%E7%A8%BF_20261108/assets/%E6%8C%89%E9%92%AE%E5%88%86%E5%9E%8B_v4/%E6%8C%89%E9%92%AE_%E5%B8%B8%E8%A7%84_v4.png"
+          ]
+        },
+        {
+          "family": "primary",
+          "backgrounds": [
+            "paper",
+            "ink",
+            "scenery"
+          ],
+          "sources": [
+            "http://127.0.0.1:8876/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E8%A7%92%E8%89%B2%E4%B8%8E%E9%9D%99%E5%AE%A4%E7%BA%B8%E5%A2%A8%E6%9C%A8%E7%9F%B3%E6%A0%B7%E7%A8%BF_20261108/assets/%E6%8C%89%E9%92%AE%E5%88%86%E5%9E%8B_v4/%E6%8C%89%E9%92%AE_%E4%B8%BB%E6%93%8D%E4%BD%9C_v4.png"
+          ]
+        },
+        {
+          "family": "icon",
+          "backgrounds": [
+            "paper",
+            "ink",
+            "scenery"
+          ],
+          "sources": [
+            "http://127.0.0.1:8876/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E8%A7%92%E8%89%B2%E4%B8%8E%E9%9D%99%E5%AE%A4%E7%BA%B8%E5%A2%A8%E6%9C%A8%E7%9F%B3%E6%A0%B7%E7%A8%BF_20261108/assets/%E6%8C%89%E9%92%AE%E5%88%86%E5%9E%8B_v4/%E6%8C%89%E9%92%AE_%E5%B0%8F%E5%9B%BE%E6%A0%87_v4.png"
+          ]
+        },
+        {
+          "family": "input",
+          "backgrounds": [
+            "paper",
+            "ink",
+            "scenery"
+          ],
+          "sources": [
+            "http://127.0.0.1:8876/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E8%A7%92%E8%89%B2%E4%B8%8E%E9%9D%99%E5%AE%A4%E7%BA%B8%E5%A2%A8%E6%9C%A8%E7%9F%B3%E6%A0%B7%E7%A8%BF_20261108/assets/%E6%8C%89%E9%92%AE%E5%88%86%E5%9E%8B_v4/%E6%8E%A7%E4%BB%B6_%E8%BE%93%E5%85%A5%E6%A7%BD_v4.png"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "六类控件覆盖浅纸深墨静室三种底色",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "透明清理保留且没有背景色遮盖",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "六种交互状态可查看",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "六类边缘放大图完成",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "主操作侧栏页签与输入各有对应素材",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "脚本资源正常",
+      "passed": true,
+      "detail": {
+        "errors": [],
+        "failedResources": []
+      }
+    },
+    {
+      "name": "不写浏览器存储",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/character/只有选中项露出装订边",
+      "passed": true,
+      "detail": [
+        {
+          "name": "overview",
+          "selected": true,
+          "paperX": 18,
+          "copyX": 18,
+          "bindingOpacity": 1,
+          "overflow": 0,
+          "bounds": {
+            "x": 132.63124084472656,
+            "y": 220.1402587890625,
+            "width": 174.63124084472656,
+            "height": 73.472900390625,
+            "top": 220.1402587890625,
+            "right": 307.2624816894531,
+            "bottom": 293.6131591796875,
+            "left": 132.63124084472656
+          }
+        },
+        {
+          "name": "attributes",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 311.7151794433594,
+            "width": 174.63125610351562,
+            "height": 73.472900390625,
+            "top": 311.7151794433594,
+            "right": 288.0956497192383,
+            "bottom": 385.1880798339844,
+            "left": 113.46439361572266
+          }
+        },
+        {
+          "name": "battle",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 403.29010009765625,
+            "width": 174.63125610351562,
+            "height": 73.472900390625,
+            "top": 403.29010009765625,
+            "right": 288.0956497192383,
+            "bottom": 476.76300048828125,
+            "left": 113.46439361572266
+          }
+        },
+        {
+          "name": "manuals",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 494.8650207519531,
+            "width": 174.63125610351562,
+            "height": 73.47286987304688,
+            "top": 494.8650207519531,
+            "right": 288.0956497192383,
+            "bottom": 568.337890625,
+            "left": 113.46439361572266
+          }
+        },
+        {
+          "name": "equipment",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 586.43994140625,
+            "width": 174.63125610351562,
+            "height": 73.472900390625,
+            "top": 586.43994140625,
+            "right": 288.0956497192383,
+            "bottom": 659.912841796875,
+            "left": 113.46439361572266
+          }
+        },
+        {
+          "name": "relations",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 678.014892578125,
+            "width": 174.63125610351562,
+            "height": 73.472900390625,
+            "top": 678.014892578125,
+            "right": 288.0956497192383,
+            "bottom": 751.48779296875,
+            "left": 113.46439361572266
+          }
+        }
+      ]
+    },
+    {
+      "name": "1920/character/切页保留侧栏节点",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/character/滑动存在中间帧",
+      "passed": true,
+      "detail": 9.94419
+    },
+    {
+      "name": "1920/character/文字与纸面同步",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/character/旧项收回新项滑出",
+      "passed": true,
+      "detail": [
+        {
+          "name": "overview",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 220.1402587890625,
+            "width": 174.63125610351562,
+            "height": 73.472900390625,
+            "top": 220.1402587890625,
+            "right": 288.0956497192383,
+            "bottom": 293.6131591796875,
+            "left": 113.46439361572266
+          }
+        },
+        {
+          "name": "attributes",
+          "selected": true,
+          "paperX": 18,
+          "copyX": 18,
+          "bindingOpacity": 1,
+          "overflow": 0,
+          "bounds": {
+            "x": 132.63124084472656,
+            "y": 311.7151794433594,
+            "width": 174.63124084472656,
+            "height": 73.472900390625,
+            "top": 311.7151794433594,
+            "right": 307.2624816894531,
+            "bottom": 385.1880798339844,
+            "left": 132.63124084472656
+          }
+        },
+        {
+          "name": "battle",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 403.29010009765625,
+            "width": 174.63125610351562,
+            "height": 73.472900390625,
+            "top": 403.29010009765625,
+            "right": 288.0956497192383,
+            "bottom": 476.76300048828125,
+            "left": 113.46439361572266
+          }
+        },
+        {
+          "name": "manuals",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 494.8650207519531,
+            "width": 174.63125610351562,
+            "height": 73.47286987304688,
+            "top": 494.8650207519531,
+            "right": 288.0956497192383,
+            "bottom": 568.337890625,
+            "left": 113.46439361572266
+          }
+        },
+        {
+          "name": "equipment",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 586.43994140625,
+            "width": 174.63125610351562,
+            "height": 73.472900390625,
+            "top": 586.43994140625,
+            "right": 288.0956497192383,
+            "bottom": 659.912841796875,
+            "left": 113.46439361572266
+          }
+        },
+        {
+          "name": "relations",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 678.014892578125,
+            "width": 174.63125610351562,
+            "height": 73.472900390625,
+            "top": 678.014892578125,
+            "right": 288.0956497192383,
+            "bottom": 751.48779296875,
+            "left": 113.46439361572266
+          }
+        }
+      ]
+    },
+    {
+      "name": "1920/character/纸签不挤出侧栏且文字不溢出",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/character/仅悬停不露装订边",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/character/键盘切换保持选中语义",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/character/快速往返无残留状态",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/character/减少动态模式直接到终态",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/quiet/只有选中项露出装订边",
+      "passed": true,
+      "detail": [
+        {
+          "name": "practice",
+          "selected": true,
+          "paperX": 18,
+          "copyX": 18,
+          "bindingOpacity": 1,
+          "overflow": 0,
+          "bounds": {
+            "x": 132.63124084472656,
+            "y": 220.1402587890625,
+            "width": 174.63124084472656,
+            "height": 73.472900390625,
+            "top": 220.1402587890625,
+            "right": 307.2624816894531,
+            "bottom": 293.6131591796875,
+            "left": 132.63124084472656
+          }
+        },
+        {
+          "name": "study",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 311.7151794433594,
+            "width": 174.63125610351562,
+            "height": 73.472900390625,
+            "top": 311.7151794433594,
+            "right": 288.0956497192383,
+            "bottom": 385.1880798339844,
+            "left": 113.46439361572266
+          }
+        },
+        {
+          "name": "breakthrough",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 403.29010009765625,
+            "width": 174.63125610351562,
+            "height": 73.472900390625,
+            "top": 403.29010009765625,
+            "right": 288.0956497192383,
+            "bottom": 476.76300048828125,
+            "left": 113.46439361572266
+          }
+        }
+      ]
+    },
+    {
+      "name": "1920/quiet/切页保留侧栏节点",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/quiet/滑动存在中间帧",
+      "passed": true,
+      "detail": 7.15459
+    },
+    {
+      "name": "1920/quiet/文字与纸面同步",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/quiet/旧项收回新项滑出",
+      "passed": true,
+      "detail": [
+        {
+          "name": "practice",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 220.1402587890625,
+            "width": 174.63125610351562,
+            "height": 73.472900390625,
+            "top": 220.1402587890625,
+            "right": 288.0956497192383,
+            "bottom": 293.6131591796875,
+            "left": 113.46439361572266
+          }
+        },
+        {
+          "name": "study",
+          "selected": true,
+          "paperX": 18,
+          "copyX": 18,
+          "bindingOpacity": 1,
+          "overflow": 0,
+          "bounds": {
+            "x": 132.63124084472656,
+            "y": 311.7151794433594,
+            "width": 174.63124084472656,
+            "height": 73.472900390625,
+            "top": 311.7151794433594,
+            "right": 307.2624816894531,
+            "bottom": 385.1880798339844,
+            "left": 132.63124084472656
+          }
+        },
+        {
+          "name": "breakthrough",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 113.46439361572266,
+            "y": 403.29010009765625,
+            "width": 174.63125610351562,
+            "height": 73.472900390625,
+            "top": 403.29010009765625,
+            "right": 288.0956497192383,
+            "bottom": 476.76300048828125,
+            "left": 113.46439361572266
+          }
+        }
+      ]
+    },
+    {
+      "name": "1920/quiet/纸签不挤出侧栏且文字不溢出",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/quiet/仅悬停不露装订边",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/quiet/键盘切换保持选中语义",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/quiet/快速往返无残留状态",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1920/quiet/减少动态模式直接到终态",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/character/只有选中项露出装订边",
+      "passed": true,
+      "detail": [
+        {
+          "name": "overview",
+          "selected": true,
+          "paperX": 18,
+          "copyX": 18,
+          "bindingOpacity": 1,
+          "overflow": 0,
+          "bounds": {
+            "x": 109.88945770263672,
+            "y": 166.19766235351562,
+            "width": 111.88948822021484,
+            "height": 47.07545471191406,
+            "top": 166.19766235351562,
+            "right": 221.77894592285156,
+            "bottom": 213.2731170654297,
+            "left": 109.88945770263672
+          }
+        },
+        {
+          "name": "attributes",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 224.8714141845703,
+            "width": 111.88948059082031,
+            "height": 47.07545471191406,
+            "top": 224.8714141845703,
+            "right": 209.49838256835938,
+            "bottom": 271.9468688964844,
+            "left": 97.60890197753906
+          }
+        },
+        {
+          "name": "battle",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 283.545166015625,
+            "width": 111.88948059082031,
+            "height": 47.075469970703125,
+            "top": 283.545166015625,
+            "right": 209.49838256835938,
+            "bottom": 330.6206359863281,
+            "left": 97.60890197753906
+          }
+        },
+        {
+          "name": "manuals",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 342.21893310546875,
+            "width": 111.88948059082031,
+            "height": 47.075439453125,
+            "top": 342.21893310546875,
+            "right": 209.49838256835938,
+            "bottom": 389.29437255859375,
+            "left": 97.60890197753906
+          }
+        },
+        {
+          "name": "equipment",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 400.8926696777344,
+            "width": 111.88948059082031,
+            "height": 47.075469970703125,
+            "top": 400.8926696777344,
+            "right": 209.49838256835938,
+            "bottom": 447.9681396484375,
+            "left": 97.60890197753906
+          }
+        },
+        {
+          "name": "relations",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 459.5664367675781,
+            "width": 111.88948059082031,
+            "height": 47.075439453125,
+            "top": 459.5664367675781,
+            "right": 209.49838256835938,
+            "bottom": 506.6418762207031,
+            "left": 97.60890197753906
+          }
+        }
+      ]
+    },
+    {
+      "name": "1280/character/切页保留侧栏节点",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/character/滑动存在中间帧",
+      "passed": true,
+      "detail": 9.96371
+    },
+    {
+      "name": "1280/character/文字与纸面同步",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/character/旧项收回新项滑出",
+      "passed": true,
+      "detail": [
+        {
+          "name": "overview",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 166.19766235351562,
+            "width": 111.88948059082031,
+            "height": 47.07545471191406,
+            "top": 166.19766235351562,
+            "right": 209.49838256835938,
+            "bottom": 213.2731170654297,
+            "left": 97.60890197753906
+          }
+        },
+        {
+          "name": "attributes",
+          "selected": true,
+          "paperX": 18,
+          "copyX": 18,
+          "bindingOpacity": 1,
+          "overflow": 0,
+          "bounds": {
+            "x": 109.88945770263672,
+            "y": 224.8714141845703,
+            "width": 111.88948822021484,
+            "height": 47.07545471191406,
+            "top": 224.8714141845703,
+            "right": 221.77894592285156,
+            "bottom": 271.9468688964844,
+            "left": 109.88945770263672
+          }
+        },
+        {
+          "name": "battle",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 283.545166015625,
+            "width": 111.88948059082031,
+            "height": 47.075469970703125,
+            "top": 283.545166015625,
+            "right": 209.49838256835938,
+            "bottom": 330.6206359863281,
+            "left": 97.60890197753906
+          }
+        },
+        {
+          "name": "manuals",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 342.21893310546875,
+            "width": 111.88948059082031,
+            "height": 47.075439453125,
+            "top": 342.21893310546875,
+            "right": 209.49838256835938,
+            "bottom": 389.29437255859375,
+            "left": 97.60890197753906
+          }
+        },
+        {
+          "name": "equipment",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 400.8926696777344,
+            "width": 111.88948059082031,
+            "height": 47.075469970703125,
+            "top": 400.8926696777344,
+            "right": 209.49838256835938,
+            "bottom": 447.9681396484375,
+            "left": 97.60890197753906
+          }
+        },
+        {
+          "name": "relations",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 459.5664367675781,
+            "width": 111.88948059082031,
+            "height": 47.075439453125,
+            "top": 459.5664367675781,
+            "right": 209.49838256835938,
+            "bottom": 506.6418762207031,
+            "left": 97.60890197753906
+          }
+        }
+      ]
+    },
+    {
+      "name": "1280/character/纸签不挤出侧栏且文字不溢出",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/character/仅悬停不露装订边",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/character/键盘切换保持选中语义",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/character/快速往返无残留状态",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/character/减少动态模式直接到终态",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/quiet/只有选中项露出装订边",
+      "passed": true,
+      "detail": [
+        {
+          "name": "practice",
+          "selected": true,
+          "paperX": 18,
+          "copyX": 18,
+          "bindingOpacity": 1,
+          "overflow": 0,
+          "bounds": {
+            "x": 109.88945770263672,
+            "y": 166.19766235351562,
+            "width": 111.88948822021484,
+            "height": 47.07545471191406,
+            "top": 166.19766235351562,
+            "right": 221.77894592285156,
+            "bottom": 213.2731170654297,
+            "left": 109.88945770263672
+          }
+        },
+        {
+          "name": "study",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 224.8714141845703,
+            "width": 111.88948059082031,
+            "height": 47.07545471191406,
+            "top": 224.8714141845703,
+            "right": 209.49838256835938,
+            "bottom": 271.9468688964844,
+            "left": 97.60890197753906
+          }
+        },
+        {
+          "name": "breakthrough",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 283.545166015625,
+            "width": 111.88948059082031,
+            "height": 47.075469970703125,
+            "top": 283.545166015625,
+            "right": 209.49838256835938,
+            "bottom": 330.6206359863281,
+            "left": 97.60890197753906
+          }
+        }
+      ]
+    },
+    {
+      "name": "1280/quiet/切页保留侧栏节点",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/quiet/滑动存在中间帧",
+      "passed": true,
+      "detail": 9.97293
+    },
+    {
+      "name": "1280/quiet/文字与纸面同步",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/quiet/旧项收回新项滑出",
+      "passed": true,
+      "detail": [
+        {
+          "name": "practice",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 166.19766235351562,
+            "width": 111.88948059082031,
+            "height": 47.07545471191406,
+            "top": 166.19766235351562,
+            "right": 209.49838256835938,
+            "bottom": 213.2731170654297,
+            "left": 97.60890197753906
+          }
+        },
+        {
+          "name": "study",
+          "selected": true,
+          "paperX": 18,
+          "copyX": 18,
+          "bindingOpacity": 1,
+          "overflow": 0,
+          "bounds": {
+            "x": 109.88945770263672,
+            "y": 224.8714141845703,
+            "width": 111.88948822021484,
+            "height": 47.07545471191406,
+            "top": 224.8714141845703,
+            "right": 221.77894592285156,
+            "bottom": 271.9468688964844,
+            "left": 109.88945770263672
+          }
+        },
+        {
+          "name": "breakthrough",
+          "selected": false,
+          "paperX": 0,
+          "copyX": 0,
+          "bindingOpacity": 0,
+          "overflow": 0,
+          "bounds": {
+            "x": 97.60890197753906,
+            "y": 283.545166015625,
+            "width": 111.88948059082031,
+            "height": 47.075469970703125,
+            "top": 283.545166015625,
+            "right": 209.49838256835938,
+            "bottom": 330.6206359863281,
+            "left": 97.60890197753906
+          }
+        }
+      ]
+    },
+    {
+      "name": "1280/quiet/纸签不挤出侧栏且文字不溢出",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/quiet/仅悬停不露装订边",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/quiet/键盘切换保持选中语义",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/quiet/快速往返无残留状态",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "1280/quiet/减少动态模式直接到终态",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "动态预览来自两套实际侧栏",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "动效脚本无错误",
+      "passed": true,
+      "detail": []
+    }
+  ],
+  "coverage": [
+    {
+      "width": 1920,
+      "route": "#character/overview",
+      "controls": 16,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1920,
+      "route": "#character/attributes",
+      "controls": 27,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1920,
+      "route": "#character/battle",
+      "controls": 54,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1920,
+      "route": "#character/manuals",
+      "controls": 41,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1920,
+      "route": "#character/equipment",
+      "controls": 18,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1920,
+      "route": "#character/relations",
+      "controls": 17,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1920,
+      "route": "#quiet/practice",
+      "controls": 20,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1920,
+      "route": "#quiet/study",
+      "controls": 22,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1920,
+      "route": "#quiet/breakthrough",
+      "controls": 12,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1920,
+      "route": "#materials/controls",
+      "controls": 38,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1280,
+      "route": "#character/overview",
+      "controls": 16,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1280,
+      "route": "#character/attributes",
+      "controls": 27,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1280,
+      "route": "#character/battle",
+      "controls": 54,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1280,
+      "route": "#character/manuals",
+      "controls": 41,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1280,
+      "route": "#character/equipment",
+      "controls": 18,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1280,
+      "route": "#character/relations",
+      "controls": 17,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1280,
+      "route": "#quiet/practice",
+      "controls": 20,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1280,
+      "route": "#quiet/study",
+      "controls": 22,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1280,
+      "route": "#quiet/breakthrough",
+      "controls": 12,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    },
+    {
+      "width": 1280,
+      "route": "#materials/controls",
+      "controls": 38,
+      "missing": [],
+      "overflow": [],
+      "textOverflow": [],
+      "withinViewport": true,
+      "unwanted": []
+    }
+  ],
+  "scope": "独立样稿修订5；侧栏选中纸签右移露出装订边，保留六类底图和角色6页静室3页，未接正式游戏",
+  "materialFamilies": [
+    {
+      "family": "navigation",
+      "backgrounds": [
+        "paper",
+        "ink",
+        "scenery"
+      ],
+      "sources": [
+        "http://127.0.0.1:8876/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E8%A7%92%E8%89%B2%E4%B8%8E%E9%9D%99%E5%AE%A4%E7%BA%B8%E5%A2%A8%E6%9C%A8%E7%9F%B3%E6%A0%B7%E7%A8%BF_20261108/assets/%E6%8C%89%E9%92%AE%E5%88%86%E5%9E%8B_v4/%E6%8C%89%E9%92%AE_%E4%BE%A7%E6%A0%8F%E5%88%86%E9%A1%B5_v4.png"
+      ]
+    },
+    {
+      "family": "tab",
+      "backgrounds": [
+        "paper",
+        "ink",
+        "scenery"
+      ],
+      "sources": [
+        "http://127.0.0.1:8876/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E8%A7%92%E8%89%B2%E4%B8%8E%E9%9D%99%E5%AE%A4%E7%BA%B8%E5%A2%A8%E6%9C%A8%E7%9F%B3%E6%A0%B7%E7%A8%BF_20261108/assets/%E6%8C%89%E9%92%AE%E5%88%86%E5%9E%8B_v4/%E6%8C%89%E9%92%AE_%E7%9F%AD%E9%A1%B5%E7%AD%BE_v4.png"
+      ]
+    },
+    {
+      "family": "regular",
+      "backgrounds": [
+        "paper",
+        "ink",
+        "scenery"
+      ],
+      "sources": [
+        "http://127.0.0.1:8876/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E8%A7%92%E8%89%B2%E4%B8%8E%E9%9D%99%E5%AE%A4%E7%BA%B8%E5%A2%A8%E6%9C%A8%E7%9F%B3%E6%A0%B7%E7%A8%BF_20261108/assets/%E6%8C%89%E9%92%AE%E5%88%86%E5%9E%8B_v4/%E6%8C%89%E9%92%AE_%E5%B8%B8%E8%A7%84_v4.png"
+      ]
+    },
+    {
+      "family": "primary",
+      "backgrounds": [
+        "paper",
+        "ink",
+        "scenery"
+      ],
+      "sources": [
+        "http://127.0.0.1:8876/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E8%A7%92%E8%89%B2%E4%B8%8E%E9%9D%99%E5%AE%A4%E7%BA%B8%E5%A2%A8%E6%9C%A8%E7%9F%B3%E6%A0%B7%E7%A8%BF_20261108/assets/%E6%8C%89%E9%92%AE%E5%88%86%E5%9E%8B_v4/%E6%8C%89%E9%92%AE_%E4%B8%BB%E6%93%8D%E4%BD%9C_v4.png"
+      ]
+    },
+    {
+      "family": "icon",
+      "backgrounds": [
+        "paper",
+        "ink",
+        "scenery"
+      ],
+      "sources": [
+        "http://127.0.0.1:8876/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E8%A7%92%E8%89%B2%E4%B8%8E%E9%9D%99%E5%AE%A4%E7%BA%B8%E5%A2%A8%E6%9C%A8%E7%9F%B3%E6%A0%B7%E7%A8%BF_20261108/assets/%E6%8C%89%E9%92%AE%E5%88%86%E5%9E%8B_v4/%E6%8C%89%E9%92%AE_%E5%B0%8F%E5%9B%BE%E6%A0%87_v4.png"
+      ]
+    },
+    {
+      "family": "input",
+      "backgrounds": [
+        "paper",
+        "ink",
+        "scenery"
+      ],
+      "sources": [
+        "http://127.0.0.1:8876/docs/%E7%BE%8E%E6%9C%AF%E8%A7%84%E8%8C%83/%E8%A7%92%E8%89%B2%E4%B8%8E%E9%9D%99%E5%AE%A4%E7%BA%B8%E5%A2%A8%E6%9C%A8%E7%9F%B3%E6%A0%B7%E7%A8%BF_20261108/assets/%E6%8C%89%E9%92%AE%E5%88%86%E5%9E%8B_v4/%E6%8E%A7%E4%BB%B6_%E8%BE%93%E5%85%A5%E6%A7%BD_v4.png"
+      ]
+    }
+  ],
+  "regressionPassed": 163,
+  "motionPassed": 42,
+  "navigationMotion": {
+    "paperShift": 18,
+    "durationMs": 220,
+    "onlySelectedShowsBinding": true,
+    "reducedMotion": true,
+    "keepsNavigationNodes": true,
+    "report": "侧栏动效验收.json",
+    "gifs": [
+      "角色_侧栏动效.gif",
+      "静室_侧栏动效.gif"
+    ]
+  },
+  "date": "2026-11-08",
+  "exports": [
+    "角色_概览_1920.png",
+    "角色_属性_1920.png",
+    "角色_战斗_1920.png",
+    "角色_功法_1920.png",
+    "角色_装备_1920.png",
+    "角色_关系_1920.png",
+    "静室_吐纳修行_1920.png",
+    "静室_功法研读_1920.png",
+    "静室_闭关突破_1920.png",
+    "控件素材册_1920.png",
+    "局外Buff_1920.png",
+    "角色_首页.png",
+    "静室_首页.png",
+    "角色_概览_1280.png",
+    "角色_属性_1280.png",
+    "角色_战斗_1280.png",
+    "角色_功法_1280.png",
+    "角色_装备_1280.png",
+    "角色_关系_1280.png",
+    "静室_吐纳修行_1280.png",
+    "静室_功法研读_1280.png",
+    "静室_闭关突破_1280.png",
+    "控件素材册_1280.png",
+    "局外Buff_1280.png",
+    "角色_首页_1280.png",
+    "静室_首页_1280.png",
+    "灵力缕数_1280.png",
+    "日期输入_1280.png",
+    "确认弹窗_1280.png",
+    "深墨悬停_1280.png",
+    "按钮分型_三种底色.png",
+    "按钮边缘_三倍.png"
+  ],
+  "runtimeIntegration": false,
+  "viewports": [
+    {
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "width": 1280,
+      "height": 720
+    }
+  ],
+  "materials": {
+    "auditedViews": 20,
+    "controlInstances": 530,
+    "missingControls": 0,
+    "newGeneratedBitmaps": 0,
+    "reusedGeneratedBitmaps": 6,
+    "existingBitmapFilesModified": false,
+    "allGeneratedFilesByteIdentical": true,
+    "backgrounds": [
+      "浅纸",
+      "深墨",
+      "静室"
+    ],
+    "magnifiedEdgeReview": 3
+  },
+  "fileChecks": {
+    "sourceFiles": 64,
+    "documentLinks": 91,
+    "atlasRegions": 20,
+    "newTransparentFiles": 6,
+    "unchangedFrameAndAtlas": true,
+    "noStorageOrNetworkWriteCode": true
+  }
+}

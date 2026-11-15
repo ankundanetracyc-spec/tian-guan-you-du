@@ -139,6 +139,23 @@ theme_override_styles/focus = SubResource("StyleFocus")
 text = "开始新旅程"
 alignment = 1
 
+[node name="RoguelikeRun" type="Button" parent="."]
+custom_minimum_size = Vector2(340, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.172549, 0.290196, 0.254902, 1)
+theme_override_fonts/font = ExtResource("2_regular")
+theme_override_font_sizes/font_size = 19
+theme_override_colors/font_hover_color = Color(0.12, 0.22, 0.18, 1)
+theme_override_colors/font_pressed_color = Color(0.12, 0.22, 0.18, 1)
+theme_override_colors/font_focus_color = Color(0.12, 0.22, 0.18, 1)
+theme_override_styles/focus = SubResource("StyleFocus")
+theme_override_styles/normal = SubResource("StyleNormal")
+theme_override_styles/hover = SubResource("StyleHover")
+theme_override_styles/pressed = SubResource("StylePressed")
+text = "肉鸽修行"
+alignment = 1
+tooltip_text = "开启独立修行副本；本局使用新的角色与存档。"
+
 [node name="LoadSave" type="Button" parent="."]
 custom_minimum_size = Vector2(340, 50)
 layout_mode = 2
@@ -203,6 +220,23 @@ theme_override_styles/pressed = SubResource("StylePressed")
 text = "退出游戏"
 alignment = 1
 
+[node name="CombatBoardTest" type="Button" parent="."]
+custom_minimum_size = Vector2(340, 46)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.172549, 0.290196, 0.254902, 1)
+theme_override_fonts/font = ExtResource("2_regular")
+theme_override_font_sizes/font_size = 18
+theme_override_colors/font_hover_color = Color(0.12, 0.22, 0.18, 1)
+theme_override_colors/font_pressed_color = Color(0.12, 0.22, 0.18, 1)
+theme_override_colors/font_focus_color = Color(0.12, 0.22, 0.18, 1)
+theme_override_styles/focus = SubResource("StyleFocus")
+theme_override_styles/normal = SubResource("StyleNormal")
+theme_override_styles/hover = SubResource("StyleHover")
+theme_override_styles/pressed = SubResource("StylePressed")
+text = "新版战斗试演"
+alignment = 1
+tooltip_text = "进入独立试演，不影响正式旅程与存档。"
+
 [node name="DemoToggle" type="Button" parent="."]
 custom_minimum_size = Vector2(340, 34)
 layout_mode = 2
@@ -245,7 +279,7 @@ theme_override_styles/focus = SubResource("StyleFocus")
 theme_override_styles/normal = SubResource("StyleNormal")
 theme_override_styles/hover = SubResource("StyleHover")
 theme_override_styles/pressed = SubResource("StylePressed")
-text = "局内皮影动作预览"
+text = "局内动作姿势库预览"
 alignment = 1
 visible = false
 
@@ -263,7 +297,6 @@ theme_override_styles/normal = SubResource("StyleNormal")
 theme_override_styles/hover = SubResource("StyleHover")
 theme_override_styles/pressed = SubResource("StylePressed")
 text = "水墨立绘九部位测试"
-tooltip_text = "查看本轮男女立绘，逐件检查拼接；预览不会写入正式角色或存档。"
 alignment = 1
 visible = false
 
@@ -288,7 +321,6 @@ theme_override_styles/normal = SubResource("StyleNormal")
 theme_override_styles/hover = SubResource("StyleHover")
 theme_override_styles/pressed = SubResource("StylePressed")
 text = "水墨特效实验室"
-tooltip_text = "运行时查看墨晕扩散、笔锋、爆散与干湿边缘效果。"
 alignment = 1
 visible = false
 
@@ -323,7 +355,6 @@ theme_override_styles/normal = SubResource("StyleNormal")
 theme_override_styles/hover = SubResource("StyleHover")
 theme_override_styles/pressed = SubResource("StylePressed")
 text = "凝核测试"
-tooltip_text = "八回合凝核试演：调整36张牌组、携带两件道具并比较人物属性；不影响正式存档。"
 alignment = 1
 visible = false
 
@@ -341,7 +372,6 @@ theme_override_styles/normal = SubResource("StyleNormal")
 theme_override_styles/hover = SubResource("StyleHover")
 theme_override_styles/pressed = SubResource("StylePressed")
 text = "归元九息体验"
-tooltip_text = "十层周行、牵引与平衡；可比较普通体力中断和充足体力成息，不影响正式存档。"
 alignment = 1
 visible = false
 
@@ -359,6 +389,5 @@ theme_override_styles/normal = SubResource("StyleNormal")
 theme_override_styles/hover = SubResource("StyleHover")
 theme_override_styles/pressed = SubResource("StylePressed")
 text = "人物交互测试"
-tooltip_text = "无需进入存档，直接试演玩家主动搭话与 NPC 来访；不影响正式存档。"
 alignment = 1
 visible = false

@@ -1,0 +1,2342 @@
+{
+  "generatedWith": "built-in image generation",
+  "size": [
+    256,
+    256
+  ],
+  "icons": [
+    {
+      "id": "spined_sword_3x6",
+      "name": "含章剑",
+      "target": "textures/items/inventory_density_20261029/spined_sword_3x6.png",
+      "source": "textures/items/item_icon_sources_20261115/spined_sword_3x6.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        222,
+        225
+      ],
+      "margins": [
+        17,
+        15,
+        17,
+        16
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "f5631ee8bb7dd81265b54c26131d96a67534990c40cc585e97e359272019e0ae",
+      "oldSha256": "ff5b03979a9a70079dd37a17e4144d20339b2b7ca67b05e17ad1be05b15f456f",
+      "sha256": "235ee464c59adf1343629dae692a26f75795018eebd11203654647640370ccef",
+      "prompt": "Generate one full isolated object on a SQUARE transparent canvas, a production inventory icon for a classic Chinese cultivation RPG. Use the first clean porcelain sprite solely as a reference for hand-painted Chinese ink and matte tinted gouache and watercolor, diffuse lighting, and subtly varied gray-brown contours. Match consistency across a set with clear large material planes and crisp physical silhouette down to 36px. Use natural proportions, ample resolution, good object scale across the square, and an even clear safety margin. True alpha immediately outside silhouette, with alpha zero in surrounding space. No glow, particle, mist, cast shadow, background, outline effect, border, printed label, vector gloss or photographic rendering.\nOne functional Chinese Jian straight sword, medium muted grey blade with high central longitudinal ridge, shallow angular aged bronze jade-green crossguard, dark cord grip, small faceted pommel. One complete sword arranged diagonal from lower left hilt to upper right tip in a square, no foreshortening. Strong grey blade planes, no near-white edge or reflection, no gem, no tassels.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "broad_sword_3x6",
+      "name": "承露剑",
+      "target": "textures/items/inventory_density_20261029/broad_sword_3x6.png",
+      "source": "textures/items/item_icon_sources_20261115/broad_sword_3x6.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        221,
+        225
+      ],
+      "margins": [
+        17,
+        15,
+        18,
+        16
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "d8a809f5e06966a215a873864b511766b2e6e0ac8dadaeb419e47f2aeb63de8d",
+      "oldSha256": "8d9ab3c895093a91a3b3cfc73d87d4547acf4bc5cf78d060b57c35cda701f544",
+      "sha256": "b9634cd82157c4e268445b9c25db7e4afd6e83466575b68a81b63e2bbb33369c",
+      "prompt": "Generate one full isolated object on a SQUARE transparent canvas, a production inventory icon for a classic Chinese cultivation RPG. Use the first clean porcelain sprite solely as a reference for hand-painted Chinese ink and matte tinted gouache and watercolor, diffuse lighting, and subtly varied gray-brown contours. Match consistency across a set with clear large material planes and crisp physical silhouette down to 36px. Use natural proportions, ample resolution, good object scale across the square, and an even clear safety margin. True alpha immediately outside silhouette, with alpha zero in surrounding space. No glow, particle, mist, cast shadow, background, outline effect, border, printed label, vector gloss or photographic rendering.\nOne functional Chinese Jian straight sword with a wide sturdy mid-grey blade and broad bronze crossguard with tiny curled ends. Matte aged steel, dark cord grip, bronze pommel. Full sword diagonal lower left hilt to upper right tip in square. Keep entire silhouette. No sword scabbard, no shine or white edge.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "slender_sword_2x6",
+      "name": "清和剑",
+      "target": "textures/items/inventory_density_20261029/slender_sword_2x6.png",
+      "source": "textures/items/item_icon_sources_20261115/slender_sword_2x6.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        223,
+        225
+      ],
+      "margins": [
+        16,
+        15,
+        17,
+        16
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "72b3bfe0985f9ed0d20d8844b45f473f1d5ba64ae1faad38bccca56ecb4d121d",
+      "oldSha256": "ca22e5f0da662a627c8fa65b41519b96c0a4963b1bed6f8006912131c0d65ef8",
+      "sha256": "8b263aa67f6794a181383070a3a7f9c683a2cc0c113ccab96be9632d19be941f",
+      "prompt": "Generate one full isolated object on a SQUARE transparent canvas, a production inventory icon for a classic Chinese cultivation RPG. Use the first clean porcelain sprite solely as a reference for hand-painted Chinese ink and matte tinted gouache and watercolor, diffuse lighting, and subtly varied gray-brown contours. Match consistency across a set with clear large material planes and crisp physical silhouette down to 36px. Use natural proportions, ample resolution, good object scale across the square, and an even clear safety margin. True alpha immediately outside silhouette, with alpha zero in surrounding space. No glow, particle, mist, cast shadow, background, outline effect, border, printed label, vector gloss or photographic rendering.\nOne functional long slender Chinese Jian straight sword, narrow pointed muted steel grey blade, shallow modest carved jade-bronze crossguard, charcoal cord grip and small bronze pommel. Full sword from lower left hilt to upper right tip along the diagonal in a square, no foreshortening. Blade is dull mid-grey with subtle lighter grey plane, no glint, white streak, fantasy accessory or scabbard.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "pill_container_empty_porcelain",
+      "name": "通用瓷瓶",
+      "target": "textures/items/inventory_density_20261029/pill_container_empty_porcelain.png",
+      "source": "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        133,
+        225
+      ],
+      "margins": [
+        61,
+        15,
+        62,
+        16
+      ],
+      "sourceSize": [
+        887,
+        1774
+      ],
+      "sourceSha256": "9650cffdc1fbd7cbb28974af67579dc887a5dec1cccb5b99691fe026ac60c873",
+      "oldSha256": "7c471bfb2ee27e690326063d09a3716a2915c6611b24a98d8e2629f55a1ae054",
+      "sha256": "0ed5022adc0b0159b838bb496833cce886a1c8aa8ac3da4645b2e234ac124428",
+      "prompt": "Standalone inventory sprite for a hand-painted Chinese cultivation RPG. The attached porcelain bottle is a brushwork and volume reference. Use restrained Chinese ink and tinted opaque watercolor/gouache brush facets, soft diffuse upper-left light, quiet low-saturation local colors and subtle thin grey-brown defined edges. Strong simple material planes and a crisp distinct silhouette at 36–72 px. Keep physical form large and centered within safe margins, completely visible. Genuine alpha transparency right up to the contour on every side. No backdrop, ground, detached shadow, reflected colored glow, halo, sparkle, rim light, label, text, frame, flat vector, or CGI shine. Ignore the brown preview halo around the reference.\nCreate a 1:2 portrait composition with a small complete antique Chinese porcelain medicine bottle, a plump pear body of warm chalk ivory, one narrow understated slate-blue band just below the mouth, and a dark warm brown wooden stopper. Readable compact bottle with gently shaded pale blue-grey side planes, closely matching the reference bottle’s restrained matte painted surface. Viewed from slightly above in three-quarter front.",
+      "references": [
+        "docs/美术规范/行囊全物品图标与占地_20261029/风格参考_用户指定瓷瓶.png"
+      ]
+    },
+    {
+      "id": "portrait_clothing_female_yuebai_zhuying",
+      "name": "月白竹影袍",
+      "target": "textures/items/inventory_density_20261029/portrait_clothing_female_yuebai_zhuying.png",
+      "source": "textures/items/item_icon_sources_20261115/portrait_clothing_female_yuebai_zhuying.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        160,
+        225
+      ],
+      "margins": [
+        48,
+        15,
+        48,
+        16
+      ],
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "sourceSha256": "3b4cf1191f8a76f75de976550b687695dc3c1afe030d08842eb3e9ede18ebf57",
+      "oldSha256": "cc1b57501468ecbd3315c845a8cdf686ff473582ce5097adda48cfcbed2cb3fb",
+      "sha256": "095d7cd8bb5550e3bc514bddf11ec8c4ce233185a1776677277d82bf9ecc44d4",
+      "prompt": "Create one new complete transparent inventory icon for a classical Chinese cultivation RPG. The attached clean porcelain sprite is a technique reference. Match its soft traditional Chinese ink-and-watercolor/gouache brush facets on the actual object, lightly textured matte local-color planes, subtle fine grey-brown ink contours and broad soft lighting. Make the physical silhouette crisp with readable surface shapes even at 36–72 px. Use true alpha immediately outside the physical contour (every empty pixel alpha zero), with clean antialiasing only directly at the edge. Center the entire item with modest clear margins. Avoid background treatment, scenic details, outline glow, luminous edge or mist, rim light, detached shadow, white bright bands, small sparkly dots, gloss, vector rendering, text or frame. Your subject follows.\nOne neatly folded Chinese robe (月白竹影袍) with ivory cloth, subdued sage-green lapel and small bamboo-leaf motifs. Compact 2:3 rectangle from directly above, tucked sleeves and hem, small crossed ivory or colored lapels above a broad neatly folded sash, individually readable simple embroidery motifs in the specified subdued colors. Cloth layers have narrow natural shadows; clean upright almost rectangular silhouette, softly irregular folded edges, minimal perspective, fully contained.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "portrait_clothing_female_ouhe_huayun",
+      "name": "藕荷花云袍",
+      "target": "textures/items/inventory_density_20261029/portrait_clothing_female_ouhe_huayun.png",
+      "source": "textures/items/item_icon_sources_20261115/portrait_clothing_female_ouhe_huayun.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        151,
+        225
+      ],
+      "margins": [
+        52,
+        15,
+        53,
+        16
+      ],
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "sourceSha256": "0ea868e0f9516a25bbe70027cf6b4353ab7ff46d7e6b4d19df8581189f670ce9",
+      "oldSha256": "41af8e7350faabb25be5ce567e0fbebe07d77777a2adf6189123605d09d116bc",
+      "sha256": "cd57cf14d04b799297d91a22ba06270b8b0fa13d0adbbee3fba698585c1f5a0c",
+      "prompt": "Create one new complete transparent inventory icon for a classical Chinese cultivation RPG. The attached clean porcelain sprite is a technique reference. Match its soft traditional Chinese ink-and-watercolor/gouache brush facets on the actual object, lightly textured matte local-color planes, subtle fine grey-brown ink contours and broad soft lighting. Make the physical silhouette crisp with readable surface shapes even at 36–72 px. Use true alpha immediately outside the physical contour (every empty pixel alpha zero), with clean antialiasing only directly at the edge. Center the entire item with modest clear margins. Avoid background treatment, scenic details, outline glow, luminous edge or mist, rim light, detached shadow, white bright bands, small sparkly dots, gloss, vector rendering, text or frame. Your subject follows.\nOne neatly folded Chinese robe (藕荷花云袍) with warm ivory cloth, dusty pale mauve lapel and sash, understated floral/cloud motifs. Compact 2:3 rectangle from directly above, tucked sleeves and hem, small crossed ivory or colored lapels above a broad neatly folded sash, individually readable simple embroidery motifs in the specified subdued colors. Cloth layers have narrow natural shadows; clean upright almost rectangular silhouette, softly irregular folded edges, minimal perspective, fully contained.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "portrait_clothing_female_qingci_yunmei",
+      "name": "青瓷云梅袍",
+      "target": "textures/items/inventory_density_20261029/portrait_clothing_female_qingci_yunmei.png",
+      "source": "textures/items/item_icon_sources_20261115/portrait_clothing_female_qingci_yunmei.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        151,
+        225
+      ],
+      "margins": [
+        52,
+        15,
+        53,
+        16
+      ],
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "sourceSha256": "0df30df6bcef26024019e2ceaa39bb341e47671e6b4e9dcb615268c87b329fb5",
+      "oldSha256": "03cc353cfb2733ee251922c6d55391e8e61179acb13332a693addc5107a3f970",
+      "sha256": "7cec1f34f9a0a39cabbac30607956058b29135d123a942f819483258e989321a",
+      "prompt": "Create one new complete transparent inventory icon for a classical Chinese cultivation RPG. The attached clean porcelain sprite is a technique reference. Match its soft traditional Chinese ink-and-watercolor/gouache brush facets on the actual object, lightly textured matte local-color planes, subtle fine grey-brown ink contours and broad soft lighting. Make the physical silhouette crisp with readable surface shapes even at 36–72 px. Use true alpha immediately outside the physical contour (every empty pixel alpha zero), with clean antialiasing only directly at the edge. Center the entire item with modest clear margins. Avoid background treatment, scenic details, outline glow, luminous edge or mist, rim light, detached shadow, white bright bands, small sparkly dots, gloss, vector rendering, text or frame. Your subject follows.\nOne neatly folded Chinese robe (青瓷云梅袍) with ivory cloth, porcelain-blue lapel and sash with blue plum blossom/cloud motifs. Compact 2:3 rectangle from directly above, tucked sleeves and hem, small crossed ivory or colored lapels above a broad neatly folded sash, individually readable simple embroidery motifs in the specified subdued colors. Cloth layers have narrow natural shadows; clean upright almost rectangular silhouette, softly irregular folded edges, minimal perspective, fully contained.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "portrait_clothing_yuxu_neimen",
+      "name": "玉虚·内门常服",
+      "target": "textures/items/inventory_density_20261029/portrait_clothing_yuxu_neimen.png",
+      "source": "textures/items/item_icon_sources_20261115/portrait_clothing_yuxu_neimen.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        152,
+        225
+      ],
+      "margins": [
+        52,
+        15,
+        52,
+        16
+      ],
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "sourceSha256": "730bdceb8b67fdf4c415c0e26af9db37e0e968a54384af6cc3fbb4213a6032cf",
+      "oldSha256": "b33ba5491e77d94e12ea8e0b6e71dfab22540286a5abdc1f05723090a19baec5",
+      "sha256": "c8fc49d43076af024616dd40367a860c6fcb04a5a99a763df34ad3519ef44186",
+      "prompt": "Create one new complete transparent inventory icon for a classical Chinese cultivation RPG. The attached clean porcelain sprite is a technique reference. Match its soft traditional Chinese ink-and-watercolor/gouache brush facets on the actual object, lightly textured matte local-color planes, subtle fine grey-brown ink contours and broad soft lighting. Make the physical silhouette crisp with readable surface shapes even at 36–72 px. Use true alpha immediately outside the physical contour (every empty pixel alpha zero), with clean antialiasing only directly at the edge. Center the entire item with modest clear margins. Avoid background treatment, scenic details, outline glow, luminous edge or mist, rim light, detached shadow, white bright bands, small sparkly dots, gloss, vector rendering, text or frame. Your subject follows.\nOne neatly folded Chinese robe (玉虚·内门常服) with ivory outer cloth, muted jade-teal lapels and sash, pale grey-blue clouds. Compact 2:3 rectangle from directly above, tucked sleeves and hem, small crossed ivory or colored lapels above a broad neatly folded sash, individually readable simple embroidery motifs in the specified subdued colors. Cloth layers have narrow natural shadows; clean upright almost rectangular silhouette, softly irregular folded edges, minimal perspective, fully contained.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "portrait_clothing_yuxu_waimen",
+      "name": "玉虚·外门常服",
+      "target": "textures/items/inventory_density_20261029/portrait_clothing_yuxu_waimen.png",
+      "source": "textures/items/item_icon_sources_20261115/portrait_clothing_yuxu_waimen.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        151,
+        225
+      ],
+      "margins": [
+        52,
+        15,
+        53,
+        16
+      ],
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "sourceSha256": "01ae0da6ff7fbcc0a98ef39e0cf3b82206bb1f46d2f754e785917dcf50a5cd28",
+      "oldSha256": "1858c9c0ed73a74ece6706b233398e28c64bc45f8670643f13569ac885167005",
+      "sha256": "7a055a6a7ea0560177802c90b7637c4486fd150eb550d6471daa04620f51b5a7",
+      "prompt": "Create one new complete transparent inventory icon for a classical Chinese cultivation RPG. The attached clean porcelain sprite is a technique reference. Match its soft traditional Chinese ink-and-watercolor/gouache brush facets on the actual object, lightly textured matte local-color planes, subtle fine grey-brown ink contours and broad soft lighting. Make the physical silhouette crisp with readable surface shapes even at 36–72 px. Use true alpha immediately outside the physical contour (every empty pixel alpha zero), with clean antialiasing only directly at the edge. Center the entire item with modest clear margins. Avoid background treatment, scenic details, outline glow, luminous edge or mist, rim light, detached shadow, white bright bands, small sparkly dots, gloss, vector rendering, text or frame. Your subject follows.\nOne neatly folded Chinese robe (玉虚·外门常服) with muted medium blue outer cloth, ivory inner collar and white painted cloud motifs. Compact 2:3 rectangle from directly above, tucked sleeves and hem, small crossed ivory or colored lapels above a broad neatly folded sash, individually readable simple embroidery motifs in the specified subdued colors. Cloth layers have narrow natural shadows; clean upright almost rectangular silhouette, softly irregular folded edges, minimal perspective, fully contained.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "portrait_clothing_yuxu_zayi",
+      "name": "玉虚·杂役常服",
+      "target": "textures/items/inventory_density_20261029/portrait_clothing_yuxu_zayi.png",
+      "source": "textures/items/item_icon_sources_20261115/portrait_clothing_yuxu_zayi.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        162,
+        225
+      ],
+      "margins": [
+        47,
+        15,
+        47,
+        16
+      ],
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "sourceSha256": "eade2fb883cbdfb500d22d467ffc94f74eba76e8714c602c9b8431dff84f679a",
+      "oldSha256": "65d77c749058b681b0373908c091a0132537996127755c6a89ab50ce656ac73c",
+      "sha256": "8626295809bbd56f71a2adca830fddf158f855d4d469406ec1e77513c20af3a0",
+      "prompt": "Create one new complete transparent inventory icon for a classical Chinese cultivation RPG. The attached clean porcelain sprite is a technique reference. Match its soft traditional Chinese ink-and-watercolor/gouache brush facets on the actual object, lightly textured matte local-color planes, subtle fine grey-brown ink contours and broad soft lighting. Make the physical silhouette crisp with readable surface shapes even at 36–72 px. Use true alpha immediately outside the physical contour (every empty pixel alpha zero), with clean antialiasing only directly at the edge. Center the entire item with modest clear margins. Avoid background treatment, scenic details, outline glow, luminous edge or mist, rim light, detached shadow, white bright bands, small sparkly dots, gloss, vector rendering, text or frame. Your subject follows.\nOne neatly folded Chinese robe (玉虚·杂役常服) with warm pale grey-beige cloth, restrained blue-grey lapel, sash and a few soft cloud motifs. Compact 2:3 rectangle from directly above, tucked sleeves and hem, small crossed ivory or colored lapels above a broad neatly folded sash, individually readable simple embroidery motifs in the specified subdued colors. Cloth layers have narrow natural shadows; clean upright almost rectangular silhouette, softly irregular folded edges, minimal perspective, fully contained.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "portrait_clothing_yuxu_zhenchuan",
+      "name": "玉虚·真传常服",
+      "target": "textures/items/inventory_density_20261029/portrait_clothing_yuxu_zhenchuan.png",
+      "source": "textures/items/item_icon_sources_20261115/portrait_clothing_yuxu_zhenchuan.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        157,
+        225
+      ],
+      "margins": [
+        49,
+        15,
+        50,
+        16
+      ],
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "sourceSha256": "fcd67664d2c60fd37cbdadda7cfce75f0cca8526d8bf99465fe6b6f51217419d",
+      "oldSha256": "1847b89f63c5502413337682038ad40a1dfabf2d77d732aa4565371d8864f3dc",
+      "sha256": "2767fb5874d869d5a9a04a2f82a1153b739852ff49cd50ae891222747920b9a9",
+      "prompt": "Create one new complete transparent inventory icon for a classical Chinese cultivation RPG. The attached clean porcelain sprite is a technique reference. Match its soft traditional Chinese ink-and-watercolor/gouache brush facets on the actual object, lightly textured matte local-color planes, subtle fine grey-brown ink contours and broad soft lighting. Make the physical silhouette crisp with readable surface shapes even at 36–72 px. Use true alpha immediately outside the physical contour (every empty pixel alpha zero), with clean antialiasing only directly at the edge. Center the entire item with modest clear margins. Avoid background treatment, scenic details, outline glow, luminous edge or mist, rim light, detached shadow, white bright bands, small sparkly dots, gloss, vector rendering, text or frame. Your subject follows.\nOne neatly folded Chinese robe (玉虚·真传常服) with ivory and deep muted blue, restrained pale gold piping and subtle cloud embroidery. Compact 2:3 rectangle from directly above, tucked sleeves and hem, small crossed ivory or colored lapels above a broad neatly folded sash, individually readable simple embroidery motifs in the specified subdued colors. Cloth layers have narrow natural shadows; clean upright almost rectangular silhouette, softly irregular folded edges, minimal perspective, fully contained.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "portrait_clothing_male_xuanqing_yunzhu",
+      "name": "玄青云竹袍",
+      "target": "textures/items/inventory_density_20261029/portrait_clothing_male_xuanqing_yunzhu.png",
+      "source": "textures/items/item_icon_sources_20261115/portrait_clothing_male_xuanqing_yunzhu.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        158,
+        225
+      ],
+      "margins": [
+        49,
+        15,
+        49,
+        16
+      ],
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "sourceSha256": "df049bd0ea0338cac93d15f81dcd6a0b4dcbe285f24e82095853ce78e9642d6b",
+      "oldSha256": "bcf07f05430ef2aac4cba92571fa19e291efd741a59c33ab49f54a2ce7288837",
+      "sha256": "a0f80d0c87df37ea562680f8c535c1410f2b0dc75bb8ee0fb346b72a1e71bd73",
+      "prompt": "Create one new complete transparent inventory icon for a classical Chinese cultivation RPG. The attached clean porcelain sprite is a technique reference. Match its soft traditional Chinese ink-and-watercolor/gouache brush facets on the actual object, lightly textured matte local-color planes, subtle fine grey-brown ink contours and broad soft lighting. Make the physical silhouette crisp with readable surface shapes even at 36–72 px. Use true alpha immediately outside the physical contour (every empty pixel alpha zero), with clean antialiasing only directly at the edge. Center the entire item with modest clear margins. Avoid background treatment, scenic details, outline glow, luminous edge or mist, rim light, detached shadow, white bright bands, small sparkly dots, gloss, vector rendering, text or frame. Your subject follows.\nOne neatly folded Chinese robe (玄青云竹袍) with deep blue-grey cloth and lapels, ivory collar, small silver-grey bamboo/cloud motifs. Compact 2:3 rectangle from directly above, tucked sleeves and hem, small crossed ivory or colored lapels above a broad neatly folded sash, individually readable simple embroidery motifs in the specified subdued colors. Cloth layers have narrow natural shadows; clean upright almost rectangular silhouette, softly irregular folded edges, minimal perspective, fully contained.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "portrait_clothing_male_bilan_yunye",
+      "name": "碧岚云叶袍",
+      "target": "textures/items/inventory_density_20261029/portrait_clothing_male_bilan_yunye.png",
+      "source": "textures/items/item_icon_sources_20261115/portrait_clothing_male_bilan_yunye.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        159,
+        225
+      ],
+      "margins": [
+        48,
+        15,
+        49,
+        16
+      ],
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "sourceSha256": "bf2e8bd6591b1f2fe89329b180584d1c951c50a7512eee9b46e4617dbc221344",
+      "oldSha256": "aa88581a46bd97fe7fee46b73e128f896b4092862071c333cbcce887b8c2ca4c",
+      "sha256": "86b097be7177edf1cb36e7cb6e741bdf6b8ffaca3c2cab04bdb9d571ac402b53",
+      "prompt": "Create one new complete transparent inventory icon for a classical Chinese cultivation RPG. The attached clean porcelain sprite is a technique reference. Match its soft traditional Chinese ink-and-watercolor/gouache brush facets on the actual object, lightly textured matte local-color planes, subtle fine grey-brown ink contours and broad soft lighting. Make the physical silhouette crisp with readable surface shapes even at 36–72 px. Use true alpha immediately outside the physical contour (every empty pixel alpha zero), with clean antialiasing only directly at the edge. Center the entire item with modest clear margins. Avoid background treatment, scenic details, outline glow, luminous edge or mist, rim light, detached shadow, white bright bands, small sparkly dots, gloss, vector rendering, text or frame. Your subject follows.\nOne neatly folded Chinese robe (碧岚云叶袍) with desaturated deep teal-green cloth, ivory collar, pale cloud/leaf embroidery. Compact 2:3 rectangle from directly above, tucked sleeves and hem, small crossed ivory or colored lapels above a broad neatly folded sash, individually readable simple embroidery motifs in the specified subdued colors. Cloth layers have narrow natural shadows; clean upright almost rectangular silhouette, softly irregular folded edges, minimal perspective, fully contained.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "portrait_clothing_male_jiangxia_liuyun",
+      "name": "绛霞流云袍",
+      "target": "textures/items/inventory_density_20261029/portrait_clothing_male_jiangxia_liuyun.png",
+      "source": "textures/items/item_icon_sources_20261115/portrait_clothing_male_jiangxia_liuyun.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        154,
+        225
+      ],
+      "margins": [
+        51,
+        15,
+        51,
+        16
+      ],
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "sourceSha256": "2b508a612b475d2418a0b5ad8a1ab96f19d46eb0a3e6ca61477d49e50d39b8e9",
+      "oldSha256": "6af58657000220464b57a523595235b059034f847ac6894890e8025d096ccdbf",
+      "sha256": "7c0dfa1846c112bdc0aae2abe4b37f415275da10d38f9aa801e2edb66d196a68",
+      "prompt": "Create one new complete transparent inventory icon for a classical Chinese cultivation RPG. The attached clean porcelain sprite is a technique reference. Match its soft traditional Chinese ink-and-watercolor/gouache brush facets on the actual object, lightly textured matte local-color planes, subtle fine grey-brown ink contours and broad soft lighting. Make the physical silhouette crisp with readable surface shapes even at 36–72 px. Use true alpha immediately outside the physical contour (every empty pixel alpha zero), with clean antialiasing only directly at the edge. Center the entire item with modest clear margins. Avoid background treatment, scenic details, outline glow, luminous edge or mist, rim light, detached shadow, white bright bands, small sparkly dots, gloss, vector rendering, text or frame. Your subject follows.\nOne neatly folded Chinese robe (绛霞流云袍) with muted cinnabar-red cloth, charcoal lapel and sash, ivory collar and sparse gold cloud motifs. Compact 2:3 rectangle from directly above, tucked sleeves and hem, small crossed ivory or colored lapels above a broad neatly folded sash, individually readable simple embroidery motifs in the specified subdued colors. Cloth layers have narrow natural shadows; clean upright almost rectangular silhouette, softly irregular folded edges, minimal perspective, fully contained.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_dark_feather",
+      "name": "乌羽片",
+      "target": "textures/items/inventory_density_20261029/mat_dark_feather.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_dark_feather.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        92,
+        225
+      ],
+      "margins": [
+        82,
+        15,
+        82,
+        16
+      ],
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "sourceSha256": "36a5da0772fbb8833a93942c95525c67249edc39557d79b111ec1e130ecb2d03",
+      "oldSha256": "c75bf9f44a07627559ad705f6e9a336301710640acc961c4138dfdcc260f6565",
+      "sha256": "92778523847452cdd9ffca36a92d912c29109f685954e33634846aa3012ac743",
+      "prompt": "Create one new complete transparent inventory icon for a classical Chinese cultivation RPG. The attached clean porcelain sprite is a technique reference. Match its soft traditional Chinese ink-and-watercolor/gouache brush facets on the actual object, lightly textured matte local-color planes, subtle fine grey-brown ink contours and broad soft lighting. Make the physical silhouette crisp with readable surface shapes even at 36–72 px. Use true alpha immediately outside the physical contour (every empty pixel alpha zero), with clean antialiasing only directly at the edge. Center the entire item with modest clear margins. Avoid background treatment, scenic details, outline glow, luminous edge or mist, rim light, detached shadow, white bright bands, small sparkly dots, gloss, vector rendering, text or frame. Your subject follows.\nA single loose black bird feather, with a curved dark shaft and overlapping charcoal feather barbs. Keep the specimen vertically composed. Compose upright within a 2:3 canvas. Final inventory footprint 2x3, packed dimensions 256x384. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "manual_generic_2x3",
+      "name": "通用秘籍",
+      "target": "textures/items/inventory_density_20261029/manual_generic_2x3.png",
+      "source": "textures/items/item_icon_sources_20261115/manual_generic_2x3.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        151,
+        225
+      ],
+      "margins": [
+        52,
+        15,
+        53,
+        16
+      ],
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "sourceSha256": "bc7c4a2eb26269f9b82b01505653e23e6a082068a8616ba70433a53b38314c4e",
+      "oldSha256": "c0d6bce06a393054770fab923bd9176d4c33cd67d5a3cafd8da08a6bf47dd8cc",
+      "sha256": "4b6a300b4a3da3f3f79776323ac0b1fd73fa9af8022f777ba4589ed635347988",
+      "prompt": "Create one new complete transparent inventory icon for a classical Chinese cultivation RPG. The attached clean porcelain sprite is a technique reference. Match its soft traditional Chinese ink-and-watercolor/gouache brush facets on the actual object, lightly textured matte local-color planes, subtle fine grey-brown ink contours and broad soft lighting. Make the physical silhouette crisp with readable surface shapes even at 36–72 px. Use true alpha immediately outside the physical contour (every empty pixel alpha zero), with clean antialiasing only directly at the edge. Center the entire item with modest clear margins. Avoid background treatment, scenic details, outline glow, luminous edge or mist, rim light, detached shadow, white bright bands, small sparkly dots, gloss, vector rendering, text or frame. Your subject follows.\nOne plain traditional old Chinese thread-bound manual with a subdued slate blue-grey cloth cover, a thin vertical pale blank title-slip and four small tan stitches along the left spine. Worn matte woven cover, subtle thin edges, no ornamental design and absolutely no readable lettering. TRUE ORTHOGRAPHIC FLAT TOP VIEW, precisely vertical rectangular 2:3 book with straight horizontal top and bottom edges and vertical spine, no rotation, no slanted corners, no side perspective or high 3D book thickness. Full cover within image.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_cloud_mist_mushroom",
+      "name": "云雾菌",
+      "target": "textures/items/inventory_density_20261029/mat_cloud_mist_mushroom.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_cloud_mist_mushroom.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        214,
+        225
+      ],
+      "margins": [
+        21,
+        15,
+        21,
+        16
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "4fce5cee999ce8862073fc12df7cc23cc964dc0528c7da46115d6769760ebe2d",
+      "oldSha256": "9dd3e8ca57f4f6f9ac0aeaaa7b91117652d8f87922f1ee2bbdad98ae2a86dadb",
+      "sha256": "f5106c02b4e8545423bb5a76a726a7b15c9f3503ccd91125ade3e0824cf503e2",
+      "prompt": "Create one new complete transparent inventory icon for a classical Chinese cultivation RPG. The attached clean porcelain sprite is a technique reference. Match its soft traditional Chinese ink-and-watercolor/gouache brush facets on the actual object, lightly textured matte local-color planes, subtle fine grey-brown ink contours and broad soft lighting. Make the physical silhouette crisp with readable surface shapes even at 36–72 px. Use true alpha immediately outside the physical contour (every empty pixel alpha zero), with clean antialiasing only directly at the edge. Center the entire item with modest clear margins. Avoid background treatment, scenic details, outline glow, luminous edge or mist, rim light, detached shadow, white bright bands, small sparkly dots, gloss, vector rendering, text or frame. Your subject follows.\nA compact specimen of pale grey-green mushrooms, rounded cloud-mottled caps above short ivory fibrous stems, all attached in a small cohesive cluster. Compose upright within a 3:3 canvas. Final inventory footprint 3x3, packed dimensions 384x384. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_earthbeast_sinew",
+      "name": "伏地兽筋",
+      "target": "textures/items/inventory_density_20261029/mat_earthbeast_sinew.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_earthbeast_sinew.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        72,
+        225
+      ],
+      "margins": [
+        92,
+        15,
+        92,
+        16
+      ],
+      "sourceSize": [
+        887,
+        1774
+      ],
+      "sourceSha256": "f4d18c663b1657317f32c9967f906fdca986fe3cc8f1d5d2ebd6b1596223fc42",
+      "oldSha256": "84125ecded011f69b7f9d5a1fbbbee79624cb040f4fc7530575806e25a07a659",
+      "sha256": "f05c7ad7912bf18b58728d4eaa0efed7905ae5b33d8ed9b6fc7600f75d1c3e56",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: A compact lengthwise folded bundle of pale brown animal sinew, showing natural parallel fibers and a few rough fibrous ends. Compose upright within a 2:4 canvas. Final inventory footprint 2x4, packed dimensions 256x512. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_beast_hide",
+      "name": "兽皮",
+      "target": "textures/items/inventory_density_20261029/mat_beast_hide.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_beast_hide.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        225,
+        223
+      ],
+      "margins": [
+        15,
+        16,
+        16,
+        17
+      ],
+      "sourceSize": [
+        1086,
+        1448
+      ],
+      "sourceSha256": "8f9e9cf7bc3d3a04049c35193e8e5fbc64e331308faa2bda1024133911b8f495",
+      "oldSha256": "35cb044b805fc9e89dae49a188a16a89c53705c8e38b07d21f3b554359f36c2a",
+      "sha256": "133a0f8d3f167ef2f376f17e2385fc1c40133365db37efa84d53e1aec0bbb0f9",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: A single compact piece of tan animal hide, softly folded over itself, with a visible supple edge and darker underside. Compose upright within a 3:4 canvas. Final inventory footprint 3x4, packed dimensions 384x512. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_beast_bone",
+      "name": "兽骨",
+      "target": "textures/items/inventory_density_20261029/mat_beast_bone.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_beast_bone.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        65,
+        225
+      ],
+      "margins": [
+        95,
+        15,
+        96,
+        16
+      ],
+      "sourceSize": [
+        793,
+        1983
+      ],
+      "sourceSha256": "78e7091922b1bf62ea5e9af7f4090007a84d4f9f7367acdc7a27bca4c3023861",
+      "oldSha256": "9c38667d277a12934cbd64ea1bd12343b0b4ec202667f421fbd390853560530b",
+      "sha256": "b856748d28949153399a930b85840357bd760a3882ffe5f233068d89f4179752",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: An intact elongated ivory animal bone, with natural rounded joint ends and a slightly irregular shaft, composed upright. Compose upright within a 2:5 canvas. Final inventory footprint 2x5, packed dimensions 256x640. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_frostdew_leaf",
+      "name": "凝霜叶",
+      "target": "textures/items/inventory_density_20261029/mat_frostdew_leaf.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_frostdew_leaf.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        125,
+        225
+      ],
+      "margins": [
+        65,
+        15,
+        66,
+        16
+      ],
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "sourceSha256": "2f5f26d7e271409eaf59def20c3d210855ee6bbe2c6bc0209f9a870f6e4c1f74",
+      "oldSha256": "5f64eb22aea9fe042ad551b8c3a3cbefe01fdba02ed6a9da6d4588ab5f0889a5",
+      "sha256": "6cc1320e50724d55e7de23821c2cdd9a8caced4e67fc13f326d86ec154f74e07",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: A single muted green medicinal leaf on a short stem, with fine closely gathered veins and a thin trace of frost along its curled serrated edges. Compose upright within a 2:3 canvas. Final inventory footprint 2x3, packed dimensions 256x384. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props. Frost is a sparse grey-white pigment wash, no glass beads or white glitter.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_dew_pine_resin",
+      "name": "凝露松脂",
+      "target": "textures/items/inventory_density_20261029/mat_dew_pine_resin.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_dew_pine_resin.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        225,
+        200
+      ],
+      "margins": [
+        15,
+        27,
+        16,
+        29
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "dfc9bf4e5bc6e0dc3a2f8b45795b6f9e42fa44100ceb53814095cc944ca93bf2",
+      "oldSha256": "d95baaaf53737a15e5996076d8c29f835101cafd54d13b9a036fbdb56a07e9dc",
+      "sha256": "1e4cf7edb375152dec9dc5d7f2e74d99a9bc239860046199138bd54d70421a2e",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: A small cohesive amber-brown lump of collected pine resin, with rounded irregular gummy folds and a few translucent amber edges. Compose upright within a 2:2 canvas. Final inventory footprint 2x2, packed dimensions 256x256. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_return_spring_pearl",
+      "name": "回泉珠",
+      "target": "textures/items/inventory_density_20261029/mat_return_spring_pearl.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_return_spring_pearl.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        219,
+        223
+      ],
+      "margins": [
+        18,
+        16,
+        19,
+        17
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "65d2736443194b2b767dd55578c554b3cf60ccefb24b4f2da94247cdbdec7655",
+      "oldSha256": "b6b2663169c58cae9d51a13292c2c6a565d8c96fb17145ca5f2c3c85cc3839ee",
+      "sha256": "88fcf8c7fabc0bc5101cb2d1f528bb0b43a672814c96b15e75eaf9a282dee320",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: 回泉珠, a SINGLE SMALL ROUND WATER PEARL, a near-spherical softly translucent muted blue-green mineral bead with ONE faint delicate curved water-whorl visible at its center. The bead itself is the entire item; unmounted, no rock, crust, shell, geode, cave, basin, pool or outer setting. Shape reads as a simple solid round pearl at tiny size. Gentle painted local-color planes, not a transparent glass marble, no bright white dot, no bubbles, no liquid splashes. Canvas square1:1; final grid footprint2x2, packed256x256.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_geovein_flame_coal",
+      "name": "地脉焰炭",
+      "target": "textures/items/inventory_density_20261029/mat_geovein_flame_coal.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_geovein_flame_coal.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        225,
+        225
+      ],
+      "margins": [
+        15,
+        15,
+        16,
+        16
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "1ae7abd8650ab8303d55ddf5cae05964a8b9a41fdabd20e0d33c6e851aa375ac",
+      "oldSha256": "053b0024b570630da0256fd62fc5e9b4e33cf91ee20967c45477b70a83ae7a5d",
+      "sha256": "8fbd951fd95cbf2fe1365baa026bd3540bccd3c4f03eb994a15523df35492f9a",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: One compact dense black coal-crystal lump, angular and massive, with restrained dark rust-red mineral seams within the charcoal body. Compose upright within a 3:3 canvas. Final inventory footprint 3x3, packed dimensions 384x384. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_mountain_silkworm_thread",
+      "name": "山蚕长丝",
+      "target": "textures/items/inventory_density_20261029/mat_mountain_silkworm_thread.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_mountain_silkworm_thread.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        224,
+        173
+      ],
+      "margins": [
+        15,
+        41,
+        17,
+        42
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "49a7984f08d5db131473255bd25d1fb10ff8126813735688b7365a5b184c08c5",
+      "oldSha256": "8c66b9cea219c4824c2107615b14615c65370a7e84125396df37d26f250510f2",
+      "sha256": "914021c3b815e5037619fd9c017577902dbce258b0895c445564bac5a99e75d8",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: A small neat coil of plain ivory-white silkworm silk, made from fine evenly aligned continuous threads. Compose upright within a 2:2 canvas. Final inventory footprint 2x2, packed dimensions 256x256. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_cicada_shell",
+      "name": "山蝉蜕壳",
+      "target": "textures/items/inventory_density_20261029/mat_cicada_shell.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_cicada_shell.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        156,
+        225
+      ],
+      "margins": [
+        50,
+        15,
+        50,
+        16
+      ],
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "sourceSha256": "cf5d6e917c731d856e731a2bf773a3b53a0a221643e447462cd4b493ae57eade",
+      "oldSha256": "9edc0784f0ffffafa9ed0a5ddb71e3726683b5835b1cf9554b0f2e714c1ae09a",
+      "sha256": "1a5292639dc8a146d431167ee333af31e6d7cfcb0f5e13f8662fef909d38b2da",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: A single empty amber-brown cicada exuvia, showing its segmented hollow abdomen, split back and delicate curled legs, composed upright. Compose upright within a 2:3 canvas. Final inventory footprint 2x3, packed dimensions 256x384. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_mottled_beetle_shell",
+      "name": "斑甲壳片",
+      "target": "textures/items/inventory_density_20261029/mat_mottled_beetle_shell.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_mottled_beetle_shell.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        225,
+        184
+      ],
+      "margins": [
+        15,
+        36,
+        16,
+        36
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "4a9f2698ea15e4bf840167153947ec122b2f239ec11ddc18296e5238360062e1",
+      "oldSha256": "914f6ab7f3b8d97ccdf92fa483c7a537955796ec4b07ad2d8781d6eeabab5e2d",
+      "sha256": "7488b6d6b60821c2fdf61961b0937cdb15ae5615d7713cc7cd48d3719d5b6043",
+      "prompt": "Square 1024 px or larger. A single transparent PNG Chinese ink and muted gouache inventory sprite, premium painted game asset for a Chinese cultivation RPG. Match the clean painted technique of the porcelain reference. Fine dark-pigment physical edges, crisp clear silhouette and broad matte planes. Every pixel outside the item's actual physical shape is FULLY transparent. Empty space must have alpha zero, including all visible space around the item, any open hole or loop, and the four corners. No generated checkerboard, backdrop, floor, fog, cast shadow, glow, white edge, shine, graphic frame, labels or support. Complete object with clean safe clear margins and balanced size. Original physical color and texture.\nOne detached curved fragment of a mottled beetle carapace, broad compact convex broken asymmetrical plate in chocolate brown with subdued irregular ochre patches, coarse damaged edge and two or three clearly painted chitin planes. Matte texture and firm shadow plane ON the plate. No beetle body, no legs, no ground or colour beyond the plate. One centered isolated sprite.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_broken_horn_bone",
+      "name": "断角骨片",
+      "target": "textures/items/inventory_density_20261029/mat_broken_horn_bone.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_broken_horn_bone.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        194,
+        225
+      ],
+      "margins": [
+        31,
+        15,
+        31,
+        16
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "e8fa836381bb057950e02304127dc1fba9890309e505599bbebcfaae64649a83",
+      "oldSha256": "884dfffccb962205179baab401568758ae664db3f1d89d1d13cb3c823e70672f",
+      "sha256": "d122558a6a94c225e24620d5110786a0550063e8fff4af0cd583ad72bc7755b2",
+      "prompt": "Generate one full isolated object on a SQUARE transparent canvas, a production inventory icon for a classic Chinese cultivation RPG. Use the first clean porcelain sprite solely as a reference for hand-painted Chinese ink and matte tinted gouache and watercolor, diffuse lighting, and subtly varied gray-brown contours. Match consistency across a set with clear large material planes and crisp physical silhouette down to 36px. Use natural proportions, ample resolution, good object scale across the square, and an even clear safety margin. True alpha immediately outside silhouette, with alpha zero in surrounding space. No glow, particle, mist, cast shadow, background, outline effect, border, printed label, vector gloss or photographic rendering.\nA single broken curved animal horn fragment, pale layered bone at the fractured base and a darker tapering horn tip. ",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_moon_dew_moss",
+      "name": "月露苔",
+      "target": "textures/items/inventory_density_20261029/mat_moon_dew_moss.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_moon_dew_moss.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        225,
+        163
+      ],
+      "margins": [
+        15,
+        46,
+        16,
+        47
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "3ecb8632e4189d20dc14b18d6b6a1ede376266f336ffd320fb3e92c6c245b64d",
+      "oldSha256": "957a18d8940ce73f2b4fcf3bae9dff86c68f50929e9bdd2b52677f5f94359355",
+      "sha256": "d407791d0aa6cc6beb0999c13e395a1e4ac628288f70080bdc5c58f36c159192",
+      "prompt": "Generate one full isolated object on a SQUARE transparent canvas, a production inventory icon for a classic Chinese cultivation RPG. Use the first clean porcelain sprite solely as a reference for hand-painted Chinese ink and matte tinted gouache and watercolor, diffuse lighting, and subtly varied gray-brown contours. Match consistency across a set with clear large material planes and crisp physical silhouette down to 36px. Use natural proportions, ample resolution, good object scale across the square, and an even clear safety margin. True alpha immediately outside silhouette, with alpha zero in surrounding space. No glow, particle, mist, cast shadow, background, outline effect, border, printed label, vector gloss or photographic rendering.\nA small gathered tuft of muted grey-green moss, compact fine branching shoots with a few naturally curled tips. ",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_moonmist_mushroom_juice",
+      "name": "月露菌汁",
+      "target": "textures/items/inventory_density_20261029/mat_moonmist_mushroom_juice.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_moonmist_mushroom_juice.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        111,
+        225
+      ],
+      "margins": [
+        72,
+        15,
+        73,
+        16
+      ],
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "sourceSha256": "412551a269b25d4b7822757bfb494eb87989a80bfb01f1292a0f2ad413020b7c",
+      "oldSha256": "8336d77368af8cdfd1187a9024a70981fff790d8e86a4621ef9632d10960997c",
+      "sha256": "dffbaf46db8f5ae4db00186c686730d07ced20857e64c1d17b3de4d9601c249b",
+      "prompt": "Generate one full isolated object on a SQUARE transparent canvas, a production inventory icon for a classic Chinese cultivation RPG. Use the first clean porcelain sprite solely as a reference for hand-painted Chinese ink and matte tinted gouache and watercolor, diffuse lighting, and subtly varied gray-brown contours. Match consistency across a set with clear large material planes and crisp physical silhouette down to 36px. Use natural proportions, ample resolution, good object scale across the square, and an even clear safety margin. True alpha immediately outside silhouette, with alpha zero in surrounding space. No glow, particle, mist, cast shadow, background, outline effect, border, printed label, vector gloss or photographic rendering.\n月露菌汁, a single ordinary small straight-walled pale translucent bottle containing clear PALE YELLOW mushroom juice, a plain modest brown cork stopper. The bottle is a regular simple practical container with a short neck and rounded rectangular belly; the clear faint yellow liquid is visible through broad muted color areas with one calm flat liquid level. No glassy white highlights. Not a mushroom-shaped bottle, no actual mushroom, rock, fungus gills, biological structures, wax, honey, amber chunks, geode or cutaway anatomy. One complete sealed vial upright, readable simple silhouette. Canvas portrait2:3, footprint2x3, packed256x384.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_redsun_flower_seed",
+      "name": "朱阳花籽",
+      "target": "textures/items/inventory_density_20261029/mat_redsun_flower_seed.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_redsun_flower_seed.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        225,
+        158
+      ],
+      "margins": [
+        15,
+        49,
+        16,
+        49
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "6c86f900d9fb2c3118ab683d758c94c9a03336d673c59ef1685b36aa4ec6aee6",
+      "oldSha256": "1a8c1cfc73036cb2e7f2eaaf74ad66dd6f4db2bd2a10ba5a8fa90f8de64d849a",
+      "sha256": "0fb2191540fdc7f95f203b398608d0a1a6540c79f84f09515ae8bae5063663d8",
+      "prompt": "Generate one full isolated object on a SQUARE transparent canvas, a production inventory icon for a classic Chinese cultivation RPG. Use the first clean porcelain sprite solely as a reference for hand-painted Chinese ink and matte tinted gouache and watercolor, diffuse lighting, and subtly varied gray-brown contours. Match consistency across a set with clear large material planes and crisp physical silhouette down to 36px. Use natural proportions, ample resolution, good object scale across the square, and an even clear safety margin. True alpha immediately outside silhouette, with alpha zero in surrounding space. No glow, particle, mist, cast shadow, background, outline effect, border, printed label, vector gloss or photographic rendering.\nA compact small cluster of plump vermilion-red plant seeds, their intact seed coats showing subtle natural longitudinal grain. ",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_pineheart_charcoal",
+      "name": "松心炭",
+      "target": "textures/items/inventory_density_20261029/mat_pineheart_charcoal.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_pineheart_charcoal.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        127,
+        225
+      ],
+      "margins": [
+        64,
+        15,
+        65,
+        16
+      ],
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "sourceSha256": "8e2131f1df259702c90274a5253cbb654f83c79b362e9dcb7d69268eff3dd912",
+      "oldSha256": "79b5e3a7e8a93f6112e7df0e29f03221f33cf4381af23dcdc6377b8a9e2b4e1e",
+      "sha256": "df9c2cc691e7c86450407edf64eb3aa013a46918ce3351ddc2d60c0ea1692f5b",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: A compact piece of blackened pine heartwood charcoal, retaining longitudinal wood grain and a fractured porous cut end. Compose upright within a 2:3 canvas. Final inventory footprint 2x3, packed dimensions 256x384. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_sinking_cloud_jade_shard",
+      "name": "沉云玉屑",
+      "target": "textures/items/inventory_density_20261029/mat_sinking_cloud_jade_shard.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_sinking_cloud_jade_shard.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        223,
+        181
+      ],
+      "margins": [
+        16,
+        37,
+        17,
+        38
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "a2f79600e0a1e02c19ab65a60b8c2bafaf860c300b39a04fd86f47b30d5faebc",
+      "oldSha256": "92736a30b5845ccd36c232439a7b35124829f220459ac9390058a25ae3440bd7",
+      "sha256": "b3fbf334e688d4ae027b973b1d115e98a8eab9d9180b5f1167559ffbd4ff1781",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: A small cohesive portion of fine grey-green jade chips, each with irregular fractured edges and faint cloud-like mineral marks. Compose upright within a 2:2 canvas. Final inventory footprint 2x2, packed dimensions 256x256. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_clay_vein_lump",
+      "name": "泥脉石团",
+      "target": "textures/items/inventory_density_20261029/mat_clay_vein_lump.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_clay_vein_lump.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        224,
+        218
+      ],
+      "margins": [
+        15,
+        19,
+        17,
+        19
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "e29764d0067b9da878eeccd7975f9b7f4f7fb3a62ba1163ed4465936950d480e",
+      "oldSha256": "21ab4bbe3ba5007c6f8e61cf61db5309f4b70c4ebb3fe97d34f4f47307e7dcbf",
+      "sha256": "337cfb8cbda64b131cf92637fd11ebbacca5eb4b86dfd356fcc3e19ad5294810",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: One compact rounded earthen stone lump, grey-brown clay-rich crust with embedded darker stone fragments and subtle natural mineral bands. Compose upright within a 3:3 canvas. Final inventory footprint 3x3, packed dimensions 384x384. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_clear_chime_jade_shard",
+      "name": "清音玉片",
+      "target": "textures/items/inventory_density_20261029/mat_clear_chime_jade_shard.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_clear_chime_jade_shard.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        85,
+        225
+      ],
+      "margins": [
+        85,
+        15,
+        86,
+        16
+      ],
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "sourceSha256": "ffce2cd4a49fd2040347b61949a82d98463ce64c0dd47d914d020e8ca7f2fe83",
+      "oldSha256": "b57b3979e5c824bc8739d38049fdc9c01f06b6818e146c229c01229b48a70e45",
+      "sha256": "145ef65eaa129f9713d75d562a07eb61df776d571d6e6a69e083ad85ddfa8c55",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: One thin pale watery-green jade fragment, elongated with irregular natural edges and a faint gently returning curved pattern within the stone. Compose upright within a 2:3 canvas. Final inventory footprint 2x3, packed dimensions 256x384. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_streampattern_algae_fiber",
+      "name": "溪纹藻丝",
+      "target": "textures/items/inventory_density_20261029/mat_streampattern_algae_fiber.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_streampattern_algae_fiber.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        61,
+        225
+      ],
+      "margins": [
+        97,
+        15,
+        98,
+        16
+      ],
+      "sourceSize": [
+        887,
+        1774
+      ],
+      "sourceSha256": "228a60d0d54ab26a88f4fdc99fe799b95154c952dc6de254cd0034c06ffaa27b",
+      "oldSha256": "75b3eee525de7ec9d5cf2cde5a28b5d9ca244e19ac43d3134a25ab5eadb72cdf",
+      "sha256": "cb3331c31556657df9f0ba437b5c1a09568f46ecbe5446337e54a19e6f7ead66",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: A neat elongated portion of green extracted algae fibers, slender supple strands gathered lengthwise, with very fine wavy water-like markings along their surfaces. Compose upright within a 2:4 canvas. Final inventory footprint 2x4, packed dimensions 256x512. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_spirit_spring_algae",
+      "name": "灵泉藻",
+      "target": "textures/items/inventory_density_20261029/mat_spirit_spring_algae.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_spirit_spring_algae.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        147,
+        225
+      ],
+      "margins": [
+        54,
+        15,
+        55,
+        16
+      ],
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "sourceSha256": "665203e9c356b4b3edd9f2a5064a61bfebd8ad85ae8ce853fa4c23de119a0ab5",
+      "oldSha256": "371f86313a1683991dea01b04179a20affae54399e728a666eac53d3f5bd300a",
+      "sha256": "75b6b3f5b4fe3851d320f63ffefb0435215c2350b01da67039ea6ff816153459",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: One compact gathered specimen of green spring algae, several soft ribbon-like fronds curving upward from a small common base. Compose upright within a 2:3 canvas. Final inventory footprint 2x3, packed dimensions 256x384. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_spirit_spring_dew",
+      "name": "灵泉露",
+      "target": "textures/items/inventory_density_20261029/mat_spirit_spring_dew.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_spirit_spring_dew.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        131,
+        225
+      ],
+      "margins": [
+        62,
+        15,
+        63,
+        16
+      ],
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "sourceSha256": "7261325346eee083032e8c3258b4796c575a1af797e654eac9c8a43534ef414c",
+      "oldSha256": "0acb8a830a9af37bfa3fa272b2d758b39eb2bf5e28d720654faccd8da39db73d",
+      "sha256": "bfc37c0ae1696dcbd2d1a093dd6a6eb82dc7a26a0f1e0866407fe2937ee78e1b",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: Clear faintly aqua spring liquid inside an ordinary small transparent glass vial with a simple stopper and a clean visible liquid surface. Keep the plain container separate in meaning from its liquid contents. Compose upright within a 2:3 canvas. Final inventory footprint 2x3, packed dimensions 256x384. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "spirit_stone_1x1",
+      "name": "灵石",
+      "target": "textures/items/inventory_density_20261029/spirit_stone_1x1.png",
+      "source": "textures/items/item_icon_sources_20261115/spirit_stone_1x1.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        225,
+        191
+      ],
+      "margins": [
+        15,
+        32,
+        16,
+        33
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "8427415284800855b26eb1b7f982cbc9cf3018bcf07222cc02b9146443ad14d4",
+      "oldSha256": "4cd806cc2e65cb57c04c0950969d653e392eb4227e74adcba0e17b4457cd973c",
+      "sha256": "eb1b5946172287fc668ec13db5f3fcb0418b8e927e561395e9416dc9b8ad7306",
+      "prompt": "Standalone inventory sprite for a hand-painted Chinese cultivation RPG. The attached porcelain bottle is a brushwork and volume reference. Use restrained Chinese ink and tinted opaque watercolor/gouache brush facets, soft diffuse upper-left light, quiet low-saturation local colors and subtle thin grey-brown defined edges. Strong simple material planes and a crisp distinct silhouette at 36–72 px. Keep physical form large and centered within safe margins, completely visible. Genuine alpha transparency right up to the contour on every side. No backdrop, ground, detached shadow, reflected colored glow, halo, sparkle, rim light, label, text, frame, flat vector, or CGI shine. Ignore the brown preview halo around the reference.\nCreate one complete rough pale blue-green spirit-stone nugget. Compact squat asymmetrical natural rock with a strong, almost chunky silhouette, several clearly differentiated broad planar broken faces. Matte cloudy celadon body with quiet pale sage and medium muted blue-green shadow planes, opaque mineral, no crystals sticking out, no pile, no shards around it, no glow. Square composition.",
+      "references": [
+        "docs/美术规范/行囊全物品图标与占地_20261029/风格参考_用户指定瓷瓶.png"
+      ]
+    },
+    {
+      "id": "mat_darkscale_thin_plate",
+      "name": "玄甲薄片",
+      "target": "textures/items/inventory_density_20261029/mat_darkscale_thin_plate.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_darkscale_thin_plate.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        115,
+        225
+      ],
+      "margins": [
+        70,
+        15,
+        71,
+        16
+      ],
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "sourceSha256": "3cfd71150907743883e24f8d4741ffbd0b1a9fb117c34af21028de260a75b430",
+      "oldSha256": "f5cb4d29b6076ea284fa4821e36c9be7353d0237281bc3c6932c59c56c20dcd4",
+      "sha256": "0ac1aebd46d357bad0c01c12ebb6384967e38f0682102308d2c6c9b809e4316f",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: A single thin dark-brown animal armor plate fragment, slightly curved, with close fine layered striations visible along the inner side. Compose upright within a 2:3 canvas. Final inventory footprint 2x3, packed dimensions 256x384. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "xuantie_3x3",
+      "name": "玄铁",
+      "target": "textures/items/inventory_density_20261029/xuantie_3x3.png",
+      "source": "textures/items/item_icon_sources_20261115/xuantie_3x3.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        225,
+        184
+      ],
+      "margins": [
+        15,
+        36,
+        16,
+        36
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "ade02d7ccd6bbc75d79a8a26d36a50c8448fbea4f29c56b5af8988ab0060eb4e",
+      "oldSha256": "2f99343257d4409efe2bf236e03eef4119adab0c28c692fd627827eece8612c7",
+      "sha256": "c76285c0f11ca6814584e31f005894b314e9247046e90cc72c5278b7288406e1",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: 玄铁, one chunky roughly rectangular dark iron ingot with an uneven broken top plane, charcoal-grey and muted blue-grey rocklike wrought iron, a few subdued rusty brown seams. Massive solid rough metal block, three-quarter view showing top and two sides; broad quiet painted dark grey planes and a few natural fissures. Not polished steel, no silvery-white cuts or bright edges, no glinting metal, no glowing seams. Canvas square, footprint3x3, packed384x384.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_miasma_clay_pearl",
+      "name": "瘴泥珠",
+      "target": "textures/items/inventory_density_20261029/mat_miasma_clay_pearl.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_miasma_clay_pearl.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        219,
+        225
+      ],
+      "margins": [
+        18,
+        15,
+        19,
+        16
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "4af67cb4148a894356d6b81811161fd16c1c94cbffefb6dc74bd805c6759ee03",
+      "oldSha256": "4b0302c60bdb6f986b3dbc42c9477b6dda1429453cb1159aa1d2cb814d607573",
+      "sha256": "c9a4dc44c8a2a2a2dea1f729306297243e76623932aa863a0d23c4546dec3d53",
+      "prompt": "Square 1024 px or larger. A single transparent PNG Chinese ink and muted gouache inventory sprite, premium painted game asset for a Chinese cultivation RPG. Match the clean painted technique of the porcelain reference. Fine dark-pigment physical edges, crisp clear silhouette and broad matte planes. Every pixel outside the item's actual physical shape is FULLY transparent. Empty space must have alpha zero, including all visible space around the item, any open hole or loop, and the four corners. No generated checkerboard, backdrop, floor, fog, cast shadow, glow, white edge, shine, graphic frame, labels or support. Complete object with clean safe clear margins and balanced size. Original physical color and texture.\nA single solid roughly spherical small mossy earthy clay bead, warm mauve-brown muddy exterior, a few pronounced natural uneven cracks with faint dull olive mineral highlights. A solid imperfect sphere with no opening or drilled hole, supported by shading only on its own form. Matte earthen material. One completed object centered.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_salt_gypsum",
+      "name": "盐纹石膏",
+      "target": "textures/items/inventory_density_20261029/mat_salt_gypsum.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_salt_gypsum.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        202,
+        225
+      ],
+      "margins": [
+        27,
+        15,
+        27,
+        16
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "ed56ab531c0cac19d75b7c9caed9fcbc7f39ef9336723d08c96a59a4219e0080",
+      "oldSha256": "baff57ff04f070a3ec9776ee89963259e38decf88390e36aff6cb457c8f217d2",
+      "sha256": "bb69748fbdc341f93f4dc19c5c2cd5e7bd8880753e85828c0e89c1b64d274724",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: One compact off-white gypsum mineral chunk, with stacked pale chalky layers and subtle grey-beige salt-bearing bands. Compose upright within a 3:3 canvas. Final inventory footprint 3x3, packed dimensions 384x384. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_stone_bee_wax",
+      "name": "石蜂蜡",
+      "target": "textures/items/inventory_density_20261029/mat_stone_bee_wax.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_stone_bee_wax.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        219,
+        224
+      ],
+      "margins": [
+        18,
+        16,
+        19,
+        16
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "c99a0ff72f75edea33f3e08779e462d076c8969d14b526798eea4b41e68f68b9",
+      "oldSha256": "c0d9828b66e4657876c829e22b5cb7804c651211c8ae4758b064928f1e3c93b9",
+      "sha256": "69af0d8f69ab5d3e8f718a17654173e3f844fd84da2ffad357a7cf9e4583dc49",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: A small irregular honey-yellow beeswax piece with a few broken natural honeycomb cells and softly rounded waxy edges. Compose upright within a 2:2 canvas. Final inventory footprint 2x2, packed dimensions 256x256. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_sandvein_stone_fragment",
+      "name": "砂脉石片",
+      "target": "textures/items/inventory_density_20261029/mat_sandvein_stone_fragment.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_sandvein_stone_fragment.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        126,
+        225
+      ],
+      "margins": [
+        65,
+        15,
+        65,
+        16
+      ],
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "sourceSha256": "34b567401268200aade83b963e7aad615c36c29dbde3c38be675814c4c78ff38",
+      "oldSha256": "6cbfda60fe22fc16bf37654af5c2c50c3e46f5408cf5932c7954ba290621c22e",
+      "sha256": "6f660f91032aec0e11b3108def701c4ec85d3387f86ce600166d1dee9e98b4ef",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: One thin compact sandstone flake, pale sandy-beige, with a single shallow light-brown mineral vein crossing the dense layered stone. Compose upright within a 2:3 canvas. Final inventory footprint 2x3, packed dimensions 256x384. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_gravel_mushroom",
+      "name": "砾地菌伞",
+      "target": "textures/items/inventory_density_20261029/mat_gravel_mushroom.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_gravel_mushroom.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        225,
+        201
+      ],
+      "margins": [
+        15,
+        27,
+        16,
+        28
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "f709d96d73bcf7432408d0d3316ea4986efd6c39a3fbba985ba4d9a83b5f49ce",
+      "oldSha256": "b4d7d0884cda25f677f323298cb799608ba8c6605db55a21714d7f16a776c0b7",
+      "sha256": "52a2937054169943e51f21a2bcc2d326a017e0f006aa84062b75119d4b134f83",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: One stout beige-grey mushroom, a broad low cap with subtle earthy speckling above a thick short stem, with natural gills partly visible beneath the rim. Compose upright within a 3:3 canvas. Final inventory footprint 3x3, packed dimensions 384x384. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_zisha_spirit_soil",
+      "name": "紫砂灵土",
+      "target": "textures/items/inventory_density_20261029/mat_zisha_spirit_soil.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_zisha_spirit_soil.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        225,
+        138
+      ],
+      "margins": [
+        15,
+        59,
+        16,
+        59
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "8e3aa7a27690221ef48f4f062fb752390fb10cd3cbb824b9a3ce4deb2ca2e8bc",
+      "oldSha256": "0298f15730d66cbcfbbe2249226d02a57c1860f1d7a125b69b751219c5f3d6c4",
+      "sha256": "aada5ce121f06c05f38dbc12debc94fcc11fea69fcf52dc6468d48a0b3cab6b0",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: A compact small mound of muted purple-brown granular earth, a few loose coarse clods resting together as one gathered material portion. Compose upright within a 2:2 canvas. Final inventory footprint 2x2, packed dimensions 256x256. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "bitter_moss_root_2x4",
+      "name": "苦苔根",
+      "target": "textures/items/inventory_density_20261029/bitter_moss_root_2x4.png",
+      "source": "textures/items/item_icon_sources_20261115/bitter_moss_root_2x4.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        121,
+        225
+      ],
+      "margins": [
+        67,
+        15,
+        68,
+        16
+      ],
+      "sourceSize": [
+        887,
+        1774
+      ],
+      "sourceSha256": "b1014956ad377f1a441fe2a0d66176f1976e3393e527e11cf446ca76828e7559",
+      "oldSha256": "2f211260affebf775d42b966ab24d1368107c246160ff60566d3f65c09dd7b4d",
+      "sha256": "2184be3b47a0aaf52b915a9e1c6eadd06651dcdd75cb93a464ba1431ed2b333d",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: One small harvested bitter-moss root specimen: a compact crown of a few grouped muted grey-green moss fronds above 3 to 5 main branching brown roots and a few subordinate root fibers. Upright, intact, compact silhouette. Compose upright within a 2:4 canvas. Final inventory footprint 2x4, packed dimensions 256x512. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props. ART DIRECTION: visibly hand-painted watercolor pigment blocks as in Image1 porcelain; simplify the moss crown into broad grouped leaf shapes and a few wide strokes. Restrained grey-green and umber. No photographic foliage, no sharp microleaf texture, no fine hair covering the root, no bright yellow-green leaves. The roots are modeled with a small number of broad quiet painted planes. Keep the whole physical root within the canvas.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_withered_vine_knot",
+      "name": "荒藤结节",
+      "target": "textures/items/inventory_density_20261029/mat_withered_vine_knot.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_withered_vine_knot.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        152,
+        225
+      ],
+      "margins": [
+        52,
+        15,
+        52,
+        16
+      ],
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "sourceSha256": "3d39a16584454fe7b234e4e867b403182392df310d99bc97170ab6ffb7f61161",
+      "oldSha256": "00acb7ec6b22b5f6808ce4e8934d80f69df50596503ac8f10c1dff61a465db4e",
+      "sha256": "1a78ff22b0a451dc85d0f3143267738a587ee548bfef687b3f359ff12537ab24",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: A compact naturally knotted piece of dry brown vine, thick woody curved fibers interlocked around a tight irregular central node. Compose upright within a 2:3 canvas. Final inventory footprint 2x3, packed dimensions 256x384. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_cracked_armor_stone",
+      "name": "裂甲石",
+      "target": "textures/items/inventory_density_20261029/mat_cracked_armor_stone.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_cracked_armor_stone.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        178,
+        225
+      ],
+      "margins": [
+        39,
+        15,
+        39,
+        16
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "c0a4550b098b55f3d3d6ada81ab7db9de8d9c5e929bf7fcb426a621ee955c18c",
+      "oldSha256": "43a127c5274e48c9755f2589fde2a6e3de23c392b79fc3ad8671688fef10c6b7",
+      "sha256": "2a6ea5bf74831a2994cfe7725eb01a2bbd5cfe899cf10dafd0aeb875e2610c1a",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: One dense angular grey stone fragment, broad rugged planes split by a few deep natural fractures and muted brown mineral edges. Compose upright within a 3:3 canvas. Final inventory footprint 3x3, packed dimensions 384x384. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_brown_copper_sand",
+      "name": "褐铜砂",
+      "target": "textures/items/inventory_density_20261029/mat_brown_copper_sand.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_brown_copper_sand.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        225,
+        120
+      ],
+      "margins": [
+        15,
+        68,
+        16,
+        68
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "178084e63b62bc555724ada8ff73c56d853c88f8fdd8b7e8fdfd12c9a0b5aac1",
+      "oldSha256": "1d3d7f03484d1f2dd90d8a367c81315687bdf407e277a912965ea825b1c2ffb9",
+      "sha256": "eab51f981c9eafb50f972fe5f4ed67ab18ca5edf2facd83396c886ec5f2fe552",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: A small cohesive mound of brown copper-bearing mineral sand, coarse reddish-brown grains with a few slightly larger natural granules. Compose upright within a 2:2 canvas. Final inventory footprint 2x2, packed dimensions 256x256. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_redwood_seed_core",
+      "name": "赤瓤木核",
+      "target": "textures/items/inventory_density_20261029/mat_redwood_seed_core.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_redwood_seed_core.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        223,
+        225
+      ],
+      "margins": [
+        17,
+        15,
+        16,
+        16
+      ],
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "sourceSha256": "62447b636509075fe4030dc8f22dc4afc79e2bef2a32e1e0abf5caf4f455cd2d",
+      "oldSha256": "fdaef5227171b947bf75f92c3d2fa0fc5135b3ca21b2179b4f935b4a3deabd9f",
+      "sha256": "bd0618f4911afa24f6078f390ad56fc73d0a7327ddbc5744095c6bdb2597b3fa",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: One compact red heartwood core section, showing deep brick-red concentric wood grain inside a thin rough brown woody outer edge. Compose upright within a 2:3 canvas. Final inventory footprint 2x3, packed dimensions 256x384. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_chiwen_suilishi",
+      "name": "赤纹燧石",
+      "target": "textures/items/inventory_density_20261029/mat_chiwen_suilishi.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_chiwen_suilishi.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        225,
+        192
+      ],
+      "margins": [
+        15,
+        32,
+        16,
+        32
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "76342de77e4a06d7f78edd1f628124687a60935ce5ab1adc81a87c0ec651f9f8",
+      "oldSha256": "a372340ec18f9c1497792c690a7bc96714fe6f819a93a92f37d106a3f913c9f7",
+      "sha256": "3d4877b709715e5f2e2081c34bc79402ec981196bdfbfa96677930837fe01921",
+      "prompt": "Square 1024 px or larger. A single transparent PNG Chinese ink and muted gouache inventory sprite, premium painted game asset for a Chinese cultivation RPG. Match the clean painted technique of the porcelain reference. Fine dark-pigment physical edges, crisp clear silhouette and broad matte planes. Every pixel outside the item's actual physical shape is FULLY transparent. Empty space must have alpha zero, including all visible space around the item, any open hole or loop, and the four corners. No generated checkerboard, backdrop, floor, fog, cast shadow, glow, white edge, shine, graphic frame, labels or support. Complete object with clean safe clear margins and balanced size. Original physical color and texture.\nA single chunky squat jagged piece of flint primarily charcoal black, visibly angular stone with two distinctly thick muted rusty red-orange mineral stripes crossing the front planes, and some dull grey irregular chipped edges. Strong diagonal rust bands help tell it apart from a generic fractured gray slate item. Colors still subdued. Broad natural material planes, entirely painted texture.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_red_scale_shed",
+      "name": "赤鳞蜕",
+      "target": "textures/items/inventory_density_20261029/mat_red_scale_shed.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_red_scale_shed.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        225,
+        140
+      ],
+      "margins": [
+        15,
+        57,
+        16,
+        59
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "d2fd8bf5e8a6f9fcc0c3d6273f2f778fa395a44c02b59488825897a176bea934",
+      "oldSha256": "6671dd2ed502b345712da947fc785b60d4f53bbecab80e26952977312faf7377",
+      "sha256": "e4baf35af646e77a20c2d53ff5631090dcb7c6aec1138c65cb96da374ad16583",
+      "prompt": "Generate one full isolated object on a SQUARE transparent canvas, a production inventory icon for a classic Chinese cultivation RPG. Use the first clean porcelain sprite solely as a reference for hand-painted Chinese ink and matte tinted gouache and watercolor, diffuse lighting, and subtly varied gray-brown contours. Match consistency across a set with clear large material planes and crisp physical silhouette down to 36px. Use natural proportions, ample resolution, good object scale across the square, and an even clear safety margin. True alpha immediately outside silhouette, with alpha zero in surrounding space. No glow, particle, mist, cast shadow, background, outline effect, border, printed label, vector gloss or photographic rendering.\nOne small flexible fragment of shed red-scaled skin, with overlapping russet-red scales following a gently curved thin sheet. ",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_tong_sui_ore",
+      "name": "铜髓矿",
+      "target": "textures/items/inventory_density_20261029/mat_tong_sui_ore.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_tong_sui_ore.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        225,
+        217
+      ],
+      "margins": [
+        15,
+        19,
+        16,
+        20
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "82b802000d811c2bfea9b06df0aca5d92b9631b7f411242261e193a039225698",
+      "oldSha256": "bbf1d833536c58405fd5810b9fc129db8a1cab444bc5206e680d50cc968fc12e",
+      "sha256": "ea9ac386fb46b4305387237b8eeb8d7526a2e08d48e8efc0b27fe18f54d0be93",
+      "prompt": "Generate one full isolated object on a SQUARE transparent canvas, a production inventory icon for a classic Chinese cultivation RPG. Use the first clean porcelain sprite solely as a reference for hand-painted Chinese ink and matte tinted gouache and watercolor, diffuse lighting, and subtly varied gray-brown contours. Match consistency across a set with clear large material planes and crisp physical silhouette down to 36px. Use natural proportions, ample resolution, good object scale across the square, and an even clear safety margin. True alpha immediately outside silhouette, with alpha zero in surrounding space. No glow, particle, mist, cast shadow, background, outline effect, border, printed label, vector gloss or photographic rendering.\nOne rough compact copper-bearing ore lump, rusty copper-orange mineral masses embedded in a darker brown rocky matrix with a few muted green mineral traces. ",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_mistheart_mushroom_core",
+      "name": "雾心菌核",
+      "target": "textures/items/inventory_density_20261029/mat_mistheart_mushroom_core.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_mistheart_mushroom_core.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        225,
+        205
+      ],
+      "margins": [
+        15,
+        25,
+        16,
+        26
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "c7dba3f87e0d70aacba944850cae9855eefdcb66ecf33dd5b7f0816e98c49d2e",
+      "oldSha256": "288a632a17e757d2d285d2f1395b0a88ab6a1c943bd1da6a7b6077db5f20bab8",
+      "sha256": "0dadd73bbe01d44d2b72d276ef1fcf9feb8cd521ca6f85a9999bb984cb7a25b1",
+      "prompt": "Generate one full isolated object on a SQUARE transparent canvas, a production inventory icon for a classic Chinese cultivation RPG. Use the first clean porcelain sprite solely as a reference for hand-painted Chinese ink and matte tinted gouache and watercolor, diffuse lighting, and subtly varied gray-brown contours. Match consistency across a set with clear large material planes and crisp physical silhouette down to 36px. Use natural proportions, ample resolution, good object scale across the square, and an even clear safety margin. True alpha immediately outside silhouette, with alpha zero in surrounding space. No glow, particle, mist, cast shadow, background, outline effect, border, printed label, vector gloss or photographic rendering.\nOne compact firm fungal sclerotium, rounded and irregular with a damp brown outer rind; a small natural broken face reveals tightly packed layered fungal tissue. The interior is dense and solid. ",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_mist_bell_flower",
+      "name": "雾铃花",
+      "target": "textures/items/inventory_density_20261029/mat_mist_bell_flower.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_mist_bell_flower.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        122,
+        225
+      ],
+      "margins": [
+        66,
+        15,
+        68,
+        16
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "96fd9c88f4c0c4e09e913e637843d442b2e537e8607ce392f94e8bd88f12eee2",
+      "oldSha256": "6db66747e82159552484c0986afb4897a6067eec99cb77aaa628c01e78ba02b0",
+      "sha256": "7c0d735d8b183ee9b81ebe13cee6800a0f23d7ebbf1d37bf403a15d71b0fa08b",
+      "prompt": "Generate one full isolated object on a SQUARE transparent canvas, a production inventory icon for a classic Chinese cultivation RPG. Use the first clean porcelain sprite solely as a reference for hand-painted Chinese ink and matte tinted gouache and watercolor, diffuse lighting, and subtly varied gray-brown contours. Match consistency across a set with clear large material planes and crisp physical silhouette down to 36px. Use natural proportions, ample resolution, good object scale across the square, and an even clear safety margin. True alpha immediately outside silhouette, with alpha zero in surrounding space. No glow, particle, mist, cast shadow, background, outline effect, border, printed label, vector gloss or photographic rendering.\nOne slender harvested flower stalk, a few small drooping ivory bell-shaped blossoms above modest muted green leaves, composed upright. ",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_frostleaf_twig",
+      "name": "霜叶枝",
+      "target": "textures/items/inventory_density_20261029/mat_frostleaf_twig.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_frostleaf_twig.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        140,
+        225
+      ],
+      "margins": [
+        58,
+        15,
+        58,
+        16
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "1373e52c4e32198c4d96cd23018726165a6c0688276b6e231b0607d51d184f9d",
+      "oldSha256": "b8acd62a738f05a84f4276d6c121d8d1e22d30e0be10874c299b02e911bb6e72",
+      "sha256": "6b68bce47d722bb4501264221a086db874defa55f7e2de497d6d9806cc8ddab4",
+      "prompt": "Generate one full isolated object on a SQUARE transparent canvas, a production inventory icon for a classic Chinese cultivation RPG. Use the first clean porcelain sprite solely as a reference for hand-painted Chinese ink and matte tinted gouache and watercolor, diffuse lighting, and subtly varied gray-brown contours. Match consistency across a set with clear large material planes and crisp physical silhouette down to 36px. Use natural proportions, ample resolution, good object scale across the square, and an even clear safety margin. True alpha immediately outside silhouette, with alpha zero in surrounding space. No glow, particle, mist, cast shadow, background, outline effect, border, printed label, vector gloss or photographic rendering.\nOne slender woody twig with several grey-green frost-edged leaves, the branch and leaf stems clearly visible, composed vertically with compact side leaves. ",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_qinglan_vine_core",
+      "name": "青岚藤心",
+      "target": "textures/items/inventory_density_20261029/mat_qinglan_vine_core.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_qinglan_vine_core.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        62,
+        225
+      ],
+      "margins": [
+        97,
+        15,
+        97,
+        16
+      ],
+      "sourceSize": [
+        793,
+        1983
+      ],
+      "sourceSha256": "fbd3d788ad2cfbf0841e01541852c092701fbd2264a08cdc463219c636431496",
+      "oldSha256": "0b98516a2d724747d5893b6c079a9733b55603e1029583056617caae62de0c21",
+      "sha256": "830c1462969d52892df74649bcd8d1332f1c7fb185a10f87603ea43135400d08",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: One elongated woody vine-core segment, a naturally curved brown vine exterior around pale green fibrous inner heartwood, a small cut end exposing its compact layered core. Compose upright within a 2:5 canvas. Final inventory footprint 2x5, packed dimensions 256x640. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_qingmu_core",
+      "name": "青木芯",
+      "target": "textures/items/inventory_density_20261029/mat_qingmu_core.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_qingmu_core.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        68,
+        225
+      ],
+      "margins": [
+        94,
+        15,
+        94,
+        16
+      ],
+      "sourceSize": [
+        793,
+        1983
+      ],
+      "sourceSha256": "6a4ba394de454d57ad27d55c30fd084caf7ade03285dd3c7235cb09f8354ec9c",
+      "oldSha256": "551305d8c045e80a8f1ba3ae5531930a9538e05d4c53ce7e3d96d253ebb5a4d4",
+      "sha256": "05a0277be298330d29cc350b971210bb1b0246c5e3c5645b79ef227325828d23",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: One elongated greenish heartwood segment, rough brown bark remnants framing pale blue-green dense wood grain, with a cut end showing natural growth rings. Compose upright within a 2:5 canvas. Final inventory footprint 2x5, packed dimensions 256x640. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_bluegreen_feather",
+      "name": "青羽翎",
+      "target": "textures/items/inventory_density_20261029/mat_bluegreen_feather.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_bluegreen_feather.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        67,
+        225
+      ],
+      "margins": [
+        94,
+        15,
+        95,
+        16
+      ],
+      "sourceSize": [
+        887,
+        1774
+      ],
+      "sourceSha256": "98165a3b731dca5bcf647f9e72dfc0727071cfcab044be533b489b09e758d7ea",
+      "oldSha256": "6c4f31f06ce85ff369293335e9143110a71a6188090f572f9cd4c7377667a2fd",
+      "sha256": "8f8813360a5570575f183c9ef1b8884853d1c3213811a33de1bbd763502c5719",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: One elongated blue-grey bird feather, soft coherent barbs arranged around a long straight shaft, with slightly cooler blue-grey tips, composed upright. Compose upright within a 2:4 canvas. Final inventory footprint 2x4, packed dimensions 256x512. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_qingmarrow_sprout",
+      "name": "青髓芽",
+      "target": "textures/items/inventory_density_20261029/mat_qingmarrow_sprout.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_qingmarrow_sprout.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        162,
+        225
+      ],
+      "margins": [
+        47,
+        15,
+        47,
+        16
+      ],
+      "sourceSize": [
+        1024,
+        1536
+      ],
+      "sourceSha256": "287b43fe56d48a05e7d4c2c7e6bbe46a71ab0889e69719c63d98d8a0ee414888",
+      "oldSha256": "872e9709dd4ecc9d54687dcf2b3440fe8093ba380389b09a6f03f4db7e15c4e3",
+      "sha256": "eb02be8b629d2a151ea362f0df0e78921d93728eaa53c2022c98daf7a021af16",
+      "prompt": "Create one new complete transparent inventory icon for a classical Chinese cultivation RPG. The attached clean porcelain sprite is a technique reference. Match its soft traditional Chinese ink-and-watercolor/gouache brush facets on the actual object, lightly textured matte local-color planes, subtle fine grey-brown ink contours and broad soft lighting. Make the physical silhouette crisp with readable surface shapes even at 36–72 px. Use true alpha immediately outside the physical contour (every empty pixel alpha zero), with clean antialiasing only directly at the edge. Center the entire item with modest clear margins. Avoid background treatment, scenic details, outline glow, luminous edge or mist, rim light, detached shadow, white bright bands, small sparkly dots, gloss, vector rendering, text or frame. Your subject follows.\nOne freshly harvested blue-green medicinal seedling with a short tender stem, three clearly separated folded lance-shaped young muted celadon-to-sage leaves with faint veins, small intact roots in warm natural cream below. Connected specimen, substantial leaves and distinct sprouting tip. In the empty area between the leaves and every other transparent area there is absolutely zero color or dust. Portrait 2:3.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_windaperture_crystal_shard",
+      "name": "风窍晶屑",
+      "target": "textures/items/inventory_density_20261029/mat_windaperture_crystal_shard.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_windaperture_crystal_shard.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        224,
+        218
+      ],
+      "margins": [
+        16,
+        18,
+        16,
+        20
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "9bc0e3ba7cb5684f30579affef034bf75b998baac2f30217445f7d01ef338d00",
+      "oldSha256": "1228316442cb1d6df004e9791713b99d1123c123931939381ab83bc391f02d3a",
+      "sha256": "e92ac473044ff79e2377995247985b9c341a7d625458f0d1831f29bd5144f4c6",
+      "prompt": "Create one complete transparent inventory icon for a classical Chinese cultivation RPG. The attached transparent porcelain sprite is a technique reference. Match its traditional Chinese ink and watercolor/gouache brush facets, lightly textured matte local-color planes, subtle thin grey-brown ink contours, and broad soft lighting. Make the physical silhouette crisp with readable surface shapes at 36–72 pixels. True alpha immediately outside the physical contour with clean antialiasing directly at the edge. Center the entire item with clear margins. No background, patterns outside the object, drop shadow, light/mist/glow, halo, rim light, white bright bands, sparkly dots, plastic gloss, vector style, text or frame.\nSubject: A small cohesive portion of thin weathered pale mineral crystal flakes, lightweight tapered edges and several slender elongated natural pores visible within the flakes. Compose upright within a 2:2 canvas. Final inventory footprint 2x2, packed dimensions 256x256. Keep the material compact, complete and recognizable with broad calm local-color planes, no scenery or extra props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_fengwen_quartz",
+      "name": "风纹石英",
+      "target": "textures/items/inventory_density_20261029/mat_fengwen_quartz.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_fengwen_quartz.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        201,
+        225
+      ],
+      "margins": [
+        27,
+        15,
+        28,
+        16
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "dfe11145338c958203eaa54d4e85cfc88eaf9d7bac0b071b50d970b2107d9e90",
+      "oldSha256": "1dfcafc8b5915816d28f8cad5fc92e90df4ccb8f49a22d37f8f96beac0b2d865",
+      "sha256": "07dacc33bcf325799686888cf2d49a5da99378fac033adf7258433e6ce878962",
+      "prompt": "Generate one full isolated object on a SQUARE transparent canvas, a production inventory icon for a classic Chinese cultivation RPG. Use the first clean porcelain sprite solely as a reference for hand-painted Chinese ink and matte tinted gouache and watercolor, diffuse lighting, and subtly varied gray-brown contours. Match consistency across a set with clear large material planes and crisp physical silhouette down to 36px. Use natural proportions, ample resolution, good object scale across the square, and an even clear safety margin. True alpha immediately outside silhouette, with alpha zero in surrounding space. No glow, particle, mist, cast shadow, background, outline effect, border, printed label, vector gloss or photographic rendering.\nOne compact cluster of pale grey-aqua natural quartz, a few short broad crystalline points with subtle flowing mineral bands across their dense faces. ",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "mat_windvein_vine_fiber",
+      "name": "风络藤丝",
+      "target": "textures/items/inventory_density_20261029/mat_windvein_vine_fiber.png",
+      "source": "textures/items/item_icon_sources_20261115/mat_windvein_vine_fiber.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        225,
+        215
+      ],
+      "margins": [
+        15,
+        20,
+        16,
+        21
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "289796bfd1d83f7f877d07d7049c9a1dd1149e727371f0b3ade93ca4daba4634",
+      "oldSha256": "b598ca1af477bba9f01e71e7de8ee44f2e7d505541a7fd66efd4c9fc179532d2",
+      "sha256": "7f92774f9acd13da2692f1ff2014804aa97de2cfbd1fb4faa0996b8298f9038b",
+      "prompt": "Generate one full isolated object on a SQUARE transparent canvas, a production inventory icon for a classic Chinese cultivation RPG. Use the first clean porcelain sprite solely as a reference for hand-painted Chinese ink and matte tinted gouache and watercolor, diffuse lighting, and subtly varied gray-brown contours. Match consistency across a set with clear large material planes and crisp physical silhouette down to 36px. Use natural proportions, ample resolution, good object scale across the square, and an even clear safety margin. True alpha immediately outside silhouette, with alpha zero in surrounding space. No glow, particle, mist, cast shadow, background, outline effect, border, printed label, vector gloss or photographic rendering.\nA neat elongated portion of pale blue-green vine fibers, flexible fine strands folded lengthwise with clearly readable natural longitudinal veins. ",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "pill_2x2",
+      "name": "统一丹丸",
+      "target": "textures/items/inventory_density_20261029/pill_2x2.png",
+      "source": "textures/items/item_icon_sources_20261115/pill_2x2.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        220,
+        224
+      ],
+      "margins": [
+        18,
+        15,
+        18,
+        17
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "908d010a48a93e91c378cc9c7c91230f38c61ff9b33cf4c6addfa714f73abac2",
+      "oldSha256": "380699caf870adf5d0c7148a20f43a4e4a97dd2808d58f80f23e0ba4d08d2b6b",
+      "sha256": "e7c1ec1d705da78c97d280e8fe0c37cdae58ba69e2bf9e394995f1f8c6d52872",
+      "prompt": "Create one new complete transparent inventory icon for a classical Chinese cultivation RPG. The attached clean porcelain sprite is a technique reference. Match its soft traditional Chinese ink-and-watercolor/gouache brush facets on the actual object, lightly textured matte local-color planes, subtle fine grey-brown ink contours and broad soft lighting. Make the physical silhouette crisp with readable surface shapes even at 36–72 px. Use true alpha immediately outside the physical contour (every empty pixel alpha zero), with clean antialiasing only directly at the edge. Center the entire item with modest clear margins. Avoid background treatment, scenic details, outline glow, luminous edge or mist, rim light, detached shadow, white bright bands, small sparkly dots, gloss, vector rendering, text or frame. Your subject follows.\nOne complete bare round terracotta-brown medicinal pill. A warm unglazed compact smooth spherical herbal pellet, rusty muted clay top left and quiet red-brown side shadow. Soft but distinct matte hand-painted brush planes and fine grain, clean single-round silhouette. Slightly irregular surface only, no swirl, mark, scoring, metallic accents, flare, pedestal, bottle, glaze or extra objects. One spherical pill in a square canvas, suggested bright area on the body and nowhere else.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "paper",
+      "name": "符纸",
+      "target": "textures/ui/talisman_crafting_painted_20261109/paper.png",
+      "source": "textures/items/item_icon_sources_20261115/paper.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        100,
+        225
+      ],
+      "margins": [
+        78,
+        15,
+        78,
+        16
+      ],
+      "sourceSize": [
+        887,
+        1774
+      ],
+      "sourceSha256": "8bc945ea6e72301706d205f1c65d3275f7f82169f2380fdc445e594aa301151e",
+      "oldSha256": "9da16011cc9e976f5137efb13deabfd6b50ba991069edd694c1dbb7db7604388",
+      "sha256": "84051af2531d30df3cbc0c48913a3d2389dc54551915696d5fe72241175d19fa",
+      "prompt": "Paint one high-resolution standalone inventory item for a classical Chinese cultivation RPG. Reference 1 is an approved technique sample: use traditional Chinese ink with soft matte tinted watercolor/gouache brush facets, restrained pigments, clear big value shapes, a fine irregular grey-brown contour and crisp physical silhouette recognizable at 32–72 px. Reference 2 is the existing item icon for exact visual identity, characteristic colors and form only. Redraw with the clean restrained rendering of the first reference. True alpha zero immediately outside the physical edges with neat antialiasing. Full object centered and contained, slight breathing space. No ground, glow, shadow outside the contour, frame, label, UI or graphic effects.\nOne blank sheet of warm yellow ivory handmade xuan paper, clean vertical rectangular silhouette from near directly above, a small slight soft bend and fibers visible. Thin flattish sheet with a warm twice-painted edge and matte warm paper planes. Blank face, no marks, no brushes or props.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png",
+        "textures/ui/talisman_crafting_painted_20261109/paper.png"
+      ]
+    },
+    {
+      "id": "ink",
+      "name": "符墨",
+      "target": "textures/ui/talisman_crafting_painted_20261109/ink.png",
+      "source": "textures/items/item_icon_sources_20261115/ink.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        205,
+        225
+      ],
+      "margins": [
+        25,
+        15,
+        26,
+        16
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "0251695593876aa27088094c1d521942fdf3e35e803896296be7da8120b39b81",
+      "oldSha256": "c3bcd9fab067aa5b37816b07daad497fb2098fb7abb51d5cc36a99cbdbf798b4",
+      "sha256": "8579156bfcba2966d03ed781e6175e20fc6ac75455d90514a6ff36d45ff9ea17",
+      "prompt": "Square 1024 px or larger. A single transparent PNG Chinese ink and muted gouache inventory sprite, premium painted game asset for a Chinese cultivation RPG. Match the clean painted technique of the porcelain reference. Fine dark-pigment physical edges, crisp clear silhouette and broad matte planes. Every pixel outside the item's actual physical shape is FULLY transparent. Empty space must have alpha zero, including all visible space around the item, any open hole or loop, and the four corners. No generated checkerboard, backdrop, floor, fog, cast shadow, glow, white edge, shine, graphic frame, labels or support. Complete object with clean safe clear margins and balanced size. Original physical color and texture.\nA squat full handcrafted Chinese ink jar of charcoal-gray terracotta. Broad round compressed belly, short neck and a small matte brown wooden stopper tied in place with an understated faded red cord, unmistakably different from a tall pale medicine bottle. Ceramic shaded in large diffuse slate and warm dark grey planes with visible brushwork. One isolated object.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png"
+      ]
+    },
+    {
+      "id": "hushen",
+      "name": "护身符",
+      "target": "textures/ui/talisman_crafting_painted_20261109/hushen.png",
+      "source": "textures/items/item_icon_sources_20261115/hushen.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        93,
+        225
+      ],
+      "margins": [
+        81,
+        15,
+        82,
+        16
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "008bd11de7ca983aed1c0f5fd482a2f0ad498378ddf99fa2eb43c66302e19dc5",
+      "oldSha256": "5a4e99478c9c7c78f7b0b2710d1cafa377ce492137fb40dab7b0b05b959cec80",
+      "sha256": "14563755f8a5d1d48659f88579c340e83e467b9fdc4a7e95882b2cf717f7698b",
+      "prompt": "Generate one full isolated object on a SQUARE transparent canvas, a production inventory icon for a classic Chinese cultivation RPG. Use the first clean porcelain sprite solely as a reference for hand-painted Chinese ink and matte tinted gouache and watercolor, diffuse lighting, and subtly varied gray-brown contours. Match consistency across a set with clear large material planes and crisp physical silhouette down to 36px. Use natural proportions, ample resolution, good object scale across the square, and an even clear safety margin. True alpha immediately outside silhouette, with alpha zero in surrounding space. No glow, particle, mist, cast shadow, background, outline effect, border, printed label, vector gloss or photographic rendering.\nOne intact soft yellow-buff paper talisman with a ROUND muted cinnabar ward motif, with three short enclosing hooks and subtle downward curved strokes. Preserve shape of the distinct painted round motif from the original reference. Original symbolic strokes, no actual written label.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png",
+        "textures/ui/talisman_crafting_painted_20261109/hushen.png"
+      ]
+    },
+    {
+      "id": "yanshi",
+      "name": "炎矢符",
+      "target": "textures/ui/talisman_crafting_painted_20261109/yanshi.png",
+      "source": "textures/items/item_icon_sources_20261115/yanshi.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        83,
+        225
+      ],
+      "margins": [
+        86,
+        15,
+        87,
+        16
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "cd7c15463987bbb75b145b3cee59ae4b63e543a026a6e6ec3888bc92879a8c07",
+      "oldSha256": "3de7eb8092e7cc4931d11ec49001aef8f7be048b09c00d51e0f6e13fee51d4cf",
+      "sha256": "5c01ac0070023d7d4313772838ac97e412b85c1cdf091fbb5118cc4960c7e5a8",
+      "prompt": "Generate one full isolated object on a SQUARE transparent canvas, a production inventory icon for a classic Chinese cultivation RPG. Use the first clean porcelain sprite solely as a reference for hand-painted Chinese ink and matte tinted gouache and watercolor, diffuse lighting, and subtly varied gray-brown contours. Match consistency across a set with clear large material planes and crisp physical silhouette down to 36px. Use natural proportions, ample resolution, good object scale across the square, and an even clear safety margin. True alpha immediately outside silhouette, with alpha zero in surrounding space. No glow, particle, mist, cast shadow, background, outline effect, border, printed label, vector gloss or photographic rendering.\nOne intact soft ochre-buff paper talisman with a pointed upward-arrowhead muted cinnabar ritual stroke and a short angular tail. Preserve the original pointed motif, visibly distinct from a round ward, no glow or fire.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png",
+        "textures/ui/talisman_crafting_painted_20261109/yanshi.png"
+      ]
+    },
+    {
+      "id": "brush_qingzhu",
+      "name": "青竹符笔",
+      "target": "textures/ui/talisman_crafting_painted_20261109/brush_qingzhu.png",
+      "source": "textures/items/item_icon_sources_20261115/brush_qingzhu.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        140,
+        224
+      ],
+      "margins": [
+        58,
+        15,
+        58,
+        17
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "f530296a24ef6501d7214e01b9998ee49dd9418034e2f3b45014c87f3aa4378d",
+      "oldSha256": "bf7b95b4ed64c9281745a6ea8d81a99c9d113433f4bd23a6c3f16388ad00c55c",
+      "sha256": "46c0de99a850d8d7dd11dd635fe2c1c87087998fd3be83f0eb1ae2a99d723852",
+      "prompt": "Square 1024 px or larger. A single transparent PNG Chinese ink and muted gouache inventory sprite, premium painted game asset for a Chinese cultivation RPG. Match the clean painted technique of the porcelain reference. Fine dark-pigment physical edges, crisp clear silhouette and broad matte planes. Every pixel outside the item's actual physical shape is FULLY transparent. Empty space must have alpha zero, including all visible space around the item, any open hole or loop, and the four corners. No generated checkerboard, backdrop, floor, fog, cast shadow, glow, white edge, shine, graphic frame, labels or support. Complete object with clean safe clear margins and balanced size. Original physical color and texture.\nClearly visible complete traditional calligraphy brush laid diagonal with its narrow cream brown pointed tuft at lower left and small loop at upper right, similar framing to the reference dark precision brush. Pale jade-sage green bamboo shaft with two visible node bands, warm brown ferrule. The opaque handle and tuft are painted in broad simple matte tones.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png",
+        "textures/items/item_icon_sources_20261115/brush_jinghao.png"
+      ]
+    },
+    {
+      "id": "brush_jinghao",
+      "name": "静毫符笔",
+      "target": "textures/ui/talisman_crafting_painted_20261109/brush_jinghao.png",
+      "source": "textures/items/item_icon_sources_20261115/brush_jinghao.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        137,
+        225
+      ],
+      "margins": [
+        59,
+        15,
+        60,
+        16
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "78dc816ae3970f0e0773e28f4a732e60a54a9e84db0a9dea48228a9ebd9b1c21",
+      "oldSha256": "ddebd651207d62508ff7e11bc09a395f1917b436147ca257ff4ee927d9950620",
+      "sha256": "1d15e93acb8f5e267ea3e7a649eb902e810eaaa3c6ce43549df53934a327384d",
+      "prompt": "Generate one full isolated object on a SQUARE transparent canvas, a production inventory icon for a classic Chinese cultivation RPG. Use the first clean porcelain sprite solely as a reference for hand-painted Chinese ink and matte tinted gouache and watercolor, diffuse lighting, and subtly varied gray-brown contours. Match consistency across a set with clear large material planes and crisp physical silhouette down to 36px. Use natural proportions, ample resolution, good object scale across the square, and an even clear safety margin. True alpha immediately outside silhouette, with alpha zero in surrounding space. No glow, particle, mist, cast shadow, background, outline effect, border, printed label, vector gloss or photographic rendering.\nOne entire Chinese precision calligraphy brush, diagonal toward upper right with dark charcoal brown matte wood handle, plain narrow slate cloth binding, slim compact reddish-brown wolf hair ending in a pointed dark tip, small pale cap and plain loop. Thin but clear at small size.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png",
+        "textures/ui/talisman_crafting_painted_20261109/brush_jinghao.png"
+      ]
+    },
+    {
+      "id": "brush_cangfeng",
+      "name": "藏锋符笔",
+      "target": "textures/ui/talisman_crafting_painted_20261109/brush_cangfeng.png",
+      "source": "textures/items/item_icon_sources_20261115/brush_cangfeng.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        146,
+        225
+      ],
+      "margins": [
+        55,
+        15,
+        55,
+        16
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "dcfe46d16f08eebd8448e55d8af675f64eba5b4b19ab919f71acfcad11685145",
+      "oldSha256": "6e6e5e819087c93937315065c4ec702579c4dc9ef797c1519d9db15c32bc1f4d",
+      "sha256": "0272b562056dc62327c089ca37101c714e3cb6b0818c3cc9714cea97cce6d8ca",
+      "prompt": "Square 1024 px or larger. A single transparent PNG Chinese ink and muted gouache inventory sprite, premium painted game asset for a Chinese cultivation RPG. Match the clean painted technique of the porcelain reference. Fine dark-pigment physical edges, crisp clear silhouette and broad matte planes. Every pixel outside the item's actual physical shape is FULLY transparent. Empty space must have alpha zero, including all visible space around the item, any open hole or loop, and the four corners. No generated checkerboard, backdrop, floor, fog, cast shadow, glow, white edge, shine, graphic frame, labels or support. Complete object with clean safe clear margins and balanced size. Original physical color and texture.\nClearly visible complete traditional calligraphy brush laid diagonal with its point at lower left and small hanging loop at upper right, similar loose framing to the reference brush. Warm honey-brown bamboo handle, plain brown ferrule, DISTINCT fuller large cream buff goat-hair tuft shaded warm grey, narrowing to a small dark inked tip. Good readable outline at small size.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png",
+        "textures/items/item_icon_sources_20261115/brush_jinghao.png"
+      ]
+    },
+    {
+      "id": "storage_bag_2x2",
+      "name": "储物袋",
+      "target": "textures/items/storage_bag_20261108/storage_bag_2x2.png",
+      "source": "textures/items/item_icon_sources_20261115/storage_bag_2x2.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        184,
+        225
+      ],
+      "margins": [
+        36,
+        15,
+        36,
+        16
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "2aa7cdbb59d6b3772828530e1b68c6380196fe9493dfb643c0ec4c11d965f2f6",
+      "oldSha256": "0114c7b366d4aa592aea0834bfc94c6d0249136e5eea1dd88c94245d08dc2d0d",
+      "sha256": "65ba47fc1e16bd81031d78801044a34c38da1dd4dd979ad1566bfc77b79dd140",
+      "prompt": "Paint one high-resolution standalone inventory item for a classical Chinese cultivation RPG. Reference 1 is an approved technique sample: use traditional Chinese ink with soft matte tinted watercolor/gouache brush facets, restrained pigments, clear big value shapes, a fine irregular grey-brown contour and crisp physical silhouette recognizable at 32–72 px. Reference 2 is the existing item icon for exact visual identity, characteristic colors and form only. Redraw with the clean restrained rendering of the first reference. True alpha zero immediately outside the physical edges with neat antialiasing. Full object centered and contained, slight breathing space. No ground, glow, shadow outside the contour, frame, label, UI or graphic effects.\nOne small antique drawstring storage pouch of matte warm beige-brown woven cloth. Full gathered flared mouth, thin knotted brown cord with two short ends, rounded tightly folded bag body, very simple seams. Clear subdued interleaved light and dark textile folds and physical silhouette in a square. No emblem, trim, tassels other than the basic closing cord, props or sheen.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png",
+        "textures/items/storage_bag_20261108/storage_bag_2x2.png"
+      ]
+    },
+    {
+      "id": "spirit_boat_icon_20261106",
+      "name": "灵舟",
+      "target": "textures/items/inventory_density_20261029/spirit_boat_icon_20261106.png",
+      "source": "textures/items/item_icon_sources_20261115/spirit_boat_icon_20261106.png",
+      "size": [
+        256,
+        256
+      ],
+      "subjectSize": [
+        197,
+        225
+      ],
+      "margins": [
+        29,
+        15,
+        30,
+        16
+      ],
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceSha256": "d833931df6a5f92a62105518eb3ef5d5e6e076858bfc799b31bb91ee43564a3c",
+      "oldSha256": "5c2c65537a2c416b86babf42088267abc62a247e6909a3b24f2919e71f8723a7",
+      "sha256": "78ff66f079ab1e7ce356f60fb5f43d0c526e2d49348ef6ade0eeb6cc640254e6",
+      "prompt": "Generate one full isolated object on a SQUARE transparent canvas, a production inventory icon for a classic Chinese cultivation RPG. Use the first clean porcelain sprite solely as a reference for hand-painted Chinese ink and matte tinted gouache and watercolor, diffuse lighting, and subtly varied gray-brown contours. Match consistency across a set with clear large material planes and crisp physical silhouette down to 36px. Use natural proportions, ample resolution, good object scale across the square, and an even clear safety margin. True alpha immediately outside silhouette, with alpha zero in surrounding space. No glow, particle, mist, cast shadow, background, outline effect, border, printed label, vector gloss or photographic rendering.\nOne open long palm-sized skiff artifact viewed from nearly directly above, diagonal in square to show its whole length. Redraw the old wooden skiff with warm brown curved raised ends, visible deck and low rails, faded celadon inlays. Preserve its slender 1:3 object proportions. Clear matte wood plank shapes and celadon accents, no sail, canopy, water, passengers or magic effects.",
+      "references": [
+        "textures/items/item_icon_sources_20261115/pill_container_empty_porcelain.png",
+        "textures/items/inventory_density_20261029/spirit_boat_icon_20261106.png"
+      ]
+    }
+  ]
+}

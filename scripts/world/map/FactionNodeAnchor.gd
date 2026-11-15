@@ -15,7 +15,7 @@ func _ready() -> void:
 	mouse_exited.connect(_on_mouse_exited)
 
 func _input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
-	if event is not InputEventMouseButton:
+	if not event is InputEventMouseButton:
 		return
 	var mouse := event as InputEventMouseButton
 	if mouse.button_index != MOUSE_BUTTON_LEFT or not mouse.pressed:

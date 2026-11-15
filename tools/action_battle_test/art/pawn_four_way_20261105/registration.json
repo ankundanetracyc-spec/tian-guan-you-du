@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "scope": "Whole-sprite source-pixel registration of three separate four-way front/rear styles on one shared bald head. No local raster warping.",
+  "front": {
+    "0": {
+      "front": {"anchor":[183,238],"scale":0.25},
+      "right": {"anchor":[203,238],"scale":0.25},
+      "back": {"anchor":[160,238],"scale":0.25},
+      "left": {"anchor":[113,238],"scale":0.25}
+    },
+    "1": {
+      "front": {"anchor":[182,216],"scale":0.25},
+      "right": {"anchor":[175,216],"scale":0.25},
+      "back": {"anchor":[158,216],"scale":0.25},
+      "left": {"anchor":[142,216],"scale":0.25}
+    },
+    "2": {
+      "front": {"anchor":[183,225],"scale":0.25},
+      "right": {"anchor":[178,225],"scale":0.25},
+      "back": {"anchor":[156,225],"scale":0.25},
+      "left": {"anchor":[137,225],"scale":0.25}
+    }
+  },
+  "back": {
+    "0": {
+      "front": {"anchor":[164,215]},
+      "right": {"anchor":[153,215]},
+      "back": {"anchor":[158,215]},
+      "left": {"anchor":[165,215]}
+    },
+    "1": {
+      "front": {"anchor":[160,225]},
+      "right": {"anchor":[159,225]},
+      "back": {"anchor":[158,225]},
+      "left": {"anchor":[157,225]}
+    },
+    "2": {
+      "front": {"anchor":[158,185]},
+      "right": {"anchor":[150,185]},
+      "back": {"anchor":[158,185]},
+      "left": {"anchor":[165,185]}
+    }
+  }
+}

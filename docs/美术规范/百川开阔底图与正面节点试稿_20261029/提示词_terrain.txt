@@ -1,0 +1,16 @@
+Use case: style-transfer. Create a new revision of the background in IMAGE2, using IMAGE1 ONLY for the SIMPLIFIED CARTOGRAPHIC MOUNTAIN DEPTH, and IMAGE2 ONLY for muted paper / ink / pigment material.
+ONE SQUARE WHOLE-WORLD MAP BACKGROUND for a future continuous3x3 atlas. A truly broad geographic map viewed at an OVERVIEW scale, not a close scenic vista. The important change is AVAILABLE LAND AREA and the spacing of geographic regions, not merely lowering a few mountain peaks.
+
+STYLE: a deliberately stylized game MAP, not a realistic landscape. Inspired by the map-space depth of Mi Chang Sheng: a few layered mountain SILHOUETTES, closer faces slightly darker, farther ridges fading into pale wash, simple understated low-relief forms. Very little geological detail. Borrow only the fine aged paper / absorbed ink / subdued mineral pigment surface feeling of Phantom Blade Zero, not its dramatic crags, dense landscape composition or realism.
+Soft warm gray-buff paper, very subtle fibers, light gray-green land wash, fine gray-brown ink, restrained muted gray-blue water. Clean quiet ground with large areas of breathing space. No thick outlines, excessive hatching, grunge or saturated yellow.
+
+GEOGRAPHY / AREA:
+Make the world feel very extensive, with broad connected open plains spanning most of the continent. Only around eight to ten SMALL, WELL-SEPARATED hill/ridge groups across the entire square. Each occupies a modest patch of land; do not fill the spaces between them with dozens of extra hills. Roughly two-thirds or more of the LAND should read as open usable plain / broad valley at a glance. Leave several large continuous regions for many tiny future location nodes, with long distances between the mountain groups.
+Landform groups have small footprints relative to the whole map, varied profiles and soft fading foothills. No mountain wall along the top, bottom, west or coast. No giant foreground mountains. No horizon or sky. Maintain the SAME map scale throughout.
+Retain the broad geographic idea of IMAGE2: two thin rivers flow into the continent from the west frame around the middle and southwest, wind through broad inland valleys, meet a small lake / junction, and reach a LONG EASTERN COAST. Rivers should be slim at this whole-world scale, not enormous channels swallowing the usable land. The sea occupies only a narrow portion along the right edge, leaving the continent dominant. Quiet low headlands, not tall coastal cliffs. All banks and watercourses are continuous and organically drawn.
+
+TERRAIN ONLY, ABSOLUTELY NO LOCATION ASSETS:
+Remove / do not draw ANY buildings, gates, settlements, roof silhouettes, towers, pavilions, markers, stones standing as markers, labels, icons, UI, border or visible grid. The foreground nodes will be separate textures later.
+ZERO trees, shrubs, bushes, bare branches, grass clumps or other vegetation anywhere. Do not use plants, tiny rocks or repetitive scratches to fill the open land.
+No paths, roads, dashed routes, stairs, steps, bridges, people, smoke, fire, separate tiles, collage seams or exposure changes.
+Output only one coherent, spacious, stylized landscape-map background, square composition around2048pixels if possible.

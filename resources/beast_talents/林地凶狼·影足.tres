@@ -6,4 +6,4 @@
 script = ExtResource("1")
 talent_id = "forest_wolf_shadowfoot"
 talent_name = "影足"
-description = "保留群猎本能；额外身法 = round(敏捷 × 0.25)。"
+description = "保留群猎本能；额外身法 = round(min(体魄×0.25, 神魂×0.30))。"

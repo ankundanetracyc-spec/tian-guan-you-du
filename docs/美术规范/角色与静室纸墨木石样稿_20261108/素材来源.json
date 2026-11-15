@@ -1,0 +1,367 @@
+{
+  "date": "2026-11-08",
+  "revision": 5,
+  "scope": "角色六页、静室三页及按钮分型对照；独立样稿，未接游戏",
+  "newGeneratedBitmaps": 0,
+  "reusedGeneratedBitmaps": 6,
+  "existingBitmapFilesModified": false,
+  "buttonFamilies": "assets/按钮分型_v4/按钮分型索引.json",
+  "generation": "assets/按钮分型_v4/生成记录.json",
+  "prompts": "assets/按钮分型_v4/完整提示词.txt",
+  "navigationMotion": "侧栏动效参数.json",
+  "alphaHandling": "保留原图字节，连续透明度映射清除Alpha≤8背景噪点；无纸色遮挡，无旧轮廓clip-path裁角",
+  "oldAtlas": "assets/控件补充图集_v1.png",
+  "regions": "控件素材索引.json",
+  "identity": "概览基本资料仅在立绘下方；声望、业力、所在独立且不杜撰值",
+  "overview": {
+    "mood": [
+      350,
+      390
+    ],
+    "moodDial": 232,
+    "worldStatus": [
+      954,
+      369
+    ]
+  },
+  "deferred": [
+    "灵感",
+    "修命",
+    "修性"
+  ],
+  "quietRemoved": [
+    "时辰",
+    "瓶颈减速",
+    "主修摘要"
+  ],
+  "materialExceptions": [
+    "数字／日期增减为裸三角，输入槽仍有素材"
+  ],
+  "referencePagesUnchangedByThisTask": [
+    "善功堂",
+    "藏经阁"
+  ],
+  "sources": [
+    {
+      "path": "csharp/entity/Character.CultivationInspiration.cs",
+      "sha256AtReview": "fa67eb982240df1af6deb29cfc57846d9a3be90a4acb7e3fa58b6dda6492e94e",
+      "mode": "只读引用"
+    },
+    {
+      "path": "csharp/system/CultivationBottleneckRules.cs",
+      "sha256AtReview": "882aba03b3dcb54b3be296742c5095339bdd1eddc7826fc546749fc778aaa0dd",
+      "mode": "只读引用"
+    },
+    {
+      "path": "docs/plans/世界与探索/大世界角色状态系统设计.md",
+      "sha256AtReview": "f9d36d7bd5ccacc6d5d9174e4496e8abb96472f221754cf69c5f192614017d61",
+      "mode": "只读引用"
+    },
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_主操作_v4.png",
+      "sha256AtReview": "fcd81aceb22be83c5cb3d3c1ad4c7b1b8e2cbaac7d1b923409d1edd3c6e3727e",
+      "mode": "新生成分型底图"
+    },
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_侧栏分页_v4.png",
+      "sha256AtReview": "efdffe5ce28de8364b6cd5dbdea7930075573de538ad0e8ad08993e4d302f943",
+      "mode": "新生成分型底图"
+    },
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_小图标_v4.png",
+      "sha256AtReview": "d66d0c1d7a1f19f5ee46b234ddedec66a714a59b1f6cd9cca874753641e8b52b",
+      "mode": "新生成分型底图"
+    },
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_常规_v4.png",
+      "sha256AtReview": "dff0f81e6d21615106eea2023aa73429ccd003e7e3e1e7c49cbc5e3bcec6e495",
+      "mode": "新生成分型底图"
+    },
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_短页签_v4.png",
+      "sha256AtReview": "6512258e52c3c63a70a1618ab0af9cfd74e96039ffcf82bace9a1b58de40c4eb",
+      "mode": "新生成分型底图"
+    },
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/控件_输入槽_v4.png",
+      "sha256AtReview": "b73575d23fb26a0efec9eedfd6fefb45c2dd5cf8afcf283e3077cc6f102db8c9",
+      "mode": "新生成分型底图"
+    },
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/控件补充图集_v1.png",
+      "sha256AtReview": "4ff46165045d1e5c644ac9fe87c12e783d3343102acbeef4d585e42f142588be",
+      "mode": "原样稿补充图集"
+    },
+    {
+      "path": "mods/appearance/portrait_male_regenerated_20261104_v3/preview/style01_transparent.png",
+      "sha256AtReview": "370614a41a778cdbc5258c4d541ff6cb5b692d0b4d224328ca89c38564978a22",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/activeskills/催血.tres",
+      "sha256AtReview": "7bdce5a5a9effc37dd793edd072d8937ac730fb167966b55a84233e5611aaf52",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/activeskills/剑修基础/养锋.tres",
+      "sha256AtReview": "0b8b3eabf7022dfaeb564499822f310fe18b6bd50b6d3a1526c99bd37754bd9e",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/activeskills/剑修基础/尽锋.tres",
+      "sha256AtReview": "8badf301680740d6bb1ed60eb6a070a642b5c04c9de5266414d27d732c613752",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/activeskills/剑修基础/斩剑.tres",
+      "sha256AtReview": "6340253b34222bac8063cc398302192c327e3ed48bac5875a7700c4fad645901",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/activeskills/剑修基础/格剑.tres",
+      "sha256AtReview": "de9345056099ed6b48827dfbc79830c42fe81f42d96bdb7096be718d06d56b48",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/activeskills/太和感物养元宝册/叩山.tres",
+      "sha256AtReview": "198d3dac23949512624dc62fd92673ef3b7923b44e5082f9dc2119bec6cdd79f",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/activeskills/太和感物养元宝册/涵虚.tres",
+      "sha256AtReview": "95562f7c7549875ca4cc825f207f8abc6edfb31dd45281fa03d7c9e289a5f59a",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/activeskills/寄念.tres",
+      "sha256AtReview": "78bd8390ba240694b834d6a980fece8806c6c30796871960b7fa267ffd05e542",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/activeskills/应敌.tres",
+      "sha256AtReview": "21668a62875e0784582a83f88013dfa94e26ba74bab6c5825dffabc1590e6128",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/activeskills/斫基损契玄经/折锋.tres",
+      "sha256AtReview": "30a8f6761e473ae817caa1ee49e0ee3a94c05c8e6cbd3e8468d64ad0843a15ad",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/activeskills/斫基损契玄经/焚元.tres",
+      "sha256AtReview": "6e3877e319464c5b09245bf65b07f54a67d06cfa23cea553a2657934e59bc72b",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/activeskills/架招.tres",
+      "sha256AtReview": "99a91345ea66fc012b8516c16ec5a241d9d433e082bde8a494292f518cb8d8d0",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/activeskills/灵击.tres",
+      "sha256AtReview": "585da7cb98a29384385364ac9975e550e23c4e1e98918df68ab58fde83ded64f",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/activeskills/玄枢含章经/云帔.tres",
+      "sha256AtReview": "2c8fdd9ef1891b522488a540b106097987241a36f053019345b3d31d83b38fee",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/activeskills/玄枢含章经/复命.tres",
+      "sha256AtReview": "485512b140f6baa0aa3fb47ab53b3a89ac5c52069a2963936fcde9d29f00852a",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/activeskills/玄枢含章经/惊蛰.tres",
+      "sha256AtReview": "f11a56e743fe09640bd6484ee862d2db6d858dabe3988309c188e8a69c123679",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/activeskills/痛击.tres",
+      "sha256AtReview": "ab934ce0bc8cf0bbabb4ba061e5d86c58e13463992a54dd688770fbd4739a573",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/activeskills/百骸衍枝化生宝册/摧山.tres",
+      "sha256AtReview": "1ed9667a619a708dd41059e9d6e5eb0fde00d323a092d22ce23d93f1322067d3",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/activeskills/聚炁.tres",
+      "sha256AtReview": "43dceaecc9322500f194a9d400f6f8b1cb0aa70006fafe98490132c4172b3bf5",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/activeskills/舒卷天章/云岚三叠.tres",
+      "sha256AtReview": "65652f3a562ce3a0090efb407b708b961c9b084841eef0cf129d472ddac40c2d",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/font/LXGWZhenKaiSlabGB-Regular.ttf",
+      "sha256AtReview": "086fa66af57b7a0d7a007067097cd1ac27eb8b8db810fb83ac3de620be1eb3a1",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/gongfa/太和感物养元宝册.tres",
+      "sha256AtReview": "afe19129aad7d92507cc89546dbd4ea5efe00be8e81f7debe18d5aac67188e2f",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/gongfa/斫基损契玄经.tres",
+      "sha256AtReview": "441ecab925ca23e5c9c3738720325761819c1cd1fe86aa097857fa2587f4fac7",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/gongfa/玄枢含章经.tres",
+      "sha256AtReview": "03e5ec3e9b658a379fcbc0d9a0d2983c5bacef95cef7949fd9debd2c9f9a8777",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/gongfa/百骸衍枝化生宝册.tres",
+      "sha256AtReview": "ce26dde7816a0ee7e268dc79b9cee996ca5d26a8bda9b9426db60061ca274c1d",
+      "mode": "只读引用"
+    },
+    {
+      "path": "resources/gongfa/黄庭养形篇.tres",
+      "sha256AtReview": "6ad426d6ce050fb81010f87b4cfc16d73663c4e7e009ecc8503b9845b69601bd",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/items/inventory_density_20261029/manual_generic_2x3.png",
+      "sha256AtReview": "c0d6bce06a393054770fab923bd9176d4c33cd67d5a3cafd8da08a6bf47dd8cc",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/character_20261012/relations_bridge_v1.png",
+      "sha256AtReview": "8adc9e0e2edafa6a08407d535930e2458062e954e1e618b8b2cedd5de5a35bc6",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/combat/board_skill_icons/chengshi.png",
+      "sha256AtReview": "a03713f58c29ce761c7e0d894dc5fa4adfca0da952d484ead8f046ab7499c4a3",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/combat/board_skill_icons/cuixue.png",
+      "sha256AtReview": "b0b4dda1254552cc786dd884947f446f998d69e7060dcdcf4d6b669cfcc6922b",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/combat/board_skill_icons/fenyuan.png",
+      "sha256AtReview": "d94cfb04693ee0508706c2281469a0aea6272f431497766cabf080cfbd60e045",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/combat/board_skill_icons/fuming.png",
+      "sha256AtReview": "4c010334d862f3470d00a4b5262dce16d3393d550e54c58598db8bf9ce478cc0",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/combat/board_skill_icons/gejian.png",
+      "sha256AtReview": "320404c53428eac60d0f665370c14c3c8415e3b58809b4e6a6c2b9b0c725c692",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/combat/board_skill_icons/jiazhao.png",
+      "sha256AtReview": "328a12f06618bca84b6d3d00e1c5990a79e85a591990182d162924020a2c7416",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/combat/board_skill_icons/jinfeng.png",
+      "sha256AtReview": "7646590807e67ad6083d9b4d6010f0f6a164b09d4a69b315ea0f056aa16ba8ff",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/combat/board_skill_icons/jingzhe.png",
+      "sha256AtReview": "569a58648c3d8bcbb30dc31e682992ea906c8a8faad7c4b3da97db08498874ff",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/combat/board_skill_icons/jinian.png",
+      "sha256AtReview": "39e6ed42fc571ef20e8460c20bcf869ebb2d8fc2f734dd214e669d5d6242c941",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/combat/board_skill_icons/juqi.png",
+      "sha256AtReview": "0c22db8dc64f38d81994e41f9cc5771d8e815cc1e0057881d46f4def679d1747",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/combat/board_skill_icons/lingji.png",
+      "sha256AtReview": "cbd4ae0719310df2f66d711e5bbff6c0c579b51e27bc7ae2c3b06d5d9f04183a",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/combat/board_skill_icons/tongji.png",
+      "sha256AtReview": "a40c8aa708ff5aa9424c83e33b068a7376858ee784bed32f09c02115f4c48fd1",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/combat/board_skill_icons/xuebi.png",
+      "sha256AtReview": "8f2b40e29834cc0eea038a5b09a8db03e3ad826a8cf125af1bbfb5d56f7c9097",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/combat/board_skill_icons/xuhuai.png",
+      "sha256AtReview": "5018b82ebc2fe7a391c72135bdde504e6921a8cad563ed21d4bd8340111024be",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/combat/board_skill_icons/yangfeng.png",
+      "sha256AtReview": "6126aa8d69daeefea8fb0b5d88acfa1c8cc964ac88546454525edf44997aace4",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/combat/board_skill_icons/yingdi.png",
+      "sha256AtReview": "2aba6f90abe917b22ff3534a8160d51d3581fa1b0645b934c41fb161ace8fb75",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/combat/board_skill_icons/yunlan.png",
+      "sha256AtReview": "32d196a9d770744418e589cda94ff0a5e690c3e744593463707118b50227ee65",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/combat/board_skill_icons/yunpei.png",
+      "sha256AtReview": "7c2e615ca63e6e3fb41f0bf98482177b4b0d4832bfe2210c65d22bf7ca25fc34",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/combat/board_skill_icons/zhanjian.png",
+      "sha256AtReview": "b3b07876ada49fd7471cc6ae4f70fd9d34d17bf89eac841d81290d1c52039334",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/combat/board_skill_icons/zhefeng.png",
+      "sha256AtReview": "ad05920730d8c1e9ac61889a3e5f5753f948cef347359c72b5d39f68ab51e8b1",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/cultivation/quiet_room_20261010/quiet_room.png",
+      "sha256AtReview": "577faabc5e5614f56082f169dfd218be2b0cfc8689f0348be4916a58ff312e70",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/forging_20261021/material_panel_v3.png",
+      "sha256AtReview": "ca9398e87c8a8a7dadb0a5ab7a7afe184f06b2fb22a4d75bff1ca289f5864826",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/infopanel_attribute_icons_ink_v2.png",
+      "sha256AtReview": "b2462359cf5686845df77dfc578516f39f87fbcf72a17792e77a8afa4f7d760f",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/infopanel_nav_icons_ink_v1.png",
+      "sha256AtReview": "562eabacd5507e97fcc116f6bbf04c5432085a0bd89bb4b9f4b2edec652f083d",
+      "mode": "只读引用"
+    },
+    {
+      "path": "textures/ui/yuxu_library_20261107/library_frame.png",
+      "sha256AtReview": "5d311b0aeb04d8de57fddbc6aef492e7e11ffbadba3ce558fe2f67579a4da7ce",
+      "mode": "只读引用"
+    }
+  ],
+  "runtimeIntegration": false
+}

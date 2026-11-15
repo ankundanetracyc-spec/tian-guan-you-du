@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://csharp/gongfa/ActiveSkillData.cs" id="1"]
 [ext_resource type="Script" path="res://csharp/gongfa/DamageBonus.cs" id="2_dmg"]
 
-[sub_resource type="Resource" id="Resource_agility"]
+[sub_resource type="Resource" id="Resource_extra_physique"]
 script = ExtResource("2_dmg")
-attribute = "agility"
+attribute = "physique"
 multiplier = 0.6
 metadata/_custom_type_script = "uid://corjswdok5c7"
 
@@ -34,6 +34,6 @@ aoe_range = 1
 can_target_empty = true
 base_damage = 5.0
 damage_type = "physical"
-damage_bonuses = Array[ExtResource("2_dmg")]([SubResource("Resource_agility"), SubResource("Resource_sword_prof"), SubResource("Resource_soul")])
+damage_bonuses = Array[ExtResource("2_dmg")]([SubResource("Resource_extra_physique"), SubResource("Resource_sword_prof"), SubResource("Resource_soul")])
 keywords = ["消耗"]
 metadata/_custom_type_script = "uid://cjcf3nq1ne5ql"

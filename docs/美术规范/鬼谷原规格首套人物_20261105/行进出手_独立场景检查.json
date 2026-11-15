@@ -1,0 +1,125 @@
+{
+	"checks": 35,
+	"failures": [],
+	"groups": {
+		"after_cancel": {
+			"frames": 18,
+			"maximum_local_leg_vertex_displacement_pixels": 109.31404876709
+		},
+		"after_run_dodge_stop": {
+			"frames": 20,
+			"maximum_local_leg_vertex_displacement_pixels": 89.4433059692383
+		},
+		"attack_paused": {
+			"frames": 8,
+			"maximum_local_leg_vertex_displacement_pixels": 0.0
+		},
+		"backward": {
+			"frames": 36,
+			"maximum_local_leg_vertex_displacement_pixels": 106.611671447754
+		},
+		"before_cancel": {
+			"frames": 8,
+			"maximum_local_leg_vertex_displacement_pixels": 23.6015319824219
+		},
+		"cancel_dodge": {
+			"frames": 16,
+			"maximum_local_leg_vertex_displacement_pixels": 66.6284332275391
+		},
+		"guard_finish": {
+			"frames": 8,
+			"maximum_local_leg_vertex_displacement_pixels": 91.483268737793
+		},
+		"held_combo": {
+			"frames": 142,
+			"maximum_local_leg_vertex_displacement_pixels": 80.093376159668
+		},
+		"left_facing": {
+			"frames": 36,
+			"maximum_local_leg_vertex_displacement_pixels": 108.823806762695
+		},
+		"moving_guard": {
+			"frames": 9,
+			"maximum_local_leg_vertex_displacement_pixels": 39.1878051757812
+		},
+		"moving_heavy": {
+			"frames": 18,
+			"maximum_local_leg_vertex_displacement_pixels": 75.3461685180664
+		},
+		"moving_self_cast": {
+			"frames": 70,
+			"maximum_local_leg_vertex_displacement_pixels": 106.611656188965
+		},
+		"npc_override": {
+			"frames": 42,
+			"maximum_local_leg_vertex_displacement_pixels": 66.3104400634766
+		},
+		"paused": {
+			"frames": 18,
+			"maximum_local_leg_vertex_displacement_pixels": 0.0
+		},
+		"restart_idle": {
+			"frames": 20,
+			"maximum_local_leg_vertex_displacement_pixels": 0.0
+		},
+		"resume_after_pause": {
+			"frames": 18,
+			"maximum_local_leg_vertex_displacement_pixels": 91.0027847290039
+		},
+		"resume_during_attack": {
+			"frames": 8,
+			"maximum_local_leg_vertex_displacement_pixels": 62.6386566162109
+		},
+		"resume_run": {
+			"frames": 18,
+			"maximum_local_leg_vertex_displacement_pixels": 84.9412002563477
+		},
+		"run_before_dodge": {
+			"frames": 18,
+			"maximum_local_leg_vertex_displacement_pixels": 52.391284942627
+		},
+		"run_to_dodge": {
+			"frames": 16,
+			"maximum_local_leg_vertex_displacement_pixels": 97.0177841186523
+		},
+		"run_warmup": {
+			"frames": 18,
+			"maximum_local_leg_vertex_displacement_pixels": 52.391284942627
+		},
+		"stop_during_attack": {
+			"frames": 13,
+			"maximum_local_leg_vertex_displacement_pixels": 77.5018615722656
+		},
+		"stop_settle": {
+			"frames": 14,
+			"maximum_local_leg_vertex_displacement_pixels": 78.3518676757812
+		},
+		"stopped": {
+			"frames": 36,
+			"maximum_local_leg_vertex_displacement_pixels": 0.0
+		}
+	},
+	"locomotion_composition_enabled": true,
+	"maximum_alpha_sole_penetration_native_pixels": 0.0000360012054443359,
+	"maximum_source_all_local_position_error_units": 0.000000188486438901236,
+	"maximum_source_all_local_scale_error": 0.000000421468485001242,
+	"maximum_source_attack_upper_local_basis_error": 0.000000245756240246919,
+	"maximum_source_foot_local_basis_error": 0.0,
+	"maximum_source_foot_local_position_error_units": 0.0,
+	"maximum_source_foot_local_rotation_error_radians": 0.0009765625,
+	"maximum_source_foot_local_scale_error": 0.0,
+	"moving_attack_frames": 258,
+	"passed": true,
+	"run_to_dodge": {
+		"actual_step_frames": 11,
+		"animated_world_transform_samples": 561,
+		"dedicated_step_context_preserved": true,
+		"maximum_source_dedicated_landing_offset_error_pixels": 0.0000000696487632012577,
+		"maximum_source_world_basis_error": 0.0,
+		"maximum_source_world_position_error_units": 0.0,
+		"scope": "All51 source animated world TRS are compared before native secondary physics; source DynamicBone remains active in the actual rendered actor."
+	},
+	"sampled_actual_frames": 628,
+	"scope": "Actual arena held movement keys, actual left-button held four-stage attack input, original heavy/guard/self-cast/cancel runtimes; source Run local TRS oracle;65 opaque-alpha source sole hull samples; actual NPC presentation override exercised separately without AI or gameplay claims.",
+	"source_foot_local_samples": 4411
+}

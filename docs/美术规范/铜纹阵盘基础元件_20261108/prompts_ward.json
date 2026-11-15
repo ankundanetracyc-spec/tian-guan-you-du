@@ -1,0 +1,47 @@
+{
+  "date": "2026-11-08",
+  "component": "内置护持阵器",
+  "footprint": [
+    1,
+    2
+  ],
+  "generator": "built-in image_gen.imagegen",
+  "prompt": "Use case: precise-object-edit / game component extraction.\nThe attached image is the USER-APPROVED Chinese xianxia formation disk visual master. Extract and faithfully re-illustrate ONLY the vertical double-plate protective executor at the RIGHT of that master as ONE isolated installable game component. Preserve its exact artistic identity: strong irregular charcoal ink contour, hand-brushed broad grey-brown antique-bronze and quiet grey-teal color planes, ivory edge highlights, little dry-brush marks. Two overlapping long curved ritual plates, with an elegant narrow S-shaped open slot between them. The plates sit in a modest shallow bronze mounting. It should look made by the SAME ARTIST as the input, NOT a new style or a photoreal object.\nOutput composition: TALL PORTRAIT image, width:height approximately 1:2. The component itself has a 1-cell-wide by 2-cells-tall footprint, filling roughly 84% of the width and 88% of the height. Entire component centered and fully visible with a clean transparent margin. EXACT 90-DEGREE ORTHOGRAPHIC TOP VIEW. Flat hand-painted icon construction; avoid visible tall side walls or tilted perspective.\nThe upper plate is muted warm-bronze and ivory, the lower plate subdued grey-teal and bronze. Sparse abstract angular seal incisions only; no readable letters/numbers, no shield symbol or heraldic shield silhouette. Match the master object's two sculptural interlocking plates closely.\nConnection design is essential: exactly TWO shallow small bronze terminal collars integrated in the mounting: one at the VERY TOP midpoint, one at the VERY BOTTOM midpoint. Both lie on the central vertical axis. The upper collar has a tiny open-ended muted cinnabar inlay channel facing NORTH (signal input); the bottom collar has a slightly broader dull pale-gold open-ended inlay channel facing SOUTH (power input). These are short contact slots within the mounting only. Do not paint any line extending away from the component, do not include the old long red or gold routes from the reference. No extra terminal on left or right and no rows of electronic pins. Ensure the contact slots visibly face outward, suitable for a separately drawn line to enter without a blocked end cap.\nNo base disk, no fragment of background bronze plate, no other components, no UI, no grid, no labels, no text, no arrows, no floor, no cast ground shadow, no glow. TRUE transparent alpha around the object and through the small open gap between the plates. Clean, readable silhouette at game-icon scale, restrained simple cel-like ink wash shading. This isolated part will later be placed on a hidden grid, so it must NOT carry any grid-cell outline or permanent wire.\nThe priority is fidelity to the approved bronze-and-jade ink-painted master, with correctly aligned top and bottom connection collars.",
+  "referenced_image_paths": [
+    "E:/stacklands/docs/美术规范/阵盘项目画风对照_20261108/B_墨绘铜纹.png"
+  ],
+  "reference_role": "用户已选B墨绘铜纹整盘；延续右侧双叠片阵器的造型与画法。",
+  "raw_path": "E:/tmp/CodexData/generated_images/01a1b682-03fd-7651-8d4c-8018f1185e66/exec-b59fb090-42cd-4119-967d-162b4a472296.png",
+  "output_path": "E:/stacklands/docs/美术规范/铜纹阵盘基础元件_20261108/ward_1x2.png",
+  "ports": [
+    {
+      "side": "north",
+      "type": "signal",
+      "direction": "input",
+      "cell": [
+        0,
+        0
+      ]
+    },
+    {
+      "side": "south",
+      "type": "energy",
+      "direction": "input",
+      "cell": [
+        0,
+        1
+      ]
+    }
+  ],
+  "processing": "原生PNG逐字节复制，无像素编辑；原生长宽不等同128×256的逻辑显示尺寸。",
+  "status": "独立元件美术候选；风格遵循已选B，未接入正式编辑器或战斗。",
+  "visual_checks": {
+    "strict_top_down": true,
+    "two_overlapping_ritual_plates": true,
+    "shield_absent": true,
+    "two_axis_aligned_terminal_collars": true,
+    "permanent_outgoing_lines_absent": true,
+    "grid_and_text_absent": true,
+    "transparent_background": true
+  }
+}

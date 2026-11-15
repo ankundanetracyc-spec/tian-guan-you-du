@@ -1,0 +1,352 @@
+{
+  "schemaVersion": 1,
+  "sourceRig": "tools/action_battle_test/output/guigu_source_reference_v2/male101/rig.json",
+  "sourceAsset": {
+    "path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\guigubahuang_Data\\resources.assets",
+    "sizeBytes": 1764255120,
+    "sha256": "0d1e14ae4a2719b91055e201fadf294b600f730e5bfbba14f4806b7619ec3ced",
+    "unityVersion": "2020.3f1c1"
+  },
+  "sourceUnityVersion": "2020.3.9f1c1",
+  "algorithmSourceFiles": [
+    {
+      "path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\Mod\\modFQA\\资源修改教程\\ResBuildABProject\\Assets\\Scripts\\Packages\\DynamicBone\\Scripts\\DynamicBone.cs",
+      "sha256": "e1cbd5478f7e52b25838ed4717d89ae21fcb3f3510964ae71cafd75b1c45209b"
+    },
+    {
+      "path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\Mod\\modFQA\\资源修改教程\\ResBuildABProject\\Assets\\Scripts\\Packages\\DynamicBone\\Scripts\\DynamicBoneCollider.cs",
+      "sha256": "841c6b08493bbd105f019eb8e246cd78bec28ae916f5ea0ee210c487dffa5e14"
+    },
+    {
+      "path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\Mod\\modFQA\\资源修改教程\\ResBuildABProject\\Assets\\Scripts\\Packages\\DynamicBone\\Scripts\\DynamicBoneColliderBase.cs",
+      "sha256": "932f0d0e1f311e29f4c0aa22e84c63c9b72bc4eb770b8f4ae91224eedfb520c2"
+    },
+    {
+      "path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\Mod\\modFQA\\资源修改教程\\ResBuildABProject\\Assets\\Scripts\\Packages\\DynamicBone\\Scripts\\DynamicBonePlaneCollider.cs",
+      "sha256": "ca12a4d9d5d4ca672b9a5b943e17ab04ed56e1d73ef00e7e72645881b7bf1d84"
+    }
+  ],
+  "coordinateSystem": "Unity full 3D local units; physics before XY projection; no HD rescaling",
+  "extraction": "Fresh selected male101 GameObject components, Mod SDK named field order, complete byte consumption; original installation read-only.",
+  "verification": {
+    "clothPayloadMatchesEarlierReadback": true,
+    "componentCount": 2,
+    "allBytesConsumed": true,
+    "runtimeBinaryAlgorithmIdentity": "SDK source is supplied with this installation; exact native-code identity has not been established.",
+    "originalGameStateMachineAndRuntimeOverrides": "Not captured; restoring serialized setup and supplied algorithm is not proof of complete original runtime state."
+  },
+  "components": [
+    {
+      "root": {
+        "fileID": 0,
+        "pathID": 644960
+      },
+      "updateRate": 60.0,
+      "updateMode": 0,
+      "damping": 0.1469999998807907,
+      "dampingDistrib": {
+        "keys": [
+          {
+            "time": 0.0,
+            "value": 1.0,
+            "inTangent": 0.0,
+            "outTangent": 0.0,
+            "weightedMode": 0,
+            "inWeight": 0.3333333432674408,
+            "outWeight": 0.3333333432674408
+          },
+          {
+            "time": 1.0,
+            "value": 1.0,
+            "inTangent": 0.0,
+            "outTangent": 0.0,
+            "weightedMode": 0,
+            "inWeight": 0.3333333432674408,
+            "outWeight": 0.3333333432674408
+          }
+        ],
+        "preWrapMode": 2,
+        "postWrapMode": 2,
+        "rotationOrder": 4
+      },
+      "elasticity": 0.050999999046325684,
+      "elasticityDistrib": {
+        "keys": [
+          {
+            "time": 0.0,
+            "value": 1.0,
+            "inTangent": 0.0,
+            "outTangent": 0.0,
+            "weightedMode": 0,
+            "inWeight": 0.3333333432674408,
+            "outWeight": 0.3333333432674408
+          },
+          {
+            "time": 1.0,
+            "value": 1.0,
+            "inTangent": 0.0,
+            "outTangent": 0.0,
+            "weightedMode": 0,
+            "inWeight": 0.3333333432674408,
+            "outWeight": 0.3333333432674408
+          }
+        ],
+        "preWrapMode": 2,
+        "postWrapMode": 2,
+        "rotationOrder": 4
+      },
+      "stiffness": 0.028999999165534973,
+      "stiffnessDistrib": {
+        "keys": [
+          {
+            "time": 0.0,
+            "value": 0.0,
+            "inTangent": 2.0,
+            "outTangent": 2.0,
+            "weightedMode": 0,
+            "inWeight": 0.3333333432674408,
+            "outWeight": 0.3333333432674408
+          },
+          {
+            "time": 1.0,
+            "value": 1.0,
+            "inTangent": 0.0,
+            "outTangent": 0.0,
+            "weightedMode": 0,
+            "inWeight": 0.3333333432674408,
+            "outWeight": 0.3333333432674408
+          }
+        ],
+        "preWrapMode": 2,
+        "postWrapMode": 2,
+        "rotationOrder": 4
+      },
+      "inert": 0.050999999046325684,
+      "inertDistrib": {
+        "keys": [
+          {
+            "time": 0.0,
+            "value": 1.0,
+            "inTangent": 0.0,
+            "outTangent": 0.0,
+            "weightedMode": 0,
+            "inWeight": 0.3333333432674408,
+            "outWeight": 0.3333333432674408
+          },
+          {
+            "time": 1.0,
+            "value": 1.0,
+            "inTangent": 0.0,
+            "outTangent": 0.0,
+            "weightedMode": 0,
+            "inWeight": 0.3333333432674408,
+            "outWeight": 0.3333333432674408
+          }
+        ],
+        "preWrapMode": 2,
+        "postWrapMode": 2,
+        "rotationOrder": 4
+      },
+      "radius": 0.05000000074505806,
+      "radiusDistrib": {
+        "keys": [],
+        "preWrapMode": 2,
+        "postWrapMode": 2,
+        "rotationOrder": 4
+      },
+      "endLength": 1.0,
+      "endOffset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gravity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "force": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "colliders": [],
+      "exclusions": [],
+      "freezeAxis": 0,
+      "distantDisable": false,
+      "referenceObject": {
+        "fileID": 0,
+        "pathID": 0
+      },
+      "distanceToObject": 20.0,
+      "isEnbale": true,
+      "componentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+      "rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti2/bone_5",
+      "exclusionPaths": [],
+      "enabled": true,
+      "componentPathID": 1253484,
+      "rawPayloadHex": "0000000024350600000000000100000001000000071c000000000000000000000000000060d709000000000000007042000000002b87163e02000000000000000000803f000000000000000000000000abaaaa3eabaaaa3e0000803f0000803f000000000000000000000000abaaaa3eabaaaa3e02000000020000000400000060e5503d02000000000000000000803f000000000000000000000000abaaaa3eabaaaa3e0000803f0000803f000000000000000000000000abaaaa3eabaaaa3e0200000002000000040000006891ed3c020000000000000000000000000000400000004000000000abaaaa3eabaaaa3e0000803f0000803f000000000000000000000000abaaaa3eabaaaa3e02000000020000000400000060e5503d02000000000000000000803f000000000000000000000000abaaaa3eabaaaa3e0000803f0000803f000000000000000000000000abaaaa3eabaaaa3e020000000200000004000000cdcc4c3d000000000200000002000000040000000000803f000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000a04101000000",
+      "rawPayloadSha256": "f74d2358cdb77181327dd99322fa132c01ae5eedc273c1a13432af3571976623",
+      "rawPayloadBytes": 452,
+      "bytesConsumed": 452,
+      "scriptClass": "DynamicBone",
+      "assemblyName": "Assembly-CSharp.dll"
+    },
+    {
+      "root": {
+        "fileID": 0,
+        "pathID": 742857
+      },
+      "updateRate": 60.0,
+      "updateMode": 0,
+      "damping": 0.3240000009536743,
+      "dampingDistrib": {
+        "keys": [
+          {
+            "time": 0.0,
+            "value": 1.0,
+            "inTangent": 0.0,
+            "outTangent": 0.0,
+            "weightedMode": 0,
+            "inWeight": 0.3333333432674408,
+            "outWeight": 0.3333333432674408
+          },
+          {
+            "time": 1.0,
+            "value": 1.0,
+            "inTangent": 0.0,
+            "outTangent": 0.0,
+            "weightedMode": 0,
+            "inWeight": 0.3333333432674408,
+            "outWeight": 0.3333333432674408
+          }
+        ],
+        "preWrapMode": 2,
+        "postWrapMode": 2,
+        "rotationOrder": 4
+      },
+      "elasticity": 0.06499999761581421,
+      "elasticityDistrib": {
+        "keys": [
+          {
+            "time": 0.0,
+            "value": 1.0,
+            "inTangent": 0.0,
+            "outTangent": 0.0,
+            "weightedMode": 0,
+            "inWeight": 0.3333333432674408,
+            "outWeight": 0.3333333432674408
+          },
+          {
+            "time": 1.0,
+            "value": 1.0,
+            "inTangent": 0.0,
+            "outTangent": 0.0,
+            "weightedMode": 0,
+            "inWeight": 0.3333333432674408,
+            "outWeight": 0.3333333432674408
+          }
+        ],
+        "preWrapMode": 2,
+        "postWrapMode": 2,
+        "rotationOrder": 4
+      },
+      "stiffness": 0.028999999165534973,
+      "stiffnessDistrib": {
+        "keys": [
+          {
+            "time": 0.0,
+            "value": 0.0,
+            "inTangent": 2.0,
+            "outTangent": 2.0,
+            "weightedMode": 0,
+            "inWeight": 0.3333333432674408,
+            "outWeight": 0.3333333432674408
+          },
+          {
+            "time": 1.0,
+            "value": 1.0,
+            "inTangent": 0.0,
+            "outTangent": 0.0,
+            "weightedMode": 0,
+            "inWeight": 0.3333333432674408,
+            "outWeight": 0.3333333432674408
+          }
+        ],
+        "preWrapMode": 2,
+        "postWrapMode": 2,
+        "rotationOrder": 4
+      },
+      "inert": 0.2720000147819519,
+      "inertDistrib": {
+        "keys": [
+          {
+            "time": 0.0,
+            "value": 1.0,
+            "inTangent": 0.0,
+            "outTangent": 0.0,
+            "weightedMode": 0,
+            "inWeight": 0.3333333432674408,
+            "outWeight": 0.3333333432674408
+          },
+          {
+            "time": 1.0,
+            "value": 1.0,
+            "inTangent": 0.0,
+            "outTangent": 0.0,
+            "weightedMode": 0,
+            "inWeight": 0.3333333432674408,
+            "outWeight": 0.3333333432674408
+          }
+        ],
+        "preWrapMode": 2,
+        "postWrapMode": 2,
+        "rotationOrder": 4
+      },
+      "radius": 0.05000000074505806,
+      "radiusDistrib": {
+        "keys": [],
+        "preWrapMode": 2,
+        "postWrapMode": 2,
+        "rotationOrder": 4
+      },
+      "endLength": 1.0,
+      "endOffset": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "gravity": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "force": [
+        0.0,
+        0.0010000000474974513,
+        0.0
+      ],
+      "colliders": [],
+      "exclusions": [],
+      "freezeAxis": 0,
+      "distantDisable": false,
+      "referenceObject": {
+        "fileID": 0,
+        "pathID": 0
+      },
+      "distanceToObject": 20.0,
+      "isEnbale": true,
+      "componentPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2",
+      "rootPath": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou/toufa/101(Clone)/toufa/bone_1/bone_2/bone_3",
+      "exclusionPaths": [],
+      "enabled": true,
+      "componentPathID": 1340508,
+      "rawPayloadHex": "00000000cf360400000000000100000001000000071c0000000000000000000000000000c9550b0000000000000070420000000054e3a53e02000000000000000000803f000000000000000000000000abaaaa3eabaaaa3e0000803f0000803f000000000000000000000000abaaaa3eabaaaa3e020000000200000004000000b81e853d02000000000000000000803f000000000000000000000000abaaaa3eabaaaa3e0000803f0000803f000000000000000000000000abaaaa3eabaaaa3e0200000002000000040000006891ed3c020000000000000000000000000000400000004000000000abaaaa3eabaaaa3e0000803f0000803f000000000000000000000000abaaaa3eabaaaa3e02000000020000000400000096438b3e02000000000000000000803f000000000000000000000000abaaaa3eabaaaa3e0000803f0000803f000000000000000000000000abaaaa3eabaaaa3e020000000200000004000000cdcc4c3d000000000200000002000000040000000000803f000000000000000000000000000000000000000000000000000000006f12833a00000000000000000000000000000000000000000000000000000000000000000000a04101000000",
+      "rawPayloadSha256": "58dbfe43dbcd136f9c2da101b11435dd10c344ae799846b0b92ee719da18beba",
+      "rawPayloadBytes": 452,
+      "bytesConsumed": 452,
+      "scriptClass": "DynamicBone",
+      "assemblyName": "Assembly-CSharp.dll"
+    }
+  ]
+}

@@ -10,5 +10,5 @@ if not exist "%GODOT%" (
   echo Spine-enabled Godot runtime not found: "%GODOT%"
   exit /b 1
 )
-"%GODOT%" --path "%ROOT%" --rendering-method gl_compatibility --rendering-driver opengl3
+"%GODOT%" --path "%ROOT%" --rendering-method gl_compatibility --rendering-driver opengl3 %*
 endlocal
