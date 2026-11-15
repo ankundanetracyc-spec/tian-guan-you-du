@@ -1,0 +1,7 @@
+Use case: background-extraction.
+The input is a fitted hairstyle on a finished game character. Extract ONLY the complete dark ink-gray HAIR (there are no pins or accessories) into a genuinely transparent RGBA image.
+Keep every hair strand's exact original size, shape, color, texture and pixel POSITION on the original 1024 x 1536 canvas. Do not crop, center, rescale, shift, stretch, rotate or redesign. This is registration-critical modular sprite extraction.
+Remove ALL non-hair pixels: the entire face, skin, ears, head skin, neck, torso, robe, hands, legs, feet. Remove the gray/brown glow and every background shadow completely. The face and ear openings must be truly transparent. Absolutely no gray silhouette of the body, no skin fragments, no clothing.
+Retain the forehead cap, crown, temple wisps, ear surround, all long rear hair and lower tips in their exact positions. The black outlines surrounding HAIR belong to the hair and stay. Do not keep the face/jaw/collar outlines.
+Where the ear or neck interrupted the back hair, extend the rear hair a very short distance under their formerly occupied space for a natural root overlap; do not fill the main face opening. Preserve the hairstyle exactly, no new strands or ornaments.
+Transparent empty space everywhere else, same 1024 x 1536 full sprite canvas, only one single fitted hair asset, no annotation or panel.

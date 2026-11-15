@@ -1,0 +1,48 @@
+{
+  "mode": "built-in imagegen generation, weapon removal edit and matched body pose edit",
+  "references": [
+    "textures/characters/side_ink_sword_idle_20261022_v1/male_idle.png",
+    "textures/ui/forged_swords_20261023_v1/slender_sword.png"
+  ],
+  "held_prompt": "Preserve male Bilan Yunye ink character, blank right-facing side face, desaturated celadon and ivory, five-head proportions. Calm balanced idle. Naturally hold referenced straight jian in low guard with fingers wrapped around hilt, thumb across index side, blade diagonal down-right45deg. Grip near1320,1210 on2048²; ground1024,1900 and head525. Full figure and sword uncropped, true transparent RGBA.",
+  "held_extraction": "Remove ONLY physical sword including blade, guard, grip and pommel to alpha. Preserve hand anatomy, wrist roll, curled fingers, thumb, exact character, canvas and registration. Body layer only, engine adds separate replaceable sword.",
+  "orbit_prompt": "Edit only the two hands and minimal forearm of held body into quiet sword control. Preserve exact pixel-aligned full body, feet, head, clothing, proportions and canvas. Front hand small two-finger sword seal, index and middle joined diagonally up-right, other two fingers folded naturally under thumb. Rear hand relaxes beside sash. Both hands empty; no weapon or effects. True RGBA transparent.",
+  "source_outputs": {
+    "held_guide": "exec-1da2443c-91da-4b44-93e8-d0705cb4e511.png",
+    "held_body": "exec-5f4d25ef-13d5-46b1-8617-a3ab624a6bfa.png",
+    "orbit_body": "exec-ddd48b0d-c0eb-4be6-9ec1-07c7c49bf6cb.png"
+  },
+  "registration": {
+    "source_size": [
+      1254,
+      1254
+    ],
+    "shared_resize": [
+      1790,
+      1790
+    ],
+    "shared_offset": [
+      129,
+      162
+    ],
+    "canvas": [
+      2048,
+      2048
+    ],
+    "ground": [
+      1024,
+      1900
+    ],
+    "reference_height": 1375,
+    "grip": [
+      1327,
+      1210
+    ],
+    "foreground_geometry": "Two source-textured contour polygons in BattlePaperDoll.SwordIdle.cs; no rectangular foreground crop. Same affine transform as body.",
+    "layers": [
+      "body with palm",
+      "replaceable sword",
+      "finger and thumb source texture regions"
+    ]
+  }
+}

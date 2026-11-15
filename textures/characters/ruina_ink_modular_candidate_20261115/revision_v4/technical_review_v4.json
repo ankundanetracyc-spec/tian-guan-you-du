@@ -1,0 +1,171 @@
+{
+  "status": "technical_checks_passed",
+  "passed": 36,
+  "failed": 0,
+  "checks": [
+    {
+      "check": "inner_woodpin_woodpin: saved layers reconstruct assembly",
+      "passed": true
+    },
+    {
+      "check": "inner_woodpin_woodpin: visible feet remain at v3 y1400",
+      "passed": true
+    },
+    {
+      "check": "inner_woodpin_sidepart: saved layers reconstruct assembly",
+      "passed": true
+    },
+    {
+      "check": "inner_woodpin_sidepart: visible feet remain at v3 y1400",
+      "passed": true
+    },
+    {
+      "check": "inner_sidepart_woodpin: saved layers reconstruct assembly",
+      "passed": true
+    },
+    {
+      "check": "inner_sidepart_woodpin: visible feet remain at v3 y1400",
+      "passed": true
+    },
+    {
+      "check": "inner_sidepart_sidepart: saved layers reconstruct assembly",
+      "passed": true
+    },
+    {
+      "check": "inner_sidepart_sidepart: visible feet remain at v3 y1400",
+      "passed": true
+    },
+    {
+      "check": "outer_woodpin_woodpin: saved layers reconstruct assembly",
+      "passed": true
+    },
+    {
+      "check": "outer_woodpin_woodpin: visible feet remain at v3 y1400",
+      "passed": true
+    },
+    {
+      "check": "outer_woodpin_sidepart: saved layers reconstruct assembly",
+      "passed": true
+    },
+    {
+      "check": "outer_woodpin_sidepart: visible feet remain at v3 y1400",
+      "passed": true
+    },
+    {
+      "check": "outer_sidepart_woodpin: saved layers reconstruct assembly",
+      "passed": true
+    },
+    {
+      "check": "outer_sidepart_woodpin: visible feet remain at v3 y1400",
+      "passed": true
+    },
+    {
+      "check": "outer_sidepart_sidepart: saved layers reconstruct assembly",
+      "passed": true
+    },
+    {
+      "check": "outer_sidepart_sidepart: visible feet remain at v3 y1400",
+      "passed": true
+    },
+    {
+      "check": "base_inner: RGBA canvas 1024 x 1536",
+      "passed": true
+    },
+    {
+      "check": "base_outer: RGBA canvas 1024 x 1536",
+      "passed": true
+    },
+    {
+      "check": "hair_front_woodpin: visible RGB from registered generated source without rescaling",
+      "passed": true
+    },
+    {
+      "check": "hair_front_woodpin: main eye and mouth remain uncovered",
+      "passed": true
+    },
+    {
+      "check": "hair_front_woodpin: RGBA canvas 1024 x 1536",
+      "passed": true
+    },
+    {
+      "check": "hair_back_woodpin: visible RGB from registered generated source without rescaling",
+      "passed": true
+    },
+    {
+      "check": "hair_back_woodpin: main eye and mouth remain uncovered",
+      "passed": true
+    },
+    {
+      "check": "hair_back_woodpin: RGBA canvas 1024 x 1536",
+      "passed": true
+    },
+    {
+      "check": "hair_front_sidepart: visible RGB from registered generated source without rescaling",
+      "passed": true
+    },
+    {
+      "check": "hair_front_sidepart: main eye and mouth remain uncovered",
+      "passed": true
+    },
+    {
+      "check": "hair_front_sidepart: RGBA canvas 1024 x 1536",
+      "passed": true
+    },
+    {
+      "check": "hair_back_sidepart: visible RGB from registered generated source without rescaling",
+      "passed": true
+    },
+    {
+      "check": "hair_back_sidepart: main eye and mouth remain uncovered",
+      "passed": true
+    },
+    {
+      "check": "hair_back_sidepart: RGBA canvas 1024 x 1536",
+      "passed": true
+    },
+    {
+      "check": "inner: original repaired collar/body below y535 unchanged",
+      "passed": true
+    },
+    {
+      "check": "inner: all base pixels outside head patch unchanged",
+      "passed": true
+    },
+    {
+      "check": "outer: original repaired collar/body below y535 unchanged",
+      "passed": true
+    },
+    {
+      "check": "outer: all base pixels outside head patch unchanged",
+      "passed": true
+    },
+    {
+      "check": "two outfits share identical revised head through y520",
+      "passed": true
+    },
+    {
+      "check": "head silhouette is narrower and crown is higher than v3",
+      "passed": true
+    }
+  ],
+  "user_final_aesthetic_approval": false,
+  "installed": false,
+  "runtime_verified": false,
+  "visual_review_notes": "Head/crown narrower in same-scale comparison. New head and hair are generated revisions; visual expression/brushwork inspected separately from geometry. No user aesthetic acceptance inferred from these checks. Neck/collar/body pixels at y535 and below retain v3 source. Native-size no-hair, both full hairstyles, eight front/back swaps and light/dark reduced previews supplied.",
+  "evidence": [
+    "assembly_review_v4.png",
+    "proportion_before_after.png",
+    "head_fit_1x.png",
+    "all_combinations_v4.png",
+    "qa/eight_heads_1x.png",
+    "qa/no_hair_light_dark.png"
+  ],
+  "current_part_hashes": {
+    "base_inner": "5365c5513585f1662a5c7970c28cbc235939fd8d23ed3486fc68822c86bc23cd",
+    "base_outer": "d55a350592bc55d18fa6ad8d350186fd90003afce1e011da139eea684d632294",
+    "hair_front_woodpin": "33d6157d6ea090cf96bbeefba4392c36861ae39dbd843d93cc3ce3e55ca253cf",
+    "hair_back_woodpin": "45efae7fd9a2de733d19249b8d212df08800a9be8001370099fbb3e56068cfc9",
+    "hair_front_sidepart": "442bb0e840cdca92e23599984493b73aae4bbe1470107a8abf71568ca4b0b0dd",
+    "hair_back_sidepart": "907d1807c2ca174d1ff34a44c01a3d27af94ad2e654f155ec78d96167aa742ee"
+  }
+}

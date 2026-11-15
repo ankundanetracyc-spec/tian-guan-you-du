@@ -1,0 +1,252 @@
+{
+  "status": "static_technical_checks_complete",
+  "user_final_aesthetic_approval": false,
+  "game_installed": false,
+  "runtime_tested": false,
+  "passed": 42,
+  "failed": 0,
+  "checks": [
+    {
+      "check": "head_rgba_canvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "head_edge_clear",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "head_hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "hair_back_woodpin_rgba_canvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "hair_back_woodpin_edge_clear",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "hair_back_woodpin_hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "body_inner_rgba_canvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "body_inner_edge_clear",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "body_inner_hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "hair_front_woodpin_rgba_canvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "hair_front_woodpin_edge_clear",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "hair_front_woodpin_hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "hair_back_loose_rgba_canvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "hair_back_loose_edge_clear",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "hair_back_loose_hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "body_outer_rgba_canvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "body_outer_edge_clear",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "body_outer_hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "hair_front_sidepart_rgba_canvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "hair_front_sidepart_edge_clear",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "hair_front_sidepart_hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inner_woodpin_woodpin_exact_reassembly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inner_woodpin_woodpin_one_shared_head",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inner_woodpin_loose_exact_reassembly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inner_woodpin_loose_one_shared_head",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inner_sidepart_woodpin_exact_reassembly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inner_sidepart_woodpin_one_shared_head",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inner_sidepart_loose_exact_reassembly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inner_sidepart_loose_one_shared_head",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "outer_woodpin_woodpin_exact_reassembly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "outer_woodpin_woodpin_one_shared_head",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "outer_woodpin_loose_exact_reassembly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "outer_woodpin_loose_one_shared_head",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "outer_sidepart_woodpin_exact_reassembly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "outer_sidepart_woodpin_one_shared_head",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "outer_sidepart_loose_exact_reassembly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "outer_sidepart_loose_one_shared_head",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "all_combinations_same_foot_line",
+      "passed": true,
+      "detail": [
+        1400,
+        1400,
+        1400,
+        1400,
+        1400,
+        1400,
+        1400,
+        1400
+      ]
+    },
+    {
+      "check": "common_scale_160",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "common_scale_240",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "common_scale_320",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "eight_unique_combinations",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "visual_review": {
+    "reviewed": [
+      "assembly_review.png",
+      "all_combinations_review.png",
+      "head_collar_review_1x.png",
+      "parts_review.png"
+    ],
+    "sizes": [
+      160,
+      "source_1x"
+    ],
+    "backgrounds": [
+      "light",
+      "dark"
+    ],
+    "observations": [
+      "Final front-hair sizing covers exposed crown edges.",
+      "Shared neck overlap removes the previous cut-tab seam.",
+      "Head angle and face image are shared by all combinations.",
+      "Loose front hair intentionally overlaps the far eye and the cheek; visible face area differs by hairstyle."
+    ],
+    "acceptance": "candidate_for_user_review"
+  }
+}

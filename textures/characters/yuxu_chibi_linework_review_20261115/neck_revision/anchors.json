@@ -1,0 +1,27 @@
+{
+  "reference_height": 1230,
+  "outfits": {
+    "inner": {
+      "name": "内门常服",
+      "poses": {
+        "idle": {"file":"neck_revision/inner_idle.png","hair_anchor":[490,236],"ground_anchor":[450,1638],"pixel_scale":0.713,"shadow_width":560},
+        "palm": {"file":"neck_revision/inner_palm.png","hair_anchor":[574,205],"ground_anchor":[501,1347],"pixel_scale":0.805,"shadow_width":890}
+      }
+    },
+    "outer": {
+      "name": "外门常服",
+      "poses": {
+        "idle": {"file":"neck_revision/outer_idle.png","hair_anchor":[463,240],"ground_anchor":[425,1707],"pixel_scale":0.687,"shadow_width":540},
+        "palm": {"file":"neck_revision/outer_palm.png","hair_anchor":[536,206],"ground_anchor":[495,1375],"pixel_scale":0.804,"shadow_width":840}
+      }
+    }
+  },
+  "front": {
+    "shouzhen": {"file":"front_shouzhen.png","name":"守真拢发","anchor":[186,194]},
+    "xingzhou": {"file":"front_xingzhou.png","name":"行舟短发","anchor":[193,196]}
+  },
+  "back": {
+    "shouzhen": {"file":"back_shouzhen.png","name":"守真束髻","anchor":[323,271]},
+    "xingzhou": {"file":"back_xingzhou.png","name":"行舟短垂","anchor":[217,147]}
+  }
+}

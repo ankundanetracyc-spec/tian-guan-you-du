@@ -1,0 +1,146 @@
+{
+  "status": "technical_checks_passed",
+  "passed": 30,
+  "failed": 0,
+  "checks": [
+    {
+      "check": "inner_woodpin_woodpin: saved layers reconstruct assembly",
+      "passed": true
+    },
+    {
+      "check": "inner_woodpin_woodpin: every pixel outside neck patch unchanged",
+      "passed": true
+    },
+    {
+      "check": "inner_woodpin_sidepart: saved layers reconstruct assembly",
+      "passed": true
+    },
+    {
+      "check": "inner_woodpin_sidepart: every pixel outside neck patch unchanged",
+      "passed": true
+    },
+    {
+      "check": "inner_sidepart_woodpin: saved layers reconstruct assembly",
+      "passed": true
+    },
+    {
+      "check": "inner_sidepart_woodpin: every pixel outside neck patch unchanged",
+      "passed": true
+    },
+    {
+      "check": "inner_sidepart_sidepart: saved layers reconstruct assembly",
+      "passed": true
+    },
+    {
+      "check": "inner_sidepart_sidepart: every pixel outside neck patch unchanged",
+      "passed": true
+    },
+    {
+      "check": "outer_woodpin_woodpin: saved layers reconstruct assembly",
+      "passed": true
+    },
+    {
+      "check": "outer_woodpin_woodpin: every pixel outside neck patch unchanged",
+      "passed": true
+    },
+    {
+      "check": "outer_woodpin_sidepart: saved layers reconstruct assembly",
+      "passed": true
+    },
+    {
+      "check": "outer_woodpin_sidepart: every pixel outside neck patch unchanged",
+      "passed": true
+    },
+    {
+      "check": "outer_sidepart_woodpin: saved layers reconstruct assembly",
+      "passed": true
+    },
+    {
+      "check": "outer_sidepart_woodpin: every pixel outside neck patch unchanged",
+      "passed": true
+    },
+    {
+      "check": "outer_sidepart_sidepart: saved layers reconstruct assembly",
+      "passed": true
+    },
+    {
+      "check": "outer_sidepart_sidepart: every pixel outside neck patch unchanged",
+      "passed": true
+    },
+    {
+      "check": "base_inner: RGBA canvas 1024 x 1536",
+      "passed": true
+    },
+    {
+      "check": "base_outer: RGBA canvas 1024 x 1536",
+      "passed": true
+    },
+    {
+      "check": "hair_back_sidepart: RGBA canvas 1024 x 1536",
+      "passed": true
+    },
+    {
+      "check": "hair_back_sidepart: identical file to v2",
+      "passed": true
+    },
+    {
+      "check": "hair_back_woodpin: RGBA canvas 1024 x 1536",
+      "passed": true
+    },
+    {
+      "check": "hair_back_woodpin: identical file to v2",
+      "passed": true
+    },
+    {
+      "check": "hair_front_sidepart: RGBA canvas 1024 x 1536",
+      "passed": true
+    },
+    {
+      "check": "hair_front_sidepart: identical file to v2",
+      "passed": true
+    },
+    {
+      "check": "hair_front_woodpin: RGBA canvas 1024 x 1536",
+      "passed": true
+    },
+    {
+      "check": "hair_front_woodpin: identical file to v2",
+      "passed": true
+    },
+    {
+      "check": "inner: face and head pixels above y520 unchanged",
+      "passed": true
+    },
+    {
+      "check": "inner: base pixels outside patch unchanged",
+      "passed": true
+    },
+    {
+      "check": "outer: face and head pixels above y520 unchanged",
+      "passed": true
+    },
+    {
+      "check": "outer: base pixels outside patch unchanged",
+      "passed": true
+    }
+  ],
+  "user_final_aesthetic_approval": false,
+  "installed": false,
+  "runtime_verified": false,
+  "visual_review_notes": "Localized neck repair visually inspected at native sprite pixels and enlarged, with both hairstyles and both collars. Old frontal horizontal collar rim and old internal vertical neck contour removed. Head position, expression, hair and non-patch body pixels retained. This is a candidate, not user aesthetic acceptance.",
+  "evidence": [
+    "neck_before_after.png",
+    "head_fit_1x.png",
+    "assembly_review_v3.png",
+    "all_combinations_v3.png",
+    "qa/no_hair_light_dark.png"
+  ],
+  "current_part_hashes": {
+    "base_inner": "087e6346e892edf494fa641109445fbda34520d07f227b6cac936b62771bb9a4",
+    "base_outer": "2ff36fb671d92a472133cdf966a6463055fea47013d26758f6cba790416416b1",
+    "hair_back_sidepart": "05e983f587cbdf6ad8a523b01a15114b66a25d3bfcead8d90110a8b757fba99d",
+    "hair_back_woodpin": "0d077a95187f19372d3916fcca3e2e88ef0472eebace642f66250a9ab6b7b7b6",
+    "hair_front_sidepart": "4d3ecc039dd3ef64e47d79bf157a3f762bb8c511b2b130c2c63deccc8e24250e",
+    "hair_front_woodpin": "0431c07e68a6fe3769dbaa8489a02533422e10d3bca863ce8a9eabee48f58a68"
+  }
+}

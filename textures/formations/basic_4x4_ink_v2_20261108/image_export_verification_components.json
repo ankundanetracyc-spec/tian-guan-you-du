@@ -1,0 +1,64 @@
+{
+	"assets": [
+		{
+			"alpha_type": 2,
+			"asset": "sensor_1x1.png",
+			"blended_pixels": 5459,
+			"corner_alpha": [
+				0.0,
+				0.0,
+				0.0,
+				0.0
+			],
+			"export": "Godot Image.resize, Lanczos, aspect preserved, no redraw, no crop, no alpha cleanup",
+			"opaque_pixels": 788,
+			"selected_raw": "E:\\stacklands\\textures\\formations\\basic_4x4_ink_v2_20261108\\raw\\sensor_1x1.png",
+			"source_size": [
+				1254,
+				1254
+			],
+			"target_size": [
+				128,
+				128
+			],
+			"transparent_pixels": 10137,
+			"used_rect": [
+				3,
+				2,
+				123,
+				126
+			]
+		},
+		{
+			"alpha_type": 2,
+			"asset": "ward_1x2.png",
+			"blended_pixels": 9235,
+			"corner_alpha": [
+				0.0,
+				0.0,
+				0.0,
+				0.0
+			],
+			"export": "Godot Image.resize, Lanczos, aspect preserved, no redraw, no crop, no alpha cleanup",
+			"opaque_pixels": 968,
+			"selected_raw": "E:\\stacklands\\textures\\formations\\basic_4x4_ink_v2_20261108\\raw\\ward_1x2.png",
+			"source_size": [
+				887,
+				1774
+			],
+			"target_size": [
+				128,
+				256
+			],
+			"transparent_pixels": 22565,
+			"used_rect": [
+				15,
+				3,
+				98,
+				250
+			]
+		}
+	],
+	"status": "ARRAY_INK_COMPONENT_EXPORT_OK",
+	"tool": "Godot Image"
+}

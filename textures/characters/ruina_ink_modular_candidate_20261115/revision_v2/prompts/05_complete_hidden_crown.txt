@@ -1,0 +1,6 @@
+Use case: precise-object-edit / complete an occluded sprite scalp cap.
+Image 1 is the target transparent FRONT HAIR sprite, on a 1024x1536 canvas. Image 2 is its fixed bald head-and-body base used ONLY to verify fit.
+Correct ONLY the clipped/notched back-left crown at approximately x365..480,y245..325, where the separate bun and wooden pin used to occlude the scalp. Fill this missing portion with matching swept-back dark hair so the front hair is a COMPLETE natural cap even when no bun or pin is present.
+The repaired outer crown contour must be a smooth fitted arc following the base skull, not a staircase, hard rectangle, detached fragment or spiky notch. The visible hair cap should be approximately x365..660,y267..452 plus the original temple locks. No bun, no pin, no new accessory: they are a separate back layer.
+Keep the current forehead opening, right-facing three-quarter perspective, strand directions, original ear hole, hairline part, thin long temple locks, widths, colors, contrast and crisp ink texture EXACTLY unchanged everywhere else. Do NOT move, resize, rotate or recenter the hair. Do NOT change the base head direction. Do NOT include any head, face, skin, ear or clothes in the output.
+Return only the complete FRONT HAIR on the original 1024x1536 truly transparent canvas at its original registration. Keep all large transparent margins.

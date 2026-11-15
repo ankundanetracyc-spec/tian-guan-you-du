@@ -1,0 +1,712 @@
+{
+  "status": "corrected_candidate_pending_user_visual_review",
+  "user_final_aesthetic_approval": false,
+  "installed": false,
+  "canvas": [
+    1024,
+    1536
+  ],
+  "structure": "back_hair / combined_head_and_body / front_hair",
+  "head_facing": "fixed_right_three_quarter",
+  "parts": [
+    {
+      "id": "base_inner",
+      "role": "fixed_head_and_clothed_body",
+      "file": "parts/base_inner.png",
+      "sha256": "f4ac3c349b013fd1027913006f17b992c7023d4e2ca1b449852dc3b00e62d099",
+      "bbox": [
+        228,
+        279,
+        793,
+        1400
+      ],
+      "canvas": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "base_outer",
+      "role": "fixed_head_and_clothed_body",
+      "file": "parts/base_outer.png",
+      "sha256": "03cd0926127017e81ded6e573dfcc05973bf80619b909a1aceaf3cb8c0d3a77b",
+      "bbox": [
+        227,
+        279,
+        794,
+        1400
+      ],
+      "canvas": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "id": "hair_front_woodpin",
+      "role": "front",
+      "file": "parts/hair_front_woodpin.png",
+      "source": "source/front_woodpin_completed.png",
+      "sha256": "0431c07e68a6fe3769dbaa8489a02533422e10d3bca863ce8a9eabee48f58a68",
+      "bbox": [
+        363,
+        271,
+        660,
+        628
+      ],
+      "canvas": [
+        1024,
+        1536
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "hair_back_woodpin",
+      "role": "back",
+      "file": "parts/hair_back_woodpin.png",
+      "source": "source/hair_woodpin_extracted.png",
+      "sha256": "0d077a95187f19372d3916fcca3e2e88ef0472eebace642f66250a9ab6b7b7b6",
+      "bbox": [
+        249,
+        246,
+        501,
+        901
+      ],
+      "canvas": [
+        1024,
+        1536
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "hair_front_sidepart",
+      "role": "front",
+      "file": "parts/hair_front_sidepart.png",
+      "source": "source/hair_sidepart_extracted.png",
+      "sha256": "4d3ecc039dd3ef64e47d79bf157a3f762bb8c511b2b130c2c63deccc8e24250e",
+      "bbox": [
+        366,
+        248,
+        687,
+        709
+      ],
+      "canvas": [
+        1024,
+        1536
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "offset": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "hair_back_sidepart",
+      "role": "back",
+      "file": "parts/hair_back_sidepart.png",
+      "source": "source/hair_sidepart_extracted.png",
+      "sha256": "05e983f587cbdf6ad8a523b01a15114b66a25d3bfcead8d90110a8b757fba99d",
+      "bbox": [
+        217,
+        435,
+        501,
+        958
+      ],
+      "canvas": [
+        1024,
+        1536
+      ],
+      "scale": 1,
+      "rotation_degrees": 0,
+      "offset": [
+        0,
+        0
+      ]
+    }
+  ],
+  "combinations": [
+    {
+      "id": "inner_woodpin_woodpin",
+      "file": "assembled_inner_woodpin_woodpin.png",
+      "layers": [
+        "hair_back_woodpin",
+        "base_inner",
+        "hair_front_woodpin"
+      ],
+      "bbox": [
+        228,
+        246,
+        793,
+        1400
+      ],
+      "sha256": "87be7f2ab3257c9e71fe4d18a7985f873628631ab51e97185bcb0b7efbe20a0c"
+    },
+    {
+      "id": "inner_woodpin_sidepart",
+      "file": "assembled_inner_woodpin_sidepart.png",
+      "layers": [
+        "hair_back_sidepart",
+        "base_inner",
+        "hair_front_woodpin"
+      ],
+      "bbox": [
+        217,
+        271,
+        793,
+        1400
+      ],
+      "sha256": "a80bd8026f44a7e071bc8832d71f2734ec78f8d410c8a09924d3a27fcb97630c"
+    },
+    {
+      "id": "inner_sidepart_woodpin",
+      "file": "assembled_inner_sidepart_woodpin.png",
+      "layers": [
+        "hair_back_woodpin",
+        "base_inner",
+        "hair_front_sidepart"
+      ],
+      "bbox": [
+        228,
+        246,
+        793,
+        1400
+      ],
+      "sha256": "ecb57262160d51395db79f0f3993b27e3bc6c7458ba01a0922389bce2c7063fa"
+    },
+    {
+      "id": "inner_sidepart_sidepart",
+      "file": "assembled_inner_sidepart_sidepart.png",
+      "layers": [
+        "hair_back_sidepart",
+        "base_inner",
+        "hair_front_sidepart"
+      ],
+      "bbox": [
+        217,
+        248,
+        793,
+        1400
+      ],
+      "sha256": "c64d03a6c1d96f784acc985cfa6f9cc3e43c62ced65f4c1ef1f63a226e9bcda1"
+    },
+    {
+      "id": "outer_woodpin_woodpin",
+      "file": "assembled_outer_woodpin_woodpin.png",
+      "layers": [
+        "hair_back_woodpin",
+        "base_outer",
+        "hair_front_woodpin"
+      ],
+      "bbox": [
+        227,
+        246,
+        794,
+        1400
+      ],
+      "sha256": "02b694ee2456e877bf709f30911ebb8db0ea359f3c95bd74bc874510a88b34fd"
+    },
+    {
+      "id": "outer_woodpin_sidepart",
+      "file": "assembled_outer_woodpin_sidepart.png",
+      "layers": [
+        "hair_back_sidepart",
+        "base_outer",
+        "hair_front_woodpin"
+      ],
+      "bbox": [
+        217,
+        271,
+        794,
+        1400
+      ],
+      "sha256": "7300fe63bd1d15d5def36051224f3c54b8d31b411c5344e83ab880ab0a683db0"
+    },
+    {
+      "id": "outer_sidepart_woodpin",
+      "file": "assembled_outer_sidepart_woodpin.png",
+      "layers": [
+        "hair_back_woodpin",
+        "base_outer",
+        "hair_front_sidepart"
+      ],
+      "bbox": [
+        227,
+        246,
+        794,
+        1400
+      ],
+      "sha256": "d64f713e0d41ea787267487c4c381cd1d6e836868d6cc679df42a240430572d4"
+    },
+    {
+      "id": "outer_sidepart_sidepart",
+      "file": "assembled_outer_sidepart_sidepart.png",
+      "layers": [
+        "hair_back_sidepart",
+        "base_outer",
+        "hair_front_sidepart"
+      ],
+      "bbox": [
+        217,
+        248,
+        794,
+        1400
+      ],
+      "sha256": "d6af6c3006bc712b203f7ce5015a78d25aeb2988803b264f58909a233bb5bb2d"
+    }
+  ],
+  "scaled_previews": [
+    {
+      "file": "assembled_inner_woodpin_woodpin_160px.png",
+      "reference_height": 160,
+      "scale": 0.13513513513513514,
+      "canvas": [
+        138,
+        208
+      ]
+    },
+    {
+      "file": "assembled_inner_woodpin_woodpin_240px.png",
+      "reference_height": 240,
+      "scale": 0.20270270270270271,
+      "canvas": [
+        208,
+        311
+      ]
+    },
+    {
+      "file": "assembled_inner_woodpin_woodpin_320px.png",
+      "reference_height": 320,
+      "scale": 0.2702702702702703,
+      "canvas": [
+        277,
+        415
+      ]
+    },
+    {
+      "file": "assembled_inner_woodpin_sidepart_160px.png",
+      "reference_height": 160,
+      "scale": 0.13513513513513514,
+      "canvas": [
+        138,
+        208
+      ]
+    },
+    {
+      "file": "assembled_inner_woodpin_sidepart_240px.png",
+      "reference_height": 240,
+      "scale": 0.20270270270270271,
+      "canvas": [
+        208,
+        311
+      ]
+    },
+    {
+      "file": "assembled_inner_woodpin_sidepart_320px.png",
+      "reference_height": 320,
+      "scale": 0.2702702702702703,
+      "canvas": [
+        277,
+        415
+      ]
+    },
+    {
+      "file": "assembled_inner_sidepart_woodpin_160px.png",
+      "reference_height": 160,
+      "scale": 0.13513513513513514,
+      "canvas": [
+        138,
+        208
+      ]
+    },
+    {
+      "file": "assembled_inner_sidepart_woodpin_240px.png",
+      "reference_height": 240,
+      "scale": 0.20270270270270271,
+      "canvas": [
+        208,
+        311
+      ]
+    },
+    {
+      "file": "assembled_inner_sidepart_woodpin_320px.png",
+      "reference_height": 320,
+      "scale": 0.2702702702702703,
+      "canvas": [
+        277,
+        415
+      ]
+    },
+    {
+      "file": "assembled_inner_sidepart_sidepart_160px.png",
+      "reference_height": 160,
+      "scale": 0.13513513513513514,
+      "canvas": [
+        138,
+        208
+      ]
+    },
+    {
+      "file": "assembled_inner_sidepart_sidepart_240px.png",
+      "reference_height": 240,
+      "scale": 0.20270270270270271,
+      "canvas": [
+        208,
+        311
+      ]
+    },
+    {
+      "file": "assembled_inner_sidepart_sidepart_320px.png",
+      "reference_height": 320,
+      "scale": 0.2702702702702703,
+      "canvas": [
+        277,
+        415
+      ]
+    },
+    {
+      "file": "assembled_outer_woodpin_woodpin_160px.png",
+      "reference_height": 160,
+      "scale": 0.13513513513513514,
+      "canvas": [
+        138,
+        208
+      ]
+    },
+    {
+      "file": "assembled_outer_woodpin_woodpin_240px.png",
+      "reference_height": 240,
+      "scale": 0.20270270270270271,
+      "canvas": [
+        208,
+        311
+      ]
+    },
+    {
+      "file": "assembled_outer_woodpin_woodpin_320px.png",
+      "reference_height": 320,
+      "scale": 0.2702702702702703,
+      "canvas": [
+        277,
+        415
+      ]
+    },
+    {
+      "file": "assembled_outer_woodpin_sidepart_160px.png",
+      "reference_height": 160,
+      "scale": 0.13513513513513514,
+      "canvas": [
+        138,
+        208
+      ]
+    },
+    {
+      "file": "assembled_outer_woodpin_sidepart_240px.png",
+      "reference_height": 240,
+      "scale": 0.20270270270270271,
+      "canvas": [
+        208,
+        311
+      ]
+    },
+    {
+      "file": "assembled_outer_woodpin_sidepart_320px.png",
+      "reference_height": 320,
+      "scale": 0.2702702702702703,
+      "canvas": [
+        277,
+        415
+      ]
+    },
+    {
+      "file": "assembled_outer_sidepart_woodpin_160px.png",
+      "reference_height": 160,
+      "scale": 0.13513513513513514,
+      "canvas": [
+        138,
+        208
+      ]
+    },
+    {
+      "file": "assembled_outer_sidepart_woodpin_240px.png",
+      "reference_height": 240,
+      "scale": 0.20270270270270271,
+      "canvas": [
+        208,
+        311
+      ]
+    },
+    {
+      "file": "assembled_outer_sidepart_woodpin_320px.png",
+      "reference_height": 320,
+      "scale": 0.2702702702702703,
+      "canvas": [
+        277,
+        415
+      ]
+    },
+    {
+      "file": "assembled_outer_sidepart_sidepart_160px.png",
+      "reference_height": 160,
+      "scale": 0.13513513513513514,
+      "canvas": [
+        138,
+        208
+      ]
+    },
+    {
+      "file": "assembled_outer_sidepart_sidepart_240px.png",
+      "reference_height": 240,
+      "scale": 0.20270270270270271,
+      "canvas": [
+        208,
+        311
+      ]
+    },
+    {
+      "file": "assembled_outer_sidepart_sidepart_320px.png",
+      "reference_height": 320,
+      "scale": 0.2702702702702703,
+      "canvas": [
+        277,
+        415
+      ]
+    }
+  ],
+  "display_reference_height": 1184,
+  "feet_anchor": [
+    516,
+    1400
+  ],
+  "base_sources": {
+    "head": "../parts/head.png",
+    "inner_body": "../parts/body_inner.png",
+    "outer_body": "../parts/body_outer.png"
+  },
+  "hair_registration": {
+    "scale": 1,
+    "offset": [
+      0,
+      0
+    ],
+    "rotation": 0,
+    "note": "Hair was first fitted to fixed base, then extracted on the same original canvas and partitioned. No 110% upscaling from the rejected first version."
+  },
+  "foreground_cap_polygon": [
+    [
+      180,
+      230
+    ],
+    [
+      720,
+      230
+    ],
+    [
+      720,
+      455
+    ],
+    [
+      180,
+      455
+    ]
+  ],
+  "temple_polygons": {
+    "woodpin": [
+      [
+        [
+          475,
+          412
+        ],
+        [
+          514,
+          412
+        ],
+        [
+          514,
+          640
+        ],
+        [
+          464,
+          640
+        ],
+        [
+          468,
+          520
+        ],
+        [
+          473,
+          480
+        ]
+      ],
+      [
+        [
+          608,
+          408
+        ],
+        [
+          704,
+          408
+        ],
+        [
+          704,
+          660
+        ],
+        [
+          596,
+          660
+        ]
+      ]
+    ],
+    "sidepart": [
+      [
+        [
+          472,
+          409
+        ],
+        [
+          513,
+          409
+        ],
+        [
+          518,
+          532
+        ],
+        [
+          488,
+          582
+        ],
+        [
+          480,
+          612
+        ],
+        [
+          510,
+          672
+        ],
+        [
+          496,
+          721
+        ],
+        [
+          466,
+          721
+        ],
+        [
+          440,
+          630
+        ],
+        [
+          441,
+          573
+        ],
+        [
+          462,
+          520
+        ]
+      ],
+      [
+        [
+          608,
+          409
+        ],
+        [
+          710,
+          409
+        ],
+        [
+          710,
+          594
+        ],
+        [
+          597,
+          594
+        ]
+      ]
+    ]
+  },
+  "generation_mode": "built-in image_gen",
+  "prompts": [
+    "prompts/01_fit_woodpin.txt",
+    "prompts/02_fit_sidepart.txt",
+    "prompts/03_extract_woodpin.txt",
+    "prompts/04_extract_sidepart.txt",
+    "prompts/05_complete_hidden_crown.txt"
+  ],
+  "rear_layer_masks": {
+    "main_root_rect": [
+      180,
+      435,
+      500,
+      980
+    ],
+    "woodpin_attachment_polygon": [
+      [
+        300,
+        220
+      ],
+      [
+        480,
+        220
+      ],
+      [
+        490,
+        280
+      ],
+      [
+        500,
+        300
+      ],
+      [
+        420,
+        380
+      ],
+      [
+        400,
+        375
+      ],
+      [
+        380,
+        355
+      ],
+      [
+        360,
+        335
+      ],
+      [
+        350,
+        310
+      ],
+      [
+        300,
+        310
+      ]
+    ]
+  },
+  "head_coverage_mask_source": "../parts/head.png alpha > 8",
+  "layer_masks": [
+    "source/front_partition_woodpin.png",
+    "source/back_partition_woodpin.png",
+    "source/front_partition_sidepart.png",
+    "source/back_partition_sidepart.png"
+  ],
+  "source_hashes": {
+    "source/back_partition_sidepart.png": "42aee96ffec9f08511121dfbc63dd5dd0a81020cf79ddcb48714ff98a8bf5f43",
+    "source/back_partition_woodpin.png": "3d4911490ec552bb06db1138863f2508523147840ea25e02bc026af8621b59f8",
+    "source/fit_sidepart.png": "16c9ca6bd14bfdfa463a7563eee235e3f2421264b0d808561d2a00052603ba7c",
+    "source/fit_woodpin.png": "7a37ef644aa7f1bb7122a6a4e1b1fab3dfb4cfe076ef3102861e3302e6633676",
+    "source/front_partition_sidepart.png": "13609e2c59a17e5dae80353df481e7f10cf9b06e6a252c24c55129ecea90f8b7",
+    "source/front_partition_woodpin.png": "e8754ef277c4d4757943a3325ecfd11448a69ef73acf249b31319b75166f966b",
+    "source/front_woodpin_completed.png": "fed3f651291ad89bb7ddd3dc0fff8784e7115719a7227fe38c0275a1ddeb9650",
+    "source/hair_sidepart_extracted.png": "ebe047b65018223b50f977fe1218d7858ff71ce42df9f9e77e37833fe895adea",
+    "source/hair_woodpin_extracted.png": "d4edcd90694bc761e62655ecae49b44ea9e5e528ee9a64d7fbd57dfc5bc09e71"
+  }
+}

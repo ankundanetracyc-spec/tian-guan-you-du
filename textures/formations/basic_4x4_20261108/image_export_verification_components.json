@@ -1,0 +1,210 @@
+{
+	"assets": [
+		{
+			"alpha_type": 2.0,
+			"asset": "sensor_1x1.png",
+			"blended_pixels": 5025.0,
+			"corner_alpha": [
+				0.0,
+				0.0,
+				0.0,
+				0.0
+			],
+			"export": "Godot Image.resize, Lanczos, aspect preserved, no redraw, no crop, no alpha cleanup",
+			"opaque_pixels": 708.0,
+			"selected_raw": "sensor_1x1.png",
+			"source_size": [
+				1254.0,
+				1254.0
+			],
+			"target_size": [
+				128.0,
+				128.0
+			],
+			"transparent_pixels": 10651.0,
+			"used_rect": [
+				2.0,
+				2.0,
+				124.0,
+				124.0
+			]
+		},
+		{
+			"alpha_type": 2.0,
+			"asset": "ward_1x2.png",
+			"blended_pixels": 22519.0,
+			"corner_alpha": [
+				0.0,
+				0.0,
+				0.0,
+				0.0
+			],
+			"export": "Godot Image.resize, Lanczos, aspect preserved, no redraw, no crop, no alpha cleanup",
+			"opaque_pixels": 500.0,
+			"selected_raw": "ward_1x2_v2.png",
+			"source_size": [
+				887.0,
+				1774.0
+			],
+			"target_size": [
+				128.0,
+				256.0
+			],
+			"transparent_pixels": 9749.0,
+			"used_rect": [
+				2.0,
+				5.0,
+				124.0,
+				249.0
+			]
+		},
+		{
+			"alpha_type": 2.0,
+			"asset": "counter_2x1.png",
+			"blended_pixels": 24818.0,
+			"corner_alpha": [
+				0.0,
+				0.0,
+				0.0,
+				0.0
+			],
+			"export": "Godot Image.resize, Lanczos, aspect preserved, no redraw, no crop, no alpha cleanup",
+			"opaque_pixels": 467.0,
+			"selected_raw": "counter_2x1_v2.png",
+			"source_size": [
+				1774.0,
+				887.0
+			],
+			"target_size": [
+				256.0,
+				128.0
+			],
+			"transparent_pixels": 7483.0,
+			"used_rect": [
+				0.0,
+				0.0,
+				254.0,
+				128.0
+			]
+		},
+		{
+			"alpha_type": 2.0,
+			"asset": "filter_1x1.png",
+			"blended_pixels": 10440.0,
+			"corner_alpha": [
+				0.0,
+				0.0,
+				0.0,
+				0.0
+			],
+			"export": "Godot Image.resize, Lanczos, aspect preserved, no redraw, no crop, no alpha cleanup",
+			"opaque_pixels": 451.0,
+			"selected_raw": "filter_1x1.png",
+			"source_size": [
+				1254.0,
+				1254.0
+			],
+			"target_size": [
+				128.0,
+				128.0
+			],
+			"transparent_pixels": 5493.0,
+			"used_rect": [
+				9.0,
+				6.0,
+				109.0,
+				115.0
+			]
+		},
+		{
+			"alpha_type": 2.0,
+			"asset": "split_1x1.png",
+			"blended_pixels": 7561.0,
+			"corner_alpha": [
+				0.0,
+				0.0,
+				0.0,
+				0.0
+			],
+			"export": "Godot Image.resize, Lanczos, aspect preserved, no redraw, no crop, no alpha cleanup",
+			"opaque_pixels": 369.0,
+			"selected_raw": "split_1x1.png",
+			"source_size": [
+				1254.0,
+				1254.0
+			],
+			"target_size": [
+				128.0,
+				128.0
+			],
+			"transparent_pixels": 8454.0,
+			"used_rect": [
+				1.0,
+				5.0,
+				126.0,
+				120.0
+			]
+		},
+		{
+			"alpha_type": 2.0,
+			"asset": "merge_1x1.png",
+			"blended_pixels": 10546.0,
+			"corner_alpha": [
+				0.0,
+				0.0,
+				0.0,
+				0.0
+			],
+			"export": "Godot Image.resize, Lanczos, aspect preserved, no redraw, no crop, no alpha cleanup",
+			"opaque_pixels": 295.0,
+			"selected_raw": "merge_1x1.png",
+			"source_size": [
+				1254.0,
+				1254.0
+			],
+			"target_size": [
+				128.0,
+				128.0
+			],
+			"transparent_pixels": 5543.0,
+			"used_rect": [
+				0.0,
+				2.0,
+				123.0,
+				124.0
+			]
+		},
+		{
+			"alpha_type": 2,
+			"asset": "rhythm_2x1.png",
+			"blended_pixels": 16458,
+			"corner_alpha": [
+				0.0,
+				0.0,
+				0.0,
+				0.0
+			],
+			"export": "Godot Image.resize, Lanczos, aspect preserved, no redraw, no crop, no alpha cleanup",
+			"opaque_pixels": 1860,
+			"selected_raw": "rhythm_2x1_v2.png",
+			"source_size": [
+				1774,
+				887
+			],
+			"target_size": [
+				256,
+				128
+			],
+			"transparent_pixels": 14450,
+			"used_rect": [
+				0,
+				4,
+				256,
+				122
+			],
+			"visible_yellow_speckles": 0
+		}
+	],
+	"status": "ARRAY_COMPONENT_EXPORT_OK",
+	"tool": "Godot Image"
+}

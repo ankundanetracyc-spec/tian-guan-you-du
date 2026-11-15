@@ -1,0 +1,57 @@
+{
+  "package_id": "modular_ink_paperdoll_candidate_20261114",
+  "status": "candidate_for_review",
+  "installed": false,
+  "user_aesthetic_approval": false,
+  "reference": "source/user_style_reference.png",
+  "composition_canvas": {
+    "width": 1064,
+    "height": 1478,
+    "origin": "top_left"
+  },
+  "replaceable_slots": [
+    {
+      "id": "body",
+      "display_name": "身体／衣装",
+      "parts": ["lower_legs_01", "sleeve_far_01", "robe_core_01", "head_base_01", "sleeve_near_01", "hand_far_01", "hand_near_01", "face_marks_01"]
+    },
+    {
+      "id": "hair",
+      "display_name": "发型",
+      "parts": ["hair_back_01", "hair_front_01"]
+    },
+    {
+      "id": "eyes",
+      "display_name": "眼睛",
+      "parts": ["eyes_01"]
+    }
+  ],
+  "static_idle_layers": [
+    {"id":"hair_back_01","file":"parts/hair_back_01.png","source_size":[1064,1478],"position":[0,0],"scale":[1.0,1.0],"z":0},
+    {"id":"lower_legs_01","file":"parts/lower_legs_01.png","source_size":[1662,946],"position":[276,1138],"scale":[0.4,0.4],"z":1},
+    {"id":"sleeve_far_01","file":"parts/sleeve_far_01.png","source_size":[1064,1478],"position":[523,547],"scale":[0.43,0.43],"z":2},
+    {"id":"robe_core_01","file":"parts/robe_core_01.png","source_size":[1064,1478],"position":[170,365],"scale":[0.71,0.71],"z":3},
+    {"id":"head_base_01","file":"parts/head_base_01.png","source_size":[1064,1478],"position":[285,72],"scale":[0.65,0.65],"z":4},
+    {"id":"face_marks_01","file":"parts/face_marks_01.png","source_size":[1064,1478],"position":[68,46],"scale":[0.9,0.9],"z":5},
+    {"id":"eyes_01","file":"parts/eyes_01.png","source_size":[1064,1478],"position":[92,60],"scale":[0.85,0.85],"z":6},
+    {"id":"sleeve_near_01","file":"parts/sleeve_near_01.png","source_size":[1064,1478],"position":[126,482],"scale":[0.47,0.47],"z":7},
+    {"id":"hand_far_01","file":"parts/hand_far_01.png","source_size":[1064,1478],"position":[85,95],"scale":[0.9,0.9],"z":8},
+    {"id":"hand_near_01","file":"parts/hand_near_01.png","source_size":[1064,1478],"position":[48,49],"scale":[0.9,0.9],"z":9},
+    {"id":"hair_front_01","file":"parts/hair_front_01.png","source_size":[1064,1478],"position":[-72,-75],"scale":[1.1,1.1],"z":10}
+  ],
+  "pose_revision": "hand_and_pose_redraw_candidate_v2; idle modular layers have not been updated to match",
+  "attack_effects": [
+    {"pose":"07_slash", "file":"effects/07_slash_arc.png", "alignment":"pending_visual_review"},
+    {"pose":"08_thrust", "file":"effects/08_thrust_trail.png", "alignment":"pending_visual_review"}
+  ],
+  "pose_images": [
+    "poses/01_idle.png",
+    "poses/02_move.png",
+    "poses/03_evade.png",
+    "poses/04_guard.png",
+    "poses/05_hit.png",
+    "poses/06_stagger.png",
+    "poses/07_slash.png",
+    "poses/08_thrust.png"
+  ]
+}

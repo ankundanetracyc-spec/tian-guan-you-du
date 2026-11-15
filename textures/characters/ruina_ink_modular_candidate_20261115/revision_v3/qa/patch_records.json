@@ -1,0 +1,48 @@
+[
+  {
+    "outfit": "inner",
+    "crop": [
+      400,
+      472,
+      656,
+      728
+    ],
+    "generated_canvas": [
+      1254,
+      1254
+    ],
+    "patch_mask": "source/neck_inner_patch_mask.png",
+    "changed_bbox": [
+      462,
+      520,
+      596,
+      628
+    ],
+    "changed_pixels": 8427,
+    "face_pixels_unchanged": true,
+    "outside_mask_unchanged": true
+  },
+  {
+    "outfit": "outer",
+    "crop": [
+      400,
+      472,
+      656,
+      728
+    ],
+    "generated_canvas": [
+      1254,
+      1254
+    ],
+    "patch_mask": "source/neck_outer_patch_mask.png",
+    "changed_bbox": [
+      455,
+      520,
+      595,
+      643
+    ],
+    "changed_pixels": 9654,
+    "face_pixels_unchanged": true,
+    "outside_mask_unchanged": true
+  }
+]

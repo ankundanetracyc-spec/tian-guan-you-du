@@ -1,0 +1,274 @@
+{
+  "status": "static_checks_complete_candidate_for_user_review",
+  "passed": 47,
+  "failed": 0,
+  "checks": [
+    {
+      "check": "base_inner_rgba_canvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "base_inner_transparent_margins",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "base_inner_file_hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "base_outer_rgba_canvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "base_outer_transparent_margins",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "base_outer_file_hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "hair_front_woodpin_rgba_canvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "hair_front_woodpin_transparent_margins",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "hair_front_woodpin_file_hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "hair_back_woodpin_rgba_canvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "hair_back_woodpin_transparent_margins",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "hair_back_woodpin_file_hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "hair_front_sidepart_rgba_canvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "hair_front_sidepart_transparent_margins",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "hair_front_sidepart_file_hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "hair_back_sidepart_rgba_canvas",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "hair_back_sidepart_transparent_margins",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "hair_back_sidepart_file_hash",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "base_inner_exact_original_head_body_merge",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "base_outer_exact_original_head_body_merge",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "both_outfits_exact_same_face",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "woodpin_near_eye_uncovered",
+      "passed": true,
+      "detail": {
+        "maximum_front_hair_alpha": 0
+      }
+    },
+    {
+      "check": "woodpin_far_eye_uncovered",
+      "passed": true,
+      "detail": {
+        "maximum_front_hair_alpha": 0
+      }
+    },
+    {
+      "check": "woodpin_mouth_uncovered",
+      "passed": true,
+      "detail": {
+        "maximum_front_hair_alpha": 0
+      }
+    },
+    {
+      "check": "sidepart_near_eye_uncovered",
+      "passed": true,
+      "detail": {
+        "maximum_front_hair_alpha": 0
+      }
+    },
+    {
+      "check": "sidepart_far_eye_uncovered",
+      "passed": true,
+      "detail": {
+        "maximum_front_hair_alpha": 2
+      }
+    },
+    {
+      "check": "sidepart_mouth_uncovered",
+      "passed": true,
+      "detail": {
+        "maximum_front_hair_alpha": 0
+      }
+    },
+    {
+      "check": "inner_woodpin_woodpin_exact_three_layer_reassembly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inner_woodpin_woodpin_one_combined_base",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inner_woodpin_sidepart_exact_three_layer_reassembly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inner_woodpin_sidepart_one_combined_base",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inner_sidepart_woodpin_exact_three_layer_reassembly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inner_sidepart_woodpin_one_combined_base",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inner_sidepart_sidepart_exact_three_layer_reassembly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "inner_sidepart_sidepart_one_combined_base",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "outer_woodpin_woodpin_exact_three_layer_reassembly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "outer_woodpin_woodpin_one_combined_base",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "outer_woodpin_sidepart_exact_three_layer_reassembly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "outer_woodpin_sidepart_one_combined_base",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "outer_sidepart_woodpin_exact_three_layer_reassembly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "outer_sidepart_woodpin_one_combined_base",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "outer_sidepart_sidepart_exact_three_layer_reassembly",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "outer_sidepart_sidepart_one_combined_base",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "all_foot_lines_equal",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "160px_common_display_scale",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "240px_common_display_scale",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "check": "320px_common_display_scale",
+      "passed": true,
+      "detail": null
+    }
+  ],
+  "user_final_aesthetic_approval": false,
+  "installed": false,
+  "runtime_tested": false,
+  "visual_review": {
+    "evidence": [
+      "before_after_hair.png",
+      "assembly_review_v2.png",
+      "three_layer_parts.png",
+      "head_fit_1x.png",
+      "all_combinations_v2.png"
+    ],
+    "observations": [
+      "Head and body are now one fixed PNG per outfit.",
+      "Both hairstyles use fitted right-facing three-quarter roots.",
+      "Near ear, both eyes and mouth remain visible.",
+      "The wooden-pin cap has an independently completed crown for back-hair swaps.",
+      "The front/back root overlap was reviewed in all eight combinations."
+    ],
+    "limitations": "Static appearance candidate; user aesthetic approval and game animation validation remain separate."
+  }
+}

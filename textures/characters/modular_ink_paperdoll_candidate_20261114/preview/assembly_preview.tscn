@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://textures/characters/modular_ink_paperdoll_candidate_20261114/preview/assembly_preview.gd" id="1"]
+
+[node name="ModularInkAssemblyPreview" type="Node2D"]
+script = ExtResource("1")

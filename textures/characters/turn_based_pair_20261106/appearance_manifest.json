@@ -1,0 +1,98 @@
+{
+  "date": "2026-11-06",
+  "mode": "built-in image_gen",
+  "runtime_selection": "BattleEntityData.gender: 0 male, 1 female",
+  "female_hair_front_style": 0,
+  "female_hair_back_style": 0,
+  "female_hairstyle": "清簪垂鬓 + 清簪半束",
+  "female_movement_rig": "shared male101; not female-native reconstruction",
+  "active_basic_looks": 2,
+  "source_assets": {
+    "female_atlas": {
+      "path": "textures/characters/turn_based_pair_20261106/female_atlas_master_v1.png",
+      "sha256": "402b5e2770ad5db03b780b7c59a5136b22ce16930e3f58ae41e0283b5325a5db"
+    },
+    "female_front_reference": {
+      "path": "mods/appearance/ink_three_variants_20261004/female/hair_front/01.png",
+      "sha256": "821fe4406c90fcfc0a9cafe2048403fbdfb98aa0bafce0698fcf912e7d1f7681"
+    },
+    "female_back_reference": {
+      "path": "mods/appearance/ink_three_variants_20261004/female/hair_back/01.png",
+      "sha256": "0449a25c7ee9807332770849d3ea11f66ff4a41da8891daa3995f9c8deb6321f"
+    },
+    "female_clothing_reference": {
+      "path": "mods/appearance/ink_three_variants_20261004/female/clothing/06.png",
+      "sha256": "af11228234e53983fece2b18b9b67e1151fa615102fb48e525eabec5f9bff3d7"
+    },
+    "male_body": {
+      "path": "tools/action_battle_test/art/guigu_native_first_20261105/sprite_85649.png",
+      "sha256": "89b58e63d46a23f5bd6b11b61c4d178b14daf1ba087d9220d15bb76ad9888349"
+    },
+    "male_hair": {
+      "path": "tools/action_battle_test/art/guigu_native_first_20261105/sprite_87679.png",
+      "sha256": "79299a97b9cf8761b0878277c5836f578519df5e3da7219aa264748c2fcc91c5"
+    },
+    "female_hair_v2": {
+      "path": "textures/characters/turn_based_pair_20261106/female_hair_layers_v2.png",
+      "sha256": "627bb4482a8145d7cc2da94519223fb5bd4b91610b24d5a18a6349baadda74fb"
+    }
+  },
+  "female_runtime_native_directory": "textures/characters/turn_based_pair_20261106/female_native_v3",
+  "female_runtime_mesh_count": 8,
+  "shared_base_head_canvas": [
+    24,
+    24
+  ],
+  "head_and_hair_layers": "independent 24x24 base head, 21x56 front hair, 21x56 back hair",
+  "runtime_native_assets": {
+    "hair_back.png": {
+      "canvas": [
+        21,
+        56
+      ],
+      "sha256": "4b39c1982a5d256aa16caaf29d16c862c8b4ad159612389a4baefc348e2a6064"
+    },
+    "hair_front.png": {
+      "canvas": [
+        21,
+        56
+      ],
+      "sha256": "a562e9ffb22e2535732bbb43305b1ef9b7f656650a14b2fde2d1fd242c5a5552"
+    },
+    "sprite_65806.png": {
+      "canvas": [
+        24,
+        24
+      ],
+      "sha256": "0839360c06fd031985cee19a69295bfa220b5dad01a3e206ce7654b480722411"
+    },
+    "sprite_79543.png": {
+      "canvas": [
+        60,
+        60
+      ],
+      "sha256": "750348c07dc92116e2217df42a130ee84fa29c4afab42616f4619bca8f530806"
+    },
+    "sprite_84807.png": {
+      "canvas": [
+        60,
+        60
+      ],
+      "sha256": "13add4f2284d7a17dbdca32220d458efdd8402282f380588173b0e1386fa4d09"
+    },
+    "sprite_85649.png": {
+      "canvas": [
+        60,
+        100
+      ],
+      "sha256": "b66703715923e74c66e0620126b46ffd9f73ee1a31a982d2bb6440f5394e8579"
+    },
+    "sprite_87557.png": {
+      "canvas": [
+        50,
+        80
+      ],
+      "sha256": "955faae6129b6ba21c39a69a6e65b34e84c2c25cc070ebe1bc4cad7c8bc155e6"
+    }
+  }
+}

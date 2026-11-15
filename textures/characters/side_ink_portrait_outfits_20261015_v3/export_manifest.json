@@ -1,0 +1,18 @@
+{
+  "canvas": [2048, 2048],
+  "ground_origin": [1024, 1900],
+  "reference_visible_height": 1375,
+  "registration": "Manually registered foot midpoint and baseline for each source; one authoring scale per gender derived from idle. No runtime bounds fitting, per-pose scale or auto-centering.",
+  "poses": [
+    {"source": "source/male_idle.png", "output": "male_idle.png", "source_origin": [650, 1212], "authoring_scale": 1.3560157791},
+    {"source": "source/male_chop.png", "output": "male_chop.png", "source_origin": [625, 1191], "authoring_scale": 1.3560157791},
+    {"source": "source/female_idle.png", "output": "female_idle.png", "source_origin": [656, 1191], "authoring_scale": 1.4721627409},
+    {"source": "source/female_chop.png", "output": "female_chop.png", "source_origin": [617, 1198], "authoring_scale": 1.4721627409}
+  ],
+  "landmarks": {
+    "male_idle": {"top_of_head": [652,198], "foot_baseline_y":1212},
+    "female_idle": {"top_of_head": [634,257], "foot_baseline_y":1191},
+    "male_chop": {"chopping_fingertip": [1130,914], "foot_baseline_y":1191},
+    "female_chop": {"chopping_fingertip": [1127,928], "foot_baseline_y":1198}
+  }
+}

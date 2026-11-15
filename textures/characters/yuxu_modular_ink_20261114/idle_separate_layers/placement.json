@@ -1,0 +1,10 @@
+{
+  "pose": "idle",
+  "facing": "screen_right",
+  "composition_order": ["hair_back", "body_and_face", "hair_front"],
+  "layers": {
+    "hair_back": { "file": "hair_back.png", "offset": [-8, -158] },
+    "body_and_face": { "file": "body_and_face.png", "offset": [0, 0] },
+    "hair_front": { "file": "hair_front.png", "offset": [95, -61] }
+  }
+}

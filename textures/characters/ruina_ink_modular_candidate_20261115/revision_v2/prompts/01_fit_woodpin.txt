@@ -1,0 +1,12 @@
+Use case: precise-object-edit, hair fitting to a locked game-character base.
+Image 1 is the EDIT TARGET: a 1024x1536 transparent sprite with its bald head and clothed body already permanently joined. Add only the WOODEN-PIN HALF-UP HAIRSTYLE to this exact character. Images 2 and 3 are hairstyle identity references only, not their frontal viewing angle.
+
+Preserve the target's canvas, head position and size, the exact right-facing three-quarter skull/ear/nose direction, facial features, face expression, neck, collar, entire robe, hands, feet and drawing style. Do NOT enlarge, move, rotate or redraw the head/body. The existing head occupies approximately x395..643, y279..520. Fit the hair TO that skull.
+
+Hair design: ink-black swept-back center-parted hair, a modest half-up knot behind the crown with one simple horizontal wooden pin, long straight-to-gently-waved loose back hair and two fine temple locks, matching the reference identity.
+Critical correction: This must be a true RIGHT-FACING THREE-QUARTER hairstyle, with perspective matching the existing head. The far side is compressed. The hairline part follows the forward forehead, to the right of the skull center. A close-fitting scalp shell only about 10–18 pixels outside the bald skull; keep the original skull's volume clearly readable. Do not create a huge frontal wig, bulky pompadour, thick side puff or giant curtain.
+Keep BOTH eyebrows and BOTH eyes visible. Keep the nose, mouth, jawline and main cheek area clear. Temple locks grow at the temples just in front of the ear and along the far-side outside face edge; they must not cut across the eye, mouth or center of the cheek. The near ear remains naturally partly visible.
+The bun belongs to the back/top of the head, toward screen-left of the face, and attaches continuously to the swept-back crown. Back hair falls BEHIND neck and shoulders, mainly down the screen-left back of this right-facing body, with restrained width, ending around the waist. It must not appear as a symmetric front-facing curtain or a second hair cap behind the first.
+Style exactly matches the target: confident dark ink outlines, muted charcoal hair masses, spare dry-brush shadow planes. No bright highlights, no fuzzy halos.
+
+Return the single completed dressed character with correctly fitted hair, on the same transparent 1024x1536 canvas at the exact same coordinates. No labels, no extra characters, no comparison sheet.

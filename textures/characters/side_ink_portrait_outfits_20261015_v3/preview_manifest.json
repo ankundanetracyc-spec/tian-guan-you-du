@@ -1,0 +1,17 @@
+{
+  "version": "portrait_default_outfits_v3",
+  "canvas": [2048,2048],
+  "format": "RGBA8",
+  "ground_origin": [1024,1900],
+  "standard_idle_height": 1375,
+  "wardrobe": "wardrobe.json",
+  "poses": {"male":["male_idle.png","male_chop.png"],"female":["female_idle.png","female_chop.png"]},
+  "generation": "Built-in image_gen edits of approved full-body poses with current portrait costume and hair references; generation_prompts.json records final prompts.",
+  "registration": "export_manifest.json; fixed per-gender authoring scale and manually registered ground origins. No runtime per-pose fitting.",
+  "appearance": "Blank warm sideface, right-facing, simplified dry-brush shadows, few large costume motifs, middle-parted loose black long hair without bun or ribbons.",
+  "hand_orientation": "Palm toward viewer; four fingers together pointing down-right; thumb on outer edge, five fingers.",
+  "fx_pack": "res://textures/vfx/ink_chop_sequence_20261015_v1/chop_effects.tres",
+  "preview_scene": "res://tscn/scene/BattlePoseLibraryShowcase.tscn",
+  "controls": {"Tab":"male/female","P":"portrait reference","C":"comparison","Space":"pause","Left/Right":"step frame"},
+  "scope": "Only two selected outfits in independent preview. Complete pose sprites, not modular hair/clothes. Formal character selection, saves and battle logic untouched."
+}

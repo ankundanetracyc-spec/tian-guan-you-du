@@ -1,0 +1,162 @@
+{
+  "package": "yuxu_shouzhen_bone_redraw_20261115_v2",
+  "created_date": "2026-11-15",
+  "orientation": "right-facing profile",
+  "candidate_status": "待审阅候选；未获用户最终美术认可",
+  "user_final_aesthetic_approval": false,
+  "runtime_installed": false,
+  "rig_binding_status": "unbound; texture and mesh size template only",
+  "source_policy": "本轮部件为全新生成；未复制旧试作贴图、分件或骨骼文件。",
+  "template": {
+    "texture_to_mesh_scale": "2:1",
+    "reference": "本机《归墟行：人界篇》局内骨骼分件贴图尺寸测量",
+    "note": "仅使用分件贴图与网格尺寸作规格参照；此包未复制原游戏的骨架层级、权重或贴图。"
+  },
+  "style_and_identity_references": [
+    {
+      "path": "tools/action_battle_test/art/yuxu_fullbody_v15/cutout.png",
+      "sha256": "2b468e1a647513fbd31fc94c95f229fe9a4708b036bd3e9efa6951a7a19b4bdb"
+    },
+    {
+      "path": "tools/action_battle_test/art/yuxu_fullbody_v15/body.png",
+      "sha256": "7492f1ef54c3f24770528d99691f9a0e541cd2b125b60fe3e66c2f65dbb2ab87"
+    },
+    {
+      "path": "mods/appearance/ink_three_variants_20261004/male/clothing/06.png",
+      "sha256": "999a8d6e5f63ce25c3a409cd1d21974688ee86d322542844762b8a8185a9bd78"
+    },
+    {
+      "path": "mods/appearance/ink_three_variants_20261004/male/hair_front/07.png",
+      "sha256": "14491c88ddb54f5636a71e4a4aba1750e87046d915cea090ca0a5580dc002a13"
+    },
+    {
+      "path": "mods/appearance/ink_three_variants_20261004/male/hair_back/07.png",
+      "sha256": "cd28c5d668e383959cacf73aea61465d082d34bd90c369404bdc911e56d7270e"
+    }
+  ],
+  "part_assets": [
+    {
+      "key": "torso",
+      "label": "躯干长袍",
+      "file": "torso.png",
+      "source_file": "source_generated/torso_original.png",
+      "generated_id": "exec-1ca0a746-faf6-4237-a0fc-846550de4183.png",
+      "texture_width": 390,
+      "texture_height": 1030,
+      "mesh_width": 195,
+      "mesh_height": 515,
+      "role": "躯干与长袍本体",
+      "raw_sha256": "1997726638d09110cc607c7f549120554d00b5b822fd6441ff3a686a235e2bb5",
+      "texture_sha256": "1bf83afa9b98bfbaa9e432ed87fad9fe30973e5e1c634eb2de59596bd9b8fd6a"
+    },
+    {
+      "key": "sleeve_near",
+      "label": "近侧袖臂",
+      "file": "sleeve_near.png",
+      "source_file": "source_generated/sleeve_near_original.png",
+      "generated_id": "exec-6ecb367d-db1f-4b60-bc8c-60952db0d91a.png",
+      "texture_width": 236,
+      "texture_height": 568,
+      "mesh_width": 118,
+      "mesh_height": 284,
+      "role": "近侧弯臂袖与手",
+      "raw_sha256": "0c24a51405a02a7beda0551a7b515f2d69c1e02a9bc9b16d202e604380043c87",
+      "texture_sha256": "0aa956d09f684b58c1b661a6412be79716d2bf76b4c055b3720b6b29a8511392"
+    },
+    {
+      "key": "sleeve_far",
+      "label": "远侧袖臂",
+      "file": "sleeve_far.png",
+      "source_file": "source_generated/sleeve_far_original.png",
+      "generated_id": "exec-23ab8da6-e067-4302-95ef-d4065eddf0bd.png",
+      "texture_width": 236,
+      "texture_height": 568,
+      "mesh_width": 118,
+      "mesh_height": 284,
+      "role": "远侧下垂袖臂与手",
+      "raw_sha256": "d5d7b2a6baa538a973d53d58c949f227b18cd43b0abcd8ed9dd83eed73bceea7",
+      "texture_sha256": "098f6f27cf58e5aa59b1bc1a82359127fcb9db61567a36afd7bf60aff629f1cb"
+    },
+    {
+      "key": "head_neck",
+      "label": "头颈",
+      "file": "head_neck.png",
+      "source_file": "source_generated/head_neck_original.png",
+      "generated_id": "exec-22aee11a-7007-4467-a730-38bdb57ff1d5.png",
+      "texture_width": 160,
+      "texture_height": 246,
+      "mesh_width": 80,
+      "mesh_height": 123,
+      "role": "空白侧脸头颈",
+      "raw_sha256": "ddbe6e9a9bb62409d7d473800fe911ebb4edd19d5dd39f827ffadcb6edc12594",
+      "texture_sha256": "b4b01af223ee86468298a0b506e80778aed38510309ac30b18b406953397aea5"
+    },
+    {
+      "key": "hair",
+      "label": "守真发型",
+      "file": "hair.png",
+      "source_file": "source_generated/hair_original.png",
+      "generated_id": "exec-4b0948f2-b1d4-46ac-81fe-0863953651bb.png",
+      "texture_width": 268,
+      "texture_height": 618,
+      "mesh_width": 134,
+      "mesh_height": 309,
+      "role": "守真拢发与长束尾组合",
+      "raw_sha256": "916cef6b7360a57ae4d261d8159a21239452859cf149bd99ba01537c57e6dc48",
+      "texture_sha256": "5ba2328864c4f3142498163e3dbd915a44eb149be9d91e084241f9f0319f4fdc"
+    },
+    {
+      "key": "mantle",
+      "label": "肩部外层",
+      "file": "mantle.png",
+      "source_file": "source_generated/mantle_original.png",
+      "generated_id": "exec-b00d324e-27e7-4aef-b2f7-cfb24147d81f.png",
+      "texture_width": 244,
+      "texture_height": 194,
+      "mesh_width": 122,
+      "mesh_height": 97,
+      "role": "肩部外层衣片",
+      "raw_sha256": "1d3fc329b5315e5eae039ef569b7a19c2915f6f77d7095d83567bde747767428",
+      "texture_sha256": "4ec9089e36cd3d5d8e4a0f977cacd52b5a3eee957a7eaa56f56cb922b425f50b"
+    },
+    {
+      "key": "shoe_near",
+      "label": "近侧布靴",
+      "file": "shoe_near.png",
+      "source_file": "source_generated/shoe_near_original.png",
+      "generated_id": "exec-8f724305-8b10-476f-86b8-ba44d8b7f210.png",
+      "texture_width": 194,
+      "texture_height": 226,
+      "mesh_width": 97,
+      "mesh_height": 113,
+      "role": "近侧布靴",
+      "raw_sha256": "80ea207735adcf6621877008ac45a6079c2f714c186e9425657d4f7acbf22791",
+      "texture_sha256": "3027134c4b73ffa6928b6b4eaf8759d5b5966bac614687864c923dbd62678089"
+    },
+    {
+      "key": "shoe_far",
+      "label": "远侧布靴",
+      "file": "shoe_far.png",
+      "source_file": "source_generated/shoe_far_original.png",
+      "generated_id": "exec-15009546-2e66-4ed3-8ccc-8f08c5718a19.png",
+      "texture_width": 194,
+      "texture_height": 226,
+      "mesh_width": 97,
+      "mesh_height": 113,
+      "role": "远侧布靴",
+      "raw_sha256": "9e55128fb0814c816310a304df010e8ee8a41b8f5755fefbf23c6210b0b89d2e",
+      "texture_sha256": "699103d88bb678011cf7239d81000f43eb387926553db5156c9316596dc269b3"
+    }
+  ],
+  "normalization": {
+    "method": "保持长宽比缩放并居中到透明画布；高质量双三次缩小",
+    "final_textures_match_template_dimensions": true,
+    "source_images_preserved": true
+  },
+  "review_image": "review/parts_overview.png",
+  "notes": [
+    "服装身份：玉虚内门常服 male/clothing/06.png。",
+    "发型身份：守真拢发 07 + 守真束髻 07。",
+    "未接入运行时、未绑定骨骼、未宣称通过美术验收。"
+  ]
+}

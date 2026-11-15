@@ -1,0 +1,11 @@
+{
+  "status": "user_rejected_hair_registration",
+  "reason": "User requested head and body as one base and rejected the previous hair placement. Front caps were oversized and inconsistent with fixed three-quarter head perspective; far-eye and cheek occlusion and front/back roots need revision.",
+  "user_final_aesthetic_approval": false,
+  "previous_technical_checks_retained": {
+    "passed": 42,
+    "failed": 0,
+    "meaning": "File geometry and reassembly only; these do not establish visual correctness."
+  },
+  "replacement_candidate": "revision_v2"
+}

@@ -1,0 +1,300 @@
+{
+	"canvas": [
+		2048,
+		2048
+	],
+	"grip_to_tip": 780,
+	"ground": [
+		1024,
+		1900
+	],
+	"poses": {
+		"cut": {
+			"canvas_translation": [
+				129.0,
+				198.500854492188
+			],
+			"front": [
+				[
+					813,
+					716
+				],
+				[
+					827,
+					712
+				],
+				[
+					839,
+					716
+				],
+				[
+					847,
+					718
+				],
+				[
+					857,
+					716
+				],
+				[
+					872,
+					718
+				],
+				[
+					876,
+					747
+				],
+				[
+					853,
+					756
+				],
+				[
+					828,
+					744
+				],
+				[
+					812,
+					732
+				]
+			],
+			"grip": [
+				841,
+				717
+			],
+			"grip_canvas": [
+				1329.47045898438,
+				1221.9697265625
+			],
+			"ground": [
+				627,
+				1192
+			],
+			"guard_distance": 48.0,
+			"hand_rect": [
+				809,
+				674,
+				72,
+				80
+			],
+			"sword_angle_degrees": 39.5638878427718,
+			"tip": [
+				1192,
+				1007
+			],
+			"weapon_hand": "same hand as confirmed held idle; far left arm in the unmirrored right-facing art"
+		},
+		"finish": {
+			"canvas_translation": [
+				129.0,
+				308.4130859375
+			],
+			"front": [
+				[
+					810,
+					539
+				],
+				[
+					828,
+					535
+				],
+				[
+					846,
+					535
+				],
+				[
+					857,
+					533
+				],
+				[
+					866,
+					539
+				],
+				[
+					868,
+					568
+				],
+				[
+					807,
+					568
+				]
+			],
+			"grip": [
+				835,
+				545
+			],
+			"grip_canvas": [
+				1320.90588378906,
+				1086.36364746094
+			],
+			"ground": [
+				627,
+				1115
+			],
+			"guard_distance": 38.0,
+			"hand_rect": [
+				807,
+				509,
+				59,
+				62
+			],
+			"sword_angle_degrees": -0.710829312867451,
+			"thumb": [
+				[
+					833,
+					513
+				],
+				[
+					845,
+					514
+				],
+				[
+					856,
+					525
+				],
+				[
+					864,
+					541
+				],
+				[
+					866,
+					551
+				],
+				[
+					858,
+					555
+				],
+				[
+					850,
+					548
+				],
+				[
+					845,
+					535
+				]
+			],
+			"tip": [
+				1238,
+				540
+			],
+			"weapon_hand": "same hand as confirmed held idle; far left arm in the unmirrored right-facing art"
+		},
+		"nurture": {
+			"canvas_translation": [
+				129.0,
+				165.669921875
+			],
+			"cleanup_registration": [
+				1.0,
+				0.0,
+				0.0
+			],
+			"front": [
+				[
+					758.0,
+					678.0
+				],
+				[
+					820.0,
+					676.0
+				],
+				[
+					824.0,
+					716.0
+				],
+				[
+					757.0,
+					715.0
+				]
+			],
+			"grip": [
+				790.0,
+				687.0
+			],
+			"grip_canvas": [
+				1256.67138671875,
+				1146.31591796875
+			],
+			"ground": [
+				627.0,
+				1215.0
+			],
+			"guard_distance": 42.0,
+			"hand_rect": [
+				755.0,
+				655.0,
+				68.0,
+				63.0
+			],
+			"sword_angle_degrees": -0.261622738874949,
+			"tip": [
+				1228.0,
+				685.0
+			],
+			"weapon_hand": "same hand as confirmed held idle; far left arm in the unmirrored right-facing art"
+		},
+		"parry": {
+			"canvas_translation": [
+				129.0,
+				165.669921875
+			],
+			"cleanup_registration": [
+				1.0,
+				0.0,
+				0.0
+			],
+			"front": [
+				[
+					800.0,
+					413.0
+				],
+				[
+					870.0,
+					393.0
+				],
+				[
+					877.0,
+					435.0
+				],
+				[
+					845.0,
+					467.0
+				],
+				[
+					796.0,
+					462.0
+				]
+			],
+			"grip": [
+				832.0,
+				433.0
+			],
+			"grip_canvas": [
+				1316.62353515625,
+				783.748046875
+			],
+			"ground": [
+				627.0,
+				1215.0
+			],
+			"guard_distance": 46.0,
+			"hand_rect": [
+				789.0,
+				386.0,
+				85.0,
+				80.0
+			],
+			"sword_angle_degrees": -47.1485089726529,
+			"tip": [
+				1204.0,
+				32.0
+			],
+			"weapon_hand": "same hand as confirmed held idle; far left arm in the unmirrored right-facing art"
+		}
+	},
+	"reference_height": 1375,
+	"render_order": [
+		"body_back",
+		"independent sword",
+		"hand_front"
+	],
+	"source_scale": 1.4274322169059
+}

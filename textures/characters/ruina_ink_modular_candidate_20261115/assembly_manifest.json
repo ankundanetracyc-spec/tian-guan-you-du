@@ -1,0 +1,634 @@
+{
+  "status": "candidate_static_assembly_not_installed",
+  "user_final_aesthetic_approval": false,
+  "canvas": [
+    1024,
+    1536
+  ],
+  "head_facing": "fixed_right_three_quarter",
+  "head_anchor": [
+    518,
+    392
+  ],
+  "neck_anchor": [
+    526,
+    540
+  ],
+  "foot_anchor": [
+    516,
+    1400
+  ],
+  "reference_visible_height": 1184,
+  "head_reused_exact_file": "parts/head.png",
+  "parts": [
+    {
+      "id": "head",
+      "label": "固定底头",
+      "file": "parts/head.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "source": "atlas_generated_neck.png",
+      "source_island": "head",
+      "translation": [
+        -347,
+        232
+      ],
+      "bbox": [
+        395,
+        279,
+        643,
+        598
+      ],
+      "sha256": "e5c6927d2d81f61ab85bdebb4248429055295e3da576f9170ead0f69404ff73b",
+      "scale": 1,
+      "scale_anchor": null,
+      "rotation_degrees": 0,
+      "collar_aperture": null
+    },
+    {
+      "id": "hair_back_woodpin",
+      "label": "木簪半束长披",
+      "file": "parts/hair_back_woodpin.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "source": "atlas_generated_v1.png",
+      "source_island": "back",
+      "translation": [
+        -552,
+        -138
+      ],
+      "bbox": [
+        348,
+        216,
+        680,
+        871
+      ],
+      "sha256": "ac2e3c5465de6b22989a8365847925052aca0a07faa17b439a68f581550fbc49",
+      "scale": 1,
+      "scale_anchor": null,
+      "rotation_degrees": 0,
+      "collar_aperture": null
+    },
+    {
+      "id": "body_inner",
+      "label": "玉虚·内门常服",
+      "file": "parts/body_inner.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "source": "atlas_generated_v1.png",
+      "source_island": "body",
+      "translation": [
+        120,
+        400
+      ],
+      "bbox": [
+        228,
+        528,
+        793,
+        1400
+      ],
+      "sha256": "aebd5924dd1aaa1ce8a0b4a187b9403252a23ea5cdda5bddb553413b0cd39c52",
+      "scale": 1,
+      "scale_anchor": null,
+      "rotation_degrees": 0,
+      "collar_aperture": [
+        [
+          493,
+          543
+        ],
+        [
+          558,
+          546
+        ],
+        [
+          559,
+          558
+        ],
+        [
+          552,
+          585
+        ],
+        [
+          550,
+          590
+        ]
+      ]
+    },
+    {
+      "id": "hair_front_woodpin",
+      "label": "木簪拢发",
+      "file": "parts/hair_front_woodpin.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "source": "atlas_generated_v1.png",
+      "source_island": "front",
+      "translation": [
+        -729,
+        254
+      ],
+      "bbox": [
+        377,
+        264,
+        690,
+        678
+      ],
+      "sha256": "b6d8049a1200785b5de8896397ed9953923e92dce21fc1e87d7c4565d0e0ebb3",
+      "scale": 1.1,
+      "scale_anchor": [
+        518,
+        392
+      ],
+      "rotation_degrees": 0,
+      "collar_aperture": null
+    },
+    {
+      "id": "hair_back_loose",
+      "label": "松披长发",
+      "file": "parts/hair_back_loose.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "source": "atlas_generated_alternate.png",
+      "source_island": "back",
+      "translation": [
+        -535,
+        -80
+      ],
+      "bbox": [
+        320,
+        285,
+        700,
+        926
+      ],
+      "sha256": "e80581bfdbf768fc0d1d18e718811ab3feb8ec0d9b274b84faefa3f4e903d660",
+      "scale": 1,
+      "scale_anchor": null,
+      "rotation_degrees": 0,
+      "collar_aperture": null
+    },
+    {
+      "id": "body_outer",
+      "label": "玉虚·外门常服",
+      "file": "parts/body_outer.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "source": "atlas_generated_alternate.png",
+      "source_island": "body",
+      "translation": [
+        120,
+        400
+      ],
+      "bbox": [
+        227,
+        528,
+        794,
+        1400
+      ],
+      "sha256": "ac72323286d5ddc1ffbb52632973fabb6e9e4dfae9ad95d23c6b464937d60931",
+      "scale": 1,
+      "scale_anchor": null,
+      "rotation_degrees": 0,
+      "collar_aperture": [
+        [
+          481,
+          543
+        ],
+        [
+          558,
+          545
+        ],
+        [
+          559,
+          554
+        ],
+        [
+          544,
+          592
+        ]
+      ]
+    },
+    {
+      "id": "hair_front_sidepart",
+      "label": "温雅偏分",
+      "file": "parts/hair_front_sidepart.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "source": "atlas_generated_alternate.png",
+      "source_island": "front",
+      "translation": [
+        -744,
+        252
+      ],
+      "bbox": [
+        354,
+        256,
+        675,
+        767
+      ],
+      "sha256": "b66a3811c92ac813a5c45cb70fea346146720c288d15fc250520de8bdd0fe7cd",
+      "scale": 1.1,
+      "scale_anchor": [
+        518,
+        392
+      ],
+      "rotation_degrees": 0,
+      "collar_aperture": null
+    }
+  ],
+  "combinations": [
+    {
+      "id": "inner_woodpin_woodpin",
+      "file": "assembled_inner_woodpin_woodpin.png",
+      "layer_order": [
+        "hair_back_woodpin",
+        "head",
+        "body_inner",
+        "hair_front_woodpin"
+      ],
+      "sha256": "6d942770f2e4eee964773e784c1047568e0f899d7d1af0164f19c32629094123",
+      "bbox": [
+        228,
+        216,
+        793,
+        1400
+      ]
+    },
+    {
+      "id": "inner_woodpin_loose",
+      "file": "assembled_inner_woodpin_loose.png",
+      "layer_order": [
+        "hair_back_loose",
+        "head",
+        "body_inner",
+        "hair_front_woodpin"
+      ],
+      "sha256": "46ea140a39a0631f498ffcdac2dd763fecbf863be9c0d555565eb617d8eafc7a",
+      "bbox": [
+        228,
+        264,
+        793,
+        1400
+      ]
+    },
+    {
+      "id": "inner_sidepart_woodpin",
+      "file": "assembled_inner_sidepart_woodpin.png",
+      "layer_order": [
+        "hair_back_woodpin",
+        "head",
+        "body_inner",
+        "hair_front_sidepart"
+      ],
+      "sha256": "d4df15e73194cfa5cd8ac0d3de8f4bda59aed00134b5c80d102f74b4b167f16d",
+      "bbox": [
+        228,
+        216,
+        793,
+        1400
+      ]
+    },
+    {
+      "id": "inner_sidepart_loose",
+      "file": "assembled_inner_sidepart_loose.png",
+      "layer_order": [
+        "hair_back_loose",
+        "head",
+        "body_inner",
+        "hair_front_sidepart"
+      ],
+      "sha256": "441279c901c1f8ecfdd548ccb7ad148b0bb238be5ca5e6b01f5f76dc50cbdea3",
+      "bbox": [
+        228,
+        256,
+        793,
+        1400
+      ]
+    },
+    {
+      "id": "outer_woodpin_woodpin",
+      "file": "assembled_outer_woodpin_woodpin.png",
+      "layer_order": [
+        "hair_back_woodpin",
+        "head",
+        "body_outer",
+        "hair_front_woodpin"
+      ],
+      "sha256": "2eb3f5c0b6d826d8020e7d60bd07b80866a457ba0d1fd1a8b391e85bf508cd60",
+      "bbox": [
+        227,
+        216,
+        794,
+        1400
+      ]
+    },
+    {
+      "id": "outer_woodpin_loose",
+      "file": "assembled_outer_woodpin_loose.png",
+      "layer_order": [
+        "hair_back_loose",
+        "head",
+        "body_outer",
+        "hair_front_woodpin"
+      ],
+      "sha256": "c1a36314cc9ca42e22e16a7bc24f1300254025e1050cfa74580a9d6143d8af5f",
+      "bbox": [
+        227,
+        264,
+        794,
+        1400
+      ]
+    },
+    {
+      "id": "outer_sidepart_woodpin",
+      "file": "assembled_outer_sidepart_woodpin.png",
+      "layer_order": [
+        "hair_back_woodpin",
+        "head",
+        "body_outer",
+        "hair_front_sidepart"
+      ],
+      "sha256": "181859e4d8fd4477c02de7fdc97490c1663f3ddaa845379b26fad0d06d10adf7",
+      "bbox": [
+        227,
+        216,
+        794,
+        1400
+      ]
+    },
+    {
+      "id": "outer_sidepart_loose",
+      "file": "assembled_outer_sidepart_loose.png",
+      "layer_order": [
+        "hair_back_loose",
+        "head",
+        "body_outer",
+        "hair_front_sidepart"
+      ],
+      "sha256": "d32f9cfb5ccb833b31c3b06c97ec7d763fac12454c6190c3cea9e7ad0394e482",
+      "bbox": [
+        227,
+        256,
+        794,
+        1400
+      ]
+    }
+  ],
+  "scaled_previews": [
+    {
+      "file": "assembled_inner_woodpin_woodpin_160px.png",
+      "reference_height": 160,
+      "scale": 0.13513513513513514,
+      "canvas": [
+        138,
+        208
+      ]
+    },
+    {
+      "file": "assembled_inner_woodpin_woodpin_240px.png",
+      "reference_height": 240,
+      "scale": 0.20270270270270271,
+      "canvas": [
+        208,
+        311
+      ]
+    },
+    {
+      "file": "assembled_inner_woodpin_woodpin_320px.png",
+      "reference_height": 320,
+      "scale": 0.2702702702702703,
+      "canvas": [
+        277,
+        415
+      ]
+    },
+    {
+      "file": "assembled_inner_woodpin_loose_160px.png",
+      "reference_height": 160,
+      "scale": 0.13513513513513514,
+      "canvas": [
+        138,
+        208
+      ]
+    },
+    {
+      "file": "assembled_inner_woodpin_loose_240px.png",
+      "reference_height": 240,
+      "scale": 0.20270270270270271,
+      "canvas": [
+        208,
+        311
+      ]
+    },
+    {
+      "file": "assembled_inner_woodpin_loose_320px.png",
+      "reference_height": 320,
+      "scale": 0.2702702702702703,
+      "canvas": [
+        277,
+        415
+      ]
+    },
+    {
+      "file": "assembled_inner_sidepart_woodpin_160px.png",
+      "reference_height": 160,
+      "scale": 0.13513513513513514,
+      "canvas": [
+        138,
+        208
+      ]
+    },
+    {
+      "file": "assembled_inner_sidepart_woodpin_240px.png",
+      "reference_height": 240,
+      "scale": 0.20270270270270271,
+      "canvas": [
+        208,
+        311
+      ]
+    },
+    {
+      "file": "assembled_inner_sidepart_woodpin_320px.png",
+      "reference_height": 320,
+      "scale": 0.2702702702702703,
+      "canvas": [
+        277,
+        415
+      ]
+    },
+    {
+      "file": "assembled_inner_sidepart_loose_160px.png",
+      "reference_height": 160,
+      "scale": 0.13513513513513514,
+      "canvas": [
+        138,
+        208
+      ]
+    },
+    {
+      "file": "assembled_inner_sidepart_loose_240px.png",
+      "reference_height": 240,
+      "scale": 0.20270270270270271,
+      "canvas": [
+        208,
+        311
+      ]
+    },
+    {
+      "file": "assembled_inner_sidepart_loose_320px.png",
+      "reference_height": 320,
+      "scale": 0.2702702702702703,
+      "canvas": [
+        277,
+        415
+      ]
+    },
+    {
+      "file": "assembled_outer_woodpin_woodpin_160px.png",
+      "reference_height": 160,
+      "scale": 0.13513513513513514,
+      "canvas": [
+        138,
+        208
+      ]
+    },
+    {
+      "file": "assembled_outer_woodpin_woodpin_240px.png",
+      "reference_height": 240,
+      "scale": 0.20270270270270271,
+      "canvas": [
+        208,
+        311
+      ]
+    },
+    {
+      "file": "assembled_outer_woodpin_woodpin_320px.png",
+      "reference_height": 320,
+      "scale": 0.2702702702702703,
+      "canvas": [
+        277,
+        415
+      ]
+    },
+    {
+      "file": "assembled_outer_woodpin_loose_160px.png",
+      "reference_height": 160,
+      "scale": 0.13513513513513514,
+      "canvas": [
+        138,
+        208
+      ]
+    },
+    {
+      "file": "assembled_outer_woodpin_loose_240px.png",
+      "reference_height": 240,
+      "scale": 0.20270270270270271,
+      "canvas": [
+        208,
+        311
+      ]
+    },
+    {
+      "file": "assembled_outer_woodpin_loose_320px.png",
+      "reference_height": 320,
+      "scale": 0.2702702702702703,
+      "canvas": [
+        277,
+        415
+      ]
+    },
+    {
+      "file": "assembled_outer_sidepart_woodpin_160px.png",
+      "reference_height": 160,
+      "scale": 0.13513513513513514,
+      "canvas": [
+        138,
+        208
+      ]
+    },
+    {
+      "file": "assembled_outer_sidepart_woodpin_240px.png",
+      "reference_height": 240,
+      "scale": 0.20270270270270271,
+      "canvas": [
+        208,
+        311
+      ]
+    },
+    {
+      "file": "assembled_outer_sidepart_woodpin_320px.png",
+      "reference_height": 320,
+      "scale": 0.2702702702702703,
+      "canvas": [
+        277,
+        415
+      ]
+    },
+    {
+      "file": "assembled_outer_sidepart_loose_160px.png",
+      "reference_height": 160,
+      "scale": 0.13513513513513514,
+      "canvas": [
+        138,
+        208
+      ]
+    },
+    {
+      "file": "assembled_outer_sidepart_loose_240px.png",
+      "reference_height": 240,
+      "scale": 0.20270270270270271,
+      "canvas": [
+        208,
+        311
+      ]
+    },
+    {
+      "file": "assembled_outer_sidepart_loose_320px.png",
+      "reference_height": 320,
+      "scale": 0.2702702702702703,
+      "canvas": [
+        277,
+        415
+      ]
+    }
+  ],
+  "source_hashes": {
+    "atlas_generated_v1.png": "747c319764a2601d62fc1548890e633ce20d0abf78c3815616b7e792ea06dd92",
+    "atlas_generated_alternate.png": "f271a5d4f3f016cb218e708833ef53aa2628f7b3a3a5cbceb2e5bdf7b08bf618",
+    "atlas_generated_neck.png": "f31e8f5be7029551b05e643adab8757835c5074732878deab5e9fa61f383e5d7"
+  },
+  "geometry_note": "Head, body and back hair retain source scale with integer placement. Both front-hair pieces are uniformly normalized to 110% once around the fixed head anchor, with Lanczos sampling. No rotation, mirroring, skew or facial-feature edits. Atlas islands separated with a 3px alpha edge margin. Collar aperture reveals the shared neck tab. All exported parts use the same canvas/origin; swapping does not rescale or move the head. Every preview uses one common whole-figure scale.",
+  "source_catalog": "mods/appearance/ink_three_variants_20261004/appearance_parts.json",
+  "catalog_selection": {
+    "front_hair_style_ids": [
+      0,
+      3
+    ],
+    "back_hair_style_ids": [
+      0,
+      3
+    ],
+    "clothes_style_ids": [
+      5,
+      4
+    ]
+  },
+  "generated_mode": "built-in image_gen",
+  "prompts": [
+    "prompts/atlas_v1.txt",
+    "prompts/atlas_alternate.txt",
+    "prompts/head_neck_overlap.txt"
+  ]
+}

@@ -1,0 +1,7 @@
+Use case: background-extraction / modular game sprite hair layer.
+Extract ONLY ALL HAIR from the finished character in the input, on true transparency. Remove ALL skin, face, eyes, ear, neck, robe, hands and shoes. No skin-colored placeholder, ear outline, clothing fragment or accessory.
+CRITICAL: preserve the original 1024x1536 canvas and EXACT hair coordinates, scale, shape, perspective, colors and strand directions. Do not recenter, tight-crop, enlarge, rotate or redesign the hair. It belongs near x220..685,y245..920; keep the large transparent margins and bottom half empty.
+Keep the precisely fitted forehead and ear openings as transparent holes. Preserve the swept side part, narrow near-side long temple lock and short far-side curl; do not change the face-opening boundary or move the locks across the face.
+Complete only the hidden rear hair behind the original body as a continuous narrow flowing mass behind the screen-left neck/shoulder, ending around the waist. The hidden fill must stay inside the original body silhouette and must not expand the existing visible hair contour or fill the face opening.
+Same crisp ink strokes, subdued charcoal tones and texture. No new bright highlights, no attached ear outline, no extra hair islands, no head/body, no background, checkerboard, cast shadow or glow.
+Return the single hair-only cutout at its original registration.

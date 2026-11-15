@@ -1,0 +1,12 @@
+{
+  "canvas": [2048, 2048],
+  "ground_origin": [1024, 1900],
+  "reference_visible_height": 1375,
+  "registration": "Fixed authoring transforms; no runtime bounds fitting or per-pose auto-centering.",
+  "poses": [
+    {"source": "source/male_idle.png", "output": "male_idle.png", "source_origin": [512, 1440], "authoring_scale": 1.0},
+    {"source": "source/female_idle.png", "output": "female_idle.png", "source_origin": [657, 1205.5], "authoring_scale": 1.31831256},
+    {"source": "source/male_chop.png", "output": "male_chop.png", "source_origin": [612, 1191], "authoring_scale": 1.31831256},
+    {"source": "source/female_chop.png", "output": "female_chop.png", "source_origin": [624, 1177.5], "authoring_scale": 1.31831256}
+  ]
+}
