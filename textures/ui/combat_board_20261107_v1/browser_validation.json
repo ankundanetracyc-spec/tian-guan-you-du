@@ -1,0 +1,172 @@
+{
+  "scope": "UI material preview only; no combat, saved-game or in-game integration validation",
+  "viewports": {
+    "dark": [
+      1920,
+      1400
+    ],
+    "light": [
+      1280,
+      1000
+    ]
+  },
+  "dark": {
+    "patterns": [
+      {
+        "pattern": "九格拼接",
+        "validCells": 9,
+        "missingCells": 0,
+        "errors": []
+      },
+      {
+        "pattern": "L形拼接",
+        "validCells": 7,
+        "missingCells": 2,
+        "errors": []
+      },
+      {
+        "pattern": "台阶拼接",
+        "validCells": 9,
+        "missingCells": 7,
+        "errors": []
+      },
+      {
+        "pattern": "凹口拼接",
+        "validCells": 8,
+        "missingCells": 1,
+        "errors": []
+      }
+    ],
+    "iconLayerChecks": [
+      {
+        "pattern": "九格拼接",
+        "paintedIconPixelsAtGridSeam": 31,
+        "overpaintedPixels": 0
+      },
+      {
+        "pattern": "L形拼接",
+        "paintedIconPixelsAtGridSeam": 31,
+        "overpaintedPixels": 0
+      },
+      {
+        "pattern": "台阶拼接",
+        "paintedIconPixelsAtGridSeam": 31,
+        "overpaintedPixels": 0
+      },
+      {
+        "pattern": "凹口拼接",
+        "paintedIconPixelsAtGridSeam": 31,
+        "overpaintedPixels": 0
+      }
+    ],
+    "artCopiesPerBoard": [
+      {
+        "pattern": "九格拼接",
+        "palm": 1,
+        "fist": 1
+      },
+      {
+        "pattern": "L形拼接",
+        "palm": 1,
+        "fist": 1
+      },
+      {
+        "pattern": "台阶拼接",
+        "palm": 1,
+        "fist": 1
+      },
+      {
+        "pattern": "凹口拼接",
+        "palm": 1,
+        "fist": 1
+      }
+    ],
+    "assetParts": 19,
+    "pngCount": 5,
+    "buttonHover": "",
+    "overflow": false
+  },
+  "light": {
+    "patterns": [
+      {
+        "pattern": "九格拼接",
+        "validCells": 9,
+        "missingCells": 0,
+        "errors": []
+      },
+      {
+        "pattern": "L形拼接",
+        "validCells": 7,
+        "missingCells": 2,
+        "errors": []
+      },
+      {
+        "pattern": "台阶拼接",
+        "validCells": 9,
+        "missingCells": 7,
+        "errors": []
+      },
+      {
+        "pattern": "凹口拼接",
+        "validCells": 8,
+        "missingCells": 1,
+        "errors": []
+      }
+    ],
+    "iconLayerChecks": [
+      {
+        "pattern": "九格拼接",
+        "paintedIconPixelsAtGridSeam": 31,
+        "overpaintedPixels": 0
+      },
+      {
+        "pattern": "L形拼接",
+        "paintedIconPixelsAtGridSeam": 31,
+        "overpaintedPixels": 0
+      },
+      {
+        "pattern": "台阶拼接",
+        "paintedIconPixelsAtGridSeam": 31,
+        "overpaintedPixels": 0
+      },
+      {
+        "pattern": "凹口拼接",
+        "paintedIconPixelsAtGridSeam": 31,
+        "overpaintedPixels": 0
+      }
+    ],
+    "artCopiesPerBoard": [
+      {
+        "pattern": "九格拼接",
+        "palm": 1,
+        "fist": 1
+      },
+      {
+        "pattern": "L形拼接",
+        "palm": 1,
+        "fist": 1
+      },
+      {
+        "pattern": "台阶拼接",
+        "palm": 1,
+        "fist": 1
+      },
+      {
+        "pattern": "凹口拼接",
+        "palm": 1,
+        "fist": 1
+      }
+    ],
+    "assetParts": 19,
+    "pngCount": 5,
+    "buttonHover": "",
+    "overflow": false
+  },
+  "primary_hover": {
+    "buttonHover": "primary"
+  },
+  "evidence": [
+    "docs/美术规范/局内战斗布阵与开战理想图_20261107/39_素材实拼_深底1920.png",
+    "docs/美术规范/局内战斗布阵与开战理想图_20261107/39_素材实拼_浅底1280.png"
+  ]
+}

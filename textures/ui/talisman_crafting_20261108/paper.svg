@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 600" fill="none">
+<title>灵丝交织，悬纸渐成</title>
+<defs>
+ <linearGradient id="paper" x1="250" y1="90" x2="460" y2="510" gradientUnits="userSpaceOnUse"><stop stop-color="#f0e7d1"/><stop offset=".54" stop-color="#e3d7bb"/><stop offset="1" stop-color="#d2c9aa"/></linearGradient>
+ <linearGradient id="curl" x1="214" y1="118" x2="263" y2="138" gradientUnits="userSpaceOnUse"><stop stop-color="#b8ae91"/><stop offset=".62" stop-color="#e8ddc2"/><stop offset="1" stop-color="#f5ecd7"/></linearGradient>
+ <linearGradient id="thread" x1="140" y1="330" x2="576" y2="300" gradientUnits="userSpaceOnUse"><stop stop-color="#647f6c" stop-opacity="0"/><stop offset=".28" stop-color="#8b9d78"/><stop offset=".73" stop-color="#b6ad7c"/><stop offset="1" stop-color="#667a63" stop-opacity="0"/></linearGradient>
+ <filter id="shadow" x="-40%" y="-20%" width="180%" height="160%"><feDropShadow dx="6" dy="12" stdDeviation="9" flood-color="#24382e" flood-opacity=".15"/></filter>
+ <filter id="soft"><feGaussianBlur stdDeviation="8"/></filter>
+ <clipPath id="body"><path d="M239 94C297 99 420 87 473 96L478 500C415 495 284 516 233 505L227 131Z"/></clipPath>
+</defs>
+<ellipse cx="364" cy="533" rx="134" ry="13" fill="#3c4e3f" opacity=".13" filter="url(#soft)"/>
+<path d="M162 246C190 172 521 158 553 244C581 321 457 380 278 383" stroke="#657f6a" stroke-opacity=".16" stroke-width="2"/>
+<path d="M132 356C206 446 552 400 581 306" stroke="url(#thread)" stroke-width="1.5" stroke-linecap="round"/>
+<g transform="rotate(-8 355 300)">
+ <path d="M242 100C299 103 421 92 477 100L482 505C414 501 286 520 237 509L231 135Z" fill="#b5aa8b" opacity=".65"/>
+ <path d="M239 94C297 99 420 87 473 96L478 500C415 495 284 516 233 505L227 131Z" fill="url(#paper)" stroke="#a79876" stroke-width="1.35" filter="url(#shadow)"/>
+ <g clip-path="url(#body)">
+  <path d="M243 108C304 112 416 100 460 108M245 488C308 499 418 480 464 488" stroke="#fff6de" stroke-opacity=".67" stroke-width="2"/>
+  <g stroke="#928e71" stroke-opacity=".09" stroke-width=".8" stroke-linecap="round">
+   <path d="M254 149l19-4m94-13 37 1m30 23 20-1M248 211l34-4m84-20 39 2m20 25 31-4M256 259l24 2m22-9 28-1m88-9 34 3M252 314l33 1m49-14 29 2m71-19 21 3M250 373l39-3m39-13 25 3m56 2 42-5M250 424l20 1m54-14 38-4m73 9 20-2M256 470l33-4m63 5 24-2m41-16 33 3"/>
+   <path d="M261 169l-2 21m43 84-1 21m73-169-2 26m69 192 1 31m-113 38-2 18m-51 25-1 24m156-24 1 18"/>
+  </g>
+  <g stroke="#758c6f" stroke-opacity=".21" stroke-linecap="round">
+   <path d="M257 477C271 415 281 360 325 311C362 269 345 219 387 173C408 151 431 132 446 109" stroke-width="1.3"/>
+   <path d="M290 494C301 440 301 393 343 350C387 305 381 256 413 215C433 190 442 172 460 157"/>
+   <path d="M319 491C340 444 365 422 374 376C386 316 424 301 456 288" stroke-width=".9"/>
+   <path d="M245 218C276 230 277 275 321 295C352 309 393 293 439 305M249 381C291 375 307 409 345 401C385 394 427 355 465 365" stroke-width=".8"/>
+  </g>
+  <path d="M265 474C281 419 281 365 329 313C365 273 351 218 391 174" stroke="#baac77" stroke-opacity=".61" stroke-width="1.8" stroke-linecap="round"/>
+ </g>
+ <path d="M239 94C242 111 251 120 252 137C239 132 232 131 227 131Z" fill="url(#curl)" stroke="#a79a79" stroke-opacity=".52"/>
+ <path d="M239 95C258 99 278 99 298 98" stroke="#f9efdb" stroke-width="1.4"/>
+ <path d="M469 471C467 485 467 494 478 500C465 501 456 501 446 502" stroke="#b7ab8c" stroke-width="1.1"/>
+</g>
+<path d="M157 366C215 400 280 387 318 353C359 315 347 270 393 235C446 195 514 203 550 244" stroke="url(#thread)" stroke-width="1.8" stroke-linecap="round"/>
+<path d="M181 407C268 441 427 402 481 344" stroke="#b6aa7c" stroke-opacity=".38" stroke-width="1.1" stroke-linecap="round"/>
+<path d="M173 262C201 239 228 239 247 244M470 183C492 179 511 184 524 197" stroke="#849773" stroke-opacity=".48" stroke-width="2" stroke-linecap="round"/>
+<g fill="#b2a576" opacity=".62"><circle cx="180" cy="333" r="2.2"/><circle cx="531" cy="343" r="2"/><circle cx="468" cy="128" r="1.5"/></g>
+</svg>

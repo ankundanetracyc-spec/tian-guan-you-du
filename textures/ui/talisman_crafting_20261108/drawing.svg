@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 600" fill="none">
+<title>提笔行符，朱纹渐成</title>
+<defs>
+ <linearGradient id="paper" x1="235" y1="80" x2="406" y2="510" gradientUnits="userSpaceOnUse"><stop stop-color="#eee2c4"/><stop offset=".55" stop-color="#ddcdaa"/><stop offset="1" stop-color="#cfbd94"/></linearGradient>
+ <linearGradient id="wood" x1="-14" y1="0" x2="14" y2="0" gradientUnits="userSpaceOnUse"><stop stop-color="#4c5641"/><stop offset=".3" stop-color="#7a8162"/><stop offset=".63" stop-color="#687555"/><stop offset="1" stop-color="#3e503b"/></linearGradient>
+ <linearGradient id="hair" x1="-17" y1="195" x2="13" y2="280" gradientUnits="userSpaceOnUse"><stop stop-color="#c3b799"/><stop offset=".5" stop-color="#9d9b7f"/><stop offset=".83" stop-color="#3b4637"/><stop offset="1" stop-color="#1e3025"/></linearGradient>
+ <filter id="shadow" x="-40%" y="-20%" width="180%" height="160%"><feDropShadow dx="5" dy="9" stdDeviation="8" flood-color="#283a2b" flood-opacity=".16"/></filter>
+ <filter id="soft"><feGaussianBlur stdDeviation="8"/></filter>
+</defs>
+<ellipse cx="365" cy="527" rx="166" ry="15" fill="#344531" opacity=".12" filter="url(#soft)"/>
+<path d="M163 330C205 422 508 445 570 344" stroke="#7c8d68" stroke-opacity=".19" stroke-width="1.7"/>
+<g transform="rotate(-12 330 303)">
+ <path d="M239 85L426 88L431 511L243 516Z" fill="#a99b79" opacity=".68"/>
+ <path d="M235 79C284 82 365 76 422 82L426 507C374 506 291 518 239 510Z" fill="url(#paper)" stroke="#a5946f" stroke-width="1.3" filter="url(#shadow)"/>
+ <path d="M246 91C292 94 365 86 410 92M250 497C306 504 366 491 414 495" stroke="#f8edcf" stroke-opacity=".62" stroke-width="1.3"/>
+ <g stroke="#8f825d" stroke-width=".7" stroke-opacity=".12" stroke-linecap="round">
+  <path d="M253 121l33-2m67 7 45-3m-143 59 21 1m81-10 36-2m-137 63 32-4m72 9 27-2m-122 61 31 1m62-14 39 4m-131 75 25-3m81-10 31 1m-134 68 33-3m65 9 40-4m-131 55 30 3m47-7 52-2"/>
+  <path d="M269 149l-1 19m101 35-2 19m-77 126 1 22m80-28-1 24m-100 67-2 24m116-17-1 25"/>
+ </g>
+ <g fill="#904c3a" opacity=".91">
+  <path d="M296 123C301 121 304 128 306 133L320 159L314 162L303 151L294 133Z"/>
+  <path d="M325 114C331 113 332 118 331 126L328 163L321 166L321 130Z"/>
+  <path d="M350 123L357 121L349 144L333 165L328 161L343 135Z"/>
+  <path d="M280 173C308 169 343 170 371 165L372 172C349 180 306 181 280 178L274 175Z"/>
+  <path d="M317 178L328 176C324 199 326 218 322 240L314 247C313 225 317 201 317 178Z"/>
+  <path d="M288 202C307 205 335 200 352 197L354 205L333 211L309 215L289 211L281 207Z"/>
+  <path d="M293 235C307 229 329 228 349 229L353 237C334 238 316 235 307 242L300 258L290 253Z"/>
+  <path d="M348 230L355 237L339 267L325 283L332 300L351 315L344 321L322 306L314 282L331 262Z"/>
+  <path d="M281 277L305 282L312 289L299 297L283 294L277 289Z"/>
+  <path d="M348 274L368 264L374 268L364 280L349 285L344 281Z"/>
+  <path d="M318 300L327 305C324 326 328 340 321 356L309 364L311 346Z"/>
+  <path d="M281 326C296 318 316 322 332 330L354 326L359 332L338 340L317 334L296 331L284 336L276 333Z"/>
+  <path d="M303 365L311 368L297 393L285 401L281 397L294 378Z"/>
+  <path d="M319 364L325 359L342 375L347 392L340 394L332 378Z"/>
+  <path d="M307 387L316 389L314 427L307 445L299 443L305 420Z"/>
+  <path d="M277 424C294 435 319 437 341 423L350 422L347 430C328 448 296 450 279 439L271 431Z"/>
+  <path d="M303 451L310 449L313 471L306 479L301 472Z"/>
+ </g>
+ <g stroke="#b87556" stroke-opacity=".45" stroke-width="1.1" stroke-linecap="round"><path d="M287 175L350 172M319 188L317 225M299 237L337 233M321 311L316 347M312 400L308 423"/></g>
+ <path d="M263 109C261 121 262 141 264 154M394 440L394 475C378 478 366 478 354 477" stroke="#8b4b37" stroke-opacity=".28" stroke-width="1.1"/>
+</g>
+<path d="M319 371C392 417 457 396 471 341C479 309 466 289 446 269" stroke="#a49769" stroke-opacity=".47" stroke-width="1.4" stroke-linecap="round"/>
+<path d="M334 392C405 432 479 405 501 368" stroke="#8d9a72" stroke-opacity=".34" stroke-width="1.2" stroke-linecap="round"/>
+<g transform="translate(517 76) rotate(31)" filter="url(#shadow)">
+ <path d="M-7-8C-6-15 6-15 7-8L8 4L-8 4Z" fill="#58654a" stroke="#344a37"/>
+ <path d="M-4-12C-4-19 4-19 4-12" stroke="#9e956f" stroke-width="2"/>
+ <path d="M-10 4C-12 37-9 132-12 171L12 171C9 128 12 35 10 4Z" fill="url(#wood)" stroke="#3e513b" stroke-width="1.1"/>
+ <path d="M-5 14L-5 158M4 18L5 154" stroke="#a2aa7f" stroke-opacity=".39" stroke-width="1"/>
+ <path d="M-11 36L11 36M-11 43L11 43M-11 151L11 151M-12 159L12 159" stroke="#aba174" stroke-width="2.6"/>
+ <path d="M-13 169L13 169L15 192L-15 192Z" fill="#7a8063" stroke="#3b4e38" stroke-width="1.2"/>
+ <path d="M-12 172L12 172M-14 187L14 187" stroke="#beb38b" stroke-width="2.1"/>
+ <path d="M-15 193C-16 217-12 240-5 269C-2 281-3 292-9 305C5 296 11 285 13 268C17 239 21 212 14 193Z" fill="url(#hair)" stroke="#646a51" stroke-width=".8"/>
+ <g stroke="#dfd3ac" stroke-opacity=".36" stroke-width=".8" stroke-linecap="round"><path d="M-9 197C-11 229 1 256-1 278M-3 197C-5 226 7 253 4 278M4 197C8 226 11 245 7 272M10 199C17 225 11 256 11 268"/></g>
+ <path d="M-5 269C-1 284-4 296-9 305C2 300 8 291 11 279L12 268C5 277 1 278-5 269Z" fill="#233b29" opacity=".84"/>
+</g>
+</svg>

@@ -1,0 +1,323 @@
+{
+  "date": "2026-11-08",
+  "scope": "已确认纸墨控件的页级显式复用；炼丹、角色、静室分别接入，不修改全局Theme。",
+  "assets": [
+    {
+      "file": "frame_atlas.png",
+      "source": "textures/ui/yuxu_library_20261107/library_frame.png",
+      "sha256": "5d311b0aeb04d8de57fddbc6aef492e7e11ffbadba3ce558fe2f67579a4da7ce",
+      "size": [
+        1672,
+        941
+      ],
+      "byteIdentical": true,
+      "nonzeroAlphaAtOrBelow8": 0
+    },
+    {
+      "file": "control_atlas.png",
+      "source": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/控件补充图集_v1.png",
+      "sha256": "4ff46165045d1e5c644ac9fe87c12e783d3343102acbeef4d585e42f142588be",
+      "size": [
+        1122,
+        1402
+      ],
+      "byteIdentical": true,
+      "nonzeroAlphaAtOrBelow8": 26228
+    },
+    {
+      "file": "button_regular.png",
+      "source": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_常规_v4.png",
+      "sha256": "dff0f81e6d21615106eea2023aa73429ccd003e7e3e1e7c49cbc5e3bcec6e495",
+      "size": [
+        2065,
+        762
+      ],
+      "byteIdentical": true,
+      "nonzeroAlphaAtOrBelow8": 25654
+    },
+    {
+      "file": "button_primary.png",
+      "source": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_主操作_v4.png",
+      "sha256": "fcd81aceb22be83c5cb3d3c1ad4c7b1b8e2cbaac7d1b923409d1edd3c6e3727e",
+      "size": [
+        2172,
+        724
+      ],
+      "byteIdentical": true,
+      "nonzeroAlphaAtOrBelow8": 12822
+    },
+    {
+      "file": "button_tab.png",
+      "source": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_短页签_v4.png",
+      "sha256": "6512258e52c3c63a70a1618ab0af9cfd74e96039ffcf82bace9a1b58de40c4eb",
+      "size": [
+        1942,
+        809
+      ],
+      "byteIdentical": true,
+      "nonzeroAlphaAtOrBelow8": 15772
+    },
+    {
+      "file": "button_icon.png",
+      "source": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_小图标_v4.png",
+      "sha256": "d66d0c1d7a1f19f5ee46b234ddedec66a714a59b1f6cd9cca874753641e8b52b",
+      "size": [
+        1254,
+        1254
+      ],
+      "byteIdentical": true,
+      "nonzeroAlphaAtOrBelow8": 9369
+    },
+    {
+      "file": "input.png",
+      "source": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/控件_输入槽_v4.png",
+      "sha256": "b73575d23fb26a0efec9eedfd6fefb45c2dd5cf8afcf283e3077cc6f102db8c9",
+      "size": [
+        1774,
+        887
+      ],
+      "byteIdentical": true,
+      "nonzeroAlphaAtOrBelow8": 10322
+    },
+    {
+      "file": "button_navigation.png",
+      "source": "docs/美术规范/角色与静室纸墨木石样稿_20261108/assets/按钮分型_v4/按钮_侧栏分页_v4.png",
+      "sha256": "efdffe5ce28de8364b6cd5dbdea7930075573de538ad0e8ad08993e4d302f943",
+      "size": [
+        2172,
+        724
+      ],
+      "byteIdentical": true
+    }
+  ],
+  "frames": {
+    "PanelFrame": {
+      "file": "frame_atlas.png",
+      "bounds": [
+        1105,
+        160,
+        537,
+        744
+      ],
+      "sourceSlices": [
+        38,
+        38,
+        38,
+        38
+      ],
+      "renderedBorders": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "runtimeAlphaFloor": null
+    },
+    "PaperFrame": {
+      "file": "frame_atlas.png",
+      "bounds": [
+        1141,
+        200,
+        450,
+        520
+      ],
+      "sourceSlices": [
+        12,
+        12,
+        12,
+        12
+      ],
+      "renderedBorders": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "runtimeAlphaFloor": null
+    },
+    "TitleFrame": {
+      "file": "frame_atlas.png",
+      "bounds": [
+        525,
+        3,
+        620,
+        97
+      ],
+      "sourceSlices": [
+        38,
+        30,
+        38,
+        28
+      ],
+      "renderedBorders": [
+        30,
+        22,
+        30,
+        20
+      ],
+      "runtimeAlphaFloor": null
+    },
+    "RegularFrame": {
+      "file": "button_regular.png",
+      "bounds": [
+        121,
+        200,
+        1823,
+        361
+      ],
+      "sourceSlices": [
+        85,
+        55,
+        85,
+        55
+      ],
+      "renderedBorders": [
+        10,
+        5,
+        10,
+        6
+      ],
+      "runtimeAlphaFloor": 8
+    },
+    "PrimaryFrame": {
+      "file": "button_primary.png",
+      "bounds": [
+        55,
+        190,
+        2062,
+        343
+      ],
+      "sourceSlices": [
+        90,
+        65,
+        90,
+        78
+      ],
+      "renderedBorders": [
+        16,
+        6,
+        16,
+        10
+      ],
+      "runtimeAlphaFloor": 8
+    },
+    "TabFrame": {
+      "file": "button_tab.png",
+      "bounds": [
+        86,
+        157,
+        1772,
+        495
+      ],
+      "sourceSlices": [
+        65,
+        100,
+        190,
+        115
+      ],
+      "renderedBorders": [
+        5,
+        7,
+        13,
+        8
+      ],
+      "runtimeAlphaFloor": 8
+    },
+    "IconFrame": {
+      "file": "button_icon.png",
+      "bounds": [
+        272,
+        279,
+        712,
+        699
+      ],
+      "sourceSlices": [
+        135,
+        135,
+        135,
+        135
+      ],
+      "renderedBorders": [
+        8,
+        8,
+        8,
+        8
+      ],
+      "runtimeAlphaFloor": 8
+    },
+    "InputFrame": {
+      "file": "input.png",
+      "bounds": [
+        82,
+        316,
+        1610,
+        255
+      ],
+      "sourceSlices": [
+        45,
+        45,
+        45,
+        45
+      ],
+      "renderedBorders": [
+        6,
+        6,
+        6,
+        6
+      ],
+      "runtimeAlphaFloor": 8
+    },
+    "NavigationFrame": {
+      "file": "button_navigation.png",
+      "bounds": [
+        253,
+        110,
+        1853,
+        502
+      ],
+      "sourceSlices": [
+        85,
+        85,
+        90,
+        80
+      ],
+      "renderedBorders": [
+        8,
+        8,
+        10,
+        8
+      ],
+      "runtimeAlphaFloor": 8
+    },
+    "NavigationBindingFrame": {
+      "file": "button_navigation.png",
+      "bounds": [
+        68,
+        110,
+        184,
+        502
+      ],
+      "sourceSlices": [
+        30,
+        85,
+        30,
+        80
+      ],
+      "renderedBorders": [
+        3,
+        8,
+        3,
+        8
+      ],
+      "runtimeAlphaFloor": 8
+    }
+  },
+  "runtimePolicy": "PNG逐字节复制。仅在内存按原九区源切片压缩边角；中心不重画。五类控件的低Alpha连续清理与选中/悬停/禁用色在内存执行，缓存为原生StyleBoxTexture用纹理；不保存替代PNG。",
+  "verification": {
+    "copiedPngByteIdentity": "8/8",
+    "frameBoundsAndSlicesAgainstApprovedSample": "10/10",
+    "runtimeReadsDocs": false,
+    "isolatedGodotSharpApiCompilation": "passed (4.7.2; project DLL untouched)",
+    "fullProjectBuild": "root统一执行，未在此线程运行"
+  }
+}
