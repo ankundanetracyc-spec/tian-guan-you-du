@@ -1,0 +1,244 @@
+[
+  {
+    "variant": 2,
+    "source_eye_controls": [
+      [
+        246.754109829,
+        323.509327271
+      ],
+      [
+        355.991360142,
+        323.712280033
+      ]
+    ],
+    "full_source_to_rig_matrix": [
+      [
+        1.0069790294582517,
+        0.0018708744015346695,
+        214.91854065050973
+      ],
+      [
+        -0.0018708744015346695,
+        1.0069790294582517,
+        53.694537551509086
+      ]
+    ],
+    "reference_crown_y_dark10pixels": 108,
+    "current_crown_y_alpha128_10pixels": 96,
+    "rows": [
+      {
+        "y": 180,
+        "reference_dark_hair_span": [
+          406,
+          627
+        ],
+        "candidate_opaque_hair_span": [
+          392,
+          634
+        ],
+        "new_candidate_span": [
+          408,
+          633
+        ]
+      },
+      {
+        "y": 220,
+        "reference_dark_hair_span": [
+          376,
+          652
+        ],
+        "candidate_opaque_hair_span": [
+          363,
+          662
+        ],
+        "new_candidate_span": [
+          378,
+          658
+        ]
+      },
+      {
+        "y": 260,
+        "reference_dark_hair_span": [
+          359,
+          670
+        ],
+        "candidate_opaque_hair_span": [
+          344,
+          677
+        ],
+        "new_candidate_span": [
+          359,
+          674
+        ]
+      },
+      {
+        "y": 300,
+        "reference_dark_hair_span": [
+          346,
+          683
+        ],
+        "candidate_opaque_hair_span": [
+          333,
+          689
+        ],
+        "new_candidate_span": [
+          348,
+          684
+        ]
+      },
+      {
+        "y": 350,
+        "reference_dark_hair_span": [
+          344,
+          683
+        ],
+        "candidate_opaque_hair_span": [
+          333,
+          690
+        ],
+        "new_candidate_span": [
+          347,
+          685
+        ]
+      },
+      {
+        "y": 379,
+        "reference_dark_hair_span": [
+          355,
+          677
+        ],
+        "candidate_opaque_hair_span": [
+          341,
+          682
+        ],
+        "new_candidate_span": [
+          355,
+          674
+        ]
+      }
+    ],
+    "candidate_new_crown_y": 108,
+    "new_candidate_central_inner_edge_y": 259
+  },
+  {
+    "variant": 3,
+    "source_eye_controls": [
+      [
+        245.365449657,
+        325.547220536
+      ],
+      [
+        355.348564531,
+        325.461074231
+      ]
+    ],
+    "full_source_to_rig_matrix": [
+      [
+        1.0001529111083807,
+        -0.0007833882303268744,
+        218.85206110111818
+      ],
+      [
+        0.0007833882303268744,
+        1.0001529111083807,
+        53.210783272287415
+      ]
+    ],
+    "reference_crown_y_dark10pixels": 113,
+    "current_crown_y_alpha128_10pixels": 101,
+    "rows": [
+      {
+        "y": 180,
+        "reference_dark_hair_span": [
+          393,
+          632
+        ],
+        "candidate_opaque_hair_span": [
+          377,
+          645
+        ],
+        "new_candidate_span": [
+          385,
+          635
+        ]
+      },
+      {
+        "y": 220,
+        "reference_dark_hair_span": [
+          368,
+          659
+        ],
+        "candidate_opaque_hair_span": [
+          356,
+          672
+        ],
+        "new_candidate_span": [
+          362,
+          659
+        ]
+      },
+      {
+        "y": 260,
+        "reference_dark_hair_span": [
+          354,
+          676
+        ],
+        "candidate_opaque_hair_span": [
+          342,
+          689
+        ],
+        "new_candidate_span": [
+          347,
+          679
+        ]
+      },
+      {
+        "y": 300,
+        "reference_dark_hair_span": [
+          348,
+          681
+        ],
+        "candidate_opaque_hair_span": [
+          342,
+          694
+        ],
+        "new_candidate_span": [
+          347,
+          684
+        ]
+      },
+      {
+        "y": 350,
+        "reference_dark_hair_span": [
+          352,
+          684
+        ],
+        "candidate_opaque_hair_span": [
+          346,
+          690
+        ],
+        "new_candidate_span": [
+          352,
+          680
+        ]
+      },
+      {
+        "y": 379,
+        "reference_dark_hair_span": [
+          361,
+          672
+        ],
+        "candidate_opaque_hair_span": [
+          359,
+          675
+        ],
+        "new_candidate_span": [
+          366,
+          665
+        ]
+      }
+    ],
+    "candidate_new_crown_y": 110,
+    "new_candidate_central_inner_edge_y": 258
+  }
+]

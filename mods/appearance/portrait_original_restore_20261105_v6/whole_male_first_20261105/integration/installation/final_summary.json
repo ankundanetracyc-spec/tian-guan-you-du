@@ -1,0 +1,68 @@
+{
+  "approved_master_sha256": "76e789ffa97e72c8ece941401e4b7aa93ba74e7567e881ed2e7f48a67ae266c2",
+  "installed_parts": 9,
+  "retired_old_variants": 7,
+  "male_selectable": 15,
+  "female_selectable": 22,
+  "total_selectable": 37,
+  "registered_png_count": 44,
+  "head_neck_alpha_changed_pixels": 0,
+  "runtime": {
+    "active_option_count": 37,
+    "baseline_files_checked": 35,
+    "checks": 938,
+    "failures": [],
+    "female_hair_feature_combinations": 54,
+    "female_preserved": 22,
+    "female_viewport_captured": false,
+    "installed_pngs_checked": 9,
+    "male_hair_feature_combinations": 1,
+    "male_viewport_captured": false,
+    "pass": true,
+    "physical_png_count": 44,
+    "pixel_composites_verified": true,
+    "rear_pair_visibility_checks": 14,
+    "renderer_pair_checks": 14,
+    "visual_acceptance": "Installation and independent mixing verified. Artistic likeness remains subject to the user's judgement; test counts are not proof of likeness."
+  },
+  "user_approved_whole": true,
+  "user_approved_reconstructed_parts": false,
+  "axis_alignment": {
+    "dx": -5,
+    "dy": 0,
+    "head_neck_sha256": "2fd9743feb92f3420355f46c83302f7e60de65892f9c09a8bbff9ce3e3afe7aa",
+    "source": "axis_alignment_20261106/correction.json"
+  },
+  "brow_eye_edge_cleanup": [
+    {
+      "part": "eyebrows",
+      "old_sha256": "8ac9f6ca50335575f2d6302257a0e242e646dfb02903bae5c7aa65b69e45b3ea",
+      "sha256": "30b5863269415909d37dc6aa2d4c4bb60bc1ebaef72a1feef2b9605e30521dde",
+      "changed_pixels": 657,
+      "dark_core_pixels_unchanged": 225,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "coordinate_shift": [
+        0,
+        0
+      ]
+    },
+    {
+      "part": "eyes",
+      "old_sha256": "ef89963e8e60872ef2bd367eeb012ab69f5e8608d46956a200cbd761e6ecebf1",
+      "sha256": "5dda037bd050c927c1d802fc696a54eb2a558fe9623cbab0c593e125b17f819d",
+      "changed_pixels": 855,
+      "dark_core_pixels_unchanged": 400,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "coordinate_shift": [
+        0,
+        0
+      ]
+    }
+  ]
+}

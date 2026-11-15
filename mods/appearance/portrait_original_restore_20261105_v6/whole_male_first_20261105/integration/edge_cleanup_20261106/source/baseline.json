@@ -1,0 +1,45 @@
+{
+  "records": [
+    {
+      "part": "eyebrows",
+      "sha256": "8ac9f6ca50335575f2d6302257a0e242e646dfb02903bae5c7aa65b69e45b3ea",
+      "before": "before\\eyebrows\\01.png",
+      "reference": "source\\eyebrows_reference.png",
+      "box": [
+        424,
+        326,
+        187,
+        31
+      ],
+      "factor": 4,
+      "insert": [
+        138,
+        450
+      ]
+    },
+    {
+      "part": "eyes",
+      "sha256": "ef89963e8e60872ef2bd367eeb012ab69f5e8608d46956a200cbd761e6ecebf1",
+      "before": "before\\eyes\\01.png",
+      "reference": "source\\eyes_reference.png",
+      "box": [
+        420,
+        348,
+        190,
+        34
+      ],
+      "factor": 4,
+      "insert": [
+        132,
+        444
+      ]
+    }
+  ],
+  "unchanged": {
+    "face_shape": "2fd9743feb92f3420355f46c83302f7e60de65892f9c09a8bbff9ce3e3afe7aa",
+    "nose": "af623a6fdc38766b28771e17582a2b308a5c1f7ec21de48e1b535e8ec6b2d139",
+    "mouth": "b92b059a925cad9440530733d7ca99400e4fc8563ac8a8d0c6517e6c870c30b3"
+  },
+  "origin": "CURRENT active, includes5px leftward alignment",
+  "project": "E:\\stacklands"
+}

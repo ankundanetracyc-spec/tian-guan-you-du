@@ -1,0 +1,119 @@
+[
+  {
+    "part": "eyes",
+    "source": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\source\\female_hair_final\\reference_01.png",
+    "source_sha256": "b007f8b80c15dd723ee66c4801b4626c8e1437ab5bf19dfc0dae324984236739",
+    "source_controls": [
+      [
+        259,
+        329
+      ],
+      [
+        366,
+        329
+      ]
+    ],
+    "target_controls": [
+      [
+        464,
+        379
+      ],
+      [
+        574,
+        379
+      ]
+    ],
+    "uniform_similarity_matrix": [
+      [
+        1.028037428855896,
+        -0.0,
+        415.6822466850281
+      ],
+      [
+        0.0,
+        1.028037428855896,
+        355.3551490306854
+      ]
+    ],
+    "method": "Original eye/lip core pixels plus skin-relative painted edge pigment; unchanged original face underneath",
+    "limitations": "Source skin background estimated from surrounding pixels; hidden eyebrow ends remain as visible in approved reference."
+  },
+  {
+    "part": "eyebrows",
+    "source": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\source\\female_hair_final\\reference_01.png",
+    "source_sha256": "b007f8b80c15dd723ee66c4801b4626c8e1437ab5bf19dfc0dae324984236739",
+    "source_controls": [
+      [
+        249,
+        298
+      ],
+      [
+        375,
+        298
+      ]
+    ],
+    "target_controls": [
+      [
+        457,
+        354
+      ],
+      [
+        582,
+        353
+      ]
+    ],
+    "uniform_similarity_matrix": [
+      [
+        0.9920634627342224,
+        0.007936508394777775,
+        426.1428542705253
+      ],
+      [
+        -0.007936508394777775,
+        0.9920634627342224,
+        341.3492061253637
+      ]
+    ],
+    "method": "Original eye/lip core pixels plus skin-relative painted edge pigment; unchanged original face underneath",
+    "limitations": "Source skin background estimated from surrounding pixels; hidden eyebrow ends remain as visible in approved reference."
+  },
+  {
+    "part": "mouth",
+    "source": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\source\\female_hair_final\\reference_01.png",
+    "source_sha256": "b007f8b80c15dd723ee66c4801b4626c8e1437ab5bf19dfc0dae324984236739",
+    "source_controls": [
+      [
+        282,
+        432
+      ],
+      [
+        344,
+        432
+      ]
+    ],
+    "target_controls": [
+      [
+        487,
+        483
+      ],
+      [
+        551,
+        483
+      ]
+    ],
+    "uniform_similarity_matrix": [
+      [
+        1.0322580337524414,
+        -0.0,
+        476.6774139404297
+      ],
+      [
+        0.0,
+        1.0322580337524414,
+        467.5161142349243
+      ]
+    ],
+    "method": "Original eye/lip core pixels plus skin-relative painted edge pigment; unchanged original face underneath",
+    "limitations": "Source skin background estimated from surrounding pixels; hidden eyebrow ends remain as visible in approved reference."
+  }
+]

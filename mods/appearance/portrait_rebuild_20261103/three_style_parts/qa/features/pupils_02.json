@@ -1,0 +1,24 @@
+{
+  "variant": 2,
+  "measured_pupils": [
+    [
+      464.25763873286894,
+      378.84924736014375
+    ],
+    [
+      574.1201217656012,
+      378.81120243531205
+    ]
+  ],
+  "target_pupils": [
+    [
+      464,
+      379
+    ],
+    [
+      574,
+      379
+    ]
+  ],
+  "dark_centroid_measurement": "RGB mean below 90 in a 15x13 pupil neighborhood, after compositing on unchanged face04"
+}

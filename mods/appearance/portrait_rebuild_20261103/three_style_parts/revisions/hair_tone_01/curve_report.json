@@ -1,0 +1,143 @@
+{
+  "status": "applied_candidate01_tone_and_reviewed_nine_pairs_light_dark",
+  "records": [
+    {
+      "part": "hair_front",
+      "before": "mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\revisions\\hair_tone_01\\hair_front_before.png",
+      "before_sha256": "4f39b17acbbfbf0b33bd3d2de4241cc30d6f7befb6f0d3488a1e5595c64884e0",
+      "after": "mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\hair_front\\01.png",
+      "after_sha256": "06bb36cfb398621b184046cfbcf69389d7144305fd6d170c3313b37b61d48aac",
+      "curve": "Monotonic cubic PCHIP luminance curve; target85percent toward original crown quantiles, with tails protected",
+      "luma_definition": [
+        0.2126,
+        0.7152,
+        0.0722
+      ],
+      "hue_method": "Multiply R,G,B by the same positive factor Lnew/Lold; preserves RGB chromaticity/hue before 8-bit rounding. Alpha untouched.",
+      "curve_input_anchors": [
+        0.0,
+        16.0,
+        46.9186,
+        64.7742,
+        79.059,
+        94.0498,
+        116.55712,
+        170.0,
+        220.0,
+        255.0
+      ],
+      "curve_output_anchors": [
+        0.0,
+        13.0,
+        33.49931,
+        50.32419999999999,
+        65.4556,
+        82.70757,
+        105.57229799999999,
+        166.0,
+        218.0,
+        255.0
+      ],
+      "minimum_curve_derivative": 0.6111952776072157,
+      "before_crown_P05_P25_P50_P75_P95": [
+        46.9186,
+        64.7742,
+        79.059,
+        94.0498,
+        116.55712
+      ],
+      "original_reference_quantiles": [
+        31.1312,
+        47.77419999999999,
+        63.055,
+        80.706,
+        103.6338
+      ],
+      "after_crown_quantiles": [
+        33.4934,
+        50.6338,
+        65.8464,
+        82.8424,
+        105.55551999999997
+      ],
+      "alpha_identical": true,
+      "new_channel_zero_pixels": 0,
+      "no_geometry_changes": true
+    },
+    {
+      "part": "hair_back",
+      "before": "mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\revisions\\hair_tone_01\\hair_back_before.png",
+      "before_sha256": "fe3c87695ce1bc9b66f436fd59b0200348f8a6e18b61fb3748921c78138f83e4",
+      "after": "mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\hair_back\\01.png",
+      "after_sha256": "2054b4ee1eb18ea8a53fcd1018a787a8963ee1139e7fa9d8296980f46fae62e5",
+      "curve": "Monotonic cubic PCHIP luminance curve; target85percent toward original crown quantiles, with tails protected",
+      "luma_definition": [
+        0.2126,
+        0.7152,
+        0.0722
+      ],
+      "hue_method": "Multiply R,G,B by the same positive factor Lnew/Lold; preserves RGB chromaticity/hue before 8-bit rounding. Alpha untouched.",
+      "curve_input_anchors": [
+        0.0,
+        16.0,
+        49.059000000000005,
+        58.846399999999996,
+        67.9868,
+        77.9868,
+        93.27159999999999,
+        170.0,
+        220.0,
+        255.0
+      ],
+      "curve_output_anchors": [
+        0.0,
+        13.0,
+        38.19413,
+        48.10087,
+        57.848169999999996,
+        67.29821999999999,
+        83.74089,
+        166.0,
+        218.0,
+        255.0
+      ],
+      "minimum_curve_derivative": 0.7171185256402957,
+      "before_crown_P05_P25_P50_P75_P95": [
+        49.059000000000005,
+        58.846399999999996,
+        67.9868,
+        77.9868,
+        93.27159999999999
+      ],
+      "original_reference_quantiles": [
+        36.2768,
+        46.2046,
+        56.059,
+        65.41199999999999,
+        82.059
+      ],
+      "after_crown_quantiles": [
+        37.9186,
+        47.705999999999996,
+        57.8464,
+        67.13119999999999,
+        84.059
+      ],
+      "alpha_identical": true,
+      "new_channel_zero_pixels": 0,
+      "no_geometry_changes": true
+    }
+  ],
+  "style02_03_sha256_unchanged": {
+    "female\\hair_front\\02.png": "9325405fdb213f11a7780636bc74cc77a073d5995df53fdbc3664e361bd506be",
+    "female\\hair_front\\03.png": "43cba290e842603542e914f638233899424b13df9f5b6c6fb489fd4b5c01ebb9",
+    "female\\hair_back\\02.png": "e7669465be8188ea9fa5598977f0a40ca432912129d0e1408b27d78454f3e764",
+    "female\\hair_back\\03.png": "2a83bbc3a2d91ed0a60a25dae4e1731cf15a950305cf308501197c8fc75f33fe"
+  },
+  "limits": [
+    "Not a whole-histogram or mean match. Spatial folds and highlight densities remain different.",
+    "No generated or redrawn pixels; existing color values only changed with strictly monotonic tone mapping.",
+    "Only isolated candidate01 front/rear changed. Single sample sources, fixed face04,02/03 and active pack untouched."
+  ],
+  "visual_review": "Rechecked all nine actual native head combinations on light/dark backgrounds. The earlier gray/lifted01 impression is reduced and matching to02/03 improved. Fine highlights and darker folds remain separated; no new white highlight, dead-black mass or geometric/ownership seam observed. Style03 still has its own stronger braid highlight rhythm, retained rather than flattened."
+}

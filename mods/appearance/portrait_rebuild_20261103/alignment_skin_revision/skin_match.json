@@ -1,0 +1,126 @@
+{
+  "method": "Original face RGB adjusted by measured reference skin region medians, smoothly varying vertically; same alpha, no geometry change. Features re-extracted against new skin to avoid matte mismatch.",
+  "samples": [
+    {
+      "region": "forehead",
+      "source_median": [
+        238.0,
+        214.0,
+        200.0
+      ],
+      "before_median": [
+        233.0,
+        209.0,
+        191.0
+      ],
+      "delta": [
+        5.0,
+        5.0,
+        9.0
+      ],
+      "y": 312.5,
+      "target_box": [
+        485,
+        290,
+        550,
+        335
+      ],
+      "after_median": [
+        238.0,
+        214.0,
+        201.0
+      ]
+    },
+    {
+      "region": "cheeks",
+      "source_median": [
+        240.0,
+        216.0,
+        203.0
+      ],
+      "before_median": [
+        232.0,
+        204.0,
+        186.0
+      ],
+      "delta": [
+        8.0,
+        12.0,
+        17.0
+      ],
+      "y": 425.0,
+      "target_box": [
+        455,
+        405,
+        580,
+        445
+      ],
+      "after_median": [
+        240.0,
+        216.0,
+        203.0
+      ]
+    },
+    {
+      "region": "chin",
+      "source_median": [
+        240.0,
+        218.0,
+        204.0
+      ],
+      "before_median": [
+        231.0,
+        204.0,
+        186.0
+      ],
+      "delta": [
+        9.0,
+        14.0,
+        18.0
+      ],
+      "y": 507.5,
+      "target_box": [
+        505,
+        495,
+        535,
+        520
+      ],
+      "after_median": [
+        240.0,
+        218.0,
+        204.0
+      ]
+    },
+    {
+      "region": "neck",
+      "source_median": [
+        235.0,
+        208.0,
+        194.0
+      ],
+      "before_median": [
+        230.0,
+        202.0,
+        182.0
+      ],
+      "delta": [
+        5.0,
+        6.0,
+        12.0
+      ],
+      "y": 590.0,
+      "target_box": [
+        505,
+        570,
+        540,
+        610
+      ],
+      "after_median": [
+        235.0,
+        208.0,
+        194.0
+      ]
+    }
+  ],
+  "alpha_unchanged": true
+}

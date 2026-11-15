@@ -1,0 +1,468 @@
+{
+  "task": "Read-only asymmetry diagnosis after approved portrait integration; root has already corrected five-pixel registration offset",
+  "active_head_sha256": "2fd9743feb92f3420355f46c83302f7e60de65892f9c09a8bbff9ce3e3afe7aa",
+  "head_axis": {
+    "scalp_y190_334": {
+      "median": 512.5,
+      "min": 512.0,
+      "max": 513.5,
+      "p10_p90": [
+        512.0,
+        513.0
+      ]
+    },
+    "auricle_y340_439": {
+      "median": 512.5,
+      "min": 512.0,
+      "max": 514.0,
+      "p10_p90": [
+        512.5,
+        513.0
+      ]
+    },
+    "jaw_neck_outline_y440_499": {
+      "median": 513.5,
+      "min": 507.5,
+      "max": 514.0,
+      "p10_p90": [
+        513.0,
+        513.5
+      ]
+    }
+  },
+  "head_row_bounds": [
+    {
+      "y": 175,
+      "left": 480,
+      "right": 547,
+      "midpoint": 513.5
+    },
+    {
+      "y": 190,
+      "left": 445,
+      "right": 582,
+      "midpoint": 513.5
+    },
+    {
+      "y": 210,
+      "left": 420,
+      "right": 606,
+      "midpoint": 513.0
+    },
+    {
+      "y": 230,
+      "left": 404,
+      "right": 621,
+      "midpoint": 512.5
+    },
+    {
+      "y": 250,
+      "left": 394,
+      "right": 631,
+      "midpoint": 512.5
+    },
+    {
+      "y": 280,
+      "left": 385,
+      "right": 639,
+      "midpoint": 512.0
+    },
+    {
+      "y": 300,
+      "left": 384,
+      "right": 641,
+      "midpoint": 512.5
+    },
+    {
+      "y": 330,
+      "left": 387,
+      "right": 638,
+      "midpoint": 512.5
+    },
+    {
+      "y": 350,
+      "left": 371,
+      "right": 654,
+      "midpoint": 512.5
+    },
+    {
+      "y": 370,
+      "left": 366,
+      "right": 659,
+      "midpoint": 512.5
+    },
+    {
+      "y": 390,
+      "left": 369,
+      "right": 657,
+      "midpoint": 513.0
+    },
+    {
+      "y": 410,
+      "left": 378,
+      "right": 648,
+      "midpoint": 513.0
+    },
+    {
+      "y": 430,
+      "left": 393,
+      "right": 633,
+      "midpoint": 513.0
+    },
+    {
+      "y": 440,
+      "left": 404,
+      "right": 620,
+      "midpoint": 512.0
+    },
+    {
+      "y": 450,
+      "left": 422,
+      "right": 605,
+      "midpoint": 513.5
+    },
+    {
+      "y": 470,
+      "left": 426,
+      "right": 601,
+      "midpoint": 513.5
+    },
+    {
+      "y": 490,
+      "left": 428,
+      "right": 599,
+      "midpoint": 513.5
+    },
+    {
+      "y": 500,
+      "left": 428,
+      "right": 599,
+      "midpoint": 513.5
+    },
+    {
+      "y": 520,
+      "left": 428,
+      "right": 601,
+      "midpoint": 514.5
+    },
+    {
+      "y": 530,
+      "left": 427,
+      "right": 602,
+      "midpoint": 514.5
+    },
+    {
+      "y": 550,
+      "left": 425,
+      "right": 604,
+      "midpoint": 514.5
+    },
+    {
+      "y": 580,
+      "left": 420,
+      "right": 609,
+      "midpoint": 514.5
+    }
+  ],
+  "mirror_comparison": [
+    {
+      "axis": 512.5,
+      "upper_head_mirror_iou": 0.9928130866183964,
+      "exclusive_difference_percent": 0.7186913381603647
+    },
+    {
+      "axis": 513.0,
+      "upper_head_mirror_iou": 0.9925726313531485,
+      "exclusive_difference_percent": 0.7427368646851412
+    }
+  ],
+  "ear_measurement": [
+    {
+      "side": "left",
+      "roi": [
+        355,
+        340,
+        413,
+        445
+      ],
+      "area": 3686,
+      "bbox": [
+        366,
+        340,
+        412,
+        441
+      ],
+      "centroid": [
+        392.75854584915896,
+        384.80900705371675
+      ]
+    },
+    {
+      "side": "right",
+      "roi": [
+        613,
+        340,
+        671,
+        445
+      ],
+      "area": 3716,
+      "bbox": [
+        613,
+        340,
+        659,
+        440
+      ],
+      "centroid": [
+        632.4900430570506,
+        384.6100645855759
+      ]
+    }
+  ],
+  "ear_observation": "At the same crop scale ear centroids differ vertically by 0.20 px, outer ears bottom rows differ by 1 px; outer most x366/659 are exactly paired around x512.5. Side shape/inner shading is naturally not perfectly mirrored.",
+  "eyes": {
+    "approved_master": {
+      "pupils": [
+        [
+          465.7937102738459,
+          365.0322434157627
+        ],
+        [
+          570.229453392962,
+          364.6075414272394
+        ]
+      ],
+      "pupil_midpoint": [
+        518.011581833404,
+        364.8198924215011
+      ],
+      "right_eye_y_minus_left_eye_y": -0.42470198852328167
+    },
+    "before_alignment": {
+      "pupils": [
+        [
+          465.7937102738459,
+          365.0322434157627
+        ],
+        [
+          570.229453392962,
+          364.6075414272394
+        ]
+      ],
+      "pupil_midpoint": [
+        518.011581833404,
+        364.8198924215011
+      ],
+      "right_eye_y_minus_left_eye_y": -0.42470198852328167
+    },
+    "after_alignment": {
+      "pupils": [
+        [
+          460.7937102738459,
+          365.0322434157627
+        ],
+        [
+          565.229453392962,
+          364.6075414272394
+        ]
+      ],
+      "pupil_midpoint": [
+        513.011581833404,
+        364.8198924215011
+      ],
+      "right_eye_y_minus_left_eye_y": -0.42470198852328167
+    }
+  },
+  "other_feature_dark_stroke_centroids": {
+    "eyebrows": {
+      "approved_master": [
+        [
+          474.0870988832582,
+          343.66282333468655
+        ],
+        [
+          566.1852564460512,
+          343.00712700850835
+        ]
+      ],
+      "before_alignment": [
+        [
+          474.0868366490437,
+          343.6626415797235
+        ],
+        [
+          566.4473923817241,
+          342.9160492295889
+        ]
+      ],
+      "after_alignment": [
+        [
+          469.0868366490437,
+          343.6626415797235
+        ],
+        [
+          561.4473923817241,
+          342.9160492295889
+        ]
+      ]
+    },
+    "nose": {
+      "approved_master": [
+        [
+          519.3144931823982,
+          441.5037833719108
+        ]
+      ],
+      "before_alignment": [
+        [
+          519.3144931823982,
+          441.5037833719108
+        ]
+      ],
+      "after_alignment": [
+        [
+          514.3144931823982,
+          441.5037833719108
+        ]
+      ]
+    },
+    "mouth": {
+      "approved_master": [
+        [
+          519.4095642060578,
+          474.40010685394344
+        ]
+      ],
+      "before_alignment": [
+        [
+          519.4816676483616,
+          474.4018834801735
+        ]
+      ],
+      "after_alignment": [
+        [
+          514.4816676483616,
+          474.4018834801735
+        ]
+      ]
+    }
+  },
+  "jaw_internal_dark_line_comparison": [
+    {
+      "distance_from_x513": 20,
+      "dark_jaw_line_points": [
+        [
+          493,
+          538
+        ],
+        [
+          533,
+          540
+        ]
+      ],
+      "right_minus_left_y": 2
+    },
+    {
+      "distance_from_x513": 30,
+      "dark_jaw_line_points": [
+        [
+          483,
+          531
+        ],
+        [
+          543,
+          534
+        ]
+      ],
+      "right_minus_left_y": 3
+    },
+    {
+      "distance_from_x513": 40,
+      "dark_jaw_line_points": [
+        [
+          473,
+          522
+        ],
+        [
+          553,
+          525
+        ]
+      ],
+      "right_minus_left_y": 3
+    },
+    {
+      "distance_from_x513": 50,
+      "dark_jaw_line_points": [
+        [
+          463,
+          511
+        ],
+        [
+          563,
+          514
+        ]
+      ],
+      "right_minus_left_y": 3
+    },
+    {
+      "distance_from_x513": 60,
+      "dark_jaw_line_points": [
+        [
+          453,
+          499
+        ],
+        [
+          573,
+          503
+        ]
+      ],
+      "right_minus_left_y": 4
+    },
+    {
+      "distance_from_x513": 70,
+      "dark_jaw_line_points": [
+        [
+          443,
+          487
+        ],
+        [
+          583,
+          490
+        ]
+      ],
+      "right_minus_left_y": 3
+    },
+    {
+      "distance_from_x513": 80,
+      "dark_jaw_line_points": [
+        [
+          433,
+          474
+        ],
+        [
+          593,
+          477
+        ]
+      ],
+      "right_minus_left_y": 3
+    }
+  ],
+  "cause": "Before alignment facial axes from approved master were around x518-519.5 while inherited blank-head Alpha axis was x512.5-513. The approximately five-pixel shared offset is larger and more systematic than natural per-feature asymmetry.",
+  "after_alignment": "Root has moved four feature layers and front hair by (-5,0). New pupil midpoint x513.01 is within about0.5 px of head axis; nose/mouth centers x514.31/514.48 retain the approved master natural axis drift of1-1.5 px.",
+  "natural_asymmetry": [
+    "Approved-master right pupil is about0.425 px higher than left; preserved exactly by translation.",
+    "Current blank-head anatomical outline is nearly bilateral: mirror IoU99.28% at x512.5.",
+    "Internal painted jaw curve right side is2-4 px lower than the left at equal distances from x513; this is RGB stroke asymmetry, not alpha drift."
+  ],
+  "minimal_recommendation": [
+    "Do not apply another five-pixel move: the active features/front hair are already aligned.",
+    "Do not mirror both eyes/ears or reshape the whole skull merely to remove natural subpixel differences.",
+    "Keep y500+ neck Alpha unchanged. If user still flags internal jaw stroke, any optional cleanup should be RGB-only inside the jaw strip and should not alter the fixed neck contour."
+  ],
+  "fixed_neck_alpha_sha256_y500_plus": "d6d9981f6b351a7d8f31a69124a707405eacec6ac1a561474ecf1fb035d0f5cf",
+  "no_active_files_modified": true,
+  "measurement_notes": [
+    "Head/ear boundaries use Alpha>=128 and largest connected head component.",
+    "Dark weighted feature centroids are stable registration measures, not a claim that a curved anatomical part has one unique exact center.",
+    "Mother skin outline is obscured by front hair, so full mother skull symmetry cannot be inferred from the approved whole image alone."
+  ]
+}

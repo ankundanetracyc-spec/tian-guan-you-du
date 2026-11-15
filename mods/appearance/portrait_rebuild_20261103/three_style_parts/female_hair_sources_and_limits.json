@@ -1,0 +1,195 @@
+{
+  "status": "three_female_hair_pairs_for_combination_review_not_installed",
+  "fixed_face_source": "mods/appearance/ink_three_variants_20261004/female/face_shape/04.png",
+  "fixed_face_sha256": "769a4ad743391d62c0053b489166e72d28c9eaec2d02d98c091f0ce70134b4a5",
+  "style_reference_sources": [
+    "mods/appearance/portrait_rebuild_20261103/source/female_hair_final/reference_01.png",
+    "mods/appearance/portrait_rebuild_20261103/source/female_hair_final/reference_02.png",
+    "mods/appearance/portrait_rebuild_20261103/source/female_hair_final/reference_03.png"
+  ],
+  "style_names": [
+    "半束发簪披发",
+    "低盘髻细垂鬓",
+    "编束半披发"
+  ],
+  "records": [
+    {
+      "style": 1,
+      "part": "hair_front",
+      "source": "mods\\appearance\\portrait_rebuild_20261103\\single_style_sample\\parts\\hair_front.png",
+      "source_sha256": "4f39b17acbbfbf0b33bd3d2de4241cc30d6f7befb6f0d3488a1e5595c64884e0",
+      "output": "mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\hair_front\\01.png",
+      "output_sha256": "06bb36cfb398621b184046cfbcf69389d7144305fd6d170c3313b37b61d48aac",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha0_nonzero_rgb_count": 0,
+      "whole_layer_scale": 1,
+      "whole_layer_offset": [
+        0,
+        0
+      ],
+      "method": "Byte-identical reuse of reviewed single-style sample",
+      "fixed_zone_checks": null,
+      "center_edge_before": 277,
+      "center_edge_after": 277,
+      "back_center_alphas": null,
+      "largest_alpha128_enclosed_hole_pixels": 81,
+      "tone_revision": "revisions/hair_tone_01/curve_report.json"
+    },
+    {
+      "style": 1,
+      "part": "hair_back",
+      "source": "mods\\appearance\\portrait_rebuild_20261103\\single_style_sample\\parts\\hair_back.png",
+      "source_sha256": "ac50fa5565ed842d7f9770f8b9a4e2d74ae73b01bd78777050884876cdccc143",
+      "output": "mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\hair_back\\01.png",
+      "output_sha256": "2054b4ee1eb18ea8a53fcd1018a787a8963ee1139e7fa9d8296980f46fae62e5",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha0_nonzero_rgb_count": 0,
+      "whole_layer_scale": 1,
+      "whole_layer_offset": [
+        0,
+        0
+      ],
+      "method": "Visible-pixel-identical reuse of reviewed single-style sample; cleared 5 invisible RGB residues at alpha0, no visible pixel change",
+      "fixed_zone_checks": null,
+      "center_edge_before": null,
+      "center_edge_after": null,
+      "back_center_alphas": [
+        253,
+        253,
+        253
+      ],
+      "largest_alpha128_enclosed_hole_pixels": 6,
+      "tone_revision": "revisions/hair_tone_01/curve_report.json"
+    },
+    {
+      "style": 2,
+      "part": "hair_front",
+      "source": "mods\\appearance\\portrait_rebuild_20261103\\final\\female\\hair_front\\02.png",
+      "source_sha256": "4dd9815fdae5a4a26882ea08618665a1faba6b8c67aaf17fc029d3a94cfbd1e4",
+      "output": "mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\hair_front\\02.png",
+      "output_sha256": "9325405fdb213f11a7780636bc74cc77a073d5995df53fdbc3664e361bd506be",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha0_nonzero_rgb_count": 0,
+      "whole_layer_scale": 1,
+      "whole_layer_offset": [
+        0,
+        0
+      ],
+      "method": "Reuse already registered same-canvas candidate, no whole-layer transform; same localized inner-forehead pixel resampling as approved sample, maximum22px downward. Crown/outside/ear roots/chest fixed.",
+      "fixed_zone_checks": {
+        "above175_visible_changes": 0,
+        "below355_visible_changes": 0
+      },
+      "center_edge_before": 254,
+      "center_edge_after": 276,
+      "back_center_alphas": null,
+      "largest_alpha128_enclosed_hole_pixels": 2153
+    },
+    {
+      "style": 2,
+      "part": "hair_back",
+      "source": "mods\\appearance\\portrait_rebuild_20261103\\final\\female\\hair_back\\02.png",
+      "source_sha256": "e7669465be8188ea9fa5598977f0a40ca432912129d0e1408b27d78454f3e764",
+      "output": "mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\hair_back\\02.png",
+      "output_sha256": "e7669465be8188ea9fa5598977f0a40ca432912129d0e1408b27d78454f3e764",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha0_nonzero_rgb_count": 0,
+      "whole_layer_scale": 1,
+      "whole_layer_offset": [
+        0,
+        0
+      ],
+      "method": "Reuse already registered same-canvas candidate, no whole-layer transform",
+      "fixed_zone_checks": null,
+      "center_edge_before": null,
+      "center_edge_after": null,
+      "back_center_alphas": [
+        253,
+        253,
+        253
+      ],
+      "largest_alpha128_enclosed_hole_pixels": 46
+    },
+    {
+      "style": 3,
+      "part": "hair_front",
+      "source": "mods\\appearance\\portrait_rebuild_20261103\\final\\female\\hair_front\\03.png",
+      "source_sha256": "55157316a36efd4062b32b5db8364b20f45f7c3540908a2110430291e65f19db",
+      "output": "mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\hair_front\\03.png",
+      "output_sha256": "43cba290e842603542e914f638233899424b13df9f5b6c6fb489fd4b5c01ebb9",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha0_nonzero_rgb_count": 0,
+      "whole_layer_scale": 1,
+      "whole_layer_offset": [
+        0,
+        0
+      ],
+      "method": "Reuse already registered same-canvas candidate, no whole-layer transform; same localized inner-forehead pixel resampling as approved sample, maximum22px downward. Crown/outside/ear roots/chest fixed.",
+      "fixed_zone_checks": {
+        "above175_visible_changes": 0,
+        "below355_visible_changes": 0
+      },
+      "center_edge_before": 255,
+      "center_edge_after": 277,
+      "back_center_alphas": null,
+      "largest_alpha128_enclosed_hole_pixels": 1186
+    },
+    {
+      "style": 3,
+      "part": "hair_back",
+      "source": "mods\\appearance\\portrait_rebuild_20261103\\final\\female\\hair_back\\03.png",
+      "source_sha256": "2a83bbc3a2d91ed0a60a25dae4e1731cf15a950305cf308501197c8fc75f33fe",
+      "output": "mods\\appearance\\portrait_rebuild_20261103\\three_style_parts\\female\\hair_back\\03.png",
+      "output_sha256": "2a83bbc3a2d91ed0a60a25dae4e1731cf15a950305cf308501197c8fc75f33fe",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha0_nonzero_rgb_count": 0,
+      "whole_layer_scale": 1,
+      "whole_layer_offset": [
+        0,
+        0
+      ],
+      "method": "Reuse already registered same-canvas candidate, no whole-layer transform",
+      "fixed_zone_checks": null,
+      "center_edge_before": null,
+      "center_edge_after": null,
+      "back_center_alphas": [
+        253,
+        252,
+        253
+      ],
+      "largest_alpha128_enclosed_hole_pixels": 386
+    }
+  ],
+  "limitations": [
+    "Reuses generated transparent hair candidate paintings that were already registered; not direct whole reference hair pixel extraction.",
+    "Style references inform design only. All whole-layer scale factors remain1 and all canvas offsets0.",
+    "Local inner-hairline pixel resampling changes only inner forehead area for02/03; hidden-source/scaffold three-point certification is not available.",
+    "Native previews use identical approved face04 and single-sample features to isolate hair geometry; root will provide style-specific feature combinations.",
+    "Original clothing01 still contains embedded thin chest lines; these previews inherit that separate known issue.",
+    "No runtime assets or active configuration changed; semantic absence of every isolated skin pixel is not mathematically provable by color thresholds."
+  ]
+}

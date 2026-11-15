@@ -1,0 +1,146 @@
+{
+  "master": "../../male_whole_01.png",
+  "master_sha256": "76e789ffa97e72c8ece941401e4b7aa93ba74e7567e881ed2e7f48a67ae266c2",
+  "records": [
+    {
+      "part": "eyebrows",
+      "index": 1,
+      "source": "source\\eyebrows_raw.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "e6d4a960cc518d56fba1e95516b7f9c0415a4137501216298a1ef4c9e734e930",
+      "file": "male\\eyebrows\\01.png",
+      "transform": {
+        "uniform_scale": 0.19141914191419143,
+        "source_anchor": [
+          629.5,
+          637.5
+        ],
+        "target_anchor": [
+          521,
+          342.5
+        ],
+        "tx": 400.5016501650165,
+        "ty": 220.47029702970298
+      },
+      "rgb_bias_to_approved_master": [
+        3.8379047680070073,
+        0.566290130796304,
+        0.23364655831166203
+      ],
+      "colored_edge_noise_removed": 0,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "pair_registered_together": true
+    },
+    {
+      "part": "eyes",
+      "index": 1,
+      "source": "source\\eyes_raw.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "c55c4f8782f2a8b250bb962b06ae22f4ce9a6e50adc0e31f3fb324e17f3ae8e1",
+      "file": "male\\eyes\\01.png",
+      "transform": {
+        "uniform_scale": 0.20934786803325986,
+        "source_anchor": [
+          621.1721374045801,
+          596.8777877563239
+        ],
+        "target_anchor": [
+          518.7251773049645,
+          362.4100635852286
+        ],
+        "tx": 388.6841146576525,
+        "ty": 237.45497124203365
+      },
+      "rgb_bias_to_approved_master": [
+        -10.406691573590486,
+        -10.354283673901705,
+        -9.441521294715372
+      ],
+      "colored_edge_noise_removed": 1,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "pair_registered_together": true
+    },
+    {
+      "part": "nose",
+      "index": 1,
+      "source": "source\\nose_raw.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "c0e2ada93bde9341026786fd6e44a823fc4e40a00983ecb61fae9658002fc60b",
+      "file": "male\\nose\\01.png",
+      "transform": {
+        "uniform_scale": 0.15352697095435686,
+        "source_anchor": [
+          626.4521739130435,
+          933
+        ],
+        "target_anchor": [
+          519.5,
+          443
+        ],
+        "tx": 423.32269529135846,
+        "ty": 299.7593360995851
+      },
+      "rgb_bias_to_approved_master": [
+        0.26278146536677127,
+        -1.3673230221998836,
+        -5.141363102232759
+      ],
+      "colored_edge_noise_removed": 124,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "pair_registered_together": false
+    },
+    {
+      "part": "mouth",
+      "index": 1,
+      "source": "source\\mouth_raw.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "c971628935005a286ba70d1f24a39177533ad5d6868799927e93b9b7a651131e",
+      "file": "male\\mouth\\01.png",
+      "transform": {
+        "uniform_scale": 0.13559322033898305,
+        "source_anchor": [
+          633.7848837209302,
+          624
+        ],
+        "target_anchor": [
+          520,
+          475
+        ],
+        "tx": 434.06306661411116,
+        "ty": 390.3898305084746
+      },
+      "rgb_bias_to_approved_master": [
+        -1.9098837209300825,
+        3.3575581395349445,
+        3.434593023255374
+      ],
+      "colored_edge_noise_removed": 6,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "pair_registered_together": false
+    }
+  ]
+}

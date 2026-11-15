@@ -1,0 +1,28 @@
+{
+  "status": "用户已认可完整稿；同源九件已接入并完成实机检查",
+  "user_visual_approval": true,
+  "generation_mode": "built-in image_gen; whole illustration generated in one pass",
+  "image": "male_whole_01.png",
+  "image_sha256": "76e789ffa97e72c8ece941401e4b7aa93ba74e7567e881ed2e7f48a67ae266c2",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "mode": "RGB",
+  "native_image_unmodified": true,
+  "reference_roles": {
+    "reference/female_active.png": "女性当前活动素材完整组合：整体绘画质量、发色发质、肤色、细腻淡彩纸面质感",
+    "original_user_male_triptych": "原男性审美参考：自然男性五官比例、传统长发与青绿道袍，不采用前轮被否定的拆件稿"
+  },
+  "prompt": "source/whole_male_prompt.txt",
+  "workflow": "先完整立绘统一五官、发型、皮肤与颈领；用户认可后才逐步制作部件。届时以认可整稿为唯一视觉依据，统一画布与固定头颈锚点、百会前后归属和鼻山根层级。",
+  "old_parts_status": "review_02整批弃用，禁止据其进行接入；历史文件仅保留来源",
+  "active_game_textures_changed_this_turn": 0,
+  "active_game_configuration_changed_this_turn": false,
+  "approval_text": "可以，加",
+  "integration": "integration/",
+  "installed_part_count": 9,
+  "retired_old_variant_count": 7,
+  "runtime_checks": 938,
+  "user_part_visual_approval": false
+}

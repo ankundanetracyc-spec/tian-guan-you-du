@@ -1,0 +1,50 @@
+{
+  "source": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\source\\female_hair_final\\reference_01.png",
+  "hidden_painting": "E:\\stacklands\\mods\\appearance\\ink_three_variants_20261004\\female\\hair_back\\01.png",
+  "source_pupils": [
+    [
+      259.183,
+      325.313
+    ],
+    [
+      367.106,
+      325.374
+    ]
+  ],
+  "target_pupils": [
+    [
+      464.0,
+      379.0
+    ],
+    [
+      574.0,
+      379.0
+    ]
+  ],
+  "similarity_matrix": [
+    [
+      1.0192448769788107,
+      0.0005760953410833985
+    ],
+    [
+      -0.0005760953410833985,
+      1.0192448769788107
+    ]
+  ],
+  "translation": [
+    199.64164374630707,
+    47.575705454180195
+  ],
+  "output_size": [
+    1024,
+    1536
+  ],
+  "visible_region_source": "source crown bun, pin and rear side curtains",
+  "limitations": [
+    "Fine external strands use estimated paper-color matting, not lossless source alpha.",
+    "Hidden face, neck and torso coverage uses the existing rear-hair painting; it is not reconstructed original pixels.",
+    "Similarity resampling changes pixels slightly; no separate local stretching or bbox centering was used.",
+    "Source clothing occludes the original lower back hair; hidden continuation is a compatible underpainting."
+  ],
+  "active_replaced": false
+}

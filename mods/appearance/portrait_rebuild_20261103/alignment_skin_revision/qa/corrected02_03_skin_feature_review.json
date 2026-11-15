@@ -1,0 +1,220 @@
+{
+  "status": "read_only_QA_candidates02_03_with_new_skin_no_active_changes",
+  "skin_alpha_identical_to_before": true,
+  "skin_median_checks": [
+    {
+      "region": "forehead",
+      "actual_median_rgb": [
+        238.0,
+        214.0,
+        201.0
+      ],
+      "source_median_rgb": [
+        238.0,
+        214.0,
+        200.0
+      ],
+      "max_channel_median_difference": 1.0
+    },
+    {
+      "region": "cheeks",
+      "actual_median_rgb": [
+        240.0,
+        216.0,
+        203.0
+      ],
+      "source_median_rgb": [
+        240.0,
+        216.0,
+        203.0
+      ],
+      "max_channel_median_difference": 0.0
+    },
+    {
+      "region": "chin",
+      "actual_median_rgb": [
+        240.0,
+        218.0,
+        204.0
+      ],
+      "source_median_rgb": [
+        240.0,
+        218.0,
+        204.0
+      ],
+      "max_channel_median_difference": 0.0
+    },
+    {
+      "region": "neck",
+      "actual_median_rgb": [
+        235.0,
+        208.0,
+        194.0
+      ],
+      "source_median_rgb": [
+        235.0,
+        208.0,
+        194.0
+      ],
+      "max_channel_median_difference": 0.0
+    }
+  ],
+  "features": [
+    {
+      "part": "eyebrows",
+      "variant": 1,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_max": 226,
+      "sha256": "de04e12b8c315d275de09cbb774b4c96c650b101b59d4b1c47b187ec4fcd27ee"
+    },
+    {
+      "part": "eyebrows",
+      "variant": 2,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_max": 211,
+      "sha256": "d9deaba5be4abe2df4fee86eedfd5b7bb9c4445c9d76d2b4dc2fa43996fb97fc"
+    },
+    {
+      "part": "eyebrows",
+      "variant": 3,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_max": 188,
+      "sha256": "bd69174d8d563254b1e59e15d9d830c922a25d83eba6b8a1f57f08a7fe0f07d9"
+    },
+    {
+      "part": "eyes",
+      "variant": 1,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_max": 255,
+      "sha256": "e73d0464186e5ef7e0dfa4f8612f03577e623e5cd44076f6dce1b49769c4646d"
+    },
+    {
+      "part": "eyes",
+      "variant": 2,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_max": 255,
+      "sha256": "40f2e889600f40d78958e16a5f5486072ece5ba054283a2a2873f4ae7b70f204"
+    },
+    {
+      "part": "eyes",
+      "variant": 3,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_max": 255,
+      "sha256": "a012d5330413510250991e604f278bf3eab276f57cc07c2a0e87b581ad3a6bed"
+    },
+    {
+      "part": "nose",
+      "variant": 1,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_max": 209,
+      "sha256": "c0e19144005d81b3990cc83666333e6a8824c91c80759daa7a837f948b565eb2"
+    },
+    {
+      "part": "nose",
+      "variant": 2,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_max": 233,
+      "sha256": "81132a954b9eeebcfa38329189012ae362c7fc2d5564a74430970fd76af37738"
+    },
+    {
+      "part": "nose",
+      "variant": 3,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_max": 213,
+      "sha256": "fbfaedd295f098ddecceb37db51c3853d1c9d3253112fa029bf6ebe4407b7e9a"
+    },
+    {
+      "part": "mouth",
+      "variant": 1,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_max": 255,
+      "sha256": "1f370b29fd8f2e260290daf84d2dd4d32eb64c6020572c73c32fe618ed400b07"
+    },
+    {
+      "part": "mouth",
+      "variant": 2,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_max": 255,
+      "sha256": "d8b2ff337919cfa45d072cb24c821585405fa041ef6d8beaa609b48054c53a57"
+    },
+    {
+      "part": "mouth",
+      "variant": 3,
+      "size": [
+        1024,
+        1536
+      ],
+      "mode": "RGBA",
+      "alpha_max": 255,
+      "sha256": "990ad2a5076fb98844be4341314ca3694560d567276b5abfa37aadc419211923"
+    }
+  ],
+  "visual_scope": "Four front02/03 x rear02/03 pairings reviewed in light and dark native-head composites (8views), plus all3x4 new facial feature sets on new skin and native2x nose/lip closeups. First-style hair masks intentionally excluded.",
+  "ear_neck_observations": [
+    "No unexpected skin/scalp wedge or hair-edge discontinuity observed around ear roots in the four combinations. Visible ears belong to full face04.",
+    "Low bun rear02 remains continuous below ears with both front styles. Background below the bun beside the neck is consistent with the short rear hairstyle.",
+    "Neck-to-collar meeting has no new transparent gap or white/gray patch observed; original neck geometry/alpha remains unchanged."
+  ],
+  "skin_feature_observations": [
+    "No rectangular or hard-edged gray/white skin matte patch observed around eyebrow, eye, nose or mouth in the reviewed composites.",
+    "Nose tip retains local gray-brown translucent shadow and a tiny pale highlight; these read as local nose volume rather than a pasted opaque base. Source-reference-style nasal shadow remains noticeable.",
+    "Mouth retains warm low-saturation lip pigment and a small lower-lip/under-lip shadow; no pale rectangular surrounding cutout or strong new white halo observed.",
+    "Skin region medians match stated reference samples within1RGB level; this supports palette matching only, not aesthetic approval."
+  ],
+  "evidence": [
+    "corrected02_03_mix_light.jpg",
+    "corrected02_03_mix_dark.jpg",
+    "corrected02_03_nose_mouth_light.jpg",
+    "corrected02_03_nose_mouth_dark.jpg",
+    "new_skin_all_feature_sets.jpg"
+  ],
+  "limits": [
+    "Original generated02/03 hair strand forms still differ from source references despite improved proportions.",
+    "Visible skin/feature blending is a visual judgment; no mathematical semantic absence of every stray pixel is claimed.",
+    "First-style original-pixel masks still being revised; this report does not approve them."
+  ]
+}

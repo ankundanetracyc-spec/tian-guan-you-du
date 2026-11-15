@@ -1,0 +1,71 @@
+{
+  "tool": "built-in image_gen",
+  "records": [
+    {
+      "id": "female_hair_front_1",
+      "gender": "female",
+      "variant": 1,
+      "part": "hair_front",
+      "prompt": "Use case: background-extraction. Deliver exactly ONE independent transparent RGBA PNG game hair layer, not a sheet or comparison. Study the attached single approved female portrait. Match its exquisite fine Chinese gongbi hair strands, muted charcoal-black matte hair, low-contrast warm gray fine highlights, and restrained ancient Chinese styling. NO skin, ears, ear shapes, earrings, face, forehead skin, eyes, neck, clothing, robe pattern, background or labels anywhere in the output. Ears remain on the separate FACE layer, so all flesh-colored ear slivers must be completely absent from this hair image. Keep only hair and an explicitly requested hair ornament. Clean silhouette, main locks complete, no stray looping wiry flyaways or disconnected wisps over clothing. Do not thicken hair into plastic clumps. Real alpha transparency, no cast shadow or glow on transparent areas. Canvas 1024x1536. The hair must align to existing game head: x518 axis, front cap roughly x350..680, its top about y120, middle hairline (518,257), temples beside face x385 and x651 at y360, face/ears region beneath this. Maintain original design and strand texture from reference. Extract the FRONT layer of this half-up hairstyle: central-parted FRONT cap with the rolled swept temple sections, face-framing strands and TWO complete long slender locks that cross IN FRONT of shoulders/clothes. Ends naturally taper around y1000, not cut square. Separate out the high rear bun and horizontal hairpin (they belong to back layer) and remove the wide shoulder-BACK curtain of hair. The face aperture and space between the front chest locks are empty alpha. Hair cap only, NO flesh-colored ears tucked under its sides. It must be possible to overlay this on any independently drawn face.",
+      "refs": [
+        "E:/stacklands/mods/appearance/portrait_rebuild_20261103/source/female_hair_final/reference_01.png"
+      ],
+      "result_path": "E:\\tmp\\CodexData\\generated_images\\01a1a0b3-f096-7a82-a756-a8d54a0e071a\\exec-5619b42c-40ac-450d-af21-a966136c2daa.png"
+    },
+    {
+      "id": "female_hair_back_1",
+      "gender": "female",
+      "variant": 1,
+      "part": "hair_back",
+      "prompt": "Use case: background-extraction. Deliver exactly ONE independent transparent RGBA PNG game hair layer, not a sheet or comparison. Study the attached single approved female portrait. Match its exquisite fine Chinese gongbi hair strands, muted charcoal-black matte hair, low-contrast warm gray fine highlights, and restrained ancient Chinese styling. NO skin, ears, ear shapes, earrings, face, forehead skin, eyes, neck, clothing, robe pattern, background or labels anywhere in the output. Ears remain on the separate FACE layer, so all flesh-colored ear slivers must be completely absent from this hair image. Keep only hair and an explicitly requested hair ornament. Clean silhouette, main locks complete, no stray looping wiry flyaways or disconnected wisps over clothing. Do not thicken hair into plastic clumps. Real alpha transparency, no cast shadow or glow on transparent areas. Canvas 1024x1536. The hair must align to existing game head: x518 axis, front cap roughly x350..680, its top about y120, middle hairline (518,257), temples beside face x385 and x651 at y360, face/ears region beneath this. Maintain original design and strand texture from reference. Produce ONLY the BACK HAIR layer of the same half-up hairpin hairstyle. This is a CONTINUOUS solid hair underpainting placed BEHIND a separately drawn head/neck/robe. Preserve the high rear bun and slim horizontal dark antique hairpin near y90, then the smooth rear lengths cascading behind shoulders. Full hair silhouette approximately x260..785, y45..1160; flow narrower at top, widening below shoulder height, naturally tapered ends. Crucially FILL all hidden middle areas with hair all the way through behind head, ears, neck and chest. No face-shaped void or human outline cutout. No hollow U-shape. No skin or ears. No front chest locks; no front hairline or forehead cap in this layer. It should read as a single full opaque sheet of painted hair inside its outer silhouette, with coiled rear bun above. The visible edges must match reference rear hair, fewer stray looping wisps.",
+      "refs": [
+        "E:/stacklands/mods/appearance/portrait_rebuild_20261103/source/female_hair_final/reference_01.png"
+      ],
+      "result_path": "E:\\tmp\\CodexData\\generated_images\\01a1a0b3-f096-7a82-a756-a8d54a0e071a\\exec-1e9a4bbf-33ca-4bc4-bead-b0fe0ee2a6db.png"
+    },
+    {
+      "id": "female_hair_front_2",
+      "gender": "female",
+      "variant": 2,
+      "part": "hair_front",
+      "prompt": "Use case: background-extraction. Deliver exactly ONE independent transparent RGBA PNG game hair layer, not a sheet or comparison. Study the attached single approved female portrait. Match its exquisite fine Chinese gongbi hair strands, muted charcoal-black matte hair, low-contrast warm gray fine highlights, and restrained ancient Chinese styling. NO skin, ears, ear shapes, earrings, face, forehead skin, eyes, neck, clothing, robe pattern, background or labels anywhere in the output. Ears remain on the separate FACE layer, so all flesh-colored ear slivers must be completely absent from this hair image. Keep only hair and an explicitly requested hair ornament. Clean silhouette, main locks complete, no stray looping wiry flyaways or disconnected wisps over clothing. Do not thicken hair into plastic clumps. Real alpha transparency, no cast shadow or glow on transparent areas. Canvas 1024x1536. The hair must align to existing game head: x518 axis, front cap roughly x350..680, its top about y120, middle hairline (518,257), temples beside face x385 and x651 at y360, face/ears region beneath this. Maintain original design and strand texture from reference. Extract the FRONT layer of this center-parted coiled low-bun hairstyle: smooth richly detailed front scalp cap, swept temples and the narrow complete face-framing locks that descend in front of neck/clothes. Keep those locks sparse and tidy, within the reference silhouette, ending naturally around y760..850; no extra dangling fine loops. REMOVE both low side/back coiled buns and all rear hair; these belong to back layer. Empty alpha where the face, ears, neck and chest would be. Ears are expressly absent, including the little skin triangles at the temples. One front cap with hair-only locks.",
+      "refs": [
+        "E:/stacklands/mods/appearance/portrait_rebuild_20261103/source/female_hair_final/reference_02.png"
+      ],
+      "result_path": "E:\\tmp\\CodexData\\generated_images\\01a1a0b3-f096-7a82-a756-a8d54a0e071a\\exec-07b4d81b-868f-49e0-84d1-ed36b4cc9a5c.png"
+    },
+    {
+      "id": "female_hair_back_2",
+      "gender": "female",
+      "variant": 2,
+      "part": "hair_back",
+      "prompt": "Use case: background-extraction. Deliver exactly ONE independent transparent RGBA PNG game hair layer, not a sheet or comparison. Study the attached single approved female portrait. Match its exquisite fine Chinese gongbi hair strands, muted charcoal-black matte hair, low-contrast warm gray fine highlights, and restrained ancient Chinese styling. NO skin, ears, ear shapes, earrings, face, forehead skin, eyes, neck, clothing, robe pattern, background or labels anywhere in the output. Ears remain on the separate FACE layer, so all flesh-colored ear slivers must be completely absent from this hair image. Keep only hair and an explicitly requested hair ornament. Clean silhouette, main locks complete, no stray looping wiry flyaways or disconnected wisps over clothing. Do not thicken hair into plastic clumps. Real alpha transparency, no cast shadow or glow on transparent areas. Canvas 1024x1536. The hair must align to existing game head: x518 axis, front cap roughly x350..680, its top about y120, middle hairline (518,257), temples beside face x385 and x651 at y360, face/ears region beneath this. Maintain original design and strand texture from reference. Produce ONLY the BACK HAIR layer of the same LOW COILED BUN hairstyle. It is a compact CONTINUOUS rear hair mass behind the separate head, containing the nape bun/left-right coiled volumes visible in the portrait. Whole opaque hair silhouette approx x352..685, y140..520, with broad coils near x365/665,y420..490 and a softly rounded bottom at nape y515. No long hanging back curtain; reference is an UPDO. ALL center areas including where head/face/ears/neck would cover MUST be painted continuous dark hair, no holes or skin. Do not draw front scalp part, temple front locks, face, ears or neck. No face-shaped hole, no empty ring. Refined charcoal-black strands with rounded wound low coils. Lots of empty transparent canvas below y540. One independent back layer only.",
+      "refs": [
+        "E:/stacklands/mods/appearance/portrait_rebuild_20261103/source/female_hair_final/reference_02.png"
+      ],
+      "result_path": "E:\\tmp\\CodexData\\generated_images\\01a1a0b3-f096-7a82-a756-a8d54a0e071a\\exec-414d5732-742b-4b76-9a31-3a23b56c1b20.png"
+    },
+    {
+      "id": "female_hair_front_3",
+      "gender": "female",
+      "variant": 3,
+      "part": "hair_front",
+      "prompt": "Use case: background-extraction. Deliver exactly ONE independent transparent RGBA PNG game hair layer, not a sheet or comparison. Study the attached single approved female portrait. Match its exquisite fine Chinese gongbi hair strands, muted charcoal-black matte hair, low-contrast warm gray fine highlights, and restrained ancient Chinese styling. NO skin, ears, ear shapes, earrings, face, forehead skin, eyes, neck, clothing, robe pattern, background or labels anywhere in the output. Ears remain on the separate FACE layer, so all flesh-colored ear slivers must be completely absent from this hair image. Keep only hair and an explicitly requested hair ornament. Clean silhouette, main locks complete, no stray looping wiry flyaways or disconnected wisps over clothing. Do not thicken hair into plastic clumps. Real alpha transparency, no cast shadow or glow on transparent areas. Canvas 1024x1536. The hair must align to existing game head: x518 axis, front cap roughly x350..680, its top about y120, middle hairline (518,257), temples beside face x385 and x651 at y360, face/ears region beneath this. Maintain original design and strand texture from reference. Extract the FRONT layer of this braided half-up hairstyle: precisely center-parted front scalp cap, the two braids integrated along its outer temples, and the two complete elegant long locks down in front of shoulders/clothes ending naturally near y1000. Preserve reference braid construction and internal fine strands. Remove the shoulder-BACK hair curtain and all hair behind the body. Empty alpha between the front locks and in the face opening. NO ears or peach/tan patches under the braids.",
+      "refs": [
+        "E:/stacklands/mods/appearance/portrait_rebuild_20261103/source/female_hair_final/reference_03.png"
+      ],
+      "result_path": "E:\\tmp\\CodexData\\generated_images\\01a1a0b3-f096-7a82-a756-a8d54a0e071a\\exec-185ea789-3dd7-40f7-b627-b3875a3c3c2c.png"
+    },
+    {
+      "id": "female_hair_back_3",
+      "gender": "female",
+      "variant": 3,
+      "part": "hair_back",
+      "prompt": "Use case: background-extraction. Deliver exactly ONE independent transparent RGBA PNG game hair layer, not a sheet or comparison. Study the attached single approved female portrait. Match its exquisite fine Chinese gongbi hair strands, muted charcoal-black matte hair, low-contrast warm gray fine highlights, and restrained ancient Chinese styling. NO skin, ears, ear shapes, earrings, face, forehead skin, eyes, neck, clothing, robe pattern, background or labels anywhere in the output. Ears remain on the separate FACE layer, so all flesh-colored ear slivers must be completely absent from this hair image. Keep only hair and an explicitly requested hair ornament. Clean silhouette, main locks complete, no stray looping wiry flyaways or disconnected wisps over clothing. Do not thicken hair into plastic clumps. Real alpha transparency, no cast shadow or glow on transparent areas. Canvas 1024x1536. The hair must align to existing game head: x518 axis, front cap roughly x350..680, its top about y120, middle hairline (518,257), temples beside face x385 and x651 at y360, face/ears region beneath this. Maintain original design and strand texture from reference. Produce ONLY the BACK HAIR layer for this BRAIDED HALF-UP hairstyle. A CONTINUOUS filled rear hair mass, with the gathered half-up back roots and smooth softly flowing back lengths BEHIND head, ears, neck and shoulders. Head root approximately x360..675,y135..430; lower curtain widens to x250..795, ending in naturally tapered locks y1100..1200. Fill the WHOLE hidden center with dark hair, including behind face and neck, no face hole, no U-ring or head-shaped cutout. Do not include the braided front temples or the two front chest locks from the source; they are a separate front layer. No ears or skin. Preserve source fine strand detail and deep muted charcoal-black. Rear silhouette tidy, no sprawling flyaway wires.",
+      "refs": [
+        "E:/stacklands/mods/appearance/portrait_rebuild_20261103/source/female_hair_final/reference_03.png"
+      ],
+      "result_path": "E:\\tmp\\CodexData\\generated_images\\01a1a0b3-f096-7a82-a756-a8d54a0e071a\\exec-5a5ecb3b-9bc6-4f03-8bba-ae62beee9345.png"
+    }
+  ]
+}

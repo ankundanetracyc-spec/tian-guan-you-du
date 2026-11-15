@@ -1,0 +1,36 @@
+{
+  "parts": [
+    {
+      "part": "eyebrows",
+      "old_sha256": "8ac9f6ca50335575f2d6302257a0e242e646dfb02903bae5c7aa65b69e45b3ea",
+      "sha256": "30b5863269415909d37dc6aa2d4c4bb60bc1ebaef72a1feef2b9605e30521dde",
+      "changed_pixels": 657,
+      "dark_core_pixels_unchanged": 225,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "coordinate_shift": [
+        0,
+        0
+      ]
+    },
+    {
+      "part": "eyes",
+      "old_sha256": "ef89963e8e60872ef2bd367eeb012ab69f5e8608d46956a200cbd761e6ecebf1",
+      "sha256": "5dda037bd050c927c1d802fc696a54eb2a558fe9623cbab0c593e125b17f819d",
+      "changed_pixels": 855,
+      "dark_core_pixels_unchanged": 400,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "coordinate_shift": [
+        0,
+        0
+      ]
+    }
+  ],
+  "head_neck_sha256": "2fd9743feb92f3420355f46c83302f7e60de65892f9c09a8bbff9ce3e3afe7aa",
+  "head_neck_changed": false
+}

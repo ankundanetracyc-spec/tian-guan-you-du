@@ -1,0 +1,66 @@
+{
+  "pass": true,
+  "records": [
+    {
+      "part": "eyebrows",
+      "sha256": "30b5863269415909d37dc6aa2d4c4bb60bc1ebaef72a1feef2b9605e30521dde",
+      "before_sha256": "8ac9f6ca50335575f2d6302257a0e242e646dfb02903bae5c7aa65b69e45b3ea",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "core_pixels_exactly_preserved": 724,
+      "core_rgb_changes": 0,
+      "core_alpha_changes": 0,
+      "alpha_increase_pixels": 0,
+      "total_changed_pixels": 657,
+      "alpha_changed_pixels": 656,
+      "edge_rgb_changed_pixels": 103,
+      "change_bbox": [
+        427,
+        334,
+        605,
+        352
+      ],
+      "existing_leftward_alignment_preserved": true
+    },
+    {
+      "part": "eyes",
+      "sha256": "5dda037bd050c927c1d802fc696a54eb2a558fe9623cbab0c593e125b17f819d",
+      "before_sha256": "ef89963e8e60872ef2bd367eeb012ab69f5e8608d46956a200cbd761e6ecebf1",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "core_pixels_exactly_preserved": 883,
+      "core_rgb_changes": 0,
+      "core_alpha_changes": 0,
+      "alpha_increase_pixels": 0,
+      "total_changed_pixels": 855,
+      "alpha_changed_pixels": 851,
+      "edge_rgb_changed_pixels": 88,
+      "change_bbox": [
+        426,
+        356,
+        604,
+        377
+      ],
+      "existing_leftward_alignment_preserved": true
+    }
+  ],
+  "active_files_untouched": true,
+  "head_neck_nose_mouth_unchanged": true,
+  "method": "native image_gen alpha edge extraction fitted to CURRENT aligned parts; no feature movement; no rectangular support fills",
+  "visual_review": {
+    "magnification": 4,
+    "backgrounds": [
+      "light ivory",
+      "dark gray",
+      "checkerboard"
+    ],
+    "checked_current_head_composite": true,
+    "visible_skin_rectangles_or_right_angle_matte_steps": false,
+    "visible_detached_matte_specks": false,
+    "review_image": "qa/three_backgrounds_4x_before_left_after_right.png"
+  }
+}

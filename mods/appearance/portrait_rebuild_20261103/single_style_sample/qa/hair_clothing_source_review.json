@@ -1,0 +1,16 @@
+{
+  "scope": "read-only source search and isolated native layer inspection; no art changed",
+  "front_hair": "Isolated front layer retains two continuous crown-to-chest locks; no obvious detached looping chest strands were seen at native/2x view. Very low-alpha distant stray pixels remain as documented previously.",
+  "back_hair": "Isolated back layer still has fine long wisps along both side silhouettes, including neck/shoulder level. These are rear-hair pixels, independent of the clothing; whether all are unwanted is a visual decision, not inferred from alpha alone.",
+  "clothing": "Two thin curved hair-like lines are visible even in the clothing-only image, crossing the chest panel/trim; left approximate x385..435,y860..965 and right x650..685,y670..940. They therefore persist even if new front-hair flyaways are removed.",
+  "same_style_clean_source_found": false,
+  "checked_sources": "8 same-style sources listed in historical_clothing_sources.json, plus ink_recovered_parts/female/clothing/01.png (same SHA as active). All inspected same-style historical candidates carry corresponding curved lines.",
+  "other_style_clean_source": "mods/appearance/ink_portrait_variants_20261003_v1/female/clothing_1.png is green bamboo pattern and cannot directly replace the current blue-gray floral robe.",
+  "reusable_status": "Historical same-style files can support exact clothing structure/color comparison, but no source is certified as a clean direct replacement; preserve floral pattern and seam strokes if a local cleanup is later authorized.",
+  "evidence": [
+    "clothing_lines_native_2x.png",
+    "clothing_front_back_chest.png",
+    "historical_clothing_chest_comparison.jpg",
+    "other_clothing_sources.jpg"
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "source_master": "whole_male_first_20261105/male_whole_01.png",
+  "source_master_sha256": "76e789ffa97e72c8ece941401e4b7aa93ba74e7567e881ed2e7f48a67ae266c2",
+  "generation_mode": "built-in image_gen edit/extraction",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "prompt_file": "source/generation_prompts.json",
+  "records": [
+    {
+      "part": "clothing",
+      "index": 1,
+      "file": "male/clothing/01.png",
+      "sha256": "695aa19746daeb4a7008e85c6685a858781e36e357a1169ee948df06b4b98782",
+      "native": "source/front_native.png",
+      "native_sha256": "f5870e7a23d1998ab3abdcab4d58b2671f63df18eaebcf3df85f495bbf157c5c",
+      "transform": {
+        "source_controls": [
+          [
+            429.5,
+            553
+          ],
+          [
+            599,
+            552
+          ],
+          [
+            526,
+            688
+          ]
+        ],
+        "target_controls": [
+          [
+            433,
+            545
+          ],
+          [
+            599,
+            545
+          ],
+          [
+            532,
+            680
+          ]
+        ],
+        "inverse_x": [
+          1.0210843373493974,
+          -0.03398036590807675,
+          5.889781347612671
+        ],
+        "inverse_y": [
+          -0.006024096385542325,
+          1.0044176706827306,
+          8.200803212851595
+        ],
+        "local_displacement_box": [
+          360,
+          480,
+          680,
+          910
+        ],
+        "source_residual_pixels": [
+          5.684341886080802e-14,
+          0,
+          1.6077746776921858e-13
+        ]
+      },
+      "native_png_byte_identical": false,
+      "shoulder_waist_body_outside_registration_box_changed_pixels": 0,
+      "numerical_background_alpha_le_3_cleared_above_y500": 29,
+      "raster_controls_alpha_thresholds": {
+        "tips": 230,
+        "v_opening": 30
+      },
+      "raster_controls_measured": [
+        [
+          433.0,
+          545
+        ],
+        [
+          599.0,
+          545
+        ],
+        [
+          532.0,
+          680
+        ]
+      ],
+      "raster_residual_pixels": [
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "part": "clothing_back",
+      "index": 1,
+      "file": "male/clothing_back/01.png",
+      "sha256": "a651e38bff6bcac156cc0076cdaa00de4bb834806922c61d49a59fc0663b87da",
+      "native": "source/rear_native.png",
+      "native_sha256": "869054cb326deb43407ac9e19f9ac3fd7c90c6b84a395954355c1529fa3572ab",
+      "transform": {
+        "scale": 0.8,
+        "source_center": [
+          512,
+          750
+        ],
+        "target_center": [
+          516,
+          567
+        ]
+      },
+      "reason": "Native isolated band generated around y712..790; continuous narrow posterior band registered behind the fixed neck; not head/neck movement.",
+      "alpha32_bbox": [
+        421,
+        536,
+        611,
+        599
+      ]
+    }
+  ],
+  "head_alpha_reference": "res://mods/appearance/ink_three_variants_20261004/male/face_shape/01.png",
+  "head_alpha_reference_sha256": "ed790ac8bcd41fd54d9a2e0a7be55f21704413ff5b86213a91285782a5d6f7c2",
+  "source_mode": "Approved master used as sole drawing source. All hair removed and occluded robe reconstructed. Collar controls measured visually from master and fitted; exact painting similarity, not pixel identity to master, must be visually reviewed.",
+  "visual_review": {
+    "source_front_geometry_preserved_outside_collar": true,
+    "front_no_hair_skin_head": true,
+    "neck_opening_transparent": true,
+    "rear_continuous_band": true,
+    "user_approval_of_split_layers": false
+  }
+}

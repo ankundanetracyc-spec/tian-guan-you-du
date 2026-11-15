@@ -1,0 +1,7 @@
+{
+  "mode": "built-in image_gen",
+  "prompt": "Precise local image edit of the attached three-woman game portrait sheet. Remove ALL facial features from ALL THREE faces: erase eyebrows, eyes, eyelids, lashes, eye sockets/eyeliner, noses including bridge shading and nostrils, and mouths including lip color, lip highlights and mouth creases. Replace only those interior facial areas with continuous blank warm ivory-peach painted skin matching the existing face skin and faint watercolor texture. These must be clean featureless face bases for modular facial features, not closed eyes, not blurred faces, not masks. Retain subtle overall face volume and cheek/chin shading, but no ghost traces of eyes nose mouth. Preserve each face outline, jawline, visible ears, neck, hairline and all hair strands over the face. Preserve all three hairstyles, their deep charcoal-black hair color, hairpins, clothing, composition, proportions and pale background exactly as closely as possible. Maintain the original fine-line gongbi and light watercolor illustration style; no realism, no heavier paper texture, no added elements. Output the same triptych composition and aspect ratio.",
+  "input": "female_reference.png",
+  "output": "female_blank_faces.png",
+  "status": "featureless painting base; not independent runtime components"
+}

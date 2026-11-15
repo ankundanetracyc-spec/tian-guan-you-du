@@ -1,0 +1,414 @@
+{
+  "status": "single_sample_ready_for_visual_review_not_installed",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "face_source": "E:\\stacklands\\mods\\appearance\\ink_three_variants_20261004\\female\\face_shape\\04.png",
+  "face_sha256": "769a4ad743391d62c0053b489166e72d28c9eaec2d02d98c091f0ce70134b4a5",
+  "rule": "Original face, skin, ears and neck unchanged. Register complete independent components to original rig; do not move or recolor face. No opaque skin patch on features.",
+  "anchors": {
+    "male": {
+      "head_axis": [
+        517,
+        411
+      ],
+      "skull_crown_hidden": [
+        516,
+        173
+      ],
+      "hair_root_center": [
+        517,
+        271
+      ],
+      "hairline_left": [
+        447,
+        310
+      ],
+      "hairline_right": [
+        590,
+        310
+      ],
+      "temple_left": [
+        425,
+        348
+      ],
+      "temple_right": [
+        610,
+        348
+      ],
+      "eye_left": [
+        464,
+        375
+      ],
+      "eye_right": [
+        569,
+        374
+      ],
+      "eye_outer_left": [
+        426,
+        369
+      ],
+      "eye_inner_left": [
+        491,
+        380
+      ],
+      "eye_inner_right": [
+        540,
+        380
+      ],
+      "eye_outer_right": [
+        610,
+        368
+      ],
+      "brow_left": [
+        456,
+        346
+      ],
+      "brow_right": [
+        579,
+        345
+      ],
+      "brow_inner_left": [
+        490,
+        353
+      ],
+      "brow_inner_right": [
+        541,
+        353
+      ],
+      "nose_bridge": [
+        517,
+        409
+      ],
+      "nose_tip": [
+        517,
+        444
+      ],
+      "nostril_left": [
+        505,
+        448
+      ],
+      "nostril_right": [
+        528,
+        449
+      ],
+      "mouth_center": [
+        517,
+        481
+      ],
+      "mouth_left": [
+        481,
+        480
+      ],
+      "mouth_right": [
+        551,
+        480
+      ],
+      "chin": [
+        517,
+        541
+      ],
+      "ear_root_left": [
+        417,
+        379
+      ],
+      "ear_root_right": [
+        616,
+        379
+      ],
+      "neck_upper_left": [
+        438,
+        520
+      ],
+      "neck_upper_right": [
+        597,
+        520
+      ],
+      "collar_join_left": [
+        441,
+        550
+      ],
+      "collar_join_right": [
+        594,
+        550
+      ],
+      "collar_v": [
+        531,
+        694
+      ],
+      "cheek_left": [
+        449,
+        430
+      ],
+      "cheek_right": [
+        584,
+        430
+      ],
+      "shoulder_left": [
+        74,
+        706
+      ],
+      "shoulder_right": [
+        944,
+        706
+      ],
+      "waist_center": [
+        512,
+        1250
+      ],
+      "hair_crown": [
+        517,
+        151
+      ],
+      "front_lock_tip_left": [
+        444,
+        979
+      ],
+      "front_lock_tip_right": [
+        650,
+        978
+      ],
+      "eye_frame_top": [
+        516.5,
+        348.25
+      ],
+      "brow_frame_top": [
+        517.5,
+        314.75
+      ],
+      "nose_frame_bottom": [
+        516.5,
+        448.5
+      ],
+      "nose_frame_side": [
+        530.125,
+        409
+      ],
+      "mouth_frame_left": [
+        482.0,
+        481
+      ],
+      "mouth_frame_top": [
+        517,
+        463.5
+      ],
+      "collar_frame_top": [
+        517.5,
+        520.0
+      ]
+    },
+    "female": {
+      "head_axis": [
+        519,
+        414
+      ],
+      "skull_crown_hidden": [
+        517,
+        169
+      ],
+      "hair_root_center": [
+        518,
+        257
+      ],
+      "hairline_left": [
+        442,
+        310
+      ],
+      "hairline_right": [
+        596,
+        310
+      ],
+      "temple_left": [
+        422,
+        350
+      ],
+      "temple_right": [
+        621,
+        350
+      ],
+      "eye_left": [
+        464,
+        379
+      ],
+      "eye_right": [
+        574,
+        379
+      ],
+      "eye_outer_left": [
+        432,
+        375
+      ],
+      "eye_inner_left": [
+        496,
+        390
+      ],
+      "eye_inner_right": [
+        542,
+        390
+      ],
+      "eye_outer_right": [
+        606,
+        375
+      ],
+      "brow_left": [
+        457,
+        354
+      ],
+      "brow_right": [
+        582,
+        353
+      ],
+      "brow_inner_left": [
+        492,
+        361
+      ],
+      "brow_inner_right": [
+        543,
+        360
+      ],
+      "nose_bridge": [
+        519,
+        409
+      ],
+      "nose_tip": [
+        519,
+        446
+      ],
+      "nostril_left": [
+        509,
+        453
+      ],
+      "nostril_right": [
+        528,
+        453
+      ],
+      "mouth_center": [
+        519,
+        483
+      ],
+      "mouth_left": [
+        486,
+        482
+      ],
+      "mouth_right": [
+        550,
+        482
+      ],
+      "chin": [
+        519,
+        541
+      ],
+      "ear_root_left": [
+        412,
+        380
+      ],
+      "ear_root_right": [
+        626,
+        380
+      ],
+      "neck_upper_left": [
+        455,
+        520
+      ],
+      "neck_upper_right": [
+        582,
+        520
+      ],
+      "collar_join_left": [
+        450,
+        552
+      ],
+      "collar_join_right": [
+        584,
+        552
+      ],
+      "collar_v": [
+        520,
+        690
+      ],
+      "cheek_left": [
+        450,
+        434
+      ],
+      "cheek_right": [
+        588,
+        434
+      ],
+      "shoulder_left": [
+        124,
+        711
+      ],
+      "shoulder_right": [
+        906,
+        711
+      ],
+      "waist_center": [
+        512,
+        1250
+      ],
+      "hair_crown": [
+        518,
+        142
+      ],
+      "front_lock_tip_left": [
+        419,
+        941
+      ],
+      "front_lock_tip_right": [
+        653,
+        950
+      ],
+      "eye_frame_top": [
+        519.0,
+        351.5
+      ],
+      "brow_frame_top": [
+        519.5,
+        322.25
+      ],
+      "nose_frame_bottom": [
+        518.5,
+        453.0
+      ],
+      "nose_frame_side": [
+        532.75,
+        409
+      ],
+      "mouth_frame_left": [
+        487.0,
+        483
+      ],
+      "mouth_frame_top": [
+        519,
+        467.0
+      ],
+      "collar_frame_top": [
+        517.0,
+        520.0
+      ]
+    }
+  },
+  "remaining_checks": [
+    "Full multi-point registration of brow/nose/hair is not certified; inspect shape landmarks with user-selected design",
+    "Original clothing contains baked hair lines, to clean separately after style review"
+  ],
+  "nose_method": "User-authorized original-source pixel extraction; source-skin estimate removed; original face unchanged",
+  "face_name": "柔和卵面",
+  "candidate_hairline_override": {
+    "female_hair_root_center": [
+      518,
+      277
+    ],
+    "previous_original_rig": [
+      518,
+      257
+    ],
+    "reason": "User identified excessive forehead exposure; lower only inner front hairline; all facial anchors unchanged",
+    "measured_before_after_y": [
+      255,
+      277
+    ]
+  },
+  "feature_method": "All four facial features extracted from approved left female source pixels; no generated facial feature shape remains in this sample."
+}

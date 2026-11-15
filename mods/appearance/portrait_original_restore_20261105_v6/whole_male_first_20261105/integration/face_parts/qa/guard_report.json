@@ -1,0 +1,44 @@
+{
+  "master_sha256": "76e789ffa97e72c8ece941401e4b7aa93ba74e7567e881ed2e7f48a67ae266c2",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "generated_alpha_registered": true,
+  "all_visible_feature_rgb_from_approved_master": true,
+  "head_neck_not_modified_by_this_subtask": true,
+  "records": [
+    {
+      "part": "eyebrows",
+      "sha256": "89f572f95a9b5b317478d37cbfacedca7c2f1808eb93c6567b9a8244a6b3bebe",
+      "visible_pixels_exact_approved_rgb": true,
+      "dark_stroke_pixels": 778,
+      "dark_stroke_pixels_alpha128": 778,
+      "dark_stroke_coverage": 1.0
+    },
+    {
+      "part": "eyes",
+      "sha256": "c028d3b183184994aae23aa69bd40beebbe894134c781d9c6820794c8f9db20e",
+      "visible_pixels_exact_approved_rgb": true,
+      "dark_stroke_pixels": 744,
+      "dark_stroke_pixels_alpha128": 744,
+      "dark_stroke_coverage": 1.0
+    },
+    {
+      "part": "nose",
+      "sha256": "2bcbd3cf8ccd464383132e69e61e88f1692b5a0e6881a690cfb88601befad53b",
+      "visible_pixels_exact_approved_rgb": true,
+      "dark_stroke_pixels": 96,
+      "dark_stroke_pixels_alpha128": 96,
+      "dark_stroke_coverage": 1.0
+    },
+    {
+      "part": "mouth",
+      "sha256": "639d88453f7339da9c6bd6ce087ff3c6c3eb26bdfa1ab30d3990ef98043ace32",
+      "visible_pixels_exact_approved_rgb": true,
+      "dark_stroke_pixels": 326,
+      "dark_stroke_pixels_alpha128": 326,
+      "dark_stroke_coverage": 1.0
+    }
+  ]
+}
