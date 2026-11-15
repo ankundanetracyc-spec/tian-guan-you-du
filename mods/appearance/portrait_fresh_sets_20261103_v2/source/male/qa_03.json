@@ -1,0 +1,50 @@
+{
+  "pass": true,
+  "parts": [
+    {
+      "part": "eyebrows",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "visible": 2871
+    },
+    {
+      "part": "eyes",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "visible": 4154
+    },
+    {
+      "part": "nose",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "visible": 1538
+    },
+    {
+      "part": "mouth",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "visible": 1295
+    },
+    {
+      "part": "hair_front",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "visible": 43379
+    },
+    {
+      "part": "hair_back",
+      "width": 1024,
+      "height": 1536,
+      "alpha": true,
+      "visible": 121034
+    }
+  ],
+  "whole_layer_registration_only": true,
+  "no_cutout": true,
+  "registration_certification": "not asserted"
+}

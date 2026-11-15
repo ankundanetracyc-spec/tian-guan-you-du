@@ -1,0 +1,581 @@
+{
+  "status": "installed after game verification; see installation/runtime_check.json",
+  "mode": "built-in image_gen skin-color edit followed by measured mechanical RGB calibration on the original geometry",
+  "source": {
+    "original": "source/original_face.png",
+    "original_sha256": "769a4ad743391d62c0053b489166e72d28c9eaec2d02d98c091f0ce70134b4a5",
+    "imagegen_color_study": "source/raw_skin_edit.png",
+    "imagegen_sha256": "7039a8b6431fca889a65a2a78b82b44585c59422848049983deb7879b595ea37",
+    "reference": "E:\\stacklands\\mods\\appearance\\portrait_rebuild_20261103\\source\\female_reference.png",
+    "reference_sha256": "98ac9eed9b4692d859152895cab666a7e618aa1c1c341a6d3fd414904e695b03"
+  },
+  "output": {
+    "file": "female/face_shape.png",
+    "sha256": "f61eee9537f62da3c93c2afdf1570c97a1e5a5644986e6e71c983f58f81c09c8",
+    "width": 1024,
+    "height": 1536,
+    "channels": 4,
+    "alpha_different_pixels": 0,
+    "alpha_byte_exact": true,
+    "original_alpha_bbox": [
+      331,
+      208,
+      706,
+      727
+    ],
+    "final_alpha_bbox": [
+      331,
+      208,
+      706,
+      727
+    ],
+    "changed_rgb_channels": 306104
+  },
+  "original_vs_generated_alpha_different_pixels": 27758,
+  "calibration": {
+    "model": "smooth four-region RGB offset plus clamped monotone per-channel shadow response; original RGB texture positions and alpha retained",
+    "channels": [
+      {
+        "offset": [
+          4.7191900871023345,
+          0.47621621780302426,
+          5.138245496510528,
+          -4.700654939287601
+        ],
+        "shadow_slope": -0.2,
+        "unconstrained": [
+          7.539993026305326,
+          0.6951286309097233,
+          4.432979056933233,
+          -4.687355919387098,
+          -9.982828317584445
+        ]
+      },
+      {
+        "offset": [
+          2.1590864287145894,
+          -0.11498495690855903,
+          8.275995092100104,
+          -9.509238677380248
+        ],
+        "shadow_slope": -0.35,
+        "unconstrained": [
+          1.9987775250662831,
+          -0.14343733224447086,
+          7.673596986599135,
+          -9.098728023781538,
+          -11.689670045806816
+        ]
+      },
+      {
+        "offset": [
+          -2.680750535934355,
+          -0.6019549735189914,
+          9.79915237410148,
+          -10.79696809312287
+        ],
+        "shadow_slope": -0.43650063811979384,
+        "unconstrained": [
+          -2.651589349026459,
+          -0.4861590220703045,
+          9.07151461225598,
+          -10.098190519760001,
+          -13.095019143593815
+        ]
+      }
+    ],
+    "reference_alignment": {
+      "column": "left",
+      "project_to_reference": [
+        -204,
+        -51
+      ]
+    },
+    "patch_radius": 6,
+    "region_boundaries": [
+      [
+        330,
+        405
+      ],
+      [
+        440,
+        520
+      ],
+      [
+        535,
+        575
+      ]
+    ],
+    "render_background_for_comparison": [
+      234,
+      228,
+      216
+    ]
+  },
+  "samples": [
+    {
+      "name": "forehead_left",
+      "x": 465,
+      "y": 295,
+      "original": [
+        230,
+        204,
+        186,
+        253
+      ],
+      "reference": [
+        231,
+        208,
+        194,
+        255
+      ],
+      "generated": [
+        237,
+        214,
+        203,
+        253
+      ],
+      "final": [
+        231,
+        208,
+        194,
+        253
+      ],
+      "deltaE_before": 2.793398294998985,
+      "deltaE_generated": 2.7211184597680975,
+      "deltaE_final": 0
+    },
+    {
+      "name": "forehead_center",
+      "x": 519,
+      "y": 290,
+      "original": [
+        234,
+        209,
+        192,
+        253
+      ],
+      "reference": [
+        235,
+        213,
+        198,
+        255
+      ],
+      "generated": [
+        238,
+        215,
+        204,
+        253
+      ],
+      "final": [
+        234,
+        212,
+        197,
+        253
+      ],
+      "deltaE_before": 2.042899824656493,
+      "deltaE_generated": 2.2787169045587414,
+      "deltaE_final": 0.3554799858083491
+    },
+    {
+      "name": "forehead_right",
+      "x": 565,
+      "y": 295,
+      "original": [
+        232,
+        207,
+        190,
+        253
+      ],
+      "reference": [
+        231,
+        209,
+        195,
+        255
+      ],
+      "generated": [
+        238,
+        214,
+        202,
+        253
+      ],
+      "final": [
+        232,
+        210,
+        196,
+        253
+      ],
+      "deltaE_before": 2.084709916401149,
+      "deltaE_generated": 2.356751256766799,
+      "deltaE_final": 0.3563847334913926
+    },
+    {
+      "name": "cheek_left_outer",
+      "x": 454,
+      "y": 414,
+      "original": [
+        233,
+        200,
+        181,
+        253
+      ],
+      "reference": [
+        234,
+        207,
+        192,
+        255
+      ],
+      "generated": [
+        238,
+        209,
+        195,
+        253
+      ],
+      "final": [
+        234,
+        206,
+        190,
+        253
+      ],
+      "deltaE_before": 3.9418165497074016,
+      "deltaE_generated": 1.2740789298943664,
+      "deltaE_final": 0.7419295495746026
+    },
+    {
+      "name": "cheek_left_inner",
+      "x": 474,
+      "y": 421,
+      "original": [
+        232,
+        203,
+        185,
+        253
+      ],
+      "reference": [
+        233,
+        207,
+        192,
+        255
+      ],
+      "generated": [
+        237,
+        211,
+        197,
+        253
+      ],
+      "final": [
+        233,
+        207,
+        193,
+        253
+      ],
+      "deltaE_before": 2.4070376895202985,
+      "deltaE_generated": 1.5477306061663056,
+      "deltaE_final": 0.520929687364258
+    },
+    {
+      "name": "cheek_right_inner",
+      "x": 561,
+      "y": 415,
+      "original": [
+        233,
+        203,
+        184,
+        253
+      ],
+      "reference": [
+        233,
+        207,
+        191,
+        255
+      ],
+      "generated": [
+        237,
+        210,
+        197,
+        253
+      ],
+      "final": [
+        234,
+        207,
+        192,
+        253
+      ],
+      "deltaE_before": 2.606404399275174,
+      "deltaE_generated": 2.0119163532184,
+      "deltaE_final": 0.6392173569280132
+    },
+    {
+      "name": "cheek_right_outer",
+      "x": 580,
+      "y": 413,
+      "original": [
+        233,
+        201,
+        182,
+        253
+      ],
+      "reference": [
+        232,
+        204,
+        189,
+        255
+      ],
+      "generated": [
+        238,
+        209,
+        196,
+        253
+      ],
+      "final": [
+        234,
+        206,
+        191,
+        253
+      ],
+      "deltaE_before": 2.8592406740541487,
+      "deltaE_generated": 2.2091999140306866,
+      "deltaE_final": 0.7143602298192444
+    },
+    {
+      "name": "jaw_left",
+      "x": 463,
+      "y": 478,
+      "original": [
+        230,
+        204,
+        186,
+        253
+      ],
+      "reference": [
+        236,
+        215,
+        201,
+        255
+      ],
+      "generated": [
+        236,
+        211,
+        199,
+        253
+      ],
+      "final": [
+        234,
+        212,
+        198,
+        253
+      ],
+      "deltaE_before": 4.703401607130543,
+      "deltaE_generated": 2.097311630582844,
+      "deltaE_final": 1.0631957186725918
+    },
+    {
+      "name": "jaw_right",
+      "x": 574,
+      "y": 478,
+      "original": [
+        230,
+        204,
+        186,
+        253
+      ],
+      "reference": [
+        234,
+        212,
+        198,
+        255
+      ],
+      "generated": [
+        236,
+        212,
+        200,
+        253
+      ],
+      "final": [
+        233,
+        212,
+        197,
+        253
+      ],
+      "deltaE_before": 3.7922617255954707,
+      "deltaE_generated": 1.2774761895530788,
+      "deltaE_final": 0.6395349482561113
+    },
+    {
+      "name": "chin",
+      "x": 519,
+      "y": 529,
+      "original": [
+        231,
+        202,
+        183,
+        253
+      ],
+      "reference": [
+        236,
+        214,
+        200,
+        255
+      ],
+      "generated": [
+        236,
+        209,
+        196,
+        253
+      ],
+      "final": [
+        237,
+        215,
+        201,
+        253
+      ],
+      "deltaE_before": 5.529512706759655,
+      "deltaE_generated": 2.4037081684122645,
+      "deltaE_final": 0.35485326289375185
+    },
+    {
+      "name": "neck_left_shadow",
+      "x": 497,
+      "y": 570,
+      "original": [
+        216,
+        182,
+        161,
+        253
+      ],
+      "reference": [
+        223,
+        195,
+        180,
+        255
+      ],
+      "generated": [
+        221,
+        190,
+        174,
+        253
+      ],
+      "final": [
+        221,
+        194,
+        179,
+        253
+      ],
+      "deltaE_before": 6.111940427580143,
+      "deltaE_generated": 2.1047679705702436,
+      "deltaE_final": 0.5882925984770428
+    },
+    {
+      "name": "neck_center",
+      "x": 519,
+      "y": 585,
+      "original": [
+        231,
+        203,
+        184,
+        253
+      ],
+      "reference": [
+        231,
+        204,
+        189,
+        255
+      ],
+      "generated": [
+        234,
+        209,
+        196,
+        253
+      ],
+      "final": [
+        232,
+        206,
+        191,
+        253
+      ],
+      "deltaE_before": 2.187388008441217,
+      "deltaE_generated": 2.1655795468376806,
+      "deltaE_final": 0.7509216814093291
+    },
+    {
+      "name": "neck_right",
+      "x": 539,
+      "y": 570,
+      "original": [
+        232,
+        203,
+        184,
+        253
+      ],
+      "reference": [
+        229,
+        202,
+        187,
+        255
+      ],
+      "generated": [
+        233,
+        207,
+        194,
+        253
+      ],
+      "final": [
+        233,
+        207,
+        192,
+        253
+      ],
+      "deltaE_before": 2.3072436273500645,
+      "deltaE_generated": 2.11187077197036,
+      "deltaE_final": 1.7579513196269383
+    },
+    {
+      "name": "neck_lower",
+      "x": 518,
+      "y": 630,
+      "original": [
+        230,
+        203,
+        184,
+        253
+      ],
+      "reference": [
+        235,
+        211,
+        196,
+        255
+      ],
+      "generated": [
+        235,
+        210,
+        197,
+        253
+      ],
+      "final": [
+        232,
+        206,
+        191,
+        253
+      ],
+      "deltaE_before": 3.7008500362250256,
+      "deltaE_generated": 1.1080557030306186,
+      "deltaE_final": 1.8099910844715779
+    }
+  ],
+  "summary": {
+    "mean_deltaE_before": 3.362007534835412,
+    "mean_deltaE_generated": 1.9763058860971776,
+    "mean_deltaE_final": 0.7352172969138003,
+    "max_deltaE_final": 1.8099910844715779,
+    "neck_mean_deltaE_before": 3.5768555248991127,
+    "neck_mean_deltaE_final": 1.2267891709962222
+  },
+  "invariants": [
+    "Original alpha channel byte-for-byte identical",
+    "No geometric transform, skin outline movement or new feature/hair pixels",
+    "Original empty-canvas RGB retained where alpha=0",
+    "Only low-frequency color calibration and monotone RGB response; original texture locations retained",
+    "Active pack, male sprites, clothes, hair and facial-feature PNGs not edited"
+  ],
+  "limitation": "The reference is a separate finished rendering; matching local skin color does not imply pixel-identical skin texture or lighting."
+}

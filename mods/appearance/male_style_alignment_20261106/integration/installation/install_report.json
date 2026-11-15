@@ -1,0 +1,706 @@
+{
+  "schema": "male-style-install-report/v1",
+  "installed": true,
+  "approved_portrait": "res://mods/appearance/male_style_alignment_20261106/integration/source/approved_male.png",
+  "approved_portrait_sha256": "d97b79e3372df42db24b4dd5c3ec42f376d652616d9fa25d78a393b004da81a8",
+  "records": [
+    {
+      "target": "male/face_shape/01.png",
+      "part": "face_shape",
+      "name": "face_shape",
+      "resource_path": "res://mods/appearance/ink_three_variants_20261004/male/face_shape/01.png",
+      "source_path": "res://mods/appearance/male_style_alignment_20261106/integration/male/face_shape/01.png",
+      "candidate_path": "res://mods/appearance/male_style_alignment_20261106/integration/male/face_shape/01.png",
+      "sha256": "d86319252035a286a92e8892b9816bdb917a39f7f41f4cb1edf40f4dee51c357",
+      "before_sha256": "2fd9743feb92f3420355f46c83302f7e60de65892f9c09a8bbff9ce3e3afe7aa",
+      "size": [
+        1024,
+        1536
+      ],
+      "alpha_bbox": [
+        39,
+        41,
+        994,
+        1304
+      ]
+    },
+    {
+      "target": "male/hair_front/01.png",
+      "part": "hair_front",
+      "name": "hair_front",
+      "resource_path": "res://mods/appearance/ink_three_variants_20261004/male/hair_front/01.png",
+      "source_path": "res://mods/appearance/male_style_alignment_20261106/integration/male/hair_front/01.png",
+      "candidate_path": "res://mods/appearance/male_style_alignment_20261106/integration/male/hair_front/01.png",
+      "sha256": "1bd9ccc12beb55970225414c698cd2c18bb0fc93489e31254e6d1bcbb6021b0e",
+      "before_sha256": "7710450f3d7833ffc29e0f58f5ba0bd915a68bc888b708f54d70a68ae7bc9806",
+      "size": [
+        1024,
+        1536
+      ],
+      "alpha_bbox": [
+        73,
+        111,
+        1002,
+        1306
+      ]
+    },
+    {
+      "target": "male/hair_back/01.png",
+      "part": "hair_back",
+      "name": "hair_back",
+      "resource_path": "res://mods/appearance/ink_three_variants_20261004/male/hair_back/01.png",
+      "source_path": "res://mods/appearance/male_style_alignment_20261106/integration/male/hair_back/01.png",
+      "candidate_path": "res://mods/appearance/male_style_alignment_20261106/integration/male/hair_back/01.png",
+      "sha256": "fd68eb34a86268596634df8512e3f468d0768aba8592800d8429dc94655865a3",
+      "before_sha256": "48959457df80a57b7486b8c35638f07734fd847d92fd4fa063e6d22c3aaed22c",
+      "size": [
+        1024,
+        1536
+      ],
+      "alpha_bbox": [
+        0,
+        59,
+        1023,
+        1536
+      ]
+    },
+    {
+      "target": "male/eyebrows/01.png",
+      "part": "eyebrows",
+      "name": "eyebrows",
+      "resource_path": "res://mods/appearance/ink_three_variants_20261004/male/eyebrows/01.png",
+      "source_path": "res://mods/appearance/male_style_alignment_20261106/integration/male/eyebrows/01.png",
+      "candidate_path": "res://mods/appearance/male_style_alignment_20261106/integration/male/eyebrows/01.png",
+      "sha256": "b094a5d118e3b722b1901198c319919804cc93ab225c873366aa02af6fc6fa5f",
+      "before_sha256": "30b5863269415909d37dc6aa2d4c4bb60bc1ebaef72a1feef2b9605e30521dde",
+      "size": [
+        1024,
+        1536
+      ],
+      "alpha_bbox": [
+        418,
+        333,
+        616,
+        358
+      ]
+    },
+    {
+      "target": "male/eyes/01.png",
+      "part": "eyes",
+      "name": "eyes",
+      "resource_path": "res://mods/appearance/ink_three_variants_20261004/male/eyes/01.png",
+      "source_path": "res://mods/appearance/male_style_alignment_20261106/integration/male/eyes/01.png",
+      "candidate_path": "res://mods/appearance/male_style_alignment_20261106/integration/male/eyes/01.png",
+      "sha256": "5ecb31eacb232bf8be1f83ddd97c50c3715b792564c73052f425aca7c20eb8af",
+      "before_sha256": "5dda037bd050c927c1d802fc696a54eb2a558fe9623cbab0c593e125b17f819d",
+      "size": [
+        1024,
+        1536
+      ],
+      "alpha_bbox": [
+        422,
+        357,
+        606,
+        380
+      ]
+    },
+    {
+      "target": "male/nose/01.png",
+      "part": "nose",
+      "name": "nose",
+      "resource_path": "res://mods/appearance/ink_three_variants_20261004/male/nose/01.png",
+      "source_path": "res://mods/appearance/male_style_alignment_20261106/integration/male/nose/01.png",
+      "candidate_path": "res://mods/appearance/male_style_alignment_20261106/integration/male/nose/01.png",
+      "sha256": "e7271b38d96922434dbdf4a085b83a0d35ea5560989d0cfda9177beb085a2e79",
+      "before_sha256": "af623a6fdc38766b28771e17582a2b308a5c1f7ec21de48e1b535e8ec6b2d139",
+      "size": [
+        1024,
+        1536
+      ],
+      "alpha_bbox": [
+        485,
+        333,
+        547,
+        461
+      ]
+    },
+    {
+      "target": "male/mouth/01.png",
+      "part": "mouth",
+      "name": "mouth",
+      "resource_path": "res://mods/appearance/ink_three_variants_20261004/male/mouth/01.png",
+      "source_path": "res://mods/appearance/male_style_alignment_20261106/integration/male/mouth/01.png",
+      "candidate_path": "res://mods/appearance/male_style_alignment_20261106/integration/male/mouth/01.png",
+      "sha256": "471666da8f5b161007491c7f557e6aaf23c0b467d0414bc0839f7d54d942aa03",
+      "before_sha256": "b92b059a925cad9440530733d7ca99400e4fc8563ac8a8d0c6517e6c870c30b3",
+      "size": [
+        1024,
+        1536
+      ],
+      "alpha_bbox": [
+        475,
+        468,
+        558,
+        494
+      ]
+    },
+    {
+      "target": "male/clothing/01.png",
+      "part": "clothing",
+      "name": "clothing",
+      "resource_path": "res://mods/appearance/ink_three_variants_20261004/male/clothing/01.png",
+      "source_path": "res://mods/appearance/male_style_alignment_20261106/integration/male/clothing/01.png",
+      "candidate_path": "res://mods/appearance/male_style_alignment_20261106/integration/male/clothing/01.png",
+      "sha256": "812f23c90be2527fa29d8f0ad76c166bef6c7546fcea8fd2a5416f0f00981851",
+      "before_sha256": "695aa19746daeb4a7008e85c6685a858781e36e357a1169ee948df06b4b98782",
+      "size": [
+        1024,
+        1536
+      ],
+      "alpha_bbox": [
+        0,
+        21,
+        1024,
+        1536
+      ]
+    },
+    {
+      "target": "male/clothing_back/01.png",
+      "part": "clothing_back",
+      "name": "clothing_back",
+      "resource_path": "res://mods/appearance/ink_three_variants_20261004/male/clothing_back/01.png",
+      "source_path": "res://mods/appearance/male_style_alignment_20261106/integration/male/clothing_back/01.png",
+      "candidate_path": "res://mods/appearance/male_style_alignment_20261106/integration/male/clothing_back/01.png",
+      "sha256": "cf9a4158283c3dc81463c07c08f2df5d01fa4cbb0e4b02ad016bdd2c721980b1",
+      "before_sha256": "a651e38bff6bcac156cc0076cdaa00de4bb834806922c61d49a59fc0663b87da",
+      "size": [
+        1024,
+        1536
+      ],
+      "alpha_bbox": [
+        163,
+        71,
+        936,
+        952
+      ]
+    }
+  ],
+  "slot_counts": {
+    "male": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      7,
+      1
+    ],
+    "female": [
+      3,
+      3,
+      4,
+      3,
+      1,
+      1,
+      1,
+      7,
+      1
+    ]
+  },
+  "baseline_components": [
+    {
+      "id": "male_front_hair",
+      "gender": "male",
+      "part": "hair_front",
+      "file": "male/hair_front/{index}.png",
+      "variant_count": 1,
+      "variant_names": [
+        "木簪拢发"
+      ],
+      "variant_indices": [
+        1
+      ],
+      "variant_style_ids": [
+        0
+      ],
+      "variant_aliases": {
+        "1": 0,
+        "2": 0
+      }
+    },
+    {
+      "id": "male_back_hair",
+      "gender": "male",
+      "part": "hair_back",
+      "file": "male/hair_back/{index}.png",
+      "variant_count": 1,
+      "variant_names": [
+        "木簪半束长披"
+      ],
+      "variant_indices": [
+        1
+      ],
+      "variant_style_ids": [
+        0
+      ],
+      "variant_aliases": {
+        "1": 0,
+        "2": 0
+      }
+    },
+    {
+      "id": "male_eyebrows",
+      "gender": "male",
+      "part": "brow",
+      "file": "male/eyebrows/{index}.png",
+      "variant_count": 1,
+      "variant_names": [
+        "清直眉"
+      ],
+      "variant_indices": [
+        1
+      ],
+      "variant_style_ids": [
+        0
+      ],
+      "variant_aliases": {
+        "1": 0,
+        "2": 0
+      }
+    },
+    {
+      "id": "male_eyes",
+      "gender": "male",
+      "part": "eye",
+      "file": "male/eyes/{index}.png",
+      "variant_count": 1,
+      "variant_names": [
+        "浅长目"
+      ],
+      "variant_indices": [
+        1
+      ],
+      "variant_style_ids": [
+        0
+      ],
+      "variant_aliases": {
+        "1": 0,
+        "2": 0
+      }
+    },
+    {
+      "id": "male_nose",
+      "gender": "male",
+      "part": "nose",
+      "file": "male/nose/{index}.png",
+      "variant_count": 1,
+      "variant_names": [
+        "自然鼻型"
+      ],
+      "variant_indices": [
+        1
+      ],
+      "variant_style_ids": [
+        0
+      ],
+      "variant_aliases": {
+        "1": 0,
+        "2": 0
+      }
+    },
+    {
+      "id": "male_mouth",
+      "gender": "male",
+      "part": "mouth",
+      "file": "male/mouth/{index}.png",
+      "variant_count": 1,
+      "variant_names": [
+        "自然浅唇"
+      ],
+      "variant_indices": [
+        1
+      ],
+      "variant_style_ids": [
+        0
+      ],
+      "variant_aliases": {
+        "1": 0,
+        "2": 0
+      }
+    },
+    {
+      "id": "male_face",
+      "gender": "male",
+      "part": "face",
+      "file": "male/face_shape/{index}.png",
+      "variant_count": 1,
+      "variant_names": [
+        "清俊长脸"
+      ],
+      "variant_indices": [
+        1
+      ],
+      "variant_style_ids": [
+        0
+      ],
+      "variant_aliases": {
+        "1": 0,
+        "2": 0
+      }
+    },
+    {
+      "id": "male_clothes",
+      "gender": "male",
+      "part": "clothes",
+      "file": "male/clothing/{index}.png",
+      "rear_file": "male/clothing_back/{index}.png",
+      "variant_count": 7,
+      "variant_names": [
+        "碧岚云叶袍",
+        "玄青云竹袍",
+        "绛霞流云袍",
+        "玉虚·杂役常服",
+        "玉虚·外门常服",
+        "玉虚·内门常服",
+        "玉虚·真传常服"
+      ],
+      "item_paths": [
+        "res://resources/entities/items/clothing/男_碧岚云叶袍.tres",
+        "res://resources/entities/items/clothing/男_玄青云竹袍.tres",
+        "res://resources/entities/items/clothing/男_绛霞流云袍.tres",
+        "res://resources/entities/items/clothing/玉虚杂役常服.tres",
+        "res://resources/entities/items/clothing/玉虚外门常服.tres",
+        "res://resources/entities/items/clothing/玉虚内门常服.tres",
+        "res://resources/entities/items/clothing/玉虚真传常服.tres"
+      ]
+    },
+    {
+      "id": "male_beard",
+      "gender": "male",
+      "part": "beard",
+      "file": "male/face_accessory/{index}.png",
+      "variant_count": 1,
+      "variant_names": [
+        "无须"
+      ],
+      "variant_indices": [
+        1
+      ],
+      "variant_style_ids": [
+        0
+      ],
+      "variant_aliases": {
+        "1": 0,
+        "2": 0
+      }
+    },
+    {
+      "id": "female_front_hair",
+      "gender": "female",
+      "part": "hair_front",
+      "file": "female/hair_front/{index}.png",
+      "variant_count": 3,
+      "variant_names": [
+        "清簪垂鬓",
+        "素挽分鬓",
+        "编云垂鬓"
+      ],
+      "variant_indices": [
+        1,
+        2,
+        3
+      ],
+      "variant_style_ids": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "female_back_hair",
+      "gender": "female",
+      "part": "hair_back",
+      "file": "female/hair_back/{index}.png",
+      "variant_count": 3,
+      "variant_names": [
+        "清簪半束",
+        "素挽低髻",
+        "编云长披"
+      ],
+      "variant_indices": [
+        1,
+        2,
+        3
+      ],
+      "variant_style_ids": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "female_eyebrows",
+      "gender": "female",
+      "part": "brow",
+      "file": "female/eyebrows/{index}.png",
+      "variant_count": 4,
+      "variant_names": [
+        "疏平柔眉",
+        "弯挑细眉",
+        "平直细眉",
+        "柔弯细眉"
+      ],
+      "variant_indices": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "variant_style_ids": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "variant_aliases": {}
+    },
+    {
+      "id": "female_eyes",
+      "gender": "female",
+      "part": "eye",
+      "file": "female/eyes/{index}.png",
+      "variant_count": 3,
+      "variant_names": [
+        "浅杏长目",
+        "清圆杏目",
+        "舒展长目"
+      ],
+      "variant_indices": [
+        1,
+        2,
+        3
+      ],
+      "variant_style_ids": [
+        0,
+        1,
+        3
+      ],
+      "variant_aliases": {
+        "2": 0,
+        "female_eyes_02": 0
+      }
+    },
+    {
+      "id": "female_nose",
+      "gender": "female",
+      "part": "nose",
+      "file": "female/nose/{index}.png",
+      "variant_count": 1,
+      "variant_names": [
+        "柔圆鼻"
+      ],
+      "variant_indices": [
+        1
+      ],
+      "variant_style_ids": [
+        0
+      ],
+      "variant_aliases": {
+        "1": 0,
+        "2": 0,
+        "female_nose_01": 0,
+        "female_nose_02": 0
+      }
+    },
+    {
+      "id": "female_mouth",
+      "gender": "female",
+      "part": "mouth",
+      "file": "female/mouth/{index}.png",
+      "variant_count": 1,
+      "variant_names": [
+        "自然浅唇"
+      ],
+      "variant_indices": [
+        1
+      ],
+      "variant_style_ids": [
+        0
+      ],
+      "variant_aliases": {
+        "1": 0,
+        "2": 0,
+        "female_mouth_01": 0,
+        "female_mouth_02": 0
+      }
+    },
+    {
+      "id": "female_face",
+      "gender": "female",
+      "part": "face",
+      "file": "female/face_shape/{index}.png",
+      "variant_count": 1,
+      "variant_names": [
+        "柔和卵面"
+      ],
+      "variant_indices": [
+        4
+      ],
+      "variant_style_ids": [
+        3
+      ]
+    },
+    {
+      "id": "female_clothes",
+      "gender": "female",
+      "part": "clothes",
+      "file": "female/clothing/{index}.png",
+      "variant_count": 7,
+      "variant_names": [
+        "青瓷云梅袍",
+        "月白竹影袍",
+        "藕荷花云袍",
+        "玉虚·杂役常服",
+        "玉虚·外门常服",
+        "玉虚·内门常服",
+        "玉虚·真传常服"
+      ],
+      "item_paths": [
+        "res://resources/entities/items/clothing/女_青瓷云梅袍.tres",
+        "res://resources/entities/items/clothing/女_月白竹影袍.tres",
+        "res://resources/entities/items/clothing/女_藕荷花云袍.tres",
+        "res://resources/entities/items/clothing/玉虚杂役常服.tres",
+        "res://resources/entities/items/clothing/玉虚外门常服.tres",
+        "res://resources/entities/items/clothing/玉虚内门常服.tres",
+        "res://resources/entities/items/clothing/玉虚真传常服.tres"
+      ]
+    },
+    {
+      "id": "female_makeup",
+      "gender": "female",
+      "part": "makeup",
+      "file": "female/face_accessory/{index}.png",
+      "variant_count": 1,
+      "variant_names": [
+        "素颜"
+      ],
+      "variant_indices": [
+        1
+      ],
+      "variant_style_ids": [
+        0
+      ]
+    }
+  ],
+  "baseline_sha256": {
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing/01.png": "695aa19746daeb4a7008e85c6685a858781e36e357a1169ee948df06b4b98782",
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing/02.png": "9c37e7fde5a353f034fbdee301d4484da3de91e88943a792918c0443c5d346af",
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing/03.png": "e312ab1747ece1f5cad7976de013c2ee474169f9aa0feb5c61a6fe84eb22347b",
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing/04.png": "3a034405f7f612ad670839f058549f390843fb93fa8343df8898a456276554ac",
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing/05.png": "f7a4c9833cd4f4a161c0edd9b089c8b95f15319aba2cdf37e41b1e814a537e4a",
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing/06.png": "999a8d6e5f63ce25c3a409cd1d21974688ee86d322542844762b8a8185a9bd78",
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing/07.png": "b4606a0de5c6fcdf42b9389b1e22e9e848b3489a01bf544c1382d53b679752ac",
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing_back/01.png": "a651e38bff6bcac156cc0076cdaa00de4bb834806922c61d49a59fc0663b87da",
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing_back/02.png": "60dcb9ba8fe14516a161a3bca3fe2de53ce4e741f66ebad87f651475ab7ada21",
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing_back/03.png": "97ec93c4b684fd41bf4061d540a9e669ebe596e620c1aec26342397eece2838a",
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing_back/04.png": "d84fff75cefc9af2dc3829ba49d6e1b7ec23362b3d89ea1ff41862e60056e26b",
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing_back/05.png": "9d7db6db8c99a3df67ac860a208c61fbee8a68768c80ed1b391b086c141c3d7d",
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing_back/06.png": "0df5d4611ceea963d138ff9bc4bed0d0c21e31e502602bc8269e5ccda292801f",
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing_back/07.png": "ef7af6f7ee87e1ad4a81d9aabd2d78306b0ce8438899e517c2ee53f9457c50ee",
+    "res://mods/appearance/ink_three_variants_20261004/male/eyebrows/01.png": "30b5863269415909d37dc6aa2d4c4bb60bc1ebaef72a1feef2b9605e30521dde",
+    "res://mods/appearance/ink_three_variants_20261004/male/eyes/01.png": "5dda037bd050c927c1d802fc696a54eb2a558fe9623cbab0c593e125b17f819d",
+    "res://mods/appearance/ink_three_variants_20261004/male/face_accessory/01.png": "1913847bf9091720c48139f49dfbb3aa70c4d20de82f2718e3dcd8348c6e5e9c",
+    "res://mods/appearance/ink_three_variants_20261004/male/face_shape/01.png": "2fd9743feb92f3420355f46c83302f7e60de65892f9c09a8bbff9ce3e3afe7aa",
+    "res://mods/appearance/ink_three_variants_20261004/male/hair_back/01.png": "48959457df80a57b7486b8c35638f07734fd847d92fd4fa063e6d22c3aaed22c",
+    "res://mods/appearance/ink_three_variants_20261004/male/hair_front/01.png": "7710450f3d7833ffc29e0f58f5ba0bd915a68bc888b708f54d70a68ae7bc9806",
+    "res://mods/appearance/ink_three_variants_20261004/male/mouth/01.png": "b92b059a925cad9440530733d7ca99400e4fc8563ac8a8d0c6517e6c870c30b3",
+    "res://mods/appearance/ink_three_variants_20261004/male/nose/01.png": "af623a6fdc38766b28771e17582a2b308a5c1f7ec21de48e1b535e8ec6b2d139",
+    "res://mods/appearance/ink_three_variants_20261004/female/clothing/01.png": "2456e11244be9106b1cf80415eb33f44111332225fd166adf441a9c751014b38",
+    "res://mods/appearance/ink_three_variants_20261004/female/clothing/02.png": "0df90405b7b746c0e2d334d2b863d7ba64270ef47378adca947f9f1f6046e8b4",
+    "res://mods/appearance/ink_three_variants_20261004/female/clothing/03.png": "10c560fa71a6bb24df2de6fada2a3e04979ba552042a061b129162b6d8b2d8fd",
+    "res://mods/appearance/ink_three_variants_20261004/female/clothing/04.png": "85208533b0687a13e3d3dfb1aca675327639294a614f07b7d8d4bf65481a8928",
+    "res://mods/appearance/ink_three_variants_20261004/female/clothing/05.png": "10c2e60f0621b26d1936ab48a00b31eca2ffdbe13587453bf894a71ea1dcc5dd",
+    "res://mods/appearance/ink_three_variants_20261004/female/clothing/06.png": "af11228234e53983fece2b18b9b67e1151fa615102fb48e525eabec5f9bff3d7",
+    "res://mods/appearance/ink_three_variants_20261004/female/clothing/07.png": "4ce217ffc75e16bc908defa4a4405dc186af873f699d615f04924aa36dbbd7dd",
+    "res://mods/appearance/ink_three_variants_20261004/female/eyebrows/01.png": "0365039042cbf66dc869b1777f1c7c40e8d2cbe89c86a80b11d2c34c8e45bed5",
+    "res://mods/appearance/ink_three_variants_20261004/female/eyebrows/02.png": "5b0c2767c3936a2356de249b1c451cc1065090cd8168dcd02d2dac50b679d833",
+    "res://mods/appearance/ink_three_variants_20261004/female/eyebrows/03.png": "14329a3b4e4ebd514c5449fa25898be4fa9918402bc60ddeb6e66555f981eabb",
+    "res://mods/appearance/ink_three_variants_20261004/female/eyebrows/04.png": "8f8836916c809fb9ad1e834dfa2bd1184bd99c8e7b4e3377b490c7335ff045ed",
+    "res://mods/appearance/ink_three_variants_20261004/female/eyes/01.png": "d1d57a82ba87f3cd1eefc81eda08932432e77ce08dd000dc7fabf1e8b8555fcd",
+    "res://mods/appearance/ink_three_variants_20261004/female/eyes/02.png": "02168cc7007021adb42002627cb97c574f1bc3a3087d83741a7cdc6cef458ea5",
+    "res://mods/appearance/ink_three_variants_20261004/female/eyes/03.png": "749867dd34d4c41e933fcaac9bce5e7fd2dc2deda841bbdaa817502a6b89361b",
+    "res://mods/appearance/ink_three_variants_20261004/female/face_accessory/01.png": "d5efcb10b52e55a390e591a9ffa9fbd8ee9dc9ad7e5028fc8a97ac49454cfefe",
+    "res://mods/appearance/ink_three_variants_20261004/female/face_shape/04.png": "f61eee9537f62da3c93c2afdf1570c97a1e5a5644986e6e71c983f58f81c09c8",
+    "res://mods/appearance/ink_three_variants_20261004/female/hair_back/01.png": "0449a25c7ee9807332770849d3ea11f66ff4a41da8891daa3995f9c8deb6321f",
+    "res://mods/appearance/ink_three_variants_20261004/female/hair_back/02.png": "fa8306f6778f65ee2a1b95425a60648ac61699449148d2671b9f5c1ae3b2aa89",
+    "res://mods/appearance/ink_three_variants_20261004/female/hair_back/03.png": "d390a0512599dd63b813166e826b58154521d69ab29adc6237695cb93471efcc",
+    "res://mods/appearance/ink_three_variants_20261004/female/hair_front/01.png": "821fe4406c90fcfc0a9cafe2048403fbdfb98aa0bafce0698fcf912e7d1f7681",
+    "res://mods/appearance/ink_three_variants_20261004/female/hair_front/02.png": "70143ebb272c9627206c17544688431d1bb06c6b628824909e7f80e2b3ffe53e",
+    "res://mods/appearance/ink_three_variants_20261004/female/hair_front/03.png": "745dce89cbbf19a963bc0558b8cfdc14434ecf145ceb9898ab3e25918f6df2dc",
+    "res://mods/appearance/ink_three_variants_20261004/female/mouth/01.png": "bf84b1e940a888a9a09e36ea2bc7cceb222f7411a49ea025aa37b63091e1cd4d",
+    "res://mods/appearance/ink_three_variants_20261004/female/nose/01.png": "ff4f943786aaa4a0befcd3505936d6c02bcd1ad4e85d4664d88fb4bdc9676dfc"
+  },
+  "preserved_sha256": {
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing/02.png": "9c37e7fde5a353f034fbdee301d4484da3de91e88943a792918c0443c5d346af",
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing/03.png": "e312ab1747ece1f5cad7976de013c2ee474169f9aa0feb5c61a6fe84eb22347b",
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing/04.png": "3a034405f7f612ad670839f058549f390843fb93fa8343df8898a456276554ac",
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing/05.png": "f7a4c9833cd4f4a161c0edd9b089c8b95f15319aba2cdf37e41b1e814a537e4a",
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing/06.png": "999a8d6e5f63ce25c3a409cd1d21974688ee86d322542844762b8a8185a9bd78",
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing/07.png": "b4606a0de5c6fcdf42b9389b1e22e9e848b3489a01bf544c1382d53b679752ac",
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing_back/02.png": "60dcb9ba8fe14516a161a3bca3fe2de53ce4e741f66ebad87f651475ab7ada21",
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing_back/03.png": "97ec93c4b684fd41bf4061d540a9e669ebe596e620c1aec26342397eece2838a",
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing_back/04.png": "d84fff75cefc9af2dc3829ba49d6e1b7ec23362b3d89ea1ff41862e60056e26b",
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing_back/05.png": "9d7db6db8c99a3df67ac860a208c61fbee8a68768c80ed1b391b086c141c3d7d",
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing_back/06.png": "0df5d4611ceea963d138ff9bc4bed0d0c21e31e502602bc8269e5ccda292801f",
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing_back/07.png": "ef7af6f7ee87e1ad4a81d9aabd2d78306b0ce8438899e517c2ee53f9457c50ee",
+    "res://mods/appearance/ink_three_variants_20261004/male/face_accessory/01.png": "1913847bf9091720c48139f49dfbb3aa70c4d20de82f2718e3dcd8348c6e5e9c",
+    "res://mods/appearance/ink_three_variants_20261004/female/clothing/01.png": "2456e11244be9106b1cf80415eb33f44111332225fd166adf441a9c751014b38",
+    "res://mods/appearance/ink_three_variants_20261004/female/clothing/02.png": "0df90405b7b746c0e2d334d2b863d7ba64270ef47378adca947f9f1f6046e8b4",
+    "res://mods/appearance/ink_three_variants_20261004/female/clothing/03.png": "10c560fa71a6bb24df2de6fada2a3e04979ba552042a061b129162b6d8b2d8fd",
+    "res://mods/appearance/ink_three_variants_20261004/female/clothing/04.png": "85208533b0687a13e3d3dfb1aca675327639294a614f07b7d8d4bf65481a8928",
+    "res://mods/appearance/ink_three_variants_20261004/female/clothing/05.png": "10c2e60f0621b26d1936ab48a00b31eca2ffdbe13587453bf894a71ea1dcc5dd",
+    "res://mods/appearance/ink_three_variants_20261004/female/clothing/06.png": "af11228234e53983fece2b18b9b67e1151fa615102fb48e525eabec5f9bff3d7",
+    "res://mods/appearance/ink_three_variants_20261004/female/clothing/07.png": "4ce217ffc75e16bc908defa4a4405dc186af873f699d615f04924aa36dbbd7dd",
+    "res://mods/appearance/ink_three_variants_20261004/female/eyebrows/01.png": "0365039042cbf66dc869b1777f1c7c40e8d2cbe89c86a80b11d2c34c8e45bed5",
+    "res://mods/appearance/ink_three_variants_20261004/female/eyebrows/02.png": "5b0c2767c3936a2356de249b1c451cc1065090cd8168dcd02d2dac50b679d833",
+    "res://mods/appearance/ink_three_variants_20261004/female/eyebrows/03.png": "14329a3b4e4ebd514c5449fa25898be4fa9918402bc60ddeb6e66555f981eabb",
+    "res://mods/appearance/ink_three_variants_20261004/female/eyebrows/04.png": "8f8836916c809fb9ad1e834dfa2bd1184bd99c8e7b4e3377b490c7335ff045ed",
+    "res://mods/appearance/ink_three_variants_20261004/female/eyes/01.png": "d1d57a82ba87f3cd1eefc81eda08932432e77ce08dd000dc7fabf1e8b8555fcd",
+    "res://mods/appearance/ink_three_variants_20261004/female/eyes/02.png": "02168cc7007021adb42002627cb97c574f1bc3a3087d83741a7cdc6cef458ea5",
+    "res://mods/appearance/ink_three_variants_20261004/female/eyes/03.png": "749867dd34d4c41e933fcaac9bce5e7fd2dc2deda841bbdaa817502a6b89361b",
+    "res://mods/appearance/ink_three_variants_20261004/female/face_accessory/01.png": "d5efcb10b52e55a390e591a9ffa9fbd8ee9dc9ad7e5028fc8a97ac49454cfefe",
+    "res://mods/appearance/ink_three_variants_20261004/female/face_shape/04.png": "f61eee9537f62da3c93c2afdf1570c97a1e5a5644986e6e71c983f58f81c09c8",
+    "res://mods/appearance/ink_three_variants_20261004/female/hair_back/01.png": "0449a25c7ee9807332770849d3ea11f66ff4a41da8891daa3995f9c8deb6321f",
+    "res://mods/appearance/ink_three_variants_20261004/female/hair_back/02.png": "fa8306f6778f65ee2a1b95425a60648ac61699449148d2671b9f5c1ae3b2aa89",
+    "res://mods/appearance/ink_three_variants_20261004/female/hair_back/03.png": "d390a0512599dd63b813166e826b58154521d69ab29adc6237695cb93471efcc",
+    "res://mods/appearance/ink_three_variants_20261004/female/hair_front/01.png": "821fe4406c90fcfc0a9cafe2048403fbdfb98aa0bafce0698fcf912e7d1f7681",
+    "res://mods/appearance/ink_three_variants_20261004/female/hair_front/02.png": "70143ebb272c9627206c17544688431d1bb06c6b628824909e7f80e2b3ffe53e",
+    "res://mods/appearance/ink_three_variants_20261004/female/hair_front/03.png": "745dce89cbbf19a963bc0558b8cfdc14434ecf145ceb9898ab3e25918f6df2dc",
+    "res://mods/appearance/ink_three_variants_20261004/female/mouth/01.png": "bf84b1e940a888a9a09e36ea2bc7cceb222f7411a49ea025aa37b63091e1cd4d",
+    "res://mods/appearance/ink_three_variants_20261004/female/nose/01.png": "ff4f943786aaa4a0befcd3505936d6c02bcd1ad4e85d4664d88fb4bdc9676dfc"
+  },
+  "config_sha256": "6f2b79b9972ba4788c9d349faa405cba2541a685f598140a87c2ffe0646ad9d7",
+  "manifest_before_sha256": "8df3abff045c98ce4f410c1bac11ddf65b7231dc4d2a66c0e09cf916f7c06749",
+  "manifest_after_sha256": "dded43bd1152155ed5abb23605d2b587e70c90b18ba8913e304140b589166796",
+  "head_alpha_unchanged": true,
+  "png_count": 46,
+  "female_pngs_preserved": 24,
+  "backup": "res://mods/appearance/male_style_alignment_20261106/integration/installation/before_install.zip",
+  "selection_sha256": "b9db3eae07b888a3bda18a6e619e8772f74977624fc982bc528ed9da7927ddf2",
+  "write_methods": {
+    "male/face_shape/01.png": "atomic_replace",
+    "male/hair_front/01.png": "atomic_replace",
+    "male/hair_back/01.png": "atomic_replace",
+    "male/eyebrows/01.png": "atomic_replace",
+    "male/eyes/01.png": "atomic_replace",
+    "male/nose/01.png": "atomic_replace",
+    "male/mouth/01.png": "atomic_replace",
+    "male/clothing/01.png": "atomic_replace",
+    "male/clothing_back/01.png": "atomic_replace",
+    "portrait_manifest.json": "atomic_replace"
+  },
+  "pixel_exact_extraction": false,
+  "art_review": "pending_user_review"
+}

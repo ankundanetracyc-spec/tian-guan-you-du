@@ -1,0 +1,75 @@
+{
+  "approved_sha256": "d97b79e3372df42db24b4dd5c3ec42f376d652616d9fa25d78a393b004da81a8",
+  "method": "Native image_gen transparent components with approved-source visible material RGB guard; full canvas and generated Alpha preserved exactly",
+  "registration_claim": "Same native frame; anatomical/garment alignment and visual fidelity require actual composite review",
+  "records": [
+    {
+      "part": "hair_front",
+      "input": "raw\\hair_front.png",
+      "output": "male\\hair_front\\01.png",
+      "source_sha256": "611f3b3c6527c82cc94b3d72ac40d95603b2f6d9d061caca3413cbdecf17c2ca",
+      "output_sha256": "1bd9ccc12beb55970225414c698cd2c18bb0fc93489e31254e6d1bcbb6021b0e",
+      "native_alpha_unchanged": true,
+      "native_rgb_unchanged": false,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "transform": "identity; no translation, scale, local warps or silhouette trimming",
+      "approved_core_rgb_pixels": 60680,
+      "hidden_regions": "native image_gen painting",
+      "native_alpha_sha256": "65df761b0bc90e62d88818eaa1eaba16717adba459c8d4a15b6541930c1a57fd"
+    },
+    {
+      "part": "hair_back",
+      "input": "raw\\hair_back.png",
+      "output": "male\\hair_back\\01.png",
+      "source_sha256": "9bb3f3e8b330a98f387b6363bc9e58e00deae8cd786f76ffe0a3164d8466a88e",
+      "output_sha256": "fd68eb34a86268596634df8512e3f468d0768aba8592800d8429dc94655865a3",
+      "native_alpha_unchanged": true,
+      "native_rgb_unchanged": false,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "transform": "identity; no translation, scale, local warps or silhouette trimming",
+      "approved_core_rgb_pixels": 12047,
+      "hidden_regions": "native image_gen painting",
+      "native_alpha_sha256": "a1668af1d30b1d6b53947f36d80198890551a096160a5f7f1636544b555425cd"
+    },
+    {
+      "part": "clothing",
+      "input": "raw\\clothing.png",
+      "output": "male\\clothing\\01.png",
+      "source_sha256": "dba173d3944e2b431a7564cdfb2a3caad9c1e05c7b723829d6b8c2b361779919",
+      "output_sha256": "812f23c90be2527fa29d8f0ad76c166bef6c7546fcea8fd2a5416f0f00981851",
+      "native_alpha_unchanged": true,
+      "native_rgb_unchanged": true,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "transform": "identity; no translation, scale, local warps or silhouette trimming",
+      "approved_core_rgb_pixels": 0,
+      "hidden_regions": "native image_gen painting",
+      "native_alpha_sha256": "d1fc1d06ef10f51dba5bef1f15924ac7db13bcedd5585003d89a500981ddaf51"
+    },
+    {
+      "part": "clothing_back",
+      "input": "raw\\clothing_back.png",
+      "output": "male\\clothing_back\\01.png",
+      "source_sha256": "44ee5e4b8166e0b958075b22bf64c6d1a7a90133a67ecd9a2f632161a3c0decd",
+      "output_sha256": "cf9a4158283c3dc81463c07c08f2df5d01fa4cbb0e4b02ad016bdd2c721980b1",
+      "native_alpha_unchanged": true,
+      "native_rgb_unchanged": true,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "transform": "identity; no translation, scale, local warps or silhouette trimming",
+      "approved_core_rgb_pixels": 0,
+      "hidden_regions": "native image_gen painting",
+      "native_alpha_sha256": "26dcb882b51a08c7b1c5e8bcfe081f39261d7ca7903484cb7931957ca1bf0605"
+    }
+  ]
+}

@@ -1,0 +1,355 @@
+{
+  "canvas": [
+    1024,
+    1536
+  ],
+  "set": 1,
+  "method": "Whole-layer scale/translation; actual anatomical landmarks; no extraction, color change, or local deformation",
+  "certification": "not asserted",
+  "records": [
+    {
+      "part": "eyebrows",
+      "source": "source/male/raw/eyebrows/01.png",
+      "output": "male/eyebrows/01.png",
+      "source_sha256": "9a1b6c6d8b5def428e7c466bf3f6b812fdf87d7baeaf47de0fc6c09c78bd81b1",
+      "output_sha256": "04acad05be2b37518dff40ed348d6ec0184a3f160fb58bef6209cab0d1c3bb08",
+      "transform": {
+        "type": "single_whole_layer_uniform_scale_and_translation",
+        "requested_uniform_scale": 0.8723404255319149,
+        "rounded_canvas_size": [
+          893,
+          1340
+        ],
+        "translation_px": [
+          71,
+          6
+        ],
+        "rotation": 0,
+        "local_warp": false,
+        "native_alpha_retained": true,
+        "pigment_repainted": false,
+        "threshold_matting": false
+      },
+      "landmarks": [
+        {
+          "name": "left_brow_pigment_axis",
+          "source": [
+            441,
+            389.72
+          ],
+          "target": [
+            456,
+            346
+          ],
+          "mapped": [
+            455.5830078125,
+            345.9901041666667
+          ],
+          "residual_px": 0.4171095922577131
+        },
+        {
+          "name": "right_brow_pigment_axis",
+          "source": [
+            582,
+            389.57
+          ],
+          "target": [
+            579,
+            345
+          ],
+          "mapped": [
+            578.544921875,
+            345.8592447916667
+          ],
+          "residual_px": 0.9723156441505305
+        }
+      ],
+      "note": "眉轴依据左右眉实际深色毛流中心；非透明包围盒中心。",
+      "certification": "Visual landmarks only; no independent three non-collinear control-point certification asserted"
+    },
+    {
+      "part": "eyes",
+      "source": "source/male/raw/eyes/01.png",
+      "output": "male/eyes/01.png",
+      "source_sha256": "87eb9f23cef3528b20e781c43d2ca23b3c48064081abbeb97a4537a3c34a084e",
+      "output_sha256": "a099a1767e2cd844a809d7121f6993557cc6240c32fdc7373ac175ed12495341",
+      "transform": {
+        "type": "single_whole_layer_uniform_scale_and_translation",
+        "requested_uniform_scale": 0.7191780821917808,
+        "rounded_canvas_size": [
+          736,
+          1105
+        ],
+        "translation_px": [
+          148,
+          61
+        ],
+        "rotation": 0,
+        "local_warp": false,
+        "native_alpha_retained": true,
+        "pigment_repainted": false,
+        "threshold_matting": false
+      },
+      "landmarks": [
+        {
+          "name": "left_iris_center",
+          "source": [
+            439,
+            436
+          ],
+          "target": [
+            464,
+            375
+          ],
+          "mapped": [
+            463.53125,
+            374.65885416666663
+          ],
+          "residual_px": 0.579747395078857
+        },
+        {
+          "name": "right_iris_center",
+          "source": [
+            585,
+            436
+          ],
+          "target": [
+            569,
+            374
+          ],
+          "mapped": [
+            568.46875,
+            374.65885416666663
+          ],
+          "residual_px": 0.8463541666666372
+        }
+      ],
+      "note": "虹膜中心按器官圆形目视测量，估计误差约2px；保持双眼整层等比，不单眼移动。",
+      "certification": "Visual landmarks only; no independent three non-collinear control-point certification asserted"
+    },
+    {
+      "part": "nose",
+      "source": "source/male/raw/nose/01.png",
+      "output": "male/nose/01.png",
+      "source_sha256": "51b890da6a280dfb368d64a19c59e85df5ebf1efd2db20582047605a8dca3e6e",
+      "output_sha256": "6ab7ca595dd8f7366f915a7188d4009ac9176d8b31cb3896d805ad774834b7cb",
+      "transform": {
+        "type": "single_whole_layer_uniform_scale_and_translation",
+        "requested_uniform_scale": 0.42105263157894735,
+        "rounded_canvas_size": [
+          431,
+          647
+        ],
+        "translation_px": [
+          301,
+          175
+        ],
+        "rotation": 0,
+        "local_warp": false,
+        "native_alpha_retained": true,
+        "pigment_repainted": false,
+        "threshold_matting": false
+      },
+      "landmarks": [
+        {
+          "name": "nasal_bridge_midline",
+          "source": [
+            513,
+            555
+          ],
+          "target": [
+            517,
+            409
+          ],
+          "mapped": [
+            516.9208984375,
+            408.779296875
+          ],
+          "residual_px": 0.23445026460788446
+        },
+        {
+          "name": "nasal_tip_bulb_center",
+          "source": [
+            513,
+            650
+          ],
+          "target": [
+            517,
+            449
+          ],
+          "mapped": [
+            516.9208984375,
+            448.79557291666663
+          ],
+          "residual_px": 0.21919737587418905
+        }
+      ],
+      "note": "鼻梁中段与鼻头球体中心定位；保留完整鼻梁鼻翼与原生局部晕染，鼻底不是鼻头球体中心。",
+      "certification": "Visual landmarks only; no independent three non-collinear control-point certification asserted"
+    },
+    {
+      "part": "mouth",
+      "source": "source/male/raw/mouth/01.png",
+      "output": "male/mouth/01.png",
+      "source_sha256": "ad81468f6ce409c416a10684e4d96bdea9b1befdd0683be6857b6a6d68374cec",
+      "output_sha256": "cc2990a00d0ffc47ee0a7c40e0bd00a259686ff89dfac2f441a25980da67803e",
+      "transform": {
+        "type": "single_whole_layer_uniform_scale_and_translation",
+        "requested_uniform_scale": 0.5555555555555556,
+        "rounded_canvas_size": [
+          569,
+          853
+        ],
+        "translation_px": [
+          233,
+          77
+        ],
+        "rotation": 0,
+        "local_warp": false,
+        "native_alpha_retained": true,
+        "pigment_repainted": false,
+        "threshold_matting": false
+      },
+      "landmarks": [
+        {
+          "name": "lip_fissure_center",
+          "source": [
+            512,
+            727
+          ],
+          "target": [
+            517,
+            481
+          ],
+          "mapped": [
+            517.5,
+            480.73111979166663
+          ],
+          "residual_px": 0.5677116930567814
+        },
+        {
+          "name": "left_lip_corner",
+          "source": [
+            458,
+            725
+          ],
+          "target": [
+            487,
+            480
+          ],
+          "mapped": [
+            487.494140625,
+            479.6204427083333
+          ],
+          "residual_px": 0.6230880314471946
+        },
+        {
+          "name": "right_lip_corner",
+          "source": [
+            566,
+            725
+          ],
+          "target": [
+            547,
+            480
+          ],
+          "mapped": [
+            547.505859375,
+            479.6204427083333
+          ],
+          "residual_px": 0.6324218884042045
+        }
+      ],
+      "note": "唇缝中心与两侧唇角定位，原生高光保留，无脚本删白。",
+      "certification": "Visual landmarks only; no independent three non-collinear control-point certification asserted"
+    },
+    {
+      "part": "hair_front",
+      "source": "source/male/raw/hair_front/01.png",
+      "output": "male/hair_front/01.png",
+      "source_sha256": "6e299a4833a71532327d12c06abeb755c08c754ab0aa48d924623afc42dae27b",
+      "output_sha256": "8708f0df387b9863f3a7a9e97d198bb8ff3304092e78a8db1752d8b57f0b93ce",
+      "transform": {
+        "type": "single_whole_layer_uniform_scale_and_translation",
+        "requested_uniform_scale": 1,
+        "rounded_canvas_size": [
+          1024,
+          1536
+        ],
+        "translation_px": [
+          3,
+          6
+        ],
+        "rotation": 0,
+        "local_warp": false,
+        "native_alpha_retained": true,
+        "pigment_repainted": false,
+        "threshold_matting": false
+      },
+      "landmarks": [
+        {
+          "name": "center_hairline",
+          "source": [
+            514,
+            271
+          ],
+          "target": [
+            517,
+            277
+          ],
+          "mapped": [
+            517,
+            277
+          ],
+          "residual_px": 0
+        }
+      ],
+      "note": "中央发际实际Alpha180内缘271，整层平移(+3,+6)。不同发型左右转折非同形，不声称三点认证。",
+      "certification": "Visual landmarks only; no independent three non-collinear control-point certification asserted"
+    },
+    {
+      "part": "hair_back",
+      "source": "source/male/raw/hair_back/01.png",
+      "output": "male/hair_back/01.png",
+      "source_sha256": "177e71b917e390d554b750f473ca8801e7ec2f697a792abea3e5940164b33427",
+      "output_sha256": "f3d9543780852e46b78edc8b4089360580d2a2dcf1e6bfae3f4df36a14e6c76d",
+      "transform": {
+        "type": "single_whole_layer_uniform_scale_and_translation",
+        "requested_uniform_scale": 1,
+        "rounded_canvas_size": [
+          1024,
+          1536
+        ],
+        "translation_px": [
+          3,
+          13
+        ],
+        "rotation": 0,
+        "local_warp": false,
+        "native_alpha_retained": true,
+        "pigment_repainted": false,
+        "threshold_matting": false
+      },
+      "landmarks": [
+        {
+          "name": "rear_crown_axis",
+          "source": [
+            514,
+            138
+          ],
+          "target": [
+            517,
+            151
+          ],
+          "mapped": [
+            517,
+            151
+          ],
+          "residual_px": 0
+        }
+      ],
+      "note": "后发顶点整体移入前发轮廓内部；完整隐藏连接原样保留。",
+      "certification": "Visual landmarks only; no independent three non-collinear control-point certification asserted"
+    }
+  ]
+}

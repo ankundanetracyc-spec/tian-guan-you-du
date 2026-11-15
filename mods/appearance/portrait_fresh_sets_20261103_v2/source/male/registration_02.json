@@ -1,0 +1,292 @@
+{
+  "set": 2,
+  "canvas": [
+    1024,
+    1536
+  ],
+  "nose": "Assigned to fresh_male_sets; temporary QA falls back to set01 only if no02 exists",
+  "records": [
+    {
+      "set": 2,
+      "part": "eyebrows",
+      "source": "source/male/raw/eyebrows/02.png",
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "output": "male/eyebrows/02.png",
+      "output_dimensions": [
+        1024,
+        1536
+      ],
+      "source_sha256": "98331841cb7248bfcf4c3b5857dc769030ff819e7a16c836ef10482079f8f57a",
+      "output_sha256": "6a71a312fd1869b03e0377a9e5d35e4ede08f322d9f57a6c95e5b4e7fce0a226",
+      "transform": {
+        "uniform_scale": 0.7784810126582279,
+        "rounded_canvas_size": [
+          797,
+          1196
+        ],
+        "translation": [
+          119,
+          32
+        ],
+        "local_warp": false,
+        "threshold_matting": false,
+        "pigment_changed": false,
+        "native_alpha_retained": true
+      },
+      "landmarks": [
+        {
+          "name": "left_brow_pigment_axis",
+          "source": [
+            433,
+            403
+          ],
+          "target": [
+            456,
+            346
+          ],
+          "mapped": [
+            456.0126953125,
+            345.7942708333333
+          ],
+          "residual_px": 0.20612050110758404
+        },
+        {
+          "name": "right_brow_pigment_axis",
+          "source": [
+            591,
+            403
+          ],
+          "target": [
+            579,
+            345
+          ],
+          "mapped": [
+            578.9873046875,
+            345.7942708333333
+          ],
+          "residual_px": 0.7943722852941625
+        }
+      ],
+      "certification": "Visual anatomical landmarks; no independent three non-collinear point certification asserted"
+    },
+    {
+      "set": 2,
+      "part": "eyes",
+      "source": "source/male/raw/eyes/02.png",
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "output": "male/eyes/02.png",
+      "output_dimensions": [
+        1024,
+        1536
+      ],
+      "source_sha256": "4472a3bdce58e9e670c83b13d08fd2eb146f2b58793b314ee782cbfa5972483c",
+      "output_sha256": "649e7e65fba6caf52d1b5f91e40499247e22c935659b114394020b5335493309",
+      "transform": {
+        "uniform_scale": 0.9210526315789473,
+        "rounded_canvas_size": [
+          943,
+          1415
+        ],
+        "translation": [
+          44,
+          -132
+        ],
+        "local_warp": false,
+        "threshold_matting": false,
+        "pigment_changed": false,
+        "native_alpha_retained": true
+      },
+      "landmarks": [
+        {
+          "name": "left_iris_center",
+          "source": [
+            456,
+            550
+          ],
+          "target": [
+            464,
+            375
+          ],
+          "mapped": [
+            463.9296875,
+            374.6731770833333
+          ],
+          "residual_px": 0.33430086227045447
+        },
+        {
+          "name": "right_iris_center",
+          "source": [
+            570,
+            550
+          ],
+          "target": [
+            569,
+            374
+          ],
+          "mapped": [
+            568.912109375,
+            374.6731770833333
+          ],
+          "residual_px": 0.6788903795812978
+        }
+      ],
+      "certification": "Visual anatomical landmarks; no independent three non-collinear point certification asserted"
+    },
+    {
+      "set": 2,
+      "part": "mouth",
+      "source": "source/male/raw/mouth/02.png",
+      "source_dimensions": [
+        1536,
+        1024
+      ],
+      "output": "male/mouth/02.png",
+      "output_dimensions": [
+        1024,
+        1536
+      ],
+      "source_sha256": "ec5db2353d3415030bba1d34d377d3c31be021f3a211d4b83485a14879816515",
+      "output_sha256": "0dd6f55a43386958f533b35da3be2b057ae9771f3afff706720dcd7f415ff1c3",
+      "transform": {
+        "uniform_scale": 0.32608695652173914,
+        "rounded_canvas_size": [
+          501,
+          334
+        ],
+        "translation": [
+          267,
+          314
+        ],
+        "local_warp": false,
+        "threshold_matting": false,
+        "pigment_changed": false,
+        "native_alpha_retained": true
+      },
+      "landmarks": [
+        {
+          "name": "lip_seam_center",
+          "source": [
+            766,
+            511
+          ],
+          "target": [
+            517,
+            481
+          ],
+          "mapped": [
+            516.84765625,
+            480.673828125
+          ],
+          "residual_px": 0.35999543081138974
+        }
+      ],
+      "certification": "Visual anatomical landmarks; no independent three non-collinear point certification asserted"
+    },
+    {
+      "set": 2,
+      "part": "hair_front",
+      "source": "source/male/raw/hair_front/02.png",
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "output": "male/hair_front/02.png",
+      "output_dimensions": [
+        1024,
+        1536
+      ],
+      "source_sha256": "e3ebfa6f1b12788e98c2da5852ba63689e740a5a4f37fda9e6e93d9b8785bdb3",
+      "output_sha256": "47d91fb2447716ad923608f6c95bf26132c060f82e5160d0946af48b1a8fd01a",
+      "transform": {
+        "uniform_scale": 1,
+        "rounded_canvas_size": [
+          1024,
+          1536
+        ],
+        "translation": [
+          0,
+          -32
+        ],
+        "local_warp": false,
+        "threshold_matting": false,
+        "pigment_changed": false,
+        "native_alpha_retained": true
+      },
+      "landmarks": [
+        {
+          "name": "center_hairline",
+          "source": [
+            517,
+            309
+          ],
+          "target": [
+            517,
+            277
+          ],
+          "mapped": [
+            517,
+            277
+          ],
+          "residual_px": 0
+        }
+      ],
+      "certification": "Visual anatomical landmarks; no independent three non-collinear point certification asserted"
+    },
+    {
+      "set": 2,
+      "part": "hair_back",
+      "source": "source/male/raw/hair_back/02.png",
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "output": "male/hair_back/02.png",
+      "output_dimensions": [
+        1024,
+        1536
+      ],
+      "source_sha256": "824990f0570955750ec721cf4ea7125db1c680171e32db66d4055fdcbcfb5f2a",
+      "output_sha256": "73cad6efd504463a38ca2c12b1040c6596c97e642127985819f5c29a9de2af8f",
+      "transform": {
+        "uniform_scale": 1,
+        "rounded_canvas_size": [
+          1024,
+          1536
+        ],
+        "translation": [
+          3,
+          7
+        ],
+        "local_warp": false,
+        "threshold_matting": false,
+        "pigment_changed": false,
+        "native_alpha_retained": true
+      },
+      "landmarks": [
+        {
+          "name": "rear_crown_axis",
+          "source": [
+            514,
+            144
+          ],
+          "target": [
+            517,
+            151
+          ],
+          "mapped": [
+            517,
+            151
+          ],
+          "residual_px": 0
+        }
+      ],
+      "certification": "Visual anatomical landmarks; no independent three non-collinear point certification asserted"
+    }
+  ]
+}

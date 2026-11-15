@@ -1,0 +1,56 @@
+{
+  "source": "source/raw/face_shape_refined03.png",
+  "output": "source/face_before_color.png",
+  "source_sha256": "7fe993ae293282fcfaa0e8accf89e73518c040d5c9d643d28f02904ccd7e7ec3",
+  "output_sha256": "302f39086677be9415811560edf499b054a6bcfca928e807788be299449ffd87",
+  "method": "Whole layer uniform scale and integer translation only; raster size rounded to integral pixels, native alpha resampled with artwork. No old alpha mask, local warps, clipping or color change.",
+  "requested_scale": 0.437,
+  "translation": [
+    294,
+    122
+  ],
+  "resampled_size": [
+    447,
+    671
+  ],
+  "registered": {
+    "size": [
+      1024,
+      1536
+    ],
+    "alpha_bbox_inclusive": [
+      370,
+      175,
+      662,
+      718
+    ],
+    "threshold": 180,
+    "zero_alpha_pixels": 1464282
+  },
+  "control_notes": {
+    "source_head_top_y": 120,
+    "estimated_source_chin_y": 965,
+    "source_neck_end_y": 1367,
+    "estimated_registered_chin_y": 543.7049999999999,
+    "registered_neck_end_expected_y": 719.379,
+    "prioritized": "Head/ear placement and source03 chin. Complete neck extends about6px below old hidden neck-end target; kept behind clothing rather than cropped or warped.",
+    "full_three_point_2px_certification": false
+  },
+  "source_measurement": {
+    "size": [
+      1024,
+      1536
+    ],
+    "alpha_bbox_inclusive": [
+      173,
+      120,
+      845,
+      1367
+    ],
+    "threshold": 180,
+    "zero_alpha_pixels": 1003649
+  },
+  "stage": "Registered geometry before RGB calibration",
+  "downstream_output": "male/face_shape/01.png",
+  "downstream_report": "qa/face03_color_report.json"
+}

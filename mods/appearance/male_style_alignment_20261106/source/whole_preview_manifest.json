@@ -1,0 +1,93 @@
+{
+  "status": "approved_whole01_nine_components_installed_and_runtime_verified",
+  "selected_preview": "preview/male_whole_01.png",
+  "initial_preview": "preview/male_whole_01.png",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "selected_sha256": "d97b79e3372df42db24b4dd5c3ec42f376d652616d9fa25d78a393b004da81a8",
+  "mode": "built-in image_gen",
+  "references": [
+    {
+      "role": "current_male_geometry",
+      "file": "reference/male_current_geometry.png",
+      "source": "res://mods/appearance/portrait_original_restore_20261105_v6/whole_male_first_20261105/integration/qa/installed_game_portrait.png",
+      "sha256": "dc1fdec4b180f589702607ce08044014da541ec1bab68262daa10089ca7c5f48"
+    },
+    {
+      "role": "female_hair_and_skin_material",
+      "file": "reference/female_material_palette.png",
+      "source": "res://mods/appearance/portrait_original_restore_20261105_v6/whole_male_first_20261105/reference/female_active.png",
+      "sha256": "e17028be17f75012033683c7db0d1e10e52d82d83b05b2e098feeac205074e99"
+    }
+  ],
+  "authoritative_document": "docs/美术规范/男性原图完整还原_20261105/README.md",
+  "anchor_basis": "2026-11-06 corrected current male geometry; do not reuse historical male y379 eye guide or old +5px axis",
+  "target_anchor_guides": {
+    "head_axis_x": 513,
+    "pupils": [
+      [
+        460.79,
+        365.03
+      ],
+      [
+        565.23,
+        364.61
+      ]
+    ],
+    "nose_tip": [
+      514,
+      441
+    ],
+    "mouth_center": [
+      514,
+      475
+    ],
+    "chin": [
+      513,
+      541
+    ],
+    "collar_roots": [
+      [
+        433,
+        545
+      ],
+      [
+        599,
+        545
+      ]
+    ],
+    "inner_collar_v": [
+      532,
+      680
+    ],
+    "fixed_neck_alpha230_rows": {
+      "530": [
+        428,
+        601
+      ],
+      "550": [
+        426,
+        603
+      ],
+      "580": [
+        421,
+        608
+      ]
+    }
+  },
+  "registration_status": "composition_guided_whole_preview; not a registered modular layer, no 2px registration claim",
+  "style_status": "match female material palette; generated rendering is not pixel-identical to the references",
+  "user_visual_review": "User explicitly selected attached whole01 skin and authorized replacement of current male art. Individual extracted parts still require actual composite review.",
+  "active_assets_or_config_modified": true,
+  "parts_extracted": true,
+  "prompt_set": "source/prompts.json",
+  "future_parts_constraint": "获批整稿须保留为造型依据；分件必须核对实际眼裂、虹膜与位置，不能把生成整稿的认可直接当成部件已还原或已获视觉认可。",
+  "previous_preview_selection": "preview/male_whole_02.png",
+  "approval_attachment": "C:/Users/34784/AppData/Local/Temp/codex-clipboard-7809f4ed-35ea-47dd-b931-19e1cc433b1b.png",
+  "approval_overrides_previous_whole02_preview_choice": true,
+  "installation": "integration/installation/install_report.json",
+  "runtime_verification": "integration/installation/runtime_check.json",
+  "component_visual_review": "Engineering and independent source-fidelity checks passed; hidden reconstructed parts remain subject to user final visual review."
+}

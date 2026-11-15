@@ -1,0 +1,383 @@
+{
+  "units": "sRGB luminance0..255; same native1024x1536 coordinates",
+  "gaussian_sigma": 3,
+  "records": [
+    {
+      "region": {
+        "name": "forehead",
+        "box": [
+          492,
+          291,
+          552,
+          329
+        ]
+      },
+      "reference": [
+        {
+          "mean_luma": 208.4053,
+          "luma_std": 2.4212,
+          "low_frequency_std_sigma3": 1.55,
+          "highpass_sigma3_rms": 2.2633,
+          "four_neighbor_highpass_rms": 1.0606,
+          "highpass_sigma3_abs_p90": 3.7874
+        },
+        {
+          "mean_luma": 208.9361,
+          "luma_std": 2.1667,
+          "low_frequency_std_sigma3": 1.4576,
+          "highpass_sigma3_rms": 2.1461,
+          "four_neighbor_highpass_rms": 1.0529,
+          "highpass_sigma3_abs_p90": 3.357
+        },
+        {
+          "mean_luma": 209.1445,
+          "luma_std": 2.2596,
+          "low_frequency_std_sigma3": 1.5791,
+          "highpass_sigma3_rms": 2.1643,
+          "four_neighbor_highpass_rms": 0.9499,
+          "highpass_sigma3_abs_p90": 3.647
+        }
+      ],
+      "active": {
+        "mean_luma": 205.9005,
+        "luma_std": 1.5833,
+        "low_frequency_std_sigma3": 1.0185,
+        "highpass_sigma3_rms": 1.9031,
+        "four_neighbor_highpass_rms": 0.6835,
+        "highpass_sigma3_abs_p90": 3
+      },
+      "new_blank": {
+        "mean_luma": 205.1959,
+        "luma_std": 2.6583,
+        "low_frequency_std_sigma3": 1.7567,
+        "highpass_sigma3_rms": 1.7766,
+        "four_neighbor_highpass_rms": 1.2181,
+        "highpass_sigma3_abs_p90": 2.8596
+      }
+    },
+    {
+      "region": {
+        "name": "left_cheek",
+        "box": [
+          450,
+          403,
+          485,
+          457
+        ]
+      },
+      "reference": [
+        {
+          "mean_luma": 207.4525,
+          "luma_std": 2.7716,
+          "low_frequency_std_sigma3": 2.0294,
+          "highpass_sigma3_rms": 2.3247,
+          "four_neighbor_highpass_rms": 1.2114,
+          "highpass_sigma3_abs_p90": 3.7874
+        },
+        {
+          "mean_luma": 208.6781,
+          "luma_std": 2.7187,
+          "low_frequency_std_sigma3": 2.0587,
+          "highpass_sigma3_rms": 2.25,
+          "four_neighbor_highpass_rms": 1.0511,
+          "highpass_sigma3_abs_p90": 3.7874
+        },
+        {
+          "mean_luma": 209.1894,
+          "luma_std": 2.4223,
+          "low_frequency_std_sigma3": 1.7792,
+          "highpass_sigma3_rms": 2.1843,
+          "four_neighbor_highpass_rms": 1.0315,
+          "highpass_sigma3_abs_p90": 3.7152
+        }
+      ],
+      "active": {
+        "mean_luma": 206.9224,
+        "luma_std": 1.8904,
+        "low_frequency_std_sigma3": 1.1369,
+        "highpass_sigma3_rms": 2.0471,
+        "four_neighbor_highpass_rms": 0.7832,
+        "highpass_sigma3_abs_p90": 3.2126
+      },
+      "new_blank": {
+        "mean_luma": 207.0054,
+        "luma_std": 2.3881,
+        "low_frequency_std_sigma3": 1.4396,
+        "highpass_sigma3_rms": 1.7754,
+        "four_neighbor_highpass_rms": 1.2409,
+        "highpass_sigma3_abs_p90": 2.8596
+      }
+    },
+    {
+      "region": {
+        "name": "right_cheek",
+        "box": [
+          550,
+          402,
+          584,
+          458
+        ]
+      },
+      "reference": [
+        {
+          "mean_luma": 206.9771,
+          "luma_std": 2.5896,
+          "low_frequency_std_sigma3": 1.8705,
+          "highpass_sigma3_rms": 2.3281,
+          "four_neighbor_highpass_rms": 1.1877,
+          "highpass_sigma3_abs_p90": 3.7874
+        },
+        {
+          "mean_luma": 207.1569,
+          "luma_std": 2.6597,
+          "low_frequency_std_sigma3": 2.0531,
+          "highpass_sigma3_rms": 2.2825,
+          "four_neighbor_highpass_rms": 0.9958,
+          "highpass_sigma3_abs_p90": 3.7874
+        },
+        {
+          "mean_luma": 207.3794,
+          "luma_std": 2.3465,
+          "low_frequency_std_sigma3": 1.6277,
+          "highpass_sigma3_rms": 2.2536,
+          "four_neighbor_highpass_rms": 1.1618,
+          "highpass_sigma3_abs_p90": 3.7152
+        }
+      ],
+      "active": {
+        "mean_luma": 206.2966,
+        "luma_std": 1.8936,
+        "low_frequency_std_sigma3": 1.182,
+        "highpass_sigma3_rms": 2.0907,
+        "four_neighbor_highpass_rms": 0.8112,
+        "highpass_sigma3_abs_p90": 3.1444
+      },
+      "new_blank": {
+        "mean_luma": 205.7651,
+        "luma_std": 2.7744,
+        "low_frequency_std_sigma3": 1.9005,
+        "highpass_sigma3_rms": 1.9166,
+        "four_neighbor_highpass_rms": 1.2991,
+        "highpass_sigma3_abs_p90": 2.9318
+      }
+    },
+    {
+      "region": {
+        "name": "chin",
+        "box": [
+          490,
+          500,
+          542,
+          523
+        ]
+      },
+      "reference": [
+        {
+          "mean_luma": 207.5465,
+          "luma_std": 8.7541,
+          "low_frequency_std_sigma3": 7.5997,
+          "highpass_sigma3_rms": 3.3765,
+          "four_neighbor_highpass_rms": 1.307,
+          "highpass_sigma3_abs_p90": 4.29
+        },
+        {
+          "mean_luma": 205.9996,
+          "luma_std": 12.4926,
+          "low_frequency_std_sigma3": 8.3402,
+          "highpass_sigma3_rms": 6.1547,
+          "four_neighbor_highpass_rms": 2.0376,
+          "highpass_sigma3_abs_p90": 4.7152
+        },
+        {
+          "mean_luma": 207.1293,
+          "luma_std": 11.1961,
+          "low_frequency_std_sigma3": 7.4331,
+          "highpass_sigma3_rms": 5.636,
+          "four_neighbor_highpass_rms": 1.9585,
+          "highpass_sigma3_abs_p90": 4.0722
+        }
+      ],
+      "active": {
+        "mean_luma": 211.233,
+        "luma_std": 1.6641,
+        "low_frequency_std_sigma3": 0.8735,
+        "highpass_sigma3_rms": 2.0323,
+        "four_neighbor_highpass_rms": 0.7692,
+        "highpass_sigma3_abs_p90": 3.0722
+      },
+      "new_blank": {
+        "mean_luma": 209.384,
+        "luma_std": 2.0975,
+        "low_frequency_std_sigma3": 1.2668,
+        "highpass_sigma3_rms": 1.5053,
+        "four_neighbor_highpass_rms": 1.0444,
+        "highpass_sigma3_abs_p90": 2.5748
+      }
+    },
+    {
+      "region": {
+        "name": "left_neck",
+        "box": [
+          467,
+          551,
+          489,
+          579
+        ]
+      },
+      "reference": [
+        {
+          "mean_luma": 202.9008,
+          "luma_std": 11.1866,
+          "low_frequency_std_sigma3": 9.9783,
+          "highpass_sigma3_rms": 3.0019,
+          "four_neighbor_highpass_rms": 1.5313,
+          "highpass_sigma3_abs_p90": 4.5748
+        },
+        {
+          "mean_luma": 198.5796,
+          "luma_std": 12.1302,
+          "low_frequency_std_sigma3": 11.2168,
+          "highpass_sigma3_rms": 3.067,
+          "four_neighbor_highpass_rms": 1.5179,
+          "highpass_sigma3_abs_p90": 4.8596
+        },
+        {
+          "mean_luma": 198.7929,
+          "luma_std": 12.6281,
+          "low_frequency_std_sigma3": 11.5427,
+          "highpass_sigma3_rms": 3.0874,
+          "four_neighbor_highpass_rms": 1.4517,
+          "highpass_sigma3_abs_p90": 4.643
+        }
+      ],
+      "active": {
+        "mean_luma": 195.7987,
+        "luma_std": 11.4302,
+        "low_frequency_std_sigma3": 10.4809,
+        "highpass_sigma3_rms": 2.5978,
+        "four_neighbor_highpass_rms": 1.1615,
+        "highpass_sigma3_abs_p90": 4
+      },
+      "new_blank": {
+        "mean_luma": 197.4683,
+        "luma_std": 11.567,
+        "low_frequency_std_sigma3": 10.4724,
+        "highpass_sigma3_rms": 2.8617,
+        "four_neighbor_highpass_rms": 1.4963,
+        "highpass_sigma3_abs_p90": 4.5748
+      }
+    },
+    {
+      "region": {
+        "name": "right_neck",
+        "box": [
+          543,
+          551,
+          565,
+          579
+        ]
+      },
+      "reference": [
+        {
+          "mean_luma": 206.3064,
+          "luma_std": 4.4788,
+          "low_frequency_std_sigma3": 3.7952,
+          "highpass_sigma3_rms": 2.5686,
+          "four_neighbor_highpass_rms": 1.4531,
+          "highpass_sigma3_abs_p90": 4
+        },
+        {
+          "mean_luma": 205.7063,
+          "luma_std": 4.7004,
+          "low_frequency_std_sigma3": 4.3518,
+          "highpass_sigma3_rms": 2.3762,
+          "four_neighbor_highpass_rms": 1.2723,
+          "highpass_sigma3_abs_p90": 3.8596
+        },
+        {
+          "mean_luma": 205.3258,
+          "luma_std": 4.587,
+          "low_frequency_std_sigma3": 4.4464,
+          "highpass_sigma3_rms": 2.4207,
+          "four_neighbor_highpass_rms": 1.3505,
+          "highpass_sigma3_abs_p90": 3.9278
+        }
+      ],
+      "active": {
+        "mean_luma": 206.1386,
+        "luma_std": 4.8089,
+        "low_frequency_std_sigma3": 4.6038,
+        "highpass_sigma3_rms": 2.1297,
+        "four_neighbor_highpass_rms": 0.9956,
+        "highpass_sigma3_abs_p90": 3.2126
+      },
+      "new_blank": {
+        "mean_luma": 200.4808,
+        "luma_std": 4.0438,
+        "low_frequency_std_sigma3": 3.0985,
+        "highpass_sigma3_rms": 2.222,
+        "four_neighbor_highpass_rms": 1.3711,
+        "highpass_sigma3_abs_p90": 3.5788
+      }
+    },
+    {
+      "region": {
+        "name": "middle_neck",
+        "box": [
+          502,
+          570,
+          532,
+          608
+        ]
+      },
+      "reference": [
+        {
+          "mean_luma": 201.5673,
+          "luma_std": 7.1722,
+          "low_frequency_std_sigma3": 5.9949,
+          "highpass_sigma3_rms": 2.8969,
+          "four_neighbor_highpass_rms": 1.4048,
+          "highpass_sigma3_abs_p90": 4.7874
+        },
+        {
+          "mean_luma": 201.682,
+          "luma_std": 6.5461,
+          "low_frequency_std_sigma3": 5.4147,
+          "highpass_sigma3_rms": 2.7401,
+          "four_neighbor_highpass_rms": 1.5459,
+          "highpass_sigma3_abs_p90": 4.643
+        },
+        {
+          "mean_luma": 201.3605,
+          "luma_std": 6.8748,
+          "low_frequency_std_sigma3": 5.822,
+          "highpass_sigma3_rms": 2.757,
+          "four_neighbor_highpass_rms": 1.4199,
+          "highpass_sigma3_abs_p90": 4.4304
+        }
+      ],
+      "active": {
+        "mean_luma": 199.2711,
+        "luma_std": 6.5196,
+        "low_frequency_std_sigma3": 5.8465,
+        "highpass_sigma3_rms": 2.3063,
+        "four_neighbor_highpass_rms": 1.1357,
+        "highpass_sigma3_abs_p90": 3.7874
+      },
+      "new_blank": {
+        "mean_luma": 196.1102,
+        "luma_std": 6.8799,
+        "low_frequency_std_sigma3": 5.7411,
+        "highpass_sigma3_rms": 2.4931,
+        "four_neighbor_highpass_rms": 1.5085,
+        "highpass_sigma3_abs_p90": 3.9318
+      }
+    }
+  ],
+  "interpretation": [
+    "Metrics describe localized texture and smooth shadow variation, not independent art acceptance.",
+    "Four-neighbor highpass responds to pixel-edge contrast; sigma3 residual also includes skin pattern strokes.",
+    "These clean regions avoid eyes, nose and mouth; differences here originate in the blank face itself, not the feature layer.",
+    "Illustration landmarks/skin shadows vary slightly among the source portraits; shared rectangle placement is approximate."
+  ]
+}

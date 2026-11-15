@@ -1,0 +1,68 @@
+[
+  {
+    "part": "eyebrows",
+    "source": "source\\male\\raw\\eyebrows\\03.png",
+    "output": "male\\eyebrows\\03.png",
+    "scale": 0.7841412898669947,
+    "tx": 115,
+    "ty": 52,
+    "controls": "Actual paired dark eyebrow centroids 434.745,374.538 / 591.604,374.724 to requested 456,346 / 579,345; one shared scale and translation.",
+    "alpha": "native alpha preserved; whole-layer similarity only",
+    "certification": "not a full three-noncollinear-control <=2px certification"
+  },
+  {
+    "part": "eyes",
+    "source": "source\\male\\raw\\eyes\\03.png",
+    "output": "male\\eyes\\03.png",
+    "scale": 1,
+    "tx": 4,
+    "ty": -50,
+    "controls": "Visually identified iris centers approximately459,425 /565,425 to requested464,375 /569,374; no independent eye motion.",
+    "alpha": "native alpha preserved; whole-layer similarity only",
+    "certification": "not a full three-noncollinear-control <=2px certification"
+  },
+  {
+    "part": "nose",
+    "source": "source\\male\\raw\\nose\\03.png",
+    "output": "male\\nose\\03.png",
+    "scale": 0.36363636363636365,
+    "tx": 331,
+    "ty": 250,
+    "controls": "Visual central bridge around512,438 and tip ball512,548 to bridge517,409 / tip517,449; alae follow same layer scale.",
+    "alpha": "native alpha preserved; whole-layer similarity only",
+    "certification": "not a full three-noncollinear-control <=2px certification"
+  },
+  {
+    "part": "mouth",
+    "source": "source\\male\\raw\\mouth\\03.png",
+    "output": "male\\mouth\\03.png",
+    "scale": 0.6521739130434783,
+    "tx": 183,
+    "ty": 18,
+    "controls": "New source lip organ endpoints466..558, separation center512,709; shared similarity scales width to60 and places lip center517,481.",
+    "alpha": "native alpha preserved; whole-layer similarity only",
+    "certification": "not a full three-noncollinear-control <=2px certification"
+  },
+  {
+    "part": "hair_front",
+    "source": "source\\male\\raw\\hair_front\\03.png",
+    "output": "male\\hair_front\\03.png",
+    "scale": 1,
+    "tx": 0,
+    "ty": -35,
+    "controls": "Central hairline alpha128 y312 to277; ordinary crown172 to137. Entire layer translation only.",
+    "alpha": "native alpha preserved; whole-layer similarity only",
+    "certification": "not a full three-noncollinear-control <=2px certification"
+  },
+  {
+    "part": "hair_back",
+    "source": "source\\male\\raw\\hair_back\\03.png",
+    "output": "male\\hair_back\\03.png",
+    "scale": 0.55,
+    "tx": 233,
+    "ty": 50,
+    "controls": "New continuous back-view source: topknot apex72 to90; rear head upper scalp~211 to166. Registered by actual rear-head design, not alpha bbox centering.",
+    "alpha": "native alpha preserved; whole-layer similarity only",
+    "certification": "not a full three-noncollinear-control <=2px certification"
+  }
+]

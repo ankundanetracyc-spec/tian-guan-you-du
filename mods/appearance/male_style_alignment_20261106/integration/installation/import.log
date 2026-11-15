@@ -1,0 +1,699 @@
+Godot Engine v4.7.2.stable.mono.custom_build.ed1daf0bf (2026-08-17 01:18:38 UTC) - https://godotengine.org
+
+[   0% ] first_scan_filesystem | Started 项目初始化 (5 steps)
+[   0% ] first_scan_filesystem | 正在扫描文件结构……
+WARNING: Detected another project.godot at res://mods/appearance/portrait_original_restore_20261105_v6/collar_hair_fixed_neck_20261105/collars_only/installation/import_project. The folder will be ignored.
+   at: EditorFileSystem::_should_skip_directory (editor\file_system\editor_file_system.cpp:3497)
+[  16% ] first_scan_filesystem | 正在加载全局类名……
+[  33% ] first_scan_filesystem | 正在校验 GDExtension……
+[  50% ] first_scan_filesystem | 正在创建自动加载脚本……
+[  66% ] first_scan_filesystem | 正在初始化插件……
+ERROR: Godot MCP: Failed to listen on ws://127.0.0.1:49631 (error=22)
+   at: VariantUtilityFunctions::push_error (core\variant\variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _enter_tree (res://addons/godot_mcp/mcp_bridge.gd:45)
+[  83% ] first_scan_filesystem | 正在启动文件扫描……
+[ DONE ] first_scan_filesystem
+
+WARNING: UID duplicate detected between res://mods/appearance/male_style_alignment_20261106/integration/reference/current_male/clothing/01.png and res://mods/appearance/ink_three_variants_20261004/male/clothing/01.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://mods/appearance/male_style_alignment_20261106/integration/reference/current_male/clothing/02.png and res://mods/appearance/ink_three_variants_20261004/male/clothing/02.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://mods/appearance/male_style_alignment_20261106/integration/reference/current_male/clothing/03.png and res://mods/appearance/ink_three_variants_20261004/male/clothing/03.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://mods/appearance/male_style_alignment_20261106/integration/reference/current_male/clothing/04.png and res://mods/appearance/ink_three_variants_20261004/male/clothing/04.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://mods/appearance/male_style_alignment_20261106/integration/reference/current_male/clothing/05.png and res://mods/appearance/ink_three_variants_20261004/male/clothing/05.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://mods/appearance/male_style_alignment_20261106/integration/reference/current_male/clothing/06.png and res://mods/appearance/ink_three_variants_20261004/male/clothing/06.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://mods/appearance/male_style_alignment_20261106/integration/reference/current_male/clothing/07.png and res://mods/appearance/ink_three_variants_20261004/male/clothing/07.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://mods/appearance/male_style_alignment_20261106/integration/reference/current_male/clothing_back/01.png and res://mods/appearance/ink_three_variants_20261004/male/clothing_back/01.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://mods/appearance/male_style_alignment_20261106/integration/reference/current_male/clothing_back/02.png and res://mods/appearance/ink_three_variants_20261004/male/clothing_back/02.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://mods/appearance/male_style_alignment_20261106/integration/reference/current_male/clothing_back/03.png and res://mods/appearance/ink_three_variants_20261004/male/clothing_back/03.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://mods/appearance/male_style_alignment_20261106/integration/reference/current_male/clothing_back/04.png and res://mods/appearance/ink_three_variants_20261004/male/clothing_back/04.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://mods/appearance/male_style_alignment_20261106/integration/reference/current_male/clothing_back/05.png and res://mods/appearance/ink_three_variants_20261004/male/clothing_back/05.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://mods/appearance/male_style_alignment_20261106/integration/reference/current_male/clothing_back/06.png and res://mods/appearance/ink_three_variants_20261004/male/clothing_back/06.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://mods/appearance/male_style_alignment_20261106/integration/reference/current_male/clothing_back/07.png and res://mods/appearance/ink_three_variants_20261004/male/clothing_back/07.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://mods/appearance/male_style_alignment_20261106/integration/reference/current_male/eyebrows/01.png and res://mods/appearance/ink_three_variants_20261004/male/eyebrows/01.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://mods/appearance/male_style_alignment_20261106/integration/reference/current_male/eyes/01.png and res://mods/appearance/ink_three_variants_20261004/male/eyes/01.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://mods/appearance/male_style_alignment_20261106/integration/reference/current_male/face_accessory/01.png and res://mods/appearance/ink_three_variants_20261004/male/face_accessory/01.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://mods/appearance/male_style_alignment_20261106/integration/reference/current_male/face_shape/01.png and res://mods/appearance/ink_three_variants_20261004/male/face_shape/01.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://mods/appearance/male_style_alignment_20261106/integration/reference/current_male/hair_back/01.png and res://mods/appearance/ink_three_variants_20261004/male/hair_back/01.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://mods/appearance/male_style_alignment_20261106/integration/reference/current_male/hair_front/01.png and res://mods/appearance/ink_three_variants_20261004/male/hair_front/01.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://mods/appearance/male_style_alignment_20261106/integration/reference/current_male/mouth/01.png and res://mods/appearance/ink_three_variants_20261004/male/mouth/01.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://mods/appearance/male_style_alignment_20261106/integration/reference/current_male/nose/01.png and res://mods/appearance/ink_three_variants_20261004/male/nose/01.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_chop_sequence_20261016_v2/bake.gdshader and res://textures/vfx/ink_chop_sequence_20261015_v1/bake.gdshader.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_chop_sequence_20261016_v2/impact_atlas_0.png and res://textures/vfx/ink_chop_sequence_20261015_v1/impact_atlas_0.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_chop_sequence_20261016_v2/impact_atlas_1.png and res://textures/vfx/ink_chop_sequence_20261015_v1/impact_atlas_1.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_chop_sequence_20261016_v2/palette.gdshader and res://textures/vfx/ink_chop_sequence_20261015_v1/palette.gdshader.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_chop_sequence_20261016_v2/slash_atlas_0.png and res://textures/vfx/ink_chop_sequence_20261015_v1/slash_atlas_0.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/bake.gdshader and res://textures/vfx/ink_response_sequences_20261015_v1/bake.gdshader.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/guard_atlas_0.png and res://textures/vfx/ink_response_sequences_20261015_v1/guard_atlas_0.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/guard_atlas_1.png and res://textures/vfx/ink_response_sequences_20261015_v1/guard_atlas_1.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/hurt_atlas_0.png and res://textures/vfx/ink_response_sequences_20261015_v1/hurt_atlas_0.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/hurt_atlas_1.png and res://textures/vfx/ink_response_sequences_20261015_v1/hurt_atlas_1.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/restore_atlas_0.png and res://textures/vfx/ink_response_sequences_20261015_v1/restore_atlas_0.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/restore_atlas_1.png and res://textures/vfx/ink_response_sequences_20261015_v1/restore_atlas_1.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/restore_atlas_2.png and res://textures/vfx/ink_response_sequences_20261015_v1/restore_atlas_2.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+[   0% ] update_scripts_classes | Started 正在注册全局类…… (35 steps)
+[   0% ] update_scripts_classes | 
+[   2% ] update_scripts_classes | 
+[   5% ] update_scripts_classes | 
+[   8% ] update_scripts_classes | 
+[  11% ] update_scripts_classes | 
+[  13% ] update_scripts_classes | 
+[  16% ] update_scripts_classes | 
+[  19% ] update_scripts_classes | 
+[  22% ] update_scripts_classes | 
+[  25% ] update_scripts_classes | 
+[  27% ] update_scripts_classes | 
+[  30% ] update_scripts_classes | 
+[  33% ] update_scripts_classes | 
+[  36% ] update_scripts_classes | 
+[  38% ] update_scripts_classes | 
+[  41% ] update_scripts_classes | 
+[  44% ] update_scripts_classes | 
+[  47% ] update_scripts_classes | 
+[  50% ] update_scripts_classes | 
+[  52% ] update_scripts_classes | 
+[  55% ] update_scripts_classes | 
+[  58% ] update_scripts_classes | 
+[  61% ] update_scripts_classes | 
+[  63% ] update_scripts_classes | 
+[  66% ] update_scripts_classes | 
+[  69% ] update_scripts_classes | 
+[  72% ] update_scripts_classes | 
+[  75% ] update_scripts_classes | 
+[  77% ] update_scripts_classes | 
+[  80% ] update_scripts_classes | 
+[  83% ] update_scripts_classes | 
+[  86% ] update_scripts_classes | 
+[  88% ] update_scripts_classes | 
+[  91% ] update_scripts_classes | 
+[  94% ] update_scripts_classes | 
+[ DONE ] update_scripts_classes
+
+[   0% ] _update_scan_actions | Started 正在扫描动作…… (208 steps)
+[   0% ] _update_scan_actions | 云息境界表现_三环周行.png
+[   0% ] _update_scan_actions | 云息境界表现_三环立体侧转.png
+[   0% ] _update_scan_actions | 云息境界表现_十层偏心环.png
+[   1% ] _update_scan_actions | 云息境界表现_归元息游走.png
+[   1% ] _update_scan_actions | 云息境界表现_旋涡与题字对齐.png
+[   2% ] _update_scan_actions | 云息境界表现_正心三环.png
+[   2% ] _update_scan_actions | 云息境界表现_细化v2.png
+[   3% ] _update_scan_actions | 云息境界表现_零至九息总览.png
+[   3% ] _update_scan_actions | 凝核牌局_弹性手牌与牌堆.png
+[   4% ] _update_scan_actions | 凝核牌局_扇形手牌.png
+[   4% ] _update_scan_actions | 凝核牌局_道具列表.png
+[   5% ] _update_scan_actions | 01_投料.png
+[   5% ] _update_scan_actions | 02_选材.png
+[   6% ] _update_scan_actions | 个人灵舟_行囊验证.png
+[   6% ] _update_scan_actions | 个人灵舟_飞行验证.png
+[   7% ] _update_scan_actions | 三对三_1280x720.png
+[   7% ] _update_scan_actions | 三对三_1440x810.png
+[   8% ] _update_scan_actions | 单挑_1280x720.png
+[   8% ] _update_scan_actions | 单挑_1440x810.png
+[   9% ] _update_scan_actions | 正式队列_1v1.png
+[   9% ] _update_scan_actions | 正式队列_3v3.png
+[  10% ] _update_scan_actions | 听讲后_从人物名单验灵.png
+[  10% ] _update_scan_actions | 点击挂牌_讲法对白.png
+[  11% ] _update_scan_actions | 讲法初入_中央挂牌引导.png
+[  11% ] _update_scan_actions | 讲法引导_1280.png
+[  11% ] _update_scan_actions | 豆包_双峰山候选_v01.jpeg
+[  12% ] _update_scan_actions | breathing_preview.webp
+[  12% ] _update_scan_actions | 01.png
+[  13% ] _update_scan_actions | 01.png
+[  13% ] _update_scan_actions | 01.png
+[  14% ] _update_scan_actions | 01.png
+[  14% ] _update_scan_actions | 01.png
+[  15% ] _update_scan_actions | 01.png
+[  15% ] _update_scan_actions | 01.png
+[  16% ] _update_scan_actions | 01.png
+[  16% ] _update_scan_actions | 01.png
+[  17% ] _update_scan_actions | female_wardrobe_20261005.png
+[  17% ] _update_scan_actions | male_natural_eye_game_3.png
+[  18% ] _update_scan_actions | 01.png
+[  18% ] _update_scan_actions | 01.png
+[  19% ] _update_scan_actions | 01.png
+[  19% ] _update_scan_actions | 01.png
+[  20% ] _update_scan_actions | 01.png
+[  20% ] _update_scan_actions | 01.png
+[  21% ] _update_scan_actions | 01.png
+[  21% ] _update_scan_actions | 01.png
+[  22% ] _update_scan_actions | 01.png
+[  22% ] _update_scan_actions | actual_eyes_close_6x.png
+[  22% ] _update_scan_actions | actual_eyes_grid_6x.png
+[  23% ] _update_scan_actions | eyebrows_isolated_checker_6x.png
+[  23% ] _update_scan_actions | eyebrows_isolated_dark_6x.png
+[  24% ] _update_scan_actions | eyebrows_isolated_light_6x.png
+[  24% ] _update_scan_actions | eyebrows_source_top_actual_bottom_checker_6x.png
+[  25% ] _update_scan_actions | eyebrows_source_top_actual_bottom_dark_6x.png
+[  25% ] _update_scan_actions | eyebrows_source_top_actual_bottom_light_6x.png
+[  26% ] _update_scan_actions | eyes_isolated_checker_6x.png
+[  26% ] _update_scan_actions | eyes_isolated_dark_6x.png
+[  27% ] _update_scan_actions | eyes_isolated_light_6x.png
+[  27% ] _update_scan_actions | eyes_source_top_actual_bottom_checker_6x.png
+[  28% ] _update_scan_actions | eyes_source_top_actual_bottom_dark_6x.png
+[  28% ] _update_scan_actions | eyes_source_top_actual_bottom_light_6x.png
+[  29% ] _update_scan_actions | full_actual_checker.png
+[  29% ] _update_scan_actions | full_actual_dark.png
+[  30% ] _update_scan_actions | full_actual_light.png
+[  30% ] _update_scan_actions | head_with_features_checker.png
+[  31% ] _update_scan_actions | head_with_features_dark.png
+[  31% ] _update_scan_actions | head_with_features_light.png
+[  32% ] _update_scan_actions | mouth_isolated_checker_6x.png
+[  32% ] _update_scan_actions | mouth_isolated_dark_6x.png
+[  33% ] _update_scan_actions | mouth_isolated_light_6x.png
+[  33% ] _update_scan_actions | mouth_source_top_actual_bottom_checker_6x.png
+[  33% ] _update_scan_actions | mouth_source_top_actual_bottom_dark_6x.png
+[  34% ] _update_scan_actions | mouth_source_top_actual_bottom_light_6x.png
+[  34% ] _update_scan_actions | native_eyebrows_close_6x.png
+[  35% ] _update_scan_actions | native_eyebrows_grid_6x.png
+[  35% ] _update_scan_actions | native_eyes_close_6x.png
+[  36% ] _update_scan_actions | native_eyes_grid_6x.png
+[  36% ] _update_scan_actions | native_mouth_close_6x.png
+[  37% ] _update_scan_actions | native_mouth_grid_6x.png
+[  37% ] _update_scan_actions | native_nose_close_6x.png
+[  38% ] _update_scan_actions | native_nose_grid_6x.png
+[  38% ] _update_scan_actions | nose_isolated_checker_6x.png
+[  39% ] _update_scan_actions | nose_isolated_dark_6x.png
+[  39% ] _update_scan_actions | nose_isolated_light_6x.png
+[  40% ] _update_scan_actions | nose_source_top_actual_bottom_checker_6x.png
+[  40% ] _update_scan_actions | nose_source_top_actual_bottom_dark_6x.png
+[  41% ] _update_scan_actions | nose_source_top_actual_bottom_light_6x.png
+[  41% ] _update_scan_actions | source_eyebrows_close_6x.png
+[  42% ] _update_scan_actions | source_eyebrows_grid_6x.png
+[  42% ] _update_scan_actions | source_eyes_close_6x.png
+[  43% ] _update_scan_actions | source_eyes_grid_6x.png
+[  43% ] _update_scan_actions | source_left_actual_right_checker_2x.png
+[  44% ] _update_scan_actions | source_left_actual_right_dark_2x.png
+[  44% ] _update_scan_actions | source_left_actual_right_light_2x.png
+[  44% ] _update_scan_actions | source_mouth_close_6x.png
+[  45% ] _update_scan_actions | source_mouth_grid_6x.png
+[  45% ] _update_scan_actions | source_nose_close_6x.png
+[  46% ] _update_scan_actions | source_nose_grid_6x.png
+[  46% ] _update_scan_actions | candidate_assembled_checker.png
+[  47% ] _update_scan_actions | candidate_assembled_dark.png
+[  47% ] _update_scan_actions | candidate_assembled_light.png
+[  48% ] _update_scan_actions | candidate_face_close_checker.png
+[  48% ] _update_scan_actions | candidate_face_close_dark.png
+[  49% ] _update_scan_actions | candidate_face_close_light.png
+[  49% ] _update_scan_actions | candidate_no_clothes_checker.png
+[  50% ] _update_scan_actions | candidate_no_clothes_dark.png
+[  50% ] _update_scan_actions | candidate_no_clothes_light.png
+[  51% ] _update_scan_actions | candidate_no_hair_checker.png
+[  51% ] _update_scan_actions | candidate_no_hair_dark.png
+[  52% ] _update_scan_actions | candidate_no_hair_light.png
+[  52% ] _update_scan_actions | head_checker.png
+[  53% ] _update_scan_actions | head_close_checker.png
+[  53% ] _update_scan_actions | head_close_dark.png
+[  54% ] _update_scan_actions | head_close_light.png
+[  54% ] _update_scan_actions | head_dark.png
+[  55% ] _update_scan_actions | head_fixed_landmark_grid.png
+[  55% ] _update_scan_actions | head_light.png
+[  55% ] _update_scan_actions | head_v3_landmark_grid.png
+[  56% ] _update_scan_actions | seven_collars_checker.png
+[  56% ] _update_scan_actions | seven_collars_dark.png
+[  57% ] _update_scan_actions | seven_collars_light.png
+[  57% ] _update_scan_actions | eyebrows_native.png
+[  58% ] _update_scan_actions | eyebrows_native_v2.png
+[  58% ] _update_scan_actions | eyebrows_native_v3.png
+[  59% ] _update_scan_actions | eyes_native.png
+[  59% ] _update_scan_actions | mouth_native.png
+[  60% ] _update_scan_actions | nose_native.png
+[  60% ] _update_scan_actions | clothing.png
+[  61% ] _update_scan_actions | clothing_back.png
+[  61% ] _update_scan_actions | hair_back.png
+[  62% ] _update_scan_actions | hair_front.png
+[  62% ] _update_scan_actions | head.png
+[  63% ] _update_scan_actions | head_color_v2.png
+[  63% ] _update_scan_actions | head_import_before_color.png
+[  64% ] _update_scan_actions | head_v3_large.png
+[  64% ] _update_scan_actions | 01.png
+[  65% ] _update_scan_actions | 02.png
+[  65% ] _update_scan_actions | 03.png
+[  66% ] _update_scan_actions | 04.png
+[  66% ] _update_scan_actions | 05.png
+[  66% ] _update_scan_actions | 06.png
+[  67% ] _update_scan_actions | 07.png
+[  67% ] _update_scan_actions | 01.png
+[  68% ] _update_scan_actions | 02.png
+[  68% ] _update_scan_actions | 03.png
+[  69% ] _update_scan_actions | 04.png
+[  69% ] _update_scan_actions | 05.png
+[  70% ] _update_scan_actions | 06.png
+[  70% ] _update_scan_actions | 07.png
+[  71% ] _update_scan_actions | 01.png
+[  71% ] _update_scan_actions | 01.png
+[  72% ] _update_scan_actions | 01.png
+[  72% ] _update_scan_actions | 01.png
+[  73% ] _update_scan_actions | 01.png
+[  73% ] _update_scan_actions | 01.png
+[  74% ] _update_scan_actions | 01.png
+[  74% ] _update_scan_actions | 01.png
+[  75% ] _update_scan_actions | approved_male.png
+[  75% ] _update_scan_actions | male_whole_01.png
+[  76% ] _update_scan_actions | male_whole_02.png
+[  76% ] _update_scan_actions | female_material_palette.png
+[  77% ] _update_scan_actions | male_current_geometry.png
+[  77% ] _update_scan_actions | bit1_out.bmp
+[  77% ] _update_scan_actions | bit4_out.bmp
+[  78% ] _update_scan_actions | bit4_RLE.bmp
+[  78% ] _update_scan_actions | bit4_RLE_out.bmp
+[  79% ] _update_scan_actions | bit8_out.bmp
+[  79% ] _update_scan_actions | bit8_RLE.bmp
+[  80% ] _update_scan_actions | bit8_RLE_out.bmp
+[  80% ] _update_scan_actions | bit16_565_out.bmp
+[  81% ] _update_scan_actions | bit16_a444_out.bmp
+[  81% ] _update_scan_actions | bit16_a555_out.bmp
+[  82% ] _update_scan_actions | bit16_x444_out.bmp
+[  82% ] _update_scan_actions | bit16_x555_out.bmp
+[  83% ] _update_scan_actions | bit24_out.bmp
+[  83% ] _update_scan_actions | bit32_alpha_out.bmp
+[  84% ] _update_scan_actions | bit32_out.bmp
+[  84% ] _update_scan_actions | expanded_native_bridge.png
+[  85% ] _update_scan_actions | expanded_white_stone_near.png
+[  85% ] _update_scan_actions | expanded_white_stone_town_near.png
+[  86% ] _update_scan_actions | expanded_yuxu_xianzong_core_near.png
+[  86% ] _update_scan_actions | expanded_zoom_0.png
+[  87% ] _update_scan_actions | expanded_zoom_1.png
+[  87% ] _update_scan_actions | expanded_zoom_2.png
+[  88% ] _update_scan_actions | 功法配置.csv
+[  88% ] _update_scan_actions | female_atlas_master_v1.png
+[  88% ] _update_scan_actions | atlas_01_major_sects_full_width.png
+[  89% ] _update_scan_actions | atlas_01_major_sects.png
+[  89% ] _update_scan_actions | atlas_02_mountain_sects.png
+[  90% ] _update_scan_actions | atlas_03_river_shadow_sects.png
+[  90% ] _update_scan_actions | atlas_04_landmarks_cities.png
+[  91% ] _update_scan_actions | atlas_05_fortress_towns.png
+[  91% ] _update_scan_actions | atlas_06_market_village_dock.png
+[  92% ] _update_scan_actions | contact_sheet_24.jpg
+[  92% ] _update_scan_actions | preview_04_alpha_qa.jpg
+[  93% ] _update_scan_actions | bridges_native.png
+[  93% ] _update_scan_actions | bridge_connectivity_preview.png
+[  94% ] _update_scan_actions | water_native.png
+[  94% ] _update_scan_actions | water_sdf.png
+[  95% ] _update_scan_actions | water_sdf_smooth.png
+[  95% ] _update_scan_actions | mountain_a_complete_bounds_preview.png
+[  96% ] _update_scan_actions | mountain_b_complete_bounds_preview.png
+[  96% ] _update_scan_actions | mountain_complete_cutouts_preview.png
+[  97% ] _update_scan_actions | bc_r0c0.png
+[  97% ] _update_scan_actions | zhaoming_continuous_terrain_master_v19_compact_landmarks_4096.png
+[  98% ] _update_scan_actions | zhaoming_drawio_terrain_with_boundaries.png
+[  98% ] _update_scan_actions | 2bb934f8-9be1-4f19-9416-ba53aa82f892.png
+[  99% ] _update_scan_actions | 512.png
+[ DONE ] _update_scan_actions
+
+[   0% ] reimport | Started 正在导入或重新导入资产 (172 steps)
+[   0% ] reimport | 正在准备重新导入文件……
+[   0% ] reimport | 正在准备重新导入文件……
+[   1% ] reimport | 正在准备重新导入文件……
+[   1% ] reimport | 正在准备重新导入文件……
+[   2% ] reimport | 正在准备重新导入文件……
+[   2% ] reimport | 正在准备重新导入文件……
+[   3% ] reimport | 正在准备重新导入文件……
+[   4% ] reimport | 正在准备重新导入文件……
+[   4% ] reimport | 正在准备重新导入文件……
+[   5% ] reimport | 正在准备重新导入文件……
+[   5% ] reimport | 正在准备重新导入文件……
+[   6% ] reimport | 正在准备重新导入文件……
+[   6% ] reimport | 正在准备重新导入文件……
+[   7% ] reimport | 正在准备重新导入文件……
+[   8% ] reimport | 正在准备重新导入文件……
+[   8% ] reimport | 正在准备重新导入文件……
+[   9% ] reimport | 正在准备重新导入文件……
+[   9% ] reimport | 正在准备重新导入文件……
+[  10% ] reimport | 正在准备重新导入文件……
+[  10% ] reimport | 正在准备重新导入文件……
+[  11% ] reimport | 正在准备重新导入文件……
+[  12% ] reimport | 正在准备重新导入文件……
+[  12% ] reimport | 正在准备重新导入文件……
+[  13% ] reimport | 正在准备重新导入文件……
+[  13% ] reimport | 正在准备重新导入文件……
+[  14% ] reimport | 正在准备重新导入文件……
+[  15% ] reimport | 正在准备重新导入文件……
+[  15% ] reimport | 正在准备重新导入文件……
+[  16% ] reimport | 正在准备重新导入文件……
+[  16% ] reimport | 正在准备重新导入文件……
+[  17% ] reimport | 正在准备重新导入文件……
+[  17% ] reimport | 正在准备重新导入文件……
+[  18% ] reimport | 正在准备重新导入文件……
+[  19% ] reimport | 正在准备重新导入文件……
+[  19% ] reimport | 正在准备重新导入文件……
+[  20% ] reimport | 正在准备重新导入文件……
+[  20% ] reimport | 正在准备重新导入文件……
+[  21% ] reimport | 正在准备重新导入文件……
+[  21% ] reimport | 正在准备重新导入文件……
+[  22% ] reimport | 正在准备重新导入文件……
+[  23% ] reimport | 正在准备重新导入文件……
+[  23% ] reimport | 正在准备重新导入文件……
+[  24% ] reimport | 正在准备重新导入文件……
+[  24% ] reimport | 正在准备重新导入文件……
+[  25% ] reimport | 正在准备重新导入文件……
+[  26% ] reimport | 正在准备重新导入文件……
+[  26% ] reimport | 正在准备重新导入文件……
+[  27% ] reimport | 正在准备重新导入文件……
+[  27% ] reimport | 正在准备重新导入文件……
+[  28% ] reimport | 正在准备重新导入文件……
+[  28% ] reimport | 正在准备重新导入文件……
+[  29% ] reimport | 正在准备重新导入文件……
+[  30% ] reimport | 正在准备重新导入文件……
+[  30% ] reimport | 正在准备重新导入文件……
+[  31% ] reimport | 正在准备重新导入文件……
+[  31% ] reimport | 正在准备重新导入文件……
+[  32% ] reimport | 正在准备重新导入文件……
+[  32% ] reimport | 正在准备重新导入文件……
+[  33% ] reimport | 正在准备重新导入文件……
+[  34% ] reimport | 正在准备重新导入文件……
+[  34% ] reimport | 正在准备重新导入文件……
+[  35% ] reimport | 正在准备重新导入文件……
+[  35% ] reimport | 正在准备重新导入文件……
+[  36% ] reimport | 正在准备重新导入文件……
+[  36% ] reimport | 正在准备重新导入文件……
+[  37% ] reimport | 正在准备重新导入文件……
+[  38% ] reimport | 正在准备重新导入文件……
+[  38% ] reimport | 正在准备重新导入文件……
+[  39% ] reimport | 正在准备重新导入文件……
+[  39% ] reimport | 正在准备重新导入文件……
+[  40% ] reimport | 正在准备重新导入文件……
+[  41% ] reimport | 正在准备重新导入文件……
+[  41% ] reimport | 正在准备重新导入文件……
+[  42% ] reimport | 正在准备重新导入文件……
+[  42% ] reimport | 正在准备重新导入文件……
+[  43% ] reimport | 正在准备重新导入文件……
+[  43% ] reimport | 正在准备重新导入文件……
+[  44% ] reimport | 正在准备重新导入文件……
+[  45% ] reimport | 正在准备重新导入文件……
+[  45% ] reimport | 正在准备重新导入文件……
+[  46% ] reimport | 正在准备重新导入文件……
+[  46% ] reimport | 正在准备重新导入文件……
+[  47% ] reimport | 正在准备重新导入文件……
+[  47% ] reimport | 正在准备重新导入文件……
+[  48% ] reimport | 正在准备重新导入文件……
+[  49% ] reimport | 正在准备重新导入文件……
+[  49% ] reimport | 正在准备重新导入文件……
+[  50% ] reimport | 正在准备重新导入文件……
+[  50% ] reimport | 正在准备重新导入文件……
+[  51% ] reimport | 正在准备重新导入文件……
+[  52% ] reimport | 正在准备重新导入文件……
+[  52% ] reimport | 正在准备重新导入文件……
+[  53% ] reimport | 正在准备重新导入文件……
+[  53% ] reimport | 正在准备重新导入文件……
+[  54% ] reimport | 正在准备重新导入文件……
+[  54% ] reimport | 正在准备重新导入文件……
+[  55% ] reimport | 正在准备重新导入文件……
+[  56% ] reimport | 正在准备重新导入文件……
+[  56% ] reimport | 正在准备重新导入文件……
+[  57% ] reimport | 正在准备重新导入文件……
+[  57% ] reimport | 正在准备重新导入文件……
+[  58% ] reimport | 正在准备重新导入文件……
+[  58% ] reimport | 正在准备重新导入文件……
+[  59% ] reimport | 正在准备重新导入文件……
+[  60% ] reimport | 正在准备重新导入文件……
+[  60% ] reimport | 正在准备重新导入文件……
+[  61% ] reimport | 正在准备重新导入文件……
+[  61% ] reimport | 正在准备重新导入文件……
+[  62% ] reimport | 正在准备重新导入文件……
+[  63% ] reimport | 正在准备重新导入文件……
+[  63% ] reimport | 正在准备重新导入文件……
+[  64% ] reimport | 正在准备重新导入文件……
+[  64% ] reimport | 正在准备重新导入文件……
+[  65% ] reimport | 正在准备重新导入文件……
+[  65% ] reimport | 正在准备重新导入文件……
+[  66% ] reimport | 正在准备重新导入文件……
+[  67% ] reimport | 正在准备重新导入文件……
+[  67% ] reimport | 正在准备重新导入文件……
+[  68% ] reimport | 正在准备重新导入文件……
+[  68% ] reimport | 正在准备重新导入文件……
+[  69% ] reimport | 正在准备重新导入文件……
+[  69% ] reimport | 正在准备重新导入文件……
+[  70% ] reimport | 正在准备重新导入文件……
+[  71% ] reimport | 正在准备重新导入文件……
+[  71% ] reimport | 正在准备重新导入文件……
+[  72% ] reimport | 正在准备重新导入文件……
+[  72% ] reimport | 正在准备重新导入文件……
+[  73% ] reimport | 正在准备重新导入文件……
+[  73% ] reimport | 正在准备重新导入文件……
+[  74% ] reimport | 正在准备重新导入文件……
+[  75% ] reimport | 正在准备重新导入文件……
+[  75% ] reimport | 正在准备重新导入文件……
+[  76% ] reimport | 正在准备重新导入文件……
+[  76% ] reimport | 正在准备重新导入文件……
+[  77% ] reimport | 正在准备重新导入文件……
+[  78% ] reimport | 正在准备重新导入文件……
+[  78% ] reimport | 正在准备重新导入文件……
+[  79% ] reimport | 正在准备重新导入文件……
+[  79% ] reimport | 正在准备重新导入文件……
+[  80% ] reimport | 正在准备重新导入文件……
+[  80% ] reimport | 正在准备重新导入文件……
+[  81% ] reimport | 正在准备重新导入文件……
+[  82% ] reimport | 正在准备重新导入文件……
+[  82% ] reimport | 正在准备重新导入文件……
+[  83% ] reimport | 正在准备重新导入文件……
+[  83% ] reimport | 正在准备重新导入文件……
+[  84% ] reimport | 正在准备重新导入文件……
+[  84% ] reimport | 正在准备重新导入文件……
+[  85% ] reimport | 正在准备重新导入文件……
+[  86% ] reimport | 正在准备重新导入文件……
+[  86% ] reimport | 正在准备重新导入文件……
+[  87% ] reimport | 正在准备重新导入文件……
+[  87% ] reimport | 正在准备重新导入文件……
+[  88% ] reimport | 正在准备重新导入文件……
+[  89% ] reimport | 正在准备重新导入文件……
+[  89% ] reimport | 正在准备重新导入文件……
+[  90% ] reimport | 正在准备重新导入文件……
+[  90% ] reimport | 正在准备重新导入文件……
+[  91% ] reimport | 正在准备重新导入文件……
+[  91% ] reimport | 正在准备重新导入文件……
+[  92% ] reimport | 正在准备重新导入文件……
+[  93% ] reimport | 正在准备重新导入文件……
+[  93% ] reimport | 正在准备重新导入文件……
+[  94% ] reimport | 正在准备重新导入文件……
+[  94% ] reimport | 正在准备重新导入文件……
+[  95% ] reimport | 正在准备重新导入文件……
+[  95% ] reimport | 正在准备重新导入文件……
+[  96% ] reimport | 正在准备重新导入文件……
+[  97% ] reimport | 正在准备重新导入文件……
+[  97% ] reimport | 正在准备重新导入文件……
+[  98% ] reimport | 正在准备重新导入文件……
+[  98% ] reimport | 正在准备重新导入文件……
+[   0% ] reimport | 正在执行重新导入的前置操作……
+[   0% ] reimport | eyebrows_native_v3.png
+[   0% ] reimport | eyes_native.png
+[   1% ] reimport | mouth_native.png
+[   1% ] reimport | nose_native.png
+[   2% ] reimport | clothing.png
+[   2% ] reimport | clothing_back.png
+[   3% ] reimport | hair_back.png
+[   4% ] reimport | hair_front.png
+[   4% ] reimport | head.png
+[   5% ] reimport | head_color_v2.png
+[   5% ] reimport | head_import_before_color.png
+[   6% ] reimport | head_v3_large.png
+[   6% ] reimport | 01.png
+[   7% ] reimport | 02.png
+[   8% ] reimport | 03.png
+[   8% ] reimport | 04.png
+[   9% ] reimport | 05.png
+[   9% ] reimport | 06.png
+[  10% ] reimport | 07.png
+[  10% ] reimport | 01.png
+[  11% ] reimport | 02.png
+[  12% ] reimport | candidate_face_close_checker.png
+[  12% ] reimport | candidate_face_close_dark.png
+[  13% ] reimport | candidate_face_close_light.png
+[  13% ] reimport | candidate_no_clothes_checker.png
+[  14% ] reimport | candidate_no_clothes_dark.png
+[  15% ] reimport | candidate_no_clothes_light.png
+[  15% ] reimport | candidate_no_hair_checker.png
+[  16% ] reimport | candidate_no_hair_dark.png
+[  16% ] reimport | candidate_no_hair_light.png
+[  17% ] reimport | head_checker.png
+[  17% ] reimport | head_close_checker.png
+[  18% ] reimport | head_close_dark.png
+[  19% ] reimport | head_close_light.png
+[  19% ] reimport | head_dark.png
+[  20% ] reimport | head_fixed_landmark_grid.png
+[  20% ] reimport | head_light.png
+[  21% ] reimport | head_v3_landmark_grid.png
+[  21% ] reimport | seven_collars_checker.png
+[  22% ] reimport | seven_collars_dark.png
+[  23% ] reimport | seven_collars_light.png
+[  23% ] reimport | eyebrows_native.png
+[  24% ] reimport | eyebrows_native_v2.png
+[  24% ] reimport | expanded_zoom_0.png
+[  25% ] reimport | expanded_zoom_1.png
+[  26% ] reimport | expanded_zoom_2.png
+[  26% ] reimport | female_atlas_master_v1.png
+[  27% ] reimport | atlas_01_major_sects_full_width.png
+[  27% ] reimport | atlas_01_major_sects.png
+[  28% ] reimport | atlas_02_mountain_sects.png
+[  28% ] reimport | atlas_03_river_shadow_sects.png
+[  29% ] reimport | atlas_04_landmarks_cities.png
+[  30% ] reimport | atlas_05_fortress_towns.png
+[  30% ] reimport | atlas_06_market_village_dock.png
+[  31% ] reimport | contact_sheet_24.jpg
+[  31% ] reimport | preview_04_alpha_qa.jpg
+[  32% ] reimport | bridges_native.png
+[  32% ] reimport | bridge_connectivity_preview.png
+[  33% ] reimport | water_native.png
+[  34% ] reimport | water_sdf.png
+[  34% ] reimport | water_sdf_smooth.png
+[  35% ] reimport | mountain_a_complete_bounds_preview.png
+[  35% ] reimport | mountain_b_complete_bounds_preview.png
+[  36% ] reimport | mountain_complete_cutouts_preview.png
+[  36% ] reimport | 03.png
+[  37% ] reimport | 04.png
+[  38% ] reimport | 05.png
+[  38% ] reimport | 06.png
+[  39% ] reimport | 07.png
+[  39% ] reimport | 01.png
+[  40% ] reimport | 01.png
+[  41% ] reimport | 01.png
+[  41% ] reimport | 01.png
+[  42% ] reimport | 01.png
+[  42% ] reimport | 01.png
+[  43% ] reimport | 01.png
+[  43% ] reimport | 01.png
+[  44% ] reimport | approved_male.png
+[  45% ] reimport | male_whole_01.png
+[  45% ] reimport | male_whole_02.png
+[  46% ] reimport | female_material_palette.png
+[  46% ] reimport | male_current_geometry.png
+[  47% ] reimport | expanded_native_bridge.png
+[  47% ] reimport | expanded_white_stone_near.png
+[  48% ] reimport | expanded_white_stone_town_near.png
+[  49% ] reimport | expanded_yuxu_xianzong_core_near.png
+[  49% ] reimport | 01.png
+[  50% ] reimport | 01.png
+[  50% ] reimport | 01.png
+[  51% ] reimport | 01.png
+[  52% ] reimport | 01.png
+[  52% ] reimport | 01.png
+[  53% ] reimport | 01.png
+[  53% ] reimport | 01.png
+[  54% ] reimport | 01.png
+[  54% ] reimport | 01.png
+[  55% ] reimport | actual_eyes_close_6x.png
+[  56% ] reimport | actual_eyes_grid_6x.png
+[  56% ] reimport | eyebrows_isolated_checker_6x.png
+[  57% ] reimport | eyebrows_isolated_dark_6x.png
+[  57% ] reimport | eyebrows_isolated_light_6x.png
+[  58% ] reimport | eyebrows_source_top_actual_bottom_checker_6x.png
+[  58% ] reimport | eyebrows_source_top_actual_bottom_dark_6x.png
+[  59% ] reimport | eyebrows_source_top_actual_bottom_light_6x.png
+[  60% ] reimport | eyes_isolated_checker_6x.png
+[  60% ] reimport | eyes_isolated_dark_6x.png
+[  61% ] reimport | eyes_isolated_light_6x.png
+[  61% ] reimport | 01_投料.png
+[  62% ] reimport | 02_选材.png
+[  63% ] reimport | 个人灵舟_行囊验证.png
+[  63% ] reimport | 个人灵舟_飞行验证.png
+[  64% ] reimport | 三对三_1280x720.png
+[  64% ] reimport | 三对三_1440x810.png
+[  65% ] reimport | 单挑_1280x720.png
+[  65% ] reimport | 单挑_1440x810.png
+[  66% ] reimport | 正式队列_1v1.png
+[  67% ] reimport | 正式队列_3v3.png
+[  67% ] reimport | 听讲后_从人物名单验灵.png
+[  68% ] reimport | 点击挂牌_讲法对白.png
+[  68% ] reimport | 讲法初入_中央挂牌引导.png
+[  69% ] reimport | 讲法引导_1280.png
+[  69% ] reimport | 01.png
+[  70% ] reimport | 01.png
+[  71% ] reimport | 01.png
+[  71% ] reimport | 01.png
+[  72% ] reimport | 01.png
+[  72% ] reimport | 01.png
+[  73% ] reimport | 01.png
+[  73% ] reimport | 01.png
+[  74% ] reimport | native_nose_grid_6x.png
+[  75% ] reimport | nose_isolated_checker_6x.png
+[  75% ] reimport | nose_isolated_dark_6x.png
+[  76% ] reimport | nose_isolated_light_6x.png
+[  76% ] reimport | nose_source_top_actual_bottom_checker_6x.png
+[  77% ] reimport | nose_source_top_actual_bottom_dark_6x.png
+[  78% ] reimport | nose_source_top_actual_bottom_light_6x.png
+[  78% ] reimport | source_eyebrows_close_6x.png
+[  79% ] reimport | source_eyebrows_grid_6x.png
+[  79% ] reimport | source_eyes_close_6x.png
+[  80% ] reimport | source_eyes_grid_6x.png
+[  80% ] reimport | source_left_actual_right_checker_2x.png
+[  81% ] reimport | source_left_actual_right_dark_2x.png
+[  82% ] reimport | source_left_actual_right_light_2x.png
+[  82% ] reimport | source_mouth_close_6x.png
+[  83% ] reimport | source_mouth_grid_6x.png
+[  83% ] reimport | source_nose_close_6x.png
+[  84% ] reimport | source_nose_grid_6x.png
+[  84% ] reimport | candidate_assembled_checker.png
+[  85% ] reimport | candidate_assembled_dark.png
+[  86% ] reimport | candidate_assembled_light.png
+[  86% ] reimport | eyes_source_top_actual_bottom_checker_6x.png
+[  87% ] reimport | eyes_source_top_actual_bottom_dark_6x.png
+[  87% ] reimport | eyes_source_top_actual_bottom_light_6x.png
+[  88% ] reimport | full_actual_checker.png
+[  89% ] reimport | full_actual_dark.png
+[  89% ] reimport | full_actual_light.png
+[  90% ] reimport | head_with_features_checker.png
+[  90% ] reimport | head_with_features_dark.png
+[  91% ] reimport | head_with_features_light.png
+[  91% ] reimport | mouth_isolated_checker_6x.png
+[  92% ] reimport | mouth_isolated_dark_6x.png
+[  93% ] reimport | mouth_isolated_light_6x.png
+[  93% ] reimport | mouth_source_top_actual_bottom_checker_6x.png
+[  94% ] reimport | mouth_source_top_actual_bottom_dark_6x.png
+[  94% ] reimport | mouth_source_top_actual_bottom_light_6x.png
+[  95% ] reimport | native_eyebrows_close_6x.png
+[  95% ] reimport | native_eyebrows_grid_6x.png
+[  96% ] reimport | native_eyes_close_6x.png
+[  97% ] reimport | native_eyes_grid_6x.png
+[  97% ] reimport | native_mouth_close_6x.png
+[  98% ] reimport | native_mouth_grid_6x.png
+[  98% ] reimport | native_nose_close_6x.png
+[  99% ] reimport | 正在结束资产导入……
+[ DONE ] reimport
+
+[   0% ] reimport | Started 正在导入或重新导入资产 (172 steps)
+[   0% ] reimport | 正在执行重新导入的后置操作……
+[ DONE ] reimport
+
+[   0% ] loading_editor_layout | Started 正在加载编辑器 (5 steps)
+[   0% ] loading_editor_layout | 正在加载编辑器布局……
+[  16% ] loading_editor_layout | 正在加载停靠面板……
+[  33% ] loading_editor_layout | 正在重新打开场景……
+[  50% ] loading_editor_layout | 正在加载中央编辑器布局……
+[  66% ] loading_editor_layout | 正在加载插件窗口布局……
+[  83% ] loading_editor_layout | 编辑器布局就绪。
+[ DONE ] loading_editor_layout
+
+Godot MCP: Bridge stopped

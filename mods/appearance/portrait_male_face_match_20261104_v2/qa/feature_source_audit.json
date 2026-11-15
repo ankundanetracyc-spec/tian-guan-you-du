@@ -1,0 +1,89 @@
+{
+  "new_attachment": {
+    "path": "C:/Users/34784/AppData/Local/Temp/codex-clipboard-2c1a6159-89a6-44b4-919d-ff18f66c7c1c.png",
+    "same_sha256_as_previous": true,
+    "sha256": "63251bb7eea03e8a4cb88c6e50e97fef7b2612f4abb91ccba2423bc1dd36ad0d"
+  },
+  "current_skin_authority": "reference03 only, including all feature edge washes; do not average the three skin appearances",
+  "source_chain": {
+    "three_style_parts": "Contains female assets only. Its feature_extraction.json traces female_hair_final references, not this male sheet.",
+    "rebuild_male": "source/male_brow_eye_final/generation.json and source/male_final/feature_generation.json explicitly record later image_gen extraction/repainting. They are not proof that the input reference triptych was assembled from those output PNGs.",
+    "exact_male_triptych_layer_assembly_found": false,
+    "closest_actual_pixel_sources": "selected_ink_portrait_clean_20261003_v1/male/*.png are source-pixel clean layers from selected_ink_portrait_rig_20261003_v1/reference/male_selected_master.png, built by tools/build_selected_ink_portrait_clean.py. No zero-difference correspondence to this triptych established."
+  },
+  "recommended_shape_candidates": {
+    "nose": {
+      "path": "mods/appearance/selected_ink_portrait_clean_20261003_v1/male/nose.png",
+      "assessment": "Complete tip, alar volume and bridge wash; preferable shape candidate over v1 bright noseplate. Old warm unmix pigment must be checked against new03 blank before adoption."
+    },
+    "mouth": {
+      "path": "mods/appearance/selected_ink_portrait_clean_20261003_v1/male/mouth.png",
+      "assessment": "More faithful width/volume than narrow v1 generation; retains several tiny bright lower-lip highlights; old warm mixed edges need adaptation to03."
+    },
+    "eyebrows": {
+      "paths": [
+        "mods/appearance/portrait_rebuild_20261103/final/male/eyebrows/01.png",
+        "mods/appearance/portrait_rebuild_20261103/final/male/eyebrows/02.png",
+        "mods/appearance/portrait_rebuild_20261103/final/male/eyebrows/03.png"
+      ],
+      "assessment": "Better initial widths/thickness than v1. 01 softly straight/full,02 rising sword brow,03 finer horizontal. Still later image_gen drafts, not exact source pixels;02 more angular and03 more arched than reference; check pair width against guide before install."
+    },
+    "eyes": {
+      "candidates_only": [
+        {
+          "path": "mods/appearance/ink_three_variants_20261004/source/eye_diversity_revision_20261006/previous/male/eyes/08.png",
+          "gallery_id": 24,
+          "assessment": "Narrow restrained corners, cleaner/softer upper line than clean pair; still different lower-lid slant and iris appearance."
+        },
+        {
+          "path": "mods/appearance/portrait_fresh_sets_20261103_v2/male/eyes/02.png",
+          "gallery_id": 50,
+          "assessment": "Milder almond contour and grey-brown iris, but opening/eyelid shape and surrounding wash still differ; another generated family, not this source."
+        }
+      ],
+      "direct_source_fidelity_candidate": false,
+      "needed_refinement": "If exact reference identity is required, a targeted preserve-shape edit from source01/source03 eye crops is safer than promoting arbitrary historical variants. Preserve source03 skin texture at eye edges, grey-brown irises, modest upper line, no long dark corners."
+    }
+  },
+  "supporting_comparison": {
+    "definition": "Selected master composite versus reference01 ROI, nearest-neighbor sampling, local whole-component uniform fit; Pearson is auxiliary, not proof of common origin.",
+    "ROIs": {
+      "nose": [
+        491,
+        421,
+        543,
+        470
+      ],
+      "mouth": [
+        476,
+        471,
+        558,
+        510
+      ],
+      "eyes": [
+        426,
+        359,
+        610,
+        393
+      ]
+    },
+    "selected_master_best_pearson": {
+      "nose": 0.9415,
+      "mouth": 0.9639,
+      "eyes": 0.8343
+    },
+    "v1_generated_on_v1_face_best_pearson": {
+      "nose": 0.9389,
+      "mouth": 0.9172,
+      "eyes": 0.8061
+    },
+    "not_comparable_to_new_blank": true
+  },
+  "QA": {
+    "eyebrow_gallery": "qa/historical_eyebrows_candidates.png",
+    "eye_gallery": "qa/historical_eyes_candidates.png",
+    "sha_deduplicated_variant_manifest": "qa/historical_brow_eye_manifest.json",
+    "unique_brow_eye_versions": 59
+  },
+  "mutations": "Only QA comparison galleries/manifests written with parent authorization; no active asset or feature PNG edits; no generation in this audit."
+}

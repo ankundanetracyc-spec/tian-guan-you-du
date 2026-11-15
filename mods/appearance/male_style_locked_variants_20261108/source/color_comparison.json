@@ -1,0 +1,173 @@
+{
+  "method": "Fixed cheek and central neck blocks; combined pixel median RGB, sRGB to D65 Lab; delta order L,a,b. Read-only sample analysis, no image edits.",
+  "regions_xyxy": {
+    "left_cheek": [
+      456,
+      410,
+      468,
+      422
+    ],
+    "right_cheek": [
+      570,
+      410,
+      582,
+      422
+    ],
+    "neck": [
+      509,
+      580,
+      523,
+      594
+    ]
+  },
+  "references": {
+    "approved_master": "reference/project_master.png",
+    "active_face_neck": "reference/active_head_neck.png"
+  },
+  "comparison": [
+    {
+      "id": "01",
+      "cheek_vs_master": [
+        -0.7,
+        0.25,
+        0.18
+      ],
+      "cheek_vs_active": [
+        -1.17,
+        0.64,
+        0.8
+      ],
+      "neck_vs_master": [
+        -0.46,
+        0.17,
+        -0.14
+      ],
+      "neck_vs_active": [
+        1.67,
+        -0.62,
+        -1.6
+      ]
+    },
+    {
+      "id": "02",
+      "cheek_vs_master": [
+        -1.35,
+        -0.63,
+        0.44
+      ],
+      "cheek_vs_active": [
+        -1.82,
+        -0.25,
+        1.07
+      ],
+      "neck_vs_master": [
+        -1.02,
+        -0.97,
+        0.74
+      ],
+      "neck_vs_active": [
+        1.1,
+        -1.76,
+        -0.72
+      ]
+    },
+    {
+      "id": "03",
+      "cheek_vs_master": [
+        -0.61,
+        0.23,
+        0.04
+      ],
+      "cheek_vs_active": [
+        -1.08,
+        0.62,
+        0.66
+      ],
+      "neck_vs_master": [
+        -0.55,
+        -0.15,
+        0.06
+      ],
+      "neck_vs_active": [
+        1.57,
+        -0.94,
+        -1.4
+      ]
+    },
+    {
+      "id": "04",
+      "cheek_vs_master": [
+        -0.36,
+        -0.15,
+        -0.09
+      ],
+      "cheek_vs_active": [
+        -0.83,
+        0.24,
+        0.54
+      ],
+      "neck_vs_master": [
+        0.23,
+        -1.1,
+        -0.48
+      ],
+      "neck_vs_active": [
+        2.35,
+        -1.89,
+        -1.94
+      ]
+    },
+    {
+      "id": "05",
+      "cheek_vs_master": [
+        -0.44,
+        0.6,
+        -0.15
+      ],
+      "cheek_vs_active": [
+        -0.91,
+        0.99,
+        0.48
+      ],
+      "neck_vs_master": [
+        0.27,
+        -0.35,
+        -0.03
+      ],
+      "neck_vs_active": [
+        2.39,
+        -1.14,
+        -1.49
+      ]
+    },
+    {
+      "id": "06",
+      "cheek_vs_master": [
+        -0.81,
+        -0.49,
+        -0.59
+      ],
+      "cheek_vs_active": [
+        -1.28,
+        -0.1,
+        0.04
+      ],
+      "neck_vs_master": [
+        0.08,
+        -1.1,
+        -0.44
+      ],
+      "neck_vs_active": [
+        2.21,
+        -1.89,
+        -1.91
+      ]
+    }
+  ],
+  "limitations": [
+    "No geometric registration or semantic occlusion detection.",
+    "Local shading and alpha253-255 in active head layer can influence raw RGB.",
+    "Local color closeness is not proof of full-painting style or modular compatibility."
+  ],
+  "interpretation": "Cheek palette is much closer to project master than rejected refined batch. Neck shadows still differ from current active layer, especially04/05/06; preserve installed head/neck when later extracting modular hair/eyes."
+}

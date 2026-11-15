@@ -1,0 +1,492 @@
+{
+  "status": "final_candidate_frozen_for_root_qa_installation",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "gender": "male",
+  "skin_and_material_authority": "Source03 only; no average skin. Face and all hair owned by root, untouched here.",
+  "counts": {
+    "eyebrows": 3,
+    "eyes": 2,
+    "nose": 1,
+    "mouth": 1
+  },
+  "total": 7,
+  "names": {
+    "eyebrows": [
+      "平直浓眉",
+      "挑锋剑眉",
+      "细直柔眉"
+    ],
+    "eyes": [
+      "窄长凤目",
+      "清朗杏目"
+    ],
+    "nose": [
+      "柔直鼻"
+    ],
+    "mouth": [
+      "自然浅唇"
+    ]
+  },
+  "source_sha256": "63251bb7eea03e8a4cb88c6e50e97fef7b2612f4abb91ccba2423bc1dd36ad0d",
+  "groups": {
+    "eyebrows": [
+      [
+        "01"
+      ],
+      [
+        "02"
+      ],
+      [
+        "03"
+      ]
+    ],
+    "eyes": [
+      [
+        "01",
+        "02"
+      ],
+      [
+        "03"
+      ]
+    ],
+    "nose": [
+      [
+        "01",
+        "02",
+        "03"
+      ]
+    ],
+    "mouth": [
+      [
+        "01",
+        "02",
+        "03"
+      ]
+    ]
+  },
+  "reference_aliases": {
+    "eyebrows": {
+      "01": "01",
+      "02": "02",
+      "03": "03"
+    },
+    "eyes": {
+      "01": "01",
+      "02": "01",
+      "03": "02"
+    },
+    "nose": {
+      "01": "01",
+      "02": "01",
+      "03": "01"
+    },
+    "mouth": {
+      "01": "01",
+      "02": "01",
+      "03": "01"
+    }
+  },
+  "generation": {
+    "tool": "built-in image_gen",
+    "prompts": "source/feature_refinement_prompts.json",
+    "records": "source/feature_refinement_records.json",
+    "eye02_additional_single_edit": "source/eye02_opening_refinement.json",
+    "native_alpha_preserved": true,
+    "no_cli": true,
+    "all_selected": "All seven use edited native outputs; eye02 uses02_opening_refined, not half-closed historical#50. Original/source raw retained separately."
+  },
+  "registration": {
+    "file": "source/feature_registration.json",
+    "script": "source/register_refined_features.cjs",
+    "target_measurements": "qa/reference_feature_landmarks.json",
+    "whole_layer_uniform_only": true,
+    "old_rig_123_brow_distance_rejected": true,
+    "old_rig_105_pupil_distance_rejected": true,
+    "source03_actual_nose_axis": 515.1374,
+    "source03_actual_lip_center": [
+      515.2423,
+      483.6193
+    ],
+    "full_three_noncollinear_2px_certification": false
+  },
+  "outputs": [
+    {
+      "part": "eyebrows",
+      "id": "01",
+      "name": "平直浓眉",
+      "file": "male/eyebrows/01.png",
+      "sha256": "264ea6c3c027402bbe9f230f194eb908e12c86ea6abbdc5bc751e0ffcc5d9530",
+      "raw": "source/raw/features/eyebrows/01.png",
+      "scale": 0.8,
+      "translation": [
+        106,
+        66
+      ],
+      "reason": "Source01 visible brow-body extents430..498/536..604, approx106px pair midpoint distance and bodyy351; old123px rig rejected.",
+      "metrics": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "zero_alpha_pixels": 1569700,
+        "opaque_pixels": 2,
+        "bounds": {
+          "1": {
+            "bbox": [
+              106,
+              90,
+              843,
+              1236
+            ],
+            "pixels": 3164
+          },
+          "40": {
+            "bbox": [
+              427,
+              344,
+              606,
+              360
+            ],
+            "pixels": 1523
+          },
+          "200": {
+            "bbox": [
+              437,
+              345,
+              600,
+              357
+            ],
+            "pixels": 954
+          }
+        }
+      }
+    },
+    {
+      "part": "eyebrows",
+      "id": "02",
+      "name": "挑锋剑眉",
+      "file": "male/eyebrows/02.png",
+      "sha256": "3a650c379828332764058a4f47888bae195cb33a8379487a622415935cab3646",
+      "raw": "source/raw/features/eyebrows/02.png",
+      "scale": 0.8,
+      "translation": [
+        103,
+        80
+      ],
+      "reason": "Source02 visible outer-to-inner slopey347..364, bodyy355..356, approx107.5px pair midpoint distance; no local brow edits.",
+      "metrics": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "zero_alpha_pixels": 1569975,
+        "opaque_pixels": 0,
+        "bounds": {
+          "1": {
+            "bbox": [
+              188,
+              206,
+              859,
+              1274
+            ],
+            "pixels": 2889
+          },
+          "40": {
+            "bbox": [
+              426,
+              346,
+              604,
+              367
+            ],
+            "pixels": 1445
+          },
+          "200": {
+            "bbox": [
+              431,
+              347,
+              600,
+              365
+            ],
+            "pixels": 997
+          }
+        }
+      }
+    },
+    {
+      "part": "eyebrows",
+      "id": "03",
+      "name": "细直柔眉",
+      "file": "male/eyebrows/03.png",
+      "sha256": "7283312b18f200f0bf826277e45ff6ed58544ece45cf1b3ece79013f17c564a0",
+      "raw": "source/raw/features/eyebrows/03.png",
+      "scale": 0.8,
+      "translation": [
+        107,
+        74
+      ],
+      "reason": "Source03 right brow538..603,y347..357; left outer tail hair-occluded, full center only inferred464..469.",
+      "metrics": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "zero_alpha_pixels": 1567014,
+        "opaque_pixels": 0,
+        "bounds": {
+          "1": {
+            "bbox": [
+              133,
+              270,
+              677,
+              1256
+            ],
+            "pixels": 5850
+          },
+          "40": {
+            "bbox": [
+              427,
+              344,
+              610,
+              361
+            ],
+            "pixels": 2275
+          },
+          "200": {
+            "bbox": [
+              435,
+              347,
+              605,
+              357
+            ],
+            "pixels": 868
+          }
+        }
+      }
+    },
+    {
+      "part": "eyes",
+      "id": "01",
+      "name": "窄长凤目",
+      "file": "male/eyes/01.png",
+      "sha256": "8a61d4046d2d25c2cdc8725adf267f08fc8aebbe70f7e7d9d3c2fcb173f7e2a9",
+      "raw": "source/raw/features/eyes/01.png",
+      "scale": 0.9852343766699498,
+      "translation": [
+        7,
+        7
+      ],
+      "reason": "Source01 actual dark pupil kernel distance100.5732, not old105px rig.",
+      "metrics": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "zero_alpha_pixels": 1564037,
+        "opaque_pixels": 0,
+        "bounds": {
+          "1": {
+            "bbox": [
+              150,
+              67,
+              928,
+              1173
+            ],
+            "pixels": 8827
+          },
+          "40": {
+            "bbox": [
+              424,
+              363,
+              607,
+              396
+            ],
+            "pixels": 3852
+          },
+          "200": {
+            "bbox": [
+              432,
+              368,
+              601,
+              391
+            ],
+            "pixels": 2310
+          }
+        }
+      }
+    },
+    {
+      "part": "eyes",
+      "id": "02",
+      "name": "清朗杏目",
+      "file": "male/eyes/02.png",
+      "sha256": "a403c8cc58476f65ed55db9c9232205f5ec1bd0562a3b118308ee31c17be81b8",
+      "raw": "source/raw/features/eyes/02_opening_refined.png",
+      "scale": 0.792363103011651,
+      "translation": [
+        110,
+        81
+      ],
+      "reason": "Selected one additional native opening edit, then one whole-layer fit to Source03 actual pupil kernel distance101.7361. No script vertical squeeze.",
+      "metrics": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "zero_alpha_pixels": 1561381,
+        "opaque_pixels": 0,
+        "bounds": {
+          "1": {
+            "bbox": [
+              139,
+              182,
+              869,
+              1265
+            ],
+            "pixels": 11483
+          },
+          "40": {
+            "bbox": [
+              412,
+              358,
+              618,
+              399
+            ],
+            "pixels": 6071
+          },
+          "200": {
+            "bbox": [
+              420,
+              363,
+              610,
+              394
+            ],
+            "pixels": 3558
+          }
+        }
+      }
+    },
+    {
+      "part": "nose",
+      "id": "01",
+      "name": "柔直鼻",
+      "file": "male/nose/01.png",
+      "sha256": "9c4a34b9ddb72573aa3e1b265efde37b6c5cfd14657fb24940b40e5e4c1c037d",
+      "raw": "source/raw/features/nose/01.png",
+      "scale": 0.5197276824692639,
+      "translation": [
+        248,
+        219
+      ],
+      "reason": "Source03 actual paired nostril centers504.1252/526.1497, separation22.0245, natural axis515.1374. Refitted by0.8662 from transient candidate, not wash bounds.",
+      "metrics": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "zero_alpha_pixels": 1567145,
+        "opaque_pixels": 0,
+        "bounds": {
+          "1": {
+            "bbox": [
+              473,
+              292,
+              660,
+              571
+            ],
+            "pixels": 5719
+          },
+          "40": {
+            "bbox": [
+              483,
+              405,
+              546,
+              468
+            ],
+            "pixels": 2966
+          },
+          "200": {
+            "bbox": [
+              493,
+              419,
+              537,
+              462
+            ],
+            "pixels": 1431
+          }
+        }
+      }
+    },
+    {
+      "part": "mouth",
+      "id": "01",
+      "name": "自然浅唇",
+      "file": "male/mouth/01.png",
+      "sha256": "dbe83d496f349f0ed5faee9edae5ed73416c46298f64a6391f237e59d88c1134",
+      "raw": "source/raw/features/mouth/01.png",
+      "scale": 0.7569230769230769,
+      "translation": [
+        123,
+        120
+      ],
+      "reason": "Source03 actual lip seam soft width72px, center515.2423,483.6193. Refitted by0.9231 from transient candidate78px dark seam, left2/down3.",
+      "metrics": {
+        "width": 1024,
+        "height": 1536,
+        "channels": 4,
+        "zero_alpha_pixels": 1568111,
+        "opaque_pixels": 0,
+        "bounds": {
+          "1": {
+            "bbox": [
+              123,
+              120,
+              796,
+              1209
+            ],
+            "pixels": 4753
+          },
+          "40": {
+            "bbox": [
+              477,
+              471,
+              554,
+              511
+            ],
+            "pixels": 2334
+          },
+          "200": {
+            "bbox": [
+              481,
+              477,
+              549,
+              500
+            ],
+            "pixels": 1039
+          }
+        }
+      }
+    }
+  ],
+  "final_check": {
+    "record": "qa/final_feature_landmark_check.json",
+    "pupil_separation": {
+      "eye01": 101.262,
+      "eye01_source_target": 100.5732,
+      "eye02": 101.3836,
+      "eye02_source_target": 101.7361
+    },
+    "nose_nostril_separation": 22.4636,
+    "nose_source_target": 22.0245,
+    "mouth_seam_width": 73,
+    "mouth_source_target": 72,
+    "mouth_seam_center": [
+      515.2082,
+      483.3559
+    ],
+    "visual": "Viewed final source03 comparison and all6 brow-eye combinations. No obvious white noseplate, grey block eyebrows, skin rectangle or old dark skin patches. Neweye02 is less round than first edit and more open than historical#50. Delicate original eyelid curvature remains a visual approximation.",
+    "user_visual_acceptance": false
+  },
+  "qa": {
+    "reference03_comparison": "qa/active_refined_reference03.png",
+    "six_combinations_light": "qa/refined_six_features_light.png",
+    "six_combinations_dark": "qa/refined_six_features_dark.png"
+  },
+  "scope": "No face, hair, active PNG, application code, or config edited by this agent."
+}

@@ -1,0 +1,43 @@
+{
+  "status": "three_whole_portrait_candidates_for_visual_review",
+  "mode": "built-in image_gen",
+  "source_master": "reference/approved_male_01.png",
+  "source_master_sha256": "d97b79e3372df42db24b4dd5c3ec42f376d652616d9fa25d78a393b004da81a8",
+  "records": [
+    {
+      "name": "清朗低束",
+      "file": "preview/01_clear_low_tie.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "7dd7dbd7daf5265887be3afbf2b453e5de9ae8852a80bc086ff37b12c5deefb5",
+      "native_unmodified_output": true
+    },
+    {
+      "name": "英气高束",
+      "file": "preview/02_valiant_high_tail.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "b325e538820b82aa0db917eaf7ad7d456f1f1bebde6a0f3f2404e87f93a56be9",
+      "native_unmodified_output": true
+    },
+    {
+      "name": "沉静全髻",
+      "file": "preview/03_quiet_full_knot.png",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "d60493c37c40e30fa9bdadb8de54a4dec9c6d097a89f5b1ceb83094a5da8db44",
+      "native_unmodified_output": true
+    }
+  ],
+  "prompt_set": "source/generation_prompts.json",
+  "active_assets_or_config_modified": false,
+  "parts_extracted": false,
+  "registration": "Whole-canvas generation guided by current male eyes/midline/head-neck/collar framing; no claim of measured modular registration.",
+  "future_deduplication": "Full-portrait variants do not imply every facial component is unique; compare at equal size and deduplicate before adding parts."
+}

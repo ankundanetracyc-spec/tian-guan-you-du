@@ -1,0 +1,206 @@
+{
+  "method": "One global per-channel linear color calibration from paired unobscured approved-source skin samples. No spatial masks, warps, drawing, old RGB, skin tiles or per-region repainting.",
+  "approved_sha256": "d97b79e3372df42db24b4dd5c3ec42f376d652616d9fa25d78a393b004da81a8",
+  "generated_import_source": "raw\\head_import_before_color.png",
+  "generated_import_sha256": "44257a5b89b2b417e18e3b000c12d8c6823cb6e453f13c1a1573408d6b8a23b6",
+  "output": "male\\face_shape\\01.png",
+  "output_sha256": "d86319252035a286a92e8892b9816bdb917a39f7f41f4cb1edf40f4dee51c357",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "alpha_changed_pixels": 0,
+  "geometry_changed": false,
+  "transfer": [
+    {
+      "gain": 0.888689407540395,
+      "offset": 26.804308797127447
+    },
+    {
+      "gain": 0.9713207547169812,
+      "offset": 9.873207547169812
+    },
+    {
+      "gain": 1.03046218487395,
+      "offset": -1.7048319327731747
+    }
+  ],
+  "samples": [
+    {
+      "name": "forehead",
+      "box": [
+        490,
+        290,
+        535,
+        320
+      ],
+      "before": [
+        229,
+        198,
+        182
+      ],
+      "approved": [
+        231,
+        204,
+        188
+      ],
+      "after": [
+        230,
+        202,
+        186
+      ],
+      "delta_after": [
+        -1,
+        -2,
+        -2
+      ]
+    },
+    {
+      "name": "left_cheek",
+      "box": [
+        443,
+        405,
+        465,
+        430
+      ],
+      "before": [
+        229,
+        197,
+        181
+      ],
+      "approved": [
+        229,
+        199,
+        182
+      ],
+      "after": [
+        230,
+        201,
+        185
+      ],
+      "delta_after": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "right_cheek",
+      "box": [
+        565,
+        405,
+        588,
+        430
+      ],
+      "before": [
+        227,
+        196,
+        180
+      ],
+      "approved": [
+        229,
+        199,
+        182
+      ],
+      "after": [
+        229,
+        200,
+        184
+      ],
+      "delta_after": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "chin_plane",
+      "box": [
+        495,
+        510,
+        535,
+        527
+      ],
+      "before": [
+        229,
+        198,
+        182
+      ],
+      "approved": [
+        230,
+        203,
+        187
+      ],
+      "after": [
+        230,
+        202,
+        186
+      ],
+      "delta_after": [
+        0,
+        -1,
+        -1
+      ]
+    },
+    {
+      "name": "upper_neck",
+      "box": [
+        500,
+        555,
+        530,
+        578
+      ],
+      "before": [
+        219,
+        182,
+        163
+      ],
+      "approved": [
+        220,
+        186,
+        165
+      ],
+      "after": [
+        221,
+        187,
+        166
+      ],
+      "delta_after": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "lower_neck",
+      "box": [
+        505,
+        600,
+        535,
+        622
+      ],
+      "before": [
+        222,
+        188,
+        170
+      ],
+      "approved": [
+        226,
+        194,
+        176
+      ],
+      "after": [
+        224,
+        192,
+        173
+      ],
+      "delta_after": [
+        -2,
+        -2,
+        -3
+      ]
+    }
+  ],
+  "native_painting_retained": true,
+  "native_rgb_unchanged": false
+}

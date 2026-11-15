@@ -1,0 +1,225 @@
+ERROR: Failed to open 'E:/stacklands/addons/limboai/bin/~liblimboai.windows.editor.x86_64.dll'.
+   at: DirAccess::copy (core\io\dir_access.cpp:429)
+ERROR: Error copying library: E:/stacklands/addons/limboai/bin/liblimboai.windows.editor.x86_64.dll
+   at: OS_Windows::open_dynamic_library (platform\windows\os_windows.cpp:502)
+ERROR: Can't open GDExtension dynamic library: 'res://addons/limboai/bin/limboai.gdextension'.
+   at: GDExtension::open_library (core\extension\gdextension.cpp:811)
+ERROR: Error loading extension: 'res://addons/limboai/bin/limboai.gdextension'.
+   at: GDExtensionManager::load_extensions (core\extension\gdextension_manager.cpp:333)
+Godot Engine v4.7.2.stable.mono.custom_build.ed1daf0bf (2026-08-17 01:18:38 UTC) - https://godotengine.org
+
+[   0% ] [90m[1mfirst_scan_filesystem[22m | Started 项目初始化 (5 steps)[39m[0m
+[   0% ] [90m[1mfirst_scan_filesystem[22m | 正在扫描文件结构……[39m[0m
+WARNING: Detected another project.godot at res://tools/action_battle_test. The folder will be ignored.
+   at: EditorFileSystem::_should_skip_directory (editor\file_system\editor_file_system.cpp:3497)
+[  16% ] [90m[1mfirst_scan_filesystem[22m | 正在加载全局类名……[39m[0m
+[  33% ] [90m[1mfirst_scan_filesystem[22m | 正在校验 GDExtension……[39m[0m
+[  50% ] [90m[1mfirst_scan_filesystem[22m | 正在创建自动加载脚本……[39m[0m
+[  66% ] [90m[1mfirst_scan_filesystem[22m | 正在初始化插件……[39m[0m
+ERROR: Godot MCP: Failed to listen on ws://127.0.0.1:49631 (error=22)
+   at: VariantUtilityFunctions::push_error (core\variant\variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _enter_tree (res://addons/godot_mcp/mcp_bridge.gd:45)
+[  83% ] [90m[1mfirst_scan_filesystem[22m | 正在启动文件扫描……[39m[0m
+[92m[ DONE ][39m [1mfirst_scan_filesystem[22m
+[0m
+WARNING: UID duplicate detected between res://textures/vfx/ink_chop_sequence_20261016_v2/bake.gdshader and res://textures/vfx/ink_chop_sequence_20261015_v1/bake.gdshader.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_chop_sequence_20261016_v2/impact_atlas_0.png and res://textures/vfx/ink_chop_sequence_20261015_v1/impact_atlas_0.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_chop_sequence_20261016_v2/impact_atlas_1.png and res://textures/vfx/ink_chop_sequence_20261015_v1/impact_atlas_1.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_chop_sequence_20261016_v2/palette.gdshader and res://textures/vfx/ink_chop_sequence_20261015_v1/palette.gdshader.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_chop_sequence_20261016_v2/slash_atlas_0.png and res://textures/vfx/ink_chop_sequence_20261015_v1/slash_atlas_0.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/bake.gdshader and res://textures/vfx/ink_response_sequences_20261015_v1/bake.gdshader.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/guard_atlas_0.png and res://textures/vfx/ink_response_sequences_20261015_v1/guard_atlas_0.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/guard_atlas_1.png and res://textures/vfx/ink_response_sequences_20261015_v1/guard_atlas_1.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/hurt_atlas_0.png and res://textures/vfx/ink_response_sequences_20261015_v1/hurt_atlas_0.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/hurt_atlas_1.png and res://textures/vfx/ink_response_sequences_20261015_v1/hurt_atlas_1.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/restore_atlas_0.png and res://textures/vfx/ink_response_sequences_20261015_v1/restore_atlas_0.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/restore_atlas_1.png and res://textures/vfx/ink_response_sequences_20261015_v1/restore_atlas_1.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/restore_atlas_2.png and res://textures/vfx/ink_response_sequences_20261015_v1/restore_atlas_2.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+[   0% ] [90m[1mupdate_scripts_classes[22m | Started 正在注册全局类…… (6 steps)[39m[0m
+[   0% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  14% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  28% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  42% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  57% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[  71% ] [90m[1mupdate_scripts_classes[22m | [39m[0m
+[92m[ DONE ][39m [1mupdate_scripts_classes[22m
+[0m
+[   0% ] [90m[1m_update_scan_actions[22m | Started 正在扫描动作…… (71 steps)[39m[0m
+[   0% ] [90m[1m_update_scan_actions[22m | 云息境界表现_三环周行.png[39m[0m
+[   1% ] [90m[1m_update_scan_actions[22m | 云息境界表现_三环立体侧转.png[39m[0m
+[   2% ] [90m[1m_update_scan_actions[22m | 云息境界表现_十层偏心环.png[39m[0m
+[   4% ] [90m[1m_update_scan_actions[22m | 云息境界表现_归元息游走.png[39m[0m
+[   5% ] [90m[1m_update_scan_actions[22m | 云息境界表现_旋涡与题字对齐.png[39m[0m
+[   6% ] [90m[1m_update_scan_actions[22m | 云息境界表现_正心三环.png[39m[0m
+[   8% ] [90m[1m_update_scan_actions[22m | 云息境界表现_细化v2.png[39m[0m
+[   9% ] [90m[1m_update_scan_actions[22m | 云息境界表现_零至九息总览.png[39m[0m
+[  11% ] [90m[1m_update_scan_actions[22m | 凝核牌局_弹性手牌与牌堆.png[39m[0m
+[  12% ] [90m[1m_update_scan_actions[22m | 凝核牌局_扇形手牌.png[39m[0m
+[  13% ] [90m[1m_update_scan_actions[22m | 凝核牌局_道具列表.png[39m[0m
+[  15% ] [90m[1m_update_scan_actions[22m | 豆包_双峰山候选_v01.jpeg[39m[0m
+[  16% ] [90m[1m_update_scan_actions[22m | dingmai_配伍.png[39m[0m
+[  18% ] [90m[1m_update_scan_actions[22m | dingmai_领取.png[39m[0m
+[  19% ] [90m[1m_update_scan_actions[22m | guiyuan_dingxi_配伍.png[39m[0m
+[  20% ] [90m[1m_update_scan_actions[22m | guiyuan_dingxi_领取.png[39m[0m
+[  22% ] [90m[1m_update_scan_actions[22m | breathing_preview.webp[39m[0m
+[  23% ] [90m[1m_update_scan_actions[22m | 04.png[39m[0m
+[  25% ] [90m[1m_update_scan_actions[22m | 01.png[39m[0m
+[  26% ] [90m[1m_update_scan_actions[22m | 02.png[39m[0m
+[  27% ] [90m[1m_update_scan_actions[22m | 03.png[39m[0m
+[  29% ] [90m[1m_update_scan_actions[22m | 01.png[39m[0m
+[  30% ] [90m[1m_update_scan_actions[22m | 02.png[39m[0m
+[  31% ] [90m[1m_update_scan_actions[22m | female_wardrobe_20261005.png[39m[0m
+[  33% ] [90m[1m_update_scan_actions[22m | male_natural_eye_game_3.png[39m[0m
+[  34% ] [90m[1m_update_scan_actions[22m | 01.png[39m[0m
+[  36% ] [90m[1m_update_scan_actions[22m | 02.png[39m[0m
+[  37% ] [90m[1m_update_scan_actions[22m | 03.png[39m[0m
+[  38% ] [90m[1m_update_scan_actions[22m | 01.png[39m[0m
+[  40% ] [90m[1m_update_scan_actions[22m | 02.png[39m[0m
+[  41% ] [90m[1m_update_scan_actions[22m | 03.png[39m[0m
+[  43% ] [90m[1m_update_scan_actions[22m | nine_mixes_dark.png[39m[0m
+[  44% ] [90m[1m_update_scan_actions[22m | nine_mixes_light.png[39m[0m
+[  45% ] [90m[1m_update_scan_actions[22m | six_layers_dark.png[39m[0m
+[  47% ] [90m[1m_update_scan_actions[22m | six_layers_light.png[39m[0m
+[  48% ] [90m[1m_update_scan_actions[22m | style02_before_after_reference_dark.png[39m[0m
+[  50% ] [90m[1m_update_scan_actions[22m | style02_before_after_reference_light.png[39m[0m
+[  51% ] [90m[1m_update_scan_actions[22m | style_01_dark.png[39m[0m
+[  52% ] [90m[1m_update_scan_actions[22m | style_01_light.png[39m[0m
+[  54% ] [90m[1m_update_scan_actions[22m | style_02_dark.png[39m[0m
+[  55% ] [90m[1m_update_scan_actions[22m | style_02_light.png[39m[0m
+[  56% ] [90m[1m_update_scan_actions[22m | style_03_dark.png[39m[0m
+[  58% ] [90m[1m_update_scan_actions[22m | style_03_light.png[39m[0m
+[  59% ] [90m[1m_update_scan_actions[22m | three_styles_dark.png[39m[0m
+[  61% ] [90m[1m_update_scan_actions[22m | three_styles_light.png[39m[0m
+[  62% ] [90m[1m_update_scan_actions[22m | 01.png[39m[0m
+[  63% ] [90m[1m_update_scan_actions[22m | 02.png[39m[0m
+[  65% ] [90m[1m_update_scan_actions[22m | 03.png[39m[0m
+[  66% ] [90m[1m_update_scan_actions[22m | 01.png[39m[0m
+[  68% ] [90m[1m_update_scan_actions[22m | 02.png[39m[0m
+[  69% ] [90m[1m_update_scan_actions[22m | 03.png[39m[0m
+[  70% ] [90m[1m_update_scan_actions[22m | bit1_out.bmp[39m[0m
+[  72% ] [90m[1m_update_scan_actions[22m | bit4_out.bmp[39m[0m
+[  73% ] [90m[1m_update_scan_actions[22m | bit4_RLE.bmp[39m[0m
+[  75% ] [90m[1m_update_scan_actions[22m | bit4_RLE_out.bmp[39m[0m
+[  76% ] [90m[1m_update_scan_actions[22m | bit8_out.bmp[39m[0m
+[  77% ] [90m[1m_update_scan_actions[22m | bit8_RLE.bmp[39m[0m
+[  79% ] [90m[1m_update_scan_actions[22m | bit8_RLE_out.bmp[39m[0m
+[  80% ] [90m[1m_update_scan_actions[22m | bit16_565_out.bmp[39m[0m
+[  81% ] [90m[1m_update_scan_actions[22m | bit16_a444_out.bmp[39m[0m
+[  83% ] [90m[1m_update_scan_actions[22m | bit16_a555_out.bmp[39m[0m
+[  84% ] [90m[1m_update_scan_actions[22m | bit16_x444_out.bmp[39m[0m
+[  86% ] [90m[1m_update_scan_actions[22m | bit16_x555_out.bmp[39m[0m
+[  87% ] [90m[1m_update_scan_actions[22m | bit24_out.bmp[39m[0m
+[  88% ] [90m[1m_update_scan_actions[22m | bit32_alpha_out.bmp[39m[0m
+[  90% ] [90m[1m_update_scan_actions[22m | bit32_out.bmp[39m[0m
+[  91% ] [90m[1m_update_scan_actions[22m | 功法配置.csv[39m[0m
+[  93% ] [90m[1m_update_scan_actions[22m | zhaoming_continuous_terrain_master_v19_compact_landmarks_4096.png[39m[0m
+[  94% ] [90m[1m_update_scan_actions[22m | zhaoming_drawio_terrain_with_boundaries.png[39m[0m
+[  95% ] [90m[1m_update_scan_actions[22m | 2bb934f8-9be1-4f19-9416-ba53aa82f892.png[39m[0m
+[  97% ] [90m[1m_update_scan_actions[22m | 512.png[39m[0m
+[92m[ DONE ][39m [1m_update_scan_actions[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started 正在导入或重新导入资产 (36 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[   2% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[   5% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[   8% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  10% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  13% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  16% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  18% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  21% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  24% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  27% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  29% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  32% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  35% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  37% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  40% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  43% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  45% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  48% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  51% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  54% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  56% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  59% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  62% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  64% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  67% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  70% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  72% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  75% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  78% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  81% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  83% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  86% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  89% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  91% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[  94% ] [90m[1mreimport[22m | 正在准备重新导入文件……[39m[0m
+[   0% ] [90m[1mreimport[22m | 正在执行重新导入的前置操作……[39m[0m
+[   0% ] [90m[1mreimport[22m | six_layers_dark.png[39m[0m
+[   2% ] [90m[1mreimport[22m | six_layers_light.png[39m[0m
+[   5% ] [90m[1mreimport[22m | style02_before_after_reference_dark.png[39m[0m
+[   8% ] [90m[1mreimport[22m | style02_before_after_reference_light.png[39m[0m
+[  10% ] [90m[1mreimport[22m | style_01_dark.png[39m[0m
+[  13% ] [90m[1mreimport[22m | style_01_light.png[39m[0m
+[  16% ] [90m[1mreimport[22m | style_02_dark.png[39m[0m
+[  18% ] [90m[1mreimport[22m | style_02_light.png[39m[0m
+[  21% ] [90m[1mreimport[22m | style_03_dark.png[39m[0m
+[  24% ] [90m[1mreimport[22m | style_03_light.png[39m[0m
+[  27% ] [90m[1mreimport[22m | three_styles_dark.png[39m[0m
+[  29% ] [90m[1mreimport[22m | three_styles_light.png[39m[0m
+[  32% ] [90m[1mreimport[22m | 01.png[39m[0m
+[  35% ] [90m[1mreimport[22m | 02.png[39m[0m
+[  37% ] [90m[1mreimport[22m | 03.png[39m[0m
+[  40% ] [90m[1mreimport[22m | 01.png[39m[0m
+[  43% ] [90m[1mreimport[22m | 02.png[39m[0m
+[  45% ] [90m[1mreimport[22m | 03.png[39m[0m
+[  48% ] [90m[1mreimport[22m | dingmai_配伍.png[39m[0m
+[  51% ] [90m[1mreimport[22m | dingmai_领取.png[39m[0m
+[  54% ] [90m[1mreimport[22m | guiyuan_dingxi_配伍.png[39m[0m
+[  56% ] [90m[1mreimport[22m | guiyuan_dingxi_领取.png[39m[0m
+[  59% ] [90m[1mreimport[22m | 04.png[39m[0m
+[  62% ] [90m[1mreimport[22m | 01.png[39m[0m
+[  64% ] [90m[1mreimport[22m | 02.png[39m[0m
+[  67% ] [90m[1mreimport[22m | 03.png[39m[0m
+[  70% ] [90m[1mreimport[22m | 01.png[39m[0m
+[  72% ] [90m[1mreimport[22m | 02.png[39m[0m
+[  75% ] [90m[1mreimport[22m | 01.png[39m[0m
+[  78% ] [90m[1mreimport[22m | 02.png[39m[0m
+[  81% ] [90m[1mreimport[22m | 03.png[39m[0m
+[  83% ] [90m[1mreimport[22m | 01.png[39m[0m
+[  86% ] [90m[1mreimport[22m | 02.png[39m[0m
+[  89% ] [90m[1mreimport[22m | 03.png[39m[0m
+[  91% ] [90m[1mreimport[22m | nine_mixes_dark.png[39m[0m
+[  94% ] [90m[1mreimport[22m | nine_mixes_light.png[39m[0m
+[  97% ] [90m[1mreimport[22m | 正在结束资产导入……[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mreimport[22m | Started 正在导入或重新导入资产 (36 steps)[39m[0m
+[   0% ] [90m[1mreimport[22m | 正在执行重新导入的后置操作……[39m[0m
+[92m[ DONE ][39m [1mreimport[22m
+[0m
+[   0% ] [90m[1mloading_editor_layout[22m | Started 正在加载编辑器 (5 steps)[39m[0m
+[   0% ] [90m[1mloading_editor_layout[22m | 正在加载编辑器布局……[39m[0m
+[  16% ] [90m[1mloading_editor_layout[22m | 正在加载停靠面板……[39m[0m
+[  33% ] [90m[1mloading_editor_layout[22m | 正在重新打开场景……[39m[0m
+[  50% ] [90m[1mloading_editor_layout[22m | 正在加载中央编辑器布局……[39m[0m
+[  66% ] [90m[1mloading_editor_layout[22m | 正在加载插件窗口布局……[39m[0m
+[  83% ] [90m[1mloading_editor_layout[22m | 编辑器布局就绪。[39m[0m
+[92m[ DONE ][39m [1mloading_editor_layout[22m
+[0m
+Godot MCP: Bridge stopped

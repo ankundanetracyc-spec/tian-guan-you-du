@@ -1,0 +1,9 @@
+{
+  "tool": "built-in image_gen",
+  "purpose": "Match ref03 gentle watercolor variation, not generic smooth pore-grain",
+  "prompt": "Use case: precise-object-edit, skin material transfer ONLY. Image1 is the edit target: the correctly positioned blank male face/ears/neck. Image2 is the user's desired THIRD male portrait in THE SAME1024x1536production coordinate canvas. Copy the SKIN PAINT TEXTURE from that exact third reference to Image1, keeping the target's skin color, head shape and placement. The reference skin has faint, soft, irregular PALE watercolor washes and delicate illustrated pigment variation; the current target looks too smooth with generic photographic fine-grain. Bring back the reference's subtle translucent watercolor variation at the SAME modest contrast and spatial scale. Do not turn this into cracked marble, hard vein patterns, polygon cells, blotchy dirty patches, pore noise, glossy plastic or a tiled texture. The washes are soft and low contrast, not decorative lines. Keep matte warm peach-beige with the current balanced shadow transitions, not chalk white or brown-yellow. The task is TEXTURE ONLY: preserve the exact jaw, chin, ears, full neck silhouette, current colors and gradients and same true-transparent alpha boundary. NO zoom, NO recenter, NO enlarged headshot. On this1024x1536canvas the head stays SMALL in the upper third, scalp topy175, face/ears spanaboutx370..662, chinabout(517,544), neckendy718; almost all lower canvas remains empty. Only blank skin: absolutely NO eyebrows, eyes, eyelids, nostrils, nose marks, mouth, beard, hair or clothing. Keep every other area exactly as the existing sprite. No background, glow, colored paper rectangle, text or labels.",
+  "refs": [
+    "E:/stacklands/mods/appearance/portrait_male_face_match_20261104_v2/male/face_shape/01.png",
+    "E:/stacklands/mods/appearance/portrait_male_reference_20261104_v1/source/guides/reference_03_in_canvas.png"
+  ]
+}

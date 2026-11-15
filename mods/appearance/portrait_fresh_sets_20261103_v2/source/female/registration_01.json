@@ -1,0 +1,236 @@
+{
+  "status": "actual point placement; full three-point rig certification not asserted",
+  "records": [
+    {
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_fresh_sets_20261103_v2\\source\\female\\raw\\eyes\\01.png",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_fresh_sets_20261103_v2\\female\\eyes\\01.png",
+      "uniform_scale": 1.033203125,
+      "translate": [
+        -10,
+        -45
+      ],
+      "source_point": [
+        512.14225,
+        410.4202
+      ],
+      "target_point": [
+        519,
+        379
+      ],
+      "mapped_point": [
+        519.1469731445312,
+        379.047433203125
+      ],
+      "visible_alpha_clipped": 0,
+      "method": "whole-canvas uniform scaling and integer translation; source alpha preserved; no mask extraction, color editing, or local warping",
+      "measured_landmarks": {
+        "left_pupil": [
+          458.8921,
+          410.3785
+        ],
+        "right_pupil": [
+          565.3924,
+          410.4619
+        ]
+      },
+      "mapped_landmarks": {
+        "left_pupil": [
+          464.12875175781255,
+          379.0043486328125
+        ],
+        "right_pupil": [
+          574.16519453125,
+          379.0905177734375
+        ]
+      }
+    },
+    {
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_fresh_sets_20261103_v2\\source\\female\\raw\\eyebrows\\01.png",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_fresh_sets_20261103_v2\\female\\eyebrows\\01.png",
+      "uniform_scale": 0.89453125,
+      "translate": [
+        61,
+        7
+      ],
+      "source_point": [
+        512.7207,
+        386.88075000000003
+      ],
+      "target_point": [
+        519.5,
+        353.5
+      ],
+      "mapped_point": [
+        519.644688671875,
+        353.07692089843755
+      ],
+      "visible_alpha_clipped": 0,
+      "method": "whole-canvas uniform scaling and integer translation; source alpha preserved; no mask extraction, color editing, or local warping",
+      "measured_landmarks": {
+        "left_brow_pigment_center": [
+          442.9259,
+          386.9073
+        ],
+        "right_brow_pigment_center": [
+          582.5155,
+          386.8542
+        ]
+      },
+      "mapped_landmarks": {
+        "left_brow_pigment_center": [
+          457.21105898437503,
+          353.100670703125
+        ],
+        "right_brow_pigment_center": [
+          582.078318359375,
+          353.05317109375
+        ]
+      }
+    },
+    {
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_fresh_sets_20261103_v2\\source\\female\\raw\\nose\\01.png",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_fresh_sets_20261103_v2\\female\\nose\\01.png",
+      "uniform_scale": 0.80078125,
+      "translate": [
+        107,
+        51
+      ],
+      "source_point": [
+        514,
+        493
+      ],
+      "target_point": [
+        519,
+        446
+      ],
+      "mapped_point": [
+        518.6015625,
+        445.78515625
+      ],
+      "visible_alpha_clipped": 0,
+      "method": "whole-canvas uniform scaling and integer translation; source alpha preserved; no mask extraction, color editing, or local warping",
+      "measured_landmarks": {
+        "nose_tip": [
+          514,
+          493
+        ],
+        "nostril_left": [
+          502,
+          499
+        ],
+        "nostril_right": [
+          525,
+          499
+        ]
+      },
+      "mapped_landmarks": {
+        "nose_tip": [
+          518.6015625,
+          445.78515625
+        ],
+        "nostril_left": [
+          508.9921875,
+          450.58984375
+        ],
+        "nostril_right": [
+          527.41015625,
+          450.58984375
+        ]
+      }
+    },
+    {
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_fresh_sets_20261103_v2\\source\\female\\raw\\mouth\\01.png",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_fresh_sets_20261103_v2\\female\\mouth\\01.png",
+      "uniform_scale": 0.900390625,
+      "translate": [
+        56,
+        -10
+      ],
+      "source_point": [
+        514,
+        548
+      ],
+      "target_point": [
+        519,
+        483
+      ],
+      "mapped_point": [
+        518.80078125,
+        483.4140625
+      ],
+      "visible_alpha_clipped": 0,
+      "method": "whole-canvas uniform scaling and integer translation; source alpha preserved; no mask extraction, color editing, or local warping",
+      "measured_landmarks": {
+        "lip_seam_center": [
+          514,
+          548
+        ],
+        "lip_left": [
+          479,
+          548
+        ],
+        "lip_right": [
+          549,
+          548
+        ]
+      },
+      "mapped_landmarks": {
+        "lip_seam_center": [
+          518.80078125,
+          483.4140625
+        ],
+        "lip_left": [
+          487.287109375,
+          483.4140625
+        ],
+        "lip_right": [
+          550.314453125,
+          483.4140625
+        ]
+      }
+    },
+    {
+      "source": "E:\\stacklands\\mods\\appearance\\portrait_fresh_sets_20261103_v2\\source\\female\\raw\\hair_front\\01.png",
+      "output": "E:\\stacklands\\mods\\appearance\\portrait_fresh_sets_20261103_v2\\female\\hair_front\\01.png",
+      "uniform_scale": 1,
+      "translate": [
+        0,
+        -19
+      ],
+      "source_point": [
+        519,
+        296
+      ],
+      "target_point": [
+        519,
+        277
+      ],
+      "mapped_point": [
+        519,
+        277
+      ],
+      "visible_alpha_clipped": 0,
+      "method": "whole-canvas uniform scaling and integer translation; source alpha preserved; no mask extraction, color editing, or local warping",
+      "measured_landmarks": {
+        "central_hairline": [
+          519,
+          296
+        ],
+        "crown_center": [
+          519,
+          137
+        ]
+      },
+      "mapped_landmarks": {
+        "central_hairline": [
+          519,
+          277
+        ],
+        "crown_center": [
+          519,
+          118
+        ]
+      }
+    }
+  ]
+}

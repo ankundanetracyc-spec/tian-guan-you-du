@@ -1,0 +1,23 @@
+{
+  "tool": "built-in image_gen",
+  "jobs": [
+    {
+      "key": "hair_back_01_v2",
+      "id": "01",
+      "prompt": "Create ONE NEW rear hair sprite, genuinely transparent 1024x1536 PNG. Image1 is the exact-size STYLE AND SILHOUETTE reference laid out at the correct production coordinates. Image2 is an example of the PLAIN POSTERIOR SCALP/TEXTURE to use, with no anterior forehead centerpart or side waves. Do not reproduce Image2's exact length or framing.\nThis sprite is the hair BEHIND a front-facing Chinese female character, below the blank face and clothing layers. Draw the posterior raised bun with horizontal dark hair stick in Image1 at top y103, center x519. Bun approx x411..628,y103..216; stick x355..662 at y151. Continue a plain rounded posterior scalp behind the face, straight/downward combed strands. Then a long loose rear curtain behind the shoulders as in Image1, sides around x245..780, tapering near y1080. Draw a COMPLETE uninterrupted hair mass behind face and neck. The component must contain NO frontal forehead hairline, NO center-parted V/heart-shaped anterior cap, NO swept frontal temple-wave shells, NO crown braids or chest-front locks. This is the back-of-head underlay, hair streams from the bun downward. High bun and stick stay visible above the separate front cap. Fine original gongbi matte warm charcoal-black hair, restrained grey highlights. Do not zoom or fill canvas. No face, skin, ears, clothing, guides, frame, text, shadows or backdrop.",
+      "refs": [
+        "E:/stacklands/mods/appearance/portrait_hair_skin_revision_20261104_v1/source/guides/reference_01_in_canvas.png",
+        "E:/tmp/CodexData/generated_images/01a1a4be-7b8b-76e1-af95-b099fa3c88dc/exec-bef43248-826e-4684-bb76-68988261de02.png"
+      ]
+    },
+    {
+      "key": "hair_back_02_v2",
+      "id": "02",
+      "prompt": "Create ONE NEW compact updo REAR HAIR sprite, genuinely transparent 1024x1536 PNG. Image1 is the exact-size STYLE AND EXTERIOR SILHOUETTE reference on the production canvas. Image2 illustrates the PLAIN POSTERIOR SCALP/TEXTURE only; do NOT copy its loose long hair or dimensions.\nThe sprite sits BEHIND a front-facing woman's face and clothes. Draw only the POSTERIOR top bun plus broad LOW CHIGNON joined by a plain round back-of-head scalp. Posterior top bun: top y103, centered x519, x410..627,y103..220. Plain posterior scalp: x397..642,y200..435, continuous dark hair with downward/swept BACK-OF-HEAD strands. Low chignon: broad rounded coiled side rolls, outer left reaches x365, outer right reaches x669 at y450; low rolls begin y400 and end at y515. ENTIRE HAIR MASS bounding box roughly x360..675, y103..515. This is a compact wide shape, not tall and narrow. The face and neck later hide the center; fill it solidly. NO FACE HOLE. Do NOT draw the reference's anterior center-parted forehead cap, its V/heart-shaped hairline, or the large frontal swept temple-wave shells. Those belong to a separate FRONT sprite. NO front wisps, NO loose rear curtain, NO shoulder-length hair, NO stick. Match Image1's upper bun and visible low chignon coils at native coordinates without zooming. Fine gongbi matte warm charcoal-black hair, natural restrained grey highlights, alpha wisps only within compact hair silhouette. No skin, eyes, ears, face, neck, mannequin, clothing, annotations, text, guide, shadows or background.",
+      "refs": [
+        "E:/stacklands/mods/appearance/portrait_hair_skin_revision_20261104_v1/source/guides/reference_02_in_canvas.png",
+        "E:/tmp/CodexData/generated_images/01a1a4be-7b8b-76e1-af95-b099fa3c88dc/exec-bef43248-826e-4684-bb76-68988261de02.png"
+      ]
+    }
+  ]
+}

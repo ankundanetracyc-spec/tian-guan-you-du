@@ -1,0 +1,129 @@
+{
+  "mode": "built-in image_gen",
+  "approved_portrait": "source/approved_male.png",
+  "approved_sha256": "d97b79e3372df42db24b4dd5c3ec42f376d652616d9fa25d78a393b004da81a8",
+  "root_component_prompts": {
+    "mode": "built-in image_gen",
+    "approved": "source/approved_male.png",
+    "prompts": [
+      {
+        "id": "head",
+        "refs": [
+          "E:/stacklands/mods/appearance/male_style_alignment_20261106/integration/source/approved_male.png",
+          "E:/stacklands/mods/appearance/male_style_alignment_20261106/integration/reference/current_male/face_shape/01.png"
+        ],
+        "prompt": "Precise-object-edit. Image1 is the exact USER-APPROVED male portrait. Image2 is ONLY a fixed transparent HEAD/NECK SILHOUETTE AND POSITION reference, never a skin color or texture reference.\nExtract/reconstruct ONLY the blank head, both ears and continuous neck from image1 on the SAME full1024x1536 canvas. Keep the approved male facial outline, jaw/chin/ear design, natural skin color, gentle shading and soft smooth painted texture. Use image1's exact warm pale skin, do not whiten, orange-shift or apply the crackled texture of image2.\nRemove ALL hair, pin, eyebrows, eyes, nose, lips and clothing; fill these regions with seamlessly continuous matching skin, no residual eyelid lines, lip shade, nostril dots or face stubble. Reconstruct the hidden high rounded scalp naturally. No facial features at all.\nPreserve the geometry and existing neck interface of image2: skull top near(513,175), ears aboutx366..659,y350..440, chin around(513,542). Neck sides remain continuous: at y530 x428..601,y550 x426..603,y580 x421..608, tapering under the clothing toward(520,738). Same head/ear/neck size and origin; no zoom/recentering/rescaling. Skin only inside this fixed head+neck silhouette. Natural subtle soft painting, no skin rectangles, white edge, shadow halo or broad haze. True transparency everywhere else, exact full1024x1536 PNG."
+      },
+      {
+        "id": "hair_front",
+        "refs": [
+          "E:/stacklands/mods/appearance/male_style_alignment_20261106/integration/source/approved_male.png",
+          "E:/stacklands/mods/appearance/male_style_alignment_20261106/integration/reference/current_male/hair_front/01.png"
+        ],
+        "prompt": "Precise-object-edit / layer extraction. Image1 is the exact USER-APPROVED male painting to preserve. Image2 is ONLY a technical example of a FRONT HAIR transparent layer; do not copy its different old hairstyle.\nReturn ONLY image1's exact FRONT HAIR, on the SAME full1024x1536 transparent canvas, native original positions and original tiny head size. Preserve the approved source's asymmetric swept front crown, off-center part, original hairline, all fine forehead/temple/ear-front wisps, and COMPLETE long hair locks falling IN FRONT of the shoulders and chest. Keep their exact charcoal color, fine texture, volume and tapering ends; no generic replacement hairstyle.\nFront crown roughlyy145..270, hairline aroundy265, temples sidesx345..685; front locks continue naturally down the chest towardy1120. Do not crop, chop at shoulder, shrink, enlarge, recenter or change strand flow.\nHead partition uses the vertex-to-ear spatial boundary: frontal crown and ear-front wisps belong here. Remove the posterior small bun and horizontal wooden pin; they belong to back hair. Remove the broad posterior curtain behind head/neck/shoulders. Entire face, ears, neck, eyes, brows, nose, lips and clothes must be fully transparent with no skin remnants or green fabric. Fine native semitransparent strand edges, no muddy carrier, haze, hard polygon cutouts or clipped wisps. No paper background, shadow, labels or guides. True alpha; same full1024x1536."
+      },
+      {
+        "id": "hair_back",
+        "refs": [
+          "E:/stacklands/mods/appearance/male_style_alignment_20261106/integration/source/approved_male.png",
+          "E:/stacklands/mods/appearance/male_style_alignment_20261106/integration/reference/current_male/hair_back/01.png"
+        ],
+        "prompt": "Precise-object-edit / posterior hair layer. Image1 is the USER-APPROVED male painting. Image2 is only a technical example of a continuous BACK HAIR sprite, never a different design source.\nCreate ONLY the posterior hair of image1, seen from this same FRONTAL pose, on the SAME1024x1536 transparent shared canvas and ORIGINAL position/scale. Retain image1's small half-up knot and dark wooden pin exactly: knot topy95..100, horizontal pin aty155, spanningaboutx355..665. Keep the source's flowing long hair BEHIND the ears, neck and shoulders, naturally tapering aroundy1050..1120. Preserve the approved warm charcoal-black hair, fine soft strands and low warmgray highlights; no silver/gloss/color change.\nComplete the HIDDEN interior as a continuous filled narrow posterior cap behind the entire head and neck, approximatelyx395..635 throughy170..470, flowing into the behind-neck curtain. No face-shaped hole, scalp hole, neck gap, shoulder-line fade or cutout. Back cap is narrower than frontal crown. Do NOT copy frontal swept crown, forehead hairline, ear-front wisps or the long locks on top of the robe; those are front hair. Keep source posterior silhouette and knot/pin, do not inflate the head or add broad side wings.\nHair only; no head/face/skin/ears/features/clothes/robe/background. True alpha outside complete hair, no shadow/haze/matte carrier. Preserve full1024x1536 and same origin, do not zoom, recenter or resize. No text or guides."
+      },
+      {
+        "id": "clothing",
+        "refs": [
+          "E:/stacklands/mods/appearance/male_style_alignment_20261106/integration/source/approved_male.png",
+          "E:/stacklands/mods/appearance/male_style_alignment_20261106/integration/reference/current_male/clothing/01.png"
+        ],
+        "prompt": "Precise-object-edit / front garment extraction. Image1 is the USER-APPROVED male whole portrait. Image2 is only the existing technical FRONT CLOTHING layer/neck anchor format, not a color or embroidery source.\nReturn the exact jade-green robe from image1 as ONE COMPLETE FRONT CLOTHING PNG on the SAME full1024x1536 canvas, original shoulder/sash positions and scale. Keep approved color, gold botanical/cloud embroidery, ivory woven inner lapels, folds, sash knot and silhouette exactly. Remove every hair strand from the robe and reconstruct the fabric and embroidery underneath seamlessly; no pasted patches or hair ghost shadows.\nA continuous neck opening must fit the existing fixed head/neck interface: left collar root near(433,545),right(599,545),inner cross-collar V around(532,684); sides curve naturally around the neck. Front cloth includes the ENTIRE front V and crossing lapels down the chest, shoulders and robe body. Remove the posterior collar band (separate layer). No horizontal truncation line across the lapels; no shortened robe.\nSkin/head/neck/ears/hair/face/features and paper background entirely absent. Keep only clothes with true alpha outside the robe and inside the neck opening, without skin-color chips or floating collar tips. No broad haze or glow, no hard rectangular cutouts, no new ornaments, no recentering/zoom/resizing. Full1024x1536 transparent PNG, no labels or guides."
+      },
+      {
+        "id": "clothing_back",
+        "refs": [
+          "E:/stacklands/mods/appearance/male_style_alignment_20261106/integration/reference/current_male/clothing_back/01.png",
+          "E:/stacklands/mods/appearance/male_style_alignment_20261106/integration/source/approved_male.png"
+        ],
+        "prompt": "Precise-object-edit. Image1 is the EXACT technical rear-collar-band target at its correct canvas position and size. Image2 is the USER-APPROVED male portrait and the ONLY fabric/color source.\nRepaint ONLY the rear collar band in image1 to use the warm ivory woven silk, faint gold-beige trim and soft painted material of image2's inner collar. The geometry/alpha outline, curvature, thickness, position and shared canvas of image1 should stay exactly the same.\nOutput one continuous modest U-shaped rear collar band BEHIND the existing head and neck, roughlyx421..611,y535..603. Its two rising endpoints around(438,537),(595,537); curved center upper edge aroundy557 and lower edgearoundy600. The hidden middle stays continuously filled, not two disconnected floating triangles. It must be narrow and naturally curved to hide behind the neck; no broad horizontal shelf or upward protruding side wings. This is ONLY the small posterior collar band, not the front V lapels or robe body.\nNo skin, head, hair, facial features, front clothes or paper background. True alpha outside the tiny band. Keep EXACT entire1024x1536 canvas, original top-left origin, no recentering, zoom or resizing. No labels, guides, glow, haze, cast shadow or rectangular carrier."
+      }
+    ]
+  },
+  "facial_component_prompts_and_selections": {
+    "schema": "male-style-feature-extraction/v1",
+    "mode": "built-in image_gen",
+    "source": "source/approved_male.png",
+    "source_sha256": "d97b79e3372df42db24b4dd5c3ec42f376d652616d9fa25d78a393b004da81a8",
+    "specs": [
+      {
+        "part": "eyebrows",
+        "detail": "Extract ONLY BOTH EYEBROWS as ONE paired layer. Preserve their masculine thin individual hair strokes, density, original gentle angled shape and placement near y340..355. The pair remains roughly x431..603 on this large empty full canvas. Remove the overlying long front-hair strands; reconstruct only tiny eyebrow tips actually hidden by those strands in a way continuous with the visible source strokes. Never copy crossing hair into the eyebrow layer. Remove all surrounding forehead skin and eye/eyelid pixels. Feather only the individual eyebrow hair edges; no solid skin backing and no rectangular matte support.",
+        "prompt": "Use case: background-extraction / identity-preserve. The attached image is the sole USER-APPROVED male portrait (warm peach skin, green robe). This is an extraction of existing painted features, not a new illustration. Keep the SAME 1024x1536 FULL CANVAS and top-left origin. Preserve the exact original feature position, size, colors, fine painted brushwork, natural asymmetry and contours. No enlargement, recentering, zoom, redesign, beautification or added makeup. Everything except the requested part must be true alpha transparency. No skin rectangle, broad flesh tile, glow, fog, background, checkerboard, hair, text, labels, or border. Keep only existing pigment and the extremely local antialiased edge transitions needed for seamless compositing. Original warm skin hue must not be lightened or bleached.\n\nExtract ONLY BOTH EYEBROWS as ONE paired layer. Preserve their masculine thin individual hair strokes, density, original gentle angled shape and placement near y340..355. The pair remains roughly x431..603 on this large empty full canvas. Remove the overlying long front-hair strands; reconstruct only tiny eyebrow tips actually hidden by those strands in a way continuous with the visible source strokes. Never copy crossing hair into the eyebrow layer. Remove all surrounding forehead skin and eye/eyelid pixels. Feather only the individual eyebrow hair edges; no solid skin backing and no rectangular matte support."
+      },
+      {
+        "part": "eyes",
+        "detail": "Extract ONLY BOTH ACTUAL EYES AND THEIR VERY LOCAL EYELID/SHORT LASH STROKES as ONE paired layer. Crucially preserve the ORIGINAL SMALL, LOW-OPENING MALE EYES and SMALL MUTED BROWN IRIS proportions exactly. Original pupil centers are approximately (461.6,365.3) and (566.4,365.1), separated by104.85px. Keep their true eye corner positions, upper/lower eyelid contours, iris diameter and upper-lid iris coverage; do not create rounder, bigger, more open, heavily outlined or feminine eyes. Keep the faint upper lid fold and light short lower lashes. Opaque sclera/iris/pupil only inside existing eye fissures, with natural alpha at the tiny eyelid strokes. Remove eyebrows and skin surrounds completely. Original left outer eye is partly occluded by front hair: remove only that crossing hair, reconstruct just the tiny hidden corner; never extend the overall eye. Do not make any extra iris white reflection or darken the outline.",
+        "prompt": "Use case: background-extraction / identity-preserve. The attached image is the sole USER-APPROVED male portrait (warm peach skin, green robe). This is an extraction of existing painted features, not a new illustration. Keep the SAME 1024x1536 FULL CANVAS and top-left origin. Preserve the exact original feature position, size, colors, fine painted brushwork, natural asymmetry and contours. No enlargement, recentering, zoom, redesign, beautification or added makeup. Everything except the requested part must be true alpha transparency. No skin rectangle, broad flesh tile, glow, fog, background, checkerboard, hair, text, labels, or border. Keep only existing pigment and the extremely local antialiased edge transitions needed for seamless compositing. Original warm skin hue must not be lightened or bleached.\n\nExtract ONLY BOTH ACTUAL EYES AND THEIR VERY LOCAL EYELID/SHORT LASH STROKES as ONE paired layer. Crucially preserve the ORIGINAL SMALL, LOW-OPENING MALE EYES and SMALL MUTED BROWN IRIS proportions exactly. Original pupil centers are approximately (461.6,365.3) and (566.4,365.1), separated by104.85px. Keep their true eye corner positions, upper/lower eyelid contours, iris diameter and upper-lid iris coverage; do not create rounder, bigger, more open, heavily outlined or feminine eyes. Keep the faint upper lid fold and light short lower lashes. Opaque sclera/iris/pupil only inside existing eye fissures, with natural alpha at the tiny eyelid strokes. Remove eyebrows and skin surrounds completely. Original left outer eye is partly occluded by front hair: remove only that crossing hair, reconstruct just the tiny hidden corner; never extend the overall eye. Do not make any extra iris white reflection or darken the outline."
+      },
+      {
+        "part": "nose",
+        "detail": "Extract ONLY THE COMPLETE EXISTING NOSE INCLUDING THE VERY FAINT NASAL ROOT / BRIDGE, NOSE TIP, ALAE AND NOSTRILS. Keep all existing exact nose geometry and restrained warm shading. Original nostril shadow centers are approximately (504.8,443.9) and(529.3,444.2); nose center about(517,444). The nasal root begins faintly between the eyebrows/eyes aroundy349 and descends as a pale narrow bridge, not a long white strip. Preserve its own subtle shading only, no opaque skin tile, no pale rectangular plate, no blue-white bridge, no deep contour makeup. Remove both eyes, eyebrows and mouth, and all surrounding broad face skin. Soft pigment edges immediately adjoining the nose can be translucent, but the whole remainder of the canvas must be clear alpha.",
+        "prompt": "Use case: background-extraction / identity-preserve. The attached image is the sole USER-APPROVED male portrait (warm peach skin, green robe). This is an extraction of existing painted features, not a new illustration. Keep the SAME 1024x1536 FULL CANVAS and top-left origin. Preserve the exact original feature position, size, colors, fine painted brushwork, natural asymmetry and contours. No enlargement, recentering, zoom, redesign, beautification or added makeup. Everything except the requested part must be true alpha transparency. No skin rectangle, broad flesh tile, glow, fog, background, checkerboard, hair, text, labels, or border. Keep only existing pigment and the extremely local antialiased edge transitions needed for seamless compositing. Original warm skin hue must not be lightened or bleached.\n\nExtract ONLY THE COMPLETE EXISTING NOSE INCLUDING THE VERY FAINT NASAL ROOT / BRIDGE, NOSE TIP, ALAE AND NOSTRILS. Keep all existing exact nose geometry and restrained warm shading. Original nostril shadow centers are approximately (504.8,443.9) and(529.3,444.2); nose center about(517,444). The nasal root begins faintly between the eyebrows/eyes aroundy349 and descends as a pale narrow bridge, not a long white strip. Preserve its own subtle shading only, no opaque skin tile, no pale rectangular plate, no blue-white bridge, no deep contour makeup. Remove both eyes, eyebrows and mouth, and all surrounding broad face skin. Soft pigment edges immediately adjoining the nose can be translucent, but the whole remainder of the canvas must be clear alpha."
+      },
+      {
+        "part": "mouth",
+        "detail": "Extract ONLY THE EXISTING NATURAL MALE LIPS AND TINY LOCAL MOUTH CREASE. Keep the original delicate muted warm rose-brown color, exact shallow cupid bow, straight restrained mouth corners, thin upper and natural lower lip, and fine seam near(516,477). Preserve the exact original mouth width and height; do not thicken lips, add gloss, redraw a smile or improve symmetry. No chin crease, moustache, nose, cheeks, broad perioral skin patch or rectangular matte. Keep only the lips, original narrow seam and very faint immediately local soft edge transitions.",
+        "prompt": "Use case: background-extraction / identity-preserve. The attached image is the sole USER-APPROVED male portrait (warm peach skin, green robe). This is an extraction of existing painted features, not a new illustration. Keep the SAME 1024x1536 FULL CANVAS and top-left origin. Preserve the exact original feature position, size, colors, fine painted brushwork, natural asymmetry and contours. No enlargement, recentering, zoom, redesign, beautification or added makeup. Everything except the requested part must be true alpha transparency. No skin rectangle, broad flesh tile, glow, fog, background, checkerboard, hair, text, labels, or border. Keep only existing pigment and the extremely local antialiased edge transitions needed for seamless compositing. Original warm skin hue must not be lightened or bleached.\n\nExtract ONLY THE EXISTING NATURAL MALE LIPS AND TINY LOCAL MOUTH CREASE. Keep the original delicate muted warm rose-brown color, exact shallow cupid bow, straight restrained mouth corners, thin upper and natural lower lip, and fine seam near(516,477). Preserve the exact original mouth width and height; do not thicken lips, add gloss, redraw a smile or improve symmetry. No chin crease, moustache, nose, cheeks, broad perioral skin patch or rectangular matte. Keep only the lips, original narrow seam and very faint immediately local soft edge transitions."
+      }
+    ],
+    "iterations": [
+      {
+        "part": "eyebrows",
+        "revision": 2,
+        "prompt_file": "source/eyebrows_extraction_prompt_v2.txt",
+        "raw": "raw/features/eyebrows_native_v2.png",
+        "status": "not selected; too thin after import"
+      },
+      {
+        "part": "eyebrows",
+        "revision": 3,
+        "prompt_file": "source/eyebrows_extraction_prompt_v3.txt",
+        "raw": "raw/features/eyebrows_native_v3.png",
+        "status": "selected generated matte and hidden-tip painting"
+      }
+    ],
+    "selected": [
+      {
+        "part": "eyebrows",
+        "raw": "raw/features/eyebrows_native_v3.png",
+        "final": "male/eyebrows/01.png",
+        "sha256": "b094a5d118e3b722b1901198c319919804cc93ab225c873366aa02af6fc6fa5f"
+      },
+      {
+        "part": "eyes",
+        "raw": "raw/features/eyes_native.png",
+        "final": "male/eyes/01.png",
+        "sha256": "5ecb31eacb232bf8be1f83ddd97c50c3715b792564c73052f425aca7c20eb8af"
+      },
+      {
+        "part": "nose",
+        "raw": "raw/features/nose_native.png",
+        "final": "male/nose/01.png",
+        "sha256": "e7271b38d96922434dbdf4a085b83a0d35ea5560989d0cfda9177beb085a2e79"
+      },
+      {
+        "part": "mouth",
+        "raw": "raw/features/mouth_native.png",
+        "final": "male/mouth/01.png",
+        "sha256": "471666da8f5b161007491c7f557e6aaf23c0b467d0414bc0839f7d54d942aa03"
+      }
+    ]
+  },
+  "technical_import": [
+    "source/import_head.py",
+    "source/match_head_material.cjs",
+    "source/import_hair_and_clothes.cjs",
+    "source/import_features.cjs"
+  ],
+  "calibration_record": "qa/head_color_transfer.json",
+  "source_limits": "Hidden regions and alpha transitions are generated; no whole-image pixel-identity claim."
+}

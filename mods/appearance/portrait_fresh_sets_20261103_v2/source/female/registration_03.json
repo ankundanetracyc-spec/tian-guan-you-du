@@ -1,0 +1,308 @@
+{
+  "set": 3,
+  "canvas": [
+    1024,
+    1536
+  ],
+  "hair_front": "Root is separately generating and registering new front03; not touched by this script",
+  "records": [
+    {
+      "part": "eyebrows",
+      "source": "source/female/raw/eyebrows/03.png",
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "output": "female/eyebrows/03.png",
+      "output_dimensions": [
+        1024,
+        1536
+      ],
+      "source_sha256": "7dcf87f07d8b3c4bc66e8f1fa2798a3b7c46972ed78ac4d40fa07275baebd17e",
+      "output_sha256": "8aeffe1b77e97c3c8845a6fe790b8327d477b8099c940db519b3fb31cafcfc09",
+      "transform": {
+        "uniform_scale": 0.8680555555555556,
+        "rounded_canvas_size": [
+          889,
+          1333
+        ],
+        "translation": [
+          73,
+          5
+        ],
+        "local_warp": false,
+        "threshold_matting": false,
+        "pigment_changed": false,
+        "native_alpha_retained": true
+      },
+      "landmarks": [
+        {
+          "name": "left_brow_pigment_axis",
+          "source": [
+            442,
+            401
+          ],
+          "target": [
+            457,
+            354
+          ],
+          "mapped": [
+            456.728515625,
+            353.0032552083333
+          ],
+          "residual_px": 1.0330556352800198
+        },
+        {
+          "name": "right_brow_pigment_axis",
+          "source": [
+            586,
+            401
+          ],
+          "target": [
+            582,
+            353
+          ],
+          "mapped": [
+            581.744140625,
+            353.0032552083333
+          ],
+          "residual_px": 0.2558800815942575
+        }
+      ],
+      "note": "",
+      "certification": "Visual anatomical landmarks; no independent three non-collinear point certification asserted"
+    },
+    {
+      "part": "eyes",
+      "source": "source/female/raw/eyes/03.png",
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "output": "female/eyes/03.png",
+      "output_dimensions": [
+        1024,
+        1536
+      ],
+      "source_sha256": "4de800fedc252aaf8d7fd8ceaba0b5793b7d8166aca705c445cfb8bbc82c2fe6",
+      "output_sha256": "6c029d06f16d4887892e09c24cc010b803873364260a2b6c0d8201d328bc5f19",
+      "transform": {
+        "uniform_scale": 0.9821428571428571,
+        "rounded_canvas_size": [
+          1006,
+          1509
+        ],
+        "translation": [
+          14,
+          -33
+        ],
+        "local_warp": false,
+        "threshold_matting": false,
+        "pigment_changed": false,
+        "native_alpha_retained": true
+      },
+      "landmarks": [
+        {
+          "name": "left_iris_center",
+          "source": [
+            458,
+            420
+          ],
+          "target": [
+            464,
+            379
+          ],
+          "mapped": [
+            463.94921875,
+            379.6171875
+          ],
+          "residual_px": 0.6192730783005285
+        },
+        {
+          "name": "right_iris_center",
+          "source": [
+            570,
+            420
+          ],
+          "target": [
+            574,
+            379
+          ],
+          "mapped": [
+            573.98046875,
+            379.6171875
+          ],
+          "residual_px": 0.6174964614334341
+        }
+      ],
+      "note": "Source eyes have relatively round and large apertures. Whole-pair scaling keeps required iris separation; no per-eye shrinking or reshaping was applied.",
+      "certification": "Visual anatomical landmarks; no independent three non-collinear point certification asserted"
+    },
+    {
+      "part": "nose",
+      "source": "source/female/raw/nose/03.png",
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "output": "female/nose/03.png",
+      "output_dimensions": [
+        1024,
+        1536
+      ],
+      "source_sha256": "c5bb6e3442685a30b5bf0d5c250fee651ee38b95baebaebd8d70270e2e7c4313",
+      "output_sha256": "e6f99807c303fd1d885e81a69137d9d22950697eb63f380f557e91e39c13fe55",
+      "transform": {
+        "uniform_scale": 0.578125,
+        "rounded_canvas_size": [
+          592,
+          888
+        ],
+        "translation": [
+          223,
+          162
+        ],
+        "local_warp": false,
+        "threshold_matting": false,
+        "pigment_changed": false,
+        "native_alpha_retained": true
+      },
+      "landmarks": [
+        {
+          "name": "bridge_midline",
+          "source": [
+            512,
+            428
+          ],
+          "target": [
+            519,
+            409
+          ],
+          "mapped": [
+            519,
+            409.4375
+          ],
+          "residual_px": 0.4375
+        },
+        {
+          "name": "tip_bulb_center",
+          "source": [
+            512,
+            492
+          ],
+          "target": [
+            519,
+            446
+          ],
+          "mapped": [
+            519,
+            446.4375
+          ],
+          "residual_px": 0.4375
+        }
+      ],
+      "note": "",
+      "certification": "Visual anatomical landmarks; no independent three non-collinear point certification asserted"
+    },
+    {
+      "part": "mouth",
+      "source": "source/female/raw/mouth/03.png",
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "output": "female/mouth/03.png",
+      "output_dimensions": [
+        1024,
+        1536
+      ],
+      "source_sha256": "93a8551272244ddd751cbe06d7f5fba98b546af4f4fbb164e15586c811da43a3",
+      "output_sha256": "a787b9dd6424d42b5f965751d842aad954bf1e6cedc396f2b5902cb3719ccee5",
+      "transform": {
+        "uniform_scale": 0.6170212765957447,
+        "rounded_canvas_size": [
+          632,
+          948
+        ],
+        "translation": [
+          203,
+          129
+        ],
+        "local_warp": false,
+        "threshold_matting": false,
+        "pigment_changed": false,
+        "native_alpha_retained": true
+      },
+      "landmarks": [
+        {
+          "name": "lip_seam_center",
+          "source": [
+            512,
+            574
+          ],
+          "target": [
+            519,
+            483
+          ],
+          "mapped": [
+            519,
+            483.265625
+          ],
+          "residual_px": 0.265625
+        }
+      ],
+      "note": "",
+      "certification": "Visual anatomical landmarks; no independent three non-collinear point certification asserted"
+    },
+    {
+      "part": "hair_back",
+      "source": "source/female/raw/hair_back/03.png",
+      "source_dimensions": [
+        1024,
+        1536
+      ],
+      "output": "female/hair_back/03.png",
+      "output_dimensions": [
+        1024,
+        1536
+      ],
+      "source_sha256": "17b1a009114ed39c2782fde3741ca3d89267e2b700176c0f6ae0959486398bbf",
+      "output_sha256": "4e1355bbb253a01a7c93894604277368b8e75577440c7e1677bd433ebf2057c8",
+      "transform": {
+        "uniform_scale": 1,
+        "rounded_canvas_size": [
+          1024,
+          1536
+        ],
+        "translation": [
+          4,
+          -13
+        ],
+        "local_warp": false,
+        "threshold_matting": false,
+        "pigment_changed": false,
+        "native_alpha_retained": true
+      },
+      "landmarks": [
+        {
+          "name": "rear_crown_axis",
+          "source": [
+            515,
+            193
+          ],
+          "target": [
+            519,
+            180
+          ],
+          "mapped": [
+            519,
+            180
+          ],
+          "residual_px": 0
+        }
+      ],
+      "note": "Rear scalp and hidden neck connections continuous; no ear-shaped gaps or skin pieces. Front03 assigned separately to root.",
+      "certification": "Visual anatomical landmarks; no independent three non-collinear point certification asserted"
+    }
+  ]
+}

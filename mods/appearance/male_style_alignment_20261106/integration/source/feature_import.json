@@ -1,0 +1,488 @@
+{
+  "schema": "male-style-feature-import/v1",
+  "mode": "builtin image_gen extraction plus deterministic whole-layer import",
+  "approved_source": "source/approved_male.png",
+  "approved_sha256": "d97b79e3372df42db24b4dd5c3ec42f376d652616d9fa25d78a393b004da81a8",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "runtime_offset": [
+    0,
+    0
+  ],
+  "local_geometry_warps": false,
+  "opaque_rectangular_alpha_fills": false,
+  "occluding_front_hair": {
+    "source": "male/hair_front/01.png",
+    "sha256": "1bd9ccc12beb55970225414c698cd2c18bb0fc93489e31254e6d1bcbb6021b0e",
+    "usage": "Read-only current approved-source front alpha, dilated6px only as an occlusion guard; no hair RGB is ever copied into facial parts."
+  },
+  "records": [
+    {
+      "part": "eyebrows",
+      "file": "male/eyebrows/01.png",
+      "sha256": "b094a5d118e3b722b1901198c319919804cc93ab225c873366aa02af6fc6fa5f",
+      "raw_source": "raw/features/eyebrows_native_v3.png",
+      "raw_sha256": "5eb5b32d2ee8bb10b0c1a6533d98e8fd5b46fd6156a5ca083f6d04b1fde4856f",
+      "tip_native": null,
+      "tip_transform": null,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "transform": {
+        "a": 0.375,
+        "b": 0,
+        "tx": 325,
+        "ty": 164,
+        "scale": 0.375,
+        "residuals": []
+      },
+      "control_names": [],
+      "source_controls": [],
+      "target_controls": [],
+      "maximum_residual_px": null,
+      "approved_rgb_pixels": 791,
+      "approved_opaque_core_pixels": 709,
+      "approved_core_rgb_difference_count": 0,
+      "alpha_reduced_pixels": 433,
+      "source_ink_opacity_recovered_pixels": 716,
+      "source_ink_opacity_recovery_bbox": [
+        466,
+        336,
+        588,
+        355
+      ],
+      "opacity_recovery_method": "Only approved ink pixels already inside transformed generated alpha>=128; never zero-alpha pixels or rectangular fills",
+      "source_unoccluded_dark_brow_pixels": 694,
+      "source_unoccluded_dark_brow_pixels_alpha128": 687,
+      "source_unoccluded_dark_brow_coverage": 0.9899135446685879,
+      "note": "Third native extraction supplies one paired natural-tapering mask. Actual approved dark brow pigment is recovered only where the generated alpha already supports the pixel; no rectangular opacity zone, no invented stroke, no change to transparent zero-alpha regions. Source-hair-occluded tips retain this same transformed native painting.",
+      "generated_reconstruction_and_matte_edge_pixels": 1133,
+      "generated_pixel_count_scope": "Original front-hair occlusion and6px safety fringe; eyebrow count also includes native semitransparent matte-edge RGB. All unoccluded opaque core RGB is approved-source exact."
+    },
+    {
+      "part": "eyes",
+      "file": "male/eyes/01.png",
+      "sha256": "5ecb31eacb232bf8be1f83ddd97c50c3715b792564c73052f425aca7c20eb8af",
+      "raw_source": "raw/features/eyes_native.png",
+      "raw_sha256": "11b9c6f58f0fe1cf56ac003d50f3b1187a930698df7e64864ce798503692de39",
+      "tip_native": null,
+      "tip_transform": null,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "transform": {
+        "a": 0.8626188216509223,
+        "b": 0.0011099301284924457,
+        "tx": 76.03189189485663,
+        "ty": 49.036022962047184,
+        "scale": 0.8626195357232038,
+        "residuals": [
+          0.614933097984518,
+          0.703126716442363,
+          1.0787237975226314,
+          0.329598488209382,
+          1.0480369653008959,
+          0.10436382179691513,
+          0.7435632950560197,
+          0.4670517565274934,
+          0.9808869420659828
+        ]
+      },
+      "control_names": [
+        "left_pupil",
+        "right_pupil",
+        "left_inner_corner",
+        "right_inner_corner",
+        "right_outer_lash_tip",
+        "left_upper_lid_at_iris",
+        "left_lower_lid_at_iris",
+        "right_upper_lid_at_iris",
+        "right_lower_lid_at_iris"
+      ],
+      "source_controls": [
+        [
+          447.82094436251305,
+          365.42003013595377
+        ],
+        [
+          569.4110328954121,
+          364.9736588331093
+        ],
+        [
+          478,
+          377
+        ],
+        [
+          541,
+          377
+        ],
+        [
+          609,
+          363
+        ],
+        [
+          448,
+          361
+        ],
+        [
+          448,
+          377
+        ],
+        [
+          569,
+          361
+        ],
+        [
+          569,
+          377
+        ]
+      ],
+      "target_controls": [
+        [
+          461.5689530030847,
+          365.25258573761573
+        ],
+        [
+          566.4229137199434,
+          365.08718933117797
+        ],
+        [
+          489,
+          375
+        ],
+        [
+          542,
+          375
+        ],
+        [
+          602,
+          363
+        ],
+        [
+          462,
+          361
+        ],
+        [
+          462,
+          374
+        ],
+        [
+          566,
+          361
+        ],
+        [
+          566,
+          374
+        ]
+      ],
+      "maximum_residual_px": 1.0787237975226314,
+      "approved_rgb_pixels": 1443,
+      "approved_opaque_core_pixels": 890,
+      "approved_core_rgb_difference_count": 0,
+      "alpha_reduced_pixels": 0,
+      "source_ink_opacity_recovered_pixels": 0,
+      "source_ink_opacity_recovery_bbox": null,
+      "opacity_recovery_method": "Only approved ink pixels already inside transformed generated alpha>=128; never zero-alpha pixels or rectangular fills",
+      "source_unoccluded_dark_brow_pixels": 0,
+      "source_unoccluded_dark_brow_pixels_alpha128": 0,
+      "source_unoccluded_dark_brow_coverage": null,
+      "note": "Actual painted pupil centroids plus manually read eye corners and upper/lower iris-level lid contours, about 1px reading uncertainty. Pair is transformed as one layer; no eye-local warp.",
+      "generated_reconstruction_and_matte_edge_pixels": 788,
+      "generated_pixel_count_scope": "Original front-hair occlusion and6px safety fringe; eyebrow count also includes native semitransparent matte-edge RGB. All unoccluded opaque core RGB is approved-source exact."
+    },
+    {
+      "part": "nose",
+      "file": "male/nose/01.png",
+      "sha256": "e7271b38d96922434dbdf4a085b83a0d35ea5560989d0cfda9177beb085a2e79",
+      "raw_source": "raw/features/nose_native.png",
+      "raw_sha256": "edabdd189667f0c9c40ef112a76cb31063bdefaf76278446ac77e267d83870a0",
+      "tip_native": null,
+      "tip_transform": null,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "transform": {
+        "a": 0.6843993597676424,
+        "b": -0.02962252853121299,
+        "tx": 151.59389820131668,
+        "ty": 132.12967353458822,
+        "scale": 0.6850401286398786,
+        "residuals": [
+          1.0418234702722555,
+          1.2931026794418312,
+          1.856202710336528
+        ]
+      },
+      "control_names": [
+        "left_nostril_shadow",
+        "right_nostril_shadow",
+        "tip_highlight"
+      ],
+      "source_controls": [
+        [
+          494.0104981453921,
+          477.67019742483865
+        ],
+        [
+          529.9666577927014,
+          477.5379544119144
+        ],
+        [
+          515,
+          464
+        ]
+      ],
+      "target_controls": [
+        [
+          504.7573311810601,
+          443.9114877589453
+        ],
+        [
+          529.3398776134626,
+          444.19428862825094
+        ],
+        [
+          516,
+          434
+        ]
+      ],
+      "maximum_residual_px": 1.856202710336528,
+      "approved_rgb_pixels": 5850,
+      "approved_opaque_core_pixels": 2955,
+      "approved_core_rgb_difference_count": 0,
+      "alpha_reduced_pixels": 1279,
+      "source_ink_opacity_recovered_pixels": 0,
+      "source_ink_opacity_recovery_bbox": null,
+      "opacity_recovery_method": "Only approved ink pixels already inside transformed generated alpha>=128; never zero-alpha pixels or rectangular fills",
+      "source_unoccluded_dark_brow_pixels": 0,
+      "source_unoccluded_dark_brow_pixels_alpha128": 0,
+      "source_unoccluded_dark_brow_coverage": null,
+      "note": "Complete root and bridge retained with the same nose transform. Upper bridge matte is reduced only at the sides to avoid importing neighboring eyebrow pigment.",
+      "generated_reconstruction_and_matte_edge_pixels": 0,
+      "generated_pixel_count_scope": "Original front-hair occlusion and6px safety fringe; eyebrow count also includes native semitransparent matte-edge RGB. All unoccluded opaque core RGB is approved-source exact."
+    },
+    {
+      "part": "mouth",
+      "file": "male/mouth/01.png",
+      "sha256": "471666da8f5b161007491c7f557e6aaf23c0b467d0414bc0839f7d54d942aa03",
+      "raw_source": "raw/features/mouth_native.png",
+      "raw_sha256": "a1344d270131b262d2afbef26c569756e6a2f6c70ddaba96d106383537543230",
+      "tip_native": null,
+      "tip_transform": null,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "transform": {
+        "a": 0.8648002731307612,
+        "b": -2.3879839723927915e-18,
+        "tx": 73.31239330829641,
+        "ty": -75.78764083304878,
+        "scale": 0.8648002731307612,
+        "residuals": [
+          0.3298308403163061,
+          0.3155258818863702,
+          0.6373376245586954
+        ]
+      },
+      "control_names": [
+        "left_corner",
+        "right_corner",
+        "cupid_bow"
+      ],
+      "source_controls": [
+        [
+          469,
+          640
+        ],
+        [
+          557,
+          640
+        ],
+        [
+          512,
+          633
+        ]
+      ],
+      "target_controls": [
+        [
+          479,
+          478
+        ],
+        [
+          555,
+          478
+        ],
+        [
+          516,
+          471
+        ]
+      ],
+      "maximum_residual_px": 0.6373376245586954,
+      "approved_rgb_pixels": 1467,
+      "approved_opaque_core_pixels": 931,
+      "approved_core_rgb_difference_count": 0,
+      "alpha_reduced_pixels": 0,
+      "source_ink_opacity_recovered_pixels": 0,
+      "source_ink_opacity_recovery_bbox": null,
+      "opacity_recovery_method": "Only approved ink pixels already inside transformed generated alpha>=128; never zero-alpha pixels or rectangular fills",
+      "source_unoccluded_dark_brow_pixels": 0,
+      "source_unoccluded_dark_brow_pixels_alpha128": 0,
+      "source_unoccluded_dark_brow_coverage": null,
+      "note": "Natural lips retain approved source width and seam; one whole-layer similarity transform only.",
+      "generated_reconstruction_and_matte_edge_pixels": 0,
+      "generated_pixel_count_scope": "Original front-hair occlusion and6px safety fringe; eyebrow count also includes native semitransparent matte-edge RGB. All unoccluded opaque core RGB is approved-source exact."
+    }
+  ],
+  "visual_status": "Final PNGs locked after same-size source comparison and actual nine-layer composition on final calibrated new head. No further asset edits by this worker.",
+  "qa": {
+    "new_head_source": "male/face_shape/01.png",
+    "backgrounds": [
+      "light",
+      "dark",
+      "checker"
+    ],
+    "same_crop_same_scale": true,
+    "comparison_order": "source top / actual new-head composite bottom",
+    "iris_scanlines": [
+      {
+        "y": 365,
+        "side": "left",
+        "source_dark_iris_span": [
+          450,
+          478,
+          29
+        ],
+        "final_alpha128_covers_same_span": [
+          450,
+          478,
+          29
+        ]
+      },
+      {
+        "y": 365,
+        "side": "right",
+        "source_dark_iris_span": [
+          554,
+          582,
+          29
+        ],
+        "final_alpha128_covers_same_span": [
+          554,
+          582,
+          29
+        ]
+      },
+      {
+        "y": 367,
+        "side": "left",
+        "source_dark_iris_span": [
+          450,
+          478,
+          29
+        ],
+        "final_alpha128_covers_same_span": [
+          450,
+          478,
+          29
+        ]
+      },
+      {
+        "y": 367,
+        "side": "right",
+        "source_dark_iris_span": [
+          554,
+          578,
+          25
+        ],
+        "final_alpha128_covers_same_span": [
+          554,
+          578,
+          25
+        ]
+      },
+      {
+        "y": 370,
+        "side": "left",
+        "source_dark_iris_span": [
+          452,
+          471,
+          20
+        ],
+        "final_alpha128_covers_same_span": [
+          452,
+          471,
+          20
+        ]
+      },
+      {
+        "y": 370,
+        "side": "right",
+        "source_dark_iris_span": [
+          559,
+          577,
+          19
+        ],
+        "final_alpha128_covers_same_span": [
+          559,
+          577,
+          19
+        ]
+      },
+      {
+        "y": 372,
+        "side": "left",
+        "source_dark_iris_span": [
+          450,
+          469,
+          20
+        ],
+        "final_alpha128_covers_same_span": [
+          450,
+          469,
+          20
+        ]
+      },
+      {
+        "y": 372,
+        "side": "right",
+        "source_dark_iris_span": [
+          560,
+          582,
+          23
+        ],
+        "final_alpha128_covers_same_span": [
+          560,
+          582,
+          23
+        ]
+      }
+    ]
+  },
+  "visual_review": {
+    "source_comparison": "qa/features/source_left_actual_right_light_2x.png",
+    "actual_full": "qa/features/full_actual_light.png",
+    "head_sha256": "d86319252035a286a92e8892b9816bdb917a39f7f41f4cb1edf40f4dee51c357",
+    "front_sha256": "1bd9ccc12beb55970225414c698cd2c18bb0fc93489e31254e6d1bcbb6021b0e",
+    "backgrounds": [
+      "light",
+      "dark",
+      "checker"
+    ],
+    "same_scale_eyes_checked": true,
+    "eye_size_matches_approved": true,
+    "source_crossing_hair_not_baked_into_eye_core": true,
+    "opaque_rectangular_skin_tiles": false,
+    "complete_faint_nasal_root": true,
+    "limitations": [
+      "Originally hair-occluded brow and eye tips and their safety fringe are generated reconstruction.",
+      "Semitransparent matte transitions and hidden tips are not claimed pixel-identical to the whole painting.",
+      "Brow dark-ink coverage metric excludes the original-hair safety fringe and protects true generated transparency."
+    ]
+  }
+}

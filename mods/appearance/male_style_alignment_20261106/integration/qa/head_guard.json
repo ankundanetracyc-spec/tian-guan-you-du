@@ -1,0 +1,72 @@
+{
+  "stage": "final_head_material_after_import",
+  "approved_sha256": "d97b79e3372df42db24b4dd5c3ec42f376d652616d9fa25d78a393b004da81a8",
+  "output": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\male\\face_shape\\01.png",
+  "output_sha256": "d86319252035a286a92e8892b9816bdb917a39f7f41f4cb1edf40f4dee51c357",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "head_neck_alpha_changed_pixels": 0,
+  "geometry_changed": false,
+  "old_head_rgb_used": false,
+  "native_rgb_unchanged": false,
+  "native_painting_retained_with_global_material_calibration": true,
+  "pre_calibration_guard": "qa/head_import_guard_before_color.json",
+  "material_calibration": "qa/head_color_transfer.json",
+  "sample_color_delta_after": [
+    {
+      "name": "forehead",
+      "delta": [
+        -1,
+        -2,
+        -2
+      ]
+    },
+    {
+      "name": "left_cheek",
+      "delta": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "name": "right_cheek",
+      "delta": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "name": "chin_plane",
+      "delta": [
+        0,
+        -1,
+        -1
+      ]
+    },
+    {
+      "name": "upper_neck",
+      "delta": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "name": "lower_neck",
+      "delta": [
+        -2,
+        -2,
+        -3
+      ]
+    }
+  ],
+  "rejected_head_alternatives": {
+    "head_color_v2": "generation did not improve color fit",
+    "head_v3_large": "source head/neck proportions inconsistent with one full registration; five-point max residual4.63px, colors worse; never installed"
+  },
+  "limit": "Final generated skin painting approximates approved material; not original-source pixel identity."
+}
