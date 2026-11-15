@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>百工与天工峰 · 界面样稿</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="preview.css">
+  <script defer src="catalog.js"></script>
+  <script defer src="preview.js"></script>
+</head>
+<body>
+  <header id="reviewbar">
+    <span class="review-label">历史样稿</span>
+    <a href="../天工峰丹房器作租用入口_20261107/index.html" style="color:#e2ddc0;font-size:14px;white-space:nowrap">现行：租用入口</a>
+    <nav aria-label="切换界面样稿">
+      <button data-page="recipes">百工 · 丹方</button>
+      <button data-page="records">百工 · 炼器存录</button>
+      <button data-page="alchemy">天工峰 · 丹房</button>
+      <button data-page="forging">天工峰 · 器作</button>
+    </nav>
+    <span id="sample-label">真实丹方 · 未连接角色资料</span>
+    <button id="notes-open">策划说明</button>
+    <button id="immersive">收起样稿栏</button>
+  </header>
+  <button id="review-restore" hidden>展开样稿栏</button>
+  <div id="viewport">
+    <main id="stage" aria-label="百工与天工峰功能页">
+      <h1 id="page-title"></h1>
+      <div id="toolbar"><span id="breadcrumb"></span><span id="character-resources"></span></div>
+      <button id="back" aria-label="返回上层">返回</button>
+      <div id="screen-content"></div>
+      <footer><span id="footer-message"></span><button id="primary-action" disabled></button></footer>
+      <div id="overlay" hidden>
+        <button class="overlay-shade" aria-label="收起弹窗"></button>
+        <section id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1"></section>
+      </div>
+      <div id="toast" role="status" hidden></div>
+    </main>
+  </div>
+  <aside id="notes" hidden aria-label="策划说明">
+    <button id="notes-close">关闭说明</button>
+    <h2>百工与天工峰 · 样稿范围</h2>
+    <p>本轮只审阅界面、文字层级与操作位置。上方四个按钮用于比较样稿，不是游戏中的跨地点入口。</p>
+    <h3>四个页面</h3>
+    <p>百工只查阅丹方和炼制记录；实际炼丹、炼器在玉虚仙宗·天工峰的丹房、器作。百工不提供开炼或传送。</p>
+    <h3>目录与样例</h3>
+    <p>11 种丹、25 套样方与材料药性取自当前项目。通脉、静心不列入开放目录。器物存录用现有独立炼器演出的“修长薄脊剑”及其样方演示排版，可切换空记录状态；不是玩家库存。</p>
+    <p>未读取角色、库存、本地丹方或旅程；造诣、灵识、库存、精力与炼丹用度留空。药位按丹道造诣 68、炼器岗位及投入阴阳按炼器造诣 60 的排版场景展示，实际资格需正式接入后重核。所有增减、临时存方与示例填料只保存在本页内存，刷新恢复。</p>
+    <h3>本轮保留的规则</h3>
+    <p>炼前不预告成器、成丹品质或产量。炼丹维持君、臣、佐、使；不手动设颗数，不添加控火小游戏。炼器沿身、质、性、和，每岗每材 1—8 份，主体与承接必需，不增加燃料。</p>
+    <p>炼器工时、精力及灵识需求按现有公式计算，仅展示投料负担；不判断未知角色是否可开炼。没有模拟炼丹评分、成丹或库存扣费。开炉、开炼只展示位置并禁用。正式接入后沿既有演出、领取及存档。</p>
+    <h3>视觉来源</h3>
+    <p>以现有善功堂为参照，将四列目录调整为三栏工作区。复用项目楷体、丹炉、工坊、材料、器物与阴阳轴素材；新三栏框架通过内置图片生成工具由现有空白框架修订。</p>
+    <div class="note-links"><a href="README.md">完整说明与截图</a><a href="数据来源.json">目录来源</a><a href="共用框架_完整提示词.txt">框架生成提示词</a></div>
+  </aside>
+</body>
+</html>

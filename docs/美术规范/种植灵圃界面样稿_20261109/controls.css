@@ -1,0 +1,74 @@
+@import url('../全局界面风格母板_20261108/return-control.css');
+/* Match the current character, quiet-room and crafting controls. */
+button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #536c5d;outline-offset:3px}
+.button,.link-button.button,.page-tabs button{height:46px;min-height:46px;font-size:22px;line-height:1.4;padding:7px 20px;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:8px;background:none;border:0;box-shadow:none;text-decoration:none;color:#303e37;isolation:isolate}
+.button.compact-button{padding:7px 16px;min-width:88px}
+.button.primary{height:52px;min-height:52px;font-size:22px}
+.button-content{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;gap:9px;width:100%;pointer-events:none;transition:transform 100ms ease}
+button[data-skin]>.skin-layer{transition:filter 160ms ease,transform 100ms ease}
+button[data-skin]:not(:disabled)>.skin-layer[data-control-family]{filter:url(#control-alpha-clean) var(--paper-selection-filter,brightness(1))}
+button[data-skin]:hover:not(:disabled)>.skin-layer[data-control-family]{filter:url(#control-alpha-clean) var(--paper-selection-filter,brightness(1)) brightness(1.04)}
+button[data-skin]:active:not(:disabled)>.skin-layer[data-control-family]{filter:url(#control-alpha-clean) var(--paper-selection-filter,brightness(1)) brightness(.94)}
+button[data-skin]:active:not(:disabled)>.skin-layer,button[data-skin]:active:not(:disabled)>.button-content{transform:translateY(1px)}
+button[data-skin]:disabled{opacity:1;color:#747765;background:none;box-shadow:none}
+button[data-skin]:disabled>.skin-layer[data-control-family]{opacity:1;filter:url(#control-alpha-clean) grayscale(.75) brightness(.96)}
+button[data-skin]>.skin-layer .skin-center{filter:none}
+.button.icon-button,.field-nav .button.icon-button,.modal-head .button.icon-button{width:46px;min-width:46px;height:46px;min-height:46px;padding:12px;font-size:22px}
+.icon-button .sprite,.field-arrow{display:block;width:21px;height:21px;flex:0 0 21px}
+.field-nav .icon-button:disabled .field-arrow{opacity:.45;filter:grayscale(.75)}
+.app-header{left:24px;right:24px;top:10px;height:64px;padding:8px 24px}
+.location{height:46px}
+.location strong{font-size:28px;letter-spacing:3px}
+.location .location-mark{width:34px;height:36px;font-size:24px}
+.location>div{gap:16px}
+.field-nav{position:absolute;left:50%;top:8px;height:46px;transform:translateX(-50%);gap:8px}
+.selector-well{height:46px}
+.selector-well select,.head-controls .selector-well select{height:46px;font-size:22px;appearance:none;padding:0 34px 0 16px}
+.selector-well:after{content:'';position:absolute;right:14px;top:21px;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid #536c5d;pointer-events:none}
+.selector-well:has(select:disabled):after{border-top-color:#858977}
+.selector-well select:disabled{color:#747765;opacity:1}
+.game-shell>.page-return{height:46px;min-width:114px;font-size:22px;line-height:1.35}
+.page-tabs{top:94px;left:52px;right:52px;height:46px;gap:8px}
+.page-tabs button{min-width:160px}
+.page-tabs button.active:after{display:none}
+#screen{top:166px}
+#screen>.overview-grid,#screen>.growth-grid{height:calc(100% - 86px)}
+.overview-environment{table-layout:fixed}
+.section-head{align-items:center}
+.field-operation .button{height:46px;min-height:46px;font-size:22px}
+.choose-plant-action.button{align-self:flex-start;margin-top:4px;padding:7px 14px}
+.forecast-links{gap:16px}
+.source-note{align-items:center}
+.list-heading{min-height:46px}
+.list-heading .search-well{height:46px;width:238px}
+.list-heading .search-well input{height:46px;font-size:22px}
+.row-item strong,.joined-row .row-item button.button{font-size:22px}
+.joined-row .row-item button.button{min-width:0;padding:7px 12px}
+.joined-row .row-item button:hover{text-decoration:none}
+.inventory-row{isolation:isolate}
+.inventory-row>.button-content{display:grid;grid-column:1/-1;grid-template-columns:inherit;column-gap:inherit;justify-content:normal;text-align:left}
+.inventory-row>.skin-layer{opacity:.45}
+.inventory-row:hover,.inventory-row.selected{background:none;box-shadow:none}
+.inventory-row[aria-pressed="true"]>.skin-layer{opacity:1}
+.inventory-row:hover:not(:disabled)>.skin-layer{filter:var(--paper-selection-filter,brightness(1)) brightness(1.04)}
+.inventory-row:active:not(:disabled)>.skin-layer{filter:var(--paper-selection-filter,brightness(1)) brightness(.94)}
+.inventory-row:active:not(:disabled)>.skin-layer{transform:translateY(1px)}
+.selection-mark{display:inline-block;width:19px;flex:0 0 19px;color:#355d45;font-size:21px;margin-left:3px}
+.stock,.row-utilities{font-size:22px}
+.selected-summary>.button{font-size:22px;margin-left:8px}
+.stepper{height:46px;width:128px;display:inline-flex;align-items:stretch;gap:0;padding:5px 6px 5px 14px}
+.stepper input{height:36px;min-width:0;flex:1;width:100%;padding:0;font-size:22px;background:none;border:0;text-align:center}
+.step-buttons{width:26px;flex:0 0 26px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0}
+.stepper .step-arrow{display:grid;place-items:center;width:26px;min-width:26px;height:18px;min-height:18px;padding:2px;border:0;background:none;color:#536c5d;isolation:isolate}
+.triangle-glyph{display:block;width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;pointer-events:none;transition:transform 100ms ease}
+.triangle-up{border-bottom:6px solid currentColor}
+.triangle-down{border-top:6px solid currentColor}
+.step-arrow:hover:not(:disabled){color:#6e8773}
+.step-arrow:active:not(:disabled) .triangle-glyph{transform:translateY(1px)}
+.step-arrow:disabled{color:#9b9e8b;background:none;opacity:1}
+.step-arrow:disabled .triangle-glyph{opacity:.6}
+.join-controls{gap:16px}
+.substrate-actionbar .primary{height:52px;min-height:52px}
+.modal-head .icon-button{flex-shrink:0}
+.modal-actions{align-items:center}
+@media(prefers-reduced-motion:reduce){button[data-skin]>.skin-layer,.button-content,.triangle-glyph{transition:none!important}}
