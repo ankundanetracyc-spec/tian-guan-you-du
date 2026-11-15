@@ -1,0 +1,30 @@
+{
+  "task": "女性立绘画风对齐试样",
+  "created_local_date": "2026-11-06",
+  "status": "style_direction_approved_continue_expansion",
+  "user_followup": "很好，你继续",
+  "generator": "built-in image_gen",
+  "user_direction": "总感觉和我们现在项目内的有点割裂，你先对齐我们已有的画风风格",
+  "style_authority": {
+    "active_package": "mods/appearance/ink_three_variants_20261004/",
+    "original_composite": "mods/appearance/portrait_original_restore_20261105_v6/whole_male_first_20261105/reference/female_active.png",
+    "original_manifest": "mods/appearance/portrait_original_restore_20261105_v6/whole_male_first_20261105/reference/female_reference_manifest.json",
+    "local_copy": "reference/current_active_female.png",
+    "verification": "基准图8个源PNG与当前活动素材哈希全部一致，女性活动目录22件保持既有来源；本轮仅写入新样例目录。",
+    "policy": "以真实活动原图与实际独立部件为后续唯一画风母版，不用此次或此前生成候选继续充当风格来源。"
+  },
+  "visual_alignment": {
+    "composition": "原1024×1536整幅腰上构图、原脸耳颈、头肩比例及衣服/发型作为对照基准",
+    "face": "浅暖象牙、低饱和局部淡染，保留原自然体积和纹理，不加整脸桃粉晕染",
+    "eyes": "同原尺度、轻淡短眼缘、克制睫毛与虹膜明暗，不强化连续黑眼线或放大双眼",
+    "nose_mouth": "保持局部柔和少量明暗与原鼻翼鼻孔，唇色与唇形克制，不做亮白鼻块或精修丰唇",
+    "hair": "原灰炭黑、细发丝、暖灰弱高光和哑光发质，不转暖褐/油亮",
+    "detail_balance": "五官、头发与衣纹保持原图的细节强弱关系"
+  },
+  "preview": "preview/style_alignment_sample_v1.png",
+  "prompt": "source/generation_prompt.txt",
+  "source_image": "E:/tmp/CodexData/generated_images/01a1ac35-8591-7bc0-b31a-ed6a532b5357/exec-e53808e6-561b-4052-af26-953e49866f41.png",
+  "retained_scope": "现有发型与服装仅用于固定画风基准，不表示本次批准此前不满意的前发；本轮只作小幅新五官样例。",
+  "integration": "未改活动素材或游戏配置；仍是整体生成试样，尚未做独立透明眉眼鼻嘴或接入。",
+  "limitations": "不能认定生成稿与原脸轮廓、衣服、头发逐像素不变，仍须用户判断风格是否协调。"
+}

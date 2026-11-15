@@ -1,0 +1,81 @@
+{
+  "schema": "female-feature-expansion/v1",
+  "additions": [
+    {
+      "part": "eyebrows",
+      "name": "柔弯细眉",
+      "source": "res://mods/appearance/female_features_install_20261106/female/eyebrows/04.png",
+      "index": 4,
+      "style_id": 3,
+      "approved_source": "res://mods/appearance/female_aligned_features_20261106/preview/01_soft_arch_almond.png"
+    },
+    {
+      "part": "eyes",
+      "name": "舒展长目",
+      "source": "res://mods/appearance/female_features_install_20261106/female/eyes/03.png",
+      "index": 3,
+      "style_id": 3,
+      "approved_source": "res://mods/appearance/female_aligned_features_20261106/preview/02_soft_straight_long_eyes.png"
+    }
+  ],
+  "deduplication": [
+    {
+      "part": "eyebrows",
+      "keep_source_group": 1,
+      "merged_source_groups": [
+        3
+      ],
+      "existing_similar": [
+        {
+          "source_group": 2,
+          "existing_index": 3
+        }
+      ],
+      "reason": "新增柔弧，其他眉轮廓与保留款或已有款相近"
+    },
+    {
+      "part": "eyes",
+      "keep_source_group": 2,
+      "existing_similar": [
+        {
+          "source_group": 1,
+          "existing_index": 1
+        },
+        {
+          "source_group": 3,
+          "existing_index": 2
+        }
+      ],
+      "reason": "只新增较平缓、开合较低的舒展长目"
+    },
+    {
+      "part": "nose",
+      "keep_existing_index": 1,
+      "merged_source_groups": [
+        1,
+        2,
+        3
+      ],
+      "reason": "三鼻与现有含山根柔圆鼻结构近似"
+    },
+    {
+      "part": "mouth",
+      "keep_existing_index": 1,
+      "merged_source_groups": [
+        1,
+        2,
+        3
+      ],
+      "reason": "三嘴未形成独立新唇型，原自然浅唇沿用"
+    }
+  ],
+  "provenance": "内置image_gen按获批整图和原图放大裁切制作透明部件；新眉保留原生同画布。新眼采用v4原始透明双眼，经眼线末端、内眼角、虹膜与上下睑共10处实测控制点一次整层等比导入（最大残差1.882像素）。未逐眼修改、局部变形或修色；并非原图逐像素抠取。v2过大、v3改形已否决，禁止重新安装。",
+  "fidelity_review": {
+    "version": "v4_10point",
+    "geometry": "passes_2px_engineering_limit",
+    "normal_scale_visual_review": "oversized_and_flattened_eye_problems_corrected",
+    "remaining_difference": "褶线和下睑笔触略清楚；不声称原图像素完全一致",
+    "report": "res://mods/appearance/female_features_install_20261106/source/eye_import_v4.json",
+    "user_approved_reference": "res://mods/appearance/female_aligned_features_20261106/preview/02_soft_straight_long_eyes.png"
+  }
+}

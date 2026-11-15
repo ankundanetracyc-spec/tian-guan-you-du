@@ -1,0 +1,71 @@
+{
+  "status": "rejected_superseded",
+  "reason": "用户指出实际眼睛过大，未还原获批整图。本记录仅保留被否决的v2配准实验，不适用于当前眼层，禁止重新执行覆盖。",
+  "source": "E:\\stacklands\\mods\\appearance\\female_features_install_20261106\\candidates\\eyes\\03.png",
+  "target_approved_portrait": "E:\\stacklands\\mods\\appearance\\female_aligned_features_20261106\\preview\\02_soft_straight_long_eyes.png",
+  "output": "E:\\stacklands\\mods\\appearance\\female_features_install_20261106\\female\\eyes\\03.png",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "export_offset": [
+    0,
+    0
+  ],
+  "control_names": [
+    "left_dark_pupil_region_center",
+    "right_dark_pupil_region_center",
+    "left_dark_pupil_lower_edge"
+  ],
+  "source_controls": [
+    [
+      463.30555555555554,
+      379.18055555555554
+    ],
+    [
+      567.8611111111111,
+      378.8888888888889
+    ],
+    [
+      463.5,
+      384.0
+    ]
+  ],
+  "target_controls": [
+    [
+      465.2352941176471,
+      378.13235294117646
+    ],
+    [
+      575.3134328358209,
+      377.44776119402985
+    ],
+    [
+      464.0,
+      382.0
+    ]
+  ],
+  "similarity_matrix": [
+    [
+      1.0592230925634472,
+      -0.0027931022901443313,
+      -25.14893509463866
+    ],
+    [
+      0.00279310229014433,
+      1.059223092563447,
+      -25.43365720704162
+    ]
+  ],
+  "uniform_scale": 1.0592267751714344,
+  "control_residuals_px": [
+    0.9447442863264518,
+    0.04361195141337833,
+    0.9453751085797383
+  ],
+  "maximum_residual_px": 0.9453751085797383,
+  "source_sha256": "e58f2c84c88fe1ee52f17f7e8cf6500925194a2ddf15a674015c2786e3105bbc",
+  "output_sha256": "4930fd9c914d697d283700bad2bb02807904494708a6f42694483090c38c9a71",
+  "method": "Three actual non-collinear painted pupil-region controls from the approved image; one whole-layer similarity transform using the established importer; premultiplied-alpha resampling; no per-eye edits, shape warps or recoloring.",
+  "semantic_and_style_review": "Still required after registration"
+}

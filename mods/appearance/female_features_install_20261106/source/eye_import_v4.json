@@ -1,0 +1,144 @@
+{
+  "status": "geometric_and_normal_scale_visual_review_pass_for_runtime_check",
+  "source": "E:\\stacklands\\mods\\appearance\\female_features_install_20261106\\candidates\\eyes\\extraction_v4.png",
+  "target_approved_portrait": "E:\\stacklands\\mods\\appearance\\female_features_install_20261106\\source\\reference\\approved_02_long_eyes.png",
+  "output": "E:\\stacklands\\mods\\appearance\\female_features_install_20261106\\candidates\\eyes\\registered_v4_10point.png",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "export_offset_px": [
+    0,
+    0
+  ],
+  "control_names": [
+    "left_outer_lid_stroke_end",
+    "left_inner_eye_corner",
+    "right_inner_eye_corner",
+    "right_outer_lid_stroke_end",
+    "left_iris_center",
+    "right_iris_center",
+    "left_upper_lid",
+    "left_lower_lid",
+    "right_upper_lid",
+    "right_lower_lid"
+  ],
+  "source_controls": [
+    [
+      386,
+      385
+    ],
+    [
+      475,
+      400
+    ],
+    [
+      552,
+      400
+    ],
+    [
+      638,
+      384
+    ],
+    [
+      436,
+      389
+    ],
+    [
+      588,
+      389
+    ],
+    [
+      436,
+      382
+    ],
+    [
+      436,
+      400
+    ],
+    [
+      588,
+      381
+    ],
+    [
+      588,
+      400
+    ]
+  ],
+  "target_controls": [
+    [
+      429,
+      377
+    ],
+    [
+      491,
+      389
+    ],
+    [
+      548,
+      389
+    ],
+    [
+      610,
+      377
+    ],
+    [
+      465,
+      381
+    ],
+    [
+      575,
+      381
+    ],
+    [
+      465,
+      375
+    ],
+    [
+      465,
+      389
+    ],
+    [
+      575,
+      375
+    ],
+    [
+      575,
+      389
+    ]
+  ],
+  "control_measurement": "Visible painted landmarks, manual original-pixel reading; approximately 1px reading uncertainty. Visual fidelity remains a separate requirement.",
+  "similarity_matrix": [
+    [
+      0.7221757764658637,
+      -0.002406604729464185,
+      150.77033216575848
+    ],
+    [
+      0.002406604729464185,
+      0.7221757764658635,
+      98.59636779894288
+    ]
+  ],
+  "uniform_scale": 0.7221797863831395,
+  "residuals_px": [
+    0.688520910918603,
+    1.8820740457887521,
+    0.49327753968852267,
+    0.7438419343111531,
+    0.5210470155593927,
+    0.5301386934774871,
+    0.587940069124084,
+    0.5822882869989574,
+    0.5319917293100819,
+    0.5654532998588218
+  ],
+  "maximum_residual_px": 1.8820740457887521,
+  "source_sha256": "7155e7e55873bbb05abe758c644b9a999c783b8edcfb422b5fc12ed22d5b2e90",
+  "target_sha256": "4c9e0bed4d2443ca38e453e3616fafdc54fe04d4d3ac810fb86e206b43c8baa8",
+  "output_sha256": "749867dd34d4c41e933fcaac9bce5e7fd2dc2deda841bbdaa817502a6b89361b",
+  "method": "Existing project whole-layer similarity fit and premultiplied-alpha resampling. No separate-eye transforms, local warps, recoloring or repainting.",
+  "fidelity_limit": "image_gen is generative; this export does not assert original-pixel identity.",
+  "final_export": "res://mods/appearance/female_features_install_20261106/female/eyes/03.png",
+  "review_limit": "人工控制点约1像素读取误差；工程与独立视觉复核不代替用户最终评价，细微笔触差异仍存在。"
+}

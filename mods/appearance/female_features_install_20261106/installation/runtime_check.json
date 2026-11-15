@@ -1,0 +1,44 @@
+{
+  "aliases_preserved": true,
+  "baseline_pngs_preserved": 44,
+  "brow_eye_representative_pairs": 12,
+  "checks": 618,
+  "failures": [],
+  "feature_counts": {
+    "eyebrows": 4.0,
+    "eyes": 3.0,
+    "mouth": 1.0,
+    "nose": 1.0
+  },
+  "hair_feature_combinations": 108,
+  "independent_controls_verified": true,
+  "new_features": 2,
+  "pass": true,
+  "pixel_composites_verified": true,
+  "selection_memory_verified": true,
+  "slot_counts": {
+    "female": [
+      3.0,
+      3.0,
+      4.0,
+      3.0,
+      1.0,
+      1.0,
+      1.0,
+      7.0,
+      1.0
+    ],
+    "male": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      7.0,
+      1.0
+    ]
+  },
+  "viewport_captured": true
+}

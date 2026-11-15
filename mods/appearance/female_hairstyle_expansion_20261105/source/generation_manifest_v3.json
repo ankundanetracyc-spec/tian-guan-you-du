@@ -1,0 +1,27 @@
+{
+  "task": "女性前发第二组：整体头肩预览",
+  "created_local_date": "2026-11-05",
+  "status": "preview_only_pending_user_selection",
+  "generator": "built-in image_gen",
+  "preview": "preview/front_hair_exploration_v3.png",
+  "prompts": [
+    "source/generation_prompt_v3.txt",
+    "source/refinement_prompt_v3.txt"
+  ],
+  "user_direction": [
+    "再来一组吧",
+    "前发没有我很满意的，目前"
+  ],
+  "persistent_preferences": "新五官，自然疏松刘海，不要全都梳光，不要朵拉式厚齐刘海。",
+  "concepts_left_to_right": [
+    "疏松宽束斜分刘海与低束后发",
+    "错落薄刘海与肩后披发",
+    "长八字刘海与自然披发"
+  ],
+  "focus": "重新设计前发大形与额头开口，减少仅添细线式碎发，头肩放大查看。",
+  "source_image": "E:/tmp/CodexData/generated_images/01a1ac35-8591-7bc0-b31a-ed6a532b5357/exec-d9c9ccd3-14fb-4775-bfa5-1c8d29cd8fee.png",
+  "initial_image": "E:/tmp/CodexData/generated_images/01a1ac35-8591-7bc0-b31a-ed6a532b5357/exec-7cc3f5f3-395d-40f8-9cf4-485a2e371ae0.png",
+  "refinement": "右款初稿与左款的斜分近似，再通过内置图像工具改为近中分长八字前发。",
+  "integration": "本组仅整体审美候选，未新增独立部件或修改活动包。",
+  "limitations": "生成预览不是原女脸04与原衣像素合成；分层、真实透明、共同画布配准及混搭须待选稿后另做。"
+}

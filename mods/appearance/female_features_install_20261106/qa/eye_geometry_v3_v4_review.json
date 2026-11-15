@@ -1,0 +1,306 @@
+{
+  "scope": "Read-only review of approved02, v3 and v4; only QA reports/crops written; no candidate or active asset edited or installed by this reviewer.",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "diagnostic_crop_xywh": [
+    420,
+    364,
+    200,
+    42
+  ],
+  "diagnostic_scale": 6,
+  "diagnostic_resampling": "NEAREST, same original crop, no additional alignment",
+  "measurement_limit": "Threshold-assisted painted spans, not anatomical segmentation. RGB channel mean <150 in fixed scanlines. Anti-aliasing and manual landmark reading introduce about 1 px uncertainty; low fitting residual does not establish user visual approval. Outer eyeliner tips are distinguished from anatomical outer canthi.",
+  "inputs": {
+    "approved02": {
+      "path": "E:\\stacklands\\mods\\appearance\\female_aligned_features_20261106\\preview\\02_soft_straight_long_eyes.png",
+      "sha256": "4c9e0bed4d2443ca38e453e3616fafdc54fe04d4d3ac810fb86e206b43c8baa8"
+    },
+    "v3_fixed_crop_snapshot": {
+      "path": "E:\\stacklands\\mods\\appearance\\female_features_install_20261106\\qa\\eyes_v3_exact_crop_6x.png",
+      "sha256": "97a04e5ce59985380fc4c93f337e9bb52db1c6bcd6b30254651e2c56e1c607fa"
+    },
+    "v4_unregistered": {
+      "path": "E:\\stacklands\\mods\\appearance\\female_features_install_20261106\\candidates\\eyes\\extraction_v4.png",
+      "sha256": "7155e7e55873bbb05abe758c644b9a999c783b8edcfb422b5fc12ed22d5b2e90"
+    },
+    "v4_registered_actual_composite": {
+      "path": "E:\\stacklands\\mods\\appearance\\female_features_install_20261106\\qa\\new_eye_light_v4.png",
+      "sha256": "1978f01548a9a94f8a16bbe3b53ab5bb3d6c578678a96fdaa10bed8984eff52c"
+    }
+  },
+  "approved_metrics": {
+    "image_left": {
+      "fixed_axis_x": 464,
+      "iris_dark_span_at_y384_inclusive": [
+        453,
+        474
+      ],
+      "iris_dark_width_px": 22,
+      "central_dark_y_span_inclusive": [
+        374,
+        388
+      ],
+      "central_dark_height_px": 15
+    },
+    "image_right": {
+      "fixed_axis_x": 574,
+      "iris_dark_span_at_y384_inclusive": [
+        563,
+        584
+      ],
+      "iris_dark_width_px": 22,
+      "central_dark_y_span_inclusive": [
+        374,
+        388
+      ],
+      "central_dark_height_px": 15
+    }
+  },
+  "v3_metrics_observed": {
+    "image_left": {
+      "iris_dark_span_at_y384_inclusive": [
+        453,
+        475
+      ],
+      "iris_dark_width_px": 23,
+      "central_dark_y_span_inclusive": [
+        374,
+        389
+      ],
+      "central_dark_height_px": 16
+    },
+    "image_right": {
+      "iris_dark_span_at_y384_inclusive": [
+        564,
+        585
+      ],
+      "iris_dark_width_px": 22,
+      "central_dark_y_span_inclusive": [
+        374,
+        389
+      ],
+      "central_dark_height_px": 16
+    }
+  },
+  "v3_findings": [
+    "Scale approximately close, but upper lid fold lost/flattened; outer liner flatter and more solid; pupil/iris darker. Therefore not a faithful extraction."
+  ],
+  "v4_landmarks_approximate": [
+    {
+      "name": "left_outer_eyeliner_tip",
+      "raw_v4_xy": [
+        386.0,
+        385.0
+      ],
+      "approved02_xy": [
+        429.0,
+        377.0
+      ],
+      "registered_prediction_xy": [
+        428.60363906073815,
+        377.56299116387345
+      ],
+      "residual_px": 0.6885209109185565
+    },
+    {
+      "name": "left_inner_painted_corner",
+      "raw_v4_xy": [
+        475.0,
+        400.0
+      ],
+      "approved02_xy": [
+        491.0,
+        389.0
+      ],
+      "registered_prediction_xy": [
+        492.8411840952581,
+        388.6098156317837
+      ],
+      "residual_px": 1.8820740457887641
+    },
+    {
+      "name": "right_inner_painted_corner",
+      "raw_v4_xy": [
+        552.0,
+        400.0
+      ],
+      "approved02_xy": [
+        548.0,
+        389.0
+      ],
+      "registered_prediction_xy": [
+        548.4487188831296,
+        388.7951241959525
+      ],
+      "residual_px": 0.49327753968852267
+    },
+    {
+      "name": "right_outer_eyeliner_tip",
+      "raw_v4_xy": [
+        638.0,
+        384.0
+      ],
+      "approved02_xy": [
+        610.0,
+        377.0
+      ],
+      "registered_prediction_xy": [
+        610.5943413348652,
+        377.4472797792326
+      ],
+      "residual_px": 0.7438419343111531
+    },
+    {
+      "name": "left_iris_center",
+      "raw_v4_xy": [
+        436.0,
+        389.0
+      ],
+      "approved02_xy": [
+        465.0,
+        381.0
+      ],
+      "registered_prediction_xy": [
+        464.7028014651135,
+        380.57202450621014
+      ],
+      "residual_px": 0.5210470155593927
+    },
+    {
+      "name": "right_iris_center",
+      "raw_v4_xy": [
+        588.0,
+        389.0
+      ],
+      "approved02_xy": [
+        575.0,
+        381.0
+      ],
+      "registered_prediction_xy": [
+        574.4735194879247,
+        380.9378284250887
+      ],
+      "residual_px": 0.5301386934774871
+    },
+    {
+      "name": "left_upper_lid_at_iris_axis",
+      "raw_v4_xy": [
+        436.0,
+        382.0
+      ],
+      "approved02_xy": [
+        465.0,
+        375.0
+      ],
+      "registered_prediction_xy": [
+        464.7196476982198,
+        375.51679407094906
+      ],
+      "residual_px": 0.5879400691240341
+    },
+    {
+      "name": "left_lower_lid_at_iris_axis",
+      "raw_v4_xy": [
+        436.0,
+        400.0
+      ],
+      "approved02_xy": [
+        465.0,
+        389.0
+      ],
+      "registered_prediction_xy": [
+        464.6763288130894,
+        388.5159580473346
+      ],
+      "residual_px": 0.5822882869990047
+    },
+    {
+      "name": "right_upper_lid_at_iris_axis",
+      "raw_v4_xy": [
+        588.0,
+        381.0
+      ],
+      "approved02_xy": [
+        575.0,
+        375.0
+      ],
+      "registered_prediction_xy": [
+        574.4927723257605,
+        375.16042221336176
+      ],
+      "residual_px": 0.5319917293100648
+    },
+    {
+      "name": "right_lower_lid_at_iris_axis",
+      "raw_v4_xy": [
+        588.0,
+        400.0
+      ],
+      "approved02_xy": [
+        575.0,
+        389.0
+      ],
+      "registered_prediction_xy": [
+        574.4470468359007,
+        388.88176196621316
+      ],
+      "residual_px": 0.5654532998588336
+    }
+  ],
+  "v4_similarity_fit_calculation": {
+    "scale": 0.7221797863831396,
+    "rotation_degrees": 0.19093382529412978,
+    "translation_xy": [
+      150.77033216575842,
+      98.59636779894271
+    ],
+    "max_residual_px": 1.8820740457887641,
+    "reviewer_did_not_apply_transform": true,
+    "root_exported_candidate": "candidates/eyes/registered_v4_10point.png"
+  },
+  "v4_actual_metrics": {
+    "image_left": {
+      "fixed_axis_x": 464,
+      "iris_dark_span_at_y384_inclusive": [
+        454,
+        475
+      ],
+      "iris_dark_width_px": 22,
+      "central_dark_y_span_inclusive": [
+        373,
+        388
+      ],
+      "central_dark_height_px": 16
+    },
+    "image_right": {
+      "fixed_axis_x": 574,
+      "iris_dark_span_at_y384_inclusive": [
+        564,
+        585
+      ],
+      "iris_dark_width_px": 22,
+      "central_dark_y_span_inclusive": [
+        374,
+        388
+      ],
+      "central_dark_height_px": 15
+    }
+  },
+  "v4_findings": [
+    "No previous large-eye scale mismatch at common canvas scale. Both fixed-scanline iris dark widths equal source at 22 px.",
+    "Upper lid fold/curvature closer to approved02 than v3.",
+    "Minor generated differences remain: iris dark spans about +1 px horizontally; left central dark contour reaches one pixel higher; outer liner tips and lower lid fine strokes differ. No pixel-identical extraction or user approval claimed."
+  ],
+  "diagnostics": [
+    "eyes_v3_same_crop_comparison_6x.png",
+    "approved02_exact_crop_6x.png",
+    "eyes_v3_exact_crop_6x.png",
+    "eyes_v4_native_grid_6x.png",
+    "approved02_native_grid_8x.png",
+    "eyes_v4_10point_same_crop_comparison_6x.png",
+    "eyes_v4_10point_exact_crop_6x.png"
+  ]
+}

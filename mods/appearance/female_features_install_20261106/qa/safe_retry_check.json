@@ -1,0 +1,9 @@
+{
+  "windows_replace_denied_fallback_pass": true,
+  "in_place_failure_restores_original_bytes": true,
+  "fallback_rechecks_bytes_and_preserves_concurrent_change": true,
+  "actual_fully_rolled_back_backup_zip_and_sidecars_pass": true,
+  "changed_retry_selection_rejected": true,
+  "changed_retry_baseline_rejected": true,
+  "no_install_executed": true
+}

@@ -1,0 +1,15 @@
+Use case: background-extraction / identity-preserve.
+The supplied image is the EXACT USER-APPROVED portrait. The user's explicit complaint is that previously recreated eye layers were BIGGER than these eyes. This task is to ISOLATE THE EXISTING EYES FROM THIS IMAGE, not generate, redraw, improve, stylize or enlarge eyes.
+
+Return a native transparent PNG on the SAME 1024x1536 FULL CANVAS and SAME top-left origin as this input. Keep ONLY the two actual eyes, eyelid/eyelash pigment and their very faint local transitions at their EXACT CURRENT IMAGE POSITIONS. Everything else must be completely transparent: face/skin, eyebrows, nose, lips, hair, clothing and background removed.
+
+Most important invariants:
+- Copy the INPUT eye geometry exactly, including its LOW eye opening and flattened upper-lid center. Do NOT make the eyes rounder or more open.
+- Keep the ORIGINAL iris and pupil size, upper-lid coverage, exact pupil positions, eye-corner locations and overall eye spacing.
+- Keep the original small eye size relative to the 1024x1536 canvas; there is a large amount of empty transparent canvas. Do NOT recenter, zoom, rescale or widen the eye pair.
+- Keep the source's precise muted brown/gray eye colors and light short strokes. Do not darken contours, add a cosmetic line, thicken lashes, add white reflection, or make the lower edge stronger.
+- The source eyes are deliberately SMALL AND RESTRAINED. Pixel identity and matching the approved appearance matter more than making a more attractive independent asset.
+
+Keep opaque sclera/iris/pupil ONLY inside the existing eye shapes and semitransparent pigment of actual existing tiny eyelid/lash strokes. No solid eye-region skin tiles, no broad skin oval, no surrounding glow/gradient/haze. Necessary eyelid transition remains extremely local and pale.
+
+Do not draw any NEW eye shape. Treat as a careful background removal/matte operation on the two existing eyes while preserving every visible eye detail, not an illustration commission. No text, labels, checkerboard or alternate background. TRUE alpha transparency. Full shared canvas stays 1024x1536.

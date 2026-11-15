@@ -1,0 +1,73 @@
+{
+  "schema": "female-feature-expansion/v1",
+  "additions": [
+    {
+      "part": "eyebrows",
+      "name": "柔弯细眉",
+      "source": "res://mods/appearance/female_features_install_20261106/female/eyebrows/04.png",
+      "index": 4,
+      "style_id": 3,
+      "approved_source": "res://mods/appearance/female_aligned_features_20261106/preview/01_soft_arch_almond.png"
+    },
+    {
+      "part": "eyes",
+      "name": "舒展长目",
+      "source": "res://mods/appearance/female_features_install_20261106/female/eyes/03.png",
+      "index": 3,
+      "style_id": 3,
+      "approved_source": "res://mods/appearance/female_aligned_features_20261106/preview/02_soft_straight_long_eyes.png"
+    }
+  ],
+  "deduplication": [
+    {
+      "part": "eyebrows",
+      "keep_source_group": 1,
+      "merged_source_groups": [
+        3
+      ],
+      "existing_similar": [
+        {
+          "source_group": 2,
+          "existing_index": 3
+        }
+      ],
+      "reason": "新增柔弧，其他眉轮廓与保留款或已有款相近"
+    },
+    {
+      "part": "eyes",
+      "keep_source_group": 2,
+      "existing_similar": [
+        {
+          "source_group": 1,
+          "existing_index": 1
+        },
+        {
+          "source_group": 3,
+          "existing_index": 2
+        }
+      ],
+      "reason": "只新增较平缓、开合较低的舒展长目"
+    },
+    {
+      "part": "nose",
+      "keep_existing_index": 1,
+      "merged_source_groups": [
+        1,
+        2,
+        3
+      ],
+      "reason": "三鼻与现有含山根柔圆鼻结构近似"
+    },
+    {
+      "part": "mouth",
+      "keep_existing_index": 1,
+      "merged_source_groups": [
+        1,
+        2,
+        3
+      ],
+      "reason": "三嘴未形成独立新唇型，原自然浅唇沿用"
+    }
+  ],
+  "provenance": "内置image_gen两件原生透明独立生成；新眉保留原生同画布，新眼按获批稿三处实际瞳区控制点做一次整层等比配准（最大残差0.946像素），无逐眼修改、局部变形或脚本重绘。"
+}

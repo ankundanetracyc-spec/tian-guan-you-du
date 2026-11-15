@@ -1,0 +1,21 @@
+{
+  "mode": "built-in image_gen",
+  "eyebrows": {
+    "id": "brow_v2",
+    "prompt": "Use case: precise-object-edit.\nImage 1 is a transparent paired eyebrow asset on the game's exact shared 1024x1536 canvas. Image 2 is a magnified crop of the USER-APPROVED brows to reproduce. Change only Image 1's two brows, matching the fine strand construction and smooth rounded arch in Image 2.\nReturn exactly the full 1024x1536 transparent canvas, with the pair at their original tiny positions around (468,354) and (576,354). Overall left x437..501, right x543..608, y344..365. Keep the original base-canvas locations and size. Do not zoom, crop, recenter or enlarge the brows.\nDraw individual fine HAIR STROKES with irregular sparse natural gaps. BROW HEADS are feathery and translucent, density varies naturally, tapering outer tails consist of a few fine wisps. The curved brow body must ALSO have hair-grain openings, NOT a uniformly filled crescent or cosmetic eyebrow decal. Let background show between sparse hairs. Match the reference's pale muted warm-gray brown, gentle round arc and natural left/right differences. No brown/gray solid silhouettes.\nOnly eyebrow hair pigment with naturally semitransparent edges. Remove ALL skin/forehead color, eyes, eyelid arcs at bottom of Image 2, and head-hair strands at the sides of Image 2. No blush, haze, glow, gradients or large transparent carrier patches. All pixels outside the two fine eyebrow regions must be genuinely transparent.\nNo text, labels, checkerboard or opaque background. No face painting. Fine natural game eyebrow texture, not vector shapes.",
+    "references": [
+      "E:/stacklands/mods/appearance/ink_three_variants_20261004/female/eyebrows/02.png",
+      "E:/stacklands/mods/appearance/female_features_install_20261106/qa/approved_brow_close.png"
+    ]
+  },
+  "eyes": {
+    "id": "eyes_v4",
+    "prompt": "编辑目标：图1是用户批准的整幅立绘，图2只是图1双眼的6倍放大查看，不是另一套眼睛。请对图1做去背景抠图，只留下图1原本存在的双眼，其他内容全部透明。\n输出仍为1024×1536完整透明PNG，双眼在图1的原像素位置、原大小。不要重新设计或重画。眼睛保留原本的低杏形轮廓、上睑中央很浅的弧度、短而自然收束的外眼角、原虹膜直径和原灰棕色。不要将上睑拉成水平直线，不要延长眼尾，不要增加眼线粗细或虹膜深度。上一版抠图变成了更平更长更黑的另一双眼，这是错误的。\n图2是用于逐细节保真的原图放大，眼睛形状和笔触应与图2保持一致；它不改变图1的尺寸和位置。保留双眼内的眼白、虹膜、瞳孔，以及原有极淡的眼睑线条。不要保留眉毛、皮肤色块、鼻子、头发或背景，不要绘制新内容，不要把双眼放大或居中。仅移除非眼睛内容，真实透明alpha。\n",
+    "references": [
+      "res://mods/appearance/female_aligned_features_20261106/preview/02_soft_straight_long_eyes.png",
+      "res://mods/appearance/female_features_install_20261106/qa/approved_eyes_close.png"
+    ]
+  },
+  "import": "source/eye_import_v4.json",
+  "no_pixel_identity_claim": true
+}
