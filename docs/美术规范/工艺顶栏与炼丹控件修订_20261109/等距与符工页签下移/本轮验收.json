@@ -1,0 +1,183 @@
+{
+  "date": "2026-11-09",
+  "scope": "三资源组等距；符工模式按钮下移至左侧纸面顶端",
+  "build": {
+    "warnings": 0,
+    "errors": 0,
+    "log": "编译.log"
+  },
+  "uiRuns": [
+    {
+      "page": "alchemy",
+      "width": 1280,
+      "status": "passed",
+      "exitCode": 0,
+      "checks": 152,
+      "captures": [
+        "alchemy_paper_main_1280.png",
+        "alchemy_paper_picker_utility_1280.png",
+        "alchemy_paper_picker_1280.png",
+        "alchemy_paper_notebook_1280.png",
+        "alchemy_paper_full_eight_1280.png"
+      ],
+      "report": "alchemy_checks_1280.json",
+      "log": "alchemy_原生复验_1280.log"
+    },
+    {
+      "page": "alchemy",
+      "width": 1920,
+      "status": "passed",
+      "exitCode": 0,
+      "checks": 152,
+      "captures": [
+        "alchemy_paper_main_1920.png",
+        "alchemy_paper_picker_utility_1920.png",
+        "alchemy_paper_picker_1920.png",
+        "alchemy_paper_notebook_1920.png",
+        "alchemy_paper_full_eight_1920.png"
+      ],
+      "report": "alchemy_checks_1920.json",
+      "log": "alchemy_原生复验_1920.log"
+    },
+    {
+      "page": "talisman",
+      "width": 1280,
+      "status": "passed",
+      "exitCode": 0,
+      "checks": 182,
+      "captures": [
+        "talisman_header_paper_1280.png",
+        "talisman_header_ink_1280.png",
+        "talisman_header_drawing_1280.png"
+      ],
+      "report": "talisman_checks_1280.json",
+      "log": "talisman_原生复验_1280.log"
+    },
+    {
+      "page": "talisman",
+      "width": 1920,
+      "status": "passed",
+      "exitCode": 0,
+      "checks": 182,
+      "captures": [
+        "talisman_header_paper_1920.png",
+        "talisman_header_ink_1920.png",
+        "talisman_header_drawing_1920.png"
+      ],
+      "report": "talisman_checks_1920.json",
+      "log": "talisman_原生复验_1920.log"
+    },
+    {
+      "page": "forging",
+      "width": 1280,
+      "status": "passed",
+      "exitCode": 0,
+      "checks": 297,
+      "captures": [
+        "炼器_主界面_1280.png",
+        "炼器_按钮悬停_1280.png",
+        "炼器_按钮按下_1280.png",
+        "炼器_质材_1280.png",
+        "炼器_选材_1280.png",
+        "炼器_性材_1280.png",
+        "炼器_和材_1280.png",
+        "炼器_器物册_1280.png",
+        "炼器_说明_1280.png",
+        "炼器_炉火定器_1280.png"
+      ],
+      "report": "forging_checks_1280.json",
+      "log": "forging_原生复验_1280.log"
+    },
+    {
+      "page": "forging",
+      "width": 1920,
+      "status": "passed",
+      "exitCode": 0,
+      "checks": 297,
+      "captures": [
+        "炼器_主界面_1920.png",
+        "炼器_按钮悬停_1920.png",
+        "炼器_按钮按下_1920.png",
+        "炼器_质材_1920.png",
+        "炼器_选材_1920.png",
+        "炼器_性材_1920.png",
+        "炼器_和材_1920.png",
+        "炼器_器物册_1920.png",
+        "炼器_说明_1920.png",
+        "炼器_炉火定器_1920.png"
+      ],
+      "report": "forging_checks_1920.json",
+      "log": "forging_原生复验_1920.log"
+    }
+  ],
+  "uiChecks": 1262,
+  "uiCaptures": 36,
+  "productionRegression": {
+    "width": 1280,
+    "checks": 521,
+    "captures": 16,
+    "exitCode": 0,
+    "report": "选材制作与恢复/talisman_checks_1280.json",
+    "log": "选材制作与恢复/制作复验.log",
+    "scope": "真实选材、数值、三工艺制作、模式行演出时隐藏/结束恢复、忙碌期间不可切页，支付和人物资料保持原规则"
+  },
+  "design": {
+    "resourceRow": [
+      926,
+      8,
+      556,
+      46
+    ],
+    "resourceGroupGap": 32,
+    "captionValueGap": 8,
+    "talismanModeRow": [
+      48,
+      138,
+      352,
+      46
+    ],
+    "modeButtonSize": [
+      112,
+      46
+    ],
+    "modeButtonGap": 8
+  },
+  "sources": [
+    {
+      "path": "csharp/panel/CraftingPaperHeader.cs",
+      "sha256": "618993ef1cba169331125e787058e44dda476498f7065b1d24134a25e51be22f"
+    },
+    {
+      "path": "csharp/scene/AlchemySlotBrewPreviewScene.PaperSkin.cs",
+      "sha256": "618854857f485055d7b6160b80d70b3d635fe4ead961a85e0db4e71ef2ceaf63"
+    },
+    {
+      "path": "csharp/scene/TalismanCraftingScene.cs",
+      "sha256": "5c144eae93b65339374ab4514c11d9ac519810a90290ffe17241ea02835765ac"
+    },
+    {
+      "path": "csharp/scene/TalismanCraftingScene.Choices.cs",
+      "sha256": "0058bd7f36e5fb74389b274e0c2b549269d5fd340e468dd4a770f6450f52de39"
+    },
+    {
+      "path": "csharp/debug/AlchemyPaperUiSmoke.cs",
+      "sha256": "c0d5a9cb62165bfa146afc75b840ba182327a0189a90727809efdea19474b46b"
+    },
+    {
+      "path": "csharp/debug/TalismanCraftingNativeSmoke.cs",
+      "sha256": "eb7403743f0bf3f869ef19de5b663657d183fac0e6d9ad3e4ca38fe7bd21a88c"
+    },
+    {
+      "path": "tools/verify_forging_paper_preview.gd",
+      "sha256": "6ee00a761d6aefe58e6ebacaedbb346d16ddad35944d0d5cd56d5927c1de115c"
+    }
+  ],
+  "screenshotsEdited": false,
+  "isolatedAppData": true,
+  "playerJourneyReadOrWritten": false,
+  "forgingSkinIntegrated": false,
+  "knownWarning": "既有卸力.tres UID按文本路径回退，最终运行无错误。",
+  "iterationNotes": [
+    "原生测试中局部变量重名与GDScript浮点推导写法已修复，最终构建及复跑通过，不沿用失败/未完成输出。"
+  ]
+}

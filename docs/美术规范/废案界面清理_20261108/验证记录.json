@@ -1,0 +1,515 @@
+{
+  "date": "2026-11-08",
+  "scope": "废案移除后的统一编译、当前青溪／白石／玉虚流程、领取、兽战回传及既有相关烟测；不修改正式玩法。",
+  "overall": "编译通过。当前开场、旧档内存兼容、当前吊牌报到主线、领取、秘籍目录通过；兽战回传首次定制引擎崩溃，复测通过。旧默认讲法夹具、旧地图导航夹具及见闻长正文断言未通过，未宣称全部通过。",
+  "build": {
+    "command": "dotnet build Stacklands.csproj --no-restore --disable-build-servers --nologo -v minimal",
+    "sdkVersion": "10.0.102",
+    "target": "net8.0",
+    "exitCode": 0,
+    "warnings": 0,
+    "errors": 0,
+    "log": "tmp/retirement_verification_20261108/build_01.log",
+    "logSha256": "407ddd63b1868ba4e59be0f85774295698d163cb96ea129554f5c345b819a78c",
+    "assembly": ".godot/mono/temp/bin/Debug/stacklands.dll",
+    "assemblySha256": "0daa859957383184acb4fe79ff933bb6335fc4760615a3bfdc910952a39ec08d"
+  },
+  "runtime": {
+    "path": "runtime/godot/Godot_v4.7.2-stable_spine3_8_mono_win64/Godot_spine3_8_editor_console.exe",
+    "version": "Godot Engine v4.7.2.stable.mono.custom_build.ed1daf0bf",
+    "mode": "headless / gl_compatibility",
+    "sequential": true,
+    "actualUserDirProbe": "tmp/retirement_verification_20261108/isolated_appdata/userdir_probe/SlayTheSpire2",
+    "eachRunUsesDifferentIsolatedAppData": true,
+    "actualPlayerSavesReadOrWritten": false
+  },
+  "currentFlowCoverage": [
+    {
+      "case": "baishi_plaque_default",
+      "checks": 45,
+      "scope": "白石场景、公共挂牌与绳索／峰内控件"
+    },
+    {
+      "case": "baishi_lecture_opening_only",
+      "checks": 20,
+      "scope": "当前青溪开场与方远同行，含6项旧档内存兼容"
+    },
+    {
+      "case": "baishi_plaque_current_admission",
+      "checks": 69,
+      "scope": "旁听→验灵→择宗→候验→登舟→玉虚报到"
+    },
+    {
+      "case": "world_loot",
+      "checks": 15,
+      "scope": "公共整批领取、满包原子性、排队与过期预览"
+    },
+    {
+      "case": "gongfa",
+      "checks": 68,
+      "scope": "当前秘籍目录与旧资源引用保留"
+    },
+    {
+      "case": "forest_roundtrip_retry",
+      "checks": 17,
+      "scope": "真实存读档、实际入战与排队撤退、回传和一次性消费；首次崩溃单列"
+    }
+  ],
+  "legacyCompatibilityAddedToExistingSmoke": {
+    "file": "csharp/debug/BaishiLectureSmoke.cs",
+    "checks": 6,
+    "method": "仅使用当前测试人物和内存进度字典；临时去掉baishi_lecture/story_free_start并提供旧序章键，再恢复原同行状态。",
+    "verified": [
+      "无白石状态旧档走既有自由世界、不补进开场",
+      "人物身份／境界／属性不变",
+      "物品／数量／占格与朝向不变",
+      "精确时间／有效地点／地图位置不变",
+      "废进度键不再保存",
+      "测试后恢复同一真实同行资源"
+    ],
+    "passedInCase": "baishi_lecture_opening_only"
+  },
+  "unpassedAndLimitations": [
+    {
+      "case": "baishi_lecture_default",
+      "classification": "过时夹具期望",
+      "evidence": "csharp/debug/BaishiLectureSmoke.cs:178要求听法后隐藏LectureGuidance；现行流程应接着显示验灵吊牌／引导，后续旧夹具还从人物菜单验灵并要求白石选卷。",
+      "currentReplacementPassed": "baishi_plaque_current_admission 69项通过；未回改现行剧情"
+    },
+    {
+      "case": "world_navigation",
+      "classification": "旧地图夹具接口失效",
+      "evidence": "csharp/debug/WorldDungeonNavigationSmoke.cs:24反射设置早已不存在的tile_world_map字段，在Set内NullReference；尚未进入副本业务断言。",
+      "action": "保留失败证据，不恢复旧地图字段或旧中转页"
+    },
+    {
+      "case": "journal",
+      "classification": "见闻长正文断言未通过，未定位为本轮删除遗漏",
+      "evidence": "前19项通过；csharp/debug/JournalUiSmoke.cs:89的长正文滚动范围断言失败。此轮只替换背景／样例，未修改JournalPanel实现。",
+      "action": "留待见闻面板专项检查，不改正式面板"
+    },
+    {
+      "case": "forest_roundtrip",
+      "classification": "首次定制引擎托管句柄致命异常，复测通过",
+      "evidence": "CSharpInstance::mono_object_disposed_baseref / gchandle.is_released，GodotObject.Finalize；首次退出码-2147483645。同类历史记录见docs/美术规范/战斗界面素材规格_20261009.md:35。",
+      "retry": "同一当前runtime、全新隔离目录复测17项通过；未抹除首次失败日志"
+    }
+  ],
+  "cases": [
+    {
+      "case": "baishi_lecture_default",
+      "scene": "res://tscn/debug/BaishiLectureSmoke.tscn",
+      "args": [],
+      "exitCode": 1,
+      "elapsedSeconds": 20.55,
+      "timedOut": false,
+      "passed": false,
+      "expectedMarker": "BaishiLectureSmoke: PASS",
+      "markers": [
+        "ERROR: BaishiLectureSmoke: FAIL System.Exception: 场景旁听未完成或引导未收起"
+      ],
+      "errors": [
+        "ERROR: BaishiLectureSmoke: FAIL System.Exception: 场景旁听未完成或引导未收起"
+      ],
+      "warnings": [
+        "WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs",
+        "WARNING: Loaded resource as image file, this will not work on export: 'res://textures/world/bai_chuan/npc_native_20261106/avatar_atlas.png'. Instead, import the image file as an Image resource and load it normally as a resource.",
+        "WARNING: 3 ObjectDB instances were leaked at exit (run with `--verbose` for details)."
+      ],
+      "isolationAppData": "tmp/retirement_verification_20261108/isolated_appdata/baishi_lecture_default",
+      "logs": {
+        "stdout": {
+          "path": "tmp/retirement_verification_20261108/baishi_lecture_default.stdout.log",
+          "sha256": "2d322975baea2bb04065ae3a50fcd7211c642d4fe7e2004e6c59b3c3967c67fd"
+        },
+        "stderr": {
+          "path": "tmp/retirement_verification_20261108/baishi_lecture_default.stderr.log",
+          "sha256": "94852416fa1c210cce002ed93cc7eff68fc2a024c6c99829b143bc73641acbfe"
+        },
+        "engineLog": {
+          "path": "tmp/retirement_verification_20261108/baishi_lecture_default.engine.log",
+          "sha256": "90c7f5f1c9211511a5a1f9f8a185243b0e5f25f47c6b02f71dc14d74f3a30396"
+        }
+      }
+    },
+    {
+      "case": "baishi_lecture_opening_only",
+      "scene": "res://tscn/debug/BaishiLectureSmoke.tscn",
+      "args": [
+        "--opening-only"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 11.81,
+      "timedOut": false,
+      "passed": true,
+      "expectedMarker": "BAISHI_OPENING_TAGS_OK 20",
+      "markers": [
+        "BAISHI_OPENING_TAGS_OK 20"
+      ],
+      "errors": [],
+      "warnings": [
+        "WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs",
+        "WARNING: Loaded resource as image file, this will not work on export: 'res://textures/world/bai_chuan/npc_native_20261106/avatar_atlas.png'. Instead, import the image file as an Image resource and load it normally as a resource."
+      ],
+      "isolationAppData": "tmp/retirement_verification_20261108/isolated_appdata/baishi_lecture_opening_only",
+      "logs": {
+        "stdout": {
+          "path": "tmp/retirement_verification_20261108/baishi_lecture_opening_only.stdout.log",
+          "sha256": "cc6e37d6bc0841ccd38e1d058b5b07c180683679108496843301a31bbc2c2bda"
+        },
+        "stderr": {
+          "path": "tmp/retirement_verification_20261108/baishi_lecture_opening_only.stderr.log",
+          "sha256": "d6043f6786622c02ad4d8e782dcaac4cdaae463086208dce4e1e7e33f2133ae6"
+        },
+        "engineLog": {
+          "path": "tmp/retirement_verification_20261108/baishi_lecture_opening_only.engine.log",
+          "sha256": "92fe0ee185b9afc215f58bc5d89f36f3e4a7b5707be5c04dc4874977c78d0c46"
+        }
+      }
+    },
+    {
+      "case": "baishi_plaque_current_admission",
+      "scene": "res://tscn/debug/BaishiPlaqueSmoke.tscn",
+      "args": [
+        "--lecture-guide",
+        "--departure-flow",
+        "--admission-flow"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 17.81,
+      "timedOut": false,
+      "passed": true,
+      "expectedMarker": "BAISHI_LECTURE_GUIDE PASS: 69 checks",
+      "markers": [
+        "BAISHI_LECTURE_GUIDE PASS: 69 checks"
+      ],
+      "errors": [],
+      "warnings": [
+        "WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs",
+        "WARNING: Loaded resource as image file, this will not work on export: 'res://textures/world/bai_chuan/npc_native_20261106/avatar_atlas.png'. Instead, import the image file as an Image resource and load it normally as a resource.",
+        "WARNING: 4 ObjectDB instances were leaked at exit (run with `--verbose` for details)."
+      ],
+      "isolationAppData": "tmp/retirement_verification_20261108/isolated_appdata/baishi_plaque_current_admission",
+      "logs": {
+        "stdout": {
+          "path": "tmp/retirement_verification_20261108/baishi_plaque_current_admission.stdout.log",
+          "sha256": "a2f52a0e6d35fd40c6ff3b3adc6adbf08ab84478aa19b8cfb8516190451750d1"
+        },
+        "stderr": {
+          "path": "tmp/retirement_verification_20261108/baishi_plaque_current_admission.stderr.log",
+          "sha256": "6f8468f63f39ddbe6ac75959c4169db3249f75b4214f3e8abedc56320f24e4e1"
+        },
+        "engineLog": {
+          "path": "tmp/retirement_verification_20261108/baishi_plaque_current_admission.engine.log",
+          "sha256": "77a42319b2ca37636dc5f282a65255a4c8228094af99b06858f791527f082669"
+        }
+      }
+    },
+    {
+      "case": "baishi_plaque_default",
+      "scene": "res://tscn/debug/BaishiPlaqueSmoke.tscn",
+      "args": [],
+      "exitCode": 0,
+      "elapsedSeconds": 11.97,
+      "timedOut": false,
+      "passed": true,
+      "expectedMarker": "BAISHI_PLAQUE PASS: 45 checks",
+      "markers": [
+        "BAISHI_PLAQUE PASS: 45 checks"
+      ],
+      "errors": [],
+      "warnings": [
+        "WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs"
+      ],
+      "isolationAppData": "tmp/retirement_verification_20261108/isolated_appdata/baishi_plaque_default",
+      "logs": {
+        "stdout": {
+          "path": "tmp/retirement_verification_20261108/baishi_plaque_default.stdout.log",
+          "sha256": "ed1a5ed43cc1683d995d4c24ba5c6afd36884bb9351cae867b8b517b4c957046"
+        },
+        "stderr": {
+          "path": "tmp/retirement_verification_20261108/baishi_plaque_default.stderr.log",
+          "sha256": "84f888edfd9edd3c0370859444b2ba13cb80ef1af13537f62bda70880379d6e2"
+        },
+        "engineLog": {
+          "path": "tmp/retirement_verification_20261108/baishi_plaque_default.engine.log",
+          "sha256": "1968d96b40e0fdebab337b53120b575609f85575955b9da3e5cf4401ca49b12c"
+        }
+      }
+    },
+    {
+      "case": "forest_roundtrip",
+      "scene": "res://tools/ForestWolfBattleRoundtripSmoke.tscn",
+      "args": [],
+      "exitCode": -2147483645,
+      "elapsedSeconds": 11.67,
+      "timedOut": false,
+      "passed": false,
+      "expectedMarker": "FOREST_WOLF_BATTLE_ROUNDTRIP_PASS",
+      "markers": [
+        "ERROR: FATAL: Condition \"gchandle.is_released()\" is true."
+      ],
+      "errors": [
+        "ERROR: FATAL: Condition \"gchandle.is_released()\" is true."
+      ],
+      "warnings": [
+        "WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs"
+      ],
+      "isolationAppData": "tmp/retirement_verification_20261108/isolated_appdata/forest_roundtrip",
+      "logs": {
+        "stdout": {
+          "path": "tmp/retirement_verification_20261108/forest_roundtrip.stdout.log",
+          "sha256": "902531edeb3f55e4831b1b09cec5a7d3e27fb63f6669cd16771c397c8e13cdbe"
+        },
+        "stderr": {
+          "path": "tmp/retirement_verification_20261108/forest_roundtrip.stderr.log",
+          "sha256": "8b2338fdbc8730b82695d3ad4ade8d23e5a3f5ebdd8176e3128d3cceb1f56eef"
+        },
+        "engineLog": {
+          "path": "tmp/retirement_verification_20261108/forest_roundtrip.engine.log",
+          "sha256": "70d1422d75b3faee358e90f2d8e9e8a50f752b7af6683a6abdc706e4aa61d1b9"
+        }
+      }
+    },
+    {
+      "case": "forest_roundtrip_retry",
+      "scene": "res://tools/ForestWolfBattleRoundtripSmoke.tscn",
+      "args": [],
+      "exitCode": 0,
+      "elapsedSeconds": 25.28,
+      "timedOut": false,
+      "passed": true,
+      "expectedMarker": "FOREST_WOLF_BATTLE_ROUNDTRIP_PASS",
+      "markers": [
+        "FOREST_WOLF_BATTLE_ROUNDTRIP_PASS checks=17: native save/reload, actual scene entry, queued retreat, return episode, victory transport with defeated fixture, no player-slot writes"
+      ],
+      "errors": [],
+      "warnings": [
+        "WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs"
+      ],
+      "isolationAppData": "tmp/retirement_verification_20261108/isolated_appdata/forest_roundtrip_retry",
+      "logs": {
+        "stdout": {
+          "path": "tmp/retirement_verification_20261108/forest_roundtrip_retry.stdout.log",
+          "sha256": "7b3854b9155fcf89fa5183e1b3e77e2c435bcf2c9ff68c19be72215f86f04f8e"
+        },
+        "stderr": {
+          "path": "tmp/retirement_verification_20261108/forest_roundtrip_retry.stderr.log",
+          "sha256": "84f888edfd9edd3c0370859444b2ba13cb80ef1af13537f62bda70880379d6e2"
+        },
+        "engineLog": {
+          "path": "tmp/retirement_verification_20261108/forest_roundtrip_retry.engine.log",
+          "sha256": "2c3882d08d1532e9ba4589f26baa3fd3655515c991eb6c97668da1b2cd63743f"
+        }
+      }
+    },
+    {
+      "case": "gongfa",
+      "scene": "res://tools/GongfaAvailabilitySmoke.tscn",
+      "args": [],
+      "exitCode": 0,
+      "elapsedSeconds": 1.85,
+      "timedOut": false,
+      "passed": true,
+      "expectedMarker": "GONGFA_AVAILABILITY_SMOKE: 68 checks passed",
+      "markers": [
+        "GONGFA_AVAILABILITY_SMOKE: 68 checks passed; 太和感物养元宝册、斫基损契玄经、玄枢含章经、百骸衍枝化生宝册、舒卷天章"
+      ],
+      "errors": [],
+      "warnings": [
+        "WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs"
+      ],
+      "isolationAppData": "tmp/retirement_verification_20261108/isolated_appdata/gongfa",
+      "logs": {
+        "stdout": {
+          "path": "tmp/retirement_verification_20261108/gongfa.stdout.log",
+          "sha256": "dc74211859a441bfdaa7d6d4f2c5aad869c84c3c608bac473b4c83182a0f5bc1"
+        },
+        "stderr": {
+          "path": "tmp/retirement_verification_20261108/gongfa.stderr.log",
+          "sha256": "1bba527e6d485a9c68ef0e78a66a8a8232c8ec5fdf8f913bf041a6c1aee7e7cd"
+        },
+        "engineLog": {
+          "path": "tmp/retirement_verification_20261108/gongfa.engine.log",
+          "sha256": "0a38825e96186c4a639a7802c4fe030d0ee61616622259e9c4ae03c383e03db4"
+        }
+      }
+    },
+    {
+      "case": "journal",
+      "scene": "res://tools/JournalUiSmoke.tscn",
+      "args": [],
+      "exitCode": 1,
+      "elapsedSeconds": 2.62,
+      "timedOut": false,
+      "passed": false,
+      "expectedMarker": "JOURNAL_UI_SMOKE_OK",
+      "markers": [
+        "JOURNAL_CHECK_OK 任务栏正文宽336，高度不超过220",
+        "JOURNAL_CHECK_OK 任务栏25%顶锚",
+        "JOURNAL_CHECK_OK 任务栏恰好两项",
+        "JOURNAL_CHECK_OK 标题与目标不重叠",
+        "JOURNAL_CHECK_OK 无冗余任务栏标签",
+        "JOURNAL_CHECK_OK 收起后只剩窄签",
+        "JOURNAL_CHECK_OK 收起签与任务栏等高",
+        "JOURNAL_CHECK_OK 单击不打开任务",
+        "JOURNAL_CHECK_OK 双击按稳定标识定位任务",
+        "JOURNAL_CHECK_OK 取消追踪事件",
+        "JOURNAL_CHECK_OK 追踪事件使用稳定标识",
+        "JOURNAL_CHECK_OK 已完成筛选且不可追踪",
+        "JOURNAL_CHECK_OK 选中导航悬停及按下保留纸签",
+        "JOURNAL_CHECK_OK 未选中导航无黑底且文字保持可读",
+        "JOURNAL_CHECK_OK 全部记录四字单行",
+        "JOURNAL_CHECK_OK 切页不推进时间",
+        "JOURNAL_CHECK_OK 直接复用角色页背景",
+        "JOURNAL_CHECK_OK 空栏目显示",
+        "JOURNAL_CHECK_OK 预留入口保留",
+        "ERROR: System.InvalidOperationException: 长正文可滚动"
+      ],
+      "errors": [
+        "ERROR: System.InvalidOperationException: 长正文可滚动"
+      ],
+      "warnings": [],
+      "isolationAppData": "tmp/retirement_verification_20261108/isolated_appdata/journal",
+      "logs": {
+        "stdout": {
+          "path": "tmp/retirement_verification_20261108/journal.stdout.log",
+          "sha256": "77c04f73ec40604056a751c37083d6a81489c9f583656c0ab84d7b411e86ff4c"
+        },
+        "stderr": {
+          "path": "tmp/retirement_verification_20261108/journal.stderr.log",
+          "sha256": "eaa3cb2b83032ac4cc8f3f0cb699de29fe6c9315549d10f0007cfa0640230b22"
+        },
+        "engineLog": {
+          "path": "tmp/retirement_verification_20261108/journal.engine.log",
+          "sha256": "ca9109054f30b493d2de323273c7a12a41537edd2ca5387a23aa92e34b7f284f"
+        }
+      },
+      "passedAssertionsBeforeFailure": 19
+    },
+    {
+      "case": "userdir_probe",
+      "scene": "res://tmp/retirement_verification_20261108/userdir_probe.gd",
+      "args": [],
+      "exitCode": 0,
+      "elapsedSeconds": 3.76,
+      "timedOut": false,
+      "passed": true,
+      "expectedMarker": "RETIREMENT_USERDIR_ISOLATED_OK",
+      "markers": [
+        "RETIREMENT_USERDIR: E:/stacklands/tmp/retirement_verification_20261108/isolated_appdata/userdir_probe/SlayTheSpire2",
+        "RETIREMENT_USERDIR_ISOLATED_OK"
+      ],
+      "errors": [],
+      "warnings": [],
+      "isolationAppData": "tmp/retirement_verification_20261108/isolated_appdata/userdir_probe",
+      "logs": {
+        "stdout": {
+          "path": "tmp/retirement_verification_20261108/userdir_probe.stdout.log",
+          "sha256": "e3e5a12f0813ffce6260f84809c0c39a1f5510e1bf84093a60d7dca0852401c5"
+        },
+        "stderr": {
+          "path": "tmp/retirement_verification_20261108/userdir_probe.stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "engineLog": {
+          "path": "tmp/retirement_verification_20261108/userdir_probe.engine.log",
+          "sha256": "7ba557527c3828af6539722e0462bdd5df920aa41f7d7fbdac126d1c856ab373"
+        }
+      }
+    },
+    {
+      "case": "world_loot",
+      "scene": "res://tools/WorldLootCapacitySmoke.tscn",
+      "args": [],
+      "exitCode": 0,
+      "elapsedSeconds": 3.84,
+      "timedOut": false,
+      "passed": true,
+      "expectedMarker": "WORLD_LOOT_CAPACITY_SMOKE_OK 15",
+      "markers": [
+        "WORLD_LOOT_CAPACITY_SMOKE_OK 15"
+      ],
+      "errors": [],
+      "warnings": [],
+      "isolationAppData": "tmp/retirement_verification_20261108/isolated_appdata/world_loot",
+      "logs": {
+        "stdout": {
+          "path": "tmp/retirement_verification_20261108/world_loot.stdout.log",
+          "sha256": "65e87975a3670269be60b5ee36566aaa916696c76203efde5819b7ecde009508"
+        },
+        "stderr": {
+          "path": "tmp/retirement_verification_20261108/world_loot.stderr.log",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "engineLog": {
+          "path": "tmp/retirement_verification_20261108/world_loot.engine.log",
+          "sha256": "58a800b0583ebdaa115bb7bede9db419671c4a3f49ae1d268367224648d0ae59"
+        }
+      }
+    },
+    {
+      "case": "world_navigation",
+      "scene": "res://tools/WorldDungeonNavigationSmoke.tscn",
+      "args": [],
+      "exitCode": 1,
+      "elapsedSeconds": 1.66,
+      "timedOut": false,
+      "passed": false,
+      "expectedMarker": "WORLD_DUNGEON_NAVIGATION_PASS:",
+      "markers": [
+        "ERROR: System.NullReferenceException: Object reference not set to an instance of an object."
+      ],
+      "errors": [
+        "ERROR: System.NullReferenceException: Object reference not set to an instance of an object."
+      ],
+      "warnings": [],
+      "isolationAppData": "tmp/retirement_verification_20261108/isolated_appdata/world_navigation",
+      "logs": {
+        "stdout": {
+          "path": "tmp/retirement_verification_20261108/world_navigation.stdout.log",
+          "sha256": "2d322975baea2bb04065ae3a50fcd7211c642d4fe7e2004e6c59b3c3967c67fd"
+        },
+        "stderr": {
+          "path": "tmp/retirement_verification_20261108/world_navigation.stderr.log",
+          "sha256": "4cec17965b5384e3bf12215505b4328d65d447d8eb23ef1bbac65a247fe3ae90"
+        },
+        "engineLog": {
+          "path": "tmp/retirement_verification_20261108/world_navigation.engine.log",
+          "sha256": "487d90f1d0969d39cdbdb348ae3c52ea54928930b247013a31d3997e3b6efe74"
+        }
+      }
+    }
+  ],
+  "isolatedFixtureCleanup": {
+    "status": "blocked_by_tool_policy",
+    "attempts": [
+      {
+        "action": "删除已确认位于任务tmp目录内的隔离APPDATA目录",
+        "result": "blocked by policy"
+      },
+      {
+        "action": "改为列出6份确切fixture资源路径并逐文件删除",
+        "result": "blocked by policy"
+      }
+    ],
+    "reasonDetail": "自动审批仅返回 blocked by policy，未给出更具体原因；已停止，不换工具或方式绕过。",
+    "residualFiles": [
+      "tmp/retirement_verification_20261108/isolated_appdata/baishi_lecture_default/SlayTheSpire2/game_saves/20261108_175223_6115eafebcb34eb68974becdacb8cc2c.tres",
+      "tmp/retirement_verification_20261108/isolated_appdata/baishi_plaque_current_admission/SlayTheSpire2/baishi_lecture_guide.tres",
+      "tmp/retirement_verification_20261108/isolated_appdata/baishi_plaque_current_admission/SlayTheSpire2/baishi_reception_pending.tres",
+      "tmp/retirement_verification_20261108/isolated_appdata/baishi_plaque_current_admission/SlayTheSpire2/yuxu_registration_complete.tres",
+      "tmp/retirement_verification_20261108/isolated_appdata/baishi_plaque_current_admission/SlayTheSpire2/yuxu_registration_pending.tres",
+      "tmp/retirement_verification_20261108/isolated_appdata/forest_roundtrip/SlayTheSpire2/forest_roundtrip_99205b1371614e93ab2141dab2232aa5.tres"
+    ],
+    "residualResourceCount": 6,
+    "testSlotCount": 1,
+    "allInsideIsolatedTaskDirectory": true,
+    "actualPlayerSaveDirectoryTouched": false
+  },
+  "warningsBoundary": "0警告指编译结果。运行日志仍有既有资源UID回退、直接加载图片等警告；全部原始stderr保留，未宣称运行日志无警告。",
+  "sourceChangedForValidation": [
+    "csharp/debug/BaishiLectureSmoke.cs"
+  ],
+  "noFurtherUnrelatedRuntimeFixes": true
+}

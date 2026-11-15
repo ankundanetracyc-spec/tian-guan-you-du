@@ -1,0 +1,203 @@
+{
+  "date": "2026-11-09",
+  "scope": "按功能同列、撤去重复标题、三页灵识整组右对齐、炼器精力、中性纸色",
+  "build": {
+    "warnings": 0,
+    "errors": 0,
+    "log": "编译.log"
+  },
+  "runs": [
+    {
+      "page": "alchemy",
+      "width": 1280,
+      "status": "passed",
+      "exitCode": 0,
+      "checks": 153,
+      "captures": [
+        "alchemy_paper_main_1280.png",
+        "alchemy_paper_picker_utility_1280.png",
+        "alchemy_paper_picker_1280.png",
+        "alchemy_paper_notebook_1280.png",
+        "alchemy_paper_full_eight_1280.png"
+      ],
+      "report": "alchemy_checks_1280.json",
+      "log": "alchemy_原生复验_1280.log",
+      "scope": "formal alchemy UI; no brew"
+    },
+    {
+      "page": "alchemy",
+      "width": 1920,
+      "status": "passed",
+      "exitCode": 0,
+      "checks": 153,
+      "captures": [
+        "alchemy_paper_main_1920.png",
+        "alchemy_paper_picker_utility_1920.png",
+        "alchemy_paper_picker_1920.png",
+        "alchemy_paper_notebook_1920.png",
+        "alchemy_paper_full_eight_1920.png"
+      ],
+      "report": "alchemy_checks_1920.json",
+      "log": "alchemy_原生复验_1920.log",
+      "scope": "formal alchemy UI; no brew"
+    },
+    {
+      "page": "talisman",
+      "width": 1280,
+      "status": "passed",
+      "exitCode": 0,
+      "checks": 173,
+      "captures": [
+        "talisman_header_paper_1280.png",
+        "talisman_header_ink_1280.png",
+        "talisman_header_drawing_1280.png"
+      ],
+      "report": "talisman_checks_1280.json",
+      "log": "talisman_原生复验_1280.log",
+      "scope": "formal talisman header-only, no production"
+    },
+    {
+      "page": "talisman",
+      "width": 1920,
+      "status": "passed",
+      "exitCode": 0,
+      "checks": 173,
+      "captures": [
+        "talisman_header_paper_1920.png",
+        "talisman_header_ink_1920.png",
+        "talisman_header_drawing_1920.png"
+      ],
+      "report": "talisman_checks_1920.json",
+      "log": "talisman_原生复验_1920.log",
+      "scope": "formal talisman header-only, no production"
+    },
+    {
+      "page": "forging",
+      "width": 1280,
+      "status": "passed",
+      "exitCode": 0,
+      "checks": 298,
+      "captures": [
+        "炼器_主界面_1280.png",
+        "炼器_按钮悬停_1280.png",
+        "炼器_按钮按下_1280.png",
+        "炼器_质材_1280.png",
+        "炼器_选材_1280.png",
+        "炼器_性材_1280.png",
+        "炼器_和材_1280.png",
+        "炼器_器物册_1280.png",
+        "炼器_说明_1280.png",
+        "炼器_炉火定器_1280.png"
+      ],
+      "report": "forging_checks_1280.json",
+      "log": "forging_原生复验_1280.log",
+      "scope": "independent forging preview, no production settlement"
+    },
+    {
+      "page": "forging",
+      "width": 1920,
+      "status": "passed",
+      "exitCode": 0,
+      "checks": 298,
+      "captures": [
+        "炼器_主界面_1920.png",
+        "炼器_按钮悬停_1920.png",
+        "炼器_按钮按下_1920.png",
+        "炼器_质材_1920.png",
+        "炼器_选材_1920.png",
+        "炼器_性材_1920.png",
+        "炼器_和材_1920.png",
+        "炼器_器物册_1920.png",
+        "炼器_说明_1920.png",
+        "炼器_炉火定器_1920.png"
+      ],
+      "report": "forging_checks_1920.json",
+      "log": "forging_原生复验_1920.log",
+      "scope": "independent forging preview, no production settlement"
+    }
+  ],
+  "uiChecks": 1248,
+  "uiCaptures": 36,
+  "renderer": "custom Spine Godot4.7.2 Mono, Vulkan mobile, native Viewport",
+  "captureEditing": false,
+  "isolatedAppData": true,
+  "formalJourneyReadOrWritten": false,
+  "forgingSkinIntegrated": false,
+  "forgingEnergySource": "WorldStaminaRules.InitialCapacity; default preview, no new stamina rule or debit",
+  "sources": [
+    {
+      "path": "csharp/panel/CraftingPaperHeader.cs",
+      "sha256": "bbee101408cfd70d4a91750c83b5402aeec8b5f8314f017493339bf6370e1d60"
+    },
+    {
+      "path": "csharp/scene/AlchemySlotBrewPreviewScene.PaperSkin.cs",
+      "sha256": "cbcc94d59afb66390a8635aa0b0adee239d254750986615033329c66f34cfb69"
+    },
+    {
+      "path": "csharp/scene/AlchemySlotBrewPreviewScene.cs",
+      "sha256": "59d3f473119e5f57558fd442a1bbbe95f41ec97857ea48668bbcd78c8e423019"
+    },
+    {
+      "path": "csharp/scene/TalismanCraftingScene.cs",
+      "sha256": "256394ef53936ed27d3e5563b36dd312a2b063a72094d1cdb9549b918b256acc"
+    },
+    {
+      "path": "csharp/scene/TalismanCraftingScene.Presentation.cs",
+      "sha256": "75f2376ec1358efaabaebfb0c666a8e509a0e70ad6e97c227e54d76954a5f713"
+    },
+    {
+      "path": "csharp/scene/ForgingPaperPreviewScene.cs",
+      "sha256": "059ddcd37cf19afb573415b4f08c74f08ac9540dbf150a73e4daad2f52e06e28"
+    },
+    {
+      "path": "csharp/scene/ProcessForgingScene.FirePreview.cs",
+      "sha256": "8deeb3cd4f725dd075b00ea15653c552621daa7a0ff1a8182cc181df7ff47280"
+    },
+    {
+      "path": "csharp/debug/AlchemyPaperUiSmoke.cs",
+      "sha256": "2d035f5540bce4df72b1e666eee8a578039352899a873e11703a6a3fd7ec82ea"
+    },
+    {
+      "path": "csharp/debug/TalismanCraftingNativeSmoke.cs",
+      "sha256": "624eb088c729a3f90046bacb74d2b7baf22030b22946134d9d736587a42632cc"
+    },
+    {
+      "path": "tools/verify_forging_paper_preview.gd",
+      "sha256": "d49cec5ada1c0e4d0c064cb546143dcf61189c7a756c4465edf07dd0ce0de019"
+    },
+    {
+      "path": "tools/run_crafting_header_review.ps1",
+      "sha256": "40772f67c6c8cbcbd5c1494c96833f3f22219728f95b2b198f2ef58beea2dcfe"
+    }
+  ],
+  "knownWarning": "Existing 卸力.tres UID falls back to text path; final logs have no runtime error.",
+  "processRunner": "Start-Process -Wait -PassThru -WindowStyle Hidden; validates engine exit and PASS marker",
+  "intermediateNotes": [
+    "初次使用Windows直接启动在长脚本完成前提前结束，缺PASS的中间输出未当作验收；已改等待整个引擎进程后全部复跑。",
+    "共享项目并行阵法文件暂时缺类的一次构建失败已在文件齐备后重新完整构建通过；未修改阵法实现。"
+  ],
+  "productionRefreshRegression": {
+    "page": "talisman",
+    "width": 1280,
+    "checks": 509,
+    "captures": 16,
+    "exitCode": 0,
+    "status": "passed",
+    "report": "制作刷新复验/talisman_checks_1280.json",
+    "log": "制作刷新复验/制作刷新复验.log",
+    "assertions": "三工艺自然结束或跳过后，顶栏实际当前精力/可用灵识与隔离人物一致；原库存/精力/支付/保存回归沿原检查，不计入两档顶栏1248项。"
+  },
+  "visualReview": {
+    "forgingFinal": 20,
+    "alchemyFinal": 10,
+    "talismanHeaderFinal": 6,
+    "talismanResults": 3,
+    "result": "All36 final UI screenshots and3 talisman results reviewed; no header overlap, clipping, duplicate title or new dark caption block."
+  },
+  "linkValidation": {
+    "checked": 107,
+    "missing": 0,
+    "scope": "Current craft plan and both gallery readmes; follows new categorized docs paths."
+  },
+  "currentPlan": "docs/plans/界面与美术/工艺顶栏与炼丹控件修订_20261109.md"
+}

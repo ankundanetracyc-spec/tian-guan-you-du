@@ -1,0 +1,207 @@
+Godot Engine v4.7.2.stable.mono.custom_build.ed1daf0bf (2026-08-17 01:18:38 UTC) - https://godotengine.org
+Vulkan 1.4.329 - Forward Mobile - Using Device #0: NVIDIA - NVIDIA GeForce RTX 4060 Laptop GPU
+
+ALCHEMY_PAPER_UI_OK 使用项目内隔离用户目录
+ALCHEMY_PAPER_UI_OK 真实材料装入隔离人物 青木芯
+ALCHEMY_PAPER_UI_OK 真实材料装入隔离人物 山蚕长丝
+ALCHEMY_PAPER_UI_OK 真实材料装入隔离人物 灵泉露
+ALCHEMY_PAPER_UI_OK 真实材料装入隔离人物 溪纹藻丝
+ALCHEMY_PAPER_UI_OK 真实材料装入隔离人物 灵石
+ALCHEMY_PAPER_UI_OK 真实材料装入隔离人物 凝露松脂
+ALCHEMY_PAPER_UI_OK 真实材料装入隔离人物 回泉珠
+ALCHEMY_PAPER_UI_OK 真实材料装入隔离人物 月露苔
+ALCHEMY_PAPER_UI_OK 真实材料装入隔离人物 朱阳花籽
+ALCHEMY_PAPER_UI_OK 真实材料装入隔离人物 沉云玉屑
+ALCHEMY_PAPER_UI_OK 原材料全目录保持，未替换为网页11味夹具
+ALCHEMY_PAPER_UI_OK 正式Owner绑定真实造诣与灵识
+ALCHEMY_PAPER_UI_OK 人物造诣只读，精力显示真实100
+ALCHEMY_PAPER_UI_OK 药签用度使用真实素材 JunHerbCard
+ALCHEMY_PAPER_UI_OK 药签用度使用真实素材 ChenHerbCard
+ALCHEMY_PAPER_UI_OK 药签用度使用真实素材 ZuoHerbGroup
+ALCHEMY_PAPER_UI_OK 药签用度使用真实素材 ShiHerbGroup
+ALCHEMY_PAPER_UI_OK 药签用度使用真实素材 BatchRequirements
+ALCHEMY_PAPER_UI_OK 不同控件使用原生按钮素材 FormulaBookButton
+ALCHEMY_PAPER_UI_OK 不同控件使用原生按钮素材 BrewButton
+ALCHEMY_PAPER_UI_OK 不同控件使用原生按钮素材 ReturnButton
+ALCHEMY_PAPER_UI_OK 沿用项目楷体字体
+ALCHEMY_PAPER_UI_OK 统一返回位于右上角
+ALCHEMY_PAPER_UI_OK 工艺横条在独立返回前收口并保留16设计单位间隔
+ALCHEMY_PAPER_UI_OK 炼丹横条资源按钮同为22字46高且同行居中
+ALCHEMY_PAPER_UI_OK 横条内功能和资源均未延伸到返回区域
+ALCHEMY_PAPER_UI_OK 同类工艺信息使用固定列 AlchemyHelpButton
+ALCHEMY_PAPER_UI_OK 同类工艺信息使用固定列 CraftingHeaderSpirit
+ALCHEMY_PAPER_UI_OK 同类工艺信息使用固定列 CraftingHeaderEnergy
+ALCHEMY_PAPER_UI_OK 同类工艺信息使用固定列 CraftingHeaderAttainment
+ALCHEMY_PAPER_UI_OK 炼丹横条与下方阅读纸面使用相同素材和中性纸色
+ALCHEMY_PAPER_UI_OK 顶栏不再重复页面名和地点字样
+ALCHEMY_PAPER_UI_OK 灵识整组在固定资源栏内向右对齐
+ALCHEMY_PAPER_UI_OK 返回三角位于按钮内部文字右侧
+ALCHEMY_PAPER_UI_OK 丹炉保持演出所需的直接画布父节点
+ALCHEMY_PAPER_UI_OK 青木清露方四味真实资源为19灵识31精力8小时
+ALCHEMY_PAPER_UI_OK 用度显示真实资源并换算游戏小时
+ALCHEMY_PAPER_UI_OK 开炼前只展示本炉用度
+ALCHEMY_PAPER_UI_OK 真实材料精力灵识足够时允许开炼
+ALCHEMY_PAPER_UI_OK 移除炼成展示控件与丹方册副标题
+ALCHEMY_PAPER_UI_OK 丹方册使用新生成的透明册本图标
+ALCHEMY_PAPER_UI_OK 滚动条保留固定端帽仅拉伸直段
+ALCHEMY_PAPER_UI_OK 下拉项目不再借用折角页签素材
+ALCHEMY_PAPER_UI_OK 截图使用目标原生窗口尺寸 main
+ALCHEMY_PAPER_UI_OK 保存原生截图 main
+ALCHEMY_PAPER_UI_OK 控件可操作 DosePlus_0
+ALCHEMY_PAPER_UI_OK 君药加量按钮同步配伍与可见份数
+ALCHEMY_PAPER_UI_OK 控件可操作 DoseMinus_0
+ALCHEMY_PAPER_UI_OK 君药减量恢复原份数与显示
+ALCHEMY_PAPER_UI_OK 控件可操作 @Button@53
+ALCHEMY_PAPER_UI_OK 移除按钮只修改草稿药位
+ALCHEMY_PAPER_UI_OK 控件可操作 PickHerb_0
+ALCHEMY_PAPER_UI_OK 君药按钮打开真实拣药界面
+ALCHEMY_PAPER_UI_OK 拣药检索提示字可读
+ALCHEMY_PAPER_UI_OK 功用筛选同用途统一普通齐边纸面
+ALCHEMY_PAPER_UI_OK 控件可操作 UtilityFilter_破
+ALCHEMY_PAPER_UI_OK 功用选中仅换整纸状态不升级主操作或换页签
+ALCHEMY_PAPER_UI_OK 截图使用目标原生窗口尺寸 picker_utility
+ALCHEMY_PAPER_UI_OK 保存原生截图 picker_utility
+ALCHEMY_PAPER_UI_OK 控件可操作 ResetPickerFilters
+ALCHEMY_PAPER_UI_OK 正式拣药仅使用真实持有材料
+ALCHEMY_PAPER_UI_OK 同材其他药位禁选保持
+ALCHEMY_PAPER_UI_OK 截图使用目标原生窗口尺寸 picker
+ALCHEMY_PAPER_UI_OK 保存原生截图 picker
+ALCHEMY_PAPER_UI_OK 材料名称检索缩小实际目录
+ALCHEMY_PAPER_UI_OK 控件可操作 Material_凝露松脂
+ALCHEMY_PAPER_UI_OK 拣药点击更换君药草稿
+ALCHEMY_PAPER_UI_OK 控件可操作 PickHerb_0
+ALCHEMY_PAPER_UI_OK 控件可操作 ResetPickerFilters
+ALCHEMY_PAPER_UI_OK 五行筛选作用于实际持有目录
+ALCHEMY_PAPER_UI_OK 控件可操作 ResetPickerFilters
+ALCHEMY_PAPER_UI_OK 实际重置按钮恢复材料筛选
+ALCHEMY_PAPER_UI_OK 控件可操作 FormulaBookButton
+ALCHEMY_PAPER_UI_OK 丹方册按钮打开原生资料
+ALCHEMY_PAPER_UI_OK 丹方题名提示字可读
+ALCHEMY_PAPER_UI_OK 控件可操作 @Button@188
+ALCHEMY_PAPER_UI_OK 丹方册保留完整原目录，未截断为网页三方
+ALCHEMY_PAPER_UI_OK 控件可操作 KnownFormula_huichun_青木清露方
+ALCHEMY_PAPER_UI_OK 截图使用目标原生窗口尺寸 notebook
+ALCHEMY_PAPER_UI_OK 保存原生截图 notebook
+ALCHEMY_PAPER_UI_OK 控件可操作 @Button@189
+ALCHEMY_PAPER_UI_OK 我的丹方仍读回原保存格式
+ALCHEMY_PAPER_UI_OK 控件可操作 @Button@779
+ALCHEMY_PAPER_UI_OK 控件可操作 @Button@204
+ALCHEMY_PAPER_UI_OK 载入保存丹方不改写记录或丢失投料
+ALCHEMY_PAPER_UI_OK 满配夹具使用八种真实持有材料
+ALCHEMY_PAPER_UI_OK 508造诣显示君臣佐使全部八味
+ALCHEMY_PAPER_UI_OK 第三位开放时药签保持326高 ZuoHerbGroup
+ALCHEMY_PAPER_UI_OK 第三位开放时药签保持326高 ShiHerbGroup
+ALCHEMY_PAPER_UI_OK 八味控件未越过药签边界 0
+ALCHEMY_PAPER_UI_OK 控件可操作 PickHerb_0
+ALCHEMY_PAPER_UI_OK 八味选药点击到达正确药位 0
+ALCHEMY_PAPER_UI_OK 控件可操作 DosePlus_0
+ALCHEMY_PAPER_UI_OK 八味份数加量点击有效 0
+ALCHEMY_PAPER_UI_OK 控件可操作 DoseMinus_0
+ALCHEMY_PAPER_UI_OK 八味份数减量点击恢复 0
+ALCHEMY_PAPER_UI_OK 八味控件未越过药签边界 1
+ALCHEMY_PAPER_UI_OK 控件可操作 PickHerb_1
+ALCHEMY_PAPER_UI_OK 八味选药点击到达正确药位 1
+ALCHEMY_PAPER_UI_OK 控件可操作 DosePlus_1
+ALCHEMY_PAPER_UI_OK 八味份数加量点击有效 1
+ALCHEMY_PAPER_UI_OK 控件可操作 DoseMinus_1
+ALCHEMY_PAPER_UI_OK 八味份数减量点击恢复 1
+ALCHEMY_PAPER_UI_OK 八味控件未越过药签边界 2
+ALCHEMY_PAPER_UI_OK 控件可操作 PickHerb_2
+ALCHEMY_PAPER_UI_OK 八味选药点击到达正确药位 2
+ALCHEMY_PAPER_UI_OK 控件可操作 DosePlus_2
+ALCHEMY_PAPER_UI_OK 八味份数加量点击有效 2
+ALCHEMY_PAPER_UI_OK 控件可操作 DoseMinus_2
+ALCHEMY_PAPER_UI_OK 八味份数减量点击恢复 2
+ALCHEMY_PAPER_UI_OK 八味控件未越过药签边界 3
+ALCHEMY_PAPER_UI_OK 控件可操作 PickHerb_3
+ALCHEMY_PAPER_UI_OK 八味选药点击到达正确药位 3
+ALCHEMY_PAPER_UI_OK 控件可操作 DosePlus_3
+ALCHEMY_PAPER_UI_OK 八味份数加量点击有效 3
+ALCHEMY_PAPER_UI_OK 控件可操作 DoseMinus_3
+ALCHEMY_PAPER_UI_OK 八味份数减量点击恢复 3
+ALCHEMY_PAPER_UI_OK 八味控件未越过药签边界 4
+ALCHEMY_PAPER_UI_OK 控件可操作 PickHerb_4
+ALCHEMY_PAPER_UI_OK 八味选药点击到达正确药位 4
+ALCHEMY_PAPER_UI_OK 控件可操作 DosePlus_4
+ALCHEMY_PAPER_UI_OK 八味份数加量点击有效 4
+ALCHEMY_PAPER_UI_OK 控件可操作 DoseMinus_4
+ALCHEMY_PAPER_UI_OK 八味份数减量点击恢复 4
+ALCHEMY_PAPER_UI_OK 八味控件未越过药签边界 5
+ALCHEMY_PAPER_UI_OK 控件可操作 PickHerb_5
+ALCHEMY_PAPER_UI_OK 八味选药点击到达正确药位 5
+ALCHEMY_PAPER_UI_OK 控件可操作 DosePlus_5
+ALCHEMY_PAPER_UI_OK 八味份数加量点击有效 5
+ALCHEMY_PAPER_UI_OK 控件可操作 DoseMinus_5
+ALCHEMY_PAPER_UI_OK 八味份数减量点击恢复 5
+ALCHEMY_PAPER_UI_OK 八味控件未越过药签边界 6
+ALCHEMY_PAPER_UI_OK 控件可操作 PickHerb_6
+ALCHEMY_PAPER_UI_OK 八味选药点击到达正确药位 6
+ALCHEMY_PAPER_UI_OK 控件可操作 DosePlus_6
+ALCHEMY_PAPER_UI_OK 八味份数加量点击有效 6
+ALCHEMY_PAPER_UI_OK 控件可操作 DoseMinus_6
+ALCHEMY_PAPER_UI_OK 八味份数减量点击恢复 6
+ALCHEMY_PAPER_UI_OK 八味控件未越过药签边界 7
+ALCHEMY_PAPER_UI_OK 控件可操作 PickHerb_7
+ALCHEMY_PAPER_UI_OK 八味选药点击到达正确药位 7
+ALCHEMY_PAPER_UI_OK 控件可操作 DosePlus_7
+ALCHEMY_PAPER_UI_OK 八味份数加量点击有效 7
+ALCHEMY_PAPER_UI_OK 控件可操作 DoseMinus_7
+ALCHEMY_PAPER_UI_OK 八味份数减量点击恢复 7
+ALCHEMY_PAPER_UI_OK 截图使用目标原生窗口尺寸 full_eight
+ALCHEMY_PAPER_UI_OK 保存原生截图 full_eight
+ALCHEMY_PAPER_UI_OK 纯配伍浏览不扣料精力、不推进历法、不生成炉次记录
+ALCHEMY_PAPER_UI_OK 开炼标记期间返回保护保持
+ALCHEMY_PAPER_UI_OK 鉴看领取阶段返回保护保持
+ALCHEMY_PAPER_UI_OK 控件可操作 ReturnButton
+ALCHEMY_PAPER_UI_OK 右上返回只关闭正式Owner页面，不切换旅程场景
+ALCHEMY_PAPER_UI_PASS width=1280 checks=153 captures=5
+
+WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs
+   at: ResourceLoaderText::load (scene\resources\resource_format_text.cpp:501)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1268(nint, nint, string, string, int) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\NativeCalls.cs:11632)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\ResourceLoader.cs:120)
+       [2] T Godot.ResourceLoader.Load<T>(string, string, Godot.ResourceLoader+CacheMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\Extensions\ResourceLoaderExtensions.cs:27)
+       [3] T Godot.GD.Load<T>(string) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\GD.cs:129)
+       [4] void AlchemyPaperUiSmoke.LoadCatalog()
+       [5] void AlchemyPaperUiSmoke+<Run>d__39.MoveNext()
+       [6] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [7] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [8] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [9] void System.Threading.Tasks.Task.RunContinuations(object)
+       [10] bool System.Threading.Tasks.Task`1.TrySetResult(TResult)
+       [11] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.SetExistingTaskResult(System.Threading.Tasks.Task`1[TResult], TResult)
+       [12] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [13] void AlchemyPaperUiSmoke+<Frames>d__23.MoveNext()
+       [14] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [15] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [16] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\SignalAwaiter.cs:65)
+WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs
+   at: ResourceLoaderText::load (scene\resources\resource_format_text.cpp:501)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1268(nint, nint, string, string, int) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\NativeCalls.cs:11632)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\ResourceLoader.cs:120)
+       [2] T Godot.ResourceLoader.Load<T>(string, string, Godot.ResourceLoader+CacheMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\Extensions\ResourceLoaderExtensions.cs:27)
+       [3] T Godot.GD.Load<T>(string) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\GD.cs:129)
+       [4] void AlchemySlotBrewPreviewScene.LoadMaterials()
+       [5] void AlchemySlotBrewPreviewScene._Ready()
+       [6] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\Node.cs:2660)
+       [7] bool Godot.CanvasItem.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\CanvasItem.cs:1845)
+       [8] bool Godot.Control.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\Control.cs:4029)
+       [9] bool AlchemySlotBrewPreviewScene.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [10] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\Bridge\CSharpInstanceBridge.cs:24)
+       [11] void Godot.NativeInterop.NativeFuncs.godotsharp_method_bind_ptrcall(nint, nint, System.Void**, System.Void*) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\obj\Debug\Godot.SourceGenerators.Internal\Godot.SourceGenerators.Internal.UnmanagedCallbacksGenerator\Godot.NativeInterop.NativeFuncs.generated.cs:380)
+       [12] void Godot.NativeCalls.godot_icall_3_912(nint, nint, nint, Godot.NativeInterop.godot_bool, int) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\NativeCalls.cs:8082)
+       [13] void Godot.Node.AddChild(Godot.Node, bool, Godot.Node+InternalMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\Node.cs:848)
+       [14] void AlchemyPaperUiSmoke+<Run>d__39.MoveNext()
+       [15] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [16] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [17] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [18] void System.Threading.Tasks.Task.RunContinuations(object)
+       [19] bool System.Threading.Tasks.Task`1.TrySetResult(TResult)
+       [20] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1.SetExistingTaskResult(System.Threading.Tasks.Task`1[TResult], TResult)
+       [21] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [22] void AlchemyPaperUiSmoke+<Frames>d__23.MoveNext()
+       [23] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [24] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [25] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\SignalAwaiter.cs:65)
