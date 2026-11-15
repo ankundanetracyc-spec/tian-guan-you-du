@@ -1,0 +1,1241 @@
+{
+  "revision": 2,
+  "date": "2026-11-08",
+  "recordedAtUtc": "2026-11-08T11:26:54.846855+00:00",
+  "status": "passed",
+  "browser": "Microsoft Edge / Playwright CLI",
+  "independentSession": "rest-v2-qa",
+  "passed": 145,
+  "failed": 0,
+  "baselinePassed": 116,
+  "fullModePassed": 29,
+  "captureCount": 14,
+  "viewports": [
+    [
+      1920,
+      1080
+    ],
+    [
+      1280,
+      720
+    ]
+  ],
+  "scope": "仅休息独立样稿修订2；一次现有116项基础回归与29项恢复精力至上限专项。未扩测其他面板。",
+  "mainCaptureState": {
+    "case": "day",
+    "mode": "full",
+    "current": 40,
+    "maximum": 100,
+    "hours": 60,
+    "wakeDate": [
+      1,
+      3,
+      17
+    ]
+  },
+  "recoveryRule": {
+    "field": "REST_RULES.recoveryPerHour",
+    "value": 1,
+    "integerHours": "Math.ceil((maximum-current)/recoveryPerHour)"
+  },
+  "specialFixtures": {
+    "full": "URL-only，100/100，0小时、禁止开始，可回手动",
+    "fractional": "URL-only，99.2/100，取整1小时，显示恢复0.8点"
+  },
+  "visualReview": "已目视两档回满主图及入夜、指定日期、剧情限定、未绑定代表图。窄木压边、同族标题和三列模式无截字、溢出或素材残块，保持卧房加便笺构图。",
+  "issuesFound": [],
+  "results": [
+    {
+      "name": "1920/day: correct sample",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/day: every visible control in viewport",
+      "pass": true,
+      "detail": [],
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/day: material controls and triangle exception",
+      "pass": true,
+      "detail": [],
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/day: note content fits",
+      "pass": true,
+      "detail": {
+        "height": 693,
+        "content": 693
+      },
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/day: no added resources/old prologue",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/day: no clock readout",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/day: correct day/night room",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/night: correct sample",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/night: every visible control in viewport",
+      "pass": true,
+      "detail": [],
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/night: material controls and triangle exception",
+      "pass": true,
+      "detail": [],
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/night: note content fits",
+      "pass": true,
+      "detail": {
+        "height": 693,
+        "content": 693
+      },
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/night: no added resources/old prologue",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/night: no clock readout",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/night: correct day/night room",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/date: correct sample",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/date: every visible control in viewport",
+      "pass": true,
+      "detail": [],
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/date: material controls and triangle exception",
+      "pass": true,
+      "detail": [],
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/date: note content fits",
+      "pass": true,
+      "detail": {
+        "height": 693,
+        "content": 693
+      },
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/date: no added resources/old prologue",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/date: no clock readout",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/date: correct day/night room",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1920: year rollover uses 30-day calendar",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/fixed: correct sample",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/fixed: every visible control in viewport",
+      "pass": true,
+      "detail": [],
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/fixed: material controls and triangle exception",
+      "pass": true,
+      "detail": [],
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/fixed: note content fits",
+      "pass": true,
+      "detail": {
+        "height": 693,
+        "content": 693
+      },
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/fixed: no added resources/old prologue",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/fixed: no clock readout",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/fixed: correct day/night room",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1920: fixed story hides free controls",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1920: fixed existing duration",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/unbound: correct sample",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/unbound: every visible control in viewport",
+      "pass": true,
+      "detail": [],
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/unbound: material controls and triangle exception",
+      "pass": true,
+      "detail": [],
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/unbound: note content fits",
+      "pass": true,
+      "detail": {
+        "height": 693,
+        "content": 693
+      },
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/unbound: no added resources/old prologue",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/unbound: no clock readout",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1920/unbound: correct day/night room",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1920: unknown values remain dashes",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1920: no unbound action",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/day: correct sample",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/day: every visible control in viewport",
+      "pass": true,
+      "detail": [],
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/day: material controls and triangle exception",
+      "pass": true,
+      "detail": [],
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/day: note content fits",
+      "pass": true,
+      "detail": {
+        "height": 693,
+        "content": 693
+      },
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/day: no added resources/old prologue",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/day: no clock readout",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/day: correct day/night room",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/night: correct sample",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/night: every visible control in viewport",
+      "pass": true,
+      "detail": [],
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/night: material controls and triangle exception",
+      "pass": true,
+      "detail": [],
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/night: note content fits",
+      "pass": true,
+      "detail": {
+        "height": 693,
+        "content": 693
+      },
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/night: no added resources/old prologue",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/night: no clock readout",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/night: correct day/night room",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/date: correct sample",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/date: every visible control in viewport",
+      "pass": true,
+      "detail": [],
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/date: material controls and triangle exception",
+      "pass": true,
+      "detail": [],
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/date: note content fits",
+      "pass": true,
+      "detail": {
+        "height": 693,
+        "content": 693
+      },
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/date: no added resources/old prologue",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/date: no clock readout",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/date: correct day/night room",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1280: year rollover uses 30-day calendar",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/fixed: correct sample",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/fixed: every visible control in viewport",
+      "pass": true,
+      "detail": [],
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/fixed: material controls and triangle exception",
+      "pass": true,
+      "detail": [],
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/fixed: note content fits",
+      "pass": true,
+      "detail": {
+        "height": 693,
+        "content": 693
+      },
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/fixed: no added resources/old prologue",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/fixed: no clock readout",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/fixed: correct day/night room",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1280: fixed story hides free controls",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1280: fixed existing duration",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/unbound: correct sample",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/unbound: every visible control in viewport",
+      "pass": true,
+      "detail": [],
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/unbound: material controls and triangle exception",
+      "pass": true,
+      "detail": [],
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/unbound: note content fits",
+      "pass": true,
+      "detail": {
+        "height": 693,
+        "content": 693
+      },
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/unbound: no added resources/old prologue",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/unbound: no clock readout",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1280/unbound: correct day/night room",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1280: unknown values remain dashes",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "1280: no unbound action",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "default duration and recovery match existing fixture",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "bare up triangle increments duration",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "bare down triangle decrements duration",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "duration minimum remains one",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "duration maximum remains 720",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "recovery caps at existing capacity",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "typed duration clamps to existing minimum",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "typed duration clamps to existing maximum",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "duration is integral after commit",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "incomplete duration cannot start",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "mode changes preserve current time",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "same-date rest disabled",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "same-date reason is visible",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "past date disabled",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "future date uses implicit same-hour alignment",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "switching back preserves duration",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "choosing wake date does not switch current bedroom",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "next year first day displayed",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "each month has 30 days",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "date day upper bound",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "date month upper bound",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "date year upper bound",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "start shows arrangement preview",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "prototype boundary stays in review toolbar",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "viewing arrangement does not settle resources/time",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "Escape closes preview before rest screen",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "focus returns to primary action",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "Escape returns from rest",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "reopen preserves configured state",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "return has a real preview response",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "keyboard mode activation",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "visible focus treatment exists",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "reduced-motion preserves fixed rest",
+      "pass": true,
+      "detail": null,
+      "phase": "baseline"
+    },
+    {
+      "name": "no browser persistence writes",
+      "pass": true,
+      "detail": {
+        "local": 0,
+        "session": 0
+      },
+      "phase": "baseline"
+    },
+    {
+      "name": "no script errors",
+      "pass": true,
+      "detail": [],
+      "phase": "baseline"
+    },
+    {
+      "name": "all loaded assets resolve",
+      "pass": true,
+      "detail": [],
+      "phase": "baseline"
+    },
+    {
+      "name": "回满沿现行每小时恢复1点规则",
+      "pass": true,
+      "detail": null,
+      "phase": "full"
+    },
+    {
+      "name": "第三模式有明确恢复精力至上限名称",
+      "pass": true,
+      "detail": null,
+      "phase": "full"
+    },
+    {
+      "name": "白昼40/100回满需要60小时且恢复至100",
+      "pass": true,
+      "detail": {
+        "valid": true,
+        "mode": "full",
+        "hours": 60,
+        "recovered": 60,
+        "after": 100,
+        "date": [
+          1,
+          3,
+          17
+        ]
+      },
+      "phase": "full"
+    },
+    {
+      "name": "白昼醒来日期为1年3月17日",
+      "pass": true,
+      "detail": null,
+      "phase": "full"
+    },
+    {
+      "name": "回满只显示只读时长并隐藏手动输入",
+      "pass": true,
+      "detail": null,
+      "phase": "full"
+    },
+    {
+      "name": "回满预览不改变实际精力和当前日期",
+      "pass": true,
+      "detail": null,
+      "phase": "full"
+    },
+    {
+      "name": "回满可预览60小时安排",
+      "pass": true,
+      "detail": null,
+      "phase": "full"
+    },
+    {
+      "name": "查看回满安排未结算时间或资源",
+      "pass": true,
+      "detail": null,
+      "phase": "full"
+    },
+    {
+      "name": "关闭回满安排后焦点返回开始休息",
+      "pass": true,
+      "detail": null,
+      "phase": "full"
+    },
+    {
+      "name": "入夜40/100同为60小时，醒于1年3月18日",
+      "pass": true,
+      "detail": {
+        "valid": true,
+        "mode": "full",
+        "hours": 60,
+        "recovered": 60,
+        "after": 100,
+        "date": [
+          1,
+          3,
+          18
+        ]
+      },
+      "phase": "full"
+    },
+    {
+      "name": "回满选择不提前切换当前入夜卧房",
+      "pass": true,
+      "detail": null,
+      "phase": "full"
+    },
+    {
+      "name": "不足1点缺额向上取整为1小时",
+      "pass": true,
+      "detail": {
+        "valid": true,
+        "mode": "full",
+        "hours": 1,
+        "recovered": 0.7999999999999972,
+        "after": 100,
+        "date": [
+          1,
+          3,
+          15
+        ]
+      },
+      "phase": "full"
+    },
+    {
+      "name": "小数恢复显示0.8点，无浮点尾数",
+      "pass": true,
+      "detail": null,
+      "phase": "full"
+    },
+    {
+      "name": "满精力回满需要0小时且不可开始",
+      "pass": true,
+      "detail": {
+        "valid": false,
+        "mode": "full",
+        "alreadyFull": true,
+        "hours": 0,
+        "recovered": 0,
+        "after": 100,
+        "date": [
+          1,
+          3,
+          15
+        ],
+        "reason": "精力已满，无需休息。"
+      },
+      "phase": "full"
+    },
+    {
+      "name": "满精力仍可返回手动时长安排",
+      "pass": true,
+      "detail": null,
+      "phase": "full"
+    },
+    {
+      "name": "固定剧情隐藏全部自由模式及回满区",
+      "pass": true,
+      "detail": null,
+      "phase": "full"
+    },
+    {
+      "name": "固定剧情仍锁定8小时与原恢复",
+      "pass": true,
+      "detail": {
+        "valid": true,
+        "mode": "fixed",
+        "hours": 8,
+        "recovered": 8,
+        "after": 48,
+        "date": [
+          1,
+          3,
+          16
+        ]
+      },
+      "phase": "full"
+    },
+    {
+      "name": "未知资料禁止回满和开始，保留未知显示",
+      "pass": true,
+      "detail": null,
+      "phase": "full"
+    },
+    {
+      "name": "切至回满不覆盖手动时长和指定日期",
+      "pass": true,
+      "detail": null,
+      "phase": "full"
+    },
+    {
+      "name": "三模式切回手动保留13小时",
+      "pass": true,
+      "detail": null,
+      "phase": "full"
+    },
+    {
+      "name": "三模式切回日期保留2年5月2日",
+      "pass": true,
+      "detail": null,
+      "phase": "full"
+    },
+    {
+      "name": "1920回满模式全部控件和三列标签文字在界内",
+      "pass": true,
+      "detail": {
+        "escaped": [],
+        "textEscaped": [],
+        "bare": [],
+        "contentHeight": 693,
+        "innerHeight": 693,
+        "tabs": [
+          165.8746337890625,
+          165.8746337890625,
+          165.874755859375
+        ]
+      },
+      "phase": "full"
+    },
+    {
+      "name": "1920回满便笺内容不溢出",
+      "pass": true,
+      "detail": {
+        "escaped": [],
+        "textEscaped": [],
+        "bare": [],
+        "contentHeight": 693,
+        "innerHeight": 693,
+        "tabs": [
+          165.8746337890625,
+          165.8746337890625,
+          165.874755859375
+        ]
+      },
+      "phase": "full"
+    },
+    {
+      "name": "1920回满控件沿用素材且三列等宽",
+      "pass": true,
+      "detail": {
+        "escaped": [],
+        "textEscaped": [],
+        "bare": [],
+        "contentHeight": 693,
+        "innerHeight": 693,
+        "tabs": [
+          165.8746337890625,
+          165.8746337890625,
+          165.874755859375
+        ]
+      },
+      "phase": "full"
+    },
+    {
+      "name": "1280回满模式全部控件和三列标签文字在界内",
+      "pass": true,
+      "detail": {
+        "escaped": [],
+        "textEscaped": [],
+        "bare": [],
+        "contentHeight": 693,
+        "innerHeight": 693,
+        "tabs": [
+          107.21563720703125,
+          107.21563720703125,
+          107.21563720703125
+        ]
+      },
+      "phase": "full"
+    },
+    {
+      "name": "1280回满便笺内容不溢出",
+      "pass": true,
+      "detail": {
+        "escaped": [],
+        "textEscaped": [],
+        "bare": [],
+        "contentHeight": 693,
+        "innerHeight": 693,
+        "tabs": [
+          107.21563720703125,
+          107.21563720703125,
+          107.21563720703125
+        ]
+      },
+      "phase": "full"
+    },
+    {
+      "name": "1280回满控件沿用素材且三列等宽",
+      "pass": true,
+      "detail": {
+        "escaped": [],
+        "textEscaped": [],
+        "bare": [],
+        "contentHeight": 693,
+        "innerHeight": 693,
+        "tabs": [
+          107.21563720703125,
+          107.21563720703125,
+          107.21563720703125
+        ]
+      },
+      "phase": "full"
+    },
+    {
+      "name": "新增回满交互无浏览器存储写入",
+      "pass": true,
+      "detail": [],
+      "phase": "full"
+    },
+    {
+      "name": "新增回满交互无脚本或素材错误",
+      "pass": true,
+      "detail": {
+        "errors": [],
+        "failedResponses": []
+      },
+      "phase": "full"
+    }
+  ],
+  "captures": [
+    {
+      "file": "休息_白昼_1920.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "305f28e332f11c02ac3f55078446271dc87efb59637ed8e94d87a211bd6944dc",
+      "source": "output/playwright/rest-v2-qa/休息_白昼_1920.png"
+    },
+    {
+      "file": "休息_入夜_1920.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "c53020c1d07c25c5e5c543f67e817abb85a18194344ac2109862d78d26131793",
+      "source": "output/playwright/rest-v2-qa/休息_入夜_1920.png"
+    },
+    {
+      "file": "休息_指定日期_1920.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "d672dacc8e0a44d7f452b2c2c586cd2edfccd3439622791cca11832a21c0d86e",
+      "source": "output/playwright/rest-v2-qa/休息_指定日期_1920.png"
+    },
+    {
+      "file": "休息_剧情限定_1920.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "3b308dbfea852944735a4eb3ae58690cb176ee0783b056991dc2b4259ddf5310",
+      "source": "output/playwright/rest-v2-qa/休息_剧情限定_1920.png"
+    },
+    {
+      "file": "休息_未绑定_1920.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "fcbbeb7d6c18f4eda8bcc314704f701342825fe7fdf3b0638ca0fa341cd1dfc3",
+      "source": "output/playwright/rest-v2-qa/休息_未绑定_1920.png"
+    },
+    {
+      "file": "休息_白昼_1280.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "686740cfb94913b2bb4fceb02b352616cc2471f376cb057e0bffc0dfaede1f3e",
+      "source": "output/playwright/rest-v2-qa/休息_白昼_1280.png"
+    },
+    {
+      "file": "休息_入夜_1280.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "2278b137bce2e062f6e264ff239337d032ef82a9b52be64de3415a37701c415e",
+      "source": "output/playwright/rest-v2-qa/休息_入夜_1280.png"
+    },
+    {
+      "file": "休息_指定日期_1280.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "0b3f0e5e5f2b97ab0c856ad530a9306def7dc8184d996b20089d9f9e43d3e2e7",
+      "source": "output/playwright/rest-v2-qa/休息_指定日期_1280.png"
+    },
+    {
+      "file": "休息_剧情限定_1280.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "0cd7fe0142dae2f8534817960451a67076513cc9bce19ccd6ed103b2cf648dc2",
+      "source": "output/playwright/rest-v2-qa/休息_剧情限定_1280.png"
+    },
+    {
+      "file": "休息_未绑定_1280.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "2f62a9909320f603f0ba917f0f7d7f5bfd178421df4405ca757315ca2f60763f",
+      "source": "output/playwright/rest-v2-qa/休息_未绑定_1280.png"
+    },
+    {
+      "file": "休息_无效日期_1280.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "c1f8a57361fab4ead1ebf8d663cea359c7590f5042a353709c39f285cfc7302b",
+      "source": "output/playwright/rest-v2-qa/休息_无效日期_1280.png"
+    },
+    {
+      "file": "休息_安排预览_1280.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "272dc14f7188056cb206551cb0b68fbaf12e048f960083c8a2f508ad21247340",
+      "source": "output/playwright/rest-v2-qa/休息_安排预览_1280.png"
+    },
+    {
+      "file": "休息_精力回满_1920.png",
+      "size": [
+        1920,
+        1080
+      ],
+      "sha256": "e5e5f847c05d2d59b93f5f3b1132642e5b8bd878f47a23062e835ef15861a485",
+      "source": "output/playwright/rest-v2-qa/休息_精力回满_1920.png"
+    },
+    {
+      "file": "休息_精力回满_1280.png",
+      "size": [
+        1280,
+        720
+      ],
+      "sha256": "d89bb36bd87550f0a0c14b8733aa1aa6468083f259d40ac6c9c65ed42977316d",
+      "source": "output/playwright/rest-v2-qa/休息_精力回满_1280.png"
+    }
+  ],
+  "errors": [],
+  "failedResponses": [],
+  "storageWritesObserved": [],
+  "sourceHashes": [
+    {
+      "file": "index.html",
+      "sha256": "e34e3e36d66500f6bad1c4eee1d8f4abfc85dbb01ee3c90e3e276a6c238aacb8"
+    },
+    {
+      "file": "rest.js",
+      "sha256": "462a073cba58791f3dc57c6f66c09741f8f50649ced2f8b75117c65614a0ef1f"
+    },
+    {
+      "file": "rest.css",
+      "sha256": "fbfa7753f5d148d1572391aff29d6b1e8bebf646b6da49657c38089f3ea7aa12"
+    },
+    {
+      "file": "fixture.js",
+      "sha256": "ec823fbdef2a701168989957f4fb5c654a17ff4161336b1fbcc253a20487e78f"
+    },
+    {
+      "file": "browser-checks.js",
+      "sha256": "b053bd1fc2be2d9d7d71213c3c8558b4d75233ca2dc20ec6ea9807c3ac5cb335"
+    }
+  ],
+  "playerFilesRead": false,
+  "persistenceWritten": false,
+  "gameIntegrated": false,
+  "priorRecordPreserved": true,
+  "notes": [
+    "原browser-checks.js未修改；只将副本截图目标改到output后再逐文件复制。",
+    "原有昼夜、日期、固定、未知、无效日期与安排预览图均已刷新；新增两档休息_精力回满主图。",
+    "每小时1点规则由最终接口recoveryPerHour读取；专项未硬编码不存在的rate字段。",
+    "没有改写源PNG或生成替代绘图，所有完整图均来自浏览器真实渲染截图。"
+  ]
+}

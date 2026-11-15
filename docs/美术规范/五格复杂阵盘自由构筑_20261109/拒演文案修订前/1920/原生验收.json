@@ -1,0 +1,143 @@
+{
+  "date": "2026-11-09",
+  "passed": true,
+  "error": null,
+  "stage": "退出释放",
+  "preview_only": false,
+  "native_checks": 53,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "appdata": "E:\\stacklands\\.godot\\test-results\\formation_freebuild_ui\\20261109_174722_174_1920\\isolated_appdata",
+  "draft_path": "user://formation_freebuild_ui/1920/isolated_draft.json",
+  "real_journey_loaded": false,
+  "character_save_opened": false,
+  "items_or_knowledge_granted": false,
+  "scope": "Actual five-grid editing and current compiled circuit trial. Earlier fixed graph/UI counts are not reused.",
+  "checks": [
+    "视口与独立用户资料均为本轮配置",
+    "真实入口仍保留初阶四格，未载入人物旅程",
+    "FormationBoardSize下拉展开时Q/E不切背后工具或改图",
+    "真实规格菜单扩大旧草图并移动固定眼",
+    "真实选择高级件并放入第五行第五列",
+    "状态来源参数实际写入元件并采用对应单位",
+    "高级件实际R旋转",
+    "高级件右键可取下",
+    "Q在第五行真实铺信号线",
+    "E在第五行铺供能且不混已有信号线",
+    "清理新物后可缩回四格并保持原基础连通",
+    "实际示例菜单载入合法五格并同步规格",
+    "五格真实复杂度9/10，常显格线而无名称状态签",
+    "高级部件有真实同族贴图 StateInput",
+    "高级部件有真实同族贴图 Compare",
+    "高级部件有真实同族贴图 Not",
+    "高级部件有真实同族贴图 Switch",
+    "高级部件有真实同族贴图 Fire",
+    "高级部件有真实同族贴图 Guard",
+    "没有图的与或门未混入部件栏",
+    "本档边界完整 FormationDrawingArea",
+    "本档边界完整 FormationInspectorPaper",
+    "保存本档真实视口 01_五格完整编辑页.png",
+    "画布实际命中比较器",
+    "右栏读取实际比较器区间和阈值",
+    "保存本档真实视口 02_真实比较器阈值.png",
+    "顶部试演入口进入第三页并编译当前草图",
+    "试演使用隔离真实人物和当前八个功能节点",
+    "二十生命真实付款开罩，守态事件没有攻击",
+    "真实试演不会改写局外草图",
+    "本档边界完整 ControlTrialReadout",
+    "保存本档真实视口 03_当前草图二十生命开罩.png",
+    "八十生命撤本器罩，新事件真实扣敌人生命和阵能",
+    "重发实际事件不重复攻击或扣费",
+    "本档边界完整 ControlTrialReadout",
+    "保存本档真实视口 04_当前草图八十生命伤敌.png",
+    "画布实际命中比较器",
+    "ControlCompareMode下拉展开时Q/E不切背后工具或改图",
+    "比较阈值数值输入收到Q/E时不切铺线或改图",
+    "实际应用5/15阈值并释放旧图试演人物",
+    "展开事件参数后来源框真实键入qe而不串快捷键",
+    "同为二十生命，仅改草图阈值就从护罩变为真实攻击",
+    "运行遵当前节点阈值，不回套固定试演参数",
+    "保存真实五格草图，不洗当前源余量与执行账本",
+    "坏草图读取不破坏当前图或运行实例",
+    "原生读回五格、新参数及实际连接",
+    "本档边界完整 ControlTrialReadout",
+    "保存本档真实视口 05_改阈值后同生命转攻.png",
+    "实际擦断关键线后明确拒演，不继续旧图或固定守攻",
+    "拒演已释放旧人物，并给出断线原因",
+    "保存本档真实视口 06_断线明确拒绝运行.png",
+    "真实接回线路后可以重新编译当前图",
+    "返回释放工作台和试演人物并恢复百工"
+  ],
+  "bounds": [
+    {
+      "name": "FormationDrawingArea",
+      "x": 422.86926,
+      "y": 135.43039,
+      "width": 1026.0574,
+      "height": 864.22955
+    },
+    {
+      "name": "FormationInspectorPaper",
+      "x": 1467.29,
+      "y": 135.43039,
+      "width": 424.65463,
+      "height": 864.22955
+    },
+    {
+      "name": "ControlTrialReadout",
+      "x": 1485.6534,
+      "y": 386.78003,
+      "width": 373.00745,
+      "height": 115.919235
+    },
+    {
+      "name": "ControlTrialReadout",
+      "x": 1485.6534,
+      "y": 386.78003,
+      "width": 373.00745,
+      "height": 115.919235
+    },
+    {
+      "name": "ControlTrialReadout",
+      "x": 1485.6534,
+      "y": 358.08716,
+      "width": 373.00745,
+      "height": 115.919235
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "01_五格完整编辑页.png",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "file": "02_真实比较器阈值.png",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "file": "03_当前草图二十生命开罩.png",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "file": "04_当前草图八十生命伤敌.png",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "file": "05_改阈值后同生命转攻.png",
+      "width": 1920,
+      "height": 1080
+    },
+    {
+      "file": "06_断线明确拒绝运行.png",
+      "width": 1920,
+      "height": 1080
+    }
+  ],
+  "visual_review": "pending per-image inspection"
+}

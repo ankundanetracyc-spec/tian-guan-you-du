@@ -1,0 +1,1026 @@
+{
+  "version": "20261109-compact-owned",
+  "scope": "人物页已学持有清册与五类按钮；两边紧凑配招、局内资源栏下置。人物仍为网页样稿，模板存档未互通。",
+  "build": {
+    "success": true,
+    "warnings": 0,
+    "errors": 0,
+    "log": "battle-compact-build.log",
+    "note": "一次构建发现既有冒烟测试的数组构造歧义，改为显式数组后通过，测试含义和游戏规则不变。"
+  },
+  "web_checks": 148,
+  "web_owned": {
+    "passed": 33,
+    "failed": 0,
+    "errors": [],
+    "missing": [],
+    "checks": [
+      {
+        "name": "1920px: homepage lists learned skills including ones outside applied board",
+        "passed": true
+      },
+      {
+        "name": "1920px: homepage contains no applied board or applied summary",
+        "passed": true
+      },
+      {
+        "name": "1920px: learning and current configurability remain separate",
+        "passed": true
+      },
+      {
+        "name": "1920px: rewrite collection is explicit acquisition rather than global library",
+        "passed": true
+      },
+      {
+        "name": "1920px: owned pills display physical quantity",
+        "passed": true
+      },
+      {
+        "name": "1920px: unowned talismans use empty state",
+        "passed": true
+      },
+      {
+        "name": "1920px: search filters acquisition collection",
+        "passed": true
+      },
+      {
+        "name": "1920px: current applied configuration appears only after entering editor",
+        "passed": true
+      },
+      {
+        "name": "1920px: configuration board stays smaller",
+        "passed": true
+      },
+      {
+        "name": "1920px: unapplied edits cannot alter collection or applied copy",
+        "passed": true
+      },
+      {
+        "name": "1920px: applying empty board keeps all learned entries",
+        "passed": true
+      },
+      {
+        "name": "1920px: source snapshot filters unlearned skills",
+        "passed": true
+      },
+      {
+        "name": "1920px: zero inventory hides item despite old catalog stock",
+        "passed": true
+      },
+      {
+        "name": "1920px: configuration reservation does not reduce owned quantity",
+        "passed": true
+      },
+      {
+        "name": "1920px: configuration validates snapshot quantity instead of catalog stock",
+        "passed": true
+      },
+      {
+        "name": "1920px: empty acquisition data cannot fall back to global skill library",
+        "passed": true
+      },
+      {
+        "name": "1280px: homepage lists learned skills including ones outside applied board",
+        "passed": true
+      },
+      {
+        "name": "1280px: homepage contains no applied board or applied summary",
+        "passed": true
+      },
+      {
+        "name": "1280px: learning and current configurability remain separate",
+        "passed": true
+      },
+      {
+        "name": "1280px: rewrite collection is explicit acquisition rather than global library",
+        "passed": true
+      },
+      {
+        "name": "1280px: owned pills display physical quantity",
+        "passed": true
+      },
+      {
+        "name": "1280px: unowned talismans use empty state",
+        "passed": true
+      },
+      {
+        "name": "1280px: search filters acquisition collection",
+        "passed": true
+      },
+      {
+        "name": "1280px: current applied configuration appears only after entering editor",
+        "passed": true
+      },
+      {
+        "name": "1280px: configuration board stays smaller",
+        "passed": true
+      },
+      {
+        "name": "1280px: unapplied edits cannot alter collection or applied copy",
+        "passed": true
+      },
+      {
+        "name": "1280px: applying empty board keeps all learned entries",
+        "passed": true
+      },
+      {
+        "name": "1280px: source snapshot filters unlearned skills",
+        "passed": true
+      },
+      {
+        "name": "1280px: zero inventory hides item despite old catalog stock",
+        "passed": true
+      },
+      {
+        "name": "1280px: configuration reservation does not reduce owned quantity",
+        "passed": true
+      },
+      {
+        "name": "1280px: configuration validates snapshot quantity instead of catalog stock",
+        "passed": true
+      },
+      {
+        "name": "1280px: empty acquisition data cannot fall back to global skill library",
+        "passed": true
+      },
+      {
+        "name": "no script errors or missing material assets",
+        "passed": true
+      }
+    ]
+  },
+  "web_loadout": {
+    "passed": 115,
+    "failed": 0,
+    "errors": [],
+    "missing": [],
+    "checks": [
+      {
+        "name": "1920px: overview has applied opening board",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: removed ribbon and combat preview stay absent",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: homepage is owned collection and keeps configuration inside editor",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: loadout occupies complete viewport",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: editor has sources combos and full-board plans",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: all persistent board control bars are removed",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: editor only has return above floating board",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: source panel uses actual in-battle material",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: every placed object has material frame",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: frames use eight texture slices without center",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: editing cannot change default opening",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: return without applying preserves opening",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: unapplied draft survives reopening",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: bare background closes without applying or discarding draft",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: apply commits an empty valid opening",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: opening API returns an independent copy",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: hover shows before dragging",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: drag hides hover and shows full candidate art",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: right click rotates complete source while dragging",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: only dragged original art is hidden",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: escape cancels drag without changing board or closing editor",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: invalid inside drop restores complete original",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: dragging outside removes placed object and keeps editor open",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: source outside cancels without a later ghost placement",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: reducing multiselect to one keeps keyboard target synchronized",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: empty cell clears selection without hidden keyboard target",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: combo inserts both sources together",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: combo placement leaves applied opening unchanged",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: out-of-bounds combo is atomic",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: duplicate rewrite limit rejects complete combo",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: group movement uses explicit selected objects",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: selected group moves as one unit",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: moving group preserves placement identities",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: group rotation keeps actual arrow direction",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: empty combo name is rejected",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: selected relative arrangement is saved",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: Delete removes entire selected group",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: removing objects cannot edit saved combo",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: saved vertical combo retains relative cells",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: combo renaming keeps layout",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: deleting a combo keeps placed objects",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: shift selects separate objects without persistent multiselect button",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: user selection creates a reusable combo",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: same-name combo save replaces only that combo",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: missing stock plan cannot partially replace draft",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: scheme replaces entire board",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: loading a scheme cannot apply it automatically",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: full-board save retains all placements",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: overwrite changes only active full-board scheme",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: new scheme creates a separately named empty board",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: rename is available within full-screen scheme tab",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: deleting a full-board scheme preserves draft",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: apply adopts current full board as opening",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: apply does not overwrite stored templates",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: opening clone matches applied snapshot",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1920px: applying a board cannot replace learned collection with board contents",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: overview has applied opening board",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: removed ribbon and combat preview stay absent",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: homepage is owned collection and keeps configuration inside editor",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: loadout occupies complete viewport",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: editor has sources combos and full-board plans",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: all persistent board control bars are removed",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: editor only has return above floating board",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: source panel uses actual in-battle material",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: every placed object has material frame",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: frames use eight texture slices without center",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: editing cannot change default opening",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: return without applying preserves opening",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: unapplied draft survives reopening",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: bare background closes without applying or discarding draft",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: apply commits an empty valid opening",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: opening API returns an independent copy",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: hover shows before dragging",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: drag hides hover and shows full candidate art",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: right click rotates complete source while dragging",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: only dragged original art is hidden",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: escape cancels drag without changing board or closing editor",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: invalid inside drop restores complete original",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: dragging outside removes placed object and keeps editor open",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: source outside cancels without a later ghost placement",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: reducing multiselect to one keeps keyboard target synchronized",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: empty cell clears selection without hidden keyboard target",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: combo inserts both sources together",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: combo placement leaves applied opening unchanged",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: out-of-bounds combo is atomic",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: duplicate rewrite limit rejects complete combo",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: group movement uses explicit selected objects",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: selected group moves as one unit",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: moving group preserves placement identities",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: group rotation keeps actual arrow direction",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: empty combo name is rejected",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: selected relative arrangement is saved",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: Delete removes entire selected group",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: removing objects cannot edit saved combo",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: saved vertical combo retains relative cells",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: combo renaming keeps layout",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: deleting a combo keeps placed objects",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: shift selects separate objects without persistent multiselect button",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: user selection creates a reusable combo",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: same-name combo save replaces only that combo",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: missing stock plan cannot partially replace draft",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: scheme replaces entire board",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: loading a scheme cannot apply it automatically",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: full-board save retains all placements",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: overwrite changes only active full-board scheme",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: new scheme creates a separately named empty board",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: rename is available within full-screen scheme tab",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: deleting a full-board scheme preserves draft",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: apply adopts current full board as opening",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: apply does not overwrite stored templates",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: opening clone matches applied snapshot",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "1280px: applying a board cannot replace learned collection with board contents",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "no script errors",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "all material assets load",
+        "passed": true,
+        "detail": ""
+      },
+      {
+        "name": "no browser storage writes",
+        "passed": true,
+        "detail": ""
+      }
+    ]
+  },
+  "native_checks": 198,
+  "native": {
+    "1920": {
+      "report": {
+        "passed": true,
+        "checks": 99,
+        "layout_only": true,
+        "size": [
+          1920,
+          1080
+        ],
+        "engine": "4.7.2-stable (custom_build)",
+        "renderer": "Windows",
+        "captures": [
+          "11_组合整组转向预览.png",
+          "12_统一方案载入页.png",
+          "01_整份占形边框与紧凑来源.png",
+          "02_来源转向与合法落点预览.png",
+          "03_拖动物整体隐藏原位置.png",
+          "04_右键转向后的落点.png",
+          "05_非法落点预览.png",
+          "06_拖出卸下后的有效布局.png",
+          "10_拖放同种丹药补空瓶.png"
+        ],
+        "items": [
+          "独立试演沿真实战前入口打开",
+          "真实人类战斗场景就绪",
+          "编辑停在合法阶段",
+          "使用正式可旋转双格痛击",
+          "移除三个常驻旋转移出补药按钮",
+          "顶栏没有重复的旧返回按钮",
+          "编辑时共享导航显示返回",
+          "返回只隐藏配招并保留草稿",
+          "战场查看时同位置显示配招",
+          "同一位置重新打开配招",
+          "右侧来源栏收窄",
+          "分类按钮采用紧凑高度",
+          "局内与人物配招共用来源组合方案三栏结构",
+          "局内没有模板保存新建删除操作",
+          "局内编辑盘保持紧凑并保留实际占形",
+          "外围手持采用只读同族示意",
+          "局内保留战场背景并使用相同深暗幕",
+          "配招层撤去战场倍速暂停控件",
+          "真实资源栏位于盘下并与开始按钮留有间距",
+          "仅在隔离用户目录准备真实来源模板",
+          "组合页在同一纸卷中切换且隐藏来源分类",
+          "组合读取已保存相对布局而不注入样稿假数据",
+          "组合整体开始原生拖拽",
+          "组合拖入以完整多物占形统一校验",
+          "局内组合支持拖动中右键整体转向",
+          "原生画面 11_组合整组转向预览",
+          "释放后拖拽会话结束",
+          "合法松手一次提交整组并保留各自朝向",
+          "组合新增使用独立身份且不复用模板编号",
+          "越界组合整组拒绝没有部分插入",
+          "当前角色缺少全部组合来源时也不崩溃或写入",
+          "检查组合时保留且移动必需指示物",
+          "缺少真实库存时整组丹药不写入",
+          "准备位于组合空隙内的已有招式",
+          "组合外接框中的空隙不预留不覆盖已有招式",
+          "组合载入不改变资源库存或回合",
+          "方案页展示入场配置与实际已保存整盘",
+          "原生画面 12_统一方案载入页",
+          "载入整盘回来源并保留必需指示物",
+          "局内仅载入且不改写组合方案库",
+          "准备横双格原招式",
+          "准备碰撞对象",
+          "保留心法必需的周天指示",
+          "原生画面 01_整份占形边框与紧凑来源",
+          "来源悬停可正常显示",
+          "悬停及其所有子控件不拦截鼠标",
+          "来源招式开始原生拖拽",
+          "来源拖动不隐藏盘内其他同名招式",
+          "原生拖起立即收起信息栏",
+          "来源进入盘内显示合法落点预览",
+          "拖拽中按R旋转候选",
+          "旋转后按完整新占形检查落点",
+          "拖拽停留时不重开信息栏",
+          "来源拖动不生成旧原生空白提示框",
+          "原生画面 02_来源转向与合法落点预览",
+          "释放后拖拽会话结束",
+          "释放实际提交转向后的竖双格",
+          "释放后编辑页保持且全局拖拽抑制结束",
+          "原招式第二占格开始原生拖拽",
+          "拖起原物隐去显示但事务提交前保留原布局",
+          "第二格抓取保留相对锚点不跳左上角",
+          "原生图像确认原位内部图标已隐去",
+          "原生画面 03_拖动物整体隐藏原位置",
+          "拖拽中右键旋转且不触发返回",
+          "右键旋转后鼠标仍对应抓取位置",
+          "原生画面 04_右键转向后的落点",
+          "盘内拖动与右键转向均没有信息栏或空白旧框",
+          "释放后拖拽会话结束",
+          "移动提交保留原身份与新方向",
+          "盘内非法落点开始原生拖拽",
+          "盘内冲突落点显示非法预览",
+          "原生画面 05_非法落点预览",
+          "释放后拖拽会话结束",
+          "盘内无效释放完整还原而不卸下",
+          "锁定周天指示开始原生拖拽",
+          "盘外预览不伪装成可落点",
+          "释放后拖拽会话结束",
+          "锁定对象拖出连同候选转向回原位",
+          "普通对象拖出开始原生拖拽",
+          "释放后拖拽会话结束",
+          "拖出只卸下目标份不影响同名另一份",
+          "拖出取消装配不会误关暗幕",
+          "来源拖出取消开始原生拖拽",
+          "释放后拖拽会话结束",
+          "来源盘外释放只取消不新增",
+          "来源取消后没有残留点击待摆状态",
+          "原生画面 06_拖出卸下后的有效布局",
+          "准备实存丹药的盘内占形",
+          "同种丹药补空瓶开始原生拖拽",
+          "来源拖到同占形空瓶显示可补药预览",
+          "原生画面 10_拖放同种丹药补空瓶",
+          "释放后拖拽会话结束",
+          "直接拖药补入保留原空瓶身份",
+          "补入只预留实际服药前不扣库存",
+          "移出补入丹药开始原生拖拽",
+          "释放后拖拽会话结束",
+          "拖出未服丹药释放预留不生成或扣除物品",
+          "配招拖放不改变资源库存或推进回合",
+          "隔离验收不切换正式旅程"
+        ]
+      },
+      "exit_code": 0,
+      "stderr_empty": true
+    },
+    "1280": {
+      "report": {
+        "passed": true,
+        "checks": 99,
+        "layout_only": true,
+        "size": [
+          1280,
+          720
+        ],
+        "engine": "4.7.2-stable (custom_build)",
+        "renderer": "Windows",
+        "captures": [
+          "11_组合整组转向预览.png",
+          "12_统一方案载入页.png",
+          "01_整份占形边框与紧凑来源.png",
+          "02_来源转向与合法落点预览.png",
+          "03_拖动物整体隐藏原位置.png",
+          "04_右键转向后的落点.png",
+          "05_非法落点预览.png",
+          "06_拖出卸下后的有效布局.png",
+          "10_拖放同种丹药补空瓶.png"
+        ],
+        "items": [
+          "独立试演沿真实战前入口打开",
+          "真实人类战斗场景就绪",
+          "编辑停在合法阶段",
+          "使用正式可旋转双格痛击",
+          "移除三个常驻旋转移出补药按钮",
+          "顶栏没有重复的旧返回按钮",
+          "编辑时共享导航显示返回",
+          "返回只隐藏配招并保留草稿",
+          "战场查看时同位置显示配招",
+          "同一位置重新打开配招",
+          "右侧来源栏收窄",
+          "分类按钮采用紧凑高度",
+          "局内与人物配招共用来源组合方案三栏结构",
+          "局内没有模板保存新建删除操作",
+          "局内编辑盘保持紧凑并保留实际占形",
+          "外围手持采用只读同族示意",
+          "局内保留战场背景并使用相同深暗幕",
+          "配招层撤去战场倍速暂停控件",
+          "真实资源栏位于盘下并与开始按钮留有间距",
+          "仅在隔离用户目录准备真实来源模板",
+          "组合页在同一纸卷中切换且隐藏来源分类",
+          "组合读取已保存相对布局而不注入样稿假数据",
+          "组合整体开始原生拖拽",
+          "组合拖入以完整多物占形统一校验",
+          "局内组合支持拖动中右键整体转向",
+          "原生画面 11_组合整组转向预览",
+          "释放后拖拽会话结束",
+          "合法松手一次提交整组并保留各自朝向",
+          "组合新增使用独立身份且不复用模板编号",
+          "越界组合整组拒绝没有部分插入",
+          "当前角色缺少全部组合来源时也不崩溃或写入",
+          "检查组合时保留且移动必需指示物",
+          "缺少真实库存时整组丹药不写入",
+          "准备位于组合空隙内的已有招式",
+          "组合外接框中的空隙不预留不覆盖已有招式",
+          "组合载入不改变资源库存或回合",
+          "方案页展示入场配置与实际已保存整盘",
+          "原生画面 12_统一方案载入页",
+          "载入整盘回来源并保留必需指示物",
+          "局内仅载入且不改写组合方案库",
+          "准备横双格原招式",
+          "准备碰撞对象",
+          "保留心法必需的周天指示",
+          "原生画面 01_整份占形边框与紧凑来源",
+          "来源悬停可正常显示",
+          "悬停及其所有子控件不拦截鼠标",
+          "来源招式开始原生拖拽",
+          "来源拖动不隐藏盘内其他同名招式",
+          "原生拖起立即收起信息栏",
+          "来源进入盘内显示合法落点预览",
+          "拖拽中按R旋转候选",
+          "旋转后按完整新占形检查落点",
+          "拖拽停留时不重开信息栏",
+          "来源拖动不生成旧原生空白提示框",
+          "原生画面 02_来源转向与合法落点预览",
+          "释放后拖拽会话结束",
+          "释放实际提交转向后的竖双格",
+          "释放后编辑页保持且全局拖拽抑制结束",
+          "原招式第二占格开始原生拖拽",
+          "拖起原物隐去显示但事务提交前保留原布局",
+          "第二格抓取保留相对锚点不跳左上角",
+          "原生图像确认原位内部图标已隐去",
+          "原生画面 03_拖动物整体隐藏原位置",
+          "拖拽中右键旋转且不触发返回",
+          "右键旋转后鼠标仍对应抓取位置",
+          "原生画面 04_右键转向后的落点",
+          "盘内拖动与右键转向均没有信息栏或空白旧框",
+          "释放后拖拽会话结束",
+          "移动提交保留原身份与新方向",
+          "盘内非法落点开始原生拖拽",
+          "盘内冲突落点显示非法预览",
+          "原生画面 05_非法落点预览",
+          "释放后拖拽会话结束",
+          "盘内无效释放完整还原而不卸下",
+          "锁定周天指示开始原生拖拽",
+          "盘外预览不伪装成可落点",
+          "释放后拖拽会话结束",
+          "锁定对象拖出连同候选转向回原位",
+          "普通对象拖出开始原生拖拽",
+          "释放后拖拽会话结束",
+          "拖出只卸下目标份不影响同名另一份",
+          "拖出取消装配不会误关暗幕",
+          "来源拖出取消开始原生拖拽",
+          "释放后拖拽会话结束",
+          "来源盘外释放只取消不新增",
+          "来源取消后没有残留点击待摆状态",
+          "原生画面 06_拖出卸下后的有效布局",
+          "准备实存丹药的盘内占形",
+          "同种丹药补空瓶开始原生拖拽",
+          "来源拖到同占形空瓶显示可补药预览",
+          "原生画面 10_拖放同种丹药补空瓶",
+          "释放后拖拽会话结束",
+          "直接拖药补入保留原空瓶身份",
+          "补入只预留实际服药前不扣库存",
+          "移出补入丹药开始原生拖拽",
+          "释放后拖拽会话结束",
+          "拖出未服丹药释放预留不生成或扣除物品",
+          "配招拖放不改变资源库存或推进回合",
+          "隔离验收不切换正式旅程"
+        ]
+      },
+      "exit_code": 0,
+      "stderr_empty": true
+    }
+  },
+  "native_test_scope": "两档均为 --unified-editor-checks --layout-only --max-fps 60；包含布局、只读模板、组合及盘内拖放、库存和资源不变，不重跑遍历动画及共同回合。",
+  "attempt_history": "1920首次组合右键转向采样未通过，无完成报告；增加失败时诊断后重建，1920与1280均通过。未改转向规则或移除断言。首次日志另存attempt1，不计通过数。",
+  "assets": {
+    "grid_parts_atlas.png": {
+      "sha256": "0b6732787fa96c0ff0a33624c573c9e0c6c57604ded3a4260f53142d38bb6c6f",
+      "unchanged": true
+    },
+    "source_panel.png": {
+      "sha256": "439b8b36fff086b9da5366a7bc7ca48a9ed05247c28a880457c85c5f589d5b5d",
+      "unchanged": true
+    },
+    "tooltip_panel.png": {
+      "sha256": "cf9d9601f621611aa934e0a4adbcebe55e07d6b60c5f0861741057423dbd9a95",
+      "unchanged": true
+    },
+    "buttons_atlas.png": {
+      "sha256": "30b083d2b5e8b178efb07f11731ae318e14e1192e4c94a2997326d06bbb7a2fe",
+      "unchanged": true
+    },
+    "resources_atlas.png": {
+      "sha256": "0775139a218c297500613feb35e676542137f7cb311a5ee5cade3361010e0a39",
+      "unchanged": true
+    }
+  },
+  "source_sha256": {
+    "csharp/battle/BattleBoardHud.cs": "9b3815b50714fc081e402c03348adf82714d4aab3c5e3eaa0ef821d1fb291db2",
+    "csharp/debug/CombatBoardInteractionSmoke.cs": "5fbd10a9e4a9028ac55194e627e32636fefb63ca5c7f734cb9c284f9f94c5858",
+    "csharp/debug/HumanCombatBoardSmoke.cs": "08ee77b22fae5f7b55e11a32b5b27fe2f9420c0cd21eda080d3e2b0adad4209e",
+    "docs/美术规范/角色与静室纸墨木石样稿_20261108/battle-data.js": "9d78f6973ec55f5ab4bd41fc427c1347ff51339ac38f0de8b0781aac4c0c4a14",
+    "docs/美术规范/角色与静室纸墨木石样稿_20261108/battle-preview.js": "a9b9fd56e5b7e59c53bc35f92f01b278cdf7dbdfad07fb98c40f7d18725146c0",
+    "docs/美术规范/角色与静室纸墨木石样稿_20261108/battle-preview.css": "adf67a6329d3d789866bd5d542f06be1afab1868dfdd38391196a8b76f7a7030",
+    "docs/美术规范/角色与静室纸墨木石样稿_20261108/battle-workspace.html": "6637de8fcce722ca3ddb43dfedee75beb5d90c1ebc2b6505c547bae9a3ed231d"
+  },
+  "assembly_sha256": "4dcf61dd5eabb4c49a48cebc0db4262486bbc7129f982c3f18624bab9b4ed225"
+}

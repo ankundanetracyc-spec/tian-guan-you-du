@@ -1,0 +1,18 @@
+ERROR: FORMATION_FREEBUILD_UI_FAIL 一次真实输入与原始动画帧 System.Exception: 同次发生的前中后真实盘面像素不同，脉点确实移动
+   at FormationFreeBuildUiSmoke.Check(Boolean passed, String message)
+   at FormationFreeBuildUiSmoke.CaptureFlowFrames(Plan plan, Snapshot settled, Result result)
+   at FormationFreeBuildUiSmoke.RunClassificationAndFlow()
+   at FormationFreeBuildUiSmoke._Ready()
+   at: void FormationFreeBuildUiSmoke+<_Ready>d__21.MoveNext() (res://:0)
+   C# backtrace (most recent call first):
+       [0] void Godot.GD.PushError(string) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\GD.cs:366)
+       [1] void FormationFreeBuildUiSmoke+<_Ready>d__21.MoveNext()
+       [2] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [3] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [4] void System.Threading.Tasks.AwaitTaskContinuation.RunCallback(System.Threading.ContextCallback, object, System.Threading.Tasks.Task&)
+       [5] void System.Threading.Tasks.Task.RunContinuations(object)
+       [6] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder.SetResult()
+       [7] void FormationFreeBuildUiSmoke+<Capture>d__46.MoveNext()
+       [8] void System.Threading.ExecutionContext.RunInternal(System.Threading.ExecutionContext, System.Threading.ContextCallback, object)
+       [9] void System.Runtime.CompilerServices.AsyncTaskMethodBuilder`1+AsyncStateMachineBox`1.MoveNext(System.Threading.Thread)
+       [10] void Godot.SignalAwaiter.SignalCallback(nint, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_bool*) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\SignalAwaiter.cs:65)

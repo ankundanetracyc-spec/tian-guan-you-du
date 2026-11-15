@@ -1,0 +1,19 @@
+E:\stacklands\csharp\debug\TalismanCraftingNativeSmoke.cs(196,22): error CS1061: “Character”未包含“TryCraftTalisman”的定义，并且找不到可接受第一个“Character”类型参数的可访问扩展方法“TryCraftTalisman”(是否缺少 using 指令或程序集引用?) [E:\stacklands\Stacklands.csproj]
+E:\stacklands\csharp\debug\TalismanCraftingNativeSmoke.cs(257,22): error CS1061: “Character”未包含“TryBuyTalismanBrush”的定义，并且找不到可接受第一个“Character”类型参数的可访问扩展方法“TryBuyTalismanBrush”(是否缺少 using 指令或程序集引用?) [E:\stacklands\Stacklands.csproj]
+E:\stacklands\csharp\scene\TalismanCraftingScene.Choices.cs(240,32): error CS1061: “Character”未包含“TryBuyTalismanBrush”的定义，并且找不到可接受第一个“Character”类型参数的可访问扩展方法“TryBuyTalismanBrush”(是否缺少 using 指令或程序集引用?) [E:\stacklands\Stacklands.csproj]
+E:\stacklands\csharp\scene\TalismanCraftingScene.Choices.cs(258,40): error CS1061: “Character”未包含“TryLearnTalismanMethod”的定义，并且找不到可接受第一个“Character”类型参数的可访问扩展方法“TryLearnTalismanMethod”(是否缺少 using 指令或程序集引用?) [E:\stacklands\Stacklands.csproj]
+E:\stacklands\csharp\scene\TalismanCraftingScene.cs(268,29): error CS1061: “Character”未包含“TryCraftTalisman”的定义，并且找不到可接受第一个“Character”类型参数的可访问扩展方法“TryCraftTalisman”(是否缺少 using 指令或程序集引用?) [E:\stacklands\Stacklands.csproj]
+E:\stacklands\csharp\systems\TalismanCraftingService.cs(192,40): error CS0103: 当前上下文中不存在名称“EvaluateDrawing” [E:\stacklands\Stacklands.csproj]
+
+生成失败。
+
+E:\stacklands\csharp\debug\TalismanCraftingNativeSmoke.cs(196,22): error CS1061: “Character”未包含“TryCraftTalisman”的定义，并且找不到可接受第一个“Character”类型参数的可访问扩展方法“TryCraftTalisman”(是否缺少 using 指令或程序集引用?) [E:\stacklands\Stacklands.csproj]
+E:\stacklands\csharp\debug\TalismanCraftingNativeSmoke.cs(257,22): error CS1061: “Character”未包含“TryBuyTalismanBrush”的定义，并且找不到可接受第一个“Character”类型参数的可访问扩展方法“TryBuyTalismanBrush”(是否缺少 using 指令或程序集引用?) [E:\stacklands\Stacklands.csproj]
+E:\stacklands\csharp\scene\TalismanCraftingScene.Choices.cs(240,32): error CS1061: “Character”未包含“TryBuyTalismanBrush”的定义，并且找不到可接受第一个“Character”类型参数的可访问扩展方法“TryBuyTalismanBrush”(是否缺少 using 指令或程序集引用?) [E:\stacklands\Stacklands.csproj]
+E:\stacklands\csharp\scene\TalismanCraftingScene.Choices.cs(258,40): error CS1061: “Character”未包含“TryLearnTalismanMethod”的定义，并且找不到可接受第一个“Character”类型参数的可访问扩展方法“TryLearnTalismanMethod”(是否缺少 using 指令或程序集引用?) [E:\stacklands\Stacklands.csproj]
+E:\stacklands\csharp\scene\TalismanCraftingScene.cs(268,29): error CS1061: “Character”未包含“TryCraftTalisman”的定义，并且找不到可接受第一个“Character”类型参数的可访问扩展方法“TryCraftTalisman”(是否缺少 using 指令或程序集引用?) [E:\stacklands\Stacklands.csproj]
+E:\stacklands\csharp\systems\TalismanCraftingService.cs(192,40): error CS0103: 当前上下文中不存在名称“EvaluateDrawing” [E:\stacklands\Stacklands.csproj]
+    0 个警告
+    6 个错误
+
+已用时间 00:00:09.70

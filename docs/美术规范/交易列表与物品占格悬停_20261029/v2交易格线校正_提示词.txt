@@ -1,0 +1,16 @@
+Precise UI-layout correction only. Image1 is the EDIT TARGET, the latest full trade-screen concept. Image2 is the authoritative original spatial-inventory grid/item reference. Preserve Image1 entire canvas, architecture, colors, typography, headings, category rail, NPC offer list, bottom transaction strip and composition. Keep exactly two main panels: full player spatial bag left and NPC offers right. Do not redesign into two lists.
+Correct ONLY the FIVE player inventory regions: in Image1 their cell sizes differ slightly, especially the backbag. ALL little square cells MUST NOW BE IDENTICAL SIDE LENGTH of approximately40px on the1672x941 design canvas. This is essential, since item scale must be consistent across all regions. Build each grid with straight even 40px horizontal and vertical spacing, no perspective.
+Use these concrete region rectangles IN THE LEFT PLAYER PANEL (coordinates in a1672x941 canvas; scale all coordinates together if output canvas differs):
+Chest 胸前: left430,top214, width240,height160; EXACT6 columns x4rows.
+Left sleeve 左袖: left222,top402,width120,height160; EXACT3 columns x4rows.
+Right sleeve 右袖: left710,top402,width120,height160; EXACT3 columns x4rows.
+Waist 腰间: left430,top562,width240,height160; EXACT6 columns x4rows.
+Backbag 背囊: left865,top300,width240,height320; EXACT6 columns x8rows.
+Hence chest and waist and backbag ALL have EXACTLY THE SAME WIDTH of6 cells. Backbag is exactly twice the height of chest/waist. Each sleeve is exactly HALF the width of chest and exactly the same height. All120 cells visible. Preserve five title names immediately above their grid; no dimension text, no humanoid.
+Reposition existing Image1 item sprites with their true footprints, do not invent icons:
+backbag: sword2columns x6rows, x865..945,y300..540; first book2x3 at945..1025,y300..420; second book2x3 at1025..1105,y300..420. No stretching of artwork.
+chest: four individual1x1 spirit stones in its first4cells of first row (each40x40); root2x4 in the last2columns across all4rows.
+waist: rough dark iron3x3 at top-left (120x120).
+each sleeve: porcelain bottle2x3 at top-left (80x120); four separate1x1 stones in the third column down4rows, each40x40.
+Retain the same quiet painterly icon identities and6% sprite safe margins. Do not turn bottles into bare pills or books into ornate covers. Cells and items must align, no item crosses a region seam.
+Everything outside these five rectangles/titles stays the same. In particular, keep the entire NPC right list and the footer '我方交出','对方交出','能接受','交易' unchanged. No diagram annotations, arrows, pixel numbers or dimension captions. Same paper-and-ink color, NO glow or specular light. Output a finished clean trade interface concept with uniform exact square grid geometry.

@@ -1,0 +1,15 @@
+{
+  "date": "2026-11-09",
+  "passed": true,
+  "execution_exit_code": 0,
+  "command": "dotnet run --project tools/formation_grid_checks/FormationGridChecks.csproj",
+  "groups": 23,
+  "assertion_count": 8886,
+  "changes_to_test_adapter": [
+    "引用typed公共枚举来源FormationControlCircuit",
+    "旧端口几何预期单独投影，不将新增元数据误判为几何变化",
+    "未知保存版本反例由已合法2改3"
+  ],
+  "business_source_modified_by_this_agent": false,
+  "historical_assertions_reused": false
+}

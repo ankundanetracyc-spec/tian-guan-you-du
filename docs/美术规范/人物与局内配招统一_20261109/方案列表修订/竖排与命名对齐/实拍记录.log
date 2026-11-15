@@ -1,0 +1,42 @@
+### Result
+{"states":13,"issues":[],"errors":[],"missing":[],"details":[{"label":"三套方案","width":1920,"kind":"列表","issues":[]},{"label":"命名保存","width":1920,"kind":"弹窗","issues":[],"inputScroll":false,"bodyScroll":false},{"label":"空名提示","width":1920,"kind":"弹窗","issues":[],"inputScroll":false,"bodyScroll":false},{"label":"长名称方案","width":1920,"kind":"列表","issues":[]},{"label":"长名称覆盖提示","width":1920,"kind":"弹窗","issues":[],"inputScroll":true,"bodyScroll":false},{"label":"逐项改名","width":1920,"kind":"弹窗","issues":[],"inputScroll":false,"bodyScroll":false},{"label":"三套方案","width":1280,"kind":"列表","issues":[]},{"label":"命名保存","width":1280,"kind":"弹窗","issues":[],"inputScroll":false,"bodyScroll":false},{"label":"空名提示","width":1280,"kind":"弹窗","issues":[],"inputScroll":false,"bodyScroll":false},{"label":"长名称方案","width":1280,"kind":"列表","issues":[]},{"label":"长名称覆盖提示","width":1280,"kind":"弹窗","issues":[],"inputScroll":true,"bodyScroll":false},{"label":"窄窗口长名称","width":640,"kind":"弹窗","issues":[],"inputScroll":true,"bodyScroll":false},{"label":"逐项改名","width":1280,"kind":"弹窗","issues":[],"inputScroll":false,"bodyScroll":false}]}
+### Ran Playwright code
+```js
+await (async page=>{
+ const states=[],issues=[],errors=[],missing=[];page.on('pageerror',e=>errors.push(e.message));page.on('response',r=>{if(r.status()>=400)missing.push(r.url());});
+ const cdp=await page.context().newCDPSession(page);await cdp.send('Network.setCacheDisabled',{cacheDisabled:true});
+ async function rows(label){
+  const problems=await page.locator('.rf-scheme-row').evaluateAll(items=>items.flatMap(row=>{
+   const outer=row.getBoundingClientRect(),buttons=[...row.querySelectorAll('.rf-scheme-actions button')],bounds=buttons.map(b=>b.getBoundingClientRect()),bad=[];
+   if(buttons.length!==2||Math.abs(bounds[0].left-bounds[1].left)>1||bounds[1].top<bounds[0].bottom+4)bad.push('操作未上下对齐');
+   for(const el of row.querySelectorAll('.rf-scheme-copy,.rf-scheme-copy h3,.rf-scheme-copy p,.rf-scheme-actions button')){const r=el.getBoundingClientRect();if(r.left<outer.left-1||r.right>outer.right+1||r.top<outer.top-1||r.bottom>outer.bottom+1)bad.push('列表内容超框');}
+   return bad.map(message=>({message,name:row.querySelector('h3').textContent}));
+  }));states.push({label,width:page.viewportSize().width,kind:'列表',issues:problems});issues.push(...problems);
+ }
+ async function dialog(label){
+  const result=await page.locator('dialog[open]').evaluate(d=>{
+   const outer=d.getBoundingClientRect(),body=d.querySelector('.dialog-content'),label=d.querySelector('.rf-plan-label').getBoundingClientRect(),well=d.querySelector('.rf-plan-input-well').getBoundingClientRect(),input=d.querySelector('input').getBoundingClientRect(),buttons=[...d.querySelectorAll('.dialog-footer>button')].map(b=>b.getBoundingClientRect()),bad=[];
+   if(outer.left<0||outer.top<0||outer.right>innerWidth+1||outer.bottom>innerHeight+1)bad.push('弹窗超出窗口');
+   if(label.right>well.left-10||Math.abs((label.top+label.bottom-well.top-well.bottom)/2)>1)bad.push('名称标签与输入框未对齐');
+   if(input.left<well.left+10||input.right>well.right-10||input.top<well.top||input.bottom>well.bottom)bad.push('输入文本区域超出输入框');
+   if(Math.abs(buttons[0].height-buttons[1].height)>1||Math.abs(buttons[0].top-buttons[1].top)>1)bad.push('底部按钮未等高对齐');
+   if(d.scrollWidth>d.clientWidth+1||body.scrollWidth>body.clientWidth+1)bad.push('弹窗存在横向溢出');
+   const toast=document.querySelector('#toast');if(toast&&!toast.hidden){const r=toast.getBoundingClientRect();if(r.left<0||r.right>innerWidth)bad.push('提示文本超出窗口');}
+   for(const el of d.querySelectorAll('.dialog-heading,.dialog-heading h2,.dialog-heading button,.rf-plan-label,.rf-plan-input-well,.dialog-footer,.dialog-footer>button')){const r=el.getBoundingClientRect();if(r.left<outer.left+10||r.right>outer.right-10||r.top<outer.top+10||r.bottom>outer.bottom-10)bad.push('弹窗内容越过内边距');}
+   return {issues:bad,inputScroll:document.querySelector('#rf-plan-name').scrollWidth>document.querySelector('#rf-plan-name').clientWidth,bodyScroll:body.scrollHeight>body.clientHeight};
+  });states.push({label,width:page.viewportSize().width,kind:'弹窗',...result});issues.push(...result.issues.map(message=>({label,message})));
+ }
+ for(const [width,height] of [[1920,1080],[1280,720]]){
+  await page.setViewportSize({width,height});await page.goto('http://127.0.0.1:8876/docs/美术规范/角色与静室纸墨木石样稿_20261108/index.html#character/battle');await page.reload();await page.evaluate(()=>window.PREVIEW_READY);await page.evaluate(()=>document.fonts.ready);
+  await page.addStyleTag({content:'.preview-tools{display:none!important}#viewport{height:100vh!important}'});await page.evaluate(()=>window.dispatchEvent(new Event('resize')));await page.locator('[data-rf="open"]').click();await page.locator('[data-rf-library="plans"]').click();await page.mouse.move(2,2);await page.waitForTimeout(260);await rows('三套方案');await page.screenshot({path:`output/playwright/方案按钮竖排_${width}.png`});
+  await page.locator('[data-rf="save-plan"]').click();await page.locator('#rf-plan-name').fill('日常配招');await dialog('命名保存');await page.screenshot({path:`output/playwright/方案命名对齐_${width}.png`});
+  await page.locator('#rf-plan-name').fill('');await page.locator('[data-rf="confirm-plan"]').click();await dialog('空名提示');
+  const longName='日常配招·'+'养锋云舒稳守连剑'.repeat(6);await page.locator('#rf-plan-name').fill(longName);await page.locator('[data-rf="confirm-plan"]').click();await rows('长名称方案');
+  await page.locator('[data-rf="save-plan"]').click();await page.locator('#rf-plan-name').fill(longName);await dialog('长名称覆盖提示');await page.screenshot({path:`output/playwright/方案长名称对齐_${width}.png`});
+  if(width===1280){await page.setViewportSize({width:640,height:480});await dialog('窄窗口长名称');await page.setViewportSize({width,height});}
+  await page.getByRole('button',{name:'关闭弹窗',exact:true}).click();await page.locator('[data-rf-plan-rename="pill"]').click();await dialog('逐项改名');await page.getByRole('button',{name:'关闭弹窗',exact:true}).click();
+ }
+ return {states:states.length,issues,errors,missing,details:states};
+}
+)(page);
+```
