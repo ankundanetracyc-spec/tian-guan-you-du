@@ -1,0 +1,487 @@
+[gd_resource type="SpriteFrames" load_steps=86 format=3]
+
+[ext_resource type="Texture2D" path="res://textures/vfx/jingzhe_lightning_sequence_20261020_v2/charge_atlas_0.png" id="charge0"]
+[ext_resource type="Texture2D" path="res://textures/vfx/jingzhe_lightning_sequence_20261020_v2/charge_atlas_1.png" id="charge1"]
+[ext_resource type="Texture2D" path="res://textures/vfx/jingzhe_lightning_sequence_20261020_v2/bolt_atlas_0.png" id="bolt0"]
+[ext_resource type="Texture2D" path="res://textures/vfx/jingzhe_lightning_sequence_20261020_v2/bolt_atlas_1.png" id="bolt1"]
+[ext_resource type="Texture2D" path="res://textures/vfx/jingzhe_lightning_sequence_20261020_v2/bolt_atlas_2.png" id="bolt2"]
+[ext_resource type="Texture2D" path="res://textures/vfx/jingzhe_lightning_sequence_20261020_v2/impact_atlas_0.png" id="impact0"]
+[ext_resource type="Texture2D" path="res://textures/vfx/jingzhe_lightning_sequence_20261020_v2/impact_atlas_1.png" id="impact1"]
+
+[sub_resource type="AtlasTexture" id="charge_0"]
+atlas = ExtResource("charge0")
+region = Rect2(0,0,512,512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="charge_1"]
+atlas = ExtResource("charge0")
+region = Rect2(512,0,512,512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="charge_2"]
+atlas = ExtResource("charge0")
+region = Rect2(1024,0,512,512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="charge_3"]
+atlas = ExtResource("charge0")
+region = Rect2(1536,0,512,512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="charge_4"]
+atlas = ExtResource("charge0")
+region = Rect2(0,512,512,512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="charge_5"]
+atlas = ExtResource("charge0")
+region = Rect2(512,512,512,512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="charge_6"]
+atlas = ExtResource("charge0")
+region = Rect2(1024,512,512,512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="charge_7"]
+atlas = ExtResource("charge0")
+region = Rect2(1536,512,512,512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="charge_8"]
+atlas = ExtResource("charge0")
+region = Rect2(0,1024,512,512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="charge_9"]
+atlas = ExtResource("charge0")
+region = Rect2(512,1024,512,512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="charge_10"]
+atlas = ExtResource("charge0")
+region = Rect2(1024,1024,512,512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="charge_11"]
+atlas = ExtResource("charge0")
+region = Rect2(1536,1024,512,512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="charge_12"]
+atlas = ExtResource("charge0")
+region = Rect2(0,1536,512,512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="charge_13"]
+atlas = ExtResource("charge0")
+region = Rect2(512,1536,512,512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="charge_14"]
+atlas = ExtResource("charge0")
+region = Rect2(1024,1536,512,512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="charge_15"]
+atlas = ExtResource("charge0")
+region = Rect2(1536,1536,512,512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="charge_16"]
+atlas = ExtResource("charge1")
+region = Rect2(0,0,512,512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="charge_17"]
+atlas = ExtResource("charge1")
+region = Rect2(512,0,512,512)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_0"]
+atlas = ExtResource("bolt0")
+region = Rect2(0,0,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_1"]
+atlas = ExtResource("bolt0")
+region = Rect2(768,0,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_2"]
+atlas = ExtResource("bolt0")
+region = Rect2(1536,0,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_3"]
+atlas = ExtResource("bolt0")
+region = Rect2(2304,0,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_4"]
+atlas = ExtResource("bolt0")
+region = Rect2(0,1024,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_5"]
+atlas = ExtResource("bolt0")
+region = Rect2(768,1024,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_6"]
+atlas = ExtResource("bolt0")
+region = Rect2(1536,1024,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_7"]
+atlas = ExtResource("bolt0")
+region = Rect2(2304,1024,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_8"]
+atlas = ExtResource("bolt0")
+region = Rect2(0,2048,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_9"]
+atlas = ExtResource("bolt0")
+region = Rect2(768,2048,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_10"]
+atlas = ExtResource("bolt0")
+region = Rect2(1536,2048,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_11"]
+atlas = ExtResource("bolt0")
+region = Rect2(2304,2048,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_12"]
+atlas = ExtResource("bolt0")
+region = Rect2(0,3072,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_13"]
+atlas = ExtResource("bolt0")
+region = Rect2(768,3072,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_14"]
+atlas = ExtResource("bolt0")
+region = Rect2(1536,3072,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_15"]
+atlas = ExtResource("bolt0")
+region = Rect2(2304,3072,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_16"]
+atlas = ExtResource("bolt1")
+region = Rect2(0,0,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_17"]
+atlas = ExtResource("bolt1")
+region = Rect2(768,0,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_18"]
+atlas = ExtResource("bolt1")
+region = Rect2(1536,0,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_19"]
+atlas = ExtResource("bolt1")
+region = Rect2(2304,0,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_20"]
+atlas = ExtResource("bolt1")
+region = Rect2(0,1024,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_21"]
+atlas = ExtResource("bolt1")
+region = Rect2(768,1024,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_22"]
+atlas = ExtResource("bolt1")
+region = Rect2(1536,1024,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_23"]
+atlas = ExtResource("bolt1")
+region = Rect2(2304,1024,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_24"]
+atlas = ExtResource("bolt1")
+region = Rect2(0,2048,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_25"]
+atlas = ExtResource("bolt1")
+region = Rect2(768,2048,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_26"]
+atlas = ExtResource("bolt1")
+region = Rect2(1536,2048,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_27"]
+atlas = ExtResource("bolt1")
+region = Rect2(2304,2048,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_28"]
+atlas = ExtResource("bolt1")
+region = Rect2(0,3072,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_29"]
+atlas = ExtResource("bolt1")
+region = Rect2(768,3072,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_30"]
+atlas = ExtResource("bolt1")
+region = Rect2(1536,3072,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_31"]
+atlas = ExtResource("bolt1")
+region = Rect2(2304,3072,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_32"]
+atlas = ExtResource("bolt2")
+region = Rect2(0,0,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_33"]
+atlas = ExtResource("bolt2")
+region = Rect2(768,0,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_34"]
+atlas = ExtResource("bolt2")
+region = Rect2(1536,0,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="bolt_35"]
+atlas = ExtResource("bolt2")
+region = Rect2(2304,0,768,1024)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_0"]
+atlas = ExtResource("impact0")
+region = Rect2(0,0,768,768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_1"]
+atlas = ExtResource("impact0")
+region = Rect2(768,0,768,768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_2"]
+atlas = ExtResource("impact0")
+region = Rect2(1536,0,768,768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_3"]
+atlas = ExtResource("impact0")
+region = Rect2(2304,0,768,768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_4"]
+atlas = ExtResource("impact0")
+region = Rect2(0,768,768,768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_5"]
+atlas = ExtResource("impact0")
+region = Rect2(768,768,768,768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_6"]
+atlas = ExtResource("impact0")
+region = Rect2(1536,768,768,768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_7"]
+atlas = ExtResource("impact0")
+region = Rect2(2304,768,768,768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_8"]
+atlas = ExtResource("impact0")
+region = Rect2(0,1536,768,768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_9"]
+atlas = ExtResource("impact0")
+region = Rect2(768,1536,768,768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_10"]
+atlas = ExtResource("impact0")
+region = Rect2(1536,1536,768,768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_11"]
+atlas = ExtResource("impact0")
+region = Rect2(2304,1536,768,768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_12"]
+atlas = ExtResource("impact0")
+region = Rect2(0,2304,768,768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_13"]
+atlas = ExtResource("impact0")
+region = Rect2(768,2304,768,768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_14"]
+atlas = ExtResource("impact0")
+region = Rect2(1536,2304,768,768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_15"]
+atlas = ExtResource("impact0")
+region = Rect2(2304,2304,768,768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_16"]
+atlas = ExtResource("impact1")
+region = Rect2(0,0,768,768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_17"]
+atlas = ExtResource("impact1")
+region = Rect2(768,0,768,768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_18"]
+atlas = ExtResource("impact1")
+region = Rect2(1536,0,768,768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_19"]
+atlas = ExtResource("impact1")
+region = Rect2(2304,0,768,768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_20"]
+atlas = ExtResource("impact1")
+region = Rect2(0,768,768,768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_21"]
+atlas = ExtResource("impact1")
+region = Rect2(768,768,768,768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_22"]
+atlas = ExtResource("impact1")
+region = Rect2(1536,768,768,768)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="impact_23"]
+atlas = ExtResource("impact1")
+region = Rect2(2304,768,768,768)
+filter_clip = true
+
+[resource]
+animations = [
+{"frames": [
+{"duration":1.0,"texture":SubResource("charge_0")},
+{"duration":1.0,"texture":SubResource("charge_1")},
+{"duration":1.0,"texture":SubResource("charge_2")},
+{"duration":1.0,"texture":SubResource("charge_3")},
+{"duration":1.0,"texture":SubResource("charge_4")},
+{"duration":1.0,"texture":SubResource("charge_5")},
+{"duration":1.0,"texture":SubResource("charge_6")},
+{"duration":1.0,"texture":SubResource("charge_7")},
+{"duration":1.0,"texture":SubResource("charge_8")},
+{"duration":1.0,"texture":SubResource("charge_9")},
+{"duration":1.0,"texture":SubResource("charge_10")},
+{"duration":1.0,"texture":SubResource("charge_11")},
+{"duration":1.0,"texture":SubResource("charge_12")},
+{"duration":1.0,"texture":SubResource("charge_13")},
+{"duration":1.0,"texture":SubResource("charge_14")},
+{"duration":1.0,"texture":SubResource("charge_15")},
+{"duration":1.0,"texture":SubResource("charge_16")},
+{"duration":1.0,"texture":SubResource("charge_17")},
+],"loop":false,"name":&"charge","speed":30.0},
+{"frames": [
+{"duration":1.0,"texture":SubResource("bolt_0")},
+{"duration":1.0,"texture":SubResource("bolt_1")},
+{"duration":1.0,"texture":SubResource("bolt_2")},
+{"duration":1.0,"texture":SubResource("bolt_3")},
+{"duration":1.0,"texture":SubResource("bolt_4")},
+{"duration":1.0,"texture":SubResource("bolt_5")},
+{"duration":1.0,"texture":SubResource("bolt_6")},
+{"duration":1.0,"texture":SubResource("bolt_7")},
+{"duration":1.0,"texture":SubResource("bolt_8")},
+{"duration":1.0,"texture":SubResource("bolt_9")},
+{"duration":1.0,"texture":SubResource("bolt_10")},
+{"duration":1.0,"texture":SubResource("bolt_11")},
+{"duration":1.0,"texture":SubResource("bolt_12")},
+{"duration":1.0,"texture":SubResource("bolt_13")},
+{"duration":1.0,"texture":SubResource("bolt_14")},
+{"duration":1.0,"texture":SubResource("bolt_15")},
+{"duration":1.0,"texture":SubResource("bolt_16")},
+{"duration":1.0,"texture":SubResource("bolt_17")},
+{"duration":1.0,"texture":SubResource("bolt_18")},
+{"duration":1.0,"texture":SubResource("bolt_19")},
+{"duration":1.0,"texture":SubResource("bolt_20")},
+{"duration":1.0,"texture":SubResource("bolt_21")},
+{"duration":1.0,"texture":SubResource("bolt_22")},
+{"duration":1.0,"texture":SubResource("bolt_23")},
+{"duration":1.0,"texture":SubResource("bolt_24")},
+{"duration":1.0,"texture":SubResource("bolt_25")},
+{"duration":1.0,"texture":SubResource("bolt_26")},
+{"duration":1.0,"texture":SubResource("bolt_27")},
+{"duration":1.0,"texture":SubResource("bolt_28")},
+{"duration":1.0,"texture":SubResource("bolt_29")},
+{"duration":1.0,"texture":SubResource("bolt_30")},
+{"duration":1.0,"texture":SubResource("bolt_31")},
+{"duration":1.0,"texture":SubResource("bolt_32")},
+{"duration":1.0,"texture":SubResource("bolt_33")},
+{"duration":1.0,"texture":SubResource("bolt_34")},
+{"duration":1.0,"texture":SubResource("bolt_35")},
+],"loop":false,"name":&"bolt","speed":30.0},
+{"frames": [
+{"duration":1.0,"texture":SubResource("impact_0")},
+{"duration":1.0,"texture":SubResource("impact_1")},
+{"duration":1.0,"texture":SubResource("impact_2")},
+{"duration":1.0,"texture":SubResource("impact_3")},
+{"duration":1.0,"texture":SubResource("impact_4")},
+{"duration":1.0,"texture":SubResource("impact_5")},
+{"duration":1.0,"texture":SubResource("impact_6")},
+{"duration":1.0,"texture":SubResource("impact_7")},
+{"duration":1.0,"texture":SubResource("impact_8")},
+{"duration":1.0,"texture":SubResource("impact_9")},
+{"duration":1.0,"texture":SubResource("impact_10")},
+{"duration":1.0,"texture":SubResource("impact_11")},
+{"duration":1.0,"texture":SubResource("impact_12")},
+{"duration":1.0,"texture":SubResource("impact_13")},
+{"duration":1.0,"texture":SubResource("impact_14")},
+{"duration":1.0,"texture":SubResource("impact_15")},
+{"duration":1.0,"texture":SubResource("impact_16")},
+{"duration":1.0,"texture":SubResource("impact_17")},
+{"duration":1.0,"texture":SubResource("impact_18")},
+{"duration":1.0,"texture":SubResource("impact_19")},
+{"duration":1.0,"texture":SubResource("impact_20")},
+{"duration":1.0,"texture":SubResource("impact_21")},
+{"duration":1.0,"texture":SubResource("impact_22")},
+{"duration":1.0,"texture":SubResource("impact_23")},
+],"loop":false,"name":&"impact","speed":30.0},
+]

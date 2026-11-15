@@ -1,0 +1,23 @@
+{
+  "layout": "display_layout_v3_spacing_candidate.json",
+  "layoutSha256": "b041e5f47fd321ae95158e015506aaa6af8c0c2864234843ee52e74ac249f514",
+  "nodeCount": 444,
+  "edgeCount": 575,
+  "segmentCount": 1471,
+  "endpointMismatchCount": 0,
+  "forbiddenContactCount": 0,
+  "forbiddenPairCount": 0,
+  "unrelatedNodePassCount": 0,
+  "contactExamples": [],
+  "unrelatedNodeExamples": [],
+  "visualClosePairCount": 0,
+  "visualCloseExamples": [],
+  "visualClearancePass": true,
+  "nearNodeMidpassCount": 0,
+  "nearNodeMidpassExamples": [],
+  "minimumNamedSpacing": 174.562,
+  "outOfWorldNodeCount": 0,
+  "outOfWorldEdgeCount": 0,
+  "strictGeometryPass": true,
+  "scope": "Complete displayed polylines, before dash gaps or label masks; only exact common graph endpoints may touch. Nonincident node clearance is 5px."
+}

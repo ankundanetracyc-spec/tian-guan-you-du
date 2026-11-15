@@ -1,0 +1,104 @@
+{
+  "displayOnly": true,
+  "sourcePlanUnchanged": true,
+  "counts": {
+    "named": 123,
+    "built": 53,
+    "wild": 70,
+    "transit": 321,
+    "edges": 498
+  },
+  "endpointMismatchCount": 0,
+  "threeMajorAnchorsUnchanged": true,
+  "allLocationsNearestFactionZoneUnchanged": true,
+  "spacingBefore": {
+    "minimum": 52.33,
+    "medianNearest": 164.51
+  },
+  "spacingAfter": {
+    "minimum": 225.74,
+    "medianNearest": 240.87
+  },
+  "builtSpacingBefore": {
+    "minimum": 157.16,
+    "medianNearest": 237.21
+  },
+  "builtSpacingAfter": {
+    "minimum": 301.57,
+    "medianNearest": 337.16
+  },
+  "wildNineRegionsBefore": [
+    [
+      3,
+      11,
+      7
+    ],
+    [
+      9,
+      10,
+      8
+    ],
+    [
+      3,
+      11,
+      8
+    ]
+  ],
+  "wildNineRegionsAfter": [
+    [
+      6,
+      9,
+      8
+    ],
+    [
+      9,
+      6,
+      7
+    ],
+    [
+      6,
+      11,
+      8
+    ]
+  ],
+  "maxVisualShiftPixels": 831.21,
+  "routeWaterSampleFraction": 0.0307,
+  "routeSeaSampleFraction": 0.0029,
+  "waterAvoidanceReroutedEdges": 63,
+  "namedNineRegionsBefore": [
+    [
+      5,
+      18,
+      13
+    ],
+    [
+      15,
+      19,
+      14
+    ],
+    [
+      9,
+      16,
+      14
+    ]
+  ],
+  "namedNineRegionsAfter": [
+    [
+      9,
+      16,
+      15
+    ],
+    [
+      15,
+      13,
+      14
+    ],
+    [
+      12,
+      16,
+      13
+    ]
+  ],
+  "transitMarkWaterOverlapCount": 0,
+  "limits": "Route samples may cross river water; no new bridges or travel permissions introduced. Terrain masking is an art check, not a height/flow proof."
+}

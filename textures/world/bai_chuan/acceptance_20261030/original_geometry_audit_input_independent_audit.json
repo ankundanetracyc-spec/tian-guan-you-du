@@ -1,0 +1,101 @@
+{
+  "layout": "original_geometry_audit_input.json",
+  "layoutSha256": "b761e210b14f518ab873ac3f63c4d59b49a5af00a477fc915849aa216ccd9274",
+  "nodeCount": 444,
+  "edgeCount": 498,
+  "segmentCount": 7153,
+  "endpointMismatchCount": 0,
+  "forbiddenContactCount": 0,
+  "forbiddenPairCount": 0,
+  "unrelatedNodePassCount": 2,
+  "contactExamples": [],
+  "unrelatedNodeExamples": [
+    {
+      "node": "bc_place_085",
+      "edge": "bc_transit_066_01~bc_transit_141_03",
+      "distance": 3.826,
+      "point": [
+        2219.58,
+        1655.28
+      ]
+    },
+    {
+      "node": "bc_transit_141_03",
+      "edge": "bc_place_085~bc_transit_103_02",
+      "distance": 3.826,
+      "point": [
+        2217.5040155399997,
+        1658.49410232
+      ]
+    }
+  ],
+  "visualClosePairCount": 9,
+  "visualCloseExamples": [
+    {
+      "edges": [
+        "bc_place_001~bc_transit_038_01",
+        "bc_spur_mid_01~bc_transit_038_01"
+      ],
+      "distance": 2.9468
+    },
+    {
+      "edges": [
+        "bc_place_037~bc_transit_008_01",
+        "bc_spur_mid_06~bc_transit_008_01"
+      ],
+      "distance": 1.0581
+    },
+    {
+      "edges": [
+        "bc_place_085~bc_transit_103_02",
+        "bc_transit_066_01~bc_transit_141_03"
+      ],
+      "distance": 3.8262
+    },
+    {
+      "edges": [
+        "bc_place_088~bc_transit_068_01",
+        "bc_place_088~bc_spur_mid_08"
+      ],
+      "distance": 1.7811
+    },
+    {
+      "edges": [
+        "bc_place_094~bc_transit_010_01",
+        "bc_place_094~bc_spur_mid_02"
+      ],
+      "distance": 3.9481
+    },
+    {
+      "edges": [
+        "bc_place_095~bc_transit_005_01",
+        "bc_place_095~bc_spur_mid_03"
+      ],
+      "distance": 3.477
+    },
+    {
+      "edges": [
+        "bc_place_104~bc_transit_016_01",
+        "bc_place_104~bc_spur_mid_06"
+      ],
+      "distance": 1.7752
+    },
+    {
+      "edges": [
+        "bc_place_114~bc_transit_085_02",
+        "bc_spur_mid_04~bc_transit_085_02"
+      ],
+      "distance": 2.1249
+    },
+    {
+      "edges": [
+        "bc_place_117~bc_transit_024_01",
+        "bc_place_117~bc_spur_mid_04"
+      ],
+      "distance": 1.3465
+    }
+  ],
+  "visualClearancePass": false,
+  "strictGeometryPass": false,
+  "scope": "Complete displayed polylines, before dash gaps or label masks; only exact common graph endpoints may touch. Nonincident node clearance is 5px."
+}

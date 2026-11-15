@@ -1,0 +1,9 @@
+{
+  "previous_pack": "res://textures/vfx/ink_response_sequences_20261016_v2/",
+  "scope": "Rest effect enrichment only; existing male/female rest poses and hurt/guard source art and timing retained.",
+  "restore": "48 transparent 768x768 RGBA PNG frames at 30 fps: two open tapered sage/ivory brush breaths converge at the hands, short exhale accents, eleven independently timed leaf-like flecks. Pigment grain and a narrow ivory core; no additive bloom, full-body aura or ground ring. Generated deterministically in Godot; original source/restore.png is provenance only.",
+  "timing": {"effect_start":0.98,"pose_start":1.10,"pose_return_start":2.35,"pose_return_end":2.62,"last_frame":2.5466667},
+  "restore_display": {"center":[140,-860],"native_dimensions":[600,660],"camera_zoom":1.0},
+  "runtime": "PNG atlases and clocked AnimatedSprite2D; common pause/mirror/fallback behaviour.",
+  "source_generation_record": "generation_prompts.json describes inherited hurt/guard/old-rest artwork. New rest frames are code-native effects from quiet_breath in bake.gdshader, with no new image generation."
+}

@@ -1,0 +1,8 @@
+{
+  "previous_pack":"res://textures/vfx/ink_response_sequences_20261015_v1/",
+  "hurt_guard":"Retain source art and palette; use staggered continuous decay and sparse independently drifting fragments.",
+  "restore":"48 transparent PNG frames baked from quiet_breath in bake.gdshader: seven motes with individual birth/life/drift and two short breath strokes. The old source/restore.png is retained only as previous-generation provenance and does not contribute to mode2 output.",
+  "restore_display":{"center":[140,-860],"native_dimensions":[460,550],"camera_zoom":1.0},
+  "runtime":"PNG atlases and clocked AnimatedSprite2D, not an active particle emitter.",
+  "character_motion":"New male/female small hand-settling rest key poses; brief transitions to and from original idle, fixed ground origin."
+}

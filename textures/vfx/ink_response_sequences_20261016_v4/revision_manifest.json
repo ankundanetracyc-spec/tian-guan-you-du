@@ -1,0 +1,7 @@
+{
+  "previous_pack": "res://textures/vfx/ink_response_sequences_20261016_v3/",
+  "scope": "Preserve hurt and small rest; add dodge. Guard frames retained for provenance only, removed from current playback by user direction.",
+  "dodge": "24 transparent 768x768 RGBA PNG frames, baked at 30 fps and played at 24 fps. Three tapered sage/ivory trailing brush marks and nine independently drifting flecks, dry grain; no explosion, aura, additive bloom or ground ring.",
+  "runtime": "PNG atlases, clocked AnimatedSprite2D, common pause and mirror. Combat contact framing reframes scenery/actors/FX together; no actor scaling.",
+  "source_generation_record": "No new AI-generated effect bitmap. Dodge frames are code-native shader effects from dodge_breath in bake.gdshader; generation_prompts.json records inherited source art only."
+}

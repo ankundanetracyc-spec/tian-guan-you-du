@@ -1,0 +1,6 @@
+{
+  "previous_pack":"res://textures/vfx/ink_chop_sequence_20261015_v1/",
+  "source_art":"Unchanged generated sweep/impact textures copied with original generation prompts.",
+  "changes":["Impact display width/height 1000 to 560, about31% of former display area; contact anchor preserved.","Replace static grain threshold erosion with spatially staggered continuous alpha decay.","Add sparse independently drifting ink fragments with different birth times, lifetimes and damped velocity; retain 16 slash/20 impact PNG frames at30fps."],
+  "runtime":"PNG atlases consumed by existing clocked AnimatedSprite2D; no runtime particle simulation."
+}

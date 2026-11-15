@@ -1,0 +1,177 @@
+{
+	"approval": "two_arms_v4.png",
+	"assets": [
+		{
+			"alpha": {
+				"opaque": 1300,
+				"partial": 363705,
+				"transparent": 3829299
+			},
+			"anatomical_centerline_approx_px": 1267.53589630127,
+			"bounds": [
+				37,
+				398,
+				1413,
+				1327
+			],
+			"format": "RGBA8",
+			"name": "left_idle",
+			"registration_offset": [
+				-17,
+				240
+			],
+			"registration_scale": 1.25,
+			"root": [
+				720,
+				1184
+			],
+			"size": [
+				2048,
+				2048
+			],
+			"world_root": [
+				-400.0,
+				-1000.0
+			]
+		},
+		{
+			"alpha": {
+				"opaque": 1523,
+				"partial": 309941,
+				"transparent": 3882840
+			},
+			"anatomical_centerline_approx_px": 1087.14431762695,
+			"bounds": [
+				66,
+				280,
+				1484,
+				1497
+			],
+			"format": "RGBA8",
+			"name": "right_idle",
+			"registration_offset": [
+				25,
+				240
+			],
+			"registration_scale": 1.25,
+			"root": [
+				900,
+				1178
+			],
+			"size": [
+				2048,
+				2048
+			],
+			"world_root": [
+				305.0,
+				-940.0
+			]
+		},
+		{
+			"alpha": {
+				"opaque": 539,
+				"partial": 376971,
+				"transparent": 3816794
+			},
+			"anatomical_centerline_approx_px": 1204.01733398438,
+			"bounds": [
+				541,
+				532,
+				1496,
+				1515
+			],
+			"format": "RGBA8",
+			"name": "left_punch",
+			"registration_offset": [
+				500,
+				480
+			],
+			"registration_scale": 1.25,
+			"root": [
+				720,
+				1184
+			],
+			"size": [
+				2048,
+				2048
+			],
+			"world_root": [
+				-400.0,
+				-1000.0
+			]
+		},
+		{
+			"alpha": {
+				"opaque": 800,
+				"partial": 283546,
+				"transparent": 3909958
+			},
+			"anatomical_centerline_approx_px": 1050.63484191895,
+			"bounds": [
+				508,
+				479,
+				1528,
+				1517
+			],
+			"format": "RGBA8",
+			"name": "right_punch",
+			"registration_offset": [
+				508,
+				479
+			],
+			"registration_scale": 1.25,
+			"root": [
+				900,
+				1178
+			],
+			"size": [
+				2048,
+				2048
+			],
+			"world_root": [
+				305.0,
+				-940.0
+			]
+		},
+		{
+			"alpha": {
+				"opaque": 1040,
+				"partial": 263607,
+				"transparent": 3929657
+			},
+			"anatomical_centerline_approx_px": 1099.09759521484,
+			"bounds": [
+				47,
+				217,
+				1489,
+				1481
+			],
+			"format": "RGBA8",
+			"name": "right_guard",
+			"registration_offset": [
+				6,
+				161
+			],
+			"registration_scale": 1.25,
+			"root": [
+				900,
+				1178
+			],
+			"size": [
+				2048,
+				2048
+			],
+			"world_root": [
+				305.0,
+				-940.0
+			]
+		}
+	],
+	"first_arm": "left_idle",
+	"reference_ground": [
+		1024,
+		1900
+	],
+	"reference_height": 1375,
+	"scope": "Authored idle and three action keys. One arm: left punches. Two arms: right punches or guards, left stays idle. Both behind the character; presentation only."
+}

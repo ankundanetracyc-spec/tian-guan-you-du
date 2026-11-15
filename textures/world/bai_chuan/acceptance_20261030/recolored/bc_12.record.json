@@ -1,0 +1,13 @@
+{
+  "id": "bc_12",
+  "mode": "built-in image_gen",
+  "source": "E:\\tmp\\CodexData\\generated_images\\01a18c6c-52e9-71a1-b1b6-7e8902fa48c8\\exec-f7f8ef6e-7d07-40f4-a413-5b9b5ceca8b8.png",
+  "edit_target": "E:/stacklands/textures/world/bai_chuan/pale_nine_20261030/generated/bc_12.png",
+  "palette_reference": "E:/stacklands/textures/world/bai_chuan/acceptance_20261030/palette_reference.png",
+  "prompt": "Use case: precise-object-edit / color grading.\nIMAGE 1 is the EDIT TARGET: one exact 1254x1254 regional map tile bc_12. IMAGE 2 is a PALETTE REFERENCE ONLY, showing the complete world. Preserve IMAGE 1's exact geometry and contents; do NOT copy IMAGE 2's geographic layout.\n\nChange ONLY color grading from the current very pale cream to the palette of IMAGE 2: subdued warm olive-buff / warm earth land, calm gray-green mountain planes, muted olive groves, clean pale blue rivers and sea if present. Match the reference's moderate warm-gray/sage saturation and value, not heavy dark contrast or saturated mustard yellow. Keep fine ink contours, soft ground wash and small-mountain depth legible. Retain IMAGE 1's ground depth; no added paper grunge, dark vignette, scratch marks or hard shadows.\n\nSTRICT PIXEL-LOCATION INVARIANTS: keep every mountain silhouette, tree cluster, river/lake outline, river width and branch, and coastline if any at precisely its current place and size. The outer edge crossing points must not shift by even a few pixels because this tile stitches to adjacent tiles. Keep all current water connections and openings. Do not reproduce any disconnected river tips from palette reference. No new water, no removal of water, no cropping, zoom, layout changes or rescaling. Preserve exact square framing and 1254x1254 native output if supported. No buildings, icons, roads, text, labels, borders, UI or watermark. Output only the recolored regional tile.",
+  "native_size": [
+    1254,
+    1254
+  ],
+  "saved_path": "E:\\stacklands\\textures\\world\\bai_chuan\\acceptance_20261030\\recolored\\bc_12.png"
+}

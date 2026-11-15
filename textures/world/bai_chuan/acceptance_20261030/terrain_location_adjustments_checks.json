@@ -1,0 +1,36 @@
+{
+  "reviewed": 123,
+  "changed": 53,
+  "maxShift": 452.9,
+  "minimumNamedSpacing": 174.56,
+  "logicalPlanUnchanged": true,
+  "byTerrainClass": {
+    "临水宗门": 2,
+    "山前宗门": 10,
+    "山间谷口": 17,
+    "山麓野外": 11,
+    "岸边渡口": 2,
+    "平地野外": 20,
+    "平缓聚落": 38,
+    "林缘野外": 6,
+    "水岸野外": 17
+  },
+  "pointWaterOverlapCount": 0,
+  "isolatedLandComponentPointIds": [
+    "bc_place_003",
+    "bc_place_119",
+    "bc_place_073",
+    "bc_place_079",
+    "bc_place_086",
+    "bc_place_092",
+    "bc_place_121"
+  ],
+  "landConnectivityLimit": "Frame-connected land is a colour-mask aid; river cuts also split components, so it is not an elevation or traversability proof.",
+  "manuallyReviewedKeyCases": [
+    "bc_place_049",
+    "bc_place_121",
+    "bc_place_080",
+    "bc_place_046"
+  ],
+  "finalFileSha256": "67e9b8538de45bb2321ae81a1ffc04cd2ddc1a05e286247643705f25367a45aa"
+}
