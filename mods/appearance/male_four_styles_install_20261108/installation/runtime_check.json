@@ -1,0 +1,270 @@
+{
+  "active_options": 60,
+  "active_pngs": 67,
+  "checks": 2292,
+  "creator_actual_dropdown_cases": 4,
+  "editor_manual_cases": 4,
+  "failures": [],
+  "female_hair_feature_combinations": 108,
+  "imported_textures": [
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 38890,
+      "low_alpha_rgb_different_pixels": 11528,
+      "note": "Existing Godot alpha-border processing may alter low-alpha RGB. No claim of complete importedRGBA identity.",
+      "path": "res://mods/appearance/ink_three_variants_20261004/male/hair_front/06.png"
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 40757,
+      "low_alpha_rgb_different_pixels": 12560,
+      "note": "Existing Godot alpha-border processing may alter low-alpha RGB. No claim of complete importedRGBA identity.",
+      "path": "res://mods/appearance/ink_three_variants_20261004/male/hair_back/06.png"
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 35783,
+      "low_alpha_rgb_different_pixels": 11002,
+      "note": "Existing Godot alpha-border processing may alter low-alpha RGB. No claim of complete importedRGBA identity.",
+      "path": "res://mods/appearance/ink_three_variants_20261004/male/hair_front/07.png"
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 90950,
+      "low_alpha_rgb_different_pixels": 18884,
+      "note": "Existing Godot alpha-border processing may alter low-alpha RGB. No claim of complete importedRGBA identity.",
+      "path": "res://mods/appearance/ink_three_variants_20261004/male/hair_back/07.png"
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 39185,
+      "low_alpha_rgb_different_pixels": 11280,
+      "note": "Existing Godot alpha-border processing may alter low-alpha RGB. No claim of complete importedRGBA identity.",
+      "path": "res://mods/appearance/ink_three_variants_20261004/male/hair_front/08.png"
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 80395,
+      "low_alpha_rgb_different_pixels": 19679,
+      "note": "Existing Godot alpha-border processing may alter low-alpha RGB. No claim of complete importedRGBA identity.",
+      "path": "res://mods/appearance/ink_three_variants_20261004/male/hair_back/08.png"
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 51316,
+      "low_alpha_rgb_different_pixels": 12473,
+      "note": "Existing Godot alpha-border processing may alter low-alpha RGB. No claim of complete importedRGBA identity.",
+      "path": "res://mods/appearance/ink_three_variants_20261004/male/hair_front/09.png"
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 78138,
+      "low_alpha_rgb_different_pixels": 18250,
+      "note": "Existing Godot alpha-border processing may alter low-alpha RGB. No claim of complete importedRGBA identity.",
+      "path": "res://mods/appearance/ink_three_variants_20261004/male/hair_back/09.png"
+    }
+  ],
+  "independent_hair_collar_cases": 56,
+  "intentional_source_change": "AppearanceEditor existing alias lookup also covers front/rear hair; shared-thread source differences are recorded separately.",
+  "male_hair_feature_combinations": 441,
+  "new_files": [
+    {
+      "choice_index": 3,
+      "full_id": "male_front_hair_05",
+      "name": "后收拢发",
+      "part": 0,
+      "path": "res://mods/appearance/ink_three_variants_20261004/male/hair_front/06.png",
+      "slot": "hair_front",
+      "style": 5
+    },
+    {
+      "choice_index": 3,
+      "full_id": "male_back_hair_05",
+      "name": "后颈低髻",
+      "part": 1,
+      "path": "res://mods/appearance/ink_three_variants_20261004/male/hair_back/06.png",
+      "slot": "hair_back",
+      "style": 5
+    },
+    {
+      "choice_index": 4,
+      "full_id": "male_front_hair_06",
+      "name": "露额拢发",
+      "part": 0,
+      "path": "res://mods/appearance/ink_three_variants_20261004/male/hair_front/07.png",
+      "slot": "hair_front",
+      "style": 6
+    },
+    {
+      "choice_index": 4,
+      "full_id": "male_back_hair_06",
+      "name": "长尾高束",
+      "part": 1,
+      "path": "res://mods/appearance/ink_three_variants_20261004/male/hair_back/07.png",
+      "slot": "hair_back",
+      "style": 6
+    },
+    {
+      "choice_index": 5,
+      "full_id": "male_front_hair_07",
+      "name": "露耳后梳",
+      "part": 0,
+      "path": "res://mods/appearance/ink_three_variants_20261004/male/hair_front/08.png",
+      "slot": "hair_front",
+      "style": 7
+    },
+    {
+      "choice_index": 5,
+      "full_id": "male_back_hair_07",
+      "name": "自然松披",
+      "part": 1,
+      "path": "res://mods/appearance/ink_three_variants_20261004/male/hair_back/08.png",
+      "slot": "hair_back",
+      "style": 7
+    },
+    {
+      "choice_index": 6,
+      "full_id": "male_front_hair_08",
+      "name": "偏分鬓辫",
+      "part": 0,
+      "path": "res://mods/appearance/ink_three_variants_20261004/male/hair_front/09.png",
+      "slot": "hair_front",
+      "style": 8
+    },
+    {
+      "choice_index": 6,
+      "full_id": "male_back_hair_08",
+      "name": "半束长披",
+      "part": 1,
+      "path": "res://mods/appearance/ink_three_variants_20261004/male/hair_back/09.png",
+      "slot": "hair_back",
+      "style": 8
+    }
+  ],
+  "new_hair_beard_cases": 24,
+  "new_pairs": [
+    {
+      "back": {
+        "choice_index": 3,
+        "full_id": "male_back_hair_05",
+        "name": "后颈低髻",
+        "part": 1,
+        "path": "res://mods/appearance/ink_three_variants_20261004/male/hair_back/06.png",
+        "slot": "hair_back",
+        "style": 5
+      },
+      "choice_index": 3,
+      "front": {
+        "choice_index": 3,
+        "full_id": "male_front_hair_05",
+        "name": "后收拢发",
+        "part": 0,
+        "path": "res://mods/appearance/ink_three_variants_20261004/male/hair_front/06.png",
+        "slot": "hair_front",
+        "style": 5
+      },
+      "style": 5
+    },
+    {
+      "back": {
+        "choice_index": 4,
+        "full_id": "male_back_hair_06",
+        "name": "长尾高束",
+        "part": 1,
+        "path": "res://mods/appearance/ink_three_variants_20261004/male/hair_back/07.png",
+        "slot": "hair_back",
+        "style": 6
+      },
+      "choice_index": 4,
+      "front": {
+        "choice_index": 4,
+        "full_id": "male_front_hair_06",
+        "name": "露额拢发",
+        "part": 0,
+        "path": "res://mods/appearance/ink_three_variants_20261004/male/hair_front/07.png",
+        "slot": "hair_front",
+        "style": 6
+      },
+      "style": 6
+    },
+    {
+      "back": {
+        "choice_index": 5,
+        "full_id": "male_back_hair_07",
+        "name": "自然松披",
+        "part": 1,
+        "path": "res://mods/appearance/ink_three_variants_20261004/male/hair_back/08.png",
+        "slot": "hair_back",
+        "style": 7
+      },
+      "choice_index": 5,
+      "front": {
+        "choice_index": 5,
+        "full_id": "male_front_hair_07",
+        "name": "露耳后梳",
+        "part": 0,
+        "path": "res://mods/appearance/ink_three_variants_20261004/male/hair_front/08.png",
+        "slot": "hair_front",
+        "style": 7
+      },
+      "style": 7
+    },
+    {
+      "back": {
+        "choice_index": 6,
+        "full_id": "male_back_hair_08",
+        "name": "半束长披",
+        "part": 1,
+        "path": "res://mods/appearance/ink_three_variants_20261004/male/hair_back/09.png",
+        "slot": "hair_back",
+        "style": 8
+      },
+      "choice_index": 6,
+      "front": {
+        "choice_index": 6,
+        "full_id": "male_front_hair_08",
+        "name": "偏分鬓辫",
+        "part": 0,
+        "path": "res://mods/appearance/ink_three_variants_20261004/male/hair_front/09.png",
+        "slot": "hair_front",
+        "style": 8
+      },
+      "style": 8
+    }
+  ],
+  "pass": true,
+  "random_style_coverage": {
+    "hair_back": [
+      8,
+      0,
+      6,
+      7,
+      5,
+      3,
+      4
+    ],
+    "hair_front": [
+      4,
+      0,
+      7,
+      3,
+      6,
+      8,
+      5
+    ]
+  },
+  "retained_pngs": 59,
+  "scope": "Eight hair PNG additions plus editor front/rear-hair alias normalization. Exact441male/108female UI composites;new front/rear independence,7collars and6beards;formal render/old numeric IDs/full IDs/retired aliases;real editor Apply/reopen and creator selectors;seeded random new-style reachability. Memory-only profile/data fixtures;no game or preset save invoked. Source snapshot differences are reported separately for shared-thread edits.",
+  "source_snapshot_changes": [
+    "csharp/panel/AppearanceEditor.cs"
+  ],
+  "user_preset_unchanged": true
+}

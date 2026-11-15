@@ -1,0 +1,65 @@
+{
+  "purpose": "Actual-game contact sheets, no face resizing",
+  "records": [
+    {
+      "source": "E:\\stacklands\\mods\\appearance\\male_face_natural_restore_20261109\\installation\\game_natural_bald_b04_e04_composite.png",
+      "sha256": "0f600a1e01b61309ed03e281900ffe61991e7201b28d6fd6a867d487754ff68d",
+      "crop": [
+        350,
+        295,
+        680,
+        560
+      ],
+      "resized": false,
+      "label": "镜像前"
+    },
+    {
+      "source": "E:\\stacklands\\mods\\appearance\\male_face_single_side_mirror_20261109\\installation\\game_mirror_bald_b04_e04_composite.png",
+      "sha256": "228ba6fdc466c376bed6b76fdc370b170d117d037a13d37f17aa00ea232eddaa",
+      "crop": [
+        350,
+        295,
+        680,
+        560
+      ],
+      "resized": false,
+      "label": "当前：单侧镜像"
+    },
+    {
+      "source": "E:\\stacklands\\mods\\appearance\\male_face_single_side_mirror_20261109\\installation\\game_mirror_whole_01_composite.png",
+      "sha256": "470873ce467ec33adb3b29070e4f6bb5e397297f24427b191842349a2077e5d3",
+      "crop": [
+        350,
+        245,
+        680,
+        570
+      ],
+      "resized": false,
+      "label": "当前实机 · 01"
+    },
+    {
+      "source": "E:\\stacklands\\mods\\appearance\\male_face_single_side_mirror_20261109\\installation\\game_mirror_whole_04_composite.png",
+      "sha256": "73973691c6f6f8455252912bc8266e6189fe3ba326120ac081b6e7b9bab81af3",
+      "crop": [
+        350,
+        245,
+        680,
+        570
+      ],
+      "resized": false,
+      "label": "当前实机 · 04"
+    },
+    {
+      "source": "E:\\stacklands\\mods\\appearance\\male_face_single_side_mirror_20261109\\installation\\game_mirror_whole_05_composite.png",
+      "sha256": "17d6df0473f4c1e2e3a61c2a0696e90490e56244d419092a1fa4eaadbefd524a",
+      "crop": [
+        350,
+        245,
+        680,
+        570
+      ],
+      "resized": false,
+      "label": "当前实机 · 05"
+    }
+  ]
+}

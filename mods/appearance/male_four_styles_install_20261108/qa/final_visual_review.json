@@ -1,0 +1,23 @@
+{
+  "status": "internal_visual_review_completed_installed",
+  "scope": [
+    "four styles on light/dark",
+    "normal size and head closeups",
+    "approved source versus actual01-face composition",
+    "49front/rear hair combinations on light/dark",
+    "four styles with seven clothing shoulder/neck lines",
+    "actual game screenshots and editor choices"
+  ],
+  "findings": {
+    "mandatory_rework": false,
+    "skin_patches_or_hard_seams_seen": false,
+    "temple_front_v2_scale_corrected": true,
+    "loose08_cut_edge_exposed_with_seven_clothes": false
+  },
+  "limitations": [
+    "Generated foreground06/07 slightly brighter/softer than approved whole portrait.",
+    "Individual strands and concealed support are not pixel-identical extractions.",
+    "Existing facial features are intentionally reused, so source eyebrow/eye nuances differ."
+  ],
+  "user_approval_scope": "Four whole portraits approved for implementation; this review is internal verification of the installed parts, not a new user sign-off."
+}

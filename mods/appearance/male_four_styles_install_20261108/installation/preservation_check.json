@@ -1,0 +1,28 @@
+{
+  "old_png_count": 59,
+  "all_old_png_unchanged": true,
+  "female_png_preserved": 24,
+  "new_active_png": 8,
+  "active_png": 67,
+  "active_choices": 60,
+  "source_checks": [
+    {
+      "file": "csharp/autoload/PortraitCatalog.cs",
+      "unchanged": true,
+      "sha256": "129ce7ec2900c4bbc6c132d4055bb73e8e2b36f109657aff651a0ae85647b696"
+    },
+    {
+      "file": "csharp/panel/AppearanceEditor.cs",
+      "unchanged": false,
+      "sha256": "389952aaec45463c7c1a3ae651f6e1d007196c754a0025def0045d6d7573fb5e"
+    },
+    {
+      "file": "csharp/panel/StartMenu.Creation.cs",
+      "unchanged": true,
+      "sha256": "c12656754c2ab4bdfada88a44e09249b41cd69e726331e19ac049edabcd9a382"
+    }
+  ],
+  "user_preset_unchanged": true,
+  "runtime_checks": 2292,
+  "failures": []
+}

@@ -1,0 +1,147 @@
+{
+  "schema": "male-original-single-side-mirror-preinstall-review/v1",
+  "status": "ready_for_user_requested_mirror_install",
+  "reviewer": "/root/portrait_audit",
+  "date": "2026-11-09",
+  "candidate_hashes": {
+    "male/eyes/01.png": "71db127336c39993586392884e67968aa4e82f7cd36285e99506b5efa3a5e26b",
+    "male/eyebrows/01.png": "f4365b286f42047d44e56c2badbf81b86e692265454fc592c4cfecfaf2b0da21",
+    "male/eyes/04.png": "390f8b8f63bf61405a8a7395b5abddb0f58269859eaa4de5e97b1d100a982291",
+    "male/eyebrows/04.png": "5368a16c57d87a4721d9fbe6cf34f93d6a49e5a92f12d275b5ce932edc50c253",
+    "male/eyes/05.png": "17ba50881bfee9a9dea2de495a581f1123fea9352b7b8bb8e6a979cc7086ccf1",
+    "male/eyebrows/05.png": "275706c928aa7afdbf814f7c80d21207751b96298310a2c33deda571aaed9176"
+  },
+  "selected_features_sha256": "8477f32d3cff65a68690855bf2e8426cca1a3e5849b9562b7a09c2ebbb0074b2",
+  "user_authorization": {
+    "instruction": "不对称，你生成一边镜像一下不就好了吗",
+    "explicit_single_side_mirror_authorized": true,
+    "supersedes_previous_default_no_mirror_constraint": true,
+    "scope": "Three current natural eyes from imageLEFT; three current natural brows from imageRIGHT, whole-sideRGBA reflected aboutx513. No need to reconfirm already-authorized mirroring."
+  },
+  "user_final_aesthetic_approval": false,
+  "installation_status": "installed_and_runtime_technically_verified",
+  "style_master": {
+    "path": "mods/appearance/male_style_alignment_20261106/preview/male_whole_01.png",
+    "sha256": "d97b79e3372df42db24b4dd5c3ec42f376d652616d9fa25d78a393b004da81a8",
+    "note": "Approved male style master; individual01/04/05source paintings are separately frozen_current assets listed below, not all claimed to be literal cuts ofmaster01."
+  },
+  "method": {
+    "axis_x": 513,
+    "reflection": "x_prime=1026-x",
+    "generation": false,
+    "RGB_repainting": false,
+    "resizing": false,
+    "interpolation": false,
+    "alpha_feathering": false,
+    "catchlights": "Catchlights and scleral shading mirror with each complete selected eye. This is explicitly recorded and looked natural at normal face/whole-portrait size; no independent relighting was painted."
+  },
+  "independent_pixel_proofs": [
+    {
+      "file": "male/eyes/01.png",
+      "source_ref": "source/frozen_current/male/eyes/01.png",
+      "source_sha256": "16d821b6f969f2bcc3d293ae9aef6a1d20e0ca41605f4c382f9cf6c9730d6264",
+      "source_side": "left",
+      "source_side_RGBA_difference_channels": 0,
+      "mirror_RGBA_difference_channels": 0,
+      "center_508_518_alpha_nonzero_pixels": 0
+    },
+    {
+      "file": "male/eyebrows/01.png",
+      "source_ref": "source/frozen_current/male/eyebrows/01.png",
+      "source_sha256": "f38064b1d7acd76a3ced5c58a7482818e60598c94061f776a6b286b1b4749700",
+      "source_side": "right",
+      "source_side_RGBA_difference_channels": 0,
+      "mirror_RGBA_difference_channels": 0,
+      "center_508_518_alpha_nonzero_pixels": 0
+    },
+    {
+      "file": "male/eyes/04.png",
+      "source_ref": "source/frozen_current/male/eyes/04.png",
+      "source_sha256": "aa8935dbb3e3695249321a96c9772108708c7b5e4c119a911580c81a57cf6bd3",
+      "source_side": "left",
+      "source_side_RGBA_difference_channels": 0,
+      "mirror_RGBA_difference_channels": 0,
+      "center_508_518_alpha_nonzero_pixels": 0
+    },
+    {
+      "file": "male/eyebrows/04.png",
+      "source_ref": "source/frozen_current/male/eyebrows/04.png",
+      "source_sha256": "a4ea663fccd21521e9c434018726ec2f7c6de391ca57c8e47c6eda9537604bbb",
+      "source_side": "right",
+      "source_side_RGBA_difference_channels": 0,
+      "mirror_RGBA_difference_channels": 0,
+      "center_508_518_alpha_nonzero_pixels": 0
+    },
+    {
+      "file": "male/eyes/05.png",
+      "source_ref": "source/frozen_current/male/eyes/05.png",
+      "source_sha256": "4d518b95c103e85aa18d8f331b4b61f4c039cbf36876d6cd9bac49f827346e91",
+      "source_side": "left",
+      "source_side_RGBA_difference_channels": 0,
+      "mirror_RGBA_difference_channels": 0,
+      "center_508_518_alpha_nonzero_pixels": 0
+    },
+    {
+      "file": "male/eyebrows/05.png",
+      "source_ref": "source/frozen_current/male/eyebrows/05.png",
+      "source_sha256": "23909da9d9e7ca5e1516cb29e0e038197b0d5d53ccd5c6aa838da58f8c8d7b04",
+      "source_side": "right",
+      "source_side_RGBA_difference_channels": 0,
+      "mirror_RGBA_difference_channels": 0,
+      "center_508_518_alpha_nonzero_pixels": 0
+    }
+  ],
+  "normal_size_observation": "Viewed original/sourceL/sourceR/mixed four-row face table and three complete mixed portraits. EyesLEFT+browsRIGHT retain original fine brow hairs, clear eyelids/iris and distinct01/04/05expressions.04uses warm brown original left eye and avoids left-brow hard step through right-brow source. No obvious return of prior regenerated blurred eyeliner or stiff expression; no new conspicuous seam or lighting conflict at normal size.05outer-brow tiny short hair remains an original brush detail, not a normal-size defect warranting redraw.",
+  "evidence": [
+    {
+      "file": "qa/original_left_right_mixed_faces_1x.png",
+      "sha256": "12e1ff4462a89b36ff911effc8dfd5279d4190b23f821cbaf32d72020ec67c46"
+    },
+    {
+      "file": "qa/three_whole_source_mixed_1x.png",
+      "sha256": "367f4250f42ee47204b5e025d6260cadb62727b85bd0bbd80d486bd00f50cc76"
+    }
+  ],
+  "limits": [
+    "Reviewer readiness for the user-authorized mirror installation is not user final aesthetic approval.",
+    "Only the six selected brow/eyePNG candidates are approved for this operation; no hair/head/skin/nose/mouth/beard painting changes authorized by this review.",
+    "Installation integrity and runtime composition checks remain separate; old799/3355failed-stage counts and305natural-recovery counts are not this package runtime results."
+  ],
+  "installation_followup": {
+    "status": "installed_and_runtime_technically_verified",
+    "runtime_result": "installation/runtime_check.json",
+    "runtime_sha256": "ac3a62f59cb9ea83013bdfec8ca460c47c907ded1d358eb804a0de7c2decbb74",
+    "checks": 335,
+    "failures": 0,
+    "actual_nohair_combinations": 9,
+    "actual_whole_combinations": 3,
+    "production_renderer_cases": 3,
+    "other_pngs_retained": 61,
+    "selection_configurations_unchanged": true,
+    "user_preset_unchanged": true,
+    "actual04_image": "installation/game_mirror_whole_04_face_1x.png",
+    "actual04_image_sha256": "c5856ab4ab2e091d529428c13be853c57ab2a2741b289f6e1d58b3097cfa9416",
+    "not_aesthetic_approval": true,
+    "note": "Technical runtime results are separate from the source-side/normal-size readiness review and do not imply user final aesthetic approval."
+  },
+  "static_composition_review": {
+    "status": "no_obvious_regression_in_requested_static_views",
+    "not_runtime": true,
+    "notes": "Normal-size7hair,6beards including empty, and7collars across3faces inspected. Original clarity and selected expressions preserved; no conspicuous new face/hairline/neck-collar seam or floating beard noticed. No claim of user aesthetic approval.",
+    "evidence": [
+      {
+        "file": "qa/selected_static_seven_hair_light_1x.png",
+        "sha256": "5443fca8abcfe29c7c9dc49be230fb77eb8eda2543601d7d7a57797727d5cc43"
+      },
+      {
+        "file": "qa/selected_static_six_beards_dark_1x.png",
+        "sha256": "745904a7ff0fc9ca86b18bd5039d6fc9d6fa4dcdb0833f08ddc4cc0457e15c97"
+      },
+      {
+        "file": "qa/selected_static_seven_collars_light_1x.png",
+        "sha256": "b47fa06364eef0532a9e97eb6a618be8dec1b0bcea1fe65b33c02a50c2432883"
+      }
+    ]
+  },
+  "preinstall_review_installation_status": "not_installed_at_original_review"
+}
