@@ -36,6 +36,15 @@ public partial class CombatClashTrialSmoke : Node
             Check(labels.Any(text => text.Contains("对手一队  速度3：招式隐藏"))
                 && labels.Any(text => text.Contains("暂无定力、失神、击退")), "敌牌隐藏且明确试玩范围");
             Check(labels.Any(text => text.Contains("灵机 ") && text.Contains("基础伤害")), "攻击手牌公开灵机范围和基础伤害");
+            var combatants = Descendants(trial).OfType<TrialCombatantView>().ToArray();
+            var leftView = combatants.Single(view => view.IsLeft);
+            var rightView = combatants.Single(view => !view.IsLeft);
+            Check(combatants.Length == 2 && leftView.CurrentHealth == trial.PlayerStats.current_health
+                && leftView.MaximumHealth == trial.PlayerStats.max_health && rightView.CurrentHealth == trial.EnemyStats.current_health
+                && rightView.MaximumHealth == trial.EnemyStats.max_health, "双方竖直生命槽绑定真实气血");
+            Check(!leftView.ResolveAvailable && !rightView.ResolveAvailable && leftView.Qi == trial.PlayerQi,
+                "定力未接入且脚下状态不伪造数值");
+            await CheckCardCostLayout();
             await CheckDisabledCardsStayReadable();
 
             var planned = 0; var sawNextRound = false;
@@ -65,6 +74,8 @@ public partial class CombatClashTrialSmoke : Node
             Check(trial.TrialLog.Contains("聚炁") && trial.TrialLog.Contains("周天"), "实际执行聚炁及周天回法流程");
             Check(trial.IsFinished && (trial.PlayerStats.current_health == 0 || trial.EnemyStats.current_health == 0)
                 && trial.TrialLog.Contains("试剑结束"), "完整对局在有限回合内分出胜负");
+            Check(leftView.CurrentHealth == trial.PlayerStats.current_health && rightView.CurrentHealth == trial.EnemyStats.current_health,
+                "对局结束后双方生命槽保持实时同步");
             var finalPlayerHealth = trial.PlayerStats.current_health;
             var finalEnemyHealth = trial.EnemyStats.current_health;
             trial.Payment.TryGetBalance("我方", out var finalPlayerCost);
@@ -122,6 +133,9 @@ public partial class CombatClashTrialSmoke : Node
         var trial = GD.Load<PackedScene>("res://tscn/scene/CombatClashTrial.tscn").Instantiate<CombatClashTrial>();
         trial.TrialSeed = 42; AddChild(trial);
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        var advance = trial.FindChild("AdvanceSubround", true, false) as Button;
+        Check(advance is { Disabled: true } && Descendants(advance).OfType<Label>()
+            .Any(label => label.Visible && label.Text == "推进一小轮"), "未结算时推进按钮禁用但保留文字");
         trial.CommitPlan();
         var hand = Descendants(trial).OfType<Button>().FirstOrDefault(button => button.Name.ToString().StartsWith("Hand_"));
         var commit = trial.FindChild("CommitPlan", true, false) as Button;
@@ -130,6 +144,27 @@ public partial class CombatClashTrialSmoke : Node
         Check(commit is { Disabled: true } && Descendants(commit).OfType<Label>().Any(label => label.Visible && label.Text == "确定排招"),
             "禁用确认按钮保留文字");
         trial.QueueFree();
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+    }
+
+    private async Task CheckCardCostLayout()
+    {
+        var card = new TrialTechniqueCard(new TrialTechniqueCardData("样例", "近攻", 3, 2, 1, "6–11", "基础伤害 16", ""));
+        AddChild(card);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        var cost = card.GetNode<Label>("Cost");
+        var kind = card.GetNode<Label>("Kind");
+        var capacity = card.GetNode<Label>("Capacity");
+        Check(cost.Text.Contains("体 2") && cost.Text.Contains("法 1") && cost.AnchorLeft < .2f
+            && kind.Text == "近攻" && kind.AnchorLeft > .5f, "双资源费用在左上，类别在右上");
+        Check(capacity.Text == "占 3" && capacity.AnchorTop > .8f, "队列点数与费用分开显示");
+        card.QueueFree();
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        var free = new TrialTechniqueCard(new TrialTechniqueCardData("样例", "运转", 1, 0, 0, "", "获得炁 2", ""));
+        AddChild(free);
+        await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+        Check(free.GetNode<Label>("Cost").Text == "无消耗", "零费牌明确显示无消耗");
+        free.QueueFree();
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
     }
 

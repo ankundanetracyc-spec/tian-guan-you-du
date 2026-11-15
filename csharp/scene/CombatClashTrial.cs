@@ -57,7 +57,7 @@ public partial class CombatClashTrial : Control
         GetWindow().ContentScaleSize = new Vector2I(1280, 720);
         SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         SetupBattle();
-        BuildUi();
+        BuildStageUi();
         Write("第一回合：选择手牌，再选择我方队列及敌方队列。敌方招式不预先显示。");
         Render();
     }
@@ -100,55 +100,6 @@ public partial class CombatClashTrial : Control
         max_mana = 1, current_mana = 1
     };
 
-    private void BuildUi()
-    {
-        var back = new ColorRect { Color = new Color("171c1c"), MouseFilter = MouseFilterEnum.Ignore };
-        back.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect); AddChild(back);
-        var margin = new MarginContainer(); margin.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        margin.AddThemeConstantOverride("margin_left", 28); margin.AddThemeConstantOverride("margin_right", 28);
-        margin.AddThemeConstantOverride("margin_top", 18); margin.AddThemeConstantOverride("margin_bottom", 18); AddChild(margin);
-        var column = new VBoxContainer(); column.AddThemeConstantOverride("separation", 8); margin.AddChild(column);
-        var title = new Label { Text = "灵机试剑  ·  独立试玩", HorizontalAlignment = HorizontalAlignment.Center };
-        title.AddThemeFontSizeOverride("font_size", 28); title.AddThemeColorOverride("font_color", new Color("e9d5a2")); column.AddChild(title);
-        var note = new Label { Text = "固定样例：双方云息五层，5×2演示盘  ·  速度仅供演示  ·  仅基础伤害；暂无定力、失神、击退、守御、心法、法宝与暴击", HorizontalAlignment = HorizontalAlignment.Center };
-        note.AddThemeFontSizeOverride("font_size", 14); note.AddThemeColorOverride("font_color", new Color("b2b7aa")); column.AddChild(note);
-        _status = new Label { HorizontalAlignment = HorizontalAlignment.Center }; _status.AddThemeFontSizeOverride("font_size", 19); column.AddChild(_status);
-        var columns = new HBoxContainer { SizeFlagsVertical = SizeFlags.ExpandFill }; columns.AddThemeConstantOverride("separation", 18); column.AddChild(columns);
-        var left = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsStretchRatio = 1.05f }; columns.AddChild(left);
-        _phase = new Label(); _phase.AddThemeFontSizeOverride("font_size", 20); left.AddChild(_phase);
-        _playerQueues = new Label { AutowrapMode = TextServer.AutowrapMode.WordSmart, CustomMinimumSize = new Vector2(0, 104) }; left.AddChild(_playerQueues);
-        var hide = new Label { Text = "对手一队  速度3：招式隐藏\n对手二队  速度1：招式隐藏", CustomMinimumSize = new Vector2(0, 62) };
-        hide.AddThemeColorOverride("font_color", new Color("a3aaa2")); left.AddChild(hide);
-        _selection = new Label { Text = "先点击下方手牌，再指定队列和目标。", AutowrapMode = TextServer.AutowrapMode.WordSmart }; left.AddChild(_selection);
-        var assign = new GridContainer { Columns = 2 }; left.AddChild(assign);
-        for (var queue = 0; queue < 2; queue++) for (var target = 0; target < 2; target++)
-        {
-            var q = queue; var t = target;
-            var button = MakeButton($"我方{q + 1}队  →  对手{t + 1}队");
-            button.Pressed += () => { if (_selected is { } key) QueuePlayerCard(key, q, t); };
-            assign.AddChild(button); _planningButtons.Add(button);
-        }
-        var remove = new HBoxContainer(); left.AddChild(remove);
-        for (var queue = 0; queue < 2; queue++)
-        {
-            var q = queue; var button = MakeButton($"撤回{q + 1}队末招");
-            button.Pressed += () => WithdrawLast(q); remove.AddChild(button); _planningButtons.Add(button);
-        }
-        var actions = new HBoxContainer(); left.AddChild(actions);
-        _commit = MakeButton(""); AddButtonText(_commit, "确定排招"); _commit.Name = "CommitPlan"; _commit.Pressed += CommitPlan; actions.AddChild(_commit);
-        _advance = MakeButton("推进一小轮"); _advance.Name = "AdvanceSubround"; _advance.Pressed += AdvanceSubround; actions.AddChild(_advance);
-        var right = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsStretchRatio = 1f }; columns.AddChild(right);
-        var logTitle = new Label { Text = "交锋记录" }; logTitle.AddThemeFontSizeOverride("font_size", 20); right.AddChild(logTitle);
-        _log = new RichTextLabel { SizeFlagsVertical = SizeFlags.ExpandFill, ScrollFollowing = true,
-            FitContent = false, SelectionEnabled = true, CustomMinimumSize = new Vector2(0, 240) }; right.AddChild(_log);
-        var handTitle = new Label { Text = "手牌  ·  点击选择" }; handTitle.AddThemeFontSizeOverride("font_size", 19); column.AddChild(handTitle);
-        var scroll = new ScrollContainer { CustomMinimumSize = new Vector2(0, 130), HorizontalScrollMode = ScrollContainer.ScrollMode.Auto,
-            VerticalScrollMode = ScrollContainer.ScrollMode.Disabled }; column.AddChild(scroll);
-        _handBox = new HBoxContainer(); _handBox.AddThemeConstantOverride("separation", 8); scroll.AddChild(_handBox);
-        var rules = new Label { Text = "每队容量5；应敌、聚炁占1，痛击、惊蛰占2。首拼双方各付一次，同一招后续不重复。聚炁得炁2，满2炁回满1法力。",
-            AutowrapMode = TextServer.AutowrapMode.WordSmart }; rules.AddThemeFontSizeOverride("font_size", 13); rules.AddThemeColorOverride("font_color", new Color("aeb7ad")); column.AddChild(rules);
-    }
-
     private static Button MakeButton(string text)
     {
         var button = new Button { Text = text, CustomMinimumSize = new Vector2(150, 40) };
@@ -171,8 +122,9 @@ public partial class CombatClashTrial : Control
     private void Render()
     {
         _payment.TryGetBalance(_player.Id, out var p); _payment.TryGetBalance(_enemy.Id, out var e);
-        _status.Text = $"我方  气血 {_player.Stats.current_health}/303  体力 {p.Stamina}/6  法力 {p.Mana}/1  炁 {_player.Qi}     "
-            + $"对手  气血 {_enemy.Stats.current_health}/303  体力 {e.Stamina}/6  法力 {e.Mana}/1  炁 {_enemy.Qi}";
+        _status.Text = $"我方 体力 {p.Stamina}/6 · 法力 {p.Mana}/1            对手 体力 {e.Stamina}/6 · 法力 {e.Mana}/1";
+        _playerView?.Refresh(_player.Stats.current_health, _player.Stats.max_health, _player.Qi);
+        _enemyView?.Refresh(_enemy.Stats.current_health, _enemy.Stats.max_health, _enemy.Qi);
         _phase.Text = _finished ? "试剑结束" : _planning ? $"第 {_round} 回合 · 排招" : $"第 {_round} 回合 · 第 {_subround + 1} 小轮";
         var lines = new List<string>();
         for (var q = 0; q < 2; q++)
@@ -187,11 +139,12 @@ public partial class CombatClashTrial : Control
         foreach (var card in _player.Hand.Hand)
         {
             var key = card.Key; var skill = card.Skill;
-            var text = $"{skill.skill_name}\n占 {Capacity(card)}  体 {skill.energy_cost}  法 {skill.mana_cost}\n" +
-                (card.SourceKey == Qi ? "运转 · 聚炁2" : $"灵机 {LingjiRange(card, _player)}\n基础伤害 {Damage(card, _player)}");
-            var button = MakeButton(""); AddButtonText(button, text); button.Name = "Hand_" + key.PlacementId;
-            button.CustomMinimumSize = new Vector2(150, 110); button.Disabled = !_planning || _finished;
-            button.ToggleMode = true; button.ButtonPressed = _selected == key;
+            var kind = card.SourceKey == Qi ? "运转" : card.SourceKey == Jing ? "远攻" : "近攻";
+            var info = new TrialTechniqueCardData(skill.skill_name, kind, Capacity(card), skill.energy_cost, skill.mana_cost,
+                card.SourceKey == Qi ? "" : LingjiRange(card, _player),
+                card.SourceKey == Qi ? "获得炁 2" : $"基础伤害 {Damage(card, _player)}", skill.icon_path);
+            var button = new TrialTechniqueCard(info) { Name = "Hand_" + key.PlacementId,
+                Disabled = !_planning || _finished, ButtonPressed = _selected == key };
             button.Pressed += () => { _selected = key; Render(); }; _handBox.AddChild(button);
         }
         foreach (var button in _planningButtons) button.Disabled = !_planning || _finished;
