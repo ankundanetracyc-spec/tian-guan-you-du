@@ -1,0 +1,49 @@
+/* Reuse the project's matte paper, roster tab, and dark jade ink materials. */
+.stage{background:#ede4cd}
+.stage:before{opacity:.24;border-width:12px;outline-offset:-22px}
+.topbar{left:48px;right:48px;top:22px;height:80px;border-bottom-color:#9c9678}
+.topbar h1{font-size:44px;letter-spacing:9px;color:#283c34}
+.topbar .sub{color:#6d785f;letter-spacing:3px}
+.panel{top:124px;bottom:50px;border-color:#a99e7e;background-color:#f2ead5ed}
+.panel:before,.panel:after{width:19px;height:19px;border-color:#9a9274}
+.index-panel{left:42px;width:588px;padding:28px 25px 24px;background-color:#f3ecd9;background-image:url('../../../textures/ui/alchemy_20261019/role_paper_v2.png');background-size:cover;background-position:center;background-repeat:no-repeat}
+.index-heading{height:64px;margin:0 0 16px;align-items:center;border-bottom:1px solid #b4aa8b}
+.index-heading h2{position:relative;margin-left:-7px;padding:8px 23px 10px;font-size:28px;line-height:36px;letter-spacing:4px;background:url('../../../textures/ui/roster_plain_tab_v2.png') center/100% 148% no-repeat;color:#324a3e}
+.index-heading span{font-size:18px;letter-spacing:1px;color:#7b795e;white-space:nowrap}
+.search{height:52px;padding:0 17px;border:1px solid #b7ad90;background:#faf5e8b3}
+.search span{font-size:26px;color:#6d8069}
+.search input{font-size:22px;padding:9px 0}
+.search input::placeholder{color:#91947c}
+.categories{justify-content:space-between;gap:5px;margin:18px 0 20px;padding-bottom:14px;border-bottom:1px solid #b9b096}
+.category{min-width:82px;padding:7px 12px;font-size:21px;letter-spacing:2px;line-height:30px;color:#6a7864;border:1px solid transparent}
+.category:hover{color:#375b43;border-bottom-color:#9ba989}
+.category.active{color:#f0ead5;border-color:#63745e;background:#395847 url('../../../textures/ui/forging_20261021/jade_button_v3.png') center/cover no-repeat;box-shadow:none}
+.index-columns{grid-template-columns:minmax(0,1fr)92px;padding:0 26px 12px 24px;gap:0;font-size:18px;letter-spacing:4px;color:#7e806a}
+.index-columns span:last-child{padding:0;text-align:center}
+.index-scroll{height:calc(100% - 263px);padding:0 3px 0 0;scrollbar-color:#8fa18455 transparent}
+.index-row{grid-template-columns:minmax(0,1fr)92px;gap:0;height:82px;padding:12px 24px;border-bottom:1px solid #a8a58b57;background:transparent;isolation:isolate}
+.index-row:before{content:'';position:absolute;left:0;top:13px;bottom:13px;width:3px;background:transparent}
+.index-row:hover,.index-row.is-linked{background:#d3dcc86b}
+.index-row.is-selected{background:linear-gradient(90deg,#bfd0b79c,#dce5cf50);box-shadow:none}
+.index-row.is-selected:before{background:#507653}
+.row-name{font-size:25px;line-height:33px;letter-spacing:1px;color:#344639;text-overflow:ellipsis}
+.row-count{width:76px;justify-self:center;text-align:center;font-size:27px;line-height:36px;color:#597150;font-variant-numeric:tabular-nums}
+.row-count:before{content:'×';font-size:17px;color:#89947a;margin-right:5px}
+.row-progress{position:absolute;left:25px;bottom:8px;color:#748269;font-size:14px;line-height:17px;letter-spacing:1px}
+.index-row:has(.row-progress) .row-name{align-self:start;margin-top:1px}
+.index-hint{bottom:22px;left:25px;right:25px;border-color:#b6ab8c;font-size:17px;padding-top:14px;letter-spacing:2px;color:#717c64}
+.space-panel{left:654px;right:42px;padding:26px 28px;background:#f4edd9de}
+.space-header{height:44px;border-bottom:1px solid #c8bea0;padding-bottom:11px}
+.crumb{font-size:29px;letter-spacing:3px;color:#394f3d}
+.space-header .state{font-size:17px;letter-spacing:2px;color:#87927b}
+.location-status{font-size:18px;height:43px;line-height:43px;letter-spacing:1px;color:#55774f}
+.region h3{display:flex;align-items:center;gap:12px;color:#4b5f48;font-size:25px;letter-spacing:5px}
+.region h3:after{content:'';height:1px;flex:1;background:linear-gradient(90deg,#b2b29a77,transparent)}
+.region-grid{border-color:#a1ab8d;background-color:#e3e6cd4d;background-image:linear-gradient(to right,#a8b3937c 1px,transparent 1px),linear-gradient(to bottom,#a8b3937c 1px,transparent 1px)}
+.bag-item.is-located{border-color:#3c6f49;outline:3px solid #839f7166;outline-offset:3px;background:#b5cba538}
+.bag-item.is-located:after{color:#3d6444;background:#edf0de;border-color:#9aad85;font-size:14px;letter-spacing:1px}
+.space-footer{left:28px;right:28px;border-color:#beb698;font-size:18px;letter-spacing:1px;color:#78866b}
+.tooltip{background:#25392d url('../../../textures/ui/forging_20261021/jade_button_v3.png') center/cover no-repeat;border-color:#b4b294;box-shadow:0 2px 5px #333a2b1f}
+.tooltip-description{line-height:1.65}
+.empty-index{font-size:22px;margin-top:60px}
+.footnote{display:none}

@@ -1,0 +1,12 @@
+Godot Engine v4.7.2.stable.mono.official.ed1daf0bf - https://godotengine.org
+
+QUEUE_LAYER_FIXES [{"character_layer":55,"new_relative":-5,"node":"OverlappingRearSkirt","old_absolute":55},{"character_layer":56,"new_relative":1,"node":"RearSkirtInnerFacing","old_absolute":56},{"character_layer":59,"new_relative":-11,"node":"ShoulderUnderClothing","old_absolute":59}]
+QUEUE_LAYER_BEFORE parent=40 near_leg=75 rear_skirt=55 lining=56 shoulder_cap=59
+QUEUE_LAYER_AFTER parent=40 near_leg=75 rear_skirt=95 lining=96 shoulder_cap=99
+QUEUE_SMALL_LAYERS_OK phases=3660 layer_checks=36600 parent_z=-100,0,20,40,100,2000 both_facings=pass actions=5 all_mesh_order=stable
+Godot Engine v4.7.2.stable.mono.official.ed1daf0bf - https://godotengine.org
+
+QUEUE_SMALL_GLIDE_OK phases=360 approach_retreat=pass both_facings=pass no_walk_cycle=pass max_sole_lift=0.00000953674316 settle_pause=pass
+Godot Engine v4.7.2.stable.mono.official.ed1daf0bf - https://godotengine.org
+
+QUEUE_SMALL_AVATAR_SMOKE_OK phases=610 bones=21 meshes=7 actions=5 both_facings pause_resume=pass

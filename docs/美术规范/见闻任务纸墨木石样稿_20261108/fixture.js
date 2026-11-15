@@ -1,0 +1,141 @@
+window.JOURNAL_FIXTURE = {
+  "lore": [
+    {
+      "id": "heguang",
+      "title": "和光峰",
+      "subtitle": "庶务、杂役与供给",
+      "body": "杂役弟子、膳房、库房、修缮与宗门传讯都归于此峰。这里是玉虚仙宗最接近凡俗烟火的一处所在。",
+      "source": "玉虚仙宗峰内见闻",
+      "place": "玉虚仙宗·和光峰",
+      "state": null,
+      "time": null
+    },
+    {
+      "id": "guanfu",
+      "title": "观复峰",
+      "subtitle": "外门、内门与日常修持",
+      "body": "这里设有接引处、静室和休息处，也是杂役、外门与内门弟子日常起居修行的地方。",
+      "source": "玉虚仙宗峰内见闻",
+      "place": "玉虚仙宗·观复峰",
+      "state": null,
+      "time": null
+    },
+    {
+      "id": "zifu",
+      "title": "紫府峰",
+      "subtitle": "真传起居、长老与宗门中枢",
+      "body": "正式真传弟子在此居住并使用静室与休息处；首座、长老与宗主也在此处理宗门中枢事务。",
+      "source": "玉虚仙宗峰内见闻",
+      "place": "玉虚仙宗·紫府峰",
+      "state": null,
+      "time": null
+    },
+    {
+      "id": "xuanlan",
+      "title": "玄览峰",
+      "subtitle": "藏经、研读与传承",
+      "body": "这里有藏经阁和研读典籍的地方。弟子可在阁中选取秘籍拓印，第一本免费。",
+      "source": "玉虚仙宗峰内见闻",
+      "place": "玉虚仙宗·玄览峰",
+      "state": null,
+      "time": null
+    },
+    {
+      "id": "tianwen",
+      "title": "天问峰",
+      "subtitle": "演法、试炼与宗门比试",
+      "body": "斗法台、试炼场和论道台分布于峰间，用来检验术法、应敌和临场取舍。",
+      "source": "玉虚仙宗峰内见闻",
+      "place": "玉虚仙宗·天问峰",
+      "state": null,
+      "time": null
+    },
+    {
+      "id": "tiangong",
+      "title": "天工峰",
+      "subtitle": "丹、器、符、阵诸般技艺",
+      "body": "丹房：炼丹与丹方；器作：炼器与法宝；云篆：符箓与符印；阵枢：阵法、阵盘与护宗阵枢。四类技艺在同一峰内分院传承。",
+      "source": "玉虚仙宗峰内见闻",
+      "place": "玉虚仙宗·天工峰",
+      "state": null,
+      "time": null
+    },
+    {
+      "id": "zhizhong",
+      "title": "执中峰",
+      "subtitle": "戒律、执法与宗内裁断",
+      "body": "门规、惩戒、执法和宗内争端裁断皆由此峰主持，维持各峰之间的秩序。",
+      "source": "玉虚仙宗峰内见闻",
+      "place": "玉虚仙宗·执中峰",
+      "state": null,
+      "time": null
+    },
+    {
+      "id": "yaopu",
+      "title": "瑶圃峰",
+      "subtitle": "灵植、灵兽与灵材培育",
+      "body": "灵药、灵植、灵兽与各类宗门资源在此培育，所得灵材再送往天工峰炼制。",
+      "source": "玉虚仙宗峰内见闻",
+      "place": "玉虚仙宗·瑶圃峰",
+      "state": null,
+      "time": null
+    }
+  ],
+  "tasks": [
+    {
+      "id": "phase.travel",
+      "title": "行旅与积累",
+      "body": "在百川区域自由选择修炼、交易、旅行、探索、委托或接触势力，积累下一次境界突破所需的资源与条件。",
+      "source": "阶段目标",
+      "place": "百川区域",
+      "state": "进行中",
+      "time": null
+    },
+    {
+      "id": "cultivation.enter_yunxi",
+      "title": "引气入道",
+      "body": "踏入云息境。",
+      "source": "长期主线",
+      "place": "个人修行",
+      "state": "进行中",
+      "time": null
+    },
+    {
+      "id": "yuxu.library.first_copy",
+      "title": "玄览藏书",
+      "body": "在玄览峰拓印一本秘籍。",
+      "source": "玉虚仙宗",
+      "place": "玄览峰",
+      "state": "进行中",
+      "time": null
+    }
+  ],
+  "records": [],
+  "scope": "隔离UI夹具；只摘录当前源码文字，不读取玩家已发现、已领取或已完成状态。八峰清册为八份当前短正文的连续阅读组合，不新增正式见闻条目。",
+  "taskFixtureCondition": "用于版式演示的统一条件：已入宗的凡人、尚未领取首本；不声明任何真实角色具备该状态。无奖励、无完成按钮、已完成列表为空。",
+  "omittedUnknownFields": [
+    "玩家已发现状态",
+    "实际接取日期",
+    "完成日期",
+    "真实人物与背包",
+    "奖励或贡献流水"
+  ],
+  "sources": [
+    {
+      "path": "scripts/world/bai_chuan/YuxuPeakInterior.gd",
+      "sha256": "0d862a0f2f225b7e6b7e1778dd6fbc2f9564177c662d13ea6548fb5cde3b036f"
+    },
+    {
+      "path": "csharp/MainScene.cs",
+      "sha256": "9f7287e8a855ef06ddd70dc836e645e9876ed3bf132eac62e5c016d4955a98d8"
+    },
+    {
+      "path": "csharp/MainScene.JournalTasks.cs",
+      "sha256": "20f8dc3bf2c9719f7c0cb69497fa273df3cdfd06cf44d8259f7e01b4c1f1ae14"
+    },
+    {
+      "path": "csharp/panel/JournalPanel.cs",
+      "sha256": "071021910b8c445f60516d8a09bad0fc6670d7d4639d545c7d72f096f08e0e74"
+    }
+  ]
+};

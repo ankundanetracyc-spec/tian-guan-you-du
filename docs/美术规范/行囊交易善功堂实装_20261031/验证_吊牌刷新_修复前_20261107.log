@@ -1,0 +1,15 @@
+Godot Engine v4.7.2.stable.mono.official.ed1daf0bf - https://godotengine.org
+
+SCRIPT ERROR: Cannot call method 'get_global_transform_with_canvas' on a null value.
+   at: _update_attachments (res://scripts/ui/SceneActionRope.gd:202)
+   GDScript backtrace (most recent call first):
+       [0] _update_attachments (res://scripts/ui/SceneActionRope.gd:202)
+       [1] _layout_tags (res://scripts/ui/SceneActionRope.gd:190)
+       [2] _run (res://tools/verify_scene_action_rope_lifecycle_20261107.gd:38)
+       [3] _settle (res://tools/verify_scene_action_rope_lifecycle_20261107.gd:19)
+ERROR: 重新布局仍引用已经离开父节点的旧吊牌
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _check (res://tools/verify_scene_action_rope_lifecycle_20261107.gd:13)
+       [1] _run (res://tools/verify_scene_action_rope_lifecycle_20261107.gd:39)
+       [2] _settle (res://tools/verify_scene_action_rope_lifecycle_20261107.gd:19)
