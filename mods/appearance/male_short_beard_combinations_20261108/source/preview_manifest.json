@@ -1,0 +1,178 @@
+{
+  "status": "four_whole_portrait_previews_and_one_uninstalled_beard_extraction_candidate",
+  "mode": "built-in image_gen",
+  "user_confirmed_beard": "short moustache plus chin/jaw beard",
+  "middle_age_work": "paused by user; no age/realm rules changed",
+  "final_previews": [
+    "preview/01_project_short_beard.png",
+    "preview/02_square_face_open_forehead.png",
+    "preview/03_lean_face_low_tie_v2.png",
+    "preview/04_broad_face_broken_front_v2.png"
+  ],
+  "superseded_previews": [
+    "preview/03_lean_face_low_tie.png",
+    "preview/04_broad_face_broken_front.png"
+  ],
+  "records": [
+    {
+      "id": "01_project_short_beard",
+      "name": "原款短须",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-3c06cf3f-61cc-4df2-b950-93d66e23d121.png",
+      "workspace_file": "preview/01_project_short_beard.png",
+      "sha256": "b0e58ce2489e1e2ae3e77f00388ea982edb51f16245b6940a8442ac2177df9f5",
+      "size": [
+        1024,
+        1536
+      ],
+      "native_unmodified": true
+    },
+    {
+      "id": "02_square_face_open_forehead",
+      "name": "方正·露额束发",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-47d4fb57-b7e3-4322-929d-b91d2af8baa0.png",
+      "workspace_file": "preview/02_square_face_open_forehead.png",
+      "sha256": "951415132d3862a090fbf10b5380e56eb0df69112d50d0704052eec22cb3284a",
+      "size": [
+        1024,
+        1536
+      ],
+      "native_unmodified": true
+    },
+    {
+      "id": "03_lean_face_low_tie",
+      "name": "清瘦·侧梳低束",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-2d88835d-ca94-4cb4-89b4-e1e1a0971dd4.png",
+      "workspace_file": "preview/03_lean_face_low_tie.png",
+      "sha256": "63865eaf1752e2ab860b503104e53b21e66f1070f5d8ec48e48a24abca4be51b",
+      "size": [
+        1024,
+        1536
+      ],
+      "native_unmodified": true
+    },
+    {
+      "id": "04_broad_face_broken_front",
+      "name": "敦厚·短碎半束",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-bedf386d-f79d-4897-a67c-1cb7d3bb265b.png",
+      "workspace_file": "preview/04_broad_face_broken_front.png",
+      "sha256": "2fabd008076fb88595b7fc488b427b62e824145d8fec0370a31b3c9e38790eeb",
+      "size": [
+        1024,
+        1536
+      ],
+      "native_unmodified": true
+    },
+    {
+      "id": "short_beard_transparent_candidate",
+      "workspace_file": "parts/short_beard_native_candidate.png",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-85e5dfd2-7d7b-4139-a39f-82c8f8c7bc42.png",
+      "sha256": "2660304bf8cf63c16475b35b80b7c7a4d429e401952788f3fd16b55debaa74f2",
+      "size": [
+        1024,
+        1536
+      ],
+      "native_unmodified": true
+    },
+    {
+      "id": "03_lean_face_low_tie",
+      "workspace_file": "preview/03_lean_face_low_tie_v2.png",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-9afa61c4-2ff4-4a9b-b87f-356e94f2775b.png",
+      "sha256": "cf318b30ad426bdbb781d123585737198f628a3b40d7b6f6b53f366b8da8dbaf",
+      "size": [
+        1024,
+        1536
+      ],
+      "native_unmodified": true
+    },
+    {
+      "id": "04_broad_face_broken_front",
+      "workspace_file": "preview/04_broad_face_broken_front_v2.png",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-d636f002-98b8-4270-8d1f-1407b4236ca5.png",
+      "sha256": "43f0682f5220d2f23d9296bd17c4019a4fd62824788f1481cd6c178860aa5d84",
+      "size": [
+        1024,
+        1536
+      ],
+      "native_unmodified": true
+    }
+  ],
+  "preserved_baseline_paths": 146,
+  "male_female_active_pngs_preserved": 54,
+  "active_config_changes": false,
+  "runtime_installation": false,
+  "anchor_status": "Whole-canvas references only. Neither whole generation nor beard extraction is a certified modular registration. Verify mouth/chin/neck anchors before installation.",
+  "beard_part_status": "Native transparent extraction candidate only; contains extremely low-alpha residue beyond the main beard. Needs edge cleanup and registration/overlay review before any use in the active package. Not a production-ready installed component.",
+  "beard_alpha_diagnostics": [
+    {
+      "threshold": 1,
+      "pixels": 10159,
+      "bbox": [
+        33,
+        45,
+        994,
+        1512
+      ]
+    },
+    {
+      "threshold": 5,
+      "pixels": 5852,
+      "bbox": [
+        426,
+        451,
+        597,
+        554
+      ]
+    },
+    {
+      "threshold": 15,
+      "pixels": 4928,
+      "bbox": [
+        428,
+        452,
+        596,
+        553
+      ]
+    },
+    {
+      "threshold": 30,
+      "pixels": 4319,
+      "bbox": [
+        428,
+        453,
+        594,
+        552
+      ]
+    },
+    {
+      "threshold": 80,
+      "pixels": 3267,
+      "bbox": [
+        432,
+        455,
+        590,
+        551
+      ]
+    },
+    {
+      "threshold": 128,
+      "pixels": 2571,
+      "bbox": [
+        435,
+        456,
+        583,
+        550
+      ]
+    },
+    {
+      "threshold": 200,
+      "pixels": 1400,
+      "bbox": [
+        459,
+        458,
+        572,
+        549
+      ]
+    }
+  ],
+  "qa": "Normal-size visual review of the whole portraits plus native-file identity/size/alpha and preserved-resource checks. No game build/combination test for preview-only work."
+}

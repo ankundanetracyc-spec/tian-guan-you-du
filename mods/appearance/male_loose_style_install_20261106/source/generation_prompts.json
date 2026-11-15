@@ -1,0 +1,22 @@
+{
+  "schema": "male-loose-style-generation/v1",
+  "mode": "built-in image_gen",
+  "approved_portrait": "source/approved_male.png",
+  "approved_sha256": "5ca3f4cc0ea0410c22bcf07dfef278a9496a0fea968c38008dfe8f7dc5cf6ee3",
+  "prompt_sets": [
+    {
+      "file": "source/hair_generation_prompts.json",
+      "role": "Exact front/back hair extraction and hidden posterior hair completion prompts"
+    },
+    {
+      "file": "source/feature_generation_prompts.json",
+      "role": "Exact feature extraction prompts and eye retry provenance; nose/mouth candidates are archived only"
+    }
+  ],
+  "selected_new_parts": ["hair_front", "hair_back", "eyebrows", "eyes"],
+  "deduplicated_reused_parts": ["nose", "mouth"],
+  "unchanged_basis": "Existing approved male head/skin and seven paired clothing choices; existing male01 choices remain available.",
+  "technical_import_records": ["source/hair_import.json", "source/feature_import.json", "qa/geometry_and_dedup.json"],
+  "registration": "One shared whole-group similarity based on the two pupil positions and chin. Native eye extraction is first returned to approved-source coordinates; combined mapping is sampled once. No local feature warps or runtime offsets.",
+  "limitations": "Source-visible pigment is conserved where supported by the native alpha. Hidden regions and removed crossing hairs require generated completion. Reused nose/mouth and fixed head mean the actual combination is not claimed to be pixel-identical to the whole portrait."
+}

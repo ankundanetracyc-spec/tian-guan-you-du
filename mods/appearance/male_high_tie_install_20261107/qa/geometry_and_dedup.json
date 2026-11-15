@@ -1,0 +1,277 @@
+{
+  "schema": "male-high-tie-geometry-and-dedup/v1",
+  "date": "2026-11-07",
+  "scope": "Read-only original source and frozen current male inspection. This QA JSON is the only written artifact; no PNG, configuration, installation, or code edited.",
+  "source": {
+    "path": "E:\\stacklands\\mods\\appearance\\male_high_tie_install_20261107\\source\\approved_male.png",
+    "sha256": "fe7b9280cbb19019e76ffd6d451679e5e3ff3dc2b685b9020471b96451312f18",
+    "approved_sha256": "fe7b9280cbb19019e76ffd6d451679e5e3ff3dc2b685b9020471b96451312f18",
+    "sha256_matches_approved": true
+  },
+  "authority": {
+    "summary": "docs/策划案摘要/README.md",
+    "index": "docs/README.md",
+    "current": "docs/美术规范/男性原图完整还原_20261105/README.md, current top sections: installed warm male01 base plus04 loose-style expansion.",
+    "frame_source": "Parent-supplied fixed current01 pupil/chin points, not retired y379 rig or prior expansion matrix."
+  },
+  "canvas": [
+    1024,
+    1536
+  ],
+  "coordinate_system": "Full native canvas; x right, y down; no prior rescale or pupil normalization.",
+  "measurement_method": {
+    "grayscale": "mean(R,G,B)",
+    "dark_centroid": "weights=max(threshold-gray,0) within half-open native ROIs; source point precision is arithmetic, painted-anatomy reading uncertainty about1px.",
+    "pupil_rois": [
+      [
+        459,
+        360,
+        476,
+        370
+      ],
+      [
+        562,
+        360,
+        579,
+        370
+      ]
+    ],
+    "pupil_threshold": 100,
+    "chin": "Trace darkest row in y520..544 for each x490..550. For trace y>=530, fit parabola only to estimate U-shaped bottom center x; take actual darkest bottom row539 for y. Flat darkest plateau is x505..532.",
+    "chin_parabola_coefficients": [
+      -0.008934039964165027,
+      9.267287337454,
+      -1863.4882436622113
+    ],
+    "chin_model_vertex": [
+      518.6504299636922,
+      539.7530374215874
+    ],
+    "chin_actual_bottom_row": 539.0,
+    "nostril_rois": [
+      [
+        497,
+        434,
+        513,
+        451
+      ],
+      [
+        521,
+        434,
+        539,
+        451
+      ]
+    ],
+    "nostril_threshold": 150,
+    "lip_roi": [
+      477,
+      466,
+      560,
+      482
+    ],
+    "lip_threshold": 150
+  },
+  "source_measurements": {
+    "pupil_left": [
+      467.5203981322191,
+      361.787294175473
+    ],
+    "pupil_right": [
+      569.3681852128454,
+      361.8182723425442
+    ],
+    "eye_midpoint": [
+      518.4442916725322,
+      361.8027832590086
+    ],
+    "pupil_distance": 101.84779179180781,
+    "chin": [
+      518.6504299636922,
+      539.0
+    ],
+    "left_nostril": [
+      506.06196275071636,
+      440.85673352435526
+    ],
+    "right_nostril": [
+      531.3593394077449,
+      441.34140091116177
+    ],
+    "nostril_midpoint": [
+      518.7106510792306,
+      441.0990672177585
+    ],
+    "lip_center": [
+      518.7418448412395,
+      473.81635885253024
+    ]
+  },
+  "joint_source_to_frame": {
+    "type": "One whole-group similarity (uniform scale, rotation, translation); no independent part/eye warps.",
+    "control_names": [
+      "pupil_left",
+      "pupil_right",
+      "chin"
+    ],
+    "source_points": [
+      [
+        467.5203981322191,
+        361.787294175473
+      ],
+      [
+        569.3681852128454,
+        361.8182723425442
+      ],
+      [
+        518.6504299636922,
+        539.0
+      ]
+    ],
+    "target_points": [
+      [
+        461.83247,
+        365.38384
+      ],
+      [
+        567.91576,
+        365.00171
+      ],
+      [
+        513.0,
+        543.0
+      ]
+    ],
+    "matrix_2x3": [
+      [
+        1.0110056386738737,
+        -0.008603844911647713,
+        -6.349073717814235
+      ],
+      [
+        0.008603844911647713,
+        1.0110056386738737,
+        -5.49980453175408
+      ]
+    ],
+    "scale": 1.0110422481665298,
+    "rotation_degrees": 0.48758590654519995,
+    "predicted_points": [
+      [
+        463.2039232188232,
+        364.29166287877405
+      ],
+      [
+        566.1723437124475,
+        365.19926454499506
+      ],
+      [
+        513.3719630687294,
+        543.8946225762309
+      ]
+    ],
+    "residuals_px": [
+      1.7532070030518316,
+      1.754573495169529,
+      0.9688684525778264
+    ],
+    "maximum_residual_px": 1.754573495169529,
+    "within_2px_for_measured_controls": true,
+    "source_pupil_distance": 101.84779179180781,
+    "target_pupil_distance": 106.08397824629785,
+    "must_share_matrix": [
+      "hair_front",
+      "hair_back",
+      "eyebrows",
+      "eyes",
+      "nose if a source-specific part is ever retained",
+      "mouth if a source-specific part is ever retained"
+    ],
+    "forbidden": "Do not pull eyes apart or shift individual nose/mouth to fit existing01 anatomy. Native extraction registration may return a whole paired layer to this approved source, after which the same source-to-frame matrix applies to all new parts.",
+    "limit": "Source pupil distance is narrower than the current frame. The common least-squares transform leaves approximately1.75px residual at each eye; do not hide this by separate eye transforms. This is measured geometry feasibility, not a claim of visual/art approval."
+  },
+  "nose_mouth_observations": {
+    "nostril_midpoint": {
+      "source": [
+        518.7106510792306,
+        441.0990672177585
+      ],
+      "mapped": [
+        514.2751713984701,
+        444.9167456350913
+      ],
+      "current_01": [
+        517.0812462276997,
+        443.9994536719421
+      ],
+      "delta_to_current_01": [
+        -2.806074829229601,
+        0.9172919631491823
+      ],
+      "used_for_frame_fit": false
+    },
+    "lip_center": {
+      "source": [
+        518.7418448412395,
+        473.81635885253024
+      ],
+      "mapped": [
+        514.0252139645978,
+        477.9943803462736
+      ],
+      "current_01": [
+        516.5136719349393,
+        477.4169403099585
+      ],
+      "delta_to_current_01": [
+        -2.4884579703415284,
+        0.5774400363151244
+      ],
+      "used_for_frame_fit": false
+    }
+  },
+  "dedup": {
+    "method": "Native-scale comparison of new source after its own measured joint frame against frozen current01 and04 brows/eyes, using frozen current head/nose/mouth. No discarded historic part used.",
+    "new_parts": [
+      "eyebrows",
+      "eyes"
+    ],
+    "reuse_current": [
+      "nose/01.png",
+      "mouth/01.png"
+    ],
+    "records": [
+      {
+        "part": "eyebrows",
+        "action": "add",
+        "comparison_to_01": "New inner ends sit lower relative to a more slanted, assertive brow body and defined peak/tail transition; current01 is straighter and less strongly descending toward the nose.",
+        "comparison_to_04": "Current04 is soft, flatter and gentle; the new angled outline and stronger turn are clearly distinct."
+      },
+      {
+        "part": "eyes",
+        "action": "add",
+        "comparison_to_01": "New outer contour lifts more and the upper lid/fold is more angular and defined, giving a sharper expression; current01 is flatter. Keep actual source aperture/iris and whole-pair geometry.",
+        "comparison_to_04": "Current04 has a softer, more rounded exposed opening; new eye is more slanted and collected."
+      },
+      {
+        "part": "nose",
+        "action": "reuse_current01",
+        "reason": "Closely related rounded tip, wings and nostril construction. Mild placement/shading differences do not justify a separate nose structure option. Source-to-current position delta is recorded separately and must not be silently corrected by a per-nose shift."
+      },
+      {
+        "part": "mouth",
+        "action": "reuse_current01",
+        "reason": "Very similar width, double-peak upper lip and full lower-lip construction. Color/very subtle contour or location changes do not justify another option."
+      }
+    ],
+    "fidelity_limit": "Reusing nose/mouth01 intentionally preserves current modular parts; the result is not an exact copy of the source whole face. Geometric deltas are recorded above."
+  },
+  "frozen_comparison_sha256": {
+    "face_shape/01.png": "d86319252035a286a92e8892b9816bdb917a39f7f41f4cb1edf40f4dee51c357",
+    "eyebrows/01.png": "b094a5d118e3b722b1901198c319919804cc93ab225c873366aa02af6fc6fa5f",
+    "eyebrows/04.png": "f7d71d00f80370ddc6610a99aa8a001b7ae4f57abafe2d2eb4b0033fb9f63298",
+    "eyes/01.png": "5ecb31eacb232bf8be1f83ddd97c50c3715b792564c73052f425aca7c20eb8af",
+    "eyes/04.png": "fd3f04b779e0849bbe9c9cf46fcfa2b5bd6b8fcb8839b2aac5c1d26819acba89",
+    "nose/01.png": "e7271b38d96922434dbdf4a085b83a0d35ea5560989d0cfda9177beb085a2e79",
+    "mouth/01.png": "471666da8f5b161007491c7f557e6aaf23c0b467d0414bc0839f7d54d942aa03"
+  }
+}

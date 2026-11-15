@@ -1,0 +1,88 @@
+{
+  "mode": "built-in image_gen",
+  "outputs": [
+    {
+      "key": "low_coil",
+      "slot": "front",
+      "index": 6,
+      "style_id": 5,
+      "name": "后收拢发",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-986f6e48-1f69-4627-9f70-5d1f4b30d120.png",
+      "workspace_file": "native/low_coil_front.png"
+    },
+    {
+      "key": "low_coil",
+      "slot": "back",
+      "index": 6,
+      "style_id": 5,
+      "name": "后颈低髻",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-4ef2aaaa-6c62-405a-86d9-515c4896424a.png",
+      "workspace_file": "native/low_coil_back.png"
+    },
+    {
+      "key": "high_tail",
+      "slot": "front",
+      "index": 7,
+      "style_id": 6,
+      "name": "露额拢发",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-1b466d54-def5-4d72-be82-ec1bb209271a.png",
+      "workspace_file": "native/high_tail_front.png"
+    },
+    {
+      "key": "high_tail",
+      "slot": "back",
+      "index": 7,
+      "style_id": 6,
+      "name": "长尾高束",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-122182bc-4971-4f2c-9e12-5e6d0cc6ee0a.png",
+      "workspace_file": "native/high_tail_back.png"
+    },
+    {
+      "key": "loose_back",
+      "slot": "front",
+      "index": 8,
+      "style_id": 7,
+      "name": "露耳后梳",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-36a556ab-ecc0-49b5-952e-236c3c00c475.png",
+      "workspace_file": "native/loose_back_front.png"
+    },
+    {
+      "key": "loose_back",
+      "slot": "back",
+      "index": 8,
+      "style_id": 7,
+      "name": "自然松披",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-89d39004-df7d-40f7-aaf4-03c3455ed092.png",
+      "workspace_file": "native/loose_back_back.png"
+    },
+    {
+      "key": "temple_plait",
+      "slot": "front",
+      "index": 9,
+      "style_id": 8,
+      "name": "偏分鬓辫",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-07b96b45-4f6f-438d-8f91-d604f7ded621.png",
+      "workspace_file": "native/temple_plait_front.png"
+    },
+    {
+      "key": "temple_plait",
+      "slot": "back",
+      "index": 9,
+      "style_id": 8,
+      "name": "半束长披",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-826ff582-4a99-4583-99d3-50853a3f1d31.png",
+      "workspace_file": "native/temple_plait_back.png"
+    }
+  ],
+  "refinements": [
+    {
+      "key": "temple_plait",
+      "slot": "front",
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-db1df94e-6171-41b6-afef-9ae7ab1b331c.png",
+      "workspace_file": "native/temple_plait_front_v2.png",
+      "prompt": "source/temple_front_v2_prompt.txt",
+      "reason": "First extraction enlarged the head cap; new extraction keeps approved source scale.",
+      "sha256": "c7931cd8d56644857a0db2069c1857a027a602c6797eb821a83459318aa0e3cd"
+    }
+  ]
+}

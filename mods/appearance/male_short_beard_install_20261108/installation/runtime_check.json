@@ -1,0 +1,16 @@
+{
+  "beard_file": "res://mods/appearance/ink_three_variants_20261004/male/face_accessory/02.png",
+  "beard_full_id": "male_beard_03",
+  "beard_style": 3,
+  "checks": 354,
+  "failures": [],
+  "imported_texture": {
+    "alpha_different_pixels": 0,
+    "low_alpha_rgb_different_pixels": 3575,
+    "note": "Existing Godot alpha-border processing can alter low-alpha RGB; not claimed full RGBA identity.",
+    "opaque_core_rgb_different_pixels": 0
+  },
+  "male_hair_clothing_combinations": 63,
+  "pass": true,
+  "scope": "One short-beard addition;63 hair/clothing combinations, UI independence, actual PNG composition, saved/explicit styles at16/25/40, old PNGs and female preservation. No blanket rerun of historic portrait suites."
+}

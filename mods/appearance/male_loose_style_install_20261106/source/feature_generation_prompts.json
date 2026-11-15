@@ -1,0 +1,92 @@
+{
+  "schema": "male-loose-feature-extraction/v1",
+  "mode": "built-in image_gen",
+  "source": "source/approved_male.png",
+  "source_sha256": "5ca3f4cc0ea0410c22bcf07dfef278a9496a0fea968c38008dfe8f7dc5cf6ee3",
+  "shared_frame_status": "Confirmed root matrix applied identically to brow/eye/nose/mouth candidates and new hair, combining native/source and source/frame into one sampling pass",
+  "specs": [
+    {
+      "part": "eyebrows",
+      "detail": "ONLY BOTH EXISTING EYEBROWS as ONE paired layer. Preserve the exact source outline, thickness, density, gentle shape, natural asymmetry, individual hair strokes, inner gap and outer width. Remove any overlapping long front-hair strands; reconstruct only the tiny portions of brows actually hidden by those strands. Each end must taper naturally, never end at a clipped vertical edge. Remove all eye, forehead and face pixels, with no flesh backing strip or rectangle. Preserve the actual small source scale on the large empty canvas.",
+      "prompt": "Use case: background-extraction / identity-preserve. The input is the sole user-approved 温雅松披 male whole02. Isolate the requested actual painted part from THIS exact source; this is not a new illustration, redesign or beautification. Return TRUE ALPHA transparency on the exact SAME1024x1536 full canvas and original top-left origin. Preserve ORIGINAL source feature location, size, color and fine painted texture. Keep this source's own relative facial relationships; do not align to any previous/default male or invent coordinates. Do not zoom, recenter, enlarge or normalize the eye size. Everything except the requested part must be completely transparent, without skin tiles, paper, background, glow, haze, text, labels, checkerboard, borders or other parts. Keep only the painted pigment and extremely local antialiased transitions. Original hidden areas can be minimally completed only where necessary to remove crossing hair.\n\nONLY BOTH EXISTING EYEBROWS as ONE paired layer. Preserve the exact source outline, thickness, density, gentle shape, natural asymmetry, individual hair strokes, inner gap and outer width. Remove any overlapping long front-hair strands; reconstruct only the tiny portions of brows actually hidden by those strands. Each end must taper naturally, never end at a clipped vertical edge. Remove all eye, forehead and face pixels, with no flesh backing strip or rectangle. Preserve the actual small source scale on the large empty canvas."
+    },
+    {
+      "part": "eyes",
+      "detail": "ONLY BOTH EXISTING EYES as ONE paired layer, including the very local eyelid folds and original short lash pigment. Preserve the exact actual source eye corners, upper and lower lid contours, low eye opening, small iris diameter, pupil size, eye spacing and upper-lid iris coverage. Never make bigger, rounder, more open, more feminine, heavily outlined or made-up eyes. Keep opaque sclera, iris and pupil only INSIDE the original eye fissures. Remove skin backing, brow pixels and any crossing long front-hair strands; reconstruct only the tiny hidden corner if occluded. Existing eye appearance and geometry are the target; do not create a new eye design.",
+      "prompt": "Use case: background-extraction / identity-preserve. The input is the sole user-approved 温雅松披 male whole02. Isolate the requested actual painted part from THIS exact source; this is not a new illustration, redesign or beautification. Return TRUE ALPHA transparency on the exact SAME1024x1536 full canvas and original top-left origin. Preserve ORIGINAL source feature location, size, color and fine painted texture. Keep this source's own relative facial relationships; do not align to any previous/default male or invent coordinates. Do not zoom, recenter, enlarge or normalize the eye size. Everything except the requested part must be completely transparent, without skin tiles, paper, background, glow, haze, text, labels, checkerboard, borders or other parts. Keep only the painted pigment and extremely local antialiased transitions. Original hidden areas can be minimally completed only where necessary to remove crossing hair.\n\nONLY BOTH EXISTING EYES as ONE paired layer, including the very local eyelid folds and original short lash pigment. Preserve the exact actual source eye corners, upper and lower lid contours, low eye opening, small iris diameter, pupil size, eye spacing and upper-lid iris coverage. Never make bigger, rounder, more open, more feminine, heavily outlined or made-up eyes. Keep opaque sclera, iris and pupil only INSIDE the original eye fissures. Remove skin backing, brow pixels and any crossing long front-hair strands; reconstruct only the tiny hidden corner if occluded. Existing eye appearance and geometry are the target; do not create a new eye design."
+    },
+    {
+      "part": "nose",
+      "detail": "ONLY THE COMPLETE EXISTING NOSE INCLUDING THE FAINT NASAL ROOT AND BRIDGE, TIP, ALAE AND NOSTRILS. Preserve original warm subdued modeling and exact shape. The nasal root must remain complete but very faint, with no pale or white stripe, opaque skin plate, rectangular flesh tile, heavy contouring or broad cheek skin. Remove all eye, eyebrow and lip pixels. Use local soft alpha only at the nose's own pigment edges.",
+      "prompt": "Use case: background-extraction / identity-preserve. The input is the sole user-approved 温雅松披 male whole02. Isolate the requested actual painted part from THIS exact source; this is not a new illustration, redesign or beautification. Return TRUE ALPHA transparency on the exact SAME1024x1536 full canvas and original top-left origin. Preserve ORIGINAL source feature location, size, color and fine painted texture. Keep this source's own relative facial relationships; do not align to any previous/default male or invent coordinates. Do not zoom, recenter, enlarge or normalize the eye size. Everything except the requested part must be completely transparent, without skin tiles, paper, background, glow, haze, text, labels, checkerboard, borders or other parts. Keep only the painted pigment and extremely local antialiased transitions. Original hidden areas can be minimally completed only where necessary to remove crossing hair.\n\nONLY THE COMPLETE EXISTING NOSE INCLUDING THE FAINT NASAL ROOT AND BRIDGE, TIP, ALAE AND NOSTRILS. Preserve original warm subdued modeling and exact shape. The nasal root must remain complete but very faint, with no pale or white stripe, opaque skin plate, rectangular flesh tile, heavy contouring or broad cheek skin. Remove all eye, eyebrow and lip pixels. Use local soft alpha only at the nose's own pigment edges."
+    },
+    {
+      "part": "mouth",
+      "detail": "ONLY THE EXISTING NATURAL MALE LIPS AND ORIGINAL NARROW LIP SEAM. Preserve actual source width, cupid bow, corner angle, upper/lower lip thickness, matte color and slight natural asymmetry. No new smile, no gloss, no thicker or fuller lips, no added highlights. Remove any chin, nose, cheek, moustache or broad perioral skin pixels. No rectangular flesh backing. Only original lips and extremely local soft edge transitions.",
+      "prompt": "Use case: background-extraction / identity-preserve. The input is the sole user-approved 温雅松披 male whole02. Isolate the requested actual painted part from THIS exact source; this is not a new illustration, redesign or beautification. Return TRUE ALPHA transparency on the exact SAME1024x1536 full canvas and original top-left origin. Preserve ORIGINAL source feature location, size, color and fine painted texture. Keep this source's own relative facial relationships; do not align to any previous/default male or invent coordinates. Do not zoom, recenter, enlarge or normalize the eye size. Everything except the requested part must be completely transparent, without skin tiles, paper, background, glow, haze, text, labels, checkerboard, borders or other parts. Keep only the painted pigment and extremely local antialiased transitions. Original hidden areas can be minimally completed only where necessary to remove crossing hair.\n\nONLY THE EXISTING NATURAL MALE LIPS AND ORIGINAL NARROW LIP SEAM. Preserve actual source width, cupid bow, corner angle, upper/lower lip thickness, matte color and slight natural asymmetry. No new smile, no gloss, no thicker or fuller lips, no added highlights. Remove any chin, nose, cheek, moustache or broad perioral skin pixels. No rectangular flesh backing. Only original lips and extremely local soft edge transitions."
+    }
+  ],
+  "shared_source_to_frame": [
+    [
+      0.9975364831,
+      0.0036289844,
+      -0.7327878529
+    ],
+    [
+      -0.0036289844,
+      0.9975364831,
+      10.4185928627
+    ]
+  ],
+  "iterations": [
+    {
+      "part": "eyes",
+      "revision": 1,
+      "raw": "raw/features/eyes_native.png",
+      "status": "rejected; native source fit left outer eye about2.8px too extended"
+    },
+    {
+      "part": "eyes",
+      "revision": 2,
+      "prompt_file": "source/feature_eyes_prompt_v2.txt",
+      "prompt": "Use case: background-extraction / identity-preserve. Image1 is the exact user-approved 温雅松披 male whole02; Image2 is an enlarged unmodified crop of HIS ACTUAL EYES only to make their small geometry clear.\nExtract THESE EXACT TWO EYES, not a newly designed pair. The original left visible outer corner is approximately(429,357), inner corner(490,365), pupil center(462.8,357.5). Right pupil approximately(568.4,357.3), inner corner(542,365), outer tip partly hidden by long hair. LEFT ACTUAL EYE WIDTH IS ONLY ABOUT61 pixels relative to pupil separation105.5px. Do not lengthen the left outer corner/lash outward; previous extraction made the left eye wider than the approved painting. The source has restrained LOW eye opening: upper/lower iris-level lid contacts around(463,352)/(463,366), right(569,351)/(569,365).\nPreserve the actual source iris diameters, dark pupil sizes, upper-lid coverage, lid curves, muted brown color, short sparse lashes and fine hand-painted style. No bigger or rounder eyes, no cosmetic eyeliner or longer eyelashes. Reconstruct only the small portion hidden by front hair at the right outer end, without copying crossing hair or enlarging the eye.\nReturn ONLY the paired eyes, opaque inside original eye fissures and alpha at actual tiny lid/lash strokes, on the SAME1024x1536 full canvas at the original image positions. Huge empty transparent canvas is intentional. Do not zoom, recenter, widen eye spacing, transform the person or improve symmetry. No eyebrows, nose, face skin plate, broad eyelid skin backing, haze, glow, background, labels, checkerboard or text. True native transparent PNG, source existing eye geometry matters above all.\n",
+      "raw": "raw/features/eyes_native_v2.png",
+      "generation_mode": "built-in image_gen",
+      "status": "selected;9 source controls max1.4504px"
+    }
+  ],
+  "selected": [
+    {
+      "part": "eyebrows",
+      "raw": "raw/features/eyebrows_native.png",
+      "raw_sha256": "dd58b4d6993b56855614b9068523224f8b255118dadec3f784eb93be336e24cc",
+      "final": "male/eyebrows/04.png",
+      "sha256": "f7d71d00f80370ddc6610a99aa8a001b7ae4f57abafe2d2eb4b0033fb9f63298",
+      "status": "selected_for_installation"
+    },
+    {
+      "part": "eyes",
+      "raw": "raw/features/eyes_native_v2.png",
+      "raw_sha256": "c35d530fb72b57a4dd3b2b50f152634b80b44795dd2faedabee713852e7cb31e",
+      "final": "male/eyes/04.png",
+      "sha256": "fd3f04b779e0849bbe9c9cf46fcfa2b5bd6b8fcb8839b2aac5c1d26819acba89",
+      "status": "selected_for_installation"
+    },
+    {
+      "part": "nose",
+      "raw": "raw/features/nose_native.png",
+      "raw_sha256": "9c5bd11862ab9471a600b8c730984528a5523882d3681995d610d3c3e05c4e2f",
+      "final": "male/nose/04.png",
+      "sha256": "d8aa284ebca3521a049ffa8ef64acd4a5158991b6478e23b603dbda74dca70cb",
+      "status": "deduplicated_not_installed"
+    },
+    {
+      "part": "mouth",
+      "raw": "raw/features/mouth_native.png",
+      "raw_sha256": "fa04ffa616fc81a29b37d76b449fc4e8b0d1173dd2b37bd95f4b5cce420e5665",
+      "final": "male/mouth/04.png",
+      "sha256": "22b772d0618bc44a117e34e256dea757b9ba3db02bf50c269d5cd0d4df6102af",
+      "status": "deduplicated_not_installed"
+    }
+  ]
+}

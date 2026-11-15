@@ -1,0 +1,59 @@
+{
+  "status": "second_portrait_selected_and_four_unique_parts_appended",
+  "mode": "built-in image_gen",
+  "project_master": "reference/project_approved_male_01.png",
+  "project_master_sha256": "d97b79e3372df42db24b4dd5c3ec42f376d652616d9fa25d78a393b004da81a8",
+  "records": [
+    {
+      "file": "preview/01_swept_fringe_young_hero.png",
+      "name": "斜掠额发·清锐少侠",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "ba808bd0b0b975d1ce93dae266b78936f30e83f4acfd04d30a10107045bcbd3c",
+      "native_unmodified_output": true
+    },
+    {
+      "file": "preview/02_asymmetric_loose_gentle.png",
+      "name": "偏分松披·温雅疏眉",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "5ca3f4cc0ea0410c22bcf07dfef278a9496a0fea968c38008dfe8f7dc5cf6ee3",
+      "native_unmodified_output": true,
+      "user_selected": true,
+      "integration_package": "res://mods/appearance/male_loose_style_install_20261106/",
+      "installed_unique_parts": ["hair_front", "hair_back", "eyebrows", "eyes"],
+      "nose_mouth": "Deduplicated: existing01 parts reused; selected whole portrait is not a new skin/head master."
+    },
+    {
+      "file": "preview/03_clean_part_composed.png",
+      "name": "疏分束髻·清冷端肃",
+      "size": [
+        1024,
+        1536
+      ],
+      "sha256": "d34f1df54587a3ff11211701e795af991e4950969fe330b4952fcc4d1bb3e074",
+      "native_unmodified_output": true
+    }
+  ],
+  "research_sources": [
+    {
+      "title": "鬼谷八荒帅气男性捏脸数据分享",
+      "page": "https://www.gamersky.com/handbook/202103/1366633.shtml",
+      "image_urls": [
+        "https://img1.gamersky.com/image2021/03/20210302_ht_532_13/image011_S.jpg",
+        "https://img1.gamersky.com/image2021/03/20210302_ht_532_13/image013_S.jpg",
+        "https://img1.gamersky.com/image2021/03/20210302_ht_532_13/image007_S.jpg"
+      ],
+      "role": "Loose design inspiration only; local reference folder excluded from game resource import/export"
+    }
+  ],
+  "prompt_set": "source/generation_prompts.json",
+  "active_assets_or_config_modified": true,
+  "parts_extracted": "Selected02 only; four appended choices. Other two whole portraits remain review candidates.",
+  "anchor_status": "Selected02 measured in one shared head frame; paired eyes restored to source coordinates before common mapping. See integration package records and 1807-pass actual runtime verification. Existing head/skin and seven clothes preserved.",
+  "future_deduplication": "Check brows/eyes/nose/mouth against active parts and prior previews; do not assume every whole-portrait component is a unique new part."
+}

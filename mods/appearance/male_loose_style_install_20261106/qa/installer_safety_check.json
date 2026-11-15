@@ -1,0 +1,8 @@
+{
+  "pass": true,
+  "tests": 7,
+  "failures": 0,
+  "errors": 0,
+  "scope": "Temporary fixtures only; active PNGs/configs never written",
+  "log": "test_corrupt_backup_and_changed_selection_rejected (__main__.Checks.test_corrupt_backup_and_changed_selection_rejected) ... ok\ntest_failure_rolls_back_and_retry_freezes_provenance (__main__.Checks.test_failure_rolls_back_and_retry_freezes_provenance) ... ok\ntest_full_id_collision_is_reserved_and_duplicates_rejected (__main__.Checks.test_full_id_collision_is_reserved_and_duplicates_rejected) ... ok\ntest_install_preserves_all46_and_is_idempotent (__main__.Checks.test_install_preserves_all46_and_is_idempotent) ... ok\ntest_readonly_defaults_prefixes_and_full_aliases (__main__.Checks.test_readonly_defaults_prefixes_and_full_aliases) ... ok\ntest_retired_style_and_physical_ids_rejected (__main__.Checks.test_retired_style_and_physical_ids_rejected) ... ok\ntest_windows_fallback_and_concurrent_protection (__main__.Checks.test_windows_fallback_and_concurrent_protection) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 5.464s\n\nOK\n"
+}

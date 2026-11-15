@@ -1,0 +1,30 @@
+{
+  "schema": "male-loose-style-visual-review/v1",
+  "normal_size_review": "passed_for_installation_by_root_and_independent_audit",
+  "user_final_visual_acceptance": "pending",
+  "approved_whole_portrait_sha256": "5ca3f4cc0ea0410c22bcf07dfef278a9496a0fea968c38008dfe8f7dc5cf6ee3",
+  "reviewed_parts": {
+    "hair_front": "1efd8c3a7630a1d0340e3acb5567be8d731293342c39c570f01b5654aec568ee",
+    "hair_back": "19b2fbe402f9d0c6abad57c2f1a972288f9a8c5c5707d5cbd0e0e15c774811c8",
+    "eyebrows": "f7d71d00f80370ddc6610a99aa8a001b7ae4f57abafe2d2eb4b0033fb9f63298",
+    "eyes": "fd3f04b779e0849bbe9c9cf46fcfa2b5bd6b8fcb8839b2aac5c1d26819acba89"
+  },
+  "evidence": [
+    "qa/candidate_selected_light.png",
+    "qa/candidate_selected_dark.png",
+    "qa/source_vs_selected_face.png",
+    "qa/hair_mixes_light.png",
+    "qa/features/eyebrows_source_frame_top_actual_bottom_light_6x.png",
+    "qa/features/eyes_source_frame_top_actual_bottom_light_6x.png"
+  ],
+  "findings": [
+    "Eye fissures, irises and paired positions are close to the approved whole portrait in the shared frame, without the previously reported enlarged eyes.",
+    "Continuous forehead gray rim and hard steps were removed through source matte conservation; loose asymmetric front locks remain complete.",
+    "Brow-head and lower-edge gray skin spill was reduced before installation. Normal-size review found no obvious skin tiles or continuous hard border."
+  ],
+  "limits": [
+    "At sixfold magnification, a few brow-end/lower-edge hairs and hair-occluded eye tips differ from the whole portrait because they require generated completion.",
+    "Existing head/skin, nose, mouth and seven clothes are deliberately reused. The original new nose is about 3.118px higher after the shared frame mapping; it is archived rather than independently moved or installed as a duplicate.",
+    "This engineering/art review does not assert whole-portrait pixel identity or substitute for the user's final visual judgment."
+  ]
+}

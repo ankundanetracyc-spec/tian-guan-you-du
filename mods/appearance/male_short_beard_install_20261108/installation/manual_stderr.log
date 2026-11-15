@@ -1,0 +1,25 @@
+ERROR: Age16 reopening retains manually selected style3
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://mods/appearance/male_short_beard_install_20261108/qa/verify_beard_manual_save.gd:20)
+       [1] verify_editor (res://mods/appearance/male_short_beard_install_20261108/qa/verify_beard_manual_save.gd:88)
+ERROR: Age16 Random retains youthful no-beard policy
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://mods/appearance/male_short_beard_install_20261108/qa/verify_beard_manual_save.gd:20)
+       [1] verify_editor (res://mods/appearance/male_short_beard_install_20261108/qa/verify_beard_manual_save.gd:91)
+ERROR: Age25 reopening retains manually selected style3
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://mods/appearance/male_short_beard_install_20261108/qa/verify_beard_manual_save.gd:20)
+       [1] verify_editor (res://mods/appearance/male_short_beard_install_20261108/qa/verify_beard_manual_save.gd:88)
+ERROR: Age25 Random retains youthful no-beard policy
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://mods/appearance/male_short_beard_install_20261108/qa/verify_beard_manual_save.gd:20)
+       [1] verify_editor (res://mods/appearance/male_short_beard_install_20261108/qa/verify_beard_manual_save.gd:91)
+ERROR: Legacy beard style2 normalizes through existing alias to no-beard
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://mods/appearance/male_short_beard_install_20261108/qa/verify_beard_manual_save.gd:20)
+       [1] verify_editor (res://mods/appearance/male_short_beard_install_20261108/qa/verify_beard_manual_save.gd:101)

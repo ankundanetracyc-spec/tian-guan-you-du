@@ -1,0 +1,106 @@
+{
+  "schema": "male-high-tie-features/v1",
+  "mode": "built-in image_gen",
+  "approved_source": "source/approved_male.png",
+  "source_sha256": "fe7b9280cbb19019e76ffd6d451679e5e3ff3dc2b685b9020471b96451312f18",
+  "shared_frame_status": "Applied audit/root confirmed source->frame matrix identically to new brow/eye05 and hair05; native/source and source/frame transforms combined for one sampling pass.",
+  "specs": [
+    {
+      "part": "eyebrows",
+      "prompt": "Use case: background-extraction / identity-preserve. This is the EXACT user-approved 露额高束 male whole portrait. Isolate the requested ACTUAL painted part from this same source, not a new design. Return TRUE ALPHA on the SAME1024x1536 full canvas at the SAME original positions and scale. Large empty transparent canvas is intentional. No zooming, enlargement, recentering, symmetry correction, beautification, recoloring or changes to the source. Keep the original warm charcoal/brown muted palette and fine hand-painted detail. Remove all other parts and all background/skin backing. No grey soft skin tile, flesh strip, rectangular support, glow, fog, checkerboard, labels or text. Antialias only the immediate individual pigment edges. Do not bake any crossing front-hair strand into a facial part.\n\nExtract BOTH EXISTING EYEBROWS as ONE paired layer. Preserve the exact ORIGINAL RISING ANGLED BROW PEAKS, narrow natural thickness, individual small hair strokes, original inner gap, outer width and left/right subtle asymmetry. These are sharper ascending masculine brows from this exact source, not the flatter gentle brows from any previous male. Do not soften or flatten the peaks, thicken the brow body or create an opaque dark block. Both brows are almost completely visible in this source; preserve their contour, with only a tiny hidden outer tip minimally completed if a hair crosses it. Every end tapers naturally into fine short hairs. No clipped flat end, skin plate below the brow, grey haze around a brow head, eye/eyelid or forehead pixels."
+    },
+    {
+      "part": "eyes",
+      "prompt": "Use case: background-extraction / identity-preserve. This is the EXACT user-approved 露额高束 male whole portrait. Isolate the requested ACTUAL painted part from this same source, not a new design. Return TRUE ALPHA on the SAME1024x1536 full canvas at the SAME original positions and scale. Large empty transparent canvas is intentional. No zooming, enlargement, recentering, symmetry correction, beautification, recoloring or changes to the source. Keep the original warm charcoal/brown muted palette and fine hand-painted detail. Remove all other parts and all background/skin backing. No grey soft skin tile, flesh strip, rectangular support, glow, fog, checkerboard, labels or text. Antialias only the immediate individual pigment edges. Do not bake any crossing front-hair strand into a facial part.\n\nExtract BOTH EXISTING EYES as ONE paired layer. CRITICAL: these actual source eyes have a VERY LOW RESTRAINED OPENING and the upper lids naturally cover the upper part of the small iris. Preserve exact original eye corner positions, pupil centers/spacing, iris DIAMETER, pupil size, upper-lid iris coverage, low eye fissure height, upper/lower lid curves, gentle outer corner lift and tiny short lashes. Do not open the eyes more, draw a round almond, enlarge the iris, lengthen the lashes or extend the eye width. Keep the existing lower crease light, no cosmetics or heavy eyeliner. Opaque sclera/iris/pupil only INSIDE the exact existing eye fissures; tiny lid/lash pigment can have natural local alpha. The two eyes are nearly unobscured in this source, so preserve the source details closely instead of inventing reconstruction. Remove eyebrows, nose, all surrounding face/eyelid skin backing and background, with no broad skin patch or grey halo. The requested asset must reproduce THIS source's small narrowed eyes when composited, not a generic attractive pair."
+    }
+  ],
+  "shared_source_to_frame": [
+    [
+      1.0110056386738737,
+      -0.008603844911647713,
+      -6.349073717814235
+    ],
+    [
+      0.008603844911647713,
+      1.0110056386738737,
+      -5.49980453175408
+    ]
+  ],
+  "geometry_file": "qa/geometry_and_dedup.json",
+  "calls": [
+    {
+      "part": "eyebrows",
+      "revision": 1,
+      "prompt": "Use case: background-extraction / identity-preserve. This is the EXACT user-approved 露额高束 male whole portrait. Isolate the requested ACTUAL painted part from this same source, not a new design. Return TRUE ALPHA on the SAME1024x1536 full canvas at the SAME original positions and scale. Large empty transparent canvas is intentional. No zooming, enlargement, recentering, symmetry correction, beautification, recoloring or changes to the source. Keep the original warm charcoal/brown muted palette and fine hand-painted detail. Remove all other parts and all background/skin backing. No grey soft skin tile, flesh strip, rectangular support, glow, fog, checkerboard, labels or text. Antialias only the immediate individual pigment edges. Do not bake any crossing front-hair strand into a facial part.\n\nExtract BOTH EXISTING EYEBROWS as ONE paired layer. Preserve the exact ORIGINAL RISING ANGLED BROW PEAKS, narrow natural thickness, individual small hair strokes, original inner gap, outer width and left/right subtle asymmetry. These are sharper ascending masculine brows from this exact source, not the flatter gentle brows from any previous male. Do not soften or flatten the peaks, thicken the brow body or create an opaque dark block. Both brows are almost completely visible in this source; preserve their contour, with only a tiny hidden outer tip minimally completed if a hair crosses it. Every end tapers naturally into fine short hairs. No clipped flat end, skin plate below the brow, grey haze around a brow head, eye/eyelid or forehead pixels.",
+      "references": [
+        "source/approved_male.png"
+      ],
+      "native": "raw/features/eyebrows_native.png",
+      "builtin_output": "E:/tmp/CodexData/generated_images/01a1af95-3f9a-7c71-8060-dddee725d5ad/exec-bc1d1bf4-7f5e-4805-a3c9-b439cafe90d6.png",
+      "status": "selected alpha support; source-RGB retention and final residue cleanup documented separately",
+      "native_sha256": "fd6c8ce4f1c184cd5dc600cc8395798b7317ad3f7b5227fcd0f0fb6e9e29290d",
+      "mode": "built-in image_gen"
+    },
+    {
+      "part": "eyes",
+      "revision": 1,
+      "prompt": "Use case: background-extraction / identity-preserve. This is the EXACT user-approved 露额高束 male whole portrait. Isolate the requested ACTUAL painted part from this same source, not a new design. Return TRUE ALPHA on the SAME1024x1536 full canvas at the SAME original positions and scale. Large empty transparent canvas is intentional. No zooming, enlargement, recentering, symmetry correction, beautification, recoloring or changes to the source. Keep the original warm charcoal/brown muted palette and fine hand-painted detail. Remove all other parts and all background/skin backing. No grey soft skin tile, flesh strip, rectangular support, glow, fog, checkerboard, labels or text. Antialias only the immediate individual pigment edges. Do not bake any crossing front-hair strand into a facial part.\n\nExtract BOTH EXISTING EYES as ONE paired layer. CRITICAL: these actual source eyes have a VERY LOW RESTRAINED OPENING and the upper lids naturally cover the upper part of the small iris. Preserve exact original eye corner positions, pupil centers/spacing, iris DIAMETER, pupil size, upper-lid iris coverage, low eye fissure height, upper/lower lid curves, gentle outer corner lift and tiny short lashes. Do not open the eyes more, draw a round almond, enlarge the iris, lengthen the lashes or extend the eye width. Keep the existing lower crease light, no cosmetics or heavy eyeliner. Opaque sclera/iris/pupil only INSIDE the exact existing eye fissures; tiny lid/lash pigment can have natural local alpha. The two eyes are nearly unobscured in this source, so preserve the source details closely instead of inventing reconstruction. Remove eyebrows, nose, all surrounding face/eyelid skin backing and background, with no broad skin patch or grey halo. The requested asset must reproduce THIS source's small narrowed eyes when composited, not a generic attractive pair.",
+      "references": [
+        "source/approved_male.png"
+      ],
+      "native": "raw/features/eyes_native.png",
+      "builtin_output": "E:/tmp/CodexData/generated_images/01a1af95-3f9a-7c71-8060-dddee725d5ad/exec-9d2c6065-7945-4365-8db8-f53aa732251f.png",
+      "status": "not selected; outer lift exaggerated",
+      "native_sha256": "680c2d90187351e3b2364033cd71466aaba2e855d14a0d0fd5d9e16cac923911",
+      "mode": "built-in image_gen"
+    },
+    {
+      "part": "eyes",
+      "revision": 2,
+      "prompt": "Use case: background-extraction / identity-preserve. Image1 is the exact approved high-tied-hair male whole portrait. Image2 is an unmodified enlarged crop of its ACTUAL eyes, supplied only to reveal their real small contour. ISOLATE THESE EXISTING EYES, do not redesign or make him fiercer.\nKeep the source's exact opening, iris/pupil size, eye spacing and upper-lid coverage. The source upper eyelid is almost HORIZONTAL from its outer portion to the iris center; it is not a highly tilted cat eye. Do not lift the outer tips, flatten the full eye into a straight slit or open/round it. Left actual pupil is around(467.52,361.79), right(569.37,361.82), separation101.85px. Preserve the source's muted brown irises and quiet thin eyelid strokes, with no extra cosmetic liner or long lashes. Do not enlarge, over-sharpen or make dramatic angular villain eyes. Match the approved subtle drawing exactly.\nReturn ONLY the paired actual eyes as one transparent PNG on1024x1536 FULL ORIGINAL CANVAS with original positions and scale. Keep opaque actual sclera/iris/pupil inside the original eye fissures only, and local antialias at lid/lash pigment. These eyes are fully visible, so nearly no reconstruction is needed; remove any tiny crossing outer front-hair strand only. No eyebrows, skin backing, broad flesh strip above/below the eye, gray blur, soft skin plate, glow, fog, paper, background, labels, text or checkerboard. Original geometry matters more than a newly attractive illustration.\n",
+      "prompt_file": "source/feature_eyes_prompt_v2.txt",
+      "references": [
+        "source/approved_male.png",
+        "qa/features/source_eyes_close.png"
+      ],
+      "native": "raw/features/eyes_native_v2.png",
+      "builtin_output": "E:/tmp/CodexData/generated_images/01a1af95-3f9a-7c71-8060-dddee725d5ad/exec-7369321c-6ec9-48a3-b222-e45d91195d45.png",
+      "status": "not selected; part of faint upper crease omitted",
+      "native_sha256": "d1e90f273ae000320216baa2c0c990310eee0cc2cc303f275223c486838b565f",
+      "mode": "built-in image_gen"
+    },
+    {
+      "part": "eyes",
+      "revision": 3,
+      "prompt": "Use case: background-extraction / identity-preserve. Image1 is the exact approved high-tied-hair male portrait; Image2 is its original eye-area crop. Extract the SAME TWO ACTUAL EYES INCLUDING THEIR EXISTING FAINT UPPER DOUBLE-EYELID CREASES. The subtle curved brown crease sits about2–5 source pixels ABOVE the main dark upper lash edge; it is a required painted eye feature, not background skin to erase. Keep each entire faint crease continuous as it appears in the source, without turning it into a hard cosmetic liner or a large skin band.\nKeep the exact source small eye opening, iris/pupil sizes and positions, muted brown tones and thin painted lid strokes. Do not change expression, sharpen to villain/cat eyes, lift outer tips, widen/open the eyes or enlarge the irises. Upper lash line is near-horizontal through the iris region, as in the source. Preserve the ACTUAL fold arch above it and tiny light lower crease/lash pigments. No new details, no added mascara.\nReturn only BOTH eyes, actual lid/lash strokes AND their faint upper creases together on a single transparent1024x1536 full original canvas, at original positions. Large empty canvas is intentional; do not zoom/recenter. Sclera/iris/pupil opaque inside actual fissures, with natural alpha at faint fold pigment. Remove every eyebrow, nose and crossing front-hair pixel, ALL broad surrounding skin backing, grey soft flesh tiles, rectangular supports, glow, haze, background, checkerboard, labels or text. Most importantly do not erase or break the genuine double-eyelid folds while removing background. Match the original source drawing rather than a generic neat pair of eyes.\n",
+      "prompt_file": "source/feature_eyes_prompt_v3.txt",
+      "references": [
+        "source/approved_male.png",
+        "qa/features/source_eyes_close.png"
+      ],
+      "native": "raw/features/eyes_native_v3.png",
+      "builtin_output": "E:/tmp/CodexData/generated_images/01a1af95-3f9a-7c71-8060-dddee725d5ad/exec-51cea872-c68e-4d3c-af12-81219de6ec87.png",
+      "status": "selected; source ten-point pair max residual1.8083px, faint upper crease retained",
+      "native_sha256": "8214ae9fc8c8feb907f02dd6791872b4fd54fcbbe89223edd7cc566ba3037b65",
+      "mode": "built-in image_gen"
+    }
+  ],
+  "selected": [
+    {
+      "part": "eyebrows",
+      "file": "male/eyebrows/05.png",
+      "sha256": "f5e0908457fb3b30a33dc7961af0b4c0e046f6794d8768104b79d1a0714839fd",
+      "raw": "raw/features/eyebrows_native.png",
+      "physical_index": 5,
+      "saved_style_id": 4
+    },
+    {
+      "part": "eyes",
+      "file": "male/eyes/05.png",
+      "sha256": "46d6b972e5667199e274b1c2dd8bc1686f01e0ed3f68eac4301f1fbf648f88fd",
+      "raw": "raw/features/eyes_native_v3.png",
+      "physical_index": 5,
+      "saved_style_id": 4
+    }
+  ]
+}

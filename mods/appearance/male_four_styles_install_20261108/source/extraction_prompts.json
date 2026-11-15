@@ -1,0 +1,94 @@
+{
+  "mode": "built-in image_gen",
+  "intent": "approved whole portrait to separate transparent front/back hair layers",
+  "jobs": [
+    {
+      "key": "low_coil",
+      "slot": "front",
+      "index": 6,
+      "style_id": 5,
+      "name": "后收拢发",
+      "prompt": "Use case: precise-object-edit / modular game sprite extraction.\nINPUT image is the EXACT portrait approved by the user. Extract a transparent modular hair layer faithfully from THIS image, matching its fine muted grey-brown charcoal hair strands and delicate low-contrast gongbi rendering.\nThe output MUST be the same full 1024x1536 canvas as the input, with hair in the identical original pixel location, same scale, angle, crown, hairline and strand lengths. Leave all unused canvas transparent. DO NOT crop, recenter, zoom, stretch or enlarge the hair. Treat canvas as fixed, not a product cutout. The original eyes at approximately x460/568,y366 and chinx518,y541 are invisible registration guides only, not objects to paint.\nThe target is a single independent production hair layer used with the existing separate face, eyebrows, eyes, mouth, robe and complementary hair layer. Output HAIR ONLY with native transparency. All skin, forehead, ears, eyebrows, eyes, nose, lips, face, neck, clothing, embroidery, paper background, lighting halo, cast skin shadows and unrelated pixels must be completely absent/transparent. Hair edges must retain delicate semi-transparent strands with clean alpha, no beige matte, no colored silhouette halo, no large foggy low-alpha smear.\nDo not redesign, recolor, darken, sharpen or make hair glossy. Preserve source's muted fine painted strands and all distinct visible shape. Fill ONLY the concealed HAIR support needed for this layer behind the separate face; use the same fine texture. No part labels, no grid, no comparison.\nFRONT hair layer only: the softly swept-back top scalp hair/crown from about x335..680,y130..435, original natural forehead hairline around y267, fine temple/ear-front wisps. Keep forehead/face opening transparent. EXCLUDE the low coil/bun visible at viewer-left nape (around x370..435,y430..520), and all hair behind head or ears. No long hair on either shoulder. Include no bun, ponytail, tie or hairpin.",
+      "refs": [
+        "E:/stacklands/mods/appearance/male_four_styles_install_20261108/source/approved/low_coil.png"
+      ]
+    },
+    {
+      "key": "low_coil",
+      "slot": "back",
+      "index": 6,
+      "style_id": 5,
+      "name": "后颈低髻",
+      "prompt": "Use case: precise-object-edit / modular game sprite extraction.\nINPUT image is the EXACT portrait approved by the user. Extract a transparent modular hair layer faithfully from THIS image, matching its fine muted grey-brown charcoal hair strands and delicate low-contrast gongbi rendering.\nThe output MUST be the same full 1024x1536 canvas as the input, with hair in the identical original pixel location, same scale, angle, crown, hairline and strand lengths. Leave all unused canvas transparent. DO NOT crop, recenter, zoom, stretch or enlarge the hair. Treat canvas as fixed, not a product cutout. The original eyes at approximately x460/568,y366 and chinx518,y541 are invisible registration guides only, not objects to paint.\nThe target is a single independent production hair layer used with the existing separate face, eyebrows, eyes, mouth, robe and complementary hair layer. Output HAIR ONLY with native transparency. All skin, forehead, ears, eyebrows, eyes, nose, lips, face, neck, clothing, embroidery, paper background, lighting halo, cast skin shadows and unrelated pixels must be completely absent/transparent. Hair edges must retain delicate semi-transparent strands with clean alpha, no beige matte, no colored silhouette halo, no large foggy low-alpha smear.\nDo not redesign, recolor, darken, sharpen or make hair glossy. Preserve source's muted fine painted strands and all distinct visible shape. Fill ONLY the concealed HAIR support needed for this layer behind the separate face; use the same fine texture. No part labels, no grid, no comparison.\nBACK hair layer only, drawn to sit BEHIND the existing head and body: retain the small LOW COILED BUN at viewer-left nape, around x370..435,y430..520, with the nearby rear-scalp hair support behind the head. The main rear haircap may fill behind the head at original location x350..670,y180..460; the separate face hides it. Keep exact bun location and compact length. Do not add shoulder/chest hair or extend into long loose hair. EXCLUDE the visible front/top swept cap, forehead fringe, temple wisps, ears and skin.",
+      "refs": [
+        "E:/stacklands/mods/appearance/male_four_styles_install_20261108/source/approved/low_coil.png"
+      ]
+    },
+    {
+      "key": "high_tail",
+      "slot": "front",
+      "index": 7,
+      "style_id": 6,
+      "name": "露额拢发",
+      "prompt": "Use case: precise-object-edit / modular game sprite extraction.\nINPUT image is the EXACT portrait approved by the user. Extract a transparent modular hair layer faithfully from THIS image, matching its fine muted grey-brown charcoal hair strands and delicate low-contrast gongbi rendering.\nThe output MUST be the same full 1024x1536 canvas as the input, with hair in the identical original pixel location, same scale, angle, crown, hairline and strand lengths. Leave all unused canvas transparent. DO NOT crop, recenter, zoom, stretch or enlarge the hair. Treat canvas as fixed, not a product cutout. The original eyes at approximately x460/568,y366 and chinx518,y541 are invisible registration guides only, not objects to paint.\nThe target is a single independent production hair layer used with the existing separate face, eyebrows, eyes, mouth, robe and complementary hair layer. Output HAIR ONLY with native transparency. All skin, forehead, ears, eyebrows, eyes, nose, lips, face, neck, clothing, embroidery, paper background, lighting halo, cast skin shadows and unrelated pixels must be completely absent/transparent. Hair edges must retain delicate semi-transparent strands with clean alpha, no beige matte, no colored silhouette halo, no large foggy low-alpha smear.\nDo not redesign, recolor, darken, sharpen or make hair glossy. Preserve source's muted fine painted strands and all distinct visible shape. Fill ONLY the concealed HAIR support needed for this layer behind the separate face; use the same fine texture. No part labels, no grid, no comparison.\nFRONT hair layer only: the swept-up front cap at roughly x344..672,y145..435, original forehead hairline y265, and the fine uneven temple/ear-front wisps. The loop/tie at top and flowing ponytail are NOT front hair. EXCLUDE high crown ponytail root, beige tie and entire long tail behind viewer-right shoulder. Leave head/face opening transparent; no bun, tie, ear or face.",
+      "refs": [
+        "E:/stacklands/mods/appearance/male_four_styles_install_20261108/source/approved/high_tail.png"
+      ]
+    },
+    {
+      "key": "high_tail",
+      "slot": "back",
+      "index": 7,
+      "style_id": 6,
+      "name": "长尾高束",
+      "prompt": "Use case: precise-object-edit / modular game sprite extraction.\nINPUT image is the EXACT portrait approved by the user. Extract a transparent modular hair layer faithfully from THIS image, matching its fine muted grey-brown charcoal hair strands and delicate low-contrast gongbi rendering.\nThe output MUST be the same full 1024x1536 canvas as the input, with hair in the identical original pixel location, same scale, angle, crown, hairline and strand lengths. Leave all unused canvas transparent. DO NOT crop, recenter, zoom, stretch or enlarge the hair. Treat canvas as fixed, not a product cutout. The original eyes at approximately x460/568,y366 and chinx518,y541 are invisible registration guides only, not objects to paint.\nThe target is a single independent production hair layer used with the existing separate face, eyebrows, eyes, mouth, robe and complementary hair layer. Output HAIR ONLY with native transparency. All skin, forehead, ears, eyebrows, eyes, nose, lips, face, neck, clothing, embroidery, paper background, lighting halo, cast skin shadows and unrelated pixels must be completely absent/transparent. Hair edges must retain delicate semi-transparent strands with clean alpha, no beige matte, no colored silhouette halo, no large foggy low-alpha smear.\nDo not redesign, recolor, darken, sharpen or make hair glossy. Preserve source's muted fine painted strands and all distinct visible shape. Fill ONLY the concealed HAIR support needed for this layer behind the separate face; use the same fine texture. No part labels, no grid, no comparison.\nBACK hair layer only: the HIGH PONYTAIL root arch and its small original beige hair tie near x515,y140, plus full flowing tail descending behind viewer-right shoulder, keeping original silhouette approx x470..865,y70..735. Restore only the hidden rear-scalp/nape support behind the separate head so the ponytail is attached. The top loop/tie belongs ONLY to this back layer. EXCLUDE the swept front cap from forehead through temples and all face-front wisps. No forehead fringe, no face, no ears, no robe. Keep this clearly a flowing ponytail, not a rounded bun.",
+      "refs": [
+        "E:/stacklands/mods/appearance/male_four_styles_install_20261108/source/approved/high_tail.png"
+      ]
+    },
+    {
+      "key": "loose_back",
+      "slot": "front",
+      "index": 8,
+      "style_id": 7,
+      "name": "露耳后梳",
+      "prompt": "Use case: precise-object-edit / modular game sprite extraction.\nINPUT image is the EXACT portrait approved by the user. Extract a transparent modular hair layer faithfully from THIS image, matching its fine muted grey-brown charcoal hair strands and delicate low-contrast gongbi rendering.\nThe output MUST be the same full 1024x1536 canvas as the input, with hair in the identical original pixel location, same scale, angle, crown, hairline and strand lengths. Leave all unused canvas transparent. DO NOT crop, recenter, zoom, stretch or enlarge the hair. Treat canvas as fixed, not a product cutout. The original eyes at approximately x460/568,y366 and chinx518,y541 are invisible registration guides only, not objects to paint.\nThe target is a single independent production hair layer used with the existing separate face, eyebrows, eyes, mouth, robe and complementary hair layer. Output HAIR ONLY with native transparency. All skin, forehead, ears, eyebrows, eyes, nose, lips, face, neck, clothing, embroidery, paper background, lighting halo, cast skin shadows and unrelated pixels must be completely absent/transparent. Hair edges must retain delicate semi-transparent strands with clean alpha, no beige matte, no colored silhouette halo, no large foggy low-alpha smear.\nDo not redesign, recolor, darken, sharpen or make hair glossy. Preserve source's muted fine painted strands and all distinct visible shape. Fill ONLY the concealed HAIR support needed for this layer behind the separate face; use the same fine texture. No part labels, no grid, no comparison.\nFRONT hair layer only: the softly back-combed top scalp cap from approx x340..680,y142..433 and small fine irregular temple wisps. Keep the hairline at original y267 and face opening fully transparent. EXCLUDE all long loose lengths behind the ears and shoulders. This layer must NOT contain two long curtains on the chest, any braid, bun, hairpin, ear or skin.",
+      "refs": [
+        "E:/stacklands/mods/appearance/male_four_styles_install_20261108/source/approved/loose_back.png"
+      ]
+    },
+    {
+      "key": "loose_back",
+      "slot": "back",
+      "index": 8,
+      "style_id": 7,
+      "name": "自然松披",
+      "prompt": "Use case: precise-object-edit / modular game sprite extraction.\nINPUT image is the EXACT portrait approved by the user. Extract a transparent modular hair layer faithfully from THIS image, matching its fine muted grey-brown charcoal hair strands and delicate low-contrast gongbi rendering.\nThe output MUST be the same full 1024x1536 canvas as the input, with hair in the identical original pixel location, same scale, angle, crown, hairline and strand lengths. Leave all unused canvas transparent. DO NOT crop, recenter, zoom, stretch or enlarge the hair. Treat canvas as fixed, not a product cutout. The original eyes at approximately x460/568,y366 and chinx518,y541 are invisible registration guides only, not objects to paint.\nThe target is a single independent production hair layer used with the existing separate face, eyebrows, eyes, mouth, robe and complementary hair layer. Output HAIR ONLY with native transparency. All skin, forehead, ears, eyebrows, eyes, nose, lips, face, neck, clothing, embroidery, paper background, lighting halo, cast skin shadows and unrelated pixels must be completely absent/transparent. Hair edges must retain delicate semi-transparent strands with clean alpha, no beige matte, no colored silhouette halo, no large foggy low-alpha smear.\nDo not redesign, recolor, darken, sharpen or make hair glossy. Preserve source's muted fine painted strands and all distinct visible shape. Fill ONLY the concealed HAIR support needed for this layer behind the separate face; use the same fine texture. No part labels, no grid, no comparison.\nBACK hair layer only: the ear-exposed loose long hair falling behind both sides of head/neck and BEHIND both shoulders, original lateral strands around x250..780,y320..720 and continuous rear-scalp support. Fill missing concealed hair in the same muted fine ink texture. No bun, tie, braid or accessory. No front scalp cap or forehead/temple fringe; those belong to the front layer. No long locks over the chest; keep all lengths behind the body, with natural irregular ends.",
+      "refs": [
+        "E:/stacklands/mods/appearance/male_four_styles_install_20261108/source/approved/loose_back.png"
+      ]
+    },
+    {
+      "key": "temple_plait",
+      "slot": "front",
+      "index": 9,
+      "style_id": 8,
+      "name": "偏分鬓辫",
+      "prompt": "Use case: precise-object-edit / modular game sprite extraction.\nINPUT image is the EXACT portrait approved by the user. Extract a transparent modular hair layer faithfully from THIS image, matching its fine muted grey-brown charcoal hair strands and delicate low-contrast gongbi rendering.\nThe output MUST be the same full 1024x1536 canvas as the input, with hair in the identical original pixel location, same scale, angle, crown, hairline and strand lengths. Leave all unused canvas transparent. DO NOT crop, recenter, zoom, stretch or enlarge the hair. Treat canvas as fixed, not a product cutout. The original eyes at approximately x460/568,y366 and chinx518,y541 are invisible registration guides only, not objects to paint.\nThe target is a single independent production hair layer used with the existing separate face, eyebrows, eyes, mouth, robe and complementary hair layer. Output HAIR ONLY with native transparency. All skin, forehead, ears, eyebrows, eyes, nose, lips, face, neck, clothing, embroidery, paper background, lighting halo, cast skin shadows and unrelated pixels must be completely absent/transparent. Hair edges must retain delicate semi-transparent strands with clean alpha, no beige matte, no colored silhouette halo, no large foggy low-alpha smear.\nDo not redesign, recolor, darken, sharpen or make hair glossy. Preserve source's muted fine painted strands and all distinct visible shape. Fill ONLY the concealed HAIR support needed for this layer behind the separate face; use the same fine texture. No part labels, no grid, no comparison.\nFRONT hair layer only: the asymmetric side-parted front scalp cap, the diagonal loose forelock on viewer-left, all fine source temple wisps, AND the narrow braid hugging the viewer-right temple/crown (around x608..676,y208..370). This visible temple braid MUST remain in the FRONT layer. Keep source forelock shape over side of forehead exactly, without face/eyebrow/eye pixels. EXCLUDE long loose hair behind head and shoulders and any concealed rear tie.",
+      "refs": [
+        "E:/stacklands/mods/appearance/male_four_styles_install_20261108/source/approved/temple_plait.png"
+      ]
+    },
+    {
+      "key": "temple_plait",
+      "slot": "back",
+      "index": 9,
+      "style_id": 8,
+      "name": "半束长披",
+      "prompt": "Use case: precise-object-edit / modular game sprite extraction.\nINPUT image is the EXACT portrait approved by the user. Extract a transparent modular hair layer faithfully from THIS image, matching its fine muted grey-brown charcoal hair strands and delicate low-contrast gongbi rendering.\nThe output MUST be the same full 1024x1536 canvas as the input, with hair in the identical original pixel location, same scale, angle, crown, hairline and strand lengths. Leave all unused canvas transparent. DO NOT crop, recenter, zoom, stretch or enlarge the hair. Treat canvas as fixed, not a product cutout. The original eyes at approximately x460/568,y366 and chinx518,y541 are invisible registration guides only, not objects to paint.\nThe target is a single independent production hair layer used with the existing separate face, eyebrows, eyes, mouth, robe and complementary hair layer. Output HAIR ONLY with native transparency. All skin, forehead, ears, eyebrows, eyes, nose, lips, face, neck, clothing, embroidery, paper background, lighting halo, cast skin shadows and unrelated pixels must be completely absent/transparent. Hair edges must retain delicate semi-transparent strands with clean alpha, no beige matte, no colored silhouette halo, no large foggy low-alpha smear.\nDo not redesign, recolor, darken, sharpen or make hair glossy. Preserve source's muted fine painted strands and all distinct visible shape. Fill ONLY the concealed HAIR support needed for this layer behind the separate face; use the same fine texture. No part labels, no grid, no comparison.\nBACK hair layer only: the half-tied long hair falling behind the head/neck and both shoulders, with a subtle concealed rear joining point and continuous rear-scalp support, matching the source silhouette approx x270..760,y320..720. The narrow visible temple braid and diagonal forehead sweep belong ONLY to the FRONT layer; do NOT repeat them in this layer. No extra crown bun, no new ribbon or ornament. Fill only missing concealed hair behind head/neck, fine muted strands, no face, ears, skin or robe.",
+      "refs": [
+        "E:/stacklands/mods/appearance/male_four_styles_install_20261108/source/approved/temple_plait.png"
+      ]
+    }
+  ]
+}

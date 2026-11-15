@@ -1,0 +1,57 @@
+{
+  "schema": "male-left-eye-seam-reimport/v1",
+  "status": "final_selected_locked_root_and_independent_review_passed",
+  "before_sha256": "6c3f023df0d845a979727f4fab210c3ad95a03a881a40f3ea493d19dc0252f14",
+  "candidate_sha256": "81723d5ca8413f3ecdb5a4a962a8850bf191aa7fd63c1a1818489eff4bd2f23a",
+  "candidate": "candidate/new_male_eyes04.png",
+  "source_of_defect": "Original import hidden() used fixed sx<440 nativeRGB vs approvedRGB, a binary boundary at currentx439.46; this location has no hairguard. Different existing lash/fold RGB curves produce the vertical step even with continuous Alpha.",
+  "selected_variant": "symmetric_8px",
+  "diff_bbox_xyxy": [
+    436,
+    355,
+    444,
+    381
+  ],
+  "rgb_changed_pixels": 181,
+  "alpha_differing_pixels": 0,
+  "right_half_rgba_differing_pixels": 0,
+  "geometry_changes": false,
+  "painting_changes": false,
+  "native_and_approved_sources": {
+    "approved_source": {
+      "path": "E:\\stacklands\\mods\\appearance\\male_loose_style_install_20261106\\source\\approved_male.png",
+      "sha256": "5ca3f4cc0ea0410c22bcf07dfef278a9496a0fea968c38008dfe8f7dc5cf6ee3"
+    },
+    "registered_native": {
+      "path": "E:\\stacklands\\mods\\appearance\\male_loose_style_install_20261106\\raw\\features\\eyes_native_v2.png",
+      "sha256": "c35d530fb72b57a4dd3b2b50f152634b80b44795dd2faedabee713852e7cb31e"
+    },
+    "geometry_source": "E:\\stacklands\\mods\\appearance\\male_loose_style_install_20261106\\source\\feature_import.json",
+    "shared_source_to_frame": [
+      [
+        0.9975364831,
+        0.0036289844,
+        -0.7327878529
+      ],
+      [
+        -0.0036289844,
+        0.9975364831,
+        10.4185928627
+      ]
+    ],
+    "combined_native_to_frame": {
+      "a": 0.5442475674436176,
+      "b": -0.0029135129813846407,
+      "tx": 231.47530406639368,
+      "ty": 163.2221309109286
+    }
+  },
+  "mix": "native*(1-smoothstep(source_x,left,right)) + approved*smoothstep; existing pixels only",
+  "source_x_transition": [
+    436,
+    444
+  ],
+  "scope": "Repair discontinuous source selection only; same existing registered source pixels combined with a continuous interpolation weight. No image blur, new painting, local warp, alpha change, or modified right eye.",
+  "review": "qa/final_left_seam_review.json",
+  "reproduction": "Run source/reimport_left_eye_seam.cjs to regenerate variants; final is the symmetric_8px file copied unchanged."
+}

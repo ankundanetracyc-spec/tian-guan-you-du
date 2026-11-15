@@ -1,0 +1,38 @@
+{
+  "mode": "built-in image_gen",
+  "scope": "User-approved short beard only, not middle-age or other facial/hair combinations",
+  "approved_reference": "reference/approved_short_beard_whole.png",
+  "approved_sha256": "b0e58ce2489e1e2ae3e77f00388ea982edb51f16245b6940a8442ac2177df9f5",
+  "first_candidate_from_previous_round": "../male_short_beard_combinations_20261108/source/refined_native_outputs.json",
+  "records": [
+    {
+      "version": 2,
+      "prompt": "source/extraction_prompt_v2.txt",
+      "workspace_native_file": "raw/short_beard_extraction_v2.png",
+      "selected": false
+    },
+    {
+      "version": 3,
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-e0c6bb58-ba40-487b-927f-8a4fbdd5d1eb.png",
+      "prompt": "source/extraction_prompt_v3.txt",
+      "workspace_native_file": "raw/short_beard_extraction_v3.png",
+      "selected": false
+    },
+    {
+      "version": 4,
+      "native_path": "E:\\tmp\\CodexData\\generated_images\\01a1ac35-8591-7bc0-b31a-ed6a532b5357\\exec-3963558f-057b-44b3-afb0-b5fdd7b4db14.png",
+      "prompt": "source/extraction_prompt_v4.txt",
+      "workspace_native_file": "raw/short_beard_extraction_v4.png",
+      "selected": true
+    }
+  ],
+  "final_processing": [
+    "qa/import_short_beard.gd",
+    "qa/matte_short_beard.gd"
+  ],
+  "final_processing_reports": [
+    "source/import_report.json",
+    "source/matting_report.json"
+  ],
+  "note": "V2 lost fine tails/chin tips. V3 was too faint. V4 provides full fine-hair support; final source-foreground matting removes carried-over skin and retains observed approved dark hair."
+}

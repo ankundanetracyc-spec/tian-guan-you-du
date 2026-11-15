@@ -1,0 +1,25 @@
+{
+  "pass": true,
+  "checks": [
+    {
+      "name": "baseline50_default05_style4_preserves01_04_and_no_full03_alias",
+      "pass": true,
+      "male_combinations": 81
+    },
+    {
+      "name": "current_style3_and_physical04_collisions_rejected",
+      "pass": true
+    },
+    {
+      "name": "active_full03_alias_redirection_rejected",
+      "pass": true
+    },
+    {
+      "name": "deduplicated_selection_counts_dynamic_and_readonly",
+      "pass": true,
+      "male_combinations": 36
+    }
+  ],
+  "scope": "Disposable preflight fixtures only; no real installation, import, or GUI run",
+  "godot_check_only": "passed"
+}

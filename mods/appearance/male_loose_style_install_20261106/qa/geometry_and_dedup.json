@@ -1,0 +1,356 @@
+{
+  "schema": "male-loose-style-geometry-and-dedup/v1",
+  "created_at": "2026-11-06",
+  "scope": "Read-only source/current inspection. Only this QA JSON written; no material, configuration, code, or installation changed.",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "coordinates": "Native full-canvas pixels, origin top-left, x rightward and y downward. Intensity centroids have subpixel arithmetic precision, approximate painted-anatomy accuracy ~1px; manual points ~1-2px.",
+  "source": {
+    "path": "E:\\stacklands\\mods\\appearance\\male_guigu_inspiration_20261106\\preview\\02_asymmetric_loose_gentle.png",
+    "sha256": "5ca3f4cc0ea0410c22bcf07dfef278a9496a0fea968c38008dfe8f7dc5cf6ee3",
+    "attachment": "C:\\Users\\34784\\AppData\\Local\\Temp\\codex-clipboard-b8286623-1915-4861-a0c3-66b222c58fe6.png",
+    "attachment_sha256": "5ca3f4cc0ea0410c22bcf07dfef278a9496a0fea968c38008dfe8f7dc5cf6ee3",
+    "attachment_exact_match": true
+  },
+  "current": {
+    "path": "E:\\stacklands\\mods\\appearance\\male_style_alignment_20261106\\integration\\installation\\game_male_composite.png",
+    "sha256": "f7ca9898dc6dba2ea44d7bbc5e7307dbb2ece8cad0c9f30de9bf90094166c46b",
+    "head": "E:\\stacklands\\mods\\appearance\\ink_three_variants_20261004\\male\\face_shape\\01.png",
+    "head_sha256": "d86319252035a286a92e8892b9816bdb917a39f7f41f4cb1edf40f4dee51c357",
+    "reference_authority": "docs/美术规范/男性原图完整还原_20261105/README.md, 2026-11-06 top section; old rig y379 and historic -5px correction not reused."
+  },
+  "measurement_method": {
+    "gray": "arithmetic mean of RGB",
+    "dark_centroid": "weights=max(threshold-gray,0) within stated half-open ROIs; no scaling or pupil-distance normalization",
+    "pupil_rois_current": [
+      [
+        454,
+        363,
+        471,
+        373
+      ],
+      [
+        560,
+        363,
+        577,
+        373
+      ]
+    ],
+    "pupil_threshold": 100,
+    "nostril_rois_current": [
+      [
+        497,
+        437,
+        513,
+        453
+      ],
+      [
+        521,
+        437,
+        538,
+        453
+      ]
+    ],
+    "nostril_threshold": 150,
+    "lip_roi_current": [
+      477,
+      470,
+      557,
+      484
+    ],
+    "lip_threshold": 150,
+    "source_rois": "All ROI y coordinates shifted -8px to isolate the corresponding new-source painted feature. This is only measurement selection, not an image shift.",
+    "chin": "Darkest mean-RGB row on central x513 in y520..551, visually checked as jaw/bottom contour."
+  },
+  "source_measurements": {
+    "pupil_left": [
+      462.83541430192963,
+      357.4878925463488
+    ],
+    "pupil_right": [
+      568.3761824543216,
+      357.32719968899823
+    ],
+    "eye_midpoint": [
+      515.6057983781257,
+      357.4075461176735
+    ],
+    "pupil_distance": 105.54089048511648,
+    "left_nostril": [
+      504.6787084398976,
+      433.3570971867008
+    ],
+    "right_nostril": [
+      529.761134938964,
+      433.45892444737717
+    ],
+    "nostril_midpoint": [
+      517.2199216894307,
+      433.408010817039
+    ],
+    "lip_center": [
+      517.4759197566628,
+      469.11851825028964
+    ],
+    "chin": [
+      513,
+      536
+    ]
+  },
+  "current_measurements": {
+    "pupil_left": [
+      461.83246936852026,
+      365.38383600377
+    ],
+    "pupil_right": [
+      567.9157608695652,
+      365.00171095008045
+    ],
+    "eye_midpoint": [
+      514.8741151190427,
+      365.19277347692525
+    ],
+    "pupil_distance": 106.0839797295159,
+    "left_nostril": [
+      504.7476558190844,
+      443.8974076116934
+    ],
+    "right_nostril": [
+      529.414836636315,
+      444.10149973219075
+    ],
+    "nostril_midpoint": [
+      517.0812462276997,
+      443.9994536719421
+    ],
+    "lip_center": [
+      516.5136719349393,
+      477.4169403099585
+    ],
+    "chin": [
+      513,
+      543
+    ]
+  },
+  "joint_source_to_frame": {
+    "type": "one whole-group similarity: uniform scale, rotation, translation; no part-specific warp",
+    "control_names": [
+      "pupil_left",
+      "pupil_right",
+      "chin"
+    ],
+    "source_points": [
+      [
+        462.83541430192963,
+        357.4878925463488
+      ],
+      [
+        568.3761824543216,
+        357.32719968899823
+      ],
+      [
+        513.0,
+        536.0
+      ]
+    ],
+    "frame_points": [
+      [
+        461.83246936852026,
+        365.38383600377
+      ],
+      [
+        567.9157608695652,
+        365.00171095008045
+      ],
+      [
+        513.0,
+        543.0
+      ]
+    ],
+    "matrix_2x3": [
+      [
+        0.9975364830940775,
+        0.003628984366773206,
+        -0.7327878528938072
+      ],
+      [
+        -0.003628984366773206,
+        0.9975364830940775,
+        10.418592862675553
+      ]
+    ],
+    "scale": 0.9975430840977422,
+    "rotation_degrees": -0.20843806155680672,
+    "control_predictions": [
+      [
+        462.2597415546048,
+        365.3461854591831
+      ],
+      [
+        567.5399250885221,
+        364.802882673721
+      ],
+      [
+        512.9485635949584,
+        543.2364788209463
+      ]
+    ],
+    "control_residuals_px": [
+      0.428927831352925,
+      0.42518844974011943,
+      0.24200813316864364
+    ],
+    "maximum_residual_px": 0.428927831352925,
+    "frame_feasible_within_2px": true,
+    "apply_consistently_to": [
+      "eyebrows",
+      "eyes",
+      "nose if new source-specific part retained",
+      "mouth if new source-specific part retained",
+      "hair_front",
+      "hair_back"
+    ],
+    "no_independent_feature_repositioning": true,
+    "why_nose_lips_are_observations": "Nose length and lip shape/placement are part of the new face design. Old nostril/lip positions are not rigid skull-frame landmarks. Fitting them would pull the new nose down and alter the source feature relationships."
+  },
+  "non_rigid_design_observations": {
+    "nostril_midpoint": {
+      "source": [
+        517.2199216894307,
+        433.408010817039
+      ],
+      "mapped": [
+        516.7857847110644,
+        440.8819127079099
+      ],
+      "current": [
+        517.0812462276997,
+        443.9994536719421
+      ],
+      "delta_to_current": [
+        -0.2954615166353278,
+        -3.117540964032173
+      ],
+      "used_for_fit": false
+    },
+    "lip_center": {
+      "source": [
+        517.4759197566628,
+        469.11851825028964
+      ],
+      "mapped": [
+        517.1707449959348,
+        476.5035176893958
+      ],
+      "current": [
+        516.5136719349393,
+        477.4169403099585
+      ],
+      "delta_to_current": [
+        0.657073060995458,
+        -0.9134226205626987
+      ],
+      "used_for_fit": false
+    }
+  },
+  "source_manual_feature_controls": {
+    "confidence": "Approximate painted points, not all equally visible. Verify native extraction against source crop before using; no forced residual target.",
+    "eyes": {
+      "left_visible_outer_corner": [
+        429,
+        357
+      ],
+      "left_inner_corner": [
+        490,
+        365
+      ],
+      "right_inner_corner": [
+        542,
+        365
+      ],
+      "left_upper_lid_at_iris": [
+        463,
+        351.5
+      ],
+      "left_lower_lid_at_iris": [
+        463,
+        366.5
+      ],
+      "right_upper_lid_at_iris": [
+        569,
+        350.5
+      ],
+      "right_lower_lid_at_iris": [
+        569,
+        365.5
+      ],
+      "right_outer_corner": null,
+      "right_outer_corner_note": "Occluded by crossing front hair; not an independent reliable source control."
+    },
+    "nose": {
+      "columella_bottom": [
+        517,
+        440
+      ]
+    },
+    "mouth": {
+      "left_corner": [
+        478,
+        468
+      ],
+      "right_corner": [
+        558,
+        468
+      ],
+      "upper_left_peak": [
+        505,
+        462
+      ],
+      "upper_right_peak": [
+        531,
+        462
+      ],
+      "cupid_valley": [
+        518,
+        465
+      ],
+      "lower_border_center": [
+        518,
+        483
+      ]
+    }
+  },
+  "dedup": {
+    "comparison": "Current actual installed01 face versus approved new source after the SAME head-frame similarity, viewed at identical native scale. No old retired reference used.",
+    "conservative_new_parts": [
+      "eyebrows",
+      "eyes"
+    ],
+    "records": [
+      {
+        "part": "eyebrows",
+        "recommendation": "add",
+        "reason": "New brow is flatter and softly curved, with a less angular rising outer segment; current brow has a sharper upward turn and stronger tapered sweep. This is a distinguishable silhouette change."
+      },
+      {
+        "part": "eyes",
+        "recommendation": "add",
+        "reason": "New upper lid is more rounded and the exposed opening is gentler/more open; current eyes are narrower and sharper in the outer/inner contour. Preserve original aperture and iris, not just pupil positions."
+      },
+      {
+        "part": "nose",
+        "recommendation": "deduplicate unless exact new-source face fidelity is prioritized",
+        "reason": "Same narrow rounded tip and closely related wing/nostril construction; dominant clear difference is the source-relative higher/shorter nose. After joint frame, new nostril midpoint is about3.12px above current. Reusing current01 removes that source-relative placement difference; do not falsely call it exact source restoration."
+      },
+      {
+        "part": "mouth",
+        "recommendation": "deduplicate conservatively; keep as new only if actual split QA confirms a wanted visible change",
+        "reason": "Both use a similar width, double-peak upper lip, and full lower lip; the new corner curvature and soft smile are subtle. A separate option is not strongly justified by color or rendering differences alone. Joint-frame source lip center is about0.91px above current."
+      }
+    ],
+    "not_an_installation_approval": true,
+    "tradeoff": "Two definite new facial structures (brow and eyes). Retaining source-specific nose/mouth may improve approved-whole-face fidelity but should be described as a deliberate source-faithfulness choice, not as four clearly novel structures."
+  }
+}

@@ -1,0 +1,936 @@
+{
+  "schema": "male-left-lash-rgb-seam-diagnosis/v1",
+  "scope": "Only diagnostic PNG/QA JSON written. No source/candidate/active PNG or code edited.",
+  "reported_location": "Image-left outer upper-lash line, at the passing forehead strand. User crop confirms a vertical contour/color step.",
+  "native_diagnostic_rect_xyxy": [
+    425,
+    350,
+    451,
+    376
+  ],
+  "diagnostic": "E:\\stacklands\\mods\\appearance\\male_layer_seam_fix_20261107\\qa\\left_lash_source_native_active_12x.png",
+  "active_eye_sha256": "6c3f023df0d845a979727f4fab210c3ad95a03a881a40f3ea493d19dc0252f14",
+  "v6_left_matches_original_loose04_exactly": true,
+  "rgb_branch_legend": "N=registered generated nativeRGB, S=approved sourceRGB; x434..446 inclusive",
+  "branch_rows": {
+    "356": "NNNNNNSSSSSSS",
+    "357": "NNNNNNSSSSSSS",
+    "358": "NNNNNNSSSSSSS",
+    "359": "NNNNNNSSSSSSS",
+    "360": "NNNNNNSSSSSSS",
+    "361": "NNNNNNSSSSSSS",
+    "362": "NNNNNNSSSSSSS",
+    "363": "NNNNNNSSSSSSS",
+    "364": "NNNNNNSSSSSSS",
+    "365": "NNNNNNSSSSSSS",
+    "366": "NNNNNNSSSSSSS"
+  },
+  "pixel_details": [
+    {
+      "xy": [
+        437,
+        358
+      ],
+      "source_x": 437.54041705530506,
+      "front_guard": false,
+      "fixed_source_cut": true,
+      "rgb_branch": "native",
+      "active_rgba": [
+        112,
+        90,
+        74,
+        43
+      ],
+      "source_rgba": [
+        197,
+        160,
+        135,
+        255
+      ],
+      "native_rgba": [
+        112,
+        90,
+        74,
+        43
+      ],
+      "active_to_source_rgb_maxdiff": 85,
+      "active_to_native_rgb_maxdiff": 0
+    },
+    {
+      "xy": [
+        438,
+        358
+      ],
+      "source_x": 438.5428733889446,
+      "front_guard": false,
+      "fixed_source_cut": true,
+      "rgb_branch": "native",
+      "active_rgba": [
+        114,
+        92,
+        77,
+        69
+      ],
+      "source_rgba": [
+        197,
+        160,
+        135,
+        255
+      ],
+      "native_rgba": [
+        114,
+        92,
+        77,
+        69
+      ],
+      "active_to_source_rgb_maxdiff": 83,
+      "active_to_native_rgb_maxdiff": 0
+    },
+    {
+      "xy": [
+        439,
+        358
+      ],
+      "source_x": 439.54532972258414,
+      "front_guard": false,
+      "fixed_source_cut": true,
+      "rgb_branch": "native",
+      "active_rgba": [
+        117,
+        94,
+        79,
+        91
+      ],
+      "source_rgba": [
+        196,
+        159,
+        135,
+        255
+      ],
+      "native_rgba": [
+        117,
+        94,
+        79,
+        91
+      ],
+      "active_to_source_rgb_maxdiff": 79,
+      "active_to_native_rgb_maxdiff": 0
+    },
+    {
+      "xy": [
+        440,
+        358
+      ],
+      "source_x": 440.5477860562237,
+      "front_guard": false,
+      "fixed_source_cut": false,
+      "rgb_branch": "source",
+      "active_rgba": [
+        190,
+        153,
+        130,
+        110
+      ],
+      "source_rgba": [
+        190,
+        153,
+        130,
+        255
+      ],
+      "native_rgba": [
+        127,
+        103,
+        86,
+        110
+      ],
+      "active_to_source_rgb_maxdiff": 0,
+      "active_to_native_rgb_maxdiff": 63
+    },
+    {
+      "xy": [
+        441,
+        358
+      ],
+      "source_x": 441.55024238986323,
+      "front_guard": false,
+      "fixed_source_cut": false,
+      "rgb_branch": "source",
+      "active_rgba": [
+        178,
+        141,
+        117,
+        131
+      ],
+      "source_rgba": [
+        178,
+        141,
+        117,
+        255
+      ],
+      "native_rgba": [
+        137,
+        113,
+        96,
+        131
+      ],
+      "active_to_source_rgb_maxdiff": 0,
+      "active_to_native_rgb_maxdiff": 41
+    },
+    {
+      "xy": [
+        442,
+        358
+      ],
+      "source_x": 442.5526987235028,
+      "front_guard": false,
+      "fixed_source_cut": false,
+      "rgb_branch": "source",
+      "active_rgba": [
+        162,
+        124,
+        100,
+        143
+      ],
+      "source_rgba": [
+        162,
+        124,
+        100,
+        255
+      ],
+      "native_rgba": [
+        151,
+        127,
+        110,
+        143
+      ],
+      "active_to_source_rgb_maxdiff": 0,
+      "active_to_native_rgb_maxdiff": 11
+    },
+    {
+      "xy": [
+        437,
+        359
+      ],
+      "source_x": 437.5367701727518,
+      "front_guard": false,
+      "fixed_source_cut": true,
+      "rgb_branch": "native",
+      "active_rgba": [
+        122,
+        96,
+        80,
+        109
+      ],
+      "source_rgba": [
+        183,
+        144,
+        120,
+        255
+      ],
+      "native_rgba": [
+        122,
+        96,
+        80,
+        109
+      ],
+      "active_to_source_rgb_maxdiff": 61,
+      "active_to_native_rgb_maxdiff": 0
+    },
+    {
+      "xy": [
+        438,
+        359
+      ],
+      "source_x": 438.5392265063913,
+      "front_guard": false,
+      "fixed_source_cut": true,
+      "rgb_branch": "native",
+      "active_rgba": [
+        128,
+        101,
+        85,
+        132
+      ],
+      "source_rgba": [
+        172,
+        133,
+        109,
+        255
+      ],
+      "native_rgba": [
+        128,
+        101,
+        85,
+        132
+      ],
+      "active_to_source_rgb_maxdiff": 44,
+      "active_to_native_rgb_maxdiff": 0
+    },
+    {
+      "xy": [
+        439,
+        359
+      ],
+      "source_x": 439.5416828400309,
+      "front_guard": false,
+      "fixed_source_cut": true,
+      "rgb_branch": "native",
+      "active_rgba": [
+        140,
+        113,
+        96,
+        145
+      ],
+      "source_rgba": [
+        156,
+        119,
+        97,
+        255
+      ],
+      "native_rgba": [
+        140,
+        113,
+        96,
+        145
+      ],
+      "active_to_source_rgb_maxdiff": 16,
+      "active_to_native_rgb_maxdiff": 0
+    },
+    {
+      "xy": [
+        440,
+        359
+      ],
+      "source_x": 440.5441391736704,
+      "front_guard": false,
+      "fixed_source_cut": false,
+      "rgb_branch": "source",
+      "active_rgba": [
+        143,
+        107,
+        86,
+        166
+      ],
+      "source_rgba": [
+        143,
+        107,
+        86,
+        255
+      ],
+      "native_rgba": [
+        152,
+        125,
+        108,
+        166
+      ],
+      "active_to_source_rgb_maxdiff": 0,
+      "active_to_native_rgb_maxdiff": 22
+    },
+    {
+      "xy": [
+        441,
+        359
+      ],
+      "source_x": 441.54659550731,
+      "front_guard": false,
+      "fixed_source_cut": false,
+      "rgb_branch": "source",
+      "active_rgba": [
+        138,
+        102,
+        79,
+        196
+      ],
+      "source_rgba": [
+        138,
+        102,
+        79,
+        255
+      ],
+      "native_rgba": [
+        158,
+        133,
+        116,
+        196
+      ],
+      "active_to_source_rgb_maxdiff": 0,
+      "active_to_native_rgb_maxdiff": 37
+    },
+    {
+      "xy": [
+        442,
+        359
+      ],
+      "source_x": 442.54905184094946,
+      "front_guard": false,
+      "fixed_source_cut": false,
+      "rgb_branch": "source",
+      "active_rgba": [
+        143,
+        106,
+        84,
+        214
+      ],
+      "source_rgba": [
+        143,
+        106,
+        84,
+        255
+      ],
+      "native_rgba": [
+        161,
+        137,
+        121,
+        214
+      ],
+      "active_to_source_rgb_maxdiff": 0,
+      "active_to_native_rgb_maxdiff": 37
+    },
+    {
+      "xy": [
+        437,
+        360
+      ],
+      "source_x": 437.53312329019855,
+      "front_guard": false,
+      "fixed_source_cut": true,
+      "rgb_branch": "native",
+      "active_rgba": [
+        143,
+        114,
+        95,
+        171
+      ],
+      "source_rgba": [
+        145,
+        107,
+        84,
+        255
+      ],
+      "native_rgba": [
+        143,
+        114,
+        95,
+        171
+      ],
+      "active_to_source_rgb_maxdiff": 11,
+      "active_to_native_rgb_maxdiff": 0
+    },
+    {
+      "xy": [
+        438,
+        360
+      ],
+      "source_x": 438.5355796238381,
+      "front_guard": false,
+      "fixed_source_cut": true,
+      "rgb_branch": "native",
+      "active_rgba": [
+        150,
+        120,
+        101,
+        196
+      ],
+      "source_rgba": [
+        143,
+        104,
+        81,
+        255
+      ],
+      "native_rgba": [
+        150,
+        120,
+        101,
+        196
+      ],
+      "active_to_source_rgb_maxdiff": 20,
+      "active_to_native_rgb_maxdiff": 0
+    },
+    {
+      "xy": [
+        439,
+        360
+      ],
+      "source_x": 439.53803595747763,
+      "front_guard": false,
+      "fixed_source_cut": true,
+      "rgb_branch": "native",
+      "active_rgba": [
+        152,
+        124,
+        106,
+        219
+      ],
+      "source_rgba": [
+        148,
+        110,
+        88,
+        255
+      ],
+      "native_rgba": [
+        152,
+        124,
+        106,
+        219
+      ],
+      "active_to_source_rgb_maxdiff": 18,
+      "active_to_native_rgb_maxdiff": 0
+    },
+    {
+      "xy": [
+        440,
+        360
+      ],
+      "source_x": 440.5404922911171,
+      "front_guard": false,
+      "fixed_source_cut": false,
+      "rgb_branch": "source",
+      "active_rgba": [
+        158,
+        121,
+        99,
+        234
+      ],
+      "source_rgba": [
+        158,
+        121,
+        99,
+        255
+      ],
+      "native_rgba": [
+        141,
+        116,
+        99,
+        234
+      ],
+      "active_to_source_rgb_maxdiff": 0,
+      "active_to_native_rgb_maxdiff": 17
+    },
+    {
+      "xy": [
+        441,
+        360
+      ],
+      "source_x": 441.5429486247567,
+      "front_guard": false,
+      "fixed_source_cut": false,
+      "rgb_branch": "source",
+      "active_rgba": [
+        170,
+        133,
+        110,
+        240
+      ],
+      "source_rgba": [
+        170,
+        133,
+        110,
+        255
+      ],
+      "native_rgba": [
+        117,
+        95,
+        83,
+        240
+      ],
+      "active_to_source_rgb_maxdiff": 0,
+      "active_to_native_rgb_maxdiff": 53
+    },
+    {
+      "xy": [
+        442,
+        360
+      ],
+      "source_x": 442.5454049583962,
+      "front_guard": false,
+      "fixed_source_cut": false,
+      "rgb_branch": "source",
+      "active_rgba": [
+        177,
+        140,
+        117,
+        244
+      ],
+      "source_rgba": [
+        177,
+        140,
+        117,
+        255
+      ],
+      "native_rgba": [
+        104,
+        86,
+        75,
+        244
+      ],
+      "active_to_source_rgb_maxdiff": 0,
+      "active_to_native_rgb_maxdiff": 73
+    },
+    {
+      "xy": [
+        437,
+        361
+      ],
+      "source_x": 437.5294764076453,
+      "front_guard": false,
+      "fixed_source_cut": true,
+      "rgb_branch": "native",
+      "active_rgba": [
+        141,
+        113,
+        95,
+        223
+      ],
+      "source_rgba": [
+        153,
+        116,
+        92,
+        255
+      ],
+      "native_rgba": [
+        141,
+        113,
+        95,
+        223
+      ],
+      "active_to_source_rgb_maxdiff": 12,
+      "active_to_native_rgb_maxdiff": 0
+    },
+    {
+      "xy": [
+        438,
+        361
+      ],
+      "source_x": 438.53193274128483,
+      "front_guard": false,
+      "fixed_source_cut": true,
+      "rgb_branch": "native",
+      "active_rgba": [
+        124,
+        97,
+        82,
+        235
+      ],
+      "source_rgba": [
+        165,
+        127,
+        103,
+        255
+      ],
+      "native_rgba": [
+        124,
+        97,
+        82,
+        235
+      ],
+      "active_to_source_rgb_maxdiff": 41,
+      "active_to_native_rgb_maxdiff": 0
+    },
+    {
+      "xy": [
+        439,
+        361
+      ],
+      "source_x": 439.5343890749244,
+      "front_guard": false,
+      "fixed_source_cut": true,
+      "rgb_branch": "native",
+      "active_rgba": [
+        103,
+        81,
+        68,
+        242
+      ],
+      "source_rgba": [
+        170,
+        132,
+        109,
+        255
+      ],
+      "native_rgba": [
+        103,
+        81,
+        68,
+        242
+      ],
+      "active_to_source_rgb_maxdiff": 67,
+      "active_to_native_rgb_maxdiff": 0
+    },
+    {
+      "xy": [
+        440,
+        361
+      ],
+      "source_x": 440.53684540856386,
+      "front_guard": false,
+      "fixed_source_cut": false,
+      "rgb_branch": "source",
+      "active_rgba": [
+        166,
+        130,
+        108,
+        244
+      ],
+      "source_rgba": [
+        166,
+        130,
+        108,
+        255
+      ],
+      "native_rgba": [
+        93,
+        75,
+        62,
+        244
+      ],
+      "active_to_source_rgb_maxdiff": 0,
+      "active_to_native_rgb_maxdiff": 73
+    },
+    {
+      "xy": [
+        441,
+        361
+      ],
+      "source_x": 441.53930174220346,
+      "front_guard": false,
+      "fixed_source_cut": false,
+      "rgb_branch": "source",
+      "active_rgba": [
+        157,
+        123,
+        102,
+        246
+      ],
+      "source_rgba": [
+        157,
+        123,
+        102,
+        255
+      ],
+      "native_rgba": [
+        82,
+        66,
+        57,
+        246
+      ],
+      "active_to_source_rgb_maxdiff": 0,
+      "active_to_native_rgb_maxdiff": 75
+    },
+    {
+      "xy": [
+        442,
+        361
+      ],
+      "source_x": 442.54175807584295,
+      "front_guard": false,
+      "fixed_source_cut": false,
+      "rgb_branch": "source",
+      "active_rgba": [
+        143,
+        111,
+        92,
+        248
+      ],
+      "source_rgba": [
+        143,
+        111,
+        92,
+        255
+      ],
+      "native_rgba": [
+        74,
+        62,
+        53,
+        248
+      ],
+      "active_to_source_rgb_maxdiff": 0,
+      "active_to_native_rgb_maxdiff": 69
+    },
+    {
+      "xy": [
+        437,
+        362
+      ],
+      "source_x": 437.525829525092,
+      "front_guard": false,
+      "fixed_source_cut": true,
+      "rgb_branch": "native",
+      "active_rgba": [
+        90,
+        71,
+        59,
+        242
+      ],
+      "source_rgba": [
+        162,
+        127,
+        102,
+        255
+      ],
+      "native_rgba": [
+        90,
+        71,
+        59,
+        242
+      ],
+      "active_to_source_rgb_maxdiff": 72,
+      "active_to_native_rgb_maxdiff": 0
+    },
+    {
+      "xy": [
+        438,
+        362
+      ],
+      "source_x": 438.5282858587316,
+      "front_guard": false,
+      "fixed_source_cut": true,
+      "rgb_branch": "native",
+      "active_rgba": [
+        83,
+        66,
+        55,
+        246
+      ],
+      "source_rgba": [
+        156,
+        122,
+        99,
+        255
+      ],
+      "native_rgba": [
+        83,
+        66,
+        55,
+        246
+      ],
+      "active_to_source_rgb_maxdiff": 73,
+      "active_to_native_rgb_maxdiff": 0
+    },
+    {
+      "xy": [
+        439,
+        362
+      ],
+      "source_x": 439.53074219237106,
+      "front_guard": false,
+      "fixed_source_cut": true,
+      "rgb_branch": "native",
+      "active_rgba": [
+        72,
+        58,
+        48,
+        247
+      ],
+      "source_rgba": [
+        140,
+        110,
+        90,
+        255
+      ],
+      "native_rgba": [
+        72,
+        58,
+        48,
+        247
+      ],
+      "active_to_source_rgb_maxdiff": 68,
+      "active_to_native_rgb_maxdiff": 0
+    },
+    {
+      "xy": [
+        440,
+        362
+      ],
+      "source_x": 440.53319852601066,
+      "front_guard": false,
+      "fixed_source_cut": false,
+      "rgb_branch": "source",
+      "active_rgba": [
+        120,
+        94,
+        77,
+        247
+      ],
+      "source_rgba": [
+        120,
+        94,
+        77,
+        255
+      ],
+      "native_rgba": [
+        66,
+        54,
+        45,
+        247
+      ],
+      "active_to_source_rgb_maxdiff": 0,
+      "active_to_native_rgb_maxdiff": 54
+    },
+    {
+      "xy": [
+        441,
+        362
+      ],
+      "source_x": 441.53565485965015,
+      "front_guard": false,
+      "fixed_source_cut": false,
+      "rgb_branch": "source",
+      "active_rgba": [
+        103,
+        80,
+        65,
+        248
+      ],
+      "source_rgba": [
+        103,
+        80,
+        65,
+        255
+      ],
+      "native_rgba": [
+        64,
+        53,
+        44,
+        248
+      ],
+      "active_to_source_rgb_maxdiff": 0,
+      "active_to_native_rgb_maxdiff": 39
+    },
+    {
+      "xy": [
+        442,
+        362
+      ],
+      "source_x": 442.5381111932897,
+      "front_guard": false,
+      "fixed_source_cut": false,
+      "rgb_branch": "source",
+      "active_rgba": [
+        92,
+        72,
+        59,
+        250
+      ],
+      "source_rgba": [
+        92,
+        72,
+        59,
+        255
+      ],
+      "native_rgba": [
+        63,
+        53,
+        45,
+        250
+      ],
+      "active_to_source_rgb_maxdiff": 0,
+      "active_to_native_rgb_maxdiff": 29
+    }
+  ],
+  "source_import_code": {
+    "path": "E:\\stacklands\\mods\\appearance\\male_loose_style_install_20261106\\source\\import_features.cjs",
+    "hidden": "Eye branch is hidden if real front-hair alpha>=64 dilated1px OR sx<440 OR sx>571.",
+    "assignment": "nativeRGB=hid; direct channel copy of generated sample versus source sample. No color/contour transition between the two reconstructions."
+  },
+  "prior_judgment_correction": "A connected lash/crease detail is not proof of a natural feature. User crop and branch inspection show a visible join within the connected stroke; prior recommendation to retain it merely because it was connected is withdrawn."
+}

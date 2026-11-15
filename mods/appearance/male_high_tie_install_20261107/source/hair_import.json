@@ -1,0 +1,86 @@
+{
+  "mode": "built-in image_gen hair extraction with approved-source RGB/matte conservation and one common whole-group frame import",
+  "approved_sha256": "fe7b9280cbb19019e76ffd6d451679e5e3ff3dc2b685b9020471b96451312f18",
+  "records": [
+    {
+      "part": "hair_front",
+      "raw": "raw\\hair_front.png",
+      "raw_sha256": "b5f7814b28bafdbeb22686889153185d401d226ebe1912a9bf0819676c6d4ac8",
+      "output": "male\\hair_front\\05.png",
+      "sha256": "346e4d42c8890b2cf084075ee5751db92ff17cba890672ab3738f8825b9f811f",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "runtime_offset": [
+        0,
+        0
+      ],
+      "shared_source_to_frame": [
+        [
+          1.0110056386738737,
+          -0.008603844911647713,
+          -6.349073717814235
+        ],
+        [
+          0.008603844911647713,
+          1.0110056386738737,
+          -5.49980453175408
+        ]
+      ],
+      "frame_maximum_residual_px": 1.754573495169529,
+      "local_geometry_warps": false,
+      "approved_visible_hair_core_rgb_pixels": 36737,
+      "posterior_head_pixels_kept_native_to_exclude_face_features": 0,
+      "alpha1to2_noise_pixels_removed": 7286,
+      "source_skin_spill_matte_pixels": 11026,
+      "forehead_matte_background_rgb": [
+        228,
+        200,
+        183
+      ],
+      "hidden_hair": "native image_gen continuous painting",
+      "limit": "Source shape and transparent edge fidelity require actual composition review; no whole-pixel identity claim"
+    },
+    {
+      "part": "hair_back",
+      "raw": "raw\\hair_back.png",
+      "raw_sha256": "4c275eb6b191fb7c4d4b88b4010de9a4de43aeaafc31797d7590865d5cbcb5a5",
+      "output": "male\\hair_back\\05.png",
+      "sha256": "b6ffb0366f15b3528a9ac66107e751a3da9afb17e2b77ad0cff0814656c7e741",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "runtime_offset": [
+        0,
+        0
+      ],
+      "shared_source_to_frame": [
+        [
+          1.0110056386738737,
+          -0.008603844911647713,
+          -6.349073717814235
+        ],
+        [
+          0.008603844911647713,
+          1.0110056386738737,
+          -5.49980453175408
+        ]
+      ],
+      "frame_maximum_residual_px": 1.754573495169529,
+      "local_geometry_warps": false,
+      "approved_visible_hair_core_rgb_pixels": 39286,
+      "posterior_head_pixels_kept_native_to_exclude_face_features": 102471,
+      "alpha1to2_noise_pixels_removed": 18098,
+      "source_skin_spill_matte_pixels": 0,
+      "forehead_matte_background_rgb": [
+        228,
+        200,
+        183
+      ],
+      "hidden_hair": "native image_gen continuous painting",
+      "limit": "Source shape and transparent edge fidelity require actual composition review; no whole-pixel identity claim"
+    }
+  ]
+}

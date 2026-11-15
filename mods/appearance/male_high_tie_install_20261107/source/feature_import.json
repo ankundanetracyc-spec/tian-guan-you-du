@@ -1,0 +1,328 @@
+{
+  "schema": "male-high-tie-features/v1",
+  "mode": "builtin image_gen plus technical source-RGB retention and one shared frame",
+  "approved_source": "source/approved_male.png",
+  "approved_sha256": "fe7b9280cbb19019e76ffd6d451679e5e3ff3dc2b685b9020471b96451312f18",
+  "geometry_source": "qa/geometry_and_dedup.json",
+  "geometry_sha256": "c4ad3279f1cd1d8e6d3b2ff7f8c05fe4fa684608dc3f4cf463e20912bd1e2135",
+  "shared_source_to_frame": [
+    [
+      1.0110056386738737,
+      -0.008603844911647713,
+      -6.349073717814235
+    ],
+    [
+      0.008603844911647713,
+      1.0110056386738737,
+      -5.49980453175408
+    ]
+  ],
+  "shared_frame_maximum_residual_px": 1.754573495169529,
+  "frame_note": "The source has a narrower pupil distance. Keep the common frame residual; never pull eyes apart or snap individual new parts to old features.",
+  "runtime_offset": [
+    0,
+    0
+  ],
+  "local_warps": false,
+  "rectangular_alpha_fills": false,
+  "front_hair_occlusion_guard": {
+    "file": "male/hair_front/05.png",
+    "sha256": "346e4d42c8890b2cf084075ee5751db92ff17cba890672ab3738f8825b9f811f",
+    "mode": "Read-only opaque new front alpha,2px guard in eyebrow/eye area; no hair RGB copied. Fixed-x RGB seams were removed."
+  },
+  "reuse_existing": {
+    "nose": "01",
+    "mouth": "01",
+    "head_and_skin_unchanged": true
+  },
+  "records": [
+    {
+      "part": "eyebrows",
+      "file": "male/eyebrows/05.png",
+      "physical_index": 5,
+      "saved_style_id": 4,
+      "sha256": "f5e0908457fb3b30a33dc7961af0b4c0e046f6794d8768104b79d1a0714839fd",
+      "raw_source": "raw/features/eyebrows_native.png",
+      "raw_sha256": "fd6c8ce4f1c184cd5dc600cc8395798b7317ad3f7b5227fcd0f0fb6e9e29290d",
+      "raw_size": [
+        1024,
+        1536
+      ],
+      "canvas": [
+        1024,
+        1536
+      ],
+      "native_to_source": {
+        "a": 1,
+        "b": 0,
+        "tx": 0,
+        "ty": 4,
+        "scale": 1,
+        "residuals": []
+      },
+      "shared_source_to_frame": [
+        [
+          1.0110056386738737,
+          -0.008603844911647713,
+          -6.349073717814235
+        ],
+        [
+          0.008603844911647713,
+          1.0110056386738737,
+          -5.49980453175408
+        ]
+      ],
+      "combined_native_to_frame": {
+        "a": 1.0110056386738737,
+        "b": 0.008603844911647713,
+        "tx": -6.383489097460826,
+        "ty": -1.4557819770585851
+      },
+      "one_pass_premultiplied_alpha_sampling": true,
+      "control_names": [],
+      "native_controls": [],
+      "source_controls": [],
+      "maximum_native_to_source_residual_px": null,
+      "approved_core_rgb_pixels": 1090,
+      "approved_core_rgb_difference_count": 0,
+      "source_rgb_pixels": 1724,
+      "generated_occluded_tip_pixels": 173,
+      "source_ink_opacity_recovered_pixels": 1102,
+      "source_ink_opacity_recovery_bbox": [
+        418,
+        335,
+        609,
+        358
+      ],
+      "upper_crease_opacity_recovered_pixels": 0,
+      "zero_alpha_pixels_filled": 0,
+      "protected_core_rgba_pixels": 1197,
+      "protected_core_rgba_differences": 0,
+      "iris_alpha_coverage": null,
+      "edge_method": "Alpha-only feather by distance to actual approved ink outside source-hair occlusion, max4px support; no fixed-x RGB seam or rectangular clip.",
+      "note": "One whole paired generated alpha support translated4px down to the source brow region. Real approved brow pigment supplies the final outline; opacity recovered only at already supported actual ink. No old eyebrow pixels or rectangular opacity support.",
+      "protected_core_rgba_scope": "Both main eyebrow alpha128 body components; confirmed source-hair residue islands explicitly excluded",
+      "hair_island_cleanup": "qa/features/brow_hair_island_cleanup.json",
+      "counts_scope": "Registration-stage RGB/opacity counts precede final residue removal; final main-body preservation and removed source-hair pixels are recorded in artifact_cleanup."
+    },
+    {
+      "part": "eyes",
+      "file": "male/eyes/05.png",
+      "physical_index": 5,
+      "saved_style_id": 4,
+      "sha256": "46d6b972e5667199e274b1c2dd8bc1686f01e0ed3f68eac4301f1fbf648f88fd",
+      "raw_source": "raw/features/eyes_native_v3.png",
+      "raw_sha256": "8214ae9fc8c8feb907f02dd6791872b4fd54fcbbe89223edd7cc566ba3037b65",
+      "raw_size": [
+        1024,
+        1536
+      ],
+      "canvas": [
+        1024,
+        1536
+      ],
+      "native_to_source": {
+        "a": 0.23093333661059479,
+        "b": -0.0002511315867638547,
+        "tx": 399.3071007282753,
+        "ty": 266.0405021258499,
+        "scale": 0.23093347315877827,
+        "residuals": [
+          0.5037335449808027,
+          0.5219989383975933,
+          1.8082075762890897,
+          0.9444074575213359,
+          0.8903478532207042,
+          0.5124069268684899,
+          0.42732416552966246,
+          0.3360147318028337,
+          0.28425647322968955,
+          0.07490769893522237
+        ]
+      },
+      "shared_source_to_frame": [
+        [
+          1.0110056386738737,
+          -0.008603844911647713,
+          -6.349073717814235
+        ],
+        [
+          0.008603844911647713,
+          1.0110056386738737,
+          -5.49980453175408
+        ]
+      ],
+      "combined_native_to_frame": {
+        "a": 0.233477066168308,
+        "b": 0.0017330191628595203,
+        "tx": 395.0636854604809,
+        "ty": 266.90421959989465
+      },
+      "one_pass_premultiplied_alpha_sampling": true,
+      "control_names": [
+        "left_dark_pupil_kernel",
+        "right_dark_pupil_kernel",
+        "left_inner_lid_join",
+        "right_inner_lid_join",
+        "left_visible_outer_lash_corner",
+        "right_visible_outer_lash_corner",
+        "left_upper_lid_iris_contact",
+        "left_lower_lid_iris_contact",
+        "right_upper_lid_iris_contact",
+        "right_lower_lid_iris_contact"
+      ],
+      "native_controls": [
+        [
+          293.4383240105248,
+          416.52047162456404
+        ],
+        [
+          734.1566694824583,
+          416.91077969503726
+        ],
+        [
+          408,
+          456
+        ],
+        [
+          622,
+          459
+        ],
+        [
+          146,
+          402
+        ],
+        [
+          875,
+          400
+        ],
+        [
+          294,
+          402
+        ],
+        [
+          294,
+          451
+        ],
+        [
+          734,
+          400
+        ],
+        [
+          734,
+          451
+        ]
+      ],
+      "source_controls": [
+        [
+          467.5203981322191,
+          361.787294175473
+        ],
+        [
+          569.3681852128454,
+          361.8182723425442
+        ],
+        [
+          492,
+          372
+        ],
+        [
+          544,
+          372
+        ],
+        [
+          434,
+          359
+        ],
+        [
+          601,
+          358
+        ],
+        [
+          467,
+          358.5
+        ],
+        [
+          467,
+          370
+        ],
+        [
+          569,
+          358.5
+        ],
+        [
+          569,
+          370
+        ]
+      ],
+      "maximum_native_to_source_residual_px": 1.8082075762890897,
+      "approved_core_rgb_pixels": 1376,
+      "approved_core_rgb_difference_count": 0,
+      "source_rgb_pixels": 1964,
+      "generated_occluded_tip_pixels": 0,
+      "source_ink_opacity_recovered_pixels": 0,
+      "source_ink_opacity_recovery_bbox": null,
+      "upper_crease_opacity_recovered_pixels": 15,
+      "zero_alpha_pixels_filled": 0,
+      "protected_core_rgba_pixels": 1228,
+      "protected_core_rgba_differences": 0,
+      "iris_alpha_coverage": [
+        {
+          "side": "left",
+          "source_dark_iris_roi_pixels": 234,
+          "final_alpha128_covered": 234,
+          "coverage": 1
+        },
+        {
+          "side": "right",
+          "source_dark_iris_roi_pixels": 238,
+          "final_alpha128_covered": 238,
+          "coverage": 1
+        }
+      ],
+      "edge_method": "Actual generated upper-crease support retained; only existing native alpha>=128 at real source dark vertical ridges may recover opacity. Iris/sclera fully protected.",
+      "note": "Third native extraction includes the actual faint upper double-lid creases. First extraction exaggerated outer lift; second omitted part of the crease. Pupil kernels are measured; remaining actual lid contacts read at original pixels, about1px uncertainty. Inner joins checked in16x QA; all ten controls fit as one pair, no local eye warp."
+    }
+  ],
+  "visual_status": "Final brow/eye05 PNGs locked after source-frame/actual-current-head comparison and removal of two confirmed front-hair residue islands. Root owns installation and final scene validation.",
+  "qa": {
+    "source_reference": "qa/features/approved_in_shared_frame.png",
+    "comparison": "qa/features/source_frame_left_actual_right_light.png",
+    "eyebrow_comparison": "qa/features/eyebrows_source_top_actual_bottom_light_6x.png",
+    "eye_comparison": "qa/features/eyes_source_top_actual_bottom_light_6x.png",
+    "same_frame_and_size": true,
+    "head_sha256": "d86319252035a286a92e8892b9816bdb917a39f7f41f4cb1edf40f4dee51c357",
+    "existing_nose_sha256": "e7271b38d96922434dbdf4a085b83a0d35ea5560989d0cfda9177beb085a2e79",
+    "existing_mouth_sha256": "471666da8f5b161007491c7f557e6aaf23c0b467d0414bc0839f7d54d942aa03",
+    "front_sha256": "346e4d42c8890b2cf084075ee5751db92ff17cba890672ab3738f8825b9f811f",
+    "back_sha256": "b6ffb0366f15b3528a9ac66107e751a3da9afb17e2b77ad0cff0814656c7e741",
+    "backgrounds": [
+      "light",
+      "dark",
+      "checker"
+    ],
+    "visual_status": "Light/dark/checker and original-source common-frame same-size composites reviewed. Main brow shape and small eye/iris proportions retained, upper faint crease restored; final normal-size root/audit acceptance follows.",
+    "remaining_differences": [
+      "Existing fixed head/skin, nose01 and mouth01 are intentionally reused, so the full assembled face is not pixel-identical to this whole-source portrait.",
+      "The native extraction and translucent antialias may leave the finest eyebrow hairs slightly softer than the whole source. Tiny hair-occluded feature transitions contain reconstruction.",
+      "The new source pupil separation is narrower; the shared frame retains1.7546px maximum frame-control residual instead of pulling individual eyes apart."
+    ]
+  },
+  "finalization_pipeline": [
+    "source/import_features.cjs",
+    "source/feature_clean_brow_islands.cjs",
+    "source/feature_review.cjs"
+  ],
+  "final_pixel_lock": {
+    "eyebrows": "f5e0908457fb3b30a33dc7961af0b4c0e046f6794d8768104b79d1a0714839fd",
+    "eyes": "46d6b972e5667199e274b1c2dd8bc1686f01e0ed3f68eac4301f1fbf648f88fd",
+    "worker_will_not_modify_pngs": true
+  },
+  "artifact_cleanup": {
+    "file": "qa/features/brow_hair_island_cleanup.json",
+    "removed_pixels": 188,
+    "main_body_rgba_preserved_pixels": 1197,
+    "main_body_rgba_differences": 0,
+    "alpha_additions": 0
+  }
+}

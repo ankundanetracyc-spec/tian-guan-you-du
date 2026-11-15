@@ -1,0 +1,26 @@
+{
+  "approved_rgb_source": "res://mods/appearance/male_short_beard_install_20261108/reference/approved_short_beard_whole.png",
+  "bias_measurement": "Frozen unbearded/bearded image skin sample medians near lower cheeks/chin; one constant for the whole beard, not local repaint.",
+  "clamped_color_channels": 10,
+  "clean_skin_reference": "res://mods/appearance/male_style_alignment_20261106/preview/male_whole_01.png",
+  "final_sha256": "8b44416a488007d1bd25c83540024bf7dfb0cc2869c7ea99a92b19220bfd1769",
+  "foreground_luminance_reference_255": 80,
+  "formula": "Within generated support, estimate a=(Y(B)-Y(C))/(Y(B)-80/255), recover F=(C-(1-a)B)/a. Transparent skin and lip opening excluded; only observed approved dark pigment retained.",
+  "generated_support": "res://mods/appearance/male_short_beard_install_20261108/raw/v4_generated_support_on_canvas.png",
+  "global_skin_background_estimate_delta_rgb": [
+    -2.5,
+    -4,
+    -5
+  ],
+  "limitations": "Estimated skin background gives source-faithful hair matting, not a claim of pixel-identical whole portrait or exact hair opacity.",
+  "method": "Foreground matting during Godot asset import, restricted to the image_gen beard support. No procedural hair drawing.",
+  "minimum_darkening_255": 5,
+  "no_existing_layer_modified": true,
+  "pixels": 3880,
+  "runtime_offset": [
+    0,
+    0
+  ],
+  "selected_whole_canvas_coordinates_retained": true,
+  "support_dilation_px": 3
+}

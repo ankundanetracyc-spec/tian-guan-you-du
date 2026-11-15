@@ -1,0 +1,22 @@
+{
+  "scope": "Confirmed left outer lash ROI only; imported eye substituted while every other layer and ordering stays identical",
+  "roi_xyxy": [
+    410,
+    338,
+    490,
+    408
+  ],
+  "roi_import_alpha_changes": 0,
+  "roi_visible_rgb_changed_pixels": 239,
+  "roi_max_raw_rgb_delta": 49.0,
+  "roi_max_alpha_weighted_delta_255": 1.411764705882353,
+  "roi_after_composite_with_front04_changed_pixels": 144,
+  "roi_after_composite_with_front04_max_channel_delta": 2,
+  "roi_after_composite_nohair_changed_pixels": 145,
+  "roi_after_composite_nohair_max_channel_delta": 2,
+  "notes": [
+    "Comparison isolates only eye04 import treatment; all other layers use the same raw PNGs.",
+    "PIL source-over is used only for diagnostic pairs; actual Godot ResourceLoader image was extracted separately.",
+    "No production PNG, configuration or import settings were changed."
+  ]
+}

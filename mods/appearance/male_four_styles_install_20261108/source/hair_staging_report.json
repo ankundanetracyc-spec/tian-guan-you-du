@@ -1,0 +1,812 @@
+{
+  "schema": "male-four-hair-staged/v1",
+  "status": "staged_for_actual_composition_review_not_installed",
+  "registration": "res://mods/appearance/male_four_styles_install_20261108/source/hair_registration.json",
+  "records": [
+    {
+      "key": "low_coil",
+      "part": "hair_front",
+      "name": "后收拢发",
+      "physical_index": 6,
+      "style_id": 5,
+      "native": "res://mods/appearance/male_four_styles_install_20261108/native/low_coil_front.png",
+      "native_sha256": "a8cbde05efba3c1251c0515058fae2f57e89d7cd7505c3accabc69a67ae6abef",
+      "native_size": [
+        1024,
+        1536
+      ],
+      "native_to_approved": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "native_control_residuals": [],
+      "common_source_to_frame": [
+        [
+          0.9927585969508425,
+          -0.015507493092731948,
+          8.99247133138865
+        ],
+        [
+          0.015507493092731948,
+          0.9927585969508425,
+          -5.221427522414444
+        ]
+      ],
+      "frame_control_residuals": [
+        1.1698199586358504,
+        1.1717365480188227,
+        0.6614439282937182
+      ],
+      "combined_native_to_frame": [
+        [
+          0.9927585969508425,
+          -0.015507493092731948,
+          8.99247133138865
+        ],
+        [
+          0.015507493092731948,
+          0.9927585969508425,
+          -5.221427522414444
+        ]
+      ],
+      "one_pass_premultiplied_alpha_sampling": true,
+      "output": "male/hair_front/06.png",
+      "sha256": "8acddc9edd4b7b0900a5f34b776deccdb86b95d0e7aaddc48297102e1d691914",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "runtime_offset": [
+        0,
+        0
+      ],
+      "removed_alpha_at_most": 4,
+      "removed_nonzero_noise_pixels": 9323,
+      "color_reconstruction": false,
+      "approved_rgb_copy": false,
+      "tint_applied": false,
+      "local_warps": false,
+      "alpha_stats": {
+        "nonzero_pixels": 58977,
+        "alpha_bbox": [
+          331,
+          121,
+          686,
+          448
+        ],
+        "alpha8_bbox": [
+          332,
+          121,
+          685,
+          447
+        ],
+        "opaque_core_pixels": 38890,
+        "potential_skin_carrier_probe_pixels": 0,
+        "posterior_cap_probe_zero_fraction": 0.7107738095238095,
+        "probe_note": "Numerical probes only. Bright warm hair can trigger the skin probe; a back-layer cap may be hidden by the unchanged head. View the actual layered image."
+      }
+    },
+    {
+      "key": "low_coil",
+      "part": "hair_back",
+      "name": "后颈低髻",
+      "physical_index": 6,
+      "style_id": 5,
+      "native": "res://mods/appearance/male_four_styles_install_20261108/native/low_coil_back.png",
+      "native_sha256": "691fba7cf7f3744a38555b2cfc772d305db0573d0ae222a96883e1b1fd9e6206",
+      "native_size": [
+        1024,
+        1536
+      ],
+      "native_to_approved": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "native_control_residuals": [],
+      "common_source_to_frame": [
+        [
+          0.9927585969508425,
+          -0.015507493092731948,
+          8.99247133138865
+        ],
+        [
+          0.015507493092731948,
+          0.9927585969508425,
+          -5.221427522414444
+        ]
+      ],
+      "frame_control_residuals": [
+        1.1698199586358504,
+        1.1717365480188227,
+        0.6614439282937182
+      ],
+      "combined_native_to_frame": [
+        [
+          0.9927585969508425,
+          -0.015507493092731948,
+          8.99247133138865
+        ],
+        [
+          0.015507493092731948,
+          0.9927585969508425,
+          -5.221427522414444
+        ]
+      ],
+      "one_pass_premultiplied_alpha_sampling": true,
+      "output": "male/hair_back/06.png",
+      "sha256": "7ed0990d32e9dd1c71622960169fef01737a9f89d7219402a86ab31f71ab4fc2",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "runtime_offset": [
+        0,
+        0
+      ],
+      "removed_alpha_at_most": 4,
+      "removed_nonzero_noise_pixels": 10690,
+      "color_reconstruction": false,
+      "approved_rgb_copy": false,
+      "tint_applied": false,
+      "local_warps": false,
+      "alpha_stats": {
+        "nonzero_pixels": 67347,
+        "alpha_bbox": [
+          331,
+          120,
+          688,
+          521
+        ],
+        "alpha8_bbox": [
+          332,
+          122,
+          687,
+          520
+        ],
+        "opaque_core_pixels": 40757,
+        "potential_skin_carrier_probe_pixels": 0,
+        "posterior_cap_probe_zero_fraction": 0.7295238095238096,
+        "probe_note": "Numerical probes only. Bright warm hair can trigger the skin probe; a back-layer cap may be hidden by the unchanged head. View the actual layered image."
+      }
+    },
+    {
+      "key": "high_tail",
+      "part": "hair_front",
+      "name": "露额拢发",
+      "physical_index": 7,
+      "style_id": 6,
+      "native": "res://mods/appearance/male_four_styles_install_20261108/native/high_tail_front.png",
+      "native_sha256": "8b814208fe14516b1bfefeeaeea61d8dc4f3207cdddd5c225139a3094fd6e9a7",
+      "native_size": [
+        1024,
+        1536
+      ],
+      "native_to_approved": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "native_control_residuals": [],
+      "common_source_to_frame": [
+        [
+          0.9947975019432072,
+          -0.01473388983372028,
+          7.7631621348115765
+        ],
+        [
+          0.01473388983372028,
+          0.9947975019432072,
+          -5.5805395838006575
+        ]
+      ],
+      "frame_control_residuals": [
+        1.0452429212282057,
+        1.0448428690605147,
+        0.5897407826760352
+      ],
+      "combined_native_to_frame": [
+        [
+          0.9947975019432072,
+          -0.01473388983372028,
+          7.7631621348115765
+        ],
+        [
+          0.01473388983372028,
+          0.9947975019432072,
+          -5.5805395838006575
+        ]
+      ],
+      "one_pass_premultiplied_alpha_sampling": true,
+      "output": "male/hair_front/07.png",
+      "sha256": "14491c88ddb54f5636a71e4a4aba1750e87046d915cea090ca0a5580dc002a13",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "runtime_offset": [
+        0,
+        0
+      ],
+      "removed_alpha_at_most": 4,
+      "removed_nonzero_noise_pixels": 7607,
+      "color_reconstruction": false,
+      "approved_rgb_copy": false,
+      "tint_applied": false,
+      "local_warps": false,
+      "alpha_stats": {
+        "nonzero_pixels": 57972,
+        "alpha_bbox": [
+          341,
+          139,
+          677,
+          553
+        ],
+        "alpha8_bbox": [
+          342,
+          140,
+          676,
+          551
+        ],
+        "opaque_core_pixels": 35783,
+        "potential_skin_carrier_probe_pixels": 0,
+        "posterior_cap_probe_zero_fraction": 0.7186904761904762,
+        "probe_note": "Numerical probes only. Bright warm hair can trigger the skin probe; a back-layer cap may be hidden by the unchanged head. View the actual layered image."
+      }
+    },
+    {
+      "key": "high_tail",
+      "part": "hair_back",
+      "name": "长尾高束",
+      "physical_index": 7,
+      "style_id": 6,
+      "native": "res://mods/appearance/male_four_styles_install_20261108/native/high_tail_back.png",
+      "native_sha256": "4786dc20bfe1069f03c4074a249b9f55104edfb397708e0ddd791069aa66ba5d",
+      "native_size": [
+        1024,
+        1536
+      ],
+      "native_to_approved": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "native_control_residuals": [],
+      "common_source_to_frame": [
+        [
+          0.9947975019432072,
+          -0.01473388983372028,
+          7.7631621348115765
+        ],
+        [
+          0.01473388983372028,
+          0.9947975019432072,
+          -5.5805395838006575
+        ]
+      ],
+      "frame_control_residuals": [
+        1.0452429212282057,
+        1.0448428690605147,
+        0.5897407826760352
+      ],
+      "combined_native_to_frame": [
+        [
+          0.9947975019432072,
+          -0.01473388983372028,
+          7.7631621348115765
+        ],
+        [
+          0.01473388983372028,
+          0.9947975019432072,
+          -5.5805395838006575
+        ]
+      ],
+      "one_pass_premultiplied_alpha_sampling": true,
+      "output": "male/hair_back/07.png",
+      "sha256": "cd28c5d668e383959cacf73aea61465d082d34bd90c369404bdc911e56d7270e",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "runtime_offset": [
+        0,
+        0
+      ],
+      "removed_alpha_at_most": 4,
+      "removed_nonzero_noise_pixels": 17195,
+      "color_reconstruction": false,
+      "approved_rgb_copy": false,
+      "tint_applied": false,
+      "local_warps": false,
+      "alpha_stats": {
+        "nonzero_pixels": 139505,
+        "alpha_bbox": [
+          384,
+          66,
+          872,
+          902
+        ],
+        "alpha8_bbox": [
+          385,
+          67,
+          872,
+          901
+        ],
+        "opaque_core_pixels": 90950,
+        "potential_skin_carrier_probe_pixels": 0,
+        "posterior_cap_probe_zero_fraction": 0.7943154761904762,
+        "probe_note": "Numerical probes only. Bright warm hair can trigger the skin probe; a back-layer cap may be hidden by the unchanged head. View the actual layered image."
+      }
+    },
+    {
+      "key": "loose_back",
+      "part": "hair_front",
+      "name": "露耳后梳",
+      "physical_index": 8,
+      "style_id": 7,
+      "native": "res://mods/appearance/male_four_styles_install_20261108/native/loose_back_front.png",
+      "native_sha256": "d3c5a15bfbac6c223dbede8aafa9cbbff4862227364878fec70a3525666256fe",
+      "native_size": [
+        1024,
+        1536
+      ],
+      "native_to_approved": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "native_control_residuals": [],
+      "common_source_to_frame": [
+        [
+          0.9947826294052843,
+          -0.01731610868327088,
+          8.71555836113067
+        ],
+        [
+          0.01731610868327088,
+          0.9947826294052843,
+          -7.119123594450116
+        ]
+      ],
+      "frame_control_residuals": [
+        1.2224943584705033,
+        1.2242708364564485,
+        0.6889173086498558
+      ],
+      "combined_native_to_frame": [
+        [
+          0.9947826294052843,
+          -0.01731610868327088,
+          8.71555836113067
+        ],
+        [
+          0.01731610868327088,
+          0.9947826294052843,
+          -7.119123594450116
+        ]
+      ],
+      "one_pass_premultiplied_alpha_sampling": true,
+      "output": "male/hair_front/08.png",
+      "sha256": "ebbd2eaadbb8c7a5748f49265c3235e0ea5929d3e24db8d07d464aeb84f2b3bb",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "runtime_offset": [
+        0,
+        0
+      ],
+      "removed_alpha_at_most": 4,
+      "removed_nonzero_noise_pixels": 10782,
+      "color_reconstruction": false,
+      "approved_rgb_copy": false,
+      "tint_applied": false,
+      "local_warps": false,
+      "alpha_stats": {
+        "nonzero_pixels": 62109,
+        "alpha_bbox": [
+          329,
+          131,
+          693,
+          466
+        ],
+        "alpha8_bbox": [
+          329,
+          131,
+          692,
+          463
+        ],
+        "opaque_core_pixels": 39185,
+        "potential_skin_carrier_probe_pixels": 0,
+        "posterior_cap_probe_zero_fraction": 0.6821130952380953,
+        "probe_note": "Numerical probes only. Bright warm hair can trigger the skin probe; a back-layer cap may be hidden by the unchanged head. View the actual layered image."
+      }
+    },
+    {
+      "key": "loose_back",
+      "part": "hair_back",
+      "name": "自然松披",
+      "physical_index": 8,
+      "style_id": 7,
+      "native": "res://mods/appearance/male_four_styles_install_20261108/native/loose_back_back.png",
+      "native_sha256": "c693fad5b394019615b5f0ea0baaad98212d7029d2ada2782e2195ddd296d523",
+      "native_size": [
+        1024,
+        1536
+      ],
+      "native_to_approved": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "native_control_residuals": [],
+      "common_source_to_frame": [
+        [
+          0.9947826294052843,
+          -0.01731610868327088,
+          8.71555836113067
+        ],
+        [
+          0.01731610868327088,
+          0.9947826294052843,
+          -7.119123594450116
+        ]
+      ],
+      "frame_control_residuals": [
+        1.2224943584705033,
+        1.2242708364564485,
+        0.6889173086498558
+      ],
+      "combined_native_to_frame": [
+        [
+          0.9947826294052843,
+          -0.01731610868327088,
+          8.71555836113067
+        ],
+        [
+          0.01731610868327088,
+          0.9947826294052843,
+          -7.119123594450116
+        ]
+      ],
+      "one_pass_premultiplied_alpha_sampling": true,
+      "output": "male/hair_back/08.png",
+      "sha256": "4f3e33ee84dbeada96c4493d3057c6b41bf618b3bf58b4a78f19bb5445e01731",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "runtime_offset": [
+        0,
+        0
+      ],
+      "removed_alpha_at_most": 4,
+      "removed_nonzero_noise_pixels": 17164,
+      "color_reconstruction": false,
+      "approved_rgb_copy": false,
+      "tint_applied": false,
+      "local_warps": false,
+      "alpha_stats": {
+        "nonzero_pixels": 123895,
+        "alpha_bbox": [
+          220,
+          131,
+          777,
+          714
+        ],
+        "alpha8_bbox": [
+          220,
+          131,
+          775,
+          713
+        ],
+        "opaque_core_pixels": 80395,
+        "potential_skin_carrier_probe_pixels": 0,
+        "posterior_cap_probe_zero_fraction": 0.7461309523809524,
+        "probe_note": "Numerical probes only. Bright warm hair can trigger the skin probe; a back-layer cap may be hidden by the unchanged head. View the actual layered image."
+      }
+    },
+    {
+      "key": "temple_plait",
+      "part": "hair_front",
+      "name": "偏分鬓辫",
+      "physical_index": 9,
+      "style_id": 8,
+      "native": "res://mods/appearance/male_four_styles_install_20261108/native/temple_plait_front_v2.png",
+      "native_sha256": "c7931cd8d56644857a0db2069c1857a027a602c6797eb821a83459318aa0e3cd",
+      "native_size": [
+        1024,
+        1536
+      ],
+      "native_to_approved": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "native_control_residuals": [],
+      "common_source_to_frame": [
+        [
+          0.9938551887427123,
+          -0.014714755997143893,
+          7.7280759620876465
+        ],
+        [
+          0.014714755997143893,
+          0.9938551887427123,
+          -5.269352812273382
+        ]
+      ],
+      "frame_control_residuals": [
+        1.0165227994914192,
+        1.0157743714975012,
+        0.5735298669856855
+      ],
+      "combined_native_to_frame": [
+        [
+          0.9938551887427123,
+          -0.014714755997143893,
+          7.7280759620876465
+        ],
+        [
+          0.014714755997143893,
+          0.9938551887427123,
+          -5.269352812273382
+        ]
+      ],
+      "one_pass_premultiplied_alpha_sampling": true,
+      "output": "male/hair_front/09.png",
+      "sha256": "bccea1734e04770fa98826500b8f1baaf1a13e3d04f85964b5cc86a249fd1e20",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "runtime_offset": [
+        0,
+        0
+      ],
+      "removed_alpha_at_most": 4,
+      "removed_nonzero_noise_pixels": 8371,
+      "color_reconstruction": false,
+      "approved_rgb_copy": false,
+      "tint_applied": false,
+      "local_warps": false,
+      "alpha_stats": {
+        "nonzero_pixels": 74279,
+        "alpha_bbox": [
+          318,
+          113,
+          689,
+          549
+        ],
+        "alpha8_bbox": [
+          319,
+          114,
+          689,
+          547
+        ],
+        "opaque_core_pixels": 51316,
+        "potential_skin_carrier_probe_pixels": 0,
+        "posterior_cap_probe_zero_fraction": 0.6232440476190476,
+        "probe_note": "Numerical probes only. Bright warm hair can trigger the skin probe; a back-layer cap may be hidden by the unchanged head. View the actual layered image."
+      }
+    },
+    {
+      "key": "temple_plait",
+      "part": "hair_back",
+      "name": "半束长披",
+      "physical_index": 9,
+      "style_id": 8,
+      "native": "res://mods/appearance/male_four_styles_install_20261108/native/temple_plait_back.png",
+      "native_sha256": "013ae0fd2debf5613f22ec7c130ad27a80e3933c1fbea03db3b13b14d5b7d4a3",
+      "native_size": [
+        1024,
+        1536
+      ],
+      "native_to_approved": [
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "native_control_residuals": [],
+      "common_source_to_frame": [
+        [
+          0.9938551887427123,
+          -0.014714755997143893,
+          7.7280759620876465
+        ],
+        [
+          0.014714755997143893,
+          0.9938551887427123,
+          -5.269352812273382
+        ]
+      ],
+      "frame_control_residuals": [
+        1.0165227994914192,
+        1.0157743714975012,
+        0.5735298669856855
+      ],
+      "combined_native_to_frame": [
+        [
+          0.9938551887427123,
+          -0.014714755997143893,
+          7.7280759620876465
+        ],
+        [
+          0.014714755997143893,
+          0.9938551887427123,
+          -5.269352812273382
+        ]
+      ],
+      "one_pass_premultiplied_alpha_sampling": true,
+      "output": "male/hair_back/09.png",
+      "sha256": "7efd9eb9309a5bdd2d22fe70e829cdfd1bd7b60e79b5e52f8ea0b4296028cb1a",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "runtime_offset": [
+        0,
+        0
+      ],
+      "removed_alpha_at_most": 4,
+      "removed_nonzero_noise_pixels": 15994,
+      "color_reconstruction": false,
+      "approved_rgb_copy": false,
+      "tint_applied": false,
+      "local_warps": false,
+      "alpha_stats": {
+        "nonzero_pixels": 122609,
+        "alpha_bbox": [
+          253,
+          112,
+          757,
+          767
+        ],
+        "alpha8_bbox": [
+          253,
+          113,
+          756,
+          763
+        ],
+        "opaque_core_pixels": 78138,
+        "potential_skin_carrier_probe_pixels": 0,
+        "posterior_cap_probe_zero_fraction": 0.7431547619047619,
+        "probe_note": "Numerical probes only. Bright warm hair can trigger the skin probe; a back-layer cap may be hidden by the unchanged head. View the actual layered image."
+      }
+    }
+  ],
+  "additions": [
+    {
+      "part": "hair_front",
+      "name": "后收拢发",
+      "source": "res://mods/appearance/male_four_styles_install_20261108/male/hair_front/06.png",
+      "index": 6,
+      "style_id": 5,
+      "approved_portrait": "res://mods/appearance/male_four_styles_install_20261108/source/approved/low_coil.png"
+    },
+    {
+      "part": "hair_back",
+      "name": "后颈低髻",
+      "source": "res://mods/appearance/male_four_styles_install_20261108/male/hair_back/06.png",
+      "index": 6,
+      "style_id": 5,
+      "approved_portrait": "res://mods/appearance/male_four_styles_install_20261108/source/approved/low_coil.png"
+    },
+    {
+      "part": "hair_front",
+      "name": "露额拢发",
+      "source": "res://mods/appearance/male_four_styles_install_20261108/male/hair_front/07.png",
+      "index": 7,
+      "style_id": 6,
+      "approved_portrait": "res://mods/appearance/male_four_styles_install_20261108/source/approved/high_tail.png"
+    },
+    {
+      "part": "hair_back",
+      "name": "长尾高束",
+      "source": "res://mods/appearance/male_four_styles_install_20261108/male/hair_back/07.png",
+      "index": 7,
+      "style_id": 6,
+      "approved_portrait": "res://mods/appearance/male_four_styles_install_20261108/source/approved/high_tail.png"
+    },
+    {
+      "part": "hair_front",
+      "name": "露耳后梳",
+      "source": "res://mods/appearance/male_four_styles_install_20261108/male/hair_front/08.png",
+      "index": 8,
+      "style_id": 7,
+      "approved_portrait": "res://mods/appearance/male_four_styles_install_20261108/source/approved/loose_back.png"
+    },
+    {
+      "part": "hair_back",
+      "name": "自然松披",
+      "source": "res://mods/appearance/male_four_styles_install_20261108/male/hair_back/08.png",
+      "index": 8,
+      "style_id": 7,
+      "approved_portrait": "res://mods/appearance/male_four_styles_install_20261108/source/approved/loose_back.png"
+    },
+    {
+      "part": "hair_front",
+      "name": "偏分鬓辫",
+      "source": "res://mods/appearance/male_four_styles_install_20261108/male/hair_front/09.png",
+      "index": 9,
+      "style_id": 8,
+      "approved_portrait": "res://mods/appearance/male_four_styles_install_20261108/source/approved/temple_plait.png"
+    },
+    {
+      "part": "hair_back",
+      "name": "半束长披",
+      "source": "res://mods/appearance/male_four_styles_install_20261108/male/hair_back/09.png",
+      "index": 9,
+      "style_id": 8,
+      "approved_portrait": "res://mods/appearance/male_four_styles_install_20261108/source/approved/temple_plait.png"
+    }
+  ],
+  "unchanged_active_pngs": 59,
+  "existing_skin_and_features_untouched": true,
+  "processing": "Native image_gen RGBA only; remove at most alpha1..4 noise, compose registration matrices, and resample once. No drawing, RGB recovery, matting, recoloring or independent feature movement.",
+  "deduplication": [
+    "face_shape01",
+    "eyebrows01",
+    "eyes01",
+    "nose01",
+    "mouth01"
+  ],
+  "active_config_modified": false
+}

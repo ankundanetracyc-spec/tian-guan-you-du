@@ -1,0 +1,33 @@
+{
+  "schema": "male-high-tie-generation/v1",
+  "mode": "built-in image_gen",
+  "approved_portrait": "source/approved_male.png",
+  "approved_sha256": "fe7b9280cbb19019e76ffd6d451679e5e3ff3dc2b685b9020471b96451312f18",
+  "prompt_sets": [
+    "source/hair_generation_prompts.json",
+    "source/hair_front_retry_prompt.txt",
+    "source/feature_generation_prompts.json"
+  ],
+  "native_records": [
+    "source/hair_native_outputs.json",
+    "source/feature_import.json"
+  ],
+  "selected_new_parts": [
+    "hair_front",
+    "hair_back",
+    "eyebrows",
+    "eyes"
+  ],
+  "deduplicated_reused_parts": [
+    "nose",
+    "mouth"
+  ],
+  "unchanged_basis": "Existing approved male head/skin and seven paired clothing choices; all baseline01/04 choices retained.",
+  "technical_import_records": [
+    "source/hair_import.json",
+    "source/feature_import.json",
+    "qa/geometry_and_dedup.json"
+  ],
+  "registration": "All new layers share the measured source-to-fixed-head frame. Native extraction coordinates are restored first where needed; no local feature/hair warps or runtime offsets.",
+  "limitations": "Generated hidden regions and edge reconstruction can differ from the whole source. Nose/mouth are intentionally reused. Whole-portrait pixel identity is not claimed."
+}
