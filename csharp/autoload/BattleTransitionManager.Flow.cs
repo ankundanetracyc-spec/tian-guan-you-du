@@ -4,10 +4,13 @@ using GDictionary=Godot.Collections.Dictionary;
 
 public partial class BattleTransitionManager
 {
+    public event Action<GDictionary>? BriefingCancelled;
     private BattleFlowView? _flowView;
     private bool _flowTransitionActive;
     private BattleSceneTransition? _sceneTransition;
     public bool is_flow_transition_active()=>_flowTransitionActive;
+    public bool has_open_flow_view() => GodotObject.IsInstanceValid(_flowView);
+    public bool try_return_from_open_flow() => GodotObject.IsInstanceValid(_flowView) && _flowView!.try_return_to_previous_page();
     public async System.Threading.Tasks.Task HoldBattleOutro()
     {
         _flowTransitionActive=true;
@@ -25,9 +28,50 @@ public partial class BattleTransitionManager
     private List<string> _attackerOrder=[], _defenderOrder=[];
     private string _battleId="";
     private GDictionary _rewardLedger=[];
+    private bool _resumeLootAfterTransition;
+    private bool _waitingForLootWorldReady;
     public GDictionary export_reward_ledger()=>_rewardLedger.Duplicate(true);
     public void restore_reward_ledger(GDictionary ledger)=>_rewardLedger=ledger.Duplicate(true);
-    public void clear_reward_ledger(){CloseFlow();_rewardLedger.Clear();_lootReminder?.QueueFree();_lootReminder=null;_worldProgressSnapshot=null;}
+    public void clear_reward_ledger(){CloseFlow();_rewardLedger.Clear();_lootReminder?.QueueFree();_lootReminder=null;_worldProgressSnapshot=null;_resumeLootAfterTransition=false;}
+    public bool has_world_progress_snapshot() => _worldProgressSnapshot is not null;
+    public bool save_world_progress_snapshot()
+    {
+        if (_worldProgressSnapshot is null) return false;
+        var manager = GetNodeOrNull<GameSaveManager>("/root/GameSaveManager");
+        var copy = _worldProgressSnapshot.Duplicate(true) as PersistentGameSave ?? _worldProgressSnapshot;
+        return manager?.save_snapshot(copy) == true;
+    }
+
+    public void abandon_battle_for_title()
+    {
+        CloseFlow();
+        _sceneTransition?.QueueFree();
+        _sceneTransition = null;
+        _flowTransitionActive = false;
+        _awaitingSettlement = false;
+        pending_attackers = [];
+        pending_defenders = [];
+        pending_attacker_data = [];
+        pending_defender_data = [];
+        result_attackers = [];
+        result_defenders = [];
+        saved_world = null;
+        saved_entity_data.Clear();
+        _worldProgressSnapshot = null;
+        _beforeBattle.Clear();
+        _attackerOrder.Clear();
+        _defenderOrder.Clear();
+        _battleId = "";
+        _outcomeNote = "";
+        last_summary.Clear();
+        return_context.Clear();
+        has_results = false;
+        has_battle_return_data = false;
+        if (GodotObject.IsInstanceValid(_spectatorBattleScene)) _spectatorBattleScene!.QueueFree();
+        _spectatorBattleScene = null;
+        _spectatorBattleActive = false;
+        GetTree().Paused = false;
+    }
     private string _outcomeNote="";
     public void set_battle_outcome_note(string note)=>_outcomeNote=note;
     private bool Training=>return_context.GetValueOrDefault("is_training",false).AsBool() || return_context.GetValueOrDefault("kind","").AsString()=="yuxu_tianwen_practice";
@@ -56,18 +100,54 @@ public partial class BattleTransitionManager
         _beforeBattle=Data(pending_attacker_data).Concat(Data(pending_defender_data)).Select(d=>(BattleEntityData)d.Duplicate(true)).ToList();
         _attackerOrder=Data(pending_attacker_data).Select(d=>d.uid).ToList();_defenderOrder=Data(pending_defender_data).Select(d=>d.uid).ToList();
         _battleId=Guid.NewGuid().ToString("N");_outcomeNote="";
-        Action? cancel=return_context.GetValueOrDefault("allow_prebattle_cancel",false).AsBool()?()=>{CloseFlow();pending_attackers=[];pending_defenders=[];pending_attacker_data=[];pending_defender_data=[];return_context.Clear();}:null;
+        Action? cancel=return_context.GetValueOrDefault("allow_prebattle_cancel",false).AsBool()?()=>{var context=return_context.Duplicate(true);CloseFlow();pending_attackers=[];pending_defenders=[];pending_attacker_data=[];pending_defender_data=[];return_context.Clear();BriefingCancelled?.Invoke(context);}:null;
         var capacities=new System.Collections.Generic.Dictionary<string,int>();
-        var preview=GD.Load<PackedScene>("res://tscn/battle/BattleScene.tscn").Instantiate();
-        var config=preview.GetNode<BattleManager>("BattleMgr");
-        foreach(var unit in _beforeBattle)capacities[unit.uid]=config.get_action_slot_capacity_for_realm(unit.cultivation_realm);
-        // 与正常场景销毁保持同一帧末生命周期，避免立即释放 C# 预览节点。
-        preview.QueueFree();
+        // 战前只读取正式战场的容量配置，不实例化再销毁整套战场与人物UI。
+        var config = new BattleManager();
+        try
+        {
+            var state = GD.Load<PackedScene>("res://tscn/battle/BattleScene.tscn").GetState();
+            for (var i = 0; i < state.GetNodeCount(); i++)
+            {
+                if (state.GetNodeName(i) != "BattleMgr") continue;
+                for (var j = 0; j < state.GetNodePropertyCount(i); j++)
+                {
+                    var name = state.GetNodePropertyName(i, j).ToString();
+                    if (name == "action_slots_per_segment") config.action_slots_per_segment = state.GetNodePropertyValue(i, j).AsInt32();
+                    else if (name == "action_slots_by_realm") config.action_slots_by_realm = state.GetNodePropertyValue(i, j).AsGodotDictionary().Duplicate(true);
+                }
+                break;
+            }
+            foreach(var unit in _beforeBattle)capacities[unit.uid]=config.get_action_slot_capacity_for_realm(unit.cultivation_realm);
+        }
+        finally { config.Free(); }
+        if (return_context.GetValueOrDefault("skip_prebattle_briefing", false).AsBool())
+        {
+            _flowPreviousPause = GetTree().Paused;
+            GetTree().Paused = true;
+            BeginConfirmedBattle();
+            return;
+        }
         OpenFlow().Briefing(return_context.GetValueOrDefault("title","遭遇战").AsString(),_beforeBattle,Training,RetreatDescription(),BeginConfirmedBattle,cancel,capacities);
     }
     private async void BeginConfirmedBattle()
     {
         if(_flowTransitionActive)return;
+        if (return_context.GetValueOrDefault("kind", "").AsString() == "player_npc_attack" &&
+            GetTree().CurrentScene is MainScene origin && !origin.validate_pending_npc_attack(return_context))
+        {
+            var cancelled = return_context.Duplicate(true);
+            CloseFlow(); pending_attackers=[]; pending_defenders=[]; pending_attacker_data=[]; pending_defender_data=[];
+            return_context.Clear(); BriefingCancelled?.Invoke(cancelled);
+            return;
+        }
+        foreach (var snapshot in Data(pending_attacker_data).Concat(Data(pending_defender_data)))
+        {
+            var prepared = _beforeBattle.FirstOrDefault(unit => unit.uid == snapshot.uid);
+            if (prepared is null) continue;
+            BattleSupplyRules.Normalize(prepared.battle_supplies, prepared.pack_item_paths, prepared.pack_item_counts);
+            snapshot.battle_supplies = prepared.battle_supplies.Duplicate(true);
+        }
         _flowTransitionActive=true;_sceneTransition=new BattleSceneTransition();AddChild(_sceneTransition);
         var previousPause=_flowPreviousPause;
         try
@@ -98,9 +178,12 @@ public partial class BattleTransitionManager
                 if (_worldProgressSnapshot is null || string.IsNullOrEmpty(world_scene_path))
                 { saved_world=new PackedScene();if(saved_world.Pack(world)!=Error.Ok)saved_world=null; }
             }
+            _sceneTransition.Report(.3, "正在读取战场…");
+            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             var error=GetTree().ChangeSceneToFile("res://tscn/battle/BattleScene.tscn");
-            if(error!=Error.Ok){_worldProgressSnapshot=null;GD.PushError("BattleTransitionMgr: 无法加载战斗场景");GetTree().Paused=previousPause;ShowBattleBriefing();return;}
+            if(error!=Error.Ok){_worldProgressSnapshot=null;GD.PushError("BattleTransitionMgr: 无法加载战斗场景");GetTree().Paused=previousPause;return_context["skip_prebattle_briefing"]=false;ShowBattleBriefing();return;}
             await ToSignal(GetTree(),SceneTree.SignalName.SceneChanged);
+            _sceneTransition.Report(.85, "正在准备招式与阵容…");
             // 等待技能栏连接及首轮规划的延迟初始化，遮罩保持不透明。
             await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);
             await ToSignal(GetTree(),SceneTree.SignalName.ProcessFrame);
@@ -137,8 +220,11 @@ public partial class BattleTransitionManager
         var spectator=return_context.GetValueOrDefault("kind","").AsString()=="east_woods_npc_encounter"&&!return_context.GetValueOrDefault("target_player",false).AsBool();
         if(victory&&!spectator)
         {
-            foreach(var defeated in all.Where(d=>d.faction==(int)WorldEntity.Faction.ENEMY&&d.current_health<=0))RollLoot(defeated.battle_loot.Select(d=>Variant.From(d)),defeated.entity_name,rewards);
-            if(return_context.TryGetValue("loot_rewards",out var configured))RollLoot(configured.AsGodotArray(),"遭遇奖励",rewards);
+            if (return_context.GetValueOrDefault("kind", "").AsString() != "player_npc_attack")
+            {
+                foreach(var defeated in all.Where(d=>d.faction==(int)WorldEntity.Faction.ENEMY&&d.current_health<=0))RollLoot(defeated.battle_loot.Select(d=>Variant.From(d)),defeated.entity_name,rewards);
+                if(return_context.TryGetValue("loot_rewards",out var configured))RollLoot(configured.AsGodotArray(),"遭遇奖励",rewards);
+            }
             // 东林地已有明确的击杀掠夺规则，沿用该遭遇，而非全局默认搬空背包。
             if(return_context.GetValueOrDefault("kind","").AsString()=="east_woods_npc_encounter"&&return_context.GetValueOrDefault("target_player",false).AsBool()&&!Training)
             {
@@ -149,6 +235,28 @@ public partial class BattleTransitionManager
                     return_context["loot_handled_by_settlement"]=true;
                 }
             }
+            if (return_context.GetValueOrDefault("kind", "").AsString() == "player_npc_attack" && !Training)
+            {
+                var loser = all.FirstOrDefault(d => d.uid.StartsWith("worldnpc:") && d.current_health <= 0);
+                if (loser is not null)
+                {
+                    var actualCarried = return_context.GetValueOrDefault("target_carried_items", new GDictionary()).AsGodotDictionary();
+                    var initialRewardCount = rewards.Count;
+                    foreach (var pathKey in actualCarried.Keys)
+                    {
+                        var path = pathKey.AsString();
+                        var remainingInBattle = 0;
+                        for (var i = 0; i < Math.Min(loser.pack_item_paths.Count, loser.pack_item_counts.Count); i++)
+                            if (loser.pack_item_paths[i] == path) remainingInBattle += Math.Max(0, loser.pack_item_counts[i]);
+                        var count = Math.Min(actualCarried[pathKey].AsInt32(), remainingInBattle);
+                        var previous = rewards.Count;
+                        AddLoot(path, count, loser.entity_name, rewards, loser.uid[9..]);
+                        if (rewards.Count > previous) rewards[^1].AsGodotDictionary()["incident_id"] = return_context.GetValueOrDefault("incident_id", "");
+                    }
+                    return_context["loot_handled_by_settlement"] = true;
+                    return_context["attack_loot_available"] = rewards.Count > initialRewardCount;
+                }
+            }
         }
         if(!string.IsNullOrWhiteSpace(_cappedWorldPlayerUid))
         {
@@ -157,6 +265,12 @@ public partial class BattleTransitionManager
             _cappedWorldPlayerUid="";_worldStatusBattleHealthCapDelta=0;
         }
         var rewardPlayer=all.FirstOrDefault(d=>d.faction==(int)WorldEntity.Faction.PLAYER&&!d.uid.StartsWith("worldnpc:"));
+        var roguelikeDeath = playerDefeated && return_context.GetValueOrDefault("roguelike_run", false).AsBool();
+        if (roguelikeDeath)
+        {
+            await finish_roguelike_death();
+            return;
+        }
         if(!Training&&!spectator)_rewardLedger[_battleId]=new GDictionary{{"entries",rewards},{"player_uid",rewardPlayer?.uid??""},{"claimed",rewards.Count==0}};
         if(spectator)
         {
@@ -191,22 +305,77 @@ public partial class BattleTransitionManager
         }
         finally{EndFlowTransition();}
     }
+
+    private async System.Threading.Tasks.Task finish_roguelike_death()
+    {
+        GetNodeOrNull<GameSaveManager>("/root/GameSaveManager")?.delete_completed_roguelike_slot();
+        clear_reward_ledger();
+        _sceneTransition?.QueueFree();
+        _sceneTransition = null;
+        _awaitingSettlement = false;
+        has_results = false;
+        has_battle_return_data = false;
+        _flowTransitionActive = true;
+        var previousPause = GetTree().Paused;
+        GetTree().Paused = true;
+        try
+        {
+            var error = await SceneLoadingScreen.ChangeSceneAsync(GetTree(), "res://tscn/scene/StartMenu.tscn", "修行者已陨落，本局失败");
+            if (error != Error.Ok) GD.PushError($"肉鸽失败后无法返回开始界面：{error}");
+        }
+        finally
+        {
+            _awaitingSettlement = false;
+            _flowTransitionActive = false;
+            result_attackers = [];
+            result_defenders = [];
+            pending_attackers = [];
+            pending_defenders = [];
+            pending_attacker_data = [];
+            pending_defender_data = [];
+            _beforeBattle.Clear();
+            _attackerOrder.Clear();
+            _defenderOrder.Clear();
+            _battleId = "";
+            _outcomeNote = "";
+            last_summary.Clear();
+            return_context.Clear();
+            saved_world = null;
+            saved_entity_data.Clear();
+            _worldProgressSnapshot = null;
+            GetTree().Paused = previousPause;
+        }
+    }
+
     public void end_team_battle_escaped(GArray attackers,GArray defenders)=>PrepareSettlement(attackers,defenders,true);
     public void end_spectator_team_battle(GArray attackers,GArray defenders)=>PrepareSettlement(attackers,defenders,false);
-    private void ReturnAfterSettlement()
+    private async void ReturnAfterSettlement()
     {
+        if (_flowTransitionActive || SceneLoadingScreen.IsChangingScene) return;
         CloseFlow();_awaitingSettlement=false;has_results=!Training;
         if(Training)
         {
             result_attackers=[];result_defenders=[];
-            if(return_context.GetValueOrDefault("kind","").AsString() is not ("yuxu_tianwen_practice" or "yuxu_npc_spar"))
+            if(return_context.GetValueOrDefault("kind","").AsString() is not ("yuxu_tianwen_practice" or "yuxu_npc_spar" or "yuxu_provisional_exam_trial"))
             {
                 last_summary.Clear();return_context.Clear();return;
             }
         }
         has_battle_return_data=true;
-        var error=saved_world is not null?GetTree().ChangeSceneToPacked(saved_world):Error.Failed;
-        if(error!=Error.Ok&&!string.IsNullOrEmpty(world_scene_path))GetTree().ChangeSceneToFile(world_scene_path);
+        _flowTransitionActive = true;
+        var previousPause = GetTree().Paused;
+        GetTree().Paused = true;
+        try
+        {
+            var error = await SceneLoadingScreen.ChangeSceneAsync(GetTree(), world_scene_path, "返回修行", packedScene: saved_world);
+            if (error != Error.Ok) GD.PushError($"战后场景恢复失败：{error}");
+        }
+        finally
+        {
+            GetTree().Paused = previousPause; _flowTransitionActive = false;
+            if (_resumeLootAfterTransition)
+            { _resumeLootAfterTransition = false; Callable.From(resume_pending_loot).CallDeferred(); }
+        }
     }
     private static void RollLoot(IEnumerable<Variant> definitions,string source,GArray rewards)
     {
@@ -221,8 +390,8 @@ public partial class BattleTransitionManager
     }
     private static void AddLoot(string path,int count,string source,GArray rewards,string npcId="")
     {
-        if(count<=0||string.IsNullOrEmpty(path)||!ResourceLoader.Exists(path)||GD.Load<ItemData>(path) is null)return;
-        rewards.Add(new GDictionary{{"item_path",path},{"count",count},{"source",source},{"npc_id",npcId}});
+        if(count<=0||string.IsNullOrEmpty(path)||!ResourceLoader.Exists(path)||!GongfaAvailability.IsItemEnabled(GD.Load<ItemData>(path))||!AlchemyProductCatalog.IsItemEnabled(GD.Load<ItemData>(path)))return;
+        rewards.Add(new GDictionary{{"entry_id",Guid.NewGuid().ToString("N")},{"item_path",path},{"count",count},{"source",source},{"npc_id",npcId}});
     }
     private CanvasLayer? _lootReminder;
     private void ShowPendingLootReminder()
@@ -236,28 +405,78 @@ public partial class BattleTransitionManager
     }
     public void resume_pending_loot()
     {
+        // 返回场景的临时暂停尚未解除时不能打开领取页，否则它会把临时暂停误存为关闭后的状态。
+        if (_flowTransitionActive || SceneLoadingScreen.IsChangingScene) { _resumeLootAfterTransition = true; return; }
         _lootReminder?.QueueFree();_lootReminder=null;
         if(GetTree().CurrentScene is not MainScene main || main.get_player_character() is not { } player)return;
+        if (!main.StartupComplete)
+        {
+            if (!_waitingForLootWorldReady) ResumeLootWhenWorldReady();
+            return;
+        }
+        if(main.has_active_item_claim())return;
         foreach(var key in _rewardLedger.Keys.ToArray())
         {
             var record=_rewardLedger[key].AsGodotDictionary();if(record.GetValueOrDefault("claimed",false).AsBool())continue;
             if(record.GetValueOrDefault("player_uid","").AsString()!=player.unique_id)continue;
-            main.notify_battle_rewards_changed();
             var entries=record["entries"].AsGodotArray();
-            foreach(var value in entries)
+            var remaining=new GArray(entries.Where(v=>v.VariantType==Variant.Type.Dictionary&&v.AsGodotDictionary().GetValueOrDefault("count",0).AsInt32()>0));
+            if(remaining.Count==0){record["claimed"]=true;continue;}
+            void settle(GArray resolved,bool wasClaimed)
             {
-                var entry=value.AsGodotDictionary();var count=entry["count"].AsInt32();if(count<=0)continue;
-                if(!player.add_item_to_inventory(entry["item_path"].AsString(),count))continue;
-                var npc=GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager")?.get_npc(entry.GetValueOrDefault("npc_id","").AsString());npc?.change_carried_item(entry["item_path"].AsString(),-count);
-                entry["count"]=0;
+                foreach(var value in resolved)
+                {
+                    if(value.VariantType!=Variant.Type.Dictionary)continue;
+                    var receipt=value.AsGodotDictionary();var remainingCount=receipt.GetValueOrDefault("count",0).AsInt32();
+                    // 领取面板返回的是拆分副本；必须扣原账，不能只清理回调副本。
+                    foreach (var original in entries)
+                    {
+                        if (remainingCount <= 0) break;
+                        if (original.VariantType != Variant.Type.Dictionary) continue;
+                        var entry = original.AsGodotDictionary();
+                        var receiptId = receipt.GetValueOrDefault("entry_id", "").AsString();
+                        if (receiptId.Length > 0 ? entry.GetValueOrDefault("entry_id", "").AsString() != receiptId :
+                            entry.GetValueOrDefault("item_path", "").AsString() != receipt.GetValueOrDefault("item_path", "").AsString() ||
+                            entry.GetValueOrDefault("npc_id", "").AsString() != receipt.GetValueOrDefault("npc_id", "").AsString()) continue;
+                        var available = entry.GetValueOrDefault("count", 0).AsInt32();
+                        var count = Math.Min(remainingCount, available);
+                        if (count <= 0) continue;
+                        if (wasClaimed)
+                        {
+                            var npc = GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager")?.get_npc(entry.GetValueOrDefault("npc_id", "").AsString());
+                            if (npc is not null && entry.GetValueOrDefault("incident_id", "").AsString() is { Length: > 0 } incidentId)
+                                GetNode<NpcWorldManager>("/root/NpcWorldManager").record_player_conflict_loot(incidentId, npc,
+                                    entry.GetValueOrDefault("item_path", "").AsString(), count, player.entity_name);
+                            npc?.change_carried_item(entry.GetValueOrDefault("item_path", "").AsString(), -count);
+                        }
+                        entry["count"] = available - count;
+                        remainingCount -= count;
+                    }
+                }
+                var pending=entries.Count(v=>v.VariantType==Variant.Type.Dictionary&&v.AsGodotDictionary().GetValueOrDefault("count",0).AsInt32()>0);
+                record["claimed"]=pending==0;
                 main.notify_battle_rewards_changed();
             }
-            var remaining=new GArray(entries.Where(v=>v.AsGodotDictionary()["count"].AsInt32()>0));record["claimed"]=remaining.Count==0;
-            if(remaining.Count>0)
+            if(!main.present_item_claim("获得物品",remaining,
+                claimed=>settle(claimed,true),
+                abandoned=>settle(abandoned,false)))
             {
-                OpenFlow().Results("战利品待领取",[],[player.get_snapshot_data()],remaining,false,()=>{CloseFlow();resume_pending_loot();},"行囊空间不足，未收取物品保留，不会重抽或重复发放。请先整理行囊。",()=>{CloseFlow();ShowPendingLootReminder();});
-                return;
+                if(!main.has_active_item_claim())ShowPendingLootReminder();
             }
+            return;
         }
+    }
+
+    private async void ResumeLootWhenWorldReady()
+    {
+        if (_waitingForLootWorldReady) return;
+        _waitingForLootWorldReady = true;
+        try
+        {
+            while (GetTree().CurrentScene is MainScene main && !main.StartupComplete && main.StartupError is null)
+                await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            if (GetTree().CurrentScene is MainScene { StartupComplete: true }) resume_pending_loot();
+        }
+        finally { _waitingForLootWorldReady = false; }
     }
 }

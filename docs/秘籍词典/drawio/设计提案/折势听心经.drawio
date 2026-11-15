@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" agent="Codex">
+  <diagram id="zheshi-main" name="秘籍图谱">
+    <mxGraphModel dx="1850" dy="2150" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1850" pageHeight="2150" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" value="折势听心经" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=24;" vertex="1">
+          <mxGeometry x="610" y="24" width="630" height="74" as="geometry" />
+        </mxCell>
+        <mxCell id="summary" parent="1" value="轻招争先，以攻势撼动定力。先手压定，再以应对护身。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=18;" vertex="1">
+          <mxGeometry x="610" y="125" width="630" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="chapter1" parent="1" value="第一卷：闻风&#xa;&#xa;心法被动：折势听心&#xa;自身行动速度提高5%。&#xa;&#xa;主修额外效果：无。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=18;align=left;verticalAlign=top;spacing=18;" vertex="1">
+          <mxGeometry x="390" y="280" width="1070" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="chapter2" parent="1" value="第二卷：察势&#xa;&#xa;叩心&#xa;关键词：无&#xa;耗费：体力1、法力0&#xa;目标：本行锁定的敌方目标&#xa;出手方式：近身&#xa;出手节奏：本招出手值 = 人物当前有效速度 × 1.10 + 招式主属性加成；当前行出手值较高的招式先施展。&#xa;效果：造成A点近身物理伤害。定力冲击系数为0.55。&#xa;&#xa;计算来源：&#xa;A = round(6 + 体魄×0.40 + 体道造诣×0.30)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=17;align=left;verticalAlign=top;spacing=18;" vertex="1">
+          <mxGeometry x="390" y="590" width="1070" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="chapter3" parent="1" value="第三卷：折定&#xa;&#xa;心法被动：折势听心&#xa;自身行动速度提高8%。&#xa;&#xa;化法&#xa;适用范围：架招&#xa;化法追加：架招更快进入待命。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=18;align=left;verticalAlign=top;spacing=18;" vertex="1">
+          <mxGeometry x="390" y="1090" width="1070" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="chapter4" parent="1" value="第四卷：摄魄&#xa;&#xa;心法被动：折势听心（沿用第三卷，无新增效果）&#xa;&#xa;化法&#xa;适用范围：痛击&#xa;化法追加：定力冲击系数固定为0.45。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=18;align=left;verticalAlign=top;spacing=18;" vertex="1">
+          <mxGeometry x="390" y="1480" width="1070" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" edge="1" parent="1" source="summary" target="chapter1" style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="chapter1" target="chapter2" style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="chapter2" target="chapter3" style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="chapter3" target="chapter4" style="endArrow=block;html=1;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="zheshi-notes" name="策划说明">
+    <mxGraphModel dx="1850" dy="1250" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1850" pageHeight="1250" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ntitle" parent="1" value="折势听心经｜策划说明" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ebe6d6;strokeColor=#857c61;fontSize=22;" vertex="1">
+          <mxGeometry x="510" y="25" width="830" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="status" parent="1" value="状态：未开放提案，未写入 .tres，未进入技能池。学习门槛、永久加成、心法数值及单招参数均为本提案候选，不建立新的全局规则。" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=16;align=left;verticalAlign=top;spacing=16;" vertex="1">
+          <mxGeometry x="80" y="130" width="800" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="scope" parent="1" value="现行边界&#xa;每回合只选一行；行内从左到右；行首招式按新版出手值交锋。单体目标在选行后锁定，目标失效时跳过且不改选。应对扫到后待命，真实合格来袭才付费。&#xa;&#xa;本提案不改时序、目标、应对窗口或失神时限；叩心只提高本招节奏与定力冲击系数，定力耗尽后的失神仍按现行方案结算。" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=16;align=left;verticalAlign=top;spacing=16;" vertex="1">
+          <mxGeometry x="970" y="130" width="800" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="v1" parent="1" value="第一卷：闻风&#xa;chapter_id：wen_feng_1&#xa;研读24；境界不限；前置无&#xa;属性条件：体魄≥5、体道造诣≥0&#xa;永久加成：体道造诣+0.5&#xa;心法：行动速度+5%；主修额外效果：无" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=15;align=left;verticalAlign=top;spacing=14;" vertex="1">
+          <mxGeometry x="80" y="360" width="410" height="260" as="geometry" />
+        </mxCell>
+        <mxCell id="v2" parent="1" value="第二卷：察势&#xa;chapter_id：cha_shi_2&#xa;研读48；云息三层；前置 wen_feng_1&#xa;属性条件：体魄≥6、体道造诣≥0.5&#xa;永久加成：体魄+0.5、体道造诣+0.5&#xa;习得：叩心；1×1；可摆1份；体力1、法力0&#xa;候选字段：board_tempo_multiplier=1.10；composure_pressure_coefficient=0.55" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=15;align=left;verticalAlign=top;spacing=14;" vertex="1">
+          <mxGeometry x="520" y="360" width="410" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="v3" parent="1" value="第三卷：折定&#xa;chapter_id：zhe_ding_3&#xa;研读84；云息六层；前置 cha_shi_2&#xa;属性条件：体魄≥8、体道造诣≥1&#xa;永久加成：体道造诣+1&#xa;心法完整升级：行动速度+8%&#xa;化法：架招的招式节奏倍率设为1.10" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=15;align=left;verticalAlign=top;spacing=14;" vertex="1">
+          <mxGeometry x="960" y="360" width="410" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="v4" parent="1" value="第四卷：摄魄&#xa;chapter_id：she_po_4&#xa;研读128；云息九层；前置 zhe_ding_3&#xa;属性条件：体魄≥10、体道造诣≥2&#xa;永久加成：体魄+0.5、体道造诣+1&#xa;化法：痛击的定力冲击系数设为0.45" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=15;align=left;verticalAlign=top;spacing=14;" vertex="1">
+          <mxGeometry x="1400" y="360" width="370" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="tech" parent="1" value="实施对应&#xa;res://resources/gongfa/折势听心经.tres&#xa;res://resources/activeskills/折势听心经/叩心.tres&#xa;&#xa;ActiveSkillData现有字段：board_tempo_multiplier、composure_pressure_coefficient。当前战斗读取行内节奏倍率与整招定力冲击系数；本提案数值均在字段允许范围内。没有增加属性、费用资源、状态、目标类别、射程、位移或行动类型。" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=15;align=left;verticalAlign=top;spacing=16;" vertex="1">
+          <mxGeometry x="80" y="710" width="800" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="balance" parent="1" value="平衡与验收边界&#xa;叩心1×1、体力1时，默认节奏倍率由新版公式推导；1.10为候选覆盖值。定力冲击默认值按整招总占格和体力费用推导；0.55为候选覆盖值。&#xa;&#xa;目前没有把这些候选值与全套人类招式进行实战平衡，也没有运行新技能数据。审图后再决定是否进入资源实现和场景验收。" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=15;align=left;verticalAlign=top;spacing=16;" vertex="1">
+          <mxGeometry x="970" y="710" width="800" height="300" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

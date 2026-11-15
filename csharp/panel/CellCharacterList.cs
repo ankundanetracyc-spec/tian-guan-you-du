@@ -3,15 +3,16 @@ using Godot.Collections;
 
 public partial class CellCharacterList : Control
 {
-    private const float PanelWidth = 336f;
-    private const float RowHeight = 80f;
-    private const int RowSeparation = 6;
+    private const float PanelWidth = 312f;
+    private const float RowHeight = 76f;
+    private const int RowSeparation = 2;
     private const float ContentTop = 72f;
     private const float ContentBottom = 16f;
-    private const float PreferredHeight = ContentTop + RowHeight * 7 + RowSeparation * 6 + ContentBottom;
     [Export] public bool is_persistent;
     private Container? _characters;
     private Control? _list_panel;
+    private Control? _status_panel;
+    private float _status_top = float.NaN;
     private Button? _toggle_button;
     private Tween? _toggle_tween;
     private Label? _header_title, _header_count;
@@ -25,10 +26,18 @@ public partial class CellCharacterList : Control
     private string _worldRosterStamp = "";
     private bool _worldNpcRosterCached;
 
+    public event Action? RosterClosed;
+
     // Offscreen portraits are not composed. Limit visible portrait work to one per frame.
     public override void _Process(double delta)
     {
         if (!_expanded || !IsVisibleInTree()) return;
+        var status_top = _status_panel?.IsVisibleInTree() == true ? _status_panel.GlobalPosition.Y : GetViewportRect().Size.Y - 172;
+        if (!Mathf.IsEqualApprox(_status_top, status_top))
+        {
+            _status_top = status_top;
+            refresh_layout();
+        }
         var scroll = GetNodeOrNull<ScrollContainer>("ListPanel/CharacterScroll");
         if (scroll is null) return;
         foreach (var entry in _pendingPortraits)
@@ -44,15 +53,22 @@ public partial class CellCharacterList : Control
     public override void _Ready()
     {
         AddToGroup("cell_character_list");
+        VisibilityChanged += on_roster_visibility_changed;
         MouseFilter = MouseFilterEnum.Pass;
         MouseForcePassScrollEvents = false;
+        ClipContents = true;
         _list_panel = GetNodeOrNull<Control>("ListPanel");
+        _status_panel = GetParent()?.GetNodeOrNull<Control>("MainHUD/PlayerStatus");
         _characters = GetNodeOrNull<Container>("ListPanel/CharacterScroll/CharacterVBox");
         _toggle_button = GetNodeOrNull<Button>("ListPanel/ToggleButton");
         if (_list_panel is not null)
         {
             _list_panel.GuiInput += _GuiInput;
-            _list_panel.AddThemeStyleboxOverride("panel", row_style(new Color(.86f, .81f, .69f, .92f), new Color(.42f, .35f, .24f, .72f), 10));
+            _list_panel.AddThemeStyleboxOverride("panel", new StyleBoxEmpty());
+            var paper = new WorldHudFrame { Name = "RosterInkSurface" };
+            _list_panel.AddChild(paper);
+            paper.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+            _list_panel.MoveChild(paper, 0);
             build_header();
         }
         if (GetNodeOrNull<ScrollContainer>("ListPanel/CharacterScroll") is { } scroll)
@@ -71,12 +87,7 @@ public partial class CellCharacterList : Control
             _toggle_button.GetParent()?.RemoveChild(_toggle_button);
             AddChild(_toggle_button);
             _toggle_button.Pressed += toggle_expanded;
-            _toggle_button.AddThemeStyleboxOverride("normal", transparent_button_style(new Color(.015f, .02f, .016f, .82f)));
-            _toggle_button.AddThemeStyleboxOverride("hover", transparent_button_style(new Color(.12f, .13f, .12f, .94f)));
-            _toggle_button.AddThemeStyleboxOverride("pressed", transparent_button_style(new Color(.18f, .18f, .15f, .98f)));
-            _toggle_button.AddThemeColorOverride("font_color", new Color("f1dfad"));
-            _toggle_button.AddThemeColorOverride("font_hover_color", new Color("fff4cc"));
-            _toggle_button.AddThemeFontSizeOverride("font_size", 16);
+            WorldHudStyle.StylePaperButton(_toggle_button);
         }
         apply_expanded_state();
         if (!is_persistent) Hide();
@@ -84,7 +95,7 @@ public partial class CellCharacterList : Control
 
     public Rect2 get_ui_rect() => GetNodeOrNull<Control>("ListPanel")?.GetGlobalRect() ?? GetGlobalRect();
 
-    /// <summary>Map input runs before GUI dispatch; let the visible roster own its wheel area.</summary>
+    /// <summary>Visible roster bounds expressed in viewport coordinates, including its canvas transform.</summary>
     public bool contains_roster_point(Vector2 viewport_position) => IsVisibleInTree() && _expanded &&
         _list_panel is not null && new Rect2(Vector2.Zero, _list_panel.Size).HasPoint(
             _list_panel.GetGlobalTransformWithCanvas().AffineInverse() * viewport_position);
@@ -116,6 +127,9 @@ public partial class CellCharacterList : Control
     private void build_header()
     {
         if (_list_panel is null) return;
+        var headingInk = WorldHudArt.Mark("brush_band", new Vector2(4, 6), new Vector2(PanelWidth - 8, 57));
+        headingInk.Name = "RosterHeadingInk";
+        _list_panel.AddChild(headingInk);
         var header = new HBoxContainer { Name = "RosterHeader", MouseFilter = MouseFilterEnum.Ignore };
         header.AnchorLeft = 0;
         header.AnchorRight = 1;
@@ -130,18 +144,18 @@ public partial class CellCharacterList : Control
 
         _header_title = new Label { Text = "当前位置", VerticalAlignment = VerticalAlignment.Center, SizeFlagsHorizontal = SizeFlags.ExpandFill, MouseFilter = MouseFilterEnum.Ignore };
         _header_title.AddThemeFontSizeOverride("font_size", 22);
-        _header_title.AddThemeColorOverride("font_color", new Color("403623"));
+        _header_title.AddThemeColorOverride("font_color", new Color("f5f0e3"));
         header.AddChild(_header_title);
 
         var count_badge = new PanelContainer { Name = "CountBadge", CustomMinimumSize = new Vector2(60, 32), MouseFilter = MouseFilterEnum.Ignore };
-        count_badge.AddThemeStyleboxOverride("panel", row_style(new Color(.30f, .33f, .28f, .94f), new Color(.52f, .44f, .30f, .9f), 12));
+        count_badge.AddThemeStyleboxOverride("panel", new StyleBoxEmpty());
         header.AddChild(count_badge);
         _header_count = new Label { Text = "0 位", HorizontalAlignment = HorizontalAlignment.Center, VerticalAlignment = VerticalAlignment.Center, MouseFilter = MouseFilterEnum.Ignore };
         _header_count.AddThemeFontSizeOverride("font_size", 16);
-        _header_count.AddThemeColorOverride("font_color", new Color("f1e5c5"));
+        _header_count.AddThemeColorOverride("font_color", new Color("e1e5d9"));
         count_badge.AddChild(_header_count);
 
-        var divider = new ColorRect { Name = "HeaderDivider", Color = new Color("806c47", .5f), MouseFilter = MouseFilterEnum.Ignore };
+        var divider = new ColorRect { Name = "HeaderDivider", Color = Colors.Transparent, MouseFilter = MouseFilterEnum.Ignore };
         divider.AnchorLeft = 0;
         divider.AnchorRight = 1;
         divider.AnchorTop = 0;
@@ -196,7 +210,7 @@ public partial class CellCharacterList : Control
         {
             if (npc is null || !GodotObject.IsInstanceValid(npc)) continue;
             npc.ensure_appearance_identity();
-            rosterParts.Add($"{npc.GetInstanceId()}:{npc.npc_name}:{npc.formal_identity}:{npc.cultivation_realm}:{npc.appearance_seed}:{npc.current_age}:{npc.gender}:{npc.faction_id}");
+            rosterParts.Add($"{npc.GetInstanceId()}:{npc.npc_name}:{npc.formal_identity}:{npc.cultivation_realm}:{npc.current_state}:{npc.seclusion_started_month}:{npc.seclusion_until_month}:{npc.appearance_seed}:{npc.current_age}:{npc.gender}:{npc.faction_id}");
         }
         var validCount = rosterParts.Count;
         var stamp = string.Join(";", rosterParts);
@@ -244,7 +258,9 @@ public partial class CellCharacterList : Control
     /// <summary>Route travel keeps the last roster cached, but delays portrait work until arrival.</summary>
     public void suspend_world_npcs()
     {
-        if (_world_mode) Hide();
+        if (!_world_mode) return;
+        RosterClosed?.Invoke();
+        Hide();
     }
 
     /// <summary>按世界节点与内部空间读取同一份运行时 NPC 名单。</summary>
@@ -300,6 +316,7 @@ public partial class CellCharacterList : Control
     public void hide_world_npcs()
     {
         if (!_world_mode) return;
+        RosterClosed?.Invoke();
         _world_mode = false;
         _roster_context = "";
         ZIndex = 0;
@@ -309,9 +326,13 @@ public partial class CellCharacterList : Control
     private Button make_world_row(WorldNpcData npc)
     {
         var display = string.IsNullOrWhiteSpace(npc.npc_name) ? "无名" : npc.npc_name.Trim();
-        var identity = string.IsNullOrWhiteSpace(npc.formal_identity) ? "身份未详" : npc.formal_identity.Trim();
+        var identity = NpcPublicIdentity.Title(npc);
         var realm = string.IsNullOrWhiteSpace(npc.cultivation_realm) ? "凡人" : npc.cultivation_realm.Trim();
-        return make_character_row(display, $"{identity}  ·  {realm}", portrait => portrait.CallDeferred("show_world_npc", npc), () => click(npc));
+        var nowHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+        var activity = npc.is_in_seclusion_at_hour(nowHour) ? "闭关中" : npc.current_state;
+        if (string.IsNullOrWhiteSpace(activity) || activity == "空闲") activity = "";
+        var subtitle = (identity.Length > 0 ? identity + "  ·  " : "") + realm + (activity.Length > 0 ? $"  ·  {activity}" : "");
+        return make_character_row(display, subtitle, portrait => portrait.CallDeferred("show_world_npc", npc), () => click(npc));
     }
 
     private Button make_character_row(string title, string subtitle, Action<PortraitRenderer> configure_portrait, Action on_pressed)
@@ -324,11 +345,14 @@ public partial class CellCharacterList : Control
             FocusMode = FocusModeEnum.None,
             ClipContents = true,
         };
-        row.AddThemeColorOverride("font_color", new Color("453a27"));
-        row.AddThemeColorOverride("font_hover_color", new Color("332818"));
-        row.AddThemeStyleboxOverride("normal", row_style(new Color(.91f, .86f, .75f, .91f), new Color(.49f, .41f, .29f, .62f), 6));
-        row.AddThemeStyleboxOverride("hover", row_style(new Color(.98f, .93f, .82f, .98f), new Color(.63f, .49f, .28f, .92f), 6));
-        row.AddThemeStyleboxOverride("pressed", row_style(new Color(.84f, .78f, .64f, .98f), new Color(.54f, .40f, .23f, .9f), 6));
+        row.AddThemeStyleboxOverride("normal", new StyleBoxEmpty());
+        row.AddThemeStyleboxOverride("hover", WorldHudStyle.QuietPaper(true, false));
+        row.AddThemeStyleboxOverride("pressed", WorldHudStyle.QuietPaper(true, false));
+        row.MouseDefaultCursorShape = CursorShape.PointingHand;
+        var rule = WorldHudStyle.Rule();
+        row.AddChild(rule);
+        rule.SetAnchorsAndOffsetsPreset(LayoutPreset.BottomWide);
+        rule.OffsetTop = -1;
 
         var margin = new MarginContainer { MouseFilter = MouseFilterEnum.Ignore };
         margin.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
@@ -342,8 +366,13 @@ public partial class CellCharacterList : Control
         content.AddThemeConstantOverride("separation", 12);
         margin.AddChild(content);
 
-        var portrait_frame = new PanelContainer { CustomMinimumSize = new Vector2(64, 64), MouseFilter = MouseFilterEnum.Ignore };
-        portrait_frame.AddThemeStyleboxOverride("panel", row_style(new Color(.72f, .66f, .53f, .98f), new Color("8f7548"), 6));
+        var portrait_frame = new PanelContainer { CustomMinimumSize = new Vector2(60, 60), MouseFilter = MouseFilterEnum.Ignore };
+        portrait_frame.AddThemeStyleboxOverride("panel", new StyleBoxEmpty
+        {
+            ContentMarginLeft = 2, ContentMarginRight = 2, ContentMarginTop = 2, ContentMarginBottom = 2
+        });
+        var portraitPaper = new WorldHudFrame { Name = "PortraitInkFrame", ShowBehindParent = true };
+        portrait_frame.AddChild(portraitPaper);
         content.AddChild(portrait_frame);
         var avatar_crop = new Control { Name = "AvatarCrop", ClipContents = true, CustomMinimumSize = new Vector2(60, 60), MouseFilter = MouseFilterEnum.Ignore };
         portrait_frame.AddChild(avatar_crop);
@@ -361,11 +390,11 @@ public partial class CellCharacterList : Control
         content.AddChild(text_column);
         var name_label = new Label { Text = title, TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis, MouseFilter = MouseFilterEnum.Ignore };
         name_label.AddThemeFontSizeOverride("font_size", 20);
-        name_label.AddThemeColorOverride("font_color", new Color("3b3020"));
+        name_label.AddThemeColorOverride("font_color", WorldHudStyle.Ink);
         text_column.AddChild(name_label);
         var details_label = new Label { Text = subtitle, TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis, MouseFilter = MouseFilterEnum.Ignore };
-        details_label.AddThemeFontSizeOverride("font_size", 16);
-        details_label.AddThemeColorOverride("font_color", new Color("6b604d"));
+        details_label.AddThemeFontSizeOverride("font_size", 15);
+        details_label.AddThemeColorOverride("font_color", WorldHudStyle.SecondaryInk);
         text_column.AddChild(details_label);
 
         row.Pressed += on_pressed;
@@ -375,7 +404,7 @@ public partial class CellCharacterList : Control
     private static Control make_empty_state()
     {
         var panel = new PanelContainer { CustomMinimumSize = new Vector2(0, 56), MouseFilter = MouseFilterEnum.Ignore };
-        panel.AddThemeStyleboxOverride("panel", row_style(new Color(.81f, .76f, .65f, .76f), new Color(.57f, .48f, .33f, .48f), 5));
+        panel.AddThemeStyleboxOverride("panel", new StyleBoxEmpty());
         var label = new Label
         {
             Text = "此处暂无其他人物",
@@ -429,29 +458,40 @@ public partial class CellCharacterList : Control
     private void toggle_expanded()
     {
         _expanded = !_expanded;
+        if (!_expanded) RosterClosed?.Invoke();
         apply_expanded_state(true);
+    }
+
+    private void on_roster_visibility_changed()
+    {
+        if (!IsVisibleInTree()) RosterClosed?.Invoke();
     }
 
     private void apply_expanded_state(bool animate = false)
     {
+        _toggle_tween?.Kill();
+        _toggle_tween = null;
+        if (animate)
+        {
+            _toggle_tween = CreateTween().SetParallel();
+            _toggle_tween.SetTrans(Tween.TransitionType.Cubic);
+            _toggle_tween.SetEase(Tween.EaseType.InOut);
+        }
         if (_toggle_button is not null)
         {
             _toggle_button.Text = _expanded ? "◀" : "▶";
-            _toggle_button.TooltipText = _expanded ? "收起角色列表" : "展开角色列表";
-            _toggle_button.Size = new Vector2(30, Mathf.Clamp(_expanded_height * .2f, 64f, 96f));
+            _toggle_button.TooltipText = "";
+            HoverInfoManager.SetTooltip(_toggle_button, "");
+            _toggle_button.Size = new Vector2(30, 48);
             _toggle_button.ZIndex = 1;
             var targetPosition = new Vector2(_expanded ? PanelWidth : 0, (_expanded_height - _toggle_button.Size.Y) * .5f);
             if (animate)
             {
-                _toggle_tween?.Kill();
-                _toggle_tween = CreateTween();
-                _toggle_tween.SetTrans(Tween.TransitionType.Cubic);
-                _toggle_tween.SetEase(Tween.EaseType.InOut);
-                _toggle_tween.TweenProperty(_toggle_button, "position", targetPosition, .2);
+                _toggle_tween!.TweenProperty(_toggle_button, "position", targetPosition, .2);
             }
             else _toggle_button.Position = targetPosition;
         }
-        Size = new Vector2(PanelWidth + 30, _expanded_height);
+        Size = new Vector2(_expanded ? PanelWidth + 30 : 30, _expanded_height);
         if (_list_panel is not null)
         {
             _list_panel.AnchorLeft = 0;
@@ -464,11 +504,7 @@ public partial class CellCharacterList : Control
             if (_characters is not null) _characters.Visible = _expanded;
             if (animate)
             {
-                _toggle_tween?.Kill();
-                _toggle_tween = CreateTween();
-                _toggle_tween.SetTrans(Tween.TransitionType.Cubic);
-                _toggle_tween.SetEase(Tween.EaseType.InOut);
-                _toggle_tween.TweenProperty(_list_panel, "position", _expanded ? Vector2.Zero : new Vector2(-PanelWidth, 0), .2);
+                _toggle_tween!.TweenProperty(_list_panel, "position", _expanded ? Vector2.Zero : new Vector2(-PanelWidth, 0), .2);
             }
             else _list_panel.Position = _expanded ? Vector2.Zero : new Vector2(-PanelWidth, 0);
         }
@@ -477,9 +513,12 @@ public partial class CellCharacterList : Control
     private void resize_panel()
     {
         var viewport_height = GetViewportRect().Size.Y;
-        var max_height = Mathf.Max(160f, viewport_height - 396f);
-        // 名单框固定占用适中视区；人数多少只影响滚动内容，不改变面板高度。
-        _expanded_height = Mathf.Min(max_height, PreferredHeight);
+        var max_height = Mathf.Max(164f, viewport_height - 332f);
+        if (_status_panel?.IsVisibleInTree() == true)
+            max_height = Mathf.Min(max_height, Mathf.Max(164f, _status_panel.GlobalPosition.Y - 132 - 18));
+        var count = Math.Clamp(_characters?.GetChildCount() ?? 0, 1, 7);
+        var content_height = ContentTop + count * RowHeight + (count - 1) * RowSeparation + ContentBottom;
+        _expanded_height = Mathf.Min(max_height, content_height);
         Size = new Vector2(PanelWidth + 30, _expanded_height);
     }
 
@@ -487,10 +526,14 @@ public partial class CellCharacterList : Control
     {
         resize_panel();
         apply_expanded_state();
-        Position = new Vector2(0, (GetViewportRect().Size.Y - Size.Y) * .5f);
+        Position = new Vector2(22, 132);
     }
 
-    public override void _ExitTree() => GetViewport().SizeChanged -= refresh_layout;
+    public override void _ExitTree()
+    {
+        GetViewport().SizeChanged -= refresh_layout;
+        VisibilityChanged -= on_roster_visibility_changed;
+    }
 
     private void clear_children()
     {
@@ -504,8 +547,7 @@ public partial class CellCharacterList : Control
     private void show_and_raise()
     {
         ZIndex = 10;
-        var viewportHeight = GetViewportRect().Size.Y;
-        Position = new Vector2(0, (viewportHeight - Size.Y) * 0.5f);
+        Position = new Vector2(22, 132);
         Show();
         MoveToFront();
     }

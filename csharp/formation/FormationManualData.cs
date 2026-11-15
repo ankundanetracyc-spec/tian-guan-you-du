@@ -1,7 +1,7 @@
 using Godot;
 using Godot.Collections;
 
-/// <summary>阵法录只提供感应与阵器端口；它不提供候枢、阈门等逻辑元件。</summary>
+/// <summary>阵法录只提供感应与阵器端口；它不提供计数器、筛选器等逻辑元件。</summary>
 public partial class FormationManualData : Resource
 {
     [Export] public StringName manual_id = new();

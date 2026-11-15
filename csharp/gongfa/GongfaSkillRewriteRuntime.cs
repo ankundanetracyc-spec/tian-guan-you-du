@@ -1,8 +1,8 @@
 using Godot;
 using Godot.Collections;
 
-/// <summary>将已学化法应用于基础技能库或同一本秘籍授予的技能，不修改共享 Resource。</summary>
-public static class GongfaSkillRewriteRuntime
+/// <summary>维护原始技能库与化法副本合并；化法仅由角色的明确绑定在解析已装配技能时应用。</summary>
+public static partial class GongfaSkillRewriteRuntime
 {
     private sealed class SkillEntry(ActiveSkillData skill, string path)
     {
@@ -15,12 +15,19 @@ public static class GongfaSkillRewriteRuntime
 
     private static readonly System.Collections.Generic.Dictionary<string, RewriteEffectInfo> RewriteEffects = new()
     {
-        ["huangting_c4_cuixue"] = new("黄庭养形篇", "催血", "若本场曾由自身主动使气血下降，本技能结算时获得身法1层。", "催血后，曾主动回落则获得身法1层"),
-        ["huangting_c2_pingxi"] = new("黄庭养形篇", "平息", "本技能使气血下降后，额外获得身法1层。", "平息气血回落后额外获得身法1层"),
+        ["xuan_shu_c1_jingzhe"] = new("玄枢含章经", "惊蛰", "化法追加：由周天额外施放惊蛰时，本次攻击绕过目标护盾，直接作用于生命；目标护盾不变。普通施放时仍按惊蛰原规则结算。", "周天额外惊蛰绕过护盾"),
+        ["taihe_c1_koushan"] = new("太和感物养元宝册", "乘势再攻", "化法追加：目标应对此次攻击时，由应对此条件触发的追加段不消耗目标当前化解；基础段和未造成生命伤害条件触发的追加段仍按原规则受化解抵消。", "应对触发的追加段忽略化解"),
+        ["taihe_c2_hanxu"] = new("太和感物养元宝册", "虚怀纳劲", "化法追加：应对敌方攻击时，自身获得的护盾延至本次来袭的全部伤害结算结束后施加。", "应对所得护盾延后到来袭结算后"),
+        ["zhuo_ji_c2_jianzhu"] = new("斫基损契玄经", "焚元", "化法追加：焚元施放后，本回合下一项法力费用大于0的技能，法力费用改由燃烧等量法力上限支付；体力费用照常支付。至少保留1点法力上限，不足时不可施展。0法力费用技能不触发；未使用则轮末失效。", "本轮下项法力技能燃烧等量上限"),
+        ["baihai_c1_cuixue"] = new("百骸衍枝化生宝册", "催血", "化法追加：施展前自身气血层数不高于3层时，催血改为分段施加气血：施展后立即获得1层；自身下一次近身物理攻击开始时，在判定显臂前获得剩余1层。战斗结束时尚未结算的气血不再获得。", "低气血时将催血分段结算"),
+        ["baihai_c4_jiazhao"] = new("百骸衍枝化生宝册", "架招", "化法追加：架招扫到并进入待命时，若自身至少显化一只手臂，未触发的待命可延续至下一个共同回合结束；期间触发应对则立即解除。期满仍未触发，待命解除。", "显臂时架招待命延续一轮"),
+        ["zhuanxi_c4_cuixue"] = new("胎息经", "催血", "若本场曾由自身主动使气血下降，本技能结算时获得身法1层。", "催血后，曾主动回落则获得身法1层"),
+        ["zhuanxi_c2_pingxi"] = new("胎息经", "平息", "本技能使气血下降后，额外获得身法1层。", "平息气血回落后额外获得身法1层"),
         ["chengwu_c1_cuixue"] = new("乘物游骸真经", "催血", "施放前若自身身法不少于10层且当前没有游骸，额外获得游骸1层。", "身法≥10且无游骸时，催血额外得游骸1层"),
         ["chengwu_c2_fajin"] = new("乘物游骸真经", "发劲", "施放时若自身拥有游骸，消耗1层并计入本场已消耗游骸，本次伤害提高50%。", "有游骸时消耗1层，发劲伤害提高50%"),
+        ["chengwu_c2_hanshan"] = new("乘物游骸真经", "撼山", "施放时若自身拥有游骸，消耗1层并计入本场已消耗游骸，本次伤害提高50%。", "有游骸时消耗1层，撼山伤害提高50%"),
         ["chengwu_c3_pingxi"] = new("乘物游骸真经", "平息", "本技能使气血下降后，获得身法1层。", "气血下降后获得身法1层"),
-        ["chengwu_c4_fajin"] = new("乘物游骸真经", "发劲", "本场已消耗游骸不少于1层时，对同一目标额外结算1段物理伤害；该段伤害 = round(4 + 体魄×0.20 + 敏捷×0.15 + 体道造诣×0.15)。", "本场耗过游骸后，发劲追加1段物理伤害"),
+        ["chengwu_c4_fajin"] = new("乘物游骸真经", "发劲", "本场已消耗游骸不少于1层时，对同一目标额外结算1段物理伤害；该段伤害 = round(4 + 体魄×0.35 + 体道造诣×0.15)。", "本场耗过游骸后，发劲追加1段物理伤害"),
         ["buxu_c3_pingxi"] = new("补虚行血诀", "平息", "若本技能使气血由1层降至0层，获得身法1层。", "气血由1降至0时获得身法1层"),
         ["buxu_c4_cuixue"] = new("补虚行血诀", "催血", "若本场已触发补虚行血，本技能结算后获得身法1层。", "触发补虚行血后催血，额外获得身法1层"),
         ["buxu_c4_guiyuan"] = new("补虚行血诀", "归元", "本技能由气血0层起身后，额外获得身法1层。", "气血为0时归元，额外获得身法1层"),
@@ -33,8 +40,10 @@ public static class GongfaSkillRewriteRuntime
         ["neijing_c4_tongji"] = new("内景损益篇", "痛击", "每层当前内伤或外伤使本次伤害倍率额外提高2%，最多提高16%。", "每层伤势额外增伤2%，最多16%"),
         ["lingshu_c4_yinjing"] = new("灵枢经筋篇", "引筋", "本次施展前消耗内伤或外伤1层（优先内伤）；成功消耗时本次伤害倍率提高20%。", "施展前消耗1层伤势；本次伤害提高20%"),
         ["chiyang_c4_zhuming"] = new("赤阳参同经", "朱明", "血炉至少20点时可用并消耗全部血炉；倍率 = 1 + 实际消耗血炉×1%。血炉利用的主修强化由赤阳心法统一结算。", "需至少20点血炉；朱明清炉并按实际消耗提高伤害倍率"),
-        ["huangting_c1_fanzhao"] = new("黄庭养形篇", "返照", "若本次主动气血回落后气血降至0层，额外获得身法1层。", "气血回落至0时额外获得身法1层"),
-        ["huangting_c3_zhouxing"] = new("黄庭养形篇", "周行", "本场主动气血下降至少2次时，本技能额外获得身法1层。", "本场主动回落至少2次，周行额外获得身法1层"),
+        ["chiyang_c4_hanshan"] = new("赤阳参同经", "撼山", "血炉至少20点时可用并消耗全部血炉；辅修每点实际消耗使本次伤害倍率提高1%，主修提高1.5%。", "需至少20点血炉；撼山清炉并按主辅修提高伤害倍率"),
+        ["zhuanxi_c1_fanzhao"] = new("胎息经", "返照", "若本次主动气血回落后气血降至0层，额外获得身法1层。", "气血回落至0时额外获得身法1层"),
+        ["zhuanxi_c2_baoyi"] = new("胎息经", "抱一", "施展前气血为0层时，获得气血后额外回复最大生命×3%。", "气血为0时施展，额外回复最大生命3%"),
+        ["zhuanxi_c3_zhouxing"] = new("胎息经", "周行", "本场主动降低气血至少2次时，本技能额外获得身法1层。", "本场主动降低气血至少2次，周行额外获得身法1层"),
         ["buxu_c1_huanyang"] = new("补虚行血诀", "还阳", "施放前气血为0层时，获得气血后额外回复最大生命×3%。", "空血施展还阳，额外回复最大生命3%"),
         ["buxu_c2_xieli"] = new("补虚行血诀", "卸力", "自身气血为0层时，卸力实际触发后，本次化解额外增加1层。", "气血为0时应对，额外获得1层化解"),
         ["neijing_c1_cuili"] = new("内景损益篇", "淬厉", "结算后若当前内伤不少于2层，额外获得借力1层。", "淬厉结算后内伤不少于2层，获得借力1层"),
@@ -57,11 +66,23 @@ public static class GongfaSkillRewriteRuntime
     public static IEnumerable<string> GetAdditionalEffectDescriptions(ActiveSkillData skill, bool excludePrimary = true)
     {
         var represented = GetPrimaryEffectId(skill.source_gongfa_name, skill.skill_name);
+        // 新三本资源保留基础说明，全部化法追加由绑定结果统一补入。
+        if (skill.source_gongfa_name is "舒卷天章" or "玉髓回澜养真宝册" or "抱虚养晦通玄录") represented=null;
         return skill.gongfa_rewrite_effect_ids
-            .Where(id => (!excludePrimary || id != represented) && RewriteEffects.ContainsKey(id))
+            .Where(id => RewriteEffects.ContainsKey(id) && (!excludePrimary || (skill.has_board_definition()
+                ? !skill.description.Contains(RewriteEffects[id].Description, StringComparison.Ordinal) : id != represented)))
             .Distinct()
             .Select(id => RewriteEffects[id].Description);
     }
+
+    /// <summary>仅返回化法自身追加的文本，供化法来源详情展示；技能详情仍使用完整技能牌面。</summary>
+    public static string GetRewriteAddedEffectDescriptions(ActiveSkillData skill) => string.Join("\n", skill.gongfa_rewrite_effect_ids
+        .Where(RewriteEffects.ContainsKey)
+        .Distinct()
+        .Select(id => RewriteEffects[id].Description)
+        .Select(description => description.StartsWith("化法追加：", StringComparison.Ordinal)
+            ? description["化法追加：".Length..].Trim()
+            : description.Trim()));
 
     public static Array<string> ApplyBasicSkillRewrites(Character human, Array<string> source)
     {
@@ -70,7 +91,7 @@ public static class GongfaSkillRewriteRuntime
         return result;
     }
 
-    /// <summary>返回含合并化法效果的运行时副本，避免两槽改写同一技能时后者覆盖前者。</summary>
+    /// <summary>技能库保持原招式；已确认的化法在角色解析已装配目标时应用。</summary>
     public static Array<ActiveSkillData> ApplyBasicSkillRewriteSkills(Character human, Array<string> source)
     {
         var result = new Array<ActiveSkillData>();
@@ -128,34 +149,6 @@ public static class GongfaSkillRewriteRuntime
             if (skill is not null) entries.Add(new SkillEntry(skill, path));
         }
 
-        foreach (var (book, isMain) in GetBooks(human))
-        foreach (var chapter in book.get_sorted_chapters())
-        {
-            if (!IsRewriteChapterActive(human, book, chapter, isMain)) continue;
-            foreach (var rewrite in chapter.get_deck_rewrites(isMain))
-            {
-                if (!rewrite.enabled || rewrite.target_scope != GongfaDeckRewriteConfig.RewriteTargetScope.BASIC_SKILL ||
-                    rewrite.get_result_skill(isMain) is not ActiveSkillData replacement || string.IsNullOrWhiteSpace(replacement.ResourcePath)) continue;
-
-                var count = Mathf.Max(1, rewrite.count);
-                if (rewrite.mode == GongfaDeckRewriteConfig.RewriteMode.ADD)
-                {
-                    for (var i = 0; i < count; i++) entries.Add(new SkillEntry(CopyWithMergedEffects(replacement, null), replacement.ResourcePath));
-                    continue;
-                }
-
-                var changed = 0;
-                for (var i = 0; i < entries.Count && changed < count; i++)
-                {
-                    var entry = entries[i];
-                    if (!rewrite.matches(entry.Skill)) continue;
-                    entry.Skill = CopyWithMergedEffects(replacement, entry.Skill);
-                    entry.SourcePaths.Add(replacement.ResourcePath);
-                    entry.Path = replacement.ResourcePath;
-                    changed++;
-                }
-            }
-        }
         return entries;
     }
 
@@ -176,36 +169,13 @@ public static class GongfaSkillRewriteRuntime
             foreach (var skill in chapter.get_learned_skills(isMain)) Add(skill);
         }
 
-        foreach (var chapter in book.get_sorted_chapters())
-        {
-            if (!IsRewriteChapterActive(human, book, chapter, isMain)) continue;
-            foreach (var rewrite in chapter.get_deck_rewrites(isMain))
-            {
-                if (!rewrite.enabled || rewrite.target_scope != GongfaDeckRewriteConfig.RewriteTargetScope.OWN_GONGFA_SKILL ||
-                    rewrite.get_result_skill(isMain) is not ActiveSkillData replacement || string.IsNullOrWhiteSpace(replacement.ResourcePath)) continue;
-
-                if (rewrite.mode == GongfaDeckRewriteConfig.RewriteMode.ADD)
-                {
-                    if (!entries.Any(entry => entry.Path == replacement.ResourcePath))
-                        entries.Add(new SkillEntry(CopyWithMergedEffects(replacement, null), replacement.ResourcePath));
-                    continue;
-                }
-
-                foreach (var entry in entries)
-                {
-                    if (!rewrite.matches(entry.Skill)) continue;
-                    entry.Skill = CopyWithMergedEffects(replacement, entry.Skill);
-                    entry.SourcePaths.Add(replacement.ResourcePath);
-                    entry.Path = replacement.ResourcePath;
-                }
-            }
-        }
         return entries;
     }
 
-    private static ActiveSkillData CopyWithMergedEffects(ActiveSkillData replacement, ActiveSkillData? previous)
+    public static ActiveSkillData CopyWithMergedEffects(ActiveSkillData replacement, ActiveSkillData? previous)
     {
         var copy = replacement.Duplicate() as ActiveSkillData ?? replacement;
+        copy.combat_source_key = replacement.ResourcePath;
         var effects = new Array<string>();
         if (previous is not null)
             foreach (var id in previous.gongfa_rewrite_effect_ids)
@@ -231,8 +201,7 @@ public static class GongfaSkillRewriteRuntime
 
     private static bool IsRewriteChapterActive(Character human, GongfaResource book, GongfaChapterConfig chapter, bool isMain)
     {
-        if (!human.is_gongfa_chapter_learned(book, chapter.get_id())) return false;
-        return isMain || human.get_sub_gongfa_chapter_route(book, chapter.get_id()) == "right";
+        return human.is_gongfa_chapter_learned(book, chapter.get_id());
     }
 
     private static IEnumerable<(GongfaResource book, bool isMain)> GetBooks(Character human)

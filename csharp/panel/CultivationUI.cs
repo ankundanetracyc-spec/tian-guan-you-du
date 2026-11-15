@@ -8,9 +8,16 @@ public partial class CultivationUI : Control
 	private YuanxiPanel? _yuanxiPanel;
 	private PanelContainer? _panel;
 	private Label? _name, _realm, _power, _rate, _plan, _studyHint, _breakthroughHint;
+	private Label? _breakthroughPillEffect;
 	private OptionButton? _mode, _studyBook;
+	private OptionButton? _breakthroughPillPicker;
+	private Character? _breakthroughPillOwner;
+	private string _breakthroughPillRealm = "", _breakthroughSelectedPillPath = "";
+	private bool _updatingBreakthroughPills;
 	private SpinBox? _strands, _days, _year, _month, _date;
-	private Button? _cultivate, _study, _breakthrough;
+	private int _dateModeHour;
+	private Button? _cultivate, _study, _breakthrough, _inviteScheduleButton;
+	private Label? _inviteScheduleHint;
 	private VBoxContainer? _strandRow, _dayRow, _dateRow;
 	private readonly List<GongfaResource> _studyCandidates = [];
 	private PanelContainer? _overviewPanel;
@@ -36,6 +43,15 @@ public partial class CultivationUI : Control
 	/// <summary>正式突破与测试入口均由主场景接管，避免面板持有另一套牌局状态。</summary>
 	public event Action<Character>? CondensationRequested;
 	public event Action<Character>? CondensationTestRequested;
+	private Func<bool>? _locationSessionAccess;
+	public void SetLocationSessionAccess(Func<bool> access) => _locationSessionAccess = access;
+	private bool has_location_session_access()
+	{
+		if (_locationSessionAccess?.Invoke() != false) return true;
+		if (_studyHint is not null) _studyHint.Text = "本期初学研习已结束。可返回地点安排后续修行。";
+		if (_autoRefinementFeedback is not null) _autoRefinementFeedback.Text = "本期初学研习已结束，请返回地点。";
+		return false;
+	}
 
 	public override void _Ready()
 	{
@@ -47,7 +63,7 @@ public partial class CultivationUI : Control
 		build_ui();
 		build_overview_ui();
 		build_body_ui();
-		
+
 		build_visualization_ui();
 		finish_room_shell();
 		Hide();
@@ -58,6 +74,7 @@ public partial class CultivationUI : Control
 	public void show_entity(GodotObject entity)
 	{
 		if (!GodotObject.IsInstanceValid(entity)) return;
+		_locationSessionAccess = null;
 		_yuanxiPanel?.Hide();
 		_target = entity;
 		_bodyReadOnly = false;
@@ -65,7 +82,7 @@ public partial class CultivationUI : Control
 		set_date_defaults();
 		refresh();
 		_overviewPanel?.Hide();
-		
+
 		_bodyPanel?.Hide();
 		_visualPanel?.Hide();
 		select_room_page(0);
@@ -88,12 +105,9 @@ public partial class CultivationUI : Control
 	{
 		_overviewPanel = new PanelContainer { Name = "CultivationOverviewPanel", MouseFilter = MouseFilterEnum.Stop, ZIndex = 30 };
 		_overviewPanel.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-		_overviewPanel.AddThemeStyleboxOverride("panel", new StyleBoxFlat
-		{
-			BgColor = new Color(.92f, .89f, .80f, .995f),
-			ContentMarginLeft = 42, ContentMarginRight = 42, ContentMarginTop = 30, ContentMarginBottom = 30
-		});
-		AddChild(_overviewPanel);
+		_overviewPanel.Theme = QuietRoomStyle.MakeTheme();
+		_overviewPanel.AddThemeStyleboxOverride("panel", QuietRoomStyle.Paper(1, 36));
+		_roomContent.AddChild(_overviewPanel);
 
 		var root = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill };
 		root.AddThemeConstantOverride("separation", 16);
@@ -101,16 +115,15 @@ public partial class CultivationUI : Control
 
 		var head = new HBoxContainer { CustomMinimumSize = new Vector2(0, 52) };
 		root.AddChild(head);
-		head.AddChild(label("修命·修性", 34, true));
-		var close = new Button { Text = "收起" }; style_small_button(close); close.Pressed += close_panel; head.AddChild(close);
-		_overviewName = label("", 22, true); root.AddChild(_overviewName);
-		_overviewRealm = label("", 16); root.AddChild(_overviewRealm);
-		_overviewFocus = label("", 17, true); root.AddChild(_overviewFocus);
-		var intro = label("修行分为修命与修性。主修秘籍决定当前招式与战斗心法；切换主修不清除已积累的修行进度。", 16);
+		head.AddChild(label("修行总览", 28, true));
+		_overviewName = label("", 22, true); _overviewName.Hide(); root.AddChild(_overviewName);
+		_overviewRealm = label("", 16); _overviewRealm.Hide(); root.AddChild(_overviewRealm);
+		_overviewFocus = label("", 17, true); _overviewFocus.Hide(); root.AddChild(_overviewFocus);
+		var intro = label("修命养形，修性观景。切换主修不清除已积累的修行进度。", 19);
 		intro.AutowrapMode = TextServer.AutowrapMode.WordSmart;
 		root.AddChild(intro);
 
-		var cards = new HBoxContainer { SizeFlagsVertical = SizeFlags.ExpandFill };
+		var cards = new HBoxContainer { CustomMinimumSize = new Vector2(0, 420) };
 		cards.AddThemeConstantOverride("separation", 16);
 		root.AddChild(cards);
 		_overviewBodySummary = add_overview_card(cards, "修命", "六部位锻体", "锻体、养形与淬体共同打磨肉身；气血仍是可由多种来源运用的公共状态。", "查看修命进度", () => { if (_target is not null) show_body_overview(_target); });
@@ -127,8 +140,8 @@ public partial class CultivationUI : Control
 		box.AddThemeConstantOverride("separation", 12);
 		margin(card, 20, 20, 18, 18).AddChild(box);
 		box.AddChild(label(title, 27, true));
-		box.AddChild(label(subtitle, 16));
-		var summary = label(description, 16);
+		box.AddChild(label(subtitle, 18));
+		var summary = label(description, 19);
 		summary.AutowrapMode = TextServer.AutowrapMode.WordSmart;
 		summary.SizeFlagsVertical = SizeFlags.ExpandFill;
 		box.AddChild(summary);
@@ -141,12 +154,16 @@ public partial class CultivationUI : Control
 
 	public void show_cultivation_overview(GodotObject entity)
 	{
-		_room.Hide();
 		if (!GodotObject.IsInstanceValid(entity) || _overviewPanel is null) return;
+		_room.Show();
 		_target = entity;
 		_bodyReadOnly = false;
 		refresh_cultivation_overview();
 		_panel?.Hide(); _bodyPanel?.Hide();  _visualPanel?.Hide();
+		_studyPage.Hide(); _breakPage.Hide(); _inspirationPage?.Hide(); _yuanxiPanel?.Hide();
+		_roomBodyScroll.Hide(); _roomNatureScroll.Hide();
+		foreach (var tab in _roomTabs) { tab.ButtonPressed = false; tab.Disabled = !_roomActions; }
+		refresh_room_header();
 		_overviewPanel.Show(); Show(); MoveToFront();
 	}
 
@@ -182,7 +199,8 @@ public partial class CultivationUI : Control
 		var head = new HBoxContainer(); root.AddChild(head);
 		head.AddChild(label("修性·灵台三景", 34, true));
 		var overview = new Button { Text = "修行总览" }; style_small_button(overview); overview.Pressed += () => { if (_target is not null) show_cultivation_overview(_target); }; head.AddChild(overview);
-		var back = new Button { Text = "返回修炼" }; style_small_button(back); back.Pressed += hide_visualization_page; head.AddChild(back);
+		var back = new Button { Name = "VisualizationReturn", Text = "返回" }; style_small_button(back); back.Pressed += hide_visualization_page;
+		_visualPanel.AddChild(back); CraftingPaperHeader.PlaceReturn(_visualPanel, back); CraftingPaperHeader.AddReturnArrow(back);
 		var close = new Button { Text = "收起" }; style_small_button(close); close.Pressed += close_panel; head.AddChild(close);
 		_visualName = label("", 22); root.AddChild(_visualName);
 		_visualRealm = label("", 16); root.AddChild(_visualRealm);
@@ -234,18 +252,18 @@ public partial class CultivationUI : Control
 		var head = new HBoxContainer { CustomMinimumSize = new Vector2(0, 48) }; root.AddChild(head);
 		_bodyTitle = label("修命·淬体", 34, true); head.AddChild(_bodyTitle);
 		var overview = new Button { Text = "修行总览" }; style_small_button(overview); overview.Pressed += () => { if (_target is not null) show_cultivation_overview(_target); }; head.AddChild(overview);
-		_bodyBack = new Button { Text = "返回修炼" }; style_small_button(_bodyBack); _bodyBack.Pressed += hide_body_page; head.AddChild(_bodyBack);
+		_bodyBack = new Button { Name = "BodyRefinementReturn", Text = "返回" }; style_small_button(_bodyBack); _bodyBack.Pressed += hide_body_page;
+		_bodyPanel.AddChild(_bodyBack); CraftingPaperHeader.PlaceReturn(_bodyPanel, _bodyBack); CraftingPaperHeader.AddReturnArrow(_bodyBack);
 		var close = new Button { Text = "收起" }; style_small_button(close); close.Pressed += close_panel; head.AddChild(close);
 		_bodyName = label("", 22); root.AddChild(_bodyName);
 		_bodyRealm = label("", 16); root.AddChild(_bodyRealm);
 
 		var columns = new HBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill }; columns.AddThemeConstantOverride("separation", 18); root.AddChild(columns);
 		var left = new PanelContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill }; left.AddThemeStyleboxOverride("panel", section_style()); columns.AddChild(left);
-		var leftMargin = margin(left, 20, 20, 18, 18); var leftBox = new VBoxContainer(); leftBox.AddThemeConstantOverride("separation", 9); leftMargin.AddChild(leftBox);
+		var leftMargin = margin(left, 14, 14, 14, 14); var leftBox = new VBoxContainer(); leftBox.AddThemeConstantOverride("separation", 9); leftMargin.AddChild(leftBox);
 		leftBox.AddChild(label("六部位成长轴", 24, true));
-		leftBox.AddChild(label("从上到下：皮、筋、骨、血、脏、心。每条横轴只显示当前炼段，节点奖励在五炼、十炼、十五炼解锁。", 15));
-		var axesScroll = new ScrollContainer { SizeFlagsVertical = SizeFlags.ExpandFill, HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled, CustomMinimumSize = new Vector2(0, 360) }; leftBox.AddChild(axesScroll);
-		var axes = new VBoxContainer { SizeFlagsVertical = SizeFlags.ExpandFill, SizeFlagsHorizontal = SizeFlags.ExpandFill }; axes.AddThemeConstantOverride("separation", 7); axesScroll.AddChild(axes);
+		leftBox.AddChild(label("五炼、十炼、十五炼解锁节点，悬停查看奖励。", 15));
+		var axes = new VBoxContainer { SizeFlagsVertical = SizeFlags.ExpandFill, SizeFlagsHorizontal = SizeFlags.ExpandFill, CustomMinimumSize = new Vector2(0, 515) }; axes.AddThemeConstantOverride("separation", 7); leftBox.AddChild(axes);
 		foreach (var part in BodyRefinementRules.Parts) axes.AddChild(build_body_part_card(part));
 		_bodyNourishHint = label("", 14); _bodyNourishHint.AutowrapMode = TextServer.AutowrapMode.WordSmart; _bodyNourishHint.CustomMinimumSize = new Vector2(0, 38); _bodyNourishHint.Name = "BodyNourishHint"; leftBox.AddChild(_bodyNourishHint);
 
@@ -269,20 +287,22 @@ public partial class CultivationUI : Control
 
 	private PanelContainer build_body_part_card(string part)
 	{
-		var card = new PanelContainer { CustomMinimumSize = new Vector2(0, 108) }; card.AddThemeStyleboxOverride("panel", new StyleBoxFlat { BgColor = new Color(1f, .985f, .93f, .72f), BorderColor = new Color(.44f, .37f, .26f, .5f), BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1, CornerRadiusTopLeft = 8, CornerRadiusTopRight = 8, CornerRadiusBottomLeft = 8, CornerRadiusBottomRight = 8 });
-		var content = margin(card, 12, 12, 9, 9); var row = new HBoxContainer(); row.AddThemeConstantOverride("separation", 11); content.AddChild(row);
-		var icon = new TextureRect { Texture = body_part_sigil(part), CustomMinimumSize = new Vector2(58, 58), ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize, StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered, MouseFilter = Control.MouseFilterEnum.Ignore }; row.AddChild(icon);
+		var card = new PanelContainer { CustomMinimumSize = new Vector2(0, 80) }; card.AddThemeStyleboxOverride("panel", QuietRoomStyle.Edge(false, 0));
+		var content = margin(card, 10, 10, 5, 5); var row = new HBoxContainer(); row.AddThemeConstantOverride("separation", 10); content.AddChild(row);
+		var icon = new TextureRect { Texture = body_part_sigil(part), CustomMinimumSize = new Vector2(42, 42), ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize, StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered, MouseFilter = Control.MouseFilterEnum.Ignore }; row.AddChild(icon);
 		var box = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill }; box.AddThemeConstantOverride("separation", 3); row.AddChild(box);
-		var head = new HBoxContainer(); box.AddChild(head); head.AddChild(label(BodyRefinementRules.GetName(part), 21, true)); var progressLabel = label("未炼", 14); progressLabel.HorizontalAlignment = HorizontalAlignment.Right; head.AddChild(progressLabel); _bodyProgressLabels[part] = progressLabel;
-		var bar = new ProgressBar { MinValue = 0, MaxValue = 1, Value = 0, ShowPercentage = false, CustomMinimumSize = new Vector2(0, 14) }; bar.AddThemeStyleboxOverride("background", new StyleBoxFlat { BgColor = new Color(.68f, .64f, .54f, .35f), CornerRadiusTopLeft = 5, CornerRadiusTopRight = 5, CornerRadiusBottomLeft = 5, CornerRadiusBottomRight = 5 }); bar.AddThemeStyleboxOverride("fill", new StyleBoxFlat { BgColor = new Color(.64f, .43f, .20f, .88f), CornerRadiusTopLeft = 5, CornerRadiusTopRight = 5, CornerRadiusBottomLeft = 5, CornerRadiusBottomRight = 5 }); box.AddChild(bar); _bodyProgressBars[part] = bar;
+		var head = new HBoxContainer(); box.AddChild(head); head.AddChild(label(BodyRefinementRules.GetName(part), 18, true)); var progressLabel = label("未炼", 14); progressLabel.HorizontalAlignment = HorizontalAlignment.Right; head.AddChild(progressLabel); _bodyProgressLabels[part] = progressLabel;
+		var bar = new ProgressBar { MinValue = 0, MaxValue = 1, Value = 0, ShowPercentage = false, CustomMinimumSize = new Vector2(0, 8) }; box.AddChild(bar); _bodyProgressBars[part] = bar;
 		var nodes = new HBoxContainer(); nodes.AddThemeConstantOverride("separation", 4); box.AddChild(nodes);
 		var nodeLabels = new Label[3]; var nodeLevels = new[] { 5, 10, 15 };
 		for (var i = 0; i < nodeLevels.Length; i++)
 		{
-			var nodeLabel = label(format_body_node(part, nodeLevels[i]), 12); nodeLabel.SizeFlagsHorizontal = SizeFlags.ExpandFill; nodeLabel.AutowrapMode = TextServer.AutowrapMode.WordSmart; nodeLabel.CustomMinimumSize = new Vector2(0, 34); nodeLabel.VerticalAlignment = VerticalAlignment.Center; nodes.AddChild(nodeLabel); nodeLabels[i] = nodeLabel;
+			var nodeLabel = label($"{nodeLevels[i]}炼", 14); nodeLabel.TooltipText = format_body_node(part, nodeLevels[i]); nodeLabel.SizeFlagsHorizontal = SizeFlags.ExpandFill; nodeLabel.CustomMinimumSize = new Vector2(0, 22); nodeLabel.VerticalAlignment = VerticalAlignment.Center; nodes.AddChild(nodeLabel); nodeLabels[i] = nodeLabel;
 		}
 		_bodyNodeLabels[part] = nodeLabels;
 		var reward = label("当前节点：尚无", 12); reward.AutowrapMode = TextServer.AutowrapMode.WordSmart; reward.Modulate = new Color(.35f, .28f, .20f, .82f); _bodyRewardLabels[part] = reward;
+		// 保留现有隐藏展示，但让标签随部位卡片销毁，避免静室退出后留下孤立节点。
+		reward.Hide(); box.AddChild(reward);
 		return card;
 	}
 
@@ -329,6 +349,7 @@ public partial class CultivationUI : Control
 	/// <summary>统一关闭修炼面板，供主场景返回键处理。</summary>
 	public void close_panel()
 	{
+		_paperDetail?.Hide();
 		_room.Hide();
 		_yuanxiPanel?.Hide();
 		_bodyReadOnly = false;
@@ -376,7 +397,7 @@ public partial class CultivationUI : Control
 		_visualFocus.Disabled = !available || _visualFocus.ItemCount == 0; if (_visualFocus.ItemCount > 0) _visualFocus.Select(focusSelected);
 		refresh_visualization_methods();
 		var last = state.GetValueOrDefault("last_result", new GDict()).AsGodotDictionary();
-		_visualResult!.Text = last.Count == 0 ? "尚无观想结算记录。" : $"上次：{last.GetValueOrDefault("scene_name", "观景").AsString()}，以{last.GetValueOrDefault("method_name", "观法").AsString()}温观 {last.GetValueOrDefault("duration_hours", 0).AsInt32()}小时，{last.GetValueOrDefault("before_rank", 1).AsInt32()}重 → {last.GetValueOrDefault("after_rank", 1).AsInt32()}重。";
+		_visualResult!.Text = last.Count == 0 ? "尚无观想结算记录。" : $"上次：{last.GetValueOrDefault("scene_name", "观景").AsString()}，以{last.GetValueOrDefault("method_name", "观法").AsString()}温观 {format_duration_hours(last.GetValueOrDefault("duration_hours", 0).AsInt32())}，{last.GetValueOrDefault("before_rank", 1).AsInt32()}重 → {last.GetValueOrDefault("after_rank", 1).AsInt32()}重。";
 	}
 
 	private void refresh_visualization_methods()
@@ -406,8 +427,8 @@ public partial class CultivationUI : Control
 		var visualState = call("get_visualization_state").AsGodotDictionary();
 		GDict? focusScene = visualState.GetValueOrDefault("scenes", new Godot.Collections.Array()).AsGodotArray().Select(raw => raw.AsGodotDictionary()).FirstOrDefault(scene => scene.GetValueOrDefault("id", "").AsString() == focusId);
 		var multiplier = VisualizationRules.GetPracticeMultiplier(VisualizationRules.GetRank(focusScene?.GetValueOrDefault("progress", 1f).AsSingle() ?? 1f));
-		_visualMethodHint.Text = $"{method.Description}\n适用：{method.MinRank}～{method.MaxRank}重；条件：{method.ConditionText}；耗时 {method.DurationHours} 小时，预计推进 {method.RankYield * multiplier:0.##} 重（五重节点效率 ×{multiplier:0.##}）。";
-		_visualPractice.Text = $"行观 {method.DurationHours} 小时";
+		_visualMethodHint.Text = $"{method.Description}\n适用：{method.MinRank}～{method.MaxRank}重；条件：{method.ConditionText}；耗时 {format_duration_hours(method.DurationHours)}，预计推进 {method.RankYield * multiplier:0.##} 重（五重节点效率 ×{multiplier:0.##}）。";
+		_visualPractice.Text = $"行观 {format_duration_hours(method.DurationHours)}";
 		_visualPractice.Disabled = !call("can_use_visualization").AsBool();
 	}
 
@@ -416,7 +437,7 @@ public partial class CultivationUI : Control
 		if (_target is null || _visualMethod is null || _visualMethod.Selected < 0) return;
 		var methodId = _visualMethod.GetItemMetadata(_visualMethod.Selected).AsString(); var method = VisualizationCatalog.GetMethod(methodId);
 		if (method is null) return;
-		play_transition("静室观想", $"{method.Name}将耗时 {method.DurationHours} 小时，使所观之景更深一重。", "观想结束，所得已记入灵台。", () => { _target.Call("practice_visualization", methodId); refresh(); refresh_visualization_ui(); });
+		play_transition("静室观想", $"{method.Name}将耗时 {format_duration_hours(method.DurationHours)}，使所观之景更深一重。", "观想结束，所得已记入灵台。", () => { _target.Call("practice_visualization", methodId); refresh(); refresh_visualization_ui(); });
 	}
 
 	private void apply_body_view_mode()
@@ -424,7 +445,7 @@ public partial class CultivationUI : Control
 		if (_bodyReadOnly)
 		{
 			if (_bodyTitle is not null) _bodyTitle.Text = "修命·淬体总览 · 查看态";
-			if (_bodyBack is not null) _bodyBack.Text = "返回角色";
+			if (_bodyBack is not null) _bodyBack.Text = "返回";
 			_bodyMaterialRow?.Hide();
 			_bodyStart?.Hide();
 			_bodyReadOnlyHint?.Show();
@@ -432,7 +453,7 @@ public partial class CultivationUI : Control
 		else
 		{
 			if (_bodyTitle is not null) _bodyTitle.Text = "静室·修命淬体 · 行动态";
-			if (_bodyBack is not null) _bodyBack.Text = "返回修炼";
+			if (_bodyBack is not null) _bodyBack.Text = "返回";
 			_bodyMaterialRow?.Show();
 			_bodyStart?.Show();
 			_bodyReadOnlyHint?.Hide();
@@ -466,17 +487,17 @@ public partial class CultivationUI : Control
 			if (_bodyNodeLabels.TryGetValue(id, out var nodes))
 			{
 				var nodeLevels = new[] { 5, 10, 15 };
-				for (var i = 0; i < nodes.Length; i++) nodes[i].Modulate = level >= nodeLevels[i] ? new Color(1f, .88f, .55f, 1f) : new Color(.55f, .50f, .40f, .72f);
+				for (var i = 0; i < nodes.Length; i++) nodes[i].AddThemeColorOverride("font_color", level >= nodeLevels[i] ? QuietRoomStyle.Teal : WorldHudStyle.SecondaryInk);
 			}
 		}
 		var active = state.GetValueOrDefault("active", false).AsBool();
-		_bodyActive!.Text = active ? $"当前淬体：{state.GetValueOrDefault("method_name", "淬体").AsString()}　余 {state.GetValueOrDefault("remaining_hours", 0).AsInt32()} 小时" : "当前没有进行中的淬体。";
+		_bodyActive!.Text = active ? $"当前淬体：{state.GetValueOrDefault("method_name", "淬体").AsString()}　余 {format_duration_hours(state.GetValueOrDefault("remaining_hours", 0).AsInt32())}" : "当前没有进行中的淬体。";
 		var last = state.GetValueOrDefault("last_result", new GDict()).AsGodotDictionary();
 		_bodyResult!.Text = last.Count == 0 ? "尚无淬体结算记录。" : format_body_result(last);
 		if (_bodyNourishHint is not null)
 		{
 			var gongfa = value("main_gongfa").AsGodotObject() as GongfaResource;
-			_bodyNourishHint.Text = gongfa is null ? "养形谱：尚未装配主修功法。" : $"养形谱：《{gongfa.gongfa_name}》；正常吐纳每 24 小时提供约 {gongfa.body_nourish_rate_per_day:0.##} 点养形炼度。\n分配：{format_body_nourish_weights(gongfa)}";
+			_bodyNourishHint.Text = gongfa is null ? "养形谱：尚未装配主修功法。" : $"养形谱：《{gongfa.gongfa_name}》；日常吐纳提供约 {gongfa.body_nourish_rate_per_day:0.##} 点养形炼度。\n分配：{format_body_nourish_weights(gongfa)}";
 		}
 		refresh_body_methods();
 		_bodyMethod!.Disabled = !_bodyReadOnly && active;
@@ -528,8 +549,8 @@ public partial class CultivationUI : Control
 		var minHours = preview.GetValueOrDefault("duration_min_hours", 0).AsInt32(); var maxHours = preview.GetValueOrDefault("duration_max_hours", minHours).AsInt32();
 		var minYield = preview.GetValueOrDefault("base_min", 0).AsInt32(); var maxYield = preview.GetValueOrDefault("base_max", minYield).AsInt32(); var efficiency = preview.GetValueOrDefault("efficiency", .25f).AsSingle();
 		_bodyPreview.Text = _bodyReadOnly
-			? $"时长：{minHours}～{maxHours} 小时　·　基础炼度：{minYield}～{maxYield}\n查看态不预览材料与本次效率。"
-			: $"时长：{minHours}～{maxHours} 小时　·　基础炼度：{minYield}～{maxYield}\n本次基础效率：{efficiency:P0}　·　材料：{preview.GetValueOrDefault("material_name", "无").AsString()}";
+			? $"时长：{format_duration_range(minHours, maxHours)}　·　基础炼度：{minYield}～{maxYield}\n查看态不预览材料与本次效率。"
+			: $"时长：{format_duration_range(minHours, maxHours)}　·　基础炼度：{minYield}～{maxYield}\n本次基础效率：{efficiency:P0}　·　材料：{preview.GetValueOrDefault("material_name", "无").AsString()}";
 		_bodyStart.Disabled = _bodyReadOnly || call("get_body_refinement_state").AsGodotDictionary().GetValueOrDefault("active", false).AsBool();
 	}
 
@@ -540,7 +561,7 @@ public partial class CultivationUI : Control
 		var preview = call("get_body_refinement_preview", methodPath, materialPath).AsGodotDictionary();
 		if (!preview.GetValueOrDefault("valid", false).AsBool()) { _bodyResult!.Text = preview.GetValueOrDefault("reason", "当前不能淬体。").AsString(); return; }
 		var minHours = preview.GetValueOrDefault("duration_min_hours", 0).AsInt32(); var maxHours = preview.GetValueOrDefault("duration_max_hours", minHours).AsInt32();
-		play_transition("淬体", $"{preview.GetValueOrDefault("method_name", "淬体").AsString()} 将持续 {minHours}～{maxHours} 小时，炼度会按法门设定随机分配。", "淬体结束，炼度已经记入六部位。", () => { var result = call("start_body_refinement", methodPath, materialPath).AsGodotDictionary(); _bodyResult!.Text = result.GetValueOrDefault("success", false).AsBool() ? format_body_result(call("get_last_body_refinement_result").AsGodotDictionary()) : result.GetValueOrDefault("reason", "淬体未能开始。").AsString(); refresh(); refresh_body_ui(); });
+		play_transition("淬体", $"{preview.GetValueOrDefault("method_name", "淬体").AsString()} 将持续 {format_duration_range(minHours, maxHours)}，炼度会按法门设定随机分配。", "淬体结束，炼度已经记入六部位。", () => { var result = call("start_body_refinement", methodPath, materialPath).AsGodotDictionary(); _bodyResult!.Text = result.GetValueOrDefault("success", false).AsBool() ? format_body_result(call("get_last_body_refinement_result").AsGodotDictionary()) : result.GetValueOrDefault("reason", "淬体未能开始。").AsString(); refresh(); refresh_body_ui(); });
 	}
 
 	private static string format_body_result(GDict result)
@@ -572,7 +593,7 @@ public partial class CultivationUI : Control
 	{
 		var result = new Label { Text = text };
 		result.AddThemeFontSizeOverride("font_size", size);
-		result.AddThemeColorOverride("font_color", new Color(.22f, .17f, .12f));
+		result.AddThemeColorOverride("font_color", QuietRoomStyle.Ink);
 		if (expand) result.SizeFlagsHorizontal = SizeFlags.ExpandFill;
 		return result;
 	}
@@ -580,11 +601,11 @@ public partial class CultivationUI : Control
 	private static Label section_label(string text)
 	{
 		var result = new Label { Text = text };
-		result.AddThemeFontSizeOverride("font_size", 20); result.AddThemeColorOverride("font_color", new Color("6a532d"));
+		result.AddThemeFontSizeOverride("font_size", 20); result.AddThemeColorOverride("font_color", QuietRoomStyle.Ink);
 		return result;
 	}
 
-	private static StyleBoxFlat section_style() => new() { BgColor = new Color(1f, .98f, .91f, .54f), BorderColor = new Color(.44f, .37f, .26f, .68f), BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1, CornerRadiusTopLeft = 12, CornerRadiusTopRight = 12, CornerRadiusBottomLeft = 12, CornerRadiusBottomRight = 12 };
+	private static StyleBoxFlat section_style() => QuietRoomStyle.Edge(false, 0);
 	private static void style_small_button(Button button) { button.AddThemeFontSizeOverride("font_size", 18); }
 	private static void style_action_button(Button button) => QuietRoomStyle.Primary(button);
 
@@ -596,6 +617,7 @@ public partial class CultivationUI : Control
 	{
 		var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
 		if (time is null || _year is null || _month is null || _date is null) return;
+		_dateModeHour = time.hour;
 		_year.Value = time.year; _month.Value = time.month; _date.Value = Math.Min(30, time.day + 1);
 		if (time.day == 30) { _date.Value = 1; _month.Value = time.month == 12 ? 1 : time.month + 1; if (time.month == 12) _year.Value = time.year + 1; }
 	}
@@ -615,9 +637,46 @@ public partial class CultivationUI : Control
 		return (_mode?.Selected ?? 0) switch
 		{
 			1 => Mathf.Max(1, (int)_days!.Value * 24),
-			2 => Math.Max(1, total_hours((int)_year!.Value, (int)_month!.Value, (int)_date!.Value, time.hour) - time.get_total_game_hours()),
+			2 => Math.Max(0, total_hours((int)_year!.Value, (int)_month!.Value, (int)_date!.Value, _dateModeHour) - time.get_total_game_hours()),
 			_ => 0
 		};
+	}
+
+	private GDict next_accepted_invitation_schedule()
+	{
+		var main = GetTree().GetFirstNodeInGroup("main_scene");
+		return main is not null && main.HasMethod("get_next_accepted_letter_invitation_schedule")
+			? main.Call("get_next_accepted_letter_invitation_schedule").AsGodotDictionary()
+			: new GDict();
+	}
+
+	public void refresh_invitation_schedule_action()
+	{
+		if (_inviteScheduleButton is null || _inviteScheduleHint is null) return;
+		var invitation = next_accepted_invitation_schedule();
+		var available = invitation.GetValueOrDefault("available", false).AsBool();
+		_inviteScheduleButton.Visible = _inviteScheduleHint.Visible = available;
+		if (!available) return;
+		var activity = invitation.GetValueOrDefault("activity_name", "应邀活动").AsString();
+		var place = invitation.GetValueOrDefault("place_name", "相约地点").AsString();
+		var targetHour = invitation.GetValueOrDefault("hour", 0).AsInt32();
+		var targetDate = LetterMailbox.Date(targetHour);
+		_inviteScheduleButton.Text = $"按「{activity}」日期修炼";
+		_inviteScheduleHint.Text = $"{place}　·　目标 {targetDate}。精力不足时，修炼会先结束，需留意赴约日期。";
+	}
+
+	private void apply_next_invitation_schedule()
+	{
+		var invitation = next_accepted_invitation_schedule();
+		if (!invitation.GetValueOrDefault("available", false).AsBool()) return;
+		var targetHour = invitation.GetValueOrDefault("hour", 0).AsInt32();
+		var day = targetHour / 24;
+		_year!.Value = day / 360 + 1;
+		_month!.Value = day % 360 / 30 + 1;
+		_date!.Value = day % 30 + 1;
+		_dateModeHour = targetHour % 24;
+		_mode!.Select(2);
+		update_mode_visibility(); sync_mode_tabs(); refresh_plan();
 	}
 
 	private static int total_hours(int year, int month, int day, int hour) => (((year - 1) * 12 + (month - 1)) * 30 + (day - 1)) * 24 + hour;
@@ -625,10 +684,14 @@ public partial class CultivationUI : Control
 	private static string format_date_after(GameTimeMgr time, int hours)
 	{
 		var total = time.get_total_game_hours() + Math.Max(0, hours);
-		var dayIndex = total / 24; var hour = total % 24;
+		var dayIndex = total / 24;
 		var year = dayIndex / 360 + 1; var remainder = dayIndex % 360;
-		return $"{year}年{remainder / 30 + 1}月{remainder % 30 + 1}日 {hour:00}时";
+		return $"{year}年{remainder / 30 + 1}月{remainder % 30 + 1}日";
 	}
+
+	private static string format_duration_hours(int hours) => GameTimeText.Duration(hours);
+
+	private static string format_duration_range(int minHours, int maxHours) => $"{format_duration_hours(minHours)}～{format_duration_hours(maxHours)}";
 
 	private void refresh()
 	{
@@ -639,7 +702,11 @@ public partial class CultivationUI : Control
 		var required = progress.GetValueOrDefault("required", 0).AsInt32();
 		var current = progress.GetValueOrDefault("current", 0).AsInt32();
 		_power!.Text = required > 0 ? $"{(progress.GetValueOrDefault("is_current_layer", false).AsBool() ? "本层 " : "累计 ")}{current} / {required} 缕" : $"{value("spirit_strands", 0).AsInt32()} 缕";
-		_rate!.Text = $"{call("get_cultivation_rate").AsSingle():0.####} 缕 / 小时";
+		var cultivationRate = _target is Character practitioner
+			? practitioner.get_cultivation_rate_after_bottleneck()
+			: call("get_cultivation_rate").AsSingle();
+		_rate!.Text = $"实际修炼速率  {cultivationRate:0.####} 缕 / 小时";
+		refresh_bottleneck_status();
 		_strands.MaxValue = Math.Max(1, call("get_strands_until_next_realm").AsInt32());
 		if (_strands.Value > _strands.MaxValue) _strands.Value = _strands.MaxValue;
 		update_mode_visibility();
@@ -656,10 +723,13 @@ public partial class CultivationUI : Control
 	private void refresh_plan()
 	{
 		if (_target is null || _plan is null || _cultivate is null) return;
+		refresh_auto_refinement_ui();
+		refresh_manual_refinement_ui();
 		if (value("main_gongfa").AsGodotObject() is not GongfaResource)
 		{
 			_plan.Text = "尚未装配主修功法。请先前往角色页面，将已研读的功法设为主修后再吐纳修行。";
 			_cultivate.Disabled = true;
+			refresh_paper_plan(null);
 			return;
 		}
 		var mode = _mode?.Selected ?? 0;
@@ -674,20 +744,64 @@ public partial class CultivationUI : Control
 		var staminaCost = preview.GetValueOrDefault("stamina_cost", 0f).AsSingle();
 		var staminaLimited = preview.GetValueOrDefault("stamina_limited", false).AsBool();
 		var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
-		_plan.Text = time is null ? "" : $"预计灵力　{strands} 缕\n耗时　{hours} 小时\n体力消耗　{staminaCost:0.#} 点\n结束　{format_date_after(time, hours)}\n\n未满一缕的灵力在结束时散去。{(staminaLimited ? "\n体力不足，已按可持续时长预估。" : "")}";
+		_plan.Text = time is null ? "" : $"预计灵力　{strands} 缕\n耗时　{format_duration_hours(hours)}\n精力消耗　{staminaCost:0.#} 点\n结束　{format_date_after(time, hours)}\n\n未满一缕的灵力在结束时散去。{(staminaLimited ? "\n精力不足，已按可持续时长预估。" : "")}";
+		refresh_invitation_schedule_action();
 		if (mode is 1 or 2 && strands == 0) _plan.Text += "\n本次时长不足以获得一整缕，可增加修炼天数或改用指定灵力。";
-		_cultivate.Disabled = hours <= 0 || (_target is Character practitioner && !practitioner.can_cultivate());
+		var autoRefinementBlocked = false;
+		if (_target is Character practitioner)
+		{
+			var autoSettings = practitioner.get_cultivation_auto_refinement_settings();
+			if (autoSettings.GetValueOrDefault("enabled", false).AsBool())
+			{
+				if (!autoSettings.GetValueOrDefault("eligible", false).AsBool())
+				{
+					autoRefinementBlocked = true;
+					_plan.Text += $"\n自动炼化未就绪：{autoSettings.GetValueOrDefault("reason", "请重新检查设置。").AsString()}";
+				}
+				else
+				{
+					var autoPreview = practitioner.get_cultivation_auto_refinement_preview(hours);
+					var threshold = autoSettings.GetValueOrDefault("threshold_penalty", .02d).AsDouble();
+					if (autoPreview.GetValueOrDefault("triggered", false).AsBool())
+					{
+						var oldPenalty = autoPreview.GetValueOrDefault("old_penalty", 0d).AsDouble();
+						var newPenalty = autoPreview.GetValueOrDefault("new_penalty", 0d).AsDouble();
+						_plan.Text += $"\n预计瓶颈减速达到 {threshold:P0} 时自动炼化一次，减速 {oldPenalty:P1} → {newPenalty:P1}。";
+					}
+					else if (autoPreview.GetValueOrDefault("expired_before_threshold", false).AsBool())
+						_plan.Text += $"\n所选灵感将在瓶颈减速达到 {threshold:P0} 前失效；本段不会消耗。";
+					else
+						_plan.Text += $"\n本段预计不会达到瓶颈减速 {threshold:P0}；灵感不会消耗。";
+				}
+			}
+		}
+		_cultivate.Disabled = hours <= 0 || autoRefinementBlocked || (_target is Character cultivationCharacter && !cultivationCharacter.can_cultivate());
+		refresh_paper_plan(preview);
 	}
 
 	private void cultivate()
 	{
+		if (!has_location_session_access()) return;
 		if (_target is null) return;
 		var mode = _mode?.Selected ?? 0;
 		var wanted = mode == 0 ? (int)_strands!.Value : mode == 3 ? call("get_strands_until_next_realm").AsInt32() : 0;
 		var preview = mode is 0 or 3 ? call("get_world_cultivation_preview_for_strands", wanted).AsGodotDictionary() : call("get_world_cultivation_preview_for_hours", selected_hours()).AsGodotDictionary();
 		var hours = preview.GetValueOrDefault("hours", 0).AsInt32(); var strands = preview.GetValueOrDefault("strands", 0).AsInt32();
 		var staminaCost = preview.GetValueOrDefault("stamina_cost", 0f).AsSingle();
-		play_transition("吐纳修行", $"灵力沿周天缓缓运转，预计耗时 {hours / 24f:0.0} 日，消耗体力 {staminaCost:0.#} 点。", $"修炼结束，实得 {strands} 缕灵力。未满一缕的余数已散去。", () => { if (mode is 0 or 3) _target.Call("cultivate_with_world_stamina_for_strands", wanted); else _target.Call("cultivate_with_world_stamina_for_hours", selected_hours()); refresh(); });
+		var requestedHours = selected_hours();
+		_autoRefinementFeedback.Text = "";
+		play_transition("吐纳修行", $"灵力沿周天缓缓运转，预计耗时 {format_duration_hours(hours)}，消耗精力 {staminaCost:0.#} 点。", $"修炼结束，实得 {strands} 缕灵力。未满一缕的余数已散去。", () =>
+		{
+			if (!has_location_session_access()) return;
+			var outcome = mode is 0 or 3
+				? _target.Call("cultivate_with_world_stamina_for_strands", wanted).AsGodotDictionary()
+				: _target.Call("cultivate_with_world_stamina_for_hours", requestedHours).AsGodotDictionary();
+			if (!outcome.GetValueOrDefault("success", false).AsBool())
+				_autoRefinementFeedback.Text = "修炼未能开始，自动炼化没有消耗灵感。";
+			else if (_target is Character practitioner)
+				show_auto_refinement_result(practitioner);
+			refresh();
+		}, hours);
 	}
 
 	private void update_study()
@@ -696,17 +810,20 @@ public partial class CultivationUI : Control
 		{
 			var book = selected_study_book();
 			var chapter = book?.get_sorted_chapters().FirstOrDefault(c => !student.is_gongfa_chapter_learned(book, c.get_id()));
-			if (book is null) { _studyHint.Text = "暂无可研读功法"; _study.Text = "开始研读"; _study.Disabled = true; return; }
+			if (book is null) { _studyHint.Text = "暂无可研读功法"; _study.Text = "开始研读"; _study.Disabled = true; refresh_room_study_requirements(null, null, null); return; }
 			if (chapter is null && (book.chapters.Count > 0 || student.has_learned_gongfa(book)))
-			{ _studyHint.Text = "全卷已研读"; _study.Text = "已读完"; _study.Disabled = true; return; }
+			{ _studyHint.Text = "全卷已研读"; _study.Text = "已读完"; _study.Disabled = true; refresh_room_study_requirements(null, null, null); return; }
 			// Match SecretBook's existing first-volume access; later volumes use chapter requirements.
-			var eligible = !student.has_learned_gongfa(book) || chapter is null || student.can_learn_gongfa_chapter(book, chapter);
+			var firstVolumeAccess = !student.has_learned_gongfa(book) &&
+                !(student.entity_data is HumanData studentData && studentData.baishi_first_volume_path == book.ResourcePath);
+			var eligible = firstVolumeAccess || chapter is null || student.can_learn_gongfa_chapter(book, chapter);
+			refresh_room_study_requirements(student, book, chapter, firstVolumeAccess);
 			var hours = student.get_available_study_hours(24);
 			var progress = chapter is null ? 0 : student.get_gongfa_chapter_study_progress(book, chapter.get_id());
 			var required = chapter?.required_study_progress ?? book.required_study_progress;
 			_studyHint.Text = $"{chapter?.chapter_name ?? "当前卷"}\n研读进度  {progress:0.0} / {required:0.0}" +
-				(!eligible ? "\n尚未满足本卷研读条件" : $"\n耗时  {hours} 小时　体力  {hours * WorldStaminaRules.StudyCostPerGameHour:0.#}");
-			_study.Text = !eligible ? "条件未满足" : hours <= 0 ? "体力不足" : "开始研读";
+				(!eligible ? "\n尚未满足本卷研读条件" : $"\n耗时  {format_duration_hours(hours)}　精力  {hours * WorldStaminaRules.StudyCostPerGameHour:0.#}");
+			_study.Text = !eligible ? "条件未满足" : hours <= 0 ? "精力不足" : "开始研读";
 			_study.Disabled = !eligible || hours <= 0;
 			return;
 		}
@@ -735,11 +852,12 @@ public partial class CultivationUI : Control
 	}
 	private GongfaResource? selected_study_book() => _studyBook is not null && _studyBook.Selected >= 0 && _studyBook.Selected < _studyCandidates.Count ? _studyCandidates[_studyBook.Selected] : null;
 
-	private void study(){if(_target is not Character reader || selected_study_book() is not { } book)return;var hours=reader.get_available_study_hours(24);if(hours<=0 || !reader.select_gongfa_for_study(book)){refresh();return;}var staminaCost=hours*WorldStaminaRules.StudyCostPerGameHour;play_transition("研读功法",$"研读 {hours} 小时，消耗体力 {staminaCost:0.#} 点。","研读结束。",()=>{reader.study_for_world_hours(hours);refresh();});}
+	private void study(){if(!has_location_session_access())return;if(_target is not Character reader || selected_study_book() is not { } book)return;var hours=reader.get_available_study_hours(24);if(hours<=0 || !reader.select_gongfa_for_study(book)){refresh();return;}var staminaCost=hours*WorldStaminaRules.StudyCostPerGameHour;play_transition("研读功法",$"研读 {format_duration_hours(hours)}，消耗精力 {staminaCost:0.#} 点。","研读结束。",()=>{if(has_location_session_access())reader.study_for_world_hours(hours);refresh();});}
 
     private void update_breakthrough()
 	{
 		if (_breakthrough is null || _breakthroughHint is null || _target is null) return;
+		hide_breakthrough_pill_controls();
 		var realms = GetNodeOrNull<RealmManager>("/root/RealmManager");
 		if (realms is null) { _breakthrough.Text = "闭关突破"; _breakthrough.Disabled = true; return; }
 		var next = realms.get_next_realm_name(value("cultivation_realm", "").AsString());
@@ -759,15 +877,52 @@ public partial class CultivationUI : Control
 			return;
 		}
 		var pillHint = _target is Character pillCharacter ? pillCharacter.get_breakthrough_pill_hint(next) : "";
-		if (!call("is_breakthrough_ready").AsBool()) { _breakthrough.Text = "闭关突破"; _breakthroughHint.Text = $"灵力圆满后，方可突破至 {next}。{(string.IsNullOrEmpty(pillHint) ? "" : $"\n{pillHint}")}"; _breakthrough.Disabled = true; return; }
+		if (_target is Character injuredCondensationTarget && injuredCondensationTarget.requires_condensation_breakthrough() && injuredCondensationTarget.has_active_severe_injury())
+		{
+			var remaining = injuredCondensationTarget.get_active_severe_injury_remaining_rest_hours();
+			_breakthrough.Text = "重伤休养中";
+			_breakthroughHint.Text = $"凝核失败不扣灵力；重伤恢复后可重试。还需通过休息行动调养 {format_duration_hours(remaining)}。";
+			_breakthrough.Disabled = true;
+			return;
+		}
+		if (!call("is_breakthrough_ready").AsBool())
+		{
+			var gongfaHint = realms.get_main_gongfa_breakthrough_hint(_target, next);
+			var requirementHint = string.IsNullOrEmpty(gongfaHint)
+				? $"灵力与属性达到要求后，方可突破至 {next}。"
+				: gongfaHint;
+			_breakthrough.Text = "闭关突破";
+			_breakthroughHint.Text = $"{requirementHint}{(string.IsNullOrEmpty(pillHint) ? "" : $"\n{pillHint}")}";
+			_breakthrough.Disabled = true;
+			return;
+		}
 		if (_target is Character condensationTarget && condensationTarget.requires_condensation_breakthrough())
 		{
-			_breakthroughHint.Text = "云息六层至七层改为八回合凝核牌局：每回合六张牌，必须对调两张，杂质达到 100 立即失败。";
+			_breakthroughHint.Text = "正式突破进行八回合凝核，全部结算后须达到100。人物属性固定，可调整36张牌组，正式局不开放道具。失败不扣灵力；重伤使正式战斗生命上限暂降15%，通过休息行动累计调养120小时后可重试。";
 			_breakthrough.Text = "进入凝核牌局"; _breakthrough.Disabled = false; return;
 		}
-		if (_target is Character missingPillTarget && !missingPillTarget.has_required_breakthrough_pill(next))
+		Godot.Collections.Dictionary? selectedPill = null;
+		var requiresPill = !string.IsNullOrEmpty(Character.get_required_breakthrough_pill_path(next));
+		if (requiresPill && _target is Character pillTarget)
 		{
-			_breakthroughHint.Text = pillHint;
+			var choices = refresh_breakthrough_pill_picker(pillTarget, next);
+			if (choices.Count == 0)
+			{
+				_breakthroughHint.Text = pillHint;
+				_breakthrough.Text = "缺少突破丹";
+				_breakthrough.Disabled = true;
+				return;
+			}
+			foreach (var choice in choices)
+				if (choice.GetValueOrDefault("path", "").AsString() == _breakthroughSelectedPillPath)
+				{
+					selectedPill = choice;
+					break;
+				}
+		}
+		if (requiresPill && selectedPill is null)
+		{
+			_breakthroughHint.Text = string.IsNullOrEmpty(pillHint) ? "当前角色没有可用于此关口的丹药。" : pillHint;
 			_breakthrough.Text = "缺少突破丹";
 			_breakthrough.Disabled = true;
 			return;
@@ -776,9 +931,81 @@ public partial class CultivationUI : Control
 		var range = call("get_breakthrough_retreat_hour_range", room).AsGodotDictionary();
 		var low = range.GetValueOrDefault("min_hours", 0).AsInt32(); var high = range.GetValueOrDefault("max_hours", 0).AsInt32();
 		var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
-		_breakthroughHint.Text = time is null ? pillHint : $"闭关突破至 {next} 约需 {low / 24f:0.0}～{high / 24f:0.0} 日，将在 {format_date_after(time, low)} 至 {format_date_after(time, high)} 之间结束。{(string.IsNullOrEmpty(pillHint) ? "" : $"\n{pillHint}")}";
-		_breakthrough.Text = room ? "入静室闭关突破" : "闭关突破";
+		_breakthroughHint.Text = time is null ? pillHint : $"闭关突破至 {next} 约需 {format_duration_range(low, high)}，将在 {format_date_after(time, low)} 至 {format_date_after(time, high)} 之间结束。{(string.IsNullOrEmpty(pillHint) ? "" : $"\n{pillHint}")}";
+		if (requiresPill && selectedPill is not null && _target is Character selectedCharacter && _breakthroughPillEffect is not null)
+			_breakthroughPillEffect.Text = breakthrough_pill_preview(selectedCharacter, selectedPill);
+		_breakthrough.Text = requiresPill
+			? room ? "入静室服用所选丹并突破" : "服用所选丹药并闭关突破"
+			: room ? "入静室闭关突破" : "闭关突破";
 		_breakthrough.Disabled = false;
+	}
+
+	private void hide_breakthrough_pill_controls()
+	{
+		if (_breakthroughPillPicker is not null) _breakthroughPillPicker.Hide();
+		if (_breakthroughPillEffect is not null) _breakthroughPillEffect.Hide();
+	}
+
+	private Godot.Collections.Array<GDict> refresh_breakthrough_pill_picker(Character character, string targetRealm)
+	{
+		var choices = character.get_breakthrough_pill_choices(targetRealm);
+		if (_breakthroughPillPicker is null || _breakthroughPillEffect is null) return choices;
+		if (_breakthroughPillOwner != character || _breakthroughPillRealm != targetRealm)
+		{
+			_breakthroughPillOwner = character;
+			_breakthroughPillRealm = targetRealm;
+			_breakthroughSelectedPillPath = "";
+		}
+
+		_updatingBreakthroughPills = true;
+		_breakthroughPillPicker.Clear();
+		var selectedIndex = 0;
+		for (var i = 0; i < choices.Count; i++)
+		{
+			var choice = choices[i];
+			var path = choice.GetValueOrDefault("path", "").AsString();
+			var name = choice.GetValueOrDefault("name", "突破丹").AsString();
+			var count = choice.GetValueOrDefault("count", 0).AsInt32();
+			_breakthroughPillPicker.AddItem($"{name}　持有 {count}");
+			_breakthroughPillPicker.SetItemMetadata(i, path);
+			if (path == _breakthroughSelectedPillPath) selectedIndex = i;
+		}
+		if (choices.Count > 0)
+		{
+			_breakthroughPillPicker.Select(selectedIndex);
+			_breakthroughSelectedPillPath = _breakthroughPillPicker.GetItemMetadata(selectedIndex).AsString();
+			_breakthroughPillPicker.Show();
+			_breakthroughPillEffect.Show();
+			_breakthroughPillEffect.Text = breakthrough_pill_preview(character, choices[selectedIndex]);
+		}
+		else
+		{
+			_breakthroughSelectedPillPath = "";
+			_breakthroughPillEffect.Text = "";
+		}
+		_updatingBreakthroughPills = false;
+		return choices;
+	}
+
+	private void on_breakthrough_pill_selected(long index)
+	{
+		if (_updatingBreakthroughPills || _breakthroughPillPicker is null || _target is not Character character || index < 0 || index >= _breakthroughPillPicker.ItemCount) return;
+		_breakthroughSelectedPillPath = _breakthroughPillPicker.GetItemMetadata((int)index).AsString();
+		update_breakthrough();
+	}
+
+	private static string breakthrough_pill_preview(Character character, GDict choice)
+	{
+		var id = choice.GetValueOrDefault("pill_id", "").AsString();
+		var effectValue = choice.GetValueOrDefault("effect_value", 0).AsInt32();
+		var toxicityAdded = choice.GetValueOrDefault("toxicity", 0).AsInt32();
+		var toxicityBefore = character.PillToxicity;
+		var absorption = PillToxicityRules.Efficiency(toxicityBefore);
+		var benefit = id == "dingmai"
+			? $"晋入四层后补入 {PillToxicityRules.Absorb(effectValue, toxicityBefore)} 缕吐纳进度（档位基础 {effectValue} 缕）。"
+			: $"后续归元九息时长约缩短 {effectValue * absorption:0.#}%（档位基础 {effectValue}%）。";
+		var name = choice.GetValueOrDefault("name", "所选丹药").AsString();
+		return $"本次丹药：{name}\n{benefit}\n成功晋层后消耗，丹毒＋{toxicityAdded}；目前丹毒 {toxicityBefore:0.#}，本次丹效按 {absorption:P0} 折算。";
 	}
 
 	private void breakthrough()
@@ -791,7 +1018,21 @@ public partial class CultivationUI : Control
 		var room = call("can_use_meditation_room_for_retreat").AsBool();
 		var range = call("get_breakthrough_retreat_hour_range", room).AsGodotDictionary();
 		var low = range.GetValueOrDefault("min_hours", 0).AsInt32(); var high = range.GetValueOrDefault("max_hours", 0).AsInt32();
-		play_transition("闭关突破", $"心神归一，突破过程约需 {low / 24f:0.0}～{high / 24f:0.0} 日。", "闭关结束。你缓缓收功，境界变化已结算。", () => { _target.Call("start_breakthrough_retreat", room); refresh(); });
+		var selectedPath = "";
+		var selectedName = "";
+		if (_target is Character pillUser)
+		{
+			var next = GetNodeOrNull<RealmManager>("/root/RealmManager")?.get_next_realm_name(pillUser.cultivation_realm) ?? "";
+			if (!string.IsNullOrEmpty(Character.get_required_breakthrough_pill_path(next)))
+			{
+				selectedPath = _breakthroughSelectedPillPath;
+				selectedName = ResourceLoader.Exists(selectedPath) ? ResourceLoader.Load<ItemData>(selectedPath)?.entity_name ?? "所选丹药" : "所选丹药";
+			}
+		}
+		var plan = string.IsNullOrEmpty(selectedPath)
+			? $"心神归一，突破过程约需 {format_duration_range(low, high)}。"
+			: $"本次选用{selectedName}。成功晋层后才会消耗，并结算丹效与丹毒；突破过程约需 {format_duration_range(low, high)}。";
+		play_transition("闭关突破", plan, "闭关结束。你缓缓收功，境界变化已结算。", () => { _target.Call("start_breakthrough_retreat", room, selectedPath); refresh(); });
 	}
 
 	private void condensation_test()
@@ -800,10 +1041,15 @@ public partial class CultivationUI : Control
 		close_panel(); CondensationTestRequested?.Invoke(testTarget);
 	}
 
-	private void play_transition(string title, string plan, string complete, Action settle)
+	private void play_transition(string title, string plan, string complete, Action settle, int cultivationHours = 0)
 	{
 		void finish() { settle(); refresh_room_header(); }
-		if (GetTree().GetFirstNodeInGroup("action_transition") is ActionTransitionPanel transition) { transition.play(title, plan, complete, finish); return; }
+		if (GetTree().GetFirstNodeInGroup("action_transition") is ActionTransitionPanel transition)
+		{
+			if (cultivationHours > 0) transition.play_cultivation(title, cultivationHours, complete, finish);
+			else transition.play(title, plan, complete, finish);
+			return;
+		}
 		finish();
 	}
 }

@@ -25,13 +25,13 @@ public partial class StoryDialoguePanel
 
     private void reset_social_presentation()
     {
+        reset_bottom_choices();
         if (_socialContent is not null) { _socialContent.Hide(); RemoveChild(_socialContent); _socialContent.QueueFree(); _socialContent = null; }
         _socialFactors.Clear(); _socialOutcome = _socialSpeech = null; _socialCancel = null; _socialPlayer = null; _socialTestMode = false;
         _socialInk = null; _socialDone = null; _socialChoosing = _socialRevealing = false;
         _socialLines = []; _socialScroll = null;
         if (_body is not null) _body.Modulate = Colors.White;
-        _dialogueHeight = 250;
-        if (_dialogueFrame is not null) { _dialogueFrame.Show(); _dialogueFrame.OffsetTop = -250; }
+        if (_dialogueFrame is not null) _dialogueFrame.Show();
         if (_continueHint is not null) { _continueHint.Show(); _continueHint.Text = "点击任意处继续　›"; }
     }
 
@@ -83,6 +83,8 @@ public partial class StoryDialoguePanel
 
     private static (string Path, string Caption) social_action_icon(string? kind)
     {
+        if (kind == "山门迎真") return (SocialIconRoot + "greeting_v1.png", "迎真");
+        if (kind is "拜师礼" or "入门录籍") return (SocialIconRoot + "greeting_v1.png", kind);
         if (kind?.Contains("求购", StringComparison.Ordinal) == true || kind?.Contains("交易", StringComparison.Ordinal) == true) return (SocialIconRoot + "trade_v1.png", "交易");
         if (kind?.Contains("切磋", StringComparison.Ordinal) == true || kind?.Contains("较", StringComparison.Ordinal) == true) return (SocialIconRoot + "spar_v1.png", "切磋");
         if (kind?.Contains("来访", StringComparison.Ordinal) == true || kind?.Contains("拜访", StringComparison.Ordinal) == true) return (SocialIconRoot + "greeting_v1.png", "来访");
@@ -143,7 +145,7 @@ public partial class StoryDialoguePanel
             leftPortrait.Portrait.CustomMinimumSize = rightPortrait.Portrait.CustomMinimumSize = new Vector2(width, height);
             center.CustomMinimumSize = new Vector2(Mathf.Max(180, Mathf.Min(620, size.X - 48 - width * 2 - gap * 2)), 0);
             if (_socialScroll is not null)
-                _socialScroll.CustomMinimumSize = new Vector2(0, Mathf.Min(_socialLines.Count * 38f, Mathf.Max(120, size.Y * .43f)));
+                _socialScroll.CustomMinimumSize = new Vector2(0, Mathf.Min(_socialLines.Count * (_yuxuAdmissionActive ? 76f : 38f), Mathf.Max(120, size.Y * .43f)));
         }
         stage.Resized += LayoutComposition;
         LayoutComposition();
@@ -157,7 +159,9 @@ public partial class StoryDialoguePanel
         var portraitCenter = new CenterContainer { MouseFilter = MouseFilterEnum.Ignore };
         var portrait = new PortraitRenderer { Name = isPlayer ? "PlayerSocialPortrait" : "NpcSocialPortrait", CustomMinimumSize = new Vector2(width, height) };
         portraitCenter.AddChild(portrait); column.AddChild(portraitCenter);
-        var nameLabel = social_label(name, 21, "e6d7b5"); nameLabel.SizeFlagsHorizontal = Control.SizeFlags.ExpandFill;
+        var nameLabel = social_label(name, 21, "e6d7b5");
+        nameLabel.Name = isPlayer ? "PlayerSocialName" : "NpcSocialName";
+        nameLabel.SizeFlagsHorizontal = Control.SizeFlags.ExpandFill;
         if (!isPlayer && NpcPersonalityRules.TestInspection)
         {
             nameLabel.TooltipText = NpcPersonalityRules.InspectionText(npc, testing: true);
@@ -173,7 +177,7 @@ public partial class StoryDialoguePanel
         return (column, portrait);
     }
 
-    public void show_social_choices(Character player, WorldNpcData npc, string opening, IReadOnlyList<(string Text, Action Choose)> choices, Action cancel, string? title = null, string cancelHint = "Esc 婉拒", bool testMode = false)
+    public void show_social_choices(Character player, WorldNpcData npc, string opening, IReadOnlyList<(string Text, Action Choose)> choices, Action cancel, string? title = null, string cancelHint = "右键婉拒", bool testMode = false)
     {
         show_npc_speech(npc.npc_name, opening);
         _socialPlayer = player; _socialTestMode = testMode;
@@ -226,7 +230,8 @@ public partial class StoryDialoguePanel
             lines.AddChild(label); _socialFactors.Add(label);
         }
         if (_socialLines.Count == 0) _socialScroll.Hide();
-        _socialOutcome = social_label(response.Result + (response.StaminaSpent > 0 ? $"\n体力 −{response.StaminaSpent:0.#}" : ""), 22, "e8dcbf");
+        _socialOutcome = social_label(response.Result + (response.StaminaSpent > 0 ? $"\n精力 −{response.StaminaSpent:0.#}" : "") +
+            (string.IsNullOrWhiteSpace(response.RelationshipFeedback) ? "" : $"\n关系记事：{response.RelationshipFeedback}"), 22, "e8dcbf");
         _socialOutcome.Modulate = new Color(1, 1, 1, 0); column.AddChild(_socialOutcome);
         var buttonCenter = new CenterContainer(); column.AddChild(buttonCenter);
         _socialDone = social_interaction_button("略过过程");
@@ -255,7 +260,7 @@ public partial class StoryDialoguePanel
         if (_socialOutcome is not null) _socialOutcome.Modulate = Colors.White;
         if (_socialSpeech is not null) _socialSpeech.Text = "对方收住话头，交谈暂告一段落。";
         if (_socialInk is not null) _socialInk.Value = 1;
-        if (_socialDone is not null) _socialDone.Text = "确定";
+        if (_socialDone is not null) _socialDone.Text = _yuxuAdmissionActive ? "继续" : "确定";
         _socialRevealing = false;
     }
 

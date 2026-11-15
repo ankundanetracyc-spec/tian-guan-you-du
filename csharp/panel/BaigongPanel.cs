@@ -1,13 +1,15 @@
 using Godot;
 using Godot.Collections;
 
-/// <summary>百工总入口。四个工艺页共用外置页签；首期仅阵法页可操作，其他页不提前固化其制作规则。</summary>
+/// <summary>个人百工资料：查阅丹方与炼制记录，实际炼制由地点设施承接。</summary>
 public partial class BaigongPanel : Control
 {
     private Character? _owner;
     private VBoxContainer? _body;
     private string _page = "阵法";
+    private FormationPaperWorkspace? _formationWorkspace;
     private readonly System.Collections.Generic.Dictionary<string, Button> _tabs = [];
+    private readonly System.Collections.Generic.Dictionary<string, string> _materialNames = [];
 
     public override void _Ready()
     {
@@ -15,7 +17,11 @@ public partial class BaigongPanel : Control
     }
 
     public void show_for(Character owner) { _owner = owner; Show(); select_page("阵法"); }
-    public void close() => Hide();
+    public void close()
+    {
+        if (IsInstanceValid(_formationWorkspace)) _formationWorkspace!.Close();
+        Hide();
+    }
 
     private void build()
     {
@@ -38,40 +44,113 @@ public partial class BaigongPanel : Control
         _page = page;
         foreach (var (name, tab) in _tabs) { tab.Disabled = name == page; tab.Modulate = name == page ? new Color("f1d77a") : new Color("d8d0b8"); }
         if (_body is null) return; clear(_body);
-        if (page == "阵法") build_formation(); else build_placeholder(page);
+        if (page == "阵法") build_formation(); else if (page == "法宝") build_forging(); else if (page == "丹药") build_alchemy(); else build_placeholder(page);
+    }
+
+    private void build_alchemy()
+    {
+        _body!.AddChild(title("丹方与炼丹记录", 27, new Color("f4f0df")));
+        _body.AddChild(muted("此处查阅配伍与过往炼制。前往玉虚仙宗·天工峰的丹房可开炉炼丹。"));
+        var list = archive_list();
+        foreach (var pill in AlchemyRecipeCatalog.Pills)
+        foreach (var route in pill.SampleRoutes)
+            list.AddChild(muted($"{route.Name} · {pill.Name}\n" + string.Join("、", route.Ingredients.Select(i => $"{recipe_role(i.AssistantSlot)}：{i.HerbName}×{i.Dose}"))));
+        list.AddChild(title("我的丹方", 20, new Color("f4f0df")));
+        try
+        {
+            var saved = AlchemyRecipeStore.Load(ProjectSettings.GlobalizePath("user://alchemy/recipes_v1.json"));
+            foreach (var recipe in saved)
+                list.AddChild(muted(recipe.Name + "\n" + string.Join("、", recipe.Ingredients.Select(i =>
+                    $"{recipe_role(i.Slot)}：{material_name(i.MaterialId)}×{i.Dose}"))));
+            if (saved.Count == 0) list.AddChild(muted("尚未记录自己的丹方。"));
+        }
+        catch (System.Exception) { list.AddChild(muted("我的丹方暂时无法读取，原有文件已保留。")); }
+        list.AddChild(title("炼丹记录", 20, new Color("f4f0df")));
+        add_records(list, (_owner?.entity_data as HumanData)?.alchemy_records);
+    }
+
+    private void build_forging()
+    {
+        _body!.AddChild(title("炼器记录", 27, new Color("f4f0df")));
+        _body.AddChild(muted("此处查阅过往炼制。前往玉虚仙宗·天工峰的器作可开炉炼器。"));
+        var list = archive_list();
+        add_records(list, (_owner?.entity_data as HumanData)?.forging_records);
+        list.AddChild(title("持有器物的炼制存录", 20, new Color("f4f0df")));
+        var found = false;
+        if (_owner is not null) foreach (var item in _owner.get_artifact_items())
+        {
+            if (!ForgedArtifactInventory.TryRead(item, out var snapshot)) continue;
+            found = true;
+            list.AddChild(muted($"{snapshot.Name} · {snapshot.Tier} · 造诣{snapshot.Proficiency}\n" +
+                string.Join("、", snapshot.Sources.Select(s => $"{s.Input.Role.Replace("复合身材", "辅体")}：{s.Input.Material}×{s.Input.Quantity}"))));
+        }
+        if (!found) list.AddChild(muted("尚无持有器物的炼制存录。"));
+    }
+
+    private VBoxContainer archive_list()
+    {
+        var scroll = new ScrollContainer { CustomMinimumSize = new Vector2(820, 440), SizeFlagsVertical = SizeFlags.ExpandFill,
+            HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled };
+        _body!.AddChild(scroll);
+        var list = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill }; list.AddThemeConstantOverride("separation", 14);
+        scroll.AddChild(list); return list;
+    }
+    private static string recipe_role(int slot) => slot < 0 ? "君" : slot == 0 ? "臣" : slot is 1 or 2 or 4 ? "佐" : "使";
+    private string material_name(string id)
+    {
+        if (_materialNames.Count == 0)
+        {
+            using var dir = DirAccess.Open("res://resources/entities/items");
+            if (dir is not null) foreach (var file in dir.GetFiles().Where(f => f.EndsWith(".tres")))
+            {
+                var item = GD.Load<ItemData>("res://resources/entities/items/" + file);
+                if (item is not null) _materialNames[item.definition_id.ToString()] = item.entity_name;
+            }
+        }
+        return _materialNames.GetValueOrDefault(id, "未识别药材");
+    }
+    private static void add_records(VBoxContainer list, Array<string>? records)
+    {
+        if (records is null || records.Count == 0) { list.AddChild(muted("尚无炼制记录。")); return; }
+        foreach (var record in records.AsEnumerable().Reverse()) list.AddChild(muted(record));
     }
 
     private void build_placeholder(string page)
     {
-        _body!.AddChild(title(page, 27, new Color("f4f0df"))); _body.AddChild(muted($"{page}的具体制作规则尚未定稿。\n本页已保留在百工入口中，待对应专题确认后接入，不在阵法任务中擅自补全。"));
+        _body!.AddChild(title(page, 27, new Color("f4f0df")));
+        _body.AddChild(muted("百工 · 传承与器物"));
+        var space = new CenterContainer { SizeFlagsVertical = SizeFlags.ExpandFill, SizeFlagsHorizontal = SizeFlags.ExpandFill };
+        _body.AddChild(space);
+        var empty = card("尚未开放", 360);
+        empty.SizeFlagsHorizontal = SizeFlags.ShrinkCenter;
+        empty.AddChild(muted($"{page}相关内容尚未开放，敬请期待。"));
+        space.AddChild(empty);
     }
 
     private void build_formation()
     {
-        var proficiency = _owner?.entity_data?.Get("formation_proficiency").AsSingle() ?? 0;
-        _body!.AddChild(title("阵法", 27, new Color("8fe5d6")));
-        _body.AddChild(muted($"阵道造诣 {proficiency:0}　·　阵脉传递信息，阵源提供能量。"));
-        var columns = new HBoxContainer(); columns.SizeFlagsVertical = SizeFlags.ExpandFill; columns.AddThemeConstantOverride("separation", 12); _body.AddChild(columns);
-        var library = card("阵法录与元件", 260); columns.AddChild(library);
-        var manuals = _owner?.entity_data is HumanData human ? human.formation_manual_ids : [];
-        library.AddChild(muted("阵法录端口"));
-        library.AddChild(item("术法感应接口", proficiency >= 5 && manuals.Contains("manual_small_circulation_input"), "《小周天聚灵阵录》"));
-        library.AddChild(item("护持阵器接口", proficiency >= 5 && manuals.Contains("manual_guard_output"), "《护元阵录》"));
-        library.AddChild(muted("阵道元件"));
-        foreach (var node in unlocks(proficiency)) library.AddChild(item(node.name, node.ready, node.detail));
-        var board = card("阵盘 · 云息示范阵", 410); board.SizeFlagsHorizontal = SizeFlags.ExpandFill; columns.AddChild(board);
-        board.AddChild(muted("细线为脉纹：传递触发信号。粗线为灵络：从阵源向阵器供能。"));
-        board.AddChild(title("术法感应枢", 16, new Color("eaf7f2")));
-        board.AddChild(flow("↓  脉纹")); board.AddChild(title("三候枢", 16, new Color("f1d77a")));
-        board.AddChild(muted("每 3 次术法脉冲，放行 1 次控制信号。")); board.AddChild(flow("↓  脉纹"));
-        board.AddChild(title("护持阵器", 16, new Color("8fe5d6")));
-        board.AddChild(flow("阵源 ━━━ 灵络 ━━━ 护持阵器"));
-        var hasManuals = _owner?.entity_data is HumanData ownerData && ownerData.formation_manual_ids.Contains("manual_small_circulation_input") && ownerData.formation_manual_ids.Contains("manual_guard_output");
-        var install = new Button { Text = !hasManuals ? "需要两本阵法录" : proficiency < 15 ? "需要阵道造诣 15" : "装配此示范阵图", Disabled = _owner is null || proficiency < 15 || !hasManuals }; install.Pressed += install_sample; board.AddChild(install);
-        var status = card("硬件校验", 250); columns.AddChild(status);
-        status.AddChild(item("阵盘格位", true, "3 / 4")); status.AddChild(item("阵眼复杂度", true, "4 / 5"));
-        status.AddChild(item("阵源", true, "4 容量 · 每行动回复 1")); status.AddChild(item("灵络 / 负荷", true, "峰值 2 / 2"));
-        status.AddChild(item("运行状态", proficiency >= 15, proficiency >= 15 ? "可运行" : "需要阵道造诣 15：解锁候枢"));
+        _body!.AddChild(title("阵图与布线", 27, new Color("f4f0df")));
+        _body.AddChild(muted("在案上摆放部件，连接信号与供能，保存自己的阵图草稿。"));
+        _body.AddChild(muted("初阶草图 · 4×4 · 单层接线"));
+        var open = new Button { Name = "OpenFormationWorkspace", Text = "绘制阵图", CustomMinimumSize = new Vector2(210, 52), SizeFlagsHorizontal = SizeFlags.ShrinkBegin };
+        CraftingPaperStyle.ApplyButton(open, CraftingPaperStyle.ButtonKind.Primary);
+        open.Pressed += OpenFormationWorkspace; _body.AddChild(open);
+        _body.AddChild(muted("草图不消耗材料。阵盘内件的摆放、转向与线路将在独立案面中编辑。"));
+    }
+
+    private void OpenFormationWorkspace()
+    {
+        if (IsInstanceValid(_formationWorkspace) && !_formationWorkspace!.IsQueuedForDeletion())
+        { _formationWorkspace.Show(); _formationWorkspace.MoveToFront(); return; }
+        var workspace = new FormationPaperWorkspace { Name = "FormationPaperWorkspace" };
+        _formationWorkspace = workspace;
+        workspace.TreeExiting += () => { if (ReferenceEquals(_formationWorkspace, workspace)) _formationWorkspace = null; };
+        GetTree().Root.AddChild(workspace);
+    }
+
+    public override void _ExitTree()
+    {
+        if (IsInstanceValid(_formationWorkspace)) _formationWorkspace!.QueueFree();
     }
 
     private void install_sample()
@@ -94,7 +173,7 @@ public partial class BaigongPanel : Control
     private static Label flow(string text) => new() { Text = text, HorizontalAlignment = HorizontalAlignment.Center, Modulate = new Color("f1d77a") };
     private static Label title(string text, int size, Color color) { var label = new Label { Text = text }; label.AddThemeFontSizeOverride("font_size", size); label.AddThemeColorOverride("font_color", color); return label; }
     private static Label muted(string text) { var label = new Label { Text = text, AutowrapMode = TextServer.AutowrapMode.WordSmart }; label.AddThemeColorOverride("font_color", new Color("c9d8d2")); label.AddThemeFontSizeOverride("font_size", 14); return label; }
-    private static void clear(Node node) { foreach (var child in node.GetChildren()) child.QueueFree(); }
+    private static void clear(Node node) { foreach (var child in node.GetChildren()) { node.RemoveChild(child); child.QueueFree(); } }
     private static StyleBoxFlat panel_style() => new() { BgColor = new Color(.055f, .07f, .065f, .98f), BorderColor = new Color(.68f, .56f, .32f, .9f), BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1, CornerRadiusTopLeft = 10, CornerRadiusTopRight = 10, CornerRadiusBottomLeft = 10, CornerRadiusBottomRight = 10, ContentMarginLeft = 18, ContentMarginRight = 18, ContentMarginTop = 16, ContentMarginBottom = 16 };
     private static StyleBoxFlat card_style() => new() { BgColor = new Color(.10f, .13f, .12f, .86f), BorderColor = new Color(.42f, .55f, .49f, .7f), BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1, CornerRadiusTopLeft = 6, CornerRadiusTopRight = 6, CornerRadiusBottomLeft = 6, CornerRadiusBottomRight = 6, ContentMarginLeft = 12, ContentMarginRight = 12, ContentMarginTop = 10, ContentMarginBottom = 10 };
 }

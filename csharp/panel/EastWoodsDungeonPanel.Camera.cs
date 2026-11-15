@@ -28,16 +28,29 @@ public partial class EastWoodsDungeonPanel
         update_map_camera();
     }
 
+    private void focus_map_node(string nodeId)
+    {
+        if (_mapRoot is null || _mapViewport is null || route_node(nodeId) is not { } node) return;
+        _followPlayer = false;
+        _cameraFocus = node_center(node);
+        update_map_camera();
+    }
+
     private void update_map_camera()
     {
         if (_mapRoot is null || _mapViewport is null) return;
+        if (is_roguelike_route) _mapZoom = 1f;
         if (_followPlayer)
             // Follow the stable route centre, not a pawn's bobbing/rotating local slot.
-            _cameraFocus = _travelCameraPosition ?? node_center(EastWoodsDungeonRules.get_node(_current)!);
+            _cameraFocus = _travelCameraPosition ?? node_center(route_node(_current)!);
         var scale = Vector2.One * _mapZoom;
-        var position = _mapViewport.Size * .5f - _cameraFocus * _mapZoom;
+        var viewportAnchor = is_roguelike_route
+            ? new Vector2(.5f, _followPlayer ? .70f : .5f)
+            : new Vector2(.5f, .5f);
+        var position = _mapViewport.Size * viewportAnchor - _cameraFocus * _mapZoom;
         if (!_mapRoot.Scale.IsEqualApprox(scale)) _mapRoot.Scale = scale;
         if (!_mapRoot.Position.IsEqualApprox(position)) _mapRoot.Position = position;
+        position_current_node_actions();
     }
 
     private void handle_map_camera_input(InputEvent input)
@@ -46,11 +59,17 @@ public partial class EastWoodsDungeonPanel
         if (input is not InputEventMouseButton button) return;
         if (button.Pressed && button.ButtonIndex is MouseButton.WheelUp or MouseButton.WheelDown)
         {
+            if (is_roguelike_route)
+            {
+                _mapZoom = 1f;
+                GetViewport().SetInputAsHandled();
+                return;
+            }
             // Zoom leaves the world point at the viewport centre unchanged; never use the mouse as anchor.
             _mapZoom = Mathf.Clamp(_mapZoom * (button.ButtonIndex == MouseButton.WheelUp ? 1.12f : 1 / 1.12f), MinMapZoom, MaxMapZoom);
             clear_hover(); update_map_camera(); GetViewport().SetInputAsHandled();
         }
-        else if (button.ButtonIndex == MouseButton.Right && button.Pressed)
+        else if (button.ButtonIndex == MouseButton.Middle && button.Pressed)
         {
             _cameraDragging = true; _cameraMoved = false;
             _cameraLastMouse = _cameraPressMouse = GetGlobalMousePosition();
@@ -75,7 +94,7 @@ public partial class EastWoodsDungeonPanel
             _cameraLastMouse = motion.Position;
             GetViewport().SetInputAsHandled();
         }
-        else if (input is InputEventMouseButton { ButtonIndex: MouseButton.Right, Pressed: false })
+        else if (input is InputEventMouseButton { ButtonIndex: MouseButton.Middle, Pressed: false })
         {
             _cameraDragging = false;
             if (!_cameraMoved) { _followPlayer = true; update_map_camera(); }

@@ -7,6 +7,16 @@ using Godot.Collections;
 /// </summary>
 public partial class BattleEntityData : Resource
 {
+    [Export] public bool artifact_bond_defense_applied;
+    // 仅开始菜单演练配置使用；-1 沿用正式战斗规则，0 是有效测试上限。
+    [Export] public int test_stamina_cap_override = -1;
+    [Export] public int test_mana_cap_override = -1;
+    /// <summary>独立炼器试器的单器快照；正式入口不填，不写角色存档。</summary>
+    [Export] public string trial_forged_equipment_json = "";
+    [Export] public Godot.Collections.Array<CombatSkillReference> combat_skill_references = [];
+    [Export] public CombatBoardLayout? combat_board_layout;
+    [Export] public Godot.Collections.Array<ArtifactInstanceData> equipped_artifacts = [];
+    [Export] public Godot.Collections.Array<ActiveSkillData> combat_resolved_skills = [];
     [Export] public string uid = "";
     [Export] public EntityData? portrait_data;
     [Export] public int battle_external_wounds, battle_internal_wounds;
@@ -38,10 +48,9 @@ public partial class BattleEntityData : Resource
     [Export] public string cultivation_realm = "";
     [Export] public int spirit_root_type;
     [Export] public string spirit_root_name = "";
-    // 四维保留一位小数，确保妖兽的随机、变种与精英修正不会在战斗快照中丢失。
+    // 基础战斗属性保留一位小数，确保妖兽随机、变种与精英修正不会在快照中丢失。
     [Export] public float physique;
     [Export] public float intelligence;
-    [Export] public float agility;
     [Export] public float soul;
     [Export] public int fortune;
     [Export] public int comprehension;
@@ -98,6 +107,7 @@ public partial class BattleEntityData : Resource
     [Export] public Array<string> basic_deck_upgrade_ids = [];
     [Export] public Dictionary equipment_paths = [];
     [Export] public Array<string> active_skill_paths = [];
+    [Export] public CombatBoardCatalog? combat_board_catalog;
     [Export] public Array<string> loaded_skill_paths = [];
     /// <summary>即时战斗固定技能槽；凝核牌局仍使用独立的卡牌循环。</summary>
     [Export] public Array<string> combat_skill_slot_paths = [];
@@ -109,6 +119,9 @@ public partial class BattleEntityData : Resource
     [Export] public Dictionary combat_tempering_by_gongfa = [];
     [Export] public bool battle_deck_configured;
     [Export] public Array<string> pack_item_paths = [];
+    [Export] public bool pack_state_included;
+    [Export] public Array<int> pack_item_positions = [];
+    [Export] public Array<BattleSupplySlotData> battle_supplies = [];
     [Export] public Array<int> pack_item_counts = [];
     /// <summary>角色在局外已布置并通过校验的个人战斗阵图；进入战斗时复制为运行时状态。</summary>
     [Export] public Array<FormationCircuitData> formation_circuits = [];
@@ -128,13 +141,21 @@ public partial class BattleEntityData : Resource
         sub_gongfa_paths = source.sub_gongfa_paths.Duplicate();
         basic_deck_upgrade_ids = source.basic_deck_upgrade_ids.Duplicate();
         active_skill_paths = source.active_skill_paths.Duplicate();
+        combat_board_catalog = source.combat_board_catalog?.Duplicate(true) as CombatBoardCatalog;
         loaded_skill_paths = source.loaded_skill_paths.Duplicate();
         combat_skill_slot_paths = source.combat_skill_slot_paths.Duplicate();
+        combat_skill_references = source.combat_skill_references.Duplicate(true);
+        combat_board_layout = source.combat_board_layout?.CopyConfiguration();
+        CopyCombatBoardPreparationFrom(source);
+        equipped_artifacts = source.equipped_artifacts.Duplicate(true);
+        combat_resolved_skills = source.combat_resolved_skills.Duplicate(true);
         combat_passive_paths = source.combat_passive_paths.Duplicate();
         combat_heart_method_upgrades = source.combat_heart_method_upgrades.Duplicate(true);
         combat_tempering_by_gongfa = source.combat_tempering_by_gongfa.Duplicate(true);
         pack_item_paths = source.pack_item_paths.Duplicate();
         pack_item_counts = source.pack_item_counts.Duplicate();
+        pack_item_positions = source.pack_item_positions.Duplicate();
+        battle_supplies = source.battle_supplies.Duplicate(true);
         formation_circuits = source.formation_circuits.Duplicate();
         formation_manual_ids = source.formation_manual_ids.Duplicate();
     }

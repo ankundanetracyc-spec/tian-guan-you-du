@@ -11,6 +11,12 @@ public partial class EastWoodsMapSmoke : Node
     private EastWoodsDungeonPanel _panel = null!;
     private static void Check(bool condition, string message)
     { if (!condition) throw new InvalidOperationException(message); }
+    private PanelContainer SharedHoverCard()
+    {
+        var manager = GetNode<HoverInfoManager>("/root/HoverInfoManager");
+        var field = typeof(HoverInfoManager).GetField("_card", BindingFlags.Instance | BindingFlags.NonPublic);
+        return field?.GetValue(manager) as PanelContainer ?? throw new InvalidOperationException("共享悬停详情卡尚未创建。");
+    }
     private async Task Frames(int count = 4)
     { for (var i = 0; i < count; i++) await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame); }
     private async Task Capture(string name)
@@ -31,8 +37,7 @@ public partial class EastWoodsMapSmoke : Node
             var npcManager = GetNode<NpcWorldManager>("/root/NpcWorldManager");
             EastWoodsDungeonRules.use_legacy_layout();
             var slowPoint = EastWoodsActions.ResourcePoints().Single(point => point.Action.Recovery == EastWoodsActions.ResourceRecoveryGroup.SlowGrowth);
-            Check(!EastWoodsActions.ResourcePoints().Any(point => point.Action.Recovery == EastWoodsActions.ResourceRecoveryGroup.Mineral),
-                "普通岩格被错误暴露为矿脉资源点。");
+            var mineralPoint = EastWoodsActions.ResourcePoints().Single(point => point.Action.Recovery == EastWoodsActions.ResourceRecoveryGroup.Mineral);
             for (var i = 0; i < 12; i++)
                 npcManager.npcs.Add(new WorldNpcData
                 {
@@ -47,6 +52,40 @@ public partial class EastWoodsMapSmoke : Node
                   EastWoodsDungeonRules.get_node(slowPoint.Node) is { Terrain: 0 or 1 } &&
                   EastWoodsDungeonRules.get_neighbors(slowPoint.Node).Select(EastWoodsDungeonRules.get_node).Any(neighbor => neighbor?.Terrain == 5),
                 "30日慢生资源没有接入实际湿润林缘地格与采集入口。");
+            Check(_panel.find_action(mineralPoint.Node, mineralPoint.Action.Id) is { Recovery: EastWoodsActions.ResourceRecoveryGroup.Mineral } &&
+                  EastWoodsDungeonRules.get_node(mineralPoint.Node) is { Terrain: 2 or 7, ResourceCategory: EastWoodsResourceCategory.Mineral, ResourceNodeId: "spirit_stone_vein" } &&
+                  EastWoodsDungeonRules.get_node(mineralPoint.Node)?.Feature != "spring",
+                "90日矿产采集没有接入显式专用矿脉节点。");
+            Check(_panel.find_action(slowPoint.Node, mineralPoint.Action.Id) is null &&
+                  _panel.find_action(mineralPoint.Node, slowPoint.Action.Id) is null,
+                "错误资源类别仍可打开不匹配的采集行动。");
+            foreach (var point in EastWoodsActions.ResourcePoints())
+                Check(map.GetNodeOrNull<PanelContainer>($"Node_{point.Node}/ResourceNodeMarker") is not null,
+                    $"资源地格 {point.Node} 缺少可见类别标识。");
+            var slowMarker = map.GetNode<PanelContainer>($"Node_{slowPoint.Node}/ResourceNodeMarker");
+            var mineralMarker = map.GetNode<PanelContainer>($"Node_{mineralPoint.Node}/ResourceNodeMarker");
+            var slowCategory = slowMarker.FindChild("Category", true, false) as Label;
+            var mineralCategory = mineralMarker.FindChild("Category", true, false) as Label;
+            var hoverBuilder = typeof(EastWoodsDungeonPanel).GetMethod("build_node_hover_content", BindingFlags.Instance | BindingFlags.NonPublic);
+            Check(hoverBuilder is not null, "地图节点没有接入共享悬停详情卡内容构造器。");
+            var slowHover = (HoverInfoManager.HoverInfoContent)hoverBuilder!.Invoke(_panel, new object[] { EastWoodsDungeonRules.get_node(slowPoint.Node)! })!;
+            var mineralHover = (HoverInfoManager.HoverInfoContent)hoverBuilder.Invoke(_panel, new object[] { EastWoodsDungeonRules.get_node(mineralPoint.Node)! })!;
+            var markerSummary = $"慢生 {slowPoint.Node}: label={slowCategory?.Text ?? "<missing>"}, hover={slowHover.Body}; " +
+                $"矿脉 {mineralPoint.Node}: label={mineralCategory?.Text ?? "<missing>"}, hover={mineralHover.Body}";
+            Check(slowCategory?.Text == "植" && slowHover.Body.Contains("资源类别：植物") &&
+                  mineralCategory?.Text == "矿" && mineralHover.Body.Contains("资源类别：矿产"),
+                "地图资源节点标识与共享悬停详情卡没有显示匹配类别：" + markerSummary);
+            foreach (var node in EastWoodsDungeonRules.get_nodes().Where(node =>
+                         (node.Terrain is 2 or 7) && node.ResourceCategory != EastWoodsResourceCategory.Mineral))
+            {
+                var marker = map.GetNodeOrNull<PanelContainer>($"Node_{node.Id}/ResourceNodeMarker");
+                if (marker is not null)
+                {
+                    var markerCategory = marker.FindChild("Category", true, false) as Label;
+                    Check(markerCategory?.Text != "矿" && !marker.TooltipText.Contains("矿产"),
+                        "普通岩格显示了矿产资源点标识。");
+                }
+            }
             Check(_panel.is_node_visible("deep_meet") && !_panel.is_node_visible("mid_split"), "四格视野边界错误");
             Check(!map.GetNode<Button>("Node_quiet_grove").Visible, "未知地块泄漏");
             var fogState = _panel.get_route_state();
@@ -67,13 +106,13 @@ public partial class EastWoodsMapSmoke : Node
             for(var i=0;i<60;i++) Camera(new InputEventMouseButton {ButtonIndex=MouseButton.WheelDown,Pressed=true});
             Check(Mathf.IsEqualApprox(map.Scale.X,.35f) && Centre().DistanceTo(focus)<.01f,"缩小下限或中心锚点错误");
             await Capture("00_全图_"+(compact?"1280x720":"1920x1080"));
-            Camera(new InputEventMouseButton {ButtonIndex=MouseButton.Right,Pressed=true});
+            Camera(new InputEventMouseButton {ButtonIndex=MouseButton.Middle,Pressed=true});
             _panel._Input(new InputEventMouseMotion {Position=_panel.GetGlobalMousePosition()+new Vector2(-120,-90)});
-            _panel._Input(new InputEventMouseButton {ButtonIndex=MouseButton.Right,Pressed=false});
-            Check(Centre().DistanceTo(focus)>20,"右键拖动未移动镜头");
-            Camera(new InputEventMouseButton {ButtonIndex=MouseButton.Right,Pressed=true});
-            _panel._Input(new InputEventMouseButton {ButtonIndex=MouseButton.Right,Pressed=false});
-            Check(Centre().DistanceTo(focus)<.01f,"右键单击没有回中");
+            _panel._Input(new InputEventMouseButton {ButtonIndex=MouseButton.Middle,Pressed=false});
+            Check(Centre().DistanceTo(focus)>20,"中键拖动未移动镜头");
+            Camera(new InputEventMouseButton {ButtonIndex=MouseButton.Middle,Pressed=true});
+            _panel._Input(new InputEventMouseButton {ButtonIndex=MouseButton.Middle,Pressed=false});
+            Check(Centre().DistanceTo(focus)<.01f,"中键单击没有回中");
             _panel.show_dungeon(); await Frames();
             GetViewport().PushInput(new InputEventMouseButton {ButtonIndex=MouseButton.WheelUp,Pressed=true,Position=viewport.GetGlobalRect().GetCenter()},true);
             Check(Mathf.IsEqualApprox(map.Scale.X,1.12f),"真实地格上的滚轮未传入地图");
@@ -129,14 +168,20 @@ public partial class EastWoodsMapSmoke : Node
             await Capture("02_路径预览_" + suffix);
             target.EmitSignal(Control.SignalName.MouseEntered);
             await ToSignal(GetTree().CreateTimer(.55), SceneTreeTimer.SignalName.Timeout);
-            Check(!_panel.GetNode<PanelContainer>("TerrainHoverInfo").Visible, "视野外悬停泄漏现场详情");
+            var sharedHoverCard = SharedHoverCard();
+            Check(!sharedHoverCard.Visible, "视野外悬停泄漏共享详情卡");
             var near = map.GetNode<Button>("Node_deep_meet");
+            var nearMousePosition = near.GetGlobalRect().GetCenter();
+            GetViewport().PushInput(new InputEventMouseMotion { Position = nearMousePosition, GlobalPosition = nearMousePosition }, true);
             near.EmitSignal(Control.SignalName.MouseEntered);
             await ToSignal(GetTree().CreateTimer(.55), SceneTreeTimer.SignalName.Timeout);
-            Check(_panel.GetNode<PanelContainer>("TerrainHoverInfo").Visible, "悬停没有显示详情");
+            Check(sharedHoverCard.Visible, "悬停没有显示共享详情卡");
             await Capture("03_悬停详情_" + suffix);
+            var outsideMousePosition = viewport.GetGlobalRect().Position - new Vector2(32, 32);
+            GetViewport().PushInput(new InputEventMouseMotion { Position = outsideMousePosition, GlobalPosition = outsideMousePosition }, true);
             near.EmitSignal(Control.SignalName.MouseExited);
-            Check(!_panel.GetNode<PanelContainer>("TerrainHoverInfo").Visible, "离开后详情没有隐藏");
+            await ToSignal(GetTree().CreateTimer(.15), SceneTreeTimer.SignalName.Timeout);
+            Check(!sharedHoverCard.Visible, "移出后共享详情卡没有按宽限时间隐藏");
             var moves = 0;
             _panel.RouteStepped += (_, _) => moves++;
             target.EmitSignal(BaseButton.SignalName.Pressed);

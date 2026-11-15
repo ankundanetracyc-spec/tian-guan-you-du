@@ -1,0 +1,111 @@
+{
+  "verified_date": "2026-11-06",
+  "notes": [
+    "图形检查包括功能与截图检查，不将各组总数相加宣称为互不重复用例",
+    "功能组额外核验具体林地节点；图形画面保留同一底部剧情框",
+    "NPC与胜负为隔离夹具，使用正式场景和真实战后回传"
+  ],
+  "build": {
+    "warnings": 0,
+    "errors": 0
+  },
+  "screenshots": [
+    {
+      "width": 2560,
+      "height": 1440,
+      "file": "探查入口.png"
+    },
+    {
+      "width": 2560,
+      "height": 1440,
+      "file": "底部探查确认.png"
+    },
+    {
+      "width": 2560,
+      "height": 1440,
+      "file": "公开档案未探明.png"
+    },
+    {
+      "width": 2560,
+      "height": 1440,
+      "file": "隐蔽成功属性页.png"
+    },
+    {
+      "width": 2560,
+      "height": 1440,
+      "file": "失败被发现_忍下.png"
+    },
+    {
+      "width": 2560,
+      "height": 1440,
+      "file": "成功被发现_提醒.png"
+    },
+    {
+      "width": 2560,
+      "height": 1440,
+      "file": "禁斗地点质问.png"
+    },
+    {
+      "width": 1280,
+      "height": 720,
+      "file": "底部质问_1280.png"
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "file": "赔礼对白.png"
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "file": "赔礼后回应.png"
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "file": "禁斗地点_强硬回应.png"
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "file": "允许交手地点_出手.png"
+    },
+    {
+      "width": 1920,
+      "height": 1080,
+      "file": "反击结束_记录仍在.png"
+    }
+  ],
+  "groups": [
+    {
+      "pass": true,
+      "checks": 108,
+      "log": "E:/stacklands/tmp/npc_probe_smoke_20261106/stdout.log",
+      "id": "probe_functional"
+    },
+    {
+      "pass": true,
+      "checks": 122,
+      "log": "E:/stacklands/tmp/npc_probe_native_20261106/stdout.log",
+      "id": "probe_native"
+    },
+    {
+      "pass": true,
+      "checks": 26,
+      "log": "E:/stacklands/tmp/npc_page_probe_regression_spar/stdout.log",
+      "id": "friendly_spar"
+    },
+    {
+      "pass": true,
+      "checks": 35,
+      "log": "E:/stacklands/tmp/npc_page_probe_regression_win/stdout.log",
+      "id": "hostile_victory"
+    },
+    {
+      "pass": true,
+      "checks": 73,
+      "log": "E:/stacklands/tmp/baishi_lecture_probe_final/stdout.log",
+      "id": "baishi_prologue"
+    }
+  ]
+}

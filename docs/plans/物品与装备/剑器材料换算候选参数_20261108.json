@@ -1,0 +1,85 @@
+{
+  "version": "sword-material-profile-trial-1",
+  "status": "complete_numeric_design_candidate_not_live_balance",
+  "body_split_columns": ["core", "stability", "attack"],
+  "body_split": {
+    "固": [0.40, 0.45, 0.15], "破": [0.30, 0.15, 0.55],
+    "通": [0.30, 0.50, 0.20], "藏": [0.30, 0.60, 0.10],
+    "护": [0.40, 0.50, 0.10], "*": [0.60, 0.25, 0.15]
+  },
+  "profile_demands": {
+    "stability": {"group_priority": 0.6, "minimum": 0, "costs": {"body/stability": 1, "root": 1, "structure": 1, "通": 0.1, "藏": 0.1}},
+    "attack": {"group_priority": 0.6, "minimum": 0, "costs": {"body/attack": 1, "root": 1, "structure": 1, "通": 0.1}}
+  },
+  "stability_value": {"base": 20, "sqrt_scale": 12, "minimum": 8, "stability_base_factor": 0.5, "stability_factor": 0.5},
+  "attack_value": {"base": 6, "sqrt_scale": 6, "minimum": 2, "stability_base_factor": 0.75, "stability_factor": 0.25},
+  "reference_prices": {"soul": 20, "sword_proficiency": 20, "occupation": 3},
+  "stability_bias": {
+    "base": {"constant": 1, "body_solid_ratio": 1, "body_protect_ratio": 1},
+    "soul": {"constant": 2, "process_transmission_ratio": 2},
+    "sword": {"constant": 0.5, "process_transmission_ratio_times_connection": 1},
+    "occupation": {"constant": 1, "process_storage_ratio": 2}
+  },
+  "attack_bias": {
+    "base": {"constant": 1, "edge_response": 1},
+    "soul": {"constant": 1, "process_transmission_ratio": 2},
+    "sword": {"constant": 2, "body_break_ratio": 2, "edge_response": 1}
+  },
+  "coefficient_decimal_places": 4,
+  "coefficient_rounding": "truncate_down_no_refund",
+  "normal_effect_changes": {
+    "remove_base_physical_damage_percent": true,
+    "keyword_damage_atom": {"id": "sword_physical_damage_flat", "coefficient": 0.35, "kind": "integer", "scope_cost_per_star_cell": 0.5, "scope_cost_floor": 1, "required_terms": ["剑"], "action_owner": "character", "target_shape": "single", "damage_type": "physical", "segment_scope": "original_segments_full_bonus_each", "active_mode": "held_and_enabled", "requires_star_coverage": true, "affects_controlled_weapon_actions": false},
+    "binding_weight": 1.2,
+    "binding_family_selection": "highest_remaining_matching_source_divided_by_minimum_then_stable_id",
+    "binding_families": [
+      {"id": "guard_gejian", "base_skill": "格剑", "source": "固", "atom": "defuse_flat", "coefficient": 0.5, "required_terms": ["剑", "应对", "化解"]},
+      {"id": "attack_zhanjian", "base_skill": "斩剑", "source": "破", "atom": "sword_physical_damage_flat", "coefficient": 0.35, "required_terms": ["剑"]}
+    ]
+  },
+  "battle_shape": {"length_per_cell": 12, "width_per_cell": 3, "minimum_dimension": 1, "rotation_allowed": true},
+  "held_star_shape": "battle_footprint_dimensions_as_inward_rectangle_from_perimeter_anchor",
+  "coverage": {"multi_cell_placement": "any_occupied_cell_once_per_source", "out_of_bounds": "clip_no_wrap", "target": "character_sword_techniques_only"},
+  "spirit": {"volume_coefficient": 0.15, "exclusive_control_skill_allocation_coefficient": 0.1, "minimum": 1, "profile_allocations_count_as_exclusive_skills": false},
+  "default_attack": {
+    "damage_type": "physical", "damage_type_status": "confirmed",
+    "tags": ["剑"],
+    "energy_cost": 0, "energy_status": "tentative_by_user",
+    "mana_cost": 0, "mana_status": "proposal",
+    "timing": "once_on_first_body_scan_each_common_round", "timing_status": "proposal",
+    "attack_style": "ranged", "attack_style_status": "proposal",
+    "target": "one_random_legal_enemy_character", "target_status": "proposal",
+    "extra_spell_resource_insufficient_fallback": true, "fallback_status": "confirmed_by_user",
+    "fallback_for_cooldown_or_other_failure": "not_decided",
+    "requires_valid_continuous_control": true
+  },
+  "automatic_naming": {
+    "version": "item-name-direction-trial-2",
+    "rule_status": "automatic_unless_explicitly_named_confirmed_lexicon_candidate",
+    "max_prefix_groups": 3,
+    "preferred_prefix_groups": 2,
+    "extra_group_carriers": ["direct", "summon"],
+    "separator": "·",
+    "category_order": ["base", "binding", "keyword", "trigger", "direct", "summon"],
+    "prefixes": [
+      {"carrier": "base", "atom": "physical_defense", "label": "固身"},
+      {"carrier": "keyword", "atom": "sword_physical_damage_flat", "label": "摧锋"},
+      {"carrier": "binding", "atom": "defuse_flat", "label": "卸劲"},
+      {"carrier": "binding", "atom": "sword_physical_damage_flat", "label": "凝锋"},
+      {"carrier": "trigger", "atom": "shield_flat", "label": "凝盾"},
+      {"carrier": "direct", "atom": "physical_damage_base", "label": "破敌"},
+      {"carrier": "direct", "atom": "shield_flat", "label": "自守"},
+      {"carrier": "summon", "atom": "physical_damage_base", "label": "驭锋"},
+      {"carrier": "summon", "atom": "shield_flat", "label": "护主"}
+    ],
+    "positive_quantized_effects_only": true,
+    "default_attack_and_stability_are_not_strength_prefixes": true,
+    "missing_groups": "omit_never_invent",
+    "suffix": "actual_blade_shape_without_redundant_length_adjective",
+    "explicit_name_overrides": true,
+    "freeze_auto_name_with_item": true
+  },
+  "base_performance_scope": "formed_sword_physical_core_not_extra_character_stats_or_spells",
+  "runtime_modified": false,
+  "player_save_modified": false
+}

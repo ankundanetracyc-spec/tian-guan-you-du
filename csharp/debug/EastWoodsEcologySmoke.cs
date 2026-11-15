@@ -16,7 +16,7 @@ public partial class EastWoodsEcologySmoke : Node
             check_generated_resource_locations();
             check_resource_recovery();
             check_beast_recovery();
-            GD.Print("EAST_WOODS_ECOLOGY PASS: configured 7/30-day points, 90-day mineral rule without an invented point, full cycles, retained remainder, save round-trip, new beast identity, current-cell exclusion, defeated history");
+            GD.Print("EAST_WOODS_ECOLOGY PASS: 7/30/90-day categorized resource nodes, category-gated actions, stock/cursor save round-trip, full cycles, 14-day beasts, current-cell exclusion and defeated history");
             GetTree().Quit();
         }
         catch (Exception exception)
@@ -32,23 +32,39 @@ public partial class EastWoodsEcologySmoke : Node
         var root = EastWoodsActions.Content("fern_lowland")!;
         var moss = EastWoodsActions.Content("dry_pool")!;
         var resourcePoints = EastWoodsActions.ResourcePoints();
-        Check(resourcePoints.Count == 7 && resourcePoints.Select(point => point.Action.Id).Distinct().Count() == 3,
-            "六处常见采集点与一处慢生点应分别登记；没有专门矿脉位置时不得添加矿点。");
+        Check(resourcePoints.Count == 8 && resourcePoints.Select(point => point.Action.Id).Distinct().Count() == 4,
+            "六处常见采集点、一处30日植物点和一处90日矿产点应分别登记。");
         Check(resourcePoints.Count(point => point.Action.Recovery == EastWoodsActions.ResourceRecoveryGroup.Common) == 6 &&
               resourcePoints.Count(point => point.Action.Recovery == EastWoodsActions.ResourceRecoveryGroup.SlowGrowth) == 1 &&
-              resourcePoints.Count(point => point.Action.Recovery == EastWoodsActions.ResourceRecoveryGroup.Mineral) == 0,
+              resourcePoints.Count(point => point.Action.Recovery == EastWoodsActions.ResourceRecoveryGroup.Mineral) == 1,
             "资源点恢复组与策划周期不匹配。");
         var slow = resourcePoints.Single(point => point.Action.Recovery == EastWoodsActions.ResourceRecoveryGroup.SlowGrowth);
+        var mineral = resourcePoints.Single(point => point.Action.Recovery == EastWoodsActions.ResourceRecoveryGroup.Mineral);
         var slowNode = EastWoodsDungeonRules.get_node(slow.Node);
         Check(slowNode is { Terrain: 0 or 1 } && !EastWoodsDungeonRules.is_action_anchor(slow.Node) &&
-              EastWoodsDungeonRules.get_neighbors(slow.Node).Select(EastWoodsDungeonRules.get_node).Any(neighbor => neighbor?.Terrain == 5),
+              EastWoodsDungeonRules.get_neighbors(slow.Node).Select(EastWoodsDungeonRules.get_node).Any(neighbor => neighbor?.Terrain == 5) &&
+              slowNode.ResourceNodeId == "mistbell_slow" && slowNode.ResourceCategory == EastWoodsResourceCategory.Plant,
             "慢生资源应落在既有湿润林缘格，而不覆盖原行动点。");
+        var mineralNode = EastWoodsDungeonRules.get_node(mineral.Node);
+        Check(mineralNode is { Terrain: 2 or 7 } && mineralNode.Feature != "spring" &&
+              !EastWoodsDungeonRules.is_action_anchor(mineral.Node) &&
+              mineralNode.ResourceNodeId == "spirit_stone_vein" && mineralNode.ResourceCategory == EastWoodsResourceCategory.Mineral,
+            "90日资源必须是显式矿产类别节点，不能借用普通岩格或泉眼。");
         Check(slow.Action.ItemPath == "res://resources/entities/items/雾铃花.tres",
             "慢生点引用了非现有物品。");
+        Check(mineral.Action.ItemPath == "res://resources/entities/items/灵石.tres",
+            "矿产点引用了非现有物品。");
         var slowItem = EastWoodsActions.Item(slow.Action.ItemPath);
-        Check(slowItem is not null && ResourceLoader.Exists(slowItem.icon_path), "慢生点资源缺少有效物品图标。");
+        var mineralItem = EastWoodsActions.Item(mineral.Action.ItemPath);
+        Check(slowItem is not null && ResourceLoader.Exists(slowItem.icon_path) &&
+              mineralItem is not null && ResourceLoader.Exists(mineralItem.icon_path), "资源点缺少有效物品图标。");
         Check(slow.Action.Hours == 1 && slow.Action.Stamina == 2 && slow.Action.Quantity == 1 && slow.Action.Stock == 2,
             "慢生点未沿用现有单份采集行动成本与有限储量。");
+        Check(mineral.Action.Hours == 1 && mineral.Action.Stamina == 2 && mineral.Action.Quantity == 1 && mineral.Action.Stock == 2,
+            "矿产点未沿用现有单份采集行动成本与有限储量。");
+        Check(EastWoodsActions.Find(slow.Node, mineral.Action.Id) is null &&
+              EastWoodsActions.Find(mineral.Node, slow.Action.Id) is null,
+            "植物与矿产行动没有按节点类别互相隔离。");
         Check(EastWoodsEcology.RecoveryRate(EastWoodsActions.ResourceRecoveryGroup.Mineral) == (90 * 24, 0.25),
             "90日矿脉恢复参数未按每期上限25%向上取整保留。");
 
@@ -104,50 +120,67 @@ public partial class EastWoodsEcologySmoke : Node
               actions[EastWoodsEcology.ActionProgressKey("dry_pool", moss.Id)].AsInt32() == 0,
             "同一游戏时刻重复同步不得重复补给。");
 
-        check_slow_cycles(slow);
+        var layoutSnapshot = EastWoodsDungeonRules.get_layout_state();
+        check_resource_node_cycles(slow, layoutSnapshot);
+        check_resource_node_cycles(mineral, layoutSnapshot);
     }
 
-    private static void check_slow_cycles((string Node, EastWoodsActions.ActionDef Action) slow)
+    private static void check_resource_node_cycles((string Node, EastWoodsActions.ActionDef Action) point,
+        Godot.Collections.Dictionary layoutSnapshot)
     {
         const int startHour = 18000;
-        var slowKey = EastWoodsEcology.ActionProgressKey(slow.Node, slow.Action.Id);
+        var key = EastWoodsEcology.ActionProgressKey(point.Node, point.Action.Id);
+        var periodHours = EastWoodsEcology.RecoveryRate(point.Action.Recovery).PeriodHours;
+        var recoveredPerCycle = (int)Math.Ceiling(point.Action.Stock * EastWoodsEcology.RecoveryRate(point.Action.Recovery).Fraction);
         var route = new Godot.Collections.Dictionary
         {
             ["current"] = "forest_edge",
+            ["layout"] = layoutSnapshot.Duplicate(true),
             ["actions"] = new Godot.Collections.Dictionary
             {
-                [slowKey] = slow.Action.Stock,
+                [key] = point.Action.Stock,
             },
         };
 
         EastWoodsEcology.Synchronize(route, startHour, "forest_edge");
-        EastWoodsEcology.Synchronize(route, startHour + 30 * 24 - 1, "forest_edge");
         var actions = route["actions"].AsGodotDictionary();
-        Check(actions[slowKey].AsInt32() == slow.Action.Stock,
-            "未满30日时不应恢复慢生资源。");
+        var ecology = actions["__east_woods_ecology"].AsGodotDictionary();
+        var cursors = ecology["resource_cursors"].AsGodotDictionary();
+        Check(cursors[key].AsInt32() == startHour, "资源点初次启用时未保存恢复游标。");
+        EastWoodsEcology.Synchronize(route, startHour + periodHours - 1, "forest_edge");
+        Check(route["actions"].AsGodotDictionary()[key].AsInt32() == point.Action.Stock,
+            "未满完整周期时资源点不应恢复。");
 
-        EastWoodsEcology.Synchronize(route, startHour + 30 * 24, "forest_edge");
-        actions = route["actions"].AsGodotDictionary();
-        Check(actions[slowKey].AsInt32() == 1,
-            "满30日时慢生点应恢复上限的25%向上取整。");
-
-        // Simulate harvesting the recovered unit, then verify the next boundary after save/load.
-        actions[slowKey] = slow.Action.Stock;
-        EastWoodsEcology.Synchronize(route, startHour + 60 * 24, "forest_edge");
-        actions = route["actions"].AsGodotDictionary();
-        actions[slowKey] = slow.Action.Stock;
-        EastWoodsEcology.Synchronize(route, startHour + 90 * 24 - 1, "forest_edge");
-        actions = route["actions"].AsGodotDictionary();
-        Check(actions[slowKey].AsInt32() == slow.Action.Stock,
-            "保存前不足完整周期时不得提前恢复资源。");
         var loaded = Json.ParseString(Json.Stringify(route)).AsGodotDictionary();
-        EastWoodsEcology.Synchronize(loaded, startHour + 90 * 24, "forest_edge");
+        EastWoodsDungeonRules.restore_layout(loaded["layout"].AsGodotDictionary());
+        var restoredNode = EastWoodsDungeonRules.get_node(point.Node);
+        var expectedCategory = point.Action.Recovery == EastWoodsActions.ResourceRecoveryGroup.Mineral
+            ? EastWoodsResourceCategory.Mineral : EastWoodsResourceCategory.Plant;
+        var expectedNodeId = expectedCategory == EastWoodsResourceCategory.Mineral ? "spirit_stone_vein" : "mistbell_slow";
+        Check(restoredNode?.ResourceCategory == expectedCategory &&
+              restoredNode.ResourceNodeId == expectedNodeId,
+            "读档后资源节点类别没有保存。");
+        EastWoodsEcology.Synchronize(loaded, startHour + periodHours, "forest_edge");
         actions = loaded["actions"].AsGodotDictionary();
-        Check(actions[slowKey].AsInt32() == 1,
-            "读档后应保留慢生点的30日游标与资源余数。");
-        EastWoodsEcology.Synchronize(loaded, startHour + 90 * 24, "forest_edge");
-        Check(actions[slowKey].AsInt32() == 1,
-            "同刻重复同步不得重复发放资源。");
+        Check(point.Action.Stock - actions[key].AsInt32() == recoveredPerCycle,
+            "完整周期未按上限25%向上取整恢复储量。");
+        ecology = actions["__east_woods_ecology"].AsGodotDictionary();
+        cursors = ecology["resource_cursors"].AsGodotDictionary();
+        Check(cursors[key].AsInt32() == startHour + periodHours,
+            "恢复后没有推进并保存周期游标。");
+
+        // Deplete it again and save after a partial period; loading must retain the remaining time.
+        actions[key] = point.Action.Stock;
+        EastWoodsEcology.Synchronize(loaded, startHour + periodHours + 23, "forest_edge");
+        loaded = Json.ParseString(Json.Stringify(loaded)).AsGodotDictionary();
+        EastWoodsEcology.Synchronize(loaded, startHour + periodHours * 2 - 1, "forest_edge");
+        actions = loaded["actions"].AsGodotDictionary();
+        Check(actions[key].AsInt32() == point.Action.Stock,
+            "读档后不足完整周期的恢复余时没有保留。");
+        EastWoodsEcology.Synchronize(loaded, startHour + periodHours * 2, "forest_edge");
+        actions = loaded["actions"].AsGodotDictionary();
+        Check(point.Action.Stock - actions[key].AsInt32() == recoveredPerCycle,
+            "保留的周期余时没有在下个整周期边界恢复资源。");
     }
 
     private static void check_generated_resource_locations()
@@ -157,16 +190,22 @@ public partial class EastWoodsEcologySmoke : Node
             EastWoodsDungeonRules.generate_layout("ecology-resource-smoke-" + index);
             var points = EastWoodsActions.ResourcePoints();
             var slow = points.Single(point => point.Action.Recovery == EastWoodsActions.ResourceRecoveryGroup.SlowGrowth);
+            var mineral = points.Single(point => point.Action.Recovery == EastWoodsActions.ResourceRecoveryGroup.Mineral);
             var slowNode = EastWoodsDungeonRules.get_node(slow.Node);
             Check(slowNode is { Terrain: 0 or 1 } &&
-                  EastWoodsDungeonRules.get_neighbors(slow.Node).Select(EastWoodsDungeonRules.get_node).Any(neighbor => neighbor?.Terrain == 5),
+                  EastWoodsDungeonRules.get_neighbors(slow.Node).Select(EastWoodsDungeonRules.get_node).Any(neighbor => neighbor?.Terrain == 5) &&
+                  slowNode.ResourceCategory == EastWoodsResourceCategory.Plant && slowNode.ResourceNodeId == "mistbell_slow",
                 "种子地图未在现有湿润林缘配置慢生采集点。");
-            Check(!points.Any(point => point.Action.Recovery == EastWoodsActions.ResourceRecoveryGroup.Mineral),
-                "没有专门灵石脉标记时不得把普通岩格配置成矿点。");
+            var mineralNode = EastWoodsDungeonRules.get_node(mineral.Node);
+            Check(mineralNode is { Terrain: 2 or 7 } && mineralNode.Feature != "spring" &&
+                  mineralNode.ResourceCategory == EastWoodsResourceCategory.Mineral && mineralNode.ResourceNodeId == "spirit_stone_vein",
+                "种子地图未创建独立类别的专用矿脉节点。");
             var layout = EastWoodsDungeonRules.get_layout_state();
             EastWoodsDungeonRules.restore_layout(layout);
-            Check(EastWoodsActions.SlowGrowthPointNodeId() == slow.Node,
-                "地图快照恢复后慢生点位置改变。");
+            Check(EastWoodsActions.SlowGrowthPointNodeId() == slow.Node && EastWoodsActions.MineralPointNodeId() == mineral.Node &&
+                  EastWoodsDungeonRules.get_node(slow.Node)?.ResourceCategory == EastWoodsResourceCategory.Plant &&
+                  EastWoodsDungeonRules.get_node(mineral.Node)?.ResourceCategory == EastWoodsResourceCategory.Mineral,
+                "地图快照恢复后资源点位置或类别改变。");
         }
         EastWoodsDungeonRules.use_legacy_layout();
     }

@@ -1,4 +1,4 @@
-﻿using Godot;
+using Godot;
 using Godot.Collections;
 using GArray = Godot.Collections.Array;
 
@@ -12,6 +12,8 @@ public partial class BattleTransitionManager : Node
     private string world_scene_path = "";
     private GArray result_attackers = [];
     private GArray result_defenders = [];
+    private Godot.Collections.Array<Dictionary> _artifactReports = [];
+    public void set_artifact_reports(Godot.Collections.Array<Dictionary> reports) => _artifactReports = reports.Duplicate(true);
     private bool has_results;
     private bool has_battle_return_data;
     private Dictionary last_summary = [];
@@ -33,6 +35,8 @@ public partial class BattleTransitionManager : Node
     public void start_team_battle(Godot.Collections.Array<PackedScene> attacker_packeds, Godot.Collections.Array<PackedScene> defender_packeds, GArray attacker_datas, GArray defender_datas, string world_path)
     {
         if(_awaitingSettlement || GodotObject.IsInstanceValid(_flowView))return;
+        if (!BeastCombatBoardRules.TryValidateBattleSnapshots(Data(attacker_datas).Concat(Data(defender_datas)), out var boardFailure))
+        { ReportCreatureBoardRejection(boardFailure); return; }
         pending_attackers = attacker_packeds; pending_defenders = defender_packeds;
         pending_attacker_data = attacker_datas; pending_defender_data = defender_datas; world_scene_path = world_path;
         ShowBattleBriefing();
@@ -43,6 +47,8 @@ public partial class BattleTransitionManager : Node
         if (_awaitingSettlement || GodotObject.IsInstanceValid(_flowView) || _spectatorBattleActive ||
             attacker_packeds.Count == 0 || defender_packeds.Count == 0 || attacker_datas.Count == 0 || defender_datas.Count == 0)
             return false;
+        if (!BeastCombatBoardRules.TryValidateBattleSnapshots(Data(attacker_datas).Concat(Data(defender_datas)), out var boardFailure))
+        { GD.PushWarning("BattleTransitionMgr: " + boardFailure); return false; }
 
         pending_attackers = attacker_packeds;
         pending_defenders = defender_packeds;
@@ -85,6 +91,12 @@ public partial class BattleTransitionManager : Node
         return true;
     }
 
+    private void ReportCreatureBoardRejection(string reason)
+    {
+        if (GetTree().CurrentScene is MainScene main) main.show_battle_entry_blocked(reason);
+        else GD.PushWarning("BattleTransitionMgr: " + reason);
+    }
+
     public GArray consume_pending_battle_package()
     {
         _cappedWorldPlayerUid = "";
@@ -111,6 +123,7 @@ public partial class BattleTransitionManager : Node
     }
 
     public void set_battle_return_context(Dictionary context) => return_context = context.Duplicate(true);
+    public bool is_combat_board_test() => return_context.GetValueOrDefault("kind", "").AsString() == "combat_board_test";
 
     public void end_team_battle(GArray updated_attackers, GArray updated_defenders)
     {
@@ -121,7 +134,8 @@ public partial class BattleTransitionManager : Node
     public bool has_pending_battle_return_data() => has_battle_return_data;
     public GArray consume_results()
     {
-        var result = new GArray { result_attackers, result_defenders, saved_entity_data };
+        var result = new GArray { result_attackers, result_defenders, saved_entity_data, _artifactReports };
+        _artifactReports = [];
         result_attackers = []; result_defenders = []; saved_entity_data = []; has_results = false; saved_world = null;
         return result;
     }

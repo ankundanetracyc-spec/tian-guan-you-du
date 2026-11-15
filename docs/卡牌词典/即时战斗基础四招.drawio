@@ -1,0 +1,22 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="即时战斗基础四招">
+    <mxGraphModel>
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" parent="1" vertex="1" value="拳掌 · 四段连招 · 完整2.20秒&#10;关键词：无&#10;出手方式：近身&#10;体力0、法力0、不占灵识；目标：每段实际位置前方半圆敌人&#10;连点或按住左键逐段接续；每段每目标最多命中一次。&#10;P为每段开始时的非负最终体魄，A=round(7+P×0.45)。&#10;第1段 探拳 · 0.45秒 · 拳&#10;物理伤害B（B=round(A×0.40)）&#10;半径R₁（R₁=min(160,110+P×0.80)）；不贴步。&#10;第2段 进步横掌 · 0.50秒 · 掌&#10;物理伤害C（C=round(A×0.40)）&#10;半径R₂（R₂=min(180,120+P×1.00)）；沿本段方向贴步8单位。&#10;第3段 回身穿拳 · 0.55秒 · 拳&#10;物理伤害D（D=round(A×0.50)）&#10;半径R₃（R₃=min(200,130+P×1.20)）；不贴步。&#10;第4段 推掌收势 · 0.70秒 · 掌&#10;物理伤害E（E=round(A×0.70)）&#10;半径R₄（R₄=min(220,150+P×1.40)）；沿本段方向贴步12单位。&#10;各段40%处结算，贴步在准备阶段平滑完成；特效随真实半径缩放。&#10;准备时跟随鼠标瞄准与贴步，释放后固定方向；续接窗口0.30秒，最多缓冲下一段一次。&#10;整套结束、续接超时或中断后开始一次冷却K秒&#10;（K=max(0.35,0.8−P×0.002)，P取结束时体魄），最低0.35秒。&#10;错步可随时中断；未释放的剩余段不补发，无返费或资源生成。&#10;四段共用一次技能身份，未迁移心法／化法不因多段自动启用。" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#eee9d9;strokeColor=#557f70;fontSize=16;align=left;spacing=16;">
+          <mxGeometry x="30" y="30" width="630" height="650" as="geometry" />
+        </mxCell>
+        <mxCell id="3" parent="1" vertex="1" value="痛击&#10;关键词：无&#10;体力1、法力0；延迟0.20秒；冷却C秒（C=max(2,5÷(1+体魄÷50))）&#10;目标：前方180像素半圆敌人&#10;出手方式：近身&#10;造成A点物理伤害（A=round(11+体魄×0.75)）。&#10;单次按下施放；无额外僵直、击退。&#10;结束或中断后起算；施放期间不能重复发动。" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#eee9d9;strokeColor=#557f70;fontSize=16;align=left;spacing=16;">
+          <mxGeometry x="690" y="30" width="450" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="4" parent="1" vertex="1" value="错步&#10;关键词：无&#10;体力1、法力0；立即；冷却C秒（C=max(2,6÷(1+身法÷100))）&#10;目标：自身&#10;0.20秒位移最多100像素，前0.15秒无敌。&#10;沿移动方向；无输入时向当前左右面向反方向后撤。&#10;可取消未释放攻击，费用和冷却不退。&#10;结束或中断后起算；施放期间不能重复发动。" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#eee9d9;strokeColor=#557f70;fontSize=16;align=left;spacing=16;">
+          <mxGeometry x="30" y="710" width="450" height="350" as="geometry" />
+        </mxCell>
+        <mxCell id="5" parent="1" vertex="1" value="架招&#10;关键词：化解、应对&#10;体力1、法力0；立即；冷却C秒（C=max(1.5,5−min(体魄,神魂)×0.03)）&#10;目标：自身&#10;0.20秒内匹配首项来袭物理攻击，获得化解A&#10;（A=3+floor(体魄/4)+floor(min(体魄×0.25,神魂×0.20)))。&#10;本次攻击后余量消散，空放扣费。&#10;结束或中断后起算；施放期间不能重复发动。" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#eee9d9;strokeColor=#557f70;fontSize=16;align=left;spacing=16;">
+          <mxGeometry x="690" y="710" width="450" height="350" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

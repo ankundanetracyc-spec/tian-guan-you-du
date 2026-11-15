@@ -1,0 +1,45 @@
+<mxfile host="app.diagrams.net" modified="2026-07-13T00:00:00.000Z" agent="Codex" version="24.7.17">
+  <diagram id="xuan-yuan-xie-chuan" name="泄川">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="760" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="泄川" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="617" y="20" width="200" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="main" value="技能名：泄川&#xA;关键词：潮汐、炁&#xA;耗费：体力 1、法力 0&#xA;目标：自身&#xA;条件：潮汐不少于10层&#xA;效果：潮汐下降6层，获得炁2层。退潮经过潮汐节点时，立即结算对应节点效果。&#xA;使用次数：每轮1次" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=16;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="560" y="180" width="634" height="209" as="geometry" />
+        </mxCell>
+        
+        
+        
+        
+        
+        
+        
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="xuan-yuan-xie-chuan-rules" name="策划说明">
+    <mxGraphModel dx="1600" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1700" pageHeight="760" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="策划说明" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="617" y="20" width="200" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="main" value="状态：待审设计，未接入运行时。&#xA;来源：玄渊承澜荡海真经·第一卷·承澜。&#xA;条件10层与消耗6层、获得炁2层沿用水行主案。&#xA;卷章化法单列于秘籍图谱，不改写本技能卡基础效果。&#xA;待定：潮汐上限与运行时接入；本卡只调用公共潮汐与炁。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=16;align=left;verticalAlign=top;" vertex="1" parent="1">
+          <mxGeometry x="560" y="180" width="634" height="209" as="geometry" />
+        </mxCell>
+        
+        
+        
+        
+        
+        
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

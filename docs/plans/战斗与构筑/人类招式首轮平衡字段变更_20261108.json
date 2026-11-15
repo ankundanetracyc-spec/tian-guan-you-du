@@ -1,0 +1,132 @@
+{
+  "date": "2026-11-08",
+  "authority": "人类招式首轮平衡与名称标注_20261108.md",
+  "original_baseline_preserved": "人类招式效果字段基线_20261108.json",
+  "scope": "六招及六份实际化法副本，共12份资源；只允许逐项列明字段，描述另行同步",
+  "resources": {
+    "resources/activeskills/剑修基础/养锋.tres": {
+      "before_hash": "3cc2508c1a4563402a421b10e359719fa3b4693850e8005c71d3ee417cb9399e",
+      "after_hash": "b6161dbabc7a46d19b13318b6e453bb2830717442c894f2fee6dd37566c93d63",
+      "fields": {
+        "special_effects": {
+          "before": "Array[Dictionary]([{\"effect\":\"gain_sword_intent\",\"count\":1}])",
+          "after": "Array[Dictionary]([{\"effect\":\"gain_sword_intent\",\"count\":2}])"
+        }
+      }
+    },
+    "resources/activeskills/剑修基础/尽锋.tres": {
+      "before_hash": "b9c2a29f2afc680b2126771d42f83e1cbe3a2c904c149f3b45d0f8d08f0614d4",
+      "after_hash": "38180c488bef19dfd2ab1b7b90761370abf4e027094f5409832a091ba807d93d",
+      "fields": {
+        "damage_formula": {
+          "before": "\"round(7 + intelligence*0.30 + magic_proficiency*0.35 + sword_proficiency*0.50 + sword_intent_stacks*2)\"",
+          "after": "\"round(7 + intelligence*0.30 + magic_proficiency*0.35 + sword_proficiency*0.50 + sword_intent_stacks*4)\""
+        }
+      }
+    },
+    "resources/activeskills/太和感物养元宝册/化法/乘势再攻第一卷.tres": {
+      "before_hash": "283460417eeafce0d28bec4584271b7ed4e6bc3d835dfd5102b04dda7ad4d00f",
+      "after_hash": "3ddc05aa6b9ed5ed41c5db0900de1b7a7883787a910f8f4a465bff8c1d9f93e3",
+      "fields": {
+        "energy_cost": {
+          "before": "1",
+          "after": "2"
+        }
+      }
+    },
+    "resources/activeskills/太和感物养元宝册/化法/叩山.tres": {
+      "before_hash": "1cf7d31f8f53b38bbee1c92b3d34e8b3f326da8e233554fdf951d0c38113f183",
+      "after_hash": "85643256a2de0ab78711f5e2117869a0431245b99bbc10c2ae4cd3d78207fec3",
+      "fields": {
+        "energy_cost": {
+          "before": "1",
+          "after": "2"
+        }
+      }
+    },
+    "resources/activeskills/太和感物养元宝册/叩山.tres": {
+      "before_hash": "d7eac5ada387184e0da732362941de00dcd4bc475093e376ff0e05236295ae26",
+      "after_hash": "b3d634f7ce01930d5df820be847f53af44da7765fa379216217e7edad1ac161f",
+      "fields": {
+        "energy_cost": {
+          "before": "1",
+          "after": "2"
+        }
+      }
+    },
+    "resources/activeskills/灵击.tres": {
+      "before_hash": "a6bd5ca55856d815e44facfad8876cf594f1f280087e410d768ce7c5ad6959f4",
+      "after_hash": "92a278f8970e40ebda226694a6e4d7e4e0766350179ab754de53f37018831951",
+      "fields": {
+        "energy_cost": {
+          "before": "2",
+          "after": "1"
+        },
+        "base_damage": {
+          "before": "4.0",
+          "after": "6.0"
+        }
+      }
+    },
+    "resources/activeskills/百骸衍枝化生宝册/化法/摧山.tres": {
+      "before_hash": "838bc6c0f428bdccf8b4d659983fd97bc1b966a4ecd3f96ae6645336cefb6d6e",
+      "after_hash": "48f0570395b9ff330695385ddda31b5ed123b947608fe3682bc24de63e414c98",
+      "fields": {
+        "damage_formula": {
+          "before": "\"round(7 + 体魄×0.55 + 体道造诣×0.25)\"",
+          "after": "\"round(10 + 体魄×0.65 + 体道造诣×0.35)\""
+        }
+      }
+    },
+    "resources/activeskills/百骸衍枝化生宝册/摧山.tres": {
+      "before_hash": "261c4facaae2560be035689114f21f8e2cd94030696c7bd7727d0ad4fa7deef6",
+      "after_hash": "be320140a94cde16c880f738a18dfd56c82fd30d46b34d027d2f2b808c4ded18",
+      "fields": {
+        "damage_formula": {
+          "before": "\"round(7 + 体魄×0.55 + 体道造诣×0.25)\"",
+          "after": "\"round(10 + 体魄×0.65 + 体道造诣×0.35)\""
+        }
+      }
+    },
+    "resources/activeskills/舒卷天章/云岚三叠.tres": {
+      "before_hash": "4dea73b95a575b7a3f93e249f6de71cf95f42eceb4393546e9c084943bb1a04b",
+      "after_hash": "3be68eb93d9bd5223d815f3b7332b4c6f96e1379c0009410bd501d61c3989c75",
+      "fields": {
+        "damage_formula": {
+          "before": "\"round(5 + 体魄×0.40 + 剑道造诣×0.50)\"",
+          "after": "\"round(8 + 体魄×0.50 + 剑道造诣×0.60)\""
+        }
+      }
+    },
+    "resources/activeskills/舒卷天章/化法/云岚三叠第3卷.tres": {
+      "before_hash": "b0cf871fa66b8e080c1f4dbecc0545de558aa91008f7af47e63914aad5464dbe",
+      "after_hash": "b8b111b1cbdbffa69e8aa5e3b1bb335f22f3a7400380115cdb54e545cadb939d",
+      "fields": {
+        "damage_formula": {
+          "before": "\"round(5 + 体魄×0.40 + 剑道造诣×0.50)\"",
+          "after": "\"round(8 + 体魄×0.50 + 剑道造诣×0.60)\""
+        }
+      }
+    },
+    "resources/activeskills/舒卷天章/化法/养锋第1卷.tres": {
+      "before_hash": "15d7a59f98a86b1b05ba005ed02656831222cbe2946eb64a2c48dcee10df66b4",
+      "after_hash": "5a18b329be6c9ecf5bf61ffffa08c791720b1c9c6e9fc2203d5e5173c39fa38e",
+      "fields": {
+        "special_effects": {
+          "before": "Array[Dictionary]([{\"effect\":\"gain_sword_intent\",\"count\":1}])",
+          "after": "Array[Dictionary]([{\"effect\":\"gain_sword_intent\",\"count\":2}])"
+        }
+      }
+    },
+    "resources/activeskills/舒卷天章/化法/尽锋第4卷.tres": {
+      "before_hash": "405a14357162c624fdb76590e4d1863b6e81c29497787878947bd99709bfcc10",
+      "after_hash": "6b5658ede44b01adbb40c6ba4a042b354199c1c10190dbb8ba2dba0491648db0",
+      "fields": {
+        "damage_formula": {
+          "before": "\"round(7 + intelligence*0.30 + magic_proficiency*0.35 + sword_proficiency*0.50 + sword_intent_stacks*2)\"",
+          "after": "\"round(7 + intelligence*0.30 + magic_proficiency*0.35 + sword_proficiency*0.50 + sword_intent_stacks*4)\""
+        }
+      }
+    }
+  }
+}

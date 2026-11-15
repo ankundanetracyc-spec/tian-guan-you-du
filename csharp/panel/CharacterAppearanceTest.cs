@@ -8,11 +8,28 @@ public partial class CharacterAppearanceTest : Control
     private readonly CheckButton[] _partChecks = new CheckButton[9];
     private readonly OptionButton[] _partChoices = new OptionButton[9];
     private readonly int[][] _variants = [new int[9], new int[9]];
-    private bool _female;
+    private bool _female = true;
     private bool _showAnchors;
     private TextureRect _portraitView = null!;
     private Label _status = null!;
     private FontFile? _font;
+    private ShaderMaterial? _breathingMaterial;
+    private double _breathTime;
+    private bool _breathingEnabled = true;
+
+    public override void _Process(double delta)
+    {
+        if (!_breathingEnabled || _showAnchors || !IsVisibleInTree()) return;
+        _breathTime = (_breathTime + delta) % 4.8;
+        _breathingMaterial?.SetShaderParameter("breath", (float)(0.5 - 0.5 * System.Math.Cos(_breathTime / 4.8 * System.Math.Tau)));
+    }
+
+    public void SetBreathingPreview(bool enabled)
+    {
+        _breathingEnabled = enabled;
+        _breathTime = 0;
+        _breathingMaterial?.SetShaderParameter("breath", 0f);
+    }
 
     public override void _Ready()
     {
@@ -84,6 +101,7 @@ public partial class CharacterAppearanceTest : Control
         var genderChoice = new OptionButton { Name = "GenderChoice", CustomMinimumSize = new Vector2(120, 42) };
         genderChoice.AddItem("男");
         genderChoice.AddItem("女");
+        genderChoice.Select(1);
         apply_font(genderChoice, 18);
         genderChoice.ItemSelected += index =>
         {
@@ -96,13 +114,18 @@ public partial class CharacterAppearanceTest : Control
         apply_font(anchorGuide, 18);
         foreach (string state in new[] { "font_color", "font_hover_color", "font_pressed_color", "font_hover_pressed_color", "font_focus_color" })
             anchorGuide.AddThemeColorOverride(state, new Color("35423d"));
-        anchorGuide.Toggled += enabled => { _showAnchors = enabled; refresh_portrait(); };
+        anchorGuide.Toggled += enabled => { _showAnchors = enabled; _breathingMaterial?.SetShaderParameter("breath", 0f); refresh_portrait(); };
         header.AddChild(anchorGuide);
+        var breathing = new CheckButton { Name = "BreathingPreview", Text = "呼吸", ButtonPressed = true };
+        apply_font(breathing, 18);
+        breathing.AddThemeColorOverride("font_color", new Color("35423d"));
+        breathing.Toggled += SetBreathingPreview;
+        header.AddChild(breathing);
         var backTop = button("返回开始界面", 150, 42);
         backTop.Pressed += return_to_start_menu;
         header.AddChild(backTop);
 
-        root.AddChild(label("前发与后发可自由组合；女修含参考五官。男修面饰为胡须，女修为妆容。", 16, new Color("5b625c")));
+        root.AddChild(label("相近五官已合并；眉、眼、鼻、嘴与前后发均可独立选择，不绑定整套。", 16, new Color("5b625c")));
 
         var work = new HBoxContainer { SizeFlagsVertical = SizeFlags.ExpandFill };
         work.AddThemeConstantOverride("separation", 18);
@@ -134,6 +157,8 @@ public partial class CharacterAppearanceTest : Control
             MouseFilter = MouseFilterEnum.Ignore,
         };
         stage.AddChild(_portraitView);
+        _breathingMaterial = new ShaderMaterial { Shader = GD.Load<Shader>("res://shaders/portrait_breathing.gdshader") };
+        _portraitView.Material = _breathingMaterial;
 
         var settingsCard = new PanelContainer { CustomMinimumSize = new Vector2(780, 790), SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill };
         settingsCard.AddThemeStyleboxOverride("panel", panel_style(new Color(0.95f, 0.93f, 0.87f, 0.97f), new Color(0.48f, 0.45f, 0.37f, 0.72f)));
@@ -201,7 +226,7 @@ public partial class CharacterAppearanceTest : Control
         _status.Name = "AppearanceStatus";
         _status.CustomMinimumSize = new Vector2(0, 62);
         settings.AddChild(_status);
-        settings.AddChild(label("拼接顺序：后发 → 脸型 → 衣服 → 眼睛 → 眉毛 → 鼻子 → 嘴巴 → 面饰 → 前发。", 15, new Color("656a65")));
+        settings.AddChild(label("拼接顺序：后发 → 后领 → 脸型 → 前衣 → 鼻子与山根 → 眼睛 → 眉毛 → 嘴巴 → 面饰 → 前发。", 15, new Color("656a65")));
 
         var reset = button("显示全部九件", 160, 48);
         reset.Name = "ShowAllParts";
@@ -231,13 +256,12 @@ public partial class CharacterAppearanceTest : Control
             show_all_parts();
         };
         actions.AddChild(baseline);
-        var reference = button("参考女修五官", 150, 48);
+        var reference = button("查看女修", 150, 48);
         reference.Name = "ReferenceFemaleFace";
         reference.Pressed += () =>
         {
             _female = true;
             genderChoice.Select(1);
-            for (int part = 2; part <= 6; part++) _variants[1][part] = 3;
             refresh_choices();
             show_all_parts();
         };

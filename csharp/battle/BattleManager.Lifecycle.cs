@@ -7,6 +7,8 @@ public partial class BattleManager : Node2D
     {
         if(_spectatorBattle)return;
         if(FlowTransitionActive){GetViewport().SetInputAsHandled();return;}
+        if (@event.IsActionPressed("ui_cancel") && _supplyHud?.Dismiss() == true)
+        { GetViewport().SetInputAsHandled(); return; }
         if(@event is InputEventKey{Pressed:true,Echo:false,Keycode:Key.Space}&&_realtimeMode&&battle_running)
         {
             toggle_battle_pause();
@@ -18,6 +20,8 @@ public partial class BattleManager : Node2D
     {
         if(_spectatorBattle)return;
         if(FlowTransitionActive){GetViewport().SetInputAsHandled();return;}
+        if (@event.IsActionPressed("ui_cancel") && UndoQueuePlanning())
+        { GetViewport().SetInputAsHandled(); return; }
         if (_realtimeMode && @event is InputEventMouseButton { Pressed: true, ButtonIndex: MouseButton.Left } mouse && _pendingInstantSkill is not null && GodotObject.IsInstanceValid(active_unit))
         {
             var skill = _pendingInstantSkill;
@@ -35,7 +39,6 @@ public partial class BattleManager : Node2D
                 GetViewport().SetInputAsHandled(); return;
             }
         }
-        if (@event is InputEventKey { Pressed: true, Echo: false, Keycode: Key.Escape }) { if (!UndoQueuePlanning() && battle_running) toggle_battle_pause(); GetViewport().SetInputAsHandled(); }
     }
     private bool CheckBattleOver()
     {
@@ -47,6 +50,7 @@ public partial class BattleManager : Node2D
             GD.PushError($"BattleManager: 战斗队伍为空（我方 {player_units.Count}，敌方 {enemy_units.Count}）");
             return false;
         }
+        LeaveDeadOwnerArtifacts();
         if (player_units.All(unit => !Alive(unit)) || enemy_units.All(unit => !Alive(unit))) { finish_battle(); return true; }
         return false;
     }
@@ -54,6 +58,11 @@ public partial class BattleManager : Node2D
     private async void finish_battle(bool escaped=false)
     {
         if (_returning_to_world)return; SetBattlePaused(false); _returning_to_world=true; battle_running=false; _segmentPhase=SegmentPhase.None; _skillBar?.clear_targeting();
+        if (isolated_trial_battle)
+        {
+            FinishArtifacts(); _skillBar?.Hide(); _planHud?.Hide();
+            SetMeta("isolated_trial_finished", true); return;
+        }
         var transition=GetTree().Root.GetNodeOrNull<BattleTransitionManager>("BattleTransitionManager");
         if(!_spectatorBattle&&transition is not null)await transition.HoldBattleOutro();
         if(!_spectatorBattle)await FadeBattleControls();
@@ -65,6 +74,8 @@ public partial class BattleManager : Node2D
             var wounds=get_realtime_wound_counts(unit);
             return $"{unit.Get("entity_name").AsString()}：外伤 {wounds["external"].AsInt32()} 层，内伤 {wounds["internal"].AsInt32()} 层";
         })));
+        FinishArtifacts();
+        transition?.set_artifact_reports(build_artifact_reports());
         RestoreBattleResources();
         foreach(var unit in player_units)if(GodotObject.IsInstanceValid(unit))attackers.Add(unit.Call("get_snapshot_data"));
         foreach(var unit in enemy_units)if(GodotObject.IsInstanceValid(unit))defenders.Add(unit.Call("get_snapshot_data"));
@@ -74,21 +85,23 @@ public partial class BattleManager : Node2D
     }
     private GodotObject? FindTarget(GodotObject unit) => (unit.Get("faction").AsInt32() == 1 ? enemy_units : player_units).FirstOrDefault(Alive);
     private static bool RequiresTargetSelection(ActiveSkillData skill) => skill.target_type is 2 or 3 || skill.can_target_empty || skill.aoe_range > 0;
-    private GodotObject? DefaultTarget(ActiveSkillData skill, GodotObject caster) => skill.target_type == 0 || skill.target_type == 1 ? caster : FindTarget(caster);
+    private GodotObject? DefaultTarget(ActiveSkillData skill, GodotObject caster) => skill.target_type is 0 or 1 ? caster : get_target_candidates().FirstOrDefault(target => IsValidTarget(skill, caster, target));
     private static bool IsValidTarget(ActiveSkillData skill, GodotObject caster, GodotObject? target)
     {
         if (!GodotObject.IsInstanceValid(target) || !Alive(target)) return false;
+        if (target is ArtifactBody body) return ArtifactAcceptsSkill(body, caster, skill);
         var sameFaction = target!.Get("faction").AsInt32() == caster.Get("faction").AsInt32();
-        return skill.target_type switch { 2 => !sameFaction, 3 => true, 1 => sameFaction, _ => false };
+        return skill.target_type switch { 0 => target == caster, 2 => !sameFaction, 3 => true, 1 => sameFaction, _ => false };
     }
-    private static bool Alive(GodotObject? unit) => GodotObject.IsInstanceValid(unit) && unit!.Get("current_health").AsInt32() > 0;
+    private static bool Alive(GodotObject? unit) => GodotObject.IsInstanceValid(unit) && (unit is ArtifactBody body ? body.current_health > 0 && body.DepartureReason.Length == 0 : unit!.Get("current_health").AsInt32() > 0);
     /// <summary>战斗最终行动速度：常驻属性与状态先作固定加减，手中每张伤势再按比例减速（最多 30%）。</summary>
     private float Initiative(GodotObject unit)
     {
         var fixedSpeed = CardRules.Number(unit, "initiative_speed");
         Godot.Collections.Array woundCards = [];
         foreach (var card in Hand(unit)) woundCards.Add(card);
-        var woundMultiplier = BattleWoundRules.get_action_speed_multiplier(BattleWoundRules.count_wounds_in_skills(woundCards));
+        var woundMultiplier = _boardMode ? get_realtime_action_speed_multiplier(unit)
+            : BattleWoundRules.get_action_speed_multiplier(BattleWoundRules.count_wounds_in_skills(woundCards));
         var speciesMultiplier=unit.HasMethod("get_species_action_speed_multiplier")?unit.Call("get_species_action_speed_multiplier").AsSingle():1f;
         return Mathf.Max(20f, fixedSpeed * speciesMultiplier * woundMultiplier);
     }
@@ -99,23 +112,34 @@ public partial class BattleManager : Node2D
         var status=GD.Load<StatusEffect>("res://resources/battle/statuses/逐猎.tres");if(status is null)return;
         foreach(var ally in all_units.Where(Alive).Where(unit=>unit!=attacker&&unit.Get("faction").AsInt32()==attacker.Get("faction").AsInt32()).OfType<Beast>().Where(wolf=>wolf.species_id=="forest_wolf"))
             ally.add_status(status,-1,1,attacker.GetInstanceId().ToString(),3,attacker.Get("entity_name").AsString());
+        if (Alive(attacker) && HasForestBeiChief(attacker))
+            ((Beast)attacker).add_status(status,-1,1,attacker.GetInstanceId().ToString(),status.max_stacks,"狈首");
     }
     public bool CanPay(GodotObject unit, ActiveSkillData skill)
     {
         // 即时队列允许资源尚不足的牌先排队；资源门槛在其真正开始准备时检查。
-        return gongfa_combat.CanPlay(unit,skill) && (_realtimeMode || (unit.Get("current_stamina").AsInt32() >= gongfa_combat.Cost(unit,skill) && unit.Get("current_mana").AsInt32() >= skill.mana_cost));
+        return gongfa_combat.CanPlay(unit,skill) && (_realtimeMode || (unit.Get("current_stamina").AsInt32() >= get_skill_energy_cost(unit,skill) && can_pay_skill_mana_cost(unit,skill)));
     }
     private void Pay(GodotObject unit, ActiveSkillData skill)
     {
-        unit.Set("current_stamina", Mathf.Max(0, unit.Get("current_stamina").AsInt32() - get_skill_energy_cost(unit,skill)));
-        unit.Set("current_mana", Mathf.Max(0, unit.Get("current_mana").AsInt32() - get_skill_mana_cost(unit,skill)));
+        ReserveForgedSpirit(unit, skill);
+        unit.SetMeta("forged_triggered", false);
+        var energy=get_skill_energy_cost(unit,skill);var mana=get_skill_mana_cost(unit,skill);
+        gongfa_combat.RememberManaBeforePayment(unit,skill);
+        unit.Set("current_stamina", Mathf.Max(0, unit.Get("current_stamina").AsInt32() - energy));
+        PaySkillManaCost(unit,skill,mana);
     }
     private static void RefreshStamina(GodotObject unit)
     {
         var maximum = Mathf.Max(0, unit.Get("max_stamina").AsInt32());
         unit.Set("current_stamina", Mathf.Min(maximum, unit.Get("current_stamina").AsInt32() + 1));
     }
-    private static void RefreshMana(GodotObject unit) => unit.Set("current_mana", Mathf.Max(0, unit.Get("max_mana").AsInt32()));
+    private void InitializeOrClampBattleMana(GodotObject unit)
+    {
+        var capacity = Mathf.Max(0, get_effective_mana_capacity(unit));
+        var current = unit.Get("current_mana").AsInt32();
+        unit.Set("current_mana", _manaInitializedForBattle.Add(unit) ? capacity : Mathf.Clamp(current, 0, capacity));
+    }
     private int FactionCount(int faction) => all_units.Count(unit => unit.Get("faction").AsInt32() == faction);
     private static void AddPaperDoll(Node unit, BattleEntityData snapshot)
     {
@@ -123,7 +147,7 @@ public partial class BattleManager : Node2D
         node.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.QueueFree();
         var doll = new BattlePaperDoll();
         node.AddChild(doll);
-        doll.Configure(snapshot);
+        doll.ConfigureBattleUnit(snapshot);
         BattleShieldAura.AttachTo(node);
     }
     // 不设前后排：双方各占固定横向位置，单位只围绕中位交错向上、向下展开。
@@ -152,17 +176,21 @@ public partial class BattleManager : Node2D
     }
     private void ResetBattle()
     {
+        ResetCombatBoards();
         SetBattlePaused(false);
+        auto_battle=false;
+        unitOverlay?.refresh_auto_button();
         _battleVisualElapsedSeconds=0;
         _segmentPhase=SegmentPhase.None; _planningElapsed=0; _playerQueueConfirmed=false; _mainPlayerUnit=null; _resolvingUnit=null; _segmentNumber=0;
         _selectingQueueTargets=false; _targetQueueIndex=-1; _targetSelectionHistory.Clear(); _layoutViewportSize=Vector2.Zero;
         RestoreBattleResources();
+        ResetArtifacts();
         gongfa_combat.Reset();
         _chengjiResponses.Clear();
         _queuedPlayerCards.Clear();
         _livingUnits.Clear();
         _energyRegen.Clear();
-        _manaRegen.Clear();
+        _manaInitializedForBattle.Clear();
         _drawElapsedFrames.Clear();
         _enemyPlanTimers.Clear();
         _enemyKnowledge.Clear();
@@ -171,6 +199,8 @@ public partial class BattleManager : Node2D
         _skillReadyRounds.Clear();
         _skillCharges.Clear();
         _pendingTargetSkills.Clear();
+        _pendingZhouTianAutoCasts.Clear();
+        _runningZhouTianAutoCasts.Clear();
         _returning_to_world = false;
         _skillBar?.Hide();
         _planHud?.Hide();
@@ -180,6 +210,8 @@ public partial class BattleManager : Node2D
         _hands.Clear();
         _firstHands.Clear();
         _statusPanel?.clear_all();
+        foreach (var unit in all_units.OfType<Node>().Where(unit => unit.HasMeta("artifact_battle_clone"))) unit.QueueFree();
+        _pendingActionCompletions.Clear();
         player_units.Clear();
         enemy_units.Clear();
         all_units.Clear();

@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" agent="Codex">
+  <diagram id="kouxin-face" name="卡牌图稿">
+    <mxGraphModel dx="1500" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" value="叩心" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=24;" vertex="1">
+          <mxGeometry x="520" y="28" width="460" height="72" as="geometry" />
+        </mxCell>
+        <mxCell id="source" parent="1" value="折势听心经 · 第二卷察势" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=16;" vertex="1">
+          <mxGeometry x="130" y="180" width="270" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="card" parent="1" value="关键词：无&#xa;耗费：体力1、法力0&#xa;目标：本行锁定的敌方目标&#xa;出手方式：近身&#xa;出手节奏：本招出手值 = 人物当前有效速度 × 1.10 + 招式主属性加成；当前行出手值较高的招式先施展。&#xa;&#xa;效果：&#xa;造成A点近身物理伤害。定力冲击系数为0.55。&#xa;&#xa;计算来源：&#xa;A = round(6 + 体魄×0.40 + 体道造诣×0.30)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=18;align=left;verticalAlign=top;spacing=20;" vertex="1">
+          <mxGeometry x="450" y="150" width="700" height="510" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" parent="1" source="source" target="card" edge="1" value="习得" style="endArrow=block;html=1;rounded=0;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="kouxin-notes" name="策划说明">
+    <mxGraphModel dx="1500" dy="850" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1500" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" value="叩心｜策划说明" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ebe6d6;strokeColor=#857c61;fontSize=22;" vertex="1">
+          <mxGeometry x="490" y="24" width="520" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="details" parent="1" value="状态：未开放提案，尚无运行资源。&#xa;来源卷章：折势听心经第二卷察势。&#xa;拟资源路径：res://resources/activeskills/折势听心经/叩心.tres&#xa;占格：1×1；可摆1份。&#xa;耗费：体力1、法力0；不占用灵识。&#xa;目标：所选行锁定的敌方目标；目标失效时按现行规则跳过，不改选。&#xa;&#xa;现有字段候选：&#xa;board_tempo_multiplier = 1.10&#xa;composure_pressure_coefficient = 0.55&#xa;&#xa;节奏倍率按新版行内交锋公式读取；定力冲击按整招占格总数及体力费用沿用现有公式，覆盖系数为0.55。效果不创建新状态，也不直接造成额外行动；定力归零后的失神按现行战斗规则。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=17;align=left;verticalAlign=top;spacing=20;" vertex="1">
+          <mxGeometry x="180" y="145" width="1140" height="610" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

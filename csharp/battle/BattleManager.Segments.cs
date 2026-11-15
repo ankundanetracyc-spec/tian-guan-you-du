@@ -10,6 +10,71 @@ public partial class BattleManager
 
     public GodotObject? get_main_player_unit() => _mainPlayerUnit;
     public int get_current_action_slot(GodotObject? unit) => GodotObject.IsInstanceValid(unit) && battle_units.ContainsKey(unit!) ? get_battle_unit(unit!).segment_action_index : -1;
+
+    public int get_battle_qi(GodotObject unit) =>
+        GodotObject.IsInstanceValid(unit) && battle_units.ContainsKey(unit) ? get_battle_unit(unit).get_qi() : 0;
+
+    public int get_skill_nian(GodotObject unit, ActiveSkillData skill) =>
+        GodotObject.IsInstanceValid(unit) && battle_units.ContainsKey(unit)
+            ? get_battle_unit(unit).get_skill_nian(Character.combat_skill_key(skill)) : 0;
+
+    /// <summary>炁不作为费用；每次获得事件至多完成一次周天，超过阈值的余炁一并清除。</summary>
+    public bool gain_battle_qi(GodotObject unit, int amount, out bool completedZhouTian)
+    {
+        completedZhouTian = false;
+        if (!GodotObject.IsInstanceValid(unit) || !battle_units.ContainsKey(unit) || amount < 0) return false;
+        var state = get_battle_unit(unit);
+        var next = (int)Math.Min(int.MaxValue,(long)Math.Max(0,state.get_qi())+amount);
+        var manaCapacity = get_effective_mana_capacity(unit);
+        if (manaCapacity > 0 && next >= 2L * manaCapacity)
+        {
+            state.set_qi(0);
+            unit.Set("current_mana", manaCapacity);
+            completedZhouTian = true;
+            // 周天自动施展期间再次完成周天仍正常清炁、回法力，但不再排入自动施展，避免递归链。
+            if(gongfa_combat.HasPower(unit,"玄枢含章")&&!_runningZhouTianAutoCasts.Contains(unit))
+                _pendingZhouTianAutoCasts[unit]=_pendingZhouTianAutoCasts.GetValueOrDefault(unit)+1;
+        }
+        else state.set_qi(next);
+        return true;
+    }
+
+    public bool can_assign_nian_to_next_queued_skill(GodotObject unit, BattleQueuedSkill sourceAction)
+    {
+        if (!GodotObject.IsInstanceValid(unit) || !battle_units.ContainsKey(unit) || sourceAction is null) return false;
+        var state = get_battle_unit(unit);
+        var sourceIndex = state.skill_queue.IndexOf(sourceAction);
+        if (sourceIndex < 0) return false;
+        var sourceSkillKey = Character.combat_skill_key(sourceAction.execution_skill);
+        for (var i = sourceIndex + 1; i < state.skill_queue.Count; i++)
+        {
+            var candidate = state.skill_queue[i];
+            if (candidate.completed || candidate.kind != BattleQueuedSkill.ActionKind.Skill || candidate.artifact_instance_id.Length > 0) continue;
+            if (candidate.execution_skill is null || !Character.is_combat_skill_slot_eligible(candidate.execution_skill)) continue;
+            if (Character.combat_skill_key(candidate.execution_skill) != sourceSkillKey) return true;
+        }
+        return false;
+    }
+
+    /// <summary>把念记在后续队列中的技能实例上；同技能多槽共用同一份层数。</summary>
+    public string assign_nian_to_next_queued_skill(GodotObject unit, BattleQueuedSkill sourceAction, int amount)
+    {
+        if (!can_assign_nian_to_next_queued_skill(unit, sourceAction) || amount <= 0) return "";
+        var state = get_battle_unit(unit);
+        var sourceIndex = state.skill_queue.IndexOf(sourceAction);
+        var sourceSkillKey = Character.combat_skill_key(sourceAction.execution_skill);
+        for (var i = sourceIndex + 1; i < state.skill_queue.Count; i++)
+        {
+            var candidate = state.skill_queue[i];
+            if (candidate.completed || candidate.kind != BattleQueuedSkill.ActionKind.Skill || candidate.artifact_instance_id.Length > 0) continue;
+            if (candidate.execution_skill is null || !Character.is_combat_skill_slot_eligible(candidate.execution_skill)) continue;
+            var skillKey = Character.combat_skill_key(candidate.execution_skill);
+            if (skillKey == sourceSkillKey) continue;
+            state.add_skill_nian(skillKey, amount);
+            return candidate.execution_skill.skill_name;
+        }
+        return "";
+    }
     public int get_filled_action_slot_count(GodotObject? unit) => GodotObject.IsInstanceValid(unit) && battle_units.ContainsKey(unit!)
         ? get_battle_unit(unit!).skill_queue.Count(action => action.kind != BattleQueuedSkill.ActionKind.Empty) : 0;
 
@@ -79,9 +144,10 @@ public partial class BattleManager
             foreach (var circuit in _formationCircuits.GetValueOrDefault(unit, [])) circuit.begin_owner_turn();
             var staminaMax = Mathf.Max(0, unit.Get("max_stamina").AsInt32());
             unit.Set("current_stamina", Mathf.Min(staminaMax, unit.Get("current_stamina").AsInt32() + 3));
-            unit.Set("current_mana", get_effective_mana_capacity(unit));
+            InitializeOrClampBattleMana(unit);
             if (unit.HasMethod("process_status_event"))
                 unit.Call("process_status_event", "turn_start", new Dictionary { ["battle_manager"] = this, ["unit"] = unit });
+            InitializeOrClampBattleMana(unit);
         }
 
         _mainPlayerUnit = player_units.FirstOrDefault(Alive);
@@ -119,8 +185,17 @@ public partial class BattleManager
 
     private void AdvancePlanning(float frames)
     {
-        if (_segmentPhase != SegmentPhase.Planning) return;
-        // 单机规划无倒计时；只由玩家确认后推进。
+        if (_segmentPhase != SegmentPhase.Planning || !auto_battle || !Alive(_mainPlayerUnit)) return;
+        var player = _mainPlayerUnit!;
+        // 自动只替换尚未确认的队列；执行仍走与手动队列相同的结算入口。
+        var state = get_battle_unit(player);
+        state.skill_queue.Clear();
+        state.segment_action_index = 0;
+        _playerPlanningHistory.Clear();
+        var forecast = CreateHealthForecast();
+        BuildAiQueue(player, forecast, false, allowSupplies: false);
+        EnsureSegmentSlots(player);
+        StartConfirmedQueue();
     }
 
     public void confirm_player_queue()
@@ -129,10 +204,7 @@ public partial class BattleManager
         BeginQueueTargetSelection();
     }
 
-    public bool queue_system_action(int actionKind)
-    {
-        return PlacePlayerAction(actionKind == 0 ? BattleQueuedSkill.Rest() : BattleQueuedSkill.Breathe());
-    }
+    public bool queue_rest_action() => PlacePlayerAction(BattleQueuedSkill.Rest());
 
     public bool cancel_player_action(int index)
     {
@@ -159,6 +231,7 @@ public partial class BattleManager
 
     private void QueueChanged()
     {
+        if (_mainPlayerUnit is not null) PreviewArtifactQueue(_mainPlayerUnit);
         PlanAllyTeam();
         _planHud?.RefreshAll();
         _skillBar?.refresh_slots();
@@ -211,8 +284,18 @@ public partial class BattleManager
 
     private bool HasAvailablePlannedSkillUses(GodotObject unit, ActiveSkillData skill)
     {
+        if (skill.combat_empty_slot || !_combatSkills.TryGetValue(unit, out var installed) || !installed.Contains(skill)) return false;
+        if (skill.artifact_instance_id.Length > 0)
+        {
+            if (!_artifactRuntime.TryGetValue(unit, out var artifactRuntime)) return false;
+            var next = get_next_action_skill(unit, skill);
+            if (next.artifact_is_summon) return artifactRuntime.CanExecute(skill.artifact_instance_id, ArtifactBattleRuntime.Intent.Summon);
+            var stateOk = artifactRuntime.TryGetPresence(skill.artifact_instance_id, out var presence)
+                && presence is ArtifactBattleRuntime.Presence.Unsummoned or ArtifactBattleRuntime.Presence.Summoned;
+            if (!stateOk) return false;
+        }
         if (!is_skill_ready_for_legacy_limits(unit, skill)) return false;
-        var queued = get_battle_unit(unit).skill_queue.Count(action => !action.completed && action.kind == BattleQueuedSkill.ActionKind.Skill && action.skill == skill);
+        var queued = QueuedUseCount(unit, skill);
         if (skill.cooldown_rounds > 0 && queued > 0) return false;
         if (skill.uses_per_round > 0 && _skillRoundCharges.TryGetValue(unit, out var round) && round.GetValueOrDefault(skill, skill.uses_per_round) <= queued) return false;
         if (skill.uses_per_battle > 0 && _skillBattleCharges.TryGetValue(unit, out var battle) && battle.GetValueOrDefault(skill, skill.uses_per_battle) <= queued) return false;
@@ -227,7 +310,7 @@ public partial class BattleManager
         if (skill.max_charges > 0 && _skillCharges.TryGetValue(unit, out var charges))
         {
             var remaining = charges.GetValueOrDefault(skill, skill.max_charges);
-            var queued = get_battle_unit(unit).skill_queue.Count(action => !action.completed && action.kind == BattleQueuedSkill.ActionKind.Skill && action.skill == skill);
+            var queued = QueuedUseCount(unit, skill);
             if (remaining <= queued) return false;
         }
         return true;
@@ -235,7 +318,14 @@ public partial class BattleManager
 
     public string get_skill_uses_remaining(GodotObject unit, ActiveSkillData skill)
     {
-        var queued = get_battle_unit(unit).skill_queue.Count(action => !action.completed && action.kind == BattleQueuedSkill.ActionKind.Skill && action.skill == skill);
+        if (_boardMode && skill.has_board_definition() && get_board_state(unit) is { } board)
+        {
+            var limits = new List<string>();
+            if (board.RemainingRoundUses(skill) is var roundUses && roundUses >= 0) limits.Add($"轮 {roundUses}");
+            if (board.RemainingBattleUses(skill) is var battleUses && battleUses >= 0) limits.Add($"场 {battleUses}");
+            return string.Join(" / ", limits);
+        }
+        var queued = QueuedUseCount(unit, skill);
         var parts = new List<string>();
         if (skill.uses_per_round > 0)
         {
@@ -264,30 +354,58 @@ public partial class BattleManager
 
     public Array<string> get_timeline_names()
     {
-        var pending = new List<(float time, int order, string name)>();
-        var order = 0;
-        foreach (var unit in all_units.Where(Alive))
-        {
-            if (!battle_units.ContainsKey(unit)) continue;
-            var state = get_battle_unit(unit);
-            var queue = state.skill_queue;
-            if (!state.has_pending_segment_action) { order++; continue; }
-            var speed = Mathf.Max(1, Initiative(unit));
-            var gauge = action_gauges.ContainsKey(unit) ? action_gauges[unit].AsSingle() : 0f;
-            var resolving = unit == _resolvingUnit && _segmentPhase == SegmentPhase.Executing;
-            var firstIndex = state.segment_action_index + (resolving ? 1 : 0);
-            if (resolving)
-                pending.Add((-1, order++, unit.Get("entity_name").AsString()));
-            for (var i = firstIndex; i < queue.Count; i++)
-            {
-                var firstDue = resolving ? 0 : Mathf.Max(0, ActionThreshold - gauge) / speed;
-                var time = (i - state.segment_action_index) * ActionThreshold / speed + firstDue;
-                pending.Add((time, order++, unit.Get("entity_name").AsString()));
-            }
-        }
         var names = new Array<string>();
-        foreach (var entry in pending.OrderBy(item => item.time).ThenBy(item => item.order).Take(12))
-            names.Add(string.IsNullOrWhiteSpace(entry.name) ? "无名" : entry.name);
+        var units = all_units.Where(unit => Alive(unit) && battle_units.ContainsKey(unit)).ToArray();
+        var indices = units.Select(unit => get_battle_unit(unit).segment_action_index).ToArray();
+        var gauges = units.Select(unit => action_gauges.ContainsKey(unit) ? action_gauges[unit].AsSingle() : 0f).ToArray();
+        var speeds = units.Select(unit => Mathf.Max(1, Initiative(unit))).ToArray();
+        var stunRemaining = units.Select(unit => unit is Creature creature ? creature.get_status_remaining_combat_seconds("僵直") : 0f).ToArray();
+        string UnitName(int index)
+        {
+            var name = units[index].Get("entity_name").AsString();
+            return string.IsNullOrWhiteSpace(name) ? "无名" : name;
+        }
+
+        // 当前正在演出的行动排在最前；等它结束后，该角色的下一槽从 0 重新计时。
+        var resolvingIndex = System.Array.IndexOf(units, _resolvingUnit);
+        if (_segmentPhase == SegmentPhase.Executing && resolvingIndex >= 0
+            && indices[resolvingIndex] < get_battle_unit(units[resolvingIndex]).skill_queue.Count)
+        {
+            names.Add(UnitName(resolvingIndex));
+            indices[resolvingIndex]++;
+            gauges[resolvingIndex] = 0f;
+        }
+
+        // 预测与实际执行使用同一规则：空闲时所有进度并行，行动到点后只结算一项，
+        // 动画期间全体冻结，结束后再继续推进；同刻到达时沿用参战单位顺序。
+        for (var guard = 0; guard < 128 && names.Count < 12; guard++)
+        {
+            var pending = Enumerable.Range(0, units.Length)
+                .Where(index => indices[index] < get_battle_unit(units[index]).skill_queue.Count)
+                .ToArray();
+            if (pending.Length == 0) break;
+
+            var secondsUntilAction = pending.Min(index => stunRemaining[index] + Mathf.Max(0f, ActionThreshold - gauges[index]) / speeds[index]);
+            if(float.IsPositiveInfinity(secondsUntilAction))break;
+            if (secondsUntilAction > 0f)
+            {
+                foreach (var index in pending)
+                {
+                    var activeSeconds = Mathf.Max(0f, secondsUntilAction - stunRemaining[index]);
+                    stunRemaining[index] = Mathf.Max(0f, stunRemaining[index] - secondsUntilAction);
+                    gauges[index] = Mathf.Min(ActionThreshold, gauges[index] + speeds[index] * activeSeconds);
+                }
+            }
+
+            var dueIndex = -1;
+            foreach (var index in pending)
+                if (gauges[index] >= ActionThreshold - 0.001f) { dueIndex = index; break; }
+            if (dueIndex < 0) break;
+
+            names.Add(UnitName(dueIndex));
+            indices[dueIndex]++;
+            gauges[dueIndex] = 0f;
+        }
         return names;
     }
 
@@ -302,6 +420,9 @@ public partial class BattleManager
 
         PruneDeadQueues();
         if (CheckBattleOver()) return;
+        // 全局演出屏障：正常队列行动必须等前一行动的角色动作、受击、队列动画与战斗特效收完。
+        // 应对仍在当前来袭行动的异步结算中嵌套执行，不会经过此处开第二个正常行动。
+        if (HasPendingActionAnimations()) return;
 
         var remainingFrames = Mathf.Max(0, wallFrames);
         // 行动进度按战斗时间逐帧推进；进度条走满后才结算当前队首。
@@ -346,8 +467,10 @@ public partial class BattleManager
 
     private float TimeUntilAction(GodotObject unit)
     {
+        // 僵直只冻结行动进度；剩余进度保留在 action_gauges，状态消退后继续推进。
+        var frozenSeconds=unit is Creature creature?creature.get_status_remaining_combat_seconds("僵直"):0f;
         var gauge = action_gauges.ContainsKey(unit) ? action_gauges[unit].AsSingle() : 0f;
-        return Mathf.Max(0, ActionThreshold - gauge) / Mathf.Max(1, Initiative(unit));
+        return frozenSeconds+Mathf.Max(0, ActionThreshold - gauge) / Mathf.Max(1, Initiative(unit));
     }
 
     private void AdvanceCombatTime(float frames)
@@ -358,13 +481,16 @@ public partial class BattleManager
         foreach (var unit in all_units)
         {
             if (!Alive(unit)) continue;
-            if (unit is Creature creature && GodotObject.IsInstanceValid(creature)) creature.tick_status_frames(frames);
+            var actionFrames = frames;
+            if (unit is Creature creature && GodotObject.IsInstanceValid(creature))
+                actionFrames = creature.advance_realtime_status_timers(frames,SimulationFps,"僵直");
             if (!battle_units.ContainsKey(unit) || !get_battle_unit(unit).has_pending_segment_action) continue;
+            if (actionFrames <= 0) continue;
             var currentGauge = action_gauges.ContainsKey(unit) ? action_gauges[unit].AsSingle() : 0f;
-            action_gauges[unit] = Mathf.Min(ActionThreshold, currentGauge + Initiative(unit) * frames / SimulationFps);
+            action_gauges[unit] = Mathf.Min(ActionThreshold, currentGauge + Initiative(unit) * actionFrames / SimulationFps);
             if (unit.Get("faction").AsInt32() == (int)WorldEntity.Faction.PLAYER) continue;
             var head = get_battle_unit(unit).current_segment_action!;
-            head.intent_elapsed += frames;
+            head.intent_elapsed += actionFrames;
             head.intent_revealed = head.intent_elapsed >= IntentRevealDelay(unit);
         }
         _statusPanel?.refresh_all();
@@ -376,7 +502,7 @@ public partial class BattleManager
         _resolvingUnit = unit;
         if (action.kind == BattleQueuedSkill.ActionKind.Empty)
         {
-            // 空槽已走满一次行动条，只消耗该行动位；不当作休整或吐纳。
+            // 空槽已走满一次行动条，只消耗该行动位；不当作休整。
             _planHud?.PresentAction(unit);
             CompleteSystemActionPresentation(unit);
             return;
@@ -384,24 +510,18 @@ public partial class BattleManager
         if (action.kind == BattleQueuedSkill.ActionKind.Rest)
         {
             _executor?.show_action_name(unit, "休整");
+            _executor?.present_recovery(unit);
             var staminaMax = Math.Max(0, unit.Get("max_stamina").AsInt32());
             unit.Set("current_stamina", Math.Min(staminaMax, unit.Get("current_stamina").AsInt32() + 2));
             _planHud?.PresentAction(unit);
             CompleteSystemActionPresentation(unit);
             return;
         }
-        if (action.kind == BattleQueuedSkill.ActionKind.Breathe)
-        {
-            _executor?.show_action_name(unit, "吐纳");
-            var manaMax = get_effective_mana_capacity(unit);
-            unit.Set("current_mana", Math.Min(manaMax, unit.Get("current_mana").AsInt32() + 1));
-            _planHud?.PresentAction(unit);
-            CompleteSystemActionPresentation(unit);
-            return;
-        }
-
+        if (action.kind == BattleQueuedSkill.ActionKind.Pill) { ResolvePillAction(unit, action); return; }
         if (action.kind == BattleQueuedSkill.ActionKind.Retreat) { _executor?.show_action_name(unit, "撤退"); ResolveRetreat(unit); return; }
-        var skill = CardRules.NormalCast(action.skill);
+        if (action.artifact_intent == ArtifactBattleRuntime.Intent.Summon)
+        { ResolveArtifactSummon(unit, action); return; }
+        var skill = CardRules.NormalCast(action.execution_skill);
         if (skill is null)
         {
             // 未应对空放只耗当前行动位；不支付、计次、触发心法或生成防御状态。
@@ -409,6 +529,9 @@ public partial class BattleManager
             CompleteSystemActionPresentation(unit);
             return;
         }
+        var resolvedTarget = ResolveActionTarget(unit, action, skill);
+        if (!GodotObject.IsInstanceValid(resolvedTarget)) { CompleteSegmentAction(unit); return; }
+        action.target = resolvedTarget;
         Pay(unit, skill);
         gongfa_combat.Before(unit, skill);
         StartSkillCooldown(unit, action.skill);
@@ -424,10 +547,10 @@ public partial class BattleManager
             CompleteSegmentAction(unit);
             return;
         }
-        if (skill.aoe_range > 0 && Map is not null)
-            _executor!.execute_aoe_skill(unit, skill, Map.Call("get_unit_cell", target).AsVector2I(), Map, false);
+        if (skill.aoe_range > 0 || skill.description.Contains("全体"))
+            _executor!.execute_aoe_skill(unit, skill, Vector2I.Zero, Map ?? this, false,true);
         else
-            _executor!.execute_skill(unit, skill, target!, false);
+            _executor!.execute_skill(unit, skill, target!, false,true);
     }
 
     private async void CompleteSystemActionPresentation(GodotObject unit)
@@ -444,14 +567,22 @@ public partial class BattleManager
 
     private bool CanResolveSegmentAction(GodotObject unit, BattleQueuedSkill action, bool responseTriggered = false)
     {
+        if (action.kind == BattleQueuedSkill.ActionKind.Pill)
+            return unit is Character owner && action.supply_slot >= 0 && action.supply_slot < owner.battle_supplies.Count &&
+                owner.battle_supplies[action.supply_slot].item_path == action.supply_path &&
+                owner.CanUseBattlePill(action.supply_slot, get_effective_mana_capacity(unit));
         if (action.kind != BattleQueuedSkill.ActionKind.Skill) return true;
+        if (action.artifact_instance_id.Length > 0) return CanResolveArtifactAction(unit, action);
         var skill = responseTriggered ? action.skill : CardRules.NormalCast(action.skill);
         if (skill is null) return true;
+        if(IsXuanShuSkillSlot10(unit,action.skill))return false;
         if (!gongfa_combat.CanPlay(unit, skill)) return false;
+        if (skill.special_effects.Any(effect => effect.GetValueOrDefault("effect", "").AsString() == "assign_nian_to_next_skill")
+            && !can_assign_nian_to_next_queued_skill(unit, action)) return false;
         if (action.skill.max_charges > 0 && _skillCharges.TryGetValue(unit, out var charges) && charges.GetValueOrDefault(action.skill, action.skill.max_charges) <= 0) return false;
         if (!HasAvailableSegmentSkillUses(unit, action.skill)) return false;
-        return unit.Get("current_stamina").AsInt32() >= get_skill_energy_cost(unit, skill)
-            && unit.Get("current_mana").AsInt32() >= get_skill_mana_cost(unit, skill);
+        if(unit.Get("current_stamina").AsInt32()<get_skill_energy_cost(unit,skill)||!can_pay_skill_mana_cost(unit,skill))return false;
+        return skill.skill_name!="复命"||CanBeginFumingReplay(unit,skill);
     }
 
     private void SkipSegmentAction(GodotObject unit)
@@ -471,6 +602,7 @@ public partial class BattleManager
     private async void CompleteSegmentAction(GodotObject unit)
     {
         if(!_pendingActionCompletions.Add(unit))return;
+        ReleaseForgedSpirit(unit);
         try
         {
             // 至少跨过一帧，让本次命中产生的受击、飘字与死亡节点全部注册。
@@ -494,6 +626,7 @@ public partial class BattleManager
 
     private void PruneDeadQueues()
     {
+        LeaveDeadOwnerArtifacts();
         foreach (var unit in all_units.Where(unit => !Alive(unit)))
         {
             if (battle_units.ContainsKey(unit))
@@ -513,7 +646,6 @@ public partial class BattleManager
         {
             if (unit is Creature creature && GodotObject.IsInstanceValid(creature))
                 creature.process_status_event("turn_end", new Dictionary { ["battle_manager"] = this, ["unit"] = unit });
-            unit.Set("current_mana", 0);
             action_gauges[unit] = 0f;
         }
         if (CheckBattleOver()) return;

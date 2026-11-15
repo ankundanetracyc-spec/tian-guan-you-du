@@ -5,12 +5,13 @@ using Godot;
 using GDict = Godot.Collections.Dictionary;
 
 /// <summary>
-/// 世界人物交易面板。交易采用全屏行囊式布局：两侧只展示可交易物品，
-/// 中间只显示对方态度与人情判断，具体估值保留在规则层，不直接暴露给玩家。
+/// 世界人物交易面板：两侧纯文字目录，中间分别核对双方交出物品。
+/// 真实数量、估值与成交仍走原业务规则，不把角色完整随身物品暴露给对方。
 /// </summary>
 public partial class TradePanel : Control
 {
     public event Action? Closed;
+    public event Action? TradeCompleted;
 
     private sealed class TradeEntry
     {
@@ -18,18 +19,11 @@ public partial class TradePanel : Control
         public int count;
         public int selected_count;
         public bool selected;
-        public StorageItemSlot? slot;
-        public Label? checkmark;
-        public Panel? selection_frame;
-        public HSlider? quantity_slider;
-        public Label? quantity_label;
+        public Button? row;
+        public SpinBox? quantity_picker;
     }
 
-    private const int VisibleSlotCount = 30;
-    private const float TradeSlotWidth = 128f;
-    private const float TradeSlotIconSize = 128f;
-    private const float TradeSlotBaseHeight = 160f;
-    private const string SlotScenePath = "res://tscn/panel/StorageItemSlot.tscn";
+    private const float TradeRowHeight = 68f;
     private static readonly string[] DefaultNpcTradeItems =
     [
         "res://resources/entities/items/灵石.tres",
@@ -40,21 +34,16 @@ public partial class TradePanel : Control
 
     private Character? _player;
     private WorldNpcData? _npc;
-    private PackedScene? _slot_scene;
     private FontFile? _font;
     private GridContainer? _player_grid;
     private GridContainer? _npc_grid;
     private Label? _npc_name_label;
+    private VBoxContainer? _outgoing_list, _incoming_list;
+    private Label? _selection_summary;
     private Label? _attitude_label;
-    private Label? _favor_label;
+    private Label? _trade_terms_label;
     private PanelContainer? _floating_hint_panel;
     private Label? _floating_hint;
-    private PanelContainer? _item_hover_panel;
-    private TextureRect? _item_hover_icon;
-    private Label? _item_hover_name;
-    private Label? _item_hover_meta;
-    private RichTextLabel? _item_hover_detail;
-    private StorageItemSlot? _hovered_trade_slot;
     private Button? _trade_button;
     private readonly List<TradeEntry> _player_entries = [];
     private readonly List<TradeEntry> _npc_entries = [];
@@ -65,16 +54,19 @@ public partial class TradePanel : Control
         SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         MouseFilter = MouseFilterEnum.Stop;
         ZIndex = 500;
-        _slot_scene = ResourceLoader.Load<PackedScene>(SlotScenePath);
+        Theme = QuietRoomStyle.MakeTheme();
         _font = ResourceLoader.Load<FontFile>("res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf");
         build_ui();
         Hide();
     }
 
-    public override void _Process(double delta)
+    public override void _Input(InputEvent @event)
     {
-        if (_item_hover_panel?.Visible != true) return;
-        position_item_hover_panel();
+        if (Visible && @event is InputEventKey { Pressed: true, Echo: false, Keycode: Key.Escape })
+        {
+            close();
+            GetViewport().SetInputAsHandled();
+        }
     }
 
     public void show_for(Character player, WorldNpcData npc)
@@ -90,8 +82,10 @@ public partial class TradePanel : Control
 
     public void close()
     {
-        hide_item_hover();
+        HoverInfoManager.HideAll();
         Hide();
+        _player = null;
+        _npc = null;
         Closed?.Invoke();
     }
 
@@ -99,215 +93,101 @@ public partial class TradePanel : Control
     {
         var backdrop = new TextureRect
         {
-            Texture = ResourceLoader.Load<Texture2D>("res://textures/ui/infopanel_fullscreen_bg_v1.png"),
+            Texture = new AtlasTexture { Atlas = GD.Load<Texture2D>("res://textures/ui/inventory_20261012/approved_shell_v1.png"), Region = new Rect2(270, 0, 1402, 941), FilterClip = true },
             ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
-            StretchMode = TextureRect.StretchModeEnum.KeepAspectCovered,
+            StretchMode = TextureRect.StretchModeEnum.Scale,
             MouseFilter = MouseFilterEnum.Ignore,
         };
         backdrop.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         AddChild(backdrop);
-
-        var veil = new ColorRect { Color = new Color(.035f, .04f, .035f, .54f), MouseFilter = MouseFilterEnum.Ignore };
-        veil.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        AddChild(veil);
-
+        var canvas = QuietRoomStyle.Canvas(this);
         var margin = new MarginContainer();
         margin.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        margin.AddThemeConstantOverride("margin_left", 34);
-        margin.AddThemeConstantOverride("margin_top", 26);
-        margin.AddThemeConstantOverride("margin_right", 34);
-        margin.AddThemeConstantOverride("margin_bottom", 24);
-        AddChild(margin);
-
+        foreach (var edge in new[] { "left", "right" }) margin.AddThemeConstantOverride("margin_" + edge, 34);
+        foreach (var edge in new[] { "top", "bottom" }) margin.AddThemeConstantOverride("margin_" + edge, 24);
+        canvas.AddChild(margin);
         var root = new VBoxContainer { SizeFlagsVertical = SizeFlags.ExpandFill };
-        root.AddThemeConstantOverride("separation", 14);
-        margin.AddChild(root);
-
-        var title = make_label("交易", 34, new Color("f1dfad"));
-        title.HorizontalAlignment = HorizontalAlignment.Center;
-        root.AddChild(title);
-
-        var body = new HBoxContainer { SizeFlagsVertical = SizeFlags.ExpandFill };
-        body.AddThemeConstantOverride("separation", 14);
-        root.AddChild(body);
-
+        root.AddThemeConstantOverride("separation", 12); margin.AddChild(root);
+        var header = new HBoxContainer(); root.AddChild(header);
+        var back = make_button("‹", 32, new Vector2(52, 48));
+        back.Pressed += close; header.AddChild(back);
+        var title = make_label("交易", 34, QuietRoomStyle.Ink); header.AddChild(title);
+        _npc_name_label = make_label("", 20, WorldHudStyle.SecondaryInk);
+        _npc_name_label.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+        _npc_name_label.HorizontalAlignment = HorizontalAlignment.Right;
+        header.AddChild(_npc_name_label);
+        root.AddChild(new HSeparator());
+        var body = new HBoxContainer { Name = "TradeColumns", SizeFlagsVertical = SizeFlags.ExpandFill };
+        body.AddThemeConstantOverride("separation", 14); root.AddChild(body);
         body.AddChild(build_inventory_panel(true));
-        body.AddChild(build_settlement_panel());
+        body.AddChild(build_offer_panel(true));
+        body.AddChild(build_offer_panel(false));
         body.AddChild(build_inventory_panel(false));
 
-        var close_button = make_button("关闭", 22, new Vector2(150, 46));
-        close_button.SizeFlagsHorizontal = SizeFlags.ShrinkCenter;
-        close_button.Pressed += close;
-        root.AddChild(close_button);
+        var footer = new HBoxContainer { CustomMinimumSize = new Vector2(0, 82) };
+        footer.AddThemeConstantOverride("separation", 24); root.AddChild(footer);
+        var summary = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
+        footer.AddChild(summary);
+        _selection_summary = make_label("尚未选择物品", 21, QuietRoomStyle.Ink); summary.AddChild(_selection_summary);
+        _trade_terms_label = make_label("选择物品后判断", 17, WorldHudStyle.SecondaryInk);
+        _trade_terms_label.AutowrapMode = TextServer.AutowrapMode.WordSmart; summary.AddChild(_trade_terms_label);
+        _attitude_label = make_label("请选择双方物品", 23, QuietRoomStyle.Ink);
+        _attitude_label.VerticalAlignment = VerticalAlignment.Center; footer.AddChild(_attitude_label);
+        _trade_button = make_button("交易", 25, new Vector2(150, 56));
+        _trade_button.Name = "CommitTrade"; _trade_button.Pressed += complete_trade; footer.AddChild(_trade_button);
+        _floating_hint_panel = new PanelContainer { Visible = false, MouseFilter = MouseFilterEnum.Ignore };
+        _floating_hint_panel.AddThemeStyleboxOverride("panel", panel_style(new Color(.035f, .04f, .035f, .96f), new Color("9a7a3d"), 2));
+        _floating_hint = make_label("", 17, new Color("f1dfad"));
+        _floating_hint.AutowrapMode = TextServer.AutowrapMode.WordSmart;
+        _floating_hint_panel.AddChild(_floating_hint); root.AddChild(_floating_hint_panel);
+    }
 
-        _item_hover_panel = build_item_hover_panel();
-        AddChild(_item_hover_panel);
+    private VBoxContainer build_trade_column(string title, float ratio, bool offer)
+    {
+        var panel = new PanelContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill, SizeFlagsStretchRatio = ratio };
+        var paper = InventoryUiPaper.Style("index_panel_paper.png");
+        paper.ContentMarginTop = 18; paper.ContentMarginBottom = 16;
+        panel.AddThemeStyleboxOverride("panel", paper);
+        var column = new VBoxContainer { SizeFlagsVertical = SizeFlags.ExpandFill };
+        column.AddThemeConstantOverride("separation", 10); panel.AddChild(column);
+        var heading = make_label(title, 23, QuietRoomStyle.Ink); column.AddChild(heading);
+        var labels = new HBoxContainer(); column.AddChild(labels);
+        var name = make_label("名称", 16, WorldHudStyle.SecondaryInk); name.SizeFlagsHorizontal = SizeFlags.ExpandFill; labels.AddChild(name);
+        if (!offer) labels.AddChild(make_label("可供", 16, WorldHudStyle.SecondaryInk));
+        var quantity = make_label(offer ? "数量" : "本次", 16, WorldHudStyle.SecondaryInk);
+        quantity.CustomMinimumSize = new Vector2(offer ? 44 : 88, 0); quantity.HorizontalAlignment = HorizontalAlignment.Right; labels.AddChild(quantity);
+        column.SetMeta("panel", panel);
+        return column;
     }
 
     private Control build_inventory_panel(bool player_side)
     {
-        var panel = new PanelContainer
-        {
-            CustomMinimumSize = new Vector2(730, 0),
-            SizeFlagsHorizontal = SizeFlags.ExpandFill,
-            SizeFlagsVertical = SizeFlags.ExpandFill,
-        };
-        panel.AddThemeStyleboxOverride("panel", panel_style(new Color(.055f, .065f, .06f, .92f), new Color("9a7a3d"), 8));
-
-        var margin = new MarginContainer();
-        margin.AddThemeConstantOverride("margin_left", 18);
-        margin.AddThemeConstantOverride("margin_top", 14);
-        margin.AddThemeConstantOverride("margin_right", 18);
-        margin.AddThemeConstantOverride("margin_bottom", 14);
-        panel.AddChild(margin);
-
-        var column = new VBoxContainer { SizeFlagsVertical = SizeFlags.ExpandFill };
-        column.AddThemeConstantOverride("separation", 10);
-        margin.AddChild(column);
-
-        var name = make_label(player_side ? "我" : "", 27, new Color("f1dfad"));
-        name.HorizontalAlignment = HorizontalAlignment.Center;
-        if (!player_side) _npc_name_label = name;
-        column.AddChild(name);
-        column.AddChild(new HSeparator());
-
-        var scroll = new ScrollContainer
-        {
-            SizeFlagsVertical = SizeFlags.ExpandFill,
-            HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,
-            VerticalScrollMode = ScrollContainer.ScrollMode.Auto,
-        };
+        var column = build_trade_column(player_side ? "我的可交易物品" : "对方愿意交易的物品", 1.2f, false);
+        var scroll = new ScrollContainer { SizeFlagsVertical = SizeFlags.ExpandFill, HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled };
         column.AddChild(scroll);
-        var grid = new GridContainer
-        {
-            Columns = 5,
-            SizeFlagsHorizontal = SizeFlags.ExpandFill,
-        };
-        grid.AddThemeConstantOverride("h_separation", 10);
-        grid.AddThemeConstantOverride("v_separation", 10);
-        scroll.AddChild(grid);
-        if (player_side) _player_grid = grid;
-        else _npc_grid = grid;
-        return panel;
+        var grid = new GridContainer { Name = player_side ? "PlayerTradeList" : "NpcTradeList", Columns = 1, SizeFlagsHorizontal = SizeFlags.ExpandFill };
+        grid.AddThemeConstantOverride("v_separation", 2); scroll.AddChild(grid);
+        column.AddChild(make_label("点击添加一件 · 右侧可改数量", 15, WorldHudStyle.SecondaryInk));
+        if (player_side) _player_grid = grid; else _npc_grid = grid;
+        return column.GetParent<Control>();
     }
 
-    private Control build_settlement_panel()
+    private Control build_offer_panel(bool outgoing)
     {
-        var panel = new PanelContainer
-        {
-            CustomMinimumSize = new Vector2(290, 0),
-            SizeFlagsVertical = SizeFlags.ExpandFill,
-        };
-        panel.AddThemeStyleboxOverride("panel", panel_style(new Color(.09f, .10f, .095f, .96f), new Color("b79a5c"), 8));
-        var margin = new MarginContainer();
-        margin.AddThemeConstantOverride("margin_left", 22);
-        margin.AddThemeConstantOverride("margin_top", 18);
-        margin.AddThemeConstantOverride("margin_right", 22);
-        margin.AddThemeConstantOverride("margin_bottom", 18);
-        panel.AddChild(margin);
-        var column = new VBoxContainer { SizeFlagsVertical = SizeFlags.ExpandFill };
-        column.AddThemeConstantOverride("separation", 14);
-        margin.AddChild(column);
-
-        var heading = make_label("对方态度", 27, new Color("f1dfad"));
-        heading.HorizontalAlignment = HorizontalAlignment.Center;
-        column.AddChild(heading);
-        column.AddChild(new HSeparator());
-
-        _attitude_label = make_label("请选择双方物品", 29, new Color("e6c77e"));
-        _attitude_label.HorizontalAlignment = HorizontalAlignment.Center;
-        _attitude_label.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-        column.AddChild(_attitude_label);
-
-        _favor_label = make_label("选择双方物品后判断", 17, new Color("b9d2c0"));
-        _favor_label.HorizontalAlignment = HorizontalAlignment.Center;
-        _favor_label.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-        column.AddChild(_favor_label);
-
-        var spacer = new Control { SizeFlagsVertical = SizeFlags.ExpandFill, MouseFilter = MouseFilterEnum.Ignore };
-        column.AddChild(spacer);
-
-        _trade_button = make_button("交易", 27, new Vector2(0, 58));
-        _trade_button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
-        _trade_button.Pressed += complete_trade;
-        column.AddChild(_trade_button);
-
-        _floating_hint_panel = new PanelContainer
-        {
-            Visible = false,
-            MouseFilter = MouseFilterEnum.Ignore,
-        };
-        _floating_hint_panel.AddThemeStyleboxOverride("panel", panel_style(new Color(.035f, .04f, .035f, .96f), new Color("9a7a3d"), 5));
-        _floating_hint = make_label("", 16, new Color("f1dfad"));
-        _floating_hint.HorizontalAlignment = HorizontalAlignment.Center;
-        _floating_hint.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-        _floating_hint_panel.AddChild(_floating_hint);
-        column.AddChild(_floating_hint_panel);
-        return panel;
-    }
-
-    private PanelContainer build_item_hover_panel()
-    {
-        var panel = new PanelContainer
-        {
-            Name = "TradeItemHoverInfo",
-            Visible = false,
-            MouseFilter = MouseFilterEnum.Ignore,
-            ZIndex = 1000,
-            Size = new Vector2(410, 190),
-        };
-        panel.AddThemeStyleboxOverride("panel", panel_style(new Color(.025f, .03f, .028f, .96f), new Color("b79a5c"), 6));
-
-        var margin = new MarginContainer();
-        margin.AddThemeConstantOverride("margin_left", 12);
-        margin.AddThemeConstantOverride("margin_top", 10);
-        margin.AddThemeConstantOverride("margin_right", 12);
-        margin.AddThemeConstantOverride("margin_bottom", 10);
-        panel.AddChild(margin);
-
-        var column = new VBoxContainer();
-        column.AddThemeConstantOverride("separation", 7);
-        margin.AddChild(column);
-
-        var header = new HBoxContainer();
-        header.AddThemeConstantOverride("separation", 10);
-        column.AddChild(header);
-        _item_hover_icon = new TextureRect
-        {
-            CustomMinimumSize = new Vector2(58, 58),
-            ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
-            StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
-            MouseFilter = MouseFilterEnum.Ignore,
-        };
-        header.AddChild(_item_hover_icon);
-        var heading = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, Alignment = BoxContainer.AlignmentMode.Center };
-        header.AddChild(heading);
-        _item_hover_name = make_label("", 21, new Color("f1dfad"));
-        _item_hover_name.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-        heading.AddChild(_item_hover_name);
-        _item_hover_meta = make_label("", 14, new Color("c8bd9d"));
-        _item_hover_meta.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-        heading.AddChild(_item_hover_meta);
-
-        column.AddChild(new HSeparator());
-        column.AddChild(make_label("物品详情", 15, new Color("e6c77e")));
-        _item_hover_detail = new RichTextLabel
-        {
-            SizeFlagsHorizontal = SizeFlags.ExpandFill,
-            SizeFlagsVertical = SizeFlags.ExpandFill,
-            AutowrapMode = TextServer.AutowrapMode.WordSmart,
-            ScrollActive = false,
-            MouseFilter = MouseFilterEnum.Ignore,
-        };
-        apply_font(_item_hover_detail, 15, new Color("f1ead7"));
-        column.AddChild(_item_hover_detail);
-        return panel;
+        var column = build_trade_column(outgoing ? "我将交出" : "我将获得", 1f, true);
+        var scroll = new ScrollContainer { SizeFlagsVertical = SizeFlags.ExpandFill, HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled };
+        column.AddChild(scroll);
+        var list = new VBoxContainer { Name = outgoing ? "OutgoingTradeList" : "IncomingTradeList", SizeFlagsHorizontal = SizeFlags.ExpandFill };
+        list.AddThemeConstantOverride("separation", 2); scroll.AddChild(list);
+        column.AddChild(make_label("点击减少一件", 15, WorldHudStyle.SecondaryInk));
+        if (outgoing) _outgoing_list = list; else _incoming_list = list;
+        return column.GetParent<Control>();
     }
 
     private void refresh_grids()
     {
         if (_player is null || _npc is null || _player_grid is null || _npc_grid is null) return;
-        hide_item_hover();
+        HoverInfoManager.HideAll();
         _player_entries.Clear();
         _npc_entries.Clear();
         clear_grid(_player_grid);
@@ -318,8 +198,10 @@ public partial class TradePanel : Control
             var path = entry.GetValueOrDefault("item_path", "").AsString();
             var count = entry.GetValueOrDefault("count", 0).AsInt32();
             var equipped = entry.GetValueOrDefault("equipped", false).AsBool();
-            if (string.IsNullOrWhiteSpace(path) || count <= 0 || equipped || load_item(path) is null) continue;
-            _player_entries.Add(new TradeEntry { path = path, count = count });
+            if (string.IsNullOrWhiteSpace(path) || count <= 0 || equipped || entry.GetValueOrDefault("storage_locked", false).AsBool() || load_item(path) is null) continue;
+            var existing = _player_entries.FirstOrDefault(candidate => candidate.path == path);
+            if (existing is null) _player_entries.Add(new TradeEntry { path = path, count = count });
+            else existing.count += count;
         }
         foreach (var key in _npc.trade_inventory.Keys)
         {
@@ -338,231 +220,99 @@ public partial class TradePanel : Control
 
     private void populate_grid(GridContainer grid, List<TradeEntry> entries)
     {
-        if (_slot_scene is null) return;
-        var slot_index = 0;
-        foreach (var entry in entries.Take(VisibleSlotCount))
+        foreach (var entry in entries)
         {
-            if (_slot_scene.Instantiate() is not StorageItemSlot slot) continue;
-            grid.AddChild(slot);
-            configure_trade_slot(slot);
-            if (load_item(entry.path) is { } item)
-            {
-                slot.set_item(slot_index, entry.path, item, entry.count);
-                var item_name = slot.GetNodeOrNull<Label>("ItemName");
-                item_name?.AddThemeColorOverride("font_color", Colors.White);
-            }
-            var frame = make_selection_frame();
-            slot.AddChild(frame);
-            var mark = make_checkmark();
-            slot.AddChild(mark);
-            entry.slot = slot;
-            entry.checkmark = mark;
-            entry.selection_frame = frame;
-            slot.clicked += _ => toggle_entry(entry);
-            slot.info_requested += (hovered, _) => show_item_hover(entry, hovered);
-            slot.info_cleared += on_trade_slot_info_cleared;
-            slot_index++;
+            if (load_item(entry.path) is not { } item) continue;
+            var button = new Button { Name = "TradeSourceRow", CustomMinimumSize = new Vector2(0, TradeRowHeight), SizeFlagsHorizontal = SizeFlags.ExpandFill };
+            button.AddThemeStyleboxOverride("normal", trade_row_style(false));
+            button.AddThemeStyleboxOverride("hover", trade_row_style(true));
+            button.AddThemeStyleboxOverride("pressed", trade_row_style(true));
+            button.AddThemeStyleboxOverride("focus", QuietRoomStyle.Edge(true, 0));
+            var row = new HBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
+            row.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+            row.OffsetLeft = 10; row.OffsetRight = -10; row.OffsetTop = 6; row.OffsetBottom = -6;
+            row.AddThemeConstantOverride("separation", 8); button.AddChild(row);
+            var name = make_label(item.entity_name, 21, QuietRoomStyle.Ink);
+            name.Name = "ItemName"; name.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+            name.AutowrapMode = TextServer.AutowrapMode.WordSmart; name.VerticalAlignment = VerticalAlignment.Center; name.MouseFilter = MouseFilterEnum.Ignore; row.AddChild(name);
+            var available = make_label(entry.count.ToString(), 20, WorldHudStyle.SecondaryInk);
+            available.CustomMinimumSize = new Vector2(35, 0); available.HorizontalAlignment = HorizontalAlignment.Right;
+            available.VerticalAlignment = VerticalAlignment.Center; available.MouseFilter = MouseFilterEnum.Ignore; row.AddChild(available);
+            var picker = new SpinBox { Name = "TradeQuantity", MinValue = 0, MaxValue = entry.count, Step = 1, Value = 0, CustomMinimumSize = new Vector2(88, 0), SizeFlagsVertical = SizeFlags.ShrinkCenter };
+            picker.GetLineEdit().Alignment = HorizontalAlignment.Right;
+            apply_font(picker, 20, QuietRoomStyle.Ink); row.AddChild(picker);
+            entry.row = button; entry.quantity_picker = picker;
+            button.Pressed += () => set_entry_quantity(entry, Math.Min(entry.count, entry.selected_count + 1));
+            picker.ValueChanged += value => set_entry_quantity(entry, (int)Math.Round(value));
+            HoverInfoManager.SetProvider(button, () => StoragePanel.ItemHover(item, entry.count, entry.path, _player));
+            grid.AddChild(button);
         }
-        while (slot_index < VisibleSlotCount)
-        {
-            if (_slot_scene.Instantiate() is not StorageItemSlot empty) break;
-            grid.AddChild(empty);
-            configure_trade_slot(empty);
-            empty.set_empty(slot_index++);
-        }
+        if (entries.Count == 0) grid.AddChild(make_label("暂无可交易物品", 20, WorldHudStyle.SecondaryInk));
     }
 
-    private void toggle_entry(TradeEntry entry)
+    private static StyleBoxFlat trade_row_style(bool selected) => new()
     {
-        entry.selected = !entry.selected;
-        entry.selected_count = entry.selected ? Math.Max(1, Math.Min(entry.selected_count == 0 ? 1 : entry.selected_count, entry.count)) : 0;
-        if (entry.checkmark is not null) entry.checkmark.Visible = entry.selected;
-        if (entry.selection_frame is not null) entry.selection_frame.Visible = entry.selected;
-        update_quantity_picker(entry);
+        BgColor = selected ? new Color("b9c9aa66") : Colors.Transparent,
+        BorderColor = new Color("bcb39388"), BorderWidthBottom = 1,
+        ContentMarginLeft = 8, ContentMarginRight = 8, ContentMarginTop = 6, ContentMarginBottom = 6,
+    };
+
+    private void set_entry_quantity(TradeEntry entry, int quantity)
+    {
+        entry.selected_count = Math.Clamp(quantity, 0, entry.count);
+        entry.selected = entry.selected_count > 0;
+        entry.quantity_picker?.SetValueNoSignal(entry.selected_count);
+        entry.row?.AddThemeStyleboxOverride("normal", trade_row_style(entry.selected));
         update_attitude();
     }
 
-    private void show_item_hover(TradeEntry entry, StorageItemSlot slot)
+    private void refresh_offers()
     {
-        if (slot.is_empty || slot.is_artifact || _item_hover_panel is null) return;
-        var item = load_item(entry.path);
-        if (item is null) return;
-        _hovered_trade_slot = slot;
-        if (_item_hover_icon is not null)
-            _item_hover_icon.Texture = string.IsNullOrWhiteSpace(item.icon_path) || !ResourceLoader.Exists(item.icon_path) ? null : ResourceLoader.Load<Texture2D>(item.icon_path);
-        if (_item_hover_name is not null) _item_hover_name.Text = item.entity_name;
-        var category = StoragePanel.category_of(item, entry.path);
-        if (!string.IsNullOrWhiteSpace(item.item_subcategory)) category = string.IsNullOrWhiteSpace(category) ? item.item_subcategory : $"{category} / {item.item_subcategory}";
-        var grade = item.craft_data is MaterialCraftData material ? $"品阶：{material.material_grade_name()}（{material.material_score():0.##}）" : item.get_grade_string();
-        var metadata = new[] { category, grade, $"数量 x{entry.count}" }.Where(value => !string.IsNullOrWhiteSpace(value));
-        var metadataText = string.Join(" · ", metadata);
-        if (_item_hover_meta is not null) _item_hover_meta.Text = metadataText;
-        if (_item_hover_detail is not null)
+        fill_offer(_outgoing_list, _player_entries);
+        fill_offer(_incoming_list, _npc_entries);
+        if (_selection_summary is not null)
+            _selection_summary.Text = $"交出 {_player_entries.Sum(e => e.selected_count)} 件 · 获得 {_npc_entries.Sum(e => e.selected_count)} 件";
+    }
+
+    private void fill_offer(VBoxContainer? list, List<TradeEntry> entries)
+    {
+        if (list is null) return;
+        foreach (var child in list.GetChildren()) { list.RemoveChild(child); child.QueueFree(); }
+        foreach (var entry in entries.Where(e => e.selected && e.selected_count > 0))
         {
-            var tags = StoragePanel.build_tags(item.tags, item.craft_data as MaterialCraftData);
-            var effect = StoragePanel.build_item_usage_effect(item);
-            _item_hover_detail.Text = $"词缀与功用\n{tags}\n\n使用效果\n{effect}";
+            var item = load_item(entry.path);
+            if (item is null) continue;
+            var button = new Button { Name = "TradeOfferRow", CustomMinimumSize = new Vector2(0, TradeRowHeight) };
+            button.AddThemeStyleboxOverride("normal", trade_row_style(true));
+            button.AddThemeStyleboxOverride("hover", trade_row_style(true));
+            button.AddThemeStyleboxOverride("pressed", trade_row_style(true));
+            var row = new HBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
+            row.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect); row.OffsetLeft = 10; row.OffsetRight = -10; row.OffsetTop = 6; row.OffsetBottom = -6;
+            button.AddChild(row);
+            var name = make_label(item.entity_name, 21, QuietRoomStyle.Ink); name.Name = "ItemName";
+            name.SizeFlagsHorizontal = SizeFlags.ExpandFill; name.AutowrapMode = TextServer.AutowrapMode.WordSmart;
+            name.VerticalAlignment = VerticalAlignment.Center; name.MouseFilter = MouseFilterEnum.Ignore; row.AddChild(name);
+            var count = make_label(entry.selected_count.ToString(), 22, QuietRoomStyle.Teal);
+            count.Name = "SelectedCount"; count.CustomMinimumSize = new Vector2(40, 0); count.HorizontalAlignment = HorizontalAlignment.Right;
+            count.VerticalAlignment = VerticalAlignment.Center; count.MouseFilter = MouseFilterEnum.Ignore; row.AddChild(count);
+            button.Pressed += () => set_entry_quantity(entry, entry.selected_count - 1);
+            HoverInfoManager.SetProvider(button, () => StoragePanel.ItemHover(item, entry.selected_count, entry.path, _player));
+            list.AddChild(button);
         }
-        size_item_hover_panel(metadataText);
-        position_item_hover_panel();
-        _item_hover_panel.Show();
-        _item_hover_panel.MoveToFront();
+        if (list.GetChildCount() == 0) list.AddChild(make_label("尚未选择物品", 19, WorldHudStyle.SecondaryInk));
     }
 
-    private void configure_trade_slot(StorageItemSlot slot)
+    private static string trade_item_identity(ItemData item)
     {
-        slot.CustomMinimumSize = new Vector2(TradeSlotWidth, TradeSlotBaseHeight);
-        if (slot.GetNodeOrNull<Control>("Frame") is { } frame) frame.OffsetBottom = TradeSlotIconSize;
-        if (slot.GetNodeOrNull<Label>("ItemName") is { } name)
-        {
-            name.OffsetTop = TradeSlotIconSize + 4;
-            name.OffsetBottom = TradeSlotBaseHeight;
-        }
-    }
-
-    private void size_item_hover_panel(string metadataText)
-    {
-        if (_item_hover_panel is null || _item_hover_detail is null) return;
-        var viewport = GetViewportRect().Size;
-        var panelWidth = Mathf.Max(1f, Mathf.Min(520f, viewport.X - 24f));
-        var maxHeight = Mathf.Max(1f, viewport.Y - 24f);
-        var contentWidth = Mathf.Max(1f, panelWidth - 34f);
-        var headingWidth = Mathf.Max(1f, contentWidth - 68f);
-        var detailText = _item_hover_detail.Text;
-        var detailFont = viewport.X < 620f ? 13 : 15;
-        var metaFont = viewport.X < 620f ? 12 : 14;
-        var detailHeight = 0f;
-        var totalHeight = 0f;
-
-        for (; detailFont >= 9; detailFont--)
-        {
-            var titleLines = estimate_wrapped_lines(_item_hover_name?.Text ?? "", headingWidth, 21);
-            var metaLines = estimate_wrapped_lines(metadataText, headingWidth, metaFont);
-            var headerHeight = Mathf.Max(58f, titleLines * 29f + metaLines * (metaFont + 5f) + 5f);
-            var detailLines = estimate_wrapped_lines(detailText, contentWidth, detailFont);
-            var lineHeight = detailFont * 1.55f;
-            // Extra room covers small differences in font metrics and automatic wrapping.
-            detailHeight = (detailLines + 1) * lineHeight;
-            totalHeight = headerHeight + detailHeight + 66f;
-            if (totalHeight <= maxHeight) break;
-        }
-
-        apply_font(_item_hover_detail, detailFont, new Color("f1ead7"));
-        if (_item_hover_meta is not null) apply_font(_item_hover_meta, metaFont, new Color("c8bd9d"));
-        _item_hover_detail.CustomMinimumSize = new Vector2(0, detailHeight);
-        _item_hover_panel.CustomMinimumSize = new Vector2(panelWidth, Mathf.Min(totalHeight, maxHeight));
-        _item_hover_panel.Size = new Vector2(panelWidth, Mathf.Min(totalHeight, maxHeight));
-    }
-
-    private static int estimate_wrapped_lines(string text, float width, int fontSize)
-    {
-        var lines = 0;
-        foreach (var line in text.Split('\n'))
-        {
-            if (line.Length == 0)
-            {
-                lines++;
-                continue;
-            }
-
-            var lineCount = 1;
-            var usedWidth = 0f;
-            foreach (var character in line)
-            {
-                var glyphWidth = character >= 0x2E80 ? fontSize : fontSize * .58f;
-                if (usedWidth > 0 && usedWidth + glyphWidth > width)
-                {
-                    lineCount++;
-                    usedWidth = 0;
-                }
-                usedWidth += glyphWidth;
-            }
-            lines += lineCount;
-        }
-        return Math.Max(1, lines);
-    }
-
-    private void position_item_hover_panel()
-    {
-        if (_item_hover_panel is null) return;
-        var viewport = GetViewportRect().Size;
-        var mouse = GetViewport().GetMousePosition();
-        var size = _item_hover_panel.Size;
-        var pointer = mouse + new Vector2(16, 18);
-        if (pointer.X + size.X > viewport.X - 12) pointer.X = mouse.X - size.X - 16;
-        if (pointer.Y + size.Y > viewport.Y - 12) pointer.Y = mouse.Y - size.Y - 18;
-        _item_hover_panel.Position = new Vector2(
-            Mathf.Clamp(pointer.X, 12, Mathf.Max(12, viewport.X - size.X - 12)),
-            Mathf.Clamp(pointer.Y, 12, Mathf.Max(12, viewport.Y - size.Y - 12)));
-    }
-
-    private void on_trade_slot_info_cleared(StorageItemSlot slot)
-    {
-        if (_hovered_trade_slot != slot) return;
-        hide_item_hover();
-    }
-
-    private void hide_item_hover()
-    {
-        _hovered_trade_slot = null;
-        _item_hover_panel?.Hide();
-    }
-
-    private void update_quantity_picker(TradeEntry entry)
-    {
-        if (entry.slot is null) return;
-        var show_picker = entry.selected && entry.count > 1;
-        if (!show_picker)
-        {
-            entry.quantity_slider?.QueueFree();
-            entry.quantity_label?.QueueFree();
-            entry.quantity_slider = null;
-            entry.quantity_label = null;
-            configure_trade_slot(entry.slot);
-            return;
-        }
-
-        entry.slot.CustomMinimumSize = new Vector2(TradeSlotWidth, 214);
-        if (entry.quantity_slider is not null)
-        {
-            entry.quantity_slider.MaxValue = entry.count;
-            entry.quantity_slider.Value = entry.selected_count;
-            if (entry.quantity_label is not null) entry.quantity_label.Text = $"数量 {entry.selected_count}/{entry.count}";
-            return;
-        }
-
-        var amount = make_label($"数量 {entry.selected_count}/{entry.count}", 14, new Color("6b5429"));
-        amount.HorizontalAlignment = HorizontalAlignment.Center;
-        amount.MouseFilter = MouseFilterEnum.Ignore;
-        amount.SetAnchorsAndOffsetsPreset(LayoutPreset.TopWide);
-        amount.OffsetTop = 164; amount.OffsetBottom = 183;
-        entry.slot.AddChild(amount);
-        entry.quantity_label = amount;
-
-        var slider = new HSlider
-        {
-            MinValue = 1,
-            MaxValue = entry.count,
-            Step = 1,
-            Value = entry.selected_count,
-            TooltipText = "拖动选择本次交易的数量",
-        };
-        slider.AddThemeStyleboxOverride("grabber_area", panel_style(new Color("362817"), new Color("795e31"), 5));
-        slider.AddThemeStyleboxOverride("slider", panel_style(new Color("e2c35f"), new Color("6c4d19"), 5));
-        slider.SetAnchorsAndOffsetsPreset(LayoutPreset.TopWide);
-        slider.OffsetLeft = 9; slider.OffsetTop = 187; slider.OffsetRight = -9; slider.OffsetBottom = 208;
-        slider.ValueChanged += value =>
-        {
-            entry.selected_count = (int)Math.Round(value);
-            if (entry.quantity_label is not null) entry.quantity_label.Text = $"数量 {entry.selected_count}/{entry.count}";
-            update_attitude();
-        };
-        entry.slot.AddChild(slider);
-        entry.quantity_slider = slider;
+        var category = StoragePanel.category_of(item, item.ResourcePath);
+        var grade = item.craft_data is MaterialCraftData material ? material.material_grade_name()
+            : item is PortraitClothingData ? "" : item.get_grade_string();
+        return string.Join(" · ", new[] { category, grade }.Where(value => !string.IsNullOrWhiteSpace(value)));
     }
 
     private void update_attitude()
     {
+        refresh_offers();
         var selected_player = _player_entries.Where(item => item.selected).ToList();
         var selected_npc = _npc_entries.Where(item => item.selected).ToList();
         if (selected_player.Count == 0 && selected_npc.Count == 0)
@@ -575,36 +325,32 @@ public partial class TradePanel : Control
         var npc_value = selected_npc.Sum(item_value);
         var basis = Math.Max(30, npc_value);
         var ratio = (player_value - npc_value) / (float)basis;
-        var favor = Math.Max(0, _npc?.player_relationship ?? 0) * 18;
-        var difference = player_value - npc_value;
-        var favor_covers = difference < 0 && favor >= -difference;
 
         string attitude;
-        var can_trade = false;
-        if (ratio >= .45f) { attitude = "满意交易"; can_trade = true; }
-        else if (ratio >= .10f) { attitude = "比较满意"; can_trade = true; }
-        else if (ratio >= -.10f) { attitude = "能接受"; can_trade = true; }
-        else if (ratio >= -.45f) { attitude = $"不太满意 · {(favor_covers ? "人情可抵" : "人情不足")}"; can_trade = favor_covers; }
-        else { attitude = $"不满意 · {(favor_covers ? "人情可抵" : "人情不足")}"; can_trade = favor_covers; }
+        var can_trade = ratio >= -.10f;
+        if (ratio >= .45f) attitude = "满意交易";
+        else if (ratio >= .10f) attitude = "比较满意";
+        else if (can_trade) attitude = "能接受";
+        else if (ratio >= -.45f) attitude = "差价偏大";
+        else attitude = "不满意";
 
-        var favor_text = difference < 0
-            ? (favor_covers ? "人情足以抵消差价，对方愿意成交。" : "人情不足，无法抵消差价。")
-            : "当前差价无需动用人情。";
-        set_attitude(attitude, favor_text, can_trade, true);
+        var detail = can_trade
+            ? "双方按当前物品价值判断，对方愿意成交。"
+            : "物品价值差距较大，对方不愿按此条件成交。";
+        set_attitude(attitude, detail, can_trade, true);
     }
 
-    private void set_attitude(string attitude, string favor_text, bool can_trade, bool has_selection)
+    private void set_attitude(string attitude, string terms_text, bool can_trade, bool has_selection)
     {
         if (_attitude_label is not null)
         {
             _attitude_label.Text = attitude;
-            _attitude_label.AddThemeColorOverride("font_color", can_trade ? new Color("b9d2c0") : new Color("d9a28b"));
+            _attitude_label.AddThemeColorOverride("font_color", can_trade ? QuietRoomStyle.Teal : new Color("985344"));
         }
-        if (_favor_label is not null) _favor_label.Text = favor_text;
+        if (_trade_terms_label is not null) _trade_terms_label.Text = terms_text;
         if (_trade_button is not null)
         {
             _trade_button.Disabled = !can_trade;
-            _trade_button.TooltipText = can_trade ? "" : (has_selection ? "对方不愿接受这笔交易" : "请选择双方物品");
         }
         if (_floating_hint_panel is not null)
         {
@@ -615,65 +361,104 @@ public partial class TradePanel : Control
 
     private void complete_trade()
     {
-        if (_player is null || _npc is null || _trade_button?.Disabled != false) return;
+        var player = _player; var npc = _npc;
+        if (player is null || npc is null || _trade_button?.Disabled != false) return;
         var outgoing = _player_entries.Where(item => item.selected).ToList();
         var incoming = _npc_entries.Where(item => item.selected).ToList();
         if (outgoing.Count == 0 && incoming.Count == 0) return;
-        if (!_player.can_spend_world_stamina(WorldStaminaRules.InteractionCost))
+        if (!player.can_spend_world_stamina(WorldStaminaRules.InteractionCost))
         {
             if (_floating_hint_panel is not null) _floating_hint_panel.Show();
-            if (_floating_hint is not null) _floating_hint.Text = $"体力不足，完成交易需要 {WorldStaminaRules.InteractionCost:0.#} 点；当前 {_player.current_world_stamina:0.#}。";
+            if (_floating_hint is not null) _floating_hint.Text = $"精力不足，完成交易需要 {WorldStaminaRules.InteractionCost:0.#} 点；当前 {player.current_world_stamina:0.#}。";
             return;
         }
 
-        var removed = new List<TradeEntry>();
-        foreach (var entry in outgoing)
+        // Recheck the live sources before mutating either side: the catalog is a view, not ownership.
+        if (outgoing.Concat(incoming).Any(e => e.selected_count <= 0 || e.selected_count > e.count)
+            || incoming.Any(e => !npc.trade_inventory.TryGetValue(e.path, out var count) || count.AsInt32() < e.selected_count))
         {
-            if (_player.remove_item_from_inventory(entry.path, entry.selected_count)) removed.Add(entry);
-            else
-            {
-                foreach (var rollback in removed) _player.add_item_to_inventory(rollback.path, rollback.selected_count);
-                return;
-            }
-        }
-
-        var added = new List<TradeEntry>();
-        foreach (var entry in incoming)
-        {
-            if (_player.add_item_to_inventory(entry.path, entry.selected_count)) added.Add(entry);
-            else
-            {
-                foreach (var rollback in added) _player.remove_item_from_inventory(rollback.path, rollback.selected_count);
-                foreach (var rollback in removed) _player.add_item_to_inventory(rollback.path, rollback.selected_count);
-                return;
-            }
-        }
-
-        if (!_player.try_spend_world_stamina(WorldStaminaRules.InteractionCost))
-        {
-            foreach (var rollback in added) _player.remove_item_from_inventory(rollback.path, rollback.selected_count);
-            foreach (var rollback in removed) _player.add_item_to_inventory(rollback.path, rollback.selected_count);
+            trade_failure("可交易物品数量已变化，请重新选择。");
             return;
         }
-        foreach (var entry in outgoing) _npc.trade_inventory[entry.path] = _npc.trade_inventory.TryGetValue(entry.path, out var old) ? old.AsInt32() + entry.selected_count : entry.selected_count;
-        foreach (var entry in incoming)
+        var outgoingValue = outgoing.Sum(item_value);
+        var incomingValue = incoming.Sum(item_value);
+        if ((outgoingValue - incomingValue) / (float)Math.Max(30, incomingValue) < -.10f)
         {
-            var remaining = _npc.trade_inventory.TryGetValue(entry.path, out var old) ? old.AsInt32() - entry.selected_count : 0;
-            if (remaining <= 0) _npc.trade_inventory.Remove(entry.path);
-            else _npc.trade_inventory[entry.path] = remaining;
+            trade_failure("对方不愿接受这笔交易。");
+            return;
         }
-        _npc.player_relationship = Math.Min(100, _npc.player_relationship + 1);
+        var giving = outgoing.ToDictionary(e => e.path, e => e.selected_count, StringComparer.Ordinal);
+        var receiving = incoming.ToDictionary(e => e.path, e => e.selected_count, StringComparer.Ordinal);
+        var npcResult = new Dictionary<string, int>(StringComparer.Ordinal);
+        foreach (var path in giving.Keys.Union(receiving.Keys, StringComparer.Ordinal))
+        {
+            var previous = npc.trade_inventory.TryGetValue(path, out var count) ? count.AsInt32() : 0;
+            var next = (long)previous + giving.GetValueOrDefault(path) - receiving.GetValueOrDefault(path);
+            if (next < 0 || next > int.MaxValue)
+            {
+                trade_failure("对方当前无法完成这笔交换。");
+                return;
+            }
+            npcResult[path] = (int)next;
+        }
+        // The inventory model releases the offered instances in a copy, plans all incoming footprints,
+        // and commits once. Stamina is consumed only after validation and before inventory notifications.
+        if (!player.try_exchange_inventory(giving, receiving, announceAcquisition: false,
+                beforeCommit: () => player.try_spend_world_stamina(WorldStaminaRules.InteractionCost)))
+        {
+            trade_failure(player.can_spend_world_stamina(WorldStaminaRules.InteractionCost)
+                ? "行囊容量不足，或所选物品已不可交易。请调整后重试。"
+                : $"精力不足，完成交易需要 {WorldStaminaRules.InteractionCost:0.#} 点。");
+            return;
+        }
+        foreach (var pair in npcResult)
+        {
+            if (pair.Value == 0) npc.trade_inventory.Remove(pair.Key);
+            else npc.trade_inventory[pair.Key] = pair.Value;
+        }
+        foreach (var entry in incoming) player.publish_item_acquired_notice(entry.path, entry.selected_count);
+        var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
+        var month = time is null ? 0 : (time.year - 1) * 12 + time.month - 1;
+        var eventId = "trade:" + Guid.NewGuid().ToString("N");
+        var isFairTrade = CharacterRelationshipRules.IsFairTrade(outgoingValue, incomingValue);
+        var relationshipFeedback = "信任：本次交换未达到公平估值范围，关系不变。";
+        if (isFairTrade && player.entity_data is HumanData playerData)
+        {
+            CharacterRelationshipRules.RecordFairTrade(playerData, npc, eventId, month);
+            relationshipFeedback = CharacterRelationshipRules.DescribePlayerEvidence(playerData, npc.npc_id, eventId,
+                "信任：本次交易已记录，关系证据已处理。");
+        }
+        var date = time is null ? $"{month / 12 + 1}年{month % 12 + 1}月" : $"{time.year}年{time.month}月{time.day}日";
+        var outgoingItems = string.Join("、", outgoing.Select(entry => $"{load_item(entry.path)?.entity_name ?? "物品"} ×{entry.selected_count}"));
+        var incomingItems = string.Join("、", incoming.Select(entry => $"{load_item(entry.path)?.entity_name ?? "物品"} ×{entry.selected_count}"));
+        npc.record(new NpcActionRecord
+        {
+            month_index = month, date_label = date, action_id = "player_trade_completed", action_name = "交易",
+            node_id = npc.current_node_id, subscene_id = npc.current_subscene_id, target_npc_id = "player",
+            reason = "双方完成物品交换。",
+            outcome = $"你交出{(outgoingItems.Length == 0 ? "无物品" : outgoingItems)}，换得{(incomingItems.Length == 0 ? "无物品" : incomingItems)}。\n{relationshipFeedback}"
+        });
         refresh_grids();
+        if (_floating_hint_panel is not null) _floating_hint_panel.Show();
+        if (_floating_hint is not null) _floating_hint.Text = relationshipFeedback;
+        TradeCompleted?.Invoke();
+    }
+
+    private void trade_failure(string message)
+    {
+        if (_floating_hint_panel is not null) _floating_hint_panel.Show();
+        if (_floating_hint is not null) _floating_hint.Text = message;
     }
 
     private void ensure_npc_offer()
     {
-        if (_npc is null || _npc.trade_inventory.Count > 0) return;
+        // 玉虚同门与宗内坊市共用真实库存；售空后不能由当面交易凭空补货。
+        if (_npc is null || _npc.trade_inventory.Count > 0 || _npc.faction_id == YuxuMarketRules.SectId) return;
         var seed = stable_seed(_npc.npc_id);
         for (var i = 0; i < 5; i++)
         {
             var path = DefaultNpcTradeItems[(int)((seed + (ulong)i * 7) % (ulong)DefaultNpcTradeItems.Length)];
-            if (!ResourceLoader.Exists(path)) continue;
+            if (load_item(path) is null) continue;
             _npc.trade_inventory[path] = 1 + (int)((seed + (ulong)i * 11) % 4);
         }
     }
@@ -682,6 +467,7 @@ public partial class TradePanel : Control
     {
         if (_item_cache.TryGetValue(path, out var item)) return item;
         item = string.IsNullOrWhiteSpace(path) || !ResourceLoader.Exists(path) ? null : ResourceLoader.Load<ItemData>(path);
+        if ((!GongfaAvailability.IsItemEnabled(item) || !AlchemyProductCatalog.IsItemEnabled(item))) item = null;
         _item_cache[path] = item;
         return item;
     }
@@ -689,56 +475,19 @@ public partial class TradePanel : Control
     private int item_value(TradeEntry entry)
     {
         var item = load_item(entry.path);
-        if (item is null) return 0;
-        var category_bonus = item.item_category switch
-        {
-            "秘籍" => 32,
-            "装备" => 26,
-            "丹药" => 20,
-            "符箓" => 16,
-            "器具" or "阵盘" => 18,
-            _ => 8,
-        };
-        return Math.Max(8, 18 + item.grade_value * 8 + category_bonus) * Math.Max(1, entry.selected_count);
+        return TradeValueRules.Estimate(item, entry.selected_count);
     }
 
     private void clear_grid(GridContainer grid)
     {
-        foreach (var child in grid.GetChildren()) child.QueueFree();
-    }
-
-    private Label make_checkmark()
-    {
-        var label = make_label("✓", 62, new Color(0.94f, 0.86f, 0.52f, 0.92f));
-        label.HorizontalAlignment = HorizontalAlignment.Center;
-        label.VerticalAlignment = VerticalAlignment.Center;
-        label.MouseFilter = MouseFilterEnum.Ignore;
-        label.AddThemeColorOverride("font_outline_color", new Color(.16f, .12f, .06f, .88f));
-        label.AddThemeConstantOverride("outline_size", 6);
-        label.SetAnchorsAndOffsetsPreset(LayoutPreset.TopWide);
-        label.OffsetBottom = TradeSlotIconSize;
-        label.Visible = false;
-        return label;
-    }
-
-    private Panel make_selection_frame()
-    {
-        var frame = new Panel { MouseFilter = MouseFilterEnum.Ignore, Visible = false };
-        frame.SetAnchorsAndOffsetsPreset(LayoutPreset.TopWide);
-        frame.OffsetBottom = TradeSlotIconSize;
-        frame.AddThemeStyleboxOverride("panel", panel_style(new Color(1f, .9f, .5f, .10f), new Color("e8c967"), 4));
-        return frame;
+        foreach (var child in grid.GetChildren()) { grid.RemoveChild(child); child.QueueFree(); }
     }
 
     private Button make_button(string text, int size, Vector2 minimum)
     {
         var button = new Button { Text = text, CustomMinimumSize = minimum };
-        apply_font(button, size, new Color("f1dfad"));
-        button.AddThemeColorOverride("font_hover_color", new Color("fff4cc"));
-        button.AddThemeColorOverride("font_disabled_color", new Color(.54f, .54f, .52f, .72f));
-        button.AddThemeStyleboxOverride("normal", panel_style(new Color(.12f, .14f, .13f, .96f), new Color("9a7a3d"), 5));
-        button.AddThemeStyleboxOverride("hover", panel_style(new Color(.21f, .25f, .22f, .98f), new Color("d3b86c"), 5));
-        button.AddThemeStyleboxOverride("disabled", panel_style(new Color(.16f, .17f, .16f, .78f), new Color(.36f, .36f, .34f, .8f), 5));
+        QuietRoomStyle.Primary(button);
+        button.CustomMinimumSize = minimum;
         return button;
     }
 
@@ -754,6 +503,12 @@ public partial class TradePanel : Control
         if (_font is not null) control.AddThemeFontOverride("font", _font);
         control.AddThemeFontSizeOverride("font_size", size);
         control.AddThemeColorOverride("font_color", color);
+        if (control is RichTextLabel rich)
+        {
+            if (_font is not null) rich.AddThemeFontOverride("normal_font", _font);
+            rich.AddThemeFontSizeOverride("normal_font_size", size);
+            rich.AddThemeColorOverride("default_color", color);
+        }
     }
 
     private static StyleBoxFlat panel_style(Color background, Color border, int radius)

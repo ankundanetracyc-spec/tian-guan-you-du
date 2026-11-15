@@ -1,0 +1,60 @@
+{
+  "baishi_prologue": {
+    "checks": 51,
+    "pass": true
+  },
+  "screenshots": [
+    "人物页_凡人.png",
+    "名单切换人物.png",
+    "人物页_云息.png",
+    "攻击确认.png",
+    "人物页_1280.png",
+    "攻击确认_1280.png"
+  ],
+  "build": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "combat_checks": 149.0,
+  "combat": [
+    {
+      "case": "spar",
+      "pass": true,
+      "log": "E:/stacklands/tmp/npc_page_smoke_spar/stdout.log",
+      "checks": 26
+    },
+    {
+      "case": "win",
+      "pass": true,
+      "log": "E:/stacklands/tmp/npc_page_smoke_win/stdout.log",
+      "checks": 34
+    },
+    {
+      "case": "loss",
+      "pass": true,
+      "log": "E:/stacklands/tmp/npc_page_smoke_loss/stdout.log",
+      "checks": 31
+    },
+    {
+      "case": "escape",
+      "pass": true,
+      "log": "E:/stacklands/tmp/npc_page_smoke_escape/stdout.log",
+      "checks": 29
+    },
+    {
+      "case": "unharmed",
+      "pass": true,
+      "log": "E:/stacklands/tmp/npc_page_smoke_unharmed/stdout.log",
+      "checks": 29
+    }
+  ],
+  "native_ui": {
+    "checks": 44,
+    "pass": true
+  },
+  "limitations": [
+    "城防具体追责与处罚未接入，玩家冲突持久保存待核事实",
+    "双方云息才可友好切磋，主动来访仍限原宗内范围"
+  ],
+  "verified_date": "2026-11-06"
+}

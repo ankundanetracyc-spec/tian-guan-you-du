@@ -15,14 +15,20 @@ public partial class NpcWorldManager : Node
     [Export] public Array<WorldNpcData> npcs = [];
     public int population_version { get; set; }
     private Array<EastWoodsNpcIncidentRecord> _east_woods_npc_incidents = [];
+    internal Array<EastWoodsNpcIncidentRecord> PersistentIncidentView => _east_woods_npc_incidents;
+    private HumanData? _playerData;
 
     private int _last_processed_month = -1;
     private WorldNodeMapData? _map_data;
     private Node? _tile_world_map;
     private int _last_world_grid_hour = -1;
+    private bool _worldGridRosterCacheDirty = true;
+    private readonly System.Collections.Generic.Dictionary<string, List<WorldNpcData>> _worldNodeRosterCache = new(StringComparer.Ordinal);
+    private readonly System.Collections.Generic.Dictionary<Vector2I, List<WorldNpcData>> _ordinaryCellRosterCache = new();
 
     public override void _Ready()
     {
+        world_npcs_changed += invalidate_world_grid_roster_cache;
         var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
         if (time is not null)
         {
@@ -32,11 +38,19 @@ public partial class NpcWorldManager : Node
         }
     }
 
+    public override void _ExitTree()
+    {
+        world_npcs_changed -= invalidate_world_grid_roster_cache;
+        if (GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } time)
+            time.time_changed -= on_time_changed;
+    }
+
     public void set_world_map(WorldNodeMapData map_data)
     {
         _map_data = map_data;
         foreach (var npc in npcs)
             normalize_npc_location(npc);
+        invalidate_world_grid_roster_cache();
     }
 
     public void set_tile_world_map(Node tileWorldMap)
@@ -51,6 +65,34 @@ public partial class NpcWorldManager : Node
         if (time is not null) _last_world_grid_hour = time.get_total_game_hours();
         EmitSignal(SignalName.world_npcs_changed);
     }
+
+    /// <summary>Attach the reviewed node graph without instantiating a tile map.</summary>
+    public void initialize_node_world_graph()
+    {
+        if (_tile_world_map is not null && GodotObject.IsInstanceValid(_tile_world_map) &&
+            _tile_world_map.HasMethod("get_npc_edge_travel_hours")) return;
+        var script = GD.Load<GDScript>("res://gdscripts/world/BaiChuanNpcNodeGraph.gd");
+        var graph = script?.New().AsGodotObject() as Node;
+        if (graph is null || !graph.Call("initialize").AsBool())
+        {
+            graph?.Free();
+            GD.PushError("无法加载 NPC 百川节点路网");
+            return;
+        }
+        graph.Name = "BaiChuanNpcNodeGraph";
+        AddChild(graph);
+        set_tile_world_map(graph);
+    }
+
+    public Vector2I node_world_cell_for_node_id(string nodeId) =>
+        _tile_world_map?.HasMethod("node_id_to_cell") == true
+            ? _tile_world_map.Call("node_id_to_cell", nodeId).AsVector2I() : new Vector2I(-1, -1);
+
+    public string node_world_node_id_for_cell(Vector2I cell) =>
+        _tile_world_map?.HasMethod("cell_to_node_id") == true
+            ? _tile_world_map.Call("cell_to_node_id", cell).AsString() : "";
+
+    public void set_player_data(HumanData? playerData) => _playerData = playerData;
 
     public bool has_world_grid_anchor(string nodeId)
     {
@@ -77,6 +119,7 @@ public partial class NpcWorldManager : Node
         population_version = 0;
         simulation_enabled = false;
         npcs.Clear();
+        _playerData = null;
         _east_woods_npc_incidents.Clear();
         var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
         _last_processed_month = time is null ? -1 : month_index(time);
@@ -109,6 +152,10 @@ public partial class NpcWorldManager : Node
             }
         simulation_enabled = enabled;
         var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
+        if (time is not null)
+            foreach (var npc in npcs)
+                if (npc.relationship_last_processed_month < 0)
+                    npc.relationship_last_processed_month = month_index(time);
         _last_processed_month = lastProcessedMonth >= 0
             ? lastProcessedMonth
             : time is null ? -1 : month_index(time);
@@ -127,6 +174,8 @@ public partial class NpcWorldManager : Node
         if (npc is null || string.IsNullOrWhiteSpace(npc.npc_id)) return;
         if (!normalize_npc_location(npc)) return;
         initialize_world_grid_position(npc);
+        if (npc.relationship_last_processed_month < 0 && GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } clock)
+            npc.relationship_last_processed_month = month_index(clock);
         var existing = get_npc(npc.npc_id);
         if (existing is not null) npcs.Remove(existing);
         npcs.Add(npc);
@@ -205,7 +254,8 @@ public partial class NpcWorldManager : Node
         var incident = get_east_woods_incident(incidentId);
         var task = incident?.field_tasks?.FirstOrDefault(item => item is not null && item.task_id == taskId);
         if (task is null || task.status != YuxuSectCaseTaskRecord.StatusAssigned ||
-            task.duty_instance_id != dutyInstanceId)
+            task.duty_instance_id != dutyInstanceId ||
+            task.temporary_party_member_active || task.journey_status != YuxuSectCaseTaskRecord.JourneyNotStarted)
             return false;
         task.status = YuxuSectCaseTaskRecord.StatusAvailable;
         task.duty_instance_id = "";
@@ -218,7 +268,9 @@ public partial class NpcWorldManager : Node
         var incident = get_east_woods_incident(incidentId);
         var task = incident?.field_tasks?.FirstOrDefault(item => item is not null && item.task_id == taskId);
         if (task is null || task.status != YuxuSectCaseTaskRecord.StatusAssigned ||
-            task.duty_instance_id != dutyInstanceId)
+            task.duty_instance_id != dutyInstanceId ||
+            task.task_type == "appeal_transport" &&
+            (task.journey_status != YuxuSectCaseTaskRecord.JourneyHandedOff || task.temporary_party_member_active))
             return false;
         task.status = YuxuSectCaseTaskRecord.StatusObjectiveComplete;
         task.updated_at = current_case_timestamp();
@@ -232,13 +284,18 @@ public partial class NpcWorldManager : Node
         incident.field_tasks ??= [];
         var task = incident.field_tasks.FirstOrDefault(item => item is not null && item.task_id == taskId);
         if (task is null || task.status != YuxuSectCaseTaskRecord.StatusObjectiveComplete ||
-            task.duty_instance_id != dutyInstanceId)
+            task.duty_instance_id != dutyInstanceId ||
+            task.task_type == "appeal_transport" &&
+            (task.journey_status != YuxuSectCaseTaskRecord.JourneyHandedOff || task.temporary_party_member_active))
             return false;
         task.status = YuxuSectCaseTaskRecord.StatusCompleted;
         task.duty_instance_id = "";
         task.updated_at = current_case_timestamp();
         if (incident.field_tasks.All(item => item is null || item.status is YuxuSectCaseTaskRecord.StatusCompleted or YuxuSectCaseTaskRecord.StatusCanceled))
-            incident.legal_status = YuxuSectDraftLawEvaluator.LegalStatusClosed;
+        {
+            if (incident.legal_status != YuxuSectDraftLawEvaluator.LegalStatusAppealPending)
+                incident.legal_status = YuxuSectDraftLawEvaluator.LegalStatusClosed;
+        }
         return true;
     }
 
@@ -265,7 +322,7 @@ public partial class NpcWorldManager : Node
     private string current_case_timestamp()
     {
         var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
-        return time is null ? "" : $"{time.year}年{time.month}月{time.day}日 {time.hour:D2}时";
+        return time is null ? "" : $"{time.year}年{time.month}月{time.day}日";
     }
 
     public bool try_assign_east_woods_incident(string incidentId, string dutyInstanceId)
@@ -331,7 +388,8 @@ public partial class NpcWorldManager : Node
         resultText = "";
         var incident = get_east_woods_incident(incidentId);
         var config = YuxuSectDraftLawEvaluator.LoadConfig();
-        if (incident is null || string.IsNullOrWhiteSpace(appellantNpcId) || incident.sanctions_executed ||
+        var appellant = get_npc(appellantNpcId);
+        if (incident is null || appellant is null || !appellant.is_alive || string.IsNullOrWhiteSpace(appellantNpcId) || incident.sanctions_executed ||
             incident.legal_status is not (YuxuSectDraftLawEvaluator.LegalStatusRuled or YuxuSectDraftLawEvaluator.LegalStatusAppealReviewed) ||
             appellantNpcId != incident.attacker_npc_id && appellantNpcId != incident.target_npc_id)
             return false;
@@ -357,8 +415,328 @@ public partial class NpcWorldManager : Node
         incident.appeal_filed_at = appeal.filed_at;
         incident.legal_status = YuxuSectDraftLawEvaluator.LegalStatusAppealPending;
 
-        var appellant = get_npc(appellantNpcId);
-        resultText = $"{appellant?.npc_name ?? appellantNpcId} 已递交本案申诉；待复核期间，原裁断暂不执行。申诉人护送未发布事务，因为当前地图尚无跟随与同行状态。";
+        incident.field_tasks ??= [];
+        var transportTaskId = $"appeal_transport:{appellantNpcId}:{incident.appeal_records.Count}";
+        add_case_field_task(incident, new YuxuSectCaseTaskRecord
+        {
+            task_id = transportTaskId,
+            task_type = "appeal_transport",
+            title = $"案卷押送 · {appellant?.npc_name ?? appellantNpcId}",
+            target_npc_id = appellantNpcId,
+            target_npc_name = appellant?.npc_name ?? appellantNpcId,
+            goal = $"将案卷指定的申诉当事人 {appellant?.npc_name ?? appellantNpcId} 作为临时队伍成员，自其所在位置押送至玉虚仙宗执中峰。",
+            completion_conditions = "在和光峰事务板接取后，与案卷指定当事人当面启程；按自动指派路线推进，途中遭拦截时进入现有战斗；抵达执中峰后向案卷官员交接。战斗结果不等同于缉捕，不授权击杀案卷目标。",
+            return_instruction = "回和光峰事务板回报押送交接结果。",
+            contribution_reward = 0,
+            kill_authorized = false,
+        });
+        resultText = $"{appellant?.npc_name ?? appellantNpcId} 已递交本案申诉；待复核期间，原裁断暂不执行。案卷押送事务已刊入和光峰事务板。";
+        EmitSignal(SignalName.world_npcs_changed);
+        return true;
+    }
+
+    public bool join_yuxu_case_task_party(
+        string incidentId,
+        string taskId,
+        string dutyInstanceId,
+        string npcId,
+        Vector2I playerCell,
+        string playerLocationNodeId,
+        string destinationNodeId,
+        Array<Vector2I> route,
+        float remainingHours,
+        bool insideDungeon)
+    {
+        var incident = get_east_woods_incident(incidentId);
+        var task = get_yuxu_case_task(incidentId, taskId);
+        var npc = get_npc(npcId);
+        if (incident is null || task is null || npc is null || !npc.is_alive ||
+            incident.appellant_npc_id != npcId ||
+            task.task_type != "appeal_transport" || task.target_npc_id != npcId ||
+            task.status != YuxuSectCaseTaskRecord.StatusAssigned || task.duty_instance_id != dutyInstanceId ||
+            task.journey_status != YuxuSectCaseTaskRecord.JourneyNotStarted ||
+            (!string.IsNullOrEmpty(npc.temporary_party_task_id) || npc.is_player_travel_companion) ||
+            string.IsNullOrWhiteSpace(destinationNodeId))
+            return false;
+
+        task.temporary_party_member_active = true;
+        task.journey_party_npc_id = npcId;
+        task.journey_destination_node_id = destinationNodeId;
+        task.journey_route = route?.Duplicate() ?? [];
+        task.journey_next_index = task.journey_route.Count > 1 ? 1 : 0;
+        task.journey_current_cell = playerCell;
+        task.journey_remaining_hours = Mathf.Max(0f, remainingHours);
+        task.journey_status = insideDungeon
+            ? YuxuSectCaseTaskRecord.JourneyExitingDungeon
+            : YuxuSectCaseTaskRecord.JourneyInTransit;
+        task.updated_at = current_case_timestamp();
+        npc.temporary_party_task_id = task.task_id;
+        npc.current_grid_cell = playerCell;
+        npc.has_world_grid_position = true;
+        if (!insideDungeon)
+        {
+            if (!string.IsNullOrWhiteSpace(playerLocationNodeId)) npc.current_node_id = playerLocationNodeId;
+            npc.dungeon_id = "";
+            npc.dungeon_node_id = "";
+            npc.dungeon_previous_node_id = "";
+            npc.current_subscene_id = "";
+        }
+        npc.current_state = "案卷押送同行";
+        EmitSignal(SignalName.world_npcs_changed);
+        return true;
+    }
+
+    public bool reset_yuxu_case_task_party_start(string incidentId, string taskId, string dutyInstanceId)
+    {
+        var task = get_yuxu_case_task(incidentId, taskId);
+        if (task is null || task.status != YuxuSectCaseTaskRecord.StatusAssigned ||
+            task.duty_instance_id != dutyInstanceId || task.journey_status is not (YuxuSectCaseTaskRecord.JourneyInTransit or YuxuSectCaseTaskRecord.JourneyExitingDungeon))
+            return false;
+        if (get_npc(task.journey_party_npc_id) is { } npc && npc.temporary_party_task_id == task.task_id)
+        {
+            npc.temporary_party_task_id = "";
+            npc.current_state = "空闲";
+        }
+        task.temporary_party_member_active = false;
+        task.journey_party_npc_id = "";
+        task.journey_destination_node_id = "";
+        task.journey_route.Clear();
+        task.journey_next_index = 0;
+        task.journey_remaining_hours = 0f;
+        task.journey_status = YuxuSectCaseTaskRecord.JourneyNotStarted;
+        task.updated_at = current_case_timestamp();
+        EmitSignal(SignalName.world_npcs_changed);
+        return true;
+    }
+
+    public bool update_yuxu_case_transport_position(
+        string incidentId,
+        string taskId,
+        string dutyInstanceId,
+        Vector2I playerCell,
+        string locationNodeId,
+        string dungeonNodeId,
+        float remainingHours)
+    {
+        var task = get_yuxu_case_task(incidentId, taskId);
+        if (task is null || !task.temporary_party_member_active || task.duty_instance_id != dutyInstanceId ||
+            task.journey_status is not (YuxuSectCaseTaskRecord.JourneyExitingDungeon or YuxuSectCaseTaskRecord.JourneyInTransit or YuxuSectCaseTaskRecord.JourneyIntercepted))
+            return false;
+        var npc = get_npc(task.journey_party_npc_id);
+        if (npc is null || !npc.is_alive || npc.temporary_party_task_id != task.task_id) return false;
+
+        task.journey_current_cell = playerCell;
+        task.journey_remaining_hours = Mathf.Max(0f, remainingHours);
+        if (task.journey_route.Count > 0)
+            for (var index = 0; index < task.journey_route.Count; index++)
+                if (task.journey_route[index] == playerCell)
+                {
+                    task.journey_next_index = Math.Min(task.journey_route.Count, index + 1);
+                    break;
+                }
+
+        npc.current_grid_cell = playerCell;
+        npc.has_world_grid_position = true;
+        if (!string.IsNullOrWhiteSpace(locationNodeId)) npc.current_node_id = locationNodeId;
+        npc.current_subscene_id = "";
+        npc.is_traveling = false;
+        npc.travel_origin_node_id = "";
+        npc.travel_destination_node_id = "";
+        npc.world_travel_path.Clear();
+        npc.world_travel_next_cell_index = 1;
+        npc.world_travel_cell_progress_hours = 0f;
+        if (!string.IsNullOrWhiteSpace(dungeonNodeId))
+        {
+            npc.dungeon_id = EastWoodsDungeonRules.DungeonId;
+            npc.dungeon_node_id = dungeonNodeId;
+            npc.current_state = "案卷押送同行";
+        }
+        else
+        {
+            npc.dungeon_id = "";
+            npc.dungeon_node_id = "";
+            npc.dungeon_previous_node_id = "";
+            npc.current_state = "案卷押送途中";
+        }
+        task.updated_at = current_case_timestamp();
+        EmitSignal(SignalName.world_npcs_changed);
+        return true;
+    }
+
+    public bool set_yuxu_case_transport_world_route(
+        string incidentId,
+        string taskId,
+        string dutyInstanceId,
+        Vector2I playerCell,
+        string locationNodeId,
+        Array<Vector2I> route,
+        float remainingHours)
+    {
+        var task = get_yuxu_case_task(incidentId, taskId);
+        if (task is null || !task.temporary_party_member_active || task.duty_instance_id != dutyInstanceId ||
+            task.journey_status is not (YuxuSectCaseTaskRecord.JourneyExitingDungeon or YuxuSectCaseTaskRecord.JourneyInTransit))
+            return false;
+        var npc = get_npc(task.journey_party_npc_id);
+        if (npc is null || !npc.is_alive || npc.temporary_party_task_id != task.task_id) return false;
+        task.journey_status = YuxuSectCaseTaskRecord.JourneyInTransit;
+        task.journey_route = route?.Duplicate() ?? [];
+        task.journey_next_index = task.journey_route.Count > 1 ? 1 : 0;
+        task.journey_current_cell = playerCell;
+        task.journey_remaining_hours = Mathf.Max(0f, remainingHours);
+        task.updated_at = current_case_timestamp();
+        npc.current_grid_cell = playerCell;
+        npc.has_world_grid_position = true;
+        if (!string.IsNullOrWhiteSpace(locationNodeId)) npc.current_node_id = locationNodeId;
+        npc.current_subscene_id = "";
+        npc.dungeon_id = "";
+        npc.dungeon_node_id = "";
+        npc.dungeon_previous_node_id = "";
+        npc.is_traveling = false;
+        npc.travel_origin_node_id = "";
+        npc.travel_destination_node_id = "";
+        npc.world_travel_path.Clear();
+        npc.world_travel_next_cell_index = 1;
+        npc.world_travel_cell_progress_hours = 0f;
+        npc.current_state = "案卷押送途中";
+        EmitSignal(SignalName.world_npcs_changed);
+        return true;
+    }
+
+    public bool mark_yuxu_case_transport_intercepted(
+        string incidentId,
+        string taskId,
+        string dutyInstanceId,
+        string attackerNpcId,
+        string source,
+        Vector2I cell)
+    {
+        var task = get_yuxu_case_task(incidentId, taskId);
+        if (task is null || !task.temporary_party_member_active || task.duty_instance_id != dutyInstanceId ||
+            task.journey_status is not (YuxuSectCaseTaskRecord.JourneyExitingDungeon or YuxuSectCaseTaskRecord.JourneyInTransit) ||
+            get_npc(attackerNpcId) is not { is_alive: true })
+            return false;
+        task.journey_phase_after_interception = task.journey_status;
+        task.journey_status = YuxuSectCaseTaskRecord.JourneyIntercepted;
+        task.journey_interception_npc_id = attackerNpcId;
+        task.journey_interception_source = source;
+        task.journey_interception_cell = cell;
+        task.journey_interception_count++;
+        task.journey_last_interception_result = "战斗待处理";
+        task.updated_at = current_case_timestamp();
+        return true;
+    }
+
+    public bool finish_yuxu_case_transport_interception(string incidentId, string taskId, string dutyInstanceId, string result)
+    {
+        var task = get_yuxu_case_task(incidentId, taskId);
+        if (task is null || task.journey_status != YuxuSectCaseTaskRecord.JourneyIntercepted ||
+            task.duty_instance_id != dutyInstanceId || !task.temporary_party_member_active ||
+            task.journey_phase_after_interception is not (YuxuSectCaseTaskRecord.JourneyExitingDungeon or YuxuSectCaseTaskRecord.JourneyInTransit))
+            return false;
+        task.journey_last_interception_result = result;
+        task.journey_status = task.journey_phase_after_interception;
+        task.journey_phase_after_interception = "";
+        task.updated_at = current_case_timestamp();
+        return true;
+    }
+
+    public Dictionary try_find_yuxu_case_transport_interceptor(Vector2I cell, HumanData playerData, string incidentId, string taskId)
+    {
+        var task = get_yuxu_case_task(incidentId, taskId);
+        if (playerData is null || task is null || !task.temporary_party_member_active ||
+            task.journey_status != YuxuSectCaseTaskRecord.JourneyInTransit)
+            return [];
+        var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
+        var actionStamp = time?.get_total_game_hours() ?? 0;
+        foreach (var npc in npcs.Where(item => item is not null && item.is_alive && item.has_world_grid_position &&
+                     item.current_grid_cell == cell && string.IsNullOrEmpty(item.dungeon_id) &&
+                     string.IsNullOrEmpty(item.temporary_party_task_id) && !item.is_player_travel_companion)
+                     .OrderBy(item => item.npc_id, StringComparer.Ordinal))
+        {
+            var chance = EastWoodsDungeonRules.attack_chance(
+                npc,
+                playerData.sect_affiliation_id,
+                RegionalRenownSystem.get_bai_chuan_total(playerData),
+                get_hostility_bias(npc, "player"),
+                EastWoodsDungeonRules.realm_score(playerData.cultivation_realm));
+            if (!EastWoodsDungeonRules.roll_attack($"{actionStamp}|{npc.npc_id}|case-transport|{task.task_id}|{cell.X},{cell.Y}", chance)) continue;
+            npc.current_state = "押送途中拦截";
+            record(npc, time is null ? 0 : month_index(time), "yuxu_case_transport_intercept", "拦截押送行程",
+                "在案卷指定的押送路线与同行队伍相遇后主动发起战斗。", "进入由玩家应对的现有战斗；胜负不构成拘押事件。", 0, "player");
+            return new Dictionary { ["attacker_npc_id"] = npc.npc_id, ["source"] = "world_map", ["cell"] = cell };
+        }
+        return [];
+    }
+
+    public bool mark_yuxu_case_transport_arrived(string incidentId, string taskId, string dutyInstanceId, string destinationNodeId)
+    {
+        var task = get_yuxu_case_task(incidentId, taskId);
+        var npc = task is null ? null : get_npc(task.journey_party_npc_id);
+        if (task is null || task.task_type != "appeal_transport" || !task.temporary_party_member_active ||
+            task.status != YuxuSectCaseTaskRecord.StatusAssigned || task.duty_instance_id != dutyInstanceId ||
+            task.journey_status != YuxuSectCaseTaskRecord.JourneyInTransit || task.journey_destination_node_id != destinationNodeId ||
+            npc is null || !npc.is_alive || npc.temporary_party_task_id != task.task_id ||
+            !string.IsNullOrEmpty(npc.dungeon_id) || npc.current_node_id != destinationNodeId)
+            return false;
+        task.journey_status = YuxuSectCaseTaskRecord.JourneyArrived;
+        task.journey_remaining_hours = 0f;
+        task.updated_at = current_case_timestamp();
+        return true;
+    }
+
+    public bool handoff_yuxu_case_transport(string incidentId, string taskId, string dutyInstanceId, string officialNodeId, out string resultText)
+    {
+        resultText = "";
+        var task = get_yuxu_case_task(incidentId, taskId);
+        var npc = task is null ? null : get_npc(task.journey_party_npc_id);
+        if (task is null || npc is null || task.task_type != "appeal_transport" ||
+            task.status != YuxuSectCaseTaskRecord.StatusAssigned || task.duty_instance_id != dutyInstanceId ||
+            task.journey_status != YuxuSectCaseTaskRecord.JourneyArrived ||
+            task.journey_destination_node_id != "yuxu_xianzong_core" || officialNodeId != "zhizhong" ||
+            !task.temporary_party_member_active || npc.temporary_party_task_id != task.task_id ||
+            !npc.is_alive || !string.IsNullOrEmpty(npc.dungeon_id) || npc.current_node_id != task.journey_destination_node_id)
+            return false;
+
+        task.temporary_party_member_active = false;
+        npc.temporary_party_task_id = "";
+        npc.current_state = "已交由执中峰官员接待";
+        task.journey_status = YuxuSectCaseTaskRecord.JourneyHandedOff;
+        task.handoff_node_id = officialNodeId;
+        task.handoff_at = current_case_timestamp();
+        task.handoff_result = "指定当事人已由执中峰官员接手；同行状态解除，案卷复核可继续。";
+        task.status = YuxuSectCaseTaskRecord.StatusObjectiveComplete;
+        task.updated_at = task.handoff_at;
+        resultText = task.handoff_result;
+        EmitSignal(SignalName.world_npcs_changed);
+        return true;
+    }
+
+    public bool apply_yuxu_case_transport_battle_snapshot(BattleEntityData snapshot)
+    {
+        if (snapshot is null || !snapshot.uid.StartsWith("worldnpc:", StringComparison.Ordinal)) return false;
+        var npc = get_npc(snapshot.uid["worldnpc:".Length..]);
+        if (npc is null || !npc.is_alive) return false;
+        if (!string.IsNullOrEmpty(npc.temporary_party_task_id))
+        {
+            npc.current_health = Mathf.Clamp(snapshot.current_health, 1, npc.max_health);
+            npc.current_state = "案卷押送途中负伤";
+            record(npc, GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } time ? month_index(time) : 0,
+                "yuxu_case_transport_battle", "押送途中遇袭", "作为案卷外勤临时队伍成员参与拦截战。",
+                $"战后仍存活，生命 {npc.current_health}/{npc.max_health}；交接前继续同行。", 0);
+        }
+        else if (snapshot.current_health <= 0)
+        {
+            mark_dead(npc, GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } time ? month_index(time) : 0,
+                "押送途中拦截战", "在拦截押送队伍的战斗中身亡；该结果不登记为案卷拘押或任务完成。");
+        }
+        else
+        {
+            npc.current_health = Mathf.Clamp(snapshot.current_health, 1, npc.max_health);
+            npc.current_state = "拦截战后负伤";
+            record(npc, GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager") is { } time ? month_index(time) : 0,
+                "yuxu_case_transport_battle", "押送途中拦截战", "在押送行程中与押送队伍发生战斗。",
+                $"战后生命 {npc.current_health}/{npc.max_health}。", 0, "player");
+        }
         EmitSignal(SignalName.world_npcs_changed);
         return true;
     }
@@ -371,6 +749,15 @@ public partial class NpcWorldManager : Node
         if (incident is null || pendingAppeal is null || incident.legal_status != YuxuSectDraftLawEvaluator.LegalStatusAppealPending ||
             incident.sanctions_executed || config is null)
             return false;
+
+        var pendingTransport = incident.field_tasks?.FirstOrDefault(task => task is not null &&
+            task.task_type == "appeal_transport" && task.target_npc_id == pendingAppeal.appellant_npc_id);
+        if (pendingTransport is null || pendingTransport.journey_status != YuxuSectCaseTaskRecord.JourneyHandedOff ||
+            pendingTransport.temporary_party_member_active)
+        {
+            resultText = "案卷指定当事人尚未由执中峰官员完成押送交接；案卷复核暂缓。";
+            return false;
+        }
 
         var originalRuleIds = incident.ruling_rule_ids?.ToArray() ?? [];
         var originalSanctionIds = incident.ruling_sanction_ids?.ToArray() ?? [];
@@ -424,8 +811,7 @@ public partial class NpcWorldManager : Node
                 offender.sect_case_expelled_by_case_id = incident.incident_id;
                 offender.faction_id = "yuxu_expelled";
                 offender.formal_identity = "玉虚宗除名修士";
-                // The signed warrant is saved, but no capture task is published until
-                // the map has a non-lethal apprehension and escort event to verify it.
+                // The warrant alone publishes no capture task and does not record an apprehension.
             }
             else if (sanctionId == config.first_offense_sanction_id)
             {
@@ -478,6 +864,18 @@ public partial class NpcWorldManager : Node
             foreach (var task in incident.field_tasks)
             {
                 if (task is null) continue;
+                var targetNpc = get_npc(task.target_npc_id);
+                var targetLocation = targetNpc is null
+                    ? "目标位置待核"
+                    : !string.IsNullOrWhiteSpace(targetNpc.dungeon_id)
+                        ? $"{get_node_name(targetNpc.current_node_id)}·林径 {targetNpc.dungeon_node_id}"
+                        : targetNpc.is_traveling
+                            ? $"{get_node_name(targetNpc.current_node_id)}（行旅中）"
+                            : !string.IsNullOrWhiteSpace(targetNpc.current_node_id)
+                                ? get_node_name(targetNpc.current_node_id)
+                                : targetNpc.has_world_grid_position
+                                    ? "世界行旅节点"
+                                    : "目标位置待核";
                 var isActiveForPlayer = incident.incident_id == activeIncidentId && task.task_id == activeTaskId &&
                     task.status is YuxuSectCaseTaskRecord.StatusAssigned or YuxuSectCaseTaskRecord.StatusObjectiveComplete;
                 if (task.status != YuxuSectCaseTaskRecord.StatusAvailable && !isActiveForPlayer) continue;
@@ -489,6 +887,7 @@ public partial class NpcWorldManager : Node
                     ["title"] = task.title,
                     ["target_npc_id"] = task.target_npc_id,
                     ["target_npc_name"] = task.target_npc_name,
+                    ["target_location"] = targetLocation,
                     ["goal"] = task.goal,
                     ["conditions"] = task.completion_conditions,
                     ["return_instruction"] = task.return_instruction,
@@ -496,6 +895,10 @@ public partial class NpcWorldManager : Node
                     ["kill_authorized"] = task.kill_authorized,
                     ["status"] = task.status,
                     ["legal_status"] = incident.legal_status,
+                    ["journey_status"] = task.journey_status,
+                    ["journey_destination_node_id"] = task.journey_destination_node_id,
+                    ["journey_remaining_hours"] = task.journey_remaining_hours,
+                    ["temporary_party_member_active"] = task.temporary_party_member_active,
                 });
             }
         }
@@ -504,6 +907,17 @@ public partial class NpcWorldManager : Node
 
     public YuxuSectCaseTaskRecord? get_yuxu_case_task(string incidentId, string taskId)
         => get_east_woods_incident(incidentId)?.field_tasks?.FirstOrDefault(task => task is not null && task.task_id == taskId);
+
+    public YuxuSectCaseTaskRecord? get_active_yuxu_case_transport(HumanData playerData)
+    {
+        if (playerData is null || playerData.sect_active_yuxu_duty_id != "yuxu_case_field_task") return null;
+        var task = get_yuxu_case_task(playerData.sect_active_yuxu_duty_incident_id, playerData.sect_active_yuxu_duty_task_id);
+        return task is not null && task.task_type == "appeal_transport" &&
+            task.status is YuxuSectCaseTaskRecord.StatusAssigned or YuxuSectCaseTaskRecord.StatusObjectiveComplete &&
+            task.duty_instance_id == playerData.sect_active_yuxu_duty_instance_id
+            ? task
+            : null;
+    }
 
     public bool try_execute_yuxu_restitution_task(string incidentId, string taskId, string dutyInstanceId, string npcId, out string resultText)
     {
@@ -595,7 +1009,8 @@ public partial class NpcWorldManager : Node
         var count = 0;
         foreach (var npc in npcs)
         {
-            if (npc is null || !npc.is_alive || !string.IsNullOrEmpty(npc.dungeon_id) || !npc.has_world_grid_position) continue;
+            if (npc is null || !npc.is_alive || !string.IsNullOrEmpty(npc.dungeon_id) || !npc.has_world_grid_position ||
+                !string.IsNullOrEmpty(npc.temporary_party_task_id) || npc.is_player_travel_companion) continue;
             if (!npc.is_traveling && npc.current_node_id == nodeId)
             {
                 count++;
@@ -622,10 +1037,34 @@ public partial class NpcWorldManager : Node
 
         foreach (var npc in npcs)
         {
-            if (npc is null || !npc.is_alive || !string.IsNullOrEmpty(npc.dungeon_id) || !npc.has_world_grid_position) continue;
+            if (npc is null || !npc.is_alive || !string.IsNullOrEmpty(npc.dungeon_id) || !npc.has_world_grid_position ||
+                !string.IsNullOrEmpty(npc.temporary_party_task_id) || npc.is_player_travel_companion) continue;
             var nodeId = npc.is_traveling ? get_location_node_id_at_cell(npc.current_grid_cell) : npc.current_node_id;
             if (string.IsNullOrEmpty(nodeId)) continue;
             counts[nodeId] = counts.ContainsKey(nodeId) ? counts[nodeId].AsInt32() + 1 : 1;
+        }
+        return counts;
+    }
+
+    /// <summary>Counts the same living world NPCs shown by the node roster, keyed by graph node ID.</summary>
+    public Godot.Collections.Dictionary get_node_world_population_counts()
+    {
+        var counts = new Godot.Collections.Dictionary();
+        if (_tile_world_map?.HasMethod("cell_to_node_id") != true) return counts;
+        var locationGraphIds = new System.Collections.Generic.Dictionary<string, string>(StringComparer.Ordinal);
+        foreach (var npc in npcs)
+        {
+            if (npc is null || !npc.is_alive || !npc.has_world_grid_position || !string.IsNullOrEmpty(npc.dungeon_id)) continue;
+            string id;
+            if (npc.is_traveling || string.IsNullOrEmpty(npc.current_node_id))
+                id = node_world_node_id_for_cell(npc.current_grid_cell);
+            else if (!locationGraphIds.TryGetValue(npc.current_node_id, out id!))
+            {
+                id = node_world_node_id_for_cell(get_location_anchor_cell(npc.current_node_id));
+                locationGraphIds[npc.current_node_id] = id;
+            }
+            if (string.IsNullOrEmpty(id)) continue;
+            counts[id] = counts.ContainsKey(id) ? counts[id].AsInt32() + 1 : 1;
         }
         return counts;
     }
@@ -649,16 +1088,39 @@ public partial class NpcWorldManager : Node
     public Array<WorldNpcData> get_world_grid_roster(Vector2I cell, string locationNodeId = "")
     {
         var result = new Array<WorldNpcData>();
+        if (_worldGridRosterCacheDirty) rebuild_world_grid_roster_cache();
+        var cached = string.IsNullOrEmpty(locationNodeId)
+            ? _ordinaryCellRosterCache.GetValueOrDefault(cell)
+            : _worldNodeRosterCache.GetValueOrDefault(locationNodeId);
+        if (cached is null) return result;
+        foreach (var npc in cached)
+            result.Add(npc);
+        return result;
+    }
+
+    private void invalidate_world_grid_roster_cache()
+    {
+        _worldGridRosterCacheDirty = true;
+    }
+
+    private void rebuild_world_grid_roster_cache()
+    {
+        _worldNodeRosterCache.Clear();
+        _ordinaryCellRosterCache.Clear();
         foreach (var npc in npcs)
         {
             if (npc is null || !npc.is_alive || !npc.has_world_grid_position || !string.IsNullOrEmpty(npc.dungeon_id)) continue;
-            var isNodeResident = !npc.is_traveling && !string.IsNullOrEmpty(locationNodeId) && npc.current_node_id == locationNodeId;
-            var isTravelingInsideThisLocation = npc.is_traveling && !string.IsNullOrEmpty(locationNodeId) &&
-                get_location_node_id_at_cell(npc.current_grid_cell) == locationNodeId;
-            var isAtOrdinaryCell = string.IsNullOrEmpty(locationNodeId) && npc.current_grid_cell == cell;
-            if (isNodeResident || isTravelingInsideThisLocation || isAtOrdinaryCell) result.Add(npc);
+            if (!_ordinaryCellRosterCache.TryGetValue(npc.current_grid_cell, out var cellRoster))
+                _ordinaryCellRosterCache[npc.current_grid_cell] = cellRoster = [];
+            cellRoster.Add(npc);
+
+            var nodeId = !npc.is_traveling ? npc.current_node_id : get_location_node_id_at_cell(npc.current_grid_cell);
+            if (string.IsNullOrEmpty(nodeId)) continue;
+            if (!_worldNodeRosterCache.TryGetValue(nodeId, out var nodeRoster))
+                _worldNodeRosterCache[nodeId] = nodeRoster = [];
+            nodeRoster.Add(npc);
         }
-        return result;
+        _worldGridRosterCacheDirty = false;
     }
 
     /// <summary>返回地点下的空间划分，供地点人物名单按子场景分组。</summary>
@@ -791,7 +1253,8 @@ public partial class NpcWorldManager : Node
     {
         // Scan and order the East Woods roster once per route edge, then reuse it
         // for movement, player encounters, and NPC conflict checks.
-        var local = npcs.Where(npc => npc is not null && npc.is_alive && npc.dungeon_id == EastWoodsDungeonRules.DungeonId)
+        var local = npcs.Where(npc => npc is not null && npc.is_alive && npc.dungeon_id == EastWoodsDungeonRules.DungeonId &&
+                string.IsNullOrEmpty(npc.temporary_party_task_id) && !npc.is_player_travel_companion)
             .OrderBy(npc => npc.npc_id, StringComparer.Ordinal).ToArray();
         var moved = new HashSet<string>();
         var previousNodes = new System.Collections.Generic.Dictionary<string, string>(StringComparer.Ordinal);
@@ -818,7 +1281,8 @@ public partial class NpcWorldManager : Node
             }
         }
 
-        EmitSignal(SignalName.world_npcs_changed);
+        if (local.Length > 0) notify_east_woods_route_changed();
+        if (moved.Count == 0) return [];
         if (playerData is not null)
         {
             foreach (var npc in local)
@@ -830,29 +1294,60 @@ public partial class NpcWorldManager : Node
                     npc,
                     playerData.sect_affiliation_id,
                     RegionalRenownSystem.get_bai_chuan_total(playerData),
-                    get_relationship_score(npc, "player", npc.player_relationship),
+                    get_hostility_bias(npc, "player"),
                     EastWoodsDungeonRules.realm_score(playerData.cultivation_realm));
                 var progressStamp = Mathf.RoundToInt(npc.dungeon_travel_progress * 10000f);
                 if (!EastWoodsDungeonRules.roll_attack($"{actionStamp}|{npc.npc_id}|player|{npc.dungeon_step_index}|{progressStamp}|{playerRouteNodeId}", chance)) continue;
                 npc.current_state = "向玩家出手";
                 record_dungeon_action(npc, "dungeon_attack", "突袭", $"性情、百川声望、势力态度、私人关系与境界共同影响出手判断；短测概率 {chance:P0}。", "在副本路线与玩家相遇后主动发起战斗。", npc.dungeon_node_id, "player");
-                EmitSignal(SignalName.world_npcs_changed);
+                notify_east_woods_route_changed();
                 return new Dictionary { ["attacker_npc_id"] = npc.npc_id, ["target_player"] = true, ["route_node_id"] = playerRouteNodeId };
             }
         }
 
-        for (var leftIndex = 0; leftIndex < local.Length; leftIndex++)
-        for (var rightIndex = leftIndex + 1; rightIndex < local.Length; rightIndex++)
+        // Candidate collisions are local to a route node or a pair of crossed edges.
+        // Group first so a sparse dungeon does not compare every resident with every other one.
+        var occupantsByNode = new System.Collections.Generic.Dictionary<string, List<int>>(StringComparer.Ordinal);
+        var moversByEdge = new System.Collections.Generic.Dictionary<(string From, string To), List<int>>();
+        for (var index = 0; index < local.Length; index++)
+        {
+            var npc = local[index];
+            if (!occupantsByNode.TryGetValue(npc.dungeon_node_id, out var occupants))
+                occupantsByNode[npc.dungeon_node_id] = occupants = [];
+            occupants.Add(index);
+            if (!moved.Contains(npc.npc_id) || !previousNodes.TryGetValue(npc.npc_id, out var previousNode)) continue;
+            var edge = (previousNode, npc.dungeon_node_id);
+            if (!moversByEdge.TryGetValue(edge, out var edgeMovers)) moversByEdge[edge] = edgeMovers = [];
+            edgeMovers.Add(index);
+        }
+
+        var collisionPairSet = new HashSet<(int Left, int Right)>();
+        foreach (var occupants in occupantsByNode.Values)
+        for (var left = 0; left < occupants.Count; left++)
+        for (var right = left + 1; right < occupants.Count; right++)
+        {
+            var leftIndex = occupants[left];
+            var rightIndex = occupants[right];
+            if (!moved.Contains(local[leftIndex].npc_id) && !moved.Contains(local[rightIndex].npc_id)) continue;
+            collisionPairSet.Add((leftIndex, rightIndex));
+        }
+        foreach (var (edge, edgeMovers) in moversByEdge)
+        {
+            if (string.CompareOrdinal(edge.From, edge.To) >= 0 ||
+                !moversByEdge.TryGetValue((edge.To, edge.From), out var reverseMovers)) continue;
+            foreach (var leftIndex in edgeMovers)
+            foreach (var rightIndex in reverseMovers)
+                collisionPairSet.Add(leftIndex < rightIndex ? (leftIndex, rightIndex) : (rightIndex, leftIndex));
+        }
+        var collisionPairs = collisionPairSet.ToList();
+        collisionPairs.Sort(static (left, right) => left.Left != right.Left
+            ? left.Left.CompareTo(right.Left)
+            : left.Right.CompareTo(right.Right));
+
+        foreach (var (leftIndex, rightIndex) in collisionPairs)
         {
             var first = local[leftIndex];
             var second = local[rightIndex];
-            var sharedNode = first.dungeon_node_id == second.dungeon_node_id &&
-                (moved.Contains(first.npc_id) || moved.Contains(second.npc_id));
-            var crossedPaths = previousNodes.TryGetValue(first.npc_id, out var firstPrevious) &&
-                previousNodes.TryGetValue(second.npc_id, out var secondPrevious) &&
-                firstPrevious == second.dungeon_node_id && secondPrevious == first.dungeon_node_id &&
-                moved.Contains(first.npc_id) && moved.Contains(second.npc_id);
-            if (!sharedNode && !crossedPaths) continue;
             if (should_npc_attack(first, second, actionStamp, out var firstChance))
             {
                 record_dungeon_action(first, "dungeon_attack", "突袭", $"与 {second.npc_name} 相遇；短测概率 {firstChance:P0}。", "沿途 NPC 冲突按既有战斗规则由双方 AI 在后台自动完成。", first.dungeon_node_id, second.npc_id);
@@ -960,10 +1455,17 @@ public partial class NpcWorldManager : Node
     private void on_time_changed()
     {
         if (_deferSettlement || IsSettling) return;
+        if (!simulation_enabled) return;
         var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
         if (time is null) return;
+        var currentHour = time.get_total_game_hours();
+        var currentMonth = month_index(time);
+        // Repeated notifications in the same hour have no settlement work.
+        if (_last_world_grid_hour >= 0 && currentHour == _last_world_grid_hour &&
+            _last_processed_month >= currentMonth)
+            return;
         begin_settlement_batch();
-        try { foreach (var _ in settle_time_steps(time.get_total_game_hours(), month_index(time))) { } }
+        try { foreach (var _ in settle_time_steps(currentHour, currentMonth)) { } }
         finally { end_settlement_batch(); }
     }
 
@@ -998,10 +1500,15 @@ public partial class NpcWorldManager : Node
             }
             foreach (var step in simulate_month_steps(month)) yield return step;
             _last_processed_month = month;
-            // 只把完成月结的时点作为下一段行旅起点。月内时间信号不推进
-            // NPC；下次跨月时一次性补齐从此边界（或读档锚点）到月界的行程。
+            // Month boundaries commit both travel and monthly world simulation.
             cursorHour = Math.Max(cursorHour, monthBoundaryHour);
             _last_world_grid_hour = cursorHour;
+        }
+        // Commit month-internal travel, so a later month boundary never replays it.
+        if (nowHour > cursorHour)
+        {
+            foreach (var step in advance_world_grid_travel_steps(nowHour - cursorHour, cursorHour)) yield return step;
+            _last_world_grid_hour = nowHour;
         }
     }
 
@@ -1019,7 +1526,7 @@ public partial class NpcWorldManager : Node
             while (remainingHours > 0.0001 && npc.world_travel_next_cell_index < npc.world_travel_path.Count && guard++ < 40000)
             {
                 var nextCell = npc.world_travel_path[npc.world_travel_next_cell_index];
-                var edgeHours = get_npc_cell_travel_hours(nextCell, npc.dun_speed);
+                var edgeHours = get_npc_cell_travel_hours(npc.current_grid_cell, nextCell, npc.dun_speed);
                 if (!double.IsFinite(edgeHours) || edgeHours <= 0.0) break;
                 var neededHours = Math.Max(0.0, edgeHours - npc.world_travel_cell_progress_hours);
                 if (remainingHours + 0.0001 < neededHours)
@@ -1075,7 +1582,7 @@ public partial class NpcWorldManager : Node
         var subsceneNote = string.IsNullOrWhiteSpace(npc.current_subscene_id)
             ? ""
             : $"，进入 {get_subscene_name(destination, npc.current_subscene_id)}";
-        record(npc, month, "arrive", "抵达", "按遁速沿固定格网完成逐格行旅。", $"抵达 {destination}{subsceneNote}。", 0, "", false, origin, destination, totalDays, 0);
+        record(npc, month, "arrive", "抵达", "按遁速沿节点路线完成行旅。", $"抵达 {destination}{subsceneNote}。", 0, "", false, origin, destination, totalDays, 0);
     }
 
     private double get_remaining_world_travel_hours(WorldNpcData npc)
@@ -1083,13 +1590,13 @@ public partial class NpcWorldManager : Node
         if (_tile_world_map is null || npc.world_travel_path.Count == 0) return 0.0;
         var totalHours = 0.0;
         for (var index = npc.world_travel_next_cell_index; index < npc.world_travel_path.Count; index++)
-            totalHours += get_npc_cell_travel_hours(npc.world_travel_path[index], npc.dun_speed);
+            totalHours += get_npc_cell_travel_hours(index == npc.world_travel_next_cell_index ? npc.current_grid_cell : npc.world_travel_path[index - 1], npc.world_travel_path[index], npc.dun_speed);
         return Math.Max(0.0, totalHours - npc.world_travel_cell_progress_hours);
     }
 
     private void initialize_world_grid_position(WorldNpcData npc)
     {
-        if (_tile_world_map is null || npc is null) return;
+        if (_tile_world_map is null || npc is null || npc.is_player_travel_companion) return;
         if (!npc.is_traveling)
         {
             if (!npc.has_world_grid_position || !is_valid_world_grid_cell(npc.current_grid_cell))
@@ -1155,9 +1662,18 @@ public partial class NpcWorldManager : Node
         return result;
     }
 
-    private double get_npc_cell_travel_hours(Vector2I cell, float dunSpeed)
+    private double get_npc_cell_travel_hours(Vector2I from, Vector2I cell, float dunSpeed)
     {
         if (_tile_world_map is null) return 2400.0 / Math.Max(0.01, dunSpeed);
+        if (_tile_world_map.HasMethod("get_npc_edge_travel_hours"))
+        {
+            if (!_settlementBatch) return _tile_world_map.Call("get_npc_edge_travel_hours", from, cell, dunSpeed).AsDouble();
+            var key = (from, cell, dunSpeed);
+            if (_settlementEdgeTravelHours.TryGetValue(key, out var cachedHours)) return cachedHours;
+            var edgeHours = _tile_world_map.Call("get_npc_edge_travel_hours", from, cell, dunSpeed).AsDouble();
+            _settlementEdgeTravelHours[key] = edgeHours;
+            return edgeHours;
+        }
         if (!_settlementBatch) return _tile_world_map.Call("get_npc_cell_travel_hours", cell, dunSpeed).AsDouble();
         // Cache the exact cell/speed pair so floating-point behavior matches the old bridge.
         if (_settlementTravelHours.TryGetValue((cell, dunSpeed), out var hours)) return hours;
@@ -1182,17 +1698,20 @@ public partial class NpcWorldManager : Node
 
     private System.Collections.Generic.IEnumerable<int> simulate_month_steps(int month)
     {
-        _monthlyResidents = _tile_world_map is null ? null : npcs.Where(n => n.is_alive && !n.is_traveling)
+        _monthlyResidents = _tile_world_map is null ? null : npcs.Where(n => n.is_alive && !n.is_traveling && string.IsNullOrEmpty(n.temporary_party_task_id) && !n.is_player_travel_companion)
             .GroupBy(n => n.current_node_id).ToDictionary(g => g.Key, g => g.ToArray(), StringComparer.Ordinal);
         foreach (var npc in npcs)
         {
             if (!npc.is_alive) continue;
+            if (!string.IsNullOrEmpty(npc.temporary_party_task_id) || npc.is_player_travel_companion) continue;
+            CharacterRelationshipRules.SettleMonth(npc, month);
             // 复用月度遍历；无新证据立即返回，不额外扫描人口或历史。
             NpcPlayerImpressionRules.SettleMonth(npc, month);
             // 师承流程的候选角色是宗门常驻人物，不参与尚未配置其修行/行程规则的月度演算。
             if (npc.is_yuxu_lineage_staff) continue;
             update_age(npc, month);
             if (!npc.is_alive) continue;
+            if (!string.IsNullOrEmpty(npc.public_lecture_event_id)) continue;
             NpcPurchaseRules.SettleMonth(npc, month);
             // 副本行程由同一遁速时间轴推进；不能在月演算里把人抽走到大世界地点。
             if (!string.IsNullOrWhiteSpace(npc.dungeon_id)) continue;
@@ -1215,6 +1734,7 @@ public partial class NpcWorldManager : Node
 
     private void resolve_month_action(WorldNpcData npc, int month)
     {
+        finish_seclusion_and_process_acquaintance_notes(npc, month);
         var rng = new RandomNumberGenerator { Seed = stable_seed(month, npc.npc_id, "action") };
         if (npc.is_traveling)
         {
@@ -1224,7 +1744,11 @@ public partial class NpcWorldManager : Node
 
         var roll = rng.RandiRange(0, 99);
         if (roll < 28) cultivate(npc, month, rng);
-        else if (roll < 53) work(npc, month, rng);
+        else if (roll < 53)
+        {
+            // 坊市成交属于本月工作行动；没有真实需求、货品或余额时继续原工作。
+            if (!YuxuMarketRules.TryAutomaticSale(_playerData, npc, month)) work(npc, month, rng);
+        }
         else if (roll < 72) socialize(npc, month, rng);
         else if (roll < 88) explore(npc, month, rng);
         else travel(npc, month, rng);
@@ -1234,10 +1758,52 @@ public partial class NpcWorldManager : Node
     {
         var gain = npc.spirit_root_name == "无灵根" ? 0 : rng.RandiRange(1, 3);
         npc.spirit_strands += gain;
-        npc.current_state = gain > 0 ? "修行中" : "调息";
-        record(npc, month, "cultivate", npc.current_state,
-            gain > 0 ? "以自身灵根与已学功法修行。" : "无灵根，改为调养气血。",
+        npc.current_state = "闭关修行";
+        npc.seclusion_started_month = month;
+        npc.seclusion_until_month = month + 1;
+        record(npc, month, "cultivate", "闭关修行",
+            gain > 0 ? "以自身灵根与已学功法修行，本月闭关至下次月度结算。" : "无灵根，改为闭关调养气血至下次月度结算。",
             gain > 0 ? $"灵力增加 {gain} 缕。" : "本月未积累灵力。", gain);
+    }
+
+    private void finish_seclusion_and_process_acquaintance_notes(WorldNpcData npc, int month)
+    {
+        if (npc.seclusion_until_month < 0 || month < npc.seclusion_until_month) return;
+        npc.current_state = "空闲";
+        // Keep the end cursor if player data is temporarily unavailable so a saved note
+        // can still be resolved on a later monthly step instead of being stranded.
+        if (_playerData is null) return;
+        if (month <= npc.last_processed_acquaintance_month)
+        {
+            npc.seclusion_started_month = -1;
+            npc.seclusion_until_month = -1;
+            return;
+        }
+
+        npc.acquaintance_notes ??= [];
+        var boundaryHour = month * 30 * 24;
+        foreach (var note in npc.acquaintance_notes)
+        {
+            if (note is null || note.GetValueOrDefault("status", "").AsString() != "pending" ||
+                string.IsNullOrWhiteSpace(note.GetValueOrDefault("note_id", "").AsString()) ||
+                note.GetValueOrDefault("received_hour", int.MaxValue).AsInt32() >= boundaryHour) continue;
+
+            // Reuse the existing social acceptance rules as a pure decision. Do not call Remember:
+            // a note response alone neither exchanges names nor records relationship evidence.
+            var decision = NpcSocialRules.Evaluate(npc, _playerData, "introduce", proactive: true);
+            var accepted = decision.ExchangesName && !CharacterRelationshipRules.IsHostile(npc, CharacterRelationshipRules.PlayerCharacterId);
+            note["status"] = accepted ? "accepted" : "declined";
+            note["resolved_month"] = month;
+            if (accepted)
+                npc.acquaintance_window_until_hour = boundaryHour + 5 * 360 * 24;
+            record(npc, month, "acquaintance_note_decision", "结识拜帖处理",
+                "出关后依照当下交往情形处理门外拜帖。",
+                accepted ? "愿意日后与留帖者结识；尚未交换姓名，也未形成关系记事。" : "婉谢门外拜帖；不生怨结，也未交换姓名。",
+                0, CharacterRelationshipRules.PlayerCharacterId);
+        }
+        npc.last_processed_acquaintance_month = month;
+        npc.seclusion_started_month = -1;
+        npc.seclusion_until_month = -1;
     }
 
     private void work(WorldNpcData npc, int month, RandomNumberGenerator rng, string reason = "")
@@ -1262,6 +1828,8 @@ public partial class NpcWorldManager : Node
             target = other; best = score;
         }
         var result = target is null ? "此处暂无可拜访的熟人，转为打听消息。" : $"与 {target.npc_name} 往来，交换近况与消息。";
+        if (target is not null)
+            CharacterRelationshipRules.RecordConversation(npc, target, $"npc-socialize:{month}:{npc.npc_id}:{target.npc_id}", month);
         record(npc, month, "socialize", "访人", "根据性情与当前地点寻找可交往对象。", result, 0, target?.npc_id ?? "");
     }
 
@@ -1277,7 +1845,7 @@ public partial class NpcWorldManager : Node
         }
         var gain = rng.RandiRange(0, 3);
         npc.change_resource("杂材", gain);
-        record(npc, month, "explore", "探索", "基于目标、所在地点与可用体力进行探索。", damage > 0 ? $"受伤 {damage} 点，获得杂材 {gain}。" : $"平安归来，获得杂材 {gain}。", gain - damage);
+        record(npc, month, "explore", "探索", "基于目标、所在地点与可用精力进行探索。", damage > 0 ? $"受伤 {damage} 点，获得杂材 {gain}。" : $"平安归来，获得杂材 {gain}。", gain - damage);
     }
 
     private void travel(WorldNpcData npc, int month, RandomNumberGenerator rng)
@@ -1299,7 +1867,7 @@ public partial class NpcWorldManager : Node
             var path = get_npc_grid_path(npc.current_grid_cell, destinationCell);
             if (!is_valid_world_grid_cell(npc.current_grid_cell) || path.Count < 2)
             {
-                work(npc, month, rng, "相邻地点在当前固定格网中没有可通行路径，本月改为营生。");
+                work(npc, month, rng, "相邻地点在当前节点路网中没有可通行路径，本月改为营生。");
                 return;
             }
             npc.world_travel_path.Clear();
@@ -1373,6 +1941,11 @@ public partial class NpcWorldManager : Node
         npc.current_state = "已故";
         npc.death_cause = cause;
         record(npc, month, "death", "死亡", cause, outcome, 0, "", true);
+        if (_playerData is not null)
+            CharacterRelationshipRules.RecordDeathFor(_playerData, npc.npc_id, month, cause);
+        foreach (var observer in npcs)
+            if (observer is not null && observer != npc)
+                CharacterRelationshipRules.RecordDeathFor(observer, npc.npc_id, month, cause);
     }
 
     private void record(WorldNpcData npc, int month, string actionId, string actionName, string reason, string outcome, int resourceDelta, string targetNpcId = "", bool death = false, string fromNodeId = "", string toNodeId = "", int travelDays = 0, int travelDaysRemaining = 0)
@@ -1404,11 +1977,14 @@ public partial class NpcWorldManager : Node
         var result = new Array<string>();
         if (_map_data is null) return result;
         if (_tile_world_map is not null && !has_world_grid_anchor(node_id)) return result;
-        foreach (var neighbor_id in _map_data.get_neighbors(node_id))
+        var neighbors = _tile_world_map?.HasMethod("get_npc_location_neighbors") == true
+            ? _tile_world_map.Call("get_npc_location_neighbors", node_id).AsGodotArray<string>()
+            : _map_data.get_neighbors(node_id);
+        foreach (var neighbor_id in neighbors)
         {
             var neighbor = _map_data.get_node(neighbor_id);
             var route = _map_data.get_route_between(node_id, neighbor_id);
-            if (neighbor is null || route is null || !route.unlocked) continue;
+            if (neighbor is null || (_tile_world_map?.HasMethod("get_npc_location_neighbors") != true && (route is null || !route.unlocked))) continue;
             if (neighbor.requires_unlock && !neighbor.unlocked) continue;
             if (_tile_world_map is not null && !has_world_grid_anchor(neighbor_id)) continue;
             if (!result.Contains(neighbor_id)) result.Add(neighbor_id);
@@ -1430,6 +2006,7 @@ public partial class NpcWorldManager : Node
 
     private bool normalize_npc_location(WorldNpcData npc)
     {
+        if (npc.is_player_travel_companion) return true;
         if (_map_data is null) return true;
         var node = _map_data.get_node(npc.current_node_id);
         if (node is null)
@@ -1462,23 +2039,15 @@ public partial class NpcWorldManager : Node
             attacker,
             target.faction_id,
             target.get_regional_renown(RegionalRenownSystem.BaiChuanRegionId),
-            get_relationship_score(attacker, target.npc_id),
+            get_hostility_bias(attacker, target.npc_id),
             EastWoodsDungeonRules.realm_score(target.cultivation_realm));
         return EastWoodsDungeonRules.roll_attack(
             $"{actionStamp}|{attacker.npc_id}|{target.npc_id}|{attacker.dungeon_step_index}|{target.dungeon_step_index}|{Mathf.RoundToInt(attacker.dungeon_travel_progress * 10000f)}",
             chance);
     }
 
-    private static int get_relationship_score(WorldNpcData npc, string targetNpcId, int fallback = 0)
-    {
-        var score = npc.personal_relationships.GetValueOrDefault(targetNpcId, fallback).AsInt32();
-        if (npc.relation_tags.Contains("仇敌:" + targetNpcId)) score = Math.Min(score, -30);
-        else if (npc.relation_tags.Contains("盟友:" + targetNpcId)) score = Math.Max(score, 30);
-        else if (npc.relation_tags.Contains("熟识:" + targetNpcId)) score = Math.Max(score, 10);
-        if (npc.has_dungeon_action_with_target(targetNpcId))
-            score = Math.Min(score, -10);
-        return score;
-    }
+    private static int get_hostility_bias(WorldNpcData npc, string targetNpcId)
+        => CharacterRelationshipRules.HostilityBias(npc, targetNpcId);
 
     private void record_dungeon_action(
         WorldNpcData npc,
@@ -1495,7 +2064,7 @@ public partial class NpcWorldManager : Node
     {
         var time = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager");
         var month = time is null ? 0 : month_index(time);
-        var date = time is null ? format_month(month) : $"{time.year}年{time.month}月{time.day}日 {time.hour:D2}时";
+        var date = time is null ? format_month(month) : $"{time.year}年{time.month}月{time.day}日";
         var entry = new NpcActionRecord
         {
             month_index = month,

@@ -120,7 +120,7 @@
         <div class="marker current">当前位置<small>第 52 格</small></div>
         <div class="route" id="route"></div>
         <div class="selection"><small>已选目的地</small><h3>白石镇　·　已发现路线</h3><div class="mini"><span>距离 <b>240 公里</b>　6 格</span><span>普通行旅 <b>6 日</b></span></div></div>
-        <div class="status"><strong>云行客　·　云水境</strong><br>生命　72 / 100<br>体力　<span id="stamina">32</span> / 100</div>
+        <div class="status"><strong>云行客　·　云水境</strong><br>生命　72 / 100<br>精力　<span id="stamina">32</span> / 100</div>
         <nav class="nav" aria-label="常驻导航"><span>世界</span><span>角色</span><span>行囊</span><span>见闻</span><span>信件</span><span>百工</span><span>修行</span><span>境界</span></nav>
         <div class="spell-entry">
           <button class="nav-spell" id="spell-tab" aria-label="术法" aria-expanded="false" aria-controls="spell-panel">术法</button>
@@ -137,10 +137,10 @@
       <aside class="spell-tooltip" id="spell-tooltip" aria-label="游骸行遁信息栏">
         <div class="tooltip-head"><span class="tooltip-icon">骸</span><div><div class="tooltip-title">游骸行遁</div><div class="tooltip-meta">遁行 · 持续施展<br>《乘物游骸真经》· 第一卷「游骸」</div></div></div>
         <div class="tooltip-section">术法详情</div>
-        <div class="tooltip-body">开启后，行旅遁速提高至原来的 1.5 倍；每跨入一格消耗 1 点大世界体力。地形耗时修正、逐格揭雾与旅途事件照常结算。</div>
-        <div class="tooltip-route">当前路线：6 格 · 240 公里<br>普通行旅 6 日　·　开启后 4 日<br>预计消耗 6 点体力</div>
+        <div class="tooltip-body">开启后，行旅遁速提高至原来的 1.5 倍；每跨入一格消耗 1 点大世界精力。地形耗时修正、逐格揭雾与旅途事件照常结算。</div>
+        <div class="tooltip-route">当前路线：6 格 · 240 公里<br>普通行旅 6 日　·　开启后 4 日<br>预计消耗 6 点精力</div>
       </aside>
-      <div class="travel-status" id="travel-status"><b>游骸行遁中</b>　已行 <span id="tiles-done">0</span> / 6 格　·　已耗 <span id="spent">0</span> 体力　·　预计剩余 4 日</div>
+      <div class="travel-status" id="travel-status"><b>游骸行遁中</b>　已行 <span id="tiles-done">0</span> / 6 格　·　已耗 <span id="spent">0</span> 精力　·　预计剩余 4 日</div>
       <div class="toast" id="toast"></div>
     </section>
   </main>
@@ -228,7 +228,7 @@
         return;
       }
       if (stamina < 1) {
-        showToast('体力不足，无法跨入第一格。');
+        showToast('精力不足，无法跨入第一格。');
         return;
       }
       traveling = true;
@@ -243,7 +243,7 @@
       setPanel(false);
       showToast('游骸行遁已开启，开始沿当前路线逐格行进。');
       travelTimer = window.setInterval(() => {
-        if (stamina < 1) { finishTravel('体力不足，游骸行遁已结束。'); return; }
+        if (stamina < 1) { finishTravel('精力不足，游骸行遁已结束。'); return; }
         stamina -= 1;
         traveled += 1;
         syncResources();

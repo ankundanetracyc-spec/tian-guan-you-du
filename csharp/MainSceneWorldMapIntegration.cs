@@ -1,120 +1,91 @@
 using Godot;
+using System.Linq;
 
-/// <summary>Bridges fixed-grid travel back to the established stable location IDs and interiors.</summary>
+/// <summary>Connects the current node to the shared world-character roster.</summary>
 public partial class MainScene
 {
-    private Vector2I _player_world_grid_cell = new(38, 166);
-    private bool _tile_world_npc_signal_connected;
-    private bool _tile_world_map_bridge_configured;
+    private bool is_world_location_unlocked(string nodeId) =>
+        _world_node_data?.get_node(nodeId) is { } node && (!node.requires_unlock || node.unlocked);
 
-    public void configure_tile_world_map_bridge()
+    private void hide_world_character_list() =>
+        (GetTree().GetFirstNodeInGroup("cell_character_list") as CellCharacterList)?.hide_world_npcs();
+
+    // This field stores an opaque node identifier for existing task and roster interfaces.
+    private Vector2I _player_world_grid_cell = new(-1, -1);
+    private bool _nodeWorldNpcSignalConnected;
+    private bool _tileWorldTravelInProgress;
+    private bool _nodeRosterContextInitialized;
+    private string _lastNodeRosterContext = "";
+    private bool _nodeWorldPopulationRefreshQueued;
+    private Godot.Timer? _nodeWorldPopulationRefreshTimer;
+
+    private void initialize_node_world_roster()
     {
-        if (tile_world_map is null)
-            return;
-        if (_tile_world_map_bridge_configured)
-            return;
-
-        if (tile_world_map.HasSignal("player_cell_changed"))
-            tile_world_map.Connect("player_cell_changed", Callable.From<Vector2I>(on_tile_world_player_cell_changed));
-        if (tile_world_map.HasSignal("player_travel_started"))
-            tile_world_map.Connect("player_travel_started", Callable.From(on_tile_world_travel_started));
-        if (tile_world_map.HasSignal("player_travel_finished"))
-            tile_world_map.Connect("player_travel_finished", Callable.From<int>(on_tile_world_travel_finished));
-        if (tile_world_map.HasSignal("world_state_changed"))
-            tile_world_map.Connect("world_state_changed", Callable.From(on_tile_world_save_state_changed));
-        if (tile_world_map.HasSignal("node_enter_requested"))
-            tile_world_map.Connect("node_enter_requested", Callable.From<string>(on_tile_world_node_enter_requested));
-        tile_world_map.Connect("visibility_changed", Callable.From(on_tile_world_map_visibility_changed));
-        _npc_world?.set_tile_world_map(tile_world_map);
-        _tile_world_map_bridge_configured = true;
-        connect_tile_world_npc_population();
-        sync_tile_world_map_state();
-    }
-
-    private void on_tile_world_map_visibility_changed()
-    {
-        if (tile_world_map?.Visible == true)
-            sync_tile_world_map_state();
-    }
-
-    private void sync_tile_world_map_state()
-    {
-        if (tile_world_map is null)
-            return;
-        connect_tile_world_npc_population();
-        if (tile_world_map.Visible)
-            tile_world_map.Call("prepare_world_markers");
-        tile_world_map.Call("set_dun_speed", player?.dun_speed ?? 100.0f);
-        tile_world_map.Call("set_can_fly", player?.can_fly_world_map ?? false);
-        tile_world_map.Call("set_player_cell", _player_world_grid_cell);
-        refresh_tile_world_population_counts();
-    }
-
-    private void connect_tile_world_npc_population()
-    {
-        if (_tile_world_npc_signal_connected || _npc_world is null)
-            return;
-
-        _npc_world.Connect("world_npcs_changed", Callable.From(refresh_tile_world_population_counts));
-        _tile_world_npc_signal_connected = true;
-    }
-
-    private void refresh_tile_world_population_counts()
-    {
-        if (tile_world_map?.Visible != true)
-            return;
-
-        tile_world_map.Call("set_population_counts", _npc_world?.get_world_location_population_counts() ?? new Godot.Collections.Dictionary());
-        tile_world_map.Call("set_grid_population_counts", _npc_world?.get_ordinary_grid_population_counts() ?? new Godot.Collections.Dictionary());
-
-        refresh_tile_world_character_list();
-    }
-
-    private void on_tile_world_player_cell_changed(Vector2I cell)
-    {
-        _player_world_grid_cell = cell;
-        mark_save_dirty();
-        if (tile_world_map is null)
-            return;
-
-        var locationNodeId = tile_world_map.Call("get_location_node_id_at_cell", cell).AsString();
-        if (locationNodeId != _player_world_node_id)
+        if (!_nodeWorldNpcSignalConnected && _npc_world is not null)
         {
-            if (!string.IsNullOrEmpty(_player_world_node_id))
-                node_map?.set_player_node_count(_player_world_node_id, 0);
-            _player_world_node_id = locationNodeId;
-
-            if (!string.IsNullOrEmpty(locationNodeId) && node_map?.map_data?.get_node(locationNodeId) is not null)
-            {
-                node_map.set_player_location(locationNodeId);
-                node_map.set_player_node_count(locationNodeId, player is null ? 0 : 1);
-            }
+            _npc_world.Connect("world_npcs_changed", Callable.From(on_node_world_population_changed));
+            _nodeWorldNpcSignalConnected = true;
         }
-
-        // 普通格也保留名单外框与明确空状态；每次逐格抵达都按该格刷新，不再留着上一个地点的人物。
-        refresh_tile_world_character_list(cell, locationNodeId);
+        refresh_node_world_population_counts();
+        refresh_node_world_character_list(force: true);
     }
 
-    private void refresh_tile_world_character_list(Vector2I? knownCell = null, string? knownLocationNodeId = null)
+    private void on_node_world_population_changed()
     {
-        if (tile_world_map?.Visible != true)
-            return;
-
-        var cell = knownCell ?? tile_world_map.Call("get_player_cell").AsVector2I();
-        var locationNodeId = knownLocationNodeId ?? tile_world_map.Call("get_location_node_id_at_cell", cell).AsString();
-        var contextId = string.IsNullOrEmpty(locationNodeId)
-            ? $"world-cell:{cell.X},{cell.Y}"
-            : $"world:{locationNodeId}";
-        var roster = _npc_world?.get_world_grid_roster(cell, locationNodeId) ?? new Godot.Collections.Array<WorldNpcData>();
-        (GetTree().GetFirstNodeInGroup("cell_character_list") as CellCharacterList)?.show_world_npcs(roster, contextId);
+        // Model changes are immediate; population labels share the map's 4 Hz
+        // presentation cadence instead of rebuilding for every elapsed hour.
+        if (_nodeWorldMap?.Visible != true) return;
+        sync_player_travel_party_map();
+        if (_nodeWorldPopulationRefreshQueued) return;
+        _nodeWorldPopulationRefreshQueued = true;
+        if (_nodeWorldPopulationRefreshTimer is null)
+        {
+            _nodeWorldPopulationRefreshTimer = new Godot.Timer
+            {
+                Name = "NodeWorldPopulationRefresh", WaitTime = .25, OneShot = true,
+            };
+            AddChild(_nodeWorldPopulationRefreshTimer);
+            _nodeWorldPopulationRefreshTimer.Timeout += flush_node_world_population_refresh;
+        }
+        _nodeWorldPopulationRefreshTimer.Start();
     }
 
-    private void on_tile_world_node_enter_requested(string nodeId)
+    private void flush_node_world_population_refresh()
     {
-        if (node_map?.map_data?.get_node(nodeId) is not { } node ||
-            nodeId != _player_world_node_id || !node_map.is_node_unlocked(nodeId) || !node.enterable)
-            return;
+        _nodeWorldPopulationRefreshQueued = false;
+        refresh_node_world_population_counts();
+        refresh_node_world_character_list(force: true);
+    }
 
-        on_node_enter_requested(nodeId);
+    private void refresh_node_world_population_counts()
+    {
+        if (_nodeWorldMap?.Visible != true || _npc_world is null) return;
+        _nodeWorldMap.Call("set_population_counts", _npc_world.get_node_world_population_counts());
+    }
+
+    private void refresh_node_world_character_list(bool force = false)
+    {
+        if (_nodeWorldMap?.Visible != true || _npc_world is null) return;
+        if (GetTree().GetFirstNodeInGroup("cell_character_list") is not CellCharacterList rosterPanel) return;
+        if (_nodeWorldMap.HasMethod("get_nearby_person_ids"))
+        {
+            if (_tileWorldTravelInProgress) return;
+            var people = get_free_world_roster();
+            var context = "free-world:" + _nodeWorldMap.Call("get_current_location_runtime_id").AsString() + ":" + string.Join("|", people.Select(n => n.npc_id));
+            if (!force && _nodeRosterContextInitialized && _lastNodeRosterContext == context) return;
+            _nodeRosterContextInitialized = true;
+            _lastNodeRosterContext = context;
+            rosterPanel.show_world_npcs(people, context);
+            return;
+        }
+        var id = _nodeWorldMap.Call("get_current_node").AsString();
+        if (string.IsNullOrEmpty(id)) return;
+        var cell = _npc_world.node_world_cell_for_node_id(id);
+        var locationId = _nodeWorldMap.Call("get_runtime_id", id).AsString();
+        var contextId = string.IsNullOrEmpty(locationId) ? $"world-cell:{id}" : $"world:{locationId}";
+        if (!force && _nodeRosterContextInitialized && _lastNodeRosterContext == contextId) return;
+        _nodeRosterContextInitialized = true;
+        _lastNodeRosterContext = contextId;
+        rosterPanel.show_world_npcs(_npc_world.get_world_grid_roster(cell, locationId), contextId);
     }
 }

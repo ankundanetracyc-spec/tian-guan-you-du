@@ -3,23 +3,20 @@ using Godot;
 /// <summary>按1672×941理想图坐标组织原生行囊控件；文字与物品均由真实数据填充。</summary>
 public partial class StoragePanel
 {
-    private static readonly Vector2 DesignSize = new(1672, 941);
+    private static readonly Vector2 DesignSize = new(1920, 1080);
     private static readonly Color Ink = new("252920"), PaperText = new("f0ead7"), MutedPaper = new("d2ceba");
     private Control? _canvas;
     private FontFile? _inventory_font;
     private Texture2D? _navigation_atlas;
     private GridContainer? _grid;
-    private ScrollContainer? _grid_scroll, _detail_scroll;
-    private Label? _empty, _summary, _info_name, _info_category, _info_grade, _info_count, _info_effect_title;
-    private TextureRect? _info_icon;
-    private RichTextLabel? _info_tags, _info_desc;
+    private ScrollContainer? _grid_scroll;
+    private Label? _empty, _summary;
     private PanelContainer? _detail_panel;
-    private VBoxContainer? _detail_content;
-    private HBoxContainer? _action_row;
+    private VBoxContainer? _action_row;
     private Button? _action_button, _cancel_button;
     private InventoryPaperFrame? _popup_frame;
 
-    private void build_inventory_view()
+    private void build_inventory_view_legacy()
     {
         _inventory_font = GD.Load<FontFile>("res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf");
         _navigation_atlas = GD.Load<Texture2D>("res://textures/ui/inventory_20261012/category_icons_v1.png");
@@ -55,7 +52,7 @@ public partial class StoragePanel
         subtitle.HorizontalAlignment = HorizontalAlignment.Center;
         place(subtitle, _canvas, 36, 143, 203, 33);
         string[] categories = ["", "装备", "材料", "秘籍", "阵盘", "器具", "符箓", "丹药", "灵膳", ArtifactFilter];
-        string[] names = ["全部", "装备", "材料", "秘籍", "阵盘", "器具", "符箓", "丹药", "灵膳", "法宝"];
+        string[] names = ["全部", "装备", "材料", "秘籍", "阵盘", "器具", "符箓", "丹药", "灵膳", "器物"];
         for (var index = 0; index < categories.Length; index++)
         {
             var category = categories[index];
@@ -102,7 +99,7 @@ public partial class StoragePanel
             _grid_scroll!.ScrollVertical = 0;
             refresh_slots();
         };
-        var sort = new OptionButton { MouseDefaultCursorShape = CursorShape.PointingHand, TooltipText = "选择排序方式；按位置排列时可拖动物品调序" };
+        var sort = new OptionButton { MouseDefaultCursorShape = CursorShape.PointingHand };
         foreach (var option in new[] { "名称", "数量", "类别", "位置" }) sort.AddItem(option);
         style_button(sort, 20, true);
         var popup = sort.GetPopup();
@@ -138,7 +135,7 @@ public partial class StoragePanel
             Modulate = new Color("798674"), MouseFilter = MouseFilterEnum.Ignore
         };
         place(footerMountain, _canvas, 299, 882, 60, 30);
-        place(text("悬停查看物品详情 · 左键选择可用物品", 19, new Color("514c3a")), _canvas, 378, 881, 750, 34);
+        place(text("悬停查看物品详情 · 单击显示可用操作", 19, new Color("514c3a")), _canvas, 378, 881, 750, 34);
         _summary = text("", 16, new Color("7b735e"));
         _summary.HorizontalAlignment = HorizontalAlignment.Right;
         place(_summary, _canvas, 1210, 883, 400, 30);
@@ -150,7 +147,7 @@ public partial class StoragePanel
         _detail_panel = new PanelContainer
         {
             Name = "ItemPopup", CustomMinimumSize = new Vector2(PopupWidth, 0),
-            Size = new Vector2(PopupWidth, 360), ZIndex = 30, MouseFilter = MouseFilterEnum.Stop
+            Size = new Vector2(PopupWidth, 0), ZIndex = 30, MouseFilter = MouseFilterEnum.Stop
         };
         _detail_panel.AddThemeStyleboxOverride("panel", new StyleBoxEmpty());
         _canvas!.AddChild(_detail_panel);
@@ -163,76 +160,23 @@ public partial class StoragePanel
         var column = new VBoxContainer();
         column.AddThemeConstantOverride("separation", 12);
         margin.AddChild(column);
-        var header = new HBoxContainer();
-        header.AddThemeConstantOverride("separation", 16);
-        column.AddChild(header);
-        _info_icon = new TextureRect
-        {
-            CustomMinimumSize = new Vector2(80, 80), ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
-            StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered, MouseFilter = MouseFilterEnum.Ignore
-        };
-        header.AddChild(_info_icon);
-        var titles = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill };
-        titles.AddThemeConstantOverride("separation", 6);
-        header.AddChild(titles);
-        _info_name = text("", 29, PaperText);
-        _info_name.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-        titles.AddChild(_info_name);
-        var category = new PanelContainer { SizeFlagsHorizontal = SizeFlags.ShrinkBegin, MouseFilter = MouseFilterEnum.Ignore };
-        category.AddThemeStyleboxOverride("panel", new StyleBoxFlat
-        {
-            BgColor = new Color("414e40"), BorderColor = new Color("7b8971"),
-            BorderWidthLeft = 1, BorderWidthRight = 1, BorderWidthTop = 1, BorderWidthBottom = 1,
-            CornerRadiusTopLeft = 7, CornerRadiusTopRight = 7, CornerRadiusBottomLeft = 7, CornerRadiusBottomRight = 7,
-            ContentMarginLeft = 11, ContentMarginRight = 11, ContentMarginTop = 3, ContentMarginBottom = 3
-        });
-        titles.AddChild(category);
-        _info_category = text("", 18, PaperText);
-        _info_category.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-        category.AddChild(_info_category);
-        column.AddChild(rule(true));
-        _detail_scroll = new ScrollContainer
-        {
-            HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,
-            VerticalScrollMode = ScrollContainer.ScrollMode.Auto, SizeFlagsHorizontal = SizeFlags.ExpandFill
-        };
-        column.AddChild(_detail_scroll);
-        _detail_content = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, CustomMinimumSize = new Vector2(PopupWidth - 58, 0) };
-        _detail_content.AddThemeConstantOverride("separation", 10);
-        _detail_scroll.AddChild(_detail_content);
-        _info_count = text("", 20, MutedPaper); _detail_content.AddChild(_info_count);
-        _info_grade = text("", 19, new Color("dbcdab")); _detail_content.AddChild(_info_grade);
-        _info_tags = rich_text(20, PaperText); _detail_content.AddChild(_info_tags);
-        _detail_content.AddChild(rule(true));
-        _info_effect_title = text("使用效果", 19, new Color("d7c8a0")); _detail_content.AddChild(_info_effect_title);
-        _info_desc = rich_text(19, MutedPaper); _detail_content.AddChild(_info_desc);
-        style_scrollbar(_detail_scroll.GetVScrollBar());
-        _action_row = new HBoxContainer();
-        _action_row.AddThemeConstantOverride("separation", 14);
+        _action_row = new VBoxContainer { Name = "ItemActions" };
+        _action_row.AddThemeConstantOverride("separation", 10);
         column.AddChild(_action_row);
         _action_button = paper_button("使用", 27, true);
-        _cancel_button = paper_button("取消", 27, false);
+        _cancel_button = paper_button("取消", 27, true);
         _action_button.CustomMinimumSize = _cancel_button.CustomMinimumSize = new Vector2(0, 52);
         _action_button.SizeFlagsHorizontal = _cancel_button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         _action_row.AddChild(_action_button); _action_row.AddChild(_cancel_button);
         _action_button.Pressed += on_action_pressed;
         _cancel_button.Pressed += clear_active_info;
-        _detail_panel.MouseEntered += on_detail_mouse_entered;
-        _detail_panel.MouseExited += on_detail_mouse_exited;
         _detail_panel.Hide();
     }
 
     private void layout_detail_popup(StorageItemSlot slot)
     {
-        if (_canvas is null || _detail_panel is null || _detail_content is null || _detail_scroll is null) return;
-        var actionHeight = _action_row?.Visible == true ? 64f : 0f;
-        var natural = _detail_content.GetCombinedMinimumSize().Y;
-        var bodyHeight = Mathf.Clamp(natural, 40f, 560f - actionHeight);
-        if (!Mathf.IsEqualApprox(_detail_scroll.CustomMinimumSize.Y, bodyHeight))
-        {
-            _detail_scroll.CustomMinimumSize = new Vector2(0, bodyHeight);
-            _detail_panel.ResetSize();
-        }
+        if (_canvas is null || _detail_panel is null) return;
+        _detail_panel.ResetSize();
         var popupSize = _detail_panel.GetCombinedMinimumSize();
         popupSize.X = PopupWidth;
         _detail_panel.Size = popupSize;
@@ -240,7 +184,8 @@ public partial class StoragePanel
         var leftSide = local.X < DesignSize.X * .4f;
         var anchorX = local.X + slot.Size.X * (leftSide ? .8f : .5f);
         var x = leftSide ? local.X + slot.Size.X * .6f : anchorX - PopupWidth * .5f;
-        x = Mathf.Clamp(x, 276f, DesignSize.X - PopupWidth - 24f);
+        var leftLimit = _nativeContainerId.Length > 0 ? 24f : 276f;
+        x = Mathf.Clamp(x, leftLimit, DesignSize.X - PopupWidth - 24f);
         var y = local.Y + slot.Size.Y + 13f;
         var above = false;
         var pointer = true;
@@ -254,7 +199,7 @@ public partial class StoragePanel
                 y = Mathf.Clamp(local.Y, 78f, Mathf.Max(78f, DesignSize.Y - popupSize.Y - 25f));
                 x = local.X + slot.Size.X + 14f;
                 if (x + PopupWidth > DesignSize.X - 24f) x = local.X - PopupWidth - 14f;
-                x = Mathf.Clamp(x, 276f, DesignSize.X - PopupWidth - 24f);
+                x = Mathf.Clamp(x, leftLimit, DesignSize.X - PopupWidth - 24f);
             }
         }
         _detail_panel.Position = new Vector2(x, y);
@@ -270,6 +215,7 @@ public partial class StoragePanel
         var scale = Mathf.Min(viewport.X / DesignSize.X, viewport.Y / DesignSize.Y);
         _canvas.Scale = Vector2.One * scale;
         _canvas.Position = (viewport - DesignSize * scale) * .5f;
+        fit_bag_shade(viewport, scale);
     }
     private Texture2D? navigation_icon(int index) => _navigation_atlas is null ? null : new AtlasTexture
     {
@@ -299,33 +245,8 @@ public partial class StoragePanel
         label.AddThemeConstantOverride("line_separation", 5);
         return label;
     }
-    private Button paper_button(string value, int size, bool light)
-    {
-        var button = new Button { Text = value, MouseDefaultCursorShape = CursorShape.PointingHand };
-        style_button(button, size, light);
-        return button;
-    }
-    private void style_button(Button button, int size, bool light)
-    {
-        button.AddThemeFontOverride("font", _inventory_font);
-        button.AddThemeFontSizeOverride("font_size", size);
-        foreach (var state in new[] { "font_color", "font_hover_color", "font_pressed_color", "font_focus_color", "font_hover_pressed_color" })
-            button.AddThemeColorOverride(state, light ? Ink : PaperText);
-        foreach (var state in new[] { "normal", "hover", "pressed", "hover_pressed" })
-        {
-            if (light) button.AddThemeStyleboxOverride(state, WorldHudStyle.Paper());
-            else button.AddThemeStyleboxOverride(state, new StyleBoxFlat
-            {
-                BgColor = new Color(.08f, .09f, .07f, .84f),
-                BorderColor = new Color(state is "hover" or "hover_pressed" ? "d4bc87" : "b6aa8a"), BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1,
-                ContentMarginLeft = 12, ContentMarginRight = 12, CornerRadiusTopLeft = 4, CornerRadiusTopRight = 4,
-                CornerRadiusBottomLeft = 4, CornerRadiusBottomRight = 4
-            });
-        }
-        button.MouseEntered += () => { if (!button.Disabled) button.Modulate = new Color(1.07f, 1.05f, 1.01f); };
-        button.MouseExited += () => button.Modulate = Colors.White;
-        button.AddThemeStyleboxOverride("focus", focus_style());
-    }
+    private Button paper_button(string value, int size, bool light) => PaperButton.Create(value, size, light);
+    private void style_button(Button button, int size, bool light) => PaperButton.ApplyStyle(button, size, light);
     private void style_input(LineEdit input)
     {
         input.AddThemeFontOverride("font", _inventory_font);

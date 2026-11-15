@@ -20,7 +20,8 @@ public partial class WorldNpcData : Resource
     [Export] public int spirit_strands;
     [Export] public float physique = 5f;
     [Export] public float intelligence = 5f;
-    [Export] public float agility = 5f;
+    // v11 only: loaded once to migrate existing v10 NPC snapshots; never used in gameplay.
+    [Export] public float agility;
     [Export] public float soul = 5f;
     [Export] public int current_health = 100;
     [Export] public int max_health = 100;
@@ -37,9 +38,19 @@ public partial class WorldNpcData : Resource
     [Export] public string formal_identity = "";
     /// <summary>玉虚师承候选之间的稳定关联；不与私人关系分数合并。</summary>
     [Export] public bool is_yuxu_lineage_staff;
+    /// <summary>Temporary local lecture assignment; keeps the assigned job in town without freezing age.</summary>
+    [Export] public string public_lecture_event_id = "";
     [Export] public string sect_assigned_guide_npc_id = "";
     [Export] public string sect_teacher_npc_id = "";
     [Export] public Array<string> learned_gongfa_ids = [];
+    /// <summary>明确习得的卷章；仅有书名不自动补卷章。</summary>
+    [Export] public Dictionary learned_gongfa_chapters = [];
+    [Export] public Array<string> unlocked_skill_node_ids = [];
+    [Export] public Array<string> legacy_learned_combat_skill_paths = [];
+    [Export] public string combat_main_gongfa_path = "";
+    [Export] public Array<string> combat_sub_gongfa_paths = [];
+    [Export] public Dictionary combat_chapter_routes = [];
+    [Export] public Array<string> combat_skill_paths = [];
     [Export] public Array<string> equipment_ids = [];
     [Export] public Dictionary resources = [];
     /// <summary>当前原型的可交易物品库存；键为 ItemData 资源路径，值为数量。</summary>
@@ -65,13 +76,18 @@ public partial class WorldNpcData : Resource
     [Export] public int sect_case_demerit_count;
     [Export] public string sect_case_expelled_by_case_id = "";
     [Export] public string sect_case_former_faction_id = "";
+    /// <summary>v6 单一关系分兼容字段；v7 后不参与关系、交往或交易判定。</summary>
     [Export] public int player_relationship;
     /// <summary>与主角实际交往的记忆；姓名、境界须经交流获知，不由好感分数推导。</summary>
     [Export] public Dictionary player_social_memory = [];
     /// <summary>这个 NPC 过月归纳的个人观感；与关系和玩家认知分开保存。</summary>
     [Export] public NpcPlayerImpressionData? player_impression;
-    /// <summary>NPC 对其他稳定人物 ID 的个人关系分值；与玩家关系、势力态度、区域声望分开保存。</summary>
+    /// <summary>v6 NPC 间单一关系分兼容字段；v7 后不拆分、不参与判定。</summary>
     [Export] public Dictionary personal_relationships = [];
+    /// <summary>NPC 对其他稳定人物 ID 的稀疏单向关系记录。</summary>
+    [Export] public Dictionary directed_relationships = [];
+    /// <summary>此 NPC 的关系证据已归纳至的月份。</summary>
+    [Export] public int relationship_last_processed_month = -1;
     /// <summary>区域公开声望，按 region_id 分开；不与势力态度或私人关系合并。</summary>
     [Export] public Dictionary regional_renown = [];
     [Export] public Dictionary faction_reputations = [];
@@ -79,6 +95,16 @@ public partial class WorldNpcData : Resource
     [Export] public string current_node_id = "";
     [Export] public string current_subscene_id = "";
     [Export] public string current_state = "空闲";
+    /// <summary>NPC 月度修行闭关区间；按世界月索引保存，到下一月结结算时结束。</summary>
+    [Export] public int seclusion_started_month = -1;
+    [Export] public int seclusion_until_month = -1;
+    /// <summary>闭关期间留下的结识拜帖及其唯一处理结果。字典字段：note_id、received_hour、status、resolved_month。</summary>
+    [Export] public Array<Dictionary> acquaintance_notes = [];
+    [Export] public int last_processed_acquaintance_month = -1;
+    /// <summary>此 NPC 本月已被抽为玩家来访候选；NPC Resource 随正式世界人物存档。</summary>
+    [Export] public int last_player_visit_month = -1;
+    /// <summary>个人问候信／接受结识拜帖开启的五年社交窗口截止小时；不累加，合格新信可刷新。</summary>
+    [Export] public int acquaintance_window_until_hour;
     [Export] public bool is_traveling;
     [Export] public string travel_origin_node_id = "";
     [Export] public string travel_destination_node_id = "";
@@ -94,6 +120,10 @@ public partial class WorldNpcData : Resource
     [Export] public float world_travel_cell_progress_hours;
     [Export] public bool is_alive = true;
     [Export] public string death_cause = "";
+    /// <summary>Non-empty while this saved NPC is temporarily travelling as a player's case-task party member.</summary>
+    [Export] public string temporary_party_task_id = "";
+    /// <summary>随玩家自由行旅；实际位置由玩家的连续地图位置决定。</summary>
+    [Export] public bool is_player_travel_companion;
     /// <summary>副本内持久位置与行程；不覆盖大世界 node/subscene 位置。</summary>
     [Export] public string dungeon_id = "";
     [Export] public string dungeon_node_id = "";
@@ -103,6 +133,16 @@ public partial class WorldNpcData : Resource
     [Export] public int dungeon_placement_version;
     [Export] public Array<NpcActionRecord> action_history = [];
     private HashSet<string>? _dungeonActionTargets;
+
+    public bool is_in_seclusion_at_hour(int hour)
+    {
+        if (seclusion_started_month >= 0 && seclusion_until_month > seclusion_started_month)
+        {
+            var month = Math.Max(0, hour / (30 * 24));
+            return month >= seclusion_started_month && month < seclusion_until_month;
+        }
+        return current_state == "闭关修行";
+    }
 
     public int get_resource(string resource_id) => resources.TryGetValue(resource_id, out var value) ? value.AsInt32() : 0;
     public void change_resource(string resource_id, int delta) => resources[resource_id] = Mathf.Max(0, get_resource(resource_id) + delta);

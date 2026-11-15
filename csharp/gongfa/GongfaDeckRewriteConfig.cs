@@ -17,9 +17,17 @@ public partial class GongfaDeckRewriteConfig : Resource
     [Export] public string source_skill_name = "";
     [ExportGroup("Result")]
     [Export] public Resource? result_skill;
+    /// <summary>旧主修专属结果保留存档兼容；当前招式改写使用同一结果。</summary>
     [Export] public Resource? main_result_skill;
 
-    public Resource? get_result_skill(bool is_main) => is_main && main_result_skill is not null ? main_result_skill : result_skill;
+    [ExportGroup("招式盘化法")]
+    [Export] public int board_definition_version;
+    [Export] public Vector2I board_size = Vector2I.One;
+    [Export] public string board_icon_path = "";
+    /// <summary>0为未定，不解释为无限；不从旧牌库count生成化法份数。</summary>
+    [Export] public int board_max_placements;
+
+    public Resource? get_result_skill(bool is_main) => result_skill;
 
     public bool matches(Resource? skill)
     {

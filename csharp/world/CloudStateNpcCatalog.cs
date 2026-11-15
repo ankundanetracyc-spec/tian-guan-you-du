@@ -10,7 +10,7 @@ using Godot.Collections;
 /// </summary>
 public static class CloudStateNpcCatalog
 {
-    public const int PopulationVersion = 1;
+    public const int PopulationVersion = 2;
     private static readonly System.Collections.Generic.Dictionary<string, ItemData> CarriedItemDefinitions = new(StringComparer.Ordinal);
 
     private static readonly string[] Surnames =
@@ -52,128 +52,57 @@ public static class CloudStateNpcCatalog
         manager.set_simulation_enabled(true);
     }
 
-    /// <summary>给玉虚真传支线补齐稳定的择师与带教候选；只生成缺失 ID，读档和重进不会换人。</summary>
-    public static bool ensure_yuxu_lineage_staff(NpcWorldManager manager, WorldNodeMapData mapData)
+    /// <summary>仅在世界人口初建或旧档迁移时登记原型人物，之后以存档中的真实人物为准。</summary>
+    private static void initialize_yuxu_staff(NpcWorldManager manager, WorldNodeMapData mapData)
     {
-        if (manager is null || mapData is null || mapData.get_node("yuxu_xianzong_core") is not { } sectNode)
-            return false;
+        if (mapData.get_node("yuxu_xianzong_core") is not { } sectNode) return;
 
         var rng = new RandomNumberGenerator();
         rng.Randomize();
         var usedNames = new System.Collections.Generic.HashSet<string>(
-            manager.get_active_npcs().Select(npc => npc.npc_name), StringComparer.Ordinal);
-        var changed = false;
+            manager.npcs.Select(npc => npc.npc_name), StringComparer.Ordinal);
         var subscene = unlocked_subscene_ids(sectNode).Contains("zifu") ? "zifu" : "";
-
-        EnsurePair("金丹后期", "长老", "yuxu_lineage_teacher_late", "yuxu_lineage_guide_late");
-        EnsurePair("金丹圆满", "长老", "yuxu_lineage_teacher_perfection", "yuxu_lineage_guide_perfection");
-        return changed;
-
-        void EnsurePair(string teacherRealm, string teacherIdentity, string teacherId, string guideId)
+        // 沿用旧原型的两组境界，不作为正式人口规模；已有记录（含死亡者）不补人或重配。
+        if (!manager.npcs.Any(npc => npc.is_yuxu_lineage_staff && npc.faction_id == "yuxu_xianzong" &&
+            (npc.cultivation_realm is "金丹后期" or "金丹圆满") && !npc.relation_tags.Contains("山门接引")))
         {
-            var teacher = manager.get_npc(teacherId);
-            if (teacher is null)
-            {
-                teacher = create_lineage_staff(
-                    teacherId,
-                    sectNode,
-                    subscene,
-                    teacherRealm,
-                    teacherIdentity,
-                    $"玉虚仙宗修士，现于紫府峰处理师门事务。",
-                    rng,
-                    usedNames,
-                    isFemale: null);
-                teacher.sect_assigned_guide_npc_id = guideId;
-                manager.register_npc(teacher);
-                changed = true;
-            }
-            else if (teacher.sect_assigned_guide_npc_id != guideId)
-            {
-                teacher.sect_assigned_guide_npc_id = guideId;
-                changed = true;
-            }
+            AddPair("金丹后期");
+            AddPair("金丹圆满");
+        }
 
-            if (manager.get_npc(guideId) is not null) return;
-            var guide = create_lineage_staff(
-                guideId,
-                sectNode,
-                subscene,
-                "云息十层",
-                "真传弟子",
-                $"由{teacher.npc_name}门下培养，现任玉虚真传带教同门。",
-                rng,
-                usedNames,
-                isFemale: rng.RandiRange(0, 1) == 1);
-            guide.sect_teacher_npc_id = teacherId;
-            guide.relation_tags.Add("师承带教");
+        if (!manager.npcs.Any(npc => npc.faction_id == "yuxu_xianzong" && npc.relation_tags.Contains("山门接引")))
+        {
+            var elder = create_lineage_staff(NewId(), sectNode, "", "金丹圆满", "山门接引长老",
+                "玉虚仙宗山门接引长老，负责迎接初至山门的修士。", rng, usedNames, null);
+            elder.relation_tags.Remove("师承候选"); elder.relation_tags.Add("山门接引");
+            elder.long_term_goal = "守护山门秩序，甄别来访修士。";
+            elder.short_term_goal = "接待初至玉虚仙宗的修士。";
+            manager.register_npc(elder);
+        }
+        if (!manager.npcs.Any(npc => npc.faction_id == "yuxu_xianzong" && npc.relation_tags.Contains("山门接引弟子")))
+        {
+            var guide = create_lineage_staff(NewId(), sectNode, "", "云息八层", "外门弟子",
+                "协助山门接引新入门的修士。", rng, usedNames, null);
+            guide.relation_tags.Remove("师承候选"); guide.relation_tags.Add("山门接引弟子");
+            guide.long_term_goal = "在宗门中稳步修行。";
+            guide.short_term_goal = "协助办理新入门修士的录籍。";
             manager.register_npc(guide);
-            changed = true;
+        }
+
+        void AddPair(string teacherRealm)
+        {
+            var teacher = create_lineage_staff(NewId(), sectNode, subscene, teacherRealm, "长老",
+                "玉虚仙宗修士，现于紫府峰处理师门事务。", rng, usedNames, null);
+            var guide = create_lineage_staff(NewId(), sectNode, subscene, "云息十层", "真传弟子",
+                $"{teacher.npc_name}门下的玉虚弟子。", rng, usedNames, null);
+            teacher.sect_assigned_guide_npc_id = guide.npc_id;
+            guide.sect_teacher_npc_id = teacher.npc_id;
+            guide.relation_tags.Remove("师承候选"); guide.relation_tags.Add("师承带教");
+            manager.register_npc(teacher); manager.register_npc(guide);
         }
     }
 
-    /// <summary>Creates the stable, procedurally named elder who receives new entrants at the Yuxu gate.</summary>
-    public static WorldNpcData? ensure_yuxu_admission_elder(NpcWorldManager manager, WorldNodeMapData mapData)
-    {
-        const string elderId = "yuxu_gate_elder";
-        if (manager is null || mapData is null || mapData.get_node("yuxu_xianzong_core") is not { } sectNode)
-            return null;
-        if (manager.get_npc(elderId) is { } existing)
-            return existing;
-
-        var rng = new RandomNumberGenerator();
-        rng.Randomize();
-        var usedNames = new System.Collections.Generic.HashSet<string>(
-            manager.get_active_npcs().Select(npc => npc.npc_name), StringComparer.Ordinal);
-        var elder = create_lineage_staff(
-            elderId,
-            sectNode,
-            "",
-            "金丹圆满",
-            "山门接引长老",
-            "玉虚仙宗山门接引长老，负责迎接初至山门的修士。",
-            rng,
-            usedNames,
-            isFemale: null);
-        elder.relation_tags.Remove("师承候选");
-        elder.relation_tags.Add("山门接引");
-        elder.long_term_goal = "守护山门秩序，甄别来访修士。";
-        elder.short_term_goal = "接待初至玉虚仙宗的修士。";
-        manager.register_npc(elder);
-        return elder;
-    }
-
-    /// <summary>Creates the stable, procedurally named disciple who escorts a new entrant through registration.</summary>
-    public static WorldNpcData? ensure_yuxu_admission_guide(NpcWorldManager manager, WorldNodeMapData mapData)
-    {
-        const string guideId = "yuxu_gate_guide";
-        if (manager is null || mapData is null || mapData.get_node("yuxu_xianzong_core") is not { } sectNode)
-            return null;
-        if (manager.get_npc(guideId) is { } existing)
-            return existing;
-
-        var rng = new RandomNumberGenerator();
-        rng.Randomize();
-        var usedNames = new System.Collections.Generic.HashSet<string>(
-            manager.get_active_npcs().Select(npc => npc.npc_name), StringComparer.Ordinal);
-        var guide = create_lineage_staff(
-            guideId,
-            sectNode,
-            "guanfu",
-            "云息八层",
-            "外门弟子",
-            "奉山门接引长老之命，负责带初入宗门的修士办理录籍。",
-            rng,
-            usedNames,
-            isFemale: null);
-        guide.relation_tags.Remove("师承候选");
-        guide.relation_tags.Add("山门接引弟子");
-        guide.long_term_goal = "在宗门中稳步修行。";
-        guide.short_term_goal = "协助接引长老办理新入门修士的录籍。";
-        guide.current_state = "师门常驻";
-        manager.register_npc(guide);
-        return guide;
-    }
+    private static string NewId() => "runtime_npc_" + Guid.NewGuid().ToString("N");
 
     private static WorldNpcData create_lineage_staff(
         string id,
@@ -225,17 +154,12 @@ public static class CloudStateNpcCatalog
     public static bool ensure_population(NpcWorldManager manager, WorldNodeMapData mapData)
     {
         if (manager.population_version >= PopulationVersion) return false;
-        var levels = new System.Collections.Generic.Dictionary<string, int>(StringComparer.Ordinal);
-        using (var file = Godot.FileAccess.Open("res://resources/world/bai_chuan/bai_chuan_grid_anchors.json", Godot.FileAccess.ModeFlags.Read))
+        if (manager.population_version >= 1)
         {
-            if (file is null) return false;
-            var json = Json.ParseString(file.GetAsText()).AsGodotDictionary();
-            foreach (var value in json["anchors"].AsGodotArray())
-            {
-                var anchor = value.AsGodotDictionary();
-                var id = anchor["location_node_id"].AsString();
-                if (id.Length > 0) levels[id] = anchor["level"].AsInt32();
-            }
+            if (mapData.get_node("yuxu_xianzong_core") is null) return false;
+            initialize_yuxu_staff(manager, mapData);
+            manager.population_version = PopulationVersion;
+            return true;
         }
         var rng = new RandomNumberGenerator();
         rng.Randomize();
@@ -246,13 +170,12 @@ public static class CloudStateNpcCatalog
         foreach (var node in mapData.get_all_nodes())
         {
             if (node is null || node.node_id == "home_village" || !node.enterable) continue;
-            // Only create world-map population at authored fixed-grid locations.
-            // Generic/legacy wilderness placeholders stay data-only until they receive a real anchor.
-            if (!levels.ContainsKey(node.node_id) || !manager.has_world_grid_anchor(node.node_id)) continue;
+            // Only authored locations in the current node graph can host world population.
+            if (!manager.has_world_grid_anchor(node.node_id)) continue;
             // Include dead and traveling originals: migration never replaces a lost or absent person.
             var existing = manager.npcs.Count(n => !n.is_yuxu_lineage_staff &&
                 (n.origin_node_id == node.node_id || string.IsNullOrWhiteSpace(n.origin_node_id) && n.current_node_id == node.node_id));
-            var amount = Math.Max(0, population_for(node, levels[node.node_id]) - existing);
+            var amount = Math.Max(0, population_for(node, (int)node.display_level) - existing);
             var subscene_ids = unlocked_subscene_ids(node);
             for (var index = 0; index < amount; index++)
             {
@@ -266,6 +189,7 @@ public static class CloudStateNpcCatalog
             }
         }
         manager.seed_initial_world_travel(added);
+        initialize_yuxu_staff(manager, mapData);
         manager.population_version = PopulationVersion;
         return true;
     }
@@ -301,10 +225,9 @@ public static class CloudStateNpcCatalog
         }
         var physique = rng.RandfRange(3.0f, 9.5f);
         var intelligence = rng.RandfRange(3.0f, 9.5f);
-        var agility = rng.RandfRange(3.0f, 9.5f);
         var soul = rng.RandfRange(3.0f, 9.5f);
         var age = rng.RandiRange(16, 68);
-        var max_health = Mathf.RoundToInt(72.0f + physique * 8.0f + agility * 3.0f + soul * 2.0f);
+        var max_health = Mathf.RoundToInt(72.0f + physique * 11.0f + soul * 2.0f);
         var npc = new WorldNpcData
         {
             npc_id = $"runtime_npc_{sequence:000}",
@@ -320,7 +243,6 @@ public static class CloudStateNpcCatalog
             spirit_strands = realm == "凡人" ? 0 : rng.RandiRange(1, 18),
             physique = physique,
             intelligence = intelligence,
-            agility = agility,
             soul = soul,
             current_health = max_health,
             max_health = max_health,
@@ -331,7 +253,6 @@ public static class CloudStateNpcCatalog
             personality = pick(Personalities, rng),
             long_term_goal = pick(LongTermGoals, rng),
             short_term_goal = pick(ShortTermGoals, rng),
-            player_relationship = 0,
             current_node_id = node.node_id,
             current_subscene_id = subscene_id,
             current_state = "空闲",

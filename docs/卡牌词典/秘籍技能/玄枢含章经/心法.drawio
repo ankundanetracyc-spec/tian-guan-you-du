@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="app.diagrams.net" agent="Codex">
+  <diagram name="心法" id="player">
+    <mxGraphModel page="1" pageWidth="1400" pageHeight="900" grid="1" gridSize="10">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="body" parent="1" vertex="1" value="第一卷：蛰雷&lt;br&gt;心法被动：玄枢含章&lt;br&gt;关键词：周天&lt;br&gt;效果：招式盘内默认放置一枚单格周天指示，可移动转向、不能卸下。指向共边紧邻的一份非应对招式；每回合允许其在普通扫格之外，由周天额外施放一次，照常支付费用并检查原次数及冷却。无效指向或无合法目标时不施放、不付费。额外施放中再次周天只清炁、回满法力，不递归施放。&lt;br&gt;&lt;br&gt;第二卷：云垂&lt;br&gt;心法被动：玄枢含章（沿用第一卷，无新增效果）&lt;br&gt;&lt;br&gt;第三卷：折冲&lt;br&gt;心法被动：玄枢含章（沿用第一卷，无新增效果）&lt;br&gt;&lt;br&gt;第四卷：照影&lt;br&gt;心法被动：玄枢含章（沿用第一卷，无新增效果）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ebe6d6;strokeColor=#857c61;fontSize=20;align=left;verticalAlign=top;spacing=24;">
+          <mxGeometry as="geometry" x="50" y="50" width="1300" height="780" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="策划说明" id="notes">
+    <mxGraphModel page="1" pageWidth="1400" pageHeight="880" grid="1" gridSize="10">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="body" parent="1" vertex="1" value="现行规则：docs/plans/战斗与构筑/人类招式心法全效果迁移_20261108.md&lt;br&gt;平衡与名称标注：docs/plans/战斗与构筑/人类招式首轮平衡与名称标注_20261108.md&lt;br&gt;实施与时序：docs/plans/战斗与构筑/人类招式盘实施与验收_20261107.md&lt;br&gt;资源：res://resources/activeskills/玄枢含章经/玄枢含章.tres&lt;br&gt;主图仅为玩家详细文案。&lt;br&gt;名称*N为可摆份数；限N只表示整场共享次数，每回合次数另写。&lt;br&gt;首次扫到整份检查，失败本轮不重试，下一共同回合重新点亮。&lt;br&gt;同招共享原限次和冷却；每项化法只影响实际指向的一份。&lt;br&gt;寄念目标、妖兽布阵及新器物参战仍按各自专题，未在本图补造。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ebe6d6;strokeColor=#857c61;fontSize=20;align=left;verticalAlign=top;spacing=24;">
+          <mxGeometry as="geometry" x="50" y="50" width="1300" height="700" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

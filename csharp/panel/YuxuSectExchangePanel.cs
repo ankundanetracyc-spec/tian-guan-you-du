@@ -1,757 +1,430 @@
 using Godot;
+using GArray = Godot.Collections.Array;
+using GDictionary = Godot.Collections.Dictionary;
 
-/// <summary>善功堂可交互目录面板。只读取现行、带有效图标的材料与秘籍，使用标准基础价。</summary>
+/// <summary>善功堂目录和批量兑换。</summary>
 public partial class YuxuSectExchangePanel : Control
 {
     [Signal] public delegate void back_requestedEventHandler();
     [Signal] public delegate void purchase_requestedEventHandler(string item_path, int contribution_cost);
+    [Signal] public delegate void batch_purchase_requestedEventHandler(GArray selections);
 
-    private const string FrameTexturePath = "res://textures/ui/yuxu_shangongtang_frame_v1.png";
-    private const string UiFontPath = "res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf";
-    private static readonly string[] ItemDirectories =
-    [
-        "res://resources/entities/items",
-        "res://resources/entities/equipment",
-    ];
-
-    private sealed record CatalogEntry(ItemData Item, string Category, string FilterKey, string FilterLabel, string Description, int ContributionCost);
-
+    private const int PageSize = 3;
+    private const string FramePath = "res://textures/ui/shangong_20261115/interior_warm.png";
+    private static readonly Vector2 DesignSize = new(1664, 936);
+    private static readonly Color Ink = new("30382e");
+    private sealed record CatalogEntry(ItemData Item, string Category, int Price);
+    private sealed record RowControls(Button Row, Control Quantity, LineEdit Input);
     private readonly List<CatalogEntry> _catalog = [];
-    private readonly Dictionary<string, Button> _categoryButtons = [];
-    private readonly Dictionary<string, Button> _levelButtons = [];
-    private VBoxContainer? _levelFilterList;
-    private Label? _levelFilterHeader;
-    private Font? _font;
+    private readonly Dictionary<string, int> _selected = new(StringComparer.Ordinal);
+    private readonly Dictionary<string, RowControls> _rows = new(StringComparer.Ordinal);
+    private Control _canvas = null!, _columns = null!;
+    private Texture2D? _backdrop;
+    private Font _font = null!;
+    private LineEdit _search = null!;
+    private Label _balanceLabel = null!, _totalCount = null!, _totalCost = null!, _remaining = null!, _message = null!, _pageLabel = null!;
+    private Button _previous = null!, _next = null!, _confirm = null!, _cancel = null!;
+    private Character? _hoverActor;
     private long _contributionBalance;
-    private string _selectedCategory = "全部";
-    private string _selectedLevel = "全部";
-    private CatalogEntry? _selectedItem;
-    private CatalogEntry? _hoveredItem;
-    private Label? _balanceLabel;
-    private GridContainer? _itemGrid;
-    private PanelContainer? _hoverInfo;
-    private Label? _hoverTitle;
-    private Label? _hoverDescription;
-    private Label? _hoverCost;
-    private ColorRect? _modalShade;
-    private PanelContainer? _purchaseDialog;
-    private Label? _purchaseTitle;
-    private Label? _purchaseName;
-    private Label? _purchaseDescription;
-    private Label? _purchaseCost;
-    private Label? _purchaseBalance;
-    private Label? _purchaseNote;
-    private Button? _purchaseConfirm;
-    private Button? _purchaseCancel;
+    private int _page;
     private bool _purchasePending;
 
     public override void _Ready()
     {
         SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         MouseFilter = MouseFilterEnum.Stop;
-        _font = GD.Load<FontFile>(UiFontPath);
-        load_catalog();
+        AddToGroup("map_overlay_blocker");
+        ZIndex = 20;
+        _font = GD.Load<FontFile>(CraftingPaperStyle.FontPath);
+        _backdrop = YuxuLibraryArt.Texture(FramePath);
+        foreach (var item in YuxuExchangeCatalog.LoadItems())
+            _catalog.Add(new(item, YuxuExchangeCatalog.Category(item), YuxuExchangeCatalog.Price(item)));
         build_panel();
-        Visible = false;
+        Resized += fit_canvas;
+        VisibilityChanged += () => { if (!IsVisibleInTree()) HoverInfoManager.HideAll(); };
+        fit_canvas();
+        Hide();
     }
+
+    public void set_hover_actor(Character? actor) => _hoverActor = actor;
 
     public void open_panel(long contributionBalance)
     {
+        HoverInfoManager.HideAll();
+        _selected.Clear();
+        _purchasePending = false;
+        _message.Text = "";
+        _page = 0;
+        _search.Text = "";
         set_contribution_balance(contributionBalance);
-        _selectedCategory = "全部";
-        _selectedLevel = "全部";
-        rebuild_level_filters();
-        close_purchase_dialog();
-        refresh_filters();
-        rebuild_item_grid();
+        rebuild_columns();
         Show();
         MoveToFront();
+        fit_canvas();
     }
 
     public void set_contribution_balance(long contributionBalance)
     {
         _contributionBalance = Math.Max(0L, contributionBalance);
         if (_balanceLabel is not null)
-            _balanceLabel.Text = $"贡献值：{_contributionBalance:N0}";
-        if (_purchaseBalance is not null)
-            _purchaseBalance.Text = $"当前贡献值：{_contributionBalance:N0}";
-        refresh_purchase_button();
+        {
+            _balanceLabel.Text = $"可用贡献：{_contributionBalance:N0}";
+            refresh_summary();
+        }
     }
 
-    /// <summary>先关闭购买确认；再次按 Esc 时由峰内流程关闭善功堂。</summary>
     public bool handle_back()
     {
-        if (_purchaseDialog?.Visible == true)
-        {
-            close_purchase_dialog();
-            return true;
-        }
-
+        if (_purchasePending) return true;
+        HoverInfoManager.HideAll();
         EmitSignal(SignalName.back_requested);
         return true;
     }
 
-    private void load_catalog()
+    public override void _Input(InputEvent input)
     {
-        _catalog.Clear();
-        var seenIds = new HashSet<string>(StringComparer.Ordinal);
-        foreach (var itemDirectory in ItemDirectories)
+        if (!IsVisibleInTree()) return;
+        if (input is InputEventKey { Pressed: true, Echo: false, Keycode: Key.Escape })
         {
-            var directory = DirAccess.Open(itemDirectory);
-            if (directory is null)
-            {
-                GD.PushWarning($"善功堂无法读取物品目录：{itemDirectory}");
-                continue;
-            }
-
-            var files = directory.GetFiles().Where(file => file.EndsWith(".tres", StringComparison.OrdinalIgnoreCase)).ToArray();
-            Array.Sort(files, StringComparer.Ordinal);
-            foreach (var file in files)
-            {
-                var path = $"{itemDirectory}/{file}";
-                var item = GD.Load<ItemData>(path);
-                if (!YuxuSectPrototypeBalance.is_exchangeable_item(item) || item is null)
-                    continue;
-
-                var itemId = item.definition_id.ToString();
-                if (!seenIds.Add(itemId))
-                {
-                    GD.PushWarning($"善功堂略过重复物品 ID：{itemId}（{path}）");
-                    continue;
-                }
-
-                var category = item.item_category == "秘籍"
-                    ? YuxuSectPrototypeBalance.manual_category(item)
-                    : item.item_category;
-                var material = item.craft_data as MaterialCraftData;
-                var gongfa = item.gongfa as GongfaResource;
-                var filterKey = item.item_category == "秘籍"
-                    ? get_realm_range(gongfa)
-                    : (material?.material_grade_value() ?? item.grade_value).ToString();
-                var filterLabel = item.item_category == "秘籍"
-                    ? filterKey
-                    : material?.material_grade_name() ?? item.get_grade_string();
-                var description = item.item_category == "秘籍"
-                    ? build_manual_description(gongfa)
-                    : build_material_description(item, material);
-                var cost = YuxuSectPrototypeBalance.exchange_base_cost(item);
-                if (cost <= 0)
-                    continue;
-
-                _catalog.Add(new CatalogEntry(item, category, filterKey, filterLabel, description, cost));
-            }
+            handle_back();
+            GetViewport().SetInputAsHandled();
         }
-
-        _catalog.Sort((left, right) =>
-        {
-            var categoryOrder = StringComparer.Ordinal.Compare(left.Category, right.Category);
-            return categoryOrder != 0 ? categoryOrder : StringComparer.Ordinal.Compare(left.Item.entity_name, right.Item.entity_name);
-        });
     }
 
     private void build_panel()
     {
-        var sourceFrame = GD.Load<Texture2D>(FrameTexturePath);
-
-        var frame = new TextureRect
+        var matte = new ColorRect { Color = new("b9a18b"), MouseFilter = MouseFilterEnum.Ignore };
+        AddChild(matte);
+        matte.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        _canvas = new Control { Name = "PavilionCanvas", Size = DesignSize, MouseFilter = MouseFilterEnum.Pass };
+        AddChild(_canvas);
+        place(new TextureRect
         {
-            Name = "PavilionFrame",
-            Texture = sourceFrame,
-            ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
-            StretchMode = TextureRect.StretchModeEnum.Scale,
-            MouseFilter = MouseFilterEnum.Ignore,
-        };
-        add_full_rect(frame);
+            Name = "PavilionFrame", Texture = _backdrop, ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
+            StretchMode = TextureRect.StretchModeEnum.Scale, MouseFilter = MouseFilterEnum.Ignore
+        }, _canvas, 0, 0, DesignSize.X, DesignSize.Y);
 
-        var title = make_label("善功堂", 28, new Color("29271f"));
+        var title = label("善功堂", 32);
         title.HorizontalAlignment = HorizontalAlignment.Center;
-        title.VerticalAlignment = VerticalAlignment.Center;
-        set_anchors(title, 0.40f, 0.085f, 0.60f, 0.165f);
-
-        var back = make_button("返回", 17);
-        set_anchors(back, 0.083f, 0.208f, 0.173f, 0.252f);
+        place(title, _canvas, 700, 25, 264, 67);
+        var back = new Button { Name = "ExchangeReturn", Text = "返回" };
+        PaperButtonFeedback.Apply(back, CraftingPaperStyle.ButtonKind.Regular, 22);
+        _canvas.AddChild(back);
+        CraftingPaperHeader.PlaceReturn(_canvas, back);
+        CraftingPaperHeader.AddReturnArrow(back);
         back.Pressed += () => handle_back();
 
-        _balanceLabel = make_label("贡献值：0", 20, new Color("332e24"));
-        _balanceLabel.HorizontalAlignment = HorizontalAlignment.Center;
-        _balanceLabel.VerticalAlignment = VerticalAlignment.Center;
-        set_anchors(_balanceLabel, 0.800f, 0.208f, 0.926f, 0.252f);
-
-        build_filter_rail();
-        build_catalog();
-        build_hover_info();
-        build_purchase_dialog();
-        refresh_filters();
-        rebuild_item_grid();
-    }
-
-    private void build_filter_rail()
-    {
-        var rail = new VBoxContainer
+        _balanceLabel = label("", 23);
+        place(_balanceLabel, _canvas, 105, 107, 410, 48);
+        _search = new LineEdit { Name = "CatalogSearch", PlaceholderText = "搜索物品", ClearButtonEnabled = true };
+        CraftingPaperStyle.ApplyInput(_search, 21);
+        var searchFace = new Panel { Name = "SearchFace", MouseFilter = MouseFilterEnum.Ignore };
+        if (_search.GetThemeStylebox("normal") is StyleBoxTexture source && source.Duplicate() is StyleBoxTexture warm)
         {
-            Name = "CategoryRail",
-            MouseFilter = MouseFilterEnum.Ignore,
-        };
-        rail.AddThemeConstantOverride("separation", 5);
-        set_anchors(rail, 0.065f, 0.255f, 0.19f, 0.90f);
-
-        var categoryHeader = make_label("物品分类", 21, new Color("373327"));
-        categoryHeader.HorizontalAlignment = HorizontalAlignment.Center;
-        categoryHeader.CustomMinimumSize = new Vector2(0, 32);
-        rail.AddChild(categoryHeader);
-
-        var categories = _catalog.Select(entry => entry.Category).Distinct(StringComparer.Ordinal).ToHashSet(StringComparer.Ordinal);
-        add_filter_button(rail, _categoryButtons, "全部", "全部", isLevelFilter: false);
-        foreach (var category in new[] { "材料", "凡俗武学", "剑修", "云息秘籍", "其他" })
-            if (categories.Contains(category))
-                add_filter_button(rail, _categoryButtons, category, category, isLevelFilter: false);
-
-        var separator = new HSeparator { CustomMinimumSize = new Vector2(0, 10), MouseFilter = MouseFilterEnum.Ignore };
-        rail.AddChild(separator);
-
-        _levelFilterHeader = make_label("品阶 / 修习范围", 18, new Color("373327"));
-        _levelFilterHeader.HorizontalAlignment = HorizontalAlignment.Center;
-        _levelFilterHeader.CustomMinimumSize = new Vector2(0, 32);
-        rail.AddChild(_levelFilterHeader);
-        _levelFilterList = new VBoxContainer { Name = "LevelFilters", MouseFilter = MouseFilterEnum.Ignore };
-        _levelFilterList.AddThemeConstantOverride("separation", 5);
-        rail.AddChild(_levelFilterList);
-        rebuild_level_filters();
-    }
-
-    private void build_catalog()
-    {
-        var scroll = new ScrollContainer
-        {
-            Name = "ExchangeCatalog",
-            HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,
-            VerticalScrollMode = ScrollContainer.ScrollMode.Auto,
-            MouseFilter = MouseFilterEnum.Stop,
-        };
-        set_anchors(scroll, 0.205f, 0.255f, 0.932f, 0.90f);
-        scroll.AddThemeStyleboxOverride("panel", new StyleBoxEmpty());
-
-        _itemGrid = new GridContainer
-        {
-            Name = "ItemGrid",
-            Columns = 8,
-            SizeFlagsHorizontal = SizeFlags.ExpandFill,
-            MouseFilter = MouseFilterEnum.Pass,
-        };
-        _itemGrid.AddThemeConstantOverride("h_separation", 8);
-        _itemGrid.AddThemeConstantOverride("v_separation", 10);
-        scroll.AddChild(_itemGrid);
-    }
-
-    private void build_hover_info()
-    {
-        _hoverInfo = new PanelContainer
-        {
-            Name = "TransientHoverInfo",
-            CustomMinimumSize = new Vector2(350, 142),
-            MouseFilter = MouseFilterEnum.Ignore,
-            ZIndex = 20,
-        };
-        _hoverInfo.AddThemeStyleboxOverride("panel", paper_style(0.97f, 0.78f));
-        var margin = new MarginContainer();
-        margin.AddThemeConstantOverride("margin_left", 15);
-        margin.AddThemeConstantOverride("margin_right", 15);
-        margin.AddThemeConstantOverride("margin_top", 11);
-        margin.AddThemeConstantOverride("margin_bottom", 11);
-        var content = new VBoxContainer();
-        content.AddThemeConstantOverride("separation", 7);
-        margin.AddChild(content);
-        _hoverTitle = make_label("", 19, new Color("302b22"));
-        _hoverDescription = make_label("", 15, new Color("514b3d"));
-        _hoverDescription.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-        _hoverCost = make_label("所需贡献：待定", 15, new Color("655437"));
-        content.AddChild(_hoverTitle);
-        content.AddChild(_hoverDescription);
-        content.AddChild(_hoverCost);
-        _hoverInfo.AddChild(margin);
-        AddChild(_hoverInfo);
-        _hoverInfo.Hide();
-    }
-
-    private void build_purchase_dialog()
-    {
-        _modalShade = new ColorRect
-        {
-            Name = "PurchaseShade",
-            Color = new Color(0.10f, 0.11f, 0.10f, 0.46f),
-            MouseFilter = MouseFilterEnum.Stop,
-            ZIndex = 40,
-        };
-        add_full_rect(_modalShade);
-        _modalShade.GuiInput += input =>
-        {
-            if (input is InputEventMouseButton { Pressed: true, ButtonIndex: MouseButton.Left })
-            {
-                close_purchase_dialog();
-                _modalShade.AcceptEvent();
-            }
-        };
-
-        _purchaseDialog = new PanelContainer
-        {
-            Name = "PurchaseConfirmation",
-            CustomMinimumSize = new Vector2(590, 390),
-            AnchorLeft = 0.5f,
-            AnchorTop = 0.5f,
-            AnchorRight = 0.5f,
-            AnchorBottom = 0.5f,
-            OffsetLeft = -295,
-            OffsetTop = -195,
-            OffsetRight = 295,
-            OffsetBottom = 195,
-            MouseFilter = MouseFilterEnum.Stop,
-            ZIndex = 41,
-        };
-        _purchaseDialog.AddThemeStyleboxOverride("panel", paper_style(0.99f, 0.94f));
-
-        var dialogMargin = new MarginContainer();
-        dialogMargin.AddThemeConstantOverride("margin_left", 28);
-        dialogMargin.AddThemeConstantOverride("margin_right", 28);
-        dialogMargin.AddThemeConstantOverride("margin_top", 22);
-        dialogMargin.AddThemeConstantOverride("margin_bottom", 22);
-        var dialogContent = new VBoxContainer();
-        dialogContent.AddThemeConstantOverride("separation", 13);
-        dialogMargin.AddChild(dialogContent);
-        _purchaseTitle = make_label("确认兑换", 28, new Color("302b22"));
-        _purchaseTitle.HorizontalAlignment = HorizontalAlignment.Center;
-        _purchaseName = make_label("", 21, new Color("473e30"));
-        _purchaseName.Name = "SelectedItemName";
-        _purchaseDescription = make_label("", 16, new Color("514b3d"));
-        _purchaseDescription.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-        _purchaseCost = make_label("所需贡献：待定", 17, new Color("655437"));
-        _purchaseBalance = make_label("当前贡献值：0", 16, new Color("514b3d"));
-        _purchaseNote = make_label("兑换后物品将放入行囊；兑换不会减少累计公事履职记录。", 15, new Color("765f42"));
-        _purchaseNote.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-
-        var buttons = new HBoxContainer { Alignment = BoxContainer.AlignmentMode.Center };
-        buttons.AddThemeConstantOverride("separation", 18);
-        _purchaseCancel = make_button("取消", 17);
-        _purchaseCancel.CustomMinimumSize = new Vector2(138, 44);
-        _purchaseCancel.Pressed += close_purchase_dialog;
-        _purchaseConfirm = make_button("确认兑换", 17);
-        _purchaseConfirm.CustomMinimumSize = new Vector2(160, 44);
-        _purchaseConfirm.Pressed += request_purchase;
-        buttons.AddChild(_purchaseCancel);
-        buttons.AddChild(_purchaseConfirm);
-
-        dialogContent.AddChild(_purchaseTitle);
-        dialogContent.AddChild(_purchaseName);
-        dialogContent.AddChild(_purchaseDescription);
-        dialogContent.AddChild(_purchaseCost);
-        dialogContent.AddChild(_purchaseBalance);
-        dialogContent.AddChild(_purchaseNote);
-        dialogContent.AddChild(buttons);
-        _purchaseDialog.AddChild(dialogMargin);
-        AddChild(_purchaseDialog);
-        _modalShade.Hide();
-        _purchaseDialog.Hide();
-    }
-
-    private void add_filter_button(VBoxContainer parent, Dictionary<string, Button> store, string filterValue, string text, bool isLevelFilter)
-    {
-        var fontSize = text.Length > 12 ? 12 : text.Length > 7 ? 14 : 17;
-        var button = make_button(text, fontSize);
-        button.CustomMinimumSize = new Vector2(0, text.Length > 12 ? 38 : text.Length > 7 ? 36 : 34);
-        button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
-        button.Pressed += () =>
-        {
-            if (isLevelFilter)
-                _selectedLevel = filterValue;
-            else
-            {
-                _selectedCategory = filterValue;
-                _selectedLevel = "全部";
-                rebuild_level_filters();
-            }
-            refresh_filters();
-            rebuild_item_grid();
-        };
-        parent.AddChild(button);
-        store[filterValue] = button;
-    }
-
-    private void rebuild_level_filters()
-    {
-        if (_levelFilterList is null) return;
-        foreach (var child in _levelFilterList.GetChildren())
-        {
-            _levelFilterList.RemoveChild(child);
-            child.QueueFree();
+            warm.ModulateColor = new Color(1.08f, 1.02f, .92f);
+            searchFace.AddThemeStyleboxOverride("panel", warm);
         }
-        _levelButtons.Clear();
+        place(searchFace, _canvas, 1128, 115, 290, 30);
+        var searchInput = new StyleBoxEmpty { ContentMarginLeft = 10, ContentMarginRight = 10 };
+        _search.AddThemeStyleboxOverride("normal", searchInput);
+        _search.AddThemeStyleboxOverride("focus", searchInput);
+        _search.FocusEntered += () => searchFace.Modulate = new Color(.94f, .94f, .94f);
+        _search.FocusExited += () => searchFace.Modulate = Colors.White;
+        place(_search, _canvas, 1128, 108, 290, 44);
+        _search.TextChanged += _ => rebuild_columns();
+        _previous = text_button("◀", 21);
+        _next = text_button("▶", 21);
+        _previous.Name = "PreviousPage";
+        _next.Name = "NextPage";
+        place(_previous, _canvas, 1434, 108, 42, 44);
+        _pageLabel = label("", 20);
+        _pageLabel.HorizontalAlignment = HorizontalAlignment.Center;
+        place(_pageLabel, _canvas, 1476, 108, 62, 44);
+        place(_next, _canvas, 1538, 108, 42, 44);
+        _previous.Pressed += () => turn_page(-1);
+        _next.Pressed += () => turn_page(1);
 
-        if (_levelFilterHeader is not null)
-            _levelFilterHeader.Text = _selectedCategory switch
+        _columns = new Control { Name = "CategoryColumns", MouseFilter = MouseFilterEnum.Pass };
+        place(_columns, _canvas, 82, 161, 1500, 710);
+
+        _totalCount = label("", 21);
+        _totalCost = label("", 21);
+        _remaining = label("", 21);
+        _message = label("", 19);
+        _message.ClipText = true;
+        _message.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
+        place(_totalCount, _canvas, 104, 879, 150, 38);
+        place(_totalCost, _canvas, 256, 879, 190, 38);
+        place(_remaining, _canvas, 450, 879, 300, 38);
+        place(_message, _canvas, 768, 879, 450, 38);
+        _cancel = text_button("取消", 22);
+        _confirm = text_button("确认", 22);
+        place(_confirm, _canvas, 1340, 879, 100, 38);
+        place(_cancel, _canvas, 1452, 879, 100, 38);
+        _cancel.Pressed += clear_selection;
+        _confirm.Pressed += request_purchase;
+    }
+
+    private void turn_page(int delta)
+    {
+        int pageCount = (YuxuExchangeCatalog.Categories.Length + PageSize - 1) / PageSize;
+        _page = Math.Clamp(_page + delta, 0, pageCount - 1);
+        HoverInfoManager.HideAll();
+        rebuild_columns();
+    }
+
+    private void rebuild_columns()
+    {
+        if (_columns is null) return;
+        foreach (var child in _columns.GetChildren()) { _columns.RemoveChild(child); child.QueueFree(); }
+        _rows.Clear();
+        int pageCount = (YuxuExchangeCatalog.Categories.Length + PageSize - 1) / PageSize;
+        _previous.Disabled = _page == 0;
+        _next.Disabled = _page >= pageCount - 1;
+        _pageLabel.Text = $"{_page + 1} / {pageCount}";
+        string search = _search.Text.Trim();
+
+        for (int index = 0; index < PageSize; index++)
+        {
+            int categoryIndex = _page * PageSize + index;
+            var column = new Control { Name = "Column_" + index, MouseFilter = MouseFilterEnum.Pass };
+            place(column, _columns, index * 500, 0, 500, 710);
+            var paper = new TextureRect
             {
-                "材料" => "材料品阶",
-                "全部" => "品阶 / 修习范围",
-                _ => "修习范围"
+                Name = "ColumnPaper", Texture = _backdrop is null ? null : new AtlasTexture
+                {
+                    Atlas = _backdrop, Region = new Rect2(87, 165, 374, 705), FilterClip = true
+                },
+                ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize, StretchMode = TextureRect.StretchModeEnum.Scale,
+                MouseFilter = MouseFilterEnum.Ignore
             };
-
-        add_filter_button(_levelFilterList, _levelButtons, "全部", "全部", isLevelFilter: true);
-        var entries = _catalog.Where(entry => _selectedCategory == "全部" || entry.Category == _selectedCategory);
-        var options = new Dictionary<string, string>(StringComparer.Ordinal);
-        foreach (var entry in entries)
-        {
-            var key = _selectedCategory == "全部" ? $"{entry.Category}::{entry.FilterKey}" : entry.FilterKey;
-            var label = _selectedCategory == "全部" ? $"{short_category_label(entry.Category)} · {entry.FilterLabel}" : entry.FilterLabel;
-            options.TryAdd(key, label);
-        }
-        foreach (var option in options.OrderBy(pair => pair.Value, StringComparer.Ordinal))
-            add_filter_button(_levelFilterList, _levelButtons, option.Key, option.Value, isLevelFilter: true);
-
-        if (!_levelButtons.ContainsKey(_selectedLevel))
-            _selectedLevel = "全部";
-        refresh_filters();
-    }
-
-    private void refresh_filters()
-    {
-        foreach (var pair in _categoryButtons)
-            apply_filter_style(pair.Value, pair.Key == _selectedCategory);
-        foreach (var pair in _levelButtons)
-            apply_filter_style(pair.Value, pair.Key == _selectedLevel);
-    }
-
-    private void rebuild_item_grid()
-    {
-        if (_itemGrid is null)
-            return;
-
-        foreach (var child in _itemGrid.GetChildren())
-        {
-            _itemGrid.RemoveChild(child);
-            child.QueueFree();
-        }
-
-        var visibleItems = _catalog.Where(entry =>
-        {
-            if (_selectedCategory != "全部" && entry.Category != _selectedCategory) return false;
-            if (_selectedLevel == "全部") return true;
-            var levelKey = _selectedCategory == "全部" ? $"{entry.Category}::{entry.FilterKey}" : entry.FilterKey;
-            return levelKey == _selectedLevel;
-        });
-
-        foreach (var entry in visibleItems)
-            _itemGrid.AddChild(create_item_card(entry));
-    }
-
-    private Control create_item_card(CatalogEntry entry)
-    {
-        var cell = new VBoxContainer
-        {
-            Name = $"ItemCell_{entry.Item.definition_id}",
-            CustomMinimumSize = new Vector2(144, 0),
-            SizeFlagsHorizontal = SizeFlags.ExpandFill,
-            MouseFilter = MouseFilterEnum.Ignore,
-        };
-        cell.AddThemeConstantOverride("separation", 4);
-
-        var card = new Button
-        {
-            Name = $"Item_{entry.Item.definition_id}",
-            CustomMinimumSize = new Vector2(144, 144),
-            SizeFlagsHorizontal = SizeFlags.ExpandFill,
-            MouseFilter = MouseFilterEnum.Stop,
-            FocusMode = FocusModeEnum.None,
-        };
-        card.AddThemeStyleboxOverride("normal", card_style(false, false));
-        card.AddThemeStyleboxOverride("hover", card_style(true, false));
-        card.AddThemeStyleboxOverride("pressed", card_style(true, true));
-        card.Pressed += () => open_purchase_dialog(entry);
-        card.MouseEntered += () => show_hover_info(entry);
-        card.MouseExited += () =>
-        {
-            if (_hoveredItem == entry)
+            place(paper, column, 0, 0, 500, 710);
+            if (categoryIndex >= YuxuExchangeCatalog.Categories.Length) continue;
+            string category = YuxuExchangeCatalog.Categories[categoryIndex];
+            var heading = new Panel { Name = "CategoryHeading", MouseFilter = MouseFilterEnum.Ignore };
+            heading.AddThemeStyleboxOverride("panel", _backdrop is null ? new StyleBoxEmpty() : new StyleBoxTexture
             {
-                _hoveredItem = null;
-                _hoverInfo?.Hide();
-            }
-        };
+                Texture = new AtlasTexture { Atlas = _backdrop, Region = new Rect2(87, 108, 1500, 48), FilterClip = true },
+                TextureMarginLeft = 24, TextureMarginTop = 10, TextureMarginRight = 24, TextureMarginBottom = 10,
+                ContentMarginLeft = 0, ContentMarginRight = 0, ContentMarginTop = 0, ContentMarginBottom = 0
+            });
+            place(heading, column, 13, 8, 474, 46);
+            var categoryLabel = label(category, 27);
+            categoryLabel.HorizontalAlignment = HorizontalAlignment.Center;
+            place(categoryLabel, heading, 0, 0, 474, 46);
+            place(label("名称", 19), column, 23, 57, 175, 37);
+            var selectedTitle = label("已选", 19); selectedTitle.HorizontalAlignment = HorizontalAlignment.Center;
+            place(selectedTitle, column, 219, 57, 104, 37);
+            var stockTitle = label("库存", 19); stockTitle.HorizontalAlignment = HorizontalAlignment.Right;
+            place(stockTitle, column, 336, 57, 54, 37);
+            var priceTitle = label("贡献", 19); priceTitle.HorizontalAlignment = HorizontalAlignment.Right;
+            place(priceTitle, column, 402, 57, 66, 37);
 
-        var iconCenter = new CenterContainer
-        {
-            SizeFlagsHorizontal = SizeFlags.ExpandFill,
-            SizeFlagsVertical = SizeFlags.ExpandFill,
-            MouseFilter = MouseFilterEnum.Ignore,
-        };
-        iconCenter.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
-        iconCenter.OffsetLeft = 5;
-        iconCenter.OffsetTop = 5;
-        iconCenter.OffsetRight = -5;
-        iconCenter.OffsetBottom = -5;
-
-        var iconPath = entry.Item.icon_path;
-        if (!string.IsNullOrWhiteSpace(iconPath) && ResourceLoader.Load<Texture2D>(iconPath) is { } icon)
-        {
-            var texture = new TextureRect
+            var scroll = new ScrollContainer
             {
-                Texture = icon,
-                CustomMinimumSize = new Vector2(58, 70),
-                ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
-                StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
-                MouseFilter = MouseFilterEnum.Ignore,
+                Name = "ItemScroll_" + category, HorizontalScrollMode = ScrollContainer.ScrollMode.Disabled,
+                VerticalScrollMode = ScrollContainer.ScrollMode.Auto
             };
-            iconCenter.AddChild(texture);
+            place(scroll, column, 15, 94, 470, 572);
+            var scrollbar = scroll.GetVScrollBar();
+            scrollbar.AddThemeStyleboxOverride("scroll", PaperScrollbarStyle.Create());
+            scrollbar.AddThemeStyleboxOverride("scroll_focus", PaperScrollbarStyle.Create());
+            scrollbar.AddThemeStyleboxOverride("grabber", PaperScrollbarStyle.Create(grabber: true));
+            scrollbar.AddThemeStyleboxOverride("grabber_highlight", PaperScrollbarStyle.Create(grabber: true, highlighted: true));
+            scrollbar.AddThemeStyleboxOverride("grabber_pressed", PaperScrollbarStyle.Create(grabber: true, pressed: true));
+            scrollbar.ValueChanged += _ => HoverInfoManager.HideAll();
+            var list = new VBoxContainer { Name = "Items", SizeFlagsHorizontal = SizeFlags.ExpandFill };
+            list.AddThemeConstantOverride("separation", 0);
+            scroll.AddChild(list);
+            var entries = _catalog.Where(entry => entry.Category == category &&
+                (search.Length == 0 || entry.Item.entity_name.Contains(search, StringComparison.CurrentCultureIgnoreCase))).ToList();
+            foreach (var entry in entries) list.AddChild(create_item_row(entry));
+            if (entries.Count == 0)
+            {
+                var empty = label(search.Length == 0 ? "暂无可兑换物品" : "没有匹配物品", 18);
+                empty.HorizontalAlignment = HorizontalAlignment.Center;
+                empty.CustomMinimumSize = new(0, 80);
+                list.AddChild(empty);
+            }
         }
-        card.AddChild(iconCenter);
-
-        var name = make_label(entry.Item.entity_name, 15, new Color("302b22"));
-        name.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-        name.CustomMinimumSize = new Vector2(0, 34);
-        name.MouseFilter = MouseFilterEnum.Ignore;
-
-        cell.AddChild(card);
-        cell.AddChild(name);
-        return cell;
+        refresh_summary();
     }
 
-    private void show_hover_info(CatalogEntry entry)
+    private Control create_item_row(CatalogEntry entry)
     {
-        if (_purchaseDialog?.Visible == true || _hoverInfo is null)
-            return;
+        string path = entry.Item.ResourcePath;
+        var holder = new Control { Name = "Entry_" + entry.Item.definition_id, CustomMinimumSize = new(450, 44) };
+        var row = new Button { Name = "Item_" + entry.Item.definition_id, FocusMode = FocusModeEnum.None };
+        row.AddThemeStyleboxOverride("normal", row_style(_selected.ContainsKey(path)));
+        row.AddThemeStyleboxOverride("hover", row_style(true));
+        row.AddThemeStyleboxOverride("pressed", row_style(true, true));
+        row.AddThemeStyleboxOverride("focus", new StyleBoxEmpty());
+        place(row, holder, 0, 0, 450, 44);
+        var name = label(entry.Item.entity_name, 20);
+        name.ClipText = true;
+        name.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
+        place(name, row, 8, 0, 180, 44);
+        var stock = label("—", 20); stock.HorizontalAlignment = HorizontalAlignment.Right;
+        place(stock, row, 322, 0, 54, 44);
+        var price = label(entry.Price.ToString("N0"), 20); price.HorizontalAlignment = HorizontalAlignment.Right;
+        place(price, row, 384, 0, 62, 44);
+        HoverInfoManager.SetProvider(row, () => StoragePanel.ItemHover(entry.Item, user: _hoverActor));
 
-        _hoveredItem = entry;
-        if (_hoverTitle is not null) _hoverTitle.Text = entry.Item.entity_name;
-        if (_hoverDescription is not null) _hoverDescription.Text = entry.Description;
-        if (_hoverCost is not null) _hoverCost.Text = format_exchange_cost(entry.ContributionCost);
-        _hoverInfo.Show();
-
-        var viewportSize = GetViewportRect().Size;
-        var point = GetViewport().GetMousePosition() + new Vector2(18, 18);
-        var boxSize = new Vector2(350, 142);
-        if (point.X + boxSize.X > viewportSize.X - 10) point.X = Math.Max(10, point.X - boxSize.X - 34);
-        if (point.Y + boxSize.Y > viewportSize.Y - 10) point.Y = Math.Max(10, point.Y - boxSize.Y - 34);
-        _hoverInfo.Position = point;
-        _hoverInfo.Size = boxSize;
+        var quantity = new Control { MouseFilter = MouseFilterEnum.Pass };
+        place(quantity, holder, 193, 0, 126, 44);
+        var minus = text_button("−", 22);
+        var plus = text_button("+", 22);
+        place(minus, quantity, 0, 0, 33, 44);
+        var input = new LineEdit { Name = "SelectedQuantity", Alignment = HorizontalAlignment.Center, MaxLength = 3 };
+        input.AddThemeFontOverride("font", _font);
+        input.AddThemeFontSizeOverride("font_size", 22);
+        input.AddThemeConstantOverride("minimum_character_width", 1);
+        input.AddThemeColorOverride("font_color", Ink);
+        input.AddThemeStyleboxOverride("normal", new StyleBoxEmpty());
+        input.AddThemeStyleboxOverride("focus", new StyleBoxEmpty());
+        place(input, quantity, 33, 0, 60, 44);
+        place(plus, quantity, 93, 0, 33, 44);
+        _rows[path] = new(row, quantity, input);
+        sync_row(path, true);
+        row.Pressed += () => set_quantity(entry, _selected.ContainsKey(path) ? 0 : 1, true);
+        minus.Pressed += () => set_quantity(entry, _selected.GetValueOrDefault(path) - 1, true);
+        plus.Pressed += () => set_quantity(entry, _selected.GetValueOrDefault(path) + 1, true);
+        input.TextChanged += value =>
+        {
+            if (!int.TryParse(value, out int count)) return;
+            count = Math.Clamp(count, 0, Character.InventoryCapacity);
+            if (count.ToString().Length < value.Length || value != count.ToString() && count == Character.InventoryCapacity)
+            {
+                input.Text = count.ToString();
+                input.CaretColumn = input.Text.Length;
+            }
+            set_quantity(entry, count, false);
+        };
+        input.FocusExited += () =>
+        {
+            if (!int.TryParse(input.Text, out int count)) count = 0;
+            set_quantity(entry, Math.Clamp(count, 0, Character.InventoryCapacity), true);
+        };
+        input.TextSubmitted += _ => input.ReleaseFocus();
+        return holder;
     }
 
-    private void open_purchase_dialog(CatalogEntry entry)
+    private void set_quantity(CatalogEntry entry, int count, bool syncInput)
     {
-        _selectedItem = entry;
-        _hoverInfo?.Hide();
-        _hoveredItem = null;
-        if (_purchaseName is not null) _purchaseName.Text = entry.Item.entity_name;
-        if (_purchaseTitle is not null) _purchaseTitle.Text = "确认兑换";
-        if (_purchaseDescription is not null) _purchaseDescription.Text = entry.Description;
-        if (_purchaseCost is not null) _purchaseCost.Text = format_exchange_cost(entry.ContributionCost);
-        if (_purchaseNote is not null) _purchaseNote.Text = "兑换后物品 ×1 将放入行囊；累计公事履职记录不受兑换影响。此为当前标准基础价，局势波动价格尚未接入。";
-        if (_purchaseCancel is not null) _purchaseCancel.Text = "取消";
-        _purchasePending = false;
-        set_contribution_balance(_contributionBalance);
-        _modalShade?.Show();
-        _purchaseDialog?.Show();
-        _purchaseDialog?.MoveToFront();
+        if (_purchasePending) return;
+        string path = entry.Item.ResourcePath;
+        count = Math.Clamp(count, 0, Character.InventoryCapacity);
+        if (count == 0) _selected.Remove(path);
+        else _selected[path] = count;
+        _message.Text = "";
+        sync_row(path, syncInput);
+        refresh_summary();
+    }
+
+    private void sync_row(string path, bool syncInput)
+    {
+        if (!_rows.TryGetValue(path, out var controls)) return;
+        bool selected = _selected.TryGetValue(path, out int count);
+        controls.Row.AddThemeStyleboxOverride("normal", row_style(selected));
+        controls.Quantity.Visible = selected;
+        if (syncInput) controls.Input.Text = selected ? count.ToString() : "";
+    }
+
+    private void clear_selection()
+    {
+        if (_purchasePending) return;
+        _selected.Clear();
+        _message.Text = "";
+        foreach (var path in _rows.Keys) sync_row(path, true);
+        refresh_summary();
+    }
+
+    private void refresh_summary()
+    {
+        if (_confirm is null) return;
+        long count = 0, cost = 0;
+        foreach (var entry in _catalog)
+            if (_selected.TryGetValue(entry.Item.ResourcePath, out int quantity))
+            {
+                count += quantity;
+                cost += (long)quantity * entry.Price;
+            }
+        _totalCount.Text = $"共计 {count:N0} 件";
+        _totalCost.Text = $"共计 {cost:N0} 贡献";
+        _remaining.Text = $"预计剩余贡献 {_contributionBalance - cost:N0}";
+        _remaining.AddThemeColorOverride("font_color", cost > _contributionBalance ? new Color("945b48") : Ink);
+        if (cost > _contributionBalance) _message.Text = "贡献不足";
+        else if (_message.Text == "贡献不足") _message.Text = "";
+        _confirm.Disabled = _purchasePending || count == 0 || cost > _contributionBalance;
+        _cancel.Disabled = _purchasePending || count == 0;
     }
 
     private void request_purchase()
     {
-        if (_purchasePending || _selectedItem is null || _selectedItem.ContributionCost <= 0 ||
-            _contributionBalance < _selectedItem.ContributionCost)
-            return;
-
+        if (_purchasePending || _selected.Count == 0) return;
+        var selections = new GArray();
+        foreach (var entry in _catalog)
+            if (_selected.TryGetValue(entry.Item.ResourcePath, out int count))
+                selections.Add(new GDictionary { ["item_path"] = entry.Item.ResourcePath, ["count"] = count, ["unit_price"] = entry.Price });
         _purchasePending = true;
-        if (_purchaseNote is not null) _purchaseNote.Text = "正在核验贡献与行囊空间……";
-        refresh_purchase_button();
-        EmitSignal(SignalName.purchase_requested, _selectedItem.Item.ResourcePath, _selectedItem.ContributionCost);
+        refresh_summary();
+        EmitSignal(SignalName.batch_purchase_requested, selections);
     }
 
     public void resolve_purchase(bool success, long currentBalance, string message)
     {
+        _purchasePending = false;
+        if (success) _selected.Clear();
+        _message.Text = message;
         set_contribution_balance(currentBalance);
-        _purchasePending = false;
-        if (success)
-        {
-            if (_purchaseTitle is not null) _purchaseTitle.Text = "兑换完成";
-            if (_purchaseNote is not null) _purchaseNote.Text = message;
-            if (_purchaseCancel is not null) _purchaseCancel.Text = "完成";
-            if (_purchaseConfirm is not null) _purchaseConfirm.Disabled = true;
-            return;
-        }
-
-        if (_purchaseNote is not null) _purchaseNote.Text = message;
-        refresh_purchase_button();
+        foreach (var path in _rows.Keys) sync_row(path, true);
     }
 
-    private void close_purchase_dialog()
+    private void fit_canvas()
     {
-        _purchaseDialog?.Hide();
-        _modalShade?.Hide();
-        _selectedItem = null;
-        _purchasePending = false;
-        if (_purchaseCancel is not null) _purchaseCancel.Text = "取消";
+        if (_canvas is null) return;
+        Vector2 viewport = Size.X > 0 && Size.Y > 0 ? Size : GetViewportRect().Size;
+        float scale = Mathf.Min(viewport.X / DesignSize.X, viewport.Y / DesignSize.Y);
+        _canvas.Scale = Vector2.One * scale;
+        _canvas.Position = (viewport - DesignSize * scale) * .5f;
     }
 
-    private static string format_exchange_cost(int cost)
-        => cost > 0 ? $"所需贡献：{cost}（标准价）" : "所需贡献：暂未定";
-
-    private void refresh_purchase_button()
+    private Label label(string value, int size)
     {
-        if (_purchaseConfirm is null) return;
-        var cost = _selectedItem?.ContributionCost ?? 0;
-        _purchaseConfirm.Disabled = _purchasePending || cost <= 0 || _contributionBalance < cost;
-        _purchaseConfirm.TooltipText = cost <= 0 ? "此物品尚未配置善功堂标准价" :
-            _contributionBalance < cost ? "当前贡献不足" : "按当前标准价兑换并放入行囊";
+        var result = new Label { Text = value, VerticalAlignment = VerticalAlignment.Center, MouseFilter = MouseFilterEnum.Ignore };
+        result.AddThemeFontOverride("font", _font);
+        result.AddThemeFontSizeOverride("font_size", size);
+        result.AddThemeColorOverride("font_color", Ink);
+        return result;
     }
 
-    private void add_full_rect(Control control)
+    private Button text_button(string value, int size)
     {
-        control.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        AddChild(control);
-    }
-
-    private void set_anchors(Control control, float left, float top, float right, float bottom)
-    {
-        control.AnchorLeft = left;
-        control.AnchorTop = top;
-        control.AnchorRight = right;
-        control.AnchorBottom = bottom;
-        control.OffsetLeft = 0;
-        control.OffsetTop = 0;
-        control.OffsetRight = 0;
-        control.OffsetBottom = 0;
-        AddChild(control);
-    }
-
-    private Label make_label(string text, int size, Color color)
-    {
-        var label = new Label
-        {
-            Text = text,
-            HorizontalAlignment = HorizontalAlignment.Center,
-            VerticalAlignment = VerticalAlignment.Center,
-            MouseFilter = MouseFilterEnum.Ignore,
-        };
-        if (_font is not null)
-            label.AddThemeFontOverride("font", _font);
-        label.AddThemeFontSizeOverride("font_size", size);
-        label.AddThemeColorOverride("font_color", color);
-        return label;
-    }
-
-    private Button make_button(string text, int size)
-    {
-        var button = new Button
-        {
-            Text = text,
-            Alignment = HorizontalAlignment.Center,
-            FocusMode = FocusModeEnum.None,
-        };
-        if (_font is not null)
-            button.AddThemeFontOverride("font", _font);
+        var button = new Button { Text = value, MouseDefaultCursorShape = CursorShape.PointingHand, FocusMode = FocusModeEnum.None };
+        button.AddThemeFontOverride("font", _font);
         button.AddThemeFontSizeOverride("font_size", size);
-        button.AddThemeColorOverride("font_color", new Color("342f25"));
-        button.AddThemeColorOverride("font_hover_color", new Color("241f18"));
-        button.AddThemeColorOverride("font_disabled_color", new Color("8a806e"));
-        button.AddThemeStyleboxOverride("normal", filter_style(false));
-        button.AddThemeStyleboxOverride("hover", filter_style(true));
-        button.AddThemeStyleboxOverride("pressed", filter_style(true));
-        button.AddThemeStyleboxOverride("disabled", filter_style(false, true));
+        button.AddThemeColorOverride("font_color", Ink);
+        button.AddThemeColorOverride("font_hover_color", new Color("805537"));
+        button.AddThemeColorOverride("font_pressed_color", new Color("a35e35"));
+        button.AddThemeColorOverride("font_disabled_color", new Color("a7a092"));
+        foreach (string state in new[] { "normal", "hover", "pressed", "disabled", "focus" })
+            button.AddThemeStyleboxOverride(state, new StyleBoxEmpty());
         return button;
     }
 
-    private static void apply_filter_style(Button button, bool selected)
+    private static StyleBoxFlat row_style(bool selected, bool pressed = false) => new()
     {
-        button.AddThemeStyleboxOverride("normal", filter_style(selected));
-        button.AddThemeStyleboxOverride("hover", filter_style(true));
-        button.AddThemeStyleboxOverride("pressed", filter_style(true));
-    }
-
-    private static StyleBoxFlat filter_style(bool selected, bool disabled = false) => new()
-    {
-        BgColor = disabled ? new Color(0.72f, 0.68f, 0.58f, 0.24f) : selected ? new Color(0.61f, 0.66f, 0.59f, 0.54f) : new Color(0.91f, 0.88f, 0.80f, 0.18f),
-        BorderColor = selected ? new Color(0.31f, 0.39f, 0.34f, 0.64f) : new Color(0.40f, 0.36f, 0.29f, 0.28f),
-        BorderWidthLeft = selected ? 2 : 1,
-        BorderWidthTop = selected ? 2 : 1,
-        BorderWidthRight = selected ? 2 : 1,
-        BorderWidthBottom = selected ? 2 : 1,
-        CornerRadiusTopLeft = 4,
-        CornerRadiusTopRight = 4,
-        CornerRadiusBottomLeft = 4,
-        CornerRadiusBottomRight = 4,
-        ContentMarginLeft = 6,
-        ContentMarginRight = 6,
-        ContentMarginTop = 4,
-        ContentMarginBottom = 4,
+        BgColor = selected ? new Color(0.48f, 0.35f, 0.23f, pressed ? .22f : .12f) : Colors.Transparent,
+        BorderColor = new Color(.52f, .41f, .29f, .2f), BorderWidthBottom = 1,
+        ContentMarginLeft = 0, ContentMarginRight = 0, ContentMarginTop = 0, ContentMarginBottom = 0
     };
 
-    private static StyleBoxFlat card_style(bool hover, bool selected) => new()
+    private static void place(Control child, Control parent, float x, float y, float width, float height)
     {
-        BgColor = selected ? new Color(0.78f, 0.72f, 0.57f, 0.28f) : hover ? new Color(0.78f, 0.82f, 0.75f, 0.36f) : new Color(0.93f, 0.89f, 0.79f, 0.14f),
-        BorderColor = selected ? new Color(0.54f, 0.39f, 0.20f, 0.72f) : hover ? new Color(0.40f, 0.47f, 0.40f, 0.54f) : new Color(0.39f, 0.36f, 0.29f, 0.26f),
-        BorderWidthLeft = selected ? 2 : 1,
-        BorderWidthTop = selected ? 2 : 1,
-        BorderWidthRight = selected ? 2 : 1,
-        BorderWidthBottom = selected ? 2 : 1,
-        CornerRadiusTopLeft = 4,
-        CornerRadiusTopRight = 4,
-        CornerRadiusBottomLeft = 4,
-        CornerRadiusBottomRight = 4,
-        ContentMarginLeft = 4,
-        ContentMarginRight = 4,
-        ContentMarginTop = 4,
-        ContentMarginBottom = 4,
-    };
-
-    private static StyleBoxFlat paper_style(float backgroundAlpha, float borderAlpha) => new()
-    {
-        BgColor = new Color(0.94f, 0.91f, 0.83f, backgroundAlpha),
-        BorderColor = new Color(0.39f, 0.36f, 0.29f, borderAlpha),
-        BorderWidthLeft = 1,
-        BorderWidthTop = 1,
-        BorderWidthRight = 1,
-        BorderWidthBottom = 1,
-        CornerRadiusTopLeft = 5,
-        CornerRadiusTopRight = 5,
-        CornerRadiusBottomLeft = 5,
-        CornerRadiusBottomRight = 5,
-    };
-
-    private static string get_realm_range(GongfaResource? gongfa)
-    {
-        if (gongfa is null || string.IsNullOrWhiteSpace(gongfa.main_realm_start) || string.IsNullOrWhiteSpace(gongfa.main_realm_end))
-            return "境界未标注";
-        return $"{gongfa.main_realm_start}—{gongfa.main_realm_end}";
+        parent.AddChild(child);
+        child.Position = new(x, y);
+        child.Size = new(width, height);
     }
-
-    private static string build_manual_description(GongfaResource? gongfa)
-    {
-        var description = string.IsNullOrWhiteSpace(gongfa?.description) ? "尚无简介。" : gongfa.description.Trim();
-        return $"修习范围：{get_realm_range(gongfa)}\n{description}";
-    }
-
-    private static string build_material_description(ItemData item, MaterialCraftData? material)
-    {
-        var gradeName = material?.material_grade_name() ?? item.get_grade_string();
-        var tags = item.tags.Select(format_tag).ToArray();
-        var utilities = material is null
-            ? "未标注"
-            : string.Join("、", material.utilities
-                .Where(utility => utility is not null && !string.IsNullOrWhiteSpace(utility.utility_id))
-                .Select(utility => $"{utility.utility_id}{utility.grade_name()}"));
-        if (string.IsNullOrWhiteSpace(utilities)) utilities = "未标注";
-        var subcategory = string.IsNullOrWhiteSpace(item.item_subcategory) ? "材料" : item.item_subcategory;
-        return $"材料分类：{subcategory}\n品阶：{gradeName}\n材性：{string.Join(" · ", tags)}\n功用强度：{utilities}";
-    }
-
-    private static string format_tag(string tag)
-    {
-        var parsed = ItemAffixCatalog.parse_tag(tag);
-        if (parsed.Count == 0) return tag;
-        return $"{parsed["dimension"].AsString()}·{parsed["value"].AsString()}";
-    }
-
-    private static string short_category_label(string category) => category switch
-    {
-        "材料" => "材",
-        "凡俗武学" => "武",
-        "剑修" => "剑",
-        "云息秘籍" => "秘",
-        _ => category
-    };
 }
+
+

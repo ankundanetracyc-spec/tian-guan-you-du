@@ -29,8 +29,6 @@ public partial class PortraitCatalog : Node
         Array<Dictionary> candidates = [];
         foreach (Dictionary entry in GetNode<AppearanceModCatalog>("/root/AppearanceModCatalog").get_parts(value(context, "gender", "male").AsString(), part))
         {
-            if (part == "beard" && value(context, "age", 0).AsInt32() < 35 && value(entry, "variant_index", 0).AsInt32() != 0)
-                continue;
             if (matches_context(entry, context)) candidates.Add(entry);
         }
         if (candidates.Count == 0) return [];
@@ -41,7 +39,22 @@ public partial class PortraitCatalog : Node
             if (int.TryParse(requested_id, out int requestedVariant))
                 foreach (Dictionary entry in candidates)
                     if (value(entry, "variant_index", -1).AsInt32() == requestedVariant) return entry;
+            // Retired lookalike styles resolve to their retained component, independent of other slots.
+            foreach (Dictionary entry in candidates)
+            {
+                Variant aliases = value(entry, "variant_aliases", new Dictionary());
+                if (aliases.VariantType != Variant.Type.Dictionary) continue;
+                Dictionary mapping = aliases.AsGodotDictionary();
+                if (mapping.ContainsKey(requested_id) &&
+                    value(entry, "variant_index", -1).AsInt32() == mapping[requested_id].AsInt32()) return entry;
+            }
         }
+
+        // Explicit choices keep their saved style; the default beard age rule applies to random selection.
+        if (part == "beard" && value(context, "age", 0).AsInt32() < 35)
+            for (int index = candidates.Count - 1; index >= 0; index--)
+                if (value(candidates[index], "variant_index", 0).AsInt32() != 0) candidates.RemoveAt(index);
+        if (candidates.Count == 0) return [];
 
         var rng = new RandomNumberGenerator { Seed = (ulong)(value(context, "seed", 1).AsInt64() ^ (long)GD.Hash(part)) };
         float totalWeight = 0.0f;

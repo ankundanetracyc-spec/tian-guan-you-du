@@ -26,13 +26,13 @@ public partial class BattleManager
         {
             var action = queue[_targetQueueIndex];
             if (action.kind != BattleQueuedSkill.ActionKind.Skill) { _targetQueueIndex++; continue; }
-            var skill = CardRules.NormalCast(action.skill);
+            var skill = CardRules.NormalCast(action.execution_skill);
             if (skill is null) { action.target = _mainPlayerUnit; _targetQueueIndex++; continue; }
             if (!RequiresTargetSelection(skill) || IsAutomaticScope(skill))
             {
                 action.target = DefaultTarget(skill, _mainPlayerUnit!); _targetQueueIndex++; continue;
             }
-            var targets = all_units.Where(Alive).Where(unit => IsValidTarget(skill, _mainPlayerUnit!, unit)).ToList();
+            var targets = get_target_candidates().Where(Alive).Where(unit => IsValidTarget(skill, _mainPlayerUnit!, unit)).ToList();
             if (targets.Count <= 1)
             {
                 action.target = targets.FirstOrDefault(); _targetQueueIndex++; continue;
@@ -67,7 +67,7 @@ public partial class BattleManager
     }
     private bool UndoQueuePlanning()
     {
-        if (_segmentPhase != SegmentPhase.Planning || _mainPlayerUnit is null) return false;
+        if (_segmentPhase != SegmentPhase.Planning || auto_battle || _mainPlayerUnit is null) return false;
         var queue = get_battle_unit(_mainPlayerUnit).skill_queue;
         if (_selectingQueueTargets)
         {
@@ -107,12 +107,10 @@ public partial class BattleManager
         {
             if (action.kind == BattleQueuedSkill.ActionKind.Rest)
                 energy = Math.Min(unit.Get("max_stamina").AsInt32(), energy + 2);
-            else if (action.kind == BattleQueuedSkill.ActionKind.Breathe)
-                mana = Math.Min(get_effective_mana_capacity(unit), mana + 1);
             else if (action.kind == BattleQueuedSkill.ActionKind.Skill)
             {
-                energy -= get_skill_energy_cost(unit, action.skill);
-                mana -= get_skill_mana_cost(unit, action.skill);
+                energy -= get_skill_energy_cost(unit, action.execution_skill);
+                mana -= get_skill_mana_cost(unit, action.execution_skill);
                 ApplyPlannedResourceReturn(unit, action.skill, ref energy);
             }
         }
@@ -138,11 +136,10 @@ public partial class BattleManager
         {
             var warning = "";
             if (action.kind == BattleQueuedSkill.ActionKind.Rest) energy = Math.Min(unit.Get("max_stamina").AsInt32(), energy + 2);
-            else if (action.kind == BattleQueuedSkill.ActionKind.Breathe) mana = Math.Min(get_effective_mana_capacity(unit), mana + 1);
             else if (action.kind == BattleQueuedSkill.ActionKind.Skill)
             {
-                var e = get_skill_energy_cost(unit, action.skill); var m = get_skill_mana_cost(unit, action.skill);
-                warning = energy < e ? "精力不足" : mana < m ? "法力不足" : "";
+                var e = get_skill_energy_cost(unit, action.execution_skill); var m = get_skill_mana_cost(unit, action.execution_skill);
+                warning = energy < e ? "体力不足" : mana < m ? "法力不足" : "";
                 // 不足的行动会跳过，不扣费，继续预测后续行动。
                 if (warning == "") { energy -= e; mana -= m; ApplyPlannedResourceReturn(unit, action.skill, ref energy); }
             }

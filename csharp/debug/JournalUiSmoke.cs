@@ -27,25 +27,25 @@ public partial class JournalUiSmoke : Control
             if (compact) _folder += "/1280x720";
             DirAccess.MakeDirRecursiveAbsolute(ProjectSettings.GlobalizePath(_folder));
             SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-            var bg = new TextureRect { Texture = GD.Load<Texture2D>("res://textures/village_overview/qingxi_territory_overview_v3.png"), ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize, StretchMode = TextureRect.StretchModeEnum.Scale };
+            var bg = new TextureRect { Texture = GD.Load<Texture2D>("res://textures/ui/infopanel_fullscreen_bg_v1.png"), ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize, StretchMode = TextureRect.StretchModeEnum.Scale };
             AddChild(bg); bg.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
             _hud = GD.Load<PackedScene>("res://tscn/panel/MainHUD.tscn").Instantiate<MainHUD>(); AddChild(_hud);
             _journal = new JournalPanel(); AddChild(_journal);
             var tasks = new[] {
-                new JournalPanel.Entry("玄鉴初读", "进入静室，研读完玄鉴传入功法的第一卷。", "阶段任务", "青溪里 · 静室", "进行中", Id: "qingxi.first_volume", AcceptedOrder: 2),
-                new JournalPanel.Entry("初醒青溪", "确认身处何地并踏入云息，取得离村资格。", "阶段目标", "青溪里", "进行中", Id: "phase.qingxi", AcceptedOrder: 1),
-                new JournalPanel.Entry("问道", "与李守拙说话，问起偏院旧屋。", "阶段任务", "青溪里", "已完成", Id: "qingxi.ask_for_room") };
+                new JournalPanel.Entry("研读卷章", "在静室研读所持秘籍。", "阶段任务", "玉虚仙宗 · 静室", "进行中", Id: "journal.fixture.study", AcceptedOrder: 2),
+                new JournalPanel.Entry("行旅与积累", "在百川区域行旅，积累修行所需。", "阶段目标", "百川区域", "进行中", Id: "phase.travel", AcceptedOrder: 1),
+                new JournalPanel.Entry("观复报到", "前往观复峰办理入门。", "阶段任务", "玉虚仙宗", "已完成", Id: "journal.fixture.registration") };
             _journal.TrackedTaskId = tasks[0].Id;
             _journal.set_entries(JournalPanel.Section.Tasks, tasks);
-            _journal.set_entries(JournalPanel.Section.Rumors, [new("后山夜声", "近来后山夜里常有短促兽鸣，入夜后忽远忽近。猎户说这不是寻常时节该有的动静。\n\n村中人近来很少独自走山路。", "村中闲谈", "青溪里", "待查")]);
+            _journal.set_entries(JournalPanel.Section.Rumors, [new("山路见闻", "山间来往的行旅谈起林地中的动静。\n\n更多消息仍待查证。", "行旅闲谈", "百川区域", "待查")]);
             var requested = "";
             _hud.TaskRequested += id => { requested = id; _journal.show_panel(JournalPanel.Section.Tasks, id); };
             _hud.set_task_entries(tasks, true); _hud.set_task_tracker_horizontal_layout(); await Capture("01_两项任务栏");
             var tracker = _hud.GetNode<Control>("TaskTracker");
-            Check(Math.Abs(tracker.Size.X - 300) < 2 && tracker.Size.Y <= 220, "任务栏宽300加20收起签，高度不超过220");
+            Check(Math.Abs(tracker.Size.X - 336) < 2 && tracker.Size.Y <= 220, "任务栏正文宽336，高度不超过220");
             Check(Math.Abs(tracker.Position.Y - GetViewportRect().Size.Y * .25f) < 2, "任务栏25%顶锚");
             Check(Nodes<Button>(tracker).Count() == 2, "任务栏恰好两项");
-            var firstLabels = Nodes<Label>(tracker.FindChild("TaskEntry0", true, false)).ToList();
+            var firstLabels = Nodes<RichTextLabel>(tracker.FindChild("TaskEntry0", true, false)).ToList();
             Check(firstLabels[0].GetGlobalRect().End.Y <= firstLabels[1].GetGlobalRect().Position.Y, "标题与目标不重叠");
             Check(!Nodes<Label>(tracker).Any(l => l.Text.Contains("当前追踪") || l.Text.Contains("最近接到") || l.Text.Contains("全部任务")), "无冗余任务栏标签");
             var toggle = _hud.GetNode<Button>("TaskTrackerToggle"); toggle.EmitSignal(BaseButton.SignalName.Pressed); await Settle();
@@ -66,7 +66,7 @@ public partial class JournalUiSmoke : Control
             Nodes<Button>(_journal).First(b => b.Text == "追踪任务").EmitSignal(BaseButton.SignalName.Pressed);
             Check(changed == tasks[0].Id, "追踪事件使用稳定标识");
             Nodes<Button>(_journal).First(b => b.Text == "已完成").EmitSignal(BaseButton.SignalName.Pressed); await Settle();
-            Check(Nodes<Label>(_journal).Any(l => l.IsVisibleInTree() && l.Text == "问道") && !Nodes<Button>(_journal).Any(b => b.IsVisibleInTree() && b.Text == "取消追踪"), "已完成筛选且不可追踪");
+            Check(Nodes<Label>(_journal).Any(l => l.IsVisibleInTree() && l.Text == tasks[2].Title) && !Nodes<Button>(_journal).Any(b => b.IsVisibleInTree() && b.Text == "取消追踪"), "已完成筛选且不可追踪");
             Nodes<Button>(_journal).First(b => b.Text == "传闻").EmitSignal(BaseButton.SignalName.Pressed); await Capture("03_见闻阅读");
             var selectedTab = Nodes<Button>(_journal).First(b => b.Text == "传闻");
             Check(selectedTab.GetThemeStylebox("hover") is StyleBoxTexture && selectedTab.GetThemeStylebox("pressed") == selectedTab.GetThemeStylebox("normal"), "选中导航悬停及按下保留纸签");
@@ -82,7 +82,9 @@ public partial class JournalUiSmoke : Control
             Nodes<Button>(_journal).First(b => b.Text == "地志").EmitSignal(BaseButton.SignalName.Pressed); await Settle();
             Check(Nodes<Label>(_journal).Any(l => l.IsVisibleInTree() && l.Text == "地志 · 待续"), "预留入口保留");
             var longTask = tasks[0] with { Title = "这是用于验证任务名称较长时独立换行且不会挤入目标文字的测试标题", Body = string.Concat(Enumerable.Repeat("长正文应当在自己的区域滚动，不挤占标题与返回入口。", 80)) };
-            _journal.set_entries(JournalPanel.Section.Tasks, [longTask]); _journal.show_panel(JournalPanel.Section.Tasks); await Capture("04_长文字");
+            _journal.set_entries(JournalPanel.Section.Tasks, [longTask]); _journal.show_panel(JournalPanel.Section.Tasks);
+            Nodes<Button>(_journal).First(b => b.Text == "进行中").EmitSignal(BaseButton.SignalName.Pressed);
+            await Capture("04_长文字");
             var scrolls = Nodes<ScrollContainer>(_journal).ToList();
             Check(scrolls.Any(s => s.GetVScrollBar().MaxValue > s.Size.Y + 100), "长正文可滚动");
             Check(Nodes<Button>(_journal).First(b => b.Text == "返回").GetGlobalRect().End.X <= GetViewportRect().Size.X, "返回入口保持可达");

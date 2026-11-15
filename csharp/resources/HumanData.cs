@@ -4,6 +4,19 @@ using Godot.Collections;
 /// <summary>人类角色的持久化数据，供世界、生成器与战斗场景共同使用。</summary>
 public partial class HumanData : LivingData
 {
+    [Export] public Array<string> alchemy_records = [];
+    [Export] public Array<string> forging_records = [];
+    /// <summary>已完成的丹道成长来源，稳定 ID 用于防止重复授课或实践奖励。</summary>
+    [Export] public Array<string> alchemy_proficiency_growth_sources = [];
+    /// <summary>各丹种已达到的最高丹效档，-1／缺省表示尚无实践记录。</summary>
+    [Export] public Godot.Collections.Dictionary<string, int> alchemy_growth_highest_tier_by_pill = new();
+    /// <summary>已完成的器道成长来源，使用真实材料定义与岗位身份去重。</summary>
+    [Export] public Array<string> forging_proficiency_growth_sources = [];
+    [Export] public Array<CombatSkillReference> combat_skill_references = [];
+    /// <summary>新版盘面独立保存，旧十槽与化法绑定保留为迁移核对来源。</summary>
+    [Export] public CombatBoardLayout? combat_board_layout;
+    /// <summary>化法稳定来源 ID → 玩家明确选择的原始技能标识；不绑定槽位序号。</summary>
+    [Export] public Godot.Collections.Dictionary<string, string> skill_rewrite_bindings = new();
     /// <summary>局外阵盘中已启用的个人战斗阵图；其运行资源不会写回本字段。</summary>
     [Export] public Godot.Collections.Array<FormationCircuitData> formation_circuits = [];
     [Export] public Array<string> formation_manual_ids = [];
@@ -39,6 +52,18 @@ public partial class HumanData : LivingData
     [Export] public string sect_admission_guide_npc_id = "";
     /// <summary>玉虚正式录籍的绝对游戏时辰；未知或旧存档为 -1。</summary>
     [Export] public long sect_entry_total_game_hours = -1;
+    /// <summary>真传讲席下次开放时辰；旧档首次接入时对齐到当前周期，不追溯记缺。</summary>
+    [Export] public long sect_true_disciple_lecture_next_due_hour = -1;
+    /// <summary>真传最近一次讲席到场时辰；-1 表示尚未到场。</summary>
+    [Export] public long sect_true_disciple_lecture_last_attended_hour = -1;
+    /// <summary>连续申请并获准免赴的真传讲席期数；到场或缺席后归零，最多允许连续两期。</summary>
+    [Export] public int sect_true_disciple_lecture_consecutive_leave_count;
+    /// <summary>最近一次真传讲席请假申请时辰。</summary>
+    [Export] public long sect_true_disciple_lecture_last_leave_hour = -1;
+    /// <summary>真传未在本期结束前开设讲席的累计缺席记档；作为师门履职声誉记录，不折算为百川区域声望。</summary>
+    [Export] public int sect_true_disciple_lecture_missed_count;
+    /// <summary>最近一次真传讲席缺席记档对应的期末时辰。</summary>
+    [Export] public long sect_true_disciple_lecture_last_missed_hour = -1;
     /// <summary>玉虚真传当前师父与带教师兄/师姐的稳定世界人物 ID。</summary>
     [Export] public string sect_teacher_npc_id = "";
     [Export] public string sect_guide_npc_id = "";
@@ -53,6 +78,10 @@ public partial class HumanData : LivingData
     [Export] public string sect_reputation_summary = "";
     /// <summary>逐势力七阶态度记录；与百川区域声望及 NPC 个人关系分开。</summary>
     [Export] public Array<FactionAttitudeRecord> faction_attitude_records = [];
+    /// <summary>主角对其他人物的稀疏单向关系记录；不含其他人物对主角的内在感受。</summary>
+    [Export] public Dictionary directed_relationships = [];
+    /// <summary>主角关系证据已归纳至的月份；与 NPC 月结算游标分开。</summary>
+    [Export] public int relationship_last_processed_month = -1;
     /// <summary>各区域公开事迹流水；只参与对应地区的区域声望计算。</summary>
     [Export] public Array<RegionalRenownRecord> regional_renown_records = [];
     /// <summary>玩家在此世发生的可追溯经历事实；不由业力、声望或关系推导。</summary>
@@ -71,10 +100,18 @@ public partial class HumanData : LivingData
     [Export] public string family_guest_affiliation_id = "";
     [Export] public string basic_deck_path = "res://resources/basic_decks/公共基础技能池.tres";
     [Export] public Array<string> basic_deck_upgrade_ids = [];
+    /// <summary>角色已参悟的公共技能节点稳定 ID；旧存档默认为空。</summary>
+    [Export] public Array<string> unlocked_skill_node_ids = [];
+    /// <summary>授予来源迁移后保留的旧版已学技能；不授予节点或永久属性。</summary>
+    [Export] public Array<string> legacy_learned_combat_skill_paths = [];
     /// <summary>即时战斗固定技能槽；凝核牌局仍使用独立的牌局数据。</summary>
     [Export] public Array<string> combat_skill_slot_paths = [];
     /// <summary>是否已经手动确认过即时战斗技能槽；用于区分默认装配与玩家主动清空。</summary>
     [Export] public bool combat_skill_slots_configured;
+    /// <summary>即时动作战斗的五个自由槽，独立保存，不覆盖迁移期间的原队列装配。</summary>
+    [Export] public Array<string> action_combat_skill_slot_paths = [];
+    /// <summary>区分默认的痛击／架招配置与玩家主动清空的动作槽。</summary>
+    [Export] public bool action_combat_skill_slots_configured;
     [Export] public Array<string> combat_passive_paths = [];
 
     [Export] public float mana_regen_rate = 0.04f;
@@ -93,11 +130,14 @@ public partial class HumanData : LivingData
     [Export] public float travel_speed_cells_per_day = 1.0f;
     /// <summary>是否能以飞行方式行进大世界；未获得飞行能力时为 false。</summary>
     [Export] public bool can_fly_world_map;
-    /// <summary>大世界、地点与副本共用的持久体力；与即时战斗精力 current_stamina 分开保存。</summary>
+    /// <summary>大世界、地点与副本共用的持久精力；与即时战斗体力 current_stamina 分开保存。</summary>
     [Export] public float current_world_stamina = WorldStaminaRules.InitialCapacity;
     [Export] public float max_world_stamina = WorldStaminaRules.InitialCapacity;
     /// <summary>主角在大世界与地点活动时持续存在的状态；与即时战斗临时状态分开。</summary>
     [Export] public Godot.Collections.Array<WorldStatusRecord> world_status_records = [];
+    /// <summary>服丹后持续积累，跨战斗保存；旧档缺字段默认为无丹毒。</summary>
+    [Export] public double pill_toxicity;
+    [Export] public double pill_toxicity_last_game_hour = -1;
 
     // 单人模式不再读取这些旧日程字段；保留它们仅用于兼容既有存档。
     [Export] public bool daily_schedule_enabled = false;
@@ -121,7 +161,7 @@ public partial class HumanData : LivingData
     [Export] public bool meditation_spirit_stone_supply;
     [Export] public float meditation_spirit_stone_debt;
     [Export] public string spouse_name = "";
-    [Export] public float pill_toxicity;
+    /// <summary>旧资源兼容字段，现行丹毒不按此值封顶。</summary>
     [Export] public float max_pill_toxicity = 100.0f;
 
     [Export] public float base_sword_proficiency = 5.0f;
@@ -135,10 +175,16 @@ public partial class HumanData : LivingData
     [Export] public float body_proficiency = 5.0f;
     [Export] public float magic_proficiency = 5.0f;
 
+    /// <summary>器道天赋基础值；研习和实践成长另记在固定加成中。</summary>
     [Export] public float base_forging_proficiency = 5.0f;
     [Export] public float base_talisman_proficiency = 5.0f;
     [Export] public float base_formation_proficiency = 5.0f;
+    /// <summary>丹道天赋基础值；研习和实践成长另记在固定加成中。</summary>
     [Export] public float base_alchemy_proficiency = 5.0f;
+    /// <summary>研习与实践形成的器道固定造诣加成；不改写表示天赋的基础值。</summary>
+    [Export] public float forging_proficiency_training_bonus;
+    /// <summary>研习与实践形成的丹道固定造诣加成；不改写表示天赋的基础值。</summary>
+    [Export] public float alchemy_proficiency_training_bonus;
     [Export] public float forging_proficiency = 5.0f;
     [Export] public float talisman_proficiency = 5.0f;
     [Export] public float formation_proficiency = 5.0f;
@@ -154,6 +200,9 @@ public partial class HumanData : LivingData
     /// <summary>序章玄镜交予幼子的首卷；必须由玩家主动放入研读位。</summary>
     [Export] public string intro_gongfa_path = "";
     [Export] public float intro_gongfa_study_progress;
+    /// <summary>Public first-volume license; a full acquired copy can supersede it.</summary>
+    [Export] public string baishi_first_volume_path = "";
+    [Export] public bool baishi_first_volume_only;
     /// <summary>未满一缕的修炼积累；与 spirit_strands 一同保存，避免日程结算丢失小数进度。</summary>
     [Export] public float cultivation_progress;
     // 归元息状态随完整人物资源保存；阶段0/1/2分别为周行、牵引、平衡。
@@ -201,12 +250,21 @@ public partial class HumanData : LivingData
     [Export] public int breakthrough_started_hour;
     [Export] public int breakthrough_finish_hour;
     [Export] public bool breakthrough_uses_meditation_room;
+    /// <summary>本次普通突破预选并暂留的关口丹；只在成功晋层后扣除。</summary>
+    [Export] public string breakthrough_pill_path = "";
+    [Export] public string breakthrough_pill_id = "";
+    [Export] public int breakthrough_pill_tier = -1;
+    [Export] public string breakthrough_pill_effect_snapshot = "";
+    [Export] public int breakthrough_pill_effect_value_snapshot;
+    /// <summary>归元定息丹在九息闭关开始前按丹毒折算后锁定的总时长缩减比例。</summary>
+    [Export] public double yuanxi_duration_reduction;
     [Export] public Array<string> sub_gongfa_paths = [];
     [Export] public Array<string> learned_gongfa_paths = [];
     [Export] public Dictionary learned_gongfa_chapters = [];
     /// <summary>已写入基础属性的卷章永久加成，避免读档或刷新时重复叠加。</summary>
     [Export] public Dictionary applied_gongfa_permanent_bonuses = [];
     [Export] public Dictionary gongfa_chapter_study_progress = [];
+    /// <summary>旧存档兼容字段；当前卷章修持与化法同时生效，不再读取分支选择。</summary>
     [Export] public Dictionary equipped_gongfa_chapter_routes = [];
     [Export] public Array<string> loaded_skill_paths = [];
     /// <summary>首次手动调整战斗牌组后启用；未配置的旧存档保持原有“已解锁牌全部入组”行为。</summary>
@@ -214,17 +272,23 @@ public partial class HumanData : LivingData
 
     /// <summary>玩家唯一行囊。所有普通物品按定义路径和数量保存，材料、成品、秘籍与装备不再进入共享仓库。</summary>
     [Export] public Array<string> inventory_item_paths = [];
+    [Export] public Array<BattleSupplySlotData> battle_supplies = [];
     [Export] public Array<int> inventory_item_counts = [];
     /// <summary>唯一法宝实例也归属于角色行囊，但保留独立实例数组，避免与普通物品堆叠。</summary>
     [Export] public Array<int> inventory_item_positions = [];
     [Export] public Array<ArtifactInstanceData> artifact_inventory = [];
     [Export] public Array<string> equipped_artifact_ids = [];
     [Export] public Array<int> artifact_inventory_positions = [];
+    [Export] public Array<InventoryPlacementData> inventory_placements = [];
+    /// <summary>Separate storage only; take items out before using existing inventory consumers.</summary>
+    [Export] public Array<StorageBagContentsData> storage_bag_contents = [];
 
     [Export] public string weapon_path = "";
     // 武器已并入法宝体系；常规穿戴仅保留四个直观属性位。
     [Export] public string headwear_path = "";
     [Export] public string clothes_path = "";
+    /// <summary>Cosmetic portrait clothing owned and currently worn; independent from stat-bearing clothes_path.</summary>
+    [Export] public string portrait_clothing_item_path = "";
     [Export] public string ornament_1_path = "";
     [Export] public string footwear_path = "";
     [Export] public string ornament_2_path = ""; // 旧档兼容字段，后续迁移到饰品位。

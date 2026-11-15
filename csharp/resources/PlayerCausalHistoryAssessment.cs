@@ -53,7 +53,7 @@ public sealed class PlayerCausalHistoryAssessment
         switch (history_conclusion)
         {
             case PlayerCausalHistoryConclusion.NoRecord:
-                lines.Add("长老静静看了你片刻，收回神识，神色如常。");
+                lines.Add("长老静静听你说明来意，神色如常。");
                 break;
             case PlayerCausalHistoryConclusion.NoVerifiableConclusion:
                 // Incomplete records are not themselves evidence or an unverified clue.
@@ -186,7 +186,6 @@ public static class PlayerCausalHistoryEvaluator
         var year = totalDays / (12 * 30) + 1;
         var month = totalDays / 30 % 12 + 1;
         var day = totalDays % 30 + 1;
-        var hour = totalHours % 24;
-        return $"第{year}年{month}月{day}日 {hour:00}时";
+        return $"第{year}年{month}月{day}日";
     }
 }

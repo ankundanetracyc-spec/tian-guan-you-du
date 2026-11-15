@@ -20,6 +20,8 @@ public partial class RealmQiVisual : ColorRect
     private Tween? _transition;
 
     public bool IsTransitioning => _transition?.IsRunning() == true;
+    /// <summary>仅供境界演出提高主体辨识度；普通展示、牌局及养息页默认保持原样。</summary>
+    public void SetPresentationFocus(float amount) => _qiMaterial?.SetShaderParameter("presentation_focus", Mathf.Clamp(amount, 0f, 1f));
 
     public override void _Ready()
     {

@@ -1,0 +1,160 @@
+{
+  "schema": 1,
+  "origin": "Original procedural foley. No recordings or external samples.",
+  "generator": "tools/generate_combat_impact_audio.py",
+  "sample_rate": 48000,
+  "playback_notes": {
+    "variants": "Deterministic round-robin or a private presentation RNG only.",
+    "mixing": "Coalesce same-frame body/blood contact; limit simultaneous near-field impacts to two voices.",
+    "pause": "Pause active voices with the battle; clear voices on reset/exit.",
+    "kind": "Use hit only after real hit; a fully blocked hit uses guard; a miss uses only whoosh."
+  },
+  "families": {
+    "light": [
+      "light_01.wav",
+      "light_02.wav"
+    ],
+    "heavy": [
+      "heavy_01.wav",
+      "heavy_02.wav"
+    ],
+    "guard": [
+      "guard_01.wav",
+      "guard_02.wav"
+    ],
+    "whoosh": [
+      "whoosh_01.wav",
+      "whoosh_02.wav"
+    ]
+  },
+  "files": {
+    "light_01.wav": {
+      "sample_rate": 48000,
+      "channels": 1,
+      "pcm_bits": 16,
+      "frames": 5664,
+      "seconds": 0.118,
+      "peak_dbfs": -9.0,
+      "rms_dbfs": -22.8935,
+      "dc_offset": -9.249785753661567e-05,
+      "tail_5ms_rms_dbfs": -71.586,
+      "spectral_centroid_hz": 959.69,
+      "sub_250hz_power_fraction": 0.152153,
+      "clipped_samples": 0,
+      "first_sample": 0.0,
+      "last_sample": 0.0
+    },
+    "light_02.wav": {
+      "sample_rate": 48000,
+      "channels": 1,
+      "pcm_bits": 16,
+      "frames": 6048,
+      "seconds": 0.126,
+      "peak_dbfs": -9.0,
+      "rms_dbfs": -23.3024,
+      "dc_offset": 9.795654642214363e-05,
+      "tail_5ms_rms_dbfs": -73.2647,
+      "spectral_centroid_hz": 1146.26,
+      "sub_250hz_power_fraction": 0.099004,
+      "clipped_samples": 0,
+      "first_sample": 0.0,
+      "last_sample": 0.0
+    },
+    "heavy_01.wav": {
+      "sample_rate": 48000,
+      "channels": 1,
+      "pcm_bits": 16,
+      "frames": 8784,
+      "seconds": 0.183,
+      "peak_dbfs": -8.0,
+      "rms_dbfs": -20.8058,
+      "dc_offset": -5.85711344903251e-05,
+      "tail_5ms_rms_dbfs": -63.11,
+      "spectral_centroid_hz": 729.42,
+      "sub_250hz_power_fraction": 0.287561,
+      "clipped_samples": 0,
+      "first_sample": 0.0,
+      "last_sample": 0.0
+    },
+    "heavy_02.wav": {
+      "sample_rate": 48000,
+      "channels": 1,
+      "pcm_bits": 16,
+      "frames": 9456,
+      "seconds": 0.197,
+      "peak_dbfs": -8.0,
+      "rms_dbfs": -22.1176,
+      "dc_offset": -0.0005019163681867524,
+      "tail_5ms_rms_dbfs": -68.275,
+      "spectral_centroid_hz": 754.77,
+      "sub_250hz_power_fraction": 0.224106,
+      "clipped_samples": 0,
+      "first_sample": 0.0,
+      "last_sample": 0.0
+    },
+    "guard_01.wav": {
+      "sample_rate": 48000,
+      "channels": 1,
+      "pcm_bits": 16,
+      "frames": 5040,
+      "seconds": 0.105,
+      "peak_dbfs": -10.0,
+      "rms_dbfs": -25.7881,
+      "dc_offset": 0.00012749761835051946,
+      "tail_5ms_rms_dbfs": -78.1775,
+      "spectral_centroid_hz": 2405.88,
+      "sub_250hz_power_fraction": 0.028796,
+      "clipped_samples": 0,
+      "first_sample": 0.0,
+      "last_sample": 0.0
+    },
+    "guard_02.wav": {
+      "sample_rate": 48000,
+      "channels": 1,
+      "pcm_bits": 16,
+      "frames": 5568,
+      "seconds": 0.116,
+      "peak_dbfs": -10.0,
+      "rms_dbfs": -27.2971,
+      "dc_offset": 0.00015007190740979847,
+      "tail_5ms_rms_dbfs": -81.5176,
+      "spectral_centroid_hz": 2984.88,
+      "sub_250hz_power_fraction": 0.009475,
+      "clipped_samples": 0,
+      "first_sample": 0.0,
+      "last_sample": 0.0
+    },
+    "whoosh_01.wav": {
+      "sample_rate": 48000,
+      "channels": 1,
+      "pcm_bits": 16,
+      "frames": 6048,
+      "seconds": 0.126,
+      "peak_dbfs": -18.0,
+      "rms_dbfs": -25.8624,
+      "dc_offset": -0.00013538328845592228,
+      "tail_5ms_rms_dbfs": -63.5475,
+      "spectral_centroid_hz": 3477.98,
+      "sub_250hz_power_fraction": 0.008259,
+      "clipped_samples": 0,
+      "first_sample": 0.0,
+      "last_sample": 0.0
+    },
+    "whoosh_02.wav": {
+      "sample_rate": 48000,
+      "channels": 1,
+      "pcm_bits": 16,
+      "frames": 6816,
+      "seconds": 0.142,
+      "peak_dbfs": -18.0,
+      "rms_dbfs": -25.8911,
+      "dc_offset": 5.336354694259021e-05,
+      "tail_5ms_rms_dbfs": -69.8712,
+      "spectral_centroid_hz": 3441.9,
+      "sub_250hz_power_fraction": 0.003999,
+      "clipped_samples": 0,
+      "first_sample": 0.0,
+      "last_sample": 0.0
+    }
+  }
+}

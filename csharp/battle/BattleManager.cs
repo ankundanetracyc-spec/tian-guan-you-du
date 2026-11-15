@@ -21,6 +21,8 @@ public partial class BattleManager : Node2D
     public GodotObject? active_unit;
     public bool battle_running, auto_battle;
     private bool _spectatorBattle;
+    /// <summary>独立试器禁止调用世界战后回传，胜负和撤退只结束本地对练。</summary>
+    [Export] public bool isolated_trial_battle;
     public TurnState turn_state = TurnState.IDLE;
     private readonly Dictionary _decks = [];
     private readonly Dictionary _firstHands = [], _hands = [];
@@ -41,16 +43,19 @@ public partial class BattleManager : Node2D
     private sealed class QueuedPlayerCard { public ActiveSkillData Skill = null!; public GodotObject? Target; }
     private readonly Queue<QueuedPlayerCard> _queuedPlayerCards = new();
     private readonly System.Collections.Generic.Dictionary<GodotObject, List<FormationCircuitRuntime>> _formationCircuits = [];
-    private const float SimulationFps = 60f;
-    private const float EnergyBaseInterval = 360f, ManaBaseInterval = 480f;
+    private const float SimulationFps = StatusEffect.CombatFramesPerSecond;
+    private const float EnergyBaseInterval = 360f;
     private const int HandLimit = 10, OpeningHand = 5, QueueCapacity = 3, IntentRevealFrames = 96, CombatSlotCapacity = 10;
-    private readonly System.Collections.Generic.Dictionary<GodotObject, float> _energyRegen = [], _manaRegen = [];
+    private readonly System.Collections.Generic.Dictionary<GodotObject, float> _energyRegen = [];
+    private readonly HashSet<GodotObject> _manaInitializedForBattle = [];
     private readonly System.Collections.Generic.Dictionary<GodotObject, float> _drawElapsedFrames = [];
     private readonly System.Collections.Generic.Dictionary<GodotObject, Array<ActiveSkillData>> _combatSkills = [];
     private readonly System.Collections.Generic.Dictionary<GodotObject, System.Collections.Generic.Dictionary<ActiveSkillData, float>> _skillCooldowns = [];
     private readonly System.Collections.Generic.Dictionary<GodotObject, System.Collections.Generic.Dictionary<ActiveSkillData, int>> _skillCharges = [];
     private readonly System.Collections.Generic.Dictionary<GodotObject, System.Collections.Generic.Dictionary<ActiveSkillData, int>> _skillRoundCharges = [];
     private readonly System.Collections.Generic.Dictionary<GodotObject, ActiveSkillData?> _pendingTargetSkills = [];
+    private readonly System.Collections.Generic.Dictionary<GodotObject, int> _pendingZhouTianAutoCasts = [];
+    private readonly HashSet<GodotObject> _runningZhouTianAutoCasts = [];
     private sealed class BattleResourceSnapshot
     {
         public int CurrentStamina, MaxStamina, CurrentMana, MaxMana;
@@ -76,16 +81,44 @@ public partial class BattleManager : Node2D
     private int _segmentNumber;
     private readonly List<GodotObject> _livingUnits = new();
     public float get_battle_speed_scale()=>battleSpeed;
+    public float cycle_battle_speed()
+    {
+        set_battle_speed(battleSpeed switch { 1f => 2f, 2f => 4f, 4f => 8f, _ => 1f });
+        return battleSpeed;
+    }
     public void set_spectator_battle(bool spectator) => _spectatorBattle = spectator;
     public bool is_spectator_battle() => _spectatorBattle;
     public bool is_realtime_battle()=>_realtimeMode;
     public bool is_battle_paused()=>_battlePaused;
     public SegmentPhase get_segment_phase()=>_segmentPhase;
     public bool is_planning_phase()=>_segmentPhase==SegmentPhase.Planning;
-    public bool can_player_plan()=>_segmentPhase==SegmentPhase.Planning&&!_selectingQueueTargets&&!_playerQueueConfirmed&&GodotObject.IsInstanceValid(_mainPlayerUnit);
+    public bool can_player_plan()=>_segmentPhase==SegmentPhase.Planning&&!auto_battle&&!_selectingQueueTargets&&!_playerQueueConfirmed&&GodotObject.IsInstanceValid(_mainPlayerUnit);
     public int get_action_slot_capacity()=>Mathf.Clamp(action_slots_per_segment,5,10);
     public bool is_waiting_for_skill_target()=>_pendingInstantSkill is not null;
-    public void set_battle_speed(float value)=>battleSpeed=value>=3?3:value>=2?2:1;
+    public void toggle_auto_battle()
+    {
+        if (!battle_running || !_realtimeMode || _spectatorBattle) return;
+        auto_battle = !auto_battle;
+        if (auto_battle && _segmentPhase == SegmentPhase.Planning)
+        {
+            // 尚未锁定的队列将在恢复运行后交给 AI；在暂停时仍可取消自动并继续编辑。
+            _selectingQueueTargets = false;
+            _targetQueueIndex = -1;
+            _targetSelectionHistory.Clear();
+            _pendingInstantSkill = null;
+            unitOverlay?.ClearTargetFrames();
+            _skillBar?.clear_targeting();
+            _skillBar?.set_actions_visible(true);
+        }
+        unitOverlay?.refresh_auto_button();
+        _skillBar?.refresh_slots();
+        _planHud?.RefreshAll();
+    }
+    public void set_battle_speed(float value)
+    {
+        battleSpeed=value>=8?8:value>=4?4:value>=2?2:1;
+        unitOverlay?.refresh_speed_button();
+    }
     public void toggle_battle_pause()
     {
         if(!_realtimeMode||!battle_running)return;

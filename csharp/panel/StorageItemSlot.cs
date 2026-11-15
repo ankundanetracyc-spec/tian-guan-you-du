@@ -8,9 +8,11 @@ public partial class StorageItemSlot : Control
     [Signal] public delegate void clickedEventHandler(StorageItemSlot slot);
     [Signal] public delegate void slot_movedEventHandler(int fromIndex, int toIndex);
 
-    private const double InfoHoverDelay = 0.45;
+    private const double InfoHoverDelay = 0.10;
     private TextureRect? icon_rect;
     private Label? name_label;
+    private Panel? stack_count_badge;
+    private Label? stack_count_label;
     private Godot.Timer? hover_timer;
     private bool is_trade_slot;
     private bool is_pointer_inside;
@@ -25,6 +27,26 @@ public partial class StorageItemSlot : Control
     public bool is_empty;
     public ArtifactInstanceData? artifact_data;
     public bool inventory_reorder_enabled;
+    public bool spatial_drag_enabled;
+
+    public void configure_spatial_layout(Vector2 footprint, Vector2 original, int rotation)
+    {
+        spatial_drag_enabled = true;
+        CustomMinimumSize = Vector2.Zero; Size = footprint;
+        if (GetNodeOrNull<Panel>("Frame") is { } frame)
+        { frame.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect); frame.AddThemeStyleboxOverride("panel", new StyleBoxEmpty()); frame.MouseFilter = MouseFilterEnum.Ignore; }
+        name_label?.Hide();
+        if (icon_rect is not null)
+        {
+            icon_rect.SetAnchorsPreset(LayoutPreset.TopLeft);
+            icon_rect.Size = original; icon_rect.Position = (footprint - original) * .5f;
+            icon_rect.PivotOffset = original * .5f; icon_rect.RotationDegrees = rotation * 90;
+            icon_rect.MouseFilter = MouseFilterEnum.Ignore;
+            icon_rect.StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered;
+        }
+        update_spatial_stack_badge();
+        Modulate = Colors.White;
+    }
 
     public override void _Ready()
     {
@@ -44,7 +66,7 @@ public partial class StorageItemSlot : Control
         GuiInput += on_gui_input;
     }
 
-    /// <summary>只用于行囊；交易面板继续使用原有128像素方格布局。</summary>
+    /// <summary>行囊与交易共用的纸纹物品格；具体尺寸由所在面板安排。</summary>
     public void configure_inventory_layout(float width, float height)
     {
         inventory_layout = true;
@@ -76,6 +98,37 @@ public partial class StorageItemSlot : Control
         update_slot_tint();
     }
 
+    private void update_spatial_stack_badge()
+    {
+        if (!spatial_drag_enabled || item_count <= 1)
+        {
+            stack_count_badge?.Hide();
+            return;
+        }
+        if (stack_count_badge is null)
+        {
+            stack_count_badge = new Panel { Name = "SpatialStackCount", MouseFilter = Control.MouseFilterEnum.Ignore, ZIndex = 8 };
+            stack_count_badge.SetAnchorsPreset(LayoutPreset.TopRight);
+            stack_count_badge.OffsetLeft = -68; stack_count_badge.OffsetRight = -7;
+            stack_count_badge.OffsetTop = 7; stack_count_badge.OffsetBottom = 34;
+            stack_count_badge.AddThemeStyleboxOverride("panel", new StyleBoxFlat
+            {
+                BgColor = new Color("587650"), CornerRadiusTopLeft = 8, CornerRadiusTopRight = 8,
+                CornerRadiusBottomLeft = 8, CornerRadiusBottomRight = 8
+            });
+            AddChild(stack_count_badge);
+            stack_count_label = new Label { HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center, MouseFilter = Control.MouseFilterEnum.Ignore };
+            stack_count_label.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+            stack_count_label.AddThemeFontOverride("font", GD.Load<FontFile>("res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf"));
+            stack_count_label.AddThemeFontSizeOverride("font_size", 15);
+            stack_count_label.AddThemeColorOverride("font_color", new Color("f5f0df"));
+            stack_count_badge.AddChild(stack_count_label);
+        }
+        stack_count_label!.Text = "×" + item_count.ToString("N0");
+        stack_count_badge.Show();
+    }
+
     public void set_item(int new_slot_index, string new_item_path, Resource item_data, int count)
     {
         slot_index = new_slot_index;
@@ -89,11 +142,16 @@ public partial class StorageItemSlot : Control
         if (name_label is not null)
         {
             var item_name = item_data.Get("entity_name").AsString();
-            name_label.Text = is_trade_slot
-                ? $"{item_name} x{count}"
+            name_label.Text = item_data is PillItemData
+                ? $"{item_name} × {count}"
+                : is_trade_slot ? $"{item_name} x{count}"
                 : count > 1 ? $"{item_name} * {count}" : item_name;
         }
-        if (icon_rect is not null) icon_rect.Texture = load_icon(item_data);
+        if (icon_rect is not null)
+        {
+            icon_rect.Texture = load_icon(item_data);
+            icon_rect.Material = null;
+        }
         update_slot_tint();
     }
 
@@ -106,11 +164,13 @@ public partial class StorageItemSlot : Control
         is_artifact = true;
         is_empty = false;
         artifact_data = artifact;
+        stack_count_badge?.Hide();
         MouseFilter = MouseFilterEnum.Stop;
         if (name_label is not null) name_label.Text = string.IsNullOrWhiteSpace(artifact.artifact_name) ? artifact.form?.form_name ?? "未命名法宝" : artifact.artifact_name;
         if (icon_rect is not null)
         {
-            var path = artifact.form?.icon_path ?? "";
+            icon_rect.Material = null;
+            var path = ForgedArtifactInventory.IconPath(artifact);
             icon_rect.Texture = string.IsNullOrWhiteSpace(path) || !ResourceLoader.Exists(path) ? null : ResourceLoader.Load<Texture2D>(path);
         }
         update_slot_tint();
@@ -125,8 +185,9 @@ public partial class StorageItemSlot : Control
         is_artifact = false;
         is_empty = true;
         artifact_data = null;
-        if (icon_rect is not null) icon_rect.Texture = null;
+        if (icon_rect is not null) { icon_rect.Texture = null; icon_rect.Material = null; }
         if (name_label is not null) name_label.Text = "";
+        stack_count_badge?.Hide();
         is_pointer_inside = false;
         update_slot_tint();
         MouseFilter = MouseFilterEnum.Stop;
@@ -161,6 +222,7 @@ public partial class StorageItemSlot : Control
 
     private void update_slot_tint()
     {
+        if (spatial_drag_enabled) { Modulate = Colors.White; return; }
         if (inventory_layout && inventory_frame is not null)
         {
             Modulate = Colors.White;
@@ -176,6 +238,7 @@ public partial class StorageItemSlot : Control
 
     private void on_gui_input(InputEvent @event)
     {
+        if (spatial_drag_enabled) return;
         if (@event is not InputEventMouseButton { ButtonIndex: MouseButton.Left, Pressed: true }) return;
         hover_timer?.Stop();
         EmitSignal(SignalName.clicked, this);

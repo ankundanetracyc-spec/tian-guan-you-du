@@ -1,0 +1,24 @@
+<mxfile host="app.diagrams.net" agent="Codex" version="24.7.17">
+  <diagram id="red-mane-lunge" name="裂风扑击">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageWidth="1200" pageHeight="600">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="main-card" value="裂风扑击&#10;关键词：无&#10;费用：1体力，0法力&#10;目标：指定1名合法敌方&#10;出手方式：近身&#10;伤害类型：物理&#10;对指定1名敌方造成A点物理伤害。（A = round(9 + 体魄×1.5)）" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=22;align=left;verticalAlign=top;spacing=24;" vertex="1" parent="1">
+          <mxGeometry x="220" y="100" width="760" height="400" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="red-mane-notes" name="策划说明">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageWidth="1200" pageHeight="600">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="implementation-note" value="策划说明&#10;所属物种：赤鬃狼&#10;资源：res://resources/activeskills/妖兽/赤鬃狼/裂风扑击.tres&#10;固定盘：与撕咬、游身架招共同配置，裂风扑击摆一份，占2×1。&#10;本次采用体力1、单体物理直伤；不附加破绽、流血、位移或其他效果。公式是试玩首轮候选。&#10;兼容节奏字段沿用普通兽技配置；固定盘无额外回合冷却与使用次数限制。" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=19;align=left;verticalAlign=top;spacing=24;" vertex="1" parent="1">
+          <mxGeometry x="160" y="80" width="880" height="440" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

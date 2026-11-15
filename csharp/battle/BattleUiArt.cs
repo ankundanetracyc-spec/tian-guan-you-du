@@ -8,6 +8,12 @@ internal static class BattleUiArt
     internal static readonly Color Text = new("f4f0df"), Accent = new("c4b58c"), Warning = new("b56854");
     private static readonly Dictionary<string, Texture2D> Textures = [];
 
+    internal static void ReleaseGeneratedStyles()
+    {
+        foreach (var key in Textures.Keys.Where(key => key.Contains(':') && !key.StartsWith("res://", StringComparison.Ordinal)).ToArray())
+        { Textures[key].Dispose(); Textures.Remove(key); }
+    }
+
     internal static StyleBoxTexture PaperBarStyle()
     {
         var atlas = new AtlasTexture
@@ -27,7 +33,11 @@ internal static class BattleUiArt
         if (Textures.TryGetValue(path, out var cached)) return cached;
         Texture2D? texture = ResourceLoader.Exists(path) ? GD.Load<Texture2D>(path) : null;
         // 新素材尚未被编辑器导入时，测试入口仍可从 PNG 直接加载。
-        texture ??= ImageTexture.CreateFromImage(Image.LoadFromFile(ProjectSettings.GlobalizePath(path)));
+        if (texture is null)
+        {
+            using var image = Image.LoadFromFile(ProjectSettings.GlobalizePath(path));
+            texture = ImageTexture.CreateFromImage(image);
+        }
         Textures[path] = texture;
         return texture;
     }
@@ -37,7 +47,7 @@ internal static class BattleUiArt
         var key = $"{name}:{size}";
         if (!Textures.TryGetValue(key, out var texture))
         {
-            var image = Texture(name).GetImage();
+            using var image = Texture(name).GetImage();
             image.Resize((int)size.X, (int)size.Y, Image.Interpolation.Lanczos);
             texture = ImageTexture.CreateFromImage(image);
             Textures[key] = texture;

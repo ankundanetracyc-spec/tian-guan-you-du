@@ -8,7 +8,7 @@ using System.Text.Json;
 /// <summary>修行百科：展示战斗状态、物品与生灵资料，可在未载入存档时查阅。</summary>
 public partial class EncyclopediaPanel : Control
 {
-    private enum Section { Statuses, Items, Beasts }
+    private enum Section { Statuses, Items, Beasts, Terms }
     private sealed record Entry(string Title, string Meta, string Body, string SearchText, Texture2D? Icon = null, bool IsNegative = false, string? PreviewSpinePath = null, BeastTemplate? Beast = null, ItemData? Item = null, StatusDetail? Status = null, CreatureRecord? Creature = null, string? PortraitPath = null);
     private sealed record StatRange(string Name, string Minimum, string Mean, string Maximum);
     private sealed record StatusDetail(string Category, string? StackLimit, string? Source, string Effect);
@@ -26,6 +26,7 @@ public partial class EncyclopediaPanel : Control
         public string BasicAttack { get; set; } = "";
         public string Talent { get; set; } = "";
         public string Technique { get; set; } = "";
+        public string DesignStatus { get; set; } = "";
         public string Portrait { get; set; } = "";
         public CreatureStats? Stats { get; set; }
         public float? PhysicalDefense { get; set; }
@@ -35,7 +36,6 @@ public partial class EncyclopediaPanel : Control
         public CreatureStats() { }
         public CreatureStat? Physique { get; set; }
         public CreatureStat? Intelligence { get; set; }
-        public CreatureStat? Agility { get; set; }
         public CreatureStat? Soul { get; set; }
     }
     private sealed class CreatureStat
@@ -77,6 +77,9 @@ public partial class EncyclopediaPanel : Control
     private Section _current = Section.Statuses;
     private bool _closing;
     private bool _suppressSearchChanged;
+    private Entry? _selectedEntry;
+    private readonly Dictionary<Section, Entry> _selectedEntries = [];
+    private Tween? _presentationTween;
 
     private static readonly Color Ink = new("2a251f");
     private static readonly Color MutedInk = new("665d4c");
@@ -88,6 +91,7 @@ public partial class EncyclopediaPanel : Control
         Visible = false;
         ZIndex = 250;
         Build();
+        VisibilityChanged += () => { if (!IsVisibleInTree()) CancelCatalogRequest(); };
     }
 
     public override void _UnhandledInput(InputEvent @event)
@@ -107,31 +111,56 @@ public partial class EncyclopediaPanel : Control
         ShowSection(Section.Beasts);
     }
 
-    private void ShowSection(Section section)
+    private async void ShowSection(Section section, bool resetSearch = true, bool animate = true)
     {
+        if (!resetSearch && _current == section && IsCatalogLoading && Visible && !_closing) return;
+        var request = ++_catalogRequest;
+        _presentationTween?.Kill();
         _current = section;
         _closing = false;
-        if (_search is not null && !string.IsNullOrEmpty(_search.Text))
+        if (resetSearch && _search is not null && !string.IsNullOrEmpty(_search.Text))
         {
             _suppressSearchChanged = true;
             _search.Clear();
             _suppressSearchChanged = false;
         }
-        EnsureCatalogLoaded(section);
         Visible = true;
         MoveToFront();
-        Populate();
-        if (_background is null || _pageContent is null) return;
-        _background.Modulate = new Color(1, 1, 1, 0);
-        _pageContent.Modulate = new Color(1, 1, 1, 0);
-        CallDeferred(nameof(play_open_animation));
+        if (animate && _background is not null && _pageContent is not null)
+        {
+            _background.Modulate = new Color(1, 1, 1, 0);
+            _pageContent.Modulate = new Color(1, 1, 1, 0);
+            CallDeferred(nameof(play_open_animation));
+        }
+        else
+        {
+            if (_background is not null) _background.Modulate = Colors.White;
+            if (_pageContent is not null) _pageContent.Modulate = Colors.White;
+        }
+        try
+        {
+            await EnsureCatalogLoadedAsync(section, request);
+            if (!IsCatalogRequestCurrent(request)) return;
+            Populate();
+            if (_selectedEntry is not null) SetBeastPreview(_selectedEntry, _detailIcon?.Texture);
+        }
+        catch (Exception exception)
+        {
+            if (!IsCatalogRequestCurrent(request)) return;
+            GD.PushError($"百科目录载入失败：{exception}");
+            if (_detailTitle is not null) _detailTitle.Text = "目录暂时未能载入";
+            if (_detailMeta is not null) _detailMeta.Text = "可切换分类后重试。";
+        }
+        finally { if (request == _catalogRequest) IsCatalogLoading = false; }
     }
 
     public void hide_panel()
     {
         if (!Visible || _closing || _background is null || _pageContent is null) return;
+        CancelCatalogRequest();
         _closing = true;
-        var tween = CreateTween().SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.In);
+        _presentationTween?.Kill();
+        var tween = _presentationTween = CreateTween().SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.In);
         tween.SetParallel();
         tween.TweenProperty(_background, "modulate:a", 0f, .16f);
         tween.TweenProperty(_pageContent, "modulate:a", 0f, .12f);
@@ -169,7 +198,7 @@ public partial class EncyclopediaPanel : Control
 
         var categoryArea = new CenterContainer { Name = "Categories" };
         categoryArea.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        categoryArea.AnchorLeft = .31f; categoryArea.AnchorTop = .03f; categoryArea.AnchorRight = .69f; categoryArea.AnchorBottom = .10f;
+        categoryArea.AnchorLeft = .25f; categoryArea.AnchorTop = .03f; categoryArea.AnchorRight = .75f; categoryArea.AnchorBottom = .10f;
         page.AddChild(categoryArea);
         var categoryRow = new HBoxContainer { SizeFlagsHorizontal = SizeFlags.ShrinkCenter };
         categoryRow.AddThemeConstantOverride("separation", 8);
@@ -177,6 +206,7 @@ public partial class EncyclopediaPanel : Control
         AddTab(categoryRow, "状态", Section.Statuses);
         AddTab(categoryRow, "物品", Section.Items);
         AddTab(categoryRow, "生灵", Section.Beasts);
+        AddTab(categoryRow, "术语介绍", Section.Terms);
 
         var topRight = new HBoxContainer();
         topRight.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
@@ -313,14 +343,9 @@ public partial class EncyclopediaPanel : Control
 
     private void AddTab(Container parent, string text, Section section)
     {
-        var button = new Button { Name = $"Tab{section}", Text = text, CustomMinimumSize = new Vector2(200, 56), FocusMode = FocusModeEnum.None };
+        var button = new Button { Name = $"Tab{section}", Text = text, CustomMinimumSize = new Vector2(180, 56), FocusMode = FocusModeEnum.None };
         StyleCategoryTab(button, false);
-        button.Pressed += () =>
-        {
-            _current = section;
-            EnsureCatalogLoaded(section);
-            Populate();
-        };
+        button.Pressed += () => ShowSection(section, resetSearch: false, animate: false);
         _tabs[section] = button;
         parent.AddChild(button);
     }
@@ -408,8 +433,6 @@ public partial class EncyclopediaPanel : Control
     private void Populate()
     {
         if (_entryList is null || _detailTitle is null || _detailMeta is null || _detailBody is null) return;
-        foreach (var child in _entryList.GetChildren()) { _entryList.RemoveChild(child); child.QueueFree(); }
-        _entryButtons.Clear();
         foreach (var pair in _tabs) StyleCategoryTab(pair.Value, pair.Key == _current);
         var title = SectionTitle(_current);
         var allEntries = _entries.GetValueOrDefault(_current, []);
@@ -417,9 +440,13 @@ public partial class EncyclopediaPanel : Control
         var visibleEntries = string.IsNullOrEmpty(query)
             ? allEntries
             : allEntries.Where(entry => entry.SearchText.Contains(query, StringComparison.OrdinalIgnoreCase)).ToList();
+        var matchingEntries = visibleEntries.ToHashSet();
+        foreach (var (entry, button) in _entryButtons) button.Visible = matchingEntries.Contains(entry);
         if (_entryCount is not null) _entryCount.Text = $"收录 {visibleEntries.Count} 条";
         if (visibleEntries.Count == 0)
         {
+            if (_selectedEntry is { } previous && _entryButtons.TryGetValue(previous, out var previousButton)) StyleEntry(previousButton);
+            _selectedEntry = null;
             SetBeastPreview(null);
             if (_beastDetail is not null) _beastDetail.Visible = false;
             if (_detailScroll is not null) _detailScroll.Visible = true;
@@ -436,55 +463,67 @@ public partial class EncyclopediaPanel : Control
         }
         foreach (var entry in visibleEntries)
         {
-            var button = new Button
-            {
-                Text = "",
-                CustomMinimumSize = new Vector2(0, 96),
-                TooltipText = ""
-            };
-            StyleEntry(button);
-            var padding = new MarginContainer { MouseFilter = MouseFilterEnum.Ignore };
-            padding.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-            padding.AddThemeConstantOverride("margin_left", 11); padding.AddThemeConstantOverride("margin_right", 9);
-            padding.AddThemeConstantOverride("margin_top", 8); padding.AddThemeConstantOverride("margin_bottom", 8);
-            button.AddChild(padding);
-            padding.MinimumSizeChanged += () => button.CustomMinimumSize = new Vector2(0, Mathf.Max(96, padding.GetCombinedMinimumSize().Y));
-            var row = new HBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
-            row.AddThemeConstantOverride("separation", 14);
-            padding.AddChild(row);
-            var icon = new TextureRect
-            {
-                Texture = entry.Icon ?? LoadTexture("res://textures/ui/encyclopedia/item_placeholder_v1.svg"),
-                CustomMinimumSize = new Vector2(56, 56),
-                ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
-                StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
-                MouseFilter = MouseFilterEnum.Ignore
-            };
-            row.AddChild(icon);
-            var labels = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ShrinkCenter, MouseFilter = MouseFilterEnum.Ignore };
-            labels.AddThemeConstantOverride("separation", 3);
-            row.AddChild(labels);
-            var titleLabel = MakeLabel(entry.Title, 19, Ink);
-            titleLabel.MouseFilter = MouseFilterEnum.Ignore;
-            labels.AddChild(titleLabel);
-            var metaLabel = MakeLabel(entry.Meta, 15, MutedInk);
-            metaLabel.MouseFilter = MouseFilterEnum.Ignore;
-            labels.AddChild(metaLabel);
-            button.Pressed += () => ShowEntry(entry);
-            _entryButtons[entry] = button;
-            _entryList.AddChild(button);
+            if (_entryButtons.ContainsKey(entry)) continue;
+            CreateEntryButton(entry);
         }
-        ShowEntry(visibleEntries[0]);
+        ShowEntry(_selectedEntries.TryGetValue(_current, out var selection) && matchingEntries.Contains(selection) ? selection : visibleEntries[0]);
+    }
+
+    private void CreateEntryButton(Entry entry)
+    {
+        if (_entryList is null) return;
+        var button = new Button
+        {
+            Text = "",
+            CustomMinimumSize = new Vector2(0, 96),
+            TooltipText = ""
+        };
+        StyleEntry(button);
+        var padding = new MarginContainer { MouseFilter = MouseFilterEnum.Ignore };
+        padding.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        padding.AddThemeConstantOverride("margin_left", 11); padding.AddThemeConstantOverride("margin_right", 9);
+        padding.AddThemeConstantOverride("margin_top", 8); padding.AddThemeConstantOverride("margin_bottom", 8);
+        button.AddChild(padding);
+        padding.MinimumSizeChanged += () => button.CustomMinimumSize = new Vector2(0, Mathf.Max(96, padding.GetCombinedMinimumSize().Y));
+        var row = new HBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
+        row.AddThemeConstantOverride("separation", 14);
+        padding.AddChild(row);
+        var icon = new TextureRect
+        {
+            Texture = entry.Icon ?? LoadTexture("res://textures/ui/encyclopedia/item_placeholder_v1.svg"),
+            CustomMinimumSize = new Vector2(56, 56),
+            ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
+            StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
+            MouseFilter = MouseFilterEnum.Ignore
+        };
+        icon.Visible=entry.Meta!="战斗机制 · 术语";
+        row.AddChild(icon);
+        var labels = new VBoxContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ShrinkCenter, MouseFilter = MouseFilterEnum.Ignore };
+        labels.AddThemeConstantOverride("separation", 3);
+        row.AddChild(labels);
+        var titleLabel = MakeLabel(entry.Title, 19, Ink);
+        titleLabel.MouseFilter = MouseFilterEnum.Ignore;
+        labels.AddChild(titleLabel);
+        var metaLabel = MakeLabel(entry.Meta, 15, MutedInk);
+        metaLabel.MouseFilter = MouseFilterEnum.Ignore;
+        labels.AddChild(metaLabel);
+        button.Pressed += () => ShowEntry(entry);
+        _entryButtons[entry] = button;
+        _entryList.AddChild(button);
     }
 
     private void OnSearchChanged(string _)
     {
-        if (!_suppressSearchChanged) Populate();
+        if (!_suppressSearchChanged && !IsCatalogLoading) Populate();
     }
 
     private void ShowEntry(Entry entry)
     {
         if (_detailTitle is null || _detailMeta is null || _detailBody is null || _detailIcon is null || _detailIconPlate is null) return;
+        if (ReferenceEquals(_selectedEntry, entry)) return;
+        if (_selectedEntry is { } previous && _entryButtons.TryGetValue(previous, out var previousButton)) StyleEntry(previousButton);
+        _selectedEntry = entry;
+        _selectedEntries[_current] = entry;
         _detailTitle.Text = entry.Title;
         _detailMeta.Text = entry.Meta;
         var portrait = entry.PortraitPath is { } portraitPath ? LoadTexture(portraitPath) ?? entry.Icon : entry.Icon;
@@ -493,7 +532,7 @@ public partial class EncyclopediaPanel : Control
         var isItem = entry.Item is not null;
         var isStatus = entry.Status is not null;
         _detailBody.Visible = !isItem && !isStatus;
-        _detailBody.Text = isItem || isStatus ? "" : entry.Body;
+        PlayerInfoText.Bind(_detailBody, isItem || isStatus ? "" : entry.Body);
         if (_itemDetailContent is not null)
         {
             _itemDetailContent.Visible = isItem;
@@ -504,12 +543,12 @@ public partial class EncyclopediaPanel : Control
             _statusDetailContent.Visible = isStatus;
             if (entry.Status is { } status) BuildStatusDetails(status);
         }
-        _detailIconPlate.Visible = !isBeast;
+        _detailIconPlate.Visible = !isBeast && _current != Section.Terms;
         if (_detailScroll is not null) { _detailScroll.Visible = !isBeast; _detailScroll.ScrollVertical = 0; }
         if (_beastDetail is not null) _beastDetail.Visible = isBeast;
         if (entry.Beast is { } template) BuildBeastDossier(template);
         else if (entry.Creature is { } creature) BuildCreatureDossier(creature);
-        foreach (var (catalogEntry, button) in _entryButtons) StyleEntry(button, catalogEntry == entry);
+        if (_entryButtons.TryGetValue(entry, out var selectedButton)) StyleEntry(selectedButton, true);
         StyleIconPlate(_detailIconPlate, entry.IsNegative);
         SetBeastPreview(entry, portrait);
     }
@@ -563,7 +602,7 @@ public partial class EncyclopediaPanel : Control
         affixes.AddChild(affixGrid);
         foreach (var dimension in dimensions)
         {
-            var values = ItemAffixCatalog.get_tag_values(item.tags, dimension).ToList();
+            var values = StoragePanel.get_display_tag_values(item.tags, dimension, material);
             AddItemPropertyCard(affixGrid, dimension, values.Count == 0 ? "未标注" : string.Join("、", values));
         }
 
@@ -575,7 +614,9 @@ public partial class EncyclopediaPanel : Control
         usageGrid.AddThemeConstantOverride("h_separation", 12);
         usageGrid.AddThemeConstantOverride("v_separation", 12);
         usage.AddChild(usageGrid);
-        AddItemPropertyCard(usageGrid, "堆叠", item.can_stack ? $"可堆叠 · 最多 {item.max_stack} 件" : "不可堆叠");
+        AddItemPropertyCard(usageGrid, "堆叠与体积", item.can_stack
+            ? $"可堆叠，上限{item.max_stack} · 每件占{item.get_storage_volume()}容量"
+            : $"不可堆叠 · 每件占{item.get_storage_volume()}容量");
         AddItemPropertyCard(usageGrid, "使用范围", item.usage_type switch
         {
             1 => "仅限战斗",
@@ -586,7 +627,7 @@ public partial class EncyclopediaPanel : Control
         if (!string.IsNullOrWhiteSpace(item.battle_skill_path) && ResourceLoader.Load<ActiveSkillData>(item.battle_skill_path) is { } battleSkill)
         {
             var effect = AddItemSection(_itemDetailContent, "战斗效果");
-            effect.AddChild(MakeLabel(string.IsNullOrWhiteSpace(battleSkill.description) ? "暂无详细说明。" : battleSkill.description, 19, MutedInk));
+            effect.AddChild(MakeLabel(string.IsNullOrWhiteSpace(battleSkill.description) ? "暂无详细说明。" : CardPresentation.Underline(CardPresentation.Face(battleSkill, null)), 19, MutedInk));
         }
     }
 
@@ -611,7 +652,7 @@ public partial class EncyclopediaPanel : Control
         foreach (var (name, value) in facts) AddItemPropertyCard(grid, name, value);
 
         var effect = AddItemSection(_statusDetailContent, "效果说明");
-        var description = MakeLabel(status.Effect, 19, MutedInk);
+        var description = MakeLabel(CardPresentation.Underline(status.Effect), 19, MutedInk);
         description.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         effect.AddChild(description);
     }
@@ -732,32 +773,20 @@ public partial class EncyclopediaPanel : Control
         parent.AddChild(panel);
     }
 
-    private void EnsureCatalogLoaded(Section section)
+    private static IEnumerable<int> LoadBeastEntriesSteps(List<Entry> result)
     {
-        if (_entries.ContainsKey(section)) return;
-        _entries[section] = section switch
-        {
-            Section.Statuses => LoadStatusEntries(),
-            Section.Items => LoadItemEntries(),
-            Section.Beasts => LoadBeastEntries(),
-            _ => []
-        };
-    }
-
-    private static List<Entry> LoadBeastEntries()
-    {
-        var result = new List<Entry>();
         foreach (var path in FindResources("res://resources/beast_templates"))
         {
+            yield return 0;
             var template = ResourceLoader.Load<BeastTemplate>(path);
-            if (template is null || template.species_id != "forest_wolf" || string.IsNullOrWhiteSpace(template.display_name)) continue;
-            var portraitPath = BattlePaperDoll.ForestWolfPortraitPath;
+            if (template is null || template.species_id is not ("forest_wolf" or "forest_bei") || string.IsNullOrWhiteSpace(template.display_name)) continue;
+            var portraitPath = template.species_id == "forest_bei" ? BattlePaperDoll.ForestBeiPortraitPath : BattlePaperDoll.ForestWolfPortraitPath;
             var portrait = LoadPortraitThumbnail(portraitPath);
             if (portrait is null) continue;
 
             var body = new StringBuilder();
             AppendSection(body, "境界", $"{template.cultivation_realm}{template.cultivation_stage} · 对标云息境界");
-            AppendSection(body, "常见四维", $"体魄 {FormatAttributeRange(template.physique_min, template.physique_mean, template.physique_max)}\n灵慧 {FormatAttributeRange(template.intelligence_min, template.intelligence_mean, template.intelligence_max)}\n敏捷 {FormatAttributeRange(template.agility_min, template.agility_mean, template.agility_max)}\n神魂 {FormatAttributeRange(template.soul_min, template.soul_mean, template.soul_max)}");
+            AppendSection(body, "常见三项战斗属性", $"体魄 {FormatAttributeRange(template.physique_min, template.physique_mean, template.physique_max)}\n灵慧 {FormatAttributeRange(template.intelligence_min, template.intelligence_mean, template.intelligence_max)}\n神魂 {FormatAttributeRange(template.soul_min, template.soul_mean, template.soul_max)}");
             AppendSection(body, "派生战斗属性", BuildDerivedBeastStats(template));
             AppendSection(body, "种族天赋", template.racial_talent is null
                 ? "尚未配置。"
@@ -770,7 +799,7 @@ public partial class EncyclopediaPanel : Control
                 : "尚未配置；不以行动速度代替。");
             AppendSection(body, "掉落", FormatBeastLoot(template));
 
-            var search = $"{template.display_name} 妖 通智 云息 林地 狼 群猎 属性 体魄 灵慧 敏捷 神魂 {body}";
+            var search = $"{template.display_name} 妖 通智 云息 林地 狼 群猎 属性 体魄 灵慧 神魂 身心协调值 {body}";
             result.Add(new Entry(
                 template.display_name,
                 $"妖 · {template.cultivation_realm}{template.cultivation_stage} · 林地",
@@ -781,38 +810,40 @@ public partial class EncyclopediaPanel : Control
                 PortraitPath: portraitPath));
         }
 
-        const string catalogPath = "res://resources/bestiary/creatures.json";
-        if (Godot.FileAccess.FileExists(catalogPath))
+        foreach (var creature in ReadCreatureRecords())
         {
-            try
-            {
-                var json = Godot.FileAccess.GetFileAsString(catalogPath);
-                var creatures = JsonSerializer.Deserialize<List<CreatureRecord>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? [];
-                foreach (var creature in creatures)
-                {
-                    if (string.IsNullOrWhiteSpace(creature.Name) || string.IsNullOrWhiteSpace(creature.Portrait)) continue;
-                    var portrait = LoadPortraitThumbnail(creature.Portrait);
-                    if (portrait is null) continue;
-                    var body = CreatureBody(creature);
-                    var realm = string.IsNullOrWhiteSpace(creature.Stage) ? creature.Realm : $"{creature.Realm}{creature.Stage}";
-                    var meta = creature.Realm == "凡兽"
-                        ? "凡兽 · 普通动物"
-                        : string.IsNullOrWhiteSpace(creature.HumanParity)
-                            ? $"{creature.Category} · {realm}"
-                            : $"{creature.Category} · {realm} · 对标{creature.HumanParity}";
-                    result.Add(new Entry(creature.Name, meta, body,
-                        $"{creature.Name} {creature.Category} {creature.Realm} {creature.Stage} {creature.HumanParity} {creature.Habitat} {creature.Habit} {body}",
-                        portrait, Creature: creature, PortraitPath: creature.Portrait));
-                }
-            }
-            catch (Exception exception)
-            {
-                GD.PushError($"百科生灵目录读取失败：{exception.Message}");
-            }
+            yield return 0;
+            if (string.IsNullOrWhiteSpace(creature.Name) || string.IsNullOrWhiteSpace(creature.Portrait)) continue;
+            var portrait = LoadPortraitThumbnail(creature.Portrait);
+            if (portrait is null) continue;
+            var body = CreatureBody(creature);
+            var realm = string.IsNullOrWhiteSpace(creature.Stage) ? creature.Realm : $"{creature.Realm}{creature.Stage}";
+            var meta = creature.Realm == "凡兽"
+                ? "凡兽 · 普通动物"
+                : string.IsNullOrWhiteSpace(creature.HumanParity)
+                    ? $"{creature.Category} · {realm}"
+                    : $"{creature.Category} · {realm} · 对标{creature.HumanParity}";
+            result.Add(new Entry(creature.Name, meta, body,
+                $"{creature.Name} {creature.Category} {creature.Realm} {creature.Stage} {creature.HumanParity} {creature.Habitat} {creature.Habit} {body}",
+                portrait, Creature: creature, PortraitPath: creature.Portrait));
         }
-        return result.OrderBy(entry => entry.Title, StringComparer.Ordinal).ToList();
     }
 
+    private static List<CreatureRecord> ReadCreatureRecords()
+    {
+        const string catalogPath = "res://resources/bestiary/creatures.json";
+        if (!Godot.FileAccess.FileExists(catalogPath)) return [];
+        try
+        {
+            return JsonSerializer.Deserialize<List<CreatureRecord>>(Godot.FileAccess.GetFileAsString(catalogPath),
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? [];
+        }
+        catch (Exception exception)
+        {
+            GD.PushError($"百科生灵目录读取失败：{exception.Message}");
+            return [];
+        }
+    }
     private static string CreatureBody(CreatureRecord creature)
     {
         var body = new StringBuilder();
@@ -824,17 +855,24 @@ public partial class EncyclopediaPanel : Control
         {
             var rows = new List<string>();
             AddRange(rows, "体魄", stats.Physique); AddRange(rows, "灵慧", stats.Intelligence);
-            AddRange(rows, "敏捷", stats.Agility); AddRange(rows, "神魂", stats.Soul);
-            if (rows.Count > 0) AppendSection(body, "基础四维范围（首轮估值）", string.Join("\n", rows));
+            AddRange(rows, "神魂", stats.Soul);
+            if (rows.Count > 0) AppendSection(body, "基础三项战斗属性范围（首轮估值）", string.Join("\n", rows));
         }
         else AppendSection(body, "基础四维", "境界高于云息；本轮只定境界和术法方向，数值范围待单独校准。");
         if (creature.PhysicalDefense is { } defense) AppendSection(body, "物理防御参考", defense.ToString("0.#"));
         AppendSection(body, "普通攻击", creature.BasicAttack);
-        if (!string.IsNullOrWhiteSpace(creature.Talent)) AppendSection(body, "种族天赋（初稿）", creature.Talent);
-        if (!string.IsNullOrWhiteSpace(creature.Technique)) AppendSection(body, "术法意向（初稿）", creature.Technique);
-        AppendSection(body, "设定说明", "首轮百科设定，尚未接入战斗模板；术法按现行自身／单体目标规则表达，不新增状态、射程或位移。");
+        var hasTrialCombat = HasTrialCombatIntegration(creature);
+        if (!string.IsNullOrWhiteSpace(creature.Talent)) AppendSection(body, hasTrialCombat ? "种族天赋（试玩）" : "种族天赋（初稿）", creature.Talent);
+        if (!string.IsNullOrWhiteSpace(creature.Technique))
+            AppendSection(body, hasTrialCombat ? "专属招式（试玩）" : "术法意向（初稿）", creature.Technique);
+        AppendSection(body, "设定说明", hasTrialCombat
+            ? "已接入副本遭遇与固定招式盘；技能公式为试玩首轮候选，待战斗平衡。"
+            : "首轮百科设定，尚未接入战斗模板；术法按现行自身／单体目标规则表达，不新增状态、射程或位移。");
         return EmptyBody(body);
     }
+
+    private static bool HasTrialCombatIntegration(CreatureRecord creature) =>
+        creature.DesignStatus.StartsWith("已接入副本试玩", StringComparison.Ordinal);
 
     private static void AddRange(List<string> rows, string label, CreatureStat? range)
     {
@@ -850,15 +888,20 @@ public partial class EncyclopediaPanel : Control
         {
             var rows = new List<StatRange>();
             AddStat(rows, "体魄", stats.Physique); AddStat(rows, "灵慧", stats.Intelligence);
-            AddStat(rows, "敏捷", stats.Agility); AddStat(rows, "神魂", stats.Soul);
-            if (rows.Count > 0) AddStatTable("基础四维范围", rows);
+            AddStat(rows, "神魂", stats.Soul);
+            if (rows.Count > 0) AddStatTable("基础三项战斗属性范围", rows);
         }
         else AddDossierSection("属性范围").AddChild(MakeLabel("高于云息境界，数值待后续校准。", 18, MutedInk));
         AddDossierSection("栖息与习性").AddChild(MakeLabel($"{creature.Habitat}\n{creature.Habit}", 18, MutedInk));
         AddDossierSection("普通攻击").AddChild(MakeLabel(creature.BasicAttack, 18, MutedInk));
-        if (!string.IsNullOrWhiteSpace(creature.Talent)) AddDossierSection("种族天赋（初稿）").AddChild(MakeLabel(creature.Talent, 18, MutedInk));
-        if (!string.IsNullOrWhiteSpace(creature.Technique)) AddDossierSection("术法意向（初稿）").AddChild(MakeLabel(creature.Technique, 18, MutedInk));
-        _beastDossier.AddChild(MakeLabel("首轮百科设定，尚未接入战斗模板。", 16, MutedInk));
+        var hasTrialCombat = HasTrialCombatIntegration(creature);
+        if (!string.IsNullOrWhiteSpace(creature.Talent))
+            AddDossierSection(hasTrialCombat ? "种族天赋（试玩）" : "种族天赋（初稿）").AddChild(MakeLabel(creature.Talent, 18, MutedInk));
+        if (!string.IsNullOrWhiteSpace(creature.Technique))
+            AddDossierSection(hasTrialCombat ? "专属招式（试玩）" : "术法意向（初稿）").AddChild(MakeLabel(creature.Technique, 18, MutedInk));
+        _beastDossier.AddChild(MakeLabel(hasTrialCombat
+            ? "已接入副本遭遇与固定招式盘；技能公式为试玩首轮候选，待战斗平衡。"
+            : "首轮百科设定，尚未接入战斗模板。", 16, MutedInk));
     }
 
     private static void AddStat(List<StatRange> rows, string name, CreatureStat? stat)
@@ -875,10 +918,9 @@ public partial class EncyclopediaPanel : Control
         foreach (var child in _beastDossier.GetChildren()) { _beastDossier.RemoveChild(child); child.QueueFree(); }
         if (_beastDossier.GetParent() is ScrollContainer scroll) scroll.ScrollVertical = 0;
 
-        AddStatTable("基础四维", [
+        AddStatTable("基础三项战斗属性", [
             AttributeStat("体魄", template.physique_min, template.physique_mean, template.physique_max),
             AttributeStat("灵慧", template.intelligence_min, template.intelligence_mean, template.intelligence_max),
-            AttributeStat("敏捷", template.agility_min, template.agility_mean, template.agility_max),
             AttributeStat("神魂", template.soul_min, template.soul_mean, template.soul_max)
         ]);
         AddStatTable("战斗属性", DerivedBeastStats(template));
@@ -944,23 +986,23 @@ public partial class EncyclopediaPanel : Control
         new(name, min.ToString("0.#"), mean.ToString("0.#"), max.ToString("0.#"));
 
     private static List<StatRange> DerivedBeastStats(BeastTemplate template) => [
-        IntegerStat("生命", template, (p, i, a, s) => 60 + p * 8 + a * 3 + s * 3 + i * 1.5f),
+        IntegerStat("生命", template, (p, i, s) => 60 + p * 11 + s * 3 + i * 1.5f),
         new StatRange("物理防御", "0", "0", "0"),
-        IntegerStat("精准", template, (p, i, a, s) => i * 4 + a * 3 + s + p * .5f),
-        IntegerStat("身法", template, (p, i, a, s) => a * 4 + s * 2 + i + p * .5f),
-        IntegerStat("会心", template, (p, i, a, s) => p * .5f + a * .8f + s * 1.2f + i * .3f),
-        IntegerStat("护心", template, (p, i, a, s) => p * 3 + i * 2 + a * 2 + s * 1.5f),
+        IntegerStat("精准", template, (p, i, s) => i * 7 + s + p * .5f),
+        IntegerStat("身法", template, (p, i, s) => Mathf.Min(p, s) * 4 + s * 2 + i + p * .5f),
+        IntegerStat("会心", template, (p, i, s) => p * .5f + s * 2f + i * .3f),
+        IntegerStat("护心", template, (p, i, s) => p * 3 + i * 2 + Mathf.Min(p, s) * 2 + s * 1.5f),
         AttributeStat("行动速度",
-            Creature.calculate_base_initiative_speed(template.physique_min, template.intelligence_min, template.agility_min, template.soul_min),
-            Creature.calculate_base_initiative_speed(template.physique_mean, template.intelligence_mean, template.agility_mean, template.soul_mean),
-            Creature.calculate_base_initiative_speed(template.physique_max, template.intelligence_max, template.agility_max, template.soul_max))
+            Creature.calculate_base_initiative_speed(template.physique_min, template.intelligence_min, template.soul_min),
+            Creature.calculate_base_initiative_speed(template.physique_mean, template.intelligence_mean, template.soul_mean),
+            Creature.calculate_base_initiative_speed(template.physique_max, template.intelligence_max, template.soul_max))
     ];
 
-    private static StatRange IntegerStat(string name, BeastTemplate template, Func<float, float, float, float, float> formula) =>
+    private static StatRange IntegerStat(string name, BeastTemplate template, Func<float, float, float, float> formula) =>
         new(name,
-            Mathf.RoundToInt(formula(template.physique_min, template.intelligence_min, template.agility_min, template.soul_min)).ToString(),
-            Mathf.RoundToInt(formula(template.physique_mean, template.intelligence_mean, template.agility_mean, template.soul_mean)).ToString(),
-            Mathf.RoundToInt(formula(template.physique_max, template.intelligence_max, template.agility_max, template.soul_max)).ToString());
+            Mathf.RoundToInt(formula(template.physique_min, template.intelligence_min, template.soul_min)).ToString(),
+            Mathf.RoundToInt(formula(template.physique_mean, template.intelligence_mean, template.soul_mean)).ToString(),
+            Mathf.RoundToInt(formula(template.physique_max, template.intelligence_max, template.soul_max)).ToString());
 
     private static string BuildDerivedBeastStats(BeastTemplate template)
     {
@@ -1169,11 +1211,11 @@ public partial class EncyclopediaPanel : Control
             PlayBeastPreviewAnimation("idle");
     }
 
-    private static List<Entry> LoadStatusEntries()
+    private static IEnumerable<int> LoadStatusEntriesSteps(List<Entry> result)
     {
-        var result = new List<Entry>();
         foreach (var path in FindResources("res://resources/battle/statuses"))
         {
+            yield return 0;
             var status = ResourceLoader.Load<StatusEffect>(path);
             if (status is null || string.IsNullOrWhiteSpace(status.name)) continue;
             var kind = status.is_debuff ? "负面状态" : "增益状态";
@@ -1185,22 +1227,23 @@ public partial class EncyclopediaPanel : Control
 
         foreach (var path in FindResources("res://resources/activeskills"))
         {
+            yield return 0;
             var skill = ResourceLoader.Load<ActiveSkillData>(path);
-            if (skill is null || string.IsNullOrWhiteSpace(skill.skill_name)) continue;
+            if (skill is null || !GongfaAvailability.IsSkillEnabled(skill) || string.IsNullOrWhiteSpace(skill.skill_name)) continue;
             var isPassive = skill.skill_type == ActiveSkillData.SkillType.POWER || skill.slot_category == "passive" || skill.keywords.Contains("固有");
             if (!isPassive) continue;
             var source = string.IsNullOrWhiteSpace(skill.source_gongfa_name) ? "角色固有" : skill.source_gongfa_name;
-            var effect = string.IsNullOrWhiteSpace(skill.description) ? "暂无详细说明。" : skill.description;
+            var effect = string.IsNullOrWhiteSpace(skill.description) ? "暂无详细说明。" : CardPresentation.Face(skill, null);
             var icon = BattleUnitOverlay.GetStatusIcon($"心法:{skill.skill_name}", new StatusInstance { source_name = source })
                 ?? LoadTexture("res://textures/ui/encyclopedia/buff_category_v1.svg");
             result.Add(new Entry(skill.skill_name, $"常驻心法 · {source}", "", $"{skill.skill_name} {source} {effect}", icon,
                 Status: new StatusDetail("常驻被动", null, source, effect)));
         }
 
-        AddStatusResourceEntry(result, "气血", "战斗资源", "每当自身主动使气血下降，触发公共气血回落，回复最大生命的3%；气血上限由角色修命淬体与明确的战斗效果决定，战斗结束时清空。", "回落 生命 回复");
+        AddStatusResourceEntry(result, "气血", "战斗资源", "基础上限8层，可由修命淬体与明确的战斗效果调整。每下降1层，按当前回落回复率恢复生命；基础回复率为最大生命的5%。战斗结束时清空。", "回落 生命 回复");
         AddStatusResourceEntry(result, "血炉", "战斗资源", "每2点提高1%物理伤害；可被相关招式消耗，战斗结束时清空。", "物理伤害 赤阳");
-        AddStatusResourceEntry(result, "护盾", "战斗资源", "优先吸收受到的伤害，并随实际吸收量减少。", "防御 吸收");
-        return result.OrderBy(entry => entry.Title, StringComparer.Ordinal).ToList();
+        AddStatusResourceEntry(result, "炁", "战斗资源", "非费用资源，跨回合保留。炁达到当前法力上限的两倍时触发周天：清空炁并恢复法力，再结算周天效果；超额不保留，战斗结束清零。", "周天 法力");
+        AddStatusResourceEntry(result, "护盾", "战斗资源", "由法力凝成并环绕自身的护罩，优先吸收受到的伤害，并随实际吸收量减少。", "防御 法力 吸收");
     }
 
     private static void AddStatusResourceEntry(List<Entry> result, string title, string kind, string description, string search)
@@ -1210,13 +1253,13 @@ public partial class EncyclopediaPanel : Control
             Status: new StatusDetail(kind, null, null, description)));
     }
 
-    private static List<Entry> LoadItemEntries()
+    private static IEnumerable<int> LoadItemEntriesSteps(List<Entry> result)
     {
-        var result = new List<Entry>();
         foreach (var path in FindResources("res://resources/entities/items"))
         {
+            yield return 0;
             var item = ResourceLoader.Load<ItemData>(path);
-            if (item is null || string.IsNullOrWhiteSpace(item.entity_name)) continue;
+            if (item is null || !GongfaAvailability.IsItemEnabled(item) || string.IsNullOrWhiteSpace(item.entity_name)) continue;
             var icon = LoadTexture(item.icon_path);
             if (icon is null) continue;
             var category = string.IsNullOrWhiteSpace(item.item_subcategory) ? item.item_category : $"{item.item_category} · {item.item_subcategory}";
@@ -1231,10 +1274,12 @@ public partial class EncyclopediaPanel : Control
                 AppendSection(body, "品阶", item.get_grade_string());
             var tags = StoragePanel.build_tags(item.tags, material);
             if (tags != "无词缀") AppendSection(body, "物品词缀", tags);
-            AppendSection(body, "堆叠", item.can_stack ? $"可堆叠，最多 {item.max_stack} 件" : "不可堆叠");
+            AppendSection(body, "堆叠与体积", item.can_stack
+                ? $"可堆叠，上限{item.max_stack}；每件占{item.get_storage_volume()}容量"
+                : $"不可堆叠；每件占{item.get_storage_volume()}容量");
             AppendSection(body, "使用范围", item.usage_type switch { 1 => "仅限战斗", 2 => "大世界与战斗均可使用", _ => "大世界物品" });
             if (!string.IsNullOrWhiteSpace(item.battle_skill_path) && ResourceLoader.Load<ActiveSkillData>(item.battle_skill_path) is { } battleSkill)
-                AppendSection(body, "战斗效果", battleSkill.description);
+                AppendSection(body, "战斗效果", CardPresentation.Underline(CardPresentation.Face(battleSkill, null)));
 
             var qualitySearch = isManual
                 ? ManualRealmDescription(item)
@@ -1244,7 +1289,6 @@ public partial class EncyclopediaPanel : Control
             var searchable = $"{item.entity_name} {category} {qualitySearch} {tags} {body}";
             result.Add(new Entry(item.entity_name, category, EmptyBody(body), searchable, icon, Item: item));
         }
-        return result.OrderBy(entry => entry.Title, StringComparer.Ordinal).ToList();
     }
 
     private static string ManualRealmDescription(ItemData item)
@@ -1266,10 +1310,12 @@ public partial class EncyclopediaPanel : Control
 
     private static Texture2D? LoadPortraitThumbnail(string path)
     {
+        if (string.IsNullOrWhiteSpace(path) || !ResourceLoader.Exists(path)) return null;
+        var thumbnail = LoadBakedPortraitThumbnail(path);
+        if (thumbnail is not null) return thumbnail;
         // Keep only small directory thumbnails resident; the full portrait is loaded for the selected entry.
         var source = LoadTexture(path);
         if (source is null) return null;
-        using (source)
         using (var image = source.GetImage())
         {
             if (image.IsEmpty()) return null;
@@ -1309,13 +1355,13 @@ public partial class EncyclopediaPanel : Control
 
     private static string SectionTitle(Section section) => section switch
     {
-        Section.Statuses => "状态", Section.Items => "物品", _ => "生灵"
+        Section.Statuses => "状态", Section.Items => "物品", Section.Beasts => "生灵", Section.Terms => "术语介绍", _ => "资料"
     };
 
     private void play_open_animation()
     {
         if (_background is null || _pageContent is null || !Visible || _closing) return;
-        var tween = CreateTween().SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.Out);
+        var tween = _presentationTween = CreateTween().SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.Out);
         tween.SetParallel();
         tween.TweenProperty(_background, "modulate:a", 1f, .18f);
         tween.TweenProperty(_pageContent, "modulate:a", 1f, .16f);
@@ -1333,6 +1379,7 @@ public partial class EncyclopediaPanel : Control
     private static Label MakeLabel(string text, int size, Color color)
     {
         var label = new Label { Text = text, AutowrapMode = TextServer.AutowrapMode.WordSmart, MouseFilter = MouseFilterEnum.Ignore };
+        PlayerInfoText.Bind(label, text);
         label.AddThemeFontSizeOverride("font_size", size);
         label.AddThemeColorOverride("font_color", color);
         return label;

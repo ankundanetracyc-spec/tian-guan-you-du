@@ -2,29 +2,38 @@ using Godot;
 using Godot.Collections;
 
 /// <summary>现行秘籍技能、心法与公共战斗状态的局内结算。状态按单位保存，战斗结束释放。</summary>
-public sealed class GongfaCombatRuntime
+public sealed partial class GongfaCombatRuntime
 {
+    private const string BaiHaiBook = "百骸衍枝化生宝册";
+    private const string BaiHaiHeart = "百骸衍枝化生";
+    private const string TaiheBook = "太和感物养元宝册";
+    private const string TaiheHeart = "太和感物养元";
     private readonly BattleManager manager;
     private readonly System.Collections.Generic.Dictionary<ulong,State> states=[];
     private sealed class State
     {
         public HashSet<string> Powers=[]; public HashSet<string> Used=[];
-        public int Falls, FallsThisRound, Discounts, ConsumedWounds, SpentYouhai, BlockedRemainder, LastType=-1, RedSunFurnaceSpent; public bool YouhaiTriggeredThisRound, NeijingWoundTriggeredThisRound, Bottom, Boost, YouhaiEmpoweredMountain; public ActiveSkillData? RedSunDamageSkill; public string RedSunDamageSkillKey="";
+        public HashSet<string> ManaConvertedSkillKeys=[]; public HashSet<string> PendingManaCapPayments=[];
+        public int Falls, FallsThisRound, Discounts, ConsumedWounds, SpentYouhai, BlockedRemainder, LastType=-1, RedSunFurnaceSpent; public bool YouhaiTriggeredThisRound, NeijingWoundTriggeredThisRound, Bottom, Boost, YouhaiEmpoweredMountain, ZhuanxiBorrowReady, ZhuanxiRecoveryUsedThisRound; public ActiveSkillData? RedSunDamageSkill, LastNonResponseSkill; public string RedSunDamageSkillKey="";
         public ActiveSkillData? PendingCard, PendingResponseCard; public float PendingMomentum; public int PendingResponseBlockBonus; public bool ResponseTriggered, LingShuFajinEmpowered; public string LingShuFajinSkillKey=""; public HashSet<string> ResolvedResponseEffects=[];
+        public string PendingManaBeforeSkillKey="", CurrentManaConvertedSkillKey=""; public int PendingManaBeforeSkill, CurrentManaBeforeSkill;
+        public bool CurrentSkillPaidManaCap, CapPaidQiGrantedThisRound, EmptyManaQiGrantedThisRound, TaiheFirstResponseThisRound;
     }
     private State For(GodotObject u){if(!states.TryGetValue(u.GetInstanceId(),out var s))states[u.GetInstanceId()]=s=new();return s;}
     public GongfaCombatRuntime(BattleManager owner)=>manager=owner;
-    public void Reset()=>states.Clear();
-    public void Begin(GodotObject u){var s=For(u);s.BlockedRemainder=0;s.Powers.Clear();s.Used.Clear();s.Falls=s.FallsThisRound=s.Discounts=s.ConsumedWounds=s.SpentYouhai=0;s.LastType=-1;s.YouhaiTriggeredThisRound=s.NeijingWoundTriggeredThisRound=false;s.PendingCard=s.PendingResponseCard=null;s.PendingMomentum=0;s.PendingResponseBlockBonus=0;s.ResponseTriggered=false;s.LingShuFajinEmpowered=false;s.LingShuFajinSkillKey="";s.ResolvedResponseEffects.Clear();s.RedSunDamageSkill=null;s.RedSunDamageSkillKey="";s.RedSunFurnaceSpent=0;s.Bottom=s.Boost=s.YouhaiEmpoweredMountain=false;}
-    public void BeginRound(GodotObject u){var s=For(u);s.FallsThisRound=0;s.YouhaiTriggeredThisRound=s.NeijingWoundTriggeredThisRound=false;s.LastType=-1;s.PendingCard=null;s.PendingMomentum=0;s.RedSunDamageSkill=null;s.RedSunDamageSkillKey="";s.RedSunFurnaceSpent=0;s.YouhaiEmpoweredMountain=false;}
-    private static bool Main(GodotObject u,string book)=>(u is Character c && c.main_gongfa?.gongfa_name==book) || (u is WorldEntity e && e.entity_data is HumanData h && h.main_gongfa_path.Contains(book));
+    public void Reset(){states.Clear();expansionStates.Clear();chemicalRewriteStates.Clear();}
+    public void Begin(GodotObject u){ResetExpansion(u);ResetChemicalRewrites(u);var s=For(u);s.BlockedRemainder=0;s.Powers.Clear();s.Used.Clear();s.ManaConvertedSkillKeys.Clear();s.PendingManaCapPayments.Clear();s.Falls=s.FallsThisRound=s.Discounts=s.ConsumedWounds=s.SpentYouhai=0;s.LastType=-1;s.LastNonResponseSkill=null;s.YouhaiTriggeredThisRound=s.NeijingWoundTriggeredThisRound=false;s.ZhuanxiBorrowReady=s.ZhuanxiRecoveryUsedThisRound=false;s.PendingCard=s.PendingResponseCard=null;s.PendingMomentum=0;s.PendingResponseBlockBonus=0;s.ResponseTriggered=false;s.LingShuFajinEmpowered=false;s.LingShuFajinSkillKey="";s.ResolvedResponseEffects.Clear();s.RedSunDamageSkill=null;s.RedSunDamageSkillKey="";s.RedSunFurnaceSpent=0;s.Bottom=s.Boost=s.YouhaiEmpoweredMountain=false;s.PendingManaBeforeSkillKey=s.CurrentManaConvertedSkillKey="";s.PendingManaBeforeSkill=s.CurrentManaBeforeSkill=0;s.CurrentSkillPaidManaCap=s.CapPaidQiGrantedThisRound=s.EmptyManaQiGrantedThisRound=s.TaiheFirstResponseThisRound=false;}
+    public void BeginRound(GodotObject u){BeginChemicalRound(u);ResetExpansion(u);var s=For(u);s.FallsThisRound=0;s.ZhuanxiRecoveryUsedThisRound=false;s.YouhaiTriggeredThisRound=s.NeijingWoundTriggeredThisRound=false;s.LastType=-1;s.PendingCard=null;s.PendingMomentum=0;s.RedSunDamageSkill=null;s.RedSunDamageSkillKey="";s.RedSunFurnaceSpent=0;s.YouhaiEmpoweredMountain=false;s.CapPaidQiGrantedThisRound=s.EmptyManaQiGrantedThisRound=s.TaiheFirstResponseThisRound=false;}
+    private static bool Main(GodotObject u,string book)=>GongfaAvailability.IsBookNameEnabled(book)&&((u is Character c && c.main_gongfa?.gongfa_name==book) || (u is WorldEntity e && e.entity_data is HumanData h && (h.main_gongfa_path.Contains(book) || (book=="胎息经"&&h.main_gongfa_path.Contains("黄庭养形篇")))));
     public bool CanPlay(GodotObject u,ActiveSkillData card)
     {
         var s=For(u);var qi=CardRules.Number(u,"qi_blood");var you=Stacks(u,"游骸");
         if((HasEffect(card,"chiyang_c4_zhuming")||HasEffect(card,"chiyang_c4_hanshan"))&&!s.Powers.Contains("赤阳参同"))return false;
         if((HasEffect(card,"chiyang_c4_zhuming")||HasEffect(card,"chiyang_c4_hanshan"))&&CardRules.Number(u,"blood_furnace_value")<20)return false;
+        if(card.skill_name=="焚元"&&manager.get_effective_mana_capacity(u)<2)return false;
         return card.skill_name switch
         {
+            "涤髓"=>qi>=1,
             "抱一"=>s.Falls>0&&!s.Used.Contains("抱一"),
             "伏火"=>qi>=1&&!s.Used.Contains("伏火"),
             "大冶"=>qi>=2,
@@ -41,16 +50,48 @@ public sealed class GongfaCombatRuntime
     }
     public int Cost(GodotObject u,ActiveSkillData c)
     {
+        if(TalismanCombatCatalog.IsSkill(c))return TalismanCombatCatalog.EnergyCost;
         var s=For(u);var discount=!CardRules.IsResponse(c)&&s.Discounts>0?1:0;
         if(c.skill_name=="催血"&&s.Boost)discount++;
         return Math.Max(0,c.get_energy_cost()-discount);
     }
-    public void Before(GodotObject u,ActiveSkillData c)
+    private static string ManaSkillKey(ActiveSkillData skill)=>$"{skill.skill_name}|{skill.source_gongfa_name}|{skill.artifact_instance_id}";
+    public int ManaCostTransferredToStamina(GodotObject u,ActiveSkillData skill,int manaCost)
     {
-        var s=For(u);s.Used.Add(c.skill_name);
+        if(manaCost<=0)return 0;
+        if(ForceManaCapacityPayment(u,skill,manaCost))return 0;
+        var state=For(u);var key=ManaSkillKey(skill);
+        var mainConverted=Main(u,"斫基损契玄经")&&state.ManaConvertedSkillKeys.Contains(key);
+        return mainConverted||state.CurrentManaConvertedSkillKey==key?manaCost:0;
+    }
+    public bool CanBurnManaCapacityForCost(GodotObject u,int amount)
+    {
+        return amount<=0||HasPower(u,"斫基损契")&&amount<=Math.Max(0,manager.get_effective_mana_capacity(u)-1);
+    }
+    public void RememberManaBeforePayment(GodotObject u,ActiveSkillData skill)
+    {
+        var state=For(u);state.PendingManaBeforeSkillKey=ManaSkillKey(skill);state.PendingManaBeforeSkill=Mathf.RoundToInt(CardRules.Number(u,"current_mana"));
+    }
+    public void RecordManaCapacityPayment(GodotObject u,ActiveSkillData skill)
+    {
+        var state=For(u);var key=ManaSkillKey(skill);state.PendingManaCapPayments.Add(key);
+        if(state.PendingCard is not null&&ManaSkillKey(state.PendingCard)==key)state.CurrentSkillPaidManaCap=true;
+    }
+    public void Before(GodotObject u,ActiveSkillData c,bool recordAsLastCast=true)
+    {
+        var talisman=TalismanCombatCatalog.IsSkill(c);
+        if(!talisman)BeforeExpansion(u,c);
+        var s=For(u);var manaKey=ManaSkillKey(c);
+        s.CurrentSkillPaidManaCap=s.PendingManaCapPayments.Remove(manaKey);
+        s.CurrentManaBeforeSkill=s.PendingManaBeforeSkillKey==manaKey?s.PendingManaBeforeSkill:Mathf.RoundToInt(CardRules.Number(u,"current_mana"));
+        if(s.PendingManaBeforeSkillKey==manaKey)s.PendingManaBeforeSkillKey="";
+        s.CurrentManaConvertedSkillKey="";
+        if(!talisman)s.Used.Add(c.skill_name);
+        if(!talisman&&recordAsLastCast&&!CardRules.IsResponse(c)&&c.skill_name!="复命")s.LastNonResponseSkill=c;
         s.RedSunDamageSkill=null;s.RedSunDamageSkillKey="";s.RedSunFurnaceSpent=0;
-        s.PendingMomentum=Momentum(u,c);s.PendingCard=c;s.LastType=(int)c.skill_type;
-        if(!CardRules.IsResponse(c)&&s.Discounts>0)s.Discounts--;
+        s.PendingMomentum=talisman?0:Momentum(u,c);s.PendingCard=c;
+        if(!talisman)s.LastType=(int)c.skill_type;
+        if(!talisman&&!CardRules.IsResponse(c)&&s.Discounts>0)s.Discounts--;
         s.YouhaiEmpoweredMountain=HasEffect(c,"chengwu_c2_fajin")&&c.skill_name=="发劲"&&Stacks(u,"游骸")>0&&SpendYouhai(u);
         if(CardRules.IsResponse(c))
         {
@@ -71,10 +112,12 @@ public sealed class GongfaCombatRuntime
             s.PendingResponseBlockBonus++;
         if(HasEffect(c,"yinfu_c1_chengji"))
             s.PendingResponseBlockBonus+=Math.Min(2,Stacks(u,"借力")/2);
+        GrantTaiheResponseBlood(u);
     }
     /// <summary>在攻击技能开始结算前处理需要消耗伤势的灵枢化法。</summary>
     public void PrepareAttack(GodotObject u,ActiveSkillData c)
     {
+        PrepareChemicalAttack(u,c);
         var s=For(u);s.LingShuFajinEmpowered=false;s.LingShuFajinSkillKey="";
         if(c.skill_name!="引筋"||manager.count_wounds(u)<=0)return;
         s.LingShuFajinEmpowered=ConsumeWounds(u,1)>0;
@@ -99,24 +142,27 @@ public sealed class GongfaCombatRuntime
         return MomentumConditionChecker.check(c.momentum_condition_type,new Dictionary{{"last_skill_type",s.LastType}})?CardRules.Evaluate(c.momentum_effect_params,u):0;
     }
     public float SettlingMomentum(GodotObject u,ActiveSkillData c)=>For(u).PendingCard==c?For(u).PendingMomentum:Momentum(u,c);
-    public void Fall(GodotObject u,int count,bool active,float rate=3)
+    public void Fall(GodotObject u,int count,bool active,float rate=5)
     {
         if(u is not Creature creature)return;
         rate+=creature.get_combat_tempering_total("fall_heal_rate_pp");
         var s=For(u);var before=creature.qi_blood;var spent=Math.Min(Math.Max(0,count),before);
         if(spent==0)return;creature.qi_blood-=spent;
         if(active && s.Powers.Contains("赤阳参同"))creature.blood_furnace_value=Math.Min(creature.blood_furnace_value_cap,creature.blood_furnace_value+Mathf.RoundToInt(spent*rate));
-        else Heal(creature,spent*rate);
+        else HealBloodFall(creature,spent*rate);
         if(active)
         {
             s.Falls++;
             s.FallsThisRound++;
-            if(s.Powers.Contains("黄庭养形"))
+            if(s.Powers.Contains("胎息"))
             {
-                if(s.FallsThisRound==1)Add(u,"身法",1);
-                if(HasHeartUpgrade(u,"黄庭养形篇","huangting_c2")&&s.FallsThisRound<=2)Add(u,"身法",1);
-                if(s.FallsThisRound==1&&HasHeartUpgrade(u,"黄庭养形篇","huangting_c4"))Add(u,"身法",1);
-                if(s.FallsThisRound==1&&Main(u,"黄庭养形篇"))Energy(u,1);
+                var qiAtBottom=creature.qi_blood==0;
+                if(HasHeartUpgrade(u,"胎息经","zhuanxi_c2")&&s.FallsThisRound==2)
+                {
+                    Add(u,"身法",1);Add(u,"借力",1);s.ZhuanxiBorrowReady=true;
+                }
+                else if(qiAtBottom){Add(u,"借力",1);s.ZhuanxiBorrowReady=true;}
+                else Add(u,"身法",1);
             }
             if(s.Powers.Contains("乘物游骸")&&!s.YouhaiTriggeredThisRound)
             {
@@ -135,12 +181,15 @@ public sealed class GongfaCombatRuntime
     }
     public bool Utility(GodotObject u,ActiveSkillData c)
     {
+        if(c.skill_type==ActiveSkillData.SkillType.POWER&&!GongfaAvailability.IsSkillEnabled(c))return true;
+        if(ExpansionUtility(u,c))return true;
         var s=For(u);
-        if(c.skill_type==ActiveSkillData.SkillType.POWER && new[]{"黄庭养形","赤阳参同","内景损益","灵枢经筋","阴符应物","乘物游骸","补虚行血"}.Contains(c.skill_name))
+        if(c.skill_type==ActiveSkillData.SkillType.POWER && new[]{"胎息","赤阳参同","内景损益","灵枢经筋","阴符应物","乘物游骸","补虚行血","玄枢含章","斫基损契",BaiHaiHeart,TaiheHeart}.Contains(c.skill_name))
         {
             s.Powers.Add(c.skill_name);
             // 运行时能力与状态图标共用一份永久状态，让效果在血条上方可见。
             AddPowerStatus(u,c);
+            if(c.skill_name==BaiHaiHeart)manager.SyncBloodArmVisual(u);
             return true;
         }
         switch(c.skill_name)
@@ -157,43 +206,53 @@ public sealed class GongfaCombatRuntime
                 var qiAfter=CardRules.Number(u,"qi_blood");
                 if(qiAfter<qiBefore&&HasEffect(c,"chengwu_c3_pingxi"))Add(u,"身法",1);
                 if(qiBefore==1&&qiAfter==0&&HasEffect(c,"buxu_c3_pingxi"))Add(u,"身法",1);
-                if(qiAfter<qiBefore&&HasEffect(c,"huangting_c2_pingxi"))Add(u,"身法",1);
+                if(qiAfter<qiBefore&&HasEffect(c,"zhuanxi_c2_pingxi"))Add(u,"身法",1);
                 if(HasEffect(c,"lingshu_c3_pingxi"))
                 {
                     ConsumeWounds(u,1);
                 }
                 return true;
             case "返照":
-                var fanzhaoBefore=CardRules.Number(u,"qi_blood");Fall(u,1,true);Add(u,"身法",2);
-                if(HasEffect(c,"huangting_c1_fanzhao")&&fanzhaoBefore>CardRules.Number(u,"qi_blood")&&CardRules.Number(u,"qi_blood")==0)Add(u,"身法",1);
+                var fanzhaoBefore=CardRules.Number(u,"qi_blood");Fall(u,1,true);
+                if(HasEffect(c,"zhuanxi_c1_fanzhao")&&fanzhaoBefore>CardRules.Number(u,"qi_blood")&&CardRules.Number(u,"qi_blood")==0)Add(u,"身法",1);
                 return true;
-            case "伏火": Fall(u,1,true,6);return true;
-            case "大冶": Fall(u,2,true,7);return true;
+            case "伏火": Fall(u,1,true,8);return true;
+            case "大冶": Fall(u,2,true,9);return true;
             case "偃月":
                 var furnaceSpent=SpendFurnace(u,20,true);
                 Add(u,"身法",furnaceSpent/2);
                 return true;
             case "蜕形": Fall(u,1,true);Add(u,"身法",2);return true;
             case "周行":
-                Gain(u,1);if(s.Falls>0)Add(u,"身法",1);
-                if(HasEffect(c,"huangting_c3_zhouxing")&&s.Falls>=2)Add(u,"身法",1);
+                var zhouxingBefore=CardRules.Number(u,"qi_blood");Gain(u,1);
+                if(zhouxingBefore==0)Add(u,"身法",1);
+                if(HasEffect(c,"zhuanxi_c3_zhouxing")&&s.Falls>=2)Add(u,"身法",1);
                 return true;
-            case "归藏": Add(u,"身法",3);s.Discounts=2;return true;
+            case "归藏": Add(u,"身法",3);Add(u,"借力",2);s.Discounts=2;return true;
             case "还阳":
                 var yangBefore=CardRules.Number(u,"qi_blood");Gain(u,yangBefore==0?2:1);
                 if(HasEffect(c,"buxu_c1_huanyang")&&yangBefore==0&&CardRules.Number(u,"qi_blood")>yangBefore&&u is Creature yangUser)Heal(yangUser,3);
                 return true;
             case "催血":
+                var cuixueQiBefore=CardRules.Number(u,"qi_blood");
                 if(HasEffect(c,"lingshu_c2_cuixue")&&manager.count_wounds(u)>0)
                 {
                     var consumed=ConsumeWounds(u,1);
                     if(consumed>0&&u is Creature lingShuUser)Heal(lingShuUser,3);
                 }
                 if(HasEffect(c,"chengwu_c1_cuixue")&&Stacks(u,"身法")>=10&&Stacks(u,"游骸")==0)Add(u,"游骸",1);
-                Gain(u,s.Boost?2:1);
+                // 化法重写会换成秘籍专属资源，但仍保留《催血》的基础两层效果。
+                var bloodGain=c.skill_name=="催血"?2:1;
+                if(s.Boost)bloodGain++;
+                if(HasEffect(c,"baihai_c1_cuixue")&&cuixueQiBefore<=3&&c.skill_name=="催血")
+                {
+                    Gain(u,1);
+                    DeferBaihaiQiBlood(u,bloodGain-1);
+                }
+                else Gain(u,bloodGain);
                 if(s.Boost&&Main(u,"补虚行血诀"))Add(u,"身法",2);
                 if(s.Bottom&&HasEffect(c,"buxu_c4_cuixue"))Add(u,"身法",1);
-                if(s.Falls>0&&HasEffect(c,"huangting_c4_cuixue"))Add(u,"身法",1);
+                if(s.Falls>0&&HasEffect(c,"zhuanxi_c4_cuixue"))Add(u,"身法",1);
                 s.Boost=false;return true;
             case "余温":
                 var beforeWen=CardRules.Number(u,"qi_blood");
@@ -208,7 +267,7 @@ public sealed class GongfaCombatRuntime
                 return true;
             case "抱一":
                 var baoYiAtCast=CardRules.Number(u,"qi_blood");Gain(u,1);
-                if(HasEffect(c,"huangting_c2_baoyi")&&baoYiAtCast==0&&CardRules.Number(u,"qi_blood")>baoYiAtCast&&u is Creature baoYiUser)Heal(baoYiUser,3);
+                if(HasEffect(c,"zhuanxi_c2_baoyi")&&baoYiAtCast==0&&CardRules.Number(u,"qi_blood")>baoYiAtCast&&u is Creature baoYiUser)Heal(baoYiUser,3);
                 return true;
             case "托身": SpendYouhai(u);Add(u,"身法",2);return true;
             case "淬厉":
@@ -236,18 +295,104 @@ public sealed class GongfaCombatRuntime
     }
     public int Segments(GodotObject u,ActiveSkillData card)
     {
+        var total=BaseSegments(u,card);
+        var arms=IsMeleePhysicalAttack(card)?BloodArmCount(u):0;
+        return total+arms;
+    }
+    private int BaseSegments(GodotObject u,ActiveSkillData card)
+    {
         if(card.skill_name=="冯虚")return 1+For(u).SpentYouhai/2;
         if(card.skill_name=="百骸")return 1+manager.count_wounds(u)/3;
         return card.skill_name=="发劲"&&HasEffect(card,"chengwu_c4_fajin")&&For(u).SpentYouhai>0?2:1;
     }
-    public ActiveSkillData ForDamageSegment(ActiveSkillData card,int segment)
+    public ActiveSkillData ForDamageSegment(GodotObject u,ActiveSkillData card,int segment)
     {
-        if(segment==0||card.skill_name!="发劲"||!HasEffect(card,"chengwu_c4_fajin"))return card;
+        var baseSegments=BaseSegments(u,card);
+        var arms=IsMeleePhysicalAttack(card)?BloodArmCount(u):0;
+        if(segment<=0)return card;
+        if(segment<baseSegments)
+        {
+            if(segment!=1||card.skill_name!="发劲"||!HasEffect(card,"chengwu_c4_fajin"))return card;
+            var extra=card.Duplicate() as ActiveSkillData??card;
+            extra.base_damage=0;
+            extra.damage_bonuses=[];
+            extra.damage_formula="round(4 + 体魄×0.35 + 体道造诣×0.15)";
+            return extra;
+        }
+
+        var offset=segment-baseSegments;
+        if(!IsMeleePhysicalAttack(card)||offset<0||offset>=arms)return card;
+        var arm=CloneBonusDamageSegment(card);
+        arm.damage_formula=BloodArmDamageFormula(u);
+        arm.combat_is_blood_arm_segment=true;
+        arm.combat_is_blood_arm_visual_segment=true;
+        return arm;
+    }
+    public bool IsBloodArmVisualSegment(GodotObject u,ActiveSkillData card,int segment)
+    {
+        var baseSegments=BaseSegments(u,card);
+        var arms=IsMeleePhysicalAttack(card)?BloodArmCount(u):0;
+        if(segment<baseSegments)return false;
+        var offset=segment-baseSegments;
+        return IsMeleePhysicalAttack(card)&&offset>=0&&offset<arms;
+    }
+    private static ActiveSkillData CloneBonusDamageSegment(ActiveSkillData card)
+    {
         var extra=card.Duplicate() as ActiveSkillData??card;
+        extra.combat_is_gongfa_bonus_damage_segment=true;
         extra.base_damage=0;
-        extra.damage_bonuses.Clear();
-        extra.damage_formula="round(4 + 体魄×0.20 + 敏捷×0.15 + 体道造诣×0.15)";
+        extra.damage_bonuses=[];
+        extra.special_effects=[];
+        extra.status_effects=[];
         return extra;
+    }
+    private static bool IsMeleePhysicalAttack(ActiveSkillData card)=>card.skill_type==ActiveSkillData.SkillType.ATTACK&&card.damage_type=="physical"&&card.attack_style=="melee";
+    public int BloodArmCount(GodotObject u)
+        => PreviewBloodArmCount(u, Mathf.Max(0, Mathf.RoundToInt(CardRules.Number(u,"qi_blood"))));
+    public int PreviewBloodArmCount(GodotObject u, int qi)
+    {
+        if(!HasPower(u,BaiHaiHeart))return 0;
+        if(HasHeartUpgrade(u,BaiHaiBook,"baihai_c4"))return (qi>=7?1:0)+(qi>=3?1:0);
+        if(HasHeartUpgrade(u,BaiHaiBook,"baihai_c3"))return (qi>=8?1:0)+(qi>=4?1:0);
+        var firstThreshold=HasHeartUpgrade(u,BaiHaiBook,"baihai_c2")?4:5;
+        return qi>=firstThreshold?1:0;
+    }
+    public int BloodArmFirstThreshold(GodotObject u)
+    {
+        if(HasHeartUpgrade(u,BaiHaiBook,"baihai_c4"))return 3;
+        if(HasHeartUpgrade(u,BaiHaiBook,"baihai_c3"))return 4;
+        return HasHeartUpgrade(u,BaiHaiBook,"baihai_c2")?4:5;
+    }
+    public float PreviewBloodArmDamage(GodotObject u,int blood) => CardRules.Evaluate(
+        BloodArmDamageFormula(u).Replace("气血层数",blood.ToString(System.Globalization.CultureInfo.InvariantCulture)),u)
+        *(Main(u,BaiHaiBook)?1.2f:1f);
+    public (bool CapacityBurnReady, bool CapQiUsed, int PendingBaihaiQiBlood) GetPlanningFlags(GodotObject u) =>
+        (Chemical(u).ForceManaCapacityBurnReady,For(u).CapPaidQiGrantedThisRound,Chemical(u).PendingBaihaiQiBlood);
+    public bool IsPermanentlyManaConverted(GodotObject u,ActiveSkillData skill) =>
+        Main(u,"斫基损契玄经")&&For(u).ManaConvertedSkillKeys.Contains(ManaSkillKey(skill));
+    private string BloodArmDamageFormula(GodotObject u)=>HasHeartUpgrade(u,BaiHaiBook,"baihai_c3")||HasHeartUpgrade(u,BaiHaiBook,"baihai_c4")
+        ?"round(1 + 气血层数×0.20 + 体魄×0.12 + 体道造诣×0.20)"
+        :"round(1 + 气血层数×0.15 + 体魄×0.10 + 体道造诣×0.15)";
+    public int RollBloodArmAutoResponse(GodotObject defender,GodotObject attacker,ActiveSkillData incoming)
+    {
+        if (manager.is_board_battle()) return 0;
+        if(!HasPower(defender,BaiHaiHeart)||BloodArmCount(defender)<2||!IsMeleePhysicalAttack(incoming)
+            ||defender.Get("faction").AsInt32()==attacker.Get("faction").AsInt32())return 0;
+        var ownQi=CardRules.Number(defender,"qi_blood");
+        var attackerQi=CardRules.Number(attacker,"qi_blood");
+        var chance=30f+4f*(ownQi-attackerQi)+.5f*CardRules.Number(defender,"physique")
+            +CardRules.Number(defender,"body_proficiency")-.5f*CardRules.Number(attacker,"physique");
+        chance=Mathf.Clamp(chance,5f,80f);
+        if(GD.Randf()>=chance/100f)return 0;
+        var formula=1f+ownQi*.20f+CardRules.Number(defender,"physique")*.10f+CardRules.Number(defender,"body_proficiency")*.20f;
+        return Mathf.Max(1,Mathf.RoundToInt(formula));
+    }
+    public void CompleteBloodArmAutoResponse(GodotObject defender)=>Fall(defender,1,true);
+    public int BloodArmFollowUpCount(GodotObject u,ActiveSkillData card)
+    {
+        if(!IsMeleePhysicalAttack(card))return 0;
+        var arms=BloodArmCount(u);
+        return arms;
     }
     public float DamageMultiplier(GodotObject u,ActiveSkillData c)
     {
@@ -267,6 +412,7 @@ public sealed class GongfaCombatRuntime
         if(HasEffect(c,"lingshu_c4_yinjing")&&s.LingShuFajinEmpowered&&s.LingShuFajinSkillKey==SkillKey(c))multiplier*=1.2f;
         if(HasEffect(c,"yinfu_c2_xieshi"))multiplier+=borrowed*.02f;
         if(HasEffect(c,"yinfu_c4_hejin")&&borrowed>=3)multiplier*=1.1f;
+        if(c.combat_is_blood_arm_segment&&Main(u,BaiHaiBook))multiplier*=1.2f;
         if(s.Powers.Contains("内景损益"))
         {
             var woundCount=manager.count_wounds(u);
@@ -275,16 +421,76 @@ public sealed class GongfaCombatRuntime
             if(Main(u,"内景损益篇"))heartMethodBonus+=.01f;
             multiplier*=1+woundCount*heartMethodBonus;
         }
-        return multiplier;
+        return multiplier*ExpansionDamageMultiplier(u,c);
     }
-    public void AfterAttack(GodotObject u,ActiveSkillData card)
+    public void AfterAttack(GodotObject u,ActiveSkillData card)=>AfterAttack(u,card,true);
+    public void AfterAttack(GodotObject u,ActiveSkillData card,bool hit)
     {
+        AfterExpansionAttack(u,card,hit);
+        var state=For(u);
         if(card.skill_name=="解形")SpendYouhai(u);
         if(card.skill_name is "撼山" or "发劲")For(u).YouhaiEmpoweredMountain=false;
-        var state=For(u);state.RedSunDamageSkill=null;state.RedSunDamageSkillKey="";state.RedSunFurnaceSpent=0;state.LingShuFajinEmpowered=false;state.LingShuFajinSkillKey="";
-        if(card.damage_type=="physical"&&card.skill_name!="挟势"&&u is Creature creature)creature.consume_status_stacks("借力",creature.get_status_stacks("借力"));
+        state.RedSunDamageSkill=null;state.RedSunDamageSkillKey="";state.RedSunFurnaceSpent=0;state.LingShuFajinEmpowered=false;state.LingShuFajinSkillKey="";
+        if(card.damage_type=="physical"&&card.skill_name!="挟势"&&u is Creature creature)
+        {
+            var borrowed=creature.get_status_stacks("借力");
+            creature.consume_status_stacks("借力",borrowed);
+            if(borrowed>0&&state.ZhuanxiBorrowReady)
+            {
+                state.ZhuanxiBorrowReady=false;
+                var repeatable=HasHeartUpgrade(u,"胎息经","zhuanxi_c4");
+                if(Main(u,"胎息经")&&creature.qi_blood==0&&creature.get_status_stacks("身法")>0&&(repeatable||!state.ZhuanxiRecoveryUsedThisRound))
+                {
+                    creature.consume_status_stacks("身法",1);
+                    Gain(u,1);state.ZhuanxiRecoveryUsedThisRound=true;
+                }
+            }
+        }
     }
-    public void ResponseResolved(GodotObject u,int blocked,int healthLost,bool chengji)
+    public void AfterSkillResolved(GodotObject u,ActiveSkillData? skill=null)
+    {
+        var state=For(u);skill??=state.PendingCard;if(skill is null)return;var key=ManaSkillKey(skill);
+        if(state.CurrentSkillPaidManaCap)
+        {
+            state.PendingManaCapPayments.Remove(key);
+            if(Main(u,"斫基损契玄经")&&HasPower(u,"斫基损契"))state.ManaConvertedSkillKeys.Add(key);
+            if(HasHeartUpgrade(u,"斫基损契玄经","zhuo_ji_c3")&&!state.CapPaidQiGrantedThisRound)
+            {
+                state.CapPaidQiGrantedThisRound=true;
+                if(manager.gain_battle_qi(u,1,out var completed))manager.show_status_gain(u,completed?"周天":"炁",1);
+            }
+        }
+        if(HasEffect(skill,"zhuo_ji_c2_jianzhu"))ArmForcedManaCapacityPayment(u);
+        if(!TalismanCombatCatalog.IsSkill(skill))AfterExpansionSkill(u,skill);
+        state.CurrentSkillPaidManaCap=false;state.CurrentManaConvertedSkillKey="";state.PendingManaBeforeSkillKey="";
+        if(state.PendingCard is not null&&ManaSkillKey(state.PendingCard)==key)state.PendingCard=null;
+    }
+    public bool PreventsResponse(GodotObject attacker,ActiveSkillData skill)
+    {
+        var state=For(attacker);
+        return skill.skill_name=="折锋"&&skill.source_gongfa_name=="斫基损契玄经"&&state.PendingCard is not null
+            &&ManaSkillKey(state.PendingCard)==ManaSkillKey(skill)&&state.CurrentSkillPaidManaCap;
+    }
+    public int TaiheFollowUpCount(GodotObject attacker,ActiveSkillData skill,bool targetResponded,bool initialSegmentCausedNoHealthDamage)
+    {
+        if(skill.skill_name!="乘势再攻"||skill.source_gongfa_name!=TaiheBook)return 0;
+        if(targetResponded)NotifyTaiheSelfResponse(attacker);
+        if(initialSegmentCausedNoHealthDamage)NotifyTaiheSelfResponse(attacker);
+        return (targetResponded?1:0)+(initialSegmentCausedNoHealthDamage?1:0);
+    }
+    public ActiveSkillData CreateTaiheFollowUpSegment(ActiveSkillData skill)
+    {
+        var followUp=skill.Duplicate() as ActiveSkillData??skill;
+        followUp.base_damage=0;
+        followUp.damage_bonuses=[];
+        followUp.special_effects=[];
+        followUp.status_effects=[];
+        followUp.combat_is_gongfa_bonus_damage_segment=true;
+        followUp.combat_is_blood_arm_segment=false;
+        followUp.combat_is_blood_arm_visual_segment=false;
+        return followUp;
+    }
+    public void ResponseResolved(GodotObject u,GodotObject? attacker,int blocked,int healthLost,bool chengji)
     {
         var state=For(u);
         if(chengji&&healthLost==0)Add(u,"借力",1);
@@ -297,6 +503,7 @@ public sealed class GongfaCombatRuntime
         }
         var response=state.PendingResponseCard;
         if(response is null)return;
+        ExpansionResponse(u,response,blocked);
         if(blocked>0&&HasEffect(response,"yinfu_c3_xieli")&&state.ResolvedResponseEffects.Add("yinfu_c3_xieli"))Add(u,"借力",1);
         if(healthLost>0&&HasEffect(response,"neijing_c2_xieli")&&state.ResolvedResponseEffects.Add("neijing_c2_xieli"))Add(u,"外伤",2);
     }
@@ -311,9 +518,52 @@ public sealed class GongfaCombatRuntime
         }
     }
     public int AdditionalResponseBlock(GodotObject u,ActiveSkillData card)=>For(u).ResponseTriggered&&ReferenceEquals(For(u).PendingResponseCard,card)?For(u).PendingResponseBlockBonus:0;
+    public bool HasPower(GodotObject u,string name)=>For(u).Powers.Contains(name);
+    public ActiveSkillData? GetLastNonResponseSkill(GodotObject u)=>For(u).LastNonResponseSkill;
+    public GodotObject? GrantLowestShieldAlly(GodotObject owner,int amount)
+    {
+        if(amount<=0)return null;
+        GodotObject? chosen=null;
+        var lowest=int.MaxValue;
+        uint tied=0;
+        var faction=owner.Get("faction").AsInt32();
+        foreach(var candidate in manager.get_target_candidates())
+        {
+            if(!GodotObject.IsInstanceValid(candidate)||candidate==owner||candidate.Get("current_health").AsInt32()<=0||candidate.Get("faction").AsInt32()!=faction)continue;
+            var shield=candidate.Get("shield").AsInt32();
+            if(shield<lowest){lowest=shield;chosen=candidate;tied=1;}
+            else if(shield==lowest&&GD.Randi()%(++tied)==0)chosen=candidate;
+        }
+        if(!GodotObject.IsInstanceValid(chosen))return null;
+        GrantShield(chosen!,amount);
+        return chosen;
+    }
+    private static void GrantShield(GodotObject target,int amount)
+    {
+        if(amount<=0)return;
+        target.Set("shield",(int)Math.Min(int.MaxValue,(long)Math.Max(0,target.Get("shield").AsInt32())+amount));
+        if(target.HasMethod("update_ui"))target.Call("update_ui");
+    }
+    public (int First,int Second) PreviewSequentialEnergyCosts(GodotObject u,ActiveSkillData first,ActiveSkillData second)
+    {
+        var discounts=For(u).Discounts;
+        var firstCost=SequentialEnergyCost(first,ref discounts,For(u).Boost);
+        var secondCost=SequentialEnergyCost(second,ref discounts,For(u).Boost);
+        return(firstCost,secondCost);
+    }
+    private static int SequentialEnergyCost(ActiveSkillData skill,ref int discounts,bool boost)
+    {
+        var discount=!CardRules.IsResponse(skill)&&discounts>0?1:0;
+        if(!CardRules.IsResponse(skill)&&discounts>0)discounts--;
+        if(skill.skill_name=="催血"&&boost)discount++;
+        return Math.Max(0,skill.energy_cost-discount);
+    }
     public void EndIncomingAttack(GodotObject u)
     {
-        var state=For(u);state.PendingResponseCard=null;state.PendingResponseBlockBonus=0;state.ResponseTriggered=false;state.ResolvedResponseEffects.Clear();
+        FinishExpansionIncoming(u);
+        var state=For(u);
+        FinishChemicalIncomingAttack(u);
+        state.PendingResponseCard=null;state.PendingResponseBlockBonus=0;state.ResponseTriggered=false;state.ResolvedResponseEffects.Clear();
     }
     private bool SpendYouhai(GodotObject u)
     {
@@ -356,8 +606,10 @@ public sealed class GongfaCombatRuntime
     private static bool TryBodyFoundation(GodotObject? unit,out float total)
     {
         total=0;
-        if(!GodotObject.IsInstanceValid(unit)||!HasReadableProperty(unit!,"physique")||!HasReadableProperty(unit!,"agility"))return false;
-        total=CardRules.Number(unit,"physique")+CardRules.Number(unit,"agility")+CardRules.Number(unit,"body_proficiency");
+        if(!GodotObject.IsInstanceValid(unit)||!HasReadableProperty(unit!,"physique")||!HasReadableProperty(unit!,"soul"))return false;
+        var physique=CardRules.Number(unit,"physique");
+        var soul=CardRules.Number(unit,"soul");
+        total=physique+Mathf.Min(physique*1.0f,soul*1.0f)+CardRules.Number(unit,"body_proficiency");
         return true;
     }
     private static bool HasReadableProperty(GodotObject unit,string key)
@@ -397,7 +649,8 @@ public sealed class GongfaCombatRuntime
         }
         var tempering=creature.get_combat_tempering_summary(card.source_gongfa_name);
         if(tempering.Length>0)description+="\n\n修持（仅战斗内）\n"+tempering;
-        var effect=new StatusEffect{effect_id="心法:"+card.skill_name,name=card.skill_name,description=description,max_stacks=1,duration_default=-1};
+        var displayDescription=string.IsNullOrWhiteSpace(description)?CardPresentation.Face(card,u):CardPresentation.Face(card,u,description);
+        var effect=new StatusEffect{effect_id="心法:"+card.skill_name,name=card.skill_name,description=displayDescription,max_stacks=1,duration_default=-1};
         creature.add_status(effect,-1,1,"power:"+card.skill_name,1,card.source_gongfa_name);
     }
 }

@@ -35,6 +35,7 @@ public partial class WorldNodeData : Resource
     [Export] public int danger_level = 1;
     [Export] public int population;
     [Export] public string faction_id = "";
+    [Export] public WorldConflictRules.Policy hostile_combat_policy = WorldConflictRules.Policy.Inherit;
     [Export(PropertyHint.MultilineText)] public string description = "";
     [Export] public Array<string> connected_nodes = [];
     /// <summary>地点内部空间；人物位置通过 node_id + subscene_id 保存。</summary>

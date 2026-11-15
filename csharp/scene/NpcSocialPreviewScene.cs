@@ -12,6 +12,7 @@ public partial class NpcSocialPreviewScene : Control
     private Control _setupRoot = null!;
     private WorldNpcData? _activeNpc;
     private bool _activeNpcInitiated;
+    private Character? _admissionPlayer;
 
     public override void _Ready()
     {
@@ -26,6 +27,7 @@ public partial class NpcSocialPreviewScene : Control
     public override void _ExitTree()
     {
         if (_player is not null && GodotObject.IsInstanceValid(_player)) _player.Free();
+        if (_admissionPlayer is not null && GodotObject.IsInstanceValid(_admissionPlayer)) _admissionPlayer.Free();
     }
 
     private void BuildTestPeople()
@@ -120,6 +122,7 @@ public partial class NpcSocialPreviewScene : Control
         AddTestButton("药材求购", "查看出售或婉拒，不交换财物", BeginPurchase);
         AddTestButton("旧事回顾", "查看聊过天、交过手、做过买卖后的重逢", BeginRecollection);
         AddTestButton("过月印象", "对照归纳前后，不推进正式时间", BeginImpression);
+        AddTestButton("山门迎真", "特殊交互试演，不办理入门", BeginAdmission);
         var back = MakeButton("返回首页");
         back.Pressed += () => GetTree().ChangeSceneToFile("res://tscn/scene/StartMenu.tscn");
         _menu.AddChild(back);
@@ -189,7 +192,7 @@ public partial class NpcSocialPreviewScene : Control
             $"陆清和想补充随身药材，愿以灵石 {NpcPurchaseRules.TestUnitPrice} 枚求购苦苔根一份。",
             new (string, Action)[] {
                 ("同意出售", () => {
-                    // 只复现已定义的两步表现，不调用库存、付款、体力或月度结算接口。
+                    // 只复现已定义的两步表现，不调用库存、付款、精力或月度结算接口。
                     NpcSocialRules.DecisionStep[] steps = [
                         new("purchase_supplied", "你递过药材，对方验看后收好。"),
                         new("purchase_paid", "对方依约递来灵石，双方核对妥当。") ];
@@ -285,6 +288,31 @@ public partial class NpcSocialPreviewScene : Control
         if (settled) NpcPlayerImpressionRules.SettleMonth(npc, 2);
         var response = NpcSocialRules.Evaluate(npc, _playerData, "introduce") with { ActionName = "闲谈" };
         _dialogue.show_social_result(npc, NpcPersonalRecallRules.Attach(npc, response, settled ? 2 : 1));
+    }
+
+    private void BeginAdmission()
+    {
+        _setupRoot.Hide();
+        if (_admissionPlayer is null)
+        {
+            var visitor = (HumanData)_playerData.Duplicate(true);
+            visitor.sect_affiliation_id = ""; visitor.sect_current_rank = "";
+            visitor.spirit_root_name = "土灵根（天灵根）";
+            _admissionPlayer = new Character { entity_name = visitor.entity_name, entity_data = visitor };
+        }
+        var elder = new WorldNpcData { npc_id = "preview_yuxu_gate_elder", npc_name = "接引长老",
+            faction_id = "yuxu_xianzong", formal_identity = "山门接引长老", cultivation_realm = "金丹圆满",
+            gender = 0, current_age = 120, appearance_seed = 761230 };
+        var visitorData = (HumanData)_admissionPlayer.entity_data!;
+        var evidence = new System.Collections.Generic.List<string>(visitorData.get_yuxu_gate_judgment_lines());
+        _dialogue.show_yuxu_admission_review(elder, evidence, () =>
+            _dialogue.show_yuxu_admission_question(elder, hasSect =>
+                _dialogue.show_yuxu_admission_result(elder, hasSect
+                    ? ["长老点了点头：‘既有所属，老夫便不相邀。小友请便。’"]
+                    : ["长老唤来接引弟子：‘小友既无宗门，便随他去办入门之礼。’"],
+                    () => { }, player: _admissionPlayer, testMode: true),
+                player: _admissionPlayer, testMode: true),
+            player: _admissionPlayer, testMode: true);
     }
 
     private static Button MakeButton(string text)

@@ -21,14 +21,21 @@ public partial class BattleInkCombatVfx : Node2D
     public static bool DealsDamage(ActiveSkillData skill) => !Mathf.IsZeroApprox(skill.base_damage)
         || skill.damage_bonuses.Count > 0 || !string.IsNullOrWhiteSpace(skill.damage_formula);
 
+    // Presentation only: self-directed buffs/utilities use the approved quiet recovery pose.
+    // Response cards retain their contact guard, even though they also target themselves.
+    private static bool IsSelfBuffPresentation(ActiveSkillData skill) => skill.target_type == 0
+        && !CardRules.IsResponse(skill)
+        && skill.skill_type is ActiveSkillData.SkillType.BUFF or ActiveSkillData.SkillType.SPECIAL or ActiveSkillData.SkillType.POWER;
+
     public static Kind Profile(ActiveSkillData skill)
     {
         var name = skill.skill_name;
-        if (!DealsDamage(skill)) return name is "回气" or "养息" or "调息" or "平息" or "去故" or "还阳" or "偃月" or "吐纳归元" or "聚息" or "回春丹"
+        if (!DealsDamage(skill)) return !CardRules.IsResponse(skill)
+            && (IsSelfBuffPresentation(skill) || name is "回气" or "养息" or "调息" or "平息" or "去故" or "还阳" or "偃月" or "吐纳归元" or "聚息" or "回春丹")
             ? Kind.Recovery : Kind.Guard;
         return name switch
         {
-            "雷击符" => Kind.Thunder,
+            "雷击符" or "惊蛰" => Kind.Thunder,
             "爆炎符" or "烈焰突刺" => Kind.Fire,
             "魂刺" => Kind.SoulNeedle,
             "摄魂" => Kind.SoulDraw,
@@ -37,7 +44,7 @@ public partial class BattleInkCombatVfx : Node2D
             "撕咬" or "裂喉" => Kind.Bite,
             "掠影扑杀" => Kind.Pounce,
             "拱撞" or "疾拱" => Kind.Charge,
-            "痛击" or "蓄势重击" or "撼山" or "合劲" or "引筋" => Kind.Heavy,
+            "痛击" or "蓄势重击" or "血臂撼岳" or "撼山" or "合劲" or "引筋" => Kind.Heavy,
             "发劲" or "挟势" => Kind.Release,
             "解形" or "冯虚" or "百骸" => Kind.Flow,
             "突刺" => Kind.Thrust,
@@ -47,7 +54,11 @@ public partial class BattleInkCombatVfx : Node2D
         };
     }
 
-    public static string Describe(ActiveSkillData skill) => Profile(skill) switch
+    public static string Describe(ActiveSkillData skill) => IsJingzhe(skill)
+        ? "原地提指引雷，冰白雷芯裹着灰蓝雷柱自上向下贯落，短停后分叉余电收散。"
+        : UsesHandChop(skill)
+        ? "侧向下劈姿势配合淡彩水墨序列帧，接触处短停、小范围墨花与自然漂散。"
+        : Profile(skill) switch
     {
         Kind.Strike => "短促顿笔沿出手方向推进，接触处积墨压缩，再向受力方向散开。",
         Kind.Release => "前窄后厚的劲墨推出，落点凝成浓墨，余劲拖出枯笔。",
@@ -63,8 +74,8 @@ public partial class BattleInkCombatVfx : Node2D
         Kind.Pounce => "扑势顺行进方向掠入，三道枯墨撕痕错开收锋。",
         Kind.Charge => "低伏宽墨沿冲撞方向压入，接触处形成厚重顿笔，余墨沉落。",
         Kind.Thrust => "细长直锋沿攻击方向刺入，接触处留下尖锐枯笔。",
-        Kind.Recovery => "淡墨缓缓向内回收，再沿身侧上浮，表现吐纳与回复。",
-        _ => "身侧两道湿墨收拢为护持笔势，受力方向短促积墨。"
+        Kind.Recovery => "轻收手臂调息，局部淡青气息回拢与细小叶屑衔接回待机。",
+        _ => "架挡姿势与淡彩弧形笔势，接触处短促积墨，余劲自然收淡。"
     };
 
     public static float HitWeight(ActiveSkillData skill) => Profile(skill) switch
@@ -75,7 +86,9 @@ public partial class BattleInkCombatVfx : Node2D
     };
 
     public static float ContactHoldSeconds(float weight, bool critical = false) =>
-        Mathf.Clamp(0.055f * weight, 0.045f, 0.09f) + (critical ? 0.025f : 0f);
+        Mathf.Clamp(0.12f * weight, 0.10f, 0.18f) + (critical ? 0.035f : 0f);
+
+    public static float AttackContactSeconds(GodotObject attacker) => attacker is Node2D node && SideDoll(node) is not null ? .30f : ContactSeconds;
 
     public static Vector2 Anchor(Node2D unit, bool head = false) => unit.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll") is { } doll
         ? doll.combat_anchor(head) : unit.GlobalPosition + new Vector2(0f, head ? -202f : -112f);
@@ -83,19 +96,31 @@ public partial class BattleInkCombatVfx : Node2D
     public static BattleInkCombatVfx? PlayAttack(GodotObject attacker, GodotObject target, ActiveSkillData skill)
     {
         if (attacker is not Node2D from || target is not Node2D to || !DealsDamage(skill)) return null;
+        if (UsesForestBeiCry(from, skill)) return PlayForestBeiCry(from, to, skill);
+        if(UsesSwordEffects(attacker,skill))return PlaySwordAttack(from,skill);
+        if (IsJingzhe(skill) && to.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll") is { } lightningTarget) return PlayJingzhe(from, to, lightningTarget);
+        if (SideDoll(from) is { } side && UsesHandChop(skill)) return PlayHandChop(side, skill);
         var kind = Profile(skill);
-        var start = Anchor(from);
+        if (IsForestWolfAttack(from, kind)) return PlayForestWolfAttack(from, to, skill, kind);
+        var start = UsesThrowCast(skill) && SideDoll(from) is { } thrower ? thrower.throw_cast_origin() : Anchor(from);
         var end = Anchor(to, kind is Kind.SoulNeedle or Kind.SoulDraw);
         if (kind == Kind.Thunder) start = end + Vector2.Up * 250f;
         var offset = end - start;
         var distance = offset.Length();
         var direction = distance > 0.1f ? offset / distance : Facing(from);
         var height = kind is Kind.Heavy or Kind.Charge or Kind.SpiritBurst ? 230f : 174f;
+        if (skill.attack_style == "ranged" && skill.ranged_delivery == "direct")
+        {
+            var direct = Spawn(end, new Vector2(220f, height), 0f, kind, 1, 0.34f, skill);
+            if (direct is not null) { direct._holdAt = 0.02f; direct._hold = 0.06f; }
+            return direct;
+        }
         var effect = Spawn((start + end) * 0.5f, new Vector2(Mathf.Max(distance, 1f) + 100f, height), direction.Angle(), kind, 0, 0.44f, skill);
         if (effect is null) return null;
         effect._material!.SetShaderParameter("travel_span", distance / (distance + 100f));
-        effect._material.SetShaderParameter("contact_progress", ContactSeconds / effect._duration);
-        effect._holdAt = ContactSeconds;
+        var contact = AttackContactSeconds(attacker);
+        effect._material.SetShaderParameter("contact_progress", contact / effect._duration);
+        effect._holdAt = contact;
         effect._hold = 0.035f + ContactHoldSeconds(HitWeight(skill));
         return effect;
     }
@@ -103,7 +128,30 @@ public partial class BattleInkCombatVfx : Node2D
     public static void PlayImpact(GodotObject target, ActiveSkillData? skill = null, GodotObject? attacker = null, bool critical = false, bool evaded = false, int segment = 0)
     {
         if (target is not Node2D to) return;
+        if (evaded && SideDoll(to) is { } dodger) { PlayDodge(dodger); EmphasizeContact(attacker, to, .7f); return; }
+        if (SideDoll(to) is { } guarding&&guarding.is_defense_presenting()) { PlaySwordGuardContact(guarding);EmphasizeContact(attacker, to, .9f); return; }
+        EmphasizeContact(attacker, to, skill is null ? 1 : HitWeight(skill));
+        if (!evaded && skill is not null && attacker is Node2D bei && UsesForestBeiCry(bei, skill))
+        { PlayForestBeiContact(bei, to, skill, critical); return; }
+        if(skill is not null&&attacker is Node2D swordActor&&UsesSwordEffects(attacker,skill))
+        {PlaySwordContact(swordActor,to,skill,critical,segment);return;}
+        if (skill is not null && IsJingzhe(skill) && to.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll") is { } lightningTarget)
+        {
+            PlayJingzheContact(to, lightningTarget);
+            return;
+        }
         var kind = skill is null ? Kind.Strike : Profile(skill);
+        if (!evaded && skill is not null && attacker is Node2D wolf && IsForestWolfAttack(wolf, kind))
+        {
+            PlayForestWolfContact(wolf, to, skill, kind, critical, segment);
+            return;
+        }
+        if (!evaded && SideDoll(to) is { } side
+            && (skill is null || UsesHandChop(skill)))
+        {
+            PlayChopContact(side, skill, critical, segment);
+            return;
+        }
         var end = Anchor(to, kind is Kind.SoulNeedle or Kind.SoulDraw);
         var offset = attacker is Node2D from ? end - Anchor(from) : Facing(to);
         var direction = offset.LengthSquared() > 0.01f ? offset.Normalized() : Vector2.Right;
@@ -121,6 +169,15 @@ public partial class BattleInkCombatVfx : Node2D
     public static void PlayUtility(GodotObject caster, GodotObject target, ActiveSkillData skill)
     {
         if (caster is not Node2D from || DealsDamage(skill)) return;
+        if (IsForestBeiPackCall(skill) && from.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.uses_forest_bei_portrait() == true)
+        { PlayForestBeiCall(from); return; }
+        if(PlaySwordUtility(from,skill))return;
+        if (SideDoll(from) is { } side)
+        {
+            if (Profile(skill) == Kind.Recovery) PlayRecovery(from);
+            else PlayGuard(side, CardRules.IsResponse(skill));
+            return;
+        }
         Spawn(Anchor(from), new Vector2(210f, 280f), 0f, Profile(skill), 2, 0.62f, skill);
     }
 
@@ -145,7 +202,7 @@ public partial class BattleInkCombatVfx : Node2D
 
     private static Vector2 Facing(Node2D unit) => unit is Creature creature && creature.faction == (int)WorldEntity.Faction.ENEMY ? Vector2.Left : Vector2.Right;
 
-    private static BattleInkCombatVfx? Spawn(Vector2 position, Vector2 size, float rotation, Kind kind, int phase, float duration, ActiveSkillData? skill = null, bool critical = false)
+    private static BattleInkCombatVfx? Spawn(Vector2 position, Vector2 size, float rotation, Kind kind, int phase, float duration, ActiveSkillData? skill = null, bool critical = false, Shader? presentationShader = null)
     {
         if (_active >= Capacity || Engine.GetMainLoop() is not SceneTree tree || tree.CurrentScene is null) return null;
         _shader ??= GD.Load<Shader>("res://shaders/battle_ink_action.gdshader");
@@ -158,14 +215,14 @@ public partial class BattleInkCombatVfx : Node2D
             image.Dispose();
         }
         // Formation actors use depth 565–720; strokes must remain above them and below damage labels.
-        var effect = new BattleInkCombatVfx { Name = "CombatInk", _duration = duration, ProcessMode = ProcessModeEnum.Pausable, ZIndex = 900, ZAsRelative = false };
+        var effect = new BattleInkCombatVfx { Name = "CombatInk", _duration = duration, ProcessMode = ProcessModeEnum.Pausable, ZIndex = BattlePresentationLayers.Effects, ZAsRelative = false };
         tree.CurrentScene.AddChild(effect);
         effect.AddToGroup("battle_action_visuals");
         effect.GlobalPosition = position;
         effect.GlobalRotation = rotation;
         _active++; effect._registered = true;
         _sequence++;
-        effect._material = new ShaderMaterial { Shader = _shader };
+        effect._material = new ShaderMaterial { Shader = presentationShader ?? _shader };
         effect._material.SetShaderParameter("ink_noise", BattleInkRibbon.SharedNoise);
         effect._material.SetShaderParameter("ink_color", phase == 3 ? new Color(0.08f, 0.09f, 0.08f, 0.92f) : Ink(kind, skill));
         effect._material.SetShaderParameter("kind", (float)kind);
@@ -173,12 +230,16 @@ public partial class BattleInkCombatVfx : Node2D
         effect._material.SetShaderParameter("critical", critical ? 1f : 0f);
         effect._material.SetShaderParameter("seed_value", (_sequence * 137u % 997u) * 0.007f);
         effect._material.SetShaderParameter("progress", 0f);
-        effect.AddChild(new Sprite2D { Name = "InkSurface", Texture = _carrier, Scale = size / 8f, Material = effect._material });
+        if (presentationShader is not null)
+            effect.AddChild(new ColorRect { Name = "InkSurface", Position = -size * .5f, Size = size, Material = effect._material, MouseFilter = Control.MouseFilterEnum.Ignore });
+        else
+            effect.AddChild(new Sprite2D { Name = "InkSurface", Texture = _carrier, Scale = size / 8f, Material = effect._material });
         return effect;
     }
 
     public override void _Process(double delta)
     {
+        if (_sequenceSprite is not null) { ProcessSequence((float)delta); return; }
         _elapsed += (float)delta;
         var local = Mathf.Max(0f, _elapsed - _delay);
         // 命中停顿只改变画面进度；管理器等待整个特效结束后再推进下一行动。

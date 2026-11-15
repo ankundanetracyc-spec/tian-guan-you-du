@@ -1,0 +1,2120 @@
+{
+  "date": "2026-11-09",
+  "note": "只迁移目录及重定位引用；after_sha256为迁移完成时的内容校验值。初次扫描遇到并行保存后停止，续跑保留最新保存内容。",
+  "moves": [
+    {
+      "old": "docs/plans/.$玄镜序章与本家自治流程.drawio.bkp",
+      "new": "docs/归档/目录整理_20261109/编辑器备份/.$玄镜序章与本家自治流程.drawio.bkp",
+      "before_sha256": "d2720870f11f32ee21c4d4a7dc46ed6d528ecd3f1570243a27a15b04df28b050",
+      "after_sha256": "d2720870f11f32ee21c4d4a7dc46ed6d528ecd3f1570243a27a15b04df28b050"
+    },
+    {
+      "old": "docs/.$世界地图九域功能底稿.drawio.bkp",
+      "new": "docs/归档/目录整理_20261109/编辑器备份/.$世界地图九域功能底稿.drawio.bkp",
+      "before_sha256": "1889b5d17f3817bfd0abdd6e21b91e75405f75a51ce2e57ead6cbe2c2e8f86c3",
+      "after_sha256": "1889b5d17f3817bfd0abdd6e21b91e75405f75a51ce2e57ead6cbe2c2e8f86c3"
+    },
+    {
+      "old": "docs/.$昭明纪环海大世界地图底稿.drawio.bkp",
+      "new": "docs/归档/目录整理_20261109/编辑器备份/.$昭明纪环海大世界地图底稿.drawio.bkp",
+      "before_sha256": "16baaabb8f588e2826af90c51a8c03049e8aaefe95bd54c1b5058f654ad14128",
+      "after_sha256": "16baaabb8f588e2826af90c51a8c03049e8aaefe95bd54c1b5058f654ad14128"
+    },
+    {
+      "old": "docs/个人修仙项目介绍.docx",
+      "new": "docs/plans/总纲与流程/个人修仙项目介绍.docx",
+      "before_sha256": "896c7e48f48a17f5e2b9b4a00329453ad5620f6ffdde1140fdf5827cdb6c7c2b",
+      "after_sha256": "896c7e48f48a17f5e2b9b4a00329453ad5620f6ffdde1140fdf5827cdb6c7c2b"
+    },
+    {
+      "old": "docs/战斗状态与Buff词典.xlsx",
+      "new": "docs/plans/战斗与构筑/历史表格/战斗状态与Buff词典.xlsx",
+      "before_sha256": "83d4f87feaa07e6b246032ac13ad5004fde6a341765f63e9242e4244d7c3a586",
+      "after_sha256": "83d4f87feaa07e6b246032ac13ad5004fde6a341765f63e9242e4244d7c3a586"
+    },
+    {
+      "old": "docs/战斗状态与Buff词典_队列制Buff草案.xlsx",
+      "new": "docs/plans/战斗与构筑/历史表格/战斗状态与Buff词典_队列制Buff草案.xlsx",
+      "before_sha256": "1146616753bc040bcfb09c2c674f89003fdfe88e5e8c9863d1b6b2e6a7404681",
+      "after_sha256": "1146616753bc040bcfb09c2c674f89003fdfe88e5e8c9863d1b6b2e6a7404681"
+    },
+    {
+      "old": "docs/物品词缀与云息七层定基设计.xlsx",
+      "new": "docs/plans/物品与装备/历史表格/物品词缀与云息七层定基设计.xlsx",
+      "before_sha256": "4f656227da4c9d91a1eac64b933a0b1a062e2210dc505879ed7cbf3e45e09c0b",
+      "after_sha256": "4f656227da4c9d91a1eac64b933a0b1a062e2210dc505879ed7cbf3e45e09c0b"
+    },
+    {
+      "old": "docs/通用物品词缀与材料生态设计.xlsx",
+      "new": "docs/plans/物品与装备/历史表格/通用物品词缀与材料生态设计.xlsx",
+      "before_sha256": "dfff49fa1a6bd11b375f36368b578899b204080e091562412916eb7a2a225c17",
+      "after_sha256": "dfff49fa1a6bd11b375f36368b578899b204080e091562412916eb7a2a225c17"
+    },
+    {
+      "old": "docs/锻躯气血体系卡牌规划.xlsx",
+      "new": "docs/plans/战斗与构筑/历史表格/锻躯气血体系卡牌规划.xlsx",
+      "before_sha256": "86e062ed0610590e5599278ac58b575b5f811608eaf025e02fb6da189886f8da",
+      "after_sha256": "86e062ed0610590e5599278ac58b575b5f811608eaf025e02fb6da189886f8da"
+    },
+    {
+      "old": "docs/锻躯气血体系卡牌规划_队列制Buff草案.xlsx",
+      "new": "docs/plans/战斗与构筑/历史表格/锻躯气血体系卡牌规划_队列制Buff草案.xlsx",
+      "before_sha256": "190e192151c0f80bd00c9d2c35643d10dafaa3f750b6b48001c474a1497221a0",
+      "after_sha256": "190e192151c0f80bd00c9d2c35643d10dafaa3f750b6b48001c474a1497221a0"
+    },
+    {
+      "old": "docs/预览_昭明界九州广袤布局_8000.png",
+      "new": "docs/plans/世界与探索/历史地图/预览_昭明界九州广袤布局_8000.png",
+      "before_sha256": "83511e98f364c9fe2c59c65def93b89f0203b7b072057a8a677553bf2db0b09b",
+      "after_sha256": "83511e98f364c9fe2c59c65def93b89f0203b7b072057a8a677553bf2db0b09b"
+    },
+    {
+      "old": "docs/预览_昭明界九州广袤布局草图.png",
+      "new": "docs/plans/世界与探索/历史地图/预览_昭明界九州广袤布局草图.png",
+      "before_sha256": "053555754ad2c017a05a0de05555b4a724a3fd926aa8a2c25f81b1739511046e",
+      "after_sha256": "053555754ad2c017a05a0de05555b4a724a3fd926aa8a2c25f81b1739511046e"
+    },
+    {
+      "old": "docs/预览_昭明纪简略地图_州界道路山脉.png",
+      "new": "docs/plans/世界与探索/历史地图/预览_昭明纪简略地图_州界道路山脉.png",
+      "before_sha256": "42f5536ca7a611043f052f5763ceba261d6d89d420521239986cb5957199822f",
+      "after_sha256": "42f5536ca7a611043f052f5763ceba261d6d89d420521239986cb5957199822f"
+    },
+    {
+      "old": "docs/plans/东林地三处遭遇与判定属性提示_20261027.md",
+      "new": "docs/plans/世界与探索/东林地三处遭遇与判定属性提示_20261027.md",
+      "after_sha256": "8ba1ef5216790a50db86c4f5a06015cb32e5306e28a48f4393fa6a0a5e9e4b66"
+    },
+    {
+      "old": "docs/plans/东林地外围扩图与镜头实施.md",
+      "new": "docs/plans/世界与探索/东林地外围扩图与镜头实施.md",
+      "after_sha256": "4fd551bbdb7acfc5a9068933b501a11d85a644d9a6e61d2e479b824275a5a7af"
+    },
+    {
+      "old": "docs/plans/东林地委托回宗闭环与探索补充.md",
+      "new": "docs/plans/世界与探索/东林地委托回宗闭环与探索补充.md",
+      "after_sha256": "e3840a96c3aa8aea46d8660453a8a013071204cce3ed2a6e50e95af808ee177a"
+    },
+    {
+      "old": "docs/plans/东林地战斗历练与事件串联提案_20261026.md",
+      "new": "docs/plans/世界与探索/东林地战斗历练与事件串联提案_20261026.md",
+      "after_sha256": "d8596dc1971d831615d1bdc2da3b58f02db2ae3bf5ed00f4bb88600bc80fb217"
+    },
+    {
+      "old": "docs/plans/东林地疏路分区与抵达旁白_20261026.md",
+      "new": "docs/plans/世界与探索/东林地疏路分区与抵达旁白_20261026.md",
+      "after_sha256": "b813772f2e997d492aedfa7dfad34fb943600f2f9d163727ae279d4302136138"
+    },
+    {
+      "old": "docs/plans/东林地节点行动短测与界面.md",
+      "new": "docs/plans/世界与探索/东林地节点行动短测与界面.md",
+      "after_sha256": "94475d9e44b0338288ce0d638e15165f46d7d2f1c0730002534a3511eab10931"
+    },
+    {
+      "old": "docs/plans/云阙州_地点旅行与NPC月度演算规划.md",
+      "new": "docs/plans/世界与探索/云阙州_地点旅行与NPC月度演算规划.md",
+      "after_sha256": "8f124779432e7670b095beb0faa0f50dd1d9f2d58a3e7839ffed6ebbf15ce2b7"
+    },
+    {
+      "old": "docs/plans/云阙州_首期势力与归属规划.md",
+      "new": "docs/plans/世界与探索/云阙州_首期势力与归属规划.md",
+      "after_sha256": "84427b8442b841cf91b3c70de66fe7c490bdddcd2ba0e962ec0c4c46b71898ec"
+    },
+    {
+      "old": "docs/plans/副本事件条件判定与后续窗口_20261026.md",
+      "new": "docs/plans/世界与探索/副本事件条件判定与后续窗口_20261026.md",
+      "after_sha256": "fbcdc058d735d8a88d5ae534d527e410eadd0f6354b747f7f3801830267955d2"
+    },
+    {
+      "old": "docs/plans/副本入口与镜头交互修复_20261011.md",
+      "new": "docs/plans/世界与探索/副本入口与镜头交互修复_20261011.md",
+      "after_sha256": "95e115ac939af46365123e47f720ffbc956e86d18d98075288c7d31a4394d77e"
+    },
+    {
+      "old": "docs/plans/副本四格视野与直接行动_20261011.md",
+      "new": "docs/plans/世界与探索/副本四格视野与直接行动_20261011.md",
+      "after_sha256": "3baca66e77f6f7ace66f16a8eb6128449535b61e99f2ca983f12a5fd907a3a08"
+    },
+    {
+      "old": "docs/plans/副本生态来源刷新与多层地图提案.md",
+      "new": "docs/plans/世界与探索/副本生态来源刷新与多层地图提案.md",
+      "after_sha256": "83145f0ea527ec69a3aa973d7219bf0deef04c9eb302d130dcb8bd8157eefe84"
+    },
+    {
+      "old": "docs/plans/副本种子地图与扩展地形实施.md",
+      "new": "docs/plans/世界与探索/副本种子地图与扩展地形实施.md",
+      "after_sha256": "d41184c21fe90c0a2d9ed3d0c31939d7528877cffa4dc0c2a4b78850e5d8e1a4"
+    },
+    {
+      "old": "docs/plans/单路线小副本与就地交互设计_20261025.md",
+      "new": "docs/plans/世界与探索/单路线小副本与就地交互设计_20261025.md",
+      "after_sha256": "06c6e2bae73045b21d1dcdc51d426a780ed6a3ca59fb445c81f537553b412abb"
+    },
+    {
+      "old": "docs/plans/地图节点表现与地点粒度规划.md",
+      "new": "docs/plans/世界与探索/地图节点表现与地点粒度规划.md",
+      "after_sha256": "cbf3c9f4494c01358e69b9f96025e0e30f3fdefee7de7eacca055fb9e911e41e"
+    },
+    {
+      "old": "docs/plans/地点模板与节点互动框架.md",
+      "new": "docs/plans/世界与探索/地点模板与节点互动框架.md",
+      "after_sha256": "9123bf4e11d962ca782c8a55b87f072ee7f4e480f225f15598545683b495f4e0"
+    },
+    {
+      "old": "docs/plans/大世界显示层级修复_20261013.md",
+      "new": "docs/plans/世界与探索/大世界显示层级修复_20261013.md",
+      "after_sha256": "45ebe0e88429dd9d35e02f01c4974cd958843484c6072564754ea3f2fa4e9c00"
+    },
+    {
+      "old": "docs/plans/大世界术法系统设计.md",
+      "new": "docs/plans/世界与探索/大世界术法系统设计.md",
+      "after_sha256": "d36410c93d9d65d2cb962504d6b56eb2176cfe754280d0e6b8996e6ebb3a6227"
+    },
+    {
+      "old": "docs/plans/大世界角色状态系统设计.md",
+      "new": "docs/plans/世界与探索/大世界角色状态系统设计.md",
+      "after_sha256": "f9d36d7bd5ccacc6d5d9174e4496e8abb96472f221754cf69c5f192614017d61"
+    },
+    {
+      "old": "docs/plans/大陆格局与百川区域设计.md",
+      "new": "docs/plans/世界与探索/大陆格局与百川区域设计.md",
+      "after_sha256": "319952eddf7e1f2ac747f812212353050f5566bcb480d24820b197ecaad731b8"
+    },
+    {
+      "old": "docs/plans/妖精魔鬼生灵设计汇总.md",
+      "new": "docs/plans/世界与探索/妖精魔鬼生灵设计汇总.md",
+      "after_sha256": "bed7172e654945f0bd6de8b7e0b248d445c439743c302e4b8a5939b68a53b933"
+    },
+    {
+      "old": "docs/plans/昭明界九州格局与势力设计.md",
+      "new": "docs/plans/世界与探索/昭明界九州格局与势力设计.md",
+      "after_sha256": "ddd6aef768454b728ab1783a1050c65d649dcfb6073e82add1095f4ad2351742"
+    },
+    {
+      "old": "docs/plans/林中遇狼首个完整事件设计_20261026.md",
+      "new": "docs/plans/世界与探索/林中遇狼首个完整事件设计_20261026.md",
+      "after_sha256": "54a482f4562ca319ea7523ed6484b01e907ce5cdc066954e8fc252c58bc61fa1"
+    },
+    {
+      "old": "docs/plans/林地妖狈与狈首机制设计_20261025.md",
+      "new": "docs/plans/世界与探索/林地妖狈与狈首机制设计_20261025.md",
+      "after_sha256": "69cac1af9c48676f1b704f3ea9d7dacdcb2f6f9d86b2d1aa2a8b45454aa21624"
+    },
+    {
+      "old": "docs/plans/游戏历法与纪年显示.md",
+      "new": "docs/plans/世界与探索/游戏历法与纪年显示.md",
+      "after_sha256": "b394d5bee41dfd8493d628d4dca2c6cf1dec6e53e4df03cafd393ef34879864b"
+    },
+    {
+      "old": "docs/plans/百川NPC大世界人物形象统一_20261106.md",
+      "new": "docs/plans/世界与探索/百川NPC大世界人物形象统一_20261106.md",
+      "after_sha256": "b6b0aca643775782eb72b085f7881fddd177bc393aeda79b4bd29f57a6ee18fd"
+    },
+    {
+      "old": "docs/plans/百川三倍地图与固定人物_20261106.md",
+      "new": "docs/plans/世界与探索/百川三倍地图与固定人物_20261106.md",
+      "after_sha256": "9baf1134a19216ffbdb52f0c5258381c08bcbd8eacf0576e94c3f40001cf6f6c"
+    },
+    {
+      "old": "docs/plans/百川三极布局与政策地理修订_20261027.md",
+      "new": "docs/plans/世界与探索/百川三极布局与政策地理修订_20261027.md",
+      "after_sha256": "091d3b5f64d4f8a08427550b0d99cd5dd8e0f7ab6a6af50ae85272b11e782fcd"
+    },
+    {
+      "old": "docs/plans/百川九宫格背景与地图分层方案_20261027.md",
+      "new": "docs/plans/世界与探索/百川九宫格背景与地图分层方案_20261027.md",
+      "after_sha256": "9b2ae5fee40ddc14296596daea8a0b47ed93ee54af4042a5a71ee292c542e826"
+    },
+    {
+      "old": "docs/plans/百川人口规模与过月性能_20261011.md",
+      "new": "docs/plans/世界与探索/百川人口规模与过月性能_20261011.md",
+      "after_sha256": "a3487c36749903b7eb5d17fd9292d247b434e9b1b01c7275be2e8944c84de0cf"
+    },
+    {
+      "old": "docs/plans/百川全域自由行旅_20261104.md",
+      "new": "docs/plans/世界与探索/百川全域自由行旅_20261104.md",
+      "after_sha256": "1a4249dfda5bca6f49c768e9e3ac0b208f18da716060a591f738673e83492d01"
+    },
+    {
+      "old": "docs/plans/百川八千公里3x3紧凑地图_20261104.md",
+      "new": "docs/plans/世界与探索/百川八千公里3x3紧凑地图_20261104.md",
+      "after_sha256": "3053cff2715e3ad97f48b0dedba17821a914ffa5a3bce3f16ad338f9afa8af3c"
+    },
+    {
+      "old": "docs/plans/百川势力与节点分布规划_20261027.md",
+      "new": "docs/plans/世界与探索/百川势力与节点分布规划_20261027.md",
+      "after_sha256": "71ac0a1e2df73ddfa5955eb3e91cb9b5400b67721a6d2c9142dbe7857d114de6"
+    },
+    {
+      "old": "docs/plans/百川区域仙盟大势力与天人议盟规划.md",
+      "new": "docs/plans/世界与探索/百川区域仙盟大势力与天人议盟规划.md",
+      "after_sha256": "23ad9704d24139f389c055c9650e25b377fee9b079f2e208c821070d6c57bcde"
+    },
+    {
+      "old": "docs/plans/百川原始底稿纸墨手动修订_20261104.md",
+      "new": "docs/plans/世界与探索/百川原始底稿纸墨手动修订_20261104.md",
+      "after_sha256": "8493b8d3073f8f1438466b7c4ac6be78e9af6aaadd1b7e23047dab7d0d489317"
+    },
+    {
+      "old": "docs/plans/百川原山接地与俯视桥_20261109.md",
+      "new": "docs/plans/世界与探索/百川原山接地与俯视桥_20261109.md",
+      "after_sha256": "9037b921c2ec2e8d9757a86a81cb0250edb168c0295bf1de08b32b67160ba476"
+    },
+    {
+      "old": "docs/plans/百川命名与资源归属修订_20261027.md",
+      "new": "docs/plans/世界与探索/百川命名与资源归属修订_20261027.md",
+      "after_sha256": "724e1062e818d63e7d07403e36d72e1ad651fc577b374296df1ae4bad2dcbaf3"
+    },
+    {
+      "old": "docs/plans/百川固定方格世界地图设计.md",
+      "new": "docs/plans/世界与探索/百川固定方格世界地图设计.md",
+      "after_sha256": "34771d76cd24ee7bfecdbe451962192942f02f408d9cca5031320de54f215f91"
+    },
+    {
+      "old": "docs/plans/百川地形速度差首版_20261105.md",
+      "new": "docs/plans/世界与探索/百川地形速度差首版_20261105.md",
+      "after_sha256": "9c7648f9f6cab7b8facd3d8bf343bb333baa011576932e6dc8ec8b89729e06a0"
+    },
+    {
+      "old": "docs/plans/百川地貌与主通路规划_20261027.md",
+      "new": "docs/plans/世界与探索/百川地貌与主通路规划_20261027.md",
+      "after_sha256": "4c3340e00b5943b2e03357ec1748fea50573a786d9e928ae909c7bf423a1806c"
+    },
+    {
+      "old": "docs/plans/百川城镇与野外节点名录草案_20261027.md",
+      "new": "docs/plans/世界与探索/百川城镇与野外节点名录草案_20261027.md",
+      "after_sha256": "2c773060f49fbe4311f9645a9aba9cfb4b18890fffa034870a94bd1792a16ba3"
+    },
+    {
+      "old": "docs/plans/百川宗门站队与城镇轮值及资源节点规划_20261027.md",
+      "new": "docs/plans/世界与探索/百川宗门站队与城镇轮值及资源节点规划_20261027.md",
+      "after_sha256": "6f9cb472727feeeea14988b6aecec8e5d858fc0f199225cad4195493e16ece37"
+    },
+    {
+      "old": "docs/plans/百川山林接地样区_20261106.md",
+      "new": "docs/plans/世界与探索/百川山林接地样区_20261106.md",
+      "after_sha256": "4900110ea7158c16329cc7348a77720469877c82d90f2d6a300b1ff15ddc4faf"
+    },
+    {
+      "old": "docs/plans/百川旅途随机遭遇_20261101.md",
+      "new": "docs/plans/世界与探索/百川旅途随机遭遇_20261101.md",
+      "after_sha256": "666019e6cf65a15d6e9a9b3d58b1dad76f128eb8e7399adf760a4755c4fd7d0d"
+    },
+    {
+      "old": "docs/plans/百川桥位山口与行旅结构_20261027.md",
+      "new": "docs/plans/世界与探索/百川桥位山口与行旅结构_20261027.md",
+      "after_sha256": "4efd7f8a4a23784198570ed553dceeb87dd0e058e1087c7b0464696e5fe85132"
+    },
+    {
+      "old": "docs/plans/百川模板随机地物生成_20261009.md",
+      "new": "docs/plans/世界与探索/百川模板随机地物生成_20261009.md",
+      "after_sha256": "eed3992114ec2c6b70682fad8422020f6d72afbf5cedf9e19ba745ece0fc8ef1"
+    },
+    {
+      "old": "docs/plans/百川正式节点接入地点对照_20261031.json",
+      "new": "docs/plans/世界与探索/百川正式节点接入地点对照_20261031.json",
+      "after_sha256": "808ae29a5680dc274e79b7cd69d00e336b66050b249d8b7646728b4b2ae44a91"
+    },
+    {
+      "old": "docs/plans/百川知名资源产地与宗门供给规划_20261027.md",
+      "new": "docs/plans/世界与探索/百川知名资源产地与宗门供给规划_20261027.md",
+      "after_sha256": "cd84d9ef253ba88ed2f460d22869afd0891f26687a62eca7886a6d274fe50e65"
+    },
+    {
+      "old": "docs/plans/百川短峰层叠与俯视桥_20261109.md",
+      "new": "docs/plans/世界与探索/百川短峰层叠与俯视桥_20261109.md",
+      "after_sha256": "e6c358c8d9619497ca0165a997ddbfe34fde98dcaf0b26b987c4f352563d1437"
+    },
+    {
+      "old": "docs/plans/百川纸墨地域与景物分层改造_20261104.md",
+      "new": "docs/plans/世界与探索/百川纸墨地域与景物分层改造_20261104.md",
+      "after_sha256": "ac8dc8d15962887f152a29f321e5ab69af6dacd2f4046dee0c59f2d06ee838a4"
+    },
+    {
+      "old": "docs/plans/百川节点分层与过渡路线规划_20261027.md",
+      "new": "docs/plans/世界与探索/百川节点分层与过渡路线规划_20261027.md",
+      "after_sha256": "66507058120759ffa69b44dcb8fcd8eeab0182f3fc90ab8c8e998c20d7996bf0"
+    },
+    {
+      "old": "docs/plans/百川高清分层与显示尺度_20261106.md",
+      "new": "docs/plans/世界与探索/百川高清分层与显示尺度_20261106.md",
+      "after_sha256": "40b3f0e5b8352f67ee2b43241e8da04e81ab874b376f043b87f3afb3c4354083"
+    },
+    {
+      "old": "docs/plans/雾隐幽谷首期动态野外历练实施_20261015.md",
+      "new": "docs/plans/世界与探索/雾隐幽谷首期动态野外历练实施_20261015.md",
+      "after_sha256": "0ba401c9ff9b9eeda405e5e3504303cfc60ecb52df727eb0ed52e2e3aa85be90"
+    },
+    {
+      "old": "docs/plans/青溪醒来至玉虚山门主线衔接_20261103.md",
+      "new": "docs/plans/世界与探索/青溪醒来至玉虚山门主线衔接_20261103.md",
+      "after_sha256": "1b00e1d9e8df9dd2aeb300971a6c38337a2e1aae8b454b98c593b2e9e77a3e7c"
+    },
+    {
+      "old": "docs/lore/大世界地图叙事补编.md",
+      "new": "docs/plans/世界与探索/世界观资料/大世界地图叙事补编.md",
+      "after_sha256": "e1f1883adf1ba0292b8a89c96842db01a60b80f375c6e76f6d326cda2974233d"
+    },
+    {
+      "old": "docs/lore/背景设定.txt",
+      "new": "docs/plans/世界与探索/世界观资料/背景设定.txt",
+      "after_sha256": "aef171c7fd8be943b88a11f891a46902aebc25cb61d888fa4dd90675c34c21b4"
+    },
+    {
+      "old": "docs/世界地图九域功能底稿.drawio",
+      "new": "docs/plans/世界与探索/历史地图/世界地图九域功能底稿.drawio",
+      "after_sha256": "5f6107a6246b1ee84ed0d806fc87cbbc5df9d88c2c70bef0b179116dc0e016ab"
+    },
+    {
+      "old": "docs/世界地图节点分级说明.md",
+      "new": "docs/plans/世界与探索/历史地图/世界地图节点分级说明.md",
+      "after_sha256": "d0d5b11e85a286108f6f5ebd288d6e1238858f5a97991434b5733c3b476e9634"
+    },
+    {
+      "old": "docs/九域连续地貌母版与高清制图交接.md",
+      "new": "docs/plans/世界与探索/历史地图/九域连续地貌母版与高清制图交接.md",
+      "after_sha256": "5d981ee9d5285f950a5125fc86acdd737bbfd02dfe6a695add4e9bd4578c6e3d"
+    },
+    {
+      "old": "docs/五乘五环海世界地图方案.md",
+      "new": "docs/plans/世界与探索/历史地图/五乘五环海世界地图方案.md",
+      "after_sha256": "9ab4102ce2b2b01b66314a0dcba915752fdbaa1d0f333f70e6021a39c2116b45"
+    },
+    {
+      "old": "docs/昭明界九域总览.drawio",
+      "new": "docs/plans/世界与探索/历史地图/昭明界九域总览.drawio",
+      "after_sha256": "45c734a22f98d8bd94d7cde36a781414a4286286b8f69f689b61fe938e2be1e2"
+    },
+    {
+      "old": "docs/昭明纪环海大世界地图底稿.drawio",
+      "new": "docs/plans/世界与探索/历史地图/昭明纪环海大世界地图底稿.drawio",
+      "after_sha256": "e76b30aff44a205d9acba8c40732e0c8c328b226a422485b117ceb5f8976511d"
+    },
+    {
+      "old": "docs/预览_昭明界九州广袤布局_8000.png.import",
+      "new": "docs/plans/世界与探索/历史地图/预览_昭明界九州广袤布局_8000.png.import",
+      "after_sha256": "287cec4c25d3b18906609dd9280d04ca529bb2054249bec2839a705df71235de"
+    },
+    {
+      "old": "docs/预览_昭明界九州广袤布局草图.png.import",
+      "new": "docs/plans/世界与探索/历史地图/预览_昭明界九州广袤布局草图.png.import",
+      "after_sha256": "d0f0027ab700829448b1a1cd6d0537a41e9643a5389a4fbf0a4d2ec3310d2ffe"
+    },
+    {
+      "old": "docs/预览_昭明纪简略地图_州界道路山脉.png.import",
+      "new": "docs/plans/世界与探索/历史地图/预览_昭明纪简略地图_州界道路山脉.png.import",
+      "after_sha256": "f9b7af7e3cfe49abcb6934b4d4b8ae35c8ea2c1a69d520477b22361cfb886304"
+    },
+    {
+      "old": "docs/凡兽生态与属性规划.md",
+      "new": "docs/plans/世界与探索/生灵/凡兽生态与属性规划.md",
+      "after_sha256": "b1585bc3f0c881b096217c636fa9a2767c20cdaa9bca8fc49a12dc3fd066a1ac"
+    },
+    {
+      "old": "docs/前二阶妖兽境界与属性规划.md",
+      "new": "docs/plans/世界与探索/生灵/前二阶妖兽境界与属性规划.md",
+      "after_sha256": "e4cff02569be83bb000e8dbfc8b1ea53f5dc5f899b4f5f149fb1e9d1f344cca9"
+    },
+    {
+      "old": "docs/妖兽境界与属性设计.md",
+      "new": "docs/plans/世界与探索/生灵/妖兽境界与属性设计.md",
+      "after_sha256": "432dbec694a1c213255626d79d5f3707af749c4aac2059e817653960ecd13efa"
+    },
+    {
+      "old": "docs/凡兽/林地凶狼设计.md",
+      "new": "docs/plans/世界与探索/生灵/林地凶狼设计.md",
+      "after_sha256": "6447cf0e7452a01c41f05bcb5469eafb31584dc1ad97623e76369f5f12c41a80"
+    },
+    {
+      "old": "docs/凡兽/灰背野猪与精英词条设计.md",
+      "new": "docs/plans/世界与探索/生灵/灰背野猪与精英词条设计.md",
+      "after_sha256": "e8b1a93e77b2b8c4424c2ffbe2fa1ff56ef6a9944b87938f3b26f09260d64b0f"
+    },
+    {
+      "old": "docs/plans/NPC印象、留信闭关与宗门宴席实施_20261016.md",
+      "new": "docs/plans/人物与修炼/NPC印象、留信闭关与宗门宴席实施_20261016.md",
+      "after_sha256": "a152ad06f79dffa1d0f5ebf0769b3fef82e20bf78543b0952b76275286610567"
+    },
+    {
+      "old": "docs/plans/NPC局部人物交互页与主动交手_20261105.md",
+      "new": "docs/plans/人物与修炼/NPC局部人物交互页与主动交手_20261105.md",
+      "after_sha256": "ce832a209fa112b219f1dcfa7bca984f32b225fe5619d1779cbb1f8adf82cc2c"
+    },
+    {
+      "old": "docs/plans/NPC月度药材求购与私委托管预留_20261012.md",
+      "new": "docs/plans/人物与修炼/NPC月度药材求购与私委托管预留_20261012.md",
+      "after_sha256": "eb9762791306226df1eb954f04e6d37b50997cb8dd06a9922b9fcacce9b91c6c"
+    },
+    {
+      "old": "docs/plans/NPC身份展示与探查交互_20261106.md",
+      "new": "docs/plans/人物与修炼/NPC身份展示与探查交互_20261106.md",
+      "after_sha256": "f5f0599260667cb7b61593cbbf6cf3ffd97c85249a637391256aa76f806ced48"
+    },
+    {
+      "old": "docs/plans/丹毒积累与服丹负担设计_20261024.md",
+      "new": "docs/plans/人物与修炼/丹毒积累与服丹负担设计_20261024.md",
+      "after_sha256": "75f1c18527657e0ecda1aeb40cc5910b6f5bee3a1a7d88a1c62e74925e4db5a2"
+    },
+    {
+      "old": "docs/plans/云息七层至归元九息正式流程验收_20261104.md",
+      "new": "docs/plans/人物与修炼/云息七层至归元九息正式流程验收_20261104.md",
+      "after_sha256": "47eff7781e154a412472f6c644679d1f9a0f1f38966fcc0cc0523171a7d64d59"
+    },
+    {
+      "old": "docs/plans/云息六回合凝核构筑设计.md",
+      "new": "docs/plans/人物与修炼/云息六回合凝核构筑设计.md",
+      "after_sha256": "d67aafef1546514fe8edbc26fadaf9544bdcd06efe3b898371f2aaab616c2b38"
+    },
+    {
+      "old": "docs/plans/云息凝核小游戏实施规格.md",
+      "new": "docs/plans/人物与修炼/云息凝核小游戏实施规格.md",
+      "after_sha256": "9c59953204ede51e18900b004ba0ab908423568ac3d42b61e0e22ba0dffe6c6d"
+    },
+    {
+      "old": "docs/plans/云息十层归元九息修炼设计.md",
+      "new": "docs/plans/人物与修炼/云息十层归元九息修炼设计.md",
+      "after_sha256": "b659e223b2895c5e36878f12a883dc5657952c6a11cd7fcbaeca62dc33bfe2ad"
+    },
+    {
+      "old": "docs/plans/云息期性命双修与主境界接入初版.md",
+      "new": "docs/plans/人物与修炼/云息期性命双修与主境界接入初版.md",
+      "after_sha256": "071c3a716bea9000947259fe837563c42f9c39e0ce8ba1c4022e1baf073c6f7c"
+    },
+    {
+      "old": "docs/plans/云息期无剧情自由修行与玉虚宗门闭环_20261013.md",
+      "new": "docs/plans/人物与修炼/云息期无剧情自由修行与玉虚宗门闭环_20261013.md",
+      "after_sha256": "d3477ce105054feff3392f7561e853c76b65b75e1ab8fc412e231b48d530112a"
+    },
+    {
+      "old": "docs/plans/云息秘籍研读奖励与修持数值初调_20261012.md",
+      "new": "docs/plans/人物与修炼/云息秘籍研读奖励与修持数值初调_20261012.md",
+      "after_sha256": "58820a2a66c5ecdc75c04856917d9b844affe32cc646518dda77c9b7591cbe64"
+    },
+    {
+      "old": "docs/plans/人物交往与判定展示初版_20261012.md",
+      "new": "docs/plans/人物与修炼/人物交往与判定展示初版_20261012.md",
+      "after_sha256": "1f686f51cc6847d4d39ae25b9f4b88927567f2cc4f5474496b57e821484adbfc"
+    },
+    {
+      "old": "docs/plans/人物关系系统设计.md",
+      "new": "docs/plans/人物与修炼/人物关系系统设计.md",
+      "after_sha256": "19fc3e74d07f121a4277d8e772b25e6614af0f32e5400f3ed411aa6844f10733"
+    },
+    {
+      "old": "docs/plans/人物属性、因果与心境系统设计.md",
+      "new": "docs/plans/人物与修炼/人物属性、因果与心境系统设计.md",
+      "after_sha256": "d5628163f199d8ce61967dd2eccc75bebf403dc61cd414aca0c9b7f994ee9156"
+    },
+    {
+      "old": "docs/plans/人物来访性格与过程反馈_20261012.md",
+      "new": "docs/plans/人物与修炼/人物来访性格与过程反馈_20261012.md",
+      "after_sha256": "55ca7500ef76141db67ed29ff24262ba4a7273f1bce710fc700a28b95af9909f"
+    },
+    {
+      "old": "docs/plans/修命淬体养成规划.md",
+      "new": "docs/plans/人物与修炼/修命淬体养成规划.md",
+      "after_sha256": "3275dc0ed1d9d32e2a16bdc7c07addcb7fbeeb0401b93ececb9a62442f62a2c4"
+    },
+    {
+      "old": "docs/plans/修性三景观想养成规划.md",
+      "new": "docs/plans/人物与修炼/修性三景观想养成规划.md",
+      "after_sha256": "6851ed7b7384e1d8af6673c2c84b0a68101dfe12ebc7f1a3b4a862957ae6ffaf"
+    },
+    {
+      "old": "docs/plans/八回合凝核牌局重构_20261009.md",
+      "new": "docs/plans/人物与修炼/八回合凝核牌局重构_20261009.md",
+      "after_sha256": "4c2955df3c71e82e4dd7beb8bf558f9fe134055dc8b8a1373f8dc0bfc8508e9a"
+    },
+    {
+      "old": "docs/plans/凝核数值平衡与正式接入_20261104.audit.json",
+      "new": "docs/plans/人物与修炼/凝核数值平衡与正式接入_20261104.audit.json",
+      "after_sha256": "947d788c24bc347be7a249a08b3981d6c9e2c4e9d879fadd32e1afe9fb1e3d74"
+    },
+    {
+      "old": "docs/plans/凝核数值平衡与正式接入_20261104.md",
+      "new": "docs/plans/人物与修炼/凝核数值平衡与正式接入_20261104.md",
+      "after_sha256": "c4fc140db0de4ee62d0973786afb067b72ff4c02fc9476172b40b3a75d12ca13"
+    },
+    {
+      "old": "docs/plans/创建角色初始造诣设置_20261024.md",
+      "new": "docs/plans/人物与修炼/创建角色初始造诣设置_20261024.md",
+      "after_sha256": "25d567fc7ba80c7d1dfc5aa34bdf6aed1da3d3b17b796363788452a3735c2ba8"
+    },
+    {
+      "old": "docs/plans/性命双修养成重构提案.md",
+      "new": "docs/plans/人物与修炼/性命双修养成重构提案.md",
+      "after_sha256": "930c1e9c0a83060b0da52fe8fefa50cfdc08392aa8d5a50bdb6489642ce9cf56"
+    },
+    {
+      "old": "docs/plans/神胎至天人果位与五太权柄体系讨论稿.md",
+      "new": "docs/plans/人物与修炼/神胎至天人果位与五太权柄体系讨论稿.md",
+      "after_sha256": "cdaa0de50cdc3c20038863b2923912e14a3e1b5936632353a79f98b69fcf3e43"
+    },
+    {
+      "old": "docs/plans/突破丹五档与境界衔接_20261026.md",
+      "new": "docs/plans/人物与修炼/突破丹五档与境界衔接_20261026.md",
+      "after_sha256": "950b3b36d70fdbf798bdb7442ec489f0d5dcc6233fed2e5dd6bb2cd65294ccfe"
+    },
+    {
+      "old": "docs/plans/突破演出统一正式接入_20261104.md",
+      "new": "docs/plans/人物与修炼/突破演出统一正式接入_20261104.md",
+      "after_sha256": "a662437f0dda8800e92ba122599f1b16b8a64d04e8a1631f6a73d39a1bca0999"
+    },
+    {
+      "old": "docs/plans/铸玄基小游戏实施规格.md",
+      "new": "docs/plans/人物与修炼/铸玄基小游戏实施规格.md",
+      "after_sha256": "a1cb9c910250a03471086ca0cc3513047c2e479d2b43f820e1a89e52eb9ee1ee"
+    },
+    {
+      "old": "docs/plans/高境界体系与天人设定确认稿.md",
+      "new": "docs/plans/人物与修炼/高境界体系与天人设定确认稿.md",
+      "after_sha256": "c1b8e2c67956ca333eb95acf1d2b708e1a2dac75b6c8ce575cb970f1a956843c"
+    },
+    {
+      "old": "docs/plans/信件与限时邀约界面_20261014.md",
+      "new": "docs/plans/剧情与宗门/信件与限时邀约界面_20261014.md",
+      "after_sha256": "665aee76ccc5ff6ee0c05a008ea202944069abe15dfb8d0c18bcfa6813d2cba3"
+    },
+    {
+      "old": "docs/plans/前传_前期主线规划.md",
+      "new": "docs/plans/剧情与宗门/前传_前期主线规划.md",
+      "after_sha256": "2b36988ecf4f0d35fbbcbd3f663277a79d00ce508405033211ef3e5ced0cc993"
+    },
+    {
+      "old": "docs/plans/前传_涤瑕仙君篇初版.md",
+      "new": "docs/plans/剧情与宗门/前传_涤瑕仙君篇初版.md",
+      "after_sha256": "3d24ebf44b0f9f5389a805bb012ab1331cb44283329b6dac5e73e29d67af05d0"
+    },
+    {
+      "old": "docs/plans/单人版剧情与任务流程设计.md",
+      "new": "docs/plans/剧情与宗门/单人版剧情与任务流程设计.md",
+      "after_sha256": "acd39cadc7b9aa286a254e43c68fc0a3f4908ad0eb0a182634e2b634b7f7c4f2"
+    },
+    {
+      "old": "docs/plans/天工峰丹房与器作租用入口_20261107.md",
+      "new": "docs/plans/剧情与宗门/天工峰丹房与器作租用入口_20261107.md",
+      "after_sha256": "6e63a73aae897746f68573c4168ebc3eb36c122069eb346fe849eda8e391c919"
+    },
+    {
+      "old": "docs/plans/天问峰现状与补全清单_20261107.md",
+      "new": "docs/plans/剧情与宗门/天问峰现状与补全清单_20261107.md",
+      "after_sha256": "f738401da90c00b5a0016a2c496502520c596a2bcbc834ba3e86a7dc77badc2a"
+    },
+    {
+      "old": "docs/plans/宗门凡器兑换接入_20261024.md",
+      "new": "docs/plans/剧情与宗门/宗门凡器兑换接入_20261024.md",
+      "after_sha256": "bb1bd1a035a08bf120d9c8e103eecd3a9016827a394e779ac71d79917cf9e7c8"
+    },
+    {
+      "old": "docs/plans/执中峰职责与玩法重设计提案_20261107.md",
+      "new": "docs/plans/剧情与宗门/执中峰职责与玩法重设计提案_20261107.md",
+      "after_sha256": "159e99385390f7d411dc60edc64535a304bcc22c9a47f803e5fbb5bc23cbc075"
+    },
+    {
+      "old": "docs/plans/玄览峰秘籍拓印与首本免费_20261106.md",
+      "new": "docs/plans/剧情与宗门/玄览峰秘籍拓印与首本免费_20261106.md",
+      "after_sha256": "db1df986aea9cb2971b89f4b0d45d3b9517ebbcfe6439fb21441adb5fee3dcbc"
+    },
+    {
+      "old": "docs/plans/玉虚仙宗委托发布与贡献结算设计.md",
+      "new": "docs/plans/剧情与宗门/玉虚仙宗委托发布与贡献结算设计.md",
+      "after_sha256": "f927ee968bdc28cc3cbbe018aee0af4a0c06e3bf432efb0afbc36b1531d6ccf7"
+    },
+    {
+      "old": "docs/plans/玉虚仙宗宗内生态补充_20261107.md",
+      "new": "docs/plans/剧情与宗门/玉虚仙宗宗内生态补充_20261107.md",
+      "after_sha256": "b44b56b42c2f8453420e86f64cdf2d40ef798b7a7d740c5464e9926d8a510e95"
+    },
+    {
+      "old": "docs/plans/玉虚仙宗宗门生态规划.md",
+      "new": "docs/plans/剧情与宗门/玉虚仙宗宗门生态规划.md",
+      "after_sha256": "732a90168949474cdcdc0efef1fd7a7e464be105ac4a391d0ccd68b8c03f34d2"
+    },
+    {
+      "old": "docs/plans/玉虚仙宗真传入门与师承培养流程.md",
+      "new": "docs/plans/剧情与宗门/玉虚仙宗真传入门与师承培养流程.md",
+      "after_sha256": "f22d1ec120f235f7c781eb3e7f0ea6efdb7d58ab608a1a856051035a8b262b1e"
+    },
+    {
+      "old": "docs/plans/玉虚仙宗真传入门流程重规划提案.md",
+      "new": "docs/plans/剧情与宗门/玉虚仙宗真传入门流程重规划提案.md",
+      "after_sha256": "4d42efeb576270de11104b4301e918154bd7a8f7299b190cf9eaa300b2a41dca"
+    },
+    {
+      "old": "docs/plans/玉虚入宗后拜师与弟子衔接设计_20261107.md",
+      "new": "docs/plans/剧情与宗门/玉虚入宗后拜师与弟子衔接设计_20261107.md",
+      "after_sha256": "a63c3e9b705a14f55591d852412b7a3bd568132d590f8bfa61a16658af5efd28"
+    },
+    {
+      "old": "docs/plans/玉虚宗内坊市交易与租摊_20261107.md",
+      "new": "docs/plans/剧情与宗门/玉虚宗内坊市交易与租摊_20261107.md",
+      "after_sha256": "d8d869e170b29edde48861e8cc0d9c5565d1d9ce4a6201360282d0e51d06bc72"
+    },
+    {
+      "old": "docs/plans/玉虚宗门比试与跨宗会武规划_20261026.md",
+      "new": "docs/plans/剧情与宗门/玉虚宗门比试与跨宗会武规划_20261026.md",
+      "after_sha256": "4731dbbea31cc4b851a96f5e9e2b1dd8789c3b7730e2c49a69115d6962127d68"
+    },
+    {
+      "old": "docs/plans/玉虚执中峰门规与案卷裁断草案_20261013.md",
+      "new": "docs/plans/剧情与宗门/玉虚执中峰门规与案卷裁断草案_20261013.md",
+      "after_sha256": "1085fc2dc7da1b9bf4bdae203ceea707b26a9cb9c99260b6b8b7d40e6d634660"
+    },
+    {
+      "old": "docs/plans/玉虚生态与玄基后续内容实施路线.md",
+      "new": "docs/plans/剧情与宗门/玉虚生态与玄基后续内容实施路线.md",
+      "after_sha256": "f24dec0043e2d54b7ad12ea5972fbc3cf337f94ca179cc3832c73e1e706c77b1"
+    },
+    {
+      "old": "docs/plans/玉虚预备真传考核与择师候选_20261107.md",
+      "new": "docs/plans/剧情与宗门/玉虚预备真传考核与择师候选_20261107.md",
+      "after_sha256": "960c9c7c432e5388b8e35926c1b0db6dcba39cd569ee21f5e72e0c0509714114"
+    },
+    {
+      "old": "docs/plans/现有玩法委托扩充提案_20261025.md",
+      "new": "docs/plans/剧情与宗门/现有玩法委托扩充提案_20261025.md",
+      "after_sha256": "2579465bc4e33a49e39eb2cfbf825fa7abe5695ac7ff07ed89455a85178a8972"
+    },
+    {
+      "old": "docs/plans/白石城分层与共用挂牌修订_20261106.md",
+      "new": "docs/plans/剧情与宗门/白石城分层与共用挂牌修订_20261106.md",
+      "after_sha256": "aaf60d1d6a92e19f18278e5d700a14385bd5c638e75446988e2a5c123569aa99"
+    },
+    {
+      "old": "docs/plans/白石城基础内容与内景接入_20261105.md",
+      "new": "docs/plans/剧情与宗门/白石城基础内容与内景接入_20261105.md",
+      "after_sha256": "f5dd1309c606076a8cc3ed01c4b90f2a1ab265b677fe1060fde9c8995fa412f2"
+    },
+    {
+      "old": "docs/plans/白石讲法会与序章入道流程_20261103.md",
+      "new": "docs/plans/剧情与宗门/白石讲法会与序章入道流程_20261103.md",
+      "after_sha256": "c3b8b814107d725990a207205dd4d17438f74b62fb6b27b0307cc81c9f157e8c"
+    },
+    {
+      "old": "docs/序章启明_引导与对话文案.txt",
+      "new": "docs/plans/剧情与宗门/历史文案/序章启明_引导与对话文案.txt",
+      "after_sha256": "2dadb04b4ea720cb492268e2b0f1496e6e0d8e6fc11b5f8a33cb6df77be20b1d"
+    },
+    {
+      "old": "docs/plans/个人修仙正式存档设计.md",
+      "new": "docs/plans/总纲与流程/个人修仙正式存档设计.md",
+      "after_sha256": "bf5e8e8d6729dcc2a40acdb6cd9ff2e9a62f04b9b92f9b973387b5f5ec760bbd"
+    },
+    {
+      "old": "docs/rules/守则.txt",
+      "new": "docs/plans/总纲与流程/守则.txt",
+      "after_sha256": "3694f776afb976a8679b08612ef5beb60da80a09cc474eaeb12beb9ab0ef2b95"
+    },
+    {
+      "old": "docs/plans/当前项目_个人修仙改造路线.md",
+      "new": "docs/plans/总纲与流程/当前项目_个人修仙改造路线.md",
+      "after_sha256": "673424b7f01631945f0204abc7d4d44030baabd2871dbfb169be94aef4eb79e0"
+    },
+    {
+      "old": "docs/项目设定总览_新读者版.md",
+      "new": "docs/plans/总纲与流程/项目设定总览_新读者版.md",
+      "after_sha256": "01fa1d4dea17e3ad58f466d0781949e110eb196879d1d565d4b691a5382bb8aa"
+    },
+    {
+      "old": "docs/plans/design-plan.md",
+      "new": "docs/plans/战斗与构筑/design-plan.md",
+      "after_sha256": "52b2d4abf76721a5767e5deaa9cb8f5c4160bdf925a022079ced1c33a7eccdb8"
+    },
+    {
+      "old": "docs/plans/NPC四本秘籍自动构筑与队列规划_20261021.md",
+      "new": "docs/plans/战斗与构筑/NPC四本秘籍自动构筑与队列规划_20261021.md",
+      "after_sha256": "29572ee3932080845334b5b8c11611055ee7765f504ac9f0ef9f2b862ce75462"
+    },
+    {
+      "old": "docs/plans/一对三人类NPC即时模拟_20261104.md",
+      "new": "docs/plans/战斗与构筑/一对三人类NPC即时模拟_20261104.md",
+      "after_sha256": "bfd1407cac3def56f25e162b228e66ca75cf3eeda65656dfe4e13cbc7fec1e93"
+    },
+    {
+      "old": "docs/plans/七本秘籍开放与新增接入_20261025.md",
+      "new": "docs/plans/战斗与构筑/七本秘籍开放与新增接入_20261025.md",
+      "after_sha256": "ca6f7c2f25b622cf5a450f398efab3609e78f9fe4b071b9ab2ef59ebfb92fe4d"
+    },
+    {
+      "old": "docs/plans/九格初始招式盘与图标占格设计_20261106.md",
+      "new": "docs/plans/战斗与构筑/九格初始招式盘与图标占格设计_20261106.md",
+      "after_sha256": "34ddff4db9226d26749555606613132628150157be9e7ea806640b2500f99546"
+    },
+    {
+      "old": "docs/plans/九格招式盘与法宝参战候选_20261106.md",
+      "new": "docs/plans/战斗与构筑/九格招式盘与法宝参战候选_20261106.md",
+      "after_sha256": "61124ff0469a13beedb7b9a9b9e0207947e9aae4ac6a23010d3bfaa79b051ff5"
+    },
+    {
+      "old": "docs/plans/九格招式盘与自动战斗重构提案_20261106.md",
+      "new": "docs/plans/战斗与构筑/九格招式盘与自动战斗重构提案_20261106.md",
+      "after_sha256": "20a4264f1b427f9c3e93b0355518b9402357651f16e4cf09d5fb6247bdb9f3df"
+    },
+    {
+      "old": "docs/plans/云息公共战斗状态与秘籍构筑规则.md",
+      "new": "docs/plans/战斗与构筑/云息公共战斗状态与秘籍构筑规则.md",
+      "after_sha256": "89328c319cdcc855e097ff219ea64afbbdbb63a4a6576c36a11d8d935f9d9a4b"
+    },
+    {
+      "old": "docs/plans/云息现行秘籍战斗技能与费用规范.md",
+      "new": "docs/plans/战斗与构筑/云息现行秘籍战斗技能与费用规范.md",
+      "after_sha256": "360bc6eb844c4fe0134cd804f851244b0e45fcf440beca79f7684f33338921c6"
+    },
+    {
+      "old": "docs/plans/五本秘籍图谱平衡后排版验收_20261108.json",
+      "new": "docs/plans/战斗与构筑/五本秘籍图谱平衡后排版验收_20261108.json",
+      "after_sha256": "a01b285bea7e1c068c622f467fb4c7f0bd4c845e243914555097936c16adafcd"
+    },
+    {
+      "old": "docs/plans/五本秘籍图谱排版验收_20261108.json",
+      "new": "docs/plans/战斗与构筑/五本秘籍图谱排版验收_20261108.json",
+      "after_sha256": "e703cd0be679447b75f58bcdbbbaee38ec1b3484cd91fb6de27b478599c8fc4b"
+    },
+    {
+      "old": "docs/plans/人类二十招与化法新版迁移方案_20261107.md",
+      "new": "docs/plans/战斗与构筑/人类二十招与化法新版迁移方案_20261107.md",
+      "after_sha256": "c7ace862a908bb3f849b7cfa97a7f7e0fbd7aa20db50ef18df9fb391609a5352"
+    },
+    {
+      "old": "docs/plans/人类招式心法全效果迁移_20261108.md",
+      "new": "docs/plans/战斗与构筑/人类招式心法全效果迁移_20261108.md",
+      "after_sha256": "95410ddae242ab11d9ee06e55bfba3bf1a39f946bac4aa827ab607082c16f191"
+    },
+    {
+      "old": "docs/plans/人类招式效果字段基线_20261108.json",
+      "new": "docs/plans/战斗与构筑/人类招式效果字段基线_20261108.json",
+      "after_sha256": "0b66378459e717724115284051fba6d8086d1936b6376040f098a116672db82e"
+    },
+    {
+      "old": "docs/plans/人类招式盘实施与验收_20261107.md",
+      "new": "docs/plans/战斗与构筑/人类招式盘实施与验收_20261107.md",
+      "after_sha256": "abbb93f6b7b3fb87f1ca43a4d8b4b36e292f5916c2e71c94a113214971f28628"
+    },
+    {
+      "old": "docs/plans/人类招式首轮平衡_20261108.after.json",
+      "new": "docs/plans/战斗与构筑/人类招式首轮平衡_20261108.after.json",
+      "after_sha256": "4072ebc3ce805915f7fd4237f7450daf9176f4b38f62f492c1490f8d355bdff5"
+    },
+    {
+      "old": "docs/plans/人类招式首轮平衡_20261108.before.json",
+      "new": "docs/plans/战斗与构筑/人类招式首轮平衡_20261108.before.json",
+      "after_sha256": "cd4623032dd047b6d2249d85e22a9a2e6a5bfa5e75647d43dbeb77acdd1b21d3"
+    },
+    {
+      "old": "docs/plans/人类招式首轮平衡与名称标注_20261108.md",
+      "new": "docs/plans/战斗与构筑/人类招式首轮平衡与名称标注_20261108.md",
+      "after_sha256": "b7c8ed74c2692d800fd24a8306b68f60ba448e8b4692e9560ec795f3434ccfe9"
+    },
+    {
+      "old": "docs/plans/人类招式首轮平衡字段变更_20261108.json",
+      "new": "docs/plans/战斗与构筑/人类招式首轮平衡字段变更_20261108.json",
+      "after_sha256": "dca3a339343f4ae0f8fdb73a522e961cf479cf8eb63f78bd7ad4618dd00fb73b"
+    },
+    {
+      "old": "docs/plans/人类招式首轮平衡验收_20261108.json",
+      "new": "docs/plans/战斗与构筑/人类招式首轮平衡验收_20261108.json",
+      "after_sha256": "044a3135bd02ca844d6d83a70e9b062a062df4379253b236b2dfe29f62a55277"
+    },
+    {
+      "old": "docs/伤势业障牌系统设计.md",
+      "new": "docs/plans/战斗与构筑/伤势业障牌系统设计.md",
+      "after_sha256": "086d3785bdc81dff6bc288b883e0f0f639f8667f80cfadbb20b4a34a4e5fee22"
+    },
+    {
+      "old": "docs/plans/俯视角四招凶狼试玩_20261104.md",
+      "new": "docs/plans/战斗与构筑/俯视角四招凶狼试玩_20261104.md",
+      "after_sha256": "cd0e859999479003308ed936cc319c0aad2d4973ef45de701f02c90cb827dce6"
+    },
+    {
+      "old": "docs/plans/公共技能节点网与首批节点实施.md",
+      "new": "docs/plans/战斗与构筑/公共技能节点网与首批节点实施.md",
+      "after_sha256": "fe7917514ba8e4260c0c5b8294ca05e4297bfcda9e852da3cff4962d7830984b"
+    },
+    {
+      "old": "docs/plans/动作战斗与首批技能迁移_20261102.md",
+      "new": "docs/plans/战斗与构筑/动作战斗与首批技能迁移_20261102.md",
+      "after_sha256": "550ba9c57d82f3d453af9d146b8aaab04cb2e446756495054e956282ee6afc28"
+    },
+    {
+      "old": "docs/plans/动作战斗人物属性迁移_20261103.md",
+      "new": "docs/plans/战斗与构筑/动作战斗人物属性迁移_20261103.md",
+      "after_sha256": "fa2ba547950e61e1e5ecbf6f5ac44c8f44f0fd1ff213de1241b9baed54207145"
+    },
+    {
+      "old": "docs/plans/动作战斗基础操作与心法联动方案_20261102.md",
+      "new": "docs/plans/战斗与构筑/动作战斗基础操作与心法联动方案_20261102.md",
+      "after_sha256": "ef9f65148f4f9bdfafc8a55371200e5cad5157f4a405b58850b2241769d46bae"
+    },
+    {
+      "old": "docs/plans/动作战斗心法迁移准备_20261102.md",
+      "new": "docs/plans/战斗与构筑/动作战斗心法迁移准备_20261102.md",
+      "after_sha256": "8d13cc448dc5e66c6994f79056d8e6884208437962e6719951819dbbf41b0309"
+    },
+    {
+      "old": "docs/plans/化法来源汇总与技能绑定_20261024.md",
+      "new": "docs/plans/战斗与构筑/化法来源汇总与技能绑定_20261024.md",
+      "after_sha256": "b90897344c875add8e6603e847993496bfbbaceecfac22acbe9505c37e4a8331"
+    },
+    {
+      "old": "docs/plans/单格指向化法与旧绑定迁移提案_20261106.md",
+      "new": "docs/plans/战斗与构筑/单格指向化法与旧绑定迁移提案_20261106.md",
+      "after_sha256": "995068adb25c05b2d24789c5975527f58422540ca3c6bfdcaf92d03caed867fc"
+    },
+    {
+      "old": "docs/plans/即时动作战斗恢复与共同取景_20261104.md",
+      "new": "docs/plans/战斗与构筑/即时动作战斗恢复与共同取景_20261104.md",
+      "after_sha256": "d4f50a61227b87d9c6b0d365cf6565a5b9033d84198504f78a1194ed315f0e5c"
+    },
+    {
+      "old": "docs/plans/即时战斗六招节奏调整_20261104.md",
+      "new": "docs/plans/战斗与构筑/即时战斗六招节奏调整_20261104.md",
+      "after_sha256": "f19d4c60cb35ec533e679268c1d0c031ca991cf9f5bc1854e23f6af8c1d44358"
+    },
+    {
+      "old": "docs/plans/即时战斗双击快步_20261104.md",
+      "new": "docs/plans/战斗与构筑/即时战斗双击快步_20261104.md",
+      "after_sha256": "6ab0013a97fd5c371201d7da5d59a30ee9c9e5d53ab0f170ce6524439760a39c"
+    },
+    {
+      "old": "docs/plans/即时战斗四技能特效重制_20261104.md",
+      "new": "docs/plans/战斗与构筑/即时战斗四技能特效重制_20261104.md",
+      "after_sha256": "d52f0443c33a980d0f09078e3927f3fc95b9e5da992f2210b5cbb8550eb0167f"
+    },
+    {
+      "old": "docs/plans/即时战斗基础四招规格_20261103.md",
+      "new": "docs/plans/战斗与构筑/即时战斗基础四招规格_20261103.md",
+      "after_sha256": "b3f39d0b127d2c7747091e6e11a3a19bfbf032fe2c1689ab274422fbb89f4357"
+    },
+    {
+      "old": "docs/plans/即时战斗攻击范围翻倍_20261105.md",
+      "new": "docs/plans/战斗与构筑/即时战斗攻击范围翻倍_20261105.md",
+      "after_sha256": "d8cba78408f4b6973a8bcdc661f983b53f8d671af8665cb4f1f52c6d3dd793ab"
+    },
+    {
+      "old": "docs/plans/即时战斗飘字与提示精简_20261104.md",
+      "new": "docs/plans/战斗与构筑/即时战斗飘字与提示精简_20261104.md",
+      "after_sha256": "00f97678184a05f15b6b03e6e90aa55d9afdec535a49666172e93d78ba3bcae0"
+    },
+    {
+      "old": "docs/plans/即时战斗首批六招与运功限制_20261104.md",
+      "new": "docs/plans/战斗与构筑/即时战斗首批六招与运功限制_20261104.md",
+      "after_sha256": "27470652326277cce5e50a5d7ae5e668bff25c97aef96864662f4a785d023f80"
+    },
+    {
+      "old": "docs/plans/即时队列战斗系统设计.md",
+      "new": "docs/plans/战斗与构筑/即时队列战斗系统设计.md",
+      "after_sha256": "cba89a9bbb96c3e0e44c690da2f2ec2b8f9df9d1abee573b04e575b4a9b464db"
+    },
+    {
+      "old": "docs/plans/布阵方案与一键摆盘设计_20261107.md",
+      "new": "docs/plans/战斗与构筑/布阵方案与一键摆盘设计_20261107.md",
+      "after_sha256": "ddb8ff886cb9f3b88d16adcc46c8ca5e675433bb1949ec9c4f17765435341593"
+    },
+    {
+      "old": "docs/plans/恢复原回合制战斗与面板_20261105.md",
+      "new": "docs/plans/战斗与构筑/恢复原回合制战斗与面板_20261105.md",
+      "after_sha256": "1f9790996594e9604c1d8713776ae62c28007935b7cbd97dba3f478eda2fdf2b"
+    },
+    {
+      "old": "docs/plans/成长招式盘与器蕴共鸣构筑提案_20261107.md",
+      "new": "docs/plans/战斗与构筑/成长招式盘与器蕴共鸣构筑提案_20261107.md",
+      "after_sha256": "d1ac64647fc1078ff4b8913b6967442c18590778543651c3dbcebd89451891e1"
+    },
+    {
+      "old": "docs/plans/战斗剑器基础字段规范_20261108.md",
+      "new": "docs/plans/战斗与构筑/战斗剑器基础字段规范_20261108.md",
+      "after_sha256": "edc8e62d9e811c4098eaf368fc14cfcb2d86cf055cd0667ba32877c9e6845c60"
+    },
+    {
+      "old": "docs/plans/战斗剑器字段填写模板_20261108.md",
+      "new": "docs/plans/战斗与构筑/战斗剑器字段填写模板_20261108.md",
+      "after_sha256": "767d30f502c196b80da1bf3e0fdb7320805cae04e603076558b7bdf941e4113f"
+    },
+    {
+      "old": "docs/战斗属性系统设计.md",
+      "new": "docs/plans/战斗与构筑/战斗属性系统设计.md",
+      "after_sha256": "ad5854563e768c682c39887f3d222399556abf2f3deb09c16c441375bd47b915"
+    },
+    {
+      "old": "docs/plans/战斗流程撤退与战利品提案_20261009.md",
+      "new": "docs/plans/战斗与构筑/战斗流程撤退与战利品提案_20261009.md",
+      "after_sha256": "395e941d660866cfa77d5607671fbf0118e0f14a427d544413244a7abe6edded"
+    },
+    {
+      "old": "docs/战斗状态词典.txt",
+      "new": "docs/plans/战斗与构筑/战斗状态词典.txt",
+      "after_sha256": "4552c2c2f8d8a9eb419462976cedf6397d40c4ebd3f18006437d2867762304f5"
+    },
+    {
+      "old": "docs/plans/招式布阵与自动回合战斗迁移提案_20261106.md",
+      "new": "docs/plans/战斗与构筑/招式布阵与自动回合战斗迁移提案_20261106.md",
+      "after_sha256": "2d795e8da0bf05dfe4f70e2433cf47fc6fdc0ca313e0e43060ba43551afe5ed2"
+    },
+    {
+      "old": "docs/plans/招式心法全效果图文验收_20261108.json",
+      "new": "docs/plans/战斗与构筑/招式心法全效果图文验收_20261108.json",
+      "after_sha256": "cf6c6abca07ab0838f33525cf6f4552d4b324eff279d33f521363cfeb93208d2"
+    },
+    {
+      "old": "docs/plans/招式心法全效果迁移验收_20261108.json",
+      "new": "docs/plans/战斗与构筑/招式心法全效果迁移验收_20261108.json",
+      "after_sha256": "882b5f953c97bcfa13bf01460a6b93c22be0345187e470d977913d98824fc26d"
+    },
+    {
+      "old": "docs/plans/招式盘战场固定为林间石地小人物_20261109.md",
+      "new": "docs/plans/战斗与构筑/招式盘战场固定为林间石地小人物_20261109.md",
+      "after_sha256": "4cbc32eef37c96e5216a2bca85658d5dcab4b73fe3fde9f12b53d4b0581fb89e"
+    },
+    {
+      "old": "docs/plans/招式盘格形与现行招式迁移清单_20261106.md",
+      "new": "docs/plans/战斗与构筑/招式盘格形与现行招式迁移清单_20261106.md",
+      "after_sha256": "084b4f9e83b1d996821ce5c7cbc4c2e6809d7ac3a670e31707884a08513c91de"
+    },
+    {
+      "old": "docs/plans/招式盘逐行时序与旧战斗迁移提案_20261106.md",
+      "new": "docs/plans/战斗与构筑/招式盘逐行时序与旧战斗迁移提案_20261106.md",
+      "after_sha256": "c475e0ff9753265b7540478bf55f8a9cacd8283b2dee0ab2698abe8d266164d6"
+    },
+    {
+      "old": "docs/plans/招式首轮平衡图文验收_20261108.json",
+      "new": "docs/plans/战斗与构筑/招式首轮平衡图文验收_20261108.json",
+      "after_sha256": "a83581e2d77cd7cea27e0a2ac41e623e15e103308f021bcbad9d128b6e05a3d5"
+    },
+    {
+      "old": "docs/plans/拳掌四段连招与贴步_20261104.md",
+      "new": "docs/plans/战斗与构筑/拳掌四段连招与贴步_20261104.md",
+      "after_sha256": "9c31212a8cee3f04fce75e9a71442d31884c39ce69bd7d0f2991250669f301d5"
+    },
+    {
+      "old": "docs/plans/持剑普攻剑式四段与特效试作_20261105.md",
+      "new": "docs/plans/战斗与构筑/持剑普攻剑式四段与特效试作_20261105.md",
+      "after_sha256": "941813c8d53d581568cb8ac2d823e43ee651bdc88aa4e953e52d7d337607c10e"
+    },
+    {
+      "old": "docs/plans/架招持续正面防御修订_20261105.md",
+      "new": "docs/plans/战斗与构筑/架招持续正面防御修订_20261105.md",
+      "after_sha256": "3a53d498f88d3ef8507ec63bd4b769c2745de8258f060feb51aae7da80c37a19"
+    },
+    {
+      "old": "docs/plans/水行潮位与两本秘籍提案_20261026.md",
+      "new": "docs/plans/战斗与构筑/水行潮位与两本秘籍提案_20261026.md",
+      "after_sha256": "6e2352fb05c76cb4be521f18ff4df2fc31bd7f32da4e53f7b0fe05411045d426"
+    },
+    {
+      "old": "docs/plans/炁与周天构筑秘籍整体设计提案_20261024.md",
+      "new": "docs/plans/战斗与构筑/炁与周天构筑秘籍整体设计提案_20261024.md",
+      "after_sha256": "cdb824fbdf4dc8f50da5dc88c2f5b2292c07b58773428f81e4232ff062bf4cb1"
+    },
+    {
+      "old": "docs/状态系统设计.md",
+      "new": "docs/plans/战斗与构筑/状态系统设计.md",
+      "after_sha256": "a3d922a86f73ec0edf6571203888c8da35028e7e5d267c5bcaab7da9517f1a24"
+    },
+    {
+      "old": "docs/plans/现有即时战斗打击反馈修订_20261105.md",
+      "new": "docs/plans/战斗与构筑/现有即时战斗打击反馈修订_20261105.md",
+      "after_sha256": "f695666bdb3f311a37a6f981a44c4f5a17ae57531f227805ce6452fe3babf977"
+    },
+    {
+      "old": "docs/plans/百骸云息篇即时实装与自选对练_20261104.md",
+      "new": "docs/plans/战斗与构筑/百骸云息篇即时实装与自选对练_20261104.md",
+      "after_sha256": "25e9b4495fd2b3ec2f1d66c0750f1e6b6b8ac4c5387af566f2b1cd99ddb2f678"
+    },
+    {
+      "old": "docs/plans/秘籍开放范围与临时下架_20261021.md",
+      "new": "docs/plans/战斗与构筑/秘籍开放范围与临时下架_20261021.md",
+      "after_sha256": "884fae2a05935429f463230fcd82c3daf4230c0e5838bcbd429e7d61e72ed35f"
+    },
+    {
+      "old": "docs/plans/舒卷天章云息篇即时战斗规划_20261105.md",
+      "new": "docs/plans/战斗与构筑/舒卷天章云息篇即时战斗规划_20261105.md",
+      "after_sha256": "a31df37fb5ad71a051fe116b8614456b6b2b0574e8e0350b516ac8e3eb66a832"
+    },
+    {
+      "old": "docs/plans/跨境界状态与净化系统规划.md",
+      "new": "docs/plans/战斗与构筑/跨境界状态与净化系统规划.md",
+      "after_sha256": "d4d2d3e73921f628e0709f293a2a2c38923b1478a4a1b55a484a49f957a52681"
+    },
+    {
+      "old": "docs/plans/逐格招式盘与受击应对候选_20261106.md",
+      "new": "docs/plans/战斗与构筑/逐格招式盘与受击应对候选_20261106.md",
+      "after_sha256": "c40c862eb6196e6494f386f5de227b687d7f9004e2a8448004948cc2a7a98d44"
+    },
+    {
+      "old": "docs/plans/储物戒指与行囊尺度修订_20261104.md",
+      "new": "docs/plans/物品与装备/储物戒指与行囊尺度修订_20261104.md",
+      "after_sha256": "5d7ce2f3e87b23b0eee1b33a5cf74e3e4f3332490ad87b1d6e90153d615ea836"
+    },
+    {
+      "old": "docs/plans/凡器与器类专属属性设计_20261022.md",
+      "new": "docs/plans/物品与装备/凡器与器类专属属性设计_20261022.md",
+      "after_sha256": "8d51b8f5e51c00ffe8f2e19c94bebeb26eb00d3fc6b83e53c60905a0c2e96b50"
+    },
+    {
+      "old": "docs/plans/剑关键词与器物固定值收益设计_20261023.md",
+      "new": "docs/plans/物品与装备/剑关键词与器物固定值收益设计_20261023.md",
+      "after_sha256": "ceec32bb37e6943d9e1c4314617ca668af95ba10c85d067bf4af10157de6a408"
+    },
+    {
+      "old": "docs/plans/剑器属性池与化法接口修订实算_20261108.md",
+      "new": "docs/plans/物品与装备/剑器属性池与化法接口修订实算_20261108.md",
+      "after_sha256": "6b6565f883a3adbeb592ffd6279882168bf776af45905de9f6d0ac99b6c6c3f7"
+    },
+    {
+      "old": "docs/plans/剑器御使公式候选_20261108.json",
+      "new": "docs/plans/物品与装备/剑器御使公式候选_20261108.json",
+      "after_sha256": "1ca58e18fbd310c7e1766ba0cf8d97c5a6fc07a64ff2afce69529adca6a99187"
+    },
+    {
+      "old": "docs/plans/剑器成器系数与御使物理普攻生成规范_20261108.md",
+      "new": "docs/plans/物品与装备/剑器成器系数与御使物理普攻生成规范_20261108.md",
+      "after_sha256": "0f6ee3af9e21f85a42b61749fad9f43e3c4990cc3084460bf87ad9b1d011cc7e"
+    },
+    {
+      "old": "docs/plans/剑器星标锋锐与御使稳定度方案_20261108.md",
+      "new": "docs/plans/物品与装备/剑器星标锋锐与御使稳定度方案_20261108.md",
+      "after_sha256": "65638a62a142ff96b204d306ea3d0f34b9ef0a97907d6e9b2a2d4224ac4fa16f"
+    },
+    {
+      "old": "docs/plans/剑器材料到系数完整换算与清和剑实算_20261108.md",
+      "new": "docs/plans/物品与装备/剑器材料到系数完整换算与清和剑实算_20261108.md",
+      "after_sha256": "39657dab35cafb7c43907c8a81c635a57177f6e6fbe6f594d8a2384439f2cb33"
+    },
+    {
+      "old": "docs/plans/剑器材料换算候选参数_20261108.json",
+      "new": "docs/plans/物品与装备/剑器材料换算候选参数_20261108.json",
+      "after_sha256": "612b7deaf18aedb15d654600d3012316101d24ed9f4050087eaff228df7304c4"
+    },
+    {
+      "old": "docs/plans/剑器材料换算候选参数_20261108_v2.json",
+      "new": "docs/plans/物品与装备/剑器材料换算候选参数_20261108_v2.json",
+      "after_sha256": "3667d42b3a4f21d80158ef27b8b1d2200e245b36a141547785b560a9f94120c2"
+    },
+    {
+      "old": "docs/plans/善功堂临时贡献价_20261030.json",
+      "new": "docs/plans/物品与装备/善功堂临时贡献价_20261030.json",
+      "after_sha256": "97665485aed51eea2a560bc6c33fce075421c171c0c675d1500f39e842773e3c"
+    },
+    {
+      "old": "docs/plans/器物五行与无属性功用定性设计_20261022.md",
+      "new": "docs/plans/物品与装备/器物五行与无属性功用定性设计_20261022.md",
+      "after_sha256": "b8c5ae2c53978d1a2b0d357c71b1bb0019c4b6f6d945a1cbf46e8ef68000478b"
+    },
+    {
+      "old": "docs/plans/器物化法接口契约候选_20261108.json",
+      "new": "docs/plans/物品与装备/器物化法接口契约候选_20261108.json",
+      "after_sha256": "bf780a84fcec99d0126041f1ef7f05ec26ac55a32476b50d4a58fcc745e4b746"
+    },
+    {
+      "old": "docs/plans/器物化法接口契约验收_20261108.json",
+      "new": "docs/plans/物品与装备/器物化法接口契约验收_20261108.json",
+      "after_sha256": "03df58a5a2d255608d0b7471375f118fd630e654a2ecd6d81a3cbc23a30354a9"
+    },
+    {
+      "old": "docs/plans/器物化法生成与招式改写接口_20261108.md",
+      "new": "docs/plans/物品与装备/器物化法生成与招式改写接口_20261108.md",
+      "after_sha256": "f4cb3b50b34a29d80528446565995e5664de3acf53a4020ff19fcdc166ac8176"
+    },
+    {
+      "old": "docs/plans/器物单槽变换与成套同化方向_20261023.md",
+      "new": "docs/plans/物品与装备/器物单槽变换与成套同化方向_20261023.md",
+      "after_sha256": "a6745cddc9a5f2ee25ecfde5a1c5f655939065b18e55f31c10342175779dc78f"
+    },
+    {
+      "old": "docs/plans/器物属性与装备收益规划_20261022.md",
+      "new": "docs/plans/物品与装备/器物属性与装备收益规划_20261022.md",
+      "after_sha256": "dde25027c1fe7eed1d5b5df903e064531c994d3be094074570722d0f6602edc8"
+    },
+    {
+      "old": "docs/plans/器物战斗属性白名单与剑形属性池_20261108.md",
+      "new": "docs/plans/物品与装备/器物战斗属性白名单与剑形属性池_20261108.md",
+      "after_sha256": "dc79494165205a27db3bcb79b87d4058163e5705aa6605c22ab78835dc82b77e"
+    },
+    {
+      "old": "docs/plans/器物本体与施法灵识占用修订_20261023.md",
+      "new": "docs/plans/物品与装备/器物本体与施法灵识占用修订_20261023.md",
+      "after_sha256": "c36db0e677e6747248f5ecca93bf6362f227a87e7e3452b5c4e46388ac6241d2"
+    },
+    {
+      "old": "docs/plans/器物灵识占用规则修订_20261023.md",
+      "new": "docs/plans/物品与装备/器物灵识占用规则修订_20261023.md",
+      "after_sha256": "eb9c16c48242fb5755ac29d76a076c7705be7f1cb3ba2be0e51d3509d69dd60c"
+    },
+    {
+      "old": "docs/plans/器物现有字段与新盘改卡对照_20261107.md",
+      "new": "docs/plans/物品与装备/器物现有字段与新盘改卡对照_20261107.md",
+      "after_sha256": "24e9f45d0332331d62f997f09c8f401ca84b65a2c723142f98d75303d2e17fae"
+    },
+    {
+      "old": "docs/plans/器物系统现行主案_20261023.md",
+      "new": "docs/plans/物品与装备/器物系统现行主案_20261023.md",
+      "after_sha256": "bf37261c5da8f5f6072adb0369edd0eeb2ec5db98bc848437646f9755a737505"
+    },
+    {
+      "old": "docs/plans/器物系统竞品对照_觅长生与造化仙缘_20261023.md",
+      "new": "docs/plans/物品与装备/器物系统竞品对照_觅长生与造化仙缘_20261023.md",
+      "after_sha256": "84c09d7e1922c9a9b61c56b70bd64fb080745d0508d9c42a538af54ffeedaea7"
+    },
+    {
+      "old": "docs/plans/器物自动命名与成器特征前缀_20261108.md",
+      "new": "docs/plans/物品与装备/器物自动命名与成器特征前缀_20261108.md",
+      "after_sha256": "16cf9c37dfd30cd01ad353407e6e5b791df8e3727cc230880cc3a4bb2c969723"
+    },
+    {
+      "old": "docs/plans/器蕴与剑类词条设计_20261023.md",
+      "new": "docs/plans/物品与装备/器蕴与剑类词条设计_20261023.md",
+      "after_sha256": "f096776934c821bb8a675f726f485637782c2e407fdce6cc23c333617040fc85"
+    },
+    {
+      "old": "docs/plans/器蕴运行与生成接入_20261024.md",
+      "new": "docs/plans/物品与装备/器蕴运行与生成接入_20261024.md",
+      "after_sha256": "66e6b7260ada30196c3d41be37c2f14c9f0ddea97b73d5254d17557737f115d8"
+    },
+    {
+      "old": "docs/plans/外围手持槽与护具分工设计_20261107.md",
+      "new": "docs/plans/物品与装备/外围手持槽与护具分工设计_20261107.md",
+      "after_sha256": "c3b2fb5d835de6b89a38830cd6ea111d340180911a5e740bc5e8acde13122d72"
+    },
+    {
+      "old": "docs/plans/御使运行流程与能力编排提案_20261108.md",
+      "new": "docs/plans/物品与装备/御使运行流程与能力编排提案_20261108.md",
+      "after_sha256": "c58dfcd295f847ddcd7eee4843a11bf3337198f53ad7b1e0efeb9be8027f3445"
+    },
+    {
+      "old": "docs/plans/成套剑器与独立飞剑完整提案_20261023.md",
+      "new": "docs/plans/物品与装备/成套剑器与独立飞剑完整提案_20261023.md",
+      "after_sha256": "802e5306b021b55ad824cd62355b45e976bb6854348bb1c7cf7dd9273d122e5f"
+    },
+    {
+      "old": "docs/plans/收纳空间材质与储物袋命名_20261107.md",
+      "new": "docs/plans/物品与装备/收纳空间材质与储物袋命名_20261107.md",
+      "after_sha256": "ad531b59eeab8440ebb3e8595ad7ea3bff268738ab12d234ef83e3c8747b76c7"
+    },
+    {
+      "old": "docs/plans/新版御使灵识与锋锐来源规则_20261108.md",
+      "new": "docs/plans/物品与装备/新版御使灵识与锋锐来源规则_20261108.md",
+      "after_sha256": "70703a71ccfad45ca4474be07bccffae8e81b2d57b66f8623ca260c95bcfdff3"
+    },
+    {
+      "old": "docs/plans/武器与装备系统设计.txt",
+      "new": "docs/plans/物品与装备/武器与装备系统设计.txt",
+      "after_sha256": "5df551047127a7b3fdc35827e79f6752ddc16fe1845c7b2607741cb42adad775"
+    },
+    {
+      "old": "docs/plans/法器阶段设计_20261022.md",
+      "new": "docs/plans/物品与装备/法器阶段设计_20261022.md",
+      "after_sha256": "540cb4c3e2e551b8c76e08f5d864bfd462099fa363534253f9cf14de0e083ab9"
+    },
+    {
+      "old": "docs/plans/法宝与炼器系统初步规划.md",
+      "new": "docs/plans/物品与装备/法宝与炼器系统初步规划.md",
+      "after_sha256": "7dc05a980be97968bbf4cae872ef251b7b742f2b0373dfe8610bc3870f86d2f2"
+    },
+    {
+      "old": "docs/plans/法宝手持与范围强化完整规划_20261107.md",
+      "new": "docs/plans/物品与装备/法宝手持与范围强化完整规划_20261107.md",
+      "after_sha256": "62e1870c45e076b0c2e8e149a66982db2a47d34f00590b1a08b3db5eb77409d1"
+    },
+    {
+      "old": "docs/plans/法宝系统实装规格.md",
+      "new": "docs/plans/物品与装备/法宝系统实装规格.md",
+      "after_sha256": "a2277cd800e8f35dbb820cebfd27581031f432a2fab9fd49c779686a51cefcc9"
+    },
+    {
+      "old": "docs/plans/清和剑属性池修订实算结果_20261108.json",
+      "new": "docs/plans/物品与装备/清和剑属性池修订实算结果_20261108.json",
+      "after_sha256": "80cce4ba00648a29f90028bba3f48bcf5a95b5403c94e7c80bbe51b7029b324a"
+    },
+    {
+      "old": "docs/plans/清和剑属性池修订验收_20261108.json",
+      "new": "docs/plans/物品与装备/清和剑属性池修订验收_20261108.json",
+      "after_sha256": "40a81e46cb11f8bcaa6361052f3ebb752c6fdc25da460ffa94c7c8a255be0c13"
+    },
+    {
+      "old": "docs/plans/清和剑新版完整卡面候选_20261108.json",
+      "new": "docs/plans/物品与装备/清和剑新版完整卡面候选_20261108.json",
+      "after_sha256": "902f8afaa5be1f2632f3fa2180a6416506b11068fc893ef975832f58e985a287"
+    },
+    {
+      "old": "docs/plans/清和剑新版完整卡面候选_20261108.md",
+      "new": "docs/plans/物品与装备/清和剑新版完整卡面候选_20261108.md",
+      "after_sha256": "b4bcfda7216495952665f67e58d0747d58cb8b7e0253c4ece24ffd71ce003e52"
+    },
+    {
+      "old": "docs/plans/清和剑新版实算卡面_20261108.md",
+      "new": "docs/plans/物品与装备/清和剑新版实算卡面_20261108.md",
+      "after_sha256": "67711720b8ab62d69a83351b4a324356a63bb3c73672f0eb397f82964d05df95"
+    },
+    {
+      "old": "docs/plans/清和剑新版实算验收_20261108.json",
+      "new": "docs/plans/物品与装备/清和剑新版实算验收_20261108.json",
+      "after_sha256": "e2c3b0e21060a9d77e0d0b69f0f9ad27e3e60791c49d3b6a08a98bdee55a43d7"
+    },
+    {
+      "old": "docs/plans/清和剑新版手持化法与御使重做_20261108.md",
+      "new": "docs/plans/物品与装备/清和剑新版手持化法与御使重做_20261108.md",
+      "after_sha256": "cde637ae9e740b0ec99bc865ef4e9f7395c2b5778b211624504be3a901d657e5"
+    },
+    {
+      "old": "docs/plans/清和剑新版材料实算结果_20261108.json",
+      "new": "docs/plans/物品与装备/清和剑新版材料实算结果_20261108.json",
+      "after_sha256": "66c8b1110ad5d2681061cf8039591d6fc516acb9ab782749662710009eefcb24"
+    },
+    {
+      "old": "docs/plans/清和剑旧候选卡面_v1_20261108.md",
+      "new": "docs/plans/物品与装备/清和剑旧候选卡面_v1_20261108.md",
+      "after_sha256": "c594d6179ca82556ab369ff6594aaed116738d0bcd3a853750d0a78cdfc0f8f1"
+    },
+    {
+      "old": "docs/plans/清和剑真实炼器输入_20261108.json",
+      "new": "docs/plans/物品与装备/清和剑真实炼器输入_20261108.json",
+      "after_sha256": "a67bf26420590ba57d380073b63be527860d595bf5aea0cc9bc3a50be0ae8a19"
+    },
+    {
+      "old": "docs/plans/灵舟器物与行旅_20261106.md",
+      "new": "docs/plans/物品与装备/灵舟器物与行旅_20261106.md",
+      "after_sha256": "f70d1e949bb57a5e6078aa5190b0555e0c6a40ac9bd446dc931d62dae97654b8"
+    },
+    {
+      "old": "docs/plans/灵识御用与器蕴构筑设计_20261023.md",
+      "new": "docs/plans/物品与装备/灵识御用与器蕴构筑设计_20261023.md",
+      "after_sha256": "089382822792fa87acf36c4902a2504ebd23d737fd0b37cde5c75c797caaef8f"
+    },
+    {
+      "old": "docs/plans/物品与资源相关系统总规划.md",
+      "new": "docs/plans/物品与装备/物品与资源相关系统总规划.md",
+      "after_sha256": "0440960535e98794814e25b9ed34f1f4c92829489678e614b76763e519e3d5c0"
+    },
+    {
+      "old": "docs/plans/物品格子显示缩小与坊市拖入定价_20261107.md",
+      "new": "docs/plans/物品与装备/物品格子显示缩小与坊市拖入定价_20261107.md",
+      "after_sha256": "548bbcb3e255f5f4454280676c3abffed48fccf1bdc49d5e8ef35d1974af8820"
+    },
+    {
+      "old": "docs/plans/物品词缀系统设计.md",
+      "new": "docs/plans/物品与装备/物品词缀系统设计.md",
+      "after_sha256": "4b41a7ebd1d630df971746a35be2c8dfc258514760ee03ef714f0d5c4d1bdbc4"
+    },
+    {
+      "old": "docs/plans/统一器物摆盘与手持御使规则_20261107.md",
+      "new": "docs/plans/物品与装备/统一器物摆盘与手持御使规则_20261107.md",
+      "after_sha256": "2e69ac33ec7567bc06583fd918f1a1b61b5ee40caec2e0b06e0e4a1358e43358"
+    },
+    {
+      "old": "docs/plans/统一器物管理与御用方式讨论_20261023.md",
+      "new": "docs/plans/物品与装备/统一器物管理与御用方式讨论_20261023.md",
+      "after_sha256": "87a8c21c670513753a225924621183f359e822fbfd8f10ca46ccfa8443f9e272"
+    },
+    {
+      "old": "docs/plans/统一御用清单完整设计_20261023.md",
+      "new": "docs/plans/物品与装备/统一御用清单完整设计_20261023.md",
+      "after_sha256": "2c819e641f1d6b36ddd90946f96f6414fbec45d257d609f2991bea871515fbb1"
+    },
+    {
+      "old": "docs/plans/行囊全物品图标与占地规划_20261029.md",
+      "new": "docs/plans/物品与装备/行囊全物品图标与占地规划_20261029.md",
+      "after_sha256": "c69b4895748ec6e305a28178ed3e40e57ce1604e46ef1a6538b55eed98ce680e"
+    },
+    {
+      "old": "docs/plans/行囊恢复原面积与200格扩容_20261107.md",
+      "new": "docs/plans/物品与装备/行囊恢复原面积与200格扩容_20261107.md",
+      "after_sha256": "62d09b70ba795e985f8ac88a693faf89b44c508ee6aa8d48fb46ae6fd72f5467"
+    },
+    {
+      "old": "docs/plans/行囊空间占地改版草案_20261028.md",
+      "new": "docs/plans/物品与装备/行囊空间占地改版草案_20261028.md",
+      "after_sha256": "ac2166301929abee4d50af67b3eab7a907fb5ea4cbc92854c177ae9e8d4ecbd5"
+    },
+    {
+      "old": "docs/plans/行囊索引与空间联动方案_20261029.md",
+      "new": "docs/plans/物品与装备/行囊索引与空间联动方案_20261029.md",
+      "after_sha256": "2a8487743e748be9a4bf4e90f3fd2155497868f695fdf5f1c6b3206564713cd3"
+    },
+    {
+      "old": "docs/plans/装备御用术语与环绕剑群设计_20261023.md",
+      "new": "docs/plans/物品与装备/装备御用术语与环绕剑群设计_20261023.md",
+      "after_sha256": "80b440eaf89199403ad5b2cbb900b84404c597d415f0c8e821806c98543160b8"
+    },
+    {
+      "old": "docs/物品词缀与云息七层定基设计.xlsx.inspect.ndjson",
+      "new": "docs/plans/物品与装备/历史表格/物品词缀与云息七层定基设计.xlsx.inspect.ndjson",
+      "after_sha256": "c7c2047e79afd8dc3f5d953eb7d7c62a00a0c1ed07eea4546c6e6437a8781d2e"
+    },
+    {
+      "old": "docs/通用物品词缀与材料生态设计.xlsx.inspect.ndjson",
+      "new": "docs/plans/物品与装备/历史表格/通用物品词缀与材料生态设计.xlsx.inspect.ndjson",
+      "after_sha256": "8dc5b4c112521429eefb5325b628123de1ae5faae35570d3b9e6d124a5a939a2"
+    },
+    {
+      "old": "docs/plans/NPC交互纸墨木石样稿_20261109.md",
+      "new": "docs/plans/界面与美术/NPC交互纸墨木石样稿_20261109.md",
+      "after_sha256": "b68ce0811342619b4b79b8fc098eb83c9baa6bf4a31d15567729e209bf6ee42f"
+    },
+    {
+      "old": "docs/time-wheel-ui.md",
+      "new": "docs/plans/界面与美术/time-wheel-ui.md",
+      "after_sha256": "3306bcfd77b7a4d94cd637261a3128203432cabd8d7ad0001ac37e885fec093c"
+    },
+    {
+      "old": "docs/UI视觉规范.md",
+      "new": "docs/plans/界面与美术/UI视觉规范.md",
+      "after_sha256": "47cc5d191b70b85564c9772e3125a245c7f4982e23817393e214dca603e84c5b"
+    },
+    {
+      "old": "docs/plans/云息境界界面表现_20261009.md",
+      "new": "docs/plans/界面与美术/云息境界界面表现_20261009.md",
+      "after_sha256": "d5e955cef2852c8deb56acf99fb7cc82ba373c49c75c410d53713c8734319e9d"
+    },
+    {
+      "old": "docs/plans/交易与善功堂布局修订_20261029.md",
+      "new": "docs/plans/界面与美术/交易与善功堂布局修订_20261029.md",
+      "after_sha256": "51373fdea7d572b9757c984ec0b73a9cf920acce5c7600d3be2adda406ed134b"
+    },
+    {
+      "old": "docs/plans/人物战斗与配招正式接入_20261109.md",
+      "new": "docs/plans/界面与美术/人物战斗与配招正式接入_20261109.md",
+      "after_sha256": "b5458723ec293f4ef18a747ad3dbd153656828abd73a29460b68bdd5bc84c4ed"
+    },
+    {
+      "old": "docs/plans/人物战斗总览与局内配招统一_20261109.md",
+      "new": "docs/plans/界面与美术/人物战斗总览与局内配招统一_20261109.md",
+      "after_sha256": "ad23278e0bf58cedbea4a28b2c33c1d5134428c6d8e12d045b3790de47e25e10"
+    },
+    {
+      "old": "docs/plans/休息纸墨木石样稿_20261108.md",
+      "new": "docs/plans/界面与美术/休息纸墨木石样稿_20261108.md",
+      "after_sha256": "456443c6e8b93696dec24ceca19d1de6bdf3fc11f24e77b81b11ea48f5d135f6"
+    },
+    {
+      "old": "docs/plans/信件邀约纸墨木石样稿_20261109.md",
+      "new": "docs/plans/界面与美术/信件邀约纸墨木石样稿_20261109.md",
+      "after_sha256": "c6065b565fd1345ac1d451118a48015e57a2e393c8aadd5dae29a062382f42c5"
+    },
+    {
+      "old": "docs/plans/信息展示与规则详解分层规范_20261026.md",
+      "new": "docs/plans/界面与美术/信息展示与规则详解分层规范_20261026.md",
+      "after_sha256": "b6c43202b89c4f6533e189a9032111108bc68de9277a8e7a5c102c22526843fc"
+    },
+    {
+      "old": "docs/plans/修行百科界面设计.md",
+      "new": "docs/plans/界面与美术/修行百科界面设计.md",
+      "after_sha256": "9745a54c5cba25d96cda8da7d3401f40d512b563636bcbc6ba4055769768cb12"
+    },
+    {
+      "old": "docs/plans/俯视角色衣服骨骼与换装_20261104.md",
+      "new": "docs/plans/界面与美术/俯视角色衣服骨骼与换装_20261104.md",
+      "after_sha256": "ab4f9d08617415c61d048d68a50b76fa71401895086e33d8351700aed59cdd97"
+    },
+    {
+      "old": "docs/plans/全局悬停穿透与拖拽抑制规则_20261108.md",
+      "new": "docs/plans/界面与美术/全局悬停穿透与拖拽抑制规则_20261108.md",
+      "after_sha256": "5c2deb23e96a7ca048531ea3b3610c6044cdc102b3b23527cc0a6849c45d106e"
+    },
+    {
+      "old": "docs/plans/全局界面统一风格规范_20261108.md",
+      "new": "docs/plans/界面与美术/全局界面统一风格规范_20261108.md",
+      "after_sha256": "57a727e87adfb8f8384149f6b42aba3010a6dbaf143590cc0e72f401a9c38b13"
+    },
+    {
+      "old": "docs/plans/剧情对白纸墨木石样稿_20261109.md",
+      "new": "docs/plans/界面与美术/剧情对白纸墨木石样稿_20261109.md",
+      "after_sha256": "b3178e5aba340938eb8af083afa95e378f14a4701b2aba25b9ad57cc75f3a38e"
+    },
+    {
+      "old": "docs/plans/剧情对话排版与悬浮选项_20261106.md",
+      "new": "docs/plans/界面与美术/剧情对话排版与悬浮选项_20261106.md",
+      "after_sha256": "f443fcab102bba36b7dcfde9570ae1c6ea9098eb1bd4a7a3d974579ad2461288"
+    },
+    {
+      "old": "docs/plans/即时角色衣摆结构与惯性_20261104.md",
+      "new": "docs/plans/界面与美术/即时角色衣摆结构与惯性_20261104.md",
+      "after_sha256": "ad5e99c32b687bfa83dd777b6f0f54e791a200b6bec62c69484ab08559a0835e"
+    },
+    {
+      "old": "docs/plans/参考归墟行单一移动步态_20261104.md",
+      "new": "docs/plans/界面与美术/参考归墟行单一移动步态_20261104.md",
+      "after_sha256": "58898cd0391846a10deaf47cd2bafc7c0cdba6facf69ec7fe8682b1eea4851df"
+    },
+    {
+      "old": "docs/地图美术与疆域蒙版制作规范.md",
+      "new": "docs/plans/界面与美术/地图美术与疆域蒙版制作规范.md",
+      "after_sha256": "3aa67a37aa9b2478cd1d29d57098fc7262de7a6db5efc7abfc669c06977a126f"
+    },
+    {
+      "old": "docs/plans/大世界行走局内形象复用_20261104.md",
+      "new": "docs/plans/界面与美术/大世界行走局内形象复用_20261104.md",
+      "after_sha256": "4f72c59344027c2f9ecb405176c5bc48f4a194bedb091bd2e174e1bc7bf6e252"
+    },
+    {
+      "old": "docs/plans/局内战斗UI重设计_20261107.md",
+      "new": "docs/plans/界面与美术/局内战斗UI重设计_20261107.md",
+      "after_sha256": "421f396b7194fa19cf9a21e7fc0e621c6e64552f1fa6874bcaaaaac313d8cc01"
+    },
+    {
+      "old": "docs/plans/局内招式悬停统一与伤害显示_20261108.md",
+      "new": "docs/plans/界面与美术/局内招式悬停统一与伤害显示_20261108.md",
+      "after_sha256": "91bc259b50493c37bf095ead919ee153972e6b4e437400cbd4b2dce372ce91c4"
+    },
+    {
+      "old": "docs/plans/工艺顶栏与炼丹控件修订_20261109.md",
+      "new": "docs/plans/界面与美术/工艺顶栏与炼丹控件修订_20261109.md",
+      "after_sha256": "19d904314bbd229ba4031e35b00349ee2a9888f7efff8323561eeee58d946a0b"
+    },
+    {
+      "old": "docs/plans/战斗配招全屏应用与组合方案_20261108.md",
+      "new": "docs/plans/界面与美术/战斗配招全屏应用与组合方案_20261108.md",
+      "after_sha256": "a8833d37f0c8e69100c07fbf355fab1b92f45772a8c871f58a78cdd7ee20999b"
+    },
+    {
+      "old": "docs/plans/技能与物品信息栏整理方案_20261025.md",
+      "new": "docs/plans/界面与美术/技能与物品信息栏整理方案_20261025.md",
+      "after_sha256": "9ae4830c63132c288fbf64cc0659c8bd794be1699d2e983fdd24896bce81e30c"
+    },
+    {
+      "old": "docs/plans/技能动态数值展示规范.md",
+      "new": "docs/plans/界面与美术/技能动态数值展示规范.md",
+      "after_sha256": "edabab336a94ebd0f3c931c1a90c6b1c12b099a60d486028e8d5931f48912024"
+    },
+    {
+      "old": "docs/plans/招式盘拖放与遍历反馈_20261108.md",
+      "new": "docs/plans/界面与美术/招式盘拖放与遍历反馈_20261108.md",
+      "after_sha256": "9b748d5cb8da4fc01e674e021cef00d32f988e86521922a60f96042b7831a3a4"
+    },
+    {
+      "old": "docs/plans/按钮用途与素材映射规范_20261109.md",
+      "new": "docs/plans/界面与美术/按钮用途与素材映射规范_20261109.md",
+      "after_sha256": "6f1e97b429e3fa087072f8ce527edf113612cacacf98683c229697c1348d5bd0"
+    },
+    {
+      "old": "docs/plans/新版战斗测试入口与界面接入_20261108.md",
+      "new": "docs/plans/界面与美术/新版战斗测试入口与界面接入_20261108.md",
+      "after_sha256": "baa7dc58fd54fe8c94f4656f20015895d2aa32dfc7dd60deb8c8c172cabe76e5"
+    },
+    {
+      "old": "docs/plans/普通交易纸墨木石样稿_20261109.md",
+      "new": "docs/plans/界面与美术/普通交易纸墨木石样稿_20261109.md",
+      "after_sha256": "785de50fa1eafe6216a598c8e6a329818c4d804596c5b846b643c0fe700a5b76"
+    },
+    {
+      "old": "docs/plans/炼丹纸墨木石原生接入_20261108.md",
+      "new": "docs/plans/界面与美术/炼丹纸墨木石原生接入_20261108.md",
+      "after_sha256": "ac3351646a8977a4ca7550137dadb0ff49d8c79e4df53adfdd6a1f0dd973206f"
+    },
+    {
+      "old": "docs/plans/炼丹纸墨木石样稿_20261108.md",
+      "new": "docs/plans/界面与美术/炼丹纸墨木石样稿_20261108.md",
+      "after_sha256": "2971b65f97e67cb77ac7a589d1c52233a160477a0cda4ddc398ebb564d0d4608"
+    },
+    {
+      "old": "docs/plans/炼器投料配伍与灵识界面修订_20261024.md",
+      "new": "docs/plans/界面与美术/炼器投料配伍与灵识界面修订_20261024.md",
+      "after_sha256": "231d5f873857a2bb5c0618321ff907fc26b54047da8f163710c9e3b4c633fc11"
+    },
+    {
+      "old": "docs/plans/炼器纸墨木石样稿_20261108.md",
+      "new": "docs/plans/界面与美术/炼器纸墨木石样稿_20261108.md",
+      "after_sha256": "2467042a24593d64ddcf2adec801a32fb7a09ef8359b9985ce655955c54a3360"
+    },
+    {
+      "old": "docs/plans/物品悬停底部占格与范围展示_20261108.md",
+      "new": "docs/plans/界面与美术/物品悬停底部占格与范围展示_20261108.md",
+      "after_sha256": "b724f63580c1bc72a5f9f66122dada22b489778c0a0e67ecab0d5a293741d7fc"
+    },
+    {
+      "old": "docs/plans/男女首套回合制局内形象_20261106.md",
+      "new": "docs/plans/界面与美术/男女首套回合制局内形象_20261106.md",
+      "after_sha256": "05f90bfeb6ae4e2932a672432ed35f318e568bae485cc2013c4af84924f681ed"
+    },
+    {
+      "old": "docs/plans/百川行走卡顿与按钮悬停清理_20261106.md",
+      "new": "docs/plans/界面与美术/百川行走卡顿与按钮悬停清理_20261106.md",
+      "after_sha256": "51f8a8b1f2bc81210a35a5dacfb6df12e2c2503e79c17ed0ca2de0c65ed7fa26"
+    },
+    {
+      "old": "docs/plans/百工资料页纸墨木石逐页验收_20261108.md",
+      "new": "docs/plans/界面与美术/百工资料页纸墨木石逐页验收_20261108.md",
+      "after_sha256": "d11d07a7cbe6c296cea3e1560a487f3829b15a465e54793795cb489cc43c261b"
+    },
+    {
+      "old": "docs/plans/立绘部件命名与局内衣着_20261005.md",
+      "new": "docs/plans/界面与美术/立绘部件命名与局内衣着_20261005.md",
+      "after_sha256": "74a9dbeb6227af5211287acd161406ce7f5bbaf7194255f6cbde043bbe645942"
+    },
+    {
+      "old": "docs/plans/行动队列局内形象与换装映射_20261103.md",
+      "new": "docs/plans/界面与美术/行动队列局内形象与换装映射_20261103.md",
+      "after_sha256": "4b61ac7039a3251659bc301d6798fc570cc9e29b147b2aec8ec93409bbee55d3"
+    },
+    {
+      "old": "docs/plans/袍内双腿支撑衣料_20261104.md",
+      "new": "docs/plans/界面与美术/袍内双腿支撑衣料_20261104.md",
+      "after_sha256": "c3ab680e915339eeba247ae2ac656d4ac3706838e97982ffc6618c30b75a8c71"
+    },
+    {
+      "old": "docs/plans/见闻任务纸墨木石样稿_20261108.md",
+      "new": "docs/plans/界面与美术/见闻任务纸墨木石样稿_20261108.md",
+      "after_sha256": "21d4eaa7adb1f358ce72b7777a1d48c1ba6782da8af1e3c24436babe0ed81502"
+    },
+    {
+      "old": "docs/plans/角色与静室纸墨木石样稿_20261108.md",
+      "new": "docs/plans/界面与美术/角色与静室纸墨木石样稿_20261108.md",
+      "after_sha256": "c4c0ec7bdeb387f7b9f3537a757c58fb5979d0fda8604a7cfc7ed08ed0656d3a"
+    },
+    {
+      "old": "docs/plans/角色战斗页即时版改造_20261104.md",
+      "new": "docs/plans/界面与美术/角色战斗页即时版改造_20261104.md",
+      "after_sha256": "124268112859ea85c08f251a4dd06ba35d50f0d8d1c488a8717ac214f0cc33f2"
+    },
+    {
+      "old": "docs/plans/角色战斗页新版招式盘样稿_20261108.md",
+      "new": "docs/plans/界面与美术/角色战斗页新版招式盘样稿_20261108.md",
+      "after_sha256": "7b78887f95b35ba3ba9a967d8d17b9bad06006144116449320194ff37ca6dcd3"
+    },
+    {
+      "old": "docs/plans/角色纸墨木石七页原生接入_20261108.md",
+      "new": "docs/plans/界面与美术/角色纸墨木石七页原生接入_20261108.md",
+      "after_sha256": "86587be92b5b6317d060c6c04905ec68824f42eac50c0bf198e313df4b85cdd7"
+    },
+    {
+      "old": "docs/plans/长袍后摆披风式惯性_20261104.md",
+      "new": "docs/plans/界面与美术/长袍后摆披风式惯性_20261104.md",
+      "after_sha256": "1a11b94cb86ab9943216b7f10585a53c8e04803b6a66f8fef0f213fc739e94c9"
+    },
+    {
+      "old": "docs/plans/闭袍全遮脚三方案_20261104.md",
+      "new": "docs/plans/界面与美术/闭袍全遮脚三方案_20261104.md",
+      "after_sha256": "b1e6a99afd11031118e3c862d8f18e83ba731582e985d617be51a1be57084bac"
+    },
+    {
+      "old": "docs/plans/阵法纸墨木石操作界面_20261109.md",
+      "new": "docs/plans/界面与美术/阵法纸墨木石操作界面_20261109.md",
+      "after_sha256": "ec0dc5b505c348bb46f8ca3b530f40aa79cf8135bda47634e3f3d8b1c5e892a8"
+    },
+    {
+      "old": "docs/plans/静室研读与演法返回修复_20261012.md",
+      "new": "docs/plans/界面与美术/静室研读与演法返回修复_20261012.md",
+      "after_sha256": "cdd975bd73dc11b7a87ea60df1b29a5d1b827c3abb81940ec8968ba6b9c5f8ba"
+    },
+    {
+      "old": "docs/plans/制符十二功用与符纹工艺重设计_20261108.md",
+      "new": "docs/plans/百工技艺/制符/制符十二功用与符纹工艺重设计_20261108.md",
+      "after_sha256": "5373db61ddb78eaa9001b5889d0533a081d42554b7a81e0196458b07f6d9a3f5"
+    },
+    {
+      "old": "docs/plans/制符界面与符笔材料设计_20261108.md",
+      "new": "docs/plans/百工技艺/制符/制符界面与符笔材料设计_20261108.md",
+      "after_sha256": "3dd9059e2b18bdbe930de969cd96198afaf52974d960916e9b4417eec7180c09"
+    },
+    {
+      "old": "docs/plans/制符纸墨材质与自动制作方案_20261108.md",
+      "new": "docs/plans/百工技艺/制符/制符纸墨材质与自动制作方案_20261108.md",
+      "after_sha256": "eddb08df3546c0fed0925c37768b3cf94066fb1665625683b42e59c521ace880"
+    },
+    {
+      "old": "docs/plans/制符纸材料工艺与界面细案_20261108.md",
+      "new": "docs/plans/百工技艺/制符/制符纸材料工艺与界面细案_20261108.md",
+      "after_sha256": "34328fe7ad7f380bf6997d7a6aadc4ca65c7cc2922d2a29255de3ceae84c6293"
+    },
+    {
+      "old": "docs/plans/制符配砚与干湿笔序优化_20261108.md",
+      "new": "docs/plans/百工技艺/制符/制符配砚与干湿笔序优化_20261108.md",
+      "after_sha256": "c17b2852f446d38c75b57cf2e82831446d6dd0f66b37dc42c141a38763f31808"
+    },
+    {
+      "old": "docs/plans/符箓三工艺与画符技艺主案_20261108.md",
+      "new": "docs/plans/百工技艺/制符/符箓三工艺与画符技艺主案_20261108.md",
+      "after_sha256": "92347b4eacb8230f3a0ed6f32254a0b54daaf41f98a4cd76ab993874d825d853"
+    },
+    {
+      "old": "docs/plans/符箓三工艺候选参数与实装_20261109.md",
+      "new": "docs/plans/百工技艺/制符/符箓三工艺候选参数与实装_20261109.md",
+      "after_sha256": "5943244d8031fd6ceee8ef44e5b9c19b71bc9904f52a54d1bb10fc47ac3c522b"
+    },
+    {
+      "old": "docs/plans/符箓三工艺原生接入_20261109.md",
+      "new": "docs/plans/百工技艺/制符/符箓三工艺原生接入_20261109.md",
+      "after_sha256": "c6ec5e08f46f865bc20edbca5ad51d150d25fd6faef0473e4d17c90e292a661d"
+    },
+    {
+      "old": "docs/plans/符箓三工艺完整规则方案_20261108.md",
+      "new": "docs/plans/百工技艺/制符/符箓三工艺完整规则方案_20261108.md",
+      "after_sha256": "d745c109c6e3cfa80f366a9929d679b4ce84adc30a803e59138e28f6720790e9"
+    },
+    {
+      "old": "docs/plans/符箓三工艺深度整合与画符配伍方案_20261108.md",
+      "new": "docs/plans/百工技艺/制符/符箓三工艺深度整合与画符配伍方案_20261108.md",
+      "after_sha256": "e9df70af0f606294c9b61275f5e9861757167d052624c83f374257e8760bf918"
+    },
+    {
+      "old": "docs/plans/符箓三工艺界面样稿方案_20261108.md",
+      "new": "docs/plans/百工技艺/制符/符箓三工艺界面样稿方案_20261108.md",
+      "after_sha256": "b9043d34556b3478962cf21046a81c28d90b543c38f2f710bfb892d234a4175b"
+    },
+    {
+      "old": "docs/plans/符箓原料自动匹配资料核对_20261108.json",
+      "new": "docs/plans/百工技艺/制符/符箓原料自动匹配资料核对_20261108.json",
+      "after_sha256": "21ccc2ff5b794491e36986e078a0c37b3f4abb19f5d1a9693423bdeb660d4839"
+    },
+    {
+      "old": "docs/plans/符箓成品分类与画符界面方案_20261108.md",
+      "new": "docs/plans/百工技艺/制符/符箓成品分类与画符界面方案_20261108.md",
+      "after_sha256": "c968af2251349d48316e461b730c157fc8e2760a1b72e10f63e6ae12e9ca719b"
+    },
+    {
+      "old": "docs/plans/符箓系统设计提案_20261107.md",
+      "new": "docs/plans/百工技艺/制符/符箓系统设计提案_20261107.md",
+      "after_sha256": "ab1e89b6cc4b0399463ece7e8799fb73051e6e6abee9ef6d1f540bdf9c1c2dea"
+    },
+    {
+      "old": "docs/plans/符箓纸墨法性符势与成符结果重设计提案_20261108.md",
+      "new": "docs/plans/百工技艺/制符/符箓纸墨法性符势与成符结果重设计提案_20261108.md",
+      "after_sha256": "1b79607479fa0748cca1438467afb25ed0181b45006697da2a2584df8994c742"
+    },
+    {
+      "old": "docs/plans/符箓纸墨笔字段与技法规范_20261108.md",
+      "new": "docs/plans/百工技艺/制符/符箓纸墨笔字段与技法规范_20261108.md",
+      "after_sha256": "52d8a368cd92a0a7c67023f5980b3788ac1140df7ad0b734233f925fc4436263"
+    },
+    {
+      "old": "docs/plans/符箓纸墨笔成品信息统一_20261109.md",
+      "new": "docs/plans/百工技艺/制符/符箓纸墨笔成品信息统一_20261109.md",
+      "after_sha256": "031168e8acc5f4ff3030790531832c6f79f7663b2ec0388dc6b00ab4b98bc9b5"
+    },
+    {
+      "old": "docs/plans/符箓自动制作演出与鉴看交接_20261109.md",
+      "new": "docs/plans/百工技艺/制符/符箓自动制作演出与鉴看交接_20261109.md",
+      "after_sha256": "c385674c1e58d99eb91ebc390da743e655e0df9921f301bc3f22bfdda77698d9"
+    },
+    {
+      "old": "docs/plans/符箓配伍册与鉴看补完_20261109.md",
+      "new": "docs/plans/百工技艺/制符/符箓配伍册与鉴看补完_20261109.md",
+      "after_sha256": "148006dcf9e274471aac290db0cff4bc7e87884317949d4eaab729cb2c7dd23b"
+    },
+    {
+      "old": "docs/plans/符箓首轮战斗接入候选_20261109.md",
+      "new": "docs/plans/百工技艺/制符/符箓首轮战斗接入候选_20261109.md",
+      "after_sha256": "99f6aeac05cb19ecc0edbefa1725dc131c315b487895c3ec15b85d7a5647aae5"
+    },
+    {
+      "old": "docs/plans/纸墨双工艺与字段自动匹配主案_20261108.md",
+      "new": "docs/plans/百工技艺/制符/纸墨双工艺与字段自动匹配主案_20261108.md",
+      "after_sha256": "3d44d1250ce342c8b42475365951fa1675ee16b2a8383fd768076a79bc80b4cb"
+    },
+    {
+      "old": "docs/plans/纸墨双工艺界面样稿方案_20261108.md",
+      "new": "docs/plans/百工技艺/制符/纸墨双工艺界面样稿方案_20261108.md",
+      "after_sha256": "8771e32e4d4550d983863706747a4ca9937f94082d036ae712d4d47eb334672a"
+    },
+    {
+      "old": "docs/plans/纸墨灵力软适配与意象修订_20261108.md",
+      "new": "docs/plans/百工技艺/制符/纸墨灵力软适配与意象修订_20261108.md",
+      "after_sha256": "e0f5d5a514709bad32936f2e29889eefce832dcfb28f7f27be54c400fdc602d2"
+    },
+    {
+      "old": "docs/plans/纸墨规格与画符配伍填写模板_20261108.md",
+      "new": "docs/plans/百工技艺/制符/纸墨规格与画符配伍填写模板_20261108.md",
+      "after_sha256": "b074d9561faa647ade854829a9f341dce69e2d135b89eeed24b58f420bc5385c"
+    },
+    {
+      "old": "docs/plans/云息丹药成丹要求与候选配伍_20261024.md",
+      "new": "docs/plans/百工技艺/炼丹/云息丹药成丹要求与候选配伍_20261024.md",
+      "after_sha256": "5bbab25a38a3447d6465a4d1c9d4a46c4b25bb4384d614c3bd7b212684c4e24d"
+    },
+    {
+      "old": "docs/plans/云息丹药扩充与旧丹完善提案_20261024.md",
+      "new": "docs/plans/百工技艺/炼丹/云息丹药扩充与旧丹完善提案_20261024.md",
+      "after_sha256": "f480723992e9f81f4b7f8a83dfa3d8e53d49dbf22a5433be7d170524cc23ab94"
+    },
+    {
+      "old": "docs/plans/前期丹药与丹方首轮提案_20261022.md",
+      "new": "docs/plans/百工技艺/炼丹/前期丹药与丹方首轮提案_20261022.md",
+      "after_sha256": "757d5ea4ec0bc39cb49b4af351185307d233e6ea95ef93263c09bc35c7863b9b"
+    },
+    {
+      "old": "docs/plans/炼丹中心丹炉测试界面_20261016.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹中心丹炉测试界面_20261016.md",
+      "after_sha256": "f7549dfa61b245a2bd89a1daf04f78f9ddce8db8b48fe4db55df84fdf0c9e3a2"
+    },
+    {
+      "old": "docs/plans/炼丹主药辅药拖拽试演_20261016.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹主药辅药拖拽试演_20261016.md",
+      "after_sha256": "58a2029472180911bdce3deb44bd94bebd1233c85bf6e3922b707a4cbcd76f49"
+    },
+    {
+      "old": "docs/plans/炼丹九品基础炉务与第一炉教程_20261018.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹九品基础炉务与第一炉教程_20261018.md",
+      "after_sha256": "ac2a42699f2d7a4ef27b09dad7c6eb04bd2997c31e38c76a8d2b6869baa5f0d8"
+    },
+    {
+      "old": "docs/plans/炼丹典籍参照与功用落地规划_20261016.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹典籍参照与功用落地规划_20261016.md",
+      "after_sha256": "55995b7937bea0c0a50c7c1aede9a3adf7d18ec781be44a9cea06031a9dbb7c3"
+    },
+    {
+      "old": "docs/plans/炼丹分息网页试玩_20261016.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹分息网页试玩_20261016.md",
+      "after_sha256": "a863494e70e1a2d1d533babea913d52673b71e2825681364fb4ef3ca589aa710"
+    },
+    {
+      "old": "docs/plans/炼丹功用原表核对与丹效待定_20261016.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹功用原表核对与丹效待定_20261016.md",
+      "after_sha256": "59c912aebc97925e9c620608a78eb107280ac7c32834d508657dab6aefbecec3"
+    },
+    {
+      "old": "docs/plans/炼丹十二功用独立实操教程_20261018.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹十二功用独立实操教程_20261018.md",
+      "after_sha256": "83864d6f2449a7f8a23252503c696b8a6e9090a499a428b71acf5846b0d7a1b6"
+    },
+    {
+      "old": "docs/plans/炼丹可理解流程首版_20261017.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹可理解流程首版_20261017.md",
+      "after_sha256": "0f1e0151946d27075ad95976ad2c616639e1b06e6f060e2494c60f6fd92c7b1c"
+    },
+    {
+      "old": "docs/plans/炼丹完整结算与正式接入_20261023.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹完整结算与正式接入_20261023.md",
+      "after_sha256": "cca8ba57539f4a306e9266a0a1833450d789059eccc3bbc14ce77226bbf05214"
+    },
+    {
+      "old": "docs/plans/炼丹拖拽试演与位置功用表_20261016.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹拖拽试演与位置功用表_20261016.md",
+      "after_sha256": "fa77e55118327d08c587738456b77828471526d485e6ae36a77e83fd2b67a1cf"
+    },
+    {
+      "old": "docs/plans/炼丹新版流程测试参数_20261017.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹新版流程测试参数_20261017.md",
+      "after_sha256": "ef76c84ac39cc3323f435f8a51e17d97fcaeaadde56c2b50cb614b9fbad46a6b"
+    },
+    {
+      "old": "docs/plans/炼丹新版试验规格_20261016.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹新版试验规格_20261016.md",
+      "after_sha256": "b41a8855bc5e7eac8d1f31ef70be6b5265f791fccdf33ec19a738f0094fc5d5a"
+    },
+    {
+      "old": "docs/plans/炼丹槽位式自动配伍新案_20261019.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹槽位式自动配伍新案_20261019.md",
+      "after_sha256": "6250cb131ff13231f313b8e58a6309b42d3d63b7b3aeea810377138003ec41da"
+    },
+    {
+      "old": "docs/plans/炼丹测试丹种与丹方目录_20261017.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹测试丹种与丹方目录_20261017.md",
+      "after_sha256": "a2be6f23ebaef973dd06f58b2e6355fd8e1fd891b4c74c61881b760aebf06b84"
+    },
+    {
+      "old": "docs/plans/炼丹演出接续实施说明_20261023.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹演出接续实施说明_20261023.md",
+      "after_sha256": "b60c8e3ba3f5be15199f9b2a6b419b7382a4d568b24b900029bcf1576872064b"
+    },
+    {
+      "old": "docs/plans/炼丹系统逻辑主案_20261017.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹系统逻辑主案_20261017.md",
+      "after_sha256": "895fcdd1a58e4c8403edeb96dfedf98d1ecc5b9f34e3c5451582db0c3e127fa7"
+    },
+    {
+      "old": "docs/plans/炼丹耗时与批量掌控修订_20261024.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹耗时与批量掌控修订_20261024.md",
+      "after_sha256": "8bf5b59f1663791e881f1a5ad6d9583b9dabfcff20c520de05423a8007b2272c"
+    },
+    {
+      "old": "docs/plans/炼丹自由操作与炉内变化草案_20261016.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹自由操作与炉内变化草案_20261016.md",
+      "after_sha256": "33f0f59353999fabf2536f0a7b416f5c54ae7b29339414182485c601305a3609"
+    },
+    {
+      "old": "docs/plans/炼丹节点网初始数值表_20261018.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹节点网初始数值表_20261018.md",
+      "after_sha256": "aaa683cd3466d436e0a30400e5bc9365b5e1501893540f451f4dd83fe951a0aa"
+    },
+    {
+      "old": "docs/plans/炼丹节点网生产线与闭环丹胚方案_20261018.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹节点网生产线与闭环丹胚方案_20261018.md",
+      "after_sha256": "f5410b386258fe8e1494f1fb7a1b4007ad53500b77cdf6964b5ed00ba6a8a6ff"
+    },
+    {
+      "old": "docs/plans/炼丹节点网预设布网与自动跑炉方案_20261018.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹节点网预设布网与自动跑炉方案_20261018.md",
+      "after_sha256": "8bacc8aa87c427d801c6c164844c2714b77458d0cae14bd69244c31658f9d62f"
+    },
+    {
+      "old": "docs/plans/炼丹节点网首版接入与验证_20261018.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹节点网首版接入与验证_20261018.md",
+      "after_sha256": "1269971e9362447f6ca362d1b50917fbb6974e273bd005bc1954c90dd24b88e7"
+    },
+    {
+      "old": "docs/plans/炼丹节点退场与五行阴阳接入边界_20261018.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹节点退场与五行阴阳接入边界_20261018.md",
+      "after_sha256": "2bf9b077c6b9a05315e884ac2f832cf9b40e93c0a0523a4c118322f29026a6e3"
+    },
+    {
+      "old": "docs/plans/炼丹药材药性与功用关系_20261016.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹药材药性与功用关系_20261016.md",
+      "after_sha256": "7d68409fd52aa7c24381e7f5798f04c1a9511ff0e8be3fa48935fe8420e37196"
+    },
+    {
+      "old": "docs/plans/炼丹通行引节点网分工修订_20261018.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹通行引节点网分工修订_20261018.md",
+      "after_sha256": "a8f614f5c9d523cbe47ca656a3ae1ef0323e542a86853def36ef23c9dc72010a"
+    },
+    {
+      "old": "docs/plans/炼丹预设布网简化与配伍结算新案_20261019.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹预设布网简化与配伍结算新案_20261019.md",
+      "after_sha256": "9936cdbb2788ea324c6bf90f10d052a15285c712629eed90783162cae0537635"
+    },
+    {
+      "old": "docs/plans/炼丹高品质配伍与基建炉局_20261018.md",
+      "new": "docs/plans/百工技艺/炼丹/炼丹高品质配伍与基建炉局_20261018.md",
+      "after_sha256": "d99fee9d2823eba9842c98db32672dd319d76b36779ab5707a4f955aa98add31"
+    },
+    {
+      "old": "docs/plans/突破丹炼制接入与样方_20261104.md",
+      "new": "docs/plans/百工技艺/炼丹/突破丹炼制接入与样方_20261104.md",
+      "after_sha256": "3946453d270913ed17287ec4b982398a3fcffaa624633dfd5b1ccc97740a7923"
+    },
+    {
+      "old": "docs/plans/首批八种丹药扩充与接入_20261104.md",
+      "new": "docs/plans/百工技艺/炼丹/首批八种丹药扩充与接入_20261104.md",
+      "after_sha256": "88afb8ab43be223f900b69194c5c0f59a27705c9136a2e90b19102dcb51918b4"
+    },
+    {
+      "old": "docs/plans/凡器法器公式试炼实施_20261022.md",
+      "new": "docs/plans/百工技艺/炼器/凡器法器公式试炼实施_20261022.md",
+      "after_sha256": "062dbd6f3967504a84075770da2ebbd1491053b9b92cba24486fdefdbd5c0ac4"
+    },
+    {
+      "old": "docs/plans/剑器形与炼制配置设计_20261021.md",
+      "new": "docs/plans/百工技艺/炼器/剑器形与炼制配置设计_20261021.md",
+      "after_sha256": "a8bc75c7ae95e3572ac14265c4f040ff2da29bdedf34300443d0a0d63b29d09f"
+    },
+    {
+      "old": "docs/plans/剑类图谱与方法配置评审表_20261021.md",
+      "new": "docs/plans/百工技艺/炼器/剑类图谱与方法配置评审表_20261021.md",
+      "after_sha256": "3fae073d9dbabef353f215ae5c3c84de794d350ed0ac088b4cffc51260569597"
+    },
+    {
+      "old": "docs/plans/剑类炼器界面试炼实施_20261021.md",
+      "new": "docs/plans/百工技艺/炼器/剑类炼器界面试炼实施_20261021.md",
+      "after_sha256": "2649cd8a07c09d6612b59565da0c87bbcd84f1b1256c25e80144ad5ee65f0540"
+    },
+    {
+      "old": "docs/plans/剑类炼器首轮试算参数_20261021.json",
+      "new": "docs/plans/百工技艺/炼器/剑类炼器首轮试算参数_20261021.json",
+      "after_sha256": "d5755014433cad6586869240165c9da38a905d4fb362615d8f776f82409d2210"
+    },
+    {
+      "old": "docs/plans/剑类炼器首轮试算方案_20261021.md",
+      "new": "docs/plans/百工技艺/炼器/剑类炼器首轮试算方案_20261021.md",
+      "after_sha256": "0836e91cdf06b85710830cefa1f39e3ff5a6000ced0f62ceee755e3d719030be"
+    },
+    {
+      "old": "docs/plans/剑类炼器首轮试算结果_20261021.md",
+      "new": "docs/plans/百工技艺/炼器/剑类炼器首轮试算结果_20261021.md",
+      "after_sha256": "e08d7c18bdbc608147e123ece2bb5a0d2a5b7a89cae6edaa1dedbb414da5e38e"
+    },
+    {
+      "old": "docs/plans/单器装备收益与锋锐试炼实施_20261022.md",
+      "new": "docs/plans/百工技艺/炼器/单器装备收益与锋锐试炼实施_20261022.md",
+      "after_sha256": "ed32461bf95bbaad3517fad2dd3ecc3e08ad24b35f86497c881ec44f73173de7"
+    },
+    {
+      "old": "docs/plans/材料与过程量驱动炼器设计_20261022.md",
+      "new": "docs/plans/百工技艺/炼器/材料与过程量驱动炼器设计_20261022.md",
+      "after_sha256": "1e44666a15cf96d9136b60f76fb0353b543837addd922393afa0149e0c3d410c"
+    },
+    {
+      "old": "docs/plans/材料到器物效果生成设计_20261022.md",
+      "new": "docs/plans/百工技艺/炼器/材料到器物效果生成设计_20261022.md",
+      "after_sha256": "b78b6aae825eedcb7d5c02a045a0713a22f95709184b257477d654bc85707a96"
+    },
+    {
+      "old": "docs/plans/炼器与战斗场景资源释放验收_20261104.md",
+      "new": "docs/plans/百工技艺/炼器/炼器与战斗场景资源释放验收_20261104.md",
+      "after_sha256": "7237cf62d4c80a3adc25550be441e517923d5ff9b27deae42c1c2441f1d85c62"
+    },
+    {
+      "old": "docs/plans/炼器制作闭环与战斗接入设计_20261016.md",
+      "new": "docs/plans/百工技艺/炼器/炼器制作闭环与战斗接入设计_20261016.md",
+      "after_sha256": "0f31f08e36878d2c4a182b6b11d4042cd9c288179e988adc0f023a07a5236dbd"
+    },
+    {
+      "old": "docs/plans/炼器取消燃料与五行展示修订_20261022.md",
+      "new": "docs/plans/百工技艺/炼器/炼器取消燃料与五行展示修订_20261022.md",
+      "after_sha256": "a1feaa2fbcc60e8d555dbeb752641494e08192ba5f484c43d5204488d60db1f2"
+    },
+    {
+      "old": "docs/plans/炼器成器物品展示实施_20261022.md",
+      "new": "docs/plans/百工技艺/炼器/炼器成器物品展示实施_20261022.md",
+      "after_sha256": "02deecdd1f9e1b8283e4c3f5b5936deebdae7b64ded528b343dce3290b50bed6"
+    },
+    {
+      "old": "docs/plans/炼器效果通用计算公式_20261022.md",
+      "new": "docs/plans/百工技艺/炼器/炼器效果通用计算公式_20261022.md",
+      "after_sha256": "a039a8b284b3baa6814aef0cb4bd5f130339a91bb4ae87d86db909dcb3c19ffe"
+    },
+    {
+      "old": "docs/plans/炼器新模型试炼与器物信息设计_20261022.md",
+      "new": "docs/plans/百工技艺/炼器/炼器新模型试炼与器物信息设计_20261022.md",
+      "after_sha256": "91b342dce3d8e6a402f7eb7c45b64b2109d684af9e48216bc7654c6ae92adb23"
+    },
+    {
+      "old": "docs/plans/炼器演出设计与样片_20261106.md",
+      "new": "docs/plans/百工技艺/炼器/炼器演出设计与样片_20261106.md",
+      "after_sha256": "b55c6bf8cf46715bfc9669f06420639e9f4e8f1ec6f61db30d613331319b7b9d"
+    },
+    {
+      "old": "docs/plans/炼器火源与界面扩展方案_20261107.md",
+      "new": "docs/plans/百工技艺/炼器/炼器火源与界面扩展方案_20261107.md",
+      "after_sha256": "bb5de8c4d9b99133fc2dd00507e473fb81f7be85b0ba9f5278ecd5028c0b7c65"
+    },
+    {
+      "old": "docs/plans/炼器炼丹游戏内接入_20261025.md",
+      "new": "docs/plans/百工技艺/炼器/炼器炼丹游戏内接入_20261025.md",
+      "after_sha256": "ff5570ee58ba3a1c3240ec87b2b1994e80ac516dc4490ae5f43138284ff00d17"
+    },
+    {
+      "old": "docs/plans/炼器界面底色分层与低亮度调整_20261108.md",
+      "new": "docs/plans/百工技艺/炼器/炼器界面底色分层与低亮度调整_20261108.md",
+      "after_sha256": "a50788a2223816c9c44fe3b567ed025b0d9a10e84debeac0e03784851adda4c7"
+    },
+    {
+      "old": "docs/plans/炼器至战斗接入修复与验收_20261104.md",
+      "new": "docs/plans/百工技艺/炼器/炼器至战斗接入修复与验收_20261104.md",
+      "after_sha256": "d6068127625433930093224666b88fb6371a9e9956a4be340f166a0d45ad114b"
+    },
+    {
+      "old": "docs/plans/炼器装备对练接入_20261023.md",
+      "new": "docs/plans/百工技艺/炼器/炼器装备对练接入_20261023.md",
+      "after_sha256": "e8d9c932517de502ee9c3f897f6e1ea05e3f03e3412db47fee5401239f4e3b48"
+    },
+    {
+      "old": "docs/plans/炼器过程量与成器推导细案_20261022.md",
+      "new": "docs/plans/百工技艺/炼器/炼器过程量与成器推导细案_20261022.md",
+      "after_sha256": "9c0bbc79816bb029bb11476791a24f454c43e31b9aa7c0b28423a28417a74c1e"
+    },
+    {
+      "old": "docs/plans/炼成剑通用装备与战斗适配_20261024.md",
+      "new": "docs/plans/百工技艺/炼器/炼成剑通用装备与战斗适配_20261024.md",
+      "after_sha256": "cc87f6e1efee3d7768d372eac5d75382d78245ca6efb427940803d7692e7e6a0"
+    },
+    {
+      "old": "docs/plans/灵植生境与培育规则候选_20261107.md",
+      "new": "docs/plans/百工技艺/种植/灵植生境与培育规则候选_20261107.md",
+      "after_sha256": "5147920cbc05c367efd4d0f7d8296daeb12477c7ac85376527fc4f5c1cbff7ac"
+    },
+    {
+      "old": "docs/plans/种植系统设定流程与界面规划_20261107.md",
+      "new": "docs/plans/百工技艺/种植/种植系统设定流程与界面规划_20261107.md",
+      "after_sha256": "7173b0054395173fc81b26de4e0b3542300206b3adcccdde0fc1755cf3c88096"
+    },
+    {
+      "old": "docs/plans/三候护持阵盘旗运行完整示例_20261108.md",
+      "new": "docs/plans/百工技艺/阵法/三候护持阵盘旗运行完整示例_20261108.md",
+      "after_sha256": "bb05e13b6d09d32677830349520fd6a98c20f7c82249dd420ee37ece5904b0ad"
+    },
+    {
+      "old": "docs/plans/五格复杂阵盘自由构筑_20261109.md",
+      "new": "docs/plans/百工技艺/阵法/五格复杂阵盘自由构筑_20261109.md",
+      "after_sha256": "61632f7faa874d3d9225cfd260804cd5184174d43dc27d6cf9f860528980ba8d"
+    },
+    {
+      "old": "docs/plans/基础独立阵盘构筑与护持重排_20261108.md",
+      "new": "docs/plans/百工技艺/阵法/基础独立阵盘构筑与护持重排_20261108.md",
+      "after_sha256": "4ed3d34c961d0ef3cc2fbe4efb4796a3a2814f00a78d917d0ef56aa011d8b0ca"
+    },
+    {
+      "old": "docs/plans/基础独立阵盘验算_20261108.json",
+      "new": "docs/plans/百工技艺/阵法/基础独立阵盘验算_20261108.json",
+      "after_sha256": "d49e803657fa7ad0b7481955a03ee0733634abce65499b5f7f568b89164cdbdf"
+    },
+    {
+      "old": "docs/plans/基础阵盘九格形制与部件占格候选_20261108.md",
+      "new": "docs/plans/百工技艺/阵法/基础阵盘九格形制与部件占格候选_20261108.md",
+      "after_sha256": "bc2e777bca0dbb0d5bc1c994860813b9f1dd98eba4f81d610399c757f6e13747"
+    },
+    {
+      "old": "docs/plans/基础阵盘四格单层接线实施_20261108.md",
+      "new": "docs/plans/百工技艺/阵法/基础阵盘四格单层接线实施_20261108.md",
+      "after_sha256": "d1b76673d88dac577d7098fe6997a5ead265d3d2804e0f8831eb8bde5a80fa7d"
+    },
+    {
+      "old": "docs/plans/基础阵盘形制与双路走线占格候选_20261108.md",
+      "new": "docs/plans/百工技艺/阵法/基础阵盘形制与双路走线占格候选_20261108.md",
+      "after_sha256": "6ac4c7538da101b23e41875208732680f0f26e4c0230b77f0040b1626ea13e32"
+    },
+    {
+      "old": "docs/plans/守攻阵状态控制实装_20261109.md",
+      "new": "docs/plans/百工技艺/阵法/守攻阵状态控制实装_20261109.md",
+      "after_sha256": "4df789244e84b95c2d65a2761aecca8db362c7aefe83c410bd3875edca3bc5dc"
+    },
+    {
+      "old": "docs/plans/手持阵盘与招式盘阵旗协作规划_20261108.md",
+      "new": "docs/plans/百工技艺/阵法/手持阵盘与招式盘阵旗协作规划_20261108.md",
+      "after_sha256": "3d1ececd27ffd74d066bb9a8200c260a11d02e3e63c0567247e61b19f842f313"
+    },
+    {
+      "old": "docs/plans/种植功用接入与多类环境阵法_20261108.md",
+      "new": "docs/plans/百工技艺/阵法/种植功用接入与多类环境阵法_20261108.md",
+      "after_sha256": "98016a2c342b0e6dafe71c327c9e454c06f574d5f638b10054c2991f10ac6cfa"
+    },
+    {
+      "old": "docs/plans/阵旗可选外置与阵盘构筑取舍候选_20261108.md",
+      "new": "docs/plans/百工技艺/阵法/阵旗可选外置与阵盘构筑取舍候选_20261108.md",
+      "after_sha256": "3093cd6bd584f1fa3178ede64ffb9e691ab48c58256e8c05d15afd6dcb958470"
+    },
+    {
+      "old": "docs/plans/阵法复杂逻辑需求与执行闭环提案_20261108.md",
+      "new": "docs/plans/百工技艺/阵法/阵法复杂逻辑需求与执行闭环提案_20261108.md",
+      "after_sha256": "4e3655266af05a2ab70668d220ebe638676c910c34ca1ef728d9b9ca11550643"
+    },
+    {
+      "old": "docs/plans/阵法改革_独立阵盘与分阵旗定位_20261108.md",
+      "new": "docs/plans/百工技艺/阵法/阵法改革_独立阵盘与分阵旗定位_20261108.md",
+      "after_sha256": "1dd89b30458722ffffcde06748dbe013cc3c182dfec7c69cdb5ec124c235a37c"
+    },
+    {
+      "old": "docs/plans/阵法系统完整策划提案_20261108.md",
+      "new": "docs/plans/百工技艺/阵法/阵法系统完整策划提案_20261108.md",
+      "after_sha256": "5783f0449991cc030bcecb922fe21c0e4f8b4bb4eb89815aa93f2c14003f1d6f"
+    },
+    {
+      "old": "docs/plans/阵法系统完整策划验收_20261108.md",
+      "new": "docs/plans/百工技艺/阵法/阵法系统完整策划验收_20261108.md",
+      "after_sha256": "e9b9f6046c776705000f5ed32b586a0b4ad07270340546dc3a2a52c4797c2afd"
+    },
+    {
+      "old": "docs/plans/阵法系统完整策划验算_20261108.json",
+      "new": "docs/plans/百工技艺/阵法/阵法系统完整策划验算_20261108.json",
+      "after_sha256": "f0cbf7e07a2a88b48c82a6cfda9a7ececba1b44a82290da66eb188833867fd9f"
+    },
+    {
+      "old": "docs/plans/阵法系统设计.md",
+      "new": "docs/plans/百工技艺/阵法/阵法系统设计.md",
+      "after_sha256": "09a6f2238ffb9e5ef406efe25f1720b260318d17c5c8da0dc88b56b9b6f88725"
+    },
+    {
+      "old": "docs/plans/阵法输入输出与状态控制改革方案_20261109.md",
+      "new": "docs/plans/百工技艺/阵法/阵法输入输出与状态控制改革方案_20261109.md",
+      "after_sha256": "ba3101f0d17cd7eb3f92e3816e34cf9f5dd40fed84112dd9f1b75f6f1e3176c0"
+    },
+    {
+      "old": "docs/plans/阵法逻辑元件功能规格与交互验收稿_20261109.md",
+      "new": "docs/plans/百工技艺/阵法/阵法逻辑元件功能规格与交互验收稿_20261109.md",
+      "after_sha256": "dbe70ef5a4fc7a2b3b40771f8424abc0de4c37a2b49c2b7bcb9e22cc0d4d6942"
+    },
+    {
+      "old": "docs/plans/阵盘制作与招式盘接入规划_20261107.md",
+      "new": "docs/plans/百工技艺/阵法/阵盘制作与招式盘接入规划_20261107.md",
+      "after_sha256": "c9d096af12cfef7bc5541a24f75cbd06f8da2931f1b974566cc28a293a294c08"
+    },
+    {
+      "old": "docs/plans/阵盘基础逻辑元件实装_20261109.md",
+      "new": "docs/plans/百工技艺/阵法/阵盘基础逻辑元件实装_20261109.md",
+      "after_sha256": "ef696ca165ed67841fbd58b00adb36f6024b105ddcd0ab276988946f637fc3fd"
+    },
+    {
+      "old": "tmp_summary_download.md",
+      "new": "docs/归档/目录整理_20261109/导出摘要副本.txt",
+      "before_sha256": "d677d1c7411a026b69e60bccea8a217257470a733a04e767ef0d9650d7a9092a",
+      "after_sha256": "d677d1c7411a026b69e60bccea8a217257470a733a04e767ef0d9650d7a9092a"
+    }
+  ]
+}

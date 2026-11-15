@@ -23,7 +23,7 @@ public partial class NpcSparringSmoke : Node
             var saves = GetNode<GameSaveManager>("/root/GameSaveManager"); Check(!saves.has_active_slot, "禁止写正式存档");
             var fixture = new PersistentGameSave { year = 1, month = 1, day = 8, hour = 9, current_node_id = "yuxu_xianzong_core", world_cell = new(34, 166), npc_population_version = 1, npc_simulation_enabled = false,
                 player_data = new HumanData { entity_name = "沈照微", cultivation_realm = "云息三层", current_age = 16, sect_affiliation_id = "yuxu_xianzong", sect_current_rank = "外门弟子", current_world_stamina = 73 },
-                scene_progress = new D { ["qingxi_prologue"] = 3, ["cloud_state_initialized"] = true, ["xuanjian_awakened"] = true } };
+                scene_progress = new D { ["story_free_start"] = true, ["cloud_state_initialized"] = true } };
             var npc = new WorldNpcData { npc_id = "spar_smoke", npc_name = "陆衡", personality = "爽直", faction_id = "yuxu_xianzong", formal_identity = "外门弟子", current_node_id = "yuxu_xianzong_core", current_subscene_id = "guanfu", cultivation_realm = "云息二层", current_age = 20, gender = 0, current_health = 92, max_health = 150 };
             npc.player_social_memory["player_name"] = "沈照微"; npc.social_priorities.Add("修行"); npc.social_personality["risk"] = "冒进";
             fixture.world_npcs.Add(npc);
@@ -78,7 +78,7 @@ public partial class NpcSparringSmoke : Node
             Check(player.unique_id == uid && player.entity_name == name && player.physique == physique && player.current_health == health, "演练回传覆盖玩家身份、属性或伤势");
             Check(player.current_world_stamina == 73 - WorldStaminaRules.ConversationCost && clock.get_total_game_hours() == hours, "重复收费或额外推进时间");
             Check(npc.current_health == 92 && npc.is_alive && npc.player_relationship == 0, "演练导致NPC伤亡或无依据关系变化");
-            Check(Read<string>(main, "_player_current_yuxu_peak_id") == "guanfu" && Read<object>(main, "_qingxi_prologue").ToString() == "Departed", "返回错误峰或重播青溪剧情");
+            Check(Read<string>(main, "_player_current_yuxu_peak_id") == "guanfu" && (bool)Call(main, "has_open_world_access")!, "返回错误峰或重播青溪剧情");
             Check(npc.player_social_memory["last_spar_outcome"].AsString().Contains(loss ? "对方更胜" : "你略胜") && npc.player_known_npc_info.ContainsKey("spar_experience"), "未记住真实切磋胜负");
             Check(!transition.has_pending_battle_return_data(), "回传未一次消费");
             var summary = new D { ["battle_id"] = npc.player_social_memory["last_spar_battle"], ["player_victory"] = !loss, ["player_defeated"] = loss };

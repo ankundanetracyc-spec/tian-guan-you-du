@@ -49,7 +49,8 @@ public partial class BattleInkSlashEffect : Node2D
     public override void _Ready()
     {
         ProcessMode = ProcessModeEnum.Pausable;
-        ZIndex = 80;
+        ZIndex = BattlePresentationLayers.Effects;
+        ZAsRelative = false;
         SetupShaderVisual();
     }
 

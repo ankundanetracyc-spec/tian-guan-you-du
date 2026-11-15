@@ -32,5 +32,6 @@ public partial class EntityData : Resource
     [Export] public bool known_to_player;
     [Export] public int stack_count = 1;
     [Export] public bool can_stack = true;
+    // Legacy/world-entity stack value. Character item stacks are generally uncapped; PillItemData remains unstackable.
     [Export] public int max_stack = 999;
 }

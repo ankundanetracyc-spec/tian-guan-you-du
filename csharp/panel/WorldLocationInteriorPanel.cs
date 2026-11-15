@@ -10,6 +10,8 @@ using System.Collections.Generic;
 public partial class WorldLocationInteriorPanel : Control
 {
     public event System.Action? Closed;
+    public event System.Action<string, string>? SubsceneEntered;
+    public event System.Action<string>? DynamicDungeonEntryRequested;
 
     private WorldNodeData? _node;
     private NpcWorldManager? _npc_world;
@@ -31,9 +33,35 @@ public partial class WorldLocationInteriorPanel : Control
     private readonly HashSet<string> _east_woods_visited = ["forest_edge"];
     private readonly HashSet<string> _east_woods_inspected = [];
     private string _selected_subscene_id = "";
-    public bool is_npc_in_current_space(WorldNpcData npc) => Visible && _node?.node_id == npc.current_node_id &&
-        (string.IsNullOrEmpty(_selected_subscene_id) || npc.current_subscene_id == _selected_subscene_id);
+    public bool is_npc_in_current_space(WorldNpcData npc) => Visible && (npc.is_player_travel_companion ||
+        _node?.node_id == npc.current_node_id && (string.IsNullOrEmpty(_selected_subscene_id) || npc.current_subscene_id == _selected_subscene_id));
     private string _east_woods_current = "forest_edge";
+    private ColorRect? _sceneShade;
+    private TextureRect? _npcBackdrop;
+
+    public void show_npc_space(WorldNodeData node, NpcWorldManager? world, string backgroundPath)
+    {
+        if (node.node_id == "white_stone_town")
+        {
+            show_baishi_space(node, world, "lecture");
+            return;
+        }
+        show_for(node, world);
+        _baishiView?.Hide();
+        if (_npcBackdrop is null)
+        {
+            _npcBackdrop = new TextureRect
+            {
+                Name = "NpcLocationBackdrop", ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
+                StretchMode = TextureRect.StretchModeEnum.KeepAspectCovered, MouseFilter = MouseFilterEnum.Ignore
+            };
+            AddChild(_npcBackdrop); MoveChild(_npcBackdrop, 0);
+            _npcBackdrop.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        }
+        _npcBackdrop.Texture = GD.Load<Texture2D>(backgroundPath);
+        _npcBackdrop.Show(); _sceneShade?.Hide(); _generic_frame?.Hide();
+        if (node.node_id == "white_stone_town") _baishiView?.Call("show_courtyard_controls");
+    }
 
     public override void _Ready()
     {
@@ -47,10 +75,20 @@ public partial class WorldLocationInteriorPanel : Control
 
     public void show_for(WorldNodeData node, NpcWorldManager? npc_world)
     {
+        _qingxiOpeningActions?.Hide();
+        _baishiView?.Hide();
+        _npcBackdrop?.Hide(); _sceneShade?.Show();
         _node = node;
         _npc_world = npc_world;
         _selected_subscene_id = "";
         _cell_roster ??= GetTree().GetFirstNodeInGroup("cell_character_list") as CellCharacterList;
+        if (node.node_id == "white_stone_town")
+        {
+            show_baishi_city();
+            Show();
+            MoveToFront();
+            return;
+        }
         if (node.node_id == "east_woods")
         {
             ensure_east_woods_view();
@@ -68,8 +106,29 @@ public partial class WorldLocationInteriorPanel : Control
         MoveToFront();
     }
 
+    public void show_dynamic_dungeon(WorldNodeData node, NpcWorldManager? npc_world, string instanceId, string expectedRealmRange)
+    {
+        show_for(node, npc_world);
+        if (_title is not null) _title.Text = node.node_name;
+        if (_meta is not null) _meta.Text = $"随机秘境　·　预计生灵境界：{expectedRealmRange}";
+        if (_description is not null)
+            _description.Text = "山野间出现的一处小型秘境。你可以先看预计境界，再决定是否进入。副本地图与遭遇已固定，返回后仍可再次进入。";
+        if (_subscene_list is not null)
+        {
+            clear_children(_subscene_list);
+            var enter = button("进入秘境", 0, 48);
+            enter.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+            enter.Pressed += () => DynamicDungeonEntryRequested?.Invoke(instanceId);
+            _subscene_list.AddChild(enter);
+        }
+        if (_subscene_detail is not null) _subscene_detail.Text = "到达出口后离开。资源、遭遇和当前节点会保留。";
+        Show();
+        MoveToFront();
+    }
+
     public void close()
     {
+        if (return_one_level()) return;
         hide_roster();
         Hide();
         Closed?.Invoke();
@@ -84,6 +143,7 @@ public partial class WorldLocationInteriorPanel : Control
             Color = new Color(0.025f, 0.035f, 0.032f, 0.82f),
             MouseFilter = MouseFilterEnum.Stop,
         };
+        _sceneShade = shade;
         shade.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         AddChild(shade);
 
@@ -179,9 +239,11 @@ public partial class WorldLocationInteriorPanel : Control
         var title = label("东林地 · 循痕入林", 27, new Color("f1dfad"));
         title.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         header.AddChild(title);
-        var close_button = button("返回地图", 120, 38);
+        var close_button = button("返回", 114, 46);
+        close_button.Name = "EastWoodsReturn";
         close_button.Pressed += close;
-        header.AddChild(close_button);
+        AddChild(close_button); CraftingPaperHeader.PlaceReturn(this, close_button);
+        CraftingPaperHeader.AddReturnArrow(close_button, new Color("e2d8c4"));
 
         var meta = label("前期野外探索　·　沿路线深入林地；溪沟处分路，深林会合", 15, new Color("d7c49c"));
         column.AddChild(meta);
@@ -445,7 +507,9 @@ public partial class WorldLocationInteriorPanel : Control
             WorldNodeData.NodeType.Wilderness => "野外",
             _ => "村落",
         };
-        _meta.Text = $"{type_name}　·　地貌：{(string.IsNullOrWhiteSpace(_node.terrain) ? "未详" : _node.terrain)}　·　灵压 {_node.spirit_pressure}　·　危险 {_node.danger_level}";
+        var pressure = _node.spirit_pressure > 0 ? _node.spirit_pressure.ToString() : "未详";
+        var danger = _node.danger_level > 0 ? _node.danger_level.ToString() : "未详";
+        _meta.Text = $"{type_name}　·　地貌：{(string.IsNullOrWhiteSpace(_node.terrain) ? "未详" : _node.terrain)}　·　灵压 {pressure}　·　危险 {danger}";
         _description.Text = string.IsNullOrWhiteSpace(_node.description)
             ? "这里暂时没有更多记载。沿着地点内部的分区行动，可能触发人物、事件或新的线索。"
             : _node.description;
@@ -470,11 +534,17 @@ public partial class WorldLocationInteriorPanel : Control
     private void show_subscene(WorldSubsceneData subscene)
     {
         if (_subscene_detail is null) return;
+        if (_node?.node_id == "white_stone_town")
+        {
+            show_baishi_space(_node, _npc_world, subscene.subscene_id);
+            return;
+        }
         _selected_subscene_id = subscene.subscene_id;
         refresh_current_roster();
         _subscene_detail.Text = string.IsNullOrWhiteSpace(subscene.description)
             ? $"{subscene.subscene_name}：暂未留下详细说明。"
             : $"{subscene.subscene_name}：{subscene.description}";
+        if (_node is not null) SubsceneEntered?.Invoke(_node.node_id, subscene.subscene_id);
     }
 
     private void refresh_current_roster()
@@ -485,11 +555,16 @@ public partial class WorldLocationInteriorPanel : Control
         var roster = string.IsNullOrWhiteSpace(_selected_subscene_id)
             ? _npc_world?.get_node_roster(_node.node_id) ?? new Godot.Collections.Array<WorldNpcData>()
             : _npc_world?.get_subscene_roster(_node.node_id, _selected_subscene_id) ?? new Godot.Collections.Array<WorldNpcData>();
+        if (_npc_world is not null)
+            foreach (var companion in _npc_world.get_player_travel_party())
+                if (!roster.Any(n => n.npc_id == companion.npc_id)) roster.Add(companion);
         var context = string.IsNullOrWhiteSpace(_selected_subscene_id)
             ? $"interior:{_node.node_id}"
             : $"interior:{_node.node_id}:{_selected_subscene_id}";
         _cell_roster.show_world_npcs(roster, context);
     }
+
+    public void refresh_location_roster() => refresh_current_roster();
 
     private static Label label(string text, int font_size, Color color)
     {

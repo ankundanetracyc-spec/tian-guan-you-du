@@ -10,6 +10,7 @@ public partial class EastWoodsNpcIncidentRecord : Resource
     public const string StatusAvailable = "available";
     public const string StatusAssigned = "assigned";
     public const string StatusSubmittedPendingRuling = "submitted_pending_ruling";
+    public const string StatusPlayerConflictPendingReview = "player_conflict_pending_review";
 
     public const string ResultAttackerWon = "attacker_won";
     public const string ResultTargetWon = "target_won";

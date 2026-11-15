@@ -1,0 +1,977 @@
+{
+  "version": "1.0",
+  "date": "2026-11-08",
+  "status": "proposal_for_user_review",
+  "scope": "planning_geometry_and_event_model_only",
+  "coordinate_system": "one-based x,y; origin top-left",
+  "hardware": {
+    "grid": [
+      5,
+      5
+    ],
+    "eye_cell": [
+      3,
+      3
+    ],
+    "complexity_cap": 6,
+    "source_capacity": 4,
+    "source_initial": 4,
+    "recharge_per_common_round": 1,
+    "source_peak": 2,
+    "shared_link_peak": 2,
+    "board_peak": 2,
+    "source_count": 1
+  },
+  "units": {
+    "eye": {
+      "label": "阵眼",
+      "shape": [
+        1,
+        1
+      ],
+      "complexity": 0,
+      "body_max": 8
+    },
+    "source": {
+      "label": "阵源",
+      "shape": [
+        2,
+        1
+      ],
+      "complexity": 0,
+      "body_max": 8
+    },
+    "sensor": {
+      "label": "本人事件感应枢",
+      "shape": [
+        1,
+        1
+      ],
+      "complexity": 1,
+      "body_max": 4
+    },
+    "filter": {
+      "label": "鉴脉门",
+      "shape": [
+        1,
+        1
+      ],
+      "complexity": 1,
+      "body_max": 4
+    },
+    "counter": {
+      "label": "普通候枢",
+      "shape": [
+        2,
+        1
+      ],
+      "complexity": 2,
+      "body_max": 8
+    },
+    "rhythm": {
+      "label": "节律枢",
+      "shape": [
+        2,
+        1
+      ],
+      "complexity": 2,
+      "body_max": 8
+    },
+    "split": {
+      "label": "分脉枢",
+      "shape": [
+        1,
+        1
+      ],
+      "complexity": 1,
+      "body_max": 4
+    },
+    "merge": {
+      "label": "合脉枢",
+      "shape": [
+        1,
+        1
+      ],
+      "complexity": 1,
+      "body_max": 4
+    },
+    "guard": {
+      "label": "护阵件",
+      "shape": [
+        1,
+        2
+      ],
+      "complexity": 1,
+      "body_max": 12
+    },
+    "interface": {
+      "label": "双路旗接口座",
+      "shape": [
+        1,
+        2
+      ],
+      "complexity": 1,
+      "body_max": 8
+    }
+  },
+  "flags": {
+    "ward": {
+      "label": "护持执行旗",
+      "shape": [
+        1,
+        2
+      ],
+      "spirit": 1,
+      "body_max": 12,
+      "functional_complexity": 1,
+      "target": "owner",
+      "energy_cost": 2,
+      "peak": 2,
+      "shield": 2,
+      "success_limit_per_common_round": 1
+    },
+    "observer": {
+      "label": "器物观测旗",
+      "shape": [
+        1,
+        2
+      ],
+      "spirit": 1,
+      "body_max": 8,
+      "functional_complexity": 1,
+      "target": "one_edge_adjacent_owned_controlled_artifact_excluding_self",
+      "event": "enemy_action_actual_artifact_body_loss",
+      "dedup": "enemy_action_id+actual_target_id",
+      "signal_energy_cost": 0
+    },
+    "combined": {
+      "label": "观测护持兼任旗",
+      "shape": [
+        2,
+        2
+      ],
+      "spirit": 2,
+      "body_max": 16,
+      "functional_complexity": 2,
+      "additional_proficiency": 45,
+      "roles": [
+        "observer",
+        "ward"
+      ]
+    }
+  },
+  "layouts": {
+    "A": {
+      "label": "本人施法三候护持",
+      "parts": [
+        {
+          "id": "I",
+          "kind": "sensor",
+          "at": [
+            1,
+            1
+          ],
+          "rotation": 0
+        },
+        {
+          "id": "C",
+          "kind": "counter",
+          "at": [
+            3,
+            2
+          ],
+          "rotation": 0
+        },
+        {
+          "id": "M",
+          "kind": "eye",
+          "at": [
+            3,
+            3
+          ],
+          "rotation": 0
+        },
+        {
+          "id": "H",
+          "kind": "guard",
+          "at": [
+            4,
+            3
+          ],
+          "rotation": 0
+        },
+        {
+          "id": "S",
+          "kind": "source",
+          "at": [
+            1,
+            5
+          ],
+          "rotation": 0
+        },
+        {
+          "id": "T",
+          "kind": "interface",
+          "at": [
+            5,
+            2
+          ],
+          "rotation": 0
+        }
+      ],
+      "flags": [
+        "ward"
+      ],
+      "guard_target": "C",
+      "routes": [
+        {
+          "kind": "signal",
+          "path": [
+            [
+              1,
+              1
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              3,
+              2
+            ]
+          ]
+        },
+        {
+          "kind": "signal",
+          "path": [
+            [
+              4,
+              2
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              5,
+              1
+            ],
+            [
+              5,
+              2
+            ]
+          ]
+        },
+        {
+          "kind": "energy",
+          "path": [
+            [
+              2,
+              5
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              5,
+              5
+            ],
+            [
+              5,
+              4
+            ],
+            [
+              5,
+              3
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "component_cells": 10,
+        "signal_cells": 4,
+        "energy_cells": 4,
+        "empty_cells": 7,
+        "complexity": 6
+      },
+      "battle_board": [
+        {
+          "id": "F",
+          "label": "护持旗",
+          "at": [
+            1,
+            1
+          ],
+          "shape": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": "Y",
+          "label": "云帔",
+          "at": [
+            2,
+            1
+          ],
+          "shape": [
+            2,
+            1
+          ]
+        }
+      ],
+      "verified_occupancy": {
+        "component_cells": 10,
+        "signal_cells": 4,
+        "energy_cells": 4,
+        "empty_cells": 7,
+        "complexity": 6
+      }
+    },
+    "B": {
+      "label": "器物观测直连护持",
+      "parts": [
+        {
+          "id": "TO",
+          "kind": "interface",
+          "at": [
+            1,
+            2
+          ],
+          "rotation": 180
+        },
+        {
+          "id": "TE",
+          "kind": "interface",
+          "at": [
+            5,
+            2
+          ],
+          "rotation": 0
+        },
+        {
+          "id": "M",
+          "kind": "eye",
+          "at": [
+            3,
+            3
+          ],
+          "rotation": 0
+        },
+        {
+          "id": "H",
+          "kind": "guard",
+          "at": [
+            4,
+            3
+          ],
+          "rotation": 0
+        },
+        {
+          "id": "S",
+          "kind": "source",
+          "at": [
+            1,
+            5
+          ],
+          "rotation": 0
+        }
+      ],
+      "flags": [
+        "observer",
+        "ward"
+      ],
+      "guard_target": "TE",
+      "routes": [
+        {
+          "kind": "signal",
+          "path": [
+            [
+              1,
+              3
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              2,
+              2
+            ],
+            [
+              2,
+              1
+            ],
+            [
+              3,
+              1
+            ],
+            [
+              4,
+              1
+            ],
+            [
+              5,
+              1
+            ],
+            [
+              5,
+              2
+            ]
+          ]
+        },
+        {
+          "kind": "energy",
+          "path": [
+            [
+              2,
+              5
+            ],
+            [
+              3,
+              5
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              5,
+              5
+            ],
+            [
+              5,
+              4
+            ],
+            [
+              5,
+              3
+            ]
+          ]
+        }
+      ],
+      "expected": {
+        "component_cells": 9,
+        "signal_cells": 6,
+        "energy_cells": 4,
+        "empty_cells": 6,
+        "complexity": 5
+      },
+      "battle_board": [
+        {
+          "id": "F",
+          "label": "护持旗",
+          "at": [
+            1,
+            1
+          ],
+          "shape": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": "O",
+          "label": "观测旗",
+          "at": [
+            2,
+            1
+          ],
+          "shape": [
+            1,
+            2
+          ]
+        },
+        {
+          "id": "Y",
+          "label": "云帔",
+          "at": [
+            1,
+            3
+          ],
+          "shape": [
+            2,
+            1
+          ]
+        }
+      ],
+      "observer_binding": {
+        "observer": "O",
+        "target": "F"
+      },
+      "verified_occupancy": {
+        "component_cells": 9,
+        "signal_cells": 6,
+        "energy_cells": 4,
+        "empty_cells": 6,
+        "complexity": 5
+      }
+    }
+  },
+  "model_checks": [
+    {
+      "name": "A I footprint legal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "A C footprint legal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "A M footprint legal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "A H footprint legal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "A S footprint legal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "A T footprint legal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "A signal path continuity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "A signal terminals are components",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "A signal stays in free cells",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "A signal path continuity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "A signal terminals are components",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "A signal stays in free cells",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "A energy path continuity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "A energy terminals are components",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "A energy stays in free cells",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "A no signal/power crossing",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "A guard target edge adjacency",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "A exact occupancy and complexity",
+      "passed": true,
+      "detail": "{\"component_cells\": 10, \"signal_cells\": 4, \"energy_cells\": 4, \"empty_cells\": 7, \"complexity\": 6}"
+    },
+    {
+      "name": "A complexity cap",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "A board F legal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "A board Y legal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "B TO footprint legal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "B TE footprint legal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "B M footprint legal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "B H footprint legal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "B S footprint legal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "B signal path continuity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "B signal terminals are components",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "B signal stays in free cells",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "B energy path continuity",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "B energy terminals are components",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "B energy stays in free cells",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "B no signal/power crossing",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "B guard target edge adjacency",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "B exact occupancy and complexity",
+      "passed": true,
+      "detail": "{\"component_cells\": 9, \"signal_cells\": 6, \"energy_cells\": 4, \"empty_cells\": 6, \"complexity\": 5}"
+    },
+    {
+      "name": "B complexity cap",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "B board F legal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "B board O legal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "B board Y legal",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "B observation target edge adjacency",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "A counter output points north",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "A interface command north input",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "A and B interface energy south input",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "B rotated observer report east output",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "three real paid spells exactly one output",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "each common round keeps occupancy",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no retroactive pre-deployment event",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "duplicate event counts once",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "zero-paid and failed spells do not count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "energy failure resets counter without payment",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "broken source leaves control active and fails output",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "source_peak insufficient prevents payment",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "link_peak insufficient prevents payment",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "board_peak insufficient prevents payment",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "six distinct legal input events still one successful output per round",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "same round recharge cannot repeat",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "new common round recharge once",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "withdraw and redeploy preserves ledger",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "destroyed flag cannot redeploy",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "broken flag freezes input and keeps old shield",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "logic destroyed stops path without releasing intact flag",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "guard overflow only original target",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "intact guard prevents node damage",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "direct guard damage does not spill to node",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "same original event cannot serialize around shared peak",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "two real outputs require upgraded shared peaks and four energy",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "observer accepts enemy actual body loss",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "observer deduplicates same action and same real target",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "observer rejects no loss ally out-of-range and self",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "observed ward protects owner but does not heal or shield flag",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "observer emits nothing before whole action ends",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "whole action combines loss for one real target",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "observer broken before completion suppresses final report",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "round ledger resets even while source unavailable",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "mid-round source restoration grants no recharge",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "forced spirit withdrawal preserves occupied cells and body",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "forced withdrawal blocks automatic same-round restart",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "generic component attack does not include controller core",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "walkthrough_A": [
+    {
+      "round": 1,
+      "counter_after": 1,
+      "energy_before": 4,
+      "energy_after": 4,
+      "extra_shield": 0,
+      "spirit": 1,
+      "mana_after": 2
+    },
+    {
+      "round": 2,
+      "counter_after": 2,
+      "energy_before": 4,
+      "energy_after": 4,
+      "extra_shield": 0,
+      "spirit": 1,
+      "mana_after": 1
+    },
+    {
+      "round": 3,
+      "counter_after": 0,
+      "energy_before": 4,
+      "energy_after": 2,
+      "extra_shield": 2,
+      "spirit": 1,
+      "mana_after": 0
+    }
+  ],
+  "verification": {
+    "total_checks": 78,
+    "passed": 78,
+    "game_runtime_tested": false,
+    "notes": [
+      "This is a planning evaluator and coordinate proof, not game implementation.",
+      "Six synthetic paid-spell inputs assume upstream legal actions and do not grant one Yunpei six casts.",
+      "All new sizes, body values, complexity and observer functionality remain pending user review."
+    ]
+  },
+  "observer_phase": "after_whole_enemy_action_completion",
+  "observer_test_report": [
+    {
+      "action": "a1",
+      "target": "F",
+      "loss": 3
+    }
+  ],
+  "countermeasure_target_classes": {
+    "artifact": [
+      "flag"
+    ],
+    "component": [
+      "counter",
+      "guard",
+      "interface",
+      "sensor"
+    ],
+    "core": [
+      "eye",
+      "source"
+    ]
+  },
+  "superseded_by": "阵法改革_独立阵盘与分阵旗定位_20261108.md",
+  "current_reform_verified": false,
+  "historical_scope_notice": "Proof for former mandatory flag-output layout only; independent disk and subordinate-array reform requires new layouts and evaluation."
+}

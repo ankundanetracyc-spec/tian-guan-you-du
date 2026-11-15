@@ -26,6 +26,9 @@ public partial class BattleManager : Node2D
 
     private void InitializeRealtimeBattle()
     {
+        _boardEntryRejectionReason = "";
+        _pendingZhouTianAutoCasts.Clear();
+        _runningZhouTianAutoCasts.Clear();
         foreach (var unit in all_units)
         {
             gongfa_combat.Begin(unit);
@@ -35,8 +38,18 @@ public partial class BattleManager : Node2D
             _skillCooldowns[unit] = new System.Collections.Generic.Dictionary<ActiveSkillData, float>();
             _skillCharges[unit] = new System.Collections.Generic.Dictionary<ActiveSkillData, int>();
             foreach (var skill in loadout) if (skill.max_charges > 0) _skillCharges[unit][skill] = skill.max_charges;
-            _energyRegen[unit] = _manaRegen[unit] = 0;
+            _energyRegen[unit] = 0;
             _enemyPlanTimers[unit] = 0;
+        }
+        if (TryInitializeCombatBoards(out var boardFailure)) return;
+        if (all_units.OfType<Beast>().Any())
+        {
+            _boardEntryRejectionReason = string.IsNullOrWhiteSpace(boardFailure)
+                ? "生灵没有完整的固定招式盘，未进入战斗。"
+                : boardFailure;
+            battle_running = false;
+            GD.PushWarning("BattleManager: " + _boardEntryRejectionReason);
+            return;
         }
         CallDeferred(nameof(BeginPlanningSegment));
     }
@@ -49,7 +62,7 @@ public partial class BattleManager : Node2D
         foreach (var item in value.AsGodotArray())
         {
             var skill = ResourceLoader.Load<ActiveSkillData>(item.AsString());
-            if (skill is null || skill.skill_type != ActiveSkillData.SkillType.POWER || string.IsNullOrWhiteSpace(skill.source_gongfa_name)) continue;
+            if (skill is null || !GongfaAvailability.IsSkillEnabled(skill) || skill.skill_type != ActiveSkillData.SkillType.POWER || string.IsNullOrWhiteSpace(skill.source_gongfa_name)) continue;
             // 主修/辅修秘籍快照自动提供心法被动；心法不经过技能队列，也不支付资源。
             gongfa_combat.Utility(unit, skill);
         }
@@ -58,6 +71,9 @@ public partial class BattleManager : Node2D
     private Array<ActiveSkillData> LoadCombatSkills(GodotObject unit)
     {
         var result = new Array<ActiveSkillData>();
+        if (unit.HasMeta("combat_resolved_skills") && unit.GetMeta("combat_resolved_skills").AsGodotArray().Count > 0)
+            return new Array<ActiveSkillData>(unit.GetMeta("combat_resolved_skills").AsGodotArray().Select(value =>
+                value.AsGodotObject() is ActiveSkillData skill && Character.is_combat_skill_slot_eligible(skill) ? skill : ArtifactSkillFactory.EmptySlot()));
         var paths = new List<string>();
         void AddMetaPaths(string key)
         {
@@ -67,6 +83,23 @@ public partial class BattleManager : Node2D
             foreach (var item in value.AsGodotArray()) { var path = item.AsString(); if (!string.IsNullOrEmpty(path) && !paths.Contains(path)) paths.Add(path); }
         }
         AddMetaPaths("combat_skill_slot_paths");
+        if (unit is Beast beast)
+        {
+            if (paths.Count == 0) AddMetaPaths("active_skill_paths");
+            if (paths.Count == 0 && beast.beast_deck is not null)
+                foreach (var path in beast.beast_deck.get_deck_skills()) if (!string.IsNullOrWhiteSpace(path) && !paths.Contains(path)) paths.Add(path);
+            foreach (var path in paths)
+            {
+                var definition = ResourceLoader.Load<ActiveSkillData>(path);
+                if (definition is null || !Character.is_combat_skill_slot_eligible(definition)) continue;
+                var skill = definition.Duplicate() as ActiveSkillData ?? definition;
+                skill.combat_source_key = path;
+                skill.board_base_skill_path = path;
+                result.Add(skill);
+                if (result.Count >= CombatSlotCapacity) break;
+            }
+            return result;
+        }
         var slotConfigExplicit = unit.HasMeta("combat_skill_slots_configured") && unit.GetMeta("combat_skill_slots_configured").AsBool();
         if (paths.Count == 0 && !slotConfigExplicit && unit is Character character)
             foreach (var path in character.get_combat_skill_slot_paths()) if (!string.IsNullOrEmpty(path) && !paths.Contains(path)) paths.Add(path);
@@ -82,10 +115,17 @@ public partial class BattleManager : Node2D
             }
             paths = resolvedPaths;
         }
+        if (unit is Character artifactOwner)
+        {
+            var keys = artifactOwner.get_combat_skill_slot_paths();
+            foreach (var key in keys)
+                result.Add(artifactOwner.resolve_combat_skill(key) ?? ArtifactSkillFactory.EmptySlot());
+            return result;
+        }
         foreach (var path in paths)
         {
             var skill = ResourceLoader.Load<ActiveSkillData>(path)?.Duplicate() as ActiveSkillData;
-            if (skill is not null && Character.is_combat_skill_slot_eligible(skill) && !result.Any(existing => existing.skill_name == skill.skill_name)) result.Add(skill);
+            if (skill is not null && Character.is_combat_skill_slot_eligible(skill)) result.Add(skill);
             if (result.Count >= CombatSlotCapacity) break;
         }
         if (result.Count == 0 && !slotConfigExplicit)
@@ -113,6 +153,7 @@ public partial class BattleManager : Node2D
 
     private void ProcessRealtimeBattle(float frames)
     {
+        if (_boardMode) { ProcessCombatBoards(frames); return; }
         if (_segmentPhase == SegmentPhase.Planning)
         {
             AdvancePlanning(frames);
@@ -164,21 +205,15 @@ public partial class BattleManager : Node2D
 
     private void RegenerateResources(GodotObject unit, float frames)
     {
-        var energyFactor = RegenFactor(CardRules.Number(unit, "physique") + CardRules.Number(unit, "agility"));
-        var manaFactor = RegenFactor(CardRules.Number(unit, "intelligence") + CardRules.Number(unit, "soul"));
+        var energyFactor = RegenFactor(CardRules.Number(unit, "physique") * 2f);
         _energyRegen[unit] = _energyRegen.GetValueOrDefault(unit, 0) + frames * energyFactor;
-        _manaRegen[unit] = _manaRegen.GetValueOrDefault(unit, 0) + frames * manaFactor;
         while (_energyRegen[unit] >= EnergyBaseInterval) { _energyRegen[unit] -= EnergyBaseInterval; unit.Set("current_stamina", Mathf.Min(unit.Get("max_stamina").AsInt32(), unit.Get("current_stamina").AsInt32() + 1)); }
-        while (_manaRegen[unit] >= ManaBaseInterval) { _manaRegen[unit] -= ManaBaseInterval; unit.Set("current_mana", Mathf.Min(get_effective_mana_capacity(unit), unit.Get("current_mana").AsInt32() + 1)); }
     }
     private static float RegenFactor(float attributes) => Creature.calculate_combat_regen_factor(attributes);
 
-    /// <summary>当前精力/法力距离下一点恢复的连续进度（0—1），供资源槽显示小数填充。</summary>
+    /// <summary>当前体力距离下一点恢复的连续进度（0—1），供资源槽显示小数填充。</summary>
     public float get_energy_regen_progress(GodotObject unit) =>
         Mathf.Clamp(_energyRegen.GetValueOrDefault(unit, 0f) / EnergyBaseInterval, 0f, 1f);
-    public float get_mana_regen_progress(GodotObject unit) =>
-        Mathf.Clamp(_manaRegen.GetValueOrDefault(unit, 0f) / ManaBaseInterval, 0f, 1f);
-
     private void UpdateShieldVisualClocks()
     {
         foreach (var unit in all_units)

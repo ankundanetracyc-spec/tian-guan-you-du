@@ -15,12 +15,14 @@ public partial class MainHUD : Control
     private ProgressBar? _healthBar;
     private Label? _worldStaminaLabel;
     private ProgressBar? _worldStaminaBar;
+    private Label? _cultivationStatusLabel;
     private Label? _worldStatusLabel;
     private HBoxContainer? _actionBar;
     private Button? _actionBarToggle;
     private bool _actionBarExpanded = true;
     private Control? _taskTracker;
     private VBoxContainer? _taskList;
+    private GameNotificationFeed? _notificationFeed;
 
     public override void _Ready()
     {
@@ -41,6 +43,8 @@ public partial class MainHUD : Control
         ConfigureNavigation();
         BuildPlayerStatus();
         BuildTaskTracker();
+        _notificationFeed = new GameNotificationFeed { Name = "EventNotificationFeed" };
+        AddChild(_notificationFeed);
     }
 
     public override void _ExitTree()
@@ -61,6 +65,7 @@ public partial class MainHUD : Control
         {
             _player!.WorldStaminaChanged -= on_player_world_stamina_changed;
             _player.BreakthroughCompleted -= on_player_breakthrough_completed;
+            _player.CultivationInspirationChanged -= on_player_cultivation_inspiration_changed;
         }
 
         _player = player;
@@ -68,42 +73,58 @@ public partial class MainHUD : Control
         {
             _player!.WorldStaminaChanged += on_player_world_stamina_changed;
             _player.BreakthroughCompleted += on_player_breakthrough_completed;
+            _player.CultivationInspirationChanged += on_player_cultivation_inspiration_changed;
         }
         RefreshPlayerStatus();
     }
 
     public void refresh_player_status() => RefreshPlayerStatus();
 
+    public void show_event_notification(string title, string detail, string category = "见闻")
+        => _notificationFeed?.push(title, detail, category);
+
     private void on_player_world_stamina_changed(Character _) => RefreshPlayerStatus();
-    private void on_player_breakthrough_completed(Character _, string __) => RefreshPlayerStatus();
+    private void on_player_breakthrough_completed(Character character, string __)
+    {
+        RefreshPlayerStatus();
+        refresh_player_world_status_details(character, GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0);
+    }
+
+    private void on_player_cultivation_inspiration_changed(Character character)
+    {
+        RefreshPlayerStatus();
+        refresh_player_world_status_details(character, GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0);
+    }
 
     public void set_task_entries(IEnumerable<JournalPanel.Entry> entries, bool visible)
     {
         if (_taskTracker is null || _taskList is null) return;
+        var displayed = entries.Take(2).ToArray();
+        var presentation = displayed.Select(entry => (entry.Id, entry.Title, entry.Body)).ToArray();
+        if (_taskTrackerPresentation.SequenceEqual(presentation))
+        {
+            _taskTracker.Visible = visible && displayed.Length > 0;
+            if (_taskTrackerToggle is not null) _taskTrackerToggle.Visible = _taskTracker.Visible;
+            return;
+        }
+        _taskTrackerPresentation = presentation;
         foreach (var child in _taskList.GetChildren()) { _taskList.RemoveChild(child); child.QueueFree(); }
         var index = 0;
-        foreach (var entry in entries.Take(2))
+        foreach (var entry in displayed)
         {
             if (index > 0) _taskList.AddChild(WorldHudStyle.Rule());
             var button = new Button { Name = "TaskEntry" + index, Text = "", MouseFilter = MouseFilterEnum.Stop, ClipContents = true,
-                TooltipText = $"{entry.Title}\n{entry.Body}\n双击查看任务详情" };
+                TooltipText = "" };
             WorldHudStyle.StyleSmallButton(button);
             var margin = new MarginContainer { MouseFilter = MouseFilterEnum.Ignore };
             button.AddChild(margin); margin.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
             var box = new VBoxContainer { MouseFilter = MouseFilterEnum.Ignore }; box.AddThemeConstantOverride("separation", 5); margin.AddChild(box);
-            var heading = new HBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
-            var source = WorldHudStyle.Text(entry.Source, 14, true);
-            source.SizeFlagsHorizontal = SizeFlags.ExpandFill;
-            source.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
-            heading.AddChild(source);
-            heading.AddChild(WorldHudStyle.Text(entry.State, 13, true));
-            box.AddChild(heading);
-            var title = WorldHudStyle.Text(entry.Title, 20);
-            title.AutowrapMode = TextServer.AutowrapMode.WordSmart;
+            var title = WorldHudStyle.RichText(entry.Title, 20);
+            title.AddChild(WorldHudArt.Mark("white_stroke", new Vector2(0, 25), new Vector2(62, 3), new Color("536b5a", .6f)));
+            var cinnabar = new ColorRect { Position = new Vector2(-8, 10), Size = new Vector2(3, 3), Color = WorldHudStyle.HealthInk, MouseFilter = MouseFilterEnum.Ignore };
+            title.AddChild(cinnabar);
             box.AddChild(title);
-            var objective = WorldHudStyle.Text(entry.Body, 16, true);
-            objective.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-            objective.MaxLinesVisible = 2; objective.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
+            var objective = WorldHudStyle.RichText(entry.Body, 16, true);
             box.AddChild(objective);
             margin.MinimumSizeChanged += () => button.CustomMinimumSize = new Vector2(0, margin.GetCombinedMinimumSize().Y);
             button.GuiInput += e => {
@@ -123,8 +144,6 @@ public partial class MainHUD : Control
     }
 
     // 迁移期间保留旧调用点；资源、民力等不再显示在常驻 HUD。
-    public void bind_estate_resources(EstateResourceSystem? _) { }
-    public void bind_territory_state(QingxiTerritoryState? _) { }
     public void set_estate_summary_visible(bool visible)
     {
         if (GetNodeOrNull<Control>("PlayerStatus") is { } panel) panel.Visible = visible;
@@ -148,10 +167,10 @@ public partial class MainHUD : Control
         var panel = new Button
         {
             Name = "PlayerStatus", Text = "", MouseFilter = MouseFilterEnum.Stop,
-            ZIndex = 100, FocusMode = FocusModeEnum.All, TooltipText = "查看人物状态", ClipContents = true
+            ZIndex = 100, FocusMode = FocusModeEnum.All, ClipContents = true
         };
         panel.SetAnchorsPreset(LayoutPreset.BottomLeft);
-        panel.OffsetLeft = 22; panel.OffsetTop = -172; panel.OffsetRight = 402; panel.OffsetBottom = -22;
+        panel.OffsetLeft = 22; panel.OffsetTop = -164; panel.OffsetRight = 374; panel.OffsetBottom = -22;
         foreach (var state in new[] { "normal", "hover", "pressed" })
             panel.AddThemeStyleboxOverride(state, new StyleBoxEmpty());
         panel.AddThemeStyleboxOverride("focus", new StyleBoxFlat
@@ -177,7 +196,9 @@ public partial class MainHUD : Control
         var heading = new HBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
         heading.AddThemeConstantOverride("separation", 10);
         box.AddChild(heading);
-        _playerNameLabel = WorldHudStyle.Text("修行者", 24);
+        _playerNameLabel = WorldHudStyle.Text("修行者", 22);
+        WorldHudArt.AddLabelPaper(_playerNameLabel, true);
+        _playerNameLabel.AddThemeColorOverride("font_color", new Color("f5f0e3"));
         _playerNameLabel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         _playerNameLabel.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
         heading.AddChild(_playerNameLabel);
@@ -187,8 +208,14 @@ public partial class MainHUD : Control
         box.AddChild(WorldHudStyle.Rule());
         var health = BuildStatusRow(box, "生命", WorldHudStyle.HealthInk);
         _healthLabel = health.value; _healthBar = health.bar;
-        var stamina = BuildStatusRow(box, "体力", WorldHudStyle.StaminaInk);
+        var stamina = BuildStatusRow(box, "精力", WorldHudStyle.StaminaInk);
         _worldStaminaLabel = stamina.value; _worldStaminaBar = stamina.bar;
+        _cultivationStatusLabel = WorldHudStyle.Text("", 15, true);
+        _cultivationStatusLabel.CustomMinimumSize = new Vector2(0, 20);
+        _cultivationStatusLabel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+        _cultivationStatusLabel.TextOverrunBehavior = TextServer.OverrunBehavior.TrimEllipsis;
+        _cultivationStatusLabel.ClipText = true;
+        box.AddChild(_cultivationStatusLabel);
         _worldStatusLabel = WorldHudStyle.Text("", 15, true);
         _worldStatusLabel.CustomMinimumSize = new Vector2(0, 20);
         _worldStatusLabel.SizeFlagsHorizontal = SizeFlags.ExpandFill;
@@ -207,10 +234,11 @@ public partial class MainHUD : Control
         var name = WorldHudStyle.Text(title, 18);
         name.SizeFlagsHorizontal = SizeFlags.ExpandFill;
         caption.AddChild(name);
-        var value = WorldHudStyle.Text("— / —", 20);
+        var value = WorldHudStyle.Text("— / —", 19);
         value.HorizontalAlignment = HorizontalAlignment.Right;
         caption.AddChild(value);
         var bar = WorldHudStyle.Bar(ink);
+        bar.CustomMinimumSize = new Vector2(90, 9);
         group.AddChild(bar);
         return (value, bar);
     }
@@ -243,36 +271,43 @@ public partial class MainHUD : Control
             if (_playerNameLabel is not null) _playerNameLabel.Text = _player.entity_name;
             if (GetNodeOrNull<Button>("PlayerStatus") is { } status)
             {
-                var currentGameHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
-                var worldStatuses = WorldStatusRules.format_summary((_player.entity_data as HumanData)?.world_status_records, currentGameHour);
-                status.TooltipText = $"{_player.entity_name} · {realm}\n生命 {_player.current_health} / {_player.max_health}\n体力 {_player.current_world_stamina:0.#} / {_player.max_world_stamina:0.#}\n大世界状态：{worldStatuses}\n点击查看人物状态";
+                var tooltipGameHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+                var worldStatuses = WorldStatusRules.format_summary(PillToxicityRules.WithStatus(_player.entity_data as HumanData, tooltipGameHour), tooltipGameHour);
+                var cultivationStatus = CharacterStatusPresentationRules.format_bottleneck_hud_line(_player.get_cultivation_bottleneck_summary());
+                var cultivationTooltip = string.IsNullOrWhiteSpace(cultivationStatus) ? "" : $"\n{cultivationStatus.Trim()}";
+                HoverInfoManager.SetTooltip(status, $"{_player.entity_name} · {realm}\n生命 {_player.current_health} / {_player.max_health}\n精力 {_player.current_world_stamina:0.#} / {_player.max_world_stamina:0.#}\n大世界状态：{worldStatuses}{cultivationTooltip}");
             }
         }
         if (_healthLabel is not null) _healthLabel.Text = $"{_player!.current_health} / {_player.max_health}";
         if (_healthBar is not null) { _healthBar.MaxValue = Math.Max(1, _player!.max_health); _healthBar.Value = _player.current_health; }
         if (_worldStaminaLabel is not null) _worldStaminaLabel.Text = $"{_player!.current_world_stamina:0.#} / {_player.max_world_stamina:0.#}";
         if (_worldStaminaBar is not null) { _worldStaminaBar.MaxValue = Math.Max(1, _player!.max_world_stamina); _worldStaminaBar.Value = _player.current_world_stamina; }
+        var currentGameHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
+        var statusLineCount = 0;
+        if (_cultivationStatusLabel is not null)
+        {
+            _cultivationStatusLabel.Text = CharacterStatusPresentationRules.format_bottleneck_hud_line(_player.get_cultivation_bottleneck_summary());
+            _cultivationStatusLabel.Visible = !string.IsNullOrWhiteSpace(_cultivationStatusLabel.Text);
+            if (_cultivationStatusLabel.Visible) statusLineCount++;
+        }
         if (_worldStatusLabel is not null)
         {
-            var currentGameHour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
-            _worldStatusLabel.Text = WorldStatusRules.format_hud_line((_player!.entity_data as HumanData)?.world_status_records, currentGameHour);
+            _worldStatusLabel.Text = WorldStatusRules.format_hud_line(PillToxicityRules.WithStatus(_player!.entity_data as HumanData, currentGameHour), currentGameHour);
             _worldStatusLabel.Visible = !string.IsNullOrWhiteSpace(_worldStatusLabel.Text);
-            if (GetNodeOrNull<Control>("PlayerStatus") is { } statusPanel)
-                statusPanel.OffsetTop = _worldStatusLabel.Visible ? -204 : -172;
+            if (_worldStatusLabel.Visible) statusLineCount++;
         }
+        if (GetNodeOrNull<Control>("PlayerStatus") is { } statusPanel)
+            statusPanel.OffsetTop = -164 - 32 * statusLineCount;
         if (FindButton("BtnRealm") is { } realmButton)
         {
             var realms = GetNodeOrNull<RealmManager>("/root/RealmManager");
             var unlocked = realms?.is_realm_after_or_equal(_player!.cultivation_realm, "云息一层") == true;
             if (GetNodeOrNull<Control>("Hbox/V_Realm") is { } realmEntry) realmEntry.Visible = unlocked;
             realmButton.Disabled = !unlocked;
-            realmButton.TooltipText = unlocked ? "查看境界" : "";
         }
         if (GetNodeOrNull<Control>("Hbox/V_Cultivation") is { } cultivationEntry)
         {
             cultivationEntry.Visible = true;
-            if (FindButton("BtnCultivation") is { } cultivationButton)
-                cultivationButton.TooltipText = cultivationEntry.Visible ? "查看修命与修性进度" : "";
         }
     }
 

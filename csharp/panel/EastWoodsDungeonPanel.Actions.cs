@@ -6,7 +6,10 @@ using System.Linq;
 public partial class EastWoodsDungeonPanel
 {
     public event Action<string, string>? ActionRequested;
+    public event Action? CompactRouteRequested;
     private Godot.Collections.Dictionary _actionProgress = new();
+    private Dictionary<string, List<EastWoodsActions.ActionDef>>? _refreshBeastActions;
+    private bool _refreshingMapActions;
     private PanelContainer? _actionBar, _actionCard;
     private VBoxContainer? _actionRows;
     private Control? _actionModal;
@@ -16,17 +19,29 @@ public partial class EastWoodsDungeonPanel
     private string _offeredAction = "";
     private bool _actionBusy;
     public Func<bool>? CanMove { get; set; }
+    public Func<string, bool>? CanEnterRouteNode { get; set; }
 
     // Compatibility query for old saves/tests; no paid exploration action remains.
     public bool is_explored(string node) => _visited.Contains(node) || progress(node + ":explore") > 0;
     private int progress(string key) => _actionProgress.GetValueOrDefault(key, 0).AsInt32();
-    public int action_remaining(string node, EastWoodsActions.ActionDef action) => action.Stock > 0 ? Math.Max(0, action.Stock - progress(node + ":" + action.Id)) : progress(node + ":" + action.Id) > 0 ? 0 : 1;
-    public EastWoodsActions.ActionDef? find_action(string node, string id) => EastWoodsEcology.FindAction(node, id, _actionProgress);
+    public int action_remaining(string node, EastWoodsActions.ActionDef action)
+        => !_dynamicMode && action.Battle && EastWoodsEcology.IsDispersed(_actionProgress, node, action.Id) ? 0
+            : action.Stock > 0 ? Math.Max(0, action.Stock - progress(node + ":" + action.Id)) : progress(node + ":" + action.Id) > 0 ? 0 : 1;
+    public EastWoodsActions.ActionDef? find_action(string node, string id)
+        => _dynamicMode
+            ? DynamicDungeonExpedition.AvailableActions(_dynamicInstanceState, node, _actionProgress).FirstOrDefault(action => action.Id == id)
+            : EastWoodsEcology.FindAction(node, id, _actionProgress);
     public List<EastWoodsActions.ActionDef> available_actions(string node)
     {
+        if (_dynamicMode) return DynamicDungeonExpedition.AvailableActions(_dynamicInstanceState, node, _actionProgress);
         var result = new List<EastWoodsActions.ActionDef>();
         if (EastWoodsActions.Content(node) is { } fixedAction && action_remaining(node, fixedAction) > 0) result.Add(fixedAction);
-        result.AddRange(EastWoodsEcology.AvailableRegeneratedBeasts(node, _actionProgress));
+        if (_refreshingMapActions)
+        {
+            _refreshBeastActions ??= EastWoodsEcology.IndexAvailableRegeneratedBeasts(_actionProgress);
+            if (_refreshBeastActions.TryGetValue(node, out var beasts)) result.AddRange(beasts);
+        }
+        else result.AddRange(EastWoodsEcology.AvailableRegeneratedBeasts(node, _actionProgress));
         return result;
     }
 
@@ -48,7 +63,26 @@ public partial class EastWoodsDungeonPanel
         if (!string.IsNullOrWhiteSpace(action.EncounterIdentity))
         {
             var hour = GetNodeOrNull<GameTimeMgr>("/root/GameTimeManager")?.get_total_game_hours() ?? 0;
-            EastWoodsEcology.MarkEncounterDefeated(_actionProgress, action.EncounterIdentity, hour);
+            if (_dynamicMode)
+            {
+                foreach (var value in _dynamicInstanceState.GetValueOrDefault("beasts", new Godot.Collections.Array()).AsGodotArray())
+                {
+                    if (value.VariantType != Variant.Type.Dictionary) continue;
+                    var record = value.AsGodotDictionary();
+                    if (record.GetValueOrDefault("encounter_id", "").AsString() != action.EncounterIdentity) continue;
+                    record["status"] = "defeated";
+                    record["resolved_hour"] = hour;
+                    break;
+                }
+            }
+            else EastWoodsEcology.MarkEncounterDefeated(_actionProgress, action.EncounterIdentity, hour);
+        }
+        if (_dynamicMode && id.StartsWith("event_", StringComparison.Ordinal))
+        {
+            var route = get_route_state();
+            DynamicDungeonExpedition.ApplyCompletedAction(_dynamicInstanceState, node, id, route);
+            restore_route_state(route);
+            DynamicDungeonExpedition.StoreRoute(_dynamicInstanceState, route);
         }
         refresh_action_bar();
     }
@@ -69,15 +103,22 @@ public partial class EastWoodsDungeonPanel
     public bool close_action_details()
     {
         if (_actionModal?.Visible != true) return false;
+        hide_forest_event();
         _actionModal.Hide(); _offeredAction = ""; return true;
     }
-    public bool can_leave() => Visible && _current == "forest_edge" && !_isTraveling && !_actionBusy && !_npcEncounterBusy && _travelPawn is null;
+    public bool can_leave() => Visible && (is_route_exit(_current) || is_tower_instance && !DynamicDungeonExpedition.IsRoguelikeInstance(_dynamicInstanceState)) &&
+        !_isTraveling && !_actionBusy && !_npcEncounterBusy && _travelPawn is null;
 
     public void return_one_level()
     {
         if (close_action_details()) return;
         interrupt_travel();
-        open_action_card("暂歇", "你仍在东林地内。查看界面不推进游戏时间；离开须沿林径返回林缘出口。", "", "");
+        open_action_card("暂歇", _dynamicMode
+            ? is_tower_instance ? DynamicDungeonExpedition.IsRoguelikeInstance(_dynamicInstanceState)
+                ? $"本局不能中途离开。击败第{DynamicDungeonExpedition.RoguelikeLayerCount}层首领并抵达出口后，本局才会结束。"
+                : "你仍在副本内。可继续攀行，也可暂离返回大世界；再次进入会从当前节点继续。"
+                : $"你仍在{route_display_name}内。查看界面不推进游戏时间；须沿路线走到出口才能离开。"
+            : "你仍在东林地内。查看界面不推进游戏时间；离开须沿林径返回林缘出口。", "", "");
     }
 
     public void locate_exit()
@@ -85,26 +126,37 @@ public partial class EastWoodsDungeonPanel
         if (_actionBusy || _npcEncounterBusy) return;
         close_action_details();
         interrupt_travel();
-        if (_current == "forest_edge")
+        if (is_route_exit(_current))
         {
             offer_exit();
             return;
         }
-        on_node_clicked("forest_edge");
+        if (is_tower_instance)
+        {
+            focus_map_node(route_exit_node_id);
+            return;
+        }
+        on_node_clicked(route_exit_node_id);
     }
 
     private void offer_exit()
     {
         if (!can_leave()) return;
-        open_action_card("离开林地", "沿林缘出口离开东林地。已取得物品与探明、采集、事件进度将保留，再次进入不会重置。", "出口已抵达；取消不离场。", "__leave");
-        _actionConfirm!.Text = "离开林地";
+        var earlyTowerDeparture = is_tower_instance && !is_route_exit(_current);
+        open_action_card(earlyTowerDeparture ? "暂离副本" : _dynamicMode ? $"离开{route_display_name}" : "离开林地",
+            earlyTowerDeparture
+                ? "暂时返回大世界。当前层数、资源和遭遇状态会保留，原入口也会留在地图上；再次进入可从当前节点继续。"
+                : _dynamicMode ? $"沿实体出口离开{route_display_name}。已探明路线、资源、事件与遭遇状态会保留。" + (is_compact_route ? "再次进入不会重置采集和遭遇。" : "本次爬塔完成后，大世界会生成下一处入口。") : "沿林缘出口离开东林地。已取得物品与探明、采集、事件进度将保留，再次进入不会重置。",
+            earlyTowerDeparture ? "暂离不会重置本次进度；取消可继续行进。" : "出口已抵达；取消不离场。", "__leave");
+        _actionConfirm!.Text = earlyTowerDeparture ? "暂离并返回大世界" : _dynamicMode ? $"离开{route_display_name}" : "离开林地";
     }
 
     private void build_actions()
     {
-        _actionBar = new PanelContainer { Name = "CurrentNodeActions", AnchorLeft = .32f, AnchorRight = .68f, AnchorTop = .74f, AnchorBottom = .74f };
+        _actionBar = new PanelContainer { Name = "CurrentNodeActions", MouseFilter = MouseFilterEnum.Stop };
         _actionBar.AddThemeStyleboxOverride("panel", WorldHudStyle.Paper());
         AddChild(_actionBar);
+        _actionBar.MinimumSizeChanged += () => CallDeferred(nameof(position_current_node_actions));
         _actionRows = new VBoxContainer(); _actionRows.AddThemeConstantOverride("separation", 6); _actionBar.AddChild(_actionRows);
         _actionModal = new Control { Name = "NodeActionDetails", MouseFilter = MouseFilterEnum.Stop, Visible = false };
         _actionModal.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect); AddChild(_actionModal);
@@ -122,7 +174,7 @@ public partial class EastWoodsDungeonPanel
         var header = new HBoxContainer(); header.AddThemeConstantOverride("separation", 12); rows.AddChild(header);
         header.AddChild(WorldHudStyle.Seal("行"));
         _actionTitle = WorldHudStyle.Text("", 28); _actionTitle.SizeFlagsHorizontal = SizeFlags.ExpandFill; header.AddChild(_actionTitle);
-        header.AddChild(WorldHudStyle.Text("东林地", 16, true)); rows.AddChild(WorldHudStyle.Rule());
+        _actionWorldLabel = WorldHudStyle.Text("东林地", 16, true); header.AddChild(_actionWorldLabel); rows.AddChild(WorldHudStyle.Rule());
         var bodyRow = new HBoxContainer { SizeFlagsVertical = SizeFlags.ExpandFill }; bodyRow.AddThemeConstantOverride("separation", 20); rows.AddChild(bodyRow);
         _actionIcon = new TextureRect { ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize, StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
             CustomMinimumSize = new Vector2(82,82), SizeFlagsVertical = SizeFlags.ShrinkBegin, MouseFilter = MouseFilterEnum.Ignore, Visible = false };
@@ -143,12 +195,8 @@ public partial class EastWoodsDungeonPanel
                 if (can_leave()) close();
                 return;
             }
-            if (!can_execute_action(node, id)) return;
             close_action_details();
-            // Synchronous settlement: no second click can enter while callbacks run.
-            _actionBusy = true;
-            try { ActionRequested?.Invoke(node, id); }
-            finally { _actionBusy = false; refresh_action_bar(); }
+            execute_named_action(node, id);
         };
         buttons.AddChild(_actionConfirm);
     }
@@ -156,6 +204,12 @@ public partial class EastWoodsDungeonPanel
     private void refresh_action_bar()
     {
         if (_actionRows is null || _actionBar is null) return;
+        if (is_roguelike_route)
+        {
+            _actionBar.Hide();
+            _actionBarStamp = $"roguelike:{_current}";
+            return;
+        }
         if (_isTraveling)
         {
             // The panel is hidden for the whole route. Keep its controls intact and
@@ -170,50 +224,87 @@ public partial class EastWoodsDungeonPanel
         _actionBarStamp = stamp;
 
         foreach (var child in _actionRows.GetChildren()) { _actionRows.RemoveChild(child); child.QueueFree(); }
-        _actionBar.Visible = !_isTraveling && _travelPawn is null && _pendingPath.Count < 2;
-        var node = EastWoodsDungeonRules.get_node(_current);
-        var heading = WorldHudStyle.Text(node?.ShowTitleOnMap == true ? node.Title : "林间驻足", 16);
+        _actionBar.Visible = !_isTraveling && _travelPawn is null && _pendingPath.Count < 2 && _actionModal?.Visible != true;
+        var node = route_node(_current);
+        var heading = WorldHudStyle.Text(node?.ShowTitleOnMap == true ? node.Title : _dynamicMode ? route_display_name : "林间驻足", 16);
+        if (!_dynamicMode) heading.Text = "东林地 · " + EastWoodsDungeonRules.forest_region(_current);
         heading.HorizontalAlignment = HorizontalAlignment.Center; _actionRows.AddChild(heading);
-        if (_activeDutyId == "east_woods_patrol")
+        if (!_dynamicMode)
+        {
+            var ambience = WorldHudStyle.Text(forest_ambience(_current), 16, true);
+            ambience.Name = "ForestAmbience";
+            ambience.AutowrapMode = TextServer.AutowrapMode.WordSmart;
+            _actionRows.AddChild(ambience);
+        }
+        if (!_dynamicMode && _activeDutyId == "east_woods_patrol")
         {
             var duty = WorldHudStyle.Text(_activeDutyReady ? "巡查已复核 · 从林缘离开后回和光峰回报" : $"巡查 {Math.Min(_activeDutyStage, YuxuSectPrototypeBalance.EastWoodsPatrolRequiredNodeMoves)}/{YuxuSectPrototypeBalance.EastWoodsPatrolRequiredNodeMoves} · 前往静冠洼地复核", 16, true);
             duty.Name = "DutyProgress"; duty.AutowrapMode = TextServer.AutowrapMode.WordSmart;
             duty.HorizontalAlignment = HorizontalAlignment.Center; _actionRows.AddChild(duty);
         }
-        var row = new HBoxContainer { Alignment = BoxContainer.AlignmentMode.Center }; row.AddThemeConstantOverride("separation", 16); _actionRows.AddChild(row);
-        if (_activeDutyId == "east_woods_patrol")
+        var row = new HFlowContainer(); row.AddThemeConstantOverride("h_separation", 12); row.AddThemeConstantOverride("v_separation", 6); _actionRows.AddChild(row);
+        if (!_dynamicMode && _activeDutyId == "east_woods_patrol")
         {
             var target = make_button("查看目标", 100, 32); target.Name = "PreviewDutyTarget";
             target.Pressed += preview_duty_target; row.AddChild(target);
         }
-        if (_current == "forest_edge")
+        if (!_dynamicMode && _current == route_entry_node_id)
         {
-            var leave = make_button("离开林地", 116, 32); leave.Name = "LeaveDungeon";
+            var compact = make_button("蕨林采径", 116, 32); compact.Name = "EnterCompactRoute";
+            compact.Disabled = _actionBusy || _npcEncounterBusy;
+            compact.Pressed += () => { if (!_actionBusy && !_npcEncounterBusy) CompactRouteRequested?.Invoke(); };
+            row.AddChild(compact);
+        }
+        if (is_route_exit(_current))
+        {
+            var leave = make_button(_dynamicMode ? "离开" + route_display_name : "离开林地", 116, 32); leave.Name = "LeaveDungeon";
+            leave.Pressed += offer_exit; row.AddChild(leave);
+        }
+        else if (is_tower_instance)
+        {
+            var leave = make_button("暂离副本", 116, 32); leave.Name = "LeaveDungeonEarly";
             leave.Pressed += offer_exit; row.AddChild(leave);
         }
         var choices = available_actions(_current);
         foreach (var action in choices)
         {
-            var button = make_button(action.Name, 100, 32); button.Name = "Action_" + action.Id;
+            var actionRow = new HBoxContainer(); actionRow.AddThemeConstantOverride("separation", 10); _actionRows.AddChild(actionRow);
+            var button = make_button(local_action_name(action), 0, 36); button.Name = "Action_" + action.Id;
+            button.SizeFlagsHorizontal = SizeFlags.ExpandFill;
             button.Disabled = _actionBusy || _npcEncounterBusy;
-            button.Pressed += () => offer_action(action); row.AddChild(button);
+            button.Pressed += () =>
+            {
+                if (is_authored_forest_encounter(action)) request_forest_choice("open");
+                else if (action.ItemPath.Length > 0 || action.Battle) execute_named_action(_current, action.Id);
+                else offer_action(action);
+            };
+            actionRow.AddChild(button);
+            var detail = make_button("详情", 54, 36); detail.Name = "Detail_" + action.Id;
+            detail.Pressed += () => offer_action(action); actionRow.AddChild(detail);
+            var summary = WorldHudStyle.Text(local_action_summary(action), 14, true);
+            summary.AutowrapMode = TextServer.AutowrapMode.WordSmart; _actionRows.AddChild(summary);
         }
         var inspect = make_button("此地见闻", 116, 32); inspect.Pressed += () => show_action_result("此地见闻", node?.Description ?? ""); row.AddChild(inspect);
         if (choices.Count == 0)
         {
             var done = WorldHudStyle.Text("此地暂无待办，可继续行进。", 16, true); done.HorizontalAlignment = HorizontalAlignment.Center; _actionRows.AddChild(done);
         }
+        _actionBar.ResetSize();
+        CallDeferred(nameof(position_current_node_actions));
     }
     private void offer_action(EastWoodsActions.ActionDef action)
     {
+        if (is_authored_forest_encounter(action)) { request_forest_choice("open"); return; }
         var remaining = action.Stock > 0 ? $"　·　剩余 {action_remaining(_current, action)} 份" : "";
         var item = action.ItemPath.Length > 0 ? EastWoodsActions.Item(action.ItemPath) : null;
         open_action_card(item is null ? action.Name : action.Name + " · " + item.entity_name, action.Description,
-            $"耗时 {action.Hours:0.#} 小时　·　体力 {action.Stamina:0.#}{remaining}\n查看和取消不消耗；耗时行动期间其他修行者仍会行进。", action.Id);
+            $"耗时 {action.Hours:0.#} 小时　·　精力 {action.Stamina:0.#}{remaining}\n查看和取消不消耗；耗时行动期间其他修行者仍会行进。", action.Id);
         if (item is not null && ResourceLoader.Exists(item.icon_path)) { _actionIcon!.Texture = GD.Load<Texture2D>(item.icon_path); _actionIcon.Show(); }
     }
     private void open_action_card(string title, string body, string cost, string action)
     {
+        hide_forest_event();
+        ((Control)_actionCard!.GetParent()).Show();
         clear_hover();
         _offeredAction = action;
         _actionIcon!.Hide();

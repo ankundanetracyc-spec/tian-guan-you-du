@@ -1,6 +1,6 @@
 using Godot;
 
-/// <summary>兽种的常驻数据：四维按截断正态分布抽取，变种和精英在抽取后修正。</summary>
+/// <summary>兽种的常驻数据：三项基础战斗属性按截断正态分布抽取，变种和精英在抽取后修正。</summary>
 [GlobalClass]
 public partial class BeastTemplate : Resource
 {
@@ -14,10 +14,10 @@ public partial class BeastTemplate : Resource
     [Export(PropertyHint.File, "*.png,*.webp,*.jpg,*.svg")] public string battle_portrait_path = "";
     [Export] public float physique_min = 5f, physique_mean = 5f, physique_max = 5f;
     [Export] public float intelligence_min = 5f, intelligence_mean = 5f, intelligence_max = 5f;
-    [Export] public float agility_min = 5f, agility_mean = 5f, agility_max = 5f;
     [Export] public float soul_min = 5f, soul_mean = 5f, soul_max = 5f;
     [Export] public BeastRacialTalent? racial_talent;
     [Export] public BasicDeckResource? deck;
+    [Export] public CombatBoardLayout? combat_board_layout;
     [Export] public int initial_hand_size = 5;
     [Export] public int cards_per_turn = 3;
 }

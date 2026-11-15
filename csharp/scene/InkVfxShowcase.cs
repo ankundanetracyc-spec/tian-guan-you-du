@@ -13,7 +13,7 @@ public partial class InkVfxShowcase : Control
     private const int MaskWidth = 512;
     private const int MaskHeight = 288;
 
-    private enum PreviewType { Shader, Shield, Death, Punch, SwordCleave, SwordImpact, Impact, CriticalImpact, SwordExchange, RealSkill }
+    private enum PreviewType { Shader, Shield, Death, Punch, SwordCleave, SwordImpact, Impact, CriticalImpact, SwordExchange, RealSkill, Hurt, Guard, Recovery, Dodge, ShieldAttack, ThrowPose, BloodOne, BloodTwo, BloodFollow, BloodGuard, BloodFade, SwordIdle, SwordAction }
 
     private readonly record struct EffectDefinition(string Id, string Name, string Summary, Color Color, float Spread, float Distortion, float EdgeDarkness, float Duration, float Mode, PreviewType Preview, string SkillPath = "");
 
@@ -24,7 +24,34 @@ public partial class InkVfxShowcase : Control
         new("brush", "笔锋扫掠", "一笔横扫留下带方向性的湿墨拖尾。", new Color("1c2925"), 0.82f, 0.032f, 1.08f, 1.75f, 2f, PreviewType.Shader),
         new("burst", "碎墨爆散", "墨团向外炸开，边缘破碎并带有颗粒感。", new Color("222b28"), 1.28f, 0.070f, 0.70f, 1.55f, 3f, PreviewType.Shader),
         new("dry_edge", "干湿边缘", "主体淡化，只观察外圈、回渗和干燥边界。", new Color("29302c"), 1.04f, 0.045f, 1.20f, 2.2f, 4f, PreviewType.Shader),
-        new("battle_shield", "战斗·常驻护盾", "青灰湿墨形成护持边界；来袭一侧积墨受力，淡墨向外洇开。", new Color("316ca0"), 0f, 0f, 0f, 2.4f, 0f, PreviewType.Shield),
+        new("sword_idle", "待机·手持剑", "男女低位右手握剑，剑尖斜向右下；人物与剑分层，三种剑图共用握点。", new Color("748a7f"), 0f, 0f, 0f, 4f, 0f, PreviewType.SwordIdle),
+        new("sword_hurt", "剑招·持剑受击", "握剑随身体后仰退让，手指仍扣住剑柄，命中停顿后回到持剑待机。", new Color("748a7f"), 0, 0, 0, 1.7f, 0, PreviewType.Hurt),
+        new("sword_orbit_idle", "待机·御剑悬停", "双手空置，剑尖始终水平指向敌人，只保留轻微浮动与抖动。",new Color("748a7f"),0,0,0,4f,0,PreviewType.SwordIdle),
+        new("sword_action_cut", "剑招·斩剑", "斜下斩与淡青白锋同步落下，接触短停后剑痕分层收散。",new Color("748a7f"),0,0,0,2.1f,0,PreviewType.SwordAction),
+        new("sword_action_parry", "剑招·格剑", "斜架与来袭直锋同拍，交锋处短促亮点和碎屑，不再追加受击。",new Color("748a7f"),0,0,0,2.1f,0,PreviewType.SwordAction),
+        new("sword_action_nurture", "剑招·养锋", "横剑敛息，象牙白细光贴着剑身缓缓行进，青灰气息轻收。",new Color("748a7f"),0,0,0,2.2f,0,PreviewType.SwordAction),
+        new("sword_action_finish", "剑招·尽锋", "白芯直锋随剑贯入，窄幅余劲与小范围接触碎光，局部取景强调落点。",new Color("748a7f"),0,0,0,2.1f,0,PreviewType.SwordAction),
+        new("battle_hand_chop", "战斗·通用出手", "默认衣装下劈姿势、淡彩轨迹与小范围命中墨花，接近后发力并回位。", new Color("748a7f"), 0f, 0f, 0f, 1.4f, 0f, PreviewType.RealSkill, "res://resources/activeskills/应敌.tres"),
+        new("battle_wolf_bite", "凶狼·撕咬", "待机切换扑击姿态，短墨痕配合命中停顿与受击反馈，随后回待机。", new Color("59776a"), 0, 0, 0, 1.7f, 0, PreviewType.RealSkill, "res://resources/activeskills/妖兽/林地凶狼/撕咬.tres"),
+        new("battle_bei_cry", "妖狈·狈啸", "抬爪短啸，灰紫声纹指向敌方，接触短停后收散。", new Color("696276"), 0, 0, 0, 1.5f, 0, PreviewType.RealSkill, "res://resources/activeskills/妖兽/林地妖狈/狈啸.tres"),
+        new("battle_bei_call", "妖狈·唤猎", "短啸指挥狼群，灰青声纹与逐猎反馈衔接回待机。", new Color("59776a"), 0, 0, 0, 1.3f, 0, PreviewType.RealSkill, "res://resources/activeskills/妖兽/林地妖狈/唤猎.tres"),
+        new("battle_bei_hurt", "妖狈·受击", "收肩伏耳，受击姿态短停后回到固定待机。", new Color("59776a"), 0, 0, 0, 1.0f, 0, PreviewType.Hurt, "res://resources/activeskills/妖兽/林地妖狈/狈啸.tres"),
+        new("battle_wolf_pounce", "凶狼·掠影扑杀", "待机切换扑击姿态，三道炭墨撕痕在接触处短停，灰青白锋断散。", new Color("59776a"), 0, 0, 0, 1.7f, 0, PreviewType.RealSkill, "res://resources/activeskills/妖兽/林地凶狼/掠影扑杀.tres"),
+        new("battle_jingzhe", "战斗·惊蛰落雷", "原地提指引雷，蓝白雷柱自上向下贯落，白芯短停后分叉余电收散。", new Color("869dbd"), 0f, 0f, 0f, 1.85f, 0f, PreviewType.RealSkill, "res://resources/activeskills/玄枢含章经/惊蛰.tres"),
+        new("throw_pose", "动作·挥手抛术", "原地直接挥袖向前释放，再回待机；单独观察动作。", new Color("748a7f"), 0f, 0f, 0f, 1.40f, 0f, PreviewType.ThrowPose),
+        new("battle_throw", "战斗·挥手释法", "挥手动作配合既有灵击，灵息由掌前抛出，双脚留在原位。", new Color("748a7f"), 0f, 0f, 0f, 1.65f, 0f, PreviewType.RealSkill, "res://resources/activeskills/灵击.tres"),
+        new("battle_hurt", "战斗·受击", "受力姿势与淡彩受击序列帧，短暂停顿后余墨漂移消散。", new Color("748a7f"), 0f, 0f, 0f, 1.0f, 0f, PreviewType.Hurt),
+        new("battle_guard", "战斗·应对防御", "交锋局部取景，攻方轨迹与受方架挡同拍停顿，不追加防御墨效或受击动作。", new Color("748a7f"), 0f, 0f, 0f, 2.2f, 0f, PreviewType.Guard),
+        new("battle_dodge", "战斗·闪避", "撤身让开来袭轨迹，袖发拖影与淡彩余笔自然回收。", new Color("748a7f"), 0f, 0f, 0f, 2.2f, 0f, PreviewType.Dodge),
+        new("battle_restore", "战斗·休整回气", "轻收手臂、两笔气息向掌前回拢，余屑衔接回待机。", new Color("748a7f"), 0f, 0f, 0f, 1.8f, 0f, PreviewType.Recovery),
+        new("battle_self_buff", "战斗·自身增益", "以聚炁展示休整回气动作，贴身气息轻收后回待机。", new Color("748a7f"), 0f, 0f, 0f, 1.8f, 0f, PreviewType.RealSkill, "res://resources/activeskills/聚炁.tres"),
+        new("blood_one", "血臂·单臂显化", "左侧血色透明手臂悬于身后，血气绕臂行进；单臂阶段以左臂追加攻击。", new Color("b84d59"), 0f, 0f, 0f, 4f, 0f, PreviewType.BloodOne),
+        new("blood_two", "血臂·双臂显化", "第二只血臂显化，透明膜与浮光缓慢游走；双臂阶段兼具追击与化解表现。", new Color("b84d59"), 0f, 0f, 0f, 4f, 0f, PreviewType.BloodTwo),
+        new("blood_follow", "血臂·追加出拳", "人物出手后回待机，单臂时左臂追击，双臂时只动右臂；出拳后回到悬浮姿势。", new Color("b84d59"), 0f, 0f, 0f, 3.7f, 0f, PreviewType.BloodFollow),
+        new("blood_guard", "血臂·自动化解", "双臂阶段近身来袭时张掌拦截，同步架挡与局部特写；此处只演示触发后的画面。", new Color("b84d59"), 0f, 0f, 0f, 3.4f, 0f, PreviewType.BloodGuard),
+        new("blood_fade", "血臂·透明消散", "两只血色手臂的能量膜与浮光逐渐散去。", new Color("b84d59"), 0f, 0f, 0f, 2.6f, 0f, PreviewType.BloodFade),
+        new("battle_shield", "战斗·常驻护盾", "淡蓝法力罩包住发梢、衣摆和双足，罩面光影缓慢游走，受力侧泛起短促涟漪。", new Color("83b4d2"), 0f, 0f, 0f, 2.4f, 0f, PreviewType.Shield),
+        new("battle_shield_attack", "战斗·带盾出手", "带着法力护罩前冲、出手并回位，罩面浮光持续游走。", new Color("83b4d2"), 0f, 0f, 0f, 2.3f, 0f, PreviewType.ShieldAttack),
         new("battle_death", "战斗·死亡墨散", "深墨短暂沉积，再收束为不规则枯墨，湿边逐渐散淡。", new Color("18211f"), 0f, 0f, 0f, 0.9f, 0f, PreviewType.Death),
         new("battle_punch", "战斗·发劲", "暖灰劲痕加速推出，接触顿笔后向受力方向散开，干湿笔触逐层收淡。", new Color("a85c4d"), 0f, 0f, 0f, 0.65f, 0f, PreviewType.Punch),
         new("battle_sword_cleave", "练手·剑劈斩（出手）", "浓墨笔锋疾扫，淡墨随笔势流动，拖尾逐渐破开；只留几滴抛落的余墨。", new Color("3d7187"), 0f, 0f, 0f, 0.70f, 0f, PreviewType.SwordCleave),
@@ -37,6 +64,7 @@ public partial class InkVfxShowcase : Control
     private readonly List<Button> _effectButtons = [];
     private EffectDefinition[] _effects = [];
     private int _previewDirection;
+    private bool _femaleCaster;
     private readonly List<ImageTexture> _masks = [];
     private TextureRect? _inkLayer;
     private Control? _stage;
@@ -68,7 +96,7 @@ public partial class InkVfxShowcase : Control
             if (skill is null || skill.skill_type == ActiveSkillData.SkillType.POWER || skill.skill_type == ActiveSkillData.SkillType.CURSE) continue;
             var suffix = string.IsNullOrEmpty(skill.source_gongfa_name) ? "" : " · " + skill.source_gongfa_name;
             definitions.Add(new EffectDefinition(path, skill.skill_name + suffix, BattleInkCombatVfx.Describe(skill), new Color("18211f"),
-                0f, 0f, 0f, 0.85f, 0f, PreviewType.RealSkill, path));
+                0f, 0f, 0f, BattleInkCombatVfx.Profile(skill) == BattleInkCombatVfx.Kind.Recovery ? 1.8f : 1.4f, 0f, PreviewType.RealSkill, path));
         }
         _effects = definitions.ToArray();
         _masks.Add(CreateMask(0));
@@ -97,19 +125,44 @@ public partial class InkVfxShowcase : Control
         var index = System.Array.FindIndex(_effects, effect => effect.SkillPath == path);
         if (index >= 0) SelectEffect(index);
     }
+    public void PreviewForestBeiHurt(int direction = 0)
+    {
+        _previewDirection = Mathf.PosMod(direction, 4);
+        var index = System.Array.FindIndex(_effects, effect => effect.Id == "battle_bei_hurt");
+        if (index >= 0) SelectEffect(index);
+    }
+
+    public void SetPreviewCaster(bool female)
+    {
+        _femaleCaster = female;
+        _battleAttacker?.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.Configure(new BattleEntityData { entity_name="出手", gender=female?1:0, faction=1 });
+        _battleTarget?.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.Configure(new BattleEntityData { entity_name="目标", gender=female?0:1, faction=(int)WorldEntity.Faction.ENEMY });
+        Replay();
+    }
+
+    public void PreviewThrowPose(int direction = 0)
+    {
+        _previewDirection = Mathf.PosMod(direction, 4);
+        var index = System.Array.FindIndex(_effects, effect => effect.Id == "throw_pose");
+        if (index >= 0) SelectEffect(index);
+    }
 
     public override void _Process(double delta)
     {
         if (!_playing) return;
+        if(IsSwordAction&&_swordActionPreview?.Paused==true)return;
+        if(IsSwordHurt&&_swordPreviewPaused)return;
         _elapsed += (float)delta;
 
         if (_current.Preview != PreviewType.Shader)
         {
+            if(IsSwordIdle) return;
             if (_status is not null)
             {
-                var label = _current.Preview == PreviewType.Shield ? "常驻显示" : "播放中";
+                var label = _current.Preview == PreviewType.Shield || IsBloodPersistent ? "常驻显示" : "播放中";
                 _status.Text = $"{label}  ·  {_elapsed:0.00}s";
             }
+            if (IsBloodPersistent) return;
             if (_current.Preview == PreviewType.Shield)
             {
                 if (!_shieldPreviewImpactPlayed && _elapsed >= 0.62f && _shieldPreview is not null)
@@ -277,9 +330,20 @@ public partial class InkVfxShowcase : Control
         replay.Pressed += Replay;
         var facing = MakeButton("切换交手方向", 160, 36);
         facing.Position = new Vector2(154f, 76f);
-        facing.Pressed += () => { _previewDirection = (_previewDirection + 1) % 4; Replay(); };
+        facing.Pressed += () => { _previewDirection = IsSwordShowcase?(_previewDirection==1?0:1):(_previewDirection + 1) % 4; Replay(); };
         stage.AddChild(facing);
         stage.AddChild(replay);
+        var caster = MakeButton("切换男女角色", 160, 36);
+        _casterButton=caster;
+        caster.Position = new Vector2(330f, 76f);
+        caster.Pressed += () => SetPreviewCaster(!_femaleCaster);
+        stage.AddChild(caster);
+        _bloodCountButton=MakeButton("追击：双臂",150,36);
+        _bloodCountButton.Position=new Vector2(506,76);
+        _bloodCountButton.Pressed+=()=> { _bloodPreviewCount=_bloodPreviewCount==2?1:2; Replay(); };
+        stage.AddChild(_bloodCountButton);
+        BuildBloodGrowthControls(stage);
+        BuildSwordIdleControls(stage);
 
         var info = new VBoxContainer { Name = "Info", Position = new Vector2(22, 0), SizeFlagsHorizontal = SizeFlags.ExpandFill, MouseFilter = MouseFilterEnum.Ignore };
         info.SetAnchorsPreset(LayoutPreset.BottomWide);
@@ -301,6 +365,8 @@ public partial class InkVfxShowcase : Control
         if (index < 0 || index >= _effects.Length || _inkLayer is null) return;
         _currentIndex = index;
         _current = _effects[index];
+        if(_swordControls is not null) _swordControls.Visible=IsSwordShowcase;
+        if(_casterButton is not null) _casterButton.Visible=true;
         var isBattlePreview = _current.Preview != PreviewType.Shader;
         _inkLayer.Visible = !isBattlePreview;
         if (_battleLayer is not null) _battleLayer.Visible = isBattlePreview;
@@ -324,21 +390,29 @@ public partial class InkVfxShowcase : Control
         if (_effectSummary is not null) _effectSummary.Text = _current.Summary;
         for (var i = 0; i < _effectButtons.Count; i++)
             StyleChoiceButton(_effectButtons[i], i == _currentIndex);
+        if (_effectButtons[index].GetParent()?.GetParent() is ScrollContainer effectScroll)
+            effectScroll.CallDeferred(ScrollContainer.MethodName.EnsureControlVisible,_effectButtons[index]);
         Replay();
     }
 
     private void Replay()
     {
         _previewGeneration++;
+        ResetSwordActionPreview();
+        _battleAttacker?.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.SetProcess(true);
+        _battleAttacker?.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.clear_sword_idle();
+        ResetBloodPreview();
+        foreach (var effect in GetChildren().OfType<BattleInkCombatVfx>()) effect.QueueFree();
+        foreach (var focus in GetChildren().OfType<BattleContactFocus>()) focus.QueueFree();
+        PositionBattlePreview();
         _elapsed = 0f;
         _playing = true;
         _shieldPreviewImpactPlayed = false;
 
         if (_current.Preview != PreviewType.Shader)
         {
-            PositionBattlePreview();
             TriggerBattlePreview();
-            if (_status is not null) _status.Text = _current.Preview == PreviewType.Shield ? "常驻显示" : "准备播放";
+            if (_status is not null&&!IsSwordIdle) _status.Text = _current.Preview == PreviewType.Shield ? "常驻显示" : "准备播放";
             return;
         }
 
@@ -351,10 +425,28 @@ public partial class InkVfxShowcase : Control
     {
         _previewMotion?.Kill();
         if (_stage is null || _battleAttacker is null || _battleTarget is null || _shieldPreview is null) return;
-        _battleAttacker.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.hold_attack_contact(false);
-        _battleTarget.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.hold_attack_contact(false);
+        var attackerDoll = _battleAttacker.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll");
+        var wolfPreview = _current.Preview == PreviewType.RealSkill && _current.SkillPath.Contains("/妖兽/林地凶狼/");
+        var beiPreview = _current.SkillPath.Contains("/妖兽/林地妖狈/");
+        if (attackerDoll is not null && (attackerDoll.uses_forest_wolf_portrait() != wolfPreview || attackerDoll.uses_forest_bei_portrait() != beiPreview))
+            attackerDoll.Configure(beiPreview
+                ? new BattleEntityData { entity_name = "林地妖狈", entity_type = (int)WorldEntity.EntityType.BEAST, faction = 1, battle_portrait_path = BattlePaperDoll.ForestBeiPortraitPath }
+                : wolfPreview
+                ? new BattleEntityData { entity_name = "林地凶狼", entity_type = (int)WorldEntity.EntityType.BEAST, faction = 1, battle_portrait_path = BattlePaperDoll.ForestWolfPortraitPath }
+                : new BattleEntityData { entity_name = "出手", gender = _femaleCaster ? 1 : 0, faction = 1 });
+        var callPreview = beiPreview && _current.SkillPath.EndsWith("/唤猎.tres");
+        if (_battleTarget.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll") is { } targetDoll && targetDoll.uses_forest_wolf_portrait() != callPreview)
+            targetDoll.Configure(callPreview
+                ? new BattleEntityData { entity_name = "林地凶狼", entity_type = (int)WorldEntity.EntityType.BEAST, faction = 1, battle_portrait_path = BattlePaperDoll.ForestWolfPortraitPath }
+                : new BattleEntityData { entity_name = "目标", gender = _femaleCaster ? 0 : 1, faction = 2 });
+        _battleAttacker.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.reset_presentation();
+        _battleTarget.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.reset_presentation();
+        _battleTarget.Visible=true;
+        _battleAttacker.Visible=true;
         var size = _stage.Size;
         if (size.X < 300f || size.Y < 200f) size = new Vector2(700f, 430f);
+        _battleAttacker.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.SetDisplayHeight(Mathf.Min(320, size.Y * .62f));
+        _battleTarget.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.SetDisplayHeight(Mathf.Min(320, size.Y * .62f));
         var center = new Vector2(size.X * 0.5f, size.Y * 0.50f);
         _battleAttacker.Position = center + new Vector2(-165f, 112f);
         _battleTarget.Position = center + new Vector2(165f, 112f);
@@ -365,23 +457,67 @@ public partial class InkVfxShowcase : Control
         }
         else if (_previewDirection == 2) _battleTarget.Position += Vector2.Up * 100f;
         else if (_previewDirection == 3) _battleTarget.Position += Vector2.Down * 100f;
+        if (wolfPreview || beiPreview)
+        {
+            var facing = _previewDirection == 1 ? -1f : 1f;
+            _battleAttacker.Position = new Vector2(center.X - facing * 300, _battleAttacker.Position.Y);
+            _battleTarget.Position = new Vector2(center.X + facing * 300, _battleTarget.Position.Y);
+        }
         var direction = (_battleTarget.Position - _battleAttacker.Position).Normalized();
         _battleAttacker.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.face_direction(direction);
-        _battleTarget.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.face_direction(-direction);
-        _shieldPreview.Position = _battleLayer!.ToLocal(BattleInkCombatVfx.Anchor(_battleTarget));
+        _battleTarget.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.face_direction(callPreview ? direction : -direction);
+        foreach (var label in _battleTarget.GetChildren().OfType<Label>()) label.Text = callPreview ? "友方凶狼" : "目标";
+        if (beiPreview && _current.Preview == PreviewType.Hurt) _battleTarget.Visible = false;
+        PositionBloodPreview(center,size);
+        _shieldPreview.SetPreviewSubject(_battleTarget);
     }
 
     private void TriggerBattlePreview()
     {
         if (_battleAttacker is null || _battleTarget is null || _shieldPreview is null) return;
-        _shieldPreview.Visible = _current.Preview == PreviewType.Shield;
+        _shieldPreview.Visible = _current.Preview is PreviewType.Shield or PreviewType.ShieldAttack;
+        _shieldPreview.set_preview_shield(8);
+        _shieldPreview.SetPreviewSubject(_current.Preview==PreviewType.ShieldAttack?_battleAttacker:_battleTarget);
+        if(IsSwordAction) {StartSwordActionPreview();return;}
+        if(IsSwordIdle) {StartSwordIdlePreview();return;}
+        if(IsSwordHurt) {StartSwordHurtPreview();return;}
         if (_current.Preview == PreviewType.Shield) return;
+        if (IsBloodPreview) { StartBloodPreview(); return; }
+
+        if (_current.Preview == PreviewType.ShieldAttack)
+        {
+            PreviewAttackStaging(_battleAttacker,_battleTarget,GD.Load<ActiveSkillData>("res://resources/activeskills/应敌.tres"),_previewGeneration);
+            return;
+        }
 
         if (_current.Preview == PreviewType.Death)
         {
+            _battleTarget.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_death();
             BattleInkSlashEffect.PlayDeath(_battleTarget);
             return;
         }
+
+        var direction = (_battleTarget.GlobalPosition - _battleAttacker.GlobalPosition).Normalized();
+        if (_current.Preview == PreviewType.ThrowPose)
+        {
+            _battleAttacker.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_throw(direction);
+            return;
+        }
+        if (_current.Preview == PreviewType.Hurt)
+        {
+            if (_battleAttacker.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll") is { } hurtBei && hurtBei.uses_forest_bei_portrait())
+            { hurtBei.play_hit(-direction); return; }
+            _battleTarget.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_hit(direction);
+            return;
+        }
+        if (_current.Preview is PreviewType.Guard or PreviewType.Dodge)
+        {
+            if (_current.Preview == PreviewType.Guard)
+                BattleInkCombatVfx.PlayUtility(_battleTarget, _battleTarget, GD.Load<ActiveSkillData>("res://resources/activeskills/架招.tres"));
+            PreviewAttackStaging(_battleAttacker, _battleTarget, GD.Load<ActiveSkillData>("res://resources/activeskills/应敌.tres"), _previewGeneration, _current.Preview == PreviewType.Dodge);
+            return;
+        }
+        if (_current.Preview == PreviewType.Recovery) { BattleInkCombatVfx.PlayRecovery(_battleAttacker); BattleInkCombatVfx.PlayRecovery(_battleTarget); return; }
 
         if (_current.Preview == PreviewType.RealSkill)
         {
@@ -389,21 +525,20 @@ public partial class InkVfxShowcase : Control
             if (skill is null) return;
             var attacker = _battleAttacker;
             var target = _battleTarget;
-            if (!BattleInkCombatVfx.DealsDamage(skill)) { BattleInkCombatVfx.PlayUtility(attacker, target, skill); return; }
+            if (!BattleInkCombatVfx.DealsDamage(skill))
+            {
+                BattleInkCombatVfx.PlayUtility(attacker, target, skill);
+                if (BattleInkCombatVfx.IsForestBeiPackCall(skill)) BattleInkCombatVfx.PlayForestBeiBlessing(target);
+                return;
+            }
             PreviewAttackStaging(attacker,target,skill,_previewGeneration);
             return;
         }
 
         if (_current.Preview == PreviewType.Punch)
         {
-            var skill = new ActiveSkillData { skill_name = "发劲", damage_type = "physical" };
-            BattleInkSlashEffect.PlayAttack(_battleAttacker, _battleTarget, skill);
-            var target = _battleTarget;
-            var generation = _previewGeneration;
-            GetTree().CreateTimer(0.16f).Timeout += () =>
-            {
-                if (generation == _previewGeneration && GodotObject.IsInstanceValid(target)) BattleInkSlashEffect.PlayImpactForSkill(target, skill, false);
-            };
+            var skill = GD.Load<ActiveSkillData>("res://resources/activeskills/发劲.tres");
+            if (skill is not null) PreviewAttackStaging(_battleAttacker, _battleTarget, skill, _previewGeneration);
             return;
         }
 
@@ -418,14 +553,17 @@ public partial class InkVfxShowcase : Control
             BattleInkSlashEffect.PlaySwordImpact(_battleTarget, _battleAttacker);
 
         if (_current.Preview is PreviewType.Impact or PreviewType.CriticalImpact)
-            BattleInkSlashEffect.PlayImpact(_battleTarget, _current.Preview == PreviewType.CriticalImpact);
+        {
+            BattleInkSlashEffect.PlayImpact(_battleTarget, _current.Preview == PreviewType.CriticalImpact, attacker: _battleAttacker);
+            _battleTarget.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_hit(direction, critical: _current.Preview == PreviewType.CriticalImpact);
+        }
 
         if (_current.Preview == PreviewType.SwordExchange)
         {
             var attacker = _battleAttacker;
             var target = _battleTarget;
             var generation = _previewGeneration;
-            attacker.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_attack(Vector2.Right);
+            attacker.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_attack(direction, false);
             BattleInkSlashEffect.PlaySwordCleave(attacker, target);
             GetTree().CreateTimer(0.15f).Timeout += () =>
             {
@@ -436,7 +574,7 @@ public partial class InkVfxShowcase : Control
         }
     }
 
-    private async void PreviewAttackStaging(Node2D attacker,Node2D target,ActiveSkillData skill,int generation)
+    private async void PreviewAttackStaging(Node2D attacker,Node2D target,ActiveSkillData skill,int generation,bool evaded=false)
     {
         bool Current() => IsInsideTree() && generation==_previewGeneration && IsInstanceValid(attacker) && IsInstanceValid(target);
         async System.Threading.Tasks.Task Wait(float seconds) =>
@@ -455,12 +593,12 @@ public partial class InkVfxShowcase : Control
         }
         var direction=(target.GlobalPosition-attacker.GlobalPosition).Normalized();
         var doll=attacker.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll");
-        doll?.play_attack(direction);
+        BattleInkCombatVfx.PresentAttackPose(attacker,direction,skill);
         BattleInkCombatVfx.PlayAttack(attacker,target,skill);
-        await Wait(BattleInkCombatVfx.ContactSeconds);
+        await Wait(BattleInkCombatVfx.AttackContactSeconds(attacker));
         if(!Current())return;
-        BattleInkCombatVfx.PlayImpact(target,skill,attacker);
-        target.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_hit(direction,BattleInkCombatVfx.HitWeight(skill));
+        BattleInkCombatVfx.PlayImpact(target,skill,attacker,evaded:evaded);
+        if (!evaded) target.GetNodeOrNull<BattlePaperDoll>("BattlePaperDoll")?.play_hit(direction,BattleInkCombatVfx.HitWeight(skill),playHurtFx:!BattleInkCombatVfx.IsJingzhe(skill) && !BattleInkCombatVfx.UsesForestWolfEffects(attacker, skill) && !BattleInkCombatVfx.UsesForestBeiCry(attacker, skill));
         doll?.hold_attack_contact(true);
         await Wait(BattleInkCombatVfx.ContactHoldSeconds(BattleInkCombatVfx.HitWeight(skill))+.055f);
         if(!Current())return;
@@ -471,7 +609,7 @@ public partial class InkVfxShowcase : Control
         _previewMotion=attacker.CreateTween();
         _previewMotion.TweenMethod(Callable.From<float>(progress=>
         {
-            if(Current())attacker.GlobalPosition=BattleAttackMotion.ReturnPosition(contact,home,progress);
+            if(Current())attacker.GlobalPosition=BattleAttackMotion.ReturnPosition(attacker,contact,home,progress);
         }),0f,1f,BattleAttackMotion.ReturnSeconds).SetTrans(Tween.TransitionType.Cubic).SetEase(Tween.EaseType.Out);
     }
 
@@ -543,15 +681,9 @@ public partial class InkVfxShowcase : Control
     private static Node2D CreateBattleMarker(string text, Color color)
     {
         var marker = new Node2D { Name = text };
-        marker.AddChild(new Polygon2D
-        {
-            Polygon = [new Vector2(-42f, 4f), new Vector2(-26f, -3f), new Vector2(26f, -3f), new Vector2(42f, 4f), new Vector2(25f, 11f), new Vector2(-25f, 11f)],
-            Color = new Color(0.06f, 0.08f, 0.07f, 0.22f),
-            Position = new Vector2(0f, -20f)
-        });
         var doll = new BattlePaperDoll { Name = "BattlePaperDoll" };
         marker.AddChild(doll);
-        doll.Configure(new BattleEntityData { entity_name = text, gender = 0,
+        doll.Configure(new BattleEntityData { entity_name = text, gender = text == "目标" ? 1 : 0,
             faction = text == "目标" ? (int)WorldEntity.Faction.ENEMY : 1 });
         var label = MakeLabel(text, 13, new Color(0.19f, 0.16f, 0.11f, 0.90f));
         label.Position = new Vector2(-28f, 18f);

@@ -1,0 +1,74 @@
+{
+  "contract_version": 1,
+  "status": "candidate_pure_python_reference_not_godot_integrated",
+  "game_runtime_integrated": false,
+  "game_save_modified": false,
+  "scope": "artifact_transformation_only_not_character_attribute_pool",
+  "registered_operators": [
+    {
+      "id": "add_response_defuse_flat",
+      "slot_id": "response_defuse_flat_add",
+      "phase": "response_defuse_calculation",
+      "value_type": "int_flat",
+      "parameter_keys": ["amount"],
+      "required_mechanisms": ["physical_response", "defuse"],
+      "generation_coefficient": "0.5",
+      "quantization": "floor",
+      "minimum_allocation_X": "2",
+      "budget_costs_per_X": {"source/固": "1", "root": "1", "structure": "1", "通": "0.35"}
+    }
+  ],
+  "global_skill_interfaces": [
+    {
+      "resource_key": "res://resources/activeskills/剑修基础/格剑.tres",
+      "base_skill_key": "res://resources/activeskills/剑修基础/格剑.tres",
+      "skill_name": "格剑",
+      "enabled": true,
+      "tags": ["剑", "化解", "剑意"],
+      "keywords": ["应对"],
+      "counter_condition": "on_physical_attacked",
+      "status_effect_ids": ["化解"],
+      "target_type": 0,
+      "combat_metadata": {"energy_cost": 1, "mana_cost": 0, "cooldown_rounds": 0, "uses_per_round": 0, "uses_per_battle": 0, "max_charges": 0},
+      "modifier_slots": ["response_defuse_flat_add"],
+      "interface_status": "candidate_adapter_of_verified_existing_skill_fields_not_new_godot_exports"
+    }
+  ],
+  "registered_templates": [
+    {
+      "template_id": "artifact.gejian.defuse_flat.v1",
+      "template_version": 1,
+      "source_policy": "held_active_only",
+      "target_policy": "one_placed_copy",
+      "matcher": {
+        "base_skill_keys": ["res://resources/activeskills/剑修基础/格剑.tres"],
+        "required_terms": ["剑", "应对", "化解"],
+        "required_mechanisms": ["physical_response", "defuse"]
+      },
+      "operations": [
+        {
+          "id": "add_response_defuse_flat",
+          "slot_id": "response_defuse_flat_add",
+          "phase": "response_defuse_calculation",
+          "value_type": "int_flat",
+          "coefficient": "0.5",
+          "required_mechanisms": ["physical_response", "defuse"]
+        }
+      ],
+      "inherit_original_skill": ["energy_cost", "mana_cost", "cooldown_rounds", "uses_per_round", "uses_per_battle", "max_charges", "base_skill_key"],
+      "extra_action": false,
+      "requires_another_board_cell": "not_decided_not_forced_by_contract",
+      "copy_policy": "not_decided_require_explicit_policy_before_execution",
+      "stack_policy": "existing_book_order_then_artifact_registered_slot_addition_no_arbitrary_replace"
+    }
+  ],
+  "binding_identity": ["actor_id", "source_instance_id", "bundle_id", "template_id", "template_version", "target_layout_id", "target_placement_id", "target_base_skill_key"],
+  "cache_identity": ["actor_id", "layout_id", "layout_version", "target_placement_id", "source_instance_id", "source_state_version", "bundle_digest", "template_version", "selected_mode", "source_active", "held_instance_id"],
+  "source_snapshot_fields_required": ["instance_id", "bundle_ids", "selected_mode", "usable", "active", "state_version"],
+  "event_context_fields": ["battle_id", "cast_id", "event_id", "actor_id", "round_index", "layout_id", "target_placement_id", "phase", "incoming_damage_type", "is_real_response", "copied_from_placement", "borrowed_opportunity_placement"],
+  "configuration_gate": "owned_usable_item_selected_for_handheld_and_learned_legal_target_activation_not_required",
+  "execution_gate": "configuration_gate_plus_current_same_item_held_and_activated_and_real_physical_response",
+  "invalidation": "pause_preserve_selection_do_not_rollback_completed_effects_or_refresh_skill_ledgers",
+  "future_unregistered_operations": ["original_damage_rewrite", "shield_rewrite", "cost_rewrite", "cooldown_rewrite", "charge_rewrite", "status_event_rewrite"],
+  "note": "Future operations require their own approved skill slot, operator, target predicates, timing and budget. Unknown fields and operation IDs are rejected."
+}

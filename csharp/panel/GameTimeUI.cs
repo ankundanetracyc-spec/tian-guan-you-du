@@ -40,6 +40,8 @@ public partial class GameTimeUI : Control
         AddChild(panel);
         var frame = new WorldHudFrame { Position = Vector2.Zero, Size = new Vector2(430, 46) };
         panel.AddChild(frame);
+        var seal = new ColorRect { Position = new Vector2(19, 18), Size = new Vector2(5, 6), Color = new Color("985344"), MouseFilter = MouseFilterEnum.Ignore };
+        panel.AddChild(seal);
         _date = WorldHudStyle.Text("", 22);
         _date.Position = new Vector2(16, 5);
         _date.Size = new Vector2(348, 36);
@@ -90,11 +92,10 @@ public partial class GameTimeUI : Control
         if (key == _lastReadout) return;
         _lastReadout = key;
         var year = _showZhaoming ? $"昭明历{_manager.get_zhaoming_year()}年" : $"入世第{_manager.year}年";
-        _date.Text = $"{year}{_manager.month}月{_manager.day}日 · {_manager.hour:00}时";
-        _calendarToggle.TooltipText = _showZhaoming ? "当前：昭明历。点击切换入世年数。" : "当前：入世年数。点击切换昭明历。";
+        _date.Text = $"{year}{_manager.month}月{_manager.day}日";
 
         var phase = _manager.hour switch { >= 6 and < 18 => "昼", _ => "夜" };
         var name = weather switch { "clear" => "晴", "cloudy" => "多云", "rain" => "雨", "snow" => "雪", "thunderstorm" => "雷雨", _ => weather };
-        _conditions.Text = $"{_manager.get_time_branch()}时 · {_manager.get_season()} · {phase}　{name} {temperature}".Trim();
+        _conditions.Text = $"{_manager.get_season()} · {phase}　{name} {temperature}".Trim();
     }
 }

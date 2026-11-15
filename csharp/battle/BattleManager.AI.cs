@@ -1,7 +1,9 @@
-using Godot;
+﻿using Godot;
 
 public partial class BattleManager
 {
+    // 有限状态目录的定义保持强引用；搜索草案不能反复加载同一 C# Resource。
+    private static readonly Dictionary<string,StatusEffect?> AiStatusDefinitions = [];
     private sealed class AiCandidate
     {
         public ActiveSkillData Skill = null!;
@@ -23,7 +25,6 @@ public partial class BattleManager
         {
             BuildAiQueue(enemy, forecast, false);
             EnsureSegmentSlots(enemy);
-            ApplyQueueForecast(enemy, forecast);
         }
     }
 
@@ -37,153 +38,17 @@ public partial class BattleManager
         {
             BuildAiQueue(ally, forecast, true);
             EnsureSegmentSlots(ally);
-            ApplyQueueForecast(ally, forecast);
         }
     }
 
-    private Dictionary<GodotObject, float> CreateHealthForecast() => all_units
+    private Dictionary<GodotObject, float> CreateHealthForecast() => get_target_candidates()
         .Where(Alive)
         .ToDictionary(unit => unit, unit => (float)unit.Get("current_health").AsInt32());
 
-    private void BuildAiQueue(GodotObject unit, Dictionary<GodotObject, float> forecast, bool teammate)
+    private void BuildAiQueue(GodotObject unit, Dictionary<GodotObject, float> forecast, bool teammate, bool allowSupplies = true)
     {
-        if (!Alive(unit) || !_combatSkills.TryGetValue(unit, out var loadout)) return;
-        var queue = get_battle_unit(unit).skill_queue;
-        queue.Clear();
-        get_battle_unit(unit).segment_action_index = 0;
-        var stamina = unit.Get("current_stamina").AsInt32();
-        var mana = unit.Get("current_mana").AsInt32();
-        var staminaMax = unit.Get("max_stamina").AsInt32();
-        var manaMax = get_effective_mana_capacity(unit);
-        var repeatCounts = new Dictionary<ActiveSkillData, int>();
-        var plannedLimitedSkills = new HashSet<string>();
-        var plannedStatuses = new HashSet<string>();
-        var capacity = get_action_slot_capacity(unit);
-
-        while (queue.Count < capacity)
-        {
-            var best = FindBestAiCandidate(unit, loadout, forecast, stamina, mana, repeatCounts, plannedLimitedSkills, plannedStatuses, teammate, true);
-            if (best is not null && best.Priority > 0)
-            {
-                queue.Add(new BattleQueuedSkill(best.Skill, best.Target));
-                stamina = Math.Max(0, stamina - best.EnergyCost);
-                mana = Math.Max(0, mana - best.ManaCost);
-                repeatCounts[best.Skill] = repeatCounts.GetValueOrDefault(best.Skill, 0) + 1;
-                if (IsOncePerSegmentBodySkill(best.Skill)) plannedLimitedSkills.Add(best.Skill.skill_name);
-                if (!string.IsNullOrEmpty(best.AppliedStatus) && GodotObject.IsInstanceValid(best.StatusTarget))
-                    plannedStatuses.Add(StatusForecastKey(best.StatusTarget!, best.AppliedStatus));
-                ApplyAiCandidateForecast(best, forecast, unit);
-                continue;
-            }
-
-            var recovery = FindUsefulRecovery(unit, loadout, forecast, stamina, mana, staminaMax, manaMax,
-                capacity - queue.Count, repeatCounts, plannedLimitedSkills, plannedStatuses, teammate);
-            if (recovery == BattleQueuedSkill.ActionKind.Rest)
-            {
-                queue.Add(BattleQueuedSkill.Rest());
-                stamina = Math.Min(staminaMax, stamina + 2);
-                continue;
-            }
-            if (recovery == BattleQueuedSkill.ActionKind.Breathe)
-            {
-                queue.Add(BattleQueuedSkill.Breathe());
-                mana = Math.Min(manaMax, mana + 1);
-                continue;
-            }
-            break;
-        }
+        BuildConstructedAiQueue(unit, forecast, teammate, allowSupplies);
     }
-
-    private AiCandidate? FindBestAiCandidate(
-        GodotObject unit,
-        Godot.Collections.Array<ActiveSkillData> loadout,
-        Dictionary<GodotObject, float> forecast,
-        int stamina,
-        int mana,
-        Dictionary<ActiveSkillData, int> repeatCounts,
-        HashSet<string> plannedLimitedSkills,
-        HashSet<string> plannedStatuses,
-        bool teammate,
-        bool requireAffordable)
-    {
-        AiCandidate? best = null;
-        foreach (var skill in loadout)
-        {
-            if (skill.skill_type == ActiveSkillData.SkillType.CURSE || !gongfa_combat.CanPlay(unit, skill)) continue;
-            if (IsOncePerSegmentBodySkill(skill) && plannedLimitedSkills.Contains(skill.skill_name)) continue;
-            if (!is_skill_ready(unit, skill)) continue;
-            var energyCost = AiReservedEnergyCost(unit, skill);
-            var manaCost = AiReservedManaCost(unit, skill);
-            if (requireAffordable && (energyCost > stamina || manaCost > mana)) continue;
-
-            foreach (var target in AiTargets(unit, skill))
-            {
-                var candidate = ScoreAiSkill(unit, skill, target, forecast, energyCost, manaCost,
-                    repeatCounts.GetValueOrDefault(skill), plannedStatuses, teammate);
-                if (candidate.Priority <= 0) continue;
-                if (best is null || candidate.Priority > best.Priority ||
-                    candidate.Priority == best.Priority && candidate.Score > best.Score)
-                    best = candidate;
-            }
-        }
-        return best;
-    }
-
-    private BattleQueuedSkill.ActionKind? FindUsefulRecovery(
-        GodotObject unit,
-        Godot.Collections.Array<ActiveSkillData> loadout,
-        Dictionary<GodotObject, float> forecast,
-        int stamina,
-        int mana,
-        int staminaMax,
-        int manaMax,
-        int remainingSlots,
-        Dictionary<ActiveSkillData, int> repeatCounts,
-        HashSet<string> plannedLimitedSkills,
-        HashSet<string> plannedStatuses,
-        bool teammate)
-    {
-        if (remainingSlots <= 1) return null;
-        var useful = new List<(int priority, float score, int energyGap, int manaGap)>();
-        foreach (var skill in loadout)
-        {
-            if (skill.skill_type == ActiveSkillData.SkillType.CURSE || !gongfa_combat.CanPlay(unit, skill)) continue;
-            if (IsOncePerSegmentBodySkill(skill) && plannedLimitedSkills.Contains(skill.skill_name)) continue;
-            if (!is_skill_ready(unit, skill)) continue;
-            var energyCost = AiReservedEnergyCost(unit, skill);
-            var manaCost = AiReservedManaCost(unit, skill);
-            var energyGap = Math.Max(0, energyCost - stamina);
-            var manaGap = Math.Max(0, manaCost - mana);
-            if (energyGap == 0 && manaGap == 0) continue;
-            var restCount = energyGap == 0 ? 0 : (energyGap + 1) / 2;
-            var breatheCount = manaGap;
-            if (restCount + breatheCount >= remainingSlots) continue;
-            if (staminaMax - stamina < Math.Min(energyGap, restCount * 2) || manaMax - mana < breatheCount) continue;
-            var bestTarget = AiTargets(unit, skill)
-                .Select(target => ScoreAiSkill(unit, skill, target, forecast, energyCost, manaCost,
-                    repeatCounts.GetValueOrDefault(skill), plannedStatuses, teammate))
-                .OrderByDescending(candidate => candidate.Priority)
-                .ThenByDescending(candidate => candidate.Score)
-                .FirstOrDefault();
-            if (bestTarget is null || bestTarget.Priority <= 0) continue;
-            useful.Add((bestTarget.Priority, bestTarget.Score - (restCount + breatheCount) * 100, energyGap, manaGap));
-        }
-        if (useful.Count == 0) return null;
-
-        var targetPlan = useful.OrderByDescending(item => item.priority).ThenByDescending(item => item.score).First();
-        var canRest = targetPlan.energyGap > 0 && stamina < staminaMax;
-        var canBreathe = targetPlan.manaGap > 0 && mana < manaMax;
-        if (!canRest) return canBreathe ? BattleQueuedSkill.ActionKind.Breathe : null;
-        if (!canBreathe) return BattleQueuedSkill.ActionKind.Rest;
-        var energyShare = targetPlan.energyGap / (float)Math.Max(1, staminaMax - stamina);
-        var manaShare = targetPlan.manaGap / (float)Math.Max(1, manaMax - mana);
-        return energyShare >= manaShare ? BattleQueuedSkill.ActionKind.Rest : BattleQueuedSkill.ActionKind.Breathe;
-    }
-
-    private int AiReservedEnergyCost(GodotObject unit, ActiveSkillData skill) => Math.Max(get_skill_energy_cost(unit, skill),
-        CardRules.NormalCast(skill) is { } normal ? get_skill_energy_cost(unit, normal) : 0);
-    private int AiReservedManaCost(GodotObject unit, ActiveSkillData skill) => Math.Max(get_skill_mana_cost(unit, skill),
-        CardRules.NormalCast(skill) is { } normal ? get_skill_mana_cost(unit, normal) : 0);
 
     private AiCandidate ScoreAiSkill(
         GodotObject unit,
@@ -204,7 +69,7 @@ public partial class BattleManager
             var hit = skill.aoe_range > 0 ? 1f : GodotObject.IsInstanceValid(target) ? BattleActionResolver.preview_hit_chance(unit, target!) : 1f;
             result.Damage = damage;
             var targetHealth = GodotObject.IsInstanceValid(target) ? forecast.GetValueOrDefault(target!, target!.Get("current_health").AsSingle()) : 0;
-            var canFinish = targetHealth > 0 && damage >= targetHealth && hit >= .78f;
+            var canFinish = target is not ArtifactBody && targetHealth > 0 && damage >= targetHealth && hit >= .78f;
             result.Priority = canFinish ? 4 : 2;
             result.Score = damage * hit * 10f + (canFinish ? 1800f : 0f);
             if (targetHealth > 0) result.Score += (1f - Mathf.Clamp(targetHealth / Mathf.Max(1, target!.Get("max_health").AsSingle()), 0, 1)) * 90f;
@@ -217,6 +82,16 @@ public partial class BattleManager
             var kind = effect.GetValueOrDefault("effect", "").AsString();
             switch (kind)
             {
+                case "forest_bei_pack_call":
+                {
+                    var recipients = PackWolves(unit).Count(wolf => wolf.get_status_stacks("逐猎") + repeatCount < 3);
+                    if (recipients > 0)
+                    {
+                        result.Priority = Math.Max(result.Priority, 2);
+                        result.Score += recipients * 240f;
+                    }
+                    break;
+                }
                 case "restore_health_percent":
                 {
                     var amount = Math.Max(1, Mathf.RoundToInt(maxHealth * effect.GetValueOrDefault("percent", .03f).AsSingle()));
@@ -256,13 +131,14 @@ public partial class BattleManager
             result.Score += 620;
         }
 
-        foreach (var effect in skill.status_effects)
+        foreach (var effect in skill.status_effects.Where(_ => target is not ArtifactBody))
         {
             var id = effect.GetValueOrDefault("status_id", "").AsString();
             var owner = selfTarget ? unit : target;
             if (string.IsNullOrWhiteSpace(id) || !GodotObject.IsInstanceValid(owner) || HasStatus(owner!, id) ||
                 plannedStatuses.Contains(StatusForecastKey(owner!, id))) continue;
-            var status = ResourceLoader.Load<StatusEffect>($"res://resources/battle/statuses/{id}.tres");
+            if(!AiStatusDefinitions.TryGetValue(id,out var status))
+                AiStatusDefinitions[id]=status=ResourceLoader.Load<StatusEffect>($"res://resources/battle/statuses/{id}.tres");
             result.AppliedStatus = id;
             result.StatusTarget = owner;
             if (status?.is_debuff == true && owner!.Get("faction").AsInt32() != unit.Get("faction").AsInt32())
@@ -309,8 +185,9 @@ public partial class BattleManager
     {
         skill = CardRules.NormalCast(skill) ?? skill;
         if (skill.target_type == 0) { yield return unit; yield break; }
-        var candidates = all_units.Where(Alive).Where(target =>
+        var candidates = get_target_candidates().Where(Alive).Where(target =>
         {
+            if (target is ArtifactBody artifactBody) return ArtifactAcceptsSkill(artifactBody, unit, skill);
             var sameFaction = target.Get("faction").AsInt32() == unit.Get("faction").AsInt32();
             return skill.target_type switch
             {
@@ -331,7 +208,7 @@ public partial class BattleManager
         if (skill.aoe_range > 0)
         {
             var total = 0;
-            foreach (var victim in all_units.Where(Alive).Where(other => other.Get("faction").AsInt32() != unit.Get("faction").AsInt32()))
+            foreach (var victim in get_target_candidates().Where(Alive).Where(other => other.Get("faction").AsInt32() != unit.Get("faction").AsInt32()))
                 if (forecast.GetValueOrDefault(victim, victim.Get("current_health").AsSingle()) > 0)
                     total += Mathf.RoundToInt(EnemyExpectedDamage(skill, unit, victim) * BattleActionResolver.preview_hit_chance(unit, victim));
             return total;
@@ -340,46 +217,20 @@ public partial class BattleManager
         return EnemyExpectedDamage(skill, unit, target!);
     }
 
-    private void ApplyAiCandidateForecast(AiCandidate candidate, Dictionary<GodotObject, float> forecast, GodotObject actor)
-    {
-        if (candidate.Damage > 0 && candidate.Skill.aoe_range > 0)
-        {
-            foreach (var victim in all_units.Where(Alive).Where(other => other.Get("faction").AsInt32() != actor.Get("faction").AsInt32()))
-            {
-                var health = forecast.GetValueOrDefault(victim, victim.Get("current_health").AsSingle());
-                if (health <= 0) continue;
-                var hit = BattleActionResolver.preview_hit_chance(actor, victim);
-                forecast[victim] = Math.Max(0, health - EnemyExpectedDamage(candidate.Skill, actor, victim) * hit);
-            }
-        }
-        else if (candidate.Damage > 0 && GodotObject.IsInstanceValid(candidate.Target))
-        {
-            var target = candidate.Target!;
-            var health = forecast.GetValueOrDefault(target, target.Get("current_health").AsSingle());
-            var hit = BattleActionResolver.preview_hit_chance(actor, target);
-            forecast[target] = Math.Max(0, health - candidate.Damage * hit);
-        }
-        if (candidate.Healing > 0)
-        {
-            var current = forecast.GetValueOrDefault(actor, actor.Get("current_health").AsSingle());
-            forecast[actor] = Math.Min(actor.Get("max_health").AsSingle(), current + candidate.Healing);
-        }
-    }
-
     private void ApplyQueueForecast(GodotObject unit, Dictionary<GodotObject, float> forecast)
     {
         if (!battle_units.ContainsKey(unit)) return;
         foreach (var action in get_battle_unit(unit).skill_queue)
         {
             if (action.kind != BattleQueuedSkill.ActionKind.Skill) continue;
-            var skill = CardRules.NormalCast(action.skill);
+            var skill = CardRules.NormalCast(action.execution_skill);
             if (skill is null) continue;
             var target = GodotObject.IsInstanceValid(action.target) ? action.target : DefaultTarget(skill, unit);
             var damage = EstimateAiDamage(unit, skill, target, forecast);
             if (damage <= 0) continue;
             if (skill.aoe_range > 0)
             {
-                foreach (var victim in all_units.Where(Alive).Where(other => other.Get("faction").AsInt32() != unit.Get("faction").AsInt32()))
+                foreach (var victim in get_target_candidates().Where(Alive).Where(other => other.Get("faction").AsInt32() != unit.Get("faction").AsInt32()))
                 {
                     var current = forecast.GetValueOrDefault(victim, victim.Get("current_health").AsSingle());
                     if (current > 0) forecast[victim] = Math.Max(0, current - EnemyExpectedDamage(skill, unit, victim) * BattleActionResolver.preview_hit_chance(unit, victim));
@@ -393,7 +244,6 @@ public partial class BattleManager
         }
     }
 
-    private static bool IsOncePerSegmentBodySkill(ActiveSkillData skill) => skill.skill_name is "抱一" or "伏火" or "归藏";
     private static string StatusForecastKey(GodotObject unit, string id) => $"{unit.GetInstanceId()}:{id}";
     private static string GetAiProfile(GodotObject unit)
     {

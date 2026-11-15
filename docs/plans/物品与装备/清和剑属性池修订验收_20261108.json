@@ -1,0 +1,1086 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "rules_version": "sword-material-profile-trial-2-shape-pools",
+  "rule_status": "complete_shape_pool_candidate_not_live_not_balance_approval",
+  "checks_passed": 137,
+  "checks": [
+    {
+      "group": "scope",
+      "name": "v2 shape rules required",
+      "status": "passed"
+    },
+    {
+      "group": "shape_pools",
+      "name": "four complete profile ids and hard pools",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "unchanged v1 shared parameters: body_split",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "unchanged v1 shared parameters: profile_demands",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "unchanged v1 shared parameters: stability_value",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "unchanged v1 shared parameters: attack_value",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "unchanged v1 shared parameters: stability_bias",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "unchanged v1 shared parameters: attack_bias",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "unchanged v1 shared parameters: reference_prices",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "unchanged v1 shared parameters: coefficient_decimal_places",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "unchanged v1 shared parameters: battle_shape",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "unchanged v1 shared parameters: spirit",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: original_metrics",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: body_split_by_utility",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: body_totals",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: budgets_after_bonds",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: requests",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: allocations",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: pruned_candidates",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: used_after_bonds",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: unused_after_bonds",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: normal_effects",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: binding_family",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: profile_values",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: source_trace",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: naming",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: stability_parameters",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: default_attack_parameters",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: actor_examples",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: sharpness",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: inventory",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: battle_footprint",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: handheld_stars",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: spirit_occupation",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: exclusive_control_skill_allocation",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: default_attack_rules",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: bonds",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: crafting_hours",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "archived numeric/effect result unchanged: crafting_energy",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "v1 marked withdrawn without changing archived values",
+      "status": "passed"
+    },
+    {
+      "group": "v1_regression",
+      "name": "native allocator replay within tolerance",
+      "status": "passed"
+    },
+    {
+      "group": "shape_pools",
+      "name": "threshold boundary and name independence: sword.slender_thin.v1",
+      "status": "passed"
+    },
+    {
+      "group": "shape_pools",
+      "name": "candidate exclusion before normalization: sword.slender_thin.v1",
+      "status": "passed"
+    },
+    {
+      "group": "source_allocation",
+      "name": "ordinary per-source normalization: sword.slender_thin.v1",
+      "status": "passed"
+    },
+    {
+      "group": "shape_pools",
+      "name": "positive outputs remain in hard pool: sword.slender_thin.v1",
+      "status": "passed"
+    },
+    {
+      "group": "budgets",
+      "name": "source/common budgets conserved: sword.slender_thin.v1",
+      "status": "passed"
+    },
+    {
+      "group": "budgets",
+      "name": "profile priority stays 0.6: sword.slender_thin.v1",
+      "status": "passed"
+    },
+    {
+      "group": "shape_pools",
+      "name": "threshold boundary and name independence: sword.slender_thick.v1",
+      "status": "passed"
+    },
+    {
+      "group": "shape_pools",
+      "name": "candidate exclusion before normalization: sword.slender_thick.v1",
+      "status": "passed"
+    },
+    {
+      "group": "source_allocation",
+      "name": "ordinary per-source normalization: sword.slender_thick.v1",
+      "status": "passed"
+    },
+    {
+      "group": "shape_pools",
+      "name": "positive outputs remain in hard pool: sword.slender_thick.v1",
+      "status": "passed"
+    },
+    {
+      "group": "budgets",
+      "name": "source/common budgets conserved: sword.slender_thick.v1",
+      "status": "passed"
+    },
+    {
+      "group": "budgets",
+      "name": "profile priority stays 0.6: sword.slender_thick.v1",
+      "status": "passed"
+    },
+    {
+      "group": "shape_pools",
+      "name": "threshold boundary and name independence: sword.broad_thin.v1",
+      "status": "passed"
+    },
+    {
+      "group": "shape_pools",
+      "name": "candidate exclusion before normalization: sword.broad_thin.v1",
+      "status": "passed"
+    },
+    {
+      "group": "source_allocation",
+      "name": "ordinary per-source normalization: sword.broad_thin.v1",
+      "status": "passed"
+    },
+    {
+      "group": "shape_pools",
+      "name": "positive outputs remain in hard pool: sword.broad_thin.v1",
+      "status": "passed"
+    },
+    {
+      "group": "budgets",
+      "name": "source/common budgets conserved: sword.broad_thin.v1",
+      "status": "passed"
+    },
+    {
+      "group": "budgets",
+      "name": "profile priority stays 0.6: sword.broad_thin.v1",
+      "status": "passed"
+    },
+    {
+      "group": "shape_pools",
+      "name": "threshold boundary and name independence: sword.broad_thick.v1",
+      "status": "passed"
+    },
+    {
+      "group": "shape_pools",
+      "name": "candidate exclusion before normalization: sword.broad_thick.v1",
+      "status": "passed"
+    },
+    {
+      "group": "source_allocation",
+      "name": "ordinary per-source normalization: sword.broad_thick.v1",
+      "status": "passed"
+    },
+    {
+      "group": "shape_pools",
+      "name": "positive outputs remain in hard pool: sword.broad_thick.v1",
+      "status": "passed"
+    },
+    {
+      "group": "budgets",
+      "name": "source/common budgets conserved: sword.broad_thick.v1",
+      "status": "passed"
+    },
+    {
+      "group": "budgets",
+      "name": "profile priority stays 0.6: sword.broad_thick.v1",
+      "status": "passed"
+    },
+    {
+      "group": "shape_pools",
+      "name": "missing pool rejects rather than granting all six",
+      "status": "passed"
+    },
+    {
+      "group": "shape_pools",
+      "name": "empty pool never falls back to all six",
+      "status": "passed"
+    },
+    {
+      "group": "scope",
+      "name": "global held stats do not scale with stars",
+      "status": "passed"
+    },
+    {
+      "group": "source_allocation",
+      "name": "multi-source stat floors once after merging, not per source",
+      "status": "passed"
+    },
+    {
+      "group": "qinghe_result",
+      "name": "Qinghe full profile id",
+      "status": "passed"
+    },
+    {
+      "group": "qinghe_result",
+      "name": "Qinghe actual six-stat result",
+      "status": "passed"
+    },
+    {
+      "group": "qinghe_result",
+      "name": "base DTO uses fixed points and one full profile id",
+      "status": "passed"
+    },
+    {
+      "group": "scope",
+      "name": "base stats apply to owner globally while held or controlled and enabled",
+      "status": "passed"
+    },
+    {
+      "group": "scope",
+      "name": "base contract includes both eligible modes and still requires activation",
+      "status": "passed"
+    },
+    {
+      "group": "scope",
+      "name": "one instance and stat contributes once rather than once per mode or body cell",
+      "status": "passed"
+    },
+    {
+      "group": "scope",
+      "name": "equipment mode expansion does not expand the transformation held-only policy",
+      "status": "passed"
+    },
+    {
+      "group": "skill_dispatch",
+      "name": "ordinary attack is an entry in the same unified skill list",
+      "status": "passed"
+    },
+    {
+      "group": "skill_dispatch",
+      "name": "resource shortage and invalid conditions skip without selecting substitutes",
+      "status": "passed"
+    },
+    {
+      "group": "skill_dispatch",
+      "name": "unified per-skill preview: energy_shortage",
+      "status": "passed"
+    },
+    {
+      "group": "skill_dispatch",
+      "name": "unified per-skill preview: mana_shortage",
+      "status": "passed"
+    },
+    {
+      "group": "skill_dispatch",
+      "name": "unified per-skill preview: condition_invalid",
+      "status": "passed"
+    },
+    {
+      "group": "skill_dispatch",
+      "name": "unified per-skill preview: payable",
+      "status": "passed"
+    },
+    {
+      "group": "skill_dispatch",
+      "name": "multi-skill scanning order remains undecided",
+      "status": "passed"
+    },
+    {
+      "group": "scope",
+      "name": "no keyword/trigger/direct/summon raw effects",
+      "status": "passed"
+    },
+    {
+      "group": "source_allocation",
+      "name": "source receipts conserve base/critical",
+      "status": "passed"
+    },
+    {
+      "group": "source_allocation",
+      "name": "source receipts conserve base/precision",
+      "status": "passed"
+    },
+    {
+      "group": "source_allocation",
+      "name": "source receipts conserve binding/defuse_flat",
+      "status": "passed"
+    },
+    {
+      "group": "budgets",
+      "name": "Qinghe budget conserved: root",
+      "status": "passed"
+    },
+    {
+      "group": "budgets",
+      "name": "Qinghe budget conserved: source/固",
+      "status": "passed"
+    },
+    {
+      "group": "budgets",
+      "name": "Qinghe budget conserved: source/生",
+      "status": "passed"
+    },
+    {
+      "group": "budgets",
+      "name": "Qinghe budget conserved: source/破",
+      "status": "passed"
+    },
+    {
+      "group": "budgets",
+      "name": "Qinghe budget conserved: source/聚",
+      "status": "passed"
+    },
+    {
+      "group": "budgets",
+      "name": "Qinghe budget conserved: source/藏",
+      "status": "passed"
+    },
+    {
+      "group": "budgets",
+      "name": "Qinghe budget conserved: source/通",
+      "status": "passed"
+    },
+    {
+      "group": "budgets",
+      "name": "Qinghe budget conserved: structure",
+      "status": "passed"
+    },
+    {
+      "group": "budgets",
+      "name": "Qinghe budget conserved: 聚",
+      "status": "passed"
+    },
+    {
+      "group": "budgets",
+      "name": "Qinghe budget conserved: 藏",
+      "status": "passed"
+    },
+    {
+      "group": "budgets",
+      "name": "Qinghe budget conserved: 通",
+      "status": "passed"
+    },
+    {
+      "group": "budgets",
+      "name": "Qinghe budget conserved: body/stability",
+      "status": "passed"
+    },
+    {
+      "group": "budgets",
+      "name": "Qinghe budget conserved: body/attack",
+      "status": "passed"
+    },
+    {
+      "group": "budgets",
+      "name": "bond prepayments and priority unchanged",
+      "status": "passed"
+    },
+    {
+      "group": "transformation",
+      "name": "registered gejian template and version",
+      "status": "passed"
+    },
+    {
+      "group": "transformation",
+      "name": "package amount derived from paid source rather than fixed literal",
+      "status": "passed"
+    },
+    {
+      "group": "transformation",
+      "name": "package source and generation receipts match actual output",
+      "status": "passed"
+    },
+    {
+      "group": "transformation",
+      "name": "chemical source held-only and one placed target",
+      "status": "passed"
+    },
+    {
+      "group": "coefficient_groups",
+      "name": "Qinghe four stable coefficients",
+      "status": "passed"
+    },
+    {
+      "group": "coefficient_groups",
+      "name": "Qinghe three attack coefficients and physical type",
+      "status": "passed"
+    },
+    {
+      "group": "coefficient_groups",
+      "name": "four-decimal downward quantization: stability",
+      "status": "passed"
+    },
+    {
+      "group": "coefficient_groups",
+      "name": "four-decimal downward quantization: attack",
+      "status": "passed"
+    },
+    {
+      "group": "coefficient_groups",
+      "name": "10 soul/10 sword/occupation 2 evaluates to stability 28, raw physical 9",
+      "status": "passed"
+    },
+    {
+      "group": "coefficient_groups",
+      "name": "higher soul/sword never lowers the two outputs",
+      "status": "passed"
+    },
+    {
+      "group": "coefficient_groups",
+      "name": "profiles are paid at priority 0.6, not normalized to one",
+      "status": "passed"
+    },
+    {
+      "group": "naming",
+      "name": "positive actual effects yield two short meaningful prefixes",
+      "status": "passed"
+    },
+    {
+      "group": "naming",
+      "name": "Qinghe explicit existing name retained",
+      "status": "passed"
+    },
+    {
+      "group": "naming",
+      "name": "zero effects cannot generate prefixes",
+      "status": "passed"
+    },
+    {
+      "group": "naming",
+      "name": "explicit rename changes display only, no reforging",
+      "status": "passed"
+    },
+    {
+      "group": "naming",
+      "name": "explicit empty custom name uses actual auto name",
+      "status": "passed"
+    },
+    {
+      "group": "scope",
+      "name": "candidate neither modifies Godot runtime nor player saves",
+      "status": "passed"
+    },
+    {
+      "group": "range_revision",
+      "name": "historical v1 retains its original two-cell coverage",
+      "status": "passed"
+    },
+    {
+      "group": "range_revision",
+      "name": "three-cell tip range is user-confirmed",
+      "status": "passed"
+    },
+    {
+      "group": "range_revision",
+      "name": "canonical tip anchor and offsets are explicit",
+      "status": "passed"
+    },
+    {
+      "group": "range_revision",
+      "name": "canonical coverage occupies coordinates 2/3/4, not the sword body",
+      "status": "passed"
+    },
+    {
+      "group": "range_revision",
+      "name": "Qinghe body remains two cells independent of the three range markers",
+      "status": "passed"
+    },
+    {
+      "group": "range_revision",
+      "name": "inventory remains 2x6 rather than becoming either combat geometry",
+      "status": "passed"
+    },
+    {
+      "group": "range_revision",
+      "name": "tip and complete ray follow sword rotation: 0",
+      "status": "passed"
+    },
+    {
+      "group": "range_revision",
+      "name": "range markers never count as body cells: 0",
+      "status": "passed"
+    },
+    {
+      "group": "range_revision",
+      "name": "tip and complete ray follow sword rotation: 1",
+      "status": "passed"
+    },
+    {
+      "group": "range_revision",
+      "name": "range markers never count as body cells: 1",
+      "status": "passed"
+    },
+    {
+      "group": "range_revision",
+      "name": "tip and complete ray follow sword rotation: 2",
+      "status": "passed"
+    },
+    {
+      "group": "range_revision",
+      "name": "range markers never count as body cells: 2",
+      "status": "passed"
+    },
+    {
+      "group": "range_revision",
+      "name": "tip and complete ray follow sword rotation: 3",
+      "status": "passed"
+    },
+    {
+      "group": "range_revision",
+      "name": "range markers never count as body cells: 3",
+      "status": "passed"
+    },
+    {
+      "group": "range_revision",
+      "name": "full turn restores canonical geometry",
+      "status": "passed"
+    },
+    {
+      "group": "range_revision",
+      "name": "negative turn follows the same orientation convention",
+      "status": "passed"
+    },
+    {
+      "group": "range_revision",
+      "name": "coverage is not inferred from the battle footprint formula",
+      "status": "passed"
+    },
+    {
+      "group": "range_revision",
+      "name": "coverage remains character-sword-only with no occupancy or attack reach changes",
+      "status": "passed"
+    },
+    {
+      "group": "range_revision",
+      "name": "range revision leaves all numerical sources/effects/budgets/coefficients unchanged",
+      "status": "passed"
+    }
+  ],
+  "v1_regression": {
+    "archived_fields_equal": [
+      "original_metrics",
+      "body_split_by_utility",
+      "body_totals",
+      "budgets_after_bonds",
+      "requests",
+      "allocations",
+      "pruned_candidates",
+      "used_after_bonds",
+      "unused_after_bonds",
+      "normal_effects",
+      "binding_family",
+      "profile_values",
+      "source_trace",
+      "naming",
+      "stability_parameters",
+      "default_attack_parameters",
+      "actor_examples",
+      "sharpness",
+      "inventory",
+      "battle_footprint",
+      "handheld_stars",
+      "spirit_occupation",
+      "exclusive_control_skill_allocation",
+      "default_attack_rules",
+      "bonds",
+      "crafting_hours",
+      "crafting_energy"
+    ],
+    "archive_values_modified": false,
+    "native_reproduction_max_allocation_error": 4.12560625662195e-07
+  },
+  "shape_pools": [
+    {
+      "profile_id": "sword.slender_thin.v1",
+      "lambda": 12,
+      "tau": 0.159,
+      "allowed_stat_ids": [
+        "critical",
+        "precision",
+        "dodge"
+      ],
+      "emitted_stat_ids": [
+        "critical",
+        "precision"
+      ],
+      "maximum_budget_excess": 3.552713678800501e-15
+    },
+    {
+      "profile_id": "sword.slender_thick.v1",
+      "lambda": 12,
+      "tau": 0.16,
+      "allowed_stat_ids": [
+        "critical",
+        "precision",
+        "crit_resist"
+      ],
+      "emitted_stat_ids": [
+        "crit_resist",
+        "critical",
+        "precision"
+      ],
+      "maximum_budget_excess": 0
+    },
+    {
+      "profile_id": "sword.broad_thin.v1",
+      "lambda": 11.999,
+      "tau": 0.159,
+      "allowed_stat_ids": [
+        "precision",
+        "dodge",
+        "physical_defense"
+      ],
+      "emitted_stat_ids": [
+        "physical_defense",
+        "precision"
+      ],
+      "maximum_budget_excess": 0
+    },
+    {
+      "profile_id": "sword.broad_thick.v1",
+      "lambda": 11.999,
+      "tau": 0.16,
+      "allowed_stat_ids": [
+        "max_health",
+        "physical_defense",
+        "crit_resist"
+      ],
+      "emitted_stat_ids": [
+        "physical_defense"
+      ],
+      "maximum_budget_excess": 7.105427357601002e-15
+    }
+  ],
+  "range_revision": {
+    "status": "qinghe_tip_forward_three_cells_confirmed",
+    "canonical": {
+      "definition_version": 1,
+      "definition_key": "qinghe.blade_tip_sharpness.v1",
+      "status": "confirmed_by_user_for_qinghe",
+      "origin": "blade_tip",
+      "facing_quarter_turns": 0,
+      "source_anchor": [
+        1,
+        0
+      ],
+      "offsets": [
+        [
+          1,
+          0
+        ],
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ]
+      ],
+      "range_cells": [
+        [
+          2,
+          0
+        ],
+        [
+          3,
+          0
+        ],
+        [
+          4,
+          0
+        ]
+      ],
+      "cells": 3,
+      "rotation": "clockwise_quarter_turns_with_body_and_tip",
+      "target": "character_sword_techniques_only",
+      "occupies_board_cells": false,
+      "changes_attack_range": false,
+      "derived_from_battle_or_inventory_footprint": false
+    },
+    "four_rotations": [
+      {
+        "quarter_turns": 0,
+        "body_cells": [
+          [
+            0,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "tip_anchor": [
+          1,
+          0
+        ],
+        "range_cells": [
+          [
+            2,
+            0
+          ],
+          [
+            3,
+            0
+          ],
+          [
+            4,
+            0
+          ]
+        ]
+      },
+      {
+        "quarter_turns": 1,
+        "body_cells": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            1
+          ]
+        ],
+        "tip_anchor": [
+          0,
+          1
+        ],
+        "range_cells": [
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            4
+          ]
+        ]
+      },
+      {
+        "quarter_turns": 2,
+        "body_cells": [
+          [
+            0,
+            0
+          ],
+          [
+            -1,
+            0
+          ]
+        ],
+        "tip_anchor": [
+          -1,
+          0
+        ],
+        "range_cells": [
+          [
+            -2,
+            0
+          ],
+          [
+            -3,
+            0
+          ],
+          [
+            -4,
+            0
+          ]
+        ]
+      },
+      {
+        "quarter_turns": 3,
+        "body_cells": [
+          [
+            0,
+            0
+          ],
+          [
+            0,
+            -1
+          ]
+        ],
+        "tip_anchor": [
+          0,
+          -1
+        ],
+        "range_cells": [
+          [
+            0,
+            -2
+          ],
+          [
+            0,
+            -3
+          ],
+          [
+            0,
+            -4
+          ]
+        ]
+      }
+    ],
+    "v1_historical_two_cells_preserved": true,
+    "numerical_core_sha256": "b797add51634229a914e4eb0c4b670339cbf1ee1d4d8b3e2e63c79023939bf84",
+    "previous_numerical_core_sha256": "b797add51634229a914e4eb0c4b670339cbf1ee1d4d8b3e2e63c79023939bf84",
+    "numerical_core_unchanged": true,
+    "transformation_bundle_sha256": "c5a8b59ba22e2c3841372d1e76bf9e0510cd9b6881565c1af109d6358c37fdc9"
+  },
+  "equipment_effect_usage_revision": {
+    "status": "held_or_controlled_enabled_confirmed_by_user",
+    "activation_modes": [
+      "held",
+      "controlled"
+    ],
+    "requires_enabled": true,
+    "recipient": "owner_character_global",
+    "deduplication": "source_instance_id+stat_id",
+    "controlled_action_read": "owner_final_stats_once_no_duplicate_instance_bonus",
+    "transformation_policy_unchanged": "held_active_only",
+    "numeric_core_excludes_usage_contract_fields": true,
+    "actual_runtime_attribute_ledger_implemented": false
+  },
+  "skill_dispatch_revision": {
+    "status": "confirmed_by_user_unified_skill_list",
+    "ordinary_attack_is_a_skill": true,
+    "resource_insufficient": "skip_this_skill_without_replacement",
+    "other_conditions_invalid": "skip_this_skill_without_replacement",
+    "automatic_substitution": false,
+    "automatic_extra_ordinary_attack": false,
+    "multi_skill_scan_order_status": "not_decided",
+    "withdrawn_previous_rule": "resource_shortage_automatic_default_attack_fallback"
+  },
+  "qinghe_result": {
+    "profile_id": "sword.slender_thin.v1",
+    "base_stats": {
+      "critical": 11,
+      "precision": 6
+    },
+    "transformation_amount": 3,
+    "stability_parameters": {
+      "base": 11.3916,
+      "soul_coefficient": 0.8741,
+      "sword_proficiency_coefficient": 0.2719,
+      "this_item_spirit_occupation_coefficient": 2.6992
+    },
+    "default_attack_parameters": {
+      "base": 3.8905,
+      "soul_coefficient": 0.2045,
+      "sword_proficiency_coefficient": 0.3282,
+      "damage_type": "physical"
+    },
+    "actor_10_10_occupation_2": {
+      "soul": 10,
+      "sword_proficiency": 10,
+      "occupation": 2,
+      "stability_cap": 28,
+      "raw_physical_damage": 9
+    },
+    "naming": {
+      "rule_version": "item-name-direction-trial-3-shape-pools",
+      "auto_name": "洞隙·明察·薄脊剑",
+      "prefix_groups": [
+        "洞隙",
+        "明察"
+      ],
+      "custom_name": "清和剑",
+      "custom_name_origin": "explicit_offer_entity_name",
+      "display_name": "清和剑",
+      "name_does_not_change_stats": true
+    },
+    "budgets_after_bonds": {
+      "root": 23.7044233424503,
+      "source/固": 21.109758326742,
+      "source/生": 0.642756923076923,
+      "source/破": 11.2489221409669,
+      "source/聚": 0.65886493213392,
+      "source/藏": 0.65886493213392,
+      "source/通": 2.212588009057,
+      "structure": 109.389786719736,
+      "聚": 5.27091945707136,
+      "藏": 5.27091945707136,
+      "通": 13.839504072456,
+      "body/stability": 19.50058422265406,
+      "body/attack": 7.843665447718377
+    },
+    "used_after_bonds": {
+      "source/破": 5.797822039959129,
+      "root": 23.704423342450305,
+      "structure": 23.704423342450305,
+      "source/生": 0.0,
+      "source/通": 2.212588009057,
+      "source/固": 7.497278770855065,
+      "通": 3.4437210220571837,
+      "body/stability": 4.098367261289554,
+      "藏": 0.40983672612895544,
+      "body/attack": 4.098367261289557
+    },
+    "unused_after_bonds": {
+      "root": 0,
+      "source/固": 13.612479555886935,
+      "source/生": 0.642756923076923,
+      "source/破": 5.451100101007771,
+      "source/聚": 0.65886493213392,
+      "source/藏": 0.65886493213392,
+      "source/通": 0,
+      "structure": 85.68536337728568,
+      "聚": 5.27091945707136,
+      "藏": 4.861082730942404,
+      "通": 10.395783050398816,
+      "body/stability": 15.402216961364505,
+      "body/attack": 3.74529818642882
+    }
+  },
+  "runtime_modified": false,
+  "player_save_modified": false,
+  "protected_input_and_v1_archive_sha256": {
+    "docs\\plans\\物品与装备\\清和剑真实炼器输入_20261108.json": "a67bf26420590ba57d380073b63be527860d595bf5aea0cc9bc3a50be0ae8a19",
+    "docs\\plans\\物品与装备\\剑器材料换算候选参数_20261108.json": "612b7deaf18aedb15d654600d3012316101d24ed9f4050087eaff228df7304c4",
+    "docs\\plans\\物品与装备\\清和剑新版材料实算结果_20261108.json": "66c8b1110ad5d2681061cf8039591d6fc516acb9ab782749662710009eefcb24"
+  },
+  "input_and_v1_archive_hashes_unchanged": true,
+  "input_sha256": "a67bf26420590ba57d380073b63be527860d595bf5aea0cc9bc3a50be0ae8a19",
+  "parameters_sha256": "3667d42b3a4f21d80158ef27b8b1d2200e245b36a141547785b560a9f94120c2",
+  "calculator_sha256": "2b6b85c8433dfe1987a07cde13f83e73024e7ff488d61b151b53c9d030f37494",
+  "result_sha256": "80cce4ba00648a29f90028bba3f48bcf5a95b5403c94e7c80bbe51b7029b324a",
+  "result_file": "docs/plans/物品与装备/清和剑属性池修订实算结果_20261108.json"
+}

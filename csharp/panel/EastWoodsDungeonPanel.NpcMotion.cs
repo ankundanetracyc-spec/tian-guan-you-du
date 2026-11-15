@@ -39,7 +39,7 @@ public partial class EastWoodsDungeonPanel
 
     private void queue_npc_step(WorldNpcData npc, string from, string to)
     {
-        if (_isTraveling || !IsVisibleInTree() || EastWoodsDungeonRules.get_node(from) is null || !EastWoodsDungeonRules.get_neighbors(from).Contains(to)) return;
+        if (_dynamicMode || _isTraveling || !IsVisibleInTree() || EastWoodsDungeonRules.get_node(from) is null || !EastWoodsDungeonRules.get_neighbors(from).Contains(to)) return;
         if (!is_node_visible(from) && !is_node_visible(to)) return;
         if (!_npcMotions.TryGetValue(npc.npc_id, out var motion))
         {

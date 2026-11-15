@@ -1,0 +1,1407 @@
+{
+  "schema": 1,
+  "date": "2026-11-09",
+  "note": "历史原件状态；路径重新出现时先核对来源并更新本记录。",
+  "records": [
+    {
+      "id": "ref-bb52eb94c8b5",
+      "original_target": "csharp/panel/StoragePanel.RingModal.cs",
+      "condition": "missing",
+      "status": "旧实现已退役",
+      "explanation": "旧储物戒指弹窗实现已退役；现行储物袋弹窗见 StoragePanel.BagModal.cs。",
+      "references": [
+        {
+          "source": "docs/美术规范/全界面纸墨木石风格盘点_20261108/README.md",
+          "original_text": "[StoragePanel.RingModal.cs L8](../../../csharp/panel/StoragePanel.RingModal.cs)",
+          "line": 43
+        },
+        {
+          "source": "docs/美术规范/行囊原面积200格扩容_20261107/README.md",
+          "original_text": "[弹窗下方行囊](../../../csharp/panel/StoragePanel.RingModal.cs)",
+          "line": 13
+        }
+      ]
+    },
+    {
+      "id": "ref-797922c6c046",
+      "original_target": "docs/美术规范/俯视衣服骨骼化_20261104/clothing_14s.gif",
+      "condition": "missing",
+      "status": "原GIF缺失，已重编",
+      "explanation": "原GIF缺失；已用该次保留的截图序列按原采样时间重编，重编文件不是原GIF。",
+      "references": [
+        {
+          "source": "docs/美术规范/俯视衣服骨骼化_20261104/README.md",
+          "original_text": "![14秒七套男修衣装与骨骼动态](clothing_14s.gif)",
+          "line": 11
+        }
+      ]
+    },
+    {
+      "id": "ref-479fc689f831",
+      "original_target": "docs/美术规范/俯视衣服骨骼化_20261104/combat_12s.gif",
+      "condition": "missing",
+      "status": "原GIF缺失，已重编",
+      "explanation": "原GIF缺失；已用该次保留的截图序列按原采样时间重编，重编文件不是原GIF。",
+      "references": [
+        {
+          "source": "docs/美术规范/俯视衣服骨骼化_20261104/README.md",
+          "original_text": "![12秒四招与凶狼实机](combat_12s.gif)",
+          "line": 17
+        }
+      ]
+    },
+    {
+      "id": "ref-55475b37975f",
+      "original_target": "docs/美术规范/斗法移动上身张力_20261104/参考_用户52秒大图.png",
+      "condition": "missing",
+      "status": "参考图缺失，旧方案已否定",
+      "explanation": "该用户参考截图未找到；关联的旧动作方案已被用户否定，现行方案见来源页顶部。",
+      "references": [
+        {
+          "source": "docs/美术规范/斗法移动上身张力_20261104/README.md",
+          "original_text": "[用户52秒截图](参考_用户52秒大图.png)",
+          "line": 5
+        }
+      ]
+    },
+    {
+      "id": "ref-db2627a72c6d",
+      "original_target": "docs/美术规范/鬼谷原作网格与素材重构_20261104/README.md",
+      "condition": "missing",
+      "status": "原入口缺失，有相关说明",
+      "explanation": "原README缺失；同目录的《原作重建说明》仍可读，但不能冒称缺失的原入口或完整安装记录。",
+      "references": [
+        {
+          "source": "docs/plans/界面与美术/参考归墟行单一移动步态_20261104.md",
+          "original_text": "[鬼谷原作网格与素材重构](../../美术规范/鬼谷原作网格与素材重构_20261104/README.md)",
+          "line": 47
+        }
+      ]
+    },
+    {
+      "id": "ref-4cb26dc88bd8",
+      "original_target": "docs/美术规范/鬼谷原作网格与素材重构_20261104/本轮实装",
+      "condition": "missing",
+      "status": "历史证据目录缺失",
+      "explanation": "本轮实装目录缺失；同专题注册证据图仍在，不能替代完整安装及验收材料。",
+      "references": [
+        {
+          "source": "docs/美术规范/局内人物高清水墨装配标准_20261104.md",
+          "original_text": "[本轮实装目录](鬼谷原作网格与素材重构_20261104/本轮实装/)",
+          "line": 78
+        }
+      ]
+    },
+    {
+      "id": "ref-925ddcfb6440",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v1/female",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`female/`](../../mods/appearance/approved_portrait_split_20261002_v1/female/)",
+          "line": 37
+        }
+      ]
+    },
+    {
+      "id": "ref-b4136376455b",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v1/generation_manifest.json",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`generation_manifest.json`](../../mods/appearance/approved_portrait_split_20261002_v1/generation_manifest.json)",
+          "line": 38
+        }
+      ]
+    },
+    {
+      "id": "ref-304d3207d7f5",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v1/index.html",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`index.html`](../../mods/appearance/approved_portrait_split_20261002_v1/index.html)",
+          "line": 37
+        }
+      ]
+    },
+    {
+      "id": "ref-801f26d6f045",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v1/male",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`male/`](../../mods/appearance/approved_portrait_split_20261002_v1/male/)",
+          "line": 37
+        }
+      ]
+    },
+    {
+      "id": "ref-6519d0ce5601",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v1/portrait_manifest.json",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`portrait_manifest.json`](../../mods/appearance/approved_portrait_split_20261002_v1/portrait_manifest.json)",
+          "line": 38
+        }
+      ]
+    },
+    {
+      "id": "ref-3734439fc790",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v1/preview/hair_layers.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[前后发检查](../../mods/appearance/approved_portrait_split_20261002_v1/preview/hair_layers.png)",
+          "line": 37
+        }
+      ]
+    },
+    {
+      "id": "ref-0dc3e22ce4b6",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v1/preview/head_comparison.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[确认头脸与拆件](../../mods/appearance/approved_portrait_split_20261002_v1/preview/head_comparison.png)",
+          "line": 37
+        }
+      ]
+    },
+    {
+      "id": "ref-212c707b79b1",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v1/preview/portraits_dark.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[完整深底](../../mods/appearance/approved_portrait_split_20261002_v1/preview/portraits_dark.png)",
+          "line": 37
+        }
+      ]
+    },
+    {
+      "id": "ref-680ab10a3187",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v1/preview/portraits_light.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[完整浅底](../../mods/appearance/approved_portrait_split_20261002_v1/preview/portraits_light.png)",
+          "line": 37
+        }
+      ]
+    },
+    {
+      "id": "ref-a76170229946",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v1/preview/sleeve_comparison.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[袖子前后](../../mods/appearance/approved_portrait_split_20261002_v1/preview/sleeve_comparison.png)",
+          "line": 37
+        }
+      ]
+    },
+    {
+      "id": "ref-d0f761befbe1",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v1/qa_report.json",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`qa_report.json`](../../mods/appearance/approved_portrait_split_20261002_v1/qa_report.json)",
+          "line": 38
+        }
+      ]
+    },
+    {
+      "id": "ref-deae60d66a71",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v1/reference",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`reference/`](../../mods/appearance/approved_portrait_split_20261002_v1/reference/)",
+          "line": 34
+        }
+      ]
+    },
+    {
+      "id": "ref-a9be76fed3bf",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v2",
+      "condition": "empty_directory",
+      "status": "历史方案已替代，目录为空",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；此目录当前为空，原附件无法读取。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`approved_portrait_split_20261002_v2/`](../../mods/appearance/approved_portrait_split_20261002_v2)",
+          "line": 24
+        },
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[`approved_portrait_split_20261002_v2/`](../../mods/appearance/approved_portrait_split_20261002_v2)",
+          "line": 5
+        }
+      ]
+    },
+    {
+      "id": "ref-b36439995756",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v2/generation_manifest.json",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[提示词与选用来源](../../mods/appearance/approved_portrait_split_20261002_v2/generation_manifest.json)",
+          "line": 29
+        }
+      ]
+    },
+    {
+      "id": "ref-3d1eb1e3094e",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v2/index.html",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[可切换预览](../../mods/appearance/approved_portrait_split_20261002_v2/index.html)",
+          "line": 21
+        },
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[可切换预览](../../mods/appearance/approved_portrait_split_20261002_v2/index.html)",
+          "line": 29
+        },
+        {
+          "source": "docs/美术规范/立绘拼接锚点与换款模板.md",
+          "original_text": "[可切换预览](../../mods/appearance/approved_portrait_split_20261002_v2/index.html)",
+          "line": 89
+        },
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[可切换预览](../../mods/appearance/approved_portrait_split_20261002_v2/index.html)",
+          "line": 5
+        }
+      ]
+    },
+    {
+      "id": "ref-4ecbb6f87c88",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v2/portrait_manifest.json",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[素材清单](../../mods/appearance/approved_portrait_split_20261002_v2/portrait_manifest.json)",
+          "line": 29
+        }
+      ]
+    },
+    {
+      "id": "ref-178a531f5f8b",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v2/preview/collar_comparison.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[领口对照](../../mods/appearance/approved_portrait_split_20261002_v2/preview/collar_comparison.png)",
+          "line": 21
+        },
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[领口](../../mods/appearance/approved_portrait_split_20261002_v2/preview/collar_comparison.png)",
+          "line": 27
+        },
+        {
+          "source": "docs/美术规范/立绘拼接锚点与换款模板.md",
+          "original_text": "[两套领口重绘对照](../../mods/appearance/approved_portrait_split_20261002_v2/preview/collar_comparison.png)",
+          "line": 89
+        },
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[领口](../../mods/appearance/approved_portrait_split_20261002_v2/preview/collar_comparison.png)",
+          "line": 5
+        }
+      ]
+    },
+    {
+      "id": "ref-ce8ce55eb69f",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v2/preview/face_seam_review.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[实际拼合放大对照](../../mods/appearance/approved_portrait_split_20261002_v2/preview/face_seam_review.png)",
+          "line": 27
+        },
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[面部接缝放大](../../mods/appearance/approved_portrait_split_20261002_v2/preview/face_seam_review.png)",
+          "line": 5
+        }
+      ]
+    },
+    {
+      "id": "ref-ac7e0a16c13e",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v2/preview/fixed_anchor_review.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[固定模板](../../mods/appearance/approved_portrait_split_20261002_v2/preview/fixed_anchor_review.png)",
+          "line": 21
+        },
+        {
+          "source": "docs/美术规范/立绘拼接锚点与换款模板.md",
+          "original_text": "[拼接模板预览](../../mods/appearance/approved_portrait_split_20261002_v2/preview/fixed_anchor_review.png)",
+          "line": 89
+        }
+      ]
+    },
+    {
+      "id": "ref-4f3a324de104",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v2/preview/hair_layers.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[前后发](../../mods/appearance/approved_portrait_split_20261002_v2/preview/hair_layers.png)",
+          "line": 5
+        }
+      ]
+    },
+    {
+      "id": "ref-b1875d179db9",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v2/preview/male_clothing_authority_review.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[指定衣服与当前素材](../../mods/appearance/approved_portrait_split_20261002_v2/preview/male_clothing_authority_review.png)",
+          "line": 25
+        },
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[指定男修衣服与当前素材](../../mods/appearance/approved_portrait_split_20261002_v2/preview/male_clothing_authority_review.png)",
+          "line": 5
+        }
+      ]
+    },
+    {
+      "id": "ref-af37fcc75181",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v2/preview/male_front_ear_review.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[前发盖耳](../../mods/appearance/approved_portrait_split_20261002_v2/preview/male_front_ear_review.png)",
+          "line": 21
+        },
+        {
+          "source": "docs/美术规范/立绘拼接锚点与换款模板.md",
+          "original_text": "[男修前发盖耳对照](../../mods/appearance/approved_portrait_split_20261002_v2/preview/male_front_ear_review.png)",
+          "line": 89
+        }
+      ]
+    },
+    {
+      "id": "ref-d3ada00d37ea",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v2/preview/portraits_dark.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[深底](../../mods/appearance/approved_portrait_split_20261002_v2/preview/portraits_dark.png)",
+          "line": 27
+        }
+      ]
+    },
+    {
+      "id": "ref-d73e889de870",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v2/preview/portraits_light.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[男女完整组合](../../mods/appearance/approved_portrait_split_20261002_v2/preview/portraits_light.png)",
+          "line": 21
+        },
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[浅底](../../mods/appearance/approved_portrait_split_20261002_v2/preview/portraits_light.png)",
+          "line": 27
+        },
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[完整立绘](../../mods/appearance/approved_portrait_split_20261002_v2/preview/portraits_light.png)",
+          "line": 5
+        }
+      ]
+    },
+    {
+      "id": "ref-4f260b05398e",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v2/preview/skin_edge_review.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[颌颈轮廓修稿](../../mods/appearance/approved_portrait_split_20261002_v2/preview/skin_edge_review.png)",
+          "line": 21
+        }
+      ]
+    },
+    {
+      "id": "ref-2e609410d83e",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v2/qa_report.json",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`qa_report.json`](../../mods/appearance/approved_portrait_split_20261002_v2/qa_report.json)",
+          "line": 28
+        }
+      ]
+    },
+    {
+      "id": "ref-62ad4fb65152",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v2/reference/male_clothing_final_authority_v10.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`male_clothing_final_authority_v10.png`](../../mods/appearance/approved_portrait_split_20261002_v2/reference/male_clothing_final_authority_v10.png)",
+          "line": 25
+        }
+      ]
+    },
+    {
+      "id": "ref-ce995093c58d",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v2/rig/generation_requests_v13.json",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/立绘拼接锚点与换款模板.md",
+          "original_text": "[本轮提示词](../../mods/appearance/approved_portrait_split_20261002_v2/rig/generation_requests_v13.json)",
+          "line": 89
+        }
+      ]
+    },
+    {
+      "id": "ref-15a18ab6f855",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v2/rig/portrait_rig_v2.json",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[固定几何模板 V2](../../mods/appearance/approved_portrait_split_20261002_v2/rig/portrait_rig_v2.json)",
+          "line": 13
+        },
+        {
+          "source": "docs/美术规范/立绘拼接锚点与换款模板.md",
+          "original_text": "[固定 rig](../../mods/appearance/approved_portrait_split_20261002_v2/rig/portrait_rig_v2.json)",
+          "line": 11
+        }
+      ]
+    },
+    {
+      "id": "ref-c4a94a48480a",
+      "original_target": "mods/appearance/approved_portrait_split_20261002_v2/rig/rig_qa_report.json",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[拼接检查](../../mods/appearance/approved_portrait_split_20261002_v2/rig/rig_qa_report.json)",
+          "line": 19
+        },
+        {
+          "source": "docs/美术规范/立绘拼接锚点与换款模板.md",
+          "original_text": "[检查记录](../../mods/appearance/approved_portrait_split_20261002_v2/rig/rig_qa_report.json)",
+          "line": 83
+        }
+      ]
+    },
+    {
+      "id": "ref-b7a83499f099",
+      "original_target": "mods/appearance/head_contour_reference_20261001",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`head_contour_reference_20261001/`](../../mods/appearance/head_contour_reference_20261001/)",
+          "line": 65
+        }
+      ]
+    },
+    {
+      "id": "ref-8b7cd641a09a",
+      "original_target": "mods/appearance/head_material_review_20261002_v1/female/ink_portrait.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`female/ink_portrait.png`](../../mods/appearance/head_material_review_20261002_v1/female/ink_portrait.png)",
+          "line": 43
+        }
+      ]
+    },
+    {
+      "id": "ref-4d2946ae6f03",
+      "original_target": "mods/appearance/head_material_review_20261002_v1/generation_manifest.json",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`generation_manifest.json`](../../mods/appearance/head_material_review_20261002_v1/generation_manifest.json)",
+          "line": 45
+        }
+      ]
+    },
+    {
+      "id": "ref-8eddba024d54",
+      "original_target": "mods/appearance/head_material_review_20261002_v1/male/bald_portrait.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`male/bald_portrait.png`](../../mods/appearance/head_material_review_20261002_v1/male/bald_portrait.png)",
+          "line": 44
+        }
+      ]
+    },
+    {
+      "id": "ref-0d5ecb2c9a56",
+      "original_target": "mods/appearance/head_material_review_20261002_v1/male/face_0.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`male/face_0.png`](../../mods/appearance/head_material_review_20261002_v1/male/face_0.png)",
+          "line": 44
+        }
+      ]
+    },
+    {
+      "id": "ref-c6a3a3e15199",
+      "original_target": "mods/appearance/head_material_review_20261002_v1/preview/male_head_review.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[男性原图／光头／独立皮肤](../../mods/appearance/head_material_review_20261002_v1/preview/male_head_review.png)",
+          "line": 45
+        },
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[男性原图、光头与独立皮肤](../../mods/appearance/head_material_review_20261002_v1/preview/male_head_review.png)",
+          "line": 7
+        }
+      ]
+    },
+    {
+      "id": "ref-5023da4474ab",
+      "original_target": "mods/appearance/head_material_review_20261002_v1/preview/style_comparison.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[女性原参考／轻水墨／男性光头](../../mods/appearance/head_material_review_20261002_v1/preview/style_comparison.png)",
+          "line": 45
+        },
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[女性原参考、轻水墨与男性光头](../../mods/appearance/head_material_review_20261002_v1/preview/style_comparison.png)",
+          "line": 7
+        }
+      ]
+    },
+    {
+      "id": "ref-9764a0a1dae6",
+      "original_target": "mods/appearance/head_material_review_20261002_v1/reference/female_geometry_approved.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`female_geometry_approved.png`](../../mods/appearance/head_material_review_20261002_v1/reference/female_geometry_approved.png)",
+          "line": 42
+        }
+      ]
+    },
+    {
+      "id": "ref-ce99e2be616b",
+      "original_target": "mods/appearance/head_shape_rebuild_20261001_v1/alignment.json",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`alignment.json`](../../mods/appearance/head_shape_rebuild_20261001_v1/alignment.json)",
+          "line": 61
+        }
+      ]
+    },
+    {
+      "id": "ref-3ef98e10dc0b",
+      "original_target": "mods/appearance/head_shape_rebuild_20261001_v1/female",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`female/`](../../mods/appearance/head_shape_rebuild_20261001_v1/female/)",
+          "line": 60
+        }
+      ]
+    },
+    {
+      "id": "ref-bd23232d80e5",
+      "original_target": "mods/appearance/head_shape_rebuild_20261001_v1/female/ear_0.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`female/ear_0.png`](../../mods/appearance/head_shape_rebuild_20261001_v1/female/ear_0.png)",
+          "line": 51
+        }
+      ]
+    },
+    {
+      "id": "ref-0f2debda9d5f",
+      "original_target": "mods/appearance/head_shape_rebuild_20261001_v1/female_ear_revision_20261002_v3.json",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`female_ear_revision_20261002_v3.json`](../../mods/appearance/head_shape_rebuild_20261001_v1/female_ear_revision_20261002_v3.json)",
+          "line": 53
+        }
+      ]
+    },
+    {
+      "id": "ref-75fe3aac498d",
+      "original_target": "mods/appearance/head_shape_rebuild_20261001_v1/generation_manifest.json",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`generation_manifest.json`](../../mods/appearance/head_shape_rebuild_20261001_v1/generation_manifest.json)",
+          "line": 61
+        }
+      ]
+    },
+    {
+      "id": "ref-2e109fd3c079",
+      "original_target": "mods/appearance/head_shape_rebuild_20261001_v1/male",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`male/`](../../mods/appearance/head_shape_rebuild_20261001_v1/male/)",
+          "line": 60
+        }
+      ]
+    },
+    {
+      "id": "ref-b5715eaa69b3",
+      "original_target": "mods/appearance/head_shape_rebuild_20261001_v1/preview/female_ear_correction_20261002.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[第二张参照／修正前／修正后](../../mods/appearance/head_shape_rebuild_20261001_v1/preview/female_ear_correction_20261002.png)",
+          "line": 52
+        },
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[第二张参照、修正前后](../../mods/appearance/head_shape_rebuild_20261001_v1/preview/female_ear_correction_20261002.png)",
+          "line": 11
+        }
+      ]
+    },
+    {
+      "id": "ref-428382e0c6ff",
+      "original_target": "mods/appearance/head_shape_rebuild_20261001_v1/preview/head_review.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[原图／光头组合／独立皮肤对照](../../mods/appearance/head_shape_rebuild_20261001_v1/preview/head_review.png)",
+          "line": 60
+        },
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[原图与头型对照](../../mods/appearance/head_shape_rebuild_20261001_v1/preview/head_review.png)",
+          "line": 9
+        }
+      ]
+    },
+    {
+      "id": "ref-100a78de3578",
+      "original_target": "mods/appearance/head_shape_rebuild_20261001_v1/preview/parts_dark.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[深底部件检查](../../mods/appearance/head_shape_rebuild_20261001_v1/preview/parts_dark.png)",
+          "line": 60
+        },
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[独立透明部件](../../mods/appearance/head_shape_rebuild_20261001_v1/preview/parts_dark.png)",
+          "line": 9
+        }
+      ]
+    },
+    {
+      "id": "ref-3016677bba8e",
+      "original_target": "mods/appearance/head_shape_rebuild_20261001_v1/qa_report.json",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`qa_report.json`](../../mods/appearance/head_shape_rebuild_20261001_v1/qa_report.json)",
+          "line": 52
+        },
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`qa_report.json`](../../mods/appearance/head_shape_rebuild_20261001_v1/qa_report.json)",
+          "line": 60
+        }
+      ]
+    },
+    {
+      "id": "ref-0b1f2694ac06",
+      "original_target": "mods/appearance/head_shape_rebuild_20261001_v1/reference",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`head_shape_rebuild_20261001_v1/reference/`](../../mods/appearance/head_shape_rebuild_20261001_v1/reference/)",
+          "line": 57
+        }
+      ]
+    },
+    {
+      "id": "ref-f81172c6e39a",
+      "original_target": "mods/appearance/head_shape_rebuild_20261001_v1/reference/female_ear_authority_20261002.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`female_ear_authority_20261002.png`](../../mods/appearance/head_shape_rebuild_20261001_v1/reference/female_ear_authority_20261002.png)",
+          "line": 50
+        }
+      ]
+    },
+    {
+      "id": "ref-1edcb7b1088e",
+      "original_target": "mods/appearance/ink_three_variants_20261004/male/hair_back/02.png",
+      "condition": "missing",
+      "status": "旧选款已退役，原图待核",
+      "explanation": "2026-11-05试演所引原图路径缺失；02／03旧款已退出现行活动配置。同名历史备份SHA不一致，不能断定哪份是当轮原图。",
+      "references": [
+        {
+          "source": "docs/美术规范/四方向圆手人物与前后发同步_20261105/README.md",
+          "original_text": "[后发02](../../../mods/appearance/ink_three_variants_20261004/male/hair_back/02.png)",
+          "line": 39
+        }
+      ]
+    },
+    {
+      "id": "ref-aa3c0d1909cd",
+      "original_target": "mods/appearance/ink_three_variants_20261004/male/hair_back/03.png",
+      "condition": "missing",
+      "status": "旧选款已退役，原图待核",
+      "explanation": "2026-11-05试演所引原图路径缺失；02／03旧款已退出现行活动配置。同名历史备份SHA不一致，不能断定哪份是当轮原图。",
+      "references": [
+        {
+          "source": "docs/美术规范/四方向圆手人物与前后发同步_20261105/README.md",
+          "original_text": "[后发03](../../../mods/appearance/ink_three_variants_20261004/male/hair_back/03.png)",
+          "line": 40
+        }
+      ]
+    },
+    {
+      "id": "ref-caf90df2757a",
+      "original_target": "mods/appearance/ink_three_variants_20261004/male/hair_front/02.png",
+      "condition": "missing",
+      "status": "旧选款已退役，原图待核",
+      "explanation": "2026-11-05试演所引原图路径缺失；02／03旧款已退出现行活动配置。同名历史备份SHA不一致，不能断定哪份是当轮原图。",
+      "references": [
+        {
+          "source": "docs/美术规范/四方向圆手人物与前后发同步_20261105/README.md",
+          "original_text": "[前发02](../../../mods/appearance/ink_three_variants_20261004/male/hair_front/02.png)",
+          "line": 36
+        }
+      ]
+    },
+    {
+      "id": "ref-6bff75d2dac1",
+      "original_target": "mods/appearance/ink_three_variants_20261004/male/hair_front/03.png",
+      "condition": "missing",
+      "status": "旧选款已退役，原图待核",
+      "explanation": "2026-11-05试演所引原图路径缺失；02／03旧款已退出现行活动配置。同名历史备份SHA不一致，不能断定哪份是当轮原图。",
+      "references": [
+        {
+          "source": "docs/美术规范/四方向圆手人物与前后发同步_20261105/README.md",
+          "original_text": "[前发03](../../../mods/appearance/ink_three_variants_20261004/male/hair_front/03.png)",
+          "line": 37
+        }
+      ]
+    },
+    {
+      "id": "ref-8205f9f8a252",
+      "original_target": "mods/appearance/reference_face_sample_20260930",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`reference_face_sample_20260930/`](../../mods/appearance/reference_face_sample_20260930/)",
+          "line": 75
+        },
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[`reference_face_sample_20260930/`](../../mods/appearance/reference_face_sample_20260930/)",
+          "line": 24
+        }
+      ]
+    },
+    {
+      "id": "ref-186e7f8e1832",
+      "original_target": "mods/appearance/reference_face_sample_20260930/face_comparison.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`眉毛上移前后对照`](../../mods/appearance/reference_face_sample_20260930/face_comparison.png)",
+          "line": 76
+        },
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[`前后对照`](../../mods/appearance/reference_face_sample_20260930/face_comparison.png)",
+          "line": 25
+        }
+      ]
+    },
+    {
+      "id": "ref-776f6180750c",
+      "original_target": "mods/appearance/reference_face_sample_20260930/female_brows_raised_sample.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[`女修`](../../mods/appearance/reference_face_sample_20260930/female_brows_raised_sample.png)",
+          "line": 25
+        }
+      ]
+    },
+    {
+      "id": "ref-5dd52e852104",
+      "original_target": "mods/appearance/reference_face_sample_20260930/generation_manifest.json",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`generation_manifest.json`](../../mods/appearance/reference_face_sample_20260930/generation_manifest.json)",
+          "line": 76
+        },
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[`提示词与来源`](../../mods/appearance/reference_face_sample_20260930/generation_manifest.json)",
+          "line": 25
+        }
+      ]
+    },
+    {
+      "id": "ref-4088d6fe5bfe",
+      "original_target": "mods/appearance/reference_face_sample_20260930/male_brows_raised_sample.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[`男修`](../../mods/appearance/reference_face_sample_20260930/male_brows_raised_sample.png)",
+          "line": 25
+        }
+      ]
+    },
+    {
+      "id": "ref-c996aabc245c",
+      "original_target": "mods/appearance/腰上女修拆件演示_v1/README.md",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`腰上女修拆件演示_v1`](../../mods/appearance/腰上女修拆件演示_v1/README.md)",
+          "line": 114
+        }
+      ]
+    },
+    {
+      "id": "ref-8730739d0cae",
+      "original_target": "mods/appearance/腰上女修拆件演示_v1/preview/reuse_repair_sample_v13/before_after.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[前后对照](../../mods/appearance/腰上女修拆件演示_v1/preview/reuse_repair_sample_v13/before_after.png)",
+          "line": 32
+        }
+      ]
+    },
+    {
+      "id": "ref-8ab05f6cf8bb",
+      "original_target": "mods/appearance/腰上女修拆件演示_v1/source/aesthetic_v12/generation_manifest.json",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[`source/aesthetic_v12/generation_manifest.json`](../../mods/appearance/腰上女修拆件演示_v1/source/aesthetic_v12/generation_manifest.json)",
+          "line": 55
+        }
+      ]
+    },
+    {
+      "id": "ref-b1ab8346d592",
+      "original_target": "mods/appearance/腰上女修拆件演示_v1/source/anatomy_v11",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[`source/anatomy_v11/`](../../mods/appearance/腰上女修拆件演示_v1/source/anatomy_v11/)",
+          "line": 175
+        }
+      ]
+    },
+    {
+      "id": "ref-671a620a9705",
+      "original_target": "mods/appearance/腰上女修拆件演示_v1/source/portrait_cleanup_v10",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[`source/portrait_cleanup_v10/`](../../mods/appearance/腰上女修拆件演示_v1/source/portrait_cleanup_v10/)",
+          "line": 163
+        }
+      ]
+    },
+    {
+      "id": "ref-cc3825960c64",
+      "original_target": "mods/appearance/腰上女修拆件演示_v1/source/reuse_repair_sample_v13",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[`source/reuse_repair_sample_v13/`](../../mods/appearance/腰上女修拆件演示_v1/source/reuse_repair_sample_v13/)",
+          "line": 32
+        }
+      ]
+    },
+    {
+      "id": "ref-f6127e9f429e",
+      "original_target": "mods/appearance/腰上女修拆件演示_v1/test_assets_green_reference_v1",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`test_assets_green_reference_v1/`](../../mods/appearance/腰上女修拆件演示_v1/test_assets_green_reference_v1/)",
+          "line": 68
+        },
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[`test_assets_green_reference_v1/`](../../mods/appearance/腰上女修拆件演示_v1/test_assets_green_reference_v1/)",
+          "line": 17
+        }
+      ]
+    },
+    {
+      "id": "ref-2a93f8a156d8",
+      "original_target": "mods/appearance/腰上女修拆件演示_v1/test_assets_v5",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[`test_assets_v5/`](../../mods/appearance/腰上女修拆件演示_v1/test_assets_v5/)",
+          "line": 163
+        }
+      ]
+    },
+    {
+      "id": "ref-68d1a2f9e3d7",
+      "original_target": "mods/appearance/腰上男修拆件演示_v2/index.html",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[index.html](../../mods/appearance/腰上男修拆件演示_v2/index.html)",
+          "line": 100
+        },
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[全层切换页](../../mods/appearance/腰上男修拆件演示_v2/index.html)",
+          "line": 104
+        }
+      ]
+    },
+    {
+      "id": "ref-1526286a9c03",
+      "original_target": "mods/appearance/腰上男修拆件演示_v2/preview/appearance_variants/appearance_variants.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[外观方向试稿](../../mods/appearance/腰上男修拆件演示_v2/preview/appearance_variants/appearance_variants.png)",
+          "line": 104
+        }
+      ]
+    },
+    {
+      "id": "ref-f1d135609974",
+      "original_target": "mods/appearance/腰上男修拆件演示_v2/preview/facial_composer/index.html",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[五官演示](../../mods/appearance/腰上男修拆件演示_v2/preview/facial_composer/index.html)",
+          "line": 104
+        }
+      ]
+    },
+    {
+      "id": "ref-f2524cc72801",
+      "original_target": "mods/appearance/腰上男修拆件演示_v2/preview/facial_composer/placement.json",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[锚点记录](../../mods/appearance/腰上男修拆件演示_v2/preview/facial_composer/placement.json)",
+          "line": 104
+        }
+      ]
+    },
+    {
+      "id": "ref-924850472593",
+      "original_target": "mods/appearance/腰上男修拆件演示_v2/reference/brow_eye_distance_reference.jpg",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[brow_eye_distance_reference.jpg](../../mods/appearance/腰上男修拆件演示_v2/reference/brow_eye_distance_reference.jpg)",
+          "line": 99
+        }
+      ]
+    },
+    {
+      "id": "ref-cacb1c5557d3",
+      "original_target": "mods/appearance/腰上男修拆件演示_v2/reference/user_selected_portrait.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[user_selected_portrait.png](../../mods/appearance/腰上男修拆件演示_v2/reference/user_selected_portrait.png)",
+          "line": 99
+        }
+      ]
+    },
+    {
+      "id": "ref-d90098d69f5c",
+      "original_target": "mods/appearance/腰上男修拆件演示_v2/test_assets_green_reference_v1",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`test_assets_green_reference_v1/`](../../mods/appearance/腰上男修拆件演示_v2/test_assets_green_reference_v1/)",
+          "line": 68
+        },
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[`test_assets_green_reference_v1/`](../../mods/appearance/腰上男修拆件演示_v2/test_assets_green_reference_v1/)",
+          "line": 17
+        }
+      ]
+    },
+    {
+      "id": "ref-c7b6168c5a58",
+      "original_target": "mods/appearance/腰上男修拆件演示_v2/test_assets_v7",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[`test_assets_v7/`](../../mods/appearance/腰上男修拆件演示_v2/test_assets_v7/)",
+          "line": 163
+        }
+      ]
+    },
+    {
+      "id": "ref-d538f0d6e2e4",
+      "original_target": "mods/appearance/腰上男修拆件演示_v2/test_sources/aesthetic_v16/generation_manifest.json",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[`test_sources/aesthetic_v16/generation_manifest.json`](../../mods/appearance/腰上男修拆件演示_v2/test_sources/aesthetic_v16/generation_manifest.json)",
+          "line": 55
+        }
+      ]
+    },
+    {
+      "id": "ref-624485f4ac51",
+      "original_target": "mods/appearance/腰上男修拆件演示_v2/test_sources/anatomy_v15",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[`test_sources/anatomy_v15/`](../../mods/appearance/腰上男修拆件演示_v2/test_sources/anatomy_v15/)",
+          "line": 175
+        }
+      ]
+    },
+    {
+      "id": "ref-ac2a69add439",
+      "original_target": "mods/appearance/腰上男修拆件演示_v2/test_sources/hair_clean_full_1.png",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/模块化角色立绘系统.md",
+          "original_text": "[`test_sources/hair_clean_full_1.png`](../../mods/appearance/腰上男修拆件演示_v2/test_sources/hair_clean_full_1.png)",
+          "line": 67
+        }
+      ]
+    },
+    {
+      "id": "ref-3cd723cd7e1c",
+      "original_target": "mods/appearance/腰上男修拆件演示_v2/test_sources/portrait_cleanup_v14",
+      "condition": "missing",
+      "status": "历史方案已替代，附件缺失",
+      "explanation": "旧立绘方案已被后续母版与现行定位取代；所指历史附件未找到，不能拿同名图片冒充原件。",
+      "references": [
+        {
+          "source": "docs/美术规范/腰上角色立绘素材回炉清单.md",
+          "original_text": "[`test_sources/portrait_cleanup_v14/`](../../mods/appearance/腰上男修拆件演示_v2/test_sources/portrait_cleanup_v14/)",
+          "line": 163
+        }
+      ]
+    },
+    {
+      "id": "ref-3fffb793e722",
+      "original_target": "outputs/alchemy_cleanup_filter_20261023.log",
+      "condition": "missing",
+      "status": "历史日志缺失",
+      "explanation": "当时的原始检查日志未找到；原文数字是历史陈述，不能再从该文件复核。",
+      "references": [
+        {
+          "source": "docs/美术规范/炼丹围炉四角色界面_20261019/README.md",
+          "original_text": "[116项检查日志](../../../outputs/alchemy_cleanup_filter_20261023.log)",
+          "line": 105
+        }
+      ]
+    },
+    {
+      "id": "ref-c19a7860edac",
+      "original_target": "outputs/alchemy_notebook_capture_20261022.log",
+      "condition": "missing",
+      "status": "历史日志缺失",
+      "explanation": "当时的原始检查日志未找到；原文数字是历史陈述，不能再从该文件复核。",
+      "references": [
+        {
+          "source": "docs/美术规范/炼丹围炉四角色界面_20261019/README.md",
+          "original_text": "[丹方与画面检查](../../../outputs/alchemy_notebook_capture_20261022.log)",
+          "line": 78
+        }
+      ]
+    },
+    {
+      "id": "ref-7734c5271e84",
+      "original_target": "outputs/alchemy_notebook_regression_20261022.log",
+      "condition": "missing",
+      "status": "历史日志缺失",
+      "explanation": "当时的原始检查日志未找到；原文数字是历史陈述，不能再从该文件复核。",
+      "references": [
+        {
+          "source": "docs/美术规范/炼丹围炉四角色界面_20261019/README.md",
+          "original_text": "[原有功能回归](../../../outputs/alchemy_notebook_regression_20261022.log)",
+          "line": 79
+        }
+      ]
+    },
+    {
+      "id": "ref-8f444093ad0a",
+      "original_target": "outputs/alchemy_notebook_restart_read_20261022.log",
+      "condition": "missing",
+      "status": "历史日志缺失",
+      "explanation": "当时的原始检查日志未找到；原文数字是历史陈述，不能再从该文件复核。",
+      "references": [
+        {
+          "source": "docs/美术规范/炼丹围炉四角色界面_20261019/README.md",
+          "original_text": "[跨进程读取](../../../outputs/alchemy_notebook_restart_read_20261022.log)",
+          "line": 81
+        }
+      ]
+    },
+    {
+      "id": "ref-5ed97feaf441",
+      "original_target": "outputs/alchemy_notebook_restart_write_20261022.log",
+      "condition": "missing",
+      "status": "历史日志缺失",
+      "explanation": "当时的原始检查日志未找到；原文数字是历史陈述，不能再从该文件复核。",
+      "references": [
+        {
+          "source": "docs/美术规范/炼丹围炉四角色界面_20261019/README.md",
+          "original_text": "[跨进程写入](../../../outputs/alchemy_notebook_restart_write_20261022.log)",
+          "line": 80
+        }
+      ]
+    }
+  ]
+}

@@ -97,12 +97,13 @@ public partial class InstantBattleDamageSmoke : Node
 
     private async System.Threading.Tasks.Task verify_skill_executor_and_buff_display()
     {
+        var ui = new CanvasLayer { Name = "UILayer" }; AddChild(ui);
         var manager = new BattleManager { Name = "BattleMgr" };
         AddChild(manager);
 
         var attacker = new Creature
         {
-            entity_data = new HumanData { physique = 20, agility = 20, soul = 0, body_proficiency = 10, precision = 10000, critical = 0, crit_damage_mult = 1.5f, max_health = 1000, current_health = 1000 },
+            entity_data = new HumanData { physique = 30, soul = 10, body_proficiency = 10, precision = 10000, critical = 0, crit_damage_mult = 1.5f, max_health = 1000, current_health = 1000 },
             faction = (int)WorldEntity.Faction.PLAYER
         };
         AddChild(attacker);
@@ -150,13 +151,18 @@ public partial class InstantBattleDamageSmoke : Node
         skill.damage_bonuses.Clear();
         var action = new BattleQueuedSkill(skill, defender);
         attackerState.skill_queue.Add(action);
+        manager.SetProcess(false); manager.battle_running = true;
+        var flags = System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance;
+        typeof(BattleManager).GetField("_resolvingUnit", flags)!.SetValue(manager, attacker);
+        typeof(BattleManager).GetField("_segmentPhase", flags)!.SetValue(manager, BattleManager.SegmentPhase.Executing);
 
         GD.Seed(no_critical_seed());
         manager.GetChildren().OfType<SkillExecutor>().Single().execute_skill(attacker, skill, defender);
         var settled = false;
-        for (var frame = 0; frame < 90; frame++)
+        var deadline = Time.GetTicksMsec() + 6000;
+        while (Time.GetTicksMsec() < deadline)
         {
-            if (action.phase == BattleQueuedSkill.Phase.Recovering) { settled = true; break; }
+            if (action.completed) { settled = true; break; }
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
         }
         check(settled, "SkillExecutor 完整结算后返回实时队列");
@@ -171,10 +177,12 @@ public partial class InstantBattleDamageSmoke : Node
         if (overlay is not null)
             foreach (var row in overlay.FindChildren("Statuses", "HFlowContainer", true, false).OfType<HFlowContainer>())
             {
-                heartBadge = row.GetChildren().OfType<PanelContainer>().FirstOrDefault(b => b.TooltipText.StartsWith("内景损益 ×1"));
+                // 统一悬停已不使用 Godot TooltipText；按真实专属图标识别徽记。
+                heartBadge = row.GetChildren().OfType<PanelContainer>().FirstOrDefault(b =>
+                    (b.GetChild(0) as TextureRect)?.Texture?.ResourcePath == "res://textures/ui/combat/status_icons/心法_内景损益_v1.png");
                 if (heartBadge is not null) break;
             }
         var heartIcon = heartBadge?.GetChild(0) as TextureRect;
-        check(heartBadge is not null && heartIcon?.Texture is not null, "常驻内景心法实际进入 Buff 栏且显示专属图标");
+        check(defender.get_status_stacks("心法:内景损益") == 1 && heartBadge is not null && heartIcon?.Texture is not null, "常驻内景心法实际进入 Buff 栏且显示专属图标");
     }
 }

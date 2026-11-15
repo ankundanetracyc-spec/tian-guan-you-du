@@ -7,14 +7,14 @@ public partial class GameTimeMgr
     private bool _smoothAdvanceBusy;
     public bool IsSmoothAdvanceBusy => _smoothAdvanceBusy;
 
-    // Signal-based bridge for GDScript movement: subscribe immediately after invoking this method.
+    // Signal-based bridge for GDScript movement. Defer completion so the caller can
+    // subscribe after the method call without forcing an extra ProcessFrame first.
     public async void advance_time_smooth(float hours, string reason = "")
     {
         if (_smoothAdvanceBusy) throw new InvalidOperationException("时间推进尚未结算");
         _smoothAdvanceBusy = true;
         try
         {
-            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
             var manager = GetNodeOrNull<NpcWorldManager>("/root/NpcWorldManager");
             var crossingMonth = (get_total_game_hours() + (int)(_pendingHours + Math.Max(0, hours))) / 720 > get_total_game_hours() / 720;
             if (crossingMonth && manager?.simulation_enabled == true && GetTree().GetFirstNodeInGroup("action_transition") is ActionTransitionPanel panel)
@@ -29,6 +29,13 @@ public partial class GameTimeMgr
             else advance_time(hours, reason);
         }
         catch (Exception ex) { GD.PushError($"行旅时间结算失败：{ex}"); }
-        finally { _smoothAdvanceBusy = false; EmitSignal(SignalName.smooth_time_advanced); }
+        finally
+        {
+            _smoothAdvanceBusy = false;
+            CallDeferred(MethodName.emit_smooth_time_advanced_deferred);
+        }
     }
+
+    private void emit_smooth_time_advanced_deferred()
+        => EmitSignal(SignalName.smooth_time_advanced);
 }

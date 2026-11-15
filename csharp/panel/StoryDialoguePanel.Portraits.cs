@@ -40,19 +40,19 @@ public partial class StoryDialoguePanel : Control
         process_social_reveal(delta);
         if (_socialContent is not null) return;
         if (!Visible || _speaker is null) return;
-        if (_speaker.HorizontalAlignment != HorizontalAlignment.Right)
+        if (!_speakerOnRight)
         {
             if (!_portraitIsPlayer || _speaker.Text != _portraitSpeaker) hide_speaker_portrait();
             return;
         }
         if (_speaker.Text == _portraitSpeaker) return;
-        show_world_npc_portrait(QingxiResidentAppearance.Find(_speaker.Text) ?? new WorldNpcData
+        show_world_npc_portrait(new WorldNpcData
         {
             npc_id = "dialogue_" + _speaker.Text,
             npc_name = _speaker.Text,
-            gender = _speaker.Text == "陈素秋" ? 1 : -1,
-            current_age = _speaker.Text == "李守拙" ? 54 : 30,
-            cultivation_realm = _speaker.Text == "李守拙" ? "云息六层" : "凡人",
+            gender = -1,
+            current_age = 30,
+            cultivation_realm = "凡人",
         });
     }
 
@@ -100,24 +100,32 @@ public partial class StoryDialoguePanel : Control
         }
 
         var viewport = GetViewportRect().Size;
-        float height = Mathf.Min(560.0f, viewport.Y * 0.52f);
-        height = Mathf.Min(height, Mathf.Max(120.0f, viewport.Y - _dialogueHeight - 20.0f));
+        var dialogue = _dialogueFrame?.GetGlobalRect() ?? new Rect2(0, viewport.Y - _dialogueHeight, viewport.X, _dialogueHeight);
+        float height = Mathf.Min(dialogue.Size.X * .30f, Mathf.Min(dialogue.Size.Y * 2.1f, viewport.Y * .46f));
+        height = Mathf.Min(height, Mathf.Max(120.0f, dialogue.Position.Y - 36.0f));
         const float visible_portrait_ratio = 0.76f;
         float full_image_height = height / visible_portrait_ratio;
         float width = full_image_height * 2.0f / 3.0f;
-        float top = Mathf.Max(0.0f, viewport.Y - _dialogueHeight - height);
-        float margin = Mathf.Max(24.0f, viewport.X * 0.045f);
+        float top = Mathf.Max(0.0f, dialogue.Position.Y - height + 8f);
         _speakerPortrait.AnchorLeft = 0;
         _speakerPortrait.AnchorTop = 0;
         _speakerPortrait.AnchorRight = 0;
         _speakerPortrait.AnchorBottom = 0;
-        _speakerPortrait.Position = new Vector2(on_right ? viewport.X - width - margin : margin, top);
+        var left = on_right ? dialogue.End.X - width - 28f : dialogue.Position.X + 28f;
+        if (!on_right)
+        {
+            var roster = GetTree().GetFirstNodeInGroup("cell_character_list") as CellCharacterList;
+            if (roster?.IsVisibleInTree() == true && new Rect2(left, top, width, height).Intersects(roster.get_ui_rect()))
+                left = Mathf.Max(left, roster_clearance());
+        }
+        _speakerPortrait.Position = new Vector2(left, top);
         _speakerPortrait.Size = new Vector2(width, height);
         _speakerPortraitRenderer.Position = Vector2.Zero;
         _speakerPortraitRenderer.Size = new Vector2(width, full_image_height);
         _portraitOnRight = on_right;
         _speakerPortrait.Show();
         _speakerPortrait.MoveToFront();
+        layout_floating_choices();
     }
 
     private void ensure_portrait_node()

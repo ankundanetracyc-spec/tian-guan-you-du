@@ -37,8 +37,10 @@ public partial class CondensationTurnTrack : Control
         _caption.Text = $"第{new[] { "一", "二", "三", "四", "五", "六", "七", "八" }[_round - 1]}回合 / 八回合";
         for (var i = 0; i < 8; i++)
         {
-            _strengths[i] = game?.Recoils.Where(r => r.Round == i + 1).Sum(r => r.Strength) ?? 0;
-            _recoils[i].Text = _strengths[i] > 0 ? $"回弹 {_strengths[i]}" : "";
+            var arriving = game?.Recoils.Where(r => r.Round == i + 1).ToArray() ?? [];
+            _strengths[i] = arriving.Sum(r => r.Strength);
+            _recoils[i].Text = arriving.Length > 0 ? $"回弹{_strengths[i]}·{arriving.Length}股" : "";
+            _recoils[i].AddThemeFontSizeOverride("font_size", _recoils[i].Text.Length >= 8 ? 14 : 16);
             _numbers[i].Modulate = i + 1 == _round ? new Color("fff0c7") : new Color(1, 1, 1, i + 1 < _round ? .45f : .8f);
         }
         var future = game?.Recoils.Where(r => r.Round > 8).Sum(r => r.Strength) ?? 0;

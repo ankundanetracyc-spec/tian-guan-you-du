@@ -14,9 +14,10 @@ public partial class GongfaChapterConfig : Resource
     [Export] public Dictionary required_attributes = [];
     [Export] public Array<string> required_chapter_ids = [];
     [Export] public bool requires_main_slot;
-    [ExportGroup("传承分支")]
-    // 现行秘籍左侧分支默认显示修持；旧资源未序列化名称时也应正确显示。
+    [ExportGroup("卷章效果栏目")]
+    /// <summary>旧字段名保留；仅控制栏目标题，不再表示互斥的分支选择。</summary>
     [Export] public string left_branch_name = "修持";
+    /// <summary>旧字段名保留；仅控制栏目标题，不再表示互斥的分支选择。</summary>
     [Export] public string right_branch_name = "化法";
     [ExportGroup("Permanent Learn Bonuses")]
     [Export] public Dictionary learn_permanent_bonuses = [];
@@ -26,6 +27,7 @@ public partial class GongfaChapterConfig : Resource
     [Export] public Dictionary learn_permanent_multipliers = [];
     [ExportGroup("Learned Skills")]
     [Export] public Array<Resource> learned_active_skills = [];
+    /// <summary>旧字段名保留存档兼容；当前和普通习得技能一样主辅修共用。</summary>
     [Export] public Array<Resource> main_learned_active_skills = [];
     [ExportGroup("Heart Method Progression")]
     /// <summary>本卷研读后解锁的机制标记；与左右分支选择无关。</summary>
@@ -39,32 +41,37 @@ public partial class GongfaChapterConfig : Resource
     [ExportGroup("Naqi Bonuses")]
     [Export] public Dictionary naqi_bonuses = [];
     [Export] public Dictionary naqi_multipliers = [];
+    /// <summary>旧字段名保留；当前纳气效果由主辅修共用。</summary>
     [Export] public Dictionary main_naqi_bonuses = [];
+    /// <summary>旧字段名保留；当前纳气效果由主辅修共用。</summary>
     [Export] public Dictionary main_naqi_multipliers = [];
     [ExportGroup("Combat Tempering Bonuses")]
-    /// <summary>修持分支的战斗内属性；通过战斗快照传递，不写入角色常驻属性。</summary>
+    /// <summary>修持的战斗内属性；通过战斗快照传递，不写入角色常驻属性。</summary>
     [Export] public Dictionary combat_tempering_bonuses = [];
     [ExportGroup("Huafa Rewrites")]
     [Export] public Array<GongfaDeckRewriteConfig> sub_deck_rewrites = [];
+    /// <summary>旧主修字段名保留；当前与普通化法配置合并并由主辅修共用。</summary>
     [Export] public Array<GongfaDeckRewriteConfig> main_deck_rewrites = [];
 
     public string get_id() => chapter_id.Length > 0 ? chapter_id : chapter_name.Length > 0 ? chapter_name : order.ToString();
     public Array<GongfaDeckRewriteConfig> get_deck_rewrites(bool is_main)
     {
+        // is_main 保留作调用兼容；旧主修／辅修配置现在一并生效。
         Array<GongfaDeckRewriteConfig> result = [];
         foreach (var item in sub_deck_rewrites) if (item is not null) result.Add(item);
-        if (is_main) foreach (var item in main_deck_rewrites) if (item is not null) result.Add(item);
+        foreach (var item in main_deck_rewrites) if (item is not null) result.Add(item);
         return result;
     }
     public Array<Resource> get_learned_skills(bool is_main)
     {
+        // is_main 保留作调用兼容；旧主修限定技能现在由主辅修共用。
         Array<Resource> result = [];
         foreach (var item in learned_active_skills) if (item is not null) result.Add(item);
-        if (is_main) foreach (var item in main_learned_active_skills) if (item is not null) result.Add(item);
+        foreach (var item in main_learned_active_skills) if (item is not null) result.Add(item);
         return result;
     }
-    public Dictionary get_naqi_bonuses(bool is_main) => merge(naqi_bonuses, is_main ? main_naqi_bonuses : null);
-    public Dictionary get_naqi_multipliers(bool is_main) => merge(naqi_multipliers, is_main ? main_naqi_multipliers : null);
+    public Dictionary get_naqi_bonuses(bool is_main) => merge(naqi_bonuses, main_naqi_bonuses);
+    public Dictionary get_naqi_multipliers(bool is_main) => merge(naqi_multipliers, main_naqi_multipliers);
     public Dictionary get_combat_tempering_bonuses() => combat_tempering_bonuses.Duplicate();
     private static Dictionary merge(Dictionary baseValues, Dictionary? extra)
     {

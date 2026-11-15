@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-/// <summary>东林地正交节点地图。每个方形节点承载地貌与实际在场棋子。</summary>
+/// <summary>东林地与随机副本节点地图；按副本类型呈现地貌节点或图标路线。</summary>
 public partial class EastWoodsDungeonPanel : Control
 {
     public event Action? Closed;
@@ -11,12 +11,14 @@ public partial class EastWoodsDungeonPanel : Control
     public event Action<string, string>? RouteStepped;
     public event Action? RouteTravelStarted;
     public event Action<string>? RouteTravelFinished;
+    public event Action? CharacterProfileRequested;
 
     private readonly Dictionary<string, Button> _nodeButtons = new(StringComparer.Ordinal);
     private readonly Dictionary<string, Control> _pawnLayers = new(StringComparer.Ordinal);
     private readonly Dictionary<string, Label> _nodeTitles = new(StringComparer.Ordinal);
     private readonly Dictionary<string, Vector2> _pawnLayerSizeStamps = new(StringComparer.Ordinal);
     private readonly Dictionary<string, List<WorldNpcData>> _npcsByNode = new(StringComparer.Ordinal);
+    private readonly Dictionary<string, string> _actionBadgeCache = new(StringComparer.Ordinal);
     private readonly HashSet<string> _pathEdges = new(StringComparer.Ordinal);
     private readonly HashSet<string> _pathNodes = new(StringComparer.Ordinal);
     private sealed class ConnectionVisual
@@ -28,13 +30,12 @@ public partial class EastWoodsDungeonPanel : Control
     private Control? _mapRoot;
     private Control? _connectionLayer;
     private Texture2D? _pawnTexture;
-    private PanelContainer? _hoverPanel;
-    private Label? _hoverTitle;
-    private Label? _hoverDescription;
     private Godot.Timer? _hoverTimer;
     private string _hoveredNode = "";
     private PanelContainer? _routePanel;
     private Label? _pathSummary;
+    private Button? _notesButton;
+    private Button? _characterProfileButton;
     private string _current = "forest_edge";
     private bool _insideDungeon;
     private string _selected = "forest_edge";
@@ -50,7 +51,8 @@ public partial class EastWoodsDungeonPanel : Control
     private string _pendingTarget = "";
     private Vector2 _gridOrigin;
     private float _cellSize = 120f;
-    private float _cellGap = 10f;
+    private float _columnGap = 10f;
+    private float _layerGap = 10f;
     private string _connectionLayoutStamp = "";
     private Godot.Collections.Dictionary? _cachedLayoutState;
     private string _cachedLayoutSeed = "";
@@ -59,9 +61,72 @@ public partial class EastWoodsDungeonPanel : Control
     private int _minGridX;
     private int _minGridY;
     private bool _routeStepUpdating;
+    private bool _dynamicMode;
+    private bool is_tower_instance => _dynamicMode && DynamicDungeonExpedition.IsTowerInstance(_dynamicInstanceState);
+    private bool is_roguelike_route => _dynamicMode && DynamicDungeonExpedition.IsRoguelikeInstance(_dynamicInstanceState);
+    private string _dynamicEntryNodeId = "forest_edge";
+    private string _dynamicExitNodeId = "forest_edge";
+    private Godot.Collections.Dictionary _dynamicInstanceState = [];
+    private Label? _actionWorldLabel;
+
+    public bool is_dynamic_instance => _dynamicMode;
+    public string dynamic_instance_id => _dynamicMode ? _dynamicInstanceState.GetValueOrDefault("instance_id", "").AsString() : "";
+    private string route_entry_node_id => _dynamicMode ? _dynamicEntryNodeId : "forest_edge";
+    private string route_exit_node_id => _dynamicMode ? _dynamicExitNodeId : "forest_edge";
+    private string route_display_name => _dynamicMode ? DynamicDungeonExpedition.GetDisplayName(_dynamicInstanceState) : "东林地";
+    private bool is_compact_route => _dynamicMode && DynamicDungeonExpedition.IsCompactInstance(_dynamicInstanceState);
+    private bool is_route_exit(string nodeId) => _dynamicMode ? DynamicDungeonExpedition.IsExitNode(_dynamicInstanceState, nodeId) : nodeId == route_exit_node_id;
+    private string route_dungeon_id => _dynamicMode ? DynamicDungeonExpedition.GetDungeonId(_dynamicInstanceState) : EastWoodsDungeonRules.DungeonId;
+    private string route_layout_seed => _dynamicMode ? DynamicDungeonExpedition.GetLayoutSeed(_dynamicInstanceState) : EastWoodsDungeonRules.LayoutSeed;
+    private IReadOnlyList<EastWoodsDungeonRules.NodeDefinition> route_nodes => _dynamicMode ? DynamicDungeonExpedition.GetNodes(_dynamicInstanceState) : EastWoodsDungeonRules.get_nodes();
+    private EastWoodsDungeonRules.NodeDefinition? route_node(string id) => _dynamicMode ? DynamicDungeonExpedition.GetNode(_dynamicInstanceState, id) : EastWoodsDungeonRules.get_node(id);
+    private IReadOnlyList<string> route_neighbors(string id) => _dynamicMode ? DynamicDungeonExpedition.GetNeighbors(_dynamicInstanceState, id) : EastWoodsDungeonRules.get_neighbors(id);
+
+    public void use_east_woods_instance()
+    {
+        _dynamicMode = false;
+        _actionBadgeCache.Clear();
+        _dynamicEntryNodeId = _dynamicExitNodeId = "forest_edge";
+        _dynamicInstanceState = [];
+        if (_actionWorldLabel is not null) _actionWorldLabel.Text = "东林地";
+        update_mode_buttons();
+    }
+
+    public void configure_dynamic_instance(Godot.Collections.Dictionary instance)
+    {
+        _dynamicMode = true;
+        _actionBadgeCache.Clear();
+        _dynamicInstanceState = instance.Duplicate(true);
+        _dynamicEntryNodeId = DynamicDungeonExpedition.GetEntryNodeId(_dynamicInstanceState);
+        _dynamicExitNodeId = DynamicDungeonExpedition.GetExitNodeId(_dynamicInstanceState);
+        if (_actionWorldLabel is not null) _actionWorldLabel.Text = route_display_name;
+        _cachedLayoutState = null;
+        _cachedLayoutSeed = "";
+        update_mode_buttons();
+        if (IsNodeReady()) rebuild_map_nodes();
+        restore_route_state(DynamicDungeonExpedition.GetRoute(_dynamicInstanceState));
+    }
+
+    public void update_dynamic_instance(Godot.Collections.Dictionary instance)
+    {
+        if (!_dynamicMode || instance.GetValueOrDefault("instance_id", "").AsString() != dynamic_instance_id) return;
+        var route = get_route_state();
+        _dynamicInstanceState = instance.Duplicate(true);
+        DynamicDungeonExpedition.StoreRoute(_dynamicInstanceState, route);
+        _actionProgress = route.GetValueOrDefault("actions", new Godot.Collections.Dictionary()).AsGodotDictionary().Duplicate(true);
+        if (Visible) refresh();
+    }
+
+    public Godot.Collections.Dictionary get_dynamic_instance_snapshot()
+    {
+        var instance = _dynamicInstanceState.Duplicate(true);
+        if (_dynamicMode) DynamicDungeonExpedition.StoreRoute(instance, get_route_state());
+        return instance;
+    }
 
     public override void _Ready()
     {
+        AddToGroup("east_woods_dungeon_panel");
         SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         MouseFilter = MouseFilterEnum.Stop;
         ZIndex = 210;
@@ -82,10 +147,12 @@ public partial class EastWoodsDungeonPanel : Control
         _isTraveling = false;
         close_action_details();
         Show();
+        update_mode_buttons();
         reset_map_camera();
         MoveToFront();
         CallDeferred(nameof(layout_map));
         refresh();
+        resume_roguelike_node_interaction();
     }
 
     public void set_player_dun_speed(float dunSpeed)
@@ -120,6 +187,31 @@ public partial class EastWoodsDungeonPanel : Control
     public string get_current_route_node_id() => _current;
     public bool is_route_traveling() => _isTraveling;
 
+    public bool begin_assigned_route(string destinationNodeId)
+    {
+        if (!Visible || _actionBusy || _npcEncounterBusy || _travelPawn is not null || _isTraveling || _actionModal?.Visible == true ||
+            route_node(destinationNodeId) is null)
+            return false;
+        if (_current == destinationNodeId) return true;
+        if (is_tower_instance && !is_valid_next_node(destinationNodeId)) return false;
+        var path = find_shortest_path(_current, destinationNodeId);
+        if (path.Count < 2) return false;
+        _selected = destinationNodeId;
+        _pendingTarget = destinationNodeId;
+        _pendingPath = path;
+        start_pending_path();
+        return _isTraveling;
+    }
+
+    public int get_assigned_route_step_count(string destinationNodeId)
+    {
+        if (route_node(destinationNodeId) is null) return -1;
+        if (_current == destinationNodeId) return 0;
+        if (is_tower_instance) return is_valid_next_node(destinationNodeId) ? 1 : -1;
+        var path = find_shortest_path(_current, destinationNodeId);
+        return path.Count < 2 ? -1 : path.Count - 1;
+    }
+
     public void set_npc_encounter_busy(bool busy)
     {
         if (_npcEncounterBusy == busy) return;
@@ -133,12 +225,14 @@ public partial class EastWoodsDungeonPanel : Control
         foreach (var id in _visited.OrderBy(id => id, StringComparer.Ordinal)) visited.Add(id);
         var discovered = new Godot.Collections.Array<string>();
         foreach (var id in _discoveredNodes.OrderBy(id => id, StringComparer.Ordinal)) discovered.Add(id);
-        if (_cachedLayoutState is null || _cachedLayoutSeed != EastWoodsDungeonRules.LayoutSeed)
+        if (!_dynamicMode && (_cachedLayoutState is null || _cachedLayoutSeed != EastWoodsDungeonRules.LayoutSeed))
         {
             _cachedLayoutState = EastWoodsDungeonRules.get_layout_state();
             _cachedLayoutSeed = EastWoodsDungeonRules.LayoutSeed;
         }
-        return new Godot.Collections.Dictionary { ["current"] = _current, ["visited"] = visited, ["discovered"] = discovered, ["actions"] = _actionProgress.Duplicate(true), ["inside"] = _insideDungeon, ["layout"] = _cachedLayoutState };
+        var state = new Godot.Collections.Dictionary { ["current"] = _current, ["visited"] = visited, ["discovered"] = discovered, ["actions"] = _actionProgress.Duplicate(true), ["inside"] = _insideDungeon };
+        if (!_dynamicMode) state["layout"] = _cachedLayoutState!;
+        return state;
     }
 
     public void restore_route_state(Godot.Collections.Dictionary state)
@@ -146,24 +240,27 @@ public partial class EastWoodsDungeonPanel : Control
         clear_npc_motion();
         finish_pawn_step();
         if (state.Count == 0) return;
-        EastWoodsDungeonRules.restore_layout(state.GetValueOrDefault("layout", new Godot.Collections.Dictionary()).AsGodotDictionary());
-        _cachedLayoutState = null;
-        _cachedLayoutSeed = "";
-        rebuild_map_nodes();
+        if (!_dynamicMode)
+        {
+            EastWoodsDungeonRules.restore_layout(state.GetValueOrDefault("layout", new Godot.Collections.Dictionary()).AsGodotDictionary());
+            _cachedLayoutState = null;
+            _cachedLayoutSeed = "";
+            rebuild_map_nodes();
+        }
         _insideDungeon = state.GetValueOrDefault("inside", false).AsBool();
         _actionProgress = state.GetValueOrDefault("actions", new Godot.Collections.Dictionary()).AsGodotDictionary().Duplicate(true);
-        var current = state.GetValueOrDefault("current", "forest_edge").AsString();
-        if (EastWoodsDungeonRules.get_node(current) is null) current = "forest_edge";
+        var current = state.GetValueOrDefault("current", route_entry_node_id).AsString();
+        if (route_node(current) is null) current = route_entry_node_id;
         _current = current;
         _selected = current;
         _pendingPath.Clear();
         _pendingTarget = "";
         _visited.Clear();
-        _visited.Add("forest_edge");
+        _visited.Add(route_entry_node_id);
         var values = state.GetValueOrDefault("visited", new Godot.Collections.Array<string>());
         if (values.VariantType == Variant.Type.Array)
             foreach (var value in values.AsGodotArray())
-                if (EastWoodsDungeonRules.get_node(value.AsString()) is not null) _visited.Add(value.AsString());
+                if (route_node(value.AsString()) is not null) _visited.Add(value.AsString());
         _visited.Add(_current);
         restore_discovery(state);
         if (Visible) refresh();
@@ -171,7 +268,9 @@ public partial class EastWoodsDungeonPanel : Control
 
     public override void _UnhandledKeyInput(InputEvent @event)
     {
-        if (!Visible || _isTraveling || _npcEncounterBusy || _travelPawn is not null || _actionBusy || _actionModal?.Visible == true || @event is not InputEventKey key || !key.Pressed || key.Echo) return;
+        // Keyboard repeat continues walking after the previous step settles.
+        // Active animation/action/encounter guards still reject overlapping steps.
+        if (!Visible || _isTraveling || _npcEncounterBusy || _travelPawn is not null || _actionBusy || _actionModal?.Visible == true || @event is not InputEventKey key || !key.Pressed) return;
         var direction = key.Keycode switch
         {
             Key.W or Key.Up => new Vector2I(0, -1),
@@ -182,11 +281,31 @@ public partial class EastWoodsDungeonPanel : Control
         };
         if (direction == Vector2I.Zero) return;
 
-        var currentNode = EastWoodsDungeonRules.get_node(_current);
+        var currentNode = route_node(_current);
         if (currentNode is null) return;
-        var neighbor = EastWoodsDungeonRules.get_neighbors(_current)
-            .Select(EastWoodsDungeonRules.get_node)
-            .FirstOrDefault(node => node is not null && node.GridPosition - currentNode.GridPosition == direction);
+        EastWoodsDungeonRules.NodeDefinition? neighbor;
+        if (is_roguelike_route)
+        {
+            var candidates = route_neighbors(_current)
+                .Select(route_node)
+                .Where(node => node is not null && is_valid_next_node(node.Id))
+                .Cast<EastWoodsDungeonRules.NodeDefinition>()
+                .Select(node => (Node: node, Delta: map_grid_position(node) - map_grid_position(currentNode)))
+                .ToArray();
+            neighbor = direction.Y < 0
+                ? candidates.OrderBy(option => Math.Abs(option.Delta.X)).ThenBy(option => option.Delta.X).Select(option => option.Node).FirstOrDefault()
+                : direction.X < 0
+                    ? candidates.Where(option => option.Delta.X < 0).OrderBy(option => Math.Abs(option.Delta.X)).Select(option => option.Node).FirstOrDefault()
+                    : direction.X > 0
+                        ? candidates.Where(option => option.Delta.X > 0).OrderBy(option => Math.Abs(option.Delta.X)).Select(option => option.Node).FirstOrDefault()
+                        : null;
+        }
+        else
+        {
+            neighbor = route_neighbors(_current)
+                .Select(route_node)
+                .FirstOrDefault(node => node is not null && node.GridPosition - currentNode.GridPosition == direction && is_valid_next_node(node.Id));
+        }
         if (neighbor is null) return;
 
         move_one_node(neighbor.Id);
@@ -227,8 +346,18 @@ public partial class EastWoodsDungeonPanel : Control
         notes.Name = "ExplorationNotes";
         notes.SetAnchorsPreset(LayoutPreset.TopRight);
         notes.Position = new Vector2(-174, 78);
+        _notesButton = notes;
         notes.Pressed += () => { if (!_isTraveling && !_actionBusy && _travelPawn is null) show_action_result("林间札记", exploration_notes()); };
         AddChild(notes);
+
+        var characterProfile = make_button("查看人物", 132, 42);
+        characterProfile.Name = "ViewCharacter";
+        characterProfile.SetAnchorsPreset(LayoutPreset.TopRight);
+        characterProfile.Position = new Vector2(-174, 78);
+        characterProfile.Visible = false;
+        characterProfile.Pressed += () => CharacterProfileRequested?.Invoke();
+        _characterProfileButton = characterProfile;
+        AddChild(characterProfile);
 
         var footer = new PanelContainer
         {
@@ -259,12 +388,20 @@ public partial class EastWoodsDungeonPanel : Control
         CallDeferred(nameof(layout_map));
     }
 
+    private void update_mode_buttons()
+    {
+        var roguelike = is_roguelike_route;
+        if (_characterProfileButton is not null) _characterProfileButton.Visible = roguelike;
+        if (_notesButton is not null) _notesButton.Position = new Vector2(-174, roguelike ? 128 : 78);
+    }
+
     private void rebuild_map_nodes()
     {
         if (_mapRoot is null) return;
         clear_hover();
         foreach (var button in _nodeButtons.Values) { _mapRoot.RemoveChild(button); button.QueueFree(); }
         _nodeButtons.Clear(); _pawnLayers.Clear(); _nodeTitles.Clear(); _nodeStyleStamps.Clear(); _pawnLayerSizeStamps.Clear();
+        _beastEncounterMarkers.Clear();
         clear_connections(); _actionBarStamp = "";
         build_map_nodes();
         CallDeferred(nameof(layout_map));
@@ -273,7 +410,7 @@ public partial class EastWoodsDungeonPanel : Control
     private void build_map_nodes()
     {
         if (_mapRoot is null) return;
-        foreach (var node in EastWoodsDungeonRules.get_nodes())
+        foreach (var node in route_nodes)
         {
             var button = new Button
             {
@@ -291,33 +428,48 @@ public partial class EastWoodsDungeonPanel : Control
             _mapRoot.AddChild(button);
             _nodeButtons[node.Id] = button;
 
-            var terrain = new TextureRect
+            if (is_roguelike_route)
             {
-                ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
-                Name = "Terrain", Texture = load_terrain(node.Id),
-                StretchMode = TextureRect.StretchModeEnum.Scale,
-                MouseFilter = MouseFilterEnum.Ignore,
-                Material = new ShaderMaterial { Shader = GD.Load<Shader>("res://resources/shaders/dungeon_terrain_round.gdshader") },
-            };
-            terrain.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-            terrain.OffsetLeft = terrain.OffsetTop = 3;
-            terrain.OffsetRight = terrain.OffsetBottom = -3;
-            button.AddChild(terrain);
-
-            if (node.Feature == "spring")
-            {
-                var overlay = new TextureRect { Name="SpringFeature", Texture=DungeonTerrainVisuals.SpringOverlay,
-                    ExpandMode=TextureRect.ExpandModeEnum.IgnoreSize, StretchMode=TextureRect.StretchModeEnum.KeepAspectCentered,
-                    MouseFilter=MouseFilterEnum.Ignore };
-                overlay.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-                overlay.AnchorLeft=overlay.AnchorTop=.15f; overlay.AnchorRight=overlay.AnchorBottom=.85f;
-                button.AddChild(overlay);
+                build_roguelike_node_icon(button, node);
             }
+            else
+            {
+                var terrain = new TextureRect
+                {
+                    ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
+                    Name = "Terrain", Texture = load_terrain(node.Id),
+                    SelfModulate = !_dynamicMode && EastWoodsDungeonRules.forest_region(node.Id) == "深林"
+                        ? new Color(.70f, .79f, .78f) : Colors.White,
+                    StretchMode = TextureRect.StretchModeEnum.Scale,
+                    MouseFilter = MouseFilterEnum.Ignore,
+                    Material = new ShaderMaterial { Shader = GD.Load<Shader>("res://resources/shaders/dungeon_terrain_round.gdshader") },
+                };
+                terrain.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+                terrain.OffsetLeft = terrain.OffsetTop = 3;
+                terrain.OffsetRight = terrain.OffsetBottom = -3;
+                button.AddChild(terrain);
+
+                if (node.Feature == "spring")
+                {
+                    var overlay = new TextureRect { Name="SpringFeature", Texture=DungeonTerrainVisuals.SpringOverlay,
+                        ExpandMode=TextureRect.ExpandModeEnum.IgnoreSize, StretchMode=TextureRect.StretchModeEnum.KeepAspectCentered,
+                        MouseFilter=MouseFilterEnum.Ignore };
+                    overlay.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+                    overlay.AnchorLeft=overlay.AnchorTop=.15f; overlay.AnchorRight=overlay.AnchorBottom=.85f;
+                    button.AddChild(overlay);
+                }
+            }
+
+            if (_dynamicMode && !is_roguelike_route && node.ResourceCategory != EastWoodsResourceCategory.None)
+                build_dynamic_resource_node_marker(button, node);
+            if (is_tower_instance && !is_roguelike_route)
+                build_tower_node_type_marker(button, node);
 
             var title = WorldHudStyle.Text("", 14);
             title.HorizontalAlignment = HorizontalAlignment.Center;
             title.Position = new Vector2(4, 4);
             title.Size = new Vector2(100, 22);
+            title.Visible = !is_roguelike_route;
             button.AddChild(title);
             _nodeTitles[node.Id] = title;
 
@@ -328,36 +480,162 @@ public partial class EastWoodsDungeonPanel : Control
 
     }
 
+    private static void build_resource_node_marker(Button button, EastWoodsResourceNodes.Definition resourceNode)
+    {
+        var isPlant = resourceNode.Category == EastWoodsResourceCategory.Plant;
+        var item = EastWoodsActions.Item(resourceNode.Action.ItemPath);
+        var recoveryDays = EastWoodsEcology.RecoveryRate(resourceNode.Action.Recovery).PeriodHours / 24;
+        var marker = new PanelContainer
+        {
+            Name = "ResourceNodeMarker",
+            CustomMinimumSize = new Vector2(54, 30),
+            MouseFilter = MouseFilterEnum.Ignore,
+            TooltipText = $"资源点：{resourceNode.CategoryLabel} · {resourceNode.DisplayName}；每{recoveryDays}日恢复",
+        };
+        marker.SetAnchorsPreset(LayoutPreset.TopRight);
+        marker.OffsetLeft = -59;
+        marker.OffsetTop = 4;
+        marker.OffsetRight = -5;
+        marker.OffsetBottom = 34;
+        var panelStyle = new StyleBoxFlat
+        {
+            BgColor = isPlant ? new Color("405a3a") : new Color("72572f"),
+            BorderColor = isPlant ? new Color("c9d3a8") : new Color("e4c47b"),
+            BorderWidthLeft = 1,
+            BorderWidthTop = 1,
+            BorderWidthRight = 1,
+            BorderWidthBottom = 1,
+            CornerRadiusTopLeft = 7,
+            CornerRadiusTopRight = 7,
+            CornerRadiusBottomLeft = 7,
+            CornerRadiusBottomRight = 7,
+        };
+        marker.AddThemeStyleboxOverride("panel", panelStyle);
+        var row = new HBoxContainer { Alignment = BoxContainer.AlignmentMode.Center, MouseFilter = MouseFilterEnum.Ignore };
+        row.AddThemeConstantOverride("separation", 3);
+        marker.AddChild(row);
+        if (item is not null && ResourceLoader.Exists(item.icon_path))
+        {
+            row.AddChild(new TextureRect
+            {
+                Name = "ItemIcon",
+                Texture = ResourceLoader.Load<Texture2D>(item.icon_path),
+                CustomMinimumSize = new Vector2(18, 18),
+                ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
+                StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
+                MouseFilter = MouseFilterEnum.Ignore,
+            });
+        }
+        var category = WorldHudStyle.Text(isPlant ? "植" : "矿", 13);
+        category.Name = "Category";
+        category.HorizontalAlignment = HorizontalAlignment.Center;
+        category.VerticalAlignment = VerticalAlignment.Center;
+        category.CustomMinimumSize = new Vector2(18, 18);
+        row.AddChild(category);
+        button.AddChild(marker);
+    }
+
+    private void build_dynamic_resource_node_marker(Button button, EastWoodsDungeonRules.NodeDefinition node)
+    {
+        var action = DynamicDungeonExpedition.AvailableActions(_dynamicInstanceState, node.Id, new Godot.Collections.Dictionary())
+            .FirstOrDefault(candidate => candidate.ItemPath.Length > 0);
+        if (action is null) return;
+        var item = EastWoodsActions.Item(action.ItemPath);
+        var isPlant = node.ResourceCategory == EastWoodsResourceCategory.Plant;
+        var days = DynamicDungeonExpedition.RecoveryRate(action.Recovery).PeriodHours / 24;
+        var marker = new PanelContainer
+        {
+            Name = "ResourceNodeMarker",
+            CustomMinimumSize = new Vector2(54, 30),
+            MouseFilter = MouseFilterEnum.Ignore,
+            TooltipText = $"资源点：{(isPlant ? "植物" : "矿产")} · {item?.entity_name ?? "资源"}；每{days}日恢复",
+        };
+        marker.SetAnchorsPreset(LayoutPreset.TopRight);
+        marker.OffsetLeft = -59; marker.OffsetTop = 4; marker.OffsetRight = -5; marker.OffsetBottom = 34;
+        marker.AddThemeStyleboxOverride("panel", panel_style(isPlant ? new Color("405a3a") : new Color("72572f"), isPlant ? new Color("c9d3a8") : new Color("e4c47b"), 7, 1));
+        var row = new HBoxContainer { Alignment = BoxContainer.AlignmentMode.Center, MouseFilter = MouseFilterEnum.Ignore };
+        row.AddThemeConstantOverride("separation", 3);
+        marker.AddChild(row);
+        if (item is not null && ResourceLoader.Exists(item.icon_path))
+            row.AddChild(new TextureRect { Texture = ResourceLoader.Load<Texture2D>(item.icon_path), CustomMinimumSize = new Vector2(18,18), ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize, StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered, MouseFilter = MouseFilterEnum.Ignore });
+        var category = WorldHudStyle.Text(isPlant ? "植" : "矿", 13);
+        category.HorizontalAlignment = HorizontalAlignment.Center; category.VerticalAlignment = VerticalAlignment.Center; category.CustomMinimumSize = new Vector2(18, 18);
+        row.AddChild(category);
+        button.AddChild(marker);
+    }
+
+    private static void build_tower_node_type_marker(Button button, EastWoodsDungeonRules.NodeDefinition node)
+    {
+        var (text, fill, border) = node.ContentType switch
+        {
+            DynamicDungeonExpedition.BattleNodeType => ("战斗", new Color("784e43"), new Color("d9a48c")),
+            DynamicDungeonExpedition.ResourceNodeType => ("资源", new Color("496143"), new Color("c0d2a0")),
+            DynamicDungeonExpedition.RestNodeType => ("休整", new Color("475d60"), new Color("b6cbca")),
+            DynamicDungeonExpedition.BossNodeType => ("首领", new Color("784e43"), new Color("f0c26e")),
+            "alchemy" => ("炼丹", new Color("695846"), new Color("e6c58b")),
+            "forging" => ("炼器", new Color("695846"), new Color("e6c58b")),
+            "manual" => ("静室", new Color("5a5944"), new Color("e6d69d")),
+            "shop" => ("商栈", new Color("6c563e"), new Color("e8c78e")),
+            "cultivation" => ("修炼", new Color("475d60"), new Color("b6cbca")),
+            "entry" => ("入口", new Color("705f37"), new Color("e2cb88")),
+            "exit" => ("出口", new Color("705f37"), new Color("e2cb88")),
+            _ => ("", Colors.Transparent, Colors.Transparent),
+        };
+        if (node.ResourceNodeId.StartsWith("rogue_material_", StringComparison.Ordinal))
+        {
+            var idParts = node.Id.Split('_');
+            var layer = idParts.Length > 1 && int.TryParse(idParts[1], out var parsedLayer) ? parsedLayer : 0;
+            text = DynamicDungeonExpedition.RoguelikeMaterialLabelForLayer(layer);
+        }
+        if (node.Feature == "beast_nest") text = "兽巢";
+        if (text.Length == 0) return;
+        var chip = new PanelContainer { Name = "TowerNodeType", MouseFilter = MouseFilterEnum.Ignore };
+        chip.SetAnchorsPreset(LayoutPreset.BottomWide);
+        chip.OffsetLeft = 7; chip.OffsetTop = -29; chip.OffsetRight = -7; chip.OffsetBottom = -5;
+        chip.AddThemeStyleboxOverride("panel", panel_style(fill, border, 6));
+        var label = WorldHudStyle.Text(text, 13);
+        label.HorizontalAlignment = HorizontalAlignment.Center;
+        label.VerticalAlignment = VerticalAlignment.Center;
+        label.AddThemeColorOverride("font_color", new Color("f6efd9"));
+        chip.AddChild(label);
+        button.AddChild(chip);
+    }
+
     private void layout_map()
     {
         if (_mapRoot is null) return;
         var view = Size;
         if (view.X < 100 || view.Y < 100) return;
-        var nodes = EastWoodsDungeonRules.get_nodes();
-        _minGridX = nodes.Min(node => node.GridPosition.X);
-        _minGridY = nodes.Min(node => node.GridPosition.Y);
-        var columns = nodes.Max(node => node.GridPosition.X) - _minGridX + 1;
-        var rows = nodes.Max(node => node.GridPosition.Y) - _minGridY + 1;
-        var gapRatio = 0.27f;
-        _cellSize = Mathf.Clamp(view.Y * .14f, 90, 170);
-        _cellGap = _cellSize * gapRatio;
-        var totalWidth = columns * _cellSize + Mathf.Max(0, columns - 1) * _cellGap;
-        var totalHeight = rows * _cellSize + Mathf.Max(0, rows - 1) * _cellGap;
+        var nodes = route_nodes;
+        var roguelikeRoute = is_roguelike_route;
+        var mapPositions = nodes.Select(map_grid_position).ToArray();
+        _minGridX = mapPositions.Min(position => position.X);
+        _minGridY = mapPositions.Min(position => position.Y);
+        var columns = mapPositions.Max(position => position.X) - _minGridX + 1;
+        var rows = mapPositions.Max(position => position.Y) - _minGridY + 1;
+        var columnGapRatio = roguelikeRoute ? 0.45f : _dynamicMode ? 0.27f : 0.60f;
+        var layerGapRatio = roguelikeRoute ? 0.85f : columnGapRatio;
+        _cellSize = roguelikeRoute ? Mathf.Clamp(view.Y * .075f, 52, 64) : Mathf.Clamp(view.Y * .14f, 90, 170);
+        _columnGap = _cellSize * columnGapRatio;
+        _layerGap = _cellSize * layerGapRatio;
+        var totalWidth = columns * _cellSize + Mathf.Max(0, columns - 1) * _columnGap;
+        var totalHeight = rows * _cellSize + Mathf.Max(0, rows - 1) * _layerGap;
         _gridOrigin = Vector2.Zero;
         _mapRoot.Size = new Vector2(totalWidth, totalHeight);
 
         foreach (var node in nodes)
         {
-            var grid = node.GridPosition;
-            var position = _gridOrigin + new Vector2((grid.X - _minGridX) * (_cellSize + _cellGap), (grid.Y - _minGridY) * (_cellSize + _cellGap));
+            var grid = map_grid_position(node);
+            var position = _gridOrigin + new Vector2((grid.X - _minGridX) * (_cellSize + _columnGap), (grid.Y - _minGridY) * (_cellSize + _layerGap));
             var button = _nodeButtons[node.Id];
             button.Position = position;
             button.Size = new Vector2(_cellSize, _cellSize);
             button.CustomMinimumSize = button.Size;
-            ((ShaderMaterial)button.GetNode<TextureRect>("Terrain").Material).SetShaderParameter("tile_size", new Vector2(_cellSize - 6, _cellSize - 6));
+            if (!roguelikeRoute)
+                ((ShaderMaterial)button.GetNode<TextureRect>("Terrain").Material).SetShaderParameter("tile_size", new Vector2(_cellSize - 6, _cellSize - 6));
             _nodeTitles[node.Id].Size = new Vector2(_cellSize - 8, 22);
-            _pawnLayers[node.Id].Position = new Vector2(5, 24);
-            _pawnLayers[node.Id].Size = new Vector2(_cellSize - 10, _cellSize - 29);
+            _pawnLayers[node.Id].Position = roguelikeRoute ? new Vector2(_cellSize - 17, _cellSize - 17) : new Vector2(5, 24);
+            _pawnLayers[node.Id].Size = roguelikeRoute ? new Vector2(15, 15) : new Vector2(_cellSize - 10, _cellSize - 29);
             _nodeTitles[node.Id].AddThemeFontSizeOverride("font_size", Mathf.RoundToInt(Mathf.Clamp(_cellSize * 0.105f, 11, 15)));
         }
         refresh();
@@ -371,8 +649,13 @@ public partial class EastWoodsDungeonPanel : Control
         // The caller refreshes once after all route callbacks have settled.
         if (_routeStepUpdating) return;
         if (_mapRoot is null || _connectionLayer is null) return;
+        // This index lives for this synchronous refresh only: no stale ecology
+        // after a resource recovery, completed encounter, or restored snapshot.
+        _refreshingMapActions = !_dynamicMode;
+        try
+        {
         update_visibility();
-        var visibleNodes = EastWoodsDungeonRules.get_nodes();
+        var visibleNodes = route_nodes;
         _pathEdges.Clear();
         _pathNodes.Clear();
         for (var index = 1; index < _pendingPath.Count; index++)
@@ -390,7 +673,7 @@ public partial class EastWoodsDungeonPanel : Control
         {
             foreach (var npc in npcManager.npcs)
             {
-                if (npc is null || !npc.is_alive || npc.dungeon_id != EastWoodsDungeonRules.DungeonId) continue;
+                if (npc is null || !npc.is_alive || npc.dungeon_id != route_dungeon_id) continue;
                 if (!_npcsByNode.TryGetValue(npc.dungeon_node_id, out var nodeNpcs))
                 {
                     nodeNpcs = [];
@@ -413,20 +696,33 @@ public partial class EastWoodsDungeonPanel : Control
             var isSelected = node.Id == _selected;
             var inPath = _pathNodes.Contains(node.Id);
             var edge = isCurrent ? new Color("995d46") : isSelected || inPath ? new Color("99784b") : new Color("68776b");
-            var radius = Mathf.RoundToInt(_cellSize * .07f);
+            var radius = is_roguelike_route ? Mathf.RoundToInt(_cellSize * .5f) : Mathf.RoundToInt(_cellSize * .07f);
             var emphasized = isCurrent || isSelected;
             var styleStamp = (edge, radius, emphasized);
             if (!_nodeStyleStamps.TryGetValue(node.Id, out var oldStamp) || oldStamp != styleStamp)
             {
                 _nodeStyleStamps[node.Id] = styleStamp;
-                button.AddThemeStyleboxOverride("normal", panel_style(new Color("ded8bf"), edge, radius, emphasized ? 3 : 1));
-                button.AddThemeStyleboxOverride("hover", panel_style(new Color("e8e1cc"), new Color("995d46"), radius, 3));
-                button.AddThemeStyleboxOverride("pressed", panel_style(new Color("c9cbb6"), new Color("995d46"), radius, 3));
+                if (is_roguelike_route)
+                {
+                    var baseStyle = panel_style(Colors.Transparent, Colors.Transparent, radius, 0);
+                    button.AddThemeStyleboxOverride("normal", emphasized ? panel_style(Colors.Transparent, edge, radius, 3) : baseStyle);
+                    button.AddThemeStyleboxOverride("hover", panel_style(Colors.Transparent, new Color("995d46"), radius, 3));
+                    button.AddThemeStyleboxOverride("pressed", panel_style(Colors.Transparent, new Color("995d46"), radius, 3));
+                }
+                else
+                {
+                    button.AddThemeStyleboxOverride("normal", panel_style(new Color("ded8bf"), edge, radius, emphasized ? 3 : 1));
+                    button.AddThemeStyleboxOverride("hover", panel_style(new Color("e8e1cc"), new Color("995d46"), radius, 3));
+                    button.AddThemeStyleboxOverride("pressed", panel_style(new Color("c9cbb6"), new Color("995d46"), radius, 3));
+                }
             }
-            var dutyTarget = _activeDutyId == "east_woods_patrol" && node.Id == (_activeDutyReady ? "forest_edge" : "quiet_grove");
-            var title = dutyTarget ? (_activeDutyReady ? "出口 · 回宗回报" : "巡查 · 静冠洼地") : node.ShowTitleOnMap ? node.Title : "";
-            if (is_node_visible(node.Id) && available_actions(node.Id).FirstOrDefault() is { } content)
-                title += (title.Length > 0 ? " · " : "") + (content.Battle ? "兽踪" : content.ItemPath.Length > 0 ? "可采集" : "异状");
+            var dutyTarget = !_dynamicMode && _activeDutyId == "east_woods_patrol" && node.Id == (_activeDutyReady ? "forest_edge" : "quiet_grove");
+            var title = is_roguelike_route ? "" : dutyTarget ? (_activeDutyReady ? "出口 · 回宗回报" : "巡查 · 静冠洼地") : node.ShowTitleOnMap ? node.Title : "";
+            if (is_node_visible(node.Id))
+            {
+                var badge = get_action_badge(node.Id);
+                if (badge.Length > 0) title += (title.Length > 0 ? " · " : "") + badge;
+            }
             var titleLabel = _nodeTitles[node.Id];
             if (titleLabel.Text != title) titleLabel.Text = title;
             var titleVisible = !string.IsNullOrWhiteSpace(title);
@@ -456,6 +752,19 @@ public partial class EastWoodsDungeonPanel : Control
 
         update_details();
         refresh_action_bar();
+        refresh_beast_markers();
+        }
+        finally { _refreshBeastActions = null; _refreshingMapActions = false; }
+    }
+
+    private string get_action_badge(string nodeId)
+    {
+        if (!_dynamicMode) return "";
+        if (_isTraveling && _actionBadgeCache.TryGetValue(nodeId, out var cached)) return cached;
+        var action = available_actions(nodeId).FirstOrDefault();
+        var badge = action is null ? "" : action.Battle ? "兽踪" : action.ItemPath.Length > 0 ? "可采集" : action.Rest ? "可休息" : "异状";
+        _actionBadgeCache[nodeId] = badge;
+        return badge;
     }
 
     private bool pawn_occupants_match(string nodeId, Control layer, bool hasPlayer, List<WorldNpcData>? nodeNpcs)
@@ -482,7 +791,7 @@ public partial class EastWoodsDungeonPanel : Control
     private void refresh_connections(IReadOnlyList<EastWoodsDungeonRules.NodeDefinition> nodes, HashSet<string> pathEdges)
     {
         if (_connectionLayer is null) return;
-        var layoutStamp = $"{_cellSize:R}:{_cellGap:R}";
+        var layoutStamp = $"{_cellSize:R}:{_columnGap:R}:{_layerGap:R}";
         if (_connectionLayoutStamp != layoutStamp)
         {
             clear_connections();
@@ -495,23 +804,27 @@ public partial class EastWoodsDungeonPanel : Control
         foreach (var node in nodes)
         {
             if (!is_node_discovered(node.Id)) continue;
-            foreach (var neighborId in EastWoodsDungeonRules.get_neighbors(node.Id))
+            foreach (var neighborId in route_neighbors(node.Id))
             {
                 if (string.CompareOrdinal(node.Id, neighborId) >= 0 || !is_node_discovered(neighborId)) continue;
-                var neighbor = EastWoodsDungeonRules.get_node(neighborId);
+                var neighbor = route_node(neighborId);
                 if (neighbor is null) continue;
                 var key = edge_key(node.Id, neighborId);
                 var isPath = pathEdges.Contains(key);
                 if (!_connectionVisuals.TryGetValue(key, out var visual))
                 {
-                    var line = add_terrain_connection(node, neighbor, isPath);
+                    var line = is_roguelike_route
+                        ? add_roguelike_connection(node, neighbor, isPath)
+                        : add_terrain_connection(node, neighbor, isPath);
                     if (line is not null) _connectionVisuals[key] = new ConnectionVisual { Line = line, IsPath = isPath };
                 }
                 else if (visual.IsPath != isPath)
                 {
                     visual.IsPath = isPath;
-                    visual.Line.Width = isPath ? 5 : Mathf.Max(2, _cellSize * 0.025f);
-                    visual.Line.DefaultColor = isPath ? new Color("e6bd68") : new Color(0.22f, 0.23f, 0.19f, 0.72f);
+                    visual.Line.Width = is_roguelike_route ? isPath ? 3.5f : 2f : isPath ? 5 : Mathf.Max(2, _cellSize * 0.025f);
+                    visual.Line.DefaultColor = is_roguelike_route
+                        ? isPath ? new Color("c18d4d") : new Color("665f50", .76f)
+                        : isPath ? new Color("e6bd68") : new Color(0.22f, 0.23f, 0.19f, 0.72f);
                 }
             }
         }
@@ -531,8 +844,9 @@ public partial class EastWoodsDungeonPanel : Control
         var width = layer.Size.X;
         var height = layer.Size.Y;
         if (width <= 0 || height <= 0) return;
-        var seed = EastWoodsDungeonRules.stable_seed($"standing|{EastWoodsDungeonRules.LayoutSeed}|{layer.GetParent().Name}|" +
-            string.Join("|", occupants.Select(o => o.IsPlayer ? "player" : o.Npc!.npc_id)));
+        var seedText = "standing|" + route_layout_seed + "|" + layer.GetParent().Name + "|" +
+            string.Join("|", occupants.Select(o => o.IsPlayer ? "player" : o.Npc!.npc_id));
+        var seed = _dynamicMode ? DynamicDungeonExpedition.StableSeed(seedText) : EastWoodsDungeonRules.stable_seed(seedText);
         var rects = pack_pawns(new Vector2(width, height), occupants.Count, seed);
 
         for (var index = 0; index < occupants.Count; index++)
@@ -615,7 +929,18 @@ public partial class EastWoodsDungeonPanel : Control
     private void on_node_clicked(string nodeId)
     {
         if (!is_node_discovered(nodeId)) return;
-        if (_isTraveling || _npcEncounterBusy || _travelPawn is not null || _actionBusy || _actionModal?.Visible == true || nodeId == _current) return;
+        if (_isTraveling || _npcEncounterBusy || _travelPawn is not null || _actionBusy || _actionModal?.Visible == true) return;
+        if (nodeId == _current)
+        {
+            if (is_roguelike_route) interact_current_roguelike_node();
+            return;
+        }
+        if (is_tower_instance && !is_valid_next_node(nodeId)) return;
+        if (is_roguelike_route)
+        {
+            begin_assigned_route(nodeId);
+            return;
+        }
         if (_pendingTarget == nodeId && _pendingPath.Count > 1)
         {
             start_pending_path();
@@ -652,10 +977,14 @@ public partial class EastWoodsDungeonPanel : Control
         for (var index = 1; index < path.Length; index++)
         {
             if (generation != _travelGeneration || !GodotObject.IsInstanceValid(this) || !IsInsideTree() || !Visible) break;
-            move_one_node(path[index]);
+            if (!move_one_node(path[index])) break;
             if (generation != _travelGeneration || !GodotObject.IsInstanceValid(this) || !IsInsideTree() || !Visible) break;
-            await ToSignal(GetTree().CreateTimer(PawnStepSeconds), SceneTreeTimer.SignalName.Timeout);
-            await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+            // Advance only after the pawn animation really completes. A timer equal
+            // to the tween duration can resume first and make the next step collide
+            // with _travelPawn still being active.
+            var stepCompletion = _pawnStepCompletion?.Task;
+            if (stepCompletion is not null) await stepCompletion;
+            if (generation != _travelGeneration || !GodotObject.IsInstanceValid(this) || !IsInsideTree() || !Visible) break;
         }
         if (!GodotObject.IsInstanceValid(this) || !IsInsideTree() || generation != _travelGeneration) return;
         _isTraveling = false;
@@ -664,21 +993,23 @@ public partial class EastWoodsDungeonPanel : Control
         RouteTravelFinished?.Invoke(_current);
     }
 
-    private void move_one_node(string nodeId)
+    private bool move_one_node(string nodeId)
     {
-        if (_npcEncounterBusy || _travelPawn is not null || _actionBusy || _actionModal?.Visible == true || CanMove?.Invoke() == false) return;
-        if (!EastWoodsDungeonRules.get_neighbors(_current).Contains(nodeId)) return;
+        if (_npcEncounterBusy || _travelPawn is not null || _actionBusy || _actionModal?.Visible == true || CanMove?.Invoke() == false) return false;
+        if (!route_neighbors(_current).Contains(nodeId)) return false;
+        if (is_tower_instance && !is_valid_next_node(nodeId)) return false;
+        if (is_tower_instance && CanEnterRouteNode?.Invoke(nodeId) == false) return false;
         if (!_isTraveling)
         {
             _pendingPath.Clear();
             _pendingTarget = "";
         }
         var previous = _current;
-        var direction = EastWoodsDungeonRules.get_node(nodeId)!.GridPosition - EastWoodsDungeonRules.get_node(previous)!.GridPosition;
+        var direction = map_grid_position(route_node(nodeId)!) - map_grid_position(route_node(previous)!);
         if (direction.X != 0) _playerFacingLeft = direction.X < 0;
-        _travelCameraPosition = node_center(EastWoodsDungeonRules.get_node(previous)!);
+        _travelCameraPosition = node_center(route_node(previous)!);
         var source = _pawnLayers[previous].GetNodeOrNull<Control>("PlayerPawn");
-        var sourcePosition = source is null ? node_center(EastWoodsDungeonRules.get_node(previous)!) : pawn_map_position(source);
+        var sourcePosition = source is null ? node_center(route_node(previous)!) : pawn_map_position(source);
         var generation = _travelGeneration;
         _current = nodeId;
         _selected = nodeId;
@@ -692,6 +1023,16 @@ public partial class EastWoodsDungeonPanel : Control
         finally { _routeStepUpdating = false; }
         refresh();
         if (generation == _travelGeneration && Visible) animate_player_step(previous, sourcePosition);
+        return _current == nodeId;
+    }
+
+    private bool is_valid_next_node(string nodeId)
+    {
+        if (!is_tower_instance) return true;
+        var current = route_node(_current);
+        var destination = route_node(nodeId);
+        return current is not null && destination is not null &&
+            destination.GridPosition.Y == current.GridPosition.Y - 1 && route_neighbors(_current).Contains(nodeId);
     }
 
     private List<string> find_shortest_path(string from, string to)
@@ -705,7 +1046,7 @@ public partial class EastWoodsDungeonPanel : Control
         {
             var current = queue.Dequeue();
             if (current == to) break;
-            foreach (var neighbor in EastWoodsDungeonRules.get_neighbors(current))
+            foreach (var neighbor in route_neighbors(current))
             {
                 if (!is_node_discovered(neighbor)) continue;
                 if (previous.ContainsKey(neighbor)) continue;
@@ -721,10 +1062,13 @@ public partial class EastWoodsDungeonPanel : Control
 
     private Vector2 node_center(EastWoodsDungeonRules.NodeDefinition node)
     {
-        var x = (node.GridPosition.X - _minGridX) * (_cellSize + _cellGap) + _cellSize * 0.5f;
-        var y = (node.GridPosition.Y - _minGridY) * (_cellSize + _cellGap) + _cellSize * 0.5f;
+        var grid = map_grid_position(node);
+        var x = (grid.X - _minGridX) * (_cellSize + _columnGap) + _cellSize * 0.5f;
+        var y = (grid.Y - _minGridY) * (_cellSize + _layerGap) + _cellSize * 0.5f;
         return _gridOrigin + new Vector2(x, y);
     }
+
+    private static Vector2I map_grid_position(EastWoodsDungeonRules.NodeDefinition node) => node.GridPosition;
 
     private static string edge_key(string left, string right)
         => string.CompareOrdinal(left, right) < 0 ? $"|{left}|{right}|" : $"|{right}|{left}|";

@@ -16,7 +16,7 @@ public partial class BodyRefinementMethod : Resource
     [Export] public GDict allocation_ranges = [];
     /// <summary>部位到有效炼级范围；低于下限为0%，高于上限按一炼25%、二炼5%、三炼及以上1%衰减。</summary>
     [Export] public GDict effective_level_ranges = [];
-    [Export] public Godot.Collections.Array<string> required_textures = [];
+    [Export] public Godot.Collections.Array<string> required_material_forms = [];
     [Export] public Godot.Collections.Array<string> required_utilities = [];
     [Export(PropertyHint.Range, "0,27,1")] public int required_utility_grade = 1;
     [Export] public bool default_unlocked = true;
@@ -45,15 +45,15 @@ public partial class BodyRefinementMethod : Resource
     public bool CanUseMaterial(ItemData? item)
     {
         if (item is null || item.item_category != "材料") return false;
-        var textures = ItemAffixCatalog.get_tag_values(item.tags, "质地");
-        if (required_textures.Count > 0 && !required_textures.Any(textures.Contains)) return false;
+        var legacyTexture = (item.craft_data as MaterialCraftData)?.legacy_texture ?? "";
+        if (required_material_forms.Count > 0 && !required_material_forms.Contains(legacyTexture)) return false;
         var utilities = ItemAffixCatalog.get_tag_values(item.tags, "功用");
         if (required_utilities.Count > 0 && !required_utilities.Any(required => utilities.Any(actual => BodyRefinementRules.UtilityMatches(actual, required)))) return false;
         return item.grade_value >= required_utility_grade;
     }
 
     public string GetRequirementText() =>
-        $"质地：{(required_textures.Count == 0 ? "不限" : string.Join(" / ", required_textures))}；功用：{(required_utilities.Count == 0 ? "不限" : string.Join(" / ", required_utilities))}；品阶：{ItemAffixCatalog.grade_to_string(required_utility_grade)}以上";
+        $"材料形态：{(required_material_forms.Count == 0 ? "不限" : string.Join(" / ", required_material_forms))}；功用：{(required_utilities.Count == 0 ? "不限" : string.Join(" / ", required_utilities))}；品阶：{ItemAffixCatalog.grade_to_string(required_utility_grade)}以上";
 
     public string GetAllocationText()
     {

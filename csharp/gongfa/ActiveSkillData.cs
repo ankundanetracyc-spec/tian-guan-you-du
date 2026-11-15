@@ -4,6 +4,20 @@ using Godot.Collections;
 /// <summary>Serializable skill definition shared by即时战斗技能槽、世界技能与凝核牌局。</summary>
 public partial class ActiveSkillData : Resource
 {
+    // 来源身份与法器运行时分支；不伪造 ResourcePath，不写入永久技能列表。
+    [Export] public string combat_source_key = "";
+    [Export] public string artifact_instance_id = "";
+    [Export] public string forged_source_instance_id = "";
+    [Export] public int forged_spirit_cost;
+    [Export] public int forged_flat_ignore;
+    [Export] public ActiveSkillData? artifact_summon_skill;
+    [Export] public bool artifact_is_summon;
+    [Export] public bool combat_empty_slot;
+    [Export] public float physical_defense_ignore_ratio;
+    [Export] public int artifact_block_bonus;
+    // 独立炼器试器：明确本次物理攻伐使用的唯一剑实例，不作为构筑关键词。
+    [Export] public string forged_weapon_instance_id = "";
+    [Export] public string forged_equipment_description = "";
     public enum SkillType { ATTACK, MOVEMENT, DRAW, BUFF, WAIT, SPECIAL, POWER, CURSE }
     public enum CardConditionType { NONE, MAIN_GONGFA, SUB_GONGFA, ANY_GONGFA }
 
@@ -17,7 +31,7 @@ public partial class ActiveSkillData : Resource
     [Export] public Dictionary required_attributes = [];
     [Export] public string required_realm = "";
     [ExportGroup("消耗条件")]
-    /// <summary>局内精力费用，范围为 0 至 3。</summary>
+    /// <summary>局内体力费用，范围为 0 至 3。</summary>
     [Export(PropertyHint.Range, "0,3,1")] public int energy_cost;
     [Export] public int mana_cost;
     /// <summary>仅祭出持续实体时使用；普通术法与神魂牌不得支付灵识。</summary>
@@ -33,6 +47,16 @@ public partial class ActiveSkillData : Resource
     [Export] public int aoe_range;
     [Export] public bool can_target_empty;
     [Export] public int move_distance;
+    /// <summary>显式出手方式分类：melee 为近身，ranged 为远程；只用于招式联动，不代表战斗距离或射程。</summary>
+    [Export] public string attack_style = "";
+    /// <summary>运行时派生的补充伤害段，不重复触发原技能的附加效果。</summary>
+    [Export] public bool combat_is_gongfa_bonus_damage_segment;
+    /// <summary>流云剑势追加段，沿用本次行动快照。</summary>
+    [Export] public bool combat_is_cloud_segment;
+    /// <summary>运行时派生的血臂追击段；主修增幅只作用于该段。</summary>
+    [Export] public bool combat_is_blood_arm_segment;
+    /// <summary>运行时派生的血臂演出段；化法复制段也可由血臂执行演出。</summary>
+    [Export] public bool combat_is_blood_arm_visual_segment;
     [ExportGroup("即时战斗时序")]
     /// <summary>旧战斗流程兼容字段；即时队列战斗不使用准备时长。</summary>
     [Export(PropertyHint.Range, "0,1440,1")] public int preparation_frames;
@@ -92,11 +116,23 @@ public partial class ActiveSkillData : Resource
     }
 
     public int get_energy_cost() => energy_cost;
-    public string get_cost_description() => skill_type == SkillType.POWER ? "" : $"精力: {energy_cost}，法力: {mana_cost}";
+    public string get_cost_description() => skill_type == SkillType.POWER ? "" : $"体力: {energy_cost}，法力: {mana_cost}";
+
+    /// <summary>牌面展示关键词；应对机制同时作为可检索标签显示。</summary>
+    public Array<string> get_presentation_tags()
+    {
+        var result = new Array<string>();
+        foreach (var tag in tags)
+            if (!string.IsNullOrWhiteSpace(tag) && !result.Contains(tag)) result.Add(tag);
+        if (keywords.Contains("应对") && !result.Contains("应对")) result.Add("应对");
+        return result;
+    }
 
     /// <summary>所有卡牌共用的牌面短描述：只写目标、数值与关键机制，不使用叙事性长句。</summary>
     public string get_brief_description(GodotObject? owner = null)
     {
+        if (has_board_definition() && (owner?.HasMeta("artifact_battle_clone") != true || owner?.HasMeta("combat_board_mode") == true))
+            return CardPresentation.BoardFace(this, owner);
         var lines = new List<string>();
         if (!Mathf.IsZeroApprox(base_damage) || damage_bonuses.Count > 0 || !string.IsNullOrWhiteSpace(damage_formula))
             lines.Add($"对一名指定敌人造成 {Mathf.RoundToInt(BattleActionResolver.preview_damage(owner,this))} 点{damage_name()}伤害。");
@@ -112,10 +148,14 @@ public partial class ActiveSkillData : Resource
             if(status=="化解")count=CardRules.Block(this,owner,count);
             if (!string.IsNullOrEmpty(status)) lines.Add($"获得 {count} 层{status}。");
         }
-        if (keywords.Contains("应对")) lines.Insert(0, "应对触发：当前槽遇到匹配来袭时立即触发。" + (CardRules.NormalCast(this) is null ? "未触发则空放，不消耗费用。" : "未触发则结算独立的普通打出效果与费用。"));
+        if (keywords.Contains("应对"))
+        {
+            var trigger = counter_condition == "on_physical_attacked" ? "当前槽受到敌方物理攻击时立即触发。" : "当前槽遇到匹配来袭时立即触发。";
+            lines.Insert(0, "应对触发：" + trigger + (CardRules.NormalCast(this) is null ? "未触发则空放，不消耗费用。" : "未触发则结算独立的普通打出效果与费用。"));
+        }
         return lines.Count == 0 ? (string.IsNullOrWhiteSpace(description)?"施展本技能效果。":description) : string.Join("\n", lines);
     }
-    public string get_skill_description(GodotObject? owner = null) => get_brief_description(owner) + get_counter_effect_description(owner);
+    public string get_skill_description(GodotObject? owner = null) => CardPresentation.Face(this, owner);
 
     public string get_card_category() => skill_type switch
     {
@@ -131,14 +171,20 @@ public partial class ActiveSkillData : Resource
         var baseValue = CardRules.Evaluate(effect.GetValueOrDefault("formula", "").AsString(), owner);
         return id switch
         {
-            "shield" => $"获得 {baseValue:0.##} 点护持。",
-            "restore_stamina" => $"恢复 {baseValue:0.##} 点精力。",
-            "gain_energy" => $"获得 {count} 点精力。",
+            "forest_bei_pack_call" => "使全体存活的友方林地凶狼各获得1层逐猎，最多3层。",
+            "shield" => $"获得 {baseValue:0.##} 点护盾。",
+            "restore_stamina" => $"恢复 {baseValue:0.##} 点体力。",
+            "gain_energy" => $"获得 {count} 点体力。",
             "restore_mana" => $"恢复 {baseValue:0.##} 点法力。",
             "draw" => $"抽取 {count} 张卡牌。",
             "counter_block" => $"获得 {CardRules.Block(this, owner, count)} 层化解。",
             "gain_punch_frame" => $"获得 {count} 层拳架。",
             "gain_qi_blood" => $"获得 {count} 层气血。",
+            "gain_qi" => $"获得炁 {count}。",
+            "gain_sword_intent" => $"获得剑意 {count} 层。",
+            "consume_sword_intent" => "命中后消耗全部剑意。",
+            "disperse_qi_blood" => $"打散目标 {count} 层气血。",
+            "assign_nian_to_next_skill" => $"为行动队列中下一项不同的主动技能实例赋念 {count} 层；若没有合宜后续招式，本招不结算。",
             "precision_if_guarding" => "自身有护持、化解或借力时提高精准。",
             "spend_qi_blood" => "消耗 1 层气血。",
             "evasion" => "本次受击提高闪避。",

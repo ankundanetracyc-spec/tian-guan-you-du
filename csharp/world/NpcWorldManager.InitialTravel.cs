@@ -16,9 +16,10 @@ public partial class NpcWorldManager
         {
             var candidates = group.OrderBy(n => stable_seed(month, n.npc_id, "initial_travel")).ToArray();
             var originCell = get_location_anchor_cell(group.Key);
-            var nearby = destinations.Where(n => n.node_id != group.Key)
-                .OrderBy(n => originCell.DistanceSquaredTo(get_location_anchor_cell(n.node_id)))
-                .ThenBy(n => n.node_id, StringComparer.Ordinal).ToArray();
+            var graphNeighbors = _tile_world_map.HasMethod("get_npc_location_neighbors")
+                ? _tile_world_map.Call("get_npc_location_neighbors", group.Key).AsGodotArray<string>() : null;
+            var nearby = destinations.Where(n => n.node_id != group.Key && (graphNeighbors is null || graphNeighbors.Contains(n.node_id)))
+                .OrderBy(n => n.node_id, StringComparer.Ordinal).ToArray();
             // One path search per origin/destination, shared by all travelers from that origin.
             var routes = new List<(WorldNodeData Destination, Godot.Collections.Array<Vector2I> Path)>();
             foreach (var destination in nearby)
@@ -45,8 +46,8 @@ public partial class NpcWorldManager
                 npc.current_grid_cell = path[at];
                 npc.has_world_grid_position = true;
                 npc.world_travel_next_cell_index = at + 1;
-                npc.world_travel_cell_progress_hours = (float)(get_npc_cell_travel_hours(path[at + 1], npc.dun_speed) * rng.Randf() * .9);
-                npc.travel_days_total = Math.Max(1, Mathf.CeilToInt((float)(path.Skip(1).Sum(cell => get_npc_cell_travel_hours(cell, npc.dun_speed)) / 24)));
+                npc.world_travel_cell_progress_hours = (float)(get_npc_cell_travel_hours(path[at], path[at + 1], npc.dun_speed) * rng.Randf() * .9);
+                npc.travel_days_total = Math.Max(1, Mathf.CeilToInt((float)(Enumerable.Range(1, path.Count - 1).Sum(i => get_npc_cell_travel_hours(path[i - 1], path[i], npc.dun_speed)) / 24)));
                 npc.travel_days_remaining = Math.Max(1, Mathf.CeilToInt((float)(get_remaining_world_travel_hours(npc) / 24)));
                 record(npc, month, "initial_travel", "行旅初态", "世界人口初始化时已有的外出行程，不推进主角时间。",
                     $"自 {group.Key} 前往 {destination.node_id}，当前已在途中。", 0, "", false,

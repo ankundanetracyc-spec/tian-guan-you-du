@@ -1,0 +1,13 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="痛击">
+    <mxGraphModel>
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" parent="1" vertex="1" value="痛击&#10;关键词：无&#10;体力1、法力0；延迟0.20秒；冷却：C秒（C=max(2,5÷(1+体魄÷50))），最低2秒&#10;目标：前方180像素半圆敌人&#10;出手方式：近身&#10;造成A点物理伤害（A=round(11+体魄×0.75)）。&#10;单次按下施放；无额外僵直、击退。&#10;冷却从逻辑招式结束或中断后起算。" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#eee9d9;strokeColor=#557f70;fontSize=16;align=left;spacing=16;">
+          <mxGeometry x="30" y="30" width="450" height="350" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

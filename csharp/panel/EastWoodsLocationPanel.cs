@@ -63,11 +63,12 @@ public partial class EastWoodsLocationPanel : Control
         explore.Pressed += () => ExplorationRequested?.Invoke();
         AddChild(explore);
 
-        var back = make_button("返回世界地图", 184, 44);
-        back.SetAnchorsPreset(LayoutPreset.TopRight);
-        back.Position = new Vector2(-220, 28);
+        var back = make_button("返回", 114, 46);
+        back.Name = "EastWoodsReturn";
+        back.CustomMinimumSize = CraftingPaperHeader.ReturnSize;
         back.Pressed += close;
-        AddChild(back);
+        AddChild(back); CraftingPaperHeader.PlaceReturn(this, back);
+        CraftingPaperHeader.AddReturnArrow(back, new Color("eadfca"));
     }
 
     private static Label make_label(string text, int size, Color color)

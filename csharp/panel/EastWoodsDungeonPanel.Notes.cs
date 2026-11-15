@@ -8,19 +8,34 @@ public partial class EastWoodsDungeonPanel
     // Read from existing exploration/action state; never reveal an unexamined resource or beast.
     private string exploration_notes()
     {
-        var exitPath = find_shortest_path(_current, "forest_edge");
-        var text = new StringBuilder("只显示四格视野内的现场情况；查看不推进时间。\n");
-        text.Append(exitPath.Count > 0 || _current == "forest_edge" ? $"返回林缘约需 {format_hours(Math.Max(0, exitPath.Count - 1) * EastWoodsDungeonRules.player_edge_hours(_playerDunSpeed))}。\n" : "尚无完整的已知回程路线，须沿已走过的道路返回。\n");
-        var known = EastWoodsDungeonRules.get_nodes().Where(n =>
-                is_node_visible(n.Id) &&
-                EastWoodsActions.Content(n.Id) is not null &&
+        if (is_roguelike_route)
+        {
+            var layer = DynamicDungeonExpedition.RoguelikeLayerForNodeId(_current);
+            var current = route_node(_current);
+            var title = current is null ? "入口" : current.Title;
+            var actions = available_actions(_current);
+            var rogueNotes = new StringBuilder(layer > 0 ? $"当前：第{layer}层 · {title}。" : $"当前：{title}。");
+            if (actions.Count > 0)
+                rogueNotes.Append("\n点击当前节点，可以再次互动或处理剩余资源。");
+            rogueNotes.Append("\n沿连线选择上一层的节点，抵达后直接行动。");
+            rogueNotes.Append("\n第30层击败首领后，方可前往出口。");
+            return rogueNotes.ToString();
+        }
+        var exitPath = find_shortest_path(_current, route_exit_node_id);
+        var text = new StringBuilder(_dynamicMode ? "只显示四格视野内的现场情况；查看不推进时间。\n" : "沿林径亲自抵达，才能得知当地情形。查看札记不推进时间。\n");
+        if (!_dynamicMode) text.Append($"此刻位于{EastWoodsDungeonRules.forest_region(_current)}。\n");
+        var exitName = _dynamicMode ? "幽谷入口" : "林缘";
+        text.Append(exitPath.Count > 0 || _current == route_exit_node_id ? $"返回{exitName}约需 {format_hours(Math.Max(0, exitPath.Count - 1) * EastWoodsDungeonRules.player_edge_hours(_playerDunSpeed))}。\n" : "尚无完整的已知回程路线，须沿已走过的道路返回。\n");
+        var known = route_nodes.Where(n =>
+                is_node_visible(n.Id) && (_dynamicMode || n.Id == _current) &&
+                (_dynamicMode ? available_actions(n.Id).Count > 0 : EastWoodsActions.Content(n.Id) is not null) &&
                 is_explored(n.Id))
             .OrderBy(n => n.Id == _current ? 0 : find_shortest_path(_current, n.Id).Count).ToArray();
-        if (known.Length == 0) text.Append("\n视野内暂无可记录的资源或异状，可沿林径继续前行，无需探查。");
+        if (known.Length == 0) text.Append(_dynamicMode ? "\n视野内暂无可记录的资源或异状，可沿林径继续前行，无需探查。" : "\n旧径通向林间，沿已见道路继续前行，抵达后再看现场。");
         foreach (var node in known.Take(6))
         {
             var availableBeast = available_actions(node.Id).FirstOrDefault(candidate => candidate.Battle);
-            var action = availableBeast ?? EastWoodsActions.Content(node.Id)!;
+            var action = availableBeast ?? (_dynamicMode ? available_actions(node.Id).FirstOrDefault()! : EastWoodsActions.Content(node.Id)!);
             var location = string.IsNullOrWhiteSpace(node.Title) ? $"林间（{node.GridPosition.X}, {node.GridPosition.Y}）" : node.Title;
             var remaining = action_remaining(node.Id, action);
             var content = action.ItemPath.Length > 0 ? $"{EastWoodsActions.Item(action.ItemPath)?.entity_name}，余 {remaining} 份"
@@ -29,7 +44,7 @@ public partial class EastWoodsDungeonPanel
             text.Append($"\n{location}：{content}");
         }
         if (known.Length > 6) text.Append($"\n\n已记 {known.Length} 处要点，此页列离你最近的六处。");
-        text.Append("\n\n野外所得归自己；未接取并交付宗门事务，不自动获得贡献。");
+        if (!_dynamicMode) text.Append("\n\n野外所得归自己；未接取并交付宗门事务，不自动获得贡献。");
         return text.ToString();
     }
 
@@ -37,6 +52,7 @@ public partial class EastWoodsDungeonPanel
     {
         if (_actionBusy || _isTraveling || _travelPawn is not null) return;
         close_action_details();
+        if (_dynamicMode) { show_action_result("幽谷见闻", exploration_notes()); return; }
         var target = _activeDutyReady ? "forest_edge" : "quiet_grove";
         if (_current == target)
             show_action_result("巡查指引", _activeDutyReady ? "从林缘离开后，回和光峰宗门事务处回报。" : "沿路线至少推进四个节点后，在静冠洼地完成复核。巡查不要求探查、采集或杀怪。");

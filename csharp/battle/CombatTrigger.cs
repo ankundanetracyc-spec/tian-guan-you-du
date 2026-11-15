@@ -43,6 +43,7 @@ public partial class CombatTrigger : Node
         var returnData = manager.Call("consume_battle_return_data").AsGodotDictionary();
         var context = returnData.GetValueOrDefault("context", new Dictionary()).AsGodotDictionary();
         var summary = returnData.GetValueOrDefault("summary", new Dictionary()).AsGodotDictionary();
+        if (results.Count > 3) summary["artifact_reports"] = results[3]; // 仅回传，首版不扣耐久。
         var currentScene = GetTree().CurrentScene;
         if (hasBattleResults)
         {
@@ -58,6 +59,8 @@ public partial class CombatTrigger : Node
         }
         if (context.GetValueOrDefault("kind", "").AsString() == "yuxu_npc_spar" && currentScene is MainScene main)
             main.show_npc_spar_result(summary, context);
+        if (context.GetValueOrDefault("kind", "").AsString() == "yuxu_provisional_exam_trial" && currentScene is MainScene examMain)
+            examMain.show_yuxu_provisional_trial_result(summary, context);
     }
     private void CollectEntities(Node? node, Dictionary result)
     { if (node is null) return; var id = node.Get("unique_id").AsString(); if (!string.IsNullOrEmpty(id)) result[id] = node; foreach (var child in node.GetChildren()) CollectEntities(child, result); }

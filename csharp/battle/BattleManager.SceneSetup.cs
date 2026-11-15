@@ -18,7 +18,7 @@ public partial class BattleManager : Node2D
     {
         if (_sceneUiConnected) return;
         var transition = GetTree().Root.GetNodeOrNull<BattleTransitionManager>("BattleTransitionManager");
-        if (transition?.is_spectator_battle_active() == true)
+        if (!isolated_trial_battle && transition?.is_spectator_battle_active() == true)
         {
             _spectatorBattle = true;
             _sceneUiConnected = true;
@@ -30,7 +30,7 @@ public partial class BattleManager : Node2D
         if (scene is null) return;
         var uiLayer = scene.GetNodeOrNull<CanvasLayer>("UILayer");
         if (uiLayer is null) return;
-        uiLayer.Layer = 10;
+        uiLayer.Layer = BattlePresentationLayers.HudCanvas;
         ApplyBattleArtwork(scene);
 
         _skillBar = scene.GetNodeOrNull<CombatSkillBar>("UILayer/CombatSkillBar");
@@ -52,6 +52,9 @@ public partial class BattleManager : Node2D
         _planHud.Hide();
         uiLayer.AddChild(_planHud);
         _planHud.Setup(this);
+        _supplyHud = new BattleSupplyHud();
+        scene.AddChild(_supplyHud);
+        _supplyHud.Setup(this);
         if (_skillBar is not null)
         {
             _skillBar.skill_selected += on_skill_selected;
@@ -132,13 +135,18 @@ public partial class BattleManager : Node2D
             // 隔离战斗资源，避免 PackedScene 共用数据污染世界角色或演练存档。
             if(unit is WorldEntity entity && entity.entity_data is not null)entity.entity_data=entity.entity_data.Duplicate(true) as EntityData;
             DeployLayer?.AddChild(unit);
-            unit.Set("initialized_from_data", true); unit.Call("apply_battle_data", snapshot);
+            unit.Set("initialized_from_data", true); unit.SetMeta("artifact_battle_clone", true); unit.Call("apply_battle_data", snapshot);
             unit.SetMeta("battle_dun_speed",snapshot.dun_speed);
             unit.SetMeta("basic_deck_path", snapshot.basic_deck_path);
             unit.SetMeta("active_skill_paths", snapshot.active_skill_paths);
             unit.SetMeta("loaded_skill_paths", snapshot.loaded_skill_paths);
             unit.SetMeta("combat_skill_slot_paths", snapshot.combat_skill_slot_paths);
+            unit.SetMeta("combat_resolved_skills", snapshot.combat_resolved_skills.Duplicate(true));
             unit.SetMeta("combat_skill_slots_configured", snapshot.combat_skill_slots_configured);
+            if (snapshot.combat_board_catalog is not null)
+                unit.SetMeta("combat_board_catalog",snapshot.combat_board_catalog.Duplicate(true));
+            if (snapshot.combat_board_layout is not null)
+                unit.SetMeta("combat_board_layout", snapshot.combat_board_layout.CopyConfiguration());
             unit.SetMeta("combat_passive_paths", snapshot.combat_passive_paths);
             unit.SetMeta("combat_heart_method_upgrades", snapshot.combat_heart_method_upgrades);
             unit.SetMeta("battle_deck_configured", snapshot.battle_deck_configured);
@@ -149,17 +157,20 @@ public partial class BattleManager : Node2D
                 CurrentMana = unit.Get("current_mana").AsInt32(),
                 MaxMana = unit.Get("max_mana").AsInt32()
             };
-            // 精力在战斗中使用独立的 6 点上限；法力上限沿用角色境界快照。
-            unit.Set("max_stamina", BattleEnergyCap); unit.Set("current_stamina", 0);
+            // 体力在战斗中使用独立的 6 点上限；法力上限沿用角色境界快照。
+            unit.Set("max_stamina", snapshot.test_stamina_cap_override >= 0 ? snapshot.test_stamina_cap_override : BattleEnergyCap); unit.Set("current_stamina", 0);
             unit.Set("current_mana", 0);
             if (unit is Creature creature)
             {
                 // 气血是公共战斗资源；所有修士统一初始化，不依赖秘籍分类或历史存档字段。
                 creature.initialize_body_combat_state(unit is Character);
                 creature.apply_combat_tempering_stats();
-                if (snapshot.cultivation_inspiration_starting_shield > 0)
+                if (CultivationInspirationSystem.Enabled && snapshot.cultivation_inspiration_starting_shield > 0)
                     creature.shield += snapshot.cultivation_inspiration_starting_shield;
             }
+            // 测试专用上限在身体／淬体初始化之后覆盖，避免被原容量推导重写。
+            if(snapshot.test_stamina_cap_override>=0)unit.Set("max_stamina",snapshot.test_stamina_cap_override);
+            if(snapshot.test_mana_cap_override>=0)unit.Set("max_mana",snapshot.test_mana_cap_override);
             // 战斗由角色身体区域的双击入口处理，避免世界实体单击就打开面板。
             unit.Set("input_pickable", false); unit.Set("visible", true);
             if (!_spectatorBattle) AddPaperDoll(unit, snapshot);
@@ -179,6 +190,10 @@ public partial class BattleManager : Node2D
             }
             battle_units[unit] = new BattleUnit(); ((BattleUnit)battle_units[unit].AsGodotObject()!).setup(unit, deck);
             initialize_formation_circuits(unit, snapshot);
+            InitializeArtifacts(unit, snapshot);
+            // 正式快照已由 InitializeArtifacts 登记；空的试器数据不能撤销正式装备收益。
+            if (snapshot.trial_forged_equipment_json.Length > 0)
+                ForgedEquipmentLoadout.ApplyBattleBonuses(unit, snapshot.trial_forged_equipment_json);
         }
     }
 }

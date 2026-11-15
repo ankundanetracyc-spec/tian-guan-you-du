@@ -1,0 +1,1018 @@
+{
+  "status": "real_material_input_with_new_candidate_rules_not_live_item",
+  "rules_version": "sword-material-profile-trial-2-shape-pools",
+  "native_baseline_reproduction_max_allocation_error": 4.12560625662195e-07,
+  "input_proficiency": 60.0,
+  "input_units": 24.0,
+  "original_metrics": {
+    "volume": 11.5129898167036,
+    "lambda": 12.479229144939382,
+    "tau": 0.1571884371740907,
+    "length": 22.5102860783911,
+    "width": 1.80382023736775,
+    "thickness": 0.283539684054834,
+    "connection": 6.8,
+    "connection_needed": 2.8782474541759,
+    "connection_ratio": 1,
+    "C": 109.389786719736,
+    "C_spirit": 56.6313680303471,
+    "R": 24.9544233424503,
+    "T": 31.6118690875437,
+    "stability_support": 56.54216739915968,
+    "conflict_loss": 4.5797082202232,
+    "processing_loss": 0.44287432002572297,
+    "L": 5.022582540248923,
+    "S": 0.915002052207154,
+    "H": 22.8333485699881,
+    "tier": "法器",
+    "edge_material": 1.629542699594175,
+    "finish": 0.8190096356882566,
+    "shape_coefficient": 0.976866758771171,
+    "indirect_sharpness_support": 2.3998686857252,
+    "sharpness_raw": 5.28694522268199,
+    "sharpness": 5.0,
+    "polarity": 0.867016288991305,
+    "craft_hours": 8.0,
+    "craft_energy": 16.0
+  },
+  "body_split_by_utility": {
+    "固": [
+      13.385339868642806,
+      15.058507352223156,
+      5.019502450741052
+    ],
+    "通": [
+      1.4471364027170996,
+      2.4118940045284996,
+      0.9647576018113999
+    ],
+    "聚": [
+      0.3953189592803522,
+      0.1647162330334801,
+      0.09882973982008805
+    ],
+    "藏": [
+      0.1976594796401761,
+      0.3953189592803522,
+      0.06588649321339204
+    ],
+    "破": [
+      0.5299568856386759,
+      0.26497844281933797,
+      0.971587623670906
+    ],
+    "生": [
+      2.892406153846158,
+      1.2051692307692325,
+      0.7231015384615395
+    ]
+  },
+  "body_totals": {
+    "core": 18.847817749765266,
+    "stability_supply": 19.50058422265406,
+    "attack_supply": 7.843665447718377
+  },
+  "budgets_after_bonds": {
+    "root": 23.7044233424503,
+    "source/固": 21.109758326742,
+    "source/生": 0.642756923076923,
+    "source/破": 11.2489221409669,
+    "source/聚": 0.65886493213392,
+    "source/藏": 0.65886493213392,
+    "source/通": 2.212588009057,
+    "structure": 109.389786719736,
+    "聚": 5.27091945707136,
+    "藏": 5.27091945707136,
+    "通": 13.839504072456,
+    "body/stability": 19.50058422265406,
+    "body/attack": 7.843665447718377
+  },
+  "requests": [
+    {
+      "id": "base/critical/破",
+      "source": "破",
+      "carrier": "base",
+      "atom": "critical",
+      "stat_id": "critical",
+      "value_kind": "int_flat",
+      "profile_id": "sword.slender_thin.v1",
+      "coefficient": 2.0,
+      "kind": "integer",
+      "maximum": 0,
+      "minimum": 1.5,
+      "semantic_weight": 1.0,
+      "raw_weight": 1.0,
+      "costs": {
+        "source/破": 1,
+        "root": 1,
+        "structure": 1
+      },
+      "weight": 0.8
+    },
+    {
+      "id": "base/dodge/生",
+      "source": "生",
+      "carrier": "base",
+      "atom": "dodge",
+      "stat_id": "dodge",
+      "value_kind": "int_flat",
+      "profile_id": "sword.slender_thin.v1",
+      "coefficient": 3.0,
+      "kind": "integer",
+      "maximum": 0,
+      "minimum": 1.5,
+      "semantic_weight": 0.25,
+      "raw_weight": 0.25,
+      "costs": {
+        "source/生": 1,
+        "root": 1,
+        "structure": 1
+      },
+      "weight": 1.0
+    },
+    {
+      "id": "base/dodge/通",
+      "source": "通",
+      "carrier": "base",
+      "atom": "dodge",
+      "stat_id": "dodge",
+      "value_kind": "int_flat",
+      "profile_id": "sword.slender_thin.v1",
+      "coefficient": 3.0,
+      "kind": "integer",
+      "maximum": 0,
+      "minimum": 1.5,
+      "semantic_weight": 1.0,
+      "raw_weight": 1.0,
+      "costs": {
+        "source/通": 1,
+        "root": 1,
+        "structure": 1
+      },
+      "weight": 0.5
+    },
+    {
+      "id": "base/precision/破",
+      "source": "破",
+      "carrier": "base",
+      "atom": "precision",
+      "stat_id": "precision",
+      "value_kind": "int_flat",
+      "profile_id": "sword.slender_thin.v1",
+      "coefficient": 3.0,
+      "kind": "integer",
+      "maximum": 0,
+      "minimum": 1.5,
+      "semantic_weight": 0.25,
+      "raw_weight": 0.25,
+      "costs": {
+        "source/破": 1,
+        "root": 1,
+        "structure": 1
+      },
+      "weight": 0.2
+    },
+    {
+      "id": "base/precision/通",
+      "source": "通",
+      "carrier": "base",
+      "atom": "precision",
+      "stat_id": "precision",
+      "value_kind": "int_flat",
+      "profile_id": "sword.slender_thin.v1",
+      "coefficient": 3.0,
+      "kind": "integer",
+      "maximum": 0,
+      "minimum": 1.5,
+      "semantic_weight": 1.0,
+      "raw_weight": 1.0,
+      "costs": {
+        "source/通": 1,
+        "root": 1,
+        "structure": 1
+      },
+      "weight": 0.5
+    },
+    {
+      "id": "binding/defuse_flat/固",
+      "source": "固",
+      "carrier": "binding",
+      "atom": "defuse_flat",
+      "coefficient": 0.5,
+      "kind": "integer",
+      "maximum": 0,
+      "minimum": 2.0,
+      "raw_weight": 0.6966338241127793,
+      "costs": {
+        "source/固": 1,
+        "root": 1,
+        "structure": 1,
+        "通": 0.35
+      },
+      "template_id": "artifact.gejian.defuse_flat.v1",
+      "template_version": 1,
+      "operation_id": "add_response_defuse_flat",
+      "weight": 1.0
+    },
+    {
+      "id": "profile/stability",
+      "carrier": "profile",
+      "atom": "stability",
+      "minimum": 0,
+      "weight": 0.6,
+      "costs": {
+        "body/stability": 1,
+        "root": 1,
+        "structure": 1,
+        "通": 0.1,
+        "藏": 0.1
+      }
+    },
+    {
+      "id": "profile/attack",
+      "carrier": "profile",
+      "atom": "attack",
+      "minimum": 0,
+      "weight": 0.6,
+      "costs": {
+        "body/attack": 1,
+        "root": 1,
+        "structure": 1,
+        "通": 0.1
+      }
+    }
+  ],
+  "allocations": {
+    "base/critical/破": 5.797822039959129,
+    "base/precision/通": 2.212588009057,
+    "binding/defuse_flat/固": 7.497278770855065,
+    "profile/attack": 4.098367261289557,
+    "profile/stability": 4.098367261289554
+  },
+  "pruned_candidates": [
+    "base/precision/破",
+    "base/dodge/通"
+  ],
+  "used_after_bonds": {
+    "source/破": 5.797822039959129,
+    "root": 23.704423342450305,
+    "structure": 23.704423342450305,
+    "source/生": 0.0,
+    "source/通": 2.212588009057,
+    "source/固": 7.497278770855065,
+    "通": 3.4437210220571837,
+    "body/stability": 4.098367261289554,
+    "藏": 0.40983672612895544,
+    "body/attack": 4.098367261289557
+  },
+  "unused_after_bonds": {
+    "root": 0,
+    "source/固": 13.612479555886935,
+    "source/生": 0.642756923076923,
+    "source/破": 5.451100101007771,
+    "source/聚": 0.65886493213392,
+    "source/藏": 0.65886493213392,
+    "source/通": 0,
+    "structure": 85.68536337728568,
+    "聚": 5.27091945707136,
+    "藏": 4.861082730942404,
+    "通": 10.395783050398816,
+    "body/stability": 15.402216961364505,
+    "body/attack": 3.74529818642882
+  },
+  "normal_effects": [
+    {
+      "id": "base/critical",
+      "carrier": "base",
+      "atom": "critical",
+      "source": "破",
+      "source_allocations": {
+        "破": 5.797822039959129
+      },
+      "source_branches": [
+        {
+          "request_id": "base/critical/破",
+          "source": "破",
+          "semantic_weight": 1.0,
+          "normalized_weight": 0.8,
+          "allocation": 5.797822039959129
+        }
+      ],
+      "allocation": 5.797822039959129,
+      "coefficient": 2.0,
+      "value": 11,
+      "value_kind": "int_flat",
+      "unquantized": 11.595644079918259,
+      "quantization_loss_allocation": 0.29782203995912937,
+      "costs": {
+        "source/破": 1.0,
+        "root": 1.0,
+        "structure": 1.0
+      },
+      "budget_debits": {
+        "source/破": 5.797822039959129,
+        "root": 5.797822039959129,
+        "structure": 5.797822039959129
+      },
+      "stat_id": "critical",
+      "profile_id": "sword.slender_thin.v1",
+      "activation": "held_or_controlled_enabled",
+      "activation_modes": [
+        "held",
+        "controlled"
+      ],
+      "requires_enabled": true,
+      "scope": "owner_character_global_not_star_area",
+      "source_deduplication": "source_instance_id+stat_id",
+      "controlled_action_read": "owner_final_stat_once_no_duplicate_instance_bonus",
+      "godot_runtime_applier_implemented": false
+    },
+    {
+      "id": "base/precision",
+      "carrier": "base",
+      "atom": "precision",
+      "source": "通",
+      "source_allocations": {
+        "通": 2.212588009057
+      },
+      "source_branches": [
+        {
+          "request_id": "base/precision/通",
+          "source": "通",
+          "semantic_weight": 1.0,
+          "normalized_weight": 0.5,
+          "allocation": 2.212588009057
+        }
+      ],
+      "allocation": 2.212588009057,
+      "coefficient": 3.0,
+      "value": 6,
+      "value_kind": "int_flat",
+      "unquantized": 6.6377640271709994,
+      "quantization_loss_allocation": 0.21258800905699982,
+      "costs": {
+        "source/通": 1.0,
+        "root": 1.0,
+        "structure": 1.0
+      },
+      "budget_debits": {
+        "source/通": 2.212588009057,
+        "root": 2.212588009057,
+        "structure": 2.212588009057
+      },
+      "stat_id": "precision",
+      "profile_id": "sword.slender_thin.v1",
+      "activation": "held_or_controlled_enabled",
+      "activation_modes": [
+        "held",
+        "controlled"
+      ],
+      "requires_enabled": true,
+      "scope": "owner_character_global_not_star_area",
+      "source_deduplication": "source_instance_id+stat_id",
+      "controlled_action_read": "owner_final_stat_once_no_duplicate_instance_bonus",
+      "godot_runtime_applier_implemented": false
+    },
+    {
+      "id": "binding/defuse_flat",
+      "carrier": "binding",
+      "atom": "defuse_flat",
+      "source": "固",
+      "source_allocations": {
+        "固": 7.497278770855065
+      },
+      "source_branches": [
+        {
+          "request_id": "binding/defuse_flat/固",
+          "source": "固",
+          "semantic_weight": 1,
+          "normalized_weight": 1.0,
+          "allocation": 7.497278770855065
+        }
+      ],
+      "allocation": 7.497278770855065,
+      "coefficient": 0.5,
+      "value": 3,
+      "value_kind": "int_flat",
+      "unquantized": 3.7486393854275324,
+      "quantization_loss_allocation": 1.4972787708550648,
+      "costs": {
+        "source/固": 1.0,
+        "root": 1.0,
+        "structure": 1.0,
+        "通": 0.35
+      },
+      "budget_debits": {
+        "source/固": 7.497278770855065,
+        "root": 7.497278770855065,
+        "structure": 7.497278770855065,
+        "通": 2.6240475697992727
+      },
+      "template_id": "artifact.gejian.defuse_flat.v1",
+      "template_version": 1,
+      "operation_id": "add_response_defuse_flat"
+    }
+  ],
+  "binding_family": {
+    "id": "guard_gejian",
+    "base_skill": "格剑",
+    "source": "固",
+    "atom": "defuse_flat",
+    "coefficient": 0.5,
+    "required_terms": [
+      "剑",
+      "应对",
+      "化解"
+    ],
+    "template_id": "artifact.gejian.defuse_flat.v1",
+    "template_version": 1,
+    "source_policy": "held_active_only",
+    "target_policy": "one_placed_copy",
+    "matcher": {
+      "base_skill_keys": [
+        "res://resources/activeskills/剑修基础/格剑.tres"
+      ],
+      "required_terms": [
+        "剑",
+        "应对",
+        "化解"
+      ],
+      "required_mechanisms": [
+        "physical_response",
+        "defuse"
+      ]
+    },
+    "operation_id": "add_response_defuse_flat",
+    "costs": {
+      "通": 0.35
+    },
+    "preference_resource": "通"
+  },
+  "profile_values": {
+    "Xs": 4.098367261289554,
+    "Xa": 4.098367261289557,
+    "stability_reference_value": 42.41088927927662,
+    "attack_reference_value": 14.546469155689763,
+    "stability_weights": [
+      0.2686019195726162,
+      0.4122269788273702,
+      0.12823254652824168,
+      0.19093855507177188
+    ],
+    "attack_weights": [
+      0.2674572849954699,
+      0.28122321599243705,
+      0.45131949901209306
+    ],
+    "stability_before_quantization": {
+      "base": 11.391646271195388,
+      "soul_coefficient": 0.8741456378489152,
+      "sword_proficiency_coefficient": 0.27192281664044726,
+      "this_item_spirit_occupation_coefficient": 2.6992913060979924
+    },
+    "attack_before_quantization": {
+      "base": 3.890559146651129,
+      "soul_coefficient": 0.2045402418648933,
+      "sword_proficiency_coefficient": 0.3282552585870384
+    },
+    "features": {
+      "body_solid_ratio": 0.724439314812276,
+      "body_protect_ratio": 0.0,
+      "body_break_ratio": 0.038242993890305804,
+      "process_transmission_ratio": 0.3232601056002965,
+      "process_storage_ratio": 0.11291809009242157,
+      "process_transmission_ratio_times_connection": 0.3232601056002965,
+      "edge_response": 0.5659227273388457
+    },
+    "stability_quality_factor": 0.957501026103577,
+    "attack_quality_factor": 0.8016061011242395,
+    "reference_value_quantization_loss": {
+      "stability": 0.0016892792766185494,
+      "attack": 0.0019691556897640794
+    }
+  },
+  "source_trace": [
+    {
+      "role": "主体",
+      "material": "玄铁",
+      "quantity": 3.0,
+      "body_pools": {
+        "core": 6.850401575750791,
+        "stability": 7.706701772719639,
+        "attack": 2.568900590906546
+      },
+      "stability_allocation_contribution": 1.6196896399208283,
+      "attack_allocation_contribution": 1.342267610654064,
+      "normal_effect_source_contributions": {
+        "binding/defuse_flat": 0.7100772172782003
+      },
+      "bond_source_contributions": {
+        "抱朴": 0.28413397940005475
+      },
+      "unused_body_stability": 6.087012132798811,
+      "unused_body_attack": 1.226632980252482
+    },
+    {
+      "role": "和材",
+      "material": "风纹石英",
+      "quantity": 1.0,
+      "body_pools": {
+        "core": 0.34559999999999996,
+        "stability": 0.576,
+        "attack": 0.2304
+      },
+      "stability_allocation_contribution": 0.12105583686874247,
+      "attack_allocation_contribution": 0.12038552935423684,
+      "normal_effect_source_contributions": {
+        "base/precision": 1.152000000000001
+      },
+      "bond_source_contributions": {},
+      "unused_body_stability": 0.4549441631312575,
+      "unused_body_attack": 0.11001447064576315
+    },
+    {
+      "role": "和材",
+      "material": "灵石",
+      "quantity": 6.0,
+      "body_pools": {
+        "core": 0.7906379185607044,
+        "stability": 0.8894676583807924,
+        "attack": 0.2964892194602642
+      },
+      "stability_allocation_contribution": 0.18693620096001315,
+      "attack_allocation_contribution": 0.15491758521071355,
+      "normal_effect_source_contributions": {
+        "base/precision": 0.658864932133921
+      },
+      "bond_source_contributions": {},
+      "unused_body_stability": 0.7025314574207793,
+      "unused_body_attack": 0.14157163424955063
+    },
+    {
+      "role": "复合身材",
+      "material": "铜髓矿",
+      "quantity": 2.0,
+      "body_pools": {
+        "core": 3.50172387357054,
+        "stability": 3.939439357766857,
+        "attack": 1.3131464525889525
+      },
+      "stability_allocation_contribution": 0.8279377226530005,
+      "attack_allocation_contribution": 0.6861277379104137,
+      "normal_effect_source_contributions": {
+        "binding/defuse_flat": 0.362970596150649
+      },
+      "bond_source_contributions": {
+        "抱朴": 0.14524093630944934
+      },
+      "unused_body_stability": 3.1115016351138567,
+      "unused_body_attack": 0.6270187146785388
+    },
+    {
+      "role": "性材",
+      "material": "裂甲石",
+      "quantity": 4.0,
+      "body_pools": {
+        "core": 0.5299568856386759,
+        "stability": 0.26497844281933797,
+        "attack": 0.971587623670906
+      },
+      "stability_allocation_contribution": 0.05568956102026248,
+      "attack_allocation_contribution": 0.5076609825939543,
+      "normal_effect_source_contributions": {
+        "base/critical": 5.797822039959129
+      },
+      "bond_source_contributions": {
+        "惊鸿": 2.0
+      },
+      "unused_body_stability": 0.20928888179907548,
+      "unused_body_attack": 0.4639266410769517
+    },
+    {
+      "role": "性材",
+      "material": "玄铁",
+      "quantity": 3.0,
+      "body_pools": {
+        "core": 0.913386876766772,
+        "stability": 1.0275602363626184,
+        "attack": 0.3425200787875395
+      },
+      "stability_allocation_contribution": 0.2159586186561104,
+      "attack_allocation_contribution": 0.17896901475387522,
+      "normal_effect_source_contributions": {
+        "binding/defuse_flat": 5.325579129586503
+      },
+      "bond_source_contributions": {
+        "抱朴": 2.1310048455004114
+      },
+      "unused_body_stability": 0.811601617706508,
+      "unused_body_attack": 0.16355106403366426
+    },
+    {
+      "role": "承接",
+      "material": "青木芯",
+      "quantity": 1.0,
+      "body_pools": {
+        "core": 3.7962830769230815,
+        "stability": 2.711630769230772,
+        "attack": 1.3256861538461555
+      },
+      "stability_allocation_contribution": 0.5698936320282344,
+      "attack_allocation_contribution": 0.6926798150536098,
+      "normal_effect_source_contributions": {
+        "base/precision": 0.4017230769230776
+      },
+      "bond_source_contributions": {},
+      "unused_body_stability": 2.1417371372025373,
+      "unused_body_attack": 0.6330063387925458
+    },
+    {
+      "role": "质材",
+      "material": "铜髓矿",
+      "quantity": 4.0,
+      "body_pools": {
+        "core": 2.1198275425547037,
+        "stability": 2.384805985374042,
+        "attack": 0.794935328458014
+      },
+      "stability_allocation_contribution": 0.5012060491823623,
+      "attack_allocation_contribution": 0.41535898575868985,
+      "normal_effect_source_contributions": {
+        "binding/defuse_flat": 1.0986518278397122
+      },
+      "bond_source_contributions": {
+        "抱朴": 0.4396202387900847
+      },
+      "unused_body_stability": 1.8835999361916795,
+      "unused_body_attack": 0.3795763426993241
+    }
+  ],
+  "naming": {
+    "rule_version": "item-name-direction-trial-3-shape-pools",
+    "auto_name": "洞隙·明察·薄脊剑",
+    "prefix_groups": [
+      "洞隙",
+      "明察"
+    ],
+    "custom_name": "清和剑",
+    "custom_name_origin": "explicit_offer_entity_name",
+    "display_name": "清和剑",
+    "name_does_not_change_stats": true
+  },
+  "stability_parameters": {
+    "base": 11.3916,
+    "soul_coefficient": 0.8741,
+    "sword_proficiency_coefficient": 0.2719,
+    "this_item_spirit_occupation_coefficient": 2.6992
+  },
+  "default_attack_parameters": {
+    "base": 3.8905,
+    "soul_coefficient": 0.2045,
+    "sword_proficiency_coefficient": 0.3282,
+    "damage_type": "physical"
+  },
+  "actor_examples": [
+    {
+      "soul": 6,
+      "sword_proficiency": 6,
+      "occupation": 2,
+      "stability_cap": 23,
+      "raw_physical_damage": 7
+    },
+    {
+      "soul": 10,
+      "sword_proficiency": 10,
+      "occupation": 2,
+      "stability_cap": 28,
+      "raw_physical_damage": 9
+    },
+    {
+      "soul": 20,
+      "sword_proficiency": 20,
+      "occupation": 2,
+      "stability_cap": 39,
+      "raw_physical_damage": 15
+    },
+    {
+      "soul": 40,
+      "sword_proficiency": 40,
+      "occupation": 2,
+      "stability_cap": 62,
+      "raw_physical_damage": 25
+    },
+    {
+      "soul": 80,
+      "sword_proficiency": 80,
+      "occupation": 2,
+      "stability_cap": 108,
+      "raw_physical_damage": 47
+    },
+    {
+      "soul": 20,
+      "sword_proficiency": 10,
+      "occupation": 2,
+      "stability_cap": 36,
+      "raw_physical_damage": 11
+    },
+    {
+      "soul": 10,
+      "sword_proficiency": 20,
+      "occupation": 2,
+      "stability_cap": 30,
+      "raw_physical_damage": 12
+    }
+  ],
+  "sharpness": {
+    "core_indirect_support": 0.8716213266836332,
+    "raw": 5.241097801910743,
+    "value": 5
+  },
+  "inventory": {
+    "width": 2,
+    "height": 6,
+    "rotation_allowed": true
+  },
+  "battle_footprint": {
+    "length": 2,
+    "width": 1,
+    "cells": 2,
+    "rotation_allowed": true,
+    "occupied_cell_offsets": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        0
+      ]
+    ]
+  },
+  "handheld_stars": {
+    "definition_version": 1,
+    "definition_key": "qinghe.blade_tip_sharpness.v1",
+    "status": "confirmed_by_user_for_qinghe",
+    "origin": "blade_tip",
+    "facing_quarter_turns": 0,
+    "source_anchor": [
+      1,
+      0
+    ],
+    "offsets": [
+      [
+        1,
+        0
+      ],
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ]
+    ],
+    "range_cells": [
+      [
+        2,
+        0
+      ],
+      [
+        3,
+        0
+      ],
+      [
+        4,
+        0
+      ]
+    ],
+    "cells": 3,
+    "rotation": "clockwise_quarter_turns_with_body_and_tip",
+    "target": "character_sword_techniques_only",
+    "occupies_board_cells": false,
+    "changes_attack_range": false,
+    "derived_from_battle_or_inventory_footprint": false
+  },
+  "spirit_occupation": 2,
+  "exclusive_control_skill_allocation": 0,
+  "bonds": [
+    {
+      "bond": "惊鸿",
+      "points": 2,
+      "actual_debit": {
+        "source/破": 2,
+        "root": 0.5,
+        "通": 0.5
+      }
+    },
+    {
+      "bond": "抱朴",
+      "points": 3,
+      "actual_debit": {
+        "source/固": 3,
+        "root": 0.75,
+        "通": 0.75
+      }
+    }
+  ],
+  "crafting_hours": 8.0,
+  "crafting_energy": 16.0,
+  "runtime_modified": false,
+  "player_save_modified": false,
+  "rule_status": "complete_shape_pool_candidate_not_live",
+  "shape_profile": {
+    "profile_id": "sword.slender_thin.v1",
+    "kind": "slender_thin",
+    "lambda": 12.479229144939382,
+    "tau": 0.1571884371740907,
+    "allowed_stat_ids": [
+      "critical",
+      "precision",
+      "dodge"
+    ],
+    "selection_source": "actual_dimensions"
+  },
+  "skills": [
+    {
+      "skill_id": "weapon.sword.ordinary_attack",
+      "title": "飞斩",
+      "damage_type": "physical",
+      "damage_type_status": "confirmed",
+      "tags": [
+        "剑"
+      ],
+      "energy_cost": 0,
+      "energy_status": "tentative_by_user",
+      "mana_cost": 0,
+      "mana_status": "proposal",
+      "timing": "once_on_first_body_scan_each_common_round",
+      "timing_status": "proposal",
+      "attack_style": "ranged",
+      "attack_style_status": "proposal",
+      "target": "one_random_legal_enemy_character",
+      "target_status": "proposal",
+      "requires_valid_continuous_control": true
+    }
+  ],
+  "skill_dispatch": {
+    "status": "confirmed_by_user_unified_skill_list",
+    "ordinary_attack_is_a_skill": true,
+    "resource_insufficient": "skip_this_skill_without_replacement",
+    "other_conditions_invalid": "skip_this_skill_without_replacement",
+    "automatic_substitution": false,
+    "automatic_extra_ordinary_attack": false,
+    "multi_skill_scan_order_status": "not_decided",
+    "withdrawn_previous_rule": "resource_shortage_automatic_default_attack_fallback"
+  },
+  "base_stat_rules": {
+    "generation_mode": "shape_hard_pool_before_source_normalization",
+    "value_kind": "int_flat",
+    "activation": "held_or_controlled_enabled",
+    "activation_modes": [
+      "held",
+      "controlled"
+    ],
+    "requires_enabled": true,
+    "scope": "owner_character_global_not_star_area",
+    "source_deduplication": "source_instance_id+stat_id",
+    "allowed_stat_ids": [
+      "max_health",
+      "physical_defense",
+      "precision",
+      "dodge",
+      "critical",
+      "crit_resist"
+    ],
+    "shape_thresholds": {
+      "slender_lambda_min": 12,
+      "thick_tau_min": 0.16,
+      "source": "actual_length_width_thickness_not_item_or_shape_name"
+    },
+    "shape_pools": {
+      "sword.slender_thin.v1": [
+        "critical",
+        "precision",
+        "dodge"
+      ],
+      "sword.slender_thick.v1": [
+        "critical",
+        "precision",
+        "crit_resist"
+      ],
+      "sword.broad_thin.v1": [
+        "precision",
+        "dodge",
+        "physical_defense"
+      ],
+      "sword.broad_thick.v1": [
+        "max_health",
+        "physical_defense",
+        "crit_resist"
+      ]
+    },
+    "stats": {
+      "max_health": {
+        "coefficient": 4.0,
+        "sources": {
+          "生": 1.0
+        }
+      },
+      "physical_defense": {
+        "coefficient": 0.5,
+        "sources": {
+          "固": 1.0
+        }
+      },
+      "precision": {
+        "coefficient": 3.0,
+        "sources": {
+          "通": 1.0,
+          "破": 0.25
+        }
+      },
+      "dodge": {
+        "coefficient": 3.0,
+        "sources": {
+          "通": 1.0,
+          "生": 0.25
+        }
+      },
+      "critical": {
+        "coefficient": 2.0,
+        "sources": {
+          "破": 1.0
+        }
+      },
+      "crit_resist": {
+        "coefficient": 3.0,
+        "sources": {
+          "固": 0.35,
+          "护": 1.0
+        }
+      }
+    },
+    "base_weight": 1.0,
+    "source_root_structure_unit_cost": 1.0,
+    "extra_process_costs": {},
+    "multi_source_stat_quantization": "merge_allocations_for_same_stat_then_floor_once",
+    "on_missing_or_invalid_pool": "reject_no_fallback_to_all_six_stats",
+    "read_by_controlled_actions": "read_owner_final_stats_once_no_duplicate_instance_bonus"
+  },
+  "transformation_bundle": {
+    "source_instance_id": "sect-artifact-6ff1f2a9abdd46ecb69765d84fb07c53",
+    "bundle_id": "sect-artifact-6ff1f2a9abdd46ecb69765d84fb07c53/artifact.gejian.defuse_flat.v1",
+    "template_id": "artifact.gejian.defuse_flat.v1",
+    "template_version": 1,
+    "source_policy": "held_active_only",
+    "target_policy": "one_placed_copy",
+    "matcher": {
+      "base_skill_keys": [
+        "res://resources/activeskills/剑修基础/格剑.tres"
+      ],
+      "required_terms": [
+        "剑",
+        "应对",
+        "化解"
+      ],
+      "required_mechanisms": [
+        "physical_response",
+        "defuse"
+      ]
+    },
+    "operations": [
+      {
+        "id": "add_response_defuse_flat",
+        "parameters": {
+          "amount": 3
+        }
+      }
+    ],
+    "generation": {
+      "allocation_X": 7.497278770855065,
+      "source_dimension": "固",
+      "source_allocations": {
+        "固": 7.497278770855065
+      },
+      "coefficient": 0.5,
+      "budget_debits": {
+        "source/固": 7.497278770855065,
+        "root": 7.497278770855065,
+        "structure": 7.497278770855065,
+        "通": 2.6240475697992727
+      },
+      "rules_version": "sword-material-profile-trial-2-shape-pools"
+    },
+    "runtime_status": "independent_candidate_not_wired_to_godot",
+    "source_resolution_status": "recorded_trial_instance_not_player_save"
+  },
+  "generation_validation": {
+    "hard_pool_exclusion": true,
+    "legacy_raw_carriers_excluded": true,
+    "profile_priority_not_renormalized": true,
+    "source_and_common_budgets_conserved": true,
+    "native_old_model_reproduced": true,
+    "godot_runtime_modified": false
+  },
+  "input_sha256": "a67bf26420590ba57d380073b63be527860d595bf5aea0cc9bc3a50be0ae8a19",
+  "parameters_sha256": "3667d42b3a4f21d80158ef27b8b1d2200e245b36a141547785b560a9f94120c2"
+}

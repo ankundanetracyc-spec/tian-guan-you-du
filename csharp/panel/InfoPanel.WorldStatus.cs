@@ -30,9 +30,9 @@ public partial class InfoPanel
         var box = new VBoxContainer { Name = "WorldStatusBox", MouseFilter = MouseFilterEnum.Ignore };
         box.AddThemeConstantOverride("separation", 8);
         _overviewWorldStatusSection.AddChild(box);
-        var title = new Label { Text = "状态", MouseFilter = MouseFilterEnum.Ignore };
-        title.AddThemeFontSizeOverride("font_size", 23);
-        title.AddThemeColorOverride("font_color", new Color("#4c4436"));
+        var title = new Label { Text = "当前状态", MouseFilter = MouseFilterEnum.Ignore };
+        title.AddThemeFontSizeOverride("font_size", 28);
+        title.AddThemeColorOverride("font_color", CraftingPaperStyle.Ink);
         box.AddChild(title);
         var divider = new HSeparator { CustomMinimumSize = new Vector2(0, 2), MouseFilter = MouseFilterEnum.Ignore };
         divider.AddThemeStyleboxOverride("separator", new StyleBoxFlat { BgColor = new Color("#918368", .62f) });
@@ -56,7 +56,7 @@ public partial class InfoPanel
         _staticOverviewPage.AddChild(_overviewWorldStatusSection);
     }
 
-    private void refresh_overview_world_status(HumanData? data, long currentGameHour)
+    private void refresh_overview_world_status(HumanData? data, Godot.Collections.Dictionary? bottleneckSummary, long currentGameHour)
     {
         if (_overviewWorldStatusSection is null || _overviewWorldStatusList is null) return;
         if (data is null)
@@ -72,37 +72,45 @@ public partial class InfoPanel
             child.QueueFree();
         }
 
-        var statuses = WorldStatusRules.active_records(data.world_status_records, currentGameHour);
-        if (statuses.Count == 0)
+        var statuses = WorldStatusRules.active_records(PillToxicityRules.WithStatus(data, currentGameHour), currentGameHour);
+        var hasBottleneck = CharacterStatusPresentationRules.has_active_bottleneck(bottleneckSummary);
+        if (statuses.Count == 0 && !hasBottleneck)
         {
-            var empty = new Label
-            {
-                Text = "暂无特殊状态",
-                CustomMinimumSize = new Vector2(0, 34),
-                VerticalAlignment = VerticalAlignment.Center,
-                MouseFilter = MouseFilterEnum.Ignore
-            };
-            empty.AddThemeFontSizeOverride("font_size", 18);
-            empty.AddThemeColorOverride("font_color", new Color("#756c59"));
-            _overviewWorldStatusList.AddChild(empty);
+            var line = new HBoxContainer { CustomMinimumSize = new Vector2(0, 36), MouseFilter = MouseFilterEnum.Ignore };
+            line.AddThemeConstantOverride("separation", 13);
+            line.AddChild(CharacterIcon(CraftingPaperStyle.Sprite("node"), 30));
+            line.AddChild(CharacterText("暂无特殊状态", 22, true));
+            _overviewWorldStatusList.AddChild(line);
             return;
         }
 
+        if (hasBottleneck)
+            _overviewWorldStatusList.AddChild(build_overview_bottleneck_row(bottleneckSummary!));
         foreach (var record in statuses)
             _overviewWorldStatusList.AddChild(build_overview_world_status_row(record, currentGameHour));
+    }
+
+    private static Control build_overview_bottleneck_row(Godot.Collections.Dictionary summary)
+    {
+        var row = new PanelContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, ClipContents = true, MouseFilter = MouseFilterEnum.Ignore };
+        row.AddThemeStyleboxOverride("panel", CraftingPaperStyle.Paper(12, false, 1));
+        var detail = new Label
+        {
+            Text = CharacterStatusPresentationRules.format_bottleneck_details(summary),
+            AutowrapMode = TextServer.AutowrapMode.WordSmart,
+            SizeFlagsHorizontal = SizeFlags.ExpandFill,
+            MouseFilter = MouseFilterEnum.Ignore
+        };
+        detail.AddThemeFontSizeOverride("font_size", 17);
+        detail.AddThemeColorOverride("font_color", new Color("#4c4436"));
+        row.AddChild(detail);
+        return row;
     }
 
     private static Control build_overview_world_status_row(WorldStatusRecord record, long currentGameHour)
     {
         var row = new PanelContainer { SizeFlagsHorizontal = SizeFlags.ExpandFill, ClipContents = true, MouseFilter = MouseFilterEnum.Ignore };
-        row.AddThemeStyleboxOverride("panel", new StyleBoxFlat
-        {
-            BgColor = new Color("#f5eedc"),
-            BorderColor = new Color("#a99a7b", .56f),
-            BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1,
-            ContentMarginLeft = 12, ContentMarginRight = 12,
-            ContentMarginTop = 9, ContentMarginBottom = 9
-        });
+        row.AddThemeStyleboxOverride("panel", CraftingPaperStyle.Paper(14, false, 1));
         var box = new VBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
         box.AddThemeConstantOverride("separation", 4);
         row.AddChild(box);
@@ -110,6 +118,7 @@ public partial class InfoPanel
         var heading = new HBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
         heading.AddThemeConstantOverride("separation", 14);
         box.AddChild(heading);
+        heading.AddChild(CharacterIcon(CraftingPaperStyle.Sprite("node"), 28));
         var name = new Label
         {
             Text = record.stack_count > 1 ? $"{record.display_name} ×{record.stack_count}" : record.display_name,
@@ -129,7 +138,7 @@ public partial class InfoPanel
         };
         effect.AddThemeFontSizeOverride("font_size", 17);
         effect.AddThemeColorOverride("font_color", new Color("#4c4436"));
-        heading.AddChild(effect);
+        box.AddChild(effect);
 
         if (record.recovery_hours_required > 0)
         {
@@ -153,6 +162,6 @@ public partial class InfoPanel
     public void refresh_player_world_status_details(Character player, long currentGameHour)
     {
         if (!ReferenceEquals(current_card, player) || _activeNewPage != 0 || !IsVisibleInTree()) return;
-        refresh_overview_world_status(player.entity_data as HumanData, currentGameHour);
+        refresh_overview_world_status(player.entity_data as HumanData, player.get_cultivation_bottleneck_summary(), currentGameHour);
     }
 }

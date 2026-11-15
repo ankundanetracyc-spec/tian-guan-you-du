@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>战斗布阵 · 九格交互原型</title>
+  <link rel="stylesheet" href="战斗布阵交互原型.css">
+</head>
+<body>
+  <div class="app">
+    <header class="hud">
+      <div class="battle-title"><strong>对练</strong><span id="phase-suffix">第三回合 · 间歇</span></div>
+      <div class="timeline" aria-label="行动速度条示意">
+        <span class="timeline-label">行动</span><div class="track"><i class="track-fill"></i><b class="track-unit self">我</b><b class="track-unit enemy">敌</b></div><span class="timeline-note">到点处理整行</span>
+      </div>
+      <div class="hud-controls"><button id="pause" type="button">暂停</button><button id="speed" type="button">× 1</button><button id="log" type="button">记录</button></div>
+    </header>
+
+    <section class="battlefield" aria-label="战场示意">
+      <div class="fighter left-fighter">
+        <div class="fighter-info"><span>玉虚修士</span><strong>174 / 174</strong><div class="life"><i></i></div><small>体力 <b>3 / 6</b>　法力 <b>1 / 2</b>　炁 <b>2 / 4</b></small><button id="status-open" class="fighter-status" type="button">心法与状态 ›　气血 2　护盾 0</button></div>
+        <img src="../../../textures/characters/queue_avatar_design_20261103/yuxu_neimen_shouzhen_v3_ink.png" alt="">
+      </div>
+      <div class="battle-center"><span class="rule-mark" id="rule-mark">本轮遍历完成</span><span id="phase-label">调整布阵后继续</span></div>
+      <div class="status-popover" id="status-popover" hidden><button id="status-close" type="button" aria-label="关闭心法与状态">×</button><strong>心法与状态 · 示意</strong><p>修持心法：百骸衍枝化生</p><p>气血 2 层　·　护盾 0</p><small>数值与状态仅作界面示例</small></div>
+      <div class="fighter right-fighter">
+        <div class="fighter-info"><span>对练者</span><strong>212 / 212</strong><div class="life enemy-life"><i></i></div><small>敌方招式未洞察</small></div>
+        <img src="../../../textures/characters/queue_avatar_design_20261103/yuxu_neimen_shouzhen_v3_ink.png" alt="">
+      </div>
+      <p class="demo-note">概念原型 · 人物、资源、库存与图样均为示意</p>
+    </section>
+
+    <main class="workbench" id="workbench">
+      <section class="library" aria-label="可选配置">
+        <div class="section-heading"><h1>选择配置</h1><span id="library-phase">本轮间歇</span></div>
+        <nav class="tabs" aria-label="配置类别">
+          <button class="tab active" data-tab="skill" type="button">招式</button>
+          <button class="tab" data-tab="rewrite" type="button">化法</button>
+          <button class="tab" data-tab="pill" type="button">丹药</button>
+          <button class="tab" data-tab="talisman" type="button">符箓</button>
+          <button class="tab" data-tab="artifact" type="button">法宝</button>
+        </nav>
+        <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="查找已学招式" aria-label="查找配置"></label>
+        <div class="library-label"><span>名称</span><span>状态</span></div>
+        <div id="library-list" class="library-list"></div>
+        <p class="library-tip" id="library-tip">选择或拖入格子，右侧可查看详情</p>
+      </section>
+
+      <section class="board-section" aria-label="招式盘">
+        <div class="section-heading"><h2>招式盘</h2><span>九格 · 3 × 3 示意</span></div>
+        <div class="board-wrap"><div id="board" class="board" role="grid" aria-label="九格招式盘"></div></div>
+        <div class="board-legend"><span><i class="legend-open"></i>空格回体</span><span><i class="legend-link"></i>化法有效</span><span><i class="legend-wait"></i>未生效</span></div>
+        <p id="feedback" class="feedback" aria-live="polite">选中招式可查看详情；拖动或点击空格摆放</p>
+        <div class="editor-actions"><button id="reset" class="quiet" type="button">恢复初始</button><button id="cancel" class="quiet" type="button">取消调整</button><button id="confirm" class="primary" type="button">确认布阵</button></div>
+        <div class="prototype-cycle"><button id="demo-next" class="quiet" type="button" hidden>模拟本轮结束（演示）</button></div>
+      </section>
+
+      <aside class="details" aria-label="配置详情">
+        <div class="section-heading"><h2>详情</h2><span id="source-label">已学招式</span></div>
+        <div class="detail-body" id="detail-body"></div>
+        <div class="details-actions" id="details-actions"></div>
+        <details class="prototype-tools" id="prototype-tools" hidden><summary>原型调试 · 仅演示</summary><div id="demo-actions"></div><small>同角色同招图标同步变暗；不计算次数或恢复。</small></details>
+        <div class="details-note">数量及图样均为示例</div>
+      </aside>
+    </main>
+    <footer class="footer"><span>先处理完所有人的盘面，再调整下一回合布阵</span><span>按 <kbd>R</kbd> 改变方向或占格方向</span></footer>
+  </div>
+  <script src="战斗布阵交互原型.js"></script>
+</body>
+</html>

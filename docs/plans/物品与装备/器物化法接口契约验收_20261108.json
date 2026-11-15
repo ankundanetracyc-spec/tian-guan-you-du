@@ -1,0 +1,68 @@
+{
+  "status": "passed",
+  "checks": 35,
+  "cases": [
+    "value_is_floor_half_X_not_hardcoded",
+    "inactive_held_item_can_prebind",
+    "prebound_source_is_inactive_before_activation",
+    "only_target_A_resolves",
+    "original_cost_cooldown_and_counts_are_preserved",
+    "real_physical_response_adds_one",
+    "same_response_event_does_not_double_apply",
+    "magic_response_not_eligible",
+    "not_a_real_response",
+    "preview_or_scan_does_not_grant_defuse",
+    "same_base_skill_B_does_not_receive_A_bundle",
+    "source_invalidation_stops_future_effect_without_rollback",
+    "source_version_changes_cache_identity",
+    "controlled_item_does_not_activate_handheld_transformation",
+    "another_held_instance_cannot_supply_this_bundle",
+    "same_item_without_that_frozen_bundle_cannot_bind",
+    "tampered_frozen_amount_rejected",
+    "move_rotation_keep_same_placement_binding",
+    "removal_pauses_without_same_name_rebinding",
+    "unlearned_target_is_not_granted_by_item",
+    "wrong_base_identity",
+    "missing_required_term",
+    "missing_real_defuse_mechanism",
+    "registered_compatible_variant_keeps_exact_base_and_real_mechanisms",
+    "nonzero_variant_cost_cooldown_and_limits_are_not_reset",
+    "one_incompatible_operation_rejects_entire_bundle",
+    "unknown_arbitrary_field_operation_rejected",
+    "undeclared_operation_field_rejected",
+    "frozen_bundle_cannot_claim_same_budget_twice",
+    "insufficient_source_rejects_generation_atomically",
+    "failed_generation_does_not_consume_partial_budget",
+    "copy_policy_remains_undecided",
+    "prototype_metadata_cannot_claim_godot_integration",
+    "template_requires_a_global_enabled_whole_package_target",
+    "no_new_action_created"
+  ],
+  "runtime_status": "pure_python_contract_reference_only",
+  "godot_runtime_integrated": false,
+  "player_save_modified": false,
+  "generated_bundle": {
+    "status": "valid_frozen_candidate",
+    "template_id": "artifact.gejian.defuse_flat.v1",
+    "operations": [
+      [
+        "add_response_defuse_flat",
+        3
+      ]
+    ],
+    "allocation_X": "7.497278770855065",
+    "source_identity_checked": true,
+    "synthetic_event_additions": {
+      "A": 3,
+      "B": 0
+    },
+    "event_examples_are_synthetic": true
+  },
+  "date": "2026-11-08",
+  "validation_kind": "pure_python_contract_checks_and_archived_candidate_bundle_consumption",
+  "input_result": "docs/plans/物品与装备/清和剑属性池修订实算结果_20261108.json",
+  "validated_bundle_sha256": "c5a8b59ba22e2c3841372d1e76bf9e0510cd9b6881565c1af109d6358c37fdc9",
+  "prototype_sha256": "1eef909e265b1b20e1a949a690940f43ac4b9a83ba741644e3468cd2307eb0ec",
+  "game_battle_or_ui_tested": false,
+  "raw_player_or_temporary_actor_data_saved": false
+}

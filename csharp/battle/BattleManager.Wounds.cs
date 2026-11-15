@@ -34,18 +34,74 @@ public partial class BattleManager : Node2D
         return counts;
     }
     public int get_effective_mana_capacity(GodotObject u)=>Math.Max(0,u.Get("max_mana").AsInt32()-(u is Creature creature?Math.Min(2,creature.get_status_stacks("内伤")):0));
-    public int get_skill_mana_cost(GodotObject u,ActiveSkillData skill)
+    public int get_raw_skill_mana_cost(GodotObject u,ActiveSkillData skill)
     {
         var wounds=get_realtime_wound_counts(u);
         var multiplier=BattleWoundRules.get_mana_cost_multiplier(wounds,skill);
         return Mathf.CeilToInt(skill.mana_cost*multiplier);
     }
+    public int get_skill_mana_cost(GodotObject u,ActiveSkillData skill)
+    {
+        var cost=get_raw_skill_mana_cost(u,skill);
+        return gongfa_combat.ForceManaCapacityPayment(u,skill,cost)||gongfa_combat.ManaCostTransferredToStamina(u,skill,cost)>0?0:cost;
+    }
+    public int get_skill_mana_capacity_cost(GodotObject u,ActiveSkillData skill) =>
+        gongfa_combat.ForcedManaCapacityCost(u,skill,get_raw_skill_mana_cost(u,skill));
     public int get_skill_energy_cost(GodotObject u,ActiveSkillData skill)
     {
         var cost=gongfa_combat.Cost(u,skill);
-        if(skill.skill_type!=ActiveSkillData.SkillType.MOVEMENT)return cost;
         var wounds=get_realtime_wound_counts(u);
-        return Mathf.CeilToInt(cost*BattleWoundRules.get_energy_cost_multiplier(wounds,skill));
+        var mana=get_raw_skill_mana_cost(u,skill);
+        cost+=gongfa_combat.ManaCostTransferredToStamina(u,skill,mana);
+        return skill.skill_type==ActiveSkillData.SkillType.MOVEMENT?Mathf.CeilToInt(cost*BattleWoundRules.get_energy_cost_multiplier(wounds,skill)):cost;
+    }
+    public bool can_pay_skill_mana_cost(GodotObject unit,ActiveSkillData skill)
+    {
+        var rawCost=get_raw_skill_mana_cost(unit,skill);
+        if(!CanReserveForgedSpirit(unit,skill))return false;
+        if(gongfa_combat.ForceManaCapacityPayment(unit,skill,rawCost))
+            return gongfa_combat.CanPayForcedManaCapacity(unit,skill,rawCost);
+        return can_pay_mana_amount(unit,get_skill_mana_cost(unit,skill));
+    }
+    public bool can_pay_mana_amount(GodotObject unit,int amount)
+    {
+        var missing=Math.Max(0,amount-Math.Max(0,unit.Get("current_mana").AsInt32()));
+        return gongfa_combat.CanBurnManaCapacityForCost(unit,missing);
+    }
+    public bool spend_mana_capacity(GodotObject unit,int amount)
+    {
+        if(amount<=0)return true;
+        if(get_effective_mana_capacity(unit)-amount<1)return false;
+        unit.Set("max_mana",Math.Max(1,unit.Get("max_mana").AsInt32()-amount));
+        var capacity=get_effective_mana_capacity(unit);
+        unit.Set("current_mana",Math.Min(Math.Max(0,unit.Get("current_mana").AsInt32()),capacity));
+        if(gain_battle_qi(unit,0,out var completedZhouTian)&&completedZhouTian)
+            show_status_gain(unit,"周天",1);
+        if(unit.HasMethod("update_ui"))unit.Call("update_ui");
+        return true;
+    }
+    private void PaySkillManaCost(GodotObject unit,ActiveSkillData skill,int cost)
+    {
+        var rawCost=get_raw_skill_mana_cost(unit,skill);
+        if(gongfa_combat.ForceManaCapacityPayment(unit,skill,rawCost))
+        {
+            gongfa_combat.BeginForcedManaCapacityPayment(unit,skill,rawCost);
+            for(var i=0;i<rawCost;i++)
+            {
+                if(!spend_mana_capacity(unit,1))break;
+                gongfa_combat.RecordManaCapacityPayment(unit,skill);
+                gongfa_combat.ConsumeForcedManaCapacityPoint(unit,skill);
+            }
+            gongfa_combat.CompleteForcedManaCapacityPayment(unit,skill);
+            return;
+        }
+        for(var i=0;i<cost;i++)
+        {
+            var current=Math.Max(0,unit.Get("current_mana").AsInt32());
+            if(current>0){unit.Set("current_mana",current-1);continue;}
+            if(!gongfa_combat.CanBurnManaCapacityForCost(unit,1)||!spend_mana_capacity(unit,1))break;
+            gongfa_combat.RecordManaCapacityPayment(unit,skill);
+        }
     }
     public float get_realtime_action_speed_multiplier(GodotObject u)=>BattleWoundRules.get_action_speed_multiplier(get_realtime_wound_counts(u));
     public int consume_hand_wounds(GodotObject u,int count)

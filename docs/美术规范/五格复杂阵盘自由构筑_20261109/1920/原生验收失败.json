@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-09",
+  "passed": false,
+  "error": "System.Exception: 缺少原生控件 WorkbenchTitle\r\n   at FormationFreeBuildUiSmoke.Named[T](Node node, String name)\r\n   at FormationFreeBuildUiSmoke.Find[T](String name)\r\n   at FormationFreeBuildUiSmoke.MoveOutside()\r\n   at FormationFreeBuildUiSmoke._Ready()",
+  "stage": "真实载入五格守攻",
+  "preview_only": false,
+  "native_checks": 12,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "appdata": "E:\\stacklands\\.godot\\test-results\\formation_freebuild_ui\\20261109_195351_376_1920\\isolated_appdata",
+  "draft_path": "user://formation_freebuild_ui/1920/isolated_draft.json",
+  "real_journey_loaded": false,
+  "character_save_opened": false,
+  "items_or_knowledge_granted": false,
+  "scope": "Actual five-grid editing and current compiled circuit trial. Earlier fixed graph/UI counts are not reused.",
+  "checks": [
+    "视口与独立用户资料均为本轮配置",
+    "真实入口仍保留初阶四格，未载入人物旅程",
+    "FormationBoardSize下拉展开时Q/E不切背后工具或改图",
+    "真实规格菜单扩大旧草图并移动固定眼",
+    "真实选择高级件并放入第五行第五列",
+    "状态来源参数实际写入元件并采用对应单位",
+    "高级件实际R旋转",
+    "高级件右键可取下",
+    "Q在第五行真实铺信号线",
+    "E在第五行铺供能且不混已有信号线",
+    "清理新物后可缩回四格并保持原基础连通",
+    "保存本档真实视口 失败现场.png"
+  ],
+  "bounds": [],
+  "screenshots": [
+    {
+      "file": "失败现场.png",
+      "width": 1920,
+      "height": 1080
+    }
+  ],
+  "visual_review": "pending per-image inspection"
+}

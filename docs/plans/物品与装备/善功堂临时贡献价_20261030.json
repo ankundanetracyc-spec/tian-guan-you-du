@@ -1,0 +1,515 @@
+{
+  "date": "2026-10-30",
+  "status": "用户授权临时拟价，可后续修改",
+  "scope": "2026-10-31已接入正式善功堂目录与兑换，实际扣除玩家贡献并按空间入包；81项配置候选经现行可用性筛选后展示，后续可调整临时价格",
+  "existing_rule_sources": [
+    "csharp/system/YuxuSectPrototypeBalance.cs",
+    "csharp/resources/MaterialCraftData.cs"
+  ],
+  "category_defaults": {
+    "材料": 10,
+    "秘籍": 15,
+    "器物": 30,
+    "丹药": 10,
+    "装备": 20,
+    "阵盘": 60,
+    "器具": 10,
+    "符箓": 8,
+    "灵膳": 5
+  },
+  "huichun_tiers": {
+    "薄效": 5,
+    "良效": 8,
+    "优效": 12,
+    "极效": 18,
+    "满效": 25
+  },
+  "items": {
+    "sect_sword_hanzhang": {
+      "name": "含章剑",
+      "category": "器物",
+      "contribution": 0,
+      "source": "现行器物原型价"
+    },
+    "sect_sword_chenglu": {
+      "name": "承露剑",
+      "category": "器物",
+      "contribution": 0,
+      "source": "现行器物原型价"
+    },
+    "sect_artifact_qinghe": {
+      "name": "清和剑",
+      "category": "器物",
+      "contribution": 0,
+      "source": "现行器物原型价"
+    },
+    "sect_sword_suxing": {
+      "name": "素行剑",
+      "category": "器物",
+      "contribution": 0,
+      "source": "现行器物原型价"
+    },
+    "pill_container_empty_porcelain": {
+      "name": "瓷瓶外观模板",
+      "category": "器具",
+      "contribution": 10,
+      "source": "临时拟价"
+    },
+    "alchemy_huichun_9_0": {
+      "name": "回春丹·薄效",
+      "category": "丹药",
+      "contribution": 5,
+      "source": "临时拟价"
+    },
+    "alchemy_huichun_9_1": {
+      "name": "回春丹·良效",
+      "category": "丹药",
+      "contribution": 8,
+      "source": "临时拟价"
+    },
+    "alchemy_huichun_9_2": {
+      "name": "回春丹·优效",
+      "category": "丹药",
+      "contribution": 12,
+      "source": "临时拟价"
+    },
+    "alchemy_huichun_9_3": {
+      "name": "回春丹·极效",
+      "category": "丹药",
+      "contribution": 18,
+      "source": "临时拟价"
+    },
+    "alchemy_huichun_9_4": {
+      "name": "回春丹·满效",
+      "category": "丹药",
+      "contribution": 25,
+      "source": "临时拟价"
+    },
+    "portrait_clothing_female_yuebai_zhuying": {
+      "name": "月白竹影袍",
+      "category": "装备",
+      "contribution": 20,
+      "source": "临时拟价"
+    },
+    "portrait_clothing_female_ouhe_huayun": {
+      "name": "藕荷花云袍",
+      "category": "装备",
+      "contribution": 20,
+      "source": "临时拟价"
+    },
+    "portrait_clothing_female_qingci_yunmei": {
+      "name": "青瓷云梅袍",
+      "category": "装备",
+      "contribution": 20,
+      "source": "临时拟价"
+    },
+    "portrait_clothing_yuxu_neimen": {
+      "name": "玉虚·内门常服",
+      "category": "装备",
+      "contribution": 20,
+      "source": "临时拟价"
+    },
+    "portrait_clothing_yuxu_waimen": {
+      "name": "玉虚·外门常服",
+      "category": "装备",
+      "contribution": 20,
+      "source": "临时拟价"
+    },
+    "portrait_clothing_yuxu_zayi": {
+      "name": "玉虚·杂役常服",
+      "category": "装备",
+      "contribution": 20,
+      "source": "临时拟价"
+    },
+    "portrait_clothing_yuxu_zhenchuan": {
+      "name": "玉虚·真传常服",
+      "category": "装备",
+      "contribution": 20,
+      "source": "临时拟价"
+    },
+    "portrait_clothing_male_xuanqing_yunzhu": {
+      "name": "玄青云竹袍",
+      "category": "装备",
+      "contribution": 20,
+      "source": "临时拟价"
+    },
+    "portrait_clothing_male_bilan_yunye": {
+      "name": "碧岚云叶袍",
+      "category": "装备",
+      "contribution": 20,
+      "source": "临时拟价"
+    },
+    "portrait_clothing_male_jiangxia_liuyun": {
+      "name": "绛霞流云袍",
+      "category": "装备",
+      "contribution": 20,
+      "source": "临时拟价"
+    },
+    "mat_dark_feather": {
+      "name": "乌羽片",
+      "category": "材料",
+      "contribution": 15,
+      "source": "现行材料基础价"
+    },
+    "manual_chengwu_youhai": {
+      "name": "乘物游骸真经",
+      "category": "秘籍",
+      "contribution": 15,
+      "source": "现行秘籍基础价"
+    },
+    "mat_cloud_mist_mushroom": {
+      "name": "云雾菌",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_earthbeast_sinew": {
+      "name": "伏地兽筋",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_beast_hide": {
+      "name": "兽皮",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_beast_bone": {
+      "name": "兽骨",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_frostdew_leaf": {
+      "name": "凝霜叶",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_dew_pine_resin": {
+      "name": "凝露松脂",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_return_spring_pearl": {
+      "name": "回泉珠",
+      "category": "材料",
+      "contribution": 15,
+      "source": "现行材料基础价"
+    },
+    "mat_geovein_flame_coal": {
+      "name": "地脉焰炭",
+      "category": "材料",
+      "contribution": 15,
+      "source": "现行材料基础价"
+    },
+    "manual_taihe_ganwu_yangyuan_baoce": {
+      "name": "太和感物养元宝册",
+      "category": "秘籍",
+      "contribution": 15,
+      "source": "现行秘籍基础价"
+    },
+    "mat_mountain_silkworm_thread": {
+      "name": "山蚕长丝",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_cicada_shell": {
+      "name": "山蝉蜕壳",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "manual_baoxu": {
+      "name": "抱虚养晦通玄录",
+      "category": "秘籍",
+      "contribution": 15,
+      "source": "现行秘籍基础价"
+    },
+    "mat_mottled_beetle_shell": {
+      "name": "斑甲壳片",
+      "category": "材料",
+      "contribution": 15,
+      "source": "现行材料基础价"
+    },
+    "manual_zhuo_ji_sun_qi_xuan_jing": {
+      "name": "斫基损契玄经",
+      "category": "秘籍",
+      "contribution": 15,
+      "source": "现行秘籍基础价"
+    },
+    "mat_broken_horn_bone": {
+      "name": "断角骨片",
+      "category": "材料",
+      "contribution": 15,
+      "source": "现行材料基础价"
+    },
+    "mat_moon_dew_moss": {
+      "name": "月露苔",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_moonmist_mushroom_juice": {
+      "name": "月露菌汁",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_redsun_flower_seed": {
+      "name": "朱阳花籽",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_pineheart_charcoal": {
+      "name": "松心炭",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_sinking_cloud_jade_shard": {
+      "name": "沉云玉屑",
+      "category": "材料",
+      "contribution": 15,
+      "source": "现行材料基础价"
+    },
+    "mat_clay_vein_lump": {
+      "name": "泥脉石团",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_clear_chime_jade_shard": {
+      "name": "清音玉片",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_streampattern_algae_fiber": {
+      "name": "溪纹藻丝",
+      "category": "材料",
+      "contribution": 15,
+      "source": "现行材料基础价"
+    },
+    "mat_spirit_spring_algae": {
+      "name": "灵泉藻",
+      "category": "材料",
+      "contribution": 15,
+      "source": "现行材料基础价"
+    },
+    "mat_spirit_spring_dew": {
+      "name": "灵泉露",
+      "category": "材料",
+      "contribution": 20,
+      "source": "现行材料基础价"
+    },
+    "mat_spirit_stone": {
+      "name": "灵石",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "manual_xuanshu_hanzhang": {
+      "name": "玄枢含章经",
+      "category": "秘籍",
+      "contribution": 15,
+      "source": "现行秘籍基础价"
+    },
+    "mat_darkscale_thin_plate": {
+      "name": "玄甲薄片",
+      "category": "材料",
+      "contribution": 15,
+      "source": "现行材料基础价"
+    },
+    "mat_xuantie": {
+      "name": "玄铁",
+      "category": "材料",
+      "contribution": 15,
+      "source": "现行材料基础价"
+    },
+    "manual_yusui": {
+      "name": "玉髓回澜养真宝册",
+      "category": "秘籍",
+      "contribution": 15,
+      "source": "现行秘籍基础价"
+    },
+    "mat_miasma_clay_pearl": {
+      "name": "瘴泥珠",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "manual_baihai_yanzhi_huasheng_baoce": {
+      "name": "百骸衍枝化生宝册",
+      "category": "秘籍",
+      "contribution": 15,
+      "source": "现行秘籍基础价"
+    },
+    "mat_salt_gypsum": {
+      "name": "盐纹石膏",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_stone_bee_wax": {
+      "name": "石蜂蜡",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_sandvein_stone_fragment": {
+      "name": "砂脉石片",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_gravel_mushroom": {
+      "name": "砾地菌伞",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_zisha_spirit_soil": {
+      "name": "紫砂灵土",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "manual_shujuan": {
+      "name": "舒卷天章",
+      "category": "秘籍",
+      "contribution": 15,
+      "source": "现行秘籍基础价"
+    },
+    "mat_bitter_moss_root": {
+      "name": "苦苔根",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_withered_vine_knot": {
+      "name": "荒藤结节",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_cracked_armor_stone": {
+      "name": "裂甲石",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_brown_copper_sand": {
+      "name": "褐铜砂",
+      "category": "材料",
+      "contribution": 15,
+      "source": "现行材料基础价"
+    },
+    "mat_redwood_seed_core": {
+      "name": "赤瓤木核",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_chiwen_suilishi": {
+      "name": "赤纹燧石",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "manual_chiyang_cantong": {
+      "name": "赤阳参同经",
+      "category": "秘籍",
+      "contribution": 15,
+      "source": "现行秘籍基础价"
+    },
+    "mat_red_scale_shed": {
+      "name": "赤鳞蜕",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_tong_sui_ore": {
+      "name": "铜髓矿",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "manual_yinfu_yingwu": {
+      "name": "阴符应物经",
+      "category": "秘籍",
+      "contribution": 15,
+      "source": "现行秘籍基础价"
+    },
+    "mat_mistheart_mushroom_core": {
+      "name": "雾心菌核",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_mist_bell_flower": {
+      "name": "雾铃花",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_frostleaf_twig": {
+      "name": "霜叶枝",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_qinglan_vine_core": {
+      "name": "青岚藤心",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_qingmu_core": {
+      "name": "青木芯",
+      "category": "材料",
+      "contribution": 20,
+      "source": "现行材料基础价"
+    },
+    "mat_bluegreen_feather": {
+      "name": "青羽翎",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_qingmarrow_sprout": {
+      "name": "青髓芽",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_windaperture_crystal_shard": {
+      "name": "风窍晶屑",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "mat_fengwen_quartz": {
+      "name": "风纹石英",
+      "category": "材料",
+      "contribution": 15,
+      "source": "现行材料基础价"
+    },
+    "mat_windvein_vine_fiber": {
+      "name": "风络藤丝",
+      "category": "材料",
+      "contribution": 10,
+      "source": "现行材料基础价"
+    },
+    "manual_huangting_yangxing": {
+      "name": "胎息经",
+      "category": "秘籍",
+      "contribution": 15,
+      "source": "现行秘籍基础价"
+    }
+  }
+}

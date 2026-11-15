@@ -24,9 +24,9 @@ public partial class YuanxiPreviewScene : Control
         _panel.ShowFor(_character);
         var tools = new HBoxContainer { ZIndex = 700, AnchorTop = 1, AnchorBottom = 1, OffsetLeft = 36, OffsetTop = -60, OffsetBottom = -16 };
         AddChild(tools);
-        var ordinary = new Button { Text = "临时角色：普通体力100" }; tools.AddChild(ordinary);
+        var ordinary = new Button { Text = "临时角色：普通精力100" }; tools.AddChild(ordinary);
         ordinary.Pressed += () => Reset(100);
-        var full = new Button { Text = "临时角色：零体力（仍可修炼）" }; tools.AddChild(full);
+        var full = new Button { Text = "临时角色：零精力（仍可修炼）" }; tools.AddChild(full);
         full.Pressed += () => Reset(0);
     }
     private void Reset(float stamina)

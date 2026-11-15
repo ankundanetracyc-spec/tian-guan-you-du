@@ -4,16 +4,24 @@ using System.Linq;
 
 public partial class EastWoodsDungeonPanel
 {
+    private static Texture2D? _roguelikeNodeIconAtlas;
+
     // Appearance only: movement times and graph adjacency still come from DungeonRules.
-    private static (int Index, string Name) terrain_kind(string id) => id switch
+    private (int Index, string Name) terrain_kind(string id) => !_dynamicMode ? id switch
     {
         "fern_lowland" or "forest_edge" => (1, "草地"),
         "creek_path" or "upper_ridge" or "moss_bridge" => (2, "岩地"),
         "shallow_gully" or "stream_canopy" => (3, "浅溪"),
         "leaf_creek" or "mid_split" => (4, "干溪"),
         "south_turn" or "lower_join" or "dry_pool" or "lower_approach" => (5, "湿地"),
-        _ => (EastWoodsDungeonRules.get_node(id)?.Terrain ?? 0, (EastWoodsDungeonRules.get_node(id)?.Terrain ?? 0) switch { 1 => "草地", 2 => "岩地", 3 => "浅溪", 5 => "湿地", 6 => "竹林", 7 => "阴岩地面", _ => "林地" }),
-    };
+        _ => terrain_from_definition(EastWoodsDungeonRules.get_node(id)),
+    } : terrain_from_definition(route_node(id));
+
+    private static (int Index, string Name) terrain_from_definition(EastWoodsDungeonRules.NodeDefinition? node)
+    {
+        var terrain = node?.Terrain ?? 0;
+        return (terrain, terrain switch { 1 => "草地", 2 => "岩地", 3 => "浅溪", 5 => "湿地", 6 => "竹林", 7 => "阴岩地面", _ => "林地" });
+    }
 
     private Texture2D load_terrain(string id)
     {
@@ -28,8 +36,105 @@ public partial class EastWoodsDungeonPanel
             7 => DungeonTerrainVisuals.Terrain.CaveFloor,
             _ => DungeonTerrainVisuals.Terrain.Grass,
         };
-        var seed = EastWoodsDungeonRules.LayoutSeed;
-        return DungeonTerrainVisuals.Get(terrain, seed == "legacy" ? EastWoodsDungeonRules.DungeonId : EastWoodsDungeonRules.DungeonId + "|" + seed, id);
+        var seed = route_layout_seed;
+        var dungeonId = _dynamicMode ? route_dungeon_id : seed == "legacy" ? EastWoodsDungeonRules.DungeonId : EastWoodsDungeonRules.DungeonId + "|" + seed;
+        return DungeonTerrainVisuals.Get(terrain, dungeonId + "|" + seed, id);
+    }
+
+    private static int roguelike_node_icon_index(string key) => key switch
+    {
+        "entry" => 0,
+        "exit" => 1,
+        "battle" => 2,
+        "boss" => 3,
+        "rest" => 4,
+        "herb" => 5,
+        "fungus" => 6,
+        "wood" => 7,
+        "mine" => 8,
+        "beast_nest" => 9,
+        "cultivation" => 10,
+        "manual" => 11,
+        "alchemy" => 12,
+        "forging" => 13,
+        "resource" => 14,
+        "shop" => 15,
+        "event" => 15,
+        _ => 14,
+    };
+
+    private static string roguelike_node_icon_key(EastWoodsDungeonRules.NodeDefinition node)
+    {
+        if (node.Feature == "beast_nest") return "beast_nest";
+        if (node.ContentType == DynamicDungeonExpedition.ResourceNodeType &&
+            node.ResourceNodeId.StartsWith("rogue_material_", StringComparison.Ordinal))
+        {
+            var parts = node.Id.Split('_');
+            var layer = parts.Length > 1 && int.TryParse(parts[1], out var parsedLayer) ? parsedLayer : 0;
+            return DynamicDungeonExpedition.RoguelikeMaterialGroupForLayer(layer);
+        }
+        if (node.ContentType == DynamicDungeonExpedition.ResourceNodeType) return "resource";
+        return node.ContentType switch
+        {
+            DynamicDungeonExpedition.BattleNodeType => "battle",
+            DynamicDungeonExpedition.BossNodeType => "boss",
+            DynamicDungeonExpedition.RestNodeType => "rest",
+            "entry" => "entry",
+            "exit" => "exit",
+            "cultivation" => "cultivation",
+            "manual" => "manual",
+            "shop" => "shop",
+            "alchemy" => "alchemy",
+            "forging" => "forging",
+            "event" => "event",
+            _ => "resource",
+        };
+    }
+
+    private void build_roguelike_node_icon(Button button, EastWoodsDungeonRules.NodeDefinition node)
+    {
+        _roguelikeNodeIconAtlas ??= ResourceLoader.Load<Texture2D>("res://textures/dungeon/roguelike_node_icons_xianxia_v1.png");
+        if (_roguelikeNodeIconAtlas is null) return;
+        var index = roguelike_node_icon_index(roguelike_node_icon_key(node));
+        var atlasCellSize = new Vector2(_roguelikeNodeIconAtlas.GetWidth() / 4f, _roguelikeNodeIconAtlas.GetHeight() / 4f);
+        var icon = new TextureRect
+        {
+            Name = "RoguelikeNodeIcon",
+            Texture = new AtlasTexture
+            {
+                Atlas = _roguelikeNodeIconAtlas,
+                Region = new Rect2(new Vector2((index % 4) * atlasCellSize.X, (index / 4) * atlasCellSize.Y), atlasCellSize),
+                FilterClip = true,
+            },
+            ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
+            StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
+            Modulate = node.Feature switch
+            {
+                "cultivation_physique" => new Color("d89a69"),
+                "cultivation_intelligence" => new Color("80a985"),
+                "cultivation_soul" => new Color("8e9cbd"),
+                _ => Colors.White,
+            },
+            MouseFilter = MouseFilterEnum.Ignore,
+        };
+        icon.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        button.AddChild(icon);
+    }
+
+    private Line2D? add_roguelike_connection(EastWoodsDungeonRules.NodeDefinition from, EastWoodsDungeonRules.NodeDefinition to, bool isPath)
+    {
+        if (_connectionLayer is null) return null;
+        var direction = (node_center(to) - node_center(from)).Normalized();
+        var start = node_center(from) + direction * (_cellSize * .43f);
+        var end = node_center(to) - direction * (_cellSize * .43f);
+        var line = new Line2D
+        {
+            Width = isPath ? 3.5f : 2f,
+            DefaultColor = isPath ? new Color("c18d4d") : new Color("665f50", .76f),
+            Points = [start, end],
+        };
+        _connectionLayer.AddChild(line);
+        return line;
     }
 
     private Line2D? add_terrain_connection(EastWoodsDungeonRules.NodeDefinition from, EastWoodsDungeonRules.NodeDefinition to, bool isPath)
@@ -85,27 +190,9 @@ public partial class EastWoodsDungeonPanel
 
     private void build_hover()
     {
-        _hoverTimer = new Godot.Timer { WaitTime = .45, OneShot = true };
+        _hoverTimer = new Godot.Timer { WaitTime = .10, OneShot = true };
         AddChild(_hoverTimer);
         _hoverTimer.Timeout += show_hover;
-        _hoverPanel = new PanelContainer
-        {
-            Name = "TerrainHoverInfo", MouseFilter = MouseFilterEnum.Ignore,
-            CustomMinimumSize = new Vector2(310, 0), ZIndex = 1,
-        };
-        _hoverPanel.AddThemeStyleboxOverride("panel", WorldHudStyle.Paper());
-        AddChild(_hoverPanel);
-        var rows = new VBoxContainer { MouseFilter = MouseFilterEnum.Ignore };
-        rows.AddThemeConstantOverride("separation", 8);
-        _hoverPanel.AddChild(rows);
-        _hoverTitle = WorldHudStyle.Text("", 22);
-        rows.AddChild(_hoverTitle);
-        rows.AddChild(WorldHudStyle.Rule());
-        _hoverDescription = WorldHudStyle.Text("", 17, true);
-        _hoverDescription.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-        _hoverDescription.CustomMinimumSize = new Vector2(280, 0);
-        rows.AddChild(_hoverDescription);
-        _hoverPanel.Hide();
     }
 
     private void begin_hover(string id)
@@ -118,52 +205,50 @@ public partial class EastWoodsDungeonPanel
 
     private void clear_hover()
     {
+        if (_nodeButtons.TryGetValue(_hoveredNode, out var button)) HoverInfoManager.HideFor(button);
         _hoveredNode = "";
         _hoverTimer?.Stop();
-        _hoverPanel?.Hide();
     }
 
     private void show_hover()
     {
-        var node = EastWoodsDungeonRules.get_node(_hoveredNode);
-        if (!Visible || node is null || !is_node_visible(node.Id) || _hoverPanel is null || _hoverTitle is null || _hoverDescription is null) return;
+        var node = route_node(_hoveredNode);
+        if (!Visible || node is null || !is_node_visible(node.Id) || !_nodeButtons.TryGetValue(node.Id, out var anchor)) return;
+        HoverInfoManager.SetInfo(anchor, build_node_hover_content(node), true);
+    }
+
+    private HoverInfoManager.HoverInfoContent build_node_hover_content(EastWoodsDungeonRules.NodeDefinition node)
+    {
         var (_, terrainName) = terrain_kind(node.Id);
-        _hoverTitle.Text = string.IsNullOrWhiteSpace(node.Title) ? terrainName : $"{node.Title} · {terrainName}";
-        _hoverDescription.Text = node.Description;
-        var availableAction = available_actions(node.Id).FirstOrDefault();
+        var title = string.IsNullOrWhiteSpace(node.Title) ? terrainName : $"{node.Title} · {terrainName}";
+        if (!_dynamicMode) title = EastWoodsDungeonRules.forest_region(node.Id) + " · " + title;
+        var showContents = _dynamicMode || node.Id == _current;
+        var description = showContents ? node.Description : forest_ambience(node.Id);
+        if (is_tower_instance && node.Id != route_entry_node_id)
+            description += $"\n前往此节点消耗 {DynamicDungeonExpedition.MovementStaminaCost(_dynamicInstanceState, node.Id):0.#} 点精力。";
+        var resourceNode = _dynamicMode
+            ? EastWoodsResourceNodes.Find(node.ResourceNodeId)
+            : EastWoodsResourceNodes.ForNode(node);
+        if (showContents && resourceNode is not null)
+            description += $"\n资源类别：{resourceNode.CategoryLabel}（{resourceNode.DisplayName}）";
+        var availableAction = showContents ? available_actions(node.Id).FirstOrDefault() : null;
         if (availableAction is not null)
-            _hoverDescription.Text += "\n" + availableAction.Description;
-        else if (EastWoodsActions.Content(node.Id) is not null)
-            _hoverDescription.Text += "\n此处行动已完成或资源已采尽。";
-        if (_activeDutyId == "east_woods_patrol")
-            _hoverDescription.Text += _activeDutyReady ? "\n巡查复核完成，沿出口离开后回和光峰回报。" : $"\n巡查：{Math.Min(_activeDutyStage, YuxuSectPrototypeBalance.EastWoodsPatrolRequiredNodeMoves)}/{YuxuSectPrototypeBalance.EastWoodsPatrolRequiredNodeMoves} 格；静冠洼地复核后回宗回报。";
+            description += "\n" + availableAction.Description;
+        else if (showContents && (_dynamicMode ? node.ResourceNodeId.Length > 0 || node.Feature.Length > 0 || DynamicDungeonExpedition.AvailableActions(_dynamicInstanceState, node.Id, _actionProgress).Count > 0 : EastWoodsActions.Content(node.Id) is not null))
+            description += "\n此处行动已完成或资源已采尽。";
+        if (!_dynamicMode && _activeDutyId == "east_woods_patrol")
+            description += _activeDutyReady ? "\n巡查复核完成，沿出口离开后回和光峰回报。" : $"\n巡查：{Math.Min(_activeDutyStage, YuxuSectPrototypeBalance.EastWoodsPatrolRequiredNodeMoves)}/{YuxuSectPrototypeBalance.EastWoodsPatrolRequiredNodeMoves} 格；静冠洼地复核后回宗回报。";
         if (node.Id != _current)
         {
             var path = find_shortest_path(_current, node.Id);
             if (path.Count > 1)
-                _hoverDescription.Text += $"\n预计耗时：{format_hours((path.Count - 1) * EastWoodsDungeonRules.player_edge_hours(_playerDunSpeed))}";
+                description += $"\n预计耗时：{format_hours((path.Count - 1) * EastWoodsDungeonRules.player_edge_hours(_playerDunSpeed))}";
         }
-        _hoverPanel.Size = new Vector2(310, 0);
-        _hoverPanel.Show();
-        position_hover();
+        return new HoverInfoManager.HoverInfoContent(title, description);
     }
 
     public override void _Process(double delta)
     {
         if (Visible) update_map_camera();
-        if (Visible && _hoverPanel?.Visible == true) position_hover();
-    }
-
-    private void position_hover()
-    {
-        if (_hoverPanel is null) return;
-        var mouse = GetLocalMousePosition();
-        var panelSize = _hoverPanel.Size;
-        var x = mouse.X + 18;
-        if (x + panelSize.X > Size.X - 12) x = mouse.X - panelSize.X - 18;
-        var position = new Vector2(
-            Mathf.Clamp(x, 12, Mathf.Max(12, Size.X - panelSize.X - 12)),
-            Mathf.Clamp(mouse.Y + 18, 12, Mathf.Max(12, Size.Y - panelSize.Y - 12)));
-        if (!_hoverPanel.Position.IsEqualApprox(position)) _hoverPanel.Position = position;
     }
 }

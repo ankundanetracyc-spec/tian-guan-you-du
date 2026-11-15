@@ -26,13 +26,36 @@ public partial class FormationCircuitData : Resource
         {
             if (node is null || string.IsNullOrWhiteSpace(node.node_id)) { errors.Add("阵图存在没有 ID 的元件"); continue; }
             if (!ids.Add(node.node_id)) errors.Add($"元件 ID 重复：{node.node_id}");
+            if (!Enum.IsDefined(node.kind) || !Enum.IsDefined(node.actuator_effect)) errors.Add($"元件类型无效：{node.node_id}");
+            if (node.energy_cost is < 0 or > 99 || node.peak_load is < 0 or > 99 || node.effect_value is < 0 or > 99)
+                errors.Add($"元件费用、负荷或输出值无效：{node.node_id}");
+            if (node.accepted_source_tags is null) errors.Add($"元件缺少来源配置：{node.node_id}");
         }
         foreach (var wire in pulse_wires)
-            if (!ids.Contains(wire.from_node_id) || !ids.Contains(wire.to_node_id)) errors.Add($"脉纹连接了不存在的元件：{wire.from_node_id} → {wire.to_node_id}");
+            if (wire is null) errors.Add("阵图存在空信号线");
+            else if (!ids.Contains(wire.from_node_id) || !ids.Contains(wire.to_node_id)) errors.Add($"脉纹连接了不存在的元件：{wire.from_node_id} → {wire.to_node_id}");
         if (hardware is not null && nodes.Count > hardware.effective_component_slots()) errors.Add($"元件数 {nodes.Count} 超过阵盘格位 {hardware.effective_component_slots()}");
-        if (hardware is not null && complexity_cost() > hardware.effective_eye_complexity()) errors.Add($"阵眼复杂度不足：需要 {complexity_cost()}，当前 {hardware.effective_eye_complexity()}");
+        if (hardware is not null && (hardware.component_slots is < 1 or > 64 ||
+            hardware.pulse_layers is < 1 or > 8 || hardware.source_capacity is < 0 or > 99 ||
+            hardware.source_recharge_per_turn is < 0 or > 99 || hardware.source_peak_output is < 0 or > 99 ||
+            hardware.spirit_link_peak_output is < 0 or > 99 || hardware.board_peak_load is < 0 or > 99))
+            errors.Add("阵盘硬件参数无效");
+        if (errors.Count == 0)
+            foreach (var issue in FormationLogicCircuit.Validate(logic_nodes(), logic_edges())) errors.Add(issue);
         return errors;
     }
 
     public int complexity_cost() => nodes.Sum(node => node is null ? 0 : node.complexity_cost());
+
+    // 旧资源DIVIDER=3不改编号，编译为同一计数器的先发一次模式。
+    internal IEnumerable<FormationLogicCircuit.Node> logic_nodes() => nodes.Select(node =>
+        new FormationLogicCircuit.Node(node.node_id.ToString(), node.kind == FormationNodeData.NodeKind.DIVIDER
+            ? FormationLogicCircuit.NodeKind.Counter : (FormationLogicCircuit.NodeKind)(int)node.kind)
+        {
+            Interval = node.interval, MinimumAmplitude = node.minimum_amplitude, EventName = node.input_event,
+            FirstImmediate = node.first_immediate || node.kind == FormationNodeData.NodeKind.DIVIDER,
+            AcceptedSourceTags = node.accepted_source_tags.ToArray()
+        });
+    internal IEnumerable<FormationLogicCircuit.Edge> logic_edges() => pulse_wires.Select(wire =>
+        new FormationLogicCircuit.Edge(wire.from_node_id.ToString(), wire.to_node_id.ToString()));
 }

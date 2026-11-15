@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="架招">
+    <mxGraphModel>
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="2" parent="1" vertex="1" value="架招&#10;关键词：化解、应对&#10;体力1、法力0；立即；冷却：C秒（C=max(1.5,5−min(体魄,神魂)×0.03)），最低1.5秒&#10;目标：自身&#10;0.20秒内匹配首项来袭物理攻击，获得化解A&#10;（A=3+floor(体魄/4)+floor(min(体魄×0.25,神魂×0.20)))。&#10;本次攻击后余量消散，空放扣费。&#10;冷却从逻辑招式结束或中断后起算。" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#eee9d9;strokeColor=#557f70;fontSize=16;align=left;spacing=16;">
+          <mxGeometry x="30" y="30" width="450" height="350" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

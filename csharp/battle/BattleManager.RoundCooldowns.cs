@@ -7,6 +7,8 @@ public partial class BattleManager
 
     public int get_skill_cooldown_rounds(GodotObject unit, ActiveSkillData skill)
     {
+        if (_boardMode && skill.has_board_definition() && get_board_state(unit) is { } board)
+            return board.CooldownRoundsRemaining(skill);
         if (!_realtimeMode || !_skillReadyRounds.TryGetValue(unit, out var rounds)) return 0;
         return Math.Max(0, rounds.GetValueOrDefault(skill, 0) - _segmentNumber);
     }

@@ -17,6 +17,8 @@ public static class NpcSocialRules
         public string ActionName { get; init; } = "交谈";
         public bool ExchangesName { get; init; }
         public bool AgreesToSpar { get; init; }
+        /// <summary>玩家对 NPC 的关系记事；不包含 NPC 对玩家的内在关系。</summary>
+        public string RelationshipFeedback { get; init; } = "";
         // 具体旧事不是新判定，也不形成性格标签或社交加成。
         public NpcPersonalRecallRules.Recall? Recollection { get; init; }
     }
@@ -34,9 +36,9 @@ public static class NpcSocialRules
     {
         var memory = npc.player_social_memory;
         var name = memory.GetValueOrDefault("player_name", "").AsString();
-        var relation = memory.GetValueOrDefault("relationship", "").AsString();
+        var relation = CharacterRelationshipRules.LegacyMarker(npc, CharacterRelationshipRules.PlayerCharacterId);
         if (relation == "enemy") return name.Length > 0 ? name : "你";
-        if (relation == "friend" && name.Length > 0) return name;
+        if ((relation == "friend" || CharacterRelationshipRules.Value(npc, CharacterRelationshipRules.PlayerCharacterId, CharacterRelationshipRules.Closeness) >= 80) && name.Length > 0) return name;
         return RealmAddress(npc.cultivation_realm, memory.GetValueOrDefault("player_realm", "").AsString(), npc.current_age, playerAge);
     }
     public static string RealmAddress(string own, string target, int ownAge, int targetAge)
@@ -62,9 +64,9 @@ public static class NpcSocialRules
     public static string Opening(WorldNpcData npc, HumanData player, string place, bool proactive)
     {
         var address = Address(npc, player.current_age);
-        if (npc.player_social_memory.GetValueOrDefault("relationship", "").AsString() == "enemy")
+        if (CharacterRelationshipRules.IsHostile(npc, CharacterRelationshipRules.PlayerCharacterId))
             return $"{address}，你找我有何事？";
-        if (KnowsName(npc)) return "对方认出你来，向你问了近况。";
+        if (KnowsName(npc)) return proactive ? "对方认出你来，向你问了近况。" : "对方认出你来，你准备上前聊聊近况。";
         var sameSect = !string.IsNullOrEmpty(player.sect_affiliation_id) && npc.faction_id == player.sect_affiliation_id;
         if (proactive && sameSect && HeardTrueDisciple(npc)) return "对方在宗内停步向你问候，提起听闻你拜入真传。";
         if (proactive && sameSect) return "对方在宗内停下脚步，先向你问了近况。";
@@ -81,6 +83,11 @@ public static class NpcSocialRules
             new(result, speech, factors) { ExchangesName = exchange, DecisionSteps = steps.ToArray() };
         if (choice == "leave")
         {
+            if (!proactive)
+            {
+                Trace("player_cancelled", "你收起搭话的念头，没有上前交谈。");
+                return Finish("你暂且作罢，没有上前交谈。", "") with { ActionName = "取消交谈" };
+            }
             Trace("player_declined", "你示意另有事务，对方便不再挽留。");
             return Finish("你婉拒了这次来访，双方各自离去。", "你向对方示意，暂不便交谈。") with { ActionName = "告辞" };
         }
@@ -88,13 +95,14 @@ public static class NpcSocialRules
         {
             return new("你们闲谈片刻，各自散去。", "你们略作寒暄。", factors);
         }
-        var hostile = npc.player_social_memory.GetValueOrDefault("relationship", "").AsString() == "enemy" || npc.player_relationship < 0;
+        var hostile = CharacterRelationshipRules.IsHostile(npc, CharacterRelationshipRules.PlayerCharacterId);
         if (hostile)
         {
             Trace("hostile_veto", "提及姓名时，对方只略一拱手，没有继续交谈。");
             return Finish("对方无意继续交谈，双方就此别过。", "对方没有回应你的接近。");
         }
-        Trace("player_accepted", "见你应下，对方接着说起了来意。");
+        if (proactive) Trace("player_accepted", "见你应下，对方接着说起了来意。");
+        else Trace("player_initiated", "你上前向对方见礼，开口问候。");
         Trace("no_hostile_veto", "双方无既有敌对关系。", false);
         var sameSect = !string.IsNullOrEmpty(player.sect_affiliation_id) && npc.faction_id == player.sect_affiliation_id;
         var heard = HeardTrueDisciple(npc);
@@ -137,8 +145,9 @@ public static class NpcSocialRules
         return Finish(known ? "你们聊了聊近况。" : "你们互通姓名，闲谈了几句。",
             known ? "你们聊起了各自的近况。" : "你们互通了姓名。", true);
     }
-    public static void Remember(WorldNpcData npc, HumanData player, string choice, string place, int month, Response response)
+    public static Response Remember(WorldNpcData npc, HumanData player, string choice, string place, int month, Response response, string eventId = "")
     {
+        var relationshipEventId = string.IsNullOrWhiteSpace(eventId) ? Guid.NewGuid().ToString("N") : eventId;
         if (choice == "introduce" && response.ExchangesName)
         {
             if (!KnowsName(npc)) npc.player_social_memory["first_place"] = place;
@@ -155,7 +164,25 @@ public static class NpcSocialRules
         }
         npc.player_social_memory["last_choice"] = choice;
         npc.player_social_memory["last_month"] = month;
-        npc.record(new NpcActionRecord { month_index = month, action_id = "player_social_" + choice, action_name = choice.StartsWith("spar_") ? "切磋邀约" : "人物交谈", node_id = npc.current_node_id, subscene_id = npc.current_subscene_id, target_npc_id = "player", reason = "在场相遇后由双方实际回应。", outcome = response.Result,
+        if (choice == "introduce" && response.ExchangesName)
+        {
+            var recorded = CharacterRelationshipRules.RecordConversation(player, npc, relationshipEventId, month);
+            var feedback = recorded
+                ? CharacterRelationshipRules.DescribePlayerEvidence(player, npc.npc_id, relationshipEventId,
+                    "亲近记事：本月已有一次成功交谈记录，本次未重复增加。")
+                : "亲近记事：本月已有一次成功交谈记录，本次未重复增加。";
+            response = response with { RelationshipFeedback = feedback };
+        }
+        else
+        {
+            var feedback = choice == "introduce"
+                ? "亲近：未能互通姓名，本次没有增加亲近。"
+                : "关系：本次互动没有形成新的关系记事。";
+            response = response with { RelationshipFeedback = feedback };
+        }
+        var outcome = response.Result + (string.IsNullOrWhiteSpace(response.RelationshipFeedback) ? "" : "\n" + response.RelationshipFeedback);
+        npc.record(new NpcActionRecord { month_index = month, date_label = $"{month / 12 + 1}年{month % 12 + 1}月", action_id = "player_social_" + choice, action_name = choice == "leave" ? response.ActionName : choice.StartsWith("spar_") ? "切磋邀约" : "人物交谈", node_id = npc.current_node_id, subscene_id = npc.current_subscene_id, target_npc_id = "player", reason = "在场相遇后由双方实际回应。", outcome = outcome,
             player_contact_completed = choice == "introduce" && response.ExchangesName });
+        return response;
     }
 }

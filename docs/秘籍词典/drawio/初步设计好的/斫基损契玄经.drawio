@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mxfile host="Electron" agent="Codex" pages="1">
+  <diagram id="zhuo-ji-sun-qi" name="斫基损契玄经">
+    <mxGraphModel dx="3641" dy="512" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2360" pageHeight="2092" math="0" shadow="0">
+      <root>
+        <mxCell id="0" value="" />
+        <mxCell id="1" parent="0" value="" />
+        <mxCell id="title" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=34;fontFamily=Microsoft YaHei;fontColor=#242b2a;align=center;verticalAlign=middle;spacing=22;spacingTop=0;spacingBottom=0;spacingLeft=0;spacingRight=0;overflow=hidden;arcSize=8;" value="&lt;div style=&quot;font-family:Microsoft YaHei;font-size:34px;line-height:1.4;text-align:center;overflow-wrap:anywhere;&quot;&gt;&lt;div style=&quot;font-weight:700;&quot;&gt;斫基损契玄经&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="110" width="640" x="1085.0" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="overview" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=20;fontFamily=Microsoft YaHei;fontColor=#242b2a;align=center;verticalAlign=middle;spacing=22;spacingTop=0;spacingBottom=0;spacingLeft=0;spacingRight=0;overflow=hidden;arcSize=8;" value="&lt;div style=&quot;font-family:Microsoft YaHei;font-size:20px;line-height:1.4;text-align:center;overflow-wrap:anywhere;&quot;&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;斫基损契玄经 可主修、可辅修，主修至云息十层。&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;已学招式由玩家自行放入灵台，化法占单格并指向紧邻的一份。&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;战斗开始后灵台锁定；心法由当前主辅修自动生效。&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="170" width="680" x="1065.0" y="162" as="geometry" />
+        </mxCell>
+        <mxCell id="c1" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=20;align=left;verticalAlign=middle;spacing=22;spacingTop=0;whiteSpace=wrap;html=1;fontFamily=Microsoft YaHei;fontColor=#242b2a;spacingBottom=0;spacingLeft=0;spacingRight=0;overflow=hidden;arcSize=8;" value="&lt;div style=&quot;font-family:Microsoft YaHei;font-size:20px;line-height:1.4;text-align:left;overflow-wrap:anywhere;&quot;&gt;&lt;div style=&quot;font-weight:700;&quot;&gt;第一卷：秉烛&lt;/div&gt;&lt;div style=&quot;height:12px;line-height:12px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;研读值（累计）：24&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;学成可修至：云息三层&lt;/div&gt;&lt;div style=&quot;height:12px;line-height:12px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;学习条件：&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;灵根：任意&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;境界：凡人境及以上&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;前置：无&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;研读属性：灵慧≥5&lt;/div&gt;&lt;div style=&quot;height:12px;line-height:12px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;学会永久属性：灵慧 +0.5；术法造诣 +0.5&lt;/div&gt;&lt;div style=&quot;height:12px;line-height:12px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;习得：折锋*2&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="290" width="470" x="1170" y="521.0" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=20;align=left;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Microsoft YaHei;fontColor=#242b2a;spacing=22;spacingTop=0;spacingBottom=0;spacingLeft=0;spacingRight=0;overflow=hidden;rounded=1;arcSize=8;" value="&lt;div style=&quot;font-family:Microsoft YaHei;font-size:20px;line-height:1.4;text-align:left;overflow-wrap:anywhere;&quot;&gt;&lt;div style=&quot;font-weight:700;&quot;&gt;心法被动：斫基损契&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;关键词：周天&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;效果：法力不足的部分，可燃烧等量法力上限支付，至少保留1点法力上限；无法补足费用时，不可施展。&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;主修额外效果：曾以燃烧法力上限支付过费用的技能，本场后续施展时，以等量体力替代法力费用。&lt;/div&gt;&lt;div style=&quot;height:12px;line-height:12px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-weight:700;&quot;&gt;折锋*2&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;关键词：应对&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;耗费：体力1、法力1&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;占格：3×1&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;目标：随机一名合法敌人&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;出手方式：近身&lt;/div&gt;&lt;div style=&quot;height:12px;line-height:12px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;效果：对一名随机敌人造成A点近身物理伤害（A=round(8+灵慧×0.65+术法造诣×0.20)）；本次燃烧法力上限补费时，此次攻击不可应对。&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="500" width="760" x="36" y="396.0" as="geometry" />
+        </mxCell>
+                
+        <mxCell id="c2" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=20;align=left;verticalAlign=middle;spacing=22;spacingTop=0;whiteSpace=wrap;html=1;fontFamily=Microsoft YaHei;fontColor=#242b2a;spacingBottom=0;spacingLeft=0;spacingRight=0;overflow=hidden;arcSize=8;" value="&lt;div style=&quot;font-family:Microsoft YaHei;font-size:20px;line-height:1.4;text-align:left;overflow-wrap:anywhere;&quot;&gt;&lt;div style=&quot;font-weight:700;&quot;&gt;第二卷：剪灯&lt;/div&gt;&lt;div style=&quot;height:12px;line-height:12px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;研读值（累计）：48&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;学成可修至：云息六层&lt;/div&gt;&lt;div style=&quot;height:12px;line-height:12px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;学习条件：&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;灵根：任意&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;境界：云息三层及以上&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;前置：秉烛&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;研读属性：灵慧≥6；术法造诣≥0.5&lt;/div&gt;&lt;div style=&quot;height:12px;line-height:12px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;学会永久属性：术法造诣 +0.5&lt;/div&gt;&lt;div style=&quot;height:12px;line-height:12px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;习得：焚元*1&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="310" width="470" x="1170" y="1000.0" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=20;align=left;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Microsoft YaHei;fontColor=#242b2a;spacing=22;spacingTop=0;spacingBottom=0;spacingLeft=0;spacingRight=0;overflow=hidden;rounded=1;arcSize=8;" value="&lt;div style=&quot;font-family:Microsoft YaHei;font-size:20px;line-height:1.4;text-align:left;overflow-wrap:anywhere;&quot;&gt;&lt;div style=&quot;font-weight:700;&quot;&gt;心法被动：斫基损契（沿用第一卷，无新增效果）&lt;/div&gt;&lt;div style=&quot;height:12px;line-height:12px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-weight:700;&quot;&gt;焚元*1&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;关键词：周天&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;耗费：体力1、法力0&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;占格：2×1&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;目标：自身&lt;/div&gt;&lt;div style=&quot;height:12px;line-height:12px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;效果：燃烧自身法力上限1点，获得炁2；施放前法力上限须至少为2。每回合限一次。&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;使用次数：每回合1次；同招共享。&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="360" width="760" x="36" y="960.0" as="geometry" />
+        </mxCell>
+                <mxCell id="c2_right" parent="1" style="rounded=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=20;align=left;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Microsoft YaHei;fontColor=#242b2a;spacing=22;spacingTop=0;spacingBottom=0;spacingLeft=0;spacingRight=0;overflow=hidden;arcSize=8;" value="&lt;div style=&quot;font-family:Microsoft YaHei;font-size:20px;line-height:1.4;text-align:left;overflow-wrap:anywhere;&quot;&gt;&lt;div style=&quot;font-weight:700;&quot;&gt;斫基损契玄经·剪灯*1&lt;/div&gt;&lt;div style=&quot;font-weight:700;&quot;&gt;焚元化法*1&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;占格：1×1&lt;/div&gt;&lt;div style=&quot;height:12px;line-height:12px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;化法追加：焚元施放后，本回合下一项法力费用大于0的技能，法力费用改由燃烧等量法力上限支付；体力费用照常支付。至少保留1点法力上限，不足时不可施展。0法力费用技能不触发；未使用则轮末失效。&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="300" width="600" x="1724" y="1035.0" as="geometry" />
+        </mxCell>
+        <mxCell id="c3" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=20;align=left;verticalAlign=middle;spacing=22;spacingTop=0;whiteSpace=wrap;html=1;fontFamily=Microsoft YaHei;fontColor=#242b2a;spacingBottom=0;spacingLeft=0;spacingRight=0;overflow=hidden;arcSize=8;" value="&lt;div style=&quot;font-family:Microsoft YaHei;font-size:20px;line-height:1.4;text-align:left;overflow-wrap:anywhere;&quot;&gt;&lt;div style=&quot;font-weight:700;&quot;&gt;第三卷：续照&lt;/div&gt;&lt;div style=&quot;height:12px;line-height:12px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;研读值（累计）：84&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;学成可修至：云息九层&lt;/div&gt;&lt;div style=&quot;height:12px;line-height:12px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;学习条件：&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;灵根：任意&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;境界：云息六层及以上&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;前置：剪灯&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;研读属性：灵慧≥8；术法造诣≥1&lt;/div&gt;&lt;div style=&quot;height:12px;line-height:12px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;学会永久属性：灵慧 +0.5；术法造诣 +1&lt;/div&gt;&lt;div style=&quot;height:12px;line-height:12px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;习得：无新增技能&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="310" width="470" x="1170" y="1389.0" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=20;align=left;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Microsoft YaHei;fontColor=#242b2a;spacing=22;spacingTop=0;spacingBottom=0;spacingLeft=0;spacingRight=0;overflow=hidden;rounded=1;arcSize=8;" value="&lt;div style=&quot;font-family:Microsoft YaHei;font-size:20px;line-height:1.4;text-align:left;overflow-wrap:anywhere;&quot;&gt;&lt;div style=&quot;font-weight:700;&quot;&gt;心法被动：斫基损契&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;关键词：周天&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;效果：法力不足的部分，可燃烧等量法力上限支付，至少保留1点法力上限；无法补足费用时，不可施展。每回合首次以燃烧法力上限支付技能费用后，技能结算后获得炁1。&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;主修额外效果：曾以燃烧法力上限支付过费用的技能，本场后续施展时，法力费用改为等量体力费用。&lt;/div&gt;&lt;div style=&quot;height:12px;line-height:12px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;习得：无新增招式。&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="290" width="760" x="36" y="1384.0" as="geometry" />
+        </mxCell>
+                
+        <mxCell id="c4" parent="1" style="rounded=1;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=20;align=left;verticalAlign=middle;spacing=22;spacingTop=0;whiteSpace=wrap;html=1;fontFamily=Microsoft YaHei;fontColor=#242b2a;spacingBottom=0;spacingLeft=0;spacingRight=0;overflow=hidden;arcSize=8;" value="&lt;div style=&quot;font-family:Microsoft YaHei;font-size:20px;line-height:1.4;text-align:left;overflow-wrap:anywhere;&quot;&gt;&lt;div style=&quot;font-weight:700;&quot;&gt;第四卷：长明&lt;/div&gt;&lt;div style=&quot;height:12px;line-height:12px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;研读值（累计）：128&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;学成可修至：云息十层&lt;/div&gt;&lt;div style=&quot;height:12px;line-height:12px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;学习条件：&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;灵根：任意&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;境界：云息九层及以上&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;前置：续照&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;研读属性：灵慧≥10；术法造诣≥2&lt;/div&gt;&lt;div style=&quot;height:12px;line-height:12px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;学会永久属性：术法造诣 +1&lt;/div&gt;&lt;div style=&quot;height:12px;line-height:12px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;习得：无新增技能&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="310" width="470" x="1170" y="1738.0" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_cards" parent="1" style="shape=note;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=20;align=left;verticalAlign=middle;whiteSpace=wrap;html=1;fontFamily=Microsoft YaHei;fontColor=#242b2a;spacing=22;spacingTop=0;spacingBottom=0;spacingLeft=0;spacingRight=0;overflow=hidden;rounded=1;arcSize=8;" value="&lt;div style=&quot;font-family:Microsoft YaHei;font-size:20px;line-height:1.4;text-align:left;overflow-wrap:anywhere;&quot;&gt;&lt;div style=&quot;font-weight:700;&quot;&gt;心法被动：斫基损契（沿用第三卷，无新增效果）&lt;/div&gt;&lt;div style=&quot;height:12px;line-height:12px;&quot;&gt;&lt;br&gt;&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;习得：无新增招式。&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="510" x="286" y="1813.0" as="geometry" />
+        </mxCell>
+                
+        <mxCell id="summary" parent="1" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontSize=20;fontFamily=Microsoft YaHei;fontColor=#242b2a;align=center;verticalAlign=middle;spacing=22;spacingTop=0;spacingBottom=0;spacingLeft=0;spacingRight=0;overflow=hidden;rounded=1;arcSize=8;" value="燃烧法力上限补足费用，再以炁与体力接续攻势。" vertex="1">
+          <mxGeometry height="90" width="510" x="161.0" y="202.0" as="geometry" />
+        </mxCell>
+        <mxCell id="c1_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=20;fontFamily=Microsoft YaHei;fontColor=#242b2a;align=center;verticalAlign=middle;spacing=22;spacingTop=0;spacingBottom=0;spacingLeft=0;spacingRight=0;overflow=hidden;arcSize=8;" value="&lt;div style=&quot;font-family:Microsoft YaHei;font-size:20px;line-height:1.4;text-align:center;overflow-wrap:anywhere;&quot;&gt;&lt;div style=&quot;font-weight:700;&quot;&gt;修持（仅战斗内）&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;战斗属性：&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;法力上限 +1（云息境界起生效）&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="170" width="270" x="836" y="561.0" as="geometry" />
+        </mxCell>
+        <mxCell id="c2_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=20;fontFamily=Microsoft YaHei;fontColor=#242b2a;align=center;verticalAlign=middle;spacing=22;spacingTop=0;spacingBottom=0;spacingLeft=0;spacingRight=0;overflow=hidden;arcSize=8;" value="&lt;div style=&quot;font-family:Microsoft YaHei;font-size:20px;line-height:1.4;text-align:center;overflow-wrap:anywhere;&quot;&gt;&lt;div style=&quot;font-weight:700;&quot;&gt;修持（仅战斗内）&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;战斗属性：&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;最大生命 +10%&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="270" x="836" y="1070.0" as="geometry" />
+        </mxCell>
+        <mxCell id="c3_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=20;fontFamily=Microsoft YaHei;fontColor=#242b2a;align=center;verticalAlign=middle;spacing=22;spacingTop=0;spacingBottom=0;spacingLeft=0;spacingRight=0;overflow=hidden;arcSize=8;" value="&lt;div style=&quot;font-family:Microsoft YaHei;font-size:20px;line-height:1.4;text-align:center;overflow-wrap:anywhere;&quot;&gt;&lt;div style=&quot;font-weight:700;&quot;&gt;修持（仅战斗内）&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;战斗属性：&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;物理伤害 +5%&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="270" x="836" y="1459.0" as="geometry" />
+        </mxCell>
+        <mxCell id="c4_left" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=20;fontFamily=Microsoft YaHei;fontColor=#242b2a;align=center;verticalAlign=middle;spacing=22;spacingTop=0;spacingBottom=0;spacingLeft=0;spacingRight=0;overflow=hidden;arcSize=8;" value="&lt;div style=&quot;font-family:Microsoft YaHei;font-size:20px;line-height:1.4;text-align:center;overflow-wrap:anywhere;&quot;&gt;&lt;div style=&quot;font-weight:700;&quot;&gt;修持（仅战斗内）&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;战斗属性：&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;最大生命 +10%&lt;/div&gt;&lt;div style=&quot;font-weight:400;&quot;&gt;物理伤害 +5%&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="170" width="270" x="836" y="1793.0" as="geometry" />
+        </mxCell>
+        <mxCell id="e0" edge="1" parent="1" source="overview" style="endArrow=block;html=1;fontFamily=Microsoft YaHei;fontSize=17;fontColor=#414745;labelBackgroundColor=#ffffff;spacing=6;strokeWidth=1.5;endSize=9;labelPosition=center;verticalLabelPosition=middle;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="c1" value="">
+          <mxGeometry relative="1" as="geometry" x="0" y="0" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" source="c1" style="endArrow=block;html=1;fontFamily=Microsoft YaHei;fontSize=17;fontColor=#414745;labelBackgroundColor=#ffffff;spacing=6;strokeWidth=1.5;endSize=9;labelPosition=center;verticalLabelPosition=middle;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="c2" value="">
+          <mxGeometry relative="1" as="geometry" x="0" y="0" />
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="c2" style="endArrow=block;html=1;fontFamily=Microsoft YaHei;fontSize=17;fontColor=#414745;labelBackgroundColor=#ffffff;spacing=6;strokeWidth=1.5;endSize=9;labelPosition=center;verticalLabelPosition=middle;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="c3" value="">
+          <mxGeometry relative="1" as="geometry" x="0" y="0" />
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="c3" style="endArrow=block;html=1;fontFamily=Microsoft YaHei;fontSize=17;fontColor=#414745;labelBackgroundColor=#ffffff;spacing=6;strokeWidth=1.5;endSize=9;labelPosition=center;verticalLabelPosition=middle;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" target="c4" value="">
+          <mxGeometry relative="1" as="geometry" x="0" y="0" />
+        </mxCell>
+        <mxCell id="e1_a" edge="1" parent="1" source="c1" style="endArrow=block;html=1;fontFamily=Microsoft YaHei;fontSize=17;fontColor=#414745;labelBackgroundColor=#ffffff;spacing=6;strokeWidth=1.5;endSize=9;labelPosition=center;verticalLabelPosition=middle;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" target="c1_left" value="修持">
+          <mxGeometry relative="1" as="geometry" x="0" y="0" />
+        </mxCell>
+        
+        <mxCell id="e1_c" edge="1" parent="1" source="c1" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.85;entryX=1;entryY=0.5;fontFamily=Microsoft YaHei;fontSize=17;fontColor=#414745;labelBackgroundColor=#ffffff;spacing=6;strokeWidth=1.5;endSize=9;labelPosition=center;verticalLabelPosition=middle;rounded=1;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" target="c1_cards" value="本卷心法与习得">
+          <mxGeometry relative="1" as="geometry" x="0" y="0">
+            <Array as="points">
+              <mxPoint x="1146.0" y="733.5" />
+              <mxPoint x="1146.0" y="799.0" />
+              <mxPoint x="816" y="799.0" />
+              <mxPoint x="816" y="646.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e2_a" edge="1" parent="1" source="c2" style="endArrow=block;html=1;fontFamily=Microsoft YaHei;fontSize=17;fontColor=#414745;labelBackgroundColor=#ffffff;spacing=6;strokeWidth=1.5;endSize=9;labelPosition=center;verticalLabelPosition=middle;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" target="c2_left" value="修持">
+          <mxGeometry relative="1" as="geometry" x="0" y="0" />
+        </mxCell>
+        <mxCell id="e2_b" edge="1" parent="1" source="c2" style="endArrow=block;html=1;fontFamily=Microsoft YaHei;fontSize=17;fontColor=#414745;labelBackgroundColor=#ffffff;spacing=6;strokeWidth=1.5;endSize=9;labelPosition=center;verticalLabelPosition=middle;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" target="c2_right" value="化法">
+          <mxGeometry relative="1" as="geometry" x="0" y="0" />
+        </mxCell>
+        <mxCell id="e2_c" edge="1" parent="1" source="c2" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.85;entryX=1;entryY=0.5;fontFamily=Microsoft YaHei;fontSize=17;fontColor=#414745;labelBackgroundColor=#ffffff;spacing=6;strokeWidth=1.5;endSize=9;labelPosition=center;verticalLabelPosition=middle;rounded=1;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" target="c2_cards" value="心法与习得">
+          <mxGeometry relative="1" as="geometry" x="0" y="0">
+            <Array as="points">
+              <mxPoint x="1146.0" y="1238.0" />
+              <mxPoint x="1146.0" y="1308.0" />
+              <mxPoint x="816" y="1308.0" />
+              <mxPoint x="816" y="1140.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e3_a" edge="1" parent="1" source="c3" style="endArrow=block;html=1;fontFamily=Microsoft YaHei;fontSize=17;fontColor=#414745;labelBackgroundColor=#ffffff;spacing=6;strokeWidth=1.5;endSize=9;labelPosition=center;verticalLabelPosition=middle;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" target="c3_left" value="修持">
+          <mxGeometry relative="1" as="geometry" x="0" y="0" />
+        </mxCell>
+        
+        <mxCell id="e3_c" edge="1" parent="1" source="c3" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.85;entryX=1;entryY=0.5;fontFamily=Microsoft YaHei;fontSize=17;fontColor=#414745;labelBackgroundColor=#ffffff;spacing=6;strokeWidth=1.5;endSize=9;labelPosition=center;verticalLabelPosition=middle;rounded=1;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" target="c3_cards" value="心法与习得">
+          <mxGeometry relative="1" as="geometry" x="0" y="0">
+            <Array as="points">
+              <mxPoint x="1146.0" y="1627.0" />
+              <mxPoint x="1146.0" y="1697.0" />
+              <mxPoint x="816" y="1697.0" />
+              <mxPoint x="816" y="1529.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4_a" edge="1" parent="1" source="c4" style="endArrow=block;html=1;fontFamily=Microsoft YaHei;fontSize=17;fontColor=#414745;labelBackgroundColor=#ffffff;spacing=6;strokeWidth=1.5;endSize=9;labelPosition=center;verticalLabelPosition=middle;exitX=0;exitY=0.5;entryX=1;entryY=0.5;" target="c4_left" value="修持">
+          <mxGeometry relative="1" as="geometry" x="0" y="0" />
+        </mxCell>
+        
+        <mxCell id="e4_c" edge="1" parent="1" source="c4" style="endArrow=block;html=1;edgeStyle=orthogonalEdgeStyle;exitX=0;exitY=0.85;entryX=1;entryY=0.5;fontFamily=Microsoft YaHei;fontSize=17;fontColor=#414745;labelBackgroundColor=#ffffff;spacing=6;strokeWidth=1.5;endSize=9;labelPosition=center;verticalLabelPosition=middle;rounded=1;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" target="c4_cards" value="心法与习得">
+          <mxGeometry relative="1" as="geometry" x="0" y="0">
+            <Array as="points">
+              <mxPoint x="1146.0" y="1976.0" />
+              <mxPoint x="1146.0" y="2046.0" />
+              <mxPoint x="816" y="2046.0" />
+              <mxPoint x="816" y="1878.0" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  
+</mxfile>
