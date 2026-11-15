@@ -18,7 +18,7 @@ public partial class CombatClashTrial : Control
     [Export] public int TrialSeed = -1;
     private Random _random = new();
     private readonly Dictionary<string, Planned> _actions = new(StringComparer.Ordinal);
-    private readonly Dictionary<BoardCardKey, int> _targets = [];
+    private readonly int?[] _queueTargets = new int?[BoardHandState.QueueCount];
     private Fighter _player = null!;
     private Fighter _enemy = null!;
     private CombatEffectiveActionTransaction _payment = null!;
@@ -29,15 +29,11 @@ public partial class CombatClashTrial : Control
     private int _subround;
     private bool _planning = true;
     private bool _finished;
-    private Label _status = null!;
-    private Label _playerQueues = null!;
     private Label _selection = null!;
     private Label _phase = null!;
-    private HBoxContainer _handBox = null!;
     private RichTextLabel _log = null!;
     private Button _commit = null!;
     private Button _advance = null!;
-    private readonly List<Button> _planningButtons = [];
 
     public int TrialRound => _round;
     public bool IsPlanning => _planning;
@@ -58,7 +54,7 @@ public partial class CombatClashTrial : Control
         SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
         SetupBattle();
         BuildStageUi();
-        Write("第一回合：选择手牌，再选择我方队列及敌方队列。敌方招式不预先显示。");
+        Write("第 1 回合。将手牌排进我方队列，再为攻击队列选择交互目标。");
         Render();
     }
 
@@ -100,55 +96,13 @@ public partial class CombatClashTrial : Control
         max_mana = 1, current_mana = 1
     };
 
-    private static Button MakeButton(string text)
-    {
-        var button = new Button { Text = text, CustomMinimumSize = new Vector2(150, 40) };
-        BattleBoardSkin.Skin(button);
-        button.AddThemeFontSizeOverride("font_size", 17); return button;
-    }
-
-    private static void AddButtonText(Button button, string text)
-    {
-        // 独立文本不受按钮禁用态的主题字体影响，未用手牌仍可阅读。
-        var label = new Label { Text = text, HorizontalAlignment = HorizontalAlignment.Center,
-            VerticalAlignment = VerticalAlignment.Center, MouseFilter = MouseFilterEnum.Ignore };
-        label.AddThemeFontSizeOverride("font_size", 17);
-        label.AddThemeColorOverride("font_color", new Color("38342e"));
-        button.AddChild(label); label.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-    }
-
     private void Write(string text) { _log.AppendText(text + "\n"); }
 
     private void Render()
     {
-        _payment.TryGetBalance(_player.Id, out var p); _payment.TryGetBalance(_enemy.Id, out var e);
-        _status.Text = $"我方 体力 {p.Stamina}/6 · 法力 {p.Mana}/1            对手 体力 {e.Stamina}/6 · 法力 {e.Mana}/1";
-        _playerView?.Refresh(_player.Stats.current_health, _player.Stats.max_health, _player.Qi);
-        _enemyView?.Refresh(_enemy.Stats.current_health, _enemy.Stats.max_health, _enemy.Qi);
-        _phase.Text = _finished ? "试剑结束" : _planning ? $"第 {_round} 回合 · 排招" : $"第 {_round} 回合 · 第 {_subround + 1} 小轮";
-        var lines = new List<string>();
-        for (var q = 0; q < 2; q++)
-        {
-            var queued = _player.Hand.GetQueue(q);
-            lines.Add($"我方{q + 1}队  速度{(q == 0 ? 4 : 2)}  {_player.Hand.GetQueueUsed(q)}/5： " + (queued.Count == 0 ? "空" : string.Join(" → ", queued.Select(item =>
-                item.Card.Skill.skill_name + (_targets.TryGetValue(item.Card.Key, out var target) && item.Card.SourceKey != Qi ? $"〔敌{target + 1}〕" : "")))));
-        }
-        _playerQueues.Text = string.Join("\n\n", lines);
-        _selection.Text = _selected is { } id ? "已选：" + (_player.Hand.Hand.FirstOrDefault(card => card.Key == id)?.Skill.skill_name ?? "") : "先点击手牌，再指定队列和目标。";
-        foreach (var child in _handBox.GetChildren()) { _handBox.RemoveChild(child); child.QueueFree(); }
-        foreach (var card in _player.Hand.Hand)
-        {
-            var key = card.Key; var skill = card.Skill;
-            var kind = card.SourceKey == Qi ? "运转" : card.SourceKey == Jing ? "远攻" : "近攻";
-            var info = new TrialTechniqueCardData(skill.skill_name, kind, Capacity(card), skill.energy_cost, skill.mana_cost,
-                card.SourceKey == Qi ? "" : LingjiRange(card, _player),
-                card.SourceKey == Qi ? "获得炁 2" : $"基础伤害 {Damage(card, _player)}", skill.icon_path);
-            var button = new TrialTechniqueCard(info) { Name = "Hand_" + key.PlacementId,
-                Disabled = !_planning || _finished, ButtonPressed = _selected == key };
-            button.Pressed += () => { _selected = key; Render(); }; _handBox.AddChild(button);
-        }
-        foreach (var button in _planningButtons) button.Disabled = !_planning || _finished;
-        _commit.Disabled = !_planning || _finished; _advance.Disabled = _planning || _finished;
+        RefreshStage();
+        RefreshHand();
+        RefreshQueues();
     }
 
     private static int Capacity(BoardCard card) => card.SourceKey is Pain or Jing ? 2 : 1;
@@ -165,36 +119,65 @@ public partial class CombatClashTrial : Control
     private static CombatClashAttackStyle Style(BoardCard card) => Kind(card) == QueueActionKind.Ranged
         ? CombatClashAttackStyle.Ranged : CombatClashAttackStyle.Melee;
 
-    public bool QueuePlayerCard(BoardCardKey key, int queue, int target)
+    public bool QueuePlayerCard(BoardCardKey key, int queue, int target) =>
+        target >= 0 && target < BoardHandState.QueueCount && TryPlacePlayerCard(key, queue, target);
+
+    private bool TryPlacePlayerCard(BoardCardKey key, int queue, int? target)
     {
-        if (!_planning || _finished || target is < 0 or > 1) return false;
+        if (!_planning || _finished || queue < 0 || queue >= BoardHandState.QueueCount) return false;
         var card = _player.Hand.Hand.FirstOrDefault(item => item.Key == key);
         if (card is null) return false;
-        if (queue is < 0 or > 1) return false;
-        var existingTarget = _player.Hand.GetQueue(queue)
-            .Where(item => item.Card.SourceKey != Qi && _targets.ContainsKey(item.Card.Key))
-            .Select(item => (int?)_targets[item.Card.Key]).FirstOrDefault();
-        if (card.SourceKey != Qi && existingTarget is { } locked && locked != target)
+        var attacking = Kind(card) != QueueActionKind.Operation;
+        if (attacking && target.HasValue && QueueNeedsTarget(queue) && _queueTargets[queue] is { } locked && locked != target)
         {
-            Write($"我方{queue + 1}队已指定对手{locked + 1}队，请为同队招式选择相同目标。");
-            Render(); return false;
+            _planningNotice = $"我方{QueueNames[queue]}已锁定对手{QueueNames[locked]}。可点右侧队列修改整队目标。";
+            RefreshQueues();
+            return false;
         }
-        if (!_player.Hand.TryEnqueue(key, queue, Capacity(card), out var reason)) { Write(reason); Render(); return false; }
-        _targets[key] = target; _selected = null; Render(); return true;
+        if (!_player.Hand.TryEnqueue(key, queue, Capacity(card), out var reason))
+        {
+            _planningNotice = reason;
+            RefreshQueues();
+            return false;
+        }
+        if (attacking && target.HasValue) _queueTargets[queue] = target;
+        _editingQueue = queue;
+        _planningNotice = "";
+        _selected = null;
+        Render();
+        return true;
     }
 
     public void WithdrawLast(int queue)
     {
-        if (!_planning || _finished || queue is < 0 or > 1) return;
+        if (!_planning || _finished || queue < 0 || queue >= BoardHandState.QueueCount) return;
         var last = _player.Hand.GetQueue(queue).LastOrDefault();
-        if (last is not null && _player.Hand.TryWithdraw(last.Card.Key)) _targets.Remove(last.Card.Key);
+        if (last is not null) WithdrawCard(last.Card.Key, queue);
+    }
+
+    private void WithdrawCard(BoardCardKey key, int queue)
+    {
+        if (!_planning || _finished || !_player.Hand.TryWithdraw(key)) return;
+        _editingQueue = queue;
+        _planningNotice = "";
         Render();
     }
 
     public void CommitPlan()
     {
         if (!_planning || _finished) return;
+        for (var queue = 0; queue < BoardHandState.QueueCount; queue++)
+        {
+            if (!QueueNeedsTarget(queue) || _queueTargets[queue].HasValue) continue;
+            _editingQueue = queue;
+            _planningNotice = $"请为我方{QueueNames[queue]}选择交互目标。";
+            RefreshQueues();
+            return;
+        }
         _selected = null;
+        _editingQueue = null;
+        _planningNotice = "";
+        _exchangePanel.Hide();
         // 试玩对手按手牌顺序交替入两队；不提前展示牌面。
         var turn = 0;
         foreach (var card in _enemy.Hand.Hand.ToArray())
@@ -211,12 +194,12 @@ public partial class CombatClashTrial : Control
 
     private void AddPlanned(Fighter fighter, string prefix, string opponent)
     {
-        for (var q = 0; q < 2; q++)
+        for (var q = 0; q < BoardHandState.QueueCount; q++)
         {
             var list = new List<QueueCombatAction>();
             foreach (var item in fighter.Hand.GetQueue(q))
             {
-                var target = fighter == _player ? _targets.GetValueOrDefault(item.Card.Key) : q;
+                var target = fighter == _player ? _queueTargets[q].GetValueOrDefault() : q;
                 var id = $"{fighter.Id}:{_round}:{item.Card.Key.PlacementId}";
                 _actions.Add(id, new(fighter, item.Card, q, target, id));
                 list.Add(new(id, Kind(item.Card), opponent + target));
@@ -230,7 +213,8 @@ public partial class CombatClashTrial : Control
         if (_planning || _finished || _scheduler is null) return;
         _subround++;
         // 同速及各队速度仍待正式设计；试玩固定交错，保证顺序清楚。
-        _scheduler.BeginSubround([new("p0", 4, 0), new("e0", 3, 0), new("p1", 2, 0), new("e1", 1, 0)]);
+        _scheduler.BeginSubround([new("p0", QueueSpeed(true, 0), 0), new("e0", QueueSpeed(false, 0), 0),
+            new("p1", QueueSpeed(true, 1), 0), new("e1", QueueSpeed(false, 1), 0)]);
         Write($"—— 第 {_round} 回合 · 小轮 {_subround} ——");
         while (_scheduler.Next() is { } step)
         {
@@ -258,7 +242,10 @@ public partial class CombatClashTrial : Control
             Commit(preview, CombatEffectiveActionTransaction.Participation.None,
                 defender is null ? null : CombatEffectiveActionTransaction.Participation.None);
             _scheduler!.Complete(step, new(false, QueueClashWinner.None, false, false, true, false, true, true));
-            Discard(actor); Write($"{actor.Owner.Id}的{actor.Card.Skill.skill_name}资源不足，招式失效。"); return;
+            Discard(actor);
+            Write($"{actor.Owner.Id}的{actor.Card.Skill.skill_name}资源不足，招式失效。");
+            PresentExchange($"{actor.Owner.Id} · {actor.Card.Skill.skill_name}", "资源不足，招式失效");
+            return;
         }
         if (defender is not null && !defenderReady)
         {
@@ -272,7 +259,7 @@ public partial class CombatClashTrial : Control
         {
             Commit(preview, CombatEffectiveActionTransaction.Participation.SingleAction, null);
             _scheduler!.Complete(step, new(true, QueueClashWinner.None, false, false, true, false, true, true));
-            ApplyQi(actor.Owner); Discard(actor); return;
+            ApplyQi(actor); Discard(actor); return;
         }
         if (defender is null)
         {
@@ -285,10 +272,24 @@ public partial class CombatClashTrial : Control
         var clash = CombatClashOutcome.Attack(Style(actor.Card), firstRoll, Style(defender.Card), secondRoll);
         Write($"{actor.Owner.Id} {actor.Card.Skill.skill_name} {firstRoll}  对  {defender.Owner.Id} {defender.Card.Skill.skill_name} {secondRoll}");
         var winner = clash.FirstWon ? QueueClashWinner.Actor : clash.SecondWon ? QueueClashWinner.Defender : QueueClashWinner.Tie;
-        if (clash.FirstHits) Hit(actor, defender.Owner);
-        else if (clash.SecondHits) Hit(defender, actor.Owner);
-        else if (clash.FirstRetained || clash.SecondRetained) Write("近招破术，移到自身队尾；这次没有命中。");
-        else Write("灵机相同，双方招式结束。");
+        string result;
+        if (clash.FirstHits) result = $"{defender.Owner.Id}气血 −{Hit(actor, defender.Owner)}";
+        else if (clash.SecondHits) result = $"{actor.Owner.Id}气血 −{Hit(defender, actor.Owner)}";
+        else if (clash.FirstRetained || clash.SecondRetained)
+        {
+            Write("近招破术，移到自身队尾；这次没有命中。");
+            result = $"{(clash.FirstRetained ? actor.Owner.Id : defender.Owner.Id)}破术 · 近招移至队尾";
+        }
+        else
+        {
+            Write("灵机相同，双方招式结束。");
+            result = "灵机相同，双方招式结束";
+        }
+        var left = actor.Owner == _player
+            ? $"{actor.Card.Skill.skill_name} {firstRoll}" : $"{defender.Card.Skill.skill_name} {secondRoll}";
+        var right = actor.Owner == _player
+            ? $"{defender.Card.Skill.skill_name} {secondRoll}" : $"{actor.Card.Skill.skill_name} {firstRoll}";
+        PresentExchange($"{left}　对　{right}", result);
         _scheduler!.Complete(step, new(true, winner, clash.FirstHits, clash.SecondHits,
             !clash.FirstRetained, !clash.SecondRetained, true, true));
         if (!clash.FirstRetained) Discard(actor);
@@ -324,32 +325,41 @@ public partial class CombatClashTrial : Control
         return result.Value;
     }
 
-    private void Hit(Planned action, Fighter target)
+    private int Hit(Planned action, Fighter target)
     {
         var amount = Damage(action.Card, action.Owner);
         target.Stats.current_health = Math.Max(0, target.Stats.current_health - amount);
         Write($"{action.Owner.Id}的{action.Card.Skill.skill_name}命中，{target.Id}气血 −{amount}。");
+        PresentExchange($"{action.Owner.Id} · {action.Card.Skill.skill_name}", $"{target.Id}气血 −{amount}");
+        return amount;
     }
 
-    private void ApplyQi(Fighter owner)
+    private static int QiGain(ActiveSkillData skill) => skill.special_effects
+        .Where(effect => effect.GetValueOrDefault("effect", "").AsString() == "gain_qi")
+        .Sum(effect => effect.GetValueOrDefault("count", 0).AsInt32());
+
+    private void ApplyQi(Planned action)
     {
-        var skill = Load(Qi);
-        var gain = skill.special_effects.Where(effect => effect.GetValueOrDefault("effect", "").AsString() == "gain_qi")
-            .Sum(effect => effect.GetValueOrDefault("count", 0).AsInt32());
+        var owner = action.Owner;
+        var gain = QiGain(action.Card.Skill);
         owner.Qi += gain;
         _payment.TryGetBalance(owner.Id, out var before);
         if (owner.Stats.max_mana > 0 && owner.Qi >= 2 * owner.Stats.max_mana)
         {
             owner.Qi = 0; _payment.SetBalance(owner.Id, before with { Mana = owner.Stats.max_mana });
             Write($"{owner.Id}施展聚炁，完成周天，法力回满。");
+            PresentExchange($"{owner.Id} · 聚炁", "完成周天，法力回满");
         }
-        else Write($"{owner.Id}施展聚炁，获得{gain}炁。");
+        else
+        {
+            Write($"{owner.Id}施展聚炁，获得{gain}炁。");
+            PresentExchange($"{owner.Id} · 聚炁", $"获得炁 {gain}");
+        }
     }
 
     private void Discard(Planned action)
     {
         if (!action.Owner.Hand.TryDiscardQueued(action.Card.Key)) throw new InvalidOperationException("实体牌不在队列。");
-        _targets.Remove(action.Card.Key);
     }
 
     private void SyncQueue(Fighter owner, int index, string queueId)
@@ -364,14 +374,17 @@ public partial class CombatClashTrial : Control
     {
         if (_player.Stats.current_health > 0 && _enemy.Stats.current_health > 0) return false;
         _finished = true; _planning = false;
-        Write(_player.Stats.current_health <= 0 && _enemy.Stats.current_health <= 0 ? "双方同时倒下。"
-            : _enemy.Stats.current_health <= 0 ? "试剑结束：我方获胜。" : "试剑结束：对手获胜。");
+        var outcome = _player.Stats.current_health <= 0 && _enemy.Stats.current_health <= 0 ? "双方同时倒下"
+            : _enemy.Stats.current_health <= 0 ? "我方获胜" : "对手获胜";
+        Write($"试剑结束：{outcome}。");
+        PresentExchange(outcome, $"第 {_round} 回合 · 试剑结束");
         return true;
     }
 
     private void EndRound()
     {
         _round++; _planning = true; _scheduler = null;
+        Array.Clear(_queueTargets);
         foreach (var fighter in new[] { _player, _enemy })
         {
             _payment.TryGetBalance(fighter.Id, out var balance);

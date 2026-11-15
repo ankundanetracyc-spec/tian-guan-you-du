@@ -17,19 +17,25 @@ public sealed record TrialTechniqueCardData(
 /// </summary>
 public partial class TrialTechniqueCard : Button
 {
-    private static readonly Color Ink = new("332e28");
-    private static readonly Color MutedInk = new("655849");
-    private static readonly Color Paper = new("e8dcc4");
-    private static readonly Color Edge = new("716759");
-    private const string CardFont = "res://resources/font/LXGWZhenKaiSlabGB-Regular.ttf";
+    internal static readonly Vector2 CardSize = new(144, 196);
+    private static readonly Color Ink = new("2e3027"), MutedInk = new("585746");
+    private static readonly Color Paper = new("efe7d6"), Edge = new("49493c");
+    private static Font? _font;
 
     private TrialTechniqueCardData _data = new("", "", 0, 0, 0, "", "", "");
     private Panel? _background;
+    private TextureRect? _paper;
     private TextureRect? _illustration;
+    private Panel? _focusRing;
+
+    internal BoardCardKey? HandKey { get; init; }
+    internal event Action<BoardCardKey>? DragStarted;
 
     public TrialTechniqueCard()
     {
-        CustomMinimumSize = new Vector2(150, 210);
+        CustomMinimumSize = CardSize;
+        Size = CardSize;
+        PivotOffset = new Vector2(CardSize.X / 2f, CardSize.Y * .9f);
         MouseDefaultCursorShape = CursorShape.PointingHand;
         ToggleMode = true;
         Text = "";
@@ -43,31 +49,50 @@ public partial class TrialTechniqueCard : Button
         // 显示元素独立于 Button 的禁用主题色，结算时仍可阅读留存手牌。
         foreach (var state in new[] { "normal", "hover", "pressed", "disabled", "focus" })
             AddThemeStyleboxOverride(state, new StyleBoxEmpty());
-        ClipContents = true;
 
-        // 朴素暖纸与细墨边：牌面不含装饰性金框。
-        _background = new Panel
+        _background = new Panel { Name = "CardPaper", MouseFilter = MouseFilterEnum.Ignore };
+        _background.AddThemeStyleboxOverride("panel", TrialBattleArt.Frame(Paper, Edge, 4, 4));
+        AddChild(_background);
+        Fill(_background, 0f, 0f, 1f, 1f);
+        _paper = new TextureRect
         {
-            Name = "CardPaper",
+            Texture = TrialBattleArt.Paper,
+            ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
+            StretchMode = TextureRect.StretchModeEnum.Scale,
             MouseFilter = MouseFilterEnum.Ignore
         };
-        _background.AddThemeStyleboxOverride("panel", new StyleBoxFlat
-        {
-            BgColor = Paper, BorderColor = Edge,
-            BorderWidthLeft = 1, BorderWidthTop = 1, BorderWidthRight = 1, BorderWidthBottom = 1,
-            CornerRadiusTopLeft = 3, CornerRadiusTopRight = 3, CornerRadiusBottomLeft = 3, CornerRadiusBottomRight = 3
-        });
-        AddChild(_background); Fill(_background, 0f, 0f, 1f, 1f);
+        AddChild(_paper);
+        Fill(_paper, .022f, .017f, .978f, .983f);
+        AddPlate(.035f, .026f, .965f, .974f, Colors.Transparent, new Color("ab9e80", .7f));
 
-        // 左上是真实资源消耗，右上是类别；队列容量单独位于牌底。
-        var cost = _data.StaminaCost != 0 && _data.ManaCost != 0
+        var dualCost = _data.StaminaCost != 0 && _data.ManaCost != 0;
+        var cost = dualCost
             ? $"体 {_data.StaminaCost}  法 {_data.ManaCost}"
             : _data.StaminaCost != 0 ? $"体 {_data.StaminaCost}"
             : _data.ManaCost != 0 ? $"法 {_data.ManaCost}" : "无消耗";
-        AddText("Cost", cost, 13, Ink, .07f, .045f, .63f, .145f, HorizontalAlignment.Left);
-        AddText("Kind", _data.Kind, 13, MutedInk, .64f, .045f, .93f, .145f, HorizontalAlignment.Right);
-        AddDivider(.15f);
-        AddText("Name", _data.SkillName, 19, Ink, .09f, .17f, .91f, .275f);
+        var seal = _data.Kind switch
+        {
+            "近攻" => new Color("754c40"),
+            "远攻" => new Color("425b54"),
+            "运转" => new Color("4b5763"),
+            _ => MutedInk
+        };
+        var costEdge = dualCost ? .63f : .44f;
+        AddPlate(.07f, .051f, costEdge, .151f, new Color(Ink, .075f), new Color(Edge, .32f));
+        AddText("Cost", cost, 14, Ink, .103f, .041f, costEdge - .018f, .16f, HorizontalAlignment.Left);
+        AddPlate(.665f, .051f, .93f, .151f, new Color(seal, .10f), new Color(seal, .48f));
+        AddText("Kind", _data.Kind, 12, seal, .665f, .051f, .93f, .151f);
+        AddDivider(.176f);
+        AddText("Name", _data.SkillName, 21, Ink, .07f, .178f, .93f, .320f);
+
+        var artWindow = AddPlate(.070f, .322f, .930f, .664f, new Color("726e54", .07f), new Color("91876d", .34f));
+        artWindow.Draw += () =>
+        {
+            var corner = new Color(Edge, .68f);
+            var span = artWindow.Size;
+            artWindow.DrawPolyline([new(0.5f, 8), new(0.5f, 0.5f), new(12, 0.5f)], corner, 1f, true);
+            artWindow.DrawPolyline([span - new Vector2(.5f, 8), span - new Vector2(.5f, .5f), span - new Vector2(12, .5f)], corner, 1f, true);
+        };
 
         _illustration = new TextureRect
         {
@@ -77,14 +102,20 @@ public partial class TrialTechniqueCard : Button
             StretchMode = TextureRect.StretchModeEnum.KeepAspectCentered,
             MouseFilter = MouseFilterEnum.Ignore
         };
-        AddChild(_illustration); Fill(_illustration, .10f, .30f, .90f, .58f);
+        AddChild(_illustration);
+        Fill(_illustration, .085f, .328f, .915f, .658f);
 
         var details = string.IsNullOrWhiteSpace(_data.LingjiRange)
             ? _data.Effect
             : $"灵机 {_data.LingjiRange}\n{_data.Effect}";
-        AddText("Details", details, 14, Ink, .07f, .60f, .93f, .78f);
-        AddDivider(.825f);
-        AddText("Capacity", $"占 {_data.QueuePoints}", 13, MutedInk, .08f, .84f, .92f, .96f);
+        AddText("Details", details, 13, Ink, .07f, .668f, .93f, .853f);
+        AddDivider(.865f);
+        AddText("Capacity", $"占 {_data.QueuePoints}", 12, MutedInk, .10f, .868f, .90f, .978f);
+
+        _focusRing = AddPlate(.008f, .008f, .992f, .992f, Colors.Transparent, new Color("a59365"));
+        _focusRing.Visible = HasFocus();
+        FocusEntered += () => _focusRing.Visible = true;
+        FocusExited += () => _focusRing.Visible = false;
 
         Toggled += _ => RefreshSelection();
         MouseEntered += RefreshSelection;
@@ -92,13 +123,27 @@ public partial class TrialTechniqueCard : Button
         RefreshSelection();
     }
 
-    private void RefreshSelection()
+    internal void RefreshSelection()
     {
         if (_background is null || _illustration is null) return;
-        // 选中压暗整张纸面，保留纹理；不染绿色、不增加不同材质边框。
-        var shade = ButtonPressed ? .84f : Disabled ? .91f : IsHovered() ? 1.04f : 1f;
+        var shade = ButtonPressed ? CraftingPaperStyle.SelectedDarkening : Disabled ? .91f : IsHovered() ? 1.035f : 1f;
         _background.Modulate = new Color(shade, shade, shade, 1);
-        _illustration.Modulate = new Color(shade, shade, shade, 1);
+        if (_paper is not null) _paper.Modulate = _background.Modulate;
+        _illustration.Modulate = _background.Modulate;
+    }
+
+    public override Variant _GetDragData(Vector2 atPosition)
+    {
+        if (Disabled || HandKey is not { } key) return default;
+        var preview = new Control { MouseFilter = MouseFilterEnum.Ignore };
+        preview.AddChild(new TrialTechniqueCard(_data)
+        {
+            Disabled = true, MouseFilter = MouseFilterEnum.Ignore,
+            Position = new Vector2(-CardSize.X * .38f, -CardSize.Y * .26f)
+        });
+        SetDragPreview(preview);
+        DragStarted?.Invoke(key);
+        return this;
     }
 
     private void AddText(string name, string text, int size, Color color,
@@ -114,7 +159,7 @@ public partial class TrialTechniqueCard : Button
             ClipText = true,
             MouseFilter = MouseFilterEnum.Ignore
         };
-        var font = GD.Load<FontFile>(CardFont);
+        var font = _font ??= GD.Load<Font>(CraftingPaperStyle.FontPath);
         if (font is not null) label.AddThemeFontOverride("font", font);
         label.AddThemeFontSizeOverride("font_size", size);
         label.AddThemeColorOverride("font_color", color);
@@ -130,6 +175,15 @@ public partial class TrialTechniqueCard : Button
         };
         AddChild(line); Fill(line, .07f, top, .93f, top);
         line.OffsetBottom = 1;
+    }
+
+    private Panel AddPlate(float left, float top, float right, float bottom, Color fill, Color stroke)
+    {
+        var plate = new Panel { MouseFilter = MouseFilterEnum.Ignore };
+        plate.AddThemeStyleboxOverride("panel", TrialBattleArt.Frame(fill, stroke, 2));
+        AddChild(plate);
+        Fill(plate, left, top, right, bottom);
+        return plate;
     }
 
     private static void Fill(Control child, float left, float top, float right, float bottom)

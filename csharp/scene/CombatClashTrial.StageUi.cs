@@ -2,8 +2,17 @@ using Godot;
 
 public partial class CombatClashTrial
 {
-    private TrialCombatantView? _playerView;
-    private TrialCombatantView? _enemyView;
+    private static readonly Vector2 StageSize = new(1280, 720);
+    private static readonly Color Cream = new("eee4cd"), LightInk = new("b8b8a4"), Edge = new("777765");
+    private const string GroundArt = "res://textures/battle/forest_stone_small_20261109/";
+
+    private Control _stage = null!;
+    private Label _playerResources = null!, _enemyResources = null!;
+    private Label _drawCount = null!, _discardCount = null!;
+    private Label _exchangeTitle = null!, _exchangeDetail = null!;
+    private Panel _exchangePanel = null!, _report = null!;
+    private TrialCombatantView _playerView = null!, _enemyView = null!;
+    private string _planningNotice = "";
 
     private static T Place<T>(Control parent, T control, float x, float y, float width, float height) where T : Control
     {
@@ -13,96 +22,181 @@ public partial class CombatClashTrial
         return control;
     }
 
-    private static Label StageLabel(string text, int size, Color color)
+    private static Label StageLabel(string text, int size, Color color, HorizontalAlignment align = HorizontalAlignment.Left)
     {
-        var label = new Label { Text = text, MouseFilter = MouseFilterEnum.Ignore };
+        var label = new Label
+        {
+            Text = text, HorizontalAlignment = align, VerticalAlignment = VerticalAlignment.Center,
+            ClipText = true, MouseFilter = MouseFilterEnum.Ignore
+        };
         label.AddThemeFontSizeOverride("font_size", size);
         label.AddThemeColorOverride("font_color", color);
         return label;
     }
 
-    private static ColorRect StagePlate(Color color)
-        => new() { Color = color, MouseFilter = MouseFilterEnum.Ignore };
+    private static ColorRect StagePlate(Color color) => new() { Color = color, MouseFilter = MouseFilterEnum.Ignore };
+
+    private static Panel StagePanel(Color fill, Color stroke, int radius = 4, int shadow = 0)
+    {
+        var panel = new Panel { MouseFilter = MouseFilterEnum.Ignore };
+        panel.AddThemeStyleboxOverride("panel", TrialBattleArt.Frame(fill, stroke, radius, shadow));
+        return panel;
+    }
+
+    private static TextureRect StageTexture(Texture2D? texture, bool cover = false) => new()
+    {
+        Texture = texture, ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
+        StretchMode = cover ? TextureRect.StretchModeEnum.KeepAspectCovered : TextureRect.StretchModeEnum.KeepAspectCentered,
+        MouseFilter = MouseFilterEnum.Ignore
+    };
 
     private void BuildStageUi()
     {
-        var canvas = new Control { Name = "BattleStage", MouseFilter = MouseFilterEnum.Pass };
-        canvas.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
-        AddChild(canvas);
+        var matte = StagePlate(new Color("151d19"));
+        AddChild(matte);
+        matte.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        _stage = new Control { Name = "BattleStage", Size = StageSize, MouseFilter = MouseFilterEnum.Ignore, ClipContents = true };
+        _stage.Theme = new Theme { DefaultFont = GD.Load<Font>(CraftingPaperStyle.FontPath) };
+        AddChild(_stage);
+        Resized += PositionStage;
+        PositionStage();
 
-        var background = new TextureRect
-        {
-            Texture = GD.Load<Texture2D>("res://textures/battle/forest_stone_small_20261109/ground.png"),
-            ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize,
-            StretchMode = TextureRect.StretchModeEnum.KeepAspectCovered,
-            MouseFilter = MouseFilterEnum.Ignore,
-            Modulate = new Color(.74f, .76f, .70f)
-        };
-        Place(canvas, background, 0, 0, 1280, 407);
-        Place(canvas, StagePlate(new Color(.10f, .13f, .12f, .25f)), 0, 0, 1280, 407);
-        Place(canvas, StagePlate(new Color(.075f, .09f, .085f, .96f)), 0, 0, 1280, 52);
-        Place(canvas, StagePlate(new Color(.075f, .09f, .085f, .98f)), 0, 405, 1280, 315);
-        Place(canvas, StagePlate(new Color(.12f, .15f, .13f, .82f)), 370, 63, 540, 333);
+        BuildArena();
+        BuildQueues();
+        BuildHand();
+        BuildReport();
+    }
 
-        _phase = Place(canvas, StageLabel("", 18, new Color("eadfc8")), 22, 12, 210, 28);
-        _status = Place(canvas, StageLabel("", 16, new Color("eadfc8")), 220, 14, 850, 24);
-        _status.HorizontalAlignment = HorizontalAlignment.Center;
-        var note = Place(canvas, StageLabel("试玩 · 暂无定力、失神、击退、守御、心法、法宝与暴击", 12, new Color("c9c8b5")), 645, 53, 560, 21);
-        note.HorizontalAlignment = HorizontalAlignment.Right;
+    private void PositionStage()
+    {
+        var factor = Mathf.Min(Size.X / StageSize.X, Size.Y / StageSize.Y);
+        _stage.Scale = Vector2.One * factor;
+        _stage.Position = (Size - StageSize * factor) / 2f;
+    }
 
-        _playerView = Place(canvas, new TrialCombatantView { Name = "PlayerCombatant" }, 35, 65, 320, 325);
+    private void BuildArena()
+    {
+        var ground = StageTexture(GD.Load<Texture2D>(GroundArt + "ground.png"), true);
+        ground.Modulate = new Color("b1b3a3");
+        Place(_stage, ground, 0, 0, 1280, 354);
+        Place(_stage, StagePlate(new Color("293c35", .18f)), 0, 0, 1280, 354);
+        var pines = GD.Load<Texture2D>(GroundArt + "pines.png");
+        var rocks = GD.Load<Texture2D>(GroundArt + "rocks.png");
+        var leftPines = StageTexture(pines); leftPines.Modulate = new Color(.70f, .74f, .65f, .67f);
+        var rightPines = StageTexture(pines); rightPines.Modulate = leftPines.Modulate; rightPines.FlipH = true;
+        Place(_stage, leftPines, -47, 53, 236, 173);
+        Place(_stage, rightPines, 1091, 52, 236, 173);
+        var leftRocks = StageTexture(rocks); leftRocks.Modulate = new Color(.71f, .72f, .63f, .75f);
+        var rightRocks = StageTexture(rocks); rightRocks.Modulate = leftRocks.Modulate; rightRocks.FlipH = true;
+        Place(_stage, leftRocks, -27, 263, 170, 82);
+        Place(_stage, rightRocks, 1137, 263, 170, 82);
+
+        Place(_stage, StagePlate(new Color("18211d")), 0, 0, 1280, 56);
+        Place(_stage, StageTexture(TrialBattleArt.InkCloth, true), 0, 0, 1280, 56);
+        Place(_stage, StagePlate(new Color("151d19", .38f)), 0, 0, 1280, 56);
+        Place(_stage, StagePlate(new Color("9b9377", .66f)), 0, 55, 1280, 1);
+        Place(_stage, StageLabel("我方", 20, Cream), 35, 12, 52, 29);
+        Place(_stage, StageLabel("对手", 20, Cream, HorizontalAlignment.Right), 1192, 12, 51, 29);
+        _playerResources = Place(_stage, StageLabel("", 16, Cream), 95, 14, 270, 25);
+        _enemyResources = Place(_stage, StageLabel("", 16, Cream, HorizontalAlignment.Right), 915, 14, 270, 25);
+        Place(_stage, StageLabel("灵机试剑", 23, Cream, HorizontalAlignment.Center), 487, 1, 306, 30);
+        _phase = Place(_stage, StageLabel("", 14, new Color("c5baa1"), HorizontalAlignment.Center), 430, 29, 420, 22);
+
+        _playerView = new TrialCombatantView { Name = "PlayerCombatant" };
         _playerView.Configure(true);
-        _enemyView = Place(canvas, new TrialCombatantView { Name = "EnemyCombatant" }, 925, 65, 320, 325);
+        Place(_stage, _playerView, 55, 64, 340, 288);
+        _enemyView = new TrialCombatantView { Name = "EnemyCombatant" };
         _enemyView.Configure(false);
+        Place(_stage, _enemyView, 885, 64, 340, 288);
 
-        Place(canvas, StageLabel("出手队列", 17, new Color("e8dcc1")), 388, 73, 150, 25);
-        _playerQueues = Place(canvas, StageLabel("", 15, new Color("f0ead8")), 388, 102, 505, 66);
-        _playerQueues.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-        var hidden = Place(canvas, StageLabel("对手一队  速度3：招式隐藏\n对手二队  速度1：招式隐藏", 14, new Color("c7c9bc")), 388, 167, 480, 43);
-        hidden.AutowrapMode = TextServer.AutowrapMode.WordSmart;
-        Place(canvas, StagePlate(new Color(.045f, .06f, .055f, .72f)), 382, 213, 516, 172);
-        Place(canvas, StageLabel("交锋记录", 15, new Color("d7c7a4")), 392, 219, 140, 22);
-        _log = Place(canvas, new RichTextLabel
+        _exchangePanel = Place(_stage, StagePanel(new Color("18251e", .93f), new Color("ac9b72", .8f), 3, 5), 438, 165, 404, 94);
+        _exchangeTitle = Place(_exchangePanel, StageLabel("", 23, Cream, HorizontalAlignment.Center), 12, 13, 380, 32);
+        _exchangeDetail = Place(_exchangePanel, StageLabel("", 16, new Color("d0c4a6"), HorizontalAlignment.Center), 12, 48, 380, 31);
+        _exchangePanel.Hide();
+
+        Place(_stage, StagePlate(new Color("202a24")), 0, 352, 1280, 368);
+        Place(_stage, StageTexture(TrialBattleArt.InkCloth, true), 0, 352, 1280, 368);
+        Place(_stage, StagePlate(new Color("111b16", .44f)), 0, 352, 1280, 368);
+        Place(_stage, StagePlate(new Color("887c62")), 0, 352, 1280, 1);
+        Place(_stage, StagePlate(new Color("a39b81", .38f)), 36, 493, 1208, 1);
+        _selection = Place(_stage, StageLabel("", 14, Cream), 38, 466, 1200, 24);
+    }
+
+    private void PresentExchange(string headline, string detail)
+    {
+        _exchangeTitle.Text = headline;
+        _exchangeDetail.Text = detail;
+        _exchangePanel.Show();
+    }
+
+    private void BuildHand()
+    {
+        var draw = StageTexture(CondensationUiArt.DrawPile);
+        var discard = StageTexture(CondensationUiArt.DiscardPile);
+        draw.Modulate = discard.Modulate = new Color(.94f, .94f, .89f, .96f);
+        Place(_stage, draw, 43, 542, 101, 105);
+        Place(_stage, discard, 1135, 502, 87, 75);
+        _drawCount = Place(_stage, StageLabel("", 14, Cream, HorizontalAlignment.Center), 34, 651, 118, 25);
+        _discardCount = Place(_stage, StageLabel("", 14, Cream, HorizontalAlignment.Center), 1115, 578, 124, 25);
+        _handLayer = Place(_stage, new Control { Name = "HandCards", MouseFilter = MouseFilterEnum.Ignore }, 170, 498, 940, 210);
+
+        _commit = MainAction("CommitPlan", "确定排招", CommitPlan);
+        _advance = MainAction("AdvanceSubround", "推进一小轮", AdvanceSubround);
+    }
+
+    private Button MainAction(string name, string text, Action pressed)
+    {
+        var button = new Button { Name = name, MouseDefaultCursorShape = CursorShape.PointingHand };
+        CraftingPaperStyle.ApplyButton(button, CraftingPaperStyle.ButtonKind.Primary, 17);
+        button.CustomMinimumSize = Vector2.Zero;
+        var label = StageLabel(text, 17, CraftingPaperStyle.Ink, HorizontalAlignment.Center);
+        button.AddChild(label);
+        label.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
+        button.Pressed += pressed;
+        return Place(_stage, button, 1103, 632, 142, 44);
+    }
+
+    private void BuildReport()
+    {
+        _report = Place(_stage, StagePanel(new Color("1d2922", .98f), new Color("918773"), 4, 6), 419, 69, 442, 271);
+        _report.Name = "BattleReport";
+        _report.MouseFilter = MouseFilterEnum.Stop;
+        _report.ZIndex = 45;
+        Place(_report, StageLabel("交锋记录", 18, Cream), 16, 8, 180, 30);
+        _log = Place(_report, new RichTextLabel
         {
             Name = "BattleLog", ScrollFollowing = true, FitContent = false,
             SelectionEnabled = true, MouseFilter = MouseFilterEnum.Stop
-        }, 392, 245, 494, 132);
-        _log.AddThemeFontSizeOverride("normal_font_size", 14);
+        }, 16, 43, 410, 211);
+        _log.AddThemeFontSizeOverride("normal_font_size", 15);
+        _log.AddThemeColorOverride("default_color", Cream);
+        _report.Hide();
 
-        var actionRow = Place(canvas, new HBoxContainer { Name = "ActionRow" }, 24, 403, 1232, 43);
-        actionRow.AddThemeConstantOverride("separation", 5);
-        for (var queue = 0; queue < 2; queue++) for (var target = 0; target < 2; target++)
+        var toggle = new Button { Name = "ToggleBattleReport", Text = "交锋记录", MouseDefaultCursorShape = CursorShape.PointingHand };
+        CraftingPaperStyle.ApplyButton(toggle, CraftingPaperStyle.ButtonKind.Regular, 14);
+        toggle.CustomMinimumSize = Vector2.Zero;
+        toggle.Pressed += () =>
         {
-            var q = queue; var t = target;
-            var button = MakeButton($"我{q + 1} → 敌{t + 1}");
-            button.CustomMinimumSize = new Vector2(134, 39);
-            button.Pressed += () => { if (_selected is { } key) QueuePlayerCard(key, q, t); };
-            actionRow.AddChild(button); _planningButtons.Add(button);
-        }
-        for (var queue = 0; queue < 2; queue++)
-        {
-            var q = queue;
-            var button = MakeButton($"撤回{q + 1}队");
-            button.CustomMinimumSize = new Vector2(113, 39);
-            button.Pressed += () => WithdrawLast(q);
-            actionRow.AddChild(button); _planningButtons.Add(button);
-        }
-        _commit = MakeButton(""); AddButtonText(_commit, "确定排招"); _commit.Name = "CommitPlan";
-        _commit.CustomMinimumSize = new Vector2(125, 39); _commit.Pressed += CommitPlan; actionRow.AddChild(_commit);
-        _advance = MakeButton(""); AddButtonText(_advance, "推进一小轮"); _advance.Name = "AdvanceSubround";
-        _advance.CustomMinimumSize = new Vector2(145, 39); _advance.Pressed += AdvanceSubround; actionRow.AddChild(_advance);
+            _report.Visible = !_report.Visible;
+            toggle.Text = _report.Visible ? "收起记录" : "交锋记录";
+        };
+        Place(_stage, toggle, 808, 12, 108, 31);
+    }
 
-        _selection = Place(canvas, StageLabel("先点击手牌，再指定队列和目标。", 14, new Color("d5ceb8")), 28, 446, 1000, 21);
-        var handTitle = Place(canvas, StageLabel("手牌 · 点击选择", 16, new Color("eee2c9")), 28, 467, 220, 24);
-        var scroll = Place(canvas, new ScrollContainer
-        {
-            Name = "HandScroll", HorizontalScrollMode = ScrollContainer.ScrollMode.Auto,
-            VerticalScrollMode = ScrollContainer.ScrollMode.Disabled
-        }, 25, 490, 1230, 210);
-        var handCenter = new CenterContainer { Name = "HandCenter", CustomMinimumSize = new Vector2(1230, 0),
-            SizeFlagsHorizontal = SizeFlags.ExpandFill, SizeFlagsVertical = SizeFlags.ExpandFill };
-        scroll.AddChild(handCenter);
-        _handBox = new HBoxContainer { Name = "HandCards", SizeFlagsVertical = SizeFlags.ExpandFill };
-        _handBox.AddThemeConstantOverride("separation", 9); handCenter.AddChild(_handBox);
+    private void RefreshStage()
+    {
+        _payment.TryGetBalance(_player.Id, out var player);
+        _payment.TryGetBalance(_enemy.Id, out var enemy);
+        _playerResources.Text = $"体力 {player.Stamina}/{_player.Stats.max_stamina}  ·  法力 {player.Mana}/{_player.Stats.max_mana}";
+        _enemyResources.Text = $"体力 {enemy.Stamina}/{_enemy.Stats.max_stamina}  ·  法力 {enemy.Mana}/{_enemy.Stats.max_mana}";
+        _playerView.Refresh(_player.Stats.current_health, _player.Stats.max_health, _player.Qi);
+        _enemyView.Refresh(_enemy.Stats.current_health, _enemy.Stats.max_health, _enemy.Qi);
+        _phase.Text = _finished ? "试剑结束" : _planning ? $"第 {_round} 回合 · 排招" : $"第 {_round} 回合 · 第 {_subround + 1} 小轮";
+        _drawCount.Text = $"抽牌堆 {_player.Hand.DrawPile.Count}";
+        _discardCount.Text = $"弃牌堆 {_player.Hand.DiscardPile.Count}";
+        _commit.Disabled = _finished || !_planning;
+        _advance.Disabled = _finished || _planning;
+        _commit.Visible = !_commit.Disabled;
+        _advance.Visible = !_advance.Disabled;
     }
 }

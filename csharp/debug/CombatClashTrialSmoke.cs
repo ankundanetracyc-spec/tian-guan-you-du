@@ -33,8 +33,10 @@ public partial class CombatClashTrialSmoke : Node
             Check(trial.FindChild("CommitPlan", true, false) is Button && trial.FindChild("AdvanceSubround", true, false) is Button,
                 "可交互排招与推进按钮已创建");
             var labels = Descendants(trial).OfType<Label>().Select(label => label.Text).ToArray();
-            Check(labels.Any(text => text.Contains("对手一队  速度3：招式隐藏"))
-                && labels.Any(text => text.Contains("暂无定力、失神、击退")), "敌牌隐藏且明确试玩范围");
+            var enemyLane = (Control)trial.FindChild("EnemyQueue1", true, false)!;
+            var enemyLabels = Descendants(enemyLane).OfType<Label>().Select(label => label.Text).ToArray();
+            Check(enemyLabels.Contains("3") && enemyLabels.Contains("招式隐藏")
+                && !enemyLabels.Any(text => allCards.Any(card => card.Skill.skill_name == text)), "敌队公开速度并隐藏招式");
             Check(labels.Any(text => text.Contains("灵机 ") && text.Contains("基础伤害")), "攻击手牌公开灵机范围和基础伤害");
             var combatants = Descendants(trial).OfType<TrialCombatantView>().ToArray();
             var leftView = combatants.Single(view => view.IsLeft);
@@ -46,6 +48,7 @@ public partial class CombatClashTrialSmoke : Node
                 "定力未接入且脚下状态不伪造数值");
             await CheckCardCostLayout();
             await CheckDisabledCardsStayReadable();
+            await CheckQueuePlanningInput();
 
             var planned = 0; var sawNextRound = false;
             while (!trial.IsFinished && trial.TrialRound <= 100)
@@ -167,6 +170,90 @@ public partial class CombatClashTrialSmoke : Node
         free.QueueFree();
         await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
     }
+
+    private async Task CheckQueuePlanningInput()
+    {
+        var trial = GD.Load<PackedScene>("res://tscn/scene/CombatClashTrial.tscn").Instantiate<CombatClashTrial>();
+        trial.TrialSeed = 2;
+        AddChild(trial);
+        await Frame();
+        Control Find(string name) => trial.FindChild(name, true, false) as Control
+            ?? throw new InvalidOperationException("找不到控件：" + name);
+        var hand = trial.PlayerHand.Hand;
+        var attacks = hand.Where(card => card.Skill.skill_name != "聚炁").ToArray();
+        var source = Find("Hand_" + attacks[0].Key.PlacementId);
+        await Click(source);
+        Check(source is Button { ButtonPressed: true }, "鼠标选中实际手牌");
+        await Click(Find("PlayerQueue1"), new Vector2(65, 19));
+        Check(trial.PlayerHand.GetQueue(0).Single().Card.Key == attacks[0].Key, "点击我方队列移入所选手牌");
+        await Click(Find("CommitPlan"));
+        Check(trial.IsPlanning && !trial.TrialLog.Contains("支付："), "攻击队列缺少目标时确认不会开战或扣费");
+        await Click(Find("EnemyQueue2"), new Vector2(66, 19));
+        Check(Descendants(Find("EnemyQueue2")).OfType<Label>().Any(label => label.Text == "已锁定"), "点击对手队列锁定当前目标");
+
+        source = Find("Hand_" + attacks[1].Key.PlacementId);
+        await Drag(source, Find("PlayerQueue1"), new Vector2(280, 19));
+        Check(trial.PlayerHand.GetQueue(0).Select(item => item.Card.Key).SequenceEqual(new[] { attacks[0].Key, attacks[1].Key }),
+            "原生拖放按顺序添加到同一队列");
+        await Click(Find("Queued_" + attacks[0].Key.PlacementId));
+        Check(trial.PlayerHand.GetQueue(0).Single().Card.Key == attacks[1].Key
+            && trial.PlayerHand.Hand.Any(card => card.Key == attacks[0].Key), "点击排好的单张招式将其撤回");
+
+        var operation = hand.Single(card => card.Skill.skill_name == "聚炁");
+        await ToSignal(GetTree().CreateTimer(.35), SceneTreeTimer.SignalName.Timeout);
+        await Drag(Find("Hand_" + operation.Key.PlacementId), Find("PlayerQueue2"), new Vector2(280, 19));
+        Check(trial.PlayerHand.GetQueue(1).Single().Card.Key == operation.Key, "把运转牌单独拖入第二条队列");
+        Check(Find("EnemyQueue1") is Button { Disabled: true } && Find("EnemyQueue2") is Button { Disabled: true },
+            "只有运转的队列不提示选择敌方目标");
+        await Click(Find("CommitPlan"));
+        Check(!trial.IsPlanning && !trial.TrialLog.Contains("支付："), "运转队列无需敌方目标，排招确认本身免费");
+        await Click(Find("AdvanceSubround"));
+        Check(trial.TrialLog.Contains("支付：") && IdentityCount(trial.PlayerHand) == 6,
+            "推进状态发生真实扣费并保持实体牌守恒");
+        trial.QueueFree();
+        await Frame();
+    }
+
+    private async Task Click(Control control, Vector2? local = null)
+    {
+        var point = control.GetGlobalTransformWithCanvas() * (local ?? control.Size / 2f);
+        Move(point, Vector2.Zero, false);
+        await Frame();
+        Mouse(point, true);
+        Mouse(point, false);
+        await Frame();
+    }
+
+    private async Task Drag(Control source, Control target, Vector2 targetLocal)
+    {
+        var start = source.GetGlobalTransformWithCanvas() * (source.Size / 2f);
+        Move(start, Vector2.Zero, false);
+        await Frame();
+        start = source.GetGlobalTransformWithCanvas() * (source.Size / 2f);
+        Mouse(start, true);
+        var next = start + new Vector2(0, -25);
+        Move(next, next - start, true);
+        await Frame();
+        var end = target.GetGlobalTransformWithCanvas() * targetLocal;
+        Move(end, end - next, true);
+        await Frame();
+        Mouse(end, false);
+        await Frame();
+    }
+
+    private async Task Frame() => await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
+
+    private void Move(Vector2 point, Vector2 relative, bool held) => GetViewport().PushInput(new InputEventMouseMotion
+    {
+        Position = point, GlobalPosition = point, Relative = relative,
+        ButtonMask = held ? MouseButtonMask.Left : 0
+    }, true);
+
+    private void Mouse(Vector2 point, bool down) => GetViewport().PushInput(new InputEventMouseButton
+    {
+        Position = point, GlobalPosition = point, ButtonIndex = MouseButton.Left,
+        Pressed = down, ButtonMask = down ? MouseButtonMask.Left : 0
+    }, true);
 
     private static IEnumerable<Node> Descendants(Node root)
     {

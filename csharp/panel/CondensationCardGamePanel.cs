@@ -133,32 +133,30 @@ public partial class CondensationCardGamePanel : Control
     {
         UpdateHandHold(delta);
         // 保存位置速度，升起和回落均经过弹簧，邻牌也随悬停让位。
-        var steps = Math.Max(1, (int)Math.Ceiling(Math.Min(delta, .05) / (1.0 / 120)));
-        var dt = (float)Math.Min(delta, .05) / steps;
+        var (steps, dt) = CardHandMotion.Steps(delta);
         foreach (var c in _cards)
         {
             if (MoveDraggedCard(c)) continue;
             // 按住时先固定牌面，避免悬浮动画把鼠标移出牌面而错过长按信息。
             if (_pressedHandCard == c) continue;
-            var offset = c.Index - (_cards.Count - 1) / 2f;
+            var (home, tilt) = CardHandMotion.FanPose(c.Index, _cards.Count, new Vector2(736, 652), 151, 7, .045f);
             var lifted = c.Index == _hover || _swapSelection.Contains(c.Index);
-            var x = 836 + offset * 151 - 100;
+            var x = home.X;
             if (_hover >= 0 && c.Index != _hover) x += c.Index < _hover ? -22 : 22;
-            var y = 652 + Math.Abs(offset) * 7 - (lifted ? 86 : 0);
-            var angle = lifted ? 0 : offset * .045f;
+            var y = home.Y - (lifted ? 86 : 0);
+            var angle = lifted ? 0 : tilt;
             for (var n = 0; n < steps; n++)
             {
-                Spring(ref c.X, ref c.VX, x, 190, 19, dt); Spring(ref c.Y, ref c.VY, y, lifted ? 250 : 200, lifted ? 17 : 16, dt);
-                Spring(ref c.Angle, ref c.VA, angle, 220, 17, dt); Spring(ref c.Zoom, ref c.VZ, lifted ? 1.1f : 1, 260, 20, dt);
+                CardHandMotion.Spring(ref c.X, ref c.VX, x, 190, 19, dt);
+                CardHandMotion.Spring(ref c.Y, ref c.VY, y, lifted ? 250 : 200, lifted ? 17 : 16, dt);
+                CardHandMotion.Spring(ref c.Angle, ref c.VA, angle, 220, 17, dt);
+                CardHandMotion.Spring(ref c.Zoom, ref c.VZ, lifted ? 1.1f : 1, 260, 20, dt);
             }
             c.Node.Position = new Vector2(c.X, c.Y); c.Node.Rotation = c.Angle; c.Node.Scale = Vector2.One * c.Zoom;
             c.Node.ZIndex = lifted ? 30 : c.Index;
             c.Node.SelfModulate = _swapSelection.Contains(c.Index) ? new Color("fff1bf") : Colors.White;
         }
     }
-    private static void Spring(ref float position, ref float velocity, float target, float stiffness, float damping, float dt)
-    { velocity += ((target - position) * stiffness - velocity * damping) * dt; position += velocity * dt; }
-
     private void BeginGame()
     {
         _game = new CondensationCardGame(_comprehension, _intelligence, _rootWeight, _counts, _items);
@@ -283,7 +281,8 @@ public partial class CondensationCardGamePanel : Control
     }
     private void BuildHandCard(int index, string name)
     {
-        var c = CondensationCardGame.Definition(name); var offset = index - (_game!.Hand.Count - 1) / 2f;
+        var c = CondensationCardGame.Definition(name);
+        var (home, tilt) = CardHandMotion.FanPose(index, _game!.Hand.Count, new Vector2(736, 652), 151, 7, .045f);
         var button = new Control { Size = new Vector2(200, 310), PivotOffset = new Vector2(100, 280), MouseFilter = MouseFilterEnum.Stop, FocusMode = FocusModeEnum.All, MouseDefaultCursorShape = CursorShape.PointingHand, ClipContents = true };
         _handLayer.AddChild(button);
         Art(button, CondensationUiArt.Card, new Rect2(0, 0, 200, 310));
@@ -292,7 +291,7 @@ public partial class CondensationCardGamePanel : Control
         var artIndex = CardIconIndex(name);
         Art(button, CondensationUiArt.Icon(artIndex), new Rect2(22, 83, 156, 117));
         Text(button, CondensationCardText.Face(name, _game, index), 18, new Rect2(17, 201, 166, 106), Ink, true);
-        var visual = new HandVisual { Node = button, Name = name, Index = index, X = 736 + offset * 151, Y = 652 + Math.Abs(offset) * 7, Angle = offset * .045f };
+        var visual = new HandVisual { Node = button, Name = name, Index = index, X = home.X, Y = home.Y, Angle = tilt };
         button.Position = new Vector2(visual.X, visual.Y); button.Rotation = visual.Angle; _cards.Add(visual);
         BindCondensationHover(button, name, true, index);
         HoverInfoManager.SuspendFor(button, true);
