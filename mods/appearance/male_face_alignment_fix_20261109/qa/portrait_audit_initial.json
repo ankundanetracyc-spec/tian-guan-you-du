@@ -1,0 +1,194 @@
+{
+  "schema": "male-face-alignment-independent-visual-audit/v1",
+  "date": "2026-11-09",
+  "status": "current_assets_have_visible_asymmetry_and_axis_drift; not_install_approval",
+  "scope": "Only QA diagnostic images and this JSON created. No active PNG, approved source, config, importer, game state or document changed.",
+  "coordinate_system": "Native1024x1536; image-left/right, not subject anatomical left/right. Centroid precision is arithmetic; anatomical reading uncertainty approximately1px.",
+  "current_hashes": {
+    "eyes/01.png": "5ecb31eacb232bf8be1f83ddd97c50c3715b792564c73052f425aca7c20eb8af",
+    "eyes/04.png": "81723d5ca8413f3ecdb5a4a962a8850bf191aa7fd63c1a1818489eff4bd2f23a",
+    "eyes/05.png": "46d6b972e5667199e274b1c2dd8bc1686f01e0ed3f68eac4301f1fbf648f88fd",
+    "eyebrows/01.png": "b094a5d118e3b722b1901198c319919804cc93ab225c873366aa02af6fc6fa5f",
+    "eyebrows/04.png": "f7d71d00f80370ddc6610a99aa8a001b7ae4f57abafe2d2eb4b0033fb9f63298",
+    "eyebrows/05.png": "f5e0908457fb3b30a33dc7961af0b4c0e046f6794d8768104b79d1a0714839fd",
+    "face_shape/01.png": "d86319252035a286a92e8892b9816bdb917a39f7f41f4cb1edf40f4dee51c357",
+    "nose/01.png": "e7271b38d96922434dbdf4a085b83a0d35ea5560989d0cfda9177beb085a2e79",
+    "mouth/01.png": "471666da8f5b161007491c7f557e6aaf23c0b467d0414bc0839f7d54d942aa03",
+    "hair_front/09.png": "bccea1734e04770fa98826500b8f1baaf1a13e3d04f85964b5cc86a249fd1e20",
+    "hair_back/09.png": "7efd9eb9309a5bdd2d22fe70e829cdfd1bd7b60e79b5e52f8ea0b4296028cb1a"
+  },
+  "diagnostic_images": [
+    "all_brows_eyes_nohair.png",
+    "all_brows_eyes_hair09.png",
+    "matching_pairs_2x.png",
+    "brow_eye_strips_6x.png"
+  ],
+  "method": {
+    "render": "Current head then nose01/eyesXX/browsXX/mouth01 on warm background, with or without current hair_back09 before head and hair_front09 after features.",
+    "pupil_centroids": "MeanRGB darkness weights max(100-gray,0), ROIs half-open left[454,363,471,373],right[560,363,577,373]. Same ROIs for all3; thresholds80/120 cross-check changed midpoint <.2px except raw y weights.",
+    "brow_centroids": "MeanRGB darkness max(145-gray,0)*alpha/255 for alpha>=128; image-left ROI[415,325,500,358], right[530,325,615,358]. Core bbox/area use alpha>=200 and meanRGB<145; this excludes faint stray hairs. These are pigment distributions, not rigid landmarks.",
+    "nose_lip": "MeanRGB dark-weight150 in left nostril[497,437,513,453], right[521,437,538,453],lip[477,470,557,484]. Darkness center is an axis proxy and may differ from exact anatomical construction.",
+    "head_axis": "Alpha230 full outer span midpoints at y300/350/365/400/425 are512.5/513/512.5/513/513. Fixed upper head+ear frame is approximatelyx513. Do not use neck base x514.5 as a new face axis."
+  },
+  "eye_centroids": {
+    "01": {
+      "left": [
+        461.811,
+        365.368
+      ],
+      "right": [
+        567.915,
+        364.996
+      ],
+      "mid": [
+        514.863,
+        365.182
+      ],
+      "right_minus_left_y": -0.372
+    },
+    "04": {
+      "left": [
+        462.694,
+        365.416
+      ],
+      "right": [
+        568.043,
+        364.9
+      ],
+      "mid": [
+        515.369,
+        365.158
+      ],
+      "right_minus_left_y": -0.517
+    },
+    "05": {
+      "left": [
+        462.61,
+        364.58
+      ],
+      "right": [
+        566.938,
+        364.928
+      ],
+      "mid": [
+        514.774,
+        364.754
+      ],
+      "right_minus_left_y": 0.348
+    }
+  },
+  "axis_proxies": {
+    "head_upper_frame_x": 513,
+    "nostril_mid_x": 517.084,
+    "lip_dark_x": 516.511,
+    "meaning": "All3 eye pair centers are~1.8-2.4px image-right of head frame; nose/lip pigment centers are~3.5-4.1px right. The features do not share one exact axis; a single blanket shift cannot remove these inter-part offsets."
+  },
+  "brows": {
+    "01": {
+      "left_centroid": [
+        458.053,
+        345.923
+      ],
+      "right_centroid": [
+        572.232,
+        344.354
+      ],
+      "left_core_bbox": [
+        427,
+        340,
+        492,
+        354
+      ],
+      "right_core_bbox": [
+        536,
+        336,
+        606,
+        354
+      ],
+      "left_core_count": 537,
+      "right_core_count": 586,
+      "observation": "Right brow peak/tail higher and main body longer. Right pigment centroid1.57px higher. Inner ends differ in opacity/taper."
+    },
+    "04": {
+      "left_centroid": [
+        453.223,
+        341.881
+      ],
+      "right_centroid": [
+        571.091,
+        341.487
+      ],
+      "left_core_bbox": [
+        423,
+        337,
+        491,
+        350
+      ],
+      "right_core_bbox": [
+        538,
+        336,
+        600,
+        350
+      ],
+      "left_core_count": 491,
+      "right_core_count": 475,
+      "observation": "Left main body is longer and thinner toward tail; right inner/body region is fuller/darker locally. Left middle/outer body has abrupt step/vertical block in enlarged view. Do not claim right total area is larger: it is not under this core threshold."
+    },
+    "05": {
+      "left_centroid": [
+        458.828,
+        345.473
+      ],
+      "right_centroid": [
+        567.761,
+        346.245
+      ],
+      "left_core_bbox": [
+        427,
+        335,
+        490,
+        357
+      ],
+      "right_core_bbox": [
+        534,
+        335,
+        603,
+        357
+      ],
+      "left_core_count": 511,
+      "right_core_count": 605,
+      "observation": "Right main pigment body has~18% more core pixels and is longer; outer ends on both sides have short upright stubs. Different inner/outer slope and weight affect perceived tilt."
+    }
+  },
+  "visual_findings": [
+    {
+      "part": "eyes04",
+      "priority": "first",
+      "finding": "Without any hair, right opening is rounder/more arched and its outer-half white is more conspicuous; left upper contour is flatter, with a longer/darker outer lash. Old two-column15/14.5 aperture reading did not validate full contour or perceived balance. Right is not simply a bigger iris. Same y368 dark-iris threshold145 run is left22px/right20px, an auxiliary texture reading rather than complete anatomical diameter.",
+      "repair": "Balance paired eyelid shape, outer-corner height/taper and lower-lid curvature; preserve iris/pupil scale and a natural small difference. Do not keep shrinking right iris or copy the old source asymmetry by default."
+    },
+    {
+      "part": "eyes01",
+      "priority": "second",
+      "finding": "Less conspicuous than04; outer lash/inner corner and lower contour are not exact counterparts. Pupil dy~.37px is small; no basis to blame large vertical pupil displacement.",
+      "repair": "Review paired contour in nohair view, after common-axis correction; do not flatten away the intended narrow male eye style."
+    },
+    {
+      "part": "eyes05",
+      "priority": "second",
+      "finding": "Right lower/outer opening is fuller; left inner-half opening flatter. Pupil height difference only~.35px, so a vertical pupil shift alone will not fix the perception.",
+      "repair": "Paired upper/lower contour review with iris preserved; correct clear imbalance without mirroring."
+    },
+    {
+      "part": "hair09",
+      "finding": "Foreground strands cover image-left outer eye and part of left brow, increasing the already-present apparent small-left/large-right imbalance. Underlying nohair difference remains. No reason to repair this by enlarging only the covered left eye.",
+      "repair": "Judge face before hair and then repeat09 occlusion check; keep valid hairstyle occlusion separate from eye drawing."
+    }
+  ],
+  "recommended_order": [
+    "Use fixed head frame nearx513 and actual face/jaw reference to choose one shared central axis. Correct pair-level position and nose/lip whole-layer position coherently; do not blindly repeat historical all-left5px.",
+    "Repair04 paired eye contour and brows04/05 visible hard ends/weight imbalance first. Retain the three distinct brow/eye styles. Use new paired drawing when needed; no pasted mirrored eye and no anisotropic stretch.",
+    "Check nohair9brow/eye mixes, hair09 and other foreground styles on the same canvas. Recheck whole lid curve/iris/corners/brow silhouettes, not only two iris-level column gradients or SHA."
+  ],
+  "limits": "This is an independent current-asset diagnosis. It does not authorize installation, define final artist-approved coordinates, or treat approved source asymmetry as a mandatory invariant."
+}

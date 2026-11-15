@@ -1,0 +1,216 @@
+{
+  "schema": "male-eye04-balance-final-audit/v1",
+  "date": "2026-11-07",
+  "scope": "Only this QA JSON written; candidate and active PNG/configuration untouched. This is an independent candidate visual/coarse-geometry review, not an installation/runtime-test report.",
+  "inputs": {
+    "candidate": "E:\\stacklands\\mods\\appearance\\male_eye_balance_fix_20261107\\candidate\\new_male_eyes04.png",
+    "candidate_sha256": "28f148cb53a45f2048d02ce4c63c470a7ea406210b3b8ad289dd72de14dc80a4",
+    "expected_locked_sha256": "28f148cb53a45f2048d02ce4c63c470a7ea406210b3b8ad289dd72de14dc80a4",
+    "locked_sha256_matches": true,
+    "frozen_old_eye": "E:\\stacklands\\mods\\appearance\\male_eye_balance_fix_20261107\\reference\\current_male\\eyes\\04.png",
+    "frozen_old_sha256": "fd3f04b779e0849bbe9c9cf46fcfa2b5bd6b8fcb8839b2aac5c1d26819acba89",
+    "head_sha256": "d86319252035a286a92e8892b9816bdb917a39f7f41f4cb1edf40f4dee51c357",
+    "baseline": "source/baseline_active.json (54 PNG snapshot)"
+  },
+  "same_method_as_diagnosis": {
+    "reference_report": "E:\\stacklands\\mods\\appearance\\male_eye_balance_fix_20261107\\qa\\asymmetry_diagnosis.json",
+    "canvas": [
+      1024,
+      1536
+    ],
+    "no_hair_measurement": true,
+    "grayscale": "meanRGB after RGBA over frozen blank head, paper background235,229,216",
+    "pupil": "Same half-open ROIs and max(100-gray,0) weighted dark-core centroids.",
+    "core_curve": "At identical x anchors,3-column mean; upper strongest negative row difference in355..365, lower strongest positive row difference in371..377; boundary y+.5.",
+    "edge_uncertainty_px": [
+      1,
+      1.5
+    ],
+    "limits": "Painted outline/crease gradients are coarse visual-support measurements, not a precise segmentation of the biological aperture. Iris/pupil are not normalized separately."
+  },
+  "measurements": {
+    "before": {
+      "left": {
+        "core_curve": [
+          {
+            "x": 458,
+            "upper_y": 359.5,
+            "lower_y": 374.5,
+            "opening_height_px": 15.0
+          },
+          {
+            "x": 466,
+            "upper_y": 359.5,
+            "lower_y": 374.5,
+            "opening_height_px": 15.0
+          }
+        ],
+        "core_median_opening_height_px": 15.0,
+        "pupil_core_centroid": [
+          462.6952312287569,
+          365.41672674837787
+        ],
+        "pupil_roi_half_open_xyxy": [
+          454,
+          363,
+          471,
+          373
+        ]
+      },
+      "right": {
+        "core_curve": [
+          {
+            "x": 564,
+            "upper_y": 356.5,
+            "lower_y": 373.5,
+            "opening_height_px": 17.0
+          },
+          {
+            "x": 572,
+            "upper_y": 355.5,
+            "lower_y": 372.5,
+            "opening_height_px": 17.0
+          }
+        ],
+        "core_median_opening_height_px": 17.0,
+        "pupil_core_centroid": [
+          567.7991927346114,
+          364.9156695978088
+        ],
+        "pupil_roi_half_open_xyxy": [
+          560,
+          363,
+          577,
+          373
+        ]
+      }
+    },
+    "after": {
+      "left": {
+        "core_curve": [
+          {
+            "x": 458,
+            "upper_y": 359.5,
+            "lower_y": 374.5,
+            "opening_height_px": 15.0
+          },
+          {
+            "x": 466,
+            "upper_y": 359.5,
+            "lower_y": 374.5,
+            "opening_height_px": 15.0
+          }
+        ],
+        "core_median_opening_height_px": 15.0,
+        "pupil_core_centroid": [
+          462.6952312287569,
+          365.41672674837787
+        ],
+        "pupil_roi_half_open_xyxy": [
+          454,
+          363,
+          471,
+          373
+        ]
+      },
+      "right": {
+        "core_curve": [
+          {
+            "x": 564,
+            "upper_y": 360.5,
+            "lower_y": 372.5,
+            "opening_height_px": 12.0
+          },
+          {
+            "x": 572,
+            "upper_y": 360.5,
+            "lower_y": 372.5,
+            "opening_height_px": 12.0
+          }
+        ],
+        "core_median_opening_height_px": 12.0,
+        "pupil_core_centroid": [
+          567.9260154182488,
+          364.7739040386607
+        ],
+        "pupil_roi_half_open_xyxy": [
+          560,
+          363,
+          577,
+          373
+        ]
+      }
+    }
+  },
+  "pupil_center_delta_after_minus_before_px": {
+    "left": [
+      0.0,
+      0.0
+    ],
+    "right": [
+      0.12682268363732874,
+      -0.14176555914809796
+    ]
+  },
+  "left_rgba_changed_pixels_x_lt520": 0,
+  "iris_review": {
+    "old_visible_horizontal_diameter_px": {
+      "left": [
+        20,
+        24
+      ],
+      "right": [
+        20,
+        24
+      ]
+    },
+    "new_visible_horizontal_diameter_px": {
+      "left": [
+        20,
+        24
+      ],
+      "right": [
+        20,
+        23
+      ]
+    },
+    "new_right_best_coarse_estimate_px": [
+      21,
+      22
+    ],
+    "method": "Native-scale visual outer-limbus comparison plus prior v3 native145..148px at common scale0.143; uncertainty about2px. Full vertical iris is covered by the upper lid and is not inferred from eye-opening height.",
+    "conclusion": "No notable whole-iris or pupil size enlargement/reduction. Left RGBA is literally unchanged; new right iris remains near previous horizontal size and pupil center differs less than0.2px."
+  },
+  "normal_scale_review": {
+    "images": [
+      "qa/before_after_eye_hair_comparison_light.png",
+      "qa/before_after_reported_scale_light.png"
+    ],
+    "no_hair": "Earlier reviewer judged no conspicuous reversed size difference, but ROOT independently identifies right still half-closed. This visual disagreement is resolved by rejecting28f148 and using the recorded same-method15/12 metric for the next targeted correction.",
+    "front_hair01_04_05": "Candidate remains natural with all three front hairs;04 retains expected actual foreground hair occlusion, distinct from removed baked eye-layer hair.",
+    "external_edges": "Previously excessive pointed dark outer tail is materially shortened/softened. No conspicuous one-sided long eyeliner wing remains.",
+    "remaining_accepted_differences": [
+      "Image-right now reads somewhat narrower and more relaxed than image-left; coarse core opening is12px versus15px left. This is not exact geometric equality and must not be reported as such.",
+      "Right upper/lower lid paint is still slightly more orderly/defined than left. At normal scale it is not a prominent makeup patch or sharp extended wing.",
+      "Small natural contour/crease asymmetry remains; no additional uniform eye or pupil scaling, mirroring, or per-eye geometry iteration is warranted from this review."
+    ]
+  },
+  "decision": {
+    "ready_for_root_install": false,
+    "basis": "Normal-scale natural balance and removal of clear baked-hair/outer-tail defects, with measured minor contour differences disclosed.",
+    "not_claimed": [
+      "perfect symmetry",
+      "pixel-identical original whole portrait",
+      "final user aesthetic approval",
+      "installation/runtime checks completed"
+    ],
+    "status": "rejected_by_root_pending_v4",
+    "superseding_reason": "ROOT normal-scale review identifies the right eye still half-closed. Identical core method gives left15/right12, absolute asymmetry3px versus original left15/right17 asymmetry2px. Earlier reviewer ready-for-install recommendation withdrawn; candidate28f148 must not be installed.",
+    "next_target": "Built-in edit only to raise right central upper lid1.5-2 output pixels, aiming same-method right opening14-15px while retaining current natural tail/lower lid/iris/pupil and original left. Reuse existing whole-pair frame and repeat same ROIs."
+  },
+  "noncollinear_native_frame_crosscheck": {
+    "native_inner_corner_note": "Native743,503 is a skin/matte corner, not the eye-corner junction. Native painted left inner corner approximately721,492 maps near488.6,373.0, consistent within coarse1-1.5px with old actual inner corner489..490,373.",
+    "native_lower_iris_lid_note": "Native540,497±2 maps near462.8,373.9, consistent with old left lower-lid/iris boundary about463,374..375.",
+    "does_not_request_reexport": true
+  }
+}

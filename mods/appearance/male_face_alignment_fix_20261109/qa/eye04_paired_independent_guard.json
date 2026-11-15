@@ -1,0 +1,15 @@
+{
+  "schema": "male04-paired-independent-visual-guard/v1",
+  "candidate": "qa/eye04_paired_geometry_candidate.png",
+  "sha256": "cf1e14f61b5ac2904cddcaad14eb38d3da6328673fa3e90a019e1e7629b99f05",
+  "axis_x": 513,
+  "reflection_rule": "pixel x maps to1026-x; compare x3..513 with reversed x513..1023 inclusive",
+  "rgba_mirror_mismatched_pixels": 0,
+  "normal_scale_visual": "Paired face looks more centered and naturally matched than pre-paired400303. Same modest iris/aperture style; no crossed gaze, conspicuous lighting conflict, new edge seam or dead pasted look. Mirrored catchlights are a documented deliberate tradeoff under ROOT strict-symmetry instruction.",
+  "evidence": [
+    "qa/eye04_paired_geometry_face_light_1x.png",
+    "qa/eye04_paired_geometry_face_dark_2x.png",
+    "qa/eye04_frozen_generated_paired_three_faces_1x.png"
+  ],
+  "status": "paired QA candidate locally accepted; final staged13and refreshed evidence pending"
+}

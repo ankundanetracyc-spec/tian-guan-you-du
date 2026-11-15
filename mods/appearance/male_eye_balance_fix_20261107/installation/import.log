@@ -1,0 +1,566 @@
+Godot Engine v4.7.2.stable.mono.custom_build.ed1daf0bf (2026-08-17 01:18:38 UTC) - https://godotengine.org
+
+[   0% ] first_scan_filesystem | Started 项目初始化 (5 steps)
+[   0% ] first_scan_filesystem | 正在扫描文件结构……
+WARNING: Detected another project.godot at res://mods/appearance/portrait_original_restore_20261105_v6/collar_hair_fixed_neck_20261105/collars_only/installation/import_project. The folder will be ignored.
+   at: EditorFileSystem::_should_skip_directory (editor\file_system\editor_file_system.cpp:3497)
+[  16% ] first_scan_filesystem | 正在加载全局类名……
+[  33% ] first_scan_filesystem | 正在校验 GDExtension……
+[  50% ] first_scan_filesystem | 正在创建自动加载脚本……
+[  66% ] first_scan_filesystem | 正在初始化插件……
+ERROR: Godot MCP: Failed to listen on ws://127.0.0.1:49631 (error=22)
+   at: VariantUtilityFunctions::push_error (core\variant\variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _enter_tree (res://addons/godot_mcp/mcp_bridge.gd:45)
+[  83% ] first_scan_filesystem | 正在启动文件扫描……
+[ DONE ] first_scan_filesystem
+
+WARNING: UID duplicate detected between res://textures/vfx/ink_chop_sequence_20261016_v2/bake.gdshader and res://textures/vfx/ink_chop_sequence_20261015_v1/bake.gdshader.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_chop_sequence_20261016_v2/impact_atlas_0.png and res://textures/vfx/ink_chop_sequence_20261015_v1/impact_atlas_0.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_chop_sequence_20261016_v2/impact_atlas_1.png and res://textures/vfx/ink_chop_sequence_20261015_v1/impact_atlas_1.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_chop_sequence_20261016_v2/palette.gdshader and res://textures/vfx/ink_chop_sequence_20261015_v1/palette.gdshader.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_chop_sequence_20261016_v2/slash_atlas_0.png and res://textures/vfx/ink_chop_sequence_20261015_v1/slash_atlas_0.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/bake.gdshader and res://textures/vfx/ink_response_sequences_20261015_v1/bake.gdshader.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/guard_atlas_0.png and res://textures/vfx/ink_response_sequences_20261015_v1/guard_atlas_0.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/guard_atlas_1.png and res://textures/vfx/ink_response_sequences_20261015_v1/guard_atlas_1.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/hurt_atlas_0.png and res://textures/vfx/ink_response_sequences_20261015_v1/hurt_atlas_0.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/hurt_atlas_1.png and res://textures/vfx/ink_response_sequences_20261015_v1/hurt_atlas_1.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/restore_atlas_0.png and res://textures/vfx/ink_response_sequences_20261015_v1/restore_atlas_0.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/restore_atlas_1.png and res://textures/vfx/ink_response_sequences_20261015_v1/restore_atlas_1.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/restore_atlas_2.png and res://textures/vfx/ink_response_sequences_20261015_v1/restore_atlas_2.png.
+   at: EditorFileSystem::_process_file_system (editor\file_system\editor_file_system.cpp:1405)
+[   0% ] update_scripts_classes | Started 正在注册全局类…… (12 steps)
+[   0% ] update_scripts_classes | 
+[   7% ] update_scripts_classes | 
+[  15% ] update_scripts_classes | 
+[  23% ] update_scripts_classes | 
+[  30% ] update_scripts_classes | 
+[  38% ] update_scripts_classes | 
+[  46% ] update_scripts_classes | 
+[  53% ] update_scripts_classes | 
+[  61% ] update_scripts_classes | 
+[  69% ] update_scripts_classes | 
+[  76% ] update_scripts_classes | 
+[  84% ] update_scripts_classes | 
+[ DONE ] update_scripts_classes
+
+[   0% ] _update_scan_actions | Started 正在扫描动作…… (186 steps)
+[   0% ] _update_scan_actions | 云息境界表现_三环周行.png
+[   0% ] _update_scan_actions | 云息境界表现_三环立体侧转.png
+[   1% ] _update_scan_actions | 云息境界表现_十层偏心环.png
+[   1% ] _update_scan_actions | 云息境界表现_归元息游走.png
+[   2% ] _update_scan_actions | 云息境界表现_旋涡与题字对齐.png
+[   2% ] _update_scan_actions | 云息境界表现_正心三环.png
+[   3% ] _update_scan_actions | 云息境界表现_细化v2.png
+[   3% ] _update_scan_actions | 云息境界表现_零至九息总览.png
+[   4% ] _update_scan_actions | 凝核牌局_弹性手牌与牌堆.png
+[   4% ] _update_scan_actions | 凝核牌局_扇形手牌.png
+[   5% ] _update_scan_actions | 凝核牌局_道具列表.png
+[   5% ] _update_scan_actions | 正式场景_扫盘战斗.png
+[   6% ] _update_scan_actions | 正式场景_查看战场.png
+[   6% ] _update_scan_actions | 正式场景_配招_1280.png
+[   7% ] _update_scan_actions | 正式场景_配招_1672.png
+[   8% ] _update_scan_actions | 丹房_租期内_1920.png
+[   8% ] _update_scan_actions | 丹房_租用入口_1280.png
+[   9% ] _update_scan_actions | 丹房_租用入口_1920.png
+[   9% ] _update_scan_actions | 共用入口框架.png
+[  10% ] _update_scan_actions | 器作_租期内_1920.png
+[  10% ] _update_scan_actions | 器作_租用入口_1280.png
+[  11% ] _update_scan_actions | 器作_租用入口_1920.png
+[  11% ] _update_scan_actions | 租用确认_1280.png
+[  12% ] _update_scan_actions | 01_炉台旁入口.png
+[  12% ] _update_scan_actions | 02_自带火种选择.png
+[  13% ] _update_scan_actions | 03_演出收起界面.png
+[  13% ] _update_scan_actions | 04_收火成器.png
+[  14% ] _update_scan_actions | 05_火源常驻侧栏.png
+[  14% ] _update_scan_actions | 06_窄窗堆叠.png
+[  15% ] _update_scan_actions | 侧页_中途反向.png
+[  16% ] _update_scan_actions | 侧页_修正前_放大.png
+[  16% ] _update_scan_actions | 侧页_修正后_1280.png
+[  17% ] _update_scan_actions | 侧页_修正后_1920.png
+[  17% ] _update_scan_actions | 侧页_修正后_放大.png
+[  18% ] _update_scan_actions | 侧页_归位途中.png
+[  18% ] _update_scan_actions | 豆包_双峰山候选_v01.jpeg
+[  19% ] _update_scan_actions | 天工峰_丹房_1280.png
+[  19% ] _update_scan_actions | 天工峰_丹房_1920.png
+[  20% ] _update_scan_actions | 天工峰_器作_1280.png
+[  20% ] _update_scan_actions | 天工峰_器作_1920.png
+[  21% ] _update_scan_actions | 百工_丹方_1280.png
+[  21% ] _update_scan_actions | 百工_丹方_1920.png
+[  22% ] _update_scan_actions | 百工_炼器存录_1280.png
+[  22% ] _update_scan_actions | 百工_炼器存录_1920.png
+[  23% ] _update_scan_actions | 选材弹窗_1280.png
+[  24% ] _update_scan_actions | 田地改造子页_理想图_v1.png
+[  24% ] _update_scan_actions | breathing_preview.webp
+[  25% ] _update_scan_actions | 07_善功堂去装备与滑轨_20261107.png
+[  25% ] _update_scan_actions | 08_善功堂滑轨末端_20261107.png
+[  26% ] _update_scan_actions | 09_善功堂1280_20261107.png
+[  26% ] _update_scan_actions | 01_行囊尺度1920.png
+[  27% ] _update_scan_actions | 02_戒指矩形收纳1920.png
+[  27% ] _update_scan_actions | 03_戒指矩形收纳1280.png
+[  28% ] _update_scan_actions | 04_行囊尺度1280.png
+[  28% ] _update_scan_actions | 05_整屏戒指1920.png
+[  29% ] _update_scan_actions | 06_整屏戒指1280.png
+[  29% ] _update_scan_actions | 07_戒指暗罩1920.png
+[  30% ] _update_scan_actions | 08_戒指暗罩1280.png
+[  31% ] _update_scan_actions | 01_原生行囊旋转拖动.png
+[  31% ] _update_scan_actions | 02_原生行囊空间与清册.png
+[  32% ] _update_scan_actions | 03_原生行囊1280.png
+[  32% ] _update_scan_actions | 01_行囊尺度1920.png
+[  33% ] _update_scan_actions | 02_戒指矩形收纳1920.png
+[  33% ] _update_scan_actions | 03_戒指矩形收纳1280.png
+[  34% ] _update_scan_actions | 04_行囊尺度1280.png
+[  34% ] _update_scan_actions | 05_整屏戒指1920.png
+[  35% ] _update_scan_actions | 06_整屏戒指1280.png
+[  35% ] _update_scan_actions | 07_戒指暗罩1920.png
+[  36% ] _update_scan_actions | 08_戒指暗罩1280.png
+[  36% ] _update_scan_actions | 01_原生行囊旋转拖动.png
+[  37% ] _update_scan_actions | 02_原生行囊空间与清册.png
+[  37% ] _update_scan_actions | 03_原生行囊1280.png
+[  38% ] _update_scan_actions | 01_领取收纳_1920.png
+[  39% ] _update_scan_actions | 02_领取收纳_完整.png
+[  39% ] _update_scan_actions | 03_领取收纳_1280.png
+[  40% ] _update_scan_actions | 04_领取收纳_拖动预览.png
+[  40% ] _update_scan_actions | 04_领取收纳_旋转.png
+[  41% ] _update_scan_actions | 05_领取_移出后可拖回.png
+[  41% ] _update_scan_actions | 04.png
+[  42% ] _update_scan_actions | female_wardrobe_20261005.png
+[  42% ] _update_scan_actions | male_natural_eye_game_3.png
+[  43% ] _update_scan_actions | new_male_eyes04.png
+[  43% ] _update_scan_actions | new_male_eyes04_before_matte_v3.png
+[  44% ] _update_scan_actions | new_male_eyes04_before_matte_v4.png
+[  44% ] _update_scan_actions | new_male_eyes04_before_matte_v5.png
+[  45% ] _update_scan_actions | new_male_eyes04_before_matte_v6.png
+[  45% ] _update_scan_actions | reported_eye_crop.png
+[  46% ] _update_scan_actions | before_after_eye_hair_comparison_dark.png
+[  47% ] _update_scan_actions | before_after_eye_hair_comparison_light.png
+[  47% ] _update_scan_actions | before_after_eye_hair_native_1x_dark.png
+[  48% ] _update_scan_actions | before_after_eye_hair_native_1x_light.png
+[  48% ] _update_scan_actions | before_after_reported_scale_dark.png
+[  49% ] _update_scan_actions | before_after_reported_scale_light.png
+[  49% ] _update_scan_actions | before_after_selected_hair04_dark.png
+[  50% ] _update_scan_actions | before_after_selected_hair04_light.png
+[  50% ] _update_scan_actions | candidate_isolated_dark_6x.png
+[  51% ] _update_scan_actions | candidate_isolated_light_6x.png
+[  51% ] _update_scan_actions | native_v1_light_6x.png
+[  52% ] _update_scan_actions | native_v3_left_pupil4x.png
+[  52% ] _update_scan_actions | native_v3_right_pupil4x.png
+[  53% ] _update_scan_actions | old_eyes_light_6x.png
+[  54% ] _update_scan_actions | old_left_grid16x.png
+[  54% ] _update_scan_actions | eyes_balance_v1.png
+[  55% ] _update_scan_actions | eyes_balance_v2.png
+[  55% ] _update_scan_actions | eyes_balance_v3.png
+[  56% ] _update_scan_actions | eyes_balance_v4.png
+[  56% ] _update_scan_actions | eyes_balance_v5.png
+[  57% ] _update_scan_actions | eyes_balance_v6.png
+[  57% ] _update_scan_actions | eyes_edit_context_4x.png
+[  58% ] _update_scan_actions | bit1_out.bmp
+[  58% ] _update_scan_actions | bit4_out.bmp
+[  59% ] _update_scan_actions | bit4_RLE.bmp
+[  59% ] _update_scan_actions | bit4_RLE_out.bmp
+[  60% ] _update_scan_actions | bit8_out.bmp
+[  60% ] _update_scan_actions | bit8_RLE.bmp
+[  61% ] _update_scan_actions | bit8_RLE_out.bmp
+[  62% ] _update_scan_actions | bit16_565_out.bmp
+[  62% ] _update_scan_actions | bit16_a444_out.bmp
+[  63% ] _update_scan_actions | bit16_a555_out.bmp
+[  63% ] _update_scan_actions | bit16_x444_out.bmp
+[  64% ] _update_scan_actions | bit16_x555_out.bmp
+[  64% ] _update_scan_actions | bit24_out.bmp
+[  65% ] _update_scan_actions | bit32_alpha_out.bmp
+[  65% ] _update_scan_actions | bit32_out.bmp
+[  66% ] _update_scan_actions | after_library_1280.png
+[  66% ] _update_scan_actions | after_library_1920.png
+[  67% ] _update_scan_actions | after_pulling.png
+[  67% ] _update_scan_actions | after_reselected.png
+[  68% ] _update_scan_actions | after_rest.png
+[  68% ] _update_scan_actions | after_returned.png
+[  69% ] _update_scan_actions | after_returning.png
+[  70% ] _update_scan_actions | after_reversing.png
+[  70% ] _update_scan_actions | after_selected.png
+[  71% ] _update_scan_actions | before_library_1280.png
+[  71% ] _update_scan_actions | before_library_1920.png
+[  72% ] _update_scan_actions | before_pulling.png
+[  72% ] _update_scan_actions | before_rest.png
+[  73% ] _update_scan_actions | before_returned.png
+[  73% ] _update_scan_actions | before_returning.png
+[  74% ] _update_scan_actions | before_selected.png
+[  74% ] _update_scan_actions | baigong20261107-alchemy-1280.png
+[  75% ] _update_scan_actions | baigong20261107-alchemy-1920.png
+[  75% ] _update_scan_actions | baigong20261107-forging-1280.png
+[  76% ] _update_scan_actions | baigong20261107-forging-1920.png
+[  77% ] _update_scan_actions | baigong20261107-picker-1280.png
+[  77% ] _update_scan_actions | baigong20261107-recipes-1280.png
+[  78% ] _update_scan_actions | baigong20261107-recipes-1920.png
+[  78% ] _update_scan_actions | baigong20261107-records-1280.png
+[  79% ] _update_scan_actions | baigong20261107-records-1920.png
+[  79% ] _update_scan_actions | facility-entrance-20261107-alchemy-active-1920.png
+[  80% ] _update_scan_actions | facility-entrance-20261107-alchemy-new-1280.png
+[  80% ] _update_scan_actions | facility-entrance-20261107-alchemy-new-1920.png
+[  81% ] _update_scan_actions | facility-entrance-20261107-confirm-1280.png
+[  81% ] _update_scan_actions | facility-entrance-20261107-first.png
+[  82% ] _update_scan_actions | facility-entrance-20261107-forging-active-1920.png
+[  82% ] _update_scan_actions | facility-entrance-20261107-forging-new-1280.png
+[  83% ] _update_scan_actions | facility-entrance-20261107-forging-new-1920.png
+[  83% ] _update_scan_actions | forge-fire-choice.png
+[  84% ] _update_scan_actions | forge-fire-done.png
+[  85% ] _update_scan_actions | forge-fire-narrow.png
+[  85% ] _update_scan_actions | forge-fire-painted-done.png
+[  86% ] _update_scan_actions | forge-fire-painted-forming.png
+[  86% ] _update_scan_actions | forge-fire-painted-playing.png
+[  87% ] _update_scan_actions | forge-fire-painted-ready.png
+[  87% ] _update_scan_actions | forge-fire-playing.png
+[  88% ] _update_scan_actions | forge-fire-ready.png
+[  88% ] _update_scan_actions | forge-fire-sidebar.png
+[  89% ] _update_scan_actions | ui-materials-dark-1920.png
+[  89% ] _update_scan_actions | shop_native_1280_20261107.png
+[  90% ] _update_scan_actions | shop_native_four_columns_20261107.png
+[  90% ] _update_scan_actions | shop_native_rail_before_arrow_20261107.png
+[  91% ] _update_scan_actions | shop_native_rail_end_20261107.png
+[  91% ] _update_scan_actions | 功法配置.csv
+[  92% ] _update_scan_actions | buttons_atlas.png
+[  93% ] _update_scan_actions | grid_parts_atlas.png
+[  93% ] _update_scan_actions | resources_atlas.png
+[  94% ] _update_scan_actions | source_panel.png
+[  94% ] _update_scan_actions | tooltip_panel.png
+[  95% ] _update_scan_actions | flame_amber_loop_2x2_v1.png
+[  95% ] _update_scan_actions | hearth_empty_v1.png
+[  96% ] _update_scan_actions | workshop_unlit_v1.png
+[  96% ] _update_scan_actions | bc_r0c0.png
+[  97% ] _update_scan_actions | zhaoming_continuous_terrain_master_v19_compact_landmarks_4096.png
+[  97% ] _update_scan_actions | zhaoming_drawio_terrain_with_boundaries.png
+[  98% ] _update_scan_actions | 2bb934f8-9be1-4f19-9416-ba53aa82f892.png
+[  98% ] _update_scan_actions | 512.png
+[ DONE ] _update_scan_actions
+
+[   0% ] reimport | Started 正在导入或重新导入资产 (150 steps)
+[   0% ] reimport | 正在准备重新导入文件……
+[   0% ] reimport | 正在准备重新导入文件……
+[   1% ] reimport | 正在准备重新导入文件……
+[   1% ] reimport | 正在准备重新导入文件……
+[   2% ] reimport | 正在准备重新导入文件……
+[   3% ] reimport | 正在准备重新导入文件……
+[   3% ] reimport | 正在准备重新导入文件……
+[   4% ] reimport | 正在准备重新导入文件……
+[   5% ] reimport | 正在准备重新导入文件……
+[   5% ] reimport | 正在准备重新导入文件……
+[   6% ] reimport | 正在准备重新导入文件……
+[   7% ] reimport | 正在准备重新导入文件……
+[   7% ] reimport | 正在准备重新导入文件……
+[   8% ] reimport | 正在准备重新导入文件……
+[   9% ] reimport | 正在准备重新导入文件……
+[   9% ] reimport | 正在准备重新导入文件……
+[  10% ] reimport | 正在准备重新导入文件……
+[  11% ] reimport | 正在准备重新导入文件……
+[  11% ] reimport | 正在准备重新导入文件……
+[  12% ] reimport | 正在准备重新导入文件……
+[  13% ] reimport | 正在准备重新导入文件……
+[  13% ] reimport | 正在准备重新导入文件……
+[  14% ] reimport | 正在准备重新导入文件……
+[  15% ] reimport | 正在准备重新导入文件……
+[  15% ] reimport | 正在准备重新导入文件……
+[  16% ] reimport | 正在准备重新导入文件……
+[  17% ] reimport | 正在准备重新导入文件……
+[  17% ] reimport | 正在准备重新导入文件……
+[  18% ] reimport | 正在准备重新导入文件……
+[  19% ] reimport | 正在准备重新导入文件……
+[  19% ] reimport | 正在准备重新导入文件……
+[  20% ] reimport | 正在准备重新导入文件……
+[  21% ] reimport | 正在准备重新导入文件……
+[  21% ] reimport | 正在准备重新导入文件……
+[  22% ] reimport | 正在准备重新导入文件……
+[  23% ] reimport | 正在准备重新导入文件……
+[  23% ] reimport | 正在准备重新导入文件……
+[  24% ] reimport | 正在准备重新导入文件……
+[  25% ] reimport | 正在准备重新导入文件……
+[  25% ] reimport | 正在准备重新导入文件……
+[  26% ] reimport | 正在准备重新导入文件……
+[  27% ] reimport | 正在准备重新导入文件……
+[  27% ] reimport | 正在准备重新导入文件……
+[  28% ] reimport | 正在准备重新导入文件……
+[  29% ] reimport | 正在准备重新导入文件……
+[  29% ] reimport | 正在准备重新导入文件……
+[  30% ] reimport | 正在准备重新导入文件……
+[  31% ] reimport | 正在准备重新导入文件……
+[  31% ] reimport | 正在准备重新导入文件……
+[  32% ] reimport | 正在准备重新导入文件……
+[  33% ] reimport | 正在准备重新导入文件……
+[  33% ] reimport | 正在准备重新导入文件……
+[  34% ] reimport | 正在准备重新导入文件……
+[  35% ] reimport | 正在准备重新导入文件……
+[  35% ] reimport | 正在准备重新导入文件……
+[  36% ] reimport | 正在准备重新导入文件……
+[  37% ] reimport | 正在准备重新导入文件……
+[  37% ] reimport | 正在准备重新导入文件……
+[  38% ] reimport | 正在准备重新导入文件……
+[  39% ] reimport | 正在准备重新导入文件……
+[  39% ] reimport | 正在准备重新导入文件……
+[  40% ] reimport | 正在准备重新导入文件……
+[  41% ] reimport | 正在准备重新导入文件……
+[  41% ] reimport | 正在准备重新导入文件……
+[  42% ] reimport | 正在准备重新导入文件……
+[  43% ] reimport | 正在准备重新导入文件……
+[  43% ] reimport | 正在准备重新导入文件……
+[  44% ] reimport | 正在准备重新导入文件……
+[  45% ] reimport | 正在准备重新导入文件……
+[  45% ] reimport | 正在准备重新导入文件……
+[  46% ] reimport | 正在准备重新导入文件……
+[  47% ] reimport | 正在准备重新导入文件……
+[  47% ] reimport | 正在准备重新导入文件……
+[  48% ] reimport | 正在准备重新导入文件……
+[  49% ] reimport | 正在准备重新导入文件……
+[  49% ] reimport | 正在准备重新导入文件……
+[  50% ] reimport | 正在准备重新导入文件……
+[  50% ] reimport | 正在准备重新导入文件……
+[  51% ] reimport | 正在准备重新导入文件……
+[  52% ] reimport | 正在准备重新导入文件……
+[  52% ] reimport | 正在准备重新导入文件……
+[  53% ] reimport | 正在准备重新导入文件……
+[  54% ] reimport | 正在准备重新导入文件……
+[  54% ] reimport | 正在准备重新导入文件……
+[  55% ] reimport | 正在准备重新导入文件……
+[  56% ] reimport | 正在准备重新导入文件……
+[  56% ] reimport | 正在准备重新导入文件……
+[  57% ] reimport | 正在准备重新导入文件……
+[  58% ] reimport | 正在准备重新导入文件……
+[  58% ] reimport | 正在准备重新导入文件……
+[  59% ] reimport | 正在准备重新导入文件……
+[  60% ] reimport | 正在准备重新导入文件……
+[  60% ] reimport | 正在准备重新导入文件……
+[  61% ] reimport | 正在准备重新导入文件……
+[  62% ] reimport | 正在准备重新导入文件……
+[  62% ] reimport | 正在准备重新导入文件……
+[  63% ] reimport | 正在准备重新导入文件……
+[  64% ] reimport | 正在准备重新导入文件……
+[  64% ] reimport | 正在准备重新导入文件……
+[  65% ] reimport | 正在准备重新导入文件……
+[  66% ] reimport | 正在准备重新导入文件……
+[  66% ] reimport | 正在准备重新导入文件……
+[  67% ] reimport | 正在准备重新导入文件……
+[  68% ] reimport | 正在准备重新导入文件……
+[  68% ] reimport | 正在准备重新导入文件……
+[  69% ] reimport | 正在准备重新导入文件……
+[  70% ] reimport | 正在准备重新导入文件……
+[  70% ] reimport | 正在准备重新导入文件……
+[  71% ] reimport | 正在准备重新导入文件……
+[  72% ] reimport | 正在准备重新导入文件……
+[  72% ] reimport | 正在准备重新导入文件……
+[  73% ] reimport | 正在准备重新导入文件……
+[  74% ] reimport | 正在准备重新导入文件……
+[  74% ] reimport | 正在准备重新导入文件……
+[  75% ] reimport | 正在准备重新导入文件……
+[  76% ] reimport | 正在准备重新导入文件……
+[  76% ] reimport | 正在准备重新导入文件……
+[  77% ] reimport | 正在准备重新导入文件……
+[  78% ] reimport | 正在准备重新导入文件……
+[  78% ] reimport | 正在准备重新导入文件……
+[  79% ] reimport | 正在准备重新导入文件……
+[  80% ] reimport | 正在准备重新导入文件……
+[  80% ] reimport | 正在准备重新导入文件……
+[  81% ] reimport | 正在准备重新导入文件……
+[  82% ] reimport | 正在准备重新导入文件……
+[  82% ] reimport | 正在准备重新导入文件……
+[  83% ] reimport | 正在准备重新导入文件……
+[  84% ] reimport | 正在准备重新导入文件……
+[  84% ] reimport | 正在准备重新导入文件……
+[  85% ] reimport | 正在准备重新导入文件……
+[  86% ] reimport | 正在准备重新导入文件……
+[  86% ] reimport | 正在准备重新导入文件……
+[  87% ] reimport | 正在准备重新导入文件……
+[  88% ] reimport | 正在准备重新导入文件……
+[  88% ] reimport | 正在准备重新导入文件……
+[  89% ] reimport | 正在准备重新导入文件……
+[  90% ] reimport | 正在准备重新导入文件……
+[  90% ] reimport | 正在准备重新导入文件……
+[  91% ] reimport | 正在准备重新导入文件……
+[  92% ] reimport | 正在准备重新导入文件……
+[  92% ] reimport | 正在准备重新导入文件……
+[  93% ] reimport | 正在准备重新导入文件……
+[  94% ] reimport | 正在准备重新导入文件……
+[  94% ] reimport | 正在准备重新导入文件……
+[  95% ] reimport | 正在准备重新导入文件……
+[  96% ] reimport | 正在准备重新导入文件……
+[  96% ] reimport | 正在准备重新导入文件……
+[  97% ] reimport | 正在准备重新导入文件……
+[  98% ] reimport | 正在准备重新导入文件……
+[  98% ] reimport | 正在准备重新导入文件……
+[   0% ] reimport | 正在执行重新导入的前置操作……
+[   0% ] reimport | after_library_1280.png
+[   0% ] reimport | after_library_1920.png
+[   1% ] reimport | after_pulling.png
+[   1% ] reimport | after_reselected.png
+[   2% ] reimport | after_rest.png
+[   3% ] reimport | after_returned.png
+[   3% ] reimport | after_returning.png
+[   4% ] reimport | after_reversing.png
+[   5% ] reimport | after_selected.png
+[   5% ] reimport | before_library_1280.png
+[   6% ] reimport | before_library_1920.png
+[   7% ] reimport | before_pulling.png
+[   7% ] reimport | before_rest.png
+[   8% ] reimport | before_returned.png
+[   9% ] reimport | before_returning.png
+[   9% ] reimport | before_selected.png
+[  10% ] reimport | baigong20261107-alchemy-1280.png
+[  11% ] reimport | baigong20261107-alchemy-1920.png
+[  11% ] reimport | before_after_eye_hair_native_1x_light.png
+[  12% ] reimport | before_after_reported_scale_dark.png
+[  13% ] reimport | before_after_reported_scale_light.png
+[  13% ] reimport | before_after_selected_hair04_dark.png
+[  14% ] reimport | before_after_selected_hair04_light.png
+[  15% ] reimport | candidate_isolated_dark_6x.png
+[  15% ] reimport | candidate_isolated_light_6x.png
+[  16% ] reimport | native_v1_light_6x.png
+[  17% ] reimport | native_v3_left_pupil4x.png
+[  17% ] reimport | native_v3_right_pupil4x.png
+[  18% ] reimport | old_eyes_light_6x.png
+[  19% ] reimport | old_left_grid16x.png
+[  19% ] reimport | eyes_balance_v1.png
+[  20% ] reimport | eyes_balance_v2.png
+[  21% ] reimport | eyes_balance_v3.png
+[  21% ] reimport | eyes_balance_v4.png
+[  22% ] reimport | eyes_balance_v5.png
+[  23% ] reimport | eyes_balance_v6.png
+[  23% ] reimport | eyes_edit_context_4x.png
+[  24% ] reimport | forge-fire-painted-forming.png
+[  25% ] reimport | forge-fire-painted-playing.png
+[  25% ] reimport | forge-fire-painted-ready.png
+[  26% ] reimport | forge-fire-playing.png
+[  27% ] reimport | forge-fire-ready.png
+[  27% ] reimport | forge-fire-sidebar.png
+[  28% ] reimport | ui-materials-dark-1920.png
+[  29% ] reimport | shop_native_1280_20261107.png
+[  29% ] reimport | shop_native_four_columns_20261107.png
+[  30% ] reimport | shop_native_rail_before_arrow_20261107.png
+[  31% ] reimport | shop_native_rail_end_20261107.png
+[  31% ] reimport | buttons_atlas.png
+[  32% ] reimport | grid_parts_atlas.png
+[  33% ] reimport | resources_atlas.png
+[  33% ] reimport | source_panel.png
+[  34% ] reimport | tooltip_panel.png
+[  35% ] reimport | flame_amber_loop_2x2_v1.png
+[  35% ] reimport | hearth_empty_v1.png
+[  36% ] reimport | workshop_unlit_v1.png
+[  37% ] reimport | baigong20261107-forging-1280.png
+[  37% ] reimport | baigong20261107-forging-1920.png
+[  38% ] reimport | baigong20261107-picker-1280.png
+[  39% ] reimport | baigong20261107-recipes-1280.png
+[  39% ] reimport | baigong20261107-recipes-1920.png
+[  40% ] reimport | baigong20261107-records-1280.png
+[  41% ] reimport | baigong20261107-records-1920.png
+[  41% ] reimport | facility-entrance-20261107-alchemy-active-1920.png
+[  42% ] reimport | facility-entrance-20261107-alchemy-new-1280.png
+[  43% ] reimport | facility-entrance-20261107-alchemy-new-1920.png
+[  43% ] reimport | facility-entrance-20261107-confirm-1280.png
+[  44% ] reimport | facility-entrance-20261107-first.png
+[  45% ] reimport | facility-entrance-20261107-forging-active-1920.png
+[  45% ] reimport | facility-entrance-20261107-forging-new-1280.png
+[  46% ] reimport | facility-entrance-20261107-forging-new-1920.png
+[  47% ] reimport | forge-fire-choice.png
+[  47% ] reimport | forge-fire-done.png
+[  48% ] reimport | forge-fire-narrow.png
+[  49% ] reimport | forge-fire-painted-done.png
+[  49% ] reimport | 侧页_修正前_放大.png
+[  50% ] reimport | 侧页_修正后_1280.png
+[  50% ] reimport | 侧页_修正后_1920.png
+[  51% ] reimport | 侧页_修正后_放大.png
+[  52% ] reimport | 侧页_归位途中.png
+[  52% ] reimport | 天工峰_丹房_1280.png
+[  53% ] reimport | 天工峰_丹房_1920.png
+[  54% ] reimport | 天工峰_器作_1280.png
+[  54% ] reimport | 天工峰_器作_1920.png
+[  55% ] reimport | 百工_丹方_1280.png
+[  56% ] reimport | 百工_丹方_1920.png
+[  56% ] reimport | 百工_炼器存录_1280.png
+[  57% ] reimport | 百工_炼器存录_1920.png
+[  58% ] reimport | 选材弹窗_1280.png
+[  58% ] reimport | 田地改造子页_理想图_v1.png
+[  59% ] reimport | 07_善功堂去装备与滑轨_20261107.png
+[  60% ] reimport | 08_善功堂滑轨末端_20261107.png
+[  60% ] reimport | 09_善功堂1280_20261107.png
+[  61% ] reimport | 正式场景_扫盘战斗.png
+[  62% ] reimport | 正式场景_查看战场.png
+[  62% ] reimport | 正式场景_配招_1280.png
+[  63% ] reimport | 正式场景_配招_1672.png
+[  64% ] reimport | 丹房_租期内_1920.png
+[  64% ] reimport | 丹房_租用入口_1280.png
+[  65% ] reimport | 丹房_租用入口_1920.png
+[  66% ] reimport | 共用入口框架.png
+[  66% ] reimport | 器作_租期内_1920.png
+[  67% ] reimport | 器作_租用入口_1280.png
+[  68% ] reimport | 器作_租用入口_1920.png
+[  68% ] reimport | 租用确认_1280.png
+[  69% ] reimport | 01_炉台旁入口.png
+[  70% ] reimport | 02_自带火种选择.png
+[  70% ] reimport | 03_演出收起界面.png
+[  71% ] reimport | 04_收火成器.png
+[  72% ] reimport | 05_火源常驻侧栏.png
+[  72% ] reimport | 06_窄窗堆叠.png
+[  73% ] reimport | 侧页_中途反向.png
+[  74% ] reimport | 01_原生行囊旋转拖动.png
+[  74% ] reimport | 02_原生行囊空间与清册.png
+[  75% ] reimport | 03_原生行囊1280.png
+[  76% ] reimport | 01_领取收纳_1920.png
+[  76% ] reimport | 02_领取收纳_完整.png
+[  77% ] reimport | 03_领取收纳_1280.png
+[  78% ] reimport | 04_领取收纳_拖动预览.png
+[  78% ] reimport | 04_领取收纳_旋转.png
+[  79% ] reimport | 05_领取_移出后可拖回.png
+[  80% ] reimport | 04.png
+[  80% ] reimport | new_male_eyes04.png
+[  81% ] reimport | new_male_eyes04_before_matte_v3.png
+[  82% ] reimport | new_male_eyes04_before_matte_v4.png
+[  82% ] reimport | new_male_eyes04_before_matte_v5.png
+[  83% ] reimport | new_male_eyes04_before_matte_v6.png
+[  84% ] reimport | reported_eye_crop.png
+[  84% ] reimport | before_after_eye_hair_comparison_dark.png
+[  85% ] reimport | before_after_eye_hair_comparison_light.png
+[  86% ] reimport | before_after_eye_hair_native_1x_dark.png
+[  86% ] reimport | 01_行囊尺度1920.png
+[  87% ] reimport | 02_戒指矩形收纳1920.png
+[  88% ] reimport | 03_戒指矩形收纳1280.png
+[  88% ] reimport | 04_行囊尺度1280.png
+[  89% ] reimport | 05_整屏戒指1920.png
+[  90% ] reimport | 06_整屏戒指1280.png
+[  90% ] reimport | 07_戒指暗罩1920.png
+[  91% ] reimport | 08_戒指暗罩1280.png
+[  92% ] reimport | 01_原生行囊旋转拖动.png
+[  92% ] reimport | 02_原生行囊空间与清册.png
+[  93% ] reimport | 03_原生行囊1280.png
+[  94% ] reimport | 01_行囊尺度1920.png
+[  94% ] reimport | 02_戒指矩形收纳1920.png
+[  95% ] reimport | 03_戒指矩形收纳1280.png
+[  96% ] reimport | 04_行囊尺度1280.png
+[  96% ] reimport | 05_整屏戒指1920.png
+[  97% ] reimport | 06_整屏戒指1280.png
+[  98% ] reimport | 07_戒指暗罩1920.png
+[  98% ] reimport | 08_戒指暗罩1280.png
+[  99% ] reimport | 正在结束资产导入……
+[ DONE ] reimport
+
+[   0% ] reimport | Started 正在导入或重新导入资产 (150 steps)
+[   0% ] reimport | 正在执行重新导入的后置操作……
+[ DONE ] reimport
+
+[   0% ] loading_editor_layout | Started 正在加载编辑器 (5 steps)
+[   0% ] loading_editor_layout | 正在加载编辑器布局……
+[  16% ] loading_editor_layout | 正在加载停靠面板……
+[  33% ] loading_editor_layout | 正在重新打开场景……
+[  50% ] loading_editor_layout | 正在加载中央编辑器布局……
+[  66% ] loading_editor_layout | 正在加载插件窗口布局……
+[  83% ] loading_editor_layout | 编辑器布局就绪。
+[ DONE ] loading_editor_layout
+
+Godot MCP: Bridge stopped

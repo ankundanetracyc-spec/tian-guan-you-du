@@ -1,0 +1,100 @@
+{
+  "schema": "male-frozen-connected-beard-geometry-alternative/v1",
+  "source": "source/frozen/male/face_accessory/06.png",
+  "source_sha256": "c3bc9bd6eb602c064e498dcd1e881a83296f5cb7c03b2bf3fe2923a97086a3e3",
+  "candidate": "male/face_accessory/06.png",
+  "candidate_sha256": "aaceb8ef949f763fb58b8a0fe5c58e86954f52e072a8762dccaa00b29db41b5b",
+  "not_current06_production_candidate_yet": false,
+  "source_upper_center": [
+    517.4755369032257,
+    466.88869134123547
+  ],
+  "transform": {
+    "a": 0.9498553103985716,
+    "b": 0.016579786115419336,
+    "tx": 29.214027913264736,
+    "ty": 16.832354783906055,
+    "scale": 0.95,
+    "rotation_deg": 1.0
+  },
+  "upper_after": {
+    "ink_centroid": [
+      512.3644432380382,
+      468.87425278052046
+    ],
+    "ink_endpoint_left_right": [
+      [
+        466.2389987566566,
+        477.65752457362703
+      ],
+      [
+        558.8625874737395,
+        477.6913275358165
+      ]
+    ],
+    "endpoint_midpoint_x": 512.5507931151981,
+    "lower15pct_center": [
+      514.3925143084439,
+      477.3267001745701
+    ],
+    "ink_quantiles_x_1_99": [
+      466.0,
+      559.0
+    ],
+    "ink_quantiles_y_1_99": [
+      451.0,
+      481.0
+    ],
+    "roi_half_open": [
+      458,
+      449,
+      572,
+      491
+    ],
+    "pigment_weight_sum": 35029.64967320261
+  },
+  "lower_after": {
+    "ink_centroid": [
+      511.0194509448508,
+      523.8993989438991
+    ],
+    "ink_endpoint_left_right": [
+      [
+        449.0230825954132,
+        493.4994515947129
+      ],
+      [
+        580.7669714048216,
+        493.84021637398587
+      ]
+    ],
+    "endpoint_midpoint_x": 514.8950270001174,
+    "lower15pct_center": [
+      513.6952859918686,
+      539.9830563776943
+    ],
+    "ink_quantiles_x_1_99": [
+      449.0,
+      581.0
+    ],
+    "ink_quantiles_y_1_99": [
+      492.0,
+      543.0
+    ],
+    "roi_half_open": [
+      421,
+      491,
+      606,
+      585
+    ],
+    "pigment_weight_sum": 55581.68758169935
+  },
+  "outside_face_alpha128_y435_545_alpha64": 35,
+  "one_pass_premultiplied_alpha_similarity": true,
+  "alpha_density_adjustment": false,
+  "RGB_repainting": false,
+  "local_warps": false,
+  "selection_basis": "Search s.90..1,rotation0..1.2deg,upper vertical shift0..4px with chin lower15%y540..544,upper ends<=477.5,chin x513..514. Chosen.95/1deg/+2 keeps original beard style and tail contact while reducing side spill. Never clips or erases any stroke.",
+  "selected_final_from_frozen_old_layer": true,
+  "selection": "root selected after independent portrait_audit acceptance; two generated density variants rejected"
+}

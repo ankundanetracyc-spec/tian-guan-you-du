@@ -1,0 +1,366 @@
+{
+  "schema": "male-face-whole-pair-registration/v1",
+  "scope": "Only generated eye/brow layers; active PNG/configuration unchanged",
+  "records": [
+    {
+      "part": "eyes",
+      "index": 1,
+      "native": "native/eyes01.png",
+      "placeholder": false,
+      "control_names": [
+        "left_dark_pupil_kernel",
+        "right_dark_pupil_kernel"
+      ],
+      "native_points": [
+        [
+          462.37457085149174,
+          363.8107146440522
+        ],
+        [
+          568.332395699375,
+          362.92774171188285
+        ]
+      ],
+      "target_points": [
+        [
+          460.29022593929454,
+          364.41249929350045
+        ],
+        [
+          566.7097740607055,
+          364.41249929350045
+        ]
+      ],
+      "note": "Target pair keeps current measured pupil distance and average vertical position, centered at513 and horizontal; native iris/fissure/corners still require visual QA before staging.",
+      "final_common_frame_adjustment": [
+        0.5,
+        0
+      ],
+      "final_adjustment_basis": "Actual staged semantic/probe pupil midpoint512.6227 and visible outer tip midpoint511.5; whole pair moves0.5px right to common face tolerance, no shape/scale change.",
+      "native_sha256": "741176236e25bd61b3633f5630d72d82680e1741d51da147b46b257ff0a2d55a",
+      "native_size": [
+        1024,
+        1536
+      ],
+      "candidate": "male/eyes/01.png",
+      "sha256": "98026ce638f1c880ec3bb1c6e690ad7b15c0184b77a24561cef180dec746d642",
+      "native_to_frame": {
+        "a": 1.0042878729401317,
+        "b": 0.008368980858048047,
+        "tx": -1.0222234159476185,
+        "ty": -4.827793401908103,
+        "scale": 1.0043227427352308,
+        "rotation_deg": 0.47744894257242343
+      },
+      "control_residuals_px": [
+        2.8421709430404007e-13,
+        4.687428401686771e-13
+      ],
+      "maximum_control_residual_px": 4.687428401686771e-13,
+      "one_pass_premultiplied_alpha_bilinear_sampling": true,
+      "local_warps": false,
+      "source_RGB_paste": false
+    },
+    {
+      "part": "eyes",
+      "index": 4,
+      "native": "native/eyes04_v3.png",
+      "placeholder": false,
+      "control_names": [
+        "left_dark_pupil_kernel",
+        "right_dark_pupil_kernel"
+      ],
+      "native_points": [
+        [
+          461.69748806761555,
+          362.8661974938316
+        ],
+        [
+          567.3675218212155,
+          362.45579560514614
+        ]
+      ],
+      "target_points": [
+        [
+          460.4704283760824,
+          363.27045313240114
+        ],
+        [
+          565.5295716239176,
+          363.27045313240114
+        ]
+      ],
+      "note": "Target pair keeps current measured pupil distance and average vertical position, centered at513 and horizontal; native iris/fissure/corners still require visual QA before staging.",
+      "native_control_method": "MeanRGB dark kernel100 times alpha in fixed small source ROIs [453,358,475,374]/[557,358,581,374]. Final semantic/probe measurements are independent and mandatory.",
+      "native_sha256": "6ec9b3c56fa167be2628ce522519554f42ce1631994739adfec7e8c8620cc503",
+      "native_size": [
+        1024,
+        1536
+      ],
+      "candidate": "male/eyes/04.png",
+      "sha256": "cf1e14f61b5ac2904cddcaad14eb38d3da6328673fa3e90a019e1e7629b99f05",
+      "native_to_frame": {
+        "a": 0.9803200194921576,
+        "b": 0.003807372565567211,
+        "tx": 9.974270252405995,
+        "ty": 5.850158989129224,
+        "scale": 0.9803274130120799,
+        "rotation_deg": 0.22252456124242243,
+        "scope": "geometric composition for LEFT origin only; right reflected around513"
+      },
+      "control_residuals_px": [
+        3.8131724593878115e-13,
+        3.595093471822542e-13
+      ],
+      "maximum_control_residual_px": 3.8131724593878115e-13,
+      "one_pass_premultiplied_alpha_bilinear_sampling": false,
+      "local_warps": false,
+      "source_RGB_paste": false,
+      "registered_before_edge_sha256": "7d6037cdd3278308513dbb4519b2085c43ef4affeb3cc20839de6a34e91bd77d",
+      "edge_cleanup": {
+        "report": "source/eye04_edge_cleanup.json",
+        "source_registered_SHA256": "7d6037cdd3278308513dbb4519b2085c43ef4affeb3cc20839de6a34e91bd77d",
+        "RGB_changed_pixels": 0,
+        "protected_core_RGBA_changed_pixels": 0,
+        "Alpha_increased_pixels": 0,
+        "independent_guard": "qa/eye04_edge_independent_guard.json"
+      },
+      "left_origin_initial_native_to_frame": {
+        "a": 0.9942038895352306,
+        "b": 0.0038612948203970987,
+        "tx": 2.8501233194937097,
+        "ty": 0.7247180839086522,
+        "scale": 0.9942113877665408,
+        "rotation_deg": 0.22252456124242243
+      },
+      "before_pairing_sha256": "400303fd0da9bdd76834a11a82e9da20c8006ea681cc507e2dd2504a61baad83",
+      "whole_eye_pairing": {
+        "report": "source/eye04_paired_geometry.json",
+        "origin": "whole-eye source-generated-left mechanical reflection",
+        "source_RGBA_SHA256": "400303fd0da9bdd76834a11a82e9da20c8006ea681cc507e2dd2504a61baad83",
+        "independent_right_eye_paint_used": false,
+        "single_eye_nonuniform_scale": false,
+        "color_repainting": false,
+        "right_mapping": "x_right=1026-x_left; complete RGBA including sclera/catchlight"
+      },
+      "sampling_stage_note": "Native registration once, Alpha-only matte cleanup, then one common-scale sample of complete generated left and exact right reflection. Do not claim one original-native sampling for final04."
+    },
+    {
+      "part": "eyes",
+      "index": 5,
+      "native": "native/eyes05_v2.png",
+      "placeholder": false,
+      "control_names": [
+        "left_dark_pupil_kernel",
+        "right_dark_pupil_kernel"
+      ],
+      "native_points": [
+        [
+          462.69078441139635,
+          363.087629901993
+        ],
+        [
+          566.9169027539034,
+          363.5966997554347
+        ]
+      ],
+      "target_points": [
+        [
+          460.5573281398251,
+          363.81511394960296
+        ],
+        [
+          565.4426718601749,
+          363.81511394960296
+        ]
+      ],
+      "note": "Target pair keeps current measured pupil distance and average vertical position, centered at513 and horizontal; native iris/fissure/corners still require visual QA before staging.",
+      "native_sha256": "66d6d0279759685791d03284387ac84192c10b8fa1dc3122886fe32226ca6244",
+      "native_size": [
+        1024,
+        1536
+      ],
+      "candidate": "male/eyes/05.png",
+      "sha256": "a69e053c0f0af4be64b10a157c0f076aede96ab44ccc0915665f74c50a2560da",
+      "native_to_frame": {
+        "a": 1.0063009472111468,
+        "b": -0.004915058565565289,
+        "tx": -6.833443444631923,
+        "ty": 0.7138403617069369,
+        "scale": 1.0063129504079504,
+        "rotation_deg": -0.2798465740083571
+      },
+      "control_residuals_px": [
+        5.598427493280328e-13,
+        6.252776074688882e-13
+      ],
+      "maximum_control_residual_px": 6.252776074688882e-13,
+      "one_pass_premultiplied_alpha_bilinear_sampling": true,
+      "local_warps": false,
+      "source_RGB_paste": false
+    },
+    {
+      "part": "eyebrows",
+      "index": 1,
+      "native": "native/brows01.png",
+      "placeholder": false,
+      "control_names": [
+        "left_outer_tail",
+        "right_outer_tail"
+      ],
+      "native_points": [
+        [
+          421.1065465323058,
+          346.87348429164194
+        ],
+        [
+          602.7629213310686,
+          345.8640535783722
+        ]
+      ],
+      "target_points": [
+        [
+          424.15871026985127,
+          342.96089475352926
+        ],
+        [
+          601.8412897301487,
+          342.96089475352926
+        ]
+      ],
+      "note": "Whole generated pair preserves old overall tail-to-tail ink span; center513 and level tails at old average height. Repaired internal head/arch shape retained.",
+      "native_sha256": "4508ac490c685d07bc3b90e929b3f17bcf376b74795d4d9c77dd7608f530c82d",
+      "native_size": [
+        1024,
+        1536
+      ],
+      "candidate": "male/eyebrows/01.png",
+      "sha256": "0b81852f026929d204972a43f9c0e88f9b15396e02941342fb761a615795f3cf",
+      "native_to_frame": {
+        "a": 0.9780944561469368,
+        "b": 0.005435089110449098,
+        "tx": 14.16201995659837,
+        "ty": 1.3971111781054075,
+        "scale": 0.9781095569203946,
+        "rotation_deg": 0.3183787211697334
+      },
+      "control_residuals_px": [
+        8.676771314227237e-13,
+        1.9301668142304205e-12
+      ],
+      "maximum_control_residual_px": 1.9301668142304205e-12,
+      "one_pass_premultiplied_alpha_bilinear_sampling": true,
+      "local_warps": false,
+      "source_RGB_paste": false
+    },
+    {
+      "part": "eyebrows",
+      "index": 4,
+      "native": "native/brows04.png",
+      "placeholder": false,
+      "control_names": [
+        "left_outer_tail",
+        "right_outer_tail"
+      ],
+      "native_points": [
+        [
+          419.1186524935216,
+          340.81706330318895
+        ],
+        [
+          603.8319541715922,
+          340.5373516523155
+        ]
+      ],
+      "target_points": [
+        [
+          421.16906541183556,
+          340.5349645664778
+        ],
+        [
+          604.8309345881644,
+          340.5349645664778
+        ]
+      ],
+      "note": "Whole generated pair preserves old overall tail-to-tail ink span; center513 and level tails at old average height. Repaired internal head/arch shape retained.",
+      "native_sha256": "cf50dffd3330ab61cb992eb43a0f471bb05a85e3dcbd0b0aedee9af4da7385f8",
+      "native_size": [
+        1024,
+        1536
+      ],
+      "candidate": "male/eyebrows/04.png",
+      "sha256": "530d5cf4e2fb3094269b6493ca7e9c552c30d27de5fe389a3a2012440adfcccf",
+      "native_to_frame": {
+        "a": 0.9943054796380407,
+        "b": 0.0015056783927045458,
+        "tx": 4.950253507095956,
+        "ty": 1.0276330709326127,
+        "scale": 0.9943066196629974,
+        "rotation_deg": 0.08676302507764157
+      },
+      "control_residuals_px": [
+        5.240704272917405e-13,
+        7.731540852509763e-13
+      ],
+      "maximum_control_residual_px": 7.731540852509763e-13,
+      "one_pass_premultiplied_alpha_bilinear_sampling": true,
+      "local_warps": false,
+      "source_RGB_paste": false
+    },
+    {
+      "part": "eyebrows",
+      "index": 5,
+      "native": "native/brows05.png",
+      "placeholder": false,
+      "control_names": [
+        "left_outer_tail",
+        "right_outer_tail"
+      ],
+      "native_points": [
+        [
+          432.07503918713104,
+          338.1117264015653
+        ],
+        [
+          593.7945478758587,
+          338.43450836515655
+        ]
+      ],
+      "target_points": [
+        [
+          426.49244960283715,
+          339.20514442457784
+        ],
+        [
+          599.5075503971628,
+          339.20514442457784
+        ]
+      ],
+      "note": "Whole generated pair preserves old overall tail-to-tail ink span; center513 and level tails at old average height. Repaired internal head/arch shape retained.",
+      "native_sha256": "639ffe97b8ad9bf6b1e211f9c2fabd4282a56f3d37af1db17314fc15740791fd",
+      "native_size": [
+        1024,
+        1536
+      ],
+      "candidate": "male/eyebrows/05.png",
+      "sha256": "a8ef833cc1bfaadb9c0ee55f5c27806adfae05991216162d21a8ae6f492b6ef4",
+      "native_to_frame": {
+        "a": 1.0698425499091215,
+        "b": -0.0021353384127422714,
+        "tx": -36.48179503038732,
+        "ty": -21.59854067468829,
+        "scale": 1.069844680907555,
+        "rotation_deg": -0.11435861887091839
+      },
+      "control_residuals_px": [
+        4.914244242752599e-12,
+        4.0370834777979105e-12
+      ],
+      "maximum_control_residual_px": 4.914244242752599e-12,
+      "one_pass_premultiplied_alpha_bilinear_sampling": true,
+      "local_warps": false,
+      "source_RGB_paste": false
+    }
+  ],
+  "baseline_preserved": true
+}

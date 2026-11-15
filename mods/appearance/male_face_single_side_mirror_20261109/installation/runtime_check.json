@@ -1,0 +1,268 @@
+{
+  "active_choice_count": 60,
+  "active_png_count": 67,
+  "aesthetic_status": "Not determined by this fixture. Exact full-RGBA reflection is reported only as a geometric fact. It does not approve expression, catchlight direction or style. Actual normal-scale whole-face images require user review.",
+  "bald_combinations_captured": 9,
+  "captures": [
+    "game_mirror_bald_b01_e01_composite.png",
+    "game_mirror_bald_b01_e01_viewport.png",
+    "game_mirror_bald_b01_e04_composite.png",
+    "game_mirror_bald_b01_e04_viewport.png",
+    "game_mirror_bald_b01_e05_composite.png",
+    "game_mirror_bald_b01_e05_viewport.png",
+    "game_mirror_bald_b04_e01_composite.png",
+    "game_mirror_bald_b04_e01_viewport.png",
+    "game_mirror_bald_b04_e04_composite.png",
+    "game_mirror_bald_b04_e04_viewport.png",
+    "game_mirror_bald_b04_e05_composite.png",
+    "game_mirror_bald_b04_e05_viewport.png",
+    "game_mirror_bald_b05_e01_composite.png",
+    "game_mirror_bald_b05_e01_viewport.png",
+    "game_mirror_bald_b05_e04_composite.png",
+    "game_mirror_bald_b05_e04_viewport.png",
+    "game_mirror_bald_b05_e05_composite.png",
+    "game_mirror_bald_b05_e05_viewport.png",
+    "game_mirror_whole_01_composite.png",
+    "game_mirror_whole_01_viewport.png",
+    "game_mirror_whole_04_composite.png",
+    "game_mirror_whole_04_viewport.png",
+    "game_mirror_whole_04_face_1x.png",
+    "game_mirror_whole_05_composite.png",
+    "game_mirror_whole_05_viewport.png",
+    "renderer_mirror_whole_01_viewport.png",
+    "renderer_mirror_whole_04_viewport.png",
+    "renderer_mirror_whole_05_viewport.png"
+  ],
+  "checks": 335,
+  "failures": [],
+  "imported_textures": [
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 1154,
+      "file": "male/eyebrows/01.png",
+      "low_alpha_rgb_different_pixels": 1870,
+      "note": "Existing fix_alpha_border may change low-alpha edge RGB. This check is import integrity, not an aesthetic or symmetry result."
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 802,
+      "file": "male/eyebrows/04.png",
+      "low_alpha_rgb_different_pixels": 1742,
+      "note": "Existing fix_alpha_border may change low-alpha edge RGB. This check is import integrity, not an aesthetic or symmetry result."
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 1192,
+      "file": "male/eyebrows/05.png",
+      "low_alpha_rgb_different_pixels": 1754,
+      "note": "Existing fix_alpha_border may change low-alpha edge RGB. This check is import integrity, not an aesthetic or symmetry result."
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 1280,
+      "file": "male/eyes/01.png",
+      "low_alpha_rgb_different_pixels": 1504,
+      "note": "Existing fix_alpha_border may change low-alpha edge RGB. This check is import integrity, not an aesthetic or symmetry result."
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 1546,
+      "file": "male/eyes/04.png",
+      "low_alpha_rgb_different_pixels": 1640,
+      "note": "Existing fix_alpha_border may change low-alpha edge RGB. This check is import integrity, not an aesthetic or symmetry result."
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 1368,
+      "file": "male/eyes/05.png",
+      "low_alpha_rgb_different_pixels": 1522,
+      "note": "Existing fix_alpha_border may change low-alpha edge RGB. This check is import integrity, not an aesthetic or symmetry result."
+    }
+  ],
+  "matching_whole_portraits_captured": 3,
+  "mirror_geometry": [
+    {
+      "axis_x": 513,
+      "candidate_unmappable_visible_pixels": 0,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "different_RGBA_channels": 0,
+      "different_RGBA_pixels": 0,
+      "file": "male/eyes/01.png",
+      "mapping": "x_reflected=1026-x",
+      "note": "Exact discrete mapping and source-pixel identity are geometric facts. Catchlight/sclera lighting are reflected with the selected eye and require normal whole-face review.",
+      "pixels_compared": 1568256,
+      "side": "left",
+      "source_center_column_RGBA_unchanged": true,
+      "source_half_RGBA_unchanged": true,
+      "source_unmappable_visible_pixels": 0,
+      "valid_domain_x_inclusive": [
+        3,
+        1023
+      ]
+    },
+    {
+      "axis_x": 513,
+      "candidate_unmappable_visible_pixels": 0,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "different_RGBA_channels": 0,
+      "different_RGBA_pixels": 0,
+      "file": "male/eyebrows/01.png",
+      "mapping": "x_reflected=1026-x",
+      "note": "Exact discrete mapping and source-pixel identity are geometric facts. Catchlight/sclera lighting are reflected with the selected eye and require normal whole-face review.",
+      "pixels_compared": 1568256,
+      "side": "right",
+      "source_center_column_RGBA_unchanged": true,
+      "source_half_RGBA_unchanged": true,
+      "source_unmappable_visible_pixels": 0,
+      "valid_domain_x_inclusive": [
+        3,
+        1023
+      ]
+    },
+    {
+      "axis_x": 513,
+      "candidate_unmappable_visible_pixels": 0,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "different_RGBA_channels": 0,
+      "different_RGBA_pixels": 0,
+      "file": "male/eyes/04.png",
+      "mapping": "x_reflected=1026-x",
+      "note": "Exact discrete mapping and source-pixel identity are geometric facts. Catchlight/sclera lighting are reflected with the selected eye and require normal whole-face review.",
+      "pixels_compared": 1568256,
+      "side": "left",
+      "source_center_column_RGBA_unchanged": true,
+      "source_half_RGBA_unchanged": true,
+      "source_unmappable_visible_pixels": 0,
+      "valid_domain_x_inclusive": [
+        3,
+        1023
+      ]
+    },
+    {
+      "axis_x": 513,
+      "candidate_unmappable_visible_pixels": 0,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "different_RGBA_channels": 0,
+      "different_RGBA_pixels": 0,
+      "file": "male/eyebrows/04.png",
+      "mapping": "x_reflected=1026-x",
+      "note": "Exact discrete mapping and source-pixel identity are geometric facts. Catchlight/sclera lighting are reflected with the selected eye and require normal whole-face review.",
+      "pixels_compared": 1568256,
+      "side": "right",
+      "source_center_column_RGBA_unchanged": true,
+      "source_half_RGBA_unchanged": true,
+      "source_unmappable_visible_pixels": 0,
+      "valid_domain_x_inclusive": [
+        3,
+        1023
+      ]
+    },
+    {
+      "axis_x": 513,
+      "candidate_unmappable_visible_pixels": 0,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "different_RGBA_channels": 0,
+      "different_RGBA_pixels": 0,
+      "file": "male/eyes/05.png",
+      "mapping": "x_reflected=1026-x",
+      "note": "Exact discrete mapping and source-pixel identity are geometric facts. Catchlight/sclera lighting are reflected with the selected eye and require normal whole-face review.",
+      "pixels_compared": 1568256,
+      "side": "left",
+      "source_center_column_RGBA_unchanged": true,
+      "source_half_RGBA_unchanged": true,
+      "source_unmappable_visible_pixels": 0,
+      "valid_domain_x_inclusive": [
+        3,
+        1023
+      ]
+    },
+    {
+      "axis_x": 513,
+      "candidate_unmappable_visible_pixels": 0,
+      "canvas": [
+        1024,
+        1536
+      ],
+      "different_RGBA_channels": 0,
+      "different_RGBA_pixels": 0,
+      "file": "male/eyebrows/05.png",
+      "mapping": "x_reflected=1026-x",
+      "note": "Exact discrete mapping and source-pixel identity are geometric facts. Catchlight/sclera lighting are reflected with the selected eye and require normal whole-face review.",
+      "pixels_compared": 1568256,
+      "side": "right",
+      "source_center_column_RGBA_unchanged": true,
+      "source_half_RGBA_unchanged": true,
+      "source_unmappable_visible_pixels": 0,
+      "valid_domain_x_inclusive": [
+        3,
+        1023
+      ]
+    }
+  ],
+  "mirrored_png_count": 6,
+  "pass": true,
+  "production_renderer_cases": 3,
+  "retained_pngs": 61,
+  "schema": "male-single-side-mirror-runtime/v1",
+  "scope": "Six selected natural eye/brow layers mirrored by exact integer RGBA index mapping aboutx513. Existing IDs/config and other61 PNGs preserved. Actual9bald mixes/3matching whole portraits/04native face crop plus3formal renderer loading cases. No editor/save workflow rerun; no user data writes.",
+  "selected_records": [
+    {
+      "active": "res://mods/appearance/ink_three_variants_20261004/male/eyebrows/01.png",
+      "candidate": "res://mods/appearance/male_face_single_side_mirror_20261109/male/eyebrows/01.png",
+      "file": "male/eyebrows/01.png",
+      "sha256": "f4365b286f42047d44e56c2badbf81b86e692265454fc592c4cfecfaf2b0da21"
+    },
+    {
+      "active": "res://mods/appearance/ink_three_variants_20261004/male/eyebrows/04.png",
+      "candidate": "res://mods/appearance/male_face_single_side_mirror_20261109/male/eyebrows/04.png",
+      "file": "male/eyebrows/04.png",
+      "sha256": "5368a16c57d87a4721d9fbe6cf34f93d6a49e5a92f12d275b5ce932edc50c253"
+    },
+    {
+      "active": "res://mods/appearance/ink_three_variants_20261004/male/eyebrows/05.png",
+      "candidate": "res://mods/appearance/male_face_single_side_mirror_20261109/male/eyebrows/05.png",
+      "file": "male/eyebrows/05.png",
+      "sha256": "275706c928aa7afdbf814f7c80d21207751b96298310a2c33deda571aaed9176"
+    },
+    {
+      "active": "res://mods/appearance/ink_three_variants_20261004/male/eyes/01.png",
+      "candidate": "res://mods/appearance/male_face_single_side_mirror_20261109/male/eyes/01.png",
+      "file": "male/eyes/01.png",
+      "sha256": "71db127336c39993586392884e67968aa4e82f7cd36285e99506b5efa3a5e26b"
+    },
+    {
+      "active": "res://mods/appearance/ink_three_variants_20261004/male/eyes/04.png",
+      "candidate": "res://mods/appearance/male_face_single_side_mirror_20261109/male/eyes/04.png",
+      "file": "male/eyes/04.png",
+      "sha256": "390f8b8f63bf61405a8a7395b5abddb0f58269859eaa4de5e97b1d100a982291"
+    },
+    {
+      "active": "res://mods/appearance/ink_three_variants_20261004/male/eyes/05.png",
+      "candidate": "res://mods/appearance/male_face_single_side_mirror_20261109/male/eyes/05.png",
+      "file": "male/eyes/05.png",
+      "sha256": "17ba50881bfee9a9dea2de495a581f1123fea9352b7b8bb8e6a979cc7086ccf1"
+    }
+  ],
+  "user_preset_unchanged": true
+}

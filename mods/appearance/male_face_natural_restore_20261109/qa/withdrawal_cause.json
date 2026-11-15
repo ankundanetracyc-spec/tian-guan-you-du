@@ -1,0 +1,18 @@
+{
+  "status": "previous_redrawn_eye_and_brow_visual_approval_withdrawn",
+  "trigger": "User rejected the installed before/after comparison as visually unnatural.",
+  "visible_failures": [
+    "Eye04 lost fine eyelid and iris detail and developed heavy dark contours.",
+    "Mirrored light and ink structure made the expression rigid despite equal geometry.",
+    "Other two eyes and all three brows changed original brushwork, density or expression."
+  ],
+  "source_findings": {
+    "eye04": "Original left eye was interpolated to form a guide; image generation changed its brushwork; native output was bilinearly registered and then sampled once more before exact reflection.",
+    "other_five": "Regenerated native outputs were each registered with one bilinear sample; the native brushwork was already different.",
+    "runtime": "Actual compositor retains1024x1536 and uses zero-offset BlendRect; no extra PNG downsize caused this loss.",
+    "diagnostic_limits": "High-frequency comparisons locate softness in the chain; changed shape and Alpha prevent treating these numbers as aesthetic scores."
+  },
+  "corrective_action": "Withdraw six redraws and restore approved frozen original RGBA by exact integer whole-pair horizontal translation, with no interpolation, generation, reflection, scaling or rotation.",
+  "remaining_work": "Original local left/right eye and brow shape differences are retained; restoration must not be described as complete symmetry correction.",
+  "process_correction": "A geometry or runtime pass cannot approve brushwork, expression or clarity. Review normal-size rendered faces against the original before installation; reject any visual regression."
+}

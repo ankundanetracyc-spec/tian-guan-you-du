@@ -1,0 +1,133 @@
+{
+  "schema": "male-eye-balance-correction/v2",
+  "mode": "built-in image_gen",
+  "task": "User-requested eyes04 natural balance correction",
+  "edit_target": "res://mods/appearance/ink_three_variants_20261004/male/eyes/04.png",
+  "edit_target_sha256": "fd3f04b779e0849bbe9c9cf46fcfa2b5bd6b8fcb8839b2aac5c1d26819acba89",
+  "old_unequal_source_rgb_is_not_hard_target": true,
+  "iterations": [
+    {
+      "revision": 1,
+      "prompt": "Use case: precise-object-edit / identity-preserve. Image1 is the CURRENT PROJECT transparent eye04 layer to correct. Image2 shows exactly how it sits on the actual fixed head without front hair, only as placement/style context.\nPRIMARY EDIT: keep the LEFT eye exactly unchanged. Correct only the RIGHT eye's unnaturally greater opening: lower its UPPER eyelid by roughly2–3 pixels on this original1024x1536 canvas so the exposed right eye opening looks naturally similar to the left eye (left about14–15px high, right currently17–18px). Keep a gentle mature male almond-eye character, with a small natural degree of asymmetry. Do not mirror/clone the left eye, scale the entire right eye, shrink the iris/pupil or change the lower-lid/corner placement merely to fake balance. Make a real careful eyelid painting correction.\nPreserve the original paired pupil CENTERS and eye spacing (approximately left462,365 and right568,365), same iris diameter around20–21px, muted warm gray-brown color, thin original short lashes and delicate upper-lid fold. Iris/pupil must remain natural behind the corrected upper lid, not become a smaller eye floating in the old socket. Right iris is partly crossed by baked-in black vertical FRONT-HAIR STROKES in the current layer: remove those hair marks and restore coherent iris/pupil texture, a normal tiny soft eye highlight, and a clean lid edge. Do not carry over the long black vertical stripe or duplicate highlight streak. No heavy makeup, mascara, dark added liner, childish big eyes or enlarged iris. This is a gentle clean balanced adult male pair.\nReturn ONLY the eyes as a TRUE TRANSPARENT RGBA PNG on the SAME1024x1536 FULL CANVAS and original positions. Huge empty canvas is intentional, do not zoom, recenter or shift the pair. Keep LEFT pixels unchanged whenever possible. Do not include head, eyebrows, nose, background, skin rectangles or flesh tiles, broad gray/white skin backing, hard matte edges, fog/glow, checkerboard, labels or text. Preserve real opaque sclera/iris/pupil inside eye fissures and tiny local eyelid/fold pigment with soft antialias. Surrounding area and gap between the two eyes must be fully transparent. Do not use the old unequal whole portrait as an immutable drawing standard; user explicitly wants the right eye corrected.",
+      "referenced_image_paths": [
+        "E:/stacklands/mods/appearance/ink_three_variants_20261004/male/eyes/04.png",
+        "E:/stacklands/mods/appearance/male_loose_style_install_20261106/qa/features/head_new_brow_eye_existing_nose_mouth_light.png"
+      ],
+      "transparent_background": true,
+      "native": "raw/eyes_balance_v1.png",
+      "generated_original": "E:/tmp/CodexData/generated_images/01a1af95-3f9a-7c71-8060-dddee725d5ad/exec-859803c3-4f4d-4514-89b8-314e832f3005.png",
+      "decision": "Rejected: baked hair removed but right aperture still high and lower rim too dark",
+      "native_sha256": "effeef8e3836e4c9d22acf6b04ea2772c24c67aee264e2b8d6ac6acd90c296a4"
+    },
+    {
+      "revision": 2,
+      "prompt": "Precise editing of image1, the CURRENT transparent male eye04 candidate. Keep exact1024x1536 canvas, paired positions and transparent background. Edit ONLY the RIGHT eye; left eye must be unchanged.\nThe RIGHT eye remains too wide open and its lower contour too dark compared with the LEFT. On this ORIGINAL pixel scale the left central upper eyelid meets the iris aroundy360, lower eye boundary aroundy374–375. The right central upper eyelid currently meets the iris aroundy357–358. LOWER ONLY RIGHT UPPER EYELID another2–3 pixels atx568 to aroundy360 so its natural vertical opening matches the left, while smoothly preserving both right inner/outer corners and the existing lower boundary aroundy374. Keep pupil CENTER around(568,365), iris horizontal diameter20–21 pixels and eye spacing. Do not scale, shrink, rotate or move the entire right eye or pupil. Paint the closed-down upper lid naturally OVER the top of the existing iris; the upper iris becomes more occluded. This is a relaxed narrow mature male almond eye, with the same small opening as the left, no round doll look.\nAlso soften the right lower lid: its current dark brown outer/bottom rim is too thick and outlined. Match the left's light thin warm gray-brown lower-lid stroke and soft pink rim. Keep a tiny natural highlight and coherent iris/pupil without any vertical front-hair marks. Preserve the delicate separate upper-eyelid crease, thin short lashes, color and original gentle adult male style. Do not enlarge or redraw the left eye to match the right.\nOutput only the same transparent eyes layer. No head, eyebrows, skin sheet, gray haze, labels or checkerboard; preserve tiny local lid pigment and genuinely opaque eyes with antialiased edges. No mirroring, no left-to-right cloning. Huge transparent canvas and exact original eye placement are intentional.",
+      "referenced_image_paths": [
+        "E:/stacklands/mods/appearance/male_eye_balance_fix_20261107/candidate/new_male_eyes04.png"
+      ],
+      "input_candidate_revision": "v1 technical assembly at call time; candidate path subsequently replaced",
+      "input_candidate_sha256": "8f3497c4e21c467326fdb7b72fd0e23ad481862da5e1fee079535c4ca34441ba",
+      "transparent_background": true,
+      "native": "raw/eyes_balance_v2.png",
+      "generated_original": "E:/tmp/CodexData/generated_images/01a1af95-3f9a-7c71-8060-dddee725d5ad/exec-ef55d871-c8c0-485f-98b4-f1ba94f7df35.png",
+      "decision": "Rejected: lower rim improved but upper lid change insufficient",
+      "native_sha256": "7afdc6b27dceab347675dbe8355f4078d1054c9104ef2f4b3b03958f731c26d0"
+    },
+    {
+      "revision": 3,
+      "prompt": "Edit this enlarged paired adult male eyes asset. The eye on the RIGHT of the image is visibly too round, open and heavily outlined. Keep the LEFT eye entirely unchanged and use it as the opening/style reference.\nFor the RIGHT eye, paint a visibly LOWER UPPER EYELID so that the top of the iris is occluded and its vertical exposed opening becomes about25% narrower than it currently is. This must be a real eyelid correction: keep the exact same pupil CENTER, iris width, eye width, inner/outer corners and lower eye boundary; do NOT resize the whole eye, shrink the iris, lift the lower lid or mirror the left eye. Make the central upper lid more relaxed and half-lidded, covering the upper iris cap. Match the LEFT eye's narrow, gentle mature male almond opening at normal viewing size, rather than the right's current rounded alert eye.\nThe RIGHT lower lid currently has a thick doubled dark brown outline and a shaded skin bag: simplify it to one very fine pale pink-brown rim comparable with the left. Keep the crisp iris/pupil and tiny highlight, natural warm gray-brown eye color, soft fine brushwork and a separate faint upper-lid fold. No hair strands or black vertical streaks. No extra eyelashes, eyeliner or makeup. Do not make either eye bigger.\nReturn exactly the same paired position and scale on the same1024x512 TRANSPARENT canvas, only eyes with tiny local eyelid pigment. Do not zoom, move, enlarge or recenter. Keep gap and surrounding space clear alpha0. No skin tiles, backing, fog, glow, head, labels or checkerboard. Natural balanced relaxed eyes, not mirrored clones.",
+      "referenced_image_paths": [
+        "E:/stacklands/mods/appearance/male_eye_balance_fix_20261107/raw/eyes_edit_context_4x.png"
+      ],
+      "input_technical_context": {
+        "revision2_candidate_sha256": "f937d602766c899ab13b6ff98e386e038d20b1f2fef55f1a5b0fba9c2ee0bf53",
+        "crop_xywh": [
+          410,
+          345,
+          205,
+          45
+        ],
+        "uniform_scale": 4,
+        "placement_xy": [
+          102,
+          166
+        ],
+        "transparent_canvas": [
+          1024,
+          512
+        ],
+        "local_distortion": false
+      },
+      "transparent_background": true,
+      "native": "raw/eyes_balance_v3.png",
+      "generated_original": "E:/tmp/CodexData/generated_images/01a1af95-3f9a-7c71-8060-dddee725d5ad/exec-1bca9df0-c0e2-4cff-99df-27f5d01db301.png",
+      "native_size": [
+        1774,
+        887
+      ],
+      "decision": "Rejected after same-method numerical check: original left15/right17 became left15/right12, a reverse imbalance; preliminary normal-size pass withdrawn. Nativev3 is the input for v4.",
+      "native_sha256": "c3dedcab80107c61b32797020fb96030a618d0efd7ae245a3fbb66cf213efdf2"
+    },
+    {
+      "revision": 4,
+      "prompt": "Make ONE precise small correction to this existing paired-eyes painting, on the SAME1774x887 transparent canvas and exactly the same eye positions. Keep the LEFT eye completely unchanged. Keep the RIGHT pupil center around(1274,438), iris diameter/width about145–148px, lower lid position, eye corners, iris color, tiny highlight and all outside eye contour unchanged.\nONLY RAISE THE CENTRAL RIGHT UPPER EYELID by about10–14 pixels on this native canvas. It was lowered too far in the prior correction; its middle needs to open just a little more so the right opening matches the left's natural vertical opening. The right upper-lid/iris boundary nearx1274 currently lies abouty412–416; move that central boundary to abouty400–404 with a smooth small arc, tapering the adjustment to zero toward the corners. Keep the lower boundary aroundy498–500. Target central exposed opening about98–105native pixels, approximately14–15px after technical import. The LEFT already has the intended opening and must not be changed.\nPaint the newly revealed narrow strip of upper iris coherently; preserve the exact pupil position and iris width. Do not scale or move the whole eye, shrink/grow iris or pupil, mirror left eye, change eye spacing or replace the whole eye shape. Preserve the thin lashes, faint separate upper crease and gentle adult male warm gray-brown watercolor style. Keep upper contour fine, not heavy eyeliner; no black vertical hair strokes, no duplicate highlight, no thick lower rim or extra skin tile. Do not make a rounded wide-open doll eye: this is only a tiny upper-lid lift to undo excessive half-squint.\nReturn only the same eye layer as TRUE transparent RGBA with clear surrounding/gap Alpha0, no head, brows, skin sheet, gray fog, glow, labels or checkerboard. Preserve overall drawing and fine antialiased edge.",
+      "referenced_image_paths": [
+        "E:/stacklands/mods/appearance/male_eye_balance_fix_20261107/raw/eyes_balance_v3.png"
+      ],
+      "transparent_background": true,
+      "native": "raw/eyes_balance_v4.png",
+      "generated_original": "E:/tmp/CodexData/generated_images/01a1af95-3f9a-7c71-8060-dddee725d5ad/exec-d500a32b-eb89-4762-84ae-bf6d045f2866.png",
+      "native_size": [
+        1774,
+        887
+      ],
+      "decision": "Rejected after independent same-method measurement: left15/right13, below requested right14–15 target despite improved normal-size appearance; supplied native input for v5.",
+      "native_sha256": "96f631fd1ab3881ed7b13b8e78dbd2d1b73d04ec44affc507f5d5d02362e3599"
+    },
+    {
+      "revision": 5,
+      "prompt": "Precise tiny continuation edit of this CURRENT paired male eyes layer. Preserve this same1774x887 transparent canvas, full pair placement and scale. LEFT eye unchanged.\nRIGHT eye ONLY: lift the CENTRAL upper-lid stroke UP another10native pixels, revealing one narrow strip of upper iris/sclera underneath it. At the centerx1274, move the current dark upper-lid/eye boundary about10pixels upward; extend this small lift through the central iris span x1210–1330 and taper smoothly to zero by each existing corner. Keep the upper-lid line thin and natural. The right eye is currently just slightly too squinted; this is only about1pixel of opening correction at the game's original scale, to equal the left's opening.\nDo not move the iris or pupil: right pupil center remains around(1273,437), iris horizontal diameter remains145–148native px. Keep LOWER eyelid and lower iris edge completely unchanged, keep the exact existing inner/outer corners, fine fold, soft short tail, highlight, color and brush style. Paint only the newly exposed narrow upper strip coherently. Do not scale the whole eye, enlarge iris, lift lower lid, clone/mirror the left, change pair spacing or change either eye's overall shape.\nThe finished right central opening after technical import should be14–15original pixels, matching the left rather than13. Keep natural gentle mature male eyes without dark eyeliner, vertical hair strokes, thick lower rim or skin sheet. Return same transparent RGBA eyes-only asset, original placement, no head/brows, labels, checkerboard, skin backing or haze.",
+      "referenced_image_paths": [
+        "E:/stacklands/mods/appearance/male_eye_balance_fix_20261107/raw/eyes_balance_v4.png"
+      ],
+      "transparent_background": true,
+      "native": "raw/eyes_balance_v5.png",
+      "generated_original": "E:/tmp/CodexData/generated_images/01a1af95-3f9a-7c71-8060-dddee725d5ad/exec-24a512b9-68a3-4b57-8309-0cc516ca6c48.png",
+      "native_size": [
+        1774,
+        887
+      ],
+      "decision": "Rejected: same fixed measurement still left15/right13; instructed tiny edit changed pigment but did not move the main upper eyelid across an output pixel row",
+      "native_sha256": "3ac87eeafda8ff7c3450bf30cb8425807026e2d3ce97fa2accd43815718427ac"
+    },
+    {
+      "revision": 6,
+      "prompt": "Correct the RIGHT eye's remaining half-squint in this exact paired male eyes asset. Same1774x887 transparent canvas, positions and scale. Keep LEFT completely unchanged, and keep RIGHT iris/pupil center, iris width, lower lid, corners and tail unchanged.\nCRITICAL: raise the MAIN DARK UPPER EYELID EDGE WITH LASHES — the curved line DIRECTLY TOUCHING THE EYEBALL — enough to make the right exposed eye aperture visibly about15–20% TALLER than it is now. This is a visible opening correction, not merely lighter shading. Do NOT move or brighten only the separate fold/crease in the skin above the eye. The actual eyelid/eyeball interface must move upward.\nAt the center of the right eye aroundx1274, lift that dark lash-bearing upper edge about14–16pixels vertically on this native canvas; carry a gentle lift across the iris width and taper to zero at the existing inner and outer corners. Paint the newly exposed thin band of IRIS AND SCLERA below the raised lid coherently. Keep the central pupil around(1273,437), iris width145–148px and LOWER boundary aroundy498–500 unchanged. Do not grow/scale/move the entire eye or iris; reveal more of the existing eyeball by opening its upper lid. The finished right opening should now match the relaxed LEFT opening, not remain visibly narrower.\nPreserve natural thin warm brown-gray lash line, faint separate upper fold, mature gentle male shape, soft short outer tail and tiny highlight. No heavy eyeliner, thick double lower rim, vertical hair strokes or new skin sheet. Do not mirror/clone the left. Output eyes-only transparent RGBA, same original placement and clear Alpha0 surround/gap, no labels, head, brows, glow, fog or checkerboard.",
+      "referenced_image_paths": [
+        "E:/stacklands/mods/appearance/male_eye_balance_fix_20261107/raw/eyes_balance_v5.png"
+      ],
+      "transparent_background": true,
+      "native": "raw/eyes_balance_v6.png",
+      "generated_original": "E:/tmp/CodexData/generated_images/01a1af95-3f9a-7c71-8060-dddee725d5ad/exec-c0bb2df8-53c0-4917-9e70-dbff7e307251.png",
+      "native_size": [
+        1774,
+        887
+      ],
+      "decision": "Accepted independently: fixed same-method left15/15, right15/14 median14.5; normal-size no obvious unequal eyes, baked hair or long sharp tail; retain slight natural contour asymmetry.",
+      "native_sha256": "816fc2ff458cc09c6c8bb900b8cbf581d647dac72998a9cdcff417c22606d27f"
+    }
+  ],
+  "final_technical_assembly": {
+    "whole_pair_similarity_once": true,
+    "premultiplied_area_sampling": true,
+    "left": "Current04 original left RGBA retained unchanged",
+    "right": "Builtin newly painted RGB; never restored from old unequal original",
+    "matte": "Only reduce new right Alpha by existing right continuous Alpha support with soft upper bound; never add pixels",
+    "join": "Only across proven Alpha0 interocular gap"
+  },
+  "candidate": {
+    "path": "candidate/new_male_eyes04.png",
+    "sha256": "6c3f023df0d845a979727f4fab210c3ad95a03a881a40f3ea493d19dc0252f14"
+  },
+  "status": "V6 final PNG locked and independently accepted; no further asset editing by this agent. Parent handles installation."
+}

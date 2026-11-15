@@ -1,0 +1,12 @@
+ERROR: Six saved beard styles are0/3/4/5/6/7
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://mods/appearance/male_beard_round2_install_20261108/qa/verify_beard_round2.gd:32)
+       [1] verify_baseline_and_config (res://mods/appearance/male_beard_round2_install_20261108/qa/verify_beard_round2.gd:104)
+       [2] verify (res://mods/appearance/male_beard_round2_install_20261108/qa/verify_beard_round2.gd:468)
+ERROR: Six physical beard files are01..06
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] check (res://mods/appearance/male_beard_round2_install_20261108/qa/verify_beard_round2.gd:32)
+       [1] verify_baseline_and_config (res://mods/appearance/male_beard_round2_install_20261108/qa/verify_beard_round2.gd:105)
+       [2] verify (res://mods/appearance/male_beard_round2_install_20261108/qa/verify_beard_round2.gd:468)

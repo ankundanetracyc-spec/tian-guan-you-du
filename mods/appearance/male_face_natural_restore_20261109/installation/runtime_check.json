@@ -1,0 +1,134 @@
+{
+  "active_choice_count": 60,
+  "active_png_count": 67,
+  "aesthetic_status": "Not determined by this fixture. Exact RGBA/integer translation and loading/compositing are technical checks, not a symmetry or style approval. Original local painted asymmetries are intentionally retained; actual whole-face images require user review.",
+  "bald_combinations_captured": 9,
+  "captures": [
+    "game_natural_bald_b01_e01_composite.png",
+    "game_natural_bald_b01_e01_viewport.png",
+    "game_natural_bald_b01_e04_composite.png",
+    "game_natural_bald_b01_e04_viewport.png",
+    "game_natural_bald_b01_e05_composite.png",
+    "game_natural_bald_b01_e05_viewport.png",
+    "game_natural_bald_b04_e01_composite.png",
+    "game_natural_bald_b04_e01_viewport.png",
+    "game_natural_bald_b04_e04_composite.png",
+    "game_natural_bald_b04_e04_viewport.png",
+    "game_natural_bald_b04_e05_composite.png",
+    "game_natural_bald_b04_e05_viewport.png",
+    "game_natural_bald_b05_e01_composite.png",
+    "game_natural_bald_b05_e01_viewport.png",
+    "game_natural_bald_b05_e04_composite.png",
+    "game_natural_bald_b05_e04_viewport.png",
+    "game_natural_bald_b05_e05_composite.png",
+    "game_natural_bald_b05_e05_viewport.png",
+    "game_natural_whole_01_composite.png",
+    "game_natural_whole_01_viewport.png",
+    "game_natural_whole_04_composite.png",
+    "game_natural_whole_04_viewport.png",
+    "game_natural_whole_04_face_1x.png",
+    "game_natural_whole_05_composite.png",
+    "game_natural_whole_05_viewport.png",
+    "renderer_natural_whole_01_viewport.png",
+    "renderer_natural_whole_04_viewport.png",
+    "renderer_natural_whole_05_viewport.png"
+  ],
+  "checks": 305,
+  "failures": [],
+  "imported_textures": [
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 1075,
+      "file": "male/eyebrows/01.png",
+      "low_alpha_rgb_different_pixels": 1814,
+      "note": "Existing fix_alpha_border may change low-alpha edge RGB. This check is import integrity, not an aesthetic or symmetry result."
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 843,
+      "file": "male/eyebrows/04.png",
+      "low_alpha_rgb_different_pixels": 1814,
+      "note": "Existing fix_alpha_border may change low-alpha edge RGB. This check is import integrity, not an aesthetic or symmetry result."
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 1100,
+      "file": "male/eyebrows/05.png",
+      "low_alpha_rgb_different_pixels": 1755,
+      "note": "Existing fix_alpha_border may change low-alpha edge RGB. This check is import integrity, not an aesthetic or symmetry result."
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 1273,
+      "file": "male/eyes/01.png",
+      "low_alpha_rgb_different_pixels": 1494,
+      "note": "Existing fix_alpha_border may change low-alpha edge RGB. This check is import integrity, not an aesthetic or symmetry result."
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 1491,
+      "file": "male/eyes/04.png",
+      "low_alpha_rgb_different_pixels": 1564,
+      "note": "Existing fix_alpha_border may change low-alpha edge RGB. This check is import integrity, not an aesthetic or symmetry result."
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 1376,
+      "file": "male/eyes/05.png",
+      "low_alpha_rgb_different_pixels": 1527,
+      "note": "Existing fix_alpha_border may change low-alpha edge RGB. This check is import integrity, not an aesthetic or symmetry result."
+    }
+  ],
+  "matching_whole_portraits_captured": 3,
+  "pass": true,
+  "production_renderer_cases": 3,
+  "restored_png_count": 6,
+  "restored_records": [
+    {
+      "active": "res://mods/appearance/ink_three_variants_20261004/male/eyebrows/01.png",
+      "candidate": "res://mods/appearance/male_face_natural_restore_20261109/male/eyebrows/01.png",
+      "file": "male/eyebrows/01.png",
+      "sha256": "f38064b1d7acd76a3ced5c58a7482818e60598c94061f776a6b286b1b4749700"
+    },
+    {
+      "active": "res://mods/appearance/ink_three_variants_20261004/male/eyebrows/04.png",
+      "candidate": "res://mods/appearance/male_face_natural_restore_20261109/male/eyebrows/04.png",
+      "file": "male/eyebrows/04.png",
+      "sha256": "a4ea663fccd21521e9c434018726ec2f7c6de391ca57c8e47c6eda9537604bbb"
+    },
+    {
+      "active": "res://mods/appearance/ink_three_variants_20261004/male/eyebrows/05.png",
+      "candidate": "res://mods/appearance/male_face_natural_restore_20261109/male/eyebrows/05.png",
+      "file": "male/eyebrows/05.png",
+      "sha256": "23909da9d9e7ca5e1516cb29e0e038197b0d5d53ccd5c6aa838da58f8c8d7b04"
+    },
+    {
+      "active": "res://mods/appearance/ink_three_variants_20261004/male/eyes/01.png",
+      "candidate": "res://mods/appearance/male_face_natural_restore_20261109/male/eyes/01.png",
+      "file": "male/eyes/01.png",
+      "sha256": "16d821b6f969f2bcc3d293ae9aef6a1d20e0ca41605f4c382f9cf6c9730d6264"
+    },
+    {
+      "active": "res://mods/appearance/ink_three_variants_20261004/male/eyes/04.png",
+      "candidate": "res://mods/appearance/male_face_natural_restore_20261109/male/eyes/04.png",
+      "file": "male/eyes/04.png",
+      "sha256": "aa8935dbb3e3695249321a96c9772108708c7b5e4c119a911580c81a57cf6bd3"
+    },
+    {
+      "active": "res://mods/appearance/ink_three_variants_20261004/male/eyes/05.png",
+      "candidate": "res://mods/appearance/male_face_natural_restore_20261109/male/eyes/05.png",
+      "file": "male/eyes/05.png",
+      "sha256": "4d518b95c103e85aa18d8f331b4b61f4c039cbf36876d6cd9bac49f827346e91"
+    }
+  ],
+  "retained_pngs": 61,
+  "schema": "male-natural-restore-runtime/v1",
+  "scope": "Six original eye/brow layers restored by integer horizontal RGBA relocation. Existing IDs/config and other61 PNGs preserved. Actual9bald mixes/3matching whole portraits/04native face crop plus3formal renderer loading cases. No editor/save workflow rerun; no user data writes.",
+  "user_preset_unchanged": true
+}

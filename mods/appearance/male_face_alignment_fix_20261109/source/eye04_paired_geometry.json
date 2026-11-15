@@ -1,0 +1,48 @@
+{
+  "schema": "male-eye04-strict-front-pair-geometry-candidate/v1",
+  "scope": "Final selected04: complete generated-left whole-RGBA mechanical reflection around513 after one common similarity; not independently drawn dual eyes",
+  "source": "source/intermediate/eyes04_after_edge_before_pairing.png",
+  "source_sha256": "400303fd0da9bdd76834a11a82e9da20c8006ea681cc507e2dd2504a61baad83",
+  "source_paint_origin": "Current image_gen eyes04_v3, reviewedAlpha-only edge cleanup400303fd; complete left-eye RGBA, not the input/helper guide.",
+  "source_side": "left",
+  "source_left_pupil": [
+    459.72647361504164,
+    363.2070091424459
+  ],
+  "right_eye_origin": "Whole-RGBA horizontal reflection of final left aboutx513; explicitly mechanical, not independently generated painting",
+  "axis_x": 513,
+  "desired_old_pupil_distance": 105.05914324783518,
+  "source_reflected_pupil_distance": 106.54705276991672,
+  "common_similarity": {
+    "a": 0.9860351883660771,
+    "b": 0,
+    "tx": 7.163948368202466,
+    "ty": 5.135561456750054,
+    "scale": 0.9860351883660771,
+    "rotation_deg": 0
+  },
+  "one_common_premultiplied_alpha_sampling": true,
+  "local_warps": false,
+  "RGB_repainting": false,
+  "old_source_RGB_paste": false,
+  "candidate": "qa/eye04_paired_geometry_candidate.png",
+  "candidate_sha256": "cf1e14f61b5ac2904cddcaad14eb38d3da6328673fa3e90a019e1e7629b99f05",
+  "actual_pupils": [
+    [
+      460.0385313503021,
+      363.25247309960065
+    ],
+    [
+      565.961468649698,
+      363.2524730996007
+    ]
+  ],
+  "actual_pupil_midpoint": [
+    513.0,
+    363.2524730996007
+  ],
+  "mirrored_domain_RGBA_difference_channel_count": 0,
+  "lighting_note": "Catchlights and scleral shading are mechanically reflected with the left painting. Inspect actual normal-size face for acceptable frontal lighting; no independent lighting correction painted.",
+  "selected_as_final": true,
+  "final_file": "male/eyes/04.png"
+}

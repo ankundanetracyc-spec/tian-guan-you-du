@@ -1,0 +1,356 @@
+{
+  "schema": "male-four-beards-whole-layer-centering/v1",
+  "axis_x": 513,
+  "source_measurements": "qa/beard_geometry_diagnosis.json",
+  "records": [
+    {
+      "physical_index": 2,
+      "name": "short moustache+jaw",
+      "source": "source/frozen/male/face_accessory/02.png",
+      "source_sha256": "8b44416a488007d1bd25c83540024bf7dfb0cc2869c7ea99a92b19220bfd1769",
+      "candidate": "male/face_accessory/02.png",
+      "candidate_sha256": "fcb82b82b862de2da397c4f6369df87a5786ce8fdf9abeae5511f30748aa7b94",
+      "selected_semantic_anchor": "upper_moustache.endpoint_midpoint_x",
+      "source_center_x": 516.5432280190539,
+      "translation": [
+        -3.543228019053913,
+        0
+      ],
+      "matrix": [
+        [
+          1,
+          0,
+          -3.543228019053913
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "scale": 1,
+      "rotation_deg": 0,
+      "one_pass_premultiplied_alpha_bilinear_sampling": true,
+      "local_warps": false,
+      "RGB_repainting": false,
+      "source_rgb_paste": false,
+      "upper_moustache_after": {
+        "ink_centroid": [
+          512.2093891281573,
+          467.0564230020375
+        ],
+        "ink_endpoint_left_right": [
+          [
+            465.35427038315567,
+            475.90109329381386
+          ],
+          [
+            560.7348477357418,
+            475.2495147715682
+          ]
+        ],
+        "endpoint_midpoint_x": 513.0445590594487,
+        "lower15pct_center": [
+          509.9821212649536,
+          475.39663537615985
+        ],
+        "ink_quantiles_x_1_99": [
+          465.0,
+          561.0
+        ],
+        "ink_quantiles_y_1_99": [
+          456.0,
+          479.0
+        ],
+        "roi_half_open": [
+          436,
+          449,
+          586,
+          490
+        ],
+        "pigment_weight_sum": 49595.31111111111
+      },
+      "lower_chin_jaw_after": {
+        "ink_centroid": [
+          514.4833036955372,
+          529.7906093750836
+        ],
+        "ink_endpoint_left_right": [
+          [
+            460.1827924566873,
+            510.05839764228887
+          ],
+          [
+            565.8145830042035,
+            510.11148748067814
+          ]
+        ],
+        "endpoint_midpoint_x": 512.9986877304455,
+        "lower15pct_center": [
+          514.0437871572412,
+          541.4404489019016
+        ],
+        "ink_quantiles_x_1_99": [
+          460.0,
+          566.0
+        ],
+        "ink_quantiles_y_1_99": [
+          497.0,
+          543.0
+        ],
+        "roi_half_open": [
+          421,
+          490,
+          606,
+          585
+        ],
+        "pigment_weight_sum": 78104.20784313725
+      }
+    },
+    {
+      "physical_index": 3,
+      "name": "fine moustache",
+      "source": "source/frozen/male/face_accessory/03.png",
+      "source_sha256": "40118e019e467e331201e3d7235c92eb0cc0a934d35712e6ffffdcd7164d5f82",
+      "candidate": "male/face_accessory/03.png",
+      "candidate_sha256": "8582fc742f60b7df10111cfc4d8a24e747221323afa05e8ce2afdcd671bd1199",
+      "selected_semantic_anchor": "upper_moustache.endpoint_midpoint_x",
+      "source_center_x": 517.0155377102446,
+      "translation": [
+        -4.015537710244644,
+        0
+      ],
+      "matrix": [
+        [
+          1,
+          0,
+          -4.015537710244644
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "scale": 1,
+      "rotation_deg": 0,
+      "one_pass_premultiplied_alpha_bilinear_sampling": true,
+      "local_warps": false,
+      "RGB_repainting": false,
+      "source_rgb_paste": false,
+      "upper_moustache_after": {
+        "ink_centroid": [
+          512.4439085009584,
+          464.9149680535508
+        ],
+        "ink_endpoint_left_right": [
+          [
+            464.18343286110576,
+            472.3539941695078
+          ],
+          [
+            561.8357917460935,
+            472.2228247957662
+          ]
+        ],
+        "endpoint_midpoint_x": 513.0096123035996,
+        "lower15pct_center": [
+          511.96975372615236,
+          472.75769821383153
+        ],
+        "ink_quantiles_x_1_99": [
+          464.0,
+          562.0
+        ],
+        "ink_quantiles_y_1_99": [
+          454.0,
+          476.0
+        ],
+        "roi_half_open": [
+          436,
+          449,
+          586,
+          490
+        ],
+        "pigment_weight_sum": 56114.53464052288
+      },
+      "lower_chin_jaw_after": null
+    },
+    {
+      "physical_index": 4,
+      "name": "short chin only",
+      "source": "source/frozen/male/face_accessory/04.png",
+      "source_sha256": "bb4aa8dfb5d62eedc93048e694928adb89ba66b29a0ac511bf419c8b544d7a28",
+      "candidate": "male/face_accessory/04.png",
+      "candidate_sha256": "29e4c3a7a5dfe4786e630fd7b3db7e5aff276bd80d231180079b8de99fffe0ad",
+      "selected_semantic_anchor": "lower_chin_jaw.lower15pct_center",
+      "source_center_x": 517.2245917846564,
+      "translation": [
+        -4.224591784656354,
+        0
+      ],
+      "matrix": [
+        [
+          1,
+          0,
+          -4.224591784656354
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "scale": 1,
+      "rotation_deg": 0,
+      "one_pass_premultiplied_alpha_bilinear_sampling": true,
+      "local_warps": false,
+      "RGB_repainting": false,
+      "source_rgb_paste": false,
+      "upper_moustache_after": null,
+      "lower_chin_jaw_after": {
+        "ink_centroid": [
+          513.4145524525065,
+          539.1570251511284
+        ],
+        "ink_endpoint_left_right": [
+          [
+            484.0672895285951,
+            533.1268764638248
+          ],
+          [
+            543.8158947165063,
+            532.2711385790917
+          ]
+        ],
+        "endpoint_midpoint_x": 513.9415921225507,
+        "lower15pct_center": [
+          513.024596200697,
+          549.5756845119212
+        ],
+        "ink_quantiles_x_1_99": [
+          484.0,
+          544.0
+        ],
+        "ink_quantiles_y_1_99": [
+          521.0,
+          554.0
+        ],
+        "roi_half_open": [
+          421,
+          490,
+          606,
+          585
+        ],
+        "pigment_weight_sum": 59521.28366013072
+      }
+    },
+    {
+      "physical_index": 5,
+      "name": "separate moustache+point",
+      "source": "source/frozen/male/face_accessory/05.png",
+      "source_sha256": "355e1a1b6ca07bdbfcbcd388515ef37c1ad219bda73a8964dc8f2f607c63c1fc",
+      "candidate": "male/face_accessory/05.png",
+      "candidate_sha256": "0fece24df5ebd74a086bf50cf602aaa5523e4a61d62e679be9f9e1e9d2fcc76b",
+      "selected_semantic_anchor": "upper_moustache.endpoint_midpoint_x",
+      "source_center_x": 517.0010202365168,
+      "translation": [
+        -4.0010202365167515,
+        0
+      ],
+      "matrix": [
+        [
+          1,
+          0,
+          -4.0010202365167515
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "scale": 1,
+      "rotation_deg": 0,
+      "one_pass_premultiplied_alpha_bilinear_sampling": true,
+      "local_warps": false,
+      "RGB_repainting": false,
+      "source_rgb_paste": false,
+      "upper_moustache_after": {
+        "ink_centroid": [
+          512.3462034048764,
+          466.43350012429613
+        ],
+        "ink_endpoint_left_right": [
+          [
+            464.1726732851637,
+            474.6545517716168
+          ],
+          [
+            561.8293671878696,
+            474.8713865622908
+          ]
+        ],
+        "endpoint_midpoint_x": 513.0010202365166,
+        "lower15pct_center": [
+          510.72638688393994,
+          474.4193495292519
+        ],
+        "ink_quantiles_x_1_99": [
+          464.0,
+          562.0
+        ],
+        "ink_quantiles_y_1_99": [
+          455.0,
+          479.0
+        ],
+        "roi_half_open": [
+          436,
+          449,
+          586,
+          490
+        ],
+        "pigment_weight_sum": 53877.205228758176
+      },
+      "lower_chin_jaw_after": {
+        "ink_centroid": [
+          512.7005672654515,
+          537.1817408600989
+        ],
+        "ink_endpoint_left_right": [
+          [
+            484.17661081491696,
+            531.1226327592406
+          ],
+          [
+            542.9670932147585,
+            530.6829750108426
+          ]
+        ],
+        "endpoint_midpoint_x": 513.5718520148378,
+        "lower15pct_center": [
+          512.7851023404291,
+          554.1961077129647
+        ],
+        "ink_quantiles_x_1_99": [
+          484.0,
+          543.0
+        ],
+        "ink_quantiles_y_1_99": [
+          503.0,
+          563.0
+        ],
+        "roi_half_open": [
+          421,
+          490,
+          606,
+          585
+        ],
+        "pigment_weight_sum": 88051.8248366013
+      }
+    }
+  ],
+  "beard01_empty_preserved": true,
+  "active67_png_two_configs_preserved": true,
+  "beard06_processed_separately": "source/beard06_registration.json"
+}

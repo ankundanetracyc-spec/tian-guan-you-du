@@ -1,0 +1,47 @@
+{
+  "schema": "male-face-alignment-system-cause-audit/v1",
+  "scope": "Read-only evidence audit of prior import geometry; no historical scripts edited. Recommendations are for root's canonical alignment specification.",
+  "confirmed_facts": [
+    {
+      "finding": "The base head and whole-portrait facial details did not have an explicit shared final semantic face axis.",
+      "evidence": [
+        {"file": "mods/appearance/male_style_alignment_20261106/integration/source/import_head.py", "line": 59, "detail": "Head RGB uses generated native paint while Alpha is replaced with frozen old head/neck Alpha, with no geometric transform; compatibility was checked against the old silhouette."},
+        {"file": "mods/appearance/male_style_alignment_20261106/integration/source/import_features.cjs", "line": 10, "detail": "Eyes, nose and mouth each have separate native-to-whole-portrait semantic controls; eyebrows have a preset transform."},
+        {"file": "mods/appearance/male_style_alignment_20261106/integration/source/import_features.cjs", "line": 38, "detail": "Visible feature RGB is selected at whole-portrait coordinates. Passing a mask/source fit and RGB fidelity check does not enforce a common final fixed-face axis."}
+      ]
+    },
+    {
+      "finding": "The expansion reference itself inherited non-collinear feature centers, then accepted source rotation in a best-fit pupil/chin frame.",
+      "evidence": [
+        {"file": "mods/appearance/male_loose_style_install_20261106/qa/geometry_and_dedup.json", "line": 158, "detail": "Target pupils were(461.832469,365.383836),(567.915761,365.001711), midpointx514.874115, while target chin wasx513. The chosen frame therefore was not an upright x513 semantic template."},
+        {"file": "mods/appearance/male_loose_style_install_20261106/source/feature_import.json", "detail": "Shared source-to-frame rotation-0.208438deg; this describes the original04 import. Current04 subsequently had eye-balance and seam repairs."},
+        {"file": "mods/appearance/male_high_tie_install_20261107/source/feature_import.json", "line": 21, "detail": "Shared rotation+0.487586deg and maximum pupil/chin residual1.754573px were expressly retained. Current05 paired-eye transform rotation is+0.425279deg."}
+      ]
+    },
+    {
+      "finding": "Fixed nose/mouth reuse preserved the older offsets instead of validating their shared axis with each new eye/brow pair.",
+      "evidence": [
+        {"file": "docs/美术规范/男性原图完整还原_20261105/README.md", "detail": "Expansion records expressly reuse nose01/mouth01 and note source-relative horizontal/vertical discrepancies."},
+        {"file": "mods/appearance/male_face_alignment_fix_20261109/qa/geometry_diagnosis.json", "detail": "Current actual nose dark-hole midpointx517.075025 and lip dark-seam centroidx516.474875; forehead rows centerx512.5 and lower jaw ridges centerx513..514."}
+      ]
+    },
+    {
+      "finding": "Prior automated acceptance covered loading, IDs, combinations, preservation, alpha and selected RGB fidelity; it did not require final assembled semantic centers and bilateral shapes to meet a fixed face template.",
+      "evidence": [
+        {"file": "mods/appearance/male_style_alignment_20261106/integration/source/import_features.cjs", "line": 23, "detail": "Import geometry rejection is native-to-target fit residual>2px, not final midpoint-to-face-axis deviation."},
+        {"file": "mods/appearance/male_style_alignment_20261106/integration/source/import_features.cjs", "line": 41, "detail": "Opaque source-core RGB equality checks original painting fidelity, including any original asymmetry."},
+        {"file": "mods/appearance/male_high_tie_install_20261107/source/install_parts.py", "line": 67, "detail": "Installer geometry checks use PNG size/alpha bounds and source hashes; these are valid safety checks but do not inspect pupil, lid or brow semantic symmetry."},
+        {"file": "docs/美术规范/男性四款发型实装_20261108/README.md", "detail": "2292 runtime checks cover combinations and compatibility. They are not a numerical/visual proof of facial symmetry."}
+      ]
+    }
+  ],
+  "inference": "The offset was propagated through preserved silhouette and portrait-specific per-part frames, then treated as accepted old geometry. Existing engineering checks proved resource integrity and reconstruction fidelity, so the missing independent final-face-axis and bilateral-shape acceptance allowed the error to persist. Source rotation alone cannot explain all visible left/right shape differences; generated/source painted anatomy must be reviewed separately.",
+  "prevention_inputs_for_root": [
+    "One versioned fixed-face semantic template, anchored to unchanged face_shape01 hash and actual forehead/cheek/jaw landmarks. Common axisx513 is independent of feature Alpha bounds.",
+    "Measure final PNG pupil kernels, actual eye joins/iris-level upper-lower lids, brow heads/crests/tails, nostril dark-hole midpoint and lip seam after every sampling/cleanup step.",
+    "Pair symmetry and common center are separate gates: a level pupil pair can still have unequal eye fissures or brow arches, and equal shapes can still be off-center.",
+    "Source-to-native fit residual is separate from final-template residual. Keep source identity, explicit matrices and final semantic QA evidence together.",
+    "Unoccluded normal-size front view plus hair/cloth/beard mix views are required before installation; runtime combination counts cannot replace that review.",
+    "Do not inherit the old04/05 source-to-frame matrix or retiredrig x517/y379 in new imports. Register generated pairs directly into the canonical current-face frame."
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "clean_reference": "res://mods/appearance/male_beard_round2_install_20261108/reference/project_male_master.png",
+  "clean_reference_sha256": "d97b79e3372df42db24b4dd5c3ec42f376d652616d9fa25d78a393b004da81a8",
+  "purpose": "Source crops for built-in image_gen beard support and visual QA only. Nearest-neighbor enlargement; no creative pixels generated.",
+  "records": [
+    {
+      "approved": "res://mods/appearance/male_beard_round2_install_20261108/reference/01_approved.png",
+      "approved_sha256": "59c46faa59d3060bfd66be106724e857b719c3fbac3cc143e786cd68643ac374",
+      "crop_rect_original_pixels": [
+        435,
+        435,
+        160,
+        135
+      ],
+      "crop_size": [
+        640,
+        540
+      ],
+      "key": "01",
+      "name": "八字短髭",
+      "physical_index": 3,
+      "qa_zoom": 4,
+      "reference_crop": "res://mods/appearance/male_beard_round2_install_20261108/reference/01_beard_close.png",
+      "style_id": 4
+    },
+    {
+      "approved": "res://mods/appearance/male_beard_round2_install_20261108/reference/02_approved.png",
+      "approved_sha256": "44881408a2771986d4333ec23ce39325488bcdef7788edb4007f545490d6ea63",
+      "crop_rect_original_pixels": [
+        445,
+        490,
+        145,
+        105
+      ],
+      "crop_size": [
+        580,
+        420
+      ],
+      "key": "02",
+      "name": "短颏须",
+      "physical_index": 4,
+      "qa_zoom": 4,
+      "reference_crop": "res://mods/appearance/male_beard_round2_install_20261108/reference/02_beard_close.png",
+      "style_id": 5
+    },
+    {
+      "approved": "res://mods/appearance/male_beard_round2_install_20261108/reference/03_approved.png",
+      "approved_sha256": "7ac8cf94ebea0a712b39d5d2b019244c5d0cba8f0c544c95fb1783642b5bd18c",
+      "crop_rect_original_pixels": [
+        435,
+        435,
+        165,
+        155
+      ],
+      "crop_size": [
+        660,
+        620
+      ],
+      "key": "03",
+      "name": "细髭尖颏",
+      "physical_index": 5,
+      "qa_zoom": 4,
+      "reference_crop": "res://mods/appearance/male_beard_round2_install_20261108/reference/03_beard_close.png",
+      "style_id": 6
+    },
+    {
+      "approved": "res://mods/appearance/male_beard_round2_install_20261108/reference/04_approved.png",
+      "approved_sha256": "422578b881fa48a4914e3f201c61850d730f4386fa7b154c2988c4a10681b907",
+      "crop_rect_original_pixels": [
+        400,
+        400,
+        230,
+        185
+      ],
+      "crop_size": [
+        920,
+        740
+      ],
+      "key": "04",
+      "name": "薄络腮须",
+      "physical_index": 6,
+      "qa_zoom": 4,
+      "reference_crop": "res://mods/appearance/male_beard_round2_install_20261108/reference/04_beard_close.png",
+      "style_id": 7
+    }
+  ]
+}

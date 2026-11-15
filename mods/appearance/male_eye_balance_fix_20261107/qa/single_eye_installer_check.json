@@ -1,0 +1,23 @@
+{
+  "pass": true,
+  "checks": [
+    {
+      "name": "readonly54_baseline53_preserved_and_same04_style3_interface",
+      "pass": true
+    },
+    {
+      "name": "only_confirmed_male04_target_is_allowed",
+      "pass": true
+    },
+    {
+      "name": "single_replacement_failure_rolls_back_and_frozen_backup_reuses_safely",
+      "pass": true
+    },
+    {
+      "name": "only_one_png_written_both_configs_untouched_idempotent_report",
+      "pass": true
+    }
+  ],
+  "scope": "Temporary synthetic fixture only; no active project PNG/config/manifest installation",
+  "godot_check_only": "passed"
+}

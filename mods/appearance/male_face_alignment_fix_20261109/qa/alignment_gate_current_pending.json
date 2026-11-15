@@ -1,0 +1,1122 @@
+{
+  "schema": "portrait-feature-alignment-gate/v1",
+  "pass": false,
+  "checks": 311,
+  "failures": [
+    {
+      "pass": false,
+      "code": "current_file_has_full_semantic_measurements",
+      "file": "male/eyebrows/01.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_accepted",
+      "file": "male/eyebrows/01.png",
+      "actual": "pending"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:light_dark_backgrounds",
+      "file": "male/eyebrows/01.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:axis_alignment",
+      "file": "male/eyebrows/01.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:brow_shape_width_depth",
+      "file": "male/eyebrows/01.png"
+    },
+    {
+      "pass": false,
+      "code": "current_file_has_full_semantic_measurements",
+      "file": "male/eyebrows/04.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_accepted",
+      "file": "male/eyebrows/04.png",
+      "actual": "pending"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:light_dark_backgrounds",
+      "file": "male/eyebrows/04.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:axis_alignment",
+      "file": "male/eyebrows/04.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:brow_shape_width_depth",
+      "file": "male/eyebrows/04.png"
+    },
+    {
+      "pass": false,
+      "code": "current_file_has_full_semantic_measurements",
+      "file": "male/eyebrows/05.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_accepted",
+      "file": "male/eyebrows/05.png",
+      "actual": "pending"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:light_dark_backgrounds",
+      "file": "male/eyebrows/05.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:axis_alignment",
+      "file": "male/eyebrows/05.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:brow_shape_width_depth",
+      "file": "male/eyebrows/05.png"
+    },
+    {
+      "pass": false,
+      "code": "current_file_has_full_semantic_measurements",
+      "file": "male/eyes/01.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_accepted",
+      "file": "male/eyes/01.png",
+      "actual": "pending"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:light_dark_backgrounds",
+      "file": "male/eyes/01.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:axis_alignment",
+      "file": "male/eyes/01.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:eye_corners_and_lid_contours",
+      "file": "male/eyes/01.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:iris_same_scale",
+      "file": "male/eyes/01.png"
+    },
+    {
+      "pass": false,
+      "code": "current_file_has_full_semantic_measurements",
+      "file": "male/eyes/04.png"
+    },
+    {
+      "pass": false,
+      "code": "pixel_ink_envelope_lower_25",
+      "file": "male/eyes/04.png",
+      "actual": 5.0,
+      "limit": {
+        "target": 0,
+        "tolerance_px": 2.0
+      }
+    },
+    {
+      "pass": false,
+      "code": "visual_review_accepted",
+      "file": "male/eyes/04.png",
+      "actual": "rejected"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:light_dark_backgrounds",
+      "file": "male/eyes/04.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:axis_alignment",
+      "file": "male/eyes/04.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:eye_corners_and_lid_contours",
+      "file": "male/eyes/04.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:iris_same_scale",
+      "file": "male/eyes/04.png"
+    },
+    {
+      "pass": false,
+      "code": "current_file_has_full_semantic_measurements",
+      "file": "male/eyes/05.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_accepted",
+      "file": "male/eyes/05.png",
+      "actual": "rejected"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:light_dark_backgrounds",
+      "file": "male/eyes/05.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:axis_alignment",
+      "file": "male/eyes/05.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:eye_corners_and_lid_contours",
+      "file": "male/eyes/05.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:iris_same_scale",
+      "file": "male/eyes/05.png"
+    },
+    {
+      "pass": false,
+      "code": "current_file_has_full_semantic_measurements",
+      "file": "male/nose/01.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_accepted",
+      "file": "male/nose/01.png",
+      "actual": "pending"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:light_dark_backgrounds",
+      "file": "male/nose/01.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:axis_alignment",
+      "file": "male/nose/01.png"
+    },
+    {
+      "pass": false,
+      "code": "current_file_has_full_semantic_measurements",
+      "file": "male/mouth/01.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_accepted",
+      "file": "male/mouth/01.png",
+      "actual": "pending"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:light_dark_backgrounds",
+      "file": "male/mouth/01.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:axis_alignment",
+      "file": "male/mouth/01.png"
+    },
+    {
+      "pass": false,
+      "code": "current_file_has_full_semantic_measurements",
+      "file": "male/face_accessory/02.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_accepted",
+      "file": "male/face_accessory/02.png",
+      "actual": "pending"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:light_dark_backgrounds",
+      "file": "male/face_accessory/02.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:axis_alignment",
+      "file": "male/face_accessory/02.png"
+    },
+    {
+      "pass": false,
+      "code": "current_file_has_full_semantic_measurements",
+      "file": "male/face_accessory/03.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_accepted",
+      "file": "male/face_accessory/03.png",
+      "actual": "pending"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:light_dark_backgrounds",
+      "file": "male/face_accessory/03.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:axis_alignment",
+      "file": "male/face_accessory/03.png"
+    },
+    {
+      "pass": false,
+      "code": "current_file_has_full_semantic_measurements",
+      "file": "male/face_accessory/04.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_accepted",
+      "file": "male/face_accessory/04.png",
+      "actual": "pending"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:light_dark_backgrounds",
+      "file": "male/face_accessory/04.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:axis_alignment",
+      "file": "male/face_accessory/04.png"
+    },
+    {
+      "pass": false,
+      "code": "current_file_has_full_semantic_measurements",
+      "file": "male/face_accessory/05.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_accepted",
+      "file": "male/face_accessory/05.png",
+      "actual": "pending"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:light_dark_backgrounds",
+      "file": "male/face_accessory/05.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:axis_alignment",
+      "file": "male/face_accessory/05.png"
+    },
+    {
+      "pass": false,
+      "code": "current_file_has_full_semantic_measurements",
+      "file": "male/face_accessory/06.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_accepted",
+      "file": "male/face_accessory/06.png",
+      "actual": "rejected"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:light_dark_backgrounds",
+      "file": "male/face_accessory/06.png"
+    },
+    {
+      "pass": false,
+      "code": "visual_review_check:axis_alignment",
+      "file": "male/face_accessory/06.png"
+    },
+    {
+      "pass": false,
+      "code": "semantic_schema_current"
+    },
+    {
+      "pass": false,
+      "code": "semantic_record_uses_locked_face_and_axis"
+    },
+    {
+      "pass": false,
+      "code": "independent_visual_review_accepted_and_attributed"
+    },
+    {
+      "pass": false,
+      "code": "whole_face_composition_review_accepted"
+    },
+    {
+      "pass": false,
+      "code": "composition_review:seven_front_hair"
+    },
+    {
+      "pass": false,
+      "code": "composition_review:five_nonempty_beards"
+    },
+    {
+      "pass": false,
+      "code": "composition_review:hair09_occlusion"
+    }
+  ],
+  "frame_sha256": "7b0a6b52b71ffd86951eb45145e1fcc13eccdbbc6121c7280713f30f894d4bcf",
+  "fixed_face_sha256": "d86319252035a286a92e8892b9816bdb917a39f7f41f4cb1edf40f4dee51c357",
+  "axis_x": 513.0,
+  "pack_root": "E:\\stacklands\\mods\\appearance\\ink_three_variants_20261004",
+  "candidate_root": "E:\\stacklands\\mods\\appearance\\male_face_alignment_fix_20261109",
+  "measurements_file": "E:\\stacklands\\mods\\appearance\\male_face_alignment_fix_20261109\\qa\\final_semantic_measurements.json",
+  "review_file": "E:\\stacklands\\mods\\appearance\\male_face_alignment_fix_20261109\\qa\\final_visual_review.json",
+  "configured_feature_count": 13,
+  "records": [
+    {
+      "file": "male/eyebrows/01.png",
+      "part": "brow",
+      "index": 1,
+      "style_id": 0,
+      "sha256": "0b81852f026929d204972a43f9c0e88f9b15396e02941342fb761a615795f3cf",
+      "pixel_side_ink": [
+        {
+          "visible_ink_pixels": 930,
+          "core_pixels": 669,
+          "centroid": [
+            459.6807,
+            344.5455
+          ],
+          "x_quantiles_01_99": [
+            420,
+            496
+          ],
+          "ink_span_px": 77,
+          "mean_core_darkness": 175.3637
+        },
+        {
+          "visible_ink_pixels": 876,
+          "core_pixels": 635,
+          "centroid": [
+            566.2485,
+            344.6193
+          ],
+          "x_quantiles_01_99": [
+            531,
+            605
+          ],
+          "ink_span_px": 75,
+          "mean_core_darkness": 172.4089
+        }
+      ],
+      "pixel_brow_body_probes_25_50_75": [
+        [
+          {
+            "x": 477,
+            "thickness_px": 10,
+            "mean_darkness_0_255": 177.8
+          },
+          {
+            "x": 458,
+            "thickness_px": 10,
+            "mean_darkness_0_255": 171.2111
+          },
+          {
+            "x": 439,
+            "thickness_px": 11,
+            "mean_darkness_0_255": 174.6
+          }
+        ],
+        [
+          {
+            "x": 550,
+            "thickness_px": 10,
+            "mean_darkness_0_255": 181.6556
+          },
+          {
+            "x": 568,
+            "thickness_px": 10,
+            "mean_darkness_0_255": 166.8571
+          },
+          {
+            "x": 586,
+            "thickness_px": 11,
+            "mean_darkness_0_255": 167.5667
+          }
+        ]
+      ],
+      "pass": false
+    },
+    {
+      "file": "male/eyebrows/04.png",
+      "part": "brow",
+      "index": 4,
+      "style_id": 3,
+      "sha256": "530d5cf4e2fb3094269b6493ca7e9c552c30d27de5fe389a3a2012440adfcccf",
+      "pixel_side_ink": [
+        {
+          "visible_ink_pixels": 880,
+          "core_pixels": 470,
+          "centroid": [
+            454.5532,
+            341.5846
+          ],
+          "x_quantiles_01_99": [
+            415,
+            493
+          ],
+          "ink_span_px": 79,
+          "mean_core_darkness": 173.6631
+        },
+        {
+          "visible_ink_pixels": 909,
+          "core_pixels": 524,
+          "centroid": [
+            572.9689,
+            341.9899
+          ],
+          "x_quantiles_01_99": [
+            535,
+            611
+          ],
+          "ink_span_px": 77,
+          "mean_core_darkness": 170.6387
+        }
+      ],
+      "pixel_brow_body_probes_25_50_75": [
+        [
+          {
+            "x": 474,
+            "thickness_px": 10,
+            "mean_darkness_0_255": 175.4861
+          },
+          {
+            "x": 454,
+            "thickness_px": 9,
+            "mean_darkness_0_255": 175.5238
+          },
+          {
+            "x": 434,
+            "thickness_px": 10,
+            "mean_darkness_0_255": 174.7778
+          }
+        ],
+        [
+          {
+            "x": 554,
+            "thickness_px": 10,
+            "mean_darkness_0_255": 167.0897
+          },
+          {
+            "x": 573,
+            "thickness_px": 10,
+            "mean_darkness_0_255": 169.1556
+          },
+          {
+            "x": 592,
+            "thickness_px": 9,
+            "mean_darkness_0_255": 175.1905
+          }
+        ]
+      ],
+      "pass": false
+    },
+    {
+      "file": "male/eyebrows/05.png",
+      "part": "brow",
+      "index": 5,
+      "style_id": 4,
+      "sha256": "a8ef833cc1bfaadb9c0ee55f5c27806adfae05991216162d21a8ae6f492b6ef4",
+      "pixel_side_ink": [
+        {
+          "visible_ink_pixels": 825,
+          "core_pixels": 606,
+          "centroid": [
+            459.3857,
+            346.4602
+          ],
+          "x_quantiles_01_99": [
+            423,
+            491
+          ],
+          "ink_span_px": 69,
+          "mean_core_darkness": 180.7189
+        },
+        {
+          "visible_ink_pixels": 831,
+          "core_pixels": 623,
+          "centroid": [
+            565.0212,
+            346.3027
+          ],
+          "x_quantiles_01_99": [
+            533,
+            601
+          ],
+          "ink_span_px": 69,
+          "mean_core_darkness": 181.8384
+        }
+      ],
+      "pixel_brow_body_probes_25_50_75": [
+        [
+          {
+            "x": 474,
+            "thickness_px": 11,
+            "mean_darkness_0_255": 182.1212
+          },
+          {
+            "x": 457,
+            "thickness_px": 10,
+            "mean_darkness_0_255": 182.1444
+          },
+          {
+            "x": 440,
+            "thickness_px": 9,
+            "mean_darkness_0_255": 177.5641
+          }
+        ],
+        [
+          {
+            "x": 550,
+            "thickness_px": 11,
+            "mean_darkness_0_255": 190.1111
+          },
+          {
+            "x": 567,
+            "thickness_px": 10,
+            "mean_darkness_0_255": 176.6333
+          },
+          {
+            "x": 584,
+            "thickness_px": 10,
+            "mean_darkness_0_255": 181.0617
+          }
+        ]
+      ],
+      "pass": false
+    },
+    {
+      "file": "male/eyes/01.png",
+      "part": "eye",
+      "index": 1,
+      "style_id": 0,
+      "sha256": "bac97719425798e58be107e74e3cc6e96cef4d9dd40f3ec5f88979b54ea8e323",
+      "pixel_pupil_kernels": [
+        {
+          "visible_ink_pixels": 176,
+          "core_pixels": 176,
+          "centroid": [
+            459.5863,
+            364.3924
+          ],
+          "x_quantiles_01_99": [
+            450,
+            472
+          ],
+          "ink_span_px": 23,
+          "mean_core_darkness": 188.892
+        },
+        {
+          "visible_ink_pixels": 170,
+          "core_pixels": 170,
+          "centroid": [
+            565.6557,
+            364.5587
+          ],
+          "x_quantiles_01_99": [
+            554,
+            576
+          ],
+          "ink_span_px": 23,
+          "mean_core_darkness": 191.6451
+        }
+      ],
+      "pixel_side_ink": [
+        {
+          "visible_ink_pixels": 953,
+          "core_pixels": 715,
+          "centroid": [
+            454.465,
+            366.057
+          ],
+          "x_quantiles_01_99": [
+            427,
+            483
+          ],
+          "ink_span_px": 57,
+          "mean_core_darkness": 150.324
+        },
+        {
+          "visible_ink_pixels": 872,
+          "core_pixels": 664,
+          "centroid": [
+            570.2527,
+            366.4213
+          ],
+          "x_quantiles_01_99": [
+            542,
+            597
+          ],
+          "ink_span_px": 56,
+          "mean_core_darkness": 149.1546
+        }
+      ],
+      "pixel_ink_envelope_proxies_25_50_75": [
+        [
+          [
+            361,
+            375
+          ],
+          [
+            360,
+            375
+          ],
+          [
+            360,
+            374
+          ]
+        ],
+        [
+          [
+            362,
+            374
+          ],
+          [
+            361,
+            375
+          ],
+          [
+            361,
+            375
+          ]
+        ]
+      ],
+      "pass": false
+    },
+    {
+      "file": "male/eyes/04.png",
+      "part": "eye",
+      "index": 4,
+      "style_id": 3,
+      "sha256": "5cabd7ef462a86266bf2ed34610d81c990c32e101644c6ec12de99842b7024d6",
+      "pixel_pupil_kernels": [
+        {
+          "visible_ink_pixels": 222,
+          "core_pixels": 222,
+          "centroid": [
+            460.175,
+            363.3159
+          ],
+          "x_quantiles_01_99": [
+            450,
+            472
+          ],
+          "ink_span_px": 23,
+          "mean_core_darkness": 194.539
+        },
+        {
+          "visible_ink_pixels": 256,
+          "core_pixels": 256,
+          "centroid": [
+            565.1553,
+            363.2539
+          ],
+          "x_quantiles_01_99": [
+            554,
+            576
+          ],
+          "ink_span_px": 23,
+          "mean_core_darkness": 188.4818
+        }
+      ],
+      "pixel_side_ink": [
+        {
+          "visible_ink_pixels": 1330,
+          "core_pixels": 1067,
+          "centroid": [
+            452.0937,
+            365.179
+          ],
+          "x_quantiles_01_99": [
+            421,
+            484
+          ],
+          "ink_span_px": 64,
+          "mean_core_darkness": 145.2593
+        },
+        {
+          "visible_ink_pixels": 1461,
+          "core_pixels": 1207,
+          "centroid": [
+            568.4285,
+            365.7055
+          ],
+          "x_quantiles_01_99": [
+            538,
+            598
+          ],
+          "ink_span_px": 61,
+          "mean_core_darkness": 138.9318
+        }
+      ],
+      "pixel_ink_envelope_proxies_25_50_75": [
+        [
+          [
+            358,
+            374
+          ],
+          [
+            358,
+            376
+          ],
+          [
+            358,
+            376
+          ]
+        ],
+        [
+          [
+            357,
+            379
+          ],
+          [
+            356,
+            377
+          ],
+          [
+            358,
+            377
+          ]
+        ]
+      ],
+      "pass": false
+    },
+    {
+      "file": "male/eyes/05.png",
+      "part": "eye",
+      "index": 5,
+      "style_id": 4,
+      "sha256": "3afbaa7be4761d96e026fc84aff7b6982a947abb6429fba4e2d42dbec725cf09",
+      "pixel_pupil_kernels": [
+        {
+          "visible_ink_pixels": 236,
+          "core_pixels": 228,
+          "centroid": [
+            460.4474,
+            363.7827
+          ],
+          "x_quantiles_01_99": [
+            450,
+            472
+          ],
+          "ink_span_px": 23,
+          "mean_core_darkness": 191.943
+        },
+        {
+          "visible_ink_pixels": 208,
+          "core_pixels": 208,
+          "centroid": [
+            564.2774,
+            364.0206
+          ],
+          "x_quantiles_01_99": [
+            554,
+            576
+          ],
+          "ink_span_px": 23,
+          "mean_core_darkness": 196.2067
+        }
+      ],
+      "pixel_side_ink": [
+        {
+          "visible_ink_pixels": 1521,
+          "core_pixels": 1306,
+          "centroid": [
+            455.6171,
+            365.5606
+          ],
+          "x_quantiles_01_99": [
+            421,
+            486
+          ],
+          "ink_span_px": 66,
+          "mean_core_darkness": 135.5352
+        },
+        {
+          "visible_ink_pixels": 1450,
+          "core_pixels": 1230,
+          "centroid": [
+            569.7068,
+            365.767
+          ],
+          "x_quantiles_01_99": [
+            539,
+            602
+          ],
+          "ink_span_px": 64,
+          "mean_core_darkness": 136.8602
+        }
+      ],
+      "pixel_ink_envelope_proxies_25_50_75": [
+        [
+          [
+            358,
+            379
+          ],
+          [
+            358,
+            378
+          ],
+          [
+            358,
+            374
+          ]
+        ],
+        [
+          [
+            359,
+            379
+          ],
+          [
+            358,
+            379
+          ],
+          [
+            358,
+            376
+          ]
+        ]
+      ],
+      "pass": false
+    },
+    {
+      "file": "male/nose/01.png",
+      "part": "nose",
+      "index": 1,
+      "style_id": 0,
+      "sha256": "fea108d7478f923b820ad85c2bd0ea1aafd4ac0273c9702bec60a4ced9cc2d03",
+      "pixel_nostril_kernels": [
+        {
+          "visible_ink_pixels": 39,
+          "core_pixels": 39,
+          "centroid": [
+            500.6897,
+            443.9145
+          ],
+          "x_quantiles_01_99": [
+            496,
+            506
+          ],
+          "ink_span_px": 11,
+          "mean_core_darkness": 136.453
+        },
+        {
+          "visible_ink_pixels": 45,
+          "core_pixels": 45,
+          "centroid": [
+            525.2513,
+            444.2123
+          ],
+          "x_quantiles_01_99": [
+            518,
+            530
+          ],
+          "ink_span_px": 13,
+          "mean_core_darkness": 133.9185
+        }
+      ],
+      "pass": false
+    },
+    {
+      "file": "male/mouth/01.png",
+      "part": "mouth",
+      "index": 1,
+      "style_id": 0,
+      "sha256": "8ead9b1c2bd3bbd9d0efc95b14ba273dba4f70afe458d83cdb6067e5d246cf1b",
+      "pixel_seam_ink": {
+        "visible_ink_pixels": 536,
+        "core_pixels": 534,
+        "centroid": [
+          513.2187,
+          477.2921
+        ],
+        "x_quantiles_01_99": [
+          477,
+          550
+        ],
+        "ink_span_px": 74,
+        "mean_core_darkness": 125.4806
+      },
+      "pass": false
+    },
+    {
+      "file": "male/face_accessory/02.png",
+      "part": "beard",
+      "index": 2,
+      "style_id": 3,
+      "sha256": "fcb82b82b862de2da397c4f6369df87a5786ce8fdf9abeae5511f30748aa7b94",
+      "pixel_regions": {
+        "upper": {
+          "visible_ink_pixels": 1465,
+          "core_pixels": 392,
+          "centroid": [
+            512.1746,
+            467.0501
+          ],
+          "x_quantiles_01_99": [
+            466,
+            561
+          ],
+          "ink_span_px": 96,
+          "mean_core_darkness": 176.4702
+        },
+        "lower": {
+          "visible_ink_pixels": 1880,
+          "core_pixels": 789,
+          "centroid": [
+            514.501,
+            530.0723
+          ],
+          "x_quantiles_01_99": [
+            461,
+            566
+          ],
+          "ink_span_px": 106,
+          "mean_core_darkness": 176.4732
+        }
+      },
+      "pass": false
+    },
+    {
+      "file": "male/face_accessory/03.png",
+      "part": "beard",
+      "index": 3,
+      "style_id": 4,
+      "sha256": "8582fc742f60b7df10111cfc4d8a24e747221323afa05e8ce2afdcd671bd1199",
+      "pixel_regions": {
+        "upper": {
+          "visible_ink_pixels": 1516,
+          "core_pixels": 532,
+          "centroid": [
+            512.3408,
+            464.8692
+          ],
+          "x_quantiles_01_99": [
+            464,
+            562
+          ],
+          "ink_span_px": 99,
+          "mean_core_darkness": 176.4543
+        },
+        "lower": {
+          "visible_ink_pixels": 0,
+          "centroid": null,
+          "x_quantiles_01_99": null
+        }
+      },
+      "pass": false
+    },
+    {
+      "file": "male/face_accessory/04.png",
+      "part": "beard",
+      "index": 4,
+      "style_id": 5,
+      "sha256": "29e4c3a7a5dfe4786e630fd7b3db7e5aff276bd80d231180079b8de99fffe0ad",
+      "pixel_regions": {
+        "upper": {
+          "visible_ink_pixels": 0,
+          "centroid": null,
+          "x_quantiles_01_99": null
+        },
+        "lower": {
+          "visible_ink_pixels": 1252,
+          "core_pixels": 588,
+          "centroid": [
+            513.4306,
+            538.6092
+          ],
+          "x_quantiles_01_99": [
+            484,
+            544
+          ],
+          "ink_span_px": 61,
+          "mean_core_darkness": 176.8821
+        }
+      },
+      "pass": false
+    },
+    {
+      "file": "male/face_accessory/05.png",
+      "part": "beard",
+      "index": 5,
+      "style_id": 6,
+      "sha256": "0fece24df5ebd74a086bf50cf602aaa5523e4a61d62e679be9f9e1e9d2fcc76b",
+      "pixel_regions": {
+        "upper": {
+          "visible_ink_pixels": 1460,
+          "core_pixels": 533,
+          "centroid": [
+            512.271,
+            466.4199
+          ],
+          "x_quantiles_01_99": [
+            464,
+            562
+          ],
+          "ink_span_px": 99,
+          "mean_core_darkness": 176.3859
+        },
+        "lower": {
+          "visible_ink_pixels": 1835,
+          "core_pixels": 729,
+          "centroid": [
+            512.6714,
+            534.6416
+          ],
+          "x_quantiles_01_99": [
+            484,
+            543
+          ],
+          "ink_span_px": 60,
+          "mean_core_darkness": 176.9598
+        }
+      },
+      "pass": false
+    },
+    {
+      "file": "male/face_accessory/06.png",
+      "part": "beard",
+      "index": 6,
+      "style_id": 7,
+      "sha256": "8f2c748e011b8e5c5f9e65ab24f3bc8b3c8d7aa40443145c4c5996f7d68dc718",
+      "pixel_regions": {
+        "upper": {
+          "visible_ink_pixels": 1196,
+          "core_pixels": 0,
+          "centroid": [
+            513.1199,
+            466.0921
+          ],
+          "x_quantiles_01_99": [
+            466,
+            561
+          ],
+          "ink_span_px": 96,
+          "mean_core_darkness": null
+        },
+        "lower": {
+          "visible_ink_pixels": 1536,
+          "core_pixels": 17,
+          "centroid": [
+            509.0995,
+            526.109
+          ],
+          "x_quantiles_01_99": [
+            452,
+            573
+          ],
+          "ink_span_px": 122,
+          "mean_core_darkness": 157.8627
+        }
+      },
+      "pass": false
+    }
+  ],
+  "limits": "Fixed-ROI ink readings are screening proxies. They do not establish anatomy or beauty. Acceptance also requires complete independent semantic points, current-image SHA binding and native-scale full-face visual evidence. No pixel mirror, alpha-bbox face axis, old rig authority or image mutation is used."
+}

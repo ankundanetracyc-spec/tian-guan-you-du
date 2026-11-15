@@ -1,0 +1,35 @@
+{
+  "mode": "built-in image_gen",
+  "records": [
+    {
+      "key": "eyes04_v2",
+      "native_path": "E:/tmp/CodexData/generated_images/01a1ac35-8591-7bc0-b31a-ed6a532b5357/exec-188f1218-111a-4e46-b86f-dbc6e853a0f2.png",
+      "workspace_file": "native/eyes04_v2.png",
+      "sha256": "fcf30e296f8e7ea10aeb00d40fc1f3ddb3e85608eb3f877df467882a360ab1a4",
+      "status": "rejected_by_user_asymmetry"
+    },
+    {
+      "key": "eyes05_v2",
+      "native_path": "E:/tmp/CodexData/generated_images/01a1ac35-8591-7bc0-b31a-ed6a532b5357/exec-ec707c14-65c9-4e30-a76c-580fd90c654a.png",
+      "workspace_file": "native/eyes05_v2.png",
+      "sha256": "66d6d0279759685791d03284387ac84192c10b8fa1dc3122886fe32226ca6244",
+      "status": "registered_and_reviewed"
+    },
+    {
+      "key": "beard06_v2",
+      "native_path": "E:/tmp/CodexData/generated_images/01a1ac35-8591-7bc0-b31a-ed6a532b5357/exec-0e579ea1-d6bc-4d48-8952-5f5f19f170af.png",
+      "workspace_file": "native/beard06_v2.png",
+      "sha256": "70be15c549d1e20ea28cf0c0c9c75cc0a9ca73d680510d1d7932c5242ef8b5ed",
+      "status": "rejected_density_and_fit"
+    },
+    {
+      "key": "eyes04_v3",
+      "native_path": "E:/tmp/CodexData/generated_images/01a1ac35-8591-7bc0-b31a-ed6a532b5357/exec-b6450c52-5b9e-4e8d-9730-65c65222d65e.png",
+      "workspace_file": "native/eyes04_v3.png",
+      "sha256": "6ec9b3c56fa167be2628ce522519554f42ce1631994739adfec7e8c8620cc503",
+      "status": "generated_base_for_alpha_cleanup_then_strict_pairing"
+    }
+  ],
+  "eye04_final_method": "Generated v3 left eye with reviewed alpha-only matte, paired by a whole-eye geometric reflection about canonical axis513. Not independently painted two eyes.",
+  "beard06_final_method": "Frozen original06 preserved; one whole-layer similarity transform, generated trials rejected."
+}

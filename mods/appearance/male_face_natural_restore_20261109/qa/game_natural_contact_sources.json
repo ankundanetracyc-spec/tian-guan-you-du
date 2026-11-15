@@ -1,0 +1,99 @@
+{
+  "schema": "natural-face-real-game-contact-sources/v1",
+  "crop_xyxy": [
+    350,
+    295,
+    680,
+    560
+  ],
+  "face_crop_size": [
+    330,
+    265
+  ],
+  "face_resize": false,
+  "whole_contact_resize": false,
+  "presentation": "Original game RGBA alpha-composited on one common uniform paper background; labels only. No rendered/reconstructed face substituted.",
+  "previous04_mapping": "Prior fixture uses saved style03 for physical eyes04/brows04; game_bald_b03_e03_composite.png is the actual installed rejected04 capture. Not frozen_raw_before and not game_bald_b04_e04 (that would be physical05).",
+  "previous04_mapping_evidence": "mods/appearance/male_face_alignment_fix_20261109/installation/verify_face_alignment.gd:451",
+  "sources": [
+    {
+      "role": "current actual bald brow01 eye01",
+      "path": "E:\\stacklands\\mods\\appearance\\male_face_natural_restore_20261109\\installation\\game_natural_bald_b01_e01_composite.png",
+      "project_relative_path": "mods/appearance/male_face_natural_restore_20261109/installation/game_natural_bald_b01_e01_composite.png",
+      "sha256": "120684db0589ba5ec9d3a002a19d1069a47e89d65e6d6e30f7605a630407a3ee"
+    },
+    {
+      "role": "current actual bald brow01 eye04",
+      "path": "E:\\stacklands\\mods\\appearance\\male_face_natural_restore_20261109\\installation\\game_natural_bald_b01_e04_composite.png",
+      "project_relative_path": "mods/appearance/male_face_natural_restore_20261109/installation/game_natural_bald_b01_e04_composite.png",
+      "sha256": "1a69ac8f51607c23fc5af7024bc0e4606b568fba48f6c5f27406187cffe5e27d"
+    },
+    {
+      "role": "current actual bald brow01 eye05",
+      "path": "E:\\stacklands\\mods\\appearance\\male_face_natural_restore_20261109\\installation\\game_natural_bald_b01_e05_composite.png",
+      "project_relative_path": "mods/appearance/male_face_natural_restore_20261109/installation/game_natural_bald_b01_e05_composite.png",
+      "sha256": "19686e8b0e0399b59d84e81209c2d78d0fd4f2060058eadb12acbeb311b58015"
+    },
+    {
+      "role": "current actual bald brow04 eye01",
+      "path": "E:\\stacklands\\mods\\appearance\\male_face_natural_restore_20261109\\installation\\game_natural_bald_b04_e01_composite.png",
+      "project_relative_path": "mods/appearance/male_face_natural_restore_20261109/installation/game_natural_bald_b04_e01_composite.png",
+      "sha256": "9a8462b281dbc7ab27800572b01f8890159efce095e8e26b784376e67f965079"
+    },
+    {
+      "role": "current actual bald brow04 eye04",
+      "path": "E:\\stacklands\\mods\\appearance\\male_face_natural_restore_20261109\\installation\\game_natural_bald_b04_e04_composite.png",
+      "project_relative_path": "mods/appearance/male_face_natural_restore_20261109/installation/game_natural_bald_b04_e04_composite.png",
+      "sha256": "0f600a1e01b61309ed03e281900ffe61991e7201b28d6fd6a867d487754ff68d"
+    },
+    {
+      "role": "current actual bald brow04 eye05",
+      "path": "E:\\stacklands\\mods\\appearance\\male_face_natural_restore_20261109\\installation\\game_natural_bald_b04_e05_composite.png",
+      "project_relative_path": "mods/appearance/male_face_natural_restore_20261109/installation/game_natural_bald_b04_e05_composite.png",
+      "sha256": "ddfb7ae2910f9833d9829a1bd261e0a12f7bcc5bc8cbfe47638d489c1092e50e"
+    },
+    {
+      "role": "current actual bald brow05 eye01",
+      "path": "E:\\stacklands\\mods\\appearance\\male_face_natural_restore_20261109\\installation\\game_natural_bald_b05_e01_composite.png",
+      "project_relative_path": "mods/appearance/male_face_natural_restore_20261109/installation/game_natural_bald_b05_e01_composite.png",
+      "sha256": "58672084b467dd54b5d4c4a7ce5b59628ae086681ef410ec24dee22519f4db67"
+    },
+    {
+      "role": "current actual bald brow05 eye04",
+      "path": "E:\\stacklands\\mods\\appearance\\male_face_natural_restore_20261109\\installation\\game_natural_bald_b05_e04_composite.png",
+      "project_relative_path": "mods/appearance/male_face_natural_restore_20261109/installation/game_natural_bald_b05_e04_composite.png",
+      "sha256": "25a68d7b5d84ed9cb3349e3dbf34e6898620ced5dda310a84ecb8e85bda2c85a"
+    },
+    {
+      "role": "current actual bald brow05 eye05",
+      "path": "E:\\stacklands\\mods\\appearance\\male_face_natural_restore_20261109\\installation\\game_natural_bald_b05_e05_composite.png",
+      "project_relative_path": "mods/appearance/male_face_natural_restore_20261109/installation/game_natural_bald_b05_e05_composite.png",
+      "sha256": "e56883a5397abd2bbfc91580e32a3e5c8b041d65d22bb68a0e538d61fb4b88ee"
+    },
+    {
+      "role": "current actual whole01",
+      "path": "E:\\stacklands\\mods\\appearance\\male_face_natural_restore_20261109\\installation\\game_natural_whole_01_composite.png",
+      "project_relative_path": "mods/appearance/male_face_natural_restore_20261109/installation/game_natural_whole_01_composite.png",
+      "sha256": "13336fc4d6fac95fa2a7d8fb93380e37f091e2129799c6bd2da6650efe437625"
+    },
+    {
+      "role": "current actual whole04",
+      "path": "E:\\stacklands\\mods\\appearance\\male_face_natural_restore_20261109\\installation\\game_natural_whole_04_composite.png",
+      "project_relative_path": "mods/appearance/male_face_natural_restore_20261109/installation/game_natural_whole_04_composite.png",
+      "sha256": "0fc2dcd57a7743ebc4d116194d2fb9a969b84ad8075474a627d008e0bfc23ff9"
+    },
+    {
+      "role": "current actual whole05",
+      "path": "E:\\stacklands\\mods\\appearance\\male_face_natural_restore_20261109\\installation\\game_natural_whole_05_composite.png",
+      "project_relative_path": "mods/appearance/male_face_natural_restore_20261109/installation/game_natural_whole_05_composite.png",
+      "sha256": "8555eb5c390c8582ac1675cc1f1fd5bdc1562d05eea9931f9677b74ef12165b5"
+    },
+    {
+      "role": "previous installed rejected generated/mirrored physical04, saved style03",
+      "path": "E:\\stacklands\\mods\\appearance\\male_face_alignment_fix_20261109\\installation\\game_bald_b03_e03_composite.png",
+      "project_relative_path": "mods/appearance/male_face_alignment_fix_20261109/installation/game_bald_b03_e03_composite.png",
+      "sha256": "eedf2dd00717425e75700c435d983e833d87bf840edf1f089bbd33f2fab4ee57"
+    }
+  ],
+  "source_images_and_installation_reports_modified": false
+}

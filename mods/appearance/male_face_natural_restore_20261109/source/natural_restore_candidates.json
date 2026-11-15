@@ -1,0 +1,353 @@
+{
+  "schema": "male-original-brushwork-integer-dx-only/v1",
+  "scope": "Six original frozen eye/brow candidates only; active not written. Current centered nose/mouth/5 beards retained in QA references.",
+  "axis_x": 513,
+  "pixel_policy": "Exact integer whole-pair RGBA relocation, no interpolation. Residual at most0.5px is the deliberate pixel-discreteness tradeoff.",
+  "records": [
+    {
+      "part": "eyes",
+      "index": 4,
+      "source": "mods/appearance/male_face_alignment_fix_20261109/source/frozen/male/eyes/04.png",
+      "source_sha256": "81723d5ca8413f3ecdb5a4a962a8850bf191aa7fd63c1a1818489eff4bd2f23a",
+      "immutable_reference": "reference/original_features/eyes/04.png",
+      "candidate": "male/eyes/04.png",
+      "candidate_sha256": "aa8935dbb3e3695249321a96c9772108708c7b5e4c119a911580c81a57cf6bd3",
+      "semantic_controls": [
+        [
+          462.91674364332664,
+          363.7212441523236
+        ],
+        [
+          567.9720182838442,
+          362.81966211247874
+        ]
+      ],
+      "center_before_x": 515.4443809635854,
+      "desired_fractional_dx_not_used": -2.444380963585445,
+      "translation": [
+        -2,
+        0
+      ],
+      "matrix": [
+        [
+          1,
+          0,
+          -2
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "center_after_x": 513.4443809635854,
+      "axis_residual_px": 0.444380963585445,
+      "rounding_rule": "nearest integer, exact half away fromzero; no input is a halfcase",
+      "measurement_method": "paired actual dark-pupil kernels, fixed smallROIs, threshold100 timesAlpha",
+      "scale": 1,
+      "rotation_deg": 0,
+      "integer_RGBA_copy": true,
+      "interpolation": false,
+      "retained_translated_pixels_RGBA_difference_count": 0,
+      "visible_pixels_clipped": 0,
+      "generation": false,
+      "reflection": false,
+      "alpha_cleanup": false,
+      "original_tilt_eye_distance_shape_retained": true
+    },
+    {
+      "part": "eyebrows",
+      "index": 4,
+      "source": "mods/appearance/male_face_alignment_fix_20261109/source/frozen/male/eyebrows/04.png",
+      "source_sha256": "f7d71d00f80370ddc6610a99aa8a001b7ae4f57abafe2d2eb4b0033fb9f63298",
+      "immutable_reference": "reference/original_features/eyebrows/04.png",
+      "candidate": "male/eyebrows/04.png",
+      "candidate_sha256": "a4ea663fccd21521e9c434018726ec2f7c6de391ca57c8e47c6eda9537604bbb",
+      "semantic_controls": [
+        [
+          488.77955627596,
+          347.2792422246987
+        ],
+        [
+          539.1047863710114,
+          346.8357220118983
+        ]
+      ],
+      "center_before_x": 513.9421713234857,
+      "desired_fractional_dx_not_used": -0.9421713234856952,
+      "translation": [
+        -1,
+        0
+      ],
+      "matrix": [
+        [
+          1,
+          0,
+          -1
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "center_after_x": 512.9421713234857,
+      "axis_residual_px": -0.05782867651430479,
+      "rounding_rule": "nearest integer, exact half away fromzero; no input is a halfcase",
+      "measurement_method": "paired actual inner brow-head ink centers, excluding transparent support",
+      "scale": 1,
+      "rotation_deg": 0,
+      "integer_RGBA_copy": true,
+      "interpolation": false,
+      "retained_translated_pixels_RGBA_difference_count": 0,
+      "visible_pixels_clipped": 0,
+      "generation": false,
+      "reflection": false,
+      "alpha_cleanup": false,
+      "original_tilt_eye_distance_shape_retained": true
+    },
+    {
+      "part": "eyes",
+      "index": 1,
+      "source": "mods/appearance/male_face_alignment_fix_20261109/source/frozen/male/eyes/01.png",
+      "source_sha256": "5ecb31eacb232bf8be1f83ddd97c50c3715b792564c73052f425aca7c20eb8af",
+      "immutable_reference": "reference/original_features/eyes/01.png",
+      "candidate": "male/eyes/01.png",
+      "candidate_sha256": "16d821b6f969f2bcc3d293ae9aef6a1d20e0ca41605f4c382f9cf6c9730d6264",
+      "semantic_controls": [
+        [
+          462.5633505472131,
+          364.8594827739339
+        ],
+        [
+          568.9791437615578,
+          363.965515813067
+        ]
+      ],
+      "center_before_x": 515.7712471543855,
+      "desired_fractional_dx_not_used": -2.7712471543854917,
+      "translation": [
+        -3,
+        0
+      ],
+      "matrix": [
+        [
+          1,
+          0,
+          -3
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "center_after_x": 512.7712471543855,
+      "axis_residual_px": -0.22875284561450826,
+      "rounding_rule": "nearest integer, exact half away fromzero; no input is a halfcase",
+      "measurement_method": "paired actual dark-pupil kernels, fixed smallROIs, threshold100 timesAlpha",
+      "scale": 1,
+      "rotation_deg": 0,
+      "integer_RGBA_copy": true,
+      "interpolation": false,
+      "retained_translated_pixels_RGBA_difference_count": 0,
+      "visible_pixels_clipped": 0,
+      "generation": false,
+      "reflection": false,
+      "alpha_cleanup": false,
+      "original_tilt_eye_distance_shape_retained": true
+    },
+    {
+      "part": "eyebrows",
+      "index": 1,
+      "source": "mods/appearance/male_face_alignment_fix_20261109/source/frozen/male/eyebrows/01.png",
+      "source_sha256": "b094a5d118e3b722b1901198c319919804cc93ab225c873366aa02af6fc6fa5f",
+      "immutable_reference": "reference/original_features/eyebrows/01.png",
+      "candidate": "male/eyebrows/01.png",
+      "candidate_sha256": "f38064b1d7acd76a3ced5c58a7482818e60598c94061f776a6b286b1b4749700",
+      "semantic_controls": [
+        [
+          489.79528952616687,
+          350.6747766239202
+        ],
+        [
+          538.1186472292432,
+          350.83966350144004
+        ]
+      ],
+      "center_before_x": 513.956968377705,
+      "desired_fractional_dx_not_used": -0.9569683777050386,
+      "translation": [
+        -1,
+        0
+      ],
+      "matrix": [
+        [
+          1,
+          0,
+          -1
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "center_after_x": 512.956968377705,
+      "axis_residual_px": -0.04303162229496138,
+      "rounding_rule": "nearest integer, exact half away fromzero; no input is a halfcase",
+      "measurement_method": "paired actual inner brow-head ink centers, excluding transparent support",
+      "scale": 1,
+      "rotation_deg": 0,
+      "integer_RGBA_copy": true,
+      "interpolation": false,
+      "retained_translated_pixels_RGBA_difference_count": 0,
+      "visible_pixels_clipped": 0,
+      "generation": false,
+      "reflection": false,
+      "alpha_cleanup": false,
+      "original_tilt_eye_distance_shape_retained": true
+    },
+    {
+      "part": "eyes",
+      "index": 5,
+      "source": "mods/appearance/male_face_alignment_fix_20261109/source/frozen/male/eyes/05.png",
+      "source_sha256": "46d6b972e5667199e274b1c2dd8bc1686f01e0ed3f68eac4301f1fbf648f88fd",
+      "immutable_reference": "reference/original_features/eyes/05.png",
+      "candidate": "male/eyes/05.png",
+      "candidate_sha256": "4d518b95c103e85aa18d8f331b4b61f4c039cbf36876d6cd9bac49f827346e91",
+      "semantic_controls": [
+        [
+          462.7115168543904,
+          363.5715772541107
+        ],
+        [
+          567.5957296170733,
+          364.05865064509516
+        ]
+      ],
+      "center_before_x": 515.1536232357319,
+      "desired_fractional_dx_not_used": -2.1536232357318568,
+      "translation": [
+        -2,
+        0
+      ],
+      "matrix": [
+        [
+          1,
+          0,
+          -2
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "center_after_x": 513.1536232357319,
+      "axis_residual_px": 0.15362323573185677,
+      "rounding_rule": "nearest integer, exact half away fromzero; no input is a halfcase",
+      "measurement_method": "paired actual dark-pupil kernels, fixed smallROIs, threshold100 timesAlpha",
+      "scale": 1,
+      "rotation_deg": 0,
+      "integer_RGBA_copy": true,
+      "interpolation": false,
+      "retained_translated_pixels_RGBA_difference_count": 0,
+      "visible_pixels_clipped": 0,
+      "generation": false,
+      "reflection": false,
+      "alpha_cleanup": false,
+      "original_tilt_eye_distance_shape_retained": true
+    },
+    {
+      "part": "eyebrows",
+      "index": 5,
+      "source": "mods/appearance/male_face_alignment_fix_20261109/source/frozen/male/eyebrows/05.png",
+      "source_sha256": "f5e0908457fb3b30a33dc7961af0b4c0e046f6794d8768104b79d1a0714839fd",
+      "immutable_reference": "reference/original_features/eyebrows/05.png",
+      "candidate": "male/eyebrows/05.png",
+      "candidate_sha256": "23909da9d9e7ca5e1516cb29e0e038197b0d5d53ccd5c6aa838da58f8c8d7b04",
+      "semantic_controls": [
+        [
+          488.7134996871983,
+          354.3538540455391
+        ],
+        [
+          536.1322457731482,
+          354.85810043995
+        ]
+      ],
+      "center_before_x": 512.4228727301733,
+      "desired_fractional_dx_not_used": 0.5771272698267467,
+      "translation": [
+        1,
+        0
+      ],
+      "matrix": [
+        [
+          1,
+          0,
+          1
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "center_after_x": 513.4228727301733,
+      "axis_residual_px": 0.42287273017325333,
+      "rounding_rule": "nearest integer, exact half away fromzero; no input is a halfcase",
+      "measurement_method": "paired actual inner brow-head ink centers, excluding transparent support",
+      "scale": 1,
+      "rotation_deg": 0,
+      "integer_RGBA_copy": true,
+      "interpolation": false,
+      "retained_translated_pixels_RGBA_difference_count": 0,
+      "visible_pixels_clipped": 0,
+      "generation": false,
+      "reflection": false,
+      "alpha_cleanup": false,
+      "original_tilt_eye_distance_shape_retained": true
+    }
+  ],
+  "current_support": {
+    "face_shape/01.png": {
+      "active_sha256": "d86319252035a286a92e8892b9816bdb917a39f7f41f4cb1edf40f4dee51c357",
+      "reference": "reference/current_male/face_shape/01.png"
+    },
+    "nose/01.png": {
+      "active_sha256": "fea108d7478f923b820ad85c2bd0ea1aafd4ac0273c9702bec60a4ced9cc2d03",
+      "reference": "reference/current_male/nose/01.png"
+    },
+    "mouth/01.png": {
+      "active_sha256": "8ead9b1c2bd3bbd9d0efc95b14ba273dba4f70afe458d83cdb6067e5d246cf1b",
+      "reference": "reference/current_male/mouth/01.png"
+    },
+    "face_accessory/01.png": {
+      "active_sha256": "1913847bf9091720c48139f49dfbb3aa70c4d20de82f2718e3dcd8348c6e5e9c",
+      "reference": "reference/current_male/face_accessory/01.png"
+    },
+    "face_accessory/02.png": {
+      "active_sha256": "fcb82b82b862de2da397c4f6369df87a5786ce8fdf9abeae5511f30748aa7b94",
+      "reference": "reference/current_male/face_accessory/02.png"
+    },
+    "face_accessory/03.png": {
+      "active_sha256": "8582fc742f60b7df10111cfc4d8a24e747221323afa05e8ce2afdcd671bd1199",
+      "reference": "reference/current_male/face_accessory/03.png"
+    },
+    "face_accessory/04.png": {
+      "active_sha256": "29e4c3a7a5dfe4786e630fd7b3db7e5aff276bd80d231180079b8de99fffe0ad",
+      "reference": "reference/current_male/face_accessory/04.png"
+    },
+    "face_accessory/05.png": {
+      "active_sha256": "0fece24df5ebd74a086bf50cf602aaa5523e4a61d62e679be9f9e1e9d2fcc76b",
+      "reference": "reference/current_male/face_accessory/05.png"
+    },
+    "face_accessory/06.png": {
+      "active_sha256": "aaceb8ef949f763fb58b8a0fe5c58e86954f52e072a8762dccaa00b29db41b5b",
+      "reference": "reference/current_male/face_accessory/06.png"
+    }
+  },
+  "note": "Natural original small tilt and unequal local brush marks intentionally retained. This restores original brushwork and shared placement; it does not claim all local asymmetry has been repaired."
+}

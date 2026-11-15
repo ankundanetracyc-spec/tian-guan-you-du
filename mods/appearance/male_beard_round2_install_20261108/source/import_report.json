@@ -1,0 +1,634 @@
+{
+  "output_scope": "Only this install package; no active PNG, catalog, production code or user save writes.",
+  "records": [
+    {
+      "accepted_source_pigment_pixels": 1766,
+      "allowed_roi": [
+        450,
+        448,
+        134,
+        43
+      ],
+      "approved": "res://mods/appearance/male_beard_round2_install_20261108/reference/01_approved.png",
+      "approved_sha256": "59c46faa59d3060bfd66be106724e857b719c3fbac3cc143e786cd68643ac374",
+      "background_estimate": {
+        "applied_delta_rgb_255": [
+          0.0,
+          -1.99999988079071,
+          -1.99999988079071
+        ],
+        "eligible_pixels": 2500,
+        "measured_delta_rgb_255": [
+          0.0,
+          -1.99999988079071,
+          -1.99999988079071
+        ],
+        "override_used": false,
+        "sample_evidence": [
+          {
+            "box": [
+              441,
+              405,
+              28,
+              35
+            ],
+            "eligible_pixels": 980,
+            "median_delta_rgb_255": [
+              0.0,
+              -1.99999988079071,
+              -1.99999988079071
+            ]
+          },
+          {
+            "box": [
+              568,
+              405,
+              28,
+              35
+            ],
+            "eligible_pixels": 980,
+            "median_delta_rgb_255": [
+              -0.999999940395355,
+              -2.99999982118607,
+              -2.99999982118607
+            ]
+          },
+          {
+            "box": [
+              483,
+              496,
+              18,
+              15
+            ],
+            "eligible_pixels": 270,
+            "median_delta_rgb_255": [
+              0.999999940395355,
+              -0.999999940395355,
+              -0.999999940395355
+            ]
+          },
+          {
+            "box": [
+              532,
+              496,
+              18,
+              15
+            ],
+            "eligible_pixels": 270,
+            "median_delta_rgb_255": [
+              0.0,
+              -0.999999940395355,
+              -0.999999940395355
+            ]
+          }
+        ],
+        "scope": "One constant measured per approved portrait; no spatial color paint or modification to the original skin."
+      },
+      "canvas": [
+        1024,
+        1536
+      ],
+      "clamped_foreground_channels": 5,
+      "clean_reference": "res://mods/appearance/male_beard_round2_install_20261108/reference/approved_no_beard.png",
+      "clean_sha256": "d97b79e3372df42db24b4dd5c3ec42f376d652616d9fa25d78a393b004da81a8",
+      "excluded_lip_pixels": 34,
+      "final_alpha_bbox": [
+        464,
+        450,
+        108,
+        30
+      ],
+      "foreground_luminance_reference_255": 80.0,
+      "full_id": "male_beard_04",
+      "key": "01",
+      "limitations": "Skin background and opacity are estimates; actual composite and edge QA must be viewed before copying to the active package.",
+      "lip_exclusions": [
+        [
+          478.0,
+          477.0,
+          79.0,
+          15.0
+        ]
+      ],
+      "method": "Image_gen support gates observed approved-source dark pigment. a=(Y(B)-Y(C))/(Y(B)-Y(F));F=(C-(1-a)B)/a. No procedural beard drawing.",
+      "minimum_darkening_255": 5.0,
+      "name": "八字短髭",
+      "no_active_file_written": true,
+      "no_local_warp": true,
+      "output": "res://mods/appearance/male_beard_round2_install_20261108/male/face_accessory/03.png",
+      "output_sha256": "40118e019e467e331201e3d7235c92eb0cc0a934d35712e6ffffdcd7164d5f82",
+      "physical_index": 3,
+      "registration": {
+        "generated_support": "res://mods/appearance/male_beard_round2_install_20261108/raw/01_support_on_canvas.png",
+        "integer_translation": [
+          442,
+          437
+        ],
+        "method": "One whole-layer uniform Lanczos reduction in premultiplied alpha; integer placement. No local warp.",
+        "native_sha256": "20d2e919080d1ffb05a4d5a5e1dc8b2afd543d9eb0a38b929ac2b995235d6626",
+        "native_size": [
+          1366,
+          1152
+        ],
+        "native_source": "res://mods/appearance/male_beard_round2_install_20261108/raw/01_native.png",
+        "registration_guides": [],
+        "removed_native_alpha1_to4_pixels": 18135,
+        "resized_size": [
+          151,
+          127
+        ],
+        "support_bbox": [
+          465,
+          453,
+          106,
+          25
+        ],
+        "uniform_scale": 0.110283013377199
+      },
+      "runtime_offset": [
+        0,
+        0
+      ],
+      "selected_source_canvas_coordinates_retained": true,
+      "source_reconstruction_error_255": {
+        "max_channel": 1.33552193641663,
+        "mean_max_channel": 0.00167355413885106,
+        "scope": "Recovered foreground against the estimated source background, before PNG quantization. Not a whole-game image equality claim."
+      },
+      "style_id": 4,
+      "support_dilation_px": 3,
+      "supported_roi_pixels": 2326
+    },
+    {
+      "accepted_source_pigment_pixels": 1463,
+      "allowed_roi": [
+        475,
+        505,
+        85,
+        68
+      ],
+      "approved": "res://mods/appearance/male_beard_round2_install_20261108/reference/02_approved.png",
+      "approved_sha256": "44881408a2771986d4333ec23ce39325488bcdef7788edb4007f545490d6ea63",
+      "background_estimate": {
+        "applied_delta_rgb_255": [
+          0.999999940395355,
+          0.0,
+          0.0
+        ],
+        "eligible_pixels": 2500,
+        "measured_delta_rgb_255": [
+          0.999999940395355,
+          0.0,
+          0.0
+        ],
+        "override_used": false,
+        "sample_evidence": [
+          {
+            "box": [
+              441,
+              405,
+              28,
+              35
+            ],
+            "eligible_pixels": 980,
+            "median_delta_rgb_255": [
+              0.999999940395355,
+              0.999999940395355,
+              0.0
+            ]
+          },
+          {
+            "box": [
+              568,
+              405,
+              28,
+              35
+            ],
+            "eligible_pixels": 980,
+            "median_delta_rgb_255": [
+              0.999999940395355,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "box": [
+              483,
+              496,
+              18,
+              15
+            ],
+            "eligible_pixels": 270,
+            "median_delta_rgb_255": [
+              0.0,
+              0.0,
+              0.999999940395355
+            ]
+          },
+          {
+            "box": [
+              532,
+              496,
+              18,
+              15
+            ],
+            "eligible_pixels": 270,
+            "median_delta_rgb_255": [
+              0.999999940395355,
+              0.999999940395355,
+              0.999999940395355
+            ]
+          }
+        ],
+        "scope": "One constant measured per approved portrait; no spatial color paint or modification to the original skin."
+      },
+      "canvas": [
+        1024,
+        1536
+      ],
+      "clamped_foreground_channels": 8,
+      "clean_reference": "res://mods/appearance/male_beard_round2_install_20261108/reference/approved_no_beard.png",
+      "clean_sha256": "d97b79e3372df42db24b4dd5c3ec42f376d652616d9fa25d78a393b004da81a8",
+      "excluded_lip_pixels": 0,
+      "final_alpha_bbox": [
+        483,
+        514,
+        71,
+        46
+      ],
+      "foreground_luminance_reference_255": 80.0,
+      "full_id": "male_beard_05",
+      "key": "02",
+      "limitations": "Skin background and opacity are estimates; actual composite and edge QA must be viewed before copying to the active package.",
+      "lip_exclusions": [],
+      "method": "Image_gen support gates observed approved-source dark pigment. a=(Y(B)-Y(C))/(Y(B)-Y(F));F=(C-(1-a)B)/a. No procedural beard drawing.",
+      "minimum_darkening_255": 5.0,
+      "name": "短颏须",
+      "no_active_file_written": true,
+      "no_local_warp": true,
+      "output": "res://mods/appearance/male_beard_round2_install_20261108/male/face_accessory/04.png",
+      "output_sha256": "bb4aa8dfb5d62eedc93048e694928adb89ba66b29a0ac511bf419c8b544d7a28",
+      "physical_index": 4,
+      "registration": {
+        "generated_support": "res://mods/appearance/male_beard_round2_install_20261108/raw/02_support_on_canvas.png",
+        "integer_translation": [
+          444,
+          487
+        ],
+        "method": "One whole-layer uniform Lanczos reduction in premultiplied alpha; integer placement. No local warp.",
+        "native_sha256": "7d9876118ccadc4d3b9a7c12829764006014010fe24c13ac93622034dc88f454",
+        "native_size": [
+          1474,
+          1067
+        ],
+        "native_source": "res://mods/appearance/male_beard_round2_install_20261108/raw/02_native.png",
+        "registration_guides": [],
+        "removed_native_alpha1_to4_pixels": 22303,
+        "resized_size": [
+          150,
+          109
+        ],
+        "support_bbox": [
+          484,
+          516,
+          70,
+          44
+        ],
+        "uniform_scale": 0.101713824534751
+      },
+      "runtime_offset": [
+        0,
+        0
+      ],
+      "selected_source_canvas_coordinates_retained": true,
+      "source_reconstruction_error_255": {
+        "max_channel": 2.01152086257935,
+        "mean_max_channel": 0.00622850733918029,
+        "scope": "Recovered foreground against the estimated source background, before PNG quantization. Not a whole-game image equality claim."
+      },
+      "style_id": 5,
+      "support_dilation_px": 3,
+      "supported_roi_pixels": 2129
+    },
+    {
+      "accepted_source_pigment_pixels": 4047,
+      "allowed_roi": [
+        450,
+        448,
+        135,
+        132
+      ],
+      "approved": "res://mods/appearance/male_beard_round2_install_20261108/reference/03_approved.png",
+      "approved_sha256": "7ac8cf94ebea0a712b39d5d2b019244c5d0cba8f0c544c95fb1783642b5bd18c",
+      "background_estimate": {
+        "applied_delta_rgb_255": [
+          1.99999988079071,
+          0.0,
+          0.0
+        ],
+        "eligible_pixels": 2500,
+        "measured_delta_rgb_255": [
+          1.99999988079071,
+          0.0,
+          0.0
+        ],
+        "override_used": false,
+        "sample_evidence": [
+          {
+            "box": [
+              441,
+              405,
+              28,
+              35
+            ],
+            "eligible_pixels": 980,
+            "median_delta_rgb_255": [
+              1.99999988079071,
+              0.999999940395355,
+              0.0
+            ]
+          },
+          {
+            "box": [
+              568,
+              405,
+              28,
+              35
+            ],
+            "eligible_pixels": 980,
+            "median_delta_rgb_255": [
+              1.99999988079071,
+              0.0,
+              0.0
+            ]
+          },
+          {
+            "box": [
+              483,
+              496,
+              18,
+              15
+            ],
+            "eligible_pixels": 270,
+            "median_delta_rgb_255": [
+              0.999999940395355,
+              -0.999999940395355,
+              -1.99999988079071
+            ]
+          },
+          {
+            "box": [
+              532,
+              496,
+              18,
+              15
+            ],
+            "eligible_pixels": 270,
+            "median_delta_rgb_255": [
+              1.99999988079071,
+              0.0,
+              -0.999999940395355
+            ]
+          }
+        ],
+        "scope": "One constant measured per approved portrait; no spatial color paint or modification to the original skin."
+      },
+      "canvas": [
+        1024,
+        1536
+      ],
+      "clamped_foreground_channels": 19,
+      "clean_reference": "res://mods/appearance/male_beard_round2_install_20261108/reference/approved_no_beard.png",
+      "clean_sha256": "d97b79e3372df42db24b4dd5c3ec42f376d652616d9fa25d78a393b004da81a8",
+      "excluded_lip_pixels": 151,
+      "final_alpha_bbox": [
+        463,
+        449,
+        108,
+        123
+      ],
+      "foreground_luminance_reference_255": 80.0,
+      "full_id": "male_beard_06",
+      "key": "03",
+      "limitations": "Skin background and opacity are estimates; actual composite and edge QA must be viewed before copying to the active package.",
+      "lip_exclusions": [
+        [
+          478.0,
+          477.0,
+          79.0,
+          15.0
+        ]
+      ],
+      "method": "Image_gen support gates observed approved-source dark pigment. a=(Y(B)-Y(C))/(Y(B)-Y(F));F=(C-(1-a)B)/a. No procedural beard drawing.",
+      "minimum_darkening_255": 5.0,
+      "name": "细髭尖颏",
+      "no_active_file_written": true,
+      "no_local_warp": true,
+      "output": "res://mods/appearance/male_beard_round2_install_20261108/male/face_accessory/05.png",
+      "output_sha256": "355e1a1b6ca07bdbfcbcd388515ef37c1ad219bda73a8964dc8f2f607c63c1fc",
+      "physical_index": 5,
+      "registration": {
+        "generated_support": "res://mods/appearance/male_beard_round2_install_20261108/raw/03_support_on_canvas.png",
+        "integer_translation": [
+          436,
+          436
+        ],
+        "method": "One whole-layer uniform Lanczos reduction in premultiplied alpha; integer placement. No local warp.",
+        "native_sha256": "8088277f8ddec5882177e540c5fba3b25a2c38cedb0cf652f131a506d979577c",
+        "native_size": [
+          1295,
+          1215
+        ],
+        "native_source": "res://mods/appearance/male_beard_round2_install_20261108/raw/03_native.png",
+        "registration_guides": [],
+        "removed_native_alpha1_to4_pixels": 54115,
+        "resized_size": [
+          163,
+          153
+        ],
+        "support_bbox": [
+          463,
+          453,
+          109,
+          120
+        ],
+        "uniform_scale": 0.126074017227783
+      },
+      "runtime_offset": [
+        0,
+        0
+      ],
+      "selected_source_canvas_coordinates_retained": true,
+      "source_reconstruction_error_255": {
+        "max_channel": 3.25964748859406,
+        "mean_max_channel": 0.0030920707004171,
+        "scope": "Recovered foreground against the estimated source background, before PNG quantization. Not a whole-game image equality claim."
+      },
+      "style_id": 6,
+      "support_dilation_px": 4,
+      "supported_roi_pixels": 6867
+    },
+    {
+      "accepted_source_pigment_pixels": 4551,
+      "allowed_roi": [
+        417,
+        418,
+        195,
+        139
+      ],
+      "approved": "res://mods/appearance/male_beard_round2_install_20261108/reference/04_approved.png",
+      "approved_sha256": "422578b881fa48a4914e3f201c61850d730f4386fa7b154c2988c4a10681b907",
+      "background_estimate": {
+        "applied_delta_rgb_255": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "eligible_pixels": 2481,
+        "measured_delta_rgb_255": [
+          1.99999988079071,
+          0.999999940395355,
+          -0.999999940395355
+        ],
+        "override_used": true,
+        "sample_evidence": [
+          {
+            "box": [
+              441,
+              405,
+              28,
+              35
+            ],
+            "eligible_pixels": 980,
+            "median_delta_rgb_255": [
+              1.99999988079071,
+              0.0,
+              -1.99999988079071
+            ]
+          },
+          {
+            "box": [
+              568,
+              405,
+              28,
+              35
+            ],
+            "eligible_pixels": 980,
+            "median_delta_rgb_255": [
+              3.99999976158142,
+              1.99999988079071,
+              0.0
+            ]
+          },
+          {
+            "box": [
+              483,
+              496,
+              18,
+              15
+            ],
+            "eligible_pixels": 263,
+            "median_delta_rgb_255": [
+              0.999999940395355,
+              0.999999940395355,
+              -0.999999940395355
+            ]
+          },
+          {
+            "box": [
+              532,
+              496,
+              18,
+              15
+            ],
+            "eligible_pixels": 258,
+            "median_delta_rgb_255": [
+              0.0,
+              -0.999999940395355,
+              -2.99999982118607
+            ]
+          }
+        ],
+        "scope": "One constant measured per approved portrait; no spatial color paint or modification to the original skin."
+      },
+      "canvas": [
+        1024,
+        1536
+      ],
+      "clamped_foreground_channels": 171,
+      "clean_reference": "res://mods/appearance/male_beard_round2_install_20261108/reference/active_no_beard_composite.png",
+      "clean_sha256": "f7ca9898dc6dba2ea44d7bbc5e7307dbb2ece8cad0c9f30de9bf90094166c46b",
+      "excluded_lip_pixels": 53,
+      "final_alpha_bbox": [
+        417,
+        422,
+        195,
+        125
+      ],
+      "foreground_luminance_reference_255": 80.0,
+      "full_id": "male_beard_07",
+      "key": "04",
+      "limitations": "Skin background and opacity are estimates; actual composite and edge QA must be viewed before copying to the active package.",
+      "lip_exclusions": [
+        [
+          478.0,
+          477.0,
+          79.0,
+          15.0
+        ]
+      ],
+      "method": "Image_gen support gates observed approved-source dark pigment. a=(Y(B)-Y(C))/(Y(B)-Y(F));F=(C-(1-a)B)/a. No procedural beard drawing.",
+      "minimum_darkening_255": 5.0,
+      "name": "薄络腮须",
+      "no_active_file_written": true,
+      "no_local_warp": true,
+      "output": "res://mods/appearance/male_beard_round2_install_20261108/male/face_accessory/06.png",
+      "output_sha256": "c3bc9bd6eb602c064e498dcd1e881a83296f5cb7c03b2bf3fe2923a97086a3e3",
+      "physical_index": 6,
+      "registration": {
+        "generated_support": "res://mods/appearance/male_beard_round2_install_20261108/raw/04_support_on_canvas.png",
+        "integer_translation": [
+          403,
+          398
+        ],
+        "method": "One whole-layer uniform Lanczos reduction in premultiplied alpha; integer placement. No local warp.",
+        "native_sha256": "25d9c24eee6a4ad40b0d9b4781171b731d68d20f01d73ec75c09cfb0e89e9da6",
+        "native_size": [
+          1399,
+          1124
+        ],
+        "native_source": "res://mods/appearance/male_beard_round2_install_20261108/raw/04_native.png",
+        "registration_guides": [],
+        "removed_native_alpha1_to4_pixels": 79723,
+        "resized_size": [
+          225,
+          181
+        ],
+        "support_bbox": [
+          421,
+          427,
+          189,
+          116
+        ],
+        "uniform_scale": 0.161116285719692
+      },
+      "runtime_offset": [
+        0,
+        0
+      ],
+      "selected_source_canvas_coordinates_retained": true,
+      "source_reconstruction_error_255": {
+        "max_channel": 8.88383209705353,
+        "mean_max_channel": 0.0595400780537605,
+        "scope": "Recovered foreground against the estimated source background, before PNG quantization. Not a whole-game image equality claim."
+      },
+      "style_id": 7,
+      "support_dilation_px": 5,
+      "supported_roi_pixels": 11314
+    }
+  ],
+  "registration_file": "res://mods/appearance/male_beard_round2_install_20261108/source/registration.json",
+  "review": "Inspect each shallow/deep/checker composite and isolated layer before installation.",
+  "source_mode": "built-in image_gen supports plus Godot source-foreground matting",
+  "status": "four_candidate_layers_imported_for_visual_review"
+}

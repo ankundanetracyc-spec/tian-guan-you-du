@@ -1,0 +1,80 @@
+{
+  "all_beard_choices": 6,
+  "checks": 1137,
+  "creator_actual_dropdown_cases": 4,
+  "editor_manual_cases": 4,
+  "failures": [],
+  "hair_clothing_combinations": 252,
+  "imported_textures": [
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 0,
+      "low_alpha_rgb_different_pixels": 1419,
+      "name": "八字短髭",
+      "note": "Existing Godot alpha-border processing may change low-alpha RGB; no full-RGBA identity claim.",
+      "path": "res://mods/appearance/ink_three_variants_20261004/male/face_accessory/03.png"
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 70,
+      "low_alpha_rgb_different_pixels": 1069,
+      "name": "短颏须",
+      "note": "Existing Godot alpha-border processing may change low-alpha RGB; no full-RGBA identity claim.",
+      "path": "res://mods/appearance/ink_three_variants_20261004/male/face_accessory/04.png"
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 96,
+      "low_alpha_rgb_different_pixels": 3013,
+      "name": "细髭尖颏",
+      "note": "Existing Godot alpha-border processing may change low-alpha RGB; no full-RGBA identity claim.",
+      "path": "res://mods/appearance/ink_three_variants_20261004/male/face_accessory/05.png"
+    },
+    {
+      "alpha_different_pixels": 0,
+      "core_rgb_different_pixels": 0,
+      "core_tested_pixels": 240,
+      "low_alpha_rgb_different_pixels": 5734,
+      "name": "薄络腮须",
+      "note": "Existing Godot alpha-border processing may change low-alpha RGB; no full-RGBA identity claim.",
+      "path": "res://mods/appearance/ink_three_variants_20261004/male/face_accessory/06.png"
+    }
+  ],
+  "new_beards": [
+    {
+      "choice_index": 2,
+      "full_id": "male_beard_04",
+      "name": "八字短髭",
+      "path": "res://mods/appearance/ink_three_variants_20261004/male/face_accessory/03.png",
+      "style": 4
+    },
+    {
+      "choice_index": 3,
+      "full_id": "male_beard_05",
+      "name": "短颏须",
+      "path": "res://mods/appearance/ink_three_variants_20261004/male/face_accessory/04.png",
+      "style": 5
+    },
+    {
+      "choice_index": 4,
+      "full_id": "male_beard_06",
+      "name": "细髭尖颏",
+      "path": "res://mods/appearance/ink_three_variants_20261004/male/face_accessory/05.png",
+      "style": 6
+    },
+    {
+      "choice_index": 5,
+      "full_id": "male_beard_07",
+      "name": "薄络腮须",
+      "path": "res://mods/appearance/ink_three_variants_20261004/male/face_accessory/06.png",
+      "style": 7
+    }
+  ],
+  "pass": true,
+  "retained_pngs": 55,
+  "scope": "Four beard additions; existing55PNG and old ID preservation;4x63 exact UI compositions, independent visibility, female preservation;formal render at16/25/40;real editor Apply/reopen and actual creator dropdown. Temporary in-memory fixtures only; no journey or preset saves.",
+  "user_preset_unchanged": true
+}

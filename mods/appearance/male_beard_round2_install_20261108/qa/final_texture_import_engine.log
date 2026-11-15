@@ -1,0 +1,227 @@
+Godot Engine v4.7.2.stable.mono.official.ed1daf0bf - https://godotengine.org
+
+[   0% ] first_scan_filesystem | Started 项目初始化 (5 steps)
+[   0% ] first_scan_filesystem | 正在扫描文件结构……
+WARNING: Detected another project.godot at res://mods/appearance/portrait_original_restore_20261105_v6/collar_hair_fixed_neck_20261105/collars_only/installation/import_project. The folder will be ignored.
+   at: _should_skip_directory (editor/file_system/editor_file_system.cpp:3497)
+[  16% ] first_scan_filesystem | 正在加载全局类名……
+[  33% ] first_scan_filesystem | 正在校验 GDExtension……
+[  50% ] first_scan_filesystem | 正在创建自动加载脚本……
+[  66% ] first_scan_filesystem | 正在初始化插件……
+ERROR: Godot MCP: Failed to listen on ws://127.0.0.1:49631 (error=22)
+   at: push_error (core/variant/variant_utility.cpp:1023)
+   GDScript backtrace (most recent call first):
+       [0] _enter_tree (res://addons/godot_mcp/mcp_bridge.gd:45)
+[  83% ] first_scan_filesystem | 正在启动文件扫描……
+[ DONE ] first_scan_filesystem
+
+WARNING: UID duplicate detected between res://textures/vfx/ink_chop_sequence_20261016_v2/bake.gdshader and res://textures/vfx/ink_chop_sequence_20261015_v1/bake.gdshader.
+   at: _process_file_system (editor/file_system/editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_chop_sequence_20261016_v2/impact_atlas_0.png and res://textures/vfx/ink_chop_sequence_20261015_v1/impact_atlas_0.png.
+   at: _process_file_system (editor/file_system/editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_chop_sequence_20261016_v2/impact_atlas_1.png and res://textures/vfx/ink_chop_sequence_20261015_v1/impact_atlas_1.png.
+   at: _process_file_system (editor/file_system/editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_chop_sequence_20261016_v2/palette.gdshader and res://textures/vfx/ink_chop_sequence_20261015_v1/palette.gdshader.
+   at: _process_file_system (editor/file_system/editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_chop_sequence_20261016_v2/slash_atlas_0.png and res://textures/vfx/ink_chop_sequence_20261015_v1/slash_atlas_0.png.
+   at: _process_file_system (editor/file_system/editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/bake.gdshader and res://textures/vfx/ink_response_sequences_20261015_v1/bake.gdshader.
+   at: _process_file_system (editor/file_system/editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/guard_atlas_0.png and res://textures/vfx/ink_response_sequences_20261015_v1/guard_atlas_0.png.
+   at: _process_file_system (editor/file_system/editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/guard_atlas_1.png and res://textures/vfx/ink_response_sequences_20261015_v1/guard_atlas_1.png.
+   at: _process_file_system (editor/file_system/editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/hurt_atlas_0.png and res://textures/vfx/ink_response_sequences_20261015_v1/hurt_atlas_0.png.
+   at: _process_file_system (editor/file_system/editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/hurt_atlas_1.png and res://textures/vfx/ink_response_sequences_20261015_v1/hurt_atlas_1.png.
+   at: _process_file_system (editor/file_system/editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/restore_atlas_0.png and res://textures/vfx/ink_response_sequences_20261015_v1/restore_atlas_0.png.
+   at: _process_file_system (editor/file_system/editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/restore_atlas_1.png and res://textures/vfx/ink_response_sequences_20261015_v1/restore_atlas_1.png.
+   at: _process_file_system (editor/file_system/editor_file_system.cpp:1405)
+WARNING: UID duplicate detected between res://textures/vfx/ink_response_sequences_20261016_v2/restore_atlas_2.png and res://textures/vfx/ink_response_sequences_20261015_v1/restore_atlas_2.png.
+   at: _process_file_system (editor/file_system/editor_file_system.cpp:1405)
+[   0% ] update_scripts_classes | Started 正在注册全局类…… (2 steps)
+[   0% ] update_scripts_classes | 
+[  33% ] update_scripts_classes | 
+[ DONE ] update_scripts_classes
+
+[   0% ] _update_scan_actions | Started 正在扫描动作…… (99 steps)
+[   0% ] _update_scan_actions | 云息境界表现_三环周行.png
+[   1% ] _update_scan_actions | 云息境界表现_三环立体侧转.png
+[   2% ] _update_scan_actions | 云息境界表现_十层偏心环.png
+[   3% ] _update_scan_actions | 云息境界表现_归元息游走.png
+[   4% ] _update_scan_actions | 云息境界表现_旋涡与题字对齐.png
+[   5% ] _update_scan_actions | 云息境界表现_正心三环.png
+[   6% ] _update_scan_actions | 云息境界表现_细化v2.png
+[   7% ] _update_scan_actions | 云息境界表现_零至九息总览.png
+[   8% ] _update_scan_actions | 凝核牌局_弹性手牌与牌堆.png
+[   9% ] _update_scan_actions | 凝核牌局_扇形手牌.png
+[  10% ] _update_scan_actions | 凝核牌局_道具列表.png
+[  11% ] _update_scan_actions | 豆包_双峰山候选_v01.jpeg
+[  12% ] _update_scan_actions | breathing_preview.webp
+[  13% ] _update_scan_actions | 06.png
+[  14% ] _update_scan_actions | female_wardrobe_20261005.png
+[  15% ] _update_scan_actions | male_natural_eye_game_3.png
+[  16% ] _update_scan_actions | creator_beard_04_viewport.png
+[  17% ] _update_scan_actions | creator_beard_05_viewport.png
+[  18% ] _update_scan_actions | creator_beard_06_viewport.png
+[  19% ] _update_scan_actions | creator_beard_07_viewport.png
+[  20% ] _update_scan_actions | editor_beard_04_viewport.png
+[  21% ] _update_scan_actions | editor_beard_05_viewport.png
+[  22% ] _update_scan_actions | editor_beard_06_viewport.png
+[  23% ] _update_scan_actions | editor_beard_07_viewport.png
+[  24% ] _update_scan_actions | game_beard_04_composite.png
+[  25% ] _update_scan_actions | game_beard_04_viewport.png
+[  26% ] _update_scan_actions | game_beard_05_composite.png
+[  27% ] _update_scan_actions | game_beard_05_viewport.png
+[  28% ] _update_scan_actions | game_beard_06_composite.png
+[  29% ] _update_scan_actions | game_beard_06_viewport.png
+[  30% ] _update_scan_actions | game_beard_07_composite.png
+[  31% ] _update_scan_actions | game_beard_07_viewport.png
+[  32% ] _update_scan_actions | game_female_preserved_composite.png
+[  33% ] _update_scan_actions | game_female_preserved_viewport.png
+[  34% ] _update_scan_actions | 03.png
+[  35% ] _update_scan_actions | 04.png
+[  36% ] _update_scan_actions | 05.png
+[  37% ] _update_scan_actions | 06.png
+[  38% ] _update_scan_actions | 01_approved_close.png
+[  39% ] _update_scan_actions | 01_beard_close_checker.png
+[  40% ] _update_scan_actions | 01_beard_close_dark.png
+[  41% ] _update_scan_actions | 01_beard_close_light.png
+[  42% ] _update_scan_actions | 01_candidate_checker.png
+[  43% ] _update_scan_actions | 01_candidate_dark.png
+[  44% ] _update_scan_actions | 01_candidate_light.png
+[  45% ] _update_scan_actions | 01_isolated_checker.png
+[  46% ] _update_scan_actions | 01_isolated_dark.png
+[  47% ] _update_scan_actions | 01_isolated_light.png
+[  48% ] _update_scan_actions | 02_approved_close.png
+[  49% ] _update_scan_actions | 02_beard_close_checker.png
+[  50% ] _update_scan_actions | 02_beard_close_dark.png
+[  51% ] _update_scan_actions | 02_beard_close_light.png
+[  52% ] _update_scan_actions | 02_candidate_checker.png
+[  52% ] _update_scan_actions | 02_candidate_dark.png
+[  54% ] _update_scan_actions | 02_candidate_light.png
+[  55% ] _update_scan_actions | 02_isolated_checker.png
+[  56% ] _update_scan_actions | 02_isolated_dark.png
+[  57% ] _update_scan_actions | 02_isolated_light.png
+[  58% ] _update_scan_actions | 03_approved_close.png
+[  58% ] _update_scan_actions | 03_beard_close_checker.png
+[  60% ] _update_scan_actions | 03_beard_close_dark.png
+[  61% ] _update_scan_actions | 03_beard_close_light.png
+[  62% ] _update_scan_actions | 03_candidate_checker.png
+[  63% ] _update_scan_actions | 03_candidate_dark.png
+[  64% ] _update_scan_actions | 03_candidate_light.png
+[  65% ] _update_scan_actions | 03_isolated_checker.png
+[  66% ] _update_scan_actions | 03_isolated_dark.png
+[  67% ] _update_scan_actions | 03_isolated_light.png
+[  68% ] _update_scan_actions | 04_approved_close.png
+[  69% ] _update_scan_actions | 04_beard_close_checker.png
+[  70% ] _update_scan_actions | 04_beard_close_dark.png
+[  71% ] _update_scan_actions | 04_beard_close_light.png
+[  72% ] _update_scan_actions | 04_candidate_checker.png
+[  73% ] _update_scan_actions | 04_candidate_dark.png
+[  74% ] _update_scan_actions | 04_candidate_light.png
+[  75% ] _update_scan_actions | 04_isolated_checker.png
+[  76% ] _update_scan_actions | 04_isolated_dark.png
+[  77% ] _update_scan_actions | 04_isolated_light.png
+[  78% ] _update_scan_actions | bit1_out.bmp
+[  79% ] _update_scan_actions | bit4_out.bmp
+[  80% ] _update_scan_actions | bit4_RLE.bmp
+[  81% ] _update_scan_actions | bit4_RLE_out.bmp
+[  82% ] _update_scan_actions | bit8_out.bmp
+[  83% ] _update_scan_actions | bit8_RLE.bmp
+[  84% ] _update_scan_actions | bit8_RLE_out.bmp
+[  85% ] _update_scan_actions | bit16_565_out.bmp
+[  86% ] _update_scan_actions | bit16_a444_out.bmp
+[  87% ] _update_scan_actions | bit16_a555_out.bmp
+[  88% ] _update_scan_actions | bit16_x444_out.bmp
+[  89% ] _update_scan_actions | bit16_x555_out.bmp
+[  90% ] _update_scan_actions | bit24_out.bmp
+[  91% ] _update_scan_actions | bit32_alpha_out.bmp
+[  92% ] _update_scan_actions | bit32_out.bmp
+[  93% ] _update_scan_actions | 功法配置.csv
+[  94% ] _update_scan_actions | bc_r0c0.png
+[  95% ] _update_scan_actions | zhaoming_continuous_terrain_master_v19_compact_landmarks_4096.png
+[  96% ] _update_scan_actions | zhaoming_drawio_terrain_with_boundaries.png
+[  97% ] _update_scan_actions | 2bb934f8-9be1-4f19-9416-ba53aa82f892.png
+[  98% ] _update_scan_actions | 512.png
+[ DONE ] _update_scan_actions
+
+[   0% ] reimport | Started 正在导入或重新导入资产 (29 steps)
+[   0% ] reimport | 正在准备重新导入文件……
+[   3% ] reimport | 正在准备重新导入文件……
+[   6% ] reimport | 正在准备重新导入文件……
+[  10% ] reimport | 正在准备重新导入文件……
+[  13% ] reimport | 正在准备重新导入文件……
+[  16% ] reimport | 正在准备重新导入文件……
+[  20% ] reimport | 正在准备重新导入文件……
+[  23% ] reimport | 正在准备重新导入文件……
+[  26% ] reimport | 正在准备重新导入文件……
+[  30% ] reimport | 正在准备重新导入文件……
+[  33% ] reimport | 正在准备重新导入文件……
+[  36% ] reimport | 正在准备重新导入文件……
+[  40% ] reimport | 正在准备重新导入文件……
+[  43% ] reimport | 正在准备重新导入文件……
+[  46% ] reimport | 正在准备重新导入文件……
+[  50% ] reimport | 正在准备重新导入文件……
+[  53% ] reimport | 正在准备重新导入文件……
+[  56% ] reimport | 正在准备重新导入文件……
+[  60% ] reimport | 正在准备重新导入文件……
+[  63% ] reimport | 正在准备重新导入文件……
+[  66% ] reimport | 正在准备重新导入文件……
+[  70% ] reimport | 正在准备重新导入文件……
+[  73% ] reimport | 正在准备重新导入文件……
+[  76% ] reimport | 正在准备重新导入文件……
+[  80% ] reimport | 正在准备重新导入文件……
+[  83% ] reimport | 正在准备重新导入文件……
+[  86% ] reimport | 正在准备重新导入文件……
+[  90% ] reimport | 正在准备重新导入文件……
+[  93% ] reimport | 正在准备重新导入文件……
+[   0% ] reimport | 正在执行重新导入的前置操作……
+[   0% ] reimport | 04_isolated_light.png
+[   3% ] reimport | 04_isolated_dark.png
+[   6% ] reimport | 04_isolated_checker.png
+[  10% ] reimport | 04_candidate_light.png
+[  13% ] reimport | 04_candidate_dark.png
+[  16% ] reimport | 04_candidate_checker.png
+[  20% ] reimport | 04_beard_close_light.png
+[  23% ] reimport | 04_beard_close_dark.png
+[  26% ] reimport | 04_beard_close_checker.png
+[  30% ] reimport | 06.png
+[  33% ] reimport | game_female_preserved_viewport.png
+[  36% ] reimport | game_female_preserved_composite.png
+[  40% ] reimport | game_beard_07_viewport.png
+[  43% ] reimport | game_beard_07_composite.png
+[  46% ] reimport | game_beard_06_viewport.png
+[  50% ] reimport | game_beard_06_composite.png
+[  53% ] reimport | game_beard_05_viewport.png
+[  56% ] reimport | game_beard_05_composite.png
+[  60% ] reimport | game_beard_04_viewport.png
+[  63% ] reimport | game_beard_04_composite.png
+[  66% ] reimport | editor_beard_07_viewport.png
+[  70% ] reimport | editor_beard_06_viewport.png
+[  73% ] reimport | editor_beard_05_viewport.png
+[  76% ] reimport | editor_beard_04_viewport.png
+[  80% ] reimport | creator_beard_07_viewport.png
+[  83% ] reimport | creator_beard_06_viewport.png
+[  86% ] reimport | creator_beard_05_viewport.png
+[  90% ] reimport | creator_beard_04_viewport.png
+[  93% ] reimport | 06.png
+[  96% ] reimport | 正在结束资产导入……
+[ DONE ] reimport
+
+[   0% ] reimport | Started 正在导入或重新导入资产 (29 steps)
+[   0% ] reimport | 正在执行重新导入的后置操作……
+[ DONE ] reimport
+
+[   0% ] loading_editor_layout | Started 正在加载编辑器 (5 steps)
+[   0% ] loading_editor_layout | 正在加载编辑器布局……
+[  16% ] loading_editor_layout | 正在加载停靠面板……
+[  33% ] loading_editor_layout | 正在重新打开场景……
+[  50% ] loading_editor_layout | 正在加载中央编辑器布局……
+[  66% ] loading_editor_layout | 正在加载插件窗口布局……
+[  83% ] loading_editor_layout | 编辑器布局就绪。
+[ DONE ] loading_editor_layout
+
+Godot MCP: Bridge stopped

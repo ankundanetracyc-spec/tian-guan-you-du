@@ -1,0 +1,907 @@
+{
+  "schema": "male-current-face-semantic-audit/v1",
+  "coordinate_system": "Current installed PNG canvas1024x1536, x right/y down; no rescale or mutation",
+  "method": {
+    "face": "Before ears y260..340 alpha230 row endpoints; y360..530 actual painted face ridge in restricted row windows, explicitly excludes ears/neck outline. Not full-image alpha bounding-box centers.",
+    "pupils": "Fixed small kernel ROIs, meanRGB darkness below100 weighted by alpha, threshold sensitivity70/90/110 retained; not whole-eye alpha bbox.",
+    "corners": "1% and99% cumulative dark ink x quantiles within each anatomical eye ROI, y weighted in ±1px columns. Visible ink-tip proxy, not falsely precise scleral join; about1–2px reading uncertainty.",
+    "brows": "Dark ink below170, alpha>=128; 1/99% ink quantiles for inner head/outer tail, upper10% local body crest for peak, pigment-weighted centroid. No transparent alpha margins.",
+    "manual_contacts": "Actual PNG 6x inspection; upper/lower iris contacts approximate ±1px. Natural painted asymmetry cannot be reduced to bounding-box size.",
+    "bridge_root": "No crisp anatomic root mark in extracted nose. Manual central highlight ridge atx517±2 aroundy397; uncertainty explicit."
+  },
+  "face": {
+    "forehead_edges": [
+      {
+        "y": 260,
+        "left": 391,
+        "right": 635,
+        "center_x": 513.0
+      },
+      {
+        "y": 280,
+        "left": 386,
+        "right": 639,
+        "center_x": 512.5
+      },
+      {
+        "y": 300,
+        "left": 385,
+        "right": 640,
+        "center_x": 512.5
+      },
+      {
+        "y": 320,
+        "left": 386,
+        "right": 639,
+        "center_x": 512.5
+      },
+      {
+        "y": 330,
+        "left": 388,
+        "right": 637,
+        "center_x": 512.5
+      },
+      {
+        "y": 340,
+        "left": 390,
+        "right": 635,
+        "center_x": 512.5
+      }
+    ],
+    "face_ridges": [
+      {
+        "y": 360,
+        "left": 401,
+        "right": 623,
+        "center_x": 512.0,
+        "search_x_half_open": [
+          395,
+          407,
+          618,
+          630
+        ]
+      },
+      {
+        "y": 390,
+        "left": 402,
+        "right": 618,
+        "center_x": 510.0,
+        "search_x_half_open": [
+          398,
+          410,
+          613,
+          624
+        ]
+      },
+      {
+        "y": 410,
+        "left": 410,
+        "right": 614,
+        "center_x": 512.0,
+        "search_x_half_open": [
+          405,
+          416,
+          608,
+          620
+        ]
+      },
+      {
+        "y": 430,
+        "left": 416,
+        "right": 609,
+        "center_x": 512.5,
+        "search_x_half_open": [
+          412,
+          424,
+          603,
+          615
+        ]
+      },
+      {
+        "y": 450,
+        "left": 422,
+        "right": 604,
+        "center_x": 513.0,
+        "search_x_half_open": [
+          420,
+          432,
+          595,
+          605
+        ]
+      },
+      {
+        "y": 470,
+        "left": 430,
+        "right": 596,
+        "center_x": 513.0,
+        "search_x_half_open": [
+          428,
+          441,
+          588,
+          600
+        ]
+      },
+      {
+        "y": 490,
+        "left": 445,
+        "right": 582,
+        "center_x": 513.5,
+        "search_x_half_open": [
+          438,
+          450,
+          577,
+          588
+        ]
+      },
+      {
+        "y": 510,
+        "left": 462,
+        "right": 566,
+        "center_x": 514.0,
+        "search_x_half_open": [
+          455,
+          469,
+          560,
+          573
+        ]
+      },
+      {
+        "y": 530,
+        "left": 480,
+        "right": 547,
+        "center_x": 513.5,
+        "search_x_half_open": [
+          475,
+          487,
+          540,
+          553
+        ]
+      }
+    ],
+    "eye_region_axis_x": 512.0,
+    "lower_face_axis_x": 513.25,
+    "chosen_shared_axis_x": 513,
+    "chin_dark_ridge_reference": [
+      513.5,
+      543
+    ]
+  },
+  "eyes": {
+    "01": {
+      "left": {
+        "inner": [
+          483.84483881225293,
+          369.5732499507881
+        ],
+        "outer": [
+          430.204567473738,
+          363.7936159428741
+        ],
+        "ink_centroid": [
+          455.83177027562806,
+          365.69915876804026
+        ],
+        "dark_ink_horizontal_span_px": 54.0,
+        "roi": [
+          416,
+          350,
+          498,
+          382
+        ]
+      },
+      "right": {
+        "inner": [
+          546.2809450075943,
+          369.8485408405734
+        ],
+        "outer": [
+          597.7939898100129,
+          364.04009619281567
+        ],
+        "ink_centroid": [
+          573.0756795720305,
+          365.16097798367144
+        ],
+        "dark_ink_horizontal_span_px": 52.0,
+        "roi": [
+          533,
+          349,
+          615,
+          383
+        ]
+      },
+      "pupils": [
+        [
+          462.5633505472131,
+          364.8594827739339
+        ],
+        [
+          568.9791437615578,
+          363.965515813067
+        ]
+      ],
+      "midpoint": [
+        515.7712471543855,
+        364.41249929350045
+      ],
+      "pupil_dy_right_minus_left": -0.8939669608669192,
+      "pupil_distance_px": 106.41954812141093,
+      "midpoint_dx_from_face_eye_rows": 3.7712471543854917,
+      "pupil_kernel_threshold_sensitivity": {
+        "70": [
+          [
+            462.17607209160525,
+            364.45836113557834
+          ],
+          [
+            569.2342537216845,
+            363.4782478320875
+          ]
+        ],
+        "90": [
+          [
+            462.5136656726325,
+            364.678921556704
+          ],
+          [
+            569.0384956015628,
+            363.781292188898
+          ]
+        ],
+        "110": [
+          [
+            462.55120137230796,
+            365.1623106883547
+          ],
+          [
+            568.9450749937648,
+            364.1951909769485
+          ]
+        ]
+      },
+      "lid_contact_points_upper_lower_left_then_right": [
+        [
+          463,
+          362
+        ],
+        [
+          463,
+          376
+        ],
+        [
+          569,
+          361
+        ],
+        [
+          569,
+          376
+        ]
+      ],
+      "fissure_at_iris_height_px": [
+        14,
+        15
+      ]
+    },
+    "04": {
+      "left": {
+        "inner": [
+          481.83613804454484,
+          368.22578716550083
+        ],
+        "outer": [
+          429.1505785509047,
+          365.58579827011914
+        ],
+        "ink_centroid": [
+          454.52092433636466,
+          364.78096843318923
+        ],
+        "dark_ink_horizontal_span_px": 53.0,
+        "roi": [
+          416,
+          350,
+          498,
+          382
+        ]
+      },
+      "right": {
+        "inner": [
+          543.0971954707627,
+          369.53182235438027
+        ],
+        "outer": [
+          593.7629656181856,
+          363.3468650117991
+        ],
+        "ink_centroid": [
+          569.6733434194504,
+          364.2678787709807
+        ],
+        "dark_ink_horizontal_span_px": 51.0,
+        "roi": [
+          533,
+          349,
+          615,
+          383
+        ]
+      },
+      "pupils": [
+        [
+          462.91674364332664,
+          363.7212441523236
+        ],
+        [
+          567.9720182838442,
+          362.81966211247874
+        ]
+      ],
+      "midpoint": [
+        515.4443809635854,
+        363.27045313240114
+      ],
+      "pupil_dy_right_minus_left": -0.9015820398448682,
+      "pupil_distance_px": 105.05914324783518,
+      "midpoint_dx_from_face_eye_rows": 3.444380963585445,
+      "pupil_kernel_threshold_sensitivity": {
+        "70": [
+          [
+            463.0681008731618,
+            363.507555434283
+          ],
+          [
+            568.0375810619323,
+            362.44732433108277
+          ]
+        ],
+        "90": [
+          [
+            462.94344963470684,
+            363.58234391474934
+          ],
+          [
+            567.9821489421066,
+            362.5428309473479
+          ]
+        ],
+        "110": [
+          [
+            462.91783606584346,
+            363.9070760848202
+          ],
+          [
+            567.9383915114986,
+            363.3139184050575
+          ]
+        ]
+      },
+      "lid_contact_points_upper_lower_left_then_right": [
+        [
+          463,
+          360
+        ],
+        [
+          463,
+          376
+        ],
+        [
+          568,
+          359
+        ],
+        [
+          568,
+          375
+        ]
+      ],
+      "fissure_at_iris_height_px": [
+        16,
+        16
+      ]
+    },
+    "05": {
+      "left": {
+        "inner": [
+          482.7081159220202,
+          369.1509690622855
+        ],
+        "outer": [
+          431.2129161318016,
+          361.3269365491381
+        ],
+        "ink_centroid": [
+          457.69580040026005,
+          364.0245393005232
+        ],
+        "dark_ink_horizontal_span_px": 52.0,
+        "roi": [
+          416,
+          350,
+          498,
+          382
+        ]
+      },
+      "right": {
+        "inner": [
+          545.1662181452274,
+          370.267186171499
+        ],
+        "outer": [
+          595.8228459191084,
+          362.74939325639764
+        ],
+        "ink_centroid": [
+          570.6341423330226,
+          364.8340153735636
+        ],
+        "dark_ink_horizontal_span_px": 51.0,
+        "roi": [
+          533,
+          349,
+          615,
+          383
+        ]
+      },
+      "pupils": [
+        [
+          462.7115168543904,
+          363.5715772541107
+        ],
+        [
+          567.5957296170733,
+          364.05865064509516
+        ]
+      ],
+      "midpoint": [
+        515.1536232357319,
+        363.81511394960296
+      ],
+      "pupil_dy_right_minus_left": 0.4870733909844489,
+      "pupil_distance_px": 104.88534372034985,
+      "midpoint_dx_from_face_eye_rows": 3.1536232357318568,
+      "pupil_kernel_threshold_sensitivity": {
+        "70": [
+          [
+            462.2761281091632,
+            363.2412492199872
+          ],
+          [
+            567.5767239378788,
+            363.87003209538074
+          ]
+        ],
+        "90": [
+          [
+            462.63742768463766,
+            363.44103074617493
+          ],
+          [
+            567.5388533965569,
+            363.97898430780896
+          ]
+        ],
+        "110": [
+          [
+            462.72224002075154,
+            363.70848815634224
+          ],
+          [
+            567.6556409822623,
+            364.1695375427927
+          ]
+        ]
+      },
+      "lid_contact_points_upper_lower_left_then_right": [
+        [
+          463,
+          361
+        ],
+        [
+          463,
+          375
+        ],
+        [
+          568,
+          362
+        ],
+        [
+          568,
+          376
+        ]
+      ],
+      "fissure_at_iris_height_px": [
+        14,
+        14
+      ]
+    }
+  },
+  "brows": {
+    "01": {
+      "left": {
+        "inner": [
+          489.79528952616687,
+          350.6747766239202
+        ],
+        "outer": [
+          427.1813554180079,
+          344.7390440130648
+        ],
+        "ink_centroid": [
+          458.72657606967965,
+          345.99723486368464
+        ],
+        "dark_ink_horizontal_span_px": 63.0,
+        "roi": [
+          410,
+          326,
+          503,
+          359
+        ],
+        "highest_body_crest": [
+          443.0,
+          340.0
+        ]
+      },
+      "right": {
+        "inner": [
+          538.1186472292432,
+          350.83966350144004
+        ],
+        "outer": [
+          604.8639348783054,
+          341.1827454939937
+        ],
+        "ink_centroid": [
+          571.2521544088012,
+          344.5036080057106
+        ],
+        "dark_ink_horizontal_span_px": 67.0,
+        "roi": [
+          527,
+          325,
+          617,
+          360
+        ],
+        "highest_body_crest": [
+          595.0,
+          336.0
+        ]
+      },
+      "inner_head_midpoint": [
+        513.956968377705,
+        350.7572200626801
+      ],
+      "outer_tail_midpoint": [
+        516.0226451481567,
+        342.96089475352926
+      ],
+      "stroke_centroid_midpoint": [
+        514.9893652392404,
+        345.2504214346976
+      ],
+      "inner_head_dy_right_minus_left": 0.16488687751984799,
+      "outer_tail_dy_right_minus_left": -3.556298519071106,
+      "crest_dy_right_minus_left": -4.0
+    },
+    "04": {
+      "left": {
+        "inner": [
+          488.77955627596,
+          347.2792422246987
+        ],
+        "outer": [
+          419.2133665453349,
+          340.5043468649104
+        ],
+        "ink_centroid": [
+          451.89570285864147,
+          341.82200756414494
+        ],
+        "dark_ink_horizontal_span_px": 70.0,
+        "roi": [
+          410,
+          326,
+          503,
+          359
+        ],
+        "highest_body_crest": [
+          438.0,
+          337.0
+        ]
+      },
+      "right": {
+        "inner": [
+          539.1047863710114,
+          346.8357220118983
+        ],
+        "outer": [
+          602.8752357216638,
+          340.5655822680452
+        ],
+        "ink_centroid": [
+          571.3347172865726,
+          341.5451895188122
+        ],
+        "dark_ink_horizontal_span_px": 64.0,
+        "roi": [
+          527,
+          325,
+          617,
+          360
+        ],
+        "highest_body_crest": [
+          584.5,
+          336.0
+        ]
+      },
+      "inner_head_midpoint": [
+        513.9421713234857,
+        347.0574821182985
+      ],
+      "outer_tail_midpoint": [
+        511.04430113349935,
+        340.5349645664778
+      ],
+      "stroke_centroid_midpoint": [
+        511.61521007260706,
+        341.68359854147855
+      ],
+      "inner_head_dy_right_minus_left": -0.44352021280036524,
+      "outer_tail_dy_right_minus_left": 0.0612354031347877,
+      "crest_dy_right_minus_left": -1.0
+    },
+    "05": {
+      "left": {
+        "inner": [
+          488.7134996871983,
+          354.3538540455391
+        ],
+        "outer": [
+          427.4916328433265,
+          338.604965360505
+        ],
+        "ink_centroid": [
+          458.3879586053793,
+          345.3579629400498
+        ],
+        "dark_ink_horizontal_span_px": 62.0,
+        "roi": [
+          410,
+          326,
+          503,
+          359
+        ],
+        "highest_body_crest": [
+          429.5,
+          335.0
+        ]
+      },
+      "right": {
+        "inner": [
+          536.1322457731482,
+          354.85810043995
+        ],
+        "outer": [
+          600.5067336376521,
+          339.80532348865074
+        ],
+        "ink_centroid": [
+          568.2112110847211,
+          346.1276241485368
+        ],
+        "dark_ink_horizontal_span_px": 65.0,
+        "roi": [
+          527,
+          325,
+          617,
+          360
+        ],
+        "highest_body_crest": [
+          594.5,
+          336.0
+        ]
+      },
+      "inner_head_midpoint": [
+        512.4228727301733,
+        354.60597724274453
+      ],
+      "outer_tail_midpoint": [
+        513.9991832404893,
+        339.20514442457784
+      ],
+      "stroke_centroid_midpoint": [
+        513.2995848450502,
+        345.7427935442933
+      ],
+      "inner_head_dy_right_minus_left": 0.5042463944109272,
+      "outer_tail_dy_right_minus_left": 1.2003581281457514,
+      "crest_dy_right_minus_left": 1.0
+    }
+  },
+  "nose_mouth": {
+    "nose_bridge_root_approx": [
+      517,
+      397
+    ],
+    "nose_bridge_root_uncertainty_px": 2,
+    "nostrils": [
+      [
+        504.75552975419737,
+        443.90917077764334
+      ],
+      [
+        529.3945198032751,
+        444.142255363013
+      ]
+    ],
+    "nostril_midpoint": [
+      517.0750247787362,
+      444.02571307032815
+    ],
+    "nose_tip_lower_center_approx": [
+      517,
+      450
+    ],
+    "lip_dark_seam_centroid": [
+      516.4748748856731,
+      477.41006563536166
+    ],
+    "lip_corner_ink_midpoint": [
+      516.5917994074603,
+      477.3305571915565
+    ],
+    "nose_mid_dx_from_lower_face": 3.8250247787361786,
+    "lip_centroid_dx_from_lower_face": 3.2248748856731027
+  },
+  "historical_registration": {
+    "01": {
+      "source_file": "mods/appearance/male_style_alignment_20261106/integration/source/feature_import.json",
+      "sha256": "c1067236314374e2ebffc628ecbde53f18ff239cac61c37edb7a63682441cc3a",
+      "shared_source_to_frame": null,
+      "shared_rotation_deg": null,
+      "records": [
+        {
+          "part": "eyebrows",
+          "declared_sha256": "b094a5d118e3b722b1901198c319919804cc93ab225c873366aa02af6fc6fa5f",
+          "active_sha256": "b094a5d118e3b722b1901198c319919804cc93ab225c873366aa02af6fc6fa5f",
+          "declared_hash_matches_active": true,
+          "transform": {
+            "a": 0.375,
+            "b": 0,
+            "tx": 325,
+            "ty": 164,
+            "scale": 0.375,
+            "residuals": []
+          },
+          "rotation_deg": 0.0,
+          "declared_max_native_fit_error_px": null
+        },
+        {
+          "part": "eyes",
+          "declared_sha256": "5ecb31eacb232bf8be1f83ddd97c50c3715b792564c73052f425aca7c20eb8af",
+          "active_sha256": "5ecb31eacb232bf8be1f83ddd97c50c3715b792564c73052f425aca7c20eb8af",
+          "declared_hash_matches_active": true,
+          "transform": {
+            "a": 0.8626188216509223,
+            "b": 0.0011099301284924457,
+            "tx": 76.03189189485663,
+            "ty": 49.036022962047184,
+            "scale": 0.8626195357232038,
+            "residuals": [
+              0.614933097984518,
+              0.703126716442363,
+              1.0787237975226314,
+              0.329598488209382,
+              1.0480369653008959,
+              0.10436382179691513,
+              0.7435632950560197,
+              0.4670517565274934,
+              0.9808869420659828
+            ]
+          },
+          "rotation_deg": 0.07372233856425223,
+          "declared_max_native_fit_error_px": 1.0787237975226314
+        }
+      ]
+    },
+    "04": {
+      "source_file": "mods/appearance/male_loose_style_install_20261106/source/feature_import.json",
+      "sha256": "74cba0b1f05e6490bc7a88ae49e0ce0b4f0996a1358182615c5539ea34def8d1",
+      "shared_source_to_frame": [
+        [
+          0.9975364831,
+          0.0036289844,
+          -0.7327878529
+        ],
+        [
+          -0.0036289844,
+          0.9975364831,
+          10.4185928627
+        ]
+      ],
+      "shared_rotation_deg": -0.20843806346400054,
+      "records": [
+        {
+          "part": "eyebrows",
+          "declared_sha256": "f7d71d00f80370ddc6610a99aa8a001b7ae4f57abafe2d2eb4b0033fb9f63298",
+          "active_sha256": "f7d71d00f80370ddc6610a99aa8a001b7ae4f57abafe2d2eb4b0033fb9f63298",
+          "declared_hash_matches_active": true,
+          "transform": {
+            "a": 0.9975364831,
+            "b": -0.0036289844,
+            "tx": -0.7327878529,
+            "ty": 10.4185928627
+          },
+          "rotation_deg": -0.20843806346400054,
+          "declared_max_native_fit_error_px": null
+        },
+        {
+          "part": "eyes",
+          "declared_sha256": "fd3f04b779e0849bbe9c9cf46fcfa2b5bd6b8fcb8839b2aac5c1d26819acba89",
+          "active_sha256": "81723d5ca8413f3ecdb5a4a962a8850bf191aa7fd63c1a1818489eff4bd2f23a",
+          "declared_hash_matches_active": false,
+          "transform": {
+            "a": 0.5442475674436176,
+            "b": -0.0029135129813846407,
+            "tx": 231.47530406639368,
+            "ty": 163.2221309109286
+          },
+          "rotation_deg": -0.3067177747323639,
+          "declared_max_native_fit_error_px": 1.4503970495564937
+        }
+      ],
+      "later_current_override": {
+        "authority": "docs/美术规范/男性原图完整还原_20261105/README.md (2026-11-07 eye balance and left outer lash seam repair sections)",
+        "current_eye_processing": "male_eye_balance_fix_20261107 then male_layer_seam_fix_20261107",
+        "warning": "The initial whole-eye04 transform is historical, not an exact transform of the final repaired current04. All pupil and ink measurements in this report read current81723d... pixels."
+      }
+    },
+    "05": {
+      "source_file": "mods/appearance/male_high_tie_install_20261107/source/feature_import.json",
+      "sha256": "3c7e27be02e74a97445b3bf366097172db7bba65f16d66add421becab66bcd79",
+      "shared_source_to_frame": [
+        [
+          1.0110056386738737,
+          -0.008603844911647713,
+          -6.349073717814235
+        ],
+        [
+          0.008603844911647713,
+          1.0110056386738737,
+          -5.49980453175408
+        ]
+      ],
+      "shared_rotation_deg": 0.48758590654519995,
+      "records": [
+        {
+          "part": "eyebrows",
+          "declared_sha256": "f5e0908457fb3b30a33dc7961af0b4c0e046f6794d8768104b79d1a0714839fd",
+          "active_sha256": "f5e0908457fb3b30a33dc7961af0b4c0e046f6794d8768104b79d1a0714839fd",
+          "declared_hash_matches_active": true,
+          "transform": {
+            "a": 1.0110056386738737,
+            "b": 0.008603844911647713,
+            "tx": -6.383489097460826,
+            "ty": -1.4557819770585851
+          },
+          "rotation_deg": 0.48758590654519995,
+          "declared_max_native_fit_error_px": null
+        },
+        {
+          "part": "eyes",
+          "declared_sha256": "46d6b972e5667199e274b1c2dd8bc1686f01e0ed3f68eac4301f1fbf648f88fd",
+          "active_sha256": "46d6b972e5667199e274b1c2dd8bc1686f01e0ed3f68eac4301f1fbf648f88fd",
+          "declared_hash_matches_active": true,
+          "transform": {
+            "a": 0.233477066168308,
+            "b": 0.0017330191628595203,
+            "tx": 395.0636854604809,
+            "ty": 266.90421959989465
+          },
+          "rotation_deg": 0.4252788591382144,
+          "declared_max_native_fit_error_px": 1.8082075762890897
+        }
+      ]
+    }
+  },
+  "active_pngs_written": false,
+  "candidate_pngs_written": false
+}

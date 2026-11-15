@@ -1,0 +1,1054 @@
+{
+  "schema": "male-face-final-semantics/v1",
+  "axis_x": 513,
+  "fixed_head_sha256": "d86319252035a286a92e8892b9816bdb917a39f7f41f4cb1edf40f4dee51c357",
+  "basis": "Measurements read final candidate PNGs, independent of registration template/matrix. Current-SHA independent visual review remains required. Final04 has explicit generated-left whole-eye mechanical reflection provenance in source/eye04_paired_geometry.json.",
+  "records": [
+    {
+      "file": "male/eyes/01.png",
+      "part": "eyes",
+      "index": 1,
+      "sha256": "98026ce638f1c880ec3bb1c6e690ad7b15c0184b77a24561cef180dec746d642",
+      "points": {
+        "pupils": [
+          [
+            459.7673556453999,
+            364.3742821010277
+          ],
+          [
+            565.9116151345213,
+            364.5667874807413
+          ]
+        ],
+        "inner_corners": [
+          [
+            486.0,
+            373.3878221045081
+          ],
+          [
+            539.0,
+            374.46232126196105
+          ]
+        ],
+        "outer_corners": [
+          [
+            425.0,
+            362.54244203403323
+          ],
+          [
+            600.0,
+            364.0
+          ]
+        ],
+        "upper_lid_samples": [
+          [
+            [
+              470.75,
+              363.0
+            ],
+            [
+              455.5,
+              363.0
+            ],
+            [
+              440.25,
+              363.0
+            ]
+          ],
+          [
+            [
+              554.25,
+              364.0
+            ],
+            [
+              569.5,
+              363.0
+            ],
+            [
+              584.75,
+              364.0
+            ]
+          ]
+        ],
+        "lower_lid_samples": [
+          [
+            [
+              470.75,
+              375.0
+            ],
+            [
+              455.5,
+              372.0
+            ],
+            [
+              440.25,
+              370.0
+            ]
+          ],
+          [
+            [
+              554.25,
+              376.0
+            ],
+            [
+              569.5,
+              373.0
+            ],
+            [
+              584.75,
+              372.0
+            ]
+          ]
+        ],
+        "iris_centers": [
+          [
+            459.69249621315726,
+            366.06360968442453
+          ],
+          [
+            566.1761094270528,
+            366.15355101031685
+          ]
+        ]
+      },
+      "measurements": {
+        "iris_widths": [
+          20.0,
+          20.0
+        ],
+        "iris_heights": [
+          16.0,
+          15.0
+        ],
+        "upper_lid_occlusion_px": [
+          4.0,
+          5.0
+        ],
+        "iris_method": "Observed central brown-body proxy, not a full anatomic iris segmentation. Horizontal contiguous central runs threshold155, median of up to3 valid rows with scleral gaps; vertical brown core threshold150/Alpha230 excludes faint upper crease and soft lower-lash fringe;1–2px internal glint gaps bridged for measurement only. Center is actual bounded brown-ink centroid, not extrapolated from alpha. About1px reading uncertainty.",
+        "iris_width_sample_rows": [
+          [
+            {
+              "left": 450,
+              "right": 469,
+              "y": 368,
+              "width": 20
+            },
+            {
+              "left": 450,
+              "right": 469,
+              "y": 369,
+              "width": 20
+            },
+            {
+              "left": 451,
+              "right": 468,
+              "y": 370,
+              "width": 18
+            }
+          ],
+          [
+            {
+              "left": 556,
+              "right": 576,
+              "y": 369,
+              "width": 21
+            },
+            {
+              "left": 557,
+              "right": 576,
+              "y": 370,
+              "width": 20
+            },
+            {
+              "left": 558,
+              "right": 575,
+              "y": 371,
+              "width": 18
+            }
+          ]
+        ],
+        "iris_brown_core_vertical_bounds_y_inclusive": [
+          [
+            360,
+            375
+          ],
+          [
+            361,
+            375
+          ]
+        ],
+        "iris_height_measurement_kind": "central_visible_brown_core_proxy_px",
+        "upper_lid_occlusion_measurement_kind": "width_minus_visible_brown_core_height_estimate_px; circular lower-tangent assumption, independent visual iris/occlusion review mandatory"
+      },
+      "reading_uncertainty_px": 1.0
+    },
+    {
+      "file": "male/eyebrows/01.png",
+      "part": "eyebrows",
+      "index": 1,
+      "sha256": "0b81852f026929d204972a43f9c0e88f9b15396e02941342fb761a615795f3cf",
+      "points": {
+        "inner_heads": [
+          [
+            493.83531943987236,
+            349.5522625408321
+          ],
+          [
+            533.1349171439481,
+            349.9954226804124
+          ]
+        ],
+        "outer_tails": [
+          [
+            424.10823811518634,
+            342.88273843057385
+          ],
+          [
+            601.75996371473,
+            342.8744596287935
+          ]
+        ],
+        "crests": [
+          [
+            437.5,
+            338.0
+          ],
+          [
+            586.5,
+            338.0
+          ]
+        ],
+        "ink_weighted_centroids": [
+          [
+            459.6873410230565,
+            344.54772615104764
+          ],
+          [
+            566.2586378281799,
+            344.63012389204613
+          ]
+        ]
+      },
+      "measurements": {
+        "widths": [
+          69.72708132468603,
+          68.62504657078193
+        ],
+        "thickness_at_quartiles": [
+          [
+            10.0,
+            10.0,
+            11.0
+          ],
+          [
+            10.0,
+            10.0,
+            11.0
+          ]
+        ],
+        "mean_darkness_at_quartiles": [
+          [
+            180.816091954023,
+            172.92222222222227,
+            177.25555555555556
+          ],
+          [
+            181.6555555555556,
+            168.44827586206893,
+            168.88888888888886
+          ]
+        ]
+      },
+      "reading_uncertainty_px": 1.0
+    },
+    {
+      "file": "male/eyes/04.png",
+      "part": "eyes",
+      "index": 4,
+      "sha256": "cf1e14f61b5ac2904cddcaad14eb38d3da6328673fa3e90a019e1e7629b99f05",
+      "points": {
+        "pupils": [
+          [
+            460.0385313503021,
+            363.25247309960065
+          ],
+          [
+            565.961468649698,
+            363.2524730996007
+          ]
+        ],
+        "inner_corners": [
+          [
+            488.0,
+            374.05836374150067
+          ],
+          [
+            538.0,
+            374.05836374150067
+          ]
+        ],
+        "outer_corners": [
+          [
+            425.0,
+            364.98761983709363
+          ],
+          [
+            601.0,
+            364.98761983709363
+          ]
+        ],
+        "upper_lid_samples": [
+          [
+            [
+              472.25,
+              362.0
+            ],
+            [
+              456.5,
+              361.0
+            ],
+            [
+              440.75,
+              362.0
+            ]
+          ],
+          [
+            [
+              553.75,
+              362.0
+            ],
+            [
+              569.5,
+              361.0
+            ],
+            [
+              585.25,
+              362.0
+            ]
+          ]
+        ],
+        "lower_lid_samples": [
+          [
+            [
+              472.25,
+              373.0
+            ],
+            [
+              456.5,
+              377.0
+            ],
+            [
+              440.75,
+              372.0
+            ]
+          ],
+          [
+            [
+              553.75,
+              373.0
+            ],
+            [
+              569.5,
+              377.0
+            ],
+            [
+              585.25,
+              372.0
+            ]
+          ]
+        ],
+        "iris_centers": [
+          [
+            459.08546125679857,
+            364.57905381918727
+          ],
+          [
+            566.9145387432013,
+            364.57905381918727
+          ]
+        ]
+      },
+      "measurements": {
+        "iris_widths": [
+          21.0,
+          21.0
+        ],
+        "iris_heights": [
+          17.0,
+          17.0
+        ],
+        "upper_lid_occlusion_px": [
+          4.0,
+          4.0
+        ],
+        "iris_method": "Observed central brown-body proxy, not a full anatomic iris segmentation. Horizontal contiguous central runs threshold155, median of up to3 valid rows with scleral gaps; vertical brown core threshold150/Alpha230 excludes faint upper crease and soft lower-lash fringe;1–2px internal glint gaps bridged for measurement only. Center is actual bounded brown-ink centroid, not extrapolated from alpha. About1px reading uncertainty.",
+        "iris_width_sample_rows": [
+          [
+            {
+              "left": 449,
+              "right": 470,
+              "y": 367,
+              "width": 22
+            },
+            {
+              "left": 449,
+              "right": 469,
+              "y": 368,
+              "width": 21
+            },
+            {
+              "left": 449,
+              "right": 469,
+              "y": 369,
+              "width": 21
+            }
+          ],
+          [
+            {
+              "left": 556,
+              "right": 577,
+              "y": 367,
+              "width": 22
+            },
+            {
+              "left": 557,
+              "right": 577,
+              "y": 368,
+              "width": 21
+            },
+            {
+              "left": 557,
+              "right": 577,
+              "y": 369,
+              "width": 21
+            }
+          ]
+        ],
+        "iris_brown_core_vertical_bounds_y_inclusive": [
+          [
+            358,
+            374
+          ],
+          [
+            358,
+            374
+          ]
+        ],
+        "iris_height_measurement_kind": "central_visible_brown_core_proxy_px",
+        "upper_lid_occlusion_measurement_kind": "width_minus_visible_brown_core_height_estimate_px; circular lower-tangent assumption, independent visual iris/occlusion review mandatory"
+      },
+      "reading_uncertainty_px": 1.0
+    },
+    {
+      "file": "male/eyebrows/04.png",
+      "part": "eyebrows",
+      "index": 4,
+      "sha256": "530d5cf4e2fb3094269b6493ca7e9c552c30d27de5fe389a3a2012440adfcccf",
+      "points": {
+        "inner_heads": [
+          [
+            486.8423399697065,
+            345.7872030348103
+          ],
+          [
+            541.2024332698894,
+            345.7805784836346
+          ]
+        ],
+        "outer_tails": [
+          [
+            422.10768556053375,
+            340.61395822961856
+          ],
+          [
+            604.8324878544393,
+            340.5361379621216
+          ]
+        ],
+        "crests": [
+          [
+            436.0,
+            337.0
+          ],
+          [
+            590.0,
+            337.0
+          ]
+        ],
+        "ink_weighted_centroids": [
+          [
+            454.3661261933357,
+            341.57611408224375
+          ],
+          [
+            572.9733069226114,
+            342.00638708275244
+          ]
+        ]
+      },
+      "measurements": {
+        "widths": [
+          64.73465440917272,
+          63.63005458454984
+        ],
+        "thickness_at_quartiles": [
+          [
+            9.0,
+            9.0,
+            10.0
+          ],
+          [
+            10.0,
+            10.0,
+            9.0
+          ]
+        ],
+        "mean_darkness_at_quartiles": [
+          [
+            174.96,
+            175.52380952380952,
+            176.4126984126984
+          ],
+          [
+            171.50666666666663,
+            169.15555555555554,
+            171.7733333333333
+          ]
+        ]
+      },
+      "reading_uncertainty_px": 1.0
+    },
+    {
+      "file": "male/eyes/05.png",
+      "part": "eyes",
+      "index": 5,
+      "sha256": "a69e053c0f0af4be64b10a157c0f076aede96ab44ccc0915665f74c50a2560da",
+      "points": {
+        "pupils": [
+          [
+            460.3810780902817,
+            363.84686222102266
+          ],
+          [
+            564.4484344933334,
+            363.93064439011624
+          ]
+        ],
+        "inner_corners": [
+          [
+            486.0,
+            374.0345189717365
+          ],
+          [
+            540.0,
+            373.47967592947356
+          ]
+        ],
+        "outer_corners": [
+          [
+            422.0,
+            360.55414539936544
+          ],
+          [
+            602.0,
+            361.0
+          ]
+        ],
+        "upper_lid_samples": [
+          [
+            [
+              470.0,
+              363.0
+            ],
+            [
+              454.0,
+              362.0
+            ],
+            [
+              438.0,
+              362.0
+            ]
+          ],
+          [
+            [
+              555.5,
+              363.0
+            ],
+            [
+              571.0,
+              362.0
+            ],
+            [
+              586.5,
+              363.0
+            ]
+          ]
+        ],
+        "lower_lid_samples": [
+          [
+            [
+              470.0,
+              374.0
+            ],
+            [
+              454.0,
+              374.0
+            ],
+            [
+              438.0,
+              372.0
+            ]
+          ],
+          [
+            [
+              555.5,
+              374.0
+            ],
+            [
+              571.0,
+              374.0
+            ],
+            [
+              586.5,
+              374.0
+            ]
+          ]
+        ],
+        "iris_centers": [
+          [
+            460.86626715171894,
+            365.6638684670556
+          ],
+          [
+            564.5219592256502,
+            365.36311755167435
+          ]
+        ]
+      },
+      "measurements": {
+        "iris_widths": [
+          19.0,
+          18.5
+        ],
+        "iris_heights": [
+          15.0,
+          14.0
+        ],
+        "upper_lid_occlusion_px": [
+          4.0,
+          4.5
+        ],
+        "iris_method": "Observed central brown-body proxy, not a full anatomic iris segmentation. Horizontal contiguous central runs threshold155, median of up to3 valid rows with scleral gaps; vertical brown core threshold150/Alpha230 excludes faint upper crease and soft lower-lash fringe;1–2px internal glint gaps bridged for measurement only. Center is actual bounded brown-ink centroid, not extrapolated from alpha. About1px reading uncertainty.",
+        "iris_width_sample_rows": [
+          [
+            {
+              "left": 451,
+              "right": 471,
+              "y": 368,
+              "width": 21
+            },
+            {
+              "left": 452,
+              "right": 470,
+              "y": 369,
+              "width": 19
+            },
+            {
+              "left": 452,
+              "right": 469,
+              "y": 370,
+              "width": 18
+            }
+          ],
+          [
+            {
+              "left": 555,
+              "right": 573,
+              "y": 369,
+              "width": 19
+            },
+            {
+              "left": 556,
+              "right": 573,
+              "y": 370,
+              "width": 18
+            }
+          ]
+        ],
+        "iris_brown_core_vertical_bounds_y_inclusive": [
+          [
+            360,
+            374
+          ],
+          [
+            360,
+            373
+          ]
+        ],
+        "iris_height_measurement_kind": "central_visible_brown_core_proxy_px",
+        "upper_lid_occlusion_measurement_kind": "width_minus_visible_brown_core_height_estimate_px; circular lower-tangent assumption, independent visual iris/occlusion review mandatory",
+        "auxiliary_dark_ridge_lower_lid_samples": [
+          [
+            [
+              470.0,
+              374.0
+            ],
+            [
+              454.0,
+              374.0
+            ],
+            [
+              438.0,
+              370.0
+            ]
+          ],
+          [
+            [
+              555.5,
+              374.0
+            ],
+            [
+              571.0,
+              374.0
+            ],
+            [
+              586.5,
+              373.0
+            ]
+          ]
+        ],
+        "outer75_semantic_boundary_review": {
+          "reviewer": "portrait_audit",
+          "exact_png_sha256": "a69e053c0f0af4be64b10a157c0f076aede96ab44ccc0915665f74c50a2560da",
+          "observation": "At outer75%, left dark-ridgey370/right373 are interior transitions. Visible lower-lid/skin boundary isleft372/right374, approximately1px reading uncertainty. Both dark-ridge originals remain above as separate auxiliary measurements."
+        }
+      },
+      "reading_uncertainty_px": 1.0
+    },
+    {
+      "file": "male/eyebrows/05.png",
+      "part": "eyebrows",
+      "index": 5,
+      "sha256": "a8ef833cc1bfaadb9c0ee55f5c27806adfae05991216162d21a8ae6f492b6ef4",
+      "points": {
+        "inner_heads": [
+          [
+            490.7722346796696,
+            354.8623309157808
+          ],
+          [
+            534.1609401900478,
+            354.42719254374947
+          ]
+        ],
+        "outer_tails": [
+          [
+            426.13640842136977,
+            339.22904379610287
+          ],
+          [
+            598.8946755516262,
+            339.1603802414486
+          ]
+        ],
+        "crests": [
+          [
+            432.0,
+            337.0
+          ],
+          [
+            592.5,
+            336.0
+          ]
+        ],
+        "ink_weighted_centroids": [
+          [
+            459.18062424866474,
+            346.42622482908786
+          ],
+          [
+            565.1956749864407,
+            346.2591285168691
+          ]
+        ]
+      },
+      "measurements": {
+        "widths": [
+          64.63582625829986,
+          64.7337353615784
+        ],
+        "thickness_at_quartiles": [
+          [
+            11.0,
+            10.0,
+            9.0
+          ],
+          [
+            11.0,
+            10.0,
+            9.0
+          ]
+        ],
+        "mean_darkness_at_quartiles": [
+          [
+            182.02083333333331,
+            184.30000000000004,
+            178.4871794871795
+          ],
+          [
+            190.11111111111111,
+            176.63333333333333,
+            180.54320987654322
+          ]
+        ]
+      },
+      "reading_uncertainty_px": 1.0
+    },
+    {
+      "file": "male/nose/01.png",
+      "part": "nose",
+      "index": 1,
+      "sha256": "fea108d7478f923b820ad85c2bd0ea1aafd4ac0273c9702bec60a4ced9cc2d03",
+      "points": {
+        "nostrils": [
+          [
+            500.68002319927024,
+            443.90715422645474
+          ],
+          [
+            525.346184879555,
+            444.1383453086142
+          ]
+        ],
+        "center": [
+          513.0131040394126,
+          450.0
+        ]
+      },
+      "measurements": {
+        "lower_center_method": "Actual shifted columella bottomy450 confirmed in6x view, x measured from current paired nostril kernels."
+      },
+      "reading_uncertainty_px": 1.0
+    },
+    {
+      "file": "male/mouth/01.png",
+      "part": "mouth",
+      "index": 1,
+      "sha256": "8ead9b1c2bd3bbd9d0efc95b14ba273dba4f70afe458d83cdb6067e5d246cf1b",
+      "points": {
+        "seam_center": [
+          513.0418016615464,
+          477.4138464063513
+        ],
+        "corners": [
+          [
+            477.14245515300735,
+            477.4003429475905
+          ],
+          [
+            549.7489432720354,
+            477.2633163321012
+          ]
+        ]
+      },
+      "measurements": {
+        "corner_method": "Actual dark seam terminal ink centers, not transparent lip support bounds."
+      },
+      "reading_uncertainty_px": 1.0
+    },
+    {
+      "file": "male/face_accessory/02.png",
+      "part": "face_accessory",
+      "index": 2,
+      "sha256": "fcb82b82b862de2da397c4f6369df87a5786ce8fdf9abeae5511f30748aa7b94",
+      "points": {
+        "upper_center": [
+          513.0445590594487,
+          467.0564230020375
+        ],
+        "upper_endpoints": [
+          [
+            465.35427038315567,
+            475.90109329381386
+          ],
+          [
+            560.7348477357418,
+            475.2495147715682
+          ]
+        ],
+        "lower_center": [
+          514.0437871572412,
+          541.4404489019016
+        ],
+        "lower_endpoints": [
+          [
+            460.1827924566873,
+            510.05839764228887
+          ],
+          [
+            565.8145830042035,
+            510.11148748067814
+          ]
+        ]
+      },
+      "measurements": {
+        "present_regions": [
+          "upper",
+          "lower"
+        ],
+        "center_method": "Upper paired pigment endpoint midpoint; lower bottom15% actual pigment centroid. Central philtrum gap may intentionally contain no hair."
+      },
+      "reading_uncertainty_px": 1.0
+    },
+    {
+      "file": "male/face_accessory/03.png",
+      "part": "face_accessory",
+      "index": 3,
+      "sha256": "8582fc742f60b7df10111cfc4d8a24e747221323afa05e8ce2afdcd671bd1199",
+      "points": {
+        "upper_center": [
+          513.0096123035996,
+          464.9149680535508
+        ],
+        "upper_endpoints": [
+          [
+            464.18343286110576,
+            472.3539941695078
+          ],
+          [
+            561.8357917460935,
+            472.2228247957662
+          ]
+        ],
+        "lower_center": null,
+        "lower_endpoints": null
+      },
+      "measurements": {
+        "present_regions": [
+          "upper"
+        ],
+        "center_method": "Upper paired pigment endpoint midpoint; lower bottom15% actual pigment centroid. Central philtrum gap may intentionally contain no hair."
+      },
+      "reading_uncertainty_px": 1.0
+    },
+    {
+      "file": "male/face_accessory/04.png",
+      "part": "face_accessory",
+      "index": 4,
+      "sha256": "29e4c3a7a5dfe4786e630fd7b3db7e5aff276bd80d231180079b8de99fffe0ad",
+      "points": {
+        "upper_center": null,
+        "upper_endpoints": null,
+        "lower_center": [
+          513.024596200697,
+          549.5756845119212
+        ],
+        "lower_endpoints": [
+          [
+            484.0672895285951,
+            533.1268764638248
+          ],
+          [
+            543.8158947165063,
+            532.2711385790917
+          ]
+        ]
+      },
+      "measurements": {
+        "present_regions": [
+          "lower"
+        ],
+        "center_method": "Upper paired pigment endpoint midpoint; lower bottom15% actual pigment centroid. Central philtrum gap may intentionally contain no hair."
+      },
+      "reading_uncertainty_px": 1.0
+    },
+    {
+      "file": "male/face_accessory/05.png",
+      "part": "face_accessory",
+      "index": 5,
+      "sha256": "0fece24df5ebd74a086bf50cf602aaa5523e4a61d62e679be9f9e1e9d2fcc76b",
+      "points": {
+        "upper_center": [
+          513.0010202365166,
+          466.43350012429613
+        ],
+        "upper_endpoints": [
+          [
+            464.1726732851637,
+            474.6545517716168
+          ],
+          [
+            561.8293671878696,
+            474.8713865622908
+          ]
+        ],
+        "lower_center": [
+          512.7851023404291,
+          554.1961077129647
+        ],
+        "lower_endpoints": [
+          [
+            484.17661081491696,
+            531.1226327592406
+          ],
+          [
+            542.9670932147585,
+            530.6829750108426
+          ]
+        ]
+      },
+      "measurements": {
+        "present_regions": [
+          "upper",
+          "lower"
+        ],
+        "center_method": "Upper paired pigment endpoint midpoint; lower bottom15% actual pigment centroid. Central philtrum gap may intentionally contain no hair."
+      },
+      "reading_uncertainty_px": 1.0
+    },
+    {
+      "file": "male/face_accessory/06.png",
+      "part": "face_accessory",
+      "index": 6,
+      "sha256": "aaceb8ef949f763fb58b8a0fe5c58e86954f52e072a8762dccaa00b29db41b5b",
+      "points": {
+        "upper_center": [
+          512.5507931151981,
+          468.87425278052035
+        ],
+        "upper_endpoints": [
+          [
+            466.23899875665666,
+            477.65752457362714
+          ],
+          [
+            558.8625874737395,
+            477.6913275358165
+          ]
+        ],
+        "lower_center": [
+          513.6952859918684,
+          539.9830563776943
+        ],
+        "lower_endpoints": [
+          [
+            447.9624409597581,
+            492.73570608495976
+          ],
+          [
+            581.875083944261,
+            492.35317449213727
+          ]
+        ]
+      },
+      "measurements": {
+        "present_regions": [
+          "upper",
+          "lower"
+        ],
+        "center_method": "Upper paired pigment endpoint midpoint; lower bottom15% actual pigment centroid. Central philtrum gap may intentionally contain no hair."
+      },
+      "reading_uncertainty_px": 1.0
+    }
+  ]
+}

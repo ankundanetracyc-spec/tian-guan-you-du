@@ -1,0 +1,46 @@
+{
+  "user_approval": "User accepted all four beard previews after the previous short-beard installation",
+  "selection": [
+    {
+      "id": "01_fine_moustache",
+      "name": "八字短髭",
+      "approved_source": "reference/01_approved.png",
+      "approved_sha256": "59c46faa59d3060bfd66be106724e857b719c3fbac3cc143e786cd68643ac374",
+      "physical_index": 3,
+      "style_id": 4,
+      "full_id": "male_beard_04",
+      "final_file": "male/face_accessory/03.png"
+    },
+    {
+      "id": "02_short_chin_only",
+      "name": "短颏须",
+      "approved_source": "reference/02_approved.png",
+      "approved_sha256": "44881408a2771986d4333ec23ce39325488bcdef7788edb4007f545490d6ea63",
+      "physical_index": 4,
+      "style_id": 5,
+      "full_id": "male_beard_05",
+      "final_file": "male/face_accessory/04.png"
+    },
+    {
+      "id": "03_separate_moustache_goatee",
+      "name": "细髭尖颏",
+      "approved_source": "reference/03_approved.png",
+      "approved_sha256": "7ac8cf94ebea0a712b39d5d2b019244c5d0cba8f0c544c95fb1783642b5bd18c",
+      "physical_index": 5,
+      "style_id": 6,
+      "full_id": "male_beard_06",
+      "final_file": "male/face_accessory/05.png"
+    },
+    {
+      "id": "04_light_connected_beard",
+      "name": "薄络腮须",
+      "approved_source": "reference/04_approved.png",
+      "approved_sha256": "422578b881fa48a4914e3f201c61850d730f4386fa7b154c2988c4a10681b907",
+      "physical_index": 6,
+      "style_id": 7,
+      "full_id": "male_beard_07",
+      "final_file": "male/face_accessory/06.png"
+    }
+  ],
+  "scope": "Four additional independent beard assets, no existing face/hair/clothes/color/age changes"
+}

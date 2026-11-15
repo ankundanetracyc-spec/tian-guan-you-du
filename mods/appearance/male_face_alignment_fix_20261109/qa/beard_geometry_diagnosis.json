@@ -1,0 +1,407 @@
+{
+  "schema": "male-existing-beard-semantic-audit/v1",
+  "scope": "Read-only current5 nonempty beard PNGs; no edits or proposed per-pixel reconstruction.",
+  "axis_x": 513,
+  "metric": "Pigment darkness below170 weighted by alpha, opacity>=16; local anatomical moustache/chin ROIs, 1/99% ink quantile endpoints and lower15% ink centroid. No whole-alpha-bbox centers.",
+  "uncertainty_px": 1.5,
+  "records": [
+    {
+      "physical_index": 2,
+      "name": "short moustache+jaw",
+      "sha256": "8b44416a488007d1bd25c83540024bf7dfb0cc2869c7ea99a92b19220bfd1769",
+      "upper_moustache": {
+        "ink_centroid": [
+          515.7441089116035,
+          467.07165290132
+        ],
+        "ink_endpoint_left_right": [
+          [
+            469.328503317224,
+            475.8463057722949
+          ],
+          [
+            563.7579527208837,
+            475.1301008200434
+          ]
+        ],
+        "endpoint_midpoint_x": 516.5432280190539,
+        "lower15pct_center": [
+          513.545387631152,
+          475.4203400030732
+        ],
+        "ink_quantiles_x_1_99": [
+          469.0,
+          564.0
+        ],
+        "ink_quantiles_y_1_99": [
+          456.0,
+          480.0
+        ],
+        "roi_half_open": [
+          440,
+          449,
+          590,
+          490
+        ],
+        "pigment_weight_sum": 49784.95686274509
+      },
+      "lower_chin_jaw": {
+        "ink_centroid": [
+          517.9814248025299,
+          529.7450178311834
+        ],
+        "ink_endpoint_left_right": [
+          [
+            464.1760784416584,
+            510.4514300535651
+          ],
+          [
+            569.7895865352947,
+            509.64140204742563
+          ]
+        ],
+        "endpoint_midpoint_x": 516.9828324884766,
+        "lower15pct_center": [
+          517.578018439956,
+          541.4403705987829
+        ],
+        "ink_quantiles_x_1_99": [
+          464.0,
+          570.0
+        ],
+        "ink_quantiles_y_1_99": [
+          497.0,
+          543.0
+        ],
+        "roi_half_open": [
+          425,
+          490,
+          610,
+          585
+        ],
+        "pigment_weight_sum": 78363.12156862745
+      },
+      "upper_lower_endpoint_midpoint_difference_x": -0.4396044694226475,
+      "suggested_global_translation_if_upper_centered": -3.543228019053913,
+      "lower_bottom_after_same_translation": 514.034790420902,
+      "side_rim_outside_fixedface_alpha128_y435_545": [
+        {
+          "dx_integer_diagnostic": 0,
+          "total": 0,
+          "left": 0,
+          "right": 0
+        },
+        {
+          "dx_integer_diagnostic": -4,
+          "total": 0,
+          "left": 0,
+          "right": 0
+        }
+      ]
+    },
+    {
+      "physical_index": 3,
+      "name": "fine moustache",
+      "sha256": "40118e019e467e331201e3d7235c92eb0cc0a934d35712e6ffffdcd7164d5f82",
+      "upper_moustache": {
+        "ink_centroid": [
+          516.4559267928365,
+          464.9137399426156
+        ],
+        "ink_endpoint_left_right": [
+          [
+            468.1946094792163,
+            472.3337958473739
+          ],
+          [
+            565.8364659412729,
+            472.21843978238184
+          ]
+        ],
+        "endpoint_midpoint_x": 517.0155377102446,
+        "lower15pct_center": [
+          516.0199042309564,
+          472.7564963220914
+        ],
+        "ink_quantiles_x_1_99": [
+          468.0,
+          566.0
+        ],
+        "ink_quantiles_y_1_99": [
+          454.0,
+          476.0
+        ],
+        "roi_half_open": [
+          440,
+          449,
+          590,
+          490
+        ],
+        "pigment_weight_sum": 56105.65620915033
+      },
+      "lower_chin_jaw": null,
+      "suggested_global_translation_if_upper_centered": -4.015537710244644,
+      "side_rim_outside_fixedface_alpha128_y435_545": [
+        {
+          "dx_integer_diagnostic": 0,
+          "total": 0,
+          "left": 0,
+          "right": 0
+        },
+        {
+          "dx_integer_diagnostic": -4,
+          "total": 0,
+          "left": 0,
+          "right": 0
+        }
+      ]
+    },
+    {
+      "physical_index": 4,
+      "name": "short chin only",
+      "sha256": "bb4aa8dfb5d62eedc93048e694928adb89ba66b29a0ac511bf419c8b544d7a28",
+      "upper_moustache": null,
+      "lower_chin_jaw": {
+        "ink_centroid": [
+          517.6177975556512,
+          539.1684606338355
+        ],
+        "ink_endpoint_left_right": [
+          [
+            488.0601047220858,
+            532.9966651308342
+          ],
+          [
+            547.8190798499954,
+            532.3029593474304
+          ]
+        ],
+        "endpoint_midpoint_x": 517.9395922860406,
+        "lower15pct_center": [
+          517.2245917846564,
+          549.598355664603
+        ],
+        "ink_quantiles_x_1_99": [
+          488.0,
+          548.0
+        ],
+        "ink_quantiles_y_1_99": [
+          521.0,
+          554.0
+        ],
+        "roi_half_open": [
+          425,
+          490,
+          610,
+          585
+        ],
+        "pigment_weight_sum": 59613.13594771241
+      },
+      "suggested_global_translation_if_lower_centered": -4.224591784656354,
+      "side_rim_outside_fixedface_alpha128_y435_545": [
+        {
+          "dx_integer_diagnostic": 0,
+          "total": 0,
+          "left": 0,
+          "right": 0
+        },
+        {
+          "dx_integer_diagnostic": -4,
+          "total": 0,
+          "left": 0,
+          "right": 0
+        }
+      ]
+    },
+    {
+      "physical_index": 5,
+      "name": "separate moustache+point",
+      "sha256": "355e1a1b6ca07bdbfcbcd388515ef37c1ad219bda73a8964dc8f2f607c63c1fc",
+      "upper_moustache": {
+        "ink_centroid": [
+          516.3462034048764,
+          466.43350012429613
+        ],
+        "ink_endpoint_left_right": [
+          [
+            468.1726732851637,
+            474.6545517716168
+          ],
+          [
+            565.8293671878697,
+            474.8713865622908
+          ]
+        ],
+        "endpoint_midpoint_x": 517.0010202365168,
+        "lower15pct_center": [
+          514.72638688394,
+          474.4193495292519
+        ],
+        "ink_quantiles_x_1_99": [
+          468.0,
+          566.0
+        ],
+        "ink_quantiles_y_1_99": [
+          455.0,
+          479.0
+        ],
+        "roi_half_open": [
+          440,
+          449,
+          590,
+          490
+        ],
+        "pigment_weight_sum": 53877.205228758176
+      },
+      "lower_chin_jaw": {
+        "ink_centroid": [
+          516.7005611236173,
+          537.181743609273
+        ],
+        "ink_endpoint_left_right": [
+          [
+            488.17661081491707,
+            531.1226327592406
+          ],
+          [
+            546.9670932147586,
+            530.6829750108426
+          ]
+        ],
+        "endpoint_midpoint_x": 517.5718520148379,
+        "lower15pct_center": [
+          516.7851023404293,
+          554.1961077129647
+        ],
+        "ink_quantiles_x_1_99": [
+          488.0,
+          547.0
+        ],
+        "ink_quantiles_y_1_99": [
+          503.0,
+          563.0
+        ],
+        "roi_half_open": [
+          425,
+          490,
+          610,
+          585
+        ],
+        "pigment_weight_sum": 88051.85228758169
+      },
+      "upper_lower_endpoint_midpoint_difference_x": -0.5708317783211214,
+      "suggested_global_translation_if_upper_centered": -4.0010202365167515,
+      "lower_bottom_after_same_translation": 512.7840821039124,
+      "side_rim_outside_fixedface_alpha128_y435_545": [
+        {
+          "dx_integer_diagnostic": 0,
+          "total": 0,
+          "left": 0,
+          "right": 0
+        },
+        {
+          "dx_integer_diagnostic": -4,
+          "total": 0,
+          "left": 0,
+          "right": 0
+        }
+      ]
+    },
+    {
+      "physical_index": 6,
+      "name": "light connected",
+      "sha256": "c3bc9bd6eb602c064e498dcd1e881a83296f5cb7c03b2bf3fe2923a97086a3e3",
+      "upper_moustache": {
+        "ink_centroid": [
+          517.1492815833789,
+          466.88869134123547
+        ],
+        "ink_endpoint_left_right": [
+          [
+            469.07462844566345,
+            475.45120002757267
+          ],
+          [
+            565.8764453607879,
+            474.56603920938596
+          ]
+        ],
+        "endpoint_midpoint_x": 517.4755369032257,
+        "lower15pct_center": [
+          515.0561333470783,
+          475.1190936748184
+        ],
+        "ink_quantiles_x_1_99": [
+          469.0,
+          566.0
+        ],
+        "ink_quantiles_y_1_99": [
+          451.0,
+          479.0
+        ],
+        "roi_half_open": [
+          462,
+          449,
+          576,
+          480
+        ],
+        "pigment_weight_sum": 38033.53202614379
+      },
+      "lower_chin_jaw": {
+        "ink_centroid": [
+          515.7744630863024,
+          524.8113255871771
+        ],
+        "ink_endpoint_left_right": [
+          [
+            448.9895198601921,
+            493.1569839880694
+          ],
+          [
+            588.685183643989,
+            492.9355663285172
+          ]
+        ],
+        "endpoint_midpoint_x": 518.8373517520906,
+        "lower15pct_center": [
+          518.8655666630905,
+          541.9441295590443
+        ],
+        "ink_quantiles_x_1_99": [
+          449.0,
+          589.0
+        ],
+        "ink_quantiles_y_1_99": [
+          491.0,
+          544.0
+        ],
+        "roi_half_open": [
+          425,
+          490,
+          610,
+          585
+        ],
+        "pigment_weight_sum": 62184.8091503268
+      },
+      "upper_lower_endpoint_midpoint_difference_x": -1.361814848864924,
+      "suggested_global_translation_if_upper_centered": -4.475536903225702,
+      "lower_bottom_after_same_translation": 514.3900297598648,
+      "side_rim_outside_fixedface_alpha128_y435_545": [
+        {
+          "dx_integer_diagnostic": 0,
+          "total": 119,
+          "left": 33,
+          "right": 86
+        },
+        {
+          "dx_integer_diagnostic": -4,
+          "total": 270,
+          "left": 192,
+          "right": 78
+        }
+      ]
+    }
+  ],
+  "all67_png_two_configs_preserved": true,
+  "assessment": "02/03/04/05 upper/lower pigment centers consistently lie near517, not513; whole-layer left translation3.5..4.3px is geometrically plausible and does not introduce measured side rim spill.06 upper517.476/lower-bottom518.866 both need centering, but its cheek/sideburn outline already has119px outside fixedface and integer-4 diagnostic increases this to270px. Do not blindly translate06; root should review re-extraction or a whole-layer similarity with explicit cheek fit. No beard candidate written."
+}

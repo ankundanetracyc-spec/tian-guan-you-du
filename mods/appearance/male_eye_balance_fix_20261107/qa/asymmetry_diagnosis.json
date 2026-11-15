@@ -1,0 +1,520 @@
+{
+  "schema": "male-eye04-asymmetry-diagnosis/v1",
+  "date": "2026-11-07",
+  "scope": "Read frozen54-PNG baseline references and approved source; only this QA JSON written. No PNG, configuration, or active resource changed.",
+  "reported_identification": {
+    "reported_crop": "E:\\stacklands\\mods\\appearance\\male_eye_balance_fix_20261107\\reference\\reported_eye_crop.png",
+    "reported_crop_sha256": "76c5042f2b1e3c4b30ab3663a7548be6fc0f5c25c3e5c14cd42a5217d3ad264c",
+    "confirmed_by_root": [
+      "hair_front04",
+      "eyebrows04",
+      "eyes04"
+    ],
+    "top_match": {
+      "score": 0.012116418220102787,
+      "scale": 0.4600000000000001,
+      "crop_top_left_in_scaled_roi": [
+        37,
+        19
+      ],
+      "parts": {
+        "hair_front": 4,
+        "hair_back": 5,
+        "eyebrows": 4,
+        "eyes": 4
+      }
+    },
+    "back_hair": "Not reliably distinguished by this narrow eye crop; ranked top is05, next01 with virtually the same score.",
+    "identification_report": "E:\\stacklands\\mods\\appearance\\male_eye_balance_fix_20261107\\qa\\screenshot_identification.json"
+  },
+  "baseline": {
+    "path": "E:\\stacklands\\mods\\appearance\\male_eye_balance_fix_20261107\\source\\baseline_active.json",
+    "sha256": "7e0c8ce6969f075bc66a8d21f5f445ddcc3bed58b21b1a7b226dedc8e3a27768",
+    "png_count": 54,
+    "all_entry_count": 56,
+    "frozen_reference_check": {
+      "mods/appearance/ink_three_variants_20261004/male/eyes/04.png": {
+        "baseline_sha256": "fd3f04b779e0849bbe9c9cf46fcfa2b5bd6b8fcb8839b2aac5c1d26819acba89",
+        "frozen_sha256": "fd3f04b779e0849bbe9c9cf46fcfa2b5bd6b8fcb8839b2aac5c1d26819acba89",
+        "matches": true
+      },
+      "mods/appearance/ink_three_variants_20261004/male/face_shape/01.png": {
+        "baseline_sha256": "d86319252035a286a92e8892b9816bdb917a39f7f41f4cb1edf40f4dee51c357",
+        "frozen_sha256": "d86319252035a286a92e8892b9816bdb917a39f7f41f4cb1edf40f4dee51c357",
+        "matches": true
+      }
+    }
+  },
+  "inputs": {
+    "eye04": "E:\\stacklands\\mods\\appearance\\male_eye_balance_fix_20261107\\reference\\current_male\\eyes\\04.png",
+    "eye04_sha256": "fd3f04b779e0849bbe9c9cf46fcfa2b5bd6b8fcb8839b2aac5c1d26819acba89",
+    "head": "E:\\stacklands\\mods\\appearance\\male_eye_balance_fix_20261107\\reference\\current_male\\face_shape\\01.png",
+    "source": "E:\\stacklands\\mods\\appearance\\male_loose_style_install_20261106\\source\\approved_male.png",
+    "source_sha256": "5ca3f4cc0ea0410c22bcf07dfef278a9496a0fea968c38008dfe8f7dc5cf6ee3",
+    "source_to_current_frame_matrix": [
+      [
+        0.9975364830940775,
+        0.003628984366773206,
+        -0.7327878528938072
+      ],
+      [
+        -0.003628984366773206,
+        0.9975364830940775,
+        10.418592862675553
+      ]
+    ],
+    "source_alignment_sampling": "In-memory single bicubic PIL affine using inverse of original common frame. No pupil normalization, separate eye resizing, mirroring or per-eye transform.",
+    "all_measurement_canvas": [
+      1024,
+      1536
+    ]
+  },
+  "method": {
+    "orientation": "left/right mean image-left/image-right, not anatomical side.",
+    "no_hair_check": "Current eye04 composited only over frozen blank head, with no front hair, back hair or eyebrows. Dark hair fragments remain inside eye04 itself.",
+    "curve_algorithm": "For each stated x, average mean-RGB grayscale over x-1..x+1. diff[y]=g[y+1]-g[y]. Upper edge is y+.5 at minimum diff in y355..365. Lower edge is y+.5 at maximum diff in y371..377. Opening=lower-upper. Fixed search windows and raw points are recorded; no optimization to force symmetry. Curve samples span each central opening; visible iris-edge core anchors are left x458/466 and right x564/572. Supporting lateral samples can land on a lower crease and are retained transparently, not used in core summary. Broad medians must not be interpreted as exact anatomical areas.",
+    "curve_uncertainty_px": 1.5,
+    "curve_limit": "Coarse painted dark-edge estimate around the iris, not a full anatomical segmentation. Nearby fold shadows, eyelash paint and baked hair can bias edge detection by1-2px. The edge samples establish the right upper-edge displacement; they are not ready-to-import control points. A trial at x566/570 intersected baked/source hair and is intentionally not treated as clean upper-lid geometry. Core anchors were read against native visual boundaries; uncertainty is retained rather than interpreting a hair-edge derivative as the lid.",
+    "pupil_core_algorithm": "Within recorded half-open ROI, weights=max(100-meanRGB,0), centroid of native coordinates. Same ROI for source and current.",
+    "pupil_core_limit": "Approximately1px reading uncertainty. These are painted dark-core centroids; source/current baked hair and glints can bias them, especially right. They must not justify per-pupil scaling or serve as exact anatomical circle centers.",
+    "iris_algorithm": "Coarse manual horizontal visible outer-limbus endpoints on the same native frame. x span is diameter; native image source current side compared at identical scale.",
+    "iris_uncertainty_px": 2,
+    "iris_limit": "Eyelids cover the vertical iris. Full circle diameter is not inferred from aperture height; source right iris is partly crossed by original hair. Horizontal estimates do not show a disproportionate enlargement of one iris."
+  },
+  "measurements": {
+    "current_eye04_no_hair": {
+      "left": {
+        "iris_region_lid_curve": [
+          {
+            "x": 442,
+            "upper_y": 361.5,
+            "lower_y": 373.5,
+            "opening_height_px": 12.0,
+            "used_in_core_summary": false,
+            "confidence": "supporting contour only; lower crease/corner can bias this bounded gradient estimate"
+          },
+          {
+            "x": 450,
+            "upper_y": 359.5,
+            "lower_y": 376.5,
+            "opening_height_px": 17.0,
+            "used_in_core_summary": false,
+            "confidence": "supporting contour only; lower crease/corner can bias this bounded gradient estimate"
+          },
+          {
+            "x": 458,
+            "upper_y": 359.5,
+            "lower_y": 374.5,
+            "opening_height_px": 15.0,
+            "used_in_core_summary": true,
+            "confidence": "iris-edge anchor, approximately1-1.5px"
+          },
+          {
+            "x": 466,
+            "upper_y": 359.5,
+            "lower_y": 374.5,
+            "opening_height_px": 15.0,
+            "used_in_core_summary": true,
+            "confidence": "iris-edge anchor, approximately1-1.5px"
+          },
+          {
+            "x": 474,
+            "upper_y": 361.5,
+            "lower_y": 374.5,
+            "opening_height_px": 13.0,
+            "used_in_core_summary": false,
+            "confidence": "supporting contour only; lower crease/corner can bias this bounded gradient estimate"
+          },
+          {
+            "x": 482,
+            "upper_y": 362.5,
+            "lower_y": 374.5,
+            "opening_height_px": 12.0,
+            "used_in_core_summary": false,
+            "confidence": "supporting contour only; lower crease/corner can bias this bounded gradient estimate"
+          }
+        ],
+        "median_opening_height_px": 14.0,
+        "range_opening_height_px": [
+          12.0,
+          17.0
+        ],
+        "dark_pupil_core_centroid": [
+          462.6952312287569,
+          365.41672674837787
+        ],
+        "centroid_roi": [
+          454,
+          363,
+          471,
+          373
+        ],
+        "core_anchor_xs": [
+          458,
+          466
+        ],
+        "core_median_opening_height_px": 15.0
+      },
+      "right": {
+        "iris_region_lid_curve": [
+          {
+            "x": 548,
+            "upper_y": 365.5,
+            "lower_y": 373.5,
+            "opening_height_px": 8.0,
+            "used_in_core_summary": false,
+            "confidence": "supporting contour only; lower crease/corner can bias this bounded gradient estimate"
+          },
+          {
+            "x": 556,
+            "upper_y": 360.5,
+            "lower_y": 373.5,
+            "opening_height_px": 13.0,
+            "used_in_core_summary": false,
+            "confidence": "supporting contour only; lower crease/corner can bias this bounded gradient estimate"
+          },
+          {
+            "x": 564,
+            "upper_y": 356.5,
+            "lower_y": 373.5,
+            "opening_height_px": 17.0,
+            "used_in_core_summary": true,
+            "confidence": "iris-edge anchor, approximately1-1.5px"
+          },
+          {
+            "x": 572,
+            "upper_y": 355.5,
+            "lower_y": 372.5,
+            "opening_height_px": 17.0,
+            "used_in_core_summary": true,
+            "confidence": "iris-edge anchor, approximately1-1.5px"
+          },
+          {
+            "x": 580,
+            "upper_y": 356.5,
+            "lower_y": 375.5,
+            "opening_height_px": 19.0,
+            "used_in_core_summary": false,
+            "confidence": "supporting contour only; lower crease/corner can bias this bounded gradient estimate"
+          },
+          {
+            "x": 588,
+            "upper_y": 357.5,
+            "lower_y": 373.5,
+            "opening_height_px": 16.0,
+            "used_in_core_summary": false,
+            "confidence": "supporting contour only; lower crease/corner can bias this bounded gradient estimate"
+          }
+        ],
+        "median_opening_height_px": 16.5,
+        "range_opening_height_px": [
+          8.0,
+          19.0
+        ],
+        "dark_pupil_core_centroid": [
+          567.7991927346114,
+          364.9156695978088
+        ],
+        "centroid_roi": [
+          560,
+          363,
+          577,
+          373
+        ],
+        "core_anchor_xs": [
+          564,
+          572
+        ],
+        "core_median_opening_height_px": 17.0
+      }
+    },
+    "approved_source_in_same_frame": {
+      "left": {
+        "iris_region_lid_curve": [
+          {
+            "x": 442,
+            "upper_y": 357.5,
+            "lower_y": 373.5,
+            "opening_height_px": 16.0,
+            "used_in_core_summary": false,
+            "confidence": "supporting contour only; lower crease/corner can bias this bounded gradient estimate"
+          },
+          {
+            "x": 450,
+            "upper_y": 359.5,
+            "lower_y": 376.5,
+            "opening_height_px": 17.0,
+            "used_in_core_summary": false,
+            "confidence": "supporting contour only; lower crease/corner can bias this bounded gradient estimate"
+          },
+          {
+            "x": 458,
+            "upper_y": 358.5,
+            "lower_y": 374.5,
+            "opening_height_px": 16.0,
+            "used_in_core_summary": true,
+            "confidence": "iris-edge anchor, approximately1-1.5px"
+          },
+          {
+            "x": 466,
+            "upper_y": 359.5,
+            "lower_y": 374.5,
+            "opening_height_px": 15.0,
+            "used_in_core_summary": true,
+            "confidence": "iris-edge anchor, approximately1-1.5px"
+          },
+          {
+            "x": 474,
+            "upper_y": 361.5,
+            "lower_y": 374.5,
+            "opening_height_px": 13.0,
+            "used_in_core_summary": false,
+            "confidence": "supporting contour only; lower crease/corner can bias this bounded gradient estimate"
+          },
+          {
+            "x": 482,
+            "upper_y": 365.5,
+            "lower_y": 374.5,
+            "opening_height_px": 9.0,
+            "used_in_core_summary": false,
+            "confidence": "supporting contour only; lower crease/corner can bias this bounded gradient estimate"
+          }
+        ],
+        "median_opening_height_px": 15.5,
+        "range_opening_height_px": [
+          9.0,
+          17.0
+        ],
+        "dark_pupil_core_centroid": [
+          462.8016701461379,
+          365.46289618523446
+        ],
+        "centroid_roi": [
+          454,
+          363,
+          471,
+          373
+        ],
+        "core_anchor_xs": [
+          458,
+          466
+        ],
+        "core_median_opening_height_px": 15.5
+      },
+      "right": {
+        "iris_region_lid_curve": [
+          {
+            "x": 548,
+            "upper_y": 365.5,
+            "lower_y": 373.5,
+            "opening_height_px": 8.0,
+            "used_in_core_summary": false,
+            "confidence": "supporting contour only; lower crease/corner can bias this bounded gradient estimate"
+          },
+          {
+            "x": 556,
+            "upper_y": 360.5,
+            "lower_y": 373.5,
+            "opening_height_px": 13.0,
+            "used_in_core_summary": false,
+            "confidence": "supporting contour only; lower crease/corner can bias this bounded gradient estimate"
+          },
+          {
+            "x": 564,
+            "upper_y": 358.5,
+            "lower_y": 373.5,
+            "opening_height_px": 15.0,
+            "used_in_core_summary": true,
+            "confidence": "iris-edge anchor, approximately1-1.5px"
+          },
+          {
+            "x": 572,
+            "upper_y": 357.5,
+            "lower_y": 373.5,
+            "opening_height_px": 16.0,
+            "used_in_core_summary": true,
+            "confidence": "iris-edge anchor, approximately1-1.5px"
+          },
+          {
+            "x": 580,
+            "upper_y": 358.5,
+            "lower_y": 376.5,
+            "opening_height_px": 18.0,
+            "used_in_core_summary": false,
+            "confidence": "supporting contour only; lower crease/corner can bias this bounded gradient estimate"
+          },
+          {
+            "x": 588,
+            "upper_y": 356.5,
+            "lower_y": 373.5,
+            "opening_height_px": 17.0,
+            "used_in_core_summary": false,
+            "confidence": "supporting contour only; lower crease/corner can bias this bounded gradient estimate"
+          }
+        ],
+        "median_opening_height_px": 15.5,
+        "range_opening_height_px": [
+          8.0,
+          18.0
+        ],
+        "dark_pupil_core_centroid": [
+          568.2945819397993,
+          365.18916387959865
+        ],
+        "centroid_roi": [
+          560,
+          363,
+          577,
+          373
+        ],
+        "core_anchor_xs": [
+          564,
+          572
+        ],
+        "core_median_opening_height_px": 15.5
+      }
+    }
+  },
+  "iris_horizontal_estimates": {
+    "current_eye04_no_hair": {
+      "left": {
+        "horizontal_outer_limbus_points": [
+          [
+            451,
+            366
+          ],
+          [
+            473,
+            366
+          ]
+        ],
+        "visible_horizontal_diameter_px": 22
+      },
+      "right": {
+        "horizontal_outer_limbus_points": [
+          [
+            555,
+            365
+          ],
+          [
+            577,
+            365
+          ]
+        ],
+        "visible_horizontal_diameter_px": 22
+      }
+    },
+    "approved_source_in_same_frame": {
+      "left": {
+        "horizontal_outer_limbus_points": [
+          [
+            452,
+            366
+          ],
+          [
+            473,
+            366
+          ]
+        ],
+        "visible_horizontal_diameter_px": 21
+      },
+      "right": {
+        "horizontal_outer_limbus_points": [
+          [
+            555.5,
+            365
+          ],
+          [
+            577,
+            365
+          ]
+        ],
+        "visible_horizontal_diameter_px": 21.5
+      }
+    }
+  },
+  "current_minus_source": {
+    "left": {
+      "pupil_core_delta_px": [
+        -0.10643891738101274,
+        -0.046169436856587254
+      ],
+      "median_opening_delta_px": -1.5,
+      "corresponding_upper_edge_delta_y": [
+        4.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        -3.0
+      ],
+      "core_median_opening_delta_px": -0.5
+    },
+    "right": {
+      "pupil_core_delta_px": [
+        -0.49538920518784835,
+        -0.27349428178985136
+      ],
+      "median_opening_delta_px": 1.0,
+      "corresponding_upper_edge_delta_y": [
+        0.0,
+        0.0,
+        -2.0,
+        -2.0,
+        -2.0,
+        1.0
+      ],
+      "core_median_opening_delta_px": 1.5
+    }
+  },
+  "independent_visual_findings": {
+    "source_preexisting_asymmetry": "Approved loose-style whole source is mildly uneven: image-right upper lid is slightly higher/more rounded than image-left. A coarse1-2px method cannot assign subpixel biological significance to that difference.",
+    "extraction_amplification": "Current04 raises/softens image-right upper contour further. Around x564..574, current upper edge is about2px higher than common-frame source while the lower edge is close; this increases right visible opening. Current image-left central opening remains close to source.",
+    "baked_hair": {
+      "present_without_front_hair": true,
+      "main_bbox_approx_xyxy": [
+        563,
+        355,
+        573,
+        369
+      ],
+      "description": "Vertical dark threads/short deep marks remain over image-right upper iris even when all hair layers are absent. Small residue also appears near image-left outer-upper edge. Source-visible hair color was retained within eye RGB; this is not solely occlusion from current front hair.",
+      "bbox_is_diagnostic_not_an_edit_mask": true
+    },
+    "manual_native_opening_reading_px": {
+      "current": {
+        "left": [
+          14,
+          15
+        ],
+        "right": [
+          17,
+          18
+        ]
+      },
+      "source_same_frame": {
+        "left": [
+          14,
+          15
+        ],
+        "right": [
+          15,
+          16
+        ]
+      },
+      "note": "Visual coarse ranges near pupil/iris; raw gradient samples above vary by x and can differ1-2px. Both readings support the same main upper-lid problem."
+    }
+  },
+  "diagnosis": "User-visible size mismatch is real at the exposed opening/upper-lid level, amplified by eye04 baked hair and additional current front-hair occlusion. It is not adequately explained by hair occlusion alone and is not mainly an entire iris or pupil size difference.",
+  "candidate_review_targets": {
+    "repair": "Use built-in generated/edit candidate to reduce image-right upper opening naturally and remove baked hair, preserving lower-lid character, pupil/iris position and adult masculine style.",
+    "do_not": [
+      "uniformly scale a whole eye or pupil to hide the mismatch",
+      "mirror one eye",
+      "pull each eye independently to old anatomy",
+      "copy source hair back into visible eye RGB"
+    ],
+    "practical_check": "Compare without hair first, then with front04 and old/new fronts. Keep source-scale upper/lower contours and horizontal iris estimates visible; review normal portrait and common native crop.",
+    "approval_status": "Awaiting new candidate. This diagnosis does not approve replacement or claim symmetry repair."
+  }
+}

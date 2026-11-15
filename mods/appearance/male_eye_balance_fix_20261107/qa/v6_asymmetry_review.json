@@ -1,0 +1,78 @@
+{
+  "sha256": "6c3f023df0d845a979727f4fab210c3ad95a03a881a40f3ea493d19dc0252f14",
+  "same_ROI": {
+    "left": {
+      "curve": [
+        {
+          "x": 458,
+          "upper_y": 359.5,
+          "lower_y": 374.5,
+          "opening": 15
+        },
+        {
+          "x": 466,
+          "upper_y": 359.5,
+          "lower_y": 374.5,
+          "opening": 15
+        }
+      ],
+      "median": 15
+    },
+    "right": {
+      "curve": [
+        {
+          "x": 564,
+          "upper_y": 358.5,
+          "lower_y": 373.5,
+          "opening": 15
+        },
+        {
+          "x": 572,
+          "upper_y": 358.5,
+          "lower_y": 372.5,
+          "opening": 14
+        }
+      ],
+      "median": 14.5
+    }
+  },
+  "left_changed_pixels": 0,
+  "schema": "male-eye04-balance-v6-final-audit/v1",
+  "scope": "Only QA data written; no PNG, candidate geometry or active configuration edited.",
+  "ready_for_root_install": true,
+  "target": {
+    "left_opening_px": 15,
+    "right_opening_px": [
+      14,
+      15
+    ],
+    "right_measured_median_px": 14.5,
+    "met": true
+  },
+  "method": "Same native1024x1536 RGBA over frozen blank head; grayscale meanRGB,3-column mean at x458/466 and564/572. Upper edge=min diff in355..365, lower=max diff in371..377, y+.5. No measurement-window changes.",
+  "edge_uncertainty_px": [
+    1,
+    1.5
+  ],
+  "visual_review": {
+    "normal_scale_images": [
+      "qa/before_after_eye_hair_comparison_light.png",
+      "qa/before_after_reported_scale_light.png"
+    ],
+    "opening_balance": "Natural near-balance at normal size. Neither the original conspicuous right-large eye nor v3 half-closed right-eye effect remains.",
+    "baked_hair": "Original eye-layer dark vertical hair residue is removed; actual foreground hair04 occlusion is expected and distinct.",
+    "outer_tail": "No extra long pointed eyeliner tail visible; current outer contour is adequately soft.",
+    "remaining_accepted_limits": [
+      "Small differences in inner/outer corner and upper/lower-lid stroke softness remain.",
+      "Measured opening15 versus14.5px is near-balance, not perfect mirrored or pixel-identical symmetry.",
+      "New right painting is generated and technically imported; this visual audit is not a claim of final user aesthetic approval or completed runtime installation."
+    ]
+  },
+  "frame_and_pupil": "Existing <=0.50px frame/pupil preservation validation retained per ROOT and featureagent; not redundantly remeasured in this final necessary audit.",
+  "supersedes": [
+    "qa/final_asymmetry_review.json (rejected v3/28f148)",
+    "qa/v4_asymmetry_review.json",
+    "qa/v5_asymmetry_review.json"
+  ],
+  "stop_art_iteration": true
+}

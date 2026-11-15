@@ -1,0 +1,94 @@
+{
+  "schema": "male-nose-mouth-whole-layer-centering/v1",
+  "axis_x": 513.0,
+  "measurement_source": "qa/geometry_diagnosis.json",
+  "scope": "Candidate nose01/mouth01 only; fixed head/neck, eyes,brows,hair,clothes unchanged. Candidate QA deliberately keeps original asymmetric eyes/brows pending generated replacements.",
+  "method": "One full-layer horizontal fractional translation from frozen PNG using one pass premultiplied-alpha bilinear sampling. No local warp or RGB changes beyond resampling, no crop/rectangular fill.",
+  "records": [
+    {
+      "part": "nose",
+      "source": "source/frozen/male/nose/01.png",
+      "source_sha256": "e7271b38d96922434dbdf4a085b83a0d35ea5560989d0cfda9177beb085a2e79",
+      "target": "male/nose/01.png",
+      "candidate_sha256": "fea108d7478f923b820ad85c2bd0ea1aafd4ac0273c9702bec60a4ced9cc2d03",
+      "source_semantic_center_x": 517.0750247787362,
+      "target_axis_x": 513.0,
+      "translation": [
+        -4.075024778736179,
+        0
+      ],
+      "matrix": [
+        [
+          1,
+          0,
+          -4.075024778736179
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "one_pass_premultiplied_alpha_bilinear_sampling": true,
+      "rotation_deg": 0,
+      "scale": 1,
+      "alpha_mass_source": 967944,
+      "alpha_mass_candidate": 967952,
+      "semantic_measure_after_x": 513.0131040394126,
+      "semantic_after_minus_axis_px": 0.013104039412610291,
+      "after_measurement": [
+        [
+          500.68002319927024,
+          443.90715422645474
+        ],
+        [
+          525.346184879555,
+          444.1383453086142
+        ]
+      ],
+      "RGB_repainting": false,
+      "local_warp": false,
+      "source_rgb_paste": false
+    },
+    {
+      "part": "mouth",
+      "source": "source/frozen/male/mouth/01.png",
+      "source_sha256": "471666da8f5b161007491c7f557e6aaf23c0b467d0414bc0839f7d54d942aa03",
+      "target": "male/mouth/01.png",
+      "candidate_sha256": "8ead9b1c2bd3bbd9d0efc95b14ba273dba4f70afe458d83cdb6067e5d246cf1b",
+      "source_semantic_center_x": 516.4748748856731,
+      "target_axis_x": 513.0,
+      "translation": [
+        -3.4748748856731027,
+        0
+      ],
+      "matrix": [
+        [
+          1,
+          0,
+          -3.4748748856731027
+        ],
+        [
+          0,
+          1,
+          0
+        ]
+      ],
+      "one_pass_premultiplied_alpha_bilinear_sampling": true,
+      "rotation_deg": 0,
+      "scale": 1,
+      "alpha_mass_source": 282829,
+      "alpha_mass_candidate": 282833,
+      "semantic_measure_after_x": 513.0418016615464,
+      "semantic_after_minus_axis_px": 0.04180166154640119,
+      "after_measurement": [
+        513.0418016615464,
+        477.4138464063513
+      ],
+      "RGB_repainting": false,
+      "local_warp": false,
+      "source_rgb_paste": false
+    }
+  ],
+  "active_67_png_and_two_configurations_preserved": true
+}
