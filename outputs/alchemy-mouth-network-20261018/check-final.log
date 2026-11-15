@@ -1,0 +1,132 @@
+Godot Engine v4.7.2.stable.mono.custom_build.ed1daf0bf (2026-08-17 01:18:38 UTC) - https://godotengine.org
+
+WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:3 - ext_resource, invalid UID: uid://bua8ctpxyfx2q - using text path instead: res://csharp/gongfa/ActiveSkillData.cs
+   at: ResourceLoaderText::load (scene\resources\resource_format_text.cpp:501)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1268(nint, nint, string, string, int) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\NativeCalls.cs:11632)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\ResourceLoader.cs:120)
+       [2] T Godot.ResourceLoader.Load<T>(string, string, Godot.ResourceLoader+CacheMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\Extensions\ResourceLoaderExtensions.cs:27)
+       [3] T Godot.GD.Load<T>(string) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\GD.cs:129)
+       [4] AlchemyPreviewModel..ctor()
+       [5] void AlchemyPreviewScene._Ready()
+       [6] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\Node.cs:2660)
+       [7] bool Godot.CanvasItem.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\CanvasItem.cs:1845)
+       [8] bool Godot.Control.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\Control.cs:4029)
+       [9] bool AlchemyPreviewScene.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [10] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\Bridge\CSharpInstanceBridge.cs:24)
+WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs
+   at: ResourceLoaderText::load (scene\resources\resource_format_text.cpp:501)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1268(nint, nint, string, string, int) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\NativeCalls.cs:11632)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\ResourceLoader.cs:120)
+       [2] T Godot.ResourceLoader.Load<T>(string, string, Godot.ResourceLoader+CacheMode) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\Extensions\ResourceLoaderExtensions.cs:27)
+       [3] T Godot.GD.Load<T>(string) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\GD.cs:129)
+       [4] AlchemyPreviewModel..ctor()
+       [5] void AlchemyPreviewScene._Ready()
+       [6] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\Node.cs:2660)
+       [7] bool Godot.CanvasItem.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\CanvasItem.cs:1845)
+       [8] bool Godot.Control.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Generated\GodotObjects\Control.cs:4029)
+       [9] bool AlchemyPreviewScene.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [10] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (E:\stacklands\tmp\godot-4.7.2-spine\modules\mono\glue\GodotSharp\GodotSharp\Core\Bridge\CSharpInstanceBridge.cs:24)
+ALCHEMY_PROCESS_OK 投料和灵识操作只安排，不推进
+ALCHEMY_PROCESS_OK 一个炉令提交整息并清空临时安排
+ALCHEMY_PROCESS_OK 0到1付新档2法力
+ALCHEMY_PROCESS_OK 3到4付8法力
+ALCHEMY_PROCESS_OK 守3付6法力
+ALCHEMY_PROCESS_OK 3到2仍付原档6法力
+ALCHEMY_PROCESS_OK 十息等于一时辰两小时
+ALCHEMY_PROCESS_OK 无火守炉可执行
+ALCHEMY_PROCESS_OK 法力不足整息不提交
+ALCHEMY_PROCESS_OK 无书不因造诣自动学会
+ALCHEMY_PROCESS_OK 持书达标研读一时辰
+ALCHEMY_PROCESS_OK 副手不继承本人技巧
+ALCHEMY_PROCESS_OK 新建通路本息不运输
+ALCHEMY_PROCESS_OK 没有行也有每息4单位基础导流
+ALCHEMY_PROCESS_OK 运输保留真实夹渣，不自动提纯
+ALCHEMY_PROCESS_OK 独立行材料可以给其他材料通路供力
+ALCHEMY_PROCESS_OK 行增流且受路线容量限制
+ALCHEMY_PROCESS_OK 一条通加一条行占两个线位
+ALCHEMY_PROCESS_OK 暂停通路联动停行并释放线位
+ALCHEMY_PROCESS_OK 没有可用来源的中继节点不能先建结构
+ALCHEMY_PROCESS_OK 新到与新建都不能同息串联
+ALCHEMY_PROCESS_OK 已建中继下一息可转送且逐源守恒
+ALCHEMY_PROCESS_OK 凝丹不能从远端节点隔空取药
+ALCHEMY_PROCESS_OK 当息到货不能同息分丹
+ALCHEMY_PROCESS_OK 实际输送、分离排渣、分丹稳形到成丹全流程
+ALCHEMY_PROCESS_OK 真实目标施用与来源划账：破
+ALCHEMY_PROCESS_OK 真实目标施用与来源划账：化
+ALCHEMY_PROCESS_OK 真实目标施用与来源划账：聚
+ALCHEMY_PROCESS_OK 真实目标施用与来源划账：引
+ALCHEMY_PROCESS_OK 真实目标施用与来源划账：固
+ALCHEMY_PROCESS_OK 真实目标施用与来源划账：镇
+ALCHEMY_PROCESS_OK 真实目标施用与来源划账：护
+ALCHEMY_PROCESS_OK 真实目标施用与来源划账：生
+ALCHEMY_PROCESS_OK 真实目标施用与来源划账：明
+ALCHEMY_PROCESS_OK 真实目标施用与来源划账：藏
+ALCHEMY_PROCESS_OK 未签线未安排时材料功用不全炉自动触发
+ALCHEMY_PROCESS_OK 无应急的真实超载炸炉
+ALCHEMY_PROCESS_OK 零档不能敛焰
+ALCHEMY_PROCESS_OK 单味满主药、满稳形与混匀仍只到50分
+ALCHEMY_PROCESS_OK 高品主药不能单独绕过配伍要求
+ALCHEMY_PROCESS_OK 三味互补配伍可以达到高品质
+ALCHEMY_PROCESS_OK 不同四味组合也可达高品质，不锁唯一丹方
+ALCHEMY_PROCESS_OK 缺化药性时不能靠稳固与封藏顶替
+ALCHEMY_PROCESS_OK 缺藏药性时不能到优效以上
+ALCHEMY_PROCESS_OK 象征性掺一点辅材不等于完成高品质配伍
+ALCHEMY_PROCESS_OK 引的9比1设置实际改变分支流量，未凭空增加来源
+ALCHEMY_PROCESS_OK 空料接收节点有真实待入通路时保留
+ALCHEMY_PROCESS_OK 药性与原料彻底耗尽后退场，相关控制线释放灵识
+ALCHEMY_PROCESS_OK 耗尽退场保留已付工艺绑定和炉内残渣，不凭空抹账
+ALCHEMY_PROCESS_OK 药性尚未炼出但仍有原料时不退场
+ALCHEMY_PROCESS_OK 没有原料或药性供给的空环不能假装后续进料
+ALCHEMY_BLEND_RESULTS single=50 three=100 alternative=100
+ALCHEMY_PROCESS_CHECKS_PASSED 51
+ALCHEMY_UI_CHECK_OK 丹炉接受材料拖拽数据
+ALCHEMY_UI_CHECK_OK 确认投药只安排，不推进时间
+ALCHEMY_UI_CHECK_OK 加火按钮回调选定手段
+ALCHEMY_UI_CHECK_OK 加火按钮直接执行下一息
+ALCHEMY_UI_CHECK_OK 结束后不再接受拖拽
+ALCHEMY_UI_CHECK_OK 重新开炉清空试验状态
+ALCHEMY_UI_CHECK_OK 八味真实药材经过分支中继配伍到高品质成丹
+ALCHEMY_DEMO_RESULT breaths=29 score=100 mana=460
+ALCHEMY_UI_CHECK_OK 教程一推进真实通路运输
+ALCHEMY_UI_CHECK_OK 教程一暂停后真实停流
+ALCHEMY_UI_CHECK_OK 教程一恢复真实运输
+ALCHEMY_UI_CHECK_OK 教程二启用行后实际增流
+ALCHEMY_UI_CHECK_OK 教程二保存反向分支权重并推进
+ALCHEMY_UI_CHECK_OK 教程三按步骤实际炼出高品质丹
+ALCHEMY_UI_CHECK_OK 十二功用教程有真实对照及后续操作：破
+ALCHEMY_UI_CHECK_OK 十二功用教程有真实对照及后续操作：化
+ALCHEMY_UI_CHECK_OK 十二功用教程有真实对照及后续操作：通
+ALCHEMY_UI_CHECK_OK 十二功用教程有真实对照及后续操作：行
+ALCHEMY_UI_CHECK_OK 十二功用教程有真实对照及后续操作：引
+ALCHEMY_UI_CHECK_OK 十二功用教程有真实对照及后续操作：聚
+ALCHEMY_UI_CHECK_OK 十二功用教程有真实对照及后续操作：固
+ALCHEMY_UI_CHECK_OK 十二功用教程有真实对照及后续操作：镇
+ALCHEMY_UI_CHECK_OK 十二功用教程有真实对照及后续操作：护
+ALCHEMY_UI_CHECK_OK 十二功用教程有真实对照及后续操作：生
+ALCHEMY_UI_CHECK_OK 十二功用教程有真实对照及后续操作：明
+ALCHEMY_UI_CHECK_OK 十二功用教程有真实对照及后续操作：藏
+ALCHEMY_UI_CHECK_OK 进阶灵识课实际降低并行负担并恢复供力
+ALCHEMY_UI_CHECK_OK 进阶防损课：生修复能力不返渣，护在伤前生效
+ALCHEMY_UI_CHECK_OK 手动签线并点击炉令后，教程检测实际作用并推进
+ALCHEMY_UI_CHECK_OK 手动引课核对分支设置和实际输送后推进
+ALCHEMY_UI_CHECK_OK 拖动改变位置，不误签线、不耗息数或灵识
+ALCHEMY_UI_CHECK_OK 刷新及关闭重开保留节点布局
+ALCHEMY_UI_CHECK_OK 拖动后仍能短按目标签线
+ALCHEMY_UI_CHECK_OK 炉令结算后保留节点位置
+ALCHEMY_UI_CHECK_OK 汇合节点固定对准丹炉口
+ALCHEMY_UI_CHECK_OK 整理布局恢复默认疏排
+ALCHEMY_UI_CHECK_OK 展开节点网仍可接受投药拖拽
+ALCHEMY_UI_CHECK_OK 右键关闭节点网
+ALCHEMY_UI_CHECK_OK 悬停不显示信息，详情的药性与进度仍用百分号
+ALCHEMY_UI_CHECK_OK 点击显示节点信息卡，移开鼠标仍显示
+ALCHEMY_UI_CHECK_OK 再次点击同一节点取消详情常驻
+ALCHEMY_UI_CHECK_OK 显露进度按0至100正确显示百分号，不重复乘100
+ALCHEMY_UI_CHECK_OK 药性占比以节点现存物料为分母，空工位与汇合位均不越界
+ALCHEMY_UI_CHECK_OK 全幅节点网保留丹炉，功用入口放在点击信息卡内
+ALCHEMY_UI_CHECK_OK 信息卡内选择功用后可点击目标签线
+ALCHEMY_UI_CHECK_OK 未炼完材料的节点仍显示
+ALCHEMY_UI_CHECK_OK 彻底耗尽的药材节点消失，炉口汇合位保留
+ALCHEMY_UI_CHECK_OK 节点网只显示真实十二功用线，基本搬运保留在本息操作中
+ALCHEMY_UI_CHECKS_PASSED 47
