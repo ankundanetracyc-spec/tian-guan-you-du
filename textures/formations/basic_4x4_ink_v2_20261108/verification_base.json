@@ -1,0 +1,78 @@
+{
+  "result": "THREE_PCB_TEXTURES_RGBA_DIMENSIONS_AND_WORKING_AREA_PASS",
+  "checks": [
+    {
+      "file": "board_base.png",
+      "size": [
+        832,
+        832
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha16_bbox": [
+        10,
+        8,
+        821,
+        821
+      ],
+      "opaque_mean_luma": 44.49,
+      "sha256": "a3499b655b23b251065805e4147f0d00d9eec0235d4ac5594a03c498bd56da4a",
+      "working_area": [
+        160,
+        160,
+        672,
+        672
+      ],
+      "work_area_alpha": [
+        252,
+        254
+      ],
+      "working_area_mean_luma": 38.6
+    },
+    {
+      "file": "eye_1x1.png",
+      "size": [
+        128,
+        128
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha16_bbox": [
+        10,
+        11,
+        118,
+        117
+      ],
+      "opaque_mean_luma": 69.35,
+      "sha256": "421deae00738c6fe0be48936229a6f23cac6fb8432c2d73e1d0f57f3d163c668"
+    },
+    {
+      "file": "source_2x1.png",
+      "size": [
+        256,
+        128
+      ],
+      "mode": "RGBA",
+      "alpha_extrema": [
+        0,
+        255
+      ],
+      "alpha16_bbox": [
+        5,
+        19,
+        251,
+        109
+      ],
+      "opaque_mean_luma": 98.53,
+      "sha256": "9bf835cae8d25a298997ce1b91e0aad9d359a585c9e02f07232c690bc8ca154e"
+    }
+  ],
+  "visual_review": "Strict top-down; board central square unobstructed; eye reads as chip package and source as continuous energy package. Component mean visible luminance exceeds central board mean.",
+  "method": "Read-only PNG checks with Pillow; export was Godot Image only."
+}
