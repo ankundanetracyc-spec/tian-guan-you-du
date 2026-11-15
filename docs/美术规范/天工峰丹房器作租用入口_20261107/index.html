@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>天工峰 · 设施租用入口样稿</title><link rel="icon" href="data:,">
+  <link rel="stylesheet" href="entrance-v2.css"><script defer src="entrance-v2.js"></script>
+</head>
+<body>
+<header id="reviewbar">
+  <span class="review-name">入口样稿</span>
+  <nav aria-label="租用入口样稿"><button data-page="alchemy">丹房租用</button><button data-page="forging">器作租用</button></nav>
+  <label>状态展示 <select id="state-select" aria-label="预览租用状态"><option value="new">尚未租用</option><option value="active">租期内</option><option value="expired">租期结束</option><option value="poor">贡献不足</option><option value="visitor">非宗门成员</option></select></label>
+  <span id="review-status" role="status">按时长收贡献 · 单价待定 · 未连接角色资料</span>
+  <button id="notes-open">策划说明</button><button id="immersive">单看界面</button>
+</header>
+<button id="restore" hidden>展开样稿栏</button>
+<div id="viewport"><main id="stage" aria-label="宗门设施租用入口">
+  <header id="game-heading"><p class="breadcrumb">玉虚仙宗 / 天工峰</p><h1 id="page-title">天工峰 · 丹房</h1></header>
+  <button id="back">返回天工峰</button>
+  <section id="location-panel" aria-label="场所与使用须知">
+    <nav id="facility-switch" aria-label="天工峰设施"></nav>
+    <div id="facility-info"></div>
+  </section>
+  <article id="rental-panel" aria-label="租用办理">
+    <header class="sheet-heading"><h2 id="rental-title">租用丹房</h2><div class="sheet-meta"><span id="billing-note">按时长收贡献</span><span id="balance">可用贡献：—</span></div></header>
+    <div id="rental-body" class="body"></div>
+    <footer class="sheet-footer"><p id="footer-copy"></p><button id="primary" disabled>租用并进入</button></footer>
+  </article>
+  <div id="overlay" hidden><button class="veil" aria-label="关闭确认"></button><section id="dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title" tabindex="-1"></section></div>
+</main></div>
+<aside id="notes" hidden>
+  <button id="notes-close">关闭说明</button><h2>本轮是进入炼制前的设施页</h2>
+  <p>用户已确认：按租用时长收宗门贡献。现有炼丹、炼器操作界面及善功堂保持。本页没有投料或开炉操作。</p>
+  <h3>本次可查看</h3><p>丹房、器作切换；填写租用时长；查看费用位置及确认弹窗；切换未租用、租期内、到期、贡献不足与访客状态。</p>
+  <h3>未确定的规则</h3><p>两种设施的单价、计费粒度、租期上下限、续租、离开计时、退款与炼制途中到期的处理仍待确认。样稿不定义价格、折扣、房间数量、火源等级或额外收益。</p>
+  <p>时辰是现有时间单位的显示候选，一时辰为两游戏小时；不代表最低起租或取整规则。租期初始留空。两页分别记住所填时长，刷新恢复。</p>
+  <h3>样稿状态与真实资料</h3><p>上方状态只供排版查看。角色身份、贡献余额、实际租约、到期日期与剩余时间均未读取。单价和总额明确待定，确认支付禁用；租期内点“进入”只在样稿栏回显去向。</p>
+  <p>本轮重新设计构图：左侧场所接待概念画与简短须知，右侧独立租用纸页，操作收在纸页内。页顶切换丹房／器作。不使用善功堂屋檐框、三栏目录或通栏底座；只参考其材质、配色与楷体。</p>
+  <p>场所接待画是独立样稿的美术候选，不代表新增世界地点或已替换游戏内景。善功堂文件未修改。</p>
+  <div class="links"><a href="README.md">界面截图与说明</a><a href="../../plans/天工峰丹房与器作租用入口_20261107.md">当前专题</a></div>
+</aside>
+</body></html>

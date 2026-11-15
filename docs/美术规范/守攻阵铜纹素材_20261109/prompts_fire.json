@@ -1,0 +1,110 @@
+{
+  "asset": "fire_1x2.png",
+  "tool": "built-in image_gen.imagegen",
+  "intent": "new independent asset using style inputs",
+  "prompt": "Use case: stylized-concept.\nAsset type: one independent raster game component icon, not a panel or illustration of the whole board.\nReference roles: Image 1 is the selected B copper-ink formation board, the HIGHEST visual style authority only. Image 2 is a sibling ward component, for consistent ink weight, flat top-down construction, palette and short copper-jaw sockets. Image 3 is a sibling splitter, for the same broad brush-painted copper/gray-jade shapes and three-port vocabulary. These are style/family references, NOT edit targets. Do not reproduce the board or existing components.\nStyle: match this exact Chinese xianxia game's hand-painted ink icon family. Strong irregular charcoal-black ink contour, broad simplified flat low-saturation gray-brown ancient copper and gray-green jade color masses, dry-brush scumble, small ivory-white bevel edges. Painted two-dimensional read, sparse detail and a strong silhouette readable at 64 px; no photographic metal, realistic microtexture or glossy 3D relief.\nView: strictly 90-degree orthographic directly overhead, all pieces lying flat. No camera tilt or visible tall vertical front/side walls.\nBackdrop: genuinely transparent alpha outside the object and in open gaps, no black/white colored background, no floor shadow, no floating glow. Center the complete single object with a safe transparent margin.\nNo writing, letters, numbers, arrows, modern electronic symbols, grid, modern PCB, chip legs, shield silhouette, jewelry, game UI button frame, surrounding board, free wires outside the object, or extra colored attachment points.\nSubject: one VERTICAL elongated flat attack actuator for fire-strike, native PORTRAIT 1:2 canvas (width half height), 1x2 candidate footprint. Match the ward reference's long axis, footprint proportions and paired north/south sockets, but make a distinctly different silhouette: a narrow ancient copper guiding trough clasps one dark ochre-red mineral-jade core with a fork of angular pointed mineral lobes. The mineral is opaque brick-red and warm earth-red with ivory-painted edge accents, not glowing jewelry and not a flame effect. A few smaller gray-green copper patina shapes may balance the red stone. No two large ward-like gray-green plates, no shield.\nExactly TWO functional mouths on the vertical centerline: NORTH midpoint a short narrow cinnabar RED event inlet between short pale copper jaws; SOUTH midpoint a short warm muted OCHRE-GOLD energy inlet between similar jaws. They must be clearly different materials/colors, never joined by an exposed free line. The sides have no functional contacts. Keep north/south socket proportions and axis compatible with the sibling ward component. Entire object visible, naturally generated at 1:2; do not place a square object on a portrait frame. No flames, sparks, smoke, magic aura, external wire, glyphs or symbols.",
+  "referenced_image_paths": [
+    "E:/stacklands/docs/美术规范/阵盘项目画风对照_20261108/B_墨绘铜纹.png",
+    "E:/stacklands/docs/美术规范/铜纹阵盘基础元件_20261108/ward_1x2.png",
+    "E:/stacklands/docs/美术规范/铜纹阵盘逻辑元件_20261108/split_1x1.png"
+  ],
+  "reference_roles": [
+    "B_墨绘铜纹 highest visual authority",
+    "ward sibling style and sockets",
+    "split sibling style and sockets"
+  ],
+  "transparent_background": true,
+  "status": "completed, visually inspected final PNG",
+  "scope": "候选美术排布，未定义正式占格、复杂度或造诣；初始4×4不变",
+  "pixel_editing": "none; native PNG copied byte-identical, no resize/crop/recolor/alpha editing",
+  "final_path": "E:/stacklands/docs/美术规范/守攻阵铜纹素材_20261109/fire_1x2.png",
+  "raw_path": "E:/stacklands/docs/美术规范/守攻阵铜纹素材_20261109/raw/fire_native.png",
+  "native_generated_path": "E:/tmp/CodexData/generated_images/01a1ba6c-5f78-7ae3-a6b7-fe90e469ba47/exec-9386744d-afec-44bb-895d-83bcf2d60dbe.png",
+  "native_size": [
+    887,
+    1774
+  ],
+  "alpha": {
+    "mode": "RGBA",
+    "range": [
+      0,
+      255
+    ],
+    "significant_alpha_bbox_px": [
+      160,
+      130,
+      726,
+      1627
+    ],
+    "background": "native genuine transparency; no removal or raster editing"
+  },
+  "candidate_visual_footprint": [
+    1,
+    2
+  ],
+  "art_offset_128": [
+    0,
+    0
+  ],
+  "ports": [
+    {
+      "side": "N",
+      "role": "event_input",
+      "color": "cinnabar",
+      "slot_center_uv": [
+        0.501691,
+        0.121477
+      ],
+      "mouth_uv": [
+        0.501691,
+        0.087373
+      ],
+      "slot_inner_width_at_128": 6.49,
+      "overlay_bridge": {
+        "required": true,
+        "coordinates": "cell-local pixels at 128px per cell, after art_offset_128",
+        "from_128": [
+          64.216,
+          20.567
+        ],
+        "to_128": [
+          64.216,
+          25.567
+        ],
+        "width_at_128": 5.711,
+        "layer": "after component, only across outer ink seal in colored socket center",
+        "note": "Base trace beneath image reaches slot_center_uv. Overlay only this tiny matching-color bridge; do not paint over copper jaws."
+      }
+    },
+    {
+      "side": "S",
+      "role": "energy_input",
+      "color": "ochre_gold",
+      "slot_center_uv": [
+        0.499436,
+        0.86584
+      ],
+      "mouth_uv": [
+        0.499436,
+        0.898534
+      ],
+      "slot_inner_width_at_128": 8.23,
+      "overlay_bridge": {
+        "required": true,
+        "coordinates": "cell-local pixels at 128px per cell, after art_offset_128",
+        "from_128": [
+          63.928,
+          231.825
+        ],
+        "to_128": [
+          63.928,
+          226.825
+        ],
+        "width_at_128": 7.242,
+        "layer": "after component, only across outer ink seal in colored socket center",
+        "note": "Base trace beneath image reaches slot_center_uv. Overlay only this tiny matching-color bridge; do not paint over copper jaws."
+      }
+    }
+  ],
+  "inspection": "严格正俯视；B同族墨线/古铜灰褐/灰青玉/象牙亮缘；无文字数字、外延线、第四口、现代电子图标、盾形或火焰效果。接口中心与开口分别记录，铜扣不计额外端口。"
+}

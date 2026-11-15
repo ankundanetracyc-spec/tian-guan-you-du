@@ -1,0 +1,141 @@
+{
+  "date": "2026-11-07",
+  "scope": "我的摊位视觉与空间交互样板；不读取或写入正式人物资产、Godot或存档",
+  "preview": "我的摊位_格子管理预览_20261107.html#mine",
+  "config": "我的摊位_空间规则_20261107.json",
+  "code": [
+    "我的摊位_格子交互_20261107.js",
+    "我的摊位_格子管理_20261107.css"
+  ],
+  "confirmedRules": {
+    "columns": 10,
+    "rows": 6,
+    "cells": 60,
+    "rent": 1,
+    "leaseGameDays": 30,
+    "reclaimGameYears": 5,
+    "overdue": "未取回物品归宗门，不再返还",
+    "proceeds": "继续保留领取",
+    "storage": "直接从所在可访问储物空间上架"
+  },
+  "generation": {
+    "mode": "built-in image_gen edit",
+    "input": "../../../textures/ui/yuxu_market_20261107/market_ledger_frame_v1.png",
+    "output": "../../../textures/ui/yuxu_market_20261107/market_stall_space_frame_v1.png",
+    "prompt": "我的摊位_双栏底图_v1_生成提示词.txt",
+    "note": "保留原创坊市外框、布幔、标题与底栏，仅将内部四列改为双栏无字纸面"
+  },
+  "sample": {
+    "usedCells": 27,
+    "inventoryInstances": 10,
+    "escrowInstances": 4,
+    "wallet": 18,
+    "pending": 6,
+    "now": "1年1月11日0时",
+    "leaseEnds": "1年2月1日0时",
+    "reclaimBefore": "6年2月1日0时"
+  },
+  "checks": {
+    "initial": {
+      "columns": 10,
+      "rows": 6,
+      "usedCells": 27,
+      "groupedRows": 6,
+      "distinctInventoryInstances": 10
+    },
+    "ringTransfer": {
+      "directFromRing": true,
+      "identityPreserved": true,
+      "rotatedFootprint": [
+        4,
+        2
+      ],
+      "usedCells": 35,
+      "cancelAndRepeatedConfirmationSafe": true
+    },
+    "gridValidation": {
+      "overlapRejected": true,
+      "boundsRejected": true,
+      "invalidRotationRestored": true,
+      "validMoveAndRotation": true
+    },
+    "packing": {
+      "freeCells": 15,
+      "requestedFootprint": [
+        2,
+        4
+      ],
+      "rejectedWhenNoRectangleFits": true,
+      "rotationDuringDrag": true
+    },
+    "priceWithdrawalClaim": {
+      "oldReceiptUnchanged": true,
+      "returnedSameRingInstance": true,
+      "freedCells": 8,
+      "walletAfterClaim": 24,
+      "repeatedClaimSafe": true
+    },
+    "expiry": {
+      "activeBeforeBoundary": true,
+      "stopsAtBoundary": true,
+      "reclaimGameYears": 5,
+      "reclaimUntil": "6年2月1日0时",
+      "withdrawalDuringGrace": true,
+      "forfeitureOnlyAtDeadline": true,
+      "proceedsRetainedAndClaimableAfterwards": true
+    },
+    "rental": {
+      "cost": 1,
+      "leaseDays": 30,
+      "reclaimDeadlineStartsAtLeaseEnd": true,
+      "repeatedConfirmationSafe": true
+    },
+    "browseRoundTrip": {
+      "draggingRetained": true,
+      "positionRetained": true,
+      "ownerStateRetained": true
+    },
+    "smallWindow": {
+      "outside": [],
+      "clippedNames": 0,
+      "captionFits": true,
+      "imagesFailed": 0
+    }
+  },
+  "publicStallShapeAudit": {
+    "file": "列式货单_60格排放验算_20261107.json",
+    "stalls": 6,
+    "allFit": true
+  },
+  "visual": {
+    "resolutions": [
+      [
+        1920,
+        1080
+      ],
+      [
+        1280,
+        720
+      ]
+    ],
+    "screenshots": [
+      "我的摊位_格子管理_1920.png",
+      "我的摊位_格子管理_1280.png",
+      "我的摊位_到期待领_1920.png",
+      "我的摊位_逾期归宗_1920.png",
+      "我的摊位_拖入预览_1920.png",
+      "我的摊位_形状校验_1920.png"
+    ],
+    "consoleErrors": 0,
+    "consoleWarnings": 0
+  },
+  "boundaries": [
+    "本轮未更新正式游戏，旧试玩仍无60格、戒内直转或五年归宗处理",
+    "来源身份和逐件占格在隔离夹具内演示；未连接真实行囊、戒指、NPC或存档",
+    "取回示例回到原来源空间，未完整模拟真实接收空间的碰撞与领取放置",
+    "售得灵石由既有示例成交提供，无新成交、自动补货或假买家",
+    "到期状态通过URL夹具加载，不使用现实计时；未实装月结排序与跨年时间推进",
+    "归宗只记录演示物品去向和不可再取回，未写入真实宗门公库",
+    "公共货单与管理页为独立样例，未构建共享交易事务"
+  ]
+}

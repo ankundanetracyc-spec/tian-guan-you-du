@@ -1,0 +1,21 @@
+@font-face { font-family: "臻楷"; src: url('../../../resources/font/LXGWZhenKaiSlabGB-Regular.ttf') format('truetype'); font-display: swap; }
+* { box-sizing: border-box; }
+body { margin: 0; padding: 18px 24px 28px; background: #202521; color: #e3ded2; font: 17px "臻楷", "KaiTi", serif; }
+.preview-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 20px; max-width: 1760px; margin: 0 auto 14px; }
+h1 { margin: 0 0 5px; font-size: 25px; font-weight: 400; }
+p { margin: 0; color: #bdbfb3; font-size: 15px; }
+.preview-options { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+button, a { font: inherit; color: #e5dfd0; }
+button { padding: 7px 13px; border: 1px solid #8f846b; background: #343b32; cursor: pointer; }
+a { text-underline-offset: 4px; }
+main { max-width: 1760px; margin: auto; }
+.preview-stage { border: 1px solid #655f51; background: linear-gradient(#1c211cbb, #1c211cbb), url('../../../tools/action_battle_test/art/battle_ground_stone_v1.png') center/cover; }
+.preview-stage[data-light="true"] { background: #b8b6aa; }
+canvas { display: block; width: 100%; height: auto; }
+.status { margin: 10px 0 18px; }
+summary { cursor: pointer; padding: 6px 0; }
+.part-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; margin-top: 12px; }
+.part-card { padding: 12px; border: 1px solid #666957; background: #30382f; }
+.part-card canvas { width: 100%; height: 130px; object-fit: contain; }
+.part-card span { display: block; text-align: center; margin-top: 7px; font-size: 15px; }
+@media (max-width: 900px) { body { padding: 12px; } .preview-toolbar { align-items: flex-start; flex-direction: column; gap: 10px; } }

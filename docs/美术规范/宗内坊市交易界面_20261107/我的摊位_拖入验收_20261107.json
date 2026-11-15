@@ -1,0 +1,124 @@
+{
+  "date": "2026-11-07",
+  "scope": {
+    "market": "独立浏览器设计预览，不接人物、资产或存档",
+    "sharedScale": "正式行囊、储物戒指和领取页已改36设计单位"
+  },
+  "preview": "我的摊位_拖入管理预览_20261107.html#mine",
+  "config": "我的摊位_拖入规则_20261107.json",
+  "proposedStallShape": {
+    "columns": 20,
+    "rows": 18,
+    "cells": 360,
+    "status": "用户允许扩格，本稿具体行列供视觉评审，未认定正式经济容量"
+  },
+  "confirmedScale": {
+    "old": 48,
+    "current": 36,
+    "changePercent": -25,
+    "referenceCanvas": [
+      1920,
+      1080
+    ],
+    "sourcePixelsPerCell": 128,
+    "bodyCapacity": 120,
+    "ringDimensionsUnchanged": true,
+    "itemFootprintsUnchanged": true
+  },
+  "generation": {
+    "mode": "built-in image_gen edit",
+    "input": "../../../textures/ui/yuxu_market_20261107/market_stall_space_frame_v1.png",
+    "output": "../../../textures/ui/yuxu_market_20261107/market_stall_space_frame_v2.png",
+    "prompt": "我的摊位_去底栏框架_v2_生成提示词.txt"
+  },
+  "browserChecks": {
+    "layout": {
+      "columns": 20,
+      "rows": 18,
+      "cells": 360,
+      "cellPixelsAt1920": 35.98087158203125,
+      "noPermanentActionBar": true,
+      "centerIsGrid": true
+    },
+    "batch": {
+      "popupAfterDrop": true,
+      "quantityValidation": true,
+      "priceValidation": true,
+      "cancelAndRepeatedConfirmSafe": true,
+      "copies": 2,
+      "occupiedCells": 16,
+      "firstCopyAnchored": true
+    },
+    "ringAndWithdrawal": {
+      "directFromRing": true,
+      "rotationDuringDrag": true,
+      "dragBackToLeft": true,
+      "sourceAndIdentityPreserved": true,
+      "noWithdrawalButtonOrPopup": true
+    },
+    "adjustment": {
+      "doubleClickReprice": true,
+      "oldReceiptUnchanged": true,
+      "escapeRestoresDrag": true,
+      "overlapRejected": true
+    },
+    "expiry": {
+      "dragWithdrawalDuringFiveYears": true,
+      "forfeitureRetained": true,
+      "proceedsStillClaimable": true,
+      "repeatedClaimSafe": true
+    },
+    "browse": {
+      "rentCost": 1,
+      "horizontalDragAndRoundTrip": true
+    },
+    "smallWindow": {
+      "outside": [],
+      "clippedNames": 0,
+      "failedImages": 0,
+      "cell": 23.987246704101562
+    }
+  },
+  "build": {
+    "warnings": 0,
+    "errors": 0
+  },
+  "nativeValidation": {
+    "passed": true,
+    "scenes": 7,
+    "checks": 341,
+    "cases": {
+      "model": 29,
+      "inventory": 23,
+      "ring": 72,
+      "claim": 53,
+      "inventory_window": 26,
+      "ring_window": 80,
+      "claim_window": 58
+    },
+    "runner": "../../../tools/run_inventory_grid36_regression_20261107.ps1",
+    "logs": "../../../output/inventory_grid36_20261107",
+    "captureDirectory": "全局格子36验证",
+    "captures": 16,
+    "knownWarnings": [
+      "既有卸力资源UID失效，回退原文本路径，测试通过"
+    ]
+  },
+  "browserConsole": {
+    "warnings": 0,
+    "errors": 0
+  },
+  "screenshots": [
+    "我的摊位_拖入管理_1920.png",
+    "我的摊位_拖入管理_1280.png",
+    "我的摊位_拖入定价弹窗_1920.png",
+    "我的摊位_拖回下架_1920.png",
+    "我的摊位_拖回取回_1920.png"
+  ],
+  "boundaries": [
+    "新版坊市仍为隔离夹具，非正式存档或NPC交易",
+    "接收空间完整碰撞与原子提交尚待正式坊市接入；样例下架返回原来源",
+    "五年归宗保留，但未写入真实宗门公库",
+    "全局格距变更不更改物品资源占格、源像素、角色容量、戒指尺寸或正式存档"
+  ]
+}

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>玉虚宗内坊市 · 寄售摊理想图</title>
+<style>
+@font-face { font-family: zhenkai; src: url('../../../resources/font/LXGWZhenKaiSlabGB-Regular.ttf'); }
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 100%; min-width: 1920px; min-height: 1080px; overflow: hidden; background: #d8d8d2; font-family: zhenkai, serif; color: #30382e; }
+.scene { position: relative; width: 1920px; height: 1080px; background: url('../../../textures/ui/yuxu_library_20261107/exchange_frame.png') center / 100% 100% no-repeat; }
+.title { position: absolute; top: 89px; left: 685px; width: 550px; height: 87px; display: grid; place-items: center; font-size: 57px; letter-spacing: 12px; }
+.header { position: absolute; left: 148px; top: 231px; width: 1625px; height: 47px; display: flex; align-items: center; gap: 10px; font-size: 25px; }
+.tab { height: 43px; padding: 3px 24px; display: grid; place-items: center; background: #ece5d6; border: 1px solid #a89b82; }
+.tab.active { background: #c9d2bc; border-color: #849379; }
+.header .context { margin-left: 22px; color: #6d7565; font-size: 20px; letter-spacing: 2px; }
+.header .spacer { flex: 1; }
+.balance { display: flex; gap: 9px; align-items: center; margin-right: 26px; font-size: 23px; }
+.balance img { width: 24px; height: 24px; object-fit: contain; }
+.back { padding: 3px 30px; border: 1px solid #ab9c80; background: #f1e9db; }
+.market { position: absolute; left: 133px; top: 287px; width: 1115px; height: 670px; overflow: hidden; border: 7px solid #705d50; outline: 1px solid #b5a38a; background: #465149; }
+.market .background { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(31,35,31,.14), rgba(43,41,35,.06) 48%, rgba(33,30,26,.24)), url('../../../textures/baishi/interiors_20261105/market_arcade.png') left center / 172% auto no-repeat; }
+.market .nameplate { position: absolute; left: 25px; top: 20px; min-width: 350px; padding: 11px 24px; background: #efe5d4; border: 2px solid #8c7a61; box-shadow: 0 3px 8px #302b2355; font-size: 30px; }
+.market .nameplate small { display: inline-block; vertical-align: 3px; margin-left: 18px; padding: 3px 11px; background: #d2dcc9; color: #4c6957; font-size: 18px; border: 1px solid #9cac8f; }
+.market .note { position: absolute; right: 25px; top: 25px; padding: 10px 16px; background: #efe8d8e8; border: 1px solid #ad9d83; color: #5d6a57; font-size: 20px; }
+.counter { position: absolute; left: -8px; right: -8px; bottom: 0; height: 190px; border-top: 14px solid #99806a; background: linear-gradient(180deg,#725b4d 0%,#6b5548 12%,#5b493f 13%,#70584a 85%,#4e4039 100%); box-shadow: 0 -4px 14px #352d2577, inset 0 4px #b89b7d; }
+.counter::before, .counter::after { content: ''; position: absolute; top: 15px; bottom: 0; width: 9px; background: #4f4038; border-left: 2px solid #927a68; }
+.counter::before { left: 31%; } .counter::after { right: 31%; }
+.counter .rule { position: absolute; inset: 20px 15px 22px; border: 2px solid #a28b75; opacity: .55; }
+.merch { position: absolute; left: 62px; right: 62px; bottom: 57px; height: 310px; display: flex; align-items: end; justify-content: space-around; }
+.item { position: relative; width: 204px; text-align: center; }
+.item img { height: 153px; width: 142px; object-fit: contain; filter: drop-shadow(0px 8px 5px #28262299); }
+.item:nth-child(3) img { height: 125px; }
+.item:nth-child(4) img { height: 105px; }
+.item .ticket { position: relative; height: 100px; margin-top: 4px; padding: 10px 10px 8px; background: #eee7d8; border: 2px solid #a08f74; box-shadow: 0 4px 7px #2e28226b; font-size: 23px; line-height: 1.25; }
+.item.selected .ticket { background: #dce5d1; border: 3px solid #738d70; }
+.ticket span { display: block; color: #6a705e; font-size: 18px; padding-top: 4px; }
+.nav { position: absolute; left: 24px; right: 24px; bottom: 17px; display: flex; align-items: center; justify-content: space-between; color: #e9e2d5; font-size: 19px; }
+.nav .arrow { padding: 7px 19px; background: #e9e0cd; border: 1px solid #b2a080; box-shadow: 0 2px 4px #271f1c55; color: #344238; font-size: 21px; }
+.nav .page { text-shadow: 0 2px 4px #211c18; letter-spacing: 2px; }
+.details { position: absolute; left: 1285px; top: 287px; width: 501px; height: 670px; padding: 20px 35px; background: url('../../../textures/ui/shangong_columns_20261030/column_mountain_paper_v1.png') center / 100% 100% no-repeat; }
+.details h2 { margin: 0; height: 63px; text-align: center; font-weight: 400; font-size: 32px; letter-spacing: 4px; }
+.detail-kicker { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; color: #76816c; font-size: 18px; }
+.tag { padding: 3px 12px; border: 1px solid #a8b6a0; background: #dfe7d8; color: #58705b; }
+.details h3 { margin: 5px 0 0; font-weight: normal; font-size: 36px; }
+.detail-image { height: 168px; display: grid; place-items: center; border-bottom: 1px solid #cabda5; }
+.detail-image img { height: 145px; max-width: 210px; object-fit: contain; filter: drop-shadow(0px 4px 2px #a2977b55); }
+.facts { padding-top: 15px; font-size: 22px; line-height: 1.8; }
+.facts .line { display: flex; justify-content: space-between; }
+.purchase { position: absolute; left: 35px; right: 35px; bottom: 33px; }
+.purchase .row { display: flex; align-items: center; justify-content: space-between; font-size: 23px; margin-bottom: 14px; }
+.number { padding: 4px 18px; border: 1px solid #aeaa93; background: #f5f0e5; }
+.buy { width: 100%; padding: 10px 0; background: #687f68; border: 2px solid #4f6652; color: #f7f4e7; text-align: center; font-size: 27px; letter-spacing: 5px; }
+.cost { padding-top: 5px; font-size: 16px; color: #777a69; }
+.footer { position: absolute; left: 155px; top: 969px; height: 54px; display: flex; align-items: center; gap: 28px; color: #5d6959; font-size: 20px; }
+.footer .stamp { color: #a16a59; border: 1px solid #ad806b; padding: 1px 7px; font-size: 20px; }
+.footer strong { font-weight: normal; color: #30382e; }
+.footer .footer-note { margin-left: 80px; }
+.draft { position: absolute; left: 1525px; top: 973px; width: 185px; height: 49px; display: grid; place-items: center; color: #7a7768; font-size: 18px; }
+</style>
+</head>
+<body>
+<div class="scene" role="img" aria-label="玉虚宗内坊市寄售摊界面理想图：一个由坊市代管的摊位，陈列示例物品。">
+  <div class="title">宗内坊市</div>
+  <div class="header"><div class="tab active">逛坊市</div><div class="tab">我的摊位</div><div class="context">和光峰 · 同门互市</div><div class="spacer"></div><div class="balance"><img src="../../../textures/items/inventory_density_20261029/spirit_stone_1x1.png" alt="">灵石 18</div><div class="back">返回</div></div>
+  <main class="market">
+    <div class="background"></div>
+    <div class="nameplate">同门寄售摊 <small>坊市代管</small></div>
+    <div class="note">货物寄存于此 · 摊租含照看</div>
+    <div class="counter"><div class="rule"></div></div>
+    <div class="merch">
+      <div class="item selected"><img src="../../../textures/items/inventory_density_20261029/mat_mist_bell_flower.png" alt=""><div class="ticket">雾铃花<span>2 灵石 / 份 · 余 3</span></div></div>
+      <div class="item"><img src="../../../textures/items/inventory_density_20261029/bitter_moss_root_2x4.png" alt=""><div class="ticket">苦苔根<span>2 灵石 / 份 · 余 2</span></div></div>
+      <div class="item"><img src="../../../textures/items/inventory_density_20261029/mat_beast_bone.png" alt=""><div class="ticket">兽骨<span>3 灵石 / 件 · 余 2</span></div></div>
+      <div class="item"><img src="../../../textures/items/inventory_density_20261029/pill_2x2.png" alt=""><div class="ticket">丹药<span>6 灵石 / 枚 · 余 1</span></div></div>
+    </div>
+    <div class="nav"><div class="arrow">‹ 上一摊</div><div class="page">第 1 摊　 /　共 8 摊</div><div class="arrow">下一摊 ›</div></div>
+  </main>
+  <aside class="details">
+    <h2>摊货详目</h2>
+    <div class="detail-kicker"><span>同门寄售</span><span class="tag">灵植</span></div>
+    <h3>雾铃花</h3>
+    <div class="detail-image"><img src="../../../textures/items/inventory_density_20261029/mat_mist_bell_flower.png" alt=""></div>
+    <div class="facts"><div class="line"><span>寄售人</span><span>同门</span></div><div class="line"><span>剩余数量</span><span>3 份</span></div><div class="line"><span>单价</span><span>2 灵石</span></div></div>
+    <div class="purchase"><div class="row"><span>购买数量</span><span class="number">−　1　＋</span></div><div class="buy">购买 · 2 灵石</div><div class="cost">成交消耗 1 点精力</div></div>
+  </aside>
+  <div class="footer"><span class="stamp">玉虚</span><span><strong>同门互通有无</strong></span><span class="footer-note">坊市以灵石交易　·　摊位与货物均为示意</span></div>
+  <div class="draft">界面理想图</div>
+</div>
+</body>
+</html>

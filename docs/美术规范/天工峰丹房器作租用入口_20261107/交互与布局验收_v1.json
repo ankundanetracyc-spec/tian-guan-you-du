@@ -1,0 +1,207 @@
+{
+  "date": "2026-11-07",
+  "browser": "Edge / Playwright CLI",
+  "scope": "宗门设施租用入口浏览器样稿，非Godot",
+  "passed": 47,
+  "failed": [],
+  "checks": [
+    {
+      "name": "入口没有投料、配伍和开炉控件",
+      "pass": true
+    },
+    {
+      "name": "费用使用贡献、单价和总额待定",
+      "pass": true
+    },
+    {
+      "name": "没有默认租期或真实贡献余额",
+      "pass": true
+    },
+    {
+      "name": "未填写租期时主操作禁用",
+      "pass": true
+    },
+    {
+      "name": "租用确认显示场所与租期",
+      "pass": true
+    },
+    {
+      "name": "价格未定不执行支付",
+      "pass": true
+    },
+    {
+      "name": "Esc收起确认并保留租期",
+      "pass": true
+    },
+    {
+      "name": "丹房与器作分开填写租期",
+      "pass": true
+    },
+    {
+      "name": "不擅设整时辰起租或取整",
+      "pass": true
+    },
+    {
+      "name": "切换设施保留租期草稿",
+      "pass": true
+    },
+    {
+      "name": "拒绝非法时长 0",
+      "pass": true
+    },
+    {
+      "name": "拒绝非法时长 -1",
+      "pass": true
+    },
+    {
+      "name": "拒绝非法时长 Infinity",
+      "pass": true
+    },
+    {
+      "name": "拒绝非法时长 租一天",
+      "pass": true
+    },
+    {
+      "name": "贡献不足状态阻止租用",
+      "pass": true
+    },
+    {
+      "name": "访客显示身份限制",
+      "pass": true
+    },
+    {
+      "name": "租期内主操作变为进入",
+      "pass": true
+    },
+    {
+      "name": "进入预览保留现有炼制页、不打开旧误解稿",
+      "pass": true
+    },
+    {
+      "name": "到期恢复租用入口",
+      "pass": true
+    },
+    {
+      "name": "返回上层为天工峰",
+      "pass": true
+    },
+    {
+      "name": "策划说明独立展示",
+      "pass": true
+    },
+    {
+      "name": "Esc关闭说明",
+      "pass": true
+    },
+    {
+      "name": "1920 alchemy new边界与完整阅读",
+      "pass": true
+    },
+    {
+      "name": "1920 alchemy active边界与完整阅读",
+      "pass": true
+    },
+    {
+      "name": "1920 alchemy expired边界与完整阅读",
+      "pass": true
+    },
+    {
+      "name": "1920 alchemy poor边界与完整阅读",
+      "pass": true
+    },
+    {
+      "name": "1920 alchemy visitor边界与完整阅读",
+      "pass": true
+    },
+    {
+      "name": "1920 forging new边界与完整阅读",
+      "pass": true
+    },
+    {
+      "name": "1920 forging active边界与完整阅读",
+      "pass": true
+    },
+    {
+      "name": "1920 forging expired边界与完整阅读",
+      "pass": true
+    },
+    {
+      "name": "1920 forging poor边界与完整阅读",
+      "pass": true
+    },
+    {
+      "name": "1920 forging visitor边界与完整阅读",
+      "pass": true
+    },
+    {
+      "name": "1280 alchemy new边界与完整阅读",
+      "pass": true
+    },
+    {
+      "name": "1280 alchemy active边界与完整阅读",
+      "pass": true
+    },
+    {
+      "name": "1280 alchemy expired边界与完整阅读",
+      "pass": true
+    },
+    {
+      "name": "1280 alchemy poor边界与完整阅读",
+      "pass": true
+    },
+    {
+      "name": "1280 alchemy visitor边界与完整阅读",
+      "pass": true
+    },
+    {
+      "name": "1280 forging new边界与完整阅读",
+      "pass": true
+    },
+    {
+      "name": "1280 forging active边界与完整阅读",
+      "pass": true
+    },
+    {
+      "name": "1280 forging expired边界与完整阅读",
+      "pass": true
+    },
+    {
+      "name": "1280 forging poor边界与完整阅读",
+      "pass": true
+    },
+    {
+      "name": "1280 forging visitor边界与完整阅读",
+      "pass": true
+    },
+    {
+      "name": "小窗口租用确认不越界",
+      "pass": true
+    },
+    {
+      "name": "可单看入口界面",
+      "pass": true
+    },
+    {
+      "name": "Esc恢复样稿栏",
+      "pass": true
+    },
+    {
+      "name": "刷新不保存草稿或租约",
+      "pass": true
+    },
+    {
+      "name": "没有支付、存储或页面脚本错误",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "writes": [],
+  "screenshots": [
+    "output/playwright/facility-entrance-20261107-alchemy-new-1920.png",
+    "output/playwright/facility-entrance-20261107-alchemy-active-1920.png",
+    "output/playwright/facility-entrance-20261107-forging-new-1920.png",
+    "output/playwright/facility-entrance-20261107-forging-active-1920.png",
+    "output/playwright/facility-entrance-20261107-alchemy-new-1280.png",
+    "output/playwright/facility-entrance-20261107-forging-new-1280.png"
+  ]
+}

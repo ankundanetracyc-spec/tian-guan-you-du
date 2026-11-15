@@ -1,0 +1,83 @@
+{
+  "effects": {
+    "hurt": {
+      "count": 24,
+      "rgba768": true,
+      "edge_clear": true,
+      "clear_first_last": true,
+      "unique": 23
+    },
+    "guard": {
+      "count": 30,
+      "rgba768": true,
+      "edge_clear": true,
+      "clear_first_last": true,
+      "unique": 29
+    },
+    "restore": {
+      "count": 48,
+      "rgba768": true,
+      "edge_clear": true,
+      "clear_first_last": true,
+      "unique": 47
+    }
+  },
+  "characters": {
+    "female_guard.png": {
+      "size": [
+        2048,
+        2048
+      ],
+      "format": "RGBA",
+      "effective_bounds_alpha_gt16": [
+        446,
+        468,
+        1580,
+        1901
+      ],
+      "within_ground": true
+    },
+    "female_hurt.png": {
+      "size": [
+        2048,
+        2048
+      ],
+      "format": "RGBA",
+      "effective_bounds_alpha_gt16": [
+        281,
+        525,
+        1550,
+        1899
+      ],
+      "within_ground": true
+    },
+    "male_guard.png": {
+      "size": [
+        2048,
+        2048
+      ],
+      "format": "RGBA",
+      "effective_bounds_alpha_gt16": [
+        454,
+        571,
+        1549,
+        1900
+      ],
+      "within_ground": true
+    },
+    "male_hurt.png": {
+      "size": [
+        2048,
+        2048
+      ],
+      "format": "RGBA",
+      "effective_bounds_alpha_gt16": [
+        258,
+        608,
+        1614,
+        1899
+      ],
+      "within_ground": true
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "date": "2026-11-07",
+  "scope": "仅浏览器设计预览，不修改 Godot、人物资产或正式存档",
+  "preview": "列式寄售摊_横拖预览_20261107.html#mine",
+  "interaction_source": "我的摊位_预览交互_20261107.js",
+  "artwork": "../../../textures/ui/yuxu_market_20261107/market_ledger_frame_v1.png",
+  "artwork_changes": "沿用本轮原创框架，以控件裁切组合四列，未修改位图或重新生成",
+  "sample": {
+    "leased": true,
+    "wallet": 18,
+    "pending": 6,
+    "claimed": 0,
+    "used_cells": 18,
+    "expiry": "1年2月1日0时",
+    "note": "初始样例展示既有租约；余额、货物、日期和历史成交均非玩家存档，刷新重置"
+  },
+  "checks": {
+    "endAndCancel": {
+      "noRefund": true,
+      "escrowAndPendingPreserved": true,
+      "listingDisabled": true
+    },
+    "rent": {
+      "cost": 1,
+      "repeatedConfirmationSafe": true
+    },
+    "listing": {
+      "bagQuantity": 2,
+      "stallQuantity": 3,
+      "occupiedCells": 26,
+      "noMoneyCreated": true
+    },
+    "repriceAndWithdraw": {
+      "newPrice": 5,
+      "returnedTotalMist": 5,
+      "occupiedAfterWithdrawal": 2
+    },
+    "claim": {
+      "wallet": 23,
+      "pending": 0,
+      "claimed": 6,
+      "repeatedConfirmationSafe": true
+    },
+    "closedWithdrawal": true,
+    "browseRoundTrip": {
+      "horizontalDragStillWorks": true,
+      "positionPreserved": true
+    },
+    "smallWindow": {
+      "outside": 0,
+      "clippedNames": 0,
+      "imagesFailed": 0
+    }
+  },
+  "visual_checks": {
+    "resolutions": [
+      [
+        1920,
+        1080
+      ],
+      [
+        1280,
+        720
+      ]
+    ],
+    "screenshots": [
+      "我的摊位_管理页_1920.png",
+      "我的摊位_管理页_1280.png",
+      "我的摊位_未租用_1920.png",
+      "我的摊位_上架后_1920.png"
+    ],
+    "console_errors": 0,
+    "console_warnings": 0
+  },
+  "boundaries": [
+    "仅灵石，未添加以物易物或善功交易",
+    "摊位总格数与区域形状未定，仅累计逐件真实占格，不模拟容量上限与空间排放",
+    "未模拟租期时钟、NPC 真实需求或月结成交",
+    "未接入真实行囊空间、领取放置与资产事务；撤下和领取样例默认有接收空间",
+    "未将管理页样例货物映射到公共示例摊位",
+    "没有读取或写入正式存档或浏览器持久化存储"
+  ]
+}

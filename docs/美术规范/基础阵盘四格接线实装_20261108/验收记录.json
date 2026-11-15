@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-08",
+  "scope": "4x4 blueprint geometry, generated assets and native Godot workbench; not combat execution or crafting",
+  "build": {"passed": true, "warnings": 0, "errors": 0},
+  "model": {"passed": true, "groups": 10, "assertions": 7746, "project": "tools/formation_grid_checks/FormationGridChecks.csproj"},
+  "native_ui": {
+    "passed": true,
+    "checks": 20,
+    "resolution": [1280, 900],
+    "command": "tools/run_formation_grid_smoke.ps1 -SkipBuild",
+    "checks_include": ["starter two-network connectivity", "erase and reconnect power", "different-kind crossing refusal preserves state", "isolated draft save and load", "invalid draft does not replace board", "straight and corner masks", "power T junction", "signal implicit branch refusal", "embedded Baigong page", "title and workbench viewport bounds"],
+    "screenshots": ["01_基础护持连通.png", "02_直线转角与分支.png", "03_交叉被拒绝.png", "04_百工阵法入口.png"]
+  },
+  "assets": {"passed": true, "count": 10, "checks": ["exact target dimensions", "RGBA", "genuine transparent pixels", "source originals and generation prompts retained"]},
+  "visual_review": ["1280x900 starter", "1280x900 crossing refusal", "1280x900 actual Baigong embedding"],
+  "isolated_user_data": true,
+  "combat_runtime_migrated": false,
+  "real_material_generation_tested": false,
+  "balance_tested": false
+}

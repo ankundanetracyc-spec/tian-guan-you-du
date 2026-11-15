@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>局内界面 · 三款新风格对照</title><link rel="icon" href="data:,">
+<style>
+@font-face{font-family:LocalKai;src:url('../../../resources/font/LXGWZhenKaiSlabGB-Regular.ttf') format('truetype');font-display:swap}
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#363733;color:#e7e4d9;font-family:LocalKai,KaiTi,serif}
+.review{height:58px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:8px 18px;background:#323430;border-bottom:1px solid #686a60}
+.title{font-size:16px;white-space:nowrap;color:#c9cbbf}.choices,.views{display:flex;gap:6px}.choices{flex:1;justify-content:center}
+button{font:inherit;font-size:16px;cursor:pointer;border:1px solid #73766b;background:#41453e;color:#e3e4d7;padding:7px 16px;border-radius:2px}
+button:hover{background:#596052}button[aria-pressed=true]{color:#252922;background:#bec4b3;border-color:#cbd0bd}
+button:focus-visible{outline:2px solid #d9dfcf;outline-offset:2px}.frame{width:100%;height:calc(100% - 58px);border:0;display:block;background:#63695e}
+@media(max-width:900px){.title{display:none}.review{padding:7px 8px;gap:6px}.choices{justify-content:flex-start}button{padding:7px 9px;font-size:14px}}
+</style>
+</head>
+<body>
+<header class="review" aria-label="风格对照工具">
+<span class="title">局内界面 · 风格对照</span>
+<div class="choices" aria-label="选择视觉风格">
+<button type="button" data-skin="paper" aria-pressed="false">灰宣墨线</button>
+<button type="button" data-skin="silk" aria-pressed="false">素绢朱印</button>
+<button type="button" data-skin="wood" aria-pressed="true">乌木骨饰</button>
+</div>
+<div class="views" aria-label="选择布局状态">
+<button type="button" data-view="edit" aria-pressed="true">布阵</button>
+<button type="button" data-view="combat" aria-pressed="false">开战</button>
+</div>
+</header>
+<iframe class="frame" id="preview" title="局内界面风格预览" src="11_局内UI布局样板.html?skin=wood"></iframe>
+<script>
+(() => {
+ const allowed=['paper','silk','wood'], q=new URLSearchParams(location.search);
+ const state={skin:allowed.includes(q.get('skin'))?q.get('skin'):'wood',view:q.get('view')==='combat'?'combat':'edit'};
+ const frame=document.getElementById('preview');
+ function render(send=true){
+  document.querySelectorAll('[data-skin]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.skin===state.skin)));
+  document.querySelectorAll('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===state.view)));
+  if(send) frame.contentWindow.postMessage({type:'combat-style-preview',...state},'*');
+ }
+ frame.addEventListener('load',()=>render());
+ window.addEventListener('message',event=>{
+  if(event.source!==frame.contentWindow||event.data?.type!=='combat-style-state')return;
+  if(event.data.view==='edit'||event.data.view==='combat'){state.view=event.data.view;render(false)}
+ });
+ document.querySelectorAll('[data-skin]').forEach(b=>b.addEventListener('click',()=>{state.skin=b.dataset.skin;render()}));
+ document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>{state.view=b.dataset.view;render()}));
+ window.skinReview={getState:()=>({...state})};
+ render();
+})();
+</script>
+</body></html>
+

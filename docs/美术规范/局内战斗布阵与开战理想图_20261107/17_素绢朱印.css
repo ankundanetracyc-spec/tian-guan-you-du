@@ -1,0 +1,194 @@
+/* 暖灰素绢·朱印：仅覆盖布局样板的视觉，不改变格形与交互。 */
+html[data-skin="silk"] {
+  color-scheme: light;
+  --ink: #342b26;
+  --muted: #4d4138;
+  --edge: #81776b;
+  --paper: #bcb4a7;
+  --grid: 52px;
+  --sample-cell: 32px;
+  --silk-ink: #342b26;
+  --silk-muted: #50443a;
+  --silk-red: #793c32;
+  --silk-line: #8c8072;
+  --silk-weave: repeating-linear-gradient(0deg, transparent 0 3px, rgba(67, 53, 43, .025) 3px 4px),
+    repeating-linear-gradient(90deg, transparent 0 5px, rgba(244, 233, 218, .055) 5px 6px),
+    linear-gradient(118deg, rgba(229, 218, 199, .08), rgba(71, 56, 44, .04));
+}
+
+html[data-skin="silk"] body { background: #9d9588; color: var(--silk-ink); }
+html[data-skin="silk"] button:focus-visible,
+html[data-skin="silk"] input:focus-visible,
+html[data-skin="silk"] select:focus-visible { outline-color: #793c32; }
+html[data-skin="silk"] .scene-tint {
+  background: radial-gradient(ellipse at center, transparent 36%, rgba(50, 42, 34, .18) 100%),
+    linear-gradient(180deg, rgba(76, 62, 51, .09), transparent 35%, rgba(61, 50, 41, .08));
+}
+
+/* 同一块细密素绢，结构靠短线和色阶，而非描金框。 */
+html[data-skin="silk"] .ink-panel,
+html[data-skin="silk"] .board-frame,
+html[data-skin="silk"] .hand-slot,
+html[data-skin="silk"] .tooltip {
+  background-color: #bcb4a7;
+  background-image: var(--silk-weave);
+  border: 1px solid #81776b;
+  border-radius: 1px;
+  box-shadow: 0 2px 5px rgba(48, 39, 32, .15);
+  color: var(--silk-ink);
+}
+html[data-skin="silk"] .location { border-left: 3px solid var(--silk-red); letter-spacing: .08em; }
+html[data-skin="silk"] .location-mark { color: var(--silk-red); }
+html[data-skin="silk"] .location small { color: #50443a; border-left-color: #8e8275; }
+html[data-skin="silk"] .initiative { border-top: 2px solid #8f8172; }
+html[data-skin="silk"] .initiative-label { color: #44362e; }
+html[data-skin="silk"] .initiative-rail { background: #887e71; }
+html[data-skin="silk"] .initiative-fill { background: #743d32; }
+html[data-skin="silk"] .initiative-marker {
+  color: #f3e8da;
+  background: #735f50;
+  border-color: #5c493e;
+  border-radius: 2px;
+}
+html[data-skin="silk"] .initiative-marker--enemy { background: #813f34; border-color: #663127; }
+html[data-skin="silk"] .phase-note {
+  width: fit-content;
+  margin: 3px auto 0;
+  padding: 2px 9px;
+  color: #382d27;
+  background: #bbb2a4;
+  border-bottom: 1px solid #887b6e;
+  text-shadow: none;
+}
+
+/* 近似短木签的操作控件，朱色只用于关键动作和已选状态。 */
+html[data-skin="silk"] .small-button,
+html[data-skin="silk"] .outline-button,
+html[data-skin="silk"] .back-button,
+html[data-skin="silk"] .primary-button {
+  color: #342b26;
+  background: #b8afa1;
+  background-image: var(--silk-weave);
+  border: 1px solid #817366;
+  border-bottom: 2px solid #76695d;
+  border-radius: 1px;
+  box-shadow: none;
+}
+html[data-skin="silk"] .small-button:hover,
+html[data-skin="silk"] .outline-button:hover,
+html[data-skin="silk"] .back-button:hover { background-color: #cec4b5; border-color: #6d5549; }
+html[data-skin="silk"] .small-button[aria-pressed="true"] { color: #642f26; border-color: #8d4a3c; background-color: #d0bbae; }
+html[data-skin="silk"] .primary-button {
+  color: #f3e8dc;
+  background: #793c32;
+  border-color: #653026;
+  border-bottom-color: #54281f;
+}
+html[data-skin="silk"] .primary-button:hover { color: #fff3e7; background: #8a493c; border-color: #653026; }
+html[data-skin="silk"] .primary-button:disabled { color: #f3e8dc; opacity: .5; }
+html[data-skin="silk"] .demo-button { color: #342b26; }
+
+/* 资源、人物生命和其下方的状态行。 */
+html[data-skin="silk"] .resources { border-radius: 1px; }
+html[data-skin="silk"] .resource { color: #4a3e34; border-right-color: rgba(78, 62, 50, .26); }
+html[data-skin="silk"] .resource strong { color: #302720; }
+html[data-skin="silk"] .resource-dot { background: #80634d; }
+html[data-skin="silk"] .resource-dot--mana { background: #536c6a; }
+html[data-skin="silk"] .resource-dot--spirit { background: #795f50; }
+html[data-skin="silk"] .actor-plate { border-radius: 1px; }
+html[data-skin="silk"] .actor-line { color: #342b26; }
+html[data-skin="silk"] .hp-value { color: #4d4036; }
+html[data-skin="silk"] .hp-track { background: #8b7c70; border-radius: 0; }
+html[data-skin="silk"] .hp-fill { background: #974c3e; }
+html[data-skin="silk"] .status-icon { border-color: #85786a; border-radius: 1px; background: #b6ac9d; }
+html[data-skin="silk"] .status-icon:hover { background: #cfc3b3; border-color: #82483b; }
+
+/* 外围手持、主盘及其跨格分界；格子尺寸沿用样板。 */
+html[data-skin="silk"] .board-caption {
+  padding: 2px 5px;
+  color: #342b26;
+  background: #bcb4a7;
+  border-left: 3px solid #793c32;
+  text-shadow: none;
+}
+html[data-skin="silk"] .board-caption span:last-child { color: #50443a; }
+html[data-skin="silk"] .hand-slot { background-color: #b8afa2; }
+html[data-skin="silk"] .hand-slot:hover { background-color: #cec1b1; border-color: #82483b; }
+html[data-skin="silk"] .slot-caption { color: #672f25; }
+html[data-skin="silk"] .hand-link { background: #78695b; }
+html[data-skin="silk"] .board-frame { padding: 5px; background-color: #a59b8e; }
+html[data-skin="silk"] .grid-cell { border-color: rgba(83, 67, 55, .37); background: #c1b8aa; }
+html[data-skin="silk"] .grid-cell:hover { background: #d1c3b3; }
+html[data-skin="silk"] .board-piece { border-color: #8b7c6e; border-radius: 0; background: #b1a69a; }
+html[data-skin="silk"] .board-piece:hover,
+html[data-skin="silk"] .board-piece[aria-pressed="true"] { background: #cbb6a7; border-color: #803e33; }
+html[data-skin="silk"] .board-feedback {
+  color: #342b26;
+  background: #bcb4a7;
+  border-bottom: 1px solid #8c8072;
+  text-shadow: none;
+}
+
+/* 来源栏一项一行，细横线代替大卡片；形状与名称位置保持原样。 */
+html[data-skin="silk"] .source-panel { background-color: #b4ab9e; border-radius: 1px; border-top: 3px solid #7c4035; }
+html[data-skin="silk"] .source-toolbar { border-bottom: 1px solid rgba(80, 61, 48, .24); }
+html[data-skin="silk"] .source-toolbar select,
+html[data-skin="silk"] .search-box {
+  color: #342b26;
+  background: #c2b9ab;
+  border-color: #8c7e70;
+  border-radius: 1px;
+}
+html[data-skin="silk"] .search-box { color: #665348; }
+html[data-skin="silk"] .search-box input { color: #342b26; }
+html[data-skin="silk"] .search-box input::placeholder { color: #594b40; opacity: 1; }
+html[data-skin="silk"] .source-list { scrollbar-color: #8c7b6d transparent; }
+html[data-skin="silk"] .source-item {
+  color: #342b26;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(80, 61, 48, .28);
+  border-radius: 0;
+}
+html[data-skin="silk"] .source-item:hover { color: #342b26; background: rgba(229, 214, 197, .32); border-color: #9a8576; }
+html[data-skin="silk"] .source-item[aria-pressed="true"] {
+  color: #342b26;
+  background: rgba(214, 184, 168, .54);
+  border-color: #9a8576;
+  box-shadow: inset 3px 0 #8b4639;
+}
+html[data-skin="silk"] .piece-visual { border-color: #897b6d; background: rgba(93, 72, 57, .08); }
+html[data-skin="silk"] .shape-line--vertical,
+html[data-skin="silk"] .shape-line--horizontal { background: rgba(83, 65, 52, .46); }
+html[data-skin="silk"] .placeholder-icon { color: #4c3d32; border-color: rgba(87, 66, 52, .48); background: rgba(232, 219, 199, .16); }
+html[data-skin="silk"] .placeholder-icon--warm { color: #77382d; }
+html[data-skin="silk"] .source-name { color: #342b26; }
+html[data-skin="silk"] .source-meta,
+html[data-skin="silk"] .source-empty { color: #4d4036; }
+html[data-skin="silk"] .source-bottom { border-top-color: rgba(80, 61, 48, .25); }
+
+/* 方案、悬停和人物详情继承同一套素绢与朱印。 */
+html[data-skin="silk"] .scheme-heading { color: #342b26; border-bottom-color: rgba(80, 61, 48, .28); }
+html[data-skin="silk"] .scheme-option {
+  color: #342b26;
+  background: #beb3a5;
+  border: 0;
+  border-left: 3px solid #947a69;
+  border-bottom: 1px solid #958678;
+  border-radius: 0;
+}
+html[data-skin="silk"] .scheme-option:hover { background: #cdbcae; border-left-color: #8b4639; }
+html[data-skin="silk"] .scheme-option small { color: #4d4036; }
+html[data-skin="silk"] .tooltip { background-color: #c2b8aa; border-left: 3px solid #793c32; box-shadow: 0 4px 10px rgba(48, 39, 32, .22); }
+html[data-skin="silk"] .tooltip strong { color: #71372d; }
+html[data-skin="silk"] .tooltip p { color: #3d322a; }
+html[data-skin="silk"] .character-dialog { color: #342b26; background-color: #bcb4a7; border-radius: 1px; }
+html[data-skin="silk"] .character-dialog::backdrop { background: rgba(40, 32, 26, .45); }
+html[data-skin="silk"] .dialog-heading { padding-bottom: 8px; border-bottom: 1px solid #8c8072; }
+html[data-skin="silk"] .dialog-heading h2 { color: #342b26; }
+html[data-skin="silk"] .dialog-close { color: #71372d; }
+html[data-skin="silk"] .dialog-close:hover { background: rgba(125, 63, 50, .13); }
+html[data-skin="silk"] .dialog-subtitle { color: #4d4036; }
+html[data-skin="silk"] .dialog-subtitle span { color: #793c32; }
+html[data-skin="silk"] .equipment-entry { color: #342b26; border-bottom-color: rgba(80, 61, 48, .26); }
+html[data-skin="silk"] .character-dialog p { color: #4d4036; }

@@ -1,0 +1,336 @@
+{
+  "target": "single_ordinary_reference_walk_with_dynamic_body_and_rear_inertia",
+  "source_capture": "tools\\action_battle_test\\output\\reference_walk_full",
+  "source_sha256": {
+    "capture_reference_walk.gd": "c79c71a013214053d582f3fbe866738ee328628cb4b9fbf30f22bd4540c11e44",
+    "capture_leg_supported_robe.gd": "0cf726094ca0a0f81084640fcd255d7acf8284cf5c42e1e2365fd3a803689642",
+    "reference_walk_skin.gd": "aed6f5cfd1ac751b924783f83d174ff4e5f0cb535619396996705afb620ee91c",
+    "cape_like_robe_skin.gd": "06fd1a5c73830a5f20164c28bac62642adafc342c9362e4622bf0dda440b19fc"
+  },
+  "simulated_frames": 300,
+  "encoded_native_frames_per_gif": 150,
+  "seconds": 10,
+  "main_speed": 114,
+  "compatibility_235_probe_checked": true,
+  "multiple_player_movement_modes": false,
+  "ordinary_movement_stamina_cost": 0,
+  "all_300_frames_stamina": 6.0,
+  "full_comparison_capture": true,
+  "full_arena_capture": true,
+  "native_comparison_and_arena_resolution": [
+    880,
+    600
+  ],
+  "all_facing_correct": true,
+  "complete_legs_and_original_trousers_and_boots": true,
+  "standing": {
+    "body_and_leg_joint_position_error": 0.0,
+    "standing_shoes_and_ground_pixels_identical": true,
+    "whole_native_frame_pixels_identical": true
+  },
+  "pause_12_frames_phase_physics_and_native_pixels_frozen": true,
+  "body_inertia_samples": [
+    {
+      "frame": 18,
+      "chest_angle": 0.019023422151804,
+      "chest_target": 0.17218229174614,
+      "lean_inertia": 0.0855010929107666,
+      "elastic_tail": true
+    },
+    {
+      "frame": 30,
+      "chest_angle": 0.0873859897255898,
+      "chest_target": 0.0866811946034431,
+      "lean_inertia": 0.0,
+      "elastic_tail": true
+    },
+    {
+      "frame": 54,
+      "chest_angle": 0.0866710618138313,
+      "chest_target": 0.0866811946034431,
+      "lean_inertia": 0.0,
+      "elastic_tail": true
+    },
+    {
+      "frame": 126,
+      "chest_angle": -0.0570037141442299,
+      "chest_target": -0.0571212843060493,
+      "lean_inertia": 0.0,
+      "elastic_tail": true
+    },
+    {
+      "frame": 138,
+      "chest_angle": 0.0497360453009605,
+      "chest_target": -0.0097168143838644,
+      "lean_inertia": 0.0,
+      "elastic_tail": true
+    },
+    {
+      "frame": 174,
+      "chest_angle": -0.0575911402702332,
+      "chest_target": 0.176681131124496,
+      "lean_inertia": 0.09,
+      "elastic_tail": true
+    },
+    {
+      "frame": 210,
+      "chest_angle": 0.0676359236240387,
+      "chest_target": -0.0855010896921158,
+      "lean_inertia": -0.0855010929107666,
+      "elastic_tail": true
+    },
+    {
+      "frame": 216,
+      "chest_angle": -0.0124313244596124,
+      "chest_target": 0.0,
+      "lean_inertia": 0.0,
+      "elastic_tail": true
+    },
+    {
+      "frame": 227,
+      "chest_angle": 0.00112321204505861,
+      "chest_target": 0.0,
+      "lean_inertia": 0.0,
+      "elastic_tail": true
+    },
+    {
+      "frame": 246,
+      "chest_angle": -0.000156000009155832,
+      "chest_target": 0.0,
+      "lean_inertia": 0.0,
+      "elastic_tail": true
+    },
+    {
+      "frame": 299,
+      "chest_angle": -2.69117228501869e-10,
+      "chest_target": 0.0,
+      "lean_inertia": 0.0,
+      "elastic_tail": true
+    }
+  ],
+  "stop_samples": [
+    {
+      "frame": 210,
+      "angles": [
+        0.0362802445888519,
+        0.0407498404383659,
+        0.0261252876371145
+      ],
+      "angular_velocity": [
+        -0.443089157342911,
+        -0.694763362407684,
+        -0.910823881626129
+      ],
+      "angle_norm": 0.0604924482667148
+    },
+    {
+      "frame": 211,
+      "angles": [
+        0.0223699081689119,
+        0.0197384413331747,
+        -0.00161374174058437
+      ],
+      "angular_velocity": [
+        -0.393246382474899,
+        -0.577326834201813,
+        -0.76750385761261
+      ],
+      "angle_norm": 0.029876797354369076
+    },
+    {
+      "frame": 213,
+      "angles": [
+        0.00124508084263653,
+        -0.0095931813120842,
+        -0.0414218753576279
+      ],
+      "angular_velocity": [
+        -0.244323775172234,
+        -0.319516241550446,
+        -0.444767326116562
+      ],
+      "angle_norm": 0.042536468026084205
+    },
+    {
+      "frame": 216,
+      "angles": [
+        -0.0117959678173065,
+        -0.0246091485023499,
+        -0.0628398656845093
+      ],
+      "angular_velocity": [
+        -0.0395598597824574,
+        -0.0207437630742788,
+        -0.0266742464154959
+      ],
+      "angle_norm": 0.06850988079105678
+    },
+    {
+      "frame": 222,
+      "angles": [
+        -0.00376861193217337,
+        -0.00788996834307909,
+        -0.0276564918458462
+      ],
+      "angular_velocity": [
+        0.0575913526117802,
+        0.101814493536949,
+        0.25416886806488
+      ],
+      "angle_norm": 0.029005785243110847
+    },
+    {
+      "frame": 227,
+      "angles": [
+        0.00156647071707994,
+        0.00235987175256014,
+        0.00626329006627202
+      ],
+      "angular_velocity": [
+        0.00814339239150286,
+        0.0231024567037821,
+        0.133747681975365
+      ],
+      "angle_norm": 0.006873981935549582
+    },
+    {
+      "frame": 228,
+      "angles": [
+        0.00156647071707994,
+        0.00235987175256014,
+        0.00626329006627202
+      ],
+      "angular_velocity": [
+        0.00814339239150286,
+        0.0231024567037821,
+        0.133747681975365
+      ],
+      "angle_norm": 0.006873981935549582
+    },
+    {
+      "frame": 239,
+      "angles": [
+        0.00156647071707994,
+        0.00235987175256014,
+        0.00626329006627202
+      ],
+      "angular_velocity": [
+        0.00814339239150286,
+        0.0231024567037821,
+        0.133747681975365
+      ],
+      "angle_norm": 0.006873981935549582
+    },
+    {
+      "frame": 240,
+      "angles": [
+        0.00170426245313138,
+        0.00289740110747516,
+        0.0101112611591816
+      ],
+      "angular_velocity": [
+        0.00129187002312392,
+        0.0110703790560365,
+        0.101294472813606
+      ],
+      "angle_norm": 0.010655376385465045
+    },
+    {
+      "frame": 246,
+      "angles": [
+        0.000361289916327223,
+        0.00146868464071304,
+        0.0140109704807401
+      ],
+      "angular_velocity": [
+        -0.00724312057718635,
+        -0.0131883267313242,
+        -0.0388155281543732
+      ],
+      "angle_norm": 0.014092368813995629
+    },
+    {
+      "frame": 258,
+      "angles": [
+        -3.01444979413645e-05,
+        -0.000246368581429124,
+        -0.00382495229132473
+      ],
+      "angular_velocity": [
+        0.000882094434928149,
+        0.0013249198673293,
+        -0.0125494552776217
+      ],
+      "angle_norm": 0.0038329970257726313
+    },
+    {
+      "frame": 270,
+      "angles": [
+        1.79058963567513e-06,
+        3.50226655427832e-05,
+        -1.83348638529424e-05
+      ],
+      "angular_velocity": [
+        -0.00010387679503765,
+        -4.47591010015458e-05,
+        0.0121574327349663
+      ],
+      "angle_norm": 3.957221936499108e-05
+    },
+    {
+      "frame": 299,
+      "angles": [
+        -7.33630685090247e-08,
+        6.02809507199709e-07,
+        -0.000133417270262726
+      ],
+      "angular_velocity": [
+        3.82882376470661e-07,
+        -6.55602661936427e-07,
+        0.00130964256823063
+      ],
+      "angle_norm": 0.00013341865224097814
+    }
+  ],
+  "withdrawal_checks": {
+    "character_speed": 235.0,
+    "checks": 23,
+    "failures": [],
+    "ordinary_movement_stamina_cost": 0.0,
+    "passed": true,
+    "sample_speed": 114.0,
+    "stamina_recovery_interval": 2.0
+  },
+  "basic_skills_regression": {
+    "checks": 26,
+    "failures": 0
+  },
+  "native_pngs_repainted": false,
+  "reference_parameter_source": "Project visual fitting; small reference character does not support precise joint or cadence measurements.",
+  "artifacts": {
+    "停步惯性与回落_六个原生相位.png": 217939,
+    "参考行走_原生近景同输入10秒.gif": 3038367,
+    "参考行走_实际局内10秒.gif": 35180919,
+    "同输入原生对照_停步.png": 99483,
+    "同输入原生对照_再次转向.png": 105298,
+    "同输入原生对照_后退.png": 102418,
+    "同输入原生对照_回落.png": 69808,
+    "同输入原生对照_斜向移动.png": 106692,
+    "同输入原生对照_普通移动.png": 105438,
+    "同输入原生对照_稳定.png": 66486,
+    "同输入原生对照_转向.png": 102507,
+    "同输入原生对照_静站.png": 62128,
+    "实际局内_停步.png": 913151,
+    "实际局内_再次转向.png": 919271,
+    "实际局内_后退.png": 907121,
+    "实际局内_回落.png": 911739,
+    "实际局内_斜向移动.png": 903840,
+    "实际局内_普通移动.png": 913771,
+    "实际局内_稳定.png": 911851,
+    "实际局内_转向.png": 914726,
+    "实际局内_静站.png": 918413,
+    "斗法移动_普通移动短循环1.8秒.gif": 727322,
+    "普通移动_六个原生相位.png": 232517,
+    "转向_五个原生相位.png": 187359
+  }
+}

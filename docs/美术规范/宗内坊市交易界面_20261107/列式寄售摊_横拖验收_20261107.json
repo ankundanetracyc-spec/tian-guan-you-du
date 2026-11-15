@@ -1,0 +1,47 @@
+{
+  "date": "2026-11-07",
+  "status": "浏览器交互样板，未接入游戏",
+  "userDecisions": {
+    "horizontalBrowse": "整排摊位的纸面、木框和文字连续横拖，标题与底栏固定",
+    "settlement": "仅灵石；用户已撤回以物易物方向"
+  },
+  "preview": "列式寄售摊_横拖预览_20261107.html",
+  "art": "沿用本轮新生成底图；通过控件背景区域重组为可横移的摊位列，未改动原位图",
+  "checks": {
+    "horizontalDrag": {
+      "pixels": 335,
+      "scrollDesignUnits": 292,
+      "paperShift": -335.1328430175781,
+      "selectedUnchanged": true,
+      "titleAndFooterFixed": true
+    },
+    "searchPreservesScroll": true,
+    "clickSelectionAndQuantity": {
+      "quantity": 2,
+      "totalStones": 12
+    },
+    "independentVerticalScroll": {
+      "listScroll": 102,
+      "horizontalUnchanged": true,
+      "note": "Temporarily shortened only the test list viewport; no fake goods added."
+    },
+    "shiftWheel": true,
+    "smallWindow": {
+      "outside": 0,
+      "longNames": 0,
+      "dragActive": false
+    }
+  },
+  "video": {
+    "file": "列式寄售摊_横拖演示_20261107.webm",
+    "size": "1280x720",
+    "durationSeconds": 7.77,
+    "source": "实际浏览器鼠标拖动与选择操作",
+    "playback": "录制含鼠标提示的操作后以12倍速压缩，保留实际UI移动"
+  },
+  "scope": {
+    "realPlayerSaveChanged": false,
+    "gameplayCodeChanged": false,
+    "barterImplemented": false
+  }
+}

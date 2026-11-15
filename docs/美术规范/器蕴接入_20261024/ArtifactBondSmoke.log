@@ -1,0 +1,48 @@
+Godot Engine v4.7.2.stable.mono.official.ed1daf0bf - https://godotengine.org
+
+PASS 实例去重
+PASS 同名不同实例累计4点总20%
+PASS 档位与超额不重复叠加
+PASS 仅持有不贡献
+PASS 装备抱朴提高完整角色物防且无灵识费
+PASS 重算不叠加
+WARNING: res://resources/activeskills/补虚行血诀/化法/卸力.tres:4 - ext_resource, invalid UID: uid://corjswdok5c7 - using text path instead: res://csharp/gongfa/DamageBonus.cs
+   at: load (scene/resources/resource_format_text.cpp:501)
+   C# backtrace (most recent call first):
+       [0] Godot.GodotObject Godot.NativeCalls.godot_icall_3_1268(nint, nint, string, string, int) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/NativeCalls.cs:11611)
+       [1] Godot.Resource Godot.ResourceLoader.Load(string, string, Godot.ResourceLoader+CacheMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/ResourceLoader.cs:120)
+       [2] T Godot.ResourceLoader.Load<T>(string, string, Godot.ResourceLoader+CacheMode) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Extensions/ResourceLoaderExtensions.cs:27)
+       [3] void GongfaAvailability.EnsureCatalog()
+       [4] bool GongfaAvailability.IsSkillEnabled(ActiveSkillData)
+       [5] bool Character.is_combat_skill_slot_eligible(ActiveSkillData)
+       [6] Godot.Collections.Array`1[System.String] Character.get_default_combat_skill_paths()
+       [7] Godot.Collections.Array`1[System.String] Character.get_combat_skill_slot_paths()
+       [8] BattleEntityData Character.get_snapshot_data()
+       [9] void ArtifactBondSmoke._Ready()
+       [10] bool Godot.Node.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Node.cs:2660)
+       [11] bool ArtifactBondSmoke.InvokeGodotClassMethod(Godot.NativeInterop.godot_string_name&, Godot.NativeInterop.NativeVariantPtrArgs, Godot.NativeInterop.godot_variant&)
+       [12] Godot.NativeInterop.godot_bool Godot.Bridge.CSharpInstanceBridge.Call(nint, Godot.NativeInterop.godot_string_name*, Godot.NativeInterop.godot_variant**, int, Godot.NativeInterop.godot_variant_call_error*, Godot.NativeInterop.godot_variant*) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/CSharpInstanceBridge.cs:24)
+PASS 正式人物快照不重复加物防
+PASS 独立战斗快照应用抱朴
+PASS 剑关键词实际物伤+10%
+PASS 非人物战斗单位读取器蕴来源
+PASS 普通物伤不吃惊鸿
+PASS 法术伤害不吃惊鸿
+PASS 卸下撤销器蕴
+PASS 词条及器蕴共同预算守恒 0
+PASS 凡器不生成器蕴
+PASS 快照参数重演保留贡献
+PASS 词条及器蕴共同预算守恒 1
+PASS 凡器不生成器蕴
+PASS 快照参数重演保留贡献
+PASS 词条及器蕴共同预算守恒 2
+PASS 凡器不生成器蕴
+PASS 快照参数重演保留贡献
+PASS 词条及器蕴共同预算守恒 3
+PASS 凡器不生成器蕴
+PASS 快照参数重演保留贡献
+实际样方器蕴条数=4
+PASS 旧参数不补发器蕴
+PASS 器蕴装备存档保存
+PASS 读回重建累计与实际收益
+ARTIFACT_BOND_OK 28
