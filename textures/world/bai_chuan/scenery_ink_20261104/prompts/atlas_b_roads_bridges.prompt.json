@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "id": "atlas_b_roads_bridges",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "created_at": "2026-11-04",
+  "request": {
+    "prompt": "Use case: stylized-concept\nAsset type: original transparent road-and-bridge sprite atlas for a Chinese ink-painting fantasy overworld game.\nPrimary request: Create exactly SIX separated HORIZONTAL map-detail sprites on a square genuinely transparent RGBA canvas. Use an invisible strict 2 columns by 3 rows equal-cell layout. Each sprite is centered inside its own cell with at least 50 pixels clear transparent space from every cell boundary. Every long axis points perfectly horizontally along X; each object remains fully visible and isolated.\nRow 1 left: a long shallow earth-brown dirt-road brush strip, understated warm grey-brown middle, irregular soft hand-painted side edges; a straight usable middle section with nearly constant width.\nRow 1 right: a long forest footpath brush strip, muted grey-brown, slightly darker thin side marks and sparse low olive moss flecks; a straight usable middle section with nearly constant width.\nRow 2 left: a long low-contrast stone-paved road strip, small irregular grey stone slabs in two or three loose rows, gently uneven sides, straight usable middle section; no tall kerb.\nRow 2 right: one simple short weathered wooden plank footbridge spanning horizontally left to right, viewed obliquely from overhead, readable planks and two minimal low side rails, no roof and no ornaments. The deck connects the left and right landward ends; no river or ground underneath.\nRow 3 left: one short low-arched grey stone bridge spanning horizontally left to right, viewed obliquely from overhead, simple block parapets, clear deck and one low arch opening; no roof and no ornaments. No river or ground underneath.\nRow 3 right: one long sparse roadside pebble-and-small-stone band, grey-brown chips, shallow low profile, uneven but horizontal, no foliage clumps.\nStyle/medium: original refined 2D hand-painted Chinese game-map illustration. Controlled ink-and-light-gouache, clear fine hand-drawn contours, very low grain, quiet blue-grey ink, restrained warm earth browns, tiny muted olive notes. Legible small-scale map details, not photorealistic, not glossy 3D.\nComposition/framing: consistent oblique overhead map view about 45 degrees. Roads are thin elongated strips about 4 to 5 times wider than their painted depth, complete from end to end; the central 55 percent should be useful to crop into a horizontal tiling texture. Bridges have a short unobtrusive contact shadow only directly beneath their structure.\nScene/backdrop: actual alpha transparency outside exact painted brush edges. No paper, no opaque white, no coloured background, no landscape, no river water, no ground island or base plate, no fog patch, no large cast shadow. Preserve natural anti-aliased brush-edge alpha.\nConstraints: exactly six sprites in the specified row-major order, no overlap and no clipped ends, no grid, no lettering, no numbers, no labels, no UI, no logos, no watermarks. Design every object from scratch.",
+    "transparent_background": true
+  },
+  "layout": {
+    "columns": 2,
+    "rows": 3,
+    "order": [
+      "road_dirt",
+      "road_woodland",
+      "road_stone",
+      "bridge_wood",
+      "bridge_stone",
+      "roadside_stones"
+    ]
+  },
+  "purpose": "Original project-owned scenery; not copied or derived from extracted reference-game assets."
+}

@@ -1,0 +1,115 @@
+{
+  "source": "bai_chuan_pale_ground_depth_v8.png",
+  "reference_only_size": 6144,
+  "requested_tile_size": 2048,
+  "tiles": [
+    {
+      "id": "bc_11",
+      "row": 0,
+      "col": 0,
+      "world_rect": [
+        0,
+        0,
+        2048,
+        2048
+      ],
+      "guide": "E:\\stacklands\\textures\\world\\bai_chuan\\pale_nine_20261030\\guides\\bc_11.png"
+    },
+    {
+      "id": "bc_12",
+      "row": 0,
+      "col": 1,
+      "world_rect": [
+        2048,
+        0,
+        4096,
+        2048
+      ],
+      "guide": "E:\\stacklands\\textures\\world\\bai_chuan\\pale_nine_20261030\\guides\\bc_12.png"
+    },
+    {
+      "id": "bc_13",
+      "row": 0,
+      "col": 2,
+      "world_rect": [
+        4096,
+        0,
+        6144,
+        2048
+      ],
+      "guide": "E:\\stacklands\\textures\\world\\bai_chuan\\pale_nine_20261030\\guides\\bc_13.png"
+    },
+    {
+      "id": "bc_21",
+      "row": 1,
+      "col": 0,
+      "world_rect": [
+        0,
+        2048,
+        2048,
+        4096
+      ],
+      "guide": "E:\\stacklands\\textures\\world\\bai_chuan\\pale_nine_20261030\\guides\\bc_21.png"
+    },
+    {
+      "id": "bc_22",
+      "row": 1,
+      "col": 1,
+      "world_rect": [
+        2048,
+        2048,
+        4096,
+        4096
+      ],
+      "guide": "E:\\stacklands\\textures\\world\\bai_chuan\\pale_nine_20261030\\guides\\bc_22.png"
+    },
+    {
+      "id": "bc_23",
+      "row": 1,
+      "col": 2,
+      "world_rect": [
+        4096,
+        2048,
+        6144,
+        4096
+      ],
+      "guide": "E:\\stacklands\\textures\\world\\bai_chuan\\pale_nine_20261030\\guides\\bc_23.png"
+    },
+    {
+      "id": "bc_31",
+      "row": 2,
+      "col": 0,
+      "world_rect": [
+        0,
+        4096,
+        2048,
+        6144
+      ],
+      "guide": "E:\\stacklands\\textures\\world\\bai_chuan\\pale_nine_20261030\\guides\\bc_31.png"
+    },
+    {
+      "id": "bc_32",
+      "row": 2,
+      "col": 1,
+      "world_rect": [
+        2048,
+        4096,
+        4096,
+        6144
+      ],
+      "guide": "E:\\stacklands\\textures\\world\\bai_chuan\\pale_nine_20261030\\guides\\bc_32.png"
+    },
+    {
+      "id": "bc_33",
+      "row": 2,
+      "col": 2,
+      "world_rect": [
+        4096,
+        4096,
+        6144,
+        6144
+      ],
+      "guide": "E:\\stacklands\\textures\\world\\bai_chuan\\pale_nine_20261030\\guides\\bc_33.png"
+    }
+  ]
+}

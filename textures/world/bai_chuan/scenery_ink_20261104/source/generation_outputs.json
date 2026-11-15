@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "date": "2026-11-04",
+  "outputs": [
+    {
+      "id": "atlas_a_vegetation",
+      "original_output_path": "E:\\tmp\\CodexData\\generated_images\\01a1a6b5-1231-70b3-bcb6-650bc733d0d4\\exec-66861973-2960-4b05-89e3-fd8b702d4e0b.png",
+      "output_hint": "Generated images are saved to E:\\tmp\\CodexData\\generated_images\\01a1a6b5-1231-70b3-bcb6-650bc733d0d4 as E:\\tmp\\CodexData\\generated_images\\01a1a6b5-1231-70b3-bcb6-650bc733d0d4\\exec-66861973-2960-4b05-89e3-fd8b702d4e0b.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "image_gen.imagegen",
+      "mode": "built-in",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "workspace_original": "source/atlas_a_vegetation_native.png",
+      "prompt": "prompts/atlas_a_vegetation.prompt.json"
+    },
+    {
+      "id": "atlas_b_roads_bridges",
+      "original_output_path": "E:\\tmp\\CodexData\\generated_images\\01a1a6b5-1231-70b3-bcb6-650bc733d0d4\\exec-c813d12d-7c4c-4631-8793-b6fe0ec835dd.png",
+      "output_hint": "Generated images are saved to E:\\tmp\\CodexData\\generated_images\\01a1a6b5-1231-70b3-bcb6-650bc733d0d4 as E:\\tmp\\CodexData\\generated_images\\01a1a6b5-1231-70b3-bcb6-650bc733d0d4\\exec-c813d12d-7c4c-4631-8793-b6fe0ec835dd.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "tool": "image_gen.imagegen",
+      "mode": "built-in",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "workspace_original": "source/atlas_b_roads_bridges_native.png",
+      "prompt": "prompts/atlas_b_roads_bridges.prompt.json"
+    }
+  ]
+}

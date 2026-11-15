@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "role": "Display-only native Godot shader parameters for the unchanged 6270 master and nine 2090 tiles.",
+  "shader_parameters": {
+    "plain_cleanup": 0.68,
+    "landmark_cleanup": 0.74,
+    "regional_strength": 0.8,
+    "forest_strength": 0.72,
+    "rock_strength": 0.66,
+    "water_strength": 0.84,
+    "water_detail": 0.32,
+    "paper_color": "#eae6d9",
+    "forest_color": "#67815b",
+    "rock_color": "#8c826d",
+    "water_color": "#9eb1af"
+  },
+  "adjustment_notes": {
+    "plain_cleanup": "0.55–0.78. Suppresses fine filler only where protected-source mask permits; no global blur.",
+    "landmark_cleanup": "0.6–0.82. Broad feathered same-paper-tone reduction around existing 123 anchors; no white disk.",
+    "regional_strength": "0.65–0.9. Existing natural-region palette and source woodland/rock tint strength.",
+    "water_strength": "0.72–0.9. Higher values calm the original saturated blue; native water edge is retained.",
+    "water_detail": "0.25–0.45. Residual native wave contrast, not a new wave animation.",
+    "main_map_ink_wash": "Expected free-world screen wash_strength 0.16. The old 0.75 screen wash would desaturate these regional colours."
+  },
+  "data_textures": "terrain_presentation_data.png and regional_presentation_data.png contain scalar RGBA channels; raw ImageTexture reads bypass alpha repair.",
+  "geography": "No write or consumer for navigation, routes, climate, terrain rules, location positions, world scale or source art."
+}

@@ -1,0 +1,159 @@
+{
+  "method": "Manual colour mapping, contour-ink tuning and own-paper grain; no image generation.",
+  "source": "E:\\stacklands\\textures\\world\\bai_chuan\\acceptance_20261030\\master_3762.png",
+  "source_sha256": "693631772838177b87c9c657f38628008400c3df01a63a501257e8687daed598",
+  "source_pixels": [
+    3762,
+    3762
+  ],
+  "master_pixels": [
+    3762,
+    3762
+  ],
+  "runtime_grid": [
+    3,
+    3
+  ],
+  "spatial_resampling_of_art": false,
+  "geometry": "Source mountain, woodland, river and coast positions/proportions retained pixel-for-pixel.",
+  "contour_refinement": "Local source-luminance contrast at sigma 0.8; no new contours or geometry.",
+  "master_sha256": "71caa77edfc8cb63413b6bfa9c5cd6edac0bc5ab99eabe3300bac98eeae7982e",
+  "paper_source": "E:\\stacklands\\textures\\ui\\world_ink_20261104\\ink_ui_atlas_v1.png",
+  "tiles": [
+    {
+      "file": "bc_r0c0.png",
+      "rectangle": [
+        0,
+        0,
+        1254,
+        1254
+      ],
+      "pixels": [
+        1254,
+        1254
+      ],
+      "sha256": "b751587da420621987a65a8dbb5c8ab1b3c443ad7d139006caf8ccf6cc8f5ac7",
+      "pixel_mismatches": 0
+    },
+    {
+      "file": "bc_r0c1.png",
+      "rectangle": [
+        1254,
+        0,
+        2508,
+        1254
+      ],
+      "pixels": [
+        1254,
+        1254
+      ],
+      "sha256": "7868f4c59b4f629fa1ec95a4dd6fcb532771281177484497698cedaf9563881d",
+      "pixel_mismatches": 0
+    },
+    {
+      "file": "bc_r0c2.png",
+      "rectangle": [
+        2508,
+        0,
+        3762,
+        1254
+      ],
+      "pixels": [
+        1254,
+        1254
+      ],
+      "sha256": "95dbe544b40d95d77236dab2569265e2881125cc59b90b663145e0a1ce208091",
+      "pixel_mismatches": 0
+    },
+    {
+      "file": "bc_r1c0.png",
+      "rectangle": [
+        0,
+        1254,
+        1254,
+        2508
+      ],
+      "pixels": [
+        1254,
+        1254
+      ],
+      "sha256": "657fdb77c7b4138d267ce38704b7101d85bd8fdc7ccc2e6343d54a18ecfa9b13",
+      "pixel_mismatches": 0
+    },
+    {
+      "file": "bc_r1c1.png",
+      "rectangle": [
+        1254,
+        1254,
+        2508,
+        2508
+      ],
+      "pixels": [
+        1254,
+        1254
+      ],
+      "sha256": "69492a3a22f07d77ec21ddedecb2efce208f04578fc2932b66f170fa78832508",
+      "pixel_mismatches": 0
+    },
+    {
+      "file": "bc_r1c2.png",
+      "rectangle": [
+        2508,
+        1254,
+        3762,
+        2508
+      ],
+      "pixels": [
+        1254,
+        1254
+      ],
+      "sha256": "d8bb2213a47fa73a07565d77c7ebaf9268af309db0e4781627decc4bdb3fd6aa",
+      "pixel_mismatches": 0
+    },
+    {
+      "file": "bc_r2c0.png",
+      "rectangle": [
+        0,
+        2508,
+        1254,
+        3762
+      ],
+      "pixels": [
+        1254,
+        1254
+      ],
+      "sha256": "e055f91a65c55d24bdbadcdcda721feea9ad29358339b26e5d7dd1c7cd489338",
+      "pixel_mismatches": 0
+    },
+    {
+      "file": "bc_r2c1.png",
+      "rectangle": [
+        1254,
+        2508,
+        2508,
+        3762
+      ],
+      "pixels": [
+        1254,
+        1254
+      ],
+      "sha256": "3e72d83cdc4afd55eaf513a95e61f1c3dab631a69f717a5c0500dc9bd8263133",
+      "pixel_mismatches": 0
+    },
+    {
+      "file": "bc_r2c2.png",
+      "rectangle": [
+        2508,
+        2508,
+        3762,
+        3762
+      ],
+      "pixels": [
+        1254,
+        1254
+      ],
+      "sha256": "c2a8cc92d418cab45f9cc5d74c6426792e90986855ca851a2949f12b6fccd7fb",
+      "pixel_mismatches": 0
+    }
+  ]
+}

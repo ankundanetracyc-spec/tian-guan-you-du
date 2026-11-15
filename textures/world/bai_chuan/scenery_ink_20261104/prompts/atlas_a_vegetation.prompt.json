@@ -1,0 +1,27 @@
+{
+  "version": 1,
+  "id": "atlas_a_vegetation",
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "created_at": "2026-11-04",
+  "request": {
+    "prompt": "Use case: stylized-concept\nAsset type: original transparent sprite atlas for a hand-painted Chinese fantasy overworld map.\nPrimary request: Create exactly NINE separate original map scenery sprites on a square genuinely transparent RGBA canvas. Use a strict invisible 3 columns by 3 rows equal-cell layout, row-major. Every sprite must be entirely inside its own cell, centered with generous empty transparent margins on all four sides (at least 35 pixels at a 1254-square output, ideally 50 pixels); keep all foliage, fine twigs, roots, stones and shadows away from cell boundaries. No visible grid.\nRow 1 left: one asymmetric mature Chinese pine tree, distinct layered needle clusters, one readable brown trunk.\nRow 1 center: one broadleaf tree with a rounded irregular canopy, restrained jade and olive leaves, readable trunk.\nRow 1 right: one slender willow tree with a few downward hanging leafy branches, distinct silhouette.\nRow 2 left: compact small pine grove of 3 or 4 pines of varied heights, grouped as ONE isolated sprite.\nRow 2 center: mixed broadleaf grove of 3 or 4 trees of varied crowns, grouped as ONE isolated sprite.\nRow 2 right: sparse grove of 2 or 3 slender willows, open gaps, grouped as ONE isolated sprite.\nRow 3 left: a low compact shrub cluster.\nRow 3 center: a small isolated clump of reeds, muted olive stems and a few warm brown seed heads.\nRow 3 right: one low cluster of 3 to 5 grey-brown rocks with restrained ink outlines.\nStyle/medium: original refined 2D game map illustration, controlled Chinese ink-and-light-gouache brushwork, clear hand-drawn contours, quiet muted blue-grey ink, restrained grey-jade and olive greens, warm earth-brown trunks. Low grain and low microtexture; readable at small in-game scale. No photorealism and no glossy 3D.\nComposition/framing: consistent oblique overhead map view, looking down about 45 degrees, showing each whole object. Match the same scale and light direction across all nine sprites. Trees form a clear canopy and short trunk, with minimal root contact shadow directly under each object. Groups are wider than single trees and each remains cleanly isolated.\nScene/backdrop: nothing behind the objects; truly transparent everywhere outside their exact painted edges. No opaque paper, no white or coloured background, no landscape, no ground discs, no square base, no rectangular frame, no fog patch and no broad cast shadow. Preserve natural semitransparent anti-aliased brush edges.\nConstraints: exactly nine separated sprites, never overlap cells, no cropped extremities, no scene around them, no lettering, no labels, no numbers, no grid lines, no UI, no logo, no watermark. Design all subjects from scratch.",
+    "transparent_background": true
+  },
+  "layout": {
+    "columns": 3,
+    "rows": 3,
+    "order": [
+      "pine_single",
+      "broadleaf_single",
+      "willow_single",
+      "pine_group",
+      "mixed_group",
+      "willow_group",
+      "shrub",
+      "reeds",
+      "rock_group"
+    ]
+  },
+  "purpose": "Original project-owned scenery; not copied or derived from extracted reference-game assets."
+}

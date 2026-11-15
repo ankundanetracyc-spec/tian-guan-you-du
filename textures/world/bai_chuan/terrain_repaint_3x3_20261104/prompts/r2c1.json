@@ -1,0 +1,15 @@
+{
+  "id": "r2c1",
+  "row": 2,
+  "column": 1,
+  "reference": "E:\\stacklands\\textures\\world\\bai_chuan\\terrain_repaint_3x3_20261104\\references\\r2c1.png",
+  "source_box": [
+    1568,
+    3135,
+    3135,
+    4702
+  ],
+  "prompt": "Use case: style-transfer. Asset: original terrain background for a Chinese cultivation RPG world map.\nThe single input image is an EXACT geographic crop, not a style example. Completely redraw its painting, keeping its exact framing, all river/lake/coast silhouettes and their edge-crossing positions, and the positions/footprints of mountain masses and open passes. Do not zoom, pan, expand the view, change river widths or move coastlines.\nNew art direction: refined hand-painted oblique cartography on warm light parchment. A high bird's-eye map view with no horizon. Simplified irregular connected rocky massifs, earthy grey/ochre stone planes, mineral jade-green foothill washes, very restrained crisp dark-ink contours, soft atmospheric feet. Give rock faces several broad confident brush planes, not dense etched hatching. Mountain shapes should feel naturally varied while remaining in their geographic footprints.\nRemove all baked-in individual trees, dense tree clusters, bushes and ground clutter. Where woodland existed, leave broad quiet pale sage-green meadow/soil washes suitable for separate tree sprites. Keep the existing mountain masses; clearing woodland must not remove mountains. Valleys and plains should be calm low-detail areas with large readable open space and sparse broad wash variation. No uniform stippling, repeated grass flecks, pebbles carpet, diagonal filler hatching, scratches or noisy paper texture.\nWater stays within the exact reference channels: muted mineral grey-teal, lower contrast than buildings would be, almost flat gentle wash with a few broad currents. Preserve natural banks and their silhouette. Avoid bright cyan, white wave stripes and shining water.\nPalette: warm ivory paper, subdued moss/sage and jade greens, earthy grey-brown rock, quiet grey-teal water. Coloured hand-painted terrain with elegant ink edges; no monochrome grey filter, no neon, no photorealism, no 3D render. Keep source edge features in place so adjacent crops can join. Artwork extends to every image edge, without any border.\nNo buildings, people, characters, animals, signs, icons, text, numbers, map labels, UI, roads, bridges or paths. These are placed by the game separately. Do not add new subjects, new water or isolated rocks in existing open travel corridors.\nOutput one square, detailed but deliberately calm game terrain crop. Clear silhouettes and large colour shapes should remain readable at gameplay size.\nGeographic crop identifier: r2c1. The reference is exactly this crop only.",
+  "transparent_background": false,
+  "native_output": "E:\\stacklands\\textures\\world\\bai_chuan\\terrain_repaint_3x3_20261104\\native_4x4\\r2c1.png"
+}
