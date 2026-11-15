@@ -1,0 +1,38 @@
+[
+  {
+    "name": "eyes02",
+    "target": "eyes_faithful_02_raw.png",
+    "prompt": "Edit image 1 isolated pair of eyes. Image 2 is comparison: LEFT half is the authoritative original face, RIGHT is rejected reproduction. Repaint eyes to match LEFT original: relaxed upper lids with soft charcoal brown tapered contours, fine faint lower lids, subtle warm grey brown iris with small highlight, no aggressive heavy eyeliner, no pinched outer corners. Faithfully preserve original masculine gentle gaze, original slight asymmetry, upper lid hides upper iris, reduce the current eyeliner hardness. No eyebrows or nose or face. Keep image1 exact layout, image dimensions and pupil centres (446,334),(1626,331), inner corners (751,421), pair spacing and overall eye width. Refine painterly shading without expanding opaque skin patch. True transparent background with feathered localized peach eye socket shading, no black background. Render isolated reusable eye pair.",
+    "paths": [
+      "E:/stacklands/mods/appearance/portrait_male_faithful_restore_20261104_v5/source/eyes_faithful_02_raw.png",
+      "E:/stacklands/mods/appearance/portrait_male_faithful_restore_20261104_v5/qa/core_trial_original_comparison.png"
+    ]
+  },
+  {
+    "name": "nose",
+    "target": "nose01_raw.png",
+    "prompt": "Edit image1 isolated nose with nasal bridge. Image2 LEFT half is authoritative original male face; RIGHT is rejected reproduction. Redraw the nose faithfully matching LEFT: delicate longer central nose tip descending between the wings, less round bulb, original small curved nostrils (not two black holes), subtle but clearly present alar wings. Keep bridge and nasion included as diffuse very soft warm peach skin shading. No eyes, brows, lips or face. Keep image1 1024x1536 composition and anatomical placement: nostrils around (451,1012),(566,1012), tip highlight (510,963); however central bottom columella should descend naturally below the nostril line, like original LEFT. No harsh outline circle around alae. Match LEFT original watercolor paper texture, not smooth photorealism. Transparent background, diffuse alpha fade into clear around all edges, preserve tip/nose skin opaque only at tiny central form.",
+    "paths": [
+      "E:/stacklands/mods/appearance/portrait_male_faithful_restore_20261104_v5/source/nose01_raw.png",
+      "E:/stacklands/mods/appearance/portrait_male_faithful_restore_20261104_v5/qa/core_trial_original_comparison.png"
+    ]
+  },
+  {
+    "name": "mouth",
+    "target": "mouth01_raw.png",
+    "prompt": "Edit image1 isolated male lips, using image2 LEFT original face as precise shape and material authority (RIGHT is rejected reproduction). Current lips are too flat and lip seam too thick straight. Redraw small relaxed lips with original subtle cupid bow and curved central seam, slightly more lower-lip volume, restrained peach beige color and faint tiny watercolor highlights. Do not turn lips glossy, red, smiling, feminine or oversized. Preserve image1 canvas layout, lip corners at (400,300),(1750,300), central seam (1080,324), overall width and central location. Slightly fuller lower lip by native painting, not stretch. Soften dark line and corner dots, preserve natural gentle asymmetry. No face, nose, eyes. True transparent background and feathered localized peach shading, no opaque plate.",
+    "paths": [
+      "E:/stacklands/mods/appearance/portrait_male_faithful_restore_20261104_v5/source/mouth01_raw.png",
+      "E:/stacklands/mods/appearance/portrait_male_faithful_restore_20261104_v5/qa/core_trial_original_comparison.png"
+    ]
+  },
+  {
+    "name": "face",
+    "target": "face_neck_refined_raw.png",
+    "prompt": "Edit image1 blank male head/ears/neck for modular portrait. Image2 LEFT face is authoritative original with delicate irregular watercolor shading; RIGHT rejected flat face. Keep image1 exact silhouette, shape, size, canvas1024x1536, ears, neck outline, jaw and chin positions unchanged: earlobes(322,712),(715,712), chin(511,900). Improve skin interior to original LEFT subtle pale warm peach, gentle cheekbone and temple and chin volume, organic translucent paper watercolor washes. Current uniform orange smooth skin looks flat, restore faint original textured tonal variation without dirty spots or excessive cracking. Keep this a blank facial base with NO eyebrows, eyes, nose, lips, hair or clothes. Do not paint eye sockets or nose ridge that would lock features. Remove unnecessary external peach halo: background transparent all around clean anatomical silhouette. Preserve neck connector entire form.",
+    "paths": [
+      "E:/stacklands/mods/appearance/portrait_male_faithful_restore_20261104_v5/source/face_neck_refined_raw.png",
+      "E:/stacklands/mods/appearance/portrait_male_faithful_restore_20261104_v5/qa/core_trial_original_comparison.png"
+    ]
+  }
+]

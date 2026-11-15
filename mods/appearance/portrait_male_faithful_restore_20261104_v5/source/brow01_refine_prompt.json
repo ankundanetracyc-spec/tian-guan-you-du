@@ -1,0 +1,8 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Refine this newly painted EYEBROW PAIR ONLY. Input1 is the edit target; input2 is the ORIGINAL LEFT man's eyebrow-shape reference. The new pair's individual brows are too long for their spacing. Preserve both eyebrow centers and their fine realistic strand texture, color and gentle slope, but shorten BOTH ends of EACH brow by about10–12 percent in total, keeping the pair's centers fixed. On this1254x1254 canvas: left brow visible/core shape should span approximately x130..520 rather than108..542; right should span x740..1130 rather than713..1155. The clear inner-head gap should become about220 pixels, not170. Both shortened outer tips remain slender and taper naturally; shortened inner heads remain hair-like and feathered, not square cut ends. The native pair center spacing remains about609 pixels, not shifted or pulled apart. Keep original moderate fullness; do not make eyebrows thinner/fainter, darker/bolder, silvery or cosmetic filled blocks. Faithfully restore the original man's natural straight-medium-full brows. Tiny hairs are individually painted; no skin or pale foundation underneath. Keep the same square framing and real transparent background. Output only the complete matched pair, nothing else. No eyes, face, skin, makeup stencil, text, background, checkerboard or labels.",
+  "edit_target": "source/brow01_raw.png",
+  "shape_reference": "res://mods/appearance/portrait_male_regenerated_20261104_v3/source/face_detail_01.png",
+  "output": "source/brow01_refined_raw.png",
+  "no_programmatic_separate_brow_transforms": true
+}

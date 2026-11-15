@@ -1,0 +1,96 @@
+{
+  "part": "hair_back",
+  "index": 1,
+  "native_new_generation": true,
+  "reused_rejected_v3_v4_shape": false,
+  "source": "source/back01_raw.png",
+  "source_sha256": "129fe9e15f3432191fefb60cc77c3286713afeb2d6924361b478255633baab14",
+  "source_canvas": [
+    1024,
+    1536
+  ],
+  "source_points": [
+    [
+      515,
+      145
+    ],
+    [
+      357,
+      355
+    ],
+    [
+      669,
+      355
+    ]
+  ],
+  "source_point_alpha": [
+    252,
+    230,
+    236
+  ],
+  "source_point_names": [
+    "upper_left_bun_crest_supported_pixel",
+    "left_main_posterior_cap_rim_y355",
+    "right_main_posterior_cap_rim_y355"
+  ],
+  "target_points": [
+    [
+      517,
+      133
+    ],
+    [
+      365,
+      341
+    ],
+    [
+      670,
+      341
+    ]
+  ],
+  "source_measurement": "Manually inspected actual native painted support and main posterior cap rim, alpha>=230; source coordinates were measured from the delivered PNG, not copied from a generation prompt.",
+  "target_scaffold": "The rear cap scaffold is intentionally nine pixels above the loose/high-bun cap scaffold, to keep the native compact bun and visible wood pin nearer the original reference. The posterior cap is hidden by the separately drawn front layer. These are design targets, not independently measured visible anatomy.",
+  "transform": {
+    "a": 0.9823843841792472,
+    "b": -0.004448732836942427,
+    "tx": 11.447332468064802,
+    "ty": -6.027717057176005,
+    "scale": 0.982394457182599,
+    "rotation_degrees": -0.25946246445488497
+  },
+  "residuals": [
+    1.5202233487446137,
+    1.2688751424176,
+    1.2804973039329086
+  ],
+  "maximum_residual_px": 1.5202233487446137,
+  "residual_scope": "Fit of three posterior-underpainting design controls only. This does not certify visible anatomical alignment or visual acceptance.",
+  "local_warp": false,
+  "colour_edit_by_script": false,
+  "antialiasing": "source/resample_rgba.cjs whole-layer area-integrated premultiplied reduction",
+  "source_stats": {
+    "alpha40_bbox": [
+      246,
+      132,
+      768,
+      1158
+    ],
+    "nonzero_border_pixel_count": 6
+  },
+  "output_stats": {
+    "alpha40_bbox": [
+      257,
+      121,
+      770,
+      1129
+    ],
+    "nonzero_border_pixel_count": 0
+  },
+  "output": "male/hair_back/01.png",
+  "output_sha256": "0fc380efe6f1719c94ce674e4e28142c080398c0757d79c9d6e939689494f451",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "transparent_background": "Native alpha retained through premultiplied antialiasing; no threshold extraction or background alpha removal.",
+  "visual_status": "Candidate for independent front-layer pairing and original-reference comparison; awaiting parent visual review."
+}

@@ -1,0 +1,11 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Edit ONLY the paired eyebrows in input1, which is the new native artwork edit target. Input2 is the ORIGINAL middle man's exact eyebrow shape/proportion reference. Preserve input1 native1254x1254 canvas, outer tips (leftx151,y557, rightx1100,y554), upper edges and pigment/individual hairs. Shorten each eyebrow only at its inward-facing head by22nativepixels: retract LEFT brow inner end fromx533 tox511, retract RIGHT brow inner end fromx727 tox749. Increase only the transparent inner gap from194 to238 pixels, not moving either complete brow, not shifting outer tails. Repaint both inner ends naturally tapered with short sparse slanted hairs to match original, preserve their lower position y640~650 so the sword-brow expression remains. The original has shorter brow bodies relative to inner gap than this candidate. Do not thicken, lighten, darken, lengthen tails, change slope or draw any skin/eyes/face. Fresh native hair repaint at each small inner end, no opaque underlay, natural transparent background. Keep all other pixels same art and frame where possible. Output only one complete matched eyebrow pair on native transparent canvas, no guide/text/background.",
+  "inputs": [
+    "E:/stacklands/mods/appearance/portrait_male_faithful_restore_20261104_v5/source/brow02_latest_raw.png",
+    "E:/stacklands/mods/appearance/portrait_male_faithful_restore_20261104_v5/source/brow02_original_tight_reference.png"
+  ],
+  "raw": "source/brow02_shortened_raw.png",
+  "new_native_edit": true,
+  "separate_program_movement": false
+}

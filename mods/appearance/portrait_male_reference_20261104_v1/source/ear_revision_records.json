@@ -1,0 +1,24 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Use case: precise-object-edit. Edit this ONE existing transparent male front-hair sprite only. Preserve its 1024x1536 canvas and its current placement, warm charcoal grey-brown color, fine gongbi strands, hairline, crown silhouette, side part/central part and long front locks. Change ONLY the ear-height side hair on both sides: it must stream naturally downward as continuous temple hair, overlapping the ear zone without any specially carved indentation, little opening, curved ear-shaped contour, scallop or cutout intended to expose an ear. Let the hair mass flow on its own with its natural strand rhythm. Cover the small unnatural notches beside the temples with matching continuous flowing hair, and keep the outer side silhouette continuous into the lower side locks. Hair can cover the ears; do not draw ears or skin. Retain the empty face region in the center. Do not add a head, face, eyebrows, eyes, ears, neck, clothing, rear hair curtain, bun, hairpin or ornament. Retain crown/Baihui anterior-layer design. No resizing, no recentering, no top margin change. True transparent background, soft natural strand alpha at the edge, no black background or text. Preserve all other areas of the existing sprite.",
+  "records": [
+    {
+      "id": "01",
+      "input": "source/ear_revision_inputs/01.png",
+      "generated_original": "E:/tmp/CodexData/generated_images/01a1a4be-7b8b-76e1-af95-b099fa3c88dc/exec-2c7711f5-8232-4ff8-a1ce-b02d40810840.png",
+      "raw": "source/raw_hair/hair_front/01.png"
+    },
+    {
+      "id": "02",
+      "input": "source/ear_revision_inputs/02.png",
+      "generated_original": "E:/tmp/CodexData/generated_images/01a1a4be-7b8b-76e1-af95-b099fa3c88dc/exec-d27ee605-438c-4d6b-8388-de8dc3cd5bd6.png",
+      "raw": "source/raw_hair/hair_front/02.png"
+    },
+    {
+      "id": "03",
+      "input": "source/ear_revision_inputs/03.png",
+      "generated_original": "E:/tmp/CodexData/generated_images/01a1a4be-7b8b-76e1-af95-b099fa3c88dc/exec-962a4e43-7640-485d-82df-4ab6909bb739.png",
+      "raw": "source/raw_hair/hair_front/03.png"
+    }
+  ]
+}

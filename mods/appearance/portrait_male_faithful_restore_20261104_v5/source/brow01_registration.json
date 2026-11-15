@@ -1,0 +1,74 @@
+{
+  "index": 1,
+  "raw": "source/brow01_tight_raw.png",
+  "raw_sha256": "5841c32bdff3898ecdbd58d5f8888cf511d128bfd9787891aacbabf59f63e5e6",
+  "source_canvas": [
+    1388,
+    1133
+  ],
+  "source_controls": [
+    [
+      310,
+      528
+    ],
+    [
+      563,
+      620
+    ],
+    [
+      824,
+      618
+    ]
+  ],
+  "target_controls": [
+    [
+      462,
+      346
+    ],
+    [
+      497,
+      358
+    ],
+    [
+      536,
+      358
+    ]
+  ],
+  "control_names": [
+    "left_upper_body_supported_pixel",
+    "left_inner_head_bottom_supported_pixel",
+    "right_inner_head_bottom_supported_pixel"
+  ],
+  "source_control_method": "Actual alpha>=180 upper body and inner-head bottom hair pixels read from native pair; noncollinear, not bbox centers. Reference outer ends are partly hidden by head hair and are not chosen as registration controls.",
+  "target_control_role": "Reference01 unoccluded left upper body at(462,346), left inner-head bottom near(497,358), right inner-head bottom near(536,358); measured from original pigment contours, replacing historical y353 approximation. Visual contour review remains required.",
+  "transform": {
+    "a": 0.1435089877789457,
+    "b": -0.0014483136107572426,
+    "tx": 416.3025086341773,
+    "ty": 270.34030525994564,
+    "scale": 0.14351629588883866,
+    "residuals": [
+      0.5575550284716052,
+      1.114692579801375,
+      0.5750724984454034
+    ]
+  },
+  "maximum_residual_px": 1.114692579801375,
+  "whole_pair_transform_only": true,
+  "separate_eyebrow_movement": false,
+  "local_warp": false,
+  "antialias": "resample_rgba.cjs: premultiplied source-area integration at reduction",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "alpha40_bbox_inclusive": [
+    423,
+    343,
+    609,
+    360
+  ],
+  "output": "male/eyebrows/01.png",
+  "output_sha256": "fd447a7a5d2c8cb979de25ba5861b49e13bf3d3122d81df58f8befc7822f078c",
+  "old_asset_reused": false
+}

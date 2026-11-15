@@ -1,0 +1,12 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Paint one brand-new matched pair of male eyebrows on native transparent background for a faithful gongbi/watercolor portrait. Input1 is only a registration scaffold for pair spacing, length and slope: keep those proportions but never keep its flat solid polygon fill or sharp ends. Input2 is the ORIGINAL man's actual eyebrow shape: faithfully redraw its natural individual short hairs, slightly irregular tapered outer tails and soft inner heads. Input3 is the restored master for warm charcoal pigment and matte fine-strand brush material only. Both brows stay one inseparable pair, no head or facial surface. Do not thicken them into black/grey makeup bars or silver caterpillars; do not fade them into barely visible lines. Fine real hair density with subtle variation and transparent tiny gaps, no skin-colored underpaint. Same1254-square framing, paired centers about600pixels apart, total span about1000; individual brow length about400. All other pixels transparent, no eyes, nose, forehead, head, whole portrait, background, checkerboard, labels or text. Style02 from the MIDDLE man: refined gently rising sword brows. Outer ends noticeably higher, inner heads lower near the nose, but calm rather than angry. Preserve the source's slanted contour and moderately narrow hair body. On the scaffold outer tips around y550 and lower inner ends around y660, not flattened into a level bar. Lower inner hair-head ends matter; keep their natural full length and feathering.",
+  "inputs": [
+    "E:/stacklands/mods/appearance/portrait_male_faithful_restore_20261104_v5/source/brow02_shape_scaffold.png",
+    "E:/stacklands/mods/appearance/portrait_male_regenerated_20261104_v3/source/face_detail_02.png",
+    "E:/stacklands/mods/appearance/portrait_male_faithful_restore_20261104_v5/source/master03_raw.png"
+  ],
+  "raw": "source/brow02_latest_raw.png",
+  "whole_pair_native_art": true,
+  "no_pixel_extraction": true
+}

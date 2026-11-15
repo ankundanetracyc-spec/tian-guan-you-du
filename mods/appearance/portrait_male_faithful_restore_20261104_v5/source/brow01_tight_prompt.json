@@ -1,0 +1,11 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. Paint one completely NEW paired-eyebrow transparent game portrait asset. Input1 is a tight enlargement of the ORIGINAL LEFT man's eyebrows, authoritative exact shape/proportion/pigment reference only; redraw the pair freshly with individual hand-painted hair strokes, do NOT copy its skin or head hair. Input2 is our new watercolor master, material compatibility reference. Faithfully preserve the original first pair's subtly descending lower inner heads and nearly level upper body: left outer tip at about x130 y580, upper arch body around x290 y565, left head at x520 lower edge y655; right inner head x740 lower edge y655, right arch aroundx970 y565, outer tipx1130 y580. Keep the inner-head lower edge full and dropping towards nose as reference, not the thin elevated brushstrokes from generic eyebrow assets. Total pair span about1000 pixels on square1254 canvas; transparent gap about220pixels between inner heads. Natural medium-full eyebrows, warm dark charcoal-brown, soft yet dense, subtle tiny independent hair strokes in original diagonal growth pattern. No silver/white highlight bands, no thick black block, no skin underlay, no huge fade cloud. Reconstruct tiny tips obscured by the original long head hair as eyebrow hair only. Transparent all other pixels. Output ONLY the two eyebrows together, no face, no eye, no head hair, no background, no checkerboard painted into image, no guides or text. The reference shows shape precisely: its lower inner ends matter as much as top contour. Keep every newly painted hair as one single inseparable paired design.",
+  "inputs": [
+    "E:/stacklands/mods/appearance/portrait_male_faithful_restore_20261104_v5/source/brow01_original_tight_reference.png",
+    "E:/stacklands/mods/appearance/portrait_male_faithful_restore_20261104_v5/source/master03_registered.png"
+  ],
+  "raw": "source/brow01_tight_raw.png",
+  "newly_painted": true,
+  "reference_pixels_not_extracted": true
+}

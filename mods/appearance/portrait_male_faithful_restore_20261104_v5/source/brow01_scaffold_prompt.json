@@ -1,0 +1,9 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Paint ONE newly drawn pair of natural male eyebrows. Input1 is a REGISTRATION SCAFFOLD showing the correct paired spacing, lengths and gentle tilt; retain those locations, centers and proportions, but NEVER output its flat solid fill or sharp polygon edges. Convert it into naturally separated individual short hairs, matching the ORIGINAL LEFT man's medium-full, fairly straight eyebrow SHAPE in input2. Input3 supplies the restored master's warm charcoal pigment and delicate matte gongbi brush texture. The left outer tip is near(135,585), inner lower head near(535,640); right outer tip near(1135,585), inner lower head near(735,640) on the1254-square scaffold. Keep these fixed proportionally: total span1000, center separation600, clear inner gap200, individual brow width400. Do not lengthen each eyebrow into the central gap. This is original style01: natural, gentle and moderately full, not an aggressive sword shape. Paint many fine soft oblique hairs with natural density variation and tapered outer tails, feathered slightly irregular inner heads and a few tiny genuine gaps. Soften all scaffold corners into hair tips while preserving its proportions. No opaque polygon/powder block, no flat grey caterpillar, no silver highlights, no laminated makeup, no black rectangular stripe and no skin-colored underpaint. Keep the same square framing and truly transparent background. Output only the paired freshly painted eyebrows, no skin, eyes, nose, head, face, hairline, background, checkerboard, text or labels.",
+  "shape_scaffold": "source/brow01_shape_scaffold.png",
+  "original_shape_reference": "res://mods/appearance/portrait_male_regenerated_20261104_v3/source/face_detail_01.png",
+  "master_material_reference": "source/master03_raw.png",
+  "raw": "source/brow01_scaffold_raw.png",
+  "scaffold_is_a_registration_guide_not_a_final_asset": true
+}

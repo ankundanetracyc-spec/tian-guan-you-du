@@ -1,0 +1,11 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Precise COLOR/MATERIAL-ONLY edit of input1, the brand-new transparent paired eyebrow artwork. Preserve its1254x1254 canvas, exact eyebrow silhouette, internal gap, hair positions, lengths, slopes and lower inner-head ends. Do not make them thicker or thinner. Match ORIGINAL middle man's warm dark charcoal-brown eyebrow pigment in input2. The current input1 is too light grey: give existing hair strokes the source's deeper warm charcoal ink, nearly the same darkness and natural density as original; this is NOT silver, graphite or grey-white hair. Keep sparse microtransparent gaps between hairs and matte watercolor finish. No bright white/silver strands, no flat black bar, no broad shadow/skin/underpaint. Input2 is just original reference shape/pigment, never pasted pixels. Only deepening actual eyebrow hair color about20 percent to source appearance, preserving transparent background alpha character. Both brows remain one original inseparable pair. No face, eyes, hair locks, text, background or checkerboard.",
+  "inputs": [
+    "E:/stacklands/mods/appearance/portrait_male_faithful_restore_20261104_v5/source/brow02_shortened_raw.png",
+    "E:/stacklands/mods/appearance/portrait_male_faithful_restore_20261104_v5/source/brow02_original_tight_reference.png"
+  ],
+  "raw": "source/brow02_material_raw.png",
+  "native_color_edit": true,
+  "pixel_source": "New paired eyebrow artwork from original reference; no old assets/cutouts."
+}

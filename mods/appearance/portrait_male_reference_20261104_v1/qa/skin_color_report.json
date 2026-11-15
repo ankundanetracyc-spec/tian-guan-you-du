@@ -1,0 +1,923 @@
+{
+  "status": "male skin candidate; not installed in active game",
+  "mode": "built-in image_gen male color study followed by measured smooth RGB calibration on original male01 geometry",
+  "source": {
+    "original": "source/original_face.png",
+    "original_sha256": "b584696489925efe1818a200fb4be6e01fd56aa08ee281d46f74abe32b7edbc8",
+    "color_study": "source/raw_skin_edit.png",
+    "study_sha256": "b8b6e791404f259444650514c444c4290df385e491d564855d272bf0b81d7275",
+    "user_reference": "source/skin_reference_user.png",
+    "user_reference_sha256": "63251bb7eea03e8a4cb88c6e50e97fef7b2612f4abb91ccba2423bc1dd36ad0d"
+  },
+  "output": {
+    "file": "male/face_shape.png",
+    "sha256": "0ebfa32829937fce5a41c5ee3bad6234c06f485429b3b743d73d7e838869e6d7",
+    "width": 1024,
+    "height": 1536,
+    "channels": 4,
+    "alpha_different_pixels": 0,
+    "alpha_byte_exact": true,
+    "original_alpha_bbox": [
+      370,
+      172,
+      660,
+      714
+    ],
+    "final_alpha_bbox": [
+      370,
+      172,
+      660,
+      714
+    ],
+    "changed_rgb_channels": 303205
+  },
+  "generated_study_alpha_different_pixels": 105503,
+  "calibration": {
+    "model": "smooth anatomical color fields plus monotone neck-only shadow response; original texture coordinates and alpha retained",
+    "channels": [
+      {
+        "offset": [
+          -3.6328099129309557,
+          1.4457031474262403,
+          0.8029727632189451,
+          13.230765757876423,
+          4.298319679810536,
+          0.15036102393073095
+        ],
+        "neck_shadow_slope": -0.5223151595401113,
+        "unconstrained": [
+          -3.600079719186827,
+          1.393941341801278,
+          0.9906402432694075,
+          12.980223076301614,
+          4.294256636986791,
+          0.22622601712935175,
+          -15.66945478620334
+        ]
+      },
+      {
+        "offset": [
+          -7.94131614854261,
+          0.8612615700655062,
+          5.477581842551086,
+          0.08812716723033504,
+          7.815930574518138,
+          -1.4632489025301494
+        ],
+        "neck_shadow_slope": -0.3450641189405667,
+        "unconstrained": [
+          -7.883792459926148,
+          0.831773045613041,
+          5.370907316939127,
+          0.22260621219986465,
+          7.611306346794392,
+          -1.4888015039445408,
+          -10.351923568217002
+        ]
+      },
+      {
+        "offset": [
+          -9.586485939926172,
+          2.4406230711483494,
+          5.141982214950086,
+          -3.65943270398297,
+          9.9109807988951,
+          -2.7117740808637523
+        ],
+        "neck_shadow_slope": -0.28573027489982417,
+        "unconstrained": [
+          -9.508073285619526,
+          2.3864302929162404,
+          4.996049135952033,
+          -3.4393452620849345,
+          9.62495558436649,
+          -2.7542151937072585,
+          -8.571908246994726
+        ]
+      }
+    ],
+    "reference_alignment": {
+      "source_crop_full_image_x": [
+        0,
+        593,
+        1187
+      ],
+      "source_to_project_translation": [
+        [
+          203,
+          49
+        ],
+        [
+          217,
+          49
+        ],
+        [
+          222,
+          49
+        ]
+      ]
+    },
+    "patch_radius": 6,
+    "target": "Per-region median of clean skin from the three male reference portraits; hair-occluded samples excluded"
+  },
+  "samples": [
+    {
+      "name": "forehead_left",
+      "x": 465,
+      "y": 294,
+      "original": [
+        233,
+        208,
+        191,
+        255
+      ],
+      "reference": [
+        229,
+        200,
+        182
+      ],
+      "reference_samples": [
+        [
+          228,
+          199,
+          181,
+          255
+        ],
+        [
+          229,
+          200,
+          182,
+          255
+        ],
+        [
+          116,
+          106,
+          98,
+          255
+        ]
+      ],
+      "reference_variants_used": [
+        1,
+        2
+      ],
+      "generated": [
+        228,
+        196,
+        181,
+        253
+      ],
+      "final": [
+        229,
+        200,
+        181,
+        255
+      ],
+      "deltaE_before": 3.1046000762133903,
+      "deltaE_generated": 2.1972990727844914,
+      "deltaE_final": 0.5228790385505045
+    },
+    {
+      "name": "forehead_center",
+      "x": 517,
+      "y": 290,
+      "original": [
+        235,
+        211,
+        195,
+        255
+      ],
+      "reference": [
+        231,
+        203,
+        186
+      ],
+      "reference_samples": [
+        [
+          231,
+          203,
+          186,
+          255
+        ],
+        [
+          230,
+          201,
+          185,
+          255
+        ],
+        [
+          233,
+          205,
+          188,
+          255
+        ]
+      ],
+      "reference_variants_used": [
+        1,
+        2,
+        3
+      ],
+      "generated": [
+        228,
+        197,
+        182,
+        253
+      ],
+      "final": [
+        231,
+        203,
+        185,
+        255
+      ],
+      "deltaE_before": 3.0907721067541734,
+      "deltaE_generated": 2.405283951040753,
+      "deltaE_final": 0.5219006370453902
+    },
+    {
+      "name": "forehead_right",
+      "x": 565,
+      "y": 294,
+      "original": [
+        234,
+        209,
+        193,
+        255
+      ],
+      "reference": [
+        231,
+        201,
+        182
+      ],
+      "reference_samples": [
+        [
+          230,
+          199,
+          182,
+          255
+        ],
+        [
+          231,
+          201,
+          182,
+          255
+        ],
+        [
+          232,
+          203,
+          185,
+          255
+        ]
+      ],
+      "reference_variants_used": [
+        1,
+        2,
+        3
+      ],
+      "generated": [
+        227,
+        195,
+        180,
+        253
+      ],
+      "final": [
+        230,
+        201,
+        183,
+        255
+      ],
+      "deltaE_before": 3.670377915065922,
+      "deltaE_generated": 2.866682614793494,
+      "deltaE_final": 0.6790422468142547
+    },
+    {
+      "name": "cheek_left_outer",
+      "x": 450,
+      "y": 415,
+      "original": [
+        233,
+        208,
+        191,
+        255
+      ],
+      "reference": [
+        231,
+        200,
+        182
+      ],
+      "reference_samples": [
+        [
+          230,
+          198,
+          180,
+          255
+        ],
+        [
+          231,
+          200,
+          182,
+          255
+        ],
+        [
+          231,
+          200,
+          183,
+          255
+        ]
+      ],
+      "reference_variants_used": [
+        1,
+        2,
+        3
+      ],
+      "generated": [
+        227,
+        194,
+        179,
+        253
+      ],
+      "final": [
+        231,
+        201,
+        184,
+        255
+      ],
+      "deltaE_before": 3.4740942392741423,
+      "deltaE_generated": 2.552274181638701,
+      "deltaE_final": 0.7511217324402943
+    },
+    {
+      "name": "cheek_left_inner",
+      "x": 475,
+      "y": 420,
+      "original": [
+        234,
+        211,
+        194,
+        255
+      ],
+      "reference": [
+        233,
+        205,
+        188
+      ],
+      "reference_samples": [
+        [
+          233,
+          204,
+          187,
+          255
+        ],
+        [
+          233,
+          205,
+          188,
+          255
+        ],
+        [
+          233,
+          205,
+          189,
+          255
+        ]
+      ],
+      "reference_variants_used": [
+        1,
+        2,
+        3
+      ],
+      "generated": [
+        229,
+        198,
+        183,
+        253
+      ],
+      "final": [
+        232,
+        204,
+        187,
+        255
+      ],
+      "deltaE_before": 2.636814908068575,
+      "deltaE_generated": 2.688910474599449,
+      "deltaE_final": 0.35737706052404855
+    },
+    {
+      "name": "cheek_right_inner",
+      "x": 555,
+      "y": 416,
+      "original": [
+        234,
+        207,
+        189,
+        255
+      ],
+      "reference": [
+        232,
+        201,
+        184
+      ],
+      "reference_samples": [
+        [
+          232,
+          201,
+          184,
+          255
+        ],
+        [
+          231,
+          200,
+          183,
+          255
+        ],
+        [
+          232,
+          202,
+          185,
+          255
+        ]
+      ],
+      "reference_variants_used": [
+        1,
+        2,
+        3
+      ],
+      "generated": [
+        227,
+        195,
+        179,
+        253
+      ],
+      "final": [
+        232,
+        200,
+        182,
+        255
+      ],
+      "deltaE_before": 2.4384907185747884,
+      "deltaE_generated": 2.140897880145151,
+      "deltaE_final": 0.7519095091943343
+    },
+    {
+      "name": "cheek_right_outer",
+      "x": 582,
+      "y": 414,
+      "original": [
+        234,
+        207,
+        190,
+        255
+      ],
+      "reference": [
+        231,
+        198,
+        180
+      ],
+      "reference_samples": [
+        [
+          231,
+          198,
+          179,
+          255
+        ],
+        [
+          231,
+          198,
+          180,
+          255
+        ],
+        [
+          231,
+          199,
+          181,
+          255
+        ]
+      ],
+      "reference_variants_used": [
+        1,
+        2,
+        3
+      ],
+      "generated": [
+        228,
+        195,
+        180,
+        253
+      ],
+      "final": [
+        232,
+        200,
+        183,
+        255
+      ],
+      "deltaE_before": 3.7473024038803513,
+      "deltaE_generated": 1.8432903673614456,
+      "deltaE_final": 0.9637046139843681
+    },
+    {
+      "name": "jaw_left",
+      "x": 468,
+      "y": 478,
+      "original": [
+        234,
+        211,
+        194,
+        255
+      ],
+      "reference": [
+        232,
+        207,
+        191
+      ],
+      "reference_samples": [
+        [
+          232,
+          207,
+          191,
+          255
+        ],
+        [
+          232,
+          206,
+          190,
+          255
+        ],
+        [
+          233,
+          208,
+          192,
+          255
+        ]
+      ],
+      "reference_variants_used": [
+        1,
+        2,
+        3
+      ],
+      "generated": [
+        228,
+        196,
+        181,
+        253
+      ],
+      "final": [
+        232,
+        206,
+        190,
+        255
+      ],
+      "deltaE_before": 1.5409545617056795,
+      "deltaE_generated": 4.380911541867078,
+      "deltaE_final": 0.48251581007143846
+    },
+    {
+      "name": "jaw_right",
+      "x": 565,
+      "y": 478,
+      "original": [
+        235,
+        211,
+        195,
+        255
+      ],
+      "reference": [
+        232,
+        207,
+        191
+      ],
+      "reference_samples": [
+        [
+          232,
+          207,
+          191,
+          255
+        ],
+        [
+          232,
+          207,
+          191,
+          255
+        ],
+        [
+          233,
+          208,
+          192,
+          255
+        ]
+      ],
+      "reference_variants_used": [
+        1,
+        2,
+        3
+      ],
+      "generated": [
+        228,
+        198,
+        183,
+        253
+      ],
+      "final": [
+        233,
+        206,
+        190,
+        255
+      ],
+      "deltaE_before": 1.4064439698888864,
+      "deltaE_generated": 3.4572563811150157,
+      "deltaE_final": 0.8092687200138377
+    },
+    {
+      "name": "chin",
+      "x": 517,
+      "y": 529,
+      "original": [
+        233,
+        208,
+        192,
+        255
+      ],
+      "reference": [
+        232,
+        206,
+        189
+      ],
+      "reference_samples": [
+        [
+          233,
+          207,
+          190,
+          255
+        ],
+        [
+          232,
+          205,
+          189,
+          255
+        ],
+        [
+          232,
+          206,
+          189,
+          255
+        ]
+      ],
+      "reference_variants_used": [
+        1,
+        2,
+        3
+      ],
+      "generated": [
+        229,
+        198,
+        183,
+        253
+      ],
+      "final": [
+        232,
+        206,
+        190,
+        255
+      ],
+      "deltaE_before": 0.950342196056648,
+      "deltaE_generated": 3.25320064425533,
+      "deltaE_final": 0.5211428221265977
+    },
+    {
+      "name": "neck_left_shadow",
+      "x": 497,
+      "y": 574,
+      "original": [
+        206,
+        175,
+        157,
+        255
+      ],
+      "reference": [
+        221,
+        186,
+        167
+      ],
+      "reference_samples": [
+        [
+          223,
+          188,
+          169,
+          255
+        ],
+        [
+          221,
+          186,
+          166,
+          255
+        ],
+        [
+          221,
+          186,
+          167,
+          255
+        ]
+      ],
+      "reference_variants_used": [
+        1,
+        2,
+        3
+      ],
+      "generated": [
+        213,
+        174,
+        158,
+        253
+      ],
+      "final": [
+        219,
+        186,
+        166,
+        255
+      ],
+      "deltaE_before": 4.61410301228871,
+      "deltaE_generated": 4.52296092597779,
+      "deltaE_final": 0.9459298250694996
+    },
+    {
+      "name": "neck_center",
+      "x": 517,
+      "y": 590,
+      "original": [
+        210,
+        181,
+        163,
+        255
+      ],
+      "reference": [
+        222,
+        188,
+        168
+      ],
+      "reference_samples": [
+        [
+          222,
+          188,
+          168,
+          255
+        ],
+        [
+          222,
+          187,
+          168,
+          255
+        ],
+        [
+          221,
+          188,
+          168,
+          255
+        ]
+      ],
+      "reference_variants_used": [
+        1,
+        2,
+        3
+      ],
+      "generated": [
+        210,
+        172,
+        156,
+        253
+      ],
+      "final": [
+        222,
+        188,
+        168,
+        255
+      ],
+      "deltaE_before": 3.691984015867618,
+      "deltaE_generated": 5.962344706550143,
+      "deltaE_final": 0
+    },
+    {
+      "name": "neck_right",
+      "x": 537,
+      "y": 574,
+      "original": [
+        229,
+        201,
+        184,
+        255
+      ],
+      "reference": [
+        230,
+        202,
+        185
+      ],
+      "reference_samples": [
+        [
+          231,
+          202,
+          185,
+          255
+        ],
+        [
+          229,
+          199,
+          182,
+          255
+        ],
+        [
+          230,
+          202,
+          185,
+          255
+        ]
+      ],
+      "reference_variants_used": [
+        1,
+        2,
+        3
+      ],
+      "generated": [
+        225,
+        191,
+        176,
+        253
+      ],
+      "final": [
+        231,
+        203,
+        185,
+        255
+      ],
+      "deltaE_before": 0.3583283009025677,
+      "deltaE_generated": 4.276972634725628,
+      "deltaE_final": 0.6125328107240527
+    },
+    {
+      "name": "neck_lower",
+      "x": 517,
+      "y": 634,
+      "original": [
+        220,
+        191,
+        173,
+        255
+      ],
+      "reference": [
+        231,
+        204,
+        188
+      ],
+      "reference_samples": [
+        [
+          232,
+          204,
+          188,
+          255
+        ],
+        [
+          231,
+          204,
+          188,
+          255
+        ],
+        [
+          231,
+          204,
+          187,
+          255
+        ]
+      ],
+      "reference_variants_used": [
+        1,
+        2,
+        3
+      ],
+      "generated": [
+        223,
+        189,
+        173,
+        253
+      ],
+      "final": [
+        231,
+        204,
+        187,
+        255
+      ],
+      "deltaE_before": 4.7966031234980315,
+      "deltaE_generated": 5.62200626161567,
+      "deltaE_final": 0.5218037063095388
+    }
+  ],
+  "summary": {
+    "mean_deltaE_before": 2.8229436820028204,
+    "mean_deltaE_final": 0.6029377523477256,
+    "max_deltaE_final": 0.9637046139843681,
+    "neck_mean_deltaE_before": 3.365254613139231,
+    "neck_mean_deltaE_final": 0.5200665855257728
+  },
+  "invariants": [
+    "Original male01 alpha channel byte-for-byte identical",
+    "No geometric transform, outline movement or new feature/hair pixels",
+    "No female skin map reused",
+    "Original empty-canvas RGB retained where alpha=0",
+    "No active package or other candidates edited"
+  ],
+  "limitation": "The triptych is a separate completed render; matching clean skin samples does not imply pixel-identical lighting or skin texture."
+}

@@ -1,0 +1,8 @@
+{
+  "mode": "built-in image_gen",
+  "refs": [
+    "source/face_raw.png",
+    "source/master03_raw.png"
+  ],
+  "prompt": "Use case: precise-object-edit.\nEdit target Image1: blank male head-and-neck RGBA. Image2: the restored full male master, used ONLY as exact neck anatomy reference.\nChange ONLY the neck contour and neck shading of Image1 to match this same man's more slender natural neck in Image2. The current blank head has an excessively broad columnar neck. Narrow the neck to the original master anatomy without changing the head, face, ears, cheeks, jaw, chin, blank facial surface or skin colour/texture.\nKeep Image1 canvas1024x1536 and head exactly in place: chin(511,900), left and right earlobes(322,712)/(715,712), all head/face pixels as unchanged as possible. Behind the jaw, the true neck emerges around x380 and x650, not x340 and x685. Neck sides are around x382 and x647 at y950 and x382 and x647 at y1030; the neck gently flares only below y1100, then ends at y1280. It should be approximately265px wide through the central neck, matching Image2, instead of the current340px. Keep the full neck continuous beneath the jaw; no visible gap, cut line, collar, garment, shoulders or torso. Same delicate warm-peach watercolor washes and soft neck tendons, not a rigid pipe or muscular thick neck. True transparent outside silhouette with natural antialiasing.\nDo not add eyes, brows, nose, lips, hair, any facial marks or background. Preserve the existing head shape and chin exactly."
+}

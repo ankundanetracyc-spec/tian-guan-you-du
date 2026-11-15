@@ -1,0 +1,17 @@
+{
+  "source": "source/front03_raw.png",
+  "target": "source/master03_registered.png",
+  "source_controls": [[517,348],[426,480],[652,480]],
+  "target_controls": [[517,278],[454,365],[606,365]],
+  "source_measurement": [
+    "At native source x517, the last alpha>=180 supported frontal hair pixel before the empty forehead is y348.",
+    "At native source y480, the innermost alpha>=180 left foreground hair support before the face opening is x426.",
+    "At native source y480, the first alpha>=180 right-side foreground hair support after the face opening is x652."
+  ],
+  "target_measurement": [
+    "At new registered visual master x517, the first opaque warm-skin pixel below the frontal hairline is y278 (alpha>180, R>160 and R-G>12).",
+    "At new registered visual master y365, left clean-skin support starts at x454 with the same skin-pigment predicate.",
+    "At new registered visual master y365, right clean-skin support ends at x606 before the temple/front strand."
+  ],
+  "limitation": "These are observed pixel-support guides for the selected forehead opening. Natural watercolor edges and strand drawing remain subject to visual comparison; the measured residual is not a claim of whole-reference pixel identity."
+}

@@ -1,0 +1,57 @@
+{
+  "tool": "built-in image_gen",
+  "purpose": "Three faithful new front layers from original male references and new v5 master; old rejected v3/v4 hair not used",
+  "staging_only": true,
+  "active_files_modified": false,
+  "prompt_files": [
+    "source/front01_generation_prompt.json",
+    "source/front02_retry_generation_prompt.json",
+    "source/front03_generation_prompt.json"
+  ],
+  "rejected_02_attempts_retained": [
+    "source/front02_attempt01_raw.png",
+    "source/front02_attempt02_raw.png"
+  ],
+  "chosen_02_attempt": "source/front02_attempt03_raw.png",
+  "paint_and_registration_separate": true,
+  "registration_method": "Three actual noncollinear observed pixel support guides, one complete similarity transform and premultiplied source-area antialias sampling for each layer",
+  "selected_records": [
+    {
+      "index": 1,
+      "output": "male/hair_front/01.png",
+      "output_sha256": "f70726380af9299bbc04edfce4ddc21f5dcb595618c0f16c37d82f55ad4b15ec",
+      "source": "source/front01_raw.png",
+      "source_sha256": "adad1d35163d0eb79a8f49df8fad5d2057c6b7d3511354f0d13a7faa2c0b978f",
+      "measured_control_residual_max_px": 1.720602728116577,
+      "three_guide_check_pass": true,
+      "uniform_scale": 0.9828149661312868,
+      "qa_light": "qa/front01_original_master_trial_light.png",
+      "qa_dark": "qa/front01_original_master_trial_dark.png"
+    },
+    {
+      "index": 2,
+      "output": "male/hair_front/02.png",
+      "output_sha256": "d224c2664be469b04a817b8fca808ff38206924d3af517b8b174887748ac6369",
+      "source": "source/front02_raw.png",
+      "source_sha256": "fef977ea6dccacf6ef39c297208bf3b969dfa0760e64d587a191d9a75b4191ba",
+      "measured_control_residual_max_px": 1.5560431627861842,
+      "three_guide_check_pass": true,
+      "uniform_scale": 0.9704176547527176,
+      "qa_light": "qa/front02_original_master_trial_light.png",
+      "qa_dark": "qa/front02_original_master_trial_dark.png"
+    },
+    {
+      "index": 3,
+      "output": "male/hair_front/03.png",
+      "output_sha256": "ce4de7b0e223107bf1b585d5a2ffe58752a09e1d1a6f3874e259dd494d563ac3",
+      "source": "source/front03_raw.png",
+      "source_sha256": "e993ab3e28acd1f97d85407bdba37c571747f9b8fcf40a7c2f5c4324b43b0459",
+      "measured_control_residual_max_px": 1.1484918378382454,
+      "three_guide_check_pass": true,
+      "uniform_scale": 0.6676958506246251,
+      "qa_light": "qa/front03_original_master_trial_light.png",
+      "qa_dark": "qa/front03_original_master_trial_dark.png"
+    }
+  ],
+  "visual_limit": "The guide residuals concern three sampled opening supports only. Faithfulness and complete head appearance still require visual evaluation with all newly painted rear and facial parts, not a claim of pixel-perfect original reproduction."
+}

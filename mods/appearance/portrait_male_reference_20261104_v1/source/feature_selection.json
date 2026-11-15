@@ -1,0 +1,558 @@
+{
+  "status": "candidate_ready_for_game_installation_and_user_visual_review",
+  "source": {
+    "attachment": "C:/Users/34784/AppData/Local/Temp/codex-clipboard-46519b9f-6fb1-4fe6-8bb5-eba583337b0a.png",
+    "workspace_copy": "source/reference_user.png",
+    "sha256": "63251bb7eea03e8a4cb88c6e50e97fef7b2612f4abb91ccba2423bc1dd36ad0d",
+    "only_style_source": "user male triptych",
+    "pixel_correspondence": {
+      "repository_reference": "mods/appearance/portrait_rebuild_20261103/source/male_final/reference_01.png through reference_03.png",
+      "columns": [
+        {
+          "reference": "01",
+          "x": 0,
+          "width": 590
+        },
+        {
+          "reference": "02",
+          "x": 593,
+          "width": 589
+        },
+        {
+          "reference": "03",
+          "x": 1187,
+          "width": 587
+        }
+      ],
+      "different_rgb_channels": 0
+    },
+    "transparent_source_audit": "No existing transparent parts matched the exact reference; fresh built-in image_gen native-transparent features were authorized. Not extracted from source and not pixel-identical reproductions."
+  },
+  "gender": "male",
+  "compatibility_family": "our_selected_ink_male_20261003_v1",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "counts": {
+    "eyebrows": 3,
+    "eyes": 2,
+    "nose": 1,
+    "mouth": 1
+  },
+  "total": 7,
+  "groups": {
+    "eyebrows": [
+      [
+        "01"
+      ],
+      [
+        "02"
+      ],
+      [
+        "03"
+      ]
+    ],
+    "eyes": [
+      [
+        "01",
+        "02"
+      ],
+      [
+        "03"
+      ]
+    ],
+    "nose": [
+      [
+        "01",
+        "02",
+        "03"
+      ]
+    ],
+    "mouth": [
+      [
+        "01",
+        "02",
+        "03"
+      ]
+    ]
+  },
+  "reference_aliases": {
+    "eyebrows": {
+      "01": "01",
+      "02": "02",
+      "03": "03"
+    },
+    "eyes": {
+      "01": "01",
+      "02": "01",
+      "03": "02"
+    },
+    "nose": {
+      "01": "01",
+      "02": "01",
+      "03": "01"
+    },
+    "mouth": {
+      "01": "01",
+      "02": "01",
+      "03": "01"
+    }
+  },
+  "suggested_runtime_style_aliases": {
+    "note": "Reference group IDs and saved runtime IDs are different namespaces; apply only where a retired saved ID represented that reference group.",
+    "eyes_reference_style_ids": {
+      "0": 0,
+      "1": 0,
+      "2": 1
+    },
+    "nose_reference_style_ids": {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    "mouth_reference_style_ids": {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    }
+  },
+  "names": {
+    "eyebrows": [
+      "平直浓眉",
+      "挑锋剑眉",
+      "细直柔眉"
+    ],
+    "eyes": [
+      "窄长凤目",
+      "清朗杏目"
+    ],
+    "nose": [
+      "柔直鼻"
+    ],
+    "mouth": [
+      "自然浅唇"
+    ]
+  },
+  "selection": {
+    "eyebrows": [
+      {
+        "id": "01",
+        "name": "平直浓眉",
+        "references": [
+          "01"
+        ],
+        "reason": "源01眉身较饱满，接近平直、外尾轻落；保留自然毛流。生成初稿偏厚，已作一次原生透明定向细化、柔化眉头。",
+        "output": "male/eyebrows/01.png",
+        "sha256": "c97344340a9731195746032063af7b01aaeaf4f88d027dd26423c5ea9f2a44c3",
+        "raw_source": "source/raw_features/eyebrows/01_refined.png",
+        "transform": {
+          "scale": 0.9915454705963901,
+          "translation": [
+            4,
+            4
+          ]
+        },
+        "metrics": {
+          "width": 1024,
+          "height": 1536,
+          "channels": 4,
+          "zero_alpha_pixels": 1569381,
+          "opaque_pixels": 0,
+          "bounds": {
+            "1": {
+              "bbox": [
+                51,
+                72,
+                925,
+                1375
+              ],
+              "pixels": 3483
+            },
+            "20": {
+              "bbox": [
+                407,
+                337,
+                626,
+                356
+              ],
+              "pixels": 2446
+            },
+            "180": {
+              "bbox": [
+                414,
+                339,
+                618,
+                352
+              ],
+              "pixels": 1239
+            }
+          }
+        }
+      },
+      {
+        "id": "02",
+        "name": "挑锋剑眉",
+        "references": [
+          "02"
+        ],
+        "reason": "源02外侧上挑角度和眉锋明显不同，独立保留。",
+        "output": "male/eyebrows/02.png",
+        "sha256": "4e960b0e4b5d71f73c6bc95f001bdc6418cd0c0039d81beaebc6b7b557cb43f7",
+        "raw_source": "source/raw_features/eyebrows/02.png",
+        "transform": {
+          "scale": 1.1593541737457178,
+          "translation": [
+            -79,
+            -72
+          ]
+        },
+        "metrics": {
+          "width": 1024,
+          "height": 1536,
+          "channels": 4,
+          "zero_alpha_pixels": 1569565,
+          "opaque_pixels": 0,
+          "bounds": {
+            "1": {
+              "bbox": [
+                62,
+                332,
+                952,
+                1004
+              ],
+              "pixels": 3299
+            },
+            "20": {
+              "bbox": [
+                404,
+                334,
+                630,
+                360
+              ],
+              "pixels": 2082
+            },
+            "180": {
+              "bbox": [
+                423,
+                338,
+                611,
+                354
+              ],
+              "pixels": 1021
+            }
+          }
+        }
+      },
+      {
+        "id": "03",
+        "name": "细直柔眉",
+        "references": [
+          "03"
+        ],
+        "reason": "源03更细、舒缓且近水平，与前两组粗细及走向不同。",
+        "output": "male/eyebrows/03.png",
+        "sha256": "6c2f5ae37483f42ff46468c290399a6d9e72f1883fc75b02587de9428522c524",
+        "raw_source": "source/raw_features/eyebrows/03.png",
+        "transform": {
+          "scale": 1.076176967940513,
+          "translation": [
+            -34,
+            -56
+          ]
+        },
+        "metrics": {
+          "width": 1024,
+          "height": 1536,
+          "channels": 4,
+          "zero_alpha_pixels": 1569773,
+          "opaque_pixels": 0,
+          "bounds": {
+            "1": {
+              "bbox": [
+                2,
+                55,
+                941,
+                1241
+              ],
+              "pixels": 3091
+            },
+            "20": {
+              "bbox": [
+                411,
+                340,
+                623,
+                354
+              ],
+              "pixels": 1313
+            },
+            "180": {
+              "bbox": [
+                425,
+                342,
+                607,
+                348
+              ],
+              "pixels": 448
+            }
+          }
+        }
+      }
+    ],
+    "eyes": [
+      {
+        "id": "01",
+        "name": "窄长凤目",
+        "references": [
+          "01",
+          "02"
+        ],
+        "reason": "源01、02均为窄长、上眼睑覆盖较多的灰棕凤目，差别不足以增加一组，合并共用01。",
+        "output": "male/eyes/01.png",
+        "sha256": "e595b565728ac4f32aa9ef22239385ebbd7ef4bb5b06da487ed6e4fd503d2565",
+        "raw_source": "source/raw_features/eyes/01.png",
+        "transform": {
+          "scale": 1,
+          "translation": [
+            1,
+            -35
+          ]
+        },
+        "metrics": {
+          "width": 1024,
+          "height": 1536,
+          "channels": 4,
+          "zero_alpha_pixels": 1569025,
+          "opaque_pixels": 0,
+          "bounds": {
+            "1": {
+              "bbox": [
+                66,
+                114,
+                952,
+                1170
+              ],
+              "pixels": 3839
+            },
+            "20": {
+              "bbox": [
+                428,
+                365,
+                605,
+                389
+              ],
+              "pixels": 2507
+            },
+            "180": {
+              "bbox": [
+                432,
+                366,
+                602,
+                387
+              ],
+              "pixels": 1989
+            }
+          }
+        }
+      },
+      {
+        "id": "02",
+        "name": "清朗杏目",
+        "references": [
+          "03"
+        ],
+        "reason": "源03开度更高、灰棕虹膜更清楚，保留独立较开放杏目。",
+        "output": "male/eyes/02.png",
+        "sha256": "902fdec1c157133316f6705fdc31ff98d0b5f4816dc5ef54ba3f8dcbedd13dc3",
+        "raw_source": "source/raw_features/eyes/02.png",
+        "transform": {
+          "scale": 1,
+          "translation": [
+            2,
+            -14
+          ]
+        },
+        "metrics": {
+          "width": 1024,
+          "height": 1536,
+          "channels": 4,
+          "zero_alpha_pixels": 1565546,
+          "opaque_pixels": 0,
+          "bounds": {
+            "1": {
+              "bbox": [
+                43,
+                193,
+                625,
+                537
+              ],
+              "pixels": 7318
+            },
+            "20": {
+              "bbox": [
+                419,
+                358,
+                616,
+                392
+              ],
+              "pixels": 3646
+            },
+            "180": {
+              "bbox": [
+                428,
+                364,
+                608,
+                387
+              ],
+              "pixels": 2041
+            }
+          }
+        }
+      }
+    ],
+    "nose": [
+      {
+        "id": "01",
+        "name": "柔直鼻",
+        "references": [
+          "01",
+          "02",
+          "03"
+        ],
+        "reason": "三图鼻梁、圆润鼻尖与鼻翼体积高度相近，合并共用01；保留鼻梁、鼻翼和柔和连续晕染。",
+        "output": "male/nose/01.png",
+        "sha256": "391af7aee4ade90d51c884814e165af480a1e2f6cd64807111865bf8d856cd13",
+        "raw_source": "source/raw_features/nose/01.png",
+        "transform": {
+          "scale": 0.7,
+          "translation": [
+            158,
+            99
+          ]
+        },
+        "metrics": {
+          "width": 1024,
+          "height": 1536,
+          "channels": 4,
+          "zero_alpha_pixels": 1568540,
+          "opaque_pixels": 0,
+          "bounds": {
+            "1": {
+              "bbox": [
+                158,
+                203,
+                842,
+                1032
+              ],
+              "pixels": 4324
+            },
+            "20": {
+              "bbox": [
+                489,
+                377,
+                545,
+                467
+              ],
+              "pixels": 3277
+            },
+            "180": {
+              "bbox": [
+                493,
+                390,
+                539,
+                464
+              ],
+              "pixels": 2244
+            }
+          }
+        }
+      }
+    ],
+    "mouth": [
+      {
+        "id": "01",
+        "name": "自然浅唇",
+        "references": [
+          "01",
+          "02",
+          "03"
+        ],
+        "reason": "三图闭合自然浅唇的轮廓、唇色和体积近似，合并共用01。",
+        "output": "male/mouth/01.png",
+        "sha256": "6679d0c8a1fbf034b2549c43b3d38f0814d52ab76a4d787f013284b09cb07803",
+        "raw_source": "source/raw_features/mouth/01.png",
+        "transform": {
+          "scale": 0.84,
+          "translation": [
+            86,
+            -7
+          ]
+        },
+        "metrics": {
+          "width": 1024,
+          "height": 1536,
+          "channels": 4,
+          "zero_alpha_pixels": 1570754,
+          "opaque_pixels": 0,
+          "bounds": {
+            "1": {
+              "bbox": [
+                235,
+                353,
+                649,
+                792
+              ],
+              "pixels": 2110
+            },
+            "20": {
+              "bbox": [
+                484,
+                471,
+                550,
+                499
+              ],
+              "pixels": 1204
+            },
+            "180": {
+              "bbox": [
+                487,
+                474,
+                547,
+                495
+              ],
+              "pixels": 759
+            }
+          }
+        }
+      }
+    ]
+  },
+  "deduplication": {
+    "method": "Visual comparison of feature silhouettes, thickness, eye opening and nose/lip volumes; approximate reference-only luminance correlation is supporting evidence, not a universal threshold.",
+    "metrics_record": "source/reference_feature_comparison.json",
+    "notes": [
+      "Each eyebrow/eye PNG contains both left and right features.",
+      "All four slots are independent, and independent of front/back hair; no one-to-one presets required.",
+      "Nose and mouth each remain one shared variant across all three reference styles."
+    ]
+  },
+  "generation": {
+    "tool": "built-in image_gen",
+    "prompts": "source/feature_generation_prompts.json",
+    "records": "source/feature_generation_records.json",
+    "eyebrow_01_refinement": "source/eyebrow01_refinement.json",
+    "alpha_policy": "Native generated alpha preserved through only whole-layer scale/translation; no script cutouts, thresholding, opaque skin plate removal, or local feature warping."
+  },
+  "validation": {
+    "all_seven_1024x1536_rgba": true,
+    "shallow_and_dark_composites": "qa/six_feature_combinations_light.png; qa/six_feature_combinations_dark.png",
+    "whole_layer_registration": "source/feature_registration.json",
+    "full_three_noncollinear_2px_certification": false,
+    "user_visual_acceptance": false,
+    "material_limitations": [
+      "Generated eyebrows remain wider than the exact native reference; eyebrow01 was softened once, without individually rescaling brows.",
+      "Eye-edge pigment is slightly stronger and lip highlights more visible than the reference; these are recorded as visible generation differences.",
+      "Registration uses measured pair locations or feature landmarks and whole-layer transforms; no claimed formal three-point rig certification."
+    ]
+  }
+}

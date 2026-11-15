@@ -1,0 +1,11 @@
+{
+  "tool": "built-in image_gen",
+  "stage": "rear_tip_length_only",
+  "prompt": "Precise local edit. Edit this independent REAR-HAIR layer only. Keep the ENTIRE bun, black cloth wrap, rounded rear skull, hair width, pigment, fine strand texture, position, scale and1024x1536 canvas exactly unchanged. The lower loose REAR CURTAIN is too short after the whole-layer skull registration: extend ONLY its naturally tapered lower ends smoothly from current near y1290 to roughly y1470, keeping generous side margins and fine irregular flowing taper. Continue the existing fine warm-charcoal-gray-brown painted strands, no bright/silver tips and no coarse thick bunches. No length change above y900; no added head volume, no thicker hair at the shoulders. The extension should be natural subtle long rear hair below the existing curtain, not a duplicate copy or repeating texture. Do not widen/resize/reposition the entire hair and do not crop off bun. Preserve exact existing upper head and black wrap so measured controls remain valid. No face, ears, skin, neck, clothes, background, vignette, aura, words or checkerboard. The entire middle remains solid hair-filled, no face/neck/body holes. Output only the same1024x1536 genuine transparent hair layer.",
+  "inputs": [
+    "source/back02_raw.png"
+  ],
+  "raw_before": "source/back02_before_refinement.png",
+  "selected_raw": "source/back02_raw.png",
+  "shape_changes_by_native_tool_only": true
+}

@@ -1,0 +1,36 @@
+{
+  "active_option_count": 44,
+  "all_hair_feature_combinations": 54,
+  "all_male_artwork_regenerated": true,
+  "baseline_files_checked": 30,
+  "checks": 609,
+  "face_candidate_pixels_match": true,
+  "face_geometry_may_change": true,
+  "failures": [],
+  "feature_counts": {
+    "eyebrows": 3,
+    "eyes": 2,
+    "mouth": 1,
+    "nose": 1
+  },
+  "gender": "male",
+  "independent_controls_verified": true,
+  "male_slot_counts": [
+    3,
+    3,
+    3,
+    2,
+    1,
+    1,
+    1,
+    7,
+    1
+  ],
+  "new_parts_checked": 14,
+  "pass": true,
+  "pixel_composites_verified": true,
+  "rejected_previous_rounds_must_not_be_restored": true,
+  "retired_style_fallback_verified": true,
+  "viewport_captured": true,
+  "visual_material_acceptance": "Runtime pixel equality confirms installation and composition, not a visual match to the source skin or feature shape."
+}

@@ -1,0 +1,124 @@
+{
+  "native_generation_mode": "built-in image_gen; independent call per style",
+  "generated_hair_only": true,
+  "active_assets_modified": false,
+  "existing_rejected_shape_reused": false,
+  "colour_threshold_extraction": false,
+  "script_colour_or_texture_painting": false,
+  "whole_layer_registration_only": true,
+  "antialiasing": "source/resample_rgba.cjs",
+  "records": [
+    {
+      "id": "01",
+      "file": "male/hair_back/01.png",
+      "sha256": "0fc380efe6f1719c94ce674e4e28142c080398c0757d79c9d6e939689494f451",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "channels": 4,
+      "alpha40_bbox": [
+        257,
+        121,
+        770,
+        1129
+      ],
+      "alpha40_pixels": 332327,
+      "border_nonzero_alpha": 0,
+      "registration": "source/back01_registration.json"
+    },
+    {
+      "id": "02",
+      "file": "male/hair_back/02.png",
+      "sha256": "8a7e8447503059b9084e1d182b8c53b208569632f0eab0de84e585a4635c7d8d",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "channels": 4,
+      "alpha40_bbox": [
+        297,
+        81,
+        723,
+        1130
+      ],
+      "alpha40_pixels": 280625,
+      "border_nonzero_alpha": 0,
+      "registration": "source/back02_registration.json"
+    },
+    {
+      "id": "03",
+      "file": "male/hair_back/03.png",
+      "sha256": "cb716866946fd719d787cf4b94beef49351a5200db5da36ae59abaa71a75ff5f",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "channels": 4,
+      "alpha40_bbox": [
+        285,
+        164,
+        738,
+        1146
+      ],
+      "alpha40_pixels": 292245,
+      "border_nonzero_alpha": 0,
+      "registration": "source/back03_registration.json"
+    }
+  ],
+  "selected_lineage": [
+    {
+      "id": "01",
+      "source": "source/back01_raw.png",
+      "selected_native_output": "E:/tmp/CodexData/generated_images/01a1a634-5600-73a3-a938-a8d7b936ea5c/exec-2aced5cf-c093-470c-a716-a3dd02091b29.png",
+      "prompts": [
+        "source/back01_generation_prompt.json",
+        "source/back01_refinement_prompt.json",
+        "source/back01_alpha_cleanup_prompt.json",
+        "source/back01_pin_height_refinement_prompt.json"
+      ],
+      "notes": "Woodpin shortened then raised by native image edits; actual delivered contour remeasured, not claimed pixel-invariant through native edits."
+    },
+    {
+      "id": "02",
+      "source": "source/back02_raw.png",
+      "selected_native_output": "E:/tmp/CodexData/generated_images/01a1a634-5600-73a3-a938-a8d7b936ea5c/exec-b6f097d8-e89d-41e1-80c8-9bf08de7a293.png",
+      "prompts": [
+        "source/back02_generation_prompt.json",
+        "source/back02_refinement_prompt.json",
+        "source/back02_alpha_cleanup_prompt.json",
+        "source/back02_wrap_height_refinement_prompt.json"
+      ],
+      "notes": "Long tips extended and black wrap raised by native edits; generator also changed slight cap/crest details, actual selected controls remeasured."
+    },
+    {
+      "id": "03",
+      "source": "source/back03_raw.png",
+      "selected_native_output": "E:/tmp/CodexData/generated_images/01a1a634-5600-73a3-a938-a8d7b936ea5c/exec-c5cc8a79-6f30-4040-83e4-c322f0adffb2.png",
+      "prompts": [
+        "source/back03_generation_prompt.json"
+      ]
+    }
+  ],
+  "rejected_stages": [
+    "source/back01_refined_bad_background_alpha.png",
+    "source/back02_refined_bad_background_alpha.png"
+  ],
+  "rejection_reason": "Those intermediate native edits had nonzero alpha in blank corners. Replaced with native transparent cleanup; no threshold alpha stripping was performed.",
+  "qa": {
+    "three_actual_pairs": "qa/back_three_paired_heads_dark.png",
+    "nine_pairs_light": "qa/back_front_nine_pairs_light.png",
+    "nine_pairs_dark": "qa/back_front_nine_pairs_dark.png",
+    "original_master_actual_comparison_light": "qa/back_full_original_master_pair_comparison_light.png",
+    "original_master_actual_comparison_dark": "qa/back_full_original_master_pair_comparison_dark.png"
+  },
+  "review": {
+    "result": "Deep/light composites inspected. No opaque black background/rectangle/fog. All three front/back combinations have continuous ear-side and neck-side overlap; black wrap remains visible above front02. Hair is intentionally solid behind face and clothing.",
+    "limits": [
+      "Three source control fits position hidden posterior underpainting; they are not full visible-anatomy rig certification.",
+      "All comparisons currently use brow01 and clothing01; fronts01/02 use eyes01, front03 eyes02.",
+      "The illustrated new pin, bun and strand shapes are native approximations; no claim of original pixel identity or user aesthetic acceptance.",
+      "Face and core material are supplied by parent and may still be updated."
+    ]
+  }
+}

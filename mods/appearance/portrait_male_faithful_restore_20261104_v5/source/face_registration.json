@@ -1,0 +1,48 @@
+{
+  "source": "source/face_neck_refined_raw.png",
+  "source_points": [
+    [
+      322,
+      712
+    ],
+    [
+      715,
+      712
+    ],
+    [
+      511,
+      900
+    ]
+  ],
+  "target_points": [
+    [
+      410,
+      438
+    ],
+    [
+      632,
+      438
+    ],
+    [
+      516,
+      546
+    ]
+  ],
+  "point_names": [
+    "left_earlobe_overlap",
+    "right_earlobe_overlap",
+    "chin"
+  ],
+  "target_earlobes_are_partly_hidden_in_reference": true,
+  "method": "one whole-layer similarity; area filtering in premultiplied RGBA",
+  "a": 0.5671627974635837,
+  "b": 0.0008595780133168483,
+  "tx": 227.34321627644033,
+  "ty": 34.19434397667237,
+  "scale": 0.5671634488408778,
+  "residuals": [
+    0.7052371772620152,
+    0.6776891759692598,
+    0.999068392317006
+  ]
+}

@@ -1,0 +1,23 @@
+const fs=require('fs'),path=require('path'),crypto=require('crypto'),sharp=require('sharp'),{PNG}=require('pngjs');
+const {render}=require('./resample_rgba.cjs');
+const pack=path.resolve(__dirname,'..'),raw=path.join(__dirname,'brow03_tight_raw.png'),output=path.join(pack,'male/eyebrows/03.png');
+const hash=p=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex');
+const source=[[563,583],[814,579],[975,531]],target=[[488,356],[539,355],[570,348]];
+function fit(s,t){const cs=[0,0],ct=[0,0];for(let i=0;i<3;i++)for(let c=0;c<2;c++){cs[c]+=s[i][c]/3;ct[c]+=t[i][c]/3;}let re=0,im=0,den=0;for(let i=0;i<3;i++){const x=s[i][0]-cs[0],y=s[i][1]-cs[1],u=t[i][0]-ct[0],v=t[i][1]-ct[1];re+=x*u+y*v;im+=x*v-y*u;den+=x*x+y*y;}const a=re/den,b=im/den,tx=ct[0]-a*cs[0]+b*cs[1],ty=ct[1]-b*cs[0]-a*cs[1];return{a,b,tx,ty,scale:Math.hypot(a,b),residuals:s.map((p,i)=>Math.hypot(a*p[0]-b*p[1]+tx-t[i][0],b*p[0]+a*p[1]+ty-t[i][1]))};}
+(async()=>{
+ const im=PNG.sync.read(fs.readFileSync(raw)),ref=PNG.sync.read(fs.readFileSync(path.join(__dirname,'front_reference_03_placed.png')));
+ for(const[x,y]of source)if(im.data[(y*im.width+x)*4+3]<180)throw Error('Native measured source control not supported.');
+ const t=fit(source,target);if(Math.max(...t.residuals)>2)throw Error('Actual three-point residual exceeds2px.');
+ fs.mkdirSync(path.dirname(output),{recursive:true});await render(raw,output,t);
+ const final=PNG.sync.read(fs.readFileSync(output));let bounds=[1024,1536,-1,-1];for(let y=0;y<1536;y++)for(let x=0;x<1024;x++)if(final.data[(y*1024+x)*4+3]>=40)bounds=[Math.min(bounds[0],x),Math.min(bounds[1],y),Math.max(bounds[2],x),Math.max(bounds[3],y)];
+ const targetSamples=target.map(([x,y])=>({px:[x,y],rgba:Array.from(ref.data.subarray((y*1024+x)*4,(y*1024+x)*4+4))}));
+ const report={index:3,raw:'source/brow03_tight_raw.png',raw_sha256:hash(raw),source_canvas:[im.width,im.height],source_controls:source,target_controls:target,control_names:['left_dense_inner_head_bottom_supported_pixel','right_dense_inner_head_supported_pixel','right_unoccluded_upper_body_supported_pixel'],source_control_method:'Measured alpha>=180 native pair hair support. The right upper body is used because the left outer/top contour in the original is partly covered by front hair; all three controls are noncollinear.',target_control_role:'Original03 actual visible dense brow contour pixels: left inner head(488,356),right inner head(539,355),right upper body(570,348). These replace approximate y350 or soft skin-edge points. Target RGB samples retained below.',target_reference:'source/front_reference_03_placed.png',target_reference_sha256:hash(path.join(__dirname,'front_reference_03_placed.png')),target_pixel_samples:targetSamples,transform:t,maximum_residual_px:Math.max(...t.residuals),whole_pair_transform_only:true,separate_eyebrow_movement:false,local_warp:false,pigment_edited:false,antialias:'resample_rgba.cjs: premultiplied source-area integration at reduction',canvas:[1024,1536],alpha40_bbox_inclusive:bounds,output:'male/eyebrows/03.png',output_sha256:hash(output),old_asset_reused:false,visual_observation:'New pair on current face/light skin was compared to original03 using current eyes01/nose/mouth. Visible brows have a similar slender near-flat contour and naturally soften at inner ends; no skin panel or opaque matte observed. Hair-occluded outer ends are not claimed to be directly measurable original anatomy.'};
+ fs.writeFileSync(path.join(__dirname,'brow03_registration.json'),JSON.stringify(report,null,2)+'\n');
+ const layers=['male/hair_back/03.png','male/clothing_back/01.png','male/face_shape/01.png','male/clothing/01.png','male/eyes/01.png','male/eyebrows/03.png','male/nose/01.png','male/mouth/01.png','male/hair_front/03.png'];
+ for(const[label,bg]of [['light','#e7e2d6'],['dark','#22292b']]){
+  const assembled=await sharp({create:{width:1024,height:1536,channels:4,background:bg}}).composite(layers.map(p=>({input:path.join(pack,p)}))).png().toBuffer();
+  const tiles=[];for(const[i,file]of ['source/front_reference_03_placed.png',null].entries()){const bytes=file?await sharp(path.join(pack,file)).flatten({background:bg}).png().toBuffer():assembled;tiles.push({input:await sharp(bytes).extract({left:380,top:310,width:280,height:230}).resize(840,690).png().toBuffer(),left:i*840,top:0});}
+  await sharp({create:{width:1680,height:690,channels:4,background:bg}}).composite(tiles).png().toFile(path.join(pack,`qa/brow03_original_comparison_${label}.png`));
+ }
+ console.log(JSON.stringify({output:report.output,sha256:report.output_sha256,maximum_residual_px:report.maximum_residual_px,source:report.source_controls,target:report.target_controls,alpha40_bbox:bounds}));
+})().catch(e=>{console.error(e);process.exitCode=1;});
