@@ -1,0 +1,2044 @@
+{
+  "version": 1,
+  "status": "complete_24_native_sprites",
+  "source_mode": "built_in_imagegen",
+  "native_alpha_preserved": true,
+  "asset_count": 24,
+  "authored_atlas_count": 6,
+  "nominal_camera_zoom": 0.8,
+  "world_side": 22118.4,
+  "world_span_km": 8000,
+  "avatar_height_world": 52,
+  "generation_provenance": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/generation_provenance.json",
+  "old_source_catalog": "res://textures/world/bai_chuan/node_sprites_20261030/catalog.json",
+  "coordinate_conventions": {
+    "region": "[x,y,width,height] in native source atlas pixels",
+    "foot_px": "[x,y] in native source atlas pixels; building-ground contact",
+    "pivot": "foot point normalized within region",
+    "world_placement": "Root integrator supplies map X/Y at the foot anchor",
+    "z_sort": "Same Y sorting layer as people and landscape; object's Y is its foot Y",
+    "source_images": "No resize, recolor, alpha cleanup or source PNG re-encoding",
+    "region_measurement": "Visible alpha >8 plus 6 native pixels padding; source PNG retains all original near-invisible alpha dust. full_cell is available for preserving every generated pixel in rendering."
+  },
+  "atlases": {
+    "atlas_01_major_sects.png": {
+      "path": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_01_major_sects.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "83885767644eebf4025d6acb25c0ea54033b7f66ca398e2c8d9778f654711593",
+      "prompt_file": "prompts.json",
+      "prompt_job_index": 0,
+      "repair_prompt_file": "prompt_01_layout_repair.txt"
+    },
+    "atlas_02_mountain_sects.png": {
+      "path": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_02_mountain_sects.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "d510e72de289916c47061f77f35c27c56b6d23e6367ede29351362cd73dbe3a6",
+      "prompt_file": "prompts_final.json",
+      "prompt_job_index": 1,
+      "repair_prompt_file": null
+    },
+    "atlas_03_river_shadow_sects.png": {
+      "path": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_03_river_shadow_sects.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "138092765ab682bff0887ea1dc87b09bdcff416384e805d16d90d82c07490ef3",
+      "prompt_file": "prompts_final.json",
+      "prompt_job_index": 2,
+      "repair_prompt_file": null
+    },
+    "atlas_04_landmarks_cities.png": {
+      "path": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_04_landmarks_cities.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "81a4853e585bfed25c06ed62c12abe392568022c3664180e92bd513b24d568a6",
+      "prompt_file": "prompts_final.json",
+      "prompt_job_index": 3,
+      "repair_prompt_file": null
+    },
+    "atlas_05_fortress_towns.png": {
+      "path": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_05_fortress_towns.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "9c46396df4ee98c0d2d0e553560338c29512c6f54e9cdac1707da3365fa89f03",
+      "prompt_file": "prompts_final.json",
+      "prompt_job_index": 4,
+      "repair_prompt_file": null
+    },
+    "atlas_06_market_village_dock.png": {
+      "path": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_06_market_village_dock.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "mode": "RGBA",
+      "sha256": "d004f350a94b572c0e04479d1dcafdeb5c71b1230c29939783c46fd61c622933",
+      "prompt_file": "prompts_final.json",
+      "prompt_job_index": 5,
+      "repair_prompt_file": null
+    }
+  },
+  "assets": {
+    "yuxu": {
+      "name": "玉虚仙宗",
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_01_major_sects.png",
+      "region": [
+        90,
+        129,
+        448,
+        351
+      ],
+      "native_size": [
+        448,
+        351
+      ],
+      "full_cell": [
+        0,
+        0,
+        627,
+        627
+      ],
+      "visible_alpha_bbox": [
+        96,
+        135,
+        436,
+        339
+      ],
+      "foot_px": [
+        314.0,
+        472
+      ],
+      "pivot": [
+        0.5,
+        0.9772079772079773
+      ],
+      "suggested_world_width": 400,
+      "suggested_world_size": [
+        400,
+        313.393
+      ],
+      "sort_anchor": "foot_y",
+      "child_z_index": 0,
+      "native_alpha_unchanged": true
+    },
+    "xuandu": {
+      "name": "玄都天府",
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_01_major_sects.png",
+      "region": [
+        705,
+        176,
+        443,
+        305
+      ],
+      "native_size": [
+        443,
+        305
+      ],
+      "full_cell": [
+        627,
+        0,
+        627,
+        627
+      ],
+      "visible_alpha_bbox": [
+        711,
+        182,
+        431,
+        293
+      ],
+      "foot_px": [
+        927.5,
+        473
+      ],
+      "pivot": [
+        0.5022573363431151,
+        0.9737704918032787
+      ],
+      "suggested_world_width": 400,
+      "suggested_world_size": [
+        400,
+        275.395
+      ],
+      "sort_anchor": "foot_y",
+      "child_z_index": 0,
+      "native_alpha_unchanged": true
+    },
+    "wuxiang": {
+      "name": "无相圣宗",
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_01_major_sects.png",
+      "region": [
+        142,
+        795,
+        344,
+        339
+      ],
+      "native_size": [
+        344,
+        339
+      ],
+      "full_cell": [
+        0,
+        627,
+        627,
+        627
+      ],
+      "visible_alpha_bbox": [
+        148,
+        801,
+        332,
+        327
+      ],
+      "foot_px": [
+        314.0,
+        1126
+      ],
+      "pivot": [
+        0.5,
+        0.976401179941003
+      ],
+      "suggested_world_width": 400,
+      "suggested_world_size": [
+        400,
+        394.186
+      ],
+      "sort_anchor": "foot_y",
+      "child_z_index": 0,
+      "native_alpha_unchanged": true
+    },
+    "taiwei": {
+      "name": "太微道宫",
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_01_major_sects.png",
+      "region": [
+        717,
+        767,
+        423,
+        366
+      ],
+      "native_size": [
+        423,
+        366
+      ],
+      "full_cell": [
+        627,
+        627,
+        627,
+        627
+      ],
+      "visible_alpha_bbox": [
+        723,
+        773,
+        411,
+        354
+      ],
+      "foot_px": [
+        928.0,
+        1125
+      ],
+      "pivot": [
+        0.4988179669030733,
+        0.9781420765027322
+      ],
+      "suggested_world_width": 320,
+      "suggested_world_size": [
+        320,
+        276.879
+      ],
+      "sort_anchor": "foot_y",
+      "child_z_index": 0,
+      "native_alpha_unchanged": true
+    },
+    "zhenyue": {
+      "name": "镇岳观",
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_02_mountain_sects.png",
+      "region": [
+        40,
+        222,
+        552,
+        335
+      ],
+      "native_size": [
+        552,
+        335
+      ],
+      "full_cell": [
+        0,
+        0,
+        627,
+        627
+      ],
+      "visible_alpha_bbox": [
+        46,
+        228,
+        540,
+        323
+      ],
+      "foot_px": [
+        316.0,
+        549
+      ],
+      "pivot": [
+        0.5,
+        0.9761194029850746
+      ],
+      "suggested_world_width": 280,
+      "suggested_world_size": [
+        280,
+        169.928
+      ],
+      "sort_anchor": "foot_y",
+      "child_z_index": 0,
+      "native_alpha_unchanged": true
+    },
+    "baopu": {
+      "name": "抱朴山",
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_02_mountain_sects.png",
+      "region": [
+        662,
+        248,
+        557,
+        315
+      ],
+      "native_size": [
+        557,
+        315
+      ],
+      "full_cell": [
+        627,
+        0,
+        627,
+        627
+      ],
+      "visible_alpha_bbox": [
+        668,
+        254,
+        545,
+        303
+      ],
+      "foot_px": [
+        941.0,
+        553
+      ],
+      "pivot": [
+        0.5008976660682226,
+        0.9682539682539683
+      ],
+      "suggested_world_width": 260,
+      "suggested_world_size": [
+        260,
+        147.038
+      ],
+      "sort_anchor": "foot_y",
+      "child_z_index": 0,
+      "native_alpha_unchanged": true
+    },
+    "baiyao": {
+      "name": "百药谷",
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_02_mountain_sects.png",
+      "region": [
+        36,
+        845,
+        556,
+        313
+      ],
+      "native_size": [
+        556,
+        313
+      ],
+      "full_cell": [
+        0,
+        627,
+        627,
+        627
+      ],
+      "visible_alpha_bbox": [
+        42,
+        851,
+        544,
+        301
+      ],
+      "foot_px": [
+        314.0,
+        1150
+      ],
+      "pivot": [
+        0.5,
+        0.9744408945686901
+      ],
+      "suggested_world_width": 280,
+      "suggested_world_size": [
+        280,
+        157.626
+      ],
+      "sort_anchor": "foot_y",
+      "child_z_index": 0,
+      "native_alpha_unchanged": true
+    },
+    "danding": {
+      "name": "丹鼎宗",
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_02_mountain_sects.png",
+      "region": [
+        663,
+        798,
+        555,
+        363
+      ],
+      "native_size": [
+        555,
+        363
+      ],
+      "full_cell": [
+        627,
+        627,
+        627,
+        627
+      ],
+      "visible_alpha_bbox": [
+        669,
+        804,
+        543,
+        351
+      ],
+      "foot_px": [
+        940.5,
+        1152
+      ],
+      "pivot": [
+        0.5,
+        0.9752066115702479
+      ],
+      "suggested_world_width": 280,
+      "suggested_world_size": [
+        280,
+        183.135
+      ],
+      "sort_anchor": "foot_y",
+      "child_z_index": 0,
+      "native_alpha_unchanged": true
+    },
+    "guizang": {
+      "name": "归藏书院",
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_03_river_shadow_sects.png",
+      "region": [
+        43,
+        225,
+        542,
+        275
+      ],
+      "native_size": [
+        542,
+        275
+      ],
+      "full_cell": [
+        0,
+        0,
+        627,
+        627
+      ],
+      "visible_alpha_bbox": [
+        49,
+        231,
+        530,
+        263
+      ],
+      "foot_px": [
+        314.0,
+        492
+      ],
+      "pivot": [
+        0.5,
+        0.9709090909090909
+      ],
+      "suggested_world_width": 280,
+      "suggested_world_size": [
+        280,
+        142.066
+      ],
+      "sort_anchor": "foot_y",
+      "child_z_index": 0,
+      "native_alpha_unchanged": true
+    },
+    "cangming": {
+      "name": "沧溟水府",
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_03_river_shadow_sects.png",
+      "region": [
+        672,
+        206,
+        545,
+        298
+      ],
+      "native_size": [
+        545,
+        298
+      ],
+      "full_cell": [
+        627,
+        0,
+        627,
+        627
+      ],
+      "visible_alpha_bbox": [
+        678,
+        212,
+        533,
+        286
+      ],
+      "foot_px": [
+        944.5,
+        496
+      ],
+      "pivot": [
+        0.5,
+        0.9731543624161074
+      ],
+      "suggested_world_width": 300,
+      "suggested_world_size": [
+        300,
+        164.037
+      ],
+      "sort_anchor": "foot_y",
+      "child_z_index": 0,
+      "native_alpha_unchanged": true
+    },
+    "xuehe": {
+      "name": "血河教",
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_03_river_shadow_sects.png",
+      "region": [
+        44,
+        823,
+        538,
+        336
+      ],
+      "native_size": [
+        538,
+        336
+      ],
+      "full_cell": [
+        0,
+        627,
+        627,
+        627
+      ],
+      "visible_alpha_bbox": [
+        50,
+        829,
+        526,
+        324
+      ],
+      "foot_px": [
+        314.0,
+        1151
+      ],
+      "pivot": [
+        0.5018587360594795,
+        0.9761904761904762
+      ],
+      "suggested_world_width": 280,
+      "suggested_world_size": [
+        280,
+        174.87
+      ],
+      "sort_anchor": "foot_y",
+      "child_z_index": 0,
+      "native_alpha_unchanged": true
+    },
+    "shiri": {
+      "name": "蚀日宫",
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_03_river_shadow_sects.png",
+      "region": [
+        694,
+        732,
+        494,
+        427
+      ],
+      "native_size": [
+        494,
+        427
+      ],
+      "full_cell": [
+        627,
+        627,
+        627,
+        627
+      ],
+      "visible_alpha_bbox": [
+        700,
+        738,
+        482,
+        415
+      ],
+      "foot_px": [
+        940.5,
+        1150
+      ],
+      "pivot": [
+        0.49898785425101216,
+        0.9789227166276346
+      ],
+      "suggested_world_width": 280,
+      "suggested_world_size": [
+        280,
+        242.024
+      ],
+      "sort_anchor": "foot_y",
+      "child_z_index": 0,
+      "native_alpha_unchanged": true
+    },
+    "kugu": {
+      "name": "枯骨寺",
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_04_landmarks_cities.png",
+      "region": [
+        91,
+        154,
+        447,
+        427
+      ],
+      "native_size": [
+        447,
+        427
+      ],
+      "full_cell": [
+        0,
+        0,
+        627,
+        627
+      ],
+      "visible_alpha_bbox": [
+        97,
+        160,
+        435,
+        415
+      ],
+      "foot_px": [
+        314.5,
+        571
+      ],
+      "pivot": [
+        0.5,
+        0.9765807962529274
+      ],
+      "suggested_world_width": 260,
+      "suggested_world_size": [
+        260,
+        248.367
+      ],
+      "sort_anchor": "foot_y",
+      "child_z_index": 0,
+      "native_alpha_unchanged": true
+    },
+    "baishi": {
+      "name": "白石城",
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_04_landmarks_cities.png",
+      "region": [
+        676,
+        210,
+        528,
+        371
+      ],
+      "native_size": [
+        528,
+        371
+      ],
+      "full_cell": [
+        627,
+        0,
+        627,
+        627
+      ],
+      "visible_alpha_bbox": [
+        682,
+        216,
+        516,
+        359
+      ],
+      "foot_px": [
+        939.5,
+        571
+      ],
+      "pivot": [
+        0.4990530303030303,
+        0.9730458221024259
+      ],
+      "suggested_world_width": 300,
+      "suggested_world_size": [
+        300,
+        210.795
+      ],
+      "sort_anchor": "foot_y",
+      "child_z_index": 0,
+      "native_alpha_unchanged": true
+    },
+    "city": {
+      "name": "内陆城",
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_04_landmarks_cities.png",
+      "region": [
+        35,
+        809,
+        561,
+        352
+      ],
+      "native_size": [
+        561,
+        352
+      ],
+      "full_cell": [
+        0,
+        627,
+        627,
+        627
+      ],
+      "visible_alpha_bbox": [
+        41,
+        815,
+        549,
+        340
+      ],
+      "foot_px": [
+        315.0,
+        1153
+      ],
+      "pivot": [
+        0.49910873440285203,
+        0.9772727272727273
+      ],
+      "suggested_world_width": 280,
+      "suggested_world_size": [
+        280,
+        175.686
+      ],
+      "sort_anchor": "foot_y",
+      "child_z_index": 0,
+      "native_alpha_unchanged": true
+    },
+    "city_water": {
+      "name": "水城",
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_04_landmarks_cities.png",
+      "region": [
+        658,
+        824,
+        562,
+        340
+      ],
+      "native_size": [
+        562,
+        340
+      ],
+      "full_cell": [
+        627,
+        627,
+        627,
+        627
+      ],
+      "visible_alpha_bbox": [
+        664,
+        830,
+        550,
+        328
+      ],
+      "foot_px": [
+        939.0,
+        1156
+      ],
+      "pivot": [
+        0.5,
+        0.9764705882352941
+      ],
+      "suggested_world_width": 280,
+      "suggested_world_size": [
+        280,
+        169.395
+      ],
+      "sort_anchor": "foot_y",
+      "child_z_index": 0,
+      "native_alpha_unchanged": true
+    },
+    "city_fortress": {
+      "name": "关城",
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_05_fortress_towns.png",
+      "region": [
+        57,
+        222,
+        520,
+        336
+      ],
+      "native_size": [
+        520,
+        336
+      ],
+      "full_cell": [
+        0,
+        0,
+        627,
+        627
+      ],
+      "visible_alpha_bbox": [
+        63,
+        228,
+        508,
+        324
+      ],
+      "foot_px": [
+        317.0,
+        550
+      ],
+      "pivot": [
+        0.5,
+        0.9761904761904762
+      ],
+      "suggested_world_width": 280,
+      "suggested_world_size": [
+        280,
+        180.923
+      ],
+      "sort_anchor": "foot_y",
+      "child_z_index": 0,
+      "native_alpha_unchanged": true
+    },
+    "town": {
+      "name": "集镇",
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_05_fortress_towns.png",
+      "region": [
+        668,
+        209,
+        544,
+        357
+      ],
+      "native_size": [
+        544,
+        357
+      ],
+      "full_cell": [
+        627,
+        0,
+        627,
+        627
+      ],
+      "visible_alpha_bbox": [
+        674,
+        215,
+        532,
+        345
+      ],
+      "foot_px": [
+        939.5,
+        558
+      ],
+      "pivot": [
+        0.4990808823529412,
+        0.9775910364145658
+      ],
+      "suggested_world_width": 220,
+      "suggested_world_size": [
+        220,
+        144.375
+      ],
+      "sort_anchor": "foot_y",
+      "child_z_index": 0,
+      "native_alpha_unchanged": true
+    },
+    "town_river": {
+      "name": "河镇",
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_05_fortress_towns.png",
+      "region": [
+        63,
+        818,
+        513,
+        339
+      ],
+      "native_size": [
+        513,
+        339
+      ],
+      "full_cell": [
+        0,
+        627,
+        627,
+        627
+      ],
+      "visible_alpha_bbox": [
+        69,
+        824,
+        501,
+        327
+      ],
+      "foot_px": [
+        319.5,
+        1148
+      ],
+      "pivot": [
+        0.5,
+        0.9734513274336283
+      ],
+      "suggested_world_width": 220,
+      "suggested_world_size": [
+        220,
+        145.38
+      ],
+      "sort_anchor": "foot_y",
+      "child_z_index": 0,
+      "native_alpha_unchanged": true
+    },
+    "town_mountain": {
+      "name": "山前镇",
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_05_fortress_towns.png",
+      "region": [
+        667,
+        812,
+        536,
+        345
+      ],
+      "native_size": [
+        536,
+        345
+      ],
+      "full_cell": [
+        627,
+        627,
+        627,
+        627
+      ],
+      "visible_alpha_bbox": [
+        673,
+        818,
+        524,
+        333
+      ],
+      "foot_px": [
+        935.0,
+        1148
+      ],
+      "pivot": [
+        0.5,
+        0.9739130434782609
+      ],
+      "suggested_world_width": 220,
+      "suggested_world_size": [
+        220,
+        141.604
+      ],
+      "sort_anchor": "foot_y",
+      "child_z_index": 0,
+      "native_alpha_unchanged": true
+    },
+    "market": {
+      "name": "工艺坊市",
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_06_market_village_dock.png",
+      "region": [
+        46,
+        207,
+        529,
+        273
+      ],
+      "native_size": [
+        529,
+        273
+      ],
+      "full_cell": [
+        0,
+        0,
+        627,
+        627
+      ],
+      "visible_alpha_bbox": [
+        52,
+        213,
+        517,
+        261
+      ],
+      "foot_px": [
+        310.5,
+        472
+      ],
+      "pivot": [
+        0.5,
+        0.9706959706959707
+      ],
+      "suggested_world_width": 180,
+      "suggested_world_size": [
+        180,
+        92.892
+      ],
+      "sort_anchor": "foot_y",
+      "child_z_index": 0,
+      "native_alpha_unchanged": true
+    },
+    "market_river": {
+      "name": "河运坊市",
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_06_market_village_dock.png",
+      "region": [
+        673,
+        262,
+        522,
+        218
+      ],
+      "native_size": [
+        522,
+        218
+      ],
+      "full_cell": [
+        627,
+        0,
+        627,
+        627
+      ],
+      "visible_alpha_bbox": [
+        679,
+        268,
+        510,
+        206
+      ],
+      "foot_px": [
+        934.0,
+        471
+      ],
+      "pivot": [
+        0.5,
+        0.9587155963302753
+      ],
+      "suggested_world_width": 180,
+      "suggested_world_size": [
+        180,
+        75.172
+      ],
+      "sort_anchor": "foot_y",
+      "child_z_index": 0,
+      "native_alpha_unchanged": true
+    },
+    "village": {
+      "name": "村落",
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_06_market_village_dock.png",
+      "region": [
+        59,
+        862,
+        514,
+        236
+      ],
+      "native_size": [
+        514,
+        236
+      ],
+      "full_cell": [
+        0,
+        627,
+        627,
+        627
+      ],
+      "visible_alpha_bbox": [
+        65,
+        868,
+        502,
+        224
+      ],
+      "foot_px": [
+        316.0,
+        1090
+      ],
+      "pivot": [
+        0.5,
+        0.9661016949152542
+      ],
+      "suggested_world_width": 150,
+      "suggested_world_size": [
+        150,
+        68.872
+      ],
+      "sort_anchor": "foot_y",
+      "child_z_index": 0,
+      "native_alpha_unchanged": true
+    },
+    "dock": {
+      "name": "渡口",
+      "atlas": "res://textures/world/bai_chuan/expanded3x_20261106/nodes/atlas_06_market_village_dock.png",
+      "region": [
+        687,
+        816,
+        484,
+        314
+      ],
+      "native_size": [
+        484,
+        314
+      ],
+      "full_cell": [
+        627,
+        627,
+        627,
+        627
+      ],
+      "visible_alpha_bbox": [
+        693,
+        822,
+        472,
+        302
+      ],
+      "foot_px": [
+        930.0,
+        1122
+      ],
+      "pivot": [
+        0.5020661157024794,
+        0.9745222929936306
+      ],
+      "suggested_world_width": 160,
+      "suggested_world_size": [
+        160,
+        103.802
+      ],
+      "sort_anchor": "foot_y",
+      "child_z_index": 0,
+      "native_alpha_unchanged": true
+    }
+  },
+  "location_bindings": [
+    {
+      "id": "bc_place_001",
+      "name": "玉虚仙宗",
+      "type": "sect",
+      "asset": "yuxu",
+      "world_width": 400,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_002",
+      "name": "玄都天府",
+      "type": "sect",
+      "asset": "xuandu",
+      "world_width": 400,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_003",
+      "name": "无相圣宗",
+      "type": "sect",
+      "asset": "wuxiang",
+      "world_width": 400,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_004",
+      "name": "太微道宫",
+      "type": "sect",
+      "asset": "taiwei",
+      "world_width": 320,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_005",
+      "name": "镇岳观",
+      "type": "sect",
+      "asset": "zhenyue",
+      "world_width": 280,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_006",
+      "name": "抱朴山",
+      "type": "sect",
+      "asset": "baopu",
+      "world_width": 260,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_007",
+      "name": "百药谷",
+      "type": "sect",
+      "asset": "baiyao",
+      "world_width": 280,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_008",
+      "name": "丹鼎宗",
+      "type": "sect",
+      "asset": "danding",
+      "world_width": 280,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_009",
+      "name": "归藏书院",
+      "type": "sect",
+      "asset": "guizang",
+      "world_width": 280,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_010",
+      "name": "沧溟水府",
+      "type": "sect",
+      "asset": "cangming",
+      "world_width": 300,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_011",
+      "name": "血河教",
+      "type": "sect",
+      "asset": "xuehe",
+      "world_width": 280,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_012",
+      "name": "蚀日宫",
+      "type": "sect",
+      "asset": "shiri",
+      "world_width": 280,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_013",
+      "name": "枯骨寺",
+      "type": "sect",
+      "asset": "kugu",
+      "world_width": 260,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_014",
+      "name": "望岫城",
+      "type": "city",
+      "asset": "city",
+      "world_width": 280,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_015",
+      "name": "绛阙城",
+      "type": "city",
+      "asset": "city",
+      "world_width": 280,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_016",
+      "name": "承天城",
+      "type": "city",
+      "asset": "city",
+      "world_width": 280,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_017",
+      "name": "赤水城",
+      "type": "city",
+      "asset": "city",
+      "world_width": 280,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_018",
+      "name": "镇海城",
+      "type": "city",
+      "asset": "city_water",
+      "world_width": 280,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_019",
+      "name": "临渊城",
+      "type": "city",
+      "asset": "city_water",
+      "world_width": 280,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_020",
+      "name": "春水府",
+      "type": "city",
+      "asset": "city_water",
+      "world_width": 280,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_021",
+      "name": "白石城",
+      "type": "city",
+      "asset": "baishi",
+      "world_width": 300,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_022",
+      "name": "溪云城",
+      "type": "city",
+      "asset": "city",
+      "world_width": 280,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_023",
+      "name": "青萝城",
+      "type": "city",
+      "asset": "city",
+      "world_width": 280,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_024",
+      "name": "暮烟城",
+      "type": "city",
+      "asset": "city",
+      "world_width": 280,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_025",
+      "name": "归寂城",
+      "type": "city",
+      "asset": "city",
+      "world_width": 280,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_026",
+      "name": "通济城",
+      "type": "city",
+      "asset": "city_water",
+      "world_width": 280,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_027",
+      "name": "松风镇",
+      "type": "town",
+      "asset": "town_mountain",
+      "world_width": 220,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_028",
+      "name": "玉泉镇",
+      "type": "town",
+      "asset": "town_mountain",
+      "world_width": 220,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_029",
+      "name": "临皋镇",
+      "type": "town",
+      "asset": "town_river",
+      "world_width": 220,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_030",
+      "name": "听风镇",
+      "type": "town",
+      "asset": "town_mountain",
+      "world_width": 220,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_031",
+      "name": "烟柳镇",
+      "type": "town",
+      "asset": "town_river",
+      "world_width": 220,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_032",
+      "name": "桑落镇",
+      "type": "town",
+      "asset": "town",
+      "world_width": 220,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_033",
+      "name": "荷汀镇",
+      "type": "town",
+      "asset": "town_river",
+      "world_width": 220,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_034",
+      "name": "岚溪镇",
+      "type": "town",
+      "asset": "town_river",
+      "world_width": 220,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_035",
+      "name": "望岚镇",
+      "type": "town",
+      "asset": "town_mountain",
+      "world_width": 220,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_036",
+      "name": "雁回镇",
+      "type": "town",
+      "asset": "town_mountain",
+      "world_width": 220,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_037",
+      "name": "槐安镇",
+      "type": "town",
+      "asset": "town",
+      "world_width": 220,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_038",
+      "name": "流丹坊",
+      "type": "market",
+      "asset": "market",
+      "world_width": 180,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_039",
+      "name": "忘机坊",
+      "type": "market",
+      "asset": "market",
+      "world_width": 180,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_040",
+      "name": "白蘋里",
+      "type": "village",
+      "asset": "village",
+      "world_width": 150,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_041",
+      "name": "桑榆里",
+      "type": "village",
+      "asset": "village",
+      "world_width": 150,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_042",
+      "name": "采薇里",
+      "type": "village",
+      "asset": "village",
+      "world_width": 150,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_043",
+      "name": "澜浦渡",
+      "type": "dock",
+      "asset": "dock",
+      "world_width": 160,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_044",
+      "name": "问津渡",
+      "type": "dock",
+      "asset": "dock",
+      "world_width": 160,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_106",
+      "name": "太和城",
+      "type": "city",
+      "asset": "city",
+      "world_width": 280,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_107",
+      "name": "洗心镇",
+      "type": "town",
+      "asset": "town_mountain",
+      "world_width": 220,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_108",
+      "name": "松月坊",
+      "type": "market",
+      "asset": "market",
+      "world_width": 180,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_112",
+      "name": "金阙城",
+      "type": "city",
+      "asset": "city",
+      "world_width": 280,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_113",
+      "name": "含光镇",
+      "type": "town",
+      "asset": "town_mountain",
+      "world_width": 220,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_114",
+      "name": "琼华坊",
+      "type": "market",
+      "asset": "market",
+      "world_width": 180,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_118",
+      "name": "永夜关",
+      "type": "city",
+      "asset": "city_fortress",
+      "world_width": 280,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_119",
+      "name": "听澜镇",
+      "type": "town",
+      "asset": "town_river",
+      "world_width": 220,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    },
+    {
+      "id": "bc_place_120",
+      "name": "夜泊坊",
+      "type": "market",
+      "asset": "market_river",
+      "world_width": 180,
+      "placement_anchor": "foot",
+      "x_source": "expanded layout drawPos[0]",
+      "y_source": "expanded layout drawPos[1]",
+      "z_source": "Y sorting from foot Y"
+    }
+  ],
+  "wild_locations": [
+    {
+      "id": "bc_place_045",
+      "name": "朔雪岭",
+      "asset": null
+    },
+    {
+      "id": "bc_place_046",
+      "name": "天门峡",
+      "asset": null
+    },
+    {
+      "id": "bc_place_047",
+      "name": "望辰台",
+      "asset": null
+    },
+    {
+      "id": "bc_place_048",
+      "name": "眠龙岗",
+      "asset": null
+    },
+    {
+      "id": "bc_place_049",
+      "name": "朱明谷",
+      "asset": null
+    },
+    {
+      "id": "bc_place_050",
+      "name": "地火窟",
+      "asset": null
+    },
+    {
+      "id": "bc_place_051",
+      "name": "赤霄石林",
+      "asset": null
+    },
+    {
+      "id": "bc_place_052",
+      "name": "石雾原",
+      "asset": null
+    },
+    {
+      "id": "bc_place_053",
+      "name": "潜龙原",
+      "asset": null
+    },
+    {
+      "id": "bc_place_054",
+      "name": "潮生泽",
+      "asset": null
+    },
+    {
+      "id": "bc_place_055",
+      "name": "沧溟滩",
+      "asset": null
+    },
+    {
+      "id": "bc_place_056",
+      "name": "沉舟湾",
+      "asset": null
+    },
+    {
+      "id": "bc_place_057",
+      "name": "镇星台",
+      "asset": null
+    },
+    {
+      "id": "bc_place_058",
+      "name": "回风峡",
+      "asset": null
+    },
+    {
+      "id": "bc_place_059",
+      "name": "绝仙谷",
+      "asset": null
+    },
+    {
+      "id": "bc_place_060",
+      "name": "凌霄故墟",
+      "asset": null
+    },
+    {
+      "id": "bc_place_061",
+      "name": "回澜滩",
+      "asset": null
+    },
+    {
+      "id": "bc_place_062",
+      "name": "涵虚泽",
+      "asset": null
+    },
+    {
+      "id": "bc_place_063",
+      "name": "蒹葭浦",
+      "asset": null
+    },
+    {
+      "id": "bc_place_064",
+      "name": "浮翠岭",
+      "asset": null
+    },
+    {
+      "id": "bc_place_065",
+      "name": "千仞沟",
+      "asset": null
+    },
+    {
+      "id": "bc_place_066",
+      "name": "问道崖",
+      "asset": null
+    },
+    {
+      "id": "bc_place_067",
+      "name": "芙蓉原",
+      "asset": null
+    },
+    {
+      "id": "bc_place_068",
+      "name": "浣纱涧",
+      "asset": null
+    },
+    {
+      "id": "bc_place_069",
+      "name": "藏真洞天",
+      "asset": null
+    },
+    {
+      "id": "bc_place_070",
+      "name": "东林地",
+      "asset": null
+    },
+    {
+      "id": "bc_place_071",
+      "name": "灵草谷",
+      "asset": null
+    },
+    {
+      "id": "bc_place_072",
+      "name": "鹿鸣林",
+      "asset": null
+    },
+    {
+      "id": "bc_place_073",
+      "name": "雷泽",
+      "asset": null
+    },
+    {
+      "id": "bc_place_074",
+      "name": "落星墟",
+      "asset": null
+    },
+    {
+      "id": "bc_place_075",
+      "name": "黑水泽",
+      "asset": null
+    },
+    {
+      "id": "bc_place_076",
+      "name": "九幽涧",
+      "asset": null
+    },
+    {
+      "id": "bc_place_077",
+      "name": "沉璧渊",
+      "asset": null
+    },
+    {
+      "id": "bc_place_078",
+      "name": "无生谷",
+      "asset": null
+    },
+    {
+      "id": "bc_place_079",
+      "name": "蚀月原",
+      "asset": null
+    },
+    {
+      "id": "bc_place_080",
+      "name": "疏影潭",
+      "asset": null
+    },
+    {
+      "id": "bc_place_081",
+      "name": "埋骨原",
+      "asset": null
+    },
+    {
+      "id": "bc_place_082",
+      "name": "玄荒战墟",
+      "asset": null
+    },
+    {
+      "id": "bc_place_083",
+      "name": "寂照林",
+      "asset": null
+    },
+    {
+      "id": "bc_place_084",
+      "name": "无名陵",
+      "asset": null
+    },
+    {
+      "id": "bc_place_085",
+      "name": "天碑原",
+      "asset": null
+    },
+    {
+      "id": "bc_place_086",
+      "name": "镜月泽",
+      "asset": null
+    },
+    {
+      "id": "bc_place_087",
+      "name": "碎星滩",
+      "asset": null
+    },
+    {
+      "id": "bc_place_088",
+      "name": "沉锋谷",
+      "asset": null
+    },
+    {
+      "id": "bc_place_089",
+      "name": "丹穴山",
+      "asset": null
+    },
+    {
+      "id": "bc_place_090",
+      "name": "天籁长峡",
+      "asset": null
+    },
+    {
+      "id": "bc_place_091",
+      "name": "砺青崖",
+      "asset": null
+    },
+    {
+      "id": "bc_place_092",
+      "name": "含章窟",
+      "asset": null
+    },
+    {
+      "id": "bc_place_093",
+      "name": "蕴辉岩",
+      "asset": null
+    },
+    {
+      "id": "bc_place_094",
+      "name": "长生坞",
+      "asset": null
+    },
+    {
+      "id": "bc_place_095",
+      "name": "万毒谷",
+      "asset": null
+    },
+    {
+      "id": "bc_place_096",
+      "name": "采露坪",
+      "asset": null
+    },
+    {
+      "id": "bc_place_097",
+      "name": "玄霜坞",
+      "asset": null
+    },
+    {
+      "id": "bc_place_098",
+      "name": "盘龙涧",
+      "asset": null
+    },
+    {
+      "id": "bc_place_099",
+      "name": "不老林",
+      "asset": null
+    },
+    {
+      "id": "bc_place_100",
+      "name": "松露台",
+      "asset": null
+    },
+    {
+      "id": "bc_place_101",
+      "name": "濯缨泉",
+      "asset": null
+    },
+    {
+      "id": "bc_place_102",
+      "name": "鸣玉溪",
+      "asset": null
+    },
+    {
+      "id": "bc_place_103",
+      "name": "紫泥湾",
+      "asset": null
+    },
+    {
+      "id": "bc_place_104",
+      "name": "凝素泽",
+      "asset": null
+    },
+    {
+      "id": "bc_place_105",
+      "name": "藏蜕林",
+      "asset": null
+    },
+    {
+      "id": "bc_place_109",
+      "name": "坐忘谷",
+      "asset": null
+    },
+    {
+      "id": "bc_place_110",
+      "name": "清籁涧",
+      "asset": null
+    },
+    {
+      "id": "bc_place_111",
+      "name": "太素原",
+      "asset": null
+    },
+    {
+      "id": "bc_place_115",
+      "name": "丹丘原",
+      "asset": null
+    },
+    {
+      "id": "bc_place_116",
+      "name": "垂虹岭",
+      "asset": null
+    },
+    {
+      "id": "bc_place_117",
+      "name": "断岳山",
+      "asset": null
+    },
+    {
+      "id": "bc_place_121",
+      "name": "葬日谷",
+      "asset": null
+    },
+    {
+      "id": "bc_place_122",
+      "name": "晦明原",
+      "asset": null
+    },
+    {
+      "id": "bc_place_123",
+      "name": "黑瘴大泽",
+      "asset": null
+    }
+  ]
+}

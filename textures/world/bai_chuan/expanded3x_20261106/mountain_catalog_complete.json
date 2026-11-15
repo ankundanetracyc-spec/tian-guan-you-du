@@ -1,0 +1,313 @@
+{
+  "version": "complete_native_mountain_components_20261106_v1",
+  "source_mode": "native_atlas_regions_only",
+  "sources_unchanged": true,
+  "segmentation": {
+    "opaque_threshold": 128,
+    "soft_threshold": 46,
+    "ownership": "nearest opaque connected component",
+    "region_padding_native_pixels": 8,
+    "id_order": "two rows by two columns of component centroids; never crop by cells"
+  },
+  "mountain_sources": {
+    "a": {
+      "path": "res://textures/world/bai_chuan/layered_20261106/source/mountains_solid_a.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "0160de7d5eb2be78004c8649e8ae30f60e89df7a560d574903503e7441b5f805"
+    },
+    "b": {
+      "path": "res://textures/world/bai_chuan/layered_20261106/source/mountains_solid_b.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "sha256": "471b16230dbe739be8c2e791f7ca7fc00b7821346ac5b3ff3fcc4444c5072920"
+    }
+  },
+  "mountain_catalog": {
+    "a0": {
+      "bank": "a",
+      "region": [
+        19,
+        93,
+        636,
+        315
+      ],
+      "native_size": [
+        636,
+        315
+      ],
+      "pivot": [
+        0.5,
+        0.9714285714285714
+      ],
+      "foot_px": [
+        337.0,
+        399
+      ],
+      "opaque_bbox": [
+        28,
+        101,
+        619,
+        298
+      ],
+      "soft_bbox": [
+        27,
+        101,
+        620,
+        299
+      ],
+      "edge_alpha_max": 1,
+      "source_alpha_unchanged": true
+    },
+    "a1": {
+      "bank": "a",
+      "region": [
+        722,
+        141,
+        796,
+        257
+      ],
+      "native_size": [
+        796,
+        257
+      ],
+      "pivot": [
+        0.5,
+        0.9649805447470817
+      ],
+      "foot_px": [
+        1120.0,
+        389
+      ],
+      "opaque_bbox": [
+        730,
+        149,
+        779,
+        240
+      ],
+      "soft_bbox": [
+        730,
+        149,
+        780,
+        241
+      ],
+      "edge_alpha_max": 1,
+      "source_alpha_unchanged": true
+    },
+    "a2": {
+      "bank": "a",
+      "region": [
+        20,
+        572,
+        629,
+        356
+      ],
+      "native_size": [
+        629,
+        356
+      ],
+      "pivot": [
+        0.5,
+        0.9747191011235955
+      ],
+      "foot_px": [
+        334.5,
+        919
+      ],
+      "opaque_bbox": [
+        29,
+        581,
+        612,
+        339
+      ],
+      "soft_bbox": [
+        28,
+        580,
+        613,
+        340
+      ],
+      "edge_alpha_max": 2,
+      "source_alpha_unchanged": true
+    },
+    "a3": {
+      "bank": "a",
+      "region": [
+        731,
+        702,
+        785,
+        165
+      ],
+      "native_size": [
+        785,
+        165
+      ],
+      "pivot": [
+        0.5,
+        0.9454545454545454
+      ],
+      "foot_px": [
+        1123.5,
+        858
+      ],
+      "opaque_bbox": [
+        739,
+        711,
+        768,
+        148
+      ],
+      "soft_bbox": [
+        739,
+        710,
+        769,
+        149
+      ],
+      "edge_alpha_max": 1,
+      "source_alpha_unchanged": true
+    },
+    "b0": {
+      "bank": "b",
+      "region": [
+        25,
+        111,
+        758,
+        295
+      ],
+      "native_size": [
+        758,
+        295
+      ],
+      "pivot": [
+        0.5,
+        0.9694915254237289
+      ],
+      "foot_px": [
+        404.0,
+        397
+      ],
+      "opaque_bbox": [
+        33,
+        120,
+        741,
+        278
+      ],
+      "soft_bbox": [
+        33,
+        119,
+        742,
+        279
+      ],
+      "edge_alpha_max": 1,
+      "source_alpha_unchanged": true
+    },
+    "b1": {
+      "bank": "b",
+      "region": [
+        833,
+        213,
+        671,
+        192
+      ],
+      "native_size": [
+        671,
+        192
+      ],
+      "pivot": [
+        0.5,
+        0.953125
+      ],
+      "foot_px": [
+        1168.5,
+        396
+      ],
+      "opaque_bbox": [
+        842,
+        221,
+        653,
+        176
+      ],
+      "soft_bbox": [
+        841,
+        221,
+        655,
+        176
+      ],
+      "edge_alpha_max": 1,
+      "source_alpha_unchanged": true
+    },
+    "b2": {
+      "bank": "b",
+      "region": [
+        37,
+        586,
+        594,
+        325
+      ],
+      "native_size": [
+        594,
+        325
+      ],
+      "pivot": [
+        0.5,
+        0.9723076923076923
+      ],
+      "foot_px": [
+        334.0,
+        902
+      ],
+      "opaque_bbox": [
+        45,
+        594,
+        578,
+        309
+      ],
+      "soft_bbox": [
+        45,
+        594,
+        578,
+        309
+      ],
+      "edge_alpha_max": 1,
+      "source_alpha_unchanged": true
+    },
+    "b3": {
+      "bank": "b",
+      "region": [
+        704,
+        718,
+        807,
+        160
+      ],
+      "native_size": [
+        807,
+        160
+      ],
+      "pivot": [
+        0.5,
+        0.94375
+      ],
+      "foot_px": [
+        1107.5,
+        869
+      ],
+      "opaque_bbox": [
+        713,
+        726,
+        790,
+        143
+      ],
+      "soft_bbox": [
+        712,
+        726,
+        791,
+        144
+      ],
+      "edge_alpha_max": 1,
+      "source_alpha_unchanged": true
+    }
+  },
+  "qa": "res://textures/world/bai_chuan/expanded3x_20261106/mountain_catalog_complete_qa.json"
+}

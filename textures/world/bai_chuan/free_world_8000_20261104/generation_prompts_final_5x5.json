@@ -1,0 +1,413 @@
+{
+  "mode": "built-in image_gen",
+  "native_output_dimensions": [
+    1254,
+    1254
+  ],
+  "composite_dimensions": [
+    6270,
+    6270
+  ],
+  "jobs": [
+    {
+      "tile": "bc_r0c0",
+      "row": 0,
+      "col": 0,
+      "guide_rect": [
+        0,
+        0,
+        251,
+        251
+      ],
+      "referenced_image_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r0c0_core.png"
+      ],
+      "prompt": "Edit ONLY the attached small square terrain crop into a new native high-detail square painting at the largest native square resolution supported. This is a precise detail reconstruction of THAT SAME CROP, not a new composition and not a zoomed-out larger map. The attached image is both the sole geometry target and the style source. Its complete left/right/top/bottom cuts define the exact output framing. Keep all landforms in precisely the same normalized positions, shapes, scale and footprint. In particular preserve every river and coastline centerline, edge position, width, tangent, branch, lake outline and their exact crossing points on all four boundaries. Preserve the mountains' silhouettes, positions, relative size, forests and spacious pale plains. Add crisp fine brush contours, rock striations, delicate leafy tree details, and subtle native rice-paper texture, faithful to the current traditional Chinese grey-green ink and pale blue mineral-watercolor palette. Refine detail inside the existing shapes. Do not enlarge peaks, move rivers, introduce or remove branches or lakes, expand the crop, add scenery from beyond this image, or change the camera. The outermost boundary geometry and paper tone must closely match the attached crop for adjacency in a 5 by 5 world map. The image must have no UI, writing, numerals, buildings, people, roads, labels, symbols, border or grid. Produce only the exact cropped landscape, finely painted at native resolution. Coordination tile bc_r0c0 (never paint this identifier).",
+      "native_output": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r0c0.png"
+    },
+    {
+      "tile": "bc_r0c1",
+      "row": 0,
+      "col": 1,
+      "guide_rect": [
+        251,
+        0,
+        502,
+        251
+      ],
+      "referenced_image_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r0c1_core.png"
+      ],
+      "prompt": "Edit ONLY the attached small square terrain crop into a new native high-detail square painting at the largest native square resolution supported. This is a precise detail reconstruction of THAT SAME CROP, not a new composition and not a zoomed-out larger map. The attached image is both the sole geometry target and the style source. Its complete left/right/top/bottom cuts define the exact output framing. Keep all landforms in precisely the same normalized positions, shapes, scale and footprint. In particular preserve every river and coastline centerline, edge position, width, tangent, branch, lake outline and their exact crossing points on all four boundaries. Preserve the mountains' silhouettes, positions, relative size, forests and spacious pale plains. Add crisp fine brush contours, rock striations, delicate leafy tree details, and subtle native rice-paper texture, faithful to the current traditional Chinese grey-green ink and pale blue mineral-watercolor palette. Refine detail inside the existing shapes. Do not enlarge peaks, move rivers, introduce or remove branches or lakes, expand the crop, add scenery from beyond this image, or change the camera. The outermost boundary geometry and paper tone must closely match the attached crop for adjacency in a 5 by 5 world map. The image must have no UI, writing, numerals, buildings, people, roads, labels, symbols, border or grid. Produce only the exact cropped landscape, finely painted at native resolution. Coordination tile bc_r0c1 (never paint this identifier).\nCritical tile-specific framing: the reference contains only a very tiny pale-blue river sliver at the extreme lower-left corner. Preserve that tiny corner cut exactly. Do not extend it into a sweeping river across the lower part; most of the lower part must remain the same pale plain, hills and woods shown in the attached target.",
+      "native_output": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r0c1.png"
+    },
+    {
+      "tile": "bc_r0c2",
+      "row": 0,
+      "col": 2,
+      "guide_rect": [
+        502,
+        0,
+        752,
+        251
+      ],
+      "referenced_image_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r0c2_core.png"
+      ],
+      "prompt": "Edit ONLY the attached small square terrain crop into a new native high-detail square painting at the largest native square resolution supported. This is a precise detail reconstruction of THAT SAME CROP, not a new composition and not a zoomed-out larger map. The attached image is both the sole geometry target and the style source. Its complete left/right/top/bottom cuts define the exact output framing. Keep all landforms in precisely the same normalized positions, shapes, scale and footprint. In particular preserve every river and coastline centerline, edge position, width, tangent, branch, lake outline and their exact crossing points on all four boundaries. Preserve the mountains' silhouettes, positions, relative size, forests and spacious pale plains. Add crisp fine brush contours, rock striations, delicate leafy tree details, and subtle native rice-paper texture, faithful to the current traditional Chinese grey-green ink and pale blue mineral-watercolor palette. Refine detail inside the existing shapes. Do not enlarge peaks, move rivers, introduce or remove branches or lakes, expand the crop, add scenery from beyond this image, or change the camera. The outermost boundary geometry and paper tone must closely match the attached crop for adjacency in a 5 by 5 world map. The image must have no UI, writing, numerals, buildings, people, roads, labels, symbols, border or grid. Produce only the exact cropped landscape, finely painted at native resolution. Coordination tile bc_r0c2 (never paint this identifier).",
+      "native_output": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r0c2.png"
+    },
+    {
+      "tile": "bc_r0c3",
+      "row": 0,
+      "col": 3,
+      "guide_rect": [
+        752,
+        0,
+        1003,
+        251
+      ],
+      "referenced_image_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r0c3_core.png"
+      ],
+      "prompt": "Edit ONLY the attached small square terrain crop into a new native high-detail square painting at the largest native square resolution supported. This is a precise detail reconstruction of THAT SAME CROP, not a new composition and not a zoomed-out larger map. The attached image is both the sole geometry target and the style source. Its complete left/right/top/bottom cuts define the exact output framing. Keep all landforms in precisely the same normalized positions, shapes, scale and footprint. In particular preserve every river and coastline centerline, edge position, width, tangent, branch, lake outline and their exact crossing points on all four boundaries. Preserve the mountains' silhouettes, positions, relative size, forests and spacious pale plains. Add crisp fine brush contours, rock striations, delicate leafy tree details, and subtle native rice-paper texture, faithful to the current traditional Chinese grey-green ink and pale blue mineral-watercolor palette. Refine detail inside the existing shapes. Do not enlarge peaks, move rivers, introduce or remove branches or lakes, expand the crop, add scenery from beyond this image, or change the camera. The outermost boundary geometry and paper tone must closely match the attached crop for adjacency in a 5 by 5 world map. The image must have no UI, writing, numerals, buildings, people, roads, labels, symbols, border or grid. Produce only the exact cropped landscape, finely painted at native resolution. Coordination tile bc_r0c3 (never paint this identifier).",
+      "native_output": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r0c3.png"
+    },
+    {
+      "tile": "bc_r0c4",
+      "row": 0,
+      "col": 4,
+      "guide_rect": [
+        1003,
+        0,
+        1254,
+        251
+      ],
+      "referenced_image_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r0c4_core.png"
+      ],
+      "prompt": "Edit ONLY the attached small square terrain crop into a new native high-detail square painting at the largest native square resolution supported. This is a precise detail reconstruction of THAT SAME CROP, not a new composition and not a zoomed-out larger map. The attached image is both the sole geometry target and the style source. Its complete left/right/top/bottom cuts define the exact output framing. Keep all landforms in precisely the same normalized positions, shapes, scale and footprint. In particular preserve every river and coastline centerline, edge position, width, tangent, branch, lake outline and their exact crossing points on all four boundaries. Preserve the mountains' silhouettes, positions, relative size, forests and spacious pale plains. Add crisp fine brush contours, rock striations, delicate leafy tree details, and subtle native rice-paper texture, faithful to the current traditional Chinese grey-green ink and pale blue mineral-watercolor palette. Refine detail inside the existing shapes. Do not enlarge peaks, move rivers, introduce or remove branches or lakes, expand the crop, add scenery from beyond this image, or change the camera. The outermost boundary geometry and paper tone must closely match the attached crop for adjacency in a 5 by 5 world map. The image must have no UI, writing, numerals, buildings, people, roads, labels, symbols, border or grid. Produce only the exact cropped landscape, finely painted at native resolution. Coordination tile bc_r0c4 (never paint this identifier).",
+      "native_output": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r0c4.png"
+    },
+    {
+      "tile": "bc_r1c0",
+      "row": 1,
+      "col": 0,
+      "guide_rect": [
+        0,
+        251,
+        251,
+        502
+      ],
+      "referenced_image_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r1c0_core.png"
+      ],
+      "prompt": "Edit ONLY the attached small square terrain crop into a new native high-detail square painting at the largest native square resolution supported. This is a precise detail reconstruction of THAT SAME CROP, not a new composition and not a zoomed-out larger map. The attached image is both the sole geometry target and the style source. Its complete left/right/top/bottom cuts define the exact output framing. Keep all landforms in precisely the same normalized positions, shapes, scale and footprint. In particular preserve every river and coastline centerline, edge position, width, tangent, branch, lake outline and their exact crossing points on all four boundaries. Preserve the mountains' silhouettes, positions, relative size, forests and spacious pale plains. Add crisp fine brush contours, rock striations, delicate leafy tree details, and subtle native rice-paper texture, faithful to the current traditional Chinese grey-green ink and pale blue mineral-watercolor palette. Refine detail inside the existing shapes. Do not enlarge peaks, move rivers, introduce or remove branches or lakes, expand the crop, add scenery from beyond this image, or change the camera. The outermost boundary geometry and paper tone must closely match the attached crop for adjacency in a 5 by 5 world map. The image must have no UI, writing, numerals, buildings, people, roads, labels, symbols, border or grid. Produce only the exact cropped landscape, finely painted at native resolution. Coordination tile bc_r1c0 (never paint this identifier).",
+      "native_output": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r1c0.png"
+    },
+    {
+      "tile": "bc_r1c1",
+      "row": 1,
+      "col": 1,
+      "guide_rect": [
+        251,
+        251,
+        502,
+        502
+      ],
+      "referenced_image_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r1c1_core.png"
+      ],
+      "prompt": "Edit ONLY the attached small square terrain crop into a new native high-detail square painting at the largest native square resolution supported. This is a precise detail reconstruction of THAT SAME CROP, not a new composition and not a zoomed-out larger map. The attached image is both the sole geometry target and the style source. Its complete left/right/top/bottom cuts define the exact output framing. Keep all landforms in precisely the same normalized positions, shapes, scale and footprint. In particular preserve every river and coastline centerline, edge position, width, tangent, branch, lake outline and their exact crossing points on all four boundaries. Preserve the mountains' silhouettes, positions, relative size, forests and spacious pale plains. Add crisp fine brush contours, rock striations, delicate leafy tree details, and subtle native rice-paper texture, faithful to the current traditional Chinese grey-green ink and pale blue mineral-watercolor palette. Refine detail inside the existing shapes. Do not enlarge peaks, move rivers, introduce or remove branches or lakes, expand the crop, add scenery from beyond this image, or change the camera. The outermost boundary geometry and paper tone must closely match the attached crop for adjacency in a 5 by 5 world map. The image must have no UI, writing, numerals, buildings, people, roads, labels, symbols, border or grid. Produce only the exact cropped landscape, finely painted at native resolution. Coordination tile bc_r1c1 (never paint this identifier).",
+      "native_output": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r1c1.png"
+    },
+    {
+      "tile": "bc_r1c2",
+      "row": 1,
+      "col": 2,
+      "guide_rect": [
+        502,
+        251,
+        752,
+        502
+      ],
+      "referenced_image_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r1c2_core.png"
+      ],
+      "prompt": "Edit ONLY the attached small square terrain crop into a new native high-detail square painting at the largest native square resolution supported. This is a precise detail reconstruction of THAT SAME CROP, not a new composition and not a zoomed-out larger map. The attached image is both the sole geometry target and the style source. Its complete left/right/top/bottom cuts define the exact output framing. Keep all landforms in precisely the same normalized positions, shapes, scale and footprint. In particular preserve every river and coastline centerline, edge position, width, tangent, branch, lake outline and their exact crossing points on all four boundaries. Preserve the mountains' silhouettes, positions, relative size, forests and spacious pale plains. Add crisp fine brush contours, rock striations, delicate leafy tree details, and subtle native rice-paper texture, faithful to the current traditional Chinese grey-green ink and pale blue mineral-watercolor palette. Refine detail inside the existing shapes. Do not enlarge peaks, move rivers, introduce or remove branches or lakes, expand the crop, add scenery from beyond this image, or change the camera. The outermost boundary geometry and paper tone must closely match the attached crop for adjacency in a 5 by 5 world map. The image must have no UI, writing, numerals, buildings, people, roads, labels, symbols, border or grid. Produce only the exact cropped landscape, finely painted at native resolution. Coordination tile bc_r1c2 (never paint this identifier).",
+      "native_output": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r1c2.png"
+    },
+    {
+      "tile": "bc_r1c3",
+      "row": 1,
+      "col": 3,
+      "guide_rect": [
+        752,
+        251,
+        1003,
+        502
+      ],
+      "referenced_image_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r1c3_core.png"
+      ],
+      "prompt": "Edit ONLY the attached small square terrain crop into a new native high-detail square painting at the largest native square resolution supported. This is a precise detail reconstruction of THAT SAME CROP, not a new composition and not a zoomed-out larger map. The attached image is both the sole geometry target and the style source. Its complete left/right/top/bottom cuts define the exact output framing. Keep all landforms in precisely the same normalized positions, shapes, scale and footprint. In particular preserve every river and coastline centerline, edge position, width, tangent, branch, lake outline and their exact crossing points on all four boundaries. Preserve the mountains' silhouettes, positions, relative size, forests and spacious pale plains. Add crisp fine brush contours, rock striations, delicate leafy tree details, and subtle native rice-paper texture, faithful to the current traditional Chinese grey-green ink and pale blue mineral-watercolor palette. Refine detail inside the existing shapes. Do not enlarge peaks, move rivers, introduce or remove branches or lakes, expand the crop, add scenery from beyond this image, or change the camera. The outermost boundary geometry and paper tone must closely match the attached crop for adjacency in a 5 by 5 world map. The image must have no UI, writing, numerals, buildings, people, roads, labels, symbols, border or grid. Produce only the exact cropped landscape, finely painted at native resolution. Coordination tile bc_r1c3 (never paint this identifier).",
+      "native_output": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r1c3.png"
+    },
+    {
+      "tile": "bc_r1c4",
+      "row": 1,
+      "col": 4,
+      "guide_rect": [
+        1003,
+        251,
+        1254,
+        502
+      ],
+      "referenced_image_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r1c4_core.png"
+      ],
+      "prompt": "Edit ONLY the attached small square terrain crop into a new native high-detail square painting at the largest native square resolution supported. This is a precise detail reconstruction of THAT SAME CROP, not a new composition and not a zoomed-out larger map. The attached image is both the sole geometry target and the style source. Its complete left/right/top/bottom cuts define the exact output framing. Keep all landforms in precisely the same normalized positions, shapes, scale and footprint. In particular preserve every river and coastline centerline, edge position, width, tangent, branch, lake outline and their exact crossing points on all four boundaries. Preserve the mountains' silhouettes, positions, relative size, forests and spacious pale plains. Add crisp fine brush contours, rock striations, delicate leafy tree details, and subtle native rice-paper texture, faithful to the current traditional Chinese grey-green ink and pale blue mineral-watercolor palette. Refine detail inside the existing shapes. Do not enlarge peaks, move rivers, introduce or remove branches or lakes, expand the crop, add scenery from beyond this image, or change the camera. The outermost boundary geometry and paper tone must closely match the attached crop for adjacency in a 5 by 5 world map. The image must have no UI, writing, numerals, buildings, people, roads, labels, symbols, border or grid. Produce only the exact cropped landscape, finely painted at native resolution. Coordination tile bc_r1c4 (never paint this identifier).",
+      "native_output": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r1c4.png"
+    },
+    {
+      "tile": "bc_r2c0",
+      "row": 2,
+      "col": 0,
+      "guide_rect": [
+        0,
+        502,
+        251,
+        752
+      ],
+      "referenced_image_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r2c0_core.png"
+      ],
+      "prompt": "Edit ONLY the attached small square terrain crop into a new native high-detail square painting at the largest native square resolution supported. This is a precise detail reconstruction of THAT SAME CROP, not a new composition and not a zoomed-out larger map. The attached image is both the sole geometry target and the style source. Its complete left/right/top/bottom cuts define the exact output framing. Keep all landforms in precisely the same normalized positions, shapes, scale and footprint. In particular preserve every river and coastline centerline, edge position, width, tangent, branch, lake outline and their exact crossing points on all four boundaries. Preserve the mountains' silhouettes, positions, relative size, forests and spacious pale plains. Add crisp fine brush contours, rock striations, delicate leafy tree details, and subtle native rice-paper texture, faithful to the current traditional Chinese grey-green ink and pale blue mineral-watercolor palette. Refine detail inside the existing shapes. Do not enlarge peaks, move rivers, introduce or remove branches or lakes, expand the crop, add scenery from beyond this image, or change the camera. The outermost boundary geometry and paper tone must closely match the attached crop for adjacency in a 5 by 5 world map. The image must have no UI, writing, numerals, buildings, people, roads, labels, symbols, border or grid. Produce only the exact cropped landscape, finely painted at native resolution. Coordination tile bc_r2c0 (never paint this identifier).",
+      "native_output": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r2c0.png"
+    },
+    {
+      "tile": "bc_r2c1",
+      "row": 2,
+      "col": 1,
+      "guide_rect": [
+        251,
+        502,
+        502,
+        752
+      ],
+      "referenced_image_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r2c1_core.png"
+      ],
+      "prompt": "Edit ONLY the attached small square terrain crop into a new native high-detail square painting at the largest native square resolution supported. This is a precise detail reconstruction of THAT SAME CROP, not a new composition and not a zoomed-out larger map. The attached image is both the sole geometry target and the style source. Its complete left/right/top/bottom cuts define the exact output framing. Keep all landforms in precisely the same normalized positions, shapes, scale and footprint. In particular preserve every river and coastline centerline, edge position, width, tangent, branch, lake outline and their exact crossing points on all four boundaries. Preserve the mountains' silhouettes, positions, relative size, forests and spacious pale plains. Add crisp fine brush contours, rock striations, delicate leafy tree details, and subtle native rice-paper texture, faithful to the current traditional Chinese grey-green ink and pale blue mineral-watercolor palette. Refine detail inside the existing shapes. Do not enlarge peaks, move rivers, introduce or remove branches or lakes, expand the crop, add scenery from beyond this image, or change the camera. The outermost boundary geometry and paper tone must closely match the attached crop for adjacency in a 5 by 5 world map. The image must have no UI, writing, numerals, buildings, people, roads, labels, symbols, border or grid. Produce only the exact cropped landscape, finely painted at native resolution. Coordination tile bc_r2c1 (never paint this identifier).",
+      "native_output": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r2c1.png"
+    },
+    {
+      "tile": "bc_r2c2",
+      "row": 2,
+      "col": 2,
+      "guide_rect": [
+        502,
+        502,
+        752,
+        752
+      ],
+      "referenced_image_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r2c2_core.png"
+      ],
+      "prompt": "Edit ONLY the attached small square terrain crop into a new native high-detail square painting at the largest native square resolution supported. This is a precise detail reconstruction of THAT SAME CROP, not a new composition and not a zoomed-out larger map. The attached image is both the sole geometry target and the style source. Its complete left/right/top/bottom cuts define the exact output framing. Keep all landforms in precisely the same normalized positions, shapes, scale and footprint. In particular preserve every river and coastline centerline, edge position, width, tangent, branch, lake outline and their exact crossing points on all four boundaries. Preserve the mountains' silhouettes, positions, relative size, forests and spacious pale plains. Add crisp fine brush contours, rock striations, delicate leafy tree details, and subtle native rice-paper texture, faithful to the current traditional Chinese grey-green ink and pale blue mineral-watercolor palette. Refine detail inside the existing shapes. Do not enlarge peaks, move rivers, introduce or remove branches or lakes, expand the crop, add scenery from beyond this image, or change the camera. The outermost boundary geometry and paper tone must closely match the attached crop for adjacency in a 5 by 5 world map. The image must have no UI, writing, numerals, buildings, people, roads, labels, symbols, border or grid. Produce only the exact cropped landscape, finely painted at native resolution. Coordination tile bc_r2c2 (never paint this identifier).",
+      "native_output": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r2c2.png"
+    },
+    {
+      "tile": "bc_r2c3",
+      "row": 2,
+      "col": 3,
+      "guide_rect": [
+        752,
+        502,
+        1003,
+        752
+      ],
+      "referenced_image_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r2c3_core.png"
+      ],
+      "prompt": "Edit ONLY the attached small square terrain crop into a new native high-detail square painting at the largest native square resolution supported. This is a precise detail reconstruction of THAT SAME CROP, not a new composition and not a zoomed-out larger map. The attached image is both the sole geometry target and the style source. Its complete left/right/top/bottom cuts define the exact output framing. Keep all landforms in precisely the same normalized positions, shapes, scale and footprint. In particular preserve every river and coastline centerline, edge position, width, tangent, branch, lake outline and their exact crossing points on all four boundaries. Preserve the mountains' silhouettes, positions, relative size, forests and spacious pale plains. Add crisp fine brush contours, rock striations, delicate leafy tree details, and subtle native rice-paper texture, faithful to the current traditional Chinese grey-green ink and pale blue mineral-watercolor palette. Refine detail inside the existing shapes. Do not enlarge peaks, move rivers, introduce or remove branches or lakes, expand the crop, add scenery from beyond this image, or change the camera. The outermost boundary geometry and paper tone must closely match the attached crop for adjacency in a 5 by 5 world map. The image must have no UI, writing, numerals, buildings, people, roads, labels, symbols, border or grid. Produce only the exact cropped landscape, finely painted at native resolution. Coordination tile bc_r2c3 (never paint this identifier).",
+      "native_output": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r2c3.png"
+    },
+    {
+      "tile": "bc_r2c4",
+      "row": 2,
+      "col": 4,
+      "guide_rect": [
+        1003,
+        502,
+        1254,
+        752
+      ],
+      "referenced_image_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r2c4_core.png"
+      ],
+      "prompt": "Edit ONLY the attached small square terrain crop into a new native high-detail square painting at the largest native square resolution supported. This is a precise detail reconstruction of THAT SAME CROP, not a new composition and not a zoomed-out larger map. The attached image is both the sole geometry target and the style source. Its complete left/right/top/bottom cuts define the exact output framing. Keep all landforms in precisely the same normalized positions, shapes, scale and footprint. In particular preserve every river and coastline centerline, edge position, width, tangent, branch, lake outline and their exact crossing points on all four boundaries. Preserve the mountains' silhouettes, positions, relative size, forests and spacious pale plains. Add crisp fine brush contours, rock striations, delicate leafy tree details, and subtle native rice-paper texture, faithful to the current traditional Chinese grey-green ink and pale blue mineral-watercolor palette. Refine detail inside the existing shapes. Do not enlarge peaks, move rivers, introduce or remove branches or lakes, expand the crop, add scenery from beyond this image, or change the camera. The outermost boundary geometry and paper tone must closely match the attached crop for adjacency in a 5 by 5 world map. The image must have no UI, writing, numerals, buildings, people, roads, labels, symbols, border or grid. Produce only the exact cropped landscape, finely painted at native resolution. Coordination tile bc_r2c4 (never paint this identifier).",
+      "native_output": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r2c4.png"
+    },
+    {
+      "tile": "bc_r3c0",
+      "row": 3,
+      "col": 0,
+      "guide_rect": [
+        0,
+        752,
+        251,
+        1003
+      ],
+      "referenced_image_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r3c0_core.png"
+      ],
+      "prompt": "Edit ONLY the attached small square terrain crop into a new native high-detail square painting at the largest native square resolution supported. This is a precise detail reconstruction of THAT SAME CROP, not a new composition and not a zoomed-out larger map. The attached image is both the sole geometry target and the style source. Its complete left/right/top/bottom cuts define the exact output framing. Keep all landforms in precisely the same normalized positions, shapes, scale and footprint. In particular preserve every river and coastline centerline, edge position, width, tangent, branch, lake outline and their exact crossing points on all four boundaries. Preserve the mountains' silhouettes, positions, relative size, forests and spacious pale plains. Add crisp fine brush contours, rock striations, delicate leafy tree details, and subtle native rice-paper texture, faithful to the current traditional Chinese grey-green ink and pale blue mineral-watercolor palette. Refine detail inside the existing shapes. Do not enlarge peaks, move rivers, introduce or remove branches or lakes, expand the crop, add scenery from beyond this image, or change the camera. The outermost boundary geometry and paper tone must closely match the attached crop for adjacency in a 5 by 5 world map. The image must have no UI, writing, numerals, buildings, people, roads, labels, symbols, border or grid. Produce only the exact cropped landscape, finely painted at native resolution. Coordination tile bc_r3c0 (never paint this identifier).",
+      "native_output": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r3c0.png"
+    },
+    {
+      "tile": "bc_r3c1",
+      "row": 3,
+      "col": 1,
+      "guide_rect": [
+        251,
+        752,
+        502,
+        1003
+      ],
+      "referenced_image_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r3c1_core.png"
+      ],
+      "prompt": "Edit ONLY the attached small square terrain crop into a new native high-detail square painting at the largest native square resolution supported. This is a precise detail reconstruction of THAT SAME CROP, not a new composition and not a zoomed-out larger map. The attached image is both the sole geometry target and the style source. Its complete left/right/top/bottom cuts define the exact output framing. Keep all landforms in precisely the same normalized positions, shapes, scale and footprint. In particular preserve every river and coastline centerline, edge position, width, tangent, branch, lake outline and their exact crossing points on all four boundaries. Preserve the mountains' silhouettes, positions, relative size, forests and spacious pale plains. Add crisp fine brush contours, rock striations, delicate leafy tree details, and subtle native rice-paper texture, faithful to the current traditional Chinese grey-green ink and pale blue mineral-watercolor palette. Refine detail inside the existing shapes. Do not enlarge peaks, move rivers, introduce or remove branches or lakes, expand the crop, add scenery from beyond this image, or change the camera. The outermost boundary geometry and paper tone must closely match the attached crop for adjacency in a 5 by 5 world map. The image must have no UI, writing, numerals, buildings, people, roads, labels, symbols, border or grid. Produce only the exact cropped landscape, finely painted at native resolution. Coordination tile bc_r3c1 (never paint this identifier).",
+      "native_output": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r3c1.png"
+    },
+    {
+      "tile": "bc_r3c2",
+      "row": 3,
+      "col": 2,
+      "guide_rect": [
+        502,
+        752,
+        752,
+        1003
+      ],
+      "referenced_image_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r3c2_core.png"
+      ],
+      "prompt": "Edit ONLY the attached small square terrain crop into a new native high-detail square painting at the largest native square resolution supported. This is a precise detail reconstruction of THAT SAME CROP, not a new composition and not a zoomed-out larger map. The attached image is both the sole geometry target and the style source. Its complete left/right/top/bottom cuts define the exact output framing. Keep all landforms in precisely the same normalized positions, shapes, scale and footprint. In particular preserve every river and coastline centerline, edge position, width, tangent, branch, lake outline and their exact crossing points on all four boundaries. Preserve the mountains' silhouettes, positions, relative size, forests and spacious pale plains. Add crisp fine brush contours, rock striations, delicate leafy tree details, and subtle native rice-paper texture, faithful to the current traditional Chinese grey-green ink and pale blue mineral-watercolor palette. Refine detail inside the existing shapes. Do not enlarge peaks, move rivers, introduce or remove branches or lakes, expand the crop, add scenery from beyond this image, or change the camera. The outermost boundary geometry and paper tone must closely match the attached crop for adjacency in a 5 by 5 world map. The image must have no UI, writing, numerals, buildings, people, roads, labels, symbols, border or grid. Produce only the exact cropped landscape, finely painted at native resolution. Coordination tile bc_r3c2 (never paint this identifier).",
+      "native_output": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r3c2.png"
+    },
+    {
+      "tile": "bc_r3c3",
+      "row": 3,
+      "col": 3,
+      "guide_rect": [
+        752,
+        752,
+        1003,
+        1003
+      ],
+      "referenced_image_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r3c3_core.png"
+      ],
+      "prompt": "Edit ONLY the attached small square terrain crop into a new native high-detail square painting at the largest native square resolution supported. This is a precise detail reconstruction of THAT SAME CROP, not a new composition and not a zoomed-out larger map. The attached image is both the sole geometry target and the style source. Its complete left/right/top/bottom cuts define the exact output framing. Keep all landforms in precisely the same normalized positions, shapes, scale and footprint. In particular preserve every river and coastline centerline, edge position, width, tangent, branch, lake outline and their exact crossing points on all four boundaries. Preserve the mountains' silhouettes, positions, relative size, forests and spacious pale plains. Add crisp fine brush contours, rock striations, delicate leafy tree details, and subtle native rice-paper texture, faithful to the current traditional Chinese grey-green ink and pale blue mineral-watercolor palette. Refine detail inside the existing shapes. Do not enlarge peaks, move rivers, introduce or remove branches or lakes, expand the crop, add scenery from beyond this image, or change the camera. The outermost boundary geometry and paper tone must closely match the attached crop for adjacency in a 5 by 5 world map. The image must have no UI, writing, numerals, buildings, people, roads, labels, symbols, border or grid. Produce only the exact cropped landscape, finely painted at native resolution. Coordination tile bc_r3c3 (never paint this identifier).",
+      "native_output": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r3c3.png"
+    },
+    {
+      "tile": "bc_r3c4",
+      "row": 3,
+      "col": 4,
+      "guide_rect": [
+        1003,
+        752,
+        1254,
+        1003
+      ],
+      "referenced_image_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r3c4_core.png"
+      ],
+      "prompt": "Edit ONLY the attached small square terrain crop into a new native high-detail square painting at the largest native square resolution supported. This is a precise detail reconstruction of THAT SAME CROP, not a new composition and not a zoomed-out larger map. The attached image is both the sole geometry target and the style source. Its complete left/right/top/bottom cuts define the exact output framing. Keep all landforms in precisely the same normalized positions, shapes, scale and footprint. In particular preserve every river and coastline centerline, edge position, width, tangent, branch, lake outline and their exact crossing points on all four boundaries. Preserve the mountains' silhouettes, positions, relative size, forests and spacious pale plains. Add crisp fine brush contours, rock striations, delicate leafy tree details, and subtle native rice-paper texture, faithful to the current traditional Chinese grey-green ink and pale blue mineral-watercolor palette. Refine detail inside the existing shapes. Do not enlarge peaks, move rivers, introduce or remove branches or lakes, expand the crop, add scenery from beyond this image, or change the camera. The outermost boundary geometry and paper tone must closely match the attached crop for adjacency in a 5 by 5 world map. The image must have no UI, writing, numerals, buildings, people, roads, labels, symbols, border or grid. Produce only the exact cropped landscape, finely painted at native resolution. Coordination tile bc_r3c4 (never paint this identifier).",
+      "native_output": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r3c4.png"
+    },
+    {
+      "tile": "bc_r4c0",
+      "row": 4,
+      "col": 0,
+      "guide_rect": [
+        0,
+        1003,
+        251,
+        1254
+      ],
+      "referenced_image_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r4c0_core.png"
+      ],
+      "prompt": "Edit ONLY the attached small square terrain crop into a new native high-detail square painting at the largest native square resolution supported. This is a precise detail reconstruction of THAT SAME CROP, not a new composition and not a zoomed-out larger map. The attached image is both the sole geometry target and the style source. Its complete left/right/top/bottom cuts define the exact output framing. Keep all landforms in precisely the same normalized positions, shapes, scale and footprint. In particular preserve every river and coastline centerline, edge position, width, tangent, branch, lake outline and their exact crossing points on all four boundaries. Preserve the mountains' silhouettes, positions, relative size, forests and spacious pale plains. Add crisp fine brush contours, rock striations, delicate leafy tree details, and subtle native rice-paper texture, faithful to the current traditional Chinese grey-green ink and pale blue mineral-watercolor palette. Refine detail inside the existing shapes. Do not enlarge peaks, move rivers, introduce or remove branches or lakes, expand the crop, add scenery from beyond this image, or change the camera. The outermost boundary geometry and paper tone must closely match the attached crop for adjacency in a 5 by 5 world map. The image must have no UI, writing, numerals, buildings, people, roads, labels, symbols, border or grid. Produce only the exact cropped landscape, finely painted at native resolution. Coordination tile bc_r4c0 (never paint this identifier).",
+      "native_output": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r4c0.png"
+    },
+    {
+      "tile": "bc_r4c1",
+      "row": 4,
+      "col": 1,
+      "guide_rect": [
+        251,
+        1003,
+        502,
+        1254
+      ],
+      "referenced_image_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r4c1_core.png"
+      ],
+      "prompt": "Edit ONLY the attached small square terrain crop into a new native high-detail square painting at the largest native square resolution supported. This is a precise detail reconstruction of THAT SAME CROP, not a new composition and not a zoomed-out larger map. The attached image is both the sole geometry target and the style source. Its complete left/right/top/bottom cuts define the exact output framing. Keep all landforms in precisely the same normalized positions, shapes, scale and footprint. In particular preserve every river and coastline centerline, edge position, width, tangent, branch, lake outline and their exact crossing points on all four boundaries. Preserve the mountains' silhouettes, positions, relative size, forests and spacious pale plains. Add crisp fine brush contours, rock striations, delicate leafy tree details, and subtle native rice-paper texture, faithful to the current traditional Chinese grey-green ink and pale blue mineral-watercolor palette. Refine detail inside the existing shapes. Do not enlarge peaks, move rivers, introduce or remove branches or lakes, expand the crop, add scenery from beyond this image, or change the camera. The outermost boundary geometry and paper tone must closely match the attached crop for adjacency in a 5 by 5 world map. The image must have no UI, writing, numerals, buildings, people, roads, labels, symbols, border or grid. Produce only the exact cropped landscape, finely painted at native resolution. Coordination tile bc_r4c1 (never paint this identifier).",
+      "native_output": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r4c1.png"
+    },
+    {
+      "tile": "bc_r4c2",
+      "row": 4,
+      "col": 2,
+      "guide_rect": [
+        502,
+        1003,
+        752,
+        1254
+      ],
+      "referenced_image_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r4c2_core.png"
+      ],
+      "prompt": "Edit ONLY the attached small square terrain crop into a new native high-detail square painting at the largest native square resolution supported. This is a precise detail reconstruction of THAT SAME CROP, not a new composition and not a zoomed-out larger map. The attached image is both the sole geometry target and the style source. Its complete left/right/top/bottom cuts define the exact output framing. Keep all landforms in precisely the same normalized positions, shapes, scale and footprint. In particular preserve every river and coastline centerline, edge position, width, tangent, branch, lake outline and their exact crossing points on all four boundaries. Preserve the mountains' silhouettes, positions, relative size, forests and spacious pale plains. Add crisp fine brush contours, rock striations, delicate leafy tree details, and subtle native rice-paper texture, faithful to the current traditional Chinese grey-green ink and pale blue mineral-watercolor palette. Refine detail inside the existing shapes. Do not enlarge peaks, move rivers, introduce or remove branches or lakes, expand the crop, add scenery from beyond this image, or change the camera. The outermost boundary geometry and paper tone must closely match the attached crop for adjacency in a 5 by 5 world map. The image must have no UI, writing, numerals, buildings, people, roads, labels, symbols, border or grid. Produce only the exact cropped landscape, finely painted at native resolution. Coordination tile bc_r4c2 (never paint this identifier).",
+      "native_output": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r4c2.png"
+    },
+    {
+      "tile": "bc_r4c3",
+      "row": 4,
+      "col": 3,
+      "guide_rect": [
+        752,
+        1003,
+        1003,
+        1254
+      ],
+      "referenced_image_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r4c3_core.png"
+      ],
+      "prompt": "Edit ONLY the attached small square terrain crop into a new native high-detail square painting at the largest native square resolution supported. This is a precise detail reconstruction of THAT SAME CROP, not a new composition and not a zoomed-out larger map. The attached image is both the sole geometry target and the style source. Its complete left/right/top/bottom cuts define the exact output framing. Keep all landforms in precisely the same normalized positions, shapes, scale and footprint. In particular preserve every river and coastline centerline, edge position, width, tangent, branch, lake outline and their exact crossing points on all four boundaries. Preserve the mountains' silhouettes, positions, relative size, forests and spacious pale plains. Add crisp fine brush contours, rock striations, delicate leafy tree details, and subtle native rice-paper texture, faithful to the current traditional Chinese grey-green ink and pale blue mineral-watercolor palette. Refine detail inside the existing shapes. Do not enlarge peaks, move rivers, introduce or remove branches or lakes, expand the crop, add scenery from beyond this image, or change the camera. The outermost boundary geometry and paper tone must closely match the attached crop for adjacency in a 5 by 5 world map. The image must have no UI, writing, numerals, buildings, people, roads, labels, symbols, border or grid. Produce only the exact cropped landscape, finely painted at native resolution. Coordination tile bc_r4c3 (never paint this identifier).",
+      "native_output": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r4c3.png"
+    },
+    {
+      "tile": "bc_r4c4",
+      "row": 4,
+      "col": 4,
+      "guide_rect": [
+        1003,
+        1003,
+        1254,
+        1254
+      ],
+      "referenced_image_paths": [
+        "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\references_5x5\\shared_guides\\bc_r4c4_core.png"
+      ],
+      "prompt": "Edit ONLY the attached small square terrain crop into a new native high-detail square painting at the largest native square resolution supported. This is a precise detail reconstruction of THAT SAME CROP, not a new composition and not a zoomed-out larger map. The attached image is both the sole geometry target and the style source. Its complete left/right/top/bottom cuts define the exact output framing. Keep all landforms in precisely the same normalized positions, shapes, scale and footprint. In particular preserve every river and coastline centerline, edge position, width, tangent, branch, lake outline and their exact crossing points on all four boundaries. Preserve the mountains' silhouettes, positions, relative size, forests and spacious pale plains. Add crisp fine brush contours, rock striations, delicate leafy tree details, and subtle native rice-paper texture, faithful to the current traditional Chinese grey-green ink and pale blue mineral-watercolor palette. Refine detail inside the existing shapes. Do not enlarge peaks, move rivers, introduce or remove branches or lakes, expand the crop, add scenery from beyond this image, or change the camera. The outermost boundary geometry and paper tone must closely match the attached crop for adjacency in a 5 by 5 world map. The image must have no UI, writing, numerals, buildings, people, roads, labels, symbols, border or grid. Produce only the exact cropped landscape, finely painted at native resolution. Coordination tile bc_r4c4 (never paint this identifier).",
+      "native_output": "E:\\stacklands\\textures\\world\\bai_chuan\\free_world_8000_20261104\\tiles_5x5_native\\bc_r4c4.png"
+    }
+  ]
+}

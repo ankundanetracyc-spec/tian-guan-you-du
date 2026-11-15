@@ -1,0 +1,171 @@
+{
+  "purpose": "User requests a more compact 3x3 world using the same painting style.",
+  "world_kilometres": [
+    8000,
+    8000
+  ],
+  "previous_virtual_canvas": [
+    12288,
+    12288
+  ],
+  "virtual_canvas": [
+    7372.8,
+    7372.8
+  ],
+  "linear_display_scale": 0.6,
+  "grid": [
+    3,
+    3
+  ],
+  "tile_pixels": [
+    2090,
+    2090
+  ],
+  "assembled_pixels": [
+    6270,
+    6270
+  ],
+  "operation": "Exact crop/retiling only, without image resizing or new image generation.",
+  "painting_source": "textures/world/bai_chuan/free_world_8000_20261104/master_8000.png",
+  "master_sha256": "385f5ebf0898111767b4738c14e3deb071c1a32873aa05a633d027af88574cb9",
+  "original_generation": "Built-in image_gen; 25 independently generated 1254px regions, previously assembled and seam-treated.",
+  "original_prompt_record": "textures/world/bai_chuan/free_world_8000_20261104/generation_prompts_final_5x5.json",
+  "original_assembly_record": "textures/world/bai_chuan/free_world_8000_20261104/final_5x5_assembly_audit.json",
+  "tiles": [
+    {
+      "file": "textures/world/bai_chuan/free_world_8000_3x3_20261104/tiles/bc_r0c0.png",
+      "size": [
+        2090,
+        2090
+      ],
+      "source_rectangle": [
+        0,
+        0,
+        2090,
+        2090
+      ],
+      "sha256": "c32413f1882db20eb34ed29068d17ffe4f53ee4ae91c84b7541ace711362deef",
+      "pixel_mismatches": 0
+    },
+    {
+      "file": "textures/world/bai_chuan/free_world_8000_3x3_20261104/tiles/bc_r0c1.png",
+      "size": [
+        2090,
+        2090
+      ],
+      "source_rectangle": [
+        2090,
+        0,
+        4180,
+        2090
+      ],
+      "sha256": "dc4317891ed71b45d5e445746e18bfa102738c777c3cc1d940dea19888948a96",
+      "pixel_mismatches": 0
+    },
+    {
+      "file": "textures/world/bai_chuan/free_world_8000_3x3_20261104/tiles/bc_r0c2.png",
+      "size": [
+        2090,
+        2090
+      ],
+      "source_rectangle": [
+        4180,
+        0,
+        6270,
+        2090
+      ],
+      "sha256": "4a72ec7652fa2d4fb28ce668776291378001ce414c347dec75bd968ea36c6e2b",
+      "pixel_mismatches": 0
+    },
+    {
+      "file": "textures/world/bai_chuan/free_world_8000_3x3_20261104/tiles/bc_r1c0.png",
+      "size": [
+        2090,
+        2090
+      ],
+      "source_rectangle": [
+        0,
+        2090,
+        2090,
+        4180
+      ],
+      "sha256": "a81d8f585c03474e5d9f141516a65f39e2a5ab96a9f0b267d7a896fb531741e7",
+      "pixel_mismatches": 0
+    },
+    {
+      "file": "textures/world/bai_chuan/free_world_8000_3x3_20261104/tiles/bc_r1c1.png",
+      "size": [
+        2090,
+        2090
+      ],
+      "source_rectangle": [
+        2090,
+        2090,
+        4180,
+        4180
+      ],
+      "sha256": "2313fae0ff5f8ac316aca477a1f96b218ce381e55e834100467fbacd695dfb3e",
+      "pixel_mismatches": 0
+    },
+    {
+      "file": "textures/world/bai_chuan/free_world_8000_3x3_20261104/tiles/bc_r1c2.png",
+      "size": [
+        2090,
+        2090
+      ],
+      "source_rectangle": [
+        4180,
+        2090,
+        6270,
+        4180
+      ],
+      "sha256": "63b096b5acd73aba8687f8edc441a879896b522836c8ec0b5c99ace252f2944a",
+      "pixel_mismatches": 0
+    },
+    {
+      "file": "textures/world/bai_chuan/free_world_8000_3x3_20261104/tiles/bc_r2c0.png",
+      "size": [
+        2090,
+        2090
+      ],
+      "source_rectangle": [
+        0,
+        4180,
+        2090,
+        6270
+      ],
+      "sha256": "4a8f92201b3bb0a3a679c0c23b97bb86f9fcaa4f4afd672a65b8b7961d289e59",
+      "pixel_mismatches": 0
+    },
+    {
+      "file": "textures/world/bai_chuan/free_world_8000_3x3_20261104/tiles/bc_r2c1.png",
+      "size": [
+        2090,
+        2090
+      ],
+      "source_rectangle": [
+        2090,
+        4180,
+        4180,
+        6270
+      ],
+      "sha256": "bf780cf2dc171be7546f4af8b63feab81a522ad777ae2996b535fb29e3e3aa31",
+      "pixel_mismatches": 0
+    },
+    {
+      "file": "textures/world/bai_chuan/free_world_8000_3x3_20261104/tiles/bc_r2c2.png",
+      "size": [
+        2090,
+        2090
+      ],
+      "source_rectangle": [
+        4180,
+        4180,
+        6270,
+        6270
+      ],
+      "sha256": "821e695608ec13d32840b9acee6031037218b74bb220cebee2d25bd368a8b8d2",
+      "pixel_mismatches": 0
+    }
+  ]
+}

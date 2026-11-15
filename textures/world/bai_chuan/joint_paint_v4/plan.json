@@ -1,0 +1,2783 @@
+{
+  "version": 4,
+  "worldPixels": 6144,
+  "framePixels": 1254,
+  "sourceMaster": "E:\\stacklands/textures/world/bai_chuan/whole_paint_v3/master_6144.png",
+  "sourceHash": "f1935e250e3896892ca8322d1ebe6ce9556aed754bd0fde291c8b8a51bcf1f24",
+  "sites": [
+    {
+      "id": "bc_place_001",
+      "name": "玉虚仙宗",
+      "type": "sect",
+      "level": 1,
+      "logicalPos": [
+        22,
+        74
+      ],
+      "anchor": [
+        1351.68,
+        4546.56
+      ],
+      "size": [
+        164,
+        110
+      ],
+      "owner": "r5c2"
+    },
+    {
+      "id": "bc_place_002",
+      "name": "玄都天府",
+      "type": "sect",
+      "level": 1,
+      "logicalPos": [
+        43,
+        19
+      ],
+      "anchor": [
+        2641.92,
+        1167.36
+      ],
+      "size": [
+        164,
+        110
+      ],
+      "owner": "r2c3"
+    },
+    {
+      "id": "bc_place_003",
+      "name": "无相圣宗",
+      "type": "sect",
+      "level": 1,
+      "logicalPos": [
+        83,
+        61
+      ],
+      "anchor": [
+        5099.52,
+        3747.84
+      ],
+      "size": [
+        164,
+        110
+      ],
+      "owner": "r4c5"
+    },
+    {
+      "id": "bc_place_004",
+      "name": "太微道宫",
+      "type": "sect",
+      "level": 2,
+      "logicalPos": [
+        35,
+        50
+      ],
+      "anchor": [
+        2150.4,
+        3072
+      ],
+      "size": [
+        118,
+        82
+      ],
+      "owner": "r3c3"
+    },
+    {
+      "id": "bc_place_005",
+      "name": "镇岳观",
+      "type": "sect",
+      "level": 2,
+      "logicalPos": [
+        12,
+        47
+      ],
+      "anchor": [
+        737.28,
+        2887.68
+      ],
+      "size": [
+        118,
+        82
+      ],
+      "owner": "r3c1"
+    },
+    {
+      "id": "bc_place_006",
+      "name": "抱朴山",
+      "type": "sect",
+      "level": 2,
+      "logicalPos": [
+        43,
+        65
+      ],
+      "anchor": [
+        2641.92,
+        3993.6
+      ],
+      "size": [
+        118,
+        82
+      ],
+      "owner": "r4c3"
+    },
+    {
+      "id": "bc_place_007",
+      "name": "百药谷",
+      "type": "sect",
+      "level": 2,
+      "logicalPos": [
+        36,
+        91
+      ],
+      "anchor": [
+        2211.84,
+        5591.04
+      ],
+      "size": [
+        118,
+        82
+      ],
+      "owner": "r6c3"
+    },
+    {
+      "id": "bc_place_008",
+      "name": "丹鼎宗",
+      "type": "sect",
+      "level": 2,
+      "logicalPos": [
+        61,
+        8
+      ],
+      "anchor": [
+        3747.84,
+        491.52
+      ],
+      "size": [
+        118,
+        82
+      ],
+      "owner": "r1c4"
+    },
+    {
+      "id": "bc_place_009",
+      "name": "归藏书院",
+      "type": "sect",
+      "level": 2,
+      "logicalPos": [
+        62,
+        37
+      ],
+      "anchor": [
+        3809.28,
+        2273.28
+      ],
+      "size": [
+        118,
+        82
+      ],
+      "owner": "r3c4"
+    },
+    {
+      "id": "bc_place_010",
+      "name": "沧溟水府",
+      "type": "sect",
+      "level": 2,
+      "logicalPos": [
+        72,
+        17
+      ],
+      "anchor": [
+        4423.68,
+        1044.48
+      ],
+      "size": [
+        118,
+        82
+      ],
+      "owner": "r1c5"
+    },
+    {
+      "id": "bc_place_011",
+      "name": "血河教",
+      "type": "sect",
+      "level": 2,
+      "logicalPos": [
+        65,
+        82
+      ],
+      "anchor": [
+        3993.6,
+        5038.08
+      ],
+      "size": [
+        118,
+        82
+      ],
+      "owner": "r5c4"
+    },
+    {
+      "id": "bc_place_012",
+      "name": "蚀日宫",
+      "type": "sect",
+      "level": 2,
+      "logicalPos": [
+        88,
+        88
+      ],
+      "anchor": [
+        5406.72,
+        5406.72
+      ],
+      "size": [
+        118,
+        82
+      ],
+      "owner": "r6c6"
+    },
+    {
+      "id": "bc_place_013",
+      "name": "枯骨寺",
+      "type": "sect",
+      "level": 2,
+      "logicalPos": [
+        83,
+        36
+      ],
+      "anchor": [
+        5099.52,
+        2211.84
+      ],
+      "size": [
+        118,
+        82
+      ],
+      "owner": "r3c5"
+    },
+    {
+      "id": "bc_place_014",
+      "name": "望岫城",
+      "type": "city",
+      "level": 0,
+      "logicalPos": [
+        20,
+        29
+      ],
+      "anchor": [
+        1228.8,
+        1781.76
+      ],
+      "size": [
+        142,
+        104
+      ],
+      "owner": "r2c2"
+    },
+    {
+      "id": "bc_place_015",
+      "name": "绛阙城",
+      "type": "city",
+      "level": 0,
+      "logicalPos": [
+        54,
+        19
+      ],
+      "anchor": [
+        3317.76,
+        1167.36
+      ],
+      "size": [
+        142,
+        104
+      ],
+      "owner": "r2c4"
+    },
+    {
+      "id": "bc_place_016",
+      "name": "承天城",
+      "type": "city",
+      "level": 0,
+      "logicalPos": [
+        43,
+        37
+      ],
+      "anchor": [
+        2641.92,
+        2273.28
+      ],
+      "size": [
+        142,
+        104
+      ],
+      "owner": "r3c3"
+    },
+    {
+      "id": "bc_place_017",
+      "name": "赤水城",
+      "type": "city",
+      "level": 0,
+      "logicalPos": [
+        25,
+        48
+      ],
+      "anchor": [
+        1536,
+        2949.12
+      ],
+      "size": [
+        142,
+        104
+      ],
+      "owner": "r3c2"
+    },
+    {
+      "id": "bc_place_018",
+      "name": "镇海城",
+      "type": "city",
+      "level": 0,
+      "logicalPos": [
+        88,
+        12
+      ],
+      "anchor": [
+        5406.72,
+        737.28
+      ],
+      "size": [
+        142,
+        104
+      ],
+      "owner": "r1c6"
+    },
+    {
+      "id": "bc_place_019",
+      "name": "临渊城",
+      "type": "city",
+      "level": 0,
+      "logicalPos": [
+        70,
+        26
+      ],
+      "anchor": [
+        4300.8,
+        1597.44
+      ],
+      "size": [
+        142,
+        104
+      ],
+      "owner": "r2c5"
+    },
+    {
+      "id": "bc_place_020",
+      "name": "春水府",
+      "type": "city",
+      "level": 0,
+      "logicalPos": [
+        49,
+        55
+      ],
+      "anchor": [
+        3010.56,
+        3379.2
+      ],
+      "size": [
+        142,
+        104
+      ],
+      "owner": "r4c3"
+    },
+    {
+      "id": "bc_place_021",
+      "name": "白石城",
+      "type": "city",
+      "level": 0,
+      "logicalPos": [
+        28,
+        65
+      ],
+      "anchor": [
+        1720.32,
+        3993.6
+      ],
+      "size": [
+        142,
+        104
+      ],
+      "owner": "r4c2"
+    },
+    {
+      "id": "bc_place_022",
+      "name": "溪云城",
+      "type": "city",
+      "level": 0,
+      "logicalPos": [
+        49,
+        74
+      ],
+      "anchor": [
+        3010.56,
+        4546.56
+      ],
+      "size": [
+        142,
+        104
+      ],
+      "owner": "r5c3"
+    },
+    {
+      "id": "bc_place_023",
+      "name": "青萝城",
+      "type": "city",
+      "level": 0,
+      "logicalPos": [
+        30,
+        87
+      ],
+      "anchor": [
+        1843.2,
+        5345.28
+      ],
+      "size": [
+        142,
+        104
+      ],
+      "owner": "r6c2"
+    },
+    {
+      "id": "bc_place_024",
+      "name": "暮烟城",
+      "type": "city",
+      "level": 0,
+      "logicalPos": [
+        72,
+        83
+      ],
+      "anchor": [
+        4423.68,
+        5099.52
+      ],
+      "size": [
+        142,
+        104
+      ],
+      "owner": "r5c5"
+    },
+    {
+      "id": "bc_place_025",
+      "name": "归寂城",
+      "type": "city",
+      "level": 0,
+      "logicalPos": [
+        86,
+        41
+      ],
+      "anchor": [
+        5283.84,
+        2519.04
+      ],
+      "size": [
+        142,
+        104
+      ],
+      "owner": "r3c6"
+    },
+    {
+      "id": "bc_place_026",
+      "name": "通济城",
+      "type": "city",
+      "level": 0,
+      "logicalPos": [
+        65,
+        51
+      ],
+      "anchor": [
+        3993.6,
+        3133.44
+      ],
+      "size": [
+        142,
+        104
+      ],
+      "owner": "r4c4"
+    },
+    {
+      "id": "bc_place_027",
+      "name": "松风镇",
+      "type": "town",
+      "level": 0,
+      "logicalPos": [
+        14,
+        30
+      ],
+      "anchor": [
+        860.16,
+        1843.2
+      ],
+      "size": [
+        100,
+        66
+      ],
+      "owner": "r2c1"
+    },
+    {
+      "id": "bc_place_028",
+      "name": "玉泉镇",
+      "type": "town",
+      "level": 0,
+      "logicalPos": [
+        40,
+        40
+      ],
+      "anchor": [
+        2457.6,
+        2457.6
+      ],
+      "size": [
+        100,
+        66
+      ],
+      "owner": "r3c3"
+    },
+    {
+      "id": "bc_place_029",
+      "name": "临皋镇",
+      "type": "town",
+      "level": 0,
+      "logicalPos": [
+        22,
+        53
+      ],
+      "anchor": [
+        1351.68,
+        3256.32
+      ],
+      "size": [
+        100,
+        66
+      ],
+      "owner": "r4c2"
+    },
+    {
+      "id": "bc_place_030",
+      "name": "听风镇",
+      "type": "town",
+      "level": 0,
+      "logicalPos": [
+        79,
+        10
+      ],
+      "anchor": [
+        4853.76,
+        614.4
+      ],
+      "size": [
+        100,
+        66
+      ],
+      "owner": "r1c5"
+    },
+    {
+      "id": "bc_place_031",
+      "name": "烟柳镇",
+      "type": "town",
+      "level": 0,
+      "logicalPos": [
+        53,
+        59
+      ],
+      "anchor": [
+        3256.32,
+        3624.96
+      ],
+      "size": [
+        100,
+        66
+      ],
+      "owner": "r4c4"
+    },
+    {
+      "id": "bc_place_032",
+      "name": "桑落镇",
+      "type": "town",
+      "level": 0,
+      "logicalPos": [
+        43,
+        54
+      ],
+      "anchor": [
+        2641.92,
+        3317.76
+      ],
+      "size": [
+        100,
+        66
+      ],
+      "owner": "r4c3"
+    },
+    {
+      "id": "bc_place_033",
+      "name": "荷汀镇",
+      "type": "town",
+      "level": 0,
+      "logicalPos": [
+        56,
+        49
+      ],
+      "anchor": [
+        3440.64,
+        3010.56
+      ],
+      "size": [
+        100,
+        66
+      ],
+      "owner": "r3c4"
+    },
+    {
+      "id": "bc_place_034",
+      "name": "岚溪镇",
+      "type": "town",
+      "level": 0,
+      "logicalPos": [
+        19,
+        57
+      ],
+      "anchor": [
+        1167.36,
+        3502.08
+      ],
+      "size": [
+        100,
+        66
+      ],
+      "owner": "r4c2"
+    },
+    {
+      "id": "bc_place_035",
+      "name": "望岚镇",
+      "type": "town",
+      "level": 0,
+      "logicalPos": [
+        43,
+        76
+      ],
+      "anchor": [
+        2641.92,
+        4669.44
+      ],
+      "size": [
+        100,
+        66
+      ],
+      "owner": "r5c3"
+    },
+    {
+      "id": "bc_place_036",
+      "name": "雁回镇",
+      "type": "town",
+      "level": 0,
+      "logicalPos": [
+        78,
+        81
+      ],
+      "anchor": [
+        4792.32,
+        4976.64
+      ],
+      "size": [
+        100,
+        66
+      ],
+      "owner": "r5c5"
+    },
+    {
+      "id": "bc_place_037",
+      "name": "槐安镇",
+      "type": "town",
+      "level": 0,
+      "logicalPos": [
+        87,
+        76
+      ],
+      "anchor": [
+        5345.28,
+        4669.44
+      ],
+      "size": [
+        100,
+        66
+      ],
+      "owner": "r5c6"
+    },
+    {
+      "id": "bc_place_038",
+      "name": "流丹坊",
+      "type": "market",
+      "level": 0,
+      "logicalPos": [
+        59,
+        20
+      ],
+      "anchor": [
+        3624.96,
+        1228.8
+      ],
+      "size": [
+        94,
+        65
+      ],
+      "owner": "r2c4"
+    },
+    {
+      "id": "bc_place_039",
+      "name": "忘机坊",
+      "type": "market",
+      "level": 0,
+      "logicalPos": [
+        70,
+        88
+      ],
+      "anchor": [
+        4300.8,
+        5406.72
+      ],
+      "size": [
+        94,
+        65
+      ],
+      "owner": "r6c5"
+    },
+    {
+      "id": "bc_place_040",
+      "name": "白蘋里",
+      "type": "village",
+      "level": 0,
+      "logicalPos": [
+        91,
+        24
+      ],
+      "anchor": [
+        5591.04,
+        1474.56
+      ],
+      "size": [
+        78,
+        52
+      ],
+      "owner": "r2c6"
+    },
+    {
+      "id": "bc_place_041",
+      "name": "桑榆里",
+      "type": "village",
+      "level": 0,
+      "logicalPos": [
+        46,
+        71
+      ],
+      "anchor": [
+        2826.24,
+        4362.24
+      ],
+      "size": [
+        78,
+        52
+      ],
+      "owner": "r5c3"
+    },
+    {
+      "id": "bc_place_042",
+      "name": "采薇里",
+      "type": "village",
+      "level": 0,
+      "logicalPos": [
+        26,
+        90
+      ],
+      "anchor": [
+        1597.44,
+        5529.6
+      ],
+      "size": [
+        78,
+        52
+      ],
+      "owner": "r6c2"
+    },
+    {
+      "id": "bc_place_043",
+      "name": "澜浦渡",
+      "type": "dock",
+      "level": 0,
+      "logicalPos": [
+        95,
+        18
+      ],
+      "anchor": [
+        5836.8,
+        1105.92
+      ],
+      "size": [
+        92,
+        62
+      ],
+      "owner": "r2c6"
+    },
+    {
+      "id": "bc_place_044",
+      "name": "问津渡",
+      "type": "dock",
+      "level": 0,
+      "logicalPos": [
+        67,
+        55
+      ],
+      "anchor": [
+        4116.48,
+        3379.2
+      ],
+      "size": [
+        92,
+        62
+      ],
+      "owner": "r4c5"
+    },
+    {
+      "id": "bc_place_106",
+      "name": "太和城",
+      "type": "city",
+      "level": 0,
+      "logicalPos": [
+        11,
+        68
+      ],
+      "anchor": [
+        675.84,
+        4177.92
+      ],
+      "size": [
+        142,
+        104
+      ],
+      "owner": "r5c1"
+    },
+    {
+      "id": "bc_place_107",
+      "name": "洗心镇",
+      "type": "town",
+      "level": 0,
+      "logicalPos": [
+        14,
+        78
+      ],
+      "anchor": [
+        860.16,
+        4792.32
+      ],
+      "size": [
+        100,
+        66
+      ],
+      "owner": "r5c1"
+    },
+    {
+      "id": "bc_place_108",
+      "name": "松月坊",
+      "type": "market",
+      "level": 0,
+      "logicalPos": [
+        19,
+        70
+      ],
+      "anchor": [
+        1167.36,
+        4300.8
+      ],
+      "size": [
+        94,
+        65
+      ],
+      "owner": "r5c2"
+    },
+    {
+      "id": "bc_place_112",
+      "name": "金阙城",
+      "type": "city",
+      "level": 0,
+      "logicalPos": [
+        34,
+        10
+      ],
+      "anchor": [
+        2088.96,
+        614.4
+      ],
+      "size": [
+        142,
+        104
+      ],
+      "owner": "r1c3"
+    },
+    {
+      "id": "bc_place_113",
+      "name": "含光镇",
+      "type": "town",
+      "level": 0,
+      "logicalPos": [
+        43,
+        9
+      ],
+      "anchor": [
+        2641.92,
+        552.96
+      ],
+      "size": [
+        100,
+        66
+      ],
+      "owner": "r1c3"
+    },
+    {
+      "id": "bc_place_114",
+      "name": "琼华坊",
+      "type": "market",
+      "level": 0,
+      "logicalPos": [
+        47,
+        14
+      ],
+      "anchor": [
+        2887.68,
+        860.16
+      ],
+      "size": [
+        94,
+        65
+      ],
+      "owner": "r1c3"
+    },
+    {
+      "id": "bc_place_118",
+      "name": "永夜关",
+      "type": "city",
+      "level": 0,
+      "logicalPos": [
+        91,
+        63
+      ],
+      "anchor": [
+        5591.04,
+        3870.72
+      ],
+      "size": [
+        142,
+        104
+      ],
+      "owner": "r4c6"
+    },
+    {
+      "id": "bc_place_119",
+      "name": "听澜镇",
+      "type": "town",
+      "level": 0,
+      "logicalPos": [
+        87,
+        69
+      ],
+      "anchor": [
+        5345.28,
+        4239.36
+      ],
+      "size": [
+        100,
+        66
+      ],
+      "owner": "r5c6"
+    },
+    {
+      "id": "bc_place_120",
+      "name": "夜泊坊",
+      "type": "market",
+      "level": 0,
+      "logicalPos": [
+        81,
+        55
+      ],
+      "anchor": [
+        4976.64,
+        3379.2
+      ],
+      "size": [
+        94,
+        65
+      ],
+      "owner": "r4c5"
+    }
+  ],
+  "patches": [
+    {
+      "id": "r1c3",
+      "row": 0,
+      "col": 2,
+      "worldOrigin": [
+        1933,
+        -115
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        2048,
+        0,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r1c3.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r1c3_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_112",
+          "name": "金阙城",
+          "type": "city",
+          "level": 0,
+          "logicalPos": [
+            34,
+            10
+          ],
+          "anchor": [
+            2088.96,
+            614.4
+          ],
+          "size": [
+            142,
+            104
+          ],
+          "owner": "r1c3",
+          "x": 156,
+          "y": 729
+        },
+        {
+          "id": "bc_place_113",
+          "name": "含光镇",
+          "type": "town",
+          "level": 0,
+          "logicalPos": [
+            43,
+            9
+          ],
+          "anchor": [
+            2641.92,
+            552.96
+          ],
+          "size": [
+            100,
+            66
+          ],
+          "owner": "r1c3",
+          "x": 709,
+          "y": 668
+        },
+        {
+          "id": "bc_place_114",
+          "name": "琼华坊",
+          "type": "market",
+          "level": 0,
+          "logicalPos": [
+            47,
+            14
+          ],
+          "anchor": [
+            2887.68,
+            860.16
+          ],
+          "size": [
+            94,
+            65
+          ],
+          "owner": "r1c3",
+          "x": 955,
+          "y": 975
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 3 small entrance buildings, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_112 (金阙城, instruction identity only, NEVER write it on the map): compact fortified CITY GATE with one small roof and very short wall stubs; no city panorama. Approximate architecture width 142 pixels, height 104, centered horizontally at x=156, feet at y=729. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\n2. bc_place_113 (含光镇, instruction identity only, NEVER write it on the map): simple small timber TOWN ENTRANCE canopy; no streetscape. Approximate architecture width 100 pixels, height 66, centered horizontally at x=709, feet at y=668. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\n3. bc_place_114 (琼华坊, instruction identity only, NEVER write it on the map): small market entrance with ONE tiny adjacent muted cloth awning; no market panorama. Approximate architecture width 94 pixels, height 65, centered horizontally at x=955, feet at y=975. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger."
+    },
+    {
+      "id": "r1c4",
+      "row": 0,
+      "col": 3,
+      "worldOrigin": [
+        2957,
+        -115
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        3072,
+        0,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r1c4.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r1c4_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_008",
+          "name": "丹鼎宗",
+          "type": "sect",
+          "level": 2,
+          "logicalPos": [
+            61,
+            8
+          ],
+          "anchor": [
+            3747.84,
+            491.52
+          ],
+          "size": [
+            118,
+            82
+          ],
+          "owner": "r1c4",
+          "x": 791,
+          "y": 607
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 1 small entrance building, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_008 (丹鼎宗, instruction identity only, NEVER write it on the map): small roofed sect MOUNTAIN GATE, with pale piers and gray slate canopy; no whole compound. Approximate architecture width 118 pixels, height 82, centered horizontally at x=791, feet at y=607. MOUNTAIN FOOTING REQUIRED: extend or reshape the nearby low mountain shoulder so the gate sits on continuous mountainside or a dry mountain saddle, with visible sloping mountain ground directly BELOW the gate. A hill standing separately behind an icon on flat plain is NOT enough. No tall plinth, cliff, wall terrace, mountain path or stairs.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger."
+    },
+    {
+      "id": "r1c5",
+      "row": 0,
+      "col": 4,
+      "worldOrigin": [
+        3981,
+        -115
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        4096,
+        0,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r1c5.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r1c5_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_010",
+          "name": "沧溟水府",
+          "type": "sect",
+          "level": 2,
+          "logicalPos": [
+            72,
+            17
+          ],
+          "anchor": [
+            4423.68,
+            1044.48
+          ],
+          "size": [
+            118,
+            82
+          ],
+          "owner": "r1c5",
+          "x": 443,
+          "y": 1159
+        },
+        {
+          "id": "bc_place_030",
+          "name": "听风镇",
+          "type": "town",
+          "level": 0,
+          "logicalPos": [
+            79,
+            10
+          ],
+          "anchor": [
+            4853.76,
+            614.4
+          ],
+          "size": [
+            100,
+            66
+          ],
+          "owner": "r1c5",
+          "x": 873,
+          "y": 729
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 2 small entrance buildings, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_010 (沧溟水府, instruction identity only, NEVER write it on the map): small roofed sect MOUNTAIN GATE, with pale piers and gray slate canopy; no whole compound. Approximate architecture width 118 pixels, height 82, centered horizontally at x=443, feet at y=1159. MOUNTAIN FOOTING REQUIRED: extend or reshape the nearby low mountain shoulder so the gate sits on continuous mountainside or a dry mountain saddle, with visible sloping mountain ground directly BELOW the gate. A hill standing separately behind an icon on flat plain is NOT enough. No tall plinth, cliff, wall terrace, mountain path or stairs.\n2. bc_place_030 (听风镇, instruction identity only, NEVER write it on the map): simple small timber TOWN ENTRANCE canopy; no streetscape. Approximate architecture width 100 pixels, height 66, centered horizontally at x=873, feet at y=729. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger."
+    },
+    {
+      "id": "r1c6",
+      "row": 0,
+      "col": 5,
+      "worldOrigin": [
+        5005,
+        -115
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        5120,
+        0,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r1c6.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r1c6_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_018",
+          "name": "镇海城",
+          "type": "city",
+          "level": 0,
+          "logicalPos": [
+            88,
+            12
+          ],
+          "anchor": [
+            5406.72,
+            737.28
+          ],
+          "size": [
+            142,
+            104
+          ],
+          "owner": "r1c6",
+          "x": 402,
+          "y": 852
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 1 small entrance building, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_018 (镇海城, instruction identity only, NEVER write it on the map): compact fortified CITY GATE with one small roof and very short wall stubs; no city panorama. Approximate architecture width 142 pixels, height 104, centered horizontally at x=402, feet at y=852. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger."
+    },
+    {
+      "id": "r2c1",
+      "row": 1,
+      "col": 0,
+      "worldOrigin": [
+        -115,
+        909
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        0,
+        1024,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r2c1.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r2c1_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_027",
+          "name": "松风镇",
+          "type": "town",
+          "level": 0,
+          "logicalPos": [
+            14,
+            30
+          ],
+          "anchor": [
+            860.16,
+            1843.2
+          ],
+          "size": [
+            100,
+            66
+          ],
+          "owner": "r2c1",
+          "x": 975,
+          "y": 934
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 1 small entrance building, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_027 (松风镇, instruction identity only, NEVER write it on the map): simple small timber TOWN ENTRANCE canopy; no streetscape. Approximate architecture width 100 pixels, height 66, centered horizontally at x=975, feet at y=934. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger."
+    },
+    {
+      "id": "r2c2",
+      "row": 1,
+      "col": 1,
+      "worldOrigin": [
+        909,
+        909
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        1024,
+        1024,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r2c2.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r2c2_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_014",
+          "name": "望岫城",
+          "type": "city",
+          "level": 0,
+          "logicalPos": [
+            20,
+            29
+          ],
+          "anchor": [
+            1228.8,
+            1781.76
+          ],
+          "size": [
+            142,
+            104
+          ],
+          "owner": "r2c2",
+          "x": 320,
+          "y": 873
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 1 small entrance building, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_014 (望岫城, instruction identity only, NEVER write it on the map): compact fortified CITY GATE with one small roof and very short wall stubs; no city panorama. Approximate architecture width 142 pixels, height 104, centered horizontally at x=320, feet at y=873. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger."
+    },
+    {
+      "id": "r2c3",
+      "row": 1,
+      "col": 2,
+      "worldOrigin": [
+        1933,
+        909
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        2048,
+        1024,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r2c3.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r2c3_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_002",
+          "name": "玄都天府",
+          "type": "sect",
+          "level": 1,
+          "logicalPos": [
+            43,
+            19
+          ],
+          "anchor": [
+            2641.92,
+            1167.36
+          ],
+          "size": [
+            164,
+            110
+          ],
+          "owner": "r2c3",
+          "x": 709,
+          "y": 258
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 1 small entrance building, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_002 (玄都天府, instruction identity only, NEVER write it on the map): small roofed sect MOUNTAIN GATE, with pale piers and gray slate canopy; no whole compound. Approximate architecture width 164 pixels, height 110, centered horizontally at x=709, feet at y=258. MOUNTAIN FOOTING REQUIRED: extend or reshape the nearby low mountain shoulder so the gate sits on continuous mountainside or a dry mountain saddle, with visible sloping mountain ground directly BELOW the gate. A hill standing separately behind an icon on flat plain is NOT enough. No tall plinth, cliff, wall terrace, mountain path or stairs.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger."
+    },
+    {
+      "id": "r2c4",
+      "row": 1,
+      "col": 3,
+      "worldOrigin": [
+        2957,
+        909
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        3072,
+        1024,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r2c4.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r2c4_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_015",
+          "name": "绛阙城",
+          "type": "city",
+          "level": 0,
+          "logicalPos": [
+            54,
+            19
+          ],
+          "anchor": [
+            3317.76,
+            1167.36
+          ],
+          "size": [
+            142,
+            104
+          ],
+          "owner": "r2c4",
+          "x": 361,
+          "y": 258
+        },
+        {
+          "id": "bc_place_038",
+          "name": "流丹坊",
+          "type": "market",
+          "level": 0,
+          "logicalPos": [
+            59,
+            20
+          ],
+          "anchor": [
+            3624.96,
+            1228.8
+          ],
+          "size": [
+            94,
+            65
+          ],
+          "owner": "r2c4",
+          "x": 668,
+          "y": 320
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 2 small entrance buildings, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_015 (绛阙城, instruction identity only, NEVER write it on the map): compact fortified CITY GATE with one small roof and very short wall stubs; no city panorama. Approximate architecture width 142 pixels, height 104, centered horizontally at x=361, feet at y=258. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\n2. bc_place_038 (流丹坊, instruction identity only, NEVER write it on the map): small market entrance with ONE tiny adjacent muted cloth awning; no market panorama. Approximate architecture width 94 pixels, height 65, centered horizontally at x=668, feet at y=320. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger."
+    },
+    {
+      "id": "r2c5",
+      "row": 1,
+      "col": 4,
+      "worldOrigin": [
+        3981,
+        909
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        4096,
+        1024,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r2c5.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r2c5_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_019",
+          "name": "临渊城",
+          "type": "city",
+          "level": 0,
+          "logicalPos": [
+            70,
+            26
+          ],
+          "anchor": [
+            4300.8,
+            1597.44
+          ],
+          "size": [
+            142,
+            104
+          ],
+          "owner": "r2c5",
+          "x": 320,
+          "y": 688
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 1 small entrance building, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_019 (临渊城, instruction identity only, NEVER write it on the map): compact fortified CITY GATE with one small roof and very short wall stubs; no city panorama. Approximate architecture width 142 pixels, height 104, centered horizontally at x=320, feet at y=688. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger."
+    },
+    {
+      "id": "r2c6",
+      "row": 1,
+      "col": 5,
+      "worldOrigin": [
+        5005,
+        909
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        5120,
+        1024,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r2c6.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r2c6_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_040",
+          "name": "白蘋里",
+          "type": "village",
+          "level": 0,
+          "logicalPos": [
+            91,
+            24
+          ],
+          "anchor": [
+            5591.04,
+            1474.56
+          ],
+          "size": [
+            78,
+            52
+          ],
+          "owner": "r2c6",
+          "x": 586,
+          "y": 566
+        },
+        {
+          "id": "bc_place_043",
+          "name": "澜浦渡",
+          "type": "dock",
+          "level": 0,
+          "logicalPos": [
+            95,
+            18
+          ],
+          "anchor": [
+            5836.8,
+            1105.92
+          ],
+          "size": [
+            92,
+            62
+          ],
+          "owner": "r2c6",
+          "x": 832,
+          "y": 197
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 2 small entrance buildings, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_040 (白蘋里, instruction identity only, NEVER write it on the map): a tiny rustic village entrance, modest timber posts and one thatched roof hint; no whole village. Approximate architecture width 78 pixels, height 52, centered horizontally at x=586, feet at y=566. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\n2. bc_place_043 (澜浦渡, instruction identity only, NEVER write it on the map): one modest low dock landing at the existing bank, a small shed and short water-edge deck; NOT a bridge. Approximate architecture width 92 pixels, height 62, centered horizontally at x=832, feet at y=197. SHORE FOOTING REQUIRED: shed feet on a dry connected bank, only the small deck reaches water. Preserve river continuity; do not bridge or dam it.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger."
+    },
+    {
+      "id": "r3c1",
+      "row": 2,
+      "col": 0,
+      "worldOrigin": [
+        -115,
+        1933
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        0,
+        2048,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r3c1.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r3c1_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_005",
+          "name": "镇岳观",
+          "type": "sect",
+          "level": 2,
+          "logicalPos": [
+            12,
+            47
+          ],
+          "anchor": [
+            737.28,
+            2887.68
+          ],
+          "size": [
+            118,
+            82
+          ],
+          "owner": "r3c1",
+          "x": 852,
+          "y": 955
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 1 small entrance building, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_005 (镇岳观, instruction identity only, NEVER write it on the map): small roofed sect MOUNTAIN GATE, with pale piers and gray slate canopy; no whole compound. Approximate architecture width 118 pixels, height 82, centered horizontally at x=852, feet at y=955. MOUNTAIN FOOTING REQUIRED: extend or reshape the nearby low mountain shoulder so the gate sits on continuous mountainside or a dry mountain saddle, with visible sloping mountain ground directly BELOW the gate. A hill standing separately behind an icon on flat plain is NOT enough. No tall plinth, cliff, wall terrace, mountain path or stairs.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger."
+    },
+    {
+      "id": "r3c2",
+      "row": 2,
+      "col": 1,
+      "worldOrigin": [
+        909,
+        1933
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        1024,
+        2048,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r3c2.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r3c2_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_017",
+          "name": "赤水城",
+          "type": "city",
+          "level": 0,
+          "logicalPos": [
+            25,
+            48
+          ],
+          "anchor": [
+            1536,
+            2949.12
+          ],
+          "size": [
+            142,
+            104
+          ],
+          "owner": "r3c2",
+          "x": 627,
+          "y": 1016
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 1 small entrance building, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_017 (赤水城, instruction identity only, NEVER write it on the map): compact fortified CITY GATE with one small roof and very short wall stubs; no city panorama. Approximate architecture width 142 pixels, height 104, centered horizontally at x=627, feet at y=1016. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger."
+    },
+    {
+      "id": "r3c3",
+      "row": 2,
+      "col": 2,
+      "worldOrigin": [
+        1933,
+        1933
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        2048,
+        2048,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r3c3.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r3c3_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_004",
+          "name": "太微道宫",
+          "type": "sect",
+          "level": 2,
+          "logicalPos": [
+            35,
+            50
+          ],
+          "anchor": [
+            2150.4,
+            3072
+          ],
+          "size": [
+            118,
+            82
+          ],
+          "owner": "r3c3",
+          "x": 217,
+          "y": 1139
+        },
+        {
+          "id": "bc_place_016",
+          "name": "承天城",
+          "type": "city",
+          "level": 0,
+          "logicalPos": [
+            43,
+            37
+          ],
+          "anchor": [
+            2641.92,
+            2273.28
+          ],
+          "size": [
+            142,
+            104
+          ],
+          "owner": "r3c3",
+          "x": 709,
+          "y": 340
+        },
+        {
+          "id": "bc_place_028",
+          "name": "玉泉镇",
+          "type": "town",
+          "level": 0,
+          "logicalPos": [
+            40,
+            40
+          ],
+          "anchor": [
+            2457.6,
+            2457.6
+          ],
+          "size": [
+            100,
+            66
+          ],
+          "owner": "r3c3",
+          "x": 525,
+          "y": 525
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 3 small entrance buildings, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_004 (太微道宫, instruction identity only, NEVER write it on the map): small roofed sect MOUNTAIN GATE, with pale piers and gray slate canopy; no whole compound. Approximate architecture width 118 pixels, height 82, centered horizontally at x=217, feet at y=1139. MOUNTAIN FOOTING REQUIRED: extend or reshape the nearby low mountain shoulder so the gate sits on continuous mountainside or a dry mountain saddle, with visible sloping mountain ground directly BELOW the gate. A hill standing separately behind an icon on flat plain is NOT enough. No tall plinth, cliff, wall terrace, mountain path or stairs.\n2. bc_place_016 (承天城, instruction identity only, NEVER write it on the map): compact fortified CITY GATE with one small roof and very short wall stubs; no city panorama. Approximate architecture width 142 pixels, height 104, centered horizontally at x=709, feet at y=340. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\n3. bc_place_028 (玉泉镇, instruction identity only, NEVER write it on the map): simple small timber TOWN ENTRANCE canopy; no streetscape. Approximate architecture width 100 pixels, height 66, centered horizontally at x=525, feet at y=525. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger.\nPOSITION LOCK: The rectangles in image2 are mandatory surveyed locations, NOT suggestions. Put the actual building inside each rectangle; its entrance threshold touches that rectangle's bottom-center dot. Do NOT move a gate away from the numbered rectangle to an existing hill or clear space. Instead reshape terrain at the fixed rectangle. The final architecture must overlap its own rectangle and stay within20pixels of it. Image1 is the terrain to edit; image2 controls building positions. Use the existing terrain's own drawing style."
+    },
+    {
+      "id": "r3c4",
+      "row": 2,
+      "col": 3,
+      "worldOrigin": [
+        2957,
+        1933
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        3072,
+        2048,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r3c4.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r3c4_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_009",
+          "name": "归藏书院",
+          "type": "sect",
+          "level": 2,
+          "logicalPos": [
+            62,
+            37
+          ],
+          "anchor": [
+            3809.28,
+            2273.28
+          ],
+          "size": [
+            118,
+            82
+          ],
+          "owner": "r3c4",
+          "x": 852,
+          "y": 340
+        },
+        {
+          "id": "bc_place_033",
+          "name": "荷汀镇",
+          "type": "town",
+          "level": 0,
+          "logicalPos": [
+            56,
+            49
+          ],
+          "anchor": [
+            3440.64,
+            3010.56
+          ],
+          "size": [
+            100,
+            66
+          ],
+          "owner": "r3c4",
+          "x": 484,
+          "y": 1078
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 2 small entrance buildings, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_009 (归藏书院, instruction identity only, NEVER write it on the map): small roofed sect MOUNTAIN GATE, with pale piers and gray slate canopy; no whole compound. Approximate architecture width 118 pixels, height 82, centered horizontally at x=852, feet at y=340. MOUNTAIN FOOTING REQUIRED: extend or reshape the nearby low mountain shoulder so the gate sits on continuous mountainside or a dry mountain saddle, with visible sloping mountain ground directly BELOW the gate. A hill standing separately behind an icon on flat plain is NOT enough. No tall plinth, cliff, wall terrace, mountain path or stairs.\n2. bc_place_033 (荷汀镇, instruction identity only, NEVER write it on the map): simple small timber TOWN ENTRANCE canopy; no streetscape. Approximate architecture width 100 pixels, height 66, centered horizontally at x=484, feet at y=1078. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger."
+    },
+    {
+      "id": "r3c5",
+      "row": 2,
+      "col": 4,
+      "worldOrigin": [
+        3981,
+        1933
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        4096,
+        2048,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r3c5.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r3c5_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_013",
+          "name": "枯骨寺",
+          "type": "sect",
+          "level": 2,
+          "logicalPos": [
+            83,
+            36
+          ],
+          "anchor": [
+            5099.52,
+            2211.84
+          ],
+          "size": [
+            118,
+            82
+          ],
+          "owner": "r3c5",
+          "x": 1119,
+          "y": 279
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 1 small entrance building, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_013 (枯骨寺, instruction identity only, NEVER write it on the map): small roofed sect MOUNTAIN GATE, with pale piers and gray slate canopy; no whole compound. Approximate architecture width 118 pixels, height 82, centered horizontally at x=1119, feet at y=279. MOUNTAIN FOOTING REQUIRED: extend or reshape the nearby low mountain shoulder so the gate sits on continuous mountainside or a dry mountain saddle, with visible sloping mountain ground directly BELOW the gate. A hill standing separately behind an icon on flat plain is NOT enough. No tall plinth, cliff, wall terrace, mountain path or stairs.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger.\nPOSITION LOCK: The rectangles in image2 are mandatory surveyed locations, NOT suggestions. Put the actual building inside each rectangle; its entrance threshold touches that rectangle's bottom-center dot. Do NOT move a gate away from the numbered rectangle to an existing hill or clear space. Instead reshape terrain at the fixed rectangle. The final architecture must overlap its own rectangle and stay within20pixels of it. Image1 is the terrain to edit; image2 controls building positions. Use the existing terrain's own drawing style."
+    },
+    {
+      "id": "r3c6",
+      "row": 2,
+      "col": 5,
+      "worldOrigin": [
+        5005,
+        1933
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        5120,
+        2048,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r3c6.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r3c6_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_025",
+          "name": "归寂城",
+          "type": "city",
+          "level": 0,
+          "logicalPos": [
+            86,
+            41
+          ],
+          "anchor": [
+            5283.84,
+            2519.04
+          ],
+          "size": [
+            142,
+            104
+          ],
+          "owner": "r3c6",
+          "x": 279,
+          "y": 586
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 1 small entrance building, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_025 (归寂城, instruction identity only, NEVER write it on the map): compact fortified CITY GATE with one small roof and very short wall stubs; no city panorama. Approximate architecture width 142 pixels, height 104, centered horizontally at x=279, feet at y=586. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger.\nPOSITION LOCK: The rectangles in image2 are mandatory surveyed locations, NOT suggestions. Put the actual building inside each rectangle; its entrance threshold touches that rectangle's bottom-center dot. Do NOT move a gate away from the numbered rectangle to an existing hill or clear space. Instead reshape terrain at the fixed rectangle. The final architecture must overlap its own rectangle and stay within20pixels of it. Image1 is the terrain to edit; image2 controls building positions. Use the existing terrain's own drawing style."
+    },
+    {
+      "id": "r4c2",
+      "row": 3,
+      "col": 1,
+      "worldOrigin": [
+        909,
+        2957
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        1024,
+        3072,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r4c2.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r4c2_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_021",
+          "name": "白石城",
+          "type": "city",
+          "level": 0,
+          "logicalPos": [
+            28,
+            65
+          ],
+          "anchor": [
+            1720.32,
+            3993.6
+          ],
+          "size": [
+            142,
+            104
+          ],
+          "owner": "r4c2",
+          "x": 811,
+          "y": 1037
+        },
+        {
+          "id": "bc_place_029",
+          "name": "临皋镇",
+          "type": "town",
+          "level": 0,
+          "logicalPos": [
+            22,
+            53
+          ],
+          "anchor": [
+            1351.68,
+            3256.32
+          ],
+          "size": [
+            100,
+            66
+          ],
+          "owner": "r4c2",
+          "x": 443,
+          "y": 299
+        },
+        {
+          "id": "bc_place_034",
+          "name": "岚溪镇",
+          "type": "town",
+          "level": 0,
+          "logicalPos": [
+            19,
+            57
+          ],
+          "anchor": [
+            1167.36,
+            3502.08
+          ],
+          "size": [
+            100,
+            66
+          ],
+          "owner": "r4c2",
+          "x": 258,
+          "y": 545
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 3 small entrance buildings, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_021 (白石城, instruction identity only, NEVER write it on the map): compact fortified CITY GATE with one small roof and very short wall stubs; no city panorama. Approximate architecture width 142 pixels, height 104, centered horizontally at x=811, feet at y=1037. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\n2. bc_place_029 (临皋镇, instruction identity only, NEVER write it on the map): simple small timber TOWN ENTRANCE canopy; no streetscape. Approximate architecture width 100 pixels, height 66, centered horizontally at x=443, feet at y=299. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\n3. bc_place_034 (岚溪镇, instruction identity only, NEVER write it on the map): simple small timber TOWN ENTRANCE canopy; no streetscape. Approximate architecture width 100 pixels, height 66, centered horizontally at x=258, feet at y=545. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger.\nPOSITION LOCK: Rectangles in image2 are mandatory surveyed locations. Put each actual building INSIDE its own rectangle, its entrance threshold at the bottom-center dot. Do NOT move buildings to an existing hill or clearing. Reshape terrain AT the rectangle instead. Stay within20pixels of each location. Image1 is terrain to edit; image2 controls positions. Match the existing terrain's drawing style."
+    },
+    {
+      "id": "r4c3",
+      "row": 3,
+      "col": 2,
+      "worldOrigin": [
+        1933,
+        2957
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        2048,
+        3072,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r4c3.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r4c3_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_006",
+          "name": "抱朴山",
+          "type": "sect",
+          "level": 2,
+          "logicalPos": [
+            43,
+            65
+          ],
+          "anchor": [
+            2641.92,
+            3993.6
+          ],
+          "size": [
+            118,
+            82
+          ],
+          "owner": "r4c3",
+          "x": 709,
+          "y": 1037
+        },
+        {
+          "id": "bc_place_020",
+          "name": "春水府",
+          "type": "city",
+          "level": 0,
+          "logicalPos": [
+            49,
+            55
+          ],
+          "anchor": [
+            3010.56,
+            3379.2
+          ],
+          "size": [
+            142,
+            104
+          ],
+          "owner": "r4c3",
+          "x": 1078,
+          "y": 422
+        },
+        {
+          "id": "bc_place_032",
+          "name": "桑落镇",
+          "type": "town",
+          "level": 0,
+          "logicalPos": [
+            43,
+            54
+          ],
+          "anchor": [
+            2641.92,
+            3317.76
+          ],
+          "size": [
+            100,
+            66
+          ],
+          "owner": "r4c3",
+          "x": 709,
+          "y": 361
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 3 small entrance buildings, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_006 (抱朴山, instruction identity only, NEVER write it on the map): small roofed sect MOUNTAIN GATE, with pale piers and gray slate canopy; no whole compound. Approximate architecture width 118 pixels, height 82, centered horizontally at x=709, feet at y=1037. MOUNTAIN FOOTING REQUIRED: extend or reshape the nearby low mountain shoulder so the gate sits on continuous mountainside or a dry mountain saddle, with visible sloping mountain ground directly BELOW the gate. A hill standing separately behind an icon on flat plain is NOT enough. No tall plinth, cliff, wall terrace, mountain path or stairs.\n2. bc_place_020 (春水府, instruction identity only, NEVER write it on the map): compact fortified CITY GATE with one small roof and very short wall stubs; no city panorama. Approximate architecture width 142 pixels, height 104, centered horizontally at x=1078, feet at y=422. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\n3. bc_place_032 (桑落镇, instruction identity only, NEVER write it on the map): simple small timber TOWN ENTRANCE canopy; no streetscape. Approximate architecture width 100 pixels, height 66, centered horizontally at x=709, feet at y=361. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger.\nPOSITION LOCK: Rectangles in image2 are mandatory surveyed locations. Put each actual building INSIDE its own rectangle, its entrance threshold at the bottom-center dot. Do NOT move buildings to an existing hill or clearing. Reshape terrain AT the rectangle instead. Stay within20pixels of each location. Image1 is terrain to edit; image2 controls positions. Match the existing terrain's drawing style."
+    },
+    {
+      "id": "r4c4",
+      "row": 3,
+      "col": 3,
+      "worldOrigin": [
+        2957,
+        2954
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        3072,
+        3072,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r4c4.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r4c4_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_026",
+          "name": "通济城",
+          "type": "city",
+          "level": 0,
+          "logicalPos": [
+            65,
+            51
+          ],
+          "anchor": [
+            3993.6,
+            3133.44
+          ],
+          "size": [
+            142,
+            104
+          ],
+          "owner": "r4c4",
+          "x": 1037,
+          "y": 179
+        },
+        {
+          "id": "bc_place_031",
+          "name": "烟柳镇",
+          "type": "town",
+          "level": 0,
+          "logicalPos": [
+            53,
+            59
+          ],
+          "anchor": [
+            3256.32,
+            3624.96
+          ],
+          "size": [
+            100,
+            66
+          ],
+          "owner": "r4c4",
+          "x": 299,
+          "y": 671
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 2 small entrance buildings, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_026 (通济城, instruction identity only, NEVER write it on the map): compact fortified CITY GATE with one small roof and very short wall stubs; no city panorama. Approximate architecture width 142 pixels, height 104, centered horizontally at x=1037, feet at y=179. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\n2. bc_place_031 (烟柳镇, instruction identity only, NEVER write it on the map): simple small timber TOWN ENTRANCE canopy; no streetscape. Approximate architecture width 100 pixels, height 66, centered horizontally at x=299, feet at y=671. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger.\nPOSITION LOCK: Rectangles in image2 are mandatory surveyed locations. Put each actual building INSIDE its own rectangle, its entrance threshold at the bottom-center dot. Do NOT move buildings to an existing hill or clearing. Reshape terrain AT the rectangle instead. Stay within20pixels of each location. Image1 is terrain to edit; image2 controls positions. Match the existing terrain's drawing style."
+    },
+    {
+      "id": "r4c5",
+      "row": 3,
+      "col": 4,
+      "worldOrigin": [
+        3981,
+        2957
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        4096,
+        3072,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r4c5.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r4c5_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_003",
+          "name": "无相圣宗",
+          "type": "sect",
+          "level": 1,
+          "logicalPos": [
+            83,
+            61
+          ],
+          "anchor": [
+            5099.52,
+            3747.84
+          ],
+          "size": [
+            164,
+            110
+          ],
+          "owner": "r4c5",
+          "x": 1119,
+          "y": 791
+        },
+        {
+          "id": "bc_place_044",
+          "name": "问津渡",
+          "type": "dock",
+          "level": 0,
+          "logicalPos": [
+            67,
+            55
+          ],
+          "anchor": [
+            4116.48,
+            3379.2
+          ],
+          "size": [
+            92,
+            62
+          ],
+          "owner": "r4c5",
+          "x": 135,
+          "y": 422
+        },
+        {
+          "id": "bc_place_120",
+          "name": "夜泊坊",
+          "type": "market",
+          "level": 0,
+          "logicalPos": [
+            81,
+            55
+          ],
+          "anchor": [
+            4976.64,
+            3379.2
+          ],
+          "size": [
+            94,
+            65
+          ],
+          "owner": "r4c5",
+          "x": 996,
+          "y": 422
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 3 small entrance buildings, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_003 (无相圣宗, instruction identity only, NEVER write it on the map): small roofed sect MOUNTAIN GATE, with pale piers and gray slate canopy; no whole compound. Approximate architecture width 164 pixels, height 110, centered horizontally at x=1119, feet at y=791. MOUNTAIN FOOTING REQUIRED: extend or reshape the nearby low mountain shoulder so the gate sits on continuous mountainside or a dry mountain saddle, with visible sloping mountain ground directly BELOW the gate. A hill standing separately behind an icon on flat plain is NOT enough. No tall plinth, cliff, wall terrace, mountain path or stairs.\n2. bc_place_044 (问津渡, instruction identity only, NEVER write it on the map): one modest low dock landing at the existing bank, a small shed and short water-edge deck; NOT a bridge. Approximate architecture width 92 pixels, height 62, centered horizontally at x=135, feet at y=422. SHORE FOOTING REQUIRED: shed feet on a dry connected bank, only the small deck reaches water. Preserve river continuity; do not bridge or dam it.\n3. bc_place_120 (夜泊坊, instruction identity only, NEVER write it on the map): small market entrance with ONE tiny adjacent muted cloth awning; no market panorama. Approximate architecture width 94 pixels, height 65, centered horizontally at x=996, feet at y=422. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger.\nPOSITION LOCK: Rectangles in image2 are mandatory surveyed locations. Put each actual building INSIDE its own rectangle, its entrance threshold at the bottom-center dot. Do NOT move buildings to an existing hill or clearing. Reshape terrain AT the rectangle instead. Stay within20pixels of each location. Image1 is terrain to edit; image2 controls positions. Match the existing terrain's drawing style."
+    },
+    {
+      "id": "r4c6",
+      "row": 3,
+      "col": 5,
+      "worldOrigin": [
+        5005,
+        2957
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        5120,
+        3072,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r4c6.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r4c6_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_118",
+          "name": "永夜关",
+          "type": "city",
+          "level": 0,
+          "logicalPos": [
+            91,
+            63
+          ],
+          "anchor": [
+            5591.04,
+            3870.72
+          ],
+          "size": [
+            142,
+            104
+          ],
+          "owner": "r4c6",
+          "x": 586,
+          "y": 914
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 1 small entrance building, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_118 (永夜关, instruction identity only, NEVER write it on the map): compact fortified CITY GATE with one small roof and very short wall stubs; no city panorama. Approximate architecture width 142 pixels, height 104, centered horizontally at x=586, feet at y=914. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger.\nPOSITION LOCK: Rectangles in image2 are mandatory surveyed locations. Put each actual building INSIDE its own rectangle, its entrance threshold at the bottom-center dot. Do NOT move buildings to an existing hill or clearing. Reshape terrain AT the rectangle instead. Stay within20pixels of each location. Image1 is terrain to edit; image2 controls positions. Match the existing terrain's drawing style."
+    },
+    {
+      "id": "r5c1",
+      "row": 4,
+      "col": 0,
+      "worldOrigin": [
+        -115,
+        3981
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        0,
+        4096,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r5c1.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r5c1_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_106",
+          "name": "太和城",
+          "type": "city",
+          "level": 0,
+          "logicalPos": [
+            11,
+            68
+          ],
+          "anchor": [
+            675.84,
+            4177.92
+          ],
+          "size": [
+            142,
+            104
+          ],
+          "owner": "r5c1",
+          "x": 791,
+          "y": 197
+        },
+        {
+          "id": "bc_place_107",
+          "name": "洗心镇",
+          "type": "town",
+          "level": 0,
+          "logicalPos": [
+            14,
+            78
+          ],
+          "anchor": [
+            860.16,
+            4792.32
+          ],
+          "size": [
+            100,
+            66
+          ],
+          "owner": "r5c1",
+          "x": 975,
+          "y": 811
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 2 small entrance buildings, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_106 (太和城, instruction identity only, NEVER write it on the map): compact fortified CITY GATE with one small roof and very short wall stubs; no city panorama. Approximate architecture width 142 pixels, height 104, centered horizontally at x=791, feet at y=197. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\n2. bc_place_107 (洗心镇, instruction identity only, NEVER write it on the map): simple small timber TOWN ENTRANCE canopy; no streetscape. Approximate architecture width 100 pixels, height 66, centered horizontally at x=975, feet at y=811. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger.\nPOSITION LOCK: Rectangles in image2 are mandatory surveyed locations. Put each actual building INSIDE its own rectangle, its entrance threshold at the bottom-center dot. Do NOT move buildings to an existing hill or clearing. Reshape terrain AT the rectangle instead. Stay within20pixels of each location. Image1 is terrain to edit; image2 controls positions. Match the existing terrain's drawing style."
+    },
+    {
+      "id": "r5c2",
+      "row": 4,
+      "col": 1,
+      "worldOrigin": [
+        909,
+        3981
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        1024,
+        4096,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r5c2.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r5c2_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_001",
+          "name": "玉虚仙宗",
+          "type": "sect",
+          "level": 1,
+          "logicalPos": [
+            22,
+            74
+          ],
+          "anchor": [
+            1351.68,
+            4546.56
+          ],
+          "size": [
+            164,
+            110
+          ],
+          "owner": "r5c2",
+          "x": 443,
+          "y": 566
+        },
+        {
+          "id": "bc_place_108",
+          "name": "松月坊",
+          "type": "market",
+          "level": 0,
+          "logicalPos": [
+            19,
+            70
+          ],
+          "anchor": [
+            1167.36,
+            4300.8
+          ],
+          "size": [
+            94,
+            65
+          ],
+          "owner": "r5c2",
+          "x": 258,
+          "y": 320
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 2 small entrance buildings, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_001 (玉虚仙宗, instruction identity only, NEVER write it on the map): small roofed sect MOUNTAIN GATE, with pale piers and gray slate canopy; no whole compound. Approximate architecture width 164 pixels, height 110, centered horizontally at x=443, feet at y=566. MOUNTAIN FOOTING REQUIRED: extend or reshape the nearby low mountain shoulder so the gate sits on continuous mountainside or a dry mountain saddle, with visible sloping mountain ground directly BELOW the gate. A hill standing separately behind an icon on flat plain is NOT enough. No tall plinth, cliff, wall terrace, mountain path or stairs.\n2. bc_place_108 (松月坊, instruction identity only, NEVER write it on the map): small market entrance with ONE tiny adjacent muted cloth awning; no market panorama. Approximate architecture width 94 pixels, height 65, centered horizontally at x=258, feet at y=320. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger.\nPOSITION LOCK: Rectangles in image2 are mandatory surveyed locations. Put each actual building INSIDE its own rectangle, its entrance threshold at the bottom-center dot. Do NOT move buildings to an existing hill or clearing. Reshape terrain AT the rectangle instead. Stay within20pixels of each location. Image1 is terrain to edit; image2 controls positions. Match the existing terrain's drawing style."
+    },
+    {
+      "id": "r5c3",
+      "row": 4,
+      "col": 2,
+      "worldOrigin": [
+        1933,
+        3981
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        2048,
+        4096,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r5c3.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r5c3_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_022",
+          "name": "溪云城",
+          "type": "city",
+          "level": 0,
+          "logicalPos": [
+            49,
+            74
+          ],
+          "anchor": [
+            3010.56,
+            4546.56
+          ],
+          "size": [
+            142,
+            104
+          ],
+          "owner": "r5c3",
+          "x": 1078,
+          "y": 566
+        },
+        {
+          "id": "bc_place_035",
+          "name": "望岚镇",
+          "type": "town",
+          "level": 0,
+          "logicalPos": [
+            43,
+            76
+          ],
+          "anchor": [
+            2641.92,
+            4669.44
+          ],
+          "size": [
+            100,
+            66
+          ],
+          "owner": "r5c3",
+          "x": 709,
+          "y": 688
+        },
+        {
+          "id": "bc_place_041",
+          "name": "桑榆里",
+          "type": "village",
+          "level": 0,
+          "logicalPos": [
+            46,
+            71
+          ],
+          "anchor": [
+            2826.24,
+            4362.24
+          ],
+          "size": [
+            78,
+            52
+          ],
+          "owner": "r5c3",
+          "x": 893,
+          "y": 381
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 3 small entrance buildings, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_022 (溪云城, instruction identity only, NEVER write it on the map): compact fortified CITY GATE with one small roof and very short wall stubs; no city panorama. Approximate architecture width 142 pixels, height 104, centered horizontally at x=1078, feet at y=566. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\n2. bc_place_035 (望岚镇, instruction identity only, NEVER write it on the map): simple small timber TOWN ENTRANCE canopy; no streetscape. Approximate architecture width 100 pixels, height 66, centered horizontally at x=709, feet at y=688. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\n3. bc_place_041 (桑榆里, instruction identity only, NEVER write it on the map): a tiny rustic village entrance, modest timber posts and one thatched roof hint; no whole village. Approximate architecture width 78 pixels, height 52, centered horizontally at x=893, feet at y=381. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger.\nPOSITION LOCK: Rectangles in image2 are mandatory surveyed locations. Put each actual building INSIDE its own rectangle, its entrance threshold at the bottom-center dot. Do NOT move buildings to an existing hill or clearing. Reshape terrain AT the rectangle instead. Stay within20pixels of each location. Image1 is terrain to edit; image2 controls positions. Match the existing terrain's drawing style."
+    },
+    {
+      "id": "r5c4",
+      "row": 4,
+      "col": 3,
+      "worldOrigin": [
+        2957,
+        3981
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        3072,
+        4096,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r5c4.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r5c4_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_011",
+          "name": "血河教",
+          "type": "sect",
+          "level": 2,
+          "logicalPos": [
+            65,
+            82
+          ],
+          "anchor": [
+            3993.6,
+            5038.08
+          ],
+          "size": [
+            118,
+            82
+          ],
+          "owner": "r5c4",
+          "x": 1037,
+          "y": 1057
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 1 small entrance building, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_011 (血河教, instruction identity only, NEVER write it on the map): small roofed sect MOUNTAIN GATE, with pale piers and gray slate canopy; no whole compound. Approximate architecture width 118 pixels, height 82, centered horizontally at x=1037, feet at y=1057. MOUNTAIN FOOTING REQUIRED: extend or reshape the nearby low mountain shoulder so the gate sits on continuous mountainside or a dry mountain saddle, with visible sloping mountain ground directly BELOW the gate. A hill standing separately behind an icon on flat plain is NOT enough. No tall plinth, cliff, wall terrace, mountain path or stairs.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger.\nPOSITION LOCK: Rectangles in image2 are mandatory surveyed locations. Put each actual building INSIDE its own rectangle, its entrance threshold at the bottom-center dot. Do NOT move buildings to an existing hill or clearing. Reshape terrain AT the rectangle instead. Stay within20pixels of each location. Image1 is terrain to edit; image2 controls positions. Match the existing terrain's drawing style."
+    },
+    {
+      "id": "r5c5",
+      "row": 4,
+      "col": 4,
+      "worldOrigin": [
+        3981,
+        3981
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        4096,
+        4096,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r5c5.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r5c5_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_024",
+          "name": "暮烟城",
+          "type": "city",
+          "level": 0,
+          "logicalPos": [
+            72,
+            83
+          ],
+          "anchor": [
+            4423.68,
+            5099.52
+          ],
+          "size": [
+            142,
+            104
+          ],
+          "owner": "r5c5",
+          "x": 443,
+          "y": 1119
+        },
+        {
+          "id": "bc_place_036",
+          "name": "雁回镇",
+          "type": "town",
+          "level": 0,
+          "logicalPos": [
+            78,
+            81
+          ],
+          "anchor": [
+            4792.32,
+            4976.64
+          ],
+          "size": [
+            100,
+            66
+          ],
+          "owner": "r5c5",
+          "x": 811,
+          "y": 996
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 2 small entrance buildings, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_024 (暮烟城, instruction identity only, NEVER write it on the map): compact fortified CITY GATE with one small roof and very short wall stubs; no city panorama. Approximate architecture width 142 pixels, height 104, centered horizontally at x=443, feet at y=1119. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\n2. bc_place_036 (雁回镇, instruction identity only, NEVER write it on the map): simple small timber TOWN ENTRANCE canopy; no streetscape. Approximate architecture width 100 pixels, height 66, centered horizontally at x=811, feet at y=996. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger.\nPOSITION LOCK: Rectangles in image2 are mandatory surveyed locations. Put each actual building INSIDE its own rectangle, its entrance threshold at the bottom-center dot. Do NOT move buildings to an existing hill or clearing. Reshape terrain AT the rectangle instead. Stay within20pixels of each location. Image1 is terrain to edit; image2 controls positions. Match the existing terrain's drawing style."
+    },
+    {
+      "id": "r5c6",
+      "row": 4,
+      "col": 5,
+      "worldOrigin": [
+        5005,
+        3981
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        5120,
+        4096,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r5c6.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r5c6_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_037",
+          "name": "槐安镇",
+          "type": "town",
+          "level": 0,
+          "logicalPos": [
+            87,
+            76
+          ],
+          "anchor": [
+            5345.28,
+            4669.44
+          ],
+          "size": [
+            100,
+            66
+          ],
+          "owner": "r5c6",
+          "x": 340,
+          "y": 688
+        },
+        {
+          "id": "bc_place_119",
+          "name": "听澜镇",
+          "type": "town",
+          "level": 0,
+          "logicalPos": [
+            87,
+            69
+          ],
+          "anchor": [
+            5345.28,
+            4239.36
+          ],
+          "size": [
+            100,
+            66
+          ],
+          "owner": "r5c6",
+          "x": 340,
+          "y": 258
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 2 small entrance buildings, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_037 (槐安镇, instruction identity only, NEVER write it on the map): simple small timber TOWN ENTRANCE canopy; no streetscape. Approximate architecture width 100 pixels, height 66, centered horizontally at x=340, feet at y=688. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\n2. bc_place_119 (听澜镇, instruction identity only, NEVER write it on the map): simple small timber TOWN ENTRANCE canopy; no streetscape. Approximate architecture width 100 pixels, height 66, centered horizontally at x=340, feet at y=258. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger.\nPOSITION LOCK: Rectangles in image2 are mandatory surveyed locations. Put each actual building INSIDE its own rectangle, its entrance threshold at the bottom-center dot. Do NOT move buildings to an existing hill or clearing. Reshape terrain AT the rectangle instead. Stay within20pixels of each location. Image1 is terrain to edit; image2 controls positions. Match the existing terrain's drawing style."
+    },
+    {
+      "id": "r6c2",
+      "row": 5,
+      "col": 1,
+      "worldOrigin": [
+        909,
+        5005
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        1024,
+        5120,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r6c2.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r6c2_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_023",
+          "name": "青萝城",
+          "type": "city",
+          "level": 0,
+          "logicalPos": [
+            30,
+            87
+          ],
+          "anchor": [
+            1843.2,
+            5345.28
+          ],
+          "size": [
+            142,
+            104
+          ],
+          "owner": "r6c2",
+          "x": 934,
+          "y": 340
+        },
+        {
+          "id": "bc_place_042",
+          "name": "采薇里",
+          "type": "village",
+          "level": 0,
+          "logicalPos": [
+            26,
+            90
+          ],
+          "anchor": [
+            1597.44,
+            5529.6
+          ],
+          "size": [
+            78,
+            52
+          ],
+          "owner": "r6c2",
+          "x": 688,
+          "y": 525
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 2 small entrance buildings, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_023 (青萝城, instruction identity only, NEVER write it on the map): compact fortified CITY GATE with one small roof and very short wall stubs; no city panorama. Approximate architecture width 142 pixels, height 104, centered horizontally at x=934, feet at y=340. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\n2. bc_place_042 (采薇里, instruction identity only, NEVER write it on the map): a tiny rustic village entrance, modest timber posts and one thatched roof hint; no whole village. Approximate architecture width 78 pixels, height 52, centered horizontally at x=688, feet at y=525. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger.\nPOSITION LOCK: Rectangles in image2 are mandatory surveyed locations. Put each actual building INSIDE its own rectangle, its entrance threshold at the bottom-center dot. Do NOT move buildings to an existing hill or clearing. Reshape terrain AT the rectangle instead. Stay within20pixels of each location. Image1 is terrain to edit; image2 controls positions. Match the existing terrain's drawing style."
+    },
+    {
+      "id": "r6c3",
+      "row": 5,
+      "col": 2,
+      "worldOrigin": [
+        1933,
+        5005
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        2048,
+        5120,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r6c3.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r6c3_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_007",
+          "name": "百药谷",
+          "type": "sect",
+          "level": 2,
+          "logicalPos": [
+            36,
+            91
+          ],
+          "anchor": [
+            2211.84,
+            5591.04
+          ],
+          "size": [
+            118,
+            82
+          ],
+          "owner": "r6c3",
+          "x": 279,
+          "y": 586
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 1 small entrance building, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_007 (百药谷, instruction identity only, NEVER write it on the map): small roofed sect MOUNTAIN GATE, with pale piers and gray slate canopy; no whole compound. Approximate architecture width 118 pixels, height 82, centered horizontally at x=279, feet at y=586. MOUNTAIN FOOTING REQUIRED: extend or reshape the nearby low mountain shoulder so the gate sits on continuous mountainside or a dry mountain saddle, with visible sloping mountain ground directly BELOW the gate. A hill standing separately behind an icon on flat plain is NOT enough. No tall plinth, cliff, wall terrace, mountain path or stairs.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger.\nPOSITION LOCK: Rectangles in image2 are mandatory surveyed locations. Put each actual building INSIDE its own rectangle, its entrance threshold at the bottom-center dot. Do NOT move buildings to an existing hill or clearing. Reshape terrain AT the rectangle instead. Stay within20pixels of each location. Image1 is terrain to edit; image2 controls positions. Match the existing terrain's drawing style."
+    },
+    {
+      "id": "r6c5",
+      "row": 5,
+      "col": 4,
+      "worldOrigin": [
+        3981,
+        5005
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        4096,
+        5120,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r6c5.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r6c5_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_039",
+          "name": "忘机坊",
+          "type": "market",
+          "level": 0,
+          "logicalPos": [
+            70,
+            88
+          ],
+          "anchor": [
+            4300.8,
+            5406.72
+          ],
+          "size": [
+            94,
+            65
+          ],
+          "owner": "r6c5",
+          "x": 320,
+          "y": 402
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 1 small entrance building, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_039 (忘机坊, instruction identity only, NEVER write it on the map): small market entrance with ONE tiny adjacent muted cloth awning; no market panorama. Approximate architecture width 94 pixels, height 65, centered horizontally at x=320, feet at y=402. PLAIN FOOTING REQUIRED: remove any ridge and mountain wash beneath the marker and leave a BROAD naturally connected flat plain around this entrance, approximately 130 pixels or more to either side. Shift adjacent local hills aside if needed. Do not put the entrance on a peak or slope or cut an isolated circular clearing.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger.\nPOSITION LOCK: Rectangles in image2 are mandatory surveyed locations. Put each actual building INSIDE its own rectangle, its entrance threshold at the bottom-center dot. Do NOT move buildings to an existing hill or clearing. Reshape terrain AT the rectangle instead. Stay within20pixels of each location. Image1 is terrain to edit; image2 controls positions. Match the existing terrain's drawing style."
+    },
+    {
+      "id": "r6c6",
+      "row": 5,
+      "col": 5,
+      "worldOrigin": [
+        5005,
+        5005
+      ],
+      "framePixels": 1254,
+      "coreRect": [
+        5120,
+        5120,
+        1024,
+        1024
+      ],
+      "reference": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r6c6.png",
+      "guide": "E:\\stacklands/textures/world/bai_chuan/joint_paint_v4/reference/r6c6_guide.png",
+      "sites": [
+        {
+          "id": "bc_place_012",
+          "name": "蚀日宫",
+          "type": "sect",
+          "level": 2,
+          "logicalPos": [
+            88,
+            88
+          ],
+          "anchor": [
+            5406.72,
+            5406.72
+          ],
+          "size": [
+            118,
+            82
+          ],
+          "owner": "r6c6",
+          "x": 402,
+          "y": 402
+        }
+      ],
+      "prompt": "Edit IMAGE 1, one original local map crop, same square frame and fixed native scale. IMAGE 2 is the SAME crop with numbered rectangles and dots locating independent entrance sites; erase every guide and number in the final. IMAGE 3 shows the approved terrain-and-entrance CO-PAINTING treatment, not a layout to copy. Generate ONE integrated local terrain scene with EXACTLY 1 small entrance building, at the supplied positions. Do not return a sprite sheet or whole new world map.\nENTRANCES TO PAINT TOGETHER WITH TERRAIN (coordinates from top-left of this1254-square frame):\n1. bc_place_012 (蚀日宫, instruction identity only, NEVER write it on the map): small roofed sect MOUNTAIN GATE, with pale piers and gray slate canopy; no whole compound. Approximate architecture width 118 pixels, height 82, centered horizontally at x=402, feet at y=402. MOUNTAIN FOOTING REQUIRED: extend or reshape the nearby low mountain shoulder so the gate sits on continuous mountainside or a dry mountain saddle, with visible sloping mountain ground directly BELOW the gate. A hill standing separately behind an icon on flat plain is NOT enough. No tall plinth, cliff, wall terrace, mountain path or stairs.\nCritical: all entrances must look like parts of this SAME ink drawing, NOT fine-detail cutout icons pasted over softer terrain. Fine muted gray-brown outlines, simple flat shading, slate-gray roofs and pale earth walls. Architecture line density and sharpness must match mountains and tiny trees. No dense brick pattern, tile engraving, photographic detail, glossy 3D or separate dark drop shadow. Main sect gates slightly broader than local sect gates; city gates compact; town/market/village icons smaller and simpler. Keep the indicated footprint and especially the feet position; don't move a node to a prettier empty location. Never enlarge an entrance into a dominant hero building.\nVegetation avoidance is mandatory: clear any tree crowns, trunks and bushes within EACH architecture footprint and at least30pixels around it. Thin or move the local tree cluster naturally. No tree behind a doorway, no gate over a tree, no trees on mountain slopes. Forests are compact irregular groups of SMALL fine conifer strokes with varied heights and breathing gaps, no big round crowns, repeated stamps, or dark dense tree walls.\nKeep the source's geographic arrangement except the explicitly required local mountain/plain repair at entrance sites. Rivers, lakes and long coast remain connected and near existing banks; preserve through-frame river entries. Do not flood land, invent a new river, or place buildings in water. Same warm subdued ochre paper, very pale gray-green slope wash and muted gray-green water. Low separated hill groups with open valley corridors, no enclosing mountain wall. Clean quiet even ground with only extremely faint paper grain: no dirt dots, grass ticks, smears, wandering dry streams or filler scratches.\nPreserve the outermost60pixels' existing broad tone, contour geometry and bank positions, so this crop can meet neighboring map regions. Near frame boundaries don't invent new terrain or buildings. ONLY the listed entrances, no other architecture, hidden duplicate, entire compound, cityscape, people, roads, path dots, mountain paths, steps, stairs, bridges, UI, caption, writing, Chinese labels, compass, grid, border or visible technical markers. No gate on top of trees. Final output exactly this local scene at square1254pixels or larger.\nPOSITION LOCK: Rectangles in image2 are mandatory surveyed locations. Put each actual building INSIDE its own rectangle, its entrance threshold at the bottom-center dot. Do NOT move buildings to an existing hill or clearing. Reshape terrain AT the rectangle instead. Stay within20pixels of each location. Image1 is terrain to edit; image2 controls positions. Match the existing terrain's drawing style."
+    }
+  ],
+  "status": "complete_and_active_in_map_test"
+}

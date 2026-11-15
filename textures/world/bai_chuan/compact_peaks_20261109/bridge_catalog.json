@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "mode": "built_in_imagegen",
+  "atlas": "res://textures/world/bai_chuan/compact_peaks_20261109/bridge_topdown_native.png",
+  "runtime_atlas": "res://textures/world/bai_chuan/compact_peaks_20261109/bridge_topdown_native.res",
+  "atlas_size": [
+    2172,
+    724
+  ],
+  "source_sha256": "870d48a054fdb3a3959152caab655589a1330075938640a06b6274d51c11d17d",
+  "source_unchanged": true,
+  "perspective": "strict_top_down",
+  "bridge_catalog": {
+    "wood_plan": {
+      "atlas": "res://textures/world/bai_chuan/compact_peaks_20261109/bridge_topdown_native.png",
+      "region": [
+        88,
+        189,
+        1996,
+        343
+      ],
+      "native_size": [
+        1996,
+        343
+      ],
+      "pivot": [
+        0.500250501002004,
+        0.49854227405247814
+      ],
+      "native_pivot_px": [
+        1086.5,
+        360.0
+      ],
+      "deck_rect": [
+        20,
+        29,
+        1957,
+        284
+      ],
+      "deck_rect_atlas": [
+        108,
+        218,
+        2065,
+        502
+      ],
+      "deck_alpha_min": 248,
+      "perspective": "strict_top_down"
+    }
+  }
+}

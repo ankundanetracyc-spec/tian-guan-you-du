@@ -1,0 +1,4900 @@
+{
+  "source_roads": 575,
+  "route_width_cells": 3,
+  "candidate_count": 77,
+  "two_bank_candidates": 48,
+  "native_eligible_candidates": 38,
+  "selected_count": 9,
+  "candidates": [
+    {
+      "id": 1,
+      "water_cells": 35,
+      "grid_bounds": [
+        60,
+        286,
+        66,
+        296
+      ],
+      "position": [
+        988.863431305536,
+        4560.418646616542
+      ],
+      "bank_components": [
+        2,
+        4
+      ],
+      "selected": true,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 950.075313854078
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          990.631753613097,
+          4555.864997600634
+        ],
+        "x": 990.631753613097,
+        "y": 4555.864997600634,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": -1.1565886776688894,
+        "world_width": 480.08340838502994,
+        "world_height": 151.7505026504405,
+        "bounds": [
+          836.6382103414257,
+          4312.400279848845,
+          332.13442749245473,
+          500.559617665067
+        ],
+        "rect": [
+          836.6382103414257,
+          4312.400279848845,
+          1168.7726378338805,
+          4812.9598975139115
+        ],
+        "source_to_world_scale": 0.9197000160632758,
+        "bank_contacts": [
+          {
+            "land_component": 2,
+            "grid": [
+              65,
+              285
+            ],
+            "position": [
+              1026.9397129186602,
+              4476.202870813398
+            ]
+          },
+          {
+            "land_component": 4,
+            "grid": [
+              60,
+              295
+            ],
+            "position": [
+              948.5473684210526,
+              4632.987559808613
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              905.0612161863208,
+              4750.501460697171
+            ],
+            "land_component": 4
+          },
+          {
+            "position": [
+              1075.0918506372416,
+              4363.754312639271
+            ],
+            "land_component": 2
+          }
+        ],
+        "water_span_world": 170.09223399804915,
+        "connected_land_components": [
+          2,
+          4
+        ],
+        "candidate_id": 1,
+        "deck_world_extent": [
+          350.40570612010805,
+          74.49570130112534
+        ]
+      },
+      "cost": 170.09223399804915
+    },
+    {
+      "id": 2,
+      "water_cells": 49,
+      "grid_bounds": [
+        80,
+        287,
+        94,
+        297
+      ],
+      "position": [
+        1369.6262474367736,
+        4576.673059271557
+      ],
+      "bank_components": [
+        2,
+        4
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 1012.2593448577642
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          1371.8240213925683,
+          4578.071356796772
+        ],
+        "x": 1371.8240213925683,
+        "y": 4578.071356796772,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": 0.7800678749268756,
+        "world_width": 511.5056768263246,
+        "world_height": 161.6828288818842,
+        "bounds": [
+          1121.777390628916,
+          4350.140747526021,
+          477.32790028822797,
+          474.6908899907712
+        ],
+        "rect": [
+          1121.777390628916,
+          4350.140747526021,
+          1599.105290917144,
+          4824.831637516792
+        ],
+        "source_to_world_scale": 0.9798959326174801,
+        "bank_contacts": [
+          {
+            "land_component": 2,
+            "grid": [
+              81,
+              286
+            ],
+            "position": [
+              1277.7952153110048,
+              4491.881339712919
+            ]
+          },
+          {
+            "land_component": 4,
+            "grid": [
+              93,
+              297
+            ],
+            "position": [
+              1465.9368421052632,
+              4664.344497607655
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              1210.7899267797907,
+              4418.744892549726
+            ],
+            "land_component": 2
+          },
+          {
+            "position": [
+              1530.768392483249,
+              4735.33025727212
+            ],
+            "land_component": 4
+          }
+        ],
+        "water_span_world": 259.81111366632086,
+        "connected_land_components": [
+          2,
+          4
+        ],
+        "candidate_id": 2,
+        "deck_world_extent": [
+          373.3403503272599,
+          79.37157054201589
+        ]
+      },
+      "cost": 259.81111366632086
+    },
+    {
+      "id": 3,
+      "water_cells": 2,
+      "grid_bounds": [
+        1302,
+        295,
+        1304,
+        296
+      ],
+      "position": [
+        20429.044976076555,
+        4632.987559808613
+      ],
+      "bank_components": [
+        1
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 4,
+      "water_cells": 40,
+      "grid_bounds": [
+        342,
+        307,
+        350,
+        318
+      ],
+      "position": [
+        5418.086889952155,
+        4897.16976076555
+      ],
+      "bank_components": [
+        1,
+        2
+      ],
+      "selected": true,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 1051.8191788524266
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          5419.746808356474,
+          4897.317371043229
+        ],
+        "x": 5419.746808356474,
+        "y": 4897.317371043229,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": -1.155845729655395,
+        "world_width": 531.4956919991853,
+        "world_height": 168.00151183882295,
+        "bounds": [
+          5249.100865959496,
+          4627.812275670999,
+          368.01395375535867,
+          554.1198906886402
+        ],
+        "rect": [
+          5249.100865959496,
+          4627.812275670999,
+          5617.114819714855,
+          5181.932166359639
+        ],
+        "source_to_world_scale": 1.0181909808413512,
+        "bank_contacts": [
+          {
+            "land_component": 1,
+            "grid": [
+              348,
+              307
+            ],
+            "position": [
+              5463.9464114832535,
+              4821.1291866028705
+            ]
+          },
+          {
+            "land_component": 2,
+            "grid": [
+              343,
+              317
+            ],
+            "position": [
+              5385.554066985646,
+              4977.913875598087
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              5324.8524307047965,
+              5112.727072224979
+            ],
+            "land_component": 2
+          },
+          {
+            "position": [
+              5513.409751052899,
+              4684.703020253145
+            ],
+            "land_component": 1
+          }
+        ],
+        "water_span_world": 178.11989526893495,
+        "connected_land_components": [
+          1,
+          2
+        ],
+        "candidate_id": 4,
+        "deck_world_extent": [
+          387.9307637005548,
+          82.47346944814944
+        ]
+      },
+      "cost": 178.11989526893495
+    },
+    {
+      "id": 5,
+      "water_cells": 11,
+      "grid_bounds": [
+        1329,
+        312,
+        1332,
+        317
+      ],
+      "position": [
+        20855.926924749896,
+        4923.751892127013
+      ],
+      "bank_components": [
+        1
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 6,
+      "water_cells": 40,
+      "grid_bounds": [
+        300,
+        389,
+        307,
+        401
+      ],
+      "position": [
+        4739.60114832536,
+        6189.467559808614
+      ],
+      "bank_components": [
+        2,
+        4
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 1181.1458845342122
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          4741.160623978283,
+          6195.660203262476
+        ],
+        "x": 4741.160623978283,
+        "y": 6195.660203262476,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": -1.2794543626531847,
+        "world_width": 596.8458855612668,
+        "world_height": 188.6581822176418,
+        "bounds": [
+          4581.023615596062,
+          5889.287273406473,
+          352.144746171125,
+          625.8841466793428
+        ],
+        "rect": [
+          4581.023615596062,
+          5889.287273406473,
+          4933.168361767187,
+          6515.171420085816
+        ],
+        "source_to_world_scale": 1.1433829225311625,
+        "bank_contacts": [
+          {
+            "land_component": 2,
+            "grid": [
+              304,
+              389
+            ],
+            "position": [
+              4774.093779904307,
+              6106.763636363637
+            ]
+          },
+          {
+            "land_component": 4,
+            "grid": [
+              300,
+              401
+            ],
+            "position": [
+              4711.37990430622,
+              6294.905263157895
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              4665.2358167609445,
+              6448.848524792111
+            ],
+            "land_component": 4
+          },
+          {
+            "position": [
+              4816.10016248011,
+              5945.757481545061
+            ],
+            "land_component": 2
+          }
+        ],
+        "water_span_world": 207.89460684249508,
+        "connected_land_components": [
+          2,
+          4
+        ],
+        "candidate_id": 6,
+        "deck_world_extent": [
+          435.6288934843729,
+          92.61401672502416
+        ]
+      },
+      "cost": 207.89460684249508
+    },
+    {
+      "id": 7,
+      "water_cells": 51,
+      "grid_bounds": [
+        770,
+        389,
+        777,
+        404
+      ],
+      "position": [
+        12115.306276386149,
+        6233.11365043625
+      ],
+      "bank_components": [
+        1,
+        7
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "wood_crossbeam",
+          "reason": "world_width_over_900",
+          "world_width": 902.5626569739712
+        },
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 1214.7782718694473
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          12109.525602621397,
+          6217.202274843907
+        ],
+        "x": 12109.525602621397,
+        "y": 6217.202274843907,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": 1.2524278608893413,
+        "world_width": 613.8406973499509,
+        "world_height": 194.0301054841799,
+        "bounds": [
+          11904.009566737957,
+          5899.184151918992,
+          376.4224235892252,
+          643.7283998568855
+        ],
+        "rect": [
+          11904.009566737957,
+          5899.184151918992,
+          12280.431990327183,
+          6542.912551775878
+        ],
+        "source_to_world_scale": 1.1759400332374539,
+        "bank_contacts": [
+          {
+            "land_component": 1,
+            "grid": [
+              770,
+              388
+            ],
+            "position": [
+              12080.26028708134,
+              6091.085167464115
+            ]
+          },
+          {
+            "land_component": 7,
+            "grid": [
+              774,
+              404
+            ],
+            "position": [
+              12142.974162679426,
+              6341.94066985646
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              12024.430618795583,
+              5959.009824369471
+            ],
+            "land_component": 1
+          },
+          {
+            "position": [
+              12193.516317256635,
+              6472.044187419634
+            ],
+            "land_component": 7
+          }
+        ],
+        "water_span_world": 253.59246015355194,
+        "connected_land_components": [
+          1,
+          7
+        ],
+        "candidate_id": 7,
+        "deck_world_extent": [
+          448.03315266346993,
+          95.25114269223377
+        ]
+      },
+      "cost": 253.59246015355194
+    },
+    {
+      "id": 8,
+      "water_cells": 6,
+      "grid_bounds": [
+        820,
+        393,
+        825,
+        395
+      ],
+      "position": [
+        12892.927591706539,
+        6179.929824561404
+      ],
+      "bank_components": [
+        1
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 9,
+      "water_cells": 37,
+      "grid_bounds": [
+        364,
+        403,
+        369,
+        416
+      ],
+      "position": [
+        5743.192654855813,
+        6417.366817535239
+      ],
+      "bank_components": [
+        2,
+        4
+      ],
+      "selected": false,
+      "native_fit_rejections": [],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          5745.14508513606,
+          6420.466383225387
+        ],
+        "x": 5745.14508513606,
+        "y": 6420.466383225387,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": 1.4399897417256868,
+        "world_width": 438.76109966294763,
+        "world_height": 138.68885334173632,
+        "bounds": [
+          5635.11359207244,
+          6194.309620385375,
+          194.73334823605364,
+          453.1024932400387
+        ],
+        "rect": [
+          5635.11359207244,
+          6194.309620385375,
+          5829.846940308494,
+          6647.412113625413
+        ],
+        "source_to_world_scale": 0.8405385051014322,
+        "bank_contacts": [
+          {
+            "land_component": 2,
+            "grid": [
+              365,
+              403
+            ],
+            "position": [
+              5730.48038277512,
+              6326.262200956938
+            ]
+          },
+          {
+            "land_component": 4,
+            "grid": [
+              367,
+              415
+            ],
+            "position": [
+              5761.837320574163,
+              6514.403827751196
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              5719.799735654464,
+              6227.810728584068
+            ],
+            "land_component": 2
+          },
+          {
+            "position": [
+              5770.161530523682,
+              6610.621964486985
+            ],
+            "land_component": 4
+          }
+        ],
+        "water_span_world": 210.39281778378364,
+        "connected_land_components": [
+          2,
+          4
+        ],
+        "candidate_id": 9,
+        "deck_world_extent": [
+          320.2451704436457,
+          68.08361891321601
+        ]
+      },
+      "cost": 210.39281778378364
+    },
+    {
+      "id": 10,
+      "water_cells": 4,
+      "grid_bounds": [
+        1280,
+        429,
+        1282,
+        432
+      ],
+      "position": [
+        20084.11866028708,
+        6749.58086124402
+      ],
+      "bank_components": [
+        1
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 11,
+      "water_cells": 1,
+      "grid_bounds": [
+        1282,
+        434,
+        1283,
+        435
+      ],
+      "position": [
+        20107.636363636364,
+        6812.2947368421055
+      ],
+      "bank_components": [
+        1
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 12,
+      "water_cells": 31,
+      "grid_bounds": [
+        696,
+        435,
+        705,
+        443
+      ],
+      "position": [
+        10983.273221176107,
+        6885.629510726962
+      ],
+      "bank_components": [
+        2,
+        7
+      ],
+      "selected": true,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 997.7931575433884
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          10983.251307598846,
+          6883.303515529297
+        ],
+        "x": 10983.251307598846,
+        "y": 6883.303515529297,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": -0.815377982048586,
+        "world_width": 504.19575474862233,
+        "world_height": 159.37222132858753,
+        "bounds": [
+          10761.958430113262,
+          6656.135703611521,
+          461.69377335834724,
+          476.31136544870697
+        ],
+        "rect": [
+          10761.958430113262,
+          6656.135703611521,
+          11223.652203471609,
+          7132.447069060228
+        ],
+        "source_to_world_scale": 0.965892250476288,
+        "bank_contacts": [
+          {
+            "land_component": 2,
+            "grid": [
+              697,
+              442
+            ],
+            "position": [
+              10935.732057416268,
+              6937.722488038277
+            ]
+          },
+          {
+            "land_component": 7,
+            "grid": [
+              703,
+              435
+            ],
+            "position": [
+              11029.802870813397,
+              6827.973205741627
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              10830.161777002988,
+              7045.858858280477
+            ],
+            "land_component": 2
+          },
+          {
+            "position": [
+              11134.354210494264,
+              6722.85763738688
+            ],
+            "land_component": 7
+          }
+        ],
+        "water_span_world": 158.7393265473873,
+        "connected_land_components": [
+          2,
+          7
+        ],
+        "candidate_id": 12,
+        "deck_world_extent": [
+          368.0049474314657,
+          78.23727228857933
+        ]
+      },
+      "cost": 158.7393265473873
+    },
+    {
+      "id": 13,
+      "water_cells": 47,
+      "grid_bounds": [
+        368,
+        436,
+        379,
+        447
+      ],
+      "position": [
+        5846.234185075842,
+        6926.714201364143
+      ],
+      "bank_components": [
+        2,
+        4
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 1109.2198512859272
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          5843.569492773749,
+          6926.330156799509
+        ],
+        "x": 5843.569492773749,
+        "y": 6926.330156799509,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": 0.8096683964638733,
+        "world_width": 560.5008772341109,
+        "world_height": 177.16981751652932,
+        "bounds": [
+          5573.356445717655,
+          6672.254992811244,
+          514.8803855649085,
+          528.0362780974947
+        ],
+        "rect": [
+          5573.356445717655,
+          6672.254992811244,
+          6088.236831282564,
+          7200.291270908739
+        ],
+        "source_to_world_scale": 1.0737564697971473,
+        "bank_contacts": [
+          {
+            "land_component": 2,
+            "grid": [
+              377,
+              446
+            ],
+            "position": [
+              5918.622009569378,
+              7000.436363636364
+            ]
+          },
+          {
+            "land_component": 4,
+            "grid": [
+              368,
+              436
+            ],
+            "position": [
+              5777.515789473684,
+              6843.651674641149
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              5672.35498323049,
+              6746.59637768851
+            ],
+            "land_component": 4
+          },
+          {
+            "position": [
+              6012.562168557038,
+              7103.731548431776
+            ],
+            "land_component": 2
+          }
+        ],
+        "water_span_world": 215.17402881729714,
+        "connected_land_components": [
+          2,
+          4
+        ],
+        "candidate_id": 13,
+        "deck_world_extent": [
+          409.10121499271315,
+          86.97427405356893
+        ]
+      },
+      "cost": 215.17402881729714
+    },
+    {
+      "id": 14,
+      "water_cells": 3,
+      "grid_bounds": [
+        937,
+        445,
+        938,
+        448
+      ],
+      "position": [
+        14698.564593301437,
+        7000.436363636363
+      ],
+      "bank_components": [
+        1
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 15,
+      "water_cells": 4,
+      "grid_bounds": [
+        935,
+        449,
+        937,
+        453
+      ],
+      "position": [
+        14675.046889952155,
+        7070.989473684212
+      ],
+      "bank_components": [
+        1
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 16,
+      "water_cells": 1,
+      "grid_bounds": [
+        934,
+        454,
+        935,
+        455
+      ],
+      "position": [
+        14651.529186602871,
+        7125.864114832536
+      ],
+      "bank_components": [
+        1
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 17,
+      "water_cells": 31,
+      "grid_bounds": [
+        277,
+        457,
+        280,
+        468
+      ],
+      "position": [
+        4366.95934557802,
+        7256.349436641458
+      ],
+      "bank_components": [
+        2,
+        4
+      ],
+      "selected": false,
+      "native_fit_rejections": [],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          4366.456977984854,
+          7258.968130092626
+        ],
+        "x": 4366.456977984854,
+        "y": 7258.968130092626,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": -1.5500012633142903,
+        "world_width": 330.50558746579895,
+        "world_height": 104.47015695758013,
+        "bounds": [
+          4320.272483906688,
+          7093.811917914645,
+          111.31995885005199,
+          332.60643597881244
+        ],
+        "rect": [
+          4320.272483906688,
+          7093.811917914645,
+          4431.59244275674,
+          7426.418353893458
+        ],
+        "source_to_world_scale": 0.6331524664095766,
+        "bank_contacts": [
+          {
+            "land_component": 2,
+            "grid": [
+              278,
+              468
+            ],
+            "position": [
+              4366.453588516746,
+              7345.362679425837
+            ]
+          },
+          {
+            "land_component": 4,
+            "grid": [
+              278,
+              457
+            ],
+            "position": [
+              4366.453588516746,
+              7172.899521531101
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              4363.413378431283,
+              7405.30867021378
+            ],
+            "land_component": 2
+          },
+          {
+            "position": [
+              4369.461081047983,
+              7114.526636689888
+            ],
+            "land_component": 4
+          }
+        ],
+        "water_span_world": 173.08128206594785,
+        "connected_land_components": [
+          2,
+          4
+        ],
+        "candidate_id": 17,
+        "deck_world_extent": [
+          241.23108970204868,
+          51.285349779175704
+        ]
+      },
+      "cost": 173.08128206594785
+    },
+    {
+      "id": 18,
+      "water_cells": 40,
+      "grid_bounds": [
+        36,
+        489,
+        42,
+        501
+      ],
+      "position": [
+        607.9326315789474,
+        7762.801913875601
+      ],
+      "bank_components": [
+        4,
+        9
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 929.7375503321363
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          607.9051451753949,
+          7762.116269428885
+        ],
+        "x": 607.9051451753949,
+        "y": 7762.116269428885,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": -1.2817104638045551,
+        "world_width": 469.8065148712573,
+        "world_height": 148.50205929838592,
+        "bounds": [
+          482.3249946349037,
+          7520.935736001666,
+          276.2705753263015,
+          492.64622840971333
+        ],
+        "rect": [
+          482.3249946349037,
+          7520.935736001666,
+          758.5955699612052,
+          8013.581964411379
+        ],
+        "source_to_world_scale": 0.9000124805962784,
+        "bank_contacts": [
+          {
+            "land_component": 4,
+            "grid": [
+              40,
+              488
+            ],
+            "position": [
+              634.9779904306221,
+              7658.932057416268
+            ]
+          },
+          {
+            "land_component": 9,
+            "grid": [
+              36,
+              501
+            ],
+            "position": [
+              572.2641148325359,
+              7862.752153110048
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              548.5908109065862,
+              7961.547476190195
+            ],
+            "land_component": 9
+          },
+          {
+            "position": [
+              666.449763193635,
+              7565.273061717164
+            ],
+            "land_component": 4
+          }
+        ],
+        "water_span_world": 203.3330333728739,
+        "connected_land_components": [
+          4,
+          9
+        ],
+        "candidate_id": 18,
+        "deck_world_extent": [
+          342.90475510718204,
+          72.90101092829855
+        ]
+      },
+      "cost": 203.3330333728739
+    },
+    {
+      "id": 19,
+      "water_cells": 49,
+      "grid_bounds": [
+        334,
+        514,
+        347,
+        524
+      ],
+      "position": [
+        5337.558754027927,
+        8135.685499462943
+      ],
+      "bank_components": [
+        2,
+        9
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 1076.587229195968
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          5338.518660287083,
+          8137.125358851676
+        ],
+        "x": 5338.518660287083,
+        "y": 8137.125358851676,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": -0.7446188156789458,
+        "world_width": 544.011257717595,
+        "world_height": 171.95758146245817,
+        "bounds": [
+          5089.67771973126,
+          7902.119964645963,
+          516.570856448493,
+          495.1202044418678
+        ],
+        "rect": [
+          5089.67771973126,
+          7902.119964645963,
+          5606.248576179753,
+          8397.24016908783
+        ],
+        "source_to_world_scale": 1.0421671603785343,
+        "bank_contacts": [
+          {
+            "land_component": 2,
+            "grid": [
+              346,
+              513
+            ],
+            "position": [
+              5432.589473684211,
+              8050.893779904306
+            ]
+          },
+          {
+            "land_component": 9,
+            "grid": [
+              334,
+              524
+            ],
+            "position": [
+              5244.447846889952,
+              8223.356937799042
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              5161.353001340539,
+              8300.40036869208
+            ],
+            "land_component": 9
+          },
+          {
+            "position": [
+              5513.385257996324,
+              7975.969152668687
+            ],
+            "land_component": 2
+          }
+        ],
+        "water_span_world": 249.65420853128768,
+        "connected_land_components": [
+          2,
+          9
+        ],
+        "candidate_id": 19,
+        "deck_world_extent": [
+          397.0656881042216,
+          84.41553999066127
+        ]
+      },
+      "cost": 249.65420853128768
+    },
+    {
+      "id": 20,
+      "water_cells": 41,
+      "grid_bounds": [
+        906,
+        514,
+        913,
+        526
+      ],
+      "position": [
+        14256.890652351498,
+        8148.4062084257175
+      ],
+      "bank_components": [
+        1,
+        2
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 951.6991097718989
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          14258.382619438828,
+          8144.53126227086
+        ],
+        "x": 14258.382619438828,
+        "y": 8144.53126227086,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": -1.2201790909970576,
+        "world_width": 480.90393015565337,
+        "world_height": 152.00986298023525,
+        "bounds": [
+          14116.91559089194,
+          7898.646570860898,
+          307.94142433598245,
+          503.85813701205007
+        ],
+        "rect": [
+          14116.91559089194,
+          7898.646570860898,
+          14424.857015227923,
+          8402.504707872948
+        ],
+        "source_to_world_scale": 0.9212718968499106,
+        "bank_contacts": [
+          {
+            "land_component": 1,
+            "grid": [
+              911,
+              513
+            ],
+            "position": [
+              14290.924401913877,
+              8050.893779904306
+            ]
+          },
+          {
+            "land_component": 2,
+            "grid": [
+              907,
+              525
+            ],
+            "position": [
+              14228.21052631579,
+              8239.035406698566
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              14185.228894084697,
+              8344.553406774718
+            ],
+            "land_component": 2
+          },
+          {
+            "position": [
+              14330.587036132769,
+              7947.104785357241
+            ],
+            "land_component": 1
+          }
+        ],
+        "water_span_world": 193.80472748308586,
+        "connected_land_components": [
+          1,
+          2
+        ],
+        "candidate_id": 20,
+        "deck_world_extent": [
+          351.00459269981593,
+          74.62302364484276
+        ]
+      },
+      "cost": 193.80472748308586
+    },
+    {
+      "id": 21,
+      "water_cells": 36,
+      "grid_bounds": [
+        286,
+        522,
+        294,
+        531
+      ],
+      "position": [
+        4543.271876661351,
+        8254.713875598092
+      ],
+      "bank_components": [
+        2,
+        9
+      ],
+      "selected": true,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 997.4369407354002
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          4542.346473365103,
+          8252.691723053567
+        ],
+        "x": 4542.346473365103,
+        "y": 8252.691723053567,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": 1.0380621125644145,
+        "world_width": 504.01575451410474,
+        "world_height": 159.31532470273427,
+        "bounds": [
+          4332.523482838081,
+          8001.257588769008,
+          393.22250135191007,
+          515.0848106060321
+        ],
+        "rect": [
+          4332.523482838081,
+          8001.257588769008,
+          4725.745984189991,
+          8516.34239937504
+        ],
+        "source_to_world_scale": 0.9655474224408137,
+        "bank_contacts": [
+          {
+            "land_component": 2,
+            "grid": [
+              286,
+              521
+            ],
+            "position": [
+              4491.881339712919,
+              8176.321531100479
+            ]
+          },
+          {
+            "land_component": 9,
+            "grid": [
+              292,
+              531
+            ],
+            "position": [
+              4585.952153110048,
+              8333.106220095695
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              4428.977556142415,
+              8060.409280191194
+            ],
+            "land_component": 2
+          },
+          {
+            "position": [
+              4654.244213359362,
+              8442.47893566857
+            ],
+            "land_component": 9
+          }
+        ],
+        "water_span_world": 179.46526747927447,
+        "connected_land_components": [
+          2,
+          9
+        ],
+        "candidate_id": 21,
+        "deck_world_extent": [
+          367.87356794995003,
+          78.20934121770591
+        ]
+      },
+      "cost": 179.46526747927447
+    },
+    {
+      "id": 22,
+      "water_cells": 2,
+      "grid_bounds": [
+        1258,
+        604,
+        1259,
+        606
+      ],
+      "position": [
+        19731.353110047847,
+        9485.473684210527
+      ],
+      "bank_components": [
+        1
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 23,
+      "water_cells": 54,
+      "grid_bounds": [
+        582,
+        614,
+        590,
+        628
+      ],
+      "position": [
+        9180.033882686512,
+        9742.426368952683
+      ],
+      "bank_components": [
+        2,
+        9
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "wood_crossbeam",
+          "reason": "world_width_over_900",
+          "world_width": 1037.818188560914
+        },
+        {
+          "asset": "stone_slab",
+          "reason": "world_width_over_900",
+          "world_width": 1032.306616944568
+        },
+        {
+          "asset": "timber_short",
+          "reason": "native_pixels_would_be_enlarged",
+          "source_to_world_scale": 1.3521631387259472
+        },
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 1396.821567869348
+        }
+      ],
+      "rejection_reason": "no_native_deck_with_dry_reachable_footings"
+    },
+    {
+      "id": 24,
+      "water_cells": 29,
+      "grid_bounds": [
+        1047,
+        619,
+        1053,
+        627
+      ],
+      "position": [
+        16454.553110047847,
+        9764.712621679591
+      ],
+      "bank_components": [
+        2,
+        10
+      ],
+      "selected": true,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 956.0822412444172
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          16451.729518566503,
+          9766.485096946762
+        ],
+        "x": 16451.729518566503,
+        "y": 9766.485096946762,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": -1.1686254192768435,
+        "world_width": 483.11877424858136,
+        "world_height": 152.70995737742516,
+        "bounds": [
+          16299.14787542219,
+          9521.023710556316,
+          329.626636723453,
+          504.3456533076751
+        ],
+        "rect": [
+          16299.14787542219,
+          9521.023710556316,
+          16628.774512145643,
+          10025.36936386399
+        ],
+        "source_to_world_scale": 0.925514893196516,
+        "bank_contacts": [
+          {
+            "land_component": 2,
+            "grid": [
+              1047,
+              627
+            ],
+            "position": [
+              16423.196172248805,
+              9838.23923444976
+            ]
+          },
+          {
+            "land_component": 10,
+            "grid": [
+              1051,
+              618
+            ],
+            "position": [
+              16485.91004784689,
+              9697.133014354067
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              16367.981736888974,
+              9963.3744535653
+            ],
+            "land_component": 2
+          },
+          {
+            "position": [
+              16534.390513562517,
+              9572.15075403986
+            ],
+            "land_component": 10
+          }
+        ],
+        "water_span_world": 147.35532601270398,
+        "connected_land_components": [
+          2,
+          10
+        ],
+        "candidate_id": 24,
+        "deck_world_extent": [
+          352.6211743078726,
+          74.9667063489178
+        ]
+      },
+      "cost": 147.35532601270398
+    },
+    {
+      "id": 25,
+      "water_cells": 101,
+      "grid_bounds": [
+        1090,
+        622,
+        1124,
+        635
+      ],
+      "position": [
+        17375.546733620726,
+        9852.365379695864
+      ],
+      "bank_components": [
+        1,
+        2
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "wood_crossbeam",
+          "reason": "world_width_over_900",
+          "world_width": 903.3348975124327
+        },
+        {
+          "asset": "timber_short",
+          "reason": "native_pixels_would_be_enlarged",
+          "source_to_world_scale": 1.5190319422014016
+        },
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 1215.8176468308764
+        }
+      ],
+      "bridge": {
+        "asset": "stone_slab",
+        "position": [
+          17355.805751844746,
+          9861.188501407445
+        ],
+        "x": 17355.805751844746,
+        "y": 9861.188501407445,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": -0.4279967697770106,
+        "world_width": 898.5375302702107,
+        "world_height": 164.3666213908922,
+        "bounds": [
+          16910.642753809025,
+          9602.809420249872,
+          885.7087768357815,
+          522.4777828431852
+        ],
+        "rect": [
+          16910.642753809025,
+          9602.809420249872,
+          17796.351530644806,
+          10125.287203093058
+        ],
+        "source_to_world_scale": 1.0957774759392813,
+        "bank_contacts": [
+          {
+            "land_component": 1,
+            "grid": [
+              1122,
+              621
+            ],
+            "position": [
+              17599.08133971292,
+              9744.168421052633
+            ]
+          },
+          {
+            "land_component": 2,
+            "grid": [
+              1092,
+              635
+            ],
+            "position": [
+              17128.727272727272,
+              9963.666985645934
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              16993.119974246976,
+              10026.645270625353
+            ],
+            "land_component": 2
+          },
+          {
+            "position": [
+              17712.509905842773,
+              9698.460540917704
+            ],
+            "land_component": 1
+          }
+        ],
+        "water_span_world": 557.9795800417216,
+        "connected_land_components": [
+          1,
+          2
+        ],
+        "candidate_id": 25,
+        "deck_world_extent": [
+          773.6188980131326,
+          95.33264040671747
+        ]
+      },
+      "cost": 557.9795800417216
+    },
+    {
+      "id": 26,
+      "water_cells": 84,
+      "grid_bounds": [
+        1200,
+        650,
+        1213,
+        662
+      ],
+      "position": [
+        18906.740305308726,
+        10290.861699703804
+      ],
+      "bank_components": [
+        1,
+        2
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "wood_crossbeam",
+          "reason": "world_width_over_900",
+          "world_width": 1364.605332290935
+        },
+        {
+          "asset": "stone_slab",
+          "reason": "world_width_over_900",
+          "world_width": 1357.3582825669382
+        },
+        {
+          "asset": "timber_short",
+          "reason": "world_width_over_900",
+          "world_width": 928.0799314136545
+        },
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 1836.651333329006
+        }
+      ],
+      "rejection_reason": "no_native_deck_with_dry_reachable_footings"
+    },
+    {
+      "id": 27,
+      "water_cells": 80,
+      "grid_bounds": [
+        1222,
+        668,
+        1233,
+        682
+      ],
+      "position": [
+        19242.18488038277,
+        10584.142392344495
+      ],
+      "bank_components": [
+        1,
+        2
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "wood_crossbeam",
+          "reason": "world_width_over_900",
+          "world_width": 1419.9017490716685
+        },
+        {
+          "asset": "stone_slab",
+          "reason": "world_width_over_900",
+          "world_width": 1412.3610350386691
+        },
+        {
+          "asset": "timber_short",
+          "reason": "world_width_over_900",
+          "world_width": 965.6875044451388
+        },
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 1911.075956482243
+        }
+      ],
+      "rejection_reason": "no_native_deck_with_dry_reachable_footings"
+    },
+    {
+      "id": 28,
+      "water_cells": 46,
+      "grid_bounds": [
+        94,
+        670,
+        107,
+        680
+      ],
+      "position": [
+        1564.438527147909,
+        10575.468109007697
+      ],
+      "bank_components": [
+        9,
+        13
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 1114.2417583197803
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          1565.2882765616928,
+          10579.314516655248
+        ],
+        "x": 1565.2882765616928,
+        "y": 10579.314516655248,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": -0.7354888253648649,
+        "world_width": 563.038501578464,
+        "world_height": 177.97194015411216,
+        "bounds": [
+          1306.4916128260684,
+          10337.528428219326,
+          536.9048819657751,
+          509.7372178682781
+        ],
+        "rect": [
+          1306.4916128260684,
+          10337.528428219326,
+          1843.3964947918435,
+          10847.265646087604
+        ],
+        "source_to_world_scale": 1.0786178191158313,
+        "bank_contacts": [
+          {
+            "land_component": 9,
+            "grid": [
+              105,
+              670
+            ],
+            "position": [
+              1654.0784688995216,
+              10512.413397129187
+            ]
+          },
+          {
+            "land_component": 13,
+            "grid": [
+              94,
+              679
+            ],
+            "position": [
+              1481.6153110047846,
+              10653.519617224882
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              1380.390928022041,
+              10746.619090444034
+            ],
+            "land_component": 13
+          },
+          {
+            "position": [
+              1747.7862304927326,
+              10414.181037776776
+            ],
+            "land_component": 9
+          }
+        ],
+        "water_span_world": 228.82227231387088,
+        "connected_land_components": [
+          9,
+          13
+        ],
+        "candidate_id": 28,
+        "deck_world_extent": [
+          410.95338908313175,
+          87.36804334838234
+        ]
+      },
+      "cost": 228.82227231387088
+    },
+    {
+      "id": 29,
+      "water_cells": 86,
+      "grid_bounds": [
+        204,
+        673,
+        220,
+        683
+      ],
+      "position": [
+        3332.586180037834,
+        10632.918838322024
+      ],
+      "bank_components": [
+        9,
+        13
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "wood_crossbeam",
+          "reason": "world_width_over_900",
+          "world_width": 1414.651977931439
+        },
+        {
+          "asset": "stone_slab",
+          "reason": "world_width_over_900",
+          "world_width": 1407.1391440126326
+        },
+        {
+          "asset": "timber_short",
+          "reason": "world_width_over_900",
+          "world_width": 962.1170895240846
+        },
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 1904.0101778748947
+        }
+      ],
+      "rejection_reason": "no_native_deck_with_dry_reachable_footings"
+    },
+    {
+      "id": 30,
+      "water_cells": 41,
+      "grid_bounds": [
+        1241,
+        675,
+        1245,
+        689
+      ],
+      "position": [
+        19493.881666472167,
+        10699.025417201543
+      ],
+      "bank_components": [
+        1,
+        2
+      ],
+      "selected": false,
+      "native_fit_rejections": [],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          19490.522799003178,
+          10700.622816873185
+        ],
+        "x": 19490.522799003178,
+        "y": 10700.622816873185,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": -1.5397933240068327,
+        "world_width": 416.67033512086914,
+        "world_height": 131.70614041176898,
+        "bounds": [
+          19430.17381052254,
+          10491.914351374036,
+          144.55881064251662,
+          420.55273401264094
+        ],
+        "rect": [
+          19430.17381052254,
+          10491.914351374036,
+          19574.732621165058,
+          10912.467085386677
+        ],
+        "source_to_world_scale": 0.7982190327985998,
+        "bank_contacts": [
+          {
+            "land_component": 1,
+            "grid": [
+              1243,
+              675
+            ],
+            "position": [
+              19496.176076555024,
+              10590.805741626795
+            ]
+          },
+          {
+            "land_component": 2,
+            "grid": [
+              1242,
+              689
+            ],
+            "position": [
+              19480.497607655503,
+              10810.304306220096
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              19484.802660791524,
+              10885.066415041998
+            ],
+            "land_component": 2
+          },
+          {
+            "position": [
+              19496.168707546887,
+              10518.572725039292
+            ],
+            "land_component": 1
+          }
+        ],
+        "water_span_world": 219.4006179093106,
+        "connected_land_components": [
+          1,
+          2
+        ],
+        "candidate_id": 30,
+        "deck_world_extent": [
+          304.12145149626656,
+          64.65574165668659
+        ]
+      },
+      "cost": 219.4006179093106
+    },
+    {
+      "id": 31,
+      "water_cells": 55,
+      "grid_bounds": [
+        329,
+        683,
+        336,
+        694
+      ],
+      "position": [
+        5221.642801217922,
+        10782.65318834276
+      ],
+      "bank_components": [
+        9,
+        13
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "wood_crossbeam",
+          "reason": "world_width_over_900",
+          "world_width": 1085.3835592405792
+        },
+        {
+          "asset": "stone_slab",
+          "reason": "world_width_over_900",
+          "world_width": 1079.6193808094283
+        },
+        {
+          "asset": "timber_short",
+          "reason": "native_pixels_would_be_enlarged",
+          "source_to_world_scale": 1.4141355936528193
+        },
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 1460.8408116842843
+        }
+      ],
+      "rejection_reason": "no_native_deck_with_dry_reachable_footings"
+    },
+    {
+      "id": 32,
+      "water_cells": 2,
+      "grid_bounds": [
+        124,
+        690,
+        126,
+        691
+      ],
+      "position": [
+        1959.8086124401916,
+        10825.982775119617
+      ],
+      "bank_components": [
+        13
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 33,
+      "water_cells": 3,
+      "grid_bounds": [
+        128,
+        691,
+        131,
+        692
+      ],
+      "position": [
+        2030.3617224880381,
+        10841.661244019138
+      ],
+      "bank_components": [
+        13
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 34,
+      "water_cells": 3,
+      "grid_bounds": [
+        134,
+        692,
+        137,
+        693
+      ],
+      "position": [
+        2124.4325358851675,
+        10857.339712918661
+      ],
+      "bank_components": [
+        13
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 35,
+      "water_cells": 33,
+      "grid_bounds": [
+        578,
+        706,
+        585,
+        715
+      ],
+      "position": [
+        9127.006872553286,
+        11147.153835000729
+      ],
+      "bank_components": [
+        9,
+        13
+      ],
+      "selected": true,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 1073.8960908143188
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          9128.165944243356,
+          11141.140639175555
+        ],
+        "x": 9128.165944243356,
+        "y": 11141.140639175555,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": -1.1218218452602278,
+        "world_width": 542.6513961699279,
+        "world_height": 171.52774016865538,
+        "bounds": [
+          8946.506371861022,
+          10867.653191521982,
+          390.06152033592116,
+          563.3209010671108
+        ],
+        "rect": [
+          8946.506371861022,
+          10867.653191521982,
+          9336.567892196943,
+          11430.974092589093
+        ],
+        "source_to_world_scale": 1.0395620616282144,
+        "bank_contacts": [
+          {
+            "land_component": 9,
+            "grid": [
+              584,
+              705
+            ],
+            "position": [
+              9164.065071770336,
+              11061.159808612441
+            ]
+          },
+          {
+            "land_component": 13,
+            "grid": [
+              579,
+              715
+            ],
+            "position": [
+              9085.672727272728,
+              11217.944497607656
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              9023.854413776942,
+              11357.648538374284
+            ],
+            "land_component": 13
+          },
+          {
+            "position": [
+              9231.123834293647,
+              10927.442341575565
+            ],
+            "land_component": 9
+          }
+        ],
+        "water_span_world": 169.50608631222832,
+        "connected_land_components": [
+          9,
+          13
+        ],
+        "candidate_id": 35,
+        "deck_world_extent": [
+          396.0731454803497,
+          84.20452699188537
+        ]
+      },
+      "cost": 169.50608631222832
+    },
+    {
+      "id": 36,
+      "water_cells": 68,
+      "grid_bounds": [
+        682,
+        707,
+        693,
+        724
+      ],
+      "position": [
+        10795.548100197017,
+        11219.78902336054
+      ],
+      "bank_components": [
+        2,
+        13
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "wood_crossbeam",
+          "reason": "world_width_over_900",
+          "world_width": 1061.6011140295598
+        },
+        {
+          "asset": "stone_slab",
+          "reason": "world_width_over_900",
+          "world_width": 1055.9632377305522
+        },
+        {
+          "asset": "timber_short",
+          "reason": "native_pixels_would_be_enlarged",
+          "source_to_world_scale": 1.3831496790508588
+        },
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 1428.831512971292
+        }
+      ],
+      "rejection_reason": "no_native_deck_with_dry_reachable_footings"
+    },
+    {
+      "id": 37,
+      "water_cells": 35,
+      "grid_bounds": [
+        537,
+        714,
+        546,
+        722
+      ],
+      "position": [
+        8495.714340396446,
+        11256.020779220775
+      ],
+      "bank_components": [
+        9,
+        13
+      ],
+      "selected": false,
+      "native_fit_rejections": [],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          8497.730143540668,
+          11257.140669856459
+        ],
+        "x": 8497.730143540668,
+        "y": 11257.140669856459,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": 0.7589490015006752,
+        "world_width": 453.8612778659364,
+        "world_height": 143.4618981760144,
+        "bounds": [
+          8273.794866964437,
+          11057.496410900532,
+          428.0280711826217,
+          416.4190094508922
+        ],
+        "rect": [
+          8273.794866964437,
+          11057.496410900532,
+          8701.82293814706,
+          11473.915420351424
+        ],
+        "source_to_world_scale": 0.8694660495516023,
+        "bank_contacts": [
+          {
+            "land_component": 9,
+            "grid": [
+              537,
+              714
+            ],
+            "position": [
+              8427.177033492822,
+              11202.266028708134
+            ]
+          },
+          {
+            "land_component": 13,
+            "grid": [
+              546,
+              721
+            ],
+            "position": [
+              8568.283253588517,
+              11312.015311004785
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              8351.890357000277,
+              11118.818482450917
+            ],
+            "land_component": 9
+          },
+          {
+            "position": [
+              8641.677381592342,
+              11393.667863913888
+            ],
+            "land_component": 13
+          }
+        ],
+        "water_span_world": 171.41948776128112,
+        "connected_land_components": [
+          9,
+          13
+        ],
+        "candidate_id": 37,
+        "deck_world_extent": [
+          331.2665648791605,
+          70.4267500136798
+        ]
+      },
+      "cost": 171.41948776128112
+    },
+    {
+      "id": 38,
+      "water_cells": 52,
+      "grid_bounds": [
+        956,
+        720,
+        964,
+        735
+      ],
+      "position": [
+        15052.837688627158,
+        11402.16650717703
+      ],
+      "bank_components": [
+        2,
+        13
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 923.1875485728252
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          15052.325453494057,
+          11397.960725276547
+        ],
+        "x": 15052.325453494057,
+        "y": 11397.960725276547,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": 1.2908343808299951,
+        "world_width": 466.4967276115696,
+        "world_height": 147.45586217607087,
+        "bounds": [
+          14903.763504290559,
+          11155.83699259604,
+          270.61675374737933,
+          489.07899022447054
+        ],
+        "rect": [
+          14903.763504290559,
+          11155.83699259604,
+          15174.380258037938,
+          11644.91598282051
+        ],
+        "source_to_world_scale": 0.893671891976187,
+        "bank_contacts": [
+          {
+            "land_component": 2,
+            "grid": [
+              957,
+              719
+            ],
+            "position": [
+              15012.133971291867,
+              11280.658373205742
+            ]
+          },
+          {
+            "land_component": 13,
+            "grid": [
+              962,
+              734
+            ],
+            "position": [
+              15090.526315789473,
+              11515.835406698565
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              14995.238189857928,
+              11199.405394893152
+            ],
+            "land_component": 2
+          },
+          {
+            "position": [
+              15108.671901354995,
+              11593.939422771498
+            ],
+            "land_component": 13
+          }
+        ],
+        "water_span_world": 248.29236651838102,
+        "connected_land_components": [
+          2,
+          13
+        ],
+        "candidate_id": 38,
+        "deck_world_extent": [
+          340.48899084292725,
+          72.38742325007115
+        ]
+      },
+      "cost": 248.29236651838102
+    },
+    {
+      "id": 39,
+      "water_cells": 24,
+      "grid_bounds": [
+        804,
+        732,
+        819,
+        746
+      ],
+      "position": [
+        12711.971929824564,
+        11577.242743221692
+      ],
+      "bank_components": [
+        2
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 40,
+      "water_cells": 52,
+      "grid_bounds": [
+        833,
+        759,
+        837,
+        776
+      ],
+      "position": [
+        13089.712476996687,
+        12034.732425469268
+      ],
+      "bank_components": [
+        2,
+        13
+      ],
+      "selected": false,
+      "native_fit_rejections": [],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          13089.630779828278,
+          12033.07187431855
+        ],
+        "x": 13089.630779828278,
+        "y": 12033.07187431855,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": -1.4900488584140472,
+        "world_width": 431.750174651156,
+        "world_height": 136.47275635525045,
+        "bounds": [
+          13016.470424441723,
+          11814.633578255409,
+          170.85294723523475,
+          441.35125884550143
+        ],
+        "rect": [
+          13016.470424441723,
+          11814.633578255409,
+          13187.323371676957,
+          12255.98483710091
+        ],
+        "source_to_world_scale": 0.8271076142742452,
+        "bank_contacts": [
+          {
+            "land_component": 2,
+            "grid": [
+              835,
+              758
+            ],
+            "position": [
+              13099.36076555024,
+              11892.118660287082
+            ]
+          },
+          {
+            "land_component": 13,
+            "grid": [
+              834,
+              776
+            ],
+            "position": [
+              13083.682296650719,
+              12174.33110047847
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              13074.207769609866,
+              12223.659589517525
+            ],
+            "land_component": 13
+          },
+          {
+            "position": [
+              13104.853647168175,
+              11844.957397053638
+            ],
+            "land_component": 2
+          }
+        ],
+        "water_span_world": 268.24585008118294,
+        "connected_land_components": [
+          2,
+          13
+        ],
+        "candidate_id": 40,
+        "deck_world_extent": [
+          315.1280010384874,
+          66.99571675621385
+        ]
+      },
+      "cost": 268.24585008118294
+    },
+    {
+      "id": 41,
+      "water_cells": 58,
+      "grid_bounds": [
+        866,
+        759,
+        873,
+        777
+      ],
+      "position": [
+        13628.373931694441,
+        12043.767299125557
+      ],
+      "bank_components": [
+        2,
+        13
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 914.5223542378699
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          13629.388589317117,
+          12041.672990834113
+        ],
+        "x": 13629.388589317117,
+        "y": 12041.672990834113,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": 1.3731312328665224,
+        "world_width": 462.11811049566074,
+        "world_height": 146.0718165359847,
+        "bounds": [
+          13499.117918118573,
+          11802.076063442702,
+          233.97842629059596,
+          481.8052908624941
+        ],
+        "rect": [
+          13499.117918118573,
+          11802.076063442702,
+          13733.096344409169,
+          12283.881354305197
+        ],
+        "source_to_world_scale": 0.8852837365817255,
+        "bank_contacts": [
+          {
+            "land_component": 2,
+            "grid": [
+              867,
+              759
+            ],
+            "position": [
+              13601.07177033493,
+              11907.797129186603
+            ]
+          },
+          {
+            "land_component": 13,
+            "grid": [
+              871,
+              776
+            ],
+            "position": [
+              13663.785645933014,
+              12174.33110047847
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              13589.197391711548,
+              11840.998279078036
+            ],
+            "land_component": 2
+          },
+          {
+            "position": [
+              13669.058229725626,
+              12239.743566699246
+            ],
+            "land_component": 13
+          }
+        ],
+        "water_span_world": 283.1803209523808,
+        "connected_land_components": [
+          2,
+          13
+        ],
+        "candidate_id": 41,
+        "deck_world_extent": [
+          337.29310363763744,
+          71.70798266311976
+        ]
+      },
+      "cost": 283.1803209523808
+    },
+    {
+      "id": 42,
+      "water_cells": 65,
+      "grid_bounds": [
+        1145,
+        782,
+        1153,
+        803
+      ],
+      "position": [
+        18013.716540301808,
+        12415.779521531103
+      ],
+      "bank_components": [
+        2,
+        18
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 931.0661474588281
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          18012.497470131704,
+          12426.490094655948
+        ],
+        "x": 18012.497470131704,
+        "y": 12426.490094655948,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": -1.3488383916169564,
+        "world_width": 494.6114512122449,
+        "world_height": 156.34270009582454,
+        "bounds": [
+          17895.353346808635,
+          12172.557835629792,
+          261.39108672555085,
+          516.8950650659172
+        ],
+        "rect": [
+          17895.353346808635,
+          12172.557835629792,
+          18156.744433534186,
+          12689.45290069571
+        ],
+        "source_to_world_scale": 0.9475315157322699,
+        "bank_contacts": [
+          {
+            "land_component": 2,
+            "grid": [
+              1151,
+              782
+            ],
+            "position": [
+              18053.756937799044,
+              12268.4019138756
+            ]
+          },
+          {
+            "land_component": 18,
+            "grid": [
+              1146,
+              802
+            ],
+            "position": [
+              17975.364593301438,
+              12581.97129186603
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              17964.275740704325,
+              12640.166753250625
+            ],
+            "land_component": 18
+          },
+          {
+            "position": [
+              18060.09343094466,
+              12215.586296930654
+            ],
+            "land_component": 2
+          }
+        ],
+        "water_span_world": 338.8127434551073,
+        "connected_land_components": [
+          2,
+          18
+        ],
+        "candidate_id": 42,
+        "deck_world_extent": [
+          361.0095074939948,
+          76.75005277431386
+        ]
+      },
+      "cost": 338.8127434551073
+    },
+    {
+      "id": 43,
+      "water_cells": 44,
+      "grid_bounds": [
+        1170,
+        786,
+        1178,
+        798
+      ],
+      "position": [
+        18402.602870813396,
+        12415.565724227929
+      ],
+      "bank_components": [
+        2,
+        18
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 991.0170133826898
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          18401.77832817177,
+          12415.832727810144
+        ],
+        "x": 18401.77832817177,
+        "y": 12415.832727810144,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": 1.1156877907846192,
+        "world_width": 500.7716952694007,
+        "world_height": 158.2899036771094,
+        "bounds": [
+          18207.0719153982,
+          12161.176616939365,
+          362.2972094240722,
+          519.3776888505945
+        ],
+        "rect": [
+          18207.0719153982,
+          12161.176616939365,
+          18569.36912482227,
+          12680.55430578996
+        ],
+        "source_to_world_scale": 0.9593327495582389,
+        "bank_contacts": [
+          {
+            "land_component": 2,
+            "grid": [
+              1170,
+              785
+            ],
+            "position": [
+              18351.64784688995,
+              12315.437320574163
+            ]
+          },
+          {
+            "land_component": 18,
+            "grid": [
+              1176,
+              798
+            ],
+            "position": [
+              18445.718660287082,
+              12519.257416267943
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              18304.29339418496,
+              12216.628283364444
+            ],
+            "land_component": 2
+          },
+          {
+            "position": [
+              18497.998209809935,
+              12612.452115878403
+            ],
+            "land_component": 18
+          }
+        ],
+        "water_span_world": 218.82854857405283,
+        "connected_land_components": [
+          2,
+          18
+        ],
+        "candidate_id": 43,
+        "deck_world_extent": [
+          365.505777581689,
+          77.70595271421735
+        ]
+      },
+      "cost": 218.82854857405283
+    },
+    {
+      "id": 44,
+      "water_cells": 27,
+      "grid_bounds": [
+        1023,
+        806,
+        1032,
+        811
+      ],
+      "position": [
+        16108.465426191744,
+        12677.7841573631
+      ],
+      "bank_components": [
+        13,
+        18
+      ],
+      "selected": true,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 932.2012007985102
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          16109.556346345613,
+          12676.781899015632
+        ],
+        "x": 16109.556346345613,
+        "y": 12676.781899015632,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": 0.0949401389479039,
+        "world_width": 471.0514242965619,
+        "world_height": 148.89556515121208,
+        "bounds": [
+          15865.403162032602,
+          12593.688804545684,
+          483.0450156660372,
+          192.87955810264975
+        ],
+        "rect": [
+          15865.403162032602,
+          12593.688804545684,
+          16348.44817769864,
+          12786.568362648333
+        ],
+        "source_to_world_scale": 0.9023973645528005,
+        "bank_contacts": [
+          {
+            "land_component": 13,
+            "grid": [
+              1022,
+              808
+            ],
+            "position": [
+              16031.234449760766,
+              12676.04210526316
+            ]
+          },
+          {
+            "land_component": 18,
+            "grid": [
+              1032,
+              808
+            ],
+            "position": [
+              16188.01913875598,
+              12676.04210526316
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              15901.879612326653,
+              12657.005586507888
+            ],
+            "land_component": 13
+          },
+          {
+            "position": [
+              16314.538079923112,
+              12696.301576271524
+            ],
+            "land_component": 18
+          }
+        ],
+        "water_span_world": 140.54136490048796,
+        "connected_land_components": [
+          13,
+          18
+        ],
+        "candidate_id": 44,
+        "deck_world_extent": [
+          343.813395894617,
+          73.09418652877685
+        ]
+      },
+      "cost": 140.54136490048796
+    },
+    {
+      "id": 45,
+      "water_cells": 101,
+      "grid_bounds": [
+        244,
+        840,
+        264,
+        853
+      ],
+      "position": [
+        3982.8744137571653,
+        13262.35474915914
+      ],
+      "bank_components": [
+        13,
+        19
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "wood_crossbeam",
+          "reason": "world_width_over_900",
+          "world_width": 1342.390322512398
+        },
+        {
+          "asset": "stone_slab",
+          "reason": "world_width_over_900",
+          "world_width": 1335.2612506950345
+        },
+        {
+          "asset": "timber_short",
+          "reason": "world_width_over_900",
+          "world_width": 912.9713104345724
+        },
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 1806.7516792941146
+        }
+      ],
+      "rejection_reason": "no_native_deck_with_dry_reachable_footings"
+    },
+    {
+      "id": 46,
+      "water_cells": 46,
+      "grid_bounds": [
+        66,
+        854,
+        74,
+        866
+      ],
+      "position": [
+        1094.4252964426873,
+        13481.438235905965
+      ],
+      "bank_components": [
+        13,
+        19
+      ],
+      "selected": true,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 975.6904302597319
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          1092.6310816438745,
+          13484.853766290733
+        ],
+        "x": 1092.6310816438745,
+        "y": 13484.853766290733,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": -1.1394175969506917,
+        "world_width": 493.02700581450114,
+        "world_height": 155.84186965400897,
+        "bounds": [
+          931.0525449470624,
+          13235.553447764396,
+          347.71145522673305,
+          513.022035051923
+        ],
+        "rect": [
+          931.0525449470624,
+          13235.553447764396,
+          1278.7640001737955,
+          13748.575482816319
+        ],
+        "source_to_world_scale": 0.9444961797212665,
+        "bank_contacts": [
+          {
+            "land_component": 13,
+            "grid": [
+              72,
+              853
+            ],
+            "position": [
+              1136.688995215311,
+              13381.573205741628
+            ]
+          },
+          {
+            "land_component": 19,
+            "grid": [
+              66,
+              866
+            ],
+            "position": [
+              1042.618181818182,
+              13585.393301435408
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              1001.3343624937601,
+              13683.19950461168
+            ],
+            "land_component": 19
+          },
+          {
+            "position": [
+              1182.7430522973614,
+              13289.081941002758
+            ],
+            "land_component": 13
+          }
+        ],
+        "water_span_world": 218.23106760857655,
+        "connected_land_components": [
+          13,
+          19
+        ],
+        "candidate_id": 46,
+        "deck_world_extent": [
+          359.8530444738025,
+          76.50419055742259
+        ]
+      },
+      "cost": 218.23106760857655
+    },
+    {
+      "id": 47,
+      "water_cells": 98,
+      "grid_bounds": [
+        182,
+        880,
+        200,
+        898
+      ],
+      "position": [
+        2993.467669172934,
+        13940.558617322527
+      ],
+      "bank_components": [
+        13,
+        19
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "wood_crossbeam",
+          "reason": "world_width_over_900",
+          "world_width": 1206.510910798363
+        },
+        {
+          "asset": "stone_slab",
+          "reason": "world_width_over_900",
+          "world_width": 1200.103457774256
+        },
+        {
+          "asset": "timber_short",
+          "reason": "native_pixels_would_be_enlarged",
+          "source_to_world_scale": 1.5719512319536326
+        },
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 1623.8686897651423
+        }
+      ],
+      "rejection_reason": "no_native_deck_with_dry_reachable_footings"
+    },
+    {
+      "id": 48,
+      "water_cells": 54,
+      "grid_bounds": [
+        430,
+        902,
+        444,
+        912
+      ],
+      "position": [
+        6850.0391990076205,
+        14218.62923976608
+      ],
+      "bank_components": [
+        13,
+        19
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 980.6457715424008
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          6850.258870455215,
+          14217.747194615258
+        ],
+        "x": 6850.258870455215,
+        "y": 14217.747194615258,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": -0.43895907346859514,
+        "world_width": 495.5309937594611,
+        "world_height": 156.63336009638138,
+        "bounds": [
+          6597.4612694798,
+          14055.050252237332,
+          515.1207315905267,
+          352.3830740294561
+        ],
+        "rect": [
+          6597.4612694798,
+          14055.050252237332,
+          7112.582001070326,
+          14407.433326266788
+        ],
+        "source_to_world_scale": 0.9492930914932205,
+        "bank_contacts": [
+          {
+            "land_component": 13,
+            "grid": [
+              444,
+              903
+            ],
+            "position": [
+              6969.079425837321,
+              14165.496650717703
+            ]
+          },
+          {
+            "land_component": 19,
+            "grid": [
+              429,
+              910
+            ],
+            "position": [
+              6733.9023923444975,
+              14275.245933014354
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              6651.6070690670595,
+              14311.016106157565
+            ],
+            "land_component": 19
+          },
+          {
+            "position": [
+              7046.332787060239,
+              14125.688624515235
+            ],
+            "land_component": 13
+          }
+        ],
+        "water_span_world": 253.48178259311487,
+        "connected_land_components": [
+          13,
+          19
+        ],
+        "candidate_id": 48,
+        "deck_world_extent": [
+          361.680667858917,
+          76.89274041095086
+        ]
+      },
+      "cost": 253.48178259311487
+    },
+    {
+      "id": 49,
+      "water_cells": 8,
+      "grid_bounds": [
+        428,
+        924,
+        431,
+        932
+      ],
+      "position": [
+        6728.0229665071765,
+        14549.619138755981
+      ],
+      "bank_components": [
+        19
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 50,
+      "water_cells": 56,
+      "grid_bounds": [
+        1048,
+        933,
+        1058,
+        949
+      ],
+      "position": [
+        16507.74791524265,
+        14752.319343814084
+      ],
+      "bank_components": [
+        13,
+        18
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 990.1369542766398
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          16507.2321085057,
+          14752.279175031488
+        ],
+        "x": 16507.2321085057,
+        "y": 14752.279175031488,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": -1.0847297732694436,
+        "world_width": 500.32699181373596,
+        "world_height": 158.14933649284757,
+        "bounds": [
+          16332.492169466914,
+          14502.137990497129,
+          373.5606174912391,
+          516.257446699401
+        ],
+        "rect": [
+          16332.492169466914,
+          14502.137990497129,
+          16706.052786958153,
+          15018.39543719653
+        ],
+        "source_to_world_scale": 0.9584808272293792,
+        "bank_contacts": [
+          {
+            "land_component": 13,
+            "grid": [
+              1049,
+              948
+            ],
+            "position": [
+              16454.553110047847,
+              14871.027751196172
+            ]
+          },
+          {
+            "land_component": 18,
+            "grid": [
+              1056,
+              933
+            ],
+            "position": [
+              16564.3023923445,
+              14635.85071770335
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              16403.719900159285,
+              14948.196573787827
+            ],
+            "land_component": 13
+          },
+          {
+            "position": [
+              16609.401049160104,
+              14558.904176985718
+            ],
+            "land_component": 18
+          }
+        ],
+        "water_span_world": 260.23775506307567,
+        "connected_land_components": [
+          13,
+          18
+        ],
+        "candidate_id": 50,
+        "deck_world_extent": [
+          365.1811951743935,
+          77.63694700557971
+        ]
+      },
+      "cost": 260.23775506307567
+    },
+    {
+      "id": 51,
+      "water_cells": 18,
+      "grid_bounds": [
+        433,
+        934,
+        441,
+        943
+      ],
+      "position": [
+        6851.49090909091,
+        14707.274853801167
+      ],
+      "bank_components": [
+        19
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 52,
+      "water_cells": 7,
+      "grid_bounds": [
+        1083,
+        945,
+        1088,
+        947
+      ],
+      "position": [
+        17016.738209159263,
+        14832.951469583048
+      ],
+      "bank_components": [
+        18
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 53,
+      "water_cells": 1,
+      "grid_bounds": [
+        579,
+        1006,
+        580,
+        1007
+      ],
+      "position": [
+        9085.672727272728,
+        15780.378947368421
+      ],
+      "bank_components": [
+        19
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 54,
+      "water_cells": 1,
+      "grid_bounds": [
+        579,
+        1008,
+        580,
+        1009
+      ],
+      "position": [
+        9085.672727272728,
+        15811.735885167465
+      ],
+      "bank_components": [
+        19
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 55,
+      "water_cells": 74,
+      "grid_bounds": [
+        1175,
+        1030,
+        1193,
+        1045
+      ],
+      "position": [
+        18562.247821026773,
+        16268.953937669732
+      ],
+      "bank_components": [
+        13,
+        18
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 1055.6229940189046
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          18560.228171620947,
+          16270.81117631728
+        ],
+        "x": 18560.228171620947,
+        "y": 16270.81117631728,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": -0.730145203223358,
+        "world_width": 533.4178012502736,
+        "world_height": 168.6090751078451,
+        "bounds": [
+          18314.361535647797,
+          16042.551805079178,
+          509.89615032939037,
+          481.4046861593397
+        ],
+        "rect": [
+          18314.361535647797,
+          16042.551805079178,
+          18824.257685977187,
+          16523.956491238518
+        ],
+        "source_to_world_scale": 1.0218731824717884,
+        "bank_contacts": [
+          {
+            "land_component": 13,
+            "grid": [
+              1175,
+              1044
+            ],
+            "position": [
+              18430.04019138756,
+              16376.16076555024
+            ]
+          },
+          {
+            "land_component": 18,
+            "grid": [
+              1191,
+              1030
+            ],
+            "position": [
+              18680.895693779905,
+              16156.662200956938
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              18384.213549897948,
+              16428.375779309656
+            ],
+            "land_component": 13
+          },
+          {
+            "position": [
+              18733.958669002877,
+              16115.291273597319
+            ],
+            "land_component": 18
+          }
+        ],
+        "water_span_world": 339.7532445666241,
+        "connected_land_components": [
+          13,
+          18
+        ],
+        "candidate_id": 55,
+        "deck_world_extent": [
+          389.33368252175137,
+          82.77172778021486
+        ]
+      },
+      "cost": 339.7532445666241
+    },
+    {
+      "id": 56,
+      "water_cells": 56,
+      "grid_bounds": [
+        625,
+        1043,
+        642,
+        1052
+      ],
+      "position": [
+        9941.82911825017,
+        16435.234996582363
+      ],
+      "bank_components": [
+        13,
+        19
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 1063.6361530201616
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          9934.801719911666,
+          16436.458496547224
+        ],
+        "x": 9934.801719911666,
+        "y": 16436.458496547224,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": -0.43068979123903955,
+        "world_width": 537.4669378072997,
+        "world_height": 169.8889745942614,
+        "bounds": [
+          9660.190026190996,
+          16261.754542302058,
+          559.3126272772406,
+          378.76558045506863
+        ],
+        "rect": [
+          9660.190026190996,
+          16261.754542302058,
+          10219.502653468237,
+          16640.520122757127
+        ],
+        "source_to_world_scale": 1.0296301490561297,
+        "bank_contacts": [
+          {
+            "land_component": 13,
+            "grid": [
+              641,
+              1044
+            ],
+            "position": [
+              10057.737799043063,
+              16376.16076555024
+            ]
+          },
+          {
+            "land_component": 19,
+            "grid": [
+              625,
+              1051
+            ],
+            "position": [
+              9806.882296650718,
+              16485.91004784689
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              9718.509193235708,
+              16535.835431390267
+            ],
+            "land_component": 19
+          },
+          {
+            "position": [
+              10148.287439856818,
+              16338.37116636085
+            ],
+            "land_component": 13
+          }
+        ],
+        "water_span_world": 276.3539635012456,
+        "connected_land_components": [
+          13,
+          19
+        ],
+        "candidate_id": 56,
+        "deck_world_extent": [
+          392.2890867903854,
+          83.4000420735465
+        ]
+      },
+      "cost": 276.3539635012456
+    },
+    {
+      "id": 57,
+      "water_cells": 34,
+      "grid_bounds": [
+        108,
+        1060,
+        111,
+        1072
+      ],
+      "position": [
+        1717.2534759358293,
+        16718.32029271038
+      ],
+      "bank_components": [
+        19,
+        32
+      ],
+      "selected": false,
+      "native_fit_rejections": [],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          1716.7946158841894,
+          16720.95366180312
+        ],
+        "x": 1716.7946158841894,
+        "y": 16720.95366180312,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": -1.553773578556905,
+        "world_width": 328.43625959239694,
+        "world_height": 103.81605906656225,
+        "bounds": [
+          1671.5191892663456,
+          16556.980045409004,
+          109.39163558220207,
+          330.15582389213887
+        ],
+        "rect": [
+          1671.5191892663456,
+          16556.980045409004,
+          1780.9108248485477,
+          16887.135869301143
+        ],
+        "source_to_world_scale": 0.6291882367670439,
+        "bank_contacts": [
+          {
+            "land_component": 19,
+            "grid": [
+              109,
+              1060
+            ],
+            "position": [
+              1716.7923444976077,
+              16627.016267942585
+            ]
+          },
+          {
+            "land_component": 32,
+            "grid": [
+              109,
+              1072
+            ],
+            "position": [
+              1716.7923444976077,
+              16815.157894736843
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              1714.3186790817315,
+              16866.388324245607
+            ],
+            "land_component": 32
+          },
+          {
+            "position": [
+              1719.2384226995923,
+              16577.40629059399
+            ],
+            "land_component": 19
+          }
+        ],
+        "water_span_world": 188.65039521047612,
+        "connected_land_components": [
+          19,
+          32
+        ],
+        "candidate_id": 57,
+        "deck_world_extent": [
+          239.72071820824374,
+          50.964247178130556
+        ]
+      },
+      "cost": 188.65039521047612
+    },
+    {
+      "id": 58,
+      "water_cells": 24,
+      "grid_bounds": [
+        127,
+        1072,
+        139,
+        1077
+      ],
+      "position": [
+        2091.7690590111647,
+        16833.44944178628
+      ],
+      "bank_components": [
+        32
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 59,
+      "water_cells": 52,
+      "grid_bounds": [
+        189,
+        1073,
+        201,
+        1086
+      ],
+      "position": [
+        3050.96974604343,
+        16918.575487670223
+      ],
+      "bank_components": [
+        19,
+        32
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 1103.7635400556785
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          3050.1321800568858,
+          16921.963904931297
+        ],
+        "x": 3050.1321800568858,
+        "y": 16921.963904931297,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": -0.9478099067283009,
+        "world_width": 557.7437437159258,
+        "world_height": 176.29830979526392,
+        "bounds": [
+          2827.9124338489564,
+          16654.70208604654,
+          468.6017623635116,
+          555.829356153019
+        ],
+        "rect": [
+          2827.9124338489564,
+          16654.70208604654,
+          3296.514196212468,
+          17210.53144219956
+        ],
+        "source_to_world_scale": 1.0684746048197813,
+        "bank_contacts": [
+          {
+            "land_component": 19,
+            "grid": [
+              198,
+              1073
+            ],
+            "position": [
+              3112.176076555024,
+              16830.836363636365
+            ]
+          },
+          {
+            "land_component": 32,
+            "grid": [
+              190,
+              1085
+            ],
+            "position": [
+              2986.7483253588516,
+              17018.977990430623
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              2906.010971500794,
+              17122.57047800352
+            ],
+            "land_component": 32
+          },
+          {
+            "position": [
+              3192.3831419408248,
+              16723.960583521053
+            ],
+            "land_component": 19
+          }
+        ],
+        "water_span_world": 243.6354229925749,
+        "connected_land_components": [
+          19,
+          32
+        ],
+        "candidate_id": 59,
+        "deck_world_extent": [
+          407.08882443633667,
+          86.54644299040228
+        ]
+      },
+      "cost": 243.6354229925749
+    },
+    {
+      "id": 60,
+      "water_cells": 8,
+      "grid_bounds": [
+        204,
+        1076,
+        210,
+        1081
+      ],
+      "position": [
+        3249.3626794258375,
+        16913.14832535885
+      ],
+      "bank_components": [
+        19
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 61,
+      "water_cells": 47,
+      "grid_bounds": [
+        249,
+        1082,
+        253,
+        1098
+      ],
+      "position": [
+        3936.46323933625,
+        17096.703166038886
+      ],
+      "bank_components": [
+        19,
+        32
+      ],
+      "selected": false,
+      "native_fit_rejections": [],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          3935.9442115083125,
+          17097.316312605242
+        ],
+        "x": 3935.9442115083125,
+        "y": 17097.316312605242,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": 1.487686979162643,
+        "world_width": 425.9807959750118,
+        "world_height": 134.64910217600948,
+        "bounds": [
+          3838.870722507777,
+          16879.26850935595,
+          169.54659251371277,
+          435.688203976948
+        ],
+        "rect": [
+          3838.870722507777,
+          16879.26850935595,
+          4008.4173150214897,
+          17314.956713332896
+        ],
+        "source_to_world_scale": 0.8160551647030877,
+        "bank_contacts": [
+          {
+            "land_component": 19,
+            "grid": [
+              250,
+              1082
+            ],
+            "position": [
+              3927.456459330144,
+              16971.94258373206
+            ]
+          },
+          {
+            "land_component": 32,
+            "grid": [
+              251,
+              1098
+            ],
+            "position": [
+              3943.134928229665,
+              17222.798086124403
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              3920.2832083154367,
+              16909.311842358948
+            ],
+            "land_component": 19
+          },
+          {
+            "position": [
+              3951.401983411377,
+              17282.881067431783
+            ],
+            "land_component": 32
+          }
+        ],
+        "water_span_world": 251.3452944591375,
+        "connected_land_components": [
+          19,
+          32
+        ],
+        "candidate_id": 61,
+        "deck_world_extent": [
+          310.9170177518764,
+          66.1004683409501
+        ]
+      },
+      "cost": 251.3452944591375
+    },
+    {
+      "id": 62,
+      "water_cells": 10,
+      "grid_bounds": [
+        1296,
+        1090,
+        1300,
+        1095
+      ],
+      "position": [
+        20352.2204784689,
+        17131.862966507175
+      ],
+      "bank_components": [
+        13
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 63,
+      "water_cells": 1,
+      "grid_bounds": [
+        1303,
+        1110,
+        1304,
+        1111
+      ],
+      "position": [
+        20436.884210526317,
+        17410.939712918662
+      ],
+      "bank_components": [
+        13
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 64,
+      "water_cells": 48,
+      "grid_bounds": [
+        713,
+        1125,
+        727,
+        1133
+      ],
+      "position": [
+        11280.658373205739,
+        17696.745135566187
+      ],
+      "bank_components": [
+        13,
+        19
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 1017.5702767714733
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          11281.325886752073,
+          17694.59459808258
+        ],
+        "x": 11281.325886752073,
+        "y": 17694.59459808258,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": -0.4334187346067595,
+        "world_width": 514.1893485917673,
+        "world_height": 162.5311159341793,
+        "bounds": [
+          11018.738271677914,
+          17526.89955364035,
+          534.9041165612452,
+          363.4498406847015
+        ],
+        "rect": [
+          11018.738271677914,
+          17526.89955364035,
+          11553.64238823916,
+          17890.34939432505
+        ],
+        "source_to_world_scale": 0.9850370662677533,
+        "bank_contacts": [
+          {
+            "land_component": 13,
+            "grid": [
+              726,
+              1125
+            ],
+            "position": [
+              11390.407655502393,
+              17646.116746411484
+            ]
+          },
+          {
+            "land_component": 19,
+            "grid": [
+              712,
+              1131
+            ],
+            "position": [
+              11170.909090909092,
+              17740.18755980861
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              11074.66116645225,
+              17790.231868810588
+            ],
+            "land_component": 19
+          },
+          {
+            "position": [
+              11485.308739412396,
+              17600.19840275982
+            ],
+            "land_component": 13
+          }
+        ],
+        "water_span_world": 233.57528777282806,
+        "connected_land_components": [
+          13,
+          19
+        ],
+        "candidate_id": 64,
+        "deck_world_extent": [
+          375.29912224801404,
+          79.78800236768802
+        ]
+      },
+      "cost": 233.57528777282806
+    },
+    {
+      "id": 65,
+      "water_cells": 72,
+      "grid_bounds": [
+        739,
+        1131,
+        750,
+        1145
+      ],
+      "position": [
+        11676.539712918659,
+        17842.315364168004
+      ],
+      "bank_components": [
+        13,
+        19
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "wood_crossbeam",
+          "reason": "world_width_over_900",
+          "world_width": 1081.2271223770977
+        },
+        {
+          "asset": "stone_slab",
+          "reason": "world_width_over_900",
+          "world_width": 1075.4850176575992
+        },
+        {
+          "asset": "timber_short",
+          "reason": "native_pixels_would_be_enlarged",
+          "source_to_world_scale": 1.4087202128306402
+        },
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 1455.2465749283754
+        }
+      ],
+      "rejection_reason": "no_native_deck_with_dry_reachable_footings"
+    },
+    {
+      "id": 66,
+      "water_cells": 32,
+      "grid_bounds": [
+        756,
+        1137,
+        768,
+        1152
+      ],
+      "position": [
+        11965.61148325359,
+        17948.907177033492
+      ],
+      "bank_components": [
+        13
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 67,
+      "water_cells": 9,
+      "grid_bounds": [
+        1280,
+        1163,
+        1284,
+        1167
+      ],
+      "position": [
+        20105.894311536416,
+        18264.545241892614
+      ],
+      "bank_components": [
+        13
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 68,
+      "water_cells": 29,
+      "grid_bounds": [
+        509,
+        1204,
+        512,
+        1214
+      ],
+      "position": [
+        8003.317736347138,
+        18957.701765385253
+      ],
+      "bank_components": [
+        19,
+        32
+      ],
+      "selected": true,
+      "native_fit_rejections": [],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          8003.6827529671245,
+          18955.27283587058
+        ],
+        "x": 8003.6827529671245,
+        "y": 18955.27283587058,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": 1.548386096135083,
+        "world_width": 329.86246186524613,
+        "world_height": 104.26687012981918,
+        "bounds": [
+          7938.368904278272,
+          18788.479556273465,
+          111.6323639674747,
+          332.11608285696275
+        ],
+        "rect": [
+          7938.368904278272,
+          18788.479556273465,
+          8050.001268245746,
+          19120.595639130428
+        ],
+        "source_to_world_scale": 0.6319204250292072,
+        "bank_contacts": [
+          {
+            "land_component": 19,
+            "grid": [
+              510,
+              1203
+            ],
+            "position": [
+              8003.858373205742,
+              18869.037320574163
+            ]
+          },
+          {
+            "land_component": 32,
+            "grid": [
+              510,
+              1214
+            ],
+            "position": [
+              8003.858373205742,
+              19041.5004784689
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              8000.409175471129,
+              18809.222154360938
+            ],
+            "land_component": 19
+          },
+          {
+            "position": [
+              8006.913849571659,
+              19099.428232128346
+            ],
+            "land_component": 32
+          }
+        ],
+        "water_span_world": 157.4519147962131,
+        "connected_land_components": [
+          19,
+          32
+        ],
+        "candidate_id": 68,
+        "deck_world_extent": [
+          240.76168193612796,
+          51.18555442736578
+        ]
+      },
+      "cost": 157.4519147962131
+    },
+    {
+      "id": 69,
+      "water_cells": 57,
+      "grid_bounds": [
+        927,
+        1234,
+        942,
+        1246
+      ],
+      "position": [
+        14653.454612608073,
+        19444.189574414508
+      ],
+      "bank_components": [
+        13,
+        19
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 1100.7199420890888
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          14652.30292232069,
+          19442.194141393255
+        ],
+        "x": 14652.30292232069,
+        "y": 19442.194141393255,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": -0.7141272859457458,
+        "world_width": 556.2057804994871,
+        "world_height": 175.8121719969643,
+        "bounds": [
+          14393.835831197557,
+          19206.74536713712,
+          535.4549292919328,
+          497.14665545896423
+        ],
+        "rect": [
+          14393.835831197557,
+          19206.74536713712,
+          14929.29076048949,
+          19703.892022596083
+        ],
+        "source_to_world_scale": 1.065528315133117,
+        "bank_contacts": [
+          {
+            "land_component": 13,
+            "grid": [
+              940,
+              1234
+            ],
+            "position": [
+              14745.6,
+              19355.06985645933
+            ]
+          },
+          {
+            "land_component": 19,
+            "grid": [
+              928,
+              1245
+            ],
+            "position": [
+              14557.458373205742,
+              19527.533014354067
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              14466.160812956507,
+              19603.529229063584
+            ],
+            "land_component": 19
+          },
+          {
+            "position": [
+              14836.02948393813,
+              19282.952683202166
+            ],
+            "land_component": 13
+          }
+        ],
+        "water_span_world": 253.4270689962571,
+        "connected_land_components": [
+          13,
+          19
+        ],
+        "candidate_id": 69,
+        "deck_world_extent": [
+          405.96628806571755,
+          86.30779352578247
+        ]
+      },
+      "cost": 253.4270689962571
+    },
+    {
+      "id": 70,
+      "water_cells": 65,
+      "grid_bounds": [
+        1139,
+        1242,
+        1153,
+        1258
+      ],
+      "position": [
+        17974.39976444608,
+        19590.72930437983
+      ],
+      "bank_components": [
+        13,
+        19
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 1210.5803418439332
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          17970.215217796813,
+          19593.515729417297
+        ],
+        "x": 17970.215217796813,
+        "y": 19593.515729417297,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": 1.005178638624691,
+        "world_width": 611.7194375662028,
+        "world_height": 193.35959233414457,
+        "bounds": [
+          17708.88832629512,
+          19291.413718484873,
+          491.0886571363699,
+          620.0774955995985
+        ],
+        "rect": [
+          17708.88832629512,
+          19291.413718484873,
+          18199.97698343149,
+          19911.49121408447
+        ],
+        "source_to_world_scale": 1.1718763171766338,
+        "bank_contacts": [
+          {
+            "land_component": 13,
+            "grid": [
+              1141,
+              1241
+            ],
+            "position": [
+              17896.972248803828,
+              19464.819138755982
+            ]
+          },
+          {
+            "land_component": 19,
+            "grid": [
+              1151,
+              1257
+            ],
+            "position": [
+              18053.756937799044,
+              19715.674641148325
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              17825.022074635322,
+              19364.79418380222
+            ],
+            "land_component": 13
+          },
+          {
+            "position": [
+              18113.524203896774,
+              19819.269178151822
+            ],
+            "land_component": 19
+          }
+        ],
+        "water_span_world": 288.58729350583263,
+        "connected_land_components": [
+          13,
+          19
+        ],
+        "candidate_id": 70,
+        "deck_world_extent": [
+          446.48487684429745,
+          94.92198169130734
+        ]
+      },
+      "cost": 288.58729350583263
+    },
+    {
+      "id": 71,
+      "water_cells": 7,
+      "grid_bounds": [
+        540,
+        1250,
+        545,
+        1256
+      ],
+      "position": [
+        8498.85003417635,
+        19641.761859193437
+      ],
+      "bank_components": [
+        32
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 72,
+      "water_cells": 3,
+      "grid_bounds": [
+        1260,
+        1260,
+        1263,
+        1261
+      ],
+      "position": [
+        19778.38851674641,
+        19762.71004784689
+      ],
+      "bank_components": [
+        19
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 73,
+      "water_cells": 1,
+      "grid_bounds": [
+        1034,
+        1266,
+        1035,
+        1267
+      ],
+      "position": [
+        16219.376076555025,
+        19856.78086124402
+      ],
+      "bank_components": [
+        13
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 74,
+      "water_cells": 1,
+      "grid_bounds": [
+        1037,
+        1267,
+        1038,
+        1268
+      ],
+      "position": [
+        16266.411483253589,
+        19872.45933014354
+      ],
+      "bank_components": [
+        13
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 75,
+      "water_cells": 1,
+      "grid_bounds": [
+        1039,
+        1268,
+        1040,
+        1269
+      ],
+      "position": [
+        16297.768421052631,
+        19888.137799043063
+      ],
+      "bank_components": [
+        13
+      ],
+      "selected": false,
+      "rejection_reason": "no_two_distinct_real_land_banks"
+    },
+    {
+      "id": 76,
+      "water_cells": 55,
+      "grid_bounds": [
+        1042,
+        1269,
+        1052,
+        1287
+      ],
+      "position": [
+        16432.603253588517,
+        20040.646541974776
+      ],
+      "bank_components": [
+        13,
+        19
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "wood_crossbeam",
+          "reason": "world_width_over_900",
+          "world_width": 1108.9803244163222
+        },
+        {
+          "asset": "stone_slab",
+          "reason": "world_width_over_900",
+          "world_width": 1103.0908299494595
+        },
+        {
+          "asset": "timber_short",
+          "reason": "native_pixels_would_be_enlarged",
+          "source_to_world_scale": 1.4448795875580092
+        },
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 1492.6001996895484
+        }
+      ],
+      "rejection_reason": "no_native_deck_with_dry_reachable_footings"
+    },
+    {
+      "id": 77,
+      "water_cells": 45,
+      "grid_bounds": [
+        719,
+        1355,
+        724,
+        1369
+      ],
+      "position": [
+        11304.001871345028,
+        21359.12659223817
+      ],
+      "bank_components": [
+        19,
+        32
+      ],
+      "selected": false,
+      "native_fit_rejections": [
+        {
+          "asset": "timber_long",
+          "reason": "world_width_over_900",
+          "world_width": 1044.1671510799245
+        }
+      ],
+      "bridge": {
+        "asset": "timber_short",
+        "position": [
+          11304.356919797488,
+          21347.909515677788
+        ],
+        "x": 11304.356919797488,
+        "y": 21347.909515677788,
+        "z": 28,
+        "layer": "ground_decals",
+        "rotation": 1.4631900099693793,
+        "world_width": 527.6290389870389,
+        "world_height": 166.77929393268474,
+        "bounds": [
+          11177.879346742227,
+          21076.78589502412,
+          222.4813577920213,
+          542.4891370903606
+        ],
+        "rect": [
+          11177.879346742227,
+          21076.78589502412,
+          11400.360704534249,
+          21619.27503211448
+        ],
+        "source_to_world_scale": 1.0107835995920287,
+        "bank_contacts": [
+          {
+            "land_component": 19,
+            "grid": [
+              720,
+              1354
+            ],
+            "position": [
+              11296.336842105264,
+              21236.486124401916
+            ]
+          },
+          {
+            "land_component": 32,
+            "grid": [
+              721,
+              1368
+            ],
+            "position": [
+              11312.015311004785,
+              21455.984688995217
+            ]
+          }
+        ],
+        "end_footings": [
+          {
+            "position": [
+              11279.260731498242,
+              21115.588121725345
+            ],
+            "land_component": 19
+          },
+          {
+            "position": [
+              11329.127437342788,
+              21577.216097873774
+            ],
+            "land_component": 32
+          }
+        ],
+        "water_span_world": 223.37121912994218,
+        "connected_land_components": [
+          19,
+          32
+        ],
+        "candidate_id": 77,
+        "deck_world_extent": [
+          385.1085514445629,
+          81.87347156695432
+        ]
+      },
+      "cost": 223.37121912994218
+    }
+  ]
+}

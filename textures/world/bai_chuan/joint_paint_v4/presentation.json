@@ -1,0 +1,6063 @@
+{
+  "worldSize": 6144,
+  "tileSize": 2048,
+  "catalog": {
+    "sect_main_164": {
+      "file": "res://textures/world/bai_chuan/whole_paint_v3/icons/sect_main_164.png",
+      "size": [
+        164,
+        116
+      ],
+      "sourceRect": {
+        "left": 58,
+        "top": 110,
+        "width": 507,
+        "height": 359
+      }
+    },
+    "sect_austere_164": {
+      "file": "res://textures/world/bai_chuan/whole_paint_v3/icons/sect_austere_164.png",
+      "size": [
+        164,
+        147
+      ],
+      "sourceRect": {
+        "left": 1133,
+        "top": 140,
+        "width": 364,
+        "height": 326
+      }
+    },
+    "sect_local_118": {
+      "file": "res://textures/world/bai_chuan/whole_paint_v3/icons/sect_local_118.png",
+      "size": [
+        118,
+        108
+      ],
+      "sourceRect": {
+        "left": 653,
+        "top": 145,
+        "width": 334,
+        "height": 305
+      }
+    },
+    "sect_austere_118": {
+      "file": "res://textures/world/bai_chuan/whole_paint_v3/icons/sect_austere_118.png",
+      "size": [
+        118,
+        106
+      ],
+      "sourceRect": {
+        "left": 1133,
+        "top": 140,
+        "width": 364,
+        "height": 326
+      }
+    },
+    "city_gate_142": {
+      "file": "res://textures/world/bai_chuan/whole_paint_v3/icons/city_gate_142.png",
+      "size": [
+        142,
+        104
+      ],
+      "sourceRect": {
+        "left": 69,
+        "top": 562,
+        "width": 469,
+        "height": 342
+      }
+    },
+    "town_gate_100": {
+      "file": "res://textures/world/bai_chuan/whole_paint_v3/icons/town_gate_100.png",
+      "size": [
+        100,
+        71
+      ],
+      "sourceRect": {
+        "left": 605,
+        "top": 611,
+        "width": 424,
+        "height": 303
+      }
+    },
+    "market_gate_94": {
+      "file": "res://textures/world/bai_chuan/whole_paint_v3/icons/market_gate_94.png",
+      "size": [
+        94,
+        71
+      ],
+      "sourceRect": {
+        "left": 1093,
+        "top": 611,
+        "width": 382,
+        "height": 289
+      }
+    },
+    "village_78": {
+      "file": "res://textures/world/bai_chuan/whole_paint_v3/icons/village_78.png",
+      "size": [
+        78,
+        48
+      ],
+      "sourceSize": [
+        717,
+        438
+      ]
+    },
+    "dock_92": {
+      "file": "res://textures/world/bai_chuan/whole_paint_v3/icons/dock_92.png",
+      "size": [
+        92,
+        62
+      ],
+      "sourceSize": [
+        616,
+        415
+      ]
+    },
+    "bc_place_112": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_112.png",
+      "size": [
+        184,
+        84
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_113": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_113.png",
+      "size": [
+        120,
+        68
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_114": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_114.png",
+      "size": [
+        142,
+        74
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_008": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_008.png",
+      "size": [
+        122,
+        59
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_010": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_010.png",
+      "size": [
+        131,
+        70
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_030": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_030.png",
+      "size": [
+        110,
+        60
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_018": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_018.png",
+      "size": [
+        161,
+        69
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_027": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_027.png",
+      "size": [
+        143,
+        71
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_014": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_014.png",
+      "size": [
+        169,
+        68
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_002": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_002.png",
+      "size": [
+        142,
+        74
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_015": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_015.png",
+      "size": [
+        175,
+        76
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_038": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_038.png",
+      "size": [
+        115,
+        62
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_019": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_019.png",
+      "size": [
+        181,
+        78
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_040": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_040.png",
+      "size": [
+        126,
+        67
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_043": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_043.png",
+      "size": [
+        142,
+        102
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_005": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_005.png",
+      "size": [
+        139,
+        74
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_017": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_017.png",
+      "size": [
+        171,
+        74
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_004": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_004.png",
+      "size": [
+        151,
+        82
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_016": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_016.png",
+      "size": [
+        146,
+        79
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_028": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_028.png",
+      "size": [
+        119,
+        66
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_009": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_009.png",
+      "size": [
+        106,
+        54
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_033": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_033.png",
+      "size": [
+        106,
+        56
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_013": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_013.png",
+      "size": [
+        100,
+        74
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_025": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_025.png",
+      "size": [
+        177,
+        90
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_021": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_021.png",
+      "size": [
+        191,
+        85
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_029": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_029.png",
+      "size": [
+        104,
+        69
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_034": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_034.png",
+      "size": [
+        107,
+        66
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_006": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_006.png",
+      "size": [
+        105,
+        86
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_020": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_020.png",
+      "size": [
+        162,
+        83
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_032": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_032.png",
+      "size": [
+        92,
+        65
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_026": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_026.png",
+      "size": [
+        163,
+        85
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_031": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_031.png",
+      "size": [
+        112,
+        70
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_003": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_003.png",
+      "size": [
+        149,
+        93
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_044": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_044.png",
+      "size": [
+        145,
+        90
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_120": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_120.png",
+      "size": [
+        113,
+        79
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_118": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_118.png",
+      "size": [
+        159,
+        81
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_106": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_106.png",
+      "size": [
+        153,
+        71
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_107": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_107.png",
+      "size": [
+        98,
+        76
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_001": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_001.png",
+      "size": [
+        138,
+        91
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_108": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_108.png",
+      "size": [
+        137,
+        80
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_022": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_022.png",
+      "size": [
+        164,
+        89
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_035": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_035.png",
+      "size": [
+        120,
+        70
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_041": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_041.png",
+      "size": [
+        78,
+        70
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_011": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_011.png",
+      "size": [
+        89,
+        70
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_024": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_024.png",
+      "size": [
+        172,
+        91
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_036": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_036.png",
+      "size": [
+        119,
+        68
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_037": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_037.png",
+      "size": [
+        137,
+        74
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_119": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_119.png",
+      "size": [
+        147,
+        71
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_023": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_023.png",
+      "size": [
+        162,
+        68
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_042": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_042.png",
+      "size": [
+        110,
+        53
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_007": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_007.png",
+      "size": [
+        131,
+        84
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_039": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_039.png",
+      "size": [
+        160,
+        82
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    },
+    "bc_place_012": {
+      "file": "res://textures/world/bai_chuan/joint_paint_v4/icons/bc_place_012.png",
+      "size": [
+        97,
+        66
+      ],
+      "originalPixels": true,
+      "hoverOnly": true
+    }
+  },
+  "placements": [
+    {
+      "id": "bc_place_001",
+      "name": "玉虚仙宗",
+      "type": "sect",
+      "kind": "sect",
+      "asset": "bc_place_001",
+      "logicalPos": [
+        22,
+        74
+      ],
+      "anchor": [
+        1351.68,
+        4546.56
+      ],
+      "artOffset": [
+        308.31999999999994,
+        -21.5600000000004
+      ],
+      "rect": [
+        1591,
+        4434,
+        138,
+        91
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "continuous mountain shoulder",
+      "labelSize": 21,
+      "labelRect": [
+        1610,
+        4532,
+        100,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "sect_1",
+      "approach": [
+        [
+          1351.68,
+          4546.56
+        ],
+        [
+          1660,
+          4525
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_002",
+      "name": "玄都天府",
+      "type": "sect",
+      "kind": "dao",
+      "asset": "bc_place_002",
+      "logicalPos": [
+        43,
+        19
+      ],
+      "anchor": [
+        2641.92,
+        1167.36
+      ],
+      "artOffset": [
+        70.07999999999993,
+        -35.3599999999999
+      ],
+      "rect": [
+        2641,
+        1058,
+        142,
+        74
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "continuous mountain shoulder",
+      "labelSize": 21,
+      "labelRect": [
+        2662,
+        1139,
+        100,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "sect_1",
+      "approach": [
+        [
+          2641.92,
+          1167.36
+        ],
+        [
+          2712,
+          1132
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_003",
+      "name": "无相圣宗",
+      "type": "sect",
+      "kind": "holy",
+      "asset": "bc_place_003",
+      "logicalPos": [
+        83,
+        61
+      ],
+      "anchor": [
+        5099.52,
+        3747.84
+      ],
+      "artOffset": [
+        -60.02000000000044,
+        118.15999999999985
+      ],
+      "rect": [
+        4965,
+        3773,
+        149,
+        93
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "continuous mountain shoulder",
+      "labelSize": 21,
+      "labelRect": [
+        4990,
+        3873,
+        100,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "sect_1",
+      "approach": [
+        [
+          5099.52,
+          3747.84
+        ],
+        [
+          5039.5,
+          3866
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_004",
+      "name": "太微道宫",
+      "type": "sect",
+      "kind": "sect",
+      "asset": "bc_place_004",
+      "logicalPos": [
+        35,
+        50
+      ],
+      "anchor": [
+        2150.4,
+        3072
+      ],
+      "artOffset": [
+        14.099999999999909,
+        -12
+      ],
+      "rect": [
+        2089,
+        2978,
+        151,
+        82
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "continuous mountain shoulder",
+      "labelSize": 17,
+      "labelRect": [
+        2123,
+        3067,
+        84,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "sect_2",
+      "approach": [
+        [
+          2150.4,
+          3072
+        ],
+        [
+          2164.5,
+          3060
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_005",
+      "name": "镇岳观",
+      "type": "sect",
+      "kind": "sect",
+      "asset": "bc_place_005",
+      "logicalPos": [
+        12,
+        47
+      ],
+      "anchor": [
+        737.28,
+        2887.68
+      ],
+      "artOffset": [
+        55.22000000000003,
+        67.32000000000016
+      ],
+      "rect": [
+        723,
+        2881,
+        139,
+        74
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "continuous mountain shoulder",
+      "labelSize": 17,
+      "labelRect": [
+        755,
+        2962,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "sect_2",
+      "approach": [
+        [
+          737.28,
+          2887.68
+        ],
+        [
+          792.5,
+          2955
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_006",
+      "name": "抱朴山",
+      "type": "sect",
+      "kind": "sect",
+      "asset": "bc_place_006",
+      "logicalPos": [
+        43,
+        65
+      ],
+      "anchor": [
+        2641.92,
+        3993.6
+      ],
+      "artOffset": [
+        5.579999999999927,
+        17.40000000000009
+      ],
+      "rect": [
+        2595,
+        3925,
+        105,
+        86
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "continuous mountain shoulder",
+      "labelSize": 17,
+      "labelRect": [
+        2610,
+        4018,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "sect_2",
+      "approach": [
+        [
+          2641.92,
+          3993.6
+        ],
+        [
+          2647.5,
+          4011
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_007",
+      "name": "百药谷",
+      "type": "sect",
+      "kind": "sect",
+      "asset": "bc_place_007",
+      "logicalPos": [
+        36,
+        91
+      ],
+      "anchor": [
+        2211.84,
+        5591.04
+      ],
+      "artOffset": [
+        12.659999999999854,
+        -50.039999999999964
+      ],
+      "rect": [
+        2159,
+        5457,
+        131,
+        84
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "continuous mountain shoulder",
+      "labelSize": 17,
+      "labelRect": [
+        2187,
+        5548,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "sect_2",
+      "approach": [
+        [
+          2211.84,
+          5591.04
+        ],
+        [
+          2224.5,
+          5541
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_008",
+      "name": "丹鼎宗",
+      "type": "sect",
+      "kind": "sect",
+      "asset": "bc_place_008",
+      "logicalPos": [
+        61,
+        8
+      ],
+      "anchor": [
+        3747.84,
+        491.52
+      ],
+      "artOffset": [
+        0.15999999999985448,
+        -23.519999999999982
+      ],
+      "rect": [
+        3687,
+        409,
+        122,
+        59
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "continuous mountain shoulder",
+      "labelSize": 17,
+      "labelRect": [
+        3710,
+        475,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "sect_2",
+      "approach": [
+        [
+          3747.84,
+          491.52
+        ],
+        [
+          3748,
+          468
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_009",
+      "name": "归藏书院",
+      "type": "sect",
+      "kind": "academy",
+      "asset": "bc_place_009",
+      "logicalPos": [
+        62,
+        37
+      ],
+      "anchor": [
+        3809.28,
+        2273.28
+      ],
+      "artOffset": [
+        -6.2800000000002,
+        25.7199999999998
+      ],
+      "rect": [
+        3750,
+        2245,
+        106,
+        54
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "continuous mountain shoulder",
+      "labelSize": 17,
+      "labelRect": [
+        3761,
+        2306,
+        84,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "sect_2",
+      "approach": [
+        [
+          3809.28,
+          2273.28
+        ],
+        [
+          3803,
+          2299
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_010",
+      "name": "沧溟水府",
+      "type": "sect",
+      "kind": "sect",
+      "asset": "bc_place_010",
+      "logicalPos": [
+        72,
+        17
+      ],
+      "anchor": [
+        4423.68,
+        1044.48
+      ],
+      "artOffset": [
+        141.8199999999997,
+        -226.48000000000002
+      ],
+      "rect": [
+        4500,
+        748,
+        131,
+        70
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "continuous mountain shoulder",
+      "labelSize": 17,
+      "labelRect": [
+        4524,
+        825,
+        84,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "sect_2",
+      "approach": [
+        [
+          4423.68,
+          1044.48
+        ],
+        [
+          4565.5,
+          818
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_011",
+      "name": "血河教",
+      "type": "sect",
+      "kind": "sect",
+      "asset": "bc_place_011",
+      "logicalPos": [
+        65,
+        82
+      ],
+      "anchor": [
+        3993.6,
+        5038.08
+      ],
+      "artOffset": [
+        14.900000000000091,
+        -19.079999999999927
+      ],
+      "rect": [
+        3964,
+        4949,
+        89,
+        70
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "continuous mountain shoulder",
+      "labelSize": 17,
+      "labelRect": [
+        3971,
+        5026,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "sect_2",
+      "approach": [
+        [
+          3993.6,
+          5038.08
+        ],
+        [
+          4008.5,
+          5019
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_012",
+      "name": "蚀日宫",
+      "type": "sect",
+      "kind": "holy",
+      "asset": "bc_place_012",
+      "logicalPos": [
+        88,
+        88
+      ],
+      "anchor": [
+        5406.72,
+        5406.72
+      ],
+      "artOffset": [
+        17.779999999999745,
+        0.27999999999974534
+      ],
+      "rect": [
+        5376,
+        5341,
+        97,
+        66
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "continuous mountain shoulder",
+      "labelSize": 17,
+      "labelRect": [
+        5387,
+        5414,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "sect_2",
+      "approach": [
+        [
+          5406.72,
+          5406.72
+        ],
+        [
+          5424.5,
+          5407
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_013",
+      "name": "枯骨寺",
+      "type": "sect",
+      "kind": "holy",
+      "asset": "bc_place_013",
+      "logicalPos": [
+        83,
+        36
+      ],
+      "anchor": [
+        5099.52,
+        2211.84
+      ],
+      "artOffset": [
+        20.479999999999563,
+        7.1599999999998545
+      ],
+      "rect": [
+        5070,
+        2145,
+        100,
+        74
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "continuous mountain shoulder",
+      "labelSize": 17,
+      "labelRect": [
+        5082,
+        2226,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "sect_2",
+      "approach": [
+        [
+          5099.52,
+          2211.84
+        ],
+        [
+          5120,
+          2219
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_014",
+      "name": "望岫城",
+      "type": "city",
+      "kind": "city",
+      "asset": "bc_place_014",
+      "logicalPos": [
+        20,
+        29
+      ],
+      "anchor": [
+        1228.8,
+        1781.76
+      ],
+      "artOffset": [
+        46.700000000000045,
+        40.24000000000001
+      ],
+      "rect": [
+        1191,
+        1754,
+        169,
+        68
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 19,
+      "labelRect": [
+        1238,
+        1829,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "city",
+      "approach": [
+        [
+          1228.8,
+          1781.76
+        ],
+        [
+          1275.5,
+          1822
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_015",
+      "name": "绛阙城",
+      "type": "city",
+      "kind": "city",
+      "asset": "bc_place_015",
+      "logicalPos": [
+        54,
+        19
+      ],
+      "anchor": [
+        3317.76,
+        1167.36
+      ],
+      "artOffset": [
+        83.73999999999978,
+        95.6400000000001
+      ],
+      "rect": [
+        3314,
+        1187,
+        175,
+        76
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 19,
+      "labelRect": [
+        3364,
+        1270,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "city",
+      "approach": [
+        [
+          3317.76,
+          1167.36
+        ],
+        [
+          3401.5,
+          1263
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_016",
+      "name": "承天城",
+      "type": "city",
+      "kind": "city",
+      "asset": "bc_place_016",
+      "logicalPos": [
+        43,
+        37
+      ],
+      "anchor": [
+        2641.92,
+        2273.28
+      ],
+      "artOffset": [
+        12.079999999999927,
+        -26.2800000000002
+      ],
+      "rect": [
+        2581,
+        2168,
+        146,
+        79
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 19,
+      "labelRect": [
+        2616,
+        2254,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "city",
+      "approach": [
+        [
+          2641.92,
+          2273.28
+        ],
+        [
+          2654,
+          2247
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_017",
+      "name": "赤水城",
+      "type": "city",
+      "kind": "city",
+      "asset": "bc_place_017",
+      "logicalPos": [
+        25,
+        48
+      ],
+      "anchor": [
+        1536,
+        2949.12
+      ],
+      "artOffset": [
+        83.5,
+        -2.119999999999891
+      ],
+      "rect": [
+        1534,
+        2873,
+        171,
+        74
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 19,
+      "labelRect": [
+        1582,
+        2954,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "approach": [
+        [
+          1536,
+          2949.12
+        ],
+        [
+          1619.5,
+          2947
+        ]
+      ],
+      "hoverOnly": true,
+      "visualTier": "city"
+    },
+    {
+      "id": "bc_place_018",
+      "name": "镇海城",
+      "type": "city",
+      "kind": "city",
+      "asset": "bc_place_018",
+      "logicalPos": [
+        88,
+        12
+      ],
+      "anchor": [
+        5406.72,
+        737.28
+      ],
+      "artOffset": [
+        52.779999999999745,
+        -23.279999999999973
+      ],
+      "rect": [
+        5379,
+        645,
+        161,
+        69
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 19,
+      "labelRect": [
+        5422,
+        721,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "city",
+      "approach": [
+        [
+          5406.72,
+          737.28
+        ],
+        [
+          5459.5,
+          714
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_019",
+      "name": "临渊城",
+      "type": "city",
+      "kind": "city",
+      "asset": "bc_place_019",
+      "logicalPos": [
+        70,
+        26
+      ],
+      "anchor": [
+        4300.8,
+        1597.44
+      ],
+      "artOffset": [
+        118.69999999999982,
+        -70.44000000000005
+      ],
+      "rect": [
+        4329,
+        1449,
+        181,
+        78
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 19,
+      "labelRect": [
+        4382,
+        1534,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "city",
+      "approach": [
+        [
+          4300.8,
+          1597.44
+        ],
+        [
+          4419.5,
+          1527
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_020",
+      "name": "春水府",
+      "type": "city",
+      "kind": "city",
+      "asset": "bc_place_020",
+      "logicalPos": [
+        49,
+        55
+      ],
+      "anchor": [
+        3010.56,
+        3379.2
+      ],
+      "artOffset": [
+        -20.559999999999945,
+        -20.199999999999818
+      ],
+      "rect": [
+        2909,
+        3276,
+        162,
+        83
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 19,
+      "labelRect": [
+        2952,
+        3366,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "approach": [
+        [
+          3010.56,
+          3379.2
+        ],
+        [
+          2990,
+          3359
+        ]
+      ],
+      "hoverOnly": true,
+      "visualTier": "city"
+    },
+    {
+      "id": "bc_place_021",
+      "name": "白石城",
+      "type": "city",
+      "kind": "city",
+      "asset": "bc_place_021",
+      "logicalPos": [
+        28,
+        65
+      ],
+      "anchor": [
+        1720.32,
+        3993.6
+      ],
+      "artOffset": [
+        2.1800000000000637,
+        24.40000000000009
+      ],
+      "rect": [
+        1627,
+        3933,
+        191,
+        85
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 19,
+      "labelRect": [
+        1685,
+        4025,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "city",
+      "approach": [
+        [
+          1720.32,
+          3993.6
+        ],
+        [
+          1722.5,
+          4018
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_022",
+      "name": "溪云城",
+      "type": "city",
+      "kind": "city",
+      "asset": "bc_place_022",
+      "logicalPos": [
+        49,
+        74
+      ],
+      "anchor": [
+        3010.56,
+        4546.56
+      ],
+      "artOffset": [
+        -6.559999999999945,
+        -12.5600000000004
+      ],
+      "rect": [
+        2922,
+        4445,
+        164,
+        89
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 19,
+      "labelRect": [
+        2966,
+        4541,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "city",
+      "approach": [
+        [
+          3010.56,
+          4546.56
+        ],
+        [
+          3004,
+          4534
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_023",
+      "name": "青萝城",
+      "type": "city",
+      "kind": "city",
+      "asset": "bc_place_023",
+      "logicalPos": [
+        30,
+        87
+      ],
+      "anchor": [
+        1843.2,
+        5345.28
+      ],
+      "artOffset": [
+        -15.200000000000045,
+        1.7200000000002547
+      ],
+      "rect": [
+        1747,
+        5279,
+        162,
+        68
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 19,
+      "labelRect": [
+        1790,
+        5354,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "approach": [
+        [
+          1843.2,
+          5345.28
+        ],
+        [
+          1828,
+          5347
+        ]
+      ],
+      "hoverOnly": true,
+      "visualTier": "city"
+    },
+    {
+      "id": "bc_place_024",
+      "name": "暮烟城",
+      "type": "city",
+      "kind": "city",
+      "asset": "bc_place_024",
+      "logicalPos": [
+        72,
+        83
+      ],
+      "anchor": [
+        4423.68,
+        5099.52
+      ],
+      "artOffset": [
+        13.319999999999709,
+        -95.52000000000044
+      ],
+      "rect": [
+        4351,
+        4913,
+        172,
+        91
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 19,
+      "labelRect": [
+        4399,
+        5011,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "city",
+      "approach": [
+        [
+          4423.68,
+          5099.52
+        ],
+        [
+          4437,
+          5004
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_025",
+      "name": "归寂城",
+      "type": "city",
+      "kind": "city",
+      "asset": "bc_place_025",
+      "logicalPos": [
+        86,
+        41
+      ],
+      "anchor": [
+        5283.84,
+        2519.04
+      ],
+      "artOffset": [
+        15.659999999999854,
+        -50.039999999999964
+      ],
+      "rect": [
+        5211,
+        2379,
+        177,
+        90
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 19,
+      "labelRect": [
+        5262,
+        2476,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "city",
+      "approach": [
+        [
+          5283.84,
+          2519.04
+        ],
+        [
+          5299.5,
+          2469
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_026",
+      "name": "通济城",
+      "type": "city",
+      "kind": "city",
+      "asset": "bc_place_026",
+      "logicalPos": [
+        65,
+        51
+      ],
+      "anchor": [
+        3993.6,
+        3133.44
+      ],
+      "artOffset": [
+        -63.09999999999991,
+        37.559999999999945
+      ],
+      "rect": [
+        3849,
+        3086,
+        163,
+        85
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 19,
+      "labelRect": [
+        3893,
+        3178,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "approach": [
+        [
+          3993.6,
+          3133.44
+        ],
+        [
+          3930.5,
+          3171
+        ]
+      ],
+      "hoverOnly": true,
+      "visualTier": "city"
+    },
+    {
+      "id": "bc_place_027",
+      "name": "松风镇",
+      "type": "town",
+      "kind": "town",
+      "asset": "bc_place_027",
+      "logicalPos": [
+        14,
+        30
+      ],
+      "anchor": [
+        860.16,
+        1843.2
+      ],
+      "artOffset": [
+        -3.659999999999968,
+        25.799999999999955
+      ],
+      "rect": [
+        785,
+        1798,
+        143,
+        71
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 17,
+      "labelRect": [
+        819,
+        1876,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "approach": [
+        [
+          860.16,
+          1843.2
+        ],
+        [
+          856.5,
+          1869
+        ]
+      ],
+      "hoverOnly": true,
+      "visualTier": "town"
+    },
+    {
+      "id": "bc_place_028",
+      "name": "玉泉镇",
+      "type": "town",
+      "kind": "town",
+      "asset": "bc_place_028",
+      "logicalPos": [
+        40,
+        40
+      ],
+      "anchor": [
+        2457.6,
+        2457.6
+      ],
+      "artOffset": [
+        8.900000000000091,
+        35.40000000000009
+      ],
+      "rect": [
+        2407,
+        2427,
+        119,
+        66
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 17,
+      "labelRect": [
+        2429,
+        2500,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "town",
+      "approach": [
+        [
+          2457.6,
+          2457.6
+        ],
+        [
+          2466.5,
+          2493
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_029",
+      "name": "临皋镇",
+      "type": "town",
+      "kind": "town",
+      "asset": "bc_place_029",
+      "logicalPos": [
+        22,
+        53
+      ],
+      "anchor": [
+        1351.68,
+        3256.32
+      ],
+      "artOffset": [
+        14.319999999999936,
+        -18.320000000000164
+      ],
+      "rect": [
+        1314,
+        3169,
+        104,
+        69
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 17,
+      "labelRect": [
+        1328,
+        3245,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "town",
+      "approach": [
+        [
+          1351.68,
+          3256.32
+        ],
+        [
+          1366,
+          3238
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_030",
+      "name": "听风镇",
+      "type": "town",
+      "kind": "town",
+      "asset": "bc_place_030",
+      "logicalPos": [
+        79,
+        10
+      ],
+      "anchor": [
+        4853.76,
+        614.4
+      ],
+      "artOffset": [
+        84.23999999999978,
+        -217.39999999999998
+      ],
+      "rect": [
+        4883,
+        337,
+        110,
+        60
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 17,
+      "labelRect": [
+        4900,
+        404,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "town",
+      "approach": [
+        [
+          4853.76,
+          614.4
+        ],
+        [
+          4938,
+          397
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_031",
+      "name": "烟柳镇",
+      "type": "town",
+      "kind": "town",
+      "asset": "bc_place_031",
+      "logicalPos": [
+        53,
+        59
+      ],
+      "anchor": [
+        3256.32,
+        3624.96
+      ],
+      "artOffset": [
+        -2.3200000000001637,
+        26.039999999999964
+      ],
+      "rect": [
+        3198,
+        3581,
+        112,
+        70
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 17,
+      "labelRect": [
+        3216,
+        3658,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "town",
+      "approach": [
+        [
+          3256.32,
+          3624.96
+        ],
+        [
+          3254,
+          3651
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_032",
+      "name": "桑落镇",
+      "type": "town",
+      "kind": "town",
+      "asset": "bc_place_032",
+      "logicalPos": [
+        43,
+        54
+      ],
+      "anchor": [
+        2641.92,
+        3317.76
+      ],
+      "artOffset": [
+        -8.920000000000073,
+        -13.760000000000218
+      ],
+      "rect": [
+        2587,
+        3239,
+        92,
+        65
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 17,
+      "labelRect": [
+        2595,
+        3311,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "town",
+      "approach": [
+        [
+          2641.92,
+          3317.76
+        ],
+        [
+          2633,
+          3304
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_033",
+      "name": "荷汀镇",
+      "type": "town",
+      "kind": "town",
+      "asset": "bc_place_033",
+      "logicalPos": [
+        56,
+        49
+      ],
+      "anchor": [
+        3440.64,
+        3010.56
+      ],
+      "artOffset": [
+        17.360000000000127,
+        -265.55999999999995
+      ],
+      "rect": [
+        3405,
+        2689,
+        106,
+        56
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 17,
+      "labelRect": [
+        3420,
+        2752,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "approach": [
+        [
+          3440.64,
+          3010.56
+        ],
+        [
+          3458,
+          2745
+        ]
+      ],
+      "hoverOnly": true,
+      "visualTier": "town"
+    },
+    {
+      "id": "bc_place_034",
+      "name": "岚溪镇",
+      "type": "town",
+      "kind": "town",
+      "asset": "bc_place_034",
+      "logicalPos": [
+        19,
+        57
+      ],
+      "anchor": [
+        1167.36,
+        3502.08
+      ],
+      "artOffset": [
+        -23.8599999999999,
+        9.920000000000073
+      ],
+      "rect": [
+        1090,
+        3446,
+        107,
+        66
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 17,
+      "labelRect": [
+        1106,
+        3519,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "town",
+      "approach": [
+        [
+          1167.36,
+          3502.08
+        ],
+        [
+          1143.5,
+          3512
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_035",
+      "name": "望岚镇",
+      "type": "town",
+      "kind": "town",
+      "asset": "bc_place_035",
+      "logicalPos": [
+        43,
+        76
+      ],
+      "anchor": [
+        2641.92,
+        4669.44
+      ],
+      "artOffset": [
+        5.079999999999927,
+        0.5600000000004002
+      ],
+      "rect": [
+        2587,
+        4600,
+        120,
+        70
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 17,
+      "labelRect": [
+        2609,
+        4677,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "town",
+      "approach": [
+        [
+          2641.92,
+          4669.44
+        ],
+        [
+          2647,
+          4670
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_036",
+      "name": "雁回镇",
+      "type": "town",
+      "kind": "town",
+      "asset": "bc_place_036",
+      "logicalPos": [
+        78,
+        81
+      ],
+      "anchor": [
+        4792.32,
+        4976.64
+      ],
+      "artOffset": [
+        15.180000000000291,
+        -27.640000000000327
+      ],
+      "rect": [
+        4748,
+        4881,
+        119,
+        68
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 17,
+      "labelRect": [
+        4770,
+        4956,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "town",
+      "approach": [
+        [
+          4792.32,
+          4976.64
+        ],
+        [
+          4807.5,
+          4949
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_037",
+      "name": "槐安镇",
+      "type": "town",
+      "kind": "town",
+      "asset": "bc_place_037",
+      "logicalPos": [
+        87,
+        76
+      ],
+      "anchor": [
+        5345.28,
+        4669.44
+      ],
+      "artOffset": [
+        106.22000000000025,
+        -6.4399999999996
+      ],
+      "rect": [
+        5383,
+        4589,
+        137,
+        74
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 17,
+      "labelRect": [
+        5414,
+        4670,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "town",
+      "approach": [
+        [
+          5345.28,
+          4669.44
+        ],
+        [
+          5451.5,
+          4663
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_038",
+      "name": "流丹坊",
+      "type": "market",
+      "kind": "market",
+      "asset": "bc_place_038",
+      "logicalPos": [
+        59,
+        20
+      ],
+      "anchor": [
+        3624.96,
+        1228.8
+      ],
+      "artOffset": [
+        169.53999999999996,
+        132.20000000000005
+      ],
+      "rect": [
+        3737,
+        1299,
+        115,
+        62
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 17,
+      "labelRect": [
+        3757,
+        1368,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "approach": [
+        [
+          3624.96,
+          1228.8
+        ],
+        [
+          3794.5,
+          1361
+        ]
+      ],
+      "hoverOnly": true,
+      "visualTier": "market"
+    },
+    {
+      "id": "bc_place_039",
+      "name": "忘机坊",
+      "type": "market",
+      "kind": "market",
+      "asset": "bc_place_039",
+      "logicalPos": [
+        70,
+        88
+      ],
+      "anchor": [
+        4300.8,
+        5406.72
+      ],
+      "artOffset": [
+        26.199999999999818,
+        -23.720000000000255
+      ],
+      "rect": [
+        4247,
+        5301,
+        160,
+        82
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 17,
+      "labelRect": [
+        4289,
+        5390,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "market",
+      "approach": [
+        [
+          4300.8,
+          5406.72
+        ],
+        [
+          4327,
+          5383
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_040",
+      "name": "白蘋里",
+      "type": "village",
+      "kind": "village",
+      "asset": "bc_place_040",
+      "logicalPos": [
+        91,
+        24
+      ],
+      "anchor": [
+        5591.04,
+        1474.56
+      ],
+      "artOffset": [
+        -67.03999999999996,
+        40.440000000000055
+      ],
+      "rect": [
+        5461,
+        1448,
+        126,
+        67
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 17,
+      "labelRect": [
+        5486,
+        1522,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "village",
+      "approach": [
+        [
+          5591.04,
+          1474.56
+        ],
+        [
+          5524,
+          1515
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_041",
+      "name": "桑榆里",
+      "type": "village",
+      "kind": "village",
+      "asset": "bc_place_041",
+      "logicalPos": [
+        46,
+        71
+      ],
+      "anchor": [
+        2826.24,
+        4362.24
+      ],
+      "artOffset": [
+        36.76000000000022,
+        9.760000000000218
+      ],
+      "rect": [
+        2824,
+        4302,
+        78,
+        70
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 17,
+      "labelRect": [
+        2825,
+        4379,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "village",
+      "approach": [
+        [
+          2826.24,
+          4362.24
+        ],
+        [
+          2863,
+          4372
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_042",
+      "name": "采薇里",
+      "type": "village",
+      "kind": "village",
+      "asset": "bc_place_042",
+      "logicalPos": [
+        26,
+        90
+      ],
+      "anchor": [
+        1597.44,
+        5529.6
+      ],
+      "artOffset": [
+        13.559999999999945,
+        13.399999999999636
+      ],
+      "rect": [
+        1556,
+        5490,
+        110,
+        53
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 17,
+      "labelRect": [
+        1573,
+        5550,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "village",
+      "approach": [
+        [
+          1597.44,
+          5529.6
+        ],
+        [
+          1611,
+          5543
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_043",
+      "name": "澜浦渡",
+      "type": "dock",
+      "kind": "dock",
+      "asset": "bc_place_043",
+      "logicalPos": [
+        95,
+        18
+      ],
+      "anchor": [
+        5836.8,
+        1105.92
+      ],
+      "artOffset": [
+        -74.80000000000018,
+        -15.920000000000073
+      ],
+      "rect": [
+        5691,
+        988,
+        142,
+        102
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "dry bank and small landing",
+      "labelSize": 17,
+      "labelRect": [
+        5724,
+        1097,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "approach": [
+        [
+          5836.8,
+          1105.92
+        ],
+        [
+          5762,
+          1090
+        ]
+      ],
+      "hoverOnly": true,
+      "visualTier": "dock"
+    },
+    {
+      "id": "bc_place_044",
+      "name": "问津渡",
+      "type": "dock",
+      "kind": "dock",
+      "asset": "bc_place_044",
+      "logicalPos": [
+        67,
+        55
+      ],
+      "anchor": [
+        4116.48,
+        3379.2
+      ],
+      "artOffset": [
+        33.02000000000044,
+        22.800000000000182
+      ],
+      "rect": [
+        4077,
+        3312,
+        145,
+        90
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "dry bank and small landing",
+      "labelSize": 17,
+      "labelRect": [
+        4112,
+        3409,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "dock",
+      "approach": [
+        [
+          4116.48,
+          3379.2
+        ],
+        [
+          4149.5,
+          3402
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_045",
+      "name": "朔雪岭",
+      "type": "wild",
+      "kind": "peak",
+      "asset": "peak_76",
+      "logicalPos": [
+        17,
+        33
+      ],
+      "anchor": [
+        1044.48,
+        2027.52
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        1038,
+        2022,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        1018,
+        2037,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_046",
+      "name": "天门峡",
+      "type": "wild",
+      "kind": "valley",
+      "asset": "valley_76",
+      "logicalPos": [
+        29,
+        40
+      ],
+      "anchor": [
+        1781.76,
+        2457.6
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        1776,
+        2452,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        1756,
+        2467,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_047",
+      "name": "望辰台",
+      "type": "wild",
+      "kind": "ruin",
+      "asset": "ruin_72",
+      "logicalPos": [
+        20,
+        44
+      ],
+      "anchor": [
+        1228.8,
+        2703.36
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        1223,
+        2697,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        1203,
+        2712,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_048",
+      "name": "眠龙岗",
+      "type": "wild",
+      "kind": "peak",
+      "asset": "peak_76",
+      "logicalPos": [
+        31,
+        31
+      ],
+      "anchor": [
+        1904.64,
+        1904.64
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        1899,
+        1899,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        1879,
+        1914,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_049",
+      "name": "朱明谷",
+      "type": "wild",
+      "kind": "valley",
+      "asset": "valley_76",
+      "logicalPos": [
+        40,
+        16
+      ],
+      "anchor": [
+        2457.6,
+        983.04
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        2452,
+        977,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        2432,
+        992,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_050",
+      "name": "地火窟",
+      "type": "wild",
+      "kind": "cave",
+      "asset": "cave_76",
+      "logicalPos": [
+        52,
+        23
+      ],
+      "anchor": [
+        3194.88,
+        1413.12
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        3189,
+        1407,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        3169,
+        1422,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_051",
+      "name": "赤霄石林",
+      "type": "wild",
+      "kind": "grove",
+      "asset": "grove_80",
+      "logicalPos": [
+        43,
+        27
+      ],
+      "anchor": [
+        2641.92,
+        1658.88
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        2636,
+        1653,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        2609,
+        1668,
+        66,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_052",
+      "name": "石雾原",
+      "type": "wild",
+      "kind": "peak",
+      "asset": "peak_76",
+      "logicalPos": [
+        50,
+        43
+      ],
+      "anchor": [
+        3072,
+        2641.92
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        3066,
+        2636,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        3046,
+        2651,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_053",
+      "name": "潜龙原",
+      "type": "wild",
+      "kind": "valley",
+      "asset": "valley_76",
+      "logicalPos": [
+        51,
+        36
+      ],
+      "anchor": [
+        3133.44,
+        2211.84
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        3127,
+        2206,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        3107,
+        2221,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_054",
+      "name": "潮生泽",
+      "type": "wild",
+      "kind": "pool",
+      "asset": "pool_76",
+      "logicalPos": [
+        81,
+        22
+      ],
+      "anchor": [
+        4976.64,
+        1351.68
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        4971,
+        1346,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        4951,
+        1361,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_055",
+      "name": "沧溟滩",
+      "type": "wild",
+      "kind": "pool",
+      "asset": "pool_76",
+      "logicalPos": [
+        90,
+        25
+      ],
+      "anchor": [
+        5529.6,
+        1536
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        5524,
+        1530,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        5504,
+        1580,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_056",
+      "name": "沉舟湾",
+      "type": "wild",
+      "kind": "pool",
+      "asset": "pool_76",
+      "logicalPos": [
+        79,
+        29
+      ],
+      "anchor": [
+        4853.76,
+        1781.76
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        4848,
+        1776,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        4828,
+        1791,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_057",
+      "name": "镇星台",
+      "type": "wild",
+      "kind": "ruin",
+      "asset": "ruin_72",
+      "logicalPos": [
+        58,
+        12
+      ],
+      "anchor": [
+        3563.52,
+        737.28
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        3558,
+        731,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        3538,
+        746,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_058",
+      "name": "回风峡",
+      "type": "wild",
+      "kind": "valley",
+      "asset": "valley_76",
+      "logicalPos": [
+        72.4,
+        20.8
+      ],
+      "anchor": [
+        4448.256,
+        1277.9520000000002
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        4442,
+        1272,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        4422,
+        1287,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_059",
+      "name": "绝仙谷",
+      "type": "wild",
+      "kind": "valley",
+      "asset": "valley_76",
+      "logicalPos": [
+        61,
+        23
+      ],
+      "anchor": [
+        3747.84,
+        1413.12
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        3742,
+        1407,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        3722,
+        1422,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_060",
+      "name": "凌霄故墟",
+      "type": "wild",
+      "kind": "ruin",
+      "asset": "ruin_72",
+      "logicalPos": [
+        72,
+        10
+      ],
+      "anchor": [
+        4423.68,
+        614.4
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        4418,
+        608,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        4391,
+        623,
+        66,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_061",
+      "name": "回澜滩",
+      "type": "wild",
+      "kind": "pool",
+      "asset": "pool_76",
+      "logicalPos": [
+        44,
+        49
+      ],
+      "anchor": [
+        2703.36,
+        3010.56
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        2697,
+        3005,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        2677,
+        3020,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_062",
+      "name": "涵虚泽",
+      "type": "wild",
+      "kind": "pool",
+      "asset": "pool_76",
+      "logicalPos": [
+        52,
+        49
+      ],
+      "anchor": [
+        3194.88,
+        3010.56
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        3189,
+        3005,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        3169,
+        3020,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_063",
+      "name": "蒹葭浦",
+      "type": "wild",
+      "kind": "pool",
+      "asset": "pool_76",
+      "logicalPos": [
+        55,
+        55
+      ],
+      "anchor": [
+        3379.2,
+        3379.2
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        3373,
+        3373,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        3353,
+        3388,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_064",
+      "name": "浮翠岭",
+      "type": "wild",
+      "kind": "peak",
+      "asset": "peak_76",
+      "logicalPos": [
+        6,
+        46
+      ],
+      "anchor": [
+        368.64,
+        2826.24
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        363,
+        2820,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        343,
+        2835,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_065",
+      "name": "千仞沟",
+      "type": "wild",
+      "kind": "valley",
+      "asset": "valley_76",
+      "logicalPos": [
+        18,
+        53
+      ],
+      "anchor": [
+        1105.92,
+        3256.32
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        1100,
+        3250,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        1080,
+        3265,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_066",
+      "name": "问道崖",
+      "type": "wild",
+      "kind": "peak",
+      "asset": "peak_76",
+      "logicalPos": [
+        9,
+        57
+      ],
+      "anchor": [
+        552.96,
+        3502.08
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        547,
+        3496,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        527,
+        3511,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_067",
+      "name": "芙蓉原",
+      "type": "wild",
+      "kind": "valley",
+      "asset": "valley_76",
+      "logicalPos": [
+        35,
+        66
+      ],
+      "anchor": [
+        2150.4,
+        4055.04
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        2144,
+        4049,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        2124,
+        4064,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_068",
+      "name": "浣纱涧",
+      "type": "wild",
+      "kind": "pool",
+      "asset": "pool_76",
+      "logicalPos": [
+        47,
+        73
+      ],
+      "anchor": [
+        2887.68,
+        4485.12
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        2882,
+        4479,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        2862,
+        4494,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_069",
+      "name": "藏真洞天",
+      "type": "wild",
+      "kind": "cave",
+      "asset": "cave_76",
+      "logicalPos": [
+        39.2,
+        77.9
+      ],
+      "anchor": [
+        2408.4480000000003,
+        4786.176
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        2402,
+        4780,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        2375,
+        4795,
+        66,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_070",
+      "name": "东林地",
+      "type": "wild",
+      "kind": "grove",
+      "asset": "grove_80",
+      "logicalPos": [
+        58,
+        55
+      ],
+      "anchor": [
+        3563.52,
+        3379.2
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        3558,
+        3373,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        3538,
+        3388,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_071",
+      "name": "灵草谷",
+      "type": "wild",
+      "kind": "valley",
+      "asset": "valley_76",
+      "logicalPos": [
+        56,
+        67
+      ],
+      "anchor": [
+        3440.64,
+        4116.48
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        3435,
+        4110,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        3415,
+        4125,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_072",
+      "name": "鹿鸣林",
+      "type": "wild",
+      "kind": "grove",
+      "asset": "grove_80",
+      "logicalPos": [
+        39,
+        83
+      ],
+      "anchor": [
+        2396.16,
+        5099.52
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        2390,
+        5094,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        2370,
+        5109,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_073",
+      "name": "雷泽",
+      "type": "wild",
+      "kind": "pool",
+      "asset": "pool_76",
+      "logicalPos": [
+        75,
+        44
+      ],
+      "anchor": [
+        4608,
+        2703.36
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        4602,
+        2697,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        4589,
+        2712,
+        38,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_074",
+      "name": "落星墟",
+      "type": "wild",
+      "kind": "ruin",
+      "asset": "ruin_72",
+      "logicalPos": [
+        68,
+        69
+      ],
+      "anchor": [
+        4177.92,
+        4239.36
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        4172,
+        4233,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        4152,
+        4248,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_075",
+      "name": "黑水泽",
+      "type": "wild",
+      "kind": "pool",
+      "asset": "pool_76",
+      "logicalPos": [
+        60,
+        81
+      ],
+      "anchor": [
+        3686.4,
+        4976.64
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        3680,
+        4971,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        3660,
+        4986,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_076",
+      "name": "九幽涧",
+      "type": "wild",
+      "kind": "pool",
+      "asset": "pool_76",
+      "logicalPos": [
+        72,
+        88
+      ],
+      "anchor": [
+        4423.68,
+        5406.72
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        4418,
+        5401,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        4398,
+        5416,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_077",
+      "name": "沉璧渊",
+      "type": "wild",
+      "kind": "pool",
+      "asset": "pool_76",
+      "logicalPos": [
+        63,
+        92
+      ],
+      "anchor": [
+        3870.72,
+        5652.48
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        3865,
+        5646,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        3845,
+        5661,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_078",
+      "name": "无生谷",
+      "type": "wild",
+      "kind": "valley",
+      "asset": "valley_76",
+      "logicalPos": [
+        75,
+        75
+      ],
+      "anchor": [
+        4608,
+        4608
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        4602,
+        4602,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        4582,
+        4617,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_079",
+      "name": "蚀月原",
+      "type": "wild",
+      "kind": "valley",
+      "asset": "valley_76",
+      "logicalPos": [
+        78,
+        61
+      ],
+      "anchor": [
+        4792.32,
+        3747.84
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        4786,
+        3742,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        4766,
+        3757,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_080",
+      "name": "疏影潭",
+      "type": "wild",
+      "kind": "pool",
+      "asset": "pool_76",
+      "logicalPos": [
+        90,
+        68
+      ],
+      "anchor": [
+        5529.6,
+        4177.92
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        5524,
+        4172,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        5504,
+        4187,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_081",
+      "name": "埋骨原",
+      "type": "wild",
+      "kind": "valley",
+      "asset": "valley_76",
+      "logicalPos": [
+        79,
+        39
+      ],
+      "anchor": [
+        4853.76,
+        2396.16
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        4848,
+        2390,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        4828,
+        2405,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_082",
+      "name": "玄荒战墟",
+      "type": "wild",
+      "kind": "ruin",
+      "asset": "ruin_72",
+      "logicalPos": [
+        87,
+        47
+      ],
+      "anchor": [
+        5345.28,
+        2887.68
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        5339,
+        2882,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        5312,
+        2897,
+        66,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_083",
+      "name": "寂照林",
+      "type": "wild",
+      "kind": "grove",
+      "asset": "grove_80",
+      "logicalPos": [
+        91,
+        35
+      ],
+      "anchor": [
+        5591.04,
+        2150.4
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        5585,
+        2144,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        5565,
+        2159,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_084",
+      "name": "无名陵",
+      "type": "wild",
+      "kind": "ruin",
+      "asset": "ruin_72",
+      "logicalPos": [
+        80,
+        46
+      ],
+      "anchor": [
+        4915.2,
+        2826.24
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        4909,
+        2820,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        4889,
+        2835,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_085",
+      "name": "天碑原",
+      "type": "wild",
+      "kind": "ruin",
+      "asset": "ruin_72",
+      "logicalPos": [
+        59,
+        44
+      ],
+      "anchor": [
+        3624.96,
+        2703.36
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        3619,
+        2697,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        3599,
+        2712,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_086",
+      "name": "镜月泽",
+      "type": "wild",
+      "kind": "pool",
+      "asset": "pool_76",
+      "logicalPos": [
+        72,
+        58
+      ],
+      "anchor": [
+        4423.68,
+        3563.52
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        4418,
+        3558,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        4398,
+        3573,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_087",
+      "name": "碎星滩",
+      "type": "wild",
+      "kind": "pool",
+      "asset": "pool_76",
+      "logicalPos": [
+        61,
+        63
+      ],
+      "anchor": [
+        3747.84,
+        3870.72
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        3742,
+        3865,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        3722,
+        3880,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_088",
+      "name": "沉锋谷",
+      "type": "wild",
+      "kind": "valley",
+      "asset": "valley_76",
+      "logicalPos": [
+        37,
+        21
+      ],
+      "anchor": [
+        2273.28,
+        1290.24
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        2267,
+        1284,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        2247,
+        1299,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_089",
+      "name": "丹穴山",
+      "type": "wild",
+      "kind": "peak",
+      "asset": "peak_76",
+      "logicalPos": [
+        53.2,
+        23.9
+      ],
+      "anchor": [
+        3268.6080000000006,
+        1468.4159999999997
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        3263,
+        1462,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        3243,
+        1477,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_090",
+      "name": "天籁长峡",
+      "type": "wild",
+      "kind": "valley",
+      "asset": "valley_76",
+      "logicalPos": [
+        31,
+        40
+      ],
+      "anchor": [
+        1904.64,
+        2457.6
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        1899,
+        2452,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        1872,
+        2467,
+        66,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_091",
+      "name": "砺青崖",
+      "type": "wild",
+      "kind": "peak",
+      "asset": "peak_76",
+      "logicalPos": [
+        58,
+        29
+      ],
+      "anchor": [
+        3563.52,
+        1781.76
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        3558,
+        1776,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        3538,
+        1791,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_092",
+      "name": "含章窟",
+      "type": "wild",
+      "kind": "cave",
+      "asset": "cave_76",
+      "logicalPos": [
+        52,
+        31
+      ],
+      "anchor": [
+        3194.88,
+        1904.64
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        3189,
+        1899,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        3169,
+        1914,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_093",
+      "name": "蕴辉岩",
+      "type": "wild",
+      "kind": "peak",
+      "asset": "peak_76",
+      "logicalPos": [
+        77,
+        78
+      ],
+      "anchor": [
+        4730.88,
+        4792.32
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        4725,
+        4786,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        4705,
+        4801,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_094",
+      "name": "长生坞",
+      "type": "wild",
+      "kind": "valley",
+      "asset": "valley_76",
+      "logicalPos": [
+        37,
+        65
+      ],
+      "anchor": [
+        2273.28,
+        3993.6
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        2267,
+        3988,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        2247,
+        4003,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_095",
+      "name": "万毒谷",
+      "type": "wild",
+      "kind": "valley",
+      "asset": "valley_76",
+      "logicalPos": [
+        35,
+        86
+      ],
+      "anchor": [
+        2150.4,
+        5283.84
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        2144,
+        5278,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        2124,
+        5293,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_096",
+      "name": "采露坪",
+      "type": "wild",
+      "kind": "valley",
+      "asset": "valley_76",
+      "logicalPos": [
+        15,
+        53
+      ],
+      "anchor": [
+        921.6,
+        3256.32
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        916,
+        3250,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        896,
+        3265,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_097",
+      "name": "玄霜坞",
+      "type": "wild",
+      "kind": "grove",
+      "asset": "grove_80",
+      "logicalPos": [
+        28,
+        47
+      ],
+      "anchor": [
+        1720.32,
+        2887.68
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        1714,
+        2882,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        1694,
+        2967,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_098",
+      "name": "盘龙涧",
+      "type": "wild",
+      "kind": "grove",
+      "asset": "grove_80",
+      "logicalPos": [
+        42,
+        93
+      ],
+      "anchor": [
+        2580.48,
+        5713.92
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        2574,
+        5708,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        2554,
+        5723,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_099",
+      "name": "不老林",
+      "type": "wild",
+      "kind": "grove",
+      "asset": "grove_80",
+      "logicalPos": [
+        52,
+        86
+      ],
+      "anchor": [
+        3194.88,
+        5283.84
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        3189,
+        5278,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        3169,
+        5293,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_100",
+      "name": "松露台",
+      "type": "wild",
+      "kind": "grove",
+      "asset": "grove_80",
+      "logicalPos": [
+        18,
+        37
+      ],
+      "anchor": [
+        1105.92,
+        2273.28
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        1100,
+        2267,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        1080,
+        2282,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_101",
+      "name": "濯缨泉",
+      "type": "wild",
+      "kind": "pool",
+      "asset": "pool_76",
+      "logicalPos": [
+        48,
+        68
+      ],
+      "anchor": [
+        2949.12,
+        4177.92
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        2943,
+        4172,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        2923,
+        4187,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_102",
+      "name": "鸣玉溪",
+      "type": "wild",
+      "kind": "pool",
+      "asset": "pool_76",
+      "logicalPos": [
+        74,
+        30
+      ],
+      "anchor": [
+        4546.56,
+        1843.2
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        4541,
+        1837,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        4521,
+        1852,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_103",
+      "name": "紫泥湾",
+      "type": "wild",
+      "kind": "pool",
+      "asset": "pool_76",
+      "logicalPos": [
+        35,
+        84
+      ],
+      "anchor": [
+        2150.4,
+        5160.96
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        2144,
+        5155,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        2124,
+        5170,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_104",
+      "name": "凝素泽",
+      "type": "wild",
+      "kind": "pool",
+      "asset": "pool_76",
+      "logicalPos": [
+        85,
+        79
+      ],
+      "anchor": [
+        5222.4,
+        4853.76
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        5216,
+        4848,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        5196,
+        4863,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_105",
+      "name": "藏蜕林",
+      "type": "wild",
+      "kind": "grove",
+      "asset": "grove_80",
+      "logicalPos": [
+        85,
+        31
+      ],
+      "anchor": [
+        5222.4,
+        1904.64
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        5216,
+        1899,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        5196,
+        1914,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_106",
+      "name": "太和城",
+      "type": "city",
+      "kind": "city",
+      "asset": "bc_place_106",
+      "logicalPos": [
+        11,
+        68
+      ],
+      "anchor": [
+        675.84,
+        4177.92
+      ],
+      "artOffset": [
+        -12.340000000000032,
+        17.079999999999927
+      ],
+      "rect": [
+        587,
+        4124,
+        153,
+        71
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 19,
+      "labelRect": [
+        626,
+        4202,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "city",
+      "approach": [
+        [
+          675.84,
+          4177.92
+        ],
+        [
+          663.5,
+          4195
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_107",
+      "name": "洗心镇",
+      "type": "town",
+      "kind": "town",
+      "asset": "bc_place_107",
+      "logicalPos": [
+        14,
+        78
+      ],
+      "anchor": [
+        860.16,
+        4792.32
+      ],
+      "artOffset": [
+        -20.159999999999968,
+        -5.319999999999709
+      ],
+      "rect": [
+        791,
+        4711,
+        98,
+        76
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 17,
+      "labelRect": [
+        802,
+        4794,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "town",
+      "approach": [
+        [
+          860.16,
+          4792.32
+        ],
+        [
+          840,
+          4787
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_108",
+      "name": "松月坊",
+      "type": "market",
+      "kind": "market",
+      "asset": "bc_place_108",
+      "logicalPos": [
+        19,
+        70
+      ],
+      "anchor": [
+        1167.36,
+        4300.8
+      ],
+      "artOffset": [
+        100.1400000000001,
+        54.19999999999982
+      ],
+      "rect": [
+        1199,
+        4275,
+        137,
+        80
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 17,
+      "labelRect": [
+        1230,
+        4362,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "market",
+      "approach": [
+        [
+          1167.36,
+          4300.8
+        ],
+        [
+          1267.5,
+          4355
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_109",
+      "name": "坐忘谷",
+      "type": "wild",
+      "kind": "valley",
+      "asset": "valley_76",
+      "logicalPos": [
+        15,
+        87
+      ],
+      "anchor": [
+        921.6,
+        5345.28
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        916,
+        5339,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        896,
+        5354,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_110",
+      "name": "清籁涧",
+      "type": "wild",
+      "kind": "pool",
+      "asset": "pool_76",
+      "logicalPos": [
+        25,
+        79
+      ],
+      "anchor": [
+        1536,
+        4853.76
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        1530,
+        4848,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        1510,
+        4863,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_111",
+      "name": "太素原",
+      "type": "wild",
+      "kind": "valley",
+      "asset": "valley_76",
+      "logicalPos": [
+        24,
+        73
+      ],
+      "anchor": [
+        1474.56,
+        4485.12
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        1469,
+        4479,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        1488,
+        4467,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_112",
+      "name": "金阙城",
+      "type": "city",
+      "kind": "city",
+      "asset": "bc_place_112",
+      "logicalPos": [
+        34,
+        10
+      ],
+      "anchor": [
+        2088.96,
+        614.4
+      ],
+      "artOffset": [
+        168.03999999999996,
+        -155.39999999999998
+      ],
+      "rect": [
+        2165,
+        375,
+        184,
+        84
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 19,
+      "labelRect": [
+        2219,
+        466,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "approach": [
+        [
+          2088.96,
+          614.4
+        ],
+        [
+          2257,
+          459
+        ]
+      ],
+      "hoverOnly": true,
+      "visualTier": "city"
+    },
+    {
+      "id": "bc_place_113",
+      "name": "含光镇",
+      "type": "town",
+      "kind": "town",
+      "asset": "bc_place_113",
+      "logicalPos": [
+        43,
+        9
+      ],
+      "anchor": [
+        2641.92,
+        552.96
+      ],
+      "artOffset": [
+        52.07999999999993,
+        -25.960000000000036
+      ],
+      "rect": [
+        2634,
+        459,
+        120,
+        68
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 17,
+      "labelRect": [
+        2656,
+        534,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "town",
+      "approach": [
+        [
+          2641.92,
+          552.96
+        ],
+        [
+          2694,
+          527
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_114",
+      "name": "琼华坊",
+      "type": "market",
+      "kind": "market",
+      "asset": "bc_place_114",
+      "logicalPos": [
+        47,
+        14
+      ],
+      "anchor": [
+        2887.68,
+        860.16
+      ],
+      "artOffset": [
+        96.32000000000016,
+        -21.159999999999968
+      ],
+      "rect": [
+        2913,
+        765,
+        142,
+        74
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 17,
+      "labelRect": [
+        2946,
+        846,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "market",
+      "approach": [
+        [
+          2887.68,
+          860.16
+        ],
+        [
+          2984,
+          839
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_115",
+      "name": "丹丘原",
+      "type": "wild",
+      "kind": "valley",
+      "asset": "valley_76",
+      "logicalPos": [
+        33,
+        21
+      ],
+      "anchor": [
+        2027.52,
+        1290.24
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        2022,
+        1284,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        2002,
+        1299,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_116",
+      "name": "垂虹岭",
+      "type": "wild",
+      "kind": "peak",
+      "asset": "peak_76",
+      "logicalPos": [
+        47,
+        25
+      ],
+      "anchor": [
+        2887.68,
+        1536
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        2882,
+        1530,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        2862,
+        1545,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_117",
+      "name": "断岳山",
+      "type": "wild",
+      "kind": "peak",
+      "asset": "peak_76",
+      "logicalPos": [
+        51,
+        14
+      ],
+      "anchor": [
+        3133.44,
+        860.16
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        3127,
+        854,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        3107,
+        869,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_118",
+      "name": "永夜关",
+      "type": "city",
+      "kind": "city",
+      "asset": "bc_place_118",
+      "logicalPos": [
+        91,
+        63
+      ],
+      "anchor": [
+        5591.04,
+        3870.72
+      ],
+      "artOffset": [
+        -18.539999999999964,
+        -49.7199999999998
+      ],
+      "rect": [
+        5493,
+        3740,
+        159,
+        81
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 19,
+      "labelRect": [
+        5535,
+        3828,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "city",
+      "approach": [
+        [
+          5591.04,
+          3870.72
+        ],
+        [
+          5572.5,
+          3821
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_119",
+      "name": "听澜镇",
+      "type": "town",
+      "kind": "town",
+      "asset": "bc_place_119",
+      "logicalPos": [
+        87,
+        69
+      ],
+      "anchor": [
+        5345.28,
+        4239.36
+      ],
+      "artOffset": [
+        32.220000000000255,
+        -13.359999999999673
+      ],
+      "rect": [
+        5304,
+        4155,
+        147,
+        71
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 17,
+      "labelRect": [
+        5340,
+        4233,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "town",
+      "approach": [
+        [
+          5345.28,
+          4239.36
+        ],
+        [
+          5377.5,
+          4226
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_120",
+      "name": "夜泊坊",
+      "type": "market",
+      "kind": "market",
+      "asset": "bc_place_120",
+      "logicalPos": [
+        81,
+        55
+      ],
+      "anchor": [
+        4976.64,
+        3379.2
+      ],
+      "artOffset": [
+        -11.140000000000327,
+        35.80000000000018
+      ],
+      "rect": [
+        4909,
+        3336,
+        113,
+        79
+      ],
+      "pivot": [
+        0.5,
+        1
+      ],
+      "footing": "connected level plain",
+      "labelSize": 17,
+      "labelRect": [
+        4928,
+        3422,
+        76,
+        30
+      ],
+      "labelConflicts": 0,
+      "drawIcon": true,
+      "hoverOnly": true,
+      "visualTier": "market",
+      "approach": [
+        [
+          4976.64,
+          3379.2
+        ],
+        [
+          4965.5,
+          3415
+        ]
+      ]
+    },
+    {
+      "id": "bc_place_121",
+      "name": "葬日谷",
+      "type": "wild",
+      "kind": "valley",
+      "asset": "valley_76",
+      "logicalPos": [
+        94,
+        70
+      ],
+      "anchor": [
+        5775.36,
+        4300.8
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        5769,
+        4295,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        5749,
+        4310,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_122",
+      "name": "晦明原",
+      "type": "wild",
+      "kind": "valley",
+      "asset": "valley_76",
+      "logicalPos": [
+        89,
+        75
+      ],
+      "anchor": [
+        5468.16,
+        4608
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        5462,
+        4602,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        5442,
+        4547,
+        52,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    },
+    {
+      "id": "bc_place_123",
+      "name": "黑瘴大泽",
+      "type": "wild",
+      "kind": "pool",
+      "asset": "pool_76",
+      "logicalPos": [
+        75,
+        64
+      ],
+      "anchor": [
+        4608,
+        3932.16
+      ],
+      "artOffset": [
+        0,
+        0
+      ],
+      "rect": [
+        4602,
+        3926,
+        12,
+        12
+      ],
+      "pivot": [
+        0.5,
+        0.95
+      ],
+      "footing": "integrated_natural_landmark",
+      "labelSize": 14,
+      "labelRect": [
+        4575,
+        3941,
+        66,
+        24
+      ],
+      "labelConflicts": 0,
+      "drawIcon": false
+    }
+  ],
+  "terrain": [],
+  "forests": [],
+  "waters": [],
+  "bridges": [],
+  "backgroundMethod": "single_whole_painting_with_integrated_refinement",
+  "sourceHash": "28fd79f81c136c9e488842add2a69f8fac5a6e59271d1125371fd6553452e6a7",
+  "sourceGraphCounts": {
+    "named": 123,
+    "transit": 321,
+    "edges": 498,
+    "routes": 177
+  },
+  "originalBridgeIds": [
+    "bc_landmark_003",
+    "bc_landmark_005",
+    "bc_landmark_007",
+    "bc_landmark_008",
+    "bc_landmark_009",
+    "bc_landmark_012",
+    "bc_landmark_013",
+    "bc_landmark_015",
+    "bc_landmark_016",
+    "bc_landmark_017",
+    "bc_landmark_021",
+    "bc_landmark_023",
+    "bc_landmark_024",
+    "bc_landmark_028",
+    "bc_landmark_029"
+  ],
+  "nodesIntegrated": true,
+  "version": 4,
+  "artMethod": "co-painted terrain and entrances; original-pixel hover masks"
+}
