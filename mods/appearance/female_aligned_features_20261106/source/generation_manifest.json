@@ -1,0 +1,44 @@
+{
+  "task": "已认可画风下的女性五官三组扩充",
+  "created_local_date": "2026-11-06",
+  "status": "whole_portrait_candidates_pending_selection",
+  "user_direction": "很好，你继续",
+  "user_approved_style_sample": "mods/appearance/female_style_alignment_20261106/preview/style_alignment_sample_v1.png",
+  "generator": "built-in image_gen",
+  "sole_visual_input": "mods/appearance/portrait_original_restore_20261105_v6/whole_male_first_20261105/reference/female_active.png",
+  "style_reference_policy": "每组都从真实活动原图生成，不以其他新候选逐轮作画风母版；上轮认可样例只说明已确认风格方向，不作为生成输入。",
+  "concepts": [
+    {
+      "id": "01",
+      "name": "柔弯杏目",
+      "preview": "preview/01_soft_arch_almond.png",
+      "prompt": "source/prompt_01.txt",
+      "source": "E:/tmp/CodexData/generated_images/01a1ac35-8591-7bc0-b31a-ed6a532b5357/exec-060f318d-5085-43ba-b768-5f861e92e2aa.png"
+    },
+    {
+      "id": "02",
+      "name": "疏平长目",
+      "preview": "preview/02_soft_straight_long_eyes.png",
+      "prompt": "source/prompt_02.txt",
+      "source": "E:/tmp/CodexData/generated_images/01a1ac35-8591-7bc0-b31a-ed6a532b5357/exec-f60b8a73-9d25-4242-9402-7efa3a94d8bb.png"
+    },
+    {
+      "id": "03",
+      "name": "淡挑清目",
+      "preview": "preview/03_light_lift_clear_eyes.png",
+      "prompt": "source/prompt_03.txt",
+      "source": "E:/tmp/CodexData/generated_images/01a1ac35-8591-7bc0-b31a-ed6a532b5357/exec-80d4c077-4b9f-46cd-9401-81a565c8a42f.png"
+    }
+  ],
+  "prompts": "source/generation_prompts.json",
+  "style_constraints": [
+    "1024×1536原腰上比例与脸耳颈框架",
+    "浅暖象牙肤色与浅淡局部明暗",
+    "细淡短眼缘、自然虹膜比例与克制睫毛",
+    "完整山根鼻翼鼻孔，鼻唇明暗轻",
+    "灰炭黑细发丝、弱暖灰高光与哑光质感"
+  ],
+  "retained_scope": "沿用原发型与衣服便于比较五官，不表示此前不满意的前发变体已获认可。",
+  "integration": "新三组尚为完整整体候选，未独立生成透明眉眼鼻嘴或加入活动选项；活动素材保持。",
+  "limitations": "画稿存在重绘差异，不声明原脸耳颈、头发、服装逐像素保持；不得用图像完整性检查代替用户视觉评价。"
+}

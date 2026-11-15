@@ -1,0 +1,41 @@
+{
+  "status": "generated_candidates_pending_original_alpha_constraint_and_review",
+  "records": [
+    {
+      "index": 5,
+      "source": "mods/appearance/ink_three_variants_20261004/male/clothing/05.png",
+      "generated_source": "E:/tmp/CodexData/generated_images/01a1a151-483d-73d0-99e9-869149e96700/exec-5bc17ad8-e48d-42a5-a524-5577887c67ee.png",
+      "saved_output": "mods/appearance/clothing_polish_20261103/generated/male/05.png",
+      "tool": "built-in image_gen",
+      "transparent_background": true,
+      "prompt": "Use case: precise-object-edit. Edit target: the attached transparent male Chinese Daoist robe clothing05 ONLY. This is an existing modular game sprite, not a new costume design. Keep exact original 1024x1536 RGBA canvas and shared upper-left origin; garment stays in identical position, scale, shoulder width, V neckline, waist sash at the same height, and unchanged sleeve and hem silhouette. Preserve original muted slate-blue cloth, ivory inner collar and borders, existing pale cloud embroidery, all motif placements, layered collar construction and belt knots. Polish gently in the same fine gongbi ink-line and restrained watercolor paper-texture style: reduce excessively heavy black contour strokes, remove jagged/frayed edge artifacts and stray hair or skin fragments, keep thin elegant structural outlines and natural fabric-fold shading. Do not flatten texture, brighten palette, introduce new embroidery or change proportions. Neck opening and all unused canvas must stay genuinely transparent. No head, face, neck, ears, hands, arms/skin, hair, mannequin, text, background, frame, shadow outside garment or extra objects. One standalone full-canvas garment sprite only, not a collage."
+    },
+    {
+      "index": 6,
+      "source": "mods/appearance/ink_three_variants_20261004/male/clothing/06.png",
+      "generated_source": "E:/tmp/CodexData/generated_images/01a1a151-483d-73d0-99e9-869149e96700/exec-e320ee10-b1f3-43ad-9db1-18fc18b3aefa.png",
+      "saved_output": "mods/appearance/clothing_polish_20261103/generated/male/06.png",
+      "tool": "built-in image_gen",
+      "transparent_background": true,
+      "prompt": "Use case: precise-object-edit. Edit target: original transparent male Daoist robe clothing06. Gently polish THIS SAME isolated garment for a modular 2D game, not a redesigned robe. Preserve exact1024x1536 RGBA canvas, same upper-left origin, original position and proportions. Neck tips, V neckline, shoulders, sleeves, waistband, belt knot and pendant remain at their exact original places. Preserve ivory/cream fabric, desaturated teal-blue lapels and sash, pale blue-gray cloud embroidery, Greek-key geometric border and fine hanging decorative motifs, original folding and cloud placements. Use original restrained gongbi delicate ink outlines with low-contrast watercolor textile/paper grain. Only soften overly black/heavy edge outlines, smooth ragged halo edges, remove stray hair or skin fragments, subtly refine fabric rendering without changing costume design or adding motifs. No rescaling, recentering, restyling, extra gloss or photorealism. All empty canvas and neck opening actually transparent. No head/face/neck/skin/ears/hair/arms/hands/mannequin/background/text/ground shadow. One complete independent transparent clothing sprite only; no collage."
+    },
+    {
+      "index": 7,
+      "source": "mods/appearance/ink_three_variants_20261004/male/clothing/07.png",
+      "generated_source": "E:/tmp/CodexData/generated_images/01a1a151-483d-73d0-99e9-869149e96700/exec-6ffc0968-f1c4-4784-b50f-68b1fad9eed8.png",
+      "saved_output": "mods/appearance/clothing_polish_20261103/generated/male/07.png",
+      "tool": "built-in image_gen",
+      "transparent_background": true,
+      "prompt": "Use case: precise-object-edit. Edit target: original transparent male Daoist robe clothing07, the ivory robe with muted blue-gray lapels/sash, fine pale gold trim and landscape mountain/pine/cloud embroidery. Gently polish this exact existing modular clothing sprite, do not redesign. Preserve original1024x1536 RGBA full canvas, shared upper-left origin, original garment placement/scale/shoulder width, V neckline and collar tip coordinates, sleeve contours, waist level and sash knot position. Preserve palette, material paper grain, original landscape embroidery subjects and placements, narrow gold piping, layered collars and all structural folds. Maintain original fine gongbi ink and subtle flat watercolor textile finish. Only lessen heavy black outlines, clean rough/jagged silhouette hairs and leftover hair/skin fragments; refine linework modestly without changing the costume or making shiny/3D fabric. All blank canvas and neck aperture genuinely transparent. No neck/face/head/ears/skin/hair/hands/arms/mannequin/body fill, no extra decorations/text/background/borders/shadows. One single full transparent garment layer, not a collage; absolutely no repositioning or zoom."
+    }
+  ],
+  "validation_report": "qa/male05_07/shape_report.json",
+  "observations": [
+    "All three generated outputs are1024x1536 RGBA and transparent, each an independent sprite.",
+    "Main alpha>=128 silhouette overlap with source05/06/07:0.99523/0.99913/0.99610.",
+    "Actual opaque collar tips drift by+5/-5/+2px; exact original anchor equality is not achieved by generation alone.",
+    "Generated extremely low-alpha specks extend above real garment; original-alpha constraint or residue cleanup is required before integration.",
+    "05 appears lighter and smoother than original,07 landscape motif details shift modestly. Preserve source palette with restrained blend if needed; not certified pixel-identical.",
+    "No new heads,hands,hair or skin visible in inspected candidates; active files untouched."
+  ]
+}

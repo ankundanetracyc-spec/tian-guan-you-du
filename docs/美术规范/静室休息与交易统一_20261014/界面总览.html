@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>静室、休息与交易 · 实际界面总览</title>
+<style>
+@font-face{font-family:kai;src:url('../../../resources/font/LXGWZhenKaiSlabGB-Regular.ttf')}
+*{box-sizing:border-box}body{margin:0;padding:16px 24px;background:#eae1c8;color:#303b38;font-family:kai,serif;height:100vh;display:flex;flex-direction:column;gap:10px}
+header{display:flex;align-items:center;gap:20px;flex-wrap:wrap}h1{font-size:24px;margin:0}p{font-size:16px;margin:0;color:#535e54}nav{display:flex;gap:7px;flex-wrap:wrap}button{font:17px kai,serif;background:transparent;border:1px solid #a39372;color:inherit;padding:7px 12px;cursor:pointer}button:hover,button[aria-pressed=true]{border-color:#396965;color:#396965;box-shadow:inset 0 -2px #396965}
+main{flex:1;min-height:0;display:grid;place-items:center;background:#20241d;border:1px solid #a39372}img{max-width:100%;max-height:100%;width:100%;height:100%;object-fit:contain}footer{display:flex;gap:16px;align-items:center;font-size:16px}a{color:#396965}select{font:16px kai,serif;color:inherit;background:transparent;border:1px solid #a39372;padding:4px}
+</style>
+<header><h1>静室、休息与交易</h1><p>正式控件的实际画面 · 临时人物示例数据</p></header>
+<nav id="pages"></nav>
+<main><img id="screen" alt="实际游戏界面"></main>
+<footer><span id="label"></span><select id="size" aria-label="画面尺寸"><option value="">1920 × 1080</option><option value="1280x720/">1280 × 720</option></select><a id="original" target="_blank">打开原图</a><span>← → 切换页面</span></footer>
+<script>
+const pages=[['吐纳','01_吐纳.png'],['研读','02_研读.png'],['突破','03_突破.png'],['淬体','04_淬体.png'],['观法','05_观法.png'],['灵感','06_灵感.png'],['吐纳日期','07_吐纳日期.png'],['白天休息','08_休息白天.png'],['休息日期','09_休息日期.png'],['夜晚休息','10_休息夜晚.png'],['剧情休息','11_剧情休息.png'],['交易','12_交易.png'],['交易数量','13_交易选取数量.png'],['黑底悬停','14_交易悬停.png'],['归元九息','15_归元九息.png'],['修行总览','16_修行总览.png']];
+const nav=document.getElementById('pages'),screen=document.getElementById('screen'),label=document.getElementById('label'),size=document.getElementById('size'),original=document.getElementById('original');let current=0;
+pages.forEach(([name],i)=>{const button=document.createElement('button');button.textContent=name;button.onclick=()=>show(i);nav.append(button)});
+function show(i){current=(i+pages.length)%pages.length;const [name,file]=pages[current];screen.src=size.value+file;screen.alt=name+' · 实际界面';original.href=screen.src;label.textContent=`${current+1} / ${pages.length} · ${name}`;[...nav.children].forEach((button,index)=>button.setAttribute('aria-pressed',index===current));location.replace('#'+(current+1))}
+size.onchange=()=>show(current);document.addEventListener('keydown',event=>{if(event.key==='ArrowLeft')show(current-1);if(event.key==='ArrowRight')show(current+1)});show(Math.max(0,Number(location.hash.slice(1)||1)-1));
+</script>
+</html>
