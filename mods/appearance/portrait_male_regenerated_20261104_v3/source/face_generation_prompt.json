@@ -1,0 +1,13 @@
+{
+  "mode": "builtin_image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: production modular xianxia male portrait, isolated blank skin/head layer on REAL TRANSPARENT background. Completely newly paint this layer from the original user reference, never reuse prior generated male artwork. Input1 is the user's three original handsome men: match the third man's head contour, long gently angular male jaw, delicate chin, warm pale peach skin and subtle watercolor mottling exactly in spirit. Input2 is our female skin layer only as an illustration softness/skin palette and blank-surface example, not the female anatomy. Strictly frontal young adult Chinese MALE, no turn, no tilt, calm handsome long oval head, complete natural bald cranial dome, two complete ears and neck through collarbone. Entire face has continuous BLANK SKIN with no eyes, no eyebrows, no nose, no mouth, no cavities; the facial features are separate game layers. Retain only subtle cheek/chin/jaw form and natural soft neck anatomy. Fine elegant illustrated linework, original's delicate matte watercolor wash, never rough cracked parchment, never photorealistic pores, never glossy 3D, no makeup, no gray nose patch, no heavy dark chin outline. Delicate warm peach cream coherent across scalp, cheeks, ears, neck. Composition: 1024x1536 portrait canvas, head small in upper central region to match game coordinate frame: axis x517, skull top y175, temples x407/626 near y300, eye-level skin width x404..628 near y375, chin (517,545), ears extend about x370..662 at y395..445, neck to collarbone bottom y718. Empty canvas below y740 is transparent. Ears must be proportionate, not flared large. No hair, no clothing, no background, no labels, no shadow outside cutout. Paint all hidden scalp skin continuously. Native clean alpha antialiasing.",
+  "raw": "source/raw/face_initial.png",
+  "registered": "male/face_shape/01.png",
+  "transform": {
+    "scale": 1,
+    "x": 0,
+    "y": 0
+  },
+  "status": "selected after new-layer composition review",
+  "no_rejected_male_artwork_used": true
+}

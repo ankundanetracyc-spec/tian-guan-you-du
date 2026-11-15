@@ -1,0 +1,61 @@
+{
+  "part": "clothing_back_band",
+  "index": 1,
+  "source": "source/clothing01_back_v2_raw.png",
+  "source_sha256": "ae82a4ff28eca6d19542ba0ecc05f395ffe900abfa9a3178267eaadcf557c9e9",
+  "source_canvas": [
+    1713,
+    918
+  ],
+  "source_controls": [
+    [
+      300,
+      208
+    ],
+    [
+      850,
+      106
+    ],
+    [
+      1400,
+      203
+    ]
+  ],
+  "target_controls": [
+    [
+      433,
+      528
+    ],
+    [
+      516,
+      514
+    ],
+    [
+      600,
+      528
+    ]
+  ],
+  "source_control_method": "Actual first alpha>=230 supported pixel at measured native columns 300,850,1400; do not infer source points from target.",
+  "transform": {
+    "a": 0.1516951360283578,
+    "b": 0.0006283933513476394,
+    "tx": 387.50076083011146,
+    "ty": 496.6570705424676,
+    "uniform_scale": 0.15169643757473672,
+    "rotation_degrees": 0.23734499276201101
+  },
+  "control_residuals_px": [
+    0.41627367424571715,
+    0.819902413467133,
+    0.4169371089493882
+  ],
+  "maximum_residual_px": 0.819902413467133,
+  "canvas": [
+    1024,
+    1536
+  ],
+  "output": "source/clothing01_back_v2_band_registered.png",
+  "output_sha256": "588bd0bef686ea0c9db96be22f0b40dc22f5a320c7ef5b47590e489618f99902",
+  "alpha_policy": "Native opacity preserved through one premultiplied global similarity resample. Continuous center is retained; face occludes it at runtime.",
+  "local_warp": false
+}

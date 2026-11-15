@@ -1,0 +1,10 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Tiny garment-edge inpainting job. Input 1 is the exact original transparent clothing close-up to preserve. Input 2 shows RED PAINT MASKS marking SPECIFIC MISSING FABRIC to add to BOTH upright collar tips. Input 3 is the neck fitting guide, for fit only. Replace EVERY red mask area with real matching ivory/beige inner collar fabric and a natural soft shadow, extending from neighboring cloth. The entire red support area must become opaque fabric, not transparent. Keep the new inside edge at the INNER boundary of the red strip, round the very top corners and merge naturally into the sloping collar below. Add ample support into the red region; merely smoothing the old edges leaves an unacceptable dark slit beside the neck. This is a collar repair, not anatomy painting. The large central U-shaped opening remains COMPLETELY TRANSPARENT and open to the top; never add a horizontal band across the neck, skin, head, jaw, hair, face or guide backdrop. Preserve the outer collar/shoulder silhouette, original fabric colors and woven brocade pattern, and the same 1000x520 close-up crop framing with no zoom or repositioning. Clean ragged inner alpha edges to a delicate antialiased contour, without loose colored pixels or thick dark outlines. Return only the two repaired cloth sides on native transparent background; no red, text, grid, paper backdrop, checkerboard, shadows or labels. Garment03 has dark chocolate outer cloth and antique gold/beige inner brocade trim, preserved exactly in spirit; beige inner trim is fabric, do not paint white skin.",
+  "inputs": [
+    "source/clothing03_collar_target.png",
+    "source/clothing03_collar_addition_guide.png",
+    "source/clothing03_collar_guide.png"
+  ],
+  "output": "male/clothing/03.png"
+}

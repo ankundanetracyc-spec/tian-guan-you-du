@@ -1,0 +1,10 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Generate a NEW production REAR-COLLAR underpainting for a modular Chinese silk robe. This is ONE continuous painted piece that will render BEHIND the man's opaque face/neck. Input1 supplies only the emerald-green outer silk, muted warm ivory brocade lining and fine matte watercolor/gongbi fabric style. Input2 is only the anatomical/placement guide showing where the opaque neck will occlude the rear collar; DO NOT include any skin or person. Output the rear collar ALONE on genuine transparent background in the same 1120x600 close-up framing. IMPORTANT: paint a SOLID, CONTINUOUS FILLED rear collar band across the entire middle, because the neck will hide its center at runtime. Do NOT cut a U-shaped neck hole, split it into two side tips, or draw an empty ring. Shape in this close-up: softly arched top edge from left(212,112) through hidden top-center about(544,56) to right(880,112); gently spread outer sides down to about(100,340) and(980,340); lower edge softly curved through(544,400). Everything inside this shallow curved trapezoid band is continuous opaque FABRIC, including center. Lower edge is hidden by front lapels later. Paint an elegant thin folded rim and naturally shaded interior, not a giant padded roll or a thick black contour. Emerald outer silk/piping and warm ivory/beige woven lining form one coherent material; no separate bright pasted strips beside old dark outlines. Natural soft clean alpha edges. Preserve the exact guide crop composition and placement, no zoom to fill canvas. No head, face, neck, skin, features, hair, front lapels, chest robe, shoulder pads, background, checkerboard, labels, text, red marks, floor shadow or cast shadow outside the isolated fabric. This asset is the filled REAR support only, to be occluded by the unchanged neck and then by a separate front garment.",
+  "inputs": [
+    "source/clothing01_pair_style_reference.png",
+    "source/clothing01_back_v2_structural_guide.png"
+  ],
+  "raw": "source/clothing01_back_v2_raw.png",
+  "output": "male/clothing_back/01.png"
+}

@@ -1,0 +1,378 @@
+{
+  "task": "female_nasion_read_only_audit",
+  "source_sha256": {
+    "face_shape/04.png": "f61eee9537f62da3c93c2afdf1570c97a1e5a5644986e6e71c983f58f81c09c8",
+    "eyebrows/01.png": "0365039042cbf66dc869b1777f1c7c40e8d2cbe89c86a80b11d2c34c8e45bed5",
+    "eyebrows/02.png": "5b0c2767c3936a2356de249b1c451cc1065090cd8168dcd02d2dac50b679d833",
+    "eyebrows/03.png": "14329a3b4e4ebd514c5449fa25898be4fa9918402bc60ddeb6e66555f981eabb",
+    "eyes/01.png": "d1d57a82ba87f3cd1eefc81eda08932432e77ce08dd000dc7fabf1e8b8555fcd",
+    "eyes/02.png": "02168cc7007021adb42002627cb97c574f1bc3a3087d83741a7cdc6cef458ea5",
+    "nose/01.png": "9a0ab7858d68e81fd0ee82cb0ef1301f2ee3d5b64e7bc6c8c8750dba4b181590",
+    "mouth/01.png": "bf84b1e940a888a9a09e36ea2bc7cceb222f7411a49ea025aa37b63091e1cd4d",
+    "hair_front/01.png": "821fe4406c90fcfc0a9cafe2048403fbdfb98aa0bafce0698fcf912e7d1f7681",
+    "hair_back/01.png": "0449a25c7ee9807332770849d3ea11f66ff4a41da8891daa3995f9c8deb6321f",
+    "clothing/01.png": "2456e11244be9106b1cf80415eb33f44111332225fd166adf441a9c751014b38"
+  },
+  "canvas": [
+    1024,
+    1536
+  ],
+  "coordinates": "Pixels in original shared full canvas, x right y down",
+  "crop": {
+    "left": 390,
+    "top": 315,
+    "width": 260,
+    "height": 220
+  },
+  "nasion_proposed_region": [
+    497,
+    350,
+    541,
+    422
+  ],
+  "layers": {
+    "face": {
+      "file": "res://mods/appearance/ink_three_variants_20261004/female/face_shape/04.png",
+      "full": {
+        "bbox_alpha40_inclusive": [
+          331,
+          208,
+          705,
+          726
+        ],
+        "counts": {
+          "a1": 106954,
+          "a20": 106368,
+          "a40": 106122,
+          "a128": 105467,
+          "a230": 104621
+        },
+        "max_alpha": 254,
+        "area": 1572864
+      },
+      "nasion_band": {
+        "bbox_alpha40_inclusive": [
+          497,
+          350,
+          540,
+          406
+        ],
+        "counts": {
+          "a1": 2508,
+          "a20": 2508,
+          "a40": 2508,
+          "a128": 2508,
+          "a230": 2508
+        },
+        "max_alpha": 254,
+        "area": 2508
+      },
+      "upper_nose_connection": {
+        "bbox_alpha40_inclusive": [
+          497,
+          390,
+          540,
+          424
+        ],
+        "counts": {
+          "a1": 1540,
+          "a20": 1540,
+          "a40": 1540,
+          "a128": 1540,
+          "a230": 1540
+        },
+        "max_alpha": 254,
+        "area": 1540
+      }
+    },
+    "brow01": {
+      "file": "res://mods/appearance/ink_three_variants_20261004/female/eyebrows/01.png",
+      "full": {
+        "bbox_alpha40_inclusive": [
+          438,
+          348,
+          604,
+          365
+        ],
+        "counts": {
+          "a1": 1350,
+          "a20": 1033,
+          "a40": 863,
+          "a128": 266,
+          "a230": 0
+        },
+        "max_alpha": 188,
+        "area": 1572864
+      },
+      "nasion_band": {
+        "bbox_alpha40_inclusive": [
+          497,
+          359,
+          500,
+          363
+        ],
+        "counts": {
+          "a1": 31,
+          "a20": 15,
+          "a40": 7,
+          "a128": 0,
+          "a230": 0
+        },
+        "max_alpha": 79,
+        "area": 2508
+      },
+      "upper_nose_connection": {
+        "bbox_alpha40_inclusive": null,
+        "counts": {
+          "a1": 0,
+          "a20": 0,
+          "a40": 0,
+          "a128": 0,
+          "a230": 0
+        },
+        "max_alpha": 0,
+        "area": 1540
+      }
+    },
+    "brow02": {
+      "file": "res://mods/appearance/ink_three_variants_20261004/female/eyebrows/02.png",
+      "full": {
+        "bbox_alpha40_inclusive": [
+          437,
+          349,
+          607,
+          367
+        ],
+        "counts": {
+          "a1": 1348,
+          "a20": 992,
+          "a40": 866,
+          "a128": 523,
+          "a230": 0
+        },
+        "max_alpha": 210,
+        "area": 1572864
+      },
+      "nasion_band": {
+        "bbox_alpha40_inclusive": [
+          497,
+          365,
+          498,
+          367
+        ],
+        "counts": {
+          "a1": 24,
+          "a20": 10,
+          "a40": 3,
+          "a128": 0,
+          "a230": 0
+        },
+        "max_alpha": 51,
+        "area": 2508
+      },
+      "upper_nose_connection": {
+        "bbox_alpha40_inclusive": null,
+        "counts": {
+          "a1": 0,
+          "a20": 0,
+          "a40": 0,
+          "a128": 0,
+          "a230": 0
+        },
+        "max_alpha": 0,
+        "area": 1540
+      }
+    },
+    "brow03": {
+      "file": "res://mods/appearance/ink_three_variants_20261004/female/eyebrows/03.png",
+      "full": {
+        "bbox_alpha40_inclusive": [
+          433,
+          348,
+          611,
+          363
+        ],
+        "counts": {
+          "a1": 1380,
+          "a20": 954,
+          "a40": 823,
+          "a128": 355,
+          "a230": 0
+        },
+        "max_alpha": 183,
+        "area": 1572864
+      },
+      "nasion_band": {
+        "bbox_alpha40_inclusive": null,
+        "counts": {
+          "a1": 14,
+          "a20": 4,
+          "a40": 0,
+          "a128": 0,
+          "a230": 0
+        },
+        "max_alpha": 28,
+        "area": 2508
+      },
+      "upper_nose_connection": {
+        "bbox_alpha40_inclusive": null,
+        "counts": {
+          "a1": 0,
+          "a20": 0,
+          "a40": 0,
+          "a128": 0,
+          "a230": 0
+        },
+        "max_alpha": 0,
+        "area": 1540
+      }
+    },
+    "eyes01": {
+      "file": "res://mods/appearance/ink_three_variants_20261004/female/eyes/01.png",
+      "full": {
+        "bbox_alpha40_inclusive": [
+          427,
+          366,
+          610,
+          399
+        ],
+        "counts": {
+          "a1": 3755,
+          "a20": 2842,
+          "a40": 2511,
+          "a128": 1800,
+          "a230": 1621
+        },
+        "max_alpha": 255,
+        "area": 1572864
+      },
+      "nasion_band": {
+        "bbox_alpha40_inclusive": null,
+        "counts": {
+          "a1": 17,
+          "a20": 0,
+          "a40": 0,
+          "a128": 0,
+          "a230": 0
+        },
+        "max_alpha": 9,
+        "area": 2508
+      },
+      "upper_nose_connection": {
+        "bbox_alpha40_inclusive": null,
+        "counts": {
+          "a1": 13,
+          "a20": 0,
+          "a40": 0,
+          "a128": 0,
+          "a230": 0
+        },
+        "max_alpha": 9,
+        "area": 1540
+      }
+    },
+    "eyes02": {
+      "file": "res://mods/appearance/ink_three_variants_20261004/female/eyes/02.png",
+      "full": {
+        "bbox_alpha40_inclusive": [
+          429,
+          362,
+          610,
+          398
+        ],
+        "counts": {
+          "a1": 4404,
+          "a20": 3328,
+          "a40": 2964,
+          "a128": 2237,
+          "a230": 2003
+        },
+        "max_alpha": 255,
+        "area": 1572864
+      },
+      "nasion_band": {
+        "bbox_alpha40_inclusive": [
+          497,
+          389,
+          498,
+          391
+        ],
+        "counts": {
+          "a1": 61,
+          "a20": 6,
+          "a40": 4,
+          "a128": 2,
+          "a230": 0
+        },
+        "max_alpha": 211,
+        "area": 2508
+      },
+      "upper_nose_connection": {
+        "bbox_alpha40_inclusive": [
+          497,
+          390,
+          498,
+          391
+        ],
+        "counts": {
+          "a1": 40,
+          "a20": 4,
+          "a40": 3,
+          "a128": 1,
+          "a230": 0
+        },
+        "max_alpha": 211,
+        "area": 1540
+      }
+    },
+    "nose": {
+      "file": "res://mods/appearance/ink_three_variants_20261004/female/nose/01.png",
+      "full": {
+        "bbox_alpha40_inclusive": [
+          500,
+          407,
+          538,
+          460
+        ],
+        "counts": {
+          "a1": 1872,
+          "a20": 841,
+          "a40": 505,
+          "a128": 68,
+          "a230": 0
+        },
+        "max_alpha": 228,
+        "area": 1572864
+      },
+      "nasion_band": {
+        "bbox_alpha40_inclusive": null,
+        "counts": {
+          "a1": 49,
+          "a20": 4,
+          "a40": 0,
+          "a128": 0,
+          "a230": 0
+        },
+        "max_alpha": 24,
+        "area": 2508
+      },
+      "upper_nose_connection": {
+        "bbox_alpha40_inclusive": [
+          515,
+          407,
+          519,
+          416
+        ],
+        "counts": {
+          "a1": 429,
+          "a20": 45,
+          "a40": 2,
+          "a128": 0,
+          "a230": 0
+        },
+        "max_alpha": 50,
+        "area": 1540
+      }
+    }
+  }
+}

@@ -1,0 +1,518 @@
+{
+  "pass": true,
+  "assets": 18,
+  "new_generated_hair": 4,
+  "retained_parts": 14,
+  "active_files_unchanged": 553,
+  "records": [
+    {
+      "gender": "male",
+      "part": "hair_back",
+      "file": "parts\\male\\hair_back.png",
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "e9d7f6f8f99ac9235ea3594ac7145ad5b168b683a6af63d422836b3f20070125",
+      "retained_bytes_equal": null,
+      "visible_pixels": 427818,
+      "partial_alpha_pixels": 427818,
+      "opaque_gt180_pixels": 372712,
+      "opaque_bbox": [
+        250,
+        141,
+        770,
+        1286
+      ],
+      "opaque_rgb_median": [
+        51,
+        47,
+        44
+      ],
+      "forehead_patch_median": null,
+      "central_alpha_segments_y": [
+        [
+          142,
+          450
+        ]
+      ],
+      "eye_overlap_pixels": null
+    },
+    {
+      "gender": "male",
+      "part": "face_shape",
+      "file": "parts\\male\\face_shape.png",
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "b584696489925efe1818a200fb4be6e01fd56aa08ee281d46f74abe32b7edbc8",
+      "retained_bytes_equal": true,
+      "visible_pixels": 102268,
+      "partial_alpha_pixels": 0,
+      "opaque_gt180_pixels": 102268,
+      "opaque_bbox": [
+        370,
+        172,
+        659,
+        713
+      ],
+      "opaque_rgb_median": [
+        226,
+        200,
+        184
+      ],
+      "forehead_patch_median": [
+        234,
+        209,
+        193
+      ],
+      "central_alpha_segments_y": [],
+      "eye_overlap_pixels": null
+    },
+    {
+      "gender": "male",
+      "part": "clothing",
+      "file": "parts\\male\\clothing.png",
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "d000653195a539310ff4d70856aaac5aa4cdf2af0bfbc4591c4ae2e1012dc89c",
+      "retained_bytes_equal": true,
+      "visible_pixels": 875747,
+      "partial_alpha_pixels": 875747,
+      "opaque_gt180_pixels": 872322,
+      "opaque_bbox": [
+        0,
+        528,
+        1023,
+        1535
+      ],
+      "opaque_rgb_median": [
+        75,
+        98,
+        87
+      ],
+      "forehead_patch_median": null,
+      "central_alpha_segments_y": [],
+      "eye_overlap_pixels": null
+    },
+    {
+      "gender": "male",
+      "part": "eyes",
+      "file": "parts\\male\\eyes.png",
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "297af603803315c2803be7a95e9d8ae1b48df2564b3435b1e01739e545dbf3f7",
+      "retained_bytes_equal": true,
+      "visible_pixels": 3363,
+      "partial_alpha_pixels": 2262,
+      "opaque_gt180_pixels": 1456,
+      "opaque_bbox": [
+        427,
+        365,
+        608,
+        381
+      ],
+      "opaque_rgb_median": [
+        110,
+        88,
+        75
+      ],
+      "forehead_patch_median": null,
+      "central_alpha_segments_y": [],
+      "eye_overlap_pixels": null
+    },
+    {
+      "gender": "male",
+      "part": "eyebrows",
+      "file": "parts\\male\\eyebrows.png",
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "e488d1930e80fb2930da460d16bd23fcba71e7b238f4879e83e5373f1175568b",
+      "retained_bytes_equal": true,
+      "visible_pixels": 1107,
+      "partial_alpha_pixels": 1107,
+      "opaque_gt180_pixels": 150,
+      "opaque_bbox": [
+        438,
+        345,
+        584,
+        353
+      ],
+      "opaque_rgb_median": [
+        8,
+        3,
+        0
+      ],
+      "forehead_patch_median": null,
+      "central_alpha_segments_y": [],
+      "eye_overlap_pixels": null
+    },
+    {
+      "gender": "male",
+      "part": "nose",
+      "file": "parts\\male\\nose.png",
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "f35d944b2a2d7cdc3891dcb2a16cf0f72f746691204e6522387032048ff3dae6",
+      "retained_bytes_equal": true,
+      "visible_pixels": 2567,
+      "partial_alpha_pixels": 2567,
+      "opaque_gt180_pixels": 22,
+      "opaque_bbox": [
+        502,
+        447,
+        533,
+        451
+      ],
+      "opaque_rgb_median": [
+        30,
+        6,
+        0
+      ],
+      "forehead_patch_median": null,
+      "central_alpha_segments_y": [],
+      "eye_overlap_pixels": null
+    },
+    {
+      "gender": "male",
+      "part": "mouth",
+      "file": "parts\\male\\mouth.png",
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "f5545184fcb74660b571b0c82f7c3eb25ca48f4fc3dfb0d1db2f8646d6ae9a16",
+      "retained_bytes_equal": true,
+      "visible_pixels": 1954,
+      "partial_alpha_pixels": 1318,
+      "opaque_gt180_pixels": 828,
+      "opaque_bbox": [
+        482,
+        475,
+        551,
+        494
+      ],
+      "opaque_rgb_median": [
+        199,
+        142,
+        114
+      ],
+      "forehead_patch_median": null,
+      "central_alpha_segments_y": [],
+      "eye_overlap_pixels": null
+    },
+    {
+      "gender": "male",
+      "part": "face_accessory",
+      "file": "parts\\male\\face_accessory.png",
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "1913847bf9091720c48139f49dfbb3aa70c4d20de82f2718e3dcd8348c6e5e9c",
+      "retained_bytes_equal": true,
+      "visible_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "opaque_gt180_pixels": 0,
+      "opaque_bbox": null,
+      "opaque_rgb_median": [
+        null,
+        null,
+        null
+      ],
+      "forehead_patch_median": null,
+      "central_alpha_segments_y": [],
+      "eye_overlap_pixels": null
+    },
+    {
+      "gender": "male",
+      "part": "hair_front",
+      "file": "parts\\male\\hair_front.png",
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "1b5fa9763ffe5c1468f7503e934a5c893ac0fb6aaf1e0fadeeed8129ea0348fd",
+      "retained_bytes_equal": null,
+      "visible_pixels": 145591,
+      "partial_alpha_pixels": 145591,
+      "opaque_gt180_pixels": 91683,
+      "opaque_bbox": [
+        325,
+        138,
+        705,
+        1084
+      ],
+      "opaque_rgb_median": [
+        61,
+        57,
+        54
+      ],
+      "forehead_patch_median": null,
+      "central_alpha_segments_y": [
+        [
+          139,
+          281
+        ]
+      ],
+      "eye_overlap_pixels": 0
+    },
+    {
+      "gender": "female",
+      "part": "hair_back",
+      "file": "parts\\female\\hair_back.png",
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "a2fc4d4de1f7e229c03e41f906fcb6e0acf3214ffffff6e55e09dd09a096e746",
+      "retained_bytes_equal": null,
+      "visible_pixels": 562647,
+      "partial_alpha_pixels": 562647,
+      "opaque_gt180_pixels": 516340,
+      "opaque_bbox": [
+        191,
+        157,
+        831,
+        1412
+      ],
+      "opaque_rgb_median": [
+        47,
+        45,
+        42
+      ],
+      "forehead_patch_median": null,
+      "central_alpha_segments_y": [
+        [
+          157,
+          450
+        ]
+      ],
+      "eye_overlap_pixels": null
+    },
+    {
+      "gender": "female",
+      "part": "face_shape",
+      "file": "parts\\female\\face_shape.png",
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "769a4ad743391d62c0053b489166e72d28c9eaec2d02d98c091f0ce70134b4a5",
+      "retained_bytes_equal": true,
+      "visible_pixels": 106954,
+      "partial_alpha_pixels": 106954,
+      "opaque_gt180_pixels": 105115,
+      "opaque_bbox": [
+        333,
+        209,
+        704,
+        725
+      ],
+      "opaque_rgb_median": [
+        229,
+        201,
+        182
+      ],
+      "forehead_patch_median": [
+        233,
+        209,
+        192
+      ],
+      "central_alpha_segments_y": [],
+      "eye_overlap_pixels": null
+    },
+    {
+      "gender": "female",
+      "part": "clothing",
+      "file": "parts\\female\\clothing.png",
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "2456e11244be9106b1cf80415eb33f44111332225fd166adf441a9c751014b38",
+      "retained_bytes_equal": true,
+      "visible_pixels": 826573,
+      "partial_alpha_pixels": 826573,
+      "opaque_gt180_pixels": 822039,
+      "opaque_bbox": [
+        0,
+        548,
+        1023,
+        1535
+      ],
+      "opaque_rgb_median": [
+        202,
+        192,
+        187
+      ],
+      "forehead_patch_median": null,
+      "central_alpha_segments_y": [],
+      "eye_overlap_pixels": null
+    },
+    {
+      "gender": "female",
+      "part": "eyes",
+      "file": "parts\\female\\eyes.png",
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "16af14066f0d4878885ae9085d88d625451186d9d300975da5bd1dd036233e0d",
+      "retained_bytes_equal": true,
+      "visible_pixels": 2931,
+      "partial_alpha_pixels": 2931,
+      "opaque_gt180_pixels": 992,
+      "opaque_bbox": [
+        438,
+        374,
+        599,
+        387
+      ],
+      "opaque_rgb_median": [
+        164,
+        130,
+        111
+      ],
+      "forehead_patch_median": null,
+      "central_alpha_segments_y": [],
+      "eye_overlap_pixels": null
+    },
+    {
+      "gender": "female",
+      "part": "eyebrows",
+      "file": "parts\\female\\eyebrows.png",
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "4c0e92c49c378dce638aa56832485d9cf756cc21ce87ec609f855e4299a9ee42",
+      "retained_bytes_equal": true,
+      "visible_pixels": 1010,
+      "partial_alpha_pixels": 1010,
+      "opaque_gt180_pixels": 11,
+      "opaque_bbox": [
+        448,
+        349,
+        591,
+        357
+      ],
+      "opaque_rgb_median": [
+        9,
+        3,
+        1
+      ],
+      "forehead_patch_median": null,
+      "central_alpha_segments_y": [],
+      "eye_overlap_pixels": null
+    },
+    {
+      "gender": "female",
+      "part": "nose",
+      "file": "parts\\female\\nose.png",
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "56c430aaa1182413b23f5578e86f29ede11b6c22ee67373019e0275a28a93757",
+      "retained_bytes_equal": true,
+      "visible_pixels": 2754,
+      "partial_alpha_pixels": 2754,
+      "opaque_gt180_pixels": 30,
+      "opaque_bbox": [
+        505,
+        442,
+        532,
+        456
+      ],
+      "opaque_rgb_median": [
+        51,
+        11,
+        1
+      ],
+      "forehead_patch_median": null,
+      "central_alpha_segments_y": [],
+      "eye_overlap_pixels": null
+    },
+    {
+      "gender": "female",
+      "part": "mouth",
+      "file": "parts\\female\\mouth.png",
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "9c4c05c734c99cb19821a67167a37922729c499d50e3a9d7d00ab29e07f1807f",
+      "retained_bytes_equal": true,
+      "visible_pixels": 2189,
+      "partial_alpha_pixels": 1463,
+      "opaque_gt180_pixels": 908,
+      "opaque_bbox": [
+        487,
+        476,
+        547,
+        500
+      ],
+      "opaque_rgb_median": [
+        189,
+        124,
+        105
+      ],
+      "forehead_patch_median": null,
+      "central_alpha_segments_y": [],
+      "eye_overlap_pixels": null
+    },
+    {
+      "gender": "female",
+      "part": "face_accessory",
+      "file": "parts\\female\\face_accessory.png",
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "1913847bf9091720c48139f49dfbb3aa70c4d20de82f2718e3dcd8348c6e5e9c",
+      "retained_bytes_equal": true,
+      "visible_pixels": 0,
+      "partial_alpha_pixels": 0,
+      "opaque_gt180_pixels": 0,
+      "opaque_bbox": null,
+      "opaque_rgb_median": [
+        null,
+        null,
+        null
+      ],
+      "forehead_patch_median": null,
+      "central_alpha_segments_y": [],
+      "eye_overlap_pixels": null
+    },
+    {
+      "gender": "female",
+      "part": "hair_front",
+      "file": "parts\\female\\hair_front.png",
+      "width": 1024,
+      "height": 1536,
+      "rgba": true,
+      "sha256": "96d6d0795f487ba14964d1df2f094fab2312cacdd89789342e256bf209fffd21",
+      "retained_bytes_equal": null,
+      "visible_pixels": 126238,
+      "partial_alpha_pixels": 126238,
+      "opaque_gt180_pixels": 101146,
+      "opaque_bbox": [
+        335,
+        132,
+        692,
+        994
+      ],
+      "opaque_rgb_median": [
+        56,
+        51,
+        47
+      ],
+      "forehead_patch_median": null,
+      "central_alpha_segments_y": [
+        [
+          133,
+          275
+        ]
+      ],
+      "eye_overlap_pixels": 0
+    }
+  ],
+  "limitations": [
+    "Geometry sampling and source integrity only; not a three-control-point residual certification.",
+    "No complete existing-library cross-product validation or game installation in this candidate.",
+    "Visual judgement remains separate from these checks."
+  ]
+}

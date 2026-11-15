@@ -1,0 +1,36 @@
+{
+  "scope": "Independent visual review preparation for a newly redrawn clothing01 front/back collar pair; not an approval or an implementation.",
+  "user_images": [
+    "source/reference/user_collar_initial.png",
+    "source/reference/user_collar_rejected_comparison.png",
+    "source/reference/user_collar_rejected_zoom.png"
+  ],
+  "rejected_method": "The gap-only candidate replaced thin collar peaks with thick rounded rolled fabric and created mechanically vertical cloth/neck contact. Alpha40 gap0 and old single-layer guard passes do not establish a natural collar.",
+  "spatial_order": ["hair_back", "clothing_back", "face_and_neck", "clothing_front", "facial_features", "hair_front"],
+  "selection_rule": "Both clothing textures belong to one existing clothing index; no independently selected back-collar option.",
+  "controls_from_untouched_snapshot": {
+    "collar01_original_tips": [[434,528],[599,528]],
+    "outer_frame_y540": [[420,540],[609,540]],
+    "outer_frame_y550": [[413,550],[618,550]],
+    "outer_frame_y570": [[401,570],[630,570]],
+    "outer_frame_y600": [[373,600],[652,600]],
+    "front_v_y580": [[452,580],[588,580]],
+    "front_v_y600": [[465,600],[578,600]],
+    "front_v_y620": [[480,620],[568,620]]
+  },
+  "face_support_from_frozen_face": {
+    "left": [[442,530],[441,550],[436,580]],
+    "right": [[589,530],[589,550],[595,580]],
+    "interpretation": "The upper side contacts can belong to the rear collar and be naturally occluded by the neck. The y580 skin points are hidden support, not targets that force the front V to follow skin."
+  },
+  "visible_review": [
+    "Inspect upper neck and thin collar peaks without hair on both pale and dark backgrounds, then inspect with the actual first front/back hair.",
+    "Rear collar keeps continuous cloth underneath the neck; its center must not appear across the skin in the final composition.",
+    "Original thin outer peak height, outer frame and fabric thickness stay recognizably close to the original garment; do not inflate them into a rolled collar just to touch the neck.",
+    "Front collar blends into its original V from approximately y550 downward, preserving the measured y580/600/620 front V and the frozen body below y620.",
+    "The rear-to-front transition should read as one folded garment: continuous brocade, clean stitch/trim line, no doubled trim, exposed rectangular cut or sharp vertical painted stripe.",
+    "Coverage is tested on the composed rear+face+front, not by requiring the front texture alone to hug every neck contour row.",
+    "No visible background slit or bright alpha fringe remains between skin and collar, but absence of gaps remains only one condition among shape, texture, occlusion and garment continuity."
+  ],
+  "pending": "New clothing01 pair, its retained AI sources and its measured registration are not yet available for final independent review."
+}

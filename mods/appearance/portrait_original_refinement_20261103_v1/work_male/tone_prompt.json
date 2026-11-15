@@ -1,0 +1,18 @@
+{
+  "mode": "built-in image_gen",
+  "prompt": "Use case: precise-object-edit. A minimal PIGMENT-ONLY recoloring of an existing transparent game hair sprite.\nImage 1 is the EDIT TARGET. Image 2 is a HAIR PIGMENT AND MATERIAL REFERENCE ONLY. They are different male/female hairstyles; do not transfer ANY shape from image 2.\nKeep image 1's exact 1024x1536 canvas, alpha transparency, every silhouette edge, individual strand shapes, strand lengths, hairline opening, center part and absolute pixel positions. Do not move, scale, crop, rotate, reshape or redesign the hair.\nONLY reduce the grey/silver brightness of image 1's hair pigment to match image 2's naturally dark matte charcoal ink hair. Hair should read as dark charcoal BLACK, with restrained fine warm-grey strands, NOT grey hair. Match the exact overall darkness, saturation, hue and low highlight contrast of the corresponding layer in image 2. Keep painted strand detail visible and original density. Do not make a flat black silhouette. Main opaque pigment should average near RGB55/50/46 for front hair and RGB47/45/42 for back hair. Bright hair accents should be exceptionally fine, mostly under RGB90. No brown gloss, no blue sheen, no white highlights.\nRetain native real alpha: no background, no halo, no fog or soft shadow, no skin, ears, face or clothes. The glow visible in the source preview is hidden transparent RGB, NOT something to paint into the output. Return only the same isolated sprite with darker pigment.",
+  "sources": {
+    "front": [
+      "hair_front_trial01.png",
+      "../work_female/hair_front.png"
+    ],
+    "back": [
+      "hair_back_trial01.png",
+      "../work_female/hair_back.png"
+    ]
+  },
+  "selected_outputs": {
+    "hair_front": "E:\\tmp\\CodexData\\generated_images\\01a1a1e6-da34-7c72-948b-7e1457ea806c\\exec-322581cd-49e6-4fe9-8c87-67ef5fab8f65.png",
+    "hair_back": "E:\\tmp\\CodexData\\generated_images\\01a1a1e6-da34-7c72-948b-7e1457ea806c\\exec-3b716d5b-9dec-4c49-9b84-1831deda125a.png"
+  }
+}

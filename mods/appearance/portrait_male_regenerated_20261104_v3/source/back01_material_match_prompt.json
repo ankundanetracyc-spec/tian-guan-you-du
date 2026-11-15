@@ -1,0 +1,8 @@
+{
+  "tool": "built-in image_gen",
+  "target": "source/back_raw/01_before_material_match.png",
+  "material_reference": "source/back_raw/02.png",
+  "prompt": "Use case: precise-object-edit. The FIRST image is the edit target: an isolated wood-hairpin rear-hair layer. Change ONLY its HAIR PIGMENT AND HIGHLIGHT INTENSITY to match the SECOND image's dark warm charcoal hair, soft restrained warm-gray highlights, fine matte ink-watercolor material. The first is slightly washed out and too bright; unify it to second. Keep ALL geometry, canvas, exact wooden hairpin, hair knot, strand directions, head size, silhouette, long wisps, position and scale exactly unchanged. Preserve actual transparency. No new hair strands, no rearrangement, no cropped ends, no blur, no facial elements. The wooden hairpin itself keeps its original natural brown color. All opaque hair remains opaque, transparent pixels remain transparent. Output only this first layer, no extra objects, no paper backdrop or checkerboard, no text. This is one production game asset color refinement, not a new hairstyle.",
+  "selected": true,
+  "limitation": "Tool preserved silhouette closely, not pixel-locked; final registered candidate is the edited fresh native image, not source pixels or programmatic recoloring."
+}

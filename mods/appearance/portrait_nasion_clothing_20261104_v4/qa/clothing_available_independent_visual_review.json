@@ -1,0 +1,125 @@
+{
+  "scope": "All seven actual front/rear clothing pairs and both nasion layers; independent static visual review, not runtime or user approval",
+  "generated_at": "2026-11-04T15:28:01.108Z",
+  "ready_for_final": true,
+  "missing_candidates": [],
+  "snapshot_fallback_used": false,
+  "records": [
+    {
+      "index": 1,
+      "front_sha256": "61209e75322b68e6a4d4834e93ddbc4e493669842466b63df5b8955f31046ddb",
+      "rear_sha256": "dea92c22f2f205da5a6204f0dc373fc4dc16e4536e3e753508e3230d7f8afdaa",
+      "front_y_ge550_changed_rgba_pixels": 0,
+      "pure_band_alpha_different_pixels_from_shared_master": 0,
+      "light_dark_neck_images": [
+        "qa/clothing01_independent_neck_light.png",
+        "qa/clothing01_independent_neck_dark.png"
+      ],
+      "independent_visual_review": "Actual pair reviewed without hair on light/dark backgrounds and in the equal-scale complete body panel. No blocking material mismatch, background slit, old rolled thickness, cloth-painted vertical skin boundary, white fringe or transparent-RGB dark fringe observed. Original per-garment tip/piping/V shapes remain.",
+      "user_visual_approval": false
+    },
+    {
+      "index": 2,
+      "front_sha256": "14558360cc7be5a91fa5263123b5f97f1cba6f5b03b1b741fbbd297bd83652ac",
+      "rear_sha256": "403d77a1201961de1cb8a193fb29e13c5f528476a7965610a8329520d46019f2",
+      "front_y_ge550_changed_rgba_pixels": 0,
+      "pure_band_alpha_different_pixels_from_shared_master": 0,
+      "light_dark_neck_images": [
+        "qa/clothing02_independent_neck_light.png",
+        "qa/clothing02_independent_neck_dark.png"
+      ],
+      "independent_visual_review": "Actual pair reviewed without hair on light/dark backgrounds and in the equal-scale complete body panel. No blocking material mismatch, background slit, old rolled thickness, cloth-painted vertical skin boundary, white fringe or transparent-RGB dark fringe observed. Original per-garment tip/piping/V shapes remain.",
+      "user_visual_approval": false
+    },
+    {
+      "index": 3,
+      "front_sha256": "d8f3397214522c2ed9a029ad87f10be13a7d5ec6ea463064b37fe8826f90d44d",
+      "rear_sha256": "579134054556946f57a22bfe873a985aebc6b3cec1bc7ccb43a8f6966e31687d",
+      "front_y_ge550_changed_rgba_pixels": 0,
+      "pure_band_alpha_different_pixels_from_shared_master": 0,
+      "light_dark_neck_images": [
+        "qa/clothing03_independent_neck_light.png",
+        "qa/clothing03_independent_neck_dark.png"
+      ],
+      "independent_visual_review": "Actual pair reviewed without hair on light/dark backgrounds and in the equal-scale complete body panel. No blocking material mismatch, background slit, old rolled thickness, cloth-painted vertical skin boundary, white fringe or transparent-RGB dark fringe observed. Original per-garment tip/piping/V shapes remain.",
+      "user_visual_approval": false
+    },
+    {
+      "index": 4,
+      "front_sha256": "bba9aab54612d6a032c0cef8f0dede54be7754d44c2c2912a5f7334235012b4f",
+      "rear_sha256": "20bb69808562cfc07272bd8486f48d667bbf52cb727bd4496daf2c445913caba",
+      "front_y_ge550_changed_rgba_pixels": 0,
+      "pure_band_alpha_different_pixels_from_shared_master": 0,
+      "light_dark_neck_images": [
+        "qa/clothing04_independent_neck_light.png",
+        "qa/clothing04_independent_neck_dark.png"
+      ],
+      "independent_visual_review": "Actual pair reviewed without hair on light/dark backgrounds and in the equal-scale complete body panel. No blocking material mismatch, background slit, old rolled thickness, cloth-painted vertical skin boundary, white fringe or transparent-RGB dark fringe observed. Original per-garment tip/piping/V shapes remain.",
+      "user_visual_approval": false
+    },
+    {
+      "index": 5,
+      "front_sha256": "75b7f4e2c9078cec7d37953cba5d5ba8b8e814cfaae8a50bf918637b34bcea32",
+      "rear_sha256": "c0645236c77df51c0533afe5fac15eb9035cab5956a61bf3a5109141df4016ab",
+      "front_y_ge550_changed_rgba_pixels": 0,
+      "pure_band_alpha_different_pixels_from_shared_master": 0,
+      "light_dark_neck_images": [
+        "qa/clothing05_independent_neck_light.png",
+        "qa/clothing05_independent_neck_dark.png"
+      ],
+      "independent_visual_review": "Actual pair reviewed without hair on light/dark backgrounds and in the equal-scale complete body panel. No blocking material mismatch, background slit, old rolled thickness, cloth-painted vertical skin boundary, white fringe or transparent-RGB dark fringe observed. Original per-garment tip/piping/V shapes remain.",
+      "user_visual_approval": false
+    },
+    {
+      "index": 6,
+      "front_sha256": "a5052600882343140cd03e25985c12713a747a8553565228281cfbe50d6b6ae2",
+      "rear_sha256": "b935fce74142561e74ea030feba8897dd398784586e729c18855710a97040f46",
+      "front_y_ge550_changed_rgba_pixels": 0,
+      "pure_band_alpha_different_pixels_from_shared_master": 0,
+      "light_dark_neck_images": [
+        "qa/clothing06_independent_neck_light.png",
+        "qa/clothing06_independent_neck_dark.png"
+      ],
+      "independent_visual_review": "Actual pair reviewed without hair on light/dark backgrounds and in the equal-scale complete body panel. No blocking material mismatch, background slit, old rolled thickness, cloth-painted vertical skin boundary, white fringe or transparent-RGB dark fringe observed. Original per-garment tip/piping/V shapes remain.",
+      "user_visual_approval": false
+    },
+    {
+      "index": 7,
+      "front_sha256": "f3459a6a3db3a447d5db4b29a53cab6930b8fdfa786fb19e01a7599307277482",
+      "rear_sha256": "ec74d8a791649d3bc1d13423343ce320c6f4ac9c9be4d99f6030ea3981d40588",
+      "front_y_ge550_changed_rgba_pixels": 0,
+      "pure_band_alpha_different_pixels_from_shared_master": 0,
+      "light_dark_neck_images": [
+        "qa/clothing07_independent_neck_light.png",
+        "qa/clothing07_independent_neck_dark.png"
+      ],
+      "independent_visual_review": "Actual pair reviewed without hair on light/dark backgrounds and in the equal-scale complete body panel. No blocking material mismatch, background slit, old rolled thickness, cloth-painted vertical skin boundary, white fringe or transparent-RGB dark fringe observed. Original per-garment tip/piping/V shapes remain.",
+      "user_visual_approval": false
+    }
+  ],
+  "nose": [
+    {
+      "gender": "male",
+      "sha256": "dcb4d0113d8d77968c1458eda639311f9c6bb4b7bba32b85d4cf3e648863be11",
+      "lower_y_ge415_changed_rgba_pixels": 0,
+      "six_combinations": "qa/male_six_brow_eye_nasion_after.png",
+      "independent_visual_review": "All three brows and both eyes remain independent and visually connect to the subtle nasion; no skin panel or white bridge block observed.",
+      "user_visual_approval": false
+    },
+    {
+      "gender": "female",
+      "sha256": "ff4f943786aaa4a0befcd3505936d6c02bcd1ad4e85d4664d88fb4bdc9676dfc",
+      "lower_y_ge415_changed_rgba_pixels": 0,
+      "six_combinations": "qa/female_six_brow_eye_nasion_after.png",
+      "independent_visual_review": "All three brows and both eyes remain independent and visually connect to the subtle nasion; no skin panel or white bridge block observed.",
+      "user_visual_approval": false
+    }
+  ],
+  "full_scale_panel": "preview/male_seven_clothes_same_scale.png",
+  "unobscured_neck_panels": [
+    "qa/clothing_seven_neck_unobscured_light.png",
+    "qa/clothing_seven_neck_unobscured_dark.png"
+  ],
+  "user_visual_approval": false,
+  "note": "Per-pixel preservation and shared geometry confirm construction; source, code/guard and actual runtime validation are assessed separately."
+}

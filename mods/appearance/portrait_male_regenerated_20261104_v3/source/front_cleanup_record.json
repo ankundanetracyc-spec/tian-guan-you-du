@@ -1,0 +1,23 @@
+{
+  "tool": "built-in image_gen",
+  "part": "hair_front",
+  "selected_sources": {
+    "01": "source/front_raw/01_v2.png",
+    "02": "source/front_raw/02_v3.png",
+    "03": "source/front_raw/03_v2.png"
+  },
+  "first_attempts_rejected": "Initial full-triptych-guided paintings had wrong proportions. Regenerated from native-size single-person placement guides instead.",
+  "second_attempt_skin_cleanup": {
+    "part": "02",
+    "input": "source/front_raw/02_v2.png",
+    "output": "source/front_raw/02_v3.png",
+    "prompt": "Precise object edit of this newly painted transparent FRONT HAIR ASSET. Change ONLY the two pink skin EARS that were accidentally drawn around (390,420) and (640,425). ERASE BOTH EARS and ALL SKIN completely to alpha zero. The entire central forehead, face, ear and neck opening must be truly transparent, with nothing except painted hair strands. Preserve the beautiful existing hair painting, every strand, long lock, dark warm charcoal color, brushwork, exact head size, exact hairline coordinates, exact placement and 1024x1536 canvas. Do not resize, recenter, recolor, add new hair, fill in the ears with hair, add a head, add facial features, include skin fragments or paint a background. Keep all other pixels and alpha visually unchanged. OUTPUT ONLY HAIR ON TRUE TRANSPARENT BACKGROUND; both skin ears disappear."
+  },
+  "registration": "Final native transparent paintings already use matching guide scale. Identity transform, no local warping or scripted pigment modification.",
+  "visual_checks": [
+    "Light and dark backgrounds flattened for inspection; native imagegen display halo is alpha-zero RGB and is absent from flattened output.",
+    "No obvious remaining skin ear fragments, no front-bun accessories, complete long chest locks.",
+    "Third hairstyle retains broad outturned temple curl and fuller asymmetric long front locks.",
+    "Temporary complete composition with new rear hair, blank face, eyes, nose and lips plus existing clothing inspected; missing brows are not part of front hair."
+  ]
+}

@@ -1,0 +1,380 @@
+{
+  "generated_at": "2026-11-04T15:26:21.184Z",
+  "mode": "candidate-first, snapshot fallback; active package is never read or changed",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "nose": [
+    {
+      "gender": "male",
+      "part": "nose",
+      "index": 1,
+      "candidate_present": true,
+      "selected_source": "male/nose/01.png",
+      "snapshot_source": "installation/backup_before/male/nose/01.png",
+      "selected_sha256": "dcb4d0113d8d77968c1458eda639311f9c6bb4b7bba32b85d4cf3e648863be11",
+      "snapshot_sha256": "2c479351c3fa9ae8d824281f510bb617905a7cbd7816f0f70f5e0892d6434122",
+      "changed_rgba_pixels": 2898,
+      "changed_bbox_inclusive": [
+        488,
+        348,
+        543,
+        410
+      ],
+      "preserve_from_y": 415,
+      "preserved_region_changed_rgba_pixels": 0,
+      "preserved_region_byte_identical": true
+    },
+    {
+      "gender": "female",
+      "part": "nose",
+      "index": 1,
+      "candidate_present": true,
+      "selected_source": "female/nose/01.png",
+      "snapshot_source": "installation/backup_before/female/nose/01.png",
+      "selected_sha256": "ff4f943786aaa4a0befcd3505936d6c02bcd1ad4e85d4664d88fb4bdc9676dfc",
+      "snapshot_sha256": "9a0ab7858d68e81fd0ee82cb0ef1301f2ee3d5b64e7bc6c8c8750dba4b181590",
+      "changed_rgba_pixels": 1590,
+      "changed_bbox_inclusive": [
+        491,
+        363,
+        546,
+        411
+      ],
+      "preserve_from_y": 415,
+      "preserved_region_changed_rgba_pixels": 0,
+      "preserved_region_byte_identical": true
+    }
+  ],
+  "male_clothing": [
+    {
+      "gender": "male",
+      "part": "clothing",
+      "index": 1,
+      "candidate_present": true,
+      "selected_source": "male/clothing/01.png",
+      "snapshot_source": "installation/backup_before/male/clothing/01.png",
+      "selected_sha256": "61209e75322b68e6a4d4834e93ddbc4e493669842466b63df5b8955f31046ddb",
+      "snapshot_sha256": "d000653195a539310ff4d70856aaac5aa4cdf2af0bfbc4591c4ae2e1012dc89c",
+      "changed_rgba_pixels": 805,
+      "changed_bbox_inclusive": [
+        411,
+        527,
+        620,
+        549
+      ],
+      "preserve_from_y": 620,
+      "preserved_region_changed_rgba_pixels": 0,
+      "preserved_region_byte_identical": true,
+      "front_y_ge550_changed_rgba_pixels": 0
+    },
+    {
+      "gender": "male",
+      "part": "clothing",
+      "index": 2,
+      "candidate_present": true,
+      "selected_source": "male/clothing/02.png",
+      "snapshot_source": "installation/backup_before/male/clothing/02.png",
+      "selected_sha256": "14558360cc7be5a91fa5263123b5f97f1cba6f5b03b1b741fbbd297bd83652ac",
+      "snapshot_sha256": "c8469bf2f26ff86035babad6e2ee139c0dbed70d5dc8dd47751f734dfe0cedf4",
+      "changed_rgba_pixels": 919,
+      "changed_bbox_inclusive": [
+        409,
+        522,
+        619,
+        549
+      ],
+      "preserve_from_y": 620,
+      "preserved_region_changed_rgba_pixels": 0,
+      "preserved_region_byte_identical": true,
+      "front_y_ge550_changed_rgba_pixels": 0
+    },
+    {
+      "gender": "male",
+      "part": "clothing",
+      "index": 3,
+      "candidate_present": true,
+      "selected_source": "male/clothing/03.png",
+      "snapshot_source": "installation/backup_before/male/clothing/03.png",
+      "selected_sha256": "d8f3397214522c2ed9a029ad87f10be13a7d5ec6ea463064b37fe8826f90d44d",
+      "snapshot_sha256": "a73abd3876a997b840e5ee63ac01ce92e9c6e89af8261d2ca1e20f69679b48e7",
+      "changed_rgba_pixels": 972,
+      "changed_bbox_inclusive": [
+        409,
+        522,
+        620,
+        549
+      ],
+      "preserve_from_y": 620,
+      "preserved_region_changed_rgba_pixels": 0,
+      "preserved_region_byte_identical": true,
+      "front_y_ge550_changed_rgba_pixels": 0
+    },
+    {
+      "gender": "male",
+      "part": "clothing",
+      "index": 4,
+      "candidate_present": true,
+      "selected_source": "male/clothing/04.png",
+      "snapshot_source": "installation/backup_before/male/clothing/04.png",
+      "selected_sha256": "bba9aab54612d6a032c0cef8f0dede54be7754d44c2c2912a5f7334235012b4f",
+      "snapshot_sha256": "2125645dd7416a0129cd9a3edea49691c4a94d603f9e9dd0f03da31c0ba449e9",
+      "changed_rgba_pixels": 863,
+      "changed_bbox_inclusive": [
+        409,
+        525,
+        618,
+        549
+      ],
+      "preserve_from_y": 620,
+      "preserved_region_changed_rgba_pixels": 0,
+      "preserved_region_byte_identical": true,
+      "front_y_ge550_changed_rgba_pixels": 0
+    },
+    {
+      "gender": "male",
+      "part": "clothing",
+      "index": 5,
+      "candidate_present": true,
+      "selected_source": "male/clothing/05.png",
+      "snapshot_source": "installation/backup_before/male/clothing/05.png",
+      "selected_sha256": "75b7f4e2c9078cec7d37953cba5d5ba8b8e814cfaae8a50bf918637b34bcea32",
+      "snapshot_sha256": "96aee266dc03623679a1b865c2b3a2bfda264006c95a101d11251a6ec6e81024",
+      "changed_rgba_pixels": 901,
+      "changed_bbox_inclusive": [
+        411,
+        519,
+        621,
+        549
+      ],
+      "preserve_from_y": 620,
+      "preserved_region_changed_rgba_pixels": 0,
+      "preserved_region_byte_identical": true,
+      "front_y_ge550_changed_rgba_pixels": 0
+    },
+    {
+      "gender": "male",
+      "part": "clothing",
+      "index": 6,
+      "candidate_present": true,
+      "selected_source": "male/clothing/06.png",
+      "snapshot_source": "installation/backup_before/male/clothing/06.png",
+      "selected_sha256": "a5052600882343140cd03e25985c12713a747a8553565228281cfbe50d6b6ae2",
+      "snapshot_sha256": "462d1aae705eaca1ba42b3bc4f6e5f73fb9df11d8f9f73e3928fbc9680fe1ea2",
+      "changed_rgba_pixels": 992,
+      "changed_bbox_inclusive": [
+        410,
+        522,
+        623,
+        549
+      ],
+      "preserve_from_y": 620,
+      "preserved_region_changed_rgba_pixels": 0,
+      "preserved_region_byte_identical": true,
+      "front_y_ge550_changed_rgba_pixels": 0
+    },
+    {
+      "gender": "male",
+      "part": "clothing",
+      "index": 7,
+      "candidate_present": true,
+      "selected_source": "male/clothing/07.png",
+      "snapshot_source": "installation/backup_before/male/clothing/07.png",
+      "selected_sha256": "f3459a6a3db3a447d5db4b29a53cab6930b8fdfa786fb19e01a7599307277482",
+      "snapshot_sha256": "6f9f65c609714bf58cb3fa664d17f92467edaa94cbe6c17883deba7202db3f03",
+      "changed_rgba_pixels": 1045,
+      "changed_bbox_inclusive": [
+        410,
+        522,
+        624,
+        549
+      ],
+      "preserve_from_y": 620,
+      "preserved_region_changed_rgba_pixels": 0,
+      "preserved_region_byte_identical": true,
+      "front_y_ge550_changed_rgba_pixels": 0
+    }
+  ],
+  "male_clothing_back": [
+    {
+      "gender": "male",
+      "part": "clothing_back",
+      "index": 1,
+      "candidate_present": true,
+      "selected_source": "male/clothing_back/01.png",
+      "snapshot_source": null,
+      "missing_snapshot_means": "transparent empty layer",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "selected_sha256": "dea92c22f2f205da5a6204f0dc373fc4dc16e4536e3e753508e3230d7f8afdaa",
+      "nonzero_alpha_bbox_inclusive": [
+        400,
+        510,
+        634,
+        633
+      ],
+      "nonzero_alpha_pixels_y_ge620": 1
+    },
+    {
+      "gender": "male",
+      "part": "clothing_back",
+      "index": 2,
+      "candidate_present": true,
+      "selected_source": "male/clothing_back/02.png",
+      "snapshot_source": null,
+      "missing_snapshot_means": "transparent empty layer",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "selected_sha256": "403d77a1201961de1cb8a193fb29e13c5f528476a7965610a8329520d46019f2",
+      "nonzero_alpha_bbox_inclusive": [
+        400,
+        510,
+        634,
+        633
+      ],
+      "nonzero_alpha_pixels_y_ge620": 1
+    },
+    {
+      "gender": "male",
+      "part": "clothing_back",
+      "index": 3,
+      "candidate_present": true,
+      "selected_source": "male/clothing_back/03.png",
+      "snapshot_source": null,
+      "missing_snapshot_means": "transparent empty layer",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "selected_sha256": "579134054556946f57a22bfe873a985aebc6b3cec1bc7ccb43a8f6966e31687d",
+      "nonzero_alpha_bbox_inclusive": [
+        400,
+        510,
+        634,
+        633
+      ],
+      "nonzero_alpha_pixels_y_ge620": 1
+    },
+    {
+      "gender": "male",
+      "part": "clothing_back",
+      "index": 4,
+      "candidate_present": true,
+      "selected_source": "male/clothing_back/04.png",
+      "snapshot_source": null,
+      "missing_snapshot_means": "transparent empty layer",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "selected_sha256": "20bb69808562cfc07272bd8486f48d667bbf52cb727bd4496daf2c445913caba",
+      "nonzero_alpha_bbox_inclusive": [
+        400,
+        510,
+        634,
+        633
+      ],
+      "nonzero_alpha_pixels_y_ge620": 1
+    },
+    {
+      "gender": "male",
+      "part": "clothing_back",
+      "index": 5,
+      "candidate_present": true,
+      "selected_source": "male/clothing_back/05.png",
+      "snapshot_source": null,
+      "missing_snapshot_means": "transparent empty layer",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "selected_sha256": "c0645236c77df51c0533afe5fac15eb9035cab5956a61bf3a5109141df4016ab",
+      "nonzero_alpha_bbox_inclusive": [
+        400,
+        510,
+        634,
+        633
+      ],
+      "nonzero_alpha_pixels_y_ge620": 1
+    },
+    {
+      "gender": "male",
+      "part": "clothing_back",
+      "index": 6,
+      "candidate_present": true,
+      "selected_source": "male/clothing_back/06.png",
+      "snapshot_source": null,
+      "missing_snapshot_means": "transparent empty layer",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "selected_sha256": "b935fce74142561e74ea030feba8897dd398784586e729c18855710a97040f46",
+      "nonzero_alpha_bbox_inclusive": [
+        400,
+        510,
+        634,
+        633
+      ],
+      "nonzero_alpha_pixels_y_ge620": 1
+    },
+    {
+      "gender": "male",
+      "part": "clothing_back",
+      "index": 7,
+      "candidate_present": true,
+      "selected_source": "male/clothing_back/07.png",
+      "snapshot_source": null,
+      "missing_snapshot_means": "transparent empty layer",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "selected_sha256": "ec74d8a791649d3bc1d13423343ce320c6f4ac9c9be4d99f6030ea3981d40588",
+      "nonzero_alpha_bbox_inclusive": [
+        400,
+        510,
+        634,
+        633
+      ],
+      "nonzero_alpha_pixels_y_ge620": 1
+    }
+  ],
+  "ready_for_final": true,
+  "pass": true,
+  "visual_art_approval": false,
+  "clothing_pair_rule": "Rear collar before face, front collar after face; one clothing option supplies both. Missing original rear layer is transparent. Legacy gap0 or old strict guard success is not visual acceptance.",
+  "missing_candidates": [],
+  "all_preserved_regions_identical": true,
+  "first_pair_review": {
+    "ready": true,
+    "root_reviewed_scheme": true,
+    "user_visual_approval": false,
+    "report": "qa/clothing01_independent_pair_review.json"
+  },
+  "outputs": {
+    "face_comparison": "qa/nasion_both_genders_before_after.png",
+    "face_comparison_order": "top male, bottom female; left before, right after; every crop x420,y330,w195,h150 enlarged 4x",
+    "same_scale": "preview/portraits_same_scale.png",
+    "same_scale_order": "left male/right female, each full 1024x1536 canvas uniformly resized to 512x768",
+    "seven_necks": "qa/clothing_seven_neck_after.png",
+    "seven_necks_order": "clothing01-04 top,05-07 bottom; fallback snapshots used for missing candidates",
+    "seven_necks_unobscured": [
+      "qa/clothing_seven_neck_unobscured_light.png",
+      "qa/clothing_seven_neck_unobscured_dark.png"
+    ],
+    "seven_full_bodies": "preview/male_seven_clothes_same_scale.png",
+    "first_clothes_comparison": "qa/clothing_first_before_side_by_side.png",
+    "native_portraits": [
+      "preview/male_before_native.png",
+      "preview/male_after_native.png",
+      "preview/female_before_native.png",
+      "preview/female_after_native.png"
+    ]
+  }
+}

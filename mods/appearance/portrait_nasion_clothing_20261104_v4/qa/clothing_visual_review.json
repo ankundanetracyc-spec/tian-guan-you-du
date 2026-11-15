@@ -1,0 +1,100 @@
+{
+  "scope": "Read-only review of seven active male clothing PNGs, with front/back hair hidden, composed over current male face/neck.",
+  "reference_docs": [
+    "docs/策划案摘要/README.md",
+    "docs/美术规范/男性立绘全部重制_20261104/README.md",
+    "docs/美术规范/本轮男女立绘锚点规范_20261003.md",
+    "docs/美术规范/原立绘部件研读_20261103/README.md"
+  ],
+  "active_assets_modified": false,
+  "official_docs_modified": false,
+  "all_seven_match_installed_polished_clothing_sha256": true,
+  "all_seven_canvas": [
+    1024,
+    1536
+  ],
+  "visual_findings": [
+    "All seven isolated clothing layers show fabric only in the collar/neck opening; no obvious retained old skin patch, neck painting, old hair strand or unrelated object was found on light or dark flattened backgrounds.",
+    "The tan inner collar of style03 is a fabric design color and contains the same woven pattern as the collar; it should not be diagnosed as old skin solely from its hue.",
+    "Standing collar tips and dark fold lines are common to all seven. Relative to the newly softer face, the collars look sharper and more strongly outlined; this is a style/garment construction difference, not confirmed texture contamination or registration drift.",
+    "User localized two separate concerns: visibly ragged collar contours and unconnected neck/rear-collar tips. The latter is confirmed for all seven garments by per-row alpha measurements; outside-background connectivity does not excuse a required missing collar join."
+  ],
+  "confirmed_single_style_defect": null,
+  "confirmed_shared_compositing_defect": {
+    "type": "neck_to_rear_collar_tip_gap",
+    "garments": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "measurements": "clothing_gap_measurement.json",
+    "source_alpha_threshold": 40,
+    "style01_example": {
+      "y": 530,
+      "face": [
+        441,
+        590
+      ],
+      "left_collar": [
+        429,
+        434
+      ],
+      "left_missing_x": [
+        435,
+        440
+      ],
+      "right_collar": [
+        599,
+        603
+      ],
+      "right_missing_x": [
+        591,
+        598
+      ]
+    }
+  },
+  "limitations": "Read-only visual review of PNG composition, not a new runtime import/cache check and not a claim that the user approves the clothing design.",
+  "evidence": [
+    "clothing_seven_full_light.png",
+    "clothing_seven_full_dark.png",
+    "clothing_seven_neck_light.png",
+    "clothing_seven_neck_dark.png",
+    "clothing_male_neck_reference.png",
+    "clothing_female_neck_reference.png",
+    "clothing_review_sources.json",
+    "clothing_gap_measurement.json",
+    "clothing_gap_01_marked.png"
+  ],
+  "initial_review_superseded_by_localized_user_feedback": true,
+  "corrected_conclusion": "The collar/neck side gaps ARE a common visible assembly defect under the user requirement that rear collar tips meet the neck. The initial classification as normal raised-collar exterior space was premature.",
+  "runtime_layer_analysis": {
+    "renderer": "csharp/panel/PortraitRenderer.cs:6",
+    "catalog": "csharp/autoload/PortraitCatalog.cs:7",
+    "test_composer": "csharp/panel/InkPortraitTestComposer.cs:41",
+    "test_ui": "csharp/panel/CharacterAppearanceTest.cs:278",
+    "order": [
+      "hair_back",
+      "face",
+      "ear",
+      "clothes",
+      "features",
+      "hair_front"
+    ],
+    "runtime_rig_anchor_snap": false,
+    "explanation": "All current clothes are painted after the face, at the same full-canvas origin. Changing displayed rig guide coordinates will not alter the actual PNG join."
+  },
+  "minimum_feasible_options": [
+    {
+      "scope": "Current fixed male face only, keep existing single clothing layer",
+      "action": "Repaint collar-side connections and smooth ragged edges locally around y521..568. The visible new cloth contour must reach/overlap the current neck silhouette by a small antialiased margin, preserving overall canvas, body, garment style and front V. This needs no runtime code change, but only depicts visible rear-collar portions rather than a truly continuous hidden rear collar."
+    },
+    {
+      "scope": "Full continuous rear collar that is naturally occluded by face/neck",
+      "action": "Add a paired rear-clothes support layer before face, keep front clothes after face, and link both to the existing seven clothing selections. The current one-layer-after-face pipeline cannot place an entire connecting rear arc behind the skin; unmasked insertion would draw cloth across the neck. This requires rendering/catalog/test integration, not merely a changed anchor coordinate."
+    }
+  ]
+}

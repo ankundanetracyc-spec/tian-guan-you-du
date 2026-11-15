@@ -1,0 +1,65 @@
+{
+  "index": 4,
+  "status": "paired_structural_redo_ready_for_independent_review",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "face_sha256": "0e2e751160bbfafefc0300df20e6ee5497945141f43b5672fa796159d0ad6639",
+  "snapshot": "installation/backup_before/male/clothing/04.png",
+  "snapshot_sha256": "2125645dd7416a0129cd9a3edea49691c4a94d603f9e9dd0f03da31c0ba449e9",
+  "pure_band": "source/clothing04_back_v2_band_registered.png",
+  "pure_band_sha256": "7d9d9e857eaccfde1a0622b0af7b5921a15a0a5a8cf3d1cb5840caf3000319be",
+  "shared_geometry_record": "source/clothing01_back_v2_registration.json",
+  "shared_geometry_record_sha256": "5ea8434e5f5f8da85e7f90cf7f1a3d5a4296b4a83be943cde6077eb5df8a981c",
+  "geometry_maximum_residual_px": 0.819902413467133,
+  "front": {
+    "file": "male/clothing/04.png",
+    "sha256": "bba9aab54612d6a032c0cef8f0dede54be7754d44c2c2912a5f7334235012b4f",
+    "source": "unchanged original front/V/body at y>=550; upper rear-facing surface reassigned behind skin",
+    "identity_frame": {
+      "scale": 1,
+      "rotation_degrees": 0,
+      "translation": [
+        0,
+        0
+      ]
+    },
+    "rgba_preserved_from_y": 550
+  },
+  "rear": {
+    "file": "male/clothing_back/04.png",
+    "sha256": "20bb69808562cfc07272bd8486f48d667bbf52cb727bd4496daf2c445913caba",
+    "sources": [
+      "pure registered continuous AI back band",
+      "this garment snapshot upper surface y<550"
+    ],
+    "center_support": [
+      {
+        "px": [
+          516,
+          530
+        ],
+        "alpha": 254
+      },
+      {
+        "px": [
+          516,
+          550
+        ],
+        "alpha": 253
+      },
+      {
+        "px": [
+          516,
+          570
+        ],
+        "alpha": 253
+      }
+    ]
+  },
+  "part_ownership_split_y": 550,
+  "local_warp": false,
+  "geometry": "Original pixels keep their common-canvas coordinates; only depth ownership changes. Continuous new rear pigment is behind both the original upper surface and face. No skin-boundary clipping or bright gap patch.",
+  "user_visual_approval": false
+}

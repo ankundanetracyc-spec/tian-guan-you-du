@@ -1,0 +1,315 @@
+{
+  "pass": true,
+  "rig_id": "male_neck_collar_strict_snapshot_20261104_v4",
+  "rig_sha256": "45035a497fd9fcfadf90e1bc99cb3538ffc98060f5ffba199ef2ccd7ed5fe84c",
+  "scope": "explicit_subset_review_only",
+  "indices": [
+    1
+  ],
+  "checks": 36,
+  "failures": [],
+  "garments": [
+    {
+      "index": 1,
+      "candidate_sha256": "790fe4b3f8497ab3ebb2492ae41ee66eef12e67742ae38270e95726f34a127dd",
+      "source_sha256": "d000653195a539310ff4d70856aaac5aa4cdf2af0bfbc4591c4ae2e1012dc89c",
+      "controls": [
+        {
+          "id": "left_original_tip",
+          "role": "preserved_original_tip",
+          "target_px": [
+            434,
+            528
+          ],
+          "actual_px": [
+            435,
+            528
+          ],
+          "residual_px": 1
+        },
+        {
+          "id": "left_outer_540",
+          "role": "preserved_outer_frame",
+          "target_px": [
+            420,
+            540
+          ],
+          "actual_px": [
+            420,
+            540
+          ],
+          "residual_px": 0
+        },
+        {
+          "id": "left_outer_550",
+          "role": "preserved_outer_frame",
+          "target_px": [
+            413,
+            550
+          ],
+          "actual_px": [
+            413,
+            550
+          ],
+          "residual_px": 0
+        },
+        {
+          "id": "left_outer_570",
+          "role": "preserved_outer_frame",
+          "target_px": [
+            401,
+            570
+          ],
+          "actual_px": [
+            401,
+            570
+          ],
+          "residual_px": 0
+        },
+        {
+          "id": "left_outer_600",
+          "role": "preserved_outer_frame",
+          "target_px": [
+            373,
+            600
+          ],
+          "actual_px": [
+            373,
+            600
+          ],
+          "residual_px": 0
+        },
+        {
+          "id": "left_front_v_580",
+          "role": "preserved_front_v",
+          "target_px": [
+            452,
+            580
+          ],
+          "actual_px": [
+            452,
+            580
+          ],
+          "residual_px": 0
+        },
+        {
+          "id": "left_front_v_600",
+          "role": "preserved_front_v",
+          "target_px": [
+            465,
+            600
+          ],
+          "actual_px": [
+            465,
+            600
+          ],
+          "residual_px": 0
+        },
+        {
+          "id": "left_front_v_620",
+          "role": "preserved_front_v",
+          "target_px": [
+            480,
+            620
+          ],
+          "actual_px": [
+            480,
+            620
+          ],
+          "residual_px": 0
+        },
+        {
+          "id": "right_original_tip",
+          "role": "preserved_original_tip",
+          "target_px": [
+            599,
+            528
+          ],
+          "actual_px": [
+            598,
+            528
+          ],
+          "residual_px": 1
+        },
+        {
+          "id": "right_outer_540",
+          "role": "preserved_outer_frame",
+          "target_px": [
+            609,
+            540
+          ],
+          "actual_px": [
+            609,
+            540
+          ],
+          "residual_px": 0
+        },
+        {
+          "id": "right_outer_550",
+          "role": "preserved_outer_frame",
+          "target_px": [
+            618,
+            550
+          ],
+          "actual_px": [
+            618,
+            550
+          ],
+          "residual_px": 0
+        },
+        {
+          "id": "right_outer_570",
+          "role": "preserved_outer_frame",
+          "target_px": [
+            630,
+            570
+          ],
+          "actual_px": [
+            630,
+            570
+          ],
+          "residual_px": 0
+        },
+        {
+          "id": "right_outer_600",
+          "role": "preserved_outer_frame",
+          "target_px": [
+            652,
+            600
+          ],
+          "actual_px": [
+            652,
+            600
+          ],
+          "residual_px": 0
+        },
+        {
+          "id": "right_front_v_580",
+          "role": "preserved_front_v",
+          "target_px": [
+            588,
+            580
+          ],
+          "actual_px": [
+            588,
+            580
+          ],
+          "residual_px": 0
+        },
+        {
+          "id": "right_front_v_600",
+          "role": "preserved_front_v",
+          "target_px": [
+            578,
+            600
+          ],
+          "actual_px": [
+            578,
+            600
+          ],
+          "residual_px": 0
+        },
+        {
+          "id": "right_front_v_620",
+          "role": "preserved_front_v",
+          "target_px": [
+            568,
+            620
+          ],
+          "actual_px": [
+            568,
+            620
+          ],
+          "residual_px": 0
+        }
+      ],
+      "contacts": [
+        {
+          "id": "left_neck_top",
+          "role": "visible_join",
+          "target_px": [
+            442,
+            530
+          ],
+          "actual_px": [
+            441,
+            530
+          ],
+          "residual_px": 1
+        },
+        {
+          "id": "left_neck_mid",
+          "role": "visible_join",
+          "target_px": [
+            441,
+            550
+          ],
+          "actual_px": [
+            441,
+            550
+          ],
+          "residual_px": 0
+        },
+        {
+          "id": "left_neck_lower",
+          "role": "hidden_coverage_only",
+          "target_px": [
+            436,
+            580
+          ],
+          "composed_alpha": 254.9686274509804
+        },
+        {
+          "id": "right_neck_top",
+          "role": "visible_join",
+          "target_px": [
+            589,
+            530
+          ],
+          "actual_px": [
+            590,
+            530
+          ],
+          "residual_px": 1
+        },
+        {
+          "id": "right_neck_mid",
+          "role": "visible_join",
+          "target_px": [
+            589,
+            550
+          ],
+          "actual_px": [
+            589,
+            550
+          ],
+          "residual_px": 0
+        },
+        {
+          "id": "right_neck_lower",
+          "role": "hidden_coverage_only",
+          "target_px": [
+            595,
+            580
+          ],
+          "composed_alpha": 254.95294117647057
+        }
+      ],
+      "changed_pixels": 501,
+      "changed_bbox_inclusive": [
+        433,
+        528,
+        600,
+        570
+      ],
+      "original_opaque_changed_pixels": 0,
+      "body_y_ge620_changed_pixels": 0,
+      "outside_tiny_connector_envelope_changes": 0,
+      "minimum_composed_join_alpha": 240.38823529411764,
+      "join_pixels_below230": 0,
+      "maximum_preserved_control_residual_px": 1,
+      "maximum_visible_interface_residual_px": 1,
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,165 @@
+{
+  "tool": "built-in image_gen",
+  "original_reference_only": true,
+  "female_canvas_reference": [
+    1024,
+    1536
+  ],
+  "female_alpha40_brow_visible_width_px": [
+    167,
+    179
+  ],
+  "records": [
+    {
+      "index": 1,
+      "raw": "source/brow_raw/eyebrows_01.png",
+      "raw_sha256": "466ac8d98c34f649c47b3b9c14fa55d2cf305a1fe13fcb28dc5576edb58029cf",
+      "output": "male/eyebrows/01.png",
+      "output_sha256": "3bb650bad92d602f8b694704767408e66ce910a4d8128ad599f09f717b20185a",
+      "raw_canvas": [
+        1254,
+        1254
+      ],
+      "target_canvas": [
+        1024,
+        1536
+      ],
+      "transform": {
+        "uniform_scale": 0.16586921850079744,
+        "translate": [
+          413,
+          247
+        ]
+      },
+      "requested_pair_center_separation_px": 106,
+      "measured_core_pair_separation_px": 105.5,
+      "alpha40_bbox_inclusive": [
+        426,
+        344,
+        608,
+        358
+      ],
+      "alpha40_visible_size": [
+        183,
+        15
+      ],
+      "alpha180_left_bbox": [
+        429,
+        345,
+        499,
+        357
+      ],
+      "alpha180_right_bbox": [
+        534,
+        345,
+        605,
+        357
+      ],
+      "native_alpha_preserved_except_uniform_resampling": true,
+      "no_skin_foundation_added": true,
+      "no_local_distortion": true,
+      "no_independent_left_right_transform": true
+    },
+    {
+      "index": 2,
+      "raw": "source/brow_raw/eyebrows_02.png",
+      "raw_sha256": "fd6a21494de47fb6dd8b3ba1432f9ceb96998b0fe2e58f2f54ac5302be1e37b2",
+      "output": "male/eyebrows/02.png",
+      "output_sha256": "1b91ebaff077199e9c178256cd110e508a44e1846bc0c9e8073390f0e48ccc22",
+      "raw_canvas": [
+        1254,
+        1254
+      ],
+      "target_canvas": [
+        1024,
+        1536
+      ],
+      "transform": {
+        "uniform_scale": 0.1722488038277512,
+        "translate": [
+          409,
+          243
+        ]
+      },
+      "requested_pair_center_separation_px": 106,
+      "measured_core_pair_separation_px": 104,
+      "alpha40_bbox_inclusive": [
+        426,
+        344,
+        608,
+        363
+      ],
+      "alpha40_visible_size": [
+        183,
+        20
+      ],
+      "alpha180_left_bbox": [
+        429,
+        345,
+        500,
+        360
+      ],
+      "alpha180_right_bbox": [
+        533,
+        345,
+        604,
+        361
+      ],
+      "native_alpha_preserved_except_uniform_resampling": true,
+      "no_skin_foundation_added": true,
+      "no_local_distortion": true,
+      "no_independent_left_right_transform": true
+    },
+    {
+      "index": 3,
+      "raw": "source/brow_raw/eyebrows_03.png",
+      "raw_sha256": "1b1938f1025ce4a8fc7319976077dc5e44ff717c40637342c5367cdbe5d79ba7",
+      "output": "male/eyebrows/03.png",
+      "output_sha256": "5d10ad8499b4848a4f6eee7faa1f118206820a7ec3f722b7c3de8f7feb6463c9",
+      "raw_canvas": [
+        1254,
+        1254
+      ],
+      "target_canvas": [
+        1024,
+        1536
+      ],
+      "transform": {
+        "uniform_scale": 0.1762360446570973,
+        "translate": [
+          407,
+          242
+        ]
+      },
+      "requested_pair_center_separation_px": 106,
+      "measured_core_pair_separation_px": 106,
+      "alpha40_bbox_inclusive": [
+        431,
+        347,
+        603,
+        357
+      ],
+      "alpha40_visible_size": [
+        173,
+        11
+      ],
+      "alpha180_left_bbox": [
+        433,
+        348,
+        494,
+        355
+      ],
+      "alpha180_right_bbox": [
+        539,
+        348,
+        600,
+        355
+      ],
+      "native_alpha_preserved_except_uniform_resampling": true,
+      "no_skin_foundation_added": true,
+      "no_local_distortion": true,
+      "no_independent_left_right_transform": true
+    }
+  ],
+  "limitation": "Generated pair proportions are approximate. Whole-pair registration targets 106px core separation; faint tips may extend beyond the original 175px visible span. No local compression is used to conceal this difference."
+}

@@ -1,0 +1,79 @@
+{
+  "status": "single_sample_for_user_review_not_installed",
+  "records": [
+    {
+      "file": "parts/clothing.png",
+      "sha256": "2456e11244be9106b1cf80415eb33f44111332225fd166adf441a9c751014b38",
+      "canvas": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "file": "parts/eyebrows.png",
+      "sha256": "1a5b5d38f66083fabcd3928ef4f2dc3849ba118d705510abe6def9636f0b5918",
+      "canvas": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "file": "parts/eyes.png",
+      "sha256": "0a171927d51ba92a9359b81b8c217d32a4f401022fe3b1d82259f6cc5616ecad",
+      "canvas": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "file": "parts/face_shape.png",
+      "sha256": "3d2bd3402115da481a7f1db6ee8745aa4faa26165e825397e8e78670532ed6c7",
+      "canvas": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "file": "parts/hair_front.png",
+      "sha256": "84477ccc3963117321cff596a89feb17d63f8f88d4684a8d03f24e867e04805c",
+      "canvas": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "file": "parts/hair_front_short_layout.png",
+      "sha256": "5b08ad114f8948800924c473989b35bde7f2a925dd90baa32632f4a0d22dc1e4",
+      "canvas": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "file": "parts/mouth.png",
+      "sha256": "e7fd97083bee2bafb574bf714600214ed48f90d12d7c3e703bb11bbda5307bfb",
+      "canvas": [
+        1024,
+        1536
+      ]
+    },
+    {
+      "file": "parts/nose.png",
+      "sha256": "edb0ade533423165f9179bd954cb222aa3ca7085f1e14a659c26c72f54a0d435",
+      "canvas": [
+        1024,
+        1536
+      ]
+    }
+  ],
+  "layer_order": [
+    "hair_back",
+    "face_shape",
+    "clothing",
+    "eyes",
+    "eyebrows",
+    "nose",
+    "mouth",
+    "hair_front"
+  ]
+}

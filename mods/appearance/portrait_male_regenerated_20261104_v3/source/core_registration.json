@@ -1,0 +1,148 @@
+{
+  "canvas": [
+    1024,
+    1536
+  ],
+  "method": "whole-layer uniform scale plus integer translation; no local feature warping",
+  "full_three_noncollinear_2px_certification": false,
+  "records": [
+    {
+      "part": "eyes",
+      "id": "01",
+      "raw": "source\\raw\\eyes01.png",
+      "output": "male\\eyes\\01.png",
+      "raw_canvas": [
+        1254,
+        1254
+      ],
+      "scale": 0.1908155609970959,
+      "left": 398,
+      "top": 260,
+      "landmarks": {
+        "source_pupil_pigment_centroids": [
+          [
+            359.3036560996775,
+            608.6779693456899
+          ],
+          [
+            891.230923821542,
+            609.1751453182526
+          ]
+        ],
+        "target_pupil_distance": 101.5,
+        "target_midpoint": [
+          517,
+          376
+        ]
+      },
+      "raw_sha256": "14e720121c4b4617a5bddd98de4e3bf0591bd8221f3b22d9b151e2711876496d",
+      "sha256": "0a64b2b6bb8bd6be0b18c5935085aca2f4c60449ac7e0d64238ec276627510b4",
+      "alpha_policy": "native alpha retained through whole-layer uniform resize; hidden RGB cleared only at alpha0"
+    },
+    {
+      "part": "eyes",
+      "id": "02",
+      "raw": "source\\raw\\eyes02.png",
+      "output": "male\\eyes\\02.png",
+      "raw_canvas": [
+        1254,
+        1254
+      ],
+      "scale": 0.1779996668447077,
+      "left": 405,
+      "top": 267,
+      "landmarks": {
+        "source_pupil_pigment_centroids": [
+          [
+            334.47742422854,
+            617.3471295334933
+          ],
+          [
+            905.8268082064671,
+            617.7463234859679
+          ]
+        ],
+        "target_pupil_distance": 101.7,
+        "target_midpoint": [
+          515.5,
+          376.5
+        ]
+      },
+      "raw_sha256": "9f4e13bbc77e1eace3dec6c08cf9f4fd6dbcdd94572cee22b14cfc58f6887edf",
+      "sha256": "8b2bf6c335e06187f403d7e4776697703333bade26b8e5bac4c1cf49c32161ac",
+      "alpha_policy": "native alpha retained through whole-layer uniform resize; hidden RGB cleared only at alpha0"
+    },
+    {
+      "part": "mouth",
+      "id": "01",
+      "raw": "source\\raw\\mouth01.png",
+      "output": "male\\mouth\\01.png",
+      "raw_canvas": [
+        1254,
+        1254
+      ],
+      "scale": 0.07256461232604373,
+      "left": 470,
+      "top": 439,
+      "landmarks": {
+        "source_seam": [
+          119,
+          1124,
+          612.528688978532
+        ],
+        "target_seam_width": 73,
+        "target_axis": [
+          515.5,
+          483.5
+        ]
+      },
+      "raw_sha256": "8c76e8cf73c92e6218de7c3f29ae5bc8a5c64af49cef3e56c88977e8cdfcad47",
+      "sha256": "4dce6015268a49168edf3e2c635d874f3360fd500d9aa2fe13c557021641552e",
+      "alpha_policy": "native alpha retained through whole-layer uniform resize; hidden RGB cleared only at alpha0"
+    },
+    {
+      "part": "nose",
+      "id": "01",
+      "tool": "built-in image_gen",
+      "shape_source": "source/raw/nose01_natural.png",
+      "color_source": "source/raw/nose01_natural_warm.png",
+      "output": "male/nose/01.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "transform": {
+        "scale": 1,
+        "left": 2,
+        "top": -3
+      },
+      "color_edit_blend": 0.65,
+      "alpha_changed_pixels_after_whole_layer_translation": 0,
+      "nostril_centers_before_translation": [
+        [
+          502.03,
+          454.97
+        ],
+        [
+          524.11,
+          454.61
+        ]
+      ],
+      "nostril_centers_after_translation": [
+        [
+          504.03,
+          451.97
+        ],
+        [
+          526.11,
+          451.61
+        ]
+      ],
+      "shape_sha256": "56c0204e0da91df531bfd843c82d2034024a054b35089c3f5622a108e3bd1a41",
+      "color_sha256": "6da627cd32a6592ed97cbdffd2d2efe4c85b43f800cbbdb774697f5e8af2f5d0",
+      "sha256": "2c479351c3fa9ae8d824281f510bb617905a7cbd7816f0f70f5e0892d6434122",
+      "operation": "RGB from generated warm color edit applied only to generated natural nose alpha; reject skin haze in color-edit alpha; whole-layer integer translation only, no local warp",
+      "full_three_noncollinear_2px_certification": false
+    }
+  ]
+}

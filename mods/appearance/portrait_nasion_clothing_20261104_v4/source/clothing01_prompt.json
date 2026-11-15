@@ -1,0 +1,10 @@
+{
+  "tool": "built-in image_gen",
+  "edit": "collar tips and ragged inner collar edges only",
+  "prompt": "Use case: precise-object-edit. Input 1 is the EDIT TARGET: an existing isolated emerald-green Chinese robe clothing layer, transparent RGBA 1024x1536. Input 2 is a registration guide showing this garment behind its current male head/neck; the dark slivers beside the upper neck are a DEFECT. Carefully repaint ONLY the tiny upper collar region, around y510..600 on the original 1024x1536 coordinates. Preserve the exact full canvas, garment placement, body/shoulder silhouette, robe color, fabric texture, embroidery, waist belt, front crossover V, and all pixels below y620. At the two standing-collar tips, extend the INNER fabric edges INWARD to meet the guide's neck sides with a natural 1–2 pixel overlap, rather than leaving disconnected floating tips. On row y530: existing left tip inner edge ends x434 but must reach x442; existing right inner edge starts x599 but must reach x589. Smoothly taper these small additions into the original collar by y570. Keep the original OUTER collar edges and shoulder position. Smooth fine ragged collar/neck edges into clean soft painterly antialiasing; do not blur the fabric pattern. Keep a completely open transparent U-shaped NECK OPENING between the two inner edges; do NOT add a horizontal bridge, rear-collar band, fabric across the neck, face, skin, neck, scalp, hair or features. Do not copy the guide's head or dark background. The result is still ONLY the same robe layer on a genuinely transparent background, at its exact original position and size. This is a delicate local collar repair, not a new garment design or a resized cutout. No text, labels, frame, floor shadow or checkerboard.",
+  "inputs": [
+    "res://mods/appearance/ink_three_variants_20261004/male/clothing/01.png",
+    "qa/clothing_01_face_guide.png"
+  ],
+  "selected": false
+}

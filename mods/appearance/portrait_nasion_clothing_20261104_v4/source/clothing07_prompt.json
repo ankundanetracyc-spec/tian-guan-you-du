@@ -1,0 +1,22 @@
+{
+  "tool": "built-in image_gen",
+  "stage": "explicit_fabric_addition_mask",
+  "id": "07",
+  "roi": {
+    "left": 395,
+    "top": 500,
+    "width": 250,
+    "height": 130
+  },
+  "scale": 4,
+  "inputs": [
+    "source/clothing07_target_roi.png",
+    "source/clothing07_addition_guide.png",
+    "source/clothing07_guide_roi.png"
+  ],
+  "prompt": "This is a tiny garment-edge inpainting job. Input 1 is the exact original transparent clothing close-up to preserve. Input 2 shows RED PAINT MASKS marking the SPECIFIC MISSING FABRIC to add to BOTH collar tips. Input 3 is the fitting guide showing the fixed human neck. Replace EVERY red mask area in input 2 with believable matching IVORY BEIGE COLLAR FABRIC extending from the neighboring inner collar trim. The red areas are REQUIRED NEW OPAQUE FABRIC support: do not erase them to transparency, do not ignore or reduce their widths. The repaired upright INNER fabric edge must follow the INNER boundary of each red strip so the collar touches and slightly overlaps the neck edge in guide 3. Add the full marked cloth width, not just smoothing the old edge. Round the small upper corners gracefully and taper into the existing ivory edge below. Keep the rest of the large U-shaped center opening genuinely transparent and open to the top; absolutely no horizontal strip across the neck, no fabric band or bridge, no skin, person, face, head, neck, hair or background. Preserve the original OUTER collar silhouette, garment color, exact existing fabric pattern and framing of input1. Also clean ragged alpha specks along the inner collar into a smooth delicate antialiased painterly contour. Return only the two repaired cloth collar sides as native transparent RGBA, same landscape1000x520 crop framing without zooming, moving or rescaling the existing cloth. NO red remains, no text, markings, grid, background or shadow. Critical: add fabric into the full red support region on BOTH sides; earlier attempts only smoothed old edges and left side gaps.",
+  "status": "not_generated",
+  "fitting_note": "Marked support intentionally extends beyond final needed support; final ROI selection limits neck overlap to 2 original px.",
+  "selected": false,
+  "pause_reason": "User rejected loose collar geometry again; await fixed anchors with three control points per side and alpha230 true neck interface."
+}

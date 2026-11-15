@@ -1,0 +1,982 @@
+{
+  "garment_index": 6,
+  "source": "res://mods/appearance/portrait_nasion_clothing_20261104_v4/installation/backup_before/male/clothing/06.png",
+  "source_sha256": "462d1aae705eaca1ba42b3bc4f6e5f73fb9df11d8f9f73e3928fbc9680fe1ea2",
+  "canvas": [
+    1024,
+    1536
+  ],
+  "coordinate_space": "Full original top-left-origin canvas, integer supported pixels unless explicitly marked inferred.",
+  "scope": "Read-only original tip/side/outer/frame/V measurements. No target rig, generated raster registration or final acceptance is implied.",
+  "geometry_must_remain": "Original collar tip height, original outer shape and original front V; only tiny inward connection and 1-2px fringe cleanup may be proposed later.",
+  "measurements": [
+    {
+      "alpha_threshold": 230,
+      "sides": {
+        "left": {
+          "top": {
+            "point": [
+              438,
+              524
+            ],
+            "top_row_interval_inclusive": [
+              437,
+              438
+            ],
+            "method": "First nonempty source-alpha row in collar-side ROI; select the inner-most supported pixel on that actual row."
+          },
+          "rows": {
+            "530": {
+              "outer": [
+                431,
+                530
+              ],
+              "inner": [
+                438,
+                530
+              ],
+              "interval_inclusive": [
+                431,
+                438
+              ]
+            },
+            "540": {
+              "outer": [
+                419,
+                540
+              ],
+              "inner": [
+                439,
+                540
+              ],
+              "interval_inclusive": [
+                419,
+                439
+              ]
+            },
+            "550": {
+              "outer": [
+                412,
+                550
+              ],
+              "inner": [
+                440,
+                550
+              ],
+              "interval_inclusive": [
+                412,
+                440
+              ]
+            },
+            "565": {
+              "outer": [
+                402,
+                565
+              ],
+              "inner": [
+                444,
+                565
+              ],
+              "interval_inclusive": [
+                402,
+                444
+              ]
+            },
+            "580": {
+              "outer": [
+                395,
+                580
+              ],
+              "inner": [
+                452,
+                580
+              ],
+              "interval_inclusive": [
+                395,
+                452
+              ]
+            },
+            "600": {
+              "outer": [
+                395,
+                600
+              ],
+              "inner": [
+                466,
+                600
+              ],
+              "interval_inclusive": [
+                395,
+                466
+              ]
+            },
+            "620": {
+              "outer": [
+                395,
+                620
+              ],
+              "inner": [
+                481,
+                620
+              ],
+              "interval_inclusive": [
+                395,
+                481
+              ]
+            }
+          },
+          "original_three_point_edge_scaffold": [
+            [
+              438,
+              524
+            ],
+            [
+              440,
+              550
+            ],
+            [
+              466,
+              600
+            ]
+          ],
+          "original_outer_outline_scaffold": [
+            [
+              438,
+              524
+            ],
+            [
+              412,
+              550
+            ],
+            [
+              395,
+              600
+            ]
+          ]
+        },
+        "right": {
+          "top": {
+            "point": [
+              599,
+              526
+            ],
+            "top_row_interval_inclusive": [
+              599,
+              600
+            ],
+            "method": "First nonempty source-alpha row in collar-side ROI; select the inner-most supported pixel on that actual row."
+          },
+          "rows": {
+            "530": {
+              "outer": [
+                603,
+                530
+              ],
+              "inner": [
+                599,
+                530
+              ],
+              "interval_inclusive": [
+                599,
+                603
+              ]
+            },
+            "540": {
+              "outer": [
+                613,
+                540
+              ],
+              "inner": [
+                599,
+                540
+              ],
+              "interval_inclusive": [
+                599,
+                613
+              ]
+            },
+            "550": {
+              "outer": [
+                621,
+                550
+              ],
+              "inner": [
+                598,
+                550
+              ],
+              "interval_inclusive": [
+                598,
+                621
+              ]
+            },
+            "565": {
+              "outer": [
+                630,
+                565
+              ],
+              "inner": [
+                595,
+                565
+              ],
+              "interval_inclusive": [
+                595,
+                630
+              ]
+            },
+            "580": {
+              "outer": [
+                639,
+                580
+              ],
+              "inner": [
+                590,
+                580
+              ],
+              "interval_inclusive": [
+                590,
+                639
+              ]
+            },
+            "600": {
+              "outer": [
+                645,
+                600
+              ],
+              "inner": [
+                581,
+                600
+              ],
+              "interval_inclusive": [
+                581,
+                645
+              ]
+            },
+            "620": {
+              "outer": [
+                645,
+                620
+              ],
+              "inner": [
+                570,
+                620
+              ],
+              "interval_inclusive": [
+                570,
+                645
+              ]
+            }
+          },
+          "original_three_point_edge_scaffold": [
+            [
+              599,
+              526
+            ],
+            [
+              598,
+              550
+            ],
+            [
+              581,
+              600
+            ]
+          ],
+          "original_outer_outline_scaffold": [
+            [
+              599,
+              526
+            ],
+            [
+              621,
+              550
+            ],
+            [
+              645,
+              600
+            ]
+          ]
+        }
+      },
+      "front_v": {
+        "meaning": "Alpha opening between original inner collar edges, not painted seam/embroidery V.",
+        "last_open_row": {
+          "y": 689,
+          "opening_interval_inclusive": [
+            531,
+            532
+          ],
+          "opening_width": 2,
+          "center_x": 531.5,
+          "cloth_contact_left": [
+            530,
+            689
+          ],
+          "cloth_contact_right": [
+            533,
+            689
+          ]
+        },
+        "closure_marker": [
+          531.5,
+          690
+        ],
+        "closure_marker_is_inferred": true,
+        "measured_rows": [
+          {
+            "y": 600,
+            "opening_interval_inclusive": [
+              467,
+              580
+            ],
+            "opening_width": 114,
+            "center_x": 523.5,
+            "cloth_contact_left": [
+              466,
+              600
+            ],
+            "cloth_contact_right": [
+              581,
+              600
+            ]
+          },
+          {
+            "y": 610,
+            "opening_interval_inclusive": [
+              475,
+              574
+            ],
+            "opening_width": 100,
+            "center_x": 524.5,
+            "cloth_contact_left": [
+              474,
+              610
+            ],
+            "cloth_contact_right": [
+              575,
+              610
+            ]
+          },
+          {
+            "y": 620,
+            "opening_interval_inclusive": [
+              482,
+              569
+            ],
+            "opening_width": 88,
+            "center_x": 525.5,
+            "cloth_contact_left": [
+              481,
+              620
+            ],
+            "cloth_contact_right": [
+              570,
+              620
+            ]
+          },
+          {
+            "y": 630,
+            "opening_interval_inclusive": [
+              490,
+              563
+            ],
+            "opening_width": 74,
+            "center_x": 526.5,
+            "cloth_contact_left": [
+              489,
+              630
+            ],
+            "cloth_contact_right": [
+              564,
+              630
+            ]
+          },
+          {
+            "y": 640,
+            "opening_interval_inclusive": [
+              498,
+              558
+            ],
+            "opening_width": 61,
+            "center_x": 528,
+            "cloth_contact_left": [
+              497,
+              640
+            ],
+            "cloth_contact_right": [
+              559,
+              640
+            ]
+          },
+          {
+            "y": 650,
+            "opening_interval_inclusive": [
+              506,
+              552
+            ],
+            "opening_width": 47,
+            "center_x": 529,
+            "cloth_contact_left": [
+              505,
+              650
+            ],
+            "cloth_contact_right": [
+              553,
+              650
+            ]
+          },
+          {
+            "y": 660,
+            "opening_interval_inclusive": [
+              513,
+              547
+            ],
+            "opening_width": 35,
+            "center_x": 530,
+            "cloth_contact_left": [
+              512,
+              660
+            ],
+            "cloth_contact_right": [
+              548,
+              660
+            ]
+          },
+          {
+            "y": 670,
+            "opening_interval_inclusive": [
+              519,
+              542
+            ],
+            "opening_width": 24,
+            "center_x": 530.5,
+            "cloth_contact_left": [
+              518,
+              670
+            ],
+            "cloth_contact_right": [
+              543,
+              670
+            ]
+          },
+          {
+            "y": 680,
+            "opening_interval_inclusive": [
+              526,
+              537
+            ],
+            "opening_width": 12,
+            "center_x": 531.5,
+            "cloth_contact_left": [
+              525,
+              680
+            ],
+            "cloth_contact_right": [
+              538,
+              680
+            ]
+          },
+          {
+            "y": 689,
+            "opening_interval_inclusive": [
+              531,
+              532
+            ],
+            "opening_width": 2,
+            "center_x": 531.5,
+            "cloth_contact_left": [
+              530,
+              689
+            ],
+            "cloth_contact_right": [
+              533,
+              689
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "alpha_threshold": 40,
+      "sides": {
+        "left": {
+          "top": {
+            "point": [
+              439,
+              523
+            ],
+            "top_row_interval_inclusive": [
+              436,
+              439
+            ],
+            "method": "First nonempty source-alpha row in collar-side ROI; select the inner-most supported pixel on that actual row."
+          },
+          "rows": {
+            "530": {
+              "outer": [
+                429,
+                530
+              ],
+              "inner": [
+                439,
+                530
+              ],
+              "interval_inclusive": [
+                429,
+                439
+              ]
+            },
+            "540": {
+              "outer": [
+                417,
+                540
+              ],
+              "inner": [
+                440,
+                540
+              ],
+              "interval_inclusive": [
+                417,
+                440
+              ]
+            },
+            "550": {
+              "outer": [
+                410,
+                550
+              ],
+              "inner": [
+                441,
+                550
+              ],
+              "interval_inclusive": [
+                410,
+                441
+              ]
+            },
+            "565": {
+              "outer": [
+                401,
+                565
+              ],
+              "inner": [
+                446,
+                565
+              ],
+              "interval_inclusive": [
+                401,
+                446
+              ]
+            },
+            "580": {
+              "outer": [
+                395,
+                580
+              ],
+              "inner": [
+                453,
+                580
+              ],
+              "interval_inclusive": [
+                395,
+                453
+              ]
+            },
+            "600": {
+              "outer": [
+                395,
+                600
+              ],
+              "inner": [
+                467,
+                600
+              ],
+              "interval_inclusive": [
+                395,
+                467
+              ]
+            },
+            "620": {
+              "outer": [
+                395,
+                620
+              ],
+              "inner": [
+                482,
+                620
+              ],
+              "interval_inclusive": [
+                395,
+                482
+              ]
+            }
+          },
+          "original_three_point_edge_scaffold": [
+            [
+              439,
+              523
+            ],
+            [
+              441,
+              550
+            ],
+            [
+              467,
+              600
+            ]
+          ],
+          "original_outer_outline_scaffold": [
+            [
+              439,
+              523
+            ],
+            [
+              410,
+              550
+            ],
+            [
+              395,
+              600
+            ]
+          ]
+        },
+        "right": {
+          "top": {
+            "point": [
+              598,
+              525
+            ],
+            "top_row_interval_inclusive": [
+              598,
+              601
+            ],
+            "method": "First nonempty source-alpha row in collar-side ROI; select the inner-most supported pixel on that actual row."
+          },
+          "rows": {
+            "530": {
+              "outer": [
+                604,
+                530
+              ],
+              "inner": [
+                598,
+                530
+              ],
+              "interval_inclusive": [
+                598,
+                604
+              ]
+            },
+            "540": {
+              "outer": [
+                614,
+                540
+              ],
+              "inner": [
+                598,
+                540
+              ],
+              "interval_inclusive": [
+                598,
+                614
+              ]
+            },
+            "550": {
+              "outer": [
+                622,
+                550
+              ],
+              "inner": [
+                597,
+                550
+              ],
+              "interval_inclusive": [
+                597,
+                622
+              ]
+            },
+            "565": {
+              "outer": [
+                632,
+                565
+              ],
+              "inner": [
+                594,
+                565
+              ],
+              "interval_inclusive": [
+                594,
+                632
+              ]
+            },
+            "580": {
+              "outer": [
+                640,
+                580
+              ],
+              "inner": [
+                589,
+                580
+              ],
+              "interval_inclusive": [
+                589,
+                640
+              ]
+            },
+            "600": {
+              "outer": [
+                645,
+                600
+              ],
+              "inner": [
+                579,
+                600
+              ],
+              "interval_inclusive": [
+                579,
+                645
+              ]
+            },
+            "620": {
+              "outer": [
+                645,
+                620
+              ],
+              "inner": [
+                568,
+                620
+              ],
+              "interval_inclusive": [
+                568,
+                645
+              ]
+            }
+          },
+          "original_three_point_edge_scaffold": [
+            [
+              598,
+              525
+            ],
+            [
+              597,
+              550
+            ],
+            [
+              579,
+              600
+            ]
+          ],
+          "original_outer_outline_scaffold": [
+            [
+              598,
+              525
+            ],
+            [
+              622,
+              550
+            ],
+            [
+              645,
+              600
+            ]
+          ]
+        }
+      },
+      "front_v": {
+        "meaning": "Alpha opening between original inner collar edges, not painted seam/embroidery V.",
+        "last_open_row": {
+          "y": 688,
+          "opening_interval_inclusive": [
+            532,
+            532
+          ],
+          "opening_width": 1,
+          "center_x": 532,
+          "cloth_contact_left": [
+            531,
+            688
+          ],
+          "cloth_contact_right": [
+            533,
+            688
+          ]
+        },
+        "closure_marker": [
+          532,
+          689
+        ],
+        "closure_marker_is_inferred": true,
+        "measured_rows": [
+          {
+            "y": 600,
+            "opening_interval_inclusive": [
+              468,
+              578
+            ],
+            "opening_width": 111,
+            "center_x": 523,
+            "cloth_contact_left": [
+              467,
+              600
+            ],
+            "cloth_contact_right": [
+              579,
+              600
+            ]
+          },
+          {
+            "y": 610,
+            "opening_interval_inclusive": [
+              476,
+              573
+            ],
+            "opening_width": 98,
+            "center_x": 524.5,
+            "cloth_contact_left": [
+              475,
+              610
+            ],
+            "cloth_contact_right": [
+              574,
+              610
+            ]
+          },
+          {
+            "y": 620,
+            "opening_interval_inclusive": [
+              483,
+              567
+            ],
+            "opening_width": 85,
+            "center_x": 525,
+            "cloth_contact_left": [
+              482,
+              620
+            ],
+            "cloth_contact_right": [
+              568,
+              620
+            ]
+          },
+          {
+            "y": 630,
+            "opening_interval_inclusive": [
+              492,
+              561
+            ],
+            "opening_width": 70,
+            "center_x": 526.5,
+            "cloth_contact_left": [
+              491,
+              630
+            ],
+            "cloth_contact_right": [
+              562,
+              630
+            ]
+          },
+          {
+            "y": 640,
+            "opening_interval_inclusive": [
+              499,
+              556
+            ],
+            "opening_width": 58,
+            "center_x": 527.5,
+            "cloth_contact_left": [
+              498,
+              640
+            ],
+            "cloth_contact_right": [
+              557,
+              640
+            ]
+          },
+          {
+            "y": 650,
+            "opening_interval_inclusive": [
+              507,
+              551
+            ],
+            "opening_width": 45,
+            "center_x": 529,
+            "cloth_contact_left": [
+              506,
+              650
+            ],
+            "cloth_contact_right": [
+              552,
+              650
+            ]
+          },
+          {
+            "y": 660,
+            "opening_interval_inclusive": [
+              514,
+              546
+            ],
+            "opening_width": 33,
+            "center_x": 530,
+            "cloth_contact_left": [
+              513,
+              660
+            ],
+            "cloth_contact_right": [
+              547,
+              660
+            ]
+          },
+          {
+            "y": 670,
+            "opening_interval_inclusive": [
+              520,
+              541
+            ],
+            "opening_width": 22,
+            "center_x": 530.5,
+            "cloth_contact_left": [
+              519,
+              670
+            ],
+            "cloth_contact_right": [
+              542,
+              670
+            ]
+          },
+          {
+            "y": 680,
+            "opening_interval_inclusive": [
+              527,
+              536
+            ],
+            "opening_width": 10,
+            "center_x": 531.5,
+            "cloth_contact_left": [
+              526,
+              680
+            ],
+            "cloth_contact_right": [
+              537,
+              680
+            ]
+          },
+          {
+            "y": 688,
+            "opening_interval_inclusive": [
+              532,
+              532
+            ],
+            "opening_width": 1,
+            "center_x": 532,
+            "cloth_contact_left": [
+              531,
+              688
+            ],
+            "cloth_contact_right": [
+              533,
+              688
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

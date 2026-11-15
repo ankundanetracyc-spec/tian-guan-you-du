@@ -1,0 +1,1173 @@
+{
+  "generated_at": "2026-11-04T11:30:09.128Z",
+  "read_only_sources": true,
+  "canvas": [
+    1024,
+    1536
+  ],
+  "male_assets_measured": 14,
+  "female_assets_measured": 22,
+  "alpha_bbox_threshold": 40,
+  "bbox_convention": "[left,top,right_exclusive,bottom_exclusive]; null means empty layer",
+  "notes": [
+    "All source and runtime layers retain the same full canvas; no per-part fit to preview bounds.",
+    "All full portrait panels are rendered at one identical uniform scale.",
+    "Visible bounding boxes describe content and are not registration controls.",
+    "Male01 rear ends are longer than active female01; the report preserves this intentional long-haired silhouette and never crops or locally stretches it."
+  ],
+  "comparison_columns": [
+    "female active style01",
+    "new male style01: brow01 eye01",
+    "new male style02: brow02 eye01",
+    "new male style03: brow03 eye02"
+  ],
+  "measurements": [
+    {
+      "gender": "male_new",
+      "file": "mods/appearance/portrait_male_regenerated_20261104_v3/male/hair_front/01.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "617076de25b090b322619d1f687471c99bae1b2abb5a6be224be9646a14b9024",
+      "alpha_threshold": 40,
+      "bbox": [
+        284,
+        154,
+        736,
+        1157
+      ],
+      "visible_width": 452,
+      "visible_height": 1003,
+      "visible_pixels": 128274,
+      "fully_transparent_pixels": 1388701,
+      "hair_row_intervals": {
+        "175": [
+          439,
+          593
+        ],
+        "250": [
+          367,
+          659
+        ],
+        "300": [
+          349,
+          678
+        ],
+        "350": [
+          351,
+          680
+        ],
+        "400": [
+          357,
+          671
+        ],
+        "700": [
+          285,
+          730
+        ],
+        "900": [
+          359,
+          652
+        ],
+        "1100": [
+          381,
+          628
+        ]
+      }
+    },
+    {
+      "gender": "male_new",
+      "file": "mods/appearance/portrait_male_regenerated_20261104_v3/male/hair_front/02.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "27df429df1915c803143184b9ac46db2fda71ed811d5e30eff9c48413e00ea5e",
+      "alpha_threshold": 40,
+      "bbox": [
+        344,
+        143,
+        686,
+        1071
+      ],
+      "visible_width": 342,
+      "visible_height": 928,
+      "visible_pixels": 86259,
+      "fully_transparent_pixels": 1452631,
+      "hair_row_intervals": {
+        "175": [
+          417,
+          614
+        ],
+        "250": [
+          363,
+          670
+        ],
+        "300": [
+          348,
+          683
+        ],
+        "350": [
+          344,
+          684
+        ],
+        "400": [
+          368,
+          669
+        ],
+        "700": [
+          359,
+          661
+        ],
+        "900": [
+          388,
+          641
+        ],
+        "1100": null
+      }
+    },
+    {
+      "gender": "male_new",
+      "file": "mods/appearance/portrait_male_regenerated_20261104_v3/male/hair_front/03.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "e16a057b35dba6fa878312d933ce0df774155ec76972636dfd9696dc76241749",
+      "alpha_threshold": 40,
+      "bbox": [
+        315,
+        140,
+        743,
+        1057
+      ],
+      "visible_width": 428,
+      "visible_height": 917,
+      "visible_pixels": 131878,
+      "fully_transparent_pixels": 1396397,
+      "hair_row_intervals": {
+        "175": [
+          414,
+          606
+        ],
+        "250": [
+          357,
+          663
+        ],
+        "300": [
+          349,
+          698
+        ],
+        "350": [
+          340,
+          686
+        ],
+        "400": [
+          334,
+          675
+        ],
+        "700": [
+          344,
+          722
+        ],
+        "900": [
+          385,
+          653
+        ],
+        "1100": null
+      }
+    },
+    {
+      "gender": "male_new",
+      "file": "mods/appearance/portrait_male_regenerated_20261104_v3/male/hair_back/01.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "24f7a85d0ac4d313cb410a4965879c530a538c4737f5dc5bb5db4e2709c0f04f",
+      "alpha_threshold": 40,
+      "bbox": [
+        242,
+        128,
+        793,
+        1232
+      ],
+      "visible_width": 551,
+      "visible_height": 1104,
+      "visible_pixels": 353858,
+      "fully_transparent_pixels": 1164282,
+      "hair_row_intervals": {
+        "175": [
+          440,
+          594
+        ],
+        "250": [
+          384,
+          650
+        ],
+        "300": [
+          365,
+          668
+        ],
+        "350": [
+          360,
+          676
+        ],
+        "400": [
+          360,
+          675
+        ],
+        "700": [
+          271,
+          750
+        ],
+        "900": [
+          246,
+          792
+        ],
+        "1100": [
+          323,
+          705
+        ]
+      }
+    },
+    {
+      "gender": "male_new",
+      "file": "mods/appearance/portrait_male_regenerated_20261104_v3/male/hair_back/02.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "b05366731c045d772d82cbe62eb42d73e04a6a48671bc05eae13cbb358b9ecf6",
+      "alpha_threshold": 40,
+      "bbox": [
+        298,
+        81,
+        738,
+        1039
+      ],
+      "visible_width": 440,
+      "visible_height": 958,
+      "visible_pixels": 265820,
+      "fully_transparent_pixels": 1282862,
+      "hair_row_intervals": {
+        "175": [
+          458,
+          579
+        ],
+        "250": [
+          386,
+          652
+        ],
+        "300": [
+          364,
+          674
+        ],
+        "350": [
+          355,
+          681
+        ],
+        "400": [
+          356,
+          676
+        ],
+        "700": [
+          312,
+          727
+        ],
+        "900": [
+          348,
+          676
+        ],
+        "1100": null
+      }
+    },
+    {
+      "gender": "male_new",
+      "file": "mods/appearance/portrait_male_regenerated_20261104_v3/male/hair_back/03.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "da5df6c3fb53d981577d744cef5405d2570ab69550bb4cd52f6c802731837bdd",
+      "alpha_threshold": 40,
+      "bbox": [
+        265,
+        149,
+        754,
+        1011
+      ],
+      "visible_width": 489,
+      "visible_height": 862,
+      "visible_pixels": 275278,
+      "fully_transparent_pixels": 1270165,
+      "hair_row_intervals": {
+        "175": [
+          430,
+          598
+        ],
+        "250": [
+          368,
+          660
+        ],
+        "300": [
+          344,
+          676
+        ],
+        "350": [
+          341,
+          692
+        ],
+        "400": [
+          345,
+          676
+        ],
+        "700": [
+          289,
+          754
+        ],
+        "900": [
+          305,
+          707
+        ],
+        "1100": null
+      }
+    },
+    {
+      "gender": "male_new",
+      "file": "mods/appearance/portrait_male_regenerated_20261104_v3/male/eyebrows/01.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "3bb650bad92d602f8b694704767408e66ce910a4d8128ad599f09f717b20185a",
+      "alpha_threshold": 40,
+      "bbox": [
+        426,
+        344,
+        609,
+        359
+      ],
+      "visible_width": 183,
+      "visible_height": 15,
+      "visible_pixels": 1472,
+      "fully_transparent_pixels": 1570965,
+      "hair_row_intervals": {}
+    },
+    {
+      "gender": "male_new",
+      "file": "mods/appearance/portrait_male_regenerated_20261104_v3/male/eyebrows/02.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "1b91ebaff077199e9c178256cd110e508a44e1846bc0c9e8073390f0e48ccc22",
+      "alpha_threshold": 40,
+      "bbox": [
+        426,
+        344,
+        609,
+        364
+      ],
+      "visible_width": 183,
+      "visible_height": 20,
+      "visible_pixels": 1316,
+      "fully_transparent_pixels": 1570967,
+      "hair_row_intervals": {}
+    },
+    {
+      "gender": "male_new",
+      "file": "mods/appearance/portrait_male_regenerated_20261104_v3/male/eyebrows/03.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "5d10ad8499b4848a4f6eee7faa1f118206820a7ec3f722b7c3de8f7feb6463c9",
+      "alpha_threshold": 40,
+      "bbox": [
+        431,
+        347,
+        604,
+        358
+      ],
+      "visible_width": 173,
+      "visible_height": 11,
+      "visible_pixels": 907,
+      "fully_transparent_pixels": 1571479,
+      "hair_row_intervals": {}
+    },
+    {
+      "gender": "male_new",
+      "file": "mods/appearance/portrait_male_regenerated_20261104_v3/male/eyes/01.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "0a64b2b6bb8bd6be0b18c5935085aca2f4c60449ac7e0d64238ec276627510b4",
+      "alpha_threshold": 40,
+      "bbox": [
+        425,
+        368,
+        609,
+        391
+      ],
+      "visible_width": 184,
+      "visible_height": 23,
+      "visible_pixels": 2237,
+      "fully_transparent_pixels": 1569974,
+      "hair_row_intervals": {}
+    },
+    {
+      "gender": "male_new",
+      "file": "mods/appearance/portrait_male_regenerated_20261104_v3/male/eyes/02.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "8b2bf6c335e06187f403d7e4776697703333bade26b8e5bac4c1cf49c32161ac",
+      "alpha_threshold": 40,
+      "bbox": [
+        426,
+        369,
+        607,
+        393
+      ],
+      "visible_width": 181,
+      "visible_height": 24,
+      "visible_pixels": 2270,
+      "fully_transparent_pixels": 1569920,
+      "hair_row_intervals": {}
+    },
+    {
+      "gender": "male_new",
+      "file": "mods/appearance/portrait_male_regenerated_20261104_v3/male/nose/01.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "2c479351c3fa9ae8d824281f510bb617905a7cbd7816f0f70f5e0892d6434122",
+      "alpha_threshold": 40,
+      "bbox": [
+        491,
+        392,
+        541,
+        466
+      ],
+      "visible_width": 50,
+      "visible_height": 74,
+      "visible_pixels": 2467,
+      "fully_transparent_pixels": 1567067,
+      "hair_row_intervals": {}
+    },
+    {
+      "gender": "male_new",
+      "file": "mods/appearance/portrait_male_regenerated_20261104_v3/male/mouth/01.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "4dce6015268a49168edf3e2c635d874f3360fd500d9aa2fe13c557021641552e",
+      "alpha_threshold": 40,
+      "bbox": [
+        477,
+        473,
+        554,
+        499
+      ],
+      "visible_width": 77,
+      "visible_height": 26,
+      "visible_pixels": 1265,
+      "fully_transparent_pixels": 1571278,
+      "hair_row_intervals": {}
+    },
+    {
+      "gender": "male_new",
+      "file": "mods/appearance/portrait_male_regenerated_20261104_v3/male/face_shape/01.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "0e2e751160bbfafefc0300df20e6ee5497945141f43b5672fa796159d0ad6639",
+      "alpha_threshold": 40,
+      "bbox": [
+        329,
+        210,
+        704,
+        727
+      ],
+      "visible_width": 375,
+      "visible_height": 517,
+      "visible_pixels": 109483,
+      "fully_transparent_pixels": 1458972,
+      "hair_row_intervals": {}
+    },
+    {
+      "gender": "female_active",
+      "file": "mods/appearance/ink_three_variants_20261004/female/clothing/01.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "2456e11244be9106b1cf80415eb33f44111332225fd166adf441a9c751014b38",
+      "alpha_threshold": 40,
+      "bbox": [
+        0,
+        548,
+        1024,
+        1536
+      ],
+      "visible_width": 1024,
+      "visible_height": 988,
+      "visible_pixels": 823288,
+      "fully_transparent_pixels": 746291,
+      "hair_row_intervals": {}
+    },
+    {
+      "gender": "female_active",
+      "file": "mods/appearance/ink_three_variants_20261004/female/clothing/02.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "0df90405b7b746c0e2d334d2b863d7ba64270ef47378adca947f9f1f6046e8b4",
+      "alpha_threshold": 40,
+      "bbox": [
+        0,
+        540,
+        1024,
+        1536
+      ],
+      "visible_width": 1024,
+      "visible_height": 996,
+      "visible_pixels": 830175,
+      "fully_transparent_pixels": 740285,
+      "hair_row_intervals": {}
+    },
+    {
+      "gender": "female_active",
+      "file": "mods/appearance/ink_three_variants_20261004/female/clothing/03.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "10c560fa71a6bb24df2de6fada2a3e04979ba552042a061b129162b6d8b2d8fd",
+      "alpha_threshold": 40,
+      "bbox": [
+        0,
+        522,
+        1024,
+        1536
+      ],
+      "visible_width": 1024,
+      "visible_height": 1014,
+      "visible_pixels": 850010,
+      "fully_transparent_pixels": 720673,
+      "hair_row_intervals": {}
+    },
+    {
+      "gender": "female_active",
+      "file": "mods/appearance/ink_three_variants_20261004/female/clothing/04.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "85208533b0687a13e3d3dfb1aca675327639294a614f07b7d8d4bf65481a8928",
+      "alpha_threshold": 40,
+      "bbox": [
+        0,
+        543,
+        1024,
+        1536
+      ],
+      "visible_width": 1024,
+      "visible_height": 993,
+      "visible_pixels": 826868,
+      "fully_transparent_pixels": 743213,
+      "hair_row_intervals": {}
+    },
+    {
+      "gender": "female_active",
+      "file": "mods/appearance/ink_three_variants_20261004/female/clothing/05.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "10c2e60f0621b26d1936ab48a00b31eca2ffdbe13587453bf894a71ea1dcc5dd",
+      "alpha_threshold": 40,
+      "bbox": [
+        0,
+        543,
+        1024,
+        1536
+      ],
+      "visible_width": 1024,
+      "visible_height": 993,
+      "visible_pixels": 830267,
+      "fully_transparent_pixels": 740704,
+      "hair_row_intervals": {}
+    },
+    {
+      "gender": "female_active",
+      "file": "mods/appearance/ink_three_variants_20261004/female/clothing/06.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "af11228234e53983fece2b18b9b67e1151fa615102fb48e525eabec5f9bff3d7",
+      "alpha_threshold": 40,
+      "bbox": [
+        0,
+        540,
+        1024,
+        1536
+      ],
+      "visible_width": 1024,
+      "visible_height": 996,
+      "visible_pixels": 830202,
+      "fully_transparent_pixels": 739396,
+      "hair_row_intervals": {}
+    },
+    {
+      "gender": "female_active",
+      "file": "mods/appearance/ink_three_variants_20261004/female/clothing/07.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "4ce217ffc75e16bc908defa4a4405dc186af873f699d615f04924aa36dbbd7dd",
+      "alpha_threshold": 40,
+      "bbox": [
+        0,
+        540,
+        1024,
+        1536
+      ],
+      "visible_width": 1024,
+      "visible_height": 996,
+      "visible_pixels": 827756,
+      "fully_transparent_pixels": 741410,
+      "hair_row_intervals": {}
+    },
+    {
+      "gender": "female_active",
+      "file": "mods/appearance/ink_three_variants_20261004/female/eyebrows/01.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "0365039042cbf66dc869b1777f1c7c40e8d2cbe89c86a80b11d2c34c8e45bed5",
+      "alpha_threshold": 40,
+      "bbox": [
+        438,
+        348,
+        605,
+        366
+      ],
+      "visible_width": 167,
+      "visible_height": 18,
+      "visible_pixels": 863,
+      "fully_transparent_pixels": 1571514,
+      "hair_row_intervals": {}
+    },
+    {
+      "gender": "female_active",
+      "file": "mods/appearance/ink_three_variants_20261004/female/eyebrows/02.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "5b0c2767c3936a2356de249b1c451cc1065090cd8168dcd02d2dac50b679d833",
+      "alpha_threshold": 40,
+      "bbox": [
+        437,
+        349,
+        608,
+        368
+      ],
+      "visible_width": 171,
+      "visible_height": 19,
+      "visible_pixels": 866,
+      "fully_transparent_pixels": 1571516,
+      "hair_row_intervals": {}
+    },
+    {
+      "gender": "female_active",
+      "file": "mods/appearance/ink_three_variants_20261004/female/eyebrows/03.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "14329a3b4e4ebd514c5449fa25898be4fa9918402bc60ddeb6e66555f981eabb",
+      "alpha_threshold": 40,
+      "bbox": [
+        433,
+        348,
+        612,
+        364
+      ],
+      "visible_width": 179,
+      "visible_height": 16,
+      "visible_pixels": 823,
+      "fully_transparent_pixels": 1571484,
+      "hair_row_intervals": {}
+    },
+    {
+      "gender": "female_active",
+      "file": "mods/appearance/ink_three_variants_20261004/female/eyes/01.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "d1d57a82ba87f3cd1eefc81eda08932432e77ce08dd000dc7fabf1e8b8555fcd",
+      "alpha_threshold": 40,
+      "bbox": [
+        427,
+        366,
+        611,
+        400
+      ],
+      "visible_width": 184,
+      "visible_height": 34,
+      "visible_pixels": 2511,
+      "fully_transparent_pixels": 1569109,
+      "hair_row_intervals": {}
+    },
+    {
+      "gender": "female_active",
+      "file": "mods/appearance/ink_three_variants_20261004/female/eyes/02.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "02168cc7007021adb42002627cb97c574f1bc3a3087d83741a7cdc6cef458ea5",
+      "alpha_threshold": 40,
+      "bbox": [
+        429,
+        362,
+        611,
+        399
+      ],
+      "visible_width": 182,
+      "visible_height": 37,
+      "visible_pixels": 2964,
+      "fully_transparent_pixels": 1568460,
+      "hair_row_intervals": {}
+    },
+    {
+      "gender": "female_active",
+      "file": "mods/appearance/ink_three_variants_20261004/female/face_accessory/01.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "d5efcb10b52e55a390e591a9ffa9fbd8ee9dc9ad7e5028fc8a97ac49454cfefe",
+      "alpha_threshold": 40,
+      "bbox": null,
+      "visible_width": 0,
+      "visible_height": 0,
+      "visible_pixels": 0,
+      "fully_transparent_pixels": 1572864,
+      "hair_row_intervals": {}
+    },
+    {
+      "gender": "female_active",
+      "file": "mods/appearance/ink_three_variants_20261004/female/face_shape/04.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "f61eee9537f62da3c93c2afdf1570c97a1e5a5644986e6e71c983f58f81c09c8",
+      "alpha_threshold": 40,
+      "bbox": [
+        331,
+        208,
+        706,
+        727
+      ],
+      "visible_width": 375,
+      "visible_height": 519,
+      "visible_pixels": 106122,
+      "fully_transparent_pixels": 1465910,
+      "hair_row_intervals": {}
+    },
+    {
+      "gender": "female_active",
+      "file": "mods/appearance/ink_three_variants_20261004/female/hair_back/01.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "0449a25c7ee9807332770849d3ea11f66ff4a41da8891daa3995f9c8deb6321f",
+      "alpha_threshold": 40,
+      "bbox": [
+        225,
+        102,
+        799,
+        1161
+      ],
+      "visible_width": 574,
+      "visible_height": 1059,
+      "visible_pixels": 364369,
+      "fully_transparent_pixels": 1155455,
+      "hair_row_intervals": {
+        "175": [
+          399,
+          613
+        ],
+        "250": [
+          377,
+          642
+        ],
+        "300": [
+          357,
+          662
+        ],
+        "350": [
+          352,
+          667
+        ],
+        "400": [
+          359,
+          659
+        ],
+        "700": [
+          258,
+          758
+        ],
+        "900": [
+          247,
+          772
+        ],
+        "1100": [
+          352,
+          674
+        ]
+      }
+    },
+    {
+      "gender": "female_active",
+      "file": "mods/appearance/ink_three_variants_20261004/female/hair_back/02.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "fa8306f6778f65ee2a1b95425a60648ac61699449148d2671b9f5c1ae3b2aa89",
+      "alpha_threshold": 40,
+      "bbox": [
+        354,
+        101,
+        673,
+        522
+      ],
+      "visible_width": 319,
+      "visible_height": 421,
+      "visible_pixels": 108977,
+      "fully_transparent_pixels": 1458762,
+      "hair_row_intervals": {
+        "175": [
+          405,
+          629
+        ],
+        "250": [
+          374,
+          656
+        ],
+        "300": [
+          363,
+          668
+        ],
+        "350": [
+          362,
+          669
+        ],
+        "400": [
+          375,
+          654
+        ],
+        "700": null,
+        "900": null,
+        "1100": null
+      }
+    },
+    {
+      "gender": "female_active",
+      "file": "mods/appearance/ink_three_variants_20261004/female/hair_back/03.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "d390a0512599dd63b813166e826b58154521d69ab29adc6237695cb93471efcc",
+      "alpha_threshold": 40,
+      "bbox": [
+        224,
+        147,
+        793,
+        1148
+      ],
+      "visible_width": 569,
+      "visible_height": 1001,
+      "visible_pixels": 338984,
+      "fully_transparent_pixels": 1188224,
+      "hair_row_intervals": {
+        "175": [
+          431,
+          598
+        ],
+        "250": [
+          374,
+          648
+        ],
+        "300": [
+          364,
+          661
+        ],
+        "350": [
+          362,
+          664
+        ],
+        "400": [
+          358,
+          661
+        ],
+        "700": [
+          247,
+          761
+        ],
+        "900": [
+          274,
+          755
+        ],
+        "1100": [
+          404,
+          623
+        ]
+      }
+    },
+    {
+      "gender": "female_active",
+      "file": "mods/appearance/ink_three_variants_20261004/female/hair_front/01.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "821fe4406c90fcfc0a9cafe2048403fbdfb98aa0bafce0698fcf912e7d1f7681",
+      "alpha_threshold": 40,
+      "bbox": [
+        351,
+        146,
+        684,
+        881
+      ],
+      "visible_width": 333,
+      "visible_height": 735,
+      "visible_pixels": 67089,
+      "fully_transparent_pixels": 1485880,
+      "hair_row_intervals": {
+        "175": [
+          433,
+          605
+        ],
+        "250": [
+          369,
+          666
+        ],
+        "300": [
+          353,
+          683
+        ],
+        "350": [
+          354,
+          678
+        ],
+        "400": [
+          370,
+          666
+        ],
+        "700": [
+          376,
+          651
+        ],
+        "900": null,
+        "1100": null
+      }
+    },
+    {
+      "gender": "female_active",
+      "file": "mods/appearance/ink_three_variants_20261004/female/hair_front/02.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "70143ebb272c9627206c17544688431d1bb06c6b628824909e7f80e2b3ffe53e",
+      "alpha_threshold": 40,
+      "bbox": [
+        340,
+        149,
+        685,
+        739
+      ],
+      "visible_width": 345,
+      "visible_height": 590,
+      "visible_pixels": 57612,
+      "fully_transparent_pixels": 1497595,
+      "hair_row_intervals": {
+        "175": [
+          432,
+          598
+        ],
+        "250": [
+          369,
+          661
+        ],
+        "300": [
+          347,
+          683
+        ],
+        "350": [
+          345,
+          681
+        ],
+        "400": [
+          365,
+          665
+        ],
+        "700": [
+          400,
+          632
+        ],
+        "900": null,
+        "1100": null
+      }
+    },
+    {
+      "gender": "female_active",
+      "file": "mods/appearance/ink_three_variants_20261004/female/hair_front/03.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "745dce89cbbf19a963bc0558b8cfdc14434ecf145ceb9898ab3e25918f6df2dc",
+      "alpha_threshold": 40,
+      "bbox": [
+        336,
+        105,
+        689,
+        962
+      ],
+      "visible_width": 353,
+      "visible_height": 857,
+      "visible_pixels": 91153,
+      "fully_transparent_pixels": 1443422,
+      "hair_row_intervals": {
+        "175": [
+          390,
+          635
+        ],
+        "250": [
+          348,
+          676
+        ],
+        "300": [
+          339,
+          687
+        ],
+        "350": [
+          339,
+          685
+        ],
+        "400": [
+          358,
+          669
+        ],
+        "700": [
+          347,
+          666
+        ],
+        "900": [
+          396,
+          612
+        ],
+        "1100": null
+      }
+    },
+    {
+      "gender": "female_active",
+      "file": "mods/appearance/ink_three_variants_20261004/female/mouth/01.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "bf84b1e940a888a9a09e36ea2bc7cceb222f7411a49ea025aa37b63091e1cd4d",
+      "alpha_threshold": 40,
+      "bbox": [
+        487,
+        475,
+        553,
+        505
+      ],
+      "visible_width": 66,
+      "visible_height": 30,
+      "visible_pixels": 1054,
+      "fully_transparent_pixels": 1571228,
+      "hair_row_intervals": {}
+    },
+    {
+      "gender": "female_active",
+      "file": "mods/appearance/ink_three_variants_20261004/female/nose/01.png",
+      "canvas": [
+        1024,
+        1536
+      ],
+      "rgba": true,
+      "sha256": "9a0ab7858d68e81fd0ee82cb0ef1301f2ee3d5b64e7bc6c8c8750dba4b181590",
+      "alpha_threshold": 40,
+      "bbox": [
+        500,
+        407,
+        539,
+        461
+      ],
+      "visible_width": 39,
+      "visible_height": 54,
+      "visible_pixels": 505,
+      "fully_transparent_pixels": 1570992,
+      "hair_row_intervals": {}
+    }
+  ]
+}

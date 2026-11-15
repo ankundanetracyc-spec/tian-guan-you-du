@@ -1,0 +1,37 @@
+{
+  "audit": "Read-only inspection of active female face04, brows01-03, eyes01-02, nose01; active files were not modified.",
+  "documents": [
+    "docs/策划案摘要/README.md",
+    "docs/美术规范/本轮男女立绘锚点规范_20261003.md",
+    "docs/美术规范/三组参考五官去重接入_20261104/README.md",
+    "docs/美术规范/百会分层与发型肤色修订_20261104/README.md"
+  ],
+  "findings": {
+    "face": "The exposed interbrow-to-upper-nose area of face04 has skin wash and texture, but lacks a directional nasion or eye-socket-to-nose structure.",
+    "nose": "At alpha>=40, the nose begins at y407 and its visible range is [500,407,538,460] inclusive. In x497..540,y350..406 there are no alpha>=40 pixels; only 49 alpha>0 pixels with a maximum alpha24. Its existing shading principally describes the lower bridge, tip and nostrils.",
+    "eyes": "Eyes01 has only 17 alpha>0 pixels and max alpha9 in that same upper-nasion region, so its inner corner linework does not supply the missing root.",
+    "brows": "The three separate brow styles end at their own medial tips; the lower inner-brow-to-nose transition is not present as a continuous structure. It should not be fixed by repainting or relocating whole eyebrows.",
+    "visual": "The enlarged composite has a broad flat skin gap between the inner eyebrows/eyes and the nasal shading. Six combinations retain the same gap. The existing female original reference is also subtle here; an addition should remain delicate rather than copy a strongly outlined male nose."
+  },
+  "recommended_native_redraw": {
+    "layer": "female nose01, as an upper transparent extension; retain independent brow/eye layers",
+    "suggested_support_region": [493,350,545,423],
+    "coordinates": "Original 1024x1536 shared canvas, x right/y down; suggested support, not mandatory opaque bounds.",
+    "construction": "Soft paired warm skin/brown wash begins under medial brow ends, turns into the inner eye-socket slopes, narrows as it descends to the upper bridge and dissolves into the original y407..423 nose transition. Preserve a brighter central ridge instead of a continuous hard outline.",
+    "female_material": "Lighter, softer and slightly narrower than the male nasion example, using current face04 warm skin and paper-watercolor texture.",
+    "preserve": [
+      "All existing eye and brow shapes and positions",
+      "Original nasal tip, nostrils, alae and nose width",
+      "Full 1024x1536 registration",
+      "Continuous transparent wash without rectangular skin patches or white blocks"
+    ]
+  },
+  "evidence": [
+    "female_nasion_layer_audit.json",
+    "female_face_only_nasion.png",
+    "female_full_no_hair_nasion.png",
+    "female_full_hair_local.png",
+    "female_six_brow_eye_nasion_combinations.png",
+    "female_original_reference01_local.png"
+  ]
+}

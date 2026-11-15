@@ -1,0 +1,5 @@
+{
+  "mode": "builtin_image_gen",
+  "prompt": "Precise-object-edit. Target is our NEW isolated nose raw; supporting input is the NEW blank male skin layer. Preserve elegant nostril and tip shape, remove large pale opaque skin backing and long white bridge stripe. Convert to a delicate translucent ink/watercolor game overlay. Bridge center and surrounding skin mostly alpha0 so underlying face shows through. Keep only subtle translucent warm umber side shadows, tiny nostril arcs and soft tip contour; tiny highlight only. Warm peach glaze may exist at nose tip, fading rapidly, no pale or gray nose plate. Real transparent alpha, no background, no other anatomy. Keep existing feature position and scale. No new face, eyes, mouth or labels. Match new skin color naturally.",
+  "inputs": ["source/raw/nose01.png", "male/face_shape/01.png"]
+}

@@ -1,0 +1,89 @@
+{
+  "part": "clothing_front",
+  "index": 1,
+  "source": "source/clothing01_front_v2_raw.png",
+  "source_sha256": "87b14a69ee875011515f531b01564119cbf2593534d09c73894d33aaa6c11527",
+  "source_canvas": [
+    1713,
+    918
+  ],
+  "source_controls": [
+    [
+      373,
+      240
+    ],
+    [
+      1304,
+      240
+    ],
+    [
+      509,
+      550
+    ],
+    [
+      1209,
+      550
+    ]
+  ],
+  "target_controls": [
+    [
+      442,
+      550
+    ],
+    [
+      589,
+      550
+    ],
+    [
+      465,
+      600
+    ],
+    [
+      578,
+      600
+    ]
+  ],
+  "source_control_method": "Native alpha230 inner contour: upper inner corner turns at row240 and two lower V-contour cross-section pixels at row550, measured directly before fitting. No alpha bbox control.",
+  "transform": {
+    "a": 0.1595062335402308,
+    "b": -0.0010775573516995565,
+    "tx": 382.69344912880774,
+    "ty": 512.9096145538638,
+    "uniform_scale": 0.15950987326192964,
+    "rotation_degrees": -0.3870604168333189
+  },
+  "control_residuals_px": [
+    0.907420209926941,
+    1.9599122933477995,
+    0.5328036235942892,
+    1.9854388311351396
+  ],
+  "maximum_residual_px": 1.9854388311351396,
+  "canvas": [
+    1024,
+    1536
+  ],
+  "output": "male/clothing/01.png",
+  "output_sha256": "dcf6dda89f026b288cb966e56083a63bbd760c122e8a02e9e36a9fee67837875",
+  "frozen_body_source": "installation/backup_before/male/clothing/01.png",
+  "frozen_body_sha256": "d000653195a539310ff4d70856aaac5aa4cdf2af0bfbc4591c4ae2e1012dc89c",
+  "body_frame": {
+    "scale": 1,
+    "rotation_degrees": 0,
+    "translation": [
+      0,
+      0
+    ]
+  },
+  "changed_pixels": 10352,
+  "changed_bbox_inclusive": [
+    371,
+    513,
+    674,
+    619
+  ],
+  "y_ge620_changed_pixels": 0,
+  "front_y_lt540_visible_pixels": 0,
+  "material_transition": "Entire new collar above600; native new fabric blends into frozen original robe only from600 to620. No old posterior tip or deep posterior outline retained.",
+  "local_warp": false
+}
