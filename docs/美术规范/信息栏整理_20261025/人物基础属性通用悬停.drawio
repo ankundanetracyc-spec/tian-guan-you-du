@@ -1,0 +1,19 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="正式属性页详细版">
+    <mxGraphModel page="1" pageWidth="1000" pageHeight="1169">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="card" value="体魄&#xA;&#xA;当前值：9.6（基础值[8]×成长倍率[1.075]＋定额加成[1]＝9.6）&#xA;&#xA;作用：&#xA;提高生命上限。&#xA;影响行动速度。&#xA;影响精准。&#xA;影响身法。&#xA;影响会心。&#xA;影响护心。&#xA;与神魂共同影响身心协调。&#xA;影响以体魄计算的技能效果。&#xA;&#xA;加成明细：&#xA;境界累计成长倍率：1.075&#xA;境界累计定额加成：1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#20221a;fontColor=#e8e4d4;strokeColor=#b9ae86;align=left;verticalAlign=top;spacing=18;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="80" y="60" width="340" height="650" as="geometry" />
+        </mxCell>
+        <mxCell id="note" value="已接入正式人物属性页；名称与数值共用。&#xA;详细版显示真实代入式，不显示取整用语；来源随实际重算更新。&#xA;图中为隔离实例；数值、计算规则与存档格式保持不变。" style="text;whiteSpace=wrap;html=0;align=left;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="80" y="750" width="600" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="precision" vertex="1" parent="1" style="rounded=0;whiteSpace=wrap;html=0;fillColor=#20221a;fontColor=#e8e4d4;strokeColor=#b9ae86;align=left;verticalAlign=top;spacing=18;fontSize=18;" value="精准&#xA;&#xA;当前值：87（7×灵慧[10.5]＋神魂[8.6]＋0.5×体魄[9.6]＝87）&#xA;&#xA;作用：&#xA;影响攻击与技艺的命中判定。&#xA;&#xA;加成明细：无">
+          <mxGeometry x="450" y="60" width="420" height="300" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

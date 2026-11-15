@@ -1,0 +1,288 @@
+{
+  "date": "2026-11-09",
+  "status": "整纸按钮、普通直线与日期/返回最终复验完成，两档各68项；14图已刷新",
+  "files": [
+    {
+      "path": "csharp/panel/RestPanel.cs",
+      "sha256": "E948D15913FC11C489368C3D773EA83C8939D1EFFEA5629D9785AF9A56DE8167"
+    },
+    {
+      "path": "csharp/panel/RestPaperControls.cs",
+      "sha256": "1879D5506296E7DD750CE167A6A778762CBF9EE3ED051CCD39B3E07F269FFE93"
+    },
+    {
+      "path": "csharp/debug/RestPaperUiSmoke.cs",
+      "sha256": "C2E101CAF6D34D91194A1CA4657E194A3FA2FA78B6BBC5211DF9FE2A65655938"
+    },
+    {
+      "path": "tscn/debug/RestPaperUiSmoke.tscn",
+      "sha256": "A07F4D8E378C62345F8601A9C650C854008ABCDBFA998F9E207642060B86F6D5"
+    },
+    {
+      "path": "csharp/panel/PaperButtonFeedback.cs",
+      "sha256": "74894219692F987A32AC356E170377E0950DACC10DE809F7CA8B941EA26ACE7C"
+    },
+    {
+      "path": "tools/NativePaperCaptureHost.gd",
+      "sha256": "88CDE01BF83FC43D7D184FE7B31ED0BED02BE2D322A18501CC24936A872FB106"
+    },
+    {
+      "path": "tools/NativePaperCaptureHost.tscn",
+      "sha256": "477DADB211CB701440AE94A55ABBDE2BBBBCAACE20850225D557984C5645D728"
+    }
+  ],
+  "unchangedSources": [
+    {
+      "path": "csharp/MainScene.Rest.cs",
+      "before": "5E00C1FC003AE2E2069A2579AE29F170FA01146F3FD8F720AC073772FCB6C162",
+      "sha256": "5E00C1FC003AE2E2069A2579AE29F170FA01146F3FD8F720AC073772FCB6C162",
+      "unchanged": true
+    },
+    {
+      "path": "csharp/MainScene.cs",
+      "before": "9F7287E8A855EF06DDD70DC836E645E9876ED3BF132EAC62E5C016D4955A98D8",
+      "sha256": "9F7287E8A855EF06DDD70DC836E645E9876ED3BF132EAC62E5C016D4955A98D8",
+      "unchanged": true
+    },
+    {
+      "path": "csharp/system/WorldStaminaRules.cs",
+      "before": "A583D46BFC94B42DDC1621763C2A3ADE6DE3FABD9971FE5935E2F6B11DFE552D",
+      "sha256": "A583D46BFC94B42DDC1621763C2A3ADE6DE3FABD9971FE5935E2F6B11DFE552D",
+      "unchanged": true
+    },
+    {
+      "path": "csharp/panel/QuietRoomStyle.cs",
+      "before": "5D4306A0B9FD1EE6170DCD9372E66691CB8CB6752B07D796736FAEEF78EE79F9",
+      "sha256": "5D4306A0B9FD1EE6170DCD9372E66691CB8CB6752B07D796736FAEEF78EE79F9",
+      "unchanged": true
+    },
+    {
+      "path": "textures/ui/cultivation/quiet_room_20261010/rest_day.png",
+      "before": "AE5620F2A76242E7EC8F2892057D6437F99AC990884BC3F9215F2B8590A0E731",
+      "sha256": "AE5620F2A76242E7EC8F2892057D6437F99AC990884BC3F9215F2B8590A0E731",
+      "unchanged": true
+    },
+    {
+      "path": "textures/ui/cultivation/quiet_room_20261010/rest_night.png",
+      "before": "3202EF3EFDB084421C262081EEC9C427959D2E63A6CCE13F07734019EE62C914",
+      "sha256": "3202EF3EFDB084421C262081EEC9C427959D2E63A6CCE13F07734019EE62C914",
+      "unchanged": true
+    }
+  ],
+  "validation": {
+    "diffWhitespace": "本轮Rest源码git diff --check通过",
+    "compileEvidence": "本页生产源码与共享反馈已统一编译0警告0错误；最终运行日志单列，后续人物测试会重新生成DLL",
+    "scene": "res://tscn/debug/RestPaperUiSmoke.tscn",
+    "graphics": [
+      {
+        "width": 1280,
+        "height": 720,
+        "headless": false,
+        "checks": 68,
+        "failures": 0,
+        "captures": 7,
+        "exitCode": 0,
+        "appData": "E:/stacklands/output/rest_paper_native/profile_1280",
+        "userArgs": [
+          "--native-paper-scene=res://tscn/debug/RestPaperUiSmoke.tscn",
+          "--native-paper-width=1280"
+        ],
+        "report": "验证记录_1280.json",
+        "log": "output/rest_paper_native/rest_1280_straight_host.log",
+        "attempt": "整纸选中及释放复位修正后最终固定SubViewport运行",
+        "runtimeWarnings": 0,
+        "runtimeErrors": 0,
+        "captureHost": "res://tools/NativePaperCaptureHost.tscn"
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "headless": false,
+        "checks": 68,
+        "failures": 0,
+        "captures": 7,
+        "exitCode": 0,
+        "appData": "E:/stacklands/output/rest_paper_native/profile_1920",
+        "userArgs": [
+          "--native-paper-scene=res://tscn/debug/RestPaperUiSmoke.tscn",
+          "--native-paper-width=1920",
+          "--wide"
+        ],
+        "report": "验证记录_1920.json",
+        "log": "output/rest_paper_native/rest_1920_straight_host.log",
+        "attempt": "整纸选中及释放复位修正后最终固定SubViewport运行",
+        "runtimeWarnings": 0,
+        "runtimeErrors": 0,
+        "captureHost": "res://tools/NativePaperCaptureHost.tscn"
+      }
+    ],
+    "pointerInput": "Viewport.PushInput发送鼠标移动及左键按下/释放，核验回满60小时、手动三角增量+1、返回收起且未结算。",
+    "visualReview": "最终固定SubViewport版14张图已逐张查看，日期/返回同高、方式整纸选中、剧情备注完整；详见视觉核对_最终.json",
+    "buildLog": "output/character_paper_straight_divider_build.log",
+    "buttonMaterials": {
+      "modeFamily": "Regular",
+      "sourcePaper": "selectedFalse",
+      "centralRectangle": false,
+      "assertions": "三种方式必须Regular源纸纹，五状态均selectedFalse；图形已核对选中整张染色。",
+      "feedbackHelper": "csharp/panel/PaperButtonFeedback.cs",
+      "pressedFeedback": "原纸面状态及1px按下位移，独立静态图不包含按住瞬间。"
+    },
+    "runtimeWarnings": {
+      "perRun": 52,
+      "source": "AppearanceModCatalog.scan_directory",
+      "detail": "外观MOD部件不存在，位于male_four_styles_install_20261108/installation/before_install；不是本页休息断言错误，已告知root，未修改MOD。"
+    }
+  },
+  "executionEvidence": [
+    {
+      "path": "runtime/godot/Godot_v4.7.2-stable_spine3_8_mono_win64/Godot_spine3_8_editor_console.exe",
+      "sha256": "D85E4D39CC08D8E245B6644BD1FEDBF219E63184E90405279C9EF0C7517674B0"
+    },
+    {
+      "path": "output/rest_paper_native/rest_1280_straight_host.log",
+      "sha256": "EF0ACE4FE24FFACB394710652C3D0CAA23D34B7DF0B4DFAA482942F497A2DD5E"
+    },
+    {
+      "path": "output/rest_paper_native/rest_1920_straight_host.log",
+      "sha256": "EF0ACE4FE24FFACB394710652C3D0CAA23D34B7DF0B4DFAA482942F497A2DD5E"
+    },
+    {
+      "path": "docs/美术规范/休息纸墨木石正式接入_20261108/验证记录_1280.json",
+      "sha256": "C8EA075CD3256852393D513CC7635D560E5E9717AC8C4C3715D6A30B6E1FA79F"
+    },
+    {
+      "path": "docs/美术规范/休息纸墨木石正式接入_20261108/验证记录_1920.json",
+      "sha256": "07167C394C6131B437A75AA18AE14B820AF14BAE237D9132071CDF15C36AF82A"
+    },
+    {
+      "path": "output/character_paper_straight_divider_build.log",
+      "sha256": "9C464544887CB5F0E03862A7984ED958BB2C721A06CE24201DCFC9ECA11E81E8"
+    }
+  ],
+  "historicalHeadlessEvidence": {
+    "status": "UI纵向修正、日期居中及指针检查前的历史逻辑证据，不代表最终DLL",
+    "runs": [
+      {
+        "width": 1280,
+        "height": 720,
+        "checks": 39,
+        "failures": 0,
+        "captures": 0,
+        "exitCode": 0,
+        "appData": "E:/stacklands/output/rest_paper_native/profile_1280",
+        "userArgs": []
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "checks": 39,
+        "failures": 0,
+        "captures": 0,
+        "exitCode": 0,
+        "appData": "E:/stacklands/output/rest_paper_native/profile_1920",
+        "userArgs": [
+          "--wide"
+        ]
+      }
+    ],
+    "sourceSnapshot": [
+      {
+        "path": "csharp/panel/RestPanel.cs",
+        "sha256": "75A803E37687FB0C1BA864AFFE23E68FCB34E01BB73550FF69E4BA8A92366269"
+      },
+      {
+        "path": "csharp/panel/RestPaperControls.cs",
+        "sha256": "1879D5506296E7DD750CE167A6A778762CBF9EE3ED051CCD39B3E07F269FFE93"
+      },
+      {
+        "path": "csharp/debug/RestPaperUiSmoke.cs",
+        "sha256": "9F31720A2F266DE7119662DD6AEE19F7C24877F02EB9CEF9DCBBD497DC402BA2"
+      },
+      {
+        "path": "tscn/debug/RestPaperUiSmoke.tscn",
+        "sha256": "A07F4D8E378C62345F8601A9C650C854008ABCDBFA998F9E207642060B86F6D5"
+      }
+    ],
+    "hashes": [
+      {
+        "path": ".godot/mono/temp/bin/Debug/stacklands.dll",
+        "sha256": "BA099F42766489A31D5FAD64166733D70BF7AEA94423E88ACF451456DC8D119C"
+      },
+      {
+        "path": "runtime/godot/Godot_v4.7.2-stable_spine3_8_mono_win64/Godot_spine3_8_editor_console.exe",
+        "sha256": "D85E4D39CC08D8E245B6644BD1FEDBF219E63184E90405279C9EF0C7517674B0"
+      },
+      {
+        "path": "output/rest_paper_native/rest_1280_headless.log",
+        "sha256": "9C7CC1DCD99A45A95E9EA5979337FC3F660DBCCB40935D354E9D882ACE6BD12E"
+      },
+      {
+        "path": "output/rest_paper_native/rest_1920_headless.log",
+        "sha256": "9C7CC1DCD99A45A95E9EA5979337FC3F660DBCCB40935D354E9D882ACE6BD12E"
+      },
+      {
+        "path": "docs/美术规范/休息纸墨木石正式接入_20261108/验证记录_headless_1280.json",
+        "sha256": "D3B8F6F68901977B382179A8136405D7F3A682CE9F1E825F67B8C0DEC71824A9"
+      },
+      {
+        "path": "docs/美术规范/休息纸墨木石正式接入_20261108/验证记录_headless_1920.json",
+        "sha256": "AC3F0CE57E8066E4F24BEF5A36478992BC9806B5FEB7D006D5EB94D3ED4CE925"
+      }
+    ]
+  },
+  "imageCount": 14,
+  "historicalGraphicsBeforeWholePaper": {
+    "status": "按钮改Regular前的旧66项，不代表当前验收",
+    "runs": [
+      {
+        "width": 1280,
+        "height": 720,
+        "headless": false,
+        "checks": 66,
+        "failures": 0,
+        "captures": 7,
+        "exitCode": 0,
+        "appData": "E:/stacklands/output/rest_paper_native/profile_1280",
+        "log": "output/rest_paper_native/rest_1280_final_graphics.log",
+        "status": "历史66项：报告已由当前68项覆盖，旧运行日志保留"
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "headless": false,
+        "checks": 66,
+        "failures": 0,
+        "captures": 7,
+        "exitCode": 0,
+        "appData": "E:/stacklands/output/rest_paper_native/profile_1920",
+        "userArgs": [
+          "--wide"
+        ],
+        "log": "output/rest_paper_native/rest_1920_final_graphics_retry.log",
+        "attempt": "最终图形复跑",
+        "status": "历史66项：报告已由当前68项覆盖，旧运行日志保留"
+      }
+    ],
+    "incompleteAttempt": {
+      "width": 1920,
+      "log": "output/rest_paper_native/rest_1920_final_graphics.log",
+      "processExitCode": 0,
+      "completed": false,
+      "detail": "在切换与安排不修改人物时间后静默结束，无新PASS/JSON，未计为通过。原因不明，同DLL复跑66项全过。"
+    }
+  },
+  "executionRuntimeManifest": {
+    "phase": "straight dividers and centered icon",
+    "recordedAt": "2026-11-09T12:39:56.581208+08:00",
+    "sha256": {
+      ".godot/mono/temp/bin/Debug/stacklands.dll": "61b3f685603d99082fd76f56f6a42f9268982b7fced6177dbe4ee3312060822e",
+      "csharp/panel/CraftingPaperStyle.cs": "89e4d262d9240ca94fd3e295a59ec4937c1868eb7673d76ecfd6370fbdde0aec",
+      "csharp/panel/PaperButtonFeedback.cs": "74894219692f987a32ac356e170377e0950dacc10de809f7ca8b941ea26ace7c",
+      "csharp/panel/CultivationUI.Paper.cs": "42ff62fbb47551351f440c11681dd834b5f30b233a3874fadc6d8fbfcd2125fc",
+      "csharp/panel/RestPanel.cs": "e948d15913fc11c489368c3d773ea83c8939d1effea5629d9785af9a56de8167",
+      "csharp/scene/AlchemySlotBrewPreviewScene.PaperSkin.cs": "2e95ef688dceb5428d2542b290ed95b30385c3ee6e42a31fa5d6bd65e7ae191c",
+      "csharp/debug/CharacterPaperUiSmoke.cs": "a0ffc4b312d888e3c99ec053d6e0b822dcf13626f3d3159b2c26970679f632d7",
+      "tools/NativePaperCaptureHost.gd": "88cde01bf83fc43d7d184fe7b31ed0bed02be2d322a18501cc24936a872fb106"
+    }
+  }
+}

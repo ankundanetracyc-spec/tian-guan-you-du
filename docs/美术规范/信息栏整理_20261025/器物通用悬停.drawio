@@ -1,0 +1,37 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="equipment-hover" name="凡器与法器统一模板">
+    <mxGraphModel grid="1" page="1" pageWidth="1100" pageHeight="1000">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ordinary-frame" value="" style="fillColor=#20231c;strokeColor=#c4b58d;" vertex="1" parent="1">
+          <mxGeometry x="50" y="50" width="340" height="570" as="geometry" />
+        </mxCell>
+        <mxCell id="ordinary-icon" value="96×96图标" style="fillColor=none;strokeColor=#c4b58d;fontColor=#eee4cc;" vertex="1" parent="1">
+          <mxGeometry x="70" y="70" width="96" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="ordinary-name" value="素行剑" style="text;align=left;fontSize=26;fontColor=#eee4cc;" vertex="1" parent="1">
+          <mxGeometry x="180" y="95" width="190" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="ordinary-fields" value="品阶：凡器&#xA;器类：剑&#xA;器蕴：无&#xA;锋锐：无&#xA;&#xA;装备效果：&#xA;精准＋2&#xA;&#xA;化法：无&#xA;&#xA;技能：无&#xA;&#xA;简介：宗门制式凡器" style="text;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=18;fontColor=#eee4cc;" vertex="1" parent="1">
+          <mxGeometry x="70" y="185" width="300" height="440" as="geometry" />
+        </mxCell>
+        <mxCell id="artifact-frame" value="" style="fillColor=#20231c;strokeColor=#c4b58d;" vertex="1" parent="1">
+          <mxGeometry x="440" y="50" width="340" height="830" as="geometry" />
+        </mxCell>
+        <mxCell id="artifact-icon" value="96×96图标" style="fillColor=none;strokeColor=#c4b58d;fontColor=#eee4cc;" vertex="1" parent="1">
+          <mxGeometry x="460" y="70" width="96" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="artifact-name" value="清和剑" style="text;align=left;fontSize=26;fontColor=#eee4cc;" vertex="1" parent="1">
+          <mxGeometry x="570" y="95" width="190" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="artifact-fields" value="品阶：法器&#xA;器类：剑（修长薄脊剑）&#xA;器蕴：惊鸿＋2、抱朴＋3&#xA;锋锐：5&#xA;&#xA;装备效果：&#xA;物理伤害＋3.31%&#xA;物理防御＋4&#xA;&#xA;化法：&#xA;适用范围：能应对并施加化解，且带“气血”关键词的单体物理伤害技能&#xA;追加效果：&#xA;· 实际应对追加化解＋1&#xA;· 本次物理防御忽略2.1%&#xA;&#xA;技能：无&#xA;&#xA;简介：" style="text;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=18;fontColor=#eee4cc;" vertex="1" parent="1">
+          <mxGeometry x="460" y="185" width="300" height="690" as="geometry" />
+        </mxCell>
+        <mxCell id="spec" value="2026-10-27 用户确认合并装备效果&#xA;&#xA;装备效果直接增加角色战斗属性，不再设计关键词限定词条。&#xA;每条属性独占一行；锋锐按实际用剑来源生效。&#xA;主要信息块之间留空行，锋锐独立。&#xA;器蕴无本件贡献前缀，化法不重复默认绑定数量。&#xA;缺项显示无，简介始终保留。&#xA;手持与御用剑招均可用该剑锋锐，普通手持不占灵识。&#xA;旧词条迁移与运行时调整尚未处理。" style="text;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="810" y="65" width="250" height="560" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

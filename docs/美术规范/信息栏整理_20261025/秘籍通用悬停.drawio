@@ -1,0 +1,28 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="manual-hover" name="秘籍通用悬停（待样式确认）">
+    <mxGraphModel grid="1" page="1" pageWidth="1000" pageHeight="850">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="frame" value="" style="fillColor=#20231c;strokeColor=#c4b58d;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="340" height="380" as="geometry" />
+        </mxCell>
+        <mxCell id="icon" value="秘籍图标" style="fillColor=none;strokeColor=#c4b58d;fontColor=#eee4cc;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="80" y="80" width="96" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="name" value="玄枢含章经" style="text;whiteSpace=wrap;align=left;fontSize=26;fontColor=#eee4cc;" vertex="1" parent="1">
+          <mxGeometry x="190" y="100" width="185" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="fields" value="修习境界：凡人至云息十层&#xA;修习要求：灵慧≥5&#xA;关键词：周天" style="text;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=18;fontColor=#eee4cc;" vertex="1" parent="1">
+          <mxGeometry x="80" y="200" width="300" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="description" value="简介：以周天为枢机，使技能槽10中的技能自动施展。" style="text;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=18;fontColor=#eee4cc;" vertex="1" parent="1">
+          <mxGeometry x="80" y="330" width="300" height="100" as="geometry" />
+        </mxCell>
+        <mxCell id="spec" value="2026-10-26 用户修订预览&#xA;&#xA;修习境界用至连接，不用破折号。&#xA;修习要求不重复凡人及以上；无要求固定显示无。&#xA;悬停不显示研读值，改为主／辅心法现有关键词并去重。&#xA;简介始终保留，完整卷章内容和门槛留在原研读页。&#xA;不改资源、学习规则以及材料／丹药定稿。" style="text;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="450" y="80" width="460" height="500" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,20 @@
+{
+  "date": "2026-11-08",
+  "mode": "built-in image_gen",
+  "generated_file": "E:/tmp/CodexData/generated_images/01a1bab9-3130-7e43-aa49-f92c7ea1ecc9/exec-85659ea9-ccb5-4891-a7ac-de9eebeba99e.png",
+  "source": "textures/items/storage_bag_20261108/raw/storage_bag.png",
+  "output": "textures/items/storage_bag_20261108/storage_bag_2x2.png",
+  "transparent_background": true,
+  "references": [
+    "textures/items/inventory_density_20261029/pill_container_empty_porcelain.png",
+    "textures/items/inventory_density_20261029/portrait_clothing_yuxu_zayi.png"
+  ],
+  "reference_roles": "仅沿用既有行囊物品的画风，不复制瓶子或折衣主体",
+  "prompt": "Use case: stylized-concept\nAsset type: production Chinese xianxia game inventory item icon, one small storage pouch, displayed at 36 by 36 screen pixels and exported to a 128 by 128 transparent inventory cell.\nPrimary request: Create a single modest Chinese drawstring cloth storage pouch (储物袋) replacing an old storage ring.\nInput images: Image 1 porcelain bottle and Image 2 folded robe are STYLE REFERENCES ONLY. Match their refined hand-painted Chinese ink and light watercolor item illustration, thin dark organic contours, softly brushed material shading, quiet natural colors and crisp readable silhouette. Do not include a bottle or robe in the output.\nSubject: One closed warm muted brown cloth pouch with a softly rounded, gently full body, a gathered cinched neck and a simple dark brown knotted drawstring with two short ends. Plain woven linen cloth, subtle seams and broad readable folds. A compact square overall silhouette, upright, very slight three-quarter view, fully visible.\nComposition/framing: centered single isolated item on a truly transparent background; occupy about 82 to 86 percent of the square canvas, leave clear transparent margins on all sides including cords. The top gathered mouth, knot and rounded base should remain easy to read when very small.\nLighting/mood: understated diffuse upper-left light, moderate natural contrast, warm cloth midtones with dark brown outlines; no cast shadow outside the item.\nConstraints: actual alpha transparency, no opaque backdrop, no checkerboard painted in, no paper rectangle. No metal ring, no jewelry, no leather belt, no straps or backpack, no extra objects, no text, no characters, no UI border, no decorative patterns, no glow, no magical particles, no watermark. Keep the design plain and consistent with the two reference item icons.",
+  "footprint_correction": "生成时沿旧案按一格描述；生成后用户明确改占四格，最终装配为2×2、256×256。原生成提示词保持真实，不回写成后续裁定；仅统一等比缩小与透明补边，不改变生成造型。",
+  "final_cells": [
+    2,
+    2
+  ],
+  "old_save_scope": "用户明确不用管旧档；只迁移现有定义、运行引用与玩家展示，不新增旧档超量处理。"
+}

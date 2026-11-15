@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>纸墨木石 · 全局界面风格母板</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="board.js"></script>
+</head>
+<body>
+  <main class="sheet">
+    <header class="masthead">
+      <div class="wordmark" aria-hidden="true">纸<br>墨</div>
+      <div class="masthead-title"><p class="eyebrow">全局界面风格母板 · 二〇二六年十一月</p><h1>纸墨木石</h1></div>
+      <div class="masthead-note"><p>以善功堂、藏经阁为基准。<br>统一材质、文字、控件与做工，各页按功能组织。</p><span class="review-label">视觉提案 · 尚未接入游戏</span></div>
+    </header>
+    <nav class="main-tabs" role="tablist" aria-label="风格母板分册">
+      <button class="chapter-tab" id="tab-basis" role="tab" aria-selected="true" aria-controls="basis" data-view="basis"><span>一</span> 风格基准</button>
+      <button class="chapter-tab" id="tab-components" role="tab" aria-selected="false" aria-controls="components" tabindex="-1" data-view="components"><span>二</span> 公共控件</button>
+      <button class="chapter-tab" id="tab-applications" role="tab" aria-selected="false" aria-controls="applications" tabindex="-1" data-view="applications"><span>三</span> 面板应用</button>
+      <a class="document-link" href="../../plans/全局界面统一风格规范_20261108.md">查看完整规范 ↗</a>
+    </nav>
+
+    <section id="basis" role="tabpanel" aria-labelledby="tab-basis" data-panel="basis">
+      <div class="section-heading"><div><p class="eyebrow">从已满意的界面里提取共同语言</p><h2>纸墨作面，木石为骨，布绢盛物。</h2></div><p class="heading-note">保留手绘的质感与厚度。<br>文字所在的地方，安静、清楚。</p></div>
+      <div class="anchor-grid">
+        <figure class="reference">
+          <a class="picture-frame" href="../行囊交易善功堂实装_20261031/07_善功堂去装备与滑轨_20261107.png" target="_blank" rel="noopener"><img src="../行囊交易善功堂实装_20261031/07_善功堂去装备与滑轨_20261107.png" alt="当前善功堂实机：连贯木作外框、浅纸四列目录与淡绿色选中行"></a>
+          <figcaption><div><span class="figure-index">壹</span><h3>善功堂</h3><span class="small-label">当前实机 · 保留</span></div><p>完整承托、浅纸目录、淡山纹。<br>借用它的做工与完成度，其他页面另定构图。</p></figcaption>
+        </figure>
+        <figure class="reference">
+          <a class="picture-frame" href="../玄览峰拓印接入_20261107/封面侧面_1920.png" target="_blank" rel="noopener"><img src="../玄览峰拓印接入_20261107/封面侧面_1920.png" alt="当前藏经阁实机：灰青石墙、灰褐木架、灰蓝书脊与右侧浅纸详情"></a>
+          <figcaption><div><span class="figure-index">贰</span><h3>藏经阁</h3><span class="small-label">当前实机 · 保留</span></div><p>木石相接、布面书册、纸面详情。<br>厚度来自边沿、侧面和接触影。</p></figcaption>
+        </figure>
+      </div>
+      <div class="subheading"><h3>四种材质，各司其职</h3><span>直接引用已有资源，保留同一世界的笔触</span></div>
+      <div class="material-grid">
+        <article class="material-card"><div class="material-face paper-texture"><span>纸</span></div><h4>暖纸 · 阅读</h4><p>正文、清册、详情与办理页。<br>淡纹退到边角。</p></article>
+        <article class="material-card"><div class="material-face wood-texture"><span>木</span></div><h4>灰褐木 · 承托</h4><p>压条、页框、书架与题签。<br>接缝连贯，薄边有厚度。</p></article>
+        <article class="material-card"><div class="material-face stone-texture"><span>石</span></div><h4>灰青石 · 稳定</h4><p>结构衬托与专用盘面。<br>色块沉静，边沿克制。</p></article>
+        <article class="material-card"><div class="material-face cloth-texture"><span>绢</span></div><h4>浅绢 · 收纳</h4><p>行囊、领取与物品空间。<br>保留已认可的浅绢 v5。</p></article>
+      </div>
+      <div class="subheading"><h3>共用色谱</h3><span>新组件目标值 · 原画保留自然色差</span></div>
+      <div class="palette" aria-label="共用色谱">
+        <div><i style="--swatch:#303D38"></i><b>深墨</b><code>#303D38</code></div>
+        <div><i style="--swatch:#EFE7D6"></i><b>暖纸</b><code>#EFE7D6</code></div>
+        <div><i style="--swatch:#70615A"></i><b>灰褐木</b><code>#70615A</code></div>
+        <div><i style="--swatch:#687681"></i><b>灰青</b><code>#687681</code></div>
+        <div><i style="--swatch:#C7CFB5"></i><b>松灰绿</b><code>#C7CFB5</code></div>
+        <div><i style="--swatch:#9A8A71"></i><b>旧边</b><code>#9A8A71</code></div>
+        <div><i style="--swatch:#985344"></i><b>暗赭</b><code>#985344</code></div>
+      </div>
+      <div class="closing-note"><b>统一做工，按用途成形。</b><p>人物用卷宗，静室用案面，行囊用绢布；深墨提示、轻量 HUD 与逐格石盘保留专用表现。</p></div>
+    </section>
+
+    <section id="components" role="tabpanel" aria-labelledby="tab-components" data-panel="components" hidden>
+      <div class="section-heading"><div><p class="eyebrow">同一套控件，贯穿所有面板</p><h2>题签、纸页、压边与深墨提示</h2></div><p class="heading-note">可点击导航、选项与按钮。<br>此页只演示外观，不执行游戏操作。</p></div>
+      <div class="component-stage">
+        <div class="stage-header"><div class="paper-title">卷宗样式</div><span>木框承托 · 纸面阅读 · 深墨文字</span><button class="paper-button compact" id="open-demo">确认样式</button></div>
+        <div class="component-layout">
+          <nav class="page-index" aria-label="组件演示导航"><span class="index-label">目录</span><button class="index-item is-current" aria-pressed="true">概览</button><button class="index-item" aria-pressed="false">属性</button><button class="index-item" aria-pressed="false">功法</button><button class="index-item" aria-pressed="false">装备</button><div class="index-foot">浅纸题签<br>松绿压边</div></nav>
+          <article class="paper-panel specimen-record">
+            <div class="paper-heading"><span class="knot" aria-hidden="true">◇</span><h3 id="specimen-title">概览</h3><span class="paper-section-note">内容占位 · 不绑定角色</span></div>
+            <p class="record-intro">主信息放在完整、安静的纸面上。用留白和细线分组，数值沿列对齐。</p>
+            <dl class="specimen-facts"><div><dt>称谓</dt><dd>—</dd></div><div><dt>所属</dt><dd>—</dd></div><div><dt>境界</dt><dd>—</dd></div></dl>
+            <div class="record-separator"><span>共用选择项</span></div>
+            <div class="segmented" role="group" aria-label="示例选项"><button class="segment is-current" aria-pressed="true">概况</button><button class="segment" aria-pressed="false">详情</button><button class="segment" aria-pressed="false">记录</button></div>
+            <label class="field-label" for="search-demo">查找</label><div class="search-field"><span aria-hidden="true">⌕</span><input id="search-demo" placeholder="输入名称" autocomplete="off"><kbd>/</kbd></div>
+            <div class="example-list" aria-label="示例条目"><button class="list-row is-current" aria-pressed="true"><span><i></i>条目一</span><span>—</span></button><button class="list-row" aria-pressed="false"><span><i></i>条目二</span><span>—</span></button><button class="list-row" aria-pressed="false"><span><i></i>条目三</span><span>—</span></button></div>
+            <div class="paper-actions"><span class="muted" id="selection-status" aria-live="polite">已选：概况 · 条目一</span><button class="paper-button primary" id="open-demo-bottom">查看确认</button></div>
+          </article>
+          <aside class="component-side">
+            <div class="ink-tooltip"><p class="tooltip-kicker">深墨提示 · 既有专用变体</p><h3>悬停信息</h3><div class="tooltip-rule"></div><p>深墨底，米白字，细角标。<br>正文完整展开，不设内滚动。</p><p class="tooltip-secondary">效果、条件与公式沿现行规则，<br>不因统一外观删减。</p></div>
+            <div class="paper-note"><h4>条件表达</h4><p class="condition"><b>✓</b> 满足 · 保留文字</p><p class="condition danger"><b>✕</b> 不足 · 说明原因</p><p class="muted">状态同时有符号和文字，<br>不只依赖红绿。</p></div>
+            <div class="type-note"><span class="eyebrow">同一字体</span><h4>霞鹜臻楷</h4><p>标题有气，正文清楚。<br>字级随阅读层次变化。</p><span class="type-caption">页面 40 · 区域 28<br>正文 22 · 辅助 18</span></div>
+          </aside>
+        </div>
+      </div>
+      <div class="subheading"><h3>按钮的六种状态</h3><span>纸面一致，反馈清楚；悬停不发光、不改变尺寸</span></div>
+      <div class="state-grid">
+        <div class="state-sample"><span>常态</span><button class="paper-button" data-state="normal">查看</button><small>薄边与接触影</small></div>
+        <div class="state-sample"><span>悬停</span><button class="paper-button demo-hover" data-state="hover">查看</button><small>纸面与边沿轻提亮</small></div>
+        <div class="state-sample"><span>按下</span><button class="paper-button demo-pressed" data-state="pressed">查看</button><small>压入，阴影收短</small></div>
+        <div class="state-sample"><span>选中</span><button class="paper-button demo-selected" aria-pressed="true" data-state="selected">已选</button><small>松灰绿与深压边</small></div>
+        <div class="state-sample"><span>键盘焦点</span><button class="paper-button demo-focus" data-state="focus">查看</button><small>清楚的实线轮廓</small></div>
+        <div class="state-sample"><span>不可用</span><button class="paper-button" disabled data-state="disabled">暂不可用</button><small>文字仍然可读</small></div>
+      </div>
+      <div class="closing-note"><b>控件共用，内容遵循各自规则。</b><p>主悬停无内滚动；浅绢、物品格、书脊、战斗盘和加载画面保留已经确认的专用要求。</p></div>
+    </section>
+
+    <section id="applications" role="tabpanel" aria-labelledby="tab-applications" data-panel="applications" hidden>
+      <div class="section-heading"><div><p class="eyebrow">跨页面的材质组合示意</p><h2>同一种做工，四种用途</h2></div><p class="heading-note">以下只用于看统一后的气质。<br>功能、数值与正式布局沿各自现行方案。</p></div>
+      <div class="application-switch" role="group" aria-label="面板材质示意"><button class="paper-button is-current" data-application="character" aria-pressed="true">人物卷宗</button><button class="paper-button" data-application="quiet" aria-pressed="false">静室修行</button><button class="paper-button" data-application="inventory" aria-pressed="false">行囊收纳</button><button class="paper-button" data-application="rental" aria-pressed="false">设施租用</button></div>
+      <div class="application-frame"><div class="application-caption"><span class="small-label">材质组合示意</span><p id="application-description">木边与纸册支撑人物资料，目录与详情有明确主次。</p><span class="muted">实际数据：—</span></div><div id="application-preview"></div></div>
+      <div class="adoption-grid">
+        <article><span class="figure-index">一</span><h3>先定公共做工</h3><p>页框、题签、纸面、按钮、输入、悬停共用同一组材质与状态。</p></article>
+        <article><span class="figure-index">二</span><h3>人物、静室先试</h3><p>用两种不同结构检验统一效果，再按面板族逐步适配。</p></article>
+        <article><span class="figure-index">三</span><h3>保留专用表现</h3><p>行囊浅绢、深墨提示、紧凑 HUD、战斗石盘各有用途，共同服从色谱与字级。</p></article>
+      </div>
+      <div class="closing-note"><b>善功堂与藏经阁继续作为基准。</b><p>本轮不重做这两页，也不改现有炼丹、炼器操作页。租用入口待全局风格明确后继续细化。</p></div>
+    </section>
+
+    <footer class="board-footer"><span>纸墨木石 · 视觉提案 01</span><p>项目现有素材与字体 · 网页母板审阅 · 未迁移正式游戏</p><a href="README.md">素材与说明 ↗</a></footer>
+  </main>
+
+  <dialog id="confirmation" aria-labelledby="dialog-title"><div class="dialog-body paper-texture"><p class="eyebrow">共用确认样式</p><h2 id="dialog-title">查看这套做工</h2><p>窄木框承托浅纸。标题、说明与操作各有层次。<br>此处仅演示弹窗，不执行租用、扣费或保存。</p><div class="dialog-cost"><span>实际费用</span><b>—</b></div><div class="dialog-actions"><button class="paper-button" data-close-dialog>返回</button><button class="paper-button primary" data-close-dialog>看过了</button></div></div></dialog>
+
+  <template id="application-character"><div class="app-shell"><div class="app-title"><h3>人物</h3><span>卷宗式组织</span></div><div class="character-composition"><nav class="mini-nav"><span class="mini-current">概览</span><span>属性</span><span>功法</span><span>装备</span><span>关系</span></nav><div class="paper-panel dossier"><h4>基本资料</h4><dl><div><dt>称谓</dt><dd>—</dd></div><div><dt>所属</dt><dd>—</dd></div><div><dt>境界</dt><dd>—</dd></div></dl><h4 class="separated-title">修行与经历</h4><div class="diagram-line"></div><div class="diagram-line short"></div><p class="muted">详情、公式与人物数据沿现行来源。</p></div><div class="paper-panel portrait-frame"><div class="portrait-seal" aria-hidden="true">人<br>物</div><span>立绘原位保留</span></div></div></div></template>
+  <template id="application-quiet"><div class="app-shell"><div class="app-title"><h3>静室</h3><span>修行案面式组织</span></div><div class="quiet-composition"><nav class="mini-nav horizontal"><span class="mini-current">吐纳</span><span>修行</span><span>休息</span></nav><div class="quiet-window paper-panel"><div class="quiet-disc"><span>静</span><i></i></div><p>同一静室背景贯穿各子页</p></div><div class="paper-panel quiet-record"><h4>修行安排</h4><dl><div><dt>当前修行</dt><dd>—</dd></div><div><dt>周天</dt><dd>—</dd></div></dl><div class="record-separator"><span>用度与条件</span></div><p class="muted">真实条件与现有操作保持。<br>统一题签、纸色和按钮做工。</p><button class="paper-button primary" disabled>开始修行</button></div></div></div></template>
+  <template id="application-inventory"><div class="app-shell"><div class="app-title"><h3>行囊</h3><span>纸面清册 · 浅绢收纳</span></div><div class="inventory-composition"><div class="paper-panel inventory-ledger"><h4>清册</h4><div class="mini-list"><span class="mini-current">全部</span><span>材料</span><span>器物</span><span>丹药</span></div><p class="muted">名称与数量沿列对齐。<br>索引、按钮与提示共用。</p></div><div class="cloth-panel cloth-texture"><div class="cloth-corner"></div><h4>浅绢内衬</h4><div class="grid-swatch" aria-hidden="true"></div><p>局部格线示意 · 不表示容量</p><span class="cloth-note">已认可 v5 保留；200 格、36 格距与五区位置保持。</span></div></div></div></template>
+  <template id="application-rental"><div class="app-shell"><div class="app-title"><h3>天工峰 · 设施租用</h3><span>办理簿式组织</span></div><div class="rental-composition"><div class="paper-panel facility-summary"><div class="facility-label"><span class="mini-current">丹房</span><span>器作</span></div><h4>宗门设施</h4><p>确认用度与租期，<br>再进入现有炼制界面。</p><div class="facility-seal" aria-hidden="true">天<br>工</div><p class="muted">场所可以有自己的题签与陈设。<br>木纸做工与全局一致。</p></div><div class="paper-panel rental-ledger"><h4>租用簿</h4><dl><div><dt>计费</dt><dd>按租用时长</dd></div><div><dt>用度</dt><dd>宗门贡献</dd></div><div><dt>租期</dt><dd>待定</dd></div><div><dt>单价</dt><dd>待定</dd></div><div><dt>总用度</dt><dd>待定</dd></div></dl><button class="paper-button primary" disabled>租用并进入</button><p class="muted">数值未定，此处只看材质组合。</p></div></div></div></template>
+</body>
+</html>

@@ -1,0 +1,40 @@
+{
+  "phase": "首轮图形验收，修正前证据",
+  "date": "2026-11-08",
+  "runResults": [
+    {
+      "width": 1280,
+      "checks": 53,
+      "exitCode": 0,
+      "captures": 7
+    },
+    {
+      "width": 1920,
+      "checks": 53,
+      "exitCode": 0,
+      "captures": 7
+    }
+  ],
+  "allFourteenImagesViewed": true,
+  "inputBoundary": "此轮仅TextSubmitted与Pressed信号，未检验指针命中；后续烟测已补真实Viewport.PushInput，等待统一build。",
+  "findings": [
+    {
+      "id": "fixed-note",
+      "severity": "需要修正",
+      "images": [
+        "首轮_剧情限定_1280.png",
+        "首轮_剧情限定_1920.png"
+      ],
+      "detail": "固定剧情隐藏方式按钮后留空；一句短剧情备注在首屏外，触发不必要的滚动条。",
+      "change": "省去隐藏模式行纵向空间，按备注实际字高计算正文，重开回顶；新增首屏/无需滚动/留白/重开断言。"
+    },
+    {
+      "id": "date-align",
+      "severity": "需要修正",
+      "detail": "日期与返回同一外框高度但日期Label默认Top，文字基线偏上。用户明确要求同一行同高。",
+      "change": "日期改22字号、Center，与返回同y18/h46；新增位置/高度/字号/垂直居中断言。"
+    }
+  ],
+  "otherStates": "按时长、精力回满、精力已满、指定日期、入夜、未绑定两档没有发现裁字、重叠或行动按钮出界。",
+  "status": "两处已修改源码；等待新DLL复测与重新看图，不以53项逻辑全过代替视觉结论。"
+}

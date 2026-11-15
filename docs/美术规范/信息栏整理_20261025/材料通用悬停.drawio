@@ -1,0 +1,40 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="material-hover" name="材料通用悬停（详细版）">
+    <mxGraphModel dx="1000" dy="800" grid="1" gridSize="10" page="1" pageWidth="1000" pageHeight="800">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="card" value="" style="rounded=0;fillColor=#20231c;strokeColor=#c4b58d;" vertex="1" parent="1">
+          <mxGeometry x="60" y="60" width="400" height="490" as="geometry" />
+        </mxCell>
+        <mxCell id="icon" value="材料图标" style="rounded=0;fillColor=none;strokeColor=#c4b58d;fontColor=#eee4cc;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="85" y="85" width="96" height="96" as="geometry" />
+        </mxCell>
+        <mxCell id="name" value="兽皮" style="text;align=left;fontSize=26;fontStyle=1;fontColor=#eee4cc;" vertex="1" parent="1">
+          <mxGeometry x="200" y="95" width="230" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="grade" value="品阶：9品上（材评1×2＋1×0.5＝2.5，向上取整并限定在1～27后为第3小阶）" style="text;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=18;fontColor=#eee4cc;" vertex="1" parent="1">
+          <mxGeometry x="85" y="175" width="345" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="element" value="五行：木" style="text;align=left;fontSize=18;fontColor=#eee4cc;" vertex="1" parent="1">
+          <mxGeometry x="85" y="260" width="345" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="texture" value="质地：纤维" style="text;align=left;fontSize=18;fontColor=#eee4cc;" vertex="1" parent="1">
+          <mxGeometry x="85" y="300" width="345" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="polarity" value="相性：阳" style="text;align=left;fontSize=18;fontColor=#eee4cc;" vertex="1" parent="1">
+          <mxGeometry x="85" y="340" width="345" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="utilities" value="功用：固·九品、护·九品" style="text;align=left;fontSize=18;fontColor=#eee4cc;" vertex="1" parent="1">
+          <mxGeometry x="85" y="380" width="345" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="description" value="简介：" style="text;align=left;verticalAlign=top;fontSize=18;fontColor=#eee4cc;" vertex="1" parent="1">
+          <mxGeometry x="85" y="445" width="345" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="spec" value="现行：2026-10-26用户确认&#xA;&#xA;每个字段独占一行，长内容自然换行。&#xA;简介为空也保留“简介：”及一行位置。&#xA;不显示材料分类、数量、价格、贡献或领取来源。&#xA;行囊／交易／兑换／领取共用。&#xA;&#xA;图稿固定采用详细版；游戏简略版仅隐藏结果后的公式。&#xA;全部材料移除规则详解入口，F1不打开材料规则页；简介为最后一块。&#xA;不改变材料数据、计算和物品操作。&#xA;&#xA;视觉修订：图标96×96，游戏常规宽340；长内容换行。" style="text;whiteSpace=wrap;align=left;verticalAlign=top;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="620" y="80" width="320" height="430" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

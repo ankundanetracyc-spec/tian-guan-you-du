@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-08",
+  "mode": "只读复用现有原生素材，不生成或修改PNG",
+  "font": {
+    "path": "resources/font/LXGWZhenKaiSlabGB-Regular.ttf",
+    "sha256": "086FA66AF57B7A0D7A007067097CD1AC27EB8B8DB810FB83AC3DE620BE1EB3A1"
+  },
+  "materialSources": [
+    {
+      "path": "csharp/panel/CraftingPaperStyle.cs",
+      "sha256": "FD9196C7D6B925B8E2C1AABBCA81FD1E56441D1D79C95A2F9A384B642B05D5DF"
+    },
+    {
+      "path": "csharp/panel/PaperButtonFeedback.cs",
+      "sha256": "B991FEF4A963846C12B0F41F157F677D68E966BB9DA05B7EE49D2A327012EF00"
+    },
+    {
+      "path": "textures/ui/crafting_paper_20261108/frame_atlas.png",
+      "sha256": "5D311B0AEB04D8DE57FDDBC6AEF492E7E11FFBADBA3CE558FE2F67579A4DA7CE"
+    },
+    {
+      "path": "textures/ui/crafting_paper_20261108/button_regular.png",
+      "sha256": "DFF0F81E6D21615106EEA2023AA73429CCD003E7E3E1E7C49CBC5E3BCEC6E495"
+    },
+    {
+      "path": "textures/ui/crafting_paper_20261108/button_primary.png",
+      "sha256": "FCD81ACEB22BE83C5CB3D3C1AD4C7B1B8E2CBAAC7D1B923409D1EDD3C6E3727E"
+    },
+    {
+      "path": "textures/ui/crafting_paper_20261108/input.png",
+      "sha256": "B73575D23FB26A0EFEC9EEDFD6FEFB45C2DD5CF8AFCF283E3077CC6F102DB8C9"
+    },
+    {
+      "path": "textures/ui/crafting_paper_20261108/control_atlas.png",
+      "sha256": "4FF46165045D1E5C644AC9FE87C12E783D3343102ACBEEF4D585E42F142588BE"
+    },
+    {
+      "path": "resources/font/LXGWZhenKaiSlabGB-Regular.ttf",
+      "sha256": "086FA66AF57B7A0D7A007067097CD1AC27EB8B8DB810FB83AC3DE620BE1EB3A1"
+    }
+  ],
+  "exceptions": [
+    "数字增减：裸实心三角",
+    "右上返回：裸实心小右三角"
+  ],
+  "prototype": "docs/美术规范/休息纸墨木石样稿_20261108/休息_统一返回_1920.png",
+  "note": "当前Regular整纸按钮版，只读复用已有素材；不使用Tab或selectedTrue中央染色纹理，数字组件保持。共享helper未由本分线修改。",
+  "buttonFamilies": {
+    "modes": "Regular",
+    "return": "Regular",
+    "primaryAction": "Primary",
+    "numberWell": "Input",
+    "selection": "原纸纹selectedFalse＋整张ModulateColor"
+  }
+}

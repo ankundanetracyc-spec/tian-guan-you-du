@@ -1,0 +1,125 @@
+{
+  "status": "passed",
+  "date": "2026-11-09",
+  "scope": "独立底部对白与回应样稿；未替换正式剧情入口",
+  "checks": 90,
+  "captures": 14,
+  "reviewedImages": 14,
+  "runs": [
+    {
+      "width": 1280,
+      "checks": 45,
+      "captures": 7,
+      "processExitCode": 0,
+      "report": "验收记录_1280.json",
+      "log": "运行_1280.log"
+    },
+    {
+      "width": 1920,
+      "checks": 45,
+      "captures": 7,
+      "processExitCode": 0,
+      "report": "验收记录_1920.json",
+      "log": "运行_1920.log"
+    }
+  ],
+  "images": [
+    {
+      "file": "剧情对白_独立回应_1280.png",
+      "sha256": "79d58a5f0f26182442850f16480f22be973aee963b7fc0b76d2a94a7d6223c92",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "剧情对白_按钮按下_1280.png",
+      "sha256": "33b74cfb76845fd1f82d6f167e1ebb85253aa8bb836b979209b100b99a47f25a",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "剧情对白_玩家发言_1280.png",
+      "sha256": "ca48832ce6d3e7ebad7ea28647f6edfef99374db6b746a315553bf5a5c7bc3e4",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "剧情对白_普通对白_1280.png",
+      "sha256": "1d57c4aa92f891fdaa6c65d00a7d9c61661b64aa93fc2133149096e351bb3e03",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "剧情对白_旁白_1280.png",
+      "sha256": "675119de645179169c981cea4c019ce6c4b715a6f34a22a72c48c1098adb6e53",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "剧情对白_长文滚动_1280.png",
+      "sha256": "41365fff9af294656542377a9336e7bcb27e608ca867ae984abfef50780c049f",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "剧情对白_长选项滚动_1280.png",
+      "sha256": "12a3d36548431309c29b7fd6241a8b4a25d58a4073ef68829be20872e81d960c",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "剧情对白_独立回应_1920.png",
+      "sha256": "11fd0eff208e201e69fe34a902c09c69716b3ec0c16ac05a103bb7b3cc85550b",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "剧情对白_按钮按下_1920.png",
+      "sha256": "7f01a9ea27eb7f7bb41c36db526c05b5ecb63ede4e6793f738c45f5571b7c840",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "剧情对白_玩家发言_1920.png",
+      "sha256": "0c680699b05ec23765937d18f265ed04e57cec8628990948b90ca466757e9705",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "剧情对白_普通对白_1920.png",
+      "sha256": "9b5c2b9bcc1a1b91fc3a7a8155d4bff83a693c8870626d3a31372a3a32e08e50",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "剧情对白_旁白_1920.png",
+      "sha256": "bad051d327690fa995fac97f6ffaf169b59fbef113e9e991f9254d71b3d6ffcc",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "剧情对白_长文滚动_1920.png",
+      "sha256": "39b3994cb9ca1f21c5bddb57ba70699d15cf378903cee0fad0dee50c6199147d",
+      "visuallyReviewed": true
+    },
+    {
+      "file": "剧情对白_长选项滚动_1920.png",
+      "sha256": "724000392c35c59ea62e08828cabf905d83daf90d4229d733f85df5cf55b9d30",
+      "visuallyReviewed": true
+    }
+  ],
+  "formalSourcesUnchanged": {
+    "csharp/panel/StoryDialoguePanel.cs": "fe57fa25fbb8a3e6e77a4b544aea9ee83527fc8822cdd813b3a2c2ce85149ed0",
+    "csharp/panel/StoryDialoguePanel.Layout.cs": "1606286a8fb15cb90bc278ec2661ba8a1f6f0658e9b38ea2c4271b95864fbf6a",
+    "csharp/panel/StoryDialoguePanel.Choices.cs": "29d75b66a493fcddb2d5c5ac2cd53ef70224038c076596be221fd0116b31cc7c",
+    "csharp/panel/StoryDialoguePanel.Portraits.cs": "598f180f5245da856487aa236f0e5065ace5e1f28128709c77e65acd69ab5a17",
+    "csharp/panel/StoryDialoguePanel.Social.cs": "c2802431f3ed4714addb71d7daffdf754452a081a40d17637e75268cbdd36187",
+    "csharp/MainScene.NpcProbe.cs": "d270fadf75465c09e708bf571e2e12251937f98ec405fc23535ca632d5dea605",
+    "csharp/world/NpcProbeRules.cs": "55a55edb037a2033efa4a69bd1f0547e845762cca5707e0d7861a10c07ad4884",
+    "tscn/panel/StoryDialoguePanel.tscn": "db3e9dcd1642d7cb88ccb78993366095a4a219c7525ac4c41c067ea79fbdcce8"
+  },
+  "runtimeAtCapture": {
+    ".godot/mono/temp/bin/Debug/stacklands.dll": "ec3ef94669ec417892b6456a4502e5c1f20fcd5778eed728c281b3c9380e9542",
+    "csharp/scene/StoryDialoguePaperPreviewPanel.cs": "3414493c5b6d28d6a74c8d645f2898732e6e6a383d052a3c9cbeadaf9cfa54f3",
+    "csharp/scene/StoryDialoguePaperPreviewScene.cs": "459cad4423b29a4a094c2eb3c858f1bcd2453457bc5d0eba03992f7e9b7b0f43",
+    "csharp/debug/StoryDialoguePaperUiSmoke.cs": "8dd34dea2838c6ffee6f21c8a814f0f15239c46c5402617b07f43fb1924ac737",
+    "csharp/panel/CraftingPaperStyle.cs": "d84be9fce19722ecc197b016bed7e05ca86bdba65dc44a18b0f3a6febcd5a1f2",
+    "csharp/panel/PaperButtonFeedback.cs": "275a8540a06a858370ed7e8eb3cff4beec35d8a75c8fda5a86d0e41db9f7a6a3",
+    "tools/NativePaperCaptureHost.gd": "7e6e583312bff59c6727aaa227b2a893574e49ead77a1350a05df01e243ffd06"
+  },
+  "portraitFix": "取消旧8px下探，NPC、玩家切换及子视口尺寸变化后，可见立绘下沿严格贴合对白纸面上沿",
+  "build": {
+    "success": true,
+    "errors": 0,
+    "warnings": 1,
+    "warning": "FormationGuardPanel.Owner隐藏Node.Owner（CS0108）；本轮未改该模块"
+  },
+  "boundary": "仅展示原台词与回应，不作探查判定、不交手、不收费、不写人物认知或正式进度"
+}
