@@ -1,0 +1,42 @@
+### Result
+{"status":"passed","count":18,"captures":["papers_1280.png","inks_1280.png","brushes_1280.png","recipes_1280.png","papers_1920.png","inks_1920.png","brushes_1920.png","recipes_1920.png"]}
+### Ran Playwright code
+```js
+await (async page => {
+  const checks=[], captures=[], states=[];
+  const out='E:/stacklands/output/playwright/talisman-selection-20261109/';
+  const check=(name,pass,detail)=>{ checks.push({name,pass,detail}); if(!pass) throw new Error(name); };
+  const pause=()=>page.waitForTimeout(190);
+  const inspect=locator=>locator.evaluateAll(nodes=>nodes.map(b=>({text:b.textContent.trim(),filter:getComputedStyle(b.querySelector('.skin-layer')).filter,color:getComputedStyle(b).color,centers:[...b.querySelectorAll('.skin-center')].map(c=>getComputedStyle(c).filter),shadow:getComputedStyle(b).boxShadow})));
+  await page.locator('[data-review=prepare]').click();
+  for(const [width,height] of [[1280,720],[1920,1080]]) {
+    await page.setViewportSize({width,height});
+    await page.getByRole('tab',{name:'画符',exact:true}).click();
+    for(const kind of ['papers','inks','brushes','recipes']) {
+      await page.locator('[data-picker='+kind+']').first().click(); await pause();
+      const data=await inspect(page.locator('#modal-layer button.is-selected:visible'));
+      check(width+' '+kind+' selection uses full paper',data.length>0&&data.every(v=>v.filter.includes('hue-rotate(52deg)')&&v.filter.includes('brightness(0.78)')&&v.centers.every(x=>x==='none')&&v.shadow==='none'),data);
+      states.push({width,kind,data});
+      const name=kind+'_'+width+'.png'; await page.screenshot({path:out+name});captures.push(name);
+      await page.getByRole('button',{name:'关闭',exact:true}).click();
+    }
+    await page.getByRole('tab',{name:'制符纸',exact:true}).click();
+    const method=page.locator('.technique-choice.is-selected');
+    const before=await method.boundingBox(); const methodId=await method.getAttribute('data-method');
+    await method.hover();await pause();
+    let data=await inspect(method);
+    check(width+' selected hover preserves selection',data[0].filter.includes('brightness(0.78)')&&data[0].filter.includes('brightness(0.99)'),data);
+    await page.mouse.down();await pause();data=await inspect(method);
+    check(width+' selected held preserves selection',data[0].filter.includes('brightness(0.78)')&&data[0].filter.includes('brightness(0.87)'),data);
+    await page.mouse.up();await page.mouse.move(2,2);await pause();data=await inspect(method);
+    const after=await method.boundingBox();
+    check(width+' release retains same choice',await method.getAttribute('data-method')===methodId&&data[0].filter.includes('brightness(0.78)'),data);
+    check(width+' selection does not move hit area',['x','y','width','height'].every(k=>Math.abs(before[k]-after[k])<.1),{before,after});
+    check(width+' selected children keep dark ink',await method.locator('strong,small,.technique-brief,.technique-mark').evaluateAll(nodes=>nodes.every(n=>getComputedStyle(n).color==='rgb(23, 60, 44)')));
+  }
+  const report={status:'passed',count:checks.length,checks,captures,states};
+  await page.evaluate(report=>window.TALISMAN_SELECTION_INTERACTION=report,report);
+  return {status:report.status,count:report.count,captures};
+}
+)(page);
+```

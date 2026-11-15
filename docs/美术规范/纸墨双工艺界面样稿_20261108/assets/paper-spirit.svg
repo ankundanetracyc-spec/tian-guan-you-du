@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" fill="none">
+  <title>灵机交织，悬纸渐成</title>
+  <defs>
+    <radialGradient id="h"><stop stop-color="#e5e8cd" stop-opacity=".64"/><stop offset="1" stop-color="#e5e8cd" stop-opacity="0"/></radialGradient>
+    <linearGradient id="p" x1="300" y1="90" x2="490" y2="420" gradientUnits="userSpaceOnUse"><stop stop-color="#f1ebd5"/><stop offset=".55" stop-color="#dfdfc1"/><stop offset="1" stop-color="#c9d4b9"/></linearGradient>
+    <linearGradient id="l"><stop stop-color="#789d87" stop-opacity="0"/><stop offset=".48" stop-color="#c9dab4"/><stop offset="1" stop-color="#789d87" stop-opacity="0"/></linearGradient>
+    <filter id="b"><feGaussianBlur stdDeviation="12"/></filter>
+  </defs>
+  <ellipse cx="400" cy="270" rx="310" ry="231" fill="url(#h)"/>
+  <ellipse cx="401" cy="438" rx="176" ry="17" fill="#354a3e" opacity=".1" filter="url(#b)"/>
+  <path d="M124 323C201 421 625 426 687 294M167 209C286 149 597 164 665 269" stroke="#87a68c" stroke-opacity=".3" stroke-width="1.5"/>
+  <path d="M172 343C315 397 591 379 646 317" stroke="#e2dfb3" stroke-width="2" stroke-linecap="round"/>
+  <g transform="rotate(-9 400 257)">
+    <path d="M277 91L509 95L519 414L283 408L279 283Z" fill="url(#p)" fill-opacity=".93" stroke="#899e7c" stroke-opacity=".65" stroke-width="1.4"/>
+    <path d="M289 103L498 106L506 401L294 395" stroke="#faf1d5" stroke-opacity=".65"/>
+    <g stroke="#7b9d81" stroke-opacity=".32" stroke-linecap="round">
+      <path d="M301 353C353 328 307 267 364 229S408 151 452 119"/>
+      <path d="M322 388C369 333 345 288 393 247S426 163 479 135"/>
+      <path d="M361 393C369 343 427 315 416 257S458 180 488 173"/>
+      <path d="M296 174C331 192 323 222 366 234S414 250 473 224"/>
+      <path d="M308 310C355 286 397 335 448 304S472 270 499 268"/>
+    </g>
+    <path d="M323 366C361 328 335 289 385 250S424 173 465 135" stroke="#f4edc7" stroke-width="2" stroke-opacity=".85"/>
+    <path d="M291 377C312 355 301 330 326 318M465 122C480 100 504 84 538 85" stroke="url(#l)" stroke-width="3"/>
+  </g>
+  <g fill="#d9e5bd"><circle cx="241" cy="183" r="3"/><circle cx="558" cy="151" r="2.5"/><circle cx="585" cy="330" r="3"/><circle cx="210" cy="346" r="2"/><circle cx="527" cy="427" r="2.5"/><circle cx="365" cy="70" r="2"/></g>
+  <g stroke="#e5e3bd" stroke-linecap="round" opacity=".7"><path d="M247 219v12m-6-6h12M557 275v10m-5-5h10M446 440v8m-4-4h8"/></g>
+</svg>

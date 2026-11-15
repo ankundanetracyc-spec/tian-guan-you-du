@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 520" fill="none">
+  <title>墨气回旋，诸蕴渐融</title>
+  <defs>
+    <radialGradient id="h"><stop stop-color="#d7dfc3" stop-opacity=".55"/><stop offset="1" stop-color="#d7dfc3" stop-opacity="0"/></radialGradient>
+    <radialGradient id="i" cx=".37" cy=".3" r=".77"><stop stop-color="#708a76"/><stop offset=".42" stop-color="#3c5148"/><stop offset="1" stop-color="#24362f"/></radialGradient>
+    <linearGradient id="s"><stop stop-color="#354e41" stop-opacity="0"/><stop offset=".48" stop-color="#5a7662" stop-opacity=".65"/><stop offset="1" stop-color="#354e41" stop-opacity="0"/></linearGradient>
+    <filter id="b"><feGaussianBlur stdDeviation="8"/></filter>
+  </defs>
+  <ellipse cx="400" cy="270" rx="290" ry="230" fill="url(#h)"/>
+  <path d="M177 349C220 437 591 401 644 263C685 160 480 121 341 159C230 190 222 320 338 343C435 363 550 302 507 236C475 186 382 197 368 246" stroke="url(#s)" stroke-width="26" stroke-linecap="round" opacity=".38" filter="url(#b)"/>
+  <path d="M206 348C291 426 579 369 604 271C622 201 526 172 470 186" stroke="#4d6956" stroke-opacity=".55" stroke-width="5" stroke-linecap="round"/>
+  <path d="M195 306C243 383 556 353 583 258C610 164 423 142 310 191" stroke="#c0cb9c" stroke-opacity=".8" stroke-width="1.8" stroke-linecap="round"/>
+  <path d="M437 142C415 186 338 201 333 266C329 320 387 349 434 326C491 299 485 233 447 207C427 191 427 165 437 142Z" fill="url(#i)" fill-opacity=".94"/>
+  <path d="M420 194C386 218 358 243 360 278C362 304 386 318 408 314" stroke="#9bb18c" stroke-opacity=".6" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M427 208C401 232 390 244 391 264" stroke="#dee0b0" stroke-opacity=".45" stroke-width="1.4" stroke-linecap="round"/>
+  <path d="M254 196C275 181 297 176 320 175M496 364C528 352 548 339 568 318" stroke="#526e5b" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/>
+  <path d="M223 278C232 240 283 214 311 214M465 389C547 382 615 345 641 302" stroke="#e6dfb7" stroke-opacity=".7" stroke-linecap="round"/>
+  <g fill="#536e59" opacity=".7"><path d="M313 141C307 153 299 157 301 164C304 174 317 172 319 164C321 157 313 153 313 141Z"/><path d="M547 283C541 294 536 297 538 303C541 312 552 309 553 302C554 296 547 292 547 283Z"/></g>
+  <g fill="#e0dfb6"><circle cx="273" cy="240" r="3"/><circle cx="529" cy="199" r="2.5"/><circle cx="598" cy="323" r="2"/><circle cx="348" cy="375" r="2.5"/><circle cx="467" cy="111" r="2"/><circle cx="245" cy="348" r="2"/></g>
+</svg>

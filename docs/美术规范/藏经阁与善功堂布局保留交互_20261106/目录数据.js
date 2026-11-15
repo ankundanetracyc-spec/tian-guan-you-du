@@ -1,0 +1,486 @@
+window.LIBRARY_BOOKS = [
+  {
+    "id": "xuanshu",
+    "name": "玄枢含章经",
+    "description": "以周天为枢机，使技能槽10中的技能自动施展。",
+    "start": "凡人",
+    "end": "云息十层",
+    "tags": [
+      "周天"
+    ],
+    "chapters": [
+      {
+        "name": "蛰雷",
+        "realm": "凡人",
+        "attributes": {
+          "intelligence": 5.0
+        },
+        "skills": [
+          "惊蛰"
+        ],
+        "id": "shou_shu_1",
+        "prerequisites": [],
+        "requiresMain": false
+      },
+      {
+        "name": "云垂",
+        "realm": "云息三层",
+        "attributes": {
+          "intelligence": 6.0,
+          "magic_proficiency": 0.5
+        },
+        "skills": [
+          "云帔"
+        ],
+        "id": "yun_pei_2",
+        "prerequisites": [
+          "shou_shu_1"
+        ],
+        "requiresMain": false
+      },
+      {
+        "name": "折冲",
+        "realm": "云息六层",
+        "attributes": {
+          "intelligence": 8.0,
+          "magic_proficiency": 1.0
+        },
+        "skills": [],
+        "id": "jia_zhao_3",
+        "prerequisites": [
+          "yun_pei_2"
+        ],
+        "requiresMain": false
+      },
+      {
+        "name": "照影",
+        "realm": "云息九层",
+        "attributes": {
+          "intelligence": 10.0,
+          "magic_proficiency": 2.0
+        },
+        "skills": [
+          "复命"
+        ],
+        "id": "fu_ming_4",
+        "prerequisites": [
+          "jia_zhao_3"
+        ],
+        "requiresMain": false
+      }
+    ],
+    "source": "resources/gongfa/玄枢含章经.tres",
+    "requirements": {
+      "root": "NONE",
+      "rootMode": "OR",
+      "realm": "",
+      "attributes": {}
+    }
+  },
+  {
+    "id": "taihe",
+    "name": "太和感物养元宝册",
+    "description": "以气血积养应对之势，以乘势再攻追击、虚怀纳劲承攻。",
+    "start": "凡人",
+    "end": "云息十层",
+    "tags": [
+      "气血",
+      "应对"
+    ],
+    "chapters": [
+      {
+        "name": "听息",
+        "realm": "凡人",
+        "attributes": {
+          "physique": 5.0
+        },
+        "skills": [
+          "乘势再攻"
+        ],
+        "id": "ting_xi",
+        "prerequisites": [],
+        "requiresMain": false
+      },
+      {
+        "name": "回澜",
+        "realm": "云息三层",
+        "attributes": {
+          "physique": 6.0,
+          "body_proficiency": 0.5
+        },
+        "skills": [
+          "虚怀纳劲"
+        ],
+        "id": "hui_lan",
+        "prerequisites": [
+          "ting_xi"
+        ],
+        "requiresMain": false
+      },
+      {
+        "name": "藏锋",
+        "realm": "云息六层",
+        "attributes": {
+          "physique": 8.0,
+          "body_proficiency": 1.0
+        },
+        "skills": [],
+        "id": "cang_feng",
+        "prerequisites": [
+          "hui_lan"
+        ],
+        "requiresMain": false
+      },
+      {
+        "name": "返元",
+        "realm": "云息九层",
+        "attributes": {
+          "physique": 10.0,
+          "body_proficiency": 2.0
+        },
+        "skills": [],
+        "id": "fan_yuan",
+        "prerequisites": [
+          "cang_feng"
+        ],
+        "requiresMain": false
+      }
+    ],
+    "source": "resources/gongfa/太和感物养元宝册.tres",
+    "requirements": {
+      "root": "NONE",
+      "rootMode": "OR",
+      "realm": "",
+      "attributes": {}
+    }
+  },
+  {
+    "id": "shujuan",
+    "name": "舒卷天章",
+    "description": "剑意达到门槛后，为剑招追加攻击；云岚三叠按递减概率追加至多3段。",
+    "start": "凡人",
+    "end": "云息十层",
+    "tags": [
+      "剑",
+      "剑意"
+    ],
+    "chapters": [
+      {
+        "name": "云舒",
+        "realm": "凡人",
+        "attributes": {
+          "physique": 6,
+          "sword_proficiency": 0
+        },
+        "skills": [],
+        "id": "yun_shu",
+        "prerequisites": [],
+        "requiresMain": false
+      },
+      {
+        "name": "回岚",
+        "realm": "云息三层",
+        "attributes": {
+          "physique": 7,
+          "sword_proficiency": 0.5
+        },
+        "skills": [],
+        "id": "hui_lan",
+        "prerequisites": [
+          "yun_shu"
+        ],
+        "requiresMain": false
+      },
+      {
+        "name": "逐影",
+        "realm": "云息六层",
+        "attributes": {
+          "physique": 8,
+          "sword_proficiency": 1
+        },
+        "skills": [
+          "云岚三叠"
+        ],
+        "id": "zhu_ying",
+        "prerequisites": [
+          "hui_lan"
+        ],
+        "requiresMain": false
+      },
+      {
+        "name": "天章",
+        "realm": "云息九层",
+        "attributes": {
+          "physique": 10,
+          "sword_proficiency": 2
+        },
+        "skills": [],
+        "id": "tian_zhang",
+        "prerequisites": [
+          "zhu_ying"
+        ],
+        "requiresMain": false
+      }
+    ],
+    "source": "resources/gongfa/舒卷天章.tres",
+    "requirements": {
+      "root": "NONE",
+      "rootMode": "OR",
+      "realm": "",
+      "attributes": {}
+    }
+  },
+  {
+    "id": "baihai",
+    "name": "百骸衍枝化生宝册",
+    "description": "积气血化生双臂，以近身追击与架招化解攻守相承。",
+    "start": "云息一层",
+    "end": "云息十层",
+    "tags": [
+      "气血"
+    ],
+    "chapters": [
+      {
+        "name": "养络",
+        "realm": "凡人",
+        "attributes": {
+          "physique": 5.0,
+          "body_proficiency": 0.0
+        },
+        "skills": [],
+        "id": "yang_luo",
+        "prerequisites": [],
+        "requiresMain": false
+      },
+      {
+        "name": "生枝",
+        "realm": "云息三层",
+        "attributes": {
+          "physique": 6.0,
+          "body_proficiency": 0.5
+        },
+        "skills": [
+          "血臂撼岳"
+        ],
+        "id": "sheng_zhi",
+        "prerequisites": [
+          "yang_luo"
+        ],
+        "requiresMain": false
+      },
+      {
+        "name": "双擎",
+        "realm": "云息六层",
+        "attributes": {
+          "physique": 8.0,
+          "body_proficiency": 1.0
+        },
+        "skills": [],
+        "id": "shuang_qing",
+        "prerequisites": [
+          "sheng_zhi"
+        ],
+        "requiresMain": false
+      },
+      {
+        "name": "化生",
+        "realm": "云息九层",
+        "attributes": {
+          "physique": 10.0,
+          "body_proficiency": 2.0
+        },
+        "skills": [],
+        "id": "hua_sheng",
+        "prerequisites": [
+          "shuang_qing"
+        ],
+        "requiresMain": false
+      }
+    ],
+    "source": "resources/gongfa/百骸衍枝化生宝册.tres",
+    "requirements": {
+      "root": "NONE",
+      "rootMode": "OR",
+      "realm": "",
+      "attributes": {}
+    }
+  },
+  {
+    "id": "zhuoji",
+    "name": "斫基损契玄经",
+    "description": "燃烧法力上限补足费用，再以炁与体力接续攻势。",
+    "start": "凡人",
+    "end": "云息十层",
+    "tags": [
+      "周天"
+    ],
+    "chapters": [
+      {
+        "name": "秉烛",
+        "realm": "凡人",
+        "attributes": {
+          "intelligence": 5.0
+        },
+        "skills": [
+          "折锋"
+        ],
+        "id": "zhuo_ji_1",
+        "prerequisites": [],
+        "requiresMain": false
+      },
+      {
+        "name": "剪灯",
+        "realm": "云息三层",
+        "attributes": {
+          "intelligence": 6.0,
+          "magic_proficiency": 0.5
+        },
+        "skills": [
+          "焚元"
+        ],
+        "id": "zhuo_ji_2",
+        "prerequisites": [
+          "zhuo_ji_1"
+        ],
+        "requiresMain": false
+      },
+      {
+        "name": "续照",
+        "realm": "云息六层",
+        "attributes": {
+          "intelligence": 8.0,
+          "magic_proficiency": 1.0
+        },
+        "skills": [],
+        "id": "zhuo_ji_3",
+        "prerequisites": [
+          "zhuo_ji_2"
+        ],
+        "requiresMain": false
+      },
+      {
+        "name": "长明",
+        "realm": "云息九层",
+        "attributes": {
+          "intelligence": 10.0,
+          "magic_proficiency": 2.0
+        },
+        "skills": [],
+        "id": "zhuo_ji_4",
+        "prerequisites": [
+          "zhuo_ji_3"
+        ],
+        "requiresMain": false
+      }
+    ],
+    "source": "resources/gongfa/斫基损契玄经.tres",
+    "requirements": {
+      "root": "NONE",
+      "rootMode": "OR",
+      "realm": "",
+      "attributes": {}
+    }
+  }
+];
+window.SHOP_ITEMS = [
+  {
+    "id": "mat_mottled_beetle_shell",
+    "name": "斑甲壳片",
+    "category": "材料",
+    "cost": 15
+  },
+  {
+    "id": "mat_sinking_cloud_jade_shard",
+    "name": "沉云玉屑",
+    "category": "材料",
+    "cost": 15
+  },
+  {
+    "id": "mat_red_scale_shed",
+    "name": "赤鳞蜕",
+    "category": "材料",
+    "cost": 10
+  },
+  {
+    "id": "sect_sword_chenglu",
+    "name": "承露剑",
+    "category": "器物",
+    "cost": 0
+  },
+  {
+    "id": "sect_sword_hanzhang",
+    "name": "含章剑",
+    "category": "器物",
+    "cost": 0
+  },
+  {
+    "id": "sect_sword_suxing",
+    "name": "素行剑",
+    "category": "器物",
+    "cost": 0
+  },
+  {
+    "id": "alchemy_huichun_9_0",
+    "name": "回春丹·薄效",
+    "category": "丹药",
+    "cost": 5
+  },
+  {
+    "id": "alchemy_huichun_9_1",
+    "name": "回春丹·良效",
+    "category": "丹药",
+    "cost": 8
+  },
+  {
+    "id": "alchemy_huichun_9_2",
+    "name": "回春丹·优效",
+    "category": "丹药",
+    "cost": 12
+  },
+  {
+    "id": "alchemy_huichun_9_3",
+    "name": "回春丹·极效",
+    "category": "丹药",
+    "cost": 18
+  },
+  {
+    "id": "alchemy_huichun_9_4",
+    "name": "回春丹·满效",
+    "category": "丹药",
+    "cost": 25
+  },
+  {
+    "id": "portrait_clothing_yuxu_zayi",
+    "name": "玉虚·杂役常服",
+    "category": "装备",
+    "cost": 20
+  },
+  {
+    "id": "portrait_clothing_yuxu_waimen",
+    "name": "玉虚·外门常服",
+    "category": "装备",
+    "cost": 20
+  },
+  {
+    "id": "portrait_clothing_yuxu_neimen",
+    "name": "玉虚·内门常服",
+    "category": "装备",
+    "cost": 20
+  }
+];
+window.LIBRARY_PREVIEW_PROFILE = {
+  "kind": "explicit_ui_fixture_not_player_save",
+  "label": "界面预览样例",
+  "realm": "凡人",
+  "attributes": {
+    "physique": 5,
+    "intelligence": 5,
+    "soul": 5,
+    "body_proficiency": 0,
+    "magic_proficiency": 0,
+    "sword_proficiency": 0
+  },
+  "roots": [],
+  "learned": {},
+  "mainBook": null
+};

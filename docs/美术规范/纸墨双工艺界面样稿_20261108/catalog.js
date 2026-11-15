@@ -1,0 +1,1051 @@
+window.PAPER_INK_CATALOG = {
+  "metadata": {
+    "title": "纸墨双工艺界面样稿材料目录",
+    "generatedDate": "2026-11-08",
+    "status": "隔离界面演示，现有材性与图标只读",
+    "materialCount": 50,
+    "inventoryType": "demonstration",
+    "stockPerMaterial": 12,
+    "inventoryNotice": "每种材料统一12份，仅为隔离样稿演示库存；不是人物库存，不读取、不扣除、不写入人物或存档。",
+    "sourceNotice": "名称、ID、图标、简介来自实际物品定义；质地、五行、相性与功用等级来自各物品craft_data引用。未配置简介保留为空。",
+    "utilityGradeEncoding": "utilities保留MaterialUtilityGrade内部等级：1为九品，9为一品；utilityDisplay仅提供对应中文显示。",
+    "materialGradeSource": "gradeValue与grade按MaterialCraftData.material_score/material_grade_value及ItemAffixCatalog.grade_to_string派生，仅作资料显示，不参与纸墨计算。",
+    "iconBase": "相对同目录index.html，../../../textures/指向项目现有图标。",
+    "textureCounts": {
+      "纤维": 18,
+      "致密": 22,
+      "黏胶": 2,
+      "液体": 3,
+      "颗粒": 5
+    },
+    "emptyDescriptionCount": 34
+  },
+  "materials": [
+    {
+      "id": "mat_dark_feather",
+      "name": "乌羽片",
+      "texture": "纤维",
+      "element": "木",
+      "affinity": "阴",
+      "utilities": {
+        "行": 2
+      },
+      "utilityDisplay": {
+        "行": "八品"
+      },
+      "grade": "8品下",
+      "gradeValue": 4,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_dark_feather.png",
+      "definition": "resources/entities/items/乌羽片.tres",
+      "craft": "resources/material_craft/乌羽片材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_cloud_mist_mushroom",
+      "name": "云雾菌",
+      "texture": "纤维",
+      "element": "木",
+      "affinity": "和",
+      "utilities": {
+        "生": 1
+      },
+      "utilityDisplay": {
+        "生": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_cloud_mist_mushroom.png",
+      "definition": "resources/entities/items/云雾菌.tres",
+      "craft": "resources/material_craft/云雾菌材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_earthbeast_sinew",
+      "name": "伏地兽筋",
+      "texture": "纤维",
+      "element": "木",
+      "affinity": "和",
+      "utilities": {
+        "通": 1,
+        "生": 1
+      },
+      "utilityDisplay": {
+        "通": "九品",
+        "生": "九品"
+      },
+      "grade": "9品上",
+      "gradeValue": 3,
+      "description": "韧性十足的浅褐筋束，表面留有天然纤维走向。",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_earthbeast_sinew.png",
+      "definition": "resources/entities/items/伏地兽筋.tres",
+      "craft": "resources/material_craft/伏地兽筋材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_beast_hide",
+      "name": "兽皮",
+      "texture": "纤维",
+      "element": "木",
+      "affinity": "阳",
+      "utilities": {
+        "固": 1,
+        "护": 1
+      },
+      "utilityDisplay": {
+        "固": "九品",
+        "护": "九品"
+      },
+      "grade": "9品上",
+      "gradeValue": 3,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_beast_hide.png",
+      "definition": "resources/entities/items/兽皮.tres",
+      "craft": "resources/material_craft/兽皮材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_beast_bone",
+      "name": "兽骨",
+      "texture": "致密",
+      "element": "土",
+      "affinity": "阳",
+      "utilities": {
+        "固": 1,
+        "生": 1
+      },
+      "utilityDisplay": {
+        "固": "九品",
+        "生": "九品"
+      },
+      "grade": "9品上",
+      "gradeValue": 3,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_beast_bone.png",
+      "definition": "resources/entities/items/兽骨.tres",
+      "craft": "resources/material_craft/兽骨材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_frostdew_leaf",
+      "name": "凝霜叶",
+      "texture": "纤维",
+      "element": "木",
+      "affinity": "阴",
+      "utilities": {
+        "藏": 1
+      },
+      "utilityDisplay": {
+        "藏": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "叶缘凝着细霜，叶脉收敛细密，入手清凉。",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_frostdew_leaf.png",
+      "definition": "resources/entities/items/凝霜叶.tres",
+      "craft": "resources/material_craft/凝霜叶材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_dew_pine_resin",
+      "name": "凝露松脂",
+      "texture": "黏胶",
+      "element": "木",
+      "affinity": "阳",
+      "utilities": {
+        "固": 1
+      },
+      "utilityDisplay": {
+        "固": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_dew_pine_resin.png",
+      "definition": "resources/entities/items/凝露松脂.tres",
+      "craft": "resources/material_craft/凝露松脂材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_return_spring_pearl",
+      "name": "回泉珠",
+      "texture": "液体",
+      "element": "水",
+      "affinity": "和",
+      "utilities": {
+        "聚": 2,
+        "化": 1
+      },
+      "utilityDisplay": {
+        "聚": "八品",
+        "化": "九品"
+      },
+      "grade": "8品中",
+      "gradeValue": 5,
+      "description": "泉眼边凝成的水珠灵材，珠心可见细微回旋水纹。",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_return_spring_pearl.png",
+      "definition": "resources/entities/items/回泉珠.tres",
+      "craft": "resources/material_craft/回泉珠材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_geovein_flame_coal",
+      "name": "地脉焰炭",
+      "texture": "致密",
+      "element": "火",
+      "affinity": "阳",
+      "utilities": {
+        "聚": 2,
+        "通": 1
+      },
+      "utilityDisplay": {
+        "聚": "八品",
+        "通": "九品"
+      },
+      "grade": "8品中",
+      "gradeValue": 5,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_geovein_flame_coal.png",
+      "definition": "resources/entities/items/地脉焰炭.tres",
+      "craft": "resources/material_craft/地脉焰炭材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_mountain_silkworm_thread",
+      "name": "山蚕长丝",
+      "texture": "纤维",
+      "element": "木",
+      "affinity": "和",
+      "utilities": {
+        "固": 1,
+        "藏": 1
+      },
+      "utilityDisplay": {
+        "固": "九品",
+        "藏": "九品"
+      },
+      "grade": "9品上",
+      "gradeValue": 3,
+      "description": "山蚕吐出的素白长丝，纤细匀整，韧性良好。",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_mountain_silkworm_thread.png",
+      "definition": "resources/entities/items/山蚕长丝.tres",
+      "craft": "resources/material_craft/山蚕长丝材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_cicada_shell",
+      "name": "山蝉蜕壳",
+      "texture": "致密",
+      "element": "土",
+      "affinity": "和",
+      "utilities": {
+        "固": 1
+      },
+      "utilityDisplay": {
+        "固": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_cicada_shell.png",
+      "definition": "resources/entities/items/山蝉蜕壳.tres",
+      "craft": "resources/material_craft/山蝉蜕壳材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_mottled_beetle_shell",
+      "name": "斑甲壳片",
+      "texture": "致密",
+      "element": "土",
+      "affinity": "阳",
+      "utilities": {
+        "护": 2
+      },
+      "utilityDisplay": {
+        "护": "八品"
+      },
+      "grade": "8品下",
+      "gradeValue": 4,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_mottled_beetle_shell.png",
+      "definition": "resources/entities/items/斑甲壳片.tres",
+      "craft": "resources/material_craft/斑甲壳片材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_broken_horn_bone",
+      "name": "断角骨片",
+      "texture": "致密",
+      "element": "土",
+      "affinity": "阳",
+      "utilities": {
+        "破": 2
+      },
+      "utilityDisplay": {
+        "破": "八品"
+      },
+      "grade": "8品下",
+      "gradeValue": 4,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_broken_horn_bone.png",
+      "definition": "resources/entities/items/断角骨片.tres",
+      "craft": "resources/material_craft/断角骨片材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_moon_dew_moss",
+      "name": "月露苔",
+      "texture": "纤维",
+      "element": "木",
+      "affinity": "阴",
+      "utilities": {
+        "藏": 1
+      },
+      "utilityDisplay": {
+        "藏": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_moon_dew_moss.png",
+      "definition": "resources/entities/items/月露苔.tres",
+      "craft": "resources/material_craft/月露苔材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_moonmist_mushroom_juice",
+      "name": "月露菌汁",
+      "texture": "液体",
+      "element": "水",
+      "affinity": "阴",
+      "utilities": {
+        "化": 1
+      },
+      "utilityDisplay": {
+        "化": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "菌伞褶间汇出的清亮汁液，色泽淡黄，气味微甘。",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_moonmist_mushroom_juice.png",
+      "definition": "resources/entities/items/月露菌汁.tres",
+      "craft": "resources/material_craft/月露菌汁材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_redsun_flower_seed",
+      "name": "朱阳花籽",
+      "texture": "纤维",
+      "element": "火",
+      "affinity": "阳",
+      "utilities": {
+        "引": 1
+      },
+      "utilityDisplay": {
+        "引": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "朱红色的饱满种籽，外壳温润，带有淡淡草木香。",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_redsun_flower_seed.png",
+      "definition": "resources/entities/items/朱阳花籽.tres",
+      "craft": "resources/material_craft/朱阳花籽材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_pineheart_charcoal",
+      "name": "松心炭",
+      "texture": "颗粒",
+      "element": "火",
+      "affinity": "和",
+      "utilities": {
+        "固": 1
+      },
+      "utilityDisplay": {
+        "固": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_pineheart_charcoal.png",
+      "definition": "resources/entities/items/松心炭.tres",
+      "craft": "resources/material_craft/松心炭材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_sinking_cloud_jade_shard",
+      "name": "沉云玉屑",
+      "texture": "颗粒",
+      "element": "土",
+      "affinity": "阴",
+      "utilities": {
+        "藏": 2
+      },
+      "utilityDisplay": {
+        "藏": "八品"
+      },
+      "grade": "8品下",
+      "gradeValue": 4,
+      "description": "灰青玉石剥落的细屑，纹理沉静，带有淡淡云痕。",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_sinking_cloud_jade_shard.png",
+      "definition": "resources/entities/items/沉云玉屑.tres",
+      "craft": "resources/material_craft/沉云玉屑材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_clay_vein_lump",
+      "name": "泥脉石团",
+      "texture": "致密",
+      "element": "土",
+      "affinity": "阴",
+      "utilities": {
+        "镇": 1
+      },
+      "utilityDisplay": {
+        "镇": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_clay_vein_lump.png",
+      "definition": "resources/entities/items/泥脉石团.tres",
+      "craft": "resources/material_craft/泥脉石团材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_clear_chime_jade_shard",
+      "name": "清音玉片",
+      "texture": "致密",
+      "element": "水",
+      "affinity": "和",
+      "utilities": {
+        "明": 1,
+        "通": 1
+      },
+      "utilityDisplay": {
+        "明": "九品",
+        "通": "九品"
+      },
+      "grade": "9品上",
+      "gradeValue": 3,
+      "description": "水色玉片上有浅浅回纹，轻敲时能听见清脆余音。",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_clear_chime_jade_shard.png",
+      "definition": "resources/entities/items/清音玉片.tres",
+      "craft": "resources/material_craft/清音玉片材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_streampattern_algae_fiber",
+      "name": "溪纹藻丝",
+      "texture": "纤维",
+      "element": "水",
+      "affinity": "和",
+      "utilities": {
+        "通": 2
+      },
+      "utilityDisplay": {
+        "通": "八品"
+      },
+      "grade": "8品下",
+      "gradeValue": 4,
+      "description": "溪底水藻抽成的青色长丝，丝面留有细密水纹。",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_streampattern_algae_fiber.png",
+      "definition": "resources/entities/items/溪纹藻丝.tres",
+      "craft": "resources/material_craft/溪纹藻丝材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_spirit_spring_algae",
+      "name": "灵泉藻",
+      "texture": "纤维",
+      "element": "水",
+      "affinity": "和",
+      "utilities": {
+        "聚": 2
+      },
+      "utilityDisplay": {
+        "聚": "八品"
+      },
+      "grade": "8品下",
+      "gradeValue": 4,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_spirit_spring_algae.png",
+      "definition": "resources/entities/items/灵泉藻.tres",
+      "craft": "resources/material_craft/灵泉藻材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_spirit_spring_dew",
+      "name": "灵泉露",
+      "texture": "液体",
+      "element": "水",
+      "affinity": "和",
+      "utilities": {
+        "聚": 3,
+        "化": 2
+      },
+      "utilityDisplay": {
+        "聚": "七品",
+        "化": "八品"
+      },
+      "grade": "7品下",
+      "gradeValue": 7,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_spirit_spring_dew.png",
+      "definition": "resources/entities/items/灵泉露.tres",
+      "craft": "resources/material_craft/灵泉露材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_spirit_stone",
+      "name": "灵石",
+      "texture": "致密",
+      "element": "土",
+      "affinity": "和",
+      "utilities": {
+        "聚": 1,
+        "藏": 1,
+        "通": 1
+      },
+      "utilityDisplay": {
+        "聚": "九品",
+        "藏": "九品",
+        "通": "九品"
+      },
+      "grade": "9品上",
+      "gradeValue": 3,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/spirit_stone_1x1.png",
+      "definition": "resources/entities/items/灵石.tres",
+      "craft": "resources/material_craft/灵石材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_darkscale_thin_plate",
+      "name": "玄甲薄片",
+      "texture": "致密",
+      "element": "土",
+      "affinity": "阳",
+      "utilities": {
+        "护": 2
+      },
+      "utilityDisplay": {
+        "护": "八品"
+      },
+      "grade": "8品下",
+      "gradeValue": 4,
+      "description": "深褐色甲片薄而坚韧，内侧留有细密层纹。",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_darkscale_thin_plate.png",
+      "definition": "resources/entities/items/玄甲薄片.tres",
+      "craft": "resources/material_craft/玄甲薄片材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_xuantie",
+      "name": "玄铁",
+      "texture": "致密",
+      "element": "金",
+      "affinity": "阳",
+      "utilities": {
+        "固": 2
+      },
+      "utilityDisplay": {
+        "固": "八品"
+      },
+      "grade": "8品下",
+      "gradeValue": 4,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/xuantie_3x3.png",
+      "definition": "resources/entities/items/玄铁.tres",
+      "craft": "resources/material_craft/玄铁材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_miasma_clay_pearl",
+      "name": "瘴泥珠",
+      "texture": "致密",
+      "element": "土",
+      "affinity": "阴",
+      "utilities": {
+        "镇": 1
+      },
+      "utilityDisplay": {
+        "镇": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_miasma_clay_pearl.png",
+      "definition": "resources/entities/items/瘴泥珠.tres",
+      "craft": "resources/material_craft/瘴泥珠材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_salt_gypsum",
+      "name": "盐纹石膏",
+      "texture": "致密",
+      "element": "土",
+      "affinity": "和",
+      "utilities": {
+        "固": 1
+      },
+      "utilityDisplay": {
+        "固": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_salt_gypsum.png",
+      "definition": "resources/entities/items/盐纹石膏.tres",
+      "craft": "resources/material_craft/盐纹石膏材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_stone_bee_wax",
+      "name": "石蜂蜡",
+      "texture": "黏胶",
+      "element": "土",
+      "affinity": "和",
+      "utilities": {
+        "固": 1
+      },
+      "utilityDisplay": {
+        "固": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_stone_bee_wax.png",
+      "definition": "resources/entities/items/石蜂蜡.tres",
+      "craft": "resources/material_craft/石蜂蜡材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_sandvein_stone_fragment",
+      "name": "砂脉石片",
+      "texture": "致密",
+      "element": "土",
+      "affinity": "和",
+      "utilities": {
+        "固": 1
+      },
+      "utilityDisplay": {
+        "固": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "薄片状砂岩中夹有一道浅褐矿纹，质地紧实。",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_sandvein_stone_fragment.png",
+      "definition": "resources/entities/items/砂脉石片.tres",
+      "craft": "resources/material_craft/砂脉石片材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_gravel_mushroom",
+      "name": "砾地菌伞",
+      "texture": "纤维",
+      "element": "木",
+      "affinity": "和",
+      "utilities": {
+        "生": 1
+      },
+      "utilityDisplay": {
+        "生": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_gravel_mushroom.png",
+      "definition": "resources/entities/items/砾地菌伞.tres",
+      "craft": "resources/material_craft/砾地菌伞材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_zisha_spirit_soil",
+      "name": "紫砂灵土",
+      "texture": "颗粒",
+      "element": "土",
+      "affinity": "阴",
+      "utilities": {
+        "藏": 1
+      },
+      "utilityDisplay": {
+        "藏": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_zisha_spirit_soil.png",
+      "definition": "resources/entities/items/紫砂灵土.tres",
+      "craft": "resources/material_craft/紫砂灵土材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_bitter_moss_root",
+      "name": "苦苔根",
+      "texture": "纤维",
+      "element": "木",
+      "affinity": "阴",
+      "utilities": {
+        "藏": 1
+      },
+      "utilityDisplay": {
+        "藏": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/bitter_moss_root_2x4.png",
+      "definition": "resources/entities/items/苦苔根.tres",
+      "craft": "resources/material_craft/苦苔根材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_withered_vine_knot",
+      "name": "荒藤结节",
+      "texture": "致密",
+      "element": "木",
+      "affinity": "和",
+      "utilities": {
+        "固": 1
+      },
+      "utilityDisplay": {
+        "固": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_withered_vine_knot.png",
+      "definition": "resources/entities/items/荒藤结节.tres",
+      "craft": "resources/material_craft/荒藤结节材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_cracked_armor_stone",
+      "name": "裂甲石",
+      "texture": "致密",
+      "element": "金",
+      "affinity": "阳",
+      "utilities": {
+        "破": 1
+      },
+      "utilityDisplay": {
+        "破": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_cracked_armor_stone.png",
+      "definition": "resources/entities/items/裂甲石.tres",
+      "craft": "resources/material_craft/裂甲石材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_brown_copper_sand",
+      "name": "褐铜砂",
+      "texture": "颗粒",
+      "element": "金",
+      "affinity": "阳",
+      "utilities": {
+        "聚": 2
+      },
+      "utilityDisplay": {
+        "聚": "八品"
+      },
+      "grade": "8品下",
+      "gradeValue": 4,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_brown_copper_sand.png",
+      "definition": "resources/entities/items/褐铜砂.tres",
+      "craft": "resources/material_craft/褐铜砂材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_redwood_seed_core",
+      "name": "赤瓤木核",
+      "texture": "致密",
+      "element": "木",
+      "affinity": "阳",
+      "utilities": {
+        "生": 1
+      },
+      "utilityDisplay": {
+        "生": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_redwood_seed_core.png",
+      "definition": "resources/entities/items/赤瓤木核.tres",
+      "craft": "resources/material_craft/赤瓤木核材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_chiwen_suilishi",
+      "name": "赤纹燧石",
+      "texture": "致密",
+      "element": "火",
+      "affinity": "阳",
+      "utilities": {
+        "破": 1
+      },
+      "utilityDisplay": {
+        "破": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_chiwen_suilishi.png",
+      "definition": "resources/entities/items/赤纹燧石.tres",
+      "craft": "resources/material_craft/赤纹燧石材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_red_scale_shed",
+      "name": "赤鳞蜕",
+      "texture": "致密",
+      "element": "火",
+      "affinity": "阳",
+      "utilities": {
+        "护": 1
+      },
+      "utilityDisplay": {
+        "护": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_red_scale_shed.png",
+      "definition": "resources/entities/items/赤鳞蜕.tres",
+      "craft": "resources/material_craft/赤鳞蜕材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_tong_sui_ore",
+      "name": "铜髓矿",
+      "texture": "致密",
+      "element": "金",
+      "affinity": "和",
+      "utilities": {
+        "固": 1
+      },
+      "utilityDisplay": {
+        "固": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_tong_sui_ore.png",
+      "definition": "resources/entities/items/铜髓矿.tres",
+      "craft": "resources/material_craft/铜髓矿材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_mistheart_mushroom_core",
+      "name": "雾心菌核",
+      "texture": "致密",
+      "element": "木",
+      "affinity": "阴",
+      "utilities": {
+        "藏": 1,
+        "镇": 1
+      },
+      "utilityDisplay": {
+        "藏": "九品",
+        "镇": "九品"
+      },
+      "grade": "9品上",
+      "gradeValue": 3,
+      "description": "菌丛深处结成的紧实菌核，外层潮润，内里层层致密。",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_mistheart_mushroom_core.png",
+      "definition": "resources/entities/items/雾心菌核.tres",
+      "craft": "resources/material_craft/雾心菌核材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_mist_bell_flower",
+      "name": "雾铃花",
+      "texture": "纤维",
+      "element": "木",
+      "affinity": "阴",
+      "utilities": {
+        "引": 1
+      },
+      "utilityDisplay": {
+        "引": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_mist_bell_flower.png",
+      "definition": "resources/entities/items/雾铃花.tres",
+      "craft": "resources/material_craft/雾铃花材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_frostleaf_twig",
+      "name": "霜叶枝",
+      "texture": "纤维",
+      "element": "木",
+      "affinity": "阴",
+      "utilities": {
+        "护": 1
+      },
+      "utilityDisplay": {
+        "护": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_frostleaf_twig.png",
+      "definition": "resources/entities/items/霜叶枝.tres",
+      "craft": "resources/material_craft/霜叶枝材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_qinglan_vine_core",
+      "name": "青岚藤心",
+      "texture": "纤维",
+      "element": "木",
+      "affinity": "和",
+      "utilities": {
+        "生": 1
+      },
+      "utilityDisplay": {
+        "生": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_qinglan_vine_core.png",
+      "definition": "resources/entities/items/青岚藤心.tres",
+      "craft": "resources/material_craft/青岚藤心材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_qingmu_core",
+      "name": "青木芯",
+      "texture": "致密",
+      "element": "木",
+      "affinity": "和",
+      "utilities": {
+        "通": 2,
+        "生": 3
+      },
+      "utilityDisplay": {
+        "通": "八品",
+        "生": "七品"
+      },
+      "grade": "7品下",
+      "gradeValue": 7,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_qingmu_core.png",
+      "definition": "resources/entities/items/青木芯.tres",
+      "craft": "resources/material_craft/青木芯材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_bluegreen_feather",
+      "name": "青羽翎",
+      "texture": "纤维",
+      "element": "木",
+      "affinity": "阴",
+      "utilities": {
+        "行": 1
+      },
+      "utilityDisplay": {
+        "行": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "青灰色羽翎轻而柔韧，羽轴修长，末端泛着冷色光泽。",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_bluegreen_feather.png",
+      "definition": "resources/entities/items/青羽翎.tres",
+      "craft": "resources/material_craft/青羽翎材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_qingmarrow_sprout",
+      "name": "青髓芽",
+      "texture": "纤维",
+      "element": "木",
+      "affinity": "和",
+      "utilities": {
+        "生": 1,
+        "聚": 1
+      },
+      "utilityDisplay": {
+        "生": "九品",
+        "聚": "九品"
+      },
+      "grade": "9品上",
+      "gradeValue": 3,
+      "description": "初生的青绿药芽，根茎饱含清润生机。",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_qingmarrow_sprout.png",
+      "definition": "resources/entities/items/青髓芽.tres",
+      "craft": "resources/material_craft/青髓芽材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_windaperture_crystal_shard",
+      "name": "风窍晶屑",
+      "texture": "颗粒",
+      "element": "金",
+      "affinity": "阳",
+      "utilities": {
+        "行": 1
+      },
+      "utilityDisplay": {
+        "行": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "风蚀晶石留下的薄片，边缘轻薄，内部有细长孔隙。",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_windaperture_crystal_shard.png",
+      "definition": "resources/entities/items/风窍晶屑.tres",
+      "craft": "resources/material_craft/风窍晶屑材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_fengwen_quartz",
+      "name": "风纹石英",
+      "texture": "致密",
+      "element": "金",
+      "affinity": "和",
+      "utilities": {
+        "通": 2
+      },
+      "utilityDisplay": {
+        "通": "八品"
+      },
+      "grade": "8品下",
+      "gradeValue": 4,
+      "description": "",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_fengwen_quartz.png",
+      "definition": "resources/entities/items/风纹石英.tres",
+      "craft": "resources/material_craft/风纹石英材性.tres",
+      "stock": 12
+    },
+    {
+      "id": "mat_windvein_vine_fiber",
+      "name": "风络藤丝",
+      "texture": "纤维",
+      "element": "木",
+      "affinity": "和",
+      "utilities": {
+        "通": 1
+      },
+      "utilityDisplay": {
+        "通": "九品"
+      },
+      "grade": "9品中",
+      "gradeValue": 2,
+      "description": "藤茎中抽出的浅青纤维，柔韧而有清晰的脉络。",
+      "icon": "../../../textures/items/inventory_density_20261029/mat_windvein_vine_fiber.png",
+      "definition": "resources/entities/items/风络藤丝.tres",
+      "craft": "resources/material_craft/风络藤丝材性.tres",
+      "stock": 12
+    }
+  ]
+};
