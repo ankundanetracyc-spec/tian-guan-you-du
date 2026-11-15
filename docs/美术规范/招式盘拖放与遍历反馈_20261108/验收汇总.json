@@ -1,0 +1,256 @@
+{
+  "date": "2026-11-08",
+  "passed": true,
+  "scope": "combat board drag, readonly hover input, compact controls and visit feedback; isolated human trial",
+  "build": {
+    "warnings": 0,
+    "errors": 0,
+    "exclusions": []
+  },
+  "native_reports": {
+    "1280x720": {
+      "checks": 84,
+      "engine": "4.7.2-stable (custom_build)",
+      "report": "1280x720/验收.json"
+    },
+    "1920x1080": {
+      "checks": 84,
+      "engine": "4.7.2-stable (custom_build)",
+      "report": "1920x1080/验收.json"
+    }
+  },
+  "headless_interaction_checks": 73,
+  "global_hover_checks": 28,
+  "entry_checks": 44,
+  "board_state_and_migration_checks": 125,
+  "human_effect_checks": 392,
+  "legacy_wheel_navigation": "passed",
+  "native_process_exit_codes": [
+    0,
+    0
+  ],
+  "native_stderr_bytes": [
+    0,
+    0
+  ],
+  "logs": [
+    {
+      "file": "验收_原生1280.log",
+      "marker": "COMBAT_BOARD_INTERACTION_OK checks=84",
+      "diagnostics_clean": true,
+      "sha256": "a9ed4b8c67ca57538bd3c2e635feee30a6f15a70d50323320634a70e63427171"
+    },
+    {
+      "file": "验收_原生1920.log",
+      "marker": "COMBAT_BOARD_INTERACTION_OK checks=84",
+      "diagnostics_clean": true,
+      "sha256": "a9ed4b8c67ca57538bd3c2e635feee30a6f15a70d50323320634a70e63427171"
+    },
+    {
+      "file": "验收_无窗口交互.log",
+      "marker": "COMBAT_BOARD_INTERACTION_OK checks=73",
+      "diagnostics_clean": true,
+      "sha256": "95056ff265999689f62613d1b7dc593dacd59fd0128d1b0a0ab389580aab9948"
+    },
+    {
+      "file": "验收_状态迁移.log",
+      "marker": "COMBAT_BOARD_SMOKE_OK checks=125",
+      "diagnostics_clean": true,
+      "sha256": "8570ba892490b62e4d23a15d2021aefacea0e3599811e17855dba669d47e7e45"
+    },
+    {
+      "file": "验收_人类效果.log",
+      "marker": "HUMAN_COMBAT_BOARD_SMOKE_OK checks=392",
+      "diagnostics_clean": true,
+      "sha256": "504494f97154a4749dc2cab1a513ef8a12defc00382b9301228c9594675d031e"
+    },
+    {
+      "file": "验收_入口.log",
+      "marker": "COMBAT_BOARD_ENTRY_OK checks=44",
+      "diagnostics_clean": true,
+      "sha256": "fe61320c13349d4ffcc349d5e62f34d15d29de78b965a39afb1f019cfa837de4"
+    },
+    {
+      "file": "验收_信息栏.log",
+      "marker": "HOVER_DRAG_PASSTHROUGH_OK checks=28",
+      "diagnostics_clean": true,
+      "sha256": "d5ee96a5d0bfde1cd42cdeb8873cc3962e2efbb2a9f63cfe126f20c96dd73ccf"
+    },
+    {
+      "file": "验收_滚轮导航.log",
+      "marker": "HOVER_WHEEL_NAVIGATION PASS",
+      "diagnostics_clean": true,
+      "sha256": "65eb7bb52b195c1648e9308a69e5380b85c6c5b350af5aa83ca7c816ede3d483"
+    }
+  ],
+  "screenshots": {
+    "1280x720/01_整份占形边框与紧凑来源.png": {
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "ba70abbac8817de351e4f4acc4f01884275a757eeba8d205140e323d63ef1116"
+    },
+    "1280x720/02_来源转向与合法落点预览.png": {
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "5e7032e18c34a22941369963a3277c4357564126c2d35f1732882810acf237de"
+    },
+    "1280x720/03_拖动物整体隐藏原位置.png": {
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "454d938ba06447abf8f8cfe9c63d6f1fe9f0a72aa1ed14e0d4f450dba2c541a8"
+    },
+    "1280x720/04_右键转向后的落点.png": {
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "646d5de482c9c216dda39069a593cbe88a18ceca1044eab3561f9593dff09d19"
+    },
+    "1280x720/05_非法落点预览.png": {
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "412adc07931f7d7df3e40273e23320981e23b30165fb0455dcaa5ab92eaf6338"
+    },
+    "1280x720/06_拖出卸下后的有效布局.png": {
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "febfedf44879d7dede6f0be6882ab3163e170a39cade336ba906ef0214f6d077"
+    },
+    "1280x720/10_拖放同种丹药补空瓶.png": {
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "1baaa63ed2aafcc3545a2b02c1b1da74619294024d86e664b79c6099d5fc1d4b"
+    },
+    "1280x720/08_仅空格的遍历反馈.png": {
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "452e688dbff0b491a88502f7b8e08cf44961cb90298a7d074407e0c915170550"
+    },
+    "1280x720/07_遍历整份对象弹性反馈.png": {
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "c841ca22b829dc2b1db1dd4108ff365f29ab48f85089f8ae1ec051c0035e898a"
+    },
+    "1280x720/09_回合末整理.png": {
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "715971776b91fdaf7d3f9524b8ad83f1461a6bbbca8d2096e087448a9d96aa0a"
+    },
+    "1920x1080/01_整份占形边框与紧凑来源.png": {
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "cc2a79f47ee2540a8abb6f20eb4f37a308d26ac16e7f56f8ee834b2524adf685"
+    },
+    "1920x1080/02_来源转向与合法落点预览.png": {
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "eee01b0878b87f4fcf79e342aeec5c156c921a0d5e81239ce23816d3d5602056"
+    },
+    "1920x1080/03_拖动物整体隐藏原位置.png": {
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "9dec9a7f8656cfce35417b00d9e0b15800b2ad4e61e51c866749258172e44eca"
+    },
+    "1920x1080/04_右键转向后的落点.png": {
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "0211fb5d2e9475c939a8d4d0440ae9ce7af50df5df6d45184531ac8e4232729a"
+    },
+    "1920x1080/05_非法落点预览.png": {
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "73085e19f112193c41e90f4c3da439f15eb8bb8c7c887507cbc1e1fe2074636b"
+    },
+    "1920x1080/06_拖出卸下后的有效布局.png": {
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "e2d67da2e00529fab8e651f7d734387971b3e9f4c6224ebc36c33b6f25ec2c11"
+    },
+    "1920x1080/10_拖放同种丹药补空瓶.png": {
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "45aa916f39c6b3ba520287ed1f51883c08a47643d3d5ae7e5c62a4230cd60ca0"
+    },
+    "1920x1080/08_仅空格的遍历反馈.png": {
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "0a701ced8473359dbc975cb39cedc0cdc1416ed953d1a41e8c93e7d32f4310c8"
+    },
+    "1920x1080/07_遍历整份对象弹性反馈.png": {
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "8f79ed801ed4e7d8ded13e45d172082288b4477fc2b9951b4b888539d2e0f8db"
+    },
+    "1920x1080/09_回合末整理.png": {
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "39254111b95484aa4c4dbfa4b63a757e17797c7608db1f48ac72aa590feef24b"
+    }
+  },
+  "source_ui_pngs_unchanged": true,
+  "source_ui_png_sha256": {
+    "grid_parts_atlas.png": "0b6732787fa96c0ff0a33624c573c9e0c6c57604ded3a4260f53142d38bb6c6f",
+    "source_panel.png": "439b8b36fff086b9da5366a7bc7ca48a9ed05247c28a880457c85c5f589d5b5d",
+    "tooltip_panel.png": "cf9d9601f621611aa934e0a4adbcebe55e07d6b60c5f0861741057423dbd9a95",
+    "buttons_atlas.png": "30b083d2b5e8b178efb07f11731ae318e14e1192e4c94a2997326d06bbb7a2fe",
+    "resources_atlas.png": "0775139a218c297500613feb35e676542137f7cb311a5ee5cade3361010e0a39"
+  },
+  "verified_task_code_sha256": {
+    "csharp/battle/BattleBoardHud.cs": "7c35ce24ef8fa336c79ea1b2474a7391c3462c214a90518f881db9834e9ab3a4",
+    "csharp/battle/BattleBoardView.cs": "140e85ab54ff905d933b31246d44fb7ebcd57ad9b636c4d6aa0fd773f25b1016",
+    "csharp/battle/BattleBoardDragPreview.cs": "baf2464ef5d84f47344338a1bfb06b921dd543502c05e22c9fdc21c81fc940f4",
+    "csharp/battle/BattleBoardPlacementArt.cs": "8cd88d585cc21510ef0b1f64a9e7174b933f2f02410ff2a56dde2ac4e22ab38b",
+    "csharp/battle/BattleManager.CombatBoard.cs": "03a30b41e19772c4536f7b4f99d251e20a96dc5bad0dce67aebc353895761b5d",
+    "csharp/battle/CombatBoardRoundState.cs": "df15e13186cab2c0daa7c897e47173bda6a3b21f6b68ce06b375f2aea34f6439",
+    "csharp/autoload/HoverInfoManager.cs": "accdd640d63a318a544c634d5b112d480a15d1412946b0bc45aa53d5acab0896",
+    "csharp/autoload/GameplayInputRouter.cs": "a0a99d42a444fed164a3d1c5e30481aec37b2ee65063ca7c1dae50cfaddcc84c"
+  },
+  "local_reference": {
+    "game": "Backpack Battles",
+    "installed_build": "25352124",
+    "scope": "Read-only public Item.tscn animation tracks; no scripts decrypted or assets copied"
+  },
+  "limits": [
+    "No new skill effects, costs, targeting rules, artifact/talisman or growth board mechanics.",
+    "Shared hover tests do not imply every legacy screen was manually checked.",
+    "Official journey persistence is outside this isolated trial validation."
+  ]
+}

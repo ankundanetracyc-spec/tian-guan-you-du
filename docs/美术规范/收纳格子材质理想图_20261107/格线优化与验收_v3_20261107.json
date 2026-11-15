@@ -1,0 +1,39 @@
+{
+  "date": "2026-11-07",
+  "revision": "v3格线稍加清晰",
+  "scope": "仅理想图样式，无正式游戏或存档改动",
+  "preview": "材质对照_v3_20261107.html",
+  "style": "格线清晰_v3_20261107.css",
+  "baseRevision": "生成与验收_v2_20261107.json",
+  "changes": [
+    "提高格线对比，深浅相邻细线分辨格界",
+    "略加强区域内缘和占格内部的选中框",
+    "材质原图、36格距、物品大小／占地／朝向与布局保持"
+  ],
+  "screenshots": [
+    "收纳材质_格线优化_v3_1920.png",
+    "收纳材质_格线优化_v3_1280.png"
+  ],
+  "checks": {
+    "resolutions": [
+      [
+        1920,
+        1080
+      ],
+      [
+        1280,
+        720
+      ]
+    ],
+    "gridPixels": [
+      36,
+      24
+    ],
+    "surfaces": 6,
+    "images": 18,
+    "failedImages": 0,
+    "consoleWarnings": 0,
+    "consoleErrors": 0,
+    "visualReview": "1920与1280核对，布衬和木纹上均可区分格界"
+  }
+}

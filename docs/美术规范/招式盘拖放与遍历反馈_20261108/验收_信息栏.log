@@ -1,0 +1,31 @@
+Godot Engine v4.7.2.stable.mono.custom_build.ed1daf0bf (2026-08-17 01:18:38 UTC) - https://godotengine.org
+
+HOVER_DRAG_PASS 来源正常显示只读悬停
+HOVER_DRAG_PASS 悬停全部可见与内部子控件均忽略鼠标
+HOVER_DRAG_PASS 只读内容不取得控件焦点
+HOVER_DRAG_PASS 规则详解提示不再挡住鼠标
+HOVER_DRAG_PASS 动态添加的悬停内容立即保持穿透
+HOVER_DRAG_PASS 实际点击前卡片仍覆盖底层按钮
+HOVER_DRAG_PASS 真实鼠标点击只触发底层按钮一次
+HOVER_DRAG_PASS 移入卡片不延长显示而在离开来源后收起
+HOVER_DRAG_PASS 来源正常显示只读悬停
+HOVER_DRAG_PASS 滚轮前悬停仍覆盖来源列表
+HOVER_DRAG_PASS 滚轮自然传给底下真实列表
+HOVER_DRAG_PASS 悬停不代收滚轮或滚动正文
+HOVER_DRAG_PASS 来源正常显示只读悬停
+HOVER_DRAG_PASS 自定义拖拽开始同步隐藏当前悬停
+HOVER_DRAG_PASS 即时显示请求也不能穿过拖拽抑制
+HOVER_DRAG_PASS 拖拽期间重新进入来源与延时均不重开
+HOVER_DRAG_PASS 拖拽期间记录动态来源但不运行悬停展示
+HOVER_DRAG_PASS 拖拽时不因F1误开规则页
+HOVER_DRAG_PASS 一个拖拽结束不释放另一所有者的抑制
+HOVER_DRAG_PASS 拖拽所有者离树自动释放悬停抑制
+HOVER_DRAG_PASS 拖拽结束后重新从真实来源读取最新内容
+HOVER_DRAG_PASS 实际原生拖拽已建立
+HOVER_DRAG_PASS 原生拖拽无需额外调用也同步隐藏悬停
+HOVER_DRAG_PASS 原生拖拽跨帧与重复更新均不重开
+HOVER_DRAG_PASS 取消原生拖拽恢复正常悬停资格
+HOVER_DRAG_PASS 来源正常显示只读悬停
+HOVER_DRAG_PASS 非拖拽状态F1仍打开独立规则阅读页
+HOVER_DRAG_PASS 独立规则阅读页仍可关闭
+HOVER_DRAG_PASSTHROUGH_OK checks=28

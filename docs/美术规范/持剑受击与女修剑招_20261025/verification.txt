@@ -1,0 +1,112 @@
+Final build: 0 warnings, 0 errors.
+14 runtime PNG layers: 2048x2048 RGBA; all four alpha borders transparent; each front layer contains painted pixels.
+Original male cut: all three restored PNGs remain byte-identical to backups.
+
+sword_completion_formal.log
+PASS 正式快照进入右手持剑待机
+PASS 缺图保留本衣装待机
+PASS 暂停同时冻结动作与PNG序列
+PASS 正式执行播放姿势与序列：斩剑
+PASS 正式执行结束清理演出：斩剑
+PASS 原站位和层级准确恢复：斩剑
+PASS 行动后回到持剑待机：斩剑
+PASS 命中接触序列接入：斩剑
+PASS 正式命中受方仍握剑受击：male_斩剑
+PASS 正式执行播放姿势与序列：养锋
+PASS 正式执行结束清理演出：养锋
+PASS 原站位和层级准确恢复：养锋
+PASS 行动后回到持剑待机：养锋
+PASS 养锋仍按原规则获得剑意
+PASS 正式执行播放姿势与序列：尽锋
+PASS 正式执行结束清理演出：尽锋
+PASS 原站位和层级准确恢复：尽锋
+PASS 行动后回到持剑待机：尽锋
+PASS 命中接触序列接入：尽锋
+PASS 正式命中受方仍握剑受击：male_尽锋
+PASS 尽锋命中仍消耗剑意
+PASS 正式执行播放姿势与序列：斩剑
+PASS 正式执行结束清理演出：斩剑
+PASS 原站位和层级准确恢复：斩剑
+PASS 行动后回到持剑待机：斩剑
+PASS 命中接触序列接入：斩剑
+PASS 实际应对插入使用格剑姿势
+PASS 格剑应对仍获得一次剑意
+PASS 格剑原体力费用只扣一次
+PASS 持剑受击保留剑和前景指节：male / False
+PASS 受击握点与剑随同一原点镜像：male / False
+PASS 受击暂停冻结身体与剑：male
+PASS 受击恢复持剑待机、原比例与站位：male / False
+PASS 持剑受击保留剑和前景指节：male / True
+PASS 受击握点与剑随同一原点镜像：male / True
+PASS 受击暂停冻结身体与剑：male
+PASS 受击恢复持剑待机、原比例与站位：male / True
+PASS 女修正式快照使用女修持剑待机
+PASS 暂停同时冻结动作与PNG序列
+PASS 正式执行播放姿势与序列：斩剑
+PASS 正式执行结束清理演出：斩剑
+PASS 原站位和层级准确恢复：斩剑
+PASS 行动后回到持剑待机：斩剑
+PASS 命中接触序列接入：斩剑
+PASS 正式命中受方仍握剑受击：female_斩剑
+PASS 正式执行播放姿势与序列：养锋
+PASS 正式执行结束清理演出：养锋
+PASS 原站位和层级准确恢复：养锋
+PASS 行动后回到持剑待机：养锋
+PASS 正式执行播放姿势与序列：尽锋
+PASS 正式执行结束清理演出：尽锋
+PASS 原站位和层级准确恢复：尽锋
+PASS 行动后回到持剑待机：尽锋
+PASS 命中接触序列接入：尽锋
+PASS 正式命中受方仍握剑受击：female_尽锋
+PASS 正式执行播放姿势与序列：斩剑
+PASS 正式执行结束清理演出：斩剑
+PASS 原站位和层级准确恢复：斩剑
+PASS 行动后回到持剑待机：斩剑
+PASS 命中接触序列接入：斩剑
+PASS 实际应对插入使用格剑姿势
+PASS 持剑受击保留剑和前景指节：female / False
+PASS 受击握点与剑随同一原点镜像：female / False
+PASS 受击暂停冻结身体与剑：female
+PASS 受击恢复持剑待机、原比例与站位：female / False
+PASS 持剑受击保留剑和前景指节：female / True
+PASS 受击握点与剑随同一原点镜像：female / True
+PASS 受击暂停冻结身体与剑：female
+PASS 受击恢复持剑待机、原比例与站位：female / True
+PASS 实际装备快照选择剑图并保留握柄遮挡：0 / slender
+PASS 实际装备快照选择剑图并保留握柄遮挡：0 / broad
+PASS 实际装备快照选择剑图并保留握柄遮挡：0 / spined
+PASS 实际装备快照选择剑图并保留握柄遮挡：1 / slender
+PASS 实际装备快照选择剑图并保留握柄遮挡：1 / broad
+PASS 实际装备快照选择剑图并保留握柄遮挡：1 / spined
+PASS 女修缺图时保留自身外观
+PASS 女修御剑预览保留女修空手外观
+PASS 同一节点切回男修时不复用女修缓存
+PASS 出手角色移除后清理剑招特效
+SWORD FORMAL PRESENTATION: 79 CHECKS PASSED
+
+sword_completion_lab.log
+LAB PASS: 女修剑招入口: cut
+LAB PASS: 女修剑招入口: parry
+LAB PASS: 女修剑招入口: nurture
+LAB PASS: 女修剑招入口: finish
+LAB PASS: 女修持剑受击入口
+LAB PASS: 受击入口可换剑图
+LAB PASS: 测试入口暂停身体、剑与受击序列帧
+LAB PASS: 持剑受击入口可切换深色背景
+LAB PASS: 测试入口恢复持剑待机
+LAB PASS: 男修持剑受击入口
+SWORD COMPLETION LAB: 10 CHECKS PASSED
+
+sword_completion_staging.log
+STAGING PASSED: melee
+STAGING PASSED: ranged
+STAGING PASSED: reverse
+STAGING PASSED: thunder
+STAGING PASSED: response
+STAGING PASSED: pause/resume
+STAGING PASSED: guard suppression/layer/zoom and dodge pause/recovery/cleanup
+STAGING PASSED: human to wolf
+STAGING PASSED: wolf to human
+STAGING PASSED: target removed during approach
+ATTACK STAGING: ALL CHECKS PASSED
+

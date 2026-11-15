@@ -1,0 +1,136 @@
+{
+  "date": "2026-11-08",
+  "scope": "independent human combat-board entry, native UI and resource alignment; no official journey write or new card rules",
+  "passed": true,
+  "build": {
+    "warnings": 0,
+    "errors": 0
+  },
+  "entry_reports": {
+    "entry_headless": {
+      "passed": true,
+      "checks": 43,
+      "report": "验收_无窗口.json",
+      "engine": "4.7.2-stable (custom_build)"
+    },
+    "native_ui": {
+      "passed": true,
+      "checks": 52,
+      "report": "验收_原生画面.json",
+      "engine": "4.7.2-stable (custom_build)"
+    }
+  },
+  "regressions": {
+    "board_state_and_migration": 125,
+    "human_combat_effects": 392
+  },
+  "launcher": {
+    "passed": true,
+    "exit_code": 0
+  },
+  "native_process_exit_code": 0,
+  "native_stderr_bytes": 0,
+  "logs": [
+    {
+      "file": "验收_入口_无窗口.log",
+      "marker": "COMBAT_BOARD_ENTRY_OK checks=43",
+      "sha256": "5c9a93d799e3b7673c41f644c77d8e2d60cdd430414d3c9c1c91a8de21563f50",
+      "diagnostics_clean": true
+    },
+    {
+      "file": "验收_原生界面.log",
+      "marker": "COMBAT_BOARD_ENTRY_OK checks=52",
+      "sha256": "6396277a97a934659a1df3a10a110bcd528f85621efce9806c3823b44347977a",
+      "diagnostics_clean": true
+    },
+    {
+      "file": "验收_基础状态.log",
+      "marker": "COMBAT_BOARD_SMOKE_OK checks=125",
+      "sha256": "3ecd3b40adaff06ac0bff5f01771106120b83cd46f546d81561b45973271fda9",
+      "diagnostics_clean": true
+    },
+    {
+      "file": "验收_核心效果.log",
+      "marker": "HUMAN_COMBAT_BOARD_SMOKE_OK checks=392",
+      "sha256": "a02bac8e973915ba77ba7d1195b3d0cb1ba73adb1772a7e8bb78b0d180132ad7",
+      "diagnostics_clean": true
+    },
+    {
+      "file": "验收_启动器.log",
+      "marker": "Godot Engine",
+      "sha256": "2d322975baea2bb04065ae3a50fcd7211c642d4fe7e2004e6c59b3c3967c67fd",
+      "diagnostics_clean": true
+    }
+  ],
+  "screenshots": {
+    "01_试演配置_1920.png": {
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "7d703be2864d4f6745209c871c60a793c3ee7cef8f9dd036e52ef240378f0fcf"
+    },
+    "02_配招暗幕_1920.png": {
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "363cfd2d42d3ba5155d3cdb49a4d43af953c88cbee87ace78e4010945d97d75a"
+    },
+    "03_配招暗幕_1280.png": {
+      "pixels": [
+        1280,
+        720
+      ],
+      "sha256": "7612be2fb7a14866ef0e7fc4f42638dcb30053b3f702d5419b2154272ad7e47a"
+    },
+    "04_查看战场_1920.png": {
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "21cf294c9359ba968cabb6bd765158cb283ac89bb3538ad625f3b4a7fae331c8"
+    },
+    "05_化法来源_1920.png": {
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "50c795c5832ec77668556b8903ef73e381e21537d182db88a54cddaa95056950"
+    },
+    "06_自动战斗_1920.png": {
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "a1d51c2adc27ecf0c865794ae544f9d719acd247f077ea90309745fe7af03d77"
+    },
+    "07_回合末整理_1920.png": {
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "f7d100f897780fed3de5f79a9306c485d30b9202cbd8b089e4cc06a020f597ef"
+    },
+    "08_资源栏_对齐修正.png": {
+      "pixels": [
+        482,
+        135
+      ],
+      "sha256": "6c8a85189627de45d47fdcf4d9d4a804bed4332b587c3f3e3f66e9ca4b534bf7"
+    },
+    "09_方案子页_1920.png": {
+      "pixels": [
+        1920,
+        1080
+      ],
+      "sha256": "f07824caf54b95d71fe8e13936ef1cb7ab79a5768e164481a7756dbaf8f70565"
+    }
+  },
+  "source_pngs_unchanged": true,
+  "atlas_regions": 19,
+  "limits": [
+    "No new artifact, talisman, beast-board, Jinian-target or growth rules.",
+    "Official outside-battle character loadout editor and full journey persistence are separate tasks."
+  ]
+}

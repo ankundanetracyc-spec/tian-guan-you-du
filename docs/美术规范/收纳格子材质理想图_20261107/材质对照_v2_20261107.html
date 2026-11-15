@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>收纳空间 · 材质理想图</title><link rel="icon" href="data:,">
+<style>
+@font-face{font-family:Zhenkai;src:url('../../../resources/font/LXGWZhenKaiSlabGB-Regular.ttf')}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#d9d7cc;color:#39433a;font-family:Zhenkai,serif}
+#stage{position:absolute;width:1920px;height:1080px;transform-origin:0 0;background:radial-gradient(ellipse at 50% 20%,#f0ecdf,#e0ddcf 80%)}
+.heading{position:absolute;left:80px;top:49px;margin:0;font-size:40px;font-weight:normal;letter-spacing:4px}.intro{position:absolute;left:82px;top:111px;font-size:21px;color:#7c806e}.draft{position:absolute;right:84px;top:116px;font-size:18px;color:#929381}.rule{position:absolute;left:80px;top:160px;width:1760px;height:1px;background:#b6b39e80}
+.card{position:absolute;top:201px;width:560px;height:788px}.card:nth-of-type(1){left:64px}.card:nth-of-type(2){left:680px}.card:nth-of-type(3){left:1296px}
+.card h2{font-size:31px;font-weight:normal;letter-spacing:4px;text-align:center;margin:0}.subtitle{text-align:center;font-size:18px;color:#80836f;margin-top:10px;letter-spacing:1px}
+.surface{position:absolute;left:64px;top:95px;width:432px;height:576px;background-image:url('../../../textures/ui/inventory_material_20261107/storage_surface_materials_v1.png');background-size:300% 100%;background-repeat:no-repeat;box-shadow:0 2px 7px #4d443828;outline:1px solid #7f867a65;outline-offset:5px;border-radius:2px}
+.bag .surface{background-position:center;--grid:rgba(232,237,219,.15)}.pack .surface{background-position:center;--grid:rgba(72,56,36,.15)}.shelf .surface{background-position:right center;--grid:rgba(64,43,24,.17);outline:2px solid #8a725b;outline-offset:5px}
+.surface::after{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(to right,var(--grid) 1px,transparent 1px),linear-gradient(to bottom,var(--grid) 1px,transparent 1px);background-size:36px 36px;box-shadow:inset 0 0 12px #2e352b15}
+.item{position:absolute;z-index:1;display:block;object-fit:contain;filter:drop-shadow(0 1px 1px #1f241e45);pointer-events:none}.selection{position:absolute;z-index:2;border:1px solid #c4d1b6;box-shadow:inset 0 0 0 1px #455e3c50;background:#b8c7a30b;pointer-events:none}.pack .selection,.shelf .selection{border-color:#68805b;background:#6e86580a;box-shadow:none}
+.caption{position:absolute;top:716px;left:0;width:560px;text-align:center;font-size:23px;letter-spacing:1px}.detail{display:block;font-size:18px;color:#7e826f;margin-top:11px;letter-spacing:0}
+.footer{position:absolute;left:80px;bottom:35px;font-size:17px;color:#92927f;letter-spacing:1px}
+
+.bag .surface{--grid:rgba(72,56,36,.15)}.bag .selection{border-color:#68805b;background:#6e86580a;box-shadow:none}
+.body-regions{position:absolute;left:0;top:95px;width:560px;height:576px}.body-region{position:absolute}.body-region h3{position:absolute;top:-33px;left:0;width:100%;text-align:center;font-size:21px;font-weight:normal;letter-spacing:2px;margin:0;color:#697a70}
+.clothing .surface{position:relative;left:0;top:0;background-position:left center;background-size:1296px 576px;--grid:rgba(232,237,219,.18);outline-color:#7e898066;box-shadow:0 1px 3px #4d443820}
+.clothing .surface::before{content:"";position:absolute;left:0;right:0;top:-4px;height:4px;background:#75877d;opacity:.6;border-bottom:1px solid #c5cdb344}
+.body-item{position:absolute;z-index:1;pointer-events:none}.body-item img{position:absolute;left:50%;top:50%;object-fit:contain;filter:drop-shadow(0 1px 1px #1f241e45)}
+</style></head>
+<body><main id="stage">
+<h1 class="heading">收纳空间 · 材质理想图</h1><div class="intro">让格子有容器的质感，让物品保持清楚。</div><div class="draft">局部材质对照 · 物品为示例</div><div class="rule"></div>
+<section class="card bag"><h2>储物袋</h2><div class="subtitle">袋内空间</div><div class="surface" aria-label="储物袋暖褐缝边布衬与淡格线"></div><div class="caption">暖褐布衬 · 缝边袋腔<small class="detail">朴素缝边，格线压淡</small></div></section>
+<section class="card clothing"><h2>行囊</h2><div class="subtitle">胸前、袖口与腰间</div><div class="body-regions" aria-label="衣物上的随身收纳区域"></div><div class="caption">衣料内衬 · 随身收纳<small class="detail">按衣物收纳位置分别呈现</small></div></section>
+<section class="card shelf"><h2>坊市货架</h2><div class="subtitle">寄售空间</div><div class="surface" aria-label="坊市浅旧木板与淡格线"></div><div class="caption">浅旧木板 · 薄木边<small class="detail">木纹做底，货物直接摆上</small></div></section>
+<div class="footer">材质候选 · 保持现有格距与物品占地</div>
+</main><script src="示例物品_v2_20261107.js"></script><script>
+const stage=document.getElementById('stage'), sample=window.storageSurfaceSample;
+const catalog=new Map(sample.rows.map(row=>[row.key,row]));
+function highlight(surface,row){const frame=document.createElement('div');frame.className='selection';frame.style.cssText=`left:${row.x*sample.cell}px;top:${row.y*sample.cell}px;width:${row.width*sample.cell}px;height:${row.height*sample.cell}px`;surface.append(frame)}
+for(const surface of document.querySelectorAll('.bag .surface,.shelf .surface')){
+  for(const row of sample.rows){const image=document.createElement('img');image.className='item';image.alt=row.name;image.src='../../../'+row.icon.replace('res://','');image.style.cssText=`left:${row.x*sample.cell}px;top:${row.y*sample.cell}px;width:${row.width*sample.cell}px;height:${row.height*sample.cell}px`;surface.append(image)}
+  highlight(surface,sample.rows[0]);
+}
+for(const region of sample.bodyRegions){
+ const wrapper=document.createElement('section');wrapper.className='body-region';wrapper.style.cssText=`left:${region.left}px;top:${region.top}px;width:${region.width*sample.cell}px;height:${region.height*sample.cell}px`;
+ const label=document.createElement('h3');label.textContent=region.name;wrapper.append(label);
+ const surface=document.createElement('div');surface.className='surface';surface.style.width=region.width*sample.cell+'px';surface.style.height=region.height*sample.cell+'px';wrapper.append(surface);
+ for(const placement of region.items){const row=catalog.get(placement.key),rotated=!!placement.rotated;const piece=document.createElement('div');piece.className='body-item';piece.style.cssText=`left:${placement.x*sample.cell}px;top:${placement.y*sample.cell}px;width:${(rotated?row.height:row.width)*sample.cell}px;height:${(rotated?row.width:row.height)*sample.cell}px`;const image=document.createElement('img');image.alt=row.name;image.src='../../../'+row.icon.replace('res://','');image.style.cssText=`width:${row.width*sample.cell}px;height:${row.height*sample.cell}px;transform:translate(-50%,-50%) rotate(${rotated?90:0}deg)`;piece.append(image);surface.append(piece);if(row.key==='mist')highlight(surface,{...row,x:placement.x,y:placement.y})}
+ document.querySelector('.body-regions').append(wrapper);
+}
+function fit(){const scale=Math.min(innerWidth/1920,innerHeight/1080);stage.style.transform=`scale(${scale})`;stage.style.left=`${(innerWidth-1920*scale)/2}px`;stage.style.top=`${(innerHeight-1080*scale)/2}px`}
+addEventListener('resize',fit);fit();window.previewReady=true;
+</script></body></html>

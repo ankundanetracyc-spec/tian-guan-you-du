@@ -1,0 +1,3942 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-09",
+  "workspace": "E:/stacklands",
+  "scope": "工艺、百工、阵法、宗门设施、坊市、租用样稿、雅集、真传讲席及地点普通行动/确认说明层",
+  "mode": "只读用途审计；只新写本报告，不改源文件，不构建，不运行游戏/网页交互测试",
+  "ruleBasis": [
+    "AGENTS.md",
+    "docs/策划案摘要/README.md",
+    "docs/README.md",
+    "docs/plans/界面与美术/全局界面统一风格规范_20261108.md"
+  ],
+  "rolePolicy": {
+    "Regular": "普通操作、页内筛选/互斥/多选；同类可变尺寸；状态不改变用途",
+    "Primary": "按操作区设置主提交组；同一任务允许用途明确的并列执行方式，不限制整页只能有一个Primary；同级筛选/互斥选择仍为Regular，不用Primary表示选中",
+    "Navigation": "跨页面/功能层导航；可采用同族专用物理签/场景牌例外",
+    "Icon": "无文字操作；图形关闭/说明/翻页按实际用途登记",
+    "Input": "数量输入和裸三角增减；范围和真实库存逻辑不改",
+    "forbiddenHeuristics": "不得用宽度、字数、当前文字或旧材质颜色推断角色；尺寸变化不能自动换折角签",
+    "selection": "整张原纸面中灰绿、深墨字，无额外中央方块/侧线/底线；已批准特殊页面保持"
+  },
+  "forgingIntegration": {
+    "verdict": "新纸墨样稿未被正式入口引用",
+    "evidence": [
+      {
+        "file": "csharp/MainScene.LocationCrafting.cs",
+        "line": 12,
+        "text": "符工单独ShowTalismanFor；其他工艺ShowFor(player, actionId==tiangong_alchemy)"
+      },
+      {
+        "file": "csharp/panel/LocationCraftingPanel.cs",
+        "line": 22,
+        "text": "炼器正式分支实例化ProcessForgingScene.tscn，23行BindOwner(owner)"
+      },
+      {
+        "file": "tscn/scene/ProcessForgingScene.tscn",
+        "line": 3,
+        "text": "脚本绑定ProcessForgingScene.cs"
+      },
+      {
+        "file": "tscn/scene/ForgingPaperPreview.tscn",
+        "line": 3,
+        "text": "独立场景脚本绑定ForgingPaperPreviewScene.cs"
+      },
+      {
+        "file": "csharp/scene/ForgingPaperPreviewScene.cs",
+        "line": 42,
+        "text": "包装只实例化原页；50-51行设置该实例本地Theme；56行原生只读炉火预览"
+      },
+      {
+        "file": "docs/plans/界面与美术/炼器纸墨木石样稿_20261108.md",
+        "line": 3,
+        "text": "明确未替换游戏内炼器入口"
+      },
+      {
+        "file": "docs/README.md",
+        "line": 35,
+        "text": "炼器独立样稿待验收，不接正式入口"
+      }
+    ],
+    "search": "仅检索游戏源码/场景：ForgingPaperPreview引用只见包装类定义与独立tscn脚本绑定；无正式入口指向它"
+  },
+  "negativeChecks": [
+    {
+      "file": "csharp/scene/AlchemySlotBrewPreviewScene.PaperDialogs.cs",
+      "line": 372,
+      "result": "当前PaperDialogButton显式接受kind，默认Regular，未发现宽度/字数自动换Tab分支；不能将这项描述为当前仍存在的缺陷"
+    },
+    {
+      "file": "csharp/scene/TalismanCraftingScene.cs",
+      "line": 116,
+      "result": "模式、技艺及留墨功用使用Regular+selected；267行制作独占Primary，不存在同页全按钮误用Primary"
+    },
+    {
+      "file": "csharp/panel/CraftingPaperStyle.cs",
+      "line": 117,
+      "result": "当前selected对整份图像着色；没有旧中央矩形染色分支。纸墨包装也在237行明确整面绘制"
+    },
+    {
+      "file": "csharp/scene/ForgingPaperPreviewScene.cs",
+      "line": 224,
+      "result": "包装不再按短宽自动切Tab；但仍按文字/旧纹理推断角色，见CS06"
+    }
+  ],
+  "panels": [
+    {
+      "id": "alchemy_native_main",
+      "name": "炼丹正式围炉/用度",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/scene/AlchemySlotBrewPreviewScene.PaperSkin.cs",
+        "line": 25
+      },
+      "buttons": [
+        "说明",
+        "返回",
+        "丹方册",
+        "药位选材/移除",
+        "份数",
+        "炼丹",
+        "炼成展示完整/简洁（主线正移除）"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "说明",
+          "选材"
+        ],
+        "Primary": [
+          "炼丹"
+        ],
+        "Navigation": [
+          "返回",
+          "丹方册"
+        ],
+        "Icon": [
+          "移除"
+        ],
+        "Input": [
+          "份数+裸三角"
+        ]
+      },
+      "findingIds": [
+        "CS01",
+        "CS03"
+      ],
+      "notes": "主线本轮修改中，不抢改；炉体与君臣佐使布局保留。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "alchemy_native_picker",
+      "name": "炼丹正式拣药",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/scene/AlchemySlotBrewPreviewScene.PaperDialogs.cs",
+        "line": 9
+      },
+      "buttons": [
+        "搜索",
+        "五行/阴阳/功用筛选",
+        "仅本位生效",
+        "重置筛选",
+        "材料条目",
+        "收起",
+        "×"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "全部筛选",
+          "重置",
+          "材料选择",
+          "收起"
+        ],
+        "Icon": [
+          "×"
+        ]
+      },
+      "findingIds": [
+        "CS01",
+        "CS03"
+      ],
+      "notes": "",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "alchemy_native_notebook_builtin",
+      "name": "炼丹正式丹方册·内置样方",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/scene/AlchemySlotBrewPreviewScene.PaperDialogs.cs",
+        "line": 172
+      },
+      "buttons": [
+        "分类",
+        "丹方条目",
+        "题名",
+        "保存新方",
+        "覆盖同名",
+        "删除/确认删除",
+        "收起",
+        "载入此方",
+        "×"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "分类",
+          "条目",
+          "删除",
+          "收起"
+        ],
+        "Primary": [
+          "载入区：载入此方",
+          "命名保存区：保存新方/覆盖同名为同任务并列方式"
+        ],
+        "Input": [
+          "题名"
+        ],
+        "Icon": [
+          "×"
+        ]
+      },
+      "findingIds": [
+        "CS02"
+      ],
+      "notes": "",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "alchemy_native_notebook_saved",
+      "name": "炼丹正式丹方册·我的丹方",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/scene/AlchemySlotBrewPreviewScene.PaperDialogs.cs",
+        "line": 172
+      },
+      "buttons": [
+        "分类",
+        "丹方条目",
+        "题名",
+        "保存新方",
+        "覆盖同名",
+        "删除/确认删除",
+        "收起",
+        "载入此方",
+        "×"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "分类",
+          "条目",
+          "删除",
+          "收起"
+        ],
+        "Primary": [
+          "载入区：载入此方",
+          "命名保存区：保存新方/覆盖同名为同任务并列方式"
+        ],
+        "Input": [
+          "题名"
+        ],
+        "Icon": [
+          "×"
+        ]
+      },
+      "findingIds": [
+        "CS02"
+      ],
+      "notes": "",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "alchemy_native_help",
+      "name": "炼丹正式说明层",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/scene/AlchemySlotBrewPreviewScene.cs",
+        "line": 284
+      },
+      "buttons": [
+        "关闭",
+        "载入回春丹样方甲"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "关闭",
+          "载入样方"
+        ]
+      },
+      "findingIds": [],
+      "notes": "",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "alchemy_native_message",
+      "name": "炼丹正式提示层",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/scene/AlchemySlotBrewPreviewScene.cs",
+        "line": 342
+      },
+      "buttons": [
+        "关闭",
+        "明白"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "关闭",
+          "明白"
+        ]
+      },
+      "findingIds": [],
+      "notes": "",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "alchemy_native_presentation",
+      "name": "炼丹正式演出层",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/scene/AlchemySlotBrewPreviewScene.Presentation.cs",
+        "line": 96
+      },
+      "buttons": [
+        "跳过演出·查看获得"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "跳过"
+        ]
+      },
+      "findingIds": [],
+      "notes": "保留原演出；按钮当前额外使用浅色文字，需结合演出暗幕逐页实看。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "alchemy_native_bottling",
+      "name": "炼丹正式鉴看/装瓶",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/scene/AlchemySlotBrewPreviewScene.Receipt.cs",
+        "line": 128
+      },
+      "buttons": [
+        "确定·按丹效装瓶"
+      ],
+      "rolePlan": {
+        "Primary": [
+          "确定·按丹效装瓶"
+        ]
+      },
+      "findingIds": [],
+      "notes": "ApplyInkBrushButtonStyle已有Primary，不判错。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "alchemy_native_receipt",
+      "name": "炼丹正式领取宿主/无所得返回/失败重开",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/scene/AlchemySlotBrewPreviewScene.Receipt.cs",
+        "line": 13
+      },
+      "buttons": [
+        "返回",
+        "重新打开领取"
+      ],
+      "rolePlan": {
+        "Navigation": [
+          "返回",
+          "重新打开领取"
+        ]
+      },
+      "findingIds": [],
+      "notes": "领取物品页复用ItemClaimPanel，由主线/收纳审计覆盖。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "alchemy_web_main",
+      "name": "炼丹网页围炉/用度",
+      "status": "current_sample",
+      "evidence": {
+        "file": "docs/美术规范/炼丹纸墨木石样稿_20261108/preview.js",
+        "line": 24
+      },
+      "buttons": [
+        "普通操作/筛选",
+        "弹层关闭",
+        "核心确认（视页）"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "普通操作/筛选"
+        ],
+        "Primary": [
+          "当前弹层核心确认"
+        ],
+        "Icon": [
+          "关闭"
+        ],
+        "Input": [
+          "份数"
+        ]
+      },
+      "findingIds": [
+        "CS04"
+      ],
+      "notes": "网页仍独立数据；正式接入读取真实人物/库存，不能混算验收。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "alchemy_web_picker",
+      "name": "炼丹网页拣药",
+      "status": "current_sample",
+      "evidence": {
+        "file": "docs/美术规范/炼丹纸墨木石样稿_20261108/preview.js",
+        "line": 37
+      },
+      "buttons": [
+        "普通操作/筛选",
+        "弹层关闭",
+        "核心确认（视页）"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "普通操作/筛选"
+        ],
+        "Primary": [
+          "当前弹层核心确认"
+        ],
+        "Icon": [
+          "关闭"
+        ],
+        "Input": [
+          "份数"
+        ]
+      },
+      "findingIds": [
+        "CS04"
+      ],
+      "notes": "网页仍独立数据；正式接入读取真实人物/库存，不能混算验收。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "alchemy_web_notebook",
+      "name": "炼丹网页丹方册",
+      "status": "current_sample",
+      "evidence": {
+        "file": "docs/美术规范/炼丹纸墨木石样稿_20261108/preview.js",
+        "line": 40
+      },
+      "buttons": [
+        "普通操作/筛选",
+        "弹层关闭",
+        "核心确认（视页）"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "普通操作/筛选"
+        ],
+        "Primary": [
+          "当前弹层核心确认"
+        ],
+        "Icon": [
+          "关闭"
+        ],
+        "Input": [
+          "份数"
+        ]
+      },
+      "findingIds": [
+        "CS04"
+      ],
+      "notes": "网页仍独立数据；正式接入读取真实人物/库存，不能混算验收。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "alchemy_web_help",
+      "name": "炼丹网页说明/只读开炉说明",
+      "status": "current_sample",
+      "evidence": {
+        "file": "docs/美术规范/炼丹纸墨木石样稿_20261108/preview.js",
+        "line": 41
+      },
+      "buttons": [
+        "普通操作/筛选",
+        "弹层关闭",
+        "核心确认（视页）"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "普通操作/筛选"
+        ],
+        "Primary": [
+          "当前弹层核心确认"
+        ],
+        "Icon": [
+          "关闭"
+        ],
+        "Input": [
+          "份数"
+        ]
+      },
+      "findingIds": [],
+      "notes": "网页仍独立数据；正式接入读取真实人物/库存，不能混算验收。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "forging_formal_main",
+      "name": "炼器正式操作",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/scene/ProcessForgingScene.Workspace.cs",
+        "line": 5
+      },
+      "buttons": [
+        "返回/说明/器物册",
+        "材料分类/添加/移除/清空",
+        "份数",
+        "开炼",
+        "详情分类/携器对练（视页）"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "分类/选材/添加/移除/清空/说明/关闭"
+        ],
+        "Primary": [
+          "开炼"
+        ],
+        "Navigation": [
+          "返回/器物册/携器对练"
+        ],
+        "Input": [
+          "份数+裸三角"
+        ]
+      },
+      "findingIds": [
+        "CS05",
+        "CS07"
+      ],
+      "notes": "正式入口仍直接ProcessForgingScene，不含纸墨包装。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "forging_formal_picker",
+      "name": "炼器正式选材",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/scene/ProcessForgingScene.cs",
+        "line": 131
+      },
+      "buttons": [
+        "返回/说明/器物册",
+        "材料分类/添加/移除/清空",
+        "份数",
+        "开炼",
+        "详情分类/携器对练（视页）"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "分类/选材/添加/移除/清空/说明/关闭"
+        ],
+        "Primary": [],
+        "Navigation": [
+          "返回/器物册/携器对练"
+        ],
+        "Input": [
+          "份数+裸三角"
+        ]
+      },
+      "findingIds": [],
+      "notes": "正式入口仍直接ProcessForgingScene，不含纸墨包装。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "forging_formal_examples",
+      "name": "炼器正式参考投料",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/scene/ProcessForgingScene.cs",
+        "line": 104
+      },
+      "buttons": [
+        "返回/说明/器物册",
+        "材料分类/添加/移除/清空",
+        "份数",
+        "开炼",
+        "详情分类/携器对练（视页）"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "分类/选材/添加/移除/清空/说明/关闭"
+        ],
+        "Primary": [],
+        "Navigation": [
+          "返回/器物册/携器对练"
+        ],
+        "Input": [
+          "份数+裸三角"
+        ]
+      },
+      "findingIds": [],
+      "notes": "正式入口仍直接ProcessForgingScene，不含纸墨包装。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "forging_formal_notebook",
+      "name": "炼器正式器物册/记录",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/scene/ProcessForgingScene.cs",
+        "line": 169
+      },
+      "buttons": [
+        "返回/说明/器物册",
+        "材料分类/添加/移除/清空",
+        "份数",
+        "开炼",
+        "详情分类/携器对练（视页）"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "分类/选材/添加/移除/清空/说明/关闭"
+        ],
+        "Primary": [],
+        "Navigation": [
+          "返回/器物册/携器对练"
+        ],
+        "Input": [
+          "份数+裸三角"
+        ]
+      },
+      "findingIds": [],
+      "notes": "正式入口仍直接ProcessForgingScene，不含纸墨包装。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "forging_formal_artifact_detail",
+      "name": "炼器正式器物详情三分类",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/scene/ProcessForgingScene.cs",
+        "line": 196
+      },
+      "buttons": [
+        "返回/说明/器物册",
+        "材料分类/添加/移除/清空",
+        "份数",
+        "开炼",
+        "详情分类/携器对练（视页）"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "分类/选材/添加/移除/清空/说明/关闭"
+        ],
+        "Primary": [],
+        "Navigation": [
+          "返回/器物册/携器对练"
+        ],
+        "Input": [
+          "份数+裸三角"
+        ]
+      },
+      "findingIds": [
+        "CS05"
+      ],
+      "notes": "正式入口仍直接ProcessForgingScene，不含纸墨包装。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "forging_formal_help",
+      "name": "炼器正式说明/记录说明",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/scene/ProcessForgingScene.cs",
+        "line": 254
+      },
+      "buttons": [
+        "返回/说明/器物册",
+        "材料分类/添加/移除/清空",
+        "份数",
+        "开炼",
+        "详情分类/携器对练（视页）"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "分类/选材/添加/移除/清空/说明/关闭"
+        ],
+        "Primary": [],
+        "Navigation": [
+          "返回/器物册/携器对练"
+        ],
+        "Input": [
+          "份数+裸三角"
+        ]
+      },
+      "findingIds": [],
+      "notes": "正式入口仍直接ProcessForgingScene，不含纸墨包装。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "forging_paper_main",
+      "name": "炼器纸墨独立样稿·操作",
+      "status": "current_sample",
+      "evidence": {
+        "file": "csharp/scene/ForgingPaperPreviewScene.cs",
+        "line": 37
+      },
+      "buttons": [
+        "沿原页真实控件的独立实例"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "普通操作/页内分类"
+        ],
+        "Primary": [
+          "开炼演出预览（只读）"
+        ],
+        "Navigation": [
+          "返回/器物册"
+        ],
+        "Input": [
+          "份数"
+        ],
+        "Icon": [
+          "关闭图形/增减待统一"
+        ]
+      },
+      "findingIds": [
+        "CS06",
+        "CS07"
+      ],
+      "notes": "tscn/scene/ForgingPaperPreview.tscn独立包装；无Owner绑定，不扣正式资源，未接正式入口。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "forging_paper_picker",
+      "name": "炼器纸墨独立样稿·选材",
+      "status": "current_sample",
+      "evidence": {
+        "file": "csharp/scene/ForgingPaperPreviewScene.cs",
+        "line": 37
+      },
+      "buttons": [
+        "沿原页真实控件的独立实例"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "普通操作/页内分类"
+        ],
+        "Primary": [
+          "开炼演出预览（只读）"
+        ],
+        "Navigation": [
+          "返回/器物册"
+        ],
+        "Input": [
+          "份数"
+        ],
+        "Icon": [
+          "关闭图形/增减待统一"
+        ]
+      },
+      "findingIds": [],
+      "notes": "tscn/scene/ForgingPaperPreview.tscn独立包装；无Owner绑定，不扣正式资源，未接正式入口。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "forging_paper_examples",
+      "name": "炼器纸墨独立样稿·参考投料",
+      "status": "current_sample",
+      "evidence": {
+        "file": "csharp/scene/ForgingPaperPreviewScene.cs",
+        "line": 37
+      },
+      "buttons": [
+        "沿原页真实控件的独立实例"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "普通操作/页内分类"
+        ],
+        "Primary": [
+          "开炼演出预览（只读）"
+        ],
+        "Navigation": [
+          "返回/器物册"
+        ],
+        "Input": [
+          "份数"
+        ],
+        "Icon": [
+          "关闭图形/增减待统一"
+        ]
+      },
+      "findingIds": [],
+      "notes": "tscn/scene/ForgingPaperPreview.tscn独立包装；无Owner绑定，不扣正式资源，未接正式入口。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "forging_paper_notebook",
+      "name": "炼器纸墨独立样稿·器物册",
+      "status": "current_sample",
+      "evidence": {
+        "file": "csharp/scene/ForgingPaperPreviewScene.cs",
+        "line": 37
+      },
+      "buttons": [
+        "沿原页真实控件的独立实例"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "普通操作/页内分类"
+        ],
+        "Primary": [
+          "开炼演出预览（只读）"
+        ],
+        "Navigation": [
+          "返回/器物册"
+        ],
+        "Input": [
+          "份数"
+        ],
+        "Icon": [
+          "关闭图形/增减待统一"
+        ]
+      },
+      "findingIds": [],
+      "notes": "tscn/scene/ForgingPaperPreview.tscn独立包装；无Owner绑定，不扣正式资源，未接正式入口。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "forging_paper_artifact_detail",
+      "name": "炼器纸墨独立样稿·器物详情",
+      "status": "sample_latent_state_not_present_in_default_fixture",
+      "evidence": {
+        "file": "csharp/scene/ForgingPaperPreviewScene.cs",
+        "line": 37
+      },
+      "buttons": [
+        "沿原页真实控件的独立实例"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "普通操作/页内分类"
+        ],
+        "Primary": [
+          "开炼演出预览（只读）"
+        ],
+        "Navigation": [
+          "返回/器物册"
+        ],
+        "Input": [
+          "份数"
+        ],
+        "Icon": [
+          "关闭图形/增减待统一"
+        ]
+      },
+      "findingIds": [
+        "CS06"
+      ],
+      "notes": "tscn/scene/ForgingPaperPreview.tscn独立包装；无Owner绑定，不扣正式资源，未接正式入口。 当前样稿无提交成器，器物册为空；只记录包装映射潜在缺口，不计已实看详情。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "forging_paper_help",
+      "name": "炼器纸墨独立样稿·说明",
+      "status": "current_sample",
+      "evidence": {
+        "file": "csharp/scene/ForgingPaperPreviewScene.cs",
+        "line": 37
+      },
+      "buttons": [
+        "沿原页真实控件的独立实例"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "普通操作/页内分类"
+        ],
+        "Primary": [
+          "开炼演出预览（只读）"
+        ],
+        "Navigation": [
+          "返回/器物册"
+        ],
+        "Input": [
+          "份数"
+        ],
+        "Icon": [
+          "关闭图形/增减待统一"
+        ]
+      },
+      "findingIds": [],
+      "notes": "tscn/scene/ForgingPaperPreview.tscn独立包装；无Owner绑定，不扣正式资源，未接正式入口。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "forging_paper_fire",
+      "name": "炼器纸墨独立样稿·原炉火/关闭页",
+      "status": "current_sample",
+      "evidence": {
+        "file": "csharp/scene/ForgingPaperPreviewScene.cs",
+        "line": 37
+      },
+      "buttons": [
+        "沿原页真实控件的独立实例"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "普通操作/页内分类"
+        ],
+        "Primary": [
+          "开炼演出预览（只读）"
+        ],
+        "Navigation": [
+          "返回/器物册"
+        ],
+        "Input": [
+          "份数"
+        ],
+        "Icon": [
+          "关闭图形/增减待统一"
+        ]
+      },
+      "findingIds": [],
+      "notes": "tscn/scene/ForgingPaperPreview.tscn独立包装；无Owner绑定，不扣正式资源，未接正式入口。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "talisman_native_paper",
+      "name": "符工正式·制符纸",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/scene/TalismanCraftingScene.cs",
+        "line": 113
+      },
+      "buttons": [
+        "三工艺模式",
+        "配伍册/符工录/说明/返回",
+        "技艺",
+        "留墨功用（研墨）",
+        "选材/选择纸墨笔/符谱",
+        "份数/上限",
+        "制作"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "三模式/技艺/功用/普通操作"
+        ],
+        "Primary": [
+          "凝制符纸"
+        ],
+        "Navigation": [
+          "返回/打开独立资料层"
+        ],
+        "Input": [
+          "份数/上限+裸三角"
+        ]
+      },
+      "findingIds": [
+        "CS08"
+      ],
+      "notes": "顶栏模式与技艺已有Regular，主制作已有唯一Primary；整纸选中已按最新规范同步，不误报中央色块。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "talisman_native_ink",
+      "name": "符工正式·研墨",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/scene/TalismanCraftingScene.cs",
+        "line": 113
+      },
+      "buttons": [
+        "三工艺模式",
+        "配伍册/符工录/说明/返回",
+        "技艺",
+        "留墨功用（研墨）",
+        "选材/选择纸墨笔/符谱",
+        "份数/上限",
+        "制作"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "三模式/技艺/功用/普通操作"
+        ],
+        "Primary": [
+          "研成符墨"
+        ],
+        "Navigation": [
+          "返回/打开独立资料层"
+        ],
+        "Input": [
+          "份数/上限+裸三角"
+        ]
+      },
+      "findingIds": [
+        "CS08"
+      ],
+      "notes": "顶栏模式与技艺已有Regular，主制作已有唯一Primary；整纸选中已按最新规范同步，不误报中央色块。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "talisman_native_drawing",
+      "name": "符工正式·画符",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/scene/TalismanCraftingScene.cs",
+        "line": 113
+      },
+      "buttons": [
+        "三工艺模式",
+        "配伍册/符工录/说明/返回",
+        "技艺",
+        "留墨功用（研墨）",
+        "选材/选择纸墨笔/符谱",
+        "份数/上限",
+        "制作"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "三模式/技艺/功用/普通操作"
+        ],
+        "Primary": [
+          "开始画符"
+        ],
+        "Navigation": [
+          "返回/打开独立资料层"
+        ],
+        "Input": [
+          "份数/上限+裸三角"
+        ]
+      },
+      "findingIds": [
+        "CS08"
+      ],
+      "notes": "顶栏模式与技艺已有Regular，主制作已有唯一Primary；整纸选中已按最新规范同步，不误报中央色块。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "talisman_native_material_picker",
+      "name": "符工正式选材",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/scene/TalismanCraftingScene.Choices.cs",
+        "line": 111
+      },
+      "buttons": [
+        "搜索/库存勾选/质地筛选",
+        "选入/移除",
+        "数量",
+        "完成选材",
+        "×"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "筛选/选择/完成"
+        ],
+        "Input": [
+          "数量"
+        ],
+        "Icon": [
+          "×"
+        ]
+      },
+      "findingIds": [
+        "CS08",
+        "CS09"
+      ],
+      "notes": "",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "talisman_native_products",
+      "name": "符工正式选择符纸/符墨/符笔",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/scene/TalismanCraftingScene.Choices.cs",
+        "line": 173
+      },
+      "buttons": [
+        "选用/已选",
+        "符墨数量",
+        "完成选择",
+        "×"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "选择/完成"
+        ],
+        "Input": [
+          "墨量"
+        ],
+        "Icon": [
+          "×"
+        ]
+      },
+      "findingIds": [
+        "CS08",
+        "CS09"
+      ],
+      "notes": "",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "talisman_native_recipes",
+      "name": "符工正式符谱/符效",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/scene/TalismanCraftingScene.Choices.cs",
+        "line": 200
+      },
+      "buttons": [
+        "符效",
+        "选用",
+        "返回符谱",
+        "×"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "选用"
+        ],
+        "Navigation": [
+          "符效/返回符谱"
+        ],
+        "Icon": [
+          "×"
+        ]
+      },
+      "findingIds": [
+        "CS09"
+      ],
+      "notes": "",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "talisman_native_plan_book",
+      "name": "符工正式配伍册三工艺",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/scene/TalismanCraftingScene.Plans.cs",
+        "line": 15
+      },
+      "buttons": [
+        "三工艺筛选",
+        "载入/更名/删除",
+        "题名",
+        "记下配伍",
+        "×"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "筛选/载入/更名/删除"
+        ],
+        "Primary": [
+          "命名保存区：记下配伍",
+          "载入区：如设主提交须明确其任务分组"
+        ],
+        "Input": [
+          "题名"
+        ],
+        "Icon": [
+          "×"
+        ]
+      },
+      "findingIds": [
+        "CS09",
+        "CS10"
+      ],
+      "notes": "",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "talisman_native_plan_confirm",
+      "name": "符工正式覆盖/更名/删除确认",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/scene/TalismanCraftingScene.Plans.cs",
+        "line": 70
+      },
+      "buttons": [
+        "确认覆盖/确认更名/确认删除",
+        "取消",
+        "×"
+      ],
+      "rolePlan": {
+        "Primary": [
+          "每个当前层一个确认"
+        ],
+        "Regular": [
+          "取消"
+        ],
+        "Icon": [
+          "×"
+        ]
+      },
+      "findingIds": [
+        "CS09",
+        "CS10"
+      ],
+      "notes": "",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "talisman_native_knowledge",
+      "name": "符工正式符工录/购笔/研习",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/scene/TalismanCraftingScene.Choices.cs",
+        "line": 266
+      },
+      "buttons": [
+        "备置符笔",
+        "研习",
+        "×"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "逐条备置/研习"
+        ],
+        "Icon": [
+          "×"
+        ]
+      },
+      "findingIds": [
+        "CS09"
+      ],
+      "notes": "列表内允许多个普通条目操作，不要把每条购买/研习都抬为Primary。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "talisman_native_detail_help",
+      "name": "符工正式材料资料/本批配伍/说明",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/scene/TalismanCraftingScene.Choices.cs",
+        "line": 241
+      },
+      "buttons": [
+        "×",
+        "查看/返回"
+      ],
+      "rolePlan": {
+        "Icon": [
+          "×"
+        ],
+        "Navigation": [
+          "查看/返回"
+        ]
+      },
+      "findingIds": [
+        "CS09"
+      ],
+      "notes": "",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "talisman_native_result",
+      "name": "符工正式鉴看",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/scene/TalismanCraftingScene.Choices.cs",
+        "line": 340
+      },
+      "buttons": [
+        "继续制作",
+        "×"
+      ],
+      "rolePlan": {
+        "Navigation": [
+          "继续制作"
+        ],
+        "Icon": [
+          "×"
+        ]
+      },
+      "findingIds": [
+        "CS09"
+      ],
+      "notes": "成品已真实入包，鉴看不新增领取提交。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "talisman_web_paper",
+      "name": "符工网页·制符纸",
+      "status": "current_sample",
+      "evidence": {
+        "file": "docs/美术规范/符箓三工艺界面样稿_20261108/preview.js",
+        "line": 28
+      },
+      "buttons": [
+        "按当前页面的普通/主操作/图形/数量控件"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "普通/筛选/回应"
+        ],
+        "Primary": [
+          "当前制作/当前鉴看核心返回"
+        ],
+        "Icon": [
+          "×"
+        ],
+        "Input": [
+          "数量"
+        ]
+      },
+      "findingIds": [
+        "CS11"
+      ],
+      "notes": "三工艺网页仍保留，11月9日选中同步；演示库存/应变/鉴看夹具不是正式制作数据。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "talisman_web_ink",
+      "name": "符工网页·研墨",
+      "status": "current_sample",
+      "evidence": {
+        "file": "docs/美术规范/符箓三工艺界面样稿_20261108/preview.js",
+        "line": 28
+      },
+      "buttons": [
+        "按当前页面的普通/主操作/图形/数量控件"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "普通/筛选/回应"
+        ],
+        "Primary": [
+          "当前制作/当前鉴看核心返回"
+        ],
+        "Icon": [
+          "×"
+        ],
+        "Input": [
+          "数量"
+        ]
+      },
+      "findingIds": [
+        "CS11"
+      ],
+      "notes": "三工艺网页仍保留，11月9日选中同步；演示库存/应变/鉴看夹具不是正式制作数据。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "talisman_web_drawing",
+      "name": "符工网页·画符",
+      "status": "current_sample",
+      "evidence": {
+        "file": "docs/美术规范/符箓三工艺界面样稿_20261108/preview.js",
+        "line": 28
+      },
+      "buttons": [
+        "按当前页面的普通/主操作/图形/数量控件"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "普通/筛选/回应"
+        ],
+        "Primary": [
+          "当前制作/当前鉴看核心返回"
+        ],
+        "Icon": [
+          "×"
+        ],
+        "Input": [
+          "数量"
+        ]
+      },
+      "findingIds": [
+        "CS11"
+      ],
+      "notes": "三工艺网页仍保留，11月9日选中同步；演示库存/应变/鉴看夹具不是正式制作数据。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "talisman_web_picker",
+      "name": "符工网页·选材/纸墨笔/符谱",
+      "status": "current_sample",
+      "evidence": {
+        "file": "docs/美术规范/符箓三工艺界面样稿_20261108/preview.js",
+        "line": 28
+      },
+      "buttons": [
+        "按当前页面的普通/主操作/图形/数量控件"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "普通/筛选/回应"
+        ],
+        "Primary": [
+          "当前制作/当前鉴看核心返回"
+        ],
+        "Icon": [
+          "×"
+        ],
+        "Input": [
+          "数量"
+        ]
+      },
+      "findingIds": [
+        "CS11"
+      ],
+      "notes": "三工艺网页仍保留，11月9日选中同步；演示库存/应变/鉴看夹具不是正式制作数据。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "talisman_web_plans",
+      "name": "符工网页·配伍册/资料",
+      "status": "current_sample",
+      "evidence": {
+        "file": "docs/美术规范/符箓三工艺界面样稿_20261108/preview.js",
+        "line": 28
+      },
+      "buttons": [
+        "按当前页面的普通/主操作/图形/数量控件"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "普通/筛选/回应"
+        ],
+        "Primary": [
+          "当前制作/当前鉴看核心返回"
+        ],
+        "Icon": [
+          "×"
+        ],
+        "Input": [
+          "数量"
+        ]
+      },
+      "findingIds": [],
+      "notes": "三工艺网页仍保留，11月9日选中同步；演示库存/应变/鉴看夹具不是正式制作数据。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "talisman_web_process",
+      "name": "符工网页·自动过程",
+      "status": "current_sample",
+      "evidence": {
+        "file": "docs/美术规范/符箓三工艺界面样稿_20261108/preview.js",
+        "line": 28
+      },
+      "buttons": [
+        "按当前页面的普通/主操作/图形/数量控件"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "普通/筛选/回应"
+        ],
+        "Primary": [
+          "当前制作/当前鉴看核心返回"
+        ],
+        "Icon": [
+          "×"
+        ],
+        "Input": [
+          "数量"
+        ]
+      },
+      "findingIds": [],
+      "notes": "三工艺网页仍保留，11月9日选中同步；演示库存/应变/鉴看夹具不是正式制作数据。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "talisman_web_decision",
+      "name": "符工网页·应变样例",
+      "status": "current_sample",
+      "evidence": {
+        "file": "docs/美术规范/符箓三工艺界面样稿_20261108/preview.js",
+        "line": 28
+      },
+      "buttons": [
+        "按当前页面的普通/主操作/图形/数量控件"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "普通/筛选/回应"
+        ],
+        "Primary": [
+          "当前制作/当前鉴看核心返回"
+        ],
+        "Icon": [
+          "×"
+        ],
+        "Input": [
+          "数量"
+        ]
+      },
+      "findingIds": [],
+      "notes": "三工艺网页仍保留，11月9日选中同步；演示库存/应变/鉴看夹具不是正式制作数据。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "talisman_web_result",
+      "name": "符工网页·鉴看样例",
+      "status": "current_sample",
+      "evidence": {
+        "file": "docs/美术规范/符箓三工艺界面样稿_20261108/preview.js",
+        "line": 28
+      },
+      "buttons": [
+        "按当前页面的普通/主操作/图形/数量控件"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "普通/筛选/回应"
+        ],
+        "Primary": [
+          "当前制作/当前鉴看核心返回"
+        ],
+        "Icon": [
+          "×"
+        ],
+        "Input": [
+          "数量"
+        ]
+      },
+      "findingIds": [],
+      "notes": "三工艺网页仍保留，11月9日选中同步；演示库存/应变/鉴看夹具不是正式制作数据。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "baigong_formal_artifacts",
+      "name": "百工正式·法宝",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/panel/BaigongPanel.cs",
+        "line": 67
+      },
+      "buttons": [
+        "四类切页",
+        "关闭",
+        "阵法内嵌控件（阵法页）"
+      ],
+      "rolePlan": {
+        "Navigation": [
+          "四类切页/返回"
+        ]
+      },
+      "findingIds": [
+        "CS12"
+      ],
+      "notes": "正式仍旧档案页；符箓正式制作已在天工峰，百工此分类仍占位，两者不混淆。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "baigong_formal_alchemy",
+      "name": "百工正式·丹药",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/panel/BaigongPanel.cs",
+        "line": 45
+      },
+      "buttons": [
+        "四类切页",
+        "关闭",
+        "阵法内嵌控件（阵法页）"
+      ],
+      "rolePlan": {
+        "Navigation": [
+          "四类切页/返回"
+        ]
+      },
+      "findingIds": [
+        "CS12"
+      ],
+      "notes": "正式仍旧档案页；符箓正式制作已在天工峰，百工此分类仍占位，两者不混淆。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "baigong_formal_talismans",
+      "name": "百工正式·符箓占位",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/panel/BaigongPanel.cs",
+        "line": 113
+      },
+      "buttons": [
+        "四类切页",
+        "关闭",
+        "阵法内嵌控件（阵法页）"
+      ],
+      "rolePlan": {
+        "Navigation": [
+          "四类切页/返回"
+        ]
+      },
+      "findingIds": [
+        "CS12"
+      ],
+      "notes": "正式仍旧档案页；符箓正式制作已在天工峰，百工此分类仍占位，两者不混淆。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "baigong_formal_formations",
+      "name": "百工正式·阵法设计台",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/panel/BaigongPanel.cs",
+        "line": 125
+      },
+      "buttons": [
+        "四类切页",
+        "关闭",
+        "阵法内嵌控件（阵法页）"
+      ],
+      "rolePlan": {
+        "Navigation": [
+          "四类切页/返回"
+        ]
+      },
+      "findingIds": [
+        "CS12"
+      ],
+      "notes": "正式仍旧档案页；符箓正式制作已在天工峰，百工此分类仍占位，两者不混淆。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "formation_workbench_parameters",
+      "name": "百工阵法·参数",
+      "status": "formal_embedded_tool",
+      "evidence": {
+        "file": "csharp/panel/FormationWorkbench.cs",
+        "line": 116
+      },
+      "buttons": [
+        "保存/读取/清线",
+        "工具/部件",
+        "示例",
+        "应用参数/送一次/重发/清试运行",
+        "守攻试运行"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "工具/示例/保存/读取/清空/重发"
+        ],
+        "Primary": [
+          "应用参数"
+        ],
+        "Navigation": [
+          "守攻试运行"
+        ],
+        "Input": [
+          "参数/幅值"
+        ]
+      },
+      "findingIds": [
+        "CS14"
+      ],
+      "notes": "真实百工嵌入；局外草图与试运行，不等同正式成器或授予战斗物件。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "formation_workbench_trial",
+      "name": "百工阵法·信号试运行",
+      "status": "formal_embedded_tool",
+      "evidence": {
+        "file": "csharp/panel/FormationWorkbench.cs",
+        "line": 135
+      },
+      "buttons": [
+        "保存/读取/清线",
+        "工具/部件",
+        "示例",
+        "应用参数/送一次/重发/清试运行",
+        "守攻试运行"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "工具/示例/保存/读取/清空/重发"
+        ],
+        "Primary": [
+          "送一次"
+        ],
+        "Navigation": [
+          "守攻试运行"
+        ],
+        "Input": [
+          "参数/幅值"
+        ]
+      },
+      "findingIds": [
+        "CS14"
+      ],
+      "notes": "真实百工嵌入；局外草图与试运行，不等同正式成器或授予战斗物件。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "formation_guard_operations",
+      "name": "守攻隔离原生·操作",
+      "status": "isolated_native_trial",
+      "evidence": {
+        "file": "csharp/panel/FormationGuardPanel.cs",
+        "line": 77
+      },
+      "buttons": [
+        "返回/视图切换/放大",
+        "事实试验操作",
+        "启用/观察/供能",
+        "数值参数",
+        "重新试运行"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "事实输入/视图选择/开关"
+        ],
+        "Primary": [],
+        "Navigation": [
+          "返回/放大"
+        ],
+        "Input": [
+          "试验参数"
+        ]
+      },
+      "findingIds": [
+        "CS15"
+      ],
+      "notes": "当前可从百工设计台打开；新物理占格/复杂度/配方未定，不能冒称已装最低4×4。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "formation_guard_parameters",
+      "name": "守攻隔离原生·试验参数",
+      "status": "isolated_native_trial",
+      "evidence": {
+        "file": "csharp/panel/FormationGuardPanel.cs",
+        "line": 95
+      },
+      "buttons": [
+        "返回/视图切换/放大",
+        "事实试验操作",
+        "启用/观察/供能",
+        "数值参数",
+        "重新试运行"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "事实输入/视图选择/开关"
+        ],
+        "Primary": [
+          "重新试运行"
+        ],
+        "Navigation": [
+          "返回/放大"
+        ],
+        "Input": [
+          "试验参数"
+        ]
+      },
+      "findingIds": [
+        "CS15"
+      ],
+      "notes": "当前可从百工设计台打开；新物理占格/复杂度/配方未定，不能冒称已装最低4×4。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "formation_guard_closeup",
+      "name": "守攻隔离原生·阵盘放大",
+      "status": "isolated_native_trial",
+      "evidence": {
+        "file": "csharp/panel/FormationGuardPanel.cs",
+        "line": 184
+      },
+      "buttons": [
+        "返回/视图切换/放大",
+        "事实试验操作",
+        "启用/观察/供能",
+        "数值参数",
+        "重新试运行"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "事实输入/视图选择/开关"
+        ],
+        "Primary": [],
+        "Navigation": [
+          "返回/放大"
+        ],
+        "Input": [
+          "试验参数"
+        ]
+      },
+      "findingIds": [
+        "CS15"
+      ],
+      "notes": "当前可从百工设计台打开；新物理占格/复杂度/配方未定，不能冒称已装最低4×4。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "baigong_web_artifacts",
+      "name": "百工书册修订3·法宝",
+      "status": "current_sample_paused",
+      "evidence": {
+        "file": "docs/美术规范/百工资料纸墨木石样稿_20261108/ledger.js",
+        "line": 33
+      },
+      "buttons": [
+        "书外大类物件",
+        "书侧筛选签",
+        "目录",
+        "翻页",
+        "寻方/撤签/查阅",
+        "图形关闭"
+      ],
+      "rolePlan": {
+        "Navigation": [
+          "四大类物件/返回"
+        ],
+        "Regular": [
+          "书侧筛选/目录/翻页/寻方/撤签"
+        ],
+        "Primary": [],
+        "Icon": [
+          "关闭"
+        ],
+        "Input": [
+          "寻方文字"
+        ]
+      },
+      "findingIds": [
+        "CS13"
+      ],
+      "notes": "明确暂存、未最终验收、未接正式百工；允许书册构图与物理标签个性。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "baigong_web_alchemy",
+      "name": "百工书册修订3·丹药",
+      "status": "current_sample_paused",
+      "evidence": {
+        "file": "docs/美术规范/百工资料纸墨木石样稿_20261108/ledger.js",
+        "line": 33
+      },
+      "buttons": [
+        "书外大类物件",
+        "书侧筛选签",
+        "目录",
+        "翻页",
+        "寻方/撤签/查阅",
+        "图形关闭"
+      ],
+      "rolePlan": {
+        "Navigation": [
+          "四大类物件/返回"
+        ],
+        "Regular": [
+          "书侧筛选/目录/翻页/寻方/撤签"
+        ],
+        "Primary": [],
+        "Icon": [
+          "关闭"
+        ],
+        "Input": [
+          "寻方文字"
+        ]
+      },
+      "findingIds": [
+        "CS13"
+      ],
+      "notes": "明确暂存、未最终验收、未接正式百工；允许书册构图与物理标签个性。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "baigong_web_talismans",
+      "name": "百工书册修订3·符箓",
+      "status": "current_sample_paused",
+      "evidence": {
+        "file": "docs/美术规范/百工资料纸墨木石样稿_20261108/ledger.js",
+        "line": 33
+      },
+      "buttons": [
+        "书外大类物件",
+        "书侧筛选签",
+        "目录",
+        "翻页",
+        "寻方/撤签/查阅",
+        "图形关闭"
+      ],
+      "rolePlan": {
+        "Navigation": [
+          "四大类物件/返回"
+        ],
+        "Regular": [
+          "书侧筛选/目录/翻页/寻方/撤签"
+        ],
+        "Primary": [],
+        "Icon": [
+          "关闭"
+        ],
+        "Input": [
+          "寻方文字"
+        ]
+      },
+      "findingIds": [
+        "CS13"
+      ],
+      "notes": "明确暂存、未最终验收、未接正式百工；允许书册构图与物理标签个性。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "baigong_web_formations",
+      "name": "百工书册修订3·阵法",
+      "status": "current_sample_paused",
+      "evidence": {
+        "file": "docs/美术规范/百工资料纸墨木石样稿_20261108/ledger.js",
+        "line": 33
+      },
+      "buttons": [
+        "书外大类物件",
+        "书侧筛选签",
+        "目录",
+        "翻页",
+        "寻方/撤签/查阅",
+        "图形关闭"
+      ],
+      "rolePlan": {
+        "Navigation": [
+          "四大类物件/返回"
+        ],
+        "Regular": [
+          "书侧筛选/目录/翻页/寻方/撤签"
+        ],
+        "Primary": [],
+        "Icon": [
+          "关闭"
+        ],
+        "Input": [
+          "寻方文字"
+        ]
+      },
+      "findingIds": [
+        "CS13"
+      ],
+      "notes": "明确暂存、未最终验收、未接正式百工；允许书册构图与物理标签个性。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "baigong_web_finder",
+      "name": "百工书册修订3·寻方夹笺",
+      "status": "current_sample_paused",
+      "evidence": {
+        "file": "docs/美术规范/百工资料纸墨木石样稿_20261108/ledger.js",
+        "line": 33
+      },
+      "buttons": [
+        "书外大类物件",
+        "书侧筛选签",
+        "目录",
+        "翻页",
+        "寻方/撤签/查阅",
+        "图形关闭"
+      ],
+      "rolePlan": {
+        "Navigation": [
+          "四大类物件/返回"
+        ],
+        "Regular": [
+          "书侧筛选/目录/翻页/寻方/撤签"
+        ],
+        "Primary": [
+          "查阅"
+        ],
+        "Icon": [
+          "关闭"
+        ],
+        "Input": [
+          "寻方文字"
+        ]
+      },
+      "findingIds": [
+        "CS13"
+      ],
+      "notes": "明确暂存、未最终验收、未接正式百工；允许书册构图与物理标签个性。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "formation_logic_web_r1",
+      "name": "阵法逻辑r1网页演示",
+      "status": "historical_reference",
+      "evidence": {
+        "file": "docs/美术规范/阵法逻辑控制演示_20261109/preview.html",
+        "line": 19
+      },
+      "buttons": [
+        "情境/重置",
+        "轻击/重击/供能机会",
+        "边界试验"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "全部试验输入/情境选择"
+        ]
+      },
+      "findingIds": [],
+      "notes": "规则已由输入输出改革及守攻原生后续部分覆盖；仅留独立策划演示，不作为下一面板待统一对象。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "market_formal_browse",
+      "name": "宗内坊市正式·逛坊市",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/panel/YuxuMarketPanel.cs",
+        "line": 49
+      },
+      "buttons": [
+        "返回/两分页",
+        "分类/搜索/货物条目",
+        "数量/价格",
+        "购买/租用/停摊/上架/改价/撤下/领取",
+        "确认/取消"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "分类/条目/普通管理/取消"
+        ],
+        "Primary": [
+          "按购买/租约/上架/所得或当前确认各操作区的主提交组；同任务允许并列方式"
+        ],
+        "Navigation": [
+          "返回/跨页"
+        ],
+        "Input": [
+          "数量/价格"
+        ]
+      },
+      "findingIds": [
+        "CS16",
+        "CS17"
+      ],
+      "notes": "正式为试玩首版；新版中央格子/拖入交互未迁入。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "market_formal_stall",
+      "name": "宗内坊市正式·我的摊位",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/panel/YuxuMarketPanel.cs",
+        "line": 75
+      },
+      "buttons": [
+        "返回/两分页",
+        "分类/搜索/货物条目",
+        "数量/价格",
+        "购买/租用/停摊/上架/改价/撤下/领取",
+        "确认/取消"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "分类/条目/普通管理/取消"
+        ],
+        "Primary": [
+          "按购买/租约/上架/所得或当前确认各操作区的主提交组；同任务允许并列方式"
+        ],
+        "Navigation": [
+          "返回/跨页"
+        ],
+        "Input": [
+          "数量/价格"
+        ]
+      },
+      "findingIds": [
+        "CS16",
+        "CS17"
+      ],
+      "notes": "正式为试玩首版；新版中央格子/拖入交互未迁入。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "market_formal_confirm",
+      "name": "宗内坊市正式·确认/成交记录",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/panel/YuxuMarketPanel.cs",
+        "line": 114
+      },
+      "buttons": [
+        "返回/两分页",
+        "分类/搜索/货物条目",
+        "数量/价格",
+        "购买/租用/停摊/上架/改价/撤下/领取",
+        "确认/取消"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "分类/条目/普通管理/取消"
+        ],
+        "Primary": [
+          "按购买/租约/上架/所得或当前确认各操作区的主提交组；同任务允许并列方式"
+        ],
+        "Navigation": [
+          "返回/跨页"
+        ],
+        "Input": [
+          "数量/价格"
+        ]
+      },
+      "findingIds": [
+        "CS16"
+      ],
+      "notes": "正式为试玩首版；新版中央格子/拖入交互未迁入。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "market_web_browse",
+      "name": "坊市当前样稿·列式逛坊",
+      "status": "current_sample",
+      "evidence": {
+        "file": "docs/美术规范/宗内坊市交易界面_20261107/我的摊位_拖入管理预览_20261107.html",
+        "line": 64
+      },
+      "buttons": [
+        "两分页/返回",
+        "筛选/搜索",
+        "领取/购买",
+        "数量/价格",
+        "确认/取消"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "选择/筛选/取消"
+        ],
+        "Primary": [
+          "按购买/租约/上架/所得或当前确认各操作区的主提交组；同任务允许并列方式"
+        ],
+        "Navigation": [
+          "分页/返回"
+        ],
+        "Input": [
+          "数量/价格+裸三角"
+        ]
+      },
+      "findingIds": [
+        "CS18",
+        "CS19"
+      ],
+      "notes": "360格是独立视觉评审容量，未认定正式经济容量；不把行囊36格距已接入误认为坊市新事务已接入。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "market_web_stall",
+      "name": "坊市当前样稿·20×18拖入摊位",
+      "status": "current_sample",
+      "evidence": {
+        "file": "docs/美术规范/宗内坊市交易界面_20261107/我的摊位_拖入管理预览_20261107.html",
+        "line": 78
+      },
+      "buttons": [
+        "两分页/返回",
+        "筛选/搜索",
+        "领取/购买",
+        "数量/价格",
+        "确认/取消"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "选择/筛选/取消"
+        ],
+        "Primary": [
+          "按购买/租约/上架/所得或当前确认各操作区的主提交组；同任务允许并列方式"
+        ],
+        "Navigation": [
+          "分页/返回"
+        ],
+        "Input": [
+          "数量/价格+裸三角"
+        ]
+      },
+      "findingIds": [
+        "CS18",
+        "CS19"
+      ],
+      "notes": "360格是独立视觉评审容量，未认定正式经济容量；不把行囊36格距已接入误认为坊市新事务已接入。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "market_web_listing",
+      "name": "坊市当前样稿·数量定价/改价",
+      "status": "current_sample",
+      "evidence": {
+        "file": "docs/美术规范/宗内坊市交易界面_20261107/我的摊位_拖入管理预览_20261107.html",
+        "line": 96
+      },
+      "buttons": [
+        "两分页/返回",
+        "筛选/搜索",
+        "领取/购买",
+        "数量/价格",
+        "确认/取消"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "选择/筛选/取消"
+        ],
+        "Primary": [
+          "按购买/租约/上架/所得或当前确认各操作区的主提交组；同任务允许并列方式"
+        ],
+        "Navigation": [
+          "分页/返回"
+        ],
+        "Input": [
+          "数量/价格+裸三角"
+        ]
+      },
+      "findingIds": [
+        "CS18"
+      ],
+      "notes": "360格是独立视觉评审容量，未认定正式经济容量；不把行囊36格距已接入误认为坊市新事务已接入。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "market_web_confirm",
+      "name": "坊市当前样稿·购买/租约确认",
+      "status": "current_sample",
+      "evidence": {
+        "file": "docs/美术规范/宗内坊市交易界面_20261107/我的摊位_拖入管理预览_20261107.html",
+        "line": 105
+      },
+      "buttons": [
+        "两分页/返回",
+        "筛选/搜索",
+        "领取/购买",
+        "数量/价格",
+        "确认/取消"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "选择/筛选/取消"
+        ],
+        "Primary": [
+          "按购买/租约/上架/所得或当前确认各操作区的主提交组；同任务允许并列方式"
+        ],
+        "Navigation": [
+          "分页/返回"
+        ],
+        "Input": [
+          "数量/价格+裸三角"
+        ]
+      },
+      "findingIds": [
+        "CS18"
+      ],
+      "notes": "360格是独立视觉评审容量，未认定正式经济容量；不把行囊36格距已接入误认为坊市新事务已接入。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "sect_peak_zifu",
+      "name": "紫府峰·静室/休息/月例/师承入口",
+      "status": "formal",
+      "evidence": {
+        "file": "scripts/world/bai_chuan/YuxuPeakInterior.gd",
+        "line": 307
+      },
+      "buttons": [
+        "场景吊牌式行动入口",
+        "返回八峰总览"
+      ],
+      "rolePlan": {
+        "Navigation": [
+          "进入功能页/返回总览"
+        ],
+        "Special": [
+          "SceneActionButton场景吊牌"
+        ]
+      },
+      "findingIds": [],
+      "notes": "SCENE_ACTION_BUTTON实例化363-368；正式天工四入口522-526。吊牌整体为获准保留的场所表现，不能批量换成普通横按钮。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "sect_peak_guanfu",
+      "name": "观复峰·报到/讲席/晋升相关入口",
+      "status": "formal",
+      "evidence": {
+        "file": "scripts/world/bai_chuan/YuxuPeakInterior.gd",
+        "line": 307
+      },
+      "buttons": [
+        "场景吊牌式行动入口",
+        "返回八峰总览"
+      ],
+      "rolePlan": {
+        "Navigation": [
+          "进入功能页/返回总览"
+        ],
+        "Special": [
+          "SceneActionButton场景吊牌"
+        ]
+      },
+      "findingIds": [],
+      "notes": "SCENE_ACTION_BUTTON实例化363-368；正式天工四入口522-526。吊牌整体为获准保留的场所表现，不能批量换成普通横按钮。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "sect_peak_heguang",
+      "name": "和光峰·事务/答疑/宴席/坊市/善功堂入口",
+      "status": "formal",
+      "evidence": {
+        "file": "scripts/world/bai_chuan/YuxuPeakInterior.gd",
+        "line": 307
+      },
+      "buttons": [
+        "场景吊牌式行动入口",
+        "返回八峰总览"
+      ],
+      "rolePlan": {
+        "Navigation": [
+          "进入功能页/返回总览"
+        ],
+        "Special": [
+          "SceneActionButton场景吊牌"
+        ]
+      },
+      "findingIds": [],
+      "notes": "SCENE_ACTION_BUTTON实例化363-368；正式天工四入口522-526。吊牌整体为获准保留的场所表现，不能批量换成普通横按钮。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "sect_peak_yaopu",
+      "name": "药圃峰·值守/培护入口",
+      "status": "formal",
+      "evidence": {
+        "file": "scripts/world/bai_chuan/YuxuPeakInterior.gd",
+        "line": 307
+      },
+      "buttons": [
+        "场景吊牌式行动入口",
+        "返回八峰总览"
+      ],
+      "rolePlan": {
+        "Navigation": [
+          "进入功能页/返回总览"
+        ],
+        "Special": [
+          "SceneActionButton场景吊牌"
+        ]
+      },
+      "findingIds": [],
+      "notes": "SCENE_ACTION_BUTTON实例化363-368；正式天工四入口522-526。吊牌整体为获准保留的场所表现，不能批量换成普通横按钮。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "sect_peak_tianwen",
+      "name": "天问峰·演法/真传考核入口",
+      "status": "formal",
+      "evidence": {
+        "file": "scripts/world/bai_chuan/YuxuPeakInterior.gd",
+        "line": 307
+      },
+      "buttons": [
+        "场景吊牌式行动入口",
+        "返回八峰总览"
+      ],
+      "rolePlan": {
+        "Navigation": [
+          "进入功能页/返回总览"
+        ],
+        "Special": [
+          "SceneActionButton场景吊牌"
+        ]
+      },
+      "findingIds": [],
+      "notes": "SCENE_ACTION_BUTTON实例化363-368；正式天工四入口522-526。吊牌整体为获准保留的场所表现，不能批量换成普通横按钮。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "sect_peak_xuanlan",
+      "name": "玄览峰·研读/拓印入口",
+      "status": "formal",
+      "evidence": {
+        "file": "scripts/world/bai_chuan/YuxuPeakInterior.gd",
+        "line": 307
+      },
+      "buttons": [
+        "场景吊牌式行动入口",
+        "返回八峰总览"
+      ],
+      "rolePlan": {
+        "Navigation": [
+          "进入功能页/返回总览"
+        ],
+        "Special": [
+          "SceneActionButton场景吊牌"
+        ]
+      },
+      "findingIds": [],
+      "notes": "SCENE_ACTION_BUTTON实例化363-368；正式天工四入口522-526。吊牌整体为获准保留的场所表现，不能批量换成普通横按钮。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "sect_peak_tiangong",
+      "name": "天工峰·百工/丹房/器作/符工入口",
+      "status": "formal",
+      "evidence": {
+        "file": "scripts/world/bai_chuan/YuxuPeakInterior.gd",
+        "line": 307
+      },
+      "buttons": [
+        "场景吊牌式行动入口",
+        "返回八峰总览"
+      ],
+      "rolePlan": {
+        "Navigation": [
+          "进入功能页/返回总览"
+        ],
+        "Special": [
+          "SceneActionButton场景吊牌"
+        ]
+      },
+      "findingIds": [],
+      "notes": "SCENE_ACTION_BUTTON实例化363-368；正式天工四入口522-526。吊牌整体为获准保留的场所表现，不能批量换成普通横按钮。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "sect_peak_zhizhong",
+      "name": "执中峰·核验/裁断/执行/交接入口",
+      "status": "formal",
+      "evidence": {
+        "file": "scripts/world/bai_chuan/YuxuPeakInterior.gd",
+        "line": 307
+      },
+      "buttons": [
+        "场景吊牌式行动入口",
+        "返回八峰总览"
+      ],
+      "rolePlan": {
+        "Navigation": [
+          "进入功能页/返回总览"
+        ],
+        "Special": [
+          "SceneActionButton场景吊牌"
+        ]
+      },
+      "findingIds": [],
+      "notes": "SCENE_ACTION_BUTTON实例化363-368；正式天工四入口522-526。吊牌整体为获准保留的场所表现，不能批量换成普通横按钮。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "sect_duty_sources",
+      "name": "宗门事务·公事/私委及分页",
+      "status": "formal",
+      "evidence": {
+        "file": "scripts/world/bai_chuan/YuxuSectDutyBoard.gd",
+        "line": 378
+      },
+      "buttons": [
+        "宗门公事/同门私委",
+        "‹/›",
+        "事务吊牌"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "来源筛选"
+        ],
+        "Icon": [
+          "‹/›"
+        ],
+        "Special": [
+          "事务吊牌"
+        ]
+      },
+      "findingIds": [
+        "CS20"
+      ],
+      "notes": "",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "sect_duty_detail",
+      "name": "宗门事务·详情/接取/提交/回报/取消",
+      "status": "formal",
+      "evidence": {
+        "file": "scripts/world/bai_chuan/YuxuSectDutyBoard.gd",
+        "line": 650
+      },
+      "buttons": [
+        "接取/提交/回报",
+        "取消/取消接取/返回"
+      ],
+      "rolePlan": {
+        "Primary": [
+          "当前详情提交"
+        ],
+        "Regular": [
+          "取消/返回"
+        ]
+      },
+      "findingIds": [
+        "CS20"
+      ],
+      "notes": "",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "sect_exchange",
+      "name": "善功堂·目录/兑换/确认",
+      "status": "formal_preserved",
+      "evidence": {
+        "file": "csharp/panel/YuxuSectExchangePanel.cs",
+        "line": 125
+      },
+      "buttons": [
+        "分类平移/搜索/条目",
+        "兑换",
+        "取消/确认兑换",
+        "返回"
+      ],
+      "rolePlan": {
+        "Preserve": [
+          "全部当前已确认控件"
+        ]
+      },
+      "findingIds": [],
+      "notes": "明确保留，不按新角色素材批量换肤。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "sect_library",
+      "name": "藏经阁·书架/筛选/简介卷章/拓印",
+      "status": "formal_preserved",
+      "evidence": {
+        "file": "csharp/panel/YuxuManualLibraryPanel.cs",
+        "line": 33
+      },
+      "buttons": [
+        "楼层/关键词/可修习/搜索",
+        "书脊",
+        "简介/卷章",
+        "拓印",
+        "返回"
+      ],
+      "rolePlan": {
+        "Preserve": [
+          "全部当前已确认控件"
+        ]
+      },
+      "findingIds": [],
+      "notes": "明确保留；共享YuxuLibraryArt不可因坊市问题直接全局替换。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "sect_confirm_leave",
+      "name": "讲席请假确认",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/MainScene.YuxuSectLife.cs",
+        "line": 345
+      },
+      "buttons": [
+        "确认",
+        "取消"
+      ],
+      "rolePlan": {
+        "Primary": [
+          "确认"
+        ],
+        "Regular": [
+          "取消"
+        ]
+      },
+      "findingIds": [
+        "CS21"
+      ],
+      "notes": "",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "sect_confirm_case",
+      "name": "执中峰案卷核验上呈",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/MainScene.YuxuSectLife.cs",
+        "line": 1236
+      },
+      "buttons": [
+        "确认",
+        "取消"
+      ],
+      "rolePlan": {
+        "Primary": [
+          "确认"
+        ],
+        "Regular": [
+          "取消"
+        ]
+      },
+      "findingIds": [
+        "CS21"
+      ],
+      "notes": "",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "sect_confirm_promotion",
+      "name": "申请晋升确认",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/MainScene.YuxuSectLife.cs",
+        "line": 1458
+      },
+      "buttons": [
+        "确认",
+        "取消"
+      ],
+      "rolePlan": {
+        "Primary": [
+          "确认"
+        ],
+        "Regular": [
+          "取消"
+        ]
+      },
+      "findingIds": [
+        "CS21"
+      ],
+      "notes": "",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "sect_confirm_practice",
+      "name": "天问峰演法确认",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/MainScene.YuxuSectLife.cs",
+        "line": 1519
+      },
+      "buttons": [
+        "确认",
+        "取消"
+      ],
+      "rolePlan": {
+        "Primary": [
+          "确认"
+        ],
+        "Regular": [
+          "取消"
+        ]
+      },
+      "findingIds": [
+        "CS21"
+      ],
+      "notes": "",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "sect_lineage_choices",
+      "name": "宗门择师/首卷/答疑/裁断说明",
+      "status": "formal_shared_dialogue",
+      "evidence": {
+        "file": "csharp/MainScene.YuxuLineage.cs",
+        "line": 49
+      },
+      "buttons": [
+        "叙述/回应条目/返回"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "回应选择"
+        ],
+        "Navigation": [
+          "返回"
+        ]
+      },
+      "findingIds": [],
+      "notes": "通过StoryDialoguePanel共享入口显示；这里只核对路由，实际对白按钮由主线其他页审计覆盖，不新造宗门专用按钮结论。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "banquet_setup",
+      "name": "雅集·筹备/场地日期宾客",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/panel/BanquetPanel.cs",
+        "line": 292
+      },
+      "buttons": [
+        "场地/日期/宾客",
+        "发出邀约/暂不设宴",
+        "提前离席",
+        "回应"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "场地/日期/宾客/回应/取消"
+        ],
+        "Primary": [
+          "发出邀约"
+        ],
+        "Navigation": [
+          "离席"
+        ]
+      },
+      "findingIds": [
+        "CS22"
+      ],
+      "notes": "雅集堂/水榭共用，场景与气泡属于专用叙事保留。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "banquet_activity",
+      "name": "雅集·席间/离席",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/panel/BanquetPanel.cs",
+        "line": 341
+      },
+      "buttons": [
+        "场地/日期/宾客",
+        "发出邀约/暂不设宴",
+        "提前离席",
+        "回应"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "场地/日期/宾客/回应/取消"
+        ],
+        "Primary": [],
+        "Navigation": [
+          "离席"
+        ]
+      },
+      "findingIds": [
+        "CS22"
+      ],
+      "notes": "雅集堂/水榭共用，场景与气泡属于专用叙事保留。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "banquet_response",
+      "name": "雅集·限时回应",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/panel/BanquetPanel.cs",
+        "line": 745
+      },
+      "buttons": [
+        "场地/日期/宾客",
+        "发出邀约/暂不设宴",
+        "提前离席",
+        "回应"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "场地/日期/宾客/回应/取消"
+        ],
+        "Primary": [],
+        "Navigation": [
+          "离席"
+        ]
+      },
+      "findingIds": [
+        "CS22"
+      ],
+      "notes": "雅集堂/水榭共用，场景与气泡属于专用叙事保留。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "true_lecture_opening",
+      "name": "真传讲席·开场/续读",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/panel/TrueDiscipleLecturePanel.cs",
+        "line": 224
+      },
+      "buttons": [
+        "略过场景",
+        "继续/返回观复峰",
+        "回应条目"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "略过/回应"
+        ],
+        "Primary": [
+          "当前继续（如采用）"
+        ],
+        "Navigation": [
+          "收束返回"
+        ]
+      },
+      "findingIds": [
+        "CS23"
+      ],
+      "notes": "",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "true_lecture_prompt",
+      "name": "真传讲席·答问",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/panel/TrueDiscipleLecturePanel.cs",
+        "line": 242
+      },
+      "buttons": [
+        "略过场景",
+        "继续/返回观复峰",
+        "回应条目"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "略过/回应"
+        ],
+        "Primary": [
+          "当前继续（如采用）"
+        ],
+        "Navigation": [
+          "收束返回"
+        ]
+      },
+      "findingIds": [
+        "CS23"
+      ],
+      "notes": "",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "true_lecture_response",
+      "name": "真传讲席·回应余韵",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/panel/TrueDiscipleLecturePanel.cs",
+        "line": 262
+      },
+      "buttons": [
+        "略过场景",
+        "继续/返回观复峰",
+        "回应条目"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "略过/回应"
+        ],
+        "Primary": [
+          "当前继续（如采用）"
+        ],
+        "Navigation": [
+          "收束返回"
+        ]
+      },
+      "findingIds": [
+        "CS23"
+      ],
+      "notes": "",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "true_lecture_closing",
+      "name": "真传讲席·收束返回",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/panel/TrueDiscipleLecturePanel.cs",
+        "line": 275
+      },
+      "buttons": [
+        "略过场景",
+        "继续/返回观复峰",
+        "回应条目"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "略过/回应"
+        ],
+        "Primary": [
+          "当前继续（如采用）"
+        ],
+        "Navigation": [
+          "收束返回"
+        ]
+      },
+      "findingIds": [
+        "CS23"
+      ],
+      "notes": "",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "location_generic",
+      "name": "地点通用内景/子场景名单",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/panel/WorldLocationInteriorPanel.cs",
+        "line": 130
+      },
+      "buttons": [
+        "返回地图",
+        "在场人物",
+        "子场景",
+        "普通行动"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "普通行动/说明"
+        ],
+        "Navigation": [
+          "返回地图/子场景/名单"
+        ]
+      },
+      "findingIds": [
+        "CS24"
+      ],
+      "notes": "此为说明层/额外按钮；白石/玉虚插画、真实场所挂牌与开场吊牌不批量更换。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "location_eastwoods_overview",
+      "name": "东林地内景概览/热点",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/panel/WorldLocationInteriorPanel.cs",
+        "line": 193
+      },
+      "buttons": [
+        "返回地图",
+        "在场人物",
+        "子场景",
+        "普通行动"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "普通行动/说明"
+        ],
+        "Navigation": [
+          "返回地图/子场景/名单"
+        ]
+      },
+      "findingIds": [
+        "CS24"
+      ],
+      "notes": "此为说明层/额外按钮；白石/玉虚插画、真实场所挂牌与开场吊牌不批量更换。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "location_eastwoods_actions",
+      "name": "东林地内景普通行动",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/panel/WorldLocationInteriorPanel.cs",
+        "line": 425
+      },
+      "buttons": [
+        "返回地图",
+        "在场人物",
+        "子场景",
+        "普通行动"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "普通行动/说明"
+        ],
+        "Navigation": [
+          "返回地图/子场景/名单"
+        ]
+      },
+      "findingIds": [
+        "CS24"
+      ],
+      "notes": "此为说明层/额外按钮；白石/玉虚插画、真实场所挂牌与开场吊牌不批量更换。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "location_explanation",
+      "name": "地点说明卡/详情",
+      "status": "formal",
+      "evidence": {
+        "file": "csharp/panel/WorldLocationInteriorPanel.cs",
+        "line": 440
+      },
+      "buttons": [
+        "返回地图",
+        "在场人物",
+        "子场景",
+        "普通行动"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "普通行动/说明"
+        ],
+        "Navigation": [
+          "返回地图/子场景/名单"
+        ]
+      },
+      "findingIds": [
+        "CS24"
+      ],
+      "notes": "此为说明层/额外按钮；白石/玉虚插画、真实场所挂牌与开场吊牌不批量更换。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "location_opening_tags",
+      "name": "现行青溪野地开场/白石场所挂牌",
+      "status": "formal_preserved_special",
+      "evidence": {
+        "file": "csharp/panel/WorldLocationInteriorPanel.Opening.cs",
+        "line": 21
+      },
+      "buttons": [
+        "场景吊牌行动/场所牌"
+      ],
+      "rolePlan": {
+        "Special": [
+          "SceneActionButton/Nameplate"
+        ]
+      },
+      "findingIds": [],
+      "notes": "与旧家业/旧地点废案区分；保留当前有效场景表现。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "rental_web_alchemy",
+      "name": "天工丹房租用v2",
+      "status": "historical_paused_sample",
+      "evidence": {
+        "file": "docs/美术规范/天工峰丹房器作租用入口_20261107/index.html",
+        "line": 19
+      },
+      "buttons": [
+        "场所切换/返回",
+        "时长",
+        "租用并进入/租期内进入",
+        "确认/取消"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "页内选择/取消"
+        ],
+        "Primary": [
+          "本页租用并进入/当前层确认"
+        ],
+        "Navigation": [
+          "进入/返回"
+        ],
+        "Input": [
+          "时长"
+        ]
+      },
+      "findingIds": [],
+      "notes": "用户否定v2完成度、全局规范明确暂停；不得作为认可母版、不得以未定单价补收费，不自动迁入。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "rental_web_forging",
+      "name": "天工器作租用v2",
+      "status": "historical_paused_sample",
+      "evidence": {
+        "file": "docs/美术规范/天工峰丹房器作租用入口_20261107/index.html",
+        "line": 19
+      },
+      "buttons": [
+        "场所切换/返回",
+        "时长",
+        "租用并进入/租期内进入",
+        "确认/取消"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "页内选择/取消"
+        ],
+        "Primary": [
+          "本页租用并进入/当前层确认"
+        ],
+        "Navigation": [
+          "进入/返回"
+        ],
+        "Input": [
+          "时长"
+        ]
+      },
+      "findingIds": [],
+      "notes": "用户否定v2完成度、全局规范明确暂停；不得作为认可母版、不得以未定单价补收费，不自动迁入。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "rental_web_confirm",
+      "name": "天工设施租用v2确认/说明",
+      "status": "historical_paused_sample",
+      "evidence": {
+        "file": "docs/美术规范/天工峰丹房器作租用入口_20261107/index.html",
+        "line": 19
+      },
+      "buttons": [
+        "场所切换/返回",
+        "时长",
+        "租用并进入/租期内进入",
+        "确认/取消"
+      ],
+      "rolePlan": {
+        "Regular": [
+          "页内选择/取消"
+        ],
+        "Primary": [
+          "本页租用并进入/当前层确认"
+        ],
+        "Navigation": [
+          "进入/返回"
+        ],
+        "Input": [
+          "时长"
+        ]
+      },
+      "findingIds": [],
+      "notes": "用户否定v2完成度、全局规范明确暂停；不得作为认可母版、不得以未定单价补收费，不自动迁入。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "crafting_older_samples",
+      "name": "旧四页百工天工/旧画符1-3版/坊市旧60格与四列版",
+      "status": "historical_reference",
+      "evidence": {
+        "file": "docs/美术规范/天工峰丹房器作租用入口_20261107/README.md",
+        "line": 69
+      },
+      "buttons": [
+        "历史控件"
+      ],
+      "rolePlan": {
+        "ReferenceOnly": [
+          "不计正式/现行验收"
+        ]
+      },
+      "findingIds": [],
+      "notes": "索引确认历史，不把历史遗留按钮算作正式待修数量。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    },
+    {
+      "id": "sword_crafting_legacy",
+      "name": "旧SwordCraftingScene剑类试炼",
+      "status": "retained_implementation_not_current_entry",
+      "evidence": {
+        "file": "csharp/scene/SwordCraftingScene.cs",
+        "line": 44
+      },
+      "buttons": [
+        "旧返回/试炼控件"
+      ],
+      "rolePlan": {
+        "ReferenceOnly": [
+          "当前入口为ProcessForgingScene"
+        ]
+      },
+      "findingIds": [],
+      "notes": "仅发现类/实现；本次确认正式地点及首页试演均指ProcessForgingScene，未将旧试炼判正式页。",
+      "visualAcceptance": "本轮仅源码审计；后续仍逐页两档实看"
+    }
+  ],
+  "findings": [
+    {
+      "id": "CS01",
+      "severity": "P2",
+      "panels": [
+        "alchemy_native_picker"
+      ],
+      "file": "csharp/scene/AlchemySlotBrewPreviewScene.PaperDialogs.cs",
+      "line": 78,
+      "controlUse": "功用筛选、仅本位生效：页内筛选/互斥与多选",
+      "evidence": "功用创建及刷新在78、84、90、120行固定ButtonKind.Tab；仅本位生效在104、107行也固定Tab，五行/阴阳52、65行则为Input。",
+      "recommendation": "筛选统一显式Regular，选中只改变整张原纸面的状态；下拉筛选也按选择用途登记，不按标签长度选素材。",
+      "owner": "主线炼丹"
+    },
+    {
+      "id": "CS02",
+      "severity": "P2",
+      "panels": [
+        "alchemy_native_notebook_builtin",
+        "alchemy_native_notebook_saved"
+      ],
+      "file": "csharp/scene/AlchemySlotBrewPreviewScene.Notebook.cs",
+      "line": 46,
+      "controlUse": "丹方册分类与方条目：普通分类/选择",
+      "evidence": "46-47行刷新分类normal时固定Tab；117行方条目ApplyButton(Tab)，142行选中更新又写Tab，可覆盖创建处改成Regular的结果。",
+      "recommendation": "同步所有创建和刷新入口；分类及条目用Regular。载入区与命名保存区分别规划主提交组，保存新方/覆盖同名可作为同一保存任务的并列方式；删除为普通管理。",
+      "owner": "主线炼丹"
+    },
+    {
+      "id": "CS03",
+      "severity": "P2",
+      "panels": [
+        "alchemy_native_picker",
+        "talisman_native_material_picker"
+      ],
+      "file": "csharp/panel/CraftingPaperStyle.cs",
+      "line": 296,
+      "controlUse": "普通下拉菜单条目",
+      "evidence": "MakeTheme在277-286行给OptionButton外壳Regular，295行菜单纸面，296行PopupMenu.hover却固定ButtonKind.Tab折角；炼丹外壳另显式Input。炼器正式页使用QuietRoomStyle，本条不将它列为CraftingPaperStyle受影响页；炼器纸墨包装199-200行已单独改成Regular菜单hover。",
+      "recommendation": "共享菜单hover映射Regular+selected，不因Popup控件类型另换折角签；后续分别复核炼丹/符工下拉；善功堂/藏经阁不联动修改。",
+      "owner": "共享样式/主线知悉"
+    },
+    {
+      "id": "CS04",
+      "severity": "P2",
+      "panels": [
+        "alchemy_web_main",
+        "alchemy_web_picker",
+        "alchemy_web_notebook"
+      ],
+      "file": "docs/美术规范/炼丹纸墨木石样稿_20261108/preview.js",
+      "line": 36,
+      "controlUse": "现行炼丹网页的筛选、方分类、方条目与丹方册入口",
+      "evidence": "36行chips显式buttonTab；40行内置/我的分类与recipe-row仍为buttonTab；21行锁定位签亦buttonTab。按钮helper第8行本身使用显式kind，无宽度分支。",
+      "recommendation": "与正式页本轮角色清单同步；普通筛选/方条目Regular，丹方册跨层入口另登记Navigation或单独专用入口；不把锁定位说明当可执行操作。",
+      "owner": "主线炼丹"
+    },
+    {
+      "id": "CS05",
+      "severity": "P2",
+      "panels": [
+        "forging_formal_main",
+        "forging_formal_artifact_detail"
+      ],
+      "file": "csharp/scene/ProcessForgingScene.Workspace.cs",
+      "line": 14,
+      "controlUse": "身/质/性/和材分类选中",
+      "evidence": "Workspace:14与ProcessForgingScene:201用ForgingInkStyle.Button(...true)表示分类选中；Workspace:118开炼也使用同一true分支。ForgingInkStyle:58-70将true解释为Primary并切jade_button_v3.png/浅色字。",
+      "recommendation": "分类选中归Regular状态，开炼独占Primary。允许炼器专有普通与主操作材质，但不能让selected复用primary布尔位。",
+      "owner": "后续逐页验收"
+    },
+    {
+      "id": "CS06",
+      "severity": "P2",
+      "panels": [
+        "forging_paper_main",
+        "forging_paper_artifact_detail"
+      ],
+      "file": "csharp/scene/ForgingPaperPreviewScene.cs",
+      "line": 221,
+      "controlUse": "包装样稿的角色/选中识别",
+      "evidence": "221-226行按去空格文字及原jade纹理推断角色；selectedTab只认身材/质材/性材/和材。原器物详情200-201行的器物信息/能力详情/炼制记录也以jade表示选中，包装后它们selectedTab=false、kind=Regular，250行也记录false。 此为详情若被创建时可推导的映射缺口；当前独立样稿器物册为空，原炉火只读、不提交成器，未重现可见详情故障。",
+      "recommendation": "在原控件创建时标明Regular/Primary/Navigation/Icon/Input与selected，再由包装读取；至少补齐器物详情三个分类的选中映射。不得凭宽度、字数或旧颜色判断用途。",
+      "owner": "后续逐页验收"
+    },
+    {
+      "id": "CS07",
+      "severity": "P2",
+      "panels": [
+        "forging_formal_main",
+        "forging_paper_main"
+      ],
+      "file": "csharp/scene/ProcessForgingScene.Workspace.cs",
+      "line": 39,
+      "controlUse": "材料份数增减",
+      "evidence": "39、48行用带纸面的－/＋普通按钮；包装SkinButton:224将其改为Icon方纸按钮，未采用裸三角。份数输入40行是LineEdit。",
+      "recommendation": "按Input组件统一输入槽与裸三角增减，份数/库存原回调不变。此为用途要求，不因当前炼器专用纸色或炉体构图判错。",
+      "owner": "后续逐页验收"
+    },
+    {
+      "id": "CS08",
+      "severity": "P2",
+      "panels": [
+        "talisman_native_paper",
+        "talisman_native_ink",
+        "talisman_native_drawing",
+        "talisman_native_material_picker"
+      ],
+      "file": "csharp/scene/TalismanCraftingScene.cs",
+      "line": 398,
+      "controlUse": "份数与制符上限增减",
+      "evidence": "398-411行AddStepper对−/+调用默认Button，359-362行默认Regular，因此加减是齐边纸按钮；输入404行显式Input。制纸/研墨原料、画符上限及选择墨量均复用它。",
+      "recommendation": "沿用数值回调，增减改Input组件的裸三角，保持足够命中区；不按正负字符选择Icon纸底。",
+      "owner": "后续逐页验收"
+    },
+    {
+      "id": "CS09",
+      "severity": "P2",
+      "panels": [
+        "talisman_native_material_picker",
+        "talisman_native_products",
+        "talisman_native_plan_book",
+        "talisman_native_plan_confirm",
+        "talisman_native_knowledge",
+        "talisman_native_result"
+      ],
+      "file": "csharp/scene/TalismanCraftingScene.Choices.cs",
+      "line": 98,
+      "controlUse": "各符工弹层×关闭",
+      "evidence": "OpenModal:98创建Button(\"×\")，由主文件Button helper:359-362一律ApplyButton默认Regular；99行尺寸42×42，并未显式Icon。",
+      "recommendation": "将×关闭显式Icon，保留标题为普通文字。所有OpenModal子页统一继承，避免只改某个弹层。",
+      "owner": "后续逐页验收"
+    },
+    {
+      "id": "CS10",
+      "severity": "P2",
+      "panels": [
+        "talisman_native_plan_book",
+        "talisman_native_plan_confirm"
+      ],
+      "file": "csharp/scene/TalismanCraftingScene.Plans.cs",
+      "line": 73,
+      "controlUse": "覆盖/更名/删除配伍确认",
+      "evidence": "73-80、93-99、108-114行确认和取消都用默认Regular按钮；配伍册56行保存也为Regular。当前仅主制作267行显式Primary。",
+      "recommendation": "每个当前确认弹层将确认覆盖/确认更名/确认删除归入该层主提交组，取消Regular；配伍册的命名保存区和载入区按任务分别规划，允许同任务并列执行方式，不把所有条目操作统一抬为Primary。",
+      "owner": "后续逐页验收"
+    },
+    {
+      "id": "CS11",
+      "severity": "P2",
+      "panels": [
+        "talisman_web_paper",
+        "talisman_web_ink",
+        "talisman_web_drawing",
+        "talisman_web_picker"
+      ],
+      "file": "docs/美术规范/符箓三工艺界面样稿_20261108/preview.js",
+      "line": 44,
+      "controlUse": "现行符工网页的增减及质地筛选",
+      "evidence": "44、45行−/＋通过28行默认button helper落Regular纸底，72行rawPicker质地过滤显式buttonTab；正式原生质地过滤Choices:158-167已使用Regular，网页与原生用途映射不同。",
+      "recommendation": "网页筛选同步Regular，数量按Input+裸三角；保留现有三页顶栏与技艺统一Regular的正确做法。",
+      "owner": "后续逐页验收"
+    },
+    {
+      "id": "CS12",
+      "severity": "P2",
+      "panels": [
+        "baigong_formal_artifacts",
+        "baigong_formal_alchemy",
+        "baigong_formal_talismans",
+        "baigong_formal_formations"
+      ],
+      "file": "csharp/panel/BaigongPanel.cs",
+      "line": 30,
+      "controlUse": "百工四类导航与关闭",
+      "evidence": "30、32行直接new Button未显式角色；40行将当前分类Disabled并对整控件Modulate金色。导航的选中状态与不可用状态混用，正式百工未接11月8日摊开书册样稿。",
+      "recommendation": "未来逐页验收时四类归Navigation、关闭按页级返回登记；选中与Disabled分开。暂存样稿不自动迁入正式百工。",
+      "owner": "后续逐页验收"
+    },
+    {
+      "id": "CS13",
+      "severity": "P2",
+      "panels": [
+        "baigong_web_artifacts",
+        "baigong_web_alchemy",
+        "baigong_web_talismans",
+        "baigong_web_formations",
+        "baigong_web_finder"
+      ],
+      "file": "docs/美术规范/百工资料纸墨木石样稿_20261108/ledger.js",
+      "line": 43,
+      "controlUse": "书侧分类、翻页、寻方和寻方提交",
+      "evidence": "43/46/47/61行翻页、系统筛选与寻方均显式bookTab；index:9把bookTab定义为buttonTab折角素材。73行合笺bookEntry、拭去bookTab、核心查阅buttonTab，三个不同用途未建立统一角色。",
+      "recommendation": "百工恢复验收时按用途登记：页内筛选/翻页/清空Regular，查阅为当前夹笺唯一Primary；书侧物理签可作为专用Navigation例外提请保留，不因书册构图独特判错。",
+      "owner": "后续逐页验收"
+    },
+    {
+      "id": "CS14",
+      "severity": "P2",
+      "panels": [
+        "formation_workbench_parameters",
+        "formation_workbench_trial"
+      ],
+      "file": "csharp/panel/FormationWorkbench.cs",
+      "line": 365,
+      "controlUse": "阵法设计台的导航、工具、保存、参数应用和试运行操作",
+      "evidence": "365-368行所有文字按钮均为同一默认Button/14字/31高；工具ToggleMode:179，部件选择及保存/读取/应用参数/送一次均无角色映射；Number:166-169和Events:171-175也未显式Input/Regular。",
+      "recommendation": "保留真实阵盘、端口和铜纹部件；外围工具/重复/清空Regular，守攻试运行与返回Navigation；每个当前参数/信号页明确是否有唯一Primary（建议应用参数/送一次），数量归Input。",
+      "owner": "后续逐页验收"
+    },
+    {
+      "id": "CS15",
+      "severity": "P2",
+      "panels": [
+        "formation_guard_operations",
+        "formation_guard_parameters",
+        "formation_guard_closeup"
+      ],
+      "file": "csharp/panel/FormationGuardPanel.cs",
+      "line": 222,
+      "controlUse": "守攻隔离原生页的返回、图形切换、操作和重新试运行",
+      "evidence": "222-224行统一Button/15字/33高；234行PaperTheme按所有Button套同一色框；58行OptionButton未在主题显式设置，216行数字SpinBox默认。返回45行和核心重新试运行118行无角色区分。",
+      "recommendation": "按用途映射外围控件，参数页重新试运行为该页唯一Primary，其余测试事实输入Regular，返回/放大Navigation；专用阵盘/流程图本体保持。此页是已接设计台的隔离试运行，不是正式战斗装备。",
+      "owner": "后续逐页验收"
+    },
+    {
+      "id": "CS16",
+      "severity": "P2",
+      "panels": [
+        "market_formal_browse",
+        "market_formal_stall",
+        "market_formal_confirm"
+      ],
+      "file": "csharp/panel/YuxuMarketPanel.cs",
+      "line": 238,
+      "controlUse": "坊市返回/分页/购买/上架/领取及确认",
+      "evidence": "238行统一调用YuxuLibraryArt.ButtonStyle；37行返回、40行页切换、71行购买、92行上架、100行领取、121-122行取消/确认都无用途参数。YuxuLibraryArt:21-27只按交互state着色，不分角色。",
+      "recommendation": "在坊市局部建立角色表：购买区、契约区、上架区和所得区各按独立操作区设主提交组，允许同任务并列执行方式；当前确认层确认归Primary、取消Regular，跨页Navigation。不要改动共用YuxuLibraryArt以免影响获准保留的藏经阁。",
+      "owner": "后续逐页验收"
+    },
+    {
+      "id": "CS17",
+      "severity": "P2",
+      "panels": [
+        "market_formal_browse",
+        "market_formal_stall"
+      ],
+      "file": "csharp/panel/YuxuMarketPanel.cs",
+      "line": 239,
+      "controlUse": "购买/上架数量和单价",
+      "evidence": "239行SpinBox只设置范围并给LineEdit调用局部StyleInput，使用默认SpinBox增减；70、90-91、223行多处复用。输入没有归入当前Input+裸三角组件。",
+      "recommendation": "角色规划中登记所有数量/价格输入，后续局部统一Input+裸三角；保留真实上下限与失焦/提交行为，本轮未运行验证不推断默认箭头实际外观。",
+      "owner": "后续逐页验收"
+    },
+    {
+      "id": "CS18",
+      "severity": "P2",
+      "panels": [
+        "market_web_browse",
+        "market_web_stall",
+        "market_web_listing",
+        "market_web_confirm"
+      ],
+      "file": "docs/美术规范/宗内坊市交易界面_20261107/我的摊位_拖入管理预览_20261107.html",
+      "line": 101,
+      "controlUse": "当前坊市拖入样稿的确认、领取、分页与数量",
+      "evidence": "101行上架确认用claim-button、取消paper-button；105行购买/租约通用确认却是paper-button active，与普通选中/分页同族；74、99行数量均为有底−/＋。64/69行跨页与返回也直接paper-button。",
+      "recommendation": "按操作区而不是整页限制主提交组：购买、租约、上架定价及所得各有明确任务；同任务并列提交可同为Primary，取消Regular；跨页Navigation、数量Input+裸三角。保留中央格子与拖入/拖回交互，不据此宣称新版已接正式页。",
+      "owner": "后续逐页验收"
+    },
+    {
+      "id": "CS19",
+      "severity": "P2",
+      "panels": [
+        "market_web_browse",
+        "market_web_stall"
+      ],
+      "file": "docs/美术规范/宗内坊市交易界面_20261107/我的摊位_拖入管理预览_20261107.html",
+      "line": 36,
+      "controlUse": "坊市货单/行囊条目选中",
+      "evidence": "36行.item-row.selected在背景外仍有box-shadow:inset 3px 0 #6f8266；样稿未导入全局paper-button-selection。当前全局最新要求选中整纸、无额外侧线。",
+      "recommendation": "恢复该面板验收时用整行/整纸灰绿状态清除侧线；格内真实物品选中属于占格交互，不能用矩形色块覆盖物品轮廓。",
+      "owner": "后续逐页验收"
+    },
+    {
+      "id": "CS20",
+      "severity": "P2",
+      "panels": [
+        "sect_duty_sources",
+        "sect_duty_detail"
+      ],
+      "file": "scripts/world/bai_chuan/YuxuSectDutyBoard.gd",
+      "line": 650,
+      "controlUse": "宗门事务来源筛选、翻页与接取/提交/取消",
+      "evidence": "650与654行接取和取消共用_make_small_button；501/511行‹/›也共用它，856-881行仅有同一暗咖纸框/17字。来源筛选420-427行为自定义金棕选中，无角色入口。",
+      "recommendation": "普通来源筛选Regular，纯图形翻页Icon（或有文字翻页Regular），详情接取/提交/回报为当前弹层唯一Primary，取消Regular；场景吊牌主体获准保留。",
+      "owner": "后续逐页验收"
+    },
+    {
+      "id": "CS21",
+      "severity": "P2",
+      "panels": [
+        "sect_confirm_leave",
+        "sect_confirm_case",
+        "sect_confirm_promotion",
+        "sect_confirm_practice"
+      ],
+      "file": "csharp/MainScene.YuxuSectLife.cs",
+      "line": 345,
+      "controlUse": "讲席请假/案卷核验/申请晋升/演法确认",
+      "evidence": "345、1236、1458、1519行分散new ConfirmationDialog，设置标题/说明/OK/Cancel后直接加入树和PopupCentered，无当前纸面及按钮角色绑定；四处分别在349-350、1240-1241、1462-1463、1523-1524设置文案。",
+      "recommendation": "确认层局部共用纸面及按钮角色；各层OK唯一Primary、取消Regular。只统一外观/角色，不改资格重验、资源、案卷与战斗提交。",
+      "owner": "后续逐页验收"
+    },
+    {
+      "id": "CS22",
+      "severity": "P2",
+      "panels": [
+        "banquet_setup",
+        "banquet_activity",
+        "banquet_response"
+      ],
+      "file": "csharp/panel/BanquetPanel.cs",
+      "line": 812,
+      "controlUse": "雅集筹备、离席和回应",
+      "evidence": "330/334行暂不设宴和发出邀约均走812-827行暗咖金边make_button/16字；302/324行场地/日期OptionButton无局部显式角色。745-758行回应另套浅纸自定义，但尚未与普通提交/返回建立角色表。",
+      "recommendation": "筹备发出邀约唯一Primary、取消/提前离席Regular或Navigation按去向登记，场地/日期Regular选择，回应Regular选择；允许较高回应卡作为内容型专用尺寸，保留宴席场景与气泡。",
+      "owner": "后续逐页验收"
+    },
+    {
+      "id": "CS23",
+      "severity": "P2",
+      "panels": [
+        "true_lecture_opening",
+        "true_lecture_prompt",
+        "true_lecture_response",
+        "true_lecture_closing"
+      ],
+      "file": "csharp/panel/TrueDiscipleLecturePanel.cs",
+      "line": 326,
+      "controlUse": "真传讲席略过、继续、答问与返回",
+      "evidence": "326-340行所有按钮仅按height区别，均16字暗咖金边；169行略过、224行继续、251行答问均调用同一helper。281行继续按钮改名返回观复峰但角色与样式未重设。",
+      "recommendation": "普通答问Regular、当前继续可为唯一Primary、略过Regular；收束返回为Navigation并同步角色，保持该页叙事构图，不强套普通整屏框。",
+      "owner": "后续逐页验收"
+    },
+    {
+      "id": "CS24",
+      "severity": "P2",
+      "panels": [
+        "location_generic",
+        "location_eastwoods_overview",
+        "location_eastwoods_actions",
+        "location_explanation"
+      ],
+      "file": "csharp/panel/WorldLocationInteriorPanel.cs",
+      "line": 554,
+      "controlUse": "地点额外说明、返回地图、在场人物、子场景与普通行动",
+      "evidence": "554-561行helper将所有用途统一为15字深咖金棕按钮；159/221行返回地图、309行在场人物、320行热点、427行普通行动、501行子场景选择均调用它，只有normal/hover局部样式。",
+      "recommendation": "为额外说明层和普通行动明确Regular/Navigation/Primary，返回保持全局约定；此条不包括正式SceneActionButton场所吊牌，吊牌保留例外。",
+      "owner": "后续逐页验收"
+    }
+  ],
+  "approvedExceptions": [
+    {
+      "id": "EX01",
+      "name": "善功堂全部已认可按钮/分类/兑换确认",
+      "reason": "用户明确保留；全局规范第七节与摘要最新范围将其作为完成度锚点",
+      "evidence": {
+        "file": "docs/plans/界面与美术/全局界面统一风格规范_20261108.md",
+        "line": 57
+      },
+      "action": "本次不修改；角色清单只登记"
+    },
+    {
+      "id": "EX02",
+      "name": "藏经阁书架/书脊/抽书及现有操作",
+      "reason": "用户明确保留；真实书架与书脊为专用交互，不强套统一按钮轮廓",
+      "evidence": {
+        "file": "docs/plans/界面与美术/全局界面统一风格规范_20261108.md",
+        "line": 58
+      },
+      "action": "不因坊市共用YuxuLibraryArt而批量修改"
+    },
+    {
+      "id": "EX03",
+      "name": "凝核全界面及原笔触按钮",
+      "reason": "用户明确全部保持，包括主体/轨道/结算/说明/起手/原笔触按钮",
+      "evidence": {
+        "file": "docs/策划案摘要/README.md",
+        "line": 63
+      },
+      "action": "不列待统一/待重画；本分线不重复审"
+    },
+    {
+      "id": "EX04",
+      "name": "场景吊牌/白石挂牌/玉虚设施入口",
+      "reason": "现行盘点K06与全局边界明确保留场所表现；与额外说明层普通按钮分别判断",
+      "evidence": {
+        "file": "scripts/ui/SceneActionButton.gd",
+        "line": 28
+      },
+      "action": "保留纸面吊牌/绳/流苏，普通说明层控件仍逐页验收"
+    }
+  ],
+  "proposedExceptions": [
+    {
+      "name": "百工书册的书外物件导航和书侧物理标签",
+      "reason": "功能为真实书册索引，具有用途依据；当前为暂存样稿，尚无最终视觉验收",
+      "decision": "可登记专用Navigation或Regular-书签素材，待恢复该页时确认；不直接判错"
+    },
+    {
+      "name": "炼丹选药/符工材料/坊市格内物品的内容型命中区",
+      "reason": "命中对象是实际物品/占格，不是普通文字操作；可保持独特轮廓与透明物品图",
+      "decision": "保留用途特征，选中不遮物品，不能据图形不同列不统一"
+    },
+    {
+      "name": "符工行内清空/详看/选择链接",
+      "reason": "TalismanCraftingScene.cs:364-367通过ClearStyle清空底材，有行内链接用途，但未显式登记",
+      "decision": "后续在该页登记为紧凑普通/导航子类或恢复Regular，不批量替换所有文字链接"
+    }
+  ],
+  "verification": {
+    "performed": [
+      "权威索引及风格规范交叉核对",
+      "正式入口与tscn绑定只读追踪",
+      "按钮创建/刷新/选中/主题映射静态扫描",
+      "正式/样稿/历史状态交叉核对",
+      "查看三张既有本地截图辅助识别实际材质",
+      "报告JSON可解析，91份扫描路径存在，24项问题引用行号均在文件内"
+    ],
+    "notPerformed": [
+      "未编译",
+      "未运行场景或新截图",
+      "未浏览器点验",
+      "未修改任何游戏/网页源码"
+    ],
+    "referenceImagesViewed": [
+      "docs/美术规范/炼器纸墨木石样稿_20261108/炼器_器物册_1280.png",
+      "docs/美术规范/百工资料纸墨木石样稿_20261108/百工_丹药_1280.png",
+      "docs/美术规范/炼器底色分层_20261108/03_文案精简.png"
+    ],
+    "limitations": "静态证据能确认角色错误/漏映射，不把旧截图等同本次实时界面。所有后续改造仍逐页交付两档完整画面及交互验收，未授权页面不得批量迁入。"
+  },
+  "filesScanned": [
+    {
+      "path": "AGENTS.md",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/MainScene.BaishiLecture.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/MainScene.Banquet.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/MainScene.LocationCrafting.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/MainScene.YuxuLineage.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/MainScene.YuxuMarket.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/MainScene.YuxuSectLaw.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/MainScene.YuxuSectLife.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/MainScene.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/panel/BaigongPanel.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/panel/BanquetPanel.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/panel/BanquetPanelModels.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/panel/CraftingPaperStyle.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/panel/ForgingInkStyle.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/panel/ForgingSurfacePalette.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/panel/FormationGuardPanel.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/panel/FormationWorkbench.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/panel/LocationCraftingPanel.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/panel/StartMenu.Visual.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/panel/TrueDiscipleLecturePanel.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/panel/WorldLocationInteriorPanel.Baishi.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/panel/WorldLocationInteriorPanel.EditorCompatibility.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/panel/WorldLocationInteriorPanel.Opening.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/panel/WorldLocationInteriorPanel.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/panel/YuxuLibraryArt.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/panel/YuxuManualLibraryPanel.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/panel/YuxuMarketPanel.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/panel/YuxuSectExchangePanel.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/scene/AlchemySlotBrewPreviewScene.Notebook.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/scene/AlchemySlotBrewPreviewScene.PaperDialogs.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/scene/AlchemySlotBrewPreviewScene.PaperSkin.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/scene/AlchemySlotBrewPreviewScene.Presentation.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/scene/AlchemySlotBrewPreviewScene.Receipt.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/scene/AlchemySlotBrewPreviewScene.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/scene/ForgingPaperPreviewScene.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/scene/ProcessForgingScene.FirePreview.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/scene/ProcessForgingScene.ItemPreview.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/scene/ProcessForgingScene.Workspace.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/scene/ProcessForgingScene.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/scene/SwordCraftingScene.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/scene/TalismanCraftingScene.Choices.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/scene/TalismanCraftingScene.Plans.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "csharp/scene/TalismanCraftingScene.cs",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/README.md",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/plans/界面与美术/全局界面统一风格规范_20261108.md",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/plans/剧情与宗门/天工峰丹房与器作租用入口_20261107.md",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/plans/百工技艺/阵法/守攻阵状态控制实装_20261109.md",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/plans/界面与美术/炼丹纸墨木石原生接入_20261108.md",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/plans/界面与美术/炼器纸墨木石样稿_20261108.md",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/plans/界面与美术/百工资料页纸墨木石逐页验收_20261108.md",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/plans/百工技艺/制符/符箓三工艺原生接入_20261109.md",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/plans/百工技艺/阵法/阵法逻辑元件功能规格与交互验收稿_20261109.md",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/plans/百工技艺/阵法/阵盘基础逻辑元件实装_20261109.md",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/策划案摘要/README.md",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/全局界面风格母板_20261108/paper-button-selection.css",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/全界面纸墨木石风格盘点_20261108/README.md",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/基础阵盘四格接线实装_20261108/README.md",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/天工峰丹房器作租用入口_20261107/README.md",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/天工峰丹房器作租用入口_20261107/entrance-v2.css",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/天工峰丹房器作租用入口_20261107/entrance-v2.js",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/天工峰丹房器作租用入口_20261107/index.html",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/守攻阵原生试运行_20261109/README.md",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/宗内坊市交易界面_20261107/README.md",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/宗内坊市交易界面_20261107/我的摊位_拖入交互_20261107.js",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/宗内坊市交易界面_20261107/我的摊位_拖入管理_20261107.css",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/宗内坊市交易界面_20261107/我的摊位_拖入管理预览_20261107.html",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/炼丹纸墨木石样稿_20261108/index.html",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/炼丹纸墨木石样稿_20261108/preview.css",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/炼丹纸墨木石样稿_20261108/preview.js",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/百工资料纸墨木石样稿_20261108/README.md",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/百工资料纸墨木石样稿_20261108/book-spread.css",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/百工资料纸墨木石样稿_20261108/index.html",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/百工资料纸墨木石样稿_20261108/ledger.js",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/符箓三工艺界面样稿_20261108/README.md",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/符箓三工艺界面样稿_20261108/index.html",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/符箓三工艺界面样稿_20261108/preview.css",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/符箓三工艺界面样稿_20261108/preview.js",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/materials.js",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/角色与静室纸墨木石样稿_20261108/preview.css",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/阵法逻辑控制演示_20261109/README.md",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/阵法逻辑控制演示_20261109/preview.css",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/阵法逻辑控制演示_20261109/preview.html",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "docs/美术规范/阵盘基础逻辑实装_20261109/README.md",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "scripts/ui/SceneActionButton.gd",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "scripts/world/bai_chuan/BaishiCityOverview.gd",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "scripts/world/bai_chuan/YuxuPeakInterior.gd",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "scripts/world/bai_chuan/YuxuSectDutyBoard.gd",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "scripts/world/bai_chuan/YuxuXianzongOverview.gd",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "tscn/panel/SceneActionButton.tscn",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "tscn/scene/ForgingPaperPreview.tscn",
+      "method": "只读内容/关键词/入口引用扫描"
+    },
+    {
+      "path": "tscn/scene/ProcessForgingScene.tscn",
+      "method": "只读内容/关键词/入口引用扫描"
+    }
+  ],
+  "counts": {
+    "panels": 101,
+    "findings": 24,
+    "approvedExceptions": 4,
+    "filesScanned": 91
+  }
+}

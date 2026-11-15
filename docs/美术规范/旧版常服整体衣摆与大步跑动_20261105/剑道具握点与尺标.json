@@ -1,0 +1,15 @@
+{
+  "source": "generated interpretation of textures/items/inventory_density_20261029/raw_unified_final/slender_sword_2x6.png",
+  "mode": "built-in image_gen; original PNG unchanged; runtime alpha threshold",
+  "sword": {
+    "native_size": [1024,1536],
+    "tip_px": [512,50],
+    "guard_px": [512,1140],
+    "grip_px": [512,1303],
+    "pommel_px": [512,1496],
+    "target_grip_to_tip": 55.0,
+    "target_total_length": 63.4725,
+    "grip_axis_offset_degrees": -90.0,
+    "notes": "Hand image X follows the curled fingers/handle; blade points toward hand-image -X. Uniform scale55/1253, total1446*55/1253=63.4725; not independent length scaling."
+  }
+}

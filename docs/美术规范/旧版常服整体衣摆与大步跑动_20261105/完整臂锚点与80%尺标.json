@@ -1,0 +1,169 @@
+{
+  "schema": "approved-outfit-full-arm-registration-v1",
+  "status": "All five sources measured; actual full-arm and sword runtime tests plus native normal/deep-elbow views verified",
+  "target_palm_width": 3.8127774541901065,
+  "rest_chart": {
+    "shoulder_px": [
+      425,
+      435
+    ],
+    "elbow_px": [
+      466,
+      562
+    ],
+    "wrist_px": [
+      609,
+      473
+    ],
+    "pixel_scale": 0.08602150537634409,
+    "bone_lengths_are_fixed": true
+  },
+  "arms": {
+    "near_open": {
+      "shoulder_px": [
+        270,
+        510
+      ],
+      "elbow_px": [
+        411,
+        947
+      ],
+      "wrist_px": [
+        922,
+        553
+      ],
+      "palm_width_px": 177.5,
+      "grip_px": [
+        1005,
+        430
+      ],
+      "source_sha256": "c10dfc191b9c303ac59c7aaac83ec169eee52b266206d73f7dc30f73f3c4076d",
+      "palm_width_basis": "metacarpals, perpendicular to palm axis; thumb excluded",
+      "anatomy": "right hand back facing camera",
+      "no_fingernails": true
+    },
+    "near_fist": {
+      "shoulder_px": [
+        270,
+        510
+      ],
+      "elbow_px": [
+        411,
+        947
+      ],
+      "wrist_px": [
+        922,
+        553
+      ],
+      "palm_width_px": 182.0,
+      "grip_px": [
+        985,
+        430
+      ],
+      "source_sha256": "5def66a619f1b85902b822189c594e6522f9bcaa0bcd16671958d21aac3a5003",
+      "palm_width_basis": "metacarpals, perpendicular to palm axis; thumb excluded",
+      "anatomy": "right hand back facing camera",
+      "no_fingernails": true
+    },
+    "near_grip": {
+      "shoulder_px": [
+        270,
+        510
+      ],
+      "elbow_px": [
+        411,
+        947
+      ],
+      "wrist_px": [
+        920,
+        548
+      ],
+      "palm_width_px": 194.0,
+      "grip_px": [
+        1005,
+        420
+      ],
+      "source_sha256": "348c869a1e1b8d3582a291ca35deaf6239aea6aa88385baca4354b13941d0a8f",
+      "palm_width_basis": "metacarpals, perpendicular to palm axis; thumb excluded",
+      "anatomy": "right hand back facing camera",
+      "no_fingernails": true
+    },
+    "far_open": {
+      "shoulder_px": [
+        270,
+        510
+      ],
+      "elbow_px": [
+        411,
+        947
+      ],
+      "wrist_px": [
+        922,
+        553
+      ],
+      "palm_width_px": 179.5,
+      "grip_px": [
+        1003,
+        430
+      ],
+      "source_sha256": "9a38aafb3bcd8777aa08773d3166e8d6e1a303d3697a38ee0c416b2240e8088a",
+      "palm_width_basis": "metacarpals, perpendicular to palm axis; thumb excluded",
+      "anatomy": "left palm facing camera",
+      "no_fingernails": true
+    },
+    "far_fist": {
+      "shoulder_px": [
+        270,
+        510
+      ],
+      "elbow_px": [
+        411,
+        947
+      ],
+      "wrist_px": [
+        922,
+        553
+      ],
+      "palm_width_px": 182.0,
+      "grip_px": [
+        990,
+        430
+      ],
+      "source_sha256": "baf20039a1e0b5d192ae676673a9fd28cc3ade424fb48a3b755ce6d1e65ea835",
+      "palm_width_basis": "metacarpal body span perpendicular to palm axis, excluding crossing thumb projection and distal folded fingertips",
+      "anatomy": "left palm facing camera",
+      "no_fingernails": true
+    }
+  },
+  "hand_size_calibration": {
+    "user_instruction": "Hand only 80 percent of original generated master; retain arm lengths; remove fingernails",
+    "raw_master_sha256": "1a1128084f15b25120ea0bd9365c3126f65f5a596b8c23d0d9694896ca7856fa",
+    "raw_palm_width_px": 212.25,
+    "raw_forearm_length_px": 645.2573130155132,
+    "project_forearm_length": 14.488943081371243,
+    "desired_hand_multiplier": 0.8,
+    "formula": "212.25 / sqrt(511^2+394^2) * (sqrt(143^2+89^2)*16/186) * 0.8",
+    "edited_open_palm_width_px": 177.5,
+    "edited_open_extra_scale": 0.9566197183098593,
+    "measurement_method": "Metacarpal palm width perpendicular to palm longitudinal axis, excluding thumb projection and finger extension; visual outline with painted-skin cross-section check. Shoulder/elbow centers registered against the reference silhouette; wrist at actual blue-cuff exit midpoint.",
+    "raw_palm_axis_unit": [
+      0.405955,
+      -0.913899
+    ],
+    "raw_palm_cross_section_distance_from_wrist_px": 175.0,
+    "raw_palm_transverse_bounds_px": [
+      -68.5,
+      143.75
+    ]
+  },
+  "native_joint_fit": {
+    "registered_elbow_px": [
+      411,
+      947
+    ],
+    "geometry_or_bone_length_changes": false,
+    "source_images_edited_during_registration": false,
+    "same_source_deep_fold_sampling": "Local contour margin only; normal pose silhouette preserved. Fully disabled at elbow flex <=112 degrees; full coverage >=148 degrees.",
+    "native_joint_report": "res://output/approved_outfit_full_arms_native_joint_check.json"
+  }
+}

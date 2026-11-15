@@ -1,0 +1,10 @@
+First extended run: failure while obtaining another character skill snapshot after male checks passed.
+Complete rerun with retained initial fixtures: 79 checks passed. Root cause not established.
+
+ERROR: System.InvalidOperationException: Handle is not initialized.
+   at System.Runtime.InteropServices.GCHandle.FromIntPtr(IntPtr value)
+   at Godot.Bridge.ScriptManagerBridge.SwapGCHandleForType(IntPtr oldGCHandlePtr, IntPtr* outNewGCHandlePtr, godot_bool createWeak) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/ScriptManagerBridge.cs:line 1284
+       [2] Godot.NativeInterop.godot_bool Godot.Bridge.ScriptManagerBridge.SwapGCHandleForType(nint, System.IntPtr*, Godot.NativeInterop.godot_bool) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Bridge/ScriptManagerBridge.cs:1284)
+       [7] ActiveSkillData Character.resolve_combat_skill(string)
+       [9] BattleEntityData Character.get_snapshot_data()
+ERROR: FATAL: Condition "gchandle.is_released()" is true.

@@ -1,0 +1,44 @@
+{
+	"brake_lean_minimum": -0.0197438821196556,
+	"checks": 11,
+	"dedicated_actions": {
+		"AttackIdle": {
+			"errors": {
+				"angle": 0.0,
+				"position": 0.0
+			},
+			"passed": true
+		},
+		"Step1": {
+			"errors": {
+				"angle": 0.0,
+				"position": 0.0
+			},
+			"passed": true
+		},
+		"guard": {
+			"errors": {
+				"angle": 0.0,
+				"position": 0.0
+			},
+			"passed": true
+		},
+		"preparing": {
+			"errors": {
+				"angle": 0.0,
+				"position": 0.0
+			},
+			"passed": true
+		}
+	},
+	"failures": [],
+	"final_chest_angle": -0.000000000000159473291776874,
+	"final_chest_speed": 0.00000000000144604521499364,
+	"final_gait_amount": 0.0,
+	"idle_maximum_angle_error": 0.0,
+	"idle_maximum_position_error": 0.0,
+	"passed": true,
+	"settled_angle": 0.00000602221916778944,
+	"settled_angular_speed": 0.000000444677539235272,
+	"stop_angle_peak": 0.0732813477516174
+}

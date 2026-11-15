@@ -1,0 +1,57 @@
+{
+  "date": "2026-11-07",
+  "revision": "v2：用户纠正行囊为衣物收纳，暖褐缝边材质改给储物袋",
+  "scope": "材质理想图候选；不修改正式运行代码、物品资源、资产或存档",
+  "naming": {
+    "confirmed": "储物袋",
+    "replaces": "储物戒指",
+    "runtimeReplacement": false
+  },
+  "materialRoles": {
+    "storageBag": "暖褐布衬与缝边，取原图中间材质",
+    "bodyInventory": "灰青衣料内衬，取原图左侧材质，按胸前、左右袖口与腰间分区",
+    "market": "浅旧木货架，取原图右侧材质"
+  },
+  "generation": {
+    "mode": "built-in image_gen generate",
+    "image": "../../../textures/ui/inventory_material_20261107/storage_surface_materials_v1.png",
+    "prompt": "材质底面_v1_生成提示词.txt",
+    "references": [],
+    "compositing": "v2仅修改页面材质映射和控件布局，未编辑原位图"
+  },
+  "preview": "材质对照_v2_20261107.html",
+  "fixtures": "示例物品_v2_20261107.json",
+  "screenshots": [
+    "收纳材质_理想图_v2_1920.png",
+    "收纳材质_理想图_v2_1280.png"
+  ],
+  "checks": {
+    "resolutions": [
+      [
+        1920,
+        1080
+      ],
+      [
+        1280,
+        720
+      ]
+    ],
+    "gridPixels": [
+      36,
+      24
+    ],
+    "materialSurfaces": 6,
+    "images": 18,
+    "failedImages": 0,
+    "consoleErrors": 0,
+    "consoleWarnings": 0,
+    "bodyRegionsRespectExistingDimensions": true
+  },
+  "boundaries": [
+    "局部视窗不定义储物袋或摊位容量、品质和真实库存",
+    "行囊只画四个衣料区，未删除原完整120格或既有背囊区",
+    "物品沿用原图及实际宽高，腰间兽骨按R旋转后的5×2摆放",
+    "旧整块行囊初稿已退出当前设计",
+    "正式物品名称、袋子外形、材质及旧资源身份替换尚未接入"
+  ]
+}

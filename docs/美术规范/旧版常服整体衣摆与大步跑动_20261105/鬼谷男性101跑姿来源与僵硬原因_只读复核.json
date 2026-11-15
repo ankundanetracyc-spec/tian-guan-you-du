@@ -1,0 +1,312 @@
+{
+  "source": {
+    "path": "resources/appearance/guigu_male101/model_frames_20261104.json",
+    "sha256": "7603c46731ab56f6de5e33e06837636b10820a67495cd6093d489568ad767537",
+    "asset": {
+      "path": "E:\\SteamLibrary\\steamapps\\common\\鬼谷八荒\\guigubahuang_Data\\resources.assets",
+      "sizeBytes": 1764255120,
+      "sha256": "0d1e14ae4a2719b91055e201fadf294b600f730e5bfbba14f4806b7619ec3ced",
+      "unityVersion": "2020.3f1c1"
+    },
+    "character": "male101",
+    "method": "Direct evaluated source boneFrames/boneTransforms; source phase unshifted. Angles and normalized wrists are references only; target fixed limb lengths are retained.",
+    "bone_indices": {
+      "near_leg": [
+        39,
+        40,
+        41
+      ],
+      "far_leg": [
+        35,
+        36,
+        37
+      ],
+      "near_arm": [
+        31,
+        32,
+        33
+      ],
+      "far_arm": [
+        27,
+        28,
+        29
+      ],
+      "waist": 13,
+      "neck": 23
+    },
+    "bone_paths": {
+      "near_leg": [
+        "/HumanRootMan/Root/Body/Foot/youtui/youtui/tui1",
+        "/HumanRootMan/Root/Body/Foot/youtui/youtui/tui1/tui2",
+        "/HumanRootMan/Root/Body/Foot/youtui/youtui/tui1/tui2/tui3"
+      ],
+      "far_leg": [
+        "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1",
+        "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1/tui2",
+        "/HumanRootMan/Root/Body/Foot/zuotui/zuotui/tui1/tui2/tui3"
+      ],
+      "near_arm": [
+        "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1",
+        "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2",
+        "/HumanRootMan/Root/Body/yifu/yifu/shenti1/youbi/youbi/youbi1/youbi2/youbi3"
+      ],
+      "far_arm": [
+        "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1",
+        "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1/zuobi2",
+        "/HumanRootMan/Root/Body/yifu/yifu/shenti1/zuobi/zuobi/zuobi1/zuobi2/zuobi3"
+      ],
+      "waist": "/HumanRootMan/Root/Body/yifu/yifu/shenti2",
+      "neck": "/HumanRootMan/Root/Body/yifu/yifu/shenti1/tou"
+    }
+  },
+  "profile": "tools/action_battle_test/approved_guigu_run_profile_20261105.json",
+  "duration": 0.5833333134651184,
+  "samples": 144,
+  "coordinates": {
+    "x": "forward/right",
+    "y": "down",
+    "phase": "unshifted source sample index / 144; not female10002 frontmost-aligned",
+    "pelvis": "midpoint of source near/far hip positions",
+    "body_lean": "waist13 to neck23; atan2(dx,-dy)",
+    "limb_angles": "absolute XY angle measured hip->knee->ankle, radians",
+    "foot_angle": "source foot world rotation minus same foot Idle frame0 rotation; use lerp_angle",
+    "wrist": "same-side shoulder-to-wrist divided by same frame upper+lower arm lengths"
+  },
+  "body_lean_degrees": {
+    "minimum": 21.62971440887318,
+    "maximum": 27.679055927630788,
+    "mean": 24.64893067756014,
+    "minimum_phase": 0.4583333333333333,
+    "maximum_phase": 0.0
+  },
+  "cloth_root_degrees": {
+    "minimum": 37.335936065353664,
+    "maximum": 52.95444242321127,
+    "mean": 42.20845149475788,
+    "minimum_phase": 0.0,
+    "maximum_phase": 0.22916666666666666
+  },
+  "pelvis_midpoint_y": {
+    "minimum": -54.313585,
+    "maximum": -52.26688,
+    "mean": -53.24069791666667,
+    "minimum_phase": 0.9166666666666666,
+    "maximum_phase": 0.7291666666666666
+  },
+  "legs": {
+    "near": {
+      "bone_indices": [
+        39,
+        40,
+        41
+      ],
+      "source_upper_length": {
+        "minimum": 23.529143899143463,
+        "maximum": 28.916021182903087,
+        "mean": 27.34879061410368,
+        "minimum_phase": 0.6319444444444444,
+        "maximum_phase": 0.3611111111111111
+      },
+      "source_lower_length": {
+        "minimum": 29.467200537238007,
+        "maximum": 29.46721987121452,
+        "mean": 29.467210045301545,
+        "minimum_phase": 0.2916666666666667,
+        "maximum_phase": 0.006944444444444444
+      },
+      "knee_flex_degrees": {
+        "minimum": 8.240984055988315,
+        "maximum": 117.4238679252428,
+        "mean": 52.56254777047947,
+        "minimum_phase": 0.0,
+        "maximum_phase": 0.4722222222222222
+      },
+      "ankle_x": {
+        "minimum": -48.17596,
+        "maximum": 19.37355,
+        "mean": -16.076402916666666,
+        "minimum_phase": 0.18055555555555555,
+        "maximum_phase": 0.7569444444444444
+      },
+      "ankle_y": {
+        "minimum": -41.6515,
+        "maximum": 4.74452,
+        "mean": -16.000829027777776,
+        "minimum_phase": 0.3194444444444444,
+        "maximum_phase": 0.8819444444444444
+      },
+      "foot_axis_delta_degrees": {
+        "minimum": -5.283089130296637,
+        "maximum": 178.72845502446904,
+        "mean": 77.43964980084404,
+        "minimum_phase": 0.875,
+        "maximum_phase": 0.3333333333333333
+      },
+      "projected_sole_y": {
+        "minimum": -23.34828,
+        "maximum": 9.59798,
+        "mean": -4.319924652777778,
+        "minimum_phase": 0.2361111111111111,
+        "maximum_phase": 0.8819444444444444
+      },
+      "low_sole_phase_windows": [
+        [
+          0.7986111111111112,
+          0.9305555555555556
+        ]
+      ],
+      "low_sole_sample_fraction": 0.13194444444444445
+    },
+    "far": {
+      "bone_indices": [
+        35,
+        36,
+        37
+      ],
+      "source_upper_length": {
+        "minimum": 28.909153443285057,
+        "maximum": 31.458224300308178,
+        "mean": 30.162408657836703,
+        "minimum_phase": 0.22916666666666666,
+        "maximum_phase": 0.0
+      },
+      "source_lower_length": {
+        "minimum": 29.467140744044034,
+        "maximum": 29.467160595798838,
+        "mean": 29.467150994475748,
+        "minimum_phase": 0.4097222222222222,
+        "maximum_phase": 0.7777777777777778
+      },
+      "knee_flex_degrees": {
+        "minimum": 19.818004166765995,
+        "maximum": 108.69028176063568,
+        "mean": 67.5203259875386,
+        "minimum_phase": 0.4305555555555556,
+        "maximum_phase": 0.006944444444444444
+      },
+      "ankle_x": {
+        "minimum": -51.9396,
+        "maximum": 23.22924,
+        "mean": -16.251851805555557,
+        "minimum_phase": 0.5972222222222222,
+        "maximum_phase": 0.2986111111111111
+      },
+      "ankle_y": {
+        "minimum": -44.79118,
+        "maximum": 4.45924,
+        "mean": -21.536258611111112,
+        "minimum_phase": 0.8888888888888888,
+        "maximum_phase": 0.4652777777777778
+      },
+      "foot_axis_delta_degrees": {
+        "minimum": -11.650947794958554,
+        "maximum": 168.4623171610919,
+        "mean": 81.7900402225574,
+        "minimum_phase": 0.3125,
+        "maximum_phase": 0.7361111111111112
+      },
+      "projected_sole_y": {
+        "minimum": -23.41041,
+        "maximum": 9.23872,
+        "mean": -8.579120208333334,
+        "minimum_phase": 0.8888888888888888,
+        "maximum_phase": 0.4583333333333333
+      },
+      "low_sole_phase_windows": [
+        [
+          0.4027777777777778,
+          0.5208333333333334
+        ]
+      ],
+      "low_sole_sample_fraction": 0.11805555555555555
+    }
+  },
+  "arms": {
+    "near": {
+      "wrist_x_normalized": {
+        "minimum": 0.44155930461054516,
+        "maximum": 0.5881927855335872,
+        "mean": 0.5315035284152364,
+        "minimum_phase": 0.6875,
+        "maximum_phase": 0.1527777777777778
+      },
+      "wrist_y_normalized": {
+        "minimum": 0.21034616183857327,
+        "maximum": 0.3550804711862342,
+        "mean": 0.29863839486364635,
+        "minimum_phase": 0.0,
+        "maximum_phase": 0.6666666666666666
+      },
+      "upper_angle_degrees": {
+        "minimum": 63.351842854692194,
+        "maximum": 83.92387460400909,
+        "mean": 72.65342952227502,
+        "minimum_phase": 0.0,
+        "maximum_phase": 0.6736111111111112
+      },
+      "lower_angle_degrees": {
+        "minimum": -44.19656122217439,
+        "maximum": -26.747728536887298,
+        "mean": -32.99158563140411,
+        "minimum_phase": 0.0,
+        "maximum_phase": 0.4027777777777778
+      }
+    },
+    "far": {
+      "wrist_x_normalized": {
+        "minimum": -0.8169067781435481,
+        "maximum": 0.37947784515934396,
+        "mean": -0.2617742511335464,
+        "minimum_phase": 0.1527777777777778,
+        "maximum_phase": 0.7291666666666666
+      },
+      "wrist_y_normalized": {
+        "minimum": 0.45404643759325397,
+        "maximum": 0.8673554809313583,
+        "mean": 0.6052006601134441,
+        "minimum_phase": 0.6388888888888888,
+        "maximum_phase": 0.8888888888888888
+      },
+      "upper_angle_degrees": {
+        "minimum": 81.46948304775334,
+        "maximum": 158.2151996487003,
+        "mean": 126.13753836531355,
+        "minimum_phase": 0.6527777777777778,
+        "maximum_phase": 0.0
+      },
+      "lower_angle_degrees": {
+        "minimum": -39.28133675838631,
+        "maximum": 128.34277726605103,
+        "mean": 53.152704264944724,
+        "minimum_phase": 0.6388888888888888,
+        "maximum_phase": 0.18055555555555555
+      }
+    }
+  },
+  "comparison": {
+    "prior_support_fraction": 0.44,
+    "prior_stride_fraction": 0.6,
+    "prior_lift_fraction": 0.45,
+    "prior_pitch_max_radians": 0.7,
+    "prior_measured_double_air_fraction": 0.0933,
+    "stiffness_causes": [
+      "Current support window plants a foot for44% of its cycle, versus very short visual low-foot windows in raw male101 projection.",
+      "Current ankle recovery is a symmetric-ish sinusoidal arch with a0.45total-leg lift; it omits source asymmetric early fold, prolonged backward/toe-up return and foot-axis rotation.",
+      "Reach constraint lowers pelvis toward planted ankle targets and consequently extends knees toward reach limit; root and feet are not allowed to keep the source leaping silhouette.",
+      "Source near/far clips are not strict half-cycle copies. Current forced half-cycle reduces asymmetry and visual follow-through.",
+      "The retained female10002 arm/body profile and frontmostPhase offset do not align with male101 lower-body raw phase."
+    ],
+    "retarget_constraints": [
+      "Use absolute source limb angles and source phase, retain project upper/lower lengths.",
+      "Do not copy animated source local translations or source variable thigh lengths.",
+      "Preserve oldv15 textures, hand poses, single connected robe, current move speed and attack rules.",
+      "Ground adaptation should preserve flight and fold timing, with only constant floor alignment plus local contact correction."
+    ]
+  },
+  "projected_sole_reference": {
+    "constant_floor_y": 9.59798,
+    "tolerance_source_units": 3,
+    "limitation": "Low-foot image projection against one constant line only; not original gameplay Animator ground collision or an established true flight rate.",
+    "double_air_sample_fraction": 0.75
+  }
+}

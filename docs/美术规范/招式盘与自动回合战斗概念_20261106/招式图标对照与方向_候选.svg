@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="900" viewBox="0 0 1600 900">
+<style>text{font-family:"Microsoft YaHei UI","Microsoft YaHei","SimHei",sans-serif} .grid{stroke:#b8c1aa;stroke-width:1}</style>
+<rect x="0" y="0" width="1600" height="900" rx="0" fill="#eee9d9" fill-opacity="1" stroke="none" stroke-width="1"/>
+<rect x="22" y="22" width="1556" height="856" rx="10" fill="#fbf8ed" fill-opacity="1" stroke="#acbba8" stroke-width="2"/>
+<text x="49" y="63" font-size="27" fill="#293e3a" font-weight="700" text-anchor="start">招式图标 · 复用与差异化方向</text>
+<text x="50" y="89" font-size="14" fill="#66796a" font-weight="400" text-anchor="start">视觉草图：现有资源保持原样，示例不代表新图已制作或接入</text>
+<rect x="48" y="112" width="684" height="423" rx="7" fill="#f3f2e8" fill-opacity="1" stroke="#d0d9c9" stroke-width="1"/>
+<text x="69" y="143" font-size="18" fill="#293e3a" font-weight="700" text-anchor="start">现有共图：两组不同招式</text>
+<text x="69" y="166" font-size="12" fill="#66796a" font-weight="400" text-anchor="start">每组内当前引用同一张图；盘面仍保留技能名称。</text>
+<rect x="70" y="185" width="140" height="255" rx="6" fill="#fffdf5" fill-opacity="1" stroke="#c5cfbd" stroke-width="1"/>
+<image href="../../../textures/ui/combat/skill_icons/玄枢_云帔_v2.png" x="85" y="196" width="110" height="185" preserveAspectRatio="xMidYMid meet"/>
+<text x="140" y="405" font-size="16" fill="#293e3a" font-weight="700" text-anchor="middle">云帔</text>
+<text x="140" y="426" font-size="11" fill="#66796a" font-weight="400" text-anchor="middle">当前共用云帔图</text>
+<rect x="230" y="185" width="140" height="255" rx="6" fill="#fffdf5" fill-opacity="1" stroke="#c5cfbd" stroke-width="1"/>
+<image href="../../../textures/ui/combat/skill_icons/玄枢_云帔_v2.png" x="245" y="196" width="110" height="185" preserveAspectRatio="xMidYMid meet"/>
+<text x="300" y="405" font-size="16" fill="#293e3a" font-weight="700" text-anchor="middle">虚怀纳劲</text>
+<text x="300" y="426" font-size="11" fill="#66796a" font-weight="400" text-anchor="middle">当前共用云帔图</text>
+<rect x="390" y="185" width="140" height="255" rx="6" fill="#fffdf5" fill-opacity="1" stroke="#c5cfbd" stroke-width="1"/>
+<image href="../../../textures/ui/combat/skill_icons/剑修基础_斩剑_v1.png" x="405" y="196" width="110" height="185" preserveAspectRatio="xMidYMid meet"/>
+<text x="460" y="405" font-size="16" fill="#293e3a" font-weight="700" text-anchor="middle">斩剑</text>
+<text x="460" y="426" font-size="11" fill="#66796a" font-weight="400" text-anchor="middle">当前共用斩剑图</text>
+<rect x="550" y="185" width="140" height="255" rx="6" fill="#fffdf5" fill-opacity="1" stroke="#c5cfbd" stroke-width="1"/>
+<image href="../../../textures/ui/combat/skill_icons/剑修基础_斩剑_v1.png" x="565" y="196" width="110" height="185" preserveAspectRatio="xMidYMid meet"/>
+<text x="620" y="405" font-size="16" fill="#293e3a" font-weight="700" text-anchor="middle">云岚三叠</text>
+<text x="620" y="426" font-size="11" fill="#66796a" font-weight="400" text-anchor="middle">当前共用斩剑图</text>
+<text x="69" y="475" font-size="14" fill="#293e3a" font-weight="600" text-anchor="start">云帔与虚怀纳劲：共同护持，但主动／应对有别。</text>
+<text x="69" y="499" font-size="12" fill="#66796a" font-weight="400" text-anchor="start">斩剑与云岚三叠：共同剑势，但技能来源与效果不同。</text>
+<rect x="750" y="112" width="800" height="423" rx="7" fill="#f3f2e8" fill-opacity="1" stroke="#d0d9c9" stroke-width="1"/>
+<text x="770" y="143" font-size="18" fill="#293e3a" font-weight="700" text-anchor="start">差异化方向：墨形草图</text>
+<text x="770" y="166" font-size="12" fill="#66796a" font-weight="400" text-anchor="start">仅表达不同轮廓，依据既有招式实际效果细化；不是正式素材。</text>
+<rect x="770" y="184" width="175" height="218" rx="7" fill="#faf6e9" fill-opacity="1" stroke="#c1cebc" stroke-width="1"/>
+<text x="857" y="207" font-size="16" fill="#293e3a" font-weight="700" text-anchor="middle">云帔</text>
+<text x="857" y="387" font-size="11" fill="#66796a" font-weight="400" text-anchor="middle">云气护身</text>
+<rect x="960" y="184" width="175" height="218" rx="7" fill="#faf6e9" fill-opacity="1" stroke="#c1cebc" stroke-width="1"/>
+<text x="1047" y="207" font-size="16" fill="#293e3a" font-weight="700" text-anchor="middle">虚怀纳劲</text>
+<text x="1047" y="387" font-size="11" fill="#66796a" font-weight="400" text-anchor="middle">临敌护持</text>
+<rect x="1150" y="184" width="175" height="218" rx="7" fill="#faf6e9" fill-opacity="1" stroke="#c1cebc" stroke-width="1"/>
+<text x="1237" y="207" font-size="16" fill="#293e3a" font-weight="700" text-anchor="middle">斩剑</text>
+<text x="1237" y="387" font-size="11" fill="#66796a" font-weight="400" text-anchor="middle">单道剑势</text>
+<rect x="1340" y="184" width="175" height="218" rx="7" fill="#faf6e9" fill-opacity="1" stroke="#c1cebc" stroke-width="1"/>
+<text x="1427" y="207" font-size="16" fill="#293e3a" font-weight="700" text-anchor="middle">云岚三叠</text>
+<text x="1427" y="387" font-size="11" fill="#66796a" font-weight="400" text-anchor="middle">连续剑势</text>
+<path d="M802 334 C 782 310, 795 279, 823 272 C 836 239, 876 244, 884 275 C 917 273, 929 310, 909 334 M 812 336 Q 857 315 901 336" fill="none" stroke="#648775" stroke-width="9" stroke-linecap="round"/>
+<path d="M992 337 Q 1007 281 1030 265 Q 1049 247 1056 281 L 1060 316 M 1027 299 L 1092 274 M 1039 312 L 1093 295 M 990 348 Q 1040 358 1101 327" fill="none" stroke="#52675c" stroke-width="9" stroke-linecap="round"/>
+<path d="M1190 341 L 1254 260 M 1203 350 L 1266 268 M 1187 323 L 1212 346 M 1182 338 L 1199 354 M 1254 260 L 1271 249 L 1266 268" fill="none" stroke="#52675c" stroke-width="8" stroke-linecap="round"/>
+<path d="M1373 340 Q 1400 297 1453 270 M 1385 351 Q 1414 308 1467 281 M 1398 362 Q 1427 319 1480 292" fill="none" stroke="#52675c" stroke-width="8" stroke-linecap="round"/>
+<text x="770" y="450" font-size="12" fill="#66796a" font-weight="400" text-anchor="start">墨色、留白和轮廓要可在小格中辨认；不以图案暗示额外技能效果。</text>
+<text x="770" y="478" font-size="12" fill="#66796a" font-weight="400" text-anchor="start">配色只做辅助，名称与状态文字始终保留。</text>
+<rect x="48" y="554" width="1502" height="291" rx="7" fill="#f3f2e8" fill-opacity="1" stroke="#d0d9c9" stroke-width="1"/>
+<text x="69" y="587" font-size="18" fill="#293e3a" font-weight="700" text-anchor="start">不同占格的显示方式</text>
+<text x="69" y="610" font-size="13" fill="#66796a" font-weight="400" text-anchor="start">图标等比、正向放入占格；形状可旋转时，外框可旋转，人物插画不跟随横倒。</text>
+<rect x="93" y="637" width="90" height="163" rx="6" fill="#fffdf5" fill-opacity="1" stroke="#8eaa90" stroke-width="2"/>
+<image href="../../../textures/ui/combat/skill_icons/凡俗_应敌_v5.png" x="98" y="643" width="80" height="151" preserveAspectRatio="xMidYMid meet"/>
+<text x="138" y="824" font-size="13" fill="#293e3a" font-weight="500" text-anchor="middle">竖向占格示意</text>
+<text x="226" y="720" font-size="30" fill="#66796a" font-weight="500" text-anchor="middle">→</text>
+<rect x="276" y="669" width="200" height="90" rx="6" fill="#fffdf5" fill-opacity="1" stroke="#8eaa90" stroke-width="2"/>
+<image href="../../../textures/ui/combat/skill_icons/凡俗_应敌_v5.png" x="338" y="673" width="75" height="82" preserveAspectRatio="xMidYMid meet"/>
+<text x="376" y="824" font-size="13" fill="#293e3a" font-weight="500" text-anchor="middle">横向占格示意，插画仍正向</text>
+<text x="555" y="669" font-size="16" fill="#293e3a" font-weight="700" text-anchor="start">招式图</text>
+<text x="555" y="693" font-size="13" fill="#66796a" font-weight="400" text-anchor="start">沿用既有水墨人物／劲势图；按占格等比适配。</text>
+<text x="555" y="724" font-size="16" fill="#293e3a" font-weight="700" text-anchor="start">丹药</text>
+<text x="555" y="748" font-size="13" fill="#66796a" font-weight="400" text-anchor="start">继续使用现有瓷瓶图，用名称和效果区分不同丹药。</text>
+<text x="555" y="779" font-size="16" fill="#293e3a" font-weight="700" text-anchor="start">蓄势与可用性</text>
+<text x="555" y="803" font-size="13" fill="#66796a" font-weight="400" text-anchor="start">外层进度条和文字叠加，不修改原图或编码新效果。</text>
+<text x="1118" y="671" font-size="16" fill="#293e3a" font-weight="700" text-anchor="start">制作边界</text>
+<text x="1118" y="695" font-size="13" fill="#66796a" font-weight="400" text-anchor="start">建议先复用能清楚识别的现有图。</text>
+<text x="1118" y="720" font-size="13" fill="#66796a" font-weight="400" text-anchor="start">同图不同招式列为后续补绘清单。</text>
+<text x="1118" y="745" font-size="13" fill="#66796a" font-weight="400" text-anchor="start">草图线稿不是游戏内最终画风。</text>
+<text x="1118" y="793" font-size="12" fill="#a75d4c" font-weight="400" text-anchor="start">所有占格、状态及数量均为展示候选。</text>
+</svg>

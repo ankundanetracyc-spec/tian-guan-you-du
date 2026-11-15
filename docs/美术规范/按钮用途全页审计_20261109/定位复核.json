@@ -1,0 +1,1317 @@
+{
+  "generatedAt": "2026-11-09T16:25:25+08:00",
+  "notes": "逐字摘句或当前函数锚点复核。源码匹配不是实机验收；并发变更可使行号继续移动。",
+  "sourceHashes": {
+    "csharp/MainScene.EastWoodsDungeon.cs": "a303b39f9a954095435f71bb143580c26731bb0ecbb5f2039709601844278ddb",
+    "csharp/MainScene.NodeWorld.cs": "d34a8135dc0ec27c855bc845d8f708d22e165c2627f9ec8672a71d0adaf378ca",
+    "csharp/MainScene.YuxuLineage.cs": "12e8484a165de8c3a39cf560c35ea770b0541a694a95e35d364e459c3cb875ac",
+    "csharp/MainScene.YuxuSectLife.cs": "8a94cf1e2b3f8f26a912a435386790fc5b926b5301352c25aa0ae1f40e4ab2ec",
+    "csharp/MainScene.cs": "9f7287e8a855ef06ddd70dc836e645e9876ed3bf132eac62e5c016d4955a98d8",
+    "csharp/autoload/BattleTransitionManager.Flow.cs": "bb1bd0e73da6493accc4d87a6d2a23b7c21d127e6320341668f8fad1a00e423f",
+    "csharp/autoload/GameplayInputRouter.cs": "a0a99d42a444fed164a3d1c5e30481aec37b2ee65063ca7c1dae50cfaddcc84c",
+    "csharp/autoload/HoverInfoManager.cs": "accdd640d63a318a544c634d5b112d480a15d1412946b0bc45aa53d5acab0896",
+    "csharp/battle/BattleBoardHud.cs": "32bd18418e48f7ce18b18ae46ff79c6e89823596351859072161aad8fde0e5fd",
+    "csharp/battle/BattleBoardSkin.cs": "7a6c1271e98d9159d84b5864e650e2f9edb461ab3df42f25b41f474f105a4303",
+    "csharp/battle/BattleFlowView.Supplies.cs": "402e1fcd97c1435e491af525b846deed23efa4283669f13eda36ecdddd0687fb",
+    "csharp/battle/BattleFlowView.cs": "2e6e6a678dd7efabd46451a44f55c72eac7c875b9a9dbe3f7db55d75fa936e6e",
+    "csharp/battle/BattleManager.CombatBoard.cs": "bff594e73e75a04a3d953b7b909bef3af78badc21828dc9d01aa9c337084f0b9",
+    "csharp/battle/BattleManager.SceneSetup.cs": "79d421117e6becd194b5161971957157893cd15c626c8095d30ad6b2fd7f0c0f",
+    "csharp/battle/BattlePlanHud.cs": "8ac46f6eed13f907aba95e31f2ef37fbccd7f5784eab710aa31905010291210f",
+    "csharp/battle/BattleSupplyHud.cs": "379914fa9251b2c8b86387a225641be8ceece3c51884da0eff0d69528e5be504",
+    "csharp/battle/BattleUiArt.cs": "f63e1003ec3167e5aac1dcf89bf5345d6d99430e0810433d627e2ccf01cbc202",
+    "csharp/battle/BattleUnitOverlay.cs": "792818d954295217627045c83724faf09da63f812aae5b2039447ea53c49f941",
+    "csharp/debug/CombatBoardTestEntry.cs": "d9430c19452dca8eed9e334afd0fdd22fa20437804832002d904c70cd3686f18",
+    "csharp/panel/ActionTransitionPanel.cs": "233866e5db92084151f0aeb9a38bdb501dba597739a0ada3fbc7405afcede1a9",
+    "csharp/panel/AppearanceEditor.cs": "389952aaec45463c7c1a3ae651f6e1d007196c754a0025def0045d6d7573fb5e",
+    "csharp/panel/AppearanceLab.cs": "74aa896aa3c769fe8e6fcd1eafadd4d20a791b85c68c4804ed9bff058e29a089",
+    "csharp/panel/AppearancePreview.cs": "f81060d21f8bd3c7a380f483a230ef77c70eca6b7166a685e705e67ffb646091",
+    "csharp/panel/BaigongPanel.cs": "afabd75cb65e00747f25cf63e71fed8a5cbc56b12dbe3a659fbcb89dfca8aae4",
+    "csharp/panel/BanquetPanel.cs": "d3a0be1f8b0054ad3e84463fe1d7cfe1748c952848253a019bdcd1be1915a050",
+    "csharp/panel/CellCharacterList.SideToggle.cs": "e920062c0265b196704cdba652df0200febfef621d297c39244938db2f63c288",
+    "csharp/panel/CellCharacterList.cs": "a97eac6c8fa5b689677041416899b498d527128f2517e325a950a49469c5a0ce",
+    "csharp/panel/CharacterAppearanceTest.cs": "e64365e200055188c71531be502dbb04802264a37a83202e343ca98b9d372b59",
+    "csharp/panel/CraftingPaperStyle.cs": "aaaba28109359bc828445fe4455cb0605f8c87154eac51531bb88f2866f73672",
+    "csharp/panel/CultivationUI.Inspiration.cs": "25a3d888e2e9145688d45a8510577421688dafad25d7b266ca564a6f4a6daa91",
+    "csharp/panel/CultivationUI.Paper.cs": "42ff62fbb47551351f440c11681dd834b5f30b233a3874fadc6d8fbfcd2125fc",
+    "csharp/panel/EastWoodsDungeonPanel.Actions.cs": "058b460f67fd5204f2b0be1ea29d0c62af2bc4485ce1a20f48d893417870ac50",
+    "csharp/panel/EastWoodsDungeonPanel.cs": "54b095520ef03e1a969f9abfd9d349d87857d440ac09ab97668057efe08456ff",
+    "csharp/panel/EncyclopediaPanel.cs": "6df5343973d66dc3f6193151524747031bcdfaccc99146f319a4e74eea5ca0a3",
+    "csharp/panel/ForestWolfEventView.cs": "1c043cf1435618bc35503fb55da427bc52c0d895d0a74c1353d4bc37bbb60207",
+    "csharp/panel/FormationGuardPanel.Paper.cs": "f18b11d709e1ec85af73a163269e8760cff2069f0848036661a0aa615113ea67",
+    "csharp/panel/FormationGuardPanel.cs": "db90a9ebace4f1150e4d302e0ef70c0b79ca606f2c46b6973ae4ab2e5318eba6",
+    "csharp/panel/FormationWorkbench.Paper.cs": "26ae6e3ddbaf71ac571f6c05b2ba87b4ab487bf06b32daafdfb1af6bfc77e732",
+    "csharp/panel/FormationWorkbench.cs": "cc26cd5632c99a73bcb6d14e993a3bbb2afe28cfd210b2c9d0ad1546cb246f1f",
+    "csharp/panel/GameNotificationFeed.cs": "3fc4b956ab342d46e2b7b3b66414599fbfc470e3472f20eef71b1e31fdcc5af2",
+    "csharp/panel/GameSettingsPanel.cs": "1c8f52d760f9cc82511a25d34e6891c6d27e93ab5cbfabfd5b16e7593cd527f9",
+    "csharp/panel/GameTimeUI.cs": "1d5961bd898a6a72761cd8bf934a8390aa16b509fee6cc0e8208c104c9b27b2c",
+    "csharp/panel/InfoPanel.Attributes.cs": "71254ceb781670e299dd79b258c805b6de5b4f56eed6d29bdbed3df906e00224",
+    "csharp/panel/InfoPanel.EquipmentLayout.cs": "4d159d4fc2c2434a9d2befa824e09c87356907300efe2cb89b7921a41d335483",
+    "csharp/panel/InfoPanel.ManualLibrary.cs": "5790ee4904c8f58b9b5739abbc7570e659f31eba6d074efcee4eb0feed02cff2",
+    "csharp/panel/InfoPanel.NpcProbe.cs": "eebf1e2c92abc06e737c9ffefe9c9aa6c928774c473a4f556764092a20ffd1b2",
+    "csharp/panel/InfoPanel.Overview.cs": "b777a971ce644729d62584410f744108fafbca2b9f2be3209725613c70ff6c84",
+    "csharp/panel/InfoPanel.Paper.cs": "bf9cf487f4faeace98e11440eab7496075403923e3e93ecf35321aa5458ba54d",
+    "csharp/panel/InfoPanel.Redesign.cs": "f5e7c026d48ff8a56bcfdc15413c227ed58aab4b003c729d8a247fef0578022b",
+    "csharp/panel/InfoPanel.RelationsLayout.cs": "de1485fd4fa5cd56b629a328b6d119271b529123ba4ccd6e18f8f1e1c61529ce",
+    "csharp/panel/InfoPanel.SkillLibrary.cs": "825616cc1a807d7bfb8d9c0a312665b8ab335112ee5d7db763d65aaca9ec748e",
+    "csharp/panel/ItemClaimPanel.View.cs": "66cb2a4c09393d2b4bc7839c12a744406b53b7e5419ca03d2ef1e58363f18bca",
+    "csharp/panel/ItemClaimPanel.cs": "0ca8eb3587b0a3fa946d60161b2a42f61713224085ca3c8abea2216cb2f159b8",
+    "csharp/panel/JournalPanel.cs": "071021910b8c445f60516d8a09bad0fc6670d7d4639d545c7d72f096f08e0e74",
+    "csharp/panel/JourneyCreationLoadingView.cs": "9f754097724cb3732d70ec424b043a72f0af29edb64d383b8aeb483746d22d78",
+    "csharp/panel/LetterPanel.cs": "3443b69d8b7786759d1656b6125aa437b55f781c76a917eb9c75fb53f043cbb0",
+    "csharp/panel/MainHUD.Navigation.cs": "4029c12f67f4c838699b1434bb959ec280f5f52a827614c4f07327d94349bc92",
+    "csharp/panel/MainHUD.PlayerProfile.cs": "1defc9fb3ba6d986959f52e2b0b02f2f70dd780aa488d17cf088125fa991d957",
+    "csharp/panel/MainHUD.TaskTracker.cs": "941a01101352eeb31aad05d3d062f26f878b3879b61086237d9592b1df56724b",
+    "csharp/panel/MainHUD.cs": "24f78ce81a8eebb7ed7d70875d9ca25d97dace8015be6bb3146e37748a28de6d",
+    "csharp/panel/NpcInteractionPanel.cs": "d8b9928f4f0bd909a8fabe265bd7406487a44cb0426bd2b8858f16f0284a92c4",
+    "csharp/panel/PaperButton.cs": "4da8140c64e0b6bbcfa7c7e072e5ba2e317b5e0b964702c87b5516387f7741e3",
+    "csharp/panel/PaperButtonFeedback.cs": "275a8540a06a858370ed7e8eb3cff4beec35d8a75c8fda5a86d0e41db9f7a6a3",
+    "csharp/panel/QuietRoomStyle.cs": "5d4306a0b9fd1ee6170dcd9372e66691cb8cb6752b07d796736faeef78ee79f9",
+    "csharp/panel/RealmPanel.cs": "2ad95c09efe97c873b9eb4c7e480a2b1b3794a85f2ad866ea32f3d1d7b8311f8",
+    "csharp/panel/RestPanel.cs": "e948d15913fc11c489368c3d773ea83c8939d1effea5629d9785af9a56de8167",
+    "csharp/panel/SceneLoadingScreen.cs": "9525b5b4e3513e28ddf5a3afc653d762c157dbcd76b0379f7fcb3cce52712e7d",
+    "csharp/panel/SkillHandPanel.cs": "2f3fa1dbf24225de95ab392bed90fbd1d483f6e5222526ddb6d219aafebf1136",
+    "csharp/panel/StartMenu.Creation.cs": "c12656754c2ab4bdfada88a44e09249b41cd69e726331e19ac049edabcd9a382",
+    "csharp/panel/StartMenu.CreationControls.cs": "c6c602a5ba64762fa561ba39bfc5be71c18a6afa0cdf2712fb0196309f878d5c",
+    "csharp/panel/StartMenu.CreationProficiencies.cs": "918a07e1b4c776312d7b9db767efb72688ee1c9aae5421471c328867e6361361",
+    "csharp/panel/StartMenu.Settings.cs": "a1b111c1280ed55c88eb2a1a2896b827d04811045ed3c883942904c608a9e207",
+    "csharp/panel/StartMenu.Visual.cs": "ef3865a49c100934eb40bc77a1acec3a71459958f471540e38f0f4303475ef9e",
+    "csharp/panel/StartMenu.cs": "3a9d43b768a04b1c73df9dc6b69e126d28e1f7ab45c8436b081440585f6e2ea6",
+    "csharp/panel/StoragePanel.Native.cs": "5c6d13f9e6d5c04054d850e1850dbde643d8b6fff2671264856fbf1405029eab",
+    "csharp/panel/StoragePanel.StorageBags.cs": "4061427c07bde8e73e7a328450e32d4b2c6b22a4e87bc931847bd1fc095a95ab",
+    "csharp/panel/StoragePanel.View.cs": "fce84ac5ec54bd1563370e3547f9ec8dc9b698ddcdf02fb18ab22e016ad41a99",
+    "csharp/panel/StoryDialoguePanel.Choices.cs": "29d75b66a493fcddb2d5c5ac2cd53ef70224038c076596be221fd0116b31cc7c",
+    "csharp/panel/StoryDialoguePanel.Social.cs": "c2802431f3ed4714addb71d7daffdf754452a081a40d17637e75268cbdd36187",
+    "csharp/panel/TradePanel.cs": "0d0161275fa99c7ea8ccb966d132dbbdb8aeb6f401c7a56332d4f7a07d1b2e1a",
+    "csharp/panel/TrueDiscipleLecturePanel.cs": "3746a1f95d63510a2dc85b1d9a0f84ea1b9606aee4ddc61620e11010533d8ef1",
+    "csharp/panel/WardrobePicker.cs": "5d1b6aefb2d6f5f0a41ab5d564b8cacdc34df3307d1080a30b9d3373fe7e780b",
+    "csharp/panel/WorldHudStyle.cs": "f108b26addc92af3e2a7eded353cec95cee509f87ec1cee8486f73bb688d4e98",
+    "csharp/panel/WorldLocationInteriorPanel.Opening.cs": "f6cd37d003d4e83b969b96e78e89dfe02d1df15db6bab16cfe4495b8073d4cdc",
+    "csharp/panel/WorldLocationInteriorPanel.cs": "2b2dcbc4f326d5a0773bfb60b3f2159db844416139ac389de307b5f148ce0588",
+    "csharp/panel/YuxuManualLibraryPanel.cs": "cb41f619ad1a671199877ecc3429d41d9917b56d1a02186562c8299c07c35fc8",
+    "csharp/panel/YuxuMarketPanel.cs": "dec507b41cc5aadb55203505f3e2395213109527ee9d6eccd4b4fbccbdb80ee0",
+    "csharp/panel/YuxuSectExchangePanel.cs": "44b595b5faf5ea89c66c6d62e72441b4969a7e456bc1ee8f52a057742f47a2c5",
+    "csharp/scene/AlchemySlotBrewPreviewScene.Notebook.cs": "82efdffbd54b8018d969c761df4a22de374291f8002358f105c7ad727bbceb74",
+    "csharp/scene/AlchemySlotBrewPreviewScene.PaperDialogs.cs": "e258ed9a4a7b699551d47c636effaa37da120e052f5f573fc9a483b26607e698",
+    "csharp/scene/AlchemySlotBrewPreviewScene.PaperSkin.cs": "2c0ec6159b364ce8eba7f283e26ba639d621269b437e6d82a89d3cc315f0070a",
+    "csharp/scene/AlchemySlotBrewPreviewScene.Presentation.cs": "e81f358a1904dfdcc87f144a5c6a84424d5a271e6b0e4bfb4d59f40f69ce2df3",
+    "csharp/scene/AlchemySlotBrewPreviewScene.Receipt.cs": "2c77fa6a918db8e016f41ccd706ff8760306d3ea458d58b76686b7ab5e3f1fed",
+    "csharp/scene/AlchemySlotBrewPreviewScene.cs": "3e8b8daef22e0f363dd938631e68229a95c27fc7986b01dc940ec61695387244",
+    "csharp/scene/BattlePoseLibraryShowcase.cs": "9fbc6adbb7390af515ddf8042f8289fd242d35a870c4c847c320c2f1fce8395d",
+    "csharp/scene/CharacterOverviewPreviewScene.cs": "c047b002854fa6b5bd003ce3e4ff431eba2ff89d126128a122c0d5f6cbed051e",
+    "csharp/scene/ForgingPaperPreviewScene.cs": "2a24be39f8f8aab88500ae1245ff02cb8e12fc0ae0d5e95ca8a1ea1a81566c36",
+    "csharp/scene/ItemClaimPreviewScene.cs": "277215f2d7e76e0e17f7849f24828e33b850b9b79915f9bd83135c9a3bbb4f29",
+    "csharp/scene/LetterPaperPreviewScene.cs": "97ef02ab60e7959ac92415e17cb7ae376fc862bc39342ffb9de4cbe6c0e4674b",
+    "csharp/scene/LettersPreviewScene.cs": "8d7891e3bbd5c49ba073ef148a3be096b9853d20f882d826eb2f9abc800af01f",
+    "csharp/scene/NpcInteractionPaperCardPreview.cs": "3c8ba113462b1df3f0ee45efb5daca28cf5ebaa6c41e92f4ccc56ffa43afae37",
+    "csharp/scene/NpcSocialPreviewScene.cs": "14a261f03943dd977a92046da0cebc60a7bae1b25bf4f5a5ebb8d268c4840dd1",
+    "csharp/scene/ProcessForgingScene.Workspace.cs": "d434e201ee682c13bdf112decee8a9580e5d1f6daa6d61f993103d156267a6c0",
+    "csharp/scene/ProcessForgingScene.cs": "3ab3c488941e22aa4712dc1e43ffa440e5c339f4ca9b253539a9c0643f1200fe",
+    "csharp/scene/QuietRoomRestTradePreviewScene.cs": "1c6b6c7e9c60c14f3295d916b60a2a6d234a985fd254eb33ed1fa4fdc55b8d64",
+    "csharp/scene/StoryDialoguePaperPreviewPanel.cs": "3414493c5b6d28d6a74c8d645f2898732e6e6a383d052a3c9cbeadaf9cfa54f3",
+    "csharp/scene/SwordCraftingScene.cs": "4a61c5a6e6a5ebbdbb0a364f0cae602d5a30f2f1accd989fbb8463c2e1b5cefe",
+    "csharp/scene/TalismanCraftingScene.Choices.cs": "c0695496f0670878006a8946048499023cd3f62ba67a6431647fee5ee1826e65",
+    "csharp/scene/TalismanCraftingScene.Plans.cs": "a1e4f2c12d151e18b02a08c1b74218ade7f4b9fd5b56ec47681e71e298535655",
+    "csharp/scene/TalismanCraftingScene.cs": "ba75d0728ded68deb54835167dcfea5cb0462bfed2ed15321c8e7146d78c7dee",
+    "csharp/scene/TradePaperPreviewPanel.cs": "998ba74cd89adfe4ebc6e47912dfcda208aa9c9c995489f9b266b49a0daa380e",
+    "docs/plans/界面与美术/人物战斗总览与局内配招统一_20261109.md": "0fc9ee3b14bbc5273b35e5cacd4fe8a286caee43b0ee7984bba55e3f7cb13f99",
+    "docs/plans/界面与美术/全局界面统一风格规范_20261108.md": "14228b63b33a6db56d06b378f442ea5e0436d96e43b8d5ea46d0346d1485ed70",
+    "docs/美术规范/休息纸墨木石样稿_20261108/index.html": "1b8ca815e3b866fbc6fdfad1414cd30f631898dec5bcbb846534a855432c8c64",
+    "docs/美术规范/休息纸墨木石样稿_20261108/rest.js": "084e2c752141117fa72633c43896f2cfd8703da9f905cefd982d2601d7ce9575",
+    "docs/美术规范/全局界面风格母板_20261108/board.js": "973ca322dba78c33363292770fcf109dde5d645804d9ee3e91626ad07f789b66",
+    "docs/美术规范/全局界面风格母板_20261108/index.html": "5388d1a3c6f3f7104a18fee600a2089ee3ff0a1fe82631bb99ac93c22fd75917",
+    "docs/美术规范/全局界面风格母板_20261108/style.css": "6828a842617119f28ea6bf0785ac61d3720b5742d84287768bd3a3e7610d0dcd",
+    "docs/美术规范/天工峰丹房器作租用入口_20261107/README.md": "74dc72108ca8293a52a5ba9c02e7d4a230bf80961c03b0ef8c0d41861dd0283c",
+    "docs/美术规范/天工峰丹房器作租用入口_20261107/index.html": "0c427eca88b9e3d9b00b7e328d51af407f6d10704e1b8032a4faf8d785e177a5",
+    "docs/美术规范/宗内坊市交易界面_20261107/README.md": "413883732f0a6f9a2720e506a8c03b5608c9b6567e1e9346cb8ed245a1af6f11",
+    "docs/美术规范/宗内坊市交易界面_20261107/我的摊位_拖入管理预览_20261107.html": "afc044b5d5126c7900cb0d3f6cfa1464c128f73187a2c686c5e87ac51f80f70a",
+    "docs/美术规范/局内战斗布阵与开战理想图_20261107/39_素材拼接预览.js": "bc3cb6ec7f73627fc4323db853cfab963ad243708dfe4eedd2c3a3e6fd16ce8a",
+    "docs/美术规范/炼丹纸墨木石样稿_20261108/preview.js": "b5a96185a9c9052b7bd4c25ffcb05dc9489f30ebae3fe11fca565b3386c2b413",
+    "docs/美术规范/百工资料纸墨木石样稿_20261108/index.html": "a0eeaf6f133b48407f527677758aa33f1f1adbbdeadba170be9d0f5a408e9e1b",
+    "docs/美术规范/百工资料纸墨木石样稿_20261108/ledger.js": "7d24e59d8b184eb2033f9906f1b12a90c4a7ae8188e19b6066757c97b2ffd382",
+    "docs/美术规范/种植灵圃界面样稿_20261109/index.html": "1b403144896af8c8b615db6904bdb978aa9df033546eecadd85cad8cf3202d0c",
+    "docs/美术规范/种植灵圃界面样稿_20261109/prototype.js": "5c8bbbd01b483b6bee2db1936fe9af84ef71c3d63ec57c91c4aa64e842908620",
+    "docs/美术规范/符箓三工艺界面样稿_20261108/preview.js": "f55ff1f124e697df5f890ce1a0b17b3c0a9bc68370d0c12104295dd176982e33",
+    "docs/美术规范/藏经阁与善功堂布局保留交互_20261106/README.md": "efc7a0b2560d1d6b9905671c02b01808dd9d32f709e23fc69b51e5c2b7a6e173",
+    "docs/美术规范/见闻任务纸墨木石样稿_20261108/journal.js": "eb9cb8918c265d58d0b3a27eef0760be78e5d8b1bbb39f6baed0ca95acb8bc72",
+    "docs/美术规范/角色与静室纸墨木石样稿_20261108/battle-preview.js": "4c4e22d6390319cb01c6fd4d3f368977c79279ebd5ca953810a3d11e36d73bc3",
+    "docs/美术规范/角色与静室纸墨木石样稿_20261108/materials.js": "5682f36b2a66837add4b3244d5bf4ba7b55d84b65a417f6f8adbece1c2bf6fe2",
+    "docs/美术规范/角色与静室纸墨木石样稿_20261108/preview.js": "737f9c8de57860e6caf070fd63f7dde5584f8471b3ed85f8df5f629eaa2f30f1",
+    "docs/美术规范/角色与静室纸墨木石样稿_20261108/skin-data.js": "24aeb018c43d2ba81017e3bfdca46fe2437b86d74cd959dce15b675e7dd4341a",
+    "docs/美术规范/角色与静室纸墨木石样稿_20261108/按钮分型.js": "6e28a694dee0bbbc4b8d7f1c26a0be2414afd21626e3203c5da46f09e5dbe3b9",
+    "docs/美术规范/阵法逻辑控制演示_20261109/preview.css": "5622078a9278575cb825d66da781cbb97b848994e34231facb1eb60f99783f87",
+    "docs/美术规范/阵法逻辑控制演示_20261109/preview.html": "7147fd692034866b567b6e80abb79f886f46698237c289147917f8f15482942c",
+    "gdscripts/world/BaiChuanFreeWorldRuntime.gd": "c4484aac9467abb9bf67b1a3e202c4f819864b9f268aa66231ff98fd87a54fdc",
+    "gdscripts/world/BaiChuanNodeMapRuntime.gd": "52bb84b42c36e013747414a49eefd848f0aad9c32ce7a0fcb11864f20f2ce7ca",
+    "scripts/ui/SceneActionButton.gd": "9819bb4e7e91beff8ef34370be2b63e6042942f9ff5dc52dbc6fdab7e743c20d",
+    "scripts/world/bai_chuan/BaishiCityOverview.gd": "e9ccfa845605a5cebff1467c296aa0dbbb6e21d4271bed0f5f67242dc230eeaa",
+    "scripts/world/bai_chuan/YuxuPeakInterior.gd": "86384721c101bba2a90a2f9f43e5edee6656b11473bc0dbe1a54119d53b5b13a",
+    "scripts/world/bai_chuan/YuxuSectDutyBoard.gd": "63639936bd2f11aa74b27e014148f6403ddd10b5250ae8d5a0e5e5ff78dd8ac8",
+    "scripts/world/bai_chuan/YuxuXianzongOverview.gd": "4a5204a8bf9aa673a2b328d973cc85148b2027622febac9f4b128f9217491cf8",
+    "tools/action_battle_test/action_battle_hud.gd": "d796683a6f3c45878cc88ca41c4e08b908ec7a6b6d6120d5dca49e9071db5fdc",
+    "tools/action_battle_test/human_sparring_hud.gd": "86fc6fbfbc7dbc45c4556ec45cda818346a3a1f456f80918c22c51ee5e36b94e",
+    "tools/action_battle_test/manual_battle_setup.gd": "1c05bee2fcd7951f8f8d15f29e7b7c3c199b2a93423d950457fa1efc825dd2ac",
+    "tools/action_battle_test/topdown_hud.gd": "cd36e1fae304c840ae0438d3310df23f36af28137e590da4fe8689ce18833716"
+  },
+  "checks": [
+    {
+      "findingId": "N01",
+      "file": "csharp/panel/CraftingPaperStyle.cs",
+      "originalLine": null,
+      "line": 296,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "        theme.SetStylebox(\"hover\", \"PopupMenu\", ButtonStyle(ButtonKind.Regular, ButtonState.Selected));"
+    },
+    {
+      "findingId": "N01",
+      "file": "csharp/panel/CultivationUI.Paper.cs",
+      "originalLine": 222,
+      "line": 222,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "        PaperButtonFeedback.Apply(_breakthroughPillPicker, CraftingPaperStyle.ButtonKind.Input, 21); _breakthroughPillPicker.ItemSelected += on_breakthrough_pill_selected; content.AddChild(_breakthroughPillPicker);"
+    },
+    {
+      "findingId": "N01",
+      "file": "csharp/panel/CraftingPaperStyle.cs",
+      "originalLine": 23,
+      "line": 23,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "    private static readonly Frame TabFrame = new(\"button_tab.png\", new(86, 157, 1772, 495), new(65, 100, 190, 115), new(5, 7, 13, 8), true);"
+    },
+    {
+      "findingId": "N02",
+      "file": "csharp/panel/ItemClaimPanel.View.cs",
+      "originalLine": null,
+      "line": 44,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "        confirm.AddThemeStyleboxOverride(\"normal\", new StyleBoxFlat { BgColor = new(\"748a68\"), CornerRadiusTopLeft = 5, CornerRadiusTopRight = 5, CornerRadiusBottomLeft = 5, CornerRadiusBottomRight = 5 });"
+    },
+    {
+      "findingId": "N02",
+      "file": "csharp/panel/ItemClaimPanel.View.cs",
+      "originalLine": 77,
+      "line": 77,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "    private static void style_button(Button b)"
+    },
+    {
+      "findingId": "N03",
+      "file": "csharp/panel/InfoPanel.ManualLibrary.cs",
+      "originalLine": null,
+      "line": 88,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "            var change = CharacterButton(\"›\", 26); change.CustomMinimumSize = new Vector2(30, 0); change.AddThemeStyleboxOverride(\"normal\", new StyleBoxEmpty()); row.AddChild(change); change.Pressed += () => show_character_manual_picker(human, index);"
+    },
+    {
+      "findingId": "N03",
+      "file": "csharp/panel/InfoPanel.Redesign.cs",
+      "originalLine": 91,
+      "line": 91,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "    private static Button CharacterButton(string text, int size = 21, bool selected = false, int padding = 8)"
+    },
+    {
+      "findingId": "N05",
+      "file": "csharp/panel/StartMenu.Settings.cs",
+      "originalLine": null,
+      "line": 102,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "        button.AddThemeStyleboxOverride(\"normal\", MenuPaperButtonStyle(true));"
+    },
+    {
+      "findingId": "N05",
+      "file": "csharp/panel/GameSettingsPanel.cs",
+      "originalLine": 147,
+      "line": 147,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "        var reset = StartMenu.SettingsButton(\"恢复默认\");"
+    },
+    {
+      "findingId": "N05",
+      "file": "csharp/autoload/GameplayInputRouter.cs",
+      "originalLine": 220,
+      "line": 220,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "        add_menu_button(\"继续\", close_pause_menu);"
+    },
+    {
+      "findingId": "N05",
+      "file": "csharp/autoload/GameplayInputRouter.cs",
+      "originalLine": 243,
+      "line": 243,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "        if (canSave) add_menu_button(\"保存并返回首页\", () => return_to_title(true));"
+    },
+    {
+      "findingId": "N05",
+      "file": "csharp/panel/StartMenu.Visual.cs",
+      "originalLine": 34,
+      "line": 34,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "            var primary = name == \"NewSave\";"
+    },
+    {
+      "findingId": "N06",
+      "file": "csharp/panel/ItemClaimPanel.cs",
+      "originalLine": null,
+      "line": 202,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "        _leaveDialog = new ConfirmationDialog { Title = \"结束领取\", DialogText = leaveMessage, ProcessMode = ProcessModeEnum.Always };"
+    },
+    {
+      "findingId": "N07",
+      "file": "csharp/panel/StoragePanel.Native.cs",
+      "originalLine": null,
+      "line": 45,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "        var back = paper_button(\"‹\", 39, true);"
+    },
+    {
+      "findingId": "N07",
+      "file": "csharp/panel/ItemClaimPanel.View.cs",
+      "originalLine": 16,
+      "line": 16,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "        var back = button(\"‹\", _canvas, 48, 32, 54, 54, request_finish);"
+    },
+    {
+      "findingId": "N07",
+      "file": "csharp/panel/LetterPanel.cs",
+      "originalLine": 136,
+      "line": 136,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "        var back = Button(\"←\", 30); _canvas.AddChild(back); Rect(back, 28, 18, 52, 48); back.Pressed += Close;"
+    },
+    {
+      "findingId": "N08",
+      "file": "csharp/panel/StoryDialoguePanel.Choices.cs",
+      "originalLine": null,
+      "line": 48,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "            var backing = new ColorRect { Color = new Color(\"edeade\"), MouseFilter = MouseFilterEnum.Ignore, ShowBehindParent = true };"
+    },
+    {
+      "findingId": "N08",
+      "file": "csharp/scene/StoryDialoguePaperPreviewPanel.cs",
+      "originalLine": 43,
+      "line": 43,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "            foreach (var backing in button.GetChildren().OfType<ColorRect>()) backing.Hide();"
+    },
+    {
+      "findingId": "N09",
+      "file": "csharp/panel/JournalPanel.cs",
+      "originalLine": null,
+      "line": 181,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "    private static StyleBoxFlat RowStyle(bool selected) => new() { BgColor = selected ? new Color(.36f, .43f, .36f, .14f) : Colors.Transparent, BorderColor = selected ? Accent : new Color(.29f, .24f, .16f, .24f), BorderWidthLeft = selected ? 3 : 0, BorderWidthBottom = 1, ContentMarginLeft = 12, ContentMarginRight = 12, ContentMarginTop = 10, ContentMarginBottom = 10 };"
+    },
+    {
+      "findingId": "N09",
+      "file": "csharp/panel/JournalPanel.cs",
+      "originalLine": 116,
+      "line": 116,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "            StyleBox background = selected ? new StyleBoxTexture { Texture = GD.Load<Texture2D>(\"res://textures/ui/infopanel_nav_plaque_clean_v2.png\"), TextureMarginLeft = 32, TextureMarginRight = 32, ContentMarginLeft = 12, ContentMarginRight = 12 } : new StyleBoxEmpty();"
+    },
+    {
+      "findingId": "N09",
+      "file": "csharp/panel/JournalPanel.cs",
+      "originalLine": 125,
+      "line": 125,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "                if (completed == _completed) filter.AddThemeStyleboxOverride(\"normal\", RowStyle(true));"
+    },
+    {
+      "findingId": "N10",
+      "file": "csharp/panel/EncyclopediaPanel.cs",
+      "originalLine": null,
+      "line": 1427,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "    private static StyleBoxFlat CategoryTabStyle(bool selected, bool hovered, bool pressed)"
+    },
+    {
+      "findingId": "N10",
+      "file": "csharp/panel/EncyclopediaPanel.cs",
+      "originalLine": 1400,
+      "line": 1400,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "        button.Modulate = selected ? new Color(1.08f, .91f, .62f, 1f) : Colors.White;"
+    },
+    {
+      "findingId": "N10",
+      "file": "csharp/panel/StartMenu.cs",
+      "originalLine": 145,
+      "line": 145,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "    }"
+    },
+    {
+      "findingId": "N14",
+      "file": "csharp/panel/StartMenu.Creation.cs",
+      "originalLine": null,
+      "line": 454,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "            var button = creation_button(\"+\");"
+    },
+    {
+      "findingId": "N14",
+      "file": "csharp/panel/StartMenu.CreationControls.cs",
+      "originalLine": 45,
+      "line": 45,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "    private static void style_creation_round(Button button)"
+    },
+    {
+      "findingId": "N14",
+      "file": "csharp/panel/StartMenu.CreationControls.cs",
+      "originalLine": 66,
+      "line": 66,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "        var next = creation_button(\"▶\");"
+    },
+    {
+      "findingId": "CS01",
+      "file": "csharp/scene/AlchemySlotBrewPreviewScene.PaperDialogs.cs",
+      "originalLine": null,
+      "line": 78,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "            var button = PaperDialogButton(utility, () => { }, CraftingPaperStyle.ButtonKind.Regular, 20);"
+    },
+    {
+      "findingId": "CS02",
+      "file": "csharp/scene/AlchemySlotBrewPreviewScene.Notebook.cs",
+      "originalLine": null,
+      "line": 46,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "        _builtinTab.AddThemeStyleboxOverride(\"normal\", CraftingPaperStyle.ButtonStyle(CraftingPaperStyle.ButtonKind.Regular, !_showSaved ? CraftingPaperStyle.ButtonState.Selected : CraftingPaperStyle.ButtonState.Normal));"
+    },
+    {
+      "findingId": "CS02",
+      "file": "csharp/scene/AlchemySlotBrewPreviewScene.Notebook.cs",
+      "originalLine": 117,
+      "line": 117,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "        CraftingPaperStyle.ApplyButton(button, CraftingPaperStyle.ButtonKind.Regular, 22);"
+    },
+    {
+      "findingId": "CS02",
+      "file": "csharp/scene/AlchemySlotBrewPreviewScene.Notebook.cs",
+      "originalLine": 142,
+      "line": 142,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "                button.AddThemeStyleboxOverride(\"normal\", CraftingPaperStyle.ButtonStyle(CraftingPaperStyle.ButtonKind.Regular, button.GetMeta(\"recipe_name\", \"\").AsString() == name ? CraftingPaperStyle.ButtonState.Selected : CraftingPaperStyle.ButtonState.Normal));"
+    },
+    {
+      "findingId": "CS03",
+      "file": "csharp/panel/CraftingPaperStyle.cs",
+      "originalLine": null,
+      "line": 296,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "        theme.SetStylebox(\"hover\", \"PopupMenu\", ButtonStyle(ButtonKind.Regular, ButtonState.Selected));"
+    },
+    {
+      "findingId": "CS04",
+      "file": "docs/美术规范/炼丹纸墨木石样稿_20261108/preview.js",
+      "originalLine": null,
+      "line": 36,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "  function chips(key,values,labels){return `<div class=\"filter-chips\">${values.map((v,i)=>button(labels?.[i]||v,`data-filter=\"${key}\" data-value=\"${v}\" aria-pressed=\"${state.picker[key]===v}\"`,'buttonTab',state.picker[key]===v?'is-selected':'')).join('')}</div>`;}"
+    },
+    {
+      "findingId": "CS05",
+      "file": "csharp/scene/ProcessForgingScene.Workspace.cs",
+      "originalLine": null,
+      "line": 14,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "            if (i == _inputGroup) ForgingInkStyle.Button(tab, true);"
+    },
+    {
+      "findingId": "CS06",
+      "file": "csharp/scene/ForgingPaperPreviewScene.cs",
+      "originalLine": null,
+      "line": 221,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "        var flatText = button.Text.Replace(\" \", \"\", StringComparison.Ordinal);"
+    },
+    {
+      "findingId": "CS07",
+      "file": "csharp/scene/ProcessForgingScene.Workspace.cs",
+      "originalLine": null,
+      "line": 39,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "                var minus = Btn(\"－\", () => { input.Quantity = Math.Max(1, input.Quantity - 1); Edit(); }); minus.CustomMinimumSize = new(42, 38); minus.Disabled = input.Quantity <= 1; row.AddChild(minus);"
+    },
+    {
+      "findingId": "CS08",
+      "file": "csharp/scene/TalismanCraftingScene.cs",
+      "originalLine": null,
+      "line": 383,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "    private static void AddStepper(Control parent, string name, int value, float x, float y, Action<int> changed, int maximum = 99, int minimum = 0)"
+    },
+    {
+      "findingId": "CS08",
+      "file": "csharp/scene/TalismanCraftingScene.cs",
+      "originalLine": 398,
+      "line": 398,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "    private sealed partial class ReturnArrow : Control"
+    },
+    {
+      "findingId": "CS09",
+      "file": "csharp/scene/TalismanCraftingScene.Choices.cs",
+      "originalLine": null,
+      "line": 99,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "            var close = Button(\"×\", () => { if (!_busy) CloseModal(); }, 26); close.Name = \"CloseCraftingModal\";"
+    },
+    {
+      "findingId": "CS09",
+      "file": "csharp/scene/TalismanCraftingScene.Choices.cs",
+      "originalLine": 98,
+      "line": 98,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "            Place(sheet, Text(title, 30), 29, 18, width - 145, 50);"
+    },
+    {
+      "findingId": "CS10",
+      "file": "csharp/scene/TalismanCraftingScene.Plans.cs",
+      "originalLine": null,
+      "line": 73,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "            var accept = Button(\"确认覆盖\", () =>"
+    },
+    {
+      "findingId": "CS11",
+      "file": "docs/美术规范/符箓三工艺界面样稿_20261108/preview.js",
+      "originalLine": null,
+      "line": 44,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "function quantity(value,attrs,max=12){return `<div class='dose-row'>${button('−',`${attrs} data-delta='-1' aria-label='减少份数' ${value<=1?'disabled':''}`)}<span class='dose-well' data-skin='button' data-button-kind='input'><input type='number' min='1' max='${max}' step='1' value='${value}' ${attrs} aria-label='投入份数'></span>${button('＋',`${attrs} data-delta='1' aria-label='增加份数' ${value>=max?'disabled':''}`)}</div>`;}"
+    },
+    {
+      "findingId": "CS12",
+      "file": "csharp/panel/BaigongPanel.cs",
+      "originalLine": null,
+      "line": 35,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "            var tab = new Button { Text = page, CustomMinimumSize = new Vector2(118, 48) }; tab.Pressed += () => select_page(page); _tabs[page] = tab; tabBar.AddChild(tab);"
+    },
+    {
+      "findingId": "CS12",
+      "file": "csharp/panel/BaigongPanel.cs",
+      "originalLine": 30,
+      "line": 30,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "        var outer = new HBoxContainer(); outer.AddThemeConstantOverride(\"separation\", 0); frame.AddChild(outer);"
+    },
+    {
+      "findingId": "CS13",
+      "file": "docs/美术规范/百工资料纸墨木石样稿_20261108/ledger.js",
+      "originalLine": null,
+      "line": 43,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "      const list=personalRecipes();footer=`<div class=\"book-pagination\">${button('前叶','data-page-delta=\"-1\" aria-label=\"上一页丹方\" data-button-kind=\"bookTab\" '+(state.recipePage===0?'disabled':''),'page-corner')}<span>${list.length?`第 ${state.recipePage+1} 叶 · 共 ${pages()} 叶`:'册中尚无此方'}</span>${button('后叶','data-page-delta=\"1\" aria-label=\"下一页丹方\" data-button-kind=\"bookTab\" '+(state.recipePage>=pages()-1?'disabled':''),'page-corner')}</div><p class=\"book-total\">${state.query?`寻得 ${list.length} 方`:`收录 ${list.length} 方`}</p>`;"
+    },
+    {
+      "findingId": "CS14",
+      "file": "csharp/panel/FormationWorkbench.cs",
+      "originalLine": null,
+      "line": 312,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "    private static Button Button(string text, Action action)"
+    },
+    {
+      "findingId": "CS14",
+      "file": "csharp/panel/FormationWorkbench.cs",
+      "originalLine": 365,
+      "line": null,
+      "check": "旧行号已失效",
+      "currentText": ""
+    },
+    {
+      "findingId": "CS14",
+      "file": "csharp/panel/FormationWorkbench.cs",
+      "originalLine": 81,
+      "line": 81,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "        CraftingPaperStyle.ApplyButton(_applyParameters, CraftingPaperStyle.ButtonKind.Primary, 21);"
+    },
+    {
+      "findingId": "CS14",
+      "file": "csharp/panel/FormationWorkbench.cs",
+      "originalLine": 114,
+      "line": 114,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "    private static SpinBox Number(string name, double minimum, double maximum, double initial)"
+    },
+    {
+      "findingId": "CS14",
+      "file": "csharp/panel/FormationWorkbench.Paper.cs",
+      "originalLine": 111,
+      "line": 111,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "        RefreshPaperInspectorTabs();"
+    },
+    {
+      "findingId": "CS14",
+      "file": "csharp/panel/FormationWorkbench.Paper.cs",
+      "originalLine": 137,
+      "line": 137,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "        var overlay = new Control { Name = \"FormationHelpOverlay\", MouseFilter = MouseFilterEnum.Stop, ZIndex = 20 };"
+    },
+    {
+      "findingId": "CS15",
+      "file": "csharp/panel/FormationGuardPanel.cs",
+      "originalLine": null,
+      "line": 193,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "    private static Button Button(string text, string name, Action action)"
+    },
+    {
+      "findingId": "CS15",
+      "file": "csharp/panel/FormationGuardPanel.cs",
+      "originalLine": 222,
+      "line": 222,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "            {"
+    },
+    {
+      "findingId": "CS15",
+      "file": "csharp/panel/FormationGuardPanel.cs",
+      "originalLine": 195,
+      "line": 195,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "        var button = new Button { Name = name, Text = text, CustomMinimumSize = new Vector2(0, 46) }; CraftingPaperStyle.ApplyButton(button); button.Pressed += action; return button;"
+    },
+    {
+      "findingId": "CS15",
+      "file": "csharp/panel/FormationGuardPanel.cs",
+      "originalLine": 197,
+      "line": 197,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "    private static Theme PaperTheme() => CraftingPaperStyle.MakeTheme();"
+    },
+    {
+      "findingId": "CS15",
+      "file": "csharp/panel/FormationGuardPanel.Paper.cs",
+      "originalLine": 50,
+      "line": 50,
+      "check": "当前行已读取；原记录无逐字摘句",
+      "currentText": "        tabs.AddThemeStyleboxOverride(\"tab_selected\", CraftingPaperStyle.ButtonStyle(CraftingPaperStyle.ButtonKind.Tab, CraftingPaperStyle.ButtonState.Selected));"
+    },
+    {
+      "findingId": "CS16",
+      "file": "csharp/panel/YuxuMarketPanel.cs",
+      "originalLine": null,
+      "line": 238,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "    private static Button Button(string text, int size) { var b = new Button { Text = text, MouseDefaultCursorShape = CursorShape.PointingHand }; YuxuLibraryArt.ButtonStyle(b, size); return b; }"
+    },
+    {
+      "findingId": "CS17",
+      "file": "csharp/panel/YuxuMarketPanel.cs",
+      "originalLine": null,
+      "line": 239,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "    private static SpinBox Spin(int min, int max) { var spin = new SpinBox { MinValue = min, MaxValue = max, Step = 1, Value = min, AllowGreater = false, AllowLesser = false }; StyleInput(spin.GetLineEdit(), 21); return spin; }"
+    },
+    {
+      "findingId": "CS18",
+      "file": "docs/美术规范/宗内坊市交易界面_20261107/我的摊位_拖入管理预览_20261107.html",
+      "originalLine": null,
+      "line": 101,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "    <div class=\"controls\"><button class=\"paper-button\" id=\"listingCancel\">取消</button><button class=\"claim-button\" id=\"listingConfirm\">确认上架</button></div>"
+    },
+    {
+      "findingId": "CS19",
+      "file": "docs/美术规范/宗内坊市交易界面_20261107/我的摊位_拖入管理预览_20261107.html",
+      "originalLine": null,
+      "line": 36,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": ".item-row:hover{background:#dce2d153}.item-row.selected{background:#ced9bd9c;box-shadow:inset 3px 0 #6f8266}"
+    },
+    {
+      "findingId": "CS20",
+      "file": "scripts/world/bai_chuan/YuxuSectDutyBoard.gd",
+      "originalLine": null,
+      "line": 650,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "\t_accept_button = _make_small_button(\"接取\")"
+    },
+    {
+      "findingId": "CS21",
+      "file": "csharp/MainScene.YuxuSectLife.cs",
+      "originalLine": null,
+      "line": 345,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "        var dialog = new ConfirmationDialog"
+    },
+    {
+      "findingId": "CS22",
+      "file": "csharp/panel/BanquetPanel.cs",
+      "originalLine": null,
+      "line": 812,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "    private static Button make_button(string text, int height)"
+    },
+    {
+      "findingId": "CS23",
+      "file": "csharp/panel/TrueDiscipleLecturePanel.cs",
+      "originalLine": null,
+      "line": 326,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "    private static Button make_button(string text, int height)"
+    },
+    {
+      "findingId": "CS24",
+      "file": "csharp/panel/WorldLocationInteriorPanel.cs",
+      "originalLine": null,
+      "line": 554,
+      "check": "本轮按当前调用／函数锚点重定位",
+      "currentText": "    private static Button button(string text, int width, int height)"
+    },
+    {
+      "findingId": "C01",
+      "file": "csharp/panel/CraftingPaperStyle.cs",
+      "originalLine": 13,
+      "line": 13,
+      "check": "摘句匹配",
+      "currentText": "    public enum ButtonKind { Regular, Primary, Tab, Icon, Input, Navigation }"
+    },
+    {
+      "findingId": "C01",
+      "file": "csharp/panel/CraftingPaperStyle.cs",
+      "originalLine": 23,
+      "line": 23,
+      "check": "摘句匹配",
+      "currentText": "    private static readonly Frame TabFrame = new(\"button_tab.png\", new(86, 157, 1772, 495), new(65, 100, 190, 115), new(5, 7, 13, 8), true);"
+    },
+    {
+      "findingId": "C01",
+      "file": "csharp/panel/CraftingPaperStyle.cs",
+      "originalLine": 296,
+      "line": 296,
+      "check": "旧摘句已变化；以本轮结论为准",
+      "currentText": "        theme.SetStylebox(\"hover\", \"PopupMenu\", ButtonStyle(ButtonKind.Regular, ButtonState.Selected));"
+    },
+    {
+      "findingId": "C02",
+      "file": "csharp/panel/QuietRoomStyle.cs",
+      "originalLine": 24,
+      "line": 24,
+      "check": "摘句匹配",
+      "currentText": "    public static StyleBoxFlat Edge(bool selected = false, int padding = 12) => new()"
+    },
+    {
+      "findingId": "C02",
+      "file": "csharp/panel/QuietRoomStyle.cs",
+      "originalLine": 67,
+      "line": 67,
+      "check": "摘句匹配",
+      "currentText": "            theme.SetStylebox(\"normal\", type, Edge());"
+    },
+    {
+      "findingId": "C02",
+      "file": "csharp/panel/QuietRoomStyle.cs",
+      "originalLine": 72,
+      "line": 72,
+      "check": "摘句匹配",
+      "currentText": "            var focus = new StyleBoxFlat { BgColor = Colors.Transparent, BorderColor = Teal, BorderWidthBottom = 2 }; theme.SetStylebox(\"focus\", type, focus);"
+    },
+    {
+      "findingId": "C03",
+      "file": "csharp/panel/PaperButton.cs",
+      "originalLine": 6,
+      "line": 6,
+      "check": "摘句匹配",
+      "currentText": "    public static PaperButton Create(string text, int fontSize = 27, bool light = true)"
+    },
+    {
+      "findingId": "C03",
+      "file": "csharp/panel/PaperButton.cs",
+      "originalLine": 25,
+      "line": 25,
+      "check": "摘句匹配",
+      "currentText": "        foreach (var state in new[] { \"normal\", \"hover\", \"pressed\", \"hover_pressed\", \"disabled\" })"
+    },
+    {
+      "findingId": "C03",
+      "file": "csharp/autoload/HoverInfoManager.cs",
+      "originalLine": 355,
+      "line": 355,
+      "check": "摘句匹配",
+      "currentText": "        var close = PaperButton.Create(\"关闭规则详解\", 20, false);"
+    },
+    {
+      "findingId": "C04",
+      "file": "csharp/panel/WorldHudStyle.cs",
+      "originalLine": 22,
+      "line": 22,
+      "check": "摘句匹配",
+      "currentText": "    public static void StylePaperButton(Button button, int fontSize = 16)"
+    },
+    {
+      "findingId": "C04",
+      "file": "csharp/panel/WorldHudStyle.cs",
+      "originalLine": 105,
+      "line": 105,
+      "check": "摘句匹配",
+      "currentText": "            button.AddThemeStyleboxOverride(state, new StyleBoxEmpty());"
+    },
+    {
+      "findingId": "C04",
+      "file": "csharp/panel/MainHUD.TaskTracker.cs",
+      "originalLine": 37,
+      "line": 37,
+      "check": "摘句匹配",
+      "currentText": "            _taskTrackerToggle = new Button { Name = \"TaskTrackerToggle\", ZIndex = 11, FocusMode = FocusModeEnum.None };"
+    },
+    {
+      "findingId": "C04",
+      "file": "csharp/panel/CellCharacterList.SideToggle.cs",
+      "originalLine": 20,
+      "line": 20,
+      "check": "摘句匹配",
+      "currentText": "        WorldHudStyle.StylePaperButton(_toggle_button);"
+    },
+    {
+      "findingId": "B01",
+      "file": "csharp/battle/BattleBoardSkin.cs",
+      "originalLine": 51,
+      "line": 51,
+      "check": "摘句匹配",
+      "currentText": "            var active = primary || button.ButtonPressed;"
+    },
+    {
+      "findingId": "B01",
+      "file": "docs/美术规范/角色与静室纸墨木石样稿_20261108/battle-preview.js",
+      "originalLine": 374,
+      "line": 374,
+      "check": "摘句匹配",
+      "currentText": "      const primary=control.classList.contains('primary')||control.matches('.rf-library-tabs .is-selected,.rb-tabs .is-selected');"
+    },
+    {
+      "findingId": "B01",
+      "file": "docs/美术规范/角色与静室纸墨木石样稿_20261108/battle-preview.js",
+      "originalLine": 377,
+      "line": 377,
+      "check": "摘句匹配",
+      "currentText": "      control.insertAdjacentHTML('afterbegin',nativeMaterial(primary?'primary_normal':'secondary_normal'));"
+    },
+    {
+      "findingId": "B02",
+      "file": "csharp/battle/BattleUiArt.cs",
+      "originalLine": 70,
+      "line": 70,
+      "check": "摘句匹配",
+      "currentText": "    internal static void Skin(Button button)"
+    },
+    {
+      "findingId": "B02",
+      "file": "csharp/battle/BattleUiArt.cs",
+      "originalLine": 74,
+      "line": 74,
+      "check": "摘句匹配",
+      "currentText": "            var style = Style(\"control_button\", new(140, 40));"
+    },
+    {
+      "findingId": "B02",
+      "file": "csharp/battle/BattleUiArt.cs",
+      "originalLine": 84,
+      "line": 84,
+      "check": "摘句匹配",
+      "currentText": "        button.FocusMode = Control.FocusModeEnum.None;"
+    },
+    {
+      "findingId": "B02",
+      "file": "csharp/battle/BattlePlanHud.cs",
+      "originalLine": 49,
+      "line": 49,
+      "check": "摘句匹配",
+      "currentText": "        var rest=Button(\"休整 +2 体力\",140);rest.Pressed+=()=>_manager.queue_rest_action();controls.AddChild(rest);"
+    },
+    {
+      "findingId": "B02",
+      "file": "csharp/battle/BattleFlowView.cs",
+      "originalLine": 138,
+      "line": 138,
+      "check": "摘句匹配",
+      "currentText": "        Button(_buttons,\"开始战斗\",begin).CustomMinimumSize=new(274,60);"
+    },
+    {
+      "findingId": "B03",
+      "file": "csharp/battle/BattleBoardSkin.cs",
+      "originalLine": 53,
+      "line": 53,
+      "check": "摘句匹配",
+      "currentText": "            backdrop.Modulate = button.Disabled ? new Color(1,1,1,.58f) : Colors.White;"
+    },
+    {
+      "findingId": "B03",
+      "file": "csharp/battle/BattleBoardSkin.cs",
+      "originalLine": 58,
+      "line": 58,
+      "check": "摘句匹配",
+      "currentText": "        button.MouseEntered += Refresh; button.MouseExited += Refresh;"
+    },
+    {
+      "findingId": "B03",
+      "file": "csharp/battle/BattleBoardHud.cs",
+      "originalLine": 532,
+      "line": 533,
+      "check": "摘句匹配，行号已移动",
+      "currentText": "        var button = new Button { Text = text, Position = position, CustomMinimumSize = size, Size = size, FocusMode = FocusModeEnum.None };"
+    },
+    {
+      "findingId": "B04",
+      "file": "csharp/battle/BattleFlowView.Supplies.cs",
+      "originalLine": 30,
+      "line": 30,
+      "check": "摘句匹配",
+      "currentText": "            var choose = Button(controls, \"选择此位\", () => Supplies(owner, back, index)); choose.CustomMinimumSize = new(122, 40);"
+    },
+    {
+      "findingId": "B04",
+      "file": "csharp/battle/BattleFlowView.Supplies.cs",
+      "originalLine": 31,
+      "line": 31,
+      "check": "摘句匹配",
+      "currentText": "            var less = Button(controls, \"－\", () => { BattleSupplyRules.Set(owner, index, slot.item_path, slot.count - 1); Supplies(owner, back, index); }); less.CustomMinimumSize = new(58, 40); less.Disabled = pill is null;"
+    },
+    {
+      "findingId": "B04",
+      "file": "csharp/battle/BattleFlowView.Supplies.cs",
+      "originalLine": 32,
+      "line": 32,
+      "check": "摘句匹配",
+      "currentText": "            var more = Button(controls, \"＋\", () => { BattleSupplyRules.Set(owner, index, slot.item_path, slot.count + 1); Supplies(owner, back, index); }); more.CustomMinimumSize = new(58, 40);"
+    },
+    {
+      "findingId": "H01",
+      "file": "csharp/panel/MainHUD.PlayerProfile.cs",
+      "originalLine": 126,
+      "line": 126,
+      "check": "摘句匹配",
+      "currentText": "        var close = new Button { Text = \"收起\", CustomMinimumSize = new Vector2(102, 42), FocusMode = Control.FocusModeEnum.None };"
+    },
+    {
+      "findingId": "H01",
+      "file": "csharp/panel/MainHUD.PlayerProfile.cs",
+      "originalLine": 127,
+      "line": 127,
+      "check": "摘句匹配",
+      "currentText": "        close.AddThemeFontSizeOverride(\"font_size\", 17);"
+    },
+    {
+      "findingId": "H01",
+      "file": "csharp/panel/MainHUD.PlayerProfile.cs",
+      "originalLine": 129,
+      "line": 129,
+      "check": "摘句匹配",
+      "currentText": "        close.AddThemeStyleboxOverride(\"normal\", make_profile_button_style(false));"
+    },
+    {
+      "findingId": "R01",
+      "file": "csharp/panel/RealmPanel.cs",
+      "originalLine": 269,
+      "line": 269,
+      "check": "摘句匹配",
+      "currentText": "        var button = new Button"
+    },
+    {
+      "findingId": "R01",
+      "file": "csharp/panel/RealmPanel.cs",
+      "originalLine": 277,
+      "line": 277,
+      "check": "摘句匹配",
+      "currentText": "        button.SelfModulate = new Color(1f, 1f, 1f, current ? 1f : .70f);"
+    },
+    {
+      "findingId": "R01",
+      "file": "csharp/panel/RealmPanel.cs",
+      "originalLine": 603,
+      "line": 603,
+      "check": "摘句匹配",
+      "currentText": "    private static void ButtonStyle(Button button, bool current)"
+    },
+    {
+      "findingId": "X01",
+      "file": "csharp/panel/EastWoodsDungeonPanel.Actions.cs",
+      "originalLine": 173,
+      "line": 173,
+      "check": "摘句匹配",
+      "currentText": "        var cancel = make_button(\"返回\", 100, 42); cancel.Name = \"Cancel\"; cancel.Pressed += () => close_action_details(); buttons.AddChild(cancel);"
+    },
+    {
+      "findingId": "X01",
+      "file": "csharp/panel/EastWoodsDungeonPanel.Actions.cs",
+      "originalLine": 174,
+      "line": 174,
+      "check": "摘句匹配",
+      "currentText": "        _actionConfirm = make_button(\"确认行动\", 144, 42); _actionConfirm.Name = \"Confirm\";"
+    },
+    {
+      "findingId": "X01",
+      "file": "csharp/panel/EastWoodsDungeonPanel.cs",
+      "originalLine": 955,
+      "line": 955,
+      "check": "摘句匹配",
+      "currentText": "    private static Button make_button(string text, int width, int height)"
+    },
+    {
+      "findingId": "D01",
+      "file": "csharp/scene/BattlePoseLibraryShowcase.cs",
+      "originalLine": 243,
+      "line": 243,
+      "check": "摘句匹配",
+      "currentText": "            var button = CreateButton($\"{label}  [{hotkey}]\", font, new Vector2(190f, 54f));"
+    },
+    {
+      "findingId": "D01",
+      "file": "csharp/scene/BattlePoseLibraryShowcase.cs",
+      "originalLine": 272,
+      "line": 272,
+      "check": "摘句匹配",
+      "currentText": "        var back = CreateButton(\"返回首页  [Esc]\", font, new Vector2(185f, 48f));"
+    },
+    {
+      "findingId": "D01",
+      "file": "csharp/scene/BattlePoseLibraryShowcase.cs",
+      "originalLine": 341,
+      "line": 341,
+      "check": "摘句匹配",
+      "currentText": "    private static Button CreateButton(string text, FontFile? font, Vector2 minimumSize)"
+    },
+    {
+      "findingId": "W01",
+      "file": "docs/美术规范/角色与静室纸墨木石样稿_20261108/materials.js",
+      "originalLine": 14,
+      "line": 14,
+      "check": "摘句匹配",
+      "currentText": "    if (element.matches('.icon-button,.equipment-slot')) return 'buttonIcon';"
+    },
+    {
+      "findingId": "W01",
+      "file": "docs/美术规范/角色与静室纸墨木石样稿_20261108/materials.js",
+      "originalLine": 17,
+      "line": 17,
+      "check": "摘句匹配",
+      "currentText": "    if (element.matches('.small-button,.item-row,button[data-mode],button[data-attribute-filter],button[data-battle-mode],.preview-tools nav>button,.filter-tabs>button,.chapter-branches>button')) return 'buttonTab';"
+    },
+    {
+      "findingId": "W01",
+      "file": "docs/美术规范/角色与静室纸墨木石样稿_20261108/preview.js",
+      "originalLine": 74,
+      "line": 74,
+      "check": "摘句匹配",
+      "currentText": "    return `<div class=\"overview-layout\">${M.paper(`<div class=\"portrait-top\"><span>形貌</span>${btn('查看立绘', 'data-action=\"portrait\"', 'small-button')}</div>${portrait()}<div class=\"portrait-caption identity-caption\"><strong>${E(D.character.name)}</strong><span class=\"identity-affiliation\">${E(D.character.faction)} · ${E(D.character.identity)}</span><span class=\"identity-cultivation\">${E(D.character.realm)} · ${E(D.character.root)}</span><span class=\"identity-demographics\">男 · ${E(D.character.age)} · 人族</span></div>`, 'portrait-paper')}${M.paper(reputationDetails(), 'profile-facts-paper')}${M.paper(`<div class=\"section-head\">${title('心境')}${M.iconButton('help', '心境说明', `data-action=\"mood\"`)}</div><div class=\"mood-reading\">${moodDial()}<div class=\"mood-caption\"><h3>心绪平稳</h3></div></div>`, 'mood-paper')}${M.paper(`${title('当前状态')}${worldStatuses()}`, 'overview-status')}</div>`;"
+    },
+    {
+      "findingId": "W01",
+      "file": "docs/美术规范/角色与静室纸墨木石样稿_20261108/preview.js",
+      "originalLine": 92,
+      "line": 92,
+      "check": "摘句匹配",
+      "currentText": "    return `<div class=\"manual-layout\">${M.paper(`<div class=\"manual-loadout\">${['主修', '辅修'].map((label, index) => btn(`${bookImage()}<span><small>${label}</small><strong>${D.books[index].name}</strong></span>${M.sprite('right')}`, `data-action=\"manual-picker\"`, 'manual-equipped')).join('')}</div>`, 'manual-loadout-paper')}${M.paper(`<div class=\"section-head\">${search('检索秘籍名、关键词', 'books')}${drop('bookKeyword', '秘籍关键词', ['全部关键词', '气血', '周天', '养形'], '全部关键词')}${btn('重置', 'data-reset-filter=\"books\"', 'small-button')}</div>`, 'manual-filter-paper')}${M.paper(`${title('秘籍库')}${M.scroll(D.books.map((entry, index) => btn(`${bookImage()}<span><strong>${entry.name}</strong><small>${index === 0 ? '主修' : index === 1 ? '辅修' : '未装配'}</small></span>`, `data-select-book=\"${index}\" data-filter-group=\"books\" data-query=\"${entry.name}\" aria-pressed=\"${index === state.book}\"`, 'item-row ' + (index === state.book ? 'is-selected' : ''))).join(''))}`, 'manual-library-paper')}${M.paper(`<div class=\"manual-heading\">${bookImage('large-book')}<div><h2>${book.name}</h2><span class=\"muted\">卷章目录 · 修持与化法</span></div>${btn('设为主修', 'data-action=\"equip-manual\"', 'small-button')}${btn('设为辅修', 'data-action=\"equip-manual\"', 'small-button')}</div>${M.divider('心法')}${btn(`心法 · ${book.name}`, `data-action=\"heart\" ${tip(book.name, '主修与辅修心法按实际装配生效。')}`, 'heart-button')}${M.scroll(book.chapters.map((chapter, index) => `<div class=\"chapter-row\"><span class=\"chapter-order\">${['一', '二', '三', '四', '五', '六'][index] || index + 1}</span><div><strong>${chapter}</strong><span>第${['一', '二', '三', '四', '五', '六'][index] || index + 1}卷</span></div><div class=\"chapter-branches\">${btn('修持', `data-action=\"chapter\"`, 'small-button ' + (index === 0 ? 'is-selected' : ''))}${btn('化法', 'data-action=\"chapter\"', 'small-button')}${btn('习得', 'data-action=\"chapter\"', 'small-button')}</div></div>`).join(''), 'chapter-scroll')}`, 'manual-detail-paper')}</div>`;"
+    },
+    {
+      "findingId": "W01",
+      "file": "docs/美术规范/角色与静室纸墨木石样稿_20261108/preview.js",
+      "originalLine": 96,
+      "line": 96,
+      "check": "摘句匹配",
+      "currentText": "    return `<div class=\"equipment-layout\">${M.paper(`${title('穿戴')}${portrait('equipment-portrait')}<div class=\"equipment-slots\">${slots.map(([name, sub, icon], index) => btn(`${navIcon(icon)}<strong>${name}</strong><span>${sub}</span><small>未选择</small>`, `data-equip-slot=\"${index}\" aria-label=\"选择${name}\"`, 'equipment-slot slot-' + index)).join('')}</div>`, 'equipment-figure-paper')}${M.paper(`${title('穿戴汇总')}${rows([['生命上限', '—'], ['体魄', '—'], ['神魂', '—'], ['物理防御', '—'], ['护心', '—']])}${M.divider('器物')}${text('当前没有配置器物。', 'empty-copy')}${btn('查看器物', 'data-action=\"artifact\"', 'wide-button')}`, 'equipment-totals-paper')}${M.paper(`${title('器蕴与关联')}${text('选择已有器物，查看其关联。', 'muted')}<div class=\"empty-illustration\">${navIcon(3)}<span>暂无器物记录</span></div>`, 'equipment-bonds-paper')}</div>`;"
+    },
+    {
+      "findingId": "W02",
+      "file": "docs/美术规范/角色与静室纸墨木石样稿_20261108/preview.js",
+      "originalLine": 108,
+      "line": 108,
+      "check": "摘句匹配",
+      "currentText": "    return `<div class=\"practice-layout\"><div class=\"practice-scenery\">${M.paper(`${title('吐纳修行')}`, 'scenery-heading')}<div class=\"scenery-space\"></div>${M.paper(`<div class=\"section-head\">${title('当前灵力')}<strong class=\"power-number spirit-value\">— <small>缕</small></strong></div>${M.progress(35, '灵力积累', 'spirit')}${rows([['修炼速率', '— 缕／时']])}`, 'practice-summary')}</div>${M.paper(`${title('本次修炼')}<div class=\"mode-grid\">${['指定灵力', '指定天数', '指定日期', '下层所需'].map(name => btn(name, `data-mode=\"${name}\" aria-pressed=\"${state.mode === name}\"`, state.mode === name ? 'is-selected' : '')).join('')}</div><div class=\"mode-fields\">${modeFields()}</div>${M.divider('修炼安排')}${rows([['当前体力', '40／100'], ['预期结束', '—']])}<div class=\"practice-actions-bottom\">${btn('查看归元九息', 'data-action=\"nine-breaths\"', 'wide-button')}${btn('开始修炼', 'data-action=\"practice-confirm\"', 'primary wide-button')}</div>`, 'practice-action-paper')}</div>`;"
+    },
+    {
+      "findingId": "W02",
+      "file": "docs/美术规范/角色与静室纸墨木石样稿_20261108/materials.js",
+      "originalLine": 17,
+      "line": 17,
+      "check": "摘句匹配",
+      "currentText": "    if (element.matches('.small-button,.item-row,button[data-mode],button[data-attribute-filter],button[data-battle-mode],.preview-tools nav>button,.filter-tabs>button,.chapter-branches>button')) return 'buttonTab';"
+    },
+    {
+      "findingId": "W02",
+      "file": "docs/plans/界面与美术/全局界面统一风格规范_20261108.md",
+      "originalLine": 13,
+      "line": 13,
+      "check": "摘句匹配",
+      "currentText": "按钮最新修正（2026-11-08）：用户明确否定文字后方单独出现的方形灰绿深底；选中改为整张原纸面轻染色与边缘强调，文字保持深墨。静室四种修炼模式和休息三种方式使用普通齐边纸面，不沿旧折角短签；原导航装订动效保留。按下反馈作用于整面纸张，略深、下沉1设计单位，释放复位，命中区不随之移动。本线显式应用于静室、休息、炼器样稿及重新授权的人物七页；新战斗配招仍等另一对话验收。"
+    },
+    {
+      "findingId": "W03",
+      "file": "docs/美术规范/休息纸墨木石样稿_20261108/index.html",
+      "originalLine": 40,
+      "line": 40,
+      "check": "摘句匹配",
+      "currentText": "            <button id=\"mode-hours\" class=\"ui-button\" data-skin=\"button\" data-button-kind=\"buttonTab\" aria-pressed=\"true\"><span class=\"button-content\">按时长</span></button>"
+    },
+    {
+      "findingId": "W03",
+      "file": "docs/美术规范/休息纸墨木石样稿_20261108/index.html",
+      "originalLine": 41,
+      "line": 41,
+      "check": "摘句匹配",
+      "currentText": "            <button id=\"mode-date\" class=\"ui-button\" data-skin=\"button\" data-button-kind=\"buttonTab\" aria-pressed=\"false\"><span class=\"button-content\">指定日期</span></button>"
+    },
+    {
+      "findingId": "W03",
+      "file": "docs/美术规范/休息纸墨木石样稿_20261108/index.html",
+      "originalLine": 42,
+      "line": 42,
+      "check": "摘句匹配",
+      "currentText": "            <button id=\"mode-full\" class=\"ui-button\" data-skin=\"button\" data-button-kind=\"buttonTab\" aria-label=\"恢复精力至上限\" aria-pressed=\"false\"><span class=\"button-content\">精力回满</span></button>"
+    },
+    {
+      "findingId": "W03",
+      "file": "docs/美术规范/角色与静室纸墨木石样稿_20261108/skin-data.js",
+      "originalLine": 1,
+      "line": 1,
+      "check": "摘句匹配",
+      "currentText": "window.SKIN_DATA = {\"size\":[1122,1402],\"file\":\"assets/控件补充图集_v1.png\",\"regions\":{\"checkOff\":[68,93,155,158],\"checkOn\":[343,93,155,159],\"radioOff\":[613,89,160,170],\"radioOn\":[890,87,165,172],\"left\":[73,393,139,113],\"right\":[361,393,134,113],\"up\":[633,403,122,89],\"down\":[915,407,121,91],\"search\":[66,646,155,152],\"close\":[350,652,140,138],\"help\":[609,640,166,169],\"reset\":[898,650,156,151],\"scrollTrack\":[123,885,44,211],\"scrollThumb\":[392,929,57,131],\"progressTrack\":[574,965,245,58],\"progressFill\":[857,967,238,54],\"node\":[62,1188,165,166],\"nodeSelected\":[338,1187,167,168],\"divider\":[580,1246,229,48],\"grip\":[900,1232,149,77]},\"frameFile\":\"../../../textures/ui/yuxu_library_20261107/library_frame.png\",\"frameSize\":[1672,941],\"frames\":{\"panel\":{\"bounds\":[1105,160,537,744],\"slices\":[38,38,38,38],\"rendered\":[25,25,25,25]},\"button\":{\"family\":\"regular\",\"file\":\"assets/按钮分型_v4/按钮_常规_v4.png\",\"size\":[2065,762],\"bounds\":[121,200,1823,361],\"slices\":[85,55,85,55],\"rendered\":[10,5,10,6],\"alphaFloor\":8},\"title\":{\"bounds\":[525,3,620,97],\"slices\":[38,30,38,28],\"rendered\":[30,22,30,20]},\"paper\":{\"bounds\":[1141,200,450,520],\"slices\":[12,12,12,12],\"rendered\":[8,8,8,8]},\"buttonPrimary\":{\"family\":\"primary\",\"file\":\"assets/按钮分型_v4/按钮_主操作_v4.png\",\"size\":[2172,724],\"bounds\":[55,190,2062,343],\"slices\":[90,65,90,78],\"rendered\":[16,6,16,10],\"alphaFloor\":8},\"buttonTab\":{\"family\":\"tab\",\"file\":\"assets/按钮分型_v4/按钮_短页签_v4.png\",\"size\":[1942,809],\"bounds\":[86,157,1772,495],\"slices\":[65,100,190,115],\"rendered\":[5,7,13,8],\"alphaFloor\":8},\"buttonNav\":{\"family\":\"navigation\",\"file\":\"assets/按钮分型_v4/按钮_侧栏分页_v4.png\",\"size\":[2172,724],\"bounds\":[253,110,1853,502],\"slices\":[85,85,90,80],\"rendered\":[8,8,10,8],\"alphaFloor\":8,\"part\":\"paper\"},\"buttonIcon\":{\"family\":\"icon\",\"file\":\"assets/按钮分型_v4/按钮_小图标_v4.png\",\"size\":[1254,1254],\"bounds\":[272,279,712,699],\"slices\":[135,135,135,135],\"rendered\":[8,8,8,8],\"alphaFloor\":8},\"input\":{\"family\":\"input\",\"file\":\"assets/按钮分型_v4/控件_输入槽_v4.png\",\"size\":[1774,887],\"bounds\":[82,316,1610,255],\"slices\":[45,45,45,45],\"rendered\":[6,6,6,6],\"alphaFloor\":8},\"buttonNavBinding\":{\"family\":\"navigation\",\"file\":\"assets/按钮分型_v4/按钮_侧栏分页_v4.png\",\"size\":[2172,724],\"bounds\":[68,110,184,502],\"slices\":[30,85,30,80],\"rendered\":[3,8,3,8],\"alphaFloor\":8,\"part\":\"binding\"}},\"method\":\"面板只读引用既有木纸框；六类按钮／输入各用独立RGBA原图，九区伸缩保留角部，显示时过滤低Alpha背景噪点；不使用轮廓clip-path，不改写生成位图\"};"
+    },
+    {
+      "findingId": "W04",
+      "file": "docs/美术规范/见闻任务纸墨木石样稿_20261108/journal.js",
+      "originalLine": 48,
+      "line": 48,
+      "check": "摘句匹配",
+      "currentText": "    stage.innerHTML=`${button('<span>返回</span><span class=\"return-triangle\" aria-hidden=\"true\"></span>','data-action=\"close\" aria-label=\"返回\"','page-return')}<div class=\"desk\">${wood()}<div class=\"desk-wash\"></div><div class=\"folder-backing\"><span class=\"binding-art\">${crop(window.SKIN_DATA.frames.buttonNavBinding.file,[2172,724],[122,190,82,315],'',true)}</span></div>${paper('folder-back-paper')}<header class=\"folio-top\"><h1>见闻</h1><span class=\"heading-rule\"></span></header><nav class=\"folder-tabs\" role=\"tablist\" aria-label=\"见闻分类\">${['lore','tasks','records'].map(key=>`<button class=\"folder-tab\" role=\"tab\" id=\"tab-${key}\" aria-selected=\"${state.section===key}\" aria-controls=\"journal-content\" tabindex=\"${state.section===key?'0':'-1'}\" data-section=\"${key}\" data-skin=\"button\" data-button-kind=\"buttonTab\"><span class=\"tab-caption\">${titles[key]}</span></button>`).join('')}</nav><span class=\"fastener\" aria-hidden=\"true\">${M.sprite('grip')}</span><section class=\"folder-front\" id=\"journal-content\" role=\"tabpanel\" aria-labelledby=\"tab-${state.section}\" data-skin=\"paper\"><aside class=\"index-column\"><div class=\"index-heading\"><h2>${captions[state.section]}</h2><span class=\"index-count\">${list.length} 条</span></div><label class=\"search-field\" data-skin=\"input\">${M.sprite('search')}<input id=\"journal-search\" type=\"search\" aria-label=\"检索当前清册\" placeholder=\"检索条目\" value=\"${esc(state.query)}\" autocomplete=\"off\" spellcheck=\"false\"></label>${state.section==='tasks'?`<div class=\"filter-row\">${button('进行中',`data-filter=\"ongoing\" aria-pressed=\"${!state.completed}\"`,!state.completed?'filter-button is-selected':'filter-button','buttonTab')}${button('已完成',`data-filter=\"completed\" aria-pressed=\"${state.completed}\"`,state.completed?'filter-button is-selected':'filter-button','buttonTab')}</div>`:''}${M.scroll(`<div class=\"entry-list\">${list.length?list.map(row).join(''):'<div class=\"list-empty\">暂无条目</div>'}</div>`,'list-scroll')}<div class=\"index-footer\">${state.section==='lore'?button(`${M.sprite('divider')}连续阅读`,`data-action=\"all\" aria-pressed=\"${all}\"`,all?'is-selected':'','buttonTab'):`<span class=\"index-caption\"></span>`}</div></aside><article class=\"reading-column\"><header class=\"reading-heading\"><h2 class=\"reading-title\">${esc(title)}</h2>${tag?`<span class=\"reading-tag\" data-skin=\"paper\">${esc(tag)}</span>`:''}</header>${list.length?`<div class=\"reading-meta\"><span><span class=\"meta-name\">来源</span>${esc(source)}</span><span><span class=\"meta-name\">地点</span>${esc(place)}</span></div>`:''}<div class=\"reading-divider\">${M.sprite('divider','',true)}</div>${content(list,e)}<footer class=\"reading-footer\">${state.section==='tasks'&&e?`${state.tracked===e.id?`<span class=\"track-state\">${M.sprite('checkOn')}已追踪</span>`:'<span class=\"reading-position\">未追踪</span>'}${e.state!=='已完成'?button(state.tracked===e.id?'取消追踪':'追踪任务',`data-action=\"track\" aria-pressed=\"${state.tracked===e.id}\"`,'track-button',state.tracked===e.id?'button':'buttonPrimary'):''}`:`<span class=\"reading-position\">${!list.length?'—':all?'共 '+list.length+' 条':String(list.findIndex(item=>item.id===e.id)+1).padStart(2,'0')+' / '+String(list.length).padStart(2,'0')}</span><span class=\"light-note\"></span>`}</footer></article></section>${state.closed?`<div class=\"closed-card\" data-skin=\"paper\"><h2>见闻已收起</h2>${button('继续查看','data-action=\"open\"','','buttonPrimary')}</div>`:''}</div>`;"
+    },
+    {
+      "findingId": "W05",
+      "file": "docs/美术规范/百工资料纸墨木石样稿_20261108/index.html",
+      "originalLine": 9,
+      "line": 9,
+      "check": "摘句匹配",
+      "currentText": "    (()=>{const base=new URL('../角色与静室纸墨木石样稿_20261108/',document.baseURI);const d=window.SKIN_DATA;d.file=new URL(d.file,base).href;d.frameFile=new URL(d.frameFile,base).href;for(const s of Object.values(d.frames))if(s.file)s.file=new URL(s.file,base).href;d.frames.bookEntry={...d.frames.paper,rendered:[2,2,2,2]};d.frames.bookTab={...d.frames.buttonTab,rendered:[4,6,14,7]};})();"
+    },
+    {
+      "findingId": "W05",
+      "file": "docs/美术规范/百工资料纸墨木石样稿_20261108/ledger.js",
+      "originalLine": 43,
+      "line": 43,
+      "check": "摘句匹配",
+      "currentText": "      const list=personalRecipes();footer=`<div class=\"book-pagination\">${button('前叶','data-page-delta=\"-1\" aria-label=\"上一页丹方\" data-button-kind=\"bookTab\" '+(state.recipePage===0?'disabled':''),'page-corner')}<span>${list.length?`第 ${state.recipePage+1} 叶 · 共 ${pages()} 叶`:'册中尚无此方'}</span>${button('后叶','data-page-delta=\"1\" aria-label=\"下一页丹方\" data-button-kind=\"bookTab\" '+(state.recipePage>=pages()-1?'disabled':''),'page-corner')}</div><p class=\"book-total\">${state.query?`寻得 ${list.length} 方`:`收录 ${list.length} 方`}</p>`;"
+    },
+    {
+      "findingId": "W05",
+      "file": "docs/美术规范/百工资料纸墨木石样稿_20261108/ledger.js",
+      "originalLine": 46,
+      "line": 46,
+      "check": "摘句匹配",
+      "currentText": "    stage.querySelector('.bg-rail').innerHTML=side.map(([label,attrs,selected])=>button(label,`${attrs} data-button-kind=\"bookTab\" aria-pressed=\"${selected}\"`,`system-tag ${selected?'is-selected':''}`)).join('');"
+    },
+    {
+      "findingId": "W05",
+      "file": "docs/美术规范/百工资料纸墨木石样稿_20261108/ledger.js",
+      "originalLine": 73,
+      "line": 73,
+      "check": "摘句匹配",
+      "currentText": "    stage.querySelector('#finder-root').innerHTML=`<div class=\"finder-shade\" data-dismiss-finder=\"true\"></div><section class=\"book-finder\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"finder-title\" data-skin=\"paper\"><form id=\"finding-form\"><header><h2 id=\"finder-title\">寻方</h2>${button('合笺','data-action=\"close-finder\" type=\"button\" data-button-kind=\"bookEntry\"','ink-link')}</header><p class=\"finder-help\">题下方名、丹名或一味药材。</p><label class=\"finder-writing\"><span>线索</span><span class=\"finder-inkline\" data-skin=\"bookEntry\"><input name=\"clue\" type=\"text\" autocomplete=\"off\" spellcheck=\"false\" aria-label=\"寻方线索\" value=\"${E(state.query)}\" placeholder=\"在此题字\"></span></label><p id=\"finding-count\" class=\"finder-count\"></p><footer>${button('拭去','data-action=\"erase-clue\" type=\"button\" data-button-kind=\"bookTab\"')}${button('查阅','type=\"submit\" data-button-kind=\"buttonTab\"')}</footer></form></section>`;"
+    },
+    {
+      "findingId": "W06",
+      "file": "docs/美术规范/炼丹纸墨木石样稿_20261108/preview.js",
+      "originalLine": 21,
+      "line": 21,
+      "check": "摘句匹配",
+      "currentText": "  function group(role){const title=role==='zuo'?'佐药':'使药';return `<section class=\"role-group ${role}-group ${available(role+'3')?'expanded':''} ${[1,2,3].every(index=>state.slots[role+index])?'is-full':''}\" data-skin=\"alchemySheet\" aria-label=\"${title}\"><header class=\"card-heading\"><h2>${title}</h2></header>${[1,2,3].map(index=>{const slot=role+index,value=state.slots[slot],m=value?material(value.name):null,locked=!available(slot);if(!state.stats.bound)return `<div class=\"group-row vacant\">${button('—',`disabled aria-label=\"${slotInfo[slot][0]}未绑定资料\"`,'buttonTab','slot-lock')}</div>`;if(locked)return `<div class=\"group-row locked\">${button(`第${index===2?'二':'三'}味 · 造诣${slotInfo[slot][1]}`,`disabled aria-label=\"${title}第${index}味需要造诣${slotInfo[slot][1]}\"`,'buttonTab','slot-lock')}</div>`;if(!m)return `<div class=\"group-row vacant\">${button('＋ 添药',`data-pick=\"${slot}\" aria-label=\"选择${slotInfo[slot][0]}\"`,'buttonTab','add-herb')}</div>`;return `<div class=\"group-row filled\"><button class=\"small-pick\" data-skin=\"paper\" data-pick=\"${slot}\" data-herb=\"${esc(m.name)}\" aria-label=\"选择${slotInfo[slot][0]}，当前${esc(m.name)}\">${image(m)}<span><span class=\"herb-name\">${esc(m.name)}</span><small class=\"herb-element\">${m.element} · ${polarity(m)}</small></span></button><div class=\"group-controls\">${dose(slot,true)}${button('×',`data-clear=\"${slot}\" aria-label=\"移除${slotInfo[slot][0]}\"`,'buttonIcon','icon-button')}</div></div>`;}).join('')}</section>`;}"
+    },
+    {
+      "findingId": "W06",
+      "file": "docs/美术规范/炼丹纸墨木石样稿_20261108/preview.js",
+      "originalLine": 24,
+      "line": 24,
+      "check": "摘句匹配",
+      "currentText": "    $('interface').innerHTML=`<header class=\"page-heading\"><h1 data-skin=\"title\">炼丹</h1><span class=\"place\" data-skin=\"paper\">天工峰 · 丹房</span></header><div class=\"header-stats\" data-skin=\"paper\"><span>灵识<strong>${known?r.availableSpirit+'/'+state.stats.totalSpirit:'—'}</strong></span><span>精力<strong>${known?number(state.stats.energy):'—'}</strong></span><span>丹道造诣<strong>${known?number(state.stats.attainment):'—'}</strong></span></div>${button('说明','data-action=\"help\"','button','help-button')}${herbCard('jun','jun-card')}${herbCard('chen','chen-card')}${group('zuo')}${group('shi')}<section class=\"cost-sheet\" data-skin=\"alchemySheet\" aria-label=\"本炉用度\"><h2>本炉用度</h2>${divider()}<dl class=\"cost-totals\"><div><dt>药材种类</dt><dd>${known?r.count:'—'} 味</dd></div><div><dt>投料总量</dt><dd>${known?r.total:'—'} 份</dd></div></dl><dl><div class=\"cost-metric ${known&&r.spirit>r.availableSpirit?'exceeded':''}\" tabindex=\"0\" data-cost-tooltip><dt>灵识占用</dt><dd>${known&&r.count?number(r.spirit):'—'}</dd></div><div class=\"cost-metric ${known&&r.energy>state.stats.energy?'exceeded':''}\"><dt>精力消耗</dt><dd>${known&&state.slots.jun?number(r.energy):'—'}</dd></div><div class=\"cost-metric\"><dt>炼制耗时</dt><dd>${known&&r.count?number(r.hours):'—'}<small>小时</small></dd></div></dl><p class=\"brew-condition\" role=\"status\">${esc(r.reason)}</p>${button('炼丹',`data-action=\"brew\" ${!r.valid?'disabled':''}`,'buttonPrimary','primary')}</section><section class=\"mode-strip\" data-skin=\"paper\"><h2>炼成展示</h2><div>${button('完整',`data-mode=\"full\" aria-pressed=\"${state.presentation==='full'}\"`,'buttonTab',state.presentation==='full'?'is-selected':'')}${button('简洁',`data-mode=\"simple\" aria-pressed=\"${state.presentation==='simple'}\"`,'buttonTab',state.presentation==='simple'?'is-selected':'')}</div></section><button class=\"formula-entry\" data-action=\"book\" data-skin=\"button\" data-button-kind=\"buttonTab\"><img src=\"../../../textures/ui/alchemy_20261019/formula_notebook_v1.png\" alt=\"\"><span><strong>丹方册</strong><small>样方 · 记方</small></span></button>`;"
+    },
+    {
+      "findingId": "W06",
+      "file": "docs/美术规范/炼丹纸墨木石样稿_20261108/preview.js",
+      "originalLine": 36,
+      "line": 36,
+      "check": "摘句匹配",
+      "currentText": "  function chips(key,values,labels){return `<div class=\"filter-chips\">${values.map((v,i)=>button(labels?.[i]||v,`data-filter=\"${key}\" data-value=\"${v}\" aria-pressed=\"${state.picker[key]===v}\"`,'buttonTab',state.picker[key]===v?'is-selected':'')).join('')}</div>`;}"
+    },
+    {
+      "findingId": "W06",
+      "file": "docs/美术规范/炼丹纸墨木石样稿_20261108/preview.js",
+      "originalLine": 40,
+      "line": 40,
+      "check": "摘句匹配",
+      "currentText": "  function bookBody(){const b=state.book,list=b.tab==='builtins'?F.recipes:state.myRecipes,r=currentRecipe();return `<aside class=\"recipe-sidebar\"><nav class=\"recipe-tabs\">${button('内置样方',`data-book-tab=\"builtins\" aria-pressed=\"${b.tab==='builtins'}\"`,'buttonTab',b.tab==='builtins'?'is-selected':'')}${button('我的丹方',`data-book-tab=\"mine\" aria-pressed=\"${b.tab==='mine'}\"`,'buttonTab',b.tab==='mine'?'is-selected':'')}</nav>${M.scroll(`<div class=\"recipe-list\">${list.length?list.map(r=>button(`${esc(r.name)}<small>${Object.keys(r.slots).length} 味配伍</small>`,`data-recipe=\"${r.id}\" aria-pressed=\"${b.selected===r.id}\"`,'buttonTab','recipe-row '+(b.selected===r.id?'is-selected':''))).join(''):'<p class=\"recipe-empty\">尚未记录丹方</p>'}</div>`,'recipe-scroll')}<label class=\"name-well\" data-skin=\"input\"><input id=\"recipe-name\" placeholder=\"为当前配伍题名\" aria-label=\"丹方名称\" maxlength=\"24\" value=\"${esc(b.name||'')}\"></label>${button('记下当前配伍','data-action=\"save-recipe\"','button')}</aside><article class=\"recipe-detail\">${r?`<h3>${esc(r.name)}</h3><p class=\"recipe-description\">${esc(r.description||'')}</p>${M.scroll(`<div class=\"recipe-ingredients\">${ingredientRows(r)}</div>`,'recipe-detail-scroll')}`:'<div class=\"recipe-empty\">为当前配伍题名后，可记入我的丹方。</div>'}</article>`;}"
+    },
+    {
+      "findingId": "W07",
+      "file": "docs/美术规范/符箓三工艺界面样稿_20261108/preview.js",
+      "originalLine": 43,
+      "line": 43,
+      "check": "摘句匹配",
+      "currentText": "function header(){return `<header class='game-header' data-skin='craftHeading'><h1>符 工</h1><nav class='craft-tabs' role='tablist' aria-label='工艺选择'>${Object.entries(names).map(([id,name])=>button(name,`data-craft='${id}' role='tab' aria-selected='${state.craft===id}'`,state.craft===id?'is-selected':'','button')).join('')}</nav><span class='proficiency'>符道造诣　—</span>${button('配伍册',`data-action='plans'`)}${button('说明',`data-action='help'`)}${button(`返回<span class='return-triangle' aria-hidden='true'></span>`,`data-action='back' aria-label='返回'`,'back')}</header>`;}"
+    },
+    {
+      "findingId": "W07",
+      "file": "docs/美术规范/符箓三工艺界面样稿_20261108/preview.js",
+      "originalLine": 51,
+      "line": 51,
+      "check": "摘句匹配",
+      "currentText": "function rawControls(){const mode=state.craft,chosen=state[mode].method,a=analysis();return paperPanel(`<h2>${mode==='paper'?'制纸技艺':'研墨技艺'}</h2><div class='technique-list' aria-label='选择本次技艺'>${methods[mode].map(m=>button(`<span class='technique-title'><strong>${m.name}</strong><span class='technique-mark' aria-hidden='true'>${m.id===chosen?'✓':''}</span></span><span class='technique-brief'>${m.brief}</span><small class='technique-trade'>${m.trade}</small>`,`data-method='${m.id}' aria-pressed='${m.id===chosen}'`,m.id===chosen?'technique-choice is-selected':'technique-choice')).join('')}</div>${divider()}${costBlock()}<p class='start-condition' role='status'>${esc(a.blockers[0]||'')}</p>${button(mode==='paper'?'开始制纸':'开始研墨',`data-action='start' ${!a.isValid?'disabled':''}`,'primary','buttonPrimary')}`,'side-panel control-panel production-controls',`aria-label='制作条件'`);}"
+    },
+    {
+      "findingId": "W07",
+      "file": "docs/美术规范/符箓三工艺界面样稿_20261108/preview.js",
+      "originalLine": 72,
+      "line": 72,
+      "check": "摘句匹配",
+      "currentText": "function rawPickerBody(){const filters=state.craft==='paper'?['全部','纤维','液体','黏胶']:['全部','致密','颗粒','液体','黏胶'];const m=state.modal;return `<div class='picker-controls'><label class='search-well' data-skin='button' data-button-kind='input'><input id='material-search' type='search' placeholder='搜索材料或功用' value='${esc(m.search||'')}' aria-label='搜索材料或功用'></label>${filters.map(v=>button(v,`data-texture='${v}'`,(m.texture||'全部')===v?'is-selected':'','buttonTab')).join('')}<label><input type='checkbox' id='show-ineligible' ${m.showInvalid?'checked':''}>显示不适用</label></div><div id='picker-grid' class='picker-grid'></div>`;}"
+    },
+    {
+      "findingId": "W08",
+      "file": "docs/美术规范/种植灵圃界面样稿_20261109/prototype.js",
+      "originalLine": 53,
+      "line": 53,
+      "check": "摘句匹配",
+      "currentText": "    $('#modal').innerHTML=`<div class=\"modal-head\"><h2 id=\"modal-title\">${esc(title)}</h2><button class=\"button icon-button\" data-skin=\"buttonIcon\" data-action=\"close-modal\" aria-label=\"关闭弹窗\"><span class=\"button-content\">${Materials.sprite('close')}</span></button></div><div class=\"modal-content\">${body}</div>${actions?'<div class=\"modal-actions\">'+actions+'</div>':''}`;"
+    },
+    {
+      "findingId": "W08",
+      "file": "docs/美术规范/种植灵圃界面样稿_20261109/prototype.js",
+      "originalLine": 92,
+      "line": 92,
+      "check": "摘句匹配",
+      "currentText": "        <div class=\"field-operation\"><div><h3>基质材料</h3><span class=\"operation-summary\">${list.length?list.length+' 种 · '+quantity(list)+' 件':'尚未加入材料'}</span></div><button class=\"button\" data-route=\"substrates\">添加材料</button></div>"
+    },
+    {
+      "findingId": "W08",
+      "file": "docs/美术规范/种植灵圃界面样稿_20261109/prototype.js",
+      "originalLine": 106,
+      "line": 106,
+      "check": "摘句匹配",
+      "currentText": "    return `<div class=\"selected-summary\">${m?image(m.image):''}<span>${m?'已选：'+esc(m.name):'请选择行囊中的材料'}</span>${m?'<button class=\"link-button\" data-action=\"material-utility-info\">详情</button>':''}</div><div class=\"join-controls\"><label for=\"material-quantity\">数量</label><div class=\"stepper\" data-skin=\"input\"><input id=\"material-quantity\" type=\"number\" min=\"1\" step=\"1\" max=\"${enabled?available(m.id):0}\" value=\"${esc(d.quantity)}\" aria-label=\"加入数量\" aria-describedby=\"quantity-error\" ${enabled?'':'disabled'}><span class=\"step-buttons\"><button class=\"step-arrow\" data-material-exception=\"stepper-triangle\" data-action=\"qty-plus\" aria-label=\"增加件数\" ${enabled?'':'disabled'}><span class=\"triangle-glyph triangle-up\" aria-hidden=\"true\"></span></button><button class=\"step-arrow\" data-material-exception=\"stepper-triangle\" data-action=\"qty-minus\" aria-label=\"减少件数\" ${enabled?'':'disabled'}><span class=\"triangle-glyph triangle-down\" aria-hidden=\"true\"></span></button></span></div><button id=\"add-material\" class=\"button primary\" data-action=\"add-material\" ${enabled?'':'disabled'}>加入</button></div>`;"
+    },
+    {
+      "findingId": "W08",
+      "file": "docs/美术规范/种植灵圃界面样稿_20261109/prototype.js",
+      "originalLine": 192,
+      "line": 192,
+      "check": "旧摘句已变化；以本轮结论为准",
+      "currentText": "  }"
+    },
+    {
+      "findingId": "W08",
+      "file": "docs/美术规范/种植灵圃界面样稿_20261109/index.html",
+      "originalLine": 26,
+      "line": 26,
+      "check": "摘句匹配",
+      "currentText": "      <nav class=\"page-tabs\" aria-label=\"田地功能\">"
+    },
+    {
+      "findingId": "W09",
+      "file": "docs/美术规范/符箓三工艺界面样稿_20261108/preview.js",
+      "originalLine": 44,
+      "line": 44,
+      "check": "摘句匹配",
+      "currentText": "function quantity(value,attrs,max=12){return `<div class='dose-row'>${button('−',`${attrs} data-delta='-1' aria-label='减少份数' ${value<=1?'disabled':''}`)}<span class='dose-well' data-skin='button' data-button-kind='input'><input type='number' min='1' max='${max}' step='1' value='${value}' ${attrs} aria-label='投入份数'></span>${button('＋',`${attrs} data-delta='1' aria-label='增加份数' ${value>=max?'disabled':''}`)}</div>`;}"
+    },
+    {
+      "findingId": "W09",
+      "file": "docs/美术规范/符箓三工艺界面样稿_20261108/preview.js",
+      "originalLine": 45,
+      "line": 45,
+      "check": "摘句匹配",
+      "currentText": "function rawCard(sel){const m=byId(C.materials,sel.id);return `<article class='material-card'>${img(m,'material-icon')}<button class='material-title' data-detail='${m.id}'>${esc(m.name)} ›</button><p class='material-meta'>${esc(m.element||'无行')} · ${esc(m.texture)} · 库存 ${m.stock}</p><p class='material-utilities'>${utilityText(m)}</p><div class='dose-row'><label>份数</label>${button('−',`data-dose-id='${m.id}' data-delta='-1' aria-label='减少${esc(m.name)}份数' ${sel.qty<=1?'disabled':''}`)}<span class='dose-well' data-skin='button' data-button-kind='input'><input type='number' min='1' max='${m.stock}' value='${sel.qty}' data-dose-id='${m.id}' aria-label='${esc(m.name)}份数'></span>${button('＋',`data-dose-id='${m.id}' data-delta='1' aria-label='增加${esc(m.name)}份数' ${sel.qty>=m.stock?'disabled':''}`)}${button('移除',`data-remove='${m.id}'`,'remove')}</div></article>`;}"
+    },
+    {
+      "findingId": "W09",
+      "file": "docs/美术规范/种植灵圃界面样稿_20261109/prototype.js",
+      "originalLine": 194,
+      "line": 194,
+      "check": "摘句匹配",
+      "currentText": "    openModal('选择田地',state.fields.map((f,i)=>'<button class=\"field-choice\" data-action=\"pick-field\" data-index=\"'+i+'\"><strong>'+esc(f.name)+'</strong><span>'+(f.crop?esc(C.plants.find(p=>p.id===f.crop.id).name)+' · '+esc(f.crop.stage):'空田 · 待定植')+'</span><b>›</b></button>').join(''),'',true);"
+    },
+    {
+      "findingId": "W09",
+      "file": "docs/美术规范/宗内坊市交易界面_20261107/我的摊位_拖入管理预览_20261107.html",
+      "originalLine": 99,
+      "line": 99,
+      "check": "摘句匹配",
+      "currentText": "    <div class=\"listing-fields\"><label>数量<div class=\"quantity-control\"><button id=\"listingLess\" aria-label=\"减少上架数量\">−</button><input id=\"listingQuantity\" type=\"number\" min=\"1\" step=\"1\" aria-label=\"上架数量\"><button id=\"listingMore\" aria-label=\"增加上架数量\">＋</button></div></label><label>单价<div class=\"price-control\"><input id=\"listingPrice\" type=\"number\" min=\"1\" step=\"1\" aria-label=\"上架单价\"><span>灵石 / 件</span></div></label></div>"
+    },
+    {
+      "findingId": "W10",
+      "file": "docs/美术规范/全局界面风格母板_20261108/style.css",
+      "originalLine": 15,
+      "line": 15,
+      "check": "摘句匹配",
+      "currentText": ".hand-frame{position:absolute;inset:0;display:grid;pointer-events:none;z-index:2;overflow:hidden;line-height:0}.hand-frame>svg{width:100%;height:100%;display:block;overflow:hidden;min-width:0;min-height:0}.paper-title{position:relative}.paper-panel.has-hand-frame{border-color:transparent;box-shadow:0 3px 5px #39332933}.paper-panel.has-hand-frame:before,.paper-panel.has-hand-frame:after{display:none}.paper-button.has-hand-frame,.index-item.has-hand-frame,.paper-title.has-hand-frame{border-color:transparent;box-shadow:0 2px 2px #4d463530;position:relative}.paper-button.primary.has-hand-frame:after,.paper-button.is-current.has-hand-frame:after,.paper-button.demo-selected.has-hand-frame:after{content:'';position:absolute;bottom:4px;left:14px;right:14px;height:3px;background:var(--accent);z-index:3}.index-item.is-current.has-hand-frame:after{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:3px;background:var(--accent);z-index:3}.paper-button:disabled>.hand-frame{filter:grayscale(.6);opacity:.8}.paper-button.demo-hover>.hand-frame,.paper-button:hover>.hand-frame{filter:brightness(1.07)}.paper-button.demo-pressed>.hand-frame,.paper-button:active>.hand-frame{filter:brightness(.95)}.main-tabs,.component-stage,.app-shell{background-color:#70615a;background-image:var(--frame-art);background-size:3344px 1882px;background-position:-180px -550px}.component-stage{padding:14px}.stage-header{background:#e3d9c4 var(--paper-art) center/cover}.page-index{background:#c4b8a0}.stone-texture{background-position:-3480px -240px;background-size:5016px 2823px}.material-face.wood-texture>span{color:#f0e7d0;opacity:.88;text-shadow:0 1px #30312a}.has-hand-frame>.hand-frame{font-size:0}"
+    },
+    {
+      "findingId": "W10",
+      "file": "docs/美术规范/全局界面风格母板_20261108/board.js",
+      "originalLine": 42,
+      "line": 42,
+      "check": "摘句匹配",
+      "currentText": "    root.querySelectorAll('.paper-panel, .dialog-body').forEach(element => addFrame(element, [1105, 160, 537, 744], [38, 38, 38, 38], [27, 27, 27, 27]));"
+    },
+    {
+      "findingId": "W10",
+      "file": "docs/plans/界面与美术/全局界面统一风格规范_20261108.md",
+      "originalLine": 5,
+      "line": 5,
+      "check": "摘句匹配",
+      "currentText": "2026-11-09 最新选中效果：用户反馈上一版过浅、不明显，网页选中纸面加深为中灰绿色，与未选中的米白纸面拉开明暗，文字保持更深的墨绿；保留原材质、纸框与导航装订位移。继续取消额外选中细线，不在文字背后另铺矩形，不新增底线、侧边线或描边。共用样式过渡160毫秒，减少动态效果时直接切换。见[对比增强与两档实拍](../美术规范/整纸选中全页复核_20261109/无细线修订/README.md)；本条覆盖下方历史浅色与“选中短线／深线”的要求。"
+    },
+    {
+      "findingId": "W11",
+      "file": "docs/美术规范/宗内坊市交易界面_20261107/我的摊位_拖入管理预览_20261107.html",
+      "originalLine": 18,
+      "line": 18,
+      "check": "摘句匹配",
+      "currentText": ".paper-button.active{background:#ced7c0;border-color:#87927b}.paper-button:hover:not(:disabled){background:#dae0ce}"
+    },
+    {
+      "findingId": "W11",
+      "file": "docs/美术规范/宗内坊市交易界面_20261107/我的摊位_拖入管理预览_20261107.html",
+      "originalLine": 36,
+      "line": 36,
+      "check": "摘句匹配",
+      "currentText": ".item-row:hover{background:#dce2d153}.item-row.selected{background:#ced9bd9c;box-shadow:inset 3px 0 #6f8266}"
+    },
+    {
+      "findingId": "W11",
+      "file": "docs/美术规范/宗内坊市交易界面_20261107/我的摊位_拖入管理预览_20261107.html",
+      "originalLine": 105,
+      "line": 105,
+      "check": "摘句匹配",
+      "currentText": "  <div class=\"modal-shade\" id=\"shade\"><div class=\"modal\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"modalTitle\"><h2 id=\"modalTitle\"></h2><p id=\"modalText\"></p><div class=\"controls\"><button class=\"paper-button\" id=\"cancel\">返回</button><button class=\"paper-button active\" id=\"confirm\">确认</button></div></div></div>"
+    },
+    {
+      "findingId": "W12",
+      "file": "docs/美术规范/角色与静室纸墨木石样稿_20261108/battle-preview.js",
+      "originalLine": 387,
+      "line": 387,
+      "check": "摘句匹配",
+      "currentText": "      const panel=M.paper(`<div class=\"rf-library-heading\"><h2>我的组合</h2><span>${flow.combos.length}组</span></div><p class=\"rf-copy\">拖入整组搭配；Shift点选盘中多项后保存。</p>${M.scroll(comboList(),'rb-source-scroll rf-combo-scroll')}${btn(`保存当前选择${flow.selected.length?' · '+flow.selected.length+'项':''}`,'data-rf=\"save-combo\"','primary wide-button')}`, 'rb-source-paper');"
+    },
+    {
+      "findingId": "W12",
+      "file": "docs/美术规范/角色与静室纸墨木石样稿_20261108/battle-preview.js",
+      "originalLine": 399,
+      "line": 399,
+      "check": "摘句匹配",
+      "currentText": "    plane.insertAdjacentHTML('beforeend',`<div class=\"rf-board-commit\"><div class=\"rf-board-actions\">${btn('保存为方案','data-rf=\"save-plan\"')}${btn('应用','data-rf=\"apply\"','primary')}</div><p class=\"rb-notice\" role=\"status\" aria-live=\"polite\">${E(current.notice)}</p></div>`);"
+    }
+  ]
+}

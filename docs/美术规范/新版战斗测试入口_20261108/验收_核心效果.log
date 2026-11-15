@@ -1,0 +1,395 @@
+Godot Engine v4.7.2.stable.mono.custom_build.ed1daf0bf (2026-08-17 01:18:38 UTC) - https://godotengine.org
+
+HUMAN_BOARD_PASS 应敌正式图标尺寸
+HUMAN_BOARD_PASS 应敌真实透明
+HUMAN_BOARD_PASS 应敌正式纹理可加载
+HUMAN_BOARD_PASS 架招正式图标尺寸
+HUMAN_BOARD_PASS 架招真实透明
+HUMAN_BOARD_PASS 架招正式纹理可加载
+HUMAN_BOARD_PASS 痛击正式图标尺寸
+HUMAN_BOARD_PASS 痛击真实透明
+HUMAN_BOARD_PASS 痛击正式纹理可加载
+HUMAN_BOARD_PASS 催血正式图标尺寸
+HUMAN_BOARD_PASS 催血真实透明
+HUMAN_BOARD_PASS 催血正式纹理可加载
+HUMAN_BOARD_PASS 聚炁正式图标尺寸
+HUMAN_BOARD_PASS 聚炁真实透明
+HUMAN_BOARD_PASS 聚炁正式纹理可加载
+HUMAN_BOARD_PASS 灵击正式图标尺寸
+HUMAN_BOARD_PASS 灵击真实透明
+HUMAN_BOARD_PASS 灵击正式纹理可加载
+HUMAN_BOARD_PASS 寄念正式图标尺寸
+HUMAN_BOARD_PASS 寄念真实透明
+HUMAN_BOARD_PASS 寄念正式纹理可加载
+HUMAN_BOARD_PASS 斩剑正式图标尺寸
+HUMAN_BOARD_PASS 斩剑真实透明
+HUMAN_BOARD_PASS 斩剑正式纹理可加载
+HUMAN_BOARD_PASS 养锋正式图标尺寸
+HUMAN_BOARD_PASS 养锋真实透明
+HUMAN_BOARD_PASS 养锋正式纹理可加载
+HUMAN_BOARD_PASS 格剑正式图标尺寸
+HUMAN_BOARD_PASS 格剑真实透明
+HUMAN_BOARD_PASS 格剑正式纹理可加载
+HUMAN_BOARD_PASS 尽锋正式图标尺寸
+HUMAN_BOARD_PASS 尽锋真实透明
+HUMAN_BOARD_PASS 尽锋正式纹理可加载
+HUMAN_BOARD_PASS 云帔正式图标尺寸
+HUMAN_BOARD_PASS 云帔真实透明
+HUMAN_BOARD_PASS 云帔正式纹理可加载
+HUMAN_BOARD_PASS 惊蛰正式图标尺寸
+HUMAN_BOARD_PASS 惊蛰真实透明
+HUMAN_BOARD_PASS 惊蛰正式纹理可加载
+HUMAN_BOARD_PASS 复命正式图标尺寸
+HUMAN_BOARD_PASS 复命真实透明
+HUMAN_BOARD_PASS 复命正式纹理可加载
+HUMAN_BOARD_PASS 折锋正式图标尺寸
+HUMAN_BOARD_PASS 折锋真实透明
+HUMAN_BOARD_PASS 折锋正式纹理可加载
+HUMAN_BOARD_PASS 焚元正式图标尺寸
+HUMAN_BOARD_PASS 焚元真实透明
+HUMAN_BOARD_PASS 焚元正式纹理可加载
+HUMAN_BOARD_PASS 血臂撼岳正式图标尺寸
+HUMAN_BOARD_PASS 血臂撼岳真实透明
+HUMAN_BOARD_PASS 血臂撼岳正式纹理可加载
+HUMAN_BOARD_PASS 乘势再攻正式图标尺寸
+HUMAN_BOARD_PASS 乘势再攻真实透明
+HUMAN_BOARD_PASS 乘势再攻正式纹理可加载
+HUMAN_BOARD_PASS 虚怀纳劲正式图标尺寸
+HUMAN_BOARD_PASS 虚怀纳劲真实透明
+HUMAN_BOARD_PASS 虚怀纳劲正式纹理可加载
+HUMAN_BOARD_PASS 云岚三叠正式图标尺寸
+HUMAN_BOARD_PASS 云岚三叠真实透明
+HUMAN_BOARD_PASS 云岚三叠正式纹理可加载
+HUMAN_BOARD_PASS 已学池完整20招并保留云帔
+HUMAN_BOARD_PASS 云帔独立节点门槛
+HUMAN_BOARD_PASS 旧档云帔已学事实保留
+HUMAN_BOARD_PASS 旧已学不额外授予节点或属性
+HUMAN_BOARD_PASS 无旧事实不授予云帔
+HUMAN_BOARD_PASS 人类对战进入真实配招
+HUMAN_BOARD_PASS 编辑拒绝越界并保留位置
+HUMAN_BOARD_PASS 拖动可移动真实多格对象
+HUMAN_BOARD_PASS 点击暗幕只隐藏配招，战斗仍未开始
+HUMAN_BOARD_PASS 返回保留原草稿
+HUMAN_BOARD_PASS 草稿恢复合法位置
+HUMAN_BOARD_PASS 真实拖拽保留抓取的第二格，不把它错当左上角
+HUMAN_BOARD_PASS 拖拽后可继续编辑
+HUMAN_BOARD_PASS 合法草稿提交 
+HUMAN_BOARD_PASS 所有参与者完成后才开放整理
+HUMAN_BOARD_PASS 同一行两招真实施放，未逐招跑条
+HUMAN_BOARD_PASS 真实伤害进入对方生命
+HUMAN_BOARD_PASS 扫描后应对有效，共同轮末解除待命
+HUMAN_BOARD_PASS 空格回复受体力上限限制
+HUMAN_BOARD_PASS 人类对战进入真实配招
+HUMAN_BOARD_PASS 合法草稿提交 
+HUMAN_BOARD_PASS 复命首轮完成
+HUMAN_BOARD_PASS 复命占用尚未扫到的原招份数机会
+HUMAN_BOARD_PASS 复命保持两个完整冷却回合
+HUMAN_BOARD_PASS 人类对战进入真实配招
+HUMAN_BOARD_PASS 合法草稿提交 
+HUMAN_BOARD_PASS 无余份首轮完成
+HUMAN_BOARD_PASS 无剩余原招机会时复命不发动、不付费
+HUMAN_BOARD_PASS 人类对战进入真实配招
+HUMAN_BOARD_PASS 新装备玄枢心法自动提供默认单格指示
+HUMAN_BOARD_PASS 合法草稿提交 
+HUMAN_BOARD_PASS 周天首轮完成
+HUMAN_BOARD_PASS 指示招式保留普通机会并获得周天额外一次
+HUMAN_BOARD_PASS 周天清炁
+HUMAN_BOARD_PASS 人类对战进入真实配招
+HUMAN_BOARD_PASS 卸下玄枢心法后撤去其指示，避免锁住旧盘
+HUMAN_BOARD_PASS 人类对战进入真实配招
+HUMAN_BOARD_PASS 丹药沿用真实瓷瓶占格
+HUMAN_BOARD_PASS 真实库存允许单颗丹药入盘
+HUMAN_BOARD_PASS 丹药第一轮结束自动开配招
+HUMAN_BOARD_PASS 首格满血跳过，后续占格受伤服用且只扣一颗
+HUMAN_BOARD_PASS 药效与丹毒沿真实服丹流程结算
+HUMAN_BOARD_PASS 服用后空瓶继续占原两格
+HUMAN_BOARD_PASS 每个共同回合结束自动显示配招页
+HUMAN_BOARD_PASS 空瓶无需剩余库存也可保留布局
+HUMAN_BOARD_PASS 空瓶第二轮结束
+HUMAN_BOARD_PASS 空瓶不会下轮自动再吃一颗
+HUMAN_BOARD_PASS 选择空瓶
+HUMAN_BOARD_PASS 整理补药只预留，不提前扣库存
+HUMAN_BOARD_PASS 同一颗库存不能重复摆放
+HUMAN_BOARD_PASS 战后快照回传实际库存及空瓶布局
+HUMAN_BOARD_PASS 两追加条件产生两次自身应对气血收益
+HUMAN_BOARD_PASS 太和一卷只提高首个追加段20%
+HUMAN_BOARD_PASS 一卷化法本回合不重复触发
+HUMAN_BOARD_PASS 二卷先耗气血再得心法收益，基础护盾提高50%
+HUMAN_BOARD_PASS 二卷单次施放不重复增盾
+HUMAN_BOARD_PASS 二卷化法每回合限一次
+HUMAN_BOARD_PASS 原有气血为零时不借本次心法收益增盾
+HUMAN_BOARD_PASS 已启用卷章四项单份化法
+HUMAN_BOARD_PASS 化法只强化被指向的一份催血
+HUMAN_BOARD_PASS 全效果验收不开放候选秘籍
+HUMAN_BOARD_PASS 太和感物养元宝册听息运行时完整心法
+HUMAN_BOARD_PASS 太和感物养元宝册听息辅修完整且不混入主修收益
+HUMAN_BOARD_PASS 太和感物养元宝册听息心法无旧模式文案
+HUMAN_BOARD_PASS 太和感物养元宝册回澜运行时完整心法
+HUMAN_BOARD_PASS 太和感物养元宝册回澜辅修完整且不混入主修收益
+HUMAN_BOARD_PASS 太和感物养元宝册回澜心法无旧模式文案
+HUMAN_BOARD_PASS 太和感物养元宝册藏锋运行时完整心法
+HUMAN_BOARD_PASS 太和感物养元宝册藏锋辅修完整且不混入主修收益
+HUMAN_BOARD_PASS 太和感物养元宝册藏锋心法无旧模式文案
+HUMAN_BOARD_PASS 太和感物养元宝册返元运行时完整心法
+HUMAN_BOARD_PASS 太和感物养元宝册返元辅修完整且不混入主修收益
+HUMAN_BOARD_PASS 太和感物养元宝册返元心法无旧模式文案
+HUMAN_BOARD_PASS 太和感物养元宝册四项真实化法
+HUMAN_BOARD_PASS 太和感物养元宝册 · 听息仅改写本份副本
+HUMAN_BOARD_PASS 太和感物养元宝册 · 听息保留原费、目标与基础伤害
+HUMAN_BOARD_PASS 太和感物养元宝册 · 听息追加效果进入当前详情
+HUMAN_BOARD_PASS 太和感物养元宝册 · 回澜仅改写本份副本
+HUMAN_BOARD_PASS 太和感物养元宝册 · 回澜保留原费、目标与基础伤害
+HUMAN_BOARD_PASS 太和感物养元宝册 · 回澜追加效果进入当前详情
+HUMAN_BOARD_PASS 太和感物养元宝册 · 藏锋仅改写本份副本
+HUMAN_BOARD_PASS 太和感物养元宝册 · 藏锋保留原费、目标与基础伤害
+HUMAN_BOARD_PASS 太和感物养元宝册 · 藏锋追加效果进入当前详情
+HUMAN_BOARD_PASS 太和感物养元宝册 · 返元仅改写本份副本
+HUMAN_BOARD_PASS 太和感物养元宝册 · 返元保留原费、目标与基础伤害
+HUMAN_BOARD_PASS 太和感物养元宝册 · 返元追加效果进入当前详情
+HUMAN_BOARD_PASS 斫基损契玄经秉烛运行时完整心法
+HUMAN_BOARD_PASS 斫基损契玄经秉烛辅修完整且不混入主修收益
+HUMAN_BOARD_PASS 斫基损契玄经秉烛心法无旧模式文案
+HUMAN_BOARD_PASS 斫基损契玄经剪灯运行时完整心法
+HUMAN_BOARD_PASS 斫基损契玄经剪灯辅修完整且不混入主修收益
+HUMAN_BOARD_PASS 斫基损契玄经剪灯心法无旧模式文案
+HUMAN_BOARD_PASS 斫基损契玄经续照运行时完整心法
+HUMAN_BOARD_PASS 斫基损契玄经续照辅修完整且不混入主修收益
+HUMAN_BOARD_PASS 斫基损契玄经续照心法无旧模式文案
+HUMAN_BOARD_PASS 斫基损契玄经长明运行时完整心法
+HUMAN_BOARD_PASS 斫基损契玄经长明辅修完整且不混入主修收益
+HUMAN_BOARD_PASS 斫基损契玄经长明心法无旧模式文案
+HUMAN_BOARD_PASS 斫基损契玄经四项真实化法
+HUMAN_BOARD_PASS 斫基损契玄经 · 秉烛仅改写本份副本
+HUMAN_BOARD_PASS 斫基损契玄经 · 秉烛保留原费、目标与基础伤害
+HUMAN_BOARD_PASS 斫基损契玄经 · 秉烛追加效果进入当前详情
+HUMAN_BOARD_PASS 斫基损契玄经 · 剪灯仅改写本份副本
+HUMAN_BOARD_PASS 斫基损契玄经 · 剪灯保留原费、目标与基础伤害
+HUMAN_BOARD_PASS 斫基损契玄经 · 剪灯追加效果进入当前详情
+HUMAN_BOARD_PASS 斫基损契玄经 · 续照仅改写本份副本
+HUMAN_BOARD_PASS 斫基损契玄经 · 续照保留原费、目标与基础伤害
+HUMAN_BOARD_PASS 斫基损契玄经 · 续照追加效果进入当前详情
+HUMAN_BOARD_PASS 斫基损契玄经 · 长明仅改写本份副本
+HUMAN_BOARD_PASS 斫基损契玄经 · 长明保留原费、目标与基础伤害
+HUMAN_BOARD_PASS 斫基损契玄经 · 长明追加效果进入当前详情
+HUMAN_BOARD_PASS 玄枢含章经蛰雷运行时完整心法
+HUMAN_BOARD_PASS 玄枢含章经蛰雷辅修完整且不混入主修收益
+HUMAN_BOARD_PASS 玄枢含章经蛰雷心法无旧模式文案
+HUMAN_BOARD_PASS 玄枢含章经云垂运行时完整心法
+HUMAN_BOARD_PASS 玄枢含章经云垂辅修完整且不混入主修收益
+HUMAN_BOARD_PASS 玄枢含章经云垂心法无旧模式文案
+HUMAN_BOARD_PASS 玄枢含章经折冲运行时完整心法
+HUMAN_BOARD_PASS 玄枢含章经折冲辅修完整且不混入主修收益
+HUMAN_BOARD_PASS 玄枢含章经折冲心法无旧模式文案
+HUMAN_BOARD_PASS 玄枢含章经照影运行时完整心法
+HUMAN_BOARD_PASS 玄枢含章经照影辅修完整且不混入主修收益
+HUMAN_BOARD_PASS 玄枢含章经照影心法无旧模式文案
+HUMAN_BOARD_PASS 玄枢含章经四项真实化法
+HUMAN_BOARD_PASS 玄枢含章经 · 蛰雷仅改写本份副本
+HUMAN_BOARD_PASS 玄枢含章经 · 蛰雷保留原费、目标与基础伤害
+HUMAN_BOARD_PASS 玄枢含章经 · 蛰雷追加效果进入当前详情
+HUMAN_BOARD_PASS 玄枢含章经 · 云垂仅改写本份副本
+HUMAN_BOARD_PASS 玄枢含章经 · 云垂保留原费、目标与基础伤害
+HUMAN_BOARD_PASS 玄枢含章经 · 云垂追加效果进入当前详情
+HUMAN_BOARD_PASS 玄枢含章经 · 折冲仅改写本份副本
+HUMAN_BOARD_PASS 玄枢含章经 · 折冲保留原费、目标与基础伤害
+HUMAN_BOARD_PASS 玄枢含章经 · 折冲追加效果进入当前详情
+HUMAN_BOARD_PASS 玄枢含章经 · 照影仅改写本份副本
+HUMAN_BOARD_PASS 玄枢含章经 · 照影保留原费、目标与基础伤害
+HUMAN_BOARD_PASS 玄枢含章经 · 照影追加效果进入当前详情
+HUMAN_BOARD_PASS 百骸衍枝化生宝册养络运行时完整心法
+HUMAN_BOARD_PASS 百骸衍枝化生宝册养络辅修完整且不混入主修收益
+HUMAN_BOARD_PASS 百骸衍枝化生宝册养络心法无旧模式文案
+HUMAN_BOARD_PASS 百骸衍枝化生宝册养络辅修公式紧随效果、不会被主修截断
+HUMAN_BOARD_PASS 百骸衍枝化生宝册生枝运行时完整心法
+HUMAN_BOARD_PASS 百骸衍枝化生宝册生枝辅修完整且不混入主修收益
+HUMAN_BOARD_PASS 百骸衍枝化生宝册生枝心法无旧模式文案
+HUMAN_BOARD_PASS 百骸衍枝化生宝册生枝辅修公式紧随效果、不会被主修截断
+HUMAN_BOARD_PASS 百骸衍枝化生宝册双擎运行时完整心法
+HUMAN_BOARD_PASS 百骸衍枝化生宝册双擎辅修完整且不混入主修收益
+HUMAN_BOARD_PASS 百骸衍枝化生宝册双擎心法无旧模式文案
+HUMAN_BOARD_PASS 百骸衍枝化生宝册双擎辅修公式紧随效果、不会被主修截断
+HUMAN_BOARD_PASS 百骸衍枝化生宝册化生运行时完整心法
+HUMAN_BOARD_PASS 百骸衍枝化生宝册化生辅修完整且不混入主修收益
+HUMAN_BOARD_PASS 百骸衍枝化生宝册化生心法无旧模式文案
+HUMAN_BOARD_PASS 百骸衍枝化生宝册化生辅修公式紧随效果、不会被主修截断
+HUMAN_BOARD_PASS 百骸衍枝化生宝册四项真实化法
+HUMAN_BOARD_PASS 百骸衍枝化生宝册 · 养络仅改写本份副本
+HUMAN_BOARD_PASS 百骸衍枝化生宝册 · 养络保留原费、目标与基础伤害
+HUMAN_BOARD_PASS 百骸衍枝化生宝册 · 养络追加效果进入当前详情
+HUMAN_BOARD_PASS 百骸衍枝化生宝册 · 生枝仅改写本份副本
+HUMAN_BOARD_PASS 百骸衍枝化生宝册 · 生枝保留原费、目标与基础伤害
+HUMAN_BOARD_PASS 百骸衍枝化生宝册 · 生枝追加效果进入当前详情
+HUMAN_BOARD_PASS 百骸衍枝化生宝册 · 双擎仅改写本份副本
+HUMAN_BOARD_PASS 百骸衍枝化生宝册 · 双擎保留原费、目标与基础伤害
+HUMAN_BOARD_PASS 百骸衍枝化生宝册 · 双擎追加效果进入当前详情
+HUMAN_BOARD_PASS 百骸衍枝化生宝册 · 化生仅改写本份副本
+HUMAN_BOARD_PASS 百骸衍枝化生宝册 · 化生保留原费、目标与基础伤害
+HUMAN_BOARD_PASS 百骸衍枝化生宝册 · 化生追加效果进入当前详情
+HUMAN_BOARD_PASS 舒卷天章云舒运行时完整心法
+HUMAN_BOARD_PASS 舒卷天章云舒辅修完整且不混入主修收益
+HUMAN_BOARD_PASS 舒卷天章云舒心法无旧模式文案
+HUMAN_BOARD_PASS 舒卷天章云舒辅修公式紧随效果、不会被主修截断
+HUMAN_BOARD_PASS 舒卷天章回岚运行时完整心法
+HUMAN_BOARD_PASS 舒卷天章回岚辅修完整且不混入主修收益
+HUMAN_BOARD_PASS 舒卷天章回岚心法无旧模式文案
+HUMAN_BOARD_PASS 舒卷天章回岚辅修公式紧随效果、不会被主修截断
+HUMAN_BOARD_PASS 舒卷天章逐影运行时完整心法
+HUMAN_BOARD_PASS 舒卷天章逐影辅修完整且不混入主修收益
+HUMAN_BOARD_PASS 舒卷天章逐影心法无旧模式文案
+HUMAN_BOARD_PASS 舒卷天章逐影辅修公式紧随效果、不会被主修截断
+HUMAN_BOARD_PASS 舒卷天章天章运行时完整心法
+HUMAN_BOARD_PASS 舒卷天章天章辅修完整且不混入主修收益
+HUMAN_BOARD_PASS 舒卷天章天章心法无旧模式文案
+HUMAN_BOARD_PASS 舒卷天章天章辅修公式紧随效果、不会被主修截断
+HUMAN_BOARD_PASS 舒卷天章四项真实化法
+HUMAN_BOARD_PASS 舒卷天章 · 云舒仅改写本份副本
+HUMAN_BOARD_PASS 舒卷天章 · 云舒保留原费、目标与基础伤害
+HUMAN_BOARD_PASS 舒卷天章 · 云舒追加效果进入当前详情
+HUMAN_BOARD_PASS 舒卷天章 · 回岚仅改写本份副本
+HUMAN_BOARD_PASS 舒卷天章 · 回岚保留原费、目标与基础伤害
+HUMAN_BOARD_PASS 舒卷天章 · 回岚追加效果进入当前详情
+HUMAN_BOARD_PASS 舒卷天章 · 逐影仅改写本份副本
+HUMAN_BOARD_PASS 舒卷天章 · 逐影保留原费、目标与基础伤害
+HUMAN_BOARD_PASS 舒卷天章 · 逐影追加效果进入当前详情
+HUMAN_BOARD_PASS 舒卷天章 · 天章仅改写本份副本
+HUMAN_BOARD_PASS 舒卷天章 · 天章保留原费、目标与基础伤害
+HUMAN_BOARD_PASS 舒卷天章 · 天章追加效果进入当前详情
+HUMAN_BOARD_PASS 应敌所有基础详情适配新盘
+HUMAN_BOARD_PASS 应敌简述入口与完整效果同源
+HUMAN_BOARD_PASS 应敌名称表示份数且效果不重复底层流程
+HUMAN_BOARD_PASS 应敌展示真实关键词和目标
+HUMAN_BOARD_PASS 应敌明确近身或远程
+HUMAN_BOARD_PASS 架招所有基础详情适配新盘
+HUMAN_BOARD_PASS 架招简述入口与完整效果同源
+HUMAN_BOARD_PASS 架招名称表示份数且效果不重复底层流程
+HUMAN_BOARD_PASS 架招展示真实关键词和目标
+HUMAN_BOARD_PASS 痛击所有基础详情适配新盘
+HUMAN_BOARD_PASS 痛击简述入口与完整效果同源
+HUMAN_BOARD_PASS 痛击名称表示份数且效果不重复底层流程
+HUMAN_BOARD_PASS 痛击展示真实关键词和目标
+HUMAN_BOARD_PASS 痛击明确近身或远程
+HUMAN_BOARD_PASS 催血所有基础详情适配新盘
+HUMAN_BOARD_PASS 催血简述入口与完整效果同源
+HUMAN_BOARD_PASS 催血名称表示份数且效果不重复底层流程
+HUMAN_BOARD_PASS 催血展示真实关键词和目标
+HUMAN_BOARD_PASS 聚炁所有基础详情适配新盘
+HUMAN_BOARD_PASS 聚炁简述入口与完整效果同源
+HUMAN_BOARD_PASS 聚炁名称表示份数且效果不重复底层流程
+HUMAN_BOARD_PASS 聚炁展示真实关键词和目标
+HUMAN_BOARD_PASS 灵击所有基础详情适配新盘
+HUMAN_BOARD_PASS 灵击简述入口与完整效果同源
+HUMAN_BOARD_PASS 灵击名称表示份数且效果不重复底层流程
+HUMAN_BOARD_PASS 灵击展示真实关键词和目标
+HUMAN_BOARD_PASS 灵击明确近身或远程
+HUMAN_BOARD_PASS 寄念所有基础详情适配新盘
+HUMAN_BOARD_PASS 寄念简述入口与完整效果同源
+HUMAN_BOARD_PASS 寄念名称表示份数且效果不重复底层流程
+HUMAN_BOARD_PASS 寄念展示真实关键词和目标
+HUMAN_BOARD_PASS 斩剑所有基础详情适配新盘
+HUMAN_BOARD_PASS 斩剑简述入口与完整效果同源
+HUMAN_BOARD_PASS 斩剑名称表示份数且效果不重复底层流程
+HUMAN_BOARD_PASS 斩剑展示真实关键词和目标
+HUMAN_BOARD_PASS 斩剑明确近身或远程
+HUMAN_BOARD_PASS 养锋所有基础详情适配新盘
+HUMAN_BOARD_PASS 养锋简述入口与完整效果同源
+HUMAN_BOARD_PASS 养锋名称表示份数且效果不重复底层流程
+HUMAN_BOARD_PASS 养锋展示真实关键词和目标
+HUMAN_BOARD_PASS 格剑所有基础详情适配新盘
+HUMAN_BOARD_PASS 格剑简述入口与完整效果同源
+HUMAN_BOARD_PASS 格剑名称表示份数且效果不重复底层流程
+HUMAN_BOARD_PASS 格剑展示真实关键词和目标
+HUMAN_BOARD_PASS 尽锋所有基础详情适配新盘
+HUMAN_BOARD_PASS 尽锋简述入口与完整效果同源
+HUMAN_BOARD_PASS 尽锋名称表示份数且效果不重复底层流程
+HUMAN_BOARD_PASS 尽锋展示真实关键词和目标
+HUMAN_BOARD_PASS 尽锋明确近身或远程
+HUMAN_BOARD_PASS 云帔所有基础详情适配新盘
+HUMAN_BOARD_PASS 云帔简述入口与完整效果同源
+HUMAN_BOARD_PASS 云帔名称表示份数且效果不重复底层流程
+HUMAN_BOARD_PASS 云帔展示真实关键词和目标
+HUMAN_BOARD_PASS 惊蛰所有基础详情适配新盘
+HUMAN_BOARD_PASS 惊蛰简述入口与完整效果同源
+HUMAN_BOARD_PASS 惊蛰名称表示份数且效果不重复底层流程
+HUMAN_BOARD_PASS 惊蛰展示真实关键词和目标
+HUMAN_BOARD_PASS 惊蛰明确近身或远程
+HUMAN_BOARD_PASS 复命所有基础详情适配新盘
+HUMAN_BOARD_PASS 复命简述入口与完整效果同源
+HUMAN_BOARD_PASS 复命名称表示份数且效果不重复底层流程
+HUMAN_BOARD_PASS 复命展示真实关键词和目标
+HUMAN_BOARD_PASS 折锋所有基础详情适配新盘
+HUMAN_BOARD_PASS 折锋简述入口与完整效果同源
+HUMAN_BOARD_PASS 折锋名称表示份数且效果不重复底层流程
+HUMAN_BOARD_PASS 折锋展示真实关键词和目标
+HUMAN_BOARD_PASS 折锋明确近身或远程
+HUMAN_BOARD_PASS 焚元所有基础详情适配新盘
+HUMAN_BOARD_PASS 焚元简述入口与完整效果同源
+HUMAN_BOARD_PASS 焚元名称表示份数且效果不重复底层流程
+HUMAN_BOARD_PASS 焚元展示真实关键词和目标
+HUMAN_BOARD_PASS 血臂撼岳所有基础详情适配新盘
+HUMAN_BOARD_PASS 血臂撼岳简述入口与完整效果同源
+HUMAN_BOARD_PASS 血臂撼岳名称表示份数且效果不重复底层流程
+HUMAN_BOARD_PASS 血臂撼岳展示真实关键词和目标
+HUMAN_BOARD_PASS 血臂撼岳明确近身或远程
+HUMAN_BOARD_PASS 乘势再攻所有基础详情适配新盘
+HUMAN_BOARD_PASS 乘势再攻简述入口与完整效果同源
+HUMAN_BOARD_PASS 乘势再攻名称表示份数且效果不重复底层流程
+HUMAN_BOARD_PASS 乘势再攻展示真实关键词和目标
+HUMAN_BOARD_PASS 乘势再攻明确近身或远程
+HUMAN_BOARD_PASS 虚怀纳劲所有基础详情适配新盘
+HUMAN_BOARD_PASS 虚怀纳劲简述入口与完整效果同源
+HUMAN_BOARD_PASS 虚怀纳劲名称表示份数且效果不重复底层流程
+HUMAN_BOARD_PASS 虚怀纳劲展示真实关键词和目标
+HUMAN_BOARD_PASS 云岚三叠所有基础详情适配新盘
+HUMAN_BOARD_PASS 云岚三叠简述入口与完整效果同源
+HUMAN_BOARD_PASS 云岚三叠名称表示份数且效果不重复底层流程
+HUMAN_BOARD_PASS 云岚三叠展示真实关键词和目标
+HUMAN_BOARD_PASS 云岚三叠明确近身或远程
+HUMAN_BOARD_PASS 名称份数与整场限次分开表达
+HUMAN_BOARD_PASS 回合限次不误写成整场限次
+HUMAN_BOARD_PASS 舒卷一卷满剑意仍只追加一段
+HUMAN_BOARD_PASS 舒卷二卷增加超出六层的四点伤害
+HUMAN_BOARD_PASS 舒卷四卷读取开始十层，尽锋清空后仍追加两段
+HUMAN_BOARD_PASS 尽锋首段未命中不触发心法追加
+HUMAN_BOARD_PASS 舒卷主修五层门槛
+HUMAN_BOARD_PASS 舒卷辅修不获得降低门槛
+HUMAN_BOARD_PASS 云岚自身三段不叠加四卷固定两段
+HUMAN_BOARD_PASS 云岚递减概率与上限
+HUMAN_BOARD_PASS 舒卷养锋化法同轮不重复产剑意
+HUMAN_BOARD_PASS 舒卷格剑化法共享每轮一次
+HUMAN_BOARD_PASS 百骸一卷五层显臂
+HUMAN_BOARD_PASS 百骸二卷四层显臂
+HUMAN_BOARD_PASS 百骸三卷四八门槛
+HUMAN_BOARD_PASS 百骸四卷三七门槛
+HUMAN_BOARD_PASS 新盘心法不自行应对或回落气血
+HUMAN_BOARD_PASS 双臂仅追加近身物理攻击
+HUMAN_BOARD_PASS 血臂撼岳原段、化法段和双臂段分别结算
+HUMAN_BOARD_PASS 百骸三四卷重复20%只算一次
+HUMAN_BOARD_PASS 百骸同次多段实际化解只补一次气血
+HUMAN_BOARD_PASS 玄枢化解返盾不提前混入本次来袭
+HUMAN_BOARD_PASS 玄枢整次来袭后仅按实际抵消五点返盾
+HUMAN_BOARD_PASS 斫基按实际抵消削盾且不减为负值
+HUMAN_BOARD_PASS 焚元代付连续预览只免复命一笔法力
+HUMAN_BOARD_PASS 焚元未用代付轮末失效
+HUMAN_BOARD_PASS 真实账本记录复命一次
+HUMAN_BOARD_PASS 克隆招式通用冷却及可用查询读取稳定账本
+HUMAN_BOARD_PASS 轮次状态获得当轮保持
+HUMAN_BOARD_PASS 轮次状态按下一完整共同回合结束移除
+HUMAN_BOARD_PASS 人类对战进入真实配招
+HUMAN_BOARD_PASS 合法草稿提交 
+HUMAN_BOARD_PASS 两份养锋实际首轮施放完成
+HUMAN_BOARD_PASS 首轮养锋两份得四层，指向化法只额外补一层
+HUMAN_BOARD_PASS 合法草稿提交 
+HUMAN_BOARD_PASS 养锋实际第二轮完成
+HUMAN_BOARD_PASS 养锋两轮到十层并按真实状态上限截断
+HUMAN_BOARD_PASS 人类对战进入真实配招
+HUMAN_BOARD_PASS 合法草稿提交 
+HUMAN_BOARD_PASS 满剑意尽锋实际施放完成
+HUMAN_BOARD_PASS 尽锋提高伤害仍在命中后清空剑意
+HUMAN_BOARD_PASS 尽锋仍从开战后实际法力扣除一点
+HUMAN_BOARD_PASS 人类对战进入真实配招
+HUMAN_BOARD_PASS 胜负场提交
+HUMAN_BOARD_PASS 真实最后一击结算至胜负，未额外扫空格
+HUMAN_BOARD_PASS 构造隔离兽战场景
+HUMAN_BOARD_PASS 妖兽未切入未定布阵，仍可沿原流程规划
+HUMAN_BOARD_PASS 同一场景由人类切回兽战时恢复原界面
+HUMAN_COMBAT_BOARD_SMOKE_OK checks=392

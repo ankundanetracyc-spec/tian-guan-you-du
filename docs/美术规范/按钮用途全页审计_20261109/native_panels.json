@@ -1,0 +1,1589 @@
+{
+  "date": "2026-11-09",
+  "workspace": "E:/stacklands",
+  "scope": "基础原生面板及对应独立样稿的只读按钮用途审计",
+  "authorTask": "/root/audit_button_native_panels",
+  "method": {
+    "source": "按相关索引读取文档，检索csharp/panel、csharp/scene和入口引用，并逐个核对按钮工厂/样式/动态状态；filesScanned包含完整阅读、局部阅读和定向检索文件，不等于全部逐行阅读。",
+    "visual": "查看9张已有截图，其中7张当前图作为证据、2张历史/中间阶段领取图只用于确认不应沿用。未启动游戏、未跑构建，未把旧验收计数计入本轮。",
+    "changes": "只写本JSON审计产物；不修改任何源文件或正式策划案。",
+    "authorization": "其余面板保持逐页独立样稿验收；普通交易由主线继续，百科暂缓，战斗/工艺/宗门设施不在此分工。"
+  },
+  "rolePolicy": [
+    {
+      "role": "Regular",
+      "purpose": "普通操作、同级筛选、互斥选择、目录条目；大小可变，材质不随宽度/字数切换"
+    },
+    {
+      "role": "Primary",
+      "purpose": "每个独立操作区一个主提交组；同一任务的并列执行方式可以同族Primary，不按按钮数量机械判错；不因选中、变宽或文字变化升格Primary。"
+    },
+    {
+      "role": "Navigation",
+      "purpose": "跨页/返回/上级导航；侧栏和已批准46高紧凑返回可登记不同尺寸变体"
+    },
+    {
+      "role": "Icon",
+      "purpose": "小型图标操作；已批准的装备/衣着等专用槽按其既定用途登记，不据新建议否定现有控件。"
+    },
+    {
+      "role": "Input",
+      "purpose": "文字/数字/选项输入；数值增减可用已批准裸三角"
+    }
+  ],
+  "summary": {
+    "panelEntries": 70,
+    "sourceFiles": 119,
+    "findings": 10,
+    "currentHighConfidence": [
+      "N01",
+      "N02",
+      "N03",
+      "N05"
+    ],
+    "migrationOrDeferred": [
+      "N06",
+      "N07",
+      "N08",
+      "N09",
+      "N10",
+      "N14"
+    ],
+    "widthBasedMaterialSwitch": "本分工当前InfoPanel/CultivationUI/Rest与新纸墨样稿未检出按按钮宽度或文字长度选Tab底材；发现的是共享PopupMenu硬编码Tab，不能混为宽度分支。",
+    "cleanCurrentSamples": [
+      "NPC纸墨样稿普通双列行动Regular一致",
+      "对白纸墨样稿回应整纸、旧ColorRect隐藏",
+      "信件纸墨样稿所有同级操作Regular一致",
+      "交易纸墨样稿唯一Primary＋Input数量＋Regular行，尚在主线处理中"
+    ],
+    "approvedRoleGroups": [
+      "归元九息：养成一息/连续养息为同一操作区、同一养息任务的并列Primary；继续闭关按实际阶段延续此主提交组。"
+    ]
+  },
+  "panels": [
+    {
+      "id": "character-overview",
+      "name": "人物·概览",
+      "status": "正式",
+      "source": "csharp/panel/InfoPanel.Paper.cs",
+      "line": 169,
+      "roles": {
+        "Navigation": "七页侧栏、行囊、返回",
+        "Regular": "查看立绘",
+        "Icon": "心境问号"
+      },
+      "notes": "七页侧栏按Navigation；紧凑顶栏返回沿批准46高形制，后续角色登记时作为紧凑导航变体保留。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "character-attributes",
+      "name": "人物·属性",
+      "status": "正式",
+      "source": "csharp/panel/InfoPanel.Attributes.cs",
+      "line": 26,
+      "roles": {
+        "Regular": "全部/武艺/术法/百工筛选",
+        "Input": "造诣搜索"
+      },
+      "notes": "同级筛选均Regular，无宽度选材质。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "character-battle-shell",
+      "name": "人物·战斗外层",
+      "status": "正式",
+      "source": "csharp/panel/InfoPanel.Redesign.cs",
+      "line": 171,
+      "roles": {
+        "Navigation": "七页公共导航",
+        "Regular": "现有正式普通按钮"
+      },
+      "notes": "战斗及新配招内部交由战斗审计；本项仅覆盖人物公共外层。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "character-gongfa",
+      "name": "人物·功法",
+      "status": "正式",
+      "source": "csharp/panel/InfoPanel.ManualLibrary.cs",
+      "line": 44,
+      "roles": {
+        "Regular": "秘籍筛选、关键词、重置、秘籍/卷章/分支选择",
+        "Navigation": "主辅修更换箭头",
+        "Input": "检索"
+      },
+      "notes": "整体Regular统一；内嵌更换箭头仅清除normal底。",
+      "findingIds": [
+        "N03"
+      ],
+      "evidence": "源码＋已有1280功法图；未新运行悬停态"
+    },
+    {
+      "id": "character-proficiency",
+      "name": "人物·造诣",
+      "status": "正式",
+      "source": "csharp/panel/InfoPanel.SkillLibrary.cs",
+      "line": 240,
+      "roles": {
+        "Regular": "脉面/图谱选择、复位",
+        "Icon": "缩放增减",
+        "Input": "检索"
+      },
+      "notes": "缩放±当前仍由CharacterButton提供Regular，宜在用途表登记为图标操作；本轮不改。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "character-equipment",
+      "name": "人物·装备",
+      "status": "正式",
+      "source": "csharp/panel/InfoPanel.EquipmentLayout.cs",
+      "line": 5,
+      "roles": {
+        "UniqueSlot": "武器、护具、器物、衣着与战备槽",
+        "Regular": "选择列表"
+      },
+      "notes": "当前装备/衣着专用槽用Icon材质，战备槽用Regular，均为已实装人物专用控件；登记各槽用途与状态边界，不依据尺寸或按钮Text为空推定改型。没有发现运行时按宽度换材质。",
+      "findingIds": [],
+      "evidence": "源码＋已有1280衣着弹层图"
+    },
+    {
+      "id": "character-relations",
+      "name": "人物·关系",
+      "status": "正式",
+      "source": "csharp/panel/InfoPanel.RelationsLayout.cs",
+      "line": 74,
+      "roles": {
+        "Regular": "人物条目、关系筛选"
+      },
+      "notes": "人物条目与筛选均Regular；同类按钮一致。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "character-npc-overview",
+      "name": "人物·NPC只读概览",
+      "status": "正式",
+      "source": "csharp/panel/InfoPanel.Overview.cs",
+      "line": 80,
+      "roles": {
+        "Regular": "交谈、交易等现有动作",
+        "Navigation": "可见概览/属性导航"
+      },
+      "notes": "同级行动均Regular；未把NPC资料当新增独立玩家模板。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "character-npc-probe",
+      "name": "人物·NPC属性快照",
+      "status": "正式",
+      "source": "csharp/panel/InfoPanel.NpcProbe.cs",
+      "line": 1,
+      "roles": {
+        "Navigation": "返回/分页"
+      },
+      "notes": "复用人物外层；当前浅纸承托已在11月9日资料登记。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "character-mood",
+      "name": "人物·心境详情弹层",
+      "status": "正式",
+      "source": "csharp/panel/InfoPanel.Overview.cs",
+      "line": 16,
+      "roles": {
+        "Navigation": "返回"
+      },
+      "notes": "只读说明不设Primary。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "character-portrait",
+      "name": "人物·查看立绘弹层",
+      "status": "正式",
+      "source": "csharp/panel/InfoPanel.Paper.cs",
+      "line": 219,
+      "roles": {
+        "Icon": "关闭"
+      },
+      "notes": "复用人物选择弹层。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "character-picker",
+      "name": "人物·秘籍/装备/武器选择弹层",
+      "status": "正式",
+      "source": "csharp/panel/InfoPanel.ManualLibrary.cs",
+      "line": 181,
+      "roles": {
+        "Regular": "即时选择条目",
+        "Icon": "关闭",
+        "Input": "可见检索"
+      },
+      "notes": "点击条目即选择；不凭空增加确认步骤。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "character-learn",
+      "name": "人物·节点参悟详情",
+      "status": "正式",
+      "source": "csharp/panel/InfoPanel.SkillLibrary.cs",
+      "line": 489,
+      "roles": {
+        "Icon": "关闭",
+        "Regular": "参悟此节点；当前人物普通操作"
+      },
+      "notes": "当前Regular已随人物页实装；只登记用途，不依据新建议要求升Primary或新增确认。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "character-wardrobe",
+      "name": "人物·衣着弹层",
+      "status": "正式",
+      "source": "csharp/panel/WardrobePicker.cs",
+      "line": 54,
+      "roles": {
+        "Input": "衣着下拉",
+        "Regular": "取消、换上；当前批准的普通操作"
+      },
+      "notes": "InfoPanel显式UsePaperControls=true；当前输入为Input、两颗操作均Regular；按已批准人物页普通操作边界保留，不机械补Primary。",
+      "findingIds": [],
+      "evidence": "源码＋已有1280衣着弹层图"
+    },
+    {
+      "id": "quiet-practice",
+      "name": "静室·吐纳修行",
+      "status": "正式",
+      "source": "csharp/panel/CultivationUI.Paper.cs",
+      "line": 123,
+      "roles": {
+        "Navigation": "吐纳/研读/突破侧栏、返回",
+        "Regular": "四种安排、最近应邀日期",
+        "Primary": "开始修炼",
+        "Input": "缕数/天数/日期"
+      },
+      "notes": "四种安排已使用齐边Regular；数值为纸槽＋裸三角。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "quiet-study",
+      "name": "静室·功法研读",
+      "status": "正式",
+      "source": "csharp/panel/CultivationUI.Paper.cs",
+      "line": 177,
+      "roles": {
+        "Regular": "书目/卷章",
+        "Primary": "开始研读",
+        "Navigation": "侧栏/返回"
+      },
+      "notes": "同级书目、卷章均Regular；选择不按宽度变折角。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "quiet-breakthrough",
+      "name": "静室·闭关突破",
+      "status": "正式",
+      "source": "csharp/panel/CultivationUI.Paper.cs",
+      "line": 207,
+      "roles": {
+        "Input": "突破丹药下拉",
+        "Primary": "闭关突破",
+        "Navigation": "侧栏/返回"
+      },
+      "notes": "Input本体正确；下拉PopupMenu继承共享Tab高亮。",
+      "findingIds": [
+        "N01"
+      ],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "quiet-yuanxi",
+      "name": "静室·归元九息",
+      "status": "正式",
+      "source": "csharp/panel/CultivationUI.Paper.cs",
+      "line": 283,
+      "roles": {
+        "Primary": "已批准同一主提交组：养成一息/连续养息；阶段延续：继续闭关",
+        "Regular": "出关",
+        "Input": "养至息数"
+      },
+      "notes": "同一养息任务的并列执行方式允许同族Primary；不按数量判问题。代码按既定动作文字映射角色，当前没有因选中/宽度临时升Primary的证据。",
+      "findingIds": [],
+      "evidence": "源码＋已有1280归元九息图"
+    },
+    {
+      "id": "quiet-chapter",
+      "name": "静室·章节阅读弹层",
+      "status": "正式",
+      "source": "csharp/panel/CultivationUI.Paper.cs",
+      "line": 272,
+      "roles": {
+        "Navigation": "返回"
+      },
+      "notes": "只读阅读；无需Primary。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "quiet-hidden",
+      "name": "静室·修命/修性/灵感",
+      "status": "延期隐藏",
+      "source": "csharp/panel/CultivationUI.Inspiration.cs",
+      "line": 1,
+      "roles": {
+        "Legacy": "未显示旧控件"
+      },
+      "notes": "当前主案要求继续隐藏；旧QuietRoomStyle和圆角按钮不列为生产问题。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "rest-duration",
+      "name": "休息·按时长",
+      "status": "正式",
+      "source": "csharp/panel/RestPanel.cs",
+      "line": 45,
+      "roles": {
+        "Regular": "三种方式（剧情限定隐藏）",
+        "Primary": "开始休息",
+        "Input": "时长/日期",
+        "Navigation": "返回"
+      },
+      "notes": "模式统一Regular；一个开始操作；数字用RestPaperNumber及裸三角。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "rest-date",
+      "name": "休息·指定日期",
+      "status": "正式",
+      "source": "csharp/panel/RestPanel.cs",
+      "line": 45,
+      "roles": {
+        "Regular": "三种方式（剧情限定隐藏）",
+        "Primary": "开始休息",
+        "Input": "时长/日期",
+        "Navigation": "返回"
+      },
+      "notes": "模式统一Regular；一个开始操作；数字用RestPaperNumber及裸三角。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "rest-full",
+      "name": "休息·精力回满",
+      "status": "正式",
+      "source": "csharp/panel/RestPanel.cs",
+      "line": 45,
+      "roles": {
+        "Regular": "三种方式（剧情限定隐藏）",
+        "Primary": "开始休息",
+        "Input": "时长/日期",
+        "Navigation": "返回"
+      },
+      "notes": "模式统一Regular；一个开始操作；数字用RestPaperNumber及裸三角。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "rest-story",
+      "name": "休息·剧情限定",
+      "status": "正式",
+      "source": "csharp/panel/RestPanel.cs",
+      "line": 45,
+      "roles": {
+        "Regular": "三种方式（剧情限定隐藏）",
+        "Primary": "开始休息",
+        "Input": "时长/日期",
+        "Navigation": "返回"
+      },
+      "notes": "模式统一Regular；一个开始操作；数字用RestPaperNumber及裸三角。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "inventory",
+      "name": "行囊·五区空间与清册",
+      "status": "正式",
+      "source": "csharp/panel/StoragePanel.Native.cs",
+      "line": 36,
+      "roles": {
+        "Regular": "分类、目录条目",
+        "Input": "搜索",
+        "Navigation": "返回、分类滑动箭头"
+      },
+      "notes": "浅绢v5与200格保持；返回仍左上旧圆形箭头，属于后续逐页导航迁移项。",
+      "findingIds": [
+        "N07"
+      ],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "storage-bag",
+      "name": "储物袋·暗罩子页",
+      "status": "正式",
+      "source": "csharp/panel/StoragePanel.StorageBags.cs",
+      "line": 23,
+      "roles": {
+        "Navigation": "返回行囊/上层返回",
+        "Regular": "物品动作"
+      },
+      "notes": "沿行囊现有纸行与动作菜单；内腔/命名规则不在按钮审计变更范围。",
+      "findingIds": [
+        "N07"
+      ],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "inventory-popup",
+      "name": "行囊·物品动作菜单",
+      "status": "正式",
+      "source": "csharp/panel/StoragePanel.View.cs",
+      "line": 150,
+      "roles": {
+        "Regular": "使用/装备等动作、取消"
+      },
+      "notes": "现行27字/52高约定优先；不可用全局22字/46高默认值覆盖。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "claim",
+      "name": "领取·待领取与五区行囊",
+      "status": "正式",
+      "source": "csharp/panel/ItemClaimPanel.View.cs",
+      "line": 7,
+      "roles": {
+        "Regular": "待领取条目、自动放入",
+        "Primary": "确认领取",
+        "Navigation": "返回"
+      },
+      "notes": "常态主按钮被覆为纯绿；其余状态仍目录行底。右侧绢布已认可并保持。",
+      "findingIds": [
+        "N02",
+        "N07"
+      ],
+      "evidence": "源码＋已有1280浅绢统一图；悬停/按下态仅源码推断"
+    },
+    {
+      "id": "claim-leave",
+      "name": "领取·结束/放弃确认",
+      "status": "正式",
+      "source": "csharp/panel/ItemClaimPanel.cs",
+      "line": 194,
+      "roles": {
+        "Primary": "结束领取",
+        "Regular": "继续整理"
+      },
+      "notes": "原生ConfirmationDialog无显式纸面与按钮分工，列为此页下次样稿必须覆盖的浮层。",
+      "findingIds": [
+        "N06"
+      ],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "trade-formal",
+      "name": "普通交易·四列目录",
+      "status": "正式",
+      "source": "csharp/panel/TradePanel.cs",
+      "line": 94,
+      "roles": {
+        "Regular": "来源/核对条目",
+        "Input": "数量",
+        "Primary": "交易",
+        "Navigation": "返回"
+      },
+      "notes": "正式旧帮助函数把返回和成交同走QuietRoomStyle.Primary；新样稿已分开，主线正在处理交易，本审计不改。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "trade-quantity",
+      "name": "普通交易·数量输入",
+      "status": "正式",
+      "source": "csharp/panel/TradePanel.cs",
+      "line": 243,
+      "roles": {
+        "Input": "SpinBox数量"
+      },
+      "notes": "正式页仍原SpinBox；新样稿显式QuietRoomNumber，不能据此宣称正式页已迁移。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "trade-paper",
+      "name": "普通交易纸墨木石样稿",
+      "status": "当前独立样稿",
+      "source": "csharp/scene/TradePaperPreviewPanel.cs",
+      "line": 14,
+      "roles": {
+        "Regular": "来源/核对行",
+        "Input": "QuietRoomNumber数量",
+        "Primary": "唯一成交",
+        "Navigation": "46高返回"
+      },
+      "notes": "当前主线文件可能继续更新；只读核对角色分型，未运行、未修改。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "npc-formal",
+      "name": "NPC局部人物菜单",
+      "status": "正式",
+      "source": "csharp/panel/NpcInteractionPanel.cs",
+      "line": 277,
+      "roles": {
+        "Regular": "交谈/交易/切磋/探查/攻击及二步操作",
+        "Icon": "关闭"
+      },
+      "notes": "正式纯色完整按钮仍用原实现；新样稿尚未接入。不仅因纯色就认定缺陷。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "npc-paper",
+      "name": "NPC局部人物纸墨木石样稿",
+      "status": "当前独立样稿",
+      "source": "csharp/scene/NpcInteractionPaperCardPreview.cs",
+      "line": 46,
+      "roles": {
+        "Regular": "双列同级行动与名单",
+        "Navigation": "返回"
+      },
+      "notes": "同排普通行动统一Regular；攻击语义以文字/原因保留，不擅自升为Primary。",
+      "findingIds": [],
+      "evidence": "源码＋已有1280同门人物页图"
+    },
+    {
+      "id": "dialogue-formal",
+      "name": "剧情·底部对白与独立回应",
+      "status": "正式",
+      "source": "csharp/panel/StoryDialoguePanel.Choices.cs",
+      "line": 40,
+      "roles": {
+        "Regular": "独立回应"
+      },
+      "notes": "回应文字后仍有内缩ColorRect；新样稿已隐藏此块。",
+      "findingIds": [
+        "N08"
+      ],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "dialogue-paper",
+      "name": "剧情对白纸墨木石样稿",
+      "status": "当前独立样稿",
+      "source": "csharp/scene/StoryDialoguePaperPreviewPanel.cs",
+      "line": 35,
+      "roles": {
+        "Regular": "独立回应",
+        "Navigation": "右上返回"
+      },
+      "notes": "整纸Normal/Hover/Pressed；SkinResponses隐藏旧ColorRect。",
+      "findingIds": [],
+      "evidence": "源码＋已有1280独立回应图"
+    },
+    {
+      "id": "dialogue-social",
+      "name": "人物交往·全屏过程及迎真回应",
+      "status": "正式专用流程",
+      "source": "csharp/panel/StoryDialoguePanel.Social.cs",
+      "line": 53,
+      "roles": {
+        "Regular": "同级回应/完成",
+        "Navigation": "退出/返回"
+      },
+      "notes": "黑幕社交过程不在底部对白样稿范围；深墨按钮需以后按该专用页评审，不自行套普通整页外框。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "letters-formal",
+      "name": "信件与邀约·正式信匣",
+      "status": "正式",
+      "source": "csharp/panel/LetterPanel.cs",
+      "line": 126,
+      "roles": {
+        "Regular": "全部/未读/邀约、排序、应答、已读",
+        "Input": "搜索",
+        "Navigation": "旧返回"
+      },
+      "notes": "旧正式页和当前样稿分开；当前样稿未替换旅程入口。",
+      "findingIds": [
+        "N07"
+      ],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "letters-paper",
+      "name": "信件与邀约纸墨木石样稿",
+      "status": "当前独立样稿",
+      "source": "csharp/scene/LetterPaperPreviewScene.cs",
+      "line": 42,
+      "roles": {
+        "Regular": "分类/排序/信件条目/应邀婉拒/已读",
+        "Input": "搜索",
+        "Navigation": "右上返回"
+      },
+      "notes": "ActionButton固定Regular，不按尺寸换材质；应答为同级选择，不额外强设Primary。",
+      "findingIds": [],
+      "evidence": "源码＋已有1280初开图"
+    },
+    {
+      "id": "journal-rumors",
+      "name": "见闻·传闻",
+      "status": "正式；新网页样稿暂存",
+      "source": "csharp/panel/JournalPanel.cs",
+      "line": 59,
+      "roles": {
+        "Navigation": "五类侧栏/返回",
+        "Regular": "条目、进行中/已完成、追踪/取消追踪"
+      },
+      "notes": "新网页样稿未接原生；旧选中条目及筛选使用左3px边线。",
+      "findingIds": [
+        "N09"
+      ],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "journal-records",
+      "name": "见闻·行记",
+      "status": "正式；新网页样稿暂存",
+      "source": "csharp/panel/JournalPanel.cs",
+      "line": 59,
+      "roles": {
+        "Navigation": "五类侧栏/返回",
+        "Regular": "条目、进行中/已完成、追踪/取消追踪"
+      },
+      "notes": "新网页样稿未接原生；旧选中条目及筛选使用左3px边线。",
+      "findingIds": [
+        "N09"
+      ],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "journal-people",
+      "name": "见闻·人物",
+      "status": "正式；新网页样稿暂存",
+      "source": "csharp/panel/JournalPanel.cs",
+      "line": 59,
+      "roles": {
+        "Navigation": "五类侧栏/返回",
+        "Regular": "条目、进行中/已完成、追踪/取消追踪"
+      },
+      "notes": "新网页样稿未接原生；旧选中条目及筛选使用左3px边线。",
+      "findingIds": [
+        "N09"
+      ],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "journal-events",
+      "name": "见闻·异动",
+      "status": "正式；新网页样稿暂存",
+      "source": "csharp/panel/JournalPanel.cs",
+      "line": 59,
+      "roles": {
+        "Navigation": "五类侧栏/返回",
+        "Regular": "条目、进行中/已完成、追踪/取消追踪"
+      },
+      "notes": "新网页样稿未接原生；旧选中条目及筛选使用左3px边线。",
+      "findingIds": [
+        "N09"
+      ],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "journal-tasks",
+      "name": "见闻·任务（进行中/已完成）",
+      "status": "正式；新网页样稿暂存",
+      "source": "csharp/panel/JournalPanel.cs",
+      "line": 59,
+      "roles": {
+        "Navigation": "五类侧栏/返回",
+        "Regular": "条目、进行中/已完成、追踪/取消追踪"
+      },
+      "notes": "新网页样稿未接原生；旧选中条目及筛选使用左3px边线。",
+      "findingIds": [
+        "N09"
+      ],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "journal-reserved",
+      "name": "见闻·地志/势力/妖录/灵物/旧闻占位",
+      "status": "正式占位入口",
+      "source": "csharp/panel/JournalPanel.cs",
+      "line": 76,
+      "roles": {
+        "Navigation": "占位入口"
+      },
+      "notes": "这些入口只显示待续说明；不是五个已有内容页，不作为已完成新页面。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "encyclopedia-status",
+      "name": "修行百科·状态",
+      "status": "正式；用户暂缓改造",
+      "source": "csharp/panel/EncyclopediaPanel.cs",
+      "line": 345,
+      "roles": {
+        "Navigation": "四大类/返回",
+        "Regular": "分类与条目",
+        "Input": "搜索",
+        "Icon": "动画控制"
+      },
+      "notes": "旧类别采用暗底/金黄选中；仅登记，按用户要求不推进百科样稿。",
+      "findingIds": [
+        "N10"
+      ],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "encyclopedia-items",
+      "name": "修行百科·物品",
+      "status": "正式；用户暂缓改造",
+      "source": "csharp/panel/EncyclopediaPanel.cs",
+      "line": 345,
+      "roles": {
+        "Navigation": "四大类/返回",
+        "Regular": "分类与条目",
+        "Input": "搜索",
+        "Icon": "动画控制"
+      },
+      "notes": "旧类别采用暗底/金黄选中；仅登记，按用户要求不推进百科样稿。",
+      "findingIds": [
+        "N10"
+      ],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "encyclopedia-beasts",
+      "name": "修行百科·生灵",
+      "status": "正式；用户暂缓改造",
+      "source": "csharp/panel/EncyclopediaPanel.cs",
+      "line": 345,
+      "roles": {
+        "Navigation": "四大类/返回",
+        "Regular": "分类与条目",
+        "Input": "搜索",
+        "Icon": "动画控制"
+      },
+      "notes": "旧类别采用暗底/金黄选中；仅登记，按用户要求不推进百科样稿。",
+      "findingIds": [
+        "N10"
+      ],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "encyclopedia-terms",
+      "name": "修行百科·术语",
+      "status": "正式；用户暂缓改造",
+      "source": "csharp/panel/EncyclopediaPanel.cs",
+      "line": 345,
+      "roles": {
+        "Navigation": "四大类/返回",
+        "Regular": "分类与条目",
+        "Input": "搜索",
+        "Icon": "动画控制"
+      },
+      "notes": "旧类别采用暗底/金黄选中；仅登记，按用户要求不推进百科样稿。",
+      "findingIds": [
+        "N10"
+      ],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "settings",
+      "name": "设置·首页与暂停共用",
+      "status": "正式",
+      "source": "csharp/panel/GameSettingsPanel.cs",
+      "line": 54,
+      "roles": {
+        "Input": "显示/分辨率/信息模式下拉与音量",
+        "Regular": "恢复默认",
+        "Navigation": "返回"
+      },
+      "notes": "设置即时保存，无需增加应用Primary；当前恢复默认与返回都被SettingsButton主材质工厂覆盖。",
+      "findingIds": [
+        "N05"
+      ],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "creation-appearance",
+      "name": "新旅程·形貌姓名",
+      "status": "正式",
+      "source": "csharp/panel/StartMenu.Creation.cs",
+      "line": 175,
+      "roles": {
+        "Navigation": "三页导航/返回/下一页",
+        "Regular": "男修女修/随机组合/恢复基准",
+        "Input": "姓名/部件选项",
+        "Icon": "部件左右步进"
+      },
+      "notes": "与当前入世共用一个next按钮，其文字变为下一页/入世；建议以后分别明确Navigation/Primary语义。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "creation-aptitude",
+      "name": "新旅程·天资灵根",
+      "status": "正式",
+      "source": "csharp/panel/StartMenu.Creation.cs",
+      "line": 371,
+      "roles": {
+        "Regular": "重抽资质/重抽灵根/保存载入",
+        "Input": "点数/选项",
+        "Icon": "属性增加"
+      },
+      "notes": "属性增加为带圆框“+”，参数选项为带圆框三角；属于以后逐页样稿的旧控件项。",
+      "findingIds": [
+        "N14"
+      ],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "creation-proficiency",
+      "name": "新旅程·初始造诣",
+      "status": "正式",
+      "source": "csharp/panel/StartMenu.CreationProficiencies.cs",
+      "line": 6,
+      "roles": {
+        "Input": "九项滑条与数值",
+        "Regular": "恢复为5",
+        "Primary": "入世（最终页）"
+      },
+      "notes": "已具有唯一最终提交；未因数值输入窄而换纸签。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "pause",
+      "name": "暂停主菜单",
+      "status": "正式",
+      "source": "csharp/autoload/GameplayInputRouter.cs",
+      "line": 214,
+      "roles": {
+        "Regular": "继续/保存/设置",
+        "Navigation": "返回首页"
+      },
+      "notes": "所有按钮由SettingsButton产生主材质。",
+      "findingIds": [
+        "N05"
+      ],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "pause-home",
+      "name": "暂停·保存后返回首页确认",
+      "status": "正式",
+      "source": "csharp/autoload/GameplayInputRouter.cs",
+      "line": 234,
+      "roles": {
+        "Primary": "保存并返回首页",
+        "Regular": "不保存返回/取消"
+      },
+      "notes": "当前确认层所有按钮经过SettingsButton主材质工厂；登记角色差异，不能仅因同屏多颗主按钮判问题。",
+      "findingIds": [
+        "N05"
+      ],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "pause-retry",
+      "name": "暂停·保存失败重试",
+      "status": "正式",
+      "source": "csharp/autoload/GameplayInputRouter.cs",
+      "line": 311,
+      "roles": {
+        "Primary": "再试一次保存",
+        "Regular": "不保存返回/取消"
+      },
+      "notes": "共用SettingsButton；保留失败和保存行为。",
+      "findingIds": [
+        "N05"
+      ],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "load",
+      "name": "首页·载入存档",
+      "status": "正式",
+      "source": "csharp/panel/StartMenu.cs",
+      "line": 154,
+      "roles": {
+        "Navigation": "存档条目/返回"
+      },
+      "notes": "所有条目和返回由PlainButton生成；列表点击直接载入，不自行增加确认或删除按钮。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "title",
+      "name": "首页·主菜单与背景选择",
+      "status": "正式独有构图",
+      "source": "csharp/panel/StartMenu.Visual.cs",
+      "line": 28,
+      "roles": {
+        "Primary": "新旅程",
+        "Navigation": "载入/百科/设置/退出",
+        "Regular": "背景三选一"
+      },
+      "notes": "主菜单NewSave为唯一primary，其他菜单用secondary；保留首页专用构图，不因图集不同判错。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "title-previews",
+      "name": "首页·试演与预览目录",
+      "status": "正式可达的开发入口",
+      "source": "csharp/panel/StartMenu.Visual.cs",
+      "line": 123,
+      "roles": {
+        "Navigation": "预览入口/返回首页",
+        "Regular": "分组展开折叠"
+      },
+      "notes": "分组覆为secondary，但各预览入口/返回仍SettingsButton primary；作为开发目录而非正式玩法页记录。",
+      "findingIds": [
+        "N05"
+      ],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "journey-failure",
+      "name": "新旅程·入世失败返回",
+      "status": "正式错误页",
+      "source": "csharp/panel/JourneyCreationLoadingView.cs",
+      "line": 72,
+      "roles": {
+        "Navigation": "返回首页"
+      },
+      "notes": "旧轻控件＋米白字；加载暗墨/金环批准保留，错误返回可作为专用导航变体以后验收。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "loading",
+      "name": "场景加载与转场",
+      "status": "正式专用表现",
+      "source": "csharp/panel/SceneLoadingScreen.cs",
+      "line": 1,
+      "roles": {},
+      "notes": "无常规交互按钮；已批准深墨和暗旧金笔环，不列待统一。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "appearance-retained",
+      "name": "外观编辑AppearanceEditor",
+      "status": "保留实现；未发现当前入口",
+      "source": "csharp/panel/AppearanceEditor.cs",
+      "line": 6,
+      "roles": {
+        "Regular": "随机/取消",
+        "Primary": "应用",
+        "Icon": "关闭/左右参数箭头"
+      },
+      "notes": "跨csharp/tscn/scripts检索只见类定义与内部节点名；不是当前生产面板。应用只改normal的遗留样式不计生产问题。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "appearance-test",
+      "name": "人物立绘·部件搭配测试",
+      "status": "当前独立开发预览",
+      "source": "csharp/panel/CharacterAppearanceTest.cs",
+      "line": 4,
+      "roles": {
+        "Regular": "测试开关/随机等",
+        "Input": "部件下拉",
+        "Navigation": "返回首页"
+      },
+      "notes": "StartMenu.cs:131可达；调试控件不用作玩家正式页面的迁移验收。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "appearance-lab",
+      "name": "外观实验室",
+      "status": "保留开发场景",
+      "source": "csharp/panel/AppearanceLab.cs",
+      "line": 4,
+      "roles": {
+        "Navigation": "返回开始界面"
+      },
+      "notes": "独立tscn场景存在，未发现正式玩法挂载。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "appearance-renderer",
+      "name": "AppearancePreview",
+      "status": "非交互展示组件",
+      "source": "csharp/panel/AppearancePreview.cs",
+      "line": 1,
+      "roles": {},
+      "notes": "未发现按钮创建；不另算玩家页面。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "preview-character",
+      "name": "角色概览独立验收场景",
+      "status": "开发预览；复用当前InfoPanel",
+      "source": "csharp/scene/CharacterOverviewPreviewScene.cs",
+      "line": 4,
+      "roles": {
+        "Inherited": "正式人物按钮"
+      },
+      "notes": "旧名称不代表另一份当前人物皮肤；按钮由InfoPanel决定。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "preview-quietresttrade",
+      "name": "静室/休息/交易旧组合验收场景",
+      "status": "历史夹具；运行时复用现行类",
+      "source": "csharp/scene/QuietRoomRestTradePreviewScene.cs",
+      "line": 59,
+      "roles": {
+        "Inherited": "CultivationUI/RestPanel/TradePanel"
+      },
+      "notes": "10月14日目录图不能当作当前状态；该脚本仍实例化当前三类，不重复报告按钮问题。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "preview-letters-old",
+      "name": "LettersPreviewScene旧信件夹具",
+      "status": "开发预览；复用正式旧LetterPanel",
+      "source": "csharp/scene/LettersPreviewScene.cs",
+      "line": 39,
+      "roles": {
+        "Inherited": "旧正式信件按钮"
+      },
+      "notes": "区别于当前LetterPaperPreview；不能把旧夹具当新样稿。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "preview-social",
+      "name": "人物交往试演目录",
+      "status": "当前独立开发预览",
+      "source": "csharp/scene/NpcSocialPreviewScene.cs",
+      "line": 115,
+      "roles": {
+        "Navigation": "各试演入口/返回首页"
+      },
+      "notes": "StartMenu试演入口可达；按钮使用自己的MakeButton，均属同级目录；不当作局部NPC新样稿。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    },
+    {
+      "id": "preview-claim",
+      "name": "ItemClaimPreviewScene领取夹具",
+      "status": "开发预览；复用正式ItemClaimPanel",
+      "source": "csharp/scene/ItemClaimPreviewScene.cs",
+      "line": 22,
+      "roles": {
+        "Inherited": "领取按钮"
+      },
+      "notes": "夹具不构成第二份领取UI。",
+      "findingIds": [],
+      "evidence": "源码核对；本轮未新运行"
+    }
+  ],
+  "findings": [
+    {
+      "id": "N01",
+      "category": "当前共享控件",
+      "confidence": "高",
+      "file": "csharp/panel/CraftingPaperStyle.cs",
+      "line": 296,
+      "controls": "PopupMenu悬停选项；静室突破丹药下拉等继承MakeTheme的菜单",
+      "current": "PopupMenu.hover明确调用ButtonStyle(ButtonKind.Tab, Selected)，仍取button_tab.png旧折角纸签。下拉输入本体已是Input，菜单同级选择却借旧Tab底材。",
+      "recommendation": "以后获批修订时将菜单选项固定登记为Regular整纸选择；保持输入本体Input，不以菜单项字数或宽度改材质。不要批量改已批准专用PNG。",
+      "evidence": "源码；未展开下拉实看",
+      "related": [
+        {
+          "file": "csharp/panel/CultivationUI.Paper.cs",
+          "line": 222
+        },
+        {
+          "file": "csharp/panel/CraftingPaperStyle.cs",
+          "line": 23
+        }
+      ],
+      "panels": [
+        "quiet-breakthrough"
+      ]
+    },
+    {
+      "id": "N02",
+      "category": "当前控件跨状态换底材",
+      "confidence": "高",
+      "file": "csharp/panel/ItemClaimPanel.View.cs",
+      "line": 44,
+      "controls": "ClaimFooterPrimary/确认领取",
+      "current": "style_button先给全部状态套目录纸行；随后只将normal覆盖为纯绿圆角色块并将常态文字改米白。hover/pressed仍是index_row_selected纸行、深墨字。一个核心提交跨状态换了两种底材。",
+      "recommendation": "下一次领取页样稿将“确认领取”固定Primary，并为常态/悬停/按下/禁用保留同一主按钮纸面；自动放入与目录条目保持Regular。",
+      "evidence": "源码＋已有浅绢统一1280常态截图；状态跳变依据源码，未新运行",
+      "related": [
+        {
+          "file": "csharp/panel/ItemClaimPanel.View.cs",
+          "line": 77
+        }
+      ],
+      "panels": [
+        "claim"
+      ]
+    },
+    {
+      "id": "N03",
+      "category": "当前控件局部状态遗留",
+      "confidence": "高",
+      "file": "csharp/panel/InfoPanel.ManualLibrary.cs",
+      "line": 88,
+      "controls": "主修/辅修行右侧“›”更换按钮",
+      "current": "由CharacterButton先套全部Regular状态，仅normal又覆盖StyleBoxEmpty；鼠标移入或按下时会恢复普通纸面，与常态裸箭头不一致。",
+      "recommendation": "按用途将其登记为紧凑Navigation或Icon；同一控件五态固定底材，若保留裸箭头则全部状态均保持裸形制。",
+      "evidence": "源码＋已有1280功法图的裸箭头常态；未新运行悬停态",
+      "related": [
+        {
+          "file": "csharp/panel/InfoPanel.Redesign.cs",
+          "line": 91
+        }
+      ],
+      "panels": [
+        "character-gongfa"
+      ]
+    },
+    {
+      "id": "N05",
+      "category": "同用途在不同按钮工厂中分型不一致",
+      "confidence": "高",
+      "file": "csharp/panel/StartMenu.Settings.cs",
+      "line": 102,
+      "controls": "设置恢复默认/返回；暂停继续/保存/设置/返回首页；保存返回确认/重试；预览目录",
+      "current": "SettingsButton无用途参数，normal/hover/pressed均无条件MenuPaperButtonStyle(true)。同属返回/目录导航，首页主菜单可分secondary，而设置返回、暂停返回首页、预览目录返回却全走主材质。问题是工厂不识别用途，不是同屏主按钮数量本身。",
+      "recommendation": "后续相关页样稿显式登记操作区及主提交组，再使工厂接收用途/角色而不是固定true；同一任务的并列执行允许同族Primary，返回和普通目录保持自己的固定材质。设置即时保存不新增应用步骤，首页构图保持。",
+      "evidence": "源码；本轮未查看设置/暂停实机",
+      "related": [
+        {
+          "file": "csharp/panel/GameSettingsPanel.cs",
+          "line": 147
+        },
+        {
+          "file": "csharp/autoload/GameplayInputRouter.cs",
+          "line": 220
+        },
+        {
+          "file": "csharp/autoload/GameplayInputRouter.cs",
+          "line": 243
+        },
+        {
+          "file": "csharp/panel/StartMenu.Visual.cs",
+          "line": 34
+        }
+      ],
+      "panels": [
+        "settings",
+        "pause",
+        "pause-home",
+        "pause-retry",
+        "title-previews"
+      ]
+    },
+    {
+      "id": "N06",
+      "category": "旧正式页待逐页样稿",
+      "confidence": "高",
+      "file": "csharp/panel/ItemClaimPanel.cs",
+      "line": 202,
+      "controls": "结束领取确认：结束领取/继续整理",
+      "current": "直接创建ConfirmationDialog，只设置两颗按钮文本；此处未显式采用领取页纸面与Primary/Regular用途。",
+      "recommendation": "领取页下次完整样稿必须连同此确认层一起验收：结束领取Primary，继续整理Regular；保留原放弃提示与事务边界。本轮不替换。",
+      "evidence": "源码；弹层本轮未实看",
+      "panels": [
+        "claim-leave"
+      ]
+    },
+    {
+      "id": "N07",
+      "category": "旧正式页导航待逐页样稿",
+      "confidence": "高",
+      "file": "csharp/panel/StoragePanel.Native.cs",
+      "line": 45,
+      "controls": "行囊、领取、旧正式信件的返回",
+      "current": "仍在左上用‹/←加gongfa_back_button_v1圆形素材，分别沿旧尺寸；与右上46高“返回＋右三角”的现行页级约定不同。新人物、静室、休息及当前独立样稿已用新约定。",
+      "recommendation": "在各自页面样稿获批时迁移为登记过的紧凑Navigation；浅绢及收纳布局保持。不因此批量改动旧正式页。",
+      "evidence": "源码＋已有浅绢领取图；行囊和信件本轮未新运行",
+      "related": [
+        {
+          "file": "csharp/panel/ItemClaimPanel.View.cs",
+          "line": 16
+        },
+        {
+          "file": "csharp/panel/LetterPanel.cs",
+          "line": 136
+        }
+      ],
+      "panels": [
+        "inventory",
+        "storage-bag",
+        "claim",
+        "letters-formal"
+      ]
+    },
+    {
+      "id": "N08",
+      "category": "旧正式页已有独立候选",
+      "confidence": "高",
+      "file": "csharp/panel/StoryDialoguePanel.Choices.cs",
+      "line": 48,
+      "controls": "正式剧情独立回应",
+      "current": "正文按钮normal/hover/pressed设为空，再在文字背后放内缩6px ColorRect；当前新样稿SkinResponses已隐藏该块并使用Regular整纸。",
+      "recommendation": "旧正式入口保持，待底部对白样稿验收后再决定接入；不能把独立样稿修复表述为正式剧情已统一。",
+      "evidence": "源码＋已有新样稿1280独立回应图；正式页本轮未实看",
+      "related": [
+        {
+          "file": "csharp/scene/StoryDialoguePaperPreviewPanel.cs",
+          "line": 43
+        }
+      ],
+      "panels": [
+        "dialogue-formal"
+      ]
+    },
+    {
+      "id": "N09",
+      "category": "旧正式页暂存边界",
+      "confidence": "高",
+      "file": "csharp/panel/JournalPanel.cs",
+      "line": 181,
+      "controls": "见闻条目、任务进行中/已完成筛选",
+      "current": "RowStyle选中仍添加3px左侧强调线并使用透明/平色底；旧侧栏另用infopanel_nav_plaque_clean_v2。当前网页案卷样稿尚未接入。",
+      "recommendation": "见闻页面获准推进时，条目与同级筛选固定Regular整纸选中，侧栏登记Navigation；按用户要求暂存，不批量迁移。",
+      "evidence": "源码；本轮未查看正式见闻实机",
+      "related": [
+        {
+          "file": "csharp/panel/JournalPanel.cs",
+          "line": 116
+        },
+        {
+          "file": "csharp/panel/JournalPanel.cs",
+          "line": 125
+        }
+      ],
+      "panels": [
+        "journal-rumors",
+        "journal-records",
+        "journal-people",
+        "journal-events",
+        "journal-tasks"
+      ]
+    },
+    {
+      "id": "N10",
+      "category": "用户暂缓系统",
+      "confidence": "高",
+      "file": "csharp/panel/EncyclopediaPanel.cs",
+      "line": 1427,
+      "controls": "百科四大类及条目",
+      "current": "类别选中采用黄褐实底/未选深色底，条目另有黄褐调制；并非当前整纸中灰绿语言。不是旧废稿，当前首页百科仍可达。",
+      "recommendation": "仅登记后续角色映射；用户明确跳过百科，本轮不做样稿、不改代码。未来区分类别Navigation、同级分类/条目Regular、输入Input、动画Icon。",
+      "evidence": "源码；本轮未查看百科实机",
+      "related": [
+        {
+          "file": "csharp/panel/EncyclopediaPanel.cs",
+          "line": 1400
+        },
+        {
+          "file": "csharp/panel/StartMenu.cs",
+          "line": 145
+        }
+      ],
+      "panels": [
+        "encyclopedia-status",
+        "encyclopedia-items",
+        "encyclopedia-beasts",
+        "encyclopedia-terms"
+      ]
+    },
+    {
+      "id": "N14",
+      "category": "旧正式表单控件待逐页样稿",
+      "confidence": "高",
+      "file": "csharp/panel/StartMenu.Creation.cs",
+      "line": 454,
+      "controls": "新旅程属性增加“+”及部件左右选择箭头",
+      "current": "属性数字增量调用style_creation_round生成36圆框+；部件选择另用34圆框三角。没有按Input数值增减与Icon部件步进分开登记。",
+      "recommendation": "创建页独立样稿时，数值输入固定Input，数值增减可用已批准裸三角；部件左右切换按Icon处理。不要全局替换所有三角，也不改配点规则。",
+      "evidence": "源码；本轮未实看创建页",
+      "related": [
+        {
+          "file": "csharp/panel/StartMenu.CreationControls.cs",
+          "line": 45
+        },
+        {
+          "file": "csharp/panel/StartMenu.CreationControls.cs",
+          "line": 66
+        }
+      ],
+      "panels": [
+        "creation-aptitude",
+        "creation-appearance"
+      ]
+    }
+  ],
+  "approvedExceptions": [
+    {
+      "id": "E01",
+      "name": "善功堂、藏经阁、凝核",
+      "status": "用户已批准保持；此分工未审计内部按钮",
+      "source": "docs/plans/界面与美术/全局界面统一风格规范_20261108.md"
+    },
+    {
+      "id": "E02",
+      "name": "数值增减裸三角及返回右侧小实心三角",
+      "status": "用户明确例外",
+      "source": "docs/plans/界面与美术/全局界面统一风格规范_20261108.md",
+      "implementation": [
+        "csharp/panel/QuietRoomTriangle.cs",
+        "csharp/panel/RestPaperControls.cs"
+      ]
+    },
+    {
+      "id": "E03",
+      "name": "场景加载的深墨与暗旧金笔环",
+      "status": "已确认专用表现；不能据此推广普通金色按钮",
+      "source": "docs/plans/界面与美术/全局界面统一风格规范_20261108.md"
+    },
+    {
+      "id": "E04",
+      "name": "物品操作菜单27字/52高、行囊浅绢v5",
+      "status": "已有确认尺寸与材质保留；不由全局默认值覆盖",
+      "source": "docs/plans/界面与美术/全局界面统一风格规范_20261108.md"
+    },
+    {
+      "id": "E05",
+      "name": "归元九息主提交组",
+      "status": "本轮父任务明确：同一任务并列执行方式允许同族主按钮，养成一息/连续养息登记为已批准主提交组；继续闭关按阶段延续",
+      "source": "用户当前会话经父任务补充的用途规划；优先于早先建议的“每页最多一颗Primary”"
+    }
+  ],
+  "exceptionCandidates": [
+    {
+      "name": "首页专用菜单纸面与社交黑幕按钮",
+      "status": "允许专用构图；这里只记录实际角色，不因未复用CraftingPaperStyle判错"
+    }
+  ],
+  "sourceStatusCorrections": [
+    {
+      "file": "csharp/panel/AppearanceEditor.cs",
+      "finding": "旧总盘点标为正式，但本轮csharp/tscn/scripts精确检索未找到实例化或场景挂载；仅当保留实现，不能报为当前生产缺陷。"
+    },
+    {
+      "file": "csharp/panel/InfoPanel.cs",
+      "finding": "旧静态页与旧按钮保留在源码；当前入口使用setup_character_paper/七页，不把隐藏旧控件重复计为正式问题。"
+    },
+    {
+      "file": "csharp/scene/QuietRoomRestTradePreviewScene.cs",
+      "finding": "场景名/输出目录日期旧，但实际实例化当前类；旧图片不能冒充当前实机。"
+    },
+    {
+      "file": "docs/美术规范/领取空间收纳_20261103/03_领取收纳_1280.png",
+      "finding": "图为120格并显示已不在当前源码中的“放弃剩余”，只作历史对照；当前结论使用200格浅绢统一图及现行源码。"
+    }
+  ],
+  "screenshotsReviewed": [
+    {
+      "file": "docs/美术规范/静室纸墨木石实装_20261108/静室_归元九息_1280.png",
+      "use": "当前：双Primary同屏"
+    },
+    {
+      "file": "docs/美术规范/信件邀约纸墨木石样稿_20261109/信件_信匣初开_1280.png",
+      "use": "当前独立样稿：同级Regular一致"
+    },
+    {
+      "file": "docs/美术规范/NPC交互纸墨木石样稿_20261109/人物交互_同门人物页_1280.png",
+      "use": "当前独立样稿：双列Regular一致"
+    },
+    {
+      "file": "docs/美术规范/角色纸墨木石实装_20261108/角色_功法_1280.png",
+      "use": "当前：主辅修裸箭头常态"
+    },
+    {
+      "file": "docs/美术规范/角色纸墨木石实装_20261108/角色_衣着_原生弹层_1280.png",
+      "use": "当前：Input下拉、取消与换上同Regular"
+    },
+    {
+      "file": "docs/美术规范/剧情对白纸墨木石样稿_20261109/剧情对白_独立回应_1280.png",
+      "use": "当前独立样稿：完整纸面回应"
+    },
+    {
+      "file": "docs/美术规范/领取左侧回收与拖动显隐_20261107/浅绢统一_实机/领取/03_领取收纳_1280.png",
+      "use": "当前：纯绿确认常态与200格浅绢；跨状态变化仅源码"
+    },
+    {
+      "file": "docs/美术规范/领取左侧回收与拖动显隐_20261107/统一待领取_实机/领取/03_领取收纳_1280.png",
+      "use": "中间阶段：200格但绢布尚未统一，不用作当前材质结论"
+    },
+    {
+      "file": "docs/美术规范/领取空间收纳_20261103/03_领取收纳_1280.png",
+      "use": "历史：120格及已撤按钮，不当当前问题"
+    }
+  ],
+  "filesScanned": [
+    "AGENTS.md",
+    "docs/README.md",
+    "docs/策划案摘要/README.md",
+    "docs/plans/界面与美术/全局界面统一风格规范_20261108.md",
+    "docs/plans/界面与美术/角色纸墨木石七页原生接入_20261108.md",
+    "docs/plans/界面与美术/剧情对白纸墨木石样稿_20261109.md",
+    "docs/plans/界面与美术/信件邀约纸墨木石样稿_20261109.md",
+    "docs/plans/界面与美术/NPC交互纸墨木石样稿_20261109.md",
+    "docs/plans/界面与美术/见闻任务纸墨木石样稿_20261108.md",
+    "docs/plans/界面与美术/普通交易纸墨木石样稿_20261109.md",
+    "docs/plans/界面与美术/休息纸墨木石样稿_20261108.md",
+    "docs/美术规范/全界面纸墨木石风格盘点_20261108/README.md",
+    "docs/美术规范/角色纸墨木石实装_20261108/README.md",
+    "docs/美术规范/静室纸墨木石实装_20261108/README.md",
+    "docs/美术规范/行囊原面积200格扩容_20261107/README.md",
+    "csharp/panel/InfoPanel.cs",
+    "csharp/panel/InfoPanel.Paper.cs",
+    "csharp/panel/InfoPanel.Redesign.cs",
+    "csharp/panel/InfoPanel.Attributes.cs",
+    "csharp/panel/InfoPanel.Overview.cs",
+    "csharp/panel/InfoPanel.NpcProbe.cs",
+    "csharp/panel/InfoPanel.ManualLibrary.cs",
+    "csharp/panel/InfoPanel.SkillLibrary.cs",
+    "csharp/panel/InfoPanel.SkillRewrites.cs",
+    "csharp/panel/InfoPanel.EquipmentLayout.cs",
+    "csharp/panel/InfoPanel.EquipmentTotals.cs",
+    "csharp/panel/InfoPanel.RelationsLayout.cs",
+    "csharp/panel/InfoPanel.WorldStatus.cs",
+    "csharp/panel/InfoPanel.Supplies.cs",
+    "csharp/panel/InfoPanel.BaishiLecture.cs",
+    "csharp/panel/CultivationUI.cs",
+    "csharp/panel/CultivationUI.Paper.cs",
+    "csharp/panel/CultivationUI.Room.cs",
+    "csharp/panel/CultivationUI.Inspiration.cs",
+    "csharp/panel/YuanxiPanel.cs",
+    "csharp/panel/RestPanel.cs",
+    "csharp/panel/RestPaperControls.cs",
+    "csharp/panel/QuietRoomStyle.cs",
+    "csharp/panel/QuietRoomNumber.cs",
+    "csharp/panel/QuietRoomTriangle.cs",
+    "csharp/panel/QuietRoomPaperTab.cs",
+    "csharp/panel/PaperButtonFeedback.cs",
+    "csharp/panel/PaperButton.cs",
+    "csharp/panel/CraftingPaperStyle.cs",
+    "csharp/panel/WorldHudStyle.cs",
+    "csharp/panel/InventoryUiPaper.cs",
+    "csharp/panel/InventoryPaperFrame.cs",
+    "csharp/panel/InventoryGarmentStyle.cs",
+    "csharp/panel/StoragePanel.cs",
+    "csharp/panel/StoragePanel.Native.cs",
+    "csharp/panel/StoragePanel.NativeCategories.cs",
+    "csharp/panel/StoragePanel.NativeDrag.cs",
+    "csharp/panel/StoragePanel.View.cs",
+    "csharp/panel/StoragePanel.StorageBags.cs",
+    "csharp/panel/StoragePanel.BagModal.cs",
+    "csharp/panel/StoragePanel.BagLining.cs",
+    "csharp/panel/StoragePanel.GarmentLining.cs",
+    "csharp/panel/StoragePanel.SpatialPreview.cs",
+    "csharp/panel/ItemClaimPanel.cs",
+    "csharp/panel/ItemClaimPanel.View.cs",
+    "csharp/panel/ItemClaimPanel.LeftList.cs",
+    "csharp/panel/ItemClaimPanel.Drag.cs",
+    "csharp/panel/WardrobePicker.cs",
+    "csharp/panel/TradePanel.cs",
+    "csharp/panel/NpcInteractionPanel.cs",
+    "csharp/panel/LetterPanel.cs",
+    "csharp/panel/JournalPanel.cs",
+    "csharp/panel/EncyclopediaPanel.cs",
+    "csharp/panel/EncyclopediaPanel.Terms.cs",
+    "csharp/panel/EncyclopediaPanel.Loading.cs",
+    "csharp/panel/GameSettingsPanel.cs",
+    "csharp/panel/AppearanceEditor.cs",
+    "csharp/panel/AppearanceLab.cs",
+    "csharp/panel/AppearancePreview.cs",
+    "csharp/panel/CharacterAppearanceTest.cs",
+    "csharp/panel/StartMenu.cs",
+    "csharp/panel/StartMenu.Visual.cs",
+    "csharp/panel/StartMenu.Settings.cs",
+    "csharp/panel/StartMenu.Creation.cs",
+    "csharp/panel/StartMenu.CreationControls.cs",
+    "csharp/panel/StartMenu.CreationProficiencies.cs",
+    "csharp/panel/StoryDialoguePanel.cs",
+    "csharp/panel/StoryDialoguePanel.Choices.cs",
+    "csharp/panel/StoryDialoguePanel.Layout.cs",
+    "csharp/panel/StoryDialoguePanel.Social.cs",
+    "csharp/panel/StoryDialoguePanel.Portraits.cs",
+    "csharp/panel/StoryDialoguePanel.YuxuAdmission.cs",
+    "csharp/panel/SceneLoadingScreen.cs",
+    "csharp/panel/JourneyCreationLoadingView.cs",
+    "csharp/scene/TradePaperPreviewPanel.cs",
+    "csharp/scene/TradePaperPreviewScene.cs",
+    "csharp/scene/NpcInteractionPaperCardPreview.cs",
+    "csharp/scene/NpcInteractionPaperPreviewScene.cs",
+    "csharp/scene/StoryDialoguePaperPreviewPanel.cs",
+    "csharp/scene/StoryDialoguePaperPreviewScene.cs",
+    "csharp/scene/LetterPaperPreviewScene.cs",
+    "csharp/scene/LettersPreviewScene.cs",
+    "csharp/scene/NpcSocialPreviewScene.cs",
+    "csharp/scene/CharacterOverviewPreviewScene.cs",
+    "csharp/scene/QuietRoomRestTradePreviewScene.cs",
+    "csharp/scene/ItemClaimPreviewScene.cs",
+    "csharp/autoload/GameplayInputRouter.cs",
+    "csharp/MainScene.cs",
+    "csharp/MainScene.ItemClaims.cs",
+    "csharp/MainScene.Letters.cs",
+    "csharp/MainScene.Rest.cs",
+    "csharp/MainScene.JournalTasks.cs",
+    "tscn/panel/InfoPanel.tscn",
+    "tscn/panel/StoragePanel.tscn",
+    "tscn/panel/CultivationUI.tscn",
+    "tscn/panel/NpcInteractionPanel.tscn",
+    "tscn/panel/StoryDialoguePanel.tscn",
+    "tscn/scene/MainScene.tscn",
+    "tscn/scene/LetterPaperPreview.tscn",
+    "tscn/scene/TradePaperPreview.tscn",
+    "tscn/scene/StoryDialoguePaperPreview.tscn",
+    "tscn/scene/NpcInteractionPaperPreview.tscn",
+    "tscn/scene/CharacterAppearanceTest.tscn",
+    "tscn/scene/AppearanceLabScene.tscn"
+  ],
+  "roleNotes": [
+    {
+      "name": "人物衣着与节点参悟",
+      "status": "沿现行已实装Regular操作保留；不因为具备提交行为就机械要求改Primary",
+      "source": [
+        "csharp/panel/WardrobePicker.cs:62",
+        "csharp/panel/InfoPanel.SkillLibrary.cs:489"
+      ]
+    },
+    {
+      "name": "人物装备/衣着/战备专用槽",
+      "status": "逐槽登记材质与用途，不据新Icon文字条件否定已批准的专用控件",
+      "source": [
+        "csharp/panel/InfoPanel.EquipmentLayout.cs:25",
+        "csharp/panel/InfoPanel.Supplies.cs:32"
+      ]
+    }
+  ]
+}

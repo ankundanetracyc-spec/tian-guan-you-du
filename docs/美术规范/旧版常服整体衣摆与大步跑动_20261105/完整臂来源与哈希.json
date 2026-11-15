@@ -1,0 +1,87 @@
+{
+  "schema": "approved-complete-arm-current-provenance-v1",
+  "status": "integrated; all listed numerical and native joint checks passed; visual review remains with user",
+  "source_style_reference": "tools/action_battle_test/art/yuxu_fullbody_v15/arm_relaxed_v19.png",
+  "generation_mode": "built-in image_gen",
+  "complete_arm_sources": {
+    "near_open": {
+      "path": "tools/action_battle_test/art/approved_outfit_full_arms_20261105/near_open.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "c10dfc191b9c303ac59c7aaac83ec169eee52b266206d73f7dc30f73f3c4076d",
+      "no_fingernails": true
+    },
+    "near_fist": {
+      "path": "tools/action_battle_test/art/approved_outfit_full_arms_20261105/near_fist.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "5def66a619f1b85902b822189c594e6522f9bcaa0bcd16671958d21aac3a5003",
+      "no_fingernails": true
+    },
+    "near_grip": {
+      "path": "tools/action_battle_test/art/approved_outfit_full_arms_20261105/near_grip.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "348c869a1e1b8d3582a291ca35deaf6239aea6aa88385baca4354b13941d0a8f",
+      "no_fingernails": true
+    },
+    "far_open": {
+      "path": "tools/action_battle_test/art/approved_outfit_full_arms_20261105/far_open.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "9a38aafb3bcd8777aa08773d3166e8d6e1a303d3697a38ee0c416b2240e8088a",
+      "no_fingernails": true
+    },
+    "far_fist": {
+      "path": "tools/action_battle_test/art/approved_outfit_full_arms_20261105/far_fist.png",
+      "native_size": [
+        1254,
+        1254
+      ],
+      "sha256": "baf20039a1e0b5d192ae676673a9fd28cc3ade424fb48a3b755ce6d1e65ea835",
+      "no_fingernails": true
+    }
+  },
+  "hand_only_calibration": {
+    "user_instruction": "Hand only 80 percent of original generated master; retain arm lengths; remove fingernails",
+    "raw_master_sha256": "1a1128084f15b25120ea0bd9365c3126f65f5a596b8c23d0d9694896ca7856fa",
+    "raw_palm_width_px": 212.25,
+    "raw_forearm_length_px": 645.2573130155132,
+    "project_forearm_length": 14.488943081371243,
+    "desired_hand_multiplier": 0.8,
+    "formula": "212.25 / sqrt(511^2+394^2) * (sqrt(143^2+89^2)*16/186) * 0.8",
+    "edited_open_palm_width_px": 177.5,
+    "edited_open_extra_scale": 0.9566197183098593,
+    "measurement_method": "Metacarpal palm width perpendicular to palm longitudinal axis, excluding thumb projection and finger extension; visual outline with painted-skin cross-section check. Shoulder/elbow centers registered against the reference silhouette; wrist at actual blue-cuff exit midpoint.",
+    "raw_palm_axis_unit": [
+      0.405955,
+      -0.913899
+    ],
+    "raw_palm_cross_section_distance_from_wrist_px": 175.0,
+    "raw_palm_transverse_bounds_px": [
+      -68.5,
+      143.75
+    ]
+  },
+  "target_palm_width": 3.8127774541901065,
+  "fixed_project_arm_lengths_retained": true,
+  "source_legacy_sword_fingers_preserved": "tools/action_battle_test/art/yuxu_fullbody_v15/arm_sword_fingers_v21.png",
+  "generation_prompt_archive": "完整臂生成提示词.json",
+  "registration_archive": "完整臂锚点与80%尺标.json",
+  "validation_archives": [
+    "完整臂_专项检查.json",
+    "完整臂_原生屈肘接缝复核.json",
+    "持剑专项检查.json",
+    "放飞衣摆_专项检查.json",
+    "本轮最终验收.json"
+  ],
+  "previous_bare_hand_pipeline": "historical; not the current complete-arm sampling source"
+}

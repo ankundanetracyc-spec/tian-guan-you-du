@@ -1,0 +1,17 @@
+{
+  "scope": "static inspection only; runtime compilation and execution are delegated to the primary task",
+  "passed": true,
+  "layout_and_formatting_members_unchanged": {
+    "configure_body_columns": true,
+    "balanced_body_markup": true,
+    "body_content_height": true,
+    "layout_card": true,
+    "place_card": true
+  },
+  "drag_reentry_guards": 4,
+  "readonly_children_include_internal": true,
+  "card_self_retention_removed": true,
+  "rules_hint_mouse_transparent": true,
+  "right_drag_events_delegated": true,
+  "runtime_scene": "res://tools/HoverDragPassthroughSmoke.tscn"
+}
